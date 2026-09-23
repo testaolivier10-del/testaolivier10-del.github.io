@@ -2411,6 +2411,1060 @@
    "front": "Every lung disorder breaks at least one of four steps. What are they?",
    "back": "Ventilation, diffusion, matching of air to blood (V/Q), and control of breathing.",
    "why": "Ask which step a disease breaks, then follow its effects through the gases, the pH, the heart and the blood."
+  },
+  {
+   "id": "ns-cns-vs-pns",
+   "topic": "nervous-system-organization",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "CNS vs PNS",
+   "front": "CNS vs PNS: what does each include, and what is each one’s main job?",
+   "back": "CNS: brain and spinal cord; integration. PNS: nerves, ganglia and sensory receptors; carrying signals in to the CNS and out from it.",
+   "why": "Integration needs neurons contacting one another in large numbers, which happens in the brain and cord; the PNS is the wiring that links them to every part of the body."
+  },
+  {
+   "id": "ns-afferent-efferent",
+   "topic": "nervous-system-organization",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Sensory (afferent) vs motor (efferent) division",
+   "front": "Sensory (afferent) vs motor (efferent) division: which way does each carry signals, and what happens if its axons are cut?",
+   "back": "Afferent: toward the CNS; cutting it causes numbness. Efferent: away from the CNS to effectors; cutting it causes weakness or paralysis.",
+   "why": "A signal is felt only when it reaches the CNS, and an effector acts only when a command reaches it, so each loss follows the direction the axons carry."
+  },
+  {
+   "id": "ns-somatic-vs-autonomic",
+   "topic": "nervous-system-organization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Somatic vs autonomic nervous system",
+   "front": "Somatic vs autonomic nervous system: what are the effectors of each?",
+   "back": "Somatic: skeletal muscle. Autonomic: cardiac muscle, smooth muscle and glands.",
+   "why": "The dividing line is the effector, not whether you decide: shivering uses skeletal muscle, so it is somatic even though it is involuntary."
+  },
+  {
+   "id": "ns-somatic-autonomic-chain",
+   "topic": "nervous-system-organization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Somatic vs autonomic nervous system",
+   "front": "Somatic vs autonomic: how many neurons link the CNS to the effector, and can the output inhibit?",
+   "back": "Somatic: one motor neuron, and it always excites. Autonomic: a chain of two neurons meeting in a ganglion, and it can excite or inhibit.",
+   "why": "A somatic motor neuron always makes skeletal muscle contract; autonomic effects depend on the organ and the branch, so the same system can speed one organ and slow another."
+  },
+  {
+   "id": "ns-gray-white",
+   "topic": "nervous-system-organization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Gray matter vs white matter",
+   "front": "Gray matter vs white matter: what does each contain, and where does each sit in the brain and the spinal cord?",
+   "back": "Gray: cell bodies, dendrites and axon terminals, where integration happens. White: bundles of insulated axons. Brain: gray outside. Spinal cord: gray inside.",
+   "why": "White matter is pale because of the fatty glial wrapping around its axons; gray matter has little of it and many cell bodies."
+  },
+  {
+   "id": "ns-nucleus-ganglion",
+   "topic": "nervous-system-organization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Nucleus, ganglion, tract and nerve",
+   "front": "What is a cluster of neuron cell bodies called in the CNS and in the PNS? And a bundle of axons?",
+   "back": "Cell bodies: a nucleus in the CNS, a ganglion in the PNS. Axons: a tract in the CNS, a nerve in the PNS.",
+   "why": "The names change at the border of the CNS: one sensory axon runs in a nerve, has its cell body in a ganglion, and continues in a tract."
+  },
+  {
+   "id": "ns-autonomic-not-peripheral",
+   "topic": "nervous-system-organization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Does the CNS handle conscious actions and the PNS automatic ones?",
+   "back": "No. CNS vs PNS is a split by location; somatic vs autonomic is a split by function, and each has parts in both locations.",
+   "why": "The neurons that decide to speed your heart sit in the brain, and the axons that carry the command run in nerves of the PNS, just as for moving your leg."
+  },
+  {
+   "id": "ng-dendrite-axon",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Dendrites vs axon",
+   "front": "Dendrites vs axon: which way does each carry signals, and what kind of electrical signal does each carry?",
+   "back": "Dendrites: toward the soma, graded potentials. Axon: away from the soma, action potentials.",
+   "why": "Dendrites receive at synapses and their membrane has few voltage-gated sodium channels; the axon’s membrane has the channels to fire and regenerate action potentials."
+  },
+  {
+   "id": "ng-trigger-zone",
+   "topic": "neurons-glia",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Where on a neuron do action potentials start, and why there?",
+   "back": "In the initial segment, just beyond the axon hillock: the trigger zone. (Many exams name the axon hillock.)",
+   "why": "Its membrane is packed with voltage-gated sodium channels, many times more densely than the soma’s, so it reaches threshold first."
+  },
+  {
+   "id": "ng-neuron-shapes",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Multipolar vs bipolar vs unipolar neurons",
+   "front": "Multipolar, bipolar and unipolar neurons: how many processes leave the soma, and what job does each usually do?",
+   "back": "Multipolar: many; motor neurons and interneurons. Bipolar: two; sensory, in a few sense organs. Unipolar: one that splits in two; most sensory neurons.",
+   "why": "Shape follows job and position: a unipolar sensory neuron’s signal runs past its soma, which sits off to one side in a ganglion."
+  },
+  {
+   "id": "ng-functional-classes",
+   "topic": "neurons-glia",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Sensory neuron vs interneuron vs motor neuron",
+   "front": "Sensory neurons, interneurons and motor neurons: where does each carry signals, and which is the most numerous?",
+   "back": "Sensory: from sensory receptors to the CNS. Interneurons: between neurons within the CNS, the vast majority. Motor: from the CNS to effectors.",
+   "why": "Integration is the interneurons’ job, and nearly all processing happens within the CNS, so they far outnumber the neurons that carry signals in or out."
+  },
+  {
+   "id": "ng-glia-myelin",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "CNS glia vs PNS glia",
+   "front": "CNS glia vs PNS glia: which cell makes myelin on each side?",
+   "back": "CNS: oligodendrocytes. PNS: Schwann cells.",
+   "why": "Both wrap layers of their own membrane around axon segments, but an oligodendrocyte serves many axons and a Schwann cell only one segment of one."
+  },
+  {
+   "id": "ng-glia-soma",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "CNS glia vs PNS glia",
+   "front": "CNS glia vs PNS glia: which cells surround neuron cell bodies and regulate the fluid around them?",
+   "back": "CNS: astrocytes. PNS: satellite cells, which cover the somas in ganglia.",
+   "why": "Neurons fire correctly only when the ions around them stay steady; these glia take up excess potassium and neurotransmitter."
+  },
+  {
+   "id": "ng-glia-immune",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "CNS glia vs PNS glia",
+   "front": "CNS glia vs PNS glia: which cells clear debris and fight infection?",
+   "back": "CNS: microglia, the resident immune cells. PNS: Schwann cells, with macrophages that arrive from the blood.",
+   "why": "Microglia come from immune precursor cells that settle in the brain early in development, which is why they behave like macrophages."
+  },
+  {
+   "id": "ng-ependymal",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "CNS glia vs PNS glia",
+   "front": "Which glial cells line the fluid-filled spaces inside the brain and spinal cord, and do they have a PNS equivalent?",
+   "back": "Ependymal cells; there is no PNS equivalent.",
+   "why": "Only the CNS has fluid-filled cavities, left from the hollow of the embryo’s tube; many ependymal cells carry cilia that help move the fluid."
+  },
+  {
+   "id": "ng-schwann-oligo",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Schwann cell vs oligodendrocyte",
+   "front": "Schwann cell vs oligodendrocyte: how many axons does each myelinate, and which has a neurilemma?",
+   "back": "Schwann cell: one segment of one axon, with its nucleus in an outer living layer, the neurilemma. Oligodendrocyte: segments of many axons, and no neurilemma.",
+   "why": "The Schwann cell’s living outer layer is what lets it multiply and guide a regrowing axon after an injury."
+  },
+  {
+   "id": "ng-myelin-nodes",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a node of Ranvier?",
+   "back": "A tiny bare gap, about a thousandth of a millimeter wide, between two myelin segments, where voltage-gated sodium channels are packed densely.",
+   "why": "Each glial wrap covers only one internode, so the axon membrane is exposed between wraps; those gaps are where the action potential is regenerated."
+  },
+  {
+   "id": "ng-pns-cns-regrowth",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "PNS axon cut vs CNS axon cut",
+   "front": "Why can a cut axon in the PNS regrow, while one in the CNS rarely does?",
+   "back": "PNS: Schwann cells clear debris fast and form a guiding tube. CNS: no guiding tube, growth-blocking myelin proteins that linger, and an astrocyte scar.",
+   "why": "CNS neurons can grow axons into a graft of peripheral nerve, so the problem is mainly the surroundings, not the neurons themselves."
+  },
+  {
+   "id": "ng-regrowth-rate",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "About how fast does a cut PNS axon regrow, and why does feeling return near the scar first?",
+   "back": "About 1 mm a day, so a 20 cm distance takes six months or more; feeling returns from the repair outward.",
+   "why": "The growing tip advances along the Schwann cell tube at roughly the speed of slow axonal transport, reaching nearby targets long before distant ones."
+  },
+  {
+   "id": "ng-glioma",
+   "topic": "neurons-glia",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do most tumors that start in brain tissue arise from glial cells rather than neurons?",
+   "back": "Mature neurons do not divide; glial cells and their precursors keep dividing.",
+   "why": "A tumor is cells dividing out of control, which only cells that still divide can do."
+  },
+  {
+   "id": "ap-na-k-channels",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Voltage-gated sodium vs potassium channels",
+   "front": "Voltage-gated sodium vs potassium channels in an axon: how many gates, how fast do they open, and what ends the flow?",
+   "back": "Sodium: two gates (activation and inactivation), opens fast; the inactivation gate plugs it. Potassium: one gate, opens slowly; it closes slowly after repolarization.",
+   "why": "That timing difference shapes the spike: fast sodium entry makes the rise, and slow potassium exit makes the fall and the dip below rest."
+  },
+  {
+   "id": "ap-channel-states",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Name the three states of a voltage-gated sodium channel, and say how an inactivated channel returns to ready.",
+   "back": "Closed (ready), open and inactivated. It resets to closed only when the membrane repolarizes.",
+   "why": "Repolarization swings the activation gate shut and lets the inactivation gate swing out of the pore; while the membrane stays depolarized, that cannot happen."
+  },
+  {
+   "id": "ap-absolute-relative",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Absolute vs relative refractory period",
+   "front": "Absolute vs relative refractory period: can a second action potential fire, and why?",
+   "back": "Absolute: no, whatever the stimulus, because every sodium channel is open or inactivated. Relative: yes, but only with a stronger-than-normal stimulus.",
+   "why": "In the relative period some sodium channels have reset, but fewer are ready and the still-open potassium channels hold the membrane below rest."
+  },
+  {
+   "id": "ap-refractory-not-pump",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Is the refractory period the time the sodium–potassium pump needs to restore the ions?",
+   "back": "No. It comes from the sodium channels, which inactivate and cannot reset until the membrane repolarizes.",
+   "why": "One action potential moves only a tiny fraction of the ions, and the pump works slowly in the background."
+  },
+  {
+   "id": "ap-numbers",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "Give the four key voltages of a neuron action potential.",
+   "back": "Rest about −70 mV; threshold about −55 mV; peak about +30 mV; afterhyperpolarization about −80 mV.",
+   "why": "The peak stops short of sodium’s equilibrium potential (+60 mV) because inactivation and the potassium channels cut the rise off; the dip heads toward potassium’s (−90 mV)."
+  },
+  {
+   "id": "ap-continuous-saltatory",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Continuous vs saltatory conduction",
+   "front": "Continuous vs saltatory conduction: in which axons, and where is the action potential regenerated?",
+   "back": "Continuous: unmyelinated axons, at every patch of membrane. Saltatory: myelinated axons, only at the nodes of Ranvier.",
+   "why": "Under myelin there are few sodium channels and little current leaks out, so the slow step, a patch firing, happens only at the nodes."
+  },
+  {
+   "id": "ap-conduction-speed-cost",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Continuous vs saltatory conduction",
+   "front": "Continuous vs saltatory conduction: typical speed and energy cost?",
+   "back": "Continuous: about 0.5 to 2 m/s, higher cost. Saltatory: about 5 to 120 m/s, lower cost.",
+   "why": "Ions cross only at the nodes in a myelinated axon, so the sodium–potassium pumps have far less to restore after each signal."
+  },
+  {
+   "id": "ap-velocity-factors",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What three things set an axon’s conduction velocity?",
+   "back": "Axon diameter, myelination (the bigger effect) and temperature.",
+   "why": "A wider axon has less internal resistance, myelin stops current leaking out between nodes, and warm channels open and close faster."
+  },
+  {
+   "id": "ap-ms-heat",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Why does a hot shower briefly worsen the symptoms of multiple sclerosis?",
+   "back": "Warmth makes sodium channels inactivate sooner, so each action potential carries less current, and a demyelinated axon that barely reached threshold at the next node now fails.",
+   "why": "A healthy axon has current to spare; a demyelinated one leaks current across its bare stretch, so the small loss tips it into conduction block."
+  },
+  {
+   "id": "ap-hyperkalemia",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Why does a modest rise in blood potassium make neurons more excitable, but a severe, lasting rise make them less?",
+   "back": "Modest: the resting potential moves closer to threshold. Severe and lasting: the held depolarization leaves sodium channels stuck inactivated, raising threshold.",
+   "why": "Inactivated sodium channels reset only on repolarization, so a membrane kept depolarized runs out of ready channels."
+  },
+  {
+   "id": "sy-electrical-chemical",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Electrical vs chemical synapses",
+   "front": "Electrical vs chemical synapse: what crosses between the cells, and how long is the delay?",
+   "back": "Electrical: ions (current) through gap junctions, almost no delay. Chemical: a neurotransmitter diffusing across a 20 nm cleft, about 0.5 ms delay.",
+   "why": "Current passes straight through gap junctions, but the cleft is too wide for current to jump, so a chemical must carry the signal."
+  },
+  {
+   "id": "sy-chemical-control",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Electrical vs chemical synapses",
+   "front": "Electrical vs chemical synapse: which can excite or inhibit, and be adjusted by drugs and learning?",
+   "back": "The chemical synapse. An electrical synapse just follows the first cell’s voltage and can hardly be adjusted.",
+   "why": "At a chemical synapse the receptor protein decides the effect, and release, binding and removal can each be changed."
+  },
+  {
+   "id": "sy-calcium-trigger",
+   "topic": "synapses",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "What triggers neurotransmitter release from an axon terminal?",
+   "back": "Calcium entering through voltage-gated calcium channels, which binds sensor proteins on docked vesicles and makes them fuse.",
+   "why": "Calcium is about 10,000 times more concentrated outside than in the cytosol; with no calcium outside, the action potential arrives but nothing is released."
+  },
+  {
+   "id": "sy-epsp-ipsp",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "EPSP vs IPSP",
+   "front": "EPSP vs IPSP: what does each do to the membrane potential and to the chance of reaching threshold?",
+   "back": "EPSP: depolarizes, bringing threshold closer. IPSP: hyperpolarizes or holds the membrane near rest, pushing it away from threshold.",
+   "why": "Both are graded potentials, so they add together at the trigger zone, the IPSPs subtracting from what the EPSPs build."
+  },
+  {
+   "id": "sy-epsp-ipsp-channels",
+   "topic": "synapses",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "EPSP vs IPSP",
+   "front": "EPSP vs IPSP: which channels and neurotransmitters typically cause each?",
+   "back": "EPSP: channels for sodium and potassium (net sodium in); glutamate. IPSP: chloride channels (chloride in) or potassium channels (potassium out); GABA, glycine.",
+   "why": "At −70 mV sodium’s inward push is far stronger than potassium’s outward push, while chloride’s equilibrium potential lies at or just below rest."
+  },
+  {
+   "id": "sy-summation",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Temporal vs spatial summation: what is the difference?",
+   "back": "Temporal: one input fires repeatedly in quick succession. Spatial: several inputs at different places fire at about the same time.",
+   "why": "Either way, each PSP arrives before the others have faded, so they stack at the trigger zone."
+  },
+  {
+   "id": "sy-ionotropic-metabotropic",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Ionotropic vs metabotropic receptor proteins",
+   "front": "Ionotropic vs metabotropic receptor protein: what is each, and how does each change the membrane potential?",
+   "back": "Ionotropic: a ligand-gated ion channel that opens its own pore. Metabotropic: a G-protein-coupled receptor protein that opens or closes separate channels through a G protein or second messenger.",
+   "why": "Only the ionotropic kind has a pore; the metabotropic kind relays the signal inside the cell."
+  },
+  {
+   "id": "sy-ionotropic-metabotropic-speed",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Ionotropic vs metabotropic receptor proteins",
+   "front": "Ionotropic vs metabotropic: speed, duration and amplification?",
+   "back": "Ionotropic: under a millisecond, lasts milliseconds, no amplification. Metabotropic: tens of milliseconds or more, lasts up to minutes, amplified.",
+   "why": "Each step of a G protein cascade activates many copies of the next, which takes time but multiplies the signal."
+  },
+  {
+   "id": "sy-receptor-decides",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "compare": "Ionotropic vs metabotropic receptor proteins",
+   "front": "How can acetylcholine excite skeletal muscle but slow the heart?",
+   "back": "The receptor protein decides: ionotropic nicotinic receptor proteins let sodium in at the muscle; metabotropic receptor proteins on heart cells open potassium channels.",
+   "why": "A neurotransmitter is not excitatory or inhibitory in itself; its effect depends on the receptor proteins it meets."
+  },
+  {
+   "id": "sy-removal",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What are the three ways a neurotransmitter is removed from the synaptic cleft?",
+   "back": "Diffusion away, breakdown by enzymes (acetylcholinesterase for acetylcholine), and reuptake by transporters.",
+   "why": "Glutamate, GABA, glycine and the biogenic amines are removed mainly by reuptake, powered by the sodium gradient."
+  },
+  {
+   "id": "sy-transmitters",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Major neurotransmitters",
+   "front": "Name the main excitatory neurotransmitter of the brain, the main inhibitory one of the brain, and a major inhibitory one of the spinal cord.",
+   "back": "Glutamate; GABA; glycine.",
+   "why": "Nearly all their receptor proteins in the adult brain open channels that excite (glutamate) or inhibit (GABA and glycine)."
+  },
+  {
+   "id": "sy-drugs-steps",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Drugs and toxins at the synapse",
+   "front": "Botulinum toxin, organophosphates and SSRIs: which step of synaptic transmission does each change?",
+   "back": "Botulinum toxin: release. Organophosphates: degradation (they block acetylcholinesterase). SSRIs: reuptake of serotonin.",
+   "why": "Find the step and follow the chain: less release weakens the signal, and less removal makes it larger and longer."
+  },
+  {
+   "id": "sy-divergence-convergence",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Divergence vs convergence in a neural circuit?",
+   "back": "Divergence: one neuron synapses on many. Convergence: many neurons synapse on one.",
+   "why": "Convergence is what spatial summation works on: a motor neuron in the spinal cord sums input from the brain, sensory neurons and interneurons."
+  },
+  {
+   "id": "br-vesicles",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does each of the five secondary brain vesicles become?",
+   "back": "Telencephalon: cerebrum. Diencephalon: thalamus, hypothalamus, epithalamus. Mesencephalon: midbrain. Metencephalon: pons and cerebellum. Myelencephalon: medulla oblongata.",
+   "why": "The forebrain and hindbrain each split in two while the midbrain does not, turning three primary vesicles into five."
+  },
+  {
+   "id": "br-frontal",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The cerebral lobes and their functions",
+   "front": "Frontal lobe: where is it, and what are its main jobs?",
+   "back": "In front of the central sulcus. Starting voluntary movement; planning, decisions and self-control; producing speech.",
+   "why": "Its motor areas send commands to the opposite side of the body, so damage causes weakness on that side or changes in judgment."
+  },
+  {
+   "id": "br-parietal",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The cerebral lobes and their functions",
+   "front": "Parietal lobe: where is it, and what are its main jobs?",
+   "back": "Behind the central sulcus, at the top and upper side. Body sensations (touch, temperature, pain, limb position) and where things are in space.",
+   "why": "It receives body sensation from the opposite side, so damage causes numbness there, or ignoring one side of space."
+  },
+  {
+   "id": "br-temporal",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The cerebral lobes and their functions",
+   "front": "Temporal lobe: where is it, and what are its main jobs?",
+   "back": "Below the lateral sulcus. Hearing; recognizing faces and objects; understanding language; forming memories of events and facts.",
+   "why": "Damage can cause trouble understanding speech or learning new facts."
+  },
+  {
+   "id": "br-occipital",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The cerebral lobes and their functions",
+   "front": "Occipital lobe: where is it, and what is its main job?",
+   "back": "At the back of each hemisphere, behind the parieto-occipital sulcus. Vision.",
+   "why": "Damage causes loss of vision in part of what you see."
+  },
+  {
+   "id": "br-insula",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The cerebral lobes and their functions",
+   "front": "Insula: where is it, and what does it do?",
+   "back": "Deep in the lateral sulcus, hidden by the other lobes. Taste, and sensing the state of your own body.",
+   "why": "It is a buried island of cortex; pull the temporal lobe down to see it."
+  },
+  {
+   "id": "br-cerebellum-side",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Damage to the cerebellum vs the motor cortex: which side of the body is affected, and how?",
+   "back": "Cerebellum: clumsy, poorly timed movement (ataxia) on the same side, strength normal. Motor cortex: weakness on the opposite side.",
+   "why": "The cerebellum corrects movements rather than starting them, and each side coordinates its own side of the body."
+  },
+  {
+   "id": "br-thalamus",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the thalamus do, and which sense bypasses it?",
+   "back": "It relays and filters almost every signal reaching the cerebral cortex. Smell reaches the cortex without passing through it first.",
+   "why": "It adjusts how strongly each signal reaches the cortex, part of how you focus on one sound and ignore another."
+  },
+  {
+   "id": "br-medulla",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is crushing the medulla oblongata fatal?",
+   "back": "Its nuclei control the heartbeat, blood vessel diameter and the basic rhythm of breathing.",
+   "why": "When a swollen brain is pushed down through the foramen magnum, the medulla is compressed and breathing and circulation stop."
+  },
+  {
+   "id": "br-basal-nuclei",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Parkinson’s vs Huntington’s disease: what fails in the basal nuclei, and what movements result?",
+   "back": "Parkinson’s: dopamine neurons of the substantia nigra die, the brake stays on, movement is slow and hard to start. Huntington’s: striatal neurons die, the brake fails, unwanted jerky movements break through.",
+   "why": "The globus pallidus constantly inhibits the thalamus, and the striatum lifts that brake for chosen movements, helped by dopamine."
+  },
+  {
+   "id": "br-limbic",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Hippocampus vs amygdala: what does each do?",
+   "back": "Hippocampus: needed to form new memories of facts and events. Amygdala: judges emotional importance, especially threats, and drives fear.",
+   "why": "Both are parts of the limbic system, which links emotion, memory and the body’s responses through the hypothalamus."
+  },
+  {
+   "id": "br-ras",
+   "topic": "brain-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is the reticular activating system, and what happens if it is damaged on both sides?",
+   "back": "Part of the brainstem’s reticular formation that keeps the cortex awake by sending signals up through the thalamus. Damage on both sides causes coma.",
+   "why": "Loud noise or pain boosts it, which is why an alarm clock wakes you."
+  },
+  {
+   "id": "bp-meninges-order",
+   "topic": "brain-protection",
+   "core": [
+    "compartments",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three meninges from outside in.",
+   "back": "Dura mater (tough), arachnoid mater (web-like), pia mater (tender, on the brain surface).",
+   "why": "The pia follows every gyrus and sulcus; the arachnoid’s web-like strands cross the fluid-filled space between them."
+  },
+  {
+   "id": "bp-spaces",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "apply",
+   "front": "Epidural, subdural and subarachnoid spaces: which are real spaces in the skull?",
+   "back": "Only the subarachnoid space, which holds CSF and the large surface blood vessels. The epidural and subdural spaces are potential spaces in the skull.",
+   "why": "The dura is fused to the skull and the arachnoid is pressed against the dura; around the spinal cord, the epidural space is real, filled with fat and veins."
+  },
+  {
+   "id": "bp-epidural-hematoma",
+   "topic": "brain-protection",
+   "core": [
+    "compartments",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epidural vs subdural vs subarachnoid bleeding",
+   "front": "Epidural hematoma: vessel torn, speed, and shape on a scan?",
+   "back": "Usually the middle meningeal artery, from a skull fracture at the side of the head; fast; lens-shaped, stopping at the sutures.",
+   "why": "Arterial pressure has to peel the dura off the skull, and the dura is fused most firmly at the sutures, so the clot stays compact."
+  },
+  {
+   "id": "bp-subdural-hematoma",
+   "topic": "brain-protection",
+   "core": [
+    "compartments",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epidural vs subdural vs subarachnoid bleeding",
+   "front": "Subdural hematoma: vessel torn, speed, and shape on a scan?",
+   "back": "Bridging veins; often slow, over hours to weeks; crescent-shaped, crossing sutures but stopping at dural folds.",
+   "why": "Venous pressure is low, and nothing holds the arachnoid to the dura, so the blood spreads thinly over the brain’s surface."
+  },
+  {
+   "id": "bp-subarachnoid",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "recall",
+   "compare": "Epidural vs subdural vs subarachnoid bleeding",
+   "front": "Subarachnoid hemorrhage: where is the blood, and what are the classic signs?",
+   "back": "In the subarachnoid space, mixed with CSF. A sudden, worst-ever headache and a stiff neck; blood in CSF from a lumbar puncture.",
+   "why": "Blood mixing with CSF spreads around the brain and irritates the meninges."
+  },
+  {
+   "id": "bp-subdural-elderly",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "analyze",
+   "compare": "Epidural vs subdural vs subarachnoid bleeding",
+   "front": "Why can an older adult get a subdural hematoma from a minor fall?",
+   "back": "The brain shrinks with age, stretching the bridging veins, so a small jolt can tear them.",
+   "why": "A sudden speeding up or slowing down of the head moves the brain relative to the skull, pulling on veins that are already taut."
+  },
+  {
+   "id": "bp-csf-numbers",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "recall",
+   "front": "How much CSF do you have at any moment, and how much do you make each day?",
+   "back": "About 150 mL at a time; about 500 mL made a day, so it is replaced three to four times daily.",
+   "why": "The choroid plexuses secrete it continuously and it drains continuously, which is why a block quickly builds pressure."
+  },
+  {
+   "id": "bp-csf-vs-plasma",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "apply",
+   "front": "Why is CSF not simply filtered plasma?",
+   "back": "Choroid plexus cells, sealed by tight junctions, secrete it by active transport, so it has almost no protein, less glucose and slightly different ions.",
+   "why": "Fluid cannot slip between the covering cells, so everything in CSF passes through them and they control its composition."
+  },
+  {
+   "id": "bp-hydrocephalus-types",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "analyze",
+   "front": "Obstructive vs communicating hydrocephalus: where is the problem, and which ventricles enlarge?",
+   "back": "Obstructive: a block inside the ventricles, such as a closed cerebral aqueduct; only the ventricles above the block swell. Communicating: the fluid cannot get back into the blood; all four enlarge.",
+   "why": "CSF production barely slows as pressure rises, so fluid builds up behind wherever it is stopped."
+  },
+  {
+   "id": "bp-bbb",
+   "topic": "brain-protection",
+   "core": [
+    "compartments",
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What actually forms the blood–brain barrier?",
+   "back": "The endothelial cells of brain capillaries, sealed edge to edge by continuous tight junctions, with no pores and few transport vesicles.",
+   "why": "Astrocyte end-feet cover the capillaries and keep the endothelium in its sealed state, but molecules could slip between the end-feet."
+  },
+  {
+   "id": "bp-bbb-levodopa",
+   "topic": "brain-protection",
+   "core": [
+    "compartments"
+   ],
+   "level": "analyze",
+   "front": "Why is levodopa, not dopamine, given for Parkinson’s disease?",
+   "back": "Levodopa, an amino acid, rides a carrier protein across the blood–brain barrier; dopamine has no carrier and is too water-soluble to dissolve through.",
+   "why": "Only small lipid-soluble molecules cross freely; glucose and amino acids need carrier proteins, and most other substances are kept out."
+  },
+  {
+   "id": "sc-end",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where does the adult spinal cord end, and why is a lumbar puncture done at L3–L4 or L4–L5?",
+   "back": "At the conus medullaris, about L1–L2. Below that the dural sac holds only the cauda equina in CSF, down to about S2.",
+   "why": "The vertebral column grew longer than the cord after early fetal life; floating roots slide away from the needle."
+  },
+  {
+   "id": "sc-enlargements",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why is the spinal cord wider at the cervical and lumbar enlargements?",
+   "back": "Those segments supply the limbs, which have far more muscle and skin, so they hold more motor neurons and receive more sensory axons.",
+   "why": "More neurons means more gray matter and a wider cord."
+  },
+  {
+   "id": "sc-horns",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Dorsal vs ventral vs lateral horn",
+   "front": "Dorsal, ventral and lateral horns: what does each hold?",
+   "back": "Dorsal: interneurons and neurons that relay sensation up. Ventral: motor neurons to skeletal muscle. Lateral (T1 to L2 only): sympathetic motor neurons.",
+   "why": "Sensation enters at the back of the cord and commands leave at the front."
+  },
+  {
+   "id": "sc-roots",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Dorsal root vs ventral root",
+   "front": "Dorsal vs ventral root: which carries sensory axons in, which carries motor axons out, and which has a ganglion?",
+   "back": "Dorsal root: sensory, in, with the dorsal root ganglion holding their cell bodies. Ventral root: motor, out, no ganglion.",
+   "why": "Motor neuron cell bodies sit inside the cord in the ventral and lateral horns, so their root needs no ganglion."
+  },
+  {
+   "id": "sc-root-cut",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Dorsal root vs ventral root",
+   "front": "Cutting a dorsal root vs a ventral root: what is lost?",
+   "back": "Dorsal: sensation from the area it supplies; strength normal. Ventral: movement of the muscles it supplies; sensation normal.",
+   "why": "Each root carries signals only one way, so cutting it removes just that direction."
+  },
+  {
+   "id": "sc-white-matter-levels",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is white matter thickest in the cervical cord?",
+   "back": "Ascending axons join at every level on their way up, and descending axons leave at every level as they reach their targets, so the most axons pass through the top.",
+   "why": "Gray matter follows a different rule: it is largest in the enlargements, where the limbs need more neurons."
+  },
+  {
+   "id": "sc-tract-names",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does a tract’s name tell you whether it is ascending or descending?",
+   "back": "Names give origin, then destination: “spino-” plus a brain region is ascending; a brain region plus “-spinal” is descending.",
+   "why": "A tract that starts in the spinal cord and ends in the brain must carry signals up."
+  },
+  {
+   "id": "sc-shingles",
+   "topic": "spinal-cord",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does shingles appear as a painful band of rash on one side of the body?",
+   "back": "The virus lies dormant in one dorsal root ganglion and travels out along that ganglion’s sensory axons, which supply a single band of skin on one side.",
+   "why": "Each dorsal root ganglion holds the cell bodies for the sensory axons of one segment on one side."
+  },
+  {
+   "id": "hf-primary-areas",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Primary sensory areas",
+   "front": "Where are the primary somatosensory, visual and auditory cortices?",
+   "back": "Somatosensory: postcentral gyrus, parietal lobe. Visual: back of the occipital lobe. Auditory: top of the temporal lobe, inside the lateral sulcus.",
+   "why": "A primary sensory area receives the raw signal first; the association area next to it interprets it."
+  },
+  {
+   "id": "hf-primary-motor",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Primary motor cortex vs premotor cortex: what does damage to each cause?",
+   "back": "Primary motor (precentral gyrus): weakness of the opposite side. Premotor: strength normal, but learned sequences such as buttoning a shirt are hard.",
+   "why": "The premotor and supplemental motor areas plan and sequence movements; the primary motor cortex sends the commands out."
+  },
+  {
+   "id": "hf-association-damage",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What happens when an association area is damaged but its primary area is intact?",
+   "back": "The person senses but cannot recognize: for example, sees a face clearly but cannot tell whose it is.",
+   "why": "The primary area still receives the signal; interpreting it is the association area’s job."
+  },
+  {
+   "id": "hf-homunculus",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are the hands, lips and tongue so large on the sensory homunculus?",
+   "back": "They have far more sensory receptors per square centimeter, and each one’s signal needs cortical neurons to receive it.",
+   "why": "That density is also why you can tell two points apart 2 to 3 mm apart on a fingertip but need about 4 cm on your back."
+  },
+  {
+   "id": "hf-lateralization",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which functions does each hemisphere usually lead in?",
+   "back": "Left: language, in about 95% of right-handed people. Right: attending to both sides of space, recognizing faces, the emotional tone of speech.",
+   "why": "The corpus callosum normally shares information between them within milliseconds; the “left-brained vs right-brained people” idea is a myth."
+  },
+  {
+   "id": "hf-aphasias",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Expressive vs receptive vs conduction aphasia",
+   "front": "Expressive vs receptive aphasia: damaged area, speech and understanding?",
+   "back": "Expressive (Broca’s area): slow, effortful speech, understanding mostly good. Receptive (Wernicke’s area): fluent speech with wrong or made-up words, understanding poor.",
+   "why": "Broca’s area builds speech plans; Wernicke’s area recognizes words and their meaning."
+  },
+  {
+   "id": "hf-conduction-aphasia",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Expressive vs receptive vs conduction aphasia",
+   "front": "What is the telltale sign of conduction aphasia?",
+   "back": "Poor repetition, out of line with fluent speech and good understanding.",
+   "why": "The link between Wernicke’s and Broca’s areas is damaged, so a heard phrase cannot be passed forward to be spoken, though each area works."
+  },
+  {
+   "id": "hf-declarative-procedural",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Declarative vs procedural memory",
+   "front": "Declarative vs procedural memory: what does each store, and which structures form it?",
+   "back": "Declarative: facts and events; hippocampus and nearby temporal cortex, stored in the cortex. Procedural: skills and habits; basal nuclei and cerebellum.",
+   "why": "That is why Henry Molaison, without his hippocampi, could still learn a new drawing skill."
+  },
+  {
+   "id": "hf-amnesia-directions",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Anterograde vs retrograde amnesia?",
+   "back": "Anterograde: cannot form new memories after the injury. Retrograde: loses memories formed before it, recent ones first.",
+   "why": "Recent memories are least consolidated; old ones, already stored in the cortex, survive best."
+  },
+  {
+   "id": "hf-ltp",
+   "topic": "higher-functions",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "What happens at a synapse during long-term potentiation?",
+   "back": "Strong depolarization lets calcium in through a special glutamate receptor protein, which triggers insertion of more glutamate receptor proteins; the same release now gives a larger EPSP.",
+   "why": "Memory is stored as changes in synaptic strength: neurons that fire together wire together."
+  },
+  {
+   "id": "hf-eeg-waves",
+   "topic": "higher-functions",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Order the EEG waves from fastest to slowest, with their frequencies.",
+   "back": "Beta (over 13 Hz), alpha (8 to 13 Hz), theta (4 to 7 Hz), delta (under 4 Hz).",
+   "why": "The slower and larger the waves, the more cortical neurons are working in step, as in deep sleep."
+  },
+  {
+   "id": "hf-eeg-source",
+   "topic": "higher-functions",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What electrical activity does an EEG actually record?",
+   "back": "The summed EPSPs and IPSPs of millions of cortical neurons lined up side by side, not action potentials.",
+   "why": "Only when many aligned neurons receive synaptic input at once do their small currents add up to a signal big enough to reach the scalp."
+  },
+  {
+   "id": "hf-nrem-rem",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Non-REM (N3) vs REM sleep",
+   "front": "N3 vs REM sleep: EEG, muscles and dreams?",
+   "back": "N3: slow, large delta waves; muscles relaxed but can move; few dreams. REM: fast, small waves like waking; paralyzed except eye muscles and diaphragm; vivid dreams.",
+   "why": "In REM, brainstem neurons actively block the motor neurons, which stops you acting out your dreams."
+  },
+  {
+   "id": "hf-sleep-night",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Non-REM (N3) vs REM sleep",
+   "front": "How do sleep cycles change across a night?",
+   "back": "Cycles of about 90 minutes repeat four to six times. Early cycles hold long N3; later ones have little N3 and longer REM, up to 30 to 60 minutes near morning.",
+   "why": "That is why you often wake from a dream."
+  },
+  {
+   "id": "hf-adenosine",
+   "topic": "higher-functions",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What builds sleep pressure while you are awake, and how does caffeine counter it?",
+   "back": "Adenosine, from ATP used by active neurons, builds up and inhibits arousal neurons through its receptor proteins. Caffeine blocks those receptor proteins.",
+   "why": "Sleep clears the adenosine; caffeine only hides its effect."
+  },
+  {
+   "id": "hf-coma-sleep",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is needed for consciousness, and how does sleep differ from coma?",
+   "back": "The reticular activating system and the cerebral cortex on both sides, working together. A sleeper can be woken by a strong enough stimulus; a person in a coma cannot.",
+   "why": "Damage to one hemisphere alone does not cause coma; damage to the upper brainstem or to both hemispheres does."
   }
  ]
 }

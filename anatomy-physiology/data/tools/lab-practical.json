@@ -7413,10 +7413,10 @@
        "follow": {
         "q": "A patient cannot fully raise the right upper eyelid, but can still squeeze both eyes shut. Which muscle is most likely weak?",
         "options": [
-         "Orbicularis oculi",
+         "Orbicularis oculi, the ring muscle around the eye",
          "Levator palpebrae superioris",
-         "Superior rectus",
-         "Inferior oblique"
+         "Superior rectus, which turns the eye upward",
+         "Inferior oblique, which turns the eye up and out"
         ],
         "correct": 1,
         "why": "The levator palpebrae superioris lifts the upper eyelid, so its weakness leaves the lid drooping. The orbicularis oculi closes the eye, and it still works because the eyes squeeze shut. The superior rectus and inferior oblique move the eyeball, not the lid.",
@@ -7554,12 +7554,12 @@
        "follow": {
         "q": "Why does the superior oblique pull the front of the eyeball down, even though the muscle itself lies along the top of the orbit?",
         "options": [
-         "Its tendon loops through the trochlea, so the pull comes from the front of the orbit",
-         "It attaches to the bottom of the eyeball",
-         "It starts from the floor of the orbit",
-         "It works only together with the inferior rectus"
+         "It attaches to the lower surface of the eyeball",
+         "It starts from the floor of the orbit, below the eye",
+         "Its tendon turns through the trochlea at the front",
+         "It only works together with the inferior rectus muscle"
         ],
-        "correct": 0,
+        "correct": 2,
         "why": "The tendon runs forward to the trochlea, turns back through it and attaches to the top of the eyeball behind its center. The pull therefore comes from the front inner corner of the orbit, which rotates the eye to look down and out. The muscle attaches to the top of the eyeball and starts at the back of the orbit, not the floor.",
         "level": "apply"
        }
@@ -7825,12 +7825,12 @@
        "follow": {
         "q": "The scleral venous sinus becomes blocked. What happens inside the eye?",
         "options": [
-         "Aqueous humor builds up and pressure in the eye rises",
-         "Vitreous humor drains away and the eye softens",
-         "The lens can no longer change shape",
-         "The pupil stays wide open"
+         "Vitreous humor drains away and the eyeball softens",
+         "The lens stiffens and can no longer change its shape",
+         "The pupil stays wide open because the iris is squeezed",
+         "Aqueous humor builds up and pressure in the eye rises"
         ],
-        "correct": 0,
+        "correct": 3,
         "why": "The ciliary processes keep making aqueous humor, which normally drains through the scleral venous sinus. If it cannot drain, the fluid builds up and pressure rises (glaucoma), which can damage the optic nerve. The vitreous humor is not drained this way, and lens shape and pupil size depend on muscles.",
         "level": "apply"
        }
@@ -8103,12 +8103,12 @@
        "follow": {
         "q": "Why is there a blind spot in each eye's field of view?",
         "options": [
-         "The fovea has too many cones to separate the image",
-         "The optic disc, where the optic nerve leaves, has no rods or cones",
-         "The lens cannot focus light onto the back of the eye",
-         "The choroid blocks light at one point"
+         "No rods or cones sit where the optic nerve leaves",
+         "The fovea packs too many cones to separate the image",
+         "The lens cannot bend light far enough to reach the back",
+         "The choroid's dark pigment blocks light at one point"
         ],
-        "correct": 1,
+        "correct": 0,
         "why": "Axons from the whole retina gather at the optic disc and leave the eye there as the optic nerve, so that spot has no photoreceptors and cannot detect light. The fovea is the point of sharpest vision, not a blind spot, and the lens and choroid do not create a single unseeing point.",
         "level": "recall"
        }
@@ -8147,12 +8147,12 @@
        "follow": {
         "q": "You look up from a far-off sign to read your phone. What does the ciliary muscle do?",
         "options": [
-         "Relaxes, so the suspensory ligaments pull the lens flat",
-         "Contracts, so the suspensory ligaments slacken and the lens rounds up",
-         "Contracts, so the pupil widens",
-         "Relaxes, so the cornea becomes more curved"
+         "It relaxes, so the suspensory ligaments pull the lens flatter",
+         "It contracts, which widens the pupil to let in more light",
+         "It relaxes, so the cornea bulges and becomes more curved",
+         "It contracts; the ligaments slacken and the lens rounds up"
         ],
-        "correct": 1,
+        "correct": 3,
         "why": "Near focus needs a rounder, stronger lens. Contracting the ciliary muscle draws the ciliary body toward the lens, which eases the tension on the suspensory ligaments and lets the elastic lens round up. Relaxing it does the opposite, for distant objects. Pupil size is set by the iris muscles, and the cornea's shape does not change.",
         "level": "apply"
        }
@@ -8335,12 +8335,12 @@
        "follow": {
         "q": "A pituitary tumor presses on the middle of the optic chiasm from below. Which loss of vision is expected?",
         "options": [
-         "Total blindness in one eye",
-         "Loss of the outer (temporal) half of the visual field in both eyes",
+         "Total blindness in the eye on the tumor's side",
          "Loss of the left visual field in both eyes",
-         "Loss of only the central binocular field"
+         "Loss of the outer half of each eye's field",
+         "Loss of only the central part both eyes share"
         ],
-        "correct": 1,
+        "correct": 2,
         "why": "The fibers crossing in the middle of the chiasm come from the nasal half of each retina, which sees the outer half of that eye's field. Pressing on them removes the outer field on both sides (tunnel vision). Blindness in one eye needs damage to one optic nerve, and losing one whole side of the field in both eyes needs damage behind the chiasm, in an optic tract or the cortex.",
         "level": "analyze"
        }
@@ -8642,12 +8642,12 @@
        "follow": {
         "q": "A person with a head cold, whose auditory tubes are swollen shut, flies on a plane that descends. Why do the ears hurt?",
         "options": [
-         "Air cannot enter the middle ear, so the higher outside pressure pushes the eardrum inward",
-         "The cochlear fluid drains into the throat",
-         "The ossicles lock together",
-         "Air leaves the inner ear through the round window"
+         "Fluid from the cochlea leaks out into the throat through the tube",
+         "Outside pressure is higher and pushes the eardrum in",
+         "The three ossicles lock together and stop vibrating",
+         "Air escapes from the inner ear through the round window"
         ],
-        "correct": 0,
+        "correct": 1,
         "why": "As the plane descends, cabin pressure rises. Normally swallowing opens the auditory tube and lets air into the middle ear to match. With the tube blocked, pressure outside the eardrum is higher than inside, so the eardrum is pushed in and stretched, which hurts. The cochlea, ossicles and round window are not what equalizes pressure.",
         "level": "apply"
        }
@@ -8834,12 +8834,12 @@
        "follow": {
         "q": "A high-pitched tone makes the basilar membrane vibrate most near which part of the cochlea?",
         "options": [
-         "The apex, where the membrane is wide and floppy",
-         "The base, near the oval window, where the membrane is narrow and stiff",
-         "Evenly along its whole length",
-         "Only in the scala tympani"
+         "The base, near the oval window, where it is narrow and stiff",
+         "The apex, far from the oval window, where it is wide and floppy",
+         "Evenly along its whole length, from the base to the apex",
+         "Only in the scala tympani, next to the round window"
         ],
-        "correct": 1,
+        "correct": 0,
         "why": "The basilar membrane is narrow and stiff at the base and wider and more flexible toward the apex. High frequencies make the stiff base vibrate most, and low frequencies travel on to the apex. That place code is how the cochlea sorts pitch.",
         "level": "recall"
        }
@@ -8952,12 +8952,12 @@
        "follow": {
         "q": "Stereocilia on a hair cell bend toward the tallest one. What happens first?",
         "options": [
-         "The cell fires an action potential down its own axon",
-         "The tethers pull ion channels open and the cell depolarizes",
-         "The tectorial membrane releases neurotransmitter",
-         "The channels close and the cell hyperpolarizes"
+         "The hair cell fires an action potential down its own long axon",
+         "The tectorial membrane releases neurotransmitter onto the nerve",
+         "The ion channels close and the hair cell hyperpolarizes",
+         "The tethers pull ion channels open and the cell depolarizes"
         ],
-        "correct": 1,
+        "correct": 3,
         "why": "Bending toward the tallest stereocilium stretches the tethers, which pull ion channels open; positive ions flow in and the hair cell depolarizes, so it releases more neurotransmitter onto its nerve fibers. The hair cell itself has no axon, and bending the other way closes the channels.",
         "level": "apply"
        }
@@ -9095,12 +9095,12 @@
        "follow": {
         "q": "You tilt your head forward. What makes the hair cells in the macula respond?",
         "options": [
-         "Fluid rushing around a semicircular canal",
-         "The heavy otolithic membrane slides with gravity and bends the stereocilia",
-         "Sound waves arriving through the oval window",
-         "The utricle swelling with endolymph"
+         "Fluid rushing around a semicircular canal pushes the cupula over",
+         "Sound waves arriving at the oval window shake the macula",
+         "The weighted otolithic membrane slides and bends stereocilia",
+         "The utricle swells with extra endolymph and stretches its wall"
         ],
-        "correct": 1,
+        "correct": 2,
         "why": "Otoliths make the otolithic membrane heavier than the fluid around it, so when the head tilts, gravity pulls it downhill and it bends the stereocilia beneath it. Fluid lag in a semicircular canal signals turning, and sound is handled by the cochlea.",
         "level": "apply"
        }
@@ -9228,12 +9228,12 @@
        "follow": {
         "q": "You start spinning to the right in a desk chair. Which sensor detects it, and how?",
         "options": [
-         "The macula, as otoliths slide with gravity",
-         "The cupula in a semicircular canal ampulla, pushed over by lagging fluid",
-         "The basilar membrane, vibrating at a low pitch",
-         "The tympanic membrane, pushed by changing air pressure"
+         "The cupula, pushed over by fluid lagging in a canal",
+         "The macula, as the otoliths slide downhill with gravity",
+         "The basilar membrane, vibrating at a low pitch as you turn",
+         "The tympanic membrane, pushed by the changing air pressure"
         ],
-        "correct": 1,
+        "correct": 0,
         "why": "When the head starts to turn, the fluid in the canal lags behind and pushes the cupula over, bending the hair cells' stereocilia. The maculae sense tilt and straight-line acceleration, the basilar membrane responds to sound, and the eardrum is part of hearing.",
         "level": "apply"
        }

@@ -46,6 +46,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/respiratory.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/tissues.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -191,6 +196,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/breathing-control.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/capillary-exchange.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -236,6 +246,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/co2-transport.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/conduction-system.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -276,6 +291,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/gas-exchange.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/glands.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -301,6 +321,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/lower-airway-lungs.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/lung-volumes.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/membrane-potential.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -321,6 +351,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/oxygen-transport.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/passive-transport.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -336,6 +371,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/respiratory-disorders.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/systemic-arteries.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -347,6 +387,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/tissue-membranes-repair.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/upper-airway.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/ventilation-mechanics.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
@@ -441,6 +491,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/breathing-control.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/capillary-exchange.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -486,6 +541,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/co2-transport.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/conduction-system.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -526,6 +586,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/gas-exchange.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/glands.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -551,6 +616,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/lower-airway-lungs.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/lung-volumes.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/membrane-potential.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -571,6 +646,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/oxygen-transport.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/passive-transport.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -586,6 +666,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/systemic-arteries.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -597,6 +682,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/tissue-membranes-repair.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/upper-airway.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/ventilation-mechanics.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>

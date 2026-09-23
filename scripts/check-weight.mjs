@@ -411,15 +411,17 @@ const DATA_BUDGETS = [
   /* The A&P question bank, split like ochem's (core waited on, explanations
      fetched after) and the glossary behind the hover definitions. Measured at
      the Phase 1 pilot (49 topics): 105.3, 159.7 and 40.8 KB. They grow with
-     every chapter, so each new chapter raises these with its measured size. */
-  ['anatomy-physiology/assets/bank-core.json', 120],
-  ['anatomy-physiology/assets/bank-why.json', 180],
+     every chapter, so each new chapter raises these with its measured size.
+     120/180 -> 140/200: respiratory published (58 topics), 133.1 and 193.9 KB. */
+  ['anatomy-physiology/assets/bank-core.json', 140],
+  ['anatomy-physiology/assets/bank-why.json', 200],
   /* 46 -> 52: the glossary carries every written definition, published or
      not, so an early page can show a hover for a later term (spec section 7).
      It grows as each chapter is written; measured 47.3 KB with respiratory
      drafted. Each chapter raises it by its measured size. */
   /* 52 -> 64: respiratory and the nervous chapters drafted (56.8 KB). */
-  ['anatomy-physiology/assets/glossary.json', 64],
+  /* 64 -> 76: special senses and autonomic drafted (66.7 KB). */
+  ['anatomy-physiology/assets/glossary.json', 76],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —

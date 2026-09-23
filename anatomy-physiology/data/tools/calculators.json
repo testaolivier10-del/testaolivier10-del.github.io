@@ -4,7 +4,11 @@
   "groups": [
     { "id": "foundations", "title": "Foundations" },
     { "id": "cardiovascular", "title": "Cardiovascular system" },
-    { "id": "respiratory", "title": "Respiratory system" }
+    { "id": "respiratory", "title": "Respiratory system" },
+    {
+      "id": "nervous",
+      "title": "Nervous system"
+    }
   ],
   "calculators": [
     {
@@ -915,6 +919,671 @@
       "practice": {
         "asks": [
           { "key": "P2", "unit": "mm Hg", "tol": { "abs": 0.6, "rel": 0.01 }, "prompt": "A resting adult has an arterial PCO2 of {P1} mm Hg with an alveolar ventilation of {VA1} L/min. Carbon dioxide production stays the same while alveolar ventilation changes to {VA2} L/min. What will arterial PCO2 settle at?" }
+        ]
+      }
+    },
+    {
+      "id": "nerve-regrowth-time",
+      "group": "nervous",
+      "title": "Time for a cut nerve to regrow",
+      "short": "Time = distance ÷ rate",
+      "topic": "neurons-glia",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "After a nerve is cut and repaired, its axons regrow along Schwann cell tubes at about 1 mm a day. Dividing the distance still to grow by that rate estimates how long feeling or movement takes to return.",
+      "formula": "Time (days) = distance (mm) ÷ regrowth rate (mm/day)",
+      "inputs": [
+        {
+          "key": "d",
+          "label": "Distance from the repair to the target",
+          "sym": "d",
+          "unit": "cm",
+          "default": 20,
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "gen": [
+            5,
+            60,
+            1
+          ]
+        },
+        {
+          "key": "r",
+          "label": "Regrowth rate",
+          "sym": "rate",
+          "unit": "mm/day",
+          "default": 1,
+          "min": 0.5,
+          "max": 5,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              1,
+              1,
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "mm",
+          "expr": "d * 10",
+          "dp": 0
+        },
+        {
+          "key": "days",
+          "expr": "d * 10 / r",
+          "dp": 0
+        },
+        {
+          "key": "months",
+          "expr": "d * 10 / r / 30",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Put the distance in the rate’s unit",
+          "text": "{d} cm × 10 mm/cm = <b>{mm} mm</b>."
+        },
+        {
+          "title": "Divide by the rate",
+          "text": "Time = {mm} mm ÷ {r} mm/day = <b>{days} days</b>."
+        },
+        {
+          "title": "Convert to months",
+          "text": "{days} days ÷ 30 days per month ≈ <b>{months} months</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "days",
+          "label": "Regrowth time",
+          "unit": "days",
+          "normal": "Feeling returns first near the repair and last at the far end.",
+          "bands": [
+            {
+              "when": "days > 365",
+              "label": "over a year",
+              "tone": "hi"
+            },
+            {
+              "when": "days > 120",
+              "label": "many months",
+              "tone": "lo"
+            },
+            {
+              "label": "weeks to a few months",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "days > 365",
+          "text": "Over a year of regrowth is a real risk: muscle fibers without a nerve supply waste away before the axon arrives, and sprouts may stray into the wrong tubes. That is why surgeons repair nerves quickly and line the ends up precisely."
+        },
+        {
+          "when": "1",
+          "text": "This is a minimum. The sprouts need days to weeks to cross the repair site before steady growth begins, so real recovery takes somewhat longer, and it moves outward from the scar toward the target."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 20 cm to the fingertip",
+          "values": {
+            "d": 20,
+            "r": 1
+          }
+        },
+        {
+          "label": "Cut near the wrist: 8 cm",
+          "values": {
+            "d": 8,
+            "r": 1
+          }
+        },
+        {
+          "label": "Cut high in the arm: 60 cm",
+          "values": {
+            "d": 60,
+            "r": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "days",
+            "unit": "days",
+            "tol": {
+              "rel": 0.02,
+              "abs": 1
+            },
+            "prompt": "A nerve is repaired {d} cm from the muscle it supplies. Its axons regrow at {r} mm/day. About how many days until they reach the muscle?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "conduction-time",
+      "group": "nervous",
+      "title": "Conduction time along an axon",
+      "short": "Time = distance ÷ velocity",
+      "topic": "action-potential",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "An action potential travels along an axon at its conduction velocity, from about 0.5 m/s in thin unmyelinated axons to about 120 m/s in wide myelinated ones. Dividing the distance by the velocity gives the time it takes to arrive.",
+      "formula": "Time (s) = distance (m) ÷ conduction velocity (m/s)",
+      "inputs": [
+        {
+          "key": "d",
+          "label": "Distance along the axon",
+          "sym": "d",
+          "unit": "m",
+          "default": 1,
+          "min": 0.01,
+          "max": 2,
+          "step": 0.01,
+          "gen": {
+            "choices": [
+              0.5,
+              0.8,
+              1,
+              1.2,
+              1.5
+            ]
+          }
+        },
+        {
+          "key": "v",
+          "label": "Conduction velocity",
+          "sym": "v",
+          "unit": "m/s",
+          "default": 50,
+          "min": 0.5,
+          "max": 120,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              1,
+              2,
+              10,
+              20,
+              40,
+              50,
+              60,
+              80,
+              100
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "t",
+          "expr": "d / v",
+          "dp": 3
+        },
+        {
+          "key": "ms",
+          "expr": "d / v * 1000",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the relationship",
+          "text": "Time = distance ÷ velocity."
+        },
+        {
+          "title": "Substitute",
+          "text": "Time = {d} m ÷ {v} m/s = <b>{t} s</b>."
+        },
+        {
+          "title": "Convert to milliseconds",
+          "text": "{t} s × 1,000 ms/s = <b>{ms} ms</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "ms",
+          "label": "Conduction time",
+          "unit": "ms",
+          "normal": "About 20 ms for 1 m on a myelinated touch fiber at 50 m/s; about 1,000 ms for 1 m on an unmyelinated fiber at 1 m/s.",
+          "bands": [
+            {
+              "when": "v <= 2",
+              "label": "unmyelinated range",
+              "tone": "lo"
+            },
+            {
+              "when": "v >= 5",
+              "label": "myelinated range",
+              "tone": "ok"
+            },
+            {
+              "label": "slow",
+              "tone": "lo"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "v <= 2",
+          "text": "A velocity of {v} m/s is typical of a thin unmyelinated axon, where every patch of membrane fires in turn (continuous conduction). Slow, dull, aching pain travels on fibers like this, so it arrives well after the sharp first sensation."
+        },
+        {
+          "when": "v >= 5",
+          "text": "A velocity of {v} m/s needs myelin: the action potential is regenerated only at the nodes of Ranvier (saltatory conduction). Wider axons conduct faster still."
+        },
+        {
+          "when": "1",
+          "text": "At {v} m/s the axon is slower than healthy myelinated fibers, as a demyelinated axon that has added sodium channels along its bare stretch might be."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Touch, foot to spinal cord: 1 m at 50 m/s",
+          "values": {
+            "d": 1,
+            "v": 50
+          }
+        },
+        {
+          "label": "Dull pain, same distance: 1 m at 1 m/s",
+          "values": {
+            "d": 1,
+            "v": 1
+          }
+        },
+        {
+          "label": "Fastest motor axon: 1 m at 120 m/s",
+          "values": {
+            "d": 1,
+            "v": 120
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "ms",
+            "unit": "ms",
+            "tol": {
+              "rel": 0.02,
+              "abs": 1
+            },
+            "prompt": "A signal travels {d} m along an axon that conducts at {v} m/s. How many milliseconds does it take?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "max-firing-rate",
+      "group": "nervous",
+      "title": "Highest possible firing rate",
+      "short": "Max rate = 1 ÷ absolute refractory period",
+      "topic": "action-potential",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "No second action potential can start during the absolute refractory period, so two spikes can be no closer together than that period. Its length sets the ceiling on how many action potentials a neuron can fire each second.",
+      "formula": "Maximum rate (per s) = 1 s ÷ absolute refractory period (s)",
+      "inputs": [
+        {
+          "key": "arp",
+          "label": "Absolute refractory period",
+          "sym": "ARP",
+          "unit": "ms",
+          "default": 2,
+          "min": 0.5,
+          "max": 10,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              0.5,
+              1,
+              1.25,
+              2,
+              2.5,
+              4,
+              5
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "s",
+          "expr": "arp / 1000",
+          "dp": 4
+        },
+        {
+          "key": "rate",
+          "expr": "1000 / arp",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the shortest gap between spikes",
+          "text": "A new spike cannot start until the absolute refractory period ends, so the shortest gap is {arp} ms."
+        },
+        {
+          "title": "Convert to seconds",
+          "text": "{arp} ms = <b>{s} s</b>."
+        },
+        {
+          "title": "Count the gaps in one second",
+          "text": "1 s ÷ {s} s = <b>{rate} action potentials per second</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "rate",
+          "label": "Ceiling on firing rate",
+          "unit": "per s",
+          "normal": "An absolute refractory period of about 1 to 2 ms caps firing at about 500 to 1,000 per second.",
+          "bands": [
+            {
+              "label": "ceiling",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "This is a ceiling, not a typical rate. A spike fired during the relative refractory period needs a stronger-than-normal stimulus, so real neurons fire below {rate} per second. Within that limit, a stronger stimulus raises the firing rate, not the size of each spike."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 2 ms",
+          "values": {
+            "arp": 2
+          }
+        },
+        {
+          "label": "Brief period: 1 ms",
+          "values": {
+            "arp": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "rate",
+            "unit": "per s",
+            "tol": {
+              "rel": 0.01,
+              "abs": 1
+            },
+            "prompt": "A neuron’s absolute refractory period is {arp} ms. What is the highest rate, in action potentials per second, at which it could possibly fire?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "epsp-summation",
+      "group": "nervous",
+      "title": "Will the neuron fire? Summing EPSPs and IPSPs",
+      "short": "Vm = rest + (EPSPs − IPSPs)",
+      "topic": "synapses",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Postsynaptic potentials arriving together add algebraically at the trigger zone: EPSPs push toward threshold and IPSPs pull away. If the sum reaches threshold, the neuron fires.",
+      "formula": "Potential at trigger zone = rest + (number of EPSPs × EPSP size) − (number of IPSPs × IPSP size)",
+      "inputs": [
+        {
+          "key": "rest",
+          "label": "Resting potential",
+          "sym": "rest",
+          "unit": "mV",
+          "default": -70,
+          "min": -90,
+          "max": -50,
+          "step": 1,
+          "gen": {
+            "choices": [
+              -70
+            ]
+          }
+        },
+        {
+          "key": "thr",
+          "label": "Threshold",
+          "sym": "threshold",
+          "unit": "mV",
+          "default": -55,
+          "min": -70,
+          "max": -30,
+          "step": 1,
+          "gen": {
+            "choices": [
+              -55
+            ]
+          }
+        },
+        {
+          "key": "ne",
+          "label": "Excitatory inputs firing together",
+          "sym": "n EPSP",
+          "unit": "",
+          "default": 3,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "gen": [
+            1,
+            8,
+            1
+          ]
+        },
+        {
+          "key": "e",
+          "label": "Size of each EPSP",
+          "sym": "EPSP",
+          "unit": "mV",
+          "default": 4,
+          "min": 0.5,
+          "max": 15,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        {
+          "key": "ni",
+          "label": "Inhibitory inputs firing together",
+          "sym": "n IPSP",
+          "unit": "",
+          "default": 1,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "gen": [
+            0,
+            3,
+            1
+          ]
+        },
+        {
+          "key": "i",
+          "label": "Size of each IPSP",
+          "sym": "IPSP",
+          "unit": "mV",
+          "default": 3,
+          "min": 0.5,
+          "max": 15,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "thr <= rest",
+          "text": "Threshold must be above (less negative than) the resting potential."
+        }
+      ],
+      "derived": [
+        {
+          "key": "need",
+          "expr": "thr - rest",
+          "dp": 1
+        },
+        {
+          "key": "up",
+          "expr": "ne * e",
+          "dp": 1
+        },
+        {
+          "key": "down",
+          "expr": "ni * i",
+          "dp": 1
+        },
+        {
+          "key": "net",
+          "expr": "ne * e - ni * i",
+          "dp": 1
+        },
+        {
+          "key": "vm",
+          "expr": "rest + ne * e - ni * i",
+          "dp": 1
+        },
+        {
+          "key": "short",
+          "expr": "thr - (rest + ne * e - ni * i)",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the depolarization needed",
+          "text": "Threshold − rest = {thr} − ({rest}) = <b>{need} mV</b>."
+        },
+        {
+          "title": "Add the inputs",
+          "text": "EPSPs: {ne} × {e} mV = +{up} mV. IPSPs: {ni} × {i} mV = −{down} mV. Net = <b>{net:+} mV</b>."
+        },
+        {
+          "title": "Find the potential at the trigger zone",
+          "text": "{rest} mV + ({net:+} mV) = <b>{vm} mV</b>."
+        },
+        {
+          "title": "Compare with threshold",
+          "text": "Threshold is {thr} mV, so the membrane is {short} mV short of it (a zero or negative number means it has reached threshold)."
+        }
+      ],
+      "results": [
+        {
+          "key": "vm",
+          "label": "Potential at the trigger zone",
+          "unit": "mV",
+          "normal": "The neuron fires if this reaches threshold.",
+          "bands": [
+            {
+              "when": "vm >= thr",
+              "label": "fires",
+              "tone": "hi"
+            },
+            {
+              "when": "vm < rest",
+              "label": "hyperpolarized",
+              "tone": "lo"
+            },
+            {
+              "label": "below threshold",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "vm >= thr",
+          "text": "The sum reaches threshold, so an action potential fires. If the inputs keep arriving, the trigger zone fires again as soon as each refractory period allows, and stronger combined input means a higher firing rate."
+        },
+        {
+          "when": "vm < rest",
+          "text": "Inhibition outweighs excitation, so the trigger zone is pulled below rest, further from threshold than when the neuron is idle."
+        },
+        {
+          "when": "1",
+          "text": "The sum falls {short} mV short of threshold. The graded potentials fade and no action potential fires. More simultaneous EPSPs (spatial summation), faster repeats (temporal summation) or fewer IPSPs would be needed."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 3 EPSPs of 4 mV, 1 IPSP of 3 mV",
+          "values": {
+            "ne": 3,
+            "e": 4,
+            "ni": 1,
+            "i": 3
+          }
+        },
+        {
+          "label": "Five EPSPs with the same IPSP",
+          "values": {
+            "ne": 5,
+            "e": 4,
+            "ni": 1,
+            "i": 3
+          }
+        },
+        {
+          "label": "Inhibition wins: 1 EPSP, 3 IPSPs",
+          "values": {
+            "ne": 1,
+            "e": 4,
+            "ni": 3,
+            "i": 3
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "vm",
+            "unit": "mV",
+            "tol": {
+              "abs": 0.3
+            },
+            "prompt": "A neuron rests at {rest} mV with threshold at {thr} mV. At the same moment, {ne} excitatory inputs each give an EPSP of {e} mV and {ni} inhibitory inputs each give an IPSP of {i} mV. What potential does the trigger zone reach, in mV?"
+          }
         ]
       }
     }

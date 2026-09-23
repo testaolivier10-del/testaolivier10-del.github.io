@@ -164,6 +164,36 @@ review by a licensed A&P instructor.
   contractions harder", with a note that hospitals give oxytocin when contractions are weak.
 - **For your exam:** many textbooks say that without oxytocin, labor stalls or progresses slowly.
 
+### co-cherry-red: skin color in carbon monoxide poisoning
+- **Status:** pending review.
+- **Where:** `o2-transport`.
+- **Evidence-based position:** cherry-red skin is real but rare in living patients; it is mostly
+  seen late or after death. Normal skin color does not rule out poisoning.
+- **For your exam:** many texts list cherry-red skin as the classic sign.
+
+### respiratory-rhythm-generator: where the breathing rhythm starts
+- **Status:** pending review.
+- **Where:** `breathing-control`.
+- **Evidence-based position:** the pre-Bötzinger complex in the ventral respiratory group is the
+  likely rhythm generator; an apneustic center has not been clearly identified in humans.
+- **For your exam:** the textbook model of a dorsal respiratory group pacing breathing, with
+  apneustic and pneumotaxic centers in the pons.
+
+### quiet-inspiration-muscles: which muscles work in a quiet breath
+- **Status:** pending review.
+- **Where:** `ventilation-mechanics`.
+- **Evidence-based position:** the diaphragm does most of the work; electrical recordings show the
+  scalenes and parasternal intercostals are active in most quiet breaths too.
+- **For your exam:** the classic list, diaphragm plus external intercostals.
+
+### pediatric-narrowest-airway: where a child's airway is narrowest
+- **Status:** pending review.
+- **Where:** `upper-airway` (croup going-further box).
+- **Evidence-based position:** imaging shows the glottis or the region just below it is narrowest
+  in cross-section; the cricoid ring is the narrowest part that cannot stretch.
+- **For your exam:** many texts and airway courses say a child's airway is funnel-shaped and
+  narrowest at the cricoid. Decide whether a For your exam note is wanted.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -207,6 +237,40 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   do not change mastery (spec decision 39).
 - **Etymology to confirm:** "alkaline" from Arabic al-qily; "saphenous" (Greek "visible" vs
   Arabic "hidden"); "exon" and "intron" from "expressed region" and "intragenic region".
+
+## Phase 2: respiratory chapter, judgment calls for instructor review
+
+- **Figures with printed labels that are wrong or misleading:** Figure 22.3 prints "Septal
+  cartilage" twice; the upper leader lands on the lateral wing of the cartilage (the lab
+  practical explains this) and the lower one points near the alar cartilage. Figure 22.28 label
+  (b), "HCO3- dissolved in plasma as carbonic acid", is wrong and is covered; the caption
+  corrects it. Figure 22.19 is not used (it lists TLC, FRC and RV as spirometry measures).
+- **Labels without a map concept:** the tongue on the airway figures (taught in the mouth topic);
+  philtrum, piriform fossa and fat pad in the lab practical, each taught by its follow-up line.
+- **Map gaps:** upper and lower respiratory tract, lobar and segmental bronchi, bronchopulmonary
+  segment, lingula, laryngeal cartilages, recurrent laryngeal nerve, tension pneumothorax, law of
+  Laplace, pleurisy, pleural effusion. ARDS is not named (its name contains a later term);
+  "PaCO2" is written "arterial PCO2" until arterial blood gases.
+- **Normal values chosen:** alveolar PO2 about 100 and arterial about 95 (80–100) mm Hg, venous
+  40/46, with a For your exam note for 104/100; lung volumes for a young man (TV 500, IRV 3000,
+  ERV 1200, RV 1200, VC 4700, TLC 5900 mL; women about 20–25% smaller); dead space 150 mL; about
+  480 million alveoli and 70 m²; a 0.5 µm barrier; capillary transit 0.75 s (a third of a second
+  in exercise); V/Q about 3 at the apex and 0.6 at the base; P50 27 (fetal 19) mm Hg; carbon
+  monoxide affinity 200–250 times oxygen's, COHb half-life 4–6 h on room air and 1–1.5 h on
+  100% oxygen; intrapleural −4 to −6 and alveolar ±1 mm Hg; pulmonary artery 25/10; CO2 carried
+  about 70% as bicarbonate, 20–23% on hemoglobin, 7–10% dissolved; carotid bodies respond below
+  about 60 mm Hg; PCO2 40 to 45 "roughly doubles" ventilation (least certain); at 4,300 m about
+  60% of sea-level pressure; oxygen target "often 88–92%" in COPD.
+- **Other positions:** FEV1/FVC uses the fixed 0.70 cutoff, with the lower limit of normal in a
+  going-further box; pulse oximeters overestimate saturation more often in darker skin; in a
+  swallow the vocal folds close at or before the start of the larynx's rise (Shaker 1990; Ohmae
+  1995).
+- **Simplifications:** the intrapleural curve has no resistive component; type I cells rarely
+  divide; bronchodilation mainly from circulating epinephrine; most airway resistance in the
+  medium bronchi; the chloride shift through band 3; altitude acclimatization through kidney
+  bicarbonate loss; exercise breathing driven by central command and joint sensors; the larynx
+  counted in the upper tract.
+- **Not built:** a trachea and lung histology station. No micrograph is cleared for commercial use.
 
 ## Decided at the Phase 0 reviews
 

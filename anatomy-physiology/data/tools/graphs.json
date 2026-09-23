@@ -9297,6 +9297,1761 @@
      }
     }
    ]
+  },
+  {
+   "id": "ap-refractory",
+   "title": "Neuron action potential with channel states and refractory periods",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "intro": "The top panel is the voltage at the trigger zone of an axon; a stimulus arrives at 0.5 ms. The bottom panel shows, for the same moments, how many voltage-gated sodium and potassium channels are open, as a share of the most that open.",
+   "alt": "Two panels over 6 milliseconds. Top: membrane potential rises from −70 mV, crosses threshold at −55 mV near 0.95 ms, peaks near +30 mV at about 1.45 ms, falls back through −70 mV at about 2.25 ms, dips to about −80 mV near 2.9 ms, and returns to −70 mV by about 5.5 ms. Bottom: sodium channels open sharply, peaking near 1.3 ms, and are nearly all shut again by 2 ms; potassium channels open later and more slowly, peaking near 2.2 ms, and close gradually by about 5 ms.",
+   "x": {
+    "min": 0,
+    "max": 6,
+    "label": "Time",
+    "unit": "ms",
+    "ticks": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -90,
+      "max": 40,
+      "label": "Membrane potential",
+      "unit": "mV",
+      "ticks": [
+       -80,
+       -60,
+       -40,
+       -20,
+       0,
+       20,
+       40
+      ]
+     },
+     "hlines": [
+      {
+       "y": -55,
+       "label": "threshold, −55 mV",
+       "at": 5.95,
+       "anchor": "end",
+       "dash": true,
+       "cls": "lo"
+      },
+      {
+       "y": 0,
+       "label": "0 mV",
+       "at": 5.95,
+       "anchor": "end",
+       "faint": true
+      }
+     ],
+     "series": [
+      {
+       "id": "ap",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         -70
+        ],
+        [
+         0.5,
+         -70
+        ],
+        [
+         0.7,
+         -65
+        ],
+        [
+         0.85,
+         -60
+        ],
+        [
+         0.95,
+         -55
+        ],
+        [
+         1.05,
+         -42
+        ],
+        [
+         1.15,
+         -18
+        ],
+        [
+         1.25,
+         8
+        ],
+        [
+         1.35,
+         25
+        ],
+        [
+         1.45,
+         30
+        ],
+        [
+         1.55,
+         26
+        ],
+        [
+         1.7,
+         10
+        ],
+        [
+         1.85,
+         -14
+        ],
+        [
+         2,
+         -38
+        ],
+        [
+         2.12,
+         -56
+        ],
+        [
+         2.25,
+         -70
+        ],
+        [
+         2.4,
+         -76
+        ],
+        [
+         2.6,
+         -79
+        ],
+        [
+         2.9,
+         -80
+        ],
+        [
+         3.4,
+         -78
+        ],
+        [
+         4,
+         -75
+        ],
+        [
+         4.6,
+         -72.5
+        ],
+        [
+         5.2,
+         -70.8
+        ],
+        [
+         5.6,
+         -70.2
+        ],
+        [
+         6,
+         -70
+        ]
+       ],
+       "label": "action potential",
+       "labelAt": [
+        1.6,
+        33
+       ],
+       "anchor": "start"
+      }
+     ]
+    },
+    {
+     "h": 0.7,
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Channels open",
+      "unit": "% of max",
+      "ticks": [
+       0,
+       50,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "na",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         0.7,
+         0
+        ],
+        [
+         0.85,
+         3
+        ],
+        [
+         1,
+         22
+        ],
+        [
+         1.15,
+         65
+        ],
+        [
+         1.3,
+         100
+        ],
+        [
+         1.45,
+         78
+        ],
+        [
+         1.6,
+         45
+        ],
+        [
+         1.8,
+         17
+        ],
+        [
+         2,
+         5
+        ],
+        [
+         2.3,
+         1
+        ],
+        [
+         2.6,
+         0
+        ],
+        [
+         6,
+         0
+        ]
+       ],
+       "label": "Na+ channels",
+       "labelAt": [
+        1.25,
+        104
+       ],
+       "anchor": "end"
+      },
+      {
+       "id": "k",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         0
+        ],
+        [
+         1.2,
+         6
+        ],
+        [
+         1.45,
+         28
+        ],
+        [
+         1.7,
+         62
+        ],
+        [
+         1.95,
+         88
+        ],
+        [
+         2.2,
+         100
+        ],
+        [
+         2.5,
+         90
+        ],
+        [
+         3,
+         58
+        ],
+        [
+         3.5,
+         33
+        ],
+        [
+         4,
+         17
+        ],
+        [
+         4.5,
+         7
+        ],
+        [
+         5,
+         2
+        ],
+        [
+         5.5,
+         0
+        ],
+        [
+         6,
+         0
+        ]
+       ],
+       "label": "K+ channels",
+       "labelAt": [
+        2.6,
+        96
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "rising",
+     "x0": 0.95,
+     "x1": 1.45,
+     "label": "rising phase"
+    },
+    {
+     "id": "falling",
+     "x0": 1.45,
+     "x1": 2.25,
+     "label": "falling phase"
+    },
+    {
+     "id": "ahp",
+     "x0": 2.25,
+     "x1": 5.5,
+     "label": "afterhyperpolarization"
+    },
+    {
+     "id": "arp",
+     "x0": 0.95,
+     "x1": 2,
+     "label": "absolute refractory"
+    },
+    {
+     "id": "rrp",
+     "x0": 2,
+     "x1": 5,
+     "label": "relative refractory"
+    }
+   ],
+   "questions": [
+    {
+     "id": "ahp-depth",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the lowest voltage the membrane reaches after the spike.",
+     "answer": -80,
+     "tol": 3,
+     "unit": "mV",
+     "show": {
+      "x": 2.9,
+      "y": -80
+     },
+     "why": "About −80 mV. The delayed potassium channels are slow to close, so potassium keeps leaving and pulls the membrane below rest, toward potassium’s equilibrium potential of about −90 mV."
+    },
+    {
+     "id": "rise-time",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read how long the rising phase takes, from threshold (−55 mV) to the peak. Give your answer in ms.",
+     "answer": 0.5,
+     "tol": 0.15,
+     "unit": "ms",
+     "show": {
+      "x": 1.45,
+      "y": 30
+     },
+     "why": "About 0.5 ms: threshold is crossed near 0.95 ms and the peak comes near 1.45 ms. The rise is so fast because it is positive feedback: each bit of depolarization opens more sodium activation gates."
+    },
+    {
+     "id": "absolute",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Name the stretch, from threshold through most of the falling phase, during which no stimulus of any strength can start a second action potential.",
+     "options": [
+      "Absolute refractory period",
+      "Relative refractory period",
+      "Afterhyperpolarization",
+      "Rest"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "arp"
+     },
+     "why": {
+      "correct": "Throughout this stretch every sodium channel is either open or inactivated. An inactivated channel cannot open until the membrane repolarizes, so there are no ready channels for a stimulus to open.",
+      "options": [
+       "Right: complete, without exception.",
+       "In the relative refractory period some sodium channels have reset, so a stronger-than-normal stimulus can fire the axon. That comes later, as the membrane repolarizes.",
+       "The afterhyperpolarization is the dip below rest after the spike, when potassium channels are still open; it overlaps the relative refractory period, not the absolute one.",
+       "At rest every sodium channel is closed and ready, so a normal stimulus can fire the axon."
+      ]
+     }
+    },
+    {
+     "id": "relative",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "From late in the falling phase through the dip below rest, a second action potential can fire, but only with a stronger-than-normal stimulus. Name this stretch.",
+     "options": [
+      "Relative refractory period",
+      "Absolute refractory period",
+      "The rising phase, when sodium rushes in",
+      "A graded potential sized to its stimulus"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "rrp"
+     },
+     "why": {
+      "correct": "Some sodium channels have reset, so a spike is possible. But fewer are ready than at rest, and the still-open potassium channels hold the membrane below rest, farther from threshold, so the stimulus must be stronger.",
+      "options": [
+       "Right: harder than normal, compared with rest, but not impossible.",
+       "During the absolute refractory period no stimulus works, because no sodium channels are ready. Here some are.",
+       "The rising phase is the fast climb from threshold to the peak, driven by sodium entry.",
+       "A graded potential is a small change sized to its stimulus, not a period of reduced excitability."
+      ]
+     }
+    },
+    {
+     "id": "falling-channels",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Compare the two panels during the falling phase, from the peak back down to −70 mV. What are the channels doing?",
+     "options": [
+      "Sodium channels are inactivating while potassium channels are open",
+      "Sodium channels are open and potassium channels are closed",
+      "Both kinds of channel are closed, and the pump restores the voltage",
+      "Potassium channels are letting potassium flow into the axon"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "falling"
+     },
+     "why": {
+      "correct": "The sodium curve drops steeply after its peak as the inactivation gates plug the pores, while the potassium curve climbs toward its maximum. Sodium entry stops and potassium leaves, so the membrane repolarizes.",
+      "options": [
+       "Right: sodium inflow ends and potassium outflow takes over.",
+       "That describes the rising phase, when sodium rushes in before the delayed potassium channels have opened.",
+       "The bottom panel shows potassium channels near their most open here. The pump is slow and moves only a tiny share of the ions per spike.",
+       "Potassium is concentrated inside the axon, so it flows out. Losing positive charge is what makes the voltage fall."
+      ]
+     }
+    },
+    {
+     "id": "k-blocked",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A toxin blocks the voltage-gated potassium channels; the leak channels still work. How does the action potential change?",
+     "options": [
+      "It falls back more slowly, lasts longer and loses its dip below rest",
+      "It never starts, because potassium channels are needed to reach threshold",
+      "It peaks near +60 mV and then falls as usual",
+      "Nothing changes, because leak channels carry all the potassium"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "kblock",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0.95,
+          -55
+         ],
+         [
+          1.05,
+          -42
+         ],
+         [
+          1.15,
+          -18
+         ],
+         [
+          1.25,
+          8
+         ],
+         [
+          1.35,
+          25
+         ],
+         [
+          1.45,
+          30
+         ],
+         [
+          1.6,
+          27
+         ],
+         [
+          1.9,
+          17
+         ],
+         [
+          2.3,
+          2
+         ],
+         [
+          2.8,
+          -18
+         ],
+         [
+          3.3,
+          -38
+         ],
+         [
+          3.8,
+          -53
+         ],
+         [
+          4.3,
+          -62
+         ],
+         [
+          4.9,
+          -67.5
+         ],
+         [
+          5.5,
+          -69.5
+         ],
+         [
+          6,
+          -70
+         ]
+        ],
+        "label": "potassium channels blocked",
+        "labelAt": [
+         2.9,
+         5
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The rise is sodium’s work and is unchanged. Normally the delayed potassium channels make the fall fast and carry the membrane below rest. With them blocked, only the slow leak and sodium inactivation bring the voltage down, so the spike is wider and there is no afterhyperpolarization.",
+      "options": [
+       "Right: a slower fall, a wider spike and no dip.",
+       "Reaching threshold depends on sodium channels opening, not on potassium channels.",
+       "The peak is capped by sodium inactivation as well as by potassium channels opening, so it stays about the same.",
+       "The leak channels carry the resting potassium current, far too little to repolarize the membrane quickly."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "conduction-velocity",
+   "title": "How far a signal travels: myelinated vs unmyelinated axons",
+   "topic": "action-potential",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "intro": "Three axons start carrying an action potential at the same moment. Each line shows how far along its axon the signal has traveled. The slope of each line is its conduction velocity.",
+   "alt": "Distance traveled in meters against time in milliseconds, from 0 to 40 ms. A steep line for a wide myelinated axon at 120 m/s reaches 1.2 m at 10 ms. A line for a myelinated axon at 50 m/s reaches 1.2 m at 24 ms. A nearly flat line for a thin unmyelinated axon at 1 m/s reaches only 0.04 m at 40 ms.",
+   "x": {
+    "min": 0,
+    "max": 40,
+    "label": "Time",
+    "unit": "ms",
+    "ticks": [
+     0,
+     10,
+     20,
+     30,
+     40
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 1.3,
+      "label": "Distance traveled",
+      "unit": "m",
+      "ticks": [
+       0,
+       0.2,
+       0.4,
+       0.6,
+       0.8,
+       1,
+       1.2
+      ]
+     },
+     "series": [
+      {
+       "id": "wide",
+       "cls": "shape",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         10,
+         1.2
+        ]
+       ],
+       "label": "wide, myelinated: 120 m/s",
+       "labelAt": [
+        10.8,
+        1.22
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "mid",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         24,
+         1.2
+        ]
+       ],
+       "label": "myelinated: 50 m/s",
+       "labelAt": [
+        25,
+        1.15
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "thin",
+       "cls": "lo",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         40,
+         0.04
+        ]
+       ],
+       "label": "thin, unmyelinated: 1 m/s",
+       "labelAt": [
+        39,
+        0.1
+       ],
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "time-1m",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read how long the 50 m/s myelinated axon takes to carry the signal 1.0 m, the distance from foot to spinal cord.",
+     "answer": 20,
+     "tol": 2,
+     "unit": "ms",
+     "show": {
+      "x": 20,
+      "y": 1
+     },
+     "why": "About 20 ms. Time = distance ÷ velocity = 1.0 m ÷ 50 m/s = 0.02 s. The unmyelinated axon would take a full second for the same distance, fifty times longer, which is why a sharp touch is felt before the dull ache."
+    },
+    {
+     "id": "distance-10",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read how far the 50 m/s signal has traveled at 10 ms.",
+     "answer": 0.5,
+     "tol": 0.05,
+     "unit": "m",
+     "show": {
+      "x": 10,
+      "y": 0.5
+     },
+     "why": "About 0.5 m: 50 m/s × 0.010 s = 0.5 m. In the same 10 ms the widest myelinated axon has carried its signal 1.2 m, and the unmyelinated one only 1 cm."
+    },
+    {
+     "id": "which-continuous",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Which line shows continuous conduction, where every patch of membrane must fire in turn?",
+     "options": [
+      "The nearly flat line, 1 m/s",
+      "The steepest line, 120 m/s",
+      "The middle line, 50 m/s",
+      "All three, since every axon fires every patch"
+     ],
+     "correct": 0,
+     "highlight": {
+      "path": [
+       [
+        0,
+        0
+       ],
+       [
+        40,
+        0.04
+       ]
+      ],
+      "label": "continuous"
+     },
+     "why": {
+      "correct": "In an unmyelinated axon every tiny patch must reach threshold and fire before the next can start, so the signal creeps along at about 0.5 to 2 m/s: the flattest slope.",
+      "options": [
+       "Right: slow, patch by patch.",
+       "The steepest line is a wide myelinated axon, where only the nodes fire and a wide axon lets current spread farther inside.",
+       "At 50 m/s the axon must be myelinated: saltatory conduction.",
+       "Under myelin there are very few sodium channels, so those stretches do not fire; only the nodes do."
+      ]
+     }
+    },
+    {
+     "id": "demyelinated",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Disease strips myelin along the whole 50 m/s axon, and it adds sodium channels along the bare membrane so it still conducts, continuously, at about 10 m/s. How does its line change?",
+     "options": [
+      "Still straight from the origin, but much less steep",
+      "It becomes steeper, because bare membrane fires faster",
+      "It keeps its slope but starts several milliseconds later",
+      "It becomes a flat line at zero: nothing is conducted"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "demy",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          40,
+          0.4
+         ]
+        ],
+        "label": "after demyelination: 10 m/s",
+        "labelAt": [
+         39,
+         0.33
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Distance grows steadily with time, so the line stays straight, but its slope is the new, lower velocity. At 10 m/s the signal covers only 0.4 m in 40 ms, and reaching 1 m would take 100 ms instead of 20.",
+      "options": [
+       "Right: same start, a shallower slope.",
+       "Losing myelin slows conduction: current leaks through the bare wall and every patch must fire.",
+       "The signal still starts at time zero; what changes is how fast it covers ground.",
+       "A flat line would mean complete conduction block. This axon still conducts, just slowly."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "summation",
+   "title": "Spatial and temporal summation at the trigger zone",
+   "topic": "synapses",
+   "core": [
+    "communication"
+   ],
+   "intro": "The membrane potential at a neuron’s trigger zone over 100 ms, during four experiments. Each EPSP is drawn as 5 mV and the IPSP as 3 mV, larger than real ones in the brain so they can be seen. Where the trace shoots off the top, the neuron fired an action potential.",
+   "alt": "Membrane potential from −75 to −45 mV over 100 ms, with threshold marked at −55 mV. From 0 to 18 ms a single EPSP rises to −65 mV and fades. From 20 to 46 ms four EPSPs from one input arrive 1.5 ms apart and stack until the trace reaches −55 mV and shoots off the top. From 50 to 70 ms three EPSPs from different inputs arrive together, reach −55 mV at once and the trace shoots off the top. From 75 to 100 ms a single IPSP dips to −73 mV and fades back to −70.",
+   "x": {
+    "min": 0,
+    "max": 100,
+    "label": "Time",
+    "unit": "ms",
+    "ticks": [
+     0,
+     20,
+     40,
+     60,
+     80,
+     100
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -75,
+      "max": -45,
+      "label": "Trigger zone potential",
+      "unit": "mV",
+      "ticks": [
+       -75,
+       -70,
+       -65,
+       -60,
+       -55,
+       -50,
+       -45
+      ]
+     },
+     "hlines": [
+      {
+       "y": -55,
+       "label": "threshold",
+       "at": 99,
+       "anchor": "end",
+       "dash": true,
+       "cls": "lo"
+      },
+      {
+       "y": -70,
+       "label": "rest",
+       "at": 99,
+       "anchor": "end",
+       "faint": true,
+       "below": true
+      }
+     ],
+     "series": [
+      {
+       "id": "vm",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         -70
+        ],
+        [
+         2,
+         -70
+        ],
+        [
+         3.5,
+         -65
+        ],
+        [
+         7,
+         -67.5
+        ],
+        [
+         11,
+         -69.2
+        ],
+        [
+         18,
+         -70
+        ],
+        [
+         22,
+         -70
+        ],
+        [
+         23.5,
+         -65
+        ],
+        [
+         25,
+         -66.5
+        ],
+        [
+         26.5,
+         -61.5
+        ],
+        [
+         28,
+         -63
+        ],
+        [
+         29.5,
+         -58
+        ],
+        [
+         31,
+         -59
+        ],
+        [
+         32.3,
+         -55
+        ],
+        [
+         32.8,
+         -45
+        ],
+        [
+         33.4,
+         -45
+        ],
+        [
+         34,
+         -74
+        ],
+        [
+         37,
+         -72
+        ],
+        [
+         41,
+         -70.5
+        ],
+        [
+         46,
+         -70
+        ],
+        [
+         52,
+         -70
+        ],
+        [
+         53.5,
+         -55
+        ],
+        [
+         54,
+         -45
+        ],
+        [
+         54.6,
+         -45
+        ],
+        [
+         55.2,
+         -74
+        ],
+        [
+         58,
+         -72
+        ],
+        [
+         62,
+         -70.5
+        ],
+        [
+         70,
+         -70
+        ],
+        [
+         77,
+         -70
+        ],
+        [
+         78.5,
+         -73
+        ],
+        [
+         82,
+         -71.8
+        ],
+        [
+         88,
+         -70.5
+        ],
+        [
+         100,
+         -70
+        ]
+       ],
+       "label": "membrane potential",
+       "labelAt": [
+        1,
+        -62
+       ],
+       "anchor": "start"
+      }
+     ],
+     "notes": [
+      {
+       "x": 33,
+       "y": -46.5,
+       "text": "fires",
+       "anchor": "end"
+      },
+      {
+       "x": 54.3,
+       "y": -46.5,
+       "text": "fires",
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "single",
+     "x0": 0,
+     "x1": 18,
+     "label": "one EPSP"
+    },
+    {
+     "id": "temporal",
+     "x0": 20,
+     "x1": 46,
+     "label": "experiment 2"
+    },
+    {
+     "id": "spatial",
+     "x0": 50,
+     "x1": 70,
+     "label": "experiment 3"
+    },
+    {
+     "id": "ipsp",
+     "x0": 75,
+     "x1": 100,
+     "label": "experiment 4"
+    }
+   ],
+   "questions": [
+    {
+     "id": "one-epsp",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the highest membrane potential reached by the single EPSP in the first 18 ms.",
+     "answer": -65,
+     "tol": 1.5,
+     "unit": "mV",
+     "show": {
+      "x": 3.5,
+      "y": -65
+     },
+     "why": "About −65 mV, 5 mV above rest and still 10 mV short of threshold, so it fades without firing the neuron. A real EPSP in the brain is usually under 1 mV: neuron-to-neuron synapses vote rather than command."
+    },
+    {
+     "id": "ipsp-depth",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the lowest membrane potential in the last experiment, after 75 ms.",
+     "answer": -73,
+     "tol": 1.5,
+     "unit": "mV",
+     "show": {
+      "x": 78.5,
+      "y": -73
+     },
+     "why": "About −73 mV. The IPSP opens chloride channels; chloride flowing in hyperpolarizes the membrane a little, away from threshold."
+    },
+    {
+     "id": "temporal",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In experiment 2 (20 to 46 ms), a single presynaptic neuron fires four times in quick succession. What kind of summation brings the trigger zone to threshold?",
+     "options": [
+      "Temporal summation",
+      "Spatial summation",
+      "An IPSP",
+      "The all-or-none rule"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "temporal"
+     },
+     "why": {
+      "correct": "Each EPSP begins before the last has faded, so they stack in time until the sum reaches −55 mV and the neuron fires.",
+      "options": [
+       "Right: one input, repeated quickly.",
+       "Spatial summation adds EPSPs from several different inputs arriving at about the same time.",
+       "An IPSP moves the membrane away from threshold; every bump here is upward.",
+       "The all-or-none rule describes the action potential that fires once threshold is reached, not how the EPSPs add up to it."
+      ]
+     }
+    },
+    {
+     "id": "spatial",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In experiment 3 (50 to 70 ms), three different presynaptic neurons, at different places on the cell, fire at the same moment. What kind of summation is this?",
+     "options": [
+      "Spatial summation",
+      "Temporal summation",
+      "Divergence",
+      "A single large EPSP from one synapse"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "spatial"
+     },
+     "why": {
+      "correct": "EPSPs from different synapses arrive at the trigger zone together and add: 3 × 5 mV = 15 mV, exactly the step from −70 to −55 mV, so the neuron fires.",
+      "options": [
+       "Right: several inputs at once.",
+       "Temporal summation is one input firing repeatedly; here three inputs fire once each.",
+       "Divergence is one neuron sending its signal to many; here many neurons converge on one.",
+       "Each synapse gives only a small EPSP; the size comes from adding three of them."
+      ]
+     }
+    },
+    {
+     "id": "add-ipsp",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Repeat experiment 3, but an inhibitory input fires at the same moment as the three excitatory ones. How does the trace change?",
+     "options": [
+      "It peaks about 3 mV lower and stays below threshold",
+      "It reaches threshold sooner, because more inputs are active",
+      "It is unchanged, because an IPSP only acts on a neuron at rest",
+      "The neuron fires two action potentials instead of one"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "with-ipsp",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          50,
+          -70
+         ],
+         [
+          52,
+          -70
+         ],
+         [
+          53.5,
+          -58
+         ],
+         [
+          57,
+          -62
+         ],
+         [
+          61,
+          -65.5
+         ],
+         [
+          65,
+          -68
+         ],
+         [
+          70,
+          -70
+         ]
+        ],
+        "label": "with an IPSP",
+        "labelAt": [
+         58,
+         -57
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "EPSPs and IPSPs add algebraically: 3 × 5 − 3 = 12 mV, which takes the trigger zone only to −58 mV. It falls short of −55 mV, so no action potential fires.",
+      "options": [
+       "Right: the IPSP subtracts from the sum.",
+       "An IPSP moves the membrane away from threshold, so reaching it takes more, not less.",
+       "Whatever the membrane is doing, the IPSP’s chloride current subtracts from the depolarization the EPSPs build.",
+       "Adding inhibition cannot add a spike. The sum is now below threshold."
+      ]
+     }
+    },
+    {
+     "id": "slow-train",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Repeat experiment 2, but the same four EPSPs arrive 8 ms apart instead of 1.5 ms apart. How does the trace change?",
+     "options": [
+      "The EPSPs fade between arrivals and never reach threshold",
+      "It reaches threshold sooner, because each EPSP has more time to grow",
+      "Each EPSP becomes larger to make up for the longer gaps",
+      "Nothing changes, because the same four EPSPs still arrive in the end"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "spaced",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          20,
+          -70
+         ],
+         [
+          22,
+          -70
+         ],
+         [
+          23.5,
+          -65
+         ],
+         [
+          30,
+          -68.5
+         ],
+         [
+          31.5,
+          -63.5
+         ],
+         [
+          38,
+          -67.5
+         ],
+         [
+          39.5,
+          -62.5
+         ],
+         [
+          45.5,
+          -67
+         ],
+         [
+          46,
+          -67.2
+         ]
+        ],
+        "label": "EPSPs 8 ms apart",
+        "labelAt": [
+         21,
+         -60
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Temporal summation works only if each EPSP begins before the last has faded. With 8 ms gaps most of each one has decayed, so the stack tops out near −62 mV, well short of threshold.",
+      "options": [
+       "Right: timing decides whether they stack.",
+       "Spreading the inputs out gives each EPSP more time to fade, so the sum is lower, not higher.",
+       "Each EPSP is set by the neurotransmitter released at its synapse, not by the gap before it.",
+       "Graded potentials fade within milliseconds, so the same inputs spread out in time add up to less."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "hypnogram",
+   "title": "A night of sleep (hypnogram)",
+   "topic": "higher-functions",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "The sleep stages of a healthy young adult across one 8-hour night, as scored from the EEG. Higher on the graph is lighter; REM periods are drawn in color.",
+   "alt": "A stepped line over 8 hours with five levels, from top to bottom: awake, REM, N1, N2 and N3. The sleeper passes from awake through N1 and N2 into N3 within half an hour, stays in N3 until about 1.1 hours, and has a short REM period at about 1.3 hours. The night repeats in cycles of about 90 minutes. N3 appears in the first three cycles and shrinks each time, then disappears. REM periods lengthen from about 10 minutes in the first cycle to about 48 minutes in the last, which ends with waking at about 7.7 hours.",
+   "x": {
+    "min": 0,
+    "max": 8,
+    "label": "Time asleep",
+    "unit": "h",
+    "ticks": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -0.5,
+      "max": 4.6,
+      "label": "Sleep stage",
+      "unitless": true
+     },
+     "hlines": [
+      {
+       "y": 4,
+       "label": "awake",
+       "at": 0.05,
+       "anchor": "start",
+       "faint": true
+      },
+      {
+       "y": 3,
+       "label": "REM",
+       "at": 7.95,
+       "anchor": "end",
+       "faint": true,
+       "below": true
+      },
+      {
+       "y": 2,
+       "label": "N1",
+       "at": 7.95,
+       "anchor": "end",
+       "faint": true
+      },
+      {
+       "y": 1,
+       "label": "N2",
+       "at": 7.95,
+       "anchor": "end",
+       "faint": true,
+       "below": true
+      },
+      {
+       "y": 0,
+       "label": "N3 (slow-wave)",
+       "at": 7.95,
+       "anchor": "end",
+       "faint": true
+      }
+     ],
+     "series": [
+      {
+       "id": "stage",
+       "cls": "shape",
+       "nolabel": true,
+       "pts": [
+        [
+         0,
+         4
+        ],
+        [
+         0.1,
+         4
+        ],
+        [
+         0.1,
+         2
+        ],
+        [
+         0.2,
+         2
+        ],
+        [
+         0.2,
+         1
+        ],
+        [
+         0.45,
+         1
+        ],
+        [
+         0.45,
+         0
+        ],
+        [
+         1.1,
+         0
+        ],
+        [
+         1.1,
+         1
+        ],
+        [
+         1.3,
+         1
+        ],
+        [
+         1.3,
+         3
+        ],
+        [
+         1.45,
+         3
+        ],
+        [
+         1.45,
+         1
+        ],
+        [
+         1.8,
+         1
+        ],
+        [
+         1.8,
+         0
+        ],
+        [
+         2.4,
+         0
+        ],
+        [
+         2.4,
+         1
+        ],
+        [
+         2.7,
+         1
+        ],
+        [
+         2.7,
+         3
+        ],
+        [
+         3,
+         3
+        ],
+        [
+         3,
+         1
+        ],
+        [
+         3.3,
+         1
+        ],
+        [
+         3.3,
+         0
+        ],
+        [
+         3.6,
+         0
+        ],
+        [
+         3.6,
+         1
+        ],
+        [
+         4.2,
+         1
+        ],
+        [
+         4.2,
+         3
+        ],
+        [
+         4.6,
+         3
+        ],
+        [
+         4.6,
+         4
+        ],
+        [
+         4.65,
+         4
+        ],
+        [
+         4.65,
+         2
+        ],
+        [
+         4.75,
+         2
+        ],
+        [
+         4.75,
+         1
+        ],
+        [
+         5.7,
+         1
+        ],
+        [
+         5.7,
+         3
+        ],
+        [
+         6.2,
+         3
+        ],
+        [
+         6.2,
+         1
+        ],
+        [
+         6.9,
+         1
+        ],
+        [
+         6.9,
+         3
+        ],
+        [
+         7.7,
+         3
+        ],
+        [
+         7.7,
+         4
+        ],
+        [
+         8,
+         4
+        ]
+       ]
+      },
+      {
+       "id": "rem1",
+       "cls": "accent",
+       "nolabel": true,
+       "pts": [
+        [
+         1.3,
+         3
+        ],
+        [
+         1.45,
+         3
+        ]
+       ]
+      },
+      {
+       "id": "rem2",
+       "cls": "accent",
+       "nolabel": true,
+       "pts": [
+        [
+         2.7,
+         3
+        ],
+        [
+         3,
+         3
+        ]
+       ]
+      },
+      {
+       "id": "rem3",
+       "cls": "accent",
+       "nolabel": true,
+       "pts": [
+        [
+         4.2,
+         3
+        ],
+        [
+         4.6,
+         3
+        ]
+       ]
+      },
+      {
+       "id": "rem4",
+       "cls": "accent",
+       "nolabel": true,
+       "pts": [
+        [
+         5.7,
+         3
+        ],
+        [
+         6.2,
+         3
+        ]
+       ]
+      },
+      {
+       "id": "rem5",
+       "cls": "accent",
+       "nolabel": true,
+       "pts": [
+        [
+         6.9,
+         3
+        ],
+        [
+         7.7,
+         3
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "first-deep",
+     "x0": 0.45,
+     "x1": 1.1,
+     "label": "first deep stretch"
+    },
+    {
+     "id": "cycle1",
+     "x0": 0.1,
+     "x1": 1.45,
+     "label": "first cycle"
+    }
+   ],
+   "questions": [
+    {
+     "id": "first-rem",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read how many hours after falling asleep the first REM period begins.",
+     "answer": 1.3,
+     "tol": 0.2,
+     "unit": "h",
+     "show": {
+      "x": 1.3,
+      "y": 3
+     },
+     "why": "About 1.3 hours, roughly 80 minutes: the first cycle runs down through N1 and N2 into deep N3 and back up before the first, short REM period."
+    },
+    {
+     "id": "last-rem-length",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read how long the last REM period lasts, from about 6.9 hours to waking. Give your answer in minutes.",
+     "answer": 48,
+     "tol": 8,
+     "unit": "min",
+     "show": {
+      "x": 7.7,
+      "y": 3
+     },
+     "why": "About 0.8 hours, or 48 minutes, compared with about 10 minutes for the first. REM periods lengthen toward morning, which is why you often wake from a dream."
+    },
+    {
+     "id": "deep-stage",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Name the stage the sleeper reaches at the lowest level of the graph, from about 0.45 to 1.1 hours.",
+     "options": [
+      "N3, slow-wave sleep",
+      "REM sleep",
+      "N1",
+      "Awake"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "first-deep"
+     },
+     "why": {
+      "correct": "N3 is the deepest stage: large, slow delta waves show huge numbers of cortical neurons swinging together, breathing and heart rate are slow and regular, and the sleeper is hardest to wake. It fills the early cycles.",
+      "options": [
+       "Right: deep, slow-wave sleep.",
+       "REM sleep looks like waking on the EEG and comes at the end of each cycle, not at the bottom.",
+       "N1 is the light drift into sleep, lasting only a few minutes at the start.",
+       "The sleeper is awake only at the very start and at the end of the night."
+      ]
+     }
+    },
+    {
+     "id": "cycle-length",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Look at the stretch from falling asleep (about 0.1 h) to the end of the first REM period (about 1.45 h). What is it, and about how long does it last?",
+     "options": [
+      "One sleep cycle, about 90 minutes",
+      "One REM period, about 90 minutes",
+      "One sleep cycle, about 30 minutes",
+      "The whole of non-REM sleep for the night"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "cycle1"
+     },
+     "why": {
+      "correct": "Each cycle passes from light non-REM sleep into N3, back up, and ends with a REM period. Cycles last about 90 minutes and repeat four to six times a night; this one lasts about 1.35 hours.",
+      "options": [
+       "Right: a full cycle of about 90 minutes.",
+       "The REM period is only the short colored stretch at the end of the cycle.",
+       "The stretch spans about 1.35 hours, far longer than 30 minutes.",
+       "Non-REM sleep returns in every later cycle, so this is only the first of several."
+      ]
+     }
+    },
+    {
+     "id": "short-night",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "An alarm wakes the sleeper at 6 hours instead of letting them wake at 7.7. Compared with the full night, which state loses the most time?",
+     "options": [
+      "REM sleep",
+      "N3, slow-wave sleep",
+      "N1",
+      "All stages lose about the same share"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "cut",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          6,
+          4
+         ],
+         [
+          8,
+          4
+         ]
+        ],
+        "label": "woken at 6 h",
+        "labelAt": [
+         6.05,
+         4.3
+        ],
+        "anchor": "start"
+       }
+      ],
+      "marks": [
+       {
+        "x": 7.3,
+        "y": 3,
+        "label": "REM lost"
+       }
+      ]
+     },
+     "why": {
+      "correct": "N3 fills the first half of the night and is gone by the fourth cycle, so an early alarm cuts none of it. The longest REM periods come last, so the lost time is mostly REM: here about 60 of the night’s roughly 130 REM minutes.",
+      "options": [
+       "Right: the end of the night is REM-rich.",
+       "N3 is concentrated in the first half of the night, all before 6 hours.",
+       "N1 fills only a few minutes, at sleep onset and after brief awakenings.",
+       "The stages are not spread evenly through the night: early cycles are N3-rich and later ones REM-rich."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

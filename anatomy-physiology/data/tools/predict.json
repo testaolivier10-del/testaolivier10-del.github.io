@@ -4932,6 +4932,1489 @@
           "why": "Sensory receptors in the alveolar walls, near the capillaries, respond to the fluid and trigger rapid, shallow breathing with a feeling of breathlessness."
         }
       ]
+    },
+    {
+      "id": "wrist-nerve-cut",
+      "title": "A deep cut severs a nerve at the wrist",
+      "topic": "nervous-system-organization",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a nerve carries only one kind of signal, so cutting it causes only numbness or only weakness",
+      "setup": "A shard of glass cuts clean through one nerve at the wrist. The nerve carried sensory axons from the skin of the little finger, somatic motor axons to small hand muscles, and autonomic axons to the sweat glands of that patch of skin. Nothing above the wrist is injured.",
+      "start": "One nerve cut at the wrist",
+      "steps": {
+        "aff": "Sensory (afferent) axons cut",
+        "noin": "Touch signals never reach the CNS",
+        "som": "Somatic motor axons cut",
+        "nocmd": "Commands never reach the hand muscles",
+        "aut": "Autonomic axons cut",
+        "nosweat": "Sweat glands get no signal",
+        "heart": "Axons to the heart run elsewhere",
+        "hr": "Heart unaffected"
+      },
+      "variables": [
+        {
+          "id": "feeling",
+          "name": "Feeling in the skin of the little finger",
+          "answer": "down",
+          "chain": [
+            "aff",
+            "noin"
+          ],
+          "why": "Touch is felt only when sensory axons deliver the signal to the CNS. The cut stops every signal from the finger at the wrist, so the finger is numb."
+        },
+        {
+          "id": "strength",
+          "name": "Strength of the small hand muscles the nerve supplies",
+          "answer": "down",
+          "chain": [
+            "som",
+            "nocmd"
+          ],
+          "why": "Skeletal muscle contracts only when a somatic motor axon brings it a command. The commands still leave the CNS but stop at the cut, so those muscles are weak."
+        },
+        {
+          "id": "sweat",
+          "name": "Sweating from that patch of skin",
+          "answer": "down",
+          "chain": [
+            "aut",
+            "nosweat"
+          ],
+          "why": "Sweat glands are autonomic effectors. The autonomic axons that drive them ran in the same nerve, so that patch of skin stays dry."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "none",
+          "chain": [
+            "heart",
+            "hr"
+          ],
+          "why": "The autonomic axons that reach the heart travel in other nerves, nowhere near the wrist, so the cut leaves them working and the heart rate is unchanged."
+        }
+      ]
+    },
+    {
+      "id": "pns-axon-cut",
+      "title": "An axon in a nerve of the forearm is cut",
+      "topic": "neurons-glia",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a cut axon heals by the two cut ends simply growing back together",
+      "setup": "A sensory axon is cut in a nerve of the forearm, and a surgeon sews the nerve ends together. Predict what has happened two weeks later, compared with the day before the injury.",
+      "start": "Axon cut in a nerve",
+      "steps": {
+        "supply": "Far part loses its protein supply from the soma",
+        "frag": "Far part of the axon breaks down",
+        "myel": "Its myelin falls apart too",
+        "clear": "Schwann cells signal macrophages in",
+        "mult": "Schwann cells multiply and line up in a tube",
+        "soma": "Soma switches its protein making to growth",
+        "nissl": "Nissl bodies disperse",
+        "slow": "Sprouts regrow only about 1 mm a day",
+        "numb": "Fingertip still cut off from the CNS"
+      },
+      "variables": [
+        {
+          "id": "far-axon",
+          "name": "Length of intact axon beyond the cut",
+          "answer": "down",
+          "chain": [
+            "supply",
+            "frag"
+          ],
+          "why": "Nearly all of an axon’s proteins are made in the soma and carried out by axonal transport. The part beyond the cut has lost that supply, so within days it breaks down (Wallerian degeneration)."
+        },
+        {
+          "id": "macrophages",
+          "name": "Macrophages in the far part of the nerve",
+          "answer": "up",
+          "chain": [
+            "supply",
+            "frag",
+            "myel",
+            "clear"
+          ],
+          "why": "As the far axon and its myelin fall apart, Schwann cells break down their own myelin and signal macrophages to come in from the blood to clear the debris."
+        },
+        {
+          "id": "schwann",
+          "name": "Number of Schwann cells in the far part of the nerve",
+          "answer": "up",
+          "chain": [
+            "supply",
+            "frag",
+            "mult"
+          ],
+          "why": "Schwann cells can divide. They multiply and line up in a column inside the old connective tissue sheath, building the regeneration tube the new axon will follow."
+        },
+        {
+          "id": "nissl",
+          "name": "Clumps of Nissl bodies visible in the soma",
+          "answer": "down",
+          "chain": [
+            "soma",
+            "nissl"
+          ],
+          "why": "The soma switches its protein making from signaling to growth. Its cell body swells and its clumps of rough ER (Nissl bodies) break up and disperse."
+        },
+        {
+          "id": "feeling",
+          "name": "Feeling at the fingertip the axon supplied",
+          "answer": "down",
+          "chain": [
+            "slow",
+            "numb"
+          ],
+          "why": "Sprouts grow along the tube at only about a millimeter a day, so after two weeks they are still far from the fingertip. It stays numb for months."
+        }
+      ]
+    },
+    {
+      "id": "myelin-lost",
+      "title": "Myelin is lost from a stretch of axon",
+      "topic": "action-potential",
+      "theme": "myelin is lost",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "losing myelin stops the neuron from making action potentials at all",
+      "setup": "In multiple sclerosis, an immune attack strips the myelin from a few internodes of a myelinated axon in the brain. The nodes before and after the damaged stretch are healthy. An action potential fires at the last healthy node before the bare stretch.",
+      "start": "Myelin lost from a few internodes",
+      "steps": {
+        "bare": "Bare internode membrane exposed",
+        "leak": "Current leaks out across the bare wall",
+        "less": "Less current reaches the next node",
+        "slowd": "Next node depolarizes more slowly",
+        "delay": "Signal delayed, or stopped (conduction block)",
+        "node": "Healthy node has its full set of channels",
+        "same": "Full-size action potential there"
+      },
+      "variables": [
+        {
+          "id": "leak",
+          "name": "Current leaking out through the axon wall between the two healthy nodes",
+          "answer": "up",
+          "chain": [
+            "bare",
+            "leak"
+          ],
+          "why": "Myelin is layers of lipid-rich membrane that insulate the axon. Without it, the bare wall lets current escape instead of carrying it along the inside to the next node."
+        },
+        {
+          "id": "next-node",
+          "name": "Current reaching the next healthy node",
+          "answer": "down",
+          "chain": [
+            "bare",
+            "leak",
+            "less"
+          ],
+          "why": "Whatever leaks out on the way is lost to the next node, so less current arrives there."
+        },
+        {
+          "id": "velocity",
+          "name": "Conduction velocity across the damaged stretch",
+          "answer": "down",
+          "chain": [
+            "bare",
+            "leak",
+            "less",
+            "slowd",
+            "delay"
+          ],
+          "why": "With less current arriving, the next node takes longer to reach threshold, or never does. The bare stretch has too few sodium channels to fire along it quickly, so the signal is delayed or blocked."
+        },
+        {
+          "id": "ap-healthy",
+          "name": "Size of the action potential at the last healthy node before the damage",
+          "answer": "none",
+          "chain": [
+            "node",
+            "same"
+          ],
+          "why": "That node still has its dense sodium channels and normal ion gradients, so it fires a full, all-or-none action potential. The problem is getting the current to the next node."
+        }
+      ]
+    },
+    {
+      "id": "ttx-partial",
+      "title": "Pufferfish toxin blocks half the sodium channels",
+      "topic": "action-potential",
+      "theme": "a toxin blocks voltage-gated sodium channels",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "a sodium channel toxin changes the resting potential",
+      "setup": "A small dose of tetrodotoxin, the pufferfish poison, plugs about half of the voltage-gated sodium channels in a motor neuron’s axon. The leak channels, the sodium–potassium pumps and the ion gradients are unchanged. \"Increases\" for a voltage means the number goes up: −70 mV becoming −60 mV is an increase.",
+      "start": "Half the sodium channels plugged",
+      "steps": {
+        "closed": "Sodium channels are closed at rest anyway",
+        "rest": "Resting potential set by leak and pump",
+        "fewer": "Fewer sodium channels ready to open",
+        "thr": "Sodium entry outruns potassium only at a higher voltage",
+        "big": "A bigger stimulus is needed",
+        "small": "Less sodium enters in the rising phase",
+        "peak": "Smaller or failed spike"
+      },
+      "variables": [
+        {
+          "id": "resting",
+          "name": "Resting membrane potential",
+          "answer": "none",
+          "chain": [
+            "closed",
+            "rest"
+          ],
+          "why": "The resting potential comes from the leak channels and the pump. Voltage-gated sodium channels are closed at rest, so plugging some of them changes nothing until the membrane depolarizes."
+        },
+        {
+          "id": "ready",
+          "name": "Sodium channels available to open",
+          "answer": "down",
+          "chain": [
+            "fewer"
+          ],
+          "why": "A plugged channel cannot pass sodium whatever its gates do, so only about half the usual number can take part."
+        },
+        {
+          "id": "threshold",
+          "name": "Threshold voltage",
+          "answer": "up",
+          "chain": [
+            "fewer",
+            "thr"
+          ],
+          "why": "Threshold is the voltage at which sodium entering first outruns potassium leaving. With fewer channels, the membrane must depolarize further before enough open, so threshold moves up, away from rest."
+        },
+        {
+          "id": "stimulus",
+          "name": "Stimulus strength needed to make the neuron fire",
+          "answer": "up",
+          "chain": [
+            "fewer",
+            "thr",
+            "big"
+          ],
+          "why": "The gap from rest to threshold is now larger, so a stimulus that used to be just enough now gives only a graded potential that fades."
+        },
+        {
+          "id": "peak",
+          "name": "Height of an action potential that does fire",
+          "answer": "down",
+          "chain": [
+            "fewer",
+            "small",
+            "peak"
+          ],
+          "why": "The rising phase is driven by sodium rushing in. With half the channels plugged, less sodium enters before inactivation and the potassium channels cut the rise off, so the spike is smaller, or fails."
+        }
+      ]
+    },
+    {
+      "id": "dental-anesthetic",
+      "title": "A dentist numbs a tooth with lidocaine",
+      "topic": "action-potential",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a local anesthetic stops the sensory receptors in the tooth from detecting anything",
+      "setup": "A dentist injects lidocaine around the nerve that carries signals from a lower tooth, a few centimeters from the tooth itself. Lidocaine enters the axons at the injection site and blocks their voltage-gated sodium channels from the inside. Then the drill touches the tooth.",
+      "start": "Lidocaine blocks sodium channels at the injection site",
+      "steps": {
+        "away": "Tooth’s sensory endings are beyond the drug",
+        "fire": "Endings still fire at the tooth",
+        "block": "Axons at the injection site cannot fire",
+        "stop": "Action potentials stop at the numbed stretch",
+        "brain": "No pain signal reaches the brain",
+        "leak": "Leak channels and pump untouched",
+        "rest": "Resting potential unchanged"
+      },
+      "variables": [
+        {
+          "id": "endings",
+          "name": "Action potentials started at the sensory endings in the tooth when drilled",
+          "answer": "none",
+          "chain": [
+            "away",
+            "fire"
+          ],
+          "why": "The drug sits a few centimeters away, at the injection site. The endings in the tooth still have working sodium channels, so they still respond to the drill and fire."
+        },
+        {
+          "id": "past",
+          "name": "Action potentials passing the injection site toward the brain",
+          "answer": "down",
+          "chain": [
+            "block",
+            "stop"
+          ],
+          "why": "Each patch of axon must fire its own action potential to pass the signal on. With its sodium channels blocked, the numbed stretch cannot fire, so the signal dies there."
+        },
+        {
+          "id": "pain",
+          "name": "Pain felt from the tooth",
+          "answer": "down",
+          "chain": [
+            "block",
+            "stop",
+            "brain"
+          ],
+          "why": "Pain is felt only when the signal reaches the brain. It is stopped at the injection site on the way, so nothing is felt."
+        },
+        {
+          "id": "resting",
+          "name": "Resting membrane potential of the axons at the injection site",
+          "answer": "none",
+          "chain": [
+            "leak",
+            "rest"
+          ],
+          "why": "Voltage-gated sodium channels are closed at rest, and the resting potential is set by leak channels and the pump, which the drug does not block."
+        }
+      ]
+    },
+    {
+      "id": "k-channel-blocker",
+      "title": "A drug blocks the voltage-gated potassium channels",
+      "topic": "action-potential",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "blocking potassium channels stops the action potential from starting",
+      "setup": "A drug blocks the voltage-gated (delayed) potassium channels of an axon. Its potassium leak channels, its sodium channels and its pumps are unchanged. A stimulus brings the axon to threshold.",
+      "start": "Delayed potassium channels blocked",
+      "steps": {
+        "na": "Sodium channels open at threshold as usual",
+        "rise": "Normal rising phase",
+        "nok": "Little potassium leaves after the peak",
+        "fall": "Falling phase slower, relying on inactivation and leak",
+        "long": "Each spike lasts longer",
+        "nodip": "No extra potassium outflow after the spike",
+        "ahp": "Afterhyperpolarization smaller"
+      },
+      "variables": [
+        {
+          "id": "fires",
+          "name": "Whether the axon reaches threshold and starts an action potential",
+          "answer": "none",
+          "chain": [
+            "na",
+            "rise"
+          ],
+          "why": "The start of an action potential depends on voltage-gated sodium channels opening at threshold. They are untouched, so the spike starts normally."
+        },
+        {
+          "id": "fall-speed",
+          "name": "Speed of the falling phase",
+          "answer": "down",
+          "chain": [
+            "nok",
+            "fall"
+          ],
+          "why": "The falling phase is fast because the delayed potassium channels let potassium rush out just as the sodium channels inactivate. With them blocked, only the leak channels carry potassium out, so repolarization is slow."
+        },
+        {
+          "id": "duration",
+          "name": "Duration of each action potential",
+          "answer": "up",
+          "chain": [
+            "nok",
+            "fall",
+            "long"
+          ],
+          "why": "A slower fall means the membrane stays depolarized longer, so each spike is wider."
+        },
+        {
+          "id": "ahp",
+          "name": "Depth of the afterhyperpolarization below rest",
+          "answer": "down",
+          "chain": [
+            "nodip",
+            "ahp"
+          ],
+          "why": "The dip to about −80 mV comes from delayed potassium channels that are slow to close. With them blocked, there is no extra potassium outflow to carry the membrane below rest."
+        }
+      ]
+    },
+    {
+      "id": "hyperkalemia-l4",
+      "title": "Blood potassium rises, then stays high",
+      "topic": "action-potential",
+      "core": [
+        "gradients",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "high potassium always makes nerves and muscles more excitable",
+      "setup": "Kidney failure lets the potassium in the extracellular fluid rise (hyperkalemia). Follow a motor neuron’s axon, first after a modest rise, then after potassium has climbed further and stayed high for hours. \"Increases\" for a voltage means the number goes up: −70 mV becoming −60 mV is an increase.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "A modest rise",
+          "prompt": "Just after a modest rise in extracellular potassium, compared with normal.",
+          "start": "Extracellular potassium rises a little",
+          "steps": {
+            "grad": "Potassium gradient shrinks",
+            "rest": "Resting potential moves toward threshold",
+            "gap": "Smaller gap from rest to threshold",
+            "easy": "Neuron fires more easily",
+            "chan": "Most sodium channels still ready",
+            "thr": "Threshold about the same"
+          },
+          "variables": [
+            {
+              "id": "resting",
+              "name": "Resting membrane potential",
+              "answer": "up",
+              "chain": [
+                "grad",
+                "rest"
+              ],
+              "why": "The resting membrane leaks mostly potassium, so its voltage follows the potassium gradient. A smaller gradient pushes less potassium out, and the resting potential moves a few millivolts toward zero."
+            },
+            {
+              "id": "gap",
+              "name": "Depolarization needed to reach threshold",
+              "answer": "down",
+              "chain": [
+                "grad",
+                "rest",
+                "gap"
+              ],
+              "why": "Threshold has barely moved, but rest is now closer to it, so a smaller graded potential is enough."
+            },
+            {
+              "id": "excitability",
+              "name": "Excitability (how easily the neuron fires)",
+              "answer": "up",
+              "chain": [
+                "grad",
+                "rest",
+                "gap",
+                "easy"
+              ],
+              "why": "With rest closer to threshold, stimuli that used to fade now fire the neuron. That is the early twitchiness and tingling of mild hyperkalemia."
+            },
+            {
+              "id": "threshold",
+              "name": "Threshold voltage",
+              "answer": "none",
+              "chain": [
+                "chan",
+                "thr"
+              ],
+              "why": "A small, recent depolarization leaves most sodium channels in the closed, ready state, so threshold is about where it was."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "Hours later, much higher",
+          "prompt": "Hours later, with potassium much higher and the membrane held partly depolarized, compared with the modest rise.",
+          "start": "Membrane held depolarized for hours",
+          "steps": {
+            "inact": "More sodium channels drift into the inactivated state",
+            "noreset": "They cannot reset without repolarization",
+            "fewer": "Fewer ready sodium channels",
+            "thr": "Threshold rises",
+            "small": "Spikes smaller or fail",
+            "weak": "Excitability falls: weakness"
+          },
+          "variables": [
+            {
+              "id": "inactivated",
+              "name": "Sodium channels stuck in the inactivated state",
+              "answer": "up",
+              "chain": [
+                "inact",
+                "noreset"
+              ],
+              "why": "Depolarization swings the inactivation gates shut. A channel resets only when the membrane repolarizes, and a membrane held depolarized never does, so inactivated channels pile up."
+            },
+            {
+              "id": "threshold",
+              "name": "Threshold voltage",
+              "answer": "up",
+              "chain": [
+                "inact",
+                "noreset",
+                "fewer",
+                "thr"
+              ],
+              "why": "Threshold is where sodium entry outruns potassium exit. With fewer ready channels, the membrane must depolarize further before that happens."
+            },
+            {
+              "id": "ap-size",
+              "name": "Size of the action potentials that fire",
+              "answer": "down",
+              "chain": [
+                "inact",
+                "noreset",
+                "fewer",
+                "small"
+              ],
+              "why": "Fewer ready channels let less sodium in during the rising phase, so spikes are smaller, and many fail altogether."
+            },
+            {
+              "id": "excitability",
+              "name": "Excitability (how easily the neuron fires)",
+              "answer": "down",
+              "chain": [
+                "inact",
+                "noreset",
+                "fewer",
+                "thr",
+                "small",
+                "weak"
+              ],
+              "why": "Excitability first rose and now falls: a higher threshold and failing spikes mean fewer signals reach the muscles. That is the weakness of severe hyperkalemia; the same failure in the heart makes its rhythm dangerous."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ssri",
+      "title": "An SSRI blocks serotonin reuptake",
+      "topic": "synapses",
+      "theme": "reuptake of a transmitter is blocked",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "blocking reuptake makes the terminal release more neurotransmitter",
+      "setup": "A person takes an SSRI, a drug that blocks the serotonin transporters in the membranes of serotonin-releasing axon terminals. Predict what happens at one of these synapses over the next few hours, after an action potential arrives.",
+      "start": "Serotonin transporters blocked",
+      "steps": {
+        "ca": "Calcium entry and vesicle fusion unchanged",
+        "rel": "Same amount released per action potential",
+        "noup": "Serotonin not pumped back into the terminal",
+        "stay": "Serotonin lingers in the cleft",
+        "bind": "It binds receptor proteins again and again",
+        "resp": "Larger, longer postsynaptic response"
+      },
+      "variables": [
+        {
+          "id": "released",
+          "name": "Serotonin released per action potential",
+          "answer": "none",
+          "chain": [
+            "ca",
+            "rel"
+          ],
+          "why": "Release depends on calcium entering the terminal and vesicles fusing. The drug acts on removal, not on release, so each action potential releases the usual amount."
+        },
+        {
+          "id": "cleft",
+          "name": "Serotonin concentration in the synaptic cleft after each release",
+          "answer": "up",
+          "chain": [
+            "noup",
+            "stay"
+          ],
+          "why": "Reuptake is the main way serotonin leaves the cleft. With the transporters blocked, only slow diffusion removes it, so it builds up."
+        },
+        {
+          "id": "duration",
+          "name": "How long serotonin stays in the cleft",
+          "answer": "up",
+          "chain": [
+            "noup",
+            "stay"
+          ],
+          "why": "The signal normally ends within milliseconds because transporters pump serotonin back in. Without them, it lingers."
+        },
+        {
+          "id": "response",
+          "name": "Size and duration of the postsynaptic response",
+          "answer": "up",
+          "chain": [
+            "noup",
+            "stay",
+            "bind",
+            "resp"
+          ],
+          "why": "Serotonin that lingers keeps binding the postsynaptic receptor proteins, so the response is larger and lasts longer. Mood effects take weeks, for reasons still being worked out."
+        }
+      ]
+    },
+    {
+      "id": "no-calcium",
+      "title": "Calcium is removed from the fluid around a synapse",
+      "topic": "synapses",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "the action potential itself carries the signal across the synaptic cleft",
+      "setup": "In a lab dish, a researcher replaces the fluid around a chemical synapse with fluid that has no calcium. The presynaptic neuron is then stimulated to fire an action potential.",
+      "start": "No calcium outside the terminal",
+      "steps": {
+        "na": "Axon’s sodium and potassium channels unaffected",
+        "ap": "Action potential still reaches the terminal",
+        "open": "Voltage-gated calcium channels open",
+        "noca": "No calcium enters",
+        "nofuse": "Vesicles do not fuse",
+        "nort": "No neurotransmitter released",
+        "nopsp": "No postsynaptic potential"
+      },
+      "variables": [
+        {
+          "id": "ap",
+          "name": "Action potential arriving at the axon terminal",
+          "answer": "none",
+          "chain": [
+            "na",
+            "ap"
+          ],
+          "why": "The action potential depends on sodium and potassium channels and gradients, which are unchanged, so it still reaches the terminal."
+        },
+        {
+          "id": "ca-in",
+          "name": "Calcium entering the terminal",
+          "answer": "down",
+          "chain": [
+            "open",
+            "noca"
+          ],
+          "why": "The depolarization still opens the voltage-gated calcium channels, but calcium can flow in only down its gradient from the fluid outside. With none outside, none enters."
+        },
+        {
+          "id": "release",
+          "name": "Neurotransmitter released into the cleft",
+          "answer": "down",
+          "chain": [
+            "open",
+            "noca",
+            "nofuse",
+            "nort"
+          ],
+          "why": "Calcium binding sensor proteins on the docked vesicles is the trigger for exocytosis. Without calcium the vesicles stay docked."
+        },
+        {
+          "id": "psp",
+          "name": "Postsynaptic potential in the next neuron",
+          "answer": "down",
+          "chain": [
+            "open",
+            "noca",
+            "nofuse",
+            "nort",
+            "nopsp"
+          ],
+          "why": "The cleft is far too wide for current to cross. Only neurotransmitter carries the signal across, and none was released."
+        }
+      ]
+    },
+    {
+      "id": "benzodiazepine",
+      "title": "A benzodiazepine boosts GABA’s effect",
+      "topic": "synapses",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "benzodiazepines calm the brain by making neurons release more GABA",
+      "setup": "A person takes a benzodiazepine, a drug that makes GABA’s chloride channels open more readily when GABA binds. Consider a neuron in the brain that receives both excitatory glutamate synapses and inhibitory GABA synapses. The presynaptic neurons fire at their usual rates.",
+      "start": "GABA’s chloride channels open more readily",
+      "steps": {
+        "same": "Presynaptic firing unchanged",
+        "gaba": "Same GABA released",
+        "more": "More chloride channels open per release",
+        "cl": "More chloride flows in",
+        "ipsp": "Larger IPSPs",
+        "sum": "Sum at the trigger zone stays further below threshold",
+        "rate": "Neuron fires less often"
+      },
+      "variables": [
+        {
+          "id": "gaba",
+          "name": "GABA released per action potential",
+          "answer": "none",
+          "chain": [
+            "same",
+            "gaba"
+          ],
+          "why": "The drug acts on the postsynaptic chloride channels, not on release. The presynaptic neurons fire and release as usual."
+        },
+        {
+          "id": "ipsp",
+          "name": "Size of each IPSP",
+          "answer": "up",
+          "chain": [
+            "more",
+            "cl",
+            "ipsp"
+          ],
+          "why": "Each release of GABA now opens more chloride channels, so more chloride flows in and the membrane is pulled further from threshold."
+        },
+        {
+          "id": "epsp",
+          "name": "Size of each EPSP from the glutamate synapses",
+          "answer": "none",
+          "chain": [
+            "same",
+            "gaba"
+          ],
+          "why": "The drug does not act on glutamate’s receptor proteins, so each EPSP on its own is the same size. What changes is how much the IPSPs subtract from the sum."
+        },
+        {
+          "id": "firing",
+          "name": "Firing rate of the postsynaptic neuron",
+          "answer": "down",
+          "chain": [
+            "more",
+            "cl",
+            "ipsp",
+            "sum",
+            "rate"
+          ],
+          "why": "EPSPs and IPSPs add algebraically at the trigger zone. Bigger IPSPs subtract more, so the sum reaches threshold less often. That extra inhibition is the calm and sleepiness the drug causes."
+        }
+      ]
+    },
+    {
+      "id": "organophosphate-l4",
+      "title": "An insecticide blocks acetylcholinesterase",
+      "topic": "synapses",
+      "core": [
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "blocking acetylcholinesterase can only strengthen muscle contraction",
+      "setup": "A farm worker is exposed to an organophosphate insecticide, which blocks acetylcholinesterase at the neuromuscular junctions. Follow a skeletal muscle fiber, first in the early minutes and then with continued exposure.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "Early minutes",
+          "prompt": "In the early minutes of exposure, compared with before it.",
+          "start": "Acetylcholinesterase blocked",
+          "steps": {
+            "rel": "Release from the motor neuron unchanged",
+            "same": "Same acetylcholine per action potential",
+            "nobreak": "Acetylcholine not broken down",
+            "build": "Acetylcholine builds up in the cleft",
+            "bind": "It keeps binding nicotinic receptor proteins",
+            "extra": "Extra action potentials in the fiber",
+            "twitch": "Twitching"
+          },
+          "variables": [
+            {
+              "id": "released",
+              "name": "Acetylcholine released per motor neuron action potential",
+              "answer": "none",
+              "chain": [
+                "rel",
+                "same"
+              ],
+              "why": "Release depends on calcium entering the motor neuron’s terminal. The insecticide acts on the enzyme in the cleft, not on release."
+            },
+            {
+              "id": "ach",
+              "name": "Acetylcholine in the synaptic cleft",
+              "answer": "up",
+              "chain": [
+                "nobreak",
+                "build"
+              ],
+              "why": "Acetylcholinesterase normally splits acetylcholine within about a millisecond. With it blocked, acetylcholine stays and piles up with each release."
+            },
+            {
+              "id": "twitch",
+              "name": "Twitching of the muscle fibers",
+              "answer": "up",
+              "chain": [
+                "nobreak",
+                "build",
+                "bind",
+                "extra",
+                "twitch"
+              ],
+              "why": "Lingering acetylcholine keeps opening the ionotropic nicotinic channels, so the fiber fires extra action potentials that no command asked for."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "Continued exposure",
+          "prompt": "With continued exposure and acetylcholine staying high, compared with the early minutes.",
+          "start": "Acetylcholine stays high in the cleft",
+          "steps": {
+            "open": "Nicotinic channels stay open",
+            "depol": "Fiber membrane held depolarized",
+            "inact": "Sodium channels stuck inactivated",
+            "noap": "Fiber can no longer fire action potentials",
+            "weak": "Weakness, including the breathing muscles"
+          },
+          "variables": [
+            {
+              "id": "depol",
+              "name": "Time the muscle fiber membrane spends depolarized",
+              "answer": "up",
+              "chain": [
+                "open",
+                "depol"
+              ],
+              "why": "Acetylcholine never clears, so the nicotinic channels keep letting sodium in and the membrane near the junction stays depolarized."
+            },
+            {
+              "id": "ready",
+              "name": "Sodium channels in the fiber membrane ready to open",
+              "answer": "down",
+              "chain": [
+                "open",
+                "depol",
+                "inact"
+              ],
+              "why": "Sodium channels inactivate during depolarization and reset only when the membrane repolarizes. A membrane held depolarized keeps them inactivated."
+            },
+            {
+              "id": "strength",
+              "name": "Strength of muscle contraction",
+              "answer": "down",
+              "chain": [
+                "open",
+                "depol",
+                "inact",
+                "noap",
+                "weak"
+              ],
+              "why": "With no ready sodium channels, the fiber cannot fire action potentials, so it cannot be made to contract. The twitching gives way to weakness, and failure of the breathing muscles is what makes these poisons deadly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cerebellum-damage",
+      "title": "The left side of the cerebellum is damaged",
+      "topic": "brain-regions",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "damage to the cerebellum paralyzes the opposite side of the body",
+      "setup": "Loss of blood flow damages the left half of the cerebellum. The cerebral cortex, brainstem and spinal cord are unharmed. The person is asked to reach for a cup with each hand.",
+      "start": "Left cerebellum damaged",
+      "steps": {
+        "cmd": "Motor cortex still sends commands",
+        "str": "Strength normal",
+        "nocorr": "Left-side movements go uncorrected",
+        "miss": "Left hand overshoots: ataxia",
+        "right": "Right cerebellum intact",
+        "rok": "Right hand accurate"
+      },
+      "variables": [
+        {
+          "id": "strength",
+          "name": "Grip strength of the left hand",
+          "answer": "none",
+          "chain": [
+            "cmd",
+            "str"
+          ],
+          "why": "Movements start in the motor areas of the frontal lobe, which are unharmed. The cerebellum corrects movements; it does not power them."
+        },
+        {
+          "id": "left-accuracy",
+          "name": "Accuracy of reaching with the left hand",
+          "answer": "down",
+          "chain": [
+            "nocorr",
+            "miss"
+          ],
+          "why": "Each side of the cerebellum coordinates the same side of the body. With no comparison of intended and actual movement, the left hand overshoots the cup: ataxia."
+        },
+        {
+          "id": "right-accuracy",
+          "name": "Accuracy of reaching with the right hand",
+          "answer": "none",
+          "chain": [
+            "right",
+            "rok"
+          ],
+          "why": "The right side of the cerebellum, which corrects right-side movements, is intact."
+        }
+      ]
+    },
+    {
+      "id": "parkinson",
+      "title": "Dopamine neurons of the substantia nigra die",
+      "topic": "brain-regions",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "Parkinson’s disease causes weakness because the muscles or motor neurons are damaged",
+      "setup": "In Parkinson’s disease, dopamine neurons of the substantia nigra slowly die. The motor cortex, the muscles and the neurons that drive them are unharmed.",
+      "start": "Substantia nigra neurons die",
+      "steps": {
+        "da": "Less dopamine released into the striatum",
+        "hard": "Releasing the brake is harder",
+        "brake": "Globus pallidus keeps inhibiting the thalamus",
+        "start": "Movements slow and hard to start",
+        "mus": "Motor neurons and muscles intact",
+        "power": "Force available unchanged"
+      },
+      "variables": [
+        {
+          "id": "dopamine",
+          "name": "Dopamine released into the striatum",
+          "answer": "down",
+          "chain": [
+            "da"
+          ],
+          "why": "The substantia nigra’s neurons are the source of the dopamine that reaches the striatum. As they die, less is released."
+        },
+        {
+          "id": "brake",
+          "name": "Inhibition of the thalamus by the globus pallidus during a planned movement",
+          "answer": "up",
+          "chain": [
+            "da",
+            "hard",
+            "brake"
+          ],
+          "why": "The globus pallidus constantly inhibits the thalamus, and the striatum lifts that brake for a chosen movement. Dopamine makes lifting it easier, so with less dopamine the brake stays on harder."
+        },
+        {
+          "id": "starting",
+          "name": "Speed and ease of starting a movement",
+          "answer": "down",
+          "chain": [
+            "da",
+            "hard",
+            "brake",
+            "start"
+          ],
+          "why": "With the brake stuck on, the thalamus passes less drive back to the motor cortex, so movements are slow and hard to begin."
+        },
+        {
+          "id": "force",
+          "name": "Maximum force the muscles can produce",
+          "answer": "none",
+          "chain": [
+            "mus",
+            "power"
+          ],
+          "why": "The problem is in selecting and starting movements, not in the motor neurons or muscles, so the force they can produce is unchanged."
+        }
+      ]
+    },
+    {
+      "id": "aqueduct-blocked",
+      "title": "A tumor pinches the cerebral aqueduct shut",
+      "topic": "brain-protection",
+      "theme": "CSF outflow is blocked",
+      "core": [
+        "compartments",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "when CSF cannot drain, the choroid plexus stops making it",
+      "setup": "In an adult, a small tumor presses on the cerebral aqueduct and closes it. The choroid plexuses and the arachnoid granulations are healthy.",
+      "start": "Cerebral aqueduct closed",
+      "steps": {
+        "make": "Choroid plexuses keep secreting",
+        "prod": "CSF production about the same",
+        "trap": "CSF above the block cannot leave",
+        "swell": "Lateral and third ventricles swell",
+        "below": "Nothing new reaches the fourth ventricle from above",
+        "fourth": "Fourth ventricle stays normal size",
+        "press": "Brain pressed against the skull",
+        "icp": "Pressure inside the skull rises"
+      },
+      "variables": [
+        {
+          "id": "production",
+          "name": "CSF production by the choroid plexuses",
+          "answer": "none",
+          "chain": [
+            "make",
+            "prod"
+          ],
+          "why": "CSF is secreted by active transport, and production does not slow much when pressure rises. That is exactly why a block makes fluid build up."
+        },
+        {
+          "id": "lateral",
+          "name": "Size of the lateral ventricles",
+          "answer": "up",
+          "chain": [
+            "trap",
+            "swell"
+          ],
+          "why": "CSF made in the lateral and third ventricles can leave only through the aqueduct. With it closed, fluid builds up above the block and the ventricles swell."
+        },
+        {
+          "id": "fourth",
+          "name": "Size of the fourth ventricle",
+          "answer": "none",
+          "chain": [
+            "below",
+            "fourth"
+          ],
+          "why": "The fourth ventricle lies below the block. Its own CSF still drains through the median and lateral apertures, so it stays normal. That pattern points to a block in the aqueduct."
+        },
+        {
+          "id": "pressure",
+          "name": "Pressure inside the skull",
+          "answer": "up",
+          "chain": [
+            "trap",
+            "swell",
+            "press",
+            "icp"
+          ],
+          "why": "An adult skull cannot expand, so swelling ventricles push the brain against the bone and pressure rises, causing headache, vomiting and drowsiness."
+        }
+      ]
+    },
+    {
+      "id": "granulations-clogged",
+      "title": "Blood clogs the subarachnoid space and granulations",
+      "topic": "brain-protection",
+      "core": [
+        "compartments"
+      ],
+      "level": 2,
+      "misconception": "all hydrocephalus comes from a block inside the ventricles",
+      "setup": "After a subarachnoid hemorrhage, blood and debris clog the subarachnoid space and the arachnoid granulations. The ventricles, foramina, aqueduct and apertures are all open.",
+      "start": "Granulations clogged",
+      "steps": {
+        "noret": "CSF cannot return to venous blood",
+        "back": "CSF backs up through the open apertures",
+        "all": "All four ventricles enlarge",
+        "make": "Choroid plexuses keep secreting",
+        "prod": "CSF production about the same",
+        "icp": "Pressure inside the skull rises"
+      },
+      "variables": [
+        {
+          "id": "return",
+          "name": "CSF flowing into the venous blood",
+          "answer": "down",
+          "chain": [
+            "noret"
+          ],
+          "why": "The arachnoid granulations are the classic route from the subarachnoid space into the venous channels of the dura. Clogged, they pass much less."
+        },
+        {
+          "id": "fourth",
+          "name": "Size of the fourth ventricle",
+          "answer": "up",
+          "chain": [
+            "noret",
+            "back",
+            "all"
+          ],
+          "why": "Every passage between the ventricles is open, so the backed-up fluid swells all four ventricles, the fourth included. This is communicating hydrocephalus."
+        },
+        {
+          "id": "production",
+          "name": "CSF production by the choroid plexuses",
+          "answer": "none",
+          "chain": [
+            "make",
+            "prod"
+          ],
+          "why": "Production is secretion by the choroid plexus cells, and it barely slows as pressure rises, so it carries on at about 500 mL a day."
+        },
+        {
+          "id": "pressure",
+          "name": "Pressure inside the skull",
+          "answer": "up",
+          "chain": [
+            "noret",
+            "back",
+            "all",
+            "icp"
+          ],
+          "why": "Fluid still enters but cannot leave, and the adult skull cannot expand, so pressure rises."
+        }
+      ]
+    },
+    {
+      "id": "polio",
+      "title": "Polio destroys ventral horn motor neurons",
+      "topic": "spinal-cord",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "any damage to the spinal cord causes both numbness and paralysis",
+      "setup": "Polio virus destroys the motor neurons in the ventral horn of several lumbar segments. The dorsal horns, the dorsal roots and the white matter are spared.",
+      "start": "Ventral horn motor neurons destroyed",
+      "steps": {
+        "nocmd": "No axons leave through those ventral roots",
+        "weak": "Leg muscles get no commands: weakness",
+        "waste": "Unused muscles waste away",
+        "dr": "Dorsal roots and dorsal horns intact",
+        "feel": "Sensation from the legs still reaches the brain"
+      },
+      "variables": [
+        {
+          "id": "strength",
+          "name": "Strength of the leg muscles those segments supply",
+          "answer": "down",
+          "chain": [
+            "nocmd",
+            "weak"
+          ],
+          "why": "Ventral horn motor neurons are the only route for commands to reach skeletal muscle. With their cell bodies gone, their axons in the ventral root die too, and the muscles get no signal."
+        },
+        {
+          "id": "bulk",
+          "name": "Bulk of those muscles, over the following months",
+          "answer": "down",
+          "chain": [
+            "nocmd",
+            "weak",
+            "waste"
+          ],
+          "why": "Muscle fibers that lose their nerve supply are no longer used and waste away."
+        },
+        {
+          "id": "sensation",
+          "name": "Feeling of touch on the skin of the legs",
+          "answer": "none",
+          "chain": [
+            "dr",
+            "feel"
+          ],
+          "why": "Sensation comes in at the back: through the dorsal root, into the dorsal horn and up the white matter. Polio spares those, so touch is felt normally."
+        }
+      ]
+    },
+    {
+      "id": "dorsal-roots-cut",
+      "title": "The dorsal roots of one segment are cut",
+      "topic": "spinal-cord",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "cutting a root at the back of the cord paralyzes the muscles it supplies",
+      "setup": "A surgeon cuts the dorsal roots of one thoracic segment on the right side, to relieve pain, and leaves the ventral roots intact.",
+      "start": "Right dorsal roots of one segment cut",
+      "steps": {
+        "noin": "Sensory axons from that band cannot enter the cord",
+        "numb": "Band of skin loses sensation",
+        "vr": "Ventral root still carries motor axons out",
+        "move": "Its muscles still contract"
+      },
+      "variables": [
+        {
+          "id": "sensation",
+          "name": "Sensation from the band of skin on the right that the segment supplies",
+          "answer": "down",
+          "chain": [
+            "noin",
+            "numb"
+          ],
+          "why": "Sensory axons enter the cord only through the dorsal root. Cut it, and signals from that band of skin never reach the dorsal horn or the brain."
+        },
+        {
+          "id": "strength",
+          "name": "Strength of the muscles that segment supplies",
+          "answer": "none",
+          "chain": [
+            "vr",
+            "move"
+          ],
+          "why": "Motor axons leave through the ventral root, which is intact, so the muscles still receive their commands."
+        }
+      ]
+    },
+    {
+      "id": "motor-cortex-damage",
+      "title": "The hand area of the left primary motor cortex is damaged",
+      "topic": "higher-functions",
+      "theme": "damage to one functional area of the cortex",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "damage to one hemisphere weakens the same side of the body",
+      "setup": "Loss of blood flow damages the hand area of the left precentral gyrus. The postcentral gyrus, the language areas and the rest of the cortex are unharmed.",
+      "start": "Left precentral gyrus hand area damaged",
+      "steps": {
+        "cross": "Its commands went to the opposite side",
+        "rweak": "Right hand weak",
+        "lok": "Right hemisphere still commands the left hand",
+        "lstr": "Left hand normal",
+        "post": "Postcentral gyrus intact",
+        "feel": "Touch still reaches awareness"
+      },
+      "variables": [
+        {
+          "id": "right-hand",
+          "name": "Strength of the right hand",
+          "answer": "down",
+          "chain": [
+            "cross",
+            "rweak"
+          ],
+          "why": "The primary motor cortex sends commands to the motor neurons of the opposite side of the body. The hand area on the left drives the right hand."
+        },
+        {
+          "id": "left-hand",
+          "name": "Strength of the left hand",
+          "answer": "none",
+          "chain": [
+            "lok",
+            "lstr"
+          ],
+          "why": "The left hand is driven by the right hemisphere’s motor cortex, which is intact."
+        },
+        {
+          "id": "touch",
+          "name": "Feeling of touch on the right hand",
+          "answer": "none",
+          "chain": [
+            "post",
+            "feel"
+          ],
+          "why": "Touch is received by the primary somatosensory cortex in the postcentral gyrus, behind the central sulcus, which is unharmed. Motor and sensory areas are separate."
+        }
+      ]
+    },
+    {
+      "id": "broca-damage",
+      "title": "Broca’s area is damaged",
+      "topic": "higher-functions",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "aphasia means the person can no longer understand language",
+      "setup": "Loss of blood flow damages Broca’s area in the lower left frontal lobe of a right-handed person. Wernicke’s area and the primary auditory cortex are unharmed.",
+      "start": "Broca’s area damaged",
+      "steps": {
+        "plan": "No area to build fluent speech plans",
+        "slow": "Speech slow, halting, little grammar",
+        "rep": "Repeating a phrase fails",
+        "wern": "Wernicke’s area intact",
+        "und": "Understanding mostly good"
+      },
+      "variables": [
+        {
+          "id": "fluency",
+          "name": "Fluency of speech",
+          "answer": "down",
+          "chain": [
+            "plan",
+            "slow"
+          ],
+          "why": "Broca’s area assembles words into fluent, grammatical speech plans. Without it, speech becomes slow, effortful and short on grammar: expressive aphasia."
+        },
+        {
+          "id": "understanding",
+          "name": "Understanding of spoken sentences",
+          "answer": "none",
+          "chain": [
+            "wern",
+            "und"
+          ],
+          "why": "Understanding depends on Wernicke’s area in the temporal lobe, which is intact, so comprehension stays mostly good."
+        },
+        {
+          "id": "repeat",
+          "name": "Ability to repeat a phrase",
+          "answer": "down",
+          "chain": [
+            "plan",
+            "rep"
+          ],
+          "why": "Repeating runs through Broca’s area at the end of the route, so the damaged area blocks it even though the phrase is understood."
+        }
+      ]
+    },
+    {
+      "id": "hippocampi-removed",
+      "title": "Both hippocampi are removed",
+      "topic": "higher-functions",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "memories are stored in the hippocampus, so losing it erases them all",
+      "setup": "Like Henry Molaison in 1953, a patient has the inner parts of both temporal lobes, including most of both hippocampi, removed to stop seizures. Predict the months after surgery.",
+      "start": "Both hippocampi removed",
+      "steps": {
+        "nolink": "Nothing links new experiences into one memory",
+        "nonew": "New declarative memories do not form",
+        "cortex": "Old memories already stored in the cortex",
+        "old": "Childhood memories kept",
+        "bn": "Basal nuclei and cerebellum intact",
+        "skill": "New skills still learned",
+        "pfc": "Prefrontal cortex intact",
+        "wm": "Working memory unchanged"
+      },
+      "variables": [
+        {
+          "id": "new-facts",
+          "name": "Ability to remember a conversation from ten minutes ago",
+          "answer": "down",
+          "chain": [
+            "nolink",
+            "nonew"
+          ],
+          "why": "The hippocampus binds the scattered cortical activity of an experience into one memory and consolidates it. Without it, new declarative memories fade within minutes: anterograde amnesia."
+        },
+        {
+          "id": "childhood",
+          "name": "Memories of childhood",
+          "answer": "none",
+          "chain": [
+            "cortex",
+            "old"
+          ],
+          "why": "Old memories have finished consolidation and are stored in the cerebral cortex, so they no longer depend on the hippocampus."
+        },
+        {
+          "id": "skill",
+          "name": "Improvement at a new drawing skill practiced over several days",
+          "answer": "none",
+          "chain": [
+            "bn",
+            "skill"
+          ],
+          "why": "Procedural memory is formed by the basal nuclei and cerebellum, not the hippocampus, so skills still improve with practice, even though the patient does not remember practicing."
+        },
+        {
+          "id": "working",
+          "name": "Holding a phone number in mind while dialing it",
+          "answer": "none",
+          "chain": [
+            "pfc",
+            "wm"
+          ],
+          "why": "Working memory depends heavily on the prefrontal cortex, which is intact, so a few items can still be held in mind for the moment."
+        }
+      ]
+    },
+    {
+      "id": "split-brain",
+      "title": "The corpus callosum is cut",
+      "topic": "higher-functions",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "after the corpus callosum is cut, the left hand can no longer feel",
+      "setup": "To stop seizures spreading from one side to the other, surgeons cut a right-handed patient’s corpus callosum. Later, with eyes closed, the patient holds a key in the left hand.",
+      "start": "Key in the left hand, eyes closed",
+      "steps": {
+        "touch": "Touch goes to the right postcentral gyrus",
+        "rh": "Right hemisphere senses the key",
+        "pick": "Left hand can pick it out of a pile",
+        "cut": "Corpus callosum cut",
+        "nolh": "Left hemisphere never gets the information",
+        "noname": "Cannot say its name"
+      },
+      "variables": [
+        {
+          "id": "right-hem",
+          "name": "Touch information reaching the right hemisphere",
+          "answer": "none",
+          "chain": [
+            "touch",
+            "rh"
+          ],
+          "why": "Touch from the left hand reaches the primary somatosensory cortex of the opposite, right hemisphere by the usual route, which the surgery did not touch."
+        },
+        {
+          "id": "pick",
+          "name": "Ability to pick the key out of a pile with the left hand",
+          "answer": "none",
+          "chain": [
+            "touch",
+            "rh",
+            "pick"
+          ],
+          "why": "The right hemisphere both feels the key and controls the left hand, so it can find the key again without the left hemisphere."
+        },
+        {
+          "id": "name",
+          "name": "Ability to say the key’s name",
+          "answer": "down",
+          "chain": [
+            "cut",
+            "nolh",
+            "noname"
+          ],
+          "why": "Speech is produced by the left hemisphere in most right-handed people. The information sits in the right hemisphere, and the corpus callosum that would share it is cut."
+        }
+      ]
+    },
+    {
+      "id": "caffeine",
+      "title": "Coffee late in a long day",
+      "topic": "higher-functions",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "caffeine removes the adenosine that builds up while you are awake",
+      "setup": "After 15 hours awake, you drink a strong coffee. Caffeine blocks the adenosine receptor proteins on neurons of the arousal systems. Predict the next hour, compared with the hour before.",
+      "start": "Caffeine blocks adenosine receptor proteins",
+      "steps": {
+        "use": "Neurons still spend ATP",
+        "ado": "Adenosine still builds up",
+        "block": "Adenosine cannot bind its receptor proteins",
+        "noinh": "Arousal neurons less inhibited",
+        "awake": "Less sleepy"
+      },
+      "variables": [
+        {
+          "id": "adenosine",
+          "name": "Adenosine outside the neurons",
+          "answer": "none",
+          "chain": [
+            "use",
+            "ado"
+          ],
+          "why": "Adenosine comes from active neurons breaking down ATP. Caffeine does not stop that, and only sleep clears it, so it keeps building."
+        },
+        {
+          "id": "inhibition",
+          "name": "Inhibition of the arousal systems by adenosine",
+          "answer": "down",
+          "chain": [
+            "block",
+            "noinh"
+          ],
+          "why": "Adenosine inhibits arousal neurons only by binding its receptor proteins. Caffeine occupies them, so the adenosine present has less effect."
+        },
+        {
+          "id": "sleepiness",
+          "name": "How sleepy you feel",
+          "answer": "down",
+          "chain": [
+            "block",
+            "noinh",
+            "awake"
+          ],
+          "why": "With the brake on the arousal systems eased, you feel less sleepy, although the sleep pressure itself is still there and returns as the caffeine wears off."
+        }
+      ]
     }
   ]
 }

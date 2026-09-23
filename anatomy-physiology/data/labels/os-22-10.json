@@ -6,8 +6,7 @@
       "name": "Terminal bronchiole",
       "accept": [
         "terminal bronchiole",
-        "terminal bronchioles",
-        "bronchiole"
+        "terminal bronchioles"
       ],
       "lines": [
         0

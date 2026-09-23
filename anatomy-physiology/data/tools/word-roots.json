@@ -254,7 +254,346 @@
     { "id": "tax/o", "type": "root", "form": "tax/o", "meaning": "arrangement, order", "origin": "Greek", "from": "taxis (arrangement, order)" },
     { "id": "physa", "type": "root", "form": "physa-, -physema", "meaning": "blowing, inflating", "origin": "Greek", "from": "physa (bellows, a blast of air), physan (to blow)" },
     { "id": "tubercul/o", "type": "root", "form": "tubercul/o", "meaning": "small swelling, small lump", "origin": "Latin", "from": "tuberculum (small swelling), from tuber (lump)" },
-    { "id": "granul/o", "type": "root", "form": "granul/o", "meaning": "small grain", "origin": "Latin", "from": "granulum (small grain), from granum (grain)" }
+    { "id": "granul/o", "type": "root", "form": "granul/o", "meaning": "small grain", "origin": "Latin", "from": "granulum (small grain), from granum (grain)" },
+    {
+      "id": "pher/o",
+      "type": "root",
+      "form": "pher/o",
+      "meaning": "carry",
+      "origin": "Greek",
+      "from": "pherein (to carry)"
+    },
+    {
+      "id": "nom/o",
+      "type": "root",
+      "form": "nom/o",
+      "meaning": "law, rule",
+      "origin": "Greek",
+      "from": "nomos (law)"
+    },
+    {
+      "id": "somat/o",
+      "type": "root",
+      "form": "somat/o",
+      "meaning": "body",
+      "origin": "Greek",
+      "from": "sōma, sōmatos (body)"
+    },
+    {
+      "id": "path/o",
+      "type": "root",
+      "form": "path/o",
+      "meaning": "feeling, suffering",
+      "origin": "Greek",
+      "from": "pathos (feeling, suffering)"
+    },
+    {
+      "id": "astr/o",
+      "type": "root",
+      "form": "astr/o",
+      "meaning": "star",
+      "origin": "Greek",
+      "from": "astron (star)"
+    },
+    {
+      "id": "olig/o",
+      "type": "root",
+      "form": "olig/o",
+      "meaning": "few",
+      "origin": "Greek",
+      "from": "oligos (few, little)"
+    },
+    {
+      "id": "endym/o",
+      "type": "root",
+      "form": "endym/o",
+      "meaning": "garment",
+      "origin": "Greek",
+      "from": "endyma (garment); ependyma, an upper garment"
+    },
+    {
+      "id": "multi-",
+      "type": "prefix",
+      "form": "multi-",
+      "meaning": "many",
+      "origin": "Latin",
+      "from": "multus (many)"
+    },
+    {
+      "id": "uni-",
+      "type": "prefix",
+      "form": "uni-",
+      "meaning": "one",
+      "origin": "Latin",
+      "from": "unus (one)"
+    },
+    {
+      "id": "ax/o",
+      "type": "root",
+      "form": "ax/o",
+      "meaning": "axis",
+      "origin": "Greek",
+      "from": "axōn (axis, axle)"
+    },
+    {
+      "id": "-lemma",
+      "type": "suffix",
+      "form": "-lemma",
+      "meaning": "husk, sheath",
+      "origin": "Greek",
+      "from": "lemma (husk, peel)"
+    },
+    {
+      "id": "myel/o",
+      "type": "root",
+      "form": "myel/o",
+      "meaning": "marrow",
+      "origin": "Greek",
+      "from": "myelos (marrow)",
+      "note": "Used for myelin, from its fatty, marrow-like look, and for the spinal cord and lowest part of the brain."
+    },
+    {
+      "id": "after-",
+      "type": "prefix",
+      "form": "after-",
+      "meaning": "coming after",
+      "origin": "English",
+      "from": "Old English æfter (after)"
+    },
+    {
+      "id": "salt/o",
+      "type": "root",
+      "form": "salt/o",
+      "meaning": "leap, dance",
+      "origin": "Latin",
+      "from": "saltare (to leap, to dance)"
+    },
+    {
+      "id": "-ory",
+      "type": "suffix",
+      "form": "-ory, -atory",
+      "meaning": "pertaining to, doing",
+      "origin": "Latin",
+      "from": "-orius"
+    },
+    {
+      "id": "kal/i",
+      "type": "root",
+      "form": "kal/i",
+      "meaning": "potassium",
+      "origin": "Latin, from Arabic",
+      "from": "kalium (potassium), from Arabic qalī (plant ashes)"
+    },
+    {
+      "id": "pre-",
+      "type": "prefix",
+      "form": "pre-",
+      "meaning": "before",
+      "origin": "Latin",
+      "from": "prae (before)"
+    },
+    {
+      "id": "post-",
+      "type": "prefix",
+      "form": "post-",
+      "meaning": "after, behind",
+      "origin": "Latin",
+      "from": "post (after, behind)"
+    },
+    {
+      "id": "synapt/o",
+      "type": "root",
+      "form": "synapt/o",
+      "meaning": "a joining, a synapse",
+      "origin": "Greek",
+      "from": "synapsis (a joining together), from syn- (together) + haptein (to fasten)"
+    },
+    {
+      "id": "ser/o",
+      "type": "root",
+      "form": "ser/o",
+      "meaning": "serum, whey",
+      "origin": "Latin",
+      "from": "serum (whey)"
+    },
+    {
+      "id": "bi/o",
+      "type": "root",
+      "form": "bi/o",
+      "meaning": "life",
+      "origin": "Greek",
+      "from": "bios (life)",
+      "note": "Not the Latin bi- that means two."
+    },
+    {
+      "id": "dis-",
+      "type": "prefix",
+      "form": "dis-, di-",
+      "meaning": "apart",
+      "origin": "Latin",
+      "from": "dis- (apart, in different directions)"
+    },
+    {
+      "id": "con-",
+      "type": "prefix",
+      "form": "con-, com-",
+      "meaning": "together, with",
+      "origin": "Latin",
+      "from": "com-, con- (with, together)"
+    },
+    {
+      "id": "verg/o",
+      "type": "root",
+      "form": "verg/o",
+      "meaning": "turn, incline",
+      "origin": "Latin",
+      "from": "vergere (to turn, to incline)"
+    },
+    {
+      "id": "-ence",
+      "type": "suffix",
+      "form": "-ence",
+      "meaning": "a state or act of",
+      "origin": "Latin",
+      "from": "-entia"
+    },
+    {
+      "id": "encephal/o",
+      "type": "root",
+      "form": "encephal/o",
+      "meaning": "brain",
+      "origin": "Greek",
+      "from": "enkephalos (brain), from en (in) + kephalē (head)"
+    },
+    {
+      "id": "pros-",
+      "type": "prefix",
+      "form": "pros-",
+      "meaning": "forward, toward",
+      "origin": "Greek",
+      "from": "pros (toward, in front)"
+    },
+    {
+      "id": "rhomb/o",
+      "type": "root",
+      "form": "rhomb/o",
+      "meaning": "diamond shape",
+      "origin": "Greek",
+      "from": "rhombos (a spinning top; a rhombus)"
+    },
+    {
+      "id": "tel/e",
+      "type": "root",
+      "form": "tel/e",
+      "meaning": "end",
+      "origin": "Greek",
+      "from": "telos (end)"
+    },
+    {
+      "id": "thalam/o",
+      "type": "root",
+      "form": "thalam/o",
+      "meaning": "inner chamber",
+      "origin": "Greek",
+      "from": "thalamos (inner chamber)"
+    },
+    {
+      "id": "cerebr/o",
+      "type": "root",
+      "form": "cerebr/o",
+      "meaning": "brain",
+      "origin": "Latin",
+      "from": "cerebrum (brain)"
+    },
+    {
+      "id": "-ellum",
+      "type": "suffix",
+      "form": "-ellum",
+      "meaning": "little",
+      "origin": "Latin",
+      "from": "-ellum (a diminutive ending)"
+    },
+    {
+      "id": "spin/o",
+      "type": "root",
+      "form": "spin/o",
+      "meaning": "spine",
+      "origin": "Latin",
+      "from": "spina (thorn, backbone)"
+    },
+    {
+      "id": "dur/o",
+      "type": "root",
+      "form": "dur/o",
+      "meaning": "hard, tough; the dura mater",
+      "origin": "Latin",
+      "from": "durus (hard)"
+    },
+    {
+      "id": "arachn/o",
+      "type": "root",
+      "form": "arachn/o",
+      "meaning": "spider",
+      "origin": "Greek",
+      "from": "arachnē (spider, spider’s web)"
+    },
+    {
+      "id": "chori/o",
+      "type": "root",
+      "form": "chori/o",
+      "meaning": "membrane",
+      "origin": "Greek",
+      "from": "chorion (a membrane, the outer membrane around a fetus)"
+    },
+    {
+      "id": "-phasia",
+      "type": "suffix",
+      "form": "-phasia",
+      "meaning": "speech",
+      "origin": "Greek",
+      "from": "phasis (speech, utterance), from phanai (to speak)",
+      "note": "Not the phase of prophase, which comes from phasis meaning appearance."
+    },
+    {
+      "id": "mnes/o",
+      "type": "root",
+      "form": "mnes/o",
+      "meaning": "memory",
+      "origin": "Greek",
+      "from": "mnēsis (remembering)"
+    },
+    {
+      "id": "antero-",
+      "type": "prefix",
+      "form": "antero-",
+      "meaning": "forward, front",
+      "origin": "Latin",
+      "from": "anterior (in front, earlier)"
+    },
+    {
+      "id": "retro-",
+      "type": "prefix",
+      "form": "retro-",
+      "meaning": "backward, behind",
+      "origin": "Latin",
+      "from": "retro (backward)"
+    },
+    {
+      "id": "grad/o",
+      "type": "root",
+      "form": "grad/o",
+      "meaning": "step, go",
+      "origin": "Latin",
+      "from": "gradi (to step, to walk)"
+    },
+    {
+      "id": "front/o",
+      "type": "root",
+      "form": "front/o",
+      "meaning": "forehead, front",
+      "origin": "Latin",
+      "from": "frons, frontis (forehead)"
+    }
   ],
   "terms": [
     { "id": "anatomy", "term": "anatomy", "topic": "body-organization", "concept": "anatomy", "segs": [["ana", "ana-"], ["tomy", "-tomy"]], "literal": "a cutting up", "meaning": "the study of the body's structures", "note": "Early anatomists learned structure by cutting bodies apart, which is where the name comes from." },
@@ -547,6 +886,1186 @@
     { "id": "pneumonia", "term": "pneumonia", "topic": "respiratory-disorders", "concept": "respiratory-infection", "segs": [["pneumon", "pneumon/o"], ["ia", "-ia"]], "literal": "a lung condition", "meaning": "infection of the alveoli and the tissue around them, which fill with fluid and white blood cells" },
     { "id": "tuberculosis", "term": "tuberculosis", "topic": "respiratory-disorders", "concept": "respiratory-infection", "segs": [["tubercul", "tubercul/o"], ["osis", "-osis"]], "literal": "a condition of small lumps", "meaning": "infection by Mycobacterium tuberculosis, which the body walls off in small lumps of cells" },
     { "id": "granuloma", "term": "granuloma", "topic": "respiratory-disorders", "concept": null, "segs": [["granul", "granul/o"], ["oma", "-oma"]], "literal": "a mass of small grains", "meaning": "a small ball of macrophages and lymphocytes that walls off an infection it cannot clear" },
-    { "id": "orthopnea", "term": "orthopnea", "topic": "respiratory-disorders", "concept": "pulmonary-edema", "segs": [["orth", "orth/o"], ["o"], ["pnea", "-pnea"]], "literal": "upright breathing", "meaning": "breathlessness when lying flat that is relieved by sitting upright, as in pulmonary edema from left heart failure" }
+    { "id": "orthopnea", "term": "orthopnea", "topic": "respiratory-disorders", "concept": "pulmonary-edema", "segs": [["orth", "orth/o"], ["o"], ["pnea", "-pnea"]], "literal": "upright breathing", "meaning": "breathlessness when lying flat that is relieved by sitting upright, as in pulmonary edema from left heart failure" },
+    {
+      "id": "peripheral",
+      "term": "peripheral",
+      "topic": "nervous-system-organization",
+      "concept": "cns-pns",
+      "segs": [
+        [
+          "peri",
+          "peri-"
+        ],
+        [
+          "pher",
+          "pher/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to carrying around",
+      "meaning": "lying at the outer edge, away from the center; the peripheral nervous system lies outside the brain and spinal cord",
+      "note": "From the Greek word for the line drawn around a circle, its circumference."
+    },
+    {
+      "id": "autonomic",
+      "term": "autonomic",
+      "topic": "nervous-system-organization",
+      "concept": "autonomic-ns-basic",
+      "segs": [
+        [
+          "auto",
+          "auto-"
+        ],
+        [
+          "nom",
+          "nom/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to self-law",
+      "meaning": "self-governing: describing the part of the motor division that controls cardiac muscle, smooth muscle and glands, mostly without conscious control"
+    },
+    {
+      "id": "somatic",
+      "term": "somatic",
+      "topic": "nervous-system-organization",
+      "concept": "somatic-ns",
+      "segs": [
+        [
+          "somat",
+          "somat/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the body",
+      "meaning": "describing the part of the motor division that controls skeletal muscle"
+    },
+    {
+      "id": "sympathetic",
+      "term": "sympathetic",
+      "topic": "nervous-system-organization",
+      "concept": "autonomic-ns-basic",
+      "segs": [
+        [
+          "sym",
+          "syn-"
+        ],
+        [
+          "path",
+          "path/o"
+        ],
+        [
+          "et"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to feeling together",
+      "meaning": "the division of the autonomic nervous system that dominates in stress, exercise and danger: fight or flight",
+      "note": "Early anatomists thought these nerves made organs act in sympathy with one another."
+    },
+    {
+      "id": "parasympathetic",
+      "term": "parasympathetic",
+      "topic": "nervous-system-organization",
+      "concept": "autonomic-ns-basic",
+      "segs": [
+        [
+          "para",
+          "para-"
+        ],
+        [
+          "sym",
+          "syn-"
+        ],
+        [
+          "path",
+          "path/o"
+        ],
+        [
+          "et"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "beside the sympathetic",
+      "meaning": "the division of the autonomic nervous system that dominates during calm: rest and digest",
+      "note": "Named because its axons leave the CNS above and below the stretch where the sympathetic axons leave, as if lying beside them."
+    },
+    {
+      "id": "astrocyte",
+      "term": "astrocyte",
+      "topic": "neurons-glia",
+      "concept": "cns-glia",
+      "segs": [
+        [
+          "astr",
+          "astr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "star cell",
+      "meaning": "a star-shaped CNS glial cell that controls the fluid around neurons, wraps the capillaries and forms scars"
+    },
+    {
+      "id": "oligodendrocyte",
+      "term": "oligodendrocyte",
+      "topic": "neurons-glia",
+      "concept": "cns-glia",
+      "segs": [
+        [
+          "olig",
+          "olig/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "dendr",
+          "dendr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "a cell with few branches",
+      "meaning": "a CNS glial cell whose few arms each wrap a segment of a different axon in myelin"
+    },
+    {
+      "id": "microglia",
+      "term": "microglia",
+      "topic": "neurons-glia",
+      "concept": "cns-glia",
+      "segs": [
+        [
+          "micro",
+          "micro-"
+        ],
+        [
+          "glia",
+          "-glia"
+        ]
+      ],
+      "literal": "small glue",
+      "meaning": "small CNS glial cells that act as the resident immune cells, engulfing debris and microbes"
+    },
+    {
+      "id": "ependymal",
+      "term": "ependymal",
+      "topic": "neurons-glia",
+      "concept": "cns-glia",
+      "segs": [
+        [
+          "ep",
+          "epi-"
+        ],
+        [
+          "endym",
+          "endym/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to an upper garment",
+      "meaning": "describing the glial cells that line the fluid-filled spaces inside the brain and spinal cord"
+    },
+    {
+      "id": "multipolar",
+      "term": "multipolar",
+      "topic": "neurons-glia",
+      "concept": "neuron-classes",
+      "segs": [
+        [
+          "multi",
+          "multi-"
+        ],
+        [
+          "polar",
+          "polar/o"
+        ]
+      ],
+      "literal": "many-poled",
+      "meaning": "a neuron with one axon and two or more dendrites, the commonest kind",
+      "note": "A pole here is a process leaving the cell body."
+    },
+    {
+      "id": "bipolar",
+      "term": "bipolar",
+      "topic": "neurons-glia",
+      "concept": "neuron-classes",
+      "segs": [
+        [
+          "bi",
+          "bi-"
+        ],
+        [
+          "polar",
+          "polar/o"
+        ]
+      ],
+      "literal": "two-poled",
+      "meaning": "a neuron with one axon and one dendrite leaving opposite ends of the soma, found in a few sense organs"
+    },
+    {
+      "id": "unipolar",
+      "term": "unipolar",
+      "topic": "neurons-glia",
+      "concept": "neuron-classes",
+      "segs": [
+        [
+          "uni",
+          "uni-"
+        ],
+        [
+          "polar",
+          "polar/o"
+        ]
+      ],
+      "literal": "one-poled",
+      "meaning": "a neuron with a single process that splits into two branches, the usual shape of a sensory neuron"
+    },
+    {
+      "id": "pseudounipolar",
+      "term": "pseudounipolar",
+      "topic": "neurons-glia",
+      "concept": "neuron-classes",
+      "segs": [
+        [
+          "pseudo",
+          "pseudo-"
+        ],
+        [
+          "uni",
+          "uni-"
+        ],
+        [
+          "polar",
+          "polar/o"
+        ]
+      ],
+      "literal": "falsely one-poled",
+      "meaning": "another name for a unipolar sensory neuron, whose single process formed from two that fused in the embryo"
+    },
+    {
+      "id": "interneuron",
+      "term": "interneuron",
+      "topic": "neurons-glia",
+      "concept": "neuron-classes",
+      "segs": [
+        [
+          "inter",
+          "inter-"
+        ],
+        [
+          "neur",
+          "neur/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "a neuron between",
+      "meaning": "a neuron lying entirely within the CNS that connects other neurons; most of your neurons are this kind"
+    },
+    {
+      "id": "axoplasm",
+      "term": "axoplasm",
+      "topic": "neurons-glia",
+      "concept": "neuron-structure",
+      "segs": [
+        [
+          "ax",
+          "ax/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "plasm",
+          "-plasm"
+        ]
+      ],
+      "literal": "the formed material of the axis",
+      "meaning": "the cytoplasm inside an axon"
+    },
+    {
+      "id": "neurilemma",
+      "term": "neurilemma",
+      "topic": "neurons-glia",
+      "concept": "myelin",
+      "segs": [
+        [
+          "neur",
+          "neur/o"
+        ],
+        [
+          "i"
+        ],
+        [
+          "lemma",
+          "-lemma"
+        ]
+      ],
+      "literal": "nerve husk",
+      "meaning": "the thin outer layer of a Schwann cell, holding its nucleus and cytoplasm, around the myelin it has wrapped"
+    },
+    {
+      "id": "afterhyperpolarization",
+      "term": "afterhyperpolarization",
+      "topic": "action-potential",
+      "concept": "ap-phases",
+      "segs": [
+        [
+          "after",
+          "after-"
+        ],
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "polar",
+          "polar/o"
+        ],
+        [
+          "ization",
+          "-ization"
+        ]
+      ],
+      "literal": "the polarizing beyond normal that comes after",
+      "meaning": "the dip below the resting potential, to about −80 mV, that follows the falling phase of an action potential"
+    },
+    {
+      "id": "demyelination",
+      "term": "demyelination",
+      "topic": "action-potential",
+      "concept": "demyelination",
+      "segs": [
+        [
+          "de",
+          "de-"
+        ],
+        [
+          "myel",
+          "myel/o"
+        ],
+        [
+          "in",
+          "-in"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of removing the marrow substance",
+      "meaning": "damage to or loss of the myelin around axons, which slows or blocks conduction"
+    },
+    {
+      "id": "saltatory",
+      "term": "saltatory",
+      "topic": "action-potential",
+      "concept": "saltatory-conduction",
+      "segs": [
+        [
+          "salt",
+          "salt/o"
+        ],
+        [
+          "at"
+        ],
+        [
+          "ory",
+          "-ory"
+        ]
+      ],
+      "literal": "leaping",
+      "meaning": "describing conduction in a myelinated axon, where the action potential is regenerated only at the nodes and seems to leap from node to node"
+    },
+    {
+      "id": "sclerosis",
+      "term": "sclerosis",
+      "topic": "action-potential",
+      "concept": "demyelination",
+      "segs": [
+        [
+          "scler",
+          "scler/o"
+        ],
+        [
+          "osis",
+          "-osis"
+        ]
+      ],
+      "literal": "a hardening condition",
+      "meaning": "hardening of a tissue by scarring; multiple sclerosis is named for the many hardened scars it leaves in the brain and spinal cord"
+    },
+    {
+      "id": "hyperkalemia",
+      "term": "hyperkalemia",
+      "topic": "action-potential",
+      "concept": null,
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "kal",
+          "kal/i"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "too much potassium in the blood",
+      "meaning": "a potassium concentration in the blood and extracellular fluid above normal, which first raises and then lowers excitability"
+    },
+    {
+      "id": "presynaptic",
+      "term": "presynaptic",
+      "topic": "synapses",
+      "concept": "synapse",
+      "segs": [
+        [
+          "pre",
+          "pre-"
+        ],
+        [
+          "synapt",
+          "synapt/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to before the junction",
+      "meaning": "describing the neuron that sends the signal at a synapse, from its axon terminal"
+    },
+    {
+      "id": "postsynaptic",
+      "term": "postsynaptic",
+      "topic": "synapses",
+      "concept": "synapse",
+      "segs": [
+        [
+          "post",
+          "post-"
+        ],
+        [
+          "synapt",
+          "synapt/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to after the junction",
+      "meaning": "describing the cell that receives the signal at a synapse"
+    },
+    {
+      "id": "ionotropic",
+      "term": "ionotropic",
+      "topic": "synapses",
+      "concept": "receptor-classes-neural",
+      "segs": [
+        [
+          "ion",
+          "ion"
+        ],
+        [
+          "o"
+        ],
+        [
+          "trop",
+          "trop/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "acting on ions",
+      "meaning": "describing a receptor protein that is itself a ligand-gated ion channel, so binding opens its pore at once"
+    },
+    {
+      "id": "metabotropic",
+      "term": "metabotropic",
+      "topic": "synapses",
+      "concept": "receptor-classes-neural",
+      "segs": [
+        [
+          "meta",
+          "meta-"
+        ],
+        [
+          "bo"
+        ],
+        [
+          "trop",
+          "trop/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "acting through change",
+      "meaning": "describing a receptor protein that acts through a G protein, so its effect is slower, longer and amplified"
+    },
+    {
+      "id": "serotonin",
+      "term": "serotonin",
+      "topic": "synapses",
+      "concept": "neurotransmitter-classes",
+      "segs": [
+        [
+          "ser",
+          "ser/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "ton",
+          "ton/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a serum substance that acts on tension",
+      "meaning": "a biogenic amine neurotransmitter involved in mood, sleep and appetite",
+      "note": "Named for being found in blood serum and changing the tone of blood vessels."
+    },
+    {
+      "id": "biogenic",
+      "term": "biogenic",
+      "topic": "synapses",
+      "concept": "neurotransmitter-classes",
+      "segs": [
+        [
+          "bi",
+          "bi/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "genic",
+          "-genic"
+        ]
+      ],
+      "literal": "produced by life",
+      "meaning": "made by living cells; biogenic amines such as dopamine and serotonin are made in neurons from single amino acids"
+    },
+    {
+      "id": "divergence",
+      "term": "divergence",
+      "topic": "synapses",
+      "concept": "neural-circuits",
+      "segs": [
+        [
+          "di",
+          "dis-"
+        ],
+        [
+          "verg",
+          "verg/o"
+        ],
+        [
+          "ence",
+          "-ence"
+        ]
+      ],
+      "literal": "turning apart",
+      "meaning": "a circuit in which one neuron’s axon branches to synapse on many postsynaptic neurons"
+    },
+    {
+      "id": "convergence",
+      "term": "convergence",
+      "topic": "synapses",
+      "concept": "neural-circuits",
+      "segs": [
+        [
+          "con",
+          "con-"
+        ],
+        [
+          "verg",
+          "verg/o"
+        ],
+        [
+          "ence",
+          "-ence"
+        ]
+      ],
+      "literal": "turning together",
+      "meaning": "a circuit in which many presynaptic neurons synapse on one postsynaptic neuron"
+    },
+    {
+      "id": "prosencephalon",
+      "term": "prosencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "pros",
+          "pros-"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "forward brain",
+      "meaning": "the forebrain, the front primary brain vesicle of the embryo"
+    },
+    {
+      "id": "mesencephalon",
+      "term": "mesencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "mes",
+          "meso-"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "middle brain",
+      "meaning": "the midbrain, the middle brain vesicle, which does not split"
+    },
+    {
+      "id": "rhombencephalon",
+      "term": "rhombencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "rhomb",
+          "rhomb/o"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "diamond brain",
+      "meaning": "the hindbrain, the rear primary brain vesicle, which becomes the pons, cerebellum and medulla oblongata"
+    },
+    {
+      "id": "telencephalon",
+      "term": "telencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "tel",
+          "tel/e"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "end brain",
+      "meaning": "the secondary brain vesicle at the front end of the tube, which becomes the cerebrum"
+    },
+    {
+      "id": "diencephalon",
+      "term": "diencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "di",
+          "dia-"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "the through brain",
+      "meaning": "the central part of the brain between the cerebrum and brainstem: thalamus, hypothalamus and epithalamus"
+    },
+    {
+      "id": "metencephalon",
+      "term": "metencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "met",
+          "meta-"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "after brain",
+      "meaning": "the secondary brain vesicle that becomes the pons and cerebellum"
+    },
+    {
+      "id": "myelencephalon",
+      "term": "myelencephalon",
+      "topic": "brain-regions",
+      "concept": "brain-development",
+      "segs": [
+        [
+          "myel",
+          "myel/o"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "marrow brain",
+      "meaning": "the secondary brain vesicle that becomes the medulla oblongata, next to the spinal cord"
+    },
+    {
+      "id": "hypothalamus",
+      "term": "hypothalamus",
+      "topic": "brain-regions",
+      "concept": "hypothalamus",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "thalam",
+          "thalam/o"
+        ],
+        [
+          "us"
+        ]
+      ],
+      "literal": "below the inner chamber",
+      "meaning": "the small region below the thalamus that controls body temperature, water balance, hunger, daily rhythms and much autonomic output"
+    },
+    {
+      "id": "epithalamus",
+      "term": "epithalamus",
+      "topic": "brain-regions",
+      "concept": "diencephalon",
+      "segs": [
+        [
+          "epi",
+          "epi-"
+        ],
+        [
+          "thalam",
+          "thalam/o"
+        ],
+        [
+          "us"
+        ]
+      ],
+      "literal": "upon the inner chamber",
+      "meaning": "the small region at the back of the diencephalon, above and behind the thalamus"
+    },
+    {
+      "id": "ataxia",
+      "term": "ataxia",
+      "topic": "brain-regions",
+      "concept": "cerebellum",
+      "segs": [
+        [
+          "a",
+          "a-"
+        ],
+        [
+          "tax",
+          "tax/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition without order",
+      "meaning": "clumsy, poorly timed movement with normal strength, as after damage to the cerebellum"
+    },
+    {
+      "id": "cerebellum",
+      "term": "cerebellum",
+      "topic": "brain-regions",
+      "concept": "cerebellum",
+      "segs": [
+        [
+          "cereb",
+          "cerebr/o"
+        ],
+        [
+          "ellum",
+          "-ellum"
+        ]
+      ],
+      "literal": "little brain",
+      "meaning": "the part of the brain behind the brainstem that compares intended and actual movement and corrects it"
+    },
+    {
+      "id": "hydrocephalus",
+      "term": "hydrocephalus",
+      "topic": "brain-protection",
+      "concept": "csf",
+      "segs": [
+        [
+          "hydr",
+          "hydr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cephal",
+          "cephal/o"
+        ],
+        [
+          "us"
+        ]
+      ],
+      "literal": "water head",
+      "meaning": "excess cerebrospinal fluid that enlarges the ventricles, because it cannot flow out or drain"
+    },
+    {
+      "id": "epidural",
+      "term": "epidural",
+      "topic": "brain-protection",
+      "concept": "meninges",
+      "segs": [
+        [
+          "epi",
+          "epi-"
+        ],
+        [
+          "dur",
+          "dur/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "upon the tough one",
+      "meaning": "outside the dura mater; the epidural space lies between the dura and the bone"
+    },
+    {
+      "id": "subdural",
+      "term": "subdural",
+      "topic": "brain-protection",
+      "concept": "meninges",
+      "segs": [
+        [
+          "sub",
+          "sub-"
+        ],
+        [
+          "dur",
+          "dur/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "under the tough one",
+      "meaning": "beneath the dura mater, between it and the arachnoid mater"
+    },
+    {
+      "id": "subarachnoid",
+      "term": "subarachnoid",
+      "topic": "brain-protection",
+      "concept": "meninges",
+      "segs": [
+        [
+          "sub",
+          "sub-"
+        ],
+        [
+          "arachn",
+          "arachn/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "under the spider-like layer",
+      "meaning": "beneath the arachnoid mater; the subarachnoid space holds cerebrospinal fluid and the brain’s surface vessels"
+    },
+    {
+      "id": "cerebrospinal",
+      "term": "cerebrospinal",
+      "topic": "brain-protection",
+      "concept": "csf",
+      "segs": [
+        [
+          "cerebr",
+          "cerebr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "spin",
+          "spin/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the brain and spine",
+      "meaning": "of the brain and spinal cord, as in cerebrospinal fluid, which fills the ventricles and subarachnoid space"
+    },
+    {
+      "id": "choroid",
+      "term": "choroid",
+      "topic": "brain-protection",
+      "concept": "csf",
+      "segs": [
+        [
+          "chor",
+          "chori/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "like a membrane",
+      "meaning": "membrane-like; the choroid plexus is the tuft of capillaries and covering cells that secretes cerebrospinal fluid"
+    },
+    {
+      "id": "aphasia",
+      "term": "aphasia",
+      "topic": "higher-functions",
+      "concept": "language-areas",
+      "segs": [
+        [
+          "a",
+          "a-"
+        ],
+        [
+          "phasia",
+          "-phasia"
+        ]
+      ],
+      "literal": "without speech",
+      "meaning": "loss of language ability caused by brain damage"
+    },
+    {
+      "id": "amnesia",
+      "term": "amnesia",
+      "topic": "higher-functions",
+      "concept": "memory",
+      "segs": [
+        [
+          "a",
+          "a-"
+        ],
+        [
+          "mnes",
+          "mnes/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition without memory",
+      "meaning": "loss of memory"
+    },
+    {
+      "id": "anterograde",
+      "term": "anterograde",
+      "topic": "higher-functions",
+      "concept": "memory",
+      "segs": [
+        [
+          "antero",
+          "antero-"
+        ],
+        [
+          "grade",
+          "grad/o"
+        ]
+      ],
+      "literal": "stepping forward",
+      "meaning": "reaching forward in time; anterograde amnesia is inability to form new memories after an injury"
+    },
+    {
+      "id": "retrograde",
+      "term": "retrograde",
+      "topic": "higher-functions",
+      "concept": "memory",
+      "segs": [
+        [
+          "retro",
+          "retro-"
+        ],
+        [
+          "grade",
+          "grad/o"
+        ]
+      ],
+      "literal": "stepping backward",
+      "meaning": "reaching back in time; retrograde amnesia is loss of memories formed before an injury"
+    },
+    {
+      "id": "somatotopy",
+      "term": "somatotopy",
+      "topic": "higher-functions",
+      "concept": "somatotopy",
+      "segs": [
+        [
+          "somat",
+          "somat/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "top",
+          "top/o"
+        ],
+        [
+          "y"
+        ]
+      ],
+      "literal": "body place",
+      "meaning": "the point-to-point mapping of body parts onto a strip of cortex"
+    },
+    {
+      "id": "electroencephalogram",
+      "term": "electroencephalogram",
+      "topic": "higher-functions",
+      "concept": "sleep-consciousness",
+      "segs": [
+        [
+          "electr",
+          "electr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "encephal",
+          "encephal/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gram",
+          "-gram"
+        ]
+      ],
+      "literal": "a record of the brain’s electricity",
+      "meaning": "a recording, from scalp electrodes, of the summed synaptic potentials of cortical neurons (EEG)"
+    },
+    {
+      "id": "lateralization",
+      "term": "lateralization",
+      "topic": "higher-functions",
+      "concept": "lateralization",
+      "segs": [
+        [
+          "later",
+          "later/o"
+        ],
+        [
+          "al",
+          "-al"
+        ],
+        [
+          "ization",
+          "-ization"
+        ]
+      ],
+      "literal": "the process of making sided",
+      "meaning": "the difference in function between the two cerebral hemispheres, such as language in the left"
+    },
+    {
+      "id": "prefrontal",
+      "term": "prefrontal",
+      "topic": "higher-functions",
+      "concept": "functional-areas",
+      "segs": [
+        [
+          "pre",
+          "pre-"
+        ],
+        [
+          "front",
+          "front/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to before the front",
+      "meaning": "describing the front of the frontal lobe, ahead of the motor areas, which runs executive function"
+    }
   ]
 }
