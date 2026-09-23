@@ -64,22 +64,22 @@
       "structure-function"
     ],
     "figure": "os-15-3",
-    "pin": "gray-ramus-communicans",
+    "pin": "white-ramus-communicans",
     "q": "Name the pinned branches.",
     "options": [
       "White rami communicantes",
       "Dorsal roots",
       "Gray rami communicantes",
-      "Preganglionic fibers"
+      "Postganglionic fibers"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "Gray rami communicantes carry unmyelinated postganglionic fibers from the chain ganglia back into the spinal nerves. Every spinal nerve has one, so sympathetic fibers reach the skin at every level.",
+      "correct": "White rami communicantes carry myelinated preganglionic fibers from the spinal nerves into the chain ganglia. The myelin makes them look white, and they exist only at T1–L2, where the lateral horn sends sympathetic fibers out.",
       "options": [
-        "White rami carry myelinated preganglionic fibers into the chain, and only at T1–L2. The pinned branches return fibers to spinal nerves.",
+        "Correct. These are white rami, carrying myelinated preganglionic fibers into the chain.",
         "Dorsal roots carry sensory fibers into the back of the spinal cord. They do not connect to the chain ganglia.",
-        "Correct. These are gray rami, carrying postganglionic fibers back out to the spinal nerves.",
-        "Preganglionic fibers enter the chain through white rami. The fibers in these branches are postganglionic."
+        "Gray rami carry unmyelinated postganglionic fibers the other way, from the chain back out to every spinal nerve.",
+        "Postganglionic fibers leave the chain through gray rami or splanchnic routes. The pinned branches carry fibers into the chain, before the synapse."
       ]
     }
   },
