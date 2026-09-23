@@ -1,0 +1,37 @@
+{
+  "cardiac-output": {
+    "def": "The volume of blood one ventricle pumps per minute: heart rate times stroke volume (CO = HR × SV). It is about 5 L/min in a resting adult.",
+    "roots": [["cardi-", "heart"], ["-ac", "pertaining to"]],
+    "say": ""
+  },
+  "preload": {
+    "def": "The stretch on ventricular muscle at the end of filling, just before contraction, indexed by end-diastolic volume. It rises with greater venous return and with a longer filling time.",
+    "roots": [["pre-", "before"]],
+    "say": ""
+  },
+  "frank-starling": {
+    "def": "The heart's built-in property that a more-filled, more-stretched ventricle contracts more forcefully and ejects more, so stroke volume rises with end-diastolic volume. It keeps the outputs of the two ventricles matched.",
+    "roots": [],
+    "say": ""
+  },
+  "contractility": {
+    "def": "The strength of contraction at any given stretch, set by how much calcium reaches the cross-bridges. Positive inotropic factors such as norepinephrine and epinephrine raise it; negative inotropic factors such as beta blockers, calcium channel blockers, acidosis and hyperkalemia lower it.",
+    "roots": [["ino-", "fiber"], ["trop-", "turning, influencing"]],
+    "say": "in-oh-TROH-pee"
+  },
+  "afterload": {
+    "def": "The pressure a ventricle must overcome to open its semilunar valve and eject blood, set mainly by aortic pressure for the left ventricle. A higher afterload leaves more blood in the ventricle after ejection and lowers stroke volume.",
+    "roots": [],
+    "say": ""
+  },
+  "heart-rate-control": {
+    "def": "Heart rate is set by the cardiovascular center in the medulla oblongata. Its cardioaccelerator center speeds the SA node through sympathetic nerves and the cardiac plexus; its cardioinhibitory center slows it through the vagus nerves. Factors that change heart rate are called chronotropic.",
+    "roots": [["chron-", "time"], ["trop-", "turning, influencing"], ["plexus", "braid, network"]],
+    "say": "kron-oh-TROH-pik"
+  },
+  "cardiac-reserve": {
+    "def": "The difference between a person's highest cardiac output and their cardiac output at rest: the extra pumping available on demand. Training raises it; age and heart disease lower it.",
+    "roots": [],
+    "say": ""
+  }
+}
