@@ -37,6 +37,23 @@ export function scanTerms(concept) {
     .filter(t => t.length >= 2);
 }
 
+/* The words a page is checked for: each scan term and its regular plural
+   ("keratin" -> "keratins", "salivary gland" -> "salivary glands"), unless
+   the map already lists the plural. Acronyms and symbols get no plural. */
+export function plural(t) {
+  if (isCaseSensitive(t)) return null;
+  if (/(s|x|z|ch|sh)$/i.test(t)) return t + 'es';
+  if (/[^aeiou]y$/i.test(t)) return t.slice(0, -1) + 'ies';
+  return t + 's';
+}
+export function scanUseTerms(concept) {
+  const base = scanTerms(concept);
+  const have = new Set(base.map(t => t.toLowerCase()));
+  const out = [...base];
+  for (const t of base) { const p = plural(t); if (p && !have.has(p.toLowerCase())) out.push(p); }
+  return out;
+}
+
 export function normalize(s) {
   return s.replace(/[‐-―−]/g, '-').replace(/\s+/g, ' ').trim();
 }
@@ -188,7 +205,7 @@ export function scanPage(map, html, topicId) {
   for (const c of map.concepts) {
     const there = topicIndex.get(c.taughtIn);
     if (there <= here) continue;
-    for (const t of scanTerms(c)) {
+    for (const t of scanUseTerms(c)) {
       const m = text.match(termRegex(t));
       if (m) { problems.push(`uses "${m[0]}" (${c.id}), which is not taught until ${c.taughtIn}; teach it first or put this use inside a preview box`); break; }
     }

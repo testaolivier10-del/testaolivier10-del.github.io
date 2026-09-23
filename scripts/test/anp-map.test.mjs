@@ -109,3 +109,9 @@ test('a Unicode subscript joins its word', () => {
   m.concepts.push({ id: 'co', term: 'cardiac output', aliases: ['CO'], taughtIn: 'b', dependsOn: [] });
   assert.deepEqual(scanPage(m, '<html><body><p>You breathe out CO₂.</p></body></html>', 'a'), []);
 });
+
+test('a plural of a later term is a use of it', () => {
+  const m = tiny();
+  m.concepts.push({ id: 'keratin', term: 'keratin', aliases: [], taughtIn: 'b', dependsOn: [] });
+  assert.equal(scanPage(m, '<html><body><p>Keratins are tough.</p></body></html>', 'a').length, 1);
+});

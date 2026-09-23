@@ -779,7 +779,7 @@
     {"id":"oxytocin","term":"oxytocin","aliases":[],"taughtIn":"hypothalamus-pituitary","dependsOn":["pituitary-gland","positive-feedback"]},
     {"id":"pituitary-disorders","term":"growth hormone and ADH disorders","aliases":["gigantism","acromegaly","pituitary dwarfism","diabetes insipidus","SIADH"],"taughtIn":"hypothalamus-pituitary","dependsOn":["growth-hormone","adh"]},
     {"id":"axis-feedback","term":"hypothalamic–pituitary axes and feedback","aliases":["axis (hormonal)","long-loop feedback"],"taughtIn":"hypothalamus-pituitary","dependsOn":["releasing-hormones","tropic-hormone","negative-feedback"]},
-    {"id":"thyroid-gland","term":"thyroid gland (structure)","aliases":["colloid","thyroglobulin"],"taughtIn":"thyroid-parathyroid","dependsOn":["endocrine-gland"]},
+    {"id":"thyroid-gland","term":"thyroid gland (structure)","aliases":["thyroid colloid","thyroglobulin"],"taughtIn":"thyroid-parathyroid","dependsOn":["endocrine-gland"]},
     {"id":"thyroid-hormones","term":"thyroid hormones","aliases":["thyroxine","triiodothyronine","iodine"],"taughtIn":"thyroid-parathyroid","dependsOn":["thyroid-gland","lipid-soluble-mechanism","metabolism"]},
     {"id":"thyroid-regulation","term":"regulation of thyroid hormone","aliases":[],"taughtIn":"thyroid-parathyroid","dependsOn":["thyroid-hormones","anterior-pituitary-hormones","axis-feedback"]},
     {"id":"thyroid-disorders","term":"thyroid disorders","aliases":["hypothyroidism","hyperthyroidism","goiter","Graves disease","neonatal hypothyroidism","congenital hypothyroidism"],"taughtIn":"thyroid-parathyroid","dependsOn":["thyroid-regulation","antigen-antibody-basic"]},
