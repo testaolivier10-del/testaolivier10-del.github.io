@@ -1586,6 +1586,902 @@
           }
         ]
       }
+    },
+    {
+      "id": "reflex-delay",
+      "group": "nervous",
+      "title": "How long a reflex takes",
+      "short": "Delay = axon times + synapses + muscle",
+      "topic": "reflexes",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "A reflex’s delay is the time the signal spends in the sensory axon, at the synapses of the integration center, in the motor axon, and at the neuromuscular junction as the muscle starts to contract. Axon time is distance divided by conduction velocity.",
+      "formula": "Delay (ms) = sensory length ÷ sensory velocity + motor length ÷ motor velocity + about 1 ms per central synapse + about 3 ms for the junction and the start of contraction",
+      "inputs": [
+        {
+          "key": "ls",
+          "label": "Length of the sensory path",
+          "sym": "L sensory",
+          "unit": "m",
+          "default": 0.6,
+          "min": 0.1,
+          "max": 1.5,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              0.3,
+              0.5,
+              0.6,
+              0.8,
+              1
+            ]
+          }
+        },
+        {
+          "key": "vs",
+          "label": "Sensory axon conduction velocity",
+          "sym": "v sensory",
+          "unit": "m/s",
+          "default": 70,
+          "min": 5,
+          "max": 120,
+          "step": 1,
+          "gen": {
+            "choices": [
+              30,
+              50,
+              60,
+              70,
+              80
+            ]
+          }
+        },
+        {
+          "key": "lm",
+          "label": "Length of the motor path",
+          "sym": "L motor",
+          "unit": "m",
+          "default": 0.6,
+          "min": 0.1,
+          "max": 1.5,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              0.3,
+              0.5,
+              0.6,
+              0.8,
+              1
+            ]
+          }
+        },
+        {
+          "key": "vm",
+          "label": "Motor axon conduction velocity",
+          "sym": "v motor",
+          "unit": "m/s",
+          "default": 60,
+          "min": 5,
+          "max": 120,
+          "step": 1,
+          "gen": {
+            "choices": [
+              30,
+              40,
+              50,
+              60,
+              70
+            ]
+          }
+        },
+        {
+          "key": "n",
+          "label": "Synapses in the integration center",
+          "sym": "n",
+          "unit": "",
+          "default": 1,
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "gen": {
+            "choices": [
+              1,
+              1,
+              2,
+              3
+            ]
+          },
+          "hint": "1 for a stretch reflex; more when interneurons are involved"
+        }
+      ],
+      "derived": [
+        {
+          "key": "ts",
+          "expr": "ls / vs * 1000",
+          "dp": 1
+        },
+        {
+          "key": "tm",
+          "expr": "lm / vm * 1000",
+          "dp": 1
+        },
+        {
+          "key": "axons",
+          "expr": "ls / vs * 1000 + lm / vm * 1000",
+          "dp": 1
+        },
+        {
+          "key": "total",
+          "expr": "ls / vs * 1000 + lm / vm * 1000 + n + 3",
+          "dp": 1
+        },
+        {
+          "key": "share",
+          "expr": "(ls / vs * 1000 + lm / vm * 1000) / (ls / vs * 1000 + lm / vm * 1000 + n + 3) * 100",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Time in the sensory axon",
+          "text": "Time = distance ÷ speed = {ls} m ÷ {vs} m/s = <b>{ts} ms</b>."
+        },
+        {
+          "title": "Time in the motor axon",
+          "text": "{lm} m ÷ {vm} m/s = <b>{tm} ms</b>."
+        },
+        {
+          "title": "Add the central synapses",
+          "text": "{n} synapse(s) × about 1 ms = <b>{n} ms</b>."
+        },
+        {
+          "title": "Add the junction and the muscle",
+          "text": "Neuromuscular junction and the start of contraction: about <b>3 ms</b>."
+        },
+        {
+          "title": "Total",
+          "text": "{ts} + {tm} + {n} + 3 = <b>{total} ms</b>. The axons account for about {share}% of it."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "Reflex delay",
+          "unit": "ms",
+          "normal": "About 20 to 25 ms for a knee jerk in an adult; longer for a reflex with more synapses or a longer path.",
+          "bands": [
+            {
+              "when": "vs < 30 || vm < 30",
+              "label": "slowed conduction",
+              "tone": "hi"
+            },
+            {
+              "when": "n >= 2",
+              "label": "polysynaptic",
+              "tone": "lo"
+            },
+            {
+              "label": "monosynaptic range",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "vs < 30 || vm < 30",
+          "text": "A velocity under 30 m/s is far below the 50 to 80 m/s of healthy large myelinated axons, as when a disease strips myelin from peripheral nerves. The delay grows, and because the burst of signals arrives spread out in time, the reflex also weakens."
+        },
+        {
+          "when": "n >= 2",
+          "text": "With {n} synapses the reflex is polysynaptic. Each extra synapse adds only about a millisecond, but interneurons let one input reach many motor neurons, as in the withdrawal reflex."
+        },
+        {
+          "when": "1",
+          "text": "A single synapse makes this a monosynaptic stretch reflex, the fastest reflex you have. About {share}% of the {total} ms is spent in the axons, so conduction speed, not the synapse, sets most of the delay."
+        }
+      ],
+      "note": "The synapse and muscle times are typical round figures. Each extra central synapse adds roughly half a millisecond to a millisecond.",
+      "presets": [
+        {
+          "label": "Worked example: knee jerk, 0.6 m each way",
+          "values": {
+            "ls": 0.6,
+            "vs": 70,
+            "lm": 0.6,
+            "vm": 60,
+            "n": 1
+          }
+        },
+        {
+          "label": "Ankle jerk in a tall adult: 1.0 m each way",
+          "values": {
+            "ls": 1,
+            "vs": 70,
+            "lm": 1,
+            "vm": 60,
+            "n": 1
+          }
+        },
+        {
+          "label": "Knee jerk with demyelinated nerves: 20 m/s",
+          "values": {
+            "ls": 0.6,
+            "vs": 20,
+            "lm": 0.6,
+            "vm": 20,
+            "n": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "total",
+            "unit": "ms",
+            "tol": {
+              "rel": 0.03,
+              "abs": 0.3
+            },
+            "prompt": "In a reflex arc, the sensory path is {ls} m long and conducts at {vs} m/s, and the motor path is {lm} m long and conducts at {vm} m/s. There are {n} central synapse(s) at about 1 ms each, and the junction and start of contraction add 3 ms. What is the total delay, in ms?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gcs-total",
+      "group": "nervous",
+      "title": "Glasgow Coma Scale total",
+      "short": "GCS = E + V + M",
+      "topic": "neuro-exam",
+      "core": [
+        "interdependence",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "The Glasgow Coma Scale scores the best response in three categories: eye opening (1 to 4), verbal response (1 to 5) and motor response (1 to 6). The total runs from 3 to 15. Report the parts as well as the total.",
+      "formula": "GCS = eye opening score E + verbal score V + motor score M",
+      "inputs": [
+        {
+          "key": "e",
+          "label": "Eye opening",
+          "sym": "E",
+          "unit": "",
+          "default": 4,
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "gen": [
+            1,
+            4,
+            1
+          ],
+          "hint": "4 spontaneously, 3 to sound, 2 to pressure, 1 none"
+        },
+        {
+          "key": "v",
+          "label": "Verbal response",
+          "sym": "V",
+          "unit": "",
+          "default": 5,
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "gen": [
+            1,
+            5,
+            1
+          ],
+          "hint": "5 oriented, 4 confused, 3 inappropriate words, 2 incomprehensible sounds, 1 none"
+        },
+        {
+          "key": "m",
+          "label": "Motor response",
+          "sym": "M",
+          "unit": "",
+          "default": 6,
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "gen": [
+            1,
+            6,
+            1
+          ],
+          "hint": "6 obeys, 5 localizes, 4 normal flexion, 3 abnormal flexion, 2 extension, 1 none"
+        }
+      ],
+      "derived": [
+        {
+          "key": "total",
+          "expr": "e + v + m",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Score each category",
+          "text": "Eyes E{e}, verbal V{v}, motor M{m}: always the best response seen."
+        },
+        {
+          "title": "Add them",
+          "text": "{e} + {v} + {m} = <b>{total}</b>."
+        },
+        {
+          "title": "Report it",
+          "text": "GCS {total} (E{e} V{v} M{m}). The parts matter because the same total can hide very different patients."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "GCS total",
+          "unit": "",
+          "normal": "15 in a fully awake, oriented person who obeys commands.",
+          "bands": [
+            {
+              "when": "total >= 13",
+              "label": "mild",
+              "tone": "ok"
+            },
+            {
+              "when": "total >= 9",
+              "label": "moderate",
+              "tone": "lo"
+            },
+            {
+              "label": "severe",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "total == 15",
+          "text": "GCS 15: eyes open on their own, oriented speech and obeying commands, the best score possible."
+        },
+        {
+          "when": "total >= 13",
+          "text": "GCS {total} is in the mild range (13 to 15)."
+        },
+        {
+          "when": "total >= 9",
+          "text": "GCS {total} is in the moderate range (9 to 12). Consciousness is clearly impaired, and the trend over time matters as much as the number."
+        },
+        {
+          "when": "1",
+          "text": "GCS {total} is in the severe range (8 or less), the usual working definition of coma. A person this impaired may not be able to protect their own airway."
+        }
+      ],
+      "exam": "Many EMS and nursing exams teach “GCS 8, intubate.” Treat a total of 8 or less as a prompt to assess the airway, not a rule on its own.",
+      "presets": [
+        {
+          "label": "Worked example: E2 V3 M5",
+          "values": {
+            "e": 2,
+            "v": 3,
+            "m": 5
+          }
+        },
+        {
+          "label": "Same patient, bending away from pressure: E2 V3 M4",
+          "values": {
+            "e": 2,
+            "v": 3,
+            "m": 4
+          }
+        },
+        {
+          "label": "No response at all: E1 V1 M1",
+          "values": {
+            "e": 1,
+            "v": 1,
+            "m": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "total",
+            "unit": "",
+            "tol": {
+              "abs": 0.4
+            },
+            "prompt": "After a head injury, a patient scores E{e} for eye opening, V{v} for verbal response and M{m} for motor response. What is the GCS total?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "snellen-acuity",
+      "group": "nervous",
+      "title": "Reading a Snellen fraction",
+      "short": "Size factor = bottom ÷ top",
+      "topic": "vision",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Visual acuity is written as a fraction. The top number is your distance from the chart; the bottom is the distance at which a normal eye can just read the smallest row you read. Dividing the bottom by the top tells you how many times larger your letters must be than a normal eye needs.",
+      "formula": "Size factor = row distance (bottom number) ÷ test distance (top number)",
+      "inputs": [
+        {
+          "key": "d",
+          "label": "Your distance from the chart",
+          "sym": "top",
+          "unit": "ft",
+          "default": 20,
+          "min": 5,
+          "max": 20,
+          "step": 1,
+          "gen": {
+            "choices": [
+              20
+            ]
+          }
+        },
+        {
+          "key": "r",
+          "label": "Label of the smallest row you can read",
+          "sym": "bottom",
+          "unit": "ft",
+          "default": 40,
+          "min": 10,
+          "max": 400,
+          "step": 5,
+          "gen": {
+            "choices": [
+              10,
+              15,
+              25,
+              30,
+              40,
+              50,
+              70,
+              100,
+              200
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "f",
+          "expr": "r / d",
+          "dp": 2
+        },
+        {
+          "key": "dec",
+          "expr": "d / r",
+          "dp": 2
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the fraction",
+          "text": "Top: your distance, {d} ft. Bottom: the smallest row you read, {r}. Acuity = <b>{d}/{r}</b>."
+        },
+        {
+          "title": "Compare the distances",
+          "text": "A normal eye could read that row from {r} ft; you must be at {d} ft."
+        },
+        {
+          "title": "Find the size factor",
+          "text": "{r} ÷ {d} = <b>{f}</b>: your letters must be {f} times as large as a normal eye needs."
+        }
+      ],
+      "results": [
+        {
+          "key": "f",
+          "label": "Size factor",
+          "unit": "×",
+          "normal": "1: a normal eye (20/20). Many young adults see better than that, around 20/15.",
+          "bands": [
+            {
+              "when": "f < 1",
+              "label": "better than normal",
+              "tone": "ok"
+            },
+            {
+              "when": "f == 1",
+              "label": "normal",
+              "tone": "ok"
+            },
+            {
+              "when": "f >= 10",
+              "label": "legal blindness range",
+              "tone": "hi"
+            },
+            {
+              "label": "worse than normal",
+              "tone": "lo"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "f < 1",
+          "text": "{d}/{r} is better than normal: you read from {d} ft what a normal eye must come to {r} ft to read."
+        },
+        {
+          "when": "f == 1",
+          "text": "{d}/{r} is normal acuity."
+        },
+        {
+          "when": "f >= 10",
+          "text": "{d}/{r} means letters must be {f} times as large as normal. In the United States, a best-corrected acuity of 20/200 or worse in the better eye is one definition of legal blindness."
+        },
+        {
+          "when": "1",
+          "text": "{d}/{r} is worse than normal: letters must be {f} times as large as a normal eye needs. The larger the bottom number, the worse the acuity. If it is a focusing error, the right lenses usually restore it."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: Priya reads the 40 row",
+          "values": {
+            "d": 20,
+            "r": 40
+          }
+        },
+        {
+          "label": "Her friend reads the 15 row",
+          "values": {
+            "d": 20,
+            "r": 15
+          }
+        },
+        {
+          "label": "Only the top letter: the 200 row",
+          "values": {
+            "d": 20,
+            "r": 200
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "f",
+            "unit": "×",
+            "tol": {
+              "rel": 0.02,
+              "abs": 0.01
+            },
+            "prompt": "Standing {d} ft from a Snellen chart, a patient can read the row labeled {r} but no smaller. How many times as large as a normal eye needs must his letters be?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "middle-ear-boost",
+      "group": "nervous",
+      "title": "How the middle ear boosts pressure",
+      "short": "Gain = (eardrum area ÷ footplate area) × lever",
+      "topic": "hearing-balance",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Sound must pass from air into the fluid of the cochlea, and most of it would bounce off. The middle ear raises the pressure in two ways: the force collected over the large eardrum is delivered onto the small stapes footplate (pressure = force ÷ area), and the ossicles act as a lever that adds a little force.",
+      "formula": "Pressure gain = (eardrum area ÷ footplate area) × lever ratio of the ossicles",
+      "inputs": [
+        {
+          "key": "ad",
+          "label": "Vibrating area of the tympanic membrane",
+          "sym": "A eardrum",
+          "unit": "mm²",
+          "default": 55,
+          "min": 20,
+          "max": 90,
+          "step": 1,
+          "gen": {
+            "choices": [
+              45,
+              50,
+              55,
+              60,
+              64
+            ]
+          }
+        },
+        {
+          "key": "af",
+          "label": "Area of the stapes footplate",
+          "sym": "A footplate",
+          "unit": "mm²",
+          "default": 3.2,
+          "min": 1,
+          "max": 6,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              2.8,
+              3,
+              3.2,
+              3.5
+            ]
+          }
+        },
+        {
+          "key": "lv",
+          "label": "Lever ratio of the ossicles",
+          "sym": "lever",
+          "unit": "",
+          "default": 1.3,
+          "min": 1,
+          "max": 2,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              1.2,
+              1.3
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "area",
+          "expr": "ad / af",
+          "dp": 1
+        },
+        {
+          "key": "gain",
+          "expr": "ad / af * lv",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Area ratio",
+          "text": "The same force spread over the eardrum is delivered to the footplate: {ad} mm² ÷ {af} mm² = <b>{area}</b>. Pressure = force ÷ area, so pressure rises {area}-fold."
+        },
+        {
+          "title": "Lever",
+          "text": "The malleus is a little longer than the arm of the incus it pushes, multiplying the force by {lv}."
+        },
+        {
+          "title": "Combine",
+          "text": "{area} × {lv} = <b>{gain}</b>: the pressure at the oval window is about {gain} times the pressure on the eardrum."
+        }
+      ],
+      "results": [
+        {
+          "key": "gain",
+          "label": "Pressure gain",
+          "unit": "×",
+          "normal": "Roughly 20-fold in a healthy middle ear.",
+          "bands": [
+            {
+              "when": "gain < 10",
+              "label": "small boost",
+              "tone": "lo"
+            },
+            {
+              "label": "typical range",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "gain < 10",
+          "text": "A gain of only {gain} would deliver much less pressure to the cochlea’s fluid, and more sound would be reflected, as it is at the surface of a swimming pool."
+        },
+        {
+          "when": "1",
+          "text": "A gain of about {gain} is what lets sound in air move the fluid of the cochlea. Almost all of it comes from the area ratio; the lever adds the rest. When the ossicles cannot move freely, as with fluid in the middle ear or a stapes fused in the oval window, this boost is lost: a conductive hearing loss."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Typical adult ear",
+          "values": {
+            "ad": 55,
+            "af": 3.2,
+            "lv": 1.3
+          }
+        },
+        {
+          "label": "Area ratio alone (no lever)",
+          "values": {
+            "ad": 55,
+            "af": 3.2,
+            "lv": 1
+          }
+        },
+        {
+          "label": "A torn eardrum vibrating over only 30 mm²",
+          "values": {
+            "ad": 30,
+            "af": 3.2,
+            "lv": 1.3
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "gain",
+            "unit": "×",
+            "tol": {
+              "rel": 0.03,
+              "abs": 0.1
+            },
+            "prompt": "An eardrum vibrates over {ad} mm², the stapes footplate is {af} mm², and the ossicles act as a lever with a ratio of {lv}. By what factor does the middle ear raise the pressure?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "decibel-ratio",
+      "group": "nervous",
+      "title": "Decibels and sound intensity",
+      "short": "Intensity ratio = 10^(dB difference ÷ 10)",
+      "topic": "hearing-balance",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Loudness is measured in decibels (dB) on a logarithmic scale: every 10 dB step is a tenfold rise in sound intensity. So the difference between two sounds in decibels tells you how many times more intense one is than the other.",
+      "formula": "Intensity ratio = 10^(difference in dB ÷ 10)",
+      "inputs": [
+        {
+          "key": "l1",
+          "label": "Quieter sound",
+          "sym": "L1",
+          "unit": "dB",
+          "default": 60,
+          "min": 0,
+          "max": 140,
+          "step": 1,
+          "gen": {
+            "choices": [
+              30,
+              40,
+              50,
+              60
+            ]
+          }
+        },
+        {
+          "key": "l2",
+          "label": "Louder sound",
+          "sym": "L2",
+          "unit": "dB",
+          "default": 90,
+          "min": 0,
+          "max": 140,
+          "step": 1,
+          "gen": {
+            "choices": [
+              60,
+              70,
+              80,
+              90,
+              100,
+              110
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "l2 < l1",
+          "text": "Enter the louder sound second."
+        }
+      ],
+      "derived": [
+        {
+          "key": "diff",
+          "expr": "l2 - l1",
+          "dp": 0
+        },
+        {
+          "key": "steps10",
+          "expr": "(l2 - l1) / 10",
+          "dp": 1
+        },
+        {
+          "key": "ratio",
+          "expr": "10 ^ ((l2 - l1) / 10)",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the difference",
+          "text": "{l2} dB − {l1} dB = <b>{diff} dB</b>."
+        },
+        {
+          "title": "Count 10 dB steps",
+          "text": "{diff} ÷ 10 = {steps10} steps, each a tenfold rise."
+        },
+        {
+          "title": "Convert to a ratio",
+          "text": "10^{steps10} = <b>{ratio}</b>: the louder sound is {ratio} times as intense."
+        }
+      ],
+      "results": [
+        {
+          "key": "ratio",
+          "label": "Intensity ratio",
+          "unit": "×",
+          "normal": "Normal conversation is about 60 dB. Hours above about 85 dB can damage hair cells.",
+          "bands": [
+            {
+              "when": "l2 > 85",
+              "label": "risk to hair cells",
+              "tone": "hi"
+            },
+            {
+              "label": "ratio",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "l2 > 85",
+          "text": "At {l2} dB the louder sound is {ratio} times as intense as the quieter one. Hours of exposure above about 85 dB can destroy hair cells, starting with outer hair cells near the base of the cochlea, and humans cannot replace them."
+        },
+        {
+          "when": "1",
+          "text": "A difference of {diff} dB means {ratio} times the intensity. Because the scale is logarithmic, a sound that seems only somewhat louder can carry many times more energy."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Conversation (60 dB) vs a busy workshop (90 dB)",
+          "values": {
+            "l1": 60,
+            "l2": 90
+          }
+        },
+        {
+          "label": "Conversation vs the 85 dB risk level",
+          "values": {
+            "l1": 60,
+            "l2": 85
+          }
+        },
+        {
+          "label": "Whisper (30 dB) vs loud music (110 dB)",
+          "values": {
+            "l1": 30,
+            "l2": 110
+          }
+        }
+      ],
+      "practice": {
+        "require": "l2 > l1",
+        "asks": [
+          {
+            "key": "ratio",
+            "unit": "×",
+            "tol": {
+              "rel": 0.01,
+              "abs": 0.5
+            },
+            "prompt": "One sound measures {l1} dB and another {l2} dB. How many times as intense is the louder one?"
+          }
+        ]
+      }
     }
   ]
 }

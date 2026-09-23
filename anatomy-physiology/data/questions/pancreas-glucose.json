@@ -10,17 +10,17 @@
     "q": "Which islet cells release glucagon?",
     "options": [
       "Beta cells",
-      "Alpha cells",
       "Delta cells",
+      "Alpha cells",
       "PP cells"
     ],
-    "correct": 1,
+    "correct": 2,
     "why": {
       "correct": "Alpha cells, about a third of the cells in a human islet, release glucagon when blood glucose falls.",
       "options": [
         "Beta cells release insulin, the hormone that lowers blood glucose.",
-        "Correct. Alpha cells make glucagon.",
         "Delta cells release somatostatin, a local signal that holds back both insulin and glucagon.",
+        "Correct. Alpha cells make glucagon.",
         "PP cells release pancreatic polypeptide, which slows the pancreas's digestive secretions."
       ]
     }
@@ -55,21 +55,21 @@
     "core": [
       "homeostasis"
     ],
-    "q": "Diazoxide, a drug given to people whose beta cells release too much insulin, holds ATP-sensitive potassium channels open. What does it do to insulin release, and why?",
+    "q": "Diazoxide, a drug given to people whose beta cells release too much insulin, holds ATP-sensitive potassium channels open. What happens in the beta cell when glucose rises?",
     "options": [
-      "It raises insulin release, because potassium entering the cell depolarizes it",
-      "It has no effect, because glucose still enters the beta cell",
-      "It lowers insulin release, because the cell stays polarized and calcium channels stay shut",
-      "It lowers insulin release, because it blocks glucose carriers"
+      "The membrane stays polarized and insulin release falls",
+      "Potassium flows into the cell and insulin release rises",
+      "Glucose entry stops and insulin release falls",
+      "The membrane depolarizes more easily and insulin release rises"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
       "correct": "Insulin release depends on ATP closing these channels. With them held open, potassium keeps leaking out, the membrane cannot depolarize, voltage-gated calcium channels stay closed, and without calcium entry the insulin vesicles are not released.",
       "options": [
+        "Correct. With the channels held open, potassium keeps leaking out, the membrane cannot depolarize, voltage-gated calcium channels stay closed, and without calcium entry the insulin vesicles are not released.",
         "Open potassium channels let potassium flow out, down its gradient, not in. Outward flow keeps the inside negative, which works against depolarization.",
-        "Glucose does still enter and raise ATP, but the drug overrides ATP's effect on the channel, so the signal stops there.",
-        "Correct. Without depolarization there is no calcium entry and no exocytosis.",
-        "The drug acts on the potassium channel, not on glucose entry. Glucose uptake is normal; the step after ATP is blocked."
+        "The drug acts on the potassium channel, not on glucose entry. Glucose still enters and raises ATP; the step after ATP is blocked.",
+        "Depolarization needs the potassium channels to close. Holding them open does the opposite."
       ]
     }
   },
@@ -120,19 +120,19 @@
     ],
     "q": "Skeletal muscle stores about four times as much glycogen as the liver, yet during an overnight fast it adds almost no glucose to the blood. What explains this?",
     "options": [
-      "Muscle has no glucagon receptor proteins and lacks the enzyme that lets glucose leave the cell",
-      "Muscle glycogen is locked away until insulin rises",
-      "Muscle cells burn all their glycogen during sleep",
-      "Muscle glycogen can be broken down only by gluconeogenesis"
+      "Muscle glycogen is held in reserve until insulin rises after the next meal",
+      "Resting muscle burns through all of its glycogen during a night's sleep",
+      "Muscle lacks glucagon receptor proteins and cannot export glucose",
+      "Muscle glycogen is converted to fat overnight instead of glucose"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Glucagon, the fasting signal, acts on the liver because muscle has almost no receptor proteins for it. And even when a muscle cell breaks down its glycogen, it lacks the enzyme that frees glucose to leave the cell, so that glucose fuels only the muscle itself.",
       "options": [
-        "Correct. No glucagon signal and no way to export glucose.",
         "Insulin promotes building glycogen, not releasing it. Muscle glycogen is broken down during exercise, when insulin is low.",
         "A resting muscle uses little fuel overnight, and much of what it burns is fat. Its glycogen stores are largely intact in the morning.",
-        "Gluconeogenesis makes new glucose from non-carbohydrates. Glycogen is broken down by glycogenolysis."
+        "Correct. No glucagon signal reaches muscle, and a muscle cell lacks the enzyme that frees glucose to leave it.",
+        "Muscle does not turn its glycogen into fat. It keeps the glycogen to fuel its own contractions."
       ]
     }
   },
@@ -148,17 +148,17 @@
     "q": "Look at the healthy person's curves. What best explains why blood glucose falls back into range by about two hours?",
     "options": [
       "Glucagon rising after the meal",
-      "The kidneys excreting the extra glucose",
-      "Insulin rising with glucose and driving it into cells",
-      "The brain using up the meal's glucose"
+      "Insulin driving glucose into cells",
+      "The kidneys excreting the extra glucose in urine",
+      "The brain burning the meal's glucose"
     ],
-    "correct": 2,
+    "correct": 1,
     "why": {
       "correct": "Insulin rises within minutes of the meal and peaks with glucose. It moves GLUT4 into muscle and fat membranes and makes the liver store glucose as glycogen, so glucose leaves the blood. As glucose falls, insulin falls too: negative feedback.",
       "options": [
         "Glucagon falls after a carbohydrate meal, and it would raise blood glucose, not lower it.",
-        "Glucose appears in the urine only above about 180 mg/dL. This person peaks near 135, so the kidneys return all of it.",
         "Correct. The insulin curve rises and falls with the glucose curve.",
+        "Glucose appears in the urine only above about 180 mg/dL. This person peaks near 135, so the kidneys return all of it.",
         "The brain uses glucose at a steady rate of about 5 grams an hour. That alone cannot clear a meal's 50 grams or more in two hours."
       ]
     }
@@ -174,19 +174,19 @@
     "figure": "glucose-insulin-meal",
     "q": "Compare the type 2 diabetes curve with the healthy one. Which feature of type 2 diabetes explains why glucose is already high before the meal?",
     "options": [
-      "The meal was absorbed too fast",
-      "The liver keeps releasing glucose overnight despite insulin",
-      "The kidneys reabsorb too little glucose",
-      "Alpha cells have been destroyed by the immune system"
+      "The previous evening's meal is still being absorbed from the gut",
+      "The kidneys reabsorb too little of the glucose they filter",
+      "The immune system has destroyed the alpha cells of the islets",
+      "The liver keeps releasing glucose overnight despite insulin"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "Before a meal, blood glucose comes mainly from the liver. In type 2 diabetes the liver is insulin resistant, so it keeps running glycogenolysis and gluconeogenesis through the night, and fasting glucose starts near 140 instead of below 100.",
       "options": [
-        "The starting value is measured before the meal, so absorption cannot explain it.",
-        "Correct. An insulin-resistant liver overproduces glucose while fasting.",
+        "A meal is absorbed within a few hours. After an overnight fast, blood glucose reflects what the liver releases, not the last meal.",
         "Reabsorbing too little glucose would lose glucose to the urine and lower blood glucose, not raise it.",
-        "Type 2 diabetes does not destroy islet cells, and losing alpha cells would lower glucose, not raise it."
+        "Type 2 diabetes does not destroy islet cells, and losing alpha cells would lower glucose, not raise it.",
+        "Correct. An insulin-resistant liver overproduces glucose while fasting."
       ]
     }
   },
@@ -201,19 +201,19 @@
     "figure": "os-17-19",
     "q": "In the figure, a meter reads 50 mg/dL. Which response brings the reading back toward the center of the loop?",
     "options": [
-      "Beta cells release insulin, and the liver stores glucose as glycogen",
-      "Alpha cells release glucagon, and the liver breaks down glycogen and makes new glucose",
-      "Alpha cells release insulin, and body cells take up more glucose",
-      "Beta cells release glucagon, and the liver stops gluconeogenesis"
+      "Beta cells release insulin; the liver stores more glucose as glycogen",
+      "Alpha cells release insulin; body cells take up more glucose",
+      "Beta cells release glucagon; the liver stops making glucose",
+      "Alpha cells release glucagon; the liver releases glucose"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "50 mg/dL is hypoglycemia. Alpha cells release glucagon, which switches on glycogenolysis and gluconeogenesis in the liver, and glucose flows back into the blood.",
       "options": [
         "Insulin lowers blood glucose. That is the response to a high reading such as 160 mg/dL.",
-        "Correct. Glucagon raises glucose by releasing it from the liver.",
         "Alpha cells make glucagon, not insulin, and taking up more glucose would lower the reading further.",
-        "Beta cells make insulin, and stopping gluconeogenesis would lower glucose, not raise it."
+        "Beta cells make insulin, and stopping gluconeogenesis would lower glucose, not raise it.",
+        "Correct. Glucagon raises glucose by switching on glycogenolysis and gluconeogenesis in the liver."
       ]
     }
   },
@@ -272,7 +272,7 @@
       }
     ],
     "why": {
-      "correct": "Losing insulin raises glucose; losing the beta cells' brake raises glucagon too. Glucose spills into the urine and drags water with it, shrinking blood volume and driving thirst. Fat breakdown runs unchecked, the liver turns the fatty acids into acids that build up in the blood, and breathing deepens to blow off carbon dioxide. This is the path to diabetic ketoacidosis."
+      "correct": "Losing insulin raises glucose; losing the beta cells' brake raises glucagon too. Glucose spills into the urine and drags water with it, shrinking blood volume and driving thirst. Fat breakdown runs unchecked, the liver turns the fatty acids into acids that build up in the blood, and breathing deepens to blow off carbon dioxide. Untreated, this becomes a life-threatening emergency."
     }
   },
   {
@@ -326,18 +326,18 @@
     ],
     "q": "Mr. Okafor takes insulin for type 1 diabetes. His wife finds him sweaty and unresponsive an hour after he injected his dose and skipped lunch. His meter reads 38 mg/dL. What should be given, and why?",
     "options": [
-      "Orange juice by mouth, because it contains fast sugar",
-      "More insulin, because his cells are not taking up glucose",
-      "Glucagon by injection or nasal spray, because it makes his liver release glucose",
-      "Nothing until he wakes, because the pancreas will correct the level"
+      "Glucagon by injection or nasal spray",
+      "Orange juice by mouth",
+      "More insulin",
+      "Nothing until he wakes"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
       "correct": "He is unconscious from hypoglycemia, so nothing may go into his mouth: he could choke. Glucagon switches on glycogenolysis in his liver, releasing glucose into his blood within minutes.",
       "options": [
-        "Fast sugar by mouth is right for a conscious person, but an unresponsive person cannot swallow safely.",
+        "Correct. He is unconscious, so nothing may go into his mouth. Glucagon switches on glycogenolysis in his liver and raises his glucose within minutes.",
+        "Fast sugar by mouth is right for a conscious person, but an unresponsive person cannot swallow safely and could choke.",
         "Insulin would drive his glucose lower still. The problem is too much insulin action, not too little.",
-        "Correct. Glucagon raises glucose without anything by mouth.",
         "His brain is starved of glucose now. His own defenses have already failed to hold his glucose up against the injected insulin, and he could seize or suffer brain injury."
       ]
     }
@@ -353,18 +353,18 @@
     "q": "Why are confusion and seizures early signs of severe hypoglycemia, while skeletal muscle keeps working normally at the same glucose level?",
     "options": [
       "Neurons need insulin to take up glucose, and insulin is low",
-      "Neurons store almost no glycogen and cannot burn fatty acids, so they depend on blood glucose",
-      "Low glucose triggers the sympathetic system, which shuts down the brain",
-      "Muscle cells make glucose by gluconeogenesis and share it with the brain"
+      "Low glucose triggers a sympathetic discharge that shuts down the brain",
+      "Muscle makes glucose by gluconeogenesis and shares it with the brain",
+      "Neurons have almost no glycogen and cannot burn fatty acids"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "The brain runs almost entirely on glucose from the blood, minute by minute. Muscle can burn fatty acids and its own glycogen, so it keeps working when blood glucose falls.",
       "options": [
         "Neurons take up glucose through carriers that are always in their membranes, with no need for insulin.",
-        "Correct. The brain has no fuel reserve and no fallback fuel for acute lows.",
         "The sympathetic response causes shakiness, sweating and a fast heart. It does not shut down the brain; the lack of glucose does.",
-        "Gluconeogenesis happens in the liver and, in a long fast, the kidneys. Muscle cannot release glucose into the blood."
+        "Gluconeogenesis happens in the liver and, in a long fast, the kidneys. Muscle cannot release glucose into the blood.",
+        "Correct. The brain has no fuel reserve and no fallback fuel for sudden lows, so it depends on glucose from the blood minute by minute."
       ]
     }
   },
@@ -379,18 +379,18 @@
     ],
     "q": "A 16-year-old is brought in drowsy, breathing deeply and quickly, with a fruity smell on her breath. She has been urinating often and drinking constantly for three weeks and has lost 5 kg. Her glucose is 480 mg/dL and her blood is acidic. What underlies her acid blood?",
     "options": [
-      "Lactic acid from muscles working to support her fast breathing",
-      "Glucose itself, which is a weak acid at high concentration",
-      "Acids the liver makes from fat that is broken down without insulin",
-      "Carbon dioxide retained because her breathing is failing"
+      "Lactic acid from her breathing muscles working hard",
+      "Acids made by the liver from unchecked fat breakdown",
+      "Glucose acting as a weak acid at such a high level",
+      "Carbon dioxide building up as her breathing muscles tire"
     ],
-    "correct": 2,
+    "correct": 1,
     "why": {
       "correct": "Untreated type 1 diabetes has left her with almost no insulin. With nothing to hold back fat breakdown, and glucagon high, her liver turns fatty acids into acidic fuel molecules faster than her tissues can burn them, and they build up in her blood. One of them is breathed out and gives the fruity smell.",
       "options": [
         "Her breathing muscles are not working hard enough to acidify her blood, and lactic acid does not explain the fruity breath.",
+        "Correct. With no insulin, fat breakdown runs unchecked and the liver turns the fatty acids into acids that build up in the blood.",
         "Glucose is not an acid in the body. Its high level causes the polyuria and dehydration, not the acid.",
-        "Correct. Unchecked fat breakdown floods the blood with acids made by the liver.",
         "Her deep, fast breathing is blowing carbon dioxide off, which partly offsets the acid. It is a response, not the cause."
       ]
     }
@@ -409,7 +409,7 @@
       "Glucose in the kidney's fluid holds water there by osmosis",
       "High blood glucose blocks the release of ADH",
       "Insulin normally tells the kidneys to keep water",
-      "Thirst makes the person drink more, and the kidneys excrete it"
+      "Drinking more, which the kidneys then excrete"
     ],
     "correct": 0,
     "why": {
@@ -432,10 +432,10 @@
     ],
     "q": "Ms. Reyes, 52, has excess abdominal fat. Her fasting glucose is 138 mg/dL, and her fasting insulin is higher than normal. Which best describes her condition?",
     "options": [
-      "Type 1 diabetes, since her beta cells are failing",
-      "Hypoglycemia, since her insulin is high",
-      "Type 2 diabetes, with insulin resistance",
-      "Normal glucose control, since insulin is present"
+      "Type 1 diabetes",
+      "Hypoglycemia from excess insulin",
+      "Type 2 diabetes with insulin resistance",
+      "Normal glucose control"
     ],
     "correct": 2,
     "why": {
@@ -458,18 +458,18 @@
     ],
     "q": "A patient's glucose meter reads 5.0 mmol/L. What is that in mg/dL? (1 mmol/L = 18 mg/dL.)",
     "options": [
-      "90 mg/dL",
       "23 mg/dL",
       "0.28 mg/dL",
+      "90 mg/dL",
       "180 mg/dL"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "mg/dL = mmol/L × 18 = 5.0 × 18 = 90 mg/dL, inside the normal fasting range.",
       "options": [
-        "Correct. 5.0 × 18 = 90.",
         "23 comes from adding 18 to 5.0. The conversion multiplies.",
         "0.28 comes from dividing 5.0 by 18, which converts the wrong way.",
+        "Correct. 5.0 × 18 = 90.",
         "180 is 10 × 18. The reading is 5.0 mmol/L, not 10."
       ]
     }
@@ -513,17 +513,17 @@
     ],
     "q": "Fill the gap. Building glycogen from glucose is glycogenesis; breaking glycogen down into glucose is glycogenolysis; making new glucose from amino acids, lactate or glycerol is ____.",
     "options": [
-      "Gluconeogenesis",
       "Glycolysis",
+      "Gluconeogenesis",
       "Glycogenesis",
       "Cellular respiration"
     ],
-    "correct": 0,
+    "correct": 1,
     "why": {
       "correct": "Gluconeogenesis: gluc/o = glucose, neo- = new, -genesis = making. The liver does most of it.",
       "options": [
-        "Correct. New glucose from molecules that are not carbohydrates.",
         "Glycolysis is the breakdown of glucose in cellular respiration, the opposite direction.",
+        "Correct. New glucose from molecules that are not carbohydrates.",
         "Glycogenesis is building glycogen, the first term in the list.",
         "Cellular respiration breaks fuel down to make ATP. It uses glucose rather than making it."
       ]
@@ -541,9 +541,9 @@
     "q": "A person with insulin resistance walks briskly for 30 minutes after dinner, and her glucose rise is much smaller than on days she sits. What explains this?",
     "options": [
       "Walking raises her insulin release to normal levels",
-      "Walking stimulates glucagon, which lowers glucose",
-      "Walking sends glucose into her urine",
-      "Contracting muscle moves GLUT4 to its membrane without needing insulin"
+      "Walking raises glucagon release from alpha cells",
+      "Walking sends the extra glucose out in her urine",
+      "Contracting muscle inserts GLUT4 without insulin"
     ],
     "correct": 3,
     "why": {
@@ -626,17 +626,17 @@
     ],
     "q": "Why do people with type 2 diabetes rarely develop acid blood from fat breakdown, while people with untreated type 1 diabetes often do?",
     "options": [
-      "Type 2 diabetes causes lower blood glucose",
       "Even a small amount of insulin holds back fat breakdown",
+      "Type 2 diabetes causes lower blood glucose",
       "The livers of people with type 2 diabetes cannot turn fatty acids into acids",
       "Glucagon is absent in type 2 diabetes"
     ],
-    "correct": 1,
+    "correct": 0,
     "why": {
       "correct": "Blocking fat breakdown takes much less insulin than moving glucose into cells. People with type 2 diabetes still make insulin, often a lot, so their fat stores stay mostly locked and little fat reaches the liver to be turned into acids. In type 1, with almost no insulin, fat breakdown runs unchecked.",
       "options": [
-        "Glucose can be very high in type 2 diabetes. The acid blood depends on insulin lack, not on the glucose level.",
         "Correct. Some insulin keeps fat breakdown, and so the acid production, in check.",
+        "Glucose can be very high in type 2 diabetes. The acid blood depends on insulin lack, not on the glucose level.",
         "Anyone's liver can make these acids; yours makes some during a long fast. The difference is how much fat reaches the liver.",
         "Glucagon is present, and often high, in type 2 diabetes."
       ]

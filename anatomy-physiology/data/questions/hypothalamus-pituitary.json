@@ -1,0 +1,664 @@
+[
+  {
+    "id": "anp-hypothalamus-pituitary-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-17-7",
+    "pin": "posterior-pituitary",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Anterior pituitary",
+      "Posterior pituitary",
+      "Infundibulum",
+      "Hypothalamus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The posterior pituitary is the smaller back lobe of the pituitary gland, continuous with the infundibulum. It is nervous tissue made of the axon terminals of hypothalamic neurons.",
+      "options": [
+        "The anterior pituitary is the larger front lobe, glandular epithelium with no nerve connection to the brain.",
+        "Correct. The back lobe, joined to the stalk, is the posterior pituitary.",
+        "The infundibulum is the stalk that joins the gland to the hypothalamus, not a lobe of the gland.",
+        "The hypothalamus is the part of the brain above the stalk, not part of the pituitary gland."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-17-7",
+    "pin": "infundibulum",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Thalamus",
+      "Posterior pituitary",
+      "Infundibulum",
+      "Anterior pituitary"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The infundibulum is the stalk that hangs the pituitary gland from the hypothalamus. Hypothalamic axons run down it to the posterior pituitary, and the portal veins run down it to the anterior pituitary.",
+      "options": [
+        "The thalamus is higher up, above the hypothalamus, and is not attached to the pituitary gland.",
+        "The posterior pituitary is the back lobe at the bottom of the stalk, not the stalk itself.",
+        "Correct. The stalk is the infundibulum.",
+        "The anterior pituitary is the front lobe at the bottom of the stalk, not the stalk itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which pair of hormones does the posterior pituitary release?",
+    "options": [
+      "ADH and oxytocin",
+      "GH and prolactin",
+      "TSH and ACTH",
+      "FSH and LH"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The posterior pituitary stores and releases ADH and oxytocin, both made by neurons in the hypothalamus. All the others are made by the anterior pituitary.",
+      "options": [
+        "Correct. The posterior lobe releases ADH and oxytocin.",
+        "GH and prolactin are made by the anterior pituitary.",
+        "TSH and ACTH are tropic hormones of the anterior pituitary.",
+        "FSH and LH, the gonadotropins, come from the anterior pituitary."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "After an injury, a patient's infundibulum is cut, so no blood flows from the hypothalamus to the anterior pituitary through the portal veins. Which anterior pituitary hormone rises?",
+    "options": [
+      "Prolactin",
+      "Growth hormone",
+      "TSH",
+      "LH"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Prolactin is held back mainly by dopamine from the hypothalamus. With the portal link cut, dopamine no longer reaches the anterior pituitary, so prolactin release rises. The other anterior pituitary hormones depend on releasing hormones and fall.",
+      "options": [
+        "Correct. Losing dopamine removes the brake on prolactin.",
+        "GH depends mainly on GHRH from the hypothalamus, so it falls when the portal link is cut.",
+        "TSH depends on TRH, which can no longer reach the anterior pituitary, so it falls.",
+        "LH depends on GnRH, which can no longer reach the anterior pituitary, so it falls."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A 40-year-old woman notices her rings and shoes no longer fit, her jaw juts forward, and her glucose level in the blood is high. A benign pituitary tumor secreting growth hormone is found. Why has she not grown taller?",
+    "options": [
+      "Her epiphyseal plates have closed, so her bones cannot lengthen",
+      "Growth hormone acts only on soft tissues in adults",
+      "Her tumor makes IGF-1 instead of growth hormone",
+      "High glucose in the blood blocks growth at the epiphyseal plates"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is acromegaly: excess GH after the epiphyseal plates have closed. Bones can still thicken, especially in the hands, feet, jaw and face, but they cannot grow longer. The same excess in childhood, with open plates, causes gigantism.",
+      "options": [
+        "Correct. Closed epiphyseal plates are why excess GH in adults thickens bones instead of lengthening them.",
+        "GH, through IGF-1, still acts on adult bone: that is why her jaw and hands have enlarged.",
+        "The tumor is described as secreting growth hormone; IGF-1 comes from the liver and tissues in response to it.",
+        "High glucose is a side effect of GH's action on fuel use, not the reason her height is unchanged."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A hiker runs out of water and walks for hours in dry heat, losing water in sweat. Predict the change in each variable, compared with before the hike.",
+    "variables": [
+      {
+        "name": "Plasma osmolarity",
+        "answer": "up",
+        "why": "Sweat is more dilute than plasma, so losing it leaves the remaining plasma more concentrated."
+      },
+      {
+        "name": "Firing of hypothalamic osmoreceptors",
+        "answer": "up",
+        "why": "Water leaves the osmoreceptors into the more concentrated plasma; they shrink, their stretch-sensitive channels open and they fire faster."
+      },
+      {
+        "name": "ADH release",
+        "answer": "up",
+        "why": "Osmoreceptors excite the ADH-making neurons, so the posterior pituitary releases more ADH."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "down",
+        "why": "ADH makes the kidney cells insert aquaporins, so more water is pulled back into the blood."
+      },
+      {
+        "name": "Thirst",
+        "answer": "up",
+        "why": "Osmoreceptors also excite the thirst center in the hypothalamus."
+      }
+    ],
+    "why": {
+      "correct": "Water loss raises plasma osmolarity. Hypothalamic osmoreceptors respond by driving both ADH release, which saves water at the kidney, and thirst, which brings in more water. Both are negative feedback."
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-7",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A head injury destroys the hypothalamic neurons that make ADH, causing central diabetes insipidus. The patient has free access to water. Predict the change in each variable, compared with before the injury.",
+    "variables": [
+      {
+        "name": "ADH in the blood",
+        "answer": "down",
+        "why": "The neurons that make ADH are gone, so the posterior pituitary has none to release."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "up",
+        "why": "Without ADH, the kidney cells have few aquaporins and cannot pull water back, so large volumes of urine flow out."
+      },
+      {
+        "name": "Urine concentration",
+        "answer": "down",
+        "why": "The water that stays in the urine dilutes it."
+      },
+      {
+        "name": "Thirst",
+        "answer": "up",
+        "why": "Losing so much water raises plasma osmolarity, which excites the thirst center."
+      },
+      {
+        "name": "Water intake",
+        "answer": "up",
+        "why": "The intense thirst drives the patient to drink, which keeps plasma osmolarity from rising far."
+      }
+    ],
+    "why": {
+      "correct": "Without ADH the kidneys cannot keep water, so the patient passes large volumes of dilute urine. The thirst center, which still works, makes the patient drink enough to keep up."
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A man with a lung tumor is confused. His plasma sodium concentration is low and his plasma is dilute, yet his urine is concentrated. Which explains all of these findings?",
+    "options": [
+      "Central diabetes insipidus",
+      "Excess growth hormone from the pituitary gland",
+      "Too little oxytocin from the posterior pituitary",
+      "Too much ADH release (SIADH)"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In SIADH, ADH keeps being released even though the plasma is already dilute. The kidneys keep water, so the urine is concentrated and the plasma becomes dilute with a low sodium concentration. Water moves into brain cells, which swell, causing confusion.",
+      "options": [
+        "Diabetes insipidus is the opposite: too little ADH effect, dilute urine and concentrated plasma.",
+        "Excess growth hormone thickens bones and raises the glucose in the blood; it does not concentrate the urine and dilute the plasma.",
+        "Oxytocin acts on the uterus and breast. It does not control how much water the kidneys keep.",
+        "Correct. Too much ADH explains concentrated urine with dilute plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient's blood shows a low level of the thyroid gland's hormones and a very high level of TSH. Where is the problem most likely to be?",
+    "options": [
+      "The hypothalamus, which is making too little TRH",
+      "The anterior pituitary, which is making too little TSH",
+      "The thyroid gland itself, which is failing to make its hormones",
+      "The posterior pituitary, which stores TSH"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "If the thyroid gland fails, its hormones fall and long-loop negative feedback is lost. The hypothalamus and anterior pituitary then push harder, so TSH rises high. Low final hormone with high tropic hormone points to the target gland.",
+      "options": [
+        "A shortage of TRH would lower TSH, not raise it.",
+        "A failing anterior pituitary would make TSH low, not high.",
+        "Correct. The target gland is failing, and TSH is high because feedback has been removed.",
+        "The posterior pituitary does not store TSH; it releases ADH and oxytocin."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A woman has taken a high-dose steroid drug that copies the adrenal gland's stress steroid for two months. Her doctor warns her not to stop it suddenly. What has happened to her own adrenal axis?",
+    "options": [
+      "Her ACTH is high, so her adrenal glands have enlarged and overworked",
+      "Her adrenal glands now make ACTH for themselves",
+      "Her anterior pituitary has switched to releasing ADH instead",
+      "Her CRH and ACTH are suppressed, so her adrenal glands have shrunk"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The drug acts like the final hormone of the adrenal axis, so long-loop feedback suppresses CRH and ACTH. Without ACTH driving them, her adrenal glands shrink and make little steroid. Stopping suddenly would leave her with almost none until the axis recovers, so the dose is tapered.",
+      "options": [
+        "The drug suppresses ACTH through negative feedback; it does not raise it.",
+        "ACTH comes only from the anterior pituitary; the adrenal glands cannot make it.",
+        "ADH is released from the posterior pituitary, and the anterior pituitary does not switch to making it.",
+        "Correct. Feedback has switched off the axis above her adrenal glands."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order to show how the hypothalamus makes the anterior pituitary release a hormone.",
+    "options": [
+      "Hypothalamic neurons release a releasing hormone",
+      "The releasing hormone enters the primary capillary plexus",
+      "Hypophyseal portal veins carry it down the infundibulum",
+      "It leaves the secondary capillary plexus in the anterior pituitary",
+      "It binds receptor proteins on anterior pituitary cells",
+      "Those cells release their hormone into the blood leaving the gland"
+    ],
+    "why": {
+      "correct": "Releasing hormones travel through the hypophyseal portal system: into the first network of capillaries, down the portal veins, out of the second network among the anterior pituitary cells, where they bind receptor proteins and trigger release of the pituitary hormone."
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-12",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Put the steps in order to show how eating very salty food leads to a smaller volume of urine.",
+    "options": [
+      "Absorbed salt raises plasma osmolarity",
+      "Hypothalamic osmoreceptors lose water, shrink and fire faster",
+      "Hypothalamic neurons send action potentials down their axons",
+      "ADH is released from the posterior pituitary into the blood",
+      "ADH makes kidney cells insert aquaporins",
+      "More water returns to the blood and less urine is made"
+    ],
+    "why": {
+      "correct": "Salt raises plasma osmolarity; osmoreceptors shrink and fire; the ADH-making neurons fire and release ADH from their axon terminals in the posterior pituitary; ADH makes kidney cells add aquaporins, so more water is kept and urine volume falls."
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student described how oxytocin reaches the blood. One step is wrong. Which one?",
+    "options": [
+      "Neurons in the hypothalamus make oxytocin",
+      "Vesicles of oxytocin travel down axons through the infundibulum",
+      "Oxytocin reaches the posterior pituitary through the hypophyseal portal veins",
+      "Oxytocin is stored in axon terminals in the posterior pituitary",
+      "Action potentials trigger release of oxytocin into capillaries"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The posterior pituitary is reached by axons, not by portal veins. The hypophyseal portal system carries releasing and inhibiting hormones to the anterior pituitary.",
+      "options": [
+        "This step is right. Oxytocin is made in hypothalamic neurons, mostly in the paraventricular nuclei.",
+        "This step is right. The hormone travels inside the axons down the stalk.",
+        "This is the error. Portal veins serve the anterior pituitary; oxytocin travels down axons to the posterior pituitary.",
+        "This step is right. The posterior pituitary stores the hormone in the axon terminals.",
+        "This step is right. Nerve impulses trigger exocytosis of the stored hormone."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-14",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the gonadal axis: GnRH from the hypothalamus → ____ from the anterior pituitary → steroid hormones from the ovaries and testes.",
+    "options": [
+      "FSH and LH",
+      "TSH and ACTH",
+      "ADH and oxytocin",
+      "GH and IGF-1"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "GnRH makes the anterior pituitary release the two gonadotropins, FSH and LH, which act on the ovaries and testes.",
+      "options": [
+        "Correct. FSH and LH are the gonadotropins.",
+        "TSH and ACTH are driven by TRH and CRH and act on the thyroid and adrenal glands.",
+        "ADH and oxytocin come from the posterior pituitary and are not controlled by GnRH.",
+        "GH is driven by GHRH, and IGF-1 comes from the liver and tissues."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-15",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every tropic hormone (a hormone whose target is another endocrine gland).",
+    "options": [
+      "TSH",
+      "ACTH",
+      "Prolactin",
+      "FSH",
+      "ADH",
+      "LH"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "TSH, ACTH, FSH and LH each drive another endocrine gland: the thyroid gland, the adrenal gland's outer layer, and the gonads. Prolactin acts on the breast's milk-producing glands and ADH on the kidneys and blood vessels, which are not endocrine glands.",
+      "options": [
+        "Correct. TSH drives the thyroid gland.",
+        "Correct. ACTH drives the outer layer of the adrenal gland.",
+        "Prolactin acts on the milk-producing glands of the breast, which are not endocrine glands.",
+        "Correct. FSH drives the gonads.",
+        "ADH acts on the kidneys and blood vessels, not on another endocrine gland.",
+        "Correct. LH drives the gonads."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "How does growth hormone make a child's long bones lengthen?",
+    "options": [
+      "It makes osteoclasts remove bone at the ends of the shaft so it can extend outward",
+      "It closes the epiphyseal plates early so the shafts grow thicker",
+      "It triggers IGF-1 release, which makes epiphyseal plate chondrocytes divide",
+      "It acts on the bones only by raising the glucose level in the blood"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Most of GH's growth effect runs through IGF-1. IGF-1 makes chondrocytes in the epiphyseal plates divide, the cartilage is then replaced by bone, and the bone lengthens.",
+      "options": [
+        "Osteoclasts break bone down; they do not lengthen it.",
+        "GH does not close the plates; they close under other hormones at the end of puberty, after which GH can only thicken bone.",
+        "Correct. IGF-1 drives cartilage growth at the epiphyseal plates.",
+        "The rise in glucose is a separate fuel effect of GH, not how it lengthens bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Why does drinking alcohol make you pass more urine than the volume of the drink?",
+    "options": [
+      "Alcohol triggers thirst, so you drink more",
+      "Alcohol stimulates oxytocin, which squeezes the bladder",
+      "Alcohol makes the kidneys insert more aquaporins",
+      "Alcohol inhibits ADH release, so the kidneys keep less water"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Alcohol suppresses ADH release. With less ADH, the kidney cells have fewer aquaporins, less water returns to the blood, and more urine is made.",
+      "options": [
+        "Thirst makes you drink more; it does not make the kidneys pass more urine.",
+        "Oxytocin acts on the uterus and breast, not on the bladder.",
+        "More aquaporins would make the kidneys keep more water and pass less urine.",
+        "Correct. Less ADH means less water kept by the kidneys."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-18",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-17-10",
+    "q": "In this figure, which hormone released from the liver feeds back to the hypothalamus to hold growth hormone release down?",
+    "options": [
+      "Growth hormone–releasing hormone",
+      "IGF-1",
+      "Glucose",
+      "Growth hormone–inhibiting hormone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The orange arrow with a minus sign runs from IGF-1, released by the liver, back to the hypothalamus. IGF-1 makes the hypothalamus release the inhibiting hormone (somatostatin) and less GHRH, so GH release falls.",
+      "options": [
+        "GHRH is the hypothalamic hormone that drives GH release; it is released by the hypothalamus, not by the liver.",
+        "Correct. IGF-1 from the liver is the feedback signal.",
+        "The liver releases glucose too, but in this figure glucose fuels growth; it is not the feedback arrow.",
+        "The inhibiting hormone is what the hypothalamus releases in response to the feedback; it does not come from the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-19",
+    "type": "graph",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-17-9",
+    "q": "In this figure, where do the hormones released by hypothalamic neurons first enter the blood?",
+    "options": [
+      "The secondary capillary plexus spread through the anterior pituitary",
+      "The vein leaving the bottom of the anterior pituitary",
+      "The capillaries of the posterior pituitary",
+      "The primary capillary plexus at the top of the infundibulum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Hypothalamic neurons release their releasing and inhibiting hormones into the primary capillary plexus, at the top of the infundibulum. Portal veins then carry them down to the secondary plexus in the anterior pituitary.",
+      "options": [
+        "The secondary plexus is where the hormones leave the blood to reach the anterior pituitary cells, the second network, not the first.",
+        "The vein leaving the gland carries the anterior pituitary's own hormones out to the body.",
+        "The posterior pituitary is drawn only in outline here and is reached by axons, not by the portal system.",
+        "Correct. The primary capillary plexus is the first network."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-20",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "labor cannot progress without oxytocin",
+    "q": "A woman in labor has weak contractions, and the midwife starts an infusion of synthetic oxytocin. What does it do?",
+    "options": [
+      "It makes the uterus contract more strongly",
+      "It dilates the blood vessels of the uterus",
+      "It relaxes the uterus so the baby can move down",
+      "It makes the breast start producing milk"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Oxytocin binds receptor proteins on uterine smooth muscle, which adds many of them late in pregnancy, and makes it contract more strongly. Normally it does this through a positive feedback loop driven by stretch of the lower uterus.",
+      "options": [
+        "Correct. Oxytocin strengthens uterine contractions.",
+        "Oxytocin's main action is on the muscle of the uterus, not on its blood vessels.",
+        "Oxytocin makes the uterus contract, not relax.",
+        "Milk production is driven by prolactin. Oxytocin moves milk out; it does not make it."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "During labor, the baby's head stretches the lower uterus, oxytocin is released, contractions strengthen, and the head presses harder. What kind of loop is this, and what ends it?",
+    "options": [
+      "Negative feedback, ended when oxytocin runs out",
+      "Negative feedback, ended when contractions become too strong",
+      "Positive feedback, ended by the birth of the baby",
+      "Positive feedback, ended by rising ADH"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each round of the loop makes the stimulus, stretch, stronger: positive feedback. It stops when the baby is delivered and the lower uterus is no longer stretched.",
+      "options": [
+        "The loop amplifies the change instead of reversing it, so it is not negative feedback, and oxytocin does not simply run out.",
+        "The loop drives contractions stronger; it does not oppose them, so it is not negative feedback.",
+        "Correct. Positive feedback, which ends when its stimulus is removed by birth.",
+        "ADH has no role in ending the labor loop."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-22",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A pituitary tumor grows upward out of the sella turcica. The patient first notices bumping into door frames on both sides. Why?",
+    "options": [
+      "It presses on the optic chiasm, where fibers for side vision cross",
+      "Growth hormone from the tumor enlarges the eyes and distorts vision",
+      "The tumor spreads back and destroys both occipital lobes",
+      "The tumor blocks ADH release, which dries the surface of the eyes"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The optic chiasm lies just above the pituitary gland. Its crossing fibers carry the outer (side) half of each eye's visual field, so a tumor pressing up on it removes side vision in both eyes.",
+      "options": [
+        "Correct. Pressure on the optic chiasm removes both outer visual fields.",
+        "Growth hormone does not enlarge the eyes, and the problem here is a loss of side vision.",
+        "The occipital lobes lie far away at the back of the brain; a pituitary tumor does not reach them.",
+        "Lack of ADH causes large volumes of urine, not loss of side vision."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A new mother makes plenty of milk but has trouble getting it out when her baby feeds. Which hormone's action is most likely weak?",
+    "options": [
+      "Prolactin",
+      "FSH",
+      "TSH",
+      "Oxytocin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Prolactin makes milk; oxytocin, released when the baby suckles, makes the cells around the milk-filled sacs contract and push milk toward the nipple. Plenty of milk that will not come out points to oxytocin.",
+      "options": [
+        "Prolactin makes the milk, and she has plenty.",
+        "FSH acts on the ovaries and testes, not the breast.",
+        "TSH acts on the thyroid gland, not the breast.",
+        "Correct. Oxytocin moves milk out of the breast."
+      ]
+    }
+  },
+  {
+    "id": "anp-hypothalamus-pituitary-24",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which hypothalamic hormone holds back growth hormone release?",
+    "options": [
+      "Somatostatin",
+      "Growth hormone–releasing hormone",
+      "Dopamine",
+      "CRH"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Somatostatin, also called growth hormone–inhibiting hormone, holds back GH release. GHRH drives it.",
+      "options": [
+        "Correct. Somatostatin inhibits GH release.",
+        "GHRH is the releasing hormone for GH; it raises GH.",
+        "Dopamine is the main hormone holding back prolactin.",
+        "CRH drives ACTH release, not GH."
+      ]
+    }
+  }
+]

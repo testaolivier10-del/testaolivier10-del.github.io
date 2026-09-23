@@ -1,0 +1,48 @@
+{
+  "topic": "erythrocytes",
+  "hook": "<p>Mr. Okafor, 58, has felt tired for months and now gets breathless climbing one flight of stairs. He looks pale. His hemoglobin is 8.9 g/dL, and his red blood cells are small and pale. A stool test finds traces of blood: a slow bleed somewhere in his gut has been draining his iron for a year. To see how a hidden bleed turns into small, pale red cells, you need to follow a red blood cell from the marrow to its breakdown.</p>",
+  "prereq": [
+    {
+      "q": "In a negative feedback loop, what does the response do to the stimulus?",
+      "options": ["It amplifies the stimulus", "It opposes the stimulus", "It has no effect on the stimulus"],
+      "correct": 1,
+      "why": "In negative feedback, the response pushes the variable back toward its set point, so it opposes, or removes, the stimulus that started the loop.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "Which organ releases erythropoietin when the oxygen reaching it falls?",
+      "options": ["The liver", "The kidneys", "The red bone marrow"],
+      "correct": 1,
+      "why": "Most erythropoietin comes from cells in the kidneys that sense low oxygen. The marrow is its target, not its source.",
+      "review": "other-endocrine"
+    },
+    {
+      "q": "A spun blood sample has a hematocrit of 45%. What does that number mean?",
+      "options": ["45% of the blood volume is red blood cells", "45% of the blood's cells are red blood cells", "The blood holds 45 g of red cells per liter"],
+      "correct": 0,
+      "why": "The hematocrit is the percentage of a blood sample's volume made up of red blood cells.",
+      "review": "blood-composition"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-18-7",
+    "caption": "Hemoglobin. Hide the labels and name the four protein chains, the ring each one holds, and the ion at the center of each ring."
+  },
+  "chain": [
+    { "cause": "Fewer red cells, thinner air or weak lungs lower the oxygen reaching the kidneys.", "effect": "Oxygen-sensing cells in the kidney tissue switch on the erythropoietin gene and release erythropoietin (EPO) into the blood." },
+    { "cause": "EPO reaches the red bone marrow and binds receptor proteins on erythroid precursors.", "effect": "More precursors survive, divide and fill with hemoglobin, and reticulocytes pour into the blood within 3–5 days." },
+    { "cause": "Over weeks, the extra reticulocytes mature into erythrocytes.", "effect": "The red cell count and hemoglobin rise, so each liter of blood carries more oxygen." },
+    { "cause": "More oxygen now reaches the kidneys.", "effect": "The stimulus is removed, EPO release falls, and red cell production slows to its resting rate: negative feedback." }
+  ],
+  "misconception": {
+    "wrong": "Anemia means iron deficiency.",
+    "right": "Anemia means the blood holds too little hemoglobin to carry a normal load of oxygen, from any cause. Iron deficiency is the most common cause, but bleeding, a lack of vitamin B12 or folate, marrow failure, too little erythropoietin from failing kidneys, and early destruction of red cells, as in sickle cell disease, all cause anemia too. Giving iron to someone whose anemia has another cause does not help and can load the body with iron it cannot excrete."
+  },
+  "check": ["anp-erythrocytes-3", "anp-erythrocytes-5", "anp-erythrocytes-8", "anp-erythrocytes-10", "anp-erythrocytes-11", "anp-erythrocytes-13", "anp-erythrocytes-20"],
+  "summary": "<p>Erythrocytes are biconcave discs with no nucleus or organelles, packed with hemoglobin: four globin chains (two alpha, two beta in adults), each holding a heme ring with an iron ion that binds one oxygen molecule. They make ATP by glycolysis and live about 120 days. Erythropoiesis in red marrow passes through erythroblasts and reticulocytes, needs iron, vitamin B12 and folate, and is driven by erythropoietin from the kidneys in a negative feedback loop that senses oxygen delivery. Macrophages in the spleen, liver and marrow destroy old cells: globin becomes amino acids, iron travels on transferrin to the marrow or into storage as ferritin and hemosiderin, and heme becomes biliverdin and then bilirubin, which the liver conjugates and secretes in bile. Excess bilirubin causes jaundice. Anemia, a shortage of hemoglobin, comes from blood loss, too little production (iron, B12, EPO or marrow failure) or early destruction (sickle cell disease, thalassemia); the reticulocyte count and cell size help tell them apart. Polycythemia, too many red cells, thickens the blood.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-29", "label": "NREMT: Bleeding control" },
+    { "href": "/ochem/lessons/amino-acids.html", "label": "Organic chemistry: amino acids" }
+  ]
+}

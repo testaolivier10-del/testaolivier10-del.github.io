@@ -11052,6 +11052,2341 @@
      }
     }
    ]
+  },
+  {
+    "id": "tonic-phasic",
+    "title": "Tonic and phasic sensory receptors",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "intro": "A steady press is held on the skin from 1 to 4 seconds (top). Below it are the firing rates recorded from the sensory neurons of two kinds of sensory receptor under that press: a tonic (slowly adapting) one and a phasic (rapidly adapting) one.",
+    "alt": "Two panels over 5 seconds. Top: pressure on the skin, zero until 1 s, then steady until 4 s, then zero. Bottom: firing rate. The tonic sensory receptor jumps to about 70 action potentials per second at 1 s and declines slowly to about 46 by 4 s, then stops. The phasic one fires a brief burst of about 85 at 1 s, falls silent within a quarter second while the press is held, and fires another brief burst of about 60 when the press ends at 4 s.",
+    "x": {
+      "min": 0,
+      "max": 5,
+      "label": "Time",
+      "unit": "s",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "regions": [
+      {
+        "id": "onset",
+        "x0": 0.95,
+        "x1": 1.3,
+        "label": "press starts"
+      },
+      {
+        "id": "hold",
+        "x0": 1.3,
+        "x1": 4,
+        "label": "press held steady"
+      },
+      {
+        "id": "offset",
+        "x0": 4,
+        "x1": 4.3,
+        "label": "press ends"
+      }
+    ],
+    "panels": [
+      {
+        "h": 0.45,
+        "y": {
+          "min": 0,
+          "max": 1.3,
+          "label": "Pressure",
+          "unitless": true,
+          "ticks": [
+            0,
+            1
+          ]
+        },
+        "series": [
+          {
+            "id": "press",
+            "cls": "accent",
+            "pts": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1.02,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                4.02,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ],
+            "label": "steady press",
+            "labelAt": [
+              2.2,
+              1.12
+            ]
+          }
+        ]
+      },
+      {
+        "y": {
+          "min": 0,
+          "max": 100,
+          "label": "Firing rate",
+          "unit": "action potentials/s",
+          "ticks": [
+            0,
+            20,
+            40,
+            60,
+            80,
+            100
+          ]
+        },
+        "series": [
+          {
+            "id": "tonic",
+            "cls": "aff",
+            "pts": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1.02,
+                70
+              ],
+              [
+                1.3,
+                58
+              ],
+              [
+                2,
+                52
+              ],
+              [
+                3,
+                48
+              ],
+              [
+                4,
+                46
+              ],
+              [
+                4.02,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ],
+            "label": "tonic",
+            "labelAt": [
+              2.3,
+              58
+            ]
+          },
+          {
+            "id": "phasic",
+            "cls": "shape",
+            "pts": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1.02,
+                85
+              ],
+              [
+                1.12,
+                40
+              ],
+              [
+                1.25,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4.02,
+                60
+              ],
+              [
+                4.12,
+                20
+              ],
+              [
+                4.25,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ],
+            "label": "phasic",
+            "labelAt": [
+              1.35,
+              84
+            ]
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "tonic-rate",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "Read the tonic sensory receptor’s firing rate two seconds into the press, at 3 s.",
+        "answer": 48,
+        "tol": 5,
+        "unit": "action potentials/s",
+        "show": {
+          "x": 3,
+          "y": 48,
+          "panel": 1
+        },
+        "why": "About 48 per second, down only a little from its first 70. A tonic sensory receptor keeps reporting a steady stimulus for as long as it lasts, with only a small drop in frequency."
+      },
+      {
+        "id": "phasic-silent",
+        "type": "phase",
+        "level": "apply",
+        "diff": 1,
+        "q": "During which part of the record is the phasic sensory receptor silent even though the press is still on?",
+        "options": [
+          "While the press is held steady",
+          "As the press starts",
+          "As the press ends",
+          "At no time: it fires throughout"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "hold"
+        },
+        "why": {
+          "correct": "A phasic sensory receptor signals change. Once the pressure stops changing, it adapts and falls silent, which is why you stop feeling a watch strap.",
+          "options": [
+            "Right: steady pressure, no signal.",
+            "As the press starts it fires its strongest burst: the pressure is changing.",
+            "As the press is released it fires again, because removing the pressure is also a change.",
+            "Its line drops to zero within a quarter second of the press starting."
+          ]
+        }
+      },
+      {
+        "id": "firmer-press",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 2,
+        "q": "The press is repeated at twice the pressure. How does the tonic line change while the press is held?",
+        "options": [
+          "It runs higher throughout, with the same slow decline",
+          "It rises at first but reaches zero sooner",
+          "It does not change, because action potentials are all-or-none",
+          "It stays the same height, but each action potential is taller"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "tonic-firm",
+              "cls": "hi",
+              "dash": true,
+              "panel": 1,
+              "pts": [
+                [
+                  1.02,
+                  92
+                ],
+                [
+                  1.3,
+                  80
+                ],
+                [
+                  2,
+                  74
+                ],
+                [
+                  3,
+                  70
+                ],
+                [
+                  4,
+                  68
+                ]
+              ],
+              "label": "twice the press",
+              "labelAt": [
+                2.3,
+                82
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "A firmer press opens more channels and gives a larger receptor potential, which holds the trigger zone further above threshold, so the neuron fires more often. Strength is coded as frequency.",
+          "options": [
+            "Right: stronger stimulus, higher frequency.",
+            "Adaptation in a tonic sensory receptor is slow whatever the strength; it keeps firing while the press lasts.",
+            "All-or-none fixes the size of each action potential, not how often they fire.",
+            "Each action potential is the same size. Only the rate, and the number of neurons firing, can change."
+          ]
+        }
+      },
+      {
+        "id": "which-for-injury",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "Which line behaves like the nociceptors that keep reporting a sprained ankle for as long as the injury lasts?",
+        "options": [
+          "The tonic line",
+          "The phasic line",
+          "The pressure line",
+          "Neither: pain sensors do not fire steadily"
+        ],
+        "correct": 0,
+        "highlight": {
+          "path": [
+            [
+              1.02,
+              70
+            ],
+            [
+              1.3,
+              58
+            ],
+            [
+              2,
+              52
+            ],
+            [
+              3,
+              48
+            ],
+            [
+              4,
+              46
+            ]
+          ],
+          "label": "tonic"
+        },
+        "why": {
+          "correct": "Nociceptors are tonic: they keep firing while the damage lasts, so pain stays reported for as long as it matters.",
+          "options": [
+            "Right: nociceptors, proprioceptors and the stretch sensors in artery walls are tonic.",
+            "Phasic sensory receptors, such as lamellated corpuscles, fall silent during a steady stimulus. An injury reported that way would be forgotten within a second.",
+            "The pressure line is the stimulus, not a sensory receptor’s response.",
+            "Nociceptors are among the most tonic sensory receptors of all."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "pigment-absorbance",
+    "title": "Light absorbed by the three cone pigments and rhodopsin",
+    "topic": "vision",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "intro": "Each curve shows how strongly one photoreceptor pigment absorbs light of each wavelength, scaled so its own peak is 1. The peaks are measured values; the curves are drawn smooth and symmetrical for clarity.",
+    "alt": "Relative absorbance from 0 to 1 against wavelength from 380 to 700 nanometers. Four overlapping bell-shaped curves peak at 420 nm (short-wavelength cones), 498 nm (rods), 534 nm (medium-wavelength cones) and 564 nm (long-wavelength cones).",
+    "x": {
+      "min": 380,
+      "max": 700,
+      "label": "Wavelength of light",
+      "unit": "nm",
+      "ticks": [
+        400,
+        450,
+        500,
+        550,
+        600,
+        650,
+        700
+      ]
+    },
+    "panels": [
+      {
+        "y": {
+          "min": 0,
+          "max": 1.1,
+          "label": "Relative absorbance",
+          "unitless": true,
+          "ticks": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ]
+        },
+        "series": [
+          {
+            "id": "s",
+            "cls": "lo",
+            "curve": "smooth",
+            "pts": [
+              [
+                380,
+                0.36
+              ],
+              [
+                390,
+                0.56
+              ],
+              [
+                400,
+                0.77
+              ],
+              [
+                410,
+                0.94
+              ],
+              [
+                420,
+                1
+              ],
+              [
+                430,
+                0.94
+              ],
+              [
+                440,
+                0.77
+              ],
+              [
+                450,
+                0.56
+              ],
+              [
+                460,
+                0.36
+              ],
+              [
+                470,
+                0.2
+              ],
+              [
+                480,
+                0.1
+              ],
+              [
+                490,
+                0.04
+              ],
+              [
+                500,
+                0.02
+              ],
+              [
+                510,
+                0.01
+              ],
+              [
+                520,
+                0
+              ],
+              [
+                530,
+                0
+              ],
+              [
+                540,
+                0
+              ],
+              [
+                550,
+                0
+              ],
+              [
+                560,
+                0
+              ],
+              [
+                570,
+                0
+              ],
+              [
+                580,
+                0
+              ],
+              [
+                590,
+                0
+              ],
+              [
+                600,
+                0
+              ],
+              [
+                610,
+                0
+              ],
+              [
+                620,
+                0
+              ],
+              [
+                630,
+                0
+              ],
+              [
+                640,
+                0
+              ],
+              [
+                650,
+                0
+              ],
+              [
+                660,
+                0
+              ],
+              [
+                670,
+                0
+              ],
+              [
+                680,
+                0
+              ],
+              [
+                690,
+                0
+              ],
+              [
+                700,
+                0
+              ]
+            ],
+            "label": "S cones 420",
+            "labelAt": [
+              392,
+              1.04
+            ]
+          },
+          {
+            "id": "rod",
+            "cls": "shape",
+            "curve": "smooth",
+            "pts": [
+              [
+                380,
+                0.01
+              ],
+              [
+                390,
+                0.03
+              ],
+              [
+                400,
+                0.05
+              ],
+              [
+                410,
+                0.09
+              ],
+              [
+                420,
+                0.15
+              ],
+              [
+                430,
+                0.24
+              ],
+              [
+                440,
+                0.35
+              ],
+              [
+                450,
+                0.49
+              ],
+              [
+                460,
+                0.64
+              ],
+              [
+                470,
+                0.78
+              ],
+              [
+                480,
+                0.9
+              ],
+              [
+                490,
+                0.98
+              ],
+              [
+                500,
+                1
+              ],
+              [
+                510,
+                0.96
+              ],
+              [
+                520,
+                0.86
+              ],
+              [
+                530,
+                0.73
+              ],
+              [
+                540,
+                0.58
+              ],
+              [
+                550,
+                0.43
+              ],
+              [
+                560,
+                0.3
+              ],
+              [
+                570,
+                0.2
+              ],
+              [
+                580,
+                0.12
+              ],
+              [
+                590,
+                0.07
+              ],
+              [
+                600,
+                0.04
+              ],
+              [
+                610,
+                0.02
+              ],
+              [
+                620,
+                0.01
+              ],
+              [
+                630,
+                0
+              ],
+              [
+                640,
+                0
+              ],
+              [
+                650,
+                0
+              ],
+              [
+                660,
+                0
+              ],
+              [
+                670,
+                0
+              ],
+              [
+                680,
+                0
+              ],
+              [
+                690,
+                0
+              ],
+              [
+                700,
+                0
+              ]
+            ],
+            "label": "rods 498",
+            "labelAt": [
+              470,
+              1.06
+            ]
+          },
+          {
+            "id": "m",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                380,
+                0
+              ],
+              [
+                390,
+                0
+              ],
+              [
+                400,
+                0.01
+              ],
+              [
+                410,
+                0.01
+              ],
+              [
+                420,
+                0.03
+              ],
+              [
+                430,
+                0.05
+              ],
+              [
+                440,
+                0.08
+              ],
+              [
+                450,
+                0.14
+              ],
+              [
+                460,
+                0.21
+              ],
+              [
+                470,
+                0.31
+              ],
+              [
+                480,
+                0.44
+              ],
+              [
+                490,
+                0.58
+              ],
+              [
+                500,
+                0.72
+              ],
+              [
+                510,
+                0.85
+              ],
+              [
+                520,
+                0.95
+              ],
+              [
+                530,
+                1
+              ],
+              [
+                540,
+                0.99
+              ],
+              [
+                550,
+                0.93
+              ],
+              [
+                560,
+                0.83
+              ],
+              [
+                570,
+                0.69
+              ],
+              [
+                580,
+                0.55
+              ],
+              [
+                590,
+                0.41
+              ],
+              [
+                600,
+                0.29
+              ],
+              [
+                610,
+                0.19
+              ],
+              [
+                620,
+                0.12
+              ],
+              [
+                630,
+                0.07
+              ],
+              [
+                640,
+                0.04
+              ],
+              [
+                650,
+                0.02
+              ],
+              [
+                660,
+                0.01
+              ],
+              [
+                670,
+                0.01
+              ],
+              [
+                680,
+                0
+              ],
+              [
+                690,
+                0
+              ],
+              [
+                700,
+                0
+              ]
+            ],
+            "label": "M cones 534",
+            "labelAt": [
+              522,
+              1.08
+            ]
+          },
+          {
+            "id": "l",
+            "cls": "hi",
+            "curve": "smooth",
+            "pts": [
+              [
+                380,
+                0
+              ],
+              [
+                390,
+                0
+              ],
+              [
+                400,
+                0
+              ],
+              [
+                410,
+                0
+              ],
+              [
+                420,
+                0.01
+              ],
+              [
+                430,
+                0.01
+              ],
+              [
+                440,
+                0.02
+              ],
+              [
+                450,
+                0.04
+              ],
+              [
+                460,
+                0.07
+              ],
+              [
+                470,
+                0.11
+              ],
+              [
+                480,
+                0.18
+              ],
+              [
+                490,
+                0.26
+              ],
+              [
+                500,
+                0.36
+              ],
+              [
+                510,
+                0.49
+              ],
+              [
+                520,
+                0.62
+              ],
+              [
+                530,
+                0.75
+              ],
+              [
+                540,
+                0.87
+              ],
+              [
+                550,
+                0.95
+              ],
+              [
+                560,
+                1
+              ],
+              [
+                570,
+                0.99
+              ],
+              [
+                580,
+                0.94
+              ],
+              [
+                590,
+                0.85
+              ],
+              [
+                600,
+                0.73
+              ],
+              [
+                610,
+                0.59
+              ],
+              [
+                620,
+                0.46
+              ],
+              [
+                630,
+                0.34
+              ],
+              [
+                640,
+                0.24
+              ],
+              [
+                650,
+                0.16
+              ],
+              [
+                660,
+                0.1
+              ],
+              [
+                670,
+                0.06
+              ],
+              [
+                680,
+                0.04
+              ],
+              [
+                690,
+                0.02
+              ],
+              [
+                700,
+                0.01
+              ]
+            ],
+            "label": "L cones 564",
+            "labelAt": [
+              572,
+              1.03
+            ]
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "rod-peak",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the wavelength that rhodopsin, the rod pigment, absorbs best.",
+        "answer": 498,
+        "tol": 6,
+        "unit": "nm",
+        "show": {
+          "x": 498,
+          "y": 1
+        },
+        "why": "About 498 nm, blue-green light. That sits between the S and M cone peaks, which is part of why blue-green objects look relatively bright at dusk, when rods take over."
+      },
+      {
+        "id": "orange-light",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "Orange light of 600 nm reaches the retina. Which pigment absorbs it most strongly?",
+        "options": [
+          "L cones",
+          "M cones",
+          "S cones",
+          "Rods"
+        ],
+        "correct": 0,
+        "highlight": {
+          "x0": 595,
+          "x1": 605,
+          "label": "600 nm"
+        },
+        "why": {
+          "correct": "At 600 nm the L curve is highest, the M curve lower and the S curve near zero. The brain reads the color from that ratio: strong L, some M, almost no S.",
+          "options": [
+            "Right: L cones absorb it most.",
+            "M cones absorb 600 nm light, but less than L cones do; their curve has fallen well below its peak.",
+            "S cones barely absorb beyond about 500 nm.",
+            "Rods absorb little at 600 nm, and in bright light they are saturated anyway."
+          ]
+        }
+      },
+      {
+        "id": "l-at-600",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "Read the L cone pigment’s relative absorbance at 600 nm.",
+        "answer": 0.73,
+        "tol": 0.07,
+        "unit": "",
+        "show": {
+          "x": 600,
+          "y": 0.73
+        },
+        "why": "About 0.7: the L pigment absorbs 600 nm light at roughly 70% of its best. Every cone type responds over a wide range, so a single cone cannot tell a dim light at its peak from a brighter light off its peak. Only comparing cone types gives color."
+      },
+      {
+        "id": "shifted-l",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "In one form of red–green color blindness, the L pigment is altered so that its peak moves toward the M pigment’s. How does the L curve change?",
+        "options": [
+          "It moves left, to shorter wavelengths, overlapping the M curve more",
+          "It moves right, to longer wavelengths",
+          "It keeps its place but grows taller",
+          "It disappears completely"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "l-shifted",
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  380,
+                  0
+                ],
+                [
+                  390,
+                  0
+                ],
+                [
+                  400,
+                  0.01
+                ],
+                [
+                  410,
+                  0.01
+                ],
+                [
+                  420,
+                  0.02
+                ],
+                [
+                  430,
+                  0.04
+                ],
+                [
+                  440,
+                  0.07
+                ],
+                [
+                  450,
+                  0.11
+                ],
+                [
+                  460,
+                  0.17
+                ],
+                [
+                  470,
+                  0.25
+                ],
+                [
+                  480,
+                  0.35
+                ],
+                [
+                  490,
+                  0.47
+                ],
+                [
+                  500,
+                  0.61
+                ],
+                [
+                  510,
+                  0.74
+                ],
+                [
+                  520,
+                  0.86
+                ],
+                [
+                  530,
+                  0.95
+                ],
+                [
+                  540,
+                  0.99
+                ],
+                [
+                  550,
+                  0.99
+                ],
+                [
+                  560,
+                  0.95
+                ],
+                [
+                  570,
+                  0.86
+                ],
+                [
+                  580,
+                  0.74
+                ],
+                [
+                  590,
+                  0.61
+                ],
+                [
+                  600,
+                  0.47
+                ],
+                [
+                  610,
+                  0.35
+                ],
+                [
+                  620,
+                  0.25
+                ],
+                [
+                  630,
+                  0.17
+                ],
+                [
+                  640,
+                  0.11
+                ],
+                [
+                  650,
+                  0.07
+                ],
+                [
+                  660,
+                  0.04
+                ],
+                [
+                  670,
+                  0.02
+                ],
+                [
+                  680,
+                  0.01
+                ],
+                [
+                  690,
+                  0.01
+                ],
+                [
+                  700,
+                  0
+                ]
+              ],
+              "label": "altered L 545",
+              "labelAt": [
+                600,
+                0.88
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "With the L curve sitting almost on top of the M curve, reds, oranges and greens excite the two cone types in nearly the same ratio, so they look alike.",
+          "options": [
+            "Right: it slides toward M.",
+            "Moving right would separate L from M further, which would sharpen red–green discrimination, not blunt it.",
+            "The height is scaled to 1 for every pigment; color vision depends on where the curves sit, not how tall they are drawn.",
+            "Losing the pigment entirely is another form of red–green color blindness, but this one alters it."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dark-adaptation",
+    "title": "Dark adaptation",
+    "topic": "vision",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "intro": "After time in bright light, a person sits in total darkness while the dimmest light they can detect is measured. Sensitivity is plotted in log units: each unit is a tenfold gain, so 4 log units means lights 10,000 times dimmer can be seen.",
+    "alt": "Sensitivity gained, in log units, against time in the dark from 0 to 35 minutes. A cone branch rises quickly to about 1.6 log units by 8 to 10 minutes and levels off. A rod branch takes over at about 8 minutes (the rod–cone break) and keeps rising to about 4 log units by 30 minutes.",
+    "x": {
+      "min": 0,
+      "max": 35,
+      "label": "Time in the dark",
+      "unit": "min",
+      "ticks": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ]
+    },
+    "regions": [
+      {
+        "id": "cone-limited",
+        "x0": 0,
+        "x1": 8,
+        "label": "cones set sensitivity"
+      },
+      {
+        "id": "rod-limited",
+        "x0": 8,
+        "x1": 35,
+        "label": "rods set sensitivity"
+      }
+    ],
+    "vlines": [
+      {
+        "x": 8,
+        "label": "rod–cone break"
+      }
+    ],
+    "panels": [
+      {
+        "y": {
+          "min": 0,
+          "max": 4.5,
+          "label": "Sensitivity gained",
+          "unit": "log units",
+          "ticks": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "series": [
+          {
+            "id": "cones",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0.6
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                1.25
+              ],
+              [
+                4,
+                1.4
+              ],
+              [
+                5,
+                1.5
+              ],
+              [
+                7,
+                1.58
+              ],
+              [
+                10,
+                1.6
+              ],
+              [
+                20,
+                1.6
+              ],
+              [
+                35,
+                1.6
+              ]
+            ],
+            "label": "cones",
+            "labelAt": [
+              20,
+              1.35
+            ]
+          },
+          {
+            "id": "rods",
+            "cls": "shape",
+            "curve": "smooth",
+            "pts": [
+              [
+                6,
+                1.1
+              ],
+              [
+                7,
+                1.35
+              ],
+              [
+                8,
+                1.6
+              ],
+              [
+                10,
+                2.1
+              ],
+              [
+                12,
+                2.6
+              ],
+              [
+                15,
+                3.1
+              ],
+              [
+                20,
+                3.6
+              ],
+              [
+                25,
+                3.9
+              ],
+              [
+                30,
+                4
+              ],
+              [
+                35,
+                4.05
+              ]
+            ],
+            "label": "rods",
+            "labelAt": [
+              21,
+              3.85
+            ]
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "gain-20",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "Read how much sensitivity has been gained after 20 minutes in the dark.",
+        "answer": 3.6,
+        "tol": 0.25,
+        "unit": "log units",
+        "show": {
+          "x": 20,
+          "y": 3.6
+        },
+        "why": "About 3.6 log units, so lights about 4,000 times dimmer than at first can now be seen. Almost all of that gain comes from rods rebuilding rhodopsin."
+      },
+      {
+        "id": "break-time",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "Read the time of the rod–cone break, where the rods take over.",
+        "answer": 8,
+        "tol": 1.5,
+        "unit": "min",
+        "show": {
+          "x": 8,
+          "y": 1.6
+        },
+        "why": "About 8 minutes. Before it, the cones, which recover within about 10 minutes, are the more sensitive; after it, the slowly recovering rods pull ahead."
+      },
+      {
+        "id": "cone-part",
+        "type": "phase",
+        "level": "apply",
+        "diff": 1,
+        "q": "During which stretch is your sensitivity set by the cones?",
+        "options": [
+          "Roughly the first 8 minutes",
+          "From about 8 to 35 minutes",
+          "Only after 30 minutes",
+          "The whole 35 minutes"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "cone-limited"
+        },
+        "why": {
+          "correct": "Cone pigment is rebuilt quickly, so cone sensitivity rises first, but it levels off low. For the first minutes the cones are still more sensitive than the bleached rods.",
+          "options": [
+            "Right: the early, quick branch.",
+            "After the break the rods are more sensitive, so they set the threshold.",
+            "By 30 minutes the rods have long since taken over.",
+            "The curve has two branches: cones first, then rods."
+          ]
+        }
+      },
+      {
+        "id": "vitamin-shortage",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "A person with a severe shortage of the dietary vitamin that retinal is made from sits in the dark. How does the curve change?",
+        "options": [
+          "The rod branch rises far less, leaving poor night vision",
+          "The cone branch disappears, but the rod branch is normal",
+          "The whole curve reaches 4 log units sooner",
+          "Nothing changes, because retinal is recycled"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "rods-low",
+              "cls": "lo",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  8,
+                  1.6
+                ],
+                [
+                  10,
+                  1.75
+                ],
+                [
+                  15,
+                  1.9
+                ],
+                [
+                  20,
+                  2
+                ],
+                [
+                  30,
+                  2.05
+                ],
+                [
+                  35,
+                  2.05
+                ]
+              ],
+              "label": "vitamin shortage",
+              "labelAt": [
+                22,
+                2.3
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "Without enough retinal, too little rhodopsin can be built, so the rods never become very sensitive: night blindness. Cones need less pigment to work in their bright-light range, so their branch suffers less at first.",
+          "options": [
+            "Right: the rod branch is stunted.",
+            "Rods depend most on rhodopsin, so they are hit hardest; the rod branch is what fails.",
+            "Less pigment slows and limits adaptation; it cannot speed it up.",
+            "Retinal is recycled, but some is lost, and a long shortage leaves too little to rebuild rhodopsin."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "near-point-age",
+    "title": "The near point moves away with age",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "intro": "The near point is the closest distance at which you can bring small print into focus. These are classic average values for eyes with normal distance vision.",
+    "alt": "Near point in centimeters against age from 10 to 60 years. The curve rises slowly from about 7 cm at 10 years to about 22 cm at 40, then steeply: about 29 cm at 45, 40 cm at 50, 57 cm at 55 and 100 cm at 60. A horizontal line marks a typical reading distance of 35 cm.",
+    "x": {
+      "min": 10,
+      "max": 60,
+      "label": "Age",
+      "unit": "years",
+      "ticks": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "regions": [
+      {
+        "id": "slow",
+        "x0": 10,
+        "x1": 40,
+        "label": "slow drift"
+      },
+      {
+        "id": "steep",
+        "x0": 40,
+        "x1": 60,
+        "label": "presbyopia"
+      }
+    ],
+    "panels": [
+      {
+        "y": {
+          "min": 0,
+          "max": 110,
+          "label": "Near point",
+          "unit": "cm",
+          "ticks": [
+            0,
+            20,
+            40,
+            60,
+            80,
+            100
+          ]
+        },
+        "hlines": [
+          {
+            "y": 35,
+            "label": "typical reading distance",
+            "cls": "accent",
+            "dash": true,
+            "faint": true,
+            "at": 11
+          }
+        ],
+        "series": [
+          {
+            "id": "near",
+            "cls": "shape",
+            "curve": "smooth",
+            "pts": [
+              [
+                10,
+                7.1
+              ],
+              [
+                15,
+                8.3
+              ],
+              [
+                20,
+                10
+              ],
+              [
+                25,
+                11.8
+              ],
+              [
+                30,
+                14.3
+              ],
+              [
+                35,
+                18.2
+              ],
+              [
+                40,
+                22.2
+              ],
+              [
+                45,
+                28.6
+              ],
+              [
+                50,
+                40
+              ],
+              [
+                55,
+                57.1
+              ],
+              [
+                60,
+                100
+              ]
+            ],
+            "label": "near point",
+            "labelAt": [
+              47,
+              60
+            ]
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "at-50",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "Read the average near point at age 50.",
+        "answer": 40,
+        "tol": 4,
+        "unit": "cm",
+        "show": {
+          "x": 50,
+          "y": 40
+        },
+        "why": "About 40 cm, farther than a comfortable reading distance, so a 50-year-old holds small print at arm’s length. At 20 it was only about 10 cm."
+      },
+      {
+        "id": "passes-reading",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "At about what age does the average near point pass a typical reading distance of 35 cm?",
+        "options": [
+          "About 45 to 50",
+          "About 20 to 25",
+          "About 30 to 35",
+          "Not until after 60"
+        ],
+        "correct": 0,
+        "highlight": {
+          "x0": 45,
+          "x1": 50,
+          "label": "crosses 35 cm"
+        },
+        "why": {
+          "correct": "The curve crosses the 35 cm line between 45 and 50, which is when most people first need reading glasses.",
+          "options": [
+            "Right: the mid-40s to 50.",
+            "At 20 to 25 the near point is only about 10 to 12 cm.",
+            "At 30 to 35 it is still under 20 cm.",
+            "By 60 it is about a meter, far past reading distance."
+          ]
+        }
+      },
+      {
+        "id": "reading-glasses",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 2,
+        "q": "From 40 on, the same eyes are tested wearing convex reading glasses. How does the curve with the glasses compare?",
+        "options": [
+          "It is lower: they can focus closer at every age",
+          "It is higher: the near point moves farther away",
+          "It is unchanged: glasses cannot change the near point",
+          "It becomes a flat line at 35 cm"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "with-glasses",
+              "cls": "accent",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  40,
+                  14.3
+                ],
+                [
+                  45,
+                  16.7
+                ],
+                [
+                  50,
+                  20
+                ],
+                [
+                  55,
+                  23.5
+                ],
+                [
+                  60,
+                  28.6
+                ]
+              ],
+              "label": "with reading glasses",
+              "labelAt": [
+                51,
+                12
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "A convex lens adds the bending the stiff lens can no longer add, so near objects come to a focus again, and the near point moves closer. The glasses do nothing for the lens itself, which keeps stiffening.",
+          "options": [
+            "Right: added bending, closer focus.",
+            "A convex lens adds bending; that brings the near point closer, not farther.",
+            "The near point depends on the total bending available, and the glasses add to it.",
+            "The glasses add a fixed amount of bending, so the curve still rises with age, just lower."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "audiogram",
+    "title": "Hearing thresholds across frequencies (an audiogram)",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "intro": "Each line shows the quietest tone one ear can hear at each frequency, in decibels hearing level (dB HL), where 0 is what an average healthy young ear can just hear. Higher on this graph means a louder tone was needed: worse hearing. Clinical audiograms are usually drawn upside down, with worse hearing lower.",
+    "alt": "Hearing threshold in dB HL against frequency, at 250, 500, 1,000, 2,000, 4,000 and 8,000 Hz. A healthy young ear stays between 5 and 10 dB HL. A noise-damaged ear is near normal at low frequencies but dips to about 55 dB HL at 4,000 Hz and recovers to 30 at 8,000 Hz. A typical 70-year-old ear worsens steadily from 15 dB HL at 250 Hz to 60 at 8,000 Hz. A line at 25 dB HL marks the upper limit of normal.",
+    "x": {
+      "label": "Frequency (Hz)",
+      "cats": [
+        "250",
+        "500",
+        "1,000",
+        "2,000",
+        "4,000",
+        "8,000"
+      ]
+    },
+    "panels": [
+      {
+        "y": {
+          "min": -10,
+          "max": 80,
+          "label": "Quietest tone heard",
+          "unit": "dB HL",
+          "ticks": [
+            0,
+            20,
+            40,
+            60,
+            80
+          ]
+        },
+        "hlines": [
+          {
+            "y": 25,
+            "label": "upper limit of normal",
+            "dash": true,
+            "faint": true,
+            "at": -0.4
+          }
+        ],
+        "series": [
+          {
+            "id": "healthy",
+            "cls": "shape",
+            "pts": [
+              [
+                0,
+                5
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                10
+              ],
+              [
+                5,
+                10
+              ]
+            ],
+            "label": "healthy young ear",
+            "labelAt": [
+              0.1,
+              -4
+            ]
+          },
+          {
+            "id": "noise",
+            "cls": "hi",
+            "pts": [
+              [
+                0,
+                10
+              ],
+              [
+                1,
+                10
+              ],
+              [
+                2,
+                15
+              ],
+              [
+                3,
+                25
+              ],
+              [
+                4,
+                55
+              ],
+              [
+                5,
+                30
+              ]
+            ],
+            "label": "noise damage",
+            "labelAt": [
+              3.6,
+              62
+            ]
+          },
+          {
+            "id": "age",
+            "cls": "lo",
+            "pts": [
+              [
+                0,
+                15
+              ],
+              [
+                1,
+                20
+              ],
+              [
+                2,
+                25
+              ],
+              [
+                3,
+                35
+              ],
+              [
+                4,
+                45
+              ],
+              [
+                5,
+                60
+              ]
+            ],
+            "label": "age 70",
+            "labelAt": [
+              4.55,
+              68
+            ]
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "noise-4k",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "Read the noise-damaged ear’s threshold at 4,000 Hz.",
+        "answer": 55,
+        "tol": 5,
+        "unit": "dB HL",
+        "show": {
+          "x": 4,
+          "y": 55
+        },
+        "why": "About 55 dB HL: a 4,000 Hz tone must be about 55 dB louder than a healthy young ear needs. On the logarithmic decibel scale that is several hundred thousand times the sound intensity."
+      },
+      {
+        "id": "noise-notch",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "Where does the noise-damaged ear show its typical dip (notch)?",
+        "options": [
+          "Around 4,000 Hz, with some recovery at 8,000 Hz",
+          "At 250 Hz, the lowest tone tested",
+          "Evenly across every frequency",
+          "Only at 8,000 Hz"
+        ],
+        "correct": 0,
+        "highlight": {
+          "x0": 3.5,
+          "x1": 4.5,
+          "label": "noise notch"
+        },
+        "why": {
+          "correct": "Years of loud noise destroy hair cells, especially outer hair cells, in the part of the cochlea tuned near 4,000 Hz, close to the base. That notch in the consonant range makes speech sound muffled.",
+          "options": [
+            "Right: a notch near 4,000 Hz.",
+            "Low frequencies are tuned near the apex, and they are close to normal in this ear.",
+            "An even loss across all frequencies is the pattern of a conductive block, such as fluid in the middle ear.",
+            "The line is worst at 4,000 Hz and partly recovers at 8,000 Hz. A steady fall toward 8,000 Hz is the pattern of aging."
+          ]
+        }
+      },
+      {
+        "id": "age-pattern",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "Which frequencies does the 70-year-old ear hear worst?",
+        "options": [
+          "The highest, 4,000 to 8,000 Hz",
+          "The lowest, 250 to 500 Hz",
+          "The middle, 1,000 to 2,000 Hz",
+          "All frequencies equally"
+        ],
+        "correct": 0,
+        "highlight": {
+          "x0": 3.5,
+          "x1": 5.5,
+          "label": "high tones"
+        },
+        "why": {
+          "correct": "Age-related loss usually starts at the highest frequencies, which are detected at the base of the cochlea, and spreads downward.",
+          "options": [
+            "Right: high frequencies first.",
+            "The low tones are the best-preserved part of this line.",
+            "The middle tones are affected, but less than the high ones.",
+            "The line rises steadily toward the high frequencies; it is not flat."
+          ]
+        }
+      },
+      {
+        "id": "fluid-shift",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 2,
+        "q": "Fluid fills the middle ear of the healthy young ear, blocking about 30 dB of sound at every frequency. How does its line change?",
+        "options": [
+          "It moves up evenly at every frequency",
+          "It dips only at 4,000 Hz",
+          "It moves down, below 0",
+          "It does not change, because the cochlea is healthy"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "fluid",
+              "cls": "accent",
+              "dash": true,
+              "pts": [
+                [
+                  0,
+                  35
+                ],
+                [
+                  1,
+                  35
+                ],
+                [
+                  2,
+                  35
+                ],
+                [
+                  3,
+                  35
+                ],
+                [
+                  4,
+                  40
+                ],
+                [
+                  5,
+                  40
+                ]
+              ],
+              "label": "fluid in middle ear",
+              "labelAt": [
+                0.1,
+                41
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "Fluid damps the eardrum and ossicles, so less sound of any pitch reaches the oval window. The whole air-conduction line moves up: a conductive loss. Tested by bone conduction, the same ear would still be normal.",
+          "options": [
+            "Right: an even, conductive loss.",
+            "A notch at 4,000 Hz comes from damaged hair cells in one part of the cochlea, not from a middle ear block.",
+            "Below 0 would mean better than average hearing; fluid makes hearing worse.",
+            "Air conduction depends on the middle ear too. The healthy cochlea shows up only when sound bypasses the middle ear through the bone."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "autonomic-blockade",
+    "title": "Heart rate as each division is blocked",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "intro": "Two resting volunteers each receive two drugs, 8 minutes apart: atropine, which blocks vagal ACh at muscarinic receptor proteins, and a beta blocker, which blocks sympathetic NE and epinephrine at beta receptor proteins. One gets atropine first; the other gets the beta blocker first.",
+    "alt": "Heart rate in beats per minute against time from 0 to 20 minutes. Both start at 70. The atropine-first line climbs after the first drug at 2 minutes to about 108, then falls to about 100 after the beta blocker at 10 minutes. The beta-blocker-first line dips to about 62 after the first drug, then climbs to about 100 after atropine. Both end at about 100, the heart’s own rate.",
+    "x": {
+      "min": 0,
+      "max": 20,
+      "label": "Time",
+      "unit": "min",
+      "ticks": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ]
+    },
+    "vlines": [
+      {
+        "x": 2,
+        "label": "first drug"
+      },
+      {
+        "x": 10,
+        "label": "second drug"
+      }
+    ],
+    "regions": [
+      {
+        "id": "one-drug",
+        "x0": 4,
+        "x1": 10,
+        "label": "one division blocked"
+      },
+      {
+        "id": "both",
+        "x0": 12,
+        "x1": 20,
+        "label": "both blocked"
+      }
+    ],
+    "panels": [
+      {
+        "y": {
+          "min": 50,
+          "max": 120,
+          "label": "Heart rate",
+          "unit": "beats/min",
+          "ticks": [
+            50,
+            60,
+            70,
+            80,
+            90,
+            100,
+            110,
+            120
+          ]
+        },
+        "series": [
+          {
+            "id": "atropine-first",
+            "cls": "accent",
+            "pts": [
+              [
+                0,
+                70
+              ],
+              [
+                2,
+                70
+              ],
+              [
+                2.5,
+                80
+              ],
+              [
+                3,
+                95
+              ],
+              [
+                4,
+                105
+              ],
+              [
+                5,
+                108
+              ],
+              [
+                10,
+                108
+              ],
+              [
+                10.5,
+                105
+              ],
+              [
+                11,
+                102
+              ],
+              [
+                12,
+                100
+              ],
+              [
+                20,
+                100
+              ]
+            ],
+            "label": "atropine first",
+            "labelAt": [
+              5,
+              112
+            ]
+          },
+          {
+            "id": "beta-first",
+            "cls": "symp",
+            "pts": [
+              [
+                0,
+                70
+              ],
+              [
+                2,
+                70
+              ],
+              [
+                2.5,
+                67
+              ],
+              [
+                3,
+                64
+              ],
+              [
+                4,
+                62
+              ],
+              [
+                10,
+                62
+              ],
+              [
+                10.5,
+                75
+              ],
+              [
+                11,
+                90
+              ],
+              [
+                12,
+                98
+              ],
+              [
+                13,
+                100
+              ],
+              [
+                20,
+                100
+              ]
+            ],
+            "label": "beta blocker first",
+            "labelAt": [
+              4.5,
+              57
+            ]
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "id": "intrinsic",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "With both drugs working (after about 13 minutes), read the heart rate.",
+        "answer": 100,
+        "tol": 4,
+        "unit": "beats/min",
+        "show": {
+          "x": 16,
+          "y": 100
+        },
+        "why": "About 100 beats a minute on both lines. With both divisions blocked, the heart beats at its own intrinsic rate, the rate a transplanted heart without nerves shows."
+      },
+      {
+        "id": "atropine-rise",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "By how many beats a minute did atropine alone raise the rate, from 70 to its plateau?",
+        "answer": 38,
+        "tol": 5,
+        "unit": "beats/min",
+        "show": {
+          "x": 7,
+          "y": 108
+        },
+        "why": "From 70 to about 108, a rise of about 38. Removing vagal tone changes the resting rate far more than removing sympathetic tone, because at rest vagal tone dominates the heart."
+      },
+      {
+        "id": "which-stretch",
+        "type": "phase",
+        "level": "analyze",
+        "diff": 3,
+        "q": "Which part of the record shows the heart with only its sympathetic tone removed, and vagal tone still working?",
+        "options": [
+          "Minutes 4 to 10 on the beta-blocker-first line",
+          "Minutes 4 to 10 on the atropine-first line",
+          "After minute 13 on both lines",
+          "The first 2 minutes on both lines"
+        ],
+        "correct": 0,
+        "highlight": {
+          "path": [
+            [
+              4,
+              62
+            ],
+            [
+              10,
+              62
+            ]
+          ],
+          "label": "vagal tone only"
+        },
+        "why": {
+          "correct": "The beta blocker has removed the sympathetic push, and vagal tone, unopposed, holds the rate at about 62, just below the resting 70.",
+          "options": [
+            "Right: sympathetic blocked, vagus working.",
+            "On the atropine-first line those minutes show vagal tone removed and sympathetic tone still working, so the rate is higher.",
+            "After minute 13 both divisions are blocked.",
+            "In the first 2 minutes both divisions are working: the normal resting state."
+          ]
+        }
+      },
+      {
+        "id": "transplant",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "The atropine-first test is repeated in a heart transplant recipient, whose cardiac nerves are cut. How does the line change?",
+        "options": [
+          "It starts near 100 and barely moves with either drug",
+          "It rises even higher after atropine",
+          "It starts at 70 and rises to 108 as before",
+          "It falls to 40 after the beta blocker"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "transplanted",
+              "cls": "hi",
+              "dash": true,
+              "pts": [
+                [
+                  0,
+                  100
+                ],
+                [
+                  10,
+                  100
+                ],
+                [
+                  11,
+                  97
+                ],
+                [
+                  12,
+                  96
+                ],
+                [
+                  20,
+                  96
+                ]
+              ],
+              "label": "transplanted heart",
+              "labelAt": [
+                13,
+                92
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "With no nerves there is no vagal tone to hold the rate down, so it starts near the intrinsic 100, and atropine has nothing to block. The beta blocker lowers it only slightly, by blocking the small effect of circulating epinephrine.",
+          "options": [
+            "Right: already at its own rate.",
+            "Atropine can only raise the rate by removing vagal tone, and a transplanted heart has none.",
+            "A resting rate of 70 depends on vagal tone, which needs the cut vagus nerve.",
+            "The beta blocker can only remove the small effect of circulating epinephrine; nothing pulls the rate below the intrinsic rate."
+          ]
+        }
+      }
+    ]
   }
  ]
 }
