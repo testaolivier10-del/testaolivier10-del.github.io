@@ -1,0 +1,390 @@
+{
+  "figure": "os-18-15",
+  "labels": [
+    {
+      "id": "placenta",
+      "name": "Placenta",
+      "accept": [
+        "placenta"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "placenta",
+      "box": [
+        203,
+        8,
+        83,
+        19
+      ]
+    },
+    {
+      "id": "umbilical-vessels",
+      "name": "Umbilical artery/vein (infant)",
+      "accept": [
+        "umbilical artery",
+        "umbilical vein",
+        "umbilical vessels",
+        "umbilical cord"
+      ],
+      "lines": [
+        1,
+        2,
+        3
+      ],
+      "concept": "umbilical-cord",
+      "box": [
+        5,
+        26,
+        98,
+        64
+      ]
+    },
+    {
+      "id": "placental-arteriole",
+      "name": "Placental arteriole (maternal)",
+      "accept": [
+        "placental arteriole",
+        "maternal arteriole"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "placenta",
+      "box": [
+        450,
+        89,
+        249,
+        23
+      ]
+    },
+    {
+      "id": "placental-venule",
+      "name": "Placental venule (maternal)",
+      "accept": [
+        "placental venule",
+        "maternal venule"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "placenta",
+      "box": [
+        450,
+        143,
+        235,
+        23
+      ]
+    },
+    {
+      "id": "maternal-blood-pool",
+      "name": "Maternal blood pool",
+      "accept": [
+        "maternal blood pool",
+        "maternal blood"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "placenta",
+      "box": [
+        450,
+        217,
+        173,
+        23
+      ]
+    },
+    {
+      "id": "embryonic-chorion",
+      "name": "Embryonic chorion (isolates fetal blood from maternal blood pool)",
+      "accept": [
+        "embryonic chorion",
+        "chorion"
+      ],
+      "lines": [
+        9,
+        12,
+        15,
+        17
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        4,
+        303,
+        170,
+        84
+      ]
+    },
+    {
+      "id": "infant-blood-1",
+      "name": "Infant blood",
+      "accept": [
+        "infant blood",
+        "fetal blood"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": null,
+      "box": [
+        445,
+        324,
+        107,
+        20
+      ]
+    },
+    {
+      "id": "rh-positive-erythrocyte-1",
+      "name": "Rh+ infant erythrocyte",
+      "accept": [
+        "rh+ infant erythrocyte",
+        "rh positive erythrocyte",
+        "rh+ erythrocyte",
+        "rh positive red blood cell",
+        "fetal red blood cell"
+      ],
+      "lines": [
+        19,
+        21
+      ],
+      "concept": "rh-factor",
+      "box": [
+        444,
+        378,
+        104,
+        45
+      ]
+    },
+    {
+      "id": "embryonic-chorion-1",
+      "name": "Embryonic chorion",
+      "accept": [
+        "embryonic chorion",
+        "chorion"
+      ],
+      "lines": [
+        24,
+        26
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        444,
+        437,
+        100,
+        40
+      ]
+    },
+    {
+      "id": "rh-negative-maternal-blood-1",
+      "name": "Rh− maternal blood",
+      "accept": [
+        "rh- maternal blood",
+        "rh negative maternal blood",
+        "maternal blood"
+      ],
+      "lines": [
+        28,
+        29,
+        31
+      ],
+      "concept": "rh-factor",
+      "box": [
+        444,
+        502,
+        120,
+        40
+      ]
+    },
+    {
+      "id": "maternal-rh-antibody-1",
+      "name": "Maternal Rh antibody",
+      "accept": [
+        "maternal rh antibody",
+        "anti-rh antibody",
+        "rh antibody",
+        "anti-d antibody"
+      ],
+      "lines": [
+        34,
+        36
+      ],
+      "concept": "rh-factor",
+      "box": [
+        444,
+        560,
+        113,
+        43
+      ]
+    },
+    {
+      "id": "infant-blood-2",
+      "name": "Infant blood",
+      "accept": [
+        "infant blood",
+        "fetal blood"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": null,
+      "box": [
+        445,
+        720,
+        107,
+        20
+      ]
+    },
+    {
+      "id": "rh-positive-erythrocyte-2",
+      "name": "Rh+ infant erythrocyte",
+      "accept": [
+        "rh+ infant erythrocyte",
+        "rh positive erythrocyte",
+        "rh+ erythrocyte",
+        "rh positive red blood cell",
+        "fetal red blood cell"
+      ],
+      "lines": [
+        44,
+        46
+      ],
+      "concept": "rh-factor",
+      "box": [
+        444,
+        774,
+        104,
+        45
+      ]
+    },
+    {
+      "id": "embryonic-chorion-2",
+      "name": "Embryonic chorion",
+      "accept": [
+        "embryonic chorion",
+        "chorion"
+      ],
+      "lines": [
+        48,
+        50
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        444,
+        833,
+        100,
+        40
+      ]
+    },
+    {
+      "id": "rh-negative-maternal-blood-2",
+      "name": "Rh− maternal blood",
+      "accept": [
+        "rh- maternal blood",
+        "rh negative maternal blood",
+        "maternal blood"
+      ],
+      "lines": [
+        53,
+        54,
+        56
+      ],
+      "concept": "rh-factor",
+      "box": [
+        444,
+        898,
+        120,
+        40
+      ]
+    },
+    {
+      "id": "maternal-rh-antibody-2",
+      "name": "Maternal Rh antibody",
+      "accept": [
+        "maternal rh antibody",
+        "anti-rh antibody",
+        "rh antibody",
+        "anti-d antibody"
+      ],
+      "lines": [
+        59,
+        60
+      ],
+      "concept": "rh-factor",
+      "box": [
+        444,
+        956,
+        113,
+        43
+      ]
+    },
+    {
+      "id": "step-1-chorion-text",
+      "name": "During birth, Rh+ fetal erythrocytes leak into maternal blood after breakage of the embryonic chorion, which normally isolates the fetal and maternal blood.",
+      "accept": [
+        "embryonic chorion"
+      ],
+      "lines": [
+        10,
+        14,
+        16,
+        18,
+        20,
+        22,
+        23,
+        25,
+        27
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        916,
+        311,
+        182,
+        184
+      ]
+    },
+    {
+      "id": "step-2-b-cells-text",
+      "name": "Maternal B cells are activated by the Rh antigen and produce large amounts of anti-Rh antibodies.",
+      "accept": [
+        "b cells"
+      ],
+      "lines": [
+        30,
+        32,
+        33,
+        35,
+        37,
+        38
+      ],
+      "concept": "b-cell",
+      "box": [
+        917,
+        517,
+        161,
+        121
+      ]
+    },
+    {
+      "id": "step-4-chorion-text",
+      "name": "Rh antibodies are small enough to cross the embryonic chorion and attack the fetal erythrocytes.",
+      "accept": [
+        "embryonic chorion"
+      ],
+      "lines": [
+        49,
+        51,
+        52,
+        55,
+        57,
+        58
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        917,
+        851,
+        167,
+        125
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A graph of untreated HIV infection over about ten years. The CD4 helper T cell count, per microliter of blood, starts near 1,000, dips sharply in the first weeks, partly recovers to about 750, then falls slowly for years and crosses the dashed line at 200 marked AIDS. The amount of virus in the blood spikes very high in the first weeks, falls to a lower steady level after antibodies appear, then climbs again in the late years as the CD4 count collapses. Three phases are labeled along the top: acute infection, chronic phase with few symptoms, and AIDS.">
+<rect x="0" y="0" width="640" height="400" fill="#FFFFFF"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<line x1="80" y1="350" x2="600" y2="350" stroke="#5D6B69" stroke-width="2"/>
+<line x1="80" y1="350" x2="80" y2="40" stroke="#5D6B69" stroke-width="2"/>
+<line x1="600" y1="350" x2="600" y2="40" stroke="#5D6B69" stroke-width="2"/>
+<line x1="76" y1="350.0" x2="80" y2="350.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="354.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">0</text>
+<line x1="76" y1="300.0" x2="80" y2="300.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="304.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">200</text>
+<line x1="76" y1="250.0" x2="80" y2="250.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="254.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">400</text>
+<line x1="76" y1="200.0" x2="80" y2="200.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="204.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">600</text>
+<line x1="76" y1="150.0" x2="80" y2="150.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="154.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">800</text>
+<line x1="76" y1="100.0" x2="80" y2="100.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="104.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">1,000</text>
+<line x1="76" y1="50.0" x2="80" y2="50.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="72" y="54.0" font-size="12.5" font-weight="700" text-anchor="end" fill="#1F2A28">1,200</text>
+<line x1="80" y1="300.0" x2="600" y2="300.0" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="88" y="294.0" font-size="12.5" font-weight="700" text-anchor="start" fill="#5D6B69">CD4 count 200: AIDS</text>
+<line x1="150" y1="40" x2="150" y2="350" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="535" y1="40" x2="535" y2="350" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="115" y="34" font-size="12.5" font-weight="800" text-anchor="middle" fill="#1F2A28">acute</text>
+<text x="340" y="34" font-size="12.5" font-weight="800" text-anchor="middle" fill="#1F2A28">chronic phase: few symptoms</text>
+<text x="570" y="34" font-size="12.5" font-weight="800" text-anchor="middle" fill="#1F2A28">AIDS</text>
+<text x="115" y="368" font-size="12.5" font-weight="700" text-anchor="middle" fill="#1F2A28">weeks</text>
+<text x="230.7625" y="368" font-size="12.5" font-weight="700" text-anchor="middle" fill="#1F2A28">2</text>
+<text x="323.0625" y="368" font-size="12.5" font-weight="700" text-anchor="middle" fill="#1F2A28">4</text>
+<text x="415.3625" y="368" font-size="12.5" font-weight="700" text-anchor="middle" fill="#1F2A28">6</text>
+<text x="507.66249999999997" y="368" font-size="12.5" font-weight="700" text-anchor="middle" fill="#1F2A28">8</text>
+<text x="599.9625" y="368" font-size="12.5" font-weight="700" text-anchor="middle" fill="#1F2A28">10</text>
+<text x="380" y="392" font-size="15" font-weight="800" text-anchor="middle" fill="#1F2A28">Time since infection (years)</text>
+<polyline fill="none" stroke="#0072B2" stroke-width="3" points="80.0,100.0 95.0,175.0 108.0,230.0 125.0,195.0 150.0,162.5 184.6,166.2 230.8,177.5 276.9,190.0 323.1,205.0 369.2,220.0 415.4,237.5 461.5,257.5 507.7,280.0 553.8,307.5 600.0,332.5"/>
+<polyline fill="none" stroke="#8E3B2E" stroke-width="3" points="80.0,345.0 92.0,200.0 104.0,70.0 118.0,150.0 135.0,225.0 150.0,238.0 230.8,236.0 323.1,232.0 415.4,222.0 461.5,205.0 507.7,178.0 553.8,135.0 600.0,85.0"/>
+<text x="200" y="150.0" font-size="15" font-weight="800" text-anchor="start" fill="#0072B2">CD4 helper T cells (per µL)</text>
+<text x="515" y="128" font-size="15" font-weight="800" text-anchor="end" fill="#8E3B2E">virus in the blood</text>
+<text transform="translate(22,250) rotate(-90)" font-size="12.5" font-weight="700" fill="#0072B2">CD4 cells per µL</text>
+<text transform="translate(622,120) rotate(90)" font-size="12.5" font-weight="700" fill="#8E3B2E">virus (relative)</text>
+</g></svg>

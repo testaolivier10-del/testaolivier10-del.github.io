@@ -1,0 +1,372 @@
+{
+  "figure": "os-18-4",
+  "labels": [
+    {
+      "id": "hematopoietic-stem-cell",
+      "name": "Multipotent hematopoietic stem cell (hemocytoblast)",
+      "accept": [
+        "hematopoietic stem cell",
+        "multipotent hematopoietic stem cell",
+        "hemocytoblast",
+        "hemopoietic stem cell",
+        "blood stem cell"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        390,
+        59,
+        219,
+        43
+      ]
+    },
+    {
+      "id": "myeloid-stem-cell",
+      "name": "Myeloid stem cell",
+      "accept": [
+        "myeloid stem cell",
+        "myeloid stem cells"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        244,
+        314,
+        151,
+        23
+      ]
+    },
+    {
+      "id": "lymphoid-stem-cell",
+      "name": "Lymphoid stem cell",
+      "accept": [
+        "lymphoid stem cell",
+        "lymphoid stem cells"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        772,
+        314,
+        167,
+        23
+      ]
+    },
+    {
+      "id": "megakaryoblast",
+      "name": "Megakaryoblast",
+      "accept": [
+        "megakaryoblast"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        2,
+        452,
+        140,
+        23
+      ]
+    },
+    {
+      "id": "proerythroblast",
+      "name": "Proerythroblast",
+      "accept": [
+        "proerythroblast"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "erythropoiesis",
+      "box": [
+        157,
+        452,
+        135,
+        23
+      ]
+    },
+    {
+      "id": "myeloblast",
+      "name": "Myeloblast",
+      "accept": [
+        "myeloblast"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        368,
+        452,
+        99,
+        23
+      ]
+    },
+    {
+      "id": "monoblast",
+      "name": "Monoblast",
+      "accept": [
+        "monoblast"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        561,
+        452,
+        96,
+        19
+      ]
+    },
+    {
+      "id": "lymphoblast",
+      "name": "Lymphoblast",
+      "accept": [
+        "lymphoblast"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        799,
+        452,
+        115,
+        23
+      ]
+    },
+    {
+      "id": "reticulocyte",
+      "name": "Reticulocyte",
+      "accept": [
+        "reticulocyte",
+        "reticulocytes"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "erythropoiesis",
+      "box": [
+        173,
+        560,
+        110,
+        23
+      ]
+    },
+    {
+      "id": "natural-killer-cell",
+      "name": "Natural killer cell (large granular lymphocyte)",
+      "accept": [
+        "natural killer cell",
+        "nk cell",
+        "large granular lymphocyte"
+      ],
+      "lines": [
+        14,
+        16,
+        18
+      ],
+      "concept": "nk-cell",
+      "box": [
+        676,
+        611,
+        145,
+        63
+      ]
+    },
+    {
+      "id": "small-lymphocyte",
+      "name": "Small lymphocyte",
+      "accept": [
+        "small lymphocyte",
+        "lymphocyte"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "agranulocytes",
+      "box": [
+        890,
+        611,
+        154,
+        23
+      ]
+    },
+    {
+      "id": "megakaryocyte",
+      "name": "Megakaryocyte",
+      "accept": [
+        "megakaryocyte",
+        "megakaryocytes"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        5,
+        700,
+        135,
+        23
+      ]
+    },
+    {
+      "id": "erythrocyte",
+      "name": "Erythrocyte",
+      "accept": [
+        "erythrocyte",
+        "red blood cell",
+        "rbc",
+        "erythrocytes"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "erythrocyte",
+      "box": [
+        173,
+        700,
+        103,
+        23
+      ]
+    },
+    {
+      "id": "basophil",
+      "name": "Basophil",
+      "accept": [
+        "basophil",
+        "basophils"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "granulocytes",
+      "box": [
+        278,
+        700,
+        81,
+        23
+      ]
+    },
+    {
+      "id": "neutrophil",
+      "name": "Neutrophil",
+      "accept": [
+        "neutrophil",
+        "neutrophils"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "granulocytes",
+      "box": [
+        368,
+        700,
+        94,
+        23
+      ]
+    },
+    {
+      "id": "eosinophil",
+      "name": "Eosinophil",
+      "accept": [
+        "eosinophil",
+        "eosinophils"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "granulocytes",
+      "box": [
+        465,
+        700,
+        95,
+        23
+      ]
+    },
+    {
+      "id": "monocyte",
+      "name": "Monocyte",
+      "accept": [
+        "monocyte",
+        "monocytes"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "agranulocytes",
+      "box": [
+        573,
+        700,
+        91,
+        23
+      ]
+    },
+    {
+      "id": "t-lymphocyte",
+      "name": "T lymphocyte",
+      "accept": [
+        "t lymphocyte",
+        "t cell",
+        "t lymphocytes"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "t-cell",
+      "box": [
+        838,
+        739,
+        122,
+        23
+      ]
+    },
+    {
+      "id": "b-lymphocyte",
+      "name": "B lymphocyte",
+      "accept": [
+        "b lymphocyte",
+        "b cell",
+        "b lymphocytes"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "b-cell",
+      "box": [
+        979,
+        739,
+        121,
+        23
+      ]
+    },
+    {
+      "id": "platelets",
+      "name": "Platelets",
+      "accept": [
+        "platelets",
+        "platelet",
+        "thrombocytes"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "blood-cells-basic",
+      "box": [
+        32,
+        807,
+        81,
+        19
+      ]
+    }
+  ]
+}

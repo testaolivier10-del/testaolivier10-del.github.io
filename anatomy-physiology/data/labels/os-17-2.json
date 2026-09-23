@@ -1,0 +1,248 @@
+{
+  "figure": "os-17-2",
+  "labels": [
+    {
+      "id": "pineal-gland",
+      "name": "Pineal gland",
+      "accept": [
+        "pineal gland",
+        "pineal",
+        "pineal body"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "pineal-melatonin",
+      "box": [
+        409,
+        0,
+        133,
+        27
+      ]
+    },
+    {
+      "id": "hypothalamus",
+      "name": "Hypothalamus",
+      "accept": [
+        "hypothalamus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "hypothalamus",
+      "box": [
+        806,
+        102,
+        154,
+        26
+      ]
+    },
+    {
+      "id": "pituitary-gland",
+      "name": "Pituitary gland",
+      "accept": [
+        "pituitary gland",
+        "pituitary",
+        "hypophysis"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs",
+      "box": [
+        807,
+        149,
+        151,
+        26
+      ]
+    },
+    {
+      "id": "thyroid-cartilage",
+      "name": "Thyroid cartilage of the larynx",
+      "accept": [
+        "thyroid cartilage",
+        "adam's apple"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "larynx",
+      "box": [
+        907,
+        266,
+        178,
+        54
+      ]
+    },
+    {
+      "id": "thyroid-gland",
+      "name": "Thyroid gland",
+      "accept": [
+        "thyroid gland",
+        "thyroid"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "major-organs",
+      "box": [
+        907,
+        337,
+        147,
+        27
+      ]
+    },
+    {
+      "id": "thymus",
+      "name": "Thymus",
+      "accept": [
+        "thymus",
+        "thymus gland"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        377,
+        88,
+        27
+      ]
+    },
+    {
+      "id": "parathyroid-glands",
+      "name": "Parathyroid glands",
+      "accept": [
+        "parathyroid glands",
+        "parathyroid gland",
+        "parathyroids",
+        "parathyroid"
+      ],
+      "lines": [
+        7,
+        8,
+        9
+      ],
+      "concept": "parathyroid-glands",
+      "box": [
+        908,
+        379,
+        194,
+        80
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs",
+      "box": [
+        907,
+        471,
+        94,
+        22
+      ]
+    },
+    {
+      "id": "adrenal-glands",
+      "name": "Adrenal glands",
+      "accept": [
+        "adrenal glands",
+        "adrenal gland",
+        "adrenals",
+        "adrenal",
+        "suprarenal glands"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "major-organs",
+      "box": [
+        677,
+        548,
+        162,
+        27
+      ]
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [
+        "pancreas"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "major-organs",
+      "box": [
+        679,
+        641,
+        105,
+        23
+      ]
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [
+        "uterus",
+        "womb"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "major-organs",
+      "box": [
+        679,
+        723,
+        77,
+        22
+      ]
+    },
+    {
+      "id": "ovaries",
+      "name": "Ovaries",
+      "accept": [
+        "ovaries",
+        "ovary"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "major-organs",
+      "box": [
+        678,
+        796,
+        176,
+        27
+      ]
+    },
+    {
+      "id": "testes",
+      "name": "Testes",
+      "accept": [
+        "testes",
+        "testis",
+        "testicles"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "major-organs",
+      "box": [
+        677,
+        917,
+        146,
+        26
+      ]
+    }
+  ]
+}

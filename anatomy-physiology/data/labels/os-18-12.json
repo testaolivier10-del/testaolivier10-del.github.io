@@ -1,0 +1,96 @@
+{
+  "figure": "os-18-12",
+  "labels": [
+    {
+      "id": "thrombopoietin",
+      "name": "Thrombopoietin",
+      "accept": [
+        "thrombopoietin",
+        "tpo"
+      ],
+      "box": [
+        437,
+        30,
+        298,
+        40
+      ],
+      "concept": "hematopoiesis"
+    },
+    {
+      "id": "myeloid-stem-cell",
+      "name": "Myeloid stem cell",
+      "accept": [
+        "myeloid stem cell",
+        "myeloid stem cells"
+      ],
+      "box": [
+        12,
+        124,
+        292,
+        42
+      ],
+      "concept": "hematopoiesis"
+    },
+    {
+      "id": "megakaryoblast",
+      "name": "Megakaryoblast",
+      "accept": [
+        "megakaryoblast"
+      ],
+      "box": [
+        24,
+        446,
+        270,
+        44
+      ],
+      "concept": "hematopoiesis"
+    },
+    {
+      "id": "megakaryocyte",
+      "name": "Megakaryocyte",
+      "accept": [
+        "megakaryocyte",
+        "megakaryocytes"
+      ],
+      "box": [
+        33,
+        634,
+        268,
+        44
+      ],
+      "concept": "hematopoiesis"
+    },
+    {
+      "id": "platelet-precursor-extensions",
+      "name": "Platelet precursor extensions",
+      "accept": [
+        "platelet precursor extensions",
+        "proplatelets",
+        "cytoplasmic extensions"
+      ],
+      "box": [
+        434,
+        930,
+        310,
+        80
+      ],
+      "concept": "platelet"
+    },
+    {
+      "id": "platelets",
+      "name": "Platelets",
+      "accept": [
+        "platelets",
+        "platelet",
+        "thrombocytes"
+      ],
+      "box": [
+        88,
+        1170,
+        152,
+        42
+      ],
+      "concept": "platelet"
+    }
+  ]
+}

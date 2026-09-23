@@ -1,0 +1,96 @@
+{
+  "figure": "os-17-7",
+  "labels": [
+    {
+      "id": "thalamus",
+      "name": "Thalamus",
+      "accept": [
+        "thalamus"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "diencephalon",
+      "box": [
+        936,
+        346,
+        104,
+        21
+      ]
+    },
+    {
+      "id": "hypothalamus",
+      "name": "Hypothalamus",
+      "accept": [
+        "hypothalamus"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "hypothalamus",
+      "box": [
+        937,
+        397,
+        142,
+        25
+      ]
+    },
+    {
+      "id": "infundibulum",
+      "name": "Infundibulum",
+      "accept": [
+        "infundibulum",
+        "pituitary stalk",
+        "stalk"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "pituitary-gland",
+      "box": [
+        938,
+        453,
+        129,
+        22
+      ]
+    },
+    {
+      "id": "anterior-pituitary",
+      "name": "Anterior pituitary",
+      "accept": [
+        "anterior pituitary",
+        "adenohypophysis",
+        "anterior lobe"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "pituitary-gland",
+      "box": [
+        178,
+        479,
+        165,
+        25
+      ]
+    },
+    {
+      "id": "posterior-pituitary",
+      "name": "Posterior pituitary",
+      "accept": [
+        "posterior pituitary",
+        "neurohypophysis",
+        "posterior lobe"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "pituitary-gland",
+      "box": [
+        179,
+        533,
+        173,
+        25
+      ]
+    }
+  ]
+}

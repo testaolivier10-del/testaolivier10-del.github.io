@@ -1,0 +1,63 @@
+{
+  "os-21-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.23",
+      "section": "21.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/05e3c5fcb2a46e4b7b2ba915fd41360e5d69eb22",
+      "page": "21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/05e3c5fcb2a46e4b7b2ba915fd41360e5d69eb22",
+    "alt": "A branching diagram in two parts. Left, primary response: three B cells with differently shaped receptors sit among small triangles of antigen; only the middle one has antigen bound to its receptors. It divides into a clone of activated B cells, which become one memory B cell and many larger plasma cells with layered cytoplasm, each releasing Y-shaped antibody molecules. Right, secondary response: the memory B cell meets the same antigen again and quickly gives rise to more memory B cells and many more antibody-releasing plasma cells.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.23",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1007
+  },
+  "os-21-24": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.24",
+      "section": "21.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/3a6573e580de252fcb13565e3c1ab68526c7f074",
+      "page": "21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/3a6573e580de252fcb13565e3c1ab68526c7f074",
+    "alt": "A graph of antibody concentration in the blood against time in weeks. An arrow marks the initial exposure, after which the curve stays flat for a while, then rises to a small, low peak labeled primary immune response and falls back. A second arrow marks the secondary exposure to the same antigen. The curve then climbs quickly and steeply to a peak several times higher than the first, labeled secondary immune response, and falls slowly, staying well above the starting level.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.24",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1088,
+    "h": 756
+  },
+  "os-21-25": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.25",
+      "section": "21.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/03d40286081fd051a4e971c8ca4911467e6e7176",
+      "page": "21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/03d40286081fd051a4e971c8ca4911467e6e7176",
+    "alt": "Left: a resting B cell whose surface B cell receptors, Y-shaped, have bound antigen, which the cell takes inside. A thick arrow points right. Right: the now activated B cell shows pieces of the antigen in an MHC II protein on its surface. A helper T cell binds that complex with its T cell receptor and its CD4 protein, and releases dots labeled cytokine onto the B cell.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.25",
+    "labels": [],
+    "ext": "jpg",
+    "w": 796,
+    "h": 294
+  },
+  "antibody-y": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 640,
+    "h": 460,
+    "alt": "A Y-shaped antibody made of four protein chains. Two long heavy chains run from the tips of the arms down through the stem. Two short light chains lie along the outer side of each arm. Disulfide bonds join the chains. The tip of each arm, made of the ends of one heavy and one light chain, is shaded as the variable region and forms an antigen-binding site holding a small antigen. The rest of the chains is the constant region. The stem, made of the two heavy chains only, is labeled the Fc region; the hinge sits where the arms meet the stem.",
+    "labels": []
+  }
+}

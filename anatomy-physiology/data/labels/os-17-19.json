@@ -1,0 +1,158 @@
+{
+  "figure": "os-17-19",
+  "labels": [
+    {
+      "id": "splenic-artery-insulin",
+      "name": "Splenic artery",
+      "accept": [
+        "splenic artery"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "abdominal-arteries",
+      "box": [
+        211,
+        86,
+        132,
+        24
+      ]
+    },
+    {
+      "id": "splenic-artery-glucagon",
+      "name": "Splenic artery",
+      "accept": [
+        "splenic artery"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "abdominal-arteries",
+      "box": [
+        211,
+        1297,
+        132,
+        24
+      ]
+    },
+    {
+      "id": "rough-er-insulin",
+      "name": "Rough ER",
+      "accept": [
+        "rough er",
+        "rough endoplasmic reticulum",
+        "rer"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        991,
+        327,
+        91,
+        23
+      ]
+    },
+    {
+      "id": "smooth-er-insulin",
+      "name": "Smooth ER",
+      "accept": [
+        "smooth er",
+        "smooth endoplasmic reticulum",
+        "ser"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        990,
+        410,
+        101,
+        19
+      ]
+    },
+    {
+      "id": "rough-er-glucagon",
+      "name": "Rough ER",
+      "accept": [
+        "rough er",
+        "rough endoplasmic reticulum",
+        "rer"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        991,
+        1442,
+        91,
+        22
+      ]
+    },
+    {
+      "id": "smooth-er-glucagon",
+      "name": "Smooth ER",
+      "accept": [
+        "smooth er",
+        "smooth endoplasmic reticulum",
+        "ser"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        990,
+        1518,
+        101,
+        19
+      ]
+    },
+    {
+      "id": "gluconeogenesis-er-insulin",
+      "name": "amino acids and free glycerol are NOT converted to glucose in the ER",
+      "accept": [
+        "gluconeogenesis"
+      ],
+      "lines": [
+        12,
+        13,
+        14
+      ],
+      "concept": "glucose-storage-terms",
+      "cover": true,
+      "note": "OpenStax prints that gluconeogenesis converts amino acids and glycerol to glucose 'in the ER'. Most steps of gluconeogenesis run in the cytosol (the first in mitochondria); only the last step, removing phosphate from glucose 6-phosphate, happens in the ER. Misleading as printed, so covered for good and never asked.",
+      "box": [
+        674,
+        342,
+        268,
+        71
+      ]
+    },
+    {
+      "id": "gluconeogenesis-er-glucagon",
+      "name": "amino acids and free glycerol are converted to glucose in the ER and released into the blood",
+      "accept": [
+        "gluconeogenesis"
+      ],
+      "lines": [
+        47,
+        49,
+        50,
+        51
+      ],
+      "concept": "glucose-storage-terms",
+      "cover": true,
+      "note": "OpenStax prints that gluconeogenesis converts amino acids and glycerol to glucose 'in the ER'. Most steps of gluconeogenesis run in the cytosol (the first in mitochondria); only the last step, removing phosphate from glucose 6-phosphate, happens in the ER. Misleading as printed, so covered for good and never asked.",
+      "box": [
+        675,
+        1430,
+        267,
+        91
+      ]
+    }
+  ]
+}

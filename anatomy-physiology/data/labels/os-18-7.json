@@ -1,0 +1,144 @@
+{
+  "figure": "os-18-7",
+  "labels": [
+    {
+      "id": "beta-chain-1",
+      "name": "β chain 1",
+      "accept": [
+        "beta chain",
+        "beta globin chain",
+        "beta chain 1",
+        "β chain"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        6,
+        204,
+        83,
+        23
+      ]
+    },
+    {
+      "id": "beta-chain-2",
+      "name": "β chain 2",
+      "accept": [
+        "beta chain",
+        "beta globin chain",
+        "beta chain 2",
+        "β chain"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        518,
+        206,
+        86,
+        23
+      ]
+    },
+    {
+      "id": "iron-ion",
+      "name": "Fe2+",
+      "accept": [
+        "iron",
+        "iron ion",
+        "fe2+",
+        "ferrous iron",
+        "fe"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        518,
+        385,
+        47,
+        23
+      ]
+    },
+    {
+      "id": "heme",
+      "name": "Heme",
+      "accept": [
+        "heme",
+        "heme group",
+        "haem"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        518,
+        416,
+        60,
+        20
+      ]
+    },
+    {
+      "id": "heme-structure",
+      "name": "Heme",
+      "accept": [
+        "heme",
+        "heme group",
+        "haem"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        1012,
+        430,
+        60,
+        19
+      ]
+    },
+    {
+      "id": "alpha-chain-2",
+      "name": "α chain 2",
+      "accept": [
+        "alpha chain",
+        "alpha globin chain",
+        "alpha chain 2",
+        "α chain"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        517,
+        463,
+        87,
+        19
+      ]
+    },
+    {
+      "id": "alpha-chain-1",
+      "name": "α chain 1",
+      "accept": [
+        "alpha chain",
+        "alpha globin chain",
+        "alpha chain 1",
+        "α chain"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        5,
+        468,
+        85,
+        19
+      ]
+    }
+  ]
+}

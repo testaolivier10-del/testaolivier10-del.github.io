@@ -1,0 +1,19 @@
+{
+  "os-21-20": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.20",
+      "section": "21.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5594300aedbab54ef46ecbd5e0d2660b3fba0d1e",
+      "page": "21-3-the-adaptive-immune-response-t-lymphocytes-and-their-functional-types"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5594300aedbab54ef46ecbd5e0d2660b3fba0d1e",
+    "alt": "Two panels. Top: a dendritic cell with many long branching arms; a close-up shows one arm holding an antigen in an MHC II protein, bound by a T cell receptor and a CD4 protein on an activated helper T cell. An arrow leads to the helper T cell releasing a cloud of dots labeled cytokines. Bottom: an infected cell holds antigens in an MHC I protein, bound by a T cell receptor and a CD8 protein on an activated cytotoxic T cell. An arrow leads to the infected cell broken into fragments, with dots labeled perforins and granzymes scattered around it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.20",
+    "labels": [],
+    "ext": "jpg",
+    "w": 732,
+    "h": 760
+  }
+}

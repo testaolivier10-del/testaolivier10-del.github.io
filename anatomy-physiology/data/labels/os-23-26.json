@@ -1,0 +1,184 @@
+{
+  "figure": "os-23-26",
+  "labels": [
+    {
+      "id": "common-bile-duct",
+      "name": "Common bile duct",
+      "accept": [
+        "common bile duct",
+        "bile duct"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "bile",
+      "box": [
+        131,
+        0,
+        180,
+        21
+      ]
+    },
+    {
+      "id": "pancreatic-duct",
+      "name": "Pancreatic duct",
+      "accept": [
+        "pancreatic duct",
+        "main pancreatic duct"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "pancreatic-juice",
+      "box": [
+        402,
+        0,
+        154,
+        21
+      ]
+    },
+    {
+      "id": "tail-of-pancreas",
+      "name": "Tail of pancreas",
+      "accept": [
+        "tail of pancreas",
+        "tail of the pancreas",
+        "pancreatic tail",
+        "tail"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": null,
+      "box": [
+        519,
+        73,
+        98,
+        50
+      ]
+    },
+    {
+      "id": "lobules",
+      "name": "Lobules",
+      "accept": [
+        "lobules",
+        "lobule",
+        "pancreatic lobules"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null,
+      "box": [
+        391,
+        184,
+        84,
+        21
+      ]
+    },
+    {
+      "id": "acinar-cells",
+      "name": "Acinar cells",
+      "accept": [
+        "acinar cells",
+        "acinar cell",
+        "acini",
+        "acinus"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "pancreatic-juice",
+      "box": [
+        421,
+        279,
+        193,
+        50
+      ]
+    },
+    {
+      "id": "head-of-pancreas",
+      "name": "Head of pancreas",
+      "accept": [
+        "head of pancreas",
+        "head of the pancreas",
+        "pancreatic head",
+        "head"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null,
+      "box": [
+        51,
+        310,
+        176,
+        25
+      ]
+    },
+    {
+      "id": "pancreatic-islet",
+      "name": "Pancreatic islet",
+      "accept": [
+        "pancreatic islet",
+        "pancreatic islets",
+        "islet",
+        "islets",
+        "islet of langerhans",
+        "islets of langerhans",
+        "pancreatic islet cells",
+        "islet cells"
+      ],
+      "lines": [
+        9,
+        10,
+        11
+      ],
+      "concept": "pancreatic-islets",
+      "box": [
+        0,
+        460,
+        152,
+        71
+      ]
+    },
+    {
+      "id": "pancreatic-duct-tissue",
+      "name": "Pancreatic duct",
+      "accept": [
+        "pancreatic duct",
+        "duct"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "pancreatic-juice",
+      "box": [
+        0,
+        741,
+        155,
+        21
+      ]
+    },
+    {
+      "id": "exocrine-cells",
+      "name": "Exocrine cells secrete pancreatic juice",
+      "accept": [
+        "exocrine cells",
+        "exocrine acini"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "pancreatic-juice",
+      "box": [
+        267,
+        804,
+        364,
+        25
+      ]
+    }
+  ]
+}

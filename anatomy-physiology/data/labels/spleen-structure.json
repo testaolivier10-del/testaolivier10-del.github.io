@@ -1,0 +1,175 @@
+{
+  "figure": "spleen-structure",
+  "labels": [
+    {
+      "id": "splenic-artery",
+      "name": "Splenic artery",
+      "accept": [
+        "splenic artery"
+      ],
+      "concept": "abdominal-arteries",
+      "box": [
+        298,
+        176,
+        110,
+        19
+      ],
+      "at": [
+        340,
+        222
+      ]
+    },
+    {
+      "id": "splenic-vein",
+      "name": "Splenic vein",
+      "accept": [
+        "splenic vein"
+      ],
+      "concept": "spleen",
+      "box": [
+        298,
+        301,
+        95,
+        19
+      ],
+      "at": [
+        340,
+        276
+      ]
+    },
+    {
+      "id": "hilum",
+      "name": "Hilum",
+      "accept": [
+        "hilum",
+        "hilus",
+        "splenic hilum"
+      ],
+      "concept": "spleen",
+      "box": [
+        178,
+        426,
+        42,
+        19
+      ],
+      "at": [
+        262,
+        250
+      ]
+    },
+    {
+      "id": "capsule",
+      "name": "Capsule",
+      "accept": [
+        "capsule",
+        "splenic capsule"
+      ],
+      "concept": "spleen",
+      "box": [
+        428,
+        36,
+        57,
+        19
+      ],
+      "at": [
+        470,
+        68
+      ]
+    },
+    {
+      "id": "trabecula",
+      "name": "Trabecula",
+      "accept": [
+        "trabecula",
+        "trabeculae"
+      ],
+      "concept": "spleen",
+      "box": [
+        638,
+        36,
+        72,
+        19
+      ],
+      "at": [
+        612,
+        120
+      ]
+    },
+    {
+      "id": "white-pulp",
+      "name": "White pulp",
+      "accept": [
+        "white pulp"
+      ],
+      "concept": "spleen",
+      "box": [
+        438,
+        456,
+        80,
+        19
+      ],
+      "at": [
+        520,
+        290
+      ]
+    },
+    {
+      "id": "central-artery",
+      "name": "Central artery",
+      "accept": [
+        "central artery",
+        "central arteriole"
+      ],
+      "concept": "spleen",
+      "box": [
+        638,
+        456,
+        110,
+        19
+      ],
+      "at": [
+        758,
+        322
+      ]
+    },
+    {
+      "id": "red-pulp",
+      "name": "Red pulp",
+      "accept": [
+        "red pulp"
+      ],
+      "concept": "spleen",
+      "box": [
+        798,
+        456,
+        65,
+        19
+      ],
+      "at": [
+        850,
+        400
+      ]
+    },
+    {
+      "id": "venous-sinus",
+      "name": "Venous sinus",
+      "accept": [
+        "venous sinus",
+        "splenic sinus",
+        "sinusoid",
+        "splenic sinusoid"
+      ],
+      "concept": "spleen",
+      "box": [
+        798,
+        36,
+        95,
+        19
+      ],
+      "at": [
+        862,
+        146
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "figure": "os-17-10",
+  "labels": [
+    {
+      "id": "adipose-cells",
+      "name": "Adipose cells",
+      "accept": [
+        "adipose cells",
+        "adipocytes",
+        "adipocyte",
+        "fat cells"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "loose-ct",
+      "box": [
+        82,
+        635,
+        126,
+        23
+      ]
+    },
+    {
+      "id": "bone-cells",
+      "name": "Bone cells",
+      "accept": [
+        "bone cells",
+        "bone",
+        "osteoblasts"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "bone-cells",
+      "box": [
+        459,
+        597,
+        101,
+        20
+      ]
+    },
+    {
+      "id": "muscle-cells",
+      "name": "Muscle cells",
+      "accept": [
+        "muscle cells",
+        "muscle fibers",
+        "muscle"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "muscle-fiber-basic",
+      "box": [
+        459,
+        690,
+        117,
+        20
+      ]
+    },
+    {
+      "id": "nervous-system-cells",
+      "name": "Nervous system cells",
+      "accept": [
+        "nervous system cells",
+        "neurons",
+        "nerve cells"
+      ],
+      "lines": [
+        48,
+        49
+      ],
+      "concept": "neuron",
+      "box": [
+        459,
+        763,
+        151,
+        43
+      ]
+    },
+    {
+      "id": "immune-system-cells",
+      "name": "Immune system cells",
+      "accept": [
+        "immune system cells",
+        "immune cells",
+        "white blood cells"
+      ],
+      "lines": [
+        51,
+        52
+      ],
+      "concept": null,
+      "box": [
+        459,
+        851,
+        148,
+        43
+      ]
+    }
+  ]
+}

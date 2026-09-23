@@ -1,0 +1,356 @@
+{
+  "figure": "os-17-16",
+  "labels": [
+    {
+      "id": "osteoblasts-calcitonin",
+      "name": "Osteoblasts",
+      "accept": [
+        "osteoblasts",
+        "osteoblast"
+      ],
+      "box": [
+        580,
+        75,
+        102,
+        27
+      ],
+      "concept": "bone-cells"
+    },
+    {
+      "id": "osteoclasts-calcitonin",
+      "name": "Osteoclasts",
+      "accept": [
+        "osteoclasts",
+        "osteoclast"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "bone-cells",
+      "box": [
+        874,
+        77,
+        103,
+        19
+      ]
+    },
+    {
+      "id": "compact-bone-calcitonin",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "bone"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "compact-bone",
+      "box": [
+        874,
+        147,
+        124,
+        23
+      ]
+    },
+    {
+      "id": "calcitonin-stimulates-osteoblasts",
+      "name": "Stimulates osteoblasts",
+      "accept": [
+        "stimulates osteoblasts"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "calcitonin",
+      "cover": true,
+      "note": "OpenStax prints 'Stimulates osteoblasts' as an effect of calcitonin. Calcitonin's established action is inhibiting osteoclasts (printed on the next line); a direct stimulating effect on osteoblasts is not well supported, and in adults calcitonin's effect is small (docs/anp-needs-author.md, calcitonin-in-adults). Covered for good and never asked.",
+      "box": [
+        600,
+        238,
+        198,
+        19
+      ]
+    },
+    {
+      "id": "superior-parathyroid",
+      "name": "Superior parathyroid",
+      "accept": [
+        "superior parathyroid",
+        "superior parathyroid gland",
+        "upper parathyroid gland"
+      ],
+      "lines": [
+        15,
+        16
+      ],
+      "concept": "parathyroid-glands",
+      "box": [
+        10,
+        468,
+        99,
+        44
+      ]
+    },
+    {
+      "id": "inferior-parathyroid",
+      "name": "Inferior parathyroid",
+      "accept": [
+        "inferior parathyroid",
+        "inferior parathyroid gland",
+        "lower parathyroid gland"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "parathyroid-glands",
+      "box": [
+        10,
+        591,
+        99,
+        43
+      ]
+    },
+    {
+      "id": "pth-inhibits-osteoblasts",
+      "name": "Inhibits osteoblasts",
+      "accept": [
+        "inhibits osteoblasts"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "pth",
+      "cover": true,
+      "note": "OpenStax prints 'Inhibits osteoblasts' as an effect of PTH on bone. PTH acts on osteoblasts, which carry its receptor, and they respond by signaling osteoclasts to form and work harder; PTH does not simply inhibit them (short pulses of PTH even build bone). Covered for good and never asked; the notes and caption explain the osteoblast route.",
+      "box": [
+        60,
+        891,
+        173,
+        19
+      ]
+    },
+    {
+      "id": "pth-stimulates-osteoclasts",
+      "name": "Stimulates osteoclasts",
+      "accept": [
+        "stimulates osteoclasts"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "pth",
+      "cover": true,
+      "note": "OpenStax prints 'Stimulates osteoclasts' as a direct effect of PTH. Osteoclasts have no PTH receptor; PTH reaches them only through the osteoblasts. Printed beside the wrong 'Inhibits osteoblasts', the pair teaches a direct two-cell effect that is not what happens, so both are covered for good and never asked. The line below them ('Bone is broken down, releasing calcium ions into bloodstream') still shows the net effect.",
+      "box": [
+        60,
+        912,
+        198,
+        19
+      ]
+    },
+    {
+      "id": "kidney-tubule-cells",
+      "name": "Kidney tubule cells",
+      "accept": [
+        "kidney tubule cells",
+        "tubule cells",
+        "kidney tubule"
+      ],
+      "lines": [
+        36,
+        38
+      ],
+      "concept": null,
+      "box": [
+        440,
+        997,
+        101,
+        40
+      ]
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid",
+      "accept": [
+        "interstitial fluid",
+        "tissue fluid"
+      ],
+      "lines": [
+        37,
+        39
+      ],
+      "concept": "icf-ecf",
+      "box": [
+        528,
+        997,
+        85,
+        40
+      ]
+    },
+    {
+      "id": "urine",
+      "name": "Urine",
+      "accept": [
+        "urine"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": null,
+      "box": [
+        376,
+        1020,
+        54,
+        19
+      ]
+    },
+    {
+      "id": "blood",
+      "name": "Blood",
+      "accept": [
+        "blood",
+        "blood vessel"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": null,
+      "box": [
+        642,
+        1020,
+        56,
+        19
+      ]
+    },
+    {
+      "id": "intestinal-lumen",
+      "name": "Intestinal lumen",
+      "accept": [
+        "intestinal lumen",
+        "lumen"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": null,
+      "box": [
+        946,
+        985,
+        133,
+        18
+      ]
+    },
+    {
+      "id": "food",
+      "name": "Food",
+      "accept": [
+        "food"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": null,
+      "box": [
+        946,
+        1047,
+        51,
+        19
+      ]
+    },
+    {
+      "id": "intestinal-cells",
+      "name": "Intestinal cells",
+      "accept": [
+        "intestinal cells",
+        "intestinal lining cells",
+        "intestinal epithelium"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": null,
+      "box": [
+        946,
+        1124,
+        121,
+        18
+      ]
+    },
+    {
+      "id": "intestinal-connective-tissue",
+      "name": "Intestinal connective tissue with blood supply",
+      "accept": [
+        "intestinal connective tissue",
+        "connective tissue"
+      ],
+      "lines": [
+        50,
+        51,
+        52
+      ],
+      "concept": "connective-tissue",
+      "box": [
+        945,
+        1227,
+        147,
+        64
+      ]
+    },
+    {
+      "id": "osteoblasts-pth",
+      "name": "Osteoblasts",
+      "accept": [
+        "osteoblasts",
+        "osteoblast"
+      ],
+      "lines": [
+        46
+      ],
+      "concept": "bone-cells",
+      "box": [
+        23,
+        1122,
+        104,
+        19
+      ]
+    },
+    {
+      "id": "compact-bone-pth",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "bone"
+      ],
+      "lines": [
+        48,
+        49
+      ],
+      "concept": "compact-bone",
+      "box": [
+        27,
+        1194,
+        81,
+        40
+      ]
+    },
+    {
+      "id": "osteoclasts-pth",
+      "name": "Osteoclasts",
+      "accept": [
+        "osteoclasts",
+        "osteoclast"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "bone-cells",
+      "box": [
+        99,
+        1269,
+        103,
+        19
+      ]
+    }
+  ]
+}

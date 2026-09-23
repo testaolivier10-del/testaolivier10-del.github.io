@@ -1,0 +1,63 @@
+{
+  "figure": "os-17-13",
+  "labels": [
+    {
+      "id": "thyroid-follicle-cells",
+      "name": "Thyroid follicle cells",
+      "accept": [
+        "thyroid follicle cells",
+        "follicle cells",
+        "follicular cells",
+        "thyroid follicular cells"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "thyroid-gland",
+      "box": [
+        397,
+        673,
+        142,
+        45
+      ]
+    },
+    {
+      "id": "metabolic-rate-start",
+      "name": "Metabolic rate and/or T3 and T4 concentration in blood",
+      "accept": [
+        "metabolic rate"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "metabolic-rate",
+      "box": [
+        181,
+        15,
+        333,
+        46
+      ]
+    },
+    {
+      "id": "basal-metabolic-rate",
+      "name": "Increased basal metabolic rate of body cells",
+      "accept": [
+        "basal metabolic rate",
+        "increased basal metabolic rate"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "metabolic-rate",
+      "box": [
+        789,
+        959,
+        263,
+        50
+      ]
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "figure": "os-17-9",
+  "labels": [
+    {
+      "id": "hypothalamus",
+      "name": "Hypothalamus",
+      "accept": [
+        "hypothalamus"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "hypothalamus",
+      "box": [
+        8,
+        411,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "infundibulum",
+      "name": "Infundibulum",
+      "accept": [
+        "infundibulum",
+        "pituitary stalk",
+        "stalk"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "pituitary-gland",
+      "box": [
+        9,
+        575,
+        124,
+        21
+      ]
+    },
+    {
+      "id": "pituitary-gland",
+      "name": "Pituitary gland",
+      "accept": [
+        "pituitary gland",
+        "pituitary",
+        "hypophysis"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "pituitary-gland",
+      "box": [
+        8,
+        733,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "superior-hypophyseal-artery",
+      "name": "Superior hypophyseal artery",
+      "accept": [
+        "superior hypophyseal artery"
+      ],
+      "lines": [
+        20,
+        21,
+        23
+      ],
+      "concept": "hypophyseal-portal",
+      "box": [
+        207,
+        386,
+        122,
+        68
+      ]
+    },
+    {
+      "id": "neurosecretory-cells",
+      "name": "Neurosecretory cells",
+      "accept": [
+        "neurosecretory cells",
+        "neurosecretory cell",
+        "hypothalamic neurons"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "releasing-hormones",
+      "box": [
+        628,
+        474,
+        149,
+        42
+      ]
+    },
+    {
+      "id": "primary-capillary-plexus",
+      "name": "Primary capillary plexus of hypophyseal portal system",
+      "accept": [
+        "primary capillary plexus",
+        "primary capillaries"
+      ],
+      "lines": [
+        26,
+        28,
+        30
+      ],
+      "concept": "hypophyseal-portal",
+      "box": [
+        540,
+        570,
+        206,
+        68
+      ]
+    },
+    {
+      "id": "hypophyseal-portal-veins",
+      "name": "Hypophyseal portal veins",
+      "accept": [
+        "hypophyseal portal veins",
+        "portal veins",
+        "hypophyseal portal vein"
+      ],
+      "lines": [
+        29,
+        31
+      ],
+      "concept": "hypophyseal-portal",
+      "box": [
+        207,
+        596,
+        126,
+        46
+      ]
+    },
+    {
+      "id": "posterior-pituitary",
+      "name": "Posterior pituitary",
+      "accept": [
+        "posterior pituitary",
+        "neurohypophysis",
+        "posterior lobe"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "pituitary-gland",
+      "box": [
+        593,
+        676,
+        167,
+        25
+      ]
+    },
+    {
+      "id": "secondary-capillary-plexus",
+      "name": "Secondary capillary plexus of hypophyseal portal system",
+      "accept": [
+        "secondary capillary plexus",
+        "secondary capillaries"
+      ],
+      "lines": [
+        35,
+        36,
+        37
+      ],
+      "concept": "hypophyseal-portal",
+      "box": [
+        568,
+        752,
+        206,
+        69
+      ]
+    },
+    {
+      "id": "anterior-pituitary",
+      "name": "Anterior pituitary",
+      "accept": [
+        "anterior pituitary",
+        "adenohypophysis",
+        "anterior lobe"
+      ],
+      "box": [
+        206,
+        699,
+        82,
+        47
+      ],
+      "concept": "pituitary-gland"
+    }
+  ]
+}

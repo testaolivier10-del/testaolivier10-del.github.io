@@ -1,0 +1,59 @@
+{
+  "figure": "os-18-11",
+  "labels": [
+    {
+      "id": "neutrophil",
+      "name": "Neutrophil",
+      "accept": [
+        "neutrophil",
+        "neutrophils"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "granulocytes",
+      "box": [
+        65,
+        320,
+        139,
+        33
+      ]
+    },
+    {
+      "id": "eosinophil",
+      "name": "Eosinophil",
+      "accept": [
+        "eosinophil",
+        "eosinophils"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "granulocytes",
+      "box": [
+        454,
+        320,
+        141,
+        33
+      ]
+    },
+    {
+      "id": "basophil",
+      "name": "Basophil",
+      "accept": [
+        "basophil",
+        "basophils"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "granulocytes",
+      "box": [
+        885,
+        320,
+        119,
+        33
+      ]
+    }
+  ]
+}

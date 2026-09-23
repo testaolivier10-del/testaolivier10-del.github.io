@@ -1,0 +1,61 @@
+{
+  "os-21-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.2",
+      "section": "21.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4b6f4dbad2e93fdd565c2d9057d8855cd467a26b",
+      "page": "21-1-anatomy-of-the-lymphatic-and-immune-systems"
+    },
+    "alt": "A front view of a woman's body with a network of thin green vessels running through the arms, legs and trunk, dotted with small bead-like swellings that cluster in the armpits, neck and groin. Labeled organs include small lumps at the back of the nose and throat, the thymus above the heart (also shown enlarged at the top right), the spleen on the upper left of the abdomen, and the marrow inside a thigh bone. A duct on the right side of the neck joins a vein.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.2",
+    "labels": []
+  },
+  "os-21-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.3",
+      "section": "21.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/84098c7218666f7d2d1cc5a4bc3da6041519f9e9",
+      "page": "21-1-anatomy-of-the-lymphatic-and-immune-systems"
+    },
+    "alt": "Left, a bed of blood capillaries between a red arteriole and a blue venule, with green blind-ended lymphatic capillaries threaded among them and among the tissue cells; arrows show fluid leaving the blood capillaries into the tissue and entering the lymphatic capillaries, which join a larger lymphatic vessel. Right, an enlarged lymphatic capillary: its wall is a single layer of overlapping endothelial cells whose loose edges act as flaps, anchored to surrounding collagen fibers. Arrows show interstitial fluid slipping between the flaps into the vessel, where it is lymph, and valves inside the vessel keep it flowing one way.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.3",
+    "labels": []
+  },
+  "os-21-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.4",
+      "section": "21.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b14290525d93716adb27b17754e16160536913b5",
+      "page": "21-1-anatomy-of-the-lymphatic-and-immune-systems"
+    },
+    "alt": "A front view of the body shaded in two colors: the right arm, the right side of the head and neck and the right side of the chest in purple, and everything else in yellow. A duct runs up in front of the spine from a small sac in the upper abdomen, the cisterna chyli, to the left side of the neck. Enlarged boxes show, on the right, a short duct joining the right internal jugular and right subclavian veins, and on the left, the thoracic duct joining the left internal jugular and left subclavian veins.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.4",
+    "labels": []
+  },
+  "lymph-node-structure": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 760,
+    "h": 460,
+    "alt": "A lymph node cut in half: a bean shape with its indented hilum on the right. A capsule surrounds it with the subcapsular sinus just inside; four afferent lymphatic vessels enter the curved outer surface, and trabeculae run inward. The cortex holds round lymphoid nodules with pale germinal centers; deeper lie the paracortex and the medulla, whose cords and sinuses run to the hilum, where one efferent lymphatic vessel leaves beside an artery and a vein.",
+    "labels": []
+  },
+  "spleen-structure": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 940,
+    "h": 490,
+    "alt": "Left, the spleen from the front, with the splenic artery entering and the splenic vein leaving at its hilum. Right, a magnified slice under a thin capsule with a trabecula: mostly red pulp dotted with oval venous sinuses, and three pale islands of white pulp, each around a small central artery.",
+    "labels": []
+  }
+}

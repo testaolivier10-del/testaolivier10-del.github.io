@@ -1,0 +1,138 @@
+{
+  "figure": "os-18-2",
+  "labels": [
+    {
+      "id": "plasma",
+      "name": "Plasma",
+      "accept": [
+        "plasma",
+        "blood plasma"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "plasma",
+      "box": [
+        0,
+        183,
+        113,
+        26
+      ]
+    },
+    {
+      "id": "buffy-coat",
+      "name": "Buffy coat",
+      "accept": [
+        "buffy coat"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "hematocrit",
+      "box": [
+        0,
+        342,
+        151,
+        32
+      ]
+    },
+    {
+      "id": "hematocrit",
+      "name": "Hematocrit",
+      "accept": [
+        "hematocrit",
+        "packed cell volume",
+        "packed red cells",
+        "red cell layer"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "hematocrit",
+      "box": [
+        0,
+        452,
+        161,
+        26
+      ]
+    },
+    {
+      "id": "white-cells-platelets",
+      "name": "White blood cells, platelets",
+      "accept": [
+        "white blood cells and platelets",
+        "white blood cells",
+        "leukocytes and platelets",
+        "wbcs and platelets"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "blood-cells-basic",
+      "box": [
+        31,
+        373,
+        223,
+        61
+      ]
+    },
+    {
+      "id": "red-blood-cells",
+      "name": "Red blood cells",
+      "accept": [
+        "red blood cells",
+        "red blood cell",
+        "rbcs",
+        "erythrocytes",
+        "red cells"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "blood-cells-basic",
+      "box": [
+        33,
+        483,
+        196,
+        25
+      ]
+    },
+    {
+      "id": "anemia",
+      "name": "Anemia",
+      "accept": [
+        "anemia",
+        "anaemia"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "anemia",
+      "box": [
+        635,
+        588,
+        118,
+        26
+      ]
+    },
+    {
+      "id": "polycythemia",
+      "name": "Polycythemia",
+      "accept": [
+        "polycythemia"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "polycythemia",
+      "box": [
+        904,
+        588,
+        192,
+        32
+      ]
+    }
+  ]
+}

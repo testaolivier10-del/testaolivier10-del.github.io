@@ -1,0 +1,228 @@
+{
+  "figure": "os-18-8",
+  "labels": [
+    {
+      "id": "hemopoietic-bone-marrow",
+      "name": "Hemopoietic bone marrow",
+      "accept": [
+        "hemopoietic bone marrow",
+        "red bone marrow",
+        "bone marrow",
+        "hematopoietic bone marrow"
+      ],
+      "lines": [
+        7,
+        9
+      ],
+      "concept": "bone-marrow",
+      "box": [
+        640,
+        86,
+        223,
+        41
+      ]
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [
+        "liver"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "major-organs",
+      "box": [
+        138,
+        219,
+        54,
+        21
+      ]
+    },
+    {
+      "id": "stem-cell",
+      "name": "Stem cell",
+      "accept": [
+        "stem cell",
+        "hematopoietic stem cell",
+        "hemocytoblast"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "hematopoiesis",
+      "box": [
+        981,
+        265,
+        90,
+        20
+      ]
+    },
+    {
+      "id": "bilirubin",
+      "name": "Bilirubin",
+      "accept": [
+        "bilirubin"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "rbc-lifecycle",
+      "box": [
+        54,
+        274,
+        78,
+        20
+      ]
+    },
+    {
+      "id": "ferritin",
+      "name": "Ferritin",
+      "accept": [
+        "ferritin"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "iron-handling",
+      "box": [
+        193,
+        274,
+        70,
+        20
+      ]
+    },
+    {
+      "id": "erythroblast",
+      "name": "Erythroblast",
+      "accept": [
+        "erythroblast",
+        "erythroblasts",
+        "proerythroblast"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "erythropoiesis",
+      "box": [
+        982,
+        377,
+        114,
+        25
+      ]
+    },
+    {
+      "id": "iron-transferrin",
+      "name": "Iron ions bound to transferrin",
+      "accept": [
+        "transferrin",
+        "iron bound to transferrin",
+        "iron-transferrin"
+      ],
+      "lines": [
+        17,
+        19,
+        20
+      ],
+      "concept": "iron-handling",
+      "box": [
+        320,
+        412,
+        119,
+        63
+      ]
+    },
+    {
+      "id": "biliverdin",
+      "name": "Biliverdin",
+      "accept": [
+        "biliverdin"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "rbc-lifecycle",
+      "box": [
+        201,
+        434,
+        88,
+        20
+      ]
+    },
+    {
+      "id": "reticulocyte",
+      "name": "Reticulocyte",
+      "accept": [
+        "reticulocyte",
+        "reticulocytes"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "erythropoiesis",
+      "box": [
+        982,
+        494,
+        115,
+        25
+      ]
+    },
+    {
+      "id": "heme-groups",
+      "name": "Heme groups",
+      "accept": [
+        "heme groups",
+        "heme",
+        "heme group"
+      ],
+      "lines": [
+        30,
+        32
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        209,
+        691,
+        70,
+        45
+      ]
+    },
+    {
+      "id": "iron-ions",
+      "name": "Iron ions",
+      "accept": [
+        "iron ions",
+        "iron",
+        "fe2+"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "iron-handling",
+      "box": [
+        339,
+        702,
+        84,
+        20
+      ]
+    },
+    {
+      "id": "lysosome",
+      "name": "Lysosome",
+      "accept": [
+        "lysosome",
+        "lysosomes"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "lysosome",
+      "box": [
+        822,
+        1216,
+        98,
+        25
+      ]
+    }
+  ]
+}

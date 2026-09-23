@@ -1,0 +1,218 @@
+{
+  "figure": "lymph-node-structure",
+  "labels": [
+    {
+      "id": "afferent-lymphatic-vessel",
+      "name": "Afferent lymphatic vessel",
+      "accept": [
+        "afferent lymphatic vessel",
+        "afferent vessel",
+        "afferent lymphatic"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        18,
+        86,
+        194,
+        19
+      ],
+      "at": [
+        95,
+        164
+      ]
+    },
+    {
+      "id": "capsule",
+      "name": "Capsule",
+      "accept": [
+        "capsule",
+        "node capsule",
+        "fibrous capsule"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        18,
+        48,
+        57,
+        19
+      ],
+      "at": [
+        160,
+        104
+      ]
+    },
+    {
+      "id": "subcapsular-sinus",
+      "name": "Subcapsular sinus",
+      "accept": [
+        "subcapsular sinus",
+        "marginal sinus"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        558,
+        66,
+        133,
+        19
+      ],
+      "at": [
+        523,
+        165
+      ]
+    },
+    {
+      "id": "lymphoid-nodule",
+      "name": "Lymphoid nodule",
+      "accept": [
+        "lymphoid nodule",
+        "lymphoid follicle",
+        "nodule",
+        "follicle"
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        18,
+        286,
+        118,
+        19
+      ],
+      "at": [
+        133,
+        250
+      ]
+    },
+    {
+      "id": "germinal-center",
+      "name": "Germinal center",
+      "accept": [
+        "germinal center",
+        "germinal centre"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        18,
+        426,
+        118,
+        19
+      ],
+      "at": [
+        178,
+        344
+      ]
+    },
+    {
+      "id": "cortex",
+      "name": "Cortex",
+      "accept": [
+        "cortex",
+        "outer cortex"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        468,
+        16,
+        50,
+        19
+      ],
+      "at": [
+        340,
+        98
+      ]
+    },
+    {
+      "id": "paracortex",
+      "name": "Paracortex",
+      "accept": [
+        "paracortex",
+        "deep cortex"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        558,
+        106,
+        80,
+        19
+      ],
+      "at": [
+        430,
+        185
+      ]
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        558,
+        146,
+        57,
+        19
+      ],
+      "at": [
+        452,
+        228
+      ]
+    },
+    {
+      "id": "trabecula",
+      "name": "Trabecula",
+      "accept": [
+        "trabecula",
+        "trabeculae"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        558,
+        386,
+        72,
+        19
+      ],
+      "at": [
+        354,
+        380
+      ]
+    },
+    {
+      "id": "efferent-lymphatic-vessel",
+      "name": "Efferent lymphatic vessel",
+      "accept": [
+        "efferent lymphatic vessel",
+        "efferent vessel",
+        "efferent lymphatic"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        518,
+        306,
+        194,
+        19
+      ],
+      "at": [
+        600,
+        256
+      ]
+    },
+    {
+      "id": "hilum",
+      "name": "Hilum",
+      "accept": [
+        "hilum",
+        "hilus"
+      ],
+      "concept": "lymph-node",
+      "box": [
+        438,
+        431,
+        42,
+        19
+      ],
+      "at": [
+        500,
+        252
+      ]
+    }
+  ]
+}

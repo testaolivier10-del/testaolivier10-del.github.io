@@ -1,0 +1,120 @@
+{
+  "figure": "os-18-17",
+  "labels": [
+    {
+      "id": "anti-b",
+      "name": "Anti-B",
+      "accept": [
+        "anti-b",
+        "anti-b antibodies",
+        "anti-b antibody"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "abo",
+      "box": [
+        257,
+        490,
+        75,
+        23
+      ]
+    },
+    {
+      "id": "anti-a",
+      "name": "Anti-A",
+      "accept": [
+        "anti-a",
+        "anti-a antibodies",
+        "anti-a antibody"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "abo",
+      "box": [
+        487,
+        490,
+        75,
+        23
+      ]
+    },
+    {
+      "id": "anti-b-and-anti-a",
+      "name": "Anti-B and Anti-A",
+      "accept": [
+        "anti-a and anti-b",
+        "anti-b and anti-a",
+        "both anti-a and anti-b"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "abo",
+      "box": [
+        892,
+        490,
+        188,
+        23
+      ]
+    },
+    {
+      "id": "a-antigen",
+      "name": "A antigen",
+      "accept": [
+        "a antigen",
+        "type a antigen",
+        "antigen a"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "abo",
+      "box": [
+        240,
+        636,
+        107,
+        28
+      ]
+    },
+    {
+      "id": "b-antigen",
+      "name": "B antigen",
+      "accept": [
+        "b antigen",
+        "type b antigen",
+        "antigen b"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "abo",
+      "box": [
+        471,
+        636,
+        107,
+        28
+      ]
+    },
+    {
+      "id": "a-and-b-antigens",
+      "name": "A and B antigens",
+      "accept": [
+        "a and b antigens",
+        "both a and b antigens"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "abo",
+      "box": [
+        661,
+        636,
+        186,
+        28
+      ]
+    }
+  ]
+}
