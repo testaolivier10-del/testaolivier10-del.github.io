@@ -1,0 +1,32 @@
+{
+  "leukocyte": {
+    "def": "A white blood cell. Leukocytes keep their nucleus and organelles, number about 4,500–11,000 per µL of blood, and do most of their work in the tissues, squeezing out through capillary walls toward chemical signals.",
+    "roots": [["leuk-", "white"], ["-cyte", "cell"]],
+    "say": "LOO-koh-site"
+  },
+  "granulocytes": {
+    "def": "Leukocytes with visible stained granules, all from the myeloblast: neutrophils (most numerous, many-lobed or polymorphonuclear nucleus, engulf bacteria), eosinophils (red-orange granules, attack parasitic worms) and basophils (dark granules holding histamine).",
+    "roots": [["neutr-", "neither"], ["eosin", "a red-orange dye"], ["bas-", "base"], ["-phil", "loving"], ["poly-", "many"], ["morph-", "shape"]],
+    "say": "NOO-troh-fil; ee-oh-SIN-oh-fil; BAY-soh-fil"
+  },
+  "agranulocytes": {
+    "def": "Leukocytes without visible granules: lymphocytes (a large round nucleus almost filling the cell; the cells of specific immunity, from the lymphoid branch) and monocytes (the largest, with a kidney-shaped nucleus; they leave the blood and become macrophages).",
+    "roots": [["a-", "without"], ["mono-", "one"]],
+    "say": "LIM-foh-site; MON-oh-site"
+  },
+  "antigen-antibody-basic": {
+    "def": "An antigen is a molecule the immune system recognizes as a specific target, usually a protein or glycoprotein on a surface. An antibody is a Y-shaped plasma protein, released by cells descended from lymphocytes, that binds one antigen; with two or more binding sites it can link and clump cells.",
+    "roots": [["anti-", "against"], ["-gen", "producing"]],
+    "say": "AN-tih-jen"
+  },
+  "leukocyte-counts": {
+    "def": "The white cell count and the differential count (each type's share). Leukocytosis is a count above about 11,000 per µL and leukopenia one below about 4,500. Leukemia is cancer of blood-forming cells in the marrow; lymphoma is cancer of lymphocytes growing mainly in lymph nodes.",
+    "roots": [["-osis", "condition, increase"], ["-penia", "shortage"], ["-emia", "blood condition"], ["-oma", "tumor"]],
+    "say": "loo-KEE-mee-uh; lim-FOH-muh"
+  },
+  "platelet": {
+    "def": "A thrombocyte: a nucleus-free fragment of a megakaryocyte, 2–4 µm across, 150,000–450,000 per µL, living 7–10 days. Its granules and contractile proteins let it seal breaks in vessel walls and give clotting proteins a surface to work on.",
+    "roots": [["thromb-", "clot"], ["-cyte", "cell"]],
+    "say": "THROM-boh-site"
+  }
+}

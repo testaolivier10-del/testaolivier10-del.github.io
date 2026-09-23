@@ -1,0 +1,37 @@
+{
+  "hemostasis": {
+    "def": "The stopping of bleeding from a damaged vessel, in three overlapping steps: vascular spasm, the platelet plug and coagulation.",
+    "roots": [["hemo-", "blood"], ["-stasis", "standing still"]],
+    "say": "hee-moh-STAY-sis"
+  },
+  "vascular-spasm": {
+    "def": "The contraction of smooth muscle in the wall of an injured vessel, caused by direct injury, chemicals such as thromboxane A2 and serotonin from platelets, and local pain reflexes. It slows flow for up to about half an hour.",
+    "roots": [["vas-", "vessel"]],
+    "say": ""
+  },
+  "platelet-plug": {
+    "def": "A soft plug of platelets over a break in a vessel wall. Platelets adhere to exposed collagen through von Willebrand factor, activate and release ADP and thromboxane A2, and aggregate as fibrinogen bridges them, a positive feedback that healthy lining confines.",
+    "roots": [],
+    "say": "fon VIL-eh-brahnt"
+  },
+  "coagulation": {
+    "def": "The conversion of blood into a gel as the enzyme thrombin cuts fibrinogen into fibrin threads. In the body, tissue factor with factor VIIa starts it and activated platelets host the burst of thrombin; in the lab model, the extrinsic (PT) and intrinsic (aPTT) pathways meet at factor X and the common pathway. Factors II, VII, IX and X need vitamin K.",
+    "roots": [["coagulare", "to curdle"], ["thromb-", "clot"], ["pro-", "before"]],
+    "say": "koh-ag-yoo-LAY-shun; THROM-bin"
+  },
+  "clot-retraction-fibrinolysis": {
+    "def": "Clot retraction: platelets pull on fibrin with actin and myosin, squeezing out serum and drawing the vessel edges together. Fibrinolysis: tPA converts plasminogen, built into the clot, into plasmin, which cuts fibrin and dissolves the clot over days.",
+    "roots": [["-lysis", "loosening, breaking down"]],
+    "say": "fy-brin-OL-ih-sis; PLAZ-min"
+  },
+  "anticoagulants": {
+    "def": "Substances that slow or stop coagulation: the body's own antithrombin, protein C and heparin, and drugs such as heparin (boosts antithrombin; works in minutes) and warfarin (blocks vitamin K recycling; works over days).",
+    "roots": [["anti-", "against"]],
+    "say": "an-tee-koh-AG-yoo-lunts"
+  },
+  "clotting-disorders": {
+    "def": "Too little clotting: thrombocytopenia (a low platelet count), hemophilia (an inherited lack of factor VIII or IX), von Willebrand disease. Too much: thrombosis, forming a thrombus in an unbroken vessel; an embolus is a mass carried in the blood, and the blockage it causes is an embolism. Thrombocytosis is a high platelet count.",
+    "roots": [["-penia", "shortage"], ["-philia", "tendency"], ["embolos", "plug"]],
+    "say": "throm-boh-sy-toh-PEE-nee-uh; hee-moh-FIL-ee-uh; EM-boh-lus"
+  }
+}

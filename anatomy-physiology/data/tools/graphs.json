@@ -10052,7 +10052,7 @@
      "type": "shift",
      "level": "analyze",
      "diff": 3,
-     "q": "Disease strips myelin along the whole 50 m/s axon, and it adds sodium channels along the bare membrane so it still conducts, continuously, at about 10 m/s. How does its line change?",
+     "q": "Disease strips myelin along the whole 50 m/s axon, and it adds sodium channels along the bare membrane so it still conducts, continuously, at about 2 m/s. How does its line change?",
      "options": [
       "Still straight from the origin, but much less steep",
       "It becomes steeper, because bare membrane fires faster",
@@ -10073,20 +10073,20 @@
          ],
          [
           40,
-          0.4
+          0.08
          ]
         ],
-        "label": "after demyelination: 10 m/s",
+        "label": "after demyelination: 2 m/s",
         "labelAt": [
          39,
-         0.33
+         0.16
         ],
         "anchor": "end"
        }
       ]
      },
      "why": {
-      "correct": "Distance grows steadily with time, so the line stays straight, but its slope is the new, lower velocity. At 10 m/s the signal covers only 0.4 m in 40 ms, and reaching 1 m would take 100 ms instead of 20.",
+      "correct": "Distance grows steadily with time, so the line stays straight, but its slope is the new, lower velocity. At 2 m/s the signal covers only 0.08 m in 40 ms, and reaching 1 m would take 500 ms instead of 20.",
       "options": [
        "Right: same start, a shallower slope.",
        "Losing myelin slows conduction: current leaks through the bare wall and every patch must fire.",
@@ -10105,7 +10105,7 @@
     "communication"
    ],
    "intro": "The membrane potential at a neuron’s trigger zone over 100 ms, during four experiments. Each EPSP is drawn as 5 mV and the IPSP as 3 mV, larger than real ones in the brain so they can be seen. Where the trace shoots off the top, the neuron fired an action potential.",
-   "alt": "Membrane potential from −75 to −45 mV over 100 ms, with threshold marked at −55 mV. From 0 to 18 ms a single EPSP rises to −65 mV and fades. From 20 to 46 ms four EPSPs from one input arrive 1.5 ms apart and stack until the trace reaches −55 mV and shoots off the top. From 50 to 70 ms three EPSPs from different inputs arrive together, reach −55 mV at once and the trace shoots off the top. From 75 to 100 ms a single IPSP dips to −73 mV and fades back to −70.",
+   "alt": "Membrane potential from −75 to −45 mV over 100 ms, with threshold marked at −55 mV. From 0 to 18 ms a single EPSP rises to −65 mV and fades. From 20 to 46 ms four EPSPs from one input arrive 3 ms apart and stack until the trace reaches −55 mV and shoots off the top. From 50 to 70 ms three EPSPs from different inputs arrive together, reach −55 mV at once and the trace shoots off the top. From 75 to 100 ms a single IPSP dips to −73 mV and fades back to −70.",
    "x": {
     "min": 0,
     "max": 100,
@@ -10499,7 +10499,7 @@
      "type": "shift",
      "level": "analyze",
      "diff": 3,
-     "q": "Repeat experiment 2, but the same four EPSPs arrive 8 ms apart instead of 1.5 ms apart. How does the trace change?",
+     "q": "Repeat experiment 2, but the same four EPSPs arrive 6 ms apart instead of 3 ms apart. How does the trace change?",
      "options": [
       "The EPSPs fade between arrivals and never reach threshold",
       "It reaches threshold sooner, because each EPSP has more time to grow",
@@ -10527,31 +10527,35 @@
           -65
          ],
          [
-          30,
-          -68.5
+          28,
+          -67.8
          ],
          [
-          31.5,
-          -63.5
+          29.5,
+          -62.8
          ],
          [
-          38,
-          -67.5
+          34,
+          -66.8
          ],
          [
-          39.5,
-          -62.5
+          35.5,
+          -61.8
          ],
          [
-          45.5,
-          -67
+          40,
+          -66.5
+         ],
+         [
+          41.5,
+          -61.5
          ],
          [
           46,
-          -67.2
+          -66.3
          ]
         ],
-        "label": "EPSPs 8 ms apart",
+        "label": "EPSPs 6 ms apart",
         "labelAt": [
          21,
          -60
@@ -10561,7 +10565,7 @@
       ]
      },
      "why": {
-      "correct": "Temporal summation works only if each EPSP begins before the last has faded. With 8 ms gaps most of each one has decayed, so the stack tops out near −62 mV, well short of threshold.",
+      "correct": "Temporal summation works only if each EPSP begins before the last has faded. With 6 ms gaps most of each one has decayed, so the stack tops out near −61.5 mV, well short of threshold.",
       "options": [
        "Right: timing decides whether they stack.",
        "Spreading the inputs out gives each EPSP more time to fade, so the sum is lower, not higher.",
@@ -11358,7 +11362,7 @@
           ]
         },
         "why": {
-          "correct": "A firmer press opens more channels and gives a larger receptor potential, which holds the trigger zone further above threshold, so the neuron fires more often. Strength is coded as frequency.",
+          "correct": "A firmer press opens more channels and depolarizes the ending more, which holds the trigger zone further above threshold, so the neuron fires more often. Strength is coded as frequency.",
           "options": [
             "Right: stronger stimulus, higher frequency.",
             "Adaptation in a tonic sensory receptor is slow whatever the strength; it keeps firing while the press lasts.",
@@ -12103,10 +12107,10 @@
         "diff": 3,
         "q": "In one form of red–green color blindness, the L pigment is altered so that its peak moves toward the M pigment’s. How does the L curve change?",
         "options": [
-          "It moves left, to shorter wavelengths, overlapping the M curve more",
-          "It moves right, to longer wavelengths",
-          "It keeps its place but grows taller",
-          "It disappears completely"
+          "It slides left, toward the M curve",
+          "It slides right, to longer wavelengths, away from M",
+          "It keeps its place but grows taller than the others",
+          "It disappears, leaving only the S and M curves"
         ],
         "correct": 0,
         "overlay": {
@@ -12478,7 +12482,7 @@
         "q": "During which stretch is your sensitivity set by the cones?",
         "options": [
           "Roughly the first 8 minutes",
-          "From about 8 to 35 minutes",
+          "From about 8 minutes to the end of the record",
           "Only after 30 minutes",
           "The whole 35 minutes"
         ],
@@ -12967,10 +12971,10 @@
         "diff": 2,
         "q": "Where does the noise-damaged ear show its typical dip (notch)?",
         "options": [
-          "Around 4,000 Hz, with some recovery at 8,000 Hz",
+          "Around 4,000 Hz",
           "At 250 Hz, the lowest tone tested",
           "Evenly across every frequency",
-          "Only at 8,000 Hz"
+          "Only at 8,000 Hz, the highest tone tested"
         ],
         "correct": 0,
         "highlight": {
@@ -13300,7 +13304,7 @@
         "options": [
           "Minutes 4 to 10 on the beta-blocker-first line",
           "Minutes 4 to 10 on the atropine-first line",
-          "After minute 13 on both lines",
+          "After minute 13, once both drugs are working, on both lines",
           "The first 2 minutes on both lines"
         ],
         "correct": 0,
@@ -13334,7 +13338,7 @@
         "diff": 3,
         "q": "The atropine-first test is repeated in a heart transplant recipient, whose cardiac nerves are cut. How does the line change?",
         "options": [
-          "It starts near 100 and barely moves with either drug",
+          "It starts near 100 and barely moves",
           "It rises even higher after atropine",
           "It starts at 70 and rises to 108 as before",
           "It falls to 40 after the beta blocker"

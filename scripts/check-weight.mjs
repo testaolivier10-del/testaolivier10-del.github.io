@@ -412,9 +412,12 @@ const DATA_BUDGETS = [
      fetched after) and the glossary behind the hover definitions. Measured at
      the Phase 1 pilot (49 topics): 105.3, 159.7 and 40.8 KB. They grow with
      every chapter, so each new chapter raises these with its measured size.
-     120/180 -> 140/200: respiratory published (58 topics), 133.1 and 193.9 KB. */
-  ['anatomy-physiology/assets/bank-core.json', 140],
-  ['anatomy-physiology/assets/bank-why.json', 200],
+     120/180 -> 140/200: respiratory published (58 topics), 133.1 and 193.9 KB.
+     140/200 -> 165/235: nervous tissue and CNS published (66 topics), 157.4 and
+     224.2 KB. At this rate the whole course is about 2.5 times this, so the
+     bank is due to be split by chapter before it passes 250 KB. */
+  ['anatomy-physiology/assets/bank-core.json', 165],
+  ['anatomy-physiology/assets/bank-why.json', 235],
   /* 46 -> 52: the glossary carries every written definition, published or
      not, so an early page can show a hover for a later term (spec section 7).
      It grows as each chapter is written; measured 47.3 KB with respiratory

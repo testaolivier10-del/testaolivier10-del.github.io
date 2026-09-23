@@ -1,0 +1,507 @@
+[
+  {
+    "id": "anp-hemostasis-1",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Put the steps of hemostasis in order, from the moment a vessel is torn.",
+    "options": [
+      "Smooth muscle in the vessel wall contracts (vascular spasm)",
+      "Platelets adhere to exposed collagen through von Willebrand factor",
+      "Activated platelets release ADP and thromboxane A2 and recruit more platelets",
+      "Tissue factor and factor VIIa start coagulation",
+      "Thrombin converts fibrinogen into fibrin threads",
+      "Platelets pull on the fibrin and the clot retracts"
+    ],
+    "why": {
+      "correct": "The vessel constricts within seconds, a platelet plug builds over the next minute or two, coagulation reinforces it with fibrin over several minutes, and within an hour platelets pull the clot tight. The steps overlap, but they start in this order."
+    }
+  },
+  {
+    "id": "anp-hemostasis-2",
+    "type": "order",
+    "level": "apply",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "Put the steps of coagulation in the body in order, following the cell-based model.",
+    "options": [
+      "Injury exposes tissue factor on cells in the vessel wall",
+      "Tissue factor and factor VIIa activate factors X and IX",
+      "Factor Xa with Va makes a small amount of thrombin",
+      "That thrombin activates platelets and factors V, VIII and XI",
+      "IXa–VIIIa and Xa–Va on the platelet surface make a burst of thrombin",
+      "Thrombin converts fibrinogen to fibrin, and XIIIa cross-links it"
+    ],
+    "why": {
+      "correct": "Initiation happens on the tissue factor cell and yields a trickle of thrombin. Amplification: that thrombin primes platelets and cofactors. Propagation: the activated platelet surface makes a burst of thrombin, enough to convert fibrinogen to fibrin, which XIIIa cross-links."
+    }
+  },
+  {
+    "id": "anp-hemostasis-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["homeostasis"],
+    "q": "An adult with a disease that blocks fat absorption becomes deficient in vitamin K. Predict the change in each variable.",
+    "variables": [
+      { "name": "Working factors II, VII, IX and X in plasma", "answer": "down", "why": "The liver needs vitamin K to add the calcium-binding groups these factors need. Without it, the factors it makes do not work." },
+      { "name": "Prothrombin time (PT)", "answer": "up", "why": "The PT depends on factor VII and the common pathway factors X and II. Factor VII has the shortest life in plasma, so the PT lengthens first." },
+      { "name": "aPTT", "answer": "up", "why": "The aPTT depends on factor IX and the common pathway factors X and II, all of which need vitamin K." },
+      { "name": "Platelet count", "answer": "none", "why": "Vitamin K is needed for clotting factors, not for making platelets." },
+      { "name": "Tendency to bleed", "answer": "up", "why": "With too little working thrombin-making machinery, fibrin forms slowly, and bleeding lasts longer." }
+    ],
+    "why": {
+      "correct": "Vitamin K is needed for four clotting factors. Without it, the liver makes non-working copies, clotting tests lengthen (the PT first) and the person bruises and bleeds easily. Platelets are unaffected."
+    }
+  },
+  {
+    "id": "anp-hemostasis-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A patient's prothrombin time is long, but his aPTT is normal. Using the lab model, which factor is most likely low?",
+    "options": ["Factor VIII", "Factor XII", "Factor VII", "Factor IX"],
+    "correct": 2,
+    "why": {
+      "correct": "The PT tests the extrinsic pathway (factor VII) and the common pathway. A normal aPTT shows that the intrinsic and common pathways work. The one factor only the PT depends on is factor VII.",
+      "options": [
+        "Factor VIII is in the intrinsic pathway; a lack of it lengthens the aPTT, not the PT.",
+        "A lack of factor XII lengthens the aPTT only.",
+        "Correct. Factor VII is tested by the PT alone.",
+        "Factor IX is in the intrinsic pathway; a lack of it lengthens the aPTT."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A 6-year-old boy has a swollen, painful knee after a minor fall, and his uncle had a similar problem. His platelet count and PT are normal; his aPTT is long. What is the most likely diagnosis?",
+    "options": [
+      "Hemophilia, a lack of factor VIII or IX",
+      "Thrombocytopenia",
+      "Vitamin K deficiency",
+      "Von Willebrand disease"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Bleeding into a joint is the typical pattern of a clotting factor problem. A long aPTT with a normal PT points to the intrinsic pathway, where factors VIII and IX act. The genes for both lie on the X chromosome, which is why the disease runs in males of a family.",
+      "options": [
+        "Correct. Hemophilia A or B.",
+        "His platelet count is normal, and low platelets cause skin and mucous membrane bleeding, not joint bleeds.",
+        "Vitamin K deficiency lengthens the PT, often before the aPTT, because factor VII is affected.",
+        "Von Willebrand disease mainly causes skin and mucous membrane bleeding, such as nosebleeds, rather than joint bleeds."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "misconception": "the intrinsic and extrinsic pathways run separately in the body",
+    "q": "People who lack factor XII have a very long aPTT but never bleed abnormally. What does this show?",
+    "options": [
+      "The aPTT test is unreliable and should not be used",
+      "Factor XII is only needed for clotting in arteries",
+      "Clotting in the body starts with tissue factor, not with factor XII",
+      "Factor VIII takes over the job of factor XII"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In a test tube, contact with glass activates factor XII, which starts the intrinsic pathway. In the body, bleeding is stopped by clotting that starts when tissue factor is exposed, so factor XII is not needed. This is one of the observations the cell-based model explains and the lab model does not.",
+      "options": [
+        "The aPTT measures the test-tube pathway accurately. The long result is real; it just does not predict bleeding here.",
+        "Factor XII is not needed to stop bleeding in any vessel.",
+        "Correct. Tissue factor starts clotting in the body.",
+        "Factor VIII does not replace factor XII; they act at different steps."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "structure-function"],
+    "q": "A woman takes one low-dose aspirin a day. Her surgeon asks her to stop it 7 days before an operation. Why a whole week?",
+    "options": [
+      "Aspirin stays in the blood for a week after the last dose",
+      "Aspirin blocks the platelet enzyme for good, and platelets cannot make a new one",
+      "Aspirin blocks vitamin K, and the liver needs a week to recover",
+      "The operation needs extra platelets, and the marrow needs a week to make them"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Aspirin permanently blocks cyclooxygenase, the enzyme platelets use to make thromboxane A2. A platelet has no nucleus, so it cannot make new enzyme. The effect lasts until the affected platelets are replaced, which takes their 7–10 day lifespan.",
+      "options": [
+        "Aspirin itself is cleared from the blood within hours. The effect outlasts the drug.",
+        "Correct. The effect lasts as long as the platelets do.",
+        "Warfarin works through vitamin K. Aspirin acts on platelets.",
+        "Aspirin does not lower the platelet count; it makes the existing platelets work less well."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "How does heparin slow coagulation?",
+    "options": [
+      "It dissolves fibrin threads",
+      "It stops the liver from making clotting factors",
+      "It binds calcium ions in the plasma",
+      "It makes antithrombin inactivate thrombin and Xa much faster"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heparin binds antithrombin and speeds its action about a thousandfold. Antithrombin then inactivates thrombin and factor Xa, so fibrin forms far more slowly.",
+      "options": [
+        "Heparin does not dissolve existing clots; plasmin does that.",
+        "Blocking factor production is how warfarin works, and it takes days.",
+        "Citrate in blood collection tubes binds calcium. Heparin works through antithrombin.",
+        "Correct. Heparin boosts the body's own inhibitor."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "Mr. Reyes takes a steady dose of warfarin with an INR of 2.5. He starts eating a large spinach salad every day. What happens to his INR over the next weeks, and why?",
+    "options": [
+      "It rises, because spinach blocks the vitamin K enzyme too",
+      "It stays the same, because diet does not affect clotting",
+      "It falls, because more vitamin K lets the liver make more working factors",
+      "It falls, because spinach destroys warfarin in the gut"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Warfarin blocks the recycling of vitamin K. Leafy greens bring in fresh vitamin K, which partly overcomes the block, so the liver makes more working factors II, VII, IX and X. Clotting speeds up and the INR falls.",
+      "options": [
+        "Spinach supplies vitamin K; it does not block its recycling.",
+        "Vitamin K from food directly affects how many working factors the liver makes.",
+        "Correct. Extra vitamin K works against warfarin.",
+        "The effect comes from the vitamin K in the spinach, not from destroying warfarin."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Why does warfarin take 3–5 days to reach its full effect, while heparin works within minutes?",
+    "options": [
+      "Working factors already in the blood must be used up before warfarin's effect shows",
+      "Warfarin is absorbed from the gut very slowly",
+      "Warfarin must first be converted to heparin in the liver",
+      "Warfarin has to be stored in platelets before it acts"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Warfarin stops the liver from making new working factors II, VII, IX and X, but it does nothing to the working factors already circulating. Those are cleared over days, so the effect builds as they run out. Heparin acts directly on antithrombin in the plasma.",
+      "options": [
+        "Correct. Warfarin cuts supply; the old stock runs down over days.",
+        "Warfarin is absorbed within hours; the delay comes after absorption.",
+        "Warfarin and heparin are unrelated molecules with different targets.",
+        "Warfarin acts on the liver's vitamin K enzyme, not on platelets."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every way healthy vessel lining keeps a clot from spreading past an injury.",
+    "options": [
+      "Releasing nitric oxide and prostacyclin",
+      "Destroying ADP with a surface enzyme",
+      "Exposing tissue factor to the blood",
+      "Carrying thrombomodulin, which turns thrombin toward activating protein C",
+      "Releasing von Willebrand factor onto collagen"
+    ],
+    "correct": [0, 1, 3],
+    "why": {
+      "correct": "Intact lining keeps platelets quiet with nitric oxide and prostacyclin, removes the ADP that recruits them, and uses thrombomodulin to switch thrombin from a clotting enzyme to an activator of protein C, which destroys Va and VIIIa.",
+      "options": [
+        "Correct. Both keep platelets from activating.",
+        "Correct. Without ADP, passing platelets are not recruited.",
+        "Tissue factor sits on cells outside the lining and starts clotting when a tear exposes it.",
+        "Correct. Thrombomodulin turns thrombin into a brake.",
+        "Von Willebrand factor on exposed collagen helps platelets adhere; it promotes the plug."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A 19-year-old woman has had frequent nosebleeds and very heavy periods since her teens. Her platelet count and PT are normal, and her aPTT is slightly long. Her mother has the same problems. Which step of hemostasis is most likely faulty?",
+    "options": [
+      "Vascular spasm",
+      "Fibrinolysis",
+      "Platelet adhesion to collagen",
+      "Clot retraction"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Skin and mucous membrane bleeding with a normal platelet count, in several family members, fits von Willebrand disease. Without enough von Willebrand factor, platelets cannot hold on to exposed collagen. The aPTT is slightly long because vWF also carries and protects factor VIII.",
+      "options": [
+        "Vascular spasm does not explain a long aPTT or inherited mucosal bleeding.",
+        "Too much fibrinolysis is rare and would not lengthen the aPTT.",
+        "Correct. Poor adhesion from too little vWF.",
+        "Clot retraction happens after a clot forms; it does not explain these tests."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "After a long flight, a man develops a clot in a deep calf vein. Days later, a piece breaks off and blocks an artery in his lung. What are the clot in the calf, the traveling piece and the blockage called?",
+    "options": [
+      "Embolus, thrombus, thrombosis",
+      "Thrombus, embolus, embolism",
+      "Thrombus, embolism, embolus",
+      "Embolism, thrombus, embolus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A clot that forms in an unbroken vessel and stays attached is a thrombus. A piece carried along in the blood is an embolus. The blockage it causes where it lodges is an embolism, here a pulmonary embolism.",
+      "options": [
+        "The clot in the calf is attached where it formed, so it is a thrombus, not an embolus.",
+        "Correct. Thrombus, embolus, embolism.",
+        "The traveling piece is the embolus; the blockage is the embolism.",
+        "The calf clot is a thrombus; an embolism is a blockage, not a clot in place."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A patient with a large clot in a leg artery is given tissue plasminogen activator (tPA). What does the drug do?",
+    "options": [
+      "It blocks thrombin",
+      "It converts plasminogen in the clot to plasmin, which cuts fibrin",
+      "It makes platelets release their granules",
+      "It makes antithrombin act faster"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "tPA converts plasminogen, which is built into the clot, into the enzyme plasmin. Plasmin cuts fibrin into fragments, dissolving the clot. This is fibrinolysis.",
+      "options": [
+        "Blocking thrombin stops new fibrin forming but does not dissolve a clot.",
+        "Correct. tPA drives fibrinolysis.",
+        "Platelet activation would help build a clot, not dissolve it.",
+        "That is how heparin works; it prevents growth but does not dissolve an existing clot."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Complete the sequence of fibrinolysis: tPA converts plasminogen → ____ → fibrin is cut into fragments.",
+    "options": ["Thrombin", "Plasmin", "Prothrombin", "Fibrinogen"],
+    "correct": 1,
+    "why": {
+      "correct": "Plasminogen is the inactive precursor; tPA converts it to plasmin, the enzyme that cuts fibrin.",
+      "options": [
+        "Thrombin makes fibrin; it does not break it down.",
+        "Correct. Plasmin dissolves the clot.",
+        "Prothrombin is the inactive form of thrombin.",
+        "Fibrinogen is the soluble precursor of fibrin, not an enzyme that cuts it."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-16",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A student described how a platelet plug forms. One step is wrong. Which one?",
+    "options": [
+      "A tear exposes collagen beneath the vessel lining",
+      "Von Willebrand factor binds the exposed collagen",
+      "Platelets are activated by nitric oxide and prostacyclin from the lining",
+      "Activated platelets release ADP and make thromboxane A2",
+      "Fibrinogen bridges activated platelets to each other"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Nitric oxide and prostacyclin from healthy lining keep platelets from activating. Platelets are activated by binding collagen and vWF, and then by ADP, thromboxane A2 and thrombin.",
+      "options": [
+        "This step is right. Exposed collagen starts the plug.",
+        "This step is right. vWF bridges collagen to platelets.",
+        "This is the error. Those chemicals inhibit platelets; they limit the plug to the injury.",
+        "This step is right. ADP and thromboxane A2 recruit more platelets.",
+        "This step is right. One fibrinogen molecule can bind two platelets."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Why is the production of thrombin described as positive feedback?",
+    "options": [
+      "Thrombin activates factors and platelets that make more thrombin",
+      "Thrombin brings the blood back to its set point",
+      "Thrombin is made only when blood pressure rises",
+      "Thrombin switches off its own production"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Thrombin activates platelets and factors V, VIII and XI, and those speed its own production. The response strengthens the stimulus, which is positive feedback. The loop is ended by sealing the injury and by inhibitors outside it.",
+      "options": [
+        "Correct. More thrombin makes still more thrombin.",
+        "Returning a variable to a set point is negative feedback.",
+        "Thrombin is made in response to injury, not to high pressure.",
+        "Switching off its own production would be negative feedback. The brakes come from the healthy lining and antithrombin."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "Two patients bleed abnormally. Patient A has pinpoint red spots on her legs, bleeding gums and a platelet count of 12,000 per µL. Patient B has a normal platelet count, bled into his elbow joint, and his tooth socket started bleeding again hours after an extraction. Which statement is best?",
+    "options": [
+      "Both have platelet problems",
+      "Both have clotting factor problems",
+      "A has a clotting factor problem; B has a platelet problem",
+      "A has a platelet problem; B has a clotting factor problem"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Too few platelets cause bleeding from small vessels in the skin and mucous membranes: petechiae and bleeding gums. A clotting factor problem causes deep bleeding into joints and muscles, and bleeding that restarts hours later, because the platelet plug forms but no fibrin reinforces it.",
+      "options": [
+        "Patient B's platelet count is normal, and his bleeding pattern is the factor pattern.",
+        "Patient A's platelet count of 12,000 per µL is severe thrombocytopenia.",
+        "The patterns are the other way round.",
+        "Correct. Skin and mucosa for platelets; joints and delayed bleeding for factors."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "What does thrombin convert into fibrin?",
+    "options": ["Plasminogen", "Prothrombin", "Fibrinogen", "Tissue factor"],
+    "correct": 2,
+    "why": {
+      "correct": "Thrombin cuts fibrinogen, a soluble plasma protein, into fibrin, which links up into insoluble threads.",
+      "options": [
+        "Plasminogen becomes plasmin, the enzyme that breaks fibrin down.",
+        "Prothrombin is converted into thrombin itself, by factor Xa.",
+        "Correct. Fibrinogen becomes fibrin.",
+        "Tissue factor is a membrane protein that starts clotting; it is not converted into fibrin."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Blood for clotting tests is collected into a tube that contains citrate, and it stays liquid. What does citrate do?",
+    "options": [
+      "It destroys platelets",
+      "It binds calcium ions, which coagulation needs",
+      "It dissolves fibrinogen",
+      "It blocks vitamin K in the sample"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Calcium ions (factor IV) hold clotting factors onto phospholipid surfaces at most steps. Citrate binds calcium, so coagulation cannot proceed until the lab adds calcium back.",
+      "options": [
+        "Citrate leaves platelets intact; the plasma is spun off them.",
+        "Correct. No free calcium, no coagulation.",
+        "Fibrinogen stays in the plasma; the tests need it.",
+        "Vitamin K acts in the liver while factors are made. It has no role in a blood sample."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Why is every newborn given a vitamin K injection at birth?",
+    "options": [
+      "Newborns have no platelets for the first week",
+      "Newborns have little vitamin K, and no intestinal bacteria yet to make it",
+      "Vitamin K speeds up newborn jaundice clearance",
+      "Newborn livers cannot make fibrinogen"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Little vitamin K reaches the fetus, the newborn gut has no bacteria yet, and breast milk is low in it. Without vitamin K the liver makes non-working factors II, VII, IX and X, and a rare but serious bleeding disease can follow. One injection prevents it.",
+      "options": [
+        "Newborns have normal platelet counts.",
+        "Correct. Low stores and no bacterial supply.",
+        "Vitamin K is given for clotting, not for bilirubin.",
+        "Newborn livers make fibrinogen. The problem is the vitamin K–dependent factors."
+      ]
+    }
+  },
+  {
+    "id": "anp-hemostasis-22",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every cause of vascular spasm.",
+    "options": [
+      "Direct injury to the smooth muscle of the vessel wall",
+      "Thromboxane A2 and serotonin released by platelets",
+      "Nerve reflexes set off by pain fibers in the wall",
+      "Plasmin cutting fibrin",
+      "Heparin released by basophils"
+    ],
+    "correct": [0, 1, 2],
+    "why": {
+      "correct": "The injured smooth muscle contracts directly, platelets release constricting chemicals, and local pain reflexes add to the constriction.",
+      "options": [
+        "Correct. Damaged smooth muscle contracts.",
+        "Correct. Both constrict the vessel.",
+        "Correct. Local reflexes add to the spasm.",
+        "Plasmin dissolves clots days later; it does not constrict vessels.",
+        "Heparin is an anticoagulant; it does not constrict vessels."
+      ]
+    }
+  }
+]

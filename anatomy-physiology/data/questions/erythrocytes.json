@@ -1,0 +1,615 @@
+[
+  {
+    "id": "anp-erythrocytes-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A mature red blood cell has no mitochondria. How does it make its ATP?",
+    "options": [
+      "By glycolysis, without using oxygen",
+      "By burning some of the oxygen it carries",
+      "It makes none; it lives on ATP made in the marrow",
+      "By breaking down its own hemoglobin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Without mitochondria, a red cell cannot use oxygen to make ATP. It splits glucose by glycolysis, which needs no oxygen, so none of the oxygen it carries is used up on the way.",
+      "options": [
+        "Correct. Glycolysis runs in the cytosol and needs no mitochondria.",
+        "Using oxygen to make ATP happens in mitochondria, which mature red cells have lost.",
+        "ATP cannot be stored for 120 days. The cell must keep making it to run its ion pumps.",
+        "Hemoglobin is not broken down until the cell dies. The cell's fuel is glucose from the plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A red blood cell holds 250 million hemoglobin molecules. How many oxygen molecules can it carry when fully loaded?",
+    "options": [
+      "250 million",
+      "500 million",
+      "1 billion",
+      "4 billion"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each hemoglobin has four hemes, each with one iron that binds one oxygen molecule: 250 million × 4 = 1,000 million, or 1 billion.",
+      "options": [
+        "That counts one oxygen per hemoglobin. Each molecule carries four.",
+        "That counts two per hemoglobin, one for each pair of chains. Every chain has its own heme.",
+        "Correct. Four oxygen molecules per hemoglobin.",
+        "That multiplies by 16. Each hemoglobin has four hemes, not sixteen."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A woman moves from a coastal city to a town 3,500 m up a mountain. The air there holds less oxygen. Predict the change in each variable after she has lived there for six weeks, compared with her first day.",
+    "variables": [
+      {
+        "name": "Erythropoietin release by the kidneys",
+        "answer": "up",
+        "why": "Less oxygen reaches the kidney tissue, so its oxygen-sensing cells release more EPO. It stays above her coastal level while oxygen delivery is still below normal."
+      },
+      {
+        "name": "Reticulocyte count",
+        "answer": "up",
+        "why": "EPO makes more erythroid precursors survive and mature, so more young red cells enter the blood each day."
+      },
+      {
+        "name": "Red blood cell count",
+        "answer": "up",
+        "why": "Weeks of faster production add more red cells than are destroyed."
+      },
+      {
+        "name": "Hematocrit",
+        "answer": "up",
+        "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."
+      },
+      {
+        "name": "Blood viscosity",
+        "answer": "up",
+        "why": "Viscosity depends mostly on the hematocrit, which has risen."
+      }
+    ],
+    "why": {
+      "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises and the marrow speeds up, so over weeks her red cell count and hematocrit climb, and each liter of blood carries more oxygen. The cost is thicker blood."
+    }
+  },
+  {
+    "id": "anp-erythrocytes-4",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A man's kidneys have been failing slowly for years. His marrow, iron stores and lungs are healthy. Predict the change in each variable, compared with before his kidneys began to fail.",
+    "variables": [
+      {
+        "name": "Erythropoietin release",
+        "answer": "down",
+        "why": "The damaged kidneys have lost many of the cells that make EPO, so less is released even though oxygen delivery is low."
+      },
+      {
+        "name": "Reticulocyte count",
+        "answer": "down",
+        "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."
+      },
+      {
+        "name": "Hematocrit",
+        "answer": "down",
+        "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."
+      },
+      {
+        "name": "Oxygen carried per liter of blood",
+        "answer": "down",
+        "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."
+      },
+      {
+        "name": "Resting heart rate",
+        "answer": "up",
+        "why": "Low oxygen delivery is sensed and sympathetic drive to the heart rises, so the heart beats faster."
+      }
+    ],
+    "why": {
+      "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) is missing, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."
+    }
+  },
+  {
+    "id": "anp-erythrocytes-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order to trace the heme of an old red blood cell until it leaves the liver.",
+    "options": [
+      "A macrophage in the spleen engulfs an old red cell",
+      "Heme is split from globin, and its iron is removed",
+      "The ring is opened to form green biliverdin",
+      "Biliverdin is converted to yellow bilirubin",
+      "Bilirubin travels in the plasma bound to albumin",
+      "Liver cells conjugate bilirubin and secrete it in bile"
+    ],
+    "why": {
+      "correct": "Macrophages break down old red cells, split off the iron and open the heme ring into biliverdin, then bilirubin. Poorly soluble bilirubin rides on albumin to the liver, which conjugates it and secretes it in bile. In the intestine, bacteria later turn it into urobilinogen and then brown stercobilin."
+    }
+  },
+  {
+    "id": "anp-erythrocytes-6",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the sequence: heme (iron removed) → biliverdin → ____ → conjugated in the liver → bile.",
+    "options": [
+      "Bilirubin",
+      "Ferritin",
+      "Transferrin",
+      "Stercobilin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Biliverdin, the green pigment made when the heme ring is opened, is converted into yellow bilirubin. Bilirubin is what the liver conjugates.",
+      "options": [
+        "Correct. Biliverdin becomes bilirubin.",
+        "Ferritin stores the iron that was removed from heme. It is not made from the ring.",
+        "Transferrin carries iron in the plasma, not the heme ring.",
+        "Stercobilin forms later, from bilirubin, in the intestine."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-7",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described the erythropoiesis feedback loop. One step is wrong. Which one?",
+    "options": [
+      "Blood loss lowers the oxygen reaching the kidney tissue",
+      "Red bone marrow senses the low oxygen and releases erythropoietin",
+      "Erythropoietin binds receptor proteins on erythroid precursors",
+      "Reticulocytes enter the blood within a few days",
+      "As oxygen delivery recovers, erythropoietin release falls"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Erythropoietin is released mainly by oxygen-sensing cells in the kidneys. The marrow is the effector that responds to it, not the sensor or the source.",
+      "options": [
+        "This step is right. Fewer red cells means less oxygen reaches every tissue, including the kidneys.",
+        "This is the error. The kidneys sense low oxygen and release EPO; the marrow responds.",
+        "This step is right. EPO acts on precursors in the red marrow.",
+        "This step is right. Reticulocytes rise within 3–5 days.",
+        "This step is right. The response removes the stimulus: negative feedback."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "A 32-year-old woman with very heavy periods has a hemoglobin of 9 g/dL. Her red cells are small and pale, and her plasma ferritin is very low. What is the most likely cause of her anemia?",
+    "options": [
+      "Too little vitamin B12 in the diet",
+      "Failing kidneys",
+      "Iron deficiency from blood loss",
+      "Early destruction of red cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each heavy period removes iron in the lost red cells. Over months her stores run out, which a low plasma ferritin shows. Without iron, erythroblasts cannot fill with hemoglobin, so the cells come out small and pale.",
+      "options": [
+        "A lack of B12 stalls DNA synthesis, so red cells come out large, not small, and ferritin is normal.",
+        "Kidney failure lowers EPO, but the cells it produces are normal in size and iron stores are normal.",
+        "Correct. Small, pale cells with empty iron stores point to iron deficiency.",
+        "Early destruction raises the reticulocyte count and the bilirubin, and the body keeps the recovered iron, so ferritin would not be low."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 66-year-old man has anemia with large red cells, and numbness and tingling in his feet. Tests show his stomach lining has been destroyed by his own immune system. Why do B12 tablets fail to help him while B12 injections work?",
+    "options": [
+      "His stomach cannot make the protein needed to absorb B12",
+      "Stomach acid destroys B12 tablets before they can dissolve",
+      "His marrow needs B12 delivered straight into the bone",
+      "Injected B12 also replaces the iron he is missing"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Absorbing vitamin B12 in the intestine needs a carrier protein made by cells of the stomach lining. With those cells destroyed, swallowed B12 passes through unabsorbed. An injection puts B12 straight into the body, bypassing absorption.",
+      "options": [
+        "Correct. This is pernicious anemia: the problem is absorption, not intake.",
+        "B12 survives stomach acid. The problem is the missing carrier protein needed to absorb it further along.",
+        "Injected B12 goes into muscle and reaches the marrow through the blood like any nutrient. It does not need to be delivered into bone.",
+        "His large cells point to a lack of B12, not iron. B12 contains no iron."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient is anemic and jaundiced, with a reticulocyte count of 9% and a normal ferritin. Which cause best fits?",
+    "options": [
+      "Aplastic anemia",
+      "Early destruction of red cells",
+      "Iron-deficiency anemia",
+      "Anemia of long-standing kidney failure"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A high reticulocyte count shows a healthy marrow working hard, so the red cells are being lost, not underproduced. Jaundice shows that heme is being broken down faster than the liver can clear bilirubin. Together they point to hemolysis, early destruction of red cells.",
+      "options": [
+        "In aplastic anemia the marrow has failed, so the reticulocyte count is very low.",
+        "Correct. Fast destruction explains both the jaundice and the busy marrow.",
+        "Without iron, the marrow cannot respond, so reticulocytes stay low and ferritin is low.",
+        "With too little EPO, the marrow is not driven to respond, so reticulocytes stay low, and there is no extra bilirubin."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman has yellow skin and eyes, dark brown urine and pale, clay-colored feces. Where on bilirubin's route is the problem most likely to be?",
+    "options": [
+      "Red cells are breaking down too fast",
+      "Her liver cells cannot take up bilirubin",
+      "Bile cannot drain from the liver into the intestine",
+      "Her kidneys are excreting too little urobilin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Pale feces mean no bilirubin is reaching the intestine to become brown stercobilin. Dark urine means conjugated bilirubin, the water-soluble kind, is backing up into the blood and spilling into the urine. Both fit a blockage after the liver, such as a gallstone.",
+      "options": [
+        "Fast breakdown raises mostly unconjugated bilirubin, which cannot enter urine, and more pigment reaches the gut, not less. Feces would not be pale.",
+        "If the liver could not take up bilirubin, the excess would be unconjugated, which does not darken urine.",
+        "Correct. A blocked outflow sends conjugated bilirubin back into the blood.",
+        "Urobilin is a small share of pigment and does not cause jaundice. Less of it would make urine paler, not darker."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which blood test gives the best single picture of how much iron the body has in storage?",
+    "options": [
+      "Plasma transferrin",
+      "Plasma ferritin",
+      "Hemoglobin",
+      "Reticulocyte count"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Ferritin stores iron inside liver cells, macrophages and marrow. A small amount leaks into plasma in proportion to the stores, so a low plasma ferritin means the stores are empty.",
+      "options": [
+        "Transferrin carries iron in transit between gut, stores and marrow. It does not measure the stores themselves.",
+        "Correct. Plasma ferritin tracks iron stores.",
+        "Hemoglobin falls only after the stores are exhausted, so it is a late sign.",
+        "The reticulocyte count shows how fast the marrow is working, not how much iron is stored."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why can dehydration or low oxygen set off a pain crisis in a person with sickle cell disease?",
+    "options": [
+      "Both raise erythropoietin, which makes new sickle cells",
+      "Both make the spleen release stored sickle cells",
+      "Both make hemoglobin S bind oxygen too tightly",
+      "Both help HbS unload oxygen and pack into fibers"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "HbS forms fibers when it has given up its oxygen, and it does so faster the more concentrated it is. Low oxygen makes more HbS unload; dehydration shrinks the cell and concentrates the HbS. Stiff sickled cells then jam small vessels.",
+      "options": [
+        "New red cells take days to make, and a crisis starts within hours. Fiber formation, not new cells, is the trigger.",
+        "The spleen does not store and release sickle cells. It is damaged by them.",
+        "The problem is the opposite: sickling happens after HbS has let go of its oxygen.",
+        "Correct. Less oxygen bound and a more crowded cell both speed fiber formation."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Both parents have sickle cell trait: one sickle gene and one normal gene each. What is the chance that their child has sickle cell disease?",
+    "options": [
+      "None",
+      "1 in 4",
+      "1 in 2",
+      "Every child"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each parent passes on either the sickle gene or the normal gene, with equal chance. The child has the disease only with two sickle genes: 1/2 × 1/2 = 1/4.",
+      "options": [
+        "Each parent carries a sickle gene, so a child can inherit one from each.",
+        "Correct. One in four children would inherit two sickle genes.",
+        "One in two is the chance that a child has the trait (one sickle gene), not the disease.",
+        "A child gets the disease only with a sickle gene from both parents, which happens in about a quarter of children."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Two men both have a hematocrit of 60%. One has polycythemia vera; the other has lived with severe lung disease for years. Which test result best tells them apart?",
+    "options": [
+      "Blood viscosity is higher in the man with polycythemia vera",
+      "Hemoglobin is higher in the man with lung disease",
+      "EPO: low in polycythemia vera, high with lung disease",
+      "Reticulocytes are absent in polycythemia vera"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In polycythemia vera, mutant stem cells make red cells without waiting for EPO; the high red cell count delivers plenty of oxygen to the kidneys, so EPO is low. With lung disease, low oxygen drives the kidneys to release more EPO, and the marrow responds normally.",
+      "options": [
+        "With the same hematocrit, viscosity is about the same in both men.",
+        "With the same hematocrit, hemoglobin is about the same in both.",
+        "Correct. EPO separates primary polycythemia from secondary.",
+        "The marrow in polycythemia vera is making red cells fast, so reticulocytes are present."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-16",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Select every condition that can raise the red cell count by raising erythropoietin.",
+    "options": [
+      "Living at high altitude",
+      "Severe dehydration",
+      "Long-standing lung disease",
+      "A tumor that secretes erythropoietin",
+      "A mutation that makes marrow stem cells ignore erythropoietin's absence",
+      "Injecting erythropoietin to improve race times"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Altitude and lung disease lower the oxygen reaching the kidneys, which release more EPO. A tumor or doping adds EPO directly. Dehydration and a marrow mutation raise the red cell count or hematocrit without raising EPO.",
+      "options": [
+        "Correct. Thin air lowers oxygen delivery to the kidneys.",
+        "Dehydration raises the hematocrit by shrinking the plasma. The red cell count is unchanged and EPO does not rise.",
+        "Correct. Poorly working lungs load less oxygen into the blood.",
+        "Correct. The tumor bypasses the feedback loop.",
+        "This is polycythemia vera: red cells rise without EPO, and EPO falls.",
+        "Correct. Injected EPO acts on the marrow like the body's own."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-17",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-18-2",
+    "q": "A man with untreated polycythemia vera has his blood spun. Which tube looks most like his sample?",
+    "options": [
+      "The left tube, with a red column just under half its height",
+      "The middle tube, with a short red column",
+      "The right tube, with a tall red column",
+      "None: his red column would look the same as normal"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Polycythemia means too many red blood cells, so the packed red column fills more of the tube: a high hematocrit, as in the right tube.",
+      "options": [
+        "The left tube shows a normal hematocrit.",
+        "The middle tube shows a low hematocrit, as in anemia.",
+        "Correct. A tall red column is a high hematocrit.",
+        "Extra red cells take up more of the sample's volume, so the column is visibly taller."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-18",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-18-7",
+    "pin": "heme",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Globin",
+      "Heme",
+      "Ferritin",
+      "Transferrin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each globin chain holds one heme: a flat ring with an iron ion at its center, where one oxygen molecule binds.",
+      "options": [
+        "Globin is the folded protein chain that holds the heme, not the flat ring itself.",
+        "Correct. The flat, iron-holding ring is heme.",
+        "Ferritin is an iron-storage protein inside cells, not part of hemoglobin.",
+        "Transferrin carries iron in the plasma; it is not part of hemoglobin."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "About how long does a red blood cell circulate before it is destroyed?",
+    "options": [
+      "7 to 10 days",
+      "About 120 days",
+      "About a year",
+      "Several years"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A red blood cell lasts about 120 days. It cannot make new proteins, so it wears out and is removed by macrophages.",
+      "options": [
+        "7 to 10 days is the lifespan of a platelet.",
+        "Correct. About four months.",
+        "A red cell with no nucleus cannot repair itself for that long.",
+        "Some white blood cells live for years, but red cells do not."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "hematocrit falls at once after bleeding",
+    "q": "A cyclist is brought in ten minutes after a crash in which he lost about a liter of blood. His hematocrit is 44%, in the normal range. What is the best interpretation?",
+    "options": [
+      "He cannot have lost much blood, or his hematocrit would be low",
+      "His marrow has already replaced the lost red cells",
+      "The test must be wrong, because bleeding lowers the hematocrit at once",
+      "He lost cells and plasma together, so the ratio has not changed yet"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A wound loses whole blood, cells and plasma in the same proportion, so the hematocrit is unchanged at first. Over the next hours, fluid moves into the blood from the tissues and dilutes the remaining cells, and the hematocrit falls. A normal early hematocrit does not rule out a large bleed.",
+      "options": [
+        "The hematocrit is a ratio; it cannot show a loss of volume in the first minutes.",
+        "Making red cells takes days, and reticulocytes rise only after 3–5 days.",
+        "The value is expected. The fall comes later, as plasma is refilled.",
+        "Correct. The ratio falls only once fluid moves in to refill the plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A healthy 3-day-old baby looks yellow. Which pair of facts best explains why newborn jaundice is common?",
+    "options": [
+      "Many short-lived red cells break down, and the liver conjugates slowly",
+      "Newborns make no bilirubin before birth, and their kidneys excrete it slowly",
+      "Newborn red cells contain no hemoglobin, and their bile is pale",
+      "Newborns have no macrophages, and their red cells live longer"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Fetal red cells live only about 80–90 days, and a newborn breaks many of them down at once, making a lot of bilirubin. Its liver's conjugating enzyme is still immature, so bilirubin builds up for a few days.",
+      "options": [
+        "Correct. More bilirubin made, and less cleared.",
+        "Before birth, bilirubin crosses to the mother, who clears it. The kidneys are not the main route for bilirubin.",
+        "Newborn red cells are full of hemoglobin; that is where the bilirubin comes from.",
+        "Newborns do have macrophages, and fetal red cells live shorter lives, not longer."
+      ]
+    }
+  },
+  {
+    "id": "anp-erythrocytes-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does one molecule of adult hemoglobin contain?",
+    "options": [
+      "Two globin chains and two hemes",
+      "One globin chain and four hemes",
+      "Four globin chains and four hemes",
+      "Four globin chains and one heme"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Adult hemoglobin has four globin chains, two alpha and two beta, and each chain holds its own heme with one iron ion.",
+      "options": [
+        "Two chains and two hemes could carry only two oxygen molecules. Hemoglobin carries four.",
+        "The four hemes are held by four separate chains, one each.",
+        "Correct. Four chains, four hemes, four iron ions.",
+        "Every globin chain has its own heme, so there are four."
+      ]
+    }
+  }
+]

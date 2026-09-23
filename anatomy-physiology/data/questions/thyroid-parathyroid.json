@@ -1,0 +1,754 @@
+[
+  {
+    "id": "anp-thyroid-parathyroid-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-17-13",
+    "pin": "thyroid-follicle-cells",
+    "q": "Name the pinned cells.",
+    "options": [
+      "Parafollicular cells",
+      "Thyroid follicle cells",
+      "Chief cells",
+      "Osteoblasts"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The ring of cells around the colloid-filled center of each follicle is made of follicular cells, which make and release T3 and T4 when TSH stimulates them.",
+      "options": [
+        "Parafollicular (C) cells sit between follicles, not in the ring around the colloid.",
+        "Correct. The cells lining the follicle are the follicular cells.",
+        "Chief cells make PTH in the parathyroid glands, not in thyroid follicles.",
+        "Osteoblasts are bone-building cells, not part of the thyroid gland."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-17-2",
+    "pin": "parathyroid-glands",
+    "q": "Name the pinned structures.",
+    "options": [
+      "Thyroid gland",
+      "Parathyroid glands",
+      "Thymus",
+      "Adrenal glands"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The four small glands on the back surface of the thyroid gland are the parathyroid glands, which make PTH.",
+      "options": [
+        "The thyroid gland is the larger butterfly-shaped gland; the pinned structures are the small glands on its back.",
+        "Correct. These are the parathyroid glands.",
+        "The thymus lies lower, behind the breastbone, not on the thyroid gland.",
+        "The adrenal glands sit on top of the kidneys, not in the neck."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "calcitonin is a major regulator of adult blood calcium",
+    "q": "A patient's whole thyroid gland is removed, but her parathyroid glands are left intact and working, and she is not yet taking any replacement hormone. Predict the change in each variable over the next few weeks.",
+    "variables": [
+      {
+        "name": "T4 and T3 in the blood",
+        "answer": "down",
+        "why": "The follicular cells that made them are gone; what remains is slowly cleared, and T4 has a half-life of about a week."
+      },
+      {
+        "name": "TSH",
+        "answer": "up",
+        "why": "Without T4 and T3, long-loop negative feedback on the anterior pituitary is lost, so TSH rises high."
+      },
+      {
+        "name": "Heat production by body cells",
+        "answer": "down",
+        "why": "Less thyroid hormone means fewer sodium–potassium pumps and mitochondria, so cells use less oxygen and make less heat."
+      },
+      {
+        "name": "Calcitonin",
+        "answer": "down",
+        "why": "The parafollicular (C) cells that make calcitonin were removed with the gland."
+      },
+      {
+        "name": "Blood calcium",
+        "answer": "none",
+        "why": "PTH and calcitriol, the main regulators, still work, so calcium stays normal despite losing calcitonin."
+      }
+    ],
+    "why": {
+      "correct": "Removing the thyroid gland removes T4, T3 and calcitonin. The thyroid axis responds with a high TSH, and every tissue slows. Blood calcium stays normal because the parathyroid glands and calcitriol, not calcitonin, control it in adults."
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-4",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A person's diet has contained almost no iodine for many months. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "T4 and T3 made by the thyroid gland",
+        "answer": "down",
+        "why": "Iodine is part of both hormones; without it the follicular cells cannot finish making them."
+      },
+      {
+        "name": "TSH",
+        "answer": "up",
+        "why": "Low T4 and T3 remove long-loop negative feedback, so the anterior pituitary releases more TSH."
+      },
+      {
+        "name": "Size of the thyroid gland",
+        "answer": "up",
+        "why": "High TSH keeps driving the follicular cells to grow and make thyroglobulin: a goiter."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "down",
+        "why": "With less thyroid hormone, heart cells have fewer beta-1 receptor proteins and less drive, so the resting heart rate falls."
+      }
+    ],
+    "why": {
+      "correct": "Without iodine, the gland cannot make its hormones. Feedback is lost, TSH rises, and TSH makes the gland grow into a goiter while the person shows the slowed signs of hypothyroidism."
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-5",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "In Graves disease, an immune protein switches on the TSH receptor protein nonstop. Predict the change in each variable compared with a healthy person.",
+    "variables": [
+      {
+        "name": "T4 and T3",
+        "answer": "up",
+        "why": "The follicular cells are driven as if TSH were always present, so they release hormone nonstop."
+      },
+      {
+        "name": "TSH",
+        "answer": "down",
+        "why": "High T4 and T3 feed back on the anterior pituitary and hypothalamus, suppressing TSH almost to zero."
+      },
+      {
+        "name": "Resting heart rate",
+        "answer": "up",
+        "why": "More thyroid hormone means more beta-1 receptor proteins on heart cells and a stronger response to the sympathetic system."
+      },
+      {
+        "name": "Body weight, with normal eating",
+        "answer": "down",
+        "why": "Cells burn more fuel and make more heat, so stores are used up despite eating."
+      },
+      {
+        "name": "Size of the thyroid gland",
+        "answer": "up",
+        "why": "The immune protein drives growth just as TSH would."
+      }
+    ],
+    "why": {
+      "correct": "The immune protein copies TSH but ignores feedback. Thyroid hormone rises, TSH falls, and every tissue speeds up: fast heart, weight loss, heat intolerance, and a goiter."
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A 52-year-old woman is tired, always cold and has slow bowels, has gained a little weight and has dry skin and a slow pulse. Her free T4 is low and her TSH is high. What is the most likely explanation?",
+    "options": [
+      "Her anterior pituitary is failing to make TSH",
+      "She has too much iodine in her diet",
+      "Her parathyroid glands are overactive",
+      "Her thyroid gland itself is failing"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Low thyroid hormone with high TSH points to the thyroid gland itself. Her symptoms are the slowed state of hypothyroidism. With the gland failing, long-loop negative feedback is lost and the anterior pituitary pushes TSH up. In iodized-salt countries, the usual cause is Hashimoto thyroiditis.",
+      "options": [
+        "A failing anterior pituitary would give a low TSH, not a high one.",
+        "Iodine is needed to make thyroid hormone; enough of it does not cause these findings.",
+        "Overactive parathyroid glands raise blood calcium; they do not lower T4 or raise TSH.",
+        "Correct. Primary hypothyroidism: the target gland fails and TSH rises."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient has low free T4 and a low TSH. Where is the fault most likely to be?",
+    "options": [
+      "The thyroid gland",
+      "The parathyroid glands",
+      "The anterior pituitary or hypothalamus",
+      "The parafollicular cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "If the thyroid gland had failed, TSH would be high. A low TSH with low T4 means the thyroid gland is not being driven: the anterior pituitary is making too little TSH, or the hypothalamus too little TRH.",
+      "options": [
+        "A failing thyroid gland removes feedback and makes TSH rise, not fall.",
+        "The parathyroid glands control calcium, not T4 or TSH.",
+        "Correct. Too little drive from above lowers both TSH and T4.",
+        "Parafollicular cells make calcitonin, not T4, and do not control TSH."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Why does iodine deficiency make the thyroid gland enlarge?",
+    "options": [
+      "High TSH, freed from feedback, drives growth",
+      "Iodine is needed to build the gland's connective tissue",
+      "Without iodine, thyroglobulin cannot leave the gland",
+      "Iodine normally shrinks the gland directly"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Without iodine the gland cannot make T4 and T3. Their fall removes long-loop negative feedback, TSH rises, and TSH makes the follicular cells multiply and make more thyroglobulin, so the gland swells into a goiter.",
+      "options": [
+        "Correct. The goiter is driven by high TSH.",
+        "Iodine goes into the hormones, not into the gland's connective tissue.",
+        "Thyroglobulin stays in the colloid anyway; the swelling comes from growth driven by TSH.",
+        "Iodine has no direct shrinking action on the gland. It is used to make hormone."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order to show how the thyroid gland makes and releases its hormones.",
+    "options": [
+      "Follicular cells trap iodide from the blood with a sodium cotransporter",
+      "Follicular cells release thyroglobulin into the colloid",
+      "Iodine is attached to tyrosines in thyroglobulin",
+      "Iodinated tyrosines couple to form T4 and T3, still part of thyroglobulin",
+      "TSH makes follicular cells take colloid back in by endocytosis",
+      "Lysosomes free T4 and T3, which enter the capillaries"
+    ],
+    "why": {
+      "correct": "Iodide is trapped, thyroglobulin goes into the colloid, iodine is attached to its tyrosines, and pairs of iodinated tyrosines couple to form T4 and T3. The hormones stay stored in the colloid until TSH makes the cells take it back and lysosomes free them."
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-10",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student listed the steps in making thyroid hormone. One step is wrong. Which one?",
+    "options": [
+      "Iodide is pumped into follicular cells from the blood",
+      "Iodine is attached to tyrosines in thyroglobulin in the colloid",
+      "T4 and T3 are stored in vesicles inside the parafollicular cells",
+      "Colloid is taken back into follicular cells by endocytosis",
+      "Lysosomes release T4 and T3 from thyroglobulin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "T4 and T3 are stored outside the cells, attached to thyroglobulin in the colloid. Parafollicular (C) cells make calcitonin, not T4 or T3.",
+      "options": [
+        "This step is right. A sodium–iodide cotransporter traps iodide.",
+        "This step is right. Iodination happens on thyroglobulin at the edge of the colloid.",
+        "This is the error. The hormones are stored on thyroglobulin in the colloid, and parafollicular cells make calcitonin.",
+        "This step is right. TSH triggers endocytosis of colloid.",
+        "This step is right. Lysosomal enzymes digest thyroglobulin and free the hormones."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-11",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Complete the pathway: vitamin D from skin or food → the liver adds a hydroxyl group → the kidneys add a second, making ____ → the intestine absorbs more calcium.",
+    "options": [
+      "Calcitonin",
+      "Parathyroid hormone",
+      "Thyroxine",
+      "Calcitriol"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The kidney step makes calcitriol (1,25-dihydroxyvitamin D), the active form of vitamin D. PTH switches that step on.",
+      "options": [
+        "Calcitonin is a peptide made by the thyroid gland's C cells, not a form of vitamin D.",
+        "PTH switches on the kidney step but is made by the parathyroid glands.",
+        "Thyroxine is a thyroid hormone, made from tyrosine and iodine.",
+        "Correct. The kidneys make calcitriol."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Select every effect of parathyroid hormone.",
+    "options": [
+      "More osteoclast activity, releasing calcium from bone",
+      "More calcium kept by the kidneys",
+      "More phosphate kept by the kidneys",
+      "More calcitriol made by the kidneys",
+      "Osteoclasts switched off"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "PTH raises blood calcium: it drives bone breakdown by osteoclasts (acting through osteoblasts), makes the kidneys keep calcium and lose phosphate, and switches on calcitriol production.",
+      "options": [
+        "Correct. PTH drives osteoclast activity.",
+        "Correct. PTH makes the kidneys pull calcium back from the urine.",
+        "PTH does the opposite: it makes the kidneys lose phosphate in the urine.",
+        "Correct. PTH switches on the kidney enzyme that makes calcitriol.",
+        "Switching osteoclasts off is calcitonin's action, not PTH's."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "PTH raises bone breakdown by osteoclasts. Which cells in bone carry the PTH receptor protein and pass the signal on?",
+    "options": [
+      "Osteocytes only",
+      "Osteoclasts",
+      "Chondrocytes",
+      "Osteoblasts"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "PTH binds receptor proteins on osteoblasts. The osteoblasts then release a signal that makes more osteoclasts form and makes existing ones more active. Osteoclasts themselves have no PTH receptor protein.",
+      "options": [
+        "Osteocytes also respond to PTH, but the classic relay to osteoclasts runs through osteoblasts.",
+        "Osteoclasts respond to PTH only indirectly, through the osteoblasts' signal.",
+        "Chondrocytes are cartilage cells and are not the relay for PTH's effect on bone breakdown.",
+        "Correct. Osteoblasts receive PTH and signal the osteoclasts."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "The day after thyroid surgery, a patient has tingling lips and fingers, and her hand cramps into a claw when a blood pressure cuff is inflated. What best explains this?",
+    "options": [
+      "Loss of calcitonin has made her calcium rise",
+      "Loss of T4 has slowed her nerves",
+      "Low PTH from damaged parathyroid glands",
+      "TSH has risen and is stimulating her muscles"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The parathyroid glands sit on the back of the thyroid gland and are easily injured in thyroid surgery. Without PTH, blood calcium falls. Low extracellular calcium makes voltage-gated sodium channels open more easily, so nerves and muscles fire on their own: tingling, cramps and tetany.",
+      "options": [
+        "Losing calcitonin would, if anything, let calcium rise, and high calcium makes nerves less excitable, not more.",
+        "T4 has a half-life of about a week, so it cannot have fallen enough in one day, and lack of it slows reflexes rather than causing cramps.",
+        "Correct. Hypoparathyroidism after surgery causes hypocalcemia and tetany.",
+        "TSH acts on the thyroid gland, not on muscles, and it would not cause tetany."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A 60-year-old has a calcium stone in one kidney, aching bones and constant tiredness. His blood calcium is high, his blood phosphate is low and his PTH is high. Which condition fits?",
+    "options": [
+      "Hypoparathyroidism",
+      "Vitamin D deficiency",
+      "Hyperparathyroidism",
+      "Hypothyroidism"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Too much PTH releases calcium from bone (bone pain), keeps calcium in the blood and drives phosphate into the urine. High calcium and low phosphate with a high PTH is hyperparathyroidism, usually from a benign tumor of one gland. Extra calcium in the urine forms stones.",
+      "options": [
+        "Hypoparathyroidism gives low PTH and low calcium, the opposite pattern.",
+        "Vitamin D deficiency raises PTH, but blood calcium is low or low-normal, not high.",
+        "Correct. High PTH with high calcium and low phosphate is hyperparathyroidism.",
+        "Hypothyroidism causes tiredness but does not raise calcium and PTH or cause stones."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "calcitonin is a major regulator of adult blood calcium",
+    "q": "Twenty years after her thyroid gland was removed, a woman takes T4 tablets and has no calcitonin at all. Her parathyroid glands are healthy. What is her blood calcium most likely to be?",
+    "options": [
+      "Normal, because PTH and calcitriol control it",
+      "Very high, because nothing lowers it",
+      "Very low, because calcitonin is needed to keep calcium in bone",
+      "Unpredictable from day to day"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In adults, PTH and calcitriol are the main regulators of blood calcium. When calcium rises, PTH release falls, so less calcium comes from bone, the kidneys and the gut. People with no thyroid gland keep normal calcium as long as their parathyroid glands work.",
+      "options": [
+        "Correct. Calcitonin's role in adults is small.",
+        "Calcium does not climb without calcitonin: falling PTH is the main brake when calcium rises.",
+        "Calcitonin lowers calcium; losing it could not make calcium very low.",
+        "The PTH loop keeps calcium steady from day to day without calcitonin."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which cells make calcitonin?",
+    "options": [
+      "Follicular cells lining the thyroid gland's follicles",
+      "Chief cells of the parathyroid glands",
+      "Parafollicular (C) cells of the thyroid gland",
+      "Osteoclasts in bone"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Calcitonin comes from the parafollicular (C) cells, which sit between the follicles of the thyroid gland.",
+      "options": [
+        "Follicular cells make T4 and T3.",
+        "Chief cells make parathyroid hormone.",
+        "Correct. C cells make calcitonin.",
+        "Osteoclasts are a target of calcitonin, not its source."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A 45-year-old who rarely goes outdoors has aching bones and several small fractures. Her bone matrix is laid down but poorly mineralized, and her vitamin D level is very low. What does she have?",
+    "options": [
+      "Rickets",
+      "Osteoporosis",
+      "Osteomalacia",
+      "Hyperparathyroidism"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Too little vitamin D leaves too little calcitriol, so too little calcium and phosphate are absorbed to mineralize new matrix. In an adult, whose epiphyseal plates have closed, this soft bone is osteomalacia.",
+      "options": [
+        "Rickets is the same problem in children, affecting their growing bones and epiphyseal plates.",
+        "In osteoporosis there is too little bone, but what remains is normally mineralized.",
+        "Correct. Soft, poorly mineralized bone in an adult is osteomalacia.",
+        "Her PTH would be raised as a response, but the root problem is vitamin D, and her calcium is not high."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-19",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A person gets almost no sunlight and little vitamin D in food for a year. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Calcitriol",
+        "answer": "down",
+        "why": "Less vitamin D reaches the liver and kidneys to be activated."
+      },
+      {
+        "name": "Calcium absorbed by the intestine",
+        "answer": "down",
+        "why": "Without calcitriol, the intestinal cells make fewer of the proteins that absorb calcium."
+      },
+      {
+        "name": "PTH",
+        "answer": "up",
+        "why": "The small dip in blood calcium makes the chief cells release more PTH."
+      },
+      {
+        "name": "Phosphate lost in the urine",
+        "answer": "up",
+        "why": "The higher PTH makes the kidneys keep less phosphate."
+      }
+    ],
+    "why": {
+      "correct": "Low vitamin D means low calcitriol and poor calcium absorption. PTH rises to defend blood calcium, taking calcium from bone and dumping phosphate. Too little calcium phosphate reaches new bone matrix, causing rickets or osteomalacia."
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Why is every newborn screened for congenital hypothyroidism, rather than waiting for signs?",
+    "options": [
+      "Affected babies look normal at first, but the brain damage is permanent",
+      "The test also detects iodine deficiency in the mother",
+      "Thyroid hormone is needed only in the first week of life",
+      "Congenital hypothyroidism is the most common cause of goiter in adults"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Thyroid hormone is essential for brain growth and myelination after birth. Affected babies often look normal for weeks, partly from their mother's hormone. By the time signs appear, some damage is permanent; T4 tablets started in the first two weeks prevent it.",
+      "options": [
+        "Correct. No early signs, and the harm cannot be undone later.",
+        "Screening measures the baby's own thyroid function, not the mother's iodine intake.",
+        "Thyroid hormone is needed throughout life, especially for the first two to three years of brain growth.",
+        "Goiter in adults has other causes, such as iodine deficiency and Graves disease."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-21",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "figure": "os-17-16",
+    "q": "According to this figure, what does PTH make the kidney tubule cells do?",
+    "options": [
+      "Release calcium into the urine and make calcitonin for bone",
+      "Absorb calcium from digesting food",
+      "Build compact bone from calcium in the blood",
+      "Return urine calcium to the blood and release calcitriol"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Panel 3b shows kidney tubule cells moving calcium from the urine side into the blood, and releasing calcitriol into the blood. Both raise blood calcium.",
+      "options": [
+        "The figure shows calcium moving out of the urine, not into it, and calcitonin comes from the thyroid gland, not the kidneys.",
+        "Absorbing calcium from food is done by intestinal cells, driven by calcitriol, in panel 3c.",
+        "Building bone from blood calcium is shown in the calcitonin panel, not the kidney panel.",
+        "Correct. PTH makes the kidneys keep calcium and make calcitriol."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-22",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-17-13",
+    "q": "In this figure, what stops the hypothalamus releasing TRH when T3 and T4 are high?",
+    "options": [
+      "T3 and T4 themselves, through negative feedback",
+      "A rise in TSH from the anterior pituitary",
+      "Calcitonin from the parafollicular cells",
+      "A fall in body temperature"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Step 4 shows the arrows from T3 and T4 returning with a minus sign: elevated T3 and T4 inhibit TRH and TSH release. This is long-loop negative feedback.",
+      "options": [
+        "Correct. The thyroid hormones feed back on the hypothalamus and pituitary.",
+        "TSH is driven by TRH; a rise in TSH does not stop TRH in this figure.",
+        "Calcitonin plays no part in the thyroid axis.",
+        "The figure shows thyroid hormones raising body temperature; a fall in temperature is not what stops TRH here."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient takes T4 tablets, but T3 is the more active hormone. How does the T4 become active?",
+    "options": [
+      "The thyroid gland converts it to T3 before it reaches the blood",
+      "T4 binds TSH, which activates it",
+      "Tissues remove one iodine from it, making T3",
+      "The stomach converts it to T3 during digestion"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Most T3 in your body is made outside the thyroid gland: enzymes in the liver, kidneys and target cells snip one iodine off T4. T4 is a long-lasting reserve that tissues activate as needed.",
+      "options": [
+        "The tablet does not pass through the thyroid gland; it is absorbed into the blood from the gut.",
+        "TSH acts on the thyroid gland; it does not bind or activate T4.",
+        "Correct. Tissues remove one iodine from T4 to make T3.",
+        "T4 is absorbed intact; conversion happens in tissues, not in the stomach."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-24",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A man with advanced kidney disease has low blood calcium and very high PTH, even though his parathyroid glands are healthy. What best explains the low calcium?",
+    "options": [
+      "Too little calcitriol, so little calcium is absorbed from food",
+      "His kidneys make too much calcitonin, which pulls calcium into bone",
+      "His thyroid gland has stopped responding to TSH",
+      "His bones have stopped responding to calcitonin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The kidneys carry out the final step in making calcitriol. Diseased kidneys make too little, so the intestine absorbs little calcium. Blood calcium falls, and the healthy parathyroid glands respond by releasing more and more PTH.",
+      "options": [
+        "Correct. Low calcitriol means poor calcium absorption, and PTH rises in response.",
+        "The kidneys do not make calcitonin; the thyroid gland's C cells do.",
+        "The thyroid axis does not set blood calcium.",
+        "Calcitonin lowers calcium; losing a response to it would not make calcium low."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-25",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Select every finding you would expect in hyperthyroidism.",
+    "options": [
+      "Fast resting heart rate",
+      "Feeling cold",
+      "Weight loss despite a big appetite",
+      "Fine tremor of the hands",
+      "High TSH in Graves disease",
+      "Warm, moist skin"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Too much thyroid hormone speeds every tissue: more heat (warm, moist skin), more fuel burned (weight loss), more sympathetic sensitivity (fast heart, tremor). In Graves disease TSH is suppressed by feedback, not high.",
+      "options": [
+        "Correct. More beta-1 receptor proteins and sympathetic sensitivity speed the heart.",
+        "Feeling cold is a sign of too little thyroid hormone. Hyperthyroid people feel hot.",
+        "Correct. Cells burn fuel faster than it is eaten.",
+        "Correct. Greater sympathetic sensitivity causes a fine tremor.",
+        "In Graves disease the high T4 and T3 suppress TSH almost to zero.",
+        "Correct. Extra heat production makes the skin warm and sweaty."
+      ]
+    }
+  },
+  {
+    "id": "anp-thyroid-parathyroid-26",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient with hypothyroidism starts T4 tablets. Her energy and heart rate improve only over one to two weeks. Why so slowly?",
+    "options": [
+      "T4 acts through a membrane receptor protein that is slow to switch on",
+      "The tablets must first be converted to TSH",
+      "The pituitary must first shrink before T4 can act",
+      "It changes gene transcription, and T4 has a long half-life"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Thyroid hormones are lipid-soluble: T3 binds a receptor protein in the nucleus and changes transcription, so new proteins take time to build up. T4's half-life of about a week also means its blood level takes one to two weeks to reach a steady state.",
+      "options": [
+        "Thyroid hormones act through a receptor protein in the nucleus, not in the membrane.",
+        "T4 is converted to T3, not TSH. TSH is a pituitary hormone.",
+        "The pituitary does not need to shrink; TSH simply falls as feedback returns.",
+        "Correct. Gene-level action and a long half-life make the effect slow."
+      ]
+    }
+  }
+]

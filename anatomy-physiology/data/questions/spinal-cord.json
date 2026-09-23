@@ -246,7 +246,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "To treat severe pain, a surgeon cuts the dorsal roots of one segment on the right side. What would you expect in the area that segment supplies?",
+    "q": "To treat severe pain, a surgeon cuts the dorsal roots of three neighboring segments on the right side. What would you expect in the band of skin and muscles supplied by the middle segment?",
     "options": [
       "Paralysis of the muscles, with normal sensation",
       "Loss of sensation, with normal muscle strength",
@@ -255,7 +255,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Dorsal roots carry sensory axons into the cord; ventral roots carry motor axons out. Cutting only the dorsal roots stops sensation from that area reaching the cord, while the motor axons in the intact ventral roots still drive the muscles.",
+      "correct": "Dorsal roots carry sensory axons into the cord; ventral roots carry motor axons out. With the middle root and both its neighbors cut, no sensory route from that band reaches the cord, while the motor axons in the intact ventral roots still drive the muscles. Cutting one dorsal root alone would only dull the feeling, because neighboring roots overlap.",
       "options": [
         "Paralysis with normal sensation would follow cutting the ventral roots, which carry the motor axons.",
         "Correct. Cutting the dorsal roots removes sensation and spares strength.",

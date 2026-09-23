@@ -1,0 +1,455 @@
+[
+  {
+    "id": "anp-blood-typing-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A person has type B blood. What is on their red cells, and what is in their plasma?",
+    "options": [
+      "B antigens; anti-B antibodies",
+      "A antigens; anti-B antibodies",
+      "B antigens; no ABO antibodies",
+      "B antigens; anti-A antibodies"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Type B red cells carry the B antigen, and the plasma holds antibodies against the ABO antigen the cells lack: anti-A.",
+      "options": [
+        "Anti-B would attack the person's own red cells. The immune system does not make antibodies against its own antigens.",
+        "A antigens with anti-B antibodies describes type A.",
+        "Only type AB plasma lacks ABO antibodies.",
+        "Correct. B antigens, anti-A antibodies."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A typing test shows agglutination in the anti-A and anti-B wells and none in the anti-D well. What is the blood type?",
+    "options": ["O positive", "AB negative", "AB positive", "O negative"],
+    "correct": 1,
+    "why": {
+      "correct": "Clumping with anti-A and anti-B means the red cells carry both A and B antigens: type AB. No clumping with anti-D means no D antigen: Rh negative.",
+      "options": [
+        "Type O cells carry neither A nor B, so they would not clump with anti-A or anti-B.",
+        "Correct. A and B present, D absent.",
+        "An Rh-positive sample would clump in the anti-D well too.",
+        "Type O cells would stay smooth in all three wells if Rh negative."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A patient is O positive. Which red cells can she safely receive?",
+    "options": [
+      "O negative and O positive only",
+      "O positive only",
+      "Any Rh-positive type",
+      "O, A and B, as long as they are Rh positive"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Her plasma holds anti-A and anti-B, so she can receive only red cells with neither antigen: type O. As an Rh-positive person she makes no anti-D, so either Rh-positive or Rh-negative O cells are safe.",
+      "options": [
+        "Correct. Only type O cells, of either Rh type.",
+        "O negative is also safe: it lacks the D antigen, which she already has.",
+        "A, B and AB red cells would meet her anti-A or anti-B.",
+        "Her anti-A and anti-B would attack A and B red cells whatever their Rh type."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-4",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": ["structure-function", "homeostasis"],
+    "q": "A type A patient is mistakenly given a unit of type B red cells. Predict the change in each variable over the first hour, compared with before the transfusion.",
+    "variables": [
+      { "name": "Agglutination of the donor red cells", "answer": "up", "why": "The patient's anti-B binds the B antigens on the donor cells and cross-links them into clumps." },
+      { "name": "Free hemoglobin in the plasma", "answer": "up", "why": "Antibodies on the donor cells trigger plasma proteins that burst them, releasing hemoglobin into the plasma." },
+      { "name": "Hemoglobin in the urine", "answer": "up", "why": "Free hemoglobin in the plasma is small enough to be filtered by the kidneys and spills into the urine, darkening it." },
+      { "name": "Body temperature", "answer": "up", "why": "Chemical signals released during the antibody attack cause fever and chills." },
+      { "name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow." }
+    ],
+    "why": {
+      "correct": "An ABO-incompatible transfusion sets off an immediate antibody attack on the donor cells. Agglutination and hemolysis release hemoglobin into the plasma and urine, and the reaction causes fever and a fall in blood pressure. The transfusion must be stopped at once."
+    }
+  },
+  {
+    "id": "anp-blood-typing-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why can a person with AB positive blood receive red cells of any ABO and Rh type?",
+    "options": [
+      "Their red cells carry every antigen, so donor cells cannot bind them",
+      "Their plasma has no anti-A, anti-B or anti-D to attack donor cells",
+      "Their immune system cannot make antibodies",
+      "Their plasma dilutes the donor's antibodies"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "What matters is whether the recipient's plasma has antibodies against the donor cells' antigens. An AB-positive person already carries A, B and D, so they make antibodies against none of them.",
+      "options": [
+        "Red cells do not bind other red cells. The danger comes from antibodies in the recipient's plasma.",
+        "Correct. No anti-A, anti-B or anti-D in the plasma.",
+        "Their immune system works normally; it simply makes no antibodies against antigens on its own cells.",
+        "Dilution of donor antibodies helps any recipient; it does not explain why AB positive accepts every red cell type."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A burn patient's blood type is unknown, and she needs plasma, not red cells. Which ABO type of plasma can be given without typing her first?",
+    "options": ["Type O", "Type A", "Type B", "Type AB"],
+    "correct": 3,
+    "why": {
+      "correct": "For plasma, the question is which antibodies the donor plasma carries. AB plasma has no anti-A or anti-B, so it cannot attack the recipient's red cells, whatever her type. For plasma, AB is the universal donor.",
+      "options": [
+        "Type O plasma holds anti-A and anti-B, which would attack the red cells of an A, B or AB recipient.",
+        "Type A plasma holds anti-B, which would attack B or AB red cells.",
+        "Type B plasma holds anti-A, which would attack A or AB red cells.",
+        "Correct. AB plasma carries no ABO antibodies."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "misconception": "Rh-negative people are born with anti-D",
+    "q": "An Rh-negative man who has never had a transfusion is given Rh-positive, ABO-matched red cells in an emergency. What is most likely to happen?",
+    "options": [
+      "An immediate, severe transfusion reaction",
+      "Nothing now, but he may make anti-D, putting a future Rh-positive transfusion at risk",
+      "He becomes Rh positive permanently",
+      "Nothing now or later, because Rh does not matter in men"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "He has no anti-D yet, so the donor cells are not attacked at once. Over the next weeks his immune system may make anti-D against the D antigen he has met. A later Rh-positive transfusion could then trigger a reaction.",
+      "options": [
+        "An immediate reaction needs antibodies already present. Anti-D forms only after exposure.",
+        "Correct. The first exposure sensitizes; the danger comes later.",
+        "Transfused cells live about 120 days at most; his own red cells stay Rh negative.",
+        "Rh matters for any future transfusion. In men there is no pregnancy risk, which is why O-positive blood is often used for men in emergencies."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "An Rh-negative woman had an Rh-positive first baby three years ago and received no treatment. She is now pregnant with a second Rh-positive fetus, which becomes severely anemic before birth. What is the cause?",
+    "options": [
+      "The fetus has inherited an enzyme defect from its father",
+      "The fetus's own antibodies attack its red cells",
+      "Her anti-A antibodies cross to the fetus",
+      "Anti-D she made after the first birth crosses to the fetus and destroys its red cells"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Fetal red cells entered her blood at the first delivery, and she made anti-D. That kind of antibody crosses from mother to fetus. In this Rh-positive fetus, it binds and destroys red cells: hemolytic disease of the newborn.",
+      "options": [
+        "The history of a first Rh-positive baby without treatment points to maternal anti-D, not an inherited enzyme defect.",
+        "A fetus does not attack its own antigens; the antibodies come from the mother.",
+        "The problem here is Rh, not ABO, and most anti-A cannot cross to the fetus.",
+        "Correct. Maternal anti-D from the first pregnancy."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why is a first Rh-positive baby of an Rh-negative mother usually unharmed?",
+    "options": [
+      "Fetal cells mostly enter her blood at delivery, and anti-D takes weeks to form",
+      "First babies have no D antigen until after birth",
+      "The mother's anti-D is destroyed during the first pregnancy",
+      "First babies have extra red cells that absorb the antibodies"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The bloods of mother and fetus normally stay apart, and most mixing happens at delivery. The mother then makes anti-D over the following weeks, after the baby has been born. The antibodies threaten the next Rh-positive pregnancy.",
+      "options": [
+        "Correct. The timing of the first exposure protects the first baby.",
+        "Rh-positive fetuses carry the D antigen well before birth.",
+        "Before the first delivery she usually has no anti-D to destroy.",
+        "The protection comes from timing, not from extra red cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "An Rh-negative woman has just delivered an Rh-positive baby. Why is she given an injection of anti-D immune globulin within 72 hours?",
+    "options": [
+      "To give her newborn antibodies against infection",
+      "To clear fetal Rh-positive cells from her blood before she makes her own anti-D",
+      "To turn her red cells Rh positive",
+      "To destroy any anti-D she already has"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The injected anti-D clears the fetal Rh-positive cells that entered her blood at delivery before her immune system responds to them, so she never starts making her own anti-D. The injected antibody is gone within months and does not harm later pregnancies.",
+      "options": [
+        "The injection is for the mother, and it does not protect the baby against infection.",
+        "Correct. It prevents her from becoming sensitized.",
+        "Nothing changes her own red cells' Rh type.",
+        "Anti-D cannot destroy anti-D. Once she has made her own, the injection no longer helps."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A mother is type O and the father is type AB. Which blood types are possible for their children?",
+    "options": ["A or B", "O only", "AB only", "A, B, AB or O"],
+    "correct": 0,
+    "why": {
+      "correct": "The mother has two O copies and passes on an O. The father passes on either A or B. Children are therefore AO (type A) or BO (type B).",
+      "options": [
+        "Correct. A or B, never AB or O.",
+        "A type O child needs an O copy from each parent; the AB father has none.",
+        "A type AB child needs an A from one parent and a B from the other; the mother can pass on only O.",
+        "O and AB are both impossible here."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "agglutination is clotting",
+    "q": "A student says that when mismatched blood agglutinates, it is clotting. What is the key difference?",
+    "options": [
+      "Agglutination needs platelets; clotting does not",
+      "Agglutination happens only outside the body",
+      "Agglutination is antibodies clumping cells by their antigens; clotting is fibrin threads forming",
+      "There is no difference; they are two names for one process"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Agglutination is an immune process: antibodies bind antigens on several cells and cross-link them into clumps. Coagulation is thrombin converting fibrinogen into fibrin threads. They can happen together in a severe transfusion reaction, but they are different processes.",
+      "options": [
+        "Platelets are central to clotting, not to agglutination.",
+        "Agglutination happens inside the vessels in a transfusion reaction as well as in a typing test.",
+        "Correct. Different molecules, different mechanisms.",
+        "They involve different molecules and are triggered differently."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-13",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put the steps in order to show how Rh antibodies harm a second Rh-positive fetus.",
+    "options": [
+      "An Rh-negative mother carries her first Rh-positive fetus",
+      "At delivery, fetal Rh-positive red cells enter her blood",
+      "Over the following weeks she makes anti-D",
+      "In a later pregnancy, her anti-D crosses to an Rh-positive fetus",
+      "Anti-D binds the fetus's red cells, which are destroyed",
+      "The fetus becomes anemic, and bilirubin climbs after birth"
+    ],
+    "why": {
+      "correct": "Exposure at the first delivery sensitizes the mother, who makes anti-D over weeks. In the next Rh-positive pregnancy, her anti-D crosses to the fetus and destroys its red cells, causing anemia and, after birth, rising bilirubin and jaundice."
+    }
+  },
+  {
+    "id": "anp-blood-typing-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student described an ABO-incompatible transfusion reaction. One step is wrong. Which one?",
+    "options": [
+      "The recipient's antibodies bind antigens on the donor red cells",
+      "The donor cells agglutinate into clumps",
+      "The donor's plasma antibodies are the main cause of the damage",
+      "The donor cells burst, releasing hemoglobin into the plasma",
+      "Free hemoglobin darkens the urine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The damage comes from the recipient's antibodies attacking the donor's red cells. Donor antibodies are few in a unit of packed red cells and are diluted in the recipient's large plasma volume.",
+      "options": [
+        "This step is right. It starts the reaction.",
+        "This step is right. Antibodies cross-link the cells.",
+        "This is the error. The recipient's antibodies, not the donor's, cause the reaction.",
+        "This step is right. Hemolysis follows agglutination.",
+        "This step is right. Hemoglobin spills into the urine."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Complete the reading: a sample clumps with anti-B only, and stays smooth with anti-A and anti-D. Its type is ____.",
+    "options": ["A negative", "B positive", "B negative", "O negative"],
+    "correct": 2,
+    "why": {
+      "correct": "Clumping with anti-B shows the B antigen; no clumping with anti-A or anti-D shows no A and no D antigen. The type is B negative.",
+      "options": [
+        "Type A cells would clump with anti-A, not anti-B.",
+        "An Rh-positive sample would also clump with anti-D.",
+        "Correct. B antigen only: B negative.",
+        "Type O cells would not clump with anti-B."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-16",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-18-17",
+    "q": "Use the chart. A type B patient needs red cells in an emergency. Which types does the chart list as compatible?",
+    "options": ["B and AB", "A and O", "B and O", "Any type"],
+    "correct": 2,
+    "why": {
+      "correct": "Type B plasma holds anti-A, so the donor cells must lack the A antigen: type B or type O.",
+      "options": [
+        "AB red cells carry the A antigen, which the patient's anti-A would attack.",
+        "A cells carry the A antigen.",
+        "Correct. B and O cells both lack the A antigen.",
+        "Only an AB recipient can take any ABO type."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-17",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-18-15",
+    "q": "Compare the two enlarged panels. What is present in the second exposure that explains the harm to the fetus?",
+    "options": [
+      "Many maternal anti-Rh antibodies, which reach the fetal blood",
+      "Many more fetal red cells leaking into the mother",
+      "A break in the barrier between the two bloods",
+      "Maternal red cells entering the fetus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "After the first exposure, the mother's blood holds many anti-Rh antibodies. In the second panel they cross into the fetal vessels and attach to the fetus's Rh-positive red cells.",
+      "options": [
+        "Correct. The antibodies, made after the first exposure, cause the harm.",
+        "Fetal cells leaking into the mother cause the first exposure. The harm in the second pregnancy is done by antibodies moving the other way.",
+        "No break is needed in the second pregnancy; the antibodies cross an intact barrier.",
+        "The drawing shows antibodies, not maternal red cells, reaching the fetus."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A type O, Rh-positive mother gives birth to her first baby, who is type A and develops mild jaundice on day one. What is the most likely explanation?",
+    "options": [
+      "Rh disease, because this is her first baby",
+      "Some of her anti-A crossed to the fetus and destroyed a few of its red cells",
+      "The baby's own anti-B destroyed its red cells",
+      "Her anti-D attacked the baby's red cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A type O mother has anti-A and anti-B from infancy, with no earlier exposure needed. Most cannot reach the fetus, but a type O mother makes some that can. They bind the type A baby's red cells, and the destroyed cells raise bilirubin. ABO disease is usually mild because fetal cells carry A and B only weakly.",
+      "options": [
+        "She is Rh positive, so she makes no anti-D; Rh disease is not possible.",
+        "Correct. Mild ABO hemolytic disease, which can occur in a first pregnancy.",
+        "The baby is type A and would not attack its own cells; newborns also make little anti-B yet.",
+        "An Rh-positive mother does not make anti-D."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-19",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every red cell transfusion that is compatible.",
+    "options": [
+      "O negative cells to an AB positive patient",
+      "A positive cells to an A negative woman of childbearing age",
+      "B negative cells to an AB negative patient",
+      "AB positive cells to an O positive patient",
+      "O positive cells to a B positive patient"
+    ],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Donor cells must not carry an antigen the recipient has, or will make, antibodies against. O negative cells suit anyone; B negative cells suit an AB negative patient, who has no anti-B and no D to meet; O positive cells suit a B positive patient.",
+      "options": [
+        "Correct. O negative cells carry no A, B or D.",
+        "The D antigen would sensitize her, putting future pregnancies at risk.",
+        "Correct. B antigen is her own, and there is no D.",
+        "An O patient has anti-A and anti-B, which would attack AB red cells.",
+        "Correct. O cells carry no A or B, and she is already Rh positive."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-typing-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A patient and a donor unit are both A positive. Why does the lab still crossmatch before the transfusion?",
+    "options": [
+      "To check the donor's blood for anti-A",
+      "To confirm the unit's hemoglobin level",
+      "To check for agglutination caused by antibodies against other blood groups",
+      "To make sure the donor cells are not type O"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "ABO and Rh are only two of more than 40 blood group systems. A crossmatch mixes the patient's plasma with the donor's red cells; agglutination would reveal antibodies against another antigen on those cells.",
+      "options": [
+        "A type A donor has no anti-A; the concern is the recipient's plasma meeting the donor's cells.",
+        "A crossmatch tests compatibility, not hemoglobin.",
+        "Correct. It catches incompatibilities beyond ABO and Rh.",
+        "The unit's type is already known; a crossmatch looks for reactions, not type."
+      ]
+    }
+  }
+]

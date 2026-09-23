@@ -1,0 +1,575 @@
+[
+  {
+    "id": "anp-other-endocrine-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-1-5",
+    "pin": "thymus",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Thyroid gland",
+      "Thymus",
+      "Trachea",
+      "Lymph nodes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The thymus sits in the mediastinum, behind the upper sternum and in front of the heart. It is largest in childhood, when white blood cells mature there under the influence of its thymosins.",
+      "options": [
+        "The thyroid gland is in the neck, wrapped around the front of the trachea, above the pinned organ.",
+        "Correct. The thymus lies in the upper chest, behind the sternum.",
+        "The trachea is the airway running down the neck into the chest, not the gland in front of the heart.",
+        "Lymph nodes are small, bean-shaped structures found in clusters, especially in the neck, armpits and groin."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-1-4",
+    "pin": "ovaries",
+    "q": "Name the pinned structures.",
+    "options": [
+      "Adrenal glands",
+      "Kidneys",
+      "Ovaries",
+      "Pancreas"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ovaries sit in the pelvis, one on each side. Besides releasing eggs, they are endocrine glands that make estrogens and progesterone.",
+      "options": [
+        "The adrenal glands cap the kidneys, high in the abdomen.",
+        "The kidneys lie high on the back wall of the abdomen, well above the pelvis.",
+        "Correct. The paired glands in the female pelvis are the ovaries.",
+        "The pancreas lies across the upper abdomen, behind the stomach."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-3",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Night falls. Put the steps in order to show how darkness raises melatonin in the blood.",
+    "options": [
+      "Light-sensitive retinal ganglion cells stop firing",
+      "The suprachiasmatic nucleus of the hypothalamus changes its output",
+      "The signal travels down the spinal cord to the superior cervical ganglion",
+      "Sympathetic fibers release norepinephrine onto pinealocytes",
+      "Pinealocytes make melatonin from serotonin and release it into the blood"
+    ],
+    "why": {
+      "correct": "Melanopsin-containing retinal ganglion cells report light to the suprachiasmatic nucleus. At night their signal stops, and the SCN's output lets a sympathetic pathway, relayed through the spinal cord and the superior cervical ganglion, release norepinephrine onto pinealocytes. They convert serotonin to melatonin and release it."
+    }
+  },
+  {
+    "id": "anp-other-endocrine-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student scrolls on a bright phone in bed until 1 a.m. What happens to his melatonin while the screen is on?",
+    "options": [
+      "It rises with the eyes' effort",
+      "It is suppressed",
+      "It is unaffected by artificial light",
+      "It rises as light passes through the skull"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Light, especially blue-rich light, excites melanopsin-containing retinal ganglion cells, which signal the suprachiasmatic nucleus. The sympathetic drive to the pineal gland is shut off, so melatonin release falls. Evening light also shifts the body clock later.",
+      "options": [
+        "Visual effort does not drive the pineal gland. Light suppresses melatonin, whatever the eyes are looking at.",
+        "Correct. Light at the retina switches off melatonin release.",
+        "Artificial light works through the same retinal cells as sunlight, though bright light has more effect than dim light.",
+        "In humans, the pineal gland does not sense light itself. The signal comes from the retina through the SCN and a sympathetic pathway, and light lowers melatonin rather than raising it."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A traveler flies from New York to Paris, six hours ahead. Which step would most quickly shift her body clock to the new time?",
+    "options": [
+      "Bright light in the Paris morning",
+      "Staying in a dark room for the first two days",
+      "Taking melatonin at breakfast in Paris",
+      "Eating extra food in the evening"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Light is the strongest signal for resetting the suprachiasmatic nucleus. Morning light moves the clock earlier, which is what an eastward flight requires. A small dose of melatonin in the evening at the new bedtime also helps.",
+      "options": [
+        "Correct. Morning light pulls the clock earlier.",
+        "Darkness removes the main resetting signal, so the clock would stay on New York time longer.",
+        "Melatonin taken in the morning signals \"night\" at the wrong time and tends to shift the clock the wrong way.",
+        "Meal timing has a small effect on clocks in the body's organs, but it does not reset the master clock as strongly as light."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Where is the body's master circadian clock?",
+    "options": [
+      "The pineal gland",
+      "The anterior pituitary",
+      "The retina",
+      "The suprachiasmatic nucleus of the hypothalamus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The suprachiasmatic nucleus, a pair of tiny clusters of neurons just above the optic chiasm, keeps time through a loop of clock genes and keeps the clocks in other cells in step.",
+      "options": [
+        "The pineal gland releases melatonin on the SCN's instructions. It is an output of the clock, not the clock itself.",
+        "The anterior pituitary's hormones follow daily rhythms set by the clock, but it does not keep time itself.",
+        "The retina sends light information to the clock to reset it; it does not keep time for the body.",
+        "Correct. The SCN is the master clock."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A patient receives two liters of saline by drip over an hour. His blood volume rises and his heart's upper chambers are stretched. Which response follows?",
+    "options": [
+      "More aldosterone, so his kidneys keep more of the sodium they filter",
+      "Less ANP, so his vessels constrict",
+      "More ANP, so his kidneys excrete more sodium and water",
+      "More renin, so angiotensin II rises"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Stretched muscle cells in the heart's upper chambers release atrial natriuretic peptide. ANP makes the kidneys filter more and reabsorb less sodium, lowers renin, aldosterone and ADH, and dilates vessels, so the extra volume is excreted: negative feedback.",
+      "options": [
+        "ANP lowers aldosterone. Aldosterone would keep more sodium, raising volume further.",
+        "Stretch raises ANP release, not lowers it.",
+        "Correct. Stretch releases ANP, which lowers blood volume.",
+        "Higher volume and ANP both lower renin release."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A runner from a coastal city moves to a training camp at 3,000 meters. Predict each variable first in the first day at altitude and then after six weeks there, compared with the day before.",
+    "variables": [
+      {
+        "name": "Oxygen in her arterial blood, first day",
+        "answer": "down",
+        "why": "Each breath carries less oxygen at lower air pressure, so she is hypoxemic."
+      },
+      {
+        "name": "EPO release from her kidneys, first day",
+        "answer": "up",
+        "why": "Kidney cells sense less oxygen, and the oxygen-sensing protein survives and switches on the EPO gene within hours."
+      },
+      {
+        "name": "Red blood cell count, first day",
+        "answer": "none",
+        "why": "EPO acts on the bone marrow, and new red blood cells take days to weeks to appear in large numbers."
+      },
+      {
+        "name": "Red blood cell count, after six weeks",
+        "answer": "up",
+        "why": "Weeks of raised EPO have increased red blood cell production."
+      },
+      {
+        "name": "Oxygen carried per liter of her blood, after six weeks",
+        "answer": "up",
+        "why": "More red blood cells in each liter carry more oxygen, partly offsetting the thin air."
+      },
+      {
+        "name": "EPO release, after six weeks compared with the first day",
+        "answer": "down",
+        "why": "The extra red blood cells deliver more oxygen to the kidney, so EPO release eases back toward normal: negative feedback."
+      }
+    ],
+    "why": {
+      "correct": "At altitude the arterial blood carries less oxygen, and the kidneys respond within hours by releasing EPO. Red blood cells rise only over weeks. Once they have, the blood carries more oxygen, the kidney's oxygen supply improves, and EPO falls back."
+    }
+  },
+  {
+    "id": "anp-other-endocrine-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which person has hypoxia without hypoxemia?",
+    "options": [
+      "A climber at 5,000 meters",
+      "A person with severe lung disease on room air",
+      "A person breathing too slowly after an opioid overdose",
+      "A person who has just lost a lot of blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "After a large bleed, the blood that remains is normally loaded with oxygen, so there is no hypoxemia. But there are too few red blood cells and too little flow, so the tissues receive too little oxygen: hypoxia.",
+      "options": [
+        "At altitude, each breath brings in less oxygen, so the arterial blood itself is low in oxygen: hypoxemia, with hypoxia.",
+        "Lung disease impairs loading oxygen into the blood, so the arterial blood is low in oxygen: hypoxemia.",
+        "Breathing too slowly brings too little fresh air into the lungs, so arterial oxygen falls: hypoxemia.",
+        "Correct. The blood is fully loaded but there is not enough of it reaching the tissues."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Mr. Castillo has had kidney disease for many years. He is pale, tired and short of breath on stairs, and his red blood cell count is low. His iron and vitamin levels are normal. What most likely explains the low count?",
+    "options": [
+      "Red blood cells lost in his urine",
+      "His damaged kidneys release too little erythropoietin",
+      "Bone marrow replaced by fat",
+      "Too much ANP from his heart"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The oxygen-sensing cells of the kidney make erythropoietin. When kidney tissue is lost, EPO falls, the bone marrow gets too little signal to make red blood cells, and the count falls. Injections of synthetic EPO correct it.",
+      "options": [
+        "Long-term kidney disease does not usually leak whole red blood cells into the urine in large numbers.",
+        "Correct. Too little EPO means too little red blood cell production.",
+        "Nothing suggests his bone marrow is replaced; it lacks the hormone signal, not the capacity.",
+        "ANP comes from the heart and acts on sodium and water; it does not control red blood cell production."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "obesity is caused by a lack of leptin",
+    "q": "Most people with obesity have high blood leptin, yet they do not eat less. What best explains this?",
+    "options": [
+      "Their brains respond weakly to leptin",
+      "Their fat cells release an inactive form of leptin",
+      "Leptin stops acting on the brain after childhood",
+      "High leptin increases hunger instead of lowering it"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Leptin rises in proportion to fat stores, but in most obesity the hypothalamus responds weakly to it: leptin resistance. That is why giving more leptin helps only the rare people born unable to make it.",
+      "options": [
+        "Correct. This is leptin resistance.",
+        "The leptin is normal and active; the weak link is the brain's response to it.",
+        "Leptin acts in adults too: adults born without it stay severely hungry until they are treated with it.",
+        "High leptin signals that energy stores are full and normally lowers food intake. It does not reverse its own effect."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "interdependence"
+    ],
+    "q": "A 19-year-old distance runner with very little body fat has stopped having periods. Her thyroid and pituitary are healthy. Which change links her low body fat to the missing periods?",
+    "options": [
+      "High leptin raising estrogen too far",
+      "Low melatonin blocking the ovaries",
+      "Low EPO starving the ovaries of oxygen",
+      "Low leptin turning down GnRH release"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Leptin tracks fat stores. With very little fat, leptin is low, and the hypothalamus turns down GnRH. Less GnRH means less FSH and LH, the ovaries make less estrogen, and periods stop.",
+      "options": [
+        "Her leptin is low, not high, because leptin rises with fat stores.",
+        "Melatonin is a timing signal from the pineal gland; it does not explain periods stopping with low body fat.",
+        "EPO controls red blood cell production and is not the link between body fat and periods.",
+        "Correct. Low leptin tells the reproductive axis that energy stores are too small."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-13",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "anabolic steroids make the testes work harder",
+    "q": "A 24-year-old man injects high doses of an anabolic steroid for six months. Predict the change in each variable compared with before he started.",
+    "variables": [
+      {
+        "name": "LH and FSH from his anterior pituitary",
+        "answer": "down",
+        "why": "High androgen feeds back on the hypothalamus and pituitary, cutting GnRH, LH and FSH."
+      },
+      {
+        "name": "Testosterone made by his own testes",
+        "answer": "down",
+        "why": "Without LH, his testes make little testosterone of their own."
+      },
+      {
+        "name": "Size of his testes",
+        "answer": "down",
+        "why": "Without LH and FSH, the testes are no longer driven and shrink."
+      },
+      {
+        "name": "Sperm production",
+        "answer": "down",
+        "why": "Sperm production needs FSH and a high testosterone level inside the testes, both of which fall."
+      },
+      {
+        "name": "Skeletal muscle mass",
+        "answer": "up",
+        "why": "The drug binds androgen receptor proteins in muscle and increases protein synthesis, causing hypertrophy."
+      }
+    ],
+    "why": {
+      "correct": "The drug builds muscle, but it also switches off his own reproductive axis by negative feedback. LH and FSH fall, so his testes shrink and make less testosterone and fewer sperm. After he stops, recovery can take months."
+    }
+  },
+  {
+    "id": "anp-other-endocrine-14",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every expected effect of long-term anabolic steroid use in a 15-year-old boy.",
+    "options": [
+      "Earlier closure of his epiphyseal plates",
+      "Taller adult height",
+      "Growth of breast tissue",
+      "Higher LH from his anterior pituitary",
+      "Acne",
+      "Shrinking testes"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
+    "why": {
+      "correct": "Excess androgen, and the estrogen made from it, closes the epiphyseal plates early, so adult height ends up lower. Some of the drug becomes estrogen and grows breast tissue. Acne is common. Feedback suppresses LH, so the testes shrink.",
+      "options": [
+        "Correct. Estrogen made from the extra androgen matures and closes the plates early.",
+        "Early plate closure stops growth in length sooner, so adult height is lower, not higher.",
+        "Correct. Aromatase converts some of the drug to estrogen.",
+        "Feedback lowers LH, not raises it.",
+        "Correct. Androgens drive the skin's oil glands.",
+        "Correct. Without LH and FSH, the testes shrink."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A 28-year-old man is still growing taller, and X-rays show his epiphyseal plates are open. His testosterone is normal. Tests find he was born without aromatase, the enzyme that turns testosterone into estrogen. What does his case show?",
+    "options": [
+      "Testosterone by itself closes the epiphyseal plates in men",
+      "Growth hormone, not sex hormones, closes the plates",
+      "The plates close in women but stay open in men",
+      "Estrogen, not testosterone, closes the epiphyseal plates"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "His testosterone is normal, yet his plates stay open. Without aromatase he makes almost no estrogen. So estrogen is the hormone that matures the plate cartilage and ends growth in length, in men as well as women.",
+      "options": [
+        "If testosterone closed the plates, his normal testosterone would have closed them by his late teens.",
+        "Growth hormone drives growth at the plates; it does not close them.",
+        "Men's plates close too, normally by their early twenties, through estrogen made from testosterone. His stay open because he lacks that estrogen.",
+        "Correct. Estrogen closes the plates in both sexes."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "interdependence"
+    ],
+    "q": "A 7-year-old has fallen from the 50th to the 5th percentile for height over two years, and her bone age on X-ray is behind her real age. Her growth hormone release is normal. Which hormone deficiency best explains this?",
+    "options": [
+      "Estrogen",
+      "Antidiuretic hormone",
+      "Thyroid hormones",
+      "Melatonin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Thyroid hormones are needed for growth hormone to work at the epiphyseal plates and for bone to mature. A child who becomes hypothyroid slows in growth and falls behind in bone age, even with normal growth hormone.",
+      "options": [
+        "At 7, sex hormones are still low in every child. A lack of them does not slow growth before puberty.",
+        "ADH controls how much water the kidneys keep. It has no role in bone growth.",
+        "Correct. Hypothyroidism slows growth and delays bone maturation.",
+        "Melatonin is a timing signal for the body clock and does not drive bone growth."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-17",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described how the body responds to a fall in oxygen delivery. One step is wrong. Which one?",
+    "options": [
+      "Less oxygen reaches the kidney's tissue",
+      "Oxygen-sensing cells in the kidney switch on the EPO gene",
+      "EPO travels in the blood to the liver, where red blood cells are made",
+      "More red blood cells are produced and enter the blood",
+      "Oxygen delivery rises, and EPO release falls back"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In adults, red blood cells are made in the red bone marrow, and that is where EPO acts. The liver makes red blood cells only before birth.",
+      "options": [
+        "This step is right. The kidney's tissue oxygen tracks what the blood can deliver.",
+        "This step is right. An oxygen-sensing protein that survives when oxygen is low switches on the EPO gene.",
+        "This is the error. EPO acts on the red bone marrow.",
+        "This step is right. More red cells enter the blood over days to weeks.",
+        "This step is right. Better oxygen delivery turns EPO back down: negative feedback."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-18",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Fill the gap: blood volume rises → the heart's upper chambers are stretched → ____ is released → the kidneys excrete more sodium and water → blood volume falls.",
+    "options": [
+      "Atrial natriuretic peptide",
+      "Aldosterone",
+      "Erythropoietin",
+      "Leptin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Stretch releases atrial natriuretic peptide (natri- = sodium, -uretic = relating to urine), which makes the kidneys excrete sodium and water.",
+      "options": [
+        "Correct. ANP is the heart's hormone of stretch.",
+        "Aldosterone makes the kidneys keep sodium, the opposite, and it comes from the adrenal cortex.",
+        "Erythropoietin comes from the kidney when oxygen is low and acts on red blood cell production.",
+        "Leptin comes from fat and signals the size of energy stores to the brain."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "What happens to the thymus after puberty?",
+    "options": [
+      "Its working tissue is gradually replaced by fat",
+      "It keeps growing steadily until about age 50",
+      "It moves down from the chest into the abdomen",
+      "It takes over melatonin release from the pineal gland"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The thymus is largest in childhood and grows until puberty. After that it slowly shrinks, and its working tissue is replaced by fat, so thymosin release falls with age.",
+      "options": [
+        "Correct. The thymus shrinks and turns to fat after puberty.",
+        "The thymus grows only until about puberty.",
+        "The thymus stays in the mediastinum, behind the sternum, throughout life.",
+        "Melatonin comes from the pineal gland, not the thymus."
+      ]
+    }
+  },
+  {
+    "id": "anp-other-endocrine-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A professional cyclist secretly injects synthetic EPO during a hot, three-week race. On a mountain stage he becomes dehydrated and has a stroke. How did the EPO contribute?",
+    "options": [
+      "EPO lowered his blood pressure below what his brain needed",
+      "His blood became too thick with red cells and lost plasma",
+      "EPO made his kidneys lose too much water into the urine",
+      "EPO destroyed his platelets, so he bled into his brain"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "EPO raised his red blood cell count, so his blood carried more oxygen but was also thicker. Losing plasma water by sweating concentrated the cells further. Thick blood flows poorly and clots more easily, raising the risk of stroke and heart attack.",
+      "options": [
+        "EPO does not lower blood pressure; thicker blood, if anything, raises the resistance to flow.",
+        "Correct. Too many red blood cells plus too little plasma makes the blood thick and prone to clotting.",
+        "EPO acts on the bone marrow, not on the kidneys' handling of water.",
+        "EPO does not destroy platelets. The danger is clotting, not bleeding."
+      ]
+    }
+  }
+]

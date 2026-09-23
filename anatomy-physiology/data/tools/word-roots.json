@@ -593,6 +593,482 @@
       "meaning": "forehead, front",
       "origin": "Latin",
       "from": "frons, frontis (forehead)"
+    },
+    {
+      "id": "phren/o",
+      "type": "root",
+      "form": "phren/o",
+      "meaning": "diaphragm; also mind",
+      "origin": "Greek",
+      "from": "phrēn (the midriff; the mind)",
+      "note": "The Greeks placed thought in the midriff, so the same root gives phrenic and schizophrenia."
+    },
+    {
+      "id": "gloss/o",
+      "type": "root",
+      "form": "gloss/o",
+      "meaning": "tongue",
+      "origin": "Greek",
+      "from": "glōssa (tongue)"
+    },
+    {
+      "id": "gemin/o",
+      "type": "root",
+      "form": "gemin/o",
+      "meaning": "twin",
+      "origin": "Latin",
+      "from": "geminus (twin)"
+    },
+    {
+      "id": "ocul/o",
+      "type": "root",
+      "form": "ocul/o",
+      "meaning": "eye",
+      "origin": "Latin",
+      "from": "oculus (eye)"
+    },
+    {
+      "id": "mot/o",
+      "type": "root",
+      "form": "mot/o",
+      "meaning": "move",
+      "origin": "Latin",
+      "from": "movere, motus (to move)"
+    },
+    {
+      "id": "trochle/o",
+      "type": "root",
+      "form": "trochle/o",
+      "meaning": "pulley",
+      "origin": "Latin, from Greek",
+      "from": "trochlea (a pulley), from Greek trochos (wheel)"
+    },
+    {
+      "id": "vestibul/o",
+      "type": "root",
+      "form": "vestibul/o",
+      "meaning": "entrance hall",
+      "origin": "Latin",
+      "from": "vestibulum (entrance court)"
+    },
+    {
+      "id": "cochle/o",
+      "type": "root",
+      "form": "cochle/o",
+      "meaning": "snail shell",
+      "origin": "Latin, from Greek",
+      "from": "cochlea (snail), from Greek kochlias"
+    },
+    {
+      "id": "noc/i",
+      "type": "root",
+      "form": "noc/i",
+      "meaning": "harm, injury",
+      "origin": "Latin",
+      "from": "nocere (to harm)"
+    },
+    {
+      "id": "cept/o",
+      "type": "root",
+      "form": "cept/o",
+      "meaning": "take in, catch",
+      "origin": "Latin",
+      "from": "capere, captus (to take); -ceptor as in receptor"
+    },
+    {
+      "id": "propri/o",
+      "type": "root",
+      "form": "propri/o",
+      "meaning": "one’s own",
+      "origin": "Latin",
+      "from": "proprius (one’s own)"
+    },
+    {
+      "id": "extero-",
+      "type": "prefix",
+      "form": "extero-",
+      "meaning": "outside, external",
+      "origin": "Latin",
+      "from": "exterus (outer)"
+    },
+    {
+      "id": "intero-",
+      "type": "prefix",
+      "form": "intero-",
+      "meaning": "inside, internal",
+      "origin": "Latin",
+      "from": "interus (inner)",
+      "note": "Not inter- (between): intero- means within."
+    },
+    {
+      "id": "therm/o",
+      "type": "root",
+      "form": "therm/o",
+      "meaning": "heat",
+      "origin": "Greek",
+      "from": "thermē (heat)"
+    },
+    {
+      "id": "mechan/o",
+      "type": "root",
+      "form": "mechan/o",
+      "meaning": "machine; mechanical force",
+      "origin": "Greek",
+      "from": "mēchanē (machine, contrivance)"
+    },
+    {
+      "id": "kine/o",
+      "type": "root",
+      "form": "kine/o, kin/o",
+      "meaning": "move, motion",
+      "origin": "Greek",
+      "from": "kinein (to move)"
+    },
+    {
+      "id": "esthesi/o",
+      "type": "root",
+      "form": "esthesi/o, esthes/o",
+      "meaning": "sensation, feeling",
+      "origin": "Greek",
+      "from": "aisthēsis (sensation)"
+    },
+    {
+      "id": "graph/o",
+      "type": "root",
+      "form": "graph/o",
+      "meaning": "write, draw",
+      "origin": "Greek",
+      "from": "graphein (to write)"
+    },
+    {
+      "id": "sens/o",
+      "type": "root",
+      "form": "sens/o",
+      "meaning": "feel, perceive",
+      "origin": "Latin",
+      "from": "sentire, sensus (to feel, perceive)"
+    },
+    {
+      "id": "decuss/o",
+      "type": "root",
+      "form": "decuss/o",
+      "meaning": "cross in the shape of an X",
+      "origin": "Latin",
+      "from": "decussare (to cross like an X), from decussis, the Roman numeral X"
+    },
+    {
+      "id": "cortic/o",
+      "type": "root",
+      "form": "cortic/o",
+      "meaning": "bark; outer layer, cortex",
+      "origin": "Latin",
+      "from": "cortex, corticis (bark)"
+    },
+    {
+      "id": "reflex/o",
+      "type": "root",
+      "form": "reflex/o",
+      "meaning": "bent back",
+      "origin": "Latin",
+      "from": "reflectere, reflexus (to bend back)"
+    },
+    {
+      "id": "metr/o",
+      "type": "root",
+      "form": "metr/o",
+      "meaning": "measure",
+      "origin": "Greek",
+      "from": "metron (a measure)"
+    },
+    {
+      "id": "-plegia",
+      "type": "suffix",
+      "form": "-plegia",
+      "meaning": "paralysis",
+      "origin": "Greek",
+      "from": "plēgē (a blow, a stroke)"
+    },
+    {
+      "id": "tetra-",
+      "type": "prefix",
+      "form": "tetra-",
+      "meaning": "four (Greek)",
+      "origin": "Greek",
+      "from": "tetra- (four)"
+    },
+    {
+      "id": "quadri-",
+      "type": "prefix",
+      "form": "quadri-",
+      "meaning": "four (Latin)",
+      "origin": "Latin",
+      "from": "quattuor, quadri- (four)"
+    },
+    {
+      "id": "stere/o",
+      "type": "root",
+      "form": "stere/o",
+      "meaning": "solid, three-dimensional",
+      "origin": "Greek",
+      "from": "stereos (solid, firm)"
+    },
+    {
+      "id": "gnos/o",
+      "type": "root",
+      "form": "gnos/o",
+      "meaning": "knowing, recognition",
+      "origin": "Greek",
+      "from": "gnōsis (knowledge)"
+    },
+    {
+      "id": "sect/o",
+      "type": "root",
+      "form": "sect/o",
+      "meaning": "cut",
+      "origin": "Latin",
+      "from": "secare, sectus (to cut)"
+    },
+    {
+      "id": "gust/o",
+      "type": "root",
+      "form": "gust/o",
+      "meaning": "taste",
+      "origin": "Latin",
+      "from": "gustare (to taste)"
+    },
+    {
+      "id": "olfact/o",
+      "type": "root",
+      "form": "olfact/o",
+      "meaning": "smell (as a sense)",
+      "origin": "Latin",
+      "from": "olfacere (to smell), from olere (to give off a smell) and facere (to make)"
+    },
+    {
+      "id": "osm/o-smell",
+      "type": "root",
+      "form": "osm/o",
+      "meaning": "smell, odor",
+      "origin": "Greek",
+      "from": "osmē (smell)",
+      "note": "A different Greek word from the osm/o of osmosis, which comes from ōsmos, a push."
+    },
+    {
+      "id": "-opia",
+      "type": "suffix",
+      "form": "-opia",
+      "meaning": "a condition of vision",
+      "origin": "Greek",
+      "from": "ōps, ōpos (eye, face)"
+    },
+    {
+      "id": "presby/o",
+      "type": "root",
+      "form": "presby/o",
+      "meaning": "old man, old age",
+      "origin": "Greek",
+      "from": "presbys (old man)"
+    },
+    {
+      "id": "my/o-close",
+      "type": "root",
+      "form": "my/o",
+      "meaning": "close, shut (the eyes)",
+      "origin": "Greek",
+      "from": "myein (to shut the eyes)",
+      "note": "Not the my/o of muscle: myopia is named for the squint of a nearsighted person."
+    },
+    {
+      "id": "lacrim/o",
+      "type": "root",
+      "form": "lacrim/o",
+      "meaning": "tear",
+      "origin": "Latin",
+      "from": "lacrima (a tear)"
+    },
+    {
+      "id": "phot/o",
+      "type": "root",
+      "form": "phot/o",
+      "meaning": "light",
+      "origin": "Greek",
+      "from": "phōs, phōtos (light)"
+    },
+    {
+      "id": "rhod/o",
+      "type": "root",
+      "form": "rhod/o",
+      "meaning": "rose, rose-red",
+      "origin": "Greek",
+      "from": "rhodon (rose)"
+    },
+    {
+      "id": "ops/o",
+      "type": "root",
+      "form": "ops/o",
+      "meaning": "seeing, sight",
+      "origin": "Greek",
+      "from": "opsis (sight)"
+    },
+    {
+      "id": "fract/o",
+      "type": "root",
+      "form": "fract/o",
+      "meaning": "break",
+      "origin": "Latin",
+      "from": "frangere, fractus (to break)"
+    },
+    {
+      "id": "lith/o",
+      "type": "root",
+      "form": "lith/o",
+      "meaning": "stone",
+      "origin": "Greek",
+      "from": "lithos (stone)"
+    },
+    {
+      "id": "lymph/o",
+      "type": "root",
+      "form": "lymph/o",
+      "meaning": "clear water; clear body fluid",
+      "origin": "Latin",
+      "from": "lympha (clear water)"
+    },
+    {
+      "id": "tympan/o",
+      "type": "root",
+      "form": "tympan/o",
+      "meaning": "drum",
+      "origin": "Greek",
+      "from": "tympanon (a drum)"
+    },
+    {
+      "id": "audit/o",
+      "type": "root",
+      "form": "audit/o, audi/o",
+      "meaning": "hearing",
+      "origin": "Latin",
+      "from": "audire, auditus (to hear)"
+    },
+    {
+      "id": "-icle",
+      "type": "suffix",
+      "form": "-icle, -cle",
+      "meaning": "small (diminutive ending)",
+      "origin": "Latin",
+      "from": "-iculus, -culus"
+    },
+    {
+      "id": "ganglion/o",
+      "type": "root",
+      "form": "ganglion/o, gangli/o",
+      "meaning": "knot, swelling",
+      "origin": "Greek",
+      "from": "ganglion (a swelling, a knot)"
+    },
+    {
+      "id": "vertebr/o",
+      "type": "root",
+      "form": "vertebr/o",
+      "meaning": "vertebra; a joint that turns",
+      "origin": "Latin",
+      "from": "vertebra, from vertere (to turn)"
+    },
+    {
+      "id": "mur/o",
+      "type": "root",
+      "form": "mur/o",
+      "meaning": "wall",
+      "origin": "Latin",
+      "from": "murus (a wall)"
+    },
+    {
+      "id": "lumb/o",
+      "type": "root",
+      "form": "lumb/o",
+      "meaning": "loin, lower back",
+      "origin": "Latin",
+      "from": "lumbus (loin)"
+    },
+    {
+      "id": "sacr/o",
+      "type": "root",
+      "form": "sacr/o",
+      "meaning": "sacrum (the sacred bone)",
+      "origin": "Latin",
+      "from": "os sacrum (sacred bone)"
+    },
+    {
+      "id": "splanchn/o",
+      "type": "root",
+      "form": "splanchn/o",
+      "meaning": "internal organs",
+      "origin": "Greek",
+      "from": "splanchna (the inward parts)"
+    },
+    {
+      "id": "affin/o",
+      "type": "root",
+      "form": "affin/o",
+      "meaning": "related, having an attraction to",
+      "origin": "Latin",
+      "from": "affinis (bordering on, related)"
+    },
+    {
+      "id": "mimet/o",
+      "type": "root",
+      "form": "mimet/o",
+      "meaning": "imitate",
+      "origin": "Greek",
+      "from": "mimētikos (imitative)"
+    },
+    {
+      "id": "-lytic",
+      "type": "suffix",
+      "form": "-lytic",
+      "meaning": "loosening, undoing",
+      "origin": "Greek",
+      "from": "lytikos (able to loosen)"
+    },
+    {
+      "id": "erg/o",
+      "type": "root",
+      "form": "erg/o",
+      "meaning": "work",
+      "origin": "Greek",
+      "from": "ergon (work)"
+    },
+    {
+      "id": "anti-",
+      "type": "prefix",
+      "form": "anti-, ant-",
+      "meaning": "against",
+      "origin": "Greek",
+      "from": "anti (against, opposite)"
+    },
+    {
+      "id": "agon/o",
+      "type": "root",
+      "form": "agon/o",
+      "meaning": "contest, struggle",
+      "origin": "Greek",
+      "from": "agōn (a contest)"
+    },
+    {
+      "id": "-ist",
+      "type": "suffix",
+      "form": "-ist",
+      "meaning": "one who takes part, one who does",
+      "origin": "Greek",
+      "from": "-istēs"
+    },
+    {
+      "id": "nerv/o",
+      "type": "root",
+      "form": "nerv/o",
+      "meaning": "nerve",
+      "origin": "Latin",
+      "from": "nervus (sinew, nerve)"
     }
   ],
   "terms": [
@@ -1428,7 +1904,8 @@
           "meta-"
         ],
         [
-          "bo"
+          "bo",
+          "bol/o"
         ],
         [
           "trop",
@@ -1439,8 +1916,9 @@
           "-ic"
         ]
       ],
-      "literal": "acting through change",
-      "meaning": "describing a receptor protein that acts through a G protein, so its effect is slower, longer and amplified"
+      "literal": "acting through metabolism (change)",
+      "meaning": "describing a receptor protein that acts through a G protein, so its effect is slower, longer and amplified",
+      "note": "Coined from metabolic + -tropic: the receptor protein acts through chemical steps inside the cell, not through a pore of its own. Metabolism comes from Greek metabolē, a change."
     },
     {
       "id": "serotonin",
@@ -1635,8 +2113,9 @@
           "on"
         ]
       ],
-      "literal": "the through brain",
-      "meaning": "the central part of the brain between the cerebrum and brainstem: thalamus, hypothalamus and epithalamus"
+      "literal": "the between brain",
+      "meaning": "the central part of the brain between the cerebrum and brainstem: thalamus, hypothalamus and epithalamus",
+      "note": "Dia- means through or between; the diencephalon lies between the cerebrum and the brainstem."
     },
     {
       "id": "metencephalon",
@@ -2066,6 +2545,1607 @@
       ],
       "literal": "pertaining to before the front",
       "meaning": "describing the front of the frontal lobe, ahead of the motor areas, which runs executive function"
+    },
+    {
+      "id": "epineurium",
+      "term": "epineurium",
+      "topic": "spinal-nerves",
+      "concept": "nerve-structure",
+      "segs": [
+        [
+          "epi",
+          "epi-"
+        ],
+        [
+          "neur",
+          "neur/o"
+        ],
+        [
+          "ium",
+          "-ium"
+        ]
+      ],
+      "literal": "a structure upon the nerve",
+      "meaning": "the tough outer layer of dense connective tissue around a whole nerve"
+    },
+    {
+      "id": "perineurium",
+      "term": "perineurium",
+      "topic": "spinal-nerves",
+      "concept": "nerve-structure",
+      "segs": [
+        [
+          "peri",
+          "peri-"
+        ],
+        [
+          "neur",
+          "neur/o"
+        ],
+        [
+          "ium",
+          "-ium"
+        ]
+      ],
+      "literal": "a structure around the nerve",
+      "meaning": "the sleeve of connective tissue around each fascicle of a nerve"
+    },
+    {
+      "id": "endoneurium",
+      "term": "endoneurium",
+      "topic": "spinal-nerves",
+      "concept": "nerve-structure",
+      "segs": [
+        [
+          "endo",
+          "endo-"
+        ],
+        [
+          "neur",
+          "neur/o"
+        ],
+        [
+          "ium",
+          "-ium"
+        ]
+      ],
+      "literal": "a structure within the nerve",
+      "meaning": "the delicate connective tissue around each single axon in a nerve"
+    },
+    {
+      "id": "dermatome",
+      "term": "dermatome",
+      "topic": "spinal-nerves",
+      "concept": "dermatomes",
+      "segs": [
+        [
+          "derm",
+          "derm/o"
+        ],
+        [
+          "a"
+        ],
+        [
+          "tome",
+          "tom/o"
+        ]
+      ],
+      "literal": "a slice of skin",
+      "meaning": "the strip of skin whose sensory axons all travel in one spinal nerve"
+    },
+    {
+      "id": "phrenic",
+      "term": "phrenic",
+      "topic": "spinal-nerves",
+      "concept": "named-nerves",
+      "segs": [
+        [
+          "phren",
+          "phren/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the diaphragm",
+      "meaning": "describing the nerve from C3 to C5 that is the diaphragm’s only motor supply"
+    },
+    {
+      "id": "hypoglossal",
+      "term": "hypoglossal",
+      "topic": "cranial-nerves",
+      "concept": "cranial-nerve-list",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "gloss",
+          "gloss/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to below the tongue",
+      "meaning": "describing cranial nerve XII, which runs below the tongue to its muscles"
+    },
+    {
+      "id": "glossopharyngeal",
+      "term": "glossopharyngeal",
+      "topic": "cranial-nerves",
+      "concept": "cranial-nerve-list",
+      "segs": [
+        [
+          "gloss",
+          "gloss/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "pharyng",
+          "pharyng/o"
+        ],
+        [
+          "e"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the tongue and throat",
+      "meaning": "describing cranial nerve IX, which carries taste and touch from the back of the tongue and the throat"
+    },
+    {
+      "id": "trigeminal",
+      "term": "trigeminal",
+      "topic": "cranial-nerves",
+      "concept": "cranial-nerve-list",
+      "segs": [
+        [
+          "tri",
+          "tri-"
+        ],
+        [
+          "gemin",
+          "gemin/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to triplets",
+      "meaning": "describing cranial nerve V, whose three divisions carry feeling from the face"
+    },
+    {
+      "id": "oculomotor",
+      "term": "oculomotor",
+      "topic": "cranial-nerves",
+      "concept": "cranial-nerve-list",
+      "segs": [
+        [
+          "ocul",
+          "ocul/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "mot",
+          "mot/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "eye mover",
+      "meaning": "describing cranial nerve III, which moves the eye up, down and in and raises the upper lid"
+    },
+    {
+      "id": "trochlear",
+      "term": "trochlear",
+      "topic": "cranial-nerves",
+      "concept": "cranial-nerve-list",
+      "segs": [
+        [
+          "trochle",
+          "trochle/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "pertaining to a pulley",
+      "meaning": "describing cranial nerve IV, whose eye muscle has its tendon running through a small pulley"
+    },
+    {
+      "id": "vestibulocochlear",
+      "term": "vestibulocochlear",
+      "topic": "cranial-nerves",
+      "concept": "cranial-nerve-list",
+      "segs": [
+        [
+          "vestibul",
+          "vestibul/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cochle",
+          "cochle/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "pertaining to the entrance hall and the snail shell",
+      "meaning": "describing cranial nerve VIII, which carries balance and hearing signals from deep in the temporal bone"
+    },
+    {
+      "id": "nociceptor",
+      "term": "nociceptor",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-stimulus",
+      "segs": [
+        [
+          "noc",
+          "noc/i"
+        ],
+        [
+          "i"
+        ],
+        [
+          "cept",
+          "cept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "a harm catcher",
+      "meaning": "a sensory receptor that responds to stimuli that damage or threaten to damage tissue",
+      "note": "It detects harm, not pain: pain is what the brain makes of its signals."
+    },
+    {
+      "id": "thermoreceptor",
+      "term": "thermoreceptor",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-stimulus",
+      "segs": [
+        [
+          "therm",
+          "therm/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "recept",
+          "recept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "a heat receiver",
+      "meaning": "a sensory receptor that responds to a change in temperature"
+    },
+    {
+      "id": "mechanoreceptor",
+      "term": "mechanoreceptor",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-stimulus",
+      "segs": [
+        [
+          "mechan",
+          "mechan/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "recept",
+          "recept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "a receiver of mechanical force",
+      "meaning": "a sensory receptor that responds to touch, pressure, vibration or stretch"
+    },
+    {
+      "id": "proprioceptor",
+      "term": "proprioceptor",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-location",
+      "segs": [
+        [
+          "propri",
+          "propri/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cept",
+          "cept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "a catcher of one’s own (position)",
+      "meaning": "a sensory receptor in muscles, tendons and joint capsules that reports body position and movement"
+    },
+    {
+      "id": "exteroceptor",
+      "term": "exteroceptor",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-location",
+      "segs": [
+        [
+          "extero",
+          "extero-"
+        ],
+        [
+          "cept",
+          "cept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "an outside catcher",
+      "meaning": "a sensory receptor that responds to stimuli from outside the body"
+    },
+    {
+      "id": "interoceptor",
+      "term": "interoceptor",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-location",
+      "segs": [
+        [
+          "intero",
+          "intero-"
+        ],
+        [
+          "cept",
+          "cept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "an inside catcher",
+      "meaning": "a sensory receptor that responds to stimuli from internal organs and blood vessels"
+    },
+    {
+      "id": "kinesthesia",
+      "term": "kinesthesia",
+      "topic": "sensory-pathways",
+      "concept": "receptor-types-location",
+      "segs": [
+        [
+          "kin",
+          "kine/o"
+        ],
+        [
+          "esthes",
+          "esthesi/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "the condition of sensing movement",
+      "meaning": "the sense of limb movement"
+    },
+    {
+      "id": "somatosensation",
+      "term": "somatosensation",
+      "topic": "sensory-pathways",
+      "concept": "general-special-senses",
+      "segs": [
+        [
+          "somat",
+          "somat/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "sens",
+          "sens/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of feeling the body",
+      "meaning": "the general senses of the body: touch, pressure, vibration, temperature, pain and body position"
+    },
+    {
+      "id": "decussation",
+      "term": "decussation",
+      "topic": "sensory-pathways",
+      "concept": "ascending-pathways",
+      "segs": [
+        [
+          "decuss",
+          "decuss/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of crossing like an X",
+      "meaning": "the crossing of axons from one side of the CNS to the other"
+    },
+    {
+      "id": "spinothalamic",
+      "term": "spinothalamic",
+      "topic": "sensory-pathways",
+      "concept": "ascending-pathways",
+      "segs": [
+        [
+          "spin",
+          "spin/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "thalam",
+          "thalam/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the spine and the inner chamber",
+      "meaning": "describing the tract that carries pain and temperature from the spinal cord to the thalamus",
+      "note": "Tracts are named from where they start to where they end."
+    },
+    {
+      "id": "corticospinal",
+      "term": "corticospinal",
+      "topic": "motor-pathways",
+      "concept": "corticospinal",
+      "segs": [
+        [
+          "cortic",
+          "cortic/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "spin",
+          "spin/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the cortex and the spine",
+      "meaning": "describing the tract that carries voluntary commands from the cerebral cortex to the spinal cord"
+    },
+    {
+      "id": "hyperreflexia",
+      "term": "hyperreflexia",
+      "topic": "motor-pathways",
+      "concept": "motor-lesions",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "reflex",
+          "reflex/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition of too much bending back",
+      "meaning": "tendon jerks that are abnormally brisk, a sign of upper motor neuron damage"
+    },
+    {
+      "id": "dysmetria",
+      "term": "dysmetria",
+      "topic": "motor-pathways",
+      "concept": null,
+      "segs": [
+        [
+          "dys",
+          "dys-"
+        ],
+        [
+          "metr",
+          "metr/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition of bad measuring",
+      "meaning": "overshooting or undershooting a target, a sign of cerebellar damage"
+    },
+    {
+      "id": "monosynaptic",
+      "term": "monosynaptic",
+      "topic": "reflexes",
+      "concept": "stretch-reflex",
+      "segs": [
+        [
+          "mono",
+          "mono-"
+        ],
+        [
+          "synapt",
+          "synapt/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to one synapse",
+      "meaning": "describing a reflex with a single synapse between the sensory and motor neurons, such as the stretch reflex"
+    },
+    {
+      "id": "polysynaptic",
+      "term": "polysynaptic",
+      "topic": "reflexes",
+      "concept": "withdrawal-reflex",
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "synapt",
+          "synapt/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to many synapses",
+      "meaning": "describing a reflex with interneurons between the sensory and motor neurons, such as the withdrawal reflex"
+    },
+    {
+      "id": "paraplegia",
+      "term": "paraplegia",
+      "topic": "neuro-exam",
+      "concept": "spinal-cord-injury",
+      "segs": [
+        [
+          "para",
+          "para-"
+        ],
+        [
+          "plegia",
+          "-plegia"
+        ]
+      ],
+      "literal": "paralysis beside",
+      "meaning": "paralysis of both legs and the trunk below the injury, from damage to the thoracic, lumbar or sacral cord"
+    },
+    {
+      "id": "tetraplegia",
+      "term": "tetraplegia",
+      "topic": "neuro-exam",
+      "concept": "spinal-cord-injury",
+      "segs": [
+        [
+          "tetra",
+          "tetra-"
+        ],
+        [
+          "plegia",
+          "-plegia"
+        ]
+      ],
+      "literal": "four paralysis (Greek)",
+      "meaning": "paralysis of all four limbs and the trunk, from an injury to the cervical cord"
+    },
+    {
+      "id": "quadriplegia",
+      "term": "quadriplegia",
+      "topic": "neuro-exam",
+      "concept": "spinal-cord-injury",
+      "segs": [
+        [
+          "quadri",
+          "quadri-"
+        ],
+        [
+          "plegia",
+          "-plegia"
+        ]
+      ],
+      "literal": "four paralysis (Latin)",
+      "meaning": "the older, Latin-built name for tetraplegia: paralysis of all four limbs from a cervical cord injury"
+    },
+    {
+      "id": "stereognosis",
+      "term": "stereognosis",
+      "topic": "neuro-exam",
+      "concept": "neuro-exam-parts",
+      "segs": [
+        [
+          "stere",
+          "stere/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gnos",
+          "gnos/o"
+        ],
+        [
+          "is"
+        ]
+      ],
+      "literal": "knowing solids",
+      "meaning": "recognizing an object placed in the hand without looking, a test of the parietal cortex"
+    },
+    {
+      "id": "graphesthesia",
+      "term": "graphesthesia",
+      "topic": "neuro-exam",
+      "concept": "neuro-exam-parts",
+      "segs": [
+        [
+          "graph",
+          "graph/o"
+        ],
+        [
+          "esthes",
+          "esthesi/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "the condition of feeling writing",
+      "meaning": "recognizing a number traced on the skin with the eyes closed"
+    },
+    {
+      "id": "hemisection",
+      "term": "hemisection",
+      "topic": "neuro-exam",
+      "concept": "spinal-cord-injury",
+      "segs": [
+        [
+          "hemi",
+          "hemi-"
+        ],
+        [
+          "sect",
+          "sect/o"
+        ],
+        [
+          "ion",
+          "-ation"
+        ]
+      ],
+      "literal": "the act of cutting half",
+      "meaning": "damage to one half of the spinal cord at one level"
+    },
+    {
+      "id": "gustatory",
+      "term": "gustatory",
+      "topic": "chemical-senses",
+      "concept": "gustation",
+      "segs": [
+        [
+          "gust",
+          "gust/o"
+        ],
+        [
+          "atory",
+          "-ory"
+        ]
+      ],
+      "literal": "pertaining to tasting",
+      "meaning": "relating to the sense of taste"
+    },
+    {
+      "id": "olfactory",
+      "term": "olfactory",
+      "topic": "chemical-senses",
+      "concept": "olfaction",
+      "segs": [
+        [
+          "olfact",
+          "olfact/o"
+        ],
+        [
+          "ory",
+          "-ory"
+        ]
+      ],
+      "literal": "pertaining to smelling",
+      "meaning": "relating to the sense of smell"
+    },
+    {
+      "id": "anosmia",
+      "term": "anosmia",
+      "topic": "chemical-senses",
+      "concept": "olfaction",
+      "segs": [
+        [
+          "an",
+          "a-"
+        ],
+        [
+          "osm",
+          "osm/o-smell"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "the condition of no smell",
+      "meaning": "loss of the sense of smell"
+    },
+    {
+      "id": "presbyopia",
+      "term": "presbyopia",
+      "topic": "vision",
+      "concept": "refraction-accommodation",
+      "segs": [
+        [
+          "presby",
+          "presby/o"
+        ],
+        [
+          "opia",
+          "-opia"
+        ]
+      ],
+      "literal": "old-age vision",
+      "meaning": "the age-related loss of near focus as the lens stiffens"
+    },
+    {
+      "id": "myopia",
+      "term": "myopia",
+      "topic": "vision",
+      "concept": "refraction-accommodation",
+      "segs": [
+        [
+          "my",
+          "my/o-close"
+        ],
+        [
+          "opia",
+          "-opia"
+        ]
+      ],
+      "literal": "squinting vision",
+      "meaning": "nearsightedness: light from distant objects focuses in front of the retina"
+    },
+    {
+      "id": "hyperopia",
+      "term": "hyperopia",
+      "topic": "vision",
+      "concept": "refraction-accommodation",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "opia",
+          "-opia"
+        ]
+      ],
+      "literal": "vision beyond",
+      "meaning": "farsightedness: light from distant objects would focus behind the retina"
+    },
+    {
+      "id": "hemianopia",
+      "term": "hemianopia",
+      "topic": "vision",
+      "concept": null,
+      "segs": [
+        [
+          "hemi",
+          "hemi-"
+        ],
+        [
+          "an",
+          "a-"
+        ],
+        [
+          "opia",
+          "-opia"
+        ]
+      ],
+      "literal": "half without vision",
+      "meaning": "loss of half of the visual field"
+    },
+    {
+      "id": "refraction",
+      "term": "refraction",
+      "topic": "vision",
+      "concept": "refraction-accommodation",
+      "segs": [
+        [
+          "re",
+          "re-"
+        ],
+        [
+          "fract",
+          "fract/o"
+        ],
+        [
+          "ion",
+          "-ation"
+        ]
+      ],
+      "literal": "the act of breaking back",
+      "meaning": "the bending of light as it passes at a slant from one clear material into another"
+    },
+    {
+      "id": "lacrimal",
+      "term": "lacrimal",
+      "topic": "vision",
+      "concept": "eye-accessory",
+      "segs": [
+        [
+          "lacrim",
+          "lacrim/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to tears",
+      "meaning": "relating to tears, as in the lacrimal gland that makes them"
+    },
+    {
+      "id": "nasolacrimal",
+      "term": "nasolacrimal",
+      "topic": "vision",
+      "concept": "eye-accessory",
+      "segs": [
+        [
+          "nas",
+          "nas/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lacrim",
+          "lacrim/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the nose and tears",
+      "meaning": "describing the duct that drains tears from the eye into the nose"
+    },
+    {
+      "id": "extraocular",
+      "term": "extraocular",
+      "topic": "vision",
+      "concept": "eye-accessory",
+      "segs": [
+        [
+          "extra",
+          "extra-"
+        ],
+        [
+          "ocul",
+          "ocul/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "pertaining to outside the eye",
+      "meaning": "describing the six muscles attached to the outside of the eyeball that turn it"
+    },
+    {
+      "id": "photoreceptor",
+      "term": "photoreceptor",
+      "topic": "vision",
+      "concept": "photoreceptors",
+      "segs": [
+        [
+          "phot",
+          "phot/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "recept",
+          "recept/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "a light receiver",
+      "meaning": "a rod or cone: a sensory receptor cell that responds to light"
+    },
+    {
+      "id": "rhodopsin",
+      "term": "rhodopsin",
+      "topic": "vision",
+      "concept": "phototransduction",
+      "segs": [
+        [
+          "rhod",
+          "rhod/o"
+        ],
+        [
+          "ops",
+          "ops/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a rose-colored seeing substance",
+      "meaning": "the light-absorbing pigment of rods, named for its purplish color"
+    },
+    {
+      "id": "photoisomerization",
+      "term": "photoisomerization",
+      "topic": "vision",
+      "concept": "phototransduction",
+      "segs": [
+        [
+          "phot",
+          "phot/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "iso",
+          "iso-"
+        ],
+        [
+          "mer",
+          "mer/o"
+        ],
+        [
+          "ization",
+          "-ization"
+        ]
+      ],
+      "literal": "making the same parts into a new form by light",
+      "meaning": "the change of shape of retinal from bent to straight when it absorbs light"
+    },
+    {
+      "id": "otolith",
+      "term": "otolith",
+      "topic": "hearing-balance",
+      "concept": "vestibular-apparatus",
+      "segs": [
+        [
+          "ot",
+          "ot/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lith",
+          "lith/o"
+        ]
+      ],
+      "literal": "ear stone",
+      "meaning": "one of the tiny calcium carbonate crystals that weigh down the gel of the utricle and saccule"
+    },
+    {
+      "id": "endolymph",
+      "term": "endolymph",
+      "topic": "hearing-balance",
+      "concept": null,
+      "segs": [
+        [
+          "endo",
+          "endo-"
+        ],
+        [
+          "lymph",
+          "lymph/o"
+        ]
+      ],
+      "literal": "the clear fluid within",
+      "meaning": "the K+-rich fluid inside the membranous labyrinth"
+    },
+    {
+      "id": "perilymph",
+      "term": "perilymph",
+      "topic": "hearing-balance",
+      "concept": null,
+      "segs": [
+        [
+          "peri",
+          "peri-"
+        ],
+        [
+          "lymph",
+          "lymph/o"
+        ]
+      ],
+      "literal": "the clear fluid around",
+      "meaning": "the fluid between the bony and membranous labyrinths, similar to extracellular fluid"
+    },
+    {
+      "id": "tympanic",
+      "term": "tympanic",
+      "topic": "hearing-balance",
+      "concept": "ear-regions",
+      "segs": [
+        [
+          "tympan",
+          "tympan/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to a drum",
+      "meaning": "relating to the eardrum, as in the tympanic membrane"
+    },
+    {
+      "id": "ossicle",
+      "term": "ossicle",
+      "topic": "hearing-balance",
+      "concept": "ear-regions",
+      "segs": [
+        [
+          "oss",
+          "oss/e"
+        ],
+        [
+          "icle",
+          "-icle"
+        ]
+      ],
+      "literal": "a little bone",
+      "meaning": "one of the three tiny bones of the middle ear: malleus, incus and stapes"
+    },
+    {
+      "id": "stereocilia",
+      "term": "stereocilia",
+      "topic": "hearing-balance",
+      "concept": "hair-cell-transduction",
+      "segs": [
+        [
+          "stere",
+          "stere/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cili",
+          "cili/o"
+        ],
+        [
+          "a"
+        ]
+      ],
+      "literal": "solid eyelashes",
+      "meaning": "the stiff, actin-filled projections on a hair cell that bend to open its channels",
+      "note": "They are not true cilia: they cannot beat."
+    },
+    {
+      "id": "auditory",
+      "term": "auditory",
+      "topic": "hearing-balance",
+      "concept": null,
+      "segs": [
+        [
+          "audit",
+          "audit/o"
+        ],
+        [
+          "ory",
+          "-ory"
+        ]
+      ],
+      "literal": "pertaining to hearing",
+      "meaning": "relating to hearing, as in the auditory ossicles and the auditory cortex"
+    },
+    {
+      "id": "preganglionic",
+      "term": "preganglionic",
+      "topic": "ans-anatomy",
+      "concept": "pre-postganglionic",
+      "segs": [
+        [
+          "pre",
+          "pre-"
+        ],
+        [
+          "ganglion",
+          "ganglion/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to before the ganglion",
+      "meaning": "describing the first autonomic neuron, whose axon runs from the CNS to a ganglion"
+    },
+    {
+      "id": "postganglionic",
+      "term": "postganglionic",
+      "topic": "ans-anatomy",
+      "concept": "pre-postganglionic",
+      "segs": [
+        [
+          "post",
+          "post-"
+        ],
+        [
+          "ganglion",
+          "ganglion/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to after the ganglion",
+      "meaning": "describing the second autonomic neuron, whose axon runs from a ganglion to the effector"
+    },
+    {
+      "id": "paravertebral",
+      "term": "paravertebral",
+      "topic": "ans-anatomy",
+      "concept": "sympathetic-anatomy",
+      "segs": [
+        [
+          "para",
+          "para-"
+        ],
+        [
+          "vertebr",
+          "vertebr/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to beside the vertebrae",
+      "meaning": "describing the chain ganglia, which lie beside the vertebral column"
+    },
+    {
+      "id": "prevertebral",
+      "term": "prevertebral",
+      "topic": "ans-anatomy",
+      "concept": "sympathetic-anatomy",
+      "segs": [
+        [
+          "pre",
+          "pre-"
+        ],
+        [
+          "vertebr",
+          "vertebr/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to in front of the vertebrae",
+      "meaning": "describing the collateral ganglia, which lie in front of the vertebral column"
+    },
+    {
+      "id": "intramural",
+      "term": "intramural",
+      "topic": "ans-anatomy",
+      "concept": "parasympathetic-anatomy",
+      "segs": [
+        [
+          "intra",
+          "intra-"
+        ],
+        [
+          "mur",
+          "mur/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to within the wall",
+      "meaning": "describing parasympathetic ganglia that sit inside the wall of the organ they supply"
+    },
+    {
+      "id": "thoracolumbar",
+      "term": "thoracolumbar",
+      "topic": "ans-anatomy",
+      "concept": "sympathetic-anatomy",
+      "segs": [
+        [
+          "thorac",
+          "thorac/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lumb",
+          "lumb/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "pertaining to the chest and the loins",
+      "meaning": "describing the sympathetic division, whose preganglionic neurons leave the cord only from T1 to L2"
+    },
+    {
+      "id": "craniosacral",
+      "term": "craniosacral",
+      "topic": "ans-anatomy",
+      "concept": "parasympathetic-anatomy",
+      "segs": [
+        [
+          "crani",
+          "crani/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "sacr",
+          "sacr/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the skull and the sacrum",
+      "meaning": "describing the parasympathetic division, whose preganglionic neurons leave from the brainstem and from S2 to S4"
+    },
+    {
+      "id": "splanchnic",
+      "term": "splanchnic",
+      "topic": "ans-anatomy",
+      "concept": "sympathetic-anatomy",
+      "segs": [
+        [
+          "splanchn",
+          "splanchn/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the internal organs",
+      "meaning": "describing the nerves that carry preganglionic fibers from the chain to the collateral ganglia of the abdomen"
+    },
+    {
+      "id": "chromaffin",
+      "term": "chromaffin",
+      "topic": "ans-anatomy",
+      "concept": "adrenal-medulla",
+      "segs": [
+        [
+          "chrom",
+          "chrom/o"
+        ],
+        [
+          "affin",
+          "affin/o"
+        ]
+      ],
+      "literal": "having an attraction to color",
+      "meaning": "describing the secreting cells of the adrenal medulla, which stain brown with chromium salts"
+    },
+    {
+      "id": "cholinergic",
+      "term": "cholinergic",
+      "topic": "ans-signaling",
+      "concept": "cholinergic-adrenergic",
+      "segs": [
+        [
+          "chol",
+          "chol/e"
+        ],
+        [
+          "in"
+        ],
+        [
+          "erg",
+          "erg/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "working by choline",
+      "meaning": "describing a neuron that releases acetylcholine",
+      "note": "Choline was first found in bile, which gives the chol- root."
+    },
+    {
+      "id": "adrenergic",
+      "term": "adrenergic",
+      "topic": "ans-signaling",
+      "concept": "cholinergic-adrenergic",
+      "segs": [
+        [
+          "ad",
+          "ad-"
+        ],
+        [
+          "ren",
+          "ren/o"
+        ],
+        [
+          "erg",
+          "erg/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "working by the substance near the kidney",
+      "meaning": "describing a neuron that releases norepinephrine, or a receptor protein that binds it and epinephrine",
+      "note": "Named for adrenaline, the gland product “near the kidney”."
+    },
+    {
+      "id": "anticholinergic",
+      "term": "anticholinergic",
+      "topic": "ans-signaling",
+      "concept": "autonomic-drugs",
+      "segs": [
+        [
+          "anti",
+          "anti-"
+        ],
+        [
+          "chol",
+          "chol/e"
+        ],
+        [
+          "in"
+        ],
+        [
+          "erg",
+          "erg/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "against working by choline",
+      "meaning": "describing a drug that blocks acetylcholine, usually at muscarinic receptor proteins"
+    },
+    {
+      "id": "sympathomimetic",
+      "term": "sympathomimetic",
+      "topic": "ans-signaling",
+      "concept": "autonomic-drugs",
+      "segs": [
+        [
+          "sym",
+          "syn-"
+        ],
+        [
+          "path",
+          "path/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "mimet",
+          "mimet/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "imitating the sympathetic",
+      "meaning": "describing a drug that mimics sympathetic effects"
+    },
+    {
+      "id": "sympatholytic",
+      "term": "sympatholytic",
+      "topic": "ans-signaling",
+      "concept": "autonomic-drugs",
+      "segs": [
+        [
+          "sym",
+          "syn-"
+        ],
+        [
+          "path",
+          "path/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lytic",
+          "-lytic"
+        ]
+      ],
+      "literal": "undoing the sympathetic",
+      "meaning": "describing a drug that blocks sympathetic effects"
+    },
+    {
+      "id": "parasympathomimetic",
+      "term": "parasympathomimetic",
+      "topic": "ans-signaling",
+      "concept": "autonomic-drugs",
+      "segs": [
+        [
+          "para",
+          "para-"
+        ],
+        [
+          "sym",
+          "syn-"
+        ],
+        [
+          "path",
+          "path/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "mimet",
+          "mimet/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "imitating the parasympathetic",
+      "meaning": "describing a drug that mimics parasympathetic effects"
+    },
+    {
+      "id": "agonist",
+      "term": "agonist",
+      "topic": "ans-signaling",
+      "concept": "autonomic-drugs",
+      "segs": [
+        [
+          "agon",
+          "agon/o"
+        ],
+        [
+          "ist",
+          "-ist"
+        ]
+      ],
+      "literal": "a contestant",
+      "meaning": "a drug that binds and activates a receptor protein, mimicking the natural messenger"
+    },
+    {
+      "id": "antagonist",
+      "term": "antagonist",
+      "topic": "ans-signaling",
+      "concept": "autonomic-drugs",
+      "segs": [
+        [
+          "ant",
+          "anti-"
+        ],
+        [
+          "agon",
+          "agon/o"
+        ],
+        [
+          "ist",
+          "-ist"
+        ]
+      ],
+      "literal": "one who struggles against",
+      "meaning": "a drug that binds a receptor protein without activating it, blocking the natural messenger"
+    },
+    {
+      "id": "vasomotor",
+      "term": "vasomotor",
+      "topic": "ans-control",
+      "concept": "sympathetic-effects",
+      "segs": [
+        [
+          "vas",
+          "vas/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "mot",
+          "mot/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "vessel mover",
+      "meaning": "describing the sympathetic nerves whose tone sets the diameter of blood vessels"
+    },
+    {
+      "id": "innervation",
+      "term": "innervation",
+      "topic": "ans-control",
+      "concept": "dual-innervation",
+      "segs": [
+        [
+          "in",
+          "in-"
+        ],
+        [
+          "nerv",
+          "nerv/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of putting nerves in",
+      "meaning": "the supply of nerves to an organ; dual innervation means fibers from both autonomic divisions"
     }
   ]
 }

@@ -1,0 +1,48 @@
+{
+  "topic": "blood-typing",
+  "hook": "<p>Mr. Adams, 45, arrives after a car crash, bleeding heavily. There is no time to find out his blood type, so the trauma team starts O-negative red cells at once. Twenty minutes later the lab reports that he is A positive, and the team switches to A-positive units. Why is O negative safe for a stranger, and why switch as soon as the type is known? The answers lie in the antigens on red cells and the antibodies in plasma.</p>",
+  "prereq": [
+    {
+      "q": "What is the glycocalyx?",
+      "options": ["The layer of sugar chains on a cell's outer surface", "The protein skeleton just under the membrane", "The fluid inside the nucleus"],
+      "correct": 0,
+      "why": "The glycocalyx is the coat of sugar chains attached to membrane proteins and lipids on the outer surface. It carries a cell's identity markers.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "What does an antibody bind?",
+      "options": ["Any foreign cell it meets", "One specific antigen", "Oxygen"],
+      "correct": 1,
+      "why": "Each antibody's binding sites fit one antigen's shape, the way a key fits one lock.",
+      "review": "leukocytes-platelets"
+    },
+    {
+      "q": "When many red cells are destroyed at once, which pigment builds up and can cause jaundice?",
+      "options": ["Bilirubin", "Ferritin", "Erythropoietin"],
+      "correct": 0,
+      "why": "Heme from destroyed red cells is converted to bilirubin. If the liver cannot clear it fast enough, it builds up and yellows the skin and eyes.",
+      "review": "erythrocytes"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-18-17",
+    "caption": "The ABO blood groups. Hide the labels and, for each type, name the antigens on its red cells and the antibodies in its plasma."
+  },
+  "chain": [
+    { "cause": "Type B red cells are transfused by mistake into a type A patient, whose plasma holds anti-B.", "effect": "Anti-B antibodies bind the B antigens on the donor cells within seconds." },
+    { "cause": "Each antibody has several binding sites and binds antigens on two or more cells.", "effect": "The donor cells are cross-linked into clumps: agglutination." },
+    { "cause": "Antibodies bound to the cells switch on plasma proteins that punch holes in their membranes.", "effect": "The donor cells burst (hemolysis) and release hemoglobin into the plasma." },
+    { "cause": "Free hemoglobin and chemical signals from the attack flood the blood.", "effect": "Fever, chills, back pain, dark urine and falling blood pressure follow, and the kidneys can fail: a transfusion reaction." }
+  ],
+  "misconception": {
+    "wrong": "An Rh-negative person has anti-D antibodies from birth, just as a type A person has anti-B.",
+    "right": "Anti-A and anti-B appear in infancy without any exposure to other blood. Anti-D does not: an Rh-negative person makes it only after meeting Rh-positive red cells, through a transfusion or a pregnancy. That is why a first Rh-mismatched transfusion usually causes no immediate reaction, why a first Rh-positive baby is usually unharmed, and why the injection of anti-D after delivery, which stops the mother making her own, works."
+  },
+  "check": ["anp-blood-typing-2", "anp-blood-typing-3", "anp-blood-typing-4", "anp-blood-typing-7", "anp-blood-typing-8", "anp-blood-typing-10", "anp-blood-typing-12"],
+  "summary": "<p>Red cells carry blood group antigens in their glycocalyx. In the ABO system, the A and B antigens are sugars added to the H antigen: type A has A, type B has B, type AB has both, type O has neither. From infancy, plasma holds antibodies against the ABO antigens the cells lack. Agglutination is antibodies cross-linking red cells into clumps, often followed by hemolysis; typing tests read it with anti-A, anti-B and anti-D. The Rh factor is the D antigen; Rh-negative people make anti-D only after exposure to Rh-positive cells. Donor red cells must not carry an antigen the recipient has, or will make, antibodies against: O negative is the universal donor and AB positive the universal recipient for red cells, and a crossmatch confirms each unit. An ABO-incompatible transfusion causes a transfusion reaction: agglutination, hemolysis, fever, dark urine, low blood pressure and kidney damage. In hemolytic disease of the newborn, an Rh-negative mother sensitized by a first Rh-positive baby makes anti-D that crosses to a later Rh-positive fetus and destroys its red cells; anti-D immune globulin prevents it.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-29", "label": "NREMT: Bleeding control" },
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" },
+    { "href": "/ochem/lessons/carbohydrates.html", "label": "Organic chemistry: carbohydrates" }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "thyroid-gland": {
+    "def": "A butterfly-shaped gland in the front of the neck, two lobes joined by an isthmus across the trachea. It is packed with follicles: spheres of follicular cells around thyroid colloid, whose main protein, thyroglobulin, holds the stored hormones. Parafollicular (C) cells lie between the follicles.",
+    "roots": [
+      [
+        "thyre-",
+        "shield"
+      ],
+      [
+        "-oid",
+        "like"
+      ]
+    ],
+    "say": "THY-royd; thy-roh-GLOB-yoo-lin"
+  },
+  "thyroid-hormones": {
+    "def": "Thyroxine (T4) and triiodothyronine (T3), lipid-soluble amine hormones made from tyrosine and iodine. T3 is the active form, mostly made from T4 in the tissues. They raise cells' oxygen use and heat production, increase beta-1 receptor proteins in the heart, and are needed for normal growth and brain development.",
+    "roots": [
+      [
+        "tri-",
+        "three"
+      ],
+      [
+        "iodo-",
+        "iodine"
+      ]
+    ],
+    "say": "thy-ROK-seen; try-eye-oh-doh-THY-roh-neen"
+  },
+  "thyroid-regulation": {
+    "def": "TRH from the hypothalamus makes the anterior pituitary release TSH, which drives every step of thyroid hormone making and release and makes the gland grow. T4 and T3 inhibit TSH and TRH release by long-loop negative feedback.",
+    "roots": [],
+    "say": ""
+  },
+  "thyroid-disorders": {
+    "def": "Hypothyroidism (too little thyroid hormone: cold, tired, slow) and hyperthyroidism (too much: hot, weight loss, fast heart). Graves disease, an immune protein that switches on TSH receptor proteins, is the commonest cause of hyperthyroidism. A goiter is an enlarged thyroid gland. Congenital (neonatal) hypothyroidism is found by newborn screening.",
+    "roots": [
+      [
+        "hypo-",
+        "under"
+      ],
+      [
+        "hyper-",
+        "over"
+      ],
+      [
+        "neo-",
+        "new"
+      ],
+      [
+        "nat-",
+        "born"
+      ]
+    ],
+    "say": "GOY-ter"
+  },
+  "calcitonin": {
+    "def": "A peptide hormone released by the thyroid gland's parafollicular (C) cells when blood calcium rises. It inhibits osteoclasts and so lowers blood calcium, but in adults its effect is small.",
+    "roots": [
+      [
+        "calci-",
+        "calcium"
+      ],
+      [
+        "ton-",
+        "tone, tension"
+      ]
+    ],
+    "say": "kal-sih-TOH-nin"
+  },
+  "parathyroid-glands": {
+    "def": "Usually four rice-sized glands on the back of the thyroid gland. Their chief cells sense blood calcium through a calcium-sensing receptor protein and release parathyroid hormone when it falls.",
+    "roots": [
+      [
+        "para-",
+        "beside"
+      ]
+    ],
+    "say": "par-uh-THY-royd"
+  },
+  "pth": {
+    "def": "Parathyroid hormone (PTH): the main hormone that raises blood calcium. It drives bone breakdown by acting on osteoblasts, which signal osteoclasts; makes the kidneys keep calcium and lose phosphate; and switches on calcitriol production. Too much is hyperparathyroidism; too little, hypoparathyroidism.",
+    "roots": [
+      [
+        "para-",
+        "beside"
+      ]
+    ],
+    "say": ""
+  },
+  "calcitriol": {
+    "def": "The active form of vitamin D (1,25-dihydroxyvitamin D), made when the liver and then the kidneys each add a hydroxyl group; PTH switches on the kidney step. It makes the intestine absorb calcium and phosphate. Too little in adults causes osteomalacia, soft poorly mineralized bone.",
+    "roots": [
+      [
+        "calci-",
+        "calcium"
+      ],
+      [
+        "-triol",
+        "three OH groups"
+      ],
+      [
+        "osteo-",
+        "bone"
+      ],
+      [
+        "malac-",
+        "softening"
+      ]
+    ],
+    "say": "kal-sih-TRY-ol; os-tee-oh-muh-LAY-shuh"
+  }
+}

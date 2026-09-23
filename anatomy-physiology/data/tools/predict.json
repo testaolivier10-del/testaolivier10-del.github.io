@@ -5407,7 +5407,7 @@
                 "gap",
                 "easy"
               ],
-              "why": "With rest closer to threshold, stimuli that used to fade now fire the neuron. That is the early twitchiness and tingling of mild hyperkalemia."
+              "why": "With rest closer to threshold, stimuli that used to fade now fire the neuron. Excitability rises at first, although a mild rise often causes no symptoms you would notice."
             },
             {
               "id": "threshold",
@@ -5497,7 +5497,7 @@
       ],
       "level": 2,
       "misconception": "blocking reuptake makes the terminal release more neurotransmitter",
-      "setup": "A person takes an SSRI, a drug that blocks the serotonin transporters in the membranes of serotonin-releasing axon terminals. Predict what happens at one of these synapses over the next few hours, after an action potential arrives.",
+      "setup": "A person takes an SSRI, a drug that blocks the serotonin transporters in the membranes of serotonin-releasing axon terminals. Predict what happens at one of these synapses over the next few hours, after an action potential arrives. Ignore any feedback from serotonin onto the releasing neuron itself.",
       "start": "Serotonin transporters blocked",
       "steps": {
         "ca": "Calcium entry and vesicle fusion unchanged",
@@ -5635,6 +5635,8 @@
       "steps": {
         "same": "Presynaptic firing unchanged",
         "gaba": "Same GABA released",
+        "glu": "Glutamate’s receptor proteins untouched",
+        "epsp": "Each EPSP the same size",
         "more": "More chloride channels open per release",
         "cl": "More chloride flows in",
         "ipsp": "Larger IPSPs",
@@ -5668,8 +5670,8 @@
           "name": "Size of each EPSP from the glutamate synapses",
           "answer": "none",
           "chain": [
-            "same",
-            "gaba"
+            "glu",
+            "epsp"
           ],
           "why": "The drug does not act on glutamate’s receptor proteins, so each EPSP on its own is the same size. What changes is how much the IPSPs subtract from the sum."
         },
@@ -5755,7 +5757,7 @@
           "prompt": "With continued exposure and acetylcholine staying high, compared with the early minutes.",
           "start": "Acetylcholine stays high in the cleft",
           "steps": {
-            "open": "Nicotinic channels stay open",
+            "open": "Acetylcholine keeps acting on the nicotinic channels",
             "depol": "Fiber membrane held depolarized",
             "inact": "Sodium channels stuck inactivated",
             "noap": "Fiber can no longer fire action potentials",
@@ -5770,7 +5772,7 @@
                 "open",
                 "depol"
               ],
-              "why": "Acetylcholine never clears, so the nicotinic channels keep letting sodium in and the membrane near the junction stays depolarized."
+              "why": "Acetylcholine lingers, so at first the nicotinic channels keep letting sodium in and the membrane near the junction stays depolarized. With longer exposure the nicotinic receptor proteins also stop responding to acetylcholine, which adds to the block."
             },
             {
               "id": "ready",
@@ -6103,41 +6105,41 @@
     },
     {
       "id": "dorsal-roots-cut",
-      "title": "The dorsal roots of one segment are cut",
+      "title": "The dorsal roots of three segments are cut",
       "topic": "spinal-cord",
       "core": [
         "structure-function"
       ],
       "level": 1,
       "misconception": "cutting a root at the back of the cord paralyzes the muscles it supplies",
-      "setup": "A surgeon cuts the dorsal roots of one thoracic segment on the right side, to relieve pain, and leaves the ventral roots intact.",
-      "start": "Right dorsal roots of one segment cut",
+      "setup": "A surgeon cuts the dorsal roots of three neighboring thoracic segments on the right side, to relieve pain, and leaves the ventral roots intact.",
+      "start": "Right dorsal roots of three segments cut",
       "steps": {
-        "noin": "Sensory axons from that band cannot enter the cord",
-        "numb": "Band of skin loses sensation",
-        "vr": "Ventral root still carries motor axons out",
+        "noin": "Sensory axons from those segments cannot enter the cord",
+        "numb": "That band of skin loses sensation",
+        "vr": "Ventral roots still carry motor axons out",
         "move": "Its muscles still contract"
       },
       "variables": [
         {
           "id": "sensation",
-          "name": "Sensation from the band of skin on the right that the segment supplies",
+          "name": "Sensation from the band of skin on the right supplied by the middle one of those segments",
           "answer": "down",
           "chain": [
             "noin",
             "numb"
           ],
-          "why": "Sensory axons enter the cord only through the dorsal root. Cut it, and signals from that band of skin never reach the dorsal horn or the brain."
+          "why": "Sensory axons enter the cord only through the dorsal roots. Each band of skin is also reached by the roots just above and below it, so all three must be cut before the middle band goes numb."
         },
         {
           "id": "strength",
-          "name": "Strength of the muscles that segment supplies",
+          "name": "Strength of the muscles those segments supply",
           "answer": "none",
           "chain": [
             "vr",
             "move"
           ],
-          "why": "Motor axons leave through the ventral root, which is intact, so the muscles still receive their commands."
+          "why": "Motor axons leave through the ventral roots, which are intact, so the muscles still receive their commands."
         }
       ]
     },
@@ -6260,7 +6262,7 @@
         "nolink": "Nothing links new experiences into one memory",
         "nonew": "New declarative memories do not form",
         "cortex": "Old memories already stored in the cortex",
-        "old": "Childhood memories kept",
+        "old": "Gist of childhood memories kept",
         "bn": "Basal nuclei and cerebellum intact",
         "skill": "New skills still learned",
         "pfc": "Prefrontal cortex intact",
@@ -6279,13 +6281,13 @@
         },
         {
           "id": "childhood",
-          "name": "Memories of childhood",
+          "name": "General memories and facts from childhood",
           "answer": "none",
           "chain": [
             "cortex",
             "old"
           ],
-          "why": "Old memories have finished consolidation and are stored in the cerebral cortex, so they no longer depend on the hippocampus."
+          "why": "Old memories have been consolidated and are stored in the cerebral cortex, so their gist survives without the hippocampus. (Some studies find that vivid detail of old personal events is thinner after hippocampal loss, which is still debated.)"
         },
         {
           "id": "skill",
@@ -6386,12 +6388,12 @@
         {
           "id": "adenosine",
           "name": "Adenosine outside the neurons",
-          "answer": "none",
+          "answer": "up",
           "chain": [
             "use",
             "ado"
           ],
-          "why": "Adenosine comes from active neurons breaking down ATP. Caffeine does not stop that, and only sleep clears it, so it keeps building."
+          "why": "Adenosine comes from active neurons breaking down ATP. Caffeine does not stop that and does not clear it; only sleep does. So adenosine keeps building through the hour, just as it did before the coffee."
         },
         {
           "id": "inhibition",

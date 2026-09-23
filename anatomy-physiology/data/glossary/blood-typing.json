@@ -1,0 +1,27 @@
+{
+  "abo": {
+    "def": "The blood group system set by sugars added to the H antigen on red cells: type A carries the A antigen, type B the B antigen, type AB both, type O neither. From infancy, plasma holds antibodies against whichever of A and B the red cells lack.",
+    "roots": [],
+    "say": ""
+  },
+  "agglutination": {
+    "def": "The clumping of cells when antibodies, each with two or more binding sites, bind antigens on several cells and cross-link them. It is an immune process, not clotting, and is often followed by hemolysis.",
+    "roots": [["agglutinare", "to glue together"]],
+    "say": "uh-gloo-tih-NAY-shun"
+  },
+  "rh-factor": {
+    "def": "The D antigen, a red cell membrane protein. Rh-positive red cells carry it; Rh-negative cells do not. Rh-negative people make anti-D only after exposure to Rh-positive cells, through transfusion or pregnancy.",
+    "roots": [["Rh", "rhesus monkey"]],
+    "say": ""
+  },
+  "transfusion-reaction": {
+    "def": "Harm caused by a transfusion; the most dangerous is the recipient's antibodies attacking ABO-incompatible donor red cells, causing agglutination, hemolysis, fever, dark urine, low blood pressure and kidney damage. O negative red cells are the universal donor, AB positive the universal recipient, and a crossmatch mixes the patient's plasma with the donor's cells to check before transfusion.",
+    "roots": [["trans-", "across"], ["fus-", "pour"]],
+    "say": ""
+  },
+  "hdn": {
+    "def": "Hemolytic disease of the newborn (erythroblastosis fetalis): a mother's antibodies cross to the fetus and destroy its red cells. The severe form occurs when an Rh-negative mother, sensitized by an earlier Rh-positive baby, makes anti-D that attacks a later Rh-positive fetus; anti-D immune globulin prevents it.",
+    "roots": [["hemo-", "blood"], ["-lysis", "breaking down"], ["erythroblast", "young red cell"], ["-osis", "condition"]],
+    "say": "eh-rith-roh-blas-TOH-sis fee-TAL-is"
+  }
+}

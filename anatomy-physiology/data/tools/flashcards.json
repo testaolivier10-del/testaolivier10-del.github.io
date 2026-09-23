@@ -2902,7 +2902,7 @@
    "compare": "Major neurotransmitters",
    "front": "Name the main excitatory neurotransmitter of the brain, the main inhibitory one of the brain, and a major inhibitory one of the spinal cord.",
    "back": "Glutamate; GABA; glycine.",
-   "why": "Nearly all their receptor proteins in the adult brain open channels that excite (glutamate) or inhibit (GABA and glycine)."
+   "why": "Nearly all their receptor proteins in the adult brain excite (glutamate) or inhibit (GABA and glycine), whether they are channels themselves or act through a G protein."
   },
   {
    "id": "sy-drugs-steps",
@@ -3248,7 +3248,7 @@
    "level": "apply",
    "compare": "Dorsal root vs ventral root",
    "front": "Cutting a dorsal root vs a ventral root: what is lost?",
-   "back": "Dorsal: sensation from the area it supplies; strength normal. Ventral: movement of the muscles it supplies; sensation normal.",
+   "back": "Dorsal: sensation from the area it supplies is dulled; strength normal. Ventral: the muscles it supplies are weakened; sensation normal. (Neighboring roots overlap, so one root’s loss is partly covered.)",
    "why": "Each root carries signals only one way, so cutting it removes just that direction."
   },
   {
@@ -3465,6 +3465,1383 @@
    "front": "What is needed for consciousness, and how does sleep differ from coma?",
    "back": "The reticular activating system and the cerebral cortex on both sides, working together. A sleeper can be woken by a strong enough stimulus; a person in a coma cannot.",
    "why": "Damage to one hemisphere alone does not cause coma; damage to the upper brainstem or to both hemispheres does."
+  },
+  {
+    "id": "nerve-wrappings",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Which connective tissue layer wraps a single axon, a fascicle, and a whole nerve?",
+    "back": "Endoneurium around each axon, perineurium around each fascicle, epineurium around the whole nerve.",
+    "why": "The same pattern wraps skeletal muscle (endomysium, perimysium, epimysium). The perineurium’s tight junctions control what passes from the blood into each fascicle."
+  },
+  {
+    "id": "roots-vs-rami",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Roots vs rami: which carry only one kind of axon, and which are mixed?",
+    "back": "The dorsal root is sensory only and the ventral root motor only. Both rami, dorsal and ventral, are mixed.",
+    "why": "The rami branch after the two roots have joined into the spinal nerve, so sensory and motor axons already run side by side in them."
+  },
+  {
+    "id": "spinal-nerve-count",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "How many pairs of spinal nerves are there, by region?",
+    "back": "31: 8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal.",
+    "why": "There are 8 cervical nerves but 7 cervical vertebrae because C1 leaves above the first vertebra and C8 below the seventh."
+  },
+  {
+    "id": "plexus-roots",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Which ventral rami form the cervical, brachial, lumbar and sacral plexuses?",
+    "back": "Cervical C1–C4, brachial C5–T1, lumbar L1–L4, sacral L4–S4.",
+    "why": "Only the dorsal rami and the thoracic ventral rami (the intercostal nerves) skip plexuses."
+  },
+  {
+    "id": "plexus-why",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Why does damage to a single nerve root weaken a limb muscle but rarely paralyze it?",
+    "back": "In a plexus, axons from several segments mix, so most limb muscles are supplied by two or three roots.",
+    "why": "Losing one root removes only part of the muscle’s motor supply; the rest still reaches it through the plexus."
+  },
+  {
+    "id": "phrenic-c345",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function",
+      "interdependence"
+    ],
+    "level": "apply",
+    "front": "Why does an injury above C3 stop breathing, while one below C5 spares the diaphragm?",
+    "back": "The phrenic nerve, the diaphragm’s only motor supply, comes from C3–C5: “C3, 4 and 5 keep the diaphragm alive.”",
+    "why": "Above C3 the commands for the diaphragm cannot reach those segments; below C5 the phrenic nerve’s segments and its commands are intact."
+  },
+  {
+    "id": "wrist-drop",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "A mid-shaft fracture of the humerus leaves the hand hanging. Which nerve is injured?",
+    "back": "The radial nerve: wrist drop.",
+    "why": "The radial nerve spirals around the shaft of the humerus and supplies the wrist and finger extensors."
+  },
+  {
+    "id": "foot-drop",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "After hours with his legs crossed, a man’s toes drag when he walks. Which nerve is compressed?",
+    "back": "The common fibular nerve, where it wraps around the neck of the fibula: foot drop.",
+    "why": "Just below the knee it lies right under the skin, and it supplies the muscles that dorsiflex the foot."
+  },
+  {
+    "id": "carpal-tunnel",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Numb thumb, index and middle fingers and a weak thumb: which nerve, and where is it squeezed?",
+    "back": "The median nerve, in the carpal tunnel at the wrist.",
+    "why": "The median nerve supplies most thenar muscles and the palm-side skin of the thumb, index, middle and half the ring finger."
+  },
+  {
+    "id": "dermatome-landmarks",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Which dermatomes cover the nipple line, the navel, the thumb and the little toe?",
+    "back": "Nipple T4, navel T10, thumb C6, little toe and outer foot S1.",
+    "why": "On the trunk, dermatomes run as horizontal bands; on the limbs they run lengthwise because the limbs grow out from the trunk."
+  },
+  {
+    "id": "shingles-stripe",
+    "topic": "spinal-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Why does a shingles rash appear as a stripe on one side of the body?",
+    "back": "The virus reactivates in one dorsal root ganglion and travels out along its axons, so the rash fills that ganglion’s dermatome.",
+    "why": "Each dermatome is the skin whose sensory axons share one dorsal root, and each ganglion serves one side."
+  },
+  {
+    "id": "cn-names",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Name the 12 cranial nerves in order.",
+    "back": "Olfactory, optic, oculomotor, trochlear, trigeminal, abducens, facial, vestibulocochlear, glossopharyngeal, vagus, accessory, hypoglossal.",
+    "why": "The numbers follow the order in which they leave the underside of the brain, front (I) to back (XII)."
+  },
+  {
+    "id": "cn-parasympathetic",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Which four cranial nerves carry parasympathetic axons?",
+    "back": "III, VII, IX and X (“1973”).",
+    "why": "III narrows the pupil and focuses the eye, VII drives tears and two saliva glands, IX the largest saliva gland, and X the chest and abdominal organs."
+  },
+  {
+    "id": "cn-sensory-only",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Which cranial nerves are purely sensory?",
+    "back": "I (olfactory), II (optic) and VIII (vestibulocochlear).",
+    "why": "They carry smell, vision, and hearing and balance, and have no motor axons."
+  },
+  {
+    "id": "v-vs-vii",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "V trigeminal vs VII facial",
+    "front": "Trigeminal (V) vs facial (VII): which feels the face and which moves it?",
+    "back": "V feels (touch, pain, temperature) and moves the chewing muscles; VII moves the muscles of facial expression.",
+    "why": "A numb cheek with normal movement points to V; a slack half face that cannot close the eye points to VII."
+  },
+  {
+    "id": "v-vs-vii-tongue",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "V trigeminal vs VII facial",
+    "front": "Trigeminal (V) vs facial (VII): what does each carry from the front two-thirds of the tongue?",
+    "back": "V carries touch; VII carries taste.",
+    "why": "The two sensations from the same patch of tongue travel in different nerves, so one can be lost without the other."
+  },
+  {
+    "id": "blink-two-nerves",
+    "topic": "cranial-nerves",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "V trigeminal vs VII facial",
+    "front": "Touching the surface of the eye makes both eyes blink. Which nerve carries the touch in, and which the blink out?",
+    "back": "The touch goes in on V1 (trigeminal); the blink goes out on VII (facial).",
+    "why": "That is why one quick test checks two cranial nerves."
+  },
+  {
+    "id": "cn3-palsy",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "An eye turned down and out, a drooping lid and a wide pupil that ignores light: which nerve?",
+    "back": "The oculomotor nerve (III).",
+    "why": "III supplies four of six eye muscles and the lid lifter, and carries the parasympathetic axons that narrow the pupil."
+  },
+  {
+    "id": "tongue-deviation",
+    "topic": "cranial-nerves",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "When the patient sticks out the tongue, it points to the left. Which nerve is damaged?",
+    "back": "The left hypoglossal nerve (XII).",
+    "why": "Each half of the tongue pushes its own side forward. With the left side weak, the healthy right half pushes the tip toward the left."
+  },
+  {
+    "id": "vagus-afferent",
+    "topic": "cranial-nerves",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "About what fraction of the axons in the vagus nerve are sensory?",
+    "back": "Most of them, often put at about 80%.",
+    "why": "They carry signals from the heart, lungs and digestive organs to the brainstem: stretch of the stomach, blood pressure, lung inflation."
+  },
+  {
+    "id": "dc-vs-st-carries",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Dorsal column vs spinothalamic pathway",
+    "front": "Dorsal column pathway vs spinothalamic tract: what does each carry?",
+    "back": "Dorsal column: fine touch, two-point discrimination, vibration, conscious proprioception. Spinothalamic: pain, temperature, itch, crude touch.",
+    "why": "That is why a clinician tests vibration and position for one pathway and pinprick and temperature for the other."
+  },
+  {
+    "id": "dc-vs-st-cross",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Dorsal column vs spinothalamic pathway",
+    "front": "Dorsal column pathway vs spinothalamic tract: where does each cross the midline?",
+    "back": "Dorsal column: in the medulla oblongata. Spinothalamic: in the spinal cord, within a segment or two of entry.",
+    "why": "In both, it is the second-order axon that crosses; the difference is where the first-order neuron ends."
+  },
+  {
+    "id": "dc-vs-st-side",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Dorsal column vs spinothalamic pathway",
+    "front": "Dorsal column pathway vs spinothalamic tract: on which side of the spinal cord does each climb, relative to the body part?",
+    "back": "Dorsal column: the same side. Spinothalamic: the opposite side.",
+    "why": "The dorsal column axon climbs uncrossed to the medulla; the spinothalamic axon has already crossed near its entry level."
+  },
+  {
+    "id": "dc-vs-st-first",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Dorsal column vs spinothalamic pathway",
+    "front": "Dorsal column pathway vs spinothalamic tract: where does the first-order neuron end?",
+    "back": "Dorsal column: nucleus gracilis or cuneatus in the medulla. Spinothalamic: the dorsal horn of the spinal cord.",
+    "why": "The dorsal column axon climbs the whole cord without synapsing; the pain axon synapses almost at once."
+  },
+  {
+    "id": "dc-vs-st-loss",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "analyze",
+    "compare": "Dorsal column vs spinothalamic pathway",
+    "front": "The right half of the cord is cut at T10. Where is vibration lost, and where is pain lost?",
+    "back": "Vibration is lost on the right from T10 down; pain and temperature on the left, from a segment or two below.",
+    "why": "The right dorsal column carries the right side, uncrossed. The right spinothalamic tract carries signals that crossed from the left."
+  },
+  {
+    "id": "three-neurons",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Where are the cell bodies of the first-, second- and third-order neurons of a pathway to conscious touch?",
+    "back": "First: dorsal root ganglion (or cranial nerve ganglion). Second: spinal cord or brainstem. Third: thalamus.",
+    "why": "The second-order axon crosses and climbs to the thalamus; the third-order neuron runs from the thalamus to the primary somatosensory cortex."
+  },
+  {
+    "id": "tonic-vs-phasic",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Tonic vs phasic sensory receptors: which keeps firing during a steady stimulus?",
+    "back": "Tonic (slowly adapting) sensory receptors keep firing; phasic (rapidly adapting) ones fire at the start and end, then fall silent.",
+    "why": "Nociceptors and proprioceptors are tonic so injuries and body position stay reported; lamellated corpuscles are phasic, so they signal change."
+  },
+  {
+    "id": "strength-coding",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Action potentials are all-or-none. How is a stronger stimulus coded, then?",
+    "back": "By a higher firing frequency in each sensory neuron, and by more sensory neurons firing.",
+    "why": "A larger depolarization of the sensory ending holds the trigger zone further above threshold, so the next action potential fires sooner after each refractory period."
+  },
+  {
+    "id": "labeled-line",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Why does a blow to the eye make you “see stars”?",
+    "back": "The labeled line principle: the brain reads the modality from which neurons fire, and the vision pathway is firing.",
+    "why": "Action potentials look the same in every sensory neuron; only the pathway they travel on tells the brain what kind of sensation it is."
+  },
+  {
+    "id": "referred-heart",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Why is heart pain often felt in the inner left arm?",
+    "back": "Heart pain axons enter the cord at about T1–T4 and converge on the same dorsal horn neurons as axons from the chest and inner arm skin.",
+    "why": "Those second-order neurons usually report skin, so the brain places the pain in the matching dermatomes: referred pain."
+  },
+  {
+    "id": "fast-vs-slow-pain",
+    "topic": "sensory-pathways",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Stub your toe: why do you feel a sharp jolt first, then a throbbing ache?",
+    "back": "Sharp pain travels on thin myelinated axons; slow, aching pain on thinner unmyelinated axons, which conduct far more slowly.",
+    "why": "The same injury fires both kinds of axon, but the signals arrive at different times."
+  },
+  {
+    "id": "umn-vs-lmn-tone",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Upper vs lower motor neuron signs",
+    "front": "Upper vs lower motor neuron damage: what happens to muscle tone?",
+    "back": "Upper: raised tone, spasticity (after an early floppy phase). Lower: low tone, flaccidity.",
+    "why": "Cutting the lower motor neuron removes the steady firing that makes tone. Upper motor neuron damage releases spinal circuits from the brain’s restraint."
+  },
+  {
+    "id": "umn-vs-lmn-reflexes",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Upper vs lower motor neuron signs",
+    "front": "Upper vs lower motor neuron damage: what happens to the tendon jerks and the plantar response?",
+    "back": "Upper: brisk jerks (hyperreflexia), sometimes clonus, and a Babinski sign. Lower: weak or absent jerks, toes down or no response.",
+    "why": "After upper damage the reflex circuit is intact but undamped; after lower damage its way out to the muscle is gone."
+  },
+  {
+    "id": "umn-vs-lmn-bulk",
+    "topic": "motor-pathways",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Upper vs lower motor neuron signs",
+    "front": "Upper vs lower motor neuron damage: which causes marked wasting and fasciculations?",
+    "back": "Lower motor neuron damage.",
+    "why": "Muscle fibers that lose their nerve supply waste within weeks, and a sick lower motor neuron fires on its own, twitching its whole motor unit."
+  },
+  {
+    "id": "umn-vs-lmn-pattern",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Upper vs lower motor neuron signs",
+    "front": "Upper vs lower motor neuron damage: what pattern of weakness does each give?",
+    "back": "Upper: whole movements over a region, such as one side of the body. Lower: only the muscles supplied by that segment, root or nerve.",
+    "why": "Upper motor neurons command movements; each lower motor neuron supplies particular muscle fibers."
+  },
+  {
+    "id": "umn-vs-lmn-examples",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Upper vs lower motor neuron signs",
+    "front": "Give two causes of upper and two of lower motor neuron damage.",
+    "back": "Upper: loss of blood flow to the motor cortex or internal capsule; multiple sclerosis. Lower: polio; a cut or compressed nerve; Bell’s palsy.",
+    "why": "Upper motor neurons live in the brain and descending tracts; lower motor neurons in the ventral horn, cranial nerve nuclei and the nerves themselves."
+  },
+  {
+    "id": "decussation-rule",
+    "topic": "motor-pathways",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Where does most of the corticospinal tract cross, and what does that mean for the side of weakness?",
+    "back": "At the pyramidal decussation in the lower medulla. Damage above it weakens the opposite side; damage in the cord weakens the same side.",
+    "why": "About 85–90% of the axons cross there and descend in the lateral corticospinal tract."
+  },
+  {
+    "id": "forehead-sparing",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "analyze",
+    "front": "Why does a stroke in the motor cortex droop the opposite lower face but spare the forehead?",
+    "back": "The forehead part of the facial nucleus receives corticobulbar input from both hemispheres; the lower-face part mainly from the opposite one.",
+    "why": "Bell’s palsy, a lower motor neuron lesion, weakens the whole half face, forehead included, because there is no second route."
+  },
+  {
+    "id": "babinski",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "What is the Babinski sign, and what does it mean in an adult?",
+    "back": "Stroking the outer sole makes the big toe extend upward, often with the toes fanning. In an adult it means corticospinal tract damage.",
+    "why": "The normal adult plantar reflex curls the toes down. Infants show the upward toe normally, because their corticospinal axons are not yet fully myelinated."
+  },
+  {
+    "id": "parkinson-vs-huntington",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Parkinson’s vs Huntington’s disease: what fails in the basal nuclei loop, and what is the result?",
+    "back": "Parkinson’s: dopamine neurons die, the brake stays on, movement is slow and stiff. Huntington’s: indirect-pathway neurons die, the brake lifts, unwanted movements break through.",
+    "why": "The globus pallidus output is a constant brake on the thalamus; dopamine favors the “go” pathway that releases it."
+  },
+  {
+    "id": "cerebellar-signs",
+    "topic": "motor-pathways",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Which side of the body shows the signs of damage to one cerebellar hemisphere, and what are they?",
+    "back": "The same side: dysmetria, intention tremor, clumsy rapid alternating movements, with normal strength.",
+    "why": "The cerebellum’s output crosses and the corticospinal tract crosses back, so the two crossings cancel."
+  },
+  {
+    "id": "som-vs-visc-effector",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Somatic vs visceral reflexes",
+    "front": "Somatic vs visceral reflexes: what is the effector of each?",
+    "back": "Somatic: skeletal muscle. Visceral (autonomic): smooth muscle, cardiac muscle or glands.",
+    "why": "Reflexes are sorted by their effector, matching the two parts of the motor division."
+  },
+  {
+    "id": "som-vs-visc-neurons",
+    "topic": "reflexes",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Somatic vs visceral reflexes",
+    "front": "Somatic vs visceral reflexes: how many motor neurons run from the CNS to the effector?",
+    "back": "Somatic: one, myelinated all the way. Visceral: two, synapsing in a ganglion outside the CNS; the second axon is unmyelinated.",
+    "why": "That is why visceral reflexes are slower than somatic ones."
+  },
+  {
+    "id": "som-vs-visc-effect",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Somatic vs visceral reflexes",
+    "front": "Somatic vs visceral reflexes: can each one inhibit its effector?",
+    "back": "A somatic reflex always excites (contracts) its muscle. A visceral reflex can excite or inhibit.",
+    "why": "A motor neuron to skeletal muscle only ever causes contraction; autonomic transmitters can speed or slow their targets."
+  },
+  {
+    "id": "som-vs-visc-examples",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Somatic vs visceral reflexes",
+    "front": "Give an example of a somatic and of a visceral reflex.",
+    "back": "Somatic: the knee jerk, or pulling your foot off a tack. Visceral: the pupils narrowing in bright light, or saliva flowing when you eat.",
+    "why": "The first two act on skeletal muscle; the second two on smooth muscle and glands."
+  },
+  {
+    "id": "arc-parts",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Name the five parts of a reflex arc in order.",
+    "back": "Sensory receptor, sensory neuron, integration center, motor neuron, effector.",
+    "why": "A missing reflex can come from a break in any of the five, which the rest of the exam must sort out."
+  },
+  {
+    "id": "spindle-vs-gto",
+    "topic": "reflexes",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Muscle spindle vs Golgi tendon organ",
+    "front": "Muscle spindle vs Golgi tendon organ: what does each detect?",
+    "back": "Spindle: muscle length and how fast it changes. Tendon organ: muscle tension (force).",
+    "why": "Spindles lie parallel to the muscle fibers and stretch with them; tendon organs lie in series with them and are squeezed when the muscle pulls."
+  },
+  {
+    "id": "spindle-vs-gto-effect",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Muscle spindle vs Golgi tendon organ",
+    "front": "Muscle spindle vs Golgi tendon organ: what does each one’s reflex do to its own muscle?",
+    "back": "The stretch reflex (spindle) excites it, monosynaptically. The tendon reflex (tendon organ) inhibits it, through interneurons.",
+    "why": "Each reflex does the opposite to the antagonist: the stretch reflex inhibits it, the tendon reflex excites it."
+  },
+  {
+    "id": "deep-tendon-misnomer",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Where is the sensor of a “deep tendon reflex”?",
+    "back": "In the muscle: the muscle spindles. Every deep tendon reflex is a stretch reflex.",
+    "why": "The tap stretches the muscle through its tendon, and the spindles respond."
+  },
+  {
+    "id": "reflex-segments",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Which spinal segments does each deep tendon reflex test: biceps, triceps, knee, ankle?",
+    "back": "Biceps C5–C6, triceps C7, knee L3–L4, ankle S1.",
+    "why": "“One, two, buckle my shoe; three, four, kick the door; five, six, pick up sticks; seven, eight, lay them straight.”"
+  },
+  {
+    "id": "stretch-vs-withdrawal",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Stretch reflex vs withdrawal reflex: which is monosynaptic, and which involves the opposite limb?",
+    "back": "The stretch reflex is monosynaptic and one-sided. The withdrawal reflex is polysynaptic and comes with the crossed-extensor reflex in the other limb.",
+    "why": "Interneurons let the withdrawal signal spread over many segments and across the cord."
+  },
+  {
+    "id": "reflex-grades",
+    "topic": "reflexes",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "On the 0 to 4+ scale, what do 0, 2+ and 4+ mean?",
+    "back": "0: absent even with reinforcement. 2+: normal. 4+: very brisk, with clonus.",
+    "why": "Always compare with the same reflex on the other side: symmetry matters more than the number."
+  },
+  {
+    "id": "exam-parts",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "recall",
+    "front": "Name the five parts of the neurological exam and what each tests.",
+    "back": "Mental status (cerebrum), cranial nerves (brainstem and its nerves), sensory (ascending pathways), motor with reflexes (descending pathways, lower motor neurons, muscles), coordination and gait (cerebellum).",
+    "why": "Each part checks a known region, so the pattern of findings points to where the problem is."
+  },
+  {
+    "id": "gcs-ranges",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "recall",
+    "front": "What are the GCS ranges for mild, moderate and severe impairment?",
+    "back": "Mild 13–15, moderate 9–12, severe 8 or less. The total runs from 3 to 15.",
+    "why": "Eye opening (1–4), verbal (1–5) and motor (1–6) are added; always report the parts too."
+  },
+  {
+    "id": "romberg",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "apply",
+    "front": "A person is steady with eyes open but sways with eyes closed. What is lost?",
+    "back": "Position sense from the legs (a positive Romberg test): the dorsal columns or large sensory nerve axons.",
+    "why": "Vision was making up for the missing position sense. Cerebellar damage makes a person unsteady even with eyes open."
+  },
+  {
+    "id": "ischemic-vs-hemorrhagic",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "Ischemic vs hemorrhagic stroke",
+    "front": "Ischemic vs hemorrhagic stroke: cause, share of strokes, and why a scan is needed before treatment.",
+    "back": "Ischemic: a blocked artery, about 85–87%. Hemorrhagic: a burst artery, about 13–15%. Clot-dissolving drugs help one and worsen the other.",
+    "why": "The signs alone cannot tell them apart, so a brain scan comes before any clot-dissolving drug."
+  },
+  {
+    "id": "be-fast",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "recall",
+    "front": "What does BE FAST stand for?",
+    "back": "Balance, Eyes, Face, Arm, Speech, Time.",
+    "why": "Sudden loss of balance or vision, a drooping face, a weak arm or strange speech means a possible stroke: note when the person was last well and call for help at once."
+  },
+  {
+    "id": "tetra-vs-para",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "Tetraplegia vs paraplegia",
+    "front": "Tetraplegia vs paraplegia: level of injury and limbs affected?",
+    "back": "Tetraplegia: cervical cord, all four limbs and the trunk. Paraplegia: thoracic, lumbar or sacral cord, both legs and the trunk below the level; hands normal.",
+    "why": "The arms’ motor neurons sit in the cervical enlargement, so only a cervical injury weakens the hands."
+  },
+  {
+    "id": "pons-crossed",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "Whole-face weakness on the right, with weak, brisk-reflexed left limbs. Where is the lesion?",
+    "back": "The right side of the pons.",
+    "why": "The right facial nucleus (a lower motor neuron) sits beside corticospinal axons that have not yet crossed. Findings on opposite sides of face and body mark a brainstem lesion."
+  },
+  {
+    "id": "sensory-level",
+    "topic": "neuro-exam",
+    "core": [
+      "interdependence"
+    ],
+    "level": "apply",
+    "front": "Pinprick is lost below the navel on both sides, with stiff, weak legs. Where is the damage?",
+    "back": "The spinal cord at about T10.",
+    "why": "A sensory level, a line below which sensation is lost, points to the cord at that dermatome, and the umbilicus is T10."
+  },
+  {
+    "id": "taste-qualities",
+    "topic": "chemical-senses",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Which taste qualities work through ion channels, and which through G protein–coupled receptor proteins?",
+    "back": "Ion channels: salty (Na+) and sour (H+). G protein–coupled receptor proteins: sweet, umami and bitter.",
+    "why": "Salty and sour ions flow straight in and depolarize the cell; the other three need a second messenger cascade."
+  },
+  {
+    "id": "tongue-map",
+    "topic": "chemical-senses",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Is sweet sensed only at the tip of the tongue?",
+    "back": "No. Every region with taste buds detects all five qualities; the “tongue map” is a myth.",
+    "why": "The map came from a misreading of small differences in sensitivity. A single taste bud usually holds cells for several qualities."
+  },
+  {
+    "id": "taste-nerves",
+    "topic": "chemical-senses",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Which cranial nerves carry taste, and from where?",
+    "back": "VII (facial) from the front two-thirds of the tongue, IX (glossopharyngeal) from the back third, X (vagus) from the throat and epiglottis.",
+    "why": "All three deliver taste to one nucleus in the medulla oblongata, which relays through the thalamus to the insula."
+  },
+  {
+    "id": "taste-vs-smell-cells",
+    "topic": "chemical-senses",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Taste cells vs olfactory sensory neurons: which are neurons?",
+    "back": "Olfactory sensory neurons are neurons (bipolar) with their own axons. Taste cells are epithelial cells that pass the signal to a sensory neuron.",
+    "why": "Both are replaced from basal stem cells throughout life."
+  },
+  {
+    "id": "smell-no-thalamus",
+    "topic": "chemical-senses",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "What is unusual about the route smell takes to the cortex?",
+    "back": "It reaches the olfactory cortex without first relaying in the thalamus, and it links directly with the limbic system.",
+    "why": "That tight link to the amygdala and hippocampal areas is why a smell can bring back a memory so vividly."
+  },
+  {
+    "id": "cold-flavor",
+    "topic": "chemical-senses",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Why does food taste flat when a cold blocks your nose?",
+    "back": "Most flavor is smell. Odorants cannot reach the olfactory epithelium, but the taste buds still work.",
+    "why": "People with a blocked nose can still tell sweet from salty; they have lost the smell part of flavor."
+  },
+  {
+    "id": "rods-vs-cones-light",
+    "topic": "vision",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Rods vs cones",
+    "front": "Rods vs cones: which works in dim light, and which gives color?",
+    "back": "Rods work in dim light (night vision, no color). Cones need bright light and give color and fine detail.",
+    "why": "Rods have one pigment, rhodopsin; cones have three kinds of pigment, one per cone type."
+  },
+  {
+    "id": "rods-vs-cones-where",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Rods vs cones",
+    "front": "Rods vs cones: where on the retina is each concentrated?",
+    "back": "Cones in the fovea (which has only cones); rods outside it, densest in a ring about 20 degrees out.",
+    "why": "That is why you see a faint star better by looking slightly to one side of it."
+  },
+  {
+    "id": "rods-vs-cones-convergence",
+    "topic": "vision",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "analyze",
+    "compare": "Rods vs cones",
+    "front": "Rods vs cones: why are rods more sensitive but give less detail?",
+    "back": "Many rods converge on one ganglion cell, so their small signals add up; a foveal cone has its own bipolar and ganglion cell.",
+    "why": "Pooled rod signals can fire a ganglion cell in faint light, but the brain cannot tell which rod caught the light."
+  },
+  {
+    "id": "rods-vs-cones-number",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Rods vs cones",
+    "front": "Rods vs cones: roughly how many of each are in one retina?",
+    "back": "About 90 million rods and about 4.5 million cones.",
+    "why": "Older texts give 120 million and 6 million; the ratio, about 20 rods per cone, is the same."
+  },
+  {
+    "id": "myopia-card",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Myopia vs hyperopia vs presbyopia",
+    "front": "Myopia: cause, what blurs, and the correcting lens?",
+    "back": "Eyeball too long (or cornea too curved); distant objects blur; corrected with a concave (diverging) lens.",
+    "why": "Distant light focuses in front of the retina. A diverging lens spreads the rays so the focus moves back onto the retina."
+  },
+  {
+    "id": "hyperopia-card",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Myopia vs hyperopia vs presbyopia",
+    "front": "Hyperopia: cause, what blurs, and the correcting lens?",
+    "back": "Eyeball too short (or cornea too flat); near objects blur first; corrected with a convex (converging) lens.",
+    "why": "Light would focus behind the retina. A young person can accommodate to make up for it, which strains the eyes."
+  },
+  {
+    "id": "presbyopia-card",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Myopia vs hyperopia vs presbyopia",
+    "front": "Presbyopia: cause, when it starts, and the correcting lens?",
+    "back": "The lens stiffens and cannot round up; from the mid-40s; convex lenses for near work only.",
+    "why": "Distant vision is unaffected because far focus needs no rounding up."
+  },
+  {
+    "id": "accommodation-steps",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "For near vision, what do the ciliary muscle, the zonule fibers and the lens each do?",
+    "back": "The ciliary muscle contracts, the zonule fibers go slack, and the lens rounds up.",
+    "why": "The ciliary muscle is a ring: contracting shrinks it toward the lens, releasing the tension that held the lens flat."
+  },
+  {
+    "id": "cornea-vs-lens",
+    "topic": "vision",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "Which does most of the eye’s bending of light, and which can change its bending?",
+    "back": "The cornea does about two thirds, at a fixed power; the lens does the rest and is the only part that can change.",
+    "why": "The jump from air into the cornea is the largest change in the light’s path."
+  },
+  {
+    "id": "field-lesions",
+    "topic": "vision",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "analyze",
+    "front": "Where is the damage in bitemporal hemianopia, and in a homonymous hemianopia?",
+    "back": "Bitemporal: the middle of the optic chiasm (often a pituitary tumor). Homonymous: one optic tract, optic radiation or visual cortex.",
+    "why": "The chiasm’s crossing fibers carry both outer fields; everything behind the chiasm carries the opposite half of the field from both eyes."
+  },
+  {
+    "id": "dark-current",
+    "topic": "vision",
+    "core": [
+      "communication"
+    ],
+    "level": "analyze",
+    "front": "In the dark, is a rod depolarized or hyperpolarized, and what does light do?",
+    "back": "Depolarized (about −40 mV) by the dark current, releasing glutamate steadily. Light hyperpolarizes it and cuts glutamate release.",
+    "why": "Light activates transducin, which lowers cGMP, so the cGMP-held cation channels close."
+  },
+  {
+    "id": "pupil-afferent-efferent",
+    "topic": "vision",
+    "core": [
+      "communication"
+    ],
+    "level": "analyze",
+    "front": "Light in either eye narrows only the left pupil; the right stays wide. Afferent or efferent damage, and where?",
+    "back": "Efferent: the right oculomotor nerve.",
+    "why": "The signal gets in from both eyes and the midbrain drives both sides, but the right pupil’s command cannot get out."
+  },
+  {
+    "id": "cochlea-vs-vestibular-sense",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Cochlea vs vestibular apparatus",
+    "front": "Cochlea vs vestibular apparatus: what does each sense?",
+    "back": "Cochlea: hearing. Vestibular apparatus: tilt and straight-line movement (utricle and saccule) and turning (semicircular canals).",
+    "why": "Both use hair cells and send signals in cranial nerve VIII, the cochlear and vestibular branches."
+  },
+  {
+    "id": "cochlea-vs-vestibular-gel",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Cochlea vs vestibular apparatus",
+    "front": "Cochlea vs vestibular apparatus: what do the stereocilia touch, and what bends them?",
+    "back": "Cochlea: the tectorial membrane, bent by basilar membrane vibration. Maculae: the otolithic membrane, bent by gravity and lagging gel. Canals: the cupula, bent by lagging endolymph.",
+    "why": "The otoliths make the maculae’s gel heavy, so gravity pulls it; the cupula has no crystals, so it senses only turning."
+  },
+  {
+    "id": "cochlea-vs-vestibular-relay",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Cochlea vs vestibular apparatus",
+    "front": "Cochlea vs vestibular apparatus: where is the first brain relay for each?",
+    "back": "Cochlea: the cochlear nuclei. Vestibular apparatus: the vestibular nuclei. Both are in the brainstem.",
+    "why": "Vestibular signals then go to the cerebellum, the spinal cord, the eye movement nuclei and the cortex."
+  },
+  {
+    "id": "place-coding",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Which end of the basilar membrane responds to high notes, and why?",
+    "back": "The base, near the oval window, where the membrane is narrow and stiff. The wide, floppy apex responds to low notes.",
+    "why": "Each sound’s traveling wave peaks at the place tuned to its frequency; which hair cells fire tells the brain the pitch."
+  },
+  {
+    "id": "conductive-vs-sensorineural",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Conductive vs sensorineural hearing loss",
+    "front": "Conductive vs sensorineural hearing loss: where is the problem in each?",
+    "back": "Conductive: the external or middle ear (wax, fluid, a torn eardrum, a fused stapes). Sensorineural: the cochlea (usually hair cells) or the cochlear nerve.",
+    "why": "Conductive loss blocks delivery of sound; sensorineural loss blocks conversion or transmission."
+  },
+  {
+    "id": "weber-rinne",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "analyze",
+    "compare": "Conductive vs sensorineural hearing loss",
+    "front": "Conductive vs sensorineural loss in the left ear: where is the Weber fork heard, and what does the left Rinne test show?",
+    "back": "Conductive: Weber louder on the left; Rinne bone better than air. Sensorineural: Weber louder on the right; Rinne air better than bone, both faint.",
+    "why": "Bone conduction bypasses the external and middle ear, so it stays normal in a conductive loss but falls with a damaged cochlea or nerve."
+  },
+  {
+    "id": "k-into-hair-cell",
+    "topic": "hearing-balance",
+    "core": [
+      "gradients",
+      "communication"
+    ],
+    "level": "analyze",
+    "front": "Why does opening channels in a hair cell’s stereocilia let K+ flow in, not out?",
+    "back": "The stereocilia stand in endolymph, which is K+-rich and about 80 mV positive, so both gradients push K+ into the cell.",
+    "why": "What matters is the gradient across that membrane, not the ion’s usual direction."
+  },
+  {
+    "id": "middle-ear-boost",
+    "topic": "hearing-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "How does the middle ear raise the pressure of sound about 20-fold?",
+    "back": "The eardrum is about 17–20 times the area of the stapes footplate, and the ossicles add a little lever force.",
+    "why": "Pressure is force divided by area, so concentrating the eardrum’s force on the small oval window raises the pressure."
+  },
+  {
+    "id": "vor",
+    "topic": "hearing-balance",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Why do words stay clear when you shake your head, but blur when you shake the page?",
+    "back": "The vestibulo-ocular reflex: the semicircular canals signal the head’s turn, and the eyes turn the same amount the opposite way within about 10 ms.",
+    "why": "When the page moves instead, there is no head movement to drive the reflex."
+  },
+  {
+    "id": "symp-vs-para-origin",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Sympathetic vs parasympathetic",
+    "front": "Sympathetic vs parasympathetic: where do the preganglionic neurons sit?",
+    "back": "Sympathetic: lateral horn of T1–L2 (thoracolumbar). Parasympathetic: brainstem nuclei (with nerves III, VII, IX, X) and sacral cord S2–S4 (craniosacral).",
+    "why": "Sympathetic fibers reach every level through the chain, but they leave the CNS only from T1–L2."
+  },
+  {
+    "id": "symp-vs-para-ganglia",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Sympathetic vs parasympathetic",
+    "front": "Sympathetic vs parasympathetic: where are the ganglia, and which fiber is long?",
+    "back": "Sympathetic: chain and collateral ganglia near the cord; short preganglionic, long postganglionic. Parasympathetic: terminal and intramural ganglia at the organ; long preganglionic, short postganglionic.",
+    "why": "Where the ganglion sits decides which fiber has to cover the distance to the organ."
+  },
+  {
+    "id": "symp-vs-para-spread",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Sympathetic vs parasympathetic",
+    "front": "Sympathetic vs parasympathetic: why is sympathetic output widespread and parasympathetic output local?",
+    "back": "Each sympathetic preganglionic neuron diverges to many postganglionic neurons, and the adrenal medulla adds a hormone; each parasympathetic one reaches only a few, near one organ.",
+    "why": "So a single sympathetic burst reaches many organs at once, while the stomach can be stimulated without the pupils narrowing."
+  },
+  {
+    "id": "symp-vs-para-reach",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Sympathetic vs parasympathetic",
+    "front": "Sympathetic vs parasympathetic: which reaches the skin, the limbs and most blood vessels?",
+    "back": "Only the sympathetic division, through the gray rami and the spinal nerves.",
+    "why": "Parasympathetic fibers have no chain and do not travel in the gray rami, so they supply only the head and the organs of the chest, abdomen and pelvis."
+  },
+  {
+    "id": "somatic-vs-autonomic-neurons",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Somatic vs autonomic motor pathways",
+    "front": "Somatic vs autonomic motor pathways: how many neurons, and which effectors?",
+    "back": "Somatic: one neuron to skeletal muscle. Autonomic: two neurons, meeting in a ganglion, to cardiac muscle, smooth muscle and glands.",
+    "why": "Every autonomic signal changes neurons in a ganglion outside the CNS."
+  },
+  {
+    "id": "somatic-vs-autonomic-cut",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "compare": "Somatic vs autonomic motor pathways",
+    "front": "Somatic vs autonomic motor pathways: what happens to the effector if its nerve is cut?",
+    "back": "Somatic: the skeletal muscle is paralyzed and wastes away. Autonomic: the effector keeps working on its own; the heart keeps beating and the gut keeps moving.",
+    "why": "Autonomic nerves adjust effectors that have their own activity; skeletal muscle contracts only on command."
+  },
+  {
+    "id": "somatic-vs-autonomic-ending",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Somatic vs autonomic motor pathways",
+    "front": "Somatic vs autonomic motor pathways: how does each axon end on its effector?",
+    "back": "Somatic: one neuromuscular junction per muscle fiber. Autonomic: varicosities strung along the axon, releasing transmitter onto many cells.",
+    "why": "Transmitter from a varicosity spreads to many nearby smooth muscle cells."
+  },
+  {
+    "id": "white-vs-gray-rami",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "White vs gray rami communicantes: what fibers does each carry, and at which levels?",
+    "back": "White: myelinated preganglionic fibers into the chain, only at T1–L2. Gray: unmyelinated postganglionic fibers back to the spinal nerve, at every level.",
+    "why": "The colors come from myelin: white rami look white because their fibers are myelinated."
+  },
+  {
+    "id": "chain-routes",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "front": "What are the three routes a preganglionic fiber can take through the sympathetic chain?",
+    "back": "Synapse at its own level; climb or descend and synapse at another level; or pass through without synapsing, in a splanchnic nerve, to a collateral ganglion.",
+    "why": "Climbing the chain is how the head and neck get sympathetic supply from T1 and below."
+  },
+  {
+    "id": "adrenal-medulla-card",
+    "topic": "ans-anatomy",
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Why does the adrenal medulla count as part of the sympathetic division?",
+    "back": "Its chromaffin cells are stimulated directly by preganglionic fibers and come from the same tissue as postganglionic neurons, but release epinephrine into the blood.",
+    "why": "It behaves like a sympathetic ganglion whose “postganglionic” cells have no axons."
+  },
+  {
+    "id": "nicotinic-vs-muscarinic",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Nicotinic vs muscarinic receptor proteins",
+    "front": "Nicotinic vs muscarinic receptor proteins: where is each in the autonomic system?",
+    "back": "Nicotinic: on all postganglionic neurons of both divisions and on adrenal chromaffin cells. Muscarinic: on all parasympathetic targets and on eccrine sweat glands.",
+    "why": "Every preganglionic neuron releases ACh onto nicotinic receptor proteins; parasympathetic postganglionic neurons release it onto muscarinic ones."
+  },
+  {
+    "id": "nicotinic-vs-muscarinic-type",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Nicotinic vs muscarinic receptor proteins",
+    "front": "Nicotinic vs muscarinic receptor proteins: which is ionotropic, and which can inhibit?",
+    "back": "Nicotinic: ionotropic, fast and always excitatory. Muscarinic: metabotropic (G protein–coupled), slower, excitatory or inhibitory by subtype.",
+    "why": "A ligand-gated channel can only open; a G protein can open or close channels and change second messengers."
+  },
+  {
+    "id": "alpha1-card",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "What does alpha-1 activation usually do? Give examples.",
+    "back": "Smooth muscle contracts: small arteries of skin, gut and kidneys constrict, the pupil widens (dilator contracts), sphincters tighten, hair stands up.",
+    "why": "Alpha-1 receptor proteins raise calcium inside smooth muscle cells."
+  },
+  {
+    "id": "beta1-card",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "What does beta-1 activation do?",
+    "back": "The heart: faster rate and stronger contractions.",
+    "why": "Beta-1 raises cyclic AMP; in pacemaker tissue that brings threshold sooner, and in heart muscle it lets more calcium in."
+  },
+  {
+    "id": "beta2-card",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "What does beta-2 activation do, and what mainly activates it?",
+    "back": "Smooth muscle relaxes (small airways widen) and the liver releases glucose. Mainly circulating epinephrine, since NE binds beta-2 weakly.",
+    "why": "Most beta-2 receptor proteins are not reached by sympathetic varicosities."
+  },
+  {
+    "id": "alpha2-card",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "What do alpha-2 receptor proteins on an adrenergic varicosity do?",
+    "back": "NE binding them cuts further NE release: local negative feedback.",
+    "why": "Alpha-2 receptor proteins lower cyclic AMP; in the brainstem they reduce sympathetic output as a whole, which is how clonidine lowers blood pressure."
+  },
+  {
+    "id": "muscle-arterioles",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "analyze",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "How do sympathetic nerves and circulating epinephrine each act on small arteries in resting skeletal muscle?",
+    "back": "Sympathetic nerves constrict them (NE on alpha-1); low levels of circulating epinephrine dilate them (beta-2).",
+    "why": "Alpha-1 and beta-2 pull in opposite directions; which wins depends on whether NE or epinephrine is binding. In working muscle, chemicals released by the muscle itself override the constriction."
+  },
+  {
+    "id": "sweat-oddity",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "What transmitter and receptor protein drive eccrine sweat glands?",
+    "back": "ACh on muscarinic receptor proteins, released by sympathetic postganglionic fibers.",
+    "why": "Sweating is the famous exception: a sympathetic response carried by a cholinergic neuron, which is why atropine dries the skin."
+  },
+  {
+    "id": "bladder-card",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "What does each division do to the bladder wall and its outlet, and through which receptor proteins?",
+    "back": "Sympathetic: the wall relaxes (mainly beta-3) and the outlet tightens (alpha-1). Parasympathetic: the wall contracts (muscarinic) and the outlet relaxes (mainly nitric oxide).",
+    "why": "So parasympathetic activity empties the bladder and sympathetic activity puts emptying off."
+  },
+  {
+    "id": "saliva-both",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Autonomic receptor proteins and their effects",
+    "front": "How do the two divisions each change saliva?",
+    "back": "Parasympathetic: a large volume of watery saliva (muscarinic). Sympathetic: a small volume of thick, protein-rich saliva (mainly beta-1).",
+    "why": "Both increase secretion, which is why a nervous mouth feels dry and sticky rather than simply dry."
+  },
+  {
+    "id": "ne-vs-epi",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Norepinephrine vs epinephrine",
+    "front": "Norepinephrine vs epinephrine: source, how each acts, and how each signal ends?",
+    "back": "NE: sympathetic varicosities, a neurotransmitter, ended by reuptake in about a second. Epinephrine: the adrenal medulla, a hormone, cleared from the blood over minutes.",
+    "why": "That is why the effects of a fright outlast the nerve activity."
+  },
+  {
+    "id": "atropine-card",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Atropine blocks muscarinic receptor proteins. What are its main effects?",
+    "back": "Faster heart rate, wide pupils, dry mouth, dry skin, slowed gut and difficulty emptying the bladder.",
+    "why": "Every one is a parasympathetic (or sweat gland) effect removed. It leaves skeletal muscle alone, because the neuromuscular junction uses nicotinic receptor proteins."
+  },
+  {
+    "id": "drug-words",
+    "topic": "ans-signaling",
+    "core": [
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Agonist vs antagonist?",
+    "back": "An agonist binds and activates a receptor protein; an antagonist binds without activating it, blocking the natural transmitter.",
+    "why": "The response belongs to the receptor protein, so a drug that binds one class reproduces or blocks one slice of autonomic control."
+  },
+  {
+    "id": "vagal-vs-symp-tone",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "level": "apply",
+    "compare": "Vagal tone vs sympathetic tone",
+    "front": "Vagal tone vs sympathetic tone: the best example of each, and what happens if it is removed?",
+    "back": "Vagal tone holds the resting heart rate 20–40 beats below its own rate; removing it (atropine, transplant) raises the rate. Sympathetic tone keeps most vessels partly constricted; removing it widens them and blood pressure falls.",
+    "why": "Because some tone is always present, one division can turn an effector both up and down."
+  },
+  {
+    "id": "dual-innervation-card",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "front": "Which effectors receive only sympathetic fibers, and how are they turned down?",
+    "back": "Most blood vessels, sweat glands, arrector pili muscles and the adrenal medulla. They are turned down by reducing sympathetic tone.",
+    "why": "With no opposing division, less firing lets the effector relax below its resting level."
+  },
+  {
+    "id": "symp-vs-para-activation",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "level": "recall",
+    "compare": "Sympathetic vs parasympathetic activation",
+    "front": "Sympathetic vs parasympathetic activation: heart, airways, pupils, gut?",
+    "back": "Sympathetic: heart faster and stronger, airways wider, pupils wider, gut slower. Parasympathetic: heart slower, airways narrower, pupils narrower, gut faster.",
+    "why": "The two divisions usually act in opposite directions on the same organs: dual innervation."
+  },
+  {
+    "id": "working-muscle-flow",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "analyze",
+    "compare": "Sympathetic vs parasympathetic activation",
+    "front": "During exercise, sympathetic output constricts vessels in the skin and gut. Why do vessels in working muscle widen instead?",
+    "back": "Chemicals released by the working muscle override the sympathetic constriction, with some help from circulating epinephrine on beta-2.",
+    "why": "Sympathetic nerves themselves constrict skeletal muscle vessels through alpha-1; the local chemicals win in active muscle, shifting blood toward it."
+  },
+  {
+    "id": "skin-heat",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "analyze",
+    "front": "How does heat widen skin vessels on the palms compared with most other skin?",
+    "back": "Palms, soles and lips: mainly by withdrawing sympathetic tone. Most other (hairy) skin: mainly by an active route, sympathetic cholinergic fibers releasing vasodilating signals.",
+    "why": "Human studies show the active route provides most of the rise in blood flow in hairy skin; many textbooks describe only withdrawal of tone."
+  },
+  {
+    "id": "fright-duration",
+    "topic": "ans-control",
+    "core": [
+      "communication"
+    ],
+    "level": "apply",
+    "front": "Why do your heart and hands keep racing and shaking for minutes after a fright has passed?",
+    "back": "Epinephrine from the adrenal medulla keeps circulating for a few minutes after sympathetic firing has fallen back to its resting tone.",
+    "why": "Nerve signals end within seconds; a hormone in the blood lasts until it is cleared."
+  },
+  {
+    "id": "ans-hierarchy",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "level": "recall",
+    "front": "Which levels of the CNS control the autonomic system, from lowest to highest?",
+    "back": "Spinal cord (simple visceral reflexes), brainstem (main reflex centers), hypothalamus (master integrator), limbic system and cortex (emotions and thoughts).",
+    "why": "Higher levels act through lower ones, so fear, embarrassment or the sight of blood can change heart rate and vessels."
+  },
+  {
+    "id": "standing-reflex",
+    "topic": "ans-control",
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "level": "apply",
+    "front": "You stand up quickly and arterial pressure dips. What does the medulla oblongata change?",
+    "back": "It reduces vagal output and increases sympathetic output: the heart speeds up and strengthens, and vessels constrict.",
+    "why": "Stretch-sensitive sensory receptors in the large arteries fire less when the pressure falls, and the reflex restores it by negative feedback."
   }
  ]
 }

@@ -1,0 +1,93 @@
+{
+  "topic": "hypothalamus-pituitary",
+  "hook": "<p>Mr. Adeyemi, 42, visits his dentist because his lower teeth no longer meet his upper ones. His wedding ring stopped fitting years ago and his shoes keep getting bigger. A scan finds a benign tumor about a centimeter across in the pituitary gland, in a hollow of the skull just under his brain. It is releasing far too much growth hormone. One pea-sized gland, controlled by the hypothalamus above it, sets the level of hormones that act all over his body.</p>",
+  "prereq": [
+    {
+      "q": "Where is the hypothalamus?",
+      "options": [
+        "In the diencephalon, below the thalamus",
+        "In the brainstem, below the pons",
+        "In the cerebellum, behind the brainstem"
+      ],
+      "correct": 0,
+      "why": "The hypothalamus is part of the diencephalon, lying below the thalamus and forming the floor of the brain's center. The pituitary gland hangs from its underside.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "Which statement describes negative feedback?",
+      "options": [
+        "The response pushes the variable further from its set point",
+        "The response reverses the change and returns the variable toward its set point",
+        "The response has no effect on the variable"
+      ],
+      "correct": 1,
+      "why": "In negative feedback, the effector's response opposes the change that triggered it, bringing the variable back toward its set point.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "What happens to a cell placed in a solution with a higher osmolarity than its cytoplasm?",
+      "options": [
+        "Water enters and the cell swells",
+        "Water leaves and the cell shrinks",
+        "Nothing: water does not cross membranes"
+      ],
+      "correct": 1,
+      "why": "Water moves toward the side with more dissolved solute. A more concentrated outside solution pulls water out of the cell, and it shrinks.",
+      "review": "water-solutions"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-17-7",
+    "caption": "The hypothalamus, the infundibulum and the two lobes of the pituitary gland. Hide the labels and name the stalk and each lobe."
+  },
+  "chain": [
+    {
+      "cause": "Salt absorbed from a salty meal raises plasma osmolarity.",
+      "effect": "Osmoreceptors in the hypothalamus lose water, shrink and fire faster."
+    },
+    {
+      "cause": "The osmoreceptors excite the ADH-making neurons of the hypothalamus.",
+      "effect": "Action potentials run down their axons through the infundibulum, and the axon terminals in the posterior pituitary release ADH into the blood."
+    },
+    {
+      "cause": "ADH binds receptor proteins on cells in the last stretch of the kidney's tubules.",
+      "effect": "Through cAMP, the cells insert aquaporins into their membranes."
+    },
+    {
+      "cause": "More water moves out of the urine and back into the blood.",
+      "effect": "Urine volume falls, and the kept water, together with water drunk in response to thirst, dilutes the plasma back toward its set point."
+    },
+    {
+      "cause": "Plasma osmolarity falls back to normal.",
+      "effect": "The osmoreceptors fire less, and ADH release and thirst shut off: negative feedback."
+    }
+  ],
+  "misconception": {
+    "wrong": "The pituitary gland is the master gland that runs the endocrine system on its own, and its posterior lobe makes ADH and oxytocin.",
+    "right": "The hypothalamus controls the pituitary gland. It drives the anterior lobe with releasing and inhibiting hormones sent through the hypophyseal portal system, and its own neurons make ADH and oxytocin. The posterior lobe only stores those two hormones in axon terminals and releases them when the hypothalamic neurons fire. Feedback from the target glands then acts on both the hypothalamus and the pituitary."
+  },
+  "check": [
+    "anp-hypothalamus-pituitary-4",
+    "anp-hypothalamus-pituitary-5",
+    "anp-hypothalamus-pituitary-6",
+    "anp-hypothalamus-pituitary-8",
+    "anp-hypothalamus-pituitary-9",
+    "anp-hypothalamus-pituitary-11",
+    "anp-hypothalamus-pituitary-15"
+  ],
+  "summary": "<p>The pituitary gland hangs from the hypothalamus by the infundibulum. The posterior pituitary is nervous tissue: hypothalamic neurons make ADH and oxytocin, send them down their axons and release them from terminals in the posterior lobe. The anterior pituitary is glandular: the hypothalamus controls it with releasing hormones (TRH, CRH, GnRH, GHRH) and inhibiting hormones (somatostatin, dopamine) carried through the hypophyseal portal system. It releases GH and the tropic hormones TSH, ACTH, FSH and LH, plus prolactin. GH drives growth mostly through IGF-1 and shifts fuel use toward fat. Osmoreceptors sense rising plasma osmolarity and drive thirst and ADH, which makes the kidneys keep water; oxytocin strengthens labor contractions by positive feedback and moves milk out of the breast. Each hypothalamic–pituitary axis is held steady by long-loop feedback from the target gland's hormone. Excess GH causes gigantism or acromegaly; too little ADH causes diabetes insipidus, and too much causes SIADH.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-6",
+      "label": "NREMT: Anatomy and physiology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-36",
+      "label": "NREMT: Obstetric and gynecologic emergencies"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-33",
+      "label": "NREMT: Trauma to the head, neck and spine"
+    }
+  ]
+}

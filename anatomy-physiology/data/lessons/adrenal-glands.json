@@ -1,0 +1,47 @@
+{
+  "topic": "adrenal-glands",
+  "hook": "<p>Mr. Adeyemi, 60, took prednisone for eight months for a lung condition. When the prescription ran out, he simply stopped. Five days later he is in the emergency department, dizzy, vomiting and confused, with a blood pressure of 78/44 and a blood glucose of 52 mg/dL. Nothing is wrong with his heart or his pancreas. His adrenal cortex has forgotten how to make cortisol.</p>",
+  "prereq": [
+    {
+      "q": "What stimulates the adrenal medulla to release epinephrine?",
+      "options": ["ACTH from the anterior pituitary", "Sympathetic preganglionic fibers releasing acetylcholine", "Low blood potassium"],
+      "correct": 1,
+      "why": "The adrenal medulla behaves like a sympathetic ganglion: preganglionic fibers release acetylcholine onto its chromaffin cells, which release epinephrine into the blood.",
+      "review": "ans-anatomy"
+    },
+    {
+      "q": "How does a steroid hormone change what a target cell does?",
+      "options": ["It binds a membrane receptor protein and raises cyclic AMP within seconds", "It crosses the plasma membrane, binds an intracellular receptor protein and changes which genes are transcribed", "It opens ion channels directly"],
+      "correct": 1,
+      "why": "Steroids are lipid-soluble. They diffuse into the cell, bind an intracellular receptor protein, and the complex acts on DNA, so the cell makes different proteins over hours.",
+      "review": "hormone-action"
+    },
+    {
+      "q": "In a hypothalamic–pituitary axis, what usually stops the hypothalamus and pituitary from overdriving the target gland?",
+      "options": ["The final hormone from the target gland feeds back and inhibits them", "The target gland runs out of hormone", "Nerves from the target gland signal the pituitary directly"],
+      "correct": 0,
+      "why": "Long-loop negative feedback: the target gland's hormone travels back in the blood and inhibits both the releasing hormone and the tropic hormone.",
+      "review": "hypothalamus-pituitary"
+    }
+  ],
+  "anatomy": {
+    "figure": "adrenal-zones",
+    "caption": "An adrenal gland on its kidney, and a slice from the capsule to the medulla. Name each layer of the cortex and the hormone it makes."
+  },
+  "chain": [
+    { "cause": "Stress, or the early-morning rise of the daily rhythm, acts on the hypothalamus.", "effect": "The hypothalamus releases CRH into the hypophyseal portal system." },
+    { "cause": "CRH reaches the anterior pituitary.", "effect": "The anterior pituitary releases ACTH into the blood." },
+    { "cause": "ACTH binds receptor proteins on cells of the zona fasciculata.", "effect": "They make cortisol from cholesterol and release it at once." },
+    { "cause": "Cortisol enters target cells and binds intracellular receptor proteins.", "effect": "Gluconeogenesis rises, muscle protein is broken down, inflammation is damped and vessels respond fully to sympathetic signals." },
+    { "cause": "Cortisol rises in the blood.", "effect": "It inhibits CRH and ACTH release (long-loop negative feedback), so cortisol settles back." }
+  ],
+  "misconception": {
+    "wrong": "Epinephrine and cortisol come from the same part of the adrenal gland, and both act within seconds.",
+    "right": "They come from two different tissues. Epinephrine is an amine from the medulla, released within seconds when sympathetic preganglionic fibers fire; it acts through membrane receptor proteins and fades within minutes. Cortisol is a steroid from the zona fasciculata of the cortex, released when ACTH arrives; it acts by changing gene expression, so its effects take hours to build and last much longer."
+  },
+  "check": ["anp-adrenal-glands-2", "anp-adrenal-glands-3", "anp-adrenal-glands-6", "anp-adrenal-glands-8", "anp-adrenal-glands-10", "anp-adrenal-glands-12", "anp-adrenal-glands-13", "anp-adrenal-glands-16"],
+  "summary": "<p>Each adrenal gland is two glands. The cortex makes steroids from cholesterol in three zones: the zona glomerulosa makes aldosterone, the zona fasciculata makes cortisol, and the zona reticularis makes adrenal androgens such as DHEA. The medulla releases epinephrine. Aldosterone, released when potassium rises or angiotensin II arrives, makes the kidney keep sodium and water and excrete potassium. In the renin–angiotensin–aldosterone system, renin from the kidney turns angiotensinogen into angiotensin I, and ACE turns that into angiotensin II. Cortisol is controlled by CRH and ACTH with negative feedback; it raises blood glucose, damps inflammation and keeps vessels responsive. Epinephrine carries the alarm reaction of the stress response, and cortisol the stage of resistance. Addison disease (cortex destroyed) brings low cortisol and aldosterone with darker skin; Cushing syndrome (glucocorticoid excess, usually from medication) brings central fat, thin skin and high glucose. Glucocorticoid drugs are tapered, because they shut down the axis.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" }
+  ]
+}

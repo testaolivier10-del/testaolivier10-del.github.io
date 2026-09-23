@@ -1,0 +1,12 @@
+{
+  "adrenal-zones": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 660,
+    "h": 470,
+    "alt": "Left: a kidney with the adrenal gland sitting on its upper end like a cap; a box marks the slice enlarged on the right. Right: a slice through the adrenal gland from its surface at the top to its center at the bottom. A thin connective tissue capsule covers the surface. Under it, the cortex has three layers: a thin zona glomerulosa of cells in rounded clusters, labeled aldosterone; a thick zona fasciculata of cells in straight columns, labeled cortisol; and a zona reticularis of cells in a branching network, labeled androgens (DHEA). At the center is the medulla, with larger round cells around a blood vessel, labeled epinephrine and norepinephrine.",
+    "labels": []
+  }
+}

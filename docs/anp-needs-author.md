@@ -194,6 +194,54 @@ review by a licensed A&P instructor.
 - **For your exam:** many texts and airway courses say a child's airway is funnel-shaped and
   narrowest at the cricoid. Decide whether a For your exam note is wanted.
 
+### trigger-zone: where action potentials start
+- **Status:** pending review.
+- **Where:** `neurons-glia`, `action-potential`, `synapses`.
+- **Evidence-based position:** action potentials start in the axon initial segment, just beyond the axon hillock, where voltage-gated sodium channels are densest (about 50 times the dendrites). The course teaches the initial segment as the trigger zone.
+- **For your exam:** many texts and exams name the axon hillock. If a question offers only "axon hillock", choose it.
+
+### ssri-serotonin: how SSRIs help depression
+- **Status:** pending review.
+- **Where:** `synapses`.
+- **Evidence-based position:** SSRIs block serotonin reuptake and raise synaptic serotonin within hours, but the benefit takes weeks. The simple "depression is low serotonin" model is not supported by current evidence (Moncrieff 2022), and how SSRIs help is still being worked out.
+- **For your exam:** many nursing and TEAS materials link depression to low serotonin and say SSRIs work by raising it.
+
+### csf-outflow: where cerebrospinal fluid leaves
+- **Status:** pending review.
+- **Where:** `brain-protection`, lab practical (arachnoid granulations).
+- **Evidence-based position:** CSF leaves by several routes: arachnoid granulations into the venous sinuses, along nerve sheaths (notably through the cribriform plate) to lymph nodes in the neck, and into lymphatic vessels in the dura. How much each carries in adult humans is not settled. The glymphatic system is not taught.
+- **For your exam:** CSF is reabsorbed into venous blood through the arachnoid granulations in the superior sagittal sinus.
+
+### remote-memory-hippocampus: do old memories need the hippocampus?
+- **Status:** pending review.
+- **Where:** `higher-functions`, predict (hippocampi removed).
+- **Evidence-based position:** the hippocampus is needed to form new declarative memories. Old general knowledge becomes independent of it; whether vivid personal episodes ever do is debated (standard consolidation vs multiple-trace theories). H.M. kept old general knowledge but could re-experience few detailed personal episodes.
+- **For your exam:** H.M. could not form new memories but kept his old ones; long-term memories are stored in the cortex.
+
+### language-model: Broca, Wernicke and the arcuate fasciculus
+- **Status:** pending review.
+- **Where:** `higher-functions`.
+- **Evidence-based position:** language depends on distributed frontal, temporal and parietal networks linked by dorsal and ventral white-matter streams. Damage limited to Broca's area often causes a milder, transient deficit. The classic model is taught as a simplification that still predicts the main clinical patterns, with the network caveat.
+- **For your exam:** Broca's area = expressive aphasia, Wernicke's area = receptive aphasia, arcuate fasciculus = conduction aphasia.
+
+### working-memory-capacity: how many items
+- **Status:** pending review.
+- **Where:** `higher-functions`.
+- **Evidence-based position:** when rehearsal and chunking are prevented, working memory holds about 3 to 5 chunks (Cowan).
+- **For your exam:** 7 plus or minus 2 items (Miller 1956).
+
+### sleep-staging: N1–N3 or stages 1–4
+- **Status:** pending review.
+- **Where:** `higher-functions`.
+- **Evidence-based position:** since 2007 the AASM scores N1, N2 and N3 (slow-wave sleep) plus REM; the old stages 3 and 4 are merged into N3.
+- **For your exam:** older texts list four non-REM stages, with 3 and 4 as slow-wave sleep.
+
+### root-overlap: what cutting one spinal root does
+- **Status:** pending review.
+- **Where:** `spinal-cord`, `spinal-nerves`, predict, lab practical, flashcards.
+- **Evidence-based position:** neighboring dorsal roots overlap in the skin they supply, and most muscles get motor axons from two or more ventral roots. Cutting one dorsal root dulls sensation in its band; the band goes fully numb only when the roots above and below are cut too. Cutting one ventral root weakens its muscles rather than paralyzing them.
+- **For your exam:** dorsal root cut = sensory loss in its dermatome, ventral root cut = paralysis. Pick the sensory-only or motor-only answer; the direction is what they test.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -271,6 +319,43 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   bicarbonate loss; exercise breathing driven by central command and joint sensors; the larynx
   counted in the upper tract.
 - **Not built:** a trachea and lung histology station. No micrograph is cleared for commercial use.
+
+## Phase 2: nervous tissue and central nervous system, judgment calls for instructor review
+
+- **Positions taken without an exam note:** microglia come from yolk-sac precursors that seed the
+  brain early (older texts: blood monocytes); the unipolar neuron's peripheral branch is treated
+  as axon-like; co-transmission is taught (Dale's one-transmitter rule is the older view); GABA
+  excites the fetal brain (going-further); heat worsens MS through earlier sodium-channel
+  inactivation; the left-brain/right-brain personality idea is called a myth; a lucid interval
+  is seen in a minority of epidural bleeds; trauma is the most common cause of subarachnoid
+  bleeding overall; "basal nuclei" preferred to "basal ganglia".
+- **Simplifications:** somatic vs autonomic defined by the effector (shivering and breathing are
+  somatic); the astrocyte–neuron lactate shuttle stated plainly (could be hedged); the sodium
+  inactivation gate drawn as a loop plugging the pore; the absolute refractory period about 1 ms;
+  schematic channel curves and enlarged EPSP/IPSP sizes on the graphs; a constructed hypnogram.
+- **Tool predictions to confirm:** hyperkalemia (a modest rise makes firing easier; hours of
+  depolarization inactivate sodium channels and make it harder); partial tetrodotoxin block
+  (threshold up, smaller spike); organophosphate weakness as depolarization block plus receptor
+  desensitization.
+- **Normal values chosen:** axon regrowth about 1 mm/day; myelin 70–80% lipid; conduction 0.5–2
+  m/s unmyelinated and up to 120 m/s myelinated; internodes 1–2 mm, nodes about 1 µm;
+  afterhyperpolarization to about −80 mV; synaptic delay about 0.5 ms; about 10,000 synapses on a
+  motor neuron; CSF about 150 mL, made at about 500 mL/day; brain about 1,400 g; lumbar puncture
+  opening pressure 7–18 cm H2O; cord ends at L1–L2 (L3 at birth), dural sac at S2; two-point
+  threshold 2–3 mm at the fingertip and about 4 cm on the back; corpus callosum about 200 million
+  axons; the cerebellum holds over half the brain's neurons; language on the left in about 95% of
+  right-handers and 70% of left-handers.
+- **Figures:** OpenStax 12.20 not used (it mixes up the gates); the catalog caption for 12.28 is
+  wrong ("G protein hydrolyzes ATP"), the image is fine; Figure 16.5 uses nonstandard area names
+  (motor association area for premotor, general interpretation area).
+- **Map gaps:** Nissl bodies, axonal transport, dendritic spines, axolemma, neurilemma,
+  internode, Wallerian degeneration, glioma, falx cerebri, tentorium, blood–CSF barrier,
+  bridging veins, middle meningeal artery, arcuate fasciculus, long-term potentiation, cingulate
+  gyrus, arbor vitae, frontal eye fields, sleep spindles and K-complexes, adenosine, neglect,
+  prosopagnosia.
+- **Etymology to confirm:** "parasympathetic" (para- = beside); "rhombencephalon"; "metabotropic"
+  (bol/o); "diencephalon" (through, or between).
+- **Not built:** a nervous-tissue histology station. No micrograph is cleared for commercial use.
 
 ## Decided at the Phase 0 reviews
 

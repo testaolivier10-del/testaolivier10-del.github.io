@@ -1,0 +1,46 @@
+{
+  "topic": "other-endocrine",
+  "hook": "<p>Ms. Okoro, 58, has had kidney disease for ten years. She is pale and gets breathless climbing one flight of stairs. Her red blood cell count is low, yet her bone marrow is healthy and she has plenty of iron. The missing piece is a hormone her kidneys used to make. Her kidneys, her heart, her fat and a gland deep in her brain all release hormones, even though most people never think of them as endocrine organs.</p>",
+  "prereq": [
+    {
+      "q": "Where do long bones grow in length?",
+      "options": ["At the epiphyseal plates, where cartilage cells divide and are replaced by bone", "At the periosteum, by adding bone to the outer surface", "In the medullary cavity, by filling it with new bone"],
+      "correct": 0,
+      "why": "Chondrocytes in the epiphyseal plate divide and are replaced by bone on the side toward the shaft, lengthening the bone. Adding bone at the surface makes it wider, not longer.",
+      "review": "bone-development"
+    },
+    {
+      "q": "What does growth hormone do to bone growth, and through which other hormone does it mainly act?",
+      "options": ["It slows growth, through calcitonin", "It drives growth at the epiphyseal plates, mainly through IGF-1", "It closes the epiphyseal plates, through thyroid hormones"],
+      "correct": 1,
+      "why": "Growth hormone makes the liver and other tissues release insulin-like growth factor 1 (IGF-1), which drives chondrocyte division at the plates.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "Where do the axons of the retina's ganglion cells cross over, partly, on their way to the brain?",
+      "options": ["At the optic chiasm", "At the lateral geniculate nucleus", "In the primary visual cortex"],
+      "correct": 0,
+      "why": "The optic nerves meet at the optic chiasm, where fibers from the inner half of each retina cross to the other side.",
+      "review": "vision"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-17-2",
+    "caption": "The endocrine glands of the body. Hide the labels and find the pineal gland, the thymus and the gonads."
+  },
+  "chain": [
+    { "cause": "Blood loss or high altitude lowers the oxygen delivered to the kidney's tissue (hypoxia).", "effect": "Oxygen-sensing cells in the kidney switch on the erythropoietin gene and release EPO into the blood." },
+    { "cause": "EPO reaches the red bone marrow.", "effect": "More of the cells that make red blood cells survive and divide." },
+    { "cause": "More red blood cells enter the blood over days to weeks.", "effect": "Each liter of blood carries more oxygen, so oxygen delivery to the tissues rises." },
+    { "cause": "Oxygen delivery to the kidney rises back toward normal.", "effect": "EPO release falls back: negative feedback." }
+  ],
+  "misconception": {
+    "wrong": "Melatonin is a sleeping pill the brain makes; taking more of it at any time will make you sleep.",
+    "right": "Melatonin is mainly a timing signal. The pineal gland releases it in darkness, under control of the suprachiasmatic nucleus, and it tells the body's clocks that it is night. Its direct sleep-promoting effect is modest. Taken at the right time, a small dose shifts the body clock, which helps jet lag and shift work; taken at the wrong time, it can shift the clock the wrong way."
+  },
+  "check": ["anp-other-endocrine-4", "anp-other-endocrine-7", "anp-other-endocrine-8", "anp-other-endocrine-9", "anp-other-endocrine-11", "anp-other-endocrine-13", "anp-other-endocrine-15", "anp-other-endocrine-17"],
+  "summary": "<p>The pineal gland's pinealocytes release melatonin in darkness; light, detected by special retinal ganglion cells and relayed through the suprachiasmatic nucleus and a sympathetic pathway, switches it off. The suprachiasmatic nucleus is the master clock of your circadian rhythms, reset daily by light. The thymus, largest in childhood, releases thymosins that help white blood cells mature there. The testes make testosterone and the ovaries make estrogens and progesterone, the sex hormones. Stretch of the heart's upper chambers releases atrial natriuretic peptide, which makes the kidneys excrete sodium and water. Hypoxia, too little oxygen reaching tissues, makes the kidneys release erythropoietin, which raises red blood cell production; hypoxemia is low oxygen in the arterial blood. Fat releases leptin in proportion to its stores. Growth hormone, thyroid hormones and sex hormones control bone growth, and estrogen closes the epiphyseal plates in both sexes. Anabolic steroids, EPO and growth hormone are misused as performance-enhancing substances, and their harms follow from what each hormone does.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" }
+  ]
+}

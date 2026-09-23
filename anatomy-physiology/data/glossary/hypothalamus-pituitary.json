@@ -1,0 +1,167 @@
+{
+  "pituitary-gland": {
+    "def": "A pea-sized gland in the sella turcica, hung from the hypothalamus by a stalk, the infundibulum. The anterior pituitary (adenohypophysis) is glandular epithelium that makes six hormones; the posterior pituitary (neurohypophysis) is nervous tissue that stores and releases two hormones made in the hypothalamus.",
+    "roots": [
+      [
+        "aden-",
+        "gland"
+      ],
+      [
+        "neur-",
+        "nerve"
+      ],
+      [
+        "hypo-",
+        "below"
+      ],
+      [
+        "-physis",
+        "growth"
+      ],
+      [
+        "infundibulum",
+        "funnel"
+      ]
+    ],
+    "say": "pih-TOO-ih-tair-ee"
+  },
+  "hypophyseal-portal": {
+    "def": "Blood vessels that link the hypothalamus to the anterior pituitary: a first network of capillaries in the hypothalamus, portal veins down the infundibulum, and a second network among the anterior pituitary cells. A portal system is any arrangement of two capillary networks in a row joined by veins.",
+    "roots": [
+      [
+        "hypo-",
+        "below"
+      ],
+      [
+        "-physis",
+        "growth"
+      ],
+      [
+        "porta",
+        "gate"
+      ]
+    ],
+    "say": "hy-poh-FIZ-ee-ul"
+  },
+  "releasing-hormones": {
+    "def": "Hypothalamic hormones carried by the hypophyseal portal system that make the anterior pituitary release (releasing hormones: TRH, CRH, GnRH, GHRH) or hold back (inhibiting hormones: somatostatin, dopamine) its hormones.",
+    "roots": [],
+    "say": ""
+  },
+  "tropic-hormone": {
+    "def": "A hormone whose target is another endocrine gland, making it grow and release its own hormones. TSH, ACTH, FSH and LH are tropic.",
+    "roots": [
+      [
+        "trop-",
+        "turning toward"
+      ]
+    ],
+    "say": "TROH-pik"
+  },
+  "growth-hormone": {
+    "def": "A protein hormone of the anterior pituitary (GH, somatotropin). It drives growth mostly by making the liver and tissues release insulin-like growth factor 1 (IGF-1), which makes epiphyseal plate chondrocytes divide and tissues build protein; directly, it breaks down stored fat and raises the glucose in the blood.",
+    "roots": [
+      [
+        "somat-",
+        "body"
+      ],
+      [
+        "trop-",
+        "turning toward"
+      ]
+    ],
+    "say": "soh-mat-oh-TROH-pin"
+  },
+  "anterior-pituitary-hormones": {
+    "def": "Besides growth hormone, the anterior pituitary releases TSH (to the thyroid gland), ACTH (to the adrenal gland's outer layer), the gonadotropins FSH and LH (to the ovaries and testes), and prolactin (to the milk-producing glands of the breast).",
+    "roots": [
+      [
+        "gonad-",
+        "seed, reproductive organ"
+      ],
+      [
+        "lact-",
+        "milk"
+      ],
+      [
+        "pro-",
+        "for"
+      ]
+    ],
+    "say": "proh-LAK-tin"
+  },
+  "osmoreceptor": {
+    "def": "Neurons in the front of the hypothalamus that sense plasma osmolarity. When it rises, they lose water, shrink and fire faster, driving ADH release and thirst.",
+    "roots": [
+      [
+        "osmo-",
+        "push"
+      ]
+    ],
+    "say": "OZ-moh-ree-SEP-ter"
+  },
+  "thirst": {
+    "def": "The conscious urge to drink, produced by the thirst center in the hypothalamus when plasma osmolarity rises, blood volume falls or the mouth is dry.",
+    "roots": [],
+    "say": ""
+  },
+  "adh": {
+    "def": "Antidiuretic hormone (vasopressin): a peptide made by hypothalamic neurons and released from the posterior pituitary when plasma osmolarity rises or blood volume falls sharply. It makes kidney cells insert aquaporins so less urine is made, and at high levels it constricts small arteries.",
+    "roots": [
+      [
+        "anti-",
+        "against"
+      ],
+      [
+        "diuresis",
+        "passing urine"
+      ],
+      [
+        "vaso-",
+        "vessel"
+      ],
+      [
+        "press-",
+        "pressure"
+      ]
+    ],
+    "say": "an-tee-dy-yoo-RET-ik"
+  },
+  "oxytocin": {
+    "def": "A peptide made by hypothalamic neurons and released from the posterior pituitary. It strengthens contractions of the uterus in labor through positive feedback and makes milk flow out of the breast during nursing.",
+    "roots": [
+      [
+        "oxy-",
+        "quick"
+      ],
+      [
+        "toc-",
+        "childbirth"
+      ]
+    ],
+    "say": "ok-see-TOH-sin"
+  },
+  "pituitary-disorders": {
+    "def": "Too much growth hormone causes gigantism in children and acromegaly in adults; too little in childhood causes pituitary dwarfism. Too little ADH effect causes diabetes insipidus (large volumes of dilute urine); too much causes SIADH (water retention and low plasma sodium).",
+    "roots": [
+      [
+        "acro-",
+        "extremity"
+      ],
+      [
+        "megal-",
+        "large"
+      ],
+      [
+        "insipidus",
+        "tasteless"
+      ]
+    ],
+    "say": "ak-roh-MEG-uh-lee"
+  },
+  "axis-feedback": {
+    "def": "A hormonal axis is a chain of hypothalamus, anterior pituitary and target gland, each driving the next. In long-loop feedback the target gland's hormone inhibits both the hypothalamus and the pituitary; in short-loop feedback the pituitary hormone inhibits the hypothalamus.",
+    "roots": [],
+    "say": ""
+  }
+}

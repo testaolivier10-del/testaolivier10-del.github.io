@@ -1,0 +1,46 @@
+{
+  "topic": "hemostasis",
+  "hook": "<p>Mr. Reyes, 71, takes warfarin to prevent clots from forming in his heart, which beats irregularly. A week after starting an antibiotic, he notices large bruises and pink urine. His INR, normally kept between 2 and 3, is 6.5. His doctor stops the warfarin and gives vitamin K. To see why a vitamin reverses a blood thinner, and why a blood test can run six times slower than normal, you need to know how clotting works.</p>",
+  "prereq": [
+    {
+      "q": "In a positive feedback loop, what does the response do?",
+      "options": ["It reverses the stimulus", "It strengthens the stimulus", "It keeps the variable at a set point"],
+      "correct": 1,
+      "why": "Positive feedback amplifies: the response strengthens the stimulus that produced it, until some outside event ends the loop.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "Which plasma protein is converted into the threads of a clot?",
+      "options": ["Albumin", "Gamma globulin", "Fibrinogen"],
+      "correct": 2,
+      "why": "Fibrinogen, made by the liver, is the clotting protein that forms the threads of a clot. Serum lacks it because the clot used it up.",
+      "review": "blood-composition"
+    },
+    {
+      "q": "What is a platelet?",
+      "options": ["A fragment of a megakaryocyte, with no nucleus", "A small white blood cell with a round nucleus", "An immature red blood cell"],
+      "correct": 0,
+      "why": "Platelets are nucleus-free fragments broken off megakaryocytes in the marrow. They live 7–10 days.",
+      "review": "leukocytes-platelets"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "A vessel wall is torn, exposing collagen and the tissue factor on cells outside the lining.", "effect": "The smooth muscle of the wall contracts (vascular spasm), slowing the flow through the vessel." },
+    { "cause": "Slower blood meets exposed collagen coated with von Willebrand factor.", "effect": "Platelets adhere, activate, release ADP and thromboxane A2, and recruit more platelets into a soft plug." },
+    { "cause": "Tissue factor binds factor VIIa and activates factors X and IX.", "effect": "Factor Xa, with Va, makes a small amount of thrombin (initiation)." },
+    { "cause": "The small amount of thrombin activates the platelets in the plug and factors V, VIII and XI.", "effect": "The activated platelet surface hosts IXa–VIIIa and Xa–Va, which make a burst of thrombin (amplification, then propagation)." },
+    { "cause": "The burst of thrombin cuts fibrinogen into fibrin and activates factor XIII.", "effect": "Cross-linked fibrin threads bind the plug into a firm clot that seals the tear." }
+  ],
+  "misconception": {
+    "wrong": "In the body, the intrinsic and extrinsic pathways are two separate routes, and either one alone can make a clot.",
+    "right": "The two pathways describe what happens in test tubes, and they are still how the PT and aPTT are read. In the body, clotting starts when tissue factor is exposed, makes a little thrombin, and then depends on factors VIII and IX to make the burst of thrombin on activated platelets. That is why people with hemophilia bleed even though tissue factor and factor VII work normally, and why people who lack factor XII do not bleed at all."
+  },
+  "check": ["anp-hemostasis-2", "anp-hemostasis-3", "anp-hemostasis-5", "anp-hemostasis-6", "anp-hemostasis-7", "anp-hemostasis-9", "anp-hemostasis-13", "anp-hemostasis-18"],
+  "summary": "<p>Hemostasis stops bleeding in three overlapping steps. Vascular spasm narrows the injured vessel. A platelet plug forms as platelets adhere to exposed collagen through von Willebrand factor, activate, release ADP and thromboxane A2, and aggregate through fibrinogen bridges. Coagulation turns the plug into a firm clot: in the cell-based model, tissue factor and factor VIIa make a little thrombin (initiation), that thrombin activates platelets and factors V, VIII and XI (amplification), and IXa–VIIIa and Xa–Va on the platelet surface make a burst of thrombin that converts fibrinogen to fibrin, cross-linked by XIIIa (propagation). Thrombin's positive feedback is confined by flow, healthy lining and antithrombin. The lab model's extrinsic (PT/INR) and intrinsic (aPTT) pathways meet at factor X and the common pathway. Vitamin K is needed to make factors II, VII, IX and X. Clots retract as platelets pull on fibrin, and fibrinolysis by plasmin, made from plasminogen by tPA, removes them. Heparin boosts antithrombin; warfarin blocks vitamin K recycling; aspirin blocks platelet thromboxane. Too little clotting (thrombocytopenia, hemophilia) causes bleeding; too much causes a thrombus, which can break off as an embolus.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-29", "label": "NREMT: Bleeding control" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" }
+  ]
+}

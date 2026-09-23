@@ -1,0 +1,37 @@
+{
+  "adrenal-cortex": {
+    "def": "The outer 80 to 90 percent of each adrenal gland, which makes steroid hormones from cholesterol in three zones: the zona glomerulosa (aldosterone), the zona fasciculata (cortisol) and the zona reticularis (adrenal androgens).",
+    "roots": [["ad-", "near"], ["ren-", "kidney"], ["cortex", "bark, outer layer"], ["glomerul-", "little ball"], ["fascicul-", "little bundle"], ["reticul-", "little net"]],
+    "say": "ah-DREE-nul"
+  },
+  "aldosterone": {
+    "def": "The main mineralocorticoid, a steroid from the zona glomerulosa. Released when plasma potassium rises or angiotensin II arrives, it makes the kidney reabsorb sodium, with water following, and secrete potassium.",
+    "roots": [["mineral-", "mineral (here sodium and potassium)"], ["cortic-", "cortex"], ["-oid", "like"]],
+    "say": "al-DOSS-ter-ohn"
+  },
+  "raas": {
+    "def": "A chain of blood-borne steps: kidney cells release renin when pressure there falls; renin turns angiotensinogen from the liver into angiotensin I; angiotensin-converting enzyme (ACE), mostly in the lungs, makes angiotensin II, which releases aldosterone, constricts vessels and raises ADH and thirst.",
+    "roots": [["angi/o", "vessel"], ["tens-", "stretch, pressure"], ["-gen", "producing"]],
+    "say": "REE-nin; an-jee-oh-TEN-sin"
+  },
+  "cortisol": {
+    "def": "The main glucocorticoid, a steroid from the zona fasciculata released under control of CRH and ACTH, with negative feedback, a morning peak and a rise with stress. It raises blood glucose through gluconeogenesis, damps inflammation and keeps vessels responsive to sympathetic signals.",
+    "roots": [["gluc/o", "glucose"], ["cortic-", "cortex"], ["-oid", "like"]],
+    "say": "KOR-tih-sol"
+  },
+  "adrenal-androgens": {
+    "def": "Weak androgens, mainly DHEA, made by the zona reticularis under ACTH's drive. Tissues convert them into stronger androgens; they matter most in women, supporting pubic and underarm hair and sex drive.",
+    "roots": [["andr-", "male"], ["-gen", "producing"]],
+    "say": "dee-hy-droh-ep-ee-an-DROSS-ter-ohn"
+  },
+  "stress-response": {
+    "def": "The body's hormonal and nervous response to a threat, described as the general adaptation syndrome: an alarm reaction driven by sympathetic nerves and epinephrine, a stage of resistance carried by cortisol and salt-keeping hormones, and a stage of exhaustion in which prolonged exposure to these hormones does harm.",
+    "roots": [],
+    "say": ""
+  },
+  "adrenal-disorders": {
+    "def": "Addison disease is destruction of the adrenal cortex, with low cortisol and aldosterone, high ACTH and darker skin. Cushing syndrome is the effect of long-term glucocorticoid excess, usually from medication: central fat, thin skin, high blood glucose and raised blood pressure.",
+    "roots": [],
+    "say": "KUSH-ing"
+  }
+}

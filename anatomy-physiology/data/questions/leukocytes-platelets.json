@@ -1,0 +1,437 @@
+[
+  {
+    "id": "anp-leukocytes-platelets-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-18-11",
+    "pin": "neutrophil",
+    "q": "Name the pinned cell.",
+    "options": ["Neutrophil", "Eosinophil", "Basophil", "Monocyte"],
+    "correct": 0,
+    "why": {
+      "correct": "A nucleus of several lobes joined by thin strands, with faint lilac granules, marks a neutrophil.",
+      "options": [
+        "Correct. Three to five lobes and faint granules: a neutrophil.",
+        "An eosinophil has a two-lobed nucleus and large red-orange granules.",
+        "A basophil is packed with large dark purple granules that hide its nucleus.",
+        "A monocyte has a single kidney-shaped nucleus and no visible granules."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-18-11",
+    "pin": "basophil",
+    "q": "Name the pinned cell.",
+    "options": ["Neutrophil", "Lymphocyte", "Eosinophil", "Basophil"],
+    "correct": 3,
+    "why": {
+      "correct": "Large, dark blue-purple granules crowded over the nucleus mark a basophil.",
+      "options": [
+        "A neutrophil's granules are small and faint, and its many-lobed nucleus is easy to see.",
+        "A lymphocyte has no visible granules; its large round nucleus almost fills the cell.",
+        "An eosinophil's granules are red-orange, and its two lobes are clearly visible.",
+        "Correct. Dark granules that hide the nucleus: a basophil."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which leukocyte is the most numerous in normal blood?",
+    "options": ["Lymphocyte", "Monocyte", "Neutrophil", "Eosinophil"],
+    "correct": 2,
+    "why": {
+      "correct": "Neutrophils make up about 50–70% of white blood cells.",
+      "options": [
+        "Lymphocytes are second, at about 20–40%.",
+        "Monocytes are only about 2–8%.",
+        "Correct. Neutrophils are the most common.",
+        "Eosinophils are about 1–4%."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A traveler returns from a trip with a roundworm infection of his gut. Which leukocyte count is most likely to be raised?",
+    "options": ["Basophils", "Eosinophils", "Neutrophils", "Monocytes"],
+    "correct": 1,
+    "why": {
+      "correct": "Eosinophils attack parasitic worms, which are too large to engulf, by releasing toxic granule proteins onto their surface. Worm infections raise the eosinophil count.",
+      "options": [
+        "Basophils rarely rise, and they are not the main defense against worms.",
+        "Correct. Parasitic worms drive eosinophilia.",
+        "Neutrophils rise mainly in bacterial infections.",
+        "Monocytes rise in long-lasting infections, not typically in worm infections."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student with a sore throat, swollen neck nodes and fatigue has a raised white count, and most of the extra cells are lymphocytes. What kind of infection does this pattern suggest?",
+    "options": ["A parasitic worm infection", "A bacterial abscess", "An allergic reaction", "A viral infection"],
+    "correct": 3,
+    "why": {
+      "correct": "Lymphocytes are the cells of specific immunity, and viral infections typically raise their numbers. Infectious mononucleosis, caused by a virus, is a classic example.",
+      "options": [
+        "Worm infections raise eosinophils, not lymphocytes.",
+        "Bacterial infections typically raise neutrophils.",
+        "Allergic reactions raise eosinophils.",
+        "Correct. A rise in lymphocytes points to a viral infection."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "After chemotherapy, a patient's white count is 1,500 per µL, and 30% of the cells are neutrophils. What is her absolute neutrophil count?",
+    "options": ["30 per µL", "4,500 per µL", "450 per µL", "1,050 per µL"],
+    "correct": 2,
+    "why": {
+      "correct": "Absolute count = total × fraction = 1,500 × 0.30 = 450 per µL. That is below 500, so her risk of serious bacterial infection is very high.",
+      "options": [
+        "30 is the percentage, not a count.",
+        "4,500 comes from multiplying by 3 instead of 0.30.",
+        "Correct. 1,500 × 0.30 = 450 neutrophils per µL.",
+        "1,050 is the count of all the other white cells (70% of 1,500)."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A patient's white count is 20,000 per µL, with neutrophils 88% and lymphocytes 8%. A student says his lymphocytes are low. What is the best reply?",
+    "options": [
+      "Agreed: 8% is below the normal 20–40%",
+      "His lymphocyte count is 1,600 per µL, which is normal",
+      "His lymphocytes are high, because the total is high",
+      "Lymphocyte numbers cannot be judged from a differential"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "20,000 × 0.08 = 1,600 lymphocytes per µL, which is within the normal absolute range. The percentage fell only because neutrophils rose so much. Always convert to absolute counts before calling a type high or low.",
+      "options": [
+        "The percentage is low, but the absolute number is normal. Percentages shift whenever another type rises.",
+        "Correct. The absolute lymphocyte count is normal.",
+        "A high total does not raise every type. Here the rise is almost all neutrophils.",
+        "Multiplying the differential percentage by the total gives each type's absolute count, so it can be judged."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "misconception": "a high white count means strong defense",
+    "q": "Jayden, 7, has a white count of 58,000 per µL, mostly immature blasts, a hemoglobin of 7 g/dL and a platelet count of 20,000 per µL. Why does he keep getting infections?",
+    "options": [
+      "His blasts are immature and cannot fight infection, and they crowd out normal neutrophils",
+      "His anemia leaves too little oxygen for his white cells",
+      "His high white count uses up all his antibodies",
+      "His low platelets let bacteria into his blood"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In acute leukemia, one precursor multiplies without maturing. The blasts fill the blood but do not work, and by crowding the marrow they stop normal hematopoiesis, so he has few working neutrophils. The same crowding explains his anemia and low platelets.",
+      "options": [
+        "Correct. Many cells, few that work.",
+        "White cells do not fail from a hemoglobin of 7; the problem is that normal white cells are not being made.",
+        "Antibodies are not used up by white cell numbers.",
+        "Low platelets cause bruising and bleeding, not infections."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A woman has painless, swollen lymph nodes in her neck and armpits, night sweats and weight loss. Her blood count is normal. A node biopsy shows cancerous lymphocytes. Which diagnosis fits best?",
+    "options": ["Acute myeloid leukemia", "Lymphoma", "Infectious mononucleosis", "Chronic myeloid leukemia"],
+    "correct": 1,
+    "why": {
+      "correct": "Lymphoma is cancer of lymphocytes that grows mainly as solid tumors in lymph nodes, often with a normal blood count.",
+      "options": [
+        "Leukemias start in the marrow and usually change the blood count; myeloid leukemias come from the other branch.",
+        "Correct. Cancerous lymphocytes growing in lymph nodes is lymphoma.",
+        "Mononucleosis causes swollen nodes, but it is a viral infection, and a biopsy would not show cancer.",
+        "Chronic myeloid leukemia comes from the myeloid branch and raises the white count."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every statement that is true of all leukocytes.",
+    "options": [
+      "They have a nucleus",
+      "They can leave the blood through capillary walls",
+      "They contain visible granules",
+      "They come from hematopoietic stem cells in red marrow",
+      "They carry oxygen on hemoglobin"
+    ],
+    "correct": [0, 1, 3],
+    "why": {
+      "correct": "Every leukocyte keeps its nucleus, can squeeze out of the blood into tissue, and descends from hematopoietic stem cells. Only granulocytes have visible granules, and no leukocyte carries hemoglobin.",
+      "options": [
+        "Correct. Unlike mature red cells, leukocytes keep their nucleus.",
+        "Correct. They do most of their work in the tissues.",
+        "Only the three granulocytes have visible granules; lymphocytes and monocytes do not.",
+        "Correct. Both branches of hematopoiesis start from the same stem cell.",
+        "Hemoglobin is carried by red blood cells, not leukocytes."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put the steps in order to show how neutrophils respond when bacteria enter a cut.",
+    "options": [
+      "Damaged cells and tissue macrophages release chemical signals",
+      "Capillary lining cells near the cut become sticky",
+      "Passing neutrophils slow down and stick to the capillary wall",
+      "Neutrophils squeeze between the cells of the wall",
+      "Neutrophils crawl through the tissue toward the signals",
+      "Neutrophils engulf and kill the bacteria"
+    ],
+    "why": {
+      "correct": "Signals from the injury make the local capillary lining sticky. Neutrophils stick, squeeze out through the wall, follow the signals through the tissue and engulf the bacteria, killing them with their granules and toxic oxygen compounds."
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A monocyte leaves a capillary and enters an infected wound. What does it become?",
+    "options": ["A neutrophil", "A lymphocyte", "A mast cell", "A macrophage"],
+    "correct": 3,
+    "why": {
+      "correct": "Monocytes circulate for a day to three, then leave the blood and mature into macrophages, long-lived phagocytes that clear bacteria, dead cells and debris.",
+      "options": [
+        "Neutrophils are a separate granulocyte line; monocytes do not turn into them.",
+        "Lymphocytes come from the lymphoid branch, not from monocytes.",
+        "Mast cells are tissue cells with histamine granules, from a different precursor.",
+        "Correct. A monocyte in the tissues becomes a macrophage."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which of these is an antigen?",
+    "options": [
+      "A Y-shaped protein in plasma that binds a bacterium",
+      "A glycoprotein on a bacterium's surface that lymphocytes recognize",
+      "A neutrophil's digestive enzyme",
+      "The lysosome in which a bacterium is digested"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An antigen is a molecule that the immune system recognizes as a specific target. Proteins and glycoproteins on a microbe's surface are typical antigens.",
+      "options": [
+        "That is an antibody, which binds an antigen.",
+        "Correct. The recognized surface molecule is the antigen.",
+        "A digestive enzyme is part of the neutrophil's killing machinery, not a recognized target.",
+        "A lysosome is an organelle, not a molecule recognized as a target."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Antibodies added to a suspension of bacteria make the bacteria clump together. What property of antibodies explains the clumping?",
+    "options": [
+      "Each antibody has two or more binding sites and can bind antigens on two cells at once",
+      "Antibodies dissolve the bacteria's cell walls",
+      "Antibodies are sticky on every surface",
+      "Antibodies make the bacteria divide without separating"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "An antibody's arms each bind the same antigen. If one arm binds a bacterium and another binds a second bacterium, the two are linked. Many such links build clumps.",
+      "options": [
+        "Correct. Two or more binding sites let one antibody bridge two cells.",
+        "Antibodies bind; they do not dissolve cell walls by themselves.",
+        "Antibodies are highly specific: each binds only one antigen shape.",
+        "Antibodies do not make bacteria divide."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why does a platelet survive only about 7–10 days in the blood?",
+    "options": [
+      "It is destroyed by neutrophils as soon as it forms",
+      "It uses up its granules within a week",
+      "It divides into smaller fragments",
+      "It has no nucleus, so it cannot make new proteins to repair itself"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A platelet is a fragment of a megakaryocyte and has no nucleus. It cannot make new proteins, so it wears out and is removed by macrophages in the spleen and liver.",
+      "options": [
+        "Macrophages, not neutrophils, remove old platelets, and not until they wear out.",
+        "Granules are released when a platelet is activated, not steadily used up in circulation.",
+        "Without a nucleus, a platelet cannot divide at all.",
+        "Correct. No nucleus, no repair, a short life."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A man has a greatly enlarged spleen. His marrow is normal, but his platelet count is 80,000 per µL. What best explains the low count?",
+    "options": [
+      "The spleen makes too much thrombopoietin",
+      "The enlarged spleen holds far more than its usual third of the platelets",
+      "Megakaryocytes move from the marrow into the spleen",
+      "The spleen turns platelets into red blood cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Normally about a third of the platelets are held in the spleen. An enlarged spleen holds many more, so fewer circulate, even though the marrow makes a normal number.",
+      "options": [
+        "Thrombopoietin comes mainly from the liver, and more of it would raise the count, not lower it.",
+        "Correct. The platelets are pooled in the spleen, not missing from the body.",
+        "Megakaryocytes stay in the marrow; they do not migrate to the spleen.",
+        "Platelets are fragments and cannot become red cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-17",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-18-4",
+    "q": "Trace the chart. Which branch and precursor produce the monocyte?",
+    "options": [
+      "The lymphoid stem cell, through the lymphoblast",
+      "The myeloid stem cell, through the myeloblast",
+      "The myeloid stem cell, through the monoblast",
+      "The myeloid stem cell, through the megakaryoblast"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Monocytes come from the myeloid branch, through their own precursor, the monoblast. Although they lack visible granules, they are not on the lymphoid branch.",
+      "options": [
+        "The lymphoid branch leads only to lymphocytes.",
+        "The myeloblast gives rise to the three granulocytes.",
+        "Correct. Myeloid stem cell, then monoblast, then monocyte.",
+        "The megakaryoblast leads to megakaryocytes and platelets."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-18",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Complete the lineage: hematopoietic stem cell → myeloid stem cell → ____ → neutrophil.",
+    "options": ["Monoblast", "Lymphoblast", "Myeloblast", "Megakaryoblast"],
+    "correct": 2,
+    "why": {
+      "correct": "The three granulocytes, neutrophils, eosinophils and basophils, all come from the myeloblast.",
+      "options": [
+        "The monoblast leads to monocytes.",
+        "The lymphoblast is on the lymphoid branch and leads to lymphocytes.",
+        "Correct. The myeloblast gives rise to the granulocytes.",
+        "The megakaryoblast leads to megakaryocytes and platelets."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student described how platelets are made. One step is wrong. Which one?",
+    "options": [
+      "Thrombopoietin from the liver drives myeloid stem cells toward the megakaryocyte line",
+      "A megakaryoblast grows into a megakaryocyte",
+      "The megakaryocyte divides by mitosis into thousands of small cells",
+      "It pushes arms of cytoplasm through the wall of a marrow vessel",
+      "Flowing blood breaks the arms into platelets"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A megakaryocyte copies its DNA many times without dividing, which is why it grows so large. Platelets are fragments of its cytoplasm, not daughter cells from mitosis, and they have no nucleus.",
+      "options": [
+        "This step is right. Thrombopoietin, made mainly by the liver, drives the megakaryocyte line.",
+        "This step is right. The megakaryoblast is the precursor.",
+        "This is the error. Platelets are fragments, not the products of cell division.",
+        "This step is right. The arms reach into the vessel.",
+        "This step is right. The blood pinches the arms into fragments."
+      ]
+    }
+  },
+  {
+    "id": "anp-leukocytes-platelets-20",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["structure-function"],
+    "q": "Two weeks after strong chemotherapy that kills dividing cells in the marrow, predict the change in each variable compared with before treatment.",
+    "variables": [
+      { "name": "Neutrophil count", "answer": "down", "why": "Neutrophils live only a day or two, so once the marrow stops making them, their count falls within days." },
+      { "name": "Platelet count", "answer": "down", "why": "Platelets last 7–10 days, so two weeks without new ones leaves few in the blood." },
+      { "name": "Risk of bacterial infection", "answer": "up", "why": "With few neutrophils, bacteria that enter the body are not engulfed and killed quickly." },
+      { "name": "Tendency to bruise and bleed", "answer": "up", "why": "With few platelets, small breaks in vessel walls are not sealed." },
+      { "name": "Reticulocyte count", "answer": "down", "why": "The marrow's dividing erythroid precursors are killed too, so fewer young red cells are released." }
+    ],
+    "why": {
+      "correct": "Chemotherapy stops hematopoiesis for a time. Formed elements with the shortest lives disappear first: neutrophils within days, platelets within a week or two. Red cells last 120 days, so anemia develops more slowly, but the reticulocyte count falls at once."
+    }
+  }
+]

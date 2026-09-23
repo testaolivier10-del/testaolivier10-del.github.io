@@ -1,0 +1,57 @@
+{
+  "pineal-melatonin": {
+    "def": "The pineal gland is a small gland in the epithalamus whose pinealocytes make melatonin from serotonin. Melatonin is released in darkness and switched off by light, through a pathway from the retina via the suprachiasmatic nucleus; it signals night to the body's clocks.",
+    "roots": [["pine-", "pine cone"], ["-cyte", "cell"]],
+    "say": "PIN-ee-ul; mel-uh-TOH-nin"
+  },
+  "thymus": {
+    "def": "A gland in the mediastinum, behind the upper sternum, where white blood cells of the immune system mature. It is largest in childhood and is gradually replaced by fat after puberty.",
+    "roots": [],
+    "say": "THY-mus"
+  },
+  "thymosin": {
+    "def": "A family of peptides released by the thymus's epithelial cells that help white blood cells mature in the thymus. How much they act as circulating hormones, rather than locally, is still unclear.",
+    "roots": [],
+    "say": "THY-moh-sin"
+  },
+  "gonadal-hormones": {
+    "def": "The steroid sex hormones made by the gonads: testosterone from the testes, driven by LH, and estrogens and progesterone from the ovaries, driven by FSH and LH.",
+    "roots": [["gon-", "seed, offspring"], ["estr-", "frenzy, desire"], ["pro-", "for"], ["gest-", "carrying"]],
+    "say": "tes-TOSS-ter-ohn; proh-JES-ter-ohn"
+  },
+  "anp": {
+    "def": "Atrial natriuretic peptide, a hormone released by stretched muscle cells of the heart's upper chambers. It makes the kidneys excrete more sodium and water, lowers renin, aldosterone and ADH release, and dilates vessels, so blood volume and pressure fall.",
+    "roots": [["natri-", "sodium"], ["-uretic", "relating to urine"]],
+    "say": "nay-tree-yoo-RET-ik"
+  },
+  "epo": {
+    "def": "Erythropoietin, a hormone released by oxygen-sensing cells of the kidney when oxygen delivery falls. It acts on the red bone marrow to raise red blood cell production.",
+    "roots": [["erythr/o", "red"], ["-poiesis", "making"]],
+    "say": "eh-rith-roh-POY-eh-tin"
+  },
+  "hypoxia-basic": {
+    "def": "Hypoxia is too little oxygen reaching the tissues; hypoxemia is too little oxygen in the arterial blood. Altitude and lung disease cause both; a large bleed can cause hypoxia without hypoxemia.",
+    "roots": [["hypo-", "below"], ["ox-", "oxygen"], ["-ia", "condition"], ["-emia", "blood condition"]],
+    "say": "hy-POK-see-uh"
+  },
+  "leptin": {
+    "def": "A hormone released by fat cells in proportion to fat stores. It acts on the hypothalamus to lower food intake and allow energy use, and it permits reproduction; most obesity involves leptin resistance, not a lack of leptin.",
+    "roots": [["lept-", "thin"]],
+    "say": ""
+  },
+  "hormones-and-bone-growth": {
+    "def": "Growth in length at the epiphyseal plates is driven by growth hormone through IGF-1, needs thyroid hormones, speeds up with the sex hormones at puberty, and ends when estrogen closes the plates in both sexes.",
+    "roots": [],
+    "say": ""
+  },
+  "performance-enhancing-drugs": {
+    "def": "Substances used to improve athletic performance, banned in sport (doping). Anabolic steroids, copies of testosterone, cause muscle hypertrophy but suppress the user's own reproductive axis; EPO thickens the blood; growth hormone misuse mimics acromegaly.",
+    "roots": [["ana-", "up"], ["-bolic", "throwing"]],
+    "say": ""
+  },
+  "circadian-rhythm": {
+    "def": "A body rhythm with a cycle of about 24 hours that persists without time cues, such as melatonin, cortisol and body temperature. The suprachiasmatic nucleus of the hypothalamus is the master (biological) clock, reset daily by light.",
+    "roots": [["circa", "about"], ["dies", "day"], ["supra-", "above"]],
+    "say": "sur-KAY-dee-un; soo-pruh-ky-az-MAT-ik"
+  }
+}

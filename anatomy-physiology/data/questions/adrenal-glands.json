@@ -1,0 +1,582 @@
+[
+  {
+    "id": "anp-adrenal-glands-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-1-4",
+    "pin": "adrenal-glands",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Adrenal glands",
+      "Kidneys",
+      "Pancreas",
+      "Thyroid gland"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The adrenal glands sit like caps on the upper end of each kidney (ad- = near, ren- = kidney). Each has an outer cortex that makes steroids and an inner medulla that makes epinephrine.",
+      "options": [
+        "Correct. The adrenal glands cap the kidneys.",
+        "The kidneys are the larger bean-shaped organs the pinned glands sit on.",
+        "The pancreas lies across the abdomen between the kidneys, below the pinned glands.",
+        "The thyroid gland is in the neck, well above the pinned structures."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-2",
+    "type": "graph",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "adrenal-zones",
+    "q": "In the slice through the adrenal gland, which layer is arranged in straight columns of cells, and what does it make?",
+    "options": [
+      "Zona glomerulosa; aldosterone",
+      "Zona reticularis; androgens",
+      "Medulla; epinephrine",
+      "Zona fasciculata; cortisol"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The zona fasciculata (fascicul- = little bundle) is the thickest layer of the cortex. Its cells line up in columns, and it makes cortisol, the main glucocorticoid.",
+      "options": [
+        "The zona glomerulosa is the thin outer layer of rounded clusters (glomerul- = little ball). It makes aldosterone.",
+        "The zona reticularis is the inner layer of branching cords (reticul- = little net). It makes androgens such as DHEA.",
+        "The medulla is the core, with larger round chromaffin cells, not columns. It makes epinephrine.",
+        "Correct. Columns of cells in the thickest layer: the zona fasciculata, making cortisol."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-3",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Blood volume falls after a bleed. Put the steps of the renin–angiotensin–aldosterone system in order.",
+    "options": [
+      "Pressure falls in the kidney's small arteries",
+      "Kidney cells release renin into the blood",
+      "Renin converts angiotensinogen from the liver into angiotensin I",
+      "ACE, mostly in the lungs, converts angiotensin I into angiotensin II",
+      "Angiotensin II makes the zona glomerulosa release aldosterone",
+      "The kidneys reabsorb more sodium, and water follows"
+    ],
+    "why": {
+      "correct": "Low pressure in the kidney triggers renin release. Renin makes angiotensin I from angiotensinogen; ACE makes angiotensin II; angiotensin II releases aldosterone; aldosterone makes the kidney keep sodium, and water follows by osmosis, restoring volume."
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-4",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student wrote out the renin–angiotensin–aldosterone system. One step is wrong. Which one?",
+    "options": [
+      "The kidneys release renin when their blood pressure falls",
+      "The adrenal medulla releases angiotensinogen into the blood",
+      "Renin converts angiotensinogen into angiotensin I",
+      "ACE converts angiotensin I into angiotensin II",
+      "Angiotensin II stimulates aldosterone release from the adrenal cortex"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Angiotensinogen is a plasma protein made and released by the liver, all the time. The adrenal medulla releases epinephrine and norepinephrine.",
+      "options": [
+        "This step is right. Low pressure in the kidney's small arteries is a main trigger for renin.",
+        "This is the error. The liver, not the adrenal medulla, makes angiotensinogen.",
+        "This step is right. Renin is an enzyme that cuts angiotensinogen into angiotensin I.",
+        "This step is right. ACE, most plentiful in the lungs, makes the active hormone.",
+        "This step is right. Angiotensin II acts on the zona glomerulosa of the cortex."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-5",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap in the axis that controls cortisol: hypothalamus releases CRH → anterior pituitary releases ____ → zona fasciculata releases cortisol.",
+    "options": [
+      "TSH",
+      "ADH",
+      "ACTH",
+      "Renin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Adrenocorticotropic hormone (ACTH) is the tropic hormone of the adrenal axis: CRH → ACTH → cortisol.",
+      "options": [
+        "TSH drives the thyroid gland, in the thyroid axis (TRH → TSH → thyroid hormones).",
+        "ADH is released from the posterior pituitary and acts on the kidney's water handling, not on the adrenal cortex.",
+        "Correct. ACTH drives the zona fasciculata.",
+        "Renin comes from the kidney and starts the angiotensin chain that controls aldosterone, not cortisol."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-6",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "a steroid drug can be stopped at any time",
+    "q": "Mr. Haas has taken high-dose prednisone, a synthetic glucocorticoid, for six months for arthritis. Predict each variable first during the months of treatment, compared with before, and then in the days after he stops the drug suddenly, compared with while he was taking it.",
+    "variables": [
+      {
+        "name": "ACTH, during treatment",
+        "answer": "down",
+        "why": "The drug acts like cortisol on the hypothalamus and pituitary, so long-loop feedback suppresses CRH and ACTH."
+      },
+      {
+        "name": "Size of his zona fasciculata, during treatment",
+        "answer": "down",
+        "why": "ACTH keeps the zona fasciculata large; without it, the layer shrinks over weeks."
+      },
+      {
+        "name": "His own cortisol release, during treatment",
+        "answer": "down",
+        "why": "With little ACTH, the shrunken zona fasciculata makes little cortisol."
+      },
+      {
+        "name": "Total glucocorticoid activity, in the days after stopping",
+        "answer": "down",
+        "why": "The drug is gone, and his shrunken adrenal cortex cannot make up for it quickly."
+      },
+      {
+        "name": "Blood glucose, in the days after stopping",
+        "answer": "down",
+        "why": "Without glucocorticoid, the liver makes less glucose by gluconeogenesis."
+      },
+      {
+        "name": "Blood pressure, in the days after stopping",
+        "answer": "down",
+        "why": "Cortisol is permissive for the vessels' response to norepinephrine and epinephrine; without it, vessels constrict poorly."
+      },
+      {
+        "name": "ACTH, in the days after stopping",
+        "answer": "up",
+        "why": "The drug's feedback is removed, so the hypothalamus and pituitary slowly restart, but the cortex needs weeks to months to respond fully."
+      }
+    ],
+    "why": {
+      "correct": "During treatment, feedback from the drug suppresses ACTH and the zona fasciculata shrinks. When the drug stops suddenly, glucocorticoid activity crashes: blood glucose and blood pressure fall, the picture of an adrenal crisis. ACTH begins to rise, but the cortex has shrunk and responds slowly. That is why long courses of glucocorticoids are tapered."
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A tumor of the anterior pituitary releases large amounts of ACTH regardless of feedback. Predict the change in each variable compared with a healthy person.",
+    "variables": [
+      {
+        "name": "Plasma cortisol",
+        "answer": "up",
+        "why": "ACTH drives the zona fasciculata to make cortisol."
+      },
+      {
+        "name": "CRH release from the hypothalamus",
+        "answer": "down",
+        "why": "High cortisol feeds back on the hypothalamus. The tumor ignores the feedback, but the hypothalamus still obeys it."
+      },
+      {
+        "name": "Size of both adrenal cortices",
+        "answer": "up",
+        "why": "Constant ACTH makes the zona fasciculata and zona reticularis grow."
+      },
+      {
+        "name": "Blood glucose",
+        "answer": "up",
+        "why": "Cortisol raises gluconeogenesis and makes muscle and fat resist insulin."
+      },
+      {
+        "name": "Adrenal androgens",
+        "answer": "up",
+        "why": "ACTH also drives the zona reticularis, which makes DHEA."
+      },
+      {
+        "name": "Aldosterone",
+        "answer": "none",
+        "why": "Aldosterone is driven mainly by angiotensin II and potassium; ACTH has only a small, short-lived effect on it."
+      }
+    ],
+    "why": {
+      "correct": "This is Cushing disease. Excess ACTH raises cortisol and adrenal androgens and enlarges both cortices, while feedback from the high cortisol shuts down CRH. Aldosterone is largely unaffected, because its main drivers are angiotensin II and potassium."
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Ms. Tran, 34, has lost weight, feels exhausted, craves salty food and feels faint when she stands. Her skin creases and gums have darkened. Blood tests show low sodium, high potassium, low glucose and a very high ACTH. Where is the problem?",
+    "options": [
+      "Her anterior pituitary is releasing too little ACTH",
+      "Her adrenal cortex has been destroyed",
+      "Her adrenal medulla has stopped releasing epinephrine",
+      "Her hypothalamus is releasing too much CRH"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is Addison disease, primary adrenal insufficiency. Low cortisol explains the weakness, weight loss and low glucose; low aldosterone explains the salt loss, high potassium and faintness. Feedback no longer holds back the pituitary, so ACTH rises very high, and high ACTH darkens the skin.",
+      "options": [
+        "Her ACTH is very high, not low. Pituitary failure would also spare aldosterone and would not darken her skin.",
+        "Correct. Both cortisol and aldosterone are low, and ACTH is high, so the cortex itself has failed.",
+        "Losing epinephrine alone causes little, because sympathetic nerves cover its effects. It cannot explain the high potassium or dark skin.",
+        "Too much CRH would raise ACTH and so raise cortisol, giving high glucose, not low."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A woman who has taken prednisone for a year for lung disease has a round face, a fat pad between her shoulders, thin skin and purple stretch marks. What would you expect her ACTH level to be?",
+    "options": [
+      "Low, suppressed by the drug",
+      "High",
+      "Normal",
+      "Undetectable"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Her Cushing syndrome comes from the drug, the most common cause. Prednisone acts like cortisol on the hypothalamus and pituitary, and long-loop feedback suppresses CRH and ACTH. Her own adrenal cortex shrinks.",
+      "options": [
+        "Correct. The drug suppresses ACTH through negative feedback.",
+        "High ACTH causes Cushing syndrome when a tumor releases it. Here the glucocorticoid comes from outside, and feedback suppresses ACTH.",
+        "A large dose of glucocorticoid for a year does not leave the axis unchanged: feedback turns ACTH down.",
+        "Her pituitary is intact but switched off by feedback. It can restart if the drug is tapered."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient with raised blood pressure starts a drug that blocks angiotensin-converting enzyme (ACE). What happens to his plasma potassium?",
+    "options": [
+      "It rises",
+      "It falls",
+      "It does not change"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Blocking ACE lowers angiotensin II, so the zona glomerulosa releases less aldosterone. With less aldosterone, the kidney secretes less potassium into the urine, and plasma potassium rises. Clinicians check potassium after starting these drugs.",
+      "options": [
+        "Correct. Blocking ACE lowers angiotensin II, so the zona glomerulosa releases less aldosterone. With less aldosterone, the kidney secretes less potassium into the urine, and plasma potassium rises. Clinicians check potassium after starting these drugs.",
+        "Potassium excretion falls, not rises, when aldosterone falls, so plasma potassium cannot fall for this reason.",
+        "Aldosterone is a main control of potassium excretion, so lowering it changes potassium."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "After a meal very rich in potassium, a person's plasma potassium rises. How does the adrenal cortex respond?",
+    "options": [
+      "Cortisol from the zona fasciculata drives potassium into the urine",
+      "Epinephrine from the medulla blocks potassium absorption from the gut",
+      "Aldosterone from the zona glomerulosa raises potassium excretion",
+      "DHEA from the zona reticularis lowers plasma potassium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "High potassium acts directly on zona glomerulosa cells, which release aldosterone. Aldosterone makes the last stretch of the kidney's tubes secrete more potassium into the urine, and plasma potassium falls: negative feedback.",
+      "options": [
+        "Cortisol's main effects are on fuel, inflammation and blood vessels. Handling potassium is aldosterone's job.",
+        "Epinephrine does shift potassium into cells briefly, but the adrenal cortex's response to high potassium is aldosterone.",
+        "Correct. High potassium is a direct stimulus for aldosterone.",
+        "DHEA is a weak androgen with no role in handling potassium."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Select every effect of cortisol.",
+    "options": [
+      "More gluconeogenesis in the liver",
+      "Breakdown of muscle protein",
+      "Stronger inflammatory responses",
+      "Blood vessels that respond normally to norepinephrine",
+      "Faster bone building",
+      "Less response of muscle and fat to insulin"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Cortisol raises blood glucose by driving gluconeogenesis, breaking down muscle protein for its amino acids and making tissues resist insulin. It is permissive for the vessels' response to sympathetic signals. It damps inflammation and slows bone building.",
+      "options": [
+        "Correct. Cortisol switches on gluconeogenesis.",
+        "Correct. The amino acids feed gluconeogenesis; in excess, muscles waste.",
+        "Cortisol damps inflammation, which is why glucocorticoid drugs treat inflammatory diseases.",
+        "Correct. This permissive effect is why low cortisol causes low blood pressure.",
+        "Cortisol slows bone building; long-term excess thins bone.",
+        "Correct. Muscle and fat take up less glucose, which leaves more in the blood; in excess this causes high blood glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A pituitary tumor destroys the ACTH-making cells. Unlike a person with Addison disease, this person does not develop darker skin or high potassium. Why?",
+    "options": [
+      "The pituitary tumor releases aldosterone in place of ACTH",
+      "ACTH is low, and aldosterone has its own main controls",
+      "The adrenal medulla takes over making cortisol",
+      "The skin and kidneys stop responding to adrenal hormones"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In pituitary failure, ACTH is low, so nothing darkens the skin. Cortisol falls, but the zona glomerulosa still answers angiotensin II and potassium, so aldosterone is mostly spared and potassium stays normal. In Addison disease the cortex itself is destroyed, so aldosterone falls too, and very high ACTH darkens the skin.",
+      "options": [
+        "The pituitary does not make aldosterone; only the zona glomerulosa does.",
+        "Correct. Low ACTH means no darkening, and aldosterone keeps its own controls.",
+        "The medulla makes epinephrine and norepinephrine. It cannot make steroids.",
+        "Nothing changes the tissues' responses. The difference lies in which hormones are low."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "People with very low cortisol often release less epinephrine from the adrenal medulla, even though their sympathetic nerves are normal. What explains the link?",
+    "options": [
+      "Cortisol is the chemical that preganglionic fibers release onto chromaffin cells",
+      "Chromaffin cells are cortex cells that have lost their steroids",
+      "The medulla makes its epinephrine out of cortisol",
+      "Cortisol-rich blood from the cortex keeps up an enzyme the medulla needs"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Much of the medulla's blood arrives from the cortex, rich in cortisol. Cortisol keeps up the enzyme that converts norepinephrine into epinephrine, so with little cortisol the medulla makes less epinephrine.",
+      "options": [
+        "Preganglionic sympathetic fibers release acetylcholine onto nicotinic receptor proteins of the chromaffin cells.",
+        "Chromaffin cells develop from the same embryonic tissue as postganglionic sympathetic neurons, not from cortex cells.",
+        "Epinephrine is an amine made from the amino acid tyrosine; cortisol is a steroid. One is not made from the other.",
+        "Correct. The shared blood supply lets the cortex set how much epinephrine the medulla can make."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A man lost in the mountains without food for three days still has a normal blood glucose, though his liver glycogen ran out on the first day. Which hormone most directly supplies that glucose, and from what?",
+    "options": [
+      "Cortisol, from muscle protein",
+      "Aldosterone, from sodium kept by the kidneys",
+      "Epinephrine, from glycogen stored in the liver",
+      "Insulin, from glucose stored in fat"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "With liver glycogen gone, glucose must be made new. Cortisol, with glucagon, switches on gluconeogenesis in the liver and breaks down muscle protein to supply amino acids for it.",
+      "options": [
+        "Correct. Cortisol drives gluconeogenesis from amino acids.",
+        "Aldosterone controls sodium and potassium. Sodium is not a fuel.",
+        "Epinephrine releases glucose from liver glycogen, but the glycogen is gone after the first day.",
+        "Insulin lowers blood glucose and is low during fasting."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Within seconds of a car swerving toward her, a driver's heart pounds and her blood glucose begins to rise. Which stage of the general adaptation syndrome is this, and which hormone mainly drives it?",
+    "options": [
+      "Resistance; cortisol",
+      "Alarm reaction; epinephrine",
+      "Alarm reaction; aldosterone",
+      "Stage of exhaustion; ACTH"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The alarm reaction is the fight-or-flight response, acting in seconds through sympathetic nerves and epinephrine from the adrenal medulla. Epinephrine speeds the heart and switches on glycogenolysis in the liver.",
+      "options": [
+        "Cortisol acts over hours through new proteins. It carries the stage of resistance, not the first seconds.",
+        "Correct. The seconds-long response is sympathetic and epinephrine-driven.",
+        "Aldosterone takes hours to act and handles sodium and potassium, not heart rate.",
+        "The stage of exhaustion comes after weeks or months of unrelieved stress."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A man who eats a large bag of black licorice every day develops raised blood pressure and low potassium, yet his aldosterone and renin are low. Licorice blocks the kidney enzyme that inactivates cortisol. What explains his findings?",
+    "options": [
+      "Aldosterone contained in the licorice itself",
+      "Extra epinephrine from his adrenal medulla",
+      "Kidney cells that no longer respond to aldosterone",
+      "Cortisol acting on the kidney like aldosterone"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Cortisol can bind aldosterone's receptor protein and circulates at far higher levels. Normally an enzyme in the kidney's aldosterone-sensitive cells inactivates it. With the enzyme blocked, cortisol acts like aldosterone: sodium and water are kept, potassium is lost, pressure rises, and the higher volume turns renin and aldosterone down.",
+      "options": [
+        "Licorice contains no aldosterone; its effect comes from letting the body's own cortisol act on the kidney.",
+        "Epinephrine could raise pressure but would not explain the low potassium with low renin and aldosterone.",
+        "If the kidney stopped responding to aldosterone, he would lose sodium and keep potassium, the opposite of his findings.",
+        "Correct. Unprotected cortisol mimics aldosterone."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Why do all hormones of the adrenal cortex act over hours rather than seconds?",
+    "options": [
+      "They are stored in vesicles and released slowly over hours",
+      "They travel to their targets along nerves",
+      "They change which proteins the cell makes",
+      "They are converted into epinephrine before acting"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Cortex hormones are steroids built from cholesterol. They cross the plasma membrane, bind an intracellular receptor protein, and switch genes on or off. Building new proteins takes hours, and the effects last.",
+      "options": [
+        "Steroids are not stored in vesicles; they diffuse out as soon as they are made.",
+        "Hormones travel in the blood, not along nerves.",
+        "Correct. Changing gene expression is slow to start and slow to wear off.",
+        "Steroids act as they are. Epinephrine is a different kind of hormone, an amine made in the medulla."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In adult women, what is the main role of the adrenal androgens such as DHEA?",
+    "options": [
+      "Setting the level of sodium in the blood",
+      "Triggering the release of an egg from an ovary each month",
+      "Raising blood glucose during a fast",
+      "Supplying androgen for body hair and sex drive"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In women, the adrenal glands are a main source of androgen. DHEA is weak itself, but tissues convert it into stronger androgens, which support pubic and underarm hair and contribute to sex drive. In adult men, the testes make far more.",
+      "options": [
+        "Sodium is set by aldosterone from the zona glomerulosa.",
+        "The monthly release of an egg is triggered by the pituitary's gonadotropins, not by adrenal androgens.",
+        "Cortisol, from the zona fasciculata, raises blood glucose during fasting.",
+        "Correct. Adrenal androgens matter most in women."
+      ]
+    }
+  },
+  {
+    "id": "anp-adrenal-glands-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "the adrenal glands run out under chronic stress",
+    "q": "A textbook says the stage of exhaustion happens when the adrenal glands run out of hormone. What does current evidence show about most people under long-term stress?",
+    "options": [
+      "Cortisol production falls to zero within a few weeks of stress",
+      "Cortisol stays normal or high; long exposure does the damage",
+      "The medulla shrinks until epinephrine disappears from the blood",
+      "Aldosterone takes over as the main stress hormone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Under ordinary chronic stress, the axis keeps working: cortisol is usually normal or high, or its daily rhythm flattens. The harm of the stage of exhaustion comes from prolonged exposure, the same effects as cortisol excess. \"Adrenal fatigue\" is not a recognized diagnosis. Exams may still expect \"resources are depleted\".",
+      "options": [
+        "Cortisol does not vanish under chronic stress. A truly failed cortex is Addison disease, a separate illness.",
+        "Correct. The glands do not wear out; long exposure does the damage.",
+        "The medulla keeps working under chronic stress; nothing shows it shrinking.",
+        "Aldosterone handles sodium and potassium. It does not take over cortisol's role."
+      ]
+    }
+  }
+]

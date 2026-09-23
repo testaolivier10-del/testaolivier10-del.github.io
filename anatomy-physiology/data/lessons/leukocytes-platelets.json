@@ -1,0 +1,48 @@
+{
+  "topic": "leukocytes-platelets",
+  "hook": "<p>Jayden, 7, has been pale and tired for weeks, bruises easily and has had three fevers in a month. His white cell count is 58,000 per µL, five times normal, yet most of the cells are immature blasts. His hemoglobin is 7 g/dL and his platelet count is 20,000 per µL. How can a child with so many white cells keep getting infections? The answer lies in what normal white blood cells and platelets are, and where they come from.</p>",
+  "prereq": [
+    {
+      "q": "What does a macrophage do?",
+      "options": ["It makes collagen fibers", "It engulfs and digests debris and microbes", "It stores fat"],
+      "correct": 1,
+      "why": "A macrophage is a large phagocyte: it engulfs bacteria, dead cells and debris and digests them in its lysosomes.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "How does a cell take in a whole bacterium?",
+      "options": ["By phagocytosis", "By simple diffusion", "By a sodium–potassium pump"],
+      "correct": 0,
+      "why": "Phagocytosis is endocytosis of large particles: the membrane wraps around the particle and pinches off a vesicle containing it.",
+      "review": "active-transport"
+    },
+    {
+      "q": "Which cells in the marrow shed platelets?",
+      "options": ["Myeloid stem cells", "Megakaryocytes", "Reticulocytes"],
+      "correct": 1,
+      "why": "Megakaryocytes push arms of cytoplasm into marrow vessels, and the blood breaks them into platelets.",
+      "review": "blood-composition"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-18-11",
+    "caption": "The three granulocytes. Hide the labels and name each cell from the shape of its nucleus and the color of its granules."
+  },
+  "chain": [
+    { "cause": "Bacteria enter a cut, and damaged cells and tissue macrophages release chemical signals.", "effect": "The cells lining nearby capillaries become sticky, and neutrophils in the passing blood slow down and stick to them." },
+    { "cause": "Neutrophils stuck to the capillary wall squeeze between its cells.", "effect": "They crawl through the tissue toward the highest concentration of the chemical signals, at the infection." },
+    { "cause": "At the infection, neutrophils engulf bacteria by phagocytosis.", "effect": "Their granules and a burst of toxic oxygen compounds kill the bacteria, and the neutrophils soon die, forming pus." },
+    { "cause": "Signals from the infection reach the marrow.", "effect": "The marrow releases stored and young neutrophils, including band cells, and the blood shows leukocytosis." },
+    { "cause": "Monocytes arrive over the next days and become macrophages.", "effect": "Long-lived macrophages clear dead neutrophils, bacteria and debris." }
+  ],
+  "misconception": {
+    "wrong": "A high white cell count means a strong immune defense.",
+    "right": "A high count can mean the marrow is responding well to an infection, but in leukemia it means a single cancerous precursor is flooding the blood with cells that never mature and cannot fight infection. Those cells also crowd out normal marrow, so the patient has too few working neutrophils, red cells and platelets. What matters is which cells are high and whether they are mature, which is what the differential count shows."
+  },
+  "check": ["anp-leukocytes-platelets-1", "anp-leukocytes-platelets-4", "anp-leukocytes-platelets-6", "anp-leukocytes-platelets-8", "anp-leukocytes-platelets-12", "anp-leukocytes-platelets-15", "anp-leukocytes-platelets-16"],
+  "summary": "<p>Leukocytes keep their nucleus and organelles, number about 4,500–11,000 per µL, and work mostly outside the blood, squeezing through capillary walls toward chemical signals. Granulocytes have visible granules: neutrophils (50–70%, many-lobed nucleus, first to engulf bacteria), eosinophils (red-orange granules, attack parasitic worms, gather in allergies) and basophils (dark granules of histamine). Agranulocytes lack visible granules: lymphocytes (large round nucleus; specific immunity, including cells that release antibodies) and monocytes (largest, kidney-shaped nucleus; become macrophages). An antigen is a molecule the immune system recognizes as a specific target; an antibody is a Y-shaped protein that binds one antigen. The differential count gives each type's share; leukocytosis and leukopenia are high and low totals. Leukemia is cancer of blood-forming cells in the marrow; lymphoma is cancer of lymphocytes in lymph nodes. Platelets (thrombocytes) are nucleus-free fragments of megakaryocytes, 150,000–450,000 per µL, living 7–10 days, with granules and contractile proteins that let them seal breaks in vessel walls.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" }
+  ]
+}

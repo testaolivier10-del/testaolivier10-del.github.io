@@ -1,0 +1,90 @@
+{
+  "topic": "thyroid-parathyroid",
+  "hook": "<p>Ms. Duarte, 38, has lost 6 kg in two months while eating more than ever. She feels hot, her hands shake and her heart races at rest. Her thyroid gland is overactive, and it is removed. The next evening her lips tingle and her hand cramps into a claw when her blood pressure is taken. Her thyroid hormone problem is fixed, but her blood calcium has crashed, because four tiny glands on the back of her thyroid gland were bruised in the operation.</p>",
+  "prereq": [
+    {
+      "q": "How do lipid-soluble hormones change a target cell's activity?",
+      "options": [
+        "They bind a membrane receptor protein and raise cAMP",
+        "They bind an intracellular receptor protein and change gene transcription",
+        "They open ion channels in the plasma membrane"
+      ],
+      "correct": 1,
+      "why": "Lipid-soluble hormones cross the membrane and bind receptor proteins inside the cell. The hormone–receptor complex binds a hormone response element and changes transcription.",
+      "review": "hormone-action"
+    },
+    {
+      "q": "What happens to TSH if the thyroid gland's output falls?",
+      "options": [
+        "TSH falls with it",
+        "TSH rises, because long-loop negative feedback is removed",
+        "TSH stays the same"
+      ],
+      "correct": 1,
+      "why": "The thyroid gland's hormones normally hold TSH down by negative feedback. When they fall, the brake comes off and TSH rises.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "Which bone cells break bone matrix down and release calcium into the blood?",
+      "options": [
+        "Osteoblasts",
+        "Osteocytes",
+        "Osteoclasts"
+      ],
+      "correct": 2,
+      "why": "Osteoclasts dissolve bone matrix, releasing calcium and phosphate. Osteoblasts build new matrix, and osteocytes maintain it.",
+      "review": "bone-histology"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-17-2",
+    "caption": "The endocrine glands. Look at the neck inset: the thyroid gland wraps the front of the trachea, and the parathyroid glands sit on its back surface. Hide the labels and name them."
+  },
+  "chain": [
+    {
+      "cause": "Blood calcium falls below its set point.",
+      "effect": "Fewer calcium ions bind the calcium-sensing receptor proteins on parathyroid chief cells, and the cells release more PTH."
+    },
+    {
+      "cause": "PTH binds receptor proteins on osteoblasts.",
+      "effect": "The osteoblasts signal osteoclasts to form and work harder, and dissolved bone releases calcium and phosphate into the blood."
+    },
+    {
+      "cause": "PTH also acts on the kidneys.",
+      "effect": "The kidney's tubules keep more calcium, lose more phosphate, and switch on the enzyme that makes calcitriol."
+    },
+    {
+      "cause": "Calcitriol reaches the intestine and changes transcription in its lining cells.",
+      "effect": "The intestine absorbs more calcium and phosphate from food."
+    },
+    {
+      "cause": "Calcium from bone, kidneys and intestine brings blood calcium back to its set point.",
+      "effect": "The chief cells release less PTH: negative feedback."
+    }
+  ],
+  "misconception": {
+    "wrong": "Calcitonin and PTH are equal partners: calcitonin lowers blood calcium just as strongly as PTH raises it.",
+    "right": "PTH and calcitriol are the main regulators of blood calcium. Calcitonin does lower calcium by inhibiting osteoclasts, but in adults its effect is small: people with no thyroid gland, and so no calcitonin, keep normal calcium, and so do people with tumors making huge amounts of it. When calcium rises, the main correction is that PTH release falls. Exams still expect calcitonin as the hormone that lowers blood calcium."
+  },
+  "check": [
+    "anp-thyroid-parathyroid-3",
+    "anp-thyroid-parathyroid-4",
+    "anp-thyroid-parathyroid-6",
+    "anp-thyroid-parathyroid-7",
+    "anp-thyroid-parathyroid-12",
+    "anp-thyroid-parathyroid-14",
+    "anp-thyroid-parathyroid-16",
+    "anp-thyroid-parathyroid-19"
+  ],
+  "summary": "<p>The thyroid gland's follicles store thyroglobulin in colloid. Follicular cells trap iodide, attach iodine to tyrosines on thyroglobulin, and release thyroxine (T4) and triiodothyronine (T3) when TSH drives them; tissues convert T4 to the more active T3. These lipid-soluble hormones change transcription in almost every cell, raising oxygen use and heat, sensitizing the heart to the sympathetic system, and enabling growth and brain development. TRH and TSH drive the gland, and T4 and T3 feed back to hold them down. Too little hormone (hypothyroidism) slows everything; too much (hyperthyroidism, usually Graves disease) speeds everything; high TSH or a stimulating immune protein causes a goiter; newborns are screened for congenital hypothyroidism. The parathyroid glands release PTH when calcium falls: it frees calcium from bone through osteoblasts and osteoclasts, makes the kidneys keep calcium and lose phosphate, and switches on calcitriol, which raises calcium absorption in the intestine. Too little vitamin D causes rickets or osteomalacia. Calcitonin from the C cells inhibits osteoclasts, but in adults its effect is minor.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-6",
+      "label": "NREMT: Anatomy and physiology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-22",
+      "label": "NREMT: Diabetic emergencies and altered mental status"
+    }
+  ]
+}

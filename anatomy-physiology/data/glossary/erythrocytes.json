@@ -1,0 +1,47 @@
+{
+  "erythrocyte": {
+    "def": "A red blood cell: a flexible biconcave disc about 7.5 µm across with no nucleus or organelles, packed with hemoglobin. It makes ATP by glycolysis and lives about 120 days.",
+    "roots": [["erythr-", "red"], ["-cyte", "cell"]],
+    "say": "eh-RITH-roh-site"
+  },
+  "hemoglobin": {
+    "def": "The iron-containing protein that fills red blood cells and carries oxygen. Each molecule has four globin chains (two alpha and two beta in adults), and each chain holds a heme ring with an iron ion that binds one oxygen molecule.",
+    "roots": [["hemo-", "blood"], ["globin", "the protein part"]],
+    "say": "HEE-moh-gloh-bin"
+  },
+  "erythropoiesis": {
+    "def": "The making of red blood cells in red bone marrow, from proerythroblasts through erythroblasts to reticulocytes, which lose their ribosomes in a day or two in the blood. Erythropoietin from the kidneys drives it in a negative feedback loop that senses the oxygen reaching the kidneys.",
+    "roots": [["erythro-", "red"], ["-poiesis", "making"], ["reticul-", "little net"]],
+    "say": "eh-rith-roh-poy-EE-sis; reh-TIK-yoo-loh-site"
+  },
+  "rbc-lifecycle": {
+    "def": "After about 120 days, macrophages in the spleen, liver and marrow engulf old red cells. Globin becomes amino acids, iron is recycled, and heme becomes green biliverdin and then yellow bilirubin, which travels on albumin to the liver, is conjugated and leaves in bile.",
+    "roots": [["bili-", "bile"], ["verd-", "green"], ["rub-", "red"]],
+    "say": "bil-ih-VER-din; bil-ih-ROO-bin"
+  },
+  "iron-handling": {
+    "def": "How the body moves and keeps iron: transferrin carries it in plasma to the marrow and other cells; ferritin stores it safely inside liver cells, macrophages and marrow; hemosiderin is a clumped, slowly released store. Most iron is recycled from old red cells.",
+    "roots": [["ferr-", "iron"], ["trans-", "across"], ["sider-", "iron"]],
+    "say": "trans-FAIR-in; FAIR-ih-tin; hee-moh-SID-er-in"
+  },
+  "jaundice": {
+    "def": "Yellowing of the skin, the whites of the eyes and mucous membranes when bilirubin builds up in the blood, from fast red cell breakdown, liver damage or blocked outflow of bile.",
+    "roots": [["jaune", "yellow (French)"]],
+    "say": "JAWN-dis"
+  },
+  "anemia": {
+    "def": "Too little hemoglobin to carry a normal load of oxygen, from blood loss (hemorrhagic anemia), too little production (iron-deficiency, pernicious and aplastic anemia, or too little erythropoietin) or early destruction of red cells (sickle cell disease, thalassemia).",
+    "roots": [["an-", "without"], ["-emia", "blood condition"]],
+    "say": "uh-NEE-mee-uh"
+  },
+  "sickle-cell": {
+    "def": "An inherited disease in which a single mutation in the beta globin gene makes hemoglobin S. When HbS gives up its oxygen it forms stiff fibers that bend red cells into rigid sickles, which block small vessels and are destroyed early. One copy of the gene causes sickle cell trait, usually without symptoms.",
+    "roots": [],
+    "say": ""
+  },
+  "polycythemia": {
+    "def": "An abnormally high red cell count and hematocrit: primary (a marrow mutation, polycythemia vera, with low erythropoietin), secondary (raised erythropoietin, as at altitude or with lung disease) or relative (lost plasma). It thickens the blood and raises resistance to flow.",
+    "roots": [["poly-", "many"], ["cyt-", "cell"], ["-emia", "blood condition"]],
+    "say": "pol-ee-sy-THEE-mee-uh"
+  }
+}

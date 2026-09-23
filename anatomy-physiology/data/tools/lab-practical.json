@@ -5986,7 +5986,7 @@
        "taught": "brain-protection",
        "fn": "Knob-like outpouchings of the arachnoid mater that push into the venous channel in the dura. Cerebrospinal fluid passes through them from the subarachnoid space back into venous blood.",
        "follow": {
-        "q": "Where does cerebrospinal fluid return to the blood?",
+        "q": "Where does cerebrospinal fluid classically return to the venous blood?",
         "options": [
          "At the choroid plexus",
          "At the arachnoid granulations",
@@ -5994,7 +5994,7 @@
          "At the median aperture"
         ],
         "correct": 1,
-        "why": "CSF drains from the subarachnoid space into venous blood through the arachnoid granulations. The choroid plexus makes CSF, and the interventricular foramen and median aperture are openings it flows through on the way.",
+        "why": "CSF drains from the subarachnoid space into venous blood through the arachnoid granulations. The choroid plexus makes CSF, and the interventricular foramen and median aperture are openings it flows through on the way. (Some CSF also drains along nerve sheaths and through vessels in the dura; how the load is split in people is still being worked out.)",
         "level": "recall"
        }
       },
@@ -6042,7 +6042,7 @@
        ],
        "concept": "csf",
        "taught": "brain-protection",
-       "fn": "Tufts of capillaries covered by ependymal cells in the roof of each ventricle. They filter blood plasma to make cerebrospinal fluid.",
+       "fn": "Tufts of leaky capillaries covered by a layer of modified ependymal cells, one in each ventricle. The covering cells, sealed by tight junctions, secrete cerebrospinal fluid: they actively transport sodium into the ventricle, and other ions and water follow.",
        "follow": {
         "q": "A child is born with a narrowed cerebral aqueduct. The choroid plexus keeps making CSF. Which ventricles swell?",
         "options": [
@@ -6423,15 +6423,15 @@
        "taught": "spinal-cord",
        "fn": "The bundle of sensory axons entering the back of the cord. It carries signals from the skin, muscles and organs into the dorsal horn.",
        "follow": {
-        "q": "A surgeon cuts one dorsal root to relieve pain. What is the expected result in the region that root supplies?",
+        "q": "A surgeon cuts the dorsal roots of several neighboring segments to relieve pain. What is the expected result in the region they supply?",
         "options": [
          "Loss of feeling, with movement spared",
          "Paralysis, with feeling spared",
          "Loss of both feeling and movement",
-         "No change, because the ventral root takes over"
+         "No change, because the ventral roots take over"
         ],
         "correct": 0,
-        "why": "The dorsal root carries only sensory axons into the cord, so cutting it removes feeling from its region while the motor axons in the ventral root still reach the muscles. Paralysis would follow damage to the ventral root, and the ventral root carries no sensory signals to take over.",
+        "why": "The dorsal roots carry only sensory axons into the cord, so cutting them removes feeling from their region while the motor axons in the ventral roots still reach the muscles. (Neighboring roots overlap, so cutting just one dulls feeling rather than removing it.) Paralysis would follow damage to the ventral roots, and they carry no sensory signals to take over.",
         "level": "apply"
        }
       },

@@ -984,12 +984,6 @@
           "why": "The wreckage has to go before a path can form, and it is there to clear only once the far part has broken down."
         },
         {
-          "id": "soma",
-          "label": "Soma gears up",
-          "text": "The soma swells, its Nissl bodies disperse, and it switches its protein making from signaling to growth.",
-          "why": "A new length of axon needs a large supply of structural proteins, which only the soma can make, so it retools while the debris is being cleared."
-        },
-        {
           "id": "tube",
           "label": "Schwann cells form a tube",
           "text": "Schwann cells multiply and line up inside the old connective tissue sheath, forming a regeneration tube coated with growth-promoting molecules.",
@@ -999,7 +993,7 @@
           "id": "sprout",
           "label": "Sprout grows ~1 mm/day",
           "text": "Sprouts grow from the cut end, and one that finds the tube is guided along it at about 1 millimeter a day.",
-          "why": "The sprout needs the tube to follow; without it, sprouts wander into scar tissue. The rate matches slow axonal transport, which supplies the growing tip."
+          "why": "The sprout needs the tube to follow; without it, sprouts wander into scar tissue. Meanwhile the soma has swollen, dispersed its Nissl bodies and switched to making growth proteins, which slow axonal transport delivers at about the rate the tip advances."
         },
         {
           "id": "reconnect",
@@ -1009,7 +1003,7 @@
         }
       ],
       "missing": {
-        "at": 4,
+        "at": 3,
         "distractors": [
           {
             "text": "Oligodendrocytes move out of the spinal cord into the nerve, multiply and line up inside the old connective tissue sheath, forming a tube that guides the regrowing axon.",
@@ -1026,11 +1020,11 @@
         ]
       },
       "error": {
-        "at": 5,
+        "at": 4,
         "text": "Sprouts grow from the cut end, and one that finds the tube is guided along it at about 1 centimeter a day.",
         "why": "Regrowth is about 1 millimeter a day, the speed of slow axonal transport. That is why a nerve cut 20 cm from a fingertip takes six months or more to bring back feeling."
       },
-      "summary": "The part beyond the cut dies back and is cleared; the soma retools for growth; Schwann cells build a tube; the axon regrows along it at about a millimeter a day and is remyelinated once it reaches its target."
+      "summary": "The part beyond the cut dies back and is cleared while the soma retools for growth; Schwann cells build a tube; the axon regrows along it at about a millimeter a day and is remyelinated once it reaches its target."
     },
     {
       "id": "myelination",
@@ -1406,8 +1400,8 @@
             "why": "The mesencephalon does not split; it becomes the midbrain. The hindbrain (rhombencephalon) splits into the metencephalon and myelencephalon."
           },
           {
-            "text": "The neural tube opens again to form the ventricles.",
-            "why": "The tube stays closed. Its hollow center simply persists as the ventricles and the spinal cord’s central canal."
+            "text": "The neural tube opens again to form the fluid-filled spaces inside the brain.",
+            "why": "The tube stays closed. Its hollow center simply persists as the fluid-filled spaces inside the brain and the thin canal inside the spinal cord."
           }
         ]
       },
@@ -2090,11 +2084,11 @@
         "at": 5,
         "distractors": [
           {
-            "text": "They cross the midline in the internal capsule.",
+            "text": "They cross the midline in the internal capsule, before they leave the cerebral hemisphere.",
             "why": "The internal capsule lies within one hemisphere. The corticospinal tract crosses at the bottom of the medulla."
           },
           {
-            "text": "They stay uncrossed and descend in the left lateral corticospinal tract.",
+            "text": "They stay on the left side and descend, uncrossed, in the left lateral corticospinal tract to the left cervical enlargement.",
             "why": "Then the left cortex would move the left hand. Most axons cross at the pyramidal decussation before descending."
           },
           {
@@ -2306,7 +2300,7 @@
           "id": "fire",
           "label": "Action potentials fire",
           "text": "The depolarization spreads to the axon, and if it reaches threshold, action potentials fire.",
-          "why": "The receptor potential is graded; firing begins only at threshold."
+          "why": "The depolarization is graded; firing begins only at threshold."
         },
         {
           "id": "plate",
@@ -2318,7 +2312,7 @@
           "id": "bulb",
           "label": "Olfactory bulb",
           "text": "In the olfactory bulb, all axons from neurons with the same receptor protein converge on the same few clusters of synapses.",
-          "why": "The bulb sorts the signals by receptor type and pools weak signals before passing them on."
+          "why": "The bulb sorts the signals by receptor protein type and pools weak signals before passing them on."
         },
         {
           "id": "cortex",
@@ -2804,11 +2798,11 @@
         "at": 3,
         "distractors": [
           {
-            "text": "The stapes pushes on the round window and sets up waves in the scala tympani.",
+            "text": "The stapes pushes on the round window, setting up pressure waves in the perilymph of the scala tympani.",
             "why": "The stapes sits in the oval window, which opens into the scala vestibuli. The round window at the end of the scala tympani bulges out to relieve the pressure."
           },
           {
-            "text": "The malleus vibrates the hair cells directly.",
+            "text": "The malleus reaches through the oval window and vibrates the hair cells of the spiral organ directly.",
             "why": "The ossicles never touch the hair cells. They move the fluid through the oval window, and the fluid moves the basilar membrane."
           }
         ]
