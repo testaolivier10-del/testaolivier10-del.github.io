@@ -1,0 +1,55 @@
+{
+  "figure": "os-3-35",
+  "labels": [
+    {
+      "id": "transcription-factors",
+      "name": "Transcription factors",
+      "accept": [
+        "transcription factors",
+        "transcription factor"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "gene-expression"
+    },
+    {
+      "id": "rna-polymerase",
+      "name": "RNA polymerase",
+      "accept": [
+        "rna polymerase",
+        "polymerase"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "transcription-begins",
+      "name": "Transcription begins",
+      "accept": [
+        "transcription begins",
+        "initiation of transcription",
+        "transcription"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "promoter",
+      "name": "Promoter",
+      "accept": [
+        "promoter",
+        "promoter (gene)",
+        "promoter region"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "transcription"
+    }
+  ]
+}

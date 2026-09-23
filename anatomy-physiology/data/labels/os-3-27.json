@@ -1,0 +1,143 @@
+{
+  "figure": "os-3-27",
+  "labels": [
+    {
+      "id": "pre-mrna",
+      "name": "pre-mRNA transcript",
+      "accept": [
+        "pre-mrna transcript",
+        "pre-mrna",
+        "primary transcript"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "exon-1",
+      "name": "Exon 1",
+      "accept": [
+        "exon 1",
+        "exon"
+      ],
+      "box": [
+        108,
+        27,
+        64,
+        24
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "intron-a",
+      "name": "Intron",
+      "accept": [
+        "intron",
+        "introns"
+      ],
+      "box": [
+        182,
+        27,
+        60,
+        24
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "exon-2",
+      "name": "Exon 2",
+      "accept": [
+        "exon 2",
+        "exon"
+      ],
+      "box": [
+        250,
+        27,
+        64,
+        24
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "intron-b",
+      "name": "Intron",
+      "accept": [
+        "intron",
+        "introns"
+      ],
+      "box": [
+        324,
+        27,
+        60,
+        24
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "exon-3",
+      "name": "Exon 3",
+      "accept": [
+        "exon 3",
+        "exon"
+      ],
+      "box": [
+        394,
+        27,
+        64,
+        24
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "intron-spliceosome",
+      "name": "Intron",
+      "accept": [
+        "intron",
+        "introns"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "spliceosome",
+      "name": "Spliceosome",
+      "accept": [
+        "spliceosome",
+        "spliceosomes"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "spliced-rna",
+      "name": "Spliced RNA",
+      "accept": [
+        "spliced rna",
+        "mature mrna",
+        "messenger rna",
+        "mrna"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "rna"
+    },
+    {
+      "id": "intron-removed",
+      "name": "Intron",
+      "accept": [
+        "intron",
+        "introns"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "transcription"
+    }
+  ]
+}

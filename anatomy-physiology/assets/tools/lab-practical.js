@@ -212,7 +212,7 @@
     var covers = (st.covered || []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
     var boxes = st.labels.map(function(lab){
       var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"';
-      if(mode === 'explore') return '<button type="button" class="lp-box lp-open"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
+      if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
       if(mode === 'study'){
         var shown = (opts.reveal || {})[lab.id];
         return '<button type="button" class="lp-box lp-mask' + (shown ? ' is-shown' : '') + '"' + dl + ' style="' + style + '" aria-pressed="' + (shown ? 'true' : 'false') + '" aria-label="' + (shown ? esc(lab.name) + '. Select to hide.' : 'Hidden label. Select to reveal.') + '"></button>';
@@ -368,7 +368,7 @@
           : 'Every label is masked. Select a mask to reveal it, or try naming it first.') + '</p>' +
         stationTabs(s, n, mode) +
         (mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
-        '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z }) +
+        '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick }) +
         '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : '<p class="anp-small">' + (mode === 'explore' ? 'Select a label on the figure.' : 'Revealed labels are explained here.') + '</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
       paint(body);
@@ -440,13 +440,14 @@
     var k = 0, z = 1, right = 0, results = [];
     function header(){
       return (s ? setHeader(s, 'quiz') : modeTabs('quiz') + '<h2 class="lp-title" tabindex="-1">' + esc(title) + '</h2>') +
-        '<div class="lp-settings" role="group" aria-label="Quiz settings">' +
+        '<details class="lp-settings-d"' + (pref('qopen', false) ? ' open' : '') + '><summary>Quiz settings: ' + esc(p.kind === 'mix' ? 'name it and point to' : p.kind === 'name' ? 'name it only' : 'point to only') + (p.mc ? ', multiple choice' : ', typed answers') + '</summary><div class="lp-settings" role="group" aria-label="Quiz settings">' +
         '<label class="anp-filter">Ask <select class="lp-set-kind"><option value="mix"' + (p.kind === 'mix' ? ' selected' : '') + '>Name it and point to</option><option value="name"' + (p.kind === 'name' ? ' selected' : '') + '>Name it only</option><option value="point"' + (p.kind === 'point' ? ' selected' : '') + '>Point to only</option></select></label>' +
-        '<label class="anp-filter"><input type="checkbox" class="lp-set-mc"' + (p.mc ? ' checked' : '') + '> Multiple choice (beginner)</label>' +
-        '</div>';
+        '<label class="lp-check"><input type="checkbox" class="lp-set-mc"' + (p.mc ? ' checked' : '') + '> Multiple choice instead of typing (beginner)</label>' +
+        '</div></details>';
     }
     function wireSettings(){
-      var ks = app.querySelector('.lp-set-kind'), mc = app.querySelector('.lp-set-mc');
+      var ks = app.querySelector('.lp-set-kind'), mc = app.querySelector('.lp-set-mc'), dd = app.querySelector('.lp-settings-d');
+      if(dd) dd.addEventListener('toggle', function(){ setPref('qopen', dd.open); });
       if(ks) ks.addEventListener('change', function(){ setPref('qkind', ks.value); var pool = run.map(function(r){ return r.it; }); startQuiz(s, pool, title); });
       if(mc) mc.addEventListener('change', function(){ setPref('mc', mc.checked); p.mc = mc.checked; step(true); });
     }

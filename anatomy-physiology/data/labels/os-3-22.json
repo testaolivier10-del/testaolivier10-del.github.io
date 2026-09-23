@@ -1,0 +1,65 @@
+{
+  "figure": "os-3-22",
+  "labels": [
+    {
+      "id": "chromosome",
+      "name": "Chromosome",
+      "accept": [
+        "chromosome",
+        "chromosomes"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "histones",
+      "name": "Histones",
+      "accept": [
+        "histones",
+        "histone"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "chromatin",
+      "name": "Chromatin",
+      "accept": [
+        "chromatin"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "nucleosome",
+      "name": "Nucleosome",
+      "accept": [
+        "nucleosome",
+        "nucleosomes"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "dna-helix",
+      "name": "DNA helix",
+      "accept": [
+        "dna helix",
+        "dna",
+        "double helix"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "dna"
+    }
+  ]
+}

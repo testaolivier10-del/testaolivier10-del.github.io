@@ -356,7 +356,7 @@
     "q": "Where does the energy released by ATP hydrolysis come from?",
     "options": [
       "From breaking the bond that holds the end phosphate onto ATP",
-      "From the products holding less energy than ATP and water did",
+      "From the products (ADP and phosphate) holding less energy than ATP and water did",
       "From the ATPase adding its own energy as it splits ATP",
       "From heat taken up from the surrounding fluid"
     ],

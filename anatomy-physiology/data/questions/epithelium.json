@@ -37,9 +37,9 @@
     "q": "An epithelial cell's apical surface faces which direction?",
     "options": [
       "Toward the basement membrane",
-      "Toward the capillaries that supply its cells",
+      "Toward the capillaries that supply it",
       "Toward a lumen or the outside of the body",
-      "Toward the neighboring cells along its sides"
+      "Toward neighboring cells along its sides"
     ],
     "correct": 2,
     "why": {
@@ -63,9 +63,9 @@
     "q": "What does it mean that epithelium is avascular?",
     "options": [
       "Its cells have no nuclei",
-      "It contains no blood vessels",
+      "It contains no blood vessels of its own",
       "It cannot divide or renew itself",
-      "It is not attached to any deeper tissue"
+      "It is not attached to deeper tissue"
     ],
     "correct": 1,
     "why": {
@@ -249,21 +249,21 @@
     "core": [
       "structure-function"
     ],
-    "q": "Why is the lining of the esophagus nonkeratinized stratified squamous epithelium rather than the keratinized kind?",
+    "q": "The esophagus is lined by nonkeratinized stratified squamous epithelium. Which description of that lining and its conditions is accurate?",
     "options": [
-      "A moist surface needs wear resistance but no waterproof layer",
-      "The esophagus absorbs nutrients, which keratin would block",
-      "Food does not rub the esophagus hard enough to need protection",
-      "Keratin would stop the esophagus from stretching when you swallow"
+      "Many layers face scraping food, and the moist surface cells stay alive",
+      "Its surface cells absorb nutrients from food as it passes",
+      "Food passes too quickly to rub the lining",
+      "Its surface cells are dead and packed with keratin"
     ],
     "correct": 0,
     "why": {
-      "correct": "Swallowed food scrapes the esophagus, so it needs many layers. But the surface stays moist, so it has no need for the dead, keratin-filled layer that stops water loss from your skin. Its surface cells stay alive.",
+      "correct": "Swallowed food scrapes the esophagus, and its lining has many layers of cells, so worn surface cells are replaced from below. The surface stays wet, and its surface cells stay alive. It has no dead, keratin-filled layer like the one on your skin.",
       "options": [
-        "Correct. Many layers resist wear; a moist surface needs no keratinized layer.",
+        "Correct. Many layers take the wear, and the wet surface cells stay alive.",
         "The esophagus moves food along; it does not absorb nutrients.",
-        "Food scrapes the esophagus with every swallow, which is why it has a many-layered lining.",
-        "Skin is keratinized and still stretches. Keratin mainly resists water loss and wear, not stretch."
+        "Food scrapes the esophagus with every swallow, and its many layers of cells take that wear.",
+        "That describes keratinized epithelium, such as the surface of your skin. In the esophagus the surface cells stay alive and moist."
       ]
     }
   },
@@ -297,10 +297,10 @@
     ],
     "q": "A slide of an empty urinary bladder shows a lining six cells thick with rounded, dome-shaped surface cells. The same tissue from a full bladder looks only two or three cells thick with flat surface cells. What explains the difference?",
     "options": [
-      "The surface cells die and flake off as the bladder fills",
-      "The full bladder was sampled from a different region with a different epithelium",
+      "The surface cells flake off as the bladder fills",
+      "The full bladder sample came from another region",
       "The cells rearrange and flatten as the wall stretches",
-      "Cells in the full bladder shrink as they lose water to the urine"
+      "Cells in the full bladder lose water to the urine"
     ],
     "correct": 2,
     "why": {
@@ -321,7 +321,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Fill in the missing step. Epithelium has no blood vessels → ______ → the deepest cells of a stratified epithelium are the best supplied → those deep cells are the ones that divide.",
+    "q": "Fill in the missing step. Epithelium has no blood vessels → ______ → the deepest cells of a stratified epithelium, nearest the capillaries, are the best supplied.",
     "options": [
       "Diffusion from capillaries below feeds its cells",
       "Its cells make their own glucose from carbon dioxide",

@@ -1,0 +1,63 @@
+{
+  "figure": "os-19-30",
+  "labels": [
+    {
+      "id": "aortic-valve",
+      "name": "Aortic valve",
+      "accept": [
+        "aortic valve",
+        "aortic area",
+        "aortic semilunar valve"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "pulmonary-valve",
+      "name": "Pulmonary valve",
+      "accept": [
+        "pulmonary valve",
+        "pulmonic area",
+        "pulmonary area",
+        "pulmonary semilunar valve",
+        "pulmonic valve"
+      ],
+      "box": [
+        912,
+        527,
+        188,
+        29
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "mitral-valve",
+      "name": "Mitral valve",
+      "accept": [
+        "mitral valve",
+        "mitral area",
+        "bicuspid valve",
+        "left atrioventricular valve"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "tricuspid-valve",
+      "name": "Tricuspid valve",
+      "accept": [
+        "tricuspid valve",
+        "tricuspid area",
+        "right atrioventricular valve"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "av-valves"
+    }
+  ]
+}

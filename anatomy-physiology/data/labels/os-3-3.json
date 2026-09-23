@@ -1,0 +1,76 @@
+{
+  "figure": "os-3-3",
+  "labels": [
+    {
+      "id": "extracellular",
+      "name": "Extracellular",
+      "accept": [
+        "extracellular",
+        "ecf",
+        "extracellular fluid",
+        "outside"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "phospholipid-bilayer",
+      "name": "Phospholipid bilayer",
+      "accept": [
+        "phospholipid bilayer",
+        "bilayer",
+        "lipid bilayer"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "phospholipid-bilayer"
+    },
+    {
+      "id": "intracellular",
+      "name": "Intracellular",
+      "accept": [
+        "intracellular",
+        "cytoplasm",
+        "icf",
+        "inside",
+        "intracellular fluid"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "hydrophobic-tail",
+      "name": "Hydrophobic tail",
+      "accept": [
+        "hydrophobic tail",
+        "fatty acid tail",
+        "hydrophobic tails",
+        "tail"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "hydrophilic-hydrophobic"
+    },
+    {
+      "id": "hydrophilic-head",
+      "name": "Hydrophilic head",
+      "accept": [
+        "hydrophilic head",
+        "head",
+        "hydrophilic heads",
+        "phosphate head"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "hydrophilic-hydrophobic"
+    }
+  ]
+}

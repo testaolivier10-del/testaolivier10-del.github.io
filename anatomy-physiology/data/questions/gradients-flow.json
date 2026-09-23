@@ -143,7 +143,7 @@
     ],
     "q": "A nurse notices that an IV infusion is running slowly. The bag is hanging 50 cm above the patient's arm. She raises it to 100 cm above the arm and changes nothing else. Why does the fluid now run faster?",
     "options": [
-      "The taller column raises pressure at the catheter and widens ΔP",
+      "The taller fluid column raises the pressure at the catheter, widening ΔP",
       "Raising the bag lowers the viscosity of the fluid in the tubing",
       "Raising the bag stretches and widens the catheter",
       "The fluid gains kinetic energy while the bag is lifted and keeps it"
@@ -172,7 +172,7 @@
     "options": [
       "Doubling the pressure squeezing the fluid bag, using a pressure bag",
       "Using a catheter of the same radius but half the length",
-      "Using a catheter with twice the internal radius and the same length",
+      "Switching to a catheter with twice the internal radius and the same length",
       "Warming the fluid enough to lower its viscosity by one-quarter"
     ],
     "correct": 2,
@@ -335,7 +335,7 @@
     ],
     "q": "A patient's blood pressure is recorded as 120/80 mm Hg. What does the 120 mean?",
     "options": [
-      "120 mm Hg above air pressure, at the peak of each beat",
+      "120 mm Hg above the surrounding air pressure, at the peak of each beat",
       "120 mm Hg in total, counting the air pressure",
       "A 120 mm column of blood pushed up by each beat",
       "120 mm Hg below the surrounding air pressure, between beats"
@@ -389,7 +389,7 @@
     "q": "Compared with lying flat, what happens to the pressure in the blood vessels of your feet when you stand up?",
     "options": [
       "It falls: blood drains away from the feet when you stand",
-      "It rises by roughly 90 mm Hg from the weight of the blood column",
+      "It rises by roughly 90 mm Hg from the weight of the blood column above them",
       "It stays the same: the heart pumps at the same pressure either way",
       "It rises by about 760 mm Hg: the atmospheric pressure is added"
     ],

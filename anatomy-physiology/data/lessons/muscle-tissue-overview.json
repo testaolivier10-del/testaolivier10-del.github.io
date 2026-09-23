@@ -1,6 +1,6 @@
 {
   "topic": "muscle-tissue-overview",
-  "hook": "<p>Ray, 61, had a large blockage in one of the arteries feeding his heart. By the time it was opened, part of his heart wall had gone without blood for hours. Six weeks later, a scan shows that patch is thin and doesn't move when the rest of the heart squeezes. The muscle that died there has been replaced by collagen, and it will not grow back. A torn thigh muscle, by contrast, can rebuild itself. The three muscle tissues look and behave differently, and their structure explains why.</p>",
+  "hook": "<p>Ray, 61, had a large blockage in one of the arteries feeding his heart. By the time it was opened, part of his heart wall had gone without blood for hours. Six weeks later, a scan shows that patch is thin and doesn't move when the rest of the heart squeezes. The muscle that died there has been replaced by collagen, and it will not grow back. A mild tear in a thigh muscle, by contrast, can rebuild itself. The three muscle tissues look and behave differently, and their structure explains why.</p>",
   "prereq": [
     {
       "q": "Which cell junction lets ions pass directly from one cell's cytoplasm into its neighbor's?",

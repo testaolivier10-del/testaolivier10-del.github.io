@@ -117,7 +117,19 @@
        ],
        "concept": "pericardial-cavity",
        "taught": "body-cavities",
-       "fn": ""
+       "fn": "The thin space between the two layers of serous pericardium. A few milliliters of serous fluid in it let the heart slide as it beats; if fluid or blood fills it quickly, the heart cannot expand (cardiac tamponade).",
+       "follow": {
+        "q": "A stab wound lets blood collect quickly between the layers of the serous pericardium. Why does the heart pump less blood?",
+        "options": [
+         "The stiff fibrous pericardium cannot stretch, so the trapped blood squeezes the heart and it cannot fill between beats",
+         "The blood dilutes the serous fluid, so the heart loses its lubrication and stops",
+         "The blood clots onto the myocardium and paralyzes it",
+         "The pericardial cavity is connected to the pleural cavity, so the lungs collapse"
+        ],
+        "correct": 0,
+        "why": "The fibrous pericardium is tough and barely stretches. Blood that builds up quickly in the pericardial cavity has nowhere to go, so pressure around the heart rises and the heart cannot expand to fill. Less filling means less blood pumped out with each beat. This is cardiac tamponade.",
+        "level": "analyze"
+       }
       },
       {
        "id": "endocardium",
@@ -131,7 +143,7 @@
        ],
        "concept": "heart-wall",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The thin inner lining of the heart's chambers and valves: a simple squamous endothelium on a thin layer of connective tissue. Its smooth surface lets blood flow without sticking."
       },
       {
        "id": "fibrous-pericardium",
@@ -145,7 +157,19 @@
        ],
        "concept": "pericardium",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The tough outer layer of the pericardial sac, made of dense connective tissue. It anchors the heart to the diaphragm and nearby structures and, because it barely stretches, keeps the heart from overfilling.",
+       "follow": {
+        "q": "Which layer is the outermost covering of the heart?",
+        "options": [
+         "Fibrous pericardium",
+         "Epicardium",
+         "Parietal layer of serous pericardium",
+         "Endocardium"
+        ],
+        "correct": 0,
+        "why": "From outside in: fibrous pericardium, then the parietal layer of serous pericardium, the pericardial cavity, the epicardium (the visceral layer, stuck to the heart), the myocardium and the endocardium. The fibrous layer is outermost, which is why it can anchor the heart to its surroundings.",
+        "level": "recall"
+       }
       },
       {
        "id": "myocardium",
@@ -162,7 +186,19 @@
        ],
        "concept": "heart-wall",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The thick middle layer of the heart wall, made of cardiac muscle. Its contraction does the pumping, so it is thickest where the heart must push hardest.",
+       "follow": {
+        "q": "Which layer of the heart wall does the actual pumping?",
+        "options": [
+         "Myocardium",
+         "Endocardium",
+         "Epicardium",
+         "Fibrous pericardium"
+        ],
+        "correct": 0,
+        "why": "Only the myocardium is made of cardiac muscle, and only muscle can shorten and squeeze. The endocardium and epicardium are thin linings, and the fibrous pericardium is connective tissue that holds the heart in place.",
+        "level": "recall"
+       }
       },
       {
        "id": "parietal-pericardium",
@@ -180,7 +216,7 @@
        ],
        "concept": "pericardium",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The serous membrane that lines the inside of the fibrous pericardium. It secretes serous fluid into the pericardial cavity and faces the epicardium across that thin space."
       },
       {
        "id": "epicardium",
@@ -198,7 +234,7 @@
        ],
        "concept": "heart-wall",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The visceral layer of the serous pericardium: a thin serous membrane stuck to the outer surface of the heart, forming the heart wall's outermost layer. It faces the parietal layer across the pericardial cavity."
       }
      ]
     }
@@ -232,7 +268,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
+       "follow": {
+        "q": "Blood from your right arm reaches the heart through which vessel?",
+        "options": [
+         "Superior vena cava",
+         "Inferior vena cava",
+         "Pulmonary trunk",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "Veins above the diaphragm, including those of the arms, head and neck, drain into the superior vena cava, which opens into the right atrium. The inferior vena cava drains the body below the diaphragm.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-pulmonary-artery",
@@ -246,7 +294,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The branch of the pulmonary trunk that carries blood to the right lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen."
       },
       {
        "id": "left-pulmonary-artery",
@@ -260,7 +308,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The branch of the pulmonary trunk that carries blood to the left lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen.",
+       "follow": {
+        "q": "What makes a pulmonary artery an artery?",
+        "options": [
+         "It carries blood away from the heart",
+         "It carries blood rich in oxygen",
+         "It has valves along its length",
+         "It carries blood at low pressure"
+        ],
+        "correct": 0,
+        "why": "Arteries and veins are named by direction, not by oxygen. The pulmonary arteries carry blood away from the heart to the lungs; that blood is low in oxygen, which is why \"arteries carry blood high in oxygen\" is not a safe rule.",
+        "level": "apply"
+       }
       },
       {
        "id": "left-pulmonary-veins",
@@ -276,7 +336,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that return blood from the left lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung.",
+       "follow": {
+        "q": "Where do the pulmonary veins empty?",
+        "options": [
+         "Left atrium",
+         "Right atrium",
+         "Left ventricle",
+         "Pulmonary trunk"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins bring blood back from the lungs into the left atrium, which passes it to the left ventricle to be pumped to the body.",
+        "level": "recall"
+       }
       },
       {
        "id": "pulmonary-trunk",
@@ -290,7 +362,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
+       "follow": {
+        "q": "Which chamber pumps blood into the pulmonary trunk?",
+        "options": [
+         "Right ventricle",
+         "Left ventricle",
+         "Right atrium",
+         "Left atrium"
+        ],
+        "correct": 0,
+        "why": "The pulmonary valve sits between the right ventricle and the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-pulmonary-veins",
@@ -306,7 +390,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that return blood from the right lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung."
       },
       {
        "id": "auricle-of-left-atrium",
@@ -323,7 +407,7 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The ear-shaped pouch on the front of the left atrium. It adds a little extra room to the atrium, letting it hold more blood before the blood moves on to the ventricle."
       },
       {
        "id": "right-atrium",
@@ -339,7 +423,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-ventricle",
@@ -355,7 +451,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-ventricle",
@@ -371,7 +479,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
+       "follow": {
+        "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
+        "options": [
+         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps less blood per beat than the left ventricle",
+         "It receives blood that has less oxygen, so its muscle is weaker",
+         "Its wall is thinned by the pressure of the lungs pressing on it"
+        ],
+        "correct": 0,
+        "why": "Both ventricles pump the same volume per beat. The difference is pressure: pushing blood through the short, low-resistance route to the lungs takes far less pressure than pushing it through the whole body, so the right ventricle builds less muscle.",
+        "level": "apply"
+       }
       },
       {
        "id": "inferior-vena-cava",
@@ -387,7 +507,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
        "id": "apex",
@@ -404,7 +524,7 @@
        ],
        "concept": "heart-location",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The pointed lower tip of the heart. It points down, forward and to your left and rests on the diaphragm, which is why the strongest heartbeat is felt on the left side of the chest."
       },
       {
        "id": "aorta-posterior",
@@ -418,7 +538,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest artery. It leaves the left ventricle through the aortic valve and carries blood to every part of the body except the lungs' air sacs."
       },
       {
        "id": "superior-vena-cava-posterior",
@@ -434,7 +554,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
+       "follow": {
+        "q": "Blood from your right arm reaches the heart through which vessel?",
+        "options": [
+         "Superior vena cava",
+         "Inferior vena cava",
+         "Pulmonary trunk",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "Veins above the diaphragm, including those of the arms, head and neck, drain into the superior vena cava, which opens into the right atrium. The inferior vena cava drains the body below the diaphragm.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-pulmonary-artery-posterior",
@@ -448,7 +580,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The branch of the pulmonary trunk that carries blood to the right lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen."
       },
       {
        "id": "left-pulmonary-artery-posterior",
@@ -462,7 +594,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The branch of the pulmonary trunk that carries blood to the left lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen.",
+       "follow": {
+        "q": "What makes a pulmonary artery an artery?",
+        "options": [
+         "It carries blood away from the heart",
+         "It carries blood rich in oxygen",
+         "It has valves along its length",
+         "It carries blood at low pressure"
+        ],
+        "correct": 0,
+        "why": "Arteries and veins are named by direction, not by oxygen. The pulmonary arteries carry blood away from the heart to the lungs; that blood is low in oxygen, which is why \"arteries carry blood high in oxygen\" is not a safe rule.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-pulmonary-veins-posterior",
@@ -478,7 +622,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that return blood from the right lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung."
       },
       {
        "id": "left-pulmonary-veins-posterior",
@@ -494,7 +638,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that return blood from the left lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung.",
+       "follow": {
+        "q": "Where do the pulmonary veins empty?",
+        "options": [
+         "Left atrium",
+         "Right atrium",
+         "Left ventricle",
+         "Pulmonary trunk"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins bring blood back from the lungs into the left atrium, which passes it to the left ventricle to be pumped to the body.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-atrium-posterior",
@@ -510,7 +666,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "auricle-of-left-atrium-posterior",
@@ -527,7 +695,7 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The ear-shaped pouch on the front of the left atrium. It adds a little extra room to the atrium, letting it hold more blood before the blood moves on to the ventricle."
       },
       {
        "id": "left-atrium-posterior",
@@ -543,7 +711,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
+       "follow": {
+        "q": "Blood entering the left atrium has just come from where?",
+        "options": [
+         "The lungs, through the pulmonary veins",
+         "The body, through the venae cavae",
+         "The right atrium, through the interatrial septum",
+         "The left ventricle, through the mitral valve"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins drain the lungs into the left atrium. After birth the interatrial septum is closed, and the mitral valve lets blood move only from atrium to ventricle, never back.",
+        "level": "recall"
+       }
       },
       {
        "id": "inferior-vena-cava-posterior",
@@ -559,7 +739,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
        "id": "left-ventricle-posterior",
@@ -575,7 +755,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-ventricle-posterior",
@@ -591,7 +783,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
+       "follow": {
+        "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
+        "options": [
+         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps less blood per beat than the left ventricle",
+         "It receives blood that has less oxygen, so its muscle is weaker",
+         "Its wall is thinned by the pressure of the lungs pressing on it"
+        ],
+        "correct": 0,
+        "why": "Both ventricles pump the same volume per beat. The difference is pressure: pushing blood through the short, low-resistance route to the lungs takes far less pressure than pushing it through the whole body, so the right ventricle builds less muscle.",
+        "level": "apply"
+       }
       },
       {
        "id": "apex-posterior",
@@ -608,7 +812,7 @@
        ],
        "concept": "heart-location",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The pointed lower tip of the heart. It points down, forward and to your left and rests on the diaphragm, which is why the strongest heartbeat is felt on the left side of the chest."
       }
      ],
      "covered": [
@@ -841,7 +1045,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest artery. It leaves the left ventricle through the aortic valve and carries blood to every part of the body except the lungs' air sacs."
       },
       {
        "id": "superior-vena-cava",
@@ -857,7 +1061,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
+       "follow": {
+        "q": "Blood from your right arm reaches the heart through which vessel?",
+        "options": [
+         "Superior vena cava",
+         "Inferior vena cava",
+         "Pulmonary trunk",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "Veins above the diaphragm, including those of the arms, head and neck, drain into the superior vena cava, which opens into the right atrium. The inferior vena cava drains the body below the diaphragm.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-pulmonary-artery",
@@ -871,7 +1087,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The branch of the pulmonary trunk that carries blood to the left lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen.",
+       "follow": {
+        "q": "What makes a pulmonary artery an artery?",
+        "options": [
+         "It carries blood away from the heart",
+         "It carries blood rich in oxygen",
+         "It has valves along its length",
+         "It carries blood at low pressure"
+        ],
+        "correct": 0,
+        "why": "Arteries and veins are named by direction, not by oxygen. The pulmonary arteries carry blood away from the heart to the lungs; that blood is low in oxygen, which is why \"arteries carry blood high in oxygen\" is not a safe rule.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-pulmonary-artery",
@@ -885,7 +1113,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The branch of the pulmonary trunk that carries blood to the right lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen."
       },
       {
        "id": "left-atrium",
@@ -901,7 +1129,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
+       "follow": {
+        "q": "Blood entering the left atrium has just come from where?",
+        "options": [
+         "The lungs, through the pulmonary veins",
+         "The body, through the venae cavae",
+         "The right atrium, through the interatrial septum",
+         "The left ventricle, through the mitral valve"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins drain the lungs into the left atrium. After birth the interatrial septum is closed, and the mitral valve lets blood move only from atrium to ventricle, never back.",
+        "level": "recall"
+       }
       },
       {
        "id": "pulmonary-trunk",
@@ -915,7 +1155,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
+       "follow": {
+        "q": "Which chamber pumps blood into the pulmonary trunk?",
+        "options": [
+         "Right ventricle",
+         "Left ventricle",
+         "Right atrium",
+         "Left atrium"
+        ],
+        "correct": 0,
+        "why": "The pulmonary valve sits between the right ventricle and the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-pulmonary-veins",
@@ -931,7 +1183,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that return blood from the left lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung.",
+       "follow": {
+        "q": "Where do the pulmonary veins empty?",
+        "options": [
+         "Left atrium",
+         "Right atrium",
+         "Left ventricle",
+         "Pulmonary trunk"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins bring blood back from the lungs into the left atrium, which passes it to the left ventricle to be pumped to the body.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-pulmonary-veins",
@@ -947,7 +1211,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that return blood from the right lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung."
       },
       {
        "id": "mitral-bicuspid-valve",
@@ -967,7 +1231,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The left atrioventricular valve, also called the bicuspid valve for its two cusps. It lets blood move from the left atrium into the left ventricle and shuts when the ventricle contracts, stopping backflow into the atrium.",
+       "follow": {
+        "q": "The mitral valve fails to close fully. Where does blood leak when the left ventricle contracts?",
+        "options": [
+         "Back into the left atrium",
+         "Back into the right ventricle",
+         "Into the pulmonary trunk",
+         "Back into the aorta"
+        ],
+        "correct": 0,
+        "why": "The mitral valve guards the opening between the left atrium and left ventricle. If it leaks, the rising pressure in the contracting ventricle pushes some blood backward through that opening into the left atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-atrium",
@@ -983,7 +1259,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "aortic-valve",
@@ -999,7 +1287,19 @@
        ],
        "concept": "semilunar-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The semilunar valve at the exit of the left ventricle. It opens when the ventricle's pressure rises above the aorta's, and its three pocket-like cusps fill and snap shut when the ventricle relaxes, so blood cannot fall back in.",
+       "follow": {
+        "q": "Why does the aortic valve close as the left ventricle relaxes?",
+        "options": [
+         "Pressure in the aorta is now higher than in the ventricle, so blood pushes back and fills the cusps",
+         "Chordae tendineae pull the cusps closed",
+         "The papillary muscles contract and close it",
+         "The heart's nerves signal it to close"
+        ],
+        "correct": 0,
+        "why": "As the ventricle relaxes its pressure falls below the aorta's. Blood starts back toward the ventricle, catches in the pocket-shaped cusps and presses them together. Semilunar valves have no chordae or papillary muscles.",
+        "level": "apply"
+       }
       },
       {
        "id": "fossa-ovalis",
@@ -1013,7 +1313,7 @@
        ],
        "concept": "fossa-ovalis",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "A shallow oval dip in the interatrial septum, seen from the right atrium. Before birth it was an opening that let blood pass from the right atrium to the left; it seals soon after birth."
       },
       {
        "id": "pulmonary-valve",
@@ -1030,7 +1330,7 @@
        ],
        "concept": "semilunar-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The semilunar valve at the exit of the right ventricle into the pulmonary trunk. Its three pocket-like cusps let blood out and snap shut when the ventricle relaxes, so blood cannot fall back in."
       },
       {
        "id": "tricuspid-valve",
@@ -1048,7 +1348,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The right atrioventricular valve, with three cusps. It lets blood move from the right atrium into the right ventricle and shuts when the ventricle contracts, so blood cannot flow back into the atrium.",
+       "follow": {
+        "q": "What closes the tricuspid valve?",
+        "options": [
+         "Pressure in the right ventricle rising above pressure in the right atrium",
+         "The papillary muscles pulling the cusps shut",
+         "A nerve signal that tightens the valve ring",
+         "The chordae tendineae shortening"
+        ],
+        "correct": 0,
+        "why": "Valves are passive flaps. When the ventricle contracts its pressure climbs above the atrium's, and blood pushing backward swings the cusps together. The papillary muscles and chordae only keep the closed cusps from flipping up into the atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "left-ventricle",
@@ -1064,7 +1376,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-ventricle",
@@ -1080,7 +1404,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
+       "follow": {
+        "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
+        "options": [
+         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps less blood per beat than the left ventricle",
+         "It receives blood that has less oxygen, so its muscle is weaker",
+         "Its wall is thinned by the pressure of the lungs pressing on it"
+        ],
+        "correct": 0,
+        "why": "Both ventricles pump the same volume per beat. The difference is pressure: pushing blood through the short, low-resistance route to the lungs takes far less pressure than pushing it through the whole body, so the right ventricle builds less muscle.",
+        "level": "apply"
+       }
       },
       {
        "id": "papillary-muscle",
@@ -1096,7 +1432,7 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "Cone-shaped bumps of ventricular muscle that anchor the chordae tendineae. They contract with the ventricle, keeping the cords taut so the atrioventricular valve cusps hold shut."
       },
       {
        "id": "chordae-tendineae",
@@ -1114,7 +1450,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "Thin cords of dense connective tissue that tie the cusps of the tricuspid and mitral valves to the papillary muscles. They keep the cusps from flipping back into the atria when the ventricles contract.",
+       "follow": {
+        "q": "A chorda tendinea on the mitral valve snaps. What happens during the next ventricular contraction?",
+        "options": [
+         "The cusp it held can flip back into the left atrium, so blood leaks backward",
+         "The mitral valve cannot open, so the left ventricle does not fill",
+         "The aortic valve cannot close",
+         "Nothing changes, because the cords only anchor the valve ring"
+        ],
+        "correct": 0,
+        "why": "When the ventricle contracts, high pressure pushes on the closed cusps. The chordae, held taut by the papillary muscles, stop the cusps from turning inside out. Without its cord, a cusp can swing back into the atrium and blood leaks backward.",
+        "level": "apply"
+       }
       },
       {
        "id": "interventricular-septum",
@@ -1131,7 +1479,7 @@
        ],
        "concept": "septa",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The thick muscular wall between the right and left ventricles. It keeps the blood in the two ventricles apart and contracts along with them."
       },
       {
        "id": "trabeculae-carneae",
@@ -1147,7 +1495,7 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "Ridges of muscle on the inner walls of the ventricles. They add strength to the ventricle wall and help it squeeze evenly."
       },
       {
        "id": "epicardium",
@@ -1163,7 +1511,7 @@
        ],
        "concept": "heart-wall",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The thin serous membrane on the outer surface of the heart, forming the outermost layer of the heart wall. It is the visceral layer of the serous pericardium."
       },
       {
        "id": "myocardium",
@@ -1177,7 +1525,19 @@
        ],
        "concept": "heart-wall",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The thick middle layer of the heart wall, made of cardiac muscle. Its contraction does the pumping, so it is thickest where the heart must push hardest.",
+       "follow": {
+        "q": "Which layer of the heart wall does the actual pumping?",
+        "options": [
+         "Myocardium",
+         "Endocardium",
+         "Epicardium",
+         "Fibrous pericardium"
+        ],
+        "correct": 0,
+        "why": "Only the myocardium is made of cardiac muscle, and only muscle can shorten and squeeze. The endocardium and epicardium are thin linings, and the fibrous pericardium is connective tissue that holds the heart in place.",
+        "level": "recall"
+       }
       },
       {
        "id": "inferior-vena-cava",
@@ -1193,7 +1553,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
        "id": "endocardium",
@@ -1207,7 +1567,7 @@
        ],
        "concept": "heart-wall",
        "taught": "heart-anatomy",
-       "fn": ""
+       "fn": "The thin inner lining of the heart's chambers and valves: a simple squamous endothelium on a thin layer of connective tissue. Its smooth surface lets blood flow without sticking."
       }
      ],
      "covered": [
@@ -1255,7 +1615,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The right atrioventricular valve, with three cusps. It lets blood move from the right atrium into the right ventricle and shuts when the ventricle contracts, so blood cannot flow back into the atrium.",
+       "follow": {
+        "q": "What closes the tricuspid valve?",
+        "options": [
+         "Pressure in the right ventricle rising above pressure in the right atrium",
+         "The papillary muscles pulling the cusps shut",
+         "A nerve signal that tightens the valve ring",
+         "The chordae tendineae shortening"
+        ],
+        "correct": 0,
+        "why": "Valves are passive flaps. When the ventricle contracts its pressure climbs above the atrium's, and blood pushing backward swings the cusps together. The papillary muscles and chordae only keep the closed cusps from flipping up into the atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "bicuspid-mitral-valve",
@@ -1275,7 +1647,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The left atrioventricular valve, also called the bicuspid valve for its two cusps. It lets blood move from the left atrium into the left ventricle and shuts when the ventricle contracts, stopping backflow into the atrium.",
+       "follow": {
+        "q": "The mitral valve fails to close fully. Where does blood leak when the left ventricle contracts?",
+        "options": [
+         "Back into the left atrium",
+         "Back into the right ventricle",
+         "Into the pulmonary trunk",
+         "Back into the aorta"
+        ],
+        "correct": 0,
+        "why": "The mitral valve guards the opening between the left atrium and left ventricle. If it leaks, the rising pressure in the contracting ventricle pushes some blood backward through that opening into the left atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "aortic-valve",
@@ -1291,7 +1675,19 @@
        ],
        "concept": "semilunar-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The semilunar valve at the exit of the left ventricle. It opens when the ventricle's pressure rises above the aorta's, and its three pocket-like cusps fill and snap shut when the ventricle relaxes, so blood cannot fall back in.",
+       "follow": {
+        "q": "Why does the aortic valve close as the left ventricle relaxes?",
+        "options": [
+         "Pressure in the aorta is now higher than in the ventricle, so blood pushes back and fills the cusps",
+         "Chordae tendineae pull the cusps closed",
+         "The papillary muscles contract and close it",
+         "The heart's nerves signal it to close"
+        ],
+        "correct": 0,
+        "why": "As the ventricle relaxes its pressure falls below the aorta's. Blood starts back toward the ventricle, catches in the pocket-shaped cusps and presses them together. Semilunar valves have no chordae or papillary muscles.",
+        "level": "apply"
+       }
       },
       {
        "id": "pulmonary-valve",
@@ -1308,7 +1704,7 @@
        ],
        "concept": "semilunar-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The semilunar valve at the exit of the right ventricle into the pulmonary trunk. Its three pocket-like cusps let blood out and snap shut when the ventricle relaxes, so blood cannot fall back in."
       }
      ]
     }
@@ -1341,7 +1737,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest artery. It leaves the left ventricle through the aortic valve and carries blood to every part of the body except the lungs' air sacs."
       },
       {
        "id": "superior-vena-cava",
@@ -1357,7 +1753,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
+       "follow": {
+        "q": "Blood from your right arm reaches the heart through which vessel?",
+        "options": [
+         "Superior vena cava",
+         "Inferior vena cava",
+         "Pulmonary trunk",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "Veins above the diaphragm, including those of the arms, head and neck, drain into the superior vena cava, which opens into the right atrium. The inferior vena cava drains the body below the diaphragm.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-pulmonary-arteries",
@@ -1373,7 +1781,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The pulmonary arteries of the left lung. They carry deoxygenated blood from the pulmonary trunk to the left lung, the start of the pulmonary circuit."
       },
       {
        "id": "right-pulmonary-arteries",
@@ -1389,7 +1797,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The pulmonary arteries of the right lung. They carry deoxygenated blood from the pulmonary trunk to the right lung, the start of the pulmonary circuit."
       },
       {
        "id": "pulmonary-trunk",
@@ -1403,7 +1811,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
+       "follow": {
+        "q": "Which chamber pumps blood into the pulmonary trunk?",
+        "options": [
+         "Right ventricle",
+         "Left ventricle",
+         "Right atrium",
+         "Left atrium"
+        ],
+        "correct": 0,
+        "why": "The pulmonary valve sits between the right ventricle and the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-atrium",
@@ -1419,7 +1839,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
+       "follow": {
+        "q": "Blood entering the left atrium has just come from where?",
+        "options": [
+         "The lungs, through the pulmonary veins",
+         "The body, through the venae cavae",
+         "The right atrium, through the interatrial septum",
+         "The left ventricle, through the mitral valve"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins drain the lungs into the left atrium. After birth the interatrial septum is closed, and the mitral valve lets blood move only from atrium to ventricle, never back.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-pulmonary-veins",
@@ -1435,7 +1867,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that carry oxygenated blood from the right lung to the left atrium, closing the pulmonary circuit."
       },
       {
        "id": "pulmonary-veins",
@@ -1451,7 +1883,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The veins that carry oxygenated blood from the left lung to the left atrium, closing the pulmonary circuit."
       },
       {
        "id": "pulmonary-semilunar-valve",
@@ -1468,7 +1900,7 @@
        ],
        "concept": "semilunar-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The semilunar valve at the exit of the right ventricle into the pulmonary trunk. Its three pocket-like cusps let blood out and snap shut when the ventricle relaxes, so blood cannot fall back in."
       },
       {
        "id": "aortic-semilunar-valve",
@@ -1484,7 +1916,19 @@
        ],
        "concept": "semilunar-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The semilunar valve at the exit of the left ventricle. It opens when the ventricle's pressure rises above the aorta's, and its three pocket-like cusps fill and snap shut when the ventricle relaxes, so blood cannot fall back in.",
+       "follow": {
+        "q": "Why does the aortic valve close as the left ventricle relaxes?",
+        "options": [
+         "Pressure in the aorta is now higher than in the ventricle, so blood pushes back and fills the cusps",
+         "Chordae tendineae pull the cusps closed",
+         "The papillary muscles contract and close it",
+         "The heart's nerves signal it to close"
+        ],
+        "correct": 0,
+        "why": "As the ventricle relaxes its pressure falls below the aorta's. Blood starts back toward the ventricle, catches in the pocket-shaped cusps and presses them together. Semilunar valves have no chordae or papillary muscles.",
+        "level": "apply"
+       }
       },
       {
        "id": "mitral-valve",
@@ -1503,7 +1947,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The left atrioventricular valve, also called the bicuspid valve for its two cusps. It lets blood move from the left atrium into the left ventricle and shuts when the ventricle contracts, stopping backflow into the atrium.",
+       "follow": {
+        "q": "The mitral valve fails to close fully. Where does blood leak when the left ventricle contracts?",
+        "options": [
+         "Back into the left atrium",
+         "Back into the right ventricle",
+         "Into the pulmonary trunk",
+         "Back into the aorta"
+        ],
+        "correct": 0,
+        "why": "The mitral valve guards the opening between the left atrium and left ventricle. If it leaks, the rising pressure in the contracting ventricle pushes some blood backward through that opening into the left atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-atrium",
@@ -1519,7 +1975,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-ventricle",
@@ -1535,7 +2003,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
       },
       {
        "id": "tricuspid-valve",
@@ -1553,7 +2033,19 @@
        ],
        "concept": "av-valves",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The right atrioventricular valve, with three cusps. It lets blood move from the right atrium into the right ventricle and shuts when the ventricle contracts, so blood cannot flow back into the atrium.",
+       "follow": {
+        "q": "What closes the tricuspid valve?",
+        "options": [
+         "Pressure in the right ventricle rising above pressure in the right atrium",
+         "The papillary muscles pulling the cusps shut",
+         "A nerve signal that tightens the valve ring",
+         "The chordae tendineae shortening"
+        ],
+        "correct": 0,
+        "why": "Valves are passive flaps. When the ventricle contracts its pressure climbs above the atrium's, and blood pushing backward swings the cusps together. The papillary muscles and chordae only keep the closed cusps from flipping up into the atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-ventricle",
@@ -1569,7 +2061,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
+       "follow": {
+        "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
+        "options": [
+         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps less blood per beat than the left ventricle",
+         "It receives blood that has less oxygen, so its muscle is weaker",
+         "Its wall is thinned by the pressure of the lungs pressing on it"
+        ],
+        "correct": 0,
+        "why": "Both ventricles pump the same volume per beat. The difference is pressure: pushing blood through the short, low-resistance route to the lungs takes far less pressure than pushing it through the whole body, so the right ventricle builds less muscle.",
+        "level": "apply"
+       }
       },
       {
        "id": "inferior-vena-cava",
@@ -1585,7 +2089,7 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
        "id": "systemic-veins-upper-body",
@@ -1599,7 +2103,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Veins that collect deoxygenated blood from the head, neck and arms and lead it to the superior vena cava."
       },
       {
        "id": "systemic-capillaries-upper-body",
@@ -1613,7 +2117,19 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Capillary beds in the tissues of the head, neck and arms. Here blood gives oxygen and nutrients to the cells and picks up carbon dioxide, turning deoxygenated.",
+       "follow": {
+        "q": "What happens to blood as it passes through systemic capillaries?",
+        "options": [
+         "It gives off oxygen and picks up carbon dioxide",
+         "It picks up oxygen and gives off carbon dioxide",
+         "It is pumped to a higher pressure",
+         "It collects into the pulmonary veins"
+        ],
+        "correct": 0,
+        "why": "Cells use oxygen and make carbon dioxide, so each gas moves down its concentration gradient: oxygen out of the blood into the tissues, carbon dioxide from the tissues into the blood. The reverse happens in the pulmonary capillaries.",
+        "level": "apply"
+       }
       },
       {
        "id": "systemic-arteries-upper-body",
@@ -1627,7 +2143,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Branches of the aorta that carry oxygenated blood to the head, neck and arms, the upper part of the systemic circuit."
       },
       {
        "id": "pulmonary-capillaries",
@@ -1644,7 +2160,19 @@
        ],
        "concept": "pulmonary-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The tiny vessels around the lungs' air sacs, where the pulmonary circuit does its work: blood gives off carbon dioxide and picks up oxygen, turning from deoxygenated to oxygenated.",
+       "follow": {
+        "q": "Blood leaving the pulmonary capillaries goes next to which chamber?",
+        "options": [
+         "Left atrium",
+         "Right atrium",
+         "Right ventricle",
+         "Left ventricle"
+        ],
+        "correct": 0,
+        "why": "From the pulmonary capillaries, oxygenated blood collects into the pulmonary veins, which empty into the left atrium.",
+        "level": "apply"
+       }
       },
       {
        "id": "pulmonary-trunk-loop",
@@ -1658,7 +2186,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
+       "follow": {
+        "q": "Which chamber pumps blood into the pulmonary trunk?",
+        "options": [
+         "Right ventricle",
+         "Left ventricle",
+         "Right atrium",
+         "Left atrium"
+        ],
+        "correct": 0,
+        "why": "The pulmonary valve sits between the right ventricle and the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-atrium-loop",
@@ -1674,7 +2214,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-atrium-loop",
@@ -1690,7 +2242,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
+       "follow": {
+        "q": "Blood entering the left atrium has just come from where?",
+        "options": [
+         "The lungs, through the pulmonary veins",
+         "The body, through the venae cavae",
+         "The right atrium, through the interatrial septum",
+         "The left ventricle, through the mitral valve"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins drain the lungs into the left atrium. After birth the interatrial septum is closed, and the mitral valve lets blood move only from atrium to ventricle, never back.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-ventricle-loop",
@@ -1706,7 +2270,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
+       "follow": {
+        "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
+        "options": [
+         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps less blood per beat than the left ventricle",
+         "It receives blood that has less oxygen, so its muscle is weaker",
+         "Its wall is thinned by the pressure of the lungs pressing on it"
+        ],
+        "correct": 0,
+        "why": "Both ventricles pump the same volume per beat. The difference is pressure: pushing blood through the short, low-resistance route to the lungs takes far less pressure than pushing it through the whole body, so the right ventricle builds less muscle.",
+        "level": "apply"
+       }
       },
       {
        "id": "left-ventricle-loop",
@@ -1722,7 +2298,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
       },
       {
        "id": "systemic-veins-lower-body",
@@ -1736,7 +2324,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Veins that collect deoxygenated blood from the abdomen, pelvis and legs and lead it to the inferior vena cava."
       },
       {
        "id": "systemic-arteries-lower-body",
@@ -1750,7 +2338,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The continuation of the aorta and its branches carrying oxygenated blood to the abdomen, pelvis and legs, the lower part of the systemic circuit."
       },
       {
        "id": "systemic-capillaries-lower-body",
@@ -1764,7 +2352,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Capillary beds in the tissues of the abdomen, pelvis and legs, where blood unloads oxygen and nutrients to the cells and picks up carbon dioxide and wastes."
       }
      ]
     }
@@ -1800,7 +2388,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The first branch of the aorta on the left. After a short course it splits into the anterior interventricular artery and the circumflex artery, which together supply most of the left ventricle."
       },
       {
        "id": "pulmonary-trunk",
@@ -1814,7 +2402,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
+       "follow": {
+        "q": "Which chamber pumps blood into the pulmonary trunk?",
+        "options": [
+         "Right ventricle",
+         "Left ventricle",
+         "Right atrium",
+         "Left atrium"
+        ],
+        "correct": 0,
+        "why": "The pulmonary valve sits between the right ventricle and the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-coronary-artery",
@@ -1830,7 +2430,19 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The first branch of the aorta on the right, running in the groove between the right atrium and right ventricle. It supplies the right atrium, most of the right ventricle and, in most people, the back of the heart.",
+       "follow": {
+        "q": "Where do the coronary arteries branch from?",
+        "options": [
+         "The base of the aorta, just past the aortic valve",
+         "The pulmonary trunk",
+         "The coronary sinus",
+         "The right atrium"
+        ],
+        "correct": 0,
+        "why": "The coronary arteries are the first branches of the aorta, leaving it just beyond the aortic valve. They fill mainly when the ventricles relax (diastole), when the heart muscle is not squeezing them shut.",
+        "level": "recall"
+       }
       },
       {
        "id": "circumflex-artery",
@@ -1848,7 +2460,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The branch of the left coronary artery that curves around the left side of the heart in the groove between the left atrium and left ventricle. It supplies the left atrium and the side and back of the left ventricle."
       },
       {
        "id": "right-atrium",
@@ -1864,7 +2476,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "anterior-interventricular-artery",
@@ -1882,7 +2506,19 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The branch of the left coronary artery that runs down the front of the heart between the two ventricles (also called the left anterior descending artery). It supplies the front of both ventricles and much of the interventricular septum.",
+       "follow": {
+        "q": "A clot blocks the anterior interventricular artery. Which region is most likely to be damaged?",
+        "options": [
+         "The front of the left ventricle and the interventricular septum",
+         "The right atrium",
+         "The back of the right ventricle",
+         "The pulmonary valve"
+        ],
+        "correct": 0,
+        "why": "This artery runs down the front groove between the ventricles and feeds the front wall of the left ventricle and most of the septum. Muscle downstream of a blocked artery loses its oxygen supply (ischemia) and can die (a myocardial infarction).",
+        "level": "apply"
+       }
       },
       {
        "id": "atrial-arteries",
@@ -1898,7 +2534,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Small branches of the coronary arteries that supply the walls of the atria."
       },
       {
        "id": "anterior-cardiac-veins",
@@ -1914,7 +2550,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "Small veins on the front of the right ventricle that empty straight into the right atrium instead of into the coronary sinus."
       },
       {
        "id": "great-cardiac-vein",
@@ -1928,7 +2564,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The vein that runs up the front of the heart beside the anterior interventricular artery, collecting deoxygenated blood from the front of the ventricles and carrying it into the coronary sinus."
       },
       {
        "id": "small-cardiac-vein",
@@ -1942,7 +2578,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A vein along the lower right edge of the heart that drains the right side and empties into the coronary sinus."
       },
       {
        "id": "marginal-artery",
@@ -1959,7 +2595,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A branch of the right coronary artery that runs along the lower right edge of the heart and supplies the right ventricle."
       },
       {
        "id": "coronary-sinus",
@@ -1973,7 +2609,19 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A wide vein in the groove on the back of the heart between the atria and ventricles. It gathers blood from most of the cardiac veins and empties it into the right atrium.",
+       "follow": {
+        "q": "Where does the coronary sinus empty?",
+        "options": [
+         "Right atrium",
+         "Left atrium",
+         "Superior vena cava",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "The heart's own used, deoxygenated blood collects in the coronary sinus, which opens into the right atrium beside the inferior vena cava. From there it joins the rest of the body's returning blood.",
+        "level": "recall"
+       }
       },
       {
        "id": "small-cardiac-vein-posterior",
@@ -1987,7 +2635,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A vein along the lower right edge of the heart that drains the right side and empties into the coronary sinus."
       },
       {
        "id": "circumflex-artery-posterior",
@@ -2005,7 +2653,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The branch of the left coronary artery that curves around the left side of the heart in the groove between the left atrium and left ventricle. It supplies the left atrium and the side and back of the left ventricle."
       },
       {
        "id": "great-cardiac-vein-posterior",
@@ -2019,7 +2667,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The vein that runs up the front of the heart beside the anterior interventricular artery, collecting deoxygenated blood from the front of the ventricles and carrying it into the coronary sinus."
       },
       {
        "id": "marginal-artery-posterior",
@@ -2035,7 +2683,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A branch of the right coronary artery that runs along the lower right edge of the heart and supplies the right ventricle."
       },
       {
        "id": "posterior-interventricular-artery",
@@ -2052,7 +2700,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The artery that runs down the back of the heart between the ventricles, usually from the right coronary artery. It supplies the back of both ventricles and it meets branches of the anterior interventricular artery near the apex (an anastomosis)."
       },
       {
        "id": "posterior-cardiac-vein",
@@ -2068,7 +2716,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A vein on the back of the left ventricle that drains it into the coronary sinus."
       },
       {
        "id": "left-ventricle",
@@ -2084,7 +2732,19 @@
        ],
        "concept": "chambers",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
       },
       {
        "id": "right-coronary-artery-posterior",
@@ -2100,7 +2760,19 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The first branch of the aorta on the right, running in the groove between the right atrium and right ventricle. It supplies the right atrium, most of the right ventricle and, in most people, the back of the heart.",
+       "follow": {
+        "q": "Where do the coronary arteries branch from?",
+        "options": [
+         "The base of the aorta, just past the aortic valve",
+         "The pulmonary trunk",
+         "The coronary sinus",
+         "The right atrium"
+        ],
+        "correct": 0,
+        "why": "The coronary arteries are the first branches of the aorta, leaving it just beyond the aortic valve. They fill mainly when the ventricles relax (diastole), when the heart muscle is not squeezing them shut.",
+        "level": "recall"
+       }
       },
       {
        "id": "middle-cardiac-vein",
@@ -2114,7 +2786,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The vein on the back of the heart beside the posterior interventricular artery. It drains the back of the ventricles into the coronary sinus."
       },
       {
        "id": "marginal-artery-posterior-2",
@@ -2130,7 +2802,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "A branch of the right coronary artery that runs along the lower right edge of the heart and supplies the right ventricle."
       }
      ],
      "covered": [
@@ -2184,7 +2856,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of each subclavian artery that climbs through the neck bones to the base of the brain, where the two join to form the basilar artery."
       },
       {
        "id": "right-common-carotid-artery",
@@ -2200,7 +2872,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery up the right side of the neck, from the brachiocephalic trunk. At the level of the upper neck it splits into the internal carotid (brain) and external carotid (face and scalp) arteries."
       },
       {
        "id": "right-subclavian-artery",
@@ -2216,7 +2888,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery to the right arm, from the brachiocephalic trunk. It passes under the collarbone and becomes the axillary artery in the armpit; it also gives off the right vertebral artery."
       },
       {
        "id": "left-common-carotid-artery",
@@ -2232,7 +2904,19 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery up the left side of the neck, branching straight from the aortic arch. It splits into the internal carotid artery to the brain and the external carotid artery to the face and scalp.",
+       "follow": {
+        "q": "Where would you press to feel the carotid pulse?",
+        "options": [
+         "At the side of the neck, beside the windpipe",
+         "On the inner wrist below the thumb",
+         "In the groin",
+         "Behind the knee"
+        ],
+        "correct": 0,
+        "why": "The common carotid arteries run up either side of the neck next to the trachea, close to the skin, so each heartbeat's pressure wave can be felt there. The wrist, groin and knee sites are the radial, femoral and popliteal pulses.",
+        "level": "recall"
+       }
       },
       {
        "id": "left-subclavian-artery",
@@ -2248,7 +2932,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery to the left arm, the last branch of the aortic arch. It passes under the collarbone, gives off the left vertebral artery and becomes the axillary artery."
       },
       {
        "id": "brachiocephalic-trunk",
@@ -2265,7 +2949,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The first branch of the aortic arch, on the right. It is short and splits into the right common carotid artery (to the head) and the right subclavian artery (to the right arm). There is no left brachiocephalic trunk."
       },
       {
        "id": "axillary-artery",
@@ -2281,7 +2965,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The continuation of the subclavian artery through the armpit (the axilla). At the arm it becomes the brachial artery."
       },
       {
        "id": "aortic-arch",
@@ -2298,7 +2982,19 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The curve of the aorta above the heart, turning back and to the left. Its three branches supply the head and arms: the brachiocephalic trunk, the left common carotid artery and the left subclavian artery.",
+       "follow": {
+        "q": "Which vessel is NOT a branch of the aortic arch?",
+        "options": [
+         "Right common carotid artery",
+         "Brachiocephalic trunk",
+         "Left common carotid artery",
+         "Left subclavian artery"
+        ],
+        "correct": 0,
+        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so only the left carotid is a direct branch.",
+        "level": "recall"
+       }
       },
       {
        "id": "pulmonary-trunk",
@@ -2312,7 +3008,19 @@
        ],
        "concept": "great-vessels",
        "taught": "heart-chambers-valves",
-       "fn": ""
+       "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
+       "follow": {
+        "q": "Which chamber pumps blood into the pulmonary trunk?",
+        "options": [
+         "Right ventricle",
+         "Left ventricle",
+         "Right atrium",
+         "Left atrium"
+        ],
+        "correct": 0,
+        "why": "The pulmonary valve sits between the right ventricle and the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles.",
+        "level": "recall"
+       }
       },
       {
        "id": "ascending-aorta",
@@ -2326,7 +3034,7 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The first part of the aorta, rising from the left ventricle. Its only branches are the right and left coronary arteries."
       },
       {
        "id": "descending-aorta",
@@ -2342,7 +3050,7 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The long part of the aorta that runs down behind the heart and through the diaphragm. Above the diaphragm it is the thoracic aorta; below it, the abdominal aorta."
       },
       {
        "id": "diaphragm",
@@ -2356,7 +3064,7 @@
        ],
        "concept": "diaphragm",
        "taught": "body-cavities",
-       "fn": ""
+       "fn": "The dome-shaped muscle between the thoracic and abdominopelvic cavities. The descending aorta passes behind it through an opening called the aortic hiatus; above that point it is the thoracic aorta, below it the abdominal aorta."
       },
       {
        "id": "celiac-trunk",
@@ -2373,7 +3081,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The first unpaired branch of the abdominal aorta, just below the diaphragm. It quickly splits to supply the stomach, liver, spleen and part of the pancreas."
       },
       {
        "id": "renal-artery",
@@ -2389,7 +3097,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A paired branch of the abdominal aorta to each kidney. The kidneys receive about a fifth of the heart's output at rest, so these are short, wide arteries."
       },
       {
        "id": "brachial-artery",
@@ -2405,7 +3113,19 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The main artery of the upper arm, continuing from the axillary artery. It runs along the inner arm and is where blood pressure is measured with a cuff; at the elbow it splits into the radial and ulnar arteries.",
+       "follow": {
+        "q": "Blood pressure cuffs are placed on the upper arm because they compress which artery?",
+        "options": [
+         "Brachial artery",
+         "Radial artery",
+         "Axillary artery",
+         "Subclavian artery"
+        ],
+        "correct": 0,
+        "why": "The brachial artery runs close to the skin along the inner upper arm, at about the level of the heart, so a cuff can squeeze it shut and a stethoscope at the elbow can hear flow return.",
+        "level": "recall"
+       }
       },
       {
        "id": "superior-mesenteric-artery",
@@ -2422,7 +3142,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "An unpaired branch of the abdominal aorta just below the celiac trunk. It supplies most of the gut below the stomach: the long, narrow part where most food is absorbed and the first half of the wider part that follows."
       },
       {
        "id": "gonadal-artery",
@@ -2440,7 +3160,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A paired, slender branch of the abdominal aorta to the testes or ovaries (the testicular or ovarian artery)."
       },
       {
        "id": "inferior-mesenteric-artery",
@@ -2457,7 +3177,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The lowest unpaired branch of the abdominal aorta. It supplies the last part of the gut, down to the end of the tract in the pelvis."
       },
       {
        "id": "radial-artery",
@@ -2473,7 +3193,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The forearm artery on the thumb side, from the brachial artery. At the wrist it lies just under the skin over the bone, where the radial pulse is taken."
       },
       {
        "id": "common-iliac-artery",
@@ -2489,7 +3209,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "One of the two terminal branches of the abdominal aorta. Each splits into an internal iliac artery to the pelvis and an external iliac artery to the leg."
       },
       {
        "id": "ulnar-artery",
@@ -2505,7 +3225,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The forearm artery on the little-finger side, from the brachial artery. It joins the radial artery in the palm through the palmar arches."
       },
       {
        "id": "internal-iliac-artery",
@@ -2521,7 +3241,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The branch of the common iliac artery that supplies the pelvic organs, the buttocks and the inner thigh."
       },
       {
        "id": "external-iliac-artery",
@@ -2537,7 +3257,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The branch of the common iliac artery headed to the leg. It passes under the ligament in the groin and becomes the femoral artery."
       },
       {
        "id": "palmar-arches",
@@ -2555,7 +3275,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "Arching connections between the radial and ulnar arteries in the palm. Because blood can reach the fingers from either artery, the hand keeps its supply if one of them is blocked."
       },
       {
        "id": "deep-femoral-artery",
@@ -2572,7 +3292,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The large branch of the femoral artery that runs deep in the thigh and supplies the thigh muscles and the femur."
       },
       {
        "id": "femoral-artery",
@@ -2588,7 +3308,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The main artery of the thigh, continuing from the external iliac artery. In the groin it lies close to the skin, where the femoral pulse is felt and where catheters are often inserted."
       },
       {
        "id": "descending-genicular-artery",
@@ -2604,7 +3324,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A small branch of the femoral artery that runs down to the inner side of the knee and helps supply the knee joint."
       },
       {
        "id": "popliteal-artery",
@@ -2620,7 +3340,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The continuation of the femoral artery behind the knee, where the popliteal pulse is felt. Below the knee it splits into the anterior and posterior tibial arteries."
       },
       {
        "id": "posterior-tibial-artery",
@@ -2636,7 +3356,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The branch of the popliteal artery down the back of the leg. It passes behind the bump on the inner ankle, where its pulse is felt, and continues into the sole of the foot."
       },
       {
        "id": "anterior-tibial-artery",
@@ -2652,7 +3372,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The branch of the popliteal artery to the front of the leg. At the ankle it becomes the dorsalis pedis artery on top of the foot."
       },
       {
        "id": "fibular-artery",
@@ -2669,7 +3389,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the posterior tibial artery that runs down the outer side of the leg and supplies the muscles there (also called the peroneal artery)."
       },
       {
        "id": "dorsalis-pedis-artery",
@@ -2686,7 +3406,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The continuation of the anterior tibial artery on the top of the foot, where the pedal pulse is felt. Checking it tells you blood is reaching the end of the leg."
       },
       {
        "id": "plantar-arch",
@@ -2702,7 +3422,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The arching artery in the sole of the foot, fed by the posterior tibial and dorsalis pedis arteries. It supplies the toes from two directions."
       }
      ]
     },
@@ -2727,7 +3447,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery up the right side of the neck, from the brachiocephalic trunk. At the level of the upper neck it splits into the internal carotid (brain) and external carotid (face and scalp) arteries."
       },
       {
        "id": "left-common-carotid-artery",
@@ -2743,7 +3463,19 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery up the left side of the neck, branching straight from the aortic arch. It splits into the internal carotid artery to the brain and the external carotid artery to the face and scalp.",
+       "follow": {
+        "q": "Where would you press to feel the carotid pulse?",
+        "options": [
+         "At the side of the neck, beside the windpipe",
+         "On the inner wrist below the thumb",
+         "In the groin",
+         "Behind the knee"
+        ],
+        "correct": 0,
+        "why": "The common carotid arteries run up either side of the neck next to the trachea, close to the skin, so each heartbeat's pressure wave can be felt there. The wrist, groin and knee sites are the radial, femoral and popliteal pulses.",
+        "level": "recall"
+       }
       },
       {
        "id": "right-subclavian-artery",
@@ -2759,7 +3491,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery to the right arm, from the brachiocephalic trunk. It passes under the collarbone and becomes the axillary artery in the armpit; it also gives off the right vertebral artery."
       },
       {
        "id": "left-subclavian-artery",
@@ -2775,7 +3507,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The artery to the left arm, the last branch of the aortic arch. It passes under the collarbone, gives off the left vertebral artery and becomes the axillary artery."
       },
       {
        "id": "brachiocephalic-artery",
@@ -2793,7 +3525,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The first branch of the aortic arch, on the right. It is short and splits into the right common carotid artery (to the head) and the right subclavian artery (to the right arm). There is no left brachiocephalic trunk."
       },
       {
        "id": "aortic-arch",
@@ -2810,7 +3542,19 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The curve of the aorta above the heart, turning back and to the left. Its three branches supply the head and arms: the brachiocephalic trunk, the left common carotid artery and the left subclavian artery.",
+       "follow": {
+        "q": "Which vessel is NOT a branch of the aortic arch?",
+        "options": [
+         "Right common carotid artery",
+         "Brachiocephalic trunk",
+         "Left common carotid artery",
+         "Left subclavian artery"
+        ],
+        "correct": 0,
+        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so only the left carotid is a direct branch.",
+        "level": "recall"
+       }
       },
       {
        "id": "ascending-aorta",
@@ -2824,7 +3568,7 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The first part of the aorta, rising from the left ventricle. Its only branches are the right and left coronary arteries."
       },
       {
        "id": "descending-aorta",
@@ -2840,7 +3584,7 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The long part of the aorta that runs down behind the heart and through the diaphragm. Above the diaphragm it is the thoracic aorta; below it, the abdominal aorta."
       },
       {
        "id": "left-coronary-artery",
@@ -2857,7 +3601,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The first branch of the aorta on the left. After a short course it splits into the anterior interventricular artery and the circumflex artery, which together supply most of the left ventricle."
       },
       {
        "id": "right-coronary-artery",
@@ -2874,7 +3618,19 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": ""
+       "fn": "The first branch of the aorta on the right, running in the groove between the right atrium and right ventricle. It supplies the right atrium, most of the right ventricle and, in most people, the back of the heart.",
+       "follow": {
+        "q": "Where do the coronary arteries branch from?",
+        "options": [
+         "The base of the aorta, just past the aortic valve",
+         "The pulmonary trunk",
+         "The coronary sinus",
+         "The right atrium"
+        ],
+        "correct": 0,
+        "why": "The coronary arteries are the first branches of the aorta, leaving it just beyond the aortic valve. They fill mainly when the ventricles relax (diastole), when the heart muscle is not squeezing them shut.",
+        "level": "recall"
+       }
       },
       {
        "id": "thoracic-aorta",
@@ -2890,7 +3646,7 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The descending aorta above the diaphragm. It gives small branches to the chest wall, esophagus and airways before passing through the aortic hiatus."
       },
       {
        "id": "abdominal-aorta",
@@ -2904,7 +3660,19 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The descending aorta below the diaphragm. It gives off the celiac trunk, the mesenteric, renal and gonadal arteries, and ends by splitting into the two common iliac arteries.",
+       "follow": {
+        "q": "The abdominal aorta ends by dividing into which pair of arteries?",
+        "options": [
+         "Common iliac arteries",
+         "Femoral arteries",
+         "Renal arteries",
+         "Internal iliac arteries"
+        ],
+        "correct": 0,
+        "why": "At about the level of the navel the abdominal aorta splits into the right and left common iliac arteries. Each then divides into an internal iliac (pelvis) and an external iliac, which becomes the femoral artery in the thigh.",
+        "level": "recall"
+       }
       }
      ]
     },
@@ -2929,7 +3697,7 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A short link between the two anterior cerebral arteries at the front of the cerebral arterial circle. It lets blood cross from one side to the other."
       },
       {
        "id": "middle-cerebral",
@@ -2945,7 +3713,7 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The largest branch of the internal carotid artery. It runs out to the side of the brain and supplies most of its outer surface, which is why blockage of this artery is the most common cause of a stroke."
       },
       {
        "id": "anterior-cerebral",
@@ -2961,7 +3729,7 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the internal carotid artery that runs forward and up between the two halves of the brain, supplying their inner surfaces."
       },
       {
        "id": "ophthalmic",
@@ -2977,7 +3745,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the internal carotid artery that supplies the eye and the structures around it."
       },
       {
        "id": "posterior-communicating",
@@ -2993,7 +3761,19 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A short link on each side of the cerebral arterial circle between the internal carotid and posterior cerebral arteries. It connects the front and back blood supplies of the brain.",
+       "follow": {
+        "q": "Why does a slowly narrowing internal carotid artery often cause no symptoms at first?",
+        "options": [
+         "The cerebral arterial circle lets blood reach that side from the other carotid and the basilar artery",
+         "The brain can store enough oxygen for weeks",
+         "The external carotid artery takes over supplying the brain directly",
+         "The vertebral arteries grow larger within days"
+        ],
+        "correct": 0,
+        "why": "The communicating arteries join the carotid and basilar supplies into a ring. If one input narrows slowly, blood can flow around the ring from the others. This is an anastomosis; it cannot help if the blockage is sudden and downstream of the circle.",
+        "level": "analyze"
+       }
       },
       {
        "id": "posterior-cerebral",
@@ -3009,7 +3789,7 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the basilar artery that supplies the back of the brain, including the area for vision."
       },
       {
        "id": "internal-carotid",
@@ -3025,7 +3805,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The branch of the common carotid artery that enters the skull and supplies most of the front of the brain and the eye. It joins the cerebral arterial circle at the base of the brain."
       },
       {
        "id": "basilar",
@@ -3041,7 +3821,7 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The single artery formed where the two vertebral arteries join on the underside of the brainstem. It supplies the brainstem and the back of the brain and feeds the cerebral arterial circle."
       },
       {
        "id": "vertebral",
@@ -3058,7 +3838,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of each subclavian artery that climbs through the neck bones to the base of the brain, where the two join to form the basilar artery."
       }
      ]
     }
@@ -3070,7 +3850,7 @@
    "src": "figures/os-1-14.jpg",
    "w": 1100,
    "h": 1128,
-   "alt": "A woman standing in anatomical position, seen from the front and her right side, crossed by three flat panels. A vertical panel running front to back divides her into right and left parts (the sagittal plane). A vertical panel running side to side divides her into front and back parts (the frontal, or coronal, plane). A horizontal panel at waist height divides her into upper and lower parts (the transverse plane).",
+   "alt": "A woman standing in anatomical position, seen from the front and slightly to one side, crossed by four flat panels. A vertical panel running front to back divides her into right and left parts (the sagittal plane). A vertical panel running side to side divides her into front and back parts (the frontal, or coronal, plane). A horizontal panel at hip level divides her into upper and lower parts (the transverse plane). A slanted panel through the lower legs is an oblique plane.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.14",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
    "license": "CC BY 4.0"

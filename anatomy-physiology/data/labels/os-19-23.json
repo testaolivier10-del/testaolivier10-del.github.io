@@ -11,7 +11,13 @@
       "lines": [
         4
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        233,
+        287,
+        28,
+        25
+      ]
     },
     {
       "id": "r-wave-2",
@@ -23,7 +29,13 @@
       "lines": [
         5
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        849,
+        287,
+        28,
+        25
+      ]
     },
     {
       "id": "q-wave",
@@ -35,7 +47,13 @@
       "lines": [
         10
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        184,
+        413,
+        32,
+        26
+      ]
     },
     {
       "id": "s-wave",
@@ -47,7 +65,13 @@
       "lines": [
         11
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        271,
+        413,
+        28,
+        25
+      ]
     },
     {
       "id": "pr-segment",
@@ -61,7 +85,13 @@
         8,
         12
       ],
-      "concept": "ecg-intervals"
+      "concept": "ecg-intervals",
+      "box": [
+        723,
+        385,
+        110,
+        57
+      ]
     },
     {
       "id": "st-segment",
@@ -75,7 +105,13 @@
         9,
         13
       ],
-      "concept": "ecg-intervals"
+      "concept": "ecg-intervals",
+      "box": [
+        895,
+        384,
+        110,
+        58
+      ]
     },
     {
       "id": "p-wave",
@@ -87,7 +123,13 @@
       "lines": [
         16
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        100,
+        498,
+        93,
+        25
+      ]
     },
     {
       "id": "t-wave",
@@ -100,7 +142,13 @@
         17,
         18
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        347,
+        498,
+        93,
+        25
+      ]
     },
     {
       "id": "pr-interval",
@@ -112,7 +160,13 @@
       "lines": [
         21
       ],
-      "concept": "ecg-intervals"
+      "concept": "ecg-intervals",
+      "box": [
+        89,
+        667,
+        133,
+        25
+      ]
     },
     {
       "id": "qt-interval",
@@ -124,7 +178,13 @@
       "lines": [
         22
       ],
-      "concept": "ecg-intervals"
+      "concept": "ecg-intervals",
+      "box": [
+        265,
+        667,
+        134,
+        26
+      ]
     },
     {
       "id": "qrs-complex",
@@ -137,7 +197,13 @@
       "lines": [
         23
       ],
-      "concept": "ecg-waves"
+      "concept": "ecg-waves",
+      "box": [
+        779,
+        667,
+        168,
+        30
+      ]
     }
   ]
 }

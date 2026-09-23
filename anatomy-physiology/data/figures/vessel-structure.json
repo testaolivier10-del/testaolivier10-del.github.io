@@ -11,7 +11,10 @@
     "alt": "Three curved wedges of vessel wall side by side, each with its inner, middle and outer layers bracketed. The elastic artery has a thick middle layer packed with wavy dark elastic fibers. The muscular artery has a thick middle layer of smooth muscle, a wavy inner elastic line, and small vessels in its outer layer. The arteriole has a thin wall with only a few large smooth muscle cells in its middle layer.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.4",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 280,
+    "ext": "jpg"
   },
   "os-20-5": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "Three short capillary tubes cut open at one end. The first has an unbroken wall of endothelial cells wrapped in a complete basement membrane, with narrow clefts between cells. The second has a similar wall dotted with small pores through the cells. The third has large gaps between cells and a basement membrane with holes in it.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.5",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 415,
+    "ext": "jpg"
   },
   "os-20-6": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "A red arteriole on the left and a blue venule on the right joined by a pale network of capillaries. A straight channel crosses the network from arteriole to venule, with rings of muscle drawn where capillaries branch from it. Below the network, a wide vessel connects the arteriole directly to the venule.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.6",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 650,
+    "ext": "jpg"
   },
   "os-20-7": {
     "source": "openstax",
@@ -53,7 +62,10 @@
     "alt": "Wedges of wall from three veins with their layers bracketed. The large vein has a thick outer layer containing small vessels, nerves and some smooth muscle, over a thin middle layer. The medium vein has a thin middle layer and paired flaps projecting into the lumen, shown closed, with a side view of the flaps. The venule has a very thin wall of lining cells and a trace of muscle.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.7",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1490,
+    "ext": "jpg"
   },
   "os-20-15": {
     "source": "openstax",
@@ -67,6 +79,9 @@
     "alt": "Two drawings of a vein running between two skeletal muscles. Left, muscles relaxed: the vein is full of blood and the valves above and below the segment are closed. Right, muscles contracted and bulging: the vein is squeezed, the valve above has opened, and an arrow shows blood moving upward, while the valve below stays closed.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.15",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 962,
+    "ext": "jpg"
   }
 }

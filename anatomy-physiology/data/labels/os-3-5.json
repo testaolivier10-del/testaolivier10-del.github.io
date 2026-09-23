@@ -1,0 +1,61 @@
+{
+  "figure": "os-3-5",
+  "labels": [
+    {
+      "id": "small-uncharged-molecules",
+      "name": "Small uncharged molecules",
+      "accept": [
+        "small uncharged molecules",
+        "nonpolar molecules",
+        "small molecules",
+        "uncharged molecules"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "simple-diffusion"
+    },
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "lipid-bilayer",
+      "name": "Lipid bilayer (plasma membrane)",
+      "accept": [
+        "lipid bilayer (plasma membrane)",
+        "cell membrane",
+        "lipid bilayer",
+        "phospholipid bilayer",
+        "plasma membrane"
+      ],
+      "lines": [
+        3,
+        4,
+        5
+      ],
+      "concept": "phospholipid-bilayer"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cell-parts"
+    }
+  ]
+}

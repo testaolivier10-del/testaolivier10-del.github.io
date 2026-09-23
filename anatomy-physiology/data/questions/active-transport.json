@@ -400,7 +400,7 @@
       "It rises, because hydrogen ions build up in the stomach",
       "It is unchanged, because hydrogen ions diffuse in anyway",
       "It rises, because potassium replaces the hydrogen ions",
-      "It falls, because hydrogen ions are pumped out less"
+      "It falls, because fewer hydrogen ions are pumped into the stomach"
     ],
     "correct": 3,
     "why": {
@@ -481,21 +481,21 @@
       "energy",
       "compartments"
     ],
-    "q": "A cell's sodium–potassium pumps stop, but the cell is moved into a solution with the same sodium concentration as its own cytoplasm. Compared with a pump-blocked cell in normal extracellular fluid, how much does it swell?",
+    "q": "A cell's sodium–potassium pumps stop. The cell is then placed in a solution whose sodium concentration matches its cytoplasm, with the missing sodium replaced by a solute that cannot enter cells, so the osmolarity stays normal. Compared with a pump-blocked cell in normal extracellular fluid, how much does it swell?",
     "options": [
-      "Much more, because sodium has no gradient to follow",
-      "Much less, because sodium has no gradient to enter by",
+      "Much more, because sodium now leaks in faster",
+      "Much less, because far less sodium leaks in",
       "The same, because swelling depends only on ATP",
       "Not at all, because the pumps are what cause swelling"
     ],
     "correct": 1,
     "why": {
-      "correct": "A pump-blocked cell swells because sodium leaks in down its gradient and water follows. If the outside sodium matches the inside, there is no gradient to drive sodium in, so little sodium enters and the cell swells much less.",
+      "correct": "A pump-blocked cell swells because sodium leaks in and water follows. With outside sodium matching the inside, sodium's concentration push is gone and only the electrical pull of the negative inside remains, so far less sodium enters and far less water follows.",
       "options": [
-        "With no gradient, sodium has no net push into the cell, so less sodium enters, not more.",
-        "Correct. No sodium gradient means little sodium leak, so little water follows.",
+        "Removing the concentration difference leaves only the electrical pull on sodium, so less sodium enters, not more.",
+        "Correct. With the concentration push gone, far less sodium leaks in, so far less water follows.",
         "Swelling depends on sodium leaking in, which depends on the sodium gradient, not only on ATP.",
-        "The pumps prevent swelling; stopping them is what allows it. Here the missing gradient limits it."
+        "The pumps prevent swelling; stopping them is what allows it. Here the smaller sodium leak limits it."
       ]
     },
     "id": "anp-active-transport-18"

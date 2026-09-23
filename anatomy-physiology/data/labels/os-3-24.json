@@ -1,0 +1,182 @@
+{
+  "figure": "os-3-24",
+  "labels": [
+    {
+      "id": "chromosome",
+      "name": "Chromosome",
+      "accept": [
+        "chromosome",
+        "chromosomes"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "free-nucleotides",
+      "name": "Free nucleotides",
+      "accept": [
+        "free nucleotides",
+        "nucleotide",
+        "nucleotides"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "dna-polymerase-top",
+      "name": "DNA polymerase",
+      "accept": [
+        "dna polymerase",
+        "polymerase"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "leading-strand",
+      "name": "Leading strand",
+      "accept": [
+        "leading strand",
+        "leading"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "helicase",
+      "name": "Helicase",
+      "accept": [
+        "helicase",
+        "dna helicase"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "template-dna",
+      "name": "Original (template) DNA",
+      "accept": [
+        "original (template) dna",
+        "parental dna",
+        "template dna",
+        "template strand"
+      ],
+      "lines": [
+        8,
+        9,
+        11
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "lagging-strand",
+      "name": "Lagging strand",
+      "accept": [
+        "lagging strand",
+        "lagging"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "replication-fork",
+      "name": "Replication fork",
+      "accept": [
+        "replication fork",
+        "fork"
+      ],
+      "lines": [
+        15,
+        16
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "adenine",
+      "name": "Adenine",
+      "accept": [
+        "adenine",
+        "a"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "thymine",
+      "name": "Thymine",
+      "accept": [
+        "thymine",
+        "t"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "cytosine",
+      "name": "Cytosine",
+      "accept": [
+        "cytosine",
+        "c"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "guanine",
+      "name": "Guanine",
+      "accept": [
+        "guanine",
+        "g"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "dna-polymerase-bottom",
+      "name": "DNA polymerase",
+      "accept": [
+        "dna polymerase",
+        "polymerase"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "template-strand",
+      "name": "Original (template) DNA strand",
+      "accept": [
+        "original (template) dna strand",
+        "parental strand",
+        "template dna",
+        "template strand"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "dna-replication"
+    }
+  ]
+}

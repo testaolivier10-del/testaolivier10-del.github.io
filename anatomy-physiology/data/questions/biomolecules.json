@@ -44,7 +44,7 @@
     "diff": 2,
     "core": ["structure-function", "energy"],
     "misconception": "all carbohydrates reach the blood equally fast",
-    "q": "Jordan, 19, is shaky and sweaty during a run because the glucose level in her blood has fallen. Glucose gel steadies her within minutes, faster than a starchy granola bar would. Why does the gel act faster?",
+    "q": "Jordan, 19, is shaky and sweaty during a run because the glucose level in his blood has fallen. Glucose gel steadies him within minutes, faster than a starchy granola bar would. Why does the gel act faster?",
     "options": ["Starch is a lipid, which cannot be absorbed", "Glucose is already a monosaccharide and needs no hydrolysis", "Glucose is hydrophobic, so it slips into the blood more easily", "Starch must be denatured by heat before it can be absorbed"],
     "correct": 1,
     "why": {
@@ -67,7 +67,7 @@
     "options": ["Glycogen in his skeletal muscles", "Cholesterol in the boundary around his cells", "Triglycerides split directly into glucose", "Glycogen in his liver"],
     "correct": 3,
     "why": {
-      "correct": "Between meals, liver cells hydrolyze glycogen and release the freed glucose into the blood. Muscle cells lack the final step needed to release free glucose, so their glycogen fuels only the muscle itself.",
+      "correct": "Between meals, liver cells break down glycogen and release the freed glucose into the blood. Muscle cells lack the final step needed to release free glucose, so their glycogen fuels only the muscle itself.",
       "options": [
         "Muscle glycogen is broken down for the muscle's own use. Muscle cells cannot release free glucose into the blood.",
         "Cholesterol is a steroid in the cell boundary and raw material for other steroids. It is not a glucose store.",
@@ -83,15 +83,15 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Glycogen is far more branched than plant starch. How does that branching affect the way a liver cell uses it?",
-    "options": ["It makes glycogen hydrophobic, so it stays out of the cell's water", "It lets glycogen hold fat as well as glucose", "Many branch ends let glucose be released from many points at once", "It makes glycogen impossible to hydrolyze"],
+    "options": ["It makes glycogen hydrophobic, so it stays out of the cell's water", "It lets glycogen hold fat as well as glucose", "Many branch ends let glucose be released from many points at once", "It makes glycogen impossible to break down"],
     "correct": 2,
     "why": {
-      "correct": "Glucose units are clipped off by hydrolysis at the ends of the chains. Every branch adds an end, so a highly branched molecule can release glucose from many ends at the same time, which makes release fast.",
+      "correct": "Glucose units are clipped off at the ends of the chains. Every branch adds an end, so a highly branched molecule can release glucose from many ends at the same time, which makes release fast.",
       "options": [
         "Glycogen is made of glucose, which carries many polar –OH groups. Branching does not make it nonpolar.",
         "Glycogen is a polymer of glucose only. Fat is stored separately as triglycerides.",
         "Correct. More ends mean more places to cut, so glucose comes off quickly when it is needed.",
-        "Glycogen is hydrolyzed every day between meals. Branching speeds that up rather than preventing it."
+        "Glycogen is broken down every day between meals. Branching speeds that up rather than preventing it."
       ]
     }
   },
@@ -154,7 +154,7 @@
     "diff": 3,
     "core": ["structure-function"],
     "q": "Phospholipids dropped into water form a two-layer sheet with their heads on both outer faces and their tails inside. What drives that arrangement?",
-    "options": ["The tails form covalent bonds with each other across the sheet", "The heads are nonpolar and are pushed out of the water", "The tails carry charges that attract the tails of the other layer", "Water bonds with the polar heads and with itself, squeezing the tails together"],
+    "options": ["The tails form covalent bonds with each other across the sheet", "The heads are nonpolar and are pushed out of the water", "The tails carry charges that attract the tails of the other layer", "Water bonds with the heads and itself, squeezing tails together"],
     "correct": 3,
     "why": {
       "correct": "Phospholipids are amphipathic. Water molecules attract the charged, polar heads and hydrogen-bond strongly with each other, so they push the nonpolar tails together, away from water. Two layers, tails facing inward, keep every head in water and every tail out of it.",
@@ -310,7 +310,7 @@
     "diff": 3,
     "core": ["energy", "structure-function"],
     "q": "Your body stores much more energy as triglycerides than as glycogen. Which feature of triglycerides makes them the more compact long-term store?",
-    "options": ["They dissolve easily in blood, so they are always ready to use", "They are polymers of glucose with extra branches", "They contain nitrogen, which holds extra energy", "They carry about 9 kcal per gram and are stored almost without water"],
+    "options": ["They dissolve easily in blood, so they are always ready to use", "They are polymers of glucose with extra branches", "They contain nitrogen, which holds extra energy", "About 9 kcal per gram, stored with almost no water"],
     "correct": 3,
     "why": {
       "correct": "Triglycerides are packed with carbon–hydrogen bonds, so they hold about 9 kcal per gram against about 4 for carbohydrate. Being hydrophobic, they are stored with almost no water, while glycogen holds a lot of water with it. Both facts pack more energy into each gram of stored tissue.",
@@ -329,7 +329,7 @@
     "diff": 2,
     "core": ["energy"],
     "q": "Fill the gap: Glucose from a meal enters the blood → it reaches liver cells → ______ → the liver holds a store of glycogen",
-    "options": ["Liver cells hydrolyze glucose into smaller sugars", "Liver cells join glucose units by dehydration synthesis, releasing water", "Liver cells denature the glucose into a branched shape", "Liver cells link glucose units with peptide bonds"],
+    "options": ["Liver cells hydrolyze glucose into smaller sugars", "Liver cells join glucose by dehydration synthesis", "Liver cells denature the glucose into a branched shape", "Liver cells link glucose units with peptide bonds"],
     "correct": 1,
     "why": {
       "correct": "Building a polymer from monomers is dehydration synthesis. Each new bond between glucose units releases one water molecule, and thousands of links make a branched glycogen molecule.",
@@ -356,7 +356,7 @@
         "Correct. Twenty kinds of unit plus nitrogen and sulfur point to a chain of amino acids.",
         "Carbohydrates contain only carbon, hydrogen and oxygen, and their units are sugars.",
         "A triglyceride is glycerol plus three fatty acids, and it has no nitrogen or sulfur. It is not built from 20 kinds of unit.",
-        "Nucleic acids contain phosphorus rather than sulfur, and they are built from five kinds of base, not 20 kinds of unit."
+        "Nucleic acids contain phosphorus rather than sulfur, and each is built from four kinds of nucleotide, not 20 kinds of unit."
       ]
     }
   },

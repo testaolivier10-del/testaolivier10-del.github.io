@@ -1,0 +1,52 @@
+{
+  "figure": "os-3-11",
+  "labels": [
+    {
+      "id": "exocytosis",
+      "name": "Exocytosis",
+      "accept": [
+        "exocytosis"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "exocytosis"
+    },
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "vesicle",
+      "name": "Vesicle",
+      "accept": [
+        "vesicle",
+        "secretory vesicle"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "vesicle"
+    }
+  ]
+}

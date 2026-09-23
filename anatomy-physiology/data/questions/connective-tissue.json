@@ -9,8 +9,8 @@
     ],
     "q": "What feature defines connective tissue?",
     "options": [
-      "Sheets of cells packed edge to edge on a basement membrane",
-      "Few cells scattered in a lot of extracellular matrix",
+      "Sheets of cells packed edge to edge",
+      "Few cells scattered in a large amount of extracellular matrix",
       "Cells that shorten and pull when they are stimulated",
       "A free surface facing a lumen or the outside"
     ],
@@ -311,7 +311,7 @@
       "correct": "All cartilage resists squeezing because its ground substance holds water. Fibrocartilage adds thick bundles of collagen, which resist pulling. A disc faces both, so it is fibrocartilage.",
       "options": [
         "Correct. Collagen bundles add strength in tension to cartilage's resistance to compression.",
-        "Fibrocartilage, like all cartilage, has no blood vessels.",
+        "Cartilage matrix has almost no blood vessels. Only the outer rim of pads such as the menisci gets a small supply.",
         "Elastic cartilage is the most flexible type. Fibrocartilage is the toughest.",
         "Hyaline cartilage is the most common cartilage in adults too, for example on bone ends and in the trachea."
       ]
@@ -400,7 +400,7 @@
     ],
     "q": "Mesenchyme is best described as what?",
     "options": [
-      "The tough, vessel-carrying layer around most cartilage",
+      "The layer that wraps most cartilage",
       "Embryonic connective tissue made of stem cells",
       "The protein mat that anchors an epithelium",
       "The heat-making fat found in newborns"
@@ -455,7 +455,7 @@
     "q": "Fill in the missing step. You press on articular cartilage → ______ → the cartilage flattens slightly → when the load lifts, water flows back and it springs back.",
     "options": [
       "Water is squeezed out of the ground substance",
-      "Elastic fibers in the matrix recoil and pull it thinner",
+      "Elastic fibers in the matrix recoil",
       "Chondrocytes contract",
       "Blood drains out of its capillaries"
     ],

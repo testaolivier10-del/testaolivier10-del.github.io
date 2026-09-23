@@ -14,7 +14,13 @@
       "lines": [
         1
       ],
-      "concept": "l-type-calcium"
+      "concept": "l-type-calcium",
+      "box": [
+        360,
+        69,
+        228,
+        32
+      ]
     },
     {
       "id": "depolarization",
@@ -26,7 +32,13 @@
       "lines": [
         3
       ],
-      "concept": "polarization-terms"
+      "concept": "polarization-terms",
+      "box": [
+        360,
+        101,
+        169,
+        29
+      ]
     },
     {
       "id": "outflux-of-k",
@@ -42,7 +54,13 @@
       "lines": [
         2
       ],
-      "concept": "voltage-gated-na-k"
+      "concept": "voltage-gated-na-k",
+      "box": [
+        732,
+        82,
+        152,
+        27
+      ]
     },
     {
       "id": "repolarization",
@@ -54,7 +72,13 @@
       "lines": [
         4
       ],
-      "concept": "polarization-terms"
+      "concept": "polarization-terms",
+      "box": [
+        733,
+        114,
+        168,
+        30
+      ]
     },
     {
       "id": "slow-influx-of-na",
@@ -69,7 +93,13 @@
       "lines": [
         6
       ],
-      "concept": "pacemaker-potential"
+      "concept": "pacemaker-potential",
+      "box": [
+        325,
+        157,
+        207,
+        26
+      ]
     },
     {
       "id": "prepotential",
@@ -82,7 +112,13 @@
       "lines": [
         9
       ],
-      "concept": "pacemaker-potential"
+      "concept": "pacemaker-potential",
+      "box": [
+        326,
+        189,
+        142,
+        29
+      ]
     },
     {
       "id": "threshold",

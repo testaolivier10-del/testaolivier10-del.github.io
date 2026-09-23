@@ -1161,8 +1161,8 @@
        ],
        "label": "body temperature",
        "labelAt": [
-        44,
-        37.25
+        40,
+        36.75
        ],
        "anchor": "start"
       }
@@ -1322,7 +1322,7 @@
        {
         "y": 38.5,
         "label": "new set point",
-        "at": 2,
+        "at": 12,
         "dash": true
        }
       ]
@@ -1530,7 +1530,7 @@
         "label": "resting potential, about −60 mV",
         "labelAt": [
          9.8,
-         -52
+         -47
         ],
         "anchor": "end"
        },
@@ -2603,8 +2603,8 @@
        ],
        "label": "SA node cell",
        "labelAt": [
-        0.72,
-        15
+        1.08,
+        -12
        ],
        "anchor": "start"
       }
@@ -3598,7 +3598,7 @@
         ],
         "label": "slow AV node: PR 0.28 s",
         "labelAt": [
-         0.37,
+         0.56,
          1.3
         ],
         "anchor": "start"

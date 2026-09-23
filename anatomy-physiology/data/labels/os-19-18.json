@@ -12,7 +12,13 @@
       "lines": [
         2
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        886,
+        145,
+        130,
+        21
+      ]
     },
     {
       "id": "bachmanns-bundle",
@@ -28,7 +34,13 @@
       "lines": [
         4
       ],
-      "concept": "sa-node"
+      "concept": "sa-node",
+      "box": [
+        887,
+        262,
+        179,
+        21
+      ]
     },
     {
       "id": "sinoatrial-node",
@@ -44,7 +56,13 @@
         5,
         6
       ],
-      "concept": "sa-node"
+      "concept": "sa-node",
+      "box": [
+        61,
+        287,
+        104,
+        49
+      ]
     },
     {
       "id": "left-atrium",
@@ -56,7 +74,13 @@
       "lines": [
         7
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        887,
+        318,
+        107,
+        21
+      ]
     },
     {
       "id": "anterior-internodal",
@@ -69,7 +93,13 @@
       "lines": [
         8
       ],
-      "concept": "sa-node"
+      "concept": "sa-node",
+      "box": [
+        61,
+        339,
+        178,
+        21
+      ]
     },
     {
       "id": "atrioventricular-node",
@@ -83,7 +113,13 @@
         9,
         10
       ],
-      "concept": "av-node"
+      "concept": "av-node",
+      "box": [
+        61,
+        368,
+        149,
+        48
+      ]
     },
     {
       "id": "av-bundle",
@@ -114,7 +150,13 @@
       "lines": [
         13
       ],
-      "concept": "sa-node"
+      "concept": "sa-node",
+      "box": [
+        61,
+        422,
+        167,
+        21
+      ]
     },
     {
       "id": "posterior-internodal",
@@ -127,7 +169,13 @@
       "lines": [
         14
       ],
-      "concept": "sa-node"
+      "concept": "sa-node",
+      "box": [
+        62,
+        453,
+        188,
+        21
+      ]
     },
     {
       "id": "left-ventricle",
@@ -139,7 +187,13 @@
       "lines": [
         15
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        887,
+        499,
+        127,
+        21
+      ]
     },
     {
       "id": "right-atrium",
@@ -151,7 +205,13 @@
       "lines": [
         16
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        62,
+        501,
+        121,
+        26
+      ]
     },
     {
       "id": "right-ventricle",
@@ -163,7 +223,13 @@
       "lines": [
         17
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        62,
+        538,
+        140,
+        25
+      ]
     },
     {
       "id": "bundle-branches",
@@ -179,7 +245,13 @@
         18,
         19
       ],
-      "concept": "ventricular-conduction"
+      "concept": "ventricular-conduction",
+      "box": [
+        887,
+        538,
+        199,
+        44
+      ]
     },
     {
       "id": "purkinje-fibers",
@@ -193,7 +265,13 @@
       "lines": [
         20
       ],
-      "concept": "ventricular-conduction"
+      "concept": "ventricular-conduction",
+      "box": [
+        887,
+        605,
+        141,
+        26
+      ]
     }
   ]
 }

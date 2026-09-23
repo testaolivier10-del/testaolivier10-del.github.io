@@ -1,0 +1,47 @@
+{
+  "figure": "os-3-8",
+  "labels": [
+    {
+      "id": "hypertonic",
+      "name": "Hypertonic",
+      "accept": [
+        "hypertonic",
+        "hypertonic solution"
+      ],
+      "box": [
+        28,
+        0,
+        98,
+        22
+      ],
+      "concept": "tonicity"
+    },
+    {
+      "id": "isotonic",
+      "name": "Isotonic",
+      "accept": [
+        "isotonic",
+        "isotonic solution"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "tonicity"
+    },
+    {
+      "id": "hypotonic",
+      "name": "Hypotonic",
+      "accept": [
+        "hypotonic",
+        "hypotonic solution"
+      ],
+      "box": [
+        340,
+        0,
+        100,
+        22
+      ],
+      "concept": "tonicity"
+    }
+  ]
+}

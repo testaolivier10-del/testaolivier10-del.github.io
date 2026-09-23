@@ -81,7 +81,7 @@
     "options": [
       "The inside becomes more positive, and the current is inward",
       "The inside becomes more negative, and the current is inward",
-      "The inside becomes more negative, and the current is outward",
+      "The inside becomes more negative, and the current counts as outward",
       "The inside becomes more positive, and the current is outward"
     ],
     "correct": 2,
@@ -103,7 +103,7 @@
     "core": ["gradients"],
     "q": "Sodium is much more concentrated outside a cell than inside, and the inside of the cell is negative. A route for sodium opens. What happens?",
     "options": [
-      "Sodium moves out, because the voltage pushes it away from the negative inside of the cell",
+      "Sodium moves out: the negative inside pushes it away",
       "Sodium moves in strongly: its concentration gradient and the voltage both push inward",
       "Sodium does not move, because its two gradients cancel each other",
       "Sodium moves in slowly, because only its concentration gradient acts on it"
@@ -370,7 +370,7 @@
     "options": [
       "The ions that cross are replaced from the other side at the same moment by other ions",
       "The voltage changes without any ions moving",
-      "The separated layer is so small that a tiny number of ions changes the voltage a lot",
+      "The separated layer is so small that a tiny number of ions changes the voltage a great deal",
       "Only uncharged particles cross during the change"
     ],
     "correct": 2,
@@ -418,7 +418,7 @@
     "options": [
       "Outward, because both the chemical and the electrical push point out",
       "Inward, because a positive inside attracts positive ions",
-      "Outward only if the voltage is larger than the concentration difference",
+      "Outward only if the voltage outweighs the concentration push",
       "Nowhere, because the two pushes cancel"
     ],
     "correct": 0,

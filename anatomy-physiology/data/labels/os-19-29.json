@@ -1,0 +1,188 @@
+{
+  "figure": "os-19-29",
+  "labels": [
+    {
+      "id": "aortic-valve-closes",
+      "name": "Aortic valve closes",
+      "accept": [
+        "aortic valve closes",
+        "aortic valve closing",
+        "aortic valve closure",
+        "semilunar valve closes"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "valve-rule"
+    },
+    {
+      "id": "aortic-valve-opens",
+      "name": "Aortic valve opens",
+      "accept": [
+        "aortic valve opens",
+        "aortic valve opening",
+        "semilunar valve opens"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "valve-rule"
+    },
+    {
+      "id": "aortic-pressure",
+      "name": "Aortic pressure",
+      "accept": [
+        "aortic pressure",
+        "pressure in the aorta"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "ventricular-pressure",
+      "name": "Ventricular pressure",
+      "accept": [
+        "ventricular pressure",
+        "left ventricular pressure",
+        "pressure in the ventricle"
+      ],
+      "box": [
+        396,
+        358,
+        237,
+        27
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "mitral-valve-opens",
+      "name": "Mitral valve opens",
+      "accept": [
+        "mitral valve opens",
+        "mitral valve opening",
+        "av valve opens",
+        "bicuspid valve opens"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "valve-rule"
+    },
+    {
+      "id": "mitral-valve-closes",
+      "name": "Mitral valve closes",
+      "accept": [
+        "mitral valve closes",
+        "mitral valve closing",
+        "mitral valve closure",
+        "av valve closes",
+        "bicuspid valve closes"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "valve-rule"
+    },
+    {
+      "id": "atrial-pressure",
+      "name": "Atrial pressure",
+      "accept": [
+        "atrial pressure",
+        "left atrial pressure",
+        "pressure in the atrium"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "heart-sounds",
+      "name": "Heart sounds",
+      "accept": [
+        "heart sounds",
+        "heart sound"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "heart-sounds"
+    },
+    {
+      "id": "first-heart-sound",
+      "name": "1st",
+      "accept": [
+        "1st",
+        "s1",
+        "first heart sound",
+        "first",
+        "1st heart sound"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "heart-sounds"
+    },
+    {
+      "id": "second-heart-sound",
+      "name": "2nd",
+      "accept": [
+        "2nd",
+        "s2",
+        "second heart sound",
+        "second",
+        "2nd heart sound"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "heart-sounds"
+    },
+    {
+      "id": "third-heart-sound",
+      "name": "3rd",
+      "accept": [
+        "3rd",
+        "s3",
+        "third heart sound",
+        "third",
+        "3rd heart sound"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "heart-sounds"
+    },
+    {
+      "id": "lub",
+      "name": "“Lub”",
+      "accept": [
+        "“lub”",
+        "lub"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "heart-sounds"
+    },
+    {
+      "id": "dub",
+      "name": "“Dub”",
+      "accept": [
+        "“dub”",
+        "dub"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "heart-sounds"
+    }
+  ]
+}

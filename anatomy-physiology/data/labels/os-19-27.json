@@ -1,0 +1,104 @@
+{
+  "figure": "os-19-27",
+  "labels": [
+    {
+      "id": "atrial-contraction",
+      "name": "Atrial contraction (atrial systole begins)",
+      "accept": [
+        "atrial contraction (atrial systole begins)",
+        "atrial contraction",
+        "atrial systole"
+      ],
+      "box": [
+        420,
+        102,
+        204,
+        50
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "isovolumic-contraction",
+      "name": "Isovolumic/isovolumetric contraction",
+      "accept": [
+        "isovolumic/isovolumetric contraction",
+        "isovolumic contraction",
+        "isovolumetric contraction",
+        "isovolumetric",
+        "isovolumic"
+      ],
+      "box": [
+        830,
+        217,
+        143,
+        76
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "ventricular-contraction",
+      "name": "Ventricular contraction (ventricular systole—first phase)",
+      "accept": [
+        "ventricular contraction (ventricular systole—first phase)",
+        "ventricular contraction",
+        "ventricular systole"
+      ],
+      "box": [
+        927,
+        483,
+        127,
+        120
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "ventricular-ejection",
+      "name": "Ventricular ejection (ventricular systole—second phase)",
+      "accept": [
+        "ventricular ejection (ventricular systole—second phase)",
+        "ventricular ejection",
+        "ejection",
+        "ejection phase"
+      ],
+      "box": [
+        899,
+        637,
+        162,
+        121
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "isovolumic-relaxation",
+      "name": "Isovolumic/isovolumetric relaxation (ventricular diastole—early)",
+      "accept": [
+        "isovolumic/isovolumetric relaxation (ventricular diastole—early)",
+        "isovolumic relaxation",
+        "isovolumetric relaxation"
+      ],
+      "box": [
+        366,
+        939,
+        261,
+        73
+      ],
+      "concept": "cycle-phases"
+    },
+    {
+      "id": "ventricular-filling",
+      "name": "Ventricular filling (ventricular diastole—late)",
+      "accept": [
+        "ventricular filling (ventricular diastole—late)",
+        "ventricular filling",
+        "late ventricular diastole"
+      ],
+      "box": [
+        114,
+        569,
+        142,
+        99
+      ],
+      "concept": "cycle-phases"
+    }
+  ]
+}

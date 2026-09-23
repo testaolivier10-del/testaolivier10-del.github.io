@@ -1,0 +1,130 @@
+{
+  "figure": "os-3-28",
+  "labels": [
+    {
+      "id": "large-ribosomal-subunit",
+      "name": "Large ribosomal subunit",
+      "accept": [
+        "large ribosomal subunit",
+        "large subunit"
+      ],
+      "box": [
+        10,
+        0,
+        276,
+        82
+      ],
+      "concept": "ribosome"
+    },
+    {
+      "id": "amino-acid",
+      "name": "Amino acid",
+      "accept": [
+        "amino acid",
+        "amino acids",
+        "met",
+        "methionine"
+      ],
+      "box": [
+        974,
+        172,
+        110,
+        84
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "trna",
+      "name": "tRNA",
+      "accept": [
+        "trna",
+        "transfer rna"
+      ],
+      "box": [
+        984,
+        318,
+        98,
+        44
+      ],
+      "concept": "rna"
+    },
+    {
+      "id": "anticodon",
+      "name": "Anticodon",
+      "accept": [
+        "anticodon",
+        "anticodons"
+      ],
+      "box": [
+        908,
+        396,
+        176,
+        44
+      ],
+      "concept": "genetic-code"
+    },
+    {
+      "id": "mrna",
+      "name": "mRNA",
+      "accept": [
+        "mrna",
+        "messenger rna"
+      ],
+      "box": [
+        66,
+        550,
+        120,
+        42
+      ],
+      "concept": "rna"
+    },
+    {
+      "id": "codon",
+      "name": "Codon",
+      "accept": [
+        "codon",
+        "codons",
+        "start codon"
+      ],
+      "box": [
+        696,
+        584,
+        120,
+        42
+      ],
+      "concept": "genetic-code"
+    },
+    {
+      "id": "small-ribosomal-subunit",
+      "name": "Small ribosomal subunit",
+      "accept": [
+        "small ribosomal subunit",
+        "small subunit"
+      ],
+      "box": [
+        10,
+        640,
+        276,
+        82
+      ],
+      "concept": "ribosome"
+    },
+    {
+      "id": "polypeptide-chain",
+      "name": "Polypeptide chain",
+      "accept": [
+        "polypeptide chain",
+        "peptide chain",
+        "polypeptide",
+        "protein"
+      ],
+      "box": [
+        640,
+        1466,
+        302,
+        42
+      ],
+      "concept": "protein"
+    }
+  ]
+}

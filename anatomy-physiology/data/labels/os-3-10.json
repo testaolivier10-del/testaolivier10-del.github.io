@@ -1,0 +1,154 @@
+{
+  "figure": "os-3-10",
+  "labels": [
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "phagocytosis",
+      "name": "Phagocytosis",
+      "accept": [
+        "phagocytosis",
+        "cell eating"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "endocytosis"
+    },
+    {
+      "id": "pinocytosis",
+      "name": "Pinocytosis",
+      "accept": [
+        "pinocytosis",
+        "cell drinking"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "endocytosis"
+    },
+    {
+      "id": "receptor-mediated-endocytosis",
+      "name": "Receptor-mediated endocytosis",
+      "accept": [
+        "receptor-mediated endocytosis",
+        "receptor mediated endocytosis"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "endocytosis"
+    },
+    {
+      "id": "large-particle",
+      "name": "Large particle",
+      "accept": [
+        "large particle",
+        "particle"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null
+    },
+    {
+      "id": "ligand",
+      "name": "Ligand",
+      "accept": [
+        "ligand",
+        "ligands"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "ligand"
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "cell membrane"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "receptor",
+      "name": "Receptor",
+      "accept": [
+        "receptor",
+        "receptor protein",
+        "receptors"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "receptor-protein"
+    },
+    {
+      "id": "vacuole",
+      "name": "Vacuole",
+      "accept": [
+        "vacuole",
+        "food vacuole",
+        "phagosome"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": null
+    },
+    {
+      "id": "vesicle",
+      "name": "Vesicle",
+      "accept": [
+        "vesicle",
+        "pinocytic vesicle"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "intracellular-fluid",
+      "name": "Intracellular fluid",
+      "accept": [
+        "intracellular fluid",
+        "cytosol",
+        "icf"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "coated-vesicle",
+      "name": "Coated vesicle",
+      "accept": [
+        "coated vesicle",
+        "clathrin-coated vesicle"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "vesicle"
+    }
+  ]
+}

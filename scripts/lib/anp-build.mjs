@@ -6,7 +6,7 @@
    the same glossary markup. docs/anp-phase1-architecture.md describes the data. */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { loadMap, indexMap, scanTerms, termRegex } from './anp-map.mjs';
+import { loadMap, indexMap, scanTerms, termRegex, scanPage } from './anp-map.mjs';
 
 export const SITE = 'https://levlprep.com';
 export const BASE = '/anatomy-physiology/';
@@ -225,9 +225,12 @@ export function glossify(C, html, { depth, topic, seen, index }) {
    after the page's topic, the label is covered for good on that page: a figure
    must not teach a word early any more than the text may (spec section 7). */
 export function laterLabel(C, l, topicId) {
-  if (!topicId || !l.concept) return false;
-  const c = C.concepts.get(l.concept);
-  return !!c && C.topicIndex.get(c.taughtIn) > C.topicIndex.get(topicId);
+  if (!topicId) return false;
+  const c = l.concept && C.concepts.get(l.concept);
+  if (c && C.topicIndex.get(c.taughtIn) > C.topicIndex.get(topicId)) return true;
+  // The printed name itself may use a later term even when the label's own
+  // concept is earlier or unmapped ("postsynaptic neuron").
+  return scanPage(C.map, `<p>${esc(l.name || '')}</p>`, topicId).length > 0;
 }
 
 export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) {

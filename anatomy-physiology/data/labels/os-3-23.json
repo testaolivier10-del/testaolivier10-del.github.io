@@ -1,0 +1,233 @@
+{
+  "figure": "os-3-23",
+  "labels": [
+    {
+      "id": "hydrogen-bonds",
+      "name": "Hydrogen bonds",
+      "accept": [
+        "hydrogen bonds",
+        "h bonds",
+        "hydrogen bond"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "hydrogen-bond"
+    },
+    {
+      "id": "adenine-structure",
+      "name": "Adenine",
+      "accept": [
+        "adenine",
+        "a"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "nitrogenous-bases-key",
+      "name": "Nitrogenous bases",
+      "accept": [
+        "nitrogenous bases",
+        "bases",
+        "nitrogenous base"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "thymine-structure",
+      "name": "Thymine",
+      "accept": [
+        "thymine",
+        "t"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "adenine-key",
+      "name": "Adenine",
+      "accept": [
+        "adenine",
+        "a"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "thymine-key",
+      "name": "Thymine",
+      "accept": [
+        "thymine",
+        "t"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "guanine-key",
+      "name": "Guanine",
+      "accept": [
+        "guanine",
+        "g"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "cytosine-key",
+      "name": "Cytosine",
+      "accept": [
+        "cytosine",
+        "c"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "base-pair",
+      "name": "Base pair",
+      "accept": [
+        "base pair",
+        "base pairs",
+        "complementary base pair"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "backbone-helix",
+      "name": "Sugar-phosphate backbone",
+      "accept": [
+        "sugar-phosphate backbone",
+        "backbone",
+        "sugar phosphate backbone"
+      ],
+      "lines": [
+        31,
+        33,
+        34
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "cytosine-structure",
+      "name": "Cytosine",
+      "accept": [
+        "cytosine",
+        "c"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "guanine-structure",
+      "name": "Guanine",
+      "accept": [
+        "guanine",
+        "g"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "backbone-left",
+      "name": "Sugar-phosphate backbone",
+      "accept": [
+        "sugar-phosphate backbone",
+        "backbone",
+        "sugar phosphate backbone"
+      ],
+      "lines": [
+        35,
+        40
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "bases",
+      "name": "Bases",
+      "accept": [
+        "bases",
+        "base pairs",
+        "nitrogenous bases"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "backbone-right",
+      "name": "Sugar-phosphate backbone",
+      "accept": [
+        "sugar-phosphate backbone",
+        "backbone",
+        "sugar phosphate backbone"
+      ],
+      "lines": [
+        37,
+        41
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "nitrogenous-base",
+      "name": "Nitrogenous base",
+      "accept": [
+        "nitrogenous base",
+        "base"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "phosphate",
+      "name": "Phosphate",
+      "accept": [
+        "phosphate",
+        "phosphate group"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "sugar",
+      "name": "Sugar",
+      "accept": [
+        "sugar",
+        "deoxyribose",
+        "pentose sugar"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "nucleic-acid"
+    }
+  ]
+}

@@ -307,7 +307,7 @@
   "core": [
    "structure-function"
   ],
-  "q": "After you empty your bladder, its wall returns to its smaller resting size without any new signal to contract. Which property of muscle tissue is at work?",
+  "q": "A strip of smooth muscle from a bladder wall is stretched in a lab dish and then released, with no stimulus. It returns to its resting length. Which property of muscle tissue is at work?",
   "options": [
    "Extensibility",
    "Responsiveness",
@@ -316,12 +316,12 @@
   ],
   "correct": 2,
   "why": {
-   "correct": "Elasticity is the ability to recoil to resting length once a stretching force is removed. The stretched wall springs back on its own.",
+   "correct": "Elasticity is the ability to recoil to resting length once a stretching force is removed. The released strip springs back on its own.",
    "options": [
-    "Extensibility is being stretched, which happened as the bladder filled. The return afterward is recoil.",
-    "Responsiveness needs a signal, and the question says none was given.",
+    "Extensibility is the ability to be stretched, which happened when the strip was pulled. The return afterward is recoil.",
+    "Responsiveness needs a signal, and no stimulus was given.",
     "Correct. Recoil to resting length after stretch is elasticity.",
-    "The bladder wall is smooth muscle, which is involuntary, and recoil is passive."
+    "Bladder smooth muscle is involuntary, and this recoil is passive."
    ]
   }
  },
@@ -335,14 +335,14 @@
   ],
   "q": "Months after part of Ray's heart wall died from lack of blood, the patch is still thin, stiff and does not contract. A thigh muscle torn in a fall, by contrast, regains most of its function. What best explains the difference?",
   "options": [
-   "Cardiac muscle has no blood supply, so nothing can reach the damaged area",
+   "Cardiac muscle has no blood supply to reach the damage",
    "Adult cardiac fibers almost never divide, so collagen fills the gap",
    "Cardiac fibers are nonstriated and cannot rebuild their filaments",
    "Skeletal muscle is voluntary, and practice regrows its fibers"
   ],
   "correct": 1,
   "why": {
-   "correct": "Well under 1% of cardiac fibers are replaced each year. Dead fibers leave gaps that fibroblasts fill with collagen, which cannot contract. Skeletal muscle has stem cells beside its fibers that multiply and repair damage.",
+   "correct": "About 1% or fewer of cardiac fibers are replaced each year, and fewer with age. Dead fibers leave gaps that fibroblasts fill with collagen, which cannot contract. Skeletal muscle has stem cells beside its fibers that multiply and repair damage.",
    "options": [
     "The heart wall has a rich blood supply. The damage happened because one artery was blocked, not because the tissue lacks vessels.",
     "Correct. Cardiac fibers are almost never replaced, so a noncontracting collagen patch replaces them.",
@@ -388,8 +388,8 @@
   "misconception": "striated means voluntary",
   "q": "Smooth muscle contains actin and myosin, just as skeletal muscle does. Why does it show no striations?",
   "options": [
-   "Its fibers have too many nuclei to see the bands",
-   "It is involuntary, and only voluntary muscle forms stripes",
+   "Its many nuclei hide the bands",
+   "Involuntary muscle does not form stripes",
    "Its filaments crisscross instead of lining up",
    "It contains no myosin, only actin"
   ],
@@ -442,8 +442,8 @@
   "q": "When you straighten your bent elbow, the muscle on the front of your arm does not push the forearm straight. Why not?",
   "options": [
    "It is too weak to push against gravity",
-   "Pushing needs more ATP than muscle can supply",
-   "It relaxes completely whenever the arm is bent",
+   "Pushing needs more ATP than it has",
+   "It relaxes whenever the arm is bent",
    "A shortening fiber can pull but not push"
   ],
   "correct": 3,
@@ -452,7 +452,7 @@
    "options": [
     "Strength is not the issue. No muscle of any strength can push.",
     "ATP powers the pulling of actin by myosin. There is no pushing action to power.",
-    "It is the muscle on the back of the arm that straightens the elbow, by pulling.",
+    "Holding the elbow bent takes the front muscle contracting, not relaxing, and relaxing cannot push anything. The muscle on the back of the arm straightens the elbow by pulling.",
     "Correct. Muscle only pulls; opposing muscles move a joint back."
    ]
   }

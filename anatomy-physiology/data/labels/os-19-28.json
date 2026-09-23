@@ -1,0 +1,194 @@
+{
+  "figure": "os-19-28",
+  "labels": [
+    {
+      "id": "r-wave",
+      "name": "R",
+      "accept": [
+        "r",
+        "r wave"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "ecg-waves",
+      "box": [
+        268,
+        9,
+        28,
+        24
+      ]
+    },
+    {
+      "id": "t-wave",
+      "name": "T",
+      "accept": [
+        "t",
+        "t wave"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "ecg-waves",
+      "box": [
+        618,
+        175,
+        28,
+        24
+      ]
+    },
+    {
+      "id": "p-wave",
+      "name": "P",
+      "accept": [
+        "p",
+        "p wave"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "ecg-waves",
+      "box": [
+        108,
+        183,
+        26,
+        25
+      ]
+    },
+    {
+      "id": "q-wave",
+      "name": "Q",
+      "accept": [
+        "q",
+        "q wave"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "ecg-waves",
+      "box": [
+        238,
+        276,
+        32,
+        24
+      ]
+    },
+    {
+      "id": "s-wave",
+      "name": "S",
+      "accept": [
+        "s",
+        "s wave"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "ecg-waves",
+      "box": [
+        292,
+        292,
+        27,
+        24
+      ]
+    },
+    {
+      "id": "atrial-diastole",
+      "name": "Atrial diastole",
+      "accept": [
+        "atrial diastole"
+      ],
+      "box": [
+        20,
+        332,
+        86,
+        49
+      ],
+      "concept": "systole-diastole"
+    },
+    {
+      "id": "atrial-systole",
+      "name": "Atrial systole",
+      "accept": [
+        "atrial systole"
+      ],
+      "box": [
+        129,
+        343,
+        141,
+        31
+      ],
+      "concept": "systole-diastole"
+    },
+    {
+      "id": "atrial-diastole-2",
+      "name": "Atrial diastole",
+      "accept": [
+        "atrial diastole"
+      ],
+      "box": [
+        611,
+        343,
+        151,
+        28
+      ],
+      "concept": "systole-diastole"
+    },
+    {
+      "id": "ventricular-diastole",
+      "name": "Ventricular diastole",
+      "accept": [
+        "ventricular diastole"
+      ],
+      "box": [
+        42,
+        407,
+        210,
+        28
+      ],
+      "concept": "systole-diastole"
+    },
+    {
+      "id": "ventricular-systole",
+      "name": "Ventricular systole",
+      "accept": [
+        "ventricular systole"
+      ],
+      "box": [
+        386,
+        407,
+        202,
+        29
+      ],
+      "concept": "systole-diastole"
+    },
+    {
+      "id": "ventricular-diastole-2",
+      "name": "Ventricular diastole",
+      "accept": [
+        "ventricular diastole"
+      ],
+      "box": [
+        787,
+        407,
+        210,
+        28
+      ],
+      "concept": "systole-diastole"
+    },
+    {
+      "id": "one-cardiac-cycle",
+      "name": "One cardiac cycle",
+      "accept": [
+        "one cardiac cycle",
+        "cardiac cycle"
+      ],
+      "box": [
+        499,
+        471,
+        211,
+        28
+      ],
+      "concept": "systole-diastole"
+    }
+  ]
+}

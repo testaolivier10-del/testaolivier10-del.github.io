@@ -1,6 +1,6 @@
 {
   "topic": "biomolecules",
-  "hook": "<p>Jordan, 19, skips breakfast and goes for a long run. Forty minutes in she is shaky, sweaty and can't think straight: the glucose level in her blood has dropped. A teammate hands her a packet of glucose gel, and within about ten minutes she feels steady again. A granola bar would have worked more slowly. The difference comes down to how big the molecules are and what your body has to do to split them.</p>",
+  "hook": "<p>Jordan, 19, skips breakfast and goes for a long run. Forty minutes in he is shaky, sweaty and can't think straight: the glucose level in his blood has dropped. A teammate hands him a packet of glucose gel, and within about ten minutes he feels steady again. A granola bar would have worked more slowly. The difference comes down to how big the molecules are and what your body has to do to split them.</p>",
   "prereq": [
     {
       "q": "What is a covalent bond?",
@@ -43,7 +43,7 @@
     },
     {
       "cause": "Hours pass without food, and the glucose level in your blood starts to fall.",
-      "effect": "Liver cells hydrolyze glycogen at its many branch ends and release the glucose into your blood."
+      "effect": "Liver cells break glycogen down at its many branch ends and release the glucose into your blood."
     },
     {
       "cause": "Your cells take up that glucose and break it down.",

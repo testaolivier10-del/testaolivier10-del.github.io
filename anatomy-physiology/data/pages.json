@@ -119,9 +119,9 @@
     {
       "slug": "calculators",
       "name": "Worked-example calculators",
-      "blurb": "Cardiac output, MAP, flow and resistance, filtration and acid–base, every step shown.",
+      "blurb": "Cardiac output, MAP, flow and resistance, and capillary filtration, every step shown.",
       "title": "A&P calculators with every step shown | Anatomy & Physiology",
-      "desc": "Physiology calculators that show every step: cardiac output, mean arterial pressure, flow and resistance, filtration pressure and acid-base.",
+      "desc": "Physiology calculators that show every step: cardiac output, mean arterial pressure, flow and resistance, filtration pressure and total peripheral resistance.",
       "script": "tools/calculators.js",
       "css": "tools/calculators.css",
       "data": "calculators.json"

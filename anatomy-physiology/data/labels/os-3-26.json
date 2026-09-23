@@ -1,0 +1,32 @@
+{
+  "figure": "os-3-26",
+  "labels": [
+    {
+      "id": "rna-polymerase",
+      "name": "RNA polymerase",
+      "accept": [
+        "rna polymerase",
+        "polymerase"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "rna-transcript",
+      "name": "RNA transcript",
+      "accept": [
+        "rna transcript",
+        "mrna",
+        "pre-mrna",
+        "rna",
+        "transcript"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "rna"
+    }
+  ]
+}
