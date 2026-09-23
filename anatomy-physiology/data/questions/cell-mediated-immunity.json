@@ -1,0 +1,557 @@
+[
+  {
+    "id": "anp-cell-mediated-immunity-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "A liver cell infected with a virus makes viral proteins and displays peptides from them on its surface. Which T cell recognizes it, and through which MHC protein?",
+    "options": [
+      "A CD4 T cell, through MHC class II",
+      "A CD8 T cell, through MHC class I",
+      "A CD4 T cell, through MHC class I",
+      "A CD8 T cell, through MHC class II"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Peptides made inside a cell are displayed on MHC class I, which nearly every nucleated cell carries. CD8 binds MHC class I, so a CD8 cytotoxic T cell recognizes the infected cell and kills it.",
+      "options": [
+        "A liver cell is not an antigen-presenting cell and carries little MHC class II. Class II shows engulfed material, not proteins the cell makes itself.",
+        "Correct. Internal (here viral) peptides go on MHC class I, and CD8 pairs with class I.",
+        "CD4 binds MHC class II, not class I, so a CD4 T cell cannot lock onto this complex.",
+        "The pairing is reversed. CD8 binds class I; MHC class II is recognized with CD4."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-21-20",
+    "pin": "cd4",
+    "q": "Name the pinned protein.",
+    "options": [
+      "CD8",
+      "MHC II",
+      "CD4",
+      "T cell receptor"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "CD4 is the coreceptor protein on helper T cells. It clamps onto the MHC class II protein beside the T cell receptor.",
+      "options": [
+        "CD8 is on cytotoxic T cells and binds MHC class I. It is pinned in the lower panel, not on the helper T cell.",
+        "MHC II is on the dendritic cell, holding the antigen. The pinned protein is on the T cell.",
+        "Correct. CD4 on the helper T cell binds MHC class II.",
+        "The T cell receptor grips the antigen in the MHC groove. The pinned protein sits beside it and binds the MHC protein itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-21-20",
+    "pin": "perforins",
+    "q": "Name the pinned molecules.",
+    "options": [
+      "Cytokines",
+      "Perforins",
+      "Antibodies",
+      "Antigens"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Perforins are released from the cytotoxic T cell's granules. They insert into the target cell's membrane and form pores that let granzymes in.",
+      "options": [
+        "Cytokines are the signals released by the helper T cell in the upper panel. They direct other cells; they do not kill.",
+        "Correct. Perforins make pores in the infected cell's membrane.",
+        "Antibodies are released by cells descended from B cells, not by cytotoxic T cells.",
+        "Antigens are pinned inside the infected cell. The pinned molecules are released by the T cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Mr. Okafor has a transplanted kidney and takes tacrolimus, which stops activated T cells from making IL-2. He skips it for five days, and acute rejection begins. What did tacrolimus normally prevent?",
+    "options": [
+      "His B cells from making antibodies against ABO antigens",
+      "His T cells from recognizing donor HLA proteins",
+      "His neutrophils from entering the kidney",
+      "His T cells from expanding into large clones"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Activated T cells make IL-2, which drives them to divide again and again. Without IL-2, T cells that recognize donor HLA cannot build the large clones of effector cells that destroy the graft. Off the drug, clonal expansion resumes and rejection follows.",
+      "options": [
+        "Acute rejection is driven by T cells, and ABO antibodies cause hyperacute rejection within minutes. The drug acts on T cell IL-2.",
+        "Recognition (signal 1) still happens on the drug. What is blocked is the IL-2 that turns recognition into expansion.",
+        "Neutrophils are innate cells and do not use IL-2 to expand. The drug's target is T cell activation.",
+        "Correct. Blocking IL-2 blocks clonal expansion of the T cells that react to donor HLA."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A drug coats B7 proteins so they cannot bind CD28. A person taking it meets a new virus. Predict the change in each variable, compared with a person not taking the drug.",
+    "variables": [
+      {
+        "name": "Binding of naïve T cell receptors to viral peptides in MHC (signal 1)",
+        "answer": "none",
+        "why": "The drug blocks B7, not the MHC–peptide complex, so T cell receptors still find and bind their peptides."
+      },
+      {
+        "name": "Costimulation of those T cells",
+        "answer": "down",
+        "why": "Costimulation is B7 on the dendritic cell binding CD28 on the T cell, and the drug blocks that contact."
+      },
+      {
+        "name": "IL-2 made by the T cells",
+        "answer": "down",
+        "why": "Without signal 2, the T cells are not fully activated and make little IL-2."
+      },
+      {
+        "name": "Number of effector T cells against the virus",
+        "answer": "down",
+        "why": "Little IL-2 means little clonal expansion, so few effector cells form; many of the recognizing cells become anergic instead."
+      }
+    ],
+    "why": {
+      "correct": "T cell activation needs recognition and costimulation. Blocking B7 leaves recognition intact but removes signal 2, so the T cells make little IL-2, do not expand, and may be switched into anergy. Drugs of this kind are used to damp T cell attacks on the body's own joints."
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-6",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order, from a microbe entering the skin to effector T cells leaving the lymph node.",
+    "options": [
+      "A dendritic cell engulfs the microbe in the skin",
+      "The dendritic cell travels to a lymph node and displays microbial peptides in MHC",
+      "A naïve T cell with a matching T cell receptor binds a peptide–MHC complex",
+      "CD28 on the T cell binds B7 on the dendritic cell",
+      "The T cell makes IL-2 and divides into a clone",
+      "Effector T cells leave the node for the infected tissue"
+    ],
+    "why": {
+      "correct": "The dendritic cell captures antigen at the site of infection, carries it to the lymph node and presents it. A matching naïve T cell receives signal 1 (recognition) and signal 2 (costimulation), makes IL-2, expands, and its effector daughters leave for the tissue."
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A T cell that escaped negative selection binds a self-peptide in MHC on a healthy dendritic cell that has not met any microbe. What is the most likely outcome?",
+    "options": [
+      "The T cell becomes anergic, because it receives recognition without costimulation",
+      "The T cell expands into a large clone and attacks the healthy tissue the peptide came from",
+      "The dendritic cell kills the T cell with perforin",
+      "The T cell becomes a memory cell and waits for a second signal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A dendritic cell that has not sensed a microbe displays peptides but makes little B7. The T cell gets signal 1 without signal 2 and is switched into anergy, a lasting unresponsive state. This is one way self-reactive T cells are held in check outside the thymus.",
+      "options": [
+        "Correct. Signal 1 alone causes anergy.",
+        "Expansion needs costimulation as well as recognition, and a resting dendritic cell provides little B7.",
+        "Dendritic cells present antigen; they do not release perforin. Perforin is a weapon of cytotoxic T cells and natural killer cells.",
+        "Memory T cells form only after full activation and clonal expansion, which have not happened here."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every mechanism a cytotoxic T cell uses to kill a virus-infected cell.",
+    "options": [
+      "Releasing perforin, which makes pores in the target's membrane",
+      "Releasing antibodies that coat the target",
+      "Delivering granzymes that switch on the target's caspases",
+      "Engulfing the target whole",
+      "Binding Fas on the target with Fas ligand",
+      "Releasing histamine onto the target"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Cytotoxic T cells kill by contact. Perforin opens pores, granzymes enter and activate caspases, and Fas ligand triggers the same caspases through Fas. Each route ends in apoptosis.",
+      "options": [
+        "Correct. Perforin forms the pores through which granzymes enter.",
+        "T cells do not make antibodies; those come from cells descended from B cells.",
+        "Correct. Granzymes activate caspases, which carry out apoptosis.",
+        "Engulfing is what phagocytes such as macrophages do. The cytotoxic T cell makes its target die by apoptosis, and a macrophage then engulfs the fragments.",
+        "Correct. Fas ligand binding Fas is the granule-free route to apoptosis.",
+        "Histamine is released by mast cells and basophils in inflammation, not by T cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A 3-month-old boy has severe watery stools, a scaly rash and type 1 diabetes. Genetic testing shows a broken FOXP3 gene. Which cells does he lack, and why does that explain his illness?",
+    "options": [
+      "Cytotoxic T cells, so viruses destroy his gut, skin and islets",
+      "Helper T cells, so none of his lymphocytes can be activated",
+      "Regulatory T cells, so T cells that react to his own tissues are not held back",
+      "Dendritic cells, so his T cells never receive costimulation"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "FOXP3 sets up the suppressor program of regulatory T cells. Without them, self-reactive T cells that slipped through negative selection are not suppressed, and they attack the gut, skin and pancreatic beta cells. This rare disease is called IPEX.",
+      "options": [
+        "Losing cytotoxic T cells would cause severe viral infections, not attacks on several of his own organs at once. FOXP3 is the regulatory T cell gene.",
+        "Without helper T cells, immune responses would be weak, and he would be prone to infection rather than to attacks on his own tissues.",
+        "Correct. Missing regulatory T cells let T cells attack self tissues.",
+        "Without dendritic cells, T cells could not be activated at all, which would not cause attacks on his own organs."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A herpesvirus makes the cells it infects stop putting MHC class I on their surface. Which cell is now best placed to kill the infected cells?",
+    "options": [
+      "A cytotoxic T cell",
+      "A helper T cell",
+      "A natural killer cell",
+      "A regulatory T cell in the infected tissue"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Without MHC class I, the infected cells cannot show viral peptides to cytotoxic T cells. Natural killer cells attack cells that are missing MHC class I, so they take over.",
+      "options": [
+        "Cytotoxic T cells need viral peptide in MHC class I to recognize a target, and these cells no longer display it.",
+        "Helper T cells recognize MHC class II on antigen-presenting cells and do not kill infected cells.",
+        "Correct. Missing MHC class I makes a cell a target for natural killer cells.",
+        "Regulatory T cells suppress other lymphocytes; they do not kill infected cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student described how a cytotoxic T cell kills an infected cell. One step is wrong. Which one?",
+    "options": [
+      "The T cell receptor and CD8 bind viral peptide in MHC class I",
+      "The T cell turns its granules toward the contact point",
+      "Perforin forms pores in the target's membrane",
+      "Granzymes enter and switch on the target's caspases",
+      "The target cell swells and bursts, spilling its contents into the tissue"
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "Granzymes and caspases make the target die by apoptosis. It breaks up into tidy fragments that macrophages engulf, so its contents, including virus being assembled inside, are not spilled and there is little inflammation.",
+      "options": [
+        "This step is right. Recognition needs the peptide in MHC class I, bound by the T cell receptor and CD8.",
+        "This step is right. Aiming the granules keeps the damage to the one cell being attacked.",
+        "This step is right. Perforin opens the way for granzymes.",
+        "This step is right. Granzymes trigger the target's own caspases.",
+        "This is the error. The target dies by apoptosis, not by bursting."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the sequence: T cell receptor binds peptide in MHC → ____ → T cell makes IL-2 → clonal expansion.",
+    "options": [
+      "Perforin release",
+      "CD28 binds B7 on the presenting cell",
+      "The T cell engulfs the antigen and cuts it into peptides",
+      "Negative selection in the thymus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Recognition (signal 1) must be followed by costimulation (signal 2): CD28 on the T cell binding B7 on the presenting cell. Only then does the T cell make IL-2 and expand.",
+      "options": [
+        "Perforin is a weapon released by effector cytotoxic T cells after activation, not a step in activating a naïve cell.",
+        "Correct. Costimulation is the second signal.",
+        "T cells do not engulf antigen; antigen-presenting cells do that before presentation.",
+        "Negative selection happens in the thymus before the T cell ever leaves, not during activation in a lymph node."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A child has a heavy roundworm infection of the gut. Her blood shows many eosinophils. Which helper T cell subset is driving this response?",
+    "options": [
+      "Th1 cells releasing interferon gamma",
+      "Regulatory T cells releasing IL-10",
+      "Cytotoxic T cells releasing granzymes onto the worm",
+      "Th2 cells releasing IL-4, IL-5 and IL-13"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Th2 cells direct the response to parasitic worms. IL-5 calls up eosinophils, IL-13 increases mucus and speeds turnover of the gut lining, and IL-4 steers B cells and promotes further Th2 development.",
+      "options": [
+        "Th1 cells arm macrophages and cytotoxic T cells against microbes that live inside cells. Interferon gamma actually holds Th2 development back.",
+        "Regulatory T cells damp responses down; they do not raise eosinophil numbers.",
+        "Cytotoxic T cells are not helper T cells, and a worm is far too large to be killed by granzymes.",
+        "Correct. Worms trigger a Th2 response, and IL-5 raises eosinophils."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Three weeks after a bone marrow transplant for leukemia, a patient develops a spreading skin rash, severe watery stools and signs of liver damage. What is the best explanation?",
+    "options": [
+      "The patient's T cells are rejecting the donor marrow",
+      "Donor T cells in the graft are attacking the patient's tissues",
+      "Antibodies against ABO antigens are destroying the donor red cells",
+      "The donor's regulatory T cells are suppressing the patient's gut"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is graft-versus-host disease. Mature T cells in the donor graft recognize the patient's HLA as foreign and attack the skin, gut and liver. The patient's own immune system was wiped out before the transplant, so nothing stops them.",
+      "options": [
+        "Before a marrow transplant, the patient's immune system is destroyed, so it is poorly placed to reject anything. Rejection would also not target the skin, gut and liver.",
+        "Correct. Donor T cells attacking the recipient is graft-versus-host disease.",
+        "An ABO mismatch would destroy red cells and cause anemia and dark urine, not this pattern in skin, gut and liver.",
+        "Regulatory T cells suppress immune attacks; they do not cause tissue damage."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Before a kidney transplant, donor and recipient are tissue typed for HLA. Before a red cell transfusion, they are not. Why?",
+    "options": [
+      "HLA antibodies cannot reach red cells in the bloodstream",
+      "Transfused red cells are removed by the spleen before T cells see them",
+      "Red cells carry HLA types that are the same in everyone",
+      "Mature red blood cells carry almost no HLA proteins"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Mature red cells have no nucleus and carry almost no HLA (MHC) proteins, so there is almost nothing for the recipient's T cells to react to. Red cells are matched for their own antigens: ABO, Rh and other blood groups.",
+      "options": [
+        "Antibodies circulate in the plasma alongside red cells and can reach them easily; that is how ABO reactions happen.",
+        "Transfused red cells normally survive for weeks. They escape T cells because they lack HLA, not because they are removed early.",
+        "HLA types differ greatly between people. The point is that red cells carry almost none.",
+        "Correct. Almost no HLA means no tissue typing is needed for red cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A kidney transplanted into a patient turns dark and stops working within minutes of the clamps being released, as clots form in its vessels. What caused this?",
+    "options": [
+      "Preexisting antibodies against the donor's vessels",
+      "Recipient cytotoxic T cells killing the kidney's cells one by one",
+      "Donor T cells attacking the patient",
+      "Slow scarring of the graft's arteries"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Rejection within minutes is hyperacute rejection. Only antibodies already present, for example against the donor's ABO antigens or HLA, can act that fast. They bind the graft's blood vessel lining, triggering clotting. ABO matching and crossmatching are done to prevent it.",
+      "options": [
+        "Correct. Preformed antibodies cause hyperacute rejection.",
+        "T cell rejection needs activation and clonal expansion first, which takes days, not minutes.",
+        "Donor T cells attacking the recipient is graft-versus-host disease, which follows marrow transplants and takes weeks.",
+        "Scarring of graft arteries is chronic rejection, over months to years."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A baby is born without a thymus. Predict each variable, compared with a healthy baby.",
+    "variables": [
+      {
+        "name": "Number of mature helper T cells",
+        "answer": "down",
+        "why": "T cells mature in the thymus. Without it, almost no helper T cells are made."
+      },
+      {
+        "name": "Number of mature cytotoxic T cells",
+        "answer": "down",
+        "why": "Cytotoxic T cells also mature in the thymus, so they are missing too."
+      },
+      {
+        "name": "Number of B cells in the blood",
+        "answer": "none",
+        "why": "B cells mature in the red bone marrow, not the thymus, so their numbers are normal."
+      },
+      {
+        "name": "Antibody response to most protein antigens",
+        "answer": "down",
+        "why": "B cells need help from helper T cells to respond well to most protein antigens, and those cells are missing."
+      },
+      {
+        "name": "Ability to kill virus-infected cells by adaptive immunity",
+        "answer": "down",
+        "why": "Without cytotoxic T cells, infected cells showing viral peptides in MHC class I are not killed specifically."
+      }
+    ],
+    "why": {
+      "correct": "The thymus is where T cells mature. Without it, helper and cytotoxic T cells are missing. B cells are made normally in the marrow, but antibody responses to most protein antigens are weak because helper T cells are absent. Such babies suffer severe viral and fungal infections."
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which statement about regulatory T cells is correct?",
+    "options": [
+      "They carry CD8 and kill infected cells",
+      "They carry CD4 and suppress other lymphocytes",
+      "They are B cells controlling antibody release",
+      "They present antigen on MHC class II"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Regulatory T cells are CD4 T cells set up by FOXP3. They suppress other lymphocytes with IL-10 and TGF-beta, by taking up IL-2 and by removing B7 from dendritic cells.",
+      "options": [
+        "That describes cytotoxic T cells.",
+        "Correct. CD4 marker, suppressor job.",
+        "Regulatory T cells are T cells, made in the thymus.",
+        "Presenting antigen on MHC class II is the job of antigen-presenting cells such as dendritic cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man donates a kidney to his identical twin. The recipient needs no drugs against rejection. Why?",
+    "options": [
+      "Identical twins share the same HLA proteins",
+      "Kidneys carry no MHC proteins",
+      "His T cells tolerate all kidneys",
+      "Identical twins share the same ABO type"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Identical twins have identical genes, including their HLA genes. The donor kidney's HLA proteins are the same as the recipient's own, so his T cells treat them as self.",
+      "options": [
+        "Correct. Same HLA, so nothing looks foreign.",
+        "Kidney cells carry MHC class I like other nucleated cells, and that is what T cells react to in unrelated grafts.",
+        "T cells readily reject kidneys from unrelated donors. Tolerance covers only self HLA.",
+        "Twins do share their ABO type, but matching ABO alone prevents only hyperacute rejection. Without matching HLA, T cells would still reject the organ."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-mediated-immunity-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Why does it matter that a cytotoxic T cell kills its target by apoptosis instead of bursting it open?",
+    "options": [
+      "Virus inside is destroyed within fragments that macrophages engulf",
+      "Apoptosis is faster than bursting",
+      "Apoptosis lets the target cell recover once the virus has been cleared",
+      "Bursting would kill the T cell as well"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Apoptosis packs the dying cell into membrane-wrapped fragments. Viral particles still being built inside are destroyed with them, macrophages clear the fragments, and there is little inflammation. A burst cell would spill virus and contents into the tissue.",
+      "options": [
+        "Correct. The virus is contained and cleared with the fragments.",
+        "Speed is not the reason: the benefit is what happens to the cell's contents.",
+        "Apoptosis is programmed death; the cell does not recover.",
+        "The T cell is not harmed either way. It detaches and moves on to kill other targets."
+      ]
+    }
+  }
+]

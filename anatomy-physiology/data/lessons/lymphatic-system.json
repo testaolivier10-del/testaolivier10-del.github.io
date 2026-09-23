@@ -1,0 +1,48 @@
+{
+  "topic": "lymphatic-system",
+  "hook": "<p>Ms. Adeyemi, 52, had breast cancer surgery two years ago, and the surgeon removed the lymph nodes from her left armpit. Her ring no longer fits, and her left arm is thick and firm from hand to shoulder. Her heart and kidneys are fine and her capillaries filter normally. What she has lost is the drainage route that carries filtered fluid back to her blood.</p>",
+  "prereq": [
+    {
+      "q": "In most tissues at steady state, what happens to fluid along a blood capillary?",
+      "options": ["It filters out along almost the whole length", "It filters out at one end and is fully reabsorbed at the other", "It neither leaves nor enters"],
+      "correct": 0,
+      "why": "Under the revised Starling principle, fluid filters out along almost the whole capillary and does not reverse at steady state. A separate drainage route returns it to the blood.",
+      "review": "capillary-exchange"
+    },
+    {
+      "q": "Which white blood cells are agranulocytes?",
+      "options": ["Neutrophils and eosinophils", "Lymphocytes and monocytes", "Basophils and neutrophils"],
+      "correct": 1,
+      "why": "The agranulocytes are lymphocytes and monocytes. Neutrophils, eosinophils and basophils are granulocytes.",
+      "review": "leukocytes-platelets"
+    },
+    {
+      "q": "Which veins join at the base of the neck on each side to form a brachiocephalic vein?",
+      "options": ["The internal jugular and subclavian veins", "The external and internal jugular veins", "The axillary and cephalic veins"],
+      "correct": 0,
+      "why": "On each side, the internal jugular vein and the subclavian vein join to form the brachiocephalic vein. The lymphatic ducts empty at those junctions.",
+      "review": "systemic-veins"
+    }
+  ],
+  "anatomy": {
+    "figure": "lymph-node-structure",
+    "caption": "A lymph node cut in half. Hide the labels and trace lymph from the afferent vessels, through the sinuses, to the efferent vessel at the hilum."
+  },
+  "chain": [
+    { "cause": "Fluid filters out of blood capillaries along their length and collects in the interstitial fluid.", "effect": "Interstitial fluid pressure rises above the pressure inside nearby lymphatic capillaries." },
+    { "cause": "Higher pressure outside pushes the loose, overlapping edges of the lymphatic endothelial cells inward.", "effect": "Fluid, protein and any bacteria or cells flow into the lymphatic capillary and become lymph; the flaps close behind them." },
+    { "cause": "Lymph fills and stretches a valved segment of a collecting vessel.", "effect": "The segment's smooth muscle contracts, and with the skeletal muscle and respiratory pumps pushes lymph through the next one-way valve." },
+    { "cause": "Collecting vessels deliver lymph to a lymph node through its afferent vessels.", "effect": "Lymph slows in the sinuses, where macrophages engulf bacteria and debris and lymphocytes meet antigens." },
+    { "cause": "Lymph leaves through the efferent vessel and joins a lymphatic trunk, then the thoracic duct or right lymphatic duct.", "effect": "It empties into the blood where an internal jugular vein meets a subclavian vein, returning the filtered fluid and protein." }
+  ],
+  "misconception": {
+    "wrong": "The spleen is just a large lymph node that filters lymph.",
+    "right": "The spleen has no afferent lymphatic vessels, so no lymph reaches it. It filters blood: its white pulp lets lymphocytes meet antigens carried in the blood, and its red pulp removes old red cells, platelets and bacteria from the blood. That is why losing the spleen raises the risk of bloodstream infections while the lymph nodes go on filtering lymph as before."
+  },
+  "check": ["anp-lymphatic-system-1", "anp-lymphatic-system-5", "anp-lymphatic-system-9", "anp-lymphatic-system-10", "anp-lymphatic-system-11", "anp-lymphatic-system-12", "anp-lymphatic-system-13", "anp-lymphatic-system-19"],
+  "summary": "<p>The lymphatic system returns the fluid and protein your capillaries filter. Interstitial fluid enters blind-ended lymphatic capillaries between overlapping endothelial flaps and becomes lymph. Valved collecting vessels, pumped by their own smooth muscle and by skeletal muscle and breathing, carry it through lymph nodes to lymphatic trunks. The thoracic duct, starting at the cisterna chyli, drains about three quarters of the body into the left internal jugular–subclavian junction; the right lymphatic duct drains the right arm, chest and head into the right one. Red bone marrow and the thymus are primary lymphoid organs, where lymphocytes are made and mature; lymph nodes, the spleen and MALT such as the tonsils and Peyer's patches are secondary organs, where lymphocytes meet antigens. A lymph node filters lymph slowly through macrophage-lined sinuses. The spleen filters blood: white pulp for lymphocytes, red pulp for removing old red cells and bacteria. When drainage fails, protein-rich fluid collects as lymphedema.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma (spleen injury)" },
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" }
+  ]
+}

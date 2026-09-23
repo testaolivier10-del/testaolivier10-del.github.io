@@ -36,7 +36,7 @@
     "q": "A man with a severe allergic reaction gets injected epinephrine and a steroid drug at the same time. His breathing improves within minutes, but the steroid's effect only appears hours later. What best explains the difference?",
     "options": [
       "The steroid is injected more deeply and absorbed into the blood more slowly",
-      "Epinephrine switches on existing proteins through a second messenger; the steroid must first change gene transcription",
+      "Epinephrine changes existing proteins via a second messenger; the steroid must change transcription",
       "The steroid is cleared from the blood much faster, so less of it reaches the target cells",
       "Epinephrine enters its target cells directly, while the steroid must wait for a carrier protein to let it in"
     ],
@@ -135,7 +135,7 @@
     "q": "Put the steps in order to show how a lipid-soluble hormone leads to a new protein in its target cell.",
     "options": [
       "The hormone comes off its carrier protein in the plasma",
-      "Free hormone diffuses through the target cell's plasma membrane",
+      "Free hormone crosses the target cell's plasma membrane",
       "It binds its intracellular receptor protein",
       "The hormone–receptor complex binds a hormone response element on DNA",
       "Transcription of the controlled gene changes",
@@ -559,7 +559,7 @@
     "options": [
       "The hormone switches on adenylyl cyclase instead",
       "The hormone cannot cross the plasma membrane",
-      "The target genes are not switched on or off, so the usual new proteins are not made",
+      "The usual new proteins are not made",
       "The cell responds normally, because binding the hormone is what counts"
     ],
     "correct": 2,

@@ -284,7 +284,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "A healthy, fasting volunteer receives an injection of insulin in a research study. Predict the change in each variable over the next 30 minutes.",
+    "q": "A healthy, fasting volunteer in a research study receives an injection of insulin large enough to bring blood glucose down to about 50 mg/dL. Predict the change in each variable over the next 30 minutes.",
     "variables": [
       {
         "name": "Blood glucose",
@@ -327,9 +327,9 @@
     "q": "Mr. Okafor takes insulin for type 1 diabetes. His wife finds him sweaty and unresponsive an hour after he injected his dose and skipped lunch. His meter reads 38 mg/dL. What should be given, and why?",
     "options": [
       "Glucagon by injection or nasal spray",
-      "Orange juice by mouth",
-      "More insulin",
-      "Nothing until he wakes"
+      "Orange juice poured into his mouth",
+      "A further small dose of insulin",
+      "Nothing until he wakes up on his own"
     ],
     "correct": 0,
     "why": {
@@ -407,7 +407,7 @@
     "q": "In untreated diabetes, urine volume rises before the person starts drinking more. What causes the extra urine?",
     "options": [
       "Glucose in the kidney's fluid holds water there by osmosis",
-      "High blood glucose blocks the release of ADH",
+      "High blood glucose blocks the release of ADH from the posterior pituitary",
       "Insulin normally tells the kidneys to keep water",
       "Drinking more, which the kidneys then excrete"
     ],
@@ -609,9 +609,9 @@
     "why": {
       "correct": "The pancreas lies behind the stomach, across the back of the upper abdomen. Most of it releases digestive enzymes into ducts; its scattered pancreatic islets release insulin and glucagon into the blood.",
       "options": [
-        "The adrenal glands are the small caps on top of each kidney, above the pinned organ.",
-        "Correct. The long organ lying across the abdomen between the kidneys is the pancreas.",
-        "The kidneys are the two bean-shaped organs on either side, behind the pinned organ.",
+        "The adrenal glands are the small caps on the kidneys, drawn just below the pinned organ in this figure.",
+        "Correct. The long organ drawn across the upper abdomen, above the kidneys, is the pancreas.",
+        "The kidneys are the small bean-shaped organs drawn below the pinned organ.",
         "The spleen sits high on the left side of the abdomen, beside the stomach, and is not drawn on this endocrine view."
       ]
     }

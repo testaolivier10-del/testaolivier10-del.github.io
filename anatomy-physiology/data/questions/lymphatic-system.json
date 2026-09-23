@@ -4,11 +4,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "lymph-node-structure",
     "pin": "efferent-lymphatic-vessel",
     "q": "Name the pinned structure.",
-    "options": ["Afferent lymphatic vessel", "Efferent lymphatic vessel", "High endothelial venule", "Trabecula"],
+    "options": [
+      "Afferent lymphatic vessel",
+      "Efferent lymphatic vessel",
+      "High endothelial venule",
+      "Trabecula"
+    ],
     "correct": 1,
     "why": {
       "correct": "The efferent lymphatic vessel leaves the node at the hilum, the indented side, carrying lymph out. There are only one or two, compared with several afferent vessels.",
@@ -25,18 +32,25 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "lymph-node-structure",
     "pin": "germinal-center",
     "q": "Name the pinned structure.",
-    "options": ["Medullary sinus", "Subcapsular sinus", "Germinal center", "Paracortex"],
-    "correct": 2,
+    "options": [
+      "Germinal center",
+      "Medullary sinus",
+      "Subcapsular sinus",
+      "Paracortex"
+    ],
+    "correct": 0,
     "why": {
       "correct": "The pale middle of a lymphoid nodule in the cortex is a germinal center, where lymphocytes that have met their antigen multiply rapidly.",
       "options": [
+        "Correct. A pale center inside a lymphoid nodule is a germinal center.",
         "Medullary sinuses are channels between the medullary cords, deep in the node near the hilum, not the center of a round nodule in the cortex.",
         "The subcapsular sinus is the narrow space just under the capsule, a thin rim around the whole node.",
-        "Correct. A pale center inside a lymphoid nodule is a germinal center.",
         "The paracortex is the deep cortex, a band beneath the nodules, not the center of a nodule."
       ]
     }
@@ -46,11 +60,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "spleen-structure",
     "pin": "white-pulp",
     "q": "Name the pinned tissue.",
-    "options": ["Red pulp", "Germinal center", "Venous sinus", "White pulp"],
+    "options": [
+      "Red pulp",
+      "Germinal center",
+      "Venous sinus",
+      "White pulp"
+    ],
     "correct": 3,
     "why": {
       "correct": "White pulp forms pale islands of lymphocytes around the central arteries of the spleen.",
@@ -67,11 +88,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-21-4",
     "pin": "thoracic-duct",
     "q": "Name the pinned vessel.",
-    "options": ["Right lymphatic duct", "Thoracic duct", "Intestinal trunk", "Left subclavian vein"],
+    "options": [
+      "Right lymphatic duct",
+      "Thoracic duct",
+      "Intestinal trunk",
+      "Left subclavian vein"
+    ],
     "correct": 1,
     "why": {
       "correct": "The thoracic duct runs up in front of the spine from the cisterna chyli to the left side of the neck. It is the largest lymphatic vessel.",
@@ -88,17 +116,24 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A gardener gets a thorn deep in her right thumb. Bacteria from the wound enter her lymph. Through which duct does that lymph reach her blood?",
-    "options": ["The thoracic duct, at the left internal jugular and subclavian veins", "The right lymphatic duct, at the right internal jugular and subclavian veins", "The cisterna chyli, at the inferior vena cava", "The thoracic duct, at the right internal jugular and subclavian veins"],
-    "correct": 1,
+    "options": [
+      "The thoracic duct, at the left internal jugular and subclavian veins",
+      "The cisterna chyli, at the inferior vena cava",
+      "The thoracic duct, at the right internal jugular and right subclavian veins",
+      "The right lymphatic duct, at the right internal jugular and subclavian veins"
+    ],
+    "correct": 3,
     "why": {
       "correct": "The right lymphatic duct drains only the right arm, the right side of the chest and the right side of the head and neck. It empties where the right internal jugular vein meets the right subclavian vein.",
       "options": [
         "The thoracic duct drains the rest of the body, including the left arm and both legs, but not the right arm.",
-        "Correct. Lymph from the right arm travels through nodes in the right armpit, the right subclavian trunk and the right lymphatic duct.",
         "The cisterna chyli is a sac in the upper abdomen that collects lymph from the legs, pelvis and gut. It empties into the thoracic duct, not directly into a vein.",
-        "The thoracic duct empties on the left side, and it does not drain the right arm."
+        "The thoracic duct empties on the left side, and it does not drain the right arm.",
+        "Correct. Lymph from the right arm travels through nodes in the right armpit, the right subclavian trunk and the right lymphatic duct."
       ]
     }
   },
@@ -107,7 +142,10 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function", "mass-balance"],
+    "core": [
+      "structure-function",
+      "mass-balance"
+    ],
     "q": "Put the steps in order to trace fluid filtered from a capillary in the left foot back to the blood.",
     "options": [
       "Fluid filters out of a blood capillary into the interstitial fluid",
@@ -126,7 +164,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student traced lymph through a lymph node. One step is wrong. Which one?",
     "options": [
       "Lymph enters through several afferent lymphatic vessels on the curved surface",
@@ -152,14 +192,21 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Complete the sequence: lymphatic capillary → collecting vessel → ____ → lymphatic trunk → lymphatic duct → vein.",
-    "options": ["Venule", "Lymph node", "Spleen", "Thymus"],
+    "options": [
+      "Blood capillary",
+      "Lymph node",
+      "Spleen",
+      "Thymus"
+    ],
     "correct": 1,
     "why": {
       "correct": "Collecting vessels pass through lymph nodes, which filter the lymph, before merging into lymphatic trunks.",
       "options": [
-        "Venules carry blood from capillaries to veins. Lymph does not enter the blood until the ducts empty into the veins at the base of the neck.",
+        "Blood capillaries are where fluid first leaves the blood. Lymph does not re-enter blood vessels until the ducts empty into the veins at the base of the neck.",
         "Correct. Lymph is filtered by nodes along the collecting vessels.",
         "The spleen has no afferent lymphatic vessels. It filters blood, not lymph.",
         "The thymus is where one line of lymphocytes matures. Lymph does not flow through it on its way to the ducts."
@@ -172,31 +219,58 @@
     "level": "analyze",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "After a car crash tears her spleen, a 30-year-old woman has it removed. Predict the change in each variable in the months after surgery, compared with before the injury.",
     "variables": [
-      { "name": "Platelet count in the blood", "answer": "up", "why": "The spleen normally holds about a third of the platelets in reserve. Without it, those platelets stay in the circulating blood, and fewer are removed." },
-      { "name": "Number of old or misshapen red blood cells circulating", "answer": "up", "why": "Red pulp macrophages normally catch stiff, aging red cells that cannot squeeze through the slits into the venous sinuses. Without that squeeze test, more of them stay in circulation." },
-      { "name": "Risk of an overwhelming bloodstream infection with sugar-coated bacteria", "answer": "up", "why": "Red pulp macrophages and white pulp lymphocytes are the main defense against bacteria in the blood, especially sugar-coated ones that are hard to engulf elsewhere. The liver takes over only part of the job." },
-      { "name": "Filtering of lymph by lymph nodes", "answer": "none", "why": "The spleen filters blood, not lymph: it has no afferent lymphatic vessels. The lymph nodes keep filtering lymph as before." }
+      {
+        "name": "Platelet count in the blood",
+        "answer": "up",
+        "why": "The spleen normally holds about a third of the platelets in reserve. Without it, those platelets stay in the circulating blood, and fewer are removed."
+      },
+      {
+        "name": "Number of old or misshapen red blood cells circulating",
+        "answer": "up",
+        "why": "Red pulp macrophages normally catch stiff, aging red cells that cannot squeeze through the slits into the venous sinuses. Without that squeeze test, more of them stay in circulation."
+      },
+      {
+        "name": "Risk of an overwhelming bloodstream infection with sugar-coated bacteria",
+        "answer": "up",
+        "why": "Red pulp macrophages and white pulp lymphocytes are the main defense against bacteria in the blood, especially sugar-coated ones that are hard to engulf elsewhere. The liver takes over only part of the job."
+      },
+      {
+        "name": "Filtering of lymph by lymph nodes",
+        "answer": "none",
+        "why": "The spleen filters blood, not lymph: it has no afferent lymphatic vessels. The lymph nodes keep filtering lymph as before."
+      }
     ],
-    "why": { "correct": "Losing the spleen removes a blood filter and a platelet reserve. Platelets and aging red cells rise in the blood, and defense against bacteria in the blood weakens for life, while the lymph nodes, which filter lymph, are unaffected." }
+    "why": {
+      "correct": "Losing the spleen removes a blood filter and a platelet reserve. Platelets and aging red cells rise in the blood, and defense against bacteria in the blood weakens for life, while the lymph nodes, which filter lymph, are unaffected."
+    }
   },
   {
     "id": "anp-lymphatic-system-10",
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Albumin that leaks out of blood capillaries cannot get back in through the capillary wall, yet it does not build up in the tissues. What feature lets it leave?",
-    "options": ["Pumps in the tissue cells move it into blood capillaries", "Macrophages digest all of it where it lies", "Gaps between overlapping flaps of lymphatic capillaries let it in", "Collecting lymphatic vessels absorb it through thick valves"],
-    "correct": 2,
+    "options": [
+      "Gaps between overlapping flaps of lymphatic capillaries let it in",
+      "Pumps in the tissue cells move it into blood capillaries",
+      "Macrophages digest all of it where it lies",
+      "Collecting lymphatic vessels absorb it through the thick muscle of their walls"
+    ],
+    "correct": 0,
     "why": {
       "correct": "The endothelial cells of lymphatic capillaries overlap loosely. Fluid pushing in opens gaps large enough for proteins, and the flaps close behind them. Lymph then carries the protein back to the blood.",
       "options": [
+        "Correct. Loose, overlapping endothelial flaps let protein into lymphatic capillaries, where blood capillaries would hold it out.",
         "Tissue cells do not pump albumin into capillaries. Proteins return to the blood through the lymphatic route.",
         "Macrophages do engulf debris, but they do not clear the steady stream of plasma protein. Protein that stays in tissue draws in fluid and causes swelling.",
-        "Correct. Loose, overlapping endothelial flaps let protein into lymphatic capillaries, where blood capillaries would hold it out.",
         "Fluid and protein enter the lymphatic system at the capillaries. Collecting vessels carry lymph onward; their valves stop backflow rather than taking up protein."
       ]
     }
@@ -206,10 +280,21 @@
     "type": "multi",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every primary lymphoid organ.",
-    "options": ["Thymus", "Spleen", "Red bone marrow", "Palatine tonsil", "Lymph node"],
-    "correct": [0, 2],
+    "options": [
+      "Thymus",
+      "Spleen",
+      "Red bone marrow",
+      "Palatine tonsil",
+      "Lymph node"
+    ],
+    "correct": [
+      0,
+      2
+    ],
     "why": {
       "correct": "Primary lymphoid organs are where lymphocytes are made and mature: the red bone marrow and the thymus. The others are secondary lymphoid organs, where mature lymphocytes meet antigens.",
       "options": [
@@ -226,10 +311,18 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 2,
-    "core": ["mass-balance", "structure-function"],
+    "core": [
+      "mass-balance",
+      "structure-function"
+    ],
     "misconception": "lymphedema is ordinary edema in one limb",
     "q": "Two years after breast cancer surgery that removed the lymph nodes of her left armpit, Ms. Adeyemi's left arm is swollen. The swelling is firm and barely pits. Her heart, kidneys and plasma albumin are normal. What is the main reason fluid collects in her arm?",
-    "options": ["The capillaries of her arm filter far more than normal", "Filtered fluid and protein cannot drain out of her arm", "Plasma protein has fallen, so less fluid is pulled back", "Veins in her arm are blocked, raising capillary pressure"],
+    "options": [
+      "The capillaries of her arm filter far more than normal",
+      "Filtered fluid and protein cannot drain out of her arm",
+      "Plasma protein has fallen, so less fluid is pulled back",
+      "Veins in her arm are blocked, raising capillary pressure"
+    ],
     "correct": 1,
     "why": {
       "correct": "Her capillaries filter at a normal rate, but the lymphatic route out of the arm was removed. Fluid and protein stay in the tissue, and the protein drives fibrosis and fat buildup, which is why the swelling has become firm and barely pits. This is secondary lymphedema.",
@@ -246,17 +339,24 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Bacteria enter the bloodstream directly, through a needle, without passing through any tissue first. Which organ is best placed to filter them out?",
-    "options": ["A lymph node", "The thymus", "The spleen", "The palatine tonsil"],
-    "correct": 2,
+    "options": [
+      "A lymph node",
+      "The thymus",
+      "The palatine tonsil",
+      "The spleen"
+    ],
+    "correct": 3,
     "why": {
       "correct": "The spleen filters blood: its red pulp macrophages remove bacteria as blood squeezes from the cords into the venous sinuses, and its white pulp lymphocytes meet antigens in the blood.",
       "options": [
         "Lymph nodes filter lymph, which carries what enters the tissues. Bacteria placed straight into the blood bypass them.",
         "The thymus is where lymphocytes mature. It does not filter blood or lymph.",
-        "Correct. The spleen is the lymphoid organ that filters blood.",
-        "The palatine tonsils sample what enters through the mouth, not the blood."
+        "The palatine tonsils sample what enters through the mouth, not the blood.",
+        "Correct. The spleen is the lymphoid organ that filters blood."
       ]
     }
   },
@@ -265,17 +365,24 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which tonsils lie on each side of the back of the mouth, and are the ones most people call \"the tonsils\"?",
-    "options": ["Pharyngeal tonsil", "Lingual tonsil", "Palatine tonsils", "Peyer's patches"],
+    "options": [
+      "Pharyngeal tonsil",
+      "Lingual tonsil",
+      "Palatine tonsils",
+      "Peyer's patches"
+    ],
     "correct": 2,
     "why": {
-      "correct": "The paired palatine tonsils sit on each side at the back of the mouth, between the folds that run down from the soft palate.",
+      "correct": "The paired palatine tonsils sit on each side at the back of the mouth.",
       "options": [
         "The pharyngeal tonsil is a single tonsil high on the back wall of the throat, behind the nose. When enlarged it is called the adenoids.",
         "The lingual tonsil lies at the back of the tongue, not on the side walls of the mouth.",
         "Correct. These are the palatine tonsils.",
-        "Peyer's patches are lymphoid nodules in the wall of the small intestine, not in the mouth."
+        "Peyer's patches are lymphoid nodules in the wall of the intestine, not in the mouth."
       ]
     }
   },
@@ -284,15 +391,22 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A drug blocks lymphocytes from sticking to the tall endothelial cells of high endothelial venules. What happens to lymph nodes?",
-    "options": ["Lymph stops entering them", "Fewer lymphocytes enter them from the blood", "Their macrophages stop engulfing bacteria", "Lymph leaves them through the capsule"],
-    "correct": 1,
+    "options": [
+      "Fewer lymphocytes enter them from the blood",
+      "Lymph stops entering them",
+      "Their macrophages stop engulfing bacteria and debris",
+      "Lymph leaves them through the capsule"
+    ],
+    "correct": 0,
     "why": {
       "correct": "High endothelial venules in the paracortex are where circulating lymphocytes leave the blood and enter a node. If lymphocytes cannot stick to them, fewer lymphocytes enter the nodes, although lymph keeps flowing through.",
       "options": [
-        "Lymph enters through the afferent lymphatic vessels, which are unaffected. The venules are blood vessels.",
         "Correct. Lymphocytes enter nodes from the blood by sticking to and squeezing between the tall endothelial cells of these venules.",
+        "Lymph enters through the afferent lymphatic vessels, which are unaffected. The venules are blood vessels.",
         "The macrophages lining the sinuses engulf by phagocytosis. Blocking lymphocyte entry from the blood does not stop them.",
         "Lymph leaves through the efferent vessels at the hilum. The venules do not control where lymph exits."
       ]
@@ -303,17 +417,24 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Leo, 8, has a sore throat and fever. The lymph nodes under his jaw are swollen and tender. What is happening in those nodes?",
-    "options": ["Cancer cells from his throat are dividing in them", "Lymph is backing up because the efferent vessels are blocked", "Lymphocytes there have met their antigen and are multiplying", "Red blood cells are being broken down there"],
-    "correct": 2,
+    "options": [
+      "Cancer cells that spread from his throat are dividing in them",
+      "Lymph is backing up because the efferent vessels are blocked",
+      "Red blood cells are being broken down there",
+      "Lymphocytes there have met their antigen and are multiplying"
+    ],
+    "correct": 3,
     "why": {
       "correct": "The nodes under the jaw drain the throat. Lymphocytes in them meet antigens from the infection, multiply in germinal centers, and are held in the node, so it swells within days and becomes tender.",
       "options": [
         "Cancer in a node usually causes a hard, painless node that keeps growing. A tender node during a sore throat fits an infection.",
         "Nothing suggests blocked vessels. Swelling during an infection comes from lymphocytes multiplying and being held in the node.",
-        "Correct. Lymphocytes multiplying in the node make it swell.",
-        "Old red blood cells are removed mainly in the red pulp of the spleen, not in lymph nodes, and that would not cause swelling during an infection."
+        "Old red blood cells are removed mainly in the red pulp of the spleen, not in lymph nodes, and that would not cause swelling during an infection.",
+        "Correct. Lymphocytes multiplying in the node make it swell."
       ]
     }
   },
@@ -322,9 +443,17 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function", "mass-balance"],
+    "core": [
+      "structure-function",
+      "mass-balance"
+    ],
     "q": "After a week in a leg cast, a man's toes and foot are puffy, although his heart and plasma proteins are normal. Which loss best explains the swelling?",
-    "options": ["Loss of the skeletal muscle pump on his leg vessels", "Loss of capillary filtration in the leg", "Loss of lymph nodes in the groin", "Loss of red pulp filtering"],
+    "options": [
+      "Loss of the skeletal muscle pump",
+      "Loss of capillary filtration in the leg",
+      "Loss of lymph nodes in the groin",
+      "Loss of red pulp filtering"
+    ],
     "correct": 0,
     "why": {
       "correct": "Lymph has no heart. Besides the contraction of their own valved segments, lymphatic vessels (and leg veins) rely on the skeletal muscle pump. A still leg moves less lymph and venous blood, so fluid collects in the tissue.",
@@ -341,14 +470,28 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every example of mucosa-associated lymphoid tissue (MALT).",
-    "options": ["Peyer's patches", "The appendix", "The spleen", "The lingual tonsil", "Bronchus-associated lymphoid tissue", "The thymus"],
-    "correct": [0, 1, 3, 4],
+    "options": [
+      "Peyer's patches",
+      "The appendix",
+      "The spleen",
+      "The lingual tonsil",
+      "Bronchus-associated lymphoid tissue",
+      "The thymus"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
     "why": {
       "correct": "MALT is lymphoid tissue lying under mucous membranes: the tonsils, Peyer's patches, the appendix and BALT in the airways. The spleen and thymus are separate, encapsulated organs.",
       "options": [
-        "Correct. Peyer's patches are lymphoid nodules under the lining of the small intestine.",
+        "Correct. Peyer's patches are lymphoid nodules under the lining of the intestine.",
         "Correct. The wall of the appendix is thick with lymphoid nodules beneath its mucous membrane.",
         "The spleen is a separate organ with a capsule that filters blood. It does not lie in a mucous membrane.",
         "Correct. The lingual tonsil lies under the mucous membrane at the back of the tongue.",
@@ -362,9 +505,16 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Many afferent lymphatic vessels enter a lymph node, but only one or two efferent vessels leave it, and a maze of sinuses lies between. What is the effect on the lymph?",
-    "options": ["It speeds up and is pushed through faster", "It picks up red blood cells from the node", "It slows down and lingers near macrophages", "It gains protein and loses lymphocytes"],
+    "options": [
+      "It speeds up and is pushed through the node faster",
+      "It picks up red blood cells from the node",
+      "It slows down and lingers near macrophages",
+      "It gains protein and loses lymphocytes"
+    ],
     "correct": 2,
     "why": {
       "correct": "With more vessels coming in than going out and a wide network of sinuses between, lymph moves slowly through the node. The extra time lets macrophages lining the sinuses engulf bacteria, debris and cancer cells.",
@@ -381,15 +531,22 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In the red pulp, blood must squeeze through narrow slits into the venous sinuses. Which cells are most likely to be caught and engulfed there?",
-    "options": ["Young, flexible red blood cells", "Old, stiff red blood cells", "Lymphocytes returning to the lymph", "Plasma proteins such as albumin"],
-    "correct": 1,
+    "options": [
+      "Old, stiff red blood cells",
+      "Young, flexible red blood cells",
+      "Lymphocytes returning to the lymph",
+      "Plasma proteins such as albumin"
+    ],
+    "correct": 0,
     "why": {
       "correct": "A healthy red cell folds and slips through the slits. An aging or deformed red cell is stiff, gets stuck in the cords, and is engulfed by red pulp macrophages. Its iron is recycled.",
       "options": [
-        "Young red cells are flexible and pass through the slits easily.",
         "Correct. Stiff cells get stuck and are removed.",
+        "Young red cells are flexible and pass through the slits easily.",
         "Lymphocytes collect in the white pulp; the red pulp does not return them to lymph, since the spleen has no afferent lymphatic vessels.",
         "Albumin is a dissolved protein, not a cell. It passes through with the plasma."
       ]

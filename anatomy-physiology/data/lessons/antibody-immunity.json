@@ -1,0 +1,48 @@
+{
+  "topic": "antibody-immunity",
+  "hook": "<p>Priya, 24, steps on a rusty nail while gardening. At urgent care, her records show her last tetanus shot was twelve years ago, so she gets a booster. Her neighbor, who has never been vaccinated, gets the same wound and is given both a first tetanus vaccine and an injection of tetanus antibodies. Why does one person need borrowed antibodies and the other not? The answer lies in how B cells make antibodies, and in what the first exposure leaves behind.</p>",
+  "prereq": [
+    {
+      "q": "What does an antibody bind?",
+      "options": ["Any foreign molecule it meets", "One particular antigen shape", "Only peptides held in MHC proteins"],
+      "correct": 1,
+      "why": "Each antibody's arm tips fit one antigen's shape, the way a key fits one lock. Binding peptides held in MHC is how T cell receptors work, not antibodies.",
+      "review": "leukocytes-platelets"
+    },
+    {
+      "q": "Which T cell recognizes antigen in MHC class II and directs other immune cells with cytokines?",
+      "options": ["Cytotoxic T cell", "Regulatory T cell", "Helper T cell"],
+      "correct": 2,
+      "why": "Helper T cells carry CD4, recognize antigen in MHC class II, and coordinate other cells, including B cells, with cytokines and surface contact.",
+      "review": "cell-mediated-immunity"
+    },
+    {
+      "q": "What does the complement system do when it is activated on a bacterium's surface?",
+      "options": ["It coats the bacterium for phagocytes and can punch holes in its membrane", "It makes the bacterium divide faster", "It presents the bacterium's peptides to T cells"],
+      "correct": 0,
+      "why": "Activated complement proteins coat microbes (opsonization), attract phagocytes and build the membrane attack complex, which makes holes in the microbe's membrane.",
+      "review": "innate-immunity"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-21-23",
+    "caption": "Clonal selection of B cells. Hide the labels and name the cell that releases antibody and the cell that waits for a second exposure."
+  },
+  "chain": [
+    { "cause": "A protein antigen binds the receptors of a naïve B cell whose receptors fit it, and the B cell takes it in and displays its peptides on MHC class II.", "effect": "A helper T cell that recognizes the same antigen binds the B cell and releases cytokines onto it." },
+    { "cause": "Helper T cell contact and cytokines activate the B cell.", "effect": "It divides into a clone, and many of its daughters switch from IgM to another class, such as IgG." },
+    { "cause": "Daughter cells differentiate.", "effect": "Plasma cells release thousands of antibody molecules per second, and memory B cells remain." },
+    { "cause": "IgG binds the microbe's antigens with its variable regions, leaving its Fc regions facing out.", "effect": "Phagocytes bind the Fc regions and engulf the coated microbe, and complement is activated on its surface." },
+    { "cause": "The same antigen appears again months or years later.", "effect": "Memory B cells respond within days, making far more IgG than the first time: the secondary response." }
+  ],
+  "misconception": {
+    "wrong": "Antibodies kill microbes by themselves.",
+    "right": "An antibody only binds. It blocks toxins and viruses from attaching to your cells (neutralization) and clumps microbes together (agglutination), but the killing is done by others that its Fc region calls in: complement, phagocytes that engulf antibody-coated microbes, and natural killer cells. That is why the class, which sets the Fc region, matters as much as what the antibody binds."
+  },
+  "check": ["anp-antibody-immunity-1", "anp-antibody-immunity-4", "anp-antibody-immunity-5", "anp-antibody-immunity-7", "anp-antibody-immunity-10", "anp-antibody-immunity-12", "anp-antibody-immunity-16"],
+  "summary": "<p>B cells bind whole antigens with their B cell receptors. For T cell-dependent (protein) antigens, a helper T cell that recognizes the same antigen activates the B cell, which expands, switches class and becomes plasma cells and memory B cells; T cell-independent antigens such as capsule sugars give mostly IgM and little memory. An antibody (immunoglobulin) has two heavy and two light chains: the variable regions at the arm tips form two identical antigen-binding sites, and the constant regions, including the Fc stem, set the class. IgG is the main blood antibody and the only class that crosses to the fetus; IgA protects mucous membranes; IgM comes first and is best at agglutination and complement; IgE arms mast cells; IgD sits on naïve B cells. Antibodies neutralize, agglutinate, opsonize, activate complement and direct killer cells. Secondary responses are faster, larger and mostly IgG. Active immunity (infection or a vaccine) leaves memory; passive immunity (borrowed antibody) is immediate but brief.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-30", "label": "NREMT: Soft-tissue trauma (wound care)" }
+  ]
+}

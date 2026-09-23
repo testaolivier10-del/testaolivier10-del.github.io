@@ -1,6 +1,6 @@
 {
   "topic": "adrenal-glands",
-  "hook": "<p>Mr. Adeyemi, 60, took prednisone for eight months for a lung condition. When the prescription ran out, he simply stopped. Five days later he is in the emergency department, dizzy, vomiting and confused, with a blood pressure of 78/44 and a blood glucose of 52 mg/dL. Nothing is wrong with his heart or his pancreas. His adrenal cortex has forgotten how to make cortisol.</p>",
+  "hook": "<p>Mr. Lindqvist, 60, took prednisone for eight months for a lung condition. When the prescription ran out, he simply stopped. Five days later he is in the emergency department, dizzy, vomiting and confused, with a blood pressure of 78/44 and a blood glucose of 52 mg/dL. Nothing is wrong with his heart or his pancreas. His adrenal cortex has forgotten how to make cortisol.</p>",
   "prereq": [
     {
       "q": "What stimulates the adrenal medulla to release epinephrine?",

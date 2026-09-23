@@ -112,6 +112,27 @@
       ]
     },
     {
+      "id": "glucagon-inhibits-uptake",
+      "name": "Inhibits body cells from taking up glucose from the blood and utilizing it in cellular respiration",
+      "accept": [
+        "inhibits glucose uptake"
+      ],
+      "lines": [
+        35,
+        36,
+        37
+      ],
+      "concept": "glucagon",
+      "cover": true,
+      "note": "OpenStax prints, under glucagon's effects, that it inhibits body cells from taking up glucose and using it in cellular respiration. Glucagon does not block glucose uptake; it acts mainly on the liver, making it break down glycogen and make new glucose. Body cells take up less glucose when glucagon is high because insulin is low, not because glucagon inhibits them. Covered for good and never asked.",
+      "box": [
+        645,
+        1170,
+        291,
+        72
+      ]
+    },
+    {
       "id": "gluconeogenesis-er-insulin",
       "name": "amino acids and free glycerol are NOT converted to glucose in the ER",
       "accept": [

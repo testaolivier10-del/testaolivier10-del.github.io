@@ -49,16 +49,16 @@
     "diff": 2,
     "predictLevel": 2,
     "core": ["homeostasis"],
-    "q": "A woman moves from a coastal city to a town 3,500 m up a mountain. The air there holds less oxygen. Predict the change in each variable after she has lived there for six weeks, compared with her first day.",
+    "q": "A woman moves from a coastal city to a town 3,500 m up a mountain. The air there holds less oxygen. Predict the change in each variable after she has lived there for six weeks, compared with before she moved.",
     "variables": [
-      {"name": "Erythropoietin release by the kidneys", "answer": "up", "why": "Less oxygen reaches the kidney tissue, so its oxygen-sensing cells release more EPO. It stays above her coastal level while oxygen delivery is still below normal."},
-      {"name": "Reticulocyte count", "answer": "up", "why": "EPO makes more erythroid precursors survive and mature, so more young red cells enter the blood each day."},
+            {"name": "Reticulocyte count", "answer": "up", "why": "EPO makes more erythroid precursors survive and mature, so more young red cells enter the blood each day."},
       {"name": "Red blood cell count", "answer": "up", "why": "Weeks of faster production add more red cells than are destroyed."},
       {"name": "Hematocrit", "answer": "up", "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."},
+      {"name": "Hemoglobin per liter of blood", "answer": "up", "why": "More red cells in each liter means more hemoglobin in each liter."},
       {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."}
     ],
     "why": {
-      "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises and the marrow speeds up, so over weeks her red cell count and hematocrit climb, and each liter of blood carries more oxygen. The cost is thicker blood."
+      "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises within hours and the marrow speeds up. EPO eases back from its early peak over the following days, but the extra red cells keep coming for weeks. Her red cell count, hematocrit and hemoglobin climb, and the cost is thicker blood."
     }
   },
   {
@@ -74,7 +74,7 @@
       {"name": "Reticulocyte count", "answer": "down", "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."},
       {"name": "Hematocrit", "answer": "down", "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."},
       {"name": "Oxygen carried per liter of blood", "answer": "down", "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."},
-      {"name": "Resting heart rate", "answer": "up", "why": "Low oxygen delivery is sensed and sympathetic drive to the heart rises, so the heart beats faster."}
+      {"name": "Resting heart rate", "answer": "up", "why": "With thinner blood and less oxygen in each liter, his heart pumps more blood each minute, partly by beating faster."}
     ],
     "why": {
       "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) is missing, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."
@@ -174,7 +174,7 @@
     "level": "analyze",
     "diff": 3,
     "core": ["structure-function"],
-    "q": "A 66-year-old man has anemia with large red cells, and numbness and tingling in his feet. Tests show his stomach lining has been destroyed by his own immune system. Why do B12 tablets fail to help him while B12 injections work?",
+    "q": "A 66-year-old man has anemia with large red cells, and numbness and tingling in his feet. Tests show his stomach lining has been destroyed by his own immune system. Why do ordinary-dose B12 tablets fail to help him while B12 injections work?",
     "options": [
       "His stomach cannot make the protein needed to absorb B12",
       "Stomach acid destroys B12 tablets before they can dissolve",
@@ -183,7 +183,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Absorbing vitamin B12 in the intestine needs a carrier protein made by cells of the stomach lining. With those cells destroyed, swallowed B12 passes through unabsorbed. An injection puts B12 straight into the body, bypassing absorption.",
+      "correct": "Absorbing vitamin B12 in the intestine needs a carrier protein made by cells of the stomach lining. With those cells destroyed, swallowed B12 passes through unabsorbed. An injection puts B12 straight into the body, bypassing absorption. (Very high oral doses can also work, because about 1% of swallowed B12 is absorbed without the carrier.)",
       "options": [
         "Correct. This is pernicious anemia: the problem is absorption, not intake.",
         "B12 survives stomach acid. The problem is the missing carrier protein needed to absorb it further along.",
@@ -275,7 +275,7 @@
       "Both raise erythropoietin and so the number of new sickle cells",
       "Both make the spleen release stored sickle cells",
       "Both make hemoglobin S bind oxygen too tightly",
-      "Both help HbS unload oxygen and pack into fibers"
+      "Both favor HbS fibers: less oxygen bound, or HbS packed tighter"
     ],
     "correct": 3,
     "why": {
@@ -464,7 +464,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Fetal red cells live only about 80–90 days, and a newborn breaks many of them down at once, making a lot of bilirubin. Its liver's conjugating enzyme is still immature, so bilirubin builds up for a few days.",
+      "correct": "Fetal red cells live only about 60–90 days, and a newborn breaks many of them down at once, making a lot of bilirubin. Its liver's conjugating enzyme is still immature, so bilirubin builds up for a few days.",
       "options": [
         "Correct. More bilirubin made, and less cleared.",
         "Before birth, bilirubin crosses to the mother, who clears it. The kidneys are not the main route for bilirubin.",

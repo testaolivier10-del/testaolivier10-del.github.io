@@ -1,0 +1,32 @@
+{
+  "lymph": {
+    "def": "Interstitial fluid once it has entered a lymphatic vessel: mostly water and small solutes, with some protein, lymphocytes and anything picked up from the tissues.",
+    "roots": [["lymph-", "clear water (Latin lympha)"]],
+    "say": "LIMF"
+  },
+  "lymphatic-vessels": {
+    "def": "The one-way vessels that return filtered fluid to the blood: blind-ended lymphatic capillaries, valved collecting vessels, lymphatic trunks, and the thoracic duct (from the cisterna chyli) and right lymphatic duct, which empty where the internal jugular and subclavian veins meet.",
+    "roots": [["lymph-", "clear water"], ["-atic", "pertaining to"], ["cisterna", "reservoir"]],
+    "say": "lim-FAT-ik"
+  },
+  "lymph-node": {
+    "def": "A small, bean-shaped organ along the lymphatic vessels that filters lymph. Lymph enters through afferent vessels, trickles through macrophage-lined sinuses past a cortex of lymphoid nodules (with germinal centers) and a paracortex, and leaves through efferent vessels at the hilum; lymphocytes enter from the blood through high endothelial venules.",
+    "roots": [["af-", "toward"], ["ef-", "away from"], ["-fer", "carry"], ["para-", "beside"]],
+    "say": ""
+  },
+  "spleen": {
+    "def": "The largest lymphoid organ, in the upper left abdomen, which filters blood rather than lymph. Its white pulp holds lymphocytes around central arteries; its red pulp removes old red blood cells, platelets and bacteria and holds a platelet reserve.",
+    "roots": [["splen/o", "spleen"]],
+    "say": "SPLEEN"
+  },
+  "lymphoid-organs": {
+    "def": "Primary lymphoid organs (red bone marrow and the thymus) are where lymphocytes are made and mature; secondary lymphoid organs (lymph nodes, the spleen and mucosa-associated lymphoid tissue such as the tonsils, Peyer's patches and BALT) are where mature lymphocytes meet antigens.",
+    "roots": [["-oid", "resembling"], ["tonsilla", "small stake or almond"]],
+    "say": ""
+  },
+  "lymphedema": {
+    "def": "Protein-rich swelling of a region whose lymphatic drainage has failed, most often after lymph nodes are removed or irradiated, or from parasitic worms blocking the vessels. Over time the tissue becomes firm and non-pitting.",
+    "roots": [["lymph-", "lymph"], ["-edema", "swelling"]],
+    "say": "limf-eh-DEE-muh"
+  }
+}

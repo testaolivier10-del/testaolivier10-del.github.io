@@ -1,0 +1,12 @@
+{
+  "fever-set-point": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 760,
+    "h": 420,
+    "alt": "Graph of temperature (36 to 40 °C) against time (0 to 14 hours). A dashed set-point line steps up from about 36.6 to 39 at hour 2, when pyrogens arrive, and back down at hour 10, when they are cleared. A solid core-temperature line lags behind: it climbs to 39 over about an hour and a half after the step up (point A, body below set point), holds on the plateau (point B, lines together), and falls back over about an hour and a half after the step down (point C, body above set point).",
+    "labels": []
+  }
+}

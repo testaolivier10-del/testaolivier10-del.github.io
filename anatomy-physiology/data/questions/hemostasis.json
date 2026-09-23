@@ -10,7 +10,7 @@
       "Smooth muscle in the vessel wall contracts (vascular spasm)",
       "Platelets adhere to exposed collagen through von Willebrand factor",
       "Activated platelets release ADP and thromboxane A2 and recruit more platelets",
-      "Tissue factor and factor VIIa start coagulation",
+      "The burst of thrombin forms on the platelets of the plug",
       "Thrombin converts fibrinogen into fibrin threads",
       "Platelets pull on the fibrin and the clot retracts"
     ],
@@ -44,7 +44,7 @@
     "diff": 2,
     "predictLevel": 2,
     "core": ["homeostasis"],
-    "q": "An adult with a disease that blocks fat absorption becomes deficient in vitamin K. Predict the change in each variable.",
+    "q": "An adult with a disease that blocks fat absorption becomes severely deficient in vitamin K. Predict the change in each variable.",
     "variables": [
       {"name": "Working factors II, VII, IX and X in plasma", "answer": "down", "why": "The liver needs vitamin K to add the calcium-binding groups these factors need. Without it, the factors it makes do not work."},
       {"name": "Prothrombin time (PT)", "answer": "up", "why": "The PT depends on factor VII and the common pathway factors X and II. Factor VII has the shortest life in plasma, so the PT lengthens first."},
@@ -139,7 +139,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Aspirin permanently blocks cyclooxygenase, the enzyme platelets use to make thromboxane A2. A platelet has no nucleus, so it cannot make new enzyme. The effect lasts until the affected platelets are replaced, which takes their 7–10 day lifespan.",
+      "correct": "Aspirin permanently blocks cyclooxygenase, the enzyme platelets use to make thromboxane A2. A platelet has no nucleus and makes almost no new enzyme. The effect lasts until the affected platelets are replaced, which takes their 7–10 day lifespan.",
       "options": [
         "Aspirin itself is cleared from the blood within hours. The effect outlasts the drug.",
         "Correct. The effect lasts as long as the platelets do.",
@@ -254,10 +254,10 @@
     "core": ["homeostasis"],
     "q": "A 19-year-old woman has had frequent nosebleeds and very heavy periods since her teens. Her platelet count and PT are normal, and her aPTT is slightly long. Her mother has the same problems. Which step of hemostasis is most likely faulty?",
     "options": [
-      "Vascular spasm",
-      "Fibrinolysis",
+      "Vascular spasm of the vessel",
+      "Fibrinolysis of the clot",
       "Platelet adhesion to collagen",
-      "Clot retraction"
+      "Clot retraction by platelets"
     ],
     "correct": 2,
     "why": {
@@ -438,10 +438,10 @@
     "core": ["homeostasis"],
     "q": "Blood for clotting tests is collected into a tube that contains citrate, and it stays liquid. What does citrate do?",
     "options": [
-      "It destroys platelets",
+      "It destroys the platelets in the sample",
       "It binds calcium ions, which coagulation needs",
-      "It dissolves fibrinogen",
-      "It blocks vitamin K in the sample"
+      "It dissolves the fibrinogen in the sample",
+      "It blocks the vitamin K in the sample"
     ],
     "correct": 1,
     "why": {
@@ -463,16 +463,16 @@
     "q": "Why is every newborn given a vitamin K injection at birth?",
     "options": [
       "Newborns have no platelets for the first week",
-      "Newborns have little vitamin K and no bacteria to make it",
+      "Newborns have little vitamin K, and breast milk supplies little",
       "Vitamin K speeds up the clearance of bilirubin in newborn jaundice",
       "Newborn livers cannot make fibrinogen"
     ],
     "correct": 1,
     "why": {
-      "correct": "Little vitamin K reaches the fetus, the newborn gut has no bacteria yet, and breast milk is low in it. Without vitamin K the liver makes non-working factors II, VII, IX and X, and a rare but serious bleeding disease can follow. One injection prevents it.",
+      "correct": "Little vitamin K reaches the fetus, and breast milk is low in it. The newborn gut is only beginning to gain bacteria, and how much they would add is uncertain anyway. Without vitamin K the liver makes non-working factors II, VII, IX and X, and a rare but serious bleeding disease can follow. One injection prevents it.",
       "options": [
         "Newborns have normal platelet counts.",
-        "Correct. Low stores and no bacterial supply.",
+        "Correct. Low stores at birth and little in breast milk.",
         "Vitamin K is given for clotting, not for bilirubin.",
         "Newborn livers make fibrinogen. The problem is the vitamin K–dependent factors."
       ]

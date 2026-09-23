@@ -4,7 +4,7 @@
 <p>A virus gets into the cells lining your nose and starts copying itself. Inside those cells it is out of reach of anything floating in your blood or tissue fluid. The only way to stop it is to find the infected cells and destroy them before they release the next wave of virus. That is the work of T cells.</p>
 <p><em>Cell-mediated immunity</em> is the arm of adaptive immunity carried out by T cells acting directly, cell to cell, rather than by antibodies released into body fluids. You met the ground rules in the last topic:</p>
 <ul>
-<li>A T cell has one kind of antigen receptor, the <strong>T cell receptor</strong>, and every receptor on that cell fits the same epitope.</li>
+<li>A T cell has one kind of antigen receptor, the <strong>T cell receptor</strong>, and all the T cell receptors on one cell fit the same epitope.</li>
 <li>A T cell cannot see a whole microbe. It sees only a short peptide cut from a protein and held up in an MHC protein on another cell's surface.</li>
 <li>MHC class I proteins sit on nearly every cell with a nucleus and display peptides made inside that cell. MHC class II proteins sit mainly on antigen-presenting cells (dendritic cells, macrophages and B cells) and display peptides from material they have engulfed.</li>
 </ul>
@@ -30,34 +30,34 @@
 <li><strong>Differentiation.</strong> Most of the clone become <em>effector T cells</em> (effector = one that brings about an effect): short-lived cells that leave the node and do the work. A smaller number become memory T cells.</li>
 </ol>
 <figure id="fig-t-activation" class="anp-fig">
-<svg viewBox="0 0 640 300" role="img" aria-label="A dendritic cell on the left touches a naive T cell on the right at three points. Signal 1: an MHC protein holding a peptide on the dendritic cell binds the T cell receptor, with CD4 or CD8 beside it. Signal 2: B7 on the dendritic cell binds CD28 on the T cell, labeled costimulation. Signal 3: cytokines drift from the dendritic cell to the T cell. An arrow leads from the T cell to a row of identical daughter cells labeled clonal expansion driven by IL-2, which split into many effector T cells and fewer memory T cells.">
-<ellipse class="shape" cx="110" cy="130" rx="85" ry="70"/>
-<text class="lbl" x="55" y="125">dendritic</text>
-<text class="lbl" x="75" y="145">cell</text>
-<ellipse class="lo" cx="330" cy="130" rx="70" ry="70"/>
-<text class="lbl" x="285" y="125">naïve</text>
-<text class="lbl" x="285" y="145">T cell</text>
-<line class="causes" x1="195" y1="95" x2="260" y2="95"/>
-<text class="lbl-sm" x="196" y="82">1: MHC + peptide</text>
-<text class="lbl-sm" x="196" y="112">→ T cell receptor</text>
-<line class="causes" x1="195" y1="150" x2="260" y2="150"/>
-<text class="lbl-sm" x="196" y="140">2: B7 → CD28</text>
-<text class="lbl-sm" x="196" y="170">(costimulation)</text>
-<line class="flows" x1="170" y1="190" x2="275" y2="185"/>
-<text class="lbl-sm" x="180" y="215">3: cytokines</text>
-<line class="causes" x1="400" y1="130" x2="440" y2="130"/>
-<circle class="accent" cx="465" cy="95" r="16"/>
-<circle class="accent" cx="505" cy="95" r="16"/>
-<circle class="accent" cx="545" cy="95" r="16"/>
-<circle class="accent" cx="585" cy="95" r="16"/>
-<circle class="accent" cx="465" cy="165" r="16"/>
-<circle class="accent" cx="505" cy="165" r="16"/>
-<circle class="accent" cx="545" cy="165" r="16"/>
-<circle class="hi" cx="585" cy="165" r="16"/>
-<text class="lbl-sm" x="445" y="60">clonal expansion (IL-2)</text>
-<text class="lbl-sm" x="445" y="205">many effector T cells</text>
-<text class="lbl-sm" x="530" y="225">few memory T cells</text>
-<line class="flows" x1="585" y1="183" x2="585" y2="212"/>
+<svg viewBox="0 0 640 300" role="img" aria-label="A dendritic cell on the left sends three signals to a naive T cell on the right. Signal 1: a peptide held in MHC binds the T cell receptor. Signal 2: B7 on the dendritic cell binds CD28 on the T cell, labeled costimulation. Signal 3: cytokines drift from the dendritic cell to the T cell, shown with a dashed arrow. An arrow leads from the T cell to two rows of identical daughter cells labeled clonal expansion: most are effector T cells, and one, set apart by its color, is a memory T cell.">
+<ellipse class="shape" cx="85" cy="140" rx="75" ry="80"/>
+<text class="lbl" x="45" y="136">dendritic</text>
+<text class="lbl" x="68" y="156">cell</text>
+<circle class="lo" cx="390" cy="140" r="60"/>
+<text class="lbl" x="366" y="136">naïve</text>
+<text class="lbl" x="360" y="156">T cell</text>
+<line class="causes" x1="162" y1="100" x2="332" y2="100"/>
+<text class="lbl-sm" x="170" y="90">1: peptide in MHC</text>
+<text class="lbl-sm" x="170" y="118">→ T cell receptor</text>
+<line class="causes" x1="160" y1="160" x2="330" y2="160"/>
+<text class="lbl-sm" x="170" y="150">2: B7 binds CD28</text>
+<text class="lbl-sm" x="170" y="178">(costimulation)</text>
+<line class="flows" x1="150" y1="205" x2="338" y2="200"/>
+<text class="lbl-sm" x="170" y="228">3: cytokines</text>
+<line class="causes" x1="452" y1="140" x2="492" y2="140"/>
+<text class="lbl-sm" x="498" y="84">clonal expansion</text>
+<circle class="accent" cx="512" cy="110" r="13"/>
+<circle class="accent" cx="546" cy="110" r="13"/>
+<circle class="accent" cx="580" cy="110" r="13"/>
+<circle class="accent" cx="614" cy="110" r="13"/>
+<circle class="accent" cx="512" cy="170" r="13"/>
+<circle class="accent" cx="546" cy="170" r="13"/>
+<circle class="accent" cx="580" cy="170" r="13"/>
+<circle class="hi" cx="614" cy="170" r="13"/>
+<text class="lbl-sm" x="498" y="206">effector T cells</text>
+<line class="flows" x1="614" y1="185" x2="614" y2="232"/>
+<text class="lbl-sm" x="520" y="252">memory T cell</text>
 </svg>
 <figcaption>T cell activation in a lymph node. Recognition (signal 1) without costimulation (signal 2) leaves the T cell unresponsive. With both, and with cytokines (signal 3), the T cell expands into a clone of effector and memory cells.</figcaption>
 </figure>

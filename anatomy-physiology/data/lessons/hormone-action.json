@@ -1,6 +1,6 @@
 {
   "topic": "hormone-action",
-  "hook": "<p>A man stung by a bee collapses with a severe allergic reaction. The paramedic injects epinephrine, and within two minutes his blood pressure rises and his wheezing eases. At the hospital he also gets a steroid, which will not do anything visible for hours but will keep the reaction from flaring up again tomorrow. Both drugs copy hormones. Why does one act in minutes and the other in hours?</p>",
+  "hook": "<p>A man stung by a bee collapses with a severe allergic reaction. The paramedic injects epinephrine, and within two minutes his blood pressure rises and his wheezing eases. At the hospital he also gets a steroid, a drug whose effects take hours to appear. Both drugs copy hormones. Why does one act in minutes and the other in hours?</p>",
   "prereq": [
     {
       "q": "Which messenger can cross the plasma membrane by diffusing through the phospholipid bilayer?",
@@ -64,7 +64,7 @@
   ],
   "misconception": {
     "wrong": "Hormones enter their target cells to act.",
-    "right": "Only lipid-soluble hormones (steroids and the thyroid gland's amines) enter cells. Water-soluble hormones, which include all peptide and protein hormones and epinephrine, never enter: they bind a receptor protein in the plasma membrane, and second messengers carry the signal inside. That difference is why water-soluble hormones act in seconds to minutes and lipid-soluble ones in hours."
+    "right": "Only lipid-soluble hormones (steroids and the thyroid gland's amines) enter cells to act; steroids diffuse through the bilayer, and thyroid hormones cross on transporter proteins. Water-soluble hormones, which include all peptide and protein hormones and epinephrine, do not need to enter: they bind a receptor protein in the plasma membrane, and second messengers carry the signal inside. That difference is why water-soluble hormones act in seconds to minutes and lipid-soluble ones in hours."
   },
   "check": [
     "anp-hormone-action-2",

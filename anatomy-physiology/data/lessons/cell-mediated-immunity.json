@@ -43,6 +43,6 @@
   "summary": "<p>T cells see only peptides held in MHC proteins. CD4 T cells (helper and regulatory) answer MHC class II; CD8 T cells (cytotoxic) answer MHC class I. A naïve T cell is activated in a lymph node by a dendritic cell that provides recognition (signal 1), costimulation through B7 and CD28 (signal 2) and cytokines (signal 3); recognition without costimulation causes anergy. IL-2 drives clonal expansion into effector and memory T cells. Helper T cells direct B cells, cytotoxic T cells and macrophages with cytokines; Th1 cells fight microbes inside cells and Th2 cells fight worms. Cytotoxic T cells kill infected and abnormal cells by apoptosis with perforin, granzymes and Fas ligand. Regulatory T cells suppress other lymphocytes. Transplant rejection is mainly T cells reacting to foreign HLA, reduced by tissue typing, crossmatching and drugs that block T cell activation; in graft-versus-host disease, donor T cells attack the recipient.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
-    { "href": "/nremt/study-notes.html#chapter-37", "label": "NREMT: Patients with special challenges (transplant recipients)" }
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology" }
   ]
 }

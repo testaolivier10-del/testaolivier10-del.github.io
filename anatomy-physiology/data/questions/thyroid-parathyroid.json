@@ -189,7 +189,7 @@
     "q": "A 52-year-old woman is tired, always cold and has slow bowels, has gained a little weight and has dry skin and a slow pulse. Her free T4 is low and her TSH is high. What is the most likely explanation?",
     "options": [
       "Her anterior pituitary is failing to make TSH",
-      "She has too much iodine in her diet",
+      "Her hypothalamus is making too little TRH",
       "Her parathyroid glands are overactive",
       "Her thyroid gland itself is failing"
     ],
@@ -198,7 +198,7 @@
       "correct": "Low thyroid hormone with high TSH points to the thyroid gland itself. Her symptoms are the slowed state of hypothyroidism. With the gland failing, long-loop negative feedback is lost and the anterior pituitary pushes TSH up. In iodized-salt countries, the usual cause is Hashimoto thyroiditis.",
       "options": [
         "A failing anterior pituitary would give a low TSH, not a high one.",
-        "Iodine is needed to make thyroid hormone; enough of it does not cause these findings.",
+        "Too little TRH would lower TSH, not raise it.",
         "Overactive parathyroid glands raise blood calcium; they do not lower T4 or raise TSH.",
         "Correct. Primary hypothyroidism: the target gland fails and TSH rises."
       ]
@@ -374,16 +374,16 @@
     ],
     "q": "PTH raises bone breakdown by osteoclasts. Which cells in bone carry the PTH receptor protein and pass the signal on?",
     "options": [
-      "Osteocytes only",
+      "Parafollicular (C) cells",
       "Osteoclasts",
       "Chondrocytes",
       "Osteoblasts"
     ],
     "correct": 3,
     "why": {
-      "correct": "PTH binds receptor proteins on osteoblasts. The osteoblasts then release a signal that makes more osteoclasts form and makes existing ones more active. Osteoclasts themselves have no PTH receptor protein.",
+      "correct": "PTH binds receptor proteins on osteoblasts. The osteoblasts then release a signal that makes more osteoclasts form and makes existing ones more active. Osteocytes, which develop from osteoblasts, carry the same receptor protein and send the same signal. Osteoclasts themselves have no PTH receptor protein.",
       "options": [
-        "Osteocytes also respond to PTH, but the classic relay to osteoclasts runs through osteoblasts.",
+        "C cells are in the thyroid gland, not bone, and they make calcitonin.",
         "Osteoclasts respond to PTH only indirectly, through the osteoblasts' signal.",
         "Chondrocytes are cartilage cells and are not the relay for PTH's effect on bone breakdown.",
         "Correct. Osteoblasts receive PTH and signal the osteoclasts."
@@ -517,7 +517,7 @@
         "Rickets is the same problem in children, affecting their growing bones and epiphyseal plates.",
         "In osteoporosis there is too little bone, but what remains is normally mineralized.",
         "Correct. Soft, poorly mineralized bone in an adult is osteomalacia.",
-        "Her PTH would be raised as a response, but the root problem is vitamin D, and her calcium is not high."
+        "Her PTH is probably raised as a response, but the root problem is the lack of vitamin D, which is what leaves her matrix poorly mineralized."
       ]
     }
   },
@@ -567,7 +567,7 @@
     ],
     "q": "Why is every newborn screened for congenital hypothyroidism, rather than waiting for signs?",
     "options": [
-      "Affected babies look normal at first, but the brain damage is permanent",
+      "Babies look normal at first, but the brain damage is permanent",
       "The test also detects iodine deficiency in the mother",
       "Thyroid hormone is needed only in the first week of life",
       "Congenital hypothyroidism is the most common cause of goiter in adults"
@@ -742,7 +742,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Thyroid hormones are lipid-soluble: T3 binds a receptor protein in the nucleus and changes transcription, so new proteins take time to build up. T4's half-life of about a week also means its blood level takes one to two weeks to reach a steady state.",
+      "correct": "Thyroid hormones are lipid-soluble: T3 binds a receptor protein in the nucleus and changes transcription, so new proteins take time to build up. T4's half-life of about a week also means its blood level keeps climbing for about five to six weeks before it levels off, which is why TSH is rechecked after about six weeks.",
       "options": [
         "Thyroid hormones act through a receptor protein in the nucleus, not in the membrane.",
         "T4 is converted to T3, not TSH. TSH is a pituitary hormone.",

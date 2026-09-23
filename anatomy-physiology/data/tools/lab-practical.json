@@ -10241,6 +10241,862 @@
    ]
   },
   {
+   "id": "endocrine-glands",
+   "title": "Endocrine gland locations",
+   "chapter": "endocrine",
+   "topic": "hormone-action",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-17-2",
+     "topic": "hormone-action",
+     "core": [
+      "communication",
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "hypothalamus",
+       "name": "Hypothalamus",
+       "accept": [],
+       "box": [
+        806,
+        102,
+        154,
+        26
+       ],
+       "concept": "hypothalamus",
+       "taught": "brain-regions",
+       "fn": "A small region at the base of the brain, below the thalamus. It links the nervous and endocrine systems: its neurons sense conditions such as body temperature and water balance and control the pituitary gland hanging below it.",
+       "follow": {
+        "q": "Why is the hypothalamus described as the link between the nervous and endocrine systems?",
+        "options": [
+         "It is a gland in the neck with no nerve connections to the brain",
+         "It is part of the brain, and its neurons control the pituitary gland's hormone release",
+         "It releases every hormone in the body itself",
+         "It sends nerve signals straight to each endocrine gland, which then need no hormones"
+        ],
+        "correct": 1,
+        "why": "The hypothalamus is brain tissue, so it receives nerve input, and its neurons control what the pituitary gland releases. It does not make every hormone, and most endocrine glands respond to hormones, not direct nerve signals from it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pituitary-gland",
+       "name": "Pituitary gland",
+       "accept": [
+        "pituitary",
+        "hypophysis"
+       ],
+       "box": [
+        807,
+        149,
+        151,
+        26
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A pea-sized gland hanging from the underside of the hypothalamus in a small pocket of the skull. Its hormones control several other endocrine glands, so it is called the master gland, though the hypothalamus directs it."
+      },
+      {
+       "id": "thyroid-gland",
+       "name": "Thyroid gland",
+       "accept": [
+        "thyroid"
+       ],
+       "box": [
+        907,
+        337,
+        147,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A butterfly-shaped gland on the front of the neck, wrapped around the front of the trachea. Its hormones set how fast most body cells use energy."
+      },
+      {
+       "id": "thymus",
+       "name": "Thymus",
+       "accept": [
+        "thymus gland"
+       ],
+       "box": [
+        0,
+        377,
+        88,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A gland in the upper chest behind the sternum, largest in childhood and shrinking after puberty. White blood cells of the immune defenses mature in it, and it releases hormones that help them develop.",
+       "follow": {
+        "q": "At what stage of life is the thymus largest and most active?",
+        "options": [
+         "In old age",
+         "Only during pregnancy",
+         "In childhood",
+         "It stays the same size throughout life"
+        ],
+        "correct": 2,
+        "why": "The thymus is large and busy in childhood, when the immune defenses are being built, and shrinks after puberty as fat replaces much of it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        907,
+        471,
+        94,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe: the airway running down the front of the neck into the chest. It is not an endocrine gland, but it is a useful landmark, since the thyroid gland wraps around its front."
+      },
+      {
+       "id": "adrenal-glands",
+       "name": "Adrenal glands",
+       "accept": [
+        "adrenal gland",
+        "adrenals",
+        "adrenal",
+        "suprarenal glands"
+       ],
+       "box": [
+        677,
+        548,
+        162,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A pair of glands, one on top of each kidney. Each has an inner part, the adrenal medulla, that releases epinephrine in the fight-or-flight response, and an outer part that makes steroid hormones.",
+       "follow": {
+        "q": "Where are the adrenal glands?",
+        "options": [
+         "On the back of the thyroid gland",
+         "Behind the stomach, along its curve",
+         "In the upper chest behind the sternum",
+         "On top of the kidneys"
+        ],
+        "correct": 3,
+        "why": "The adrenal glands sit on top of the kidneys (ad- = near, renal = kidney). The organ behind the stomach is the pancreas, the gland behind the sternum is the thymus, and the small glands on the back of the thyroid gland are a separate set.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pancreas",
+       "name": "Pancreas",
+       "accept": [],
+       "box": [
+        679,
+        641,
+        105,
+        23
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "An organ lying behind the stomach. It is both an exocrine gland, making digestive enzymes that drain into the intestine through a duct, and an endocrine gland: small clusters of its cells release hormones into the blood that control blood sugar.",
+       "follow": {
+        "q": "Why is the pancreas counted as both an exocrine and an endocrine gland?",
+        "options": [
+         "It releases digestive enzymes through a duct and also releases hormones into the blood",
+         "All of its hormones travel through ducts to the stomach",
+         "It stores bile and releases it after meals",
+         "Its hormones act only on the pancreatic cells right next to the cells that release them"
+        ],
+        "correct": 0,
+        "why": "An exocrine gland empties through a duct and an endocrine gland releases hormones into the blood. The pancreas does both: most of it makes digestive enzymes that leave through a duct, while small clusters of cells release hormones into its capillaries. Storing bile is the gallbladder's job.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "uterus",
+       "name": "Uterus",
+       "accept": [
+        "womb"
+       ],
+       "box": [
+        679,
+        723,
+        77,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The hollow, muscular organ in the female pelvis where a baby develops during pregnancy. It is not an endocrine gland; the ovaries on either side of it are."
+      },
+      {
+       "id": "ovaries",
+       "name": "Ovaries",
+       "accept": [
+        "ovary"
+       ],
+       "box": [
+        678,
+        796,
+        176,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The female gonads, a pair of glands in the pelvis on either side of the uterus. Besides producing eggs, they release hormones that control the reproductive cycle and female body development."
+      },
+      {
+       "id": "testes",
+       "name": "Testes",
+       "accept": [
+        "testis",
+        "testicles"
+       ],
+       "box": [
+        677,
+        917,
+        146,
+        26
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The male gonads, a pair of glands held outside the pelvis in a pouch of skin. Besides making sperm, they release the hormone that drives male body development."
+      }
+     ],
+     "covered": [
+      {
+       "id": "pineal-gland",
+       "box": [
+        409,
+        0,
+        133,
+        27
+       ]
+      },
+      {
+       "id": "thyroid-cartilage",
+       "box": [
+        907,
+        266,
+        178,
+        54
+       ]
+      },
+      {
+       "id": "parathyroid-glands",
+       "box": [
+        908,
+        379,
+        194,
+        80
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pancreatic-islet",
+   "title": "Histology station: pancreatic islet",
+   "chapter": "endocrine",
+   "topic": "pancreas-glucose",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-23-26",
+     "topic": "pancreas-glucose",
+     "core": [
+      "structure-function",
+      "homeostasis"
+     ],
+     "labels": [
+      {
+       "id": "tail-of-pancreas",
+       "name": "Tail of pancreas",
+       "accept": [
+        "tail of the pancreas",
+        "pancreatic tail",
+        "tail"
+       ],
+       "box": [
+        519,
+        73,
+        98,
+        50
+       ],
+       "concept": null,
+       "fn": "The narrow end of the pancreas, reaching across the abdomen toward the spleen on the left side."
+      },
+      {
+       "id": "lobules",
+       "name": "Lobules",
+       "accept": [
+        "lobule",
+        "pancreatic lobules"
+       ],
+       "box": [
+        391,
+        184,
+        84,
+        21
+       ],
+       "concept": null,
+       "fn": "The small lobes that give the pancreas its bumpy surface. Each is packed with clusters of enzyme-making cells, with pancreatic islets scattered among them."
+      },
+      {
+       "id": "head-of-pancreas",
+       "name": "Head of pancreas",
+       "accept": [
+        "head of the pancreas",
+        "pancreatic head",
+        "head"
+       ],
+       "box": [
+        51,
+        310,
+        176,
+        25
+       ],
+       "concept": null,
+       "fn": "The broad end of the pancreas, tucked into the curve of the first part of the intestine just past the stomach."
+      },
+      {
+       "id": "pancreatic-islet",
+       "name": "Pancreatic islet",
+       "accept": [
+        "pancreatic islets",
+        "islet",
+        "islets",
+        "islet of langerhans",
+        "islets of langerhans",
+        "pancreatic islet cells",
+        "islet cells"
+       ],
+       "box": [
+        0,
+        460,
+        152,
+        71
+       ],
+       "concept": "pancreatic-islets",
+       "taught": "pancreas-glucose",
+       "fn": "A small, pale cluster of endocrine cells (an islet of Langerhans) set among the enzyme-making tissue, with capillaries running through it. Its alpha cells release glucagon and its beta cells release insulin straight into the blood.",
+       "follow": {
+        "q": "Into what do the islet cells release insulin and glucagon?",
+        "options": [
+         "A duct that drains into the intestine",
+         "The enzyme-making clusters around the islet",
+         "The capillaries that run through the islet",
+         "The spleen, which stores the hormones"
+        ],
+        "correct": 2,
+        "why": "Islets are endocrine tissue: they have no duct. Their hormones enter the capillaries that run through each islet and travel in the blood to the liver and other target tissues. The duct carries the enzyme-making cells' secretions, not hormones.",
+        "level": "recall"
+       }
+      }
+     ],
+     "covered": [
+      {
+       "id": "common-bile-duct",
+       "box": [
+        131,
+        0,
+        180,
+        21
+       ]
+      },
+      {
+       "id": "pancreatic-duct",
+       "box": [
+        402,
+        0,
+        154,
+        21
+       ]
+      },
+      {
+       "id": "acinar-cells",
+       "box": [
+        421,
+        279,
+        193,
+        50
+       ]
+      },
+      {
+       "id": "pancreatic-duct-tissue",
+       "box": [
+        0,
+        741,
+        155,
+        21
+       ]
+      },
+      {
+       "id": "exocrine-cells",
+       "box": [
+        267,
+        804,
+        364,
+        25
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "formed-elements",
+   "title": "Formed elements",
+   "chapter": "blood",
+   "topic": "blood-composition",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-18-2",
+     "topic": "blood-composition",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "plasma",
+       "name": "Plasma",
+       "accept": [
+        "blood plasma"
+       ],
+       "box": [
+        0,
+        183,
+        113,
+        26
+       ],
+       "concept": "plasma",
+       "taught": "plasma-membrane",
+       "fn": "The straw-colored liquid part of blood, which rises to the top when blood is spun and makes up about 55 percent of its volume. It is mostly water carrying dissolved proteins, nutrients, gases, wastes and hormones."
+      },
+      {
+       "id": "buffy-coat",
+       "name": "Buffy coat",
+       "accept": [],
+       "box": [
+        0,
+        342,
+        151,
+        32
+       ],
+       "concept": "hematocrit",
+       "taught": "blood-composition",
+       "fn": "The thin, pale band between the plasma and the red cells in a spun tube, less than 1 percent of the blood's volume. It holds the white blood cells and platelets.",
+       "follow": {
+        "q": "A blood sample is spun in a tube. What makes up the thin pale band between the plasma and the red layer?",
+        "options": [
+         "Red blood cells",
+         "Plasma proteins that have settled out",
+         "White blood cells and platelets",
+         "Fat from the last meal"
+        ],
+        "correct": 2,
+        "why": "Spinning sorts blood by density. The red cells are densest and pack at the bottom, the plasma is lightest and rises, and the white blood cells and platelets settle in between as the buffy coat. Plasma proteins stay dissolved in the plasma.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "hematocrit",
+       "name": "Hematocrit",
+       "accept": [
+        "packed cell volume",
+        "packed red cells",
+        "red cell layer"
+       ],
+       "box": [
+        0,
+        452,
+        161,
+        26
+       ],
+       "concept": "hematocrit",
+       "taught": "blood-composition",
+       "fn": "The packed red cell layer at the bottom of a spun tube. The hematocrit is the percentage of the blood's volume this layer fills, normally about 37 to 47 percent in women and 42 to 52 percent in men.",
+       "follow": {
+        "q": "A man's blood is spun and his hematocrit is 30 percent. What does this mean?",
+        "options": [
+         "30 percent of his blood is plasma and the rest is red cells, which is normal",
+         "His buffy coat fills 30 percent of the tube",
+         "30 percent of his white blood cells are abnormal",
+         "Red cells fill 30 percent of his blood's volume, below the normal range"
+        ],
+        "correct": 3,
+        "why": "The hematocrit is the share of the blood's volume taken up by packed red cells. The normal range for men is about 42 to 52 percent, so 30 percent means too few red cells for his blood volume. The plasma would be about 70 percent, and the buffy coat is always under 1 percent.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "white-cells-platelets",
+       "name": "White blood cells, platelets",
+       "accept": [
+        "white blood cells and platelets",
+        "white blood cells",
+        "leukocytes and platelets",
+        "wbcs and platelets"
+       ],
+       "box": [
+        31,
+        373,
+        223,
+        61
+       ],
+       "concept": "blood-cells-basic",
+       "taught": "plasma-membrane",
+       "fn": "What the buffy coat holds: the white blood cells, which defend the body against infection, and the platelets, cell fragments that help seal damaged vessels."
+      },
+      {
+       "id": "red-blood-cells",
+       "name": "Red blood cells",
+       "accept": [
+        "red blood cell",
+        "rbcs",
+        "erythrocytes",
+        "red cells"
+       ],
+       "box": [
+        33,
+        483,
+        196,
+        25
+       ],
+       "concept": "blood-cells-basic",
+       "taught": "plasma-membrane",
+       "fn": "The red blood cells, the densest formed elements, which pack at the bottom of a spun tube. They carry oxygen from the lungs to the tissues."
+      }
+     ],
+     "covered": [
+      {
+       "id": "normal-blood",
+       "box": [
+        307,
+        588,
+        197,
+        26
+       ]
+      },
+      {
+       "id": "anemia",
+       "box": [
+        635,
+        588,
+        118,
+        26
+       ]
+      },
+      {
+       "id": "polycythemia",
+       "box": [
+        904,
+        588,
+        192,
+        32
+       ]
+      },
+      {
+       "id": "depressed-hematocrit",
+       "box": [
+        609,
+        618,
+        170,
+        57
+       ]
+      },
+      {
+       "id": "elevated-hematocrit",
+       "box": [
+        915,
+        619,
+        170,
+        56
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-18-4",
+     "topic": "blood-composition",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "hematopoietic-stem-cell",
+       "name": "Multipotent hematopoietic stem cell (hemocytoblast)",
+       "accept": [
+        "hematopoietic stem cell",
+        "hemocytoblast",
+        "hemopoietic stem cell",
+        "blood stem cell"
+       ],
+       "box": [
+        390,
+        59,
+        219,
+        43
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "The stem cell in red bone marrow that gives rise to every kind of blood cell. When it divides, one daughter stays a stem cell and the other becomes a myeloid or a lymphoid stem cell, depending on the chemical signals it receives.",
+       "follow": {
+        "q": "When a hematopoietic stem cell divides, one daughter cell stays a stem cell. Why does that matter?",
+        "options": [
+         "It keeps the marrow from ever running out of stem cells",
+         "It lets platelets form directly from the stem cell",
+         "It means the marrow can only ever make one kind of blood cell",
+         "It stops the marrow from making new blood cells"
+        ],
+        "correct": 0,
+        "why": "Blood cells wear out and must be replaced for life. Because one daughter of each division stays a stem cell, the supply of stem cells is kept up while the other daughter goes on to make blood cells of every kind.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "myeloid-stem-cell",
+       "name": "Myeloid stem cell",
+       "accept": [
+        "myeloid stem cells"
+       ],
+       "box": [
+        244,
+        314,
+        151,
+        23
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "The stem cell of the myeloid line. Its descendants are the red blood cells, the platelets and most kinds of white blood cells."
+      },
+      {
+       "id": "lymphoid-stem-cell",
+       "name": "Lymphoid stem cell",
+       "accept": [
+        "lymphoid stem cells"
+       ],
+       "box": [
+        772,
+        314,
+        167,
+        23
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "The stem cell of the lymphoid line. Its descendants are the lymphoid white blood cells, the immune system's specialized defenders."
+      },
+      {
+       "id": "megakaryoblast",
+       "name": "Megakaryoblast",
+       "accept": [],
+       "box": [
+        2,
+        452,
+        140,
+        23
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "The earliest recognizable cell of the platelet line, formed from a myeloid stem cell. It grows into a megakaryocyte."
+      },
+      {
+       "id": "myeloblast",
+       "name": "Myeloblast",
+       "accept": [],
+       "box": [
+        368,
+        452,
+        99,
+        23
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "An early cell, formed from a myeloid stem cell, that develops into the white blood cells with visible granules in their cytoplasm."
+      },
+      {
+       "id": "monoblast",
+       "name": "Monoblast",
+       "accept": [],
+       "box": [
+        561,
+        452,
+        96,
+        19
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "An early cell, formed from a myeloid stem cell, that develops into the largest white blood cells, which become macrophages once they leave the blood for the tissues."
+      },
+      {
+       "id": "lymphoblast",
+       "name": "Lymphoblast",
+       "accept": [],
+       "box": [
+        799,
+        452,
+        115,
+        23
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "The early cell of the lymphoid line, formed from a lymphoid stem cell. It develops into the lymphoid white blood cells."
+      },
+      {
+       "id": "megakaryocyte",
+       "name": "Megakaryocyte",
+       "accept": [
+        "megakaryocytes"
+       ],
+       "box": [
+        5,
+        700,
+        135,
+        23
+       ],
+       "concept": "hematopoiesis",
+       "taught": "blood-composition",
+       "fn": "A huge bone marrow cell with a large, many-lobed nucleus. Pieces of its cytoplasm pinch off to become platelets.",
+       "follow": {
+        "q": "Which description of platelets is accurate?",
+        "options": [
+         "Small whole cells, each with its own nucleus",
+         "Young red blood cells that have not yet lost their nucleus",
+         "Proteins dissolved in the plasma",
+         "Fragments of a large bone marrow cell's cytoplasm"
+        ],
+        "correct": 3,
+        "why": "Platelets are not whole cells. They are pieces of cytoplasm that break off megakaryocytes in the red bone marrow, so they have no nucleus. They are formed elements, not dissolved proteins, and they are not young red cells.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "platelets",
+       "name": "Platelets",
+       "accept": [
+        "platelet",
+        "thrombocytes"
+       ],
+       "box": [
+        32,
+        807,
+        81,
+        19
+       ],
+       "concept": "blood-cells-basic",
+       "taught": "plasma-membrane",
+       "fn": "Small fragments of megakaryocyte cytoplasm, with no nucleus. They circulate in the blood and help seal breaks in vessel walls to stop bleeding."
+      }
+     ],
+     "covered": [
+      {
+       "id": "proerythroblast",
+       "box": [
+        157,
+        452,
+        135,
+        23
+       ]
+      },
+      {
+       "id": "reticulocyte",
+       "box": [
+        173,
+        560,
+        110,
+        23
+       ]
+      },
+      {
+       "id": "natural-killer-cell",
+       "box": [
+        676,
+        611,
+        145,
+        63
+       ]
+      },
+      {
+       "id": "small-lymphocyte",
+       "box": [
+        890,
+        611,
+        154,
+        23
+       ]
+      },
+      {
+       "id": "erythrocyte",
+       "box": [
+        173,
+        700,
+        103,
+        23
+       ]
+      },
+      {
+       "id": "basophil",
+       "box": [
+        278,
+        700,
+        81,
+        23
+       ]
+      },
+      {
+       "id": "neutrophil",
+       "box": [
+        368,
+        700,
+        94,
+        23
+       ]
+      },
+      {
+       "id": "eosinophil",
+       "box": [
+        465,
+        700,
+        95,
+        23
+       ]
+      },
+      {
+       "id": "monocyte",
+       "box": [
+        573,
+        700,
+        91,
+        23
+       ]
+      },
+      {
+       "id": "t-lymphocyte",
+       "box": [
+        838,
+        739,
+        122,
+        23
+       ]
+      },
+      {
+       "id": "b-lymphocyte",
+       "box": [
+        979,
+        739,
+        121,
+        23
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "heart-position",
    "title": "The heart in the chest and its wall",
    "chapter": "cardiovascular",
@@ -21299,6 +22155,42 @@
    "alt": "Top left, the inner ear with the swelling at the base of one looped canal boxed. Below it, an enlarged cut through that swelling: a ridge of sensory cells whose projections stick up into a tall gel cap that spans the canal, with nerve fibers leaving from the base. Top right, a head turning. Bottom right, the same swelling while the head turns: the fluid in the canal lags behind, and red arrows show it bending the gel cap the opposite way to the turn.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.12",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-17-2": {
+   "src": "figures/os-17-2.jpg",
+   "w": 1100,
+   "h": 1026,
+   "alt": "An outline of a human body with the endocrine glands drawn in place. In the head, a small gland hangs below the hypothalamus and another sits deep in the middle of the brain, shown enlarged in an inset. In the neck, a butterfly-shaped gland wraps the front of the trachea below the larynx; an enlarged inset shows four small glands on its back surface. A gland sits behind the breastbone above the heart. In the abdomen, a gland caps the top of each kidney and a long gland lies across the middle behind the stomach. In the pelvis, the uterus is drawn with a small oval organ at each side; below the pelvis, two oval organs hang outside the body wall.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-1-an-overview-of-the-endocrine-system",
+   "license": "CC BY 4.0"
+  },
+  "os-23-26": {
+   "src": "figures/os-23-26.jpg",
+   "w": 637,
+   "h": 827,
+   "alt": "Top: the pancreas, a long pale lobulated organ, with its broad head tucked into the curve of the first part of the small intestine and its narrow tail extending to the right; a main duct runs its length and joins the bile duct. Bottom: an enlarged square of pancreatic tissue. Most of it is round clusters of pink cells around tiny ducts that drain into a larger green duct, labeled as exocrine cells secreting pancreatic juice and acinar cells secreting digestive enzymes. Two pale blue-green islands of cells with capillaries running through them are labeled as pancreatic islet cells secreting hormones.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.26",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder",
+   "license": "CC BY 4.0"
+  },
+  "os-18-2": {
+   "src": "figures/os-18-2.jpg",
+   "w": 1100,
+   "h": 689,
+   "alt": "Three glass tubes of spun blood side by side. In each, a straw-yellow fluid layer sits on top, a thin pale band lies in the middle, and a dark red column fills the bottom. In the left tube the red column fills a little under half the tube; in the middle tube it is much shorter; in the right tube it is much taller. Brackets beside the left tube name the three layers and give typical percentages for women and men.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-1-an-overview-of-blood",
+   "license": "CC BY 4.0"
+  },
+  "os-18-4": {
+   "src": "figures/os-18-4.jpg",
+   "w": 1100,
+   "h": 836,
+   "alt": "A branching flowchart of blood cell production. A single stem cell at the top divides; one daughter loops back to stay a stem cell, and the other splits into two branches. The left, larger branch passes through several precursor cells to a large many-lobed cell that sheds platelets, to a red blood cell, and to four kinds of white blood cell. The right branch passes through a precursor to three kinds of white blood cell with large round nuclei.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-2-production-of-the-formed-elements",
    "license": "CC BY 4.0"
   }
  }

@@ -47,7 +47,7 @@
     "say": "AD-en-il-il SY-klays"
   },
   "lipid-soluble-mechanism": {
-    "def": "A lipid-soluble hormone diffuses through the plasma membrane and binds an intracellular receptor protein. The hormone–receptor complex binds a hormone response element on DNA and changes transcription, so the cell makes new proteins over hours.",
+    "def": "A lipid-soluble hormone crosses the plasma membrane (steroids diffuse through it; thyroid hormones use transporter proteins) and binds an intracellular receptor protein. The hormone–receptor complex binds a hormone response element on DNA and changes transcription, so the cell makes new proteins over hours.",
     "roots": [],
     "say": ""
   },

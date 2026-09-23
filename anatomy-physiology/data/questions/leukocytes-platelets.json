@@ -131,7 +131,7 @@
     "q": "A patient's white count is 20,000 per µL, with neutrophils 88% and lymphocytes 8%. A student says his lymphocytes are low. What is the best reply?",
     "options": [
       "Agreed: 8% is below the normal 20–40%",
-      "His lymphocyte count is 1,600 per µL, which is normal",
+      "His absolute lymphocyte count is 1,600 per µL, which is normal",
       "His lymphocytes are high, because the total is high",
       "Lymphocyte numbers cannot be judged from a differential"
     ],
@@ -155,7 +155,7 @@
     "misconception": "a high white count means strong defense",
     "q": "Jayden, 7, has a white count of 58,000 per µL, mostly immature blasts, a hemoglobin of 7 g/dL and a platelet count of 20,000 per µL. Why does he keep getting infections?",
     "options": [
-      "His blasts cannot fight infection and crowd out neutrophils",
+      "His blasts cannot fight infection and crowd out normal marrow cells",
       "His anemia leaves too little oxygen for his white cells to work",
       "His high white count uses up all his antibodies",
       "His low platelets let bacteria into his blood"
@@ -310,24 +310,24 @@
   {
     "id": "anp-leukocytes-platelets-15",
     "type": "single",
-    "level": "apply",
-    "diff": 2,
+    "level": "recall",
+    "diff": 1,
     "core": ["structure-function"],
-    "q": "Why does a platelet survive only about 7–10 days in the blood?",
+    "q": "A platelet circulates for about 7–10 days. What happens to it at the end of that time?",
     "options": [
-      "It is destroyed by neutrophils as soon as it forms",
-      "It uses up its granules within a week",
-      "It divides into smaller fragments",
-      "It has no nucleus, so it cannot make new proteins to repair itself"
+      "It is filtered out of the blood by the kidneys",
+      "It divides into two smaller platelets",
+      "Macrophages in the spleen and liver engulf it",
+      "It returns to the red marrow and is rebuilt there"
     ],
-    "correct": 3,
+    "correct": 2,
     "why": {
-      "correct": "A platelet is a fragment of a megakaryocyte and has no nucleus. It cannot make new proteins, so it wears out and is removed by macrophages in the spleen and liver.",
+      "correct": "Aging platelets change their surface, and macrophages, mainly in the spleen and liver, recognize and engulf them. The marrow replaces them with new platelets from megakaryocytes.",
       "options": [
-        "Macrophages, not neutrophils, remove old platelets, and not until they wear out.",
-        "Granules are released when a platelet is activated, not steadily used up in circulation.",
-        "Without a nucleus, a platelet cannot divide at all.",
-        "Correct. No nucleus, no repair, a short life."
+        "Platelets are far too large to pass the kidney's filter. They are removed whole by phagocytes.",
+        "A platelet has no nucleus and cannot divide.",
+        "Correct. Macrophages in the spleen and liver clear old platelets.",
+        "Platelets do not go back to the marrow. New ones are shed by megakaryocytes, and old ones are engulfed."
       ]
     }
   },
@@ -340,7 +340,7 @@
     "q": "A man has a greatly enlarged spleen. His marrow is normal, but his platelet count is 80,000 per µL. What best explains the low count?",
     "options": [
       "The spleen makes too much thrombopoietin",
-      "The enlarged spleen holds far more platelets than usual",
+      "The enlarged spleen holds far more of his platelets than usual",
       "Megakaryocytes move out of the marrow and into the spleen",
       "The spleen turns platelets into red blood cells"
     ],

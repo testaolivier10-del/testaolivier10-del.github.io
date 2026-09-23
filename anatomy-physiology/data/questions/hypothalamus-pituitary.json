@@ -152,7 +152,7 @@
       {
         "name": "Firing of hypothalamic osmoreceptors",
         "answer": "up",
-        "why": "Water leaves the osmoreceptors into the more concentrated plasma; they shrink, their stretch-sensitive channels open and they fire faster."
+        "why": "Water leaves the osmoreceptors into the more concentrated plasma; they shrink, ion channels that open as the membrane slackens let positive ions in, and they fire faster."
       },
       {
         "name": "ADH release",
@@ -458,7 +458,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "Why does an alcoholic drink make you pass more urine than the same volume of water would?",
+    "q": "Why does a strong alcoholic drink increase urine output beyond what its water alone would cause?",
     "options": [
       "Alcohol triggers thirst, so you drink more",
       "Alcohol stimulates oxytocin, which squeezes the bladder",

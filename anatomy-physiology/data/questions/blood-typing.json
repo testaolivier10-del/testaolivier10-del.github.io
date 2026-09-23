@@ -387,9 +387,9 @@
     "q": "A type O, Rh-positive mother gives birth to her first baby, who is type A and develops mild jaundice on day one. What is the most likely explanation?",
     "options": [
       "Rh disease in a first-born baby",
-      "Some of her anti-A crossed to the fetus and destroyed a few of its red cells",
-      "The baby's own anti-B destroyed its red cells",
-      "Her anti-D attacked the baby's red cells"
+      "Her anti-A crossed and destroyed some fetal red cells",
+      "The baby's own anti-B destroyed some of its own red cells",
+      "Her anti-D crossed and attacked the baby's red cells"
     ],
     "correct": 1,
     "why": {
