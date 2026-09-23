@@ -10,7 +10,7 @@
       "diff": 1,
       "kind": "causal",
       "cycle": true,
-      "intro": "One enzyme molecule converts thousands of substrate molecules a second. Trace one turn of the cycle, starting as a substrate arrives.",
+      "intro": "A single enzyme molecule can convert many substrate molecules, some enzymes thousands each second. Trace one turn of the cycle, starting as a substrate arrives.",
       "steps": [
         { "id": "collide", "label": "Substrate binds", "text": "A substrate molecule collides with the enzyme and fits into its active site.", "why": "Nothing happens until the substrate is in place. It binds only if its shape and charges match the active site, which is why each enzyme works on so few substrates." },
         { "id": "close", "label": "Enzyme closes around it", "text": "The enzyme changes shape slightly and closes around the bound substrate.", "why": "Binding itself triggers the shape change, so it has to follow binding. An empty active site has nothing to close around." },
@@ -22,8 +22,8 @@
       "missing": {
         "at": 2,
         "distractors": [
-          { "text": "The enzyme adds heat to the substrate until it has enough energy to react.", "why": "Enzymes add no energy. They speed a reaction by lowering the activation energy it needs, not by heating the substrate." },
-          { "text": "The enzyme is used up and becomes part of the product.", "why": "An enzyme comes out of the reaction unchanged; that is why one enzyme can convert thousands of substrate molecules." },
+          { "text": "The enzyme adds heat to the bound substrate, raising its energy until it can get over the activation energy hill.", "why": "Enzymes add no energy. They speed a reaction by lowering the activation energy it needs, not by heating the substrate." },
+          { "text": "The enzyme is used up and becomes part of the product.", "why": "An enzyme comes out of the reaction unchanged; that is why one enzyme molecule can convert substrate after substrate." },
           { "text": "The products bind the active site and change the enzyme permanently.", "why": "The products leave the site because they no longer fit it well. A permanent change to the enzyme would stop it working, not help the reaction." }
         ]
       },
@@ -59,7 +59,7 @@
         "at": 2,
         "level": "apply",
         "distractors": [
-          { "text": "The ribosome removes the introns as it reads the mRNA in the cytoplasm.", "why": "Introns are removed in the nucleus by the spliceosome before the mRNA leaves. Ribosomes never see them." },
+          { "text": "The ribosome removes the introns and joins the exons as it reads the mRNA in the cytoplasm, adding the cap and tail as it goes.", "why": "Introns are removed in the nucleus by the spliceosome, and the cap and tail are added there too, before the mRNA leaves. Ribosomes never see the introns." },
           { "text": "DNA replication makes a second copy of the gene for the ribosome to read.", "why": "DNA replication copies the whole genome before a cell divides; it has no part in making a protein. Ribosomes read mRNA, never DNA." },
           { "text": "tRNAs carry the first RNA copy out through a nuclear pore.", "why": "tRNAs bring amino acids to the ribosome during translation. The mRNA leaves the nucleus on its own, and only after processing." }
         ]
@@ -93,7 +93,7 @@
       "missing": {
         "at": 4,
         "distractors": [
-          { "text": "The folded glycoprotein passes through a nuclear pore into the nucleus for sorting.", "why": "Proteins for export never enter the nucleus. Sorting happens in the Golgi apparatus, reached by vesicle from the ER." },
+          { "text": "The folded glycoprotein passes through a nuclear pore into the nucleus, where it is sorted and labeled for its destination.", "why": "Proteins for export never enter the nucleus. Sorting happens in the Golgi apparatus, reached by vesicle from the ER." },
           { "text": "A lysosome engulfs the glycoprotein and carries it to the Golgi apparatus.", "why": "Lysosomes break material down; they do not transport finished proteins. Transport vesicles carry proteins from the ER to the Golgi." },
           { "text": "The glycoprotein diffuses through the cytosol to the Golgi apparatus.", "why": "A protein made into the ER stays enclosed in membrane all the way out of the cell. It moves in vesicles, never loose in the cytosol." }
         ]
@@ -127,7 +127,7 @@
       "missing": {
         "at": 3,
         "distractors": [
-          { "text": "In G2, the cell replicates its DNA a second time so each daughter gets two copies.", "why": "DNA is replicated once per cycle, in S phase. A second round would give the daughter cells double the normal DNA." },
+          { "text": "In G2, the cell copies all of its DNA a second time, and each daughter cell then receives two complete sets of chromosomes.", "why": "DNA is replicated once per cycle, in S phase. A second round would give the daughter cells double the normal DNA." },
           { "text": "In G2, the chromosomes line up on the metaphase plate.", "why": "Lining up on the metaphase plate happens in metaphase, part of mitosis. In G2 the chromosomes are still loose chromatin." },
           { "text": "In G2, the cell splits in two, and each half then copies its DNA.", "why": "Copying comes before splitting, never after: each daughter must receive a complete copy made in S phase." }
         ]
@@ -135,7 +135,7 @@
       "error": {
         "at": 1,
         "text": "The cell passes the G1 checkpoint automatically after a fixed time, whether or not it receives growth signals.",
-        "why": "Passing the G1 checkpoint needs growth signals and undamaged DNA; they raise cyclin levels and switch on CDKs. That control is what keeps most cells from dividing, and losing it is how cancer begins."
+        "why": "Passing the G1 checkpoint needs growth signals and undamaged DNA; they raise cyclin levels and switch on CDKs. That control is what keeps most cells from dividing, and losing it is one of the steps on the way to cancer."
       },
       "summary": "Grow, check, copy, check again, divide the nucleus, divide the cell. The two checkpoints sit exactly where a mistake would be costly: before the DNA is copied and before it is shared out."
     },
@@ -161,7 +161,7 @@
         "distractors": [
           { "text": "Anaphase: the chromosomes replicate, so each chromatid becomes a new pair.", "why": "The DNA was already replicated in S phase. Nothing is copied during mitosis; the chromatids made in S phase are only separated." },
           { "text": "Anaphase: the nuclear envelope re-forms around the chromosomes on the metaphase plate.", "why": "The envelope re-forms in telophase, around two separated sets. Re-forming it at the metaphase plate would trap both copies in one nucleus." },
-          { "text": "Anaphase: whole chromosomes, each still made of two sister chromatids, move to opposite poles.", "why": "In mitosis the sister chromatids themselves separate, so each pole gets one copy of every chromosome. Moving whole chromosomes would give each daughter cell only some of the chromosomes, each in two copies." }
+          { "text": "Anaphase: whole chromosomes, each still made of two sister chromatids joined together, are pulled intact by the spindle microtubules toward opposite poles.", "why": "In mitosis the sister chromatids themselves separate, so each pole gets one copy of every chromosome. Moving whole chromosomes would give each daughter cell only some of the chromosomes, each in two copies." }
         ]
       },
       "error": {
@@ -192,7 +192,7 @@
         "at": 1,
         "distractors": [
           { "text": "In the mitochondria, the citric acid cycle splits glucose directly into CO2.", "why": "The citric acid cycle cannot use glucose. Glucose must first be split into pyruvate by glycolysis, in the cytosol." },
-          { "text": "In the cytosol, glucose combines with oxygen and releases all its energy as ATP in one step.", "why": "Energy is released in many small steps across several stages. Oxygen is used only at the end of the electron transport chain." },
+          { "text": "In the cytosol, glucose combines with oxygen and releases all its energy as ATP in one step, with no pyruvate or NADH made along the way.", "why": "Energy is released in many small steps across several stages. Oxygen is used only at the end of the electron transport chain." },
           { "text": "In the nucleus, glucose is stored as glycogen until the mitochondria need it.", "why": "Glycogen is stored in the cytosol, not the nucleus, and storing glucose is the opposite of breaking it down for ATP." }
         ]
       },
@@ -224,7 +224,7 @@
         "at": 3,
         "distractors": [
           { "text": "Sodium rushes into the cell through open sodium channels, making the inside negative.", "why": "Sodium is positive, so sodium entering would make the inside less negative, not more. At rest, few channels pass sodium." },
-          { "text": "Negatively charged proteins leave the cell along with the potassium, so the charges stay balanced.", "why": "The proteins are too large to cross the membrane. They stay behind, and that unbalanced negative charge is what makes the inside negative." },
+          { "text": "Negatively charged proteins leave the cell along with the potassium, so the charges on each side of the membrane stay balanced.", "why": "The proteins are too large to cross the membrane. They stay behind, and that unbalanced negative charge is what makes the inside negative." },
           { "text": "The pump moves 3 K+ out for every 2 Na+ in, making the inside negative.", "why": "The pump moves 3 Na+ out and 2 K+ in. Its direct electrical effect is only a few millivolts; most of the resting potential comes from potassium leaking out." }
         ]
       },
@@ -292,7 +292,7 @@
       "missing": {
         "at": 1,
         "distractors": [
-          { "text": "The messenger crosses the plasma membrane and binds a receptor protein in the nucleus.", "why": "That is how lipid-soluble messengers act. A water-soluble messenger cannot cross the lipid bilayer, so it binds a membrane receptor protein." },
+          { "text": "The messenger crosses the plasma membrane and binds a receptor protein in the nucleus, where it switches genes on directly.", "why": "That is how lipid-soluble messengers act. A water-soluble messenger cannot cross the lipid bilayer, so it binds a membrane receptor protein." },
           { "text": "The messenger itself is converted into cAMP inside the cell.", "why": "The messenger stays outside. cAMP is made inside the cell from ATP, by a membrane enzyme that the signal switches on." },
           { "text": "The receptor protein opens a pore that lets ATP flow into the cell.", "why": "ATP is already inside the cell. The receptor protein relays the signal through a G protein to the enzyme that turns ATP into cAMP." }
         ]
@@ -358,7 +358,7 @@
       "missing": {
         "at": 3,
         "distractors": [
-          { "text": "The skin's blood vessels decide on their own to constrict, without any signal from the brain.", "why": "In this loop the decision is made centrally: the control center in the brain compares the input with the set point and sends commands out." },
+          { "text": "The skin's blood vessels decide on their own to constrict, without any signal from the brain or the nerves reaching them.", "why": "In this loop the decision is made centrally: the control center in the brain compares the input with the set point and sends commands out." },
           { "text": "The control center raises the set point to match the colder skin.", "why": "The set point stays near 37 °C. The control center compares the input with it and orders a correction; it does not move the target to fit the change." },
           { "text": "Glands in the skin release sweat to warm it.", "why": "Evaporating sweat carries heat away; it is used when you are too hot. It would make cold worse." }
         ]
@@ -467,7 +467,7 @@
         "at": 3,
         "distractors": [
           { "text": "The sodium channels stay open for 200 ms, holding the voltage at +20 mV.", "why": "Fast sodium channels inactivate within a millisecond or two. The long plateau comes from calcium entering through L-type channels, balanced by potassium leaving." },
-          { "text": "Potassium channels close completely, so the voltage stays high with no current flowing.", "why": "Potassium keeps leaving during the plateau. The voltage holds steady because calcium entry balances that loss, not because currents stop." },
+          { "text": "Potassium channels close completely, so the voltage stays high for about 200 ms with no current crossing the membrane in either direction.", "why": "Potassium keeps leaving during the plateau. The voltage holds steady because calcium entry balances that loss, not because currents stop." },
           { "text": "The cell immediately repolarizes to −90 mV, as a neuron would.", "why": "The immediate return is what a neuron does. A cardiac contractile cell has a plateau of about 200 ms first, which lets calcium in and gives a long refractory period." }
         ]
       },

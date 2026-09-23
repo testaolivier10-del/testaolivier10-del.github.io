@@ -143,24 +143,24 @@
       ],
       "results": [
         { "key": "SV", "label": "Stroke volume", "unit": "mL", "normal": "About 60 to 100 mL per beat in a resting adult.", "bands": [
-          { "when": "SV < 55", "label": "below resting range", "tone": "lo" },
+          { "when": "SV < 60", "label": "below resting range", "tone": "lo" },
           { "when": "SV <= 100", "label": "resting range", "tone": "ok" },
           { "label": "above resting range", "tone": "hi" }
         ] },
         { "key": "EF", "label": "Ejection fraction", "unit": "%", "normal": "About 50 to 70 percent. 40 percent or less is called reduced.", "bands": [
           { "when": "EF <= 40", "label": "reduced", "tone": "lo" },
           { "when": "EF < 50", "label": "mildly reduced", "tone": "lo" },
-          { "when": "EF <= 72", "label": "normal", "tone": "ok" },
+          { "when": "EF <= 70", "label": "normal", "tone": "ok" },
           { "label": "above the usual range", "tone": "hi" }
         ] }
       ],
       "meaning": [
         { "when": "EF <= 40", "text": "An EF of {EF}% means the ventricle ejects less than two-fifths of the blood it holds. A value of 40% or less is the cutoff clinicians use for a ventricle that contracts weakly. The blood left behind raises the ESV, so the next beat starts from a fuller ventricle." },
         { "when": "EF < 50", "text": "An EF of {EF}% is below the normal range but above the 40% cutoff for a clearly weak ventricle; clinicians call this mildly reduced." },
-        { "when": "EF <= 72", "text": "An EF of {EF}% is normal: in each beat the ventricle ejects about {EF}% of what it holds and keeps the rest, {ESV} mL, as the end-systolic volume." },
+        { "when": "EF <= 70", "text": "An EF of {EF}% is normal: in each beat the ventricle ejects about {EF}% of what it holds and keeps the rest, {ESV} mL, as the end-systolic volume." },
         { "when": "1", "text": "An EF of {EF}% is above the usual range. It can happen when the ventricle is strongly stimulated, or when its cavity is small and its wall thick, so little blood is left at the end of systole." },
-        { "when": "SV < 55 && EF >= 50", "also": true, "text": "Notice that EF is normal here but SV is small: the ventricle is ejecting a normal share of a small filled volume. Low filling lowers stroke volume even when the ventricle contracts well." },
-        { "when": "SV >= 55 && EF <= 40", "also": true, "text": "Notice that SV is near normal even though EF is low: a ventricle that has enlarged holds more blood, so a small share of a big EDV can still be a normal-sized stroke volume." }
+        { "when": "SV < 60 && EF >= 50", "also": true, "text": "Notice that EF is normal here but SV is small: the ventricle is ejecting a normal share of a small filled volume. Low filling lowers stroke volume even when the ventricle contracts well." },
+        { "when": "SV >= 60 && EF <= 40", "also": true, "text": "Notice that SV is near normal even though EF is low: a ventricle that has enlarged holds more blood, so a small share of a big EDV can still be a normal-sized stroke volume." }
       ],
       "presets": [
         { "label": "Typical resting adult", "values": { "EDV": 120, "ESV": 50 } },
@@ -435,7 +435,7 @@
       "meaning": [
         { "when": "NFP > 0", "text": "With an NFP of {NFP:+} mm Hg, fluid filters out of the capillary into the interstitial fluid here. Plasma proteins stay behind. In most tissues, fluid filters out like this along almost the whole length of the capillary, and a separate drainage route carries it back to the blood." },
         { "when": "NFP == 0", "text": "The outward and inward forces balance, so there is no net fluid movement at this point." },
-        { "when": "1", "text": "An NFP of {NFP:+} mm Hg predicts reabsorption, fluid moving back into the capillary. In most tissues that inward flow lasts only minutes: as fluid flows in, proteins build up in the thin layer just beneath the glycocalyx, the inward pull weakens, and the flow fades. At steady state most capillaries keep filtering slowly all the way to the venule end (the revised Starling principle). Lasting reabsorption happens only for a while after capillary pressure falls suddenly, as after blood loss, and in a few special beds such as the kidneys and the lining of the intestine." },
+        { "when": "1", "text": "An NFP of {NFP:+} mm Hg predicts reabsorption, fluid moving back into the capillary. In most tissues that inward flow lasts only minutes: as fluid flows in, proteins build up in the thin layer just beneath the glycocalyx, the inward pull weakens, and the flow fades. At steady state most capillaries keep filtering slowly all the way to the venule end (the revised Starling principle). Reabsorption continues only in a few special beds, such as the kidneys and the lining of the intestine. After a sudden fall in capillary pressure, as after blood loss, inward flow lasts only minutes; then the capillaries filter less than before while the drainage route keeps returning fluid, so the plasma keeps gaining fluid for hours." },
         { "when": "BCOP < 20", "also": true, "text": "BCOP is low here. With less plasma protein holding fluid in the blood, filtration speeds up at every point along the capillary; this is one cause of edema." },
         { "when": "CHP > 40", "also": true, "text": "CHP is high here, as when venous pressure rises, for example after standing still for hours. More pressure pushes fluid out, and if filtration outpaces drainage, edema follows." }
       ],
@@ -482,16 +482,16 @@
         { "title": "Check the units", "text": "mm Hg divided by L/min gives mm Hg·min/L. Intensive care monitors often multiply by 80 to report the same value in dyn·s/cm<sup>5</sup>: {TPRd}." }
       ],
       "results": [
-        { "key": "TPR", "label": "Total peripheral resistance", "unit": "mm Hg·min/L", "normal": "Roughly 12 to 20 mm Hg·min/L in a resting adult.", "bands": [
-          { "when": "TPR < 12", "label": "low", "tone": "lo" },
+        { "key": "TPR", "label": "Total peripheral resistance", "unit": "mm Hg·min/L", "normal": "Roughly 10 to 20 mm Hg·min/L in a resting adult, typically near 18.", "bands": [
+          { "when": "TPR < 10", "label": "below resting range", "tone": "lo" },
           { "when": "TPR <= 20", "label": "resting range", "tone": "ok" },
-          { "label": "high", "tone": "hi" }
+          { "label": "above resting range", "tone": "hi" }
         ] }
       ],
       "meaning": [
-        { "when": "TPR < 12", "text": "TPR is low: arterioles across the body are wider than usual, as in exercising muscle. MAP stays up only because cardiac output is high enough to match; if cardiac output did not rise, MAP would fall." },
+        { "when": "TPR < 10", "text": "TPR is below the resting range: arterioles across the body are wider than usual, as in exercising muscle. MAP stays up only because cardiac output is high enough to match; if cardiac output did not rise, MAP would fall." },
         { "when": "TPR <= 20", "text": "TPR is in the resting range. Most of it comes from the arterioles, whose radius is set moment to moment by sympathetic tone and local conditions." },
-        { "when": "1", "text": "TPR is high: arterioles across the body are narrower than usual, for example from strong sympathetic vasoconstriction. The heart must hold a higher arterial pressure to push the same cardiac output through them." }
+        { "when": "1", "text": "TPR is above the resting range: arterioles across the body are narrower than usual, for example from strong sympathetic vasoconstriction. The heart must hold a higher arterial pressure to push the same cardiac output through them." }
       ],
       "note": "Ignoring right atrial pressure slightly overstates TPR. If right atrial pressure were 5 mm Hg, TPR would be ({MAP} − 5) ÷ {CO} = {TPRr} mm Hg·min/L.",
       "presets": [

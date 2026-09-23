@@ -442,7 +442,7 @@
      "diff": 3,
      "q": "The pressure gradient across the vessel doubles, and nothing else changes. How does the curve change?",
      "options": [
-      "Every point doubles: the curve rises twice as steeply and reaches 200% flow at the starting radius",
+      "Every point doubles: twice the flow at each radius",
       "The curve shifts right: you need a wider radius for the same flow",
       "No change: flow depends only on radius",
       "Flow halves at every radius"
@@ -507,7 +507,7 @@
       ]
      },
      "why": {
-      "correct": "Flow equals pressure gradient divided by resistance. Resistance at each radius is unchanged, so doubling the gradient doubles the flow at every radius.",
+      "correct": "Flow equals pressure gradient divided by resistance. Resistance at each radius is unchanged, so doubling the gradient doubles the flow at every radius. The curve rises twice as steeply and reaches 200% flow at the starting radius.",
       "options": [
        "Right: F = ΔP/R, and R is the same at each radius, so every flow doubles.",
        "Shifting the curve right would mean less flow at each radius. A bigger gradient pushes more flow through the same tube.",
@@ -526,7 +526,7 @@
     "energy"
    ],
    "intro": "A typical human enzyme, tested across a range of temperatures. Activity is shown as a percentage of the fastest rate.",
-   "alt": "Enzyme activity as a percentage of maximum plotted against temperature from 0 to 70 degrees Celsius. Activity rises gradually from about 6 percent at 0 degrees to a peak of 100 percent near 39 degrees, then falls steeply to near zero by 60 degrees.",
+   "alt": "Enzyme activity as a percentage of maximum plotted against temperature from 0 to 70 degrees Celsius. Activity rises gradually from about 6 percent at 0 degrees to a peak of 100 percent near 37 degrees, then falls steeply to near zero by 60 degrees.",
    "x": {
     "min": 0,
     "max": 70,
@@ -578,38 +578,38 @@
         ],
         [
          30,
-         60
+         62
         ],
         [
          35,
-         85
+         94
         ],
         [
-         39,
+         37,
          100
         ],
         [
-         42,
+         40,
          91
         ],
         [
-         45,
+         43,
          66
         ],
         [
-         48,
+         46,
          40
         ],
         [
-         51,
+         49,
          20
         ],
         [
-         55,
+         53,
          7
         ],
         [
-         60,
+         58,
          1
         ],
         [
@@ -628,7 +628,7 @@
      "hlines": [],
      "notes": [
       {
-       "x": 39,
+       "x": 37,
        "y": 106,
        "text": "optimum",
        "anchor": "middle"
@@ -640,13 +640,13 @@
     {
      "id": "rising",
      "x0": 0,
-     "x1": 39,
+     "x1": 37,
      "label": "faster collisions"
     },
     {
      "id": "denature",
-     "x0": 42,
-     "x1": 60,
+     "x0": 40,
+     "x1": 58,
      "label": "shape destroyed"
     }
    ],
@@ -657,14 +657,14 @@
      "level": "recall",
      "diff": 1,
      "q": "Read the temperature at which this enzyme is most active.",
-     "answer": 39,
+     "answer": 37,
      "tol": 3,
      "unit": "°C",
      "show": {
-      "x": 39,
+      "x": 37,
       "y": 100
      },
-     "why": "The peak is near 39 °C, close to body temperature. Human enzymes work best near the temperature your body holds them at."
+     "why": "The peak is near 37 °C, close to your body temperature. Human enzymes work best near the temperature your body holds them at."
     },
     {
      "id": "at-20",
@@ -688,9 +688,9 @@
      "diff": 2,
      "q": "In which region does activity fall because the enzyme's shape is being destroyed?",
      "options": [
-      "Above about 42 °C",
+      "Above about 40 °C",
       "Below about 20 °C",
-      "Between 30 and 39 °C"
+      "Between 30 and 37 °C"
      ],
      "correct": 0,
      "highlight": {
@@ -699,7 +699,7 @@
      "why": {
       "correct": "Above the optimum, heat breaks the weak bonds that hold the enzyme in shape. The active site loses its shape: the enzyme is denatured.",
       "options": [
-       "Right: the steep fall above about 42 °C is denaturation.",
+       "Right: the steep fall above about 40 °C is denaturation.",
        "Activity is low in the cold because molecules move slowly, not because the enzyme's shape is lost. Warm it up and it works again.",
        "Activity is rising here as collisions get faster. Nothing is being destroyed yet."
       ]
@@ -712,7 +712,7 @@
      "diff": 3,
      "q": "A sample of the enzyme is held at 60 °C for an hour, then cooled and tested again at every temperature. How does the curve change?",
      "options": [
-      "It flattens near zero at every temperature: the heat damage does not reverse on cooling",
+      "It flattens near zero at every temperature",
       "It is unchanged: once cooled, the enzyme works as before",
       "Its peak moves to 60 °C, because the enzyme has adapted",
       "It rises everywhere, because heating activates the enzyme"
@@ -735,7 +735,7 @@
           1.5
          ],
          [
-          39,
+          37,
           4
          ],
          [
@@ -761,7 +761,7 @@
       ]
      },
      "why": {
-      "correct": "Heat denaturation is usually permanent: the unfolded chains tangle and stick together and cannot refold. Cooling slows a healthy enzyme; it does not repair a denatured one.",
+      "correct": "Heat denaturation is usually permanent: the unfolded chains tangle and stick together and cannot refold, so the damage does not reverse on cooling. Cooling slows a healthy enzyme; it does not repair a denatured one.",
       "options": [
        "Right: the enzyme's shape is lost for good, so it stays inactive at every temperature.",
        "Cooling does not restore a denatured shape. Only the slowing caused by cold is reversible.",
@@ -1255,7 +1255,7 @@
      "diff": 3,
      "q": "At 30 minutes, an infection makes the control center raise the set point to 38.5 °C. How does the graph change after that?",
      "options": [
-      "The temperature climbs, then swings around 38.5 °C, held there by the same negative feedback",
+      "The temperature climbs, then swings around 38.5 °C",
       "The loop stops working, so the temperature drifts without control",
       "The temperature keeps rising without limit: positive feedback",
       "The temperature stays at 37 °C, because the loop resists any change"
@@ -1328,7 +1328,7 @@
       ]
      },
      "why": {
-      "correct": "The loop still works; only its target has moved. Now 37 °C reads as too cold, so the body conserves and makes heat until the temperature reaches the new set point, then holds it there.",
+      "correct": "The loop still works; only its target has moved. Now 37 °C reads as too cold, so the body conserves and makes heat until the temperature reaches the new set point. The same negative feedback then holds it there, swinging around 38.5 °C.",
       "options": [
        "Right: the same negative feedback now defends 38.5 °C.",
        "The loop keeps regulating, just around the new target: the temperature settles instead of drifting.",
@@ -1492,7 +1492,7 @@
      "diff": 3,
      "q": "From 4 minutes, blood potassium rises (hyperkalemia), so the potassium concentration outside the cell rises. How does the graph change?",
      "options": [
-      "Potassium's equilibrium potential becomes less negative, and the resting potential depolarizes with it",
+      "The potassium and resting lines rise toward zero",
       "The resting potential hyperpolarizes, moving further from zero",
       "Only sodium's equilibrium potential changes",
       "Nothing changes: the pump restores the gradient at once"
@@ -1906,7 +1906,7 @@
      "diff": 2,
      "q": "The second stimulus is made twice as strong. How does the action potential change?",
      "options": [
-      "It reaches threshold a little sooner but peaks at the same voltage: action potentials are all-or-none",
+      "It reaches threshold sooner, with the same peak",
       "It peaks twice as high, near +60 mV",
       "It lasts twice as long",
       "It is smaller, because the channels are overloaded"
@@ -2015,7 +2015,7 @@
       ]
      },
      "why": {
-      "correct": "A stronger stimulus makes a bigger graded potential, so threshold is reached sooner, but once the sodium channels open the action potential runs its fixed course. Nerve cells signal a stronger stimulus by firing more action potentials each second, not bigger ones.",
+      "correct": "A stronger stimulus makes a bigger graded potential, so threshold is reached a little sooner. But action potentials are all-or-none: once the sodium channels open, the action potential runs its fixed course and peaks at the same voltage. Nerve cells signal a stronger stimulus by firing more action potentials each second, not bigger ones.",
       "options": [
        "Right: same size, a little earlier.",
        "The peak is set by the sodium gradient and the channels, not by the stimulus. It stays near +30 mV.",
@@ -2304,7 +2304,7 @@
      "diff": 3,
      "q": "A drug partly blocks L-type calcium channels. How does the action potential change, and what happens to contraction?",
      "options": [
-      "The plateau is shorter and lower, less calcium enters, and contraction weakens",
+      "The plateau shortens and contraction weakens",
       "The upstroke disappears, so the cell cannot fire",
       "The plateau lengthens and contraction strengthens",
       "Nothing changes, because the action potential does not depend on calcium"
@@ -2697,7 +2697,7 @@
      "diff": 2,
      "q": "Sympathetic nerves release norepinephrine onto the SA node. How does the graph change?",
      "options": [
-      "The pacemaker potential rises more steeply, threshold comes sooner, and beats come closer together",
+      "The drift steepens and beats come closer together",
       "The pacemaker potential flattens, so beats come further apart",
       "The peaks get taller, but the timing stays the same",
       "The threshold moves up to 0 mV"
@@ -2910,7 +2910,7 @@
       ]
      },
      "why": {
-      "correct": "Norepinephrine opens more of the channels behind the drift, so positive ions leak in faster and threshold arrives sooner. Here each beat takes 0.55 s: about 109 beats per minute.",
+      "correct": "Norepinephrine opens more of the channels behind the drift, so positive ions leak in faster, the pacemaker potential rises more steeply and threshold arrives sooner. Here each beat takes 0.55 s: about 109 beats per minute.",
       "options": [
        "Right: steeper drift, shorter time to threshold, faster heart rate.",
        "A flatter drift is what acetylcholine from the vagus nerves does.",
@@ -2926,7 +2926,7 @@
      "diff": 2,
      "q": "The vagus nerves release acetylcholine onto the SA node. How does the graph change?",
      "options": [
-      "The cell starts from a more negative voltage and drifts up more slowly, so beats come further apart",
+      "The drift flattens and beats come further apart",
       "The drift gets steeper, so beats come closer together",
       "The cells stop firing completely",
       "The peaks get taller"
@@ -3047,7 +3047,7 @@
       ]
      },
      "why": {
-      "correct": "Acetylcholine opens extra potassium channels, which pull the voltage lower, and slows the inward leak, which flattens the drift. Threshold comes later: here one beat each 1.1 s, about 55 per minute.",
+      "correct": "Acetylcholine opens extra potassium channels, which pull the starting voltage lower, and slows the inward leak, which flattens the drift. Threshold comes later: here one beat each 1.1 s, about 55 per minute.",
       "options": [
        "Right: lower start, flatter drift, slower heart rate.",
        "A steeper drift is the sympathetic effect.",
@@ -3399,7 +3399,7 @@
      "diff": 2,
      "q": "The atria repolarize too, but no wave for it appears. Where is it?",
      "options": [
-      "Hidden inside the QRS complex, which happens at the same time",
+      "Inside the QRS complex",
       "It is the T wave",
       "The atria never repolarize",
       "It is the P wave"
@@ -3425,7 +3425,7 @@
      "diff": 3,
      "q": "Conduction through the AV node slows (first-degree heart block). How does the trace change?",
      "options": [
-      "The PR interval lengthens; every P wave is still followed by a QRS complex",
+      "The PR interval lengthens",
       "The QRS complex widens",
       "The P waves disappear",
       "The T waves turn upside down"
@@ -3606,7 +3606,7 @@
       ]
      },
      "why": {
-      "correct": "The PR interval is mostly AV nodal delay, so slower AV conduction lengthens it, here to 0.28 s. Once through the node the impulse spreads normally, so the QRS complex keeps its shape and every beat still conducts.",
+      "correct": "The PR interval is mostly AV nodal delay, so slower AV conduction lengthens it, here to 0.28 s. Once through the node the impulse spreads normally, so the QRS complex keeps its shape and every P wave is still followed by a QRS complex.",
       "options": [
        "Right: a longer PR interval is the only change.",
        "A wide QRS means slow spread through the ventricles, below the AV node.",
@@ -4330,7 +4330,7 @@
      "diff": 2,
      "q": "What makes the second heart sound, at about 0.52 s?",
      "options": [
-      "The aortic and pulmonary valves snapping shut as ventricular pressure falls below arterial pressure",
+      "The aortic and pulmonary valves closing",
       "The ventricular muscle contracting",
       "The mitral and tricuspid valves closing",
       "Blood rushing into the relaxed ventricles"
@@ -4356,7 +4356,7 @@
      "diff": 2,
      "q": "At about 0.60 s, left ventricular pressure falls below left atrial pressure. What happens?",
      "options": [
-      "The mitral valve opens and the ventricle starts to fill",
+      "The mitral valve opens",
       "The aortic valve closes",
       "The mitral valve closes",
       "The aortic valve opens"
@@ -4382,7 +4382,7 @@
      "diff": 3,
      "q": "Heart rate rises to 150 beats per minute, so each cycle lasts 0.4 s instead of 0.8 s. How does the volume curve change, and which part of the cycle is cut most?",
      "options": [
-      "Diastole shrinks most: the flat filling period almost disappears, and end-diastolic volume falls a little",
+      "Diastole shrinks most, and end-diastolic volume falls a little",
       "Ejection shrinks most, while the time for filling stays the same",
       "Every phase shrinks by exactly half",
       "Nothing changes except that the ECG waves come closer together"
@@ -4508,7 +4508,7 @@
       ]
      },
      "why": {
-      "correct": "Systole shortens only a little as the rate rises; most of the time saved comes out of diastole. The slow late-filling period goes first, which costs little, but at very high rates the time for filling becomes too short and stroke volume falls.",
+      "correct": "Systole shortens only a little as the rate rises; most of the time saved comes out of diastole. The flat, slow late-filling period almost disappears first, which costs little, so end-diastolic volume falls only a little. At very high rates the time for filling becomes too short and stroke volume falls.",
       "options": [
        "Right: diastole takes the cut.",
        "Ejection shortens somewhat, but much less than diastole.",
@@ -4896,7 +4896,7 @@
      ],
      "q": "Aortic pressure is higher, so afterload rises, while preload and contractility stay the same. How does the loop change?",
      "options": [
-      "It gets taller and narrower: the aortic valve opens later, at a higher pressure, and less blood is ejected",
+      "It gets taller and narrower",
       "It widens: stroke volume rises",
       "It moves left as a whole, keeping its width",
       "It does not change"
@@ -4997,7 +4997,7 @@
       ]
      },
      "why": {
-      "correct": "The ventricle must build more pressure before the aortic valve opens, and with the same contractility it cannot squeeze as far, so ejection stops at a larger end-systolic volume. Here stroke volume falls from 70 to about 56 mL.",
+      "correct": "The ventricle must build more pressure before the aortic valve opens, so the valve opens later, at a higher pressure. With the same contractility it cannot squeeze as far, so ejection stops at a larger end-systolic volume. Here stroke volume falls from 70 to about 56 mL.",
       "options": [
        "Right: taller and narrower.",
        "More resistance to ejection means less blood ejected, not more.",
@@ -5274,7 +5274,7 @@
      "diff": 3,
      "q": "A heart attack scars part of the left ventricle, and its contractility falls. How does the curve shift?",
      "options": [
-      "Down and flatter: less stroke volume at every end-diastolic volume, and extra filling helps less",
+      "It shifts down and flattens",
       "Up, because the remaining muscle is stretched more",
       "No change: the curve depends only on filling",
       "Left, so the same stroke volume needs less filling"
@@ -5339,7 +5339,7 @@
       ]
      },
      "why": {
-      "correct": "Scar tissue does not contract, so the ventricle generates less force at every stretch. To eject even a modest stroke volume it must fill to a much larger volume, which raises the pressure in the atrium and in the veins behind it.",
+      "correct": "Scar tissue does not contract, so the ventricle generates less force at every stretch: less stroke volume at every end-diastolic volume, and extra filling helps less. To eject even a modest stroke volume it must fill to a much larger volume, which raises the pressure in the atrium and in the veins behind it.",
       "options": [
        "Right: a lower, flatter curve.",
        "Stretch cannot make up for lost muscle; the whole curve drops.",
@@ -5686,7 +5686,7 @@
      "diff": 3,
      "q": "The arterioles supplying one organ dilate. How does the pressure profile through that organ change?",
      "options": [
-      "Less pressure is lost across the arterioles, so pressure in the capillaries downstream rises",
+      "Less pressure is lost across them, so capillary pressure rises",
       "More pressure is lost across the arterioles, so capillary pressure falls",
       "Aortic pressure doubles",
       "Nothing changes: arteriole size does not affect pressure"
@@ -5782,7 +5782,7 @@
     "gradients"
    ],
    "intro": "The same volume of blood, about 83 mL each second at rest, passes through every level of the circuit. The top panel shows the total cross-sectional area of all the vessels at each level; the bottom shows how fast the blood moves there.",
-   "alt": "Two panels over the vessel types from aorta to venae cavae. Top: total cross-sectional area, tiny in the aorta (4 square centimeters), rising to a peak of about 2,500 in the capillaries and falling back to about 8 in the venae cavae. Bottom: mean velocity, highest in the aorta at about 21 centimeters per second, near zero in the capillaries, and rising to about 10 in the venae cavae: the mirror image of the area.",
+   "alt": "Two panels over the vessel types from aorta to venae cavae. Top: total cross-sectional area, tiny in the aorta (3 square centimeters), rising to a peak of about 3,000 in the capillaries and falling back to about 8 in the venae cavae. Bottom: mean velocity, highest in the aorta at about 28 centimeters per second, near zero in the capillaries, and rising to about 10 in the venae cavae: the mirror image of the area.",
    "x": {
     "min": 0,
     "max": 6,
@@ -5802,7 +5802,7 @@
      "h": 1,
      "y": {
       "min": 0,
-      "max": 3000,
+      "max": 3500,
       "label": "Total area",
       "unit": "cm²",
       "ticks": [
@@ -5820,7 +5820,7 @@
        "pts": [
         [
          0,
-         4
+         3
         ],
         [
          1,
@@ -5832,7 +5832,7 @@
         ],
         [
          3,
-         2500
+         3000
         ],
         [
          4,
@@ -5850,7 +5850,7 @@
        "label": "total cross-sectional area",
        "labelAt": [
         3.15,
-        2650
+        3150
        ],
        "anchor": "start"
       }
@@ -5860,15 +5860,14 @@
      "h": 1,
      "y": {
       "min": 0,
-      "max": 45,
+      "max": 60,
       "label": "Mean velocity",
       "unit": "cm/s",
       "ticks": [
        0,
-       10,
        20,
-       30,
-       40
+       40,
+       60
       ]
      },
      "series": [
@@ -5879,11 +5878,11 @@
        "pts": [
         [
          0,
-         21
+         27.7
         ],
         [
          1,
-         4.2
+         4.15
         ],
         [
          2,
@@ -5891,7 +5890,7 @@
         ],
         [
          3,
-         0.033
+         0.028
         ],
         [
          4,
@@ -5899,7 +5898,7 @@
         ],
         [
          5,
-         1.0
+         1.04
         ],
         [
          6,
@@ -5909,7 +5908,7 @@
        "label": "velocity",
        "labelAt": [
         0.15,
-        24
+        31
        ],
        "anchor": "start"
       }
@@ -5937,14 +5936,14 @@
      "level": "apply",
      "diff": 1,
      "q": "Read the total cross-sectional area of all the capillaries.",
-     "answer": 2500,
+     "answer": 3000,
      "tol": 300,
      "unit": "cm²",
      "show": {
       "x": 3,
-      "y": 2500
+      "y": 3000
      },
-     "why": "About 2,500 cm², over 600 times the aorta's 4 cm². Each capillary is tiny, but there are billions of them side by side."
+     "why": "About 3,000 cm², about 1,000 times the aorta's 3 cm². Each capillary is tiny, but there are billions of them side by side."
     },
     {
      "id": "aorta-velocity",
@@ -5952,15 +5951,15 @@
      "level": "apply",
      "diff": 2,
      "q": "Read the mean velocity of blood in the aorta.",
-     "answer": 21,
+     "answer": 28,
      "tol": 3,
      "unit": "cm/s",
      "show": {
       "x": 0,
-      "y": 21,
+      "y": 27.7,
       "panel": 1
      },
-     "why": "About 21 cm/s. Velocity = flow ÷ area = 83 cm³/s ÷ 4 cm² ≈ 21 cm/s. (With each beat it surges much higher, then slows.)"
+     "why": "About 28 cm/s. Velocity = flow ÷ area = 83 cm³/s ÷ 3 cm² ≈ 28 cm/s. (With each beat it surges much higher, then slows.)"
     },
     {
      "id": "slowest",
@@ -5979,7 +5978,7 @@
       "region": "caps"
      },
      "why": {
-      "correct": "Velocity equals flow divided by total area. The capillaries have the largest total area, so blood crawls through them, at about 0.03 cm/s. That slow passage gives time for exchange.",
+      "correct": "Velocity equals flow divided by total area. The capillaries have the largest total area, so blood crawls through them, at about 0.03 cm/s (0.3 mm/s). That slow passage gives time for exchange.",
       "options": [
        "Right: the biggest total area gives the slowest velocity.",
        "The aorta has the smallest area, so blood moves fastest there.",
@@ -6012,11 +6011,11 @@
         "pts": [
          [
           0,
-          42
+          55.3
          ],
          [
           1,
-          8.4
+          8.3
          ],
          [
           2,
@@ -6024,15 +6023,15 @@
          ],
          [
           3,
-          0.066
+          0.055
          ],
          [
           4,
-          0.2
+          0.21
          ],
          [
           5,
-          2.0
+          2.08
          ],
          [
           6,
@@ -6042,7 +6041,7 @@
         "label": "twice the flow",
         "labelAt": [
          0.15,
-         43
+         57
         ],
         "anchor": "start"
        }
@@ -6255,7 +6254,7 @@
      "diff": 2,
      "q": "Liver disease lowers plasma albumin, and plasma oncotic pressure falls to about 15 mm Hg. How do the lines shift, and what happens to filtration?",
      "options": [
-      "The inward pull drops, the gap below hydrostatic pressure widens, and filtration rises: fluid can collect as edema",
+      "The inward pull drops and filtration rises",
       "Hydrostatic pressure falls to match, so nothing changes",
       "The inward pull rises, so fluid is reabsorbed",
       "No change, because albumin never crosses the wall anyway"
@@ -6287,7 +6286,7 @@
       ]
      },
      "why": {
-      "correct": "Albumin supplies most of plasma's oncotic pressure. With less of it, the pull holding fluid in falls all along the capillary, net filtration rises, and when it outpaces the drainage route, fluid collects between the cells.",
+      "correct": "Albumin supplies most of plasma's oncotic pressure. With less of it, the pull holding fluid in falls all along the capillary, and the gap below hydrostatic pressure widens. Net filtration rises, and when it outpaces the drainage route, fluid collects between the cells as edema.",
       "options": [
        "Right: a lower oncotic line means more filtration.",
        "Hydrostatic pressure comes from the heart and arterioles, not from albumin, so it does not follow.",
@@ -6303,7 +6302,7 @@
      "diff": 3,
      "q": "After sudden blood loss, the arterioles constrict and capillary hydrostatic pressure drops to 20 mm Hg at the arteriole end. What happens to fluid at first?",
      "options": [
-      "For a while, fluid moves from the tissues into the blood, then the inflow fades",
+      "Fluid briefly moves into the blood",
       "Filtration speeds up",
       "Fluid is reabsorbed steadily for days",
       "Nothing changes"
@@ -6335,9 +6334,9 @@
       ]
      },
      "why": {
-      "correct": "Hydrostatic pressure now lies below the effective inward pull along the whole capillary, so fluid moves into the blood and helps refill it. Within minutes to hours, protein builds up beneath the glycocalyx and the inflow fades. This is one of the reasons blood volume partly recovers after bleeding.",
+      "correct": "Hydrostatic pressure now lies below the effective inward pull along the whole capillary, so fluid moves into the blood. Within minutes, protein builds up beneath the glycocalyx and the inflow stops. After that, the capillaries keep filtering less than before while the separate drainage route keeps returning fluid at its old rate, so the plasma keeps gaining fluid for hours.",
       "options": [
-       "Right: a real but temporary reabsorption.",
+       "Right: a real inflow, but it stops within minutes.",
        "Lower hydrostatic pressure means less push outward, not more.",
        "Reabsorption shuts itself off as protein collects beneath the glycocalyx.",
        "The pressure balance has reversed, so fluid does move."

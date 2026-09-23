@@ -46,9 +46,9 @@
    ],
    "level": "apply",
    "compare": "Imaging methods",
-   "front": "A patient needs soft tissue of the brain shown in any plane, with no ionizing radiation. CT or MRI?",
+   "front": "A patient needs fine soft-tissue detail of the brain with no ionizing radiation. CT or MRI?",
    "back": "MRI.",
-   "why": "MRI builds its images from a magnet and radio waves, so it uses no X-rays, and it can reconstruct sections in any plane with strong soft-tissue contrast. CT uses X-rays and is best for bone, bleeding and speed."
+   "why": "MRI builds its images from a magnet and radio waves, so it uses no X-rays, and it shows soft tissue in fine detail. CT uses X-rays and is best for bone, bleeding and speed."
   },
   {
    "id": "dir-proximal-distal",
@@ -356,7 +356,7 @@
    "compare": "Diffusion vs osmosis vs bulk flow",
    "front": "Diffusion vs osmosis vs bulk flow: what moves, and what drives it?",
    "back": "Diffusion: solute moves down its own concentration gradient. Osmosis: water moves across a selectively permeable membrane toward the side with more solute. Bulk flow: whole fluid moves down a pressure gradient.",
-   "why": "Diffusion and osmosis come from random molecular motion; bulk flow needs a pressure difference, such as the one the heart creates."
+   "why": "Diffusion comes from random molecular motion. In osmosis, solute the membrane holds back lowers the water pressure in the membrane's pores on its side, so water streams through toward it. Bulk flow moves a whole fluid down a pressure gradient, such as the one the heart creates."
   },
   {
    "id": "osmosis-direction",
@@ -368,7 +368,7 @@
    "compare": "Diffusion vs osmosis vs bulk flow",
    "front": "Solute that cannot cross a membrane is added to one side. Which way does water move?",
    "back": "Toward the side with the added solute.",
-   "why": "That side now has a lower water concentration, so there is net movement of water into it."
+   "why": "The solute that cannot cross lowers the water pressure inside the membrane's pores on that side, so water streams through toward it: water follows solute."
   },
   {
    "id": "volt-current",
@@ -391,7 +391,7 @@
    "level": "recall",
    "compare": "Extracellular vs intracellular fluid",
    "front": "Which ion is high outside cells and which is high inside?",
-   "back": "Sodium is high outside (about 145 mmol/L); potassium is high inside (about 140 mmol/L).",
+   "back": "Sodium is high outside (about 140 mmol/L); potassium is high inside (about 140 mmol/L).",
    "why": "A membrane pump that spends ATP keeps moving sodium out and potassium in, which maintains these opposite gradients."
   },
   {
@@ -789,7 +789,7 @@
    "compare": "Hyaline vs fibrocartilage vs elastic cartilage",
    "front": "Which cartilage is in intervertebral discs, and why that kind?",
    "back": "Fibrocartilage: its thick collagen bundles resist both compression and pulling.",
-   "why": "Discs are squeezed and pulled as the spine bends, so they need the strongest cartilage."
+   "why": "Discs are squeezed and pulled as the spine bends, and the thick collagen bundles of fibrocartilage resist both."
   },
   {
    "id": "cartilage-elastic",
@@ -837,7 +837,7 @@
    "compare": "Skeletal vs cardiac vs smooth muscle",
    "front": "What joins cardiac muscle cells, and what does each part do?",
    "back": "Intercalated discs: desmosomes hold the cells together; gap junctions pass the electrical signal from cell to cell.",
-   "why": "The heart squeezes hard and must contract as a unit, so it needs both strong mechanical links and electrical links."
+   "why": "Desmosomes keep the cells from pulling apart as they squeeze, and gap junctions let the electrical change pass straight into the next cell, so the cells contract as a unit."
   },
   {
    "id": "muscle-repair",
@@ -861,7 +861,7 @@
    "level": "recall",
    "front": "Neurons vs neuroglia: what does each do?",
    "back": "Neurons carry electrical signals. Neuroglia support, protect and nourish neurons, and some wrap axons in insulating layers.",
-   "why": "Neurons are the signaling cells; glial cells, which greatly outnumber them, keep the environment around them right."
+   "why": "Neurons are the signaling cells; glial cells, about as numerous as neurons overall, keep the environment around them right."
   },
   {
    "id": "rmp-value",
@@ -925,7 +925,7 @@
    "compare": "Graded potential vs action potential",
    "front": "Why can two action potentials not add together the way graded potentials can?",
    "back": "The refractory period: inactivated sodium channels cannot reopen until the membrane repolarizes.",
-   "why": "During the refractory period a second stimulus cannot trigger a new action potential, so each one stays separate."
+   "why": "While the sodium channels are inactivated, no stimulus can trigger a new action potential, so each one stays separate."
   },
   {
    "id": "messenger-solubility",
@@ -1052,7 +1052,7 @@
    "compare": "Negative vs positive feedback",
    "front": "Give two examples of positive feedback in the body.",
    "back": "Childbirth contractions and blood clotting.",
-   "why": "Both are events that must finish quickly: each step triggers more of itself until the baby is delivered or the clot is formed."
+   "why": "In both, each step triggers more of itself, so the process speeds up until an end point breaks the loop: delivery of the baby or a finished clot."
   },
   {
    "id": "loop-parts",
@@ -1318,8 +1318,8 @@
     "communication"
    ],
    "level": "apply",
-   "front": "Why does the AV node delay the signal by about 0.1 second?",
-   "back": "To let the atria finish contracting and top up the ventricles before the ventricles contract.",
+   "front": "What does the AV nodal delay of about 0.1 second do?",
+   "back": "It holds the signal back, so the atria finish contracting and top up the ventricles before the ventricles are excited.",
    "why": "AV nodal cells are small, have few gap junctions and a slow calcium-driven upstroke, so conduction through them is slow."
   },
   {
@@ -1329,8 +1329,8 @@
     "communication"
    ],
    "level": "recall",
-   "front": "Intrinsic firing rates: SA node, AV node, Purkinje fibers?",
-   "back": "SA node about 60 to 100 per minute (faster without nerve input); AV node about 40 to 60; Purkinje fibers about 20 to 40.",
+   "front": "Intrinsic firing rates: SA node, AV node and AV bundle, bundle branches and Purkinje fibers?",
+   "back": "SA node about 100 per minute with no nerve input (60 to 100 at rest); AV node and AV bundle about 40 to 60; bundle branches and Purkinje fibers about 20 to 40.",
    "why": "The fastest pacemaker resets the others each beat, so a slower backup takes over only if the faster one fails."
   },
   {
@@ -1375,7 +1375,7 @@
    "level": "recall",
    "front": "What causes the first (S1) and second (S2) heart sounds?",
    "back": "S1: the AV valves closing as the ventricles start to contract. S2: the semilunar valves closing as the ventricles relax.",
-   "why": "The sound comes from blood vibrating as it is stopped by the closing valve, not from the muscle itself."
+   "why": "The sound is not the thin cusps slapping together. The closing valve suddenly stops the moving blood, which sets the blood, the cusps and the chamber walls vibrating."
   },
   {
    "id": "isovolumetric",
@@ -1615,7 +1615,7 @@
    "compare": "Baroreceptor reflex vs atrial reflex",
    "front": "Baroreceptor reflex vs atrial reflex: what does more stretch do to heart rate?",
    "back": "Baroreceptor reflex (arterial stretch): heart rate falls. Atrial reflex (atrial stretch from filling): heart rate rises.",
-   "why": "The first holds arterial pressure at its set point; the second pumps on extra returning blood so it does not back up."
+   "why": "The first opposes changes in arterial pressure. In the second, stretch of the atrial wall speeds the SA node, so the heart pumps on more of the returning blood. In people this reflex is modest and often masked by the baroreceptor reflex."
   },
   {
    "id": "baro-drop",

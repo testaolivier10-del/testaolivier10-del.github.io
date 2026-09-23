@@ -70,8 +70,8 @@
       "setup": "Two compartments of equal volume are separated by a membrane that lets water through but not glucose. Both start as pure water. You dissolve glucose in side A.",
       "start": "Glucose dissolved in side A",
       "steps": {
-        "wa": "Water less concentrated on side A",
-        "os": "Water diffuses from B into A (osmosis)",
+        "wa": "Membrane holds glucose back on side A",
+        "os": "Water streams from B into A (osmosis)",
         "va": "Volume of A rises",
         "vb": "Volume of B falls",
         "mb": "Membrane holds the glucose back",
@@ -88,7 +88,7 @@
             "wa",
             "os"
           ],
-          "why": "Glucose takes up room among the water molecules on side A, so water is less concentrated there. Water diffuses down its own gradient from B into A. That net movement of water is osmosis."
+          "why": "The membrane holds the glucose back on side A. That held-back solute lowers the water pressure in the membrane's pores on side A, so water streams through them from B into A. That net movement of water is osmosis: water follows solute."
         },
         {
           "id": "volume-a",
@@ -231,7 +231,7 @@
       "setup": "A red blood cell is moved from plasma into a salt solution much more concentrated than the fluid inside the cell. Water crosses the membrane freely; the salt, in effect, does not.",
       "start": "Cell placed in a hypertonic solution",
       "steps": {
-        "wi": "Water more concentrated inside the cell",
+        "wi": "More held-back solute outside the cell",
         "out": "Water leaves the cell by osmosis",
         "sh": "Cell shrinks (crenation)",
         "same": "Same solutes, less water",
@@ -247,7 +247,7 @@
             "wi",
             "out"
           ],
-          "why": "The solution outside has more solute, so water is less concentrated outside than inside. Water diffuses out of the cell down its own gradient."
+          "why": "The solution outside holds more solute that cannot cross. Water follows solute, so it flows out of the cell through the membrane and its water channels, toward the more concentrated side. That is osmosis."
         },
         {
           "id": "volume",
@@ -959,7 +959,7 @@
         "time": "Threshold reached later each cycle",
         "hr": "Heart rate falls",
         "sel": "Contractile cells are not affected",
-        "con": "Force of each contraction unchanged"
+        "con": "Force at the same filling unchanged"
       },
       "variables": [
         {
@@ -994,13 +994,13 @@
         },
         {
           "id": "force",
-          "name": "Force of each ventricular contraction",
+          "name": "Force of each ventricular contraction, at the same filling",
           "answer": "none",
           "chain": [
             "sel",
             "con"
           ],
-          "why": "The drug acts on the pacemaker current, which contractile cells do not use to contract. The ventricles beat less often, but each contraction is as forceful as before."
+          "why": "The drug acts only on the pacemaker current, which contractile cells do not use to contract. At the same filling, each contraction is as forceful as before. (With more time between beats, the ventricles fill a little more, and a later topic shows how extra filling changes the force.)"
         }
       ]
     },
@@ -2140,7 +2140,7 @@
             "co",
             "map"
           ],
-          "why": "MAP = CO × TPR. Cardiac output rises about four-fold while TPR falls to about a third, so their product, and MAP, rises by only about 20 percent."
+          "why": "MAP = CO × TPR. Cardiac output rises about four-fold while TPR falls to about 30 percent of its resting value, so their product, and MAP, rises by only about 20 percent (4 × 0.3 = 1.2)."
         },
         {
           "id": "pulse-pressure",
@@ -2598,7 +2598,7 @@
             "map": "MAP rises back toward normal",
             "cap": "Less pressure reaches the capillaries",
             "chp": "Capillary hydrostatic pressure falls",
-            "in": "Interstitial fluid moves into the plasma",
+            "in": "Brief inflow, then less filtration while drainage continues",
             "pv": "Plasma volume rises",
             "dil": "Remaining red cells are diluted",
             "hct": "Hematocrit falls",
@@ -2664,7 +2664,7 @@
                 "in",
                 "pv"
               ],
-              "why": "With capillary pressure below the inward oncotic pull, interstitial fluid is drawn into the plasma for a while. Over hours, ADH and aldosterone help by keeping water and sodium in the body."
+              "why": "Capillary pressure drops below the inward oncotic pull, so for a few minutes fluid moves from the tissues into the plasma. After that, the capillaries keep filtering less than before while the separate drainage route keeps returning fluid at its old rate, so the plasma keeps gaining fluid for hours. ADH and aldosterone add to it by keeping water and sodium in the body."
             },
             {
               "id": "hematocrit",
@@ -3035,7 +3035,7 @@
             "osmo",
             "adh"
           ],
-          "why": "Osmoreceptors in the hypothalamus shrink as plasma osmolarity rises and signal the posterior pituitary to release more ADH. Low volume adds to the signal."
+          "why": "Osmoreceptors in the hypothalamus shrink as plasma osmolarity rises and excite the ADH-making neurons of the hypothalamus, whose endings in the posterior pituitary release more ADH. Low volume adds to the signal."
         },
         {
           "id": "thirst",

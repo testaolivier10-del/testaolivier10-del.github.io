@@ -98,7 +98,7 @@
         "q": "An 85-year-old’s skin vessels constrict weakly and their muscles shiver weakly: the effectors are weakened. What happens during a long cold day outdoors?",
         "options": [
           {
-            "text": "Body temperature drifts below normal, because the fall is detected but the response is too weak to oppose it",
+            "text": "Body temperature drifts below normal as the weak response falls behind",
             "why": "Right. The sensors, pathways and control center all work, but the loop can only correct as much as its effectors can deliver. This is why older adults are more at risk when they get very cold."
           },
           {
@@ -183,7 +183,7 @@
         "q": "On a very humid day, sweat drips off instead of evaporating, so the sweat removes little heat. What happens to body temperature during a long run?",
         "options": [
           {
-            "text": "It keeps rising, because the loop is running but its main way of losing heat is not working",
+            "text": "It keeps rising as heat is made faster than it is lost",
             "why": "Right. The loop detects the rise and commands the skin glands to release sweat, but sweat cools only when it evaporates. If heat is made faster than it is lost, temperature climbs, which is how exertional heat illness develops."
           },
           {
@@ -269,7 +269,7 @@
         "q": "Suppose the pancreas gland cells still detect the rise in glucose but can no longer make the hormone that lowers it. What happens after meals?",
         "options": [
           {
-            "text": "The glucose level rises and stays high, because the command to take up glucose never reaches the cells",
+            "text": "The glucose level rises and stays high, because the command never reaches the cells",
             "why": "Right. The rise is detected, but with no hormone the efferent pathway is broken, so the effectors never get the signal."
           },
           {
@@ -441,8 +441,8 @@
         "q": "Suppose the pituitary gland could not release the hormone during labor. What would happen to this loop?",
         "options": [
           {
-            "text": "Contractions would not build up through this loop, so labor would progress slowly",
-            "why": "Right. The stretch is still sensed and signaled, but the command that strengthens the contractions never reaches the uterus. Hospitals can give the hormone as a drug to stand in for the missing pathway."
+            "text": "This loop could no longer drive the contractions harder",
+            "why": "Right. The stretch is still sensed and signaled, but the command that strengthens the contractions through this loop never reaches the uterus. Labor may still go on: other signals made in the uterus itself also drive contractions, and women who release little of this hormone have had normal labors. Hospitals can give the hormone as a drug when contractions are weak."
           },
           {
             "text": "Contractions would stop at once, because the sensor fails too",
@@ -450,11 +450,11 @@
           },
           {
             "text": "Contractions would grow stronger faster, because nothing limits the loop",
-            "why": "The hormone is what strengthens the contractions. Without it, they cannot build up this way."
+            "why": "The hormone is what strengthens the contractions in this loop. Without it, they cannot build up this way."
           },
           {
-            "text": "Nothing would change, because the uterus senses its own stretch and contracts harder",
-            "why": "In this loop the stronger contractions depend on the hormone. Remove it, and the loop cannot drive them."
+            "text": "The loop would run as before, with the uterus as its own control center",
+            "why": "The uterus does not take over as the control center. In this loop the command to contract harder travels as the hormone, so without it the loop cannot drive the contractions."
           }
         ],
         "correct": 0
@@ -528,7 +528,7 @@
         "q": "Long-standing diabetes mellitus has damaged a patient’s autonomic nerves, so commands from the cardiovascular center barely reach the heart and vessels. What happens when this patient stands up?",
         "options": [
           {
-            "text": "Pressure falls and stays low for minutes, so the patient feels lightheaded or faints",
+            "text": "Pressure stays low, and the patient feels faint",
             "why": "Right. The fall is sensed and the center responds, but the efferent pathway cannot deliver the commands. Heart rate and TPR do not rise, and orthostatic hypotension results."
           },
           {
@@ -702,7 +702,7 @@
         "q": "A patient takes an ACE inhibitor, so little angiotensin I is converted to angiotensin II. They then lose blood in an accident. How does this loop respond?",
         "options": [
           {
-            "text": "Renin rises, but little angiotensin II or aldosterone follows, so this loop helps restore pressure less than usual",
+            "text": "Renin rises, but little angiotensin II or aldosterone follows",
             "why": "Right. The sensor and control center still work, so renin release rises. The broken step in the efferent pathway means the vasoconstriction and sodium retention it would trigger are much smaller."
           },
           {
@@ -816,7 +816,7 @@
         "mass-balance"
       ],
       "kind": "negative",
-      "scenario": "A patient receives two liters of IV fluid over half an hour. Over the next hours they pass much more urine than usual, and their blood volume returns toward normal.",
+      "scenario": "A patient receives two liters of isotonic saline by IV over half an hour. Over the next hours they pass much more urine than usual, and their blood volume returns toward normal.",
       "slots": {
         "stimulus": {
           "text": "Blood volume rises",
@@ -874,7 +874,7 @@
         "q": "A patient’s kidneys are badly damaged. Their stretched atria release plenty of ANP, but the kidneys respond to it only weakly. What happens to blood volume?",
         "options": [
           {
-            "text": "It stays high and fluid builds up, because the command is sent but the effector cannot carry it out",
+            "text": "It stays high, because the kidneys barely act on the ANP",
             "why": "Right. The sensor, control center and pathway all work, and ANP levels are high. The weak kidney response lets sodium and water, and so volume, stay high."
           },
           {
