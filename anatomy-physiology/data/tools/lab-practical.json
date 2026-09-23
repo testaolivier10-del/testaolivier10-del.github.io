@@ -4957,6 +4957,27 @@
      ],
      "labels": [
       {
+       "id": "ganglionic-neuron-cell-body",
+       "name": "Peripheral ganglionic neuron cell body (unipolar cell)",
+       "accept": [
+        "ganglionic neuron cell body",
+        "neuron cell body",
+        "cell body",
+        "unipolar neuron",
+        "unipolar cell",
+        "sensory neuron cell body"
+       ],
+       "box": [
+        590,
+        57,
+        202,
+        71
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "The round cell body of a sensory neuron, sitting in a ganglion outside the brain and spinal cord and wrapped by a layer of satellite cells. It is a unipolar cell: one short process leaves it and splits into a long axon that runs in from the body and one that runs on into the CNS, so signals can pass the cell body without going through it."
+      },
+      {
        "id": "satellite-cells",
        "name": "Satellite cells",
        "accept": [
@@ -5031,15 +5052,1154 @@
        "taught": "nervous-tissue-overview",
        "fn": "The long process of the ganglion neuron, wrapped segment by segment by Schwann cells. It carries action potentials past the cell body, which sits off to one side, on into the CNS."
       }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "brain-lateral",
+   "title": "Brain lateral view",
+   "chapter": "cns",
+   "topic": "brain-regions",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-13-7",
+     "topic": "brain-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "central-sulcus",
+       "name": "Central sulcus",
+       "accept": [],
+       "box": [
+        483,
+        2,
+        144,
+        21
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The deep groove running down the side of each hemisphere from the top. It separates the frontal lobe in front from the parietal lobe behind it.",
+       "follow": {
+        "q": "Which two lobes does the central sulcus separate?",
+        "options": [
+         "Frontal and temporal",
+         "Frontal and parietal",
+         "Parietal and occipital",
+         "Temporal and occipital"
+        ],
+        "correct": 1,
+        "why": "The central sulcus runs down from the top of the hemisphere with the frontal lobe in front of it and the parietal lobe behind it. The lateral sulcus sets off the temporal lobe, and the parieto-occipital sulcus separates the parietal and occipital lobes.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "frontal-lobe",
+       "name": "Frontal lobe",
+       "accept": [],
+       "box": [
+        0,
+        93,
+        119,
+        21
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The front lobe of each hemisphere, lying ahead of the central sulcus and above the lateral sulcus. It plans and starts voluntary movement and handles planning, judgment and personality.",
+       "follow": {
+        "q": "A tumor damages the cortex just in front of the central sulcus. Which lobe is it in?",
+        "options": [
+         "Parietal lobe",
+         "Temporal lobe",
+         "Frontal lobe",
+         "Occipital lobe"
+        ],
+        "correct": 2,
+        "why": "Everything in front of the central sulcus and above the lateral sulcus is frontal lobe. The parietal lobe starts just behind the central sulcus, the temporal lobe lies below the lateral sulcus, and the occipital lobe is at the back.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "parietal-lobe",
+       "name": "Parietal lobe",
+       "accept": [],
+       "box": [
+        484,
+        97,
+        126,
+        21
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The lobe behind the central sulcus and in front of the parieto-occipital sulcus. It receives and interprets body sensations such as touch, pressure and the position of your limbs."
+      },
+      {
+       "id": "parieto-occipital-sulcus",
+       "name": "Parieto-occipital sulcus",
+       "accept": [
+        "parietooccipital sulcus"
+       ],
+       "box": [
+        577,
+        152,
+        158,
+        46
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The groove toward the back of the hemisphere that marks the border between the parietal lobe and the occipital lobe. It is seen best on the brain's inner, midline surface."
+      },
+      {
+       "id": "lateral-sulcus",
+       "name": "Lateral sulcus",
+       "accept": [
+        "lateral fissure",
+        "sylvian fissure"
+       ],
+       "box": [
+        578,
+        227,
+        140,
+        21
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The deep horizontal groove on the side of the hemisphere. It separates the temporal lobe below from the frontal and parietal lobes above."
+      },
+      {
+       "id": "occipital-lobe",
+       "name": "Occipital lobe",
+       "accept": [],
+       "box": [
+        577,
+        293,
+        137,
+        25
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The lobe at the back of each hemisphere, behind the parieto-occipital sulcus. It receives and processes vision.",
+       "follow": {
+        "q": "A blow to the back of the head injures the occipital lobes. Which ability is most likely affected?",
+        "options": [
+         "Hearing",
+         "Vision",
+         "Touch on the hand",
+         "Starting movement"
+        ],
+        "correct": 1,
+        "why": "The occipital lobe at the back of the brain processes vision. Hearing is handled in the temporal lobe, touch in the parietal lobe, and starting movement in the frontal lobe.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "temporal-lobe",
+       "name": "Temporal lobe",
+       "accept": [],
+       "box": [
+        577,
+        374,
+        143,
+        25
+       ],
+       "concept": "cerebral-lobes",
+       "taught": "brain-regions",
+       "fn": "The lobe on the side of the brain below the lateral sulcus, near your temple. It processes hearing and plays a large part in memory and understanding language."
+      }
      ],
      "covered": [
       {
-       "id": "ganglionic-neuron-cell-body",
+       "id": "precentral-gyrus",
        "box": [
-        590,
+        127,
+        49,
+        163,
+        25
+       ]
+      },
+      {
+       "id": "postcentral-gyrus",
+       "box": [
+        484,
+        49,
+        171,
+        25
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-13-6",
+     "topic": "brain-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cerebrum",
+       "name": "Cerebrum",
+       "accept": [],
+       "box": [
+        444,
+        1,
+        95,
+        20
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The largest part of the brain: two folded hemispheres that sit on top of the brainstem. Its gray-matter surface handles conscious thought, sensation and voluntary movement."
+      },
+      {
+       "id": "corpus-callosum",
+       "name": "Corpus callosum",
+       "accept": [],
+       "box": [
+        0,
+        15,
+        148,
+        23
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The broad band of white matter at the floor of the longitudinal fissure, shown as a dashed outline because it lies deep inside. Its axons connect the right and left hemispheres so the two sides can share information.",
+       "follow": {
+        "q": "What is the corpus callosum made of, and what does it do?",
+        "options": [
+         "Gray matter that controls both sides of the body",
+         "Cerebrospinal fluid that cushions the hemispheres",
+         "White matter that links the two hemispheres",
+         "Blood vessels that feed the cortex"
+        ],
+        "correct": 2,
+        "why": "The corpus callosum is a thick band of axons (white matter) crossing between the hemispheres, which lets the two sides communicate. It contains no cell bodies of note, and it is neither a fluid space nor a set of blood vessels.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "longitudinal-fissure",
+       "name": "Longitudinal fissure",
+       "accept": [],
+       "box": [
+        952,
+        19,
+        112,
+        40
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The deep midline groove that divides the cerebrum into right and left hemispheres. The corpus callosum lies at the bottom of it."
+      },
+      {
+       "id": "right-hemisphere",
+       "name": "Right hemisphere",
+       "accept": [
+        "right cerebral hemisphere"
+       ],
+       "box": [
+        482,
         57,
-        202,
-        71
+        156,
+        23
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The right half of the cerebrum. For the most part it receives sensation from, and controls movement of, the left side of the body."
+      },
+      {
+       "id": "left-hemisphere",
+       "name": "Left hemisphere",
+       "accept": [
+        "left cerebral hemisphere"
+       ],
+       "box": [
+        996,
+        312,
+        106,
+        45
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The left half of the cerebrum. For the most part it receives sensation from, and controls movement of, the right side of the body.",
+       "follow": {
+        "q": "A stroke damages the left hemisphere's movement areas. Which side of the body is most likely to become weak?",
+        "options": [
+         "The left side",
+         "The right side",
+         "Both sides equally",
+         "Neither side, since the cerebellum controls movement"
+        ],
+        "correct": 1,
+        "why": "Each hemisphere mainly controls the opposite side of the body, because the pathways cross over. Left hemisphere damage therefore weakens the right side. The cerebellum coordinates movement but does not start it.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "cerebral-cortex",
+       "name": "Cerebral cortex",
+       "accept": [
+        "cortex"
+       ],
+       "box": [
+        0,
+        328,
+        139,
+        19
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The thin outer layer of gray matter covering the cerebrum, folded into gyri and sulci. Folding packs more cortex, and so more neurons, into the skull."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "brain-midsagittal",
+   "title": "Brain midsagittal view",
+   "chapter": "cns",
+   "topic": "brain-regions",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-13-11",
+     "topic": "brain-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "thalamus",
+       "name": "Thalamus",
+       "accept": [],
+       "box": [
+        769,
+        95,
+        102,
+        21
+       ],
+       "concept": "diencephalon",
+       "taught": "brain-regions",
+       "fn": "The egg-shaped mass of gray matter in the middle of the brain, part of the diencephalon. It relays and filters almost all incoming sensory information on its way to the cerebral cortex.",
+       "follow": {
+        "q": "Signals for touch on your hand travel up toward the cortex. Where are they relayed just before reaching it?",
+        "options": [
+         "Hypothalamus",
+         "Cerebellum",
+         "Thalamus",
+         "Pons"
+        ],
+        "correct": 2,
+        "why": "The thalamus is the relay station for incoming sensory signals on their way to the cerebral cortex. The hypothalamus runs homeostatic controls, the cerebellum coordinates movement, and the pons is a brainstem region that the signals pass through earlier.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "hypothalamus",
+       "name": "Hypothalamus",
+       "accept": [],
+       "box": [
+        2,
+        567,
+        144,
+        26
+       ],
+       "concept": "hypothalamus",
+       "taught": "brain-regions",
+       "fn": "The small region of the diencephalon just below the thalamus. It controls body temperature, thirst, hunger, daily rhythms and the autonomic output, and it controls the pituitary gland hanging beneath it.",
+       "follow": {
+        "q": "A lesion in which region would most likely disturb body temperature control?",
+        "options": [
+         "Thalamus",
+         "Hypothalamus",
+         "Occipital lobe",
+         "Cerebellum"
+        ],
+        "correct": 1,
+        "why": "The hypothalamus is the brain's control center for body temperature, thirst and hunger. The thalamus relays sensory signals, the occipital lobe handles vision, and the cerebellum coordinates movement.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "pituitary-gland",
+       "name": "Pituitary gland",
+       "accept": [
+        "pituitary",
+        "hypophysis"
+       ],
+       "box": [
+        2,
+        626,
+        143,
+        25
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A pea-sized gland hanging from the underside of the hypothalamus on a short stalk. The hypothalamus tells it which of its hormones to release."
+      }
+     ]
+    },
+    {
+     "figure": "os-13-12",
+     "topic": "brain-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "midbrain",
+       "name": "Midbrain",
+       "accept": [
+        "mesencephalon"
+       ],
+       "box": [
+        819,
+        430,
+        89,
+        21
+       ],
+       "concept": "brainstem",
+       "taught": "brain-regions",
+       "fn": "The top part of the brainstem, just below the diencephalon. It carries pathways between the cerebrum and the rest of the brainstem and holds centers for visual and hearing reflexes."
+      },
+      {
+       "id": "pons",
+       "name": "Pons",
+       "accept": [],
+       "box": [
+        819,
+        515,
+        58,
+        21
+       ],
+       "concept": "brainstem",
+       "taught": "brain-regions",
+       "fn": "The bulging middle part of the brainstem, between the midbrain and the medulla. It relays signals between the cerebrum and the cerebellum and helps set the rhythm of breathing.",
+       "follow": {
+        "q": "Which list gives the brainstem parts from top to bottom?",
+        "options": [
+         "Medulla, pons, midbrain",
+         "Pons, midbrain, medulla",
+         "Midbrain, pons, medulla",
+         "Midbrain, medulla, pons"
+        ],
+        "correct": 2,
+        "why": "Just below the diencephalon comes the midbrain, then the bulging pons, then the medulla, which continues into the spinal cord. Any other order places a part on the wrong side of its neighbor.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "medulla",
+       "name": "Medulla",
+       "accept": [
+        "medulla oblongata"
+       ],
+       "box": [
+        819,
+        612,
+        85,
+        21
+       ],
+       "concept": "brainstem",
+       "taught": "brain-regions",
+       "fn": "The medulla oblongata, the lowest part of the brainstem, which continues into the spinal cord. It holds the vital centers that control heart rate, blood pressure and breathing.",
+       "follow": {
+        "q": "Why is an injury to the medulla oblongata so often fatal?",
+        "options": [
+         "It makes all of the brain's cerebrospinal fluid",
+         "It holds the centers that control heartbeat, blood pressure and breathing",
+         "It is the only link between the two hemispheres",
+         "It stores long-term memories"
+        ],
+        "correct": 1,
+        "why": "The medulla holds the vital centers for heart rate, blood pressure and breathing, so damage there can stop them. Fluid production, the link between the hemispheres and memory storage belong to other structures.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-15-12",
+     "topic": "brain-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cingulate-gyrus",
+       "name": "Cingulate gyrus",
+       "accept": [],
+       "box": [
+        990,
+        38,
+        102,
+        50
+       ],
+       "concept": null,
+       "fn": "The arched fold of cortex on the brain's inner surface, curving just above the corpus callosum. It is part of the limbic system and links emotion to attention and decision making."
+      },
+      {
+       "id": "hypothalamic-nuclei",
+       "name": "Hypothalamic nuclei",
+       "accept": [
+        "hypothalamus"
+       ],
+       "box": [
+        7,
+        82,
+        200,
+        27
+       ],
+       "concept": "hypothalamus",
+       "taught": "brain-regions",
+       "fn": "The clusters of neurons that make up the hypothalamus, below the thalamus. The limbic system connects to them, which is how emotions can change your heart rate, breathing and hormone release."
+      },
+      {
+       "id": "corpus-callosum",
+       "name": "Corpus callosum",
+       "accept": [],
+       "box": [
+        990,
+        130,
+        96,
+        45
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The arched band of white matter above the thalamus, cut across in this midline view. Its axons connect the right and left hemispheres."
+      },
+      {
+       "id": "amygdala",
+       "name": "Amygdala",
+       "accept": [],
+       "box": [
+        7,
+        187,
+        106,
+        27
+       ],
+       "concept": "limbic-system",
+       "taught": "brain-regions",
+       "fn": "An almond-shaped cluster of neurons deep in the temporal lobe, part of the limbic system. It attaches emotion, especially fear, to experiences and helps store emotional memories.",
+       "follow": {
+        "q": "Which limbic structure most directly attaches fear to a memory, such as the place where you were bitten by a dog?",
+        "options": [
+         "Hippocampus",
+         "Amygdala",
+         "Thalamus",
+         "Corpus callosum"
+        ],
+        "correct": 1,
+        "why": "The amygdala tags experiences with emotion, especially fear. The hippocampus forms the memory of the event itself, the thalamus relays sensory signals, and the corpus callosum links the hemispheres.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "thalamus",
+       "name": "Thalamus",
+       "accept": [],
+       "box": [
+        989,
+        241,
+        106,
+        22
+       ],
+       "concept": "diencephalon",
+       "taught": "brain-regions",
+       "fn": "The paired egg-shaped mass at the center of the brain, ringed here by limbic structures. It relays sensory information to the cerebral cortex."
+      },
+      {
+       "id": "hippocampus",
+       "name": "Hippocampus",
+       "accept": [],
+       "box": [
+        7,
+        355,
+        141,
+        26
+       ],
+       "concept": "limbic-system",
+       "taught": "brain-regions",
+       "fn": "A curved ridge of cortex along the inner edge of the temporal lobe, part of the limbic system. It turns new experiences and facts into long-term memories.",
+       "follow": {
+        "q": "After damage to both hippocampi, a patient remembers his childhood but cannot remember people he met this week. What is he unable to do?",
+        "options": [
+         "Retrieve old memories",
+         "Form new long-term memories",
+         "Feel fear",
+         "Coordinate his movements"
+        ],
+        "correct": 1,
+        "why": "The hippocampus turns new experiences into long-term memories, so without it new events are lost while older, already stored memories remain. Fear depends on the amygdala and coordination on the cerebellum.",
+        "level": "analyze"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-13-13",
+     "topic": "brain-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cerebellum",
+       "name": "Cerebellum",
+       "accept": [],
+       "box": [
+        720,
+        50,
+        118,
+        21
+       ],
+       "concept": "cerebellum",
+       "taught": "brain-regions",
+       "fn": "The \"little brain\" behind the brainstem, below the occipital lobes. It compares the movement you intend with the movement that happens and corrects it, which keeps movement smooth and balanced.",
+       "follow": {
+        "q": "A person walks with a wide, staggering gait and overshoots when reaching for a cup, but has normal strength. Which region is most likely damaged?",
+        "options": [
+         "Cerebellum",
+         "Occipital lobe",
+         "Hypothalamus",
+         "Corpus callosum"
+        ],
+        "correct": 0,
+        "why": "The cerebellum coordinates movement, so its damage causes clumsy, unsteady movement (ataxia) with normal strength. The occipital lobe handles vision, the hypothalamus homeostasis, and the corpus callosum links the hemispheres.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "pons",
+       "name": "Pons",
+       "accept": [],
+       "box": [
+        0,
+        178,
+        56,
+        21
+       ],
+       "concept": "brainstem",
+       "taught": "brain-regions",
+       "fn": "The bulging front part of the brainstem, just in front of the cerebellum. It relays signals from the cerebrum to the cerebellum."
+      },
+      {
+       "id": "arbor-vitae",
+       "name": "Deep cerebellar white matter (arbor vitae)",
+       "accept": [
+        "arbor vitae",
+        "cerebellar white matter"
+       ],
+       "box": [
+        720,
+        199,
+        157,
+        84
+       ],
+       "concept": "cerebellum",
+       "taught": "brain-regions",
+       "fn": "The branching white matter deep inside the cerebellum, named the \"tree of life\" for its shape when cut. Its axons carry signals into and out of the cerebellar cortex that surrounds it."
+      },
+      {
+       "id": "inferior-olive",
+       "name": "Inferior olive",
+       "accept": [
+        "olive"
+       ],
+       "box": [
+        0,
+        357,
+        123,
+        21
+       ],
+       "concept": null,
+       "fn": "An olive-shaped bulge on the front of the medulla oblongata. Its neurons send signals up to the cerebellum that help it learn and correct movements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "meninges-ventricles",
+   "title": "Meninges and ventricles",
+   "chapter": "cns",
+   "topic": "brain-protection",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-13-17",
+     "topic": "brain-protection",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "veins",
+       "name": "Veins",
+       "accept": [
+        "vein"
+       ],
+       "box": [
+        210,
+        4,
+        58,
+        19
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Veins on the brain's surface that cross the subarachnoid space and the dura to drain blood from the brain into the large channel in the dura."
+      },
+      {
+       "id": "bone",
+       "name": "Bone",
+       "accept": [
+        "skull",
+        "cranial bone"
+       ],
+       "box": [
+        780,
+        89,
+        55,
+        20
+       ],
+       "concept": "cranial-bones",
+       "taught": "skull",
+       "fn": "The skull bone (cranium) that encloses the brain. The dura mater lies against its inner surface."
+      },
+      {
+       "id": "dura-mater",
+       "name": "Dura mater",
+       "accept": [
+        "dura"
+       ],
+       "box": [
+        780,
+        149,
+        105,
+        20
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The tough, thick outer layer of the meninges (\"tough mother\"), lying against the skull. It anchors the brain and encloses the large venous channels that drain it.",
+       "follow": {
+        "q": "List the meninges from the skull inward.",
+        "options": [
+         "Pia mater, arachnoid mater, dura mater",
+         "Dura mater, arachnoid mater, pia mater",
+         "Arachnoid mater, dura mater, pia mater",
+         "Dura mater, pia mater, arachnoid mater"
+        ],
+        "correct": 1,
+        "why": "The tough dura mater lies against the skull, the web-like arachnoid mater lies under it, and the thin pia mater clings to the brain surface. Any other order puts a layer on the wrong side of its neighbor.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "arachnoid-mater",
+       "name": "Arachnoid mater",
+       "accept": [
+        "arachnoid"
+       ],
+       "box": [
+        0,
+        154,
+        151,
+        20
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The middle layer of the meninges, a thin sheet under the dura that sends web-like strands (trabeculae) down to the pia. The space beneath it holds cerebrospinal fluid."
+      },
+      {
+       "id": "subdural-space",
+       "name": "Subdural space",
+       "accept": [],
+       "box": [
+        779,
+        181,
+        142,
+        24
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The potential space between the dura mater and the arachnoid mater. Normally it holds almost nothing, but bleeding from torn veins can collect there.",
+       "follow": {
+        "q": "An older adult falls, tearing veins that cross from the brain to the dura. Where does the blood most likely collect?",
+        "options": [
+         "Between the skull and the dura",
+         "Between the dura and the arachnoid",
+         "Inside the lateral ventricle",
+         "Inside the corpus callosum"
+        ],
+        "correct": 1,
+        "why": "Veins that cross the subdural space tear with a sudden jolt, and the blood collects between the dura and the arachnoid, a subdural bleed. Bleeding between the skull and dura is usually from an artery, and the ventricles and corpus callosum lie inside the brain.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "subarachnoid-space",
+       "name": "Subarachnoid space",
+       "accept": [],
+       "box": [
+        0,
+        203,
+        128,
+        44
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The space between the arachnoid mater and the pia mater, crossed by arachnoid trabeculae and filled with cerebrospinal fluid that cushions the brain.",
+       "follow": {
+        "q": "A lumbar puncture samples cerebrospinal fluid. Which space does the fluid come from?",
+        "options": [
+         "Subdural space",
+         "Epidural space",
+         "Subarachnoid space",
+         "Lateral ventricle"
+        ],
+        "correct": 2,
+        "why": "Cerebrospinal fluid around the brain and spinal cord flows in the subarachnoid space, between the arachnoid and the pia, and a lumbar puncture needle enters it low in the back. The subdural and epidural spaces do not hold CSF, and the needle never reaches the ventricles.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "pia-mater",
+       "name": "Pia mater",
+       "accept": [
+        "pia"
+       ],
+       "box": [
+        2,
+        265,
+        92,
+        20
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The thin, delicate innermost layer of the meninges (\"tender mother\"). It clings to the brain surface, following every gyrus and sulcus, and carries small blood vessels."
+      },
+      {
+       "id": "arachnoid-trabeculae",
+       "name": "Arachnoid trabeculae",
+       "accept": [
+        "trabeculae"
+       ],
+       "box": [
+        0,
+        301,
+        190,
+        19
+       ],
+       "concept": null,
+       "fn": "Fine strands of the arachnoid mater that cross the subarachnoid space to the pia mater, giving the arachnoid its spider-web look and suspending the brain in the fluid."
+      },
+      {
+       "id": "longitudinal-fissure",
+       "name": "Longitudinal fissure",
+       "accept": [],
+       "box": [
+        780,
+        305,
+        171,
+        23
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The deep midline groove between the two hemispheres. The dura dips down into it as a vertical fold."
+      },
+      {
+       "id": "cerebral-cortex",
+       "name": "Cerebral cortex",
+       "accept": [
+        "cortex"
+       ],
+       "box": [
+        779,
+        344,
+        140,
+        19
+       ],
+       "concept": "cerebrum",
+       "taught": "brain-regions",
+       "fn": "The outer gray matter of the cerebrum, directly under the pia mater."
+      },
+      {
+       "id": "cerebral-vein",
+       "name": "Cerebral vein",
+       "accept": [],
+       "box": [
+        1,
+        355,
+        122,
+        20
+       ],
+       "concept": null,
+       "fn": "A vein running in the subarachnoid space over the brain surface. Such veins drain blood from the cortex toward the channels in the dura."
+      }
+     ],
+     "covered": [
+      {
+       "id": "superior-sagittal-sinus",
+       "box": [
+        549,
+        4,
+        196,
+        23
+       ]
+      },
+      {
+       "id": "arachnoid-granulation",
+       "box": [
+        778,
+        237,
+        136,
+        44
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-13-18",
+     "topic": "brain-protection",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "arachnoid-granulation",
+       "name": "Arachnoid granulation",
+       "accept": [
+        "arachnoid granulations",
+        "arachnoid villi"
+       ],
+       "box": [
+        874,
+        116,
+        193,
+        24
+       ],
+       "concept": "csf",
+       "taught": "brain-protection",
+       "fn": "Knob-like outpouchings of the arachnoid mater that push into the venous channel in the dura. Cerebrospinal fluid passes through them from the subarachnoid space back into venous blood.",
+       "follow": {
+        "q": "Where does cerebrospinal fluid return to the blood?",
+        "options": [
+         "At the choroid plexus",
+         "At the arachnoid granulations",
+         "At the interventricular foramen",
+         "At the median aperture"
+        ],
+        "correct": 1,
+        "why": "CSF drains from the subarachnoid space into venous blood through the arachnoid granulations. The choroid plexus makes CSF, and the interventricular foramen and median aperture are openings it flows through on the way.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "subarachnoid-space",
+       "name": "Subarachnoid space",
+       "accept": [],
+       "box": [
+        875,
+        162,
+        182,
+        24
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The fluid-filled space between the arachnoid and pia mater, surrounding the whole brain and spinal cord. CSF leaving the fourth ventricle circulates here."
+      },
+      {
+       "id": "dura-mater",
+       "name": "Meningeal dura mater",
+       "accept": [
+        "dura mater",
+        "dura",
+        "meningeal layer"
+       ],
+       "box": [
+        875,
+        208,
+        192,
+        24
+       ],
+       "concept": "meninges",
+       "taught": "brain-protection",
+       "fn": "The meningeal layer of the dura mater, the tough outer covering of the brain just inside the skull."
+      },
+      {
+       "id": "choroid-plexus",
+       "name": "Choroid plexus",
+       "accept": [],
+       "box": [
+        0,
+        222,
+        135,
+        23
+       ],
+       "concept": "csf",
+       "taught": "brain-protection",
+       "fn": "Tufts of capillaries covered by ependymal cells in the roof of each ventricle. They filter blood plasma to make cerebrospinal fluid.",
+       "follow": {
+        "q": "A child is born with a narrowed cerebral aqueduct. The choroid plexus keeps making CSF. Which ventricles swell?",
+        "options": [
+         "Only the fourth ventricle",
+         "The lateral and third ventricles",
+         "All four ventricles equally",
+         "None; the CSF drains into the spinal cord"
+        ],
+        "correct": 1,
+        "why": "CSF made upstream in the lateral and third ventricles cannot pass the blocked aqueduct, so those ventricles fill and enlarge (hydrocephalus). The fourth ventricle lies downstream of the block, so it stays small.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "lateral-ventricle",
+       "name": "Right lateral ventricle",
+       "accept": [
+        "lateral ventricle"
+       ],
+       "box": [
+        875,
+        279,
+        186,
+        23
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "The largest of the four ventricles, one in each hemisphere, shaped like a C. Its choroid plexus makes much of the cerebrospinal fluid."
+      },
+      {
+       "id": "interventricular-foramen",
+       "name": "Interventricular foramen",
+       "accept": [
+        "foramen of monro"
+       ],
+       "box": [
+        0,
+        311,
+        135,
+        40
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "The small opening through which each lateral ventricle drains its cerebrospinal fluid into the third ventricle."
+      },
+      {
+       "id": "third-ventricle",
+       "name": "Third ventricle",
+       "accept": [
+        "3rd ventricle"
+       ],
+       "box": [
+        0,
+        378,
+        128,
+        19
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "The narrow midline ventricle between the two halves of the thalamus. It receives CSF from both lateral ventricles and passes it down the cerebral aqueduct."
+      },
+      {
+       "id": "cerebral-aqueduct",
+       "name": "Cerebral aqueduct",
+       "accept": [
+        "aqueduct of sylvius",
+        "mesencephalic aqueduct"
+       ],
+       "box": [
+        308,
+        452,
+        166,
+        24
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "The narrow channel through the midbrain that carries cerebrospinal fluid from the third ventricle down to the fourth ventricle. Its narrowness makes it a common site of blockage.",
+       "follow": {
+        "q": "Which structure connects the third ventricle to the fourth?",
+        "options": [
+         "Interventricular foramen",
+         "Cerebral aqueduct",
+         "Median aperture",
+         "Lateral aperture"
+        ],
+        "correct": 1,
+        "why": "The cerebral aqueduct runs through the midbrain from the third to the fourth ventricle. The interventricular foramen links each lateral ventricle to the third, and the apertures let CSF out of the fourth ventricle into the subarachnoid space.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "median-aperture",
+       "name": "Median aperture",
+       "accept": [
+        "foramen of magendie"
+       ],
+       "box": [
+        802,
+        503,
+        150,
+        23
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "The single opening in the midline of the fourth ventricle's roof. CSF leaves the ventricles through it into the subarachnoid space."
+      },
+      {
+       "id": "lateral-aperture",
+       "name": "Lateral aperture",
+       "accept": [
+        "lateral apertures",
+        "foramen of luschka"
+       ],
+       "box": [
+        308,
+        510,
+        145,
+        23
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "One of the two side openings of the fourth ventricle. Along with the median aperture, they are the only exits from the ventricles into the subarachnoid space."
+      },
+      {
+       "id": "fourth-ventricle",
+       "name": "Fourth ventricle",
+       "accept": [
+        "4th ventricle"
+       ],
+       "box": [
+        309,
+        568,
+        140,
+        19
+       ],
+       "concept": "ventricles-brain",
+       "taught": "brain-protection",
+       "fn": "The ventricle between the brainstem (pons and medulla) and the cerebellum. It receives CSF from the cerebral aqueduct and sends it out through the median and lateral apertures."
+      }
+     ],
+     "covered": [
+      {
+       "id": "superior-sagittal-sinus",
+       "box": [
+        0,
+        66,
+        145,
+        41
+       ]
+      },
+      {
+       "id": "central-canal",
+       "box": [
+        783,
+        600,
+        122,
+        19
        ]
       }
      ]
@@ -15901,6 +17061,78 @@
    "alt": "A drawing of a sensory neuron's round cell body covered by a layer of flattened cells, like tiles over a ball. A single stalk leaves the cell body and joins an axon that runs across the bottom of the picture. Elongated cells wrapped around the axon sit end to end along it, and the cut end of the axon shows the layers wrapped around it.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.12",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-2-nervous-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-13-7": {
+   "src": "figures/os-13-7.jpg",
+   "w": 733,
+   "h": 621,
+   "alt": "A side view of the brain with each lobe of the cerebrum in its own color: the frontal lobe at the front, the parietal lobe on top behind it, the occipital lobe at the back and the temporal lobe along the side below. Labels mark the central sulcus between the frontal and parietal lobes, the gyri just in front of and behind it, the lateral sulcus above the temporal lobe and the parieto-occipital sulcus. The cerebellum and brainstem sit below, uncolored.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-6": {
+   "src": "figures/os-13-6.jpg",
+   "w": 1100,
+   "h": 512,
+   "alt": "Two drawings of the whole brain. The side view shows the folded surface of the cerebrum, its outer layer, and a dotted outline marking where the band of fibers joining the two halves lies deep inside. The front view shows the right and left halves of the cerebrum separated by a deep groove down the midline, with the brainstem below.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-11": {
+   "src": "figures/os-13-11.jpg",
+   "w": 869,
+   "h": 689,
+   "alt": "The right half of the brain seen from the midline cut. Near the center, the egg-shaped thalamus is shaded green, the hypothalamus below and in front of it is shaded orange, and the pituitary gland hangs from the bottom of the hypothalamus on a short stalk.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-12": {
+   "src": "figures/os-13-12.jpg",
+   "w": 906,
+   "h": 685,
+   "alt": "The right half of the brain seen from the midline cut, with the brainstem colored in three parts: the midbrain at the top, the rounded, bulging pons in the middle, and the medulla at the bottom, where the brainstem narrows to continue as the spinal cord.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-15-12": {
+   "src": "figures/os-15-12.jpg",
+   "w": 1100,
+   "h": 627,
+   "alt": "The brain cut down the midline with a head outline. A ring of colored structures around the center makes up the limbic system: the cingulate gyrus arching above the band of fibers joining the hemispheres, the hippocampus curving along the bottom, the almond-shaped amygdala at its front tip, and nuclei of the hypothalamus. The thalamus sits in the middle of the ring.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-3-central-control",
+   "license": "CC BY 4.0"
+  },
+  "os-13-13": {
+   "src": "figures/os-13-13.jpg",
+   "w": 875,
+   "h": 1080,
+   "alt": "Two views of the cerebellum. The top line drawing shows the cerebellum cut down the middle behind the brainstem: branching white matter inside, called the arbor vitae, spreads like a tree into folds of gray matter. The pons and an olive-shaped bulge on the medulla are labeled in front of it. Below, a brain scan cut down the midline shows the cerebellum shaded purple at the back and bottom of the skull.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-17": {
+   "src": "figures/os-13-17.jpg",
+   "w": 949,
+   "h": 515,
+   "alt": "A cut through the top of the head across the midline groove between the hemispheres. From outside in: bone; the thick, two-layered dura mater, which splits in the midline to enclose a large triangular venous channel; the thin arachnoid mater; a space crossed by fine strands; and the pia mater on the folded cortex. Rounded knobs of arachnoid push up through the dura into the venous channel. Veins from the brain surface cross the layers to reach it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-3-circulation-and-the-central-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-13-18": {
+   "src": "figures/os-13-18.jpg",
+   "w": 1065,
+   "h": 693,
+   "alt": "The brain and upper spinal cord cut down the midline, with the fluid spaces shaded blue. A C-shaped chamber in the hemisphere connects through a small opening to a narrow midline chamber, then a thin canal through the midbrain leads to a chamber between the brainstem and the cerebellum. Tufts of tissue lie in the chambers. Arrows show fluid leaving the lower chamber through openings, flowing around the brain and down around the spinal cord, and entering a large venous channel at the top of the head through knobs of the arachnoid. The spinal cord has a thin central canal.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.18",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-3-circulation-and-the-central-nervous-system",
    "license": "CC BY 4.0"
   }
  }

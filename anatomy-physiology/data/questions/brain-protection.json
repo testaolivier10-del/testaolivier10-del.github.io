@@ -14,7 +14,7 @@
       "Dura mater",
       "Arachnoid mater",
       "Pia mater",
-      "Periosteum"
+      "Web-like arachnoid strands"
     ],
     "correct": 0,
     "why": {
@@ -23,7 +23,7 @@
         "Correct. The thick layer against the bone is the dura mater.",
         "The arachnoid mater is the thin layer just inside the dura, with web-like strands reaching down to the pia.",
         "The pia mater is the thin layer stuck to the brain surface, following it into the sulci.",
-        "Periosteum covers the outside of bone; inside the skull its role is taken by the outer layer of the dura, which is not a separate named membrane here."
+        "The web-like strands cross the subarachnoid space below the arachnoid; the pinned layer is the thick sheet against the bone."
       ]
     }
   },
@@ -277,7 +277,7 @@
     "why": {
       "correct": "A blow to the thin temporal bone can tear the middle meningeal artery, which runs on the inside of the skull. Its arterial blood peels the dura off the bone, making a compact, lens-shaped epidural hematoma that stops at the sutures, where the dura is most firmly attached. Arterial pressure makes it grow fast.",
       "options": [
-        "Torn bridging veins cause a subdural hematoma, which spreads as a thin crescent and builds slowly.",
+        "Torn bridging veins cause a subdural hematoma, which spreads as a thin crescent and usually builds more slowly.",
         "A burst artery at the base of the brain bleeds into the subarachnoid space, mixing blood with CSF rather than forming a lens-shaped clot against the skull.",
         "The choroid plexus lies inside the ventricles, far from the skull, and does not cause a clot between skull and dura.",
         "Correct. A torn middle meningeal artery causes an epidural hematoma."
@@ -427,7 +427,7 @@
     "q": "Why is a lumbar puncture needle placed between the third and fourth lumbar vertebrae in an adult?",
     "options": [
       "The subarachnoid space is widest in the neck, so the lower back is the only safe alternative",
-      "The spinal cord ends at about the first or second lumbar vertebra, so below it the space holds only floating nerve roots",
+      "The cord ends at about L1–L2, so below it the space holds only floating nerve roots",
       "The dura mater ends at the third lumbar vertebra, so the needle does not have to pierce it",
       "The choroid plexus in the lower spinal canal makes fresh CSF there"
     ],
@@ -510,19 +510,19 @@
     ],
     "q": "Hydrocephalus makes an infant's head grow abnormally large, but in an adult it causes headache, vomiting and drowsiness with a normal head size. Why the difference?",
     "options": [
-      "Adults do not make cerebrospinal fluid",
+      "Adults' arachnoid granulations absorb extra fluid before the ventricles can swell",
       "An infant's skull bones are not yet fused, so the skull expands instead of pressure rising",
       "Adults have no arachnoid granulations",
-      "An infant's brain has no ventricles"
+      "An infant's ventricles are too small to hold much extra fluid"
     ],
     "correct": 1,
     "why": {
       "correct": "In an infant the skull bones are separated by soft gaps, so as CSF builds up the skull expands and the head grows. In an adult the fused skull cannot expand, so the same build-up raises pressure inside the skull, which causes headache, vomiting and drowsiness.",
       "options": [
-        "Adults make about 500 mL of CSF a day.",
+        "Adults do get hydrocephalus; when the path is blocked or the granulations are clogged, fluid builds up whatever their age.",
         "Correct. An unfused skull expands; a fused one cannot, so pressure rises.",
         "Adults do have arachnoid granulations; the difference lies in whether the skull can expand.",
-        "The ventricles form from the neural tube's hollow and are present from early development."
+        "An infant's ventricles do swell with the extra fluid; the difference lies in whether the skull around them can grow."
       ]
     }
   },
@@ -566,7 +566,7 @@
       "They reach an area on the floor of the fourth ventricle whose capillaries lack the barrier",
       "They dissolve through the tight junctions of brain capillaries",
       "They travel in the cerebrospinal fluid from the lumbar region to the brain",
-      "Astrocytes carry them across the capillary wall"
+      "Astrocyte end-feet pick them up and carry them across the capillary wall"
     ],
     "correct": 0,
     "why": {
@@ -575,7 +575,7 @@
         "Correct. This area lacks the barrier, so its neurons sense the toxin in the blood.",
         "Tight junctions seal the gaps between cells; molecules do not dissolve through them.",
         "CSF flows from the brain down to the lumbar region and back up around the cord slowly; a toxin that cannot cross into CSF would not be in it in the first place.",
-        "Astrocytes do not ferry molecules across the capillary wall; they keep the endothelium sealed."
+        "Astrocyte end-feet do not ferry molecules across the capillary wall; they keep the endothelium sealed."
       ]
     }
   }

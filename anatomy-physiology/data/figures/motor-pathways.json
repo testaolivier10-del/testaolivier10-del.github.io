@@ -1,0 +1,36 @@
+{
+  "os-14-28": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.28",
+      "section": "14.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/46a9e1b56b4f0a95698e5d35a2dd1f58adddb56d",
+      "page": "14-3-motor-responses"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/46a9e1b56b4f0a95698e5d35a2dd1f58adddb56d",
+    "alt": "A tall drawing following motor axons from the brain to the spinal cord. At the top, a quarter of a cerebral hemisphere cut vertically shows yellow neurons in the precentral gyrus. Their axons run down as a bundle through a slice of the midbrain, in the cerebral peduncle, then down the front of the medulla in a purple column, the pyramid. Near the bottom of the medulla most of the axons swing across the midline at the decussation of the pyramids and descend in the lateral corticospinal tract at the side of a spinal cord slice; a few continue uncrossed in the anterior corticospinal tract. In the cord, a yellow upper motor neuron ending meets a teal lower motor neuron, whose axon leaves the cord toward skeletal muscles. A key marks upper motor neurons yellow and lower motor neurons teal.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.28",
+    "labels": [],
+    "w": 1100,
+    "h": 2408,
+    "ext": "jpg"
+  },
+  "os-16-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "16.15",
+      "section": "16.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/fd4ebdfc2f524bb301c402da13b94bd926ccbc55",
+      "page": "16-5-the-coordination-and-gait-exams"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/fd4ebdfc2f524bb301c402da13b94bd926ccbc55",
+    "alt": "Two drawings of the cerebellum colored by region. On the left, the cerebellum is cut down the midline beside the brainstem, showing its branching folds: the front part purple, the large back part green and a small orange lobe tucked underneath next to the brainstem. On the right, the cerebellum is drawn spread flat and seen from above, with the same colors: a bracket marks the narrow middle strip as the vermis and the broad side part as a hemisphere, and the orange flocculonodular lobe at the bottom is labeled as a central nodulus with a flocculus at each end.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 16.15",
+    "labels": [],
+    "w": 1100,
+    "h": 571,
+    "ext": "jpg"
+  }
+}

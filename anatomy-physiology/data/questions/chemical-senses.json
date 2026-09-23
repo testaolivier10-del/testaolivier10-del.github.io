@@ -1,0 +1,447 @@
+[
+  {
+    "id": "anp-chemical-senses-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which cells in a taste bud divide to replace worn-out gustatory receptor cells?",
+    "options": [
+      "Sensory neurons at the base of the bud",
+      "Basal cells",
+      "Cells lining the taste pore",
+      "Supporting cells between olfactory neurons"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Basal cells at the base of each taste bud are stem cells. Gustatory receptor cells last about a week or two on average, and basal cells divide to make their replacements.",
+      "options": [
+        "Sensory neurons receive signals from the taste cells; they do not divide to make new taste cells.",
+        "Correct. Basal cells are the stem cells of the taste bud.",
+        "The taste pore is just an opening in the surface. The cells whose microvilli reach into it are the gustatory receptor cells themselves, which wear out rather than replace others.",
+        "Supporting cells belong to the olfactory epithelium, not the taste bud, and they support neurons rather than replacing taste cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "misconception": "the tongue map",
+    "q": "A student places a few grains of salt on the very tip of her tongue. What does she taste?",
+    "options": [
+      "A sweet taste",
+      "No taste until the salt reaches the sides of the tongue",
+      "A salty taste",
+      "A weak bitter taste"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Every region of the tongue that has taste buds detects all five taste qualities. The tip has taste buds with salt-sensing cells, so she tastes salt at once. The tongue map, which puts only sweet at the tip, is a myth.",
+      "options": [
+        "Salt triggers the salty quality wherever it lands. Taste buds at the tip are not limited to sweet; that idea comes from the tongue map, which is wrong.",
+        "The sides of the tongue are not the only place salt is sensed. Taste buds at the tip detect it directly.",
+        "Correct. Na+ enters salt-sensing cells at the tip, and she tastes salt immediately.",
+        "Sodium ions trigger the salty quality, not bitter. Bitter compounds act on their own receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Daniel, 34, fell off his bike and struck the back of his head. Two weeks later he says food \"has no taste\". On testing, he correctly identifies sweet, salty, sour and bitter solutions placed on his tongue, but he cannot identify coffee or vanilla by sniffing. Which structures were most likely damaged?",
+    "options": [
+      "The gustatory receptor cells of his tongue",
+      "Olfactory axons passing through the cribriform plate",
+      "The facial nerve on one side",
+      "The gustatory cortex in the insula"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A blow to the head can jolt the brain against the skull and tear the thin olfactory axons where they pass through the cribriform plate. His taste qualities are intact, so what he has lost is smell, which provides most of what people call flavor.",
+      "options": [
+        "His gustatory receptor cells work: he identifies all four solutions correctly.",
+        "Correct. Anosmia after a head injury usually comes from torn olfactory axons at the cribriform plate.",
+        "Damage to one facial nerve would reduce taste on the front two thirds of that side of the tongue, but it would not stop him identifying odors by sniffing.",
+        "Damage to the gustatory cortex would impair his perception of taste qualities, which is normal. His problem is with odors."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-4",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Put these steps in order, from an odorant entering the nose to the signal leaving the olfactory bulb.",
+    "options": [
+      "The odorant dissolves in the mucus over the olfactory epithelium",
+      "It binds an odorant receptor protein on a cilium of an olfactory sensory neuron",
+      "A G protein switches on an enzyme that makes cAMP",
+      "cAMP opens cation channels, and chloride leaving the cell adds to the depolarization",
+      "Action potentials travel along the axon through the cribriform plate",
+      "The axon synapses in the olfactory bulb, and the olfactory tract carries the signal backward"
+    ],
+    "why": {
+      "correct": "An odorant must dissolve in mucus before it can bind a receptor protein. Binding activates a G protein, which switches on the enzyme that makes the second messenger cAMP. cAMP opens cation channels; the calcium that enters opens chloride channels, and Cl− leaving depolarizes the cell further. Once the axon reaches threshold, action potentials pass through the cribriform plate to the olfactory bulb, and the olfactory tract carries the signal on."
+    }
+  },
+  {
+    "id": "anp-chemical-senses-5",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication", "gradients"],
+    "q": "Fill the gap: Salt dissolves in saliva → Na+ flows into a gustatory receptor cell through sodium channels → ______ → the cell releases more neurotransmitter → the sensory neuron fires action potentials faster",
+    "options": [
+      "The gustatory receptor cell fires action potentials to the medulla",
+      "Na+ binds a G protein–coupled receptor protein",
+      "The gustatory receptor cell depolarizes",
+      "Basal cells divide to make more taste cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Na+ flowing in carries positive charge into the cell, so it depolarizes. That receptor potential changes how much neurotransmitter the cell releases onto the sensory neuron.",
+      "options": [
+        "Gustatory receptor cells are epithelial cells, not neurons. They do not send action potentials anywhere; the sensory neuron they synapse with does.",
+        "Salty taste works through an ion channel: Na+ enters directly. G protein–coupled receptor proteins serve sweet, umami and bitter.",
+        "Correct. The inflow of positive charge is the receptor potential.",
+        "Basal cells replace worn-out taste cells over days. They play no part in the second-to-second response to salt."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-6",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "This pathway traces a taste signal from the front of the tongue to the cortex. Which step is wrong?",
+    "options": [
+      "A gustatory receptor cell releases neurotransmitter onto a sensory neuron",
+      "The signal travels in the facial nerve",
+      "The signal reaches a nucleus in the medulla oblongata",
+      "The signal relays in the olfactory bulb",
+      "The signal reaches the gustatory cortex in the insula"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Taste relays in the thalamus on its way from the medulla to the gustatory cortex. The olfactory bulb receives only olfactory axons.",
+      "options": [
+        "This step is right. Taste cells are not neurons; they pass the signal to a sensory neuron at a synapse.",
+        "This step is right. The facial nerve carries taste from the front two thirds of the tongue.",
+        "This step is right. Taste fibers from the facial, glossopharyngeal and vagus nerves all end in one nucleus in the medulla.",
+        "This is the error. The relay between the medulla and the cortex is the thalamus. The olfactory bulb is part of the smell pathway.",
+        "This step is right. The gustatory cortex lies in the insula and the nearby frontal lobe."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-7",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "How does the olfactory pathway differ from the pathways of every other sense?",
+    "options": [
+      "It reaches the cortex without first relaying in the thalamus",
+      "Its signals cross to the other side in the spinal cord",
+      "It uses no cranial nerve",
+      "Its sensory receptors fire no action potentials"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Olfactory signals go from the olfactory bulb through the olfactory tract straight to the olfactory cortex in the temporal lobe. Every other sense relays in the thalamus before it reaches the cortex.",
+      "options": [
+        "Correct. Only later do some olfactory signals pass through the thalamus to the frontal lobe.",
+        "Olfactory signals never enter the spinal cord. They travel from the nose to the brain in the olfactory nerve.",
+        "Smell uses cranial nerve I, the olfactory nerve, formed by the bundles of olfactory axons.",
+        "Olfactory sensory neurons are neurons and do fire action potentials along their axons. It is the gustatory receptor cells that fire none."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-8",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Which taste qualities are detected through G protein–coupled receptor proteins and a second messenger? Select all that apply.",
+    "options": ["Salty", "Sweet", "Sour", "Umami", "Bitter"],
+    "correct": [1, 3, 4],
+    "why": {
+      "correct": "Sweet, umami and bitter tastants bind G protein–coupled receptor proteins, which set off a second messenger cascade. Salty and sour work through ion channels: Na+ and H+ flow straight into the cell.",
+      "options": [
+        "Not this one. Na+ enters directly through sodium channels.",
+        "Yes. Sugars bind a G protein–coupled receptor protein.",
+        "Not this one. H+ enters directly through a proton channel.",
+        "Yes. Glutamate binds a G protein–coupled receptor protein.",
+        "Yes. Bitter compounds bind one of about 25 G protein–coupled receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["communication"],
+    "q": "A chemical blocks the enzyme that makes cAMP in olfactory sensory neurons. The person then sniffs a strong odorant. Predict the change in each variable, compared with the same sniff before the chemical.",
+    "variables": [
+      { "name": "Odorant binding to odorant receptor proteins", "answer": "none", "why": "The chemical acts on the enzyme inside the cell, after binding. The odorant still reaches and binds its receptor proteins on the cilia." },
+      { "name": "cAMP made in the cilia", "answer": "down", "why": "The activated G protein cannot switch on a blocked enzyme, so little cAMP is made." },
+      { "name": "Opening of cation channels in the cilia", "answer": "down", "why": "These channels are opened by cAMP, so with less cAMP fewer open and less Na+ and Ca2+ enter." },
+      { "name": "Size of the receptor potential", "answer": "down", "why": "Less cation entry means less Ca2+ to open chloride channels too, so both parts of the depolarization shrink." },
+      { "name": "Perceived strength of the smell", "answer": "down", "why": "Smaller receptor potentials mean fewer action potentials reach the olfactory bulb and cortex." }
+    ],
+    "why": {
+      "correct": "Binding is untouched, but every step after the enzyme weakens: less cAMP, fewer open cation channels, less chloride current, a smaller receptor potential and fewer action potentials, so the smell seems faint."
+    }
+  },
+  {
+    "id": "anp-chemical-senses-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A woman with a heavy cold and a blocked nose says her favorite curry \"tastes like cardboard.\" What is the best explanation?",
+    "options": [
+      "Odorants from the food cannot reach her olfactory epithelium",
+      "The cold virus has killed her gustatory receptor cells",
+      "Mucus has blocked her taste pores",
+      "Her facial nerve is inflamed"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Most of what people call taste is smell. Odorants rising from food in the mouth normally reach the olfactory epithelium at the top of the nose. A blocked nose stops them, so only the five taste qualities remain and the food seems flat.",
+      "options": [
+        "Correct. Her taste buds still work; the smell part of flavor is missing.",
+        "A cold does not destroy taste cells in the mouth. She would still detect salt or sweetness in the curry.",
+        "Nasal mucus does not coat the taste buds in the mouth. Taste pores sit in the saliva-covered surface of the tongue.",
+        "A cold does not inflame the facial nerve, and damage to it would affect only taste on the front of the tongue, not the flavor of the whole meal."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "After throat surgery, a patient has reduced taste on the back third of his tongue only. Which nerve was most likely injured?",
+    "options": [
+      "Facial nerve",
+      "Trigeminal nerve",
+      "Glossopharyngeal nerve",
+      "Hypoglossal nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The glossopharyngeal nerve (IX) carries taste from the back third of the tongue. The facial nerve carries the front two thirds, and the vagus carries the throat and epiglottis.",
+      "options": [
+        "The facial nerve carries taste from the front two thirds of the tongue, not the back third.",
+        "The trigeminal nerve carries touch, temperature and pain from the tongue, not taste.",
+        "Correct. Cranial nerve IX serves taste on the back third of the tongue.",
+        "The hypoglossal nerve is a motor nerve that moves the tongue. It carries no taste."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Which chemical triggers the umami taste?",
+    "options": [
+      "Hydrogen ions",
+      "Sodium ions",
+      "Glutamate",
+      "Glucose"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Umami is the savory taste of glutamate, an amino acid found in broth, aged cheese and ripe tomatoes, and added to food as monosodium glutamate.",
+      "options": [
+        "Hydrogen ions from acids trigger the sour quality.",
+        "Sodium ions trigger the salty quality.",
+        "Correct. Glutamate binds the umami receptor protein.",
+        "Glucose and other sugars trigger the sweet quality."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication", "structure-function"],
+    "q": "The smell of a particular sunscreen instantly brings back a childhood beach holiday, along with the feelings that went with it. Which feature of the olfactory pathway best explains this?",
+    "options": [
+      "Olfactory sensory neurons are replaced throughout life",
+      "Olfactory signals reach the amygdala and areas beside the hippocampus within one or two synapses",
+      "Olfactory signals are filtered by the thalamus before reaching the cortex",
+      "Odorant receptor proteins keep a record of odors met before"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The olfactory tract connects directly with the limbic system. The amygdala handles emotion and the hippocampus region handles memory, so a smell can call up a memory and its feelings very quickly.",
+      "options": [
+        "Replacement of olfactory neurons explains recovery of smell after damage, not the link between smell and memory.",
+        "Correct. Smell has an unusually short route into the limbic structures for emotion and memory.",
+        "Olfactory signals reach the cortex without a first relay in the thalamus, so this cannot be the explanation.",
+        "Receptor proteins bind odorants; they store no memories. Memory depends on the brain, including the hippocampus."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication", "gradients"],
+    "q": "How does lemon juice produce a sour taste?",
+    "options": [
+      "Hydrogen ions bind a G protein–coupled receptor protein",
+      "Hydrogen ions enter the cell through a proton channel and depolarize it",
+      "Hydrogen ions open chloride channels, and Cl− leaves the cell",
+      "Hydrogen ions stimulate trigeminal nociceptors"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Acids release H+. In sour-sensing taste cells, H+ flows in through a proton channel, carrying positive charge in and depolarizing the cell directly, like Na+ in salty taste.",
+      "options": [
+        "Sour works through an ion channel, not a G protein–coupled receptor protein. The G protein route serves sweet, umami and bitter.",
+        "Correct. The inflow of H+ is the depolarizing current.",
+        "The chloride current that adds to depolarization belongs to olfactory sensory neurons, not sour-sensing taste cells.",
+        "Strong acids can also sting, but the sour taste itself comes from gustatory receptor cells, not nociceptors."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "Humans have only about 400 kinds of odorant receptor protein, yet can tell apart far more odors than that. How?",
+    "options": [
+      "Each olfactory sensory neuron makes all 400 kinds, so every neuron responds to every odor",
+      "Each odor has its own dedicated receptor protein, and new kinds are made as new odors are met",
+      "Each odorant binds several kinds of receptor protein to different degrees, and the brain reads the pattern",
+      "The olfactory bulb makes up for the small number by adding extra kinds of synapse"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each odorant activates several kinds of receptor protein, some strongly and some weakly, and each receptor protein responds to several odorants. The pattern across all the kinds identifies the odor, the way a chord is identified by its combination of notes.",
+      "options": [
+        "Each olfactory sensory neuron makes just one kind of receptor protein. That is what lets the bulb sort signals by receptor type.",
+        "There are far fewer receptor protein kinds than odors, and the set is fixed by your genes. Odors share receptor proteins.",
+        "Correct. Odor identity is a pattern across many receptor types, not a single type.",
+        "The bulb sorts and pools signals by receptor type; it does not create new ways of detecting odorants."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "After a viral illness, a man loses his sense of smell. Over the next four months it gradually returns. Which cells make this recovery possible?",
+    "options": [
+      "Basal stem cells of the olfactory epithelium",
+      "Basal cells of the taste buds",
+      "Neurons of the olfactory cortex",
+      "Supporting cells, which turn into sensory neurons in adults"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Basal stem cells in the olfactory epithelium divide and produce new olfactory sensory neurons, which grow axons back through the cribriform plate to the olfactory bulb. Olfactory sensory neurons are among the few neurons replaced throughout life.",
+      "options": [
+        "Correct. They rebuild the epithelium, and smell returns over weeks to months.",
+        "Taste bud basal cells replace gustatory receptor cells, not olfactory neurons.",
+        "Cortical neurons do not regrow the sensory neurons in the nose.",
+        "Supporting cells surround and support the neurons; the new neurons come from the basal stem cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients", "communication"],
+    "q": "In most neurons, opening chloride channels makes the inside more negative. In an olfactory sensory neuron, opening chloride channels depolarizes the cell. Why?",
+    "options": [
+      "Chloride in olfactory neurons carries a positive charge",
+      "These neurons hold so much chloride inside that Cl− flows out",
+      "Chloride channels in olfactory neurons let Na+ through as well",
+      "cAMP reverses the direction of every ion gradient in the cilia"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Olfactory sensory neurons keep chloride unusually high inside. When the channels open, Cl− moves down its gradient out of the cell. Negative charge leaving makes the inside less negative, so the cell depolarizes.",
+      "options": [
+        "Chloride is always a negative ion. What differs is the direction it moves.",
+        "Correct. Negative ions leaving make the inside less negative.",
+        "These channels pass chloride. Na+ enters through the separate cAMP-gated cation channels.",
+        "cAMP opens cation channels; it does not change ion gradients. The chloride gradient is set by how much chloride these neurons accumulate."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "The burning feeling from chili peppers is carried mainly by which sensory receptors?",
+    "options": [
+      "Gustatory receptor cells for sour",
+      "Olfactory sensory neurons",
+      "Heat-sensitive nociceptor endings of the trigeminal nerve",
+      "Gustatory receptor cells for bitter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Capsaicin in chili opens the same heat-sensitive channels that real heat opens, on free nerve endings of the trigeminal nerve. The brain reads their signal as burning. It is not one of the five taste qualities.",
+      "options": [
+        "Sour cells respond to hydrogen ions. Capsaicin does not act through them.",
+        "Olfactory neurons detect odorants in the nose; the burn is felt in the mouth by pain-sensing endings.",
+        "Correct. The burn is a pain and heat signal, not a taste.",
+        "Bitter cells respond to bitter compounds through their own receptor proteins, not to capsaicin's heat channel."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-senses-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "You drink a sweeter and a less sweet soda. Gustatory receptor cells fire no action potentials. How does the stronger sweetness reach your brain as a stronger signal?",
+    "options": [
+      "The taste cells release neurotransmitter onto sensory neurons at a higher rate, and those neurons fire faster",
+      "Each action potential in the taste nerve becomes larger",
+      "Sugar molecules travel along the facial nerve to the medulla",
+      "The taste cells fire action potentials only for strong stimuli"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "More sugar binds more receptor proteins, so the taste cell's receptor potential grows and it releases more neurotransmitter. The sensory neuron then fires action potentials more often. Stimulus strength is coded by frequency.",
+      "options": [
+        "Correct. A bigger receptor potential means more release and a higher firing rate in the sensory neuron.",
+        "Action potentials are all-or-none: they do not get bigger. Strength is coded by how often they fire.",
+        "Nerves carry electrical signals, not the tastant molecules themselves.",
+        "Gustatory receptor cells are epithelial cells and do not fire action potentials at any stimulus strength."
+      ]
+    }
+  }
+]

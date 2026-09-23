@@ -1,0 +1,12 @@
+{
+  "taste-smell-structures": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 960,
+    "h": 520,
+    "alt": "Two panels. Left, a taste bud: an onion-shaped cluster of long, thin gustatory receptor cells set into the epithelium of the tongue, with microvilli at their tips reaching into a small taste pore at the surface, basal cells at the base of the bud, and orange sensory nerve fibers entering from below and wrapping the receptor cells. Right, the olfactory epithelium in the roof of the nose, with the bone above and the airway below. Orange olfactory sensory neurons sit between tall supporting cells, with basal stem cells along the deep side. Each neuron sends a dendrite down to the surface, where its cilia spread in a layer of mucus that odorant molecules dissolve into, and an axon up through a hole in the cribriform plate to synapse in the olfactory bulb, which continues backward as the olfactory tract. Two of the axons end together on one small cluster of synapses.",
+    "labels": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "topic": "motor-pathways",
+  "hook": "<p>Mr. Okoro, 64, woke up unable to lift his right arm or leg. A month later his right arm is stiff and flexed, his right knee jerks briskly at the lightest tap, and when his doctor strokes the sole of his right foot, his big toe rises instead of curling down. His neighbor on the ward cannot lift her right foot either, but her leg is floppy, its muscles are wasting and small twitches ripple under the skin. Same weakness, opposite signs: one lost an upper motor neuron, the other a lower one.</p>",
+  "prereq": [
+    {
+      "q": "Where is the primary motor cortex?",
+      "options": ["The postcentral gyrus", "The precentral gyrus", "The occipital lobe"],
+      "correct": 1,
+      "why": "The primary motor cortex is the precentral gyrus, just in front of the central sulcus. The postcentral gyrus behind it is the primary somatosensory cortex.",
+      "review": "higher-functions"
+    },
+    {
+      "q": "Where do the cell bodies of the motor neurons that drive skeletal muscles of the leg sit?",
+      "options": ["In the dorsal root ganglion", "In the dorsal horn", "In the ventral horn"],
+      "correct": 2,
+      "why": "Motor neurons for skeletal muscle have their cell bodies in the ventral horn and send axons out through the ventral root. The dorsal horn and dorsal root ganglion are sensory.",
+      "review": "spinal-cord"
+    },
+    {
+      "q": "Where does the spinothalamic tract cross the midline?",
+      "options": ["In the spinal cord, within a segment or two of entry", "In the medulla oblongata", "In the thalamus"],
+      "correct": 0,
+      "why": "Second-order spinothalamic axons cross in the spinal cord close to where the signal entered. The dorsal column pathway is the one that crosses in the medulla.",
+      "review": "sensory-pathways"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-14-28",
+    "caption": "The corticospinal tract from the precentral gyrus to a lower motor neuron. Hide the labels and trace the path: cerebral peduncle, pyramids, the decussation of the pyramids, then the lateral corticospinal tract."
+  },
+  "chain": [
+    { "cause": "An upper motor neuron in the left precentral gyrus fires an action potential.", "effect": "The action potential travels down its axon through the internal capsule, the cerebral peduncle, the pons and the left pyramid of the medulla." },
+    { "cause": "The axon reaches the pyramidal decussation at the bottom of the medulla.", "effect": "It crosses the midline and descends in the right lateral corticospinal tract." },
+    { "cause": "At its target segment, the axon ends in the right ventral horn and releases glutamate.", "effect": "A lower motor neuron there depolarizes to threshold and fires." },
+    { "cause": "The lower motor neuron's action potential travels out through the ventral root and a spinal nerve.", "effect": "It releases acetylcholine at the neuromuscular junction, and the muscle fibers of its motor unit on the right side of the body contract." },
+    { "cause": "While the movement runs, the cerebellum compares the command with proprioceptor signals, and the basal nuclei keep competing movements braked.", "effect": "Corrections through the thalamus to the motor cortex make the movement accurate and smooth." }
+  ],
+  "misconception": {
+    "wrong": "Any damage to the motor system makes muscles weak and floppy.",
+    "right": "Only lower motor neuron damage makes a limb floppy for good, because the final common pathway to the muscle is gone. Upper motor neuron damage leaves the lower motor neurons and their spinal circuits intact but frees them from the brain's control, so after an early floppy phase the limb becomes stiff (spastic), with brisk tendon jerks and a Babinski sign. The signs point to which neuron is damaged."
+  },
+  "check": ["anp-motor-pathways-2", "anp-motor-pathways-4", "anp-motor-pathways-6", "anp-motor-pathways-8", "anp-motor-pathways-11", "anp-motor-pathways-13", "anp-motor-pathways-16"],
+  "summary": "<p>Voluntary movement uses two neurons. The upper motor neuron sits in the motor cortex or brainstem and stays in the CNS; the lower motor neuron sits in the ventral horn or a cranial nerve nucleus and is the final common pathway to skeletal muscle. The corticospinal (pyramidal) tract runs from the cortex through the internal capsule, cerebral peduncles, pons and pyramids; about 85–90% crosses at the pyramidal decussation in the lower medulla and descends as the lateral corticospinal tract to the limbs, while the anterior corticospinal tract serves the trunk. The corticobulbar tract drives the cranial nerve nuclei, mostly from both sides, except the lower face. Brainstem tracts (vestibulospinal, reticulospinal, tectospinal, rubrospinal) control posture and tone. The basal nuclei select movements through a direct (go) and an indirect (stop) pathway, and dopamine favors go. The cerebellum's three divisions correct balance, posture and skilled movement through its three peduncles, and its damage shows on the same side. Lower motor neuron damage causes flaccid weakness, lost tendon jerks, atrophy and fasciculations; upper motor neuron damage causes spastic weakness, hyperreflexia and a Babinski sign.</p>",
+  "connections": []
+}

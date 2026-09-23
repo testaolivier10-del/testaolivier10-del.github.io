@@ -1,0 +1,32 @@
+{
+  "umn-lmn": {
+    "def": "The two neurons of a voluntary motor command. An upper motor neuron has its cell body in the motor cortex or a brainstem nucleus and its axon inside the CNS; a lower motor neuron has its cell body in the ventral horn or a cranial nerve motor nucleus and sends its axon to skeletal muscle, the final common pathway.",
+    "roots": [],
+    "say": ""
+  },
+  "corticospinal": {
+    "def": "The main tract for voluntary movement, running from the cerebral cortex through the internal capsule, cerebral peduncles, pons and pyramids of the medulla. About 85–90% of its axons cross at the pyramidal decussation and descend as the lateral corticospinal tract; the rest form the anterior corticospinal tract. The corticobulbar tract is its branch to the cranial nerve motor nuclei.",
+    "roots": [["cortic-", "bark, the cortex"], ["spin-", "spine"], ["bulb-", "bulb, the old name for the brainstem"], ["decuss-", "to cross like an X"]],
+    "say": "KOR-tih-koh-SPY-nul"
+  },
+  "motor-modulation": {
+    "def": "The basal nuclei and cerebellum shape movement without sending commands to the spinal cord. The basal nuclei select movements through a direct (go) pathway and an indirect (stop) pathway acting on the thalamus; the cerebellum compares intended and actual movement and corrects it. Motor pathways outside the pyramidal tract were once called the extrapyramidal system.",
+    "roots": [["extra-", "outside"]],
+    "say": ""
+  },
+  "motor-lesions": {
+    "def": "Upper motor neuron damage causes spastic paralysis with hyperreflexia (brisk tendon jerks), a Babinski sign (the big toe extends when the sole is stroked) and little wasting. Lower motor neuron damage causes flaccid paralysis with lost tendon jerks, marked atrophy and fasciculations. Paresis is partial weakness.",
+    "roots": [["spast-", "to pull"], ["flaccid", "floppy"], ["fasciculus", "little bundle"], ["hyper-", "over"], ["plant-", "sole of the foot"]],
+    "say": "bah-BIN-skee"
+  },
+  "cerebellar-divisions": {
+    "def": "The cerebellum has a midline vermis, two lateral hemispheres and a small flocculonodular lobe underneath. Functionally, the vestibulocerebellum (flocculonodular lobe) handles balance and eye movement, the spinocerebellum (vermis and nearby strip) posture and ongoing movement, and the cerebrocerebellum (lateral hemispheres) planning skilled movement. Inferior, middle and superior cerebellar peduncles join it to the medulla, pons and midbrain.",
+    "roots": [["vermis", "worm"], ["flocculus", "tuft of wool"], ["nodulus", "small knot"], ["pedunculus", "little foot"]],
+    "say": "FLOK-yoo-loh-NOD-yoo-ler"
+  },
+  "descending-brainstem-tracts": {
+    "def": "Motor tracts from brainstem upper motor neurons to the spinal cord: the vestibulospinal tract (balance and antigravity posture), the reticulospinal tracts (tone, posture and walking), the tectospinal tract (turning the head toward a sight or sound) and the rubrospinal tract from the red nucleus (arm flexors; small in humans).",
+    "roots": [["rubr-", "red"], ["tect-", "roof"], ["vestibul-", "entrance hall, the inner ear"]],
+    "say": ""
+  }
+}

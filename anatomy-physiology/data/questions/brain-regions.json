@@ -413,7 +413,7 @@
       "The cerebral cortex plans a movement and signals the striatum",
       "The striatum signals the globus pallidus",
       "The globus pallidus signals the cerebellum",
-      "The loop returns to the cerebral cortex, and the movement starts"
+      "The loop returns to the cerebral cortex through the thalamus, and the movement starts"
     ],
     "correct": 2,
     "why": {
@@ -464,7 +464,7 @@
     "options": [
       "Loss of the sense of smell",
       "Loss of the rhythm of breathing and control of the heart",
-      "Loss of the ability to form new memories",
+      "Loss of the ability to form new memories of events",
       "Loss of coordination on one side of the body"
     ],
     "correct": 1,
@@ -545,7 +545,7 @@
       "They are made of white matter, and a ganglion is made of gray matter",
       "They lie in the brainstem, and ganglia lie only in the cerebrum",
       "They contain glial cells only, and a ganglion contains neurons",
-      "They are clusters of neuron cell bodies inside the CNS, and a ganglion is a cluster outside it"
+      "They are clusters of cell bodies inside the CNS; a ganglion lies outside it"
     ],
     "correct": 3,
     "why": {
