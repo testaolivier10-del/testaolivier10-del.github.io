@@ -108,7 +108,7 @@
   {
     "id": "anp-conduction-system-5",
     "type": "order",
-    "level": "apply",
+    "level": "recall",
     "diff": 1,
     "core": [
       "communication"
@@ -135,7 +135,7 @@
       "communication"
     ],
     "misconception": "the SA node is the only cell that can pace the heart",
-    "q": "Mr. Haddad, 74, faints at a grocery store. His atria are contracting regularly at 76 per minute, but his ventricles contract regularly at only 34 per minute, and the two rhythms have no fixed relationship. Tests show his AV node no longer conducts. Which cells are setting his ventricular rate?",
+    "q": "Mr. Haddad, 74, faints at a grocery store. His atria are contracting regularly at 76 per minute, but his ventricles contract regularly at only 34 per minute, and the two rhythms have no fixed relationship. Tests show that no signals cross from his atria to his ventricles. Which cells are setting his ventricular rate?",
     "options": [
       "SA node cells, firing more slowly than usual",
       "Atrial muscle cells, passing their signal to the ventricles through a second pathway",
@@ -144,11 +144,11 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "With the AV node not conducting, SA node signals no longer reach the ventricles, so nothing resets the ventricular conducting cells. The fastest of them, in the bundle, bundle branches or Purkinje fibers, reaches threshold on its own at about 20 to 40 per minute.",
+      "correct": "With no signals crossing to the ventricles, SA node signals no longer reset the ventricular conducting cells. The fastest of them, in the bundle branches or Purkinje fibers, reaches threshold on its own at about 20 to 40 per minute.",
       "options": [
         "The SA node is still firing at 76 per minute: that is the atrial rate. Its signals cannot reach the ventricles.",
         "The cardiac skeleton insulates the atria from the ventricles. There is no second path for atrial signals to take.",
-        "Correct. A rate of 34 fits the intrinsic rate of the ventricular conduction system, and it is independent of the atrial rate.",
+        "Correct. A rate of 34 fits the intrinsic rate of the bundle branches and Purkinje fibers, and it is independent of the atrial rate.",
         "Contractile cells have a stable resting potential. They do not drift to threshold, so they cannot set a rhythm."
       ]
     }
@@ -222,8 +222,8 @@
     ],
     "q": "Fill the gap in this sequence in an SA node cell. The cell repolarizes to about −60 mV → ______ → Na⁺ moves into the cell → the membrane potential climbs slowly → T-type Ca²⁺ channels open → threshold is reached.",
     "options": [
-      "HCN channels open, starting the funny current",
-      "Fast sodium channels open",
+      "HCN channels open (the funny current)",
+      "Fast sodium channels open and let Na⁺ in",
       "L-type calcium channels open",
       "The sodium–potassium pump stops"
     ],

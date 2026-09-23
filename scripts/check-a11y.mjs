@@ -42,7 +42,7 @@ const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
 const require = createRequire(import.meta.url);
 
-/* One page per SHAPE of page, not one per page. These thirteen cover every
+/* One page per SHAPE of page, not one per page. These cover every
    template on the site: if a lesson is accessible, all 58 built on the same
    engine are, and a violation in one of them is a violation in the engine. */
 const PAGES = [
@@ -63,6 +63,12 @@ const PAGES = [
   // in for all eight: it renders the shell, the quiz and a page of controls.
   ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
   ['/privacy.html', 'a prose page with controls'],
+  // The A&P course: its own generator and runtime, so its own shapes.
+  ['/anatomy-physiology/', 'the A&P course home'],
+  ['/anatomy-physiology/lessons/heart-chambers-valves.html', 'an A&P lesson with a masked figure'],
+  ['/anatomy-physiology/notes/cardiac-cycle.html', 'an A&P notes page with SVG diagrams'],
+  ['/anatomy-physiology/exams.html', 'the A&P exams app'],
+  ['/anatomy-physiology/tools/predict.html', 'an A&P reasoning tool'],
 ];
 
 /* Rules that fail the build regardless of how axe rates them, because this

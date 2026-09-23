@@ -7984,6 +7984,756 @@
    ]
   },
   {
+   "id": "vessel-walls",
+   "title": "Vessel walls: arteries, capillaries and veins",
+   "chapter": "cardiovascular",
+   "topic": "vessel-structure",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-20-4",
+     "topic": "vessel-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "elastic-artery",
+       "name": "Elastic artery",
+       "accept": [
+        "elastic arteries",
+        "conducting artery"
+       ],
+       "box": [
+        4,
+        9,
+        71,
+        43
+       ],
+       "concept": "artery-types",
+       "taught": "vessel-structure",
+       "fn": "The largest arteries, next to the heart, such as the aorta and pulmonary trunk. Their tunica media holds many sheets of elastic fibers that stretch with each ejection and recoil between beats, so pressure and flow do not drop to zero in diastole.",
+       "follow": {
+        "q": "Why does pressure in the aorta stay near 80 mm Hg between heartbeats instead of falling to zero?",
+        "options": [
+         "Elastic fibers stretched during ejection recoil and keep pushing blood onward",
+         "The smooth muscle of the aorta contracts in rhythm with the heart",
+         "The aortic valve leaks a little blood back into the aorta",
+         "Veins push blood back into the aorta"
+        ],
+        "correct": 0,
+        "why": "During ejection the elastic wall stretches and stores some of the energy of the beat. When the aortic valve closes the fibers recoil, squeezing blood onward during diastole. A stiffer aorta, as with age, recoils less and pressure falls lower between beats.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tunica-externa",
+       "name": "Tunica externa",
+       "accept": [
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+       ],
+       "box": [
+        285,
+        8,
+        74,
+        40
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The outer coat of the elastic artery: connective tissue, mostly collagen, that anchors the vessel to nearby tissue and limits stretching. In the largest vessels it carries the vasa vasorum that feed the outer wall."
+      },
+      {
+       "id": "tunica-media",
+       "name": "Tunica media",
+       "accept": [
+        "media"
+       ],
+       "box": [
+        285,
+        54,
+        65,
+        39
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The middle coat of the elastic artery. Smooth muscle cells lie between many layers of elastic fibers, so this wall acts mainly as a rubbery pressure reservoir."
+      },
+      {
+       "id": "tunica-intima",
+       "name": "Tunica intima",
+       "accept": [
+        "intima",
+        "tunica interna"
+       ],
+       "box": [
+        285,
+        112,
+        65,
+        39
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The lining of the elastic artery: endothelium (simple squamous epithelium) on a basement membrane, with a thin layer of connective tissue and an internal elastic membrane. It gives blood a smooth surface."
+      },
+      {
+       "id": "muscular-artery",
+       "name": "Muscular artery",
+       "accept": [
+        "muscular arteries",
+        "distributing artery"
+       ],
+       "box": [
+        419,
+        9,
+        93,
+        43
+       ],
+       "concept": "artery-types",
+       "taught": "vessel-structure",
+       "fn": "A medium-sized, named artery that carries blood to one organ or region. Its thick tunica media is mostly smooth muscle, so nerves can narrow or widen it and shift blood between regions.",
+       "follow": {
+        "q": "What does the thick smooth muscle of a muscular artery allow that an elastic artery cannot do as well?",
+        "options": [
+         "Change its diameter to adjust how much blood reaches a region",
+         "Store energy from each heartbeat and release it in diastole",
+         "Exchange gases with the tissue around it",
+         "Hold blood in reserve at low pressure"
+        ],
+        "correct": 0,
+        "why": "Muscular arteries have fewer elastic fibers and many layers of smooth muscle. When sympathetic nerves change how contracted that muscle is, the vessel narrows or widens and the share of blood going to that region changes.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tunica-externa-muscular",
+       "name": "Tunica externa",
+       "accept": [
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+       ],
+       "box": [
+        648,
+        16,
+        74,
+        40
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The outer collagen coat of the muscular artery. It is relatively thick here and anchors the artery to the tissues it runs through."
+      },
+      {
+       "id": "tunica-media-muscular",
+       "name": "Tunica media",
+       "accept": [
+        "media"
+       ],
+       "box": [
+        648,
+        64,
+        66,
+        40
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The middle coat of the muscular artery, and its thickest layer: many rings of smooth muscle with few elastic fibers. Its contraction narrows the vessel (vasoconstriction); its relaxation widens it (vasodilation)."
+      },
+      {
+       "id": "tunica-intima-muscular",
+       "name": "Tunica intima",
+       "accept": [
+        "intima",
+        "tunica interna"
+       ],
+       "box": [
+        648,
+        108,
+        66,
+        40
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The lining of the muscular artery: endothelium on a basement membrane, edged by a wavy internal elastic membrane. Endothelial cells release signals that act on the smooth muscle beneath them."
+      },
+      {
+       "id": "arteriole",
+       "name": "Arteriole",
+       "accept": [
+        "arterioles"
+       ],
+       "box": [
+        767,
+        9,
+        88,
+        19
+       ],
+       "concept": "arteriole",
+       "taught": "vessel-structure",
+       "fn": "The smallest artery, under about 0.1 mm across, with one to a few layers of smooth muscle. Because resistance depends so steeply on radius, arterioles are the main resistance vessels and decide how much blood each capillary bed receives.",
+       "follow": {
+        "q": "Halving an arteriole's radius raises its resistance to flow about how much?",
+        "options": [
+         "16-fold",
+         "2-fold",
+         "4-fold",
+         "8-fold"
+        ],
+        "correct": 0,
+        "why": "Resistance varies with 1 divided by the radius to the fourth power. Half the radius gives 2 to the fourth, or 16 times the resistance. That is why small changes in arteriolar tone make large changes in flow and pressure.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "tunica-externa-arteriole",
+       "name": "Tunica externa",
+       "accept": [
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+       ],
+       "box": [
+        1025,
+        10,
+        74,
+        39
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The thin outer connective tissue coat of the arteriole. In the smallest arterioles it is only a few scattered fibers."
+      },
+      {
+       "id": "tunica-media-arteriole",
+       "name": "Tunica media",
+       "accept": [
+        "media"
+       ],
+       "box": [
+        1024,
+        64,
+        67,
+        40
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The arteriole's one to a few layers of smooth muscle. Kept partly contracted all the time (vascular tone), it can narrow or widen the arteriole and so control flow into the capillaries beyond."
+      },
+      {
+       "id": "tunica-intima-arteriole",
+       "name": "Tunica intima",
+       "accept": [
+        "intima",
+        "tunica interna"
+       ],
+       "box": [
+        1027,
+        133,
+        65,
+        40
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The endothelial lining of the arteriole, on its basement membrane. It is the only layer that continues on into the capillaries."
+      }
+     ]
+    },
+    {
+     "figure": "os-20-5",
+     "topic": "vessel-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "continuous-capillary",
+       "name": "Continuous",
+       "accept": [
+        "continuous capillary",
+        "continuous capillaries"
+       ],
+       "box": [
+        279,
+        9,
+        129,
+        22
+       ],
+       "concept": "capillary-types",
+       "taught": "vessel-structure",
+       "fn": "The most common capillary type: an unbroken sheet of endothelial cells on a complete basement membrane. Water and small solutes pass through the narrow clefts between cells; proteins and blood cells stay inside. Found in skin, muscle and connective tissue.",
+       "follow": {
+        "q": "A continuous capillary lets glucose through but keeps plasma proteins in the blood. What explains that?",
+        "options": [
+         "The only route across is narrow clefts between endothelial cells, too small for large proteins",
+         "Its endothelial cells have large pores that only glucose fits through",
+         "Its basement membrane is incomplete",
+         "Smooth muscle in its wall squeezes proteins back"
+        ],
+        "correct": 0,
+        "why": "In a continuous capillary the endothelial cells form an unbroken sheet on a complete basement membrane. Small solutes such as glucose and ions slip through the thin clefts between cells, but large proteins are too big, so they stay in the plasma.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "fenestrated-capillary",
+       "name": "Fenestrated",
+       "accept": [
+        "fenestrated capillary",
+        "fenestrated capillaries"
+       ],
+       "box": [
+        564,
+        9,
+        130,
+        22
+       ],
+       "concept": "capillary-types",
+       "taught": "vessel-structure",
+       "fn": "A capillary with small pores through the endothelial cells themselves, on an intact basement membrane. The pores let fluid and small molecules cross much faster, where tissues filter or absorb a lot of fluid, such as the lining of the intestine and hormone-releasing glands."
+      },
+      {
+       "id": "sinusoid-capillary",
+       "name": "Sinusoid",
+       "accept": [
+        "sinusoid capillary",
+        "sinusoidal capillary",
+        "sinusoids",
+        "discontinuous capillary"
+       ],
+       "box": [
+        856,
+        9,
+        101,
+        22
+       ],
+       "concept": "capillary-types",
+       "taught": "vessel-structure",
+       "fn": "A wide, twisting capillary with large gaps between endothelial cells and an incomplete basement membrane. Proteins and even whole blood cells can pass, as in the liver, spleen and red bone marrow.",
+       "follow": {
+        "q": "Why would red bone marrow need sinusoid capillaries rather than continuous ones?",
+        "options": [
+         "Newly made blood cells must be able to pass through the wall into the blood",
+         "Bone marrow needs a higher blood pressure",
+         "Sinusoids keep proteins out of the marrow",
+         "Sinusoids have more smooth muscle to control flow"
+        ],
+        "correct": 0,
+        "why": "Sinusoids have large gaps between endothelial cells and an incomplete basement membrane, so whole cells can cross. New blood cells made in the marrow enter the circulation that way; a continuous capillary would hold them back.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "basement-membrane",
+       "name": "Basement membrane",
+       "accept": [
+        "basal lamina"
+       ],
+       "box": [
+        4,
+        149,
+        213,
+        22
+       ],
+       "concept": "basement-membrane",
+       "taught": "epithelium",
+       "fn": "The thin sheet of protein fibers under the endothelium, made partly by the endothelial cells. In continuous and fenestrated capillaries it is complete and acts as an extra filter."
+      },
+      {
+       "id": "endothelial-layer",
+       "name": "Endothelial layer (tunica intima)",
+       "accept": [
+        "endothelium",
+        "tunica intima",
+        "endothelial cells"
+       ],
+       "box": [
+        4,
+        197,
+        167,
+        50
+       ],
+       "concept": "simple-squamous",
+       "taught": "epithelium",
+       "fn": "The capillary wall itself: a single layer of flat endothelial cells, the same simple squamous lining as the tunica intima of larger vessels. With no muscle or outer coat, the diffusion distance between blood and tissue is tiny."
+      },
+      {
+       "id": "incomplete-basement-membrane",
+       "name": "Incomplete basement membrane",
+       "accept": [
+        "basement membrane",
+        "discontinuous basement membrane"
+       ],
+       "box": [
+        985,
+        270,
+        115,
+        69
+       ],
+       "concept": "capillary-types",
+       "taught": "vessel-structure",
+       "fn": "The broken, patchy basement membrane of a sinusoid. Together with the wide gaps between its cells, it lets proteins and cells cross the wall."
+      },
+      {
+       "id": "intercellular-gap",
+       "name": "Intercellular gap",
+       "accept": [
+        "intercellular gaps",
+        "gap"
+       ],
+       "box": [
+        885,
+        382,
+        161,
+        26
+       ],
+       "concept": "capillary-types",
+       "taught": "vessel-structure",
+       "fn": "A wide opening between neighboring endothelial cells in a sinusoid, large enough for proteins and blood cells to pass."
+      },
+      {
+       "id": "intercellular-cleft",
+       "name": "Intercellular cleft",
+       "accept": [
+        "intercellular clefts",
+        "cleft"
+       ],
+       "box": [
+        52,
+        386,
+        164,
+        22
+       ],
+       "concept": "capillary-types",
+       "taught": "vessel-structure",
+       "fn": "A narrow slit between neighboring endothelial cells in a continuous capillary. Water, ions and small solutes such as glucose move through it; large proteins do not."
+      }
+     ],
+     "covered": [
+      {
+       "id": "fenestrations",
+       "box": [
+        554,
+        386,
+        138,
+        22
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-20-7",
+     "topic": "vessel-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "large-vein",
+       "name": "Large vein",
+       "accept": [
+        "large veins"
+       ],
+       "box": [
+        8,
+        16,
+        165,
+        32
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "A large vein near the heart, such as a vena cava. Pressure inside is low, so its tunica media is thin; its thickest layer is the collagen-rich tunica externa, which also holds bundles of smooth muscle running along its length.",
+       "follow": {
+        "q": "Compared with an artery of similar size, a vein has a thinner tunica media and a wider lumen. Why does that suit it?",
+        "options": [
+         "Blood in veins is at low pressure, so the wall needs little muscle and the wide, stretchy vessel can hold a large volume of blood",
+         "Veins must withstand higher pressure than arteries",
+         "Veins exchange gases through their walls",
+         "A thin wall keeps blood from flowing backward"
+        ],
+        "correct": 0,
+        "why": "Most of the pressure from the heart is used up in the arterioles and capillaries, so veins carry blood at low pressure. A thin, compliant wall with a wide lumen lets them hold much of the blood volume; valves, not wall thickness, stop backflow.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tunica-externa",
+       "name": "Tunica externa",
+       "accept": [
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+       ],
+       "box": [
+        596,
+        51,
+        216,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The outer coat of the large vein, and its thickest layer: collagen-rich connective tissue with longitudinal bundles of smooth muscle, the vasa vasorum and the nervi vasorum."
+      },
+      {
+       "id": "tunica-media",
+       "name": "Tunica media",
+       "accept": [
+        "media"
+       ],
+       "box": [
+        596,
+        107,
+        198,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The middle coat of the large vein: only a thin layer of smooth muscle with few elastic fibers, because the pressure it faces is low."
+      },
+      {
+       "id": "tunica-intima",
+       "name": "Tunica intima",
+       "accept": [
+        "intima",
+        "tunica interna"
+       ],
+       "box": [
+        596,
+        167,
+        195,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The endothelial lining of the large vein on its basement membrane, giving blood a smooth surface to flow over."
+      },
+      {
+       "id": "smooth-muscle-cell-tunica-externa",
+       "name": "Smooth muscle cell in tunica externa",
+       "accept": [
+        "smooth muscle cell",
+        "smooth muscle",
+        "smooth muscle cells"
+       ],
+       "box": [
+        597,
+        230,
+        282,
+        65
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "Smooth muscle cells running lengthwise in the tunica externa of a large vein. They are a feature of the largest veins; in arteries the smooth muscle sits in the tunica media instead."
+      },
+      {
+       "id": "vasa-vasorum",
+       "name": "Vasa vasorum",
+       "accept": [],
+       "box": [
+        597,
+        322,
+        208,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "Tiny blood vessels in the outer wall of a large vessel, the \"vessels of the vessels.\" Nutrients from the lumen diffuse only a short way, so these supply the outer layers of a thick wall.",
+       "follow": {
+        "q": "Why do large vessels need vasa vasorum, while capillaries do not?",
+        "options": [
+         "Nutrients diffuse only a short distance from the lumen, so a thick wall needs its own supply from outside",
+         "Large vessels carry blood with too little oxygen for any cell",
+         "Vasa vasorum carry the nerve signals to the wall",
+         "Vasa vasorum drain excess fluid from the lumen"
+        ],
+        "correct": 0,
+        "why": "A capillary wall is one cell thick, so every cell is right next to the blood. The outer layers of a large artery or vein are too far from the lumen for diffusion to feed them, so small vessels in the tunica externa supply them.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "nervi-vasorum",
+       "name": "Nervi vasorum",
+       "accept": [],
+       "box": [
+        328,
+        426,
+        213,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "Nerves in the vessel wall, the \"nerves of the vessels.\" They are sympathetic fibers that reach the smooth muscle and control how contracted it is."
+      },
+      {
+       "id": "medium-sized-vein",
+       "name": "Medium-sized vein",
+       "accept": [
+        "medium vein",
+        "medium-sized veins"
+       ],
+       "box": [
+        5,
+        548,
+        289,
+        29
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "A vein of the limbs and organs. It has a thin tunica media, a thicker tunica externa and, especially in the limbs, valves that keep blood moving toward the heart."
+      },
+      {
+       "id": "tunica-externa-medium",
+       "name": "Tunica externa",
+       "accept": [
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+       ],
+       "box": [
+        596,
+        576,
+        216,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The outer collagen coat of the medium-sized vein, its thickest layer, which anchors it to surrounding tissue."
+      },
+      {
+       "id": "tunica-media-medium",
+       "name": "Tunica media",
+       "accept": [
+        "media"
+       ],
+       "box": [
+        596,
+        627,
+        198,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The thin middle coat of the medium-sized vein: a few layers of smooth muscle with little elastic tissue."
+      },
+      {
+       "id": "tunica-intima-medium",
+       "name": "Tunica intima",
+       "accept": [
+        "intima",
+        "tunica interna"
+       ],
+       "box": [
+        596,
+        696,
+        195,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The endothelial lining of the medium-sized vein. Its folds form the venous valves."
+      },
+      {
+       "id": "valves",
+       "name": "Valves (closed)",
+       "accept": [
+        "venous valves",
+        "venous valve",
+        "valve"
+       ],
+       "box": [
+        597,
+        819,
+        112,
+        63
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "Venous valves: paired flaps formed from folds of the tunica intima. Blood flowing toward the heart pushes them open; blood starting to fall back fills their pockets and snaps them shut.",
+       "follow": {
+        "q": "Venous valves in the legs fail and blood pools in superficial veins. Which change follows?",
+        "options": [
+         "The veins stretch and bulge because blood falls back and collects in them",
+         "Arterial pressure in the legs falls to zero",
+         "Blood flows faster back to the heart",
+         "The capillaries of the legs stop filling"
+        ],
+        "correct": 0,
+        "why": "Valves hold up the column of blood between the muscle squeezes that push it upward. When they fail, blood falls back and pools; the thin-walled veins stretch and twist into varicose veins.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "venule",
+       "name": "Venule",
+       "accept": [
+        "venules"
+       ],
+       "box": [
+        4,
+        1081,
+        113,
+        29
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "The smallest vein, draining a capillary bed. The first venules are little more than endothelium; larger ones gain a thin coat of smooth muscle. Their walls are leaky enough for white blood cells to squeeze out into tissue."
+      },
+      {
+       "id": "tunica-externa-venule",
+       "name": "Tunica externa",
+       "accept": [
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+       ],
+       "box": [
+        596,
+        1084,
+        216,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The thin outer connective tissue coat of the venule."
+      },
+      {
+       "id": "tunica-media-venule",
+       "name": "Tunica media",
+       "accept": [
+        "media"
+       ],
+       "box": [
+        596,
+        1117,
+        198,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The venule's middle coat: at most a thin layer of smooth muscle, absent in the smallest venules."
+      },
+      {
+       "id": "tunica-intima-venule",
+       "name": "Tunica intima",
+       "accept": [
+        "intima",
+        "tunica interna"
+       ],
+       "box": [
+        596,
+        1151,
+        195,
+        29
+       ],
+       "concept": "vessel-tunics",
+       "taught": "vessel-structure",
+       "fn": "The endothelial lining of the venule, continuous with the endothelium of the capillaries that drain into it."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "major-arteries",
    "title": "Major arteries",
    "chapter": "cardiovascular",
@@ -12041,6 +12791,33 @@
    "alt": "The heart cut open in a frontal plane, seen from the front, with its conduction pathway drawn as yellow lines. A small node sits high in the wall of the right upper chamber near where the large vein from above enters. Three pathways run from it down through the right upper chamber to a second node low in the wall between the upper chambers, and a band crosses to the left upper chamber. From the second node a single bundle runs into the wall between the lower chambers, splits into right and left branches that run down toward the tip, and then fans out as fine fibers up the walls of both lower chambers.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.18",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity",
+   "license": "CC BY 4.0"
+  },
+  "os-20-4": {
+   "src": "figures/os-20-4.jpg",
+   "w": 1100,
+   "h": 280,
+   "alt": "Three curved wedges of vessel wall side by side, each with its inner, middle and outer layers bracketed. The elastic artery has a thick middle layer packed with wavy dark elastic fibers. The muscular artery has a thick middle layer of smooth muscle, a wavy inner elastic line, and small vessels in its outer layer. The arteriole has a thin wall with only a few large smooth muscle cells in its middle layer.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+   "license": "CC BY 4.0"
+  },
+  "os-20-5": {
+   "src": "figures/os-20-5.jpg",
+   "w": 1100,
+   "h": 415,
+   "alt": "Three short capillary tubes cut open at one end. The first has an unbroken wall of endothelial cells wrapped in a complete basement membrane, with narrow clefts between cells. The second has a similar wall dotted with small pores through the cells. The third has large gaps between cells and a basement membrane with holes in it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+   "license": "CC BY 4.0"
+  },
+  "os-20-7": {
+   "src": "figures/os-20-7.jpg",
+   "w": 1100,
+   "h": 1490,
+   "alt": "Wedges of wall from three veins with their layers bracketed. The large vein has a thick outer layer containing small vessels, nerves and some smooth muscle, over a thin middle layer. The medium vein has a thin middle layer and paired flaps projecting into the lumen, shown closed, with a side view of the flaps. The venule has a very thin wall of lining cells and a trace of muscle.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
    "license": "CC BY 4.0"
   },
   "os-20-24": {

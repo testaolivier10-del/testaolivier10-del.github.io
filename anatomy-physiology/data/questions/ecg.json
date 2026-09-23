@@ -60,21 +60,21 @@
       "communication"
     ],
     "figure": "os-19-23",
-    "q": "On the rhythm strip at the top of the figure, the tall R spikes are 4 large squares apart, and each large square is 0.20 second. What is the heart rate?",
+    "q": "On the rhythm strip at the top of the figure, count the large squares between two neighboring R spikes. Each large square is 0.20 second. What is the heart rate?",
     "options": [
       "60 beats per minute",
       "100 beats per minute",
       "75 beats per minute",
-      "48 beats per minute"
+      "375 beats per minute"
     ],
     "correct": 2,
     "why": {
-      "correct": "4 × 0.20 second = 0.80 second per beat, and 60 ÷ 0.80 = 75 beats per minute. The shortcut gives the same: 300 ÷ 4 = 75.",
+      "correct": "The R spikes are 4 large squares apart. 4 × 0.20 second = 0.80 second per beat, and 60 ÷ 0.80 = 75 beats per minute. The shortcut gives the same: 300 ÷ 4 = 75.",
       "options": [
         "60 per minute would need 5 large squares (1.0 second) between beats.",
         "100 per minute would need 3 large squares (0.60 second) between beats.",
-        "Correct. 300 ÷ 4 large squares = 75.",
-        "This treats each large square as 0.25 second, not 0.20."
+        "Correct. The R spikes are 4 large squares apart, and 300 ÷ 4 = 75.",
+        "This uses 0.04 second, the width of a small square, for each large square: 4 × 0.04 = 0.16 second, and 60 ÷ 0.16 = 375."
       ]
     }
   },
@@ -244,7 +244,7 @@
   {
     "id": "anp-ecg-10",
     "type": "order",
-    "level": "apply",
+    "level": "recall",
     "diff": 1,
     "core": [
       "communication"
@@ -272,7 +272,7 @@
     "q": "A student lists what each part of the ECG shows. One statement is wrong. Find it.",
     "options": [
       "The P wave shows atrial depolarization.",
-      "The PR interval is mostly the AV nodal delay.",
+      "The PR interval runs from the start of P to the start of QRS and is mostly the AV nodal delay.",
       "The QRS complex shows ventricular depolarization.",
       "The ST segment is flat because the ventricles are fully repolarized.",
       "The T wave shows ventricular repolarization."
@@ -441,12 +441,12 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "P waves and QRS complexes marching independently mean no signals cross from atria to ventricles: third-degree block. A rate of 36 with wide complexes fits a backup pacemaker in the ventricular conduction system, whose intrinsic rate is 20 to 40.",
+      "correct": "P waves and QRS complexes marching independently mean no signals cross from atria to ventricles: third-degree block. A rate of 36 with wide complexes fits a backup pacemaker in the bundle branches or Purkinje fibers, whose intrinsic rate is 20 to 40.",
       "options": [
         "The SA node is pacing the atria at 80. Its signals are not reaching the ventricles.",
         "An AV node pacemaker would usually give 40 to 60 per minute with narrow QRS complexes, because its signal would still use the bundle branches and Purkinje fibers.",
         "Atrial signals are not reaching the ventricles at all, so the atria cannot be pacing them.",
-        "Correct. The slow rate and wide QRS complexes both point below the AV node."
+        "Correct. The slow rate and wide QRS complexes both point to a pacemaker below the AV bundle."
       ]
     }
   },

@@ -87,20 +87,20 @@
       "structure-function"
     ],
     "figure": "os-20-5",
-    "q": "Liver cells make large proteins, such as albumin, that must enter the blood. Which capillary type shown in the figure fits the liver?",
+    "q": "Liver cells make large proteins, such as albumin, that must enter the blood. Using the wall structures shown in the figure, which capillary type fits the liver?",
     "options": [
-      "The one with large gaps between cells and an incomplete basement membrane",
-      "The one with an unbroken wall and complete basement membrane",
-      "The one with small pores through the cells on a complete basement membrane",
-      "None of them; the liver has no capillaries"
+      "Sinusoid (sinusoidal capillary)",
+      "Continuous capillary",
+      "Fenestrated capillary",
+      "None; the liver has no capillaries"
     ],
     "correct": 0,
     "why": {
       "correct": "Sinusoids have large gaps between endothelial cells and an incomplete basement membrane, so large proteins and even blood cells can pass. The liver, spleen and red bone marrow have them.",
       "options": [
-        "Correct. This is a sinusoid.",
-        "Continuous capillaries let small solutes through their clefts but hold back large proteins.",
-        "Fenestrated capillaries pass fluid and small molecules quickly, but their intact basement membrane holds back most large proteins.",
+        "Correct. The gaps between cells and the incomplete basement membrane let large proteins through.",
+        "Continuous capillaries let small solutes through their clefts, but their unbroken wall and complete basement membrane hold back large proteins.",
+        "Fenestrated capillaries pass fluid and small molecules quickly through their pores, but their complete basement membrane holds back most large proteins.",
         "The liver is full of capillaries; they are the sinusoid type."
       ]
     }
@@ -229,7 +229,7 @@
     "options": [
       "Continuous capillaries sealed by tight junctions",
       "Fenestrated capillaries",
-      "Sinusoids with no basement membrane at all",
+      "Arteriovenous anastomoses that bypass the capillaries",
       "No capillaries; hormones enter veins directly"
     ],
     "correct": 1,
@@ -238,7 +238,7 @@
       "options": [
         "Tight-junction-sealed continuous capillaries, as in the brain, restrict passage. That fits a barrier, not a gland that releases hormones.",
         "Correct. Pores speed exchange of small molecules.",
-        "Sinusoids have an incomplete basement membrane, not none at all, and they are found in tissues that pass large proteins or whole cells, such as the liver.",
+        "Anastomoses shunt blood past the capillary bed, so less exchange would happen, not more.",
         "Exchange with tissues happens in capillaries; veins are too thick-walled."
       ]
     }
@@ -361,7 +361,7 @@
     "options": [
       "The calf muscle contracts and squeezes the veins running through it.",
       "Pressure in the squeezed segment of vein rises.",
-      "The valve above the segment opens and the valve below it closes.",
+      "The valve above the segment opens and the valve below it closes, each pushed by the pressure difference across it.",
       "Blood moves up toward the heart.",
       "When the muscle relaxes, the valve above opens wider and blood falls back into the segment."
     ],
@@ -371,7 +371,7 @@
       "options": [
         "This step is right. Many limb veins run between and through skeletal muscles.",
         "This step is right. Squeezing a closed segment raises its pressure.",
-        "This step is right. Each valve responds to the pressure difference across it.",
+        "This step is right. Higher pressure in the squeezed segment pushes the valve above open and the valve below shut.",
         "This step is right. The closed lower valve leaves only one way out.",
         "This is the error. The valve above closes on relaxation; that is what stops blood from falling back."
       ]

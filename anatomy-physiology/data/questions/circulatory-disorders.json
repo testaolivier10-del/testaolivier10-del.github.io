@@ -34,7 +34,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "Using the 2017 American categories, how is an average blood pressure of 136/78 mm Hg classified?",
+    "q": "Using the American ACC/AHA categories (set in 2017 and kept in 2025), how is an average blood pressure of 136/78 mm Hg classified?",
     "options": [
       "Normal",
       "Elevated",
@@ -83,7 +83,7 @@
       {
         "name": "Hematocrit, eight hours later",
         "answer": "down",
-        "why": "Low capillary pressure has drawn interstitial fluid, which has no red cells, into the plasma, diluting the remaining cells."
+        "why": "Low capillary pressure first drew interstitial fluid into the plasma. Then filtration stayed below the drainage returning fluid, so cell-free fluid kept being added, diluting the remaining red cells."
       },
       {
         "name": "Urine output, first day",
@@ -492,7 +492,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "With capillary pressure below the inward oncotic pull, fluid moves from the interstitial spaces into the capillaries for a time. That fluid has no red cells, so it dilutes the remaining cells and hematocrit falls.",
+      "correct": "With capillary pressure below the inward oncotic pull, fluid moves from the interstitial spaces into the capillaries for a few minutes. After that, filtration stays below its old rate while drainage keeps returning fluid, so the plasma keeps gaining fluid for hours. That fluid has no red cells, so it dilutes the remaining cells and hematocrit falls.",
       "options": [
         "Marrow output does not drop after a bleed; EPO rises and increases it over days. The hours-long fall in hematocrit is dilution.",
         "After a bleed, ADH and aldosterone make the kidneys keep water, not excrete it.",

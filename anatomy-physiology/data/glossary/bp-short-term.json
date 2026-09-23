@@ -5,7 +5,7 @@
     "say": ""
   },
   "baroreceptors": {
-    "def": "Stretch-sensitive sensory receptors in the walls of the carotid sinuses and the aortic arch (sometimes called the aortic sinuses). They fire faster when arterial pressure stretches the wall more, and they reset to a new pressure within a day or two.",
+    "def": "Stretch-sensitive sensory receptors in the walls of the carotid sinuses and the aortic arch (the arch group is sometimes called the aortic sinuses, a name anatomists give to the bulges at the root of the aorta). They fire faster when arterial pressure stretches the wall more, and they reset to a new pressure within a day or two.",
     "roots": [["bar/o", "pressure, weight"]],
     "say": "BAIR-oh-ree-SEP-terz"
   },

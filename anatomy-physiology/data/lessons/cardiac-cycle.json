@@ -29,7 +29,7 @@
     "caption": "The phases of one heartbeat. In each drawing, find which chambers are contracting and which valves are open."
   },
   "chain": [
-    { "cause": "The QRS complex spreads through the ventricles, and ventricular muscle contracts.", "effect": "Ventricular pressure rises above atrial pressure, so the mitral valve closes: S1, and the start of isovolumetric contraction." },
+    { "cause": "A wave of depolarization spreads through the ventricles (the QRS complex on the ECG), and ventricular muscle contracts.", "effect": "Ventricular pressure rises above atrial pressure, so the mitral valve closes: S1, and the start of isovolumetric contraction." },
     { "cause": "With both valves closed, the contracting ventricle squeezes a fixed volume of blood.", "effect": "Pressure climbs steeply until it passes aortic pressure, about 80 mm Hg, and the aortic valve opens." },
     { "cause": "Blood flows down the pressure gradient from ventricle to aorta.", "effect": "Volume falls from EDV (about 120 mL) to ESV (about 50 mL): a stroke volume of about 70 mL." },
     { "cause": "The ventricle relaxes and its pressure falls below aortic pressure.", "effect": "Blood slips back, fills the aortic cusps and closes the valve: S2, the dicrotic notch, and the start of isovolumetric relaxation." },

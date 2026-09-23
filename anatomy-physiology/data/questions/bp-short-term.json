@@ -406,13 +406,13 @@
         "why": "Sympathetic vasoconstriction narrows the gut's arterioles, and it has no metabolites strong enough to override it."
       },
       {
-        "name": "Blood flow to the brain",
-        "answer": "none",
-        "why": "Local autoregulation holds brain flow nearly constant across the modest rise in pressure."
+        "name": "Share of cardiac output going to the brain",
+        "answer": "down",
+        "why": "Local autoregulation keeps brain flow roughly constant while cardiac output rises several-fold, so the brain gets a smaller share of the total."
       }
     ],
     "why": {
-      "correct": "In exercise, the nervous system raises cardiac output while working muscle dilates its own arterioles. Because cardiac output rises several-fold and TPR falls by less, MAP rises a little. Flow is shifted from the gut and kidneys to muscle, and the brain's flow stays about the same."
+      "correct": "In exercise, the nervous system raises cardiac output while working muscle dilates its own arterioles. Because cardiac output rises several-fold and TPR falls by less, MAP rises a little. Flow is shifted from the gut and kidneys to muscle. Brain flow changes little, so the brain's share of the much larger output falls."
     }
   },
   {

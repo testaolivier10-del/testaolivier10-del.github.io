@@ -111,7 +111,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Injury triggers inflammation. Histamine and related chemicals widen the clefts between endothelial cells, so plasma proteins escape into the interstitial fluid. Interstitial oncotic pressure rises, the inward oncotic pull across the wall shrinks, and fluid filters out faster even though capillary pressure is unchanged.",
+      "correct": "Injury triggers inflammation. Histamine and related chemicals widen the clefts between endothelial cells, so plasma proteins escape into the interstitial fluid. Interstitial oncotic pressure rises, the inward oncotic pull across the wall shrinks, and fluid filters out faster. The same chemicals dilate the ankle's arterioles, which raises capillary pressure there and adds to it.",
       "options": [
         "Correct. Increased permeability lets protein leak out, and the loss of the oncotic difference drives the swelling.",
         "His blood pressure is normal, and a change in arterial pressure would not cause swelling in one ankle only. The cause is local.",
@@ -221,11 +221,11 @@
       { "name": "Capillary hydrostatic pressure, right after the bleed", "answer": "down", "why": "Losing blood lowers arterial pressure, and the reflexes that follow constrict the arterioles, so less pressure reaches the capillaries." },
       { "name": "Hematocrit, right after the bleed", "answer": "none", "why": "The wound lost whole blood, cells and plasma in the same proportion, so the fraction of blood made of red cells has not changed yet." },
       { "name": "Net movement of interstitial fluid into the plasma, in the first hour", "answer": "up", "why": "With capillary pressure below the effective oncotic pull, fluid is reabsorbed into the blood for a limited time until proteins build up beneath the glycocalyx and stop it." },
-      { "name": "Hematocrit, several hours later", "answer": "down", "why": "Interstitial fluid, which contains no red cells, has been added to the plasma. The remaining red cells are now spread through more fluid." },
+      { "name": "Hematocrit, several hours later", "answer": "down", "why": "Interstitial fluid, which contains no red cells, has been added to the plasma. After the brief inward flow stops, filtration stays lower than before while drainage continues, so the plasma keeps gaining cell-free fluid. The remaining red cells are now spread through more fluid." },
       { "name": "Plasma protein concentration, several hours later", "answer": "down", "why": "The fluid drawn in from the interstitial spaces is low in protein, so it dilutes the plasma proteins until the liver makes more over the following days." }
     ],
     "why": {
-      "correct": "Right after the bleed, whole blood is gone but its composition is unchanged. Lower capillary pressure then lets protein-poor interstitial fluid move into the plasma for a while. That restores some plasma volume and dilutes the red cells and proteins, so hematocrit and protein concentration fall hours later."
+      "correct": "Right after the bleed, whole blood is gone but its composition is unchanged. Lower capillary pressure then lets protein-poor interstitial fluid move into the plasma for a few minutes. After that, the capillaries keep filtering less than before while the separate drainage route keeps returning fluid, so the plasma keeps gaining fluid for hours. That restores some plasma volume and dilutes the red cells and proteins, so hematocrit and protein concentration fall hours later."
     }
   },
   {
@@ -388,7 +388,7 @@
     "q": "A small water-soluble drug given by vein reaches the interstitial fluid of skeletal muscle within minutes but barely enters the brain tissue. What difference between these capillaries best explains this?",
     "options": [
       "Brain capillaries are sinusoids with wide gaps between cells",
-      "Brain capillaries have sealed clefts between their cells",
+      "Brain capillaries have sealed clefts between their endothelial cells",
       "Brain capillaries have a much higher hydrostatic pressure",
       "Muscle capillaries lack an endothelial lining"
     ],

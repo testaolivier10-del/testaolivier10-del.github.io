@@ -25,7 +25,7 @@
     "say": "HISS; pur-KIN-jee"
   },
   "intrinsic-rates": {
-    "def": "The rate each part of the conduction system fires at when left on its own: SA node about 60 to 100 per minute (about 100 with no nerve input), AV node about 40 to 60, ventricular conduction system about 20 to 40. Any site other than the SA node that sets the rhythm is an ectopic pacemaker, or ectopic focus.",
+    "def": "The rate each part of the conduction system fires at when left on its own: SA node about 60 to 100 per minute (about 100 with no nerve input), AV node and AV bundle about 40 to 60, bundle branches and Purkinje fibers about 20 to 40. Any site other than the SA node that sets the rhythm is an ectopic pacemaker, or ectopic focus.",
     "roots": [["intrinsic", "from within"], ["ec-", "out of"], ["top-", "place"]],
     "say": "ek-TOP-ik"
   }

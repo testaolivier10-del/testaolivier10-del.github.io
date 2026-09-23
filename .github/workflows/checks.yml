@@ -54,6 +54,18 @@ jobs:
       # who entered mid-course.
       - name: the A&P course uses no concept before it is taught
         run: node scripts/check-anp-map.mjs --check
+      # Every A&P page, the question bank and the glossary are generated from
+      # anatomy-physiology/data by build-anp.mjs; a data edit without a rebuild
+      # would ship a page that disagrees with its source.
+      - name: the A&P pages match their data
+        run: node scripts/build-anp.mjs --check
+      # The authored A&P data against its formats and rules: question counts and
+      # types, explanations for every option, figure licenses, the "receptor"
+      # rule, links that route, and each tool's content against its validator.
+      # (The OpenStax figure catalog lives outside the repo, so CI checks the
+      # license fields; the catalog cross-check runs where authors work.)
+      - name: the A&P content follows its rules
+        run: node scripts/check-anp-content.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.

@@ -72,7 +72,7 @@
     "why": {
       "correct": "The aortic valve opens where the rising ventricular trace crosses the aortic trace. Aortic pressure has fallen to its lowest value, about 80 mm Hg, so that is where the crossing happens.",
       "options": [
-        "Around 10 mm Hg is where the mitral valve closes, as ventricular pressure first rises above atrial pressure.",
+        "A few mm Hg, near the bottom of the graph, is where the mitral valve closes, as ventricular pressure first rises above atrial pressure.",
         "120 mm Hg is the peak reached during ejection, after the valve is already open.",
         "Correct. Ventricular pressure must exceed aortic pressure, about 80 mm Hg, before the valve opens.",
         "About 100 mm Hg is near where the aortic valve closes at the end of ejection, not where it opens."
@@ -534,7 +534,7 @@
         "That is stroke volume, EDV − ESV.",
         "Correct. It is the largest volume of the cycle.",
         "That is end-systolic volume (ESV), about 50 mL at rest.",
-        "The atrial contribution is only part of EDV, about 20 percent at rest."
+        "The atrial contribution is only part of the filling, about 20 percent at rest."
       ]
     }
   },

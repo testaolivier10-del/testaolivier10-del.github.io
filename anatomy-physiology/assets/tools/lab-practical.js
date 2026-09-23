@@ -101,13 +101,21 @@
     return d[m][n];
   }
   function tol(key){ var n = key.replace(/ /g, '').length; return n <= 4 ? 0 : n <= 9 ? 1 : 2; }
-  function quals(key){
+  /* The side and position words in an answer, read against the name it is
+     closest to: a typed word within a slip of one of that name's words counts
+     as that word ("rigth" is "right", "medai" is "media", not "medial"). */
+  function quals(key, ref){
+    var words = ref ? ref.split(' ') : [];
     var out = [];
     key.split(' ').forEach(function(w){
-      if(QUAL.indexOf(w) > -1){ out.push(w); return; }
-      if(w.length < 4) return;
-      var hit = QUAL.filter(function(q){ return q.length >= 4 && dist(w, q) <= 1; });
-      if(hit.length === 1) out.push(hit[0]);
+      if(words.indexOf(w) > -1 || QUAL.indexOf(w) > -1){ if(QUAL.indexOf(w) > -1) out.push(w); return; }
+      if(w.length >= 4){
+        var near = null, nd = 99;
+        words.forEach(function(r){ var d = dist(w, r); if(d < nd){ nd = d; near = r; } });
+        if(near && nd <= (w.length >= 5 ? 2 : 1)){ if(QUAL.indexOf(near) > -1) out.push(near); return; }
+        var hit = QUAL.filter(function(q){ return q.length >= 4 && dist(w, q) <= 1; });
+        if(hit.length === 1) out.push(hit[0]);
+      }
     });
     return out.sort().join(' ');
   }
@@ -137,7 +145,7 @@
     mine.forEach(function(k){ var d = dist(key, k); if(d < best){ best = d; bestKey = k; } });
     var bestOther = 99, otherLab = null;
     others.forEach(function(o){ var d = dist(key, o.key); if(d < bestOther){ bestOther = d; otherLab = o.lab; } });
-    var qa = quals(key), qm = quals(bestKey);
+    var qa = quals(key, bestKey), qm = quals(bestKey, bestKey);
     if(best <= tol(bestKey) && best < bestOther && qa === qm) return { ok: true, exact: false };
     // Right structure, wrong or missing side: say so specifically.
     var stripped = function(k){ return k.split(' ').filter(function(w){ return QUAL.indexOf(w) < 0; }).join(' '); };

@@ -150,6 +150,10 @@ const SHELL_BUDGETS = [
      had no bond to it. The records live in the shared library because the
      mechanism pages look molecules up there. Measured 104.5 KB. */
   ['ochem', 105],
+  /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
+     anp.css) plus whichever app or tool script the page loads. Measured
+     37.3 KB at the Phase 1 pilot. */
+  ['anatomy-physiology', 42],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -239,6 +243,12 @@ const BUDGETS = [
   // here, which is why the shell's largest measurement still comes from a
   // lesson rather than from this page.
   ['ochem/flashcards.html', 5],
+  ['anatomy-physiology/index.html', 5],
+  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10],
+  ['anatomy-physiology/notes/cardiac-cycle.html', 19],
+  ['anatomy-physiology/tools/predict.html', 3],
+  ['anatomy-physiology/tools/lab-practical.html', 3],
+  ['anatomy-physiology/exams.html', 3],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -398,6 +408,13 @@ const DATA_BUDGETS = [
      chapter's worth of tables pushes it over, factoring those per-table
      strings out of each card is the saving, not a bigger number. */
   ['ochem/assets/flashcards.json', 28],
+  /* The A&P question bank, split like ochem's (core waited on, explanations
+     fetched after) and the glossary behind the hover definitions. Measured at
+     the Phase 1 pilot (49 topics): 105.3, 159.7 and 40.8 KB. They grow with
+     every chapter, so each new chapter raises these with its measured size. */
+  ['anatomy-physiology/assets/bank-core.json', 120],
+  ['anatomy-physiology/assets/bank-why.json', 180],
+  ['anatomy-physiology/assets/glossary.json', 46],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
