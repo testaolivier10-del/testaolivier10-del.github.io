@@ -4,9 +4,7 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A mature red blood cell has no mitochondria. How does it make its ATP?",
     "options": [
       "By glycolysis, without using oxygen",
@@ -30,16 +28,9 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A red blood cell holds 250 million hemoglobin molecules. How many oxygen molecules can it carry when fully loaded?",
-    "options": [
-      "250 million",
-      "500 million",
-      "1 billion",
-      "4 billion"
-    ],
+    "options": ["250 million", "500 million", "1 billion", "4 billion"],
     "correct": 2,
     "why": {
       "correct": "Each hemoglobin has four hemes, each with one iron that binds one oxygen molecule: 250 million × 4 = 1,000 million, or 1 billion.",
@@ -57,36 +48,14 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "A woman moves from a coastal city to a town 3,500 m up a mountain. The air there holds less oxygen. Predict the change in each variable after she has lived there for six weeks, compared with her first day.",
     "variables": [
-      {
-        "name": "Erythropoietin release by the kidneys",
-        "answer": "up",
-        "why": "Less oxygen reaches the kidney tissue, so its oxygen-sensing cells release more EPO. It stays above her coastal level while oxygen delivery is still below normal."
-      },
-      {
-        "name": "Reticulocyte count",
-        "answer": "up",
-        "why": "EPO makes more erythroid precursors survive and mature, so more young red cells enter the blood each day."
-      },
-      {
-        "name": "Red blood cell count",
-        "answer": "up",
-        "why": "Weeks of faster production add more red cells than are destroyed."
-      },
-      {
-        "name": "Hematocrit",
-        "answer": "up",
-        "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."
-      },
-      {
-        "name": "Blood viscosity",
-        "answer": "up",
-        "why": "Viscosity depends mostly on the hematocrit, which has risen."
-      }
+      {"name": "Erythropoietin release by the kidneys", "answer": "up", "why": "Less oxygen reaches the kidney tissue, so its oxygen-sensing cells release more EPO. It stays above her coastal level while oxygen delivery is still below normal."},
+      {"name": "Reticulocyte count", "answer": "up", "why": "EPO makes more erythroid precursors survive and mature, so more young red cells enter the blood each day."},
+      {"name": "Red blood cell count", "answer": "up", "why": "Weeks of faster production add more red cells than are destroyed."},
+      {"name": "Hematocrit", "answer": "up", "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."},
+      {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."}
     ],
     "why": {
       "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises and the marrow speeds up, so over weeks her red cell count and hematocrit climb, and each liter of blood carries more oxygen. The cost is thicker blood."
@@ -98,36 +67,14 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 3,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "A man's kidneys have been failing slowly for years. His marrow, iron stores and lungs are healthy. Predict the change in each variable, compared with before his kidneys began to fail.",
     "variables": [
-      {
-        "name": "Erythropoietin release",
-        "answer": "down",
-        "why": "The damaged kidneys have lost many of the cells that make EPO, so less is released even though oxygen delivery is low."
-      },
-      {
-        "name": "Reticulocyte count",
-        "answer": "down",
-        "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."
-      },
-      {
-        "name": "Hematocrit",
-        "answer": "down",
-        "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."
-      },
-      {
-        "name": "Oxygen carried per liter of blood",
-        "answer": "down",
-        "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."
-      },
-      {
-        "name": "Resting heart rate",
-        "answer": "up",
-        "why": "Low oxygen delivery is sensed and sympathetic drive to the heart rises, so the heart beats faster."
-      }
+      {"name": "Erythropoietin release", "answer": "down", "why": "The damaged kidneys have lost many of the cells that make EPO, so less is released even though oxygen delivery is low."},
+      {"name": "Reticulocyte count", "answer": "down", "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."},
+      {"name": "Hematocrit", "answer": "down", "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."},
+      {"name": "Oxygen carried per liter of blood", "answer": "down", "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."},
+      {"name": "Resting heart rate", "answer": "up", "why": "Low oxygen delivery is sensed and sympathetic drive to the heart rises, so the heart beats faster."}
     ],
     "why": {
       "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) is missing, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."
@@ -138,9 +85,7 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Put the steps in order to trace the heme of an old red blood cell until it leaves the liver.",
     "options": [
       "A macrophage in the spleen engulfs an old red cell",
@@ -159,16 +104,9 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Complete the sequence: heme (iron removed) → biliverdin → ____ → conjugated in the liver → bile.",
-    "options": [
-      "Bilirubin",
-      "Ferritin",
-      "Transferrin",
-      "Stercobilin"
-    ],
+    "options": ["Bilirubin", "Ferritin", "Transferrin", "Stercobilin"],
     "correct": 0,
     "why": {
       "correct": "Biliverdin, the green pigment made when the heme ring is opened, is converted into yellow bilirubin. Bilirubin is what the liver conjugates.",
@@ -185,9 +123,7 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "A student described the erythropoiesis feedback loop. One step is wrong. Which one?",
     "options": [
       "Blood loss lowers the oxygen reaching the kidney tissue",
@@ -213,10 +149,7 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "homeostasis",
-      "structure-function"
-    ],
+    "core": ["homeostasis", "structure-function"],
     "q": "A 32-year-old woman with very heavy periods has a hemoglobin of 9 g/dL. Her red cells are small and pale, and her plasma ferritin is very low. What is the most likely cause of her anemia?",
     "options": [
       "Too little vitamin B12 in the diet",
@@ -240,9 +173,7 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A 66-year-old man has anemia with large red cells, and numbness and tingling in his feet. Tests show his stomach lining has been destroyed by his own immune system. Why do B12 tablets fail to help him while B12 injections work?",
     "options": [
       "His stomach cannot make the protein needed to absorb B12",
@@ -266,9 +197,7 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "A patient is anemic and jaundiced, with a reticulocyte count of 9% and a normal ferritin. Which cause best fits?",
     "options": [
       "Aplastic anemia",
@@ -292,9 +221,7 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A woman has yellow skin and eyes, dark brown urine and pale, clay-colored feces. Where on bilirubin's route is the problem most likely to be?",
     "options": [
       "Red cells are breaking down too fast",
@@ -318,9 +245,7 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Which blood test gives the best single picture of how much iron the body has in storage?",
     "options": [
       "Plasma transferrin",
@@ -344,12 +269,10 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Why can dehydration or low oxygen set off a pain crisis in a person with sickle cell disease?",
     "options": [
-      "Both raise erythropoietin, which makes new sickle cells",
+      "Both raise erythropoietin and so the number of new sickle cells",
       "Both make the spleen release stored sickle cells",
       "Both make hemoglobin S bind oxygen too tightly",
       "Both help HbS unload oxygen and pack into fibers"
@@ -370,16 +293,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Both parents have sickle cell trait: one sickle gene and one normal gene each. What is the chance that their child has sickle cell disease?",
-    "options": [
-      "None",
-      "1 in 4",
-      "1 in 2",
-      "Every child"
-    ],
+    "options": ["None", "1 in 4", "1 in 2", "Every child"],
     "correct": 1,
     "why": {
       "correct": "Each parent passes on either the sickle gene or the normal gene, with equal chance. The child has the disease only with two sickle genes: 1/2 × 1/2 = 1/4.",
@@ -396,9 +312,7 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "Two men both have a hematocrit of 60%. One has polycythemia vera; the other has lived with severe lung disease for years. Which test result best tells them apart?",
     "options": [
       "Blood viscosity is higher in the man with polycythemia vera",
@@ -422,9 +336,7 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "Select every condition that can raise the red cell count by raising erythropoietin.",
     "options": [
       "Living at high altitude",
@@ -434,12 +346,7 @@
       "A mutation that makes marrow stem cells ignore erythropoietin's absence",
       "Injecting erythropoietin to improve race times"
     ],
-    "correct": [
-      0,
-      2,
-      3,
-      5
-    ],
+    "correct": [0, 2, 3, 5],
     "why": {
       "correct": "Altitude and lung disease lower the oxygen reaching the kidneys, which release more EPO. A tumor or doping adds EPO directly. Dehydration and a marrow mutation raise the red cell count or hematocrit without raising EPO.",
       "options": [
@@ -457,9 +364,7 @@
     "type": "graph",
     "level": "apply",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "figure": "os-18-2",
     "q": "A man with untreated polycythemia vera has his blood spun. Which tube looks most like his sample?",
     "options": [
@@ -484,18 +389,11 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "figure": "os-18-7",
     "pin": "heme",
     "q": "Name the pinned structure.",
-    "options": [
-      "Globin",
-      "Heme",
-      "Ferritin",
-      "Transferrin"
-    ],
+    "options": ["Globin", "Heme", "Ferritin", "Transferrin"],
     "correct": 1,
     "why": {
       "correct": "Each globin chain holds one heme: a flat ring with an iron ion at its center, where one oxygen molecule binds.",
@@ -512,16 +410,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "About how long does a red blood cell circulate before it is destroyed?",
-    "options": [
-      "7 to 10 days",
-      "About 120 days",
-      "About a year",
-      "Several years"
-    ],
+    "options": ["7 to 10 days", "About 120 days", "About a year", "Several years"],
     "correct": 1,
     "why": {
       "correct": "A red blood cell lasts about 120 days. It cannot make new proteins, so it wears out and is removed by macrophages.",
@@ -538,15 +429,13 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "misconception": "hematocrit falls at once after bleeding",
     "q": "A cyclist is brought in ten minutes after a crash in which he lost about a liter of blood. His hematocrit is 44%, in the normal range. What is the best interpretation?",
     "options": [
       "He cannot have lost much blood, or his hematocrit would be low",
       "His marrow has already replaced the lost red cells",
-      "The test must be wrong, because bleeding lowers the hematocrit at once",
+      "The test is wrong: bleeding lowers the hematocrit at once",
       "He lost cells and plasma together, so the ratio has not changed yet"
     ],
     "correct": 3,
@@ -565,9 +454,7 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "A healthy 3-day-old baby looks yellow. Which pair of facts best explains why newborn jaundice is common?",
     "options": [
       "Many short-lived red cells break down, and the liver conjugates slowly",
@@ -591,9 +478,7 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "What does one molecule of adult hemoglobin contain?",
     "options": [
       "Two globin chains and two hemes",

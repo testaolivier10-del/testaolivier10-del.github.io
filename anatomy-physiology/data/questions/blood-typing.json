@@ -75,11 +75,11 @@
     "core": ["structure-function", "homeostasis"],
     "q": "A type A patient is mistakenly given a unit of type B red cells. Predict the change in each variable over the first hour, compared with before the transfusion.",
     "variables": [
-      { "name": "Agglutination of the donor red cells", "answer": "up", "why": "The patient's anti-B binds the B antigens on the donor cells and cross-links them into clumps." },
-      { "name": "Free hemoglobin in the plasma", "answer": "up", "why": "Antibodies on the donor cells trigger plasma proteins that burst them, releasing hemoglobin into the plasma." },
-      { "name": "Hemoglobin in the urine", "answer": "up", "why": "Free hemoglobin in the plasma is small enough to be filtered by the kidneys and spills into the urine, darkening it." },
-      { "name": "Body temperature", "answer": "up", "why": "Chemical signals released during the antibody attack cause fever and chills." },
-      { "name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow." }
+      {"name": "Agglutination of the donor red cells", "answer": "up", "why": "The patient's anti-B binds the B antigens on the donor cells and cross-links them into clumps."},
+      {"name": "Free hemoglobin in the plasma", "answer": "up", "why": "Antibodies on the donor cells trigger plasma proteins that burst them, releasing hemoglobin into the plasma."},
+      {"name": "Hemoglobin in the urine", "answer": "up", "why": "Free hemoglobin in the plasma is small enough to be filtered by the kidneys and spills into the urine, darkening it."},
+      {"name": "Body temperature", "answer": "up", "why": "Chemical signals released during the antibody attack cause fever and chills."},
+      {"name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow."}
     ],
     "why": {
       "correct": "An ABO-incompatible transfusion sets off an immediate antibody attack on the donor cells. Agglutination and hemolysis release hemoglobin into the plasma and urine, and the reaction causes fever and a fall in blood pressure. The transfusion must be stopped at once."
@@ -138,9 +138,9 @@
     "q": "An Rh-negative man who has never had a transfusion is given Rh-positive, ABO-matched red cells in an emergency. What is most likely to happen?",
     "options": [
       "An immediate, severe transfusion reaction",
-      "Nothing now, but he may make anti-D, putting a future Rh-positive transfusion at risk",
+      "Nothing now, but he may make anti-D for next time",
       "He becomes Rh positive permanently",
-      "Nothing now or later, because Rh does not matter in men"
+      "Nothing now or later: Rh does not matter in men"
     ],
     "correct": 1,
     "why": {
@@ -164,7 +164,7 @@
       "The fetus has inherited an enzyme defect from its father",
       "The fetus's own antibodies attack its red cells",
       "Her anti-A antibodies cross to the fetus",
-      "Anti-D she made after the first birth crosses to the fetus and destroys its red cells"
+      "Anti-D from her first delivery destroys its red cells"
     ],
     "correct": 3,
     "why": {
@@ -185,7 +185,7 @@
     "core": ["structure-function"],
     "q": "Why is a first Rh-positive baby of an Rh-negative mother usually unharmed?",
     "options": [
-      "Fetal cells mostly enter her blood at delivery, and anti-D takes weeks to form",
+      "Fetal cells enter her blood mostly at delivery",
       "First babies have no D antigen until after birth",
       "The mother's anti-D is destroyed during the first pregnancy",
       "First babies have extra red cells that absorb the antibodies"
@@ -209,8 +209,8 @@
     "core": ["structure-function"],
     "q": "An Rh-negative woman has just delivered an Rh-positive baby. Why is she given an injection of anti-D immune globulin within 72 hours?",
     "options": [
-      "To give her newborn antibodies against infection",
-      "To clear fetal Rh-positive cells from her blood before she makes her own anti-D",
+      "To give her newborn baby a supply of antibodies against infection",
+      "To clear fetal Rh-positive cells before she reacts to them",
       "To turn her red cells Rh positive",
       "To destroy any anti-D she already has"
     ],
@@ -254,9 +254,9 @@
     "q": "A student says that when mismatched blood agglutinates, it is clotting. What is the key difference?",
     "options": [
       "Agglutination needs platelets; clotting does not",
-      "Agglutination happens only outside the body",
-      "Agglutination is antibodies clumping cells by their antigens; clotting is fibrin threads forming",
-      "There is no difference; they are two names for one process"
+      "Agglutination happens outside the body; clotting happens inside it",
+      "Antibodies clump cells in agglutination; fibrin forms a clot",
+      "There is no difference: they are two names for one and the same process"
     ],
     "correct": 2,
     "why": {
@@ -362,8 +362,8 @@
     "figure": "os-18-15",
     "q": "Compare the two enlarged panels. What is present in the second exposure that explains the harm to the fetus?",
     "options": [
-      "Many maternal anti-Rh antibodies, which reach the fetal blood",
-      "Many more fetal red cells leaking into the mother",
+      "Maternal anti-Rh antibodies crossing into fetal blood",
+      "Many more fetal red cells leaking across into the mother's blood",
       "A break in the barrier between the two bloods",
       "Maternal red cells entering the fetus"
     ],
@@ -386,7 +386,7 @@
     "core": ["structure-function"],
     "q": "A type O, Rh-positive mother gives birth to her first baby, who is type A and develops mild jaundice on day one. What is the most likely explanation?",
     "options": [
-      "Rh disease, because this is her first baby",
+      "Rh disease in a first-born baby",
       "Some of her anti-A crossed to the fetus and destroyed a few of its red cells",
       "The baby's own anti-B destroyed its red cells",
       "Her anti-D attacked the baby's red cells"
@@ -438,8 +438,8 @@
     "options": [
       "To check the donor's blood for anti-A",
       "To confirm the unit's hemoglobin level",
-      "To check for agglutination caused by antibodies against other blood groups",
-      "To make sure the donor cells are not type O"
+      "To detect antibodies against other blood groups",
+      "To make sure the donor cells are not actually type O"
     ],
     "correct": 2,
     "why": {

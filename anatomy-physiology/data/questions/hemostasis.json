@@ -46,11 +46,11 @@
     "core": ["homeostasis"],
     "q": "An adult with a disease that blocks fat absorption becomes deficient in vitamin K. Predict the change in each variable.",
     "variables": [
-      { "name": "Working factors II, VII, IX and X in plasma", "answer": "down", "why": "The liver needs vitamin K to add the calcium-binding groups these factors need. Without it, the factors it makes do not work." },
-      { "name": "Prothrombin time (PT)", "answer": "up", "why": "The PT depends on factor VII and the common pathway factors X and II. Factor VII has the shortest life in plasma, so the PT lengthens first." },
-      { "name": "aPTT", "answer": "up", "why": "The aPTT depends on factor IX and the common pathway factors X and II, all of which need vitamin K." },
-      { "name": "Platelet count", "answer": "none", "why": "Vitamin K is needed for clotting factors, not for making platelets." },
-      { "name": "Tendency to bleed", "answer": "up", "why": "With too little working thrombin-making machinery, fibrin forms slowly, and bleeding lasts longer." }
+      {"name": "Working factors II, VII, IX and X in plasma", "answer": "down", "why": "The liver needs vitamin K to add the calcium-binding groups these factors need. Without it, the factors it makes do not work."},
+      {"name": "Prothrombin time (PT)", "answer": "up", "why": "The PT depends on factor VII and the common pathway factors X and II. Factor VII has the shortest life in plasma, so the PT lengthens first."},
+      {"name": "aPTT", "answer": "up", "why": "The aPTT depends on factor IX and the common pathway factors X and II, all of which need vitamin K."},
+      {"name": "Platelet count", "answer": "none", "why": "Vitamin K is needed for clotting factors, not for making platelets."},
+      {"name": "Tendency to bleed", "answer": "up", "why": "With too little working thrombin-making machinery, fibrin forms slowly, and bleeding lasts longer."}
     ],
     "why": {
       "correct": "Vitamin K is needed for four clotting factors. Without it, the liver makes non-working copies, clotting tests lengthen (the PT first) and the person bruises and bleeds easily. Platelets are unaffected."
@@ -83,7 +83,7 @@
     "core": ["homeostasis"],
     "q": "A 6-year-old boy has a swollen, painful knee after a minor fall, and his uncle had a similar problem. His platelet count and PT are normal; his aPTT is long. What is the most likely diagnosis?",
     "options": [
-      "Hemophilia, a lack of factor VIII or IX",
+      "Hemophilia A or B",
       "Thrombocytopenia",
       "Vitamin K deficiency",
       "Von Willebrand disease"
@@ -109,8 +109,8 @@
     "q": "People who lack factor XII have a very long aPTT but never bleed abnormally. What does this show?",
     "options": [
       "The aPTT test is unreliable and should not be used",
-      "Factor XII is only needed for clotting in arteries",
-      "Clotting in the body starts with tissue factor, not with factor XII",
+      "Factor XII is needed for clotting in arteries but not in veins",
+      "Clotting in the body starts with tissue factor",
       "Factor VIII takes over the job of factor XII"
     ],
     "correct": 2,
@@ -133,7 +133,7 @@
     "q": "A woman takes one low-dose aspirin a day. Her surgeon asks her to stop it 7 days before an operation. Why a whole week?",
     "options": [
       "Aspirin stays in the blood for a week after the last dose",
-      "Aspirin blocks the platelet enzyme for good, and platelets cannot make a new one",
+      "Aspirin disables the platelet enzyme for the platelet's whole life",
       "Aspirin blocks vitamin K, and the liver needs a week to recover",
       "The operation needs extra platelets, and the marrow needs a week to make them"
     ],
@@ -157,9 +157,9 @@
     "q": "How does heparin slow coagulation?",
     "options": [
       "It dissolves fibrin threads",
-      "It stops the liver from making clotting factors",
+      "It stops the liver from making working clotting factors",
       "It binds calcium ions in the plasma",
-      "It makes antithrombin inactivate thrombin and Xa much faster"
+      "It speeds antithrombin's attack on thrombin and Xa"
     ],
     "correct": 3,
     "why": {
@@ -180,9 +180,9 @@
     "core": ["homeostasis"],
     "q": "Mr. Reyes takes a steady dose of warfarin with an INR of 2.5. He starts eating a large spinach salad every day. What happens to his INR over the next weeks, and why?",
     "options": [
-      "It rises, because spinach blocks the vitamin K enzyme too",
+      "It rises, because spinach blocks the vitamin K recycling enzyme too",
       "It stays the same, because diet does not affect clotting",
-      "It falls, because more vitamin K lets the liver make more working factors",
+      "It falls: extra vitamin K lets the liver make working factors",
       "It falls, because spinach destroys warfarin in the gut"
     ],
     "correct": 2,
@@ -204,7 +204,7 @@
     "core": ["homeostasis"],
     "q": "Why does warfarin take 3–5 days to reach its full effect, while heparin works within minutes?",
     "options": [
-      "Working factors already in the blood must be used up before warfarin's effect shows",
+      "Factors already in the blood must be cleared first",
       "Warfarin is absorbed from the gut very slowly",
       "Warfarin must first be converted to heparin in the liver",
       "Warfarin has to be stored in platelets before it acts"
@@ -303,8 +303,8 @@
     "q": "A patient with a large clot in a leg artery is given tissue plasminogen activator (tPA). What does the drug do?",
     "options": [
       "It blocks thrombin",
-      "It converts plasminogen in the clot to plasmin, which cuts fibrin",
-      "It makes platelets release their granules",
+      "It turns plasminogen into plasmin, which cuts fibrin",
+      "It makes platelets in the clot release their granule contents",
       "It makes antithrombin act faster"
     ],
     "correct": 1,
@@ -371,9 +371,9 @@
     "core": ["homeostasis"],
     "q": "Why is the production of thrombin described as positive feedback?",
     "options": [
-      "Thrombin activates factors and platelets that make more thrombin",
+      "Thrombin speeds up its own production",
       "Thrombin brings the blood back to its set point",
-      "Thrombin is made only when blood pressure rises",
+      "Thrombin is made in response to a rise in blood pressure",
       "Thrombin switches off its own production"
     ],
     "correct": 0,
@@ -463,8 +463,8 @@
     "q": "Why is every newborn given a vitamin K injection at birth?",
     "options": [
       "Newborns have no platelets for the first week",
-      "Newborns have little vitamin K, and no intestinal bacteria yet to make it",
-      "Vitamin K speeds up newborn jaundice clearance",
+      "Newborns have little vitamin K and no bacteria to make it",
+      "Vitamin K speeds up the clearance of bilirubin in newborn jaundice",
       "Newborn livers cannot make fibrinogen"
     ],
     "correct": 1,

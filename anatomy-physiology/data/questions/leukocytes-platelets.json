@@ -86,7 +86,12 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A student with a sore throat, swollen neck nodes and fatigue has a raised white count, and most of the extra cells are lymphocytes. What kind of infection does this pattern suggest?",
-    "options": ["A parasitic worm infection", "A bacterial abscess", "An allergic reaction", "A viral infection"],
+    "options": [
+      "A parasitic worm infection",
+      "A bacterial abscess",
+      "An allergic reaction",
+      "A viral infection"
+    ],
     "correct": 3,
     "why": {
       "correct": "Lymphocytes are the cells of specific immunity, and viral infections typically raise their numbers. Infectious mononucleosis, caused by a virus, is a classic example.",
@@ -150,8 +155,8 @@
     "misconception": "a high white count means strong defense",
     "q": "Jayden, 7, has a white count of 58,000 per µL, mostly immature blasts, a hemoglobin of 7 g/dL and a platelet count of 20,000 per µL. Why does he keep getting infections?",
     "options": [
-      "His blasts are immature and cannot fight infection, and they crowd out normal neutrophils",
-      "His anemia leaves too little oxygen for his white cells",
+      "His blasts cannot fight infection and crowd out neutrophils",
+      "His anemia leaves too little oxygen for his white cells to work",
       "His high white count uses up all his antibodies",
       "His low platelets let bacteria into his blood"
     ],
@@ -173,7 +178,12 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A woman has painless, swollen lymph nodes in her neck and armpits, night sweats and weight loss. Her blood count is normal. A node biopsy shows cancerous lymphocytes. Which diagnosis fits best?",
-    "options": ["Acute myeloid leukemia", "Lymphoma", "Infectious mononucleosis", "Chronic myeloid leukemia"],
+    "options": [
+      "Acute myeloid leukemia",
+      "Lymphoma",
+      "Infectious mononucleosis",
+      "Chronic myeloid leukemia"
+    ],
     "correct": 1,
     "why": {
       "correct": "Lymphoma is cancer of lymphocytes that grows mainly as solid tumors in lymph nodes, often with a normal blood count.",
@@ -257,8 +267,8 @@
     "core": ["structure-function"],
     "q": "Which of these is an antigen?",
     "options": [
-      "A Y-shaped protein in plasma that binds a bacterium",
-      "A glycoprotein on a bacterium's surface that lymphocytes recognize",
+      "A Y-shaped protein in the plasma that binds to the surface of a bacterium",
+      "A surface glycoprotein of a bacterium that lymphocytes recognize",
       "A neutrophil's digestive enzyme",
       "The lysosome in which a bacterium is digested"
     ],
@@ -281,10 +291,10 @@
     "core": ["structure-function"],
     "q": "Antibodies added to a suspension of bacteria make the bacteria clump together. What property of antibodies explains the clumping?",
     "options": [
-      "Each antibody has two or more binding sites and can bind antigens on two cells at once",
+      "Each has two or more binding sites, so it can bridge two cells",
       "Antibodies dissolve the bacteria's cell walls",
       "Antibodies are sticky on every surface",
-      "Antibodies make the bacteria divide without separating"
+      "Antibodies make the bacteria divide without the daughters separating"
     ],
     "correct": 0,
     "why": {
@@ -330,8 +340,8 @@
     "q": "A man has a greatly enlarged spleen. His marrow is normal, but his platelet count is 80,000 per µL. What best explains the low count?",
     "options": [
       "The spleen makes too much thrombopoietin",
-      "The enlarged spleen holds far more than its usual third of the platelets",
-      "Megakaryocytes move from the marrow into the spleen",
+      "The enlarged spleen holds far more platelets than usual",
+      "Megakaryocytes move out of the marrow and into the spleen",
       "The spleen turns platelets into red blood cells"
     ],
     "correct": 1,
@@ -424,11 +434,11 @@
     "core": ["structure-function"],
     "q": "Two weeks after strong chemotherapy that kills dividing cells in the marrow, predict the change in each variable compared with before treatment.",
     "variables": [
-      { "name": "Neutrophil count", "answer": "down", "why": "Neutrophils live only a day or two, so once the marrow stops making them, their count falls within days." },
-      { "name": "Platelet count", "answer": "down", "why": "Platelets last 7–10 days, so two weeks without new ones leaves few in the blood." },
-      { "name": "Risk of bacterial infection", "answer": "up", "why": "With few neutrophils, bacteria that enter the body are not engulfed and killed quickly." },
-      { "name": "Tendency to bruise and bleed", "answer": "up", "why": "With few platelets, small breaks in vessel walls are not sealed." },
-      { "name": "Reticulocyte count", "answer": "down", "why": "The marrow's dividing erythroid precursors are killed too, so fewer young red cells are released." }
+      {"name": "Neutrophil count", "answer": "down", "why": "Neutrophils live only a day or two, so once the marrow stops making them, their count falls within days."},
+      {"name": "Platelet count", "answer": "down", "why": "Platelets last 7–10 days, so two weeks without new ones leaves few in the blood."},
+      {"name": "Risk of bacterial infection", "answer": "up", "why": "With few neutrophils, bacteria that enter the body are not engulfed and killed quickly."},
+      {"name": "Tendency to bruise and bleed", "answer": "up", "why": "With few platelets, small breaks in vessel walls are not sealed."},
+      {"name": "Reticulocyte count", "answer": "down", "why": "The marrow's dividing erythroid precursors are killed too, so fewer young red cells are released."}
     ],
     "why": {
       "correct": "Chemotherapy stops hematopoiesis for a time. Formed elements with the shortest lives disappear first: neutrophils within days, platelets within a week or two. Red cells last 120 days, so anemia develops more slowly, but the reticulocyte count falls at once."

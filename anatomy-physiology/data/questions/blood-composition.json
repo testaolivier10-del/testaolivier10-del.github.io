@@ -4,16 +4,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Which plasma protein is the most abundant?",
-    "options": [
-      "Fibrinogen",
-      "Albumin",
-      "Gamma globulin",
-      "Beta globulin"
-    ],
+    "options": ["Fibrinogen", "Albumin", "Gamma globulin", "Beta globulin"],
     "correct": 1,
     "why": {
       "correct": "Albumin makes up about 55–60% of plasma protein. It is made by the liver.",
@@ -30,10 +23,7 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "homeostasis",
-      "structure-function"
-    ],
+    "core": ["homeostasis", "structure-function"],
     "q": "A man with long-standing liver damage has swollen ankles and a low level of one plasma protein. Which protein is most likely low, and why would that let fluid build up in his tissues?",
     "options": [
       "Fibrinogen: without it, blood leaks out of the capillaries into the tissues",
@@ -57,9 +47,7 @@
     "type": "graph",
     "level": "apply",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "figure": "os-18-2",
     "q": "Compare the middle tube with the left tube. What has changed?",
     "options": [
@@ -84,16 +72,9 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A spun blood sample is 50 mm tall. The packed red column is 20 mm tall. What is the hematocrit?",
-    "options": [
-      "20%",
-      "30%",
-      "40%",
-      "60%"
-    ],
+    "options": ["20%", "30%", "40%", "60%"],
     "correct": 2,
     "why": {
       "correct": "Hematocrit = red column ÷ whole column × 100% = 20 ÷ 50 × 100% = 40%.",
@@ -110,16 +91,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A woman has a blood volume of 4.0 L and a hematocrit of 40%. About how much of her blood is plasma?",
-    "options": [
-      "1.6 L",
-      "2.0 L",
-      "4.0 L",
-      "2.4 L"
-    ],
+    "options": ["1.6 L", "2.0 L", "4.0 L", "2.4 L"],
     "correct": 3,
     "why": {
       "correct": "Red cells are 40% of 4.0 L = 1.6 L. The rest, 4.0 − 1.6 = 2.4 L, is plasma (the buffy coat is too small to matter).",
@@ -137,37 +111,14 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": [
-      "homeostasis",
-      "structure-function"
-    ],
+    "core": ["homeostasis", "structure-function"],
     "q": "A runner loses 2 L of sweat on a hot day and drinks nothing. Sweat comes from plasma water; no red blood cells are lost. Predict the change in each variable in his blood.",
     "variables": [
-      {
-        "name": "Plasma volume",
-        "answer": "down",
-        "why": "Sweat is made from water drawn out of the plasma, so plasma volume shrinks."
-      },
-      {
-        "name": "Red blood cell volume",
-        "answer": "none",
-        "why": "No red cells leave the body in sweat, and new ones take days to make, so the red cell volume is unchanged."
-      },
-      {
-        "name": "Hematocrit",
-        "answer": "up",
-        "why": "The same red cell volume now sits in a smaller total blood volume, so red cells are a larger fraction of it."
-      },
-      {
-        "name": "Plasma protein concentration",
-        "answer": "up",
-        "why": "The proteins stay in the blood while water leaves, so the same amount of protein is dissolved in less water."
-      },
-      {
-        "name": "Blood viscosity",
-        "answer": "up",
-        "why": "Viscosity depends mostly on the hematocrit, which has risen, so the blood is thicker."
-      }
+      {"name": "Plasma volume", "answer": "down", "why": "Sweat is made from water drawn out of the plasma, so plasma volume shrinks."},
+      {"name": "Red blood cell volume", "answer": "none", "why": "No red cells leave the body in sweat, and new ones take days to make, so the red cell volume is unchanged."},
+      {"name": "Hematocrit", "answer": "up", "why": "The same red cell volume now sits in a smaller total blood volume, so red cells are a larger fraction of it."},
+      {"name": "Plasma protein concentration", "answer": "up", "why": "The proteins stay in the blood while water leaves, so the same amount of protein is dissolved in less water."},
+      {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen, so the blood is thicker."}
     ],
     "why": {
       "correct": "Losing plasma water leaves the cells and proteins in a smaller volume. Every concentration and ratio that has red cells or proteins on top rises, including the hematocrit, even though the body has not made a single extra red blood cell."
@@ -178,9 +129,7 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "What is the buffy coat in a spun blood sample?",
     "options": [
       "White blood cells and platelets between plasma and red cells",
@@ -204,9 +153,7 @@
     "type": "order",
     "level": "recall",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Put the steps in order to show how platelets are made.",
     "options": [
       "A hematopoietic stem cell divides",
@@ -225,16 +172,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A lab lets one blood sample clot in a plain tube and spins another that contains a chemical that stops clotting. The fluid from the first tube lacks one protein that the fluid from the second tube has. Which protein?",
-    "options": [
-      "Albumin",
-      "Alpha globulin",
-      "Fibrinogen",
-      "Gamma globulin"
-    ],
+    "options": ["Albumin", "Alpha globulin", "Fibrinogen", "Gamma globulin"],
     "correct": 2,
     "why": {
       "correct": "The first tube gives serum; the second gives plasma. Serum is plasma without its clotting proteins, because they were used up building the clot. Fibrinogen is the main one.",
@@ -251,9 +191,7 @@
     "type": "multi",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Select every item that is a formed element of blood.",
     "options": [
       "Platelets",
@@ -263,11 +201,7 @@
       "Fibrinogen",
       "Glucose"
     ],
-    "correct": [
-      0,
-      2,
-      3
-    ],
+    "correct": [0, 2, 3],
     "why": {
       "correct": "Formed elements are the cells and cell fragments of blood: red blood cells, white blood cells and platelets. Proteins and dissolved molecules belong to the plasma.",
       "options": [
@@ -285,9 +219,7 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "misconception": "hematocrit measures how many red cells the body has",
     "q": "Ana, 19, arrives dehydrated after three days of vomiting. Her hematocrit is 54%. After 2 L of salt solution by drip, it is 44% a few hours later. What best explains the fall?",
     "options": [
@@ -312,14 +244,12 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A person has a hematocrit of 60%. Compared with normal blood, how does the resistance to blood flow change?",
     "options": [
       "It falls, because more cells carry more oxygen",
       "It rises, because the blood is more viscous",
-      "It does not change, because viscosity depends only on plasma proteins",
+      "It does not change: plasma proteins, not cells, set the viscosity of blood",
       "It falls, because packed cells slide past each other"
     ],
     "correct": 1,
@@ -338,9 +268,7 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "In an adult, which of these bones contains red bone marrow that makes blood cells?",
     "options": [
       "The shaft of the tibia",
@@ -364,10 +292,7 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "homeostasis",
-      "structure-function"
-    ],
+    "core": ["homeostasis", "structure-function"],
     "q": "After a course of chemotherapy, which kills dividing cells in the marrow, a patient's white blood cell count is very low. Her doctor prescribes a drug to speed its recovery. Which growth factor is that drug most likely to be?",
     "options": [
       "Erythropoietin, from the kidneys",
@@ -391,9 +316,7 @@
     "type": "missing",
     "level": "recall",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "Complete the branching: hematopoietic stem cell → myeloid stem cell or ____ → the family of white blood cells at the heart of the immune system.",
     "options": [
       "Lymphoid stem cell",
@@ -417,9 +340,7 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A student described how a lab prepares serum. One step is wrong. Which one?",
     "options": [
       "Blood is drawn into a plain tube with nothing to stop clotting",
@@ -443,16 +364,14 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "misconception": "blood in veins is blue",
     "q": "A student says the blood in her arm veins is blue until it meets oxygen outside the body. What is the best reply?",
     "options": [
       "She is right: venous blood is blue and turns red on contact with air",
       "It is dark red; veins look blue because of how skin handles light",
       "Venous blood is purple because it carries carbon dioxide",
-      "Venous blood is blue only in the limbs and red in the core"
+      "Venous blood is blue in the limbs and red in the core"
     ],
     "correct": 1,
     "why": {
@@ -470,9 +389,7 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "homeostasis"
-    ],
+    "core": ["homeostasis"],
     "q": "Select every way blood helps keep conditions in the body stable.",
     "options": [
       "Buffers in blood take up or release hydrogen ions",
@@ -481,11 +398,7 @@
       "Albumin's osmotic pull helps set how much water stays in the vessels",
       "Red blood cells divide in the bloodstream to replace losses"
     ],
-    "correct": [
-      0,
-      1,
-      3
-    ],
+    "correct": [0, 1, 3],
     "why": {
       "correct": "Blood regulates pH through its buffers, body temperature by carrying heat, and fluid balance through the osmotic pull of its proteins.",
       "options": [
@@ -502,9 +415,7 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": [
-      "structure-function"
-    ],
+    "core": ["structure-function"],
     "q": "A patient's liver is failing. Which growth factor is her body now likely to make too little of, and which formed element would fall as a result?",
     "options": [
       "Erythropoietin; red blood cells",
