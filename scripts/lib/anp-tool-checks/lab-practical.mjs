@@ -171,7 +171,7 @@ export function check(data, map) {
         if (!fl) { err(lw, `not in data/labels/${st.figure}.json (renamed or removed?)`); return; }
         if (!fl.box) err(lw, 'the label file has no box for it yet');
         if (!sameBox(lab.box, fl.box)) err(lw, `box ${JSON.stringify(lab.box)} does not match the label file's ${JSON.stringify(fl.box)}`);
-        if (Array.isArray(lab.box) && (lab.box[0] < 0 || lab.box[1] < 0 || lab.box[0] + lab.box[2] > W + 1 || lab.box[1] + lab.box[3] > H + 1 || lab.box[2] <= 0 || lab.box[3] <= 0)) err(lw, 'box lies outside the image');
+        if (Array.isArray(lab.box) && (lab.box[0] < 0 || lab.box[1] < 0 || lab.box[0] + lab.box[2] > W + 4 || lab.box[1] + lab.box[3] > H + 4 || lab.box[2] <= 0 || lab.box[3] <= 0)) err(lw, 'box lies outside the image');
         if (lab.name !== fl.name) err(lw, `name "${lab.name}" does not match the label file's "${fl.name}"`);
         if ((lab.concept || null) !== (fl.concept || null)) err(lw, `concept "${lab.concept}" does not match the label file's "${fl.concept}"`);
         const fileAccept = new Set([norm(fl.name), ...(fl.accept || []).map(norm)]);

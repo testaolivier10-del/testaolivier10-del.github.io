@@ -92,7 +92,7 @@
        ],
        "concept": "superior-inferior",
        "taught": "anatomical-position",
-       "fn": "Toward the head end of the body; used much like superior. The word comes from the cranium, the skull."
+       "fn": "Toward the head end of the body; used much like superior. It comes from the Latin word for the skull."
       },
       {
        "id": "proximal-arm",
@@ -890,7 +890,7 @@
          "The wrist"
         ],
         "correct": 0,
-        "why": "Cervicis (cervix) means neck, so its adjective, cervical, refers to the neck region. The chest is thoracic, the lower back lumbar, and the wrist carpal.",
+        "why": "Cervicis means neck, so its adjective, cervical, refers to the neck region. The chest is thoracic, the lower back lumbar, and the wrist carpal.",
         "level": "recall"
        }
       },
@@ -1284,7 +1284,7 @@
          "The wrist"
         ],
         "correct": 0,
-        "why": "Cervicis (cervix) means neck, so its adjective, cervical, refers to the neck region. The chest is thoracic, the lower back lumbar, and the wrist carpal.",
+        "why": "Cervicis means neck, so its adjective, cervical, refers to the neck region. The chest is thoracic, the lower back lumbar, and the wrist carpal.",
         "level": "recall"
        }
       },
@@ -1629,7 +1629,7 @@
        ],
        "concept": "abdominopelvic-regions",
        "taught": "body-regions",
-       "fn": "The upper right of the nine abdominal regions, under the lower edge of the ribcage (hypo- under, chondro- cartilage). Most of the liver and the gallbladder lie here."
+       "fn": "The upper right of the nine abdominal regions, under the lower edge of the ribcage (hypo- under, chondr- gristle, for the gristly lower edge of the ribcage). Most of the liver and the gallbladder lie here."
       },
       {
        "id": "epigastric-region",
@@ -1738,7 +1738,7 @@
        ],
        "concept": "abdominopelvic-regions",
        "taught": "body-regions",
-       "fn": "The lower right of the nine abdominal regions, next to the hip bone. The appendix is usually here. Also called the right inguinal region."
+       "fn": "The lower right of the nine abdominal regions, beside the bony ridge of the hip. The appendix is usually here. Also called the right inguinal region."
       },
       {
        "id": "hypogastric-region",
@@ -1772,7 +1772,7 @@
        ],
        "concept": "abdominopelvic-regions",
        "taught": "body-regions",
-       "fn": "The lower left of the nine abdominal regions, next to the hip bone. Also called the left inguinal region."
+       "fn": "The lower left of the nine abdominal regions, beside the bony ridge of the hip. Also called the left inguinal region."
       },
       {
        "id": "ruq",
@@ -2034,7 +2034,7 @@
          "No cytoskeleton"
         ],
         "correct": 0,
-        "why": "Mitochondria make most of a cell's ATP, so cells with a high, steady demand (heart and skeletal muscle, for example) are packed with them.",
+        "why": "Mitochondria make most of a cell's ATP, so cells with a high, steady demand, such as the muscle cells of the heart, are packed with them.",
         "level": "apply"
        }
       },
@@ -2052,7 +2052,7 @@
        ],
        "concept": "cytoskeleton",
        "taught": "organelles",
-       "fn": "A rope-like cytoskeleton fiber of medium thickness, made of tough proteins such as keratin. It resists pulling and holds the cell's shape."
+       "fn": "A rope-like cytoskeleton fiber of medium thickness, made of tough fibrous proteins. It resists pulling and holds the cell's shape."
       },
       {
        "id": "plasma-membrane",
@@ -2100,7 +2100,7 @@
        ],
        "concept": "cytoskeleton",
        "taught": "organelles",
-       "fn": "The thickest cytoskeleton fiber: a hollow tube of tubulin. Microtubules act as tracks for moving vesicles and organelles, form the core of cilia, and pull chromosomes apart during division."
+       "fn": "The thickest cytoskeleton fiber: a hollow tube of tubulin. Microtubules act as tracks for moving vesicles and organelles, form the core of cilia, and pull the copied genetic material apart when the cell divides."
       },
       {
        "id": "rough-endoplasmic-reticulum",
@@ -2147,7 +2147,7 @@
        ],
        "concept": "cytoskeleton",
        "taught": "organelles",
-       "fn": "The region near the nucleus where microtubules are organized. It contains a pair of centrioles and, when the cell divides, organizes the fibers that separate the chromosomes."
+       "fn": "The region near the nucleus where microtubules are organized. It contains a pair of centrioles and, when the cell divides, organizes the fibers that separate the copied genetic material."
       },
       {
        "id": "microfilament",
@@ -3185,17 +3185,17 @@
        ],
        "concept": "nucleus",
        "taught": "dna-genes",
-       "fn": "Openings through the nuclear envelope, lined by protein complexes that let RNA and proteins pass in and out of the nucleus under control.",
+       "fn": "Openings through the nuclear envelope, lined by protein complexes that control which large molecules pass in and out of the nucleus.",
        "follow": {
-        "q": "What passes out of the nucleus through the nuclear pores?",
+        "q": "The nucleolus makes the parts of ribosomes, but ribosomes work in the cytoplasm. How do the parts get there?",
         "options": [
-         "RNA copies of genes, on their way to the ribosomes",
-         "Whole chromosomes",
-         "Mitochondria",
-         "The nucleolus"
+         "Through the nuclear pores",
+         "By dissolving through the lipid of the nuclear envelope",
+         "They are released only when the nuclear envelope breaks down",
+         "Through gap junctions"
         ],
         "correct": 0,
-        "why": "DNA stays in the nucleus. What leaves are RNA copies of genes (and ribosome parts), which travel to the ribosomes in the cytoplasm to direct protein building.",
+        "why": "Ribosome parts are far too large and water-loving to cross a lipid membrane, and the envelope breaks down only during cell division. Nuclear pores are the controlled gateways through the envelope for large molecules going in or out.",
         "level": "apply"
        }
       },
@@ -3554,7 +3554,7 @@
          "Swallowed food rubs it, and many layers let worn surface cells be replaced from below",
          "It must absorb nutrients quickly",
          "It must let gases diffuse through",
-         "It must secrete large amounts of hormone"
+         "It must release large amounts of product"
         ],
         "correct": 0,
         "why": "Stratified squamous epithelium protects against abrasion: the surface cells wear off and new cells from the deep layers replace them. Absorption and diffusion need thin single layers instead.",
@@ -3575,7 +3575,7 @@
        ],
        "concept": "stratified-cuboidal-columnar",
        "taught": "epithelium",
-       "fn": "Two or more layers of cube-shaped cells. It is uncommon and lines the ducts of some large glands, such as sweat glands."
+       "fn": "Two or more layers of cube-shaped cells. It is uncommon and lines some larger ducts that carry fluids to a surface."
       },
       {
        "id": "simple-cuboidal-epithelium",
@@ -3591,7 +3591,7 @@
        ],
        "concept": "simple-cuboidal",
        "taught": "epithelium",
-       "fn": "One layer of cube-shaped cells with round central nuclei. It secretes and absorbs, lining kidney tubules and small gland ducts."
+       "fn": "One layer of cube-shaped cells with round central nuclei. It secretes and absorbs, lining the kidney tubules and the small ducts that carry fluids to a surface."
       },
       {
        "id": "simple-columnar-epithelium",
@@ -3623,7 +3623,7 @@
        ],
        "concept": "stratified-cuboidal-columnar",
        "taught": "epithelium",
-       "fn": "Several layers with tall cells at the surface. It is rare, found in parts of the male urethra and some large gland ducts."
+       "fn": "Several layers with tall cells at the surface. It is rare, found in parts of the male urethra and some large ducts."
       },
       {
        "id": "pseudostratified-columnar-epithelium",
@@ -4153,7 +4153,7 @@
        ],
        "concept": "exocrine-gland",
        "taught": "glands",
-       "fn": "An exocrine gland with a branched duct system leading to round secretory sacs, like the mammary gland."
+       "fn": "An exocrine gland with a branched duct system leading to round secretory sacs, like the milk-making glands of the breast."
       },
       {
        "id": "compound-tubuloalveolar",
@@ -4386,7 +4386,7 @@
        ],
        "concept": "secretion-modes",
        "taught": "glands",
-       "fn": "Release of product by exocytosis: vesicles fuse with the membrane and empty outside, and the cell stays whole. Salivary and most sweat glands secrete this way.",
+       "fn": "Release of product by exocytosis: vesicles fuse with the membrane and empty outside, and the cell stays whole. Salivary glands and the glands that make watery sweat secrete this way.",
        "follow": {
         "q": "In which mode of secretion does the gland cell survive intact?",
         "options": [
@@ -4428,7 +4428,7 @@
        ],
        "concept": "secretion-modes",
        "taught": "glands",
-       "fn": "The classic description: product collects at the top of the cell, which pinches off with it. The mammary gland releases fat droplets this way. The so-called apocrine sweat glands turn out to secrete mainly by exocytosis, so the name there is historical."
+       "fn": "The classic description: product collects at the top of the cell, which pinches off with it. The milk-making glands of the breast release fat droplets this way. The glands in the armpit long called apocrine turn out to secrete mainly by exocytosis, so the name there is historical."
       },
       {
        "id": "holocrine-secretion",
