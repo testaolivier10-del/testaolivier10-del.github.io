@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        764,
+        37,
+        121,
+        23
+      ]
     },
     {
       "id": "internal-thoracic-artery",
@@ -25,7 +31,13 @@
       "lines": [
         1
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        8,
+        98,
+        174,
+        24
+      ]
     },
     {
       "id": "bronchial-arteries",
@@ -38,7 +50,13 @@
       "lines": [
         4
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        874,
+        235,
+        107,
+        23
+      ]
     },
     {
       "id": "esophageal-arteries",
@@ -51,7 +69,13 @@
       "lines": [
         7
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        874,
+        270,
+        132,
+        28
+      ]
     },
     {
       "id": "intercostal-arteries",
@@ -65,7 +89,13 @@
       "lines": [
         10
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        26,
+        323,
+        117,
+        23
+      ]
     },
     {
       "id": "mediastinal-arteries",
@@ -78,7 +108,13 @@
       "lines": [
         9
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        874,
+        306,
+        127,
+        23
+      ]
     },
     {
       "id": "pericardial-arteries",
@@ -91,7 +127,13 @@
       "lines": [
         11
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        874,
+        342,
+        119,
+        23
+      ]
     },
     {
       "id": "superior-phrenic-arteries",
@@ -104,7 +146,13 @@
       "lines": [
         12
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        25,
+        358,
+        180,
+        28
+      ]
     },
     {
       "id": "thoracic-aorta",
@@ -116,7 +164,13 @@
       "lines": [
         13
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        870,
+        405,
+        160,
+        23
+      ]
     },
     {
       "id": "aortic-hiatus",
@@ -127,7 +181,13 @@
       "lines": [
         14
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        871,
+        439,
+        138,
+        23
+      ]
     },
     {
       "id": "inferior-phrenic-arteries",
@@ -140,7 +200,13 @@
       "lines": [
         15
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        26,
+        457,
+        164,
+        28
+      ]
     },
     {
       "id": "celiac-trunk",
@@ -153,7 +219,13 @@
       "lines": [
         16
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        862,
+        488,
+        144,
+        23
+      ]
     },
     {
       "id": "diaphragm",
@@ -164,7 +236,13 @@
       "lines": [
         17
       ],
-      "concept": "diaphragm"
+      "concept": "diaphragm",
+      "box": [
+        26,
+        508,
+        123,
+        28
+      ]
     },
     {
       "id": "left-gastric-artery",
@@ -176,7 +254,13 @@
       "lines": [
         18
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        872,
+        525,
+        123,
+        28
+      ]
     },
     {
       "id": "adrenal-artery",
@@ -190,7 +274,13 @@
       "lines": [
         19
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        25,
+        559,
+        91,
+        23
+      ]
     },
     {
       "id": "splenic-artery",
@@ -202,7 +292,13 @@
       "lines": [
         20
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        871,
+        562,
+        87,
+        28
+      ]
     },
     {
       "id": "common-hepatic-artery",
@@ -215,7 +311,13 @@
       "lines": [
         21
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        871,
+        597,
+        185,
+        28
+      ]
     },
     {
       "id": "renal-artery",
@@ -227,7 +329,13 @@
       "lines": [
         22
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        26,
+        602,
+        71,
+        23
+      ]
     },
     {
       "id": "gonadal-artery",
@@ -241,7 +349,13 @@
       "lines": [
         23
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        25,
+        686,
+        99,
+        24
+      ]
     },
     {
       "id": "superior-mesenteric-artery",
@@ -270,7 +384,13 @@
       "lines": [
         25
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        26,
+        754,
+        90,
+        23
+      ]
     },
     {
       "id": "abdominal-aorta",
@@ -281,7 +401,13 @@
       "lines": [
         27
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        871,
+        782,
+        179,
+        23
+      ]
     },
     {
       "id": "median-sacral-artery",
@@ -293,7 +419,13 @@
       "lines": [
         28
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        26,
+        815,
+        153,
+        23
+      ]
     },
     {
       "id": "inferior-mesenteric-artery",
@@ -306,7 +438,13 @@
       "lines": [
         29
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        872,
+        854,
+        201,
+        24
+      ]
     },
     {
       "id": "common-iliac-artery",
@@ -318,7 +456,13 @@
       "lines": [
         30
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        25,
+        856,
+        151,
+        23
+      ]
     },
     {
       "id": "internal-iliac-artery",
@@ -330,7 +474,13 @@
       "lines": [
         31
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        26,
+        916,
+        133,
+        23
+      ]
     },
     {
       "id": "external-iliac-artery",
@@ -342,7 +492,13 @@
       "lines": [
         32
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        872,
+        922,
+        141,
+        23
+      ]
     }
   ]
 }

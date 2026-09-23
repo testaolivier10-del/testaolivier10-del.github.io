@@ -11,7 +11,13 @@
       "lines": [
         4
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        119,
+        218,
+        183,
+        30
+      ]
     },
     {
       "id": "internal-jugular",
@@ -24,7 +30,13 @@
         5,
         6
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        833,
+        223,
+        175,
+        30
+      ]
     },
     {
       "id": "subclavian",
@@ -36,7 +48,13 @@
       "lines": [
         7
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        118,
+        268,
+        131,
+        24
+      ]
     },
     {
       "id": "brachiocephalic",
@@ -50,7 +68,13 @@
       "lines": [
         8
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        833,
+        285,
+        185,
+        30
+      ]
     },
     {
       "id": "axillary",
@@ -62,7 +86,13 @@
       "lines": [
         9
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        118,
+        313,
+        92,
+        30
+      ]
     },
     {
       "id": "cephalic",
@@ -74,7 +104,13 @@
       "lines": [
         10
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        118,
+        340,
+        107,
+        29
+      ]
     },
     {
       "id": "superior-vena-cava",
@@ -86,7 +122,13 @@
       "lines": [
         11
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        832,
+        347,
+        223,
+        30
+      ]
     },
     {
       "id": "brachial",
@@ -99,7 +141,13 @@
       "lines": [
         12
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        119,
+        369,
+        99,
+        24
+      ]
     },
     {
       "id": "intercostal",
@@ -113,7 +161,13 @@
       "lines": [
         14
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        833,
+        404,
+        124,
+        24
+      ]
     },
     {
       "id": "basilic",
@@ -125,7 +179,13 @@
       "lines": [
         15
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        119,
+        422,
+        82,
+        24
+      ]
     },
     {
       "id": "hepatic",
@@ -138,7 +198,13 @@
       "lines": [
         18
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        119,
+        482,
+        94,
+        30
+      ]
     },
     {
       "id": "inferior-vena-cava",
@@ -150,7 +216,13 @@
       "lines": [
         19
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        833,
+        497,
+        205,
+        24
+      ]
     },
     {
       "id": "renal",
@@ -163,7 +235,13 @@
       "lines": [
         21
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        833,
+        527,
+        75,
+        24
+      ]
     },
     {
       "id": "gonadal",
@@ -177,7 +255,13 @@
       "lines": [
         23
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        832,
+        560,
+        105,
+        25
+      ]
     },
     {
       "id": "median-cubital",
@@ -189,7 +273,13 @@
       "lines": [
         24
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        118,
+        566,
+        169,
+        24
+      ]
     },
     {
       "id": "lumbar",
@@ -202,7 +292,13 @@
       "lines": [
         25
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        940,
+        627,
+        95,
+        24
+      ]
     },
     {
       "id": "radial",
@@ -215,7 +311,13 @@
       "lines": [
         26
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        10,
+        632,
+        80,
+        25
+      ]
     },
     {
       "id": "median-antebrachial",
@@ -228,7 +330,13 @@
       "lines": [
         27
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        9,
+        681,
+        232,
+        24
+      ]
     },
     {
       "id": "common-iliac",
@@ -245,7 +353,13 @@
         28,
         29
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        939,
+        687,
+        157,
+        51
+      ]
     },
     {
       "id": "ulnar",
@@ -258,7 +372,13 @@
       "lines": [
         30
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        9,
+        721,
+        71,
+        25
+      ]
     },
     {
       "id": "external-iliac",
@@ -271,7 +391,13 @@
         31,
         32
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        940,
+        766,
+        151,
+        24
+      ]
     },
     {
       "id": "palmar-venous-arches",
@@ -285,7 +411,13 @@
         33,
         35
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        9,
+        803,
+        174,
+        52
+      ]
     },
     {
       "id": "internal-iliac",
@@ -297,7 +429,13 @@
       "lines": [
         34
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        940,
+        815,
+        143,
+        24
+      ]
     },
     {
       "id": "deep-femoral",
@@ -311,7 +449,13 @@
         36,
         38
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        756,
+        893,
+        94,
+        52
+      ]
     },
     {
       "id": "digital",
@@ -324,7 +468,13 @@
       "lines": [
         37
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        9,
+        894,
+        79,
+        29
+      ]
     },
     {
       "id": "femoral",
@@ -336,7 +486,13 @@
       "lines": [
         39
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        758,
+        972,
+        99,
+        25
+      ]
     },
     {
       "id": "great-saphenous",
@@ -349,7 +505,13 @@
       "lines": [
         40
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        180,
+        1010,
+        201,
+        29
+      ]
     },
     {
       "id": "popliteal",
@@ -361,7 +523,13 @@
       "lines": [
         41
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        181,
+        1142,
+        104,
+        30
+      ]
     },
     {
       "id": "posterior-tibial",
@@ -374,7 +542,13 @@
       "lines": [
         42
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        760,
+        1299,
+        165,
+        25
+      ]
     },
     {
       "id": "small-saphenous",
@@ -387,7 +561,13 @@
       "lines": [
         43
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        180,
+        1303,
+        201,
+        29
+      ]
     },
     {
       "id": "anterior-tibial",
@@ -400,7 +580,13 @@
       "lines": [
         44
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        760,
+        1335,
+        155,
+        24
+      ]
     },
     {
       "id": "fibular",
@@ -414,7 +600,13 @@
       "lines": [
         45
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        181,
+        1368,
+        86,
+        24
+      ]
     },
     {
       "id": "plantar-venous-arch",
@@ -425,7 +617,13 @@
       "lines": [
         46
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        181,
+        1530,
+        228,
+        24
+      ]
     },
     {
       "id": "dorsal-venous-arch",
@@ -437,7 +635,13 @@
       "lines": [
         47
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        181,
+        1601,
+        221,
+        24
+      ]
     }
   ]
 }

@@ -29,7 +29,13 @@
         1,
         2
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        51,
+        216,
+        29
+      ]
     },
     {
       "id": "tunica-media",
@@ -42,7 +48,13 @@
         3,
         4
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        107,
+        198,
+        29
+      ]
     },
     {
       "id": "tunica-intima",
@@ -56,7 +68,13 @@
         5,
         6
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        167,
+        195,
+        29
+      ]
     },
     {
       "id": "smooth-muscle-cell-tunica-externa",
@@ -75,7 +93,13 @@
         11,
         12
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        597,
+        230,
+        282,
+        65
+      ]
     },
     {
       "id": "vasa-vasorum",
@@ -87,7 +111,13 @@
         13,
         14
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        597,
+        322,
+        208,
+        29
+      ]
     },
     {
       "id": "nervi-vasorum",
@@ -99,7 +129,13 @@
         16,
         17
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        328,
+        426,
+        213,
+        29
+      ]
     },
     {
       "id": "medium-sized-vein",
@@ -113,7 +149,13 @@
       "lines": [
         18
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        5,
+        548,
+        289,
+        29
+      ]
     },
     {
       "id": "tunica-externa-medium",
@@ -128,7 +170,13 @@
         19,
         20
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        576,
+        216,
+        29
+      ]
     },
     {
       "id": "tunica-media-medium",
@@ -141,7 +189,13 @@
         21,
         22
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        627,
+        198,
+        29
+      ]
     },
     {
       "id": "tunica-intima-medium",
@@ -155,7 +209,13 @@
         23,
         24
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        696,
+        195,
+        29
+      ]
     },
     {
       "id": "valves",
@@ -171,7 +231,13 @@
         25,
         26
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        597,
+        819,
+        112,
+        63
+      ]
     },
     {
       "id": "venule",
@@ -183,7 +249,13 @@
       "lines": [
         27
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        4,
+        1081,
+        113,
+        29
+      ]
     },
     {
       "id": "tunica-externa-venule",
@@ -198,7 +270,13 @@
         28,
         29
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        1084,
+        216,
+        29
+      ]
     },
     {
       "id": "tunica-media-venule",
@@ -211,7 +289,13 @@
         30,
         31
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        1117,
+        198,
+        29
+      ]
     },
     {
       "id": "tunica-intima-venule",
@@ -225,7 +309,13 @@
         32,
         33
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        596,
+        1151,
+        195,
+        29
+      ]
     }
   ]
 }

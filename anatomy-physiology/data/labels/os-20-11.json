@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        0,
+        45,
+        183,
+        29
+      ]
     },
     {
       "id": "facial-artery",
@@ -24,7 +30,13 @@
       "lines": [
         2
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        0,
+        99,
+        147,
+        29
+      ]
     },
     {
       "id": "common-carotid-artery",
@@ -38,7 +50,13 @@
       "lines": [
         3
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        0,
+        128,
+        264,
+        29
+      ]
     },
     {
       "id": "brachial-artery",
@@ -50,7 +68,13 @@
       "lines": [
         9
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        0,
+        326,
+        171,
+        29
+      ]
     },
     {
       "id": "radial-artery",
@@ -62,7 +86,13 @@
       "lines": [
         11
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        0,
+        455,
+        151,
+        29
+      ]
     },
     {
       "id": "femoral-artery",
@@ -74,7 +104,13 @@
       "lines": [
         12
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        0,
+        492,
+        172,
+        29
+      ]
     },
     {
       "id": "popliteal-artery",
@@ -86,7 +122,13 @@
       "lines": [
         13
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        0,
+        712,
+        176,
+        29
+      ]
     },
     {
       "id": "posterior-tibial-artery",
@@ -98,7 +140,13 @@
       "lines": [
         14
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        0,
+        917,
+        238,
+        29
+      ]
     },
     {
       "id": "dorsalis-pedis-artery",
@@ -111,7 +159,13 @@
       "lines": [
         16
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        0,
+        989,
+        237,
+        29
+      ]
     }
   ]
 }

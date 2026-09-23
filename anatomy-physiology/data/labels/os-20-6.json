@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        508,
+        5,
+        142,
+        28
+      ]
     },
     {
       "id": "capillary",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "blood-vessel-basics"
+      "concept": "blood-vessel-basics",
+      "box": [
+        957,
+        93,
+        99,
+        27
+      ]
     },
     {
       "id": "arteriole",
@@ -35,7 +47,13 @@
       "lines": [
         2
       ],
-      "concept": "arteriole"
+      "concept": "arteriole",
+      "box": [
+        0,
+        133,
+        96,
+        23
+      ]
     },
     {
       "id": "venule",
@@ -47,7 +65,13 @@
       "lines": [
         3
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        957,
+        143,
+        79,
+        23
+      ]
     },
     {
       "id": "precapillary-sphincter",
@@ -60,7 +84,13 @@
         4,
         6
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        0,
+        203,
+        128,
+        52
+      ]
     },
     {
       "id": "thoroughfare-channel",
@@ -92,7 +122,13 @@
         10,
         11
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        0,
+        319,
+        238,
+        101
+      ]
     },
     {
       "id": "arteriovenous-anastomosis",
@@ -107,7 +143,13 @@
         12,
         13
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        0,
+        507,
+        150,
+        48
+      ]
     }
   ]
 }

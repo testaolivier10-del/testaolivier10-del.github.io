@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        14,
+        184,
+        30
+      ]
     },
     {
       "id": "cystic",
@@ -24,7 +30,13 @@
       "lines": [
         1
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        54,
+        83,
+        31
+      ]
     },
     {
       "id": "gallbladder",
@@ -36,7 +48,13 @@
       "lines": [
         2
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        6,
+        95,
+        153,
+        25
+      ]
     },
     {
       "id": "right-gastric",
@@ -49,7 +67,13 @@
       "lines": [
         4
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        850,
+        113,
+        156,
+        31
+      ]
     },
     {
       "id": "splenic",
@@ -61,7 +85,13 @@
       "lines": [
         7
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        849,
+        189,
+        105,
+        31
+      ]
     },
     {
       "id": "superior-mesenteric",
@@ -74,7 +104,13 @@
       "lines": [
         8
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        5,
+        196,
+        264,
+        31
+      ]
     },
     {
       "id": "gastroepiploic",
@@ -88,7 +124,13 @@
       "lines": [
         9
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        849,
+        231,
+        178,
+        31
+      ]
     },
     {
       "id": "gastro-omental",
@@ -104,7 +146,13 @@
         10,
         11
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        244,
+        190,
+        25
+      ]
     },
     {
       "id": "pancreatic",
@@ -117,7 +165,13 @@
       "lines": [
         14
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        850,
+        273,
+        134,
+        26
+      ]
     },
     {
       "id": "pancreaticoduodenal",
@@ -129,7 +183,13 @@
       "lines": [
         15
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        291,
+        255,
+        25
+      ]
     },
     {
       "id": "middle-colic",
@@ -141,7 +201,13 @@
       "lines": [
         17
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        339,
+        147,
+        25
+      ]
     },
     {
       "id": "inferior-mesenteric",
@@ -154,7 +220,13 @@
       "lines": [
         18
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        849,
+        381,
+        247,
+        25
+      ]
     },
     {
       "id": "right-colic",
@@ -166,7 +238,13 @@
       "lines": [
         19
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        387,
+        131,
+        31
+      ]
     },
     {
       "id": "left-colic",
@@ -178,7 +256,13 @@
       "lines": [
         21
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        850,
+        426,
+        113,
+        26
+      ]
     },
     {
       "id": "ileocolic",
@@ -190,7 +274,13 @@
       "lines": [
         22
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        434,
+        106,
+        25
+      ]
     },
     {
       "id": "sigmoid",
@@ -203,7 +293,13 @@
       "lines": [
         24
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        849,
+        471,
+        106,
+        31
+      ]
     },
     {
       "id": "intestinal",
@@ -217,7 +313,13 @@
       "lines": [
         25
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        6,
+        482,
+        115,
+        25
+      ]
     },
     {
       "id": "superior-rectal",
@@ -229,7 +331,13 @@
       "lines": [
         28
       ],
-      "concept": "hepatic-portal"
+      "concept": "hepatic-portal",
+      "box": [
+        849,
+        517,
+        181,
+        31
+      ]
     }
   ]
 }

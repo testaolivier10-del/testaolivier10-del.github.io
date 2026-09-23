@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        279,
+        9,
+        129,
+        22
+      ]
     },
     {
       "id": "fenestrated-capillary",
@@ -25,7 +31,13 @@
       "lines": [
         1
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        564,
+        9,
+        130,
+        22
+      ]
     },
     {
       "id": "sinusoid-capillary",
@@ -40,7 +52,13 @@
       "lines": [
         2
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        856,
+        9,
+        101,
+        22
+      ]
     },
     {
       "id": "basement-membrane",
@@ -52,7 +70,13 @@
       "lines": [
         3
       ],
-      "concept": "basement-membrane"
+      "concept": "basement-membrane",
+      "box": [
+        4,
+        149,
+        213,
+        22
+      ]
     },
     {
       "id": "endothelial-layer",
@@ -68,7 +92,13 @@
         4,
         5
       ],
-      "concept": "simple-squamous"
+      "concept": "simple-squamous",
+      "box": [
+        4,
+        197,
+        167,
+        50
+      ]
     },
     {
       "id": "incomplete-basement-membrane",
@@ -83,7 +113,13 @@
         7,
         8
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        985,
+        270,
+        115,
+        69
+      ]
     },
     {
       "id": "intercellular-gap",
@@ -96,7 +132,13 @@
       "lines": [
         9
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        885,
+        382,
+        161,
+        26
+      ]
     },
     {
       "id": "intercellular-cleft",
@@ -109,7 +151,13 @@
       "lines": [
         10
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        52,
+        386,
+        164,
+        22
+      ]
     },
     {
       "id": "fenestrations",
@@ -122,7 +170,13 @@
       "lines": [
         11
       ],
-      "concept": "capillary-types"
+      "concept": "capillary-types",
+      "box": [
+        554,
+        386,
+        138,
+        22
+      ]
     }
   ]
 }

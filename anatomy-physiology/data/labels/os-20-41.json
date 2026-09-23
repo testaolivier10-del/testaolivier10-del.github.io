@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        367,
+        16,
+        146,
+        22
+      ]
     },
     {
       "id": "internal-iliac",
@@ -23,7 +29,13 @@
       "lines": [
         2
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        367,
+        52,
+        130,
+        23
+      ]
     },
     {
       "id": "external-iliac",
@@ -35,7 +47,13 @@
       "lines": [
         3
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        10,
+        83,
+        137,
+        23
+      ]
     },
     {
       "id": "gluteal",
@@ -48,7 +66,13 @@
       "lines": [
         4
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        367,
+        84,
+        81,
+        22
+      ]
     },
     {
       "id": "lateral-sacral",
@@ -61,7 +85,13 @@
       "lines": [
         8
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        367,
+        115,
+        144,
+        22
+      ]
     },
     {
       "id": "internal-pudendal",
@@ -73,7 +103,13 @@
       "lines": [
         9
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        367,
+        146,
+        183,
+        27
+      ]
     },
     {
       "id": "obturator",
@@ -85,7 +121,13 @@
       "lines": [
         11
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        366,
+        184,
+        107,
+        22
+      ]
     },
     {
       "id": "femoral",
@@ -97,7 +139,13 @@
       "lines": [
         13
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        223,
+        91,
+        22
+      ]
     },
     {
       "id": "deep-femoral",
@@ -110,7 +158,13 @@
       "lines": [
         14
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        4,
+        240,
+        143,
+        27
+      ]
     },
     {
       "id": "femoral-circumflex",
@@ -125,7 +179,13 @@
         17,
         20
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        366,
+        263,
+        112,
+        47
+      ]
     },
     {
       "id": "femoral-2",
@@ -137,7 +197,13 @@
       "lines": [
         21
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        320,
+        91,
+        22
+      ]
     },
     {
       "id": "great-saphenous",
@@ -150,7 +216,13 @@
       "lines": [
         23
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        400,
+        182,
+        27
+      ]
     },
     {
       "id": "popliteal",
@@ -162,7 +234,13 @@
       "lines": [
         26
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        475,
+        95,
+        27
+      ]
     },
     {
       "id": "small-saphenous",
@@ -175,7 +253,13 @@
       "lines": [
         29
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        561,
+        182,
+        27
+      ]
     },
     {
       "id": "anterior-tibial",
@@ -188,7 +272,13 @@
       "lines": [
         31
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        366,
+        598,
+        142,
+        22
+      ]
     },
     {
       "id": "posterior-tibial",
@@ -201,7 +291,13 @@
       "lines": [
         33
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        646,
+        151,
+        22
+      ]
     },
     {
       "id": "fibular",
@@ -215,7 +311,13 @@
       "lines": [
         36
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        708,
+        80,
+        22
+      ]
     },
     {
       "id": "dorsal-venous-arch",
@@ -227,7 +329,13 @@
       "lines": [
         42
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        864,
+        201,
+        22
+      ]
     },
     {
       "id": "digital",
@@ -240,7 +348,13 @@
       "lines": [
         44
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        367,
+        908,
+        72,
+        27
+      ]
     },
     {
       "id": "external-iliac-posterior",
@@ -252,7 +366,13 @@
       "lines": [
         1
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        942,
+        23,
+        137,
+        23
+      ]
     },
     {
       "id": "internal-pudendal-posterior",
@@ -265,7 +385,13 @@
         5,
         7
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        616,
+        85,
+        102,
+        51
+      ]
     },
     {
       "id": "gluteal-posterior",
@@ -278,7 +404,13 @@
       "lines": [
         6
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        941,
+        104,
+        82,
+        23
+      ]
     },
     {
       "id": "obturator-posterior",
@@ -290,7 +422,13 @@
       "lines": [
         10
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        615,
+        148,
+        107,
+        23
+      ]
     },
     {
       "id": "femoral-posterior",
@@ -302,7 +440,13 @@
       "lines": [
         12
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        616,
+        187,
+        92,
+        22
+      ]
     },
     {
       "id": "deep-femoral-posterior",
@@ -315,7 +459,13 @@
       "lines": [
         15
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        942,
+        248,
+        143,
+        28
+      ]
     },
     {
       "id": "femoral-circumflex-posterior",
@@ -330,7 +480,13 @@
         16,
         19
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        615,
+        262,
+        112,
+        48
+      ]
     },
     {
       "id": "femoral-posterior-2",
@@ -342,7 +498,13 @@
       "lines": [
         22
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        616,
+        336,
+        92,
+        23
+      ]
     },
     {
       "id": "great-saphenous-posterior",
@@ -356,7 +518,13 @@
         24,
         25
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        615,
+        412,
+        121,
+        52
+      ]
     },
     {
       "id": "popliteal-posterior",
@@ -368,7 +536,13 @@
       "lines": [
         27
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        616,
+        498,
+        95,
+        27
+      ]
     },
     {
       "id": "small-saphenous-posterior",
@@ -382,7 +556,13 @@
         28,
         30
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        615,
+        560,
+        121,
+        53
+      ]
     },
     {
       "id": "anterior-tibial-posterior",
@@ -395,7 +575,13 @@
       "lines": [
         32
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        615,
+        636,
+        142,
+        22
+      ]
     },
     {
       "id": "posterior-tibial-posterior",
@@ -409,7 +595,13 @@
         35,
         37
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        615,
+        688,
+        101,
+        47
+      ]
     },
     {
       "id": "fibular-posterior",
@@ -423,7 +615,13 @@
       "lines": [
         38
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        616,
+        745,
+        80,
+        22
+      ]
     },
     {
       "id": "lateral-plantar",
@@ -467,7 +665,13 @@
         41,
         43
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        940,
+        851,
+        159,
+        47
+      ]
     }
   ]
 }

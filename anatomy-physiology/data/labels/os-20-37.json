@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        6,
+        85,
+        237,
+        28
+      ]
     },
     {
       "id": "inferior-sagittal-sinus",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        7,
+        135,
+        220,
+        28
+      ]
     },
     {
       "id": "straight-sinus",
@@ -34,7 +46,13 @@
       "lines": [
         2
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        6,
+        186,
+        150,
+        28
+      ]
     },
     {
       "id": "occipital",
@@ -46,7 +64,13 @@
       "lines": [
         3
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        6,
+        237,
+        99,
+        28
+      ]
     },
     {
       "id": "temporal",
@@ -59,7 +83,13 @@
       "lines": [
         4
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        886,
+        254,
+        106,
+        28
+      ]
     },
     {
       "id": "cavernous-sinus",
@@ -70,7 +100,13 @@
       "lines": [
         6
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        887,
+        338,
+        181,
+        23
+      ]
     },
     {
       "id": "right-transverse-sinus",
@@ -82,7 +118,13 @@
       "lines": [
         7
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        7,
+        389,
+        236,
+        28
+      ]
     },
     {
       "id": "maxillary",
@@ -94,7 +136,13 @@
       "lines": [
         9
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        887,
+        406,
+        103,
+        27
+      ]
     },
     {
       "id": "occipital-sinus",
@@ -105,7 +153,13 @@
       "lines": [
         10
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        6,
+        441,
+        159,
+        28
+      ]
     },
     {
       "id": "facial",
@@ -117,7 +171,13 @@
       "lines": [
         11
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        888,
+        466,
+        70,
+        23
+      ]
     },
     {
       "id": "sigmoid-sinus",
@@ -128,7 +188,13 @@
       "lines": [
         12
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        7,
+        493,
+        153,
+        28
+      ]
     },
     {
       "id": "petrosal-sinus",
@@ -141,7 +207,13 @@
       "lines": [
         13
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        7,
+        545,
+        153,
+        23
+      ]
     },
     {
       "id": "external-jugular",
@@ -153,7 +225,13 @@
       "lines": [
         14
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        7,
+        596,
+        172,
+        28
+      ]
     },
     {
       "id": "internal-jugular",
@@ -165,7 +243,13 @@
       "lines": [
         15
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        888,
+        626,
+        163,
+        28
+      ]
     },
     {
       "id": "vertebral",
@@ -177,7 +261,13 @@
       "lines": [
         16
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        6,
+        648,
+        103,
+        23
+      ]
     },
     {
       "id": "right-subclavian",
@@ -191,7 +281,13 @@
       "lines": [
         17
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        888,
+        816,
+        177,
+        28
+      ]
     },
     {
       "id": "axillary",
@@ -203,7 +299,13 @@
       "lines": [
         18
       ],
-      "concept": "limb-veins"
+      "concept": "limb-veins",
+      "box": [
+        887,
+        874,
+        86,
+        28
+      ]
     },
     {
       "id": "superior-vena-cava",

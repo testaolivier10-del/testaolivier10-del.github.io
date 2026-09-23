@@ -13,7 +13,13 @@
         1,
         7
       ],
-      "concept": "artery-types"
+      "concept": "artery-types",
+      "box": [
+        4,
+        9,
+        71,
+        43
+      ]
     },
     {
       "id": "tunica-externa",
@@ -28,7 +34,13 @@
         0,
         6
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        285,
+        8,
+        74,
+        40
+      ]
     },
     {
       "id": "tunica-media",
@@ -41,7 +53,13 @@
         11,
         14
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        285,
+        54,
+        65,
+        39
+      ]
     },
     {
       "id": "tunica-intima",
@@ -55,7 +73,13 @@
         18,
         20
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        285,
+        112,
+        65,
+        39
+      ]
     },
     {
       "id": "muscular-artery",
@@ -69,7 +93,13 @@
         2,
         8
       ],
-      "concept": "artery-types"
+      "concept": "artery-types",
+      "box": [
+        419,
+        9,
+        93,
+        43
+      ]
     },
     {
       "id": "tunica-externa-muscular",
@@ -84,7 +114,13 @@
         5,
         10
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        648,
+        16,
+        74,
+        40
+      ]
     },
     {
       "id": "tunica-media-muscular",
@@ -97,7 +133,13 @@
         12,
         15
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        648,
+        64,
+        66,
+        40
+      ]
     },
     {
       "id": "tunica-intima-muscular",
@@ -111,7 +153,13 @@
         17,
         19
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        648,
+        108,
+        66,
+        40
+      ]
     },
     {
       "id": "arteriole",
@@ -123,7 +171,13 @@
       "lines": [
         3
       ],
-      "concept": "arteriole"
+      "concept": "arteriole",
+      "box": [
+        767,
+        9,
+        88,
+        19
+      ]
     },
     {
       "id": "tunica-externa-arteriole",
@@ -138,7 +192,13 @@
         4,
         9
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        1025,
+        10,
+        74,
+        39
+      ]
     },
     {
       "id": "tunica-media-arteriole",
@@ -151,7 +211,13 @@
         13,
         16
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        1024,
+        64,
+        67,
+        40
+      ]
     },
     {
       "id": "tunica-intima-arteriole",
@@ -165,7 +231,13 @@
         21,
         22
       ],
-      "concept": "vessel-tunics"
+      "concept": "vessel-tunics",
+      "box": [
+        1027,
+        133,
+        65,
+        40
+      ]
     }
   ]
 }
