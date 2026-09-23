@@ -217,8 +217,8 @@ Rules:
 
 * Unit quiz: short, per topic or small group of topics.
 * System exam: full exam for one body system.
-* A&P I cumulative final and A&P II cumulative final, weighted by the topic distribution from Phase 0.
-* TEAS A&P mode: 18 questions matching the TEAS 7 A&P blueprint, timed at the TEAS science pace (roughly 1.2 minutes per question), with results broken down by system. The 18 questions are split evenly across the systems listed in the TEAS 7 blueprint. The mode is labeled as an estimate, because ATI does not publish the exact split.
+* A&P I cumulative final and A&P II cumulative final, weighted by the topic distribution from Phase 0. Endocrine is tagged A&P II, and both finals (and the custom set) offer an "include endocrine" switch, because schools teach it in either course.
+* TEAS A&P mode: 18 questions matching the TEAS 7 A&P blueprint, timed at the TEAS science pace (roughly 1.2 minutes per question), with results broken down by system. The 18 questions are split evenly across the 12 A&P areas of the TEAS 7 blueprint: general orientation of human anatomy, respiratory, cardiovascular, digestive, nervous, muscular, male and female reproductive, integumentary, endocrine, urinary, immune, and skeletal. Each area gets one question (12), and the remaining 6 rotate across areas from one attempt to the next so every area gets an equal share over time. The mode is labeled as an estimate, because ATI does not publish the per-area split. Use only the area names from ATI's outline; never copy or redistribute the outline itself.
 * Lab practical exam: the timed practical from 8.1, built from a chosen set of systems.
 Every exam ends with a full review of every question and explanation, a breakdown by system and core concept, and missed items added to review.
 
@@ -311,3 +311,13 @@ Phase 0 review (2026-09-23):
 3. TEAS mode: the 18 questions are split evenly across the systems listed in the TEAS 7 blueprint, and the mode is labeled as an estimate (section 11).
 4. Contested science: teach the explanation best supported by current evidence, add a "For your exam" note where exams may expect an older answer, and log each item in docs/anp-needs-author.md (section 16).
 5. "Receptor": prose says "sensory receptor" or "receptor protein", and the loop builder slot reads "Receptor (sensor)" (sections 5 and 8.3).
+
+Phase 0 follow-up review (2026-09-23):
+6. Endocrine course tag: stays A&P II. The cumulative finals and the custom set get an "include endocrine" switch (section 11).
+7. The 60% apply/analyze rule: "Atoms, ions and chemical bonds" and "Carbohydrates, lipids, proteins and nucleic acids" are retagged mixed; the other six chemistry and physics primer topics stay physiology and keep the rule (section 9).
+8. Precapillary sphincters: teach arterioles as the control of flow into capillary beds, say discrete sphincters are unsettled in humans, and add a "For your exam" note. Pending instructor review (docs/anp-needs-author.md).
+9. Calcitonin: teach PTH and calcitriol as the main calcium regulators and calcitonin as minor in adults; the calcium loop keeps it, labeled minor, with a "For your exam" note. Pending instructor review.
+10. Apocrine sweat glands: keep the standard name, say it is historical (they secrete mainly by exocytosis), use the mammary gland as the apocrine example, and add a "For your exam" note. Pending instructor review.
+11. OpenStax coverage: rerun against the live OpenStax A&P 2e table of contents (all 169 sections' learning objectives and all 28 chapters' key terms) and the fixes applied to the dependency map.
+12. TEAS areas: confirmed by the project owner from ATI's official TEAS 7 content outline as 12 areas with 18 scored A&P questions. One question per area, with the remaining 6 rotating (section 11). Only the area names are used; the outline is not copied into the repo or the site.
+
