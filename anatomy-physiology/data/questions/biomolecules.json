@@ -64,12 +64,12 @@
     "diff": 2,
     "core": ["energy"],
     "q": "Mr. Hale, 45, eats dinner at 7 p.m. and nothing more until breakfast. Overnight, the glucose level in his blood stays in its normal range. Which store supplies that glucose?",
-    "options": ["Glycogen in his skeletal muscles", "Cholesterol in the boundary around his cells", "Triglycerides split directly into glucose", "Glycogen in his liver"],
+    "options": ["Glycogen in his muscles", "Cholesterol in the boundary around his cells", "Triglycerides split directly into glucose", "Glycogen in his liver"],
     "correct": 3,
     "why": {
-      "correct": "Between meals, liver cells break down glycogen and release the freed glucose into the blood. Muscle cells lack the final step needed to release free glucose, so their glycogen fuels only the muscle itself.",
+      "correct": "Between meals, liver cells break down glycogen and release the freed glucose into the blood. Muscle lacks the final step needed to release free glucose, so its glycogen fuels only the muscle itself.",
       "options": [
-        "Muscle glycogen is broken down for the muscle's own use. Muscle cells cannot release free glucose into the blood.",
+        "Muscle glycogen is broken down for the muscle's own use. Muscle cannot release free glucose into the blood.",
         "Cholesterol is a steroid in the cell boundary and raw material for other steroids. It is not a glucose store.",
         "Triglycerides are glycerol plus fatty acids, not chains of glucose, so hydrolyzing them does not release glucose.",
         "Correct. Liver glycogen, roughly 100 g, is the store that keeps the glucose level in the blood steady between meals."

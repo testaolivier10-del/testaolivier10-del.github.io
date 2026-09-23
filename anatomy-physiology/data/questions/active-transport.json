@@ -263,7 +263,7 @@
       "structure-function",
       "compartments"
     ],
-    "q": "Leo, 12, has a blood cholesterol level several times normal. His cells make normal cholesterol-carrying particles, but the receptor proteins that should bind those particles on the cell surface are defective. Which process has failed?",
+    "q": "Leo, 12, has a blood cholesterol level several times normal. His cells make normal cholesterol-carrying particles, but the surface proteins that should bind those particles are defective. Which process has failed?",
     "options": [
       "Phagocytosis",
       "Receptor-mediated endocytosis",
@@ -272,10 +272,10 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Cells take up cholesterol-carrying particles by receptor-mediated endocytosis: receptor proteins bind the particles and gather in coated pits that pinch off as vesicles. With defective receptor proteins, the particles stay in the blood. This is familial hypercholesterolemia.",
+      "correct": "Cells take up cholesterol-carrying particles by receptor-mediated endocytosis: surface proteins bind the particles and gather in coated pits that pinch off as vesicles. With those proteins defective, the particles stay in the blood. This is familial hypercholesterolemia.",
       "options": [
-        "Phagocytosis engulfs large particles such as bacteria and does not depend on these specific receptor proteins.",
-        "Correct. Without working receptor proteins, the specific uptake of cholesterol-carrying particles fails.",
+        "Phagocytosis engulfs large particles such as bacteria and does not depend on these specific surface proteins.",
+        "Correct. Without working surface proteins, the specific uptake of cholesterol-carrying particles fails.",
         "Exocytosis releases material from cells. The problem here is taking material in.",
         "The particles are far too large to diffuse across the bilayer. They enter by endocytosis."
       ]

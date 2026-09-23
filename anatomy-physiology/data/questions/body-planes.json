@@ -271,7 +271,7 @@
     "options": [
       "A coin is too small and too faint to show clearly on a radiograph",
       "Radiographs show only soft tissue",
-      "The heart blocks all X-rays",
+      "The heart stops all X-rays",
       "Radiographs flatten everything on a beam's path into one image"
     ],
     "correct": 3,

@@ -5,7 +5,7 @@
     "say": ""
   },
   "voltage": {
-    "def": "The difference in electrical potential energy per unit of charge between two points, also called potential difference, measured in volts. It exists only where charge is separated; voltages across cell membranes are a few tens of millivolts (mV; 1 mV = 0.001 V), written as the inside compared with the outside.",
+    "def": "The difference in electrical potential energy per unit of charge between two points, also called potential difference, measured in volts. It exists only where charge is separated; voltages across the membranes around cells are a few tens of millivolts (mV; 1 mV = 0.001 V), written as the inside compared with the outside.",
     "roots": [["milli-", "one thousandth"]],
     "say": "VOLE-tij"
   },

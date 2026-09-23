@@ -2588,7 +2588,7 @@
         {
           "id": "after",
           "label": "After compensation",
-          "prompt": "The baroreceptor reflex acts within seconds; hormones and fluid shifts follow over the next few hours. Compare with the moment just after the bleed.",
+          "prompt": "The baroreceptor reflex acts within seconds; hormones and water drawn back into the blood from the tissues follow over the next few hours. Compare with the moment just after the bleed.",
           "start": "Baroreceptors firing less",
           "steps": {
             "cvc": "Cardiovascular center: sympathetic up, vagal down",

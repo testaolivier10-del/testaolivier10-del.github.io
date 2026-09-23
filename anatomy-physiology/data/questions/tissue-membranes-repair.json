@@ -202,7 +202,7 @@
     "why": {
       "correct": "Cardiac muscle regenerates very little because its cells rarely divide. Fibroblasts filled the gap with collagen (fibrosis). Scar tissue holds the wall together but cannot contract, so that region stays still.",
       "options": [
-        "Correct. Cardiac muscle cells rarely divide, so the heart repairs by fibrosis, and scar tissue does not contract.",
+        "Correct. The muscle cells of the heart rarely divide, so the heart repairs by fibrosis, and scar tissue does not contract.",
         "Cardiac muscle regenerates very little. Months later, the region is scar, not immature muscle.",
         "Inflammation after an injury like this settles within weeks. A thin, still wall months later reflects scar tissue.",
         "Cells that die from lost blood supply die by necrosis, not apoptosis, and the gap they leave is filled by repair."
@@ -226,7 +226,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Regeneration needs cells of the lost type that can divide. Mature liver cells can re-enter the cell cycle and multiply; cardiac muscle cells rarely do, so the heart fills the gap with scar tissue.",
+      "correct": "Regeneration needs cells of the lost type that can divide. Mature liver cells can re-enter the cell cycle and multiply; the heart's muscle cells rarely do, so the heart fills the gap with scar tissue.",
       "options": [
         "Correct. Whether the working cells can divide is the main factor that decides regeneration or fibrosis.",
         "The heart has a very rich blood supply too. Blood supply alone does not decide whether a tissue regenerates.",

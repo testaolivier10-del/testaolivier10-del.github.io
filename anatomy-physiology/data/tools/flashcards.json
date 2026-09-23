@@ -379,7 +379,7 @@
    "level": "recall",
    "front": "Voltage vs current in the body?",
    "back": "Voltage is a difference in electrical charge between two places. Current is the flow of charge, carried in the body by ions.",
-   "why": "Separated charge is stored potential energy; it drives a current only where there is a path, such as open ion channels."
+   "why": "Separated charge is stored potential energy; it drives a current only where there is a path, such as open pores that let ions cross a membrane."
   },
   {
    "id": "ecf-icf-na-k",
@@ -505,7 +505,7 @@
    ],
    "level": "apply",
    "compare": "Tight junction vs desmosome vs gap junction",
-   "front": "Which junction lets heart muscle cells act together, and how?",
+   "front": "Which junction lets heart cells contract together, and how?",
    "back": "The gap junction: connexon tunnels let ions pass directly from cell to cell.",
    "why": "Ions carrying an electrical change flow straight into the neighboring cell, so the change spreads through the tissue."
   },
@@ -835,7 +835,7 @@
    ],
    "level": "recall",
    "compare": "Skeletal vs cardiac vs smooth muscle",
-   "front": "What joins cardiac muscle cells, and what does each part do?",
+   "front": "What joins neighboring cells in cardiac muscle, and what does each part do?",
    "back": "Intercalated discs: desmosomes hold the cells together; gap junctions pass the electrical signal from cell to cell.",
    "why": "Desmosomes keep the cells from pulling apart as they squeeze, and gap junctions let the electrical change pass straight into the next cell, so the cells contract as a unit."
   },
@@ -849,7 +849,7 @@
    "compare": "Skeletal vs cardiac vs smooth muscle",
    "front": "Which muscle type repairs itself worst, and what fills the gap?",
    "back": "Cardiac muscle; connective tissue fills the gap left by lost fibers.",
-   "why": "Adult cardiac muscle cells rarely divide and there are few stem cells beside them, so dead cells are replaced by connective tissue."
+   "why": "Adult cardiac muscle fibers rarely divide and there are few stem cells beside them, so dead fibers are replaced by connective tissue."
   },
   {
    "id": "neuron-glia",
@@ -910,7 +910,7 @@
     "gradients"
    ],
    "level": "recall",
-   "front": "Which ion movements cause the rising and falling phases of an action potential?",
+   "front": "Which ion movements make the voltage rise and then fall during an action potential?",
    "back": "Rising (depolarization): sodium flows in through voltage-gated sodium channels. Falling (repolarization): potassium flows out through voltage-gated potassium channels.",
    "why": "At threshold the sodium channels open first; they then inactivate while slower potassium channels open."
   },

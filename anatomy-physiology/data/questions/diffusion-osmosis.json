@@ -222,7 +222,7 @@
       "options": [
         "This is the direction for blood that has become more concentrated. Here the outside has become more dilute, so water moves in.",
         "Correct. The inside of each cell now has more dissolved particles than the fluid around it, so water moves in.",
-        "The cell membranes hold most ions back, so the main change is water moving, not salt. And any change in particles would not leave the cells unchanged.",
+        "The membranes around her cells hold most ions back, so the main change is water moving, not salt. And any change in particles would not leave the cells unchanged.",
         "The skull protects the brain from knocks, but it does not stop osmosis across each cell's membrane. The rigid skull actually makes swelling more dangerous."
       ]
     }
@@ -350,7 +350,7 @@
     "q": "A student explains why salted cucumber slices go limp. One step is wrong. Find it.",
     "options": [
       "Salt dissolves in the thin film of water on the slices, making a very concentrated solution",
-      "The cucumber's cell membranes let water cross but hold back most of the salt",
+      "The membranes around the cucumber's cells let water cross but hold back most of the salt",
       "Water moves from the salty film into the cells, toward fewer dissolved particles",
       "The cells lose volume and the slices go limp"
     ],

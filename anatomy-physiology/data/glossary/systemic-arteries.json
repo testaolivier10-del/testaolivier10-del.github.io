@@ -20,7 +20,7 @@
     "say": "sub-KLAY-vee-un; pop-lih-TEE-ul; dor-SAY-lis PEE-dis"
   },
   "abdominal-arteries": {
-    "def": "The branches of the abdominal aorta: three single gut arteries (celiac trunk, superior mesenteric, inferior mesenteric) and paired renal and gonadal arteries, ending in the common iliac arteries, which split into internal iliacs for the pelvis and external iliacs for the legs. The celiac trunk splits into the left gastric, splenic and common hepatic arteries.",
+    "def": "The branches of the abdominal aorta: three single gut arteries (celiac trunk, superior mesenteric, inferior mesenteric) and paired renal and gonadal arteries, ending in the common iliac arteries, which split into internal iliacs for the pelvis and external iliacs for the legs. The celiac trunk splits into the left gastric artery, the splenic artery and the common hepatic artery.",
     "roots": [["celi-", "belly"], ["mes-", "middle"], ["enter-", "gut"], ["ren-", "kidney"], ["gon-", "seed"], ["gastr-", "stomach"], ["hepat-", "liver"]],
     "say": "SEE-lee-ak; mez-en-TAIR-ik; ILL-ee-ak"
   },

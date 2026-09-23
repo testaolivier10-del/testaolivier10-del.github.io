@@ -20,7 +20,7 @@
     "say": ""
   },
   "endocytosis": {
-    "def": "Taking material into a cell by folding a patch of plasma membrane around it and pinching it off as a vesicle. Its forms are phagocytosis (large particles), pinocytosis (droplets of fluid) and receptor-mediated endocytosis (specific substances bound to receptor proteins).",
+    "def": "Taking material into a cell by folding a patch of plasma membrane around it and pinching it off as a vesicle. Its forms are phagocytosis (large particles), pinocytosis (droplets of fluid) and receptor-mediated endocytosis (specific substances bound to matching membrane proteins).",
     "roots": [["endo-", "within"], ["cyto-", "cell"], ["-osis", "process"], ["phago-", "eating"], ["pino-", "drinking"]],
     "say": "en-doh-sy-TOH-sis; fag-oh-sy-TOH-sis; pin-oh-sy-TOH-sis"
   },

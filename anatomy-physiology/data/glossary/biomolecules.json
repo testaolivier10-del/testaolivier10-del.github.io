@@ -15,7 +15,7 @@
     "say": "GLOO-kose"
   },
   "glycogen": {
-    "def": "A heavily branched polysaccharide of glucose that your liver and muscle cells build after meals. Liver glycogen is split to release glucose into the blood between meals; muscle glycogen fuels only the muscle that stores it.",
+    "def": "A heavily branched polysaccharide of glucose that your liver and muscles build after meals. Liver glycogen is split to release glucose into the blood between meals; muscle glycogen fuels only the muscle that stores it.",
     "roots": [["glyc/o", "sugar"], ["-gen", "producing"]],
     "say": "GLY-ko-jen"
   },
