@@ -11,7 +11,10 @@
     "alt": "A drawing of the brainstem and spinal cord from the front, with the segments labeled from the pons down to S5 and a column of ganglia beside the cord on each side. Solid lines leave the cord only between T1 and L2. Some run to the chain of ganglia beside the cord, and some run past it as the greater and lesser splanchnic nerves to three round ganglia in front of the spine: the celiac, superior mesenteric and inferior mesenteric ganglia. Dashed lines run from the ganglia to a column of organs on the right, from the eye, tear gland and saliva glands at the top through the heart, airways, stomach, liver, pancreas, adrenal gland and intestines to the bladder and genitals at the bottom. A patch of skin on the left is supplied from the chain.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.2",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1621,
+    "ext": "jpg"
   },
   "os-15-3": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "Three panels, each pairing a small schematic with a three-dimensional drawing of a spinal cord cross section, its spinal nerve and the neighboring sympathetic chain ganglion. In the top panel a red fiber leaves the lateral horn, enters the chain through the white ramus communicans and synapses in the ganglion at the same level. In the middle panel the fiber climbs the chain to synapse in a higher ganglion, and postganglionic fibers return to spinal nerves through gray rami communicantes. In the bottom panel the fiber passes through the chain without synapsing and runs in a splanchnic nerve to a prevertebral ganglion, where it synapses.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.3",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1312,
+    "ext": "jpg"
   },
   "os-15-4": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "The same brainstem, spinal cord and organ column as the sympathetic map, now showing parasympathetic fibers in blue. From four shaded brainstem nuclei, fibers run out in cranial nerves III, VII, IX and X. Nerves III, VII and IX end in small circled ganglia near the eye, the tear and nasal glands and the saliva glands. Nerve X sweeps down to the heart, airways, stomach, liver, pancreas and intestines. From the lowest sacral segments, a second group of blue fibers runs to the colon, rectum, bladder and genitals. The red sympathetic chain is drawn faintly beside the cord for comparison.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.4",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1692,
+    "ext": "jpg"
   },
   "os-15-6": {
     "source": "openstax",
@@ -53,6 +62,9 @@
     "alt": "Two pathways from a spinal cord cross section. Top, the autonomic efferent pathway: a myelinated axon runs from the lateral horn to a ganglion, where it synapses on a second neuron whose unmyelinated axon runs on to a curved strip of smooth muscle; an enlarged inset shows a swelling along that axon releasing transmitter onto the muscle surface. Bottom, the somatic efferent pathway: one myelinated axon runs from the ventral horn directly to a bundle of skeletal muscle fibers, and an inset shows it ending in a single synaptic terminal.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.6",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1507,
+    "ext": "jpg"
   }
 }
