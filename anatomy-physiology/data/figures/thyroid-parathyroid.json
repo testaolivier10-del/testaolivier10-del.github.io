@@ -1,0 +1,34 @@
+{
+  "os-17-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.13",
+      "section": "17.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0c75c57b179f6d45096268109e754fc2f4084022",
+      "page": "17-4-the-thyroid-gland"
+    },
+    "alt": "A feedback loop for the thyroid gland. At the top, a box asks whether the blood level of the thyroid gland's two hormones, labeled T3 and T4, is low or high. When low, the hypothalamus releases TRH into the portal vessels, and the front lobe of the pituitary gland releases TSH. TSH travels in the blood to the thyroid gland, drawn from the front, and an enlarged view shows a ring of follicle cells around a pale center releasing T3 and T4 into a blood vessel. The hormones act on body cells, shown as a mitochondrion, and raise heat production. Two arrows with a minus sign lead from the hormones back to a box where the hypothalamus stops releasing TRH and the pituitary stops releasing TSH.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.13",
+    "labels": [],
+    "w": 1122,
+    "h": 1097,
+    "ext": "jpg"
+  },
+  "os-17-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.16",
+      "section": "17.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1a7ea0075f67340d0be854af9c21dd4101468677",
+      "page": "17-5-the-parathyroid-glands"
+    },
+    "alt": "A cycle diagram of blood calcium control. When blood calcium drops, the small glands on the back of the thyroid gland, drawn in a back view of the neck with an upper and a lower gland on each side, release their hormone. Three panels show its effects: on bone, osteoclasts break down bone matrix and calcium ions move into a blood vessel; on the kidney, tubule cells move calcium from the fluid on the urine side into the blood and release calcitriol; on the intestine, calcitriol makes the lining cells absorb calcium from food. Blood calcium then rises, and a thyroid follicle's neighboring cells release calcitonin, which acts on bone cells to move calcium from the blood into bone.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.16",
+    "labels": [],
+    "w": 1186,
+    "h": 1425,
+    "ext": "jpg"
+  }
+}

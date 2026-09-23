@@ -1,0 +1,18 @@
+{
+  "os-17-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.2",
+      "section": "17.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/eade2d286c1bf61900ea443ba642f097fc0c334d",
+      "page": "17-1-an-overview-of-the-endocrine-system"
+    },
+    "alt": "An outline of a human body with the endocrine glands drawn in place. In the head, a small gland hangs below the hypothalamus and another sits deep in the middle of the brain, shown enlarged in an inset. In the neck, a butterfly-shaped gland wraps the front of the trachea below the larynx; an enlarged inset shows four small glands on its back surface. A gland sits behind the breastbone above the heart. In the abdomen, a gland caps the top of each kidney and a long gland lies across the middle behind the stomach. In the pelvis, the uterus is drawn with a small oval organ at each side; below the pelvis, two oval organs hang outside the body wall.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.2",
+    "labels": [],
+    "w": 1852,
+    "h": 1728,
+    "ext": "jpg"
+  }
+}

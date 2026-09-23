@@ -1,0 +1,50 @@
+{
+  "os-17-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.7",
+      "section": "17.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ed5522dd5b4d052d9576384dbf168d12ebcf9229",
+      "page": "17-3-the-pituitary-gland-and-hypothalamus"
+    },
+    "alt": "A side view of a head with the brain cut down the middle, and an enlarged inset of its base. Below the thalamus, the hypothalamus forms the floor of the brain's center. A short stalk, the infundibulum, hangs down from it to a pea-sized gland sitting in a hollow of the skull. The gland has two parts: a larger front lobe and a smaller back lobe joined to the stalk.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.7",
+    "labels": [],
+    "w": 1077,
+    "h": 626,
+    "ext": "jpg"
+  },
+  "os-17-9": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.9",
+      "section": "17.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5ae383f85727937cee0a0e698d85b8703c833d1a",
+      "page": "17-3-the-pituitary-gland-and-hypothalamus"
+    },
+    "alt": "An enlarged view of the hypothalamus, the stalk and the pituitary gland, with a small head drawing for orientation. Nerve cells in the hypothalamus send their axons down to a first bed of capillaries at the top of the stalk, fed by a small artery. Veins run down the stalk from that capillary bed to a second bed of capillaries spread through the front lobe of the gland. Numbered steps show the hypothalamus releasing a hormone into the first capillary bed, that hormone reaching the front lobe through the veins and second capillary bed, and the front lobe releasing its own hormone into a vein that leaves the gland. The back lobe is drawn in outline only.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.9",
+    "labels": [],
+    "w": 1154,
+    "h": 996,
+    "ext": "jpg"
+  },
+  "os-17-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.10",
+      "section": "17.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c103ed23e020805e4e23bea3706a582b3f5ce93e",
+      "page": "17-3-the-pituitary-gland-and-hypothalamus"
+    },
+    "alt": "A flow chart of growth hormone control. At the top left, the hypothalamus releases its releasing hormone and the front lobe of the pituitary gland releases growth hormone into the blood. Three arrows lead down to three effects: fat cells break down stored fat; bone, muscle, nerve and immune cells take up more amino acids, divide more and die less; and the liver releases glucose and a second hormone, IGF-1, which adds to the growth effects. An orange arrow with a minus sign runs from IGF-1 back to the hypothalamus, which releases an inhibiting hormone, and a panel at the top right shows growth hormone release crossed out.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.10",
+    "labels": [],
+    "w": 1188,
+    "h": 1009,
+    "ext": "jpg"
+  }
+}

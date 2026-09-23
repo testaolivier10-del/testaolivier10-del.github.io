@@ -6415,6 +6415,2113 @@
           "why": "With the brake on the arousal systems eased, you feel less sleepy, although the sleep pressure itself is still there and returns as the caffeine wears off."
         }
       ]
+    },
+    {
+      "id": "l5-dorsal-root-cut",
+      "title": "The right L5 dorsal root is cut",
+      "topic": "spinal-nerves",
+      "theme": "a dorsal root is cut",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "cutting one dorsal root leaves its dermatome completely numb and weakens its muscles",
+      "setup": "To relieve severe pain, a surgeon cuts the right L5 dorsal root. The L5 ventral root and the roots above and below are left intact. Compare the right foot with before the operation.",
+      "start": "Right L5 dorsal root cut",
+      "steps": {
+        "blocked": "Sensory axons from the L5 dermatome can no longer enter the cord",
+        "overlap": "Only the overlapping supply from L4 and S1 still reaches that skin",
+        "reduced": "Sensation over the top of the foot reduced, not lost",
+        "ventral": "Motor axons leave through the intact ventral root",
+        "commands": "L5 muscles still receive every command",
+        "s1root": "The S1 dorsal root is intact",
+        "s1skin": "The outer edge of the foot reports normally"
+      },
+      "variables": [
+        {
+          "id": "top-of-foot",
+          "name": "Sensation over the top of the right foot and big toe",
+          "answer": "down",
+          "chain": [
+            "blocked",
+            "overlap",
+            "reduced"
+          ],
+          "why": "The L5 dermatome’s sensory axons enter the cord only through the L5 dorsal root. Neighboring dermatomes overlap, so the L4 and S1 roots still supply part of that skin: sensation is reduced rather than lost completely."
+        },
+        {
+          "id": "dorsiflexion",
+          "name": "Strength of ankle dorsiflexion on the right",
+          "answer": "none",
+          "chain": [
+            "ventral",
+            "commands"
+          ],
+          "why": "Motor axons leave the cord through the ventral roots, not the dorsal roots. The L5 ventral root was spared, so the muscles that lift the foot still receive their commands."
+        },
+        {
+          "id": "outer-foot",
+          "name": "Sensation over the outer edge of the right foot",
+          "answer": "none",
+          "chain": [
+            "s1root",
+            "s1skin"
+          ],
+          "why": "The outer edge of the foot is the S1 dermatome. Its sensory axons enter through the S1 dorsal root, which was not cut."
+        }
+      ]
+    },
+    {
+      "id": "radial-nerve-fracture",
+      "title": "A broken humerus injures the radial nerve",
+      "topic": "spinal-nerves",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a nerve injury in the arm weakens every muscle of the hand",
+      "setup": "A fall breaks the shaft of the right humerus, and the broken edge injures the radial nerve where it spirals around the bone. The median and ulnar nerves are unharmed. Compare the right hand with before the fall.",
+      "start": "Radial nerve injured at mid-humerus",
+      "steps": {
+        "ext": "Wrist and finger extensors lose their motor supply",
+        "drop": "The wrist cannot be lifted: wrist drop",
+        "median": "The median nerve still supplies most wrist and finger flexors",
+        "grip": "The fingers can still curl",
+        "ulnar": "The ulnar nerve still supplies the small muscles inside the hand",
+        "spread": "The fingers can still spread apart"
+      },
+      "variables": [
+        {
+          "id": "wrist-extension",
+          "name": "Strength of lifting the right wrist (extension)",
+          "answer": "down",
+          "chain": [
+            "ext",
+            "drop"
+          ],
+          "why": "The radial nerve is the nerve of the back of the arm and forearm and supplies the wrist and finger extensors. Cut off from their motor axons, those muscles cannot contract, so the hand hangs: wrist drop."
+        },
+        {
+          "id": "finger-flexion",
+          "name": "Strength of curling the right fingers (flexion)",
+          "answer": "none",
+          "chain": [
+            "median",
+            "grip"
+          ],
+          "why": "Most wrist and finger flexors, on the front of the forearm, are supplied by the median nerve, which the fracture did not touch."
+        },
+        {
+          "id": "finger-spread",
+          "name": "Strength of spreading the right fingers apart",
+          "answer": "none",
+          "chain": [
+            "ulnar",
+            "spread"
+          ],
+          "why": "Spreading the fingers uses the small muscles inside the hand, supplied by the ulnar nerve, which runs behind the medial epicondyle, away from the break."
+        }
+      ]
+    },
+    {
+      "id": "bells-palsy",
+      "title": "The right facial nerve stops working (Bell’s palsy)",
+      "topic": "cranial-nerves",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the nerve that moves the face also feels it",
+      "setup": "The right facial nerve (VII) swells inside its narrow bony canal in the temporal bone and stops conducting. The trigeminal nerve and the brain are unharmed. Compare the right side of her face with before.",
+      "start": "Right facial nerve stops conducting",
+      "steps": {
+        "motor": "No commands reach the right muscles of facial expression",
+        "brow": "Right occipitofrontalis goes slack",
+        "eye": "Right orbicularis oculi goes slack",
+        "taste": "Taste axons from the front two-thirds of the right tongue are blocked",
+        "trig": "The trigeminal nerve still carries touch from the face",
+        "chew": "Trigeminal motor axons still reach the masseter"
+      },
+      "variables": [
+        {
+          "id": "forehead",
+          "name": "Wrinkling of the right forehead",
+          "answer": "down",
+          "chain": [
+            "motor",
+            "brow"
+          ],
+          "why": "The facial nerve carries the only motor axons to every expression muscle on its side, forehead included. Blocked in its canal, it leaves the whole right half of the face slack, and there is no second route."
+        },
+        {
+          "id": "eye-closure",
+          "name": "Strength of closing the right eye",
+          "answer": "down",
+          "chain": [
+            "motor",
+            "eye"
+          ],
+          "why": "The orbicularis oculi, which shuts the lids, is an expression muscle supplied by the facial nerve. Without it the right eye will not close fully."
+        },
+        {
+          "id": "taste",
+          "name": "Taste from the front of the right side of the tongue",
+          "answer": "down",
+          "chain": [
+            "taste"
+          ],
+          "why": "Taste from the front two-thirds of the tongue travels in the facial nerve, so swelling in its canal can block those axons too."
+        },
+        {
+          "id": "cheek-touch",
+          "name": "Feeling of light touch on the right cheek",
+          "answer": "none",
+          "chain": [
+            "trig"
+          ],
+          "why": "Touch from the face travels in the trigeminal nerve (the maxillary division for the cheek), not the facial nerve. V feels, VII moves."
+        },
+        {
+          "id": "chewing",
+          "name": "Strength of clenching the teeth on the right",
+          "answer": "none",
+          "chain": [
+            "chew"
+          ],
+          "why": "The chewing muscles, such as the masseter, are supplied by the mandibular division of the trigeminal nerve, which is working."
+        }
+      ]
+    },
+    {
+      "id": "oculomotor-compressed",
+      "title": "Rising pressure squeezes the right oculomotor nerve",
+      "topic": "cranial-nerves",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a damaged eye movement nerve leaves the eye unable to move at all",
+      "setup": "After a head injury, rising pressure inside the skull squeezes the right oculomotor nerve (III) until it stops conducting. The trochlear (IV) and abducens (VI) nerves still work. Compare the right eye with before.",
+      "start": "Right oculomotor nerve stops conducting",
+      "steps": {
+        "lidnerve": "The muscle that raises the upper lid loses its supply",
+        "droop": "The upper lid droops",
+        "para": "Its parasympathetic axons to the ring of muscle that narrows the pupil are blocked",
+        "wide": "Nothing narrows the right pupil",
+        "four": "Four of the six eye muscles lose their supply",
+        "noin": "Nothing turns the eye toward the nose",
+        "six": "The abducens nerve still drives the muscle that turns the eye out",
+        "out": "The eye still turns outward, and rests down and out"
+      },
+      "variables": [
+        {
+          "id": "lid",
+          "name": "Height of the right upper eyelid",
+          "answer": "down",
+          "chain": [
+            "lidnerve",
+            "droop"
+          ],
+          "why": "The oculomotor nerve supplies the muscle that raises the upper lid. Without its commands the lid droops over the eye."
+        },
+        {
+          "id": "pupil",
+          "name": "Size of the right pupil",
+          "answer": "up",
+          "chain": [
+            "para",
+            "wide"
+          ],
+          "why": "Parasympathetic axons riding in the oculomotor nerve drive the ring of muscle that narrows the pupil. With them blocked, the sympathetic side acts unopposed, so the pupil stays wide and ignores light. In a head injury this is an emergency sign."
+        },
+        {
+          "id": "turn-in",
+          "name": "Ability to turn the right eye toward the nose",
+          "answer": "down",
+          "chain": [
+            "four",
+            "noin"
+          ],
+          "why": "The oculomotor nerve supplies four of the six eye muscles, including the one that turns the eye in. “LR6, SO4, all the rest 3.”"
+        },
+        {
+          "id": "turn-out",
+          "name": "Ability to turn the right eye outward",
+          "answer": "none",
+          "chain": [
+            "six",
+            "out"
+          ],
+          "why": "The muscle that turns the eye outward is supplied by the abducens nerve (VI), which still works. Pulled only by it and by the trochlear nerve’s muscle, the eye rests turned down and out."
+        }
+      ]
+    },
+    {
+      "id": "firmer-press",
+      "title": "A firmer press on the fingertip",
+      "topic": "sensory-pathways",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a stronger stimulus makes bigger action potentials",
+      "setup": "You press on your fingertip lightly, then twice as hard, holding each press for a moment. Compare the firm press with the light one.",
+      "start": "Firmer pressure on the skin",
+      "steps": {
+        "stretch": "The membrane of each sensory ending is deformed more",
+        "channels": "More mechanically gated channels open",
+        "rp": "The ending depolarizes more: a larger graded potential",
+        "rate": "The trigger zone sits further above threshold: faster firing",
+        "aon": "Action potentials are all-or-none",
+        "same": "Each action potential stays the same size",
+        "higher": "Endings with higher thresholds reach threshold",
+        "more": "More sensory neurons fire"
+      },
+      "variables": [
+        {
+          "id": "ending-depolarization",
+          "name": "Size of the graded depolarization in one sensory ending",
+          "answer": "up",
+          "chain": [
+            "stretch",
+            "channels",
+            "rp"
+          ],
+          "why": "The depolarization of a sensory ending is graded. More deformation opens more mechanically gated channels, more Na+ flows in, and the ending depolarizes further."
+        },
+        {
+          "id": "firing-rate",
+          "name": "Action potentials per second in one sensory neuron",
+          "answer": "up",
+          "chain": [
+            "stretch",
+            "channels",
+            "rp",
+            "rate"
+          ],
+          "why": "A larger graded depolarization holds the trigger zone further above threshold, so the next action potential fires sooner after each refractory period. Strength is coded as frequency."
+        },
+        {
+          "id": "ap-size",
+          "name": "Size of each action potential",
+          "answer": "none",
+          "chain": [
+            "aon",
+            "same"
+          ],
+          "why": "Action potentials are all-or-none: once threshold is reached, each one is the same size. A stronger stimulus changes how often they fire, never how big they are."
+        },
+        {
+          "id": "neurons-firing",
+          "name": "Number of sensory neurons firing",
+          "answer": "up",
+          "chain": [
+            "higher",
+            "more"
+          ],
+          "why": "A stronger press reaches endings farther from the spot and endings with higher thresholds, so more sensory neurons join in. That is the second way strength is coded."
+        }
+      ]
+    },
+    {
+      "id": "dorsal-columns-damaged",
+      "title": "Disease damages both dorsal columns",
+      "topic": "sensory-pathways",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "damage to one part of the spinal cord removes all feeling below it",
+      "setup": "A disease damages both dorsal columns of the spinal cord in the thoracic region. The spinothalamic tracts, the motor pathways and the peripheral nerves are unharmed. Compare his legs with before.",
+      "start": "Both dorsal columns damaged",
+      "steps": {
+        "blocked": "Fine touch, vibration and position signals from both legs cannot climb",
+        "vib": "Vibration from the feet does not reach the cortex",
+        "pos": "Toe position does not reach the cortex",
+        "st": "The spinothalamic tracts still carry pain and temperature",
+        "prick": "A pinprick is still felt",
+        "motor": "The motor pathways run in other columns and are intact",
+        "strong": "The legs keep their strength"
+      },
+      "variables": [
+        {
+          "id": "vibration",
+          "name": "Feeling of a vibrating tuning fork on the big toes",
+          "answer": "down",
+          "chain": [
+            "blocked",
+            "vib"
+          ],
+          "why": "Vibration travels in the dorsal column–medial lemniscus pathway. Its first-order axons climb the dorsal columns on their own side, so damage to both columns blocks vibration from both legs."
+        },
+        {
+          "id": "position",
+          "name": "Sense of whether a toe is moved up or down, eyes closed",
+          "answer": "down",
+          "chain": [
+            "blocked",
+            "pos"
+          ],
+          "why": "Conscious proprioception also climbs in the dorsal columns, so the brain no longer learns where the toes are."
+        },
+        {
+          "id": "pinprick",
+          "name": "Feeling of a pinprick on the feet",
+          "answer": "none",
+          "chain": [
+            "st",
+            "prick"
+          ],
+          "why": "Pain travels in the spinothalamic tracts, in the lateral and anterior columns, which the disease spared."
+        },
+        {
+          "id": "strength",
+          "name": "Strength of the legs",
+          "answer": "none",
+          "chain": [
+            "motor",
+            "strong"
+          ],
+          "why": "The motor tracts that carry commands to the legs run in other columns of white matter, not the dorsal columns, so strength is normal."
+        }
+      ]
+    },
+    {
+      "id": "heart-pain-referred",
+      "title": "Pain from the heart felt in the arm",
+      "topic": "sensory-pathways",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "pain felt in the arm means something is wrong with the arm",
+      "setup": "During a heart attack, part of a man’s heart muscle is starved of blood, and its nociceptors fire hard. Nothing is wrong with his arm. Compare with before the attack.",
+      "start": "Heart muscle injured",
+      "steps": {
+        "noci": "Nociceptors in the heart fire",
+        "enter": "The heart’s pain axons enter the cord at about T1–T4",
+        "conv": "They converge on dorsal horn neurons that also receive axons from the skin of the chest and inner arm",
+        "climb": "Those second-order neurons fire and signal up the spinothalamic tract",
+        "assign": "The brain assigns the pain to the skin of those dermatomes",
+        "armok": "The arm is not injured",
+        "quiet": "Nociceptors in the arm stay quiet"
+      },
+      "variables": [
+        {
+          "id": "heart-nociceptors",
+          "name": "Firing of nociceptors in the heart",
+          "answer": "up",
+          "chain": [
+            "noci"
+          ],
+          "why": "Injured, oxygen-starved heart muscle releases chemicals that fire its nociceptors."
+        },
+        {
+          "id": "second-order",
+          "name": "Firing of second-order neurons in the dorsal horn at T1–T4",
+          "answer": "up",
+          "chain": [
+            "noci",
+            "enter",
+            "conv",
+            "climb"
+          ],
+          "why": "The heart’s pain axons enter at the same segments as axons from the chest wall and inner arm, and converge on the same second-order neurons, which now fire."
+        },
+        {
+          "id": "arm-pain",
+          "name": "Pain felt along the inner left arm",
+          "answer": "up",
+          "chain": [
+            "noci",
+            "enter",
+            "conv",
+            "climb",
+            "assign"
+          ],
+          "why": "Those second-order neurons almost always report skin, so the brain places the pain in the matching dermatomes: referred pain."
+        },
+        {
+          "id": "arm-nociceptors",
+          "name": "Firing of nociceptors in the skin of the left arm",
+          "answer": "none",
+          "chain": [
+            "armok",
+            "quiet"
+          ],
+          "why": "Nothing is damaging the arm. The pain is felt there only because of where the heart’s signals converge in the cord."
+        }
+      ]
+    },
+    {
+      "id": "cord-hemisection",
+      "title": "The left half of the spinal cord is cut at T10",
+      "topic": "motor-pathways",
+      "theme": "half the spinal cord is cut at one level",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a cord injury on the left causes all its losses on the left",
+      "setup": "A knife wound cuts the left half of the spinal cord at T10. Three weeks later, compare each leg with before the injury.",
+      "start": "Left half of the cord cut at T10",
+      "steps": {
+        "lcst": "The left lateral corticospinal tract is cut (it already crossed in the medulla)",
+        "noumn": "Left leg motor neurons lose their upper motor neuron commands",
+        "release": "Left cord circuits below the cut lose descending control",
+        "brisk": "Left knee jerk becomes brisk",
+        "ldc": "The left dorsal column is cut (it has not crossed yet)",
+        "lvib": "Vibration and position from the left leg are lost",
+        "lst": "The left spinothalamic tract is cut: it carries the right leg’s pain",
+        "rpain": "Pain and temperature from the right leg are lost",
+        "rst": "The left leg’s pain axons cross to the intact right tract",
+        "lpain": "The left leg still feels a pinprick",
+        "rcst": "The right corticospinal tract is intact",
+        "rstrong": "The right leg keeps its strength"
+      },
+      "variables": [
+        {
+          "id": "left-strength",
+          "name": "Strength of the left leg",
+          "answer": "down",
+          "chain": [
+            "lcst",
+            "noumn"
+          ],
+          "why": "The lateral corticospinal tract crosses at the pyramidal decussation, so below the medulla the left tract carries commands for the left side. Cut at T10, it leaves the left leg weak."
+        },
+        {
+          "id": "left-knee-jerk",
+          "name": "Briskness of the left knee jerk",
+          "answer": "up",
+          "chain": [
+            "lcst",
+            "release",
+            "brisk"
+          ],
+          "why": "The reflex circuit in the lumbar cord survives, but it has lost the descending control that damps it. After the first floppy phase, the left knee jerk becomes brisk: an upper motor neuron sign."
+        },
+        {
+          "id": "left-vibration",
+          "name": "Vibration sense in the left leg",
+          "answer": "down",
+          "chain": [
+            "ldc",
+            "lvib"
+          ],
+          "why": "Vibration climbs in the dorsal column on the same side and crosses only in the medulla, so the left column carries the left leg’s vibration."
+        },
+        {
+          "id": "right-pain",
+          "name": "Pinprick sensation in the right leg",
+          "answer": "down",
+          "chain": [
+            "lst",
+            "rpain"
+          ],
+          "why": "Pain signals from the right leg cross within a segment or two of entry and climb in the left spinothalamic tract, which the knife cut."
+        },
+        {
+          "id": "left-pain",
+          "name": "Pinprick sensation in the left leg",
+          "answer": "none",
+          "chain": [
+            "rst",
+            "lpain"
+          ],
+          "why": "The left leg’s pain signals cross near where they enter and climb in the right spinothalamic tract, which is intact."
+        },
+        {
+          "id": "right-strength",
+          "name": "Strength of the right leg",
+          "answer": "none",
+          "chain": [
+            "rcst",
+            "rstrong"
+          ],
+          "why": "The right leg’s commands descend in the right lateral corticospinal tract, on the uninjured side."
+        }
+      ]
+    },
+    {
+      "id": "left-motor-cortex-stroke",
+      "title": "A stroke in the left motor cortex",
+      "topic": "motor-pathways",
+      "theme": "a stroke in the left motor cortex",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a stroke weakens the same side of the body and the whole face",
+      "setup": "Loss of blood flow destroys the face and arm areas of the left primary motor cortex. Three weeks later, compare with before the stroke.",
+      "start": "Left face and arm areas of the motor cortex destroyed",
+      "steps": {
+        "umn": "Upper motor neurons for the right face and arm are lost",
+        "armweak": "The right arm is weak",
+        "lmnok": "Lower motor neurons in the cord survive, released from descending control",
+        "brisk": "The right biceps tendon jerk becomes brisk",
+        "lowerface": "The lower face’s facial nucleus gets its input mainly from the opposite hemisphere",
+        "droop": "The right corner of the mouth droops",
+        "bothsides": "The forehead’s part of the facial nucleus gets input from both hemispheres",
+        "brow": "The right forehead still wrinkles",
+        "healthy": "The lower motor neurons are healthy and do not fire on their own",
+        "nofasc": "No twitches under the skin",
+        "right": "The right hemisphere and its tract are intact",
+        "leftarm": "The left arm is normal"
+      },
+      "variables": [
+        {
+          "id": "right-arm",
+          "name": "Strength of the right arm",
+          "answer": "down",
+          "chain": [
+            "umn",
+            "armweak"
+          ],
+          "why": "The corticospinal axons from the left cortex cross at the pyramidal decussation to reach the right side. Damage above the crossing weakens the opposite side."
+        },
+        {
+          "id": "biceps-jerk",
+          "name": "Briskness of the right biceps tendon jerk",
+          "answer": "up",
+          "chain": [
+            "umn",
+            "lmnok",
+            "brisk"
+          ],
+          "why": "The reflex circuit in the cervical cord still works but has lost its descending control, so after the early floppy phase the tendon jerk becomes brisk."
+        },
+        {
+          "id": "mouth",
+          "name": "Movement of the right corner of the mouth",
+          "answer": "down",
+          "chain": [
+            "umn",
+            "lowerface",
+            "droop"
+          ],
+          "why": "The part of the facial nucleus that drives the lower face receives corticobulbar axons mainly from the opposite hemisphere, so losing the left cortex weakens the lower right face."
+        },
+        {
+          "id": "forehead",
+          "name": "Wrinkling of the right forehead",
+          "answer": "none",
+          "chain": [
+            "bothsides",
+            "brow"
+          ],
+          "why": "The forehead’s part of the facial nucleus receives corticobulbar axons from both hemispheres, so the right hemisphere still drives it. Forehead sparing marks an upper motor neuron lesion."
+        },
+        {
+          "id": "fasciculations",
+          "name": "Visible twitches (fasciculations) in the right arm",
+          "answer": "none",
+          "chain": [
+            "healthy",
+            "nofasc"
+          ],
+          "why": "Fasciculations come from sick lower motor neurons firing on their own. Here the lower motor neurons are healthy; only their upper motor neuron control is gone."
+        },
+        {
+          "id": "left-arm",
+          "name": "Strength of the left arm",
+          "answer": "none",
+          "chain": [
+            "right",
+            "leftarm"
+          ],
+          "why": "The left arm is commanded by the right motor cortex, whose axons cross to the left and are untouched."
+        }
+      ]
+    },
+    {
+      "id": "knee-jerk-slow-nerves",
+      "title": "Peripheral nerves lose their myelin",
+      "topic": "reflexes",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "most of a reflex’s delay is spent at synapses",
+      "setup": "A disease strips myelin from the large sensory and motor axons of the peripheral nerves, slowing their conduction. The spinal cord and the muscles are healthy. A clinician taps the patellar ligament. Compare with before the illness.",
+      "start": "Myelin lost from peripheral axons",
+      "steps": {
+        "slow": "Conduction slows in the spindle sensory axons and the motor axons",
+        "longer": "More time is spent in the axons",
+        "latency": "Longer delay from tap to kick",
+        "scatter": "Signals from the many spindle axons arrive spread out in time",
+        "fewer": "Fewer motor neurons reach threshold together",
+        "weak": "A weaker kick",
+        "synapse": "The central synapse is unchanged",
+        "ms": "Synaptic delay stays about 1 ms"
+      },
+      "variables": [
+        {
+          "id": "velocity",
+          "name": "Conduction velocity in the reflex’s axons",
+          "answer": "down",
+          "chain": [
+            "slow"
+          ],
+          "why": "Myelin lets the action potential jump from node to node. Without it, current leaks away and conduction slows."
+        },
+        {
+          "id": "latency",
+          "name": "Time from tap to kick",
+          "answer": "up",
+          "chain": [
+            "slow",
+            "longer",
+            "latency"
+          ],
+          "why": "Almost all of the knee jerk’s roughly 23 ms is spent in the axons (time = distance ÷ speed), so slower axons lengthen the delay."
+        },
+        {
+          "id": "kick",
+          "name": "Size of the kick",
+          "answer": "down",
+          "chain": [
+            "slow",
+            "scatter",
+            "fewer",
+            "weak"
+          ],
+          "why": "Some axons slow more than others, so the burst from the spindles arrives spread out. The motor neurons receive less summed excitation at any moment, fewer reach threshold together, and the reflex weakens or disappears."
+        },
+        {
+          "id": "synaptic-delay",
+          "name": "Delay at the central synapse",
+          "answer": "none",
+          "chain": [
+            "synapse",
+            "ms"
+          ],
+          "why": "The disease affects peripheral axons, not the synapse in the ventral horn, which still adds only about a millisecond."
+        }
+      ]
+    },
+    {
+      "id": "tack-underfoot",
+      "title": "You step on a tack with your left foot",
+      "topic": "reflexes",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "you must feel the pain before your foot lifts",
+      "setup": "You step on a tack with your left foot. Follow the first fraction of a second, before you feel any pain. Compare with a moment before.",
+      "start": "Tack pierces the left sole",
+      "steps": {
+        "noci": "Nociceptors in the left sole fire",
+        "inter": "Interneurons in several lumbar and sacral segments are excited",
+        "lflex": "Left flexor motor neurons are excited",
+        "lext": "Left extensor motor neurons are inhibited",
+        "cross": "Other interneurons cross the midline",
+        "rext": "Right extensor motor neurons are excited",
+        "rflex": "Right flexor motor neurons are inhibited"
+      },
+      "variables": [
+        {
+          "id": "left-flexors",
+          "name": "Contraction of the left hip and knee flexors",
+          "answer": "up",
+          "chain": [
+            "noci",
+            "inter",
+            "lflex"
+          ],
+          "why": "In the withdrawal reflex, interneurons spread the nociceptor signal to the flexor motor neurons of several segments, and the leg bends away from the tack."
+        },
+        {
+          "id": "left-quadriceps",
+          "name": "Contraction of the left quadriceps femoris",
+          "answer": "down",
+          "chain": [
+            "noci",
+            "inter",
+            "lext"
+          ],
+          "why": "Inhibitory interneurons silence the extensors of the same limb, so they do not fight the bending."
+        },
+        {
+          "id": "right-quadriceps",
+          "name": "Contraction of the right quadriceps femoris",
+          "answer": "up",
+          "chain": [
+            "noci",
+            "inter",
+            "cross",
+            "rext"
+          ],
+          "why": "In the crossed-extensor reflex, interneurons that cross the cord excite the extensors of the other leg, which stiffens to take your weight."
+        },
+        {
+          "id": "right-hamstrings",
+          "name": "Contraction of the right hamstrings",
+          "answer": "down",
+          "chain": [
+            "noci",
+            "inter",
+            "cross",
+            "rflex"
+          ],
+          "why": "The same crossing interneurons inhibit the flexors of the supporting leg, so it stays straight."
+        }
+      ]
+    },
+    {
+      "id": "complete-cord-injury-l4",
+      "title": "A complete spinal cord injury at T6, then two months later",
+      "topic": "neuro-exam",
+      "core": [
+        "communication",
+        "interdependence"
+      ],
+      "level": 4,
+      "misconception": "a cut spinal cord leaves the legs floppy for good",
+      "setup": "A diving accident completely cuts the spinal cord at T6, and it never heals. Compare her legs first in the days after the injury, then two months later.",
+      "stages": [
+        {
+          "id": "days",
+          "label": "The first days",
+          "prompt": "In the first days after the injury, compared with before it.",
+          "start": "Cord cut completely at T6",
+          "steps": {
+            "down": "Every descending tract to the lower cord is cut",
+            "quiet": "Circuits below the cut fall silent for days to weeks",
+            "floppy": "The legs are floppy",
+            "nojerk": "The knee jerks are absent",
+            "nocommand": "No commands reach the leg motor neurons",
+            "paralyzed": "The legs are paralyzed",
+            "up": "Every ascending tract from below is cut",
+            "numb": "No sensation below the T6 band"
+          },
+          "variables": [
+            {
+              "id": "tone",
+              "name": "Muscle tone in the legs",
+              "answer": "down",
+              "chain": [
+                "down",
+                "quiet",
+                "floppy"
+              ],
+              "why": "Right after a sudden cord injury, the circuits below it go quiet for days to weeks, so the legs are limp: the early floppy phase."
+            },
+            {
+              "id": "knee-jerk",
+              "name": "Knee jerks",
+              "answer": "down",
+              "chain": [
+                "down",
+                "quiet",
+                "nojerk"
+              ],
+              "why": "In that quiet phase the lumbar reflex arcs, although physically intact, do not respond, so the knee jerks are absent."
+            },
+            {
+              "id": "strength",
+              "name": "Voluntary strength of the legs",
+              "answer": "down",
+              "chain": [
+                "down",
+                "nocommand",
+                "paralyzed"
+              ],
+              "why": "The corticospinal axons for the legs are cut at T6, so no command can reach the lower motor neurons."
+            },
+            {
+              "id": "pinprick",
+              "name": "Pinprick sensation on the legs",
+              "answer": "down",
+              "chain": [
+                "up",
+                "numb"
+              ],
+              "why": "The spinothalamic tracts carrying pain from the legs are cut, so nothing from below the level reaches the brain."
+            }
+          ]
+        },
+        {
+          "id": "months",
+          "label": "Two months later",
+          "prompt": "Two months later, compared with those first days. The cord has not healed.",
+          "start": "Circuits below the cut recover, still cut off from the brain",
+          "steps": {
+            "arcs": "Reflex arcs below the cut respond again",
+            "nodamp": "No descending control damps them",
+            "spastic": "Tone rises: spasticity",
+            "brisk": "Knee jerks become brisk, sometimes with clonus",
+            "stillcut": "The descending tracts are still cut",
+            "nomove": "Still no voluntary movement",
+            "stillup": "The ascending tracts are still cut",
+            "stillnumb": "Still no sensation below the level"
+          },
+          "variables": [
+            {
+              "id": "tone",
+              "name": "Muscle tone in the legs",
+              "answer": "up",
+              "chain": [
+                "arcs",
+                "nodamp",
+                "spastic"
+              ],
+              "why": "The cord’s own circuits recover, but the brainstem motor tracts that normally restrain them are cut, so tone rises above normal: spasticity."
+            },
+            {
+              "id": "knee-jerk",
+              "name": "Knee jerks",
+              "answer": "up",
+              "chain": [
+                "arcs",
+                "nodamp",
+                "brisk"
+              ],
+              "why": "The reflex arcs work again with nothing to damp them, so the tendon jerks become brisk: the upper motor neuron picture."
+            },
+            {
+              "id": "strength",
+              "name": "Voluntary strength of the legs",
+              "answer": "none",
+              "chain": [
+                "stillcut",
+                "nomove"
+              ],
+              "why": "Recovery of the reflex circuits does not restore the cut corticospinal axons. The legs move by reflex, never on command."
+            },
+            {
+              "id": "pinprick",
+              "name": "Pinprick sensation on the legs",
+              "answer": "none",
+              "chain": [
+                "stillup",
+                "stillnumb"
+              ],
+              "why": "The ascending tracts stay cut, so sensation below the level is still absent. A complete injury leaves no sensation in the lowest sacral segments."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-pons-damage",
+      "title": "A small stroke in the right side of the pons",
+      "topic": "neuro-exam",
+      "core": [
+        "interdependence",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "weakness of the face and the body always points to the same side of the brain",
+      "setup": "Loss of blood flow damages the right side of the pons, including the right facial nucleus and the corticospinal axons running past it. Compare with before.",
+      "start": "Right side of the pons damaged",
+      "steps": {
+        "nucleus": "The right facial nucleus, a lower motor neuron, is destroyed",
+        "wholeface": "The whole right face is weak, forehead included",
+        "cst": "Corticospinal axons that have not yet crossed are cut",
+        "leftbody": "The left arm and leg lose their commands",
+        "leftweak": "The left arm and leg are weak",
+        "release": "Left cord circuits lose descending control",
+        "brisk": "Left tendon jerks become brisk",
+        "rightbody": "The right arm and leg’s tract passes in the left pons",
+        "rightok": "The right arm and leg are normal"
+      },
+      "variables": [
+        {
+          "id": "right-forehead",
+          "name": "Wrinkling of the right forehead",
+          "answer": "down",
+          "chain": [
+            "nucleus",
+            "wholeface"
+          ],
+          "why": "The facial nucleus is the lower motor neuron for the whole half face. Losing it weakens the forehead too, unlike damage to the cortex, which spares the forehead."
+        },
+        {
+          "id": "left-arm",
+          "name": "Strength of the left arm",
+          "answer": "down",
+          "chain": [
+            "cst",
+            "leftbody",
+            "leftweak"
+          ],
+          "why": "In the pons the corticospinal axons are still above the pyramidal decussation, so the right side of the pons carries commands for the left body."
+        },
+        {
+          "id": "left-knee",
+          "name": "Briskness of the left knee jerk (weeks later)",
+          "answer": "up",
+          "chain": [
+            "cst",
+            "release",
+            "brisk"
+          ],
+          "why": "Cutting the descending axons is upper motor neuron damage, so the left leg’s reflexes become brisk once the early floppy phase passes."
+        },
+        {
+          "id": "right-arm",
+          "name": "Strength of the right arm",
+          "answer": "none",
+          "chain": [
+            "rightbody",
+            "rightok"
+          ],
+          "why": "The commands for the right arm run down the left side of the brainstem, which is undamaged."
+        }
+      ]
+    },
+    {
+      "id": "presbyopia",
+      "title": "The lens stiffens with age",
+      "topic": "vision",
+      "theme": "the lens loses flexibility with age",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "presbyopia happens because the ciliary muscle grows too weak to contract",
+      "setup": "At 52, Dana’s lens has grown stiff. Her eyeball, cornea and ciliary muscle are healthy. Compare her eyes now with her eyes at 25.",
+      "start": "The lens is stiffer",
+      "steps": {
+        "noround": "The lens rounds up less when the zonule fibers go slack",
+        "less": "Less extra bending is added for near objects",
+        "farther": "The nearest point in focus moves farther away",
+        "cm": "The ciliary muscle still contracts for near work",
+        "parallel": "Light from distant objects needs no rounding up",
+        "sharp": "Distant objects are still in focus"
+      },
+      "variables": [
+        {
+          "id": "near-point",
+          "name": "Distance of the nearest point she can focus on",
+          "answer": "up",
+          "chain": [
+            "noround",
+            "less",
+            "farther"
+          ],
+          "why": "A near object needs more bending, which comes from the lens rounding up. A stiff lens cannot, so she must hold things farther away to focus them."
+        },
+        {
+          "id": "rounding",
+          "name": "How much the lens rounds up when she looks at her phone",
+          "answer": "down",
+          "chain": [
+            "noround"
+          ],
+          "why": "The lens rounds up by its own elasticity when the zonule fibers go slack. With age it keeps adding cells and stiffens, so it barely changes shape."
+        },
+        {
+          "id": "ciliary",
+          "name": "Contraction of the ciliary muscle when she looks at her phone",
+          "answer": "none",
+          "chain": [
+            "cm"
+          ],
+          "why": "The oculomotor nerve still makes the ciliary muscle contract and the zonule fibers still go slack. The problem is the lens, not the muscle."
+        },
+        {
+          "id": "distance",
+          "name": "Sharpness of distant objects",
+          "answer": "none",
+          "chain": [
+            "parallel",
+            "sharp"
+          ],
+          "why": "Distant objects need the lens at its flattest, with no accommodation, so a stiff lens does not affect far vision."
+        }
+      ]
+    },
+    {
+      "id": "pituitary-chiasm",
+      "title": "A pituitary tumor presses on the optic chiasm",
+      "topic": "vision",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "pressure on the optic chiasm blinds one eye",
+      "setup": "A pituitary tumor grows upward and presses on the middle of the optic chiasm. The optic nerves, the optic tracts and the retinas are unharmed. Compare with before.",
+      "start": "The middle of the optic chiasm is squeezed",
+      "steps": {
+        "crossing": "The crossing axons from both nasal retinas are blocked",
+        "lefttemp": "The outer (left) side of the left eye’s field is lost",
+        "righttemp": "The outer (right) side of the right eye’s field is lost",
+        "uncrossed": "Uncrossed axons from the temporal retinas pass the edges of the chiasm",
+        "inner": "The inner half of each eye’s field is still seen",
+        "retina": "The retinas themselves are undamaged",
+        "respond": "Rods and cones respond normally to light"
+      },
+      "variables": [
+        {
+          "id": "left-outer",
+          "name": "Vision in the outer (left) half of the left eye’s field",
+          "answer": "down",
+          "chain": [
+            "crossing",
+            "lefttemp"
+          ],
+          "why": "Light from the outer part of the field lands on the nasal half of the retina, and nasal axons are the ones that cross in the middle of the chiasm, where the tumor presses."
+        },
+        {
+          "id": "right-outer",
+          "name": "Vision in the outer (right) half of the right eye’s field",
+          "answer": "down",
+          "chain": [
+            "crossing",
+            "righttemp"
+          ],
+          "why": "The same crossing fibers carry the right eye’s outer field, so both outer halves are lost: bitemporal hemianopia."
+        },
+        {
+          "id": "inner-fields",
+          "name": "Vision in the inner half of each eye’s field",
+          "answer": "none",
+          "chain": [
+            "uncrossed",
+            "inner"
+          ],
+          "why": "The inner field lands on the temporal retina, whose axons stay on their own side at the edges of the chiasm, away from the pressure."
+        },
+        {
+          "id": "photoreceptors",
+          "name": "Response of the rods and cones to light",
+          "answer": "none",
+          "chain": [
+            "retina",
+            "respond"
+          ],
+          "why": "The damage is behind the eyes. The photoreceptors still respond; their signals are blocked on the way to the brain."
+        }
+      ]
+    },
+    {
+      "id": "dark-cinema-l4",
+      "title": "From a sunny street into a dark cinema",
+      "topic": "vision",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "the eyes adjust to the dark within a few seconds",
+      "setup": "You walk from a sunny street into a dark cinema and stay there.",
+      "stages": [
+        {
+          "id": "seconds",
+          "label": "The first seconds",
+          "prompt": "In the first seconds inside, compared with the sunny street.",
+          "start": "Far less light enters the eyes",
+          "steps": {
+            "dim": "Far less light reaches the retinas",
+            "drive": "Parasympathetic drive to the pupils falls; sympathetic drive rises",
+            "wide": "The pupils widen (mydriasis)",
+            "bleached": "Most rhodopsin is still bleached from the sunlight",
+            "norods": "Rods cannot yet respond to dim light",
+            "blind": "You can barely see"
+          },
+          "variables": [
+            {
+              "id": "pupils",
+              "name": "Pupil diameter",
+              "answer": "up",
+              "chain": [
+                "dim",
+                "drive",
+                "wide"
+              ],
+              "why": "In dim light the pupillary light reflex eases off: parasympathetic output to the circular muscle falls and the sympathetic dilator muscle pulls the pupils wider, within a second or so."
+            },
+            {
+              "id": "rhodopsin",
+              "name": "Amount of rhodopsin ready to catch light",
+              "answer": "none",
+              "chain": [
+                "bleached"
+              ],
+              "why": "Rebuilding rhodopsin is slow. In the first seconds almost none has been rebuilt, so the amount is as low as it was in the sunlight."
+            },
+            {
+              "id": "seeing",
+              "name": "Ability to find your seat",
+              "answer": "down",
+              "chain": [
+                "dim",
+                "bleached",
+                "norods",
+                "blind"
+              ],
+              "why": "The light is too dim for cones, and the rods, which could work in dim light, still have too little rhodopsin."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "After 30 minutes",
+          "prompt": "After 30 minutes in the dark, compared with those first seconds.",
+          "start": "Time in the dark",
+          "steps": {
+            "rekink": "Retinal gets its kink back in the pigmented epithelium and rejoins opsin",
+            "rebuilt": "Rhodopsin is rebuilt",
+            "sensitive": "Rods become far more sensitive",
+            "seat": "You can find your seat",
+            "toodim": "The light is still too dim for cones",
+            "nocolor": "Colors are still hard to tell"
+          },
+          "variables": [
+            {
+              "id": "rhodopsin",
+              "name": "Amount of rhodopsin ready to catch light",
+              "answer": "up",
+              "chain": [
+                "rekink",
+                "rebuilt"
+              ],
+              "why": "In the dark, enzymes in the pigmented epithelium put the kink back into retinal, and it rejoins opsin, so rhodopsin builds up over 20 to 30 minutes."
+            },
+            {
+              "id": "rod-sensitivity",
+              "name": "Sensitivity of the rods to dim light",
+              "answer": "up",
+              "chain": [
+                "rekink",
+                "rebuilt",
+                "sensitive"
+              ],
+              "why": "More rhodopsin means more photons are caught, and with their strong convergence the rods can now signal very faint light: dark adaptation."
+            },
+            {
+              "id": "seeing",
+              "name": "Ability to find your seat",
+              "answer": "up",
+              "chain": [
+                "rekink",
+                "rebuilt",
+                "sensitive",
+                "seat"
+              ],
+              "why": "The dark-adapted rods give you night vision, enough to make out the rows."
+            },
+            {
+              "id": "color",
+              "name": "Ability to tell the color of your ticket",
+              "answer": "none",
+              "chain": [
+                "toodim",
+                "nocolor"
+              ],
+              "why": "Rods have only one pigment, so they cannot tell colors apart, and the light is still too dim for the cones. You see shapes in shades of gray."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blocked-nose",
+      "title": "A blocked nose at dinner",
+      "topic": "chemical-senses",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a cold blocks your sense of taste",
+      "setup": "A bad cold swells the lining of your nose, so air no longer reaches the top of your nose. Your taste buds and olfactory sensory neurons are healthy. You eat a strawberry. Compare with eating one when you are well.",
+      "start": "Air cannot reach the top of the nose",
+      "steps": {
+        "noodor": "Odorants cannot reach the olfactory epithelium",
+        "unbound": "Few odorant receptor proteins are bound",
+        "lessfire": "Olfactory sensory neurons fire less",
+        "little": "The brain gets little smell to combine with taste",
+        "flat": "The strawberry tastes flat",
+        "reach": "Sugars still reach the taste buds",
+        "sweet": "Sweetness is still detected"
+      },
+      "variables": [
+        {
+          "id": "olfactory-firing",
+          "name": "Firing of olfactory sensory neurons while you chew",
+          "answer": "down",
+          "chain": [
+            "noodor",
+            "unbound",
+            "lessfire"
+          ],
+          "why": "Odorants from food normally rise from the mouth up the back of the throat to the olfactory epithelium. Swelling stops them, so few bind their receptor proteins."
+        },
+        {
+          "id": "flavor",
+          "name": "Strength of the strawberry’s flavor",
+          "answer": "down",
+          "chain": [
+            "noodor",
+            "unbound",
+            "lessfire",
+            "little",
+            "flat"
+          ],
+          "why": "Flavor is taste plus smell, combined by the brain, and most of it is smell. With little smell, the strawberry tastes flat."
+        },
+        {
+          "id": "sweetness",
+          "name": "Ability to tell that it is sweet",
+          "answer": "none",
+          "chain": [
+            "reach",
+            "sweet"
+          ],
+          "why": "Sweet is a taste quality, detected by the taste cells of the taste buds, which the blocked nose does not affect."
+        }
+      ]
+    },
+    {
+      "id": "middle-ear-fluid",
+      "title": "Fluid fills the middle ear",
+      "topic": "hearing-balance",
+      "theme": "fluid fills the middle ear",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "any hearing loss means the cochlea is damaged",
+      "setup": "After a head cold, fluid fills six-year-old Aiden’s left middle ear. His cochlea and cochlear nerve are healthy. Compare his left ear with before.",
+      "start": "Fluid fills the left middle ear",
+      "steps": {
+        "damp": "The eardrum and ossicles move less",
+        "lesspress": "Less pressure reaches the oval window",
+        "quiet": "Sounds through the left ear canal are quieter",
+        "bonefork": "A fork on the skull shakes the cochlea directly",
+        "bypass": "Bone conduction bypasses the middle ear",
+        "nomask": "The left ear no longer hears the room’s background noise",
+        "louder": "A fork on the forehead sounds louder on the left"
+      },
+      "variables": [
+        {
+          "id": "eardrum",
+          "name": "Vibration of the left eardrum when someone speaks",
+          "answer": "down",
+          "chain": [
+            "damp"
+          ],
+          "why": "Fluid behind the eardrum weighs it down and resists its movement, so the same sound waves move it less."
+        },
+        {
+          "id": "air-hearing",
+          "name": "Loudness of speech heard through the left ear canal",
+          "answer": "down",
+          "chain": [
+            "damp",
+            "lesspress",
+            "quiet"
+          ],
+          "why": "The middle ear normally raises the pressure about 20-fold at the oval window. With the chain damped, less of the sound reaches the fluid of the cochlea: a conductive hearing loss."
+        },
+        {
+          "id": "bone-hearing",
+          "name": "Hearing of a tuning fork pressed on the left mastoid process",
+          "answer": "none",
+          "chain": [
+            "bonefork",
+            "bypass"
+          ],
+          "why": "A fork on the bone shakes the whole skull and the cochlea directly, skipping the middle ear. The cochlea is healthy, so bone conduction is normal."
+        },
+        {
+          "id": "weber",
+          "name": "Loudness in the left ear of a tuning fork placed on the forehead",
+          "answer": "up",
+          "chain": [
+            "nomask",
+            "louder"
+          ],
+          "why": "In the Weber test a conductive loss lateralizes to the affected ear: that ear no longer hears the background noise that normally masks the bone-conducted sound, and the blocked route traps the vibration."
+        }
+      ]
+    },
+    {
+      "id": "spinning-chair-l4",
+      "title": "Spinning in an office chair",
+      "topic": "hearing-balance",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "the semicircular canals report how fast you are turning for as long as you turn",
+      "setup": "You sit upright in an office chair, and a friend spins it steadily with your eyes closed.",
+      "stages": [
+        {
+          "id": "start",
+          "label": "The first seconds of spinning",
+          "prompt": "In the first seconds of turning, compared with sitting still.",
+          "start": "The head starts to turn",
+          "steps": {
+            "turn": "The horizontal canals turn with the head",
+            "lag": "The endolymph lags behind by inertia",
+            "bend": "The fluid pushes the cupula, bending the stereocilia",
+            "fire": "Firing of the canal’s sensory neurons rises",
+            "feel": "You feel yourself turning",
+            "upright": "The head stays upright",
+            "utricle": "The utricle’s gel is not pulled to one side"
+          },
+          "variables": [
+            {
+              "id": "cupula",
+              "name": "Bending of the cupula in the horizontal canals",
+              "answer": "up",
+              "chain": [
+                "turn",
+                "lag",
+                "bend"
+              ],
+              "why": "The canal turns with your head, but the endolymph lags behind, so it flows through the canal the opposite way and pushes the cupula over."
+            },
+            {
+              "id": "firing",
+              "name": "Firing of the sensory neurons of the canal the turn excites",
+              "answer": "up",
+              "chain": [
+                "turn",
+                "lag",
+                "bend",
+                "fire"
+              ],
+              "why": "Bending the stereocilia toward the tallest ones stretches the tip links and opens channels, so the hair cells release more glutamate and the neurons fire faster."
+            },
+            {
+              "id": "feeling",
+              "name": "Feeling of turning",
+              "answer": "up",
+              "chain": [
+                "turn",
+                "lag",
+                "bend",
+                "fire",
+                "feel"
+              ],
+              "why": "The vestibular nuclei relay the change in firing through the thalamus to the cortex, and you are aware of the turn even with your eyes closed."
+            },
+            {
+              "id": "tilt",
+              "name": "Sense of head tilt from the utricle",
+              "answer": "none",
+              "chain": [
+                "upright",
+                "utricle"
+              ],
+              "why": "The head stays upright, so gravity does not pull the crystal-weighted gel of the utricle to one side. The maculae report tilt and straight-line movement, not turning."
+            }
+          ]
+        },
+        {
+          "id": "steady",
+          "label": "After 30 seconds of steady spinning",
+          "prompt": "After 30 seconds at the same steady speed, compared with the first seconds.",
+          "start": "The chair keeps turning at a steady speed",
+          "steps": {
+            "catchup": "The endolymph catches up with the canal",
+            "back": "The cupula swings back upright",
+            "rest": "Firing returns to its resting rate",
+            "fade": "The feeling of turning fades",
+            "speed": "The chair’s speed is unchanged"
+          },
+          "variables": [
+            {
+              "id": "cupula",
+              "name": "Bending of the cupula in the horizontal canals",
+              "answer": "down",
+              "chain": [
+                "catchup",
+                "back"
+              ],
+              "why": "After about 20 seconds of steady turning, the fluid moves with the canal, nothing pushes the cupula, and its elasticity returns it upright."
+            },
+            {
+              "id": "firing",
+              "name": "Firing of the sensory neurons of the canal the turn excites",
+              "answer": "down",
+              "chain": [
+                "catchup",
+                "back",
+                "rest"
+              ],
+              "why": "With the stereocilia straight again, the hair cells return to their resting release, and the neurons to their background rate."
+            },
+            {
+              "id": "feeling",
+              "name": "Feeling of turning",
+              "answer": "down",
+              "chain": [
+                "catchup",
+                "back",
+                "rest",
+                "fade"
+              ],
+              "why": "The canals sense changes in turning, not steady turning. With your eyes closed you feel almost still, and when the chair stops, you will feel yourself spin the other way."
+            },
+            {
+              "id": "speed",
+              "name": "Actual speed of rotation",
+              "answer": "none",
+              "chain": [
+                "speed"
+              ],
+              "why": "The chair is still turning just as fast. Only the canals’ signal has faded."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "neck-chain-damage",
+      "title": "The right sympathetic chain is damaged in the neck",
+      "topic": "ans-anatomy",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the sympathetic supply to the head leaves the brain in the cranial nerves",
+      "setup": "A tumor at the top of the right lung damages the right sympathetic chain in the lower neck. Compare the right side of his face with before.",
+      "start": "Right sympathetic chain cut in the lower neck",
+      "steps": {
+        "noclimb": "Fibers climbing from T1 to the superior cervical ganglion are cut",
+        "dilator": "The dilator muscle of the right iris loses its supply",
+        "small": "The right pupil is smaller",
+        "lidmuscle": "The small smooth muscle of the right upper lid loses its supply",
+        "droop": "The right upper lid droops slightly",
+        "sweatnerve": "Sweat glands on the right of the face lose their supply",
+        "dry": "The right side of the face stays dry",
+        "para": "The oculomotor parasympathetic path is intact",
+        "narrow": "The right pupil still narrows in bright light"
+      },
+      "variables": [
+        {
+          "id": "pupil",
+          "name": "Size of the right pupil",
+          "answer": "down",
+          "chain": [
+            "noclimb",
+            "dilator",
+            "small"
+          ],
+          "why": "Sympathetic fibers for the head leave the cord at T1 and climb the chain to the superior cervical ganglion. Cut in the neck, the dilator muscle loses its drive, and the parasympathetic sphincter wins."
+        },
+        {
+          "id": "eyelid",
+          "name": "Height of the right upper eyelid",
+          "answer": "down",
+          "chain": [
+            "noclimb",
+            "lidmuscle",
+            "droop"
+          ],
+          "why": "A thin sheet of smooth muscle under sympathetic control helps hold the upper lid up. Without it the lid droops a little."
+        },
+        {
+          "id": "sweating",
+          "name": "Sweating on the right side of the face",
+          "answer": "down",
+          "chain": [
+            "noclimb",
+            "sweatnerve",
+            "dry"
+          ],
+          "why": "Sweat glands have only sympathetic fibers. With their chain cut, the right side of the face cannot sweat."
+        },
+        {
+          "id": "light-response",
+          "name": "Narrowing of the right pupil when a light is shone in",
+          "answer": "none",
+          "chain": [
+            "para",
+            "narrow"
+          ],
+          "why": "Narrowing is driven by parasympathetic fibers in the oculomotor nerve, a completely separate route that the tumor does not touch."
+        }
+      ]
+    },
+    {
+      "id": "beta-blocker-metoprolol",
+      "title": "A beta blocker",
+      "topic": "ans-signaling",
+      "theme": "a beta blocker",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a beta blocker blocks all sympathetic effects",
+      "setup": "A man takes metoprolol, a beta blocker that acts mostly on beta-1 receptor proteins. Compare him with before the drug, first at rest and then while he sprints for a bus.",
+      "start": "Beta-1 receptor proteins on the heart are blocked",
+      "steps": {
+        "pace": "NE and epinephrine can no longer speed the heart’s pacemaker",
+        "rest": "At rest, vagal output does most of the work: the rate falls only a little",
+        "sprint": "The heart rate rises far less during the sprint",
+        "calcium": "Less calcium enters heart muscle with each beat",
+        "weaker": "Weaker contractions",
+        "pump": "Less blood pumped each minute",
+        "bp": "Blood pressure falls",
+        "beta2": "Beta-2 receptor proteins are mostly spared",
+        "airways": "The small airways are unaffected",
+        "alpha": "Alpha-1 receptor proteins are untouched",
+        "pupil": "The pupils are unaffected"
+      },
+      "variables": [
+        {
+          "id": "rest-rate",
+          "name": "Heart rate at rest",
+          "answer": "down",
+          "chain": [
+            "pace",
+            "rest"
+          ],
+          "why": "Beta-1 receptor proteins let NE and epinephrine bring the heart’s pacemaker tissue to threshold sooner. Blocking them removes that push, but at rest the vagus nerve’s slowing effect dominates, so the rate falls only a little."
+        },
+        {
+          "id": "sprint-rate",
+          "name": "Heart rate while sprinting",
+          "answer": "down",
+          "chain": [
+            "pace",
+            "sprint"
+          ],
+          "why": "Early in exercise the rate rises as vagal output falls, but the climb to high rates depends on NE and epinephrine acting on beta-1 receptor proteins. With those blocked, the heart speeds up much less."
+        },
+        {
+          "id": "force",
+          "name": "Force of each heart contraction",
+          "answer": "down",
+          "chain": [
+            "calcium",
+            "weaker"
+          ],
+          "why": "Beta-1 activation lets more calcium into heart muscle, strengthening each beat. Blocked, the contractions are weaker."
+        },
+        {
+          "id": "pressure",
+          "name": "Blood pressure",
+          "answer": "down",
+          "chain": [
+            "pace",
+            "calcium",
+            "weaker",
+            "pump",
+            "bp"
+          ],
+          "why": "A slower, weaker heart pumps less blood each minute into the same vessels, so pressure falls. That is why beta blockers are used to lower it."
+        },
+        {
+          "id": "airways",
+          "name": "Diameter of the small airways",
+          "answer": "none",
+          "chain": [
+            "beta2",
+            "airways"
+          ],
+          "why": "Metoprolol acts mostly on beta-1, leaving the airways’ beta-2 receptor proteins free. A drug that blocks beta-2 as well, such as propranolol, can narrow them."
+        },
+        {
+          "id": "pupils",
+          "name": "Pupil size",
+          "answer": "none",
+          "chain": [
+            "alpha",
+            "pupil"
+          ],
+          "why": "The dilator muscle of the iris works through alpha-1 receptor proteins, which a beta blocker does not touch."
+        }
+      ]
+    },
+    {
+      "id": "atropine-before-surgery",
+      "title": "Atropine before surgery",
+      "topic": "ans-signaling",
+      "theme": "atropine",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "atropine blocks every acetylcholine receptor protein, including those on skeletal muscle",
+      "setup": "Before surgery, a patient is given atropine, a muscarinic antagonist. Compare with before the dose.",
+      "start": "Muscarinic receptor proteins are blocked",
+      "steps": {
+        "vagus": "Vagal ACh can no longer slow the pacemaker",
+        "rate": "The heart rate rises",
+        "iris": "The circular muscle of the iris cannot respond to ACh",
+        "wide": "The pupils widen",
+        "glands": "Saliva glands stop responding to ACh",
+        "dry": "The mouth goes dry",
+        "sweatm": "The sweat glands’ muscarinic receptor proteins are blocked",
+        "nosweat": "Sweating falls: the skin is dry and warm",
+        "gutm": "Gut smooth muscle loses its parasympathetic drive",
+        "slowgut": "Gut movement slows",
+        "nic": "Nicotinic receptor proteins at neuromuscular junctions are untouched",
+        "strong": "Skeletal muscle strength is unchanged"
+      },
+      "variables": [
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "vagus",
+            "rate"
+          ],
+          "why": "At rest, vagal ACh on muscarinic receptor proteins holds the heart well below its own rate. Atropine removes that brake, often raising the rate by 30 beats a minute or more."
+        },
+        {
+          "id": "pupils",
+          "name": "Pupil size",
+          "answer": "up",
+          "chain": [
+            "iris",
+            "wide"
+          ],
+          "why": "The circular muscle that narrows the pupil is driven by ACh on muscarinic receptor proteins. Blocked, it relaxes, and the sympathetic dilator widens the pupil."
+        },
+        {
+          "id": "saliva",
+          "name": "Volume of saliva",
+          "answer": "down",
+          "chain": [
+            "glands",
+            "dry"
+          ],
+          "why": "The large volume of watery saliva comes from parasympathetic ACh on muscarinic receptor proteins, which atropine blocks."
+        },
+        {
+          "id": "sweating",
+          "name": "Sweating",
+          "answer": "down",
+          "chain": [
+            "sweatm",
+            "nosweat"
+          ],
+          "why": "Eccrine sweat glands are the oddity: sympathetic fibers drive them with ACh on muscarinic receptor proteins, so atropine blocks sweating too."
+        },
+        {
+          "id": "gut",
+          "name": "Movement of the stomach and intestines",
+          "answer": "down",
+          "chain": [
+            "gutm",
+            "slowgut"
+          ],
+          "why": "Parasympathetic ACh on muscarinic receptor proteins speeds the gut. Blocked, gut movement and secretion slow."
+        },
+        {
+          "id": "muscle",
+          "name": "Strength of skeletal muscle",
+          "answer": "none",
+          "chain": [
+            "nic",
+            "strong"
+          ],
+          "why": "Skeletal muscle responds to ACh through nicotinic receptor proteins at the neuromuscular junction, which atropine does not block."
+        }
+      ]
+    },
+    {
+      "id": "albuterol-inhaled",
+      "title": "An inhaled beta-2 agonist",
+      "topic": "ans-signaling",
+      "theme": "an inhaled beta-2 agonist",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "an inhaled drug acts only on the airways",
+      "setup": "During an attack of airway narrowing, a woman inhales two puffs of albuterol, a beta-2 agonist. Compare the next few minutes with just before the puffs.",
+      "start": "Albuterol reaches the small airways",
+      "steps": {
+        "bind": "It activates beta-2 receptor proteins on airway smooth muscle",
+        "camp": "Cyclic AMP rises and the smooth muscle relaxes",
+        "widen": "The small airways widen",
+        "easier": "Air moves in and out more easily",
+        "absorbed": "Some of the drug is absorbed into the blood",
+        "muscle": "It stimulates beta-2 receptor proteins in skeletal muscle",
+        "shaky": "The hands shake slightly",
+        "heart": "It also stimulates the heart’s beta receptor proteins a little",
+        "faster": "The heart rate rises slightly",
+        "noalpha": "It has no action on alpha-1 receptor proteins",
+        "pupil": "Pupil size is unchanged"
+      },
+      "variables": [
+        {
+          "id": "airways",
+          "name": "Diameter of the small airways",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "camp",
+            "widen"
+          ],
+          "why": "Beta-2 receptor proteins raise cyclic AMP, which in smooth muscle means relaxation. The airway walls are mostly smooth muscle, so they widen."
+        },
+        {
+          "id": "breathing",
+          "name": "Ease of moving air in and out",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "camp",
+            "widen",
+            "easier"
+          ],
+          "why": "Wider airways offer less resistance, so the same effort moves more air."
+        },
+        {
+          "id": "tremor",
+          "name": "Shakiness of the hands",
+          "answer": "up",
+          "chain": [
+            "absorbed",
+            "muscle",
+            "shaky"
+          ],
+          "why": "Absorbed drug reaches beta-2 receptor proteins in skeletal muscle, which cause a fine tremor: a common side effect."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "absorbed",
+            "heart",
+            "faster"
+          ],
+          "why": "Albuterol is selective, not perfectly so. Some absorbed drug stimulates the heart, and the rate rises a little."
+        },
+        {
+          "id": "pupils",
+          "name": "Pupil size",
+          "answer": "none",
+          "chain": [
+            "noalpha",
+            "pupil"
+          ],
+          "why": "The pupil is widened through alpha-1 receptor proteins on the dilator muscle, which albuterol does not activate."
+        }
+      ]
+    },
+    {
+      "id": "sudden-fright",
+      "title": "A dog lunges from behind a fence",
+      "topic": "ans-control",
+      "theme": "sudden fright",
+      "core": [
+        "homeostasis",
+        "communication",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "the fright response is carried by nerves alone and ends when the danger does",
+      "setup": "A dog lunges at you from behind a fence. Compare the next minute with a moment before.",
+      "start": "Fear registers in the amygdala",
+      "steps": {
+        "drive": "The hypothalamus drives the brainstem and spinal cord",
+        "symp": "Sympathetic output jumps",
+        "vagus": "Vagal output to the heart falls",
+        "beta1": "Beta-1 receptor proteins speed the pacemaker",
+        "dilator": "Dilator muscles of the irises contract (alpha-1)",
+        "skin": "Small arteries in the skin constrict (alpha-1)",
+        "palms": "Cholinergic sympathetic fibers drive the palms’ sweat glands",
+        "adrenal": "Preganglionic fibers stimulate the adrenal medulla",
+        "epi": "Epinephrine enters the blood",
+        "liver": "The liver breaks glycogen down (beta-2)",
+        "airway": "Airway smooth muscle relaxes (beta-2)",
+        "gut": "Gut movement slows"
+      },
+      "variables": [
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "vagus",
+            "symp",
+            "beta1"
+          ],
+          "why": "Vagal output falls and sympathetic output rises together, and NE and epinephrine on beta-1 receptor proteins bring the heart’s pacemaker tissue to threshold sooner."
+        },
+        {
+          "id": "pupils",
+          "name": "Pupil size",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "symp",
+            "dilator"
+          ],
+          "why": "Sympathetic fibers from the superior cervical ganglion contract the radial dilator muscle through alpha-1 receptor proteins."
+        },
+        {
+          "id": "skin-flow",
+          "name": "Blood flow to the skin",
+          "answer": "down",
+          "chain": [
+            "drive",
+            "symp",
+            "skin"
+          ],
+          "why": "Vasomotor nerves constrict small arteries in the skin through alpha-1 receptor proteins, so you go pale."
+        },
+        {
+          "id": "palm-sweat",
+          "name": "Sweating on the palms",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "symp",
+            "palms"
+          ],
+          "why": "Sympathetic fibers to eccrine sweat glands release ACh onto muscarinic receptor proteins, so fear makes your palms sweat."
+        },
+        {
+          "id": "glucose",
+          "name": "Glucose released into the blood by the liver",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "symp",
+            "adrenal",
+            "epi",
+            "liver"
+          ],
+          "why": "Epinephrine from the adrenal medulla reaches the liver through the blood and, on beta-2 receptor proteins, makes liver cells break glycogen down into glucose."
+        },
+        {
+          "id": "airways",
+          "name": "Diameter of the small airways",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "symp",
+            "adrenal",
+            "epi",
+            "airway"
+          ],
+          "why": "Few sympathetic varicosities reach the airways’ beta-2 receptor proteins, so the widening comes mainly from circulating epinephrine."
+        },
+        {
+          "id": "gut",
+          "name": "Movement of the stomach and intestines",
+          "answer": "down",
+          "chain": [
+            "drive",
+            "symp",
+            "gut"
+          ],
+          "why": "Sympathetic activity slows gut movement and secretion through alpha and beta receptor proteins, while parasympathetic drive to the gut falls."
+        }
+      ]
+    },
+    {
+      "id": "transplanted-heart",
+      "title": "A transplanted heart without its nerves",
+      "topic": "ans-control",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the heart needs its nerves to beat",
+      "setup": "A woman has a heart transplant. The autonomic nerves to the new heart were cut and have not regrown. Compare her new heart with a heart whose nerves are intact.",
+      "start": "The heart’s autonomic nerves are cut",
+      "steps": {
+        "novagal": "No vagal tone reaches the pacemaker",
+        "ownrate": "The pacemaker beats at its own rate",
+        "faster": "Resting rate about 90 to 110 a minute",
+        "atropine": "Atropine has no vagal ACh to block",
+        "noatropine": "Atropine barely changes the rate",
+        "nosymp": "No cardiac accelerator nerves",
+        "epi": "The rate rises only as epinephrine arrives in the blood, over minutes",
+        "slowrise": "A slow rise at the start of exercise",
+        "intrinsic": "The heart’s pacemaker fires on its own",
+        "beats": "The heart keeps beating"
+      },
+      "variables": [
+        {
+          "id": "resting-rate",
+          "name": "Resting heart rate",
+          "answer": "up",
+          "chain": [
+            "novagal",
+            "ownrate",
+            "faster"
+          ],
+          "why": "Normally vagal tone holds the heart 20 to 40 beats a minute below its own rate. With the vagus cut, the pacemaker runs at its intrinsic rate, around 100."
+        },
+        {
+          "id": "atropine-effect",
+          "name": "Rise in heart rate after a dose of atropine",
+          "answer": "down",
+          "chain": [
+            "atropine",
+            "noatropine"
+          ],
+          "why": "Atropine speeds a normal heart by blocking vagal ACh. With no vagal fibers, there is nothing for it to block."
+        },
+        {
+          "id": "exercise-rise",
+          "name": "Speed of the heart rate rise in the first seconds of exercise",
+          "answer": "down",
+          "chain": [
+            "nosymp",
+            "epi",
+            "slowrise"
+          ],
+          "why": "A normal heart speeds up within seconds as vagal output falls and sympathetic output rises. The transplanted heart must wait for epinephrine from the adrenal medulla to arrive in the blood."
+        },
+        {
+          "id": "beating",
+          "name": "Ability of the heart to keep beating",
+          "answer": "none",
+          "chain": [
+            "intrinsic",
+            "beats"
+          ],
+          "why": "Autonomic nerves only adjust the rate. The heart’s own pacemaker starts each beat by itself, which is why cutting its nerves does not stop it."
+        }
+      ]
+    },
+    {
+      "id": "alpha-blocker-l4",
+      "title": "The first dose of an alpha-1 blocker",
+      "topic": "ans-control",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "blocking alpha-1 receptor proteins shuts down the entire blood pressure reflex",
+      "setup": "A man takes his first dose of prazosin, an alpha-1 antagonist, and then stands up. Follow the next minute.",
+      "stages": [
+        {
+          "id": "drop",
+          "label": "As the drug takes hold",
+          "prompt": "As the drug takes effect, before any reflex response, compared with before the dose.",
+          "start": "Alpha-1 receptor proteins on vessel smooth muscle are blocked",
+          "steps": {
+            "notone": "Sympathetic tone can no longer keep small arteries partly constricted",
+            "widen": "Small arteries widen",
+            "resist": "Resistance to flow falls",
+            "bp": "Blood pressure falls",
+            "lessstretch": "The walls of the large arteries are stretched less",
+            "lessfire": "Stretch-sensitive sensory receptors fire less"
+          },
+          "variables": [
+            {
+              "id": "diameter",
+              "name": "Diameter of small arteries in the skin",
+              "answer": "up",
+              "chain": [
+                "notone",
+                "widen"
+              ],
+              "why": "Sympathetic tone normally keeps these vessels partly constricted through alpha-1 receptor proteins. Blocking them removes the tone, and the vessels widen."
+            },
+            {
+              "id": "pressure",
+              "name": "Blood pressure",
+              "answer": "down",
+              "chain": [
+                "notone",
+                "widen",
+                "resist",
+                "bp"
+              ],
+              "why": "Wider vessels offer less resistance, so pressure in the large arteries falls, especially on standing."
+            },
+            {
+              "id": "sensors",
+              "name": "Firing of stretch-sensitive sensory receptors in the large arteries",
+              "answer": "down",
+              "chain": [
+                "notone",
+                "widen",
+                "resist",
+                "bp",
+                "lessstretch",
+                "lessfire"
+              ],
+              "why": "These sensory receptors fire in proportion to how far the artery wall is stretched, and lower pressure stretches it less."
+            }
+          ]
+        },
+        {
+          "id": "reflex",
+          "label": "Seconds later, with the reflex running",
+          "prompt": "Seconds later, once the blood pressure reflex has responded, compared with the moment the pressure fell.",
+          "start": "Fewer signals reach the medulla oblongata",
+          "steps": {
+            "medulla": "The medulla oblongata cuts vagal output and raises sympathetic output",
+            "vagal": "Vagal output to the heart falls",
+            "beta1": "Beta-1 receptor proteins on the heart still work",
+            "rate": "The heart rate rises",
+            "partial": "Blood pressure recovers part of the way",
+            "blocked": "Alpha-1 receptor proteins are still blocked",
+            "noconstrict": "Vessels cannot constrict in response"
+          },
+          "variables": [
+            {
+              "id": "vagal",
+              "name": "Vagal output to the heart",
+              "answer": "down",
+              "chain": [
+                "medulla",
+                "vagal"
+              ],
+              "why": "Less input from the stretch-sensitive sensory receptors tells the medulla oblongata the pressure is low, and it turns vagal tone down."
+            },
+            {
+              "id": "heart-rate",
+              "name": "Heart rate",
+              "answer": "up",
+              "chain": [
+                "medulla",
+                "beta1",
+                "rate"
+              ],
+              "why": "Less vagal tone and more sympathetic output act on the heart through muscarinic and beta-1 receptor proteins, which prazosin does not block, so the heart speeds up."
+            },
+            {
+              "id": "pressure",
+              "name": "Blood pressure",
+              "answer": "up",
+              "chain": [
+                "medulla",
+                "beta1",
+                "rate",
+                "partial"
+              ],
+              "why": "A faster, stronger heart pushes pressure back up, but only part of the way, so he may still feel dizzy on standing after that first dose."
+            },
+            {
+              "id": "diameter",
+              "name": "Diameter of small arteries in the skin",
+              "answer": "none",
+              "chain": [
+                "blocked",
+                "noconstrict"
+              ],
+              "why": "The medulla sends more sympathetic output to the vessels, but NE cannot act on blocked alpha-1 receptor proteins, so the vessels stay wide."
+            }
+          ]
+        }
+      ]
     }
   ]
 }
