@@ -424,7 +424,10 @@ const DATA_BUDGETS = [
      drafted. Each chapter raises it by its measured size. */
   /* 52 -> 64: respiratory and the nervous chapters drafted (56.8 KB). */
   /* 64 -> 76: special senses and autonomic drafted (66.7 KB). */
-  ['anatomy-physiology/assets/glossary.json', 76],
+  /* 76 -> 96: endocrine and blood drafted (77.8 KB). Every written chapter
+     adds its definitions, so this keeps rising until the course is written;
+     it loads after paint for hovers and blocks nothing. */
+  ['anatomy-physiology/assets/glossary.json', 96],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
