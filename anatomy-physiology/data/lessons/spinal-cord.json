@@ -1,0 +1,46 @@
+{
+  "topic": "spinal-cord",
+  "hook": "<p>Mr. Adeyemi, 41, lifts a heavy box and feels severe low back pain. By evening both legs are weak, the skin between his thighs is numb, and he cannot pass urine. His spinal cord itself ended well above the injury, but a burst disc between the fourth and fifth lumbar vertebrae is crushing the bundle of nerve roots that hangs below it, and he needs surgery within hours.</p>",
+  "prereq": [
+    {
+      "q": "Which region of the vertebral column lies just above the sacrum?",
+      "options": ["Thoracic", "Lumbar", "Cervical"],
+      "correct": 1,
+      "why": "From top to bottom the column has 7 cervical, 12 thoracic and 5 lumbar vertebrae, then the sacrum and coccyx. The lumbar region sits just above the sacrum.",
+      "review": "vertebral-column"
+    },
+    {
+      "q": "Which division of the nervous system carries signals from sensory receptors toward the CNS?",
+      "options": ["The motor (efferent) division", "The sensory (afferent) division", "The parasympathetic division"],
+      "correct": 1,
+      "why": "The sensory, or afferent, division carries signals in to the CNS. The motor, or efferent, division carries commands out; the parasympathetic division is part of the motor side.",
+      "review": "nervous-system-organization"
+    },
+    {
+      "q": "Around the spinal cord, which space is a real space filled with fat and veins?",
+      "options": ["The subdural space", "The epidural space", "The subarachnoid space"],
+      "correct": 1,
+      "why": "In the vertebral canal the dura is not attached to the bone, so the epidural space is real and holds fat and veins. The subarachnoid space holds CSF; the subdural space is only potential.",
+      "review": "brain-protection"
+    }
+  ],
+  "anatomy": {
+    "figure": "spinal-cord-section",
+    "caption": "The spinal cord in cross section, back at the top. Name each horn and column, find the two midline grooves, and follow the dorsal root in and the ventral root out."
+  },
+  "chain": [
+    { "cause": "You step on a tack, and a sensory neuron in the sole of your foot fires.", "effect": "Its signal travels along its axon to its cell body in a dorsal root ganglion." },
+    { "cause": "The same neuron's central process runs in through the dorsal root.", "effect": "It enters the back of the cord and ends in the dorsal horn." },
+    { "cause": "In the dorsal horn it excites interneurons and neurons whose axons turn up the cord.", "effect": "The signal climbs the white columns in an ascending tract toward the brain, and local interneurons pass it to the ventral horn." },
+    { "cause": "Motor neurons in the ventral horn are excited.", "effect": "Their axons leave through the ventral root and the joined nerve and reach the leg muscles, which contract and lift the foot." }
+  ],
+  "misconception": {
+    "wrong": "The spinal cord runs the full length of the vertebral column, so a needle in the lower back risks piercing it.",
+    "right": "In an adult the cord ends at the conus medullaris, at about the first or second lumbar vertebra, because the vertebral column grew longer than the cord. Below that, the dural sac holds only the cauda equina, roots floating in CSF, down to about the second sacral vertebra. A lumbar puncture between L3 and L4 enters this fluid, and the roots slide away from the needle."
+  },
+  "check": ["anp-spinal-cord-1", "anp-spinal-cord-4", "anp-spinal-cord-8", "anp-spinal-cord-10", "anp-spinal-cord-12", "anp-spinal-cord-14", "anp-spinal-cord-17"],
+  "summary": "<p>The spinal cord runs from the foramen magnum to the conus medullaris at about L1–L2 in adults, inside the meninges. The cervical and lumbar enlargements hold the extra neurons for the limbs, and below the conus the cauda equina hangs in the dural sac, which reaches S2. In cross section, gray matter inside forms dorsal (sensory), ventral (somatic motor) and, from T1 to L2, lateral (sympathetic) horns around the central canal; white matter outside forms posterior, lateral and anterior columns, with the anterior median fissure in front and the posterior median sulcus behind. Sensory axons enter through the dorsal root, whose ganglion holds their cell bodies, and motor axons leave through the ventral root. Ascending tracts carry sensation up and descending tracts carry commands down; most cross the midline.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

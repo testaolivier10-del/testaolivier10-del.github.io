@@ -1,0 +1,39 @@
+{
+  "os-16-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "16.12",
+      "section": "16.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5b931ab0ef4078df4cffcbc2ef9fddc99ba4ccbb",
+      "page": "16-4-the-sensory-and-motor-exams"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5b931ab0ef4078df4cffcbc2ef9fddc99ba4ccbb",
+    "alt": "A front view of one cerebral hemisphere cut vertically, with a cross section of the spinal cord below it. Green lines (sensory) run up from the spinal cord to the cortex, with arrowheads pointing up; purple lines (motor) run down from the cortex to the spinal cord, with arrowheads pointing down. One purple line crosses to the other side before entering the cord. In the cord section, the paired green areas at the back and small green and purple areas at the sides and front mark where these bundles run. Roots leave the cord on both sides. A key reads sensory (green) and motor (purple).",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 16.12",
+    "labels": [],
+    "w": 1100,
+    "h": 1109,
+    "ext": "jpg"
+  },
+  "spinal-cord-section": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 700,
+    "h": 440,
+    "alt": "A cross section of the spinal cord with the back (dorsal) side at the top. A butterfly-shaped core of gray matter surrounds a tiny central canal. Its two narrow dorsal horns reach toward the back, two broad ventral horns reach toward the front, and small lateral horns stick out at the sides. The white matter around it is divided on each side into posterior, lateral and anterior columns, with a shallow posterior median sulcus at the back and a deep anterior median fissure at the front. On the left, an orange dorsal root with a swollen dorsal root ganglion enters the back of the cord, and a blue ventral root leaves the front; the two join into one nerve.",
+    "labels": []
+  },
+  "spinal-cord-numbered": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 700,
+    "h": 440,
+    "alt": "The same spinal cord cross section, back side at the top, with nine numbered pointers on the right and three on the left instead of names. On the right, from top to bottom: 1, the shallow midline groove at the back; 2, the white matter between that groove and the dorsal horn; 3, the narrow gray horn reaching toward the back; 4, the small gray bump at the side; 5, the white matter at the side; 6, the tiny hole in the center; 7, the broad gray horn reaching toward the front; 8, the white matter at the front beside the midline; 9, the deep midline groove at the front. On the left: 10, the orange root entering the back of the cord; 11, the swelling on that root; 12, the blue root leaving the front.",
+    "labels": []
+  }
+}

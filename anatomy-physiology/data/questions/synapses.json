@@ -1,0 +1,674 @@
+[
+  {
+    "id": "anp-synapses-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-27",
+    "pin": "synaptic-vesicles",
+    "q": "Name the pinned structures.",
+    "options": [
+      "Synaptic vesicles",
+      "Mitochondria",
+      "Ligand-gated channels",
+      "Nodes of Ranvier"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Synaptic vesicles are the small membrane sacs in the axon terminal that hold neurotransmitter. Calcium entry makes them fuse with the terminal membrane and release it.",
+      "options": [
+        "Correct. These sacs store neurotransmitter until calcium triggers their release.",
+        "Mitochondria supply ATP in the terminal, but they are larger, with folded inner membranes, and they do not release neurotransmitter.",
+        "Ligand-gated channels sit in the postsynaptic membrane across the cleft, not inside the axon terminal.",
+        "Nodes of Ranvier are gaps in the myelin along an axon, not structures inside the axon terminal."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-27",
+    "pin": "synaptic-cleft",
+    "q": "Name the pinned space.",
+    "options": [
+      "Synaptic vesicle",
+      "Synaptic cleft",
+      "Gap junction",
+      "Axon hillock"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The synaptic cleft is the gap, about 20 nm wide, between the axon terminal and the postsynaptic membrane. Neurotransmitter diffuses across it.",
+      "options": [
+        "A synaptic vesicle is a sac inside the axon terminal, not the gap between the two cells.",
+        "Correct. This is the gap the neurotransmitter crosses.",
+        "A gap junction joins two cells' cytosols directly, at an electrical synapse. Here the cells are separated by a gap, the mark of a chemical synapse.",
+        "The axon hillock is where the axon leaves the cell body of a neuron, not the gap at a synapse."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-3",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps of chemical synaptic transmission in order.",
+    "options": [
+      "An action potential reaches the axon terminal",
+      "Voltage-gated calcium channels open and calcium enters",
+      "Synaptic vesicles fuse with the membrane and release neurotransmitter",
+      "Neurotransmitter diffuses across the synaptic cleft",
+      "Neurotransmitter binds receptor proteins and ion channels open",
+      "A postsynaptic potential changes the membrane potential of the next cell"
+    ],
+    "why": {
+      "correct": "Depolarization of the terminal opens calcium channels; calcium triggers exocytosis; the neurotransmitter crosses the cleft and binds receptor proteins; channels open or close, and the ion flow produces an EPSP or IPSP in the postsynaptic cell. Removal of the neurotransmitter then ends the signal."
+    }
+  },
+  {
+    "id": "anp-synapses-4",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap: An action potential reaches the axon terminal → voltage-gated calcium channels open → ______ → vesicles fuse with the membrane and release neurotransmitter",
+    "options": [
+      "Sodium rushes into the synaptic cleft",
+      "Calcium enters and binds sensor proteins on the vesicles",
+      "Acetylcholinesterase breaks down the membranes of the docked vesicles",
+      "The postsynaptic neuron fires an action potential"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Calcium flows into the terminal down a steep electrochemical gradient and binds sensor proteins on the docked vesicles, which triggers them to fuse and release their contents.",
+      "options": [
+        "Sodium enters the axon during the action potential, not the cleft, and it is not the trigger for release.",
+        "Correct. Calcium entry is the link between the electrical signal and release.",
+        "Acetylcholinesterase acts in the cleft on released acetylcholine. It does not act on vesicles.",
+        "The postsynaptic neuron can respond only after neurotransmitter has been released and bound, which comes later."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-5",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "One step in this account of transmission at a chemical synapse is wrong. Find it.",
+    "options": [
+      "An action potential depolarizes the axon terminal",
+      "Sodium entering the terminal triggers the vesicles to fuse",
+      "Neurotransmitter diffuses across the synaptic cleft",
+      "Neurotransmitter binds receptor proteins on the postsynaptic membrane",
+      "Transporters carry the neurotransmitter back into the terminal"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Calcium, not sodium, triggers release. Depolarization of the terminal opens voltage-gated calcium channels, and calcium entering binds sensor proteins on the vesicles.",
+      "options": [
+        "This step is right. The arriving action potential depolarizes the terminal membrane.",
+        "This is the error. The trigger for vesicle fusion is calcium entering through voltage-gated calcium channels.",
+        "This step is right. The neurotransmitter crosses the 20 nm cleft by diffusion.",
+        "This step is right. Binding to receptor proteins opens or closes ion channels.",
+        "This step is right. Reuptake is one of the ways the signal ends."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A researcher injects current into one neuron. The neighboring neuron depolarizes with almost no delay, and when the experiment is reversed the first neuron follows the second just as fast. What connects them?",
+    "options": [
+      "A chemical synapse using an ionotropic receptor protein",
+      "A chemical synapse using a metabotropic receptor protein",
+      "Gap junctions forming an electrical synapse",
+      "A neuromuscular junction"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Near-instant, two-way transfer of current is the signature of an electrical synapse: gap junctions let ions flow straight from one cytosol into the other.",
+      "options": [
+        "Even a fast chemical synapse has a synaptic delay of about half a millisecond, and it works only from presynaptic to postsynaptic.",
+        "Metabotropic effects take tens of milliseconds or more, and they are one-way.",
+        "Correct. Ions pass directly through gap junctions, in either direction.",
+        "A neuromuscular junction links a neuron to a skeletal muscle fiber, not two neurons, and it is a one-way chemical synapse."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In a lab, the fluid around a synapse is replaced with fluid that has no calcium. The presynaptic neuron is then stimulated. What happens?",
+    "options": [
+      "The action potential never reaches the axon terminal",
+      "The postsynaptic neuron fires more often",
+      "The action potential arrives, but little or no neurotransmitter is released",
+      "Neurotransmitter is released but cannot diffuse across the cleft"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The action potential depends on sodium and potassium, so it still travels to the terminal and opens the calcium channels. With no calcium outside, nothing flows in, the vesicles are not triggered, and release fails.",
+      "options": [
+        "Conduction along the axon uses sodium and potassium channels, not calcium, so the action potential still arrives.",
+        "Without release there are no EPSPs from this input, so the postsynaptic neuron is less likely to fire, not more.",
+        "Correct. Calcium entry is the trigger for exocytosis.",
+        "Diffusion does not need calcium. The problem comes earlier: without calcium, there is almost nothing released to diffuse."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient starts an SSRI, a drug that blocks the transporters that carry serotonin back into the presynaptic terminal. Predict each variable at the patient's serotonin synapses in the first hours, compared with before the drug.",
+    "variables": [
+      {
+        "name": "Serotonin taken back into the presynaptic terminal",
+        "answer": "down",
+        "why": "The transporters that perform reuptake are blocked."
+      },
+      {
+        "name": "Time serotonin stays in the synaptic cleft after each release",
+        "answer": "up",
+        "why": "With reuptake, the main removal route, blocked, only slow diffusion clears serotonin from the cleft."
+      },
+      {
+        "name": "Activation of postsynaptic serotonin receptor proteins",
+        "answer": "up",
+        "why": "Serotonin that lingers binds the receptor proteins again and again, so they are active for longer."
+      },
+      {
+        "name": "Calcium entry into the terminal per action potential",
+        "answer": "none",
+        "why": "The drug acts on the reuptake transporters, not on the voltage-gated calcium channels that open when the action potential arrives."
+      }
+    ],
+    "why": {
+      "correct": "Blocking reuptake removes the main exit route for serotonin. Each release lasts longer and activates postsynaptic receptor proteins more, while the steps that cause release are unchanged."
+    }
+  },
+  {
+    "id": "anp-synapses-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "the poison makes the nerve fire more",
+    "q": "An organophosphate insecticide blocks acetylcholinesterase at a patient's neuromuscular junctions. Predict each variable, compared with before the exposure.",
+    "variables": [
+      {
+        "name": "Acetylcholinesterase activity in the synaptic cleft",
+        "answer": "down",
+        "why": "The poison binds the enzyme and stops it working."
+      },
+      {
+        "name": "Time acetylcholine stays in the cleft after each nerve impulse",
+        "answer": "up",
+        "why": "Acetylcholine is no longer split in about a millisecond, so it lingers until it slowly diffuses away."
+      },
+      {
+        "name": "Acetylcholine released per nerve action potential",
+        "answer": "none",
+        "why": "Release depends on calcium entering the terminal, which the poison does not change."
+      },
+      {
+        "name": "Duration of the end plate depolarization after each impulse",
+        "answer": "up",
+        "why": "Lingering acetylcholine keeps opening nicotinic receptor proteins, so the depolarization lasts longer."
+      }
+    ],
+    "why": {
+      "correct": "The nerve releases the usual amount of acetylcholine, but nothing clears it quickly. It keeps binding nicotinic receptor proteins, so each impulse causes a long depolarization: at first twitching, and with a large dose, weakness as the muscle fibers stay depolarized."
+    }
+  },
+  {
+    "id": "anp-synapses-10",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-12-26",
+    "q": "At point A on this graph, several EPSPs have added together, yet the neuron has not fired an action potential. Why not?",
+    "options": [
+      "The neuron is in its absolute refractory period",
+      "The summed depolarization is still below threshold",
+      "EPSPs cannot add together; only the latest one counts",
+      "The axon hillock lacks voltage-gated sodium channels"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Point A sits above rest but below the −55 mV line. The EPSPs have summed, but not by enough to reach threshold, so no action potential fires.",
+      "options": [
+        "The refractory period follows an action potential, and none has fired yet.",
+        "Correct. Summation has moved the membrane toward threshold but not to it.",
+        "The stepwise climb to A shows the EPSPs adding; that is summation.",
+        "The axon hillock and initial segment have the densest voltage-gated sodium channels in the neuron; that is why they form the trigger zone."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-11",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-12-26",
+    "q": "Just after point A on this graph, the membrane potential falls back toward rest before rising again. What causes the fall?",
+    "options": [
+      "The falling phase of an action potential",
+      "Reuptake of neurotransmitter by astrocytes",
+      "IPSPs from inhibitory synapses",
+      "The afterhyperpolarization of an earlier spike"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The magenta segments are IPSPs. Inhibitory synapses open chloride or potassium channels, which pull the membrane away from threshold and subtract from the EPSPs that came before.",
+      "options": [
+        "No action potential has fired at A. The trace fell from below threshold, so this is not a falling phase.",
+        "Reuptake ends a neurotransmitter's action; it does not drive the membrane downward by itself.",
+        "Correct. IPSPs subtract from the summed EPSPs.",
+        "An afterhyperpolarization follows an action potential, and there has been none before A."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-12",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "synaptic-summation",
+    "q": "In panel B, three EPSPs from input E1 reach threshold, although one EPSP from the same input (panel A) does not. Why?",
+    "options": [
+      "Each EPSP starts before the previous one has faded, so they stack",
+      "The threshold falls a little with each EPSP",
+      "Three different presynaptic neurons fired at the same moment",
+      "Each later EPSP is bigger because the synapse strengthens"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Panel B shows temporal summation. E1 fires every 3 ms, and an EPSP takes longer than that to fade, so each new one starts from a higher base and the sum climbs to threshold.",
+      "options": [
+        "Correct. Repeated input from one source adds up over time.",
+        "The threshold line stays at −55 mV in every panel.",
+        "That would be spatial summation, shown in panel C. Panel B is one input firing repeatedly.",
+        "The three EPSPs in panel B are the same size; they reach threshold by stacking, not by growing."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-13",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "synaptic-summation",
+    "q": "In panel D, an excitatory input and an inhibitory input fire together and the membrane barely moves. What would make this neuron reach threshold?",
+    "options": [
+      "Firing the inhibitory input I1 more often",
+      "Blocking the reuptake of the inhibitory neurotransmitter at the I1 synapse",
+      "Removing the inhibitory input and firing three excitatory inputs together",
+      "Lowering the calcium in the fluid around the excitatory axon terminal"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "EPSPs and IPSPs add algebraically. Removing the IPSP and adding more simultaneous EPSPs, as in panel C, gives enough depolarization to reach threshold.",
+      "options": [
+        "More IPSPs subtract more from the EPSP and push the membrane further from threshold.",
+        "Blocking reuptake of an inhibitory neurotransmitter prolongs its effect, making the IPSP larger and longer.",
+        "Correct. More excitation and no inhibition is what panel C shows reaching threshold.",
+        "Less calcium outside means less neurotransmitter released from the excitatory terminal, so a smaller EPSP."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "communication"
+    ],
+    "q": "GABA opens chloride channels on a neuron whose chloride equilibrium potential equals its resting potential, −70 mV. The membrane potential does not change at all. At the same moment, excitatory inputs arrive. What is the effect of the GABA?",
+    "options": [
+      "None, because the membrane potential did not change when the channels opened",
+      "It helps the excitatory inputs reach threshold",
+      "It opens voltage-gated sodium channels early",
+      "It is inhibitory: chloride entering opposes any depolarization"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "With chloride channels open, any depolarization away from −70 mV makes chloride flow in, which pulls the membrane back toward −70 mV. The excitatory inputs produce smaller depolarizations, so the neuron is less likely to reach threshold. Inhibition does not always need a visible hyperpolarization.",
+      "options": [
+        "The effect shows up only when other inputs try to move the membrane: open chloride channels hold it near −70 mV.",
+        "Chloride entering carries negative charge in during any depolarization, which works against the excitatory inputs.",
+        "GABA's chloride channels hold the membrane near rest, which keeps voltage-gated sodium channels closed.",
+        "Correct. Clamping the membrane near rest is still inhibition."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "each neurotransmitter is either excitatory or inhibitory",
+    "q": "Acetylcholine makes skeletal muscle fibers contract but slows the heart. What explains the opposite effects?",
+    "options": [
+      "The heart receives a chemically different form of acetylcholine from its nerves",
+      "The two tissues carry different receptor proteins for acetylcholine",
+      "Acetylcholine is broken down faster in skeletal muscle",
+      "Heart cells lack voltage-gated channels"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The receptor protein decides the effect. Skeletal muscle has ionotropic nicotinic receptor proteins, which let sodium in and depolarize the fiber. The heart cells that set its rate have metabotropic receptor proteins, which through a G protein open potassium channels and slow them.",
+      "options": [
+        "Acetylcholine is the same molecule wherever it is released.",
+        "Correct. Same neurotransmitter, different receptor proteins, different results.",
+        "Faster breakdown would shorten an effect, not reverse it.",
+        "Heart cells rely on voltage-gated channels for their action potentials."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A neurotransmitter's effect on a neuron begins about 100 ms after release and lasts several seconds. A drug that blocks G proteins abolishes it. What kind of receptor protein does it act on?",
+    "options": [
+      "A metabotropic receptor protein",
+      "An ionotropic receptor protein",
+      "A voltage-gated sodium channel in the membrane",
+      "A gap junction"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Slow onset, long duration and dependence on G proteins are the marks of a metabotropic receptor protein, which works through a G protein and often a second messenger.",
+      "options": [
+        "Correct. G protein signaling explains the delay, the long duration and the drug's effect.",
+        "Ionotropic receptor proteins are channels that open within a millisecond and close within milliseconds; they do not need G proteins.",
+        "Voltage-gated channels respond to membrane potential, not to a neurotransmitter binding.",
+        "Gap junctions pass current directly between cells; no neurotransmitter is involved."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-17",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every statement that is true of metabotropic receptor proteins.",
+    "options": [
+      "They act through G proteins",
+      "Their pore opens the instant the neurotransmitter binds",
+      "Their effects can last seconds to minutes",
+      "They can amplify a signal through a second messenger",
+      "They include the nicotinic receptor proteins at the neuromuscular junction",
+      "They can change which genes a cell uses"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Metabotropic receptor proteins are G-protein-coupled receptor proteins. They work more slowly and for longer than channels, amplify signals through second messengers, and can change enzymes and gene expression.",
+      "options": [
+        "Correct. The G protein is the link to everything they do.",
+        "They have no pore. An instant-opening pore describes an ionotropic receptor protein.",
+        "Correct. G protein and second messenger effects outlast the neurotransmitter's binding.",
+        "Correct. One bound receptor protein can lead to many second messenger molecules.",
+        "Nicotinic receptor proteins at the neuromuscular junction are ionotropic: they are ligand-gated channels.",
+        "Correct. Second messengers can switch on enzymes that change gene expression."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A neuron rests at −70 mV and has a threshold of −55 mV. At its trigger zone, each EPSP is worth +3 mV and each IPSP −4 mV. Which set of inputs, all firing at the same moment, would trigger an action potential?",
+    "options": [
+      "4 EPSPs",
+      "6 EPSPs and 1 IPSP",
+      "5 EPSPs and 2 IPSPs",
+      "7 EPSPs and 1 IPSP"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The membrane needs 15 mV of depolarization. 7 × 3 − 4 = 17 mV, which takes it to −53 mV, past threshold. Each of the other sets falls short.",
+      "options": [
+        "4 × 3 = 12 mV, reaching −58 mV: below threshold.",
+        "6 × 3 − 4 = 14 mV, reaching −56 mV: just short of threshold.",
+        "5 × 3 − 2 × 4 = 7 mV, reaching −63 mV: well below threshold.",
+        "Correct. 21 − 4 = 17 mV, reaching −53 mV."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-19",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "An infant develops botulism. Botulinum toxin destroys the proteins synaptic vesicles need to fuse with the membrane. Her cry is weak, she feeds poorly and her limbs are floppy. At which step of transmission does the toxin act?",
+    "options": [
+      "Conduction of the action potential along the motor axon",
+      "Binding of acetylcholine to nicotinic receptor proteins",
+      "Breakdown of acetylcholine by acetylcholinesterase",
+      "Release of acetylcholine from the axon terminal"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Action potentials still reach the terminal and calcium still enters, but the vesicles cannot fuse, so acetylcholine is not released. Muscle fibers get no signal, and they are weak and floppy.",
+      "options": [
+        "The toxin acts at the terminal, after conduction. The action potential still arrives.",
+        "Receptor proteins are unaffected; there is simply no acetylcholine to bind them.",
+        "Blocking breakdown would leave extra acetylcholine and cause twitching, the opposite of floppy weakness.",
+        "Correct. No vesicle fusion means no release."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-20",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A man is found unresponsive after a fentanyl overdose, breathing four times a minute. A paramedic gives naloxone, and within two minutes he is breathing normally. How does naloxone work?",
+    "options": [
+      "It occupies the opioid receptor proteins without activating them, pushing fentanyl off",
+      "It breaks fentanyl down in the synaptic cleft",
+      "It blocks reuptake of endorphins",
+      "It opens chloride channels in the brain"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Fentanyl slows breathing by activating the metabotropic receptor proteins that endorphins normally use. Naloxone binds the same receptor proteins but does not switch them on. Given in a large enough dose, it crowds fentanyl off them and removes its effect.",
+      "options": [
+        "Correct. Naloxone competes for the same receptor proteins and leaves them inactive.",
+        "Naloxone is not an enzyme. It acts at the receptor proteins, and fentanyl is cleared later by the liver.",
+        "Endorphins act on the same receptor proteins as fentanyl, so prolonging them would add to the problem.",
+        "Opening chloride channels would add inhibition and slow breathing further."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-21",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A gardener with an unvaccinated puncture wound develops tetanus, the infection. Its toxin blocks neurotransmitter release from inhibitory interneurons that synapse on his motor neurons. His jaw clenches shut and his back arches in spasms. Why?",
+    "options": [
+      "The toxin excites the muscle fibers directly",
+      "His motor neurons lose their IPSPs, so their excitatory inputs drive them to fire far more",
+      "His motor neurons cannot release acetylcholine",
+      "The toxin blocks acetylcholinesterase at his neuromuscular junctions"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A motor neuron's firing depends on the sum of its EPSPs and IPSPs. With the inhibitory interneurons silenced, the IPSPs disappear, the same excitatory inputs now push the motor neurons past threshold again and again, and their muscles contract hard and uncontrollably.",
+      "options": [
+        "The toxin acts on inhibitory interneurons in the CNS, not on muscle fibers.",
+        "Correct. Removing inhibition leaves excitation unopposed.",
+        "Failed acetylcholine release would cause floppy weakness, as in botulism, not spasms.",
+        "The toxin blocks release from inhibitory interneurons; it does not act on the enzyme at the neuromuscular junction."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which neurotransmitter is the main excitatory neurotransmitter of the brain and spinal cord?",
+    "options": [
+      "GABA",
+      "Acetylcholine",
+      "Glutamate",
+      "Serotonin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Glutamate drives most fast excitatory synapses in the brain and spinal cord, mainly through ionotropic receptor proteins that let sodium in. GABA and glycine are the main inhibitory ones.",
+      "options": [
+        "GABA is the main inhibitory neurotransmitter of the brain.",
+        "Acetylcholine excites skeletal muscle and acts in the brain, but most fast excitatory synapses in the CNS use glutamate.",
+        "Correct. Glutamate is the main excitatory neurotransmitter of the CNS.",
+        "Serotonin is a biogenic amine that mostly adjusts neuron activity through metabotropic receptor proteins; it is not the main fast excitatory neurotransmitter."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-23",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every biogenic amine.",
+    "options": [
+      "Glutamate",
+      "Dopamine",
+      "Endorphins",
+      "Serotonin",
+      "Norepinephrine",
+      "GABA"
+    ],
+    "correct": [
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "Biogenic amines are made from single amino acids: dopamine and norepinephrine from tyrosine, serotonin from tryptophan. Glutamate and GABA are amino acid neurotransmitters, and endorphins are neuropeptides.",
+      "options": [
+        "Glutamate is an amino acid neurotransmitter, not an amine made from one.",
+        "Correct. Dopamine is a biogenic amine.",
+        "Endorphins are neuropeptides: short chains of amino acids.",
+        "Correct. Serotonin is a biogenic amine.",
+        "Correct. Norepinephrine is a biogenic amine.",
+        "GABA is grouped with the amino acid neurotransmitters."
+      ]
+    }
+  },
+  {
+    "id": "anp-synapses-24",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "The axon of one sensory neuron branches to synapse on 20 different interneurons in the spinal cord. What kind of circuit pattern is this?",
+    "options": [
+      "Divergence",
+      "Convergence",
+      "Spatial summation",
+      "An electrical synapse"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "One presynaptic neuron reaching many postsynaptic neurons is divergence: one signal spreads to many cells.",
+      "options": [
+        "Correct. One to many is divergence.",
+        "Convergence is the reverse: many presynaptic neurons synapsing on one.",
+        "Spatial summation happens within one postsynaptic neuron when several inputs arrive together; it is not a wiring pattern.",
+        "Nothing here says the synapses use gap junctions; this is a question about wiring, not synapse type."
+      ]
+    }
+  }
+]

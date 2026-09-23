@@ -1,0 +1,22 @@
+{
+  "spinal-cord-gross": {
+    "def": "The spinal cord runs from the foramen magnum to the conus medullaris, its cone-shaped end at about L1–L2 in adults. It is wider at the cervical enlargement (supplying the upper limbs) and the lumbar enlargement (lower limbs); below the conus, lumbar and sacral roots hang down the canal as the cauda equina.",
+    "roots": [["conus", "cone"], ["medulla", "marrow"], ["cauda", "tail"], ["equus", "horse"]],
+    "say": "KOH-nus med-yoo-LAIR-iss; KAW-duh ee-KWY-nuh"
+  },
+  "spinal-cord-section": {
+    "def": "Cut across, the spinal cord shows butterfly-shaped gray matter inside (dorsal or posterior horns for sensation, ventral or anterior horns with motor neurons, and lateral horns with sympathetic neurons from T1 to L2) around a central canal, and white matter outside in posterior, lateral and anterior columns. The anterior median fissure marks the front and the posterior median sulcus the back.",
+    "roots": [["dorsal", "back"], ["ventral", "belly"], ["funiculus", "little cord"]],
+    "say": ""
+  },
+  "spinal-roots": {
+    "def": "The two roots connecting each side of a spinal cord segment to the body. The dorsal (posterior) root carries sensory axons in and has a dorsal root ganglion holding their cell bodies; the ventral (anterior) root carries motor axons out. Beyond the ganglion they join into one nerve.",
+    "roots": [["ganglion", "swelling, knot"]],
+    "say": "GANG-glee-on"
+  },
+  "tracts-overview": {
+    "def": "The bundles of axons in the spinal cord's white columns. Ascending tracts carry sensory information up to the brain; descending tracts carry motor commands down. Their names give origin then destination, and most cross the midline somewhere along their path.",
+    "roots": [["ascend-", "climb up"], ["descend-", "climb down"], ["tractus", "a drawing out"]],
+    "say": ""
+  }
+}
