@@ -7,7 +7,7 @@
       "options": ["Left ventricle", "Right atrium", "Right ventricle"],
       "correct": 2,
       "why": "The right ventricle pumps through the pulmonary valve into the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles below them.",
-      "review": "heart-chambers-valves"
+      "review": "heart-anatomy"
     },
     {
       "q": "Which valve lies between the left atrium and the left ventricle?",

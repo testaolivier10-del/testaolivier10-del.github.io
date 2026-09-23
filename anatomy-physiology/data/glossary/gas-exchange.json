@@ -1,0 +1,32 @@
+{
+  "partial-pressure": {
+    "def": "The pressure one gas in a mixture exerts: the total pressure times that gas's fraction of the mixture, written PO2 for oxygen and PCO2 for carbon dioxide. By Dalton's law, the partial pressures add up to the total pressure.",
+    "roots": [["parti-", "part"]],
+    "say": ""
+  },
+  "henrys-law": {
+    "def": "The amount of a gas that dissolves in a liquid is proportional to that gas's partial pressure and its solubility. Carbon dioxide is about 20 times more soluble in plasma than oxygen.",
+    "roots": [["solu-", "loosen, dissolve"]],
+    "say": ""
+  },
+  "external-respiration": {
+    "def": "Gas exchange between alveolar air and blood in the pulmonary capillaries: oxygen diffuses into the blood and carbon dioxide diffuses out, each down its partial pressure gradient.",
+    "roots": [["extern-", "outside"], ["pulmon-", "lung"]],
+    "say": ""
+  },
+  "internal-respiration": {
+    "def": "Gas exchange between blood in systemic capillaries and the tissue cells: oxygen diffuses into the cells and carbon dioxide diffuses into the blood. It is not the same as cellular respiration, which uses the oxygen.",
+    "roots": [["intern-", "inside"]],
+    "say": ""
+  },
+  "gas-values": {
+    "def": "Typical partial pressures at rest at sea level: alveolar air PO2 about 100 and PCO2 about 40 mm Hg; arterial blood PO2 about 95 (80 to 100) and PCO2 40 (35 to 45); venous blood PO2 about 40 and PCO2 about 46 mm Hg.",
+    "roots": [],
+    "say": ""
+  },
+  "v-q-coupling": {
+    "def": "The matching of blood flow (perfusion) to airflow (ventilation) in each region of the lungs. The ventilation–perfusion ratio, V/Q, is about 0.8 for the whole lung; low alveolar PO2 constricts nearby pulmonary arterioles (hypoxic pulmonary vasoconstriction), sending blood to better-ventilated alveoli.",
+    "roots": [["per-", "through"], ["fus-", "pour"], ["hypo-", "under"], ["ox-", "oxygen"]],
+    "say": ""
+  }
+}

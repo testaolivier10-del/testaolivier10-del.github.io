@@ -10,11 +10,11 @@
       "review": "heart-anatomy"
     },
     {
-      "q": "By definition, which way does an artery carry blood?",
-      "options": ["Away from the heart", "Toward the heart", "Between two capillaries"],
-      "correct": 0,
-      "why": "Arteries carry blood away from the heart and veins carry it toward the heart. Capillaries are the tiny vessels between them.",
-      "review": "body-organization"
+      "q": "Which chamber do the pulmonary veins empty into?",
+      "options": ["The right atrium", "The left atrium", "The left ventricle"],
+      "correct": 1,
+      "why": "The pulmonary veins bring blood back from the lungs into the left atrium. The venae cavae empty into the right atrium, and the left ventricle receives blood from the left atrium and sends it out through the aorta.",
+      "review": "heart-anatomy"
     },
     {
       "q": "Blood flows through a tube from region A to region B. What must be true?",
@@ -26,7 +26,7 @@
   ],
   "anatomy": {
     "figure": "os-19-9",
-    "caption": "The heart opened in a frontal plane. Hide the labels and name each chamber, septum, valve and great vessel."
+    "caption": "The heart opened in a frontal plane. Hide the labels and name each valve and septum first, then the chambers and great vessels around them."
   },
   "chain": [
     { "cause": "The ventricle muscle contracts, raising the pressure of the blood inside the ventricle.", "effect": "Blood pushes up on the cusps of the atrioventricular valve, and the cusps meet and seal the opening." },
@@ -39,8 +39,8 @@
     "wrong": "The left ventricle has a thicker wall because it pumps more blood than the right ventricle.",
     "right": "On average, both ventricles pump the same volume of blood each beat. The left wall is thicker because the vessels of the whole body resist flow far more than the vessels of the lungs, so the left ventricle has to generate about five times the pressure (about 120 versus 25 mm Hg). Heart muscle thickens when it works against a heavier load."
   },
-  "check": ["anp-heart-chambers-valves-1", "anp-heart-chambers-valves-3", "anp-heart-chambers-valves-8", "anp-heart-chambers-valves-10", "anp-heart-chambers-valves-12", "anp-heart-chambers-valves-14", "anp-heart-chambers-valves-16"],
-  "summary": "<p>Two atria receive blood from veins; two ventricles pump it into arteries. The venae cavae enter the right atrium, the pulmonary trunk leaves the right ventricle, the pulmonary veins enter the left atrium, and the aorta leaves the left ventricle. The tricuspid and mitral valves sit between atria and ventricles and are held by chordae tendineae and papillary muscles; the pulmonary and aortic semilunar valves guard the exits and close by filling like pockets. Three septa divide the chambers, and the fossa ovalis marks the interatrial septum. The left ventricle wall is thickest because it works against the highest pressure. The cardiac skeleton anchors the valves and muscle and stops electrical signals crossing straight from atria to ventricles.</p>",
+  "check": ["anp-heart-chambers-valves-3", "anp-heart-chambers-valves-21", "anp-heart-chambers-valves-8", "anp-heart-chambers-valves-10", "anp-heart-chambers-valves-12", "anp-heart-chambers-valves-14", "anp-heart-chambers-valves-16"],
+  "summary": "<p>Building on the four chambers and great vessels: three septa divide the chambers, and the fossa ovalis marks the right atrial side of the interatrial septum. The tricuspid and mitral valves sit between atria and ventricles and are held by chordae tendineae and papillary muscles; the pulmonary and aortic semilunar valves guard the exits into the great arteries and close by filling like pockets. Pectinate muscles line the auricles and trabeculae carneae ridge the ventricles. The left ventricle wall is thickest because it works against the highest pressure. The cardiac skeleton holds the valve openings in shape, anchors the muscle and stops electrical signals crossing straight from atria to ventricles.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
     { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies" }

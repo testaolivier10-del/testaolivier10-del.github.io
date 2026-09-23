@@ -1,43 +1,5 @@
 [
   {
-    "id": "anp-heart-chambers-valves-1",
-    "type": "single",
-    "level": "recall",
-    "diff": 1,
-    "core": ["structure-function"],
-    "q": "Which chamber receives blood from the superior and inferior venae cavae?",
-    "options": ["Left atrium", "Right ventricle", "Right atrium", "Left ventricle"],
-    "correct": 2,
-    "why": {
-      "correct": "Both venae cavae empty into the right atrium, the receiving chamber on the right side of the heart.",
-      "options": [
-        "The left atrium receives the pulmonary veins from the lungs, not the venae cavae.",
-        "The right ventricle receives blood from the right atrium, through the tricuspid valve, not directly from the venae cavae.",
-        "Correct. The venae cavae deliver blood from the body into the right atrium.",
-        "The left ventricle receives blood from the left atrium and sends it into the aorta."
-      ]
-    }
-  },
-  {
-    "id": "anp-heart-chambers-valves-2",
-    "type": "single",
-    "level": "recall",
-    "diff": 1,
-    "core": ["structure-function"],
-    "q": "Which great vessel leaves the left ventricle?",
-    "options": ["Aorta", "Pulmonary trunk", "Superior vena cava", "Pulmonary veins"],
-    "correct": 0,
-    "why": {
-      "correct": "The aorta leaves the left ventricle and carries blood to the whole body.",
-      "options": [
-        "Correct. The left ventricle pumps into the aorta, through the aortic valve.",
-        "The pulmonary trunk leaves the right ventricle, carrying blood toward the lungs.",
-        "The superior vena cava is a vein that brings blood into the right atrium.",
-        "The pulmonary veins bring blood from the lungs into the left atrium. They enter the heart; they do not leave a ventricle."
-      ]
-    }
-  },
-  {
     "id": "anp-heart-chambers-valves-3",
     "type": "image",
     "level": "recall",
@@ -122,27 +84,6 @@
     }
   },
   {
-    "id": "anp-heart-chambers-valves-7",
-    "type": "image",
-    "level": "recall",
-    "diff": 1,
-    "core": ["structure-function"],
-    "figure": "os-19-6",
-    "pin": "auricle-of-left-atrium",
-    "q": "Name the pinned structure.",
-    "options": ["Left auricle", "Left ventricle", "Pulmonary trunk", "Coronary sulcus"],
-    "correct": 0,
-    "why": {
-      "correct": "Each atrium has an ear-shaped pouch on its front called an auricle. This one belongs to the left atrium.",
-      "options": [
-        "Correct. The ear-shaped pouch is the left auricle.",
-        "The left ventricle forms the left edge and apex of the heart, below the auricle. It is smooth, not a small wrinkled pouch.",
-        "The pulmonary trunk is the large vessel leaving the top of the right ventricle, just to the right of the left auricle.",
-        "The coronary sulcus is a fat-filled groove around the heart, not a pouch."
-      ]
-    }
-  },
-  {
     "id": "anp-heart-chambers-valves-8",
     "type": "order",
     "level": "recall",
@@ -212,30 +153,6 @@
     }
   },
   {
-    "id": "anp-heart-chambers-valves-11",
-    "type": "single",
-    "level": "apply",
-    "diff": 2,
-    "core": ["structure-function"],
-    "q": "The pulmonary arteries carry blood that has just come back from the body, and the pulmonary veins carry blood that has just passed through the lungs. Why are they still called arteries and veins?",
-    "options": [
-      "Their walls are the same thickness as other arteries and veins",
-      "They are named after the chamber each one touches",
-      "The names are based on direction relative to the heart",
-      "They carry blood at the same pressure as the aorta and venae cavae"
-    ],
-    "correct": 2,
-    "why": {
-      "correct": "An artery carries blood away from the heart and a vein carries blood toward it. The pulmonary arteries leave the heart and the pulmonary veins return to it, so the names fit, whatever the blood carries.",
-      "options": [
-        "Wall thickness does not define an artery or vein. The definition is the direction of flow relative to the heart.",
-        "Names are not taken from the chambers: the aorta and the pulmonary trunk both leave ventricles but have different names.",
-        "Correct. Direction relative to the heart is the only rule for naming arteries and veins.",
-        "The vessels of the lungs work at much lower pressure than the aorta, so equal pressure cannot be the reason."
-      ]
-    }
-  },
-  {
     "id": "anp-heart-chambers-valves-12",
     "type": "single",
     "level": "analyze",
@@ -294,16 +211,16 @@
     "level": "recall",
     "diff": 1,
     "core": ["structure-function"],
-    "q": "Fill the gap in the right side of the heart: right atrium → tricuspid valve → ____ → pulmonary valve → pulmonary trunk.",
-    "options": ["Right ventricle", "Left atrium", "Aorta", "Pulmonary veins"],
+    "q": "Fill the gap in the right side of the heart: right atrium → ____ → right ventricle → pulmonary valve → pulmonary trunk.",
+    "options": ["Tricuspid valve", "Mitral valve", "Aortic valve", "Interatrial septum"],
     "correct": 0,
     "why": {
-      "correct": "The tricuspid valve opens into the right ventricle, and the right ventricle pumps out through the pulmonary valve into the pulmonary trunk.",
+      "correct": "The tricuspid valve is the right atrioventricular valve. It lets blood pass from the right atrium down into the right ventricle, which then pumps out through the pulmonary valve into the pulmonary trunk.",
       "options": [
-        "Correct. The right ventricle lies between the tricuspid valve and the pulmonary valve.",
-        "The left atrium is on the other side of the interatrial septum and receives the pulmonary veins.",
-        "The aorta leaves the left ventricle through the aortic valve, not the right side.",
-        "The pulmonary veins bring blood from the lungs into the left atrium. They are not part of the right side of the heart."
+        "Correct. The tricuspid valve sits between the right atrium and the right ventricle.",
+        "The mitral valve is the left atrioventricular valve, between the left atrium and the left ventricle.",
+        "The aortic valve guards the exit from the left ventricle into the aorta, on the other side of the heart.",
+        "The interatrial septum is the wall between the two atria. Blood does not pass through it on its way to the right ventricle."
       ]
     }
   },
@@ -377,50 +294,6 @@
     }
   },
   {
-    "id": "anp-heart-chambers-valves-18",
-    "type": "multi",
-    "level": "recall",
-    "diff": 1,
-    "core": ["structure-function"],
-    "q": "Which vessels open into an atrium? Select all that apply.",
-    "options": ["Superior vena cava", "Pulmonary trunk", "Inferior vena cava", "Pulmonary veins", "Aorta"],
-    "correct": [0, 2, 3],
-    "why": {
-      "correct": "Veins bring blood into the atria: the venae cavae into the right atrium and the pulmonary veins into the left atrium. The pulmonary trunk and the aorta are arteries leaving the ventricles.",
-      "options": [
-        "Yes. The superior vena cava enters the right atrium.",
-        "No. The pulmonary trunk is an artery leaving the right ventricle.",
-        "Yes. The inferior vena cava enters the right atrium.",
-        "Yes. The pulmonary veins enter the left atrium.",
-        "No. The aorta is an artery leaving the left ventricle."
-      ]
-    }
-  },
-  {
-    "id": "anp-heart-chambers-valves-19",
-    "type": "single",
-    "level": "recall",
-    "diff": 1,
-    "core": ["structure-function"],
-    "q": "Which groove on the surface of the heart marks the boundary between the atria and the ventricles?",
-    "options": [
-      "Anterior interventricular sulcus",
-      "Posterior interventricular sulcus",
-      "Coronary sulcus",
-      "Fossa ovalis"
-    ],
-    "correct": 2,
-    "why": {
-      "correct": "The coronary sulcus circles the heart like a crown, at the line where the atria meet the ventricles.",
-      "options": [
-        "The anterior interventricular sulcus runs down the front of the heart between the two ventricles, not around it.",
-        "The posterior interventricular sulcus runs down the back of the heart between the two ventricles.",
-        "Correct. The coronary sulcus separates atria above from ventricles below.",
-        "The fossa ovalis is a dip inside the interatrial septum, not a surface groove."
-      ]
-    }
-  },
-  {
     "id": "anp-heart-chambers-valves-20",
     "type": "single",
     "level": "apply",
@@ -441,6 +314,101 @@
         "Correct. The pocket shape lets backflowing blood close the valve by itself.",
         "Blood does start to flow back toward the ventricle when it relaxes. That backflow is what fills the pockets and closes the valve.",
         "Papillary muscles attach only to the atrioventricular valves through the chordae tendineae, not to semilunar cusps."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-21",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-19-9",
+    "pin": "interventricular-septum",
+    "q": "Name the pinned structure.",
+    "options": ["Interatrial septum", "Atrioventricular septum", "Interventricular septum", "Trabeculae carneae"],
+    "correct": 2,
+    "why": {
+      "correct": "The interventricular septum is the thick, mostly muscular wall between the right and left ventricles. It runs from the valves down toward the apex.",
+      "options": [
+        "The interatrial septum is the thin wall between the two atria, higher up in the heart.",
+        "The atrioventricular septum is the region between the atria and the ventricles, where the valve openings pass through. It runs across the heart, not down between the ventricles.",
+        "Correct. The thick wall between the two ventricles is the interventricular septum.",
+        "Trabeculae carneae are ridges of muscle on the inner walls of the ventricles, not the wall that divides them."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-22",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "During surgery, a surgeon opens the right atrium and looks at the wall it shares with the left atrium. Which feature should the surgeon expect to see on that wall?",
+    "options": [
+      "Chordae tendineae anchoring valve cusps",
+      "Trabeculae carneae covering the whole wall",
+      "The fossa ovalis, a thin-floored oval dip",
+      "The opening of the pulmonary trunk"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The wall between the atria is the interatrial septum. On its right atrial side is the fossa ovalis, a shallow oval dip with a thinner floor than the rest of the septum.",
+      "options": [
+        "Chordae tendineae run from the atrioventricular valve cusps down to papillary muscles in the ventricles. They are not on the wall between the atria.",
+        "Trabeculae carneae ridge the inner walls of the ventricles, not the atria. The atria have pectinate muscles in their auricles instead.",
+        "Correct. The fossa ovalis sits on the right atrial side of the interatrial septum.",
+        "The pulmonary trunk leaves the right ventricle, through the pulmonary valve. It does not open from the atrial wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-23",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "An inherited disorder weakens the collagen of the rings around the heart valves, so the valve openings stretch wider each time pressure rises. What is the most likely result?",
+    "options": [
+      "The atria and ventricles contract at the same moment",
+      "The ventricle walls thin out and pump at lower pressure",
+      "The papillary muscles stop contracting with the ventricles",
+      "The cusps no longer meet, so blood leaks backward"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The collagen rings of the cardiac skeleton hold each valve opening at a fixed size. If a ring stretches, the opening widens while the cusps stay the same size, so the cusps no longer meet when the valve closes and blood leaks backward through it.",
+      "options": [
+        "The rings are still collagen, so they still block electrical signals from crossing straight from the atria to the ventricles. A wider opening does not change the order of contraction.",
+        "Stretched valve rings do not thin the ventricle walls. Wall thickness follows the pressure a ventricle works against.",
+        "Papillary muscles are part of the ventricle wall and contract with it. Weak collagen in the valve rings does not stop that.",
+        "Correct. A widened opening leaves a gap between cusps that are no longer big enough to meet."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-24",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which statements about the septa of the heart are correct? Select all that apply.",
+    "options": [
+      "The interventricular septum is thick and mostly muscle",
+      "The interatrial septum separates the two atria",
+      "The atrioventricular septum separates the right and left ventricles",
+      "The fossa ovalis lies in the interatrial septum",
+      "The interatrial septum is thicker than the interventricular septum"
+    ],
+    "correct": [0, 1, 3],
+    "why": {
+      "correct": "The interatrial septum is a thin wall between the atria and carries the fossa ovalis. The interventricular septum is a thick, mostly muscular wall between the ventricles. The atrioventricular septum is the region between the atria above and the ventricles below.",
+      "options": [
+        "Correct. The interventricular septum is thick and mostly muscle, with a small, thin fibrous part near the top.",
+        "Correct. The interatrial septum is the wall between the right and left atria.",
+        "Incorrect. The atrioventricular septum lies between the atria and the ventricles. The wall between the two ventricles is the interventricular septum.",
+        "Correct. The fossa ovalis is a shallow dip on the right atrial side of the interatrial septum.",
+        "Incorrect. The interatrial septum is thin; the interventricular septum is much thicker, because it is part of the pumping ventricle wall."
       ]
     }
   }

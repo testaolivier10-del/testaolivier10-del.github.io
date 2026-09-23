@@ -1,0 +1,20 @@
+{
+  "os-22-27": {
+    "file": "figures/openstax/os-22-27.jpg",
+    "w": 1881,
+    "h": 1433,
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.27",
+      "section": "22.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4327801a93c73cbacc598163ab87b242545c64da",
+      "page": "22-5-transport-of-gases"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/4327801a93c73cbacc598163ab87b242545c64da",
+    "alt": "A graph of hemoglobin's oxygen saturation, from 0 to 100 percent, against the partial pressure of oxygen, from 0 to about 140 mm Hg. Two S-shaped curves rise steeply at low partial pressures and level off near the top. The fetal hemoglobin curve lies to the left of the adult hemoglobin curve: dashed lines show it reaches 50 percent saturation at 19 mm Hg, while adult hemoglobin reaches 50 percent at 26.8 mm Hg. Both curves are close to 95.8 percent at 80 mm Hg and nearly meet at higher pressures.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.27",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

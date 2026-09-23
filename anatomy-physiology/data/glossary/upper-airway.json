@@ -1,0 +1,116 @@
+{
+  "respiratory-zones": {
+    "def": "The two functional divisions of the respiratory tract. The conducting zone (nasal cavity, pharynx, larynx, trachea and the air tubes down to the last ones without alveoli) filters, warms, humidifies and delivers air; the respiratory zone (the smallest airways that carry alveoli, and the alveoli) is where oxygen and carbon dioxide cross between air and blood.",
+    "roots": [
+      [
+        "con-",
+        "together"
+      ],
+      [
+        "duc-",
+        "to lead"
+      ],
+      [
+        "re-",
+        "again"
+      ],
+      [
+        "spir-",
+        "to breathe"
+      ]
+    ],
+    "say": ""
+  },
+  "nasal-cavity": {
+    "def": "The external nose is the part of the nose on the face, supported by bone above and cartilage below; air enters it through the two nares (nostrils). Behind them, the nasal cavity is the air space divided by the nasal septum, floored by the roof of the mouth, roofed by the cribriform plate and walled by the conchae. Its blood-rich, mucus-covered lining filters, warms and humidifies air.",
+    "roots": [
+      [
+        "nas-",
+        "nose"
+      ],
+      [
+        "naris",
+        "nostril"
+      ],
+      [
+        "septum",
+        "partition"
+      ],
+      [
+        "concha",
+        "shell"
+      ]
+    ],
+    "say": "NAIR-eez; NAIR-iss"
+  },
+  "airway-defenses": {
+    "def": "The ways the airway keeps particles and microorganisms out of the alveoli: hairs in the nasal vestibule, sticky mucus with lysozyme, defensins and IgA, the mucociliary escalator (cilia that move the mucus sheet toward the pharynx to be swallowed), and the cough reflex (vagus nerve) and sneeze reflex (trigeminal nerve), which blast irritants out.",
+    "roots": [
+      [
+        "muc-",
+        "mucus"
+      ],
+      [
+        "cili-",
+        "eyelash"
+      ]
+    ],
+    "say": "MYOO-koh-SIL-ee-air-ee"
+  },
+  "pharynx": {
+    "def": "The muscular throat tube from the back of the nasal cavity to the esophagus. The nasopharynx (behind the nose) carries only air and holds the pharyngeal tonsil and the auditory tube openings; the oropharynx (behind the mouth) and laryngopharynx (behind the larynx) carry air and food and are lined by stratified squamous epithelium.",
+    "roots": [
+      [
+        "pharynx",
+        "throat"
+      ],
+      [
+        "naso-",
+        "nose"
+      ],
+      [
+        "oro-",
+        "mouth"
+      ],
+      [
+        "laryngo-",
+        "larynx"
+      ]
+    ],
+    "say": "FAIR-inks; nay-zoh-FAIR-inks; lah-RING-go-FAIR-inks"
+  },
+  "larynx": {
+    "def": "The voice box: a cartilage tube between the laryngopharynx and the trachea that keeps the airway open, seals it during swallowing and makes sound. Its framework includes the thyroid cartilage (with the laryngeal prominence, or Adam's apple), the ring-shaped cricoid cartilage and the epiglottis. Inside, the vocal folds (true vocal cords) vibrate to make sound; the glottis is the vocal folds and the gap between them; the vestibular folds above do not make sound.",
+    "roots": [
+      [
+        "larynx",
+        "upper windpipe"
+      ],
+      [
+        "thyr-",
+        "shield"
+      ],
+      [
+        "-oid",
+        "like"
+      ],
+      [
+        "cric-",
+        "ring"
+      ],
+      [
+        "epi-",
+        "upon"
+      ],
+      [
+        "glottis",
+        "opening between the vocal folds"
+      ],
+      [
+        "vestibul-",
+        "entrance hall"
+      ]
+    ],
+    "say": "LAIR-inks; KRY-koyd; ep-ih-GLOT-iss"
+  }
+}

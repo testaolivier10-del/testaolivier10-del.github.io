@@ -7,7 +7,7 @@
       "options": ["Pulmonary trunk", "Aorta", "Superior vena cava"],
       "correct": 1,
       "why": "The left ventricle ejects into the aorta through the aortic valve. The pulmonary trunk leaves the right ventricle, and the superior vena cava brings blood into the right atrium.",
-      "review": "heart-chambers-valves"
+      "review": "heart-anatomy"
     },
     {
       "q": "The aorta and its largest branches have a thick layer of elastic fibers in the tunica media. What does that elastic tissue do with each heartbeat?",

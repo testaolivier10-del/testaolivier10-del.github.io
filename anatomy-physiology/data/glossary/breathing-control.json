@@ -1,0 +1,110 @@
+{
+  "respiratory-centers": {
+    "def": "Groups of neurons in the medulla oblongata and pons that generate the respiratory rhythm and drive the breathing muscles: the ventral and dorsal respiratory groups in the medulla, and the pontine respiratory group (pneumotaxic center) and apneustic center in the pons.",
+    "roots": [
+      [
+        "pneum-",
+        "air, breath"
+      ],
+      [
+        "tax-",
+        "arrangement, order"
+      ],
+      [
+        "a-",
+        "without"
+      ],
+      [
+        "pneus-",
+        "breathing"
+      ],
+      [
+        "ventr-",
+        "belly side"
+      ],
+      [
+        "dors-",
+        "back"
+      ]
+    ],
+    "say": "noo-moh-TAK-sik; ap-NOO-stik"
+  },
+  "central-chemoreceptors": {
+    "def": "Neurons near the front surface of the medulla oblongata that respond to hydrogen ions in the brain's fluid. Because carbon dioxide crosses the blood–brain barrier and hydrogen ions do not, they track arterial PCO2.",
+    "roots": [
+      [
+        "chem-",
+        "chemical"
+      ],
+      [
+        "re-",
+        "back"
+      ],
+      [
+        "cept-",
+        "take, receive"
+      ]
+    ],
+    "say": ""
+  },
+  "peripheral-chemoreceptors": {
+    "def": "Sensory cells in the carotid bodies (at the fork of each common carotid artery) and the aortic bodies (on the aortic arch) that respond to low arterial PO2, high PCO2 and low pH, and signal the medulla through the glossopharyngeal and vagus nerves.",
+    "roots": [
+      [
+        "peri-",
+        "around"
+      ],
+      [
+        "pher-",
+        "carry"
+      ]
+    ],
+    "say": "kuh-ROT-id"
+  },
+  "co2-drive": {
+    "def": "Minute to minute, breathing is set mainly to hold arterial PCO2 near 40 mmHg: a small rise in PCO2 sharply increases ventilation, while low oxygen drives breathing strongly only once arterial PO2 falls below about 60 mmHg.",
+    "roots": [],
+    "say": ""
+  },
+  "other-breathing-inputs": {
+    "def": "Inputs besides the chemoreceptors that change breathing: lung stretch receptors (the Hering–Breuer reflex, which limits inflation), irritant receptors in the airways (cough, bronchoconstriction), proprioceptors, the cerebral cortex (voluntary control) and the hypothalamus and limbic system (emotion, pain, temperature).",
+    "roots": [],
+    "say": "HAIR-ing BROY-er"
+  },
+  "ventilation-disorders": {
+    "def": "Hyperventilation is breathing more than carbon dioxide production requires, so arterial PCO2 falls below 35 mmHg (hypocapnia). Hypoventilation is breathing less, so PCO2 rises above 45 mmHg (hypercapnia). Both are defined by PCO2, not breathing rate.",
+    "roots": [
+      [
+        "hyper-",
+        "over, above"
+      ],
+      [
+        "hypo-",
+        "under, below"
+      ],
+      [
+        "kapn-",
+        "smoke, carbon dioxide"
+      ]
+    ],
+    "say": "hy-per-KAP-nee-uh"
+  },
+  "altitude-exercise": {
+    "def": "In exercise, ventilation rises to match carbon dioxide production with little change in blood gases (hyperpnea). At altitude, low PO2 drives ventilation through the carotid bodies, and acclimatization over days and weeks raises ventilation further and adds red blood cells; going up too fast can cause acute mountain sickness.",
+    "roots": [
+      [
+        "hyper-",
+        "over"
+      ],
+      [
+        "-pnea",
+        "breathing"
+      ],
+      [
+        "ad-",
+        "to"
+      ]
+    ],
+    "say": "hy-perp-NEE-uh"
+  }
+}

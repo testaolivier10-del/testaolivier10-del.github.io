@@ -36,7 +36,7 @@
     ],
     "q": "Why does very little bicarbonate form in the plasma itself, even though the plasma is full of water and carbon dioxide?",
     "options": [
-      "Plasma has almost no carbonic anhydrase, so the reaction is too slow",
+      "Plasma has almost no carbonic anhydrase",
       "Carbon dioxide cannot dissolve in plasma",
       "Plasma is too alkaline for carbonic acid to form",
       "Chloride in the plasma blocks the reaction"
@@ -66,7 +66,7 @@
       "Dissolving in the plasma and staying there",
       "Staying inside the tissue cell until exhaled",
       "Conversion inside the red blood cell to bicarbonate",
-      "Binding to hemoglobin inside the red blood cell"
+      "Binding to hemoglobin as carbaminohemoglobin inside the red blood cell"
     ],
     "correct": 2,
     "why": {
@@ -90,10 +90,10 @@
     "figure": "os-22-28",
     "q": "In the red blood cell in the figure, carbon dioxide and water form carbonic acid. What speeds this step?",
     "options": [
-      "Band 3",
+      "The band 3 exchanger",
       "Hemoglobin",
       "Carbonic anhydrase",
-      "Chloride ions"
+      "Chloride ions entering the cell"
     ],
     "correct": 2,
     "why": {
@@ -228,7 +228,7 @@
     ],
     "q": "A free diver holds her breath for 60 seconds. What happens to her arterial PCO2 and blood pH by the end of the breath-hold?",
     "options": [
-      "PCO2 rises and pH rises",
+      "PCO2 rises, and pH rises with it",
       "PCO2 falls and pH falls",
       "PCO2 falls and pH rises",
       "PCO2 rises and pH falls"
@@ -281,19 +281,19 @@
     ],
     "q": "Red blood cells in venous blood are slightly larger than those in arterial blood. What causes the difference?",
     "options": [
-      "Deoxyhemoglobin takes up more space than oxyhemoglobin",
-      "Venous blood is at a higher pressure, which stretches the cells",
-      "The cells have gained bicarbonate and chloride, and water follows by osmosis",
-      "Carbon dioxide gas bubbles form inside the cells"
+      "Deoxyhemoglobin takes up more space inside the cell than oxyhemoglobin does",
+      "Venous blood is at a higher pressure, which stretches the cell membranes outward",
+      "Carbon dioxide gas bubbles form inside the cells",
+      "The cells have gained bicarbonate and chloride, and water follows by osmosis"
     ],
-    "correct": 2,
+    "correct": 3,
     "why": {
       "correct": "In the tissues, carbonic anhydrase makes bicarbonate inside the red blood cell and the chloride shift brings chloride in. The hydrogen ions made at the same time are bound to hemoglobin, so they do not count as free particles. The cell ends up with more dissolved particles, water moves in by osmosis, and the cell swells slightly. Venous hematocrit is a few percent higher for this reason.",
       "options": [
         "Losing oxygen changes hemoglobin's shape slightly, but not its volume enough to swell the cell. The swelling comes from water entering.",
         "Venous pressure is lower than arterial pressure, not higher.",
-        "Correct. More osmotically active particles inside the cell draw in water.",
-        "Carbon dioxide stays dissolved or chemically bound in blood; it does not form bubbles."
+        "Carbon dioxide stays dissolved or chemically bound in blood; it does not form bubbles.",
+        "Correct. More osmotically active particles inside the cell draw in water."
       ]
     }
   },
@@ -428,18 +428,18 @@
     ],
     "q": "Blood passing a working muscle gains a large amount of carbon dioxide, which forms carbonic acid. Yet its pH falls only from about 7.40 to 7.36. What mainly prevents a bigger fall?",
     "options": [
-      "The chloride shift removes the hydrogen ions from the red blood cell",
-      "Carbonic anhydrase destroys the hydrogen ions",
       "Deoxyhemoglobin binds most of the hydrogen ions as it gives up oxygen",
+      "The chloride shift carries the hydrogen ions out of the red blood cell into plasma",
+      "Carbonic anhydrase destroys the hydrogen ions",
       "The hydrogen ions are exhaled from the muscle"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
       "correct": "Hemoglobin is unloading oxygen in the same capillary where hydrogen ions are being made, and deoxyhemoglobin binds hydrogen ions more readily than oxyhemoglobin. It buffers most of them, so the free hydrogen ion concentration rises only a little.",
       "options": [
+        "Correct. Buffering by deoxyhemoglobin keeps venous pH close to arterial pH.",
         "The chloride shift moves bicarbonate out, not hydrogen ions. Chloride enters in exchange for bicarbonate.",
         "Carbonic anhydrase speeds the reaction that makes hydrogen ions; it does not remove them.",
-        "Correct. Buffering by deoxyhemoglobin keeps venous pH close to arterial pH.",
         "Hydrogen ions are not a gas and cannot be exhaled. Only carbon dioxide leaves through the lungs."
       ]
     }

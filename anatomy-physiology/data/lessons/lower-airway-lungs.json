@@ -1,0 +1,48 @@
+{
+  "topic": "lower-airway-lungs",
+  "hook": "<p>Two-year-old Leo was eating peanuts when he began coughing hard. The coughing settled, but two days later he is wheezing on one side, and his doctor hears fainter breath sounds over his right chest. A camera passed down his trachea finds a peanut half blocking his right primary bronchus. Why the right side, and why did the air beyond the peanut stop moving so well?</p>",
+  "prereq": [
+    {
+      "q": "What lines the alveoli, the tiny air sacs of the lungs?",
+      "options": ["Simple squamous epithelium", "Stratified squamous epithelium", "Simple columnar epithelium"],
+      "correct": 0,
+      "why": "Alveoli are lined by simple squamous epithelium: one layer of flat cells, the thinnest possible barrier for substances to cross.",
+      "review": "epithelium"
+    },
+    {
+      "q": "Which change makes a substance diffuse across a barrier faster?",
+      "options": ["A thicker barrier", "A smaller surface area", "A larger surface area"],
+      "correct": 2,
+      "why": "Diffusion rate rises with surface area and falls with diffusion distance. A larger area lets more molecules cross at once.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "Which chamber of the heart pumps blood into the pulmonary circuit?",
+      "options": ["Left ventricle", "Right ventricle", "Right atrium"],
+      "correct": 1,
+      "why": "The right ventricle pumps deoxygenated blood into the pulmonary trunk and on to the lungs. The left ventricle pumps into the aorta and the systemic circuit.",
+      "review": "blood-flow-heart"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-13",
+    "caption": "The lungs and bronchial tree from the front. Hide the labels and name the trachea, the primary, secondary and tertiary bronchi, the lobes of each lung and the cardiac notch."
+  },
+  "chain": [
+    { "cause": "The bronchial tree divides about 23 times, from the trachea down to the alveolar sacs.", "effect": "It ends in hundreds of millions of alveoli, giving a total surface of tens of square meters." },
+    { "cause": "Type I alveolar cells and capillary endothelial cells are spread extremely thin and share one fused basement membrane.", "effect": "The respiratory membrane between air and blood is only about 0.5 µm thick." },
+    { "cause": "A huge surface area and a very short diffusion distance are both factors that raise diffusion rate.", "effect": "Oxygen and carbon dioxide cross between alveolar air and capillary blood in a fraction of a second." },
+    { "cause": "The capillaries in the alveolar walls carry the whole output of the right ventricle past this surface.", "effect": "Blood returning to the left atrium through the pulmonary veins is oxygenated." }
+  ],
+  "misconception": {
+    "wrong": "The pleural cavity is an air-filled space around each lung.",
+    "right": "In a healthy person the pleural cavity is not an open space and contains no air. It is a gap of about 10 to 20 micrometers between the visceral and parietal pleura, filled with a thin film of pleural fluid. That film lets the layers slide but holds the lung surface against the chest wall, so the lung follows the chest wall as it moves."
+  },
+  "check": ["anp-lower-airway-lungs-1", "anp-lower-airway-lungs-4", "anp-lower-airway-lungs-7", "anp-lower-airway-lungs-9", "anp-lower-airway-lungs-12", "anp-lower-airway-lungs-15", "anp-lower-airway-lungs-18"],
+  "summary": "<p>The trachea is held open by C-shaped hyaline cartilage rings, closed behind by the trachealis muscle, and divides at the carina into the primary bronchi; the right one is wider, shorter and more vertical, so inhaled objects usually lodge there. The bronchial tree continues through secondary (lobar) and tertiary (segmental) bronchi to bronchioles without cartilage, terminal bronchioles (end of the conducting zone), respiratory bronchioles, alveolar ducts, alveolar sacs and alveoli. Type I alveolar cells form the thin gas-crossing wall; type II cells secrete a surface-tension-lowering film and replace type I cells; alveolar macrophages clean the surface; alveolar pores link neighbors. The respiratory membrane (type I cell, fused basement membrane, capillary endothelium) is about 0.5 µm thick. The right lung has three lobes and two fissures, the left two lobes, one fissure and a cardiac notch; structures enter at the hilum. Visceral and parietal pleura enclose a thin film of pleural fluid. The pulmonary circulation exchanges gases; the bronchial arteries feed the lung's own tissue.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-9", "label": "NREMT: Airway management" },
+    { "href": "/nremt/study-notes.html#chapter-19", "label": "NREMT: Respiratory emergencies" }
+  ]
+}

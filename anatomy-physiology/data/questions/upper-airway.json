@@ -1,0 +1,573 @@
+[
+  {
+    "id": "anp-upper-airway-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "gas exchange happens throughout the airway",
+    "q": "Where in the respiratory tract do oxygen and carbon dioxide cross between air and blood?",
+    "options": [
+      "In the lining of the nasal cavity and its conchae",
+      "In the larynx, between the vocal folds",
+      "In the alveoli and the tiny airways that carry them",
+      "In the trachea and the air tubes below it"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Gases cross between air and blood only in the respiratory zone: the alveoli and the tiny airways whose walls carry alveoli. Everything above is conducting zone.",
+      "options": [
+        "The nasal cavity and its conchae are conducting zone. Their thick, glandular, ciliated lining warms, moistens and filters air but does not exchange gases with blood.",
+        "The larynx is conducting zone. It guards the airway and makes sound; its walls are far too thick for gases to cross.",
+        "Correct. Only the respiratory zone, where alveolar walls are a single thin layer of cells, exchanges gases with the blood.",
+        "The trachea and the larger air tubes are conducting zone. They deliver air to the lungs; their walls of mucosa and cartilage are too thick for gas exchange."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-2",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every structure that belongs to the conducting zone.",
+    "options": [
+      "Nasal cavity",
+      "Pharynx",
+      "Alveoli",
+      "Larynx",
+      "Trachea"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "The conducting zone runs from the nose through the pharynx, larynx and trachea to the smallest air tubes without alveoli. Alveoli are the respiratory zone.",
+      "options": [
+        "Correct. The nasal cavity filters, warms and humidifies air but exchanges no gas with blood.",
+        "Correct. The pharynx carries air (and in its lower two parts, food) but exchanges no gas with blood.",
+        "Alveoli are where gas exchange happens, so they are the respiratory zone.",
+        "Correct. The larynx conducts air into the trachea and makes sound.",
+        "Correct. The trachea conducts air down to the lungs."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-4",
+    "pin": "nasopharynx",
+    "q": "Name the pinned region.",
+    "options": [
+      "Nasopharynx",
+      "Oropharynx",
+      "Laryngopharynx",
+      "Nasal vestibule"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The part of the pharynx behind the nasal cavity and above the mouth is the nasopharynx. Only air passes through it.",
+      "options": [
+        "Correct. The nasopharynx lies behind the nasal cavity, above the level of the mouth.",
+        "The oropharynx lies lower, behind the mouth.",
+        "The laryngopharynx is the lowest part, behind the larynx.",
+        "The nasal vestibule is the entrance just inside each naris, at the front of the nose, not behind it."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-4",
+    "pin": "epiglottis",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Thyroid cartilage",
+      "Epiglottis",
+      "Vestibular fold",
+      "Hyoid bone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The leaf-shaped flap of elastic cartilage standing up behind the base of the tongue is the epiglottis. It tips back over the opening of the larynx when you swallow.",
+      "options": [
+        "The thyroid cartilage is the large shield in the front wall of the larynx, lower down.",
+        "Correct. This flap at the top of the larynx is the epiglottis.",
+        "The vestibular folds are folds of mucous membrane inside the larynx, just above the vocal folds.",
+        "The hyoid bone is the U-shaped bone in front, below the jaw; the larynx hangs from it."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-7",
+    "pin": "laryngeal-prominence",
+    "q": "Name the pinned feature.",
+    "options": [
+      "Cricoid cartilage",
+      "Epiglottis",
+      "Laryngeal prominence",
+      "Body of the hyoid bone"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The midline ridge where the two plates of the thyroid cartilage meet is the laryngeal prominence, the Adam's apple.",
+      "options": [
+        "The cricoid cartilage is the ring below the thyroid cartilage, not the ridge on its front.",
+        "The epiglottis is the flap rising above and behind the hyoid bone.",
+        "Correct. This is the laryngeal prominence of the thyroid cartilage.",
+        "The body of the hyoid bone is the bar of bone at the top of the larynx."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-8",
+    "pin": "glottis",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Glottis",
+      "Epiglottis",
+      "Laryngopharynx",
+      "Nasopharynx"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The glottis is the pair of vocal folds together with the gap between them. It is the narrowest part of the adult airway.",
+      "options": [
+        "Correct. The V-shaped opening between the vocal folds, with the folds themselves, is the glottis.",
+        "The epiglottis is the flap at the front of the larynx, seen here near the base of the tongue.",
+        "The laryngopharynx is the part of the throat around and behind the larynx, not the opening inside it.",
+        "The nasopharynx is far higher, behind the nasal cavity."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A runner breathes hard through her mouth in freezing air for an hour. Compared with nose breathing, what happens to the air reaching her trachea?",
+    "options": [
+      "It is warmer from the faster airflow",
+      "It is colder, drier and less filtered",
+      "It arrives just as warm, moist and clean",
+      "It carries more oxygen into her blood through the trachea"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Mouth breathing bypasses the nasal cavity, where the conchae make air swirl against warm, blood-rich, mucus-covered surfaces. Air therefore arrives colder, drier and carrying more particles.",
+      "options": [
+        "Faster air has less contact time with warm surfaces, so it is less warmed, not more.",
+        "Correct. Skipping the nasal cavity skips most of the warming, humidifying and filtering.",
+        "The pharynx adds some warmth and moisture, but the nasal cavity, with its conchae and dense blood supply, does most of the work, so skipping it changes the air.",
+        "The trachea is conducting zone. No oxygen crosses into the blood there, however the air arrives."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the structures a breath of air passes through, starting outside the nose and ending in the trachea.",
+    "options": [
+      "Nares",
+      "Nasal cavity",
+      "Nasopharynx",
+      "Oropharynx",
+      "Laryngopharynx",
+      "Larynx"
+    ],
+    "why": {
+      "correct": "Air enters the nares, passes through the nasal cavity, then down the three parts of the pharynx from top to bottom, and forward into the larynx, which opens into the trachea.",
+      "options": [
+        "The nares are the two openings of the nose.",
+        "The nasal cavity lies behind the nares and opens back into the pharynx.",
+        "The nasopharynx is the top part of the pharynx, behind the nasal cavity.",
+        "The oropharynx lies behind the mouth, below the nasopharynx.",
+        "The laryngopharynx is the lowest part, behind the larynx.",
+        "The larynx opens off the front of the laryngopharynx and leads down into the trachea."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which part of the pharynx normally carries air but not food?",
+    "options": [
+      "Oropharynx",
+      "Laryngopharynx",
+      "Nasopharynx",
+      "All three carry both"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The nasopharynx lies above the mouth. When you swallow, the muscular back part of the roof of your mouth lifts and seals it, so food does not enter it.",
+      "options": [
+        "The oropharynx lies behind the mouth, so swallowed food passes through it.",
+        "The laryngopharynx carries food down to the esophagus as well as air to the larynx.",
+        "Correct. The nasopharynx is sealed off during swallowing and carries only air.",
+        "The nasopharynx is sealed off during swallowing, so only the lower two parts carry food."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "After surgery to remove part of her thyroid gland, Ms. Park wakes up with a hoarse, breathy voice. A camera shows that her left vocal fold does not move. Which structure was most likely injured?",
+    "options": [
+      "The left recurrent laryngeal nerve",
+      "The muscles that lift the hyoid bone",
+      "The left vestibular fold's lining",
+      "The cricoid cartilage ring"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The recurrent laryngeal nerves, branches of the vagus nerve, supply most of the small muscles that move the arytenoid cartilages and vocal folds. They run up beside the thyroid gland, so thyroid surgery can injure one and leave that vocal fold unable to close.",
+      "options": [
+        "Correct. Without its nerve supply, the fold cannot be brought to the midline, so air leaks past and the voice is breathy.",
+        "The muscles that lift the hyoid bone raise the larynx during swallowing; they do not open or close the vocal folds.",
+        "The vestibular folds do not make sound, so damage to one would not stop a vocal fold moving.",
+        "A cricoid injury is unlikely in thyroid surgery and would not explain a single paralyzed fold."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The nasopharynx is lined by respiratory epithelium, but the oropharynx and laryngopharynx are lined by nonkeratinized stratified squamous epithelium. What explains the difference?",
+    "options": [
+      "The lower parts must absorb water from swallowed drinks",
+      "The lower parts exchange gases with the blood",
+      "The lower parts need cilia to move food",
+      "Food scrapes them, and many layers resist wear"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Food passes through the oropharynx and laryngopharynx but not the nasopharynx. Stratified squamous epithelium has many layers, so cells lost to abrasion are replaced from below.",
+      "options": [
+        "The pharynx is not an absorbing surface; a thick stratified lining would absorb poorly anyway.",
+        "No part of the pharynx exchanges gases with blood; it is all conducting zone.",
+        "Stratified squamous epithelium in the pharynx has no cilia. Food is moved by the skeletal muscle of the pharyngeal wall.",
+        "Correct. The lining matches the job: abrasion-resistant where food passes, ciliated where only air passes."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-12",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "This sequence for a cough has one wrong step. Find it.",
+    "options": [
+      "An irritant touches sensory receptors in the lining of the trachea",
+      "Sensory fibers of the vagus nerve signal the brainstem",
+      "A quick, deep breath is drawn in",
+      "The vocal folds open wide while the abdominal muscles contract",
+      "Air bursts out at high speed, carrying the irritant"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The vocal folds must first close, so that the contracting abdominal wall muscles build up pressure against a sealed airway. Only then do the folds open suddenly and release the blast.",
+      "options": [
+        "Correct step. Sensory receptors in the lining of the larynx, trachea and large air tubes detect the irritant.",
+        "Correct step. The vagus nerve carries the sensory signal to the brainstem.",
+        "Correct step. A deep breath in loads the lungs with air for the blast.",
+        "This is the wrong step. The folds close while the muscles contract, so pressure can build; with open folds the air would leak out gently.",
+        "Correct step. The sudden opening releases a high-speed blast."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-13",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in swallowing: muscles pull the larynx up under the tongue → ____ → the vocal and vestibular folds close → food slides into the esophagus.",
+    "options": [
+      "The epiglottis tips back over the opening of the larynx",
+      "The cricoid cartilage opens to let food through",
+      "The nasal conchae close off the nasal cavity",
+      "The vocal folds vibrate to push food down"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "As the larynx rises, the epiglottis tips down and back over its opening, then the folds inside seal it a second time.",
+      "options": [
+        "Correct. The epiglottis covering the laryngeal opening is the first seal.",
+        "The cricoid cartilage is a rigid ring of the larynx, below the entrance to the esophagus; it does not open for food.",
+        "The conchae are fixed shelves of bone in the nasal cavity; they do not move or close anything.",
+        "The vocal folds close during swallowing; they vibrate only when air is pushed through them to make sound."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Olsen, 62, has smoked for 40 years. Every morning he coughs up thick mucus. Which change in his airway best explains why he now depends on coughing to clear mucus?",
+    "options": [
+      "His mucus has stopped trapping particles",
+      "His goblet cells have been destroyed",
+      "His cilia beat weakly or have been lost, so little mucus is carried up",
+      "His cough reflex has become oversensitive"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Smoke slows the cilia and, over years, destroys ciliated cells while goblet cells multiply. More mucus is made and little is carried up, so it pools until coughing clears it.",
+      "options": [
+        "The mucus still traps particles; the problem is that it is not being carried away.",
+        "Smoking makes goblet cells multiply, so he makes more mucus, not less.",
+        "Correct. With the mucociliary escalator failing, coughing becomes the main way out.",
+        "A cough can be triggered more easily in a smoker, but that would not explain why mucus builds up in the first place."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How do the nasal conchae help clean the air you breathe in?",
+    "options": [
+      "They secrete antibodies directly into the air",
+      "They make the air swirl, so particles hit the mucus and stick",
+      "They squeeze the air so it moves faster",
+      "They carry cilia that sweep particles out through the nares"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The conchae break the airstream into narrow, turbulent channels. Heavier particles cannot follow the air around the bends and land on the sticky mucus that covers the conchae.",
+      "options": [
+        "The mucosa's mucus does contain antibodies, but they act on particles trapped in the mucus, not in the air.",
+        "Correct. Turbulence throws particles against the mucus-covered surfaces.",
+        "The conchae increase surface area and turbulence; their benefit is contact with the lining, not speed.",
+        "Cilia in the nasal cavity sweep mucus backward toward the pharynx, where it is swallowed, not forward out of the nose."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which folds of the larynx vibrate to produce your voice?",
+    "options": [
+      "The vestibular folds",
+      "The folds of the epiglottis",
+      "The vocal folds",
+      "The folds of the nasal septum"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The vocal folds, or true vocal cords, contain elastic vocal ligaments. Air pushed between them sets them vibrating, which makes sound.",
+      "options": [
+        "The vestibular folds, the false vocal cords, lie above the vocal folds. They help close the larynx but do not make sound.",
+        "The epiglottis is a single flap of elastic cartilage; it covers the laryngeal opening but does not vibrate to make voice.",
+        "Correct. The lower pair, the true vocal cords, make sound.",
+        "The nasal septum is a partition in the nose, not a structure of the larynx."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A singer moves from a low note to a high note at the same loudness. What change in her vocal folds produces the higher pitch?",
+    "options": [
+      "They are pushed apart more widely",
+      "They are held completely open",
+      "More air pressure is built up beneath them",
+      "They are stretched tighter and thinner"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Pitch depends on how fast the folds vibrate. Muscles that stretch the folds tighter and thinner make them vibrate faster, raising the pitch, as with a tightened guitar string.",
+      "options": [
+        "A wider swing of the folds makes the sound louder, not higher.",
+        "Open vocal folds do not vibrate at all, so no voice is produced.",
+        "More pressure beneath the folds makes the sound louder; the question holds loudness constant.",
+        "Correct. Tighter, thinner folds vibrate faster, producing a higher pitch."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cartilage of the larynx forms the only complete ring of cartilage in the airway?",
+    "options": [
+      "Thyroid cartilage",
+      "Cricoid cartilage",
+      "Epiglottis",
+      "Arytenoid cartilage"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cricoid cartilage is a complete ring, narrow in front and tall behind like a signet ring. It sits on top of the trachea.",
+      "options": [
+        "The thyroid cartilage is two plates joined in front; it is open at the back.",
+        "Correct. The cricoid is the only complete cartilage ring.",
+        "The epiglottis is a leaf-shaped flap, not a ring.",
+        "The arytenoid cartilages are small paired pieces at the back of the larynx."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-19",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Four-year-old Maya has had a sore throat and runny nose for three days. Now she has a painful ear on one side. Which route most likely carried the infection to her middle ear?",
+    "options": [
+      "The auditory tube, which opens into the nasopharynx",
+      "The paranasal sinuses, which open into the middle ear",
+      "The nasal vestibule, which connects to the ear canal",
+      "The laryngopharynx, which drains into the middle ear"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each auditory tube runs from the nasopharynx to the middle ear. Microorganisms from an infected nose and throat can travel up it, especially in young children, whose tubes are short and nearly horizontal.",
+      "options": [
+        "Correct. The auditory tube links the nasopharynx to the middle ear.",
+        "The paranasal sinuses drain into the nasal cavity, not into the ear.",
+        "The nasal vestibule is the skin-lined entrance to the nose; it has no connection to the ear.",
+        "The laryngopharynx leads to the larynx and esophagus; it has no opening to the ear."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which nerve carries the sensory signal that starts a sneeze?",
+    "options": [
+      "Vagus nerve",
+      "Phrenic nerve",
+      "Glossopharyngeal nerve",
+      "Trigeminal nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Irritation of the nasal mucosa is carried to the brainstem by the trigeminal nerve, which carries touch and pain from the face and nasal cavity.",
+      "options": [
+        "The vagus nerve carries the sensory signal for a cough, from the larynx, trachea and large air tubes, not from the nose.",
+        "The phrenic nerve is a motor nerve to the diaphragm. It does not carry sensation from the nose.",
+        "The glossopharyngeal nerve carries sensation from the back of the tongue and the oropharynx, not from the nasal cavity.",
+        "Correct. The trigeminal nerve carries the irritation signal from the nasal mucosa."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-airway-21",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-4",
+    "pin": "vestibular-fold",
+    "q": "Name the pinned fold.",
+    "options": [
+      "Vocal fold",
+      "Vestibular fold",
+      "Epiglottis",
+      "Pharyngeal tonsil"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Of the two folds inside the larynx, the upper one is the vestibular fold, the false vocal cord.",
+      "options": [
+        "The vocal fold is the lower of the two folds.",
+        "Correct. The upper fold is the vestibular fold.",
+        "The epiglottis is the flap at the top of the larynx, well above these folds.",
+        "The pharyngeal tonsil lies in the back wall of the nasopharynx, far above the larynx."
+      ]
+    }
+  }
+]

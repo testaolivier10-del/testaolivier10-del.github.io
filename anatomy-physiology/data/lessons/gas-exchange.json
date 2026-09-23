@@ -1,0 +1,48 @@
+{
+  "topic": "gas-exchange",
+  "hook": "<p>Jamal, 24, drives from Colorado Springs to the summit of Pikes Peak, 4,300 m up. Within minutes of stepping out, he is short of breath climbing a few stairs. The air around him is still 21% oxygen, exactly as at home. What has changed is the pressure of that oxygen, and pressure is what pushes oxygen from his alveoli into his blood.</p>",
+  "prereq": [
+    {
+      "q": "In net diffusion, which way do molecules move?",
+      "options": ["From lower to higher concentration, using ATP", "From higher to lower concentration, without ATP", "In whichever direction a carrier protein moves them"],
+      "correct": 1,
+      "why": "Diffusion is the net movement of molecules down their concentration gradient, driven by their own random motion. It needs no ATP.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "What makes up the respiratory membrane that gases cross in the lungs?",
+      "options": ["The alveolar wall, the capillary wall and their fused basement membranes", "The visceral and parietal pleura", "The wall of a terminal bronchiole and its cartilage"],
+      "correct": 0,
+      "why": "The respiratory membrane is the thin barrier between alveolar air and blood: type I alveolar cells, the capillary endothelium and their fused basement membranes, about half a micrometer thick.",
+      "review": "lower-airway-lungs"
+    },
+    {
+      "q": "A resting adult breathes 12 times a minute with 500 mL breaths, and his dead space is 150 mL. What is his alveolar ventilation?",
+      "options": ["6.0 L/min", "1.8 L/min", "4.2 L/min"],
+      "correct": 2,
+      "why": "Alveolar ventilation = (tidal volume − dead space) × rate = (500 − 150) × 12 = 4,200 mL/min. The 6.0 L/min minute ventilation includes the dead space.",
+      "review": "lung-volumes"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-23",
+    "caption": "Internal respiration between a capillary and tissue cells. Hide the labels and name each compartment the gases cross."
+  },
+  "chain": [
+    { "cause": "Mucus partly blocks a small airway, so the alveoli beyond it get less fresh air.", "effect": "The PO2 in those alveoli falls and their PCO2 rises." },
+    { "cause": "The low alveolar PO2 reaches smooth muscle in the nearby pulmonary arterioles.", "effect": "The arterioles constrict: hypoxic pulmonary vasoconstriction." },
+    { "cause": "The narrowed arterioles have a higher resistance.", "effect": "Less blood flows to the poorly ventilated alveoli, and more is sent to well-ventilated ones." },
+    { "cause": "Most blood now passes alveoli whose PO2 is near 100 mm Hg.", "effect": "Oxygen diffuses in down a normal gradient, so the PO2 of arterial blood stays close to normal despite the blocked airway." }
+  ],
+  "misconception": {
+    "wrong": "The carbon dioxide gradient in the lungs is only about 6 mm Hg, so the lungs can remove only a little carbon dioxide.",
+    "right": "How fast a gas diffuses depends on its solubility as well as its gradient. Carbon dioxide is about 20 times more soluble than oxygen, so a 6 mm Hg gradient moves it about as readily as a much larger gradient moves oxygen. That small gradient clears the roughly 200 mL of carbon dioxide you make each minute."
+  },
+  "check": ["anp-gas-exchange-2", "anp-gas-exchange-4", "anp-gas-exchange-7", "anp-gas-exchange-9", "anp-gas-exchange-12", "anp-gas-exchange-14", "anp-gas-exchange-16"],
+  "summary": "<p>The partial pressure of a gas is the total pressure times that gas's fraction of the mixture, and by Dalton's law the partial pressures add up to the total pressure. Air at sea level has a PO2 of about 159 mm Hg dry and 150 once moistened in the airways; alveolar air has a PO2 of about 100 and a PCO2 of about 40 mm Hg. Henry's law says the amount of gas dissolved in blood is its partial pressure times its solubility; carbon dioxide is about 20 times more soluble than oxygen. In external respiration, oxygen diffuses from alveoli (100) into blood arriving at 40, and carbon dioxide leaves blood arriving at 46. In internal respiration, the gradients reverse: oxygen leaves arterial blood for tissues at about 40 or less, and carbon dioxide enters. Blood flow is matched to airflow locally: low alveolar PO2 constricts pulmonary arterioles, which sends blood to better-ventilated alveoli and keeps the ventilation–perfusion ratio near 0.8.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-19", "label": "NREMT: Respiratory emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-10", "label": "NREMT: Ventilation and oxygen equipment" },
+    { "href": "/nremt/study-notes.html#chapter-35", "label": "NREMT: Environmental emergencies (diving and altitude)" }
+  ]
+}

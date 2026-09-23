@@ -1,0 +1,70 @@
+{
+  "os-22-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.2",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a20b8077aaf4688018122bf8f59ecfea069ed3b0",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/a20b8077aaf4688018122bf8f59ecfea069ed3b0",
+    "alt": "The upper body with the respiratory organs drawn in. Air passages run from the nostril and nasal cavity through the throat and voice box into the windpipe, which divides into a right and a left branch entering the two lungs. The right lung sits behind the ribs, and the dome-shaped diaphragm lies beneath both lungs.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.2",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 925
+  },
+  "os-22-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.10",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/09a9e7232a1476aabaca09bf662d1d0ca8fe5f0d",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/09a9e7232a1476aabaca09bf662d1d0ca8fe5f0d",
+    "alt": "A small airway wrapped in spiral bands of smooth muscle branches into smaller airways, the first of which have a few air sacs budding from their walls. These lead through short passages into grape-like clusters of air sacs, some cut open to show holes linking neighbors. A net of small blood vessels, blue where they arrive and red where they leave, covers one cluster.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.10",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 840
+  },
+  "os-22-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.13",
+      "section": "22.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/db017adf40b25ef3a09b04de55fd9ea9bd21015a",
+      "page": "22-2-the-lungs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/db017adf40b25ef3a09b04de55fd9ea9bd21015a",
+    "alt": "Both lungs from the front with the branching airway drawn inside. The windpipe divides into a main branch for each lung, which divides into a branch for each lobe and then smaller branches. The right lung has three lobes separated by two grooves; the left has two lobes and a hollow in its front edge where the heart sits.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.13",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 757
+  },
+  "os-22-14": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.14",
+      "section": "22.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab75c5732c0dd28d9862cebcc0ae5955d578f763",
+      "page": "22-2-the-lungs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab75c5732c0dd28d9862cebcc0ae5955d578f763",
+    "alt": "The chest from the front with the rib cage and intercostal muscles drawn on one side and a lung shown on the other, resting on the domed diaphragm. An enlarged box shows the edge of the lung: a thin membrane covering the lung, a second thin membrane lining the chest wall beside a rib and intercostal muscle, and a very narrow space between the two.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.14",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 829
+  }
+}

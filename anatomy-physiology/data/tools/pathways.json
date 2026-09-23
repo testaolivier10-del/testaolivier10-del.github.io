@@ -360,7 +360,7 @@
         "distractors": [
           { "text": "The skin's blood vessels decide on their own to constrict, without any signal from the brain or the nerves reaching them.", "why": "In this loop the decision is made centrally: the control center in the brain compares the input with the set point and sends commands out." },
           { "text": "The control center raises the set point to match the colder skin.", "why": "The set point stays near 37 °C. The control center compares the input with it and orders a correction; it does not move the target to fit the change." },
-          { "text": "The sweat glands release sweat to warm the body.", "why": "Evaporating sweat carries heat away; it is used when you are too hot. It would make cold worse." }
+          { "text": "Glands in the skin release sweat to warm it.", "why": "Evaporating sweat carries heat away; it is used when you are too hot. It would make cold worse." }
         ]
       },
       "error": {

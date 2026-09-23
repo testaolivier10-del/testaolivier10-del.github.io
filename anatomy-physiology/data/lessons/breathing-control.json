@@ -1,0 +1,89 @@
+{
+  "topic": "breathing-control",
+  "hook": "<p>Jordan, 19, breathes hard and fast for a minute at the edge of a pool so he can swim farther underwater. Halfway across, without ever feeling the urge to breathe, he blacks out. A lifeguard pulls him out and he recovers. His brain did exactly what it was built to do: it was watching his carbon dioxide, not his oxygen, and he had fooled it.</p>",
+  "prereq": [
+    {
+      "q": "Which part of the brainstem lies directly above the spinal cord?",
+      "options": [
+        "The midbrain",
+        "The medulla oblongata",
+        "The pons"
+      ],
+      "correct": 1,
+      "why": "The medulla oblongata is the lowest part of the brainstem, continuous with the spinal cord. The pons lies above it and the midbrain above that.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "Which of these crosses the blood–brain barrier most easily?",
+      "options": [
+        "Hydrogen ions",
+        "Plasma proteins",
+        "Carbon dioxide"
+      ],
+      "correct": 2,
+      "why": "Small, lipid-soluble molecules such as carbon dioxide and oxygen cross the blood–brain barrier freely. Charged ions such as hydrogen ions, and large proteins, cross it poorly.",
+      "review": "brain-protection"
+    },
+    {
+      "q": "When arterial PCO2 rises, what happens to blood pH?",
+      "options": [
+        "It falls",
+        "It rises",
+        "It does not change"
+      ],
+      "correct": 0,
+      "why": "More carbon dioxide forms more carbonic acid, which releases hydrogen ions, so pH falls.",
+      "review": "co2-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-20",
+    "caption": "The respiratory centers of the brainstem and the muscles they drive. Hide the labels and name the groups in the pons and the medulla oblongata."
+  },
+  "chain": [
+    {
+      "cause": "Your cells make carbon dioxide faster than you breathe it out, and arterial PCO2 rises.",
+      "effect": "Carbon dioxide crosses the blood–brain barrier and forms hydrogen ions in the brain's fluid, and more carbon dioxide and hydrogen ions reach the carotid bodies."
+    },
+    {
+      "cause": "Central chemoreceptors in the medulla sense the extra hydrogen ions; the carotid bodies fire faster.",
+      "effect": "Signals reach the respiratory centers, from the central chemoreceptors directly and from the carotid bodies through the glossopharyngeal nerves."
+    },
+    {
+      "cause": "The respiratory centers increase their output.",
+      "effect": "The phrenic and intercostal nerves drive the diaphragm and intercostal muscles harder and more often, so breaths get deeper and faster."
+    },
+    {
+      "cause": "Alveolar ventilation rises.",
+      "effect": "More carbon dioxide is breathed out, so arterial PCO2 and pH return toward normal and the chemoreceptors' drive fades: negative feedback."
+    }
+  ],
+  "misconception": {
+    "wrong": "You breathe mainly in response to low oxygen.",
+    "right": "Minute to minute, breathing is set mainly by carbon dioxide, through the hydrogen ions it forms. A rise in arterial PCO2 of a few mmHg sharply increases ventilation, while arterial PO2 can fall from about 95 to 60 mmHg with little effect, because hemoglobin stays nearly saturated on the flat part of the dissociation curve. Only the peripheral chemoreceptors sense low oxygen, and they respond strongly only below about 60 mmHg. That is why hyperventilating before a dive is dangerous: it removes the carbon dioxide signal, and oxygen can fall to the point of blacking out before the urge to breathe returns."
+  },
+  "check": [
+    "anp-breathing-control-1",
+    "anp-breathing-control-5",
+    "anp-breathing-control-7",
+    "anp-breathing-control-8",
+    "anp-breathing-control-11",
+    "anp-breathing-control-12",
+    "anp-breathing-control-15"
+  ],
+  "summary": "<p>Breathing is generated in the brainstem. In the medulla oblongata, the ventral respiratory group holds the pre-Bötzinger complex, the likely rhythm generator, and the dorsal respiratory group integrates sensory input and drives inspiration; in the pons, the pontine respiratory group (pneumotaxic center) shortens inspiration, and the apneustic center is described as promoting it. Signals reach the diaphragm through the phrenic nerves and the intercostal muscles through the intercostal nerves. Central chemoreceptors in the medulla respond to hydrogen ions made from carbon dioxide in the brain's fluid; peripheral chemoreceptors in the carotid and aortic bodies respond to low PO2, high PCO2 and low pH. Carbon dioxide is the main drive: breathing holds arterial PCO2 near 40 mmHg, and low oxygen matters only below about 60 mmHg. Lung stretch receptors (the Hering–Breuer reflex), irritant receptors, proprioceptors, the cortex and emotions also change breathing. Hyperventilation and hypoventilation are defined by PCO2 below 35 or above 45 mmHg. Exercise raises ventilation with little change in blood gases (hyperpnea); altitude raises it through the carotid bodies, and acclimatization over days and weeks raises it further and adds red blood cells.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-19",
+      "label": "NREMT: Respiratory emergencies"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-10",
+      "label": "NREMT: Ventilation and oxygen equipment"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-35",
+      "label": "NREMT: Environmental emergencies"
+    }
+  ]
+}

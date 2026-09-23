@@ -1,0 +1,299 @@
+[
+  {
+    "id": "anp-gas-exchange-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "Dry air at sea level has a total pressure of 760 mm Hg and is 20.9% oxygen. What is its PO2?",
+    "options": ["About 159 mm Hg", "About 21 mm Hg", "760 mm Hg", "About 100 mm Hg"],
+    "correct": 0,
+    "why": {
+      "correct": "Partial pressure = total pressure × fraction of the gas = 760 × 0.209 = 158.8, about 159 mm Hg.",
+      "options": ["Correct. 760 × 0.209 ≈ 159 mm Hg.", "21 is the percentage of oxygen, not its pressure. Multiply the fraction by the total pressure.", "760 mm Hg is the total pressure of all the gases together, not oxygen's share.", "About 100 mm Hg is the PO2 of alveolar air, after mixing with the air already in the lungs."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Air breathed in at sea level (760 mm Hg) is warmed to 37 °C and filled with water vapor in the airways. Water vapor at 37 °C has a partial pressure of 47 mm Hg. What is the PO2 of this air? Oxygen is 20.9% of the dry gas.",
+    "options": ["About 159 mm Hg", "About 150 mm Hg", "About 713 mm Hg", "About 169 mm Hg"],
+    "correct": 1,
+    "why": {
+      "correct": "Water vapor takes 47 mm Hg of the total, leaving 760 − 47 = 713 mm Hg for the dry gases. Oxygen's share is 713 × 0.209 = 149, about 150 mm Hg.",
+      "options": ["159 mm Hg is the PO2 of dry air. It ignores the water vapor, which takes part of the total pressure.", "Correct. (760 − 47) × 0.209 ≈ 150 mm Hg.", "713 mm Hg is the pressure left for all the dry gases together, not oxygen's share of it.", "169 mm Hg adds the water vapor pressure instead of subtracting it."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "figure": "os-22-21",
+    "q": "In the container holding both oxygen and nitrogen, what is the partial pressure of the oxygen?",
+    "options": ["756 mm Hg", "378 mm Hg", "159 mm Hg", "597 mm Hg"],
+    "correct": 2,
+    "why": {
+      "correct": "Each gas in a mixture exerts its own partial pressure, as if it were alone in the container. The oxygen alone read 159 mm Hg, so in the mixture it still contributes 159 mm Hg. Added to nitrogen's 597, it gives the total of 756 mm Hg: Dalton's law.",
+      "options": ["756 mm Hg is the total pressure, the sum of both partial pressures.", "Partial pressures are not shared equally between the gases; each depends on how much of that gas is present.", "Correct. Oxygen's partial pressure does not change when nitrogen is added.", "597 mm Hg is the partial pressure of the nitrogen."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "In Leadville, Colorado, total air pressure is about 523 mm Hg. Once breathed-in air is warmed and moistened (water vapor 47 mm Hg), what is its PO2? Oxygen is 20.9% of the dry gas.",
+    "options": ["About 109 mm Hg", "About 150 mm Hg", "About 476 mm Hg", "About 100 mm Hg"],
+    "correct": 3,
+    "why": {
+      "correct": "Dry gases share 523 − 47 = 476 mm Hg. Oxygen's share is 476 × 0.209 = 99.5, about 100 mm Hg: two-thirds of the sea-level value, although the air is still 20.9% oxygen.",
+      "options": ["109 mm Hg (523 × 0.209) forgets to subtract the water vapor first.", "150 mm Hg is the sea-level value. The oxygen fraction is the same here, but the total pressure is lower.", "476 mm Hg is the pressure of all the dry gases together.", "Correct. (523 − 47) × 0.209 ≈ 100 mm Hg."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-5",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "What does Henry's law state?",
+    "options": ["The total pressure of a gas mixture is the sum of its partial pressures", "The amount of a gas that dissolves in a liquid is proportional to its partial pressure and its solubility", "The pressure of a gas rises as its volume falls", "Gases diffuse from lower to higher partial pressure"],
+    "correct": 1,
+    "why": {
+      "correct": "Henry's law: dissolved gas = partial pressure × solubility. Raise a gas's partial pressure above a liquid, and more of it dissolves.",
+      "options": ["That is Dalton's law.", "Correct. This is Henry's law.", "That is Boyle's law, which drives airflow in and out of the lungs.", "Gases diffuse from higher to lower partial pressure, and that is not what Henry's law describes."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "A patient breathes pure oxygen in a hyperbaric chamber at three times atmospheric pressure, and his arterial PO2 reaches about 2,000 mm Hg. Oxygen dissolves in plasma at 0.003 mL per 100 mL of blood per mm Hg. How much oxygen is dissolved in each 100 mL of his blood?",
+    "options": ["0.3 mL", "About 6 mL", "About 60 mL", "About 2 mL"],
+    "correct": 1,
+    "why": {
+      "correct": "By Henry's law, dissolved oxygen = 2,000 × 0.003 = 6 mL per 100 mL: twenty times the 0.3 mL dissolved at a normal PO2 of 100 mm Hg. That is enough to supply much of what resting tissues use, which is why hyperbaric oxygen can help when hemoglobin cannot carry oxygen normally.",
+      "options": ["0.3 mL is the dissolved oxygen at a normal PO2 of 100 mm Hg. Raising the partial pressure raises the amount dissolved.", "Correct. 2,000 × 0.003 = 6 mL per 100 mL.", "60 mL misplaces the decimal: 2,000 × 0.003 is 6, not 60.", "2 mL would come from dividing the partial pressure by 1,000 rather than multiplying by the solubility."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients"],
+    "misconception": "a small CO2 gradient means little CO2 exchange",
+    "q": "Across the respiratory membrane, the oxygen gradient is about 60 mm Hg but the carbon dioxide gradient is only about 6 mm Hg. Why is so much carbon dioxide still exchanged?",
+    "options": ["Carbon dioxide is pumped across by active transport", "Carbon dioxide molecules are smaller than oxygen molecules", "The respiratory membrane has channels only for carbon dioxide", "Carbon dioxide is about 20 times more soluble than oxygen"],
+    "correct": 3,
+    "why": {
+      "correct": "Diffusion rate depends on solubility as well as gradient. Carbon dioxide dissolves about 20 times more readily, so 6 mm Hg × 20 moves it about as readily as 120 mm Hg would move oxygen: more than enough to clear the carbon dioxide you make.",
+      "options": ["Both gases cross by simple diffusion. No ATP is spent moving them.", "A carbon dioxide molecule is actually heavier than an oxygen molecule. Its advantage is solubility, not size.", "Both gases dissolve through the membrane's lipid and water; neither needs a special channel.", "Correct. High solubility makes up for the small gradient."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["gradients"],
+    "q": "Jamal steps out of his car on a mountain summit where the total air pressure is 455 mm Hg instead of 760. Before his breathing changes, predict each variable compared with sea level.",
+    "variables": [
+      { "name": "Percentage of oxygen in the air", "answer": "none", "why": "Air is about 21% oxygen at every altitude people live and climb at; only the total pressure changes." },
+      { "name": "PO2 of the breathed-in air", "answer": "down", "why": "PO2 = (total pressure − 47) × 0.209, which falls from about 150 to about 85 mm Hg as total pressure falls." },
+      { "name": "Alveolar PO2", "answer": "down", "why": "Less oxygen pressure arrives with each breath while the blood keeps removing oxygen at the same rate." },
+      { "name": "Gradient driving oxygen from alveoli into blood", "answer": "down", "why": "The gradient is alveolar PO2 minus the PO2 of blood arriving at about 40 mm Hg, and the alveolar value has fallen." },
+      { "name": "Water vapor pressure in the airways", "answer": "none", "why": "At 37 °C, water vapor pressure is 47 mm Hg regardless of the air pressure outside." }
+    ],
+    "why": { "correct": "A lower total pressure lowers the partial pressure of oxygen even though the air is still 21% oxygen. Alveolar PO2 falls, the gradient into the blood shrinks, and less oxygen diffuses in with each pass of blood." }
+  },
+  {
+    "id": "anp-gas-exchange-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Blood enters a pulmonary capillary with a PO2 of 40 mm Hg and a PCO2 of 46 mm Hg. The alveolar air has a PO2 of 100 and a PCO2 of 40 mm Hg. In a healthy lung at rest, what are the blood's values when it leaves the capillary?",
+    "options": ["PO2 about 100, PCO2 about 40 mm Hg", "PO2 about 70, PCO2 about 43 mm Hg", "PO2 about 140, PCO2 about 6 mm Hg", "PO2 about 40, PCO2 about 46 mm Hg"],
+    "correct": 0,
+    "why": {
+      "correct": "Diffusion continues until the blood's partial pressures match the alveolar air. At rest, this happens within the first third of the capillary, so blood leaves at about 100 and 40 mm Hg.",
+      "options": ["Correct. Blood leaves in balance with alveolar air.", "Halfway values would mean diffusion stopped early. In healthy lungs at rest, there is plenty of time to finish.", "Diffusion can only bring the blood up to the alveolar value, never past it, because the gradient disappears once they match.", "These are the values of blood arriving from the tissues. They would stay the same only if no exchange happened, as in an unventilated alveolus."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients", "structure-function"],
+    "q": "Mrs. Nakamura has fibrosis that has thickened her respiratory membrane. Her arterial PO2 is normal at rest but falls when she climbs stairs. What best explains this?",
+    "options": ["Exercise lowers the PO2 of her alveolar air below that of her venous blood", "Her lungs make less surfactant during exercise", "Exchange across the thick membrane is slow, and fast blood flow leaves too little time", "Exercise shrinks her respiratory membrane's surface area"],
+    "correct": 2,
+    "why": {
+      "correct": "A thicker membrane slows diffusion. At rest, blood spends about 0.75 s in the capillary, which is still long enough to finish loading. During exercise, cardiac output rises and blood passes through in about a third of a second, so it leaves before its PO2 reaches the alveolar value.",
+      "options": ["Exercise does not push alveolar PO2 below venous PO2; more breathing keeps alveolar PO2 near normal. The problem is the rate of crossing.", "Surfactant affects how easily alveoli inflate, not how fast gases cross the membrane, and there is no sign it fails during exercise.", "Correct. A slow crossing plus a short transit time lowers arterial PO2.", "Exercise does not remove alveoli. If anything, more capillaries open, raising the area available."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "Select every change that would increase the rate at which oxygen diffuses from the alveoli into the blood.",
+    "options": ["A higher alveolar PO2", "A thicker respiratory membrane", "A larger surface area of open alveoli", "A lower alveolar PO2", "A thinner respiratory membrane", "Fewer alveoli with intact walls"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Diffusion is faster with a steeper partial pressure gradient, a larger area and a thinner barrier.",
+      "options": ["Correct. A higher alveolar PO2 steepens the gradient into blood arriving at about 40 mm Hg.", "A thicker membrane lengthens the distance and slows diffusion.", "Correct. More area lets more oxygen cross at once.", "A lower alveolar PO2 shrinks the gradient.", "Correct. A shorter distance speeds diffusion.", "Losing alveolar walls reduces the surface area."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients", "homeostasis"],
+    "q": "During a sprint, the PO2 in the tissue fluid of a working thigh muscle falls from about 40 to about 20 mm Hg, while arterial PO2 stays near 95. What happens to oxygen delivery to the muscle cells, and why?",
+    "options": ["It falls, because there is less oxygen in the tissue", "It rises, because the gradient from blood to tissue is steeper", "It stays the same, because arterial PO2 has not changed", "It rises, because arterial blood carries more dissolved oxygen"],
+    "correct": 1,
+    "why": {
+      "correct": "Internal respiration runs down the gradient from blood to tissue. With the tissue at 20 instead of 40 mm Hg, the gradient grows from about 55 to about 75 mm Hg, so more oxygen diffuses out of each pass of blood, with no signal needed.",
+      "options": ["The tissue's low PO2 is what steepens the gradient; it pulls more oxygen out of the blood.", "Correct. A steeper gradient means faster diffusion into the tissue.", "Oxygen movement depends on the difference between blood and tissue, and the tissue value has changed.", "Arterial PO2 is unchanged, so the dissolved oxygen in arterial blood is unchanged too."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-13",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["compartments"],
+    "figure": "os-22-23",
+    "pin": "interstitial-fluid",
+    "q": "Name the pinned compartment that every gas molecule crosses between the capillary and the tissue cells.",
+    "options": ["Blood plasma", "Interstitial fluid", "Cytosol", "Alveolar air"],
+    "correct": 1,
+    "why": {
+      "correct": "The interstitial fluid, the tissue fluid between cells, lies between the capillary wall and the tissue cells. Oxygen crosses it on the way in, and carbon dioxide on the way out.",
+      "options": ["Blood plasma is inside the capillary, on the far side of the capillary wall.", "Correct. This is the interstitial fluid.", "Cytosol is the fluid inside the tissue cells.", "This figure shows a body tissue, not the lungs; there is no alveolus in it."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "gradients"],
+    "q": "A plug of mucus partly blocks the bronchiole to one group of Ms. Diaz's alveoli. Within minutes, blood flow to those alveoli falls. What causes the fall in blood flow?",
+    "options": ["Nearby pulmonary arterioles dilate and draw blood away from the blocked area", "The mucus plug presses on the pulmonary capillaries", "The alveolar PO2 falls and the nearby pulmonary arterioles constrict", "The heart pumps less blood to the lungs"],
+    "correct": 2,
+    "why": {
+      "correct": "Poorly ventilated alveoli have a low PO2. Smooth muscle in the nearby pulmonary arterioles responds to the low PO2 by contracting: hypoxic pulmonary vasoconstriction. Blood is sent to better-ventilated alveoli, which keeps the ventilation–perfusion ratio closer to normal.",
+      "options": ["The response is constriction of the arterioles supplying the poorly ventilated alveoli, not dilation.", "The plug sits inside the airway; it does not squeeze the blood vessels.", "Correct. Low alveolar PO2 triggers local vasoconstriction.", "Cardiac output to the lungs as a whole is unchanged; blood is redistributed within the lungs."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A clot blocks blood flow to one lobe of Mr. Grant's lung, but air still reaches its alveoli. What is the ventilation–perfusion ratio of that lobe?",
+    "options": ["About 0.8, as in the rest of the lung", "Very high: air but no blood, alveolar dead space", "Zero: blood but no air, a shunt", "It cannot change, because ventilation and blood flow are fixed together"],
+    "correct": 1,
+    "why": {
+      "correct": "V/Q compares ventilation with blood flow. The lobe still gets air (V) but no blood (Q), so the ratio is very high, approaching infinity. Its air takes part in no exchange: alveolar dead space.",
+      "options": ["0.8 is the normal whole-lung value. With no blood flow to the lobe, its ratio is far above that.", "Correct. Ventilated alveoli with no blood flow have a very high V/Q.", "A ratio of zero means blood flowing past alveoli with no air, the opposite situation.", "Ventilation and blood flow are controlled separately and can become badly mismatched, as here."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "How does a low PO2 affect arterioles in the lungs compared with arterioles in a working skeletal muscle?",
+    "options": ["Lung arterioles constrict; muscle arterioles dilate", "Both constrict", "Lung arterioles dilate; muscle arterioles constrict", "Both dilate"],
+    "correct": 0,
+    "why": {
+      "correct": "In a systemic tissue such as muscle, low PO2 dilates arterioles, bringing more blood where oxygen is being used up. In the lungs, low alveolar PO2 constricts pulmonary arterioles, sending blood away from alveoli that are getting too little air.",
+      "options": ["Correct. The two circulations respond in opposite directions.", "Constriction is the lung response only. Muscle arterioles dilate when oxygen runs low.", "This reverses both responses.", "Dilation is the systemic response only. Lung arterioles constrict."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-17",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Order these places from highest to lowest PO2, for a person at rest at sea level.",
+    "options": ["Dry air outside the body (about 159 mm Hg)", "Breathed-in air, warmed and moistened, in the trachea (about 150 mm Hg)", "Alveolar air (about 100 mm Hg)", "Arterial blood (about 95 mm Hg)", "Tissue fluid around resting cells (about 40 mm Hg)", "The inside of a working muscle cell (lower still)"],
+    "why": { "correct": "Oxygen falls step by step: water vapor dilutes it in the airways, mixing and constant removal lower it in the alveoli, a little venous blood lowers arterial blood slightly, and cells using oxygen keep the tissue fluid and cell interior lowest. Oxygen diffuses downhill at every step." }
+  },
+  {
+    "id": "anp-gas-exchange-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A student described how the lungs match blood flow to airflow. One step is wrong. Which one?",
+    "options": ["A region of alveoli gets less fresh air", "The PO2 in those alveoli falls", "The nearby pulmonary arterioles dilate", "Less blood flows past the poorly ventilated alveoli", "More blood goes to well-ventilated alveoli"],
+    "correct": 2,
+    "why": {
+      "correct": "Low alveolar PO2 makes pulmonary arterioles constrict, not dilate: hypoxic pulmonary vasoconstriction. Dilation would send more blood to alveoli that cannot oxygenate it.",
+      "options": ["This step is right. It starts the response.", "This step is right. Less fresh air means a lower alveolar PO2.", "This is the error. Pulmonary arterioles constrict when alveolar PO2 falls.", "This step is right. The constricted arterioles carry less blood.", "This step is right. The blood is redistributed to alveoli that can load it with oxygen."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-19",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "Complete the rule: partial pressure of a gas = total pressure × ____.",
+    "options": ["The solubility of the gas", "The fraction of the mixture that the gas makes up", "The volume of the container", "The temperature of the gas"],
+    "correct": 1,
+    "why": {
+      "correct": "A gas's partial pressure is its share of the total pressure, set by its fraction of the molecules. Oxygen is 0.209 of dry air, so at 760 mm Hg its partial pressure is about 159 mm Hg.",
+      "options": ["Solubility belongs to Henry's law, which gives how much gas dissolves, not its partial pressure.", "Correct. Total pressure × fraction.", "Container volume affects total pressure through Boyle's law but is not the factor that splits it among gases.", "Temperature affects pressure overall but does not decide each gas's share."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "What is internal respiration?",
+    "options": ["Gas exchange between alveolar air and the blood in pulmonary capillaries", "The movement of air into and out of the lungs", "The chemistry inside a cell that uses oxygen to make ATP", "Gas exchange between the blood in systemic capillaries and the tissue cells"],
+    "correct": 3,
+    "why": {
+      "correct": "Internal respiration is tissue gas exchange: oxygen leaves systemic capillary blood for the cells, and carbon dioxide leaves the cells for the blood.",
+      "options": ["That is external respiration, which happens in the lungs.", "That is pulmonary ventilation, breathing.", "That is cellular respiration. Internal respiration is the gas exchange that supplies it.", "Correct. Internal respiration happens between systemic capillaries and tissue cells."]
+    }
+  },
+  {
+    "id": "anp-gas-exchange-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "In a person standing upright, which part of the lungs has the highest ventilation–perfusion ratio, and why?",
+    "options": ["The bases, because they get the most ventilation", "The tops, because blood flow falls off toward the top more than ventilation does", "The bases, because gravity pulls air downward", "Neither: in healthy lungs V/Q is exactly the same everywhere"],
+    "correct": 1,
+    "why": {
+      "correct": "Gravity pulls blood toward the lung bases. Both ventilation and blood flow are greater at the bases, but blood flow differs more, so the tops have a high V/Q (about 3) and the bases a low one (about 0.6).",
+      "options": ["The bases do get more ventilation, but they get even more blood, so their ratio is low.", "Correct. Blood flow drops off steeply toward the top, raising V/Q there.", "Air is far too light for gravity to matter; the bases ventilate more because of how the lung tissue sits and stretches, and they have a low ratio anyway.", "Even healthy lungs are uneven; this is part of why arterial PO2 sits a little below alveolar PO2."]
+    }
+  }
+]
