@@ -15,7 +15,13 @@
         3,
         4
       ],
-      "concept": "pacemaker-potential"
+      "concept": "pacemaker-potential",
+      "box": [
+        524,
+        36,
+        194,
+        99
+      ]
     },
     {
       "id": "threshold",
@@ -27,7 +33,13 @@
       "lines": [
         11
       ],
-      "concept": "threshold"
+      "concept": "threshold",
+      "box": [
+        927,
+        274,
+        143,
+        27
+      ]
     },
     {
       "id": "slower-depolarization",
@@ -40,7 +52,13 @@
       "lines": [
         21
       ],
-      "concept": "heart-rate-control"
+      "concept": "heart-rate-control",
+      "box": [
+        544,
+        632,
+        291,
+        34
+      ]
     },
     {
       "id": "threshold-parasympathetic",
@@ -52,7 +70,13 @@
       "lines": [
         28
       ],
-      "concept": "threshold"
+      "concept": "threshold",
+      "box": [
+        927,
+        834,
+        143,
+        28
+      ]
     },
     {
       "id": "hyperpolarization",
@@ -80,7 +104,13 @@
       "lines": [
         37
       ],
-      "concept": "heart-rate-control"
+      "concept": "heart-rate-control",
+      "box": [
+        536,
+        1164,
+        282,
+        34
+      ]
     },
     {
       "id": "threshold-sympathetic",
@@ -92,7 +122,13 @@
       "lines": [
         45
       ],
-      "concept": "threshold"
+      "concept": "threshold",
+      "box": [
+        927,
+        1395,
+        143,
+        27
+      ]
     },
     {
       "id": "reduced-repolarization",

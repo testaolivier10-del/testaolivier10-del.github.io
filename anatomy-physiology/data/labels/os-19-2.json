@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "ribs"
+      "concept": "ribs",
+      "box": [
+        1022,
+        57,
+        63,
+        20
+      ]
     },
     {
       "id": "trachea",
@@ -24,7 +30,13 @@
       "lines": [
         1
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        640,
+        85,
+        82,
+        21
+      ]
     },
     {
       "id": "aortic-arch",
@@ -38,7 +50,13 @@
         3,
         6
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        1021,
+        131,
+        61,
+        41
+      ]
     },
     {
       "id": "thymus",
@@ -50,7 +68,13 @@
       "lines": [
         4
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        640,
+        139,
+        81,
+        23
+      ]
     },
     {
       "id": "base-of-heart",
@@ -64,7 +88,13 @@
       "lines": [
         9
       ],
-      "concept": "heart-location"
+      "concept": "heart-location",
+      "box": [
+        1022,
+        189,
+        55,
+        20
+      ]
     },
     {
       "id": "diaphragm-sagittal",
@@ -75,7 +105,13 @@
       "lines": [
         11
       ],
-      "concept": "diaphragm"
+      "concept": "diaphragm",
+      "box": [
+        642,
+        266,
+        103,
+        24
+      ]
     },
     {
       "id": "thoracic-aorta",
@@ -102,7 +138,13 @@
       "lines": [
         13
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        680,
+        306,
+        162,
+        20
+      ]
     },
     {
       "id": "esophagus",
@@ -114,7 +156,13 @@
       "lines": [
         14
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        754,
+        339,
+        107,
+        23
+      ]
     },
     {
       "id": "mediastinum",
@@ -125,7 +173,13 @@
       "lines": [
         16
       ],
-      "concept": "mediastinum"
+      "concept": "mediastinum",
+      "box": [
+        740,
+        438,
+        118,
+        20
+      ]
     },
     {
       "id": "arch-of-aorta",
@@ -138,7 +192,13 @@
       "lines": [
         17
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        739,
+        504,
+        121,
+        21
+      ]
     },
     {
       "id": "superior-vena-cava",
@@ -150,7 +210,13 @@
       "lines": [
         18
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        0,
+        518,
+        172,
+        24
+      ]
     },
     {
       "id": "pulmonary-trunk",
@@ -161,7 +227,13 @@
       "lines": [
         19
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        740,
+        562,
+        150,
+        23
+      ]
     },
     {
       "id": "right-lung",
@@ -173,7 +245,13 @@
       "lines": [
         20
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        565,
+        93,
+        24
+      ]
     },
     {
       "id": "left-auricle",
@@ -187,7 +265,13 @@
       "lines": [
         21
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        740,
+        609,
+        104,
+        20
+      ]
     },
     {
       "id": "right-auricle",
@@ -201,7 +285,13 @@
       "lines": [
         22
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        0,
+        613,
+        113,
+        24
+      ]
     },
     {
       "id": "left-lung",
@@ -213,7 +303,13 @@
       "lines": [
         23
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        740,
+        658,
+        84,
+        24
+      ]
     },
     {
       "id": "right-atrium",
@@ -225,7 +321,13 @@
       "lines": [
         24
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        0,
+        660,
+        110,
+        24
+      ]
     },
     {
       "id": "right-ventricle",
@@ -237,7 +339,13 @@
       "lines": [
         25
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        0,
+        707,
+        128,
+        24
+      ]
     },
     {
       "id": "left-ventricle",
@@ -249,7 +357,13 @@
       "lines": [
         26
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        740,
+        711,
+        119,
+        20
+      ]
     },
     {
       "id": "ribs",
@@ -263,7 +377,13 @@
       "lines": [
         27
       ],
-      "concept": "ribs"
+      "concept": "ribs",
+      "box": [
+        0,
+        753,
+        89,
+        24
+      ]
     },
     {
       "id": "pericardial-cavity",
@@ -274,7 +394,13 @@
       "lines": [
         28
       ],
-      "concept": "pericardial-cavity"
+      "concept": "pericardial-cavity",
+      "box": [
+        740,
+        759,
+        155,
+        23
+      ]
     },
     {
       "id": "apex-of-heart",
@@ -288,7 +414,13 @@
       "lines": [
         29
       ],
-      "concept": "heart-location"
+      "concept": "heart-location",
+      "box": [
+        739,
+        806,
+        126,
+        23
+      ]
     },
     {
       "id": "diaphragm",
@@ -299,7 +431,13 @@
       "lines": [
         30
       ],
-      "concept": "diaphragm"
+      "concept": "diaphragm",
+      "box": [
+        359,
+        893,
+        104,
+        24
+      ]
     },
     {
       "id": "parietal-pleura",
@@ -314,7 +452,13 @@
         31,
         33
       ],
-      "concept": "serous-membrane"
+      "concept": "serous-membrane",
+      "box": [
+        242,
+        950,
+        144,
+        45
+      ]
     },
     {
       "id": "parietal-pericardium",
@@ -330,7 +474,13 @@
         32,
         34
       ],
-      "concept": "pericardium"
+      "concept": "pericardium",
+      "box": [
+        482,
+        950,
+        154,
+        45
+      ]
     }
   ]
 }

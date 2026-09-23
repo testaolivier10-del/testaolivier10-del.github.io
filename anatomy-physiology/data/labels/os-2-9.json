@@ -1,0 +1,19 @@
+{
+  "figure": "os-2-9",
+  "labels": [
+    {
+      "id": "oxygen-gas-molecule",
+      "name": "Molecule of oxygen gas (O2)",
+      "accept": [
+        "molecule of oxygen gas (o2)",
+        "o2",
+        "oxygen gas",
+        "oxygen molecule"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "covalent-bond"
+    }
+  ]
+}

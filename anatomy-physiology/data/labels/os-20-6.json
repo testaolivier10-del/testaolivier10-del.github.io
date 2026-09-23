@@ -1,0 +1,113 @@
+{
+  "figure": "os-20-6",
+  "labels": [
+    {
+      "id": "capillary-bed",
+      "name": "Capillary bed",
+      "accept": [
+        "capillary bed",
+        "capillary network"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "capillary",
+      "name": "Capillary",
+      "accept": [
+        "capillary",
+        "capillaries"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "blood-vessel-basics"
+    },
+    {
+      "id": "arteriole",
+      "name": "Arteriole",
+      "accept": [
+        "arteriole",
+        "arterioles"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "arteriole"
+    },
+    {
+      "id": "venule",
+      "name": "Venule",
+      "accept": [
+        "venule",
+        "venules"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "precapillary-sphincter",
+      "name": "Precapillary sphincter",
+      "accept": [
+        "precapillary sphincter",
+        "precapillary sphincters"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "thoroughfare-channel",
+      "name": "Thoroughfare channel",
+      "accept": [
+        "thoroughfare channel",
+        "thoroughfare"
+      ],
+      "box": [
+        956,
+        225,
+        144,
+        48
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "metarteriole",
+      "name": "Metarteriole (serves as vascular shunt when precapillary sphincters are closed)",
+      "accept": [
+        "metarteriole (serves as vascular shunt when precapillary sphincters are closed)",
+        "metarteriole",
+        "vascular shunt",
+        "metarterioles"
+      ],
+      "lines": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "arteriovenous-anastomosis",
+      "name": "Arteriovenous anastomosis",
+      "accept": [
+        "arteriovenous anastomosis",
+        "av anastomosis",
+        "arteriovenous shunt",
+        "av shunt"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "capillary-types"
+    }
+  ]
+}

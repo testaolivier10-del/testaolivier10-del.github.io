@@ -382,6 +382,7 @@
     "type": "predict",
     "level": "apply",
     "diff": 2,
+    "predictLevel": 1,
     "core": [
       "interdependence"
     ],
@@ -402,7 +403,10 @@
         "answer": "none",
         "why": "Your organs and systems stay the same. What changes is how well they are supplied with oxygen."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Higher up, less air presses down, so air pressure falls and each breath pushes less oxygen into your blood. Your organs and systems stay the same; only their oxygen supply changes."
+    }
   },
   {
     "id": "anp-body-organization-16",

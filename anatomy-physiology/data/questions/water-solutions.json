@@ -270,6 +270,7 @@
     "type": "predict",
     "level": "analyze",
     "diff": 2,
+    "predictLevel": 2,
     "core": [
       "mass-balance"
     ],
@@ -295,7 +296,10 @@
         "answer": "up",
         "why": "Osmolality counts all dissolved particles per kilogram of water. The particles stay while the water shrinks, so the count per kilogram rises."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Losing pure water shrinks the volume but leaves the solutes behind. The same amount of sodium and other particles in less water gives a higher concentration and a higher osmolality."
+    }
   },
   {
     "id": "anp-water-solutions-12",

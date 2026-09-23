@@ -1,0 +1,198 @@
+{
+  "figure": "os-2-2",
+  "labels": [
+    {
+      "id": "others-body",
+      "name": "Others",
+      "accept": [
+        "others",
+        "other elements",
+        "trace elements"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "nitrogen-body",
+      "name": "Nitrogen",
+      "accept": [
+        "nitrogen",
+        "n"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "hydrogen-body",
+      "name": "Hydrogen",
+      "accept": [
+        "hydrogen",
+        "h"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "carbon-body",
+      "name": "Carbon",
+      "accept": [
+        "carbon",
+        "c"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "oxygen-body",
+      "name": "Oxygen",
+      "accept": [
+        "oxygen",
+        "o"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "oxygen",
+      "name": "Oxygen",
+      "accept": [
+        "oxygen",
+        "o"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon",
+      "accept": [
+        "carbon",
+        "c"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "hydrogen",
+      "name": "Hydrogen",
+      "accept": [
+        "hydrogen",
+        "h"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "nitrogen",
+      "name": "Nitrogen",
+      "accept": [
+        "nitrogen",
+        "n"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "calcium",
+      "name": "Calcium",
+      "accept": [
+        "calcium",
+        "ca"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "phosphorus",
+      "name": "Phosphorus",
+      "accept": [
+        "phosphorus",
+        "p"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "potassium",
+      "name": "Potassium",
+      "accept": [
+        "potassium",
+        "k"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "sulfur",
+      "name": "Sulfur",
+      "accept": [
+        "sulfur",
+        "s"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "sodium",
+      "name": "Sodium",
+      "accept": [
+        "sodium",
+        "na"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "chlorine",
+      "name": "Chlorine",
+      "accept": [
+        "chlorine",
+        "cl"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "magnesium",
+      "name": "Magnesium",
+      "accept": [
+        "magnesium",
+        "mg"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "element-compound"
+    }
+  ]
+}

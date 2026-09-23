@@ -128,7 +128,7 @@
     "misconception": "secondary active transport does not depend on ATP",
     "q": "A symporter in a kidney tubule cell carries glucose into the cell against its gradient but never splits ATP. Where does the energy for this uphill movement come from?",
     "options": [
-      "Sodium moving into the cell down its gradient",
+      "Sodium moving into the cell down its electrochemical gradient",
       "Glucose moving down its own concentration gradient",
       "Heat released by the kidney tubule",
       "The pressure of fluid in the tubule"
@@ -347,7 +347,7 @@
       "The vesicles fuse without adding membrane",
       "The extra membrane dissolves in the fluid outside",
       "The cell grows larger with every release",
-      "Endocytosis removes membrane at a matching rate"
+      "Endocytosis removes membrane from the surface at a matching rate"
     ],
     "correct": 3,
     "why": {

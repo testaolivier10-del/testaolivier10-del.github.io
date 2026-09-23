@@ -1,0 +1,56 @@
+{
+  "figure": "os-2-5",
+  "labels": [
+    {
+      "id": "protium",
+      "name": "Protium (1H)",
+      "accept": [
+        "protium (1h)",
+        "1h",
+        "hydrogen-1",
+        "protium"
+      ],
+      "box": [
+        60,
+        340,
+        160,
+        38
+      ],
+      "concept": "atomic-number-isotopes"
+    },
+    {
+      "id": "deuterium",
+      "name": "Deuterium (2H)",
+      "accept": [
+        "deuterium (2h)",
+        "2h",
+        "deuterium",
+        "hydrogen-2"
+      ],
+      "box": [
+        452,
+        340,
+        190,
+        38
+      ],
+      "concept": "atomic-number-isotopes"
+    },
+    {
+      "id": "tritium",
+      "name": "Tritium (3H)",
+      "accept": [
+        "tritium (3h)",
+        "3h",
+        "hydrogen-3",
+        "tritium"
+      ],
+      "box": [
+        868,
+        340,
+        152,
+        38
+      ],
+      "concept": "atomic-number-isotopes"
+    }
+  ]
+}

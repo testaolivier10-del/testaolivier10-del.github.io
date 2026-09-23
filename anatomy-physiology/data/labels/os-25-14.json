@@ -1,0 +1,127 @@
+{
+  "figure": "os-25-14",
+  "labels": [
+    {
+      "id": "macula-densa",
+      "name": "Macula densa",
+      "accept": [
+        "macula densa",
+        "macula densa cells"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "jga",
+      "box": [
+        185,
+        12,
+        126,
+        19
+      ]
+    },
+    {
+      "id": "juxtaglomerular-cells",
+      "name": "Juxtaglomerular cells",
+      "accept": [
+        "juxtaglomerular cells",
+        "juxtaglomerular",
+        "jg cells",
+        "granular cells"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "jga",
+      "box": [
+        181,
+        109,
+        144,
+        23
+      ]
+    },
+    {
+      "id": "ace",
+      "name": "Angiotensin-converting enzyme (ACE)",
+      "accept": [
+        "angiotensin-converting enzyme (ace)",
+        "angiotensin-converting enzyme",
+        "angiotensin converting enzyme",
+        "ace"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "raas",
+      "box": [
+        356,
+        111,
+        199,
+        43
+      ]
+    },
+    {
+      "id": "angiotensinogen",
+      "name": "Angiotensinogen",
+      "accept": [
+        "angiotensinogen"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "raas",
+      "box": [
+        68,
+        422,
+        146,
+        22
+      ]
+    },
+    {
+      "id": "angiotensin-i",
+      "name": "Angiotensin I",
+      "accept": [
+        "angiotensin i",
+        "angiotensin 1",
+        "ang i"
+      ],
+      "box": [
+        143,
+        337,
+        111,
+        25
+      ],
+      "concept": "raas"
+    },
+    {
+      "id": "angiotensin-ii",
+      "name": "Angiotensin II",
+      "accept": [
+        "angiotensin ii",
+        "angiotensin 2",
+        "ang ii"
+      ],
+      "box": [
+        441,
+        337,
+        116,
+        25
+      ],
+      "concept": "raas"
+    },
+    {
+      "id": "aldosterone",
+      "name": "Aldosterone",
+      "accept": [
+        "aldosterone"
+      ],
+      "box": [
+        929,
+        337,
+        104,
+        23
+      ],
+      "concept": "aldosterone"
+    }
+  ]
+}

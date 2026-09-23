@@ -1,0 +1,42 @@
+{
+  "figure": "os-19-16",
+  "labels": [
+    {
+      "id": "left-coronary-artery-blockage",
+      "name": "Blockage of common trunk of left coronary artery",
+      "accept": [
+        "blockage of common trunk of left coronary artery",
+        "left coronary artery",
+        "common trunk of left coronary artery",
+        "left main coronary artery",
+        "left main",
+        "lca"
+      ],
+      "box": [
+        452,
+        47,
+        438,
+        94
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "circumflex-artery-blockage",
+      "name": "Blockage of circumflex artery",
+      "accept": [
+        "blockage of circumflex artery",
+        "circumflex artery",
+        "circumflex",
+        "circumflex branch",
+        "left circumflex artery"
+      ],
+      "box": [
+        155,
+        450,
+        287,
+        94
+      ],
+      "concept": "coronary-circulation"
+    }
+  ]
+}

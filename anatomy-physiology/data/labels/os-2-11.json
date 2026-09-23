@@ -1,0 +1,37 @@
+{
+  "figure": "os-2-11",
+  "labels": [
+    {
+      "id": "covalent-bond",
+      "name": "Covalent bond",
+      "accept": [
+        "covalent bond",
+        "covalent bonds",
+        "polar covalent bond"
+      ],
+      "box": [
+        308,
+        58,
+        246,
+        36
+      ],
+      "concept": "covalent-bond"
+    },
+    {
+      "id": "hydrogen-bond",
+      "name": "Hydrogen bond",
+      "accept": [
+        "hydrogen bond",
+        "h bond",
+        "hydrogen bonds"
+      ],
+      "box": [
+        8,
+        344,
+        264,
+        38
+      ],
+      "concept": "hydrogen-bond"
+    }
+  ]
+}

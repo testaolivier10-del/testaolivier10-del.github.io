@@ -1,0 +1,231 @@
+{
+  "figure": "os-20-7",
+  "labels": [
+    {
+      "id": "large-vein",
+      "name": "Large vein",
+      "accept": [
+        "large vein",
+        "large veins"
+      ],
+      "box": [
+        8,
+        16,
+        165,
+        32
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "tunica-externa",
+      "name": "Tunica externa",
+      "accept": [
+        "tunica externa",
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-media",
+      "name": "Tunica media",
+      "accept": [
+        "tunica media",
+        "media"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-intima",
+      "name": "Tunica intima",
+      "accept": [
+        "tunica intima",
+        "intima",
+        "tunica interna"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "smooth-muscle-cell-tunica-externa",
+      "name": "Smooth muscle cell in tunica externa",
+      "accept": [
+        "smooth muscle cell in tunica externa",
+        "smooth muscle cell",
+        "smooth muscle",
+        "smooth muscle cells"
+      ],
+      "lines": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "vasa-vasorum",
+      "name": "Vasa vasorum",
+      "accept": [
+        "vasa vasorum"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "nervi-vasorum",
+      "name": "Nervi vasorum",
+      "accept": [
+        "nervi vasorum"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "medium-sized-vein",
+      "name": "Medium-sized vein",
+      "accept": [
+        "medium-sized vein",
+        "medium sized vein",
+        "medium vein",
+        "medium-sized veins"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "tunica-externa-medium",
+      "name": "Tunica externa",
+      "accept": [
+        "tunica externa",
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-media-medium",
+      "name": "Tunica media",
+      "accept": [
+        "tunica media",
+        "media"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-intima-medium",
+      "name": "Tunica intima",
+      "accept": [
+        "tunica intima",
+        "intima",
+        "tunica interna"
+      ],
+      "lines": [
+        23,
+        24
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "valves",
+      "name": "Valves (closed)",
+      "accept": [
+        "valves (closed)",
+        "valves",
+        "venous valves",
+        "venous valve",
+        "valve"
+      ],
+      "lines": [
+        25,
+        26
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "venule",
+      "name": "Venule",
+      "accept": [
+        "venule",
+        "venules"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "tunica-externa-venule",
+      "name": "Tunica externa",
+      "accept": [
+        "tunica externa",
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-media-venule",
+      "name": "Tunica media",
+      "accept": [
+        "tunica media",
+        "media"
+      ],
+      "lines": [
+        30,
+        31
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-intima-venule",
+      "name": "Tunica intima",
+      "accept": [
+        "tunica intima",
+        "intima",
+        "tunica interna"
+      ],
+      "lines": [
+        32,
+        33
+      ],
+      "concept": "vessel-tunics"
+    }
+  ]
+}

@@ -26,7 +26,13 @@
       "lines": [
         2
       ],
-      "concept": "blood-pressure"
+      "concept": "blood-pressure",
+      "box": [
+        670,
+        139,
+        170,
+        26
+      ]
     },
     {
       "id": "mean-arterial-pressure",
@@ -38,7 +44,13 @@
       "lines": [
         5
       ],
-      "concept": "map"
+      "concept": "map",
+      "box": [
+        670,
+        204,
+        220,
+        26
+      ]
     },
     {
       "id": "diastolic-pressure",
@@ -51,7 +63,13 @@
       "lines": [
         9
       ],
-      "concept": "blood-pressure"
+      "concept": "blood-pressure",
+      "box": [
+        670,
+        269,
+        177,
+        26
+      ]
     },
     {
       "id": "aorta",
@@ -62,7 +80,13 @@
       "lines": [
         18
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        163,
+        687,
+        62,
+        22
+      ]
     },
     {
       "id": "elastic-arteries",
@@ -75,7 +99,13 @@
         19,
         27
       ],
-      "concept": "artery-types"
+      "concept": "artery-types",
+      "box": [
+        295,
+        687,
+        82,
+        45
+      ]
     },
     {
       "id": "muscular-arteries",
@@ -88,7 +118,13 @@
         20,
         28
       ],
-      "concept": "artery-types"
+      "concept": "artery-types",
+      "box": [
+        427,
+        687,
+        97,
+        45
+      ]
     },
     {
       "id": "arterioles",
@@ -100,7 +136,13 @@
       "lines": [
         21
       ],
-      "concept": "arteriole"
+      "concept": "arteriole",
+      "box": [
+        547,
+        687,
+        100,
+        22
+      ]
     },
     {
       "id": "capillaries",
@@ -112,7 +154,13 @@
       "lines": [
         22
       ],
-      "concept": "blood-vessel-basics"
+      "concept": "blood-vessel-basics",
+      "box": [
+        668,
+        687,
+        109,
+        26
+      ]
     },
     {
       "id": "venules",
@@ -124,7 +172,13 @@
       "lines": [
         23
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        782,
+        687,
+        87,
+        22
+      ]
     },
     {
       "id": "medium-and-large-veins",
@@ -140,7 +194,13 @@
         26,
         30
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        890,
+        687,
+        112,
+        73
+      ]
     },
     {
       "id": "venae-cavae",
@@ -154,7 +214,13 @@
         25,
         29
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        1024,
+        687,
+        73,
+        45
+      ]
     }
   ]
 }

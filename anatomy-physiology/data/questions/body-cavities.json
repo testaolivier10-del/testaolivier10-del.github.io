@@ -325,6 +325,7 @@
     "type": "predict",
     "level": "apply",
     "diff": 2,
+    "predictLevel": 2,
     "core": [
       "structure-function",
       "compartments"

@@ -1,0 +1,58 @@
+{
+  "figure": "os-2-10",
+  "labels": [
+    {
+      "id": "weakly-negative",
+      "name": "Weakly negative",
+      "accept": [
+        "weakly negative",
+        "partial negative",
+        "partial negative charge",
+        "slightly negative",
+        "δ-"
+      ],
+      "box": [
+        426,
+        10,
+        256,
+        38
+      ],
+      "concept": "polarity"
+    },
+    {
+      "id": "weakly-positive",
+      "name": "Weakly positive",
+      "accept": [
+        "weakly positive",
+        "partial positive",
+        "partial positive charge",
+        "slightly positive",
+        "δ+"
+      ],
+      "box": [
+        434,
+        686,
+        242,
+        38
+      ],
+      "concept": "polarity"
+    },
+    {
+      "id": "oxygen-nucleus",
+      "name": "8p 8n (oxygen nucleus)",
+      "accept": [
+        "8p 8n (oxygen nucleus)",
+        "8 protons 8 neutrons",
+        "nucleus",
+        "oxygen nucleus"
+      ],
+      "box": [
+        528,
+        262,
+        48,
+        74
+      ],
+      "concept": "subatomic-particles"
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "figure": "os-24-6",
+  "labels": [
+    {
+      "id": "glucose",
+      "name": "One glucose molecule",
+      "accept": [
+        "one glucose molecule",
+        "glucose"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "glucose"
+    },
+    {
+      "id": "energy-consuming-phase",
+      "name": "Energy-consuming phase",
+      "accept": [
+        "energy-consuming phase",
+        "energy investment phase",
+        "investment phase"
+      ],
+      "box": [
+        440,
+        114,
+        218,
+        24
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "atps-consumed",
+      "name": "2 ATPs consumed",
+      "accept": [
+        "2 atps consumed",
+        "2 atp consumed",
+        "atp consumed"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "atp-hydrolysis"
+    },
+    {
+      "id": "aerobic-conditions",
+      "name": "Aerobic conditions",
+      "accept": [
+        "aerobic conditions",
+        "aerobic",
+        "o2 present"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "anaerobic-conditions",
+      "name": "Anaerobic conditions",
+      "accept": [
+        "anaerobic conditions",
+        "anaerobic",
+        "no oxygen"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "anaerobic-metabolism"
+    },
+    {
+      "id": "energy-releasing-phase-aerobic",
+      "name": "Energy-releasing phase",
+      "accept": [
+        "energy-releasing phase",
+        "energy payoff phase",
+        "payoff phase"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "energy-releasing-phase-anaerobic",
+      "name": "Energy-releasing phase",
+      "accept": [
+        "energy-releasing phase",
+        "energy payoff phase",
+        "payoff phase"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "pyruvate-aerobic",
+      "name": "Two pyruvate molecules",
+      "accept": [
+        "two pyruvate molecules",
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "box": [
+        230,
+        903,
+        90,
+        36
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "pyruvate-anaerobic",
+      "name": "Two pyruvate molecules",
+      "accept": [
+        "two pyruvate molecules",
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "box": [
+        782,
+        903,
+        90,
+        36
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "pyruvate-to-acetyl-coa",
+      "name": "Transformation of pyruvate into acetyl CoA",
+      "accept": [
+        "transformation of pyruvate into acetyl coa",
+        "acetyl coa formation",
+        "link reaction",
+        "pyruvate oxidation"
+      ],
+      "lines": [
+        52,
+        54,
+        56
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "pyruvate",
+      "name": "Pyruvate",
+      "accept": [
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "box": [
+        191,
+        981,
+        64,
+        22
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "acetyl-coa",
+      "name": "Acetyl CoA",
+      "accept": [
+        "acetyl coa",
+        "acetyl coenzyme a",
+        "acetyl-coa"
+      ],
+      "box": [
+        152,
+        1058,
+        86,
+        22
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "co2",
+      "name": "CO2",
+      "accept": [
+        "co2",
+        "carbon dioxide"
+      ],
+      "lines": [
+        64
+      ],
+      "concept": "metabolic-co2"
+    },
+    {
+      "id": "krebs-cycle",
+      "name": "Krebs cycle",
+      "accept": [
+        "krebs cycle",
+        "citric acid cycle",
+        "tca cycle"
+      ],
+      "lines": [
+        67
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "electron-transport-chain",
+      "name": "NADH shuttles electrons to electron transport chain",
+      "accept": [
+        "nadh shuttles electrons to electron transport chain",
+        "electron transport",
+        "electron transport chain",
+        "etc"
+      ],
+      "lines": [
+        76,
+        77,
+        78
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "final-electron-acceptor",
+      "name": "Oxygen is final electron acceptor",
+      "accept": [
+        "oxygen is final electron acceptor",
+        "final electron acceptor",
+        "o2",
+        "oxygen"
+      ],
+      "lines": [
+        80,
+        82
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "net-36-atp",
+      "name": "Net of about 36 ATPs produced per glucose molecule",
+      "accept": [
+        "net of about 36 atps produced per glucose molecule",
+        "36 atp",
+        "about 36 atp"
+      ],
+      "lines": [
+        95,
+        96
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "lactate-a",
+      "name": "Lactate",
+      "accept": [
+        "lactate",
+        "lactic acid"
+      ],
+      "box": [
+        751,
+        1049,
+        58,
+        24
+      ],
+      "concept": "anaerobic-metabolism"
+    },
+    {
+      "id": "lactate-b",
+      "name": "Lactate",
+      "accept": [
+        "lactate",
+        "lactic acid"
+      ],
+      "box": [
+        848,
+        1049,
+        60,
+        24
+      ],
+      "concept": "anaerobic-metabolism"
+    },
+    {
+      "id": "net-2-atp",
+      "name": "Net of 2 ATPs produced per glucose molecule",
+      "accept": [
+        "net of 2 atps produced per glucose molecule",
+        "2 atp",
+        "two atp"
+      ],
+      "lines": [
+        61,
+        63
+      ],
+      "concept": "anaerobic-metabolism"
+    }
+  ]
+}

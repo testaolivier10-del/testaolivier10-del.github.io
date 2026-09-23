@@ -15,7 +15,13 @@
         0,
         2
       ],
-      "concept": "blood-pressure"
+      "concept": "blood-pressure",
+      "box": [
+        140,
+        10,
+        270,
+        58
+      ]
     },
     {
       "id": "diastolic-blood-pressure",
@@ -32,7 +38,13 @@
         3,
         4
       ],
-      "concept": "blood-pressure"
+      "concept": "blood-pressure",
+      "box": [
+        764,
+        10,
+        278,
+        58
+      ]
     },
     {
       "id": "cuff-pressure",
@@ -62,7 +74,13 @@
         22,
         23
       ],
-      "concept": "bp-measurement"
+      "concept": "bp-measurement",
+      "box": [
+        104,
+        623,
+        198,
+        58
+      ]
     }
   ]
 }

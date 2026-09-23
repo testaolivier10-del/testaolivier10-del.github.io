@@ -139,13 +139,17 @@
     "type": "predict",
     "level": "apply",
     "diff": 2,
+    "predictLevel": 1,
     "core": ["structure-function"],
     "q": "A saturated fatty acid chain is changed so that one pair of its carbons now shares a double bond, bent as in natural fats. Predict the change in each variable.",
     "variables": [
       { "name": "Number of hydrogen atoms on the chain", "answer": "down", "why": "Each carbon in the double bond now uses one of its four bonds on its carbon neighbor, so each holds one fewer hydrogen. The chain loses two hydrogens." },
       { "name": "How tightly many such chains pack together", "answer": "down", "why": "The double bond bends the chain. Bent chains cannot line up closely, so they pack loosely." },
       { "name": "Number of carbon atoms in the chain", "answer": "none", "why": "Changing a single bond to a double bond rearranges bonds between the same carbons. No carbon is added or removed." }
-    ]
+    ],
+    "why": {
+      "correct": "A double bond uses up one bond on each of its two carbons, so the chain holds two fewer hydrogens, and it bends the chain. Bent chains pack loosely. The carbon count does not change."
+    }
   },
   {
     "id": "anp-biomolecules-9",

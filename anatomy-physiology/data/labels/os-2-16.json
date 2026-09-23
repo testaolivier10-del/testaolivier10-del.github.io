@@ -1,0 +1,93 @@
+{
+  "figure": "os-2-16",
+  "labels": [
+    {
+      "id": "acid",
+      "name": "Acid",
+      "accept": [
+        "acid"
+      ],
+      "box": [
+        184,
+        110,
+        52,
+        28
+      ],
+      "concept": "acid"
+    },
+    {
+      "id": "water-acid-before",
+      "name": "Water",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "box": [
+        180,
+        204,
+        66,
+        28
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "water-acid-after",
+      "name": "Water",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "box": [
+        1022,
+        184,
+        78,
+        28
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "accept": [
+        "base"
+      ],
+      "box": [
+        184,
+        650,
+        56,
+        28
+      ],
+      "concept": "base"
+    },
+    {
+      "id": "water-base-before",
+      "name": "Water",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "box": [
+        180,
+        744,
+        66,
+        28
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "water-base-after",
+      "name": "Water",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "box": [
+        1022,
+        714,
+        78,
+        28
+      ],
+      "concept": "water-properties"
+    }
+  ]
+}

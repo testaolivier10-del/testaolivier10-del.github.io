@@ -158,6 +158,7 @@
     "type": "predict",
     "level": "apply",
     "diff": 1,
+    "predictLevel": 2,
     "core": ["homeostasis"],
     "q": "Two beakers each hold one liter at pH 7.4: one of pure water adjusted to that pH, and one containing bicarbonate and carbonic acid. You add the same small amount of strong acid to each. Predict the change in each variable.",
     "variables": [
@@ -165,7 +166,10 @@
       { "name": "Bicarbonate in the buffered beaker", "answer": "down", "why": "Bicarbonate takes up the added hydrogen ions, and each one it takes up turns one bicarbonate into carbonic acid." },
       { "name": "Carbonic acid in the buffered beaker", "answer": "up", "why": "Each bicarbonate that takes up a hydrogen ion becomes a carbonic acid molecule, so carbonic acid rises." },
       { "name": "pH of the unbuffered water", "answer": "down", "why": "Added H+ stays free, so [H+] rises steeply and the pH plunges, in this case by several whole units." }
-    ]
+    ],
+    "why": {
+      "correct": "In plain water, every added hydrogen ion stays free, so pH falls steeply. In the buffered beaker, bicarbonate takes up the hydrogen ions and becomes carbonic acid, so bicarbonate falls and carbonic acid rises."
+    }
   },
   {
     "id": "anp-acids-bases-ph-10",
@@ -235,7 +239,7 @@
     "diff": 2,
     "core": ["homeostasis"],
     "q": "Solution A holds 0.01 mol/L of hydrogen chloride. Solution B holds 0.01 mol/L of carbonic acid. Which has the lower pH?",
-    "options": ["Neither; equal concentrations of acid give equal pH", "Solution B, because carbonic acid holds on to its hydrogen ions", "Solution A, because hydrogen chloride releases nearly all its hydrogen ions", "Solution B, because carbonic acid contains more atoms per molecule"],
+    "options": ["Neither; equal concentrations of acid give equal pH", "Solution B, because carbonic acid holds on to its hydrogen ions", "Solution A, since hydrogen chloride is a strong acid", "Solution B, because carbonic acid contains more atoms per molecule"],
     "correct": 2,
     "why": {
       "correct": "Hydrogen chloride is a strong acid: nearly every unit releases its H+, so [H+] is close to 0.01 mol/L and pH is about 2. Carbonic acid is weak and releases only a small share, so its [H+] is much lower and its pH higher.",
@@ -254,7 +258,7 @@
     "diff": 3,
     "core": ["homeostasis"],
     "q": "A patient with a long-running illness produces extra acid every day. For a while his blood pH stays near normal, but his blood bicarbonate level falls steadily. Then his pH starts to drop quickly. What best explains this pattern?",
-    "options": ["His buffer was working in reverse and releasing acid", "Each hydrogen ion buffered used up one bicarbonate, and the store ran low", "Bicarbonate turned into a strong acid once its level fell", "The pH scale becomes linear below 7.35"],
+    "options": ["His buffer was working in reverse and releasing acid", "Each buffered H+ used up a bicarbonate until few were left", "Bicarbonate turned into a strong acid once its level fell", "The pH scale becomes linear below 7.35"],
     "correct": 1,
     "why": {
       "correct": "A buffer holds acid rather than removing it, and every hydrogen ion bicarbonate takes up converts one bicarbonate into carbonic acid. While bicarbonate is plentiful, pH barely moves. Once the store runs low, new acid has little to take it up, so pH falls sharply.",
@@ -280,7 +284,7 @@
       "options": [
         "Bicarbonate is the weak base of the pair; releasing more base would push pH higher. The weak acid does the work here.",
         "Breathing out carbon dioxide removes carbonic acid, which would raise pH further, not blunt the rise.",
-        "Salts release neither H+ nor OH−, so they do not buffer. The buffer pair is carbonic acid and bicarbonate.",
+        "Sodium chloride and similar salts neither take up nor release H+. The buffer pair here is carbonic acid and bicarbonate.",
         "Correct. The weak acid gives back hydrogen ions, which is the other half of how a buffer works."
       ]
     }
@@ -292,7 +296,7 @@
     "diff": 2,
     "core": ["homeostasis"],
     "q": "Which of these act as bases in water, taking up hydrogen ions directly or by releasing hydroxide? Select all that apply.",
-    "options": ["Bicarbonate ion (HCO3−)", "Sodium chloride (NaCl)", "Sodium hydroxide (NaOH)", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
+    "options": ["Bicarbonate ion (HCO<sub>3</sub><sup>−</sup>)", "Sodium chloride (NaCl)", "Sodium hydroxide (NaOH)", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
     "correct": [0, 2, 4],
     "why": {
       "correct": "Bicarbonate takes up H+ directly to become carbonic acid. Sodium hydroxide releases OH−, and OH− joins H+ to form water. Sodium chloride is a salt and hydrogen chloride is an acid.",

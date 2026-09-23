@@ -1,0 +1,128 @@
+{
+  "figure": "os-20-5",
+  "labels": [
+    {
+      "id": "continuous-capillary",
+      "name": "Continuous",
+      "accept": [
+        "continuous",
+        "continuous capillary",
+        "continuous capillaries"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "fenestrated-capillary",
+      "name": "Fenestrated",
+      "accept": [
+        "fenestrated",
+        "fenestrated capillary",
+        "fenestrated capillaries"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "sinusoid-capillary",
+      "name": "Sinusoid",
+      "accept": [
+        "sinusoid",
+        "sinusoid capillary",
+        "sinusoidal capillary",
+        "sinusoids",
+        "discontinuous capillary"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "basement-membrane",
+      "name": "Basement membrane",
+      "accept": [
+        "basement membrane",
+        "basal lamina"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "basement-membrane"
+    },
+    {
+      "id": "endothelial-layer",
+      "name": "Endothelial layer (tunica intima)",
+      "accept": [
+        "endothelial layer (tunica intima)",
+        "endothelial layer",
+        "endothelium",
+        "tunica intima",
+        "endothelial cells"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "simple-squamous"
+    },
+    {
+      "id": "incomplete-basement-membrane",
+      "name": "Incomplete basement membrane",
+      "accept": [
+        "incomplete basement membrane",
+        "basement membrane",
+        "discontinuous basement membrane"
+      ],
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "intercellular-gap",
+      "name": "Intercellular gap",
+      "accept": [
+        "intercellular gap",
+        "intercellular gaps",
+        "gap"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "intercellular-cleft",
+      "name": "Intercellular cleft",
+      "accept": [
+        "intercellular cleft",
+        "intercellular clefts",
+        "cleft"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "capillary-types"
+    },
+    {
+      "id": "fenestrations",
+      "name": "Fenestrations",
+      "accept": [
+        "fenestrations",
+        "fenestration",
+        "pores"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "capillary-types"
+    }
+  ]
+}

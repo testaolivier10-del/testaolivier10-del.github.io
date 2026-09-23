@@ -266,6 +266,7 @@
     "type": "predict",
     "level": "apply",
     "diff": 1,
+    "predictLevel": 1,
     "core": [
       "structure-function"
     ],
@@ -291,7 +292,10 @@
         "answer": "none",
         "why": "Mass number counts protons and neutrons. Neither changed, and an electron's mass is too small to count."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Forming an ion moves only electrons. One extra electron gives 17 protons against 18 electrons, a net charge of −1, while the protons and neutrons that set the element and the mass number stay the same."
+    }
   },
   {
     "id": "anp-atoms-ions-bonds-12",

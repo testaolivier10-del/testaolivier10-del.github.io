@@ -116,7 +116,7 @@
   ],
   "correct": 3,
   "why": {
-   "correct": "The cell body holds the nucleus and most of the rough ER, Golgi and mitochondria, so it builds nearly all of the neuron's proteins and ships them out along its extensions.",
+   "correct": "The cell body holds the nucleus and most of the rough ER and Golgi, so it builds nearly all of the neuron's proteins and ships them out along its extensions.",
    "options": [
     "The axon has no nucleus; it receives its proteins from the cell body.",
     "Dendrites are extensions of the cell body and rely on it for their proteins.",
@@ -166,7 +166,7 @@
    "A single, very long neuron",
    "The cell body and dendrites of one neuron",
    "A bundle of many axons wrapped in connective tissue",
-   "A cluster of glial cells packed together inside the brain"
+   "A cluster of glial cells inside the brain"
   ],
   "correct": 2,
   "why": {
@@ -303,7 +303,7 @@
   ],
   "q": "A man's heart stops for six minutes before it is restarted. His heart muscle and skin recover, but he has lasting brain damage. Which features of neurons best explain why they were hurt most?",
   "options": [
-   "They are wrapped by glial cells that block oxygen from reaching them",
+   "They are wrapped by glial cells that block oxygen",
    "They have many nuclei that need extra glucose",
    "They are avascular and depend on diffusion",
    "They store little fuel, use a lot of oxygen and do not divide"
@@ -438,7 +438,7 @@
  {
   "id": "anp-nervous-tissue-overview-17",
   "type": "single",
-  "level": "apply",
+  "level": "recall",
   "diff": 2,
   "core": [
    "structure-function"
@@ -453,7 +453,7 @@
   ],
   "correct": 2,
   "why": {
-   "correct": "Counts that dissolve brain tissue and count the nuclei find about 85 billion of each, a ratio near one to one overall, with big differences between regions. The older ten-to-one figure is still repeated in some textbooks.",
+   "correct": "Counts that dissolve brain tissue and count the nuclei find about 86 billion neurons and a similar number of other cells, mostly glia: a ratio near one to one overall, with big differences between regions. The older ten-to-one figure is still repeated in some textbooks.",
    "options": [
     "This is the older, often repeated figure. Direct counts do not support it, though some exams still expect it.",
     "Neurons do not outnumber glia this heavily in the brain as a whole.",
@@ -475,16 +475,16 @@
   "options": [
    "The cell bodies of the neurons whose axons it carries",
    "One very large neuron running the length of the leg",
-   "Axons, connective tissue and small blood vessels",
+   "Axons, glial cells, connective tissue and small blood vessels",
    "Cardiac muscle fibers that move signals along"
   ],
   "correct": 2,
   "why": {
-   "correct": "A nerve is a bundle of axons with connective tissue that carries blood vessels. The cell bodies of those neurons lie in or near the spinal cord, not in the nerve.",
+   "correct": "A nerve is a bundle of axons, and the glial cells that wrap them, with connective tissue that carries blood vessels. The cell bodies of those neurons lie in or near the spinal cord, not in the nerve.",
    "options": [
     "The cell bodies sit in or near the brain and spinal cord. A nerve carries only their axons.",
     "A nerve holds thousands of axons from thousands of neurons, not one cell.",
-    "Correct. Axons, connective tissue and blood vessels make up a nerve.",
+    "Correct. Axons, glial cells, connective tissue and blood vessels make up a nerve.",
     "Signals move along axons by electrical changes, not by muscle. Cardiac muscle is found only in the heart."
    ]
   }

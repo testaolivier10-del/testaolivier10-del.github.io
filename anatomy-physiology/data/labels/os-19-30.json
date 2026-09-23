@@ -12,7 +12,13 @@
       "lines": [
         4
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        0,
+        522,
+        136,
+        24
+      ]
     },
     {
       "id": "pulmonary-valve",
@@ -44,7 +50,13 @@
       "lines": [
         8
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        912,
+        638,
+        136,
+        24
+      ]
     },
     {
       "id": "tricuspid-valve",
@@ -57,7 +69,13 @@
       "lines": [
         9
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        0,
+        648,
+        172,
+        29
+      ]
     }
   ]
 }

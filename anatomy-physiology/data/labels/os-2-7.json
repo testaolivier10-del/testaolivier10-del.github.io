@@ -1,0 +1,92 @@
+{
+  "figure": "os-2-7",
+  "labels": [
+    {
+      "id": "electron-helium",
+      "name": "Electron",
+      "accept": [
+        "electron",
+        "e-",
+        "electrons"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "subatomic-particles"
+    },
+    {
+      "id": "hydrogen",
+      "name": "H (hydrogen)",
+      "accept": [
+        "h (hydrogen)",
+        "h",
+        "hydrogen"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "electron-hydrogen",
+      "name": "Electron",
+      "accept": [
+        "electron",
+        "e-",
+        "electrons"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "subatomic-particles"
+    },
+    {
+      "id": "helium",
+      "name": "He (helium)",
+      "accept": [
+        "he (helium)",
+        "he",
+        "helium"
+      ],
+      "box": [
+        770,
+        168,
+        42,
+        32
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "carbon",
+      "name": "C (carbon)",
+      "accept": [
+        "c (carbon)",
+        "c",
+        "carbon"
+      ],
+      "box": [
+        184,
+        686,
+        30,
+        32
+      ],
+      "concept": "element-compound"
+    },
+    {
+      "id": "neon",
+      "name": "Ne (neon)",
+      "accept": [
+        "ne (neon)",
+        "ne",
+        "neon"
+      ],
+      "box": [
+        768,
+        686,
+        46,
+        32
+      ],
+      "concept": "element-compound"
+    }
+  ]
+}

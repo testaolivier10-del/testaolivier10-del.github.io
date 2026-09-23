@@ -14,7 +14,13 @@
         0,
         1
       ],
-      "concept": "valve-rule"
+      "concept": "valve-rule",
+      "box": [
+        649,
+        1,
+        148,
+        54
+      ]
     },
     {
       "id": "aortic-valve-opens",
@@ -28,7 +34,13 @@
         3,
         5
       ],
-      "concept": "valve-rule"
+      "concept": "valve-rule",
+      "box": [
+        248,
+        96,
+        149,
+        59
+      ]
     },
     {
       "id": "aortic-pressure",
@@ -40,7 +52,13 @@
       "lines": [
         9
       ],
-      "concept": "cycle-phases"
+      "concept": "cycle-phases",
+      "box": [
+        153,
+        225,
+        189,
+        30
+      ]
     },
     {
       "id": "ventricular-pressure",
@@ -71,7 +89,13 @@
         18,
         20
       ],
-      "concept": "valve-rule"
+      "concept": "valve-rule",
+      "box": [
+        682,
+        386,
+        145,
+        60
+      ]
     },
     {
       "id": "mitral-valve-closes",
@@ -87,7 +111,13 @@
         21,
         22
       ],
-      "concept": "valve-rule"
+      "concept": "valve-rule",
+      "box": [
+        224,
+        431,
+        146,
+        55
+      ]
     },
     {
       "id": "atrial-pressure",
@@ -101,7 +131,13 @@
         24,
         25
       ],
-      "concept": "cycle-phases"
+      "concept": "cycle-phases",
+      "box": [
+        420,
+        499,
+        180,
+        30
+      ]
     },
     {
       "id": "heart-sounds",
@@ -113,7 +149,13 @@
       "lines": [
         30
       ],
-      "concept": "heart-sounds"
+      "concept": "heart-sounds",
+      "box": [
+        0,
+        710,
+        165,
+        25
+      ]
     },
     {
       "id": "first-heart-sound",
@@ -128,7 +170,13 @@
       "lines": [
         27
       ],
-      "concept": "heart-sounds"
+      "concept": "heart-sounds",
+      "box": [
+        396,
+        652,
+        46,
+        25
+      ]
     },
     {
       "id": "second-heart-sound",
@@ -143,7 +191,13 @@
       "lines": [
         28
       ],
-      "concept": "heart-sounds"
+      "concept": "heart-sounds",
+      "box": [
+        659,
+        652,
+        55,
+        25
+      ]
     },
     {
       "id": "third-heart-sound",
@@ -158,7 +212,13 @@
       "lines": [
         29
       ],
-      "concept": "heart-sounds"
+      "concept": "heart-sounds",
+      "box": [
+        815,
+        652,
+        50,
+        25
+      ]
     },
     {
       "id": "lub",
@@ -170,7 +230,13 @@
       "lines": [
         31
       ],
-      "concept": "heart-sounds"
+      "concept": "heart-sounds",
+      "box": [
+        370,
+        796,
+        73,
+        26
+      ]
     },
     {
       "id": "dub",
@@ -182,7 +248,13 @@
       "lines": [
         32
       ],
-      "concept": "heart-sounds"
+      "concept": "heart-sounds",
+      "box": [
+        598,
+        796,
+        78,
+        26
+      ]
     }
   ]
 }

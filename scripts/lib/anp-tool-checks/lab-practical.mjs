@@ -22,7 +22,9 @@
    ordering rule (decision 30): a label whose concept is taught after the
    station's topic is never asked and is listed as covered with its exact box,
    and no asked label's name or explanation uses a term taught later; every
-   label on the figure is either asked or covered; every asked label explains
+   label on the figure is asked, covered, or listed with a reason as shown
+   (not a structure) or as a hint (masked in the quiz because it gives an
+   answer away); every asked label explains
    itself; follow-up questions are well formed and never point at an option by
    letter or position. */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
@@ -220,6 +222,22 @@ export function check(data, map) {
         covered.add(c.id);
       });
 
+      // Labels that are not structures to name. "shown": left visible in every
+      // mode (an analogy's labels, a note printed on the figure). "hints":
+      // visible in explore and study, masked in the quiz and the practical
+      // because they give an answer away (a table's row and column headings).
+      const other = new Set();
+      for (const kind of ['shown', 'hints']) (st[kind] || []).forEach(h => {
+        const hw = `${sw} ${kind} ${h && h.id}`;
+        const fl = h && fileLabels.get(h.id);
+        if (!fl) { err(hw, `not in data/labels/${st.figure}.json`); return; }
+        if (!str(h.why)) err(hw, 'why (the reason it is not asked) is missing');
+        if (kind === 'hints' && !sameBox(h.box, fl.box)) err(hw, `box does not match the label file's ${JSON.stringify(fl.box)}`);
+        if (asked.has(h.id) || covered.has(h.id) || other.has(h.id)) err(hw, 'listed twice (asked, covered, shown or hints)');
+        if (isLater(fl.concept, s.topic) || laterTerms(map, topicIndex, s.topic, fl.name).length) err(hw, `names something taught after ${s.topic}: it must be covered, not left visible`);
+        other.add(h.id);
+      });
+
       // Every labeled box on the figure is accounted for: asked, or covered
       // because it names something taught later (never left showing a later
       // word, never silently dropped).
@@ -227,7 +245,7 @@ export function check(data, map) {
         if (!fl.box) { err(`${sw} label ${fl.id}`, 'the label file has no box for it yet; run scripts/anp-figures.py'); continue; }
         const later = isLater(fl.concept, s.topic) || laterTerms(map, topicIndex, s.topic, fl.name).length > 0;
         if (later && !covered.has(fl.id)) err(`${sw} label ${fl.id}`, `names something taught after ${s.topic} and must be listed as covered`);
-        if (!asked.has(fl.id) && !covered.has(fl.id)) err(`${sw} label ${fl.id}`, 'is on the figure but neither asked nor covered (regenerate the tool data)');
+        if (!asked.has(fl.id) && !covered.has(fl.id) && !other.has(fl.id)) err(`${sw} label ${fl.id}`, 'is on the figure but not asked, covered, shown or listed as a hint (regenerate the tool data)');
       }
     });
   });

@@ -8,6 +8,8 @@
    accepted answers, what the structure does, and where it is taught. Labels
    that name something taught after the set's topic are listed as covered
    boxes: painted over for good, never asked (docs/anp-spec.md decision 30).
+   A station may also list "shown" labels (not structures, left visible) and
+   "hints" (headings that would give an answer away, masked while testing).
 
    Modes
      Explore   the printed labels show; tap any to read its name, what it does
@@ -209,7 +211,11 @@
   }
   function figureHtml(st, opts){
     var f = st.fig, mode = opts.mode, z = opts.zoom || 1;
-    var covers = (st.covered || []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
+    // covered: later concepts, painted over in every mode. hints: row or
+    // column headings that would give an answer away, painted over while
+    // being tested (quiz, practical and their review) but shown to study.
+    var testing = mode === 'name' || mode === 'point' || mode === 'show';
+    var covers = (st.covered || []).concat(testing ? st.hints || [] : []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
     var boxes = st.labels.map(function(lab){
       var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"';
       if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
@@ -474,9 +480,8 @@
         paint(header() +
           '<div class="lp-progress"><span class="anp-small">Item ' + (k + 1) + ' of ' + run.length + ' · ' + right + ' right</span><span class="lp-bar"><span style="width:' + (100 * k / run.length) + '%"></span></span></div>' +
           '<p class="lp-prompt" id="lp-prompt">' + prompt + '</p>' +
-          (r.kind === 'name' && !answered ? body : '') +
           '<div class="lp-stage">' + fig + '</div>' +
-          (r.kind === 'point' && !answered ? body : '') +
+          (!answered ? body : '') +
           '<div class="lp-feedback" aria-live="polite">' + fb + '</div>');
         wireSettings();
         wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); if(r.kind === 'name') scrollToBox(app, it.lab); });
@@ -697,8 +702,8 @@
           (secs ? '<span class="lp-timer" role="timer" aria-live="off"><span class="lp-timer-t">' + secs + '</span> s</span>' : '<span class="anp-small">Untimed</span>') + '</div>' +
           (secs ? '<span class="lp-bar lp-timebar"><span></span></span>' : '') +
           '<p class="lp-prompt">' + (S.kind === 'point' ? '<span class="lp-part">(a)</span> Point to: <b>' + esc(it.lab.name) + '</b>' + (pick ? ' <span class="anp-small">Your pick is marked.</span>' : '') : '<span class="lp-part">(a)</span> Name the highlighted structure.') + '</p>' +
-          (S.kind === 'name' ? '<form class="lp-answer" autocomplete="off"><label class="lp-label" for="lp-in">Your answer</label><div class="lp-row"><input id="lp-in" class="lp-input" type="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next"></div></form>' : '') +
           '<div class="lp-stage">' + figureHtml(st, S.kind === 'point' ? { mode: 'point', zoom: z } : { mode: 'name', target: it.lab, zoom: z }) + '</div>' +
+          (S.kind === 'name' ? '<form class="lp-answer" autocomplete="off"><label class="lp-label" for="lp-in">Your answer</label><div class="lp-row"><input id="lp-in" class="lp-input" type="text" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next"></div></form>' : '') +
           (S.follow ? '<div class="lp-follow"><p class="lp-fq"><span class="lp-part">(b)</span> ' + it.lab.follow.q + '</p><div class="anp-opt-btns" role="group" aria-label="Part b answers">' +
             it.lab.follow.order.map(function(i){ return '<button type="button" class="anp-opt" data-i="' + i + '" aria-pressed="' + (fpick === i) + '">' + it.lab.follow.options[i] + '</button>'; }).join('') + '</div></div>' : '') +
           '<div class="lp-actions"><button type="button" class="btn-press sm lp-go">' + (k + 1 < stations.length ? 'Next station' : 'Finish') + ' &rarr;</button><span class="anp-small">No going back.</span></div>');
@@ -759,7 +764,7 @@
         '<h3>Every station</h3><ol class="lp-review-list">' + stations.map(function(s, i){
           var lab = s.it.lab, f = lab.follow;
           var yours = s.kind === 'point' ? (s.g.pick ? 'You pointed to ' + esc(s.g.pick.name) + '.' : 'No box chosen.') : (s.typed ? 'You wrote “' + esc(s.typed) + '”.' : 'No answer.');
-          return '<li class="lp-rev ' + (s.ok ? 'ok' : 'no') + '"><div class="lp-rev-head"><span class="lp-rev-n">' + (i + 1) + '</span><span class="lp-rev-verdict">' + (s.ok ? 'Right' : 'Missed') + '</span><span class="anp-small">' + esc(s.it.set.title) + ' · ' + (s.kind === 'point' ? 'Point to' : 'Name it') + '</span></div>' +
+          return '<li class="lp-rev ' + (s.ok ? 'is-ok' : 'is-no') + '"><div class="lp-rev-head"><span class="lp-rev-n">' + (i + 1) + '</span><span class="lp-rev-verdict">' + (s.ok ? 'Right' : 'Missed') + '</span><span class="anp-small">' + esc(s.it.set.title) + ' · ' + (s.kind === 'point' ? 'Point to' : 'Name it') + '</span></div>' +
             '<div class="lp-rev-body"><div class="lp-rev-fig">' + figureHtml(s.it.st, { mode: 'show', target: lab, noZoom: true }) + '</div><div class="lp-rev-text">' +
             '<p><b>' + esc(lab.name) + '</b>' + (s.ok && s.g && s.g.exact === false && s.kind === 'name' ? ' <span class="anp-small">(accepted; check the spelling)</span>' : '') + '</p><p class="anp-small">' + yours + '</p>' +
             (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +

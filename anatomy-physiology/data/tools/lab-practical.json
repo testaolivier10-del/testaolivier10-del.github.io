@@ -2829,6 +2829,302 @@
    ]
   },
   {
+   "id": "conduction-system",
+   "title": "Conduction system",
+   "chapter": "cardiovascular",
+   "topic": "conduction-system",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-19-18",
+     "topic": "conduction-system",
+     "core": [
+      "communication",
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "bachmanns-bundle",
+       "name": "Bachman’s bundle",
+       "accept": [
+        "bachmann's bundle",
+        "bachmann bundle",
+        "bachman bundle",
+        "interatrial band"
+       ],
+       "box": [
+        887,
+        262,
+        179,
+        21
+       ],
+       "concept": "sa-node",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "sinoatrial-node",
+       "name": "Sinoatrial (SA) node",
+       "accept": [
+        "sa node",
+        "sinus node",
+        "sinoatrial"
+       ],
+       "box": [
+        61,
+        287,
+        104,
+        49
+       ],
+       "concept": "sa-node",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "left-atrium",
+       "name": "Left atrium",
+       "accept": [
+        "la"
+       ],
+       "box": [
+        887,
+        318,
+        107,
+        21
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
+       "follow": {
+        "q": "Blood entering the left atrium has just come from where?",
+        "options": [
+         "The lungs, through the pulmonary veins",
+         "The body, through the venae cavae",
+         "The right atrium, through the interatrial septum",
+         "The left ventricle, through the mitral valve"
+        ],
+        "correct": 0,
+        "why": "The pulmonary veins drain the lungs into the left atrium. After birth the interatrial septum is closed, and the mitral valve lets blood move only from atrium to ventricle, never back.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "anterior-internodal",
+       "name": "Anterior internodal",
+       "accept": [
+        "anterior internodal pathway",
+        "anterior internodal tract"
+       ],
+       "box": [
+        61,
+        339,
+        178,
+        21
+       ],
+       "concept": "sa-node",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "atrioventricular-node",
+       "name": "Atrioventricular (AV) node",
+       "accept": [
+        "av node"
+       ],
+       "box": [
+        61,
+        368,
+        149,
+        48
+       ],
+       "concept": "av-node",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "av-bundle",
+       "name": "Atrioventricular (AV) bundle (bundle of His)",
+       "accept": [
+        "av bundle",
+        "bundle of his",
+        "his bundle"
+       ],
+       "box": [
+        886,
+        398,
+        212,
+        48
+       ],
+       "concept": "ventricular-conduction",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "middle-internodal",
+       "name": "Middle internodal",
+       "accept": [
+        "middle internodal pathway",
+        "middle internodal tract"
+       ],
+       "box": [
+        61,
+        422,
+        167,
+        21
+       ],
+       "concept": "sa-node",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "posterior-internodal",
+       "name": "Posterior internodal",
+       "accept": [
+        "posterior internodal pathway",
+        "posterior internodal tract"
+       ],
+       "box": [
+        62,
+        453,
+        188,
+        21
+       ],
+       "concept": "sa-node",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "left-ventricle",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        887,
+        499,
+        127,
+        21
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
+       "follow": {
+        "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
+        "options": [
+         "Left ventricle",
+         "Right ventricle",
+         "Left atrium",
+         "Right atrium"
+        ],
+        "correct": 0,
+        "why": "The left ventricle must raise its pressure above the pressure in the aorta before its valve opens. Higher arterial pressure means more work every beat, and muscle that works harder grows thicker.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "right-atrium",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        62,
+        501,
+        121,
+        26
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
+       "follow": {
+        "q": "Which vessels empty into the right atrium?",
+        "options": [
+         "The superior and inferior venae cavae",
+         "The pulmonary veins",
+         "The pulmonary trunk and aorta",
+         "The left and right pulmonary arteries"
+        ],
+        "correct": 0,
+        "why": "The venae cavae carry blood back from the body and open into the right atrium. The pulmonary veins return blood from the lungs to the left atrium, and the pulmonary trunk and aorta leave the ventricles.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "right-ventricle",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        62,
+        538,
+        140,
+        25
+       ],
+       "concept": "chambers",
+       "taught": "heart-chambers-valves",
+       "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
+       "follow": {
+        "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
+        "options": [
+         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps less blood per beat than the left ventricle",
+         "It receives blood that has less oxygen, so its muscle is weaker",
+         "Its wall is thinned by the pressure of the lungs pressing on it"
+        ],
+        "correct": 0,
+        "why": "Both ventricles pump the same volume per beat. The difference is pressure: pushing blood through the short, low-resistance route to the lungs takes far less pressure than pushing it through the whole body, so the right ventricle builds less muscle.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "bundle-branches",
+       "name": "Right and left bundle branches",
+       "accept": [],
+       "box": [
+        887,
+        538,
+        199,
+        44
+       ],
+       "concept": "ventricular-conduction",
+       "taught": "conduction-system",
+       "fn": ""
+      },
+      {
+       "id": "purkinje-fibers",
+       "name": "Purkinje fibers",
+       "accept": [
+        "purkinje fibres",
+        "purkinje fiber",
+        "subendocardial conducting network"
+       ],
+       "box": [
+        887,
+        605,
+        141,
+        26
+       ],
+       "concept": "ventricular-conduction",
+       "taught": "conduction-system",
+       "fn": ""
+      }
+     ],
+     "covered": [
+      {
+       "id": "arch-of-aorta",
+       "box": [
+        886,
+        145,
+        130,
+        21
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "major-arteries",
    "title": "Major arteries",
    "chapter": "cardiovascular",
@@ -3907,6 +4203,15 @@
    "alt": "Front and back views of the heart showing its own blood vessels. Red arteries branch from the base of the aorta: one runs down the front groove toward the tip, one curves around the left side in the groove between upper and lower chambers, and one runs around the right side and down the back. Blue veins run beside them and gather into a wide vein in the groove on the back of the heart that empties into the right upper chamber.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.15",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
+   "license": "CC BY 4.0"
+  },
+  "os-19-18": {
+   "src": "figures/os-19-18.jpg",
+   "w": 1100,
+   "h": 737,
+   "alt": "The heart cut open in a frontal plane, seen from the front, with its conduction pathway drawn as yellow lines. A small node sits high in the wall of the right upper chamber near where the large vein from above enters. Three pathways run from it down through the right upper chamber to a second node low in the wall between the upper chambers, and a band crosses to the left upper chamber. From the second node a single bundle runs into the wall between the lower chambers, splits into right and left branches that run down toward the tip, and then fans out as fine fibers up the walls of both lower chambers.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.18",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity",
    "license": "CC BY 4.0"
   },
   "os-20-24": {
