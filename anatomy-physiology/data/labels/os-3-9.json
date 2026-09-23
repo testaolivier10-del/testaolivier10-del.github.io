@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        134,
+        0,
+        170,
+        24
+      ]
     },
     {
       "id": "na-gradient",
@@ -26,7 +32,13 @@
       "lines": [
         2
       ],
-      "concept": "ecf-icf-composition"
+      "concept": "ecf-icf-composition",
+      "box": [
+        971,
+        29,
+        43,
+        20
+      ]
     },
     {
       "id": "sodium",
@@ -42,7 +54,13 @@
         9,
         12
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        176,
+        83,
+        76,
+        41
+      ]
     },
     {
       "id": "potassium",
@@ -58,7 +76,13 @@
         10,
         14
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        780,
+        86,
+        98,
+        40
+      ]
     },
     {
       "id": "plasma-membrane",
@@ -71,7 +95,13 @@
         19,
         20
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        0,
+        216,
+        98,
+        40
+      ]
     },
     {
       "id": "phosphate",
@@ -84,7 +114,13 @@
       "lines": [
         22
       ],
-      "concept": "atp-hydrolysis"
+      "concept": "atp-hydrolysis",
+      "box": [
+        553,
+        337,
+        101,
+        23
+      ]
     },
     {
       "id": "atp",
@@ -96,7 +132,13 @@
       "lines": [
         26
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        436,
+        368,
+        46,
+        19
+      ]
     },
     {
       "id": "adp",
@@ -108,7 +150,13 @@
       "lines": [
         27
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        658,
+        380,
+        51,
+        20
+      ]
     },
     {
       "id": "cytoplasm",
@@ -121,7 +169,13 @@
       "lines": [
         29
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        134,
+        478,
+        100,
+        24
+      ]
     },
     {
       "id": "k-gradient",
@@ -134,7 +188,13 @@
       "lines": [
         30
       ],
-      "concept": "ecf-icf-composition"
+      "concept": "ecf-icf-composition",
+      "box": [
+        1018,
+        478,
+        32,
+        20
+      ]
     }
   ]
 }

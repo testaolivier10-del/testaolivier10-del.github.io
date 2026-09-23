@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "voltage"
+      "concept": "voltage",
+      "box": [
+        538,
+        24,
+        51,
+        18
+      ]
     },
     {
       "id": "minus-70-mv",
@@ -25,7 +31,13 @@
       "lines": [
         1
       ],
-      "concept": "resting-membrane-potential"
+      "concept": "resting-membrane-potential",
+      "box": [
+        437,
+        70,
+        60,
+        18
+      ]
     },
     {
       "id": "plus-70-mv",
@@ -38,7 +50,13 @@
       "lines": [
         2
       ],
-      "concept": "voltage"
+      "concept": "voltage",
+      "box": [
+        636,
+        70,
+        69,
+        18
+      ]
     },
     {
       "id": "reference-electrode",
@@ -49,7 +67,13 @@
       "lines": [
         3
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        35,
+        165,
+        195,
+        22
+      ]
     },
     {
       "id": "recording-microelectrode",
@@ -62,7 +86,13 @@
       "lines": [
         4
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        853,
+        166,
+        245,
+        25
+      ]
     },
     {
       "id": "voltmeter",
@@ -73,7 +103,13 @@
       "lines": [
         5
       ],
-      "concept": "voltage"
+      "concept": "voltage",
+      "box": [
+        516,
+        179,
+        99,
+        21
+      ]
     },
     {
       "id": "extracellular-fluid",

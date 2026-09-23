@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        655,
+        23,
+        124,
+        23
+      ]
     },
     {
       "id": "nuclear-envelope",
@@ -24,7 +30,13 @@
       "lines": [
         1
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        0,
+        55,
+        153,
+        24
+      ]
     },
     {
       "id": "chromatin",
@@ -39,7 +51,13 @@
         2,
         3
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        0,
+        112,
+        112,
+        44
+      ]
     },
     {
       "id": "nucleus",
@@ -50,7 +68,13 @@
       "lines": [
         4
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        655,
+        156,
+        79,
+        19
+      ]
     },
     {
       "id": "nucleolus",
@@ -61,7 +85,13 @@
       "lines": [
         5
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        0,
+        220,
+        91,
+        20
+      ]
     },
     {
       "id": "cisternae",
@@ -76,7 +106,13 @@
       "lines": [
         6
       ],
-      "concept": "endoplasmic-reticulum"
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        98,
+        578,
+        93,
+        19
+      ]
     }
   ]
 }

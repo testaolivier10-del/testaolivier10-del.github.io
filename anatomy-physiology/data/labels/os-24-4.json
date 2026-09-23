@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "glycolysis-basic"
+      "concept": "glycolysis-basic",
+      "box": [
+        13,
+        9,
+        107,
+        23
+      ]
     },
     {
       "id": "glucose",
@@ -22,7 +28,13 @@
       "lines": [
         1
       ],
-      "concept": "glucose"
+      "concept": "glucose",
+      "box": [
+        550,
+        28,
+        82,
+        19
+      ]
     },
     {
       "id": "cytoplasm",
@@ -34,7 +46,13 @@
       "lines": [
         2
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        902,
+        109,
+        100,
+        24
+      ]
     },
     {
       "id": "pyruvate-molecules",
@@ -48,7 +66,13 @@
         3,
         4
       ],
-      "concept": "glycolysis-basic"
+      "concept": "glycolysis-basic",
+      "box": [
+        442,
+        166,
+        97,
+        40
+      ]
     },
     {
       "id": "pyruvate-to-acetyl-coa",
@@ -64,7 +88,13 @@
         5,
         6
       ],
-      "concept": "aerobic-respiration"
+      "concept": "aerobic-respiration",
+      "box": [
+        13,
+        275,
+        256,
+        44
+      ]
     },
     {
       "id": "pyruvate",
@@ -76,7 +106,13 @@
       "lines": [
         7
       ],
-      "concept": "glycolysis-basic"
+      "concept": "glycolysis-basic",
+      "box": [
+        382,
+        354,
+        86,
+        23
+      ]
     },
     {
       "id": "matrix-acetyl-coa",
@@ -89,7 +125,13 @@
         8,
         9
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        903,
+        382,
+        119,
+        40
+      ]
     },
     {
       "id": "co2-acetyl-coa",
@@ -101,7 +143,13 @@
       "lines": [
         10
       ],
-      "concept": "metabolic-co2"
+      "concept": "metabolic-co2",
+      "box": [
+        339,
+        410,
+        48,
+        24
+      ]
     },
     {
       "id": "acetyl-coa",
@@ -114,7 +162,13 @@
       "lines": [
         11
       ],
-      "concept": "aerobic-respiration"
+      "concept": "aerobic-respiration",
+      "box": [
+        322,
+        465,
+        106,
+        24
+      ]
     },
     {
       "id": "krebs-cycle",
@@ -128,7 +182,13 @@
       "lines": [
         12
       ],
-      "concept": "aerobic-respiration"
+      "concept": "aerobic-respiration",
+      "box": [
+        14,
+        549,
+        117,
+        23
+      ]
     },
     {
       "id": "co2-krebs",
@@ -140,7 +200,13 @@
       "lines": [
         13
       ],
-      "concept": "metabolic-co2"
+      "concept": "metabolic-co2",
+      "box": [
+        626,
+        589,
+        48,
+        24
+      ]
     },
     {
       "id": "matrix-krebs",
@@ -153,7 +219,13 @@
         14,
         15
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        903,
+        629,
+        119,
+        40
+      ]
     },
     {
       "id": "oxidative-phosphorylation",
@@ -184,7 +256,13 @@
         22,
         23
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        903,
+        925,
+        119,
+        61
+      ]
     },
     {
       "id": "redox-reactions",
@@ -198,7 +276,13 @@
         24,
         25
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        693,
+        995,
+        88,
+        41
+      ]
     },
     {
       "id": "h2o",
@@ -210,7 +294,13 @@
       "lines": [
         26
       ],
-      "concept": "aerobic-respiration"
+      "concept": "aerobic-respiration",
+      "box": [
+        163,
+        1085,
+        47,
+        23
+      ]
     }
   ]
 }

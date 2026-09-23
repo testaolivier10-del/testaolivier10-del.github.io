@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        31,
+        0,
+        198,
+        20
+      ]
     },
     {
       "id": "oculus",
@@ -44,7 +50,13 @@
         2,
         4
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        133,
+        30,
+        76,
+        54
+      ]
     },
     {
       "id": "bucca",
@@ -57,7 +69,13 @@
       "lines": [
         3
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        345,
+        57,
+        183,
+        20
+      ]
     },
     {
       "id": "auris",
@@ -70,7 +88,13 @@
       "lines": [
         6
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        344,
+        92,
+        137,
+        20
+      ]
     },
     {
       "id": "facies",
@@ -85,7 +109,13 @@
         9,
         11
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        133,
+        93,
+        61,
+        53
+      ]
     },
     {
       "id": "nasus",
@@ -98,7 +128,13 @@
       "lines": [
         10
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        345,
+        116,
+        167,
+        21
+      ]
     },
     {
       "id": "cervicis-anterior",
@@ -111,7 +147,13 @@
       "lines": [
         14
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        345,
+        149,
+        196,
+        20
+      ]
     },
     {
       "id": "oris",
@@ -124,7 +166,13 @@
       "lines": [
         17
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        159,
+        146,
+        20
+      ]
     },
     {
       "id": "mentis",
@@ -138,7 +186,13 @@
         19,
         22
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        189,
+        109,
+        37
+      ]
     },
     {
       "id": "thorax",
@@ -155,7 +209,13 @@
         23,
         25
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        434,
+        189,
+        107,
+        53
+      ]
     },
     {
       "id": "axilla",
@@ -169,7 +229,13 @@
         27,
         28
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        234,
+        116,
+        37
+      ]
     },
     {
       "id": "mamma",
@@ -184,7 +250,13 @@
         31,
         34
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        434,
+        253,
+        92,
+        53
+      ]
     },
     {
       "id": "brachium-anterior",
@@ -198,7 +270,13 @@
         33,
         36
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        283,
+        104,
+        37
+      ]
     },
     {
       "id": "trunk",
@@ -209,7 +287,13 @@
       "lines": [
         38
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        541,
+        310,
+        56,
+        17
+      ]
     },
     {
       "id": "abdomen",
@@ -222,7 +306,13 @@
         39,
         42
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        434,
+        316,
+        95,
+        37
+      ]
     },
     {
       "id": "antecubitis",
@@ -237,7 +327,13 @@
         43,
         45
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        328,
+        121,
+        54
+      ]
     },
     {
       "id": "umbilicus",
@@ -252,7 +348,13 @@
         49,
         52
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        434,
+        363,
+        87,
+        54
+      ]
     },
     {
       "id": "antebrachium-anterior",
@@ -267,7 +369,13 @@
         54,
         56
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        392,
+        113,
+        54
+      ]
     },
     {
       "id": "hip",
@@ -281,7 +389,13 @@
         55,
         58
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        434,
+        425,
+        59,
+        36
+      ]
     },
     {
       "id": "carpus",
@@ -296,7 +410,13 @@
         62,
         63
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        452,
+        62,
+        54
+      ]
     },
     {
       "id": "pollex",
@@ -309,7 +429,13 @@
         65,
         68
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        518,
+        70,
+        34
+      ]
     },
     {
       "id": "pelvis",
@@ -322,7 +448,13 @@
         67,
         70
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        468,
+        523,
+        63,
+        37
+      ]
     },
     {
       "id": "palma",
@@ -336,7 +468,13 @@
         71,
         74
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        0,
+        560,
+        104,
+        37
+      ]
     },
     {
       "id": "digits-fingers",
@@ -369,7 +507,13 @@
         73,
         76
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        387,
+        572,
+        126,
+        38
+      ]
     },
     {
       "id": "pubis",
@@ -382,7 +526,13 @@
         79,
         81
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        387,
+        637,
+        59,
+        37
+      ]
     },
     {
       "id": "patella",
@@ -413,7 +563,13 @@
         87,
         89
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        386,
+        685,
+        75,
+        53
+      ]
     },
     {
       "id": "crus",
@@ -427,7 +583,13 @@
         91,
         92
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        75,
+        727,
+        87,
+        38
+      ]
     },
     {
       "id": "tarsus",
@@ -442,7 +604,13 @@
         97,
         99
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        74,
+        778,
+        69,
+        53
+      ]
     },
     {
       "id": "digits-toes",
@@ -475,7 +643,13 @@
         102,
         103
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        380,
+        856,
+        88,
+        37
+      ]
     },
     {
       "id": "hallux",
@@ -487,7 +661,13 @@
       "lines": [
         106
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        64,
+        919,
+        143,
+        21
+      ]
     },
     {
       "id": "cephalon",
@@ -516,7 +696,13 @@
         5,
         8
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        678,
+        89,
+        81,
+        38
+      ]
     },
     {
       "id": "cervicis-posterior",
@@ -530,7 +716,13 @@
         13,
         16
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        922,
+        140,
+        129,
+        37
+      ]
     },
     {
       "id": "dorsum",
@@ -545,7 +737,13 @@
         15,
         18
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        600,
+        139,
+        72,
+        53
+      ]
     },
     {
       "id": "brachium-posterior",
@@ -560,7 +758,13 @@
         24,
         26
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        600,
+        198,
+        85,
+        53
+      ]
     },
     {
       "id": "olecranon",
@@ -576,7 +780,13 @@
         35,
         37
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        600,
+        256,
+        90,
+        71
+      ]
     },
     {
       "id": "lumbus",
@@ -591,7 +801,13 @@
         44,
         47
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        600,
+        332,
+        74,
+        54
+      ]
     },
     {
       "id": "upper-limb",
@@ -602,7 +818,13 @@
       "lines": [
         48
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        1049,
+        369,
+        53,
+        34
+      ]
     },
     {
       "id": "sacrum",
@@ -615,7 +837,13 @@
         50,
         53
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        600,
+        391,
+        70,
+        37
+      ]
     },
     {
       "id": "antebrachium-posterior",
@@ -630,7 +858,13 @@
         59,
         61
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        535,
+        434,
+        117,
+        53
+      ]
     },
     {
       "id": "manus",
@@ -645,7 +879,13 @@
         66,
         69
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        568,
+        501,
+        74,
+        53
+      ]
     },
     {
       "id": "gluteus",
@@ -660,7 +900,13 @@
         75,
         77
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        622,
+        569,
+        82,
+        54
+      ]
     },
     {
       "id": "femur-posterior",
@@ -675,7 +921,13 @@
         80,
         83
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        621,
+        628,
+        75,
+        54
+      ]
     },
     {
       "id": "lower-limb",
@@ -687,7 +939,13 @@
         84,
         88
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        954,
+        684,
+        59,
+        34
+      ]
     },
     {
       "id": "popliteus",
@@ -701,7 +959,13 @@
         86,
         90
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        622,
+        690,
+        102,
+        54
+      ]
     },
     {
       "id": "sura",
@@ -716,7 +980,13 @@
         94,
         96
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        622,
+        746,
+        57,
+        54
+      ]
     },
     {
       "id": "calcaneus",
@@ -732,7 +1002,13 @@
         100,
         101
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        622,
+        808,
+        110,
+        53
+      ]
     },
     {
       "id": "planta",
@@ -747,7 +1023,13 @@
         104,
         105
       ],
-      "concept": "regional-terms"
+      "concept": "regional-terms",
+      "box": [
+        622,
+        877,
+        118,
+        37
+      ]
     }
   ]
 }

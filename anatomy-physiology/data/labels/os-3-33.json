@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "cell-cycle-control"
+      "concept": "cell-cycle-control",
+      "box": [
+        239,
+        21,
+        133,
+        24
+      ]
     },
     {
       "id": "cyclin-b-cdk1",
@@ -41,7 +47,13 @@
       "lines": [
         1
       ],
-      "concept": "cell-cycle-control"
+      "concept": "cell-cycle-control",
+      "box": [
+        481,
+        74,
+        122,
+        24
+      ]
     },
     {
       "id": "g2-phase",
@@ -72,7 +84,13 @@
         2,
         3
       ],
-      "concept": "cell-cycle-control"
+      "concept": "cell-cycle-control",
+      "box": [
+        571,
+        183,
+        82,
+        41
+      ]
     },
     {
       "id": "cell-growth-g2",
@@ -165,7 +183,13 @@
         4,
         5
       ],
-      "concept": "cell-cycle-control"
+      "concept": "cell-cycle-control",
+      "box": [
+        18,
+        347,
+        81,
+        41
+      ]
     },
     {
       "id": "cyclin-e-cdk2",
@@ -180,7 +204,13 @@
         6,
         7
       ],
-      "concept": "cell-cycle-control"
+      "concept": "cell-cycle-control",
+      "box": [
+        531,
+        447,
+        81,
+        41
+      ]
     },
     {
       "id": "g1-checkpoint",
@@ -195,7 +225,13 @@
         8,
         9
       ],
-      "concept": "cell-cycle-control"
+      "concept": "cell-cycle-control",
+      "box": [
+        311,
+        540,
+        133,
+        44
+      ]
     }
   ]
 }

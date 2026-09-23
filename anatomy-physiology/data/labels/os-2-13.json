@@ -13,7 +13,13 @@
         1,
         3
       ],
-      "concept": "enzyme"
+      "concept": "enzyme",
+      "box": [
+        62,
+        66,
+        95,
+        68
+      ]
     },
     {
       "id": "less-activation-energy",
@@ -28,7 +34,13 @@
         2,
         4
       ],
-      "concept": "enzyme"
+      "concept": "enzyme",
+      "box": [
+        729,
+        105,
+        148,
+        46
+      ]
     },
     {
       "id": "reactants-a",
@@ -41,7 +53,13 @@
       "lines": [
         5
       ],
-      "concept": "chemical-reaction"
+      "concept": "chemical-reaction",
+      "box": [
+        47,
+        215,
+        98,
+        20
+      ]
     },
     {
       "id": "reactants-b",
@@ -54,7 +72,13 @@
       "lines": [
         6
       ],
-      "concept": "chemical-reaction"
+      "concept": "chemical-reaction",
+      "box": [
+        613,
+        215,
+        98,
+        20
+      ]
     },
     {
       "id": "product-a",
@@ -66,7 +90,13 @@
       "lines": [
         9
       ],
-      "concept": "chemical-reaction"
+      "concept": "chemical-reaction",
+      "box": [
+        443,
+        343,
+        78,
+        20
+      ]
     },
     {
       "id": "product-b",
@@ -78,7 +108,13 @@
       "lines": [
         10
       ],
-      "concept": "chemical-reaction"
+      "concept": "chemical-reaction",
+      "box": [
+        1010,
+        343,
+        78,
+        20
+      ]
     },
     {
       "id": "without-enzyme",
@@ -91,7 +127,13 @@
       "lines": [
         11
       ],
-      "concept": "enzyme"
+      "concept": "enzyme",
+      "box": [
+        76,
+        384,
+        323,
+        25
+      ]
     },
     {
       "id": "with-enzyme",
@@ -104,7 +146,13 @@
       "lines": [
         12
       ],
-      "concept": "enzyme"
+      "concept": "enzyme",
+      "box": [
+        654,
+        384,
+        296,
+        25
+      ]
     }
   ]
 }

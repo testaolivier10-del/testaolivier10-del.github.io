@@ -81,7 +81,13 @@
       "lines": [
         2
       ],
-      "concept": "electric-charge"
+      "concept": "electric-charge",
+      "box": [
+        159,
+        1101,
+        248,
+        29
+      ]
     },
     {
       "id": "net-negative-charge",
@@ -95,7 +101,13 @@
         3,
         4
       ],
-      "concept": "electric-charge"
+      "concept": "electric-charge",
+      "box": [
+        670,
+        1101,
+        259,
+        29
+      ]
     },
     {
       "id": "chloride-in-crystal",
@@ -110,7 +122,13 @@
       "lines": [
         5
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        99,
+        1301,
+        39,
+        26
+      ]
     },
     {
       "id": "sodium-in-crystal",
@@ -125,7 +143,13 @@
       "lines": [
         6
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        100,
+        1469,
+        47,
+        26
+      ]
     }
   ]
 }

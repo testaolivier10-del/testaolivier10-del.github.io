@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "action-potential-basic"
+      "concept": "action-potential-basic",
+      "box": [
+        31,
+        16,
+        47,
+        21
+      ]
     },
     {
       "id": "voltage-rises",
@@ -27,7 +33,13 @@
       "lines": [
         1
       ],
-      "concept": "polarization-terms"
+      "concept": "polarization-terms",
+      "box": [
+        169,
+        105,
+        131,
+        25
+      ]
     },
     {
       "id": "voltage-falls",
@@ -41,7 +53,13 @@
       "lines": [
         2
       ],
-      "concept": "polarization-terms"
+      "concept": "polarization-terms",
+      "box": [
+        399,
+        105,
+        123,
+        25
+      ]
     },
     {
       "id": "zero-mv",
@@ -54,7 +72,13 @@
       "lines": [
         3
       ],
-      "concept": "voltage"
+      "concept": "voltage",
+      "box": [
+        52,
+        132,
+        24,
+        21
+      ]
     },
     {
       "id": "threshold",
@@ -66,7 +90,13 @@
       "lines": [
         4
       ],
-      "concept": "threshold"
+      "concept": "threshold",
+      "box": [
+        550,
+        238,
+        105,
+        21
+      ]
     },
     {
       "id": "minus-55-mv",
@@ -79,7 +109,13 @@
       "lines": [
         5
       ],
-      "concept": "threshold"
+      "concept": "threshold",
+      "box": [
+        43,
+        278,
+        35,
+        20
+      ]
     },
     {
       "id": "at-rest",
@@ -93,7 +129,13 @@
       "lines": [
         7
       ],
-      "concept": "resting-membrane-potential"
+      "concept": "resting-membrane-potential",
+      "box": [
+        123,
+        306,
+        73,
+        21
+      ]
     },
     {
       "id": "minus-70-mv",
@@ -106,7 +148,13 @@
       "lines": [
         8
       ],
-      "concept": "resting-membrane-potential"
+      "concept": "resting-membrane-potential",
+      "box": [
+        43,
+        324,
+        35,
+        20
+      ]
     },
     {
       "id": "stimulus-applied",
@@ -118,7 +166,13 @@
       "lines": [
         9
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        174,
+        371,
+        165,
+        25
+      ]
     },
     {
       "id": "end-of-action-potential",
@@ -131,7 +185,13 @@
       "lines": [
         10
       ],
-      "concept": "action-potential-basic"
+      "concept": "action-potential-basic",
+      "box": [
+        522,
+        371,
+        217,
+        25
+      ]
     },
     {
       "id": "return-to-rest",
@@ -143,7 +203,13 @@
       "lines": [
         6
       ],
-      "concept": "resting-membrane-potential"
+      "concept": "resting-membrane-potential",
+      "box": [
+        607,
+        303,
+        134,
+        21
+      ]
     }
   ]
 }

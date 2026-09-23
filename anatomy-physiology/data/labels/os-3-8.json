@@ -26,7 +26,13 @@
       "lines": [
         0
       ],
-      "concept": "tonicity"
+      "concept": "tonicity",
+      "box": [
+        192,
+        0,
+        76,
+        19
+      ]
     },
     {
       "id": "hypotonic",

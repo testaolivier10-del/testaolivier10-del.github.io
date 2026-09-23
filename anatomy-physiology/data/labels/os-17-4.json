@@ -14,7 +14,13 @@
         0,
         1
       ],
-      "concept": "messenger-solubility"
+      "concept": "messenger-solubility",
+      "box": [
+        122,
+        19,
+        148,
+        53
+      ]
     },
     {
       "id": "transport-protein",
@@ -27,7 +33,13 @@
       "lines": [
         2
       ],
-      "concept": "messenger-solubility"
+      "concept": "messenger-solubility",
+      "box": [
+        72,
+        84,
+        198,
+        28
+      ]
     },
     {
       "id": "capillary",

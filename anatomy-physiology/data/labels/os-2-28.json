@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        197,
+        12,
+        118,
+        23
+      ]
     },
     {
       "id": "nitrogenous-base",
@@ -25,7 +31,13 @@
         4,
         5
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        791,
+        109,
+        112,
+        41
+      ]
     },
     {
       "id": "cytosine",
@@ -39,7 +51,13 @@
         9,
         12
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        38,
+        205,
+        85,
+        41
+      ]
     },
     {
       "id": "thymine",
@@ -53,7 +71,13 @@
         10,
         13
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        182,
+        205,
+        161,
+        40
+      ]
     },
     {
       "id": "uracil",
@@ -67,7 +91,13 @@
         11,
         14
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        369,
+        205,
+        136,
+        41
+      ]
     },
     {
       "id": "purines",
@@ -79,7 +109,13 @@
       "lines": [
         15
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        216,
+        267,
+        80,
+        19
+      ]
     },
     {
       "id": "phosphate-group",
@@ -92,7 +128,13 @@
         20,
         21
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        535,
+        355,
+        101,
+        44
+      ]
     },
     {
       "id": "pentose-sugar",
@@ -107,7 +149,13 @@
         22,
         25
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        721,
+        402,
+        80,
+        45
+      ]
     },
     {
       "id": "adenine",
@@ -121,7 +169,13 @@
         27,
         29
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        62,
+        448,
+        81,
+        40
+      ]
     },
     {
       "id": "guanine",
@@ -135,7 +189,13 @@
         26,
         28
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        331,
+        447,
+        83,
+        41
+      ]
     },
     {
       "id": "phosphodiester-linkage",
@@ -149,7 +209,13 @@
         30,
         31
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        713,
+        471,
+        142,
+        45
+      ]
     },
     {
       "id": "polynucleotide",
@@ -162,7 +228,13 @@
       "lines": [
         34
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        894,
+        574,
+        133,
+        24
+      ]
     },
     {
       "id": "deoxyribose",
@@ -174,7 +246,13 @@
       "lines": [
         53
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        39,
+        762,
+        204,
+        23
+      ]
     },
     {
       "id": "ribose",
@@ -186,7 +264,13 @@
       "lines": [
         54
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        359,
+        762,
+        154,
+        23
+      ]
     }
   ]
 }

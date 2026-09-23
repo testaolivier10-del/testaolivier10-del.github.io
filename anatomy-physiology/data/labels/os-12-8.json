@@ -13,7 +13,13 @@
       "lines": [
         1
       ],
-      "concept": "neuron-parts-basic"
+      "concept": "neuron-parts-basic",
+      "box": [
+        416,
+        17,
+        168,
+        26
+      ]
     },
     {
       "id": "axon",
@@ -24,7 +30,13 @@
       "lines": [
         5
       ],
-      "concept": "neuron-parts-basic"
+      "concept": "neuron-parts-basic",
+      "box": [
+        517,
+        93,
+        59,
+        21
+      ]
     },
     {
       "id": "oligodendrocyte",
@@ -36,7 +48,13 @@
       "lines": [
         6
       ],
-      "concept": "cns-glia"
+      "concept": "cns-glia",
+      "box": [
+        667,
+        93,
+        160,
+        26
+      ]
     },
     {
       "id": "cell-membrane",
@@ -49,7 +67,13 @@
       "lines": [
         7
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        2,
+        136,
+        153,
+        21
+      ]
     },
     {
       "id": "dendrites",
@@ -61,7 +85,13 @@
       "lines": [
         11
       ],
-      "concept": "neuron-parts-basic"
+      "concept": "neuron-parts-basic",
+      "box": [
+        3,
+        201,
+        100,
+        21
+      ]
     },
     {
       "id": "node-of-ranvier",
@@ -75,7 +105,13 @@
       "lines": [
         13
       ],
-      "concept": "myelin"
+      "concept": "myelin",
+      "box": [
+        475,
+        309,
+        162,
+        21
+      ]
     },
     {
       "id": "myelin-sheath",
@@ -87,7 +123,13 @@
       "lines": [
         14
       ],
-      "concept": "myelin"
+      "concept": "myelin",
+      "box": [
+        474,
+        355,
+        139,
+        25
+      ]
     },
     {
       "id": "synapse",
@@ -100,7 +142,13 @@
       "lines": [
         17
       ],
-      "concept": "synapse-basic"
+      "concept": "synapse-basic",
+      "box": [
+        474,
+        496,
+        93,
+        25
+      ]
     }
   ]
 }

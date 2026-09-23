@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "stem-cell-potency"
+      "concept": "stem-cell-potency",
+      "box": [
+        253,
+        18,
+        316,
+        26
+      ]
     },
     {
       "id": "human-embryonic-stem-cell",
@@ -26,7 +32,13 @@
       "lines": [
         1
       ],
-      "concept": "stem-cell"
+      "concept": "stem-cell",
+      "box": [
+        733,
+        408,
+        265,
+        25
+      ]
     },
     {
       "id": "pluripotent",
@@ -40,7 +52,13 @@
       "lines": [
         2
       ],
-      "concept": "stem-cell-potency"
+      "concept": "stem-cell-potency",
+      "box": [
+        244,
+        421,
+        336,
+        25
+      ]
     },
     {
       "id": "induced-pluripotent",
@@ -54,7 +72,13 @@
       "lines": [
         3
       ],
-      "concept": "stem-cell-potency"
+      "concept": "stem-cell-potency",
+      "box": [
+        820,
+        442,
+        282,
+        25
+      ]
     },
     {
       "id": "endoderm",
@@ -66,7 +90,13 @@
       "lines": [
         4
       ],
-      "concept": "germ-layers"
+      "concept": "germ-layers",
+      "box": [
+        94,
+        484,
+        144,
+        21
+      ]
     },
     {
       "id": "mesoderm",
@@ -78,7 +108,13 @@
       "lines": [
         5
       ],
-      "concept": "germ-layers"
+      "concept": "germ-layers",
+      "box": [
+        339,
+        484,
+        146,
+        21
+      ]
     },
     {
       "id": "ectoderm",
@@ -90,7 +126,13 @@
       "lines": [
         6
       ],
-      "concept": "germ-layers"
+      "concept": "germ-layers",
+      "box": [
+        578,
+        484,
+        137,
+        21
+      ]
     },
     {
       "id": "multipotent",
@@ -104,7 +146,13 @@
       "lines": [
         7
       ],
-      "concept": "stem-cell-potency"
+      "concept": "stem-cell-potency",
+      "box": [
+        298,
+        830,
+        228,
+        25
+      ]
     },
     {
       "id": "adult-sources",
@@ -119,7 +167,13 @@
         8,
         9
       ],
-      "concept": "stem-cell"
+      "concept": "stem-cell",
+      "box": [
+        838,
+        894,
+        264,
+        47
+      ]
     },
     {
       "id": "lung",
@@ -132,7 +186,13 @@
       "lines": [
         10
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        39,
+        1209,
+        57,
+        25
+      ]
     },
     {
       "id": "pancreas",
@@ -145,7 +205,13 @@
       "lines": [
         11
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        154,
+        1209,
+        98,
+        21
+      ]
     },
     {
       "id": "heart-muscle",
@@ -159,7 +225,13 @@
         12,
         16
       ],
-      "concept": "cardiac-muscle-tissue"
+      "concept": "cardiac-muscle-tissue",
+      "box": [
+        302,
+        1209,
+        78,
+        45
+      ]
     },
     {
       "id": "red-blood-cell",
@@ -174,7 +246,13 @@
         13,
         17
       ],
-      "concept": "blood-cells-basic"
+      "concept": "blood-cells-basic",
+      "box": [
+        427,
+        1209,
+        104,
+        45
+      ]
     },
     {
       "id": "skin",
@@ -187,7 +265,13 @@
       "lines": [
         14
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        600,
+        1209,
+        51,
+        21
+      ]
     },
     {
       "id": "neuron",
@@ -200,7 +284,13 @@
       "lines": [
         15
       ],
-      "concept": "neuron"
+      "concept": "neuron",
+      "box": [
+        722,
+        1209,
+        79,
+        21
+      ]
     }
   ]
 }

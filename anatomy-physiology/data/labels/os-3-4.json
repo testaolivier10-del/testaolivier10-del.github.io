@@ -12,7 +12,13 @@
         0,
         2
       ],
-      "concept": "glycocalyx"
+      "concept": "glycocalyx",
+      "box": [
+        153,
+        0,
+        234,
+        44
+      ]
     },
     {
       "id": "glycolipid",
@@ -26,7 +32,13 @@
         3,
         4
       ],
-      "concept": "glycocalyx"
+      "concept": "glycocalyx",
+      "box": [
+        657,
+        3,
+        186,
+        62
+      ]
     },
     {
       "id": "peripheral-membrane-protein",
@@ -40,7 +52,13 @@
         5,
         7
       ],
-      "concept": "membrane-proteins"
+      "concept": "membrane-proteins",
+      "box": [
+        0,
+        314,
+        189,
+        44
+      ]
     },
     {
       "id": "phospholipid-bilayer",
@@ -54,7 +72,13 @@
         6,
         8
       ],
-      "concept": "phospholipid-bilayer"
+      "concept": "phospholipid-bilayer",
+      "box": [
+        760,
+        315,
+        117,
+        44
+      ]
     },
     {
       "id": "integral-membrane-protein",
@@ -69,7 +93,13 @@
         9,
         12
       ],
-      "concept": "membrane-proteins"
+      "concept": "membrane-proteins",
+      "box": [
+        204,
+        358,
+        169,
+        44
+      ]
     },
     {
       "id": "cholesterol",
@@ -80,7 +110,13 @@
       "lines": [
         10
       ],
-      "concept": "steroid"
+      "concept": "steroid",
+      "box": [
+        434,
+        358,
+        107,
+        20
+      ]
     },
     {
       "id": "channel-protein",
@@ -94,7 +130,13 @@
       "lines": [
         11
       ],
-      "concept": "ion-channel"
+      "concept": "ion-channel",
+      "box": [
+        595,
+        358,
+        144,
+        23
+      ]
     }
   ]
 }

@@ -11,7 +11,13 @@
       "lines": [
         1
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        277,
+        0,
+        213,
+        23
+      ]
     },
     {
       "id": "hair",
@@ -22,7 +28,13 @@
       "lines": [
         2
       ],
-      "concept": "hair-follicle"
+      "concept": "hair-follicle",
+      "box": [
+        0,
+        16,
+        46,
+        19
+      ]
     },
     {
       "id": "skin",
@@ -33,7 +45,13 @@
       "lines": [
         12
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        106,
+        47,
+        20
+      ]
     },
     {
       "id": "nails",
@@ -45,7 +63,13 @@
       "lines": [
         14
       ],
-      "concept": "nail"
+      "concept": "nail",
+      "box": [
+        0,
+        389,
+        53,
+        20
+      ]
     },
     {
       "id": "skeletal-system",
@@ -57,7 +81,13 @@
       "lines": [
         0
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        765,
+        0,
+        155,
+        24
+      ]
     },
     {
       "id": "cartilage",
@@ -68,7 +98,13 @@
       "lines": [
         3
       ],
-      "concept": "cartilage"
+      "concept": "cartilage",
+      "box": [
+        492,
+        36,
+        88,
+        24
+      ]
     },
     {
       "id": "bones",
@@ -80,7 +116,13 @@
       "lines": [
         13
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        492,
+        195,
+        65,
+        20
+      ]
     },
     {
       "id": "joints",
@@ -93,7 +135,13 @@
       "lines": [
         15
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        491,
+        395,
+        62,
+        19
+      ]
     },
     {
       "id": "muscular-system",
@@ -105,7 +153,13 @@
       "lines": [
         16
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        267,
+        557,
+        165,
+        23
+      ]
     },
     {
       "id": "skeletal-muscles",
@@ -119,7 +173,13 @@
         30,
         31
       ],
-      "concept": "skeletal-muscle-tissue"
+      "concept": "skeletal-muscle-tissue",
+      "box": [
+        0,
+        766,
+        80,
+        40
+      ]
     },
     {
       "id": "tendons",
@@ -131,7 +191,13 @@
       "lines": [
         34
       ],
-      "concept": "tendon-ligament"
+      "concept": "tendon-ligament",
+      "box": [
+        0,
+        939,
+        82,
+        20
+      ]
     },
     {
       "id": "nervous-system",
@@ -143,7 +209,13 @@
       "lines": [
         17
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        766,
+        557,
+        157,
+        23
+      ]
     },
     {
       "id": "brain",
@@ -154,7 +226,13 @@
       "lines": [
         18
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        493,
+        570,
+        55,
+        20
+      ]
     },
     {
       "id": "spinal-cord",
@@ -166,7 +244,13 @@
         28,
         29
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        492,
+        699,
+        64,
+        41
+      ]
     },
     {
       "id": "peripheral-nerves",
@@ -181,7 +265,13 @@
         32,
         33
       ],
-      "concept": "nerve"
+      "concept": "nerve",
+      "box": [
+        470,
+        856,
+        96,
+        40
+      ]
     },
     {
       "id": "endocrine-system",
@@ -193,7 +283,13 @@
       "lines": [
         35
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        267,
+        1100,
+        175,
+        23
+      ]
     },
     {
       "id": "pituitary-gland",
@@ -206,7 +302,13 @@
         37,
         40
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        1123,
+        80,
+        44
+      ]
     },
     {
       "id": "thyroid-gland",
@@ -219,7 +321,13 @@
         43,
         46
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        1175,
+        73,
+        44
+      ]
     },
     {
       "id": "pancreas",
@@ -230,7 +338,13 @@
       "lines": [
         51
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        1272,
+        90,
+        20
+      ]
     },
     {
       "id": "adrenal-glands",
@@ -244,7 +358,13 @@
         52,
         53
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        1335,
+        75,
+        44
+      ]
     },
     {
       "id": "testes",
@@ -257,7 +377,13 @@
       "lines": [
         55
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        55,
+        1436,
+        67,
+        20
+      ]
     },
     {
       "id": "ovaries",
@@ -269,7 +395,13 @@
       "lines": [
         57
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        289,
+        1570,
+        77,
+        20
+      ]
     },
     {
       "id": "cardiovascular-system",
@@ -282,7 +414,13 @@
       "lines": [
         36
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        766,
+        1100,
+        214,
+        23
+      ]
     },
     {
       "id": "heart",
@@ -293,7 +431,13 @@
       "lines": [
         48
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        492,
+        1224,
+        59,
+        20
+      ]
     },
     {
       "id": "blood-vessels",
@@ -308,7 +452,13 @@
         54,
         56
       ],
-      "concept": "blood-vessel-basics"
+      "concept": "blood-vessel-basics",
+      "box": [
+        491,
+        1428,
+        75,
+        41
+      ]
     }
   ]
 }

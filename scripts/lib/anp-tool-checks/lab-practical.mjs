@@ -19,8 +19,10 @@
    figure is registered with an allowed license, its image exists and its size,
    alt text and credit match the entry; every asked label matches the label
    file (id, name, box, concept, accepted answers drawn from the file's); the
-   ordering rule (decision 30): a label whose concept is taught after the
-   station's topic is never asked and is listed as covered with its exact box,
+   ordering rule (decision 30, laterLabel in scripts/lib/anp-build.mjs): a
+   label whose concept is taught after the station's topic, whose printed name
+   uses a later term, or that the label file marks "cover" (printed wrong or
+   misleading) is never asked and is listed as covered with its exact box,
    and no asked label's name or explanation uses a term taught later; every
    label on the figure is asked, covered, or listed with a reason as shown
    (not a structure) or as a hint (masked in the quiz because it gives an
@@ -30,7 +32,7 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { scanTerms, termRegex, indexMap } from '../anp-map.mjs';
+import { scanPage, indexMap } from '../anp-map.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const COURSE = join(ROOT, 'anatomy-physiology');
@@ -53,21 +55,13 @@ const str = v => typeof v === 'string' && v.trim().length > 0;
 const sameBox = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === 4 && b.length === 4 && a.every((v, i) => v === b[i]);
 const norm = s => String(s).toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
 
-/* Terms taught after `topicId` that appear in `text`. */
+/* Terms taught after `topicId` that appear in `text`: the same scan the page
+   check runs (scanPage), so a figure label or an explanation is held to the
+   ordering rule exactly as a page is. */
+const escHtml = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 function laterTerms(map, topicIndex, topicId, text) {
-  const here = topicIndex.get(topicId);
-  const out = [];
-  if (here === undefined) return out;
-  const t = textOf(text);
-  for (const c of map.concepts) {
-    const there = topicIndex.get(c.taughtIn);
-    if (there === undefined || there <= here) continue;
-    for (const term of scanTerms(c)) {
-      const m = t.match(termRegex(term));
-      if (m) { out.push(`"${m[0]}" (${c.id}, taught in ${c.taughtIn})`); break; }
-    }
-  }
-  return out;
+  if (topicIndex.get(topicId) === undefined) return [];
+  return scanPage(map, `<p>${escHtml(textOf(text))}</p>`, topicId).map(p => p.replace(/^uses /, '').replace(/; teach it first.*$/, ''));
 }
 
 function registeredFigures() {
@@ -105,6 +99,11 @@ export function check(data, map) {
   const setIds = new Set();
   const itemIds = new Set();
   const usedFigures = new Set();
+  // A label is covered for good when it names a concept taught after the
+  // topic, when its printed name uses a later term, or when the label file
+  // marks it "cover" (printed wrong or misleading): laterLabel in
+  // scripts/lib/anp-build.mjs, the rule every lesson and notes page follows.
+  const mustCover = (fl, topicId) => !!fl.cover || isLater(fl.concept, topicId) || laterTerms(map, topicIndex, topicId, fl.name).length > 0;
   const isLater = (conceptId, topicId) => {
     const c = conceptId && concepts.get(conceptId);
     return !!c && topicIndex.get(c.taughtIn) > topicIndex.get(topicId);
@@ -184,6 +183,7 @@ export function check(data, map) {
           else if (lab.taught !== c.taughtIn) err(lw, `taught must be "${c.taughtIn}" (where ${lab.concept} is taught)`);
         } else if (lab.taught != null) err(lw, 'taught is set but the label has no concept');
         // The ordering rule: a later label is never asked.
+        if (fl.cover) err(lw, 'the label file marks it "cover" (printed wrong or misleading): cover it instead of asking it');
         if (isLater(lab.concept, s.topic)) err(lw, `names ${lab.concept}, taught after ${s.topic}: cover it instead of asking it`);
         const lateName = laterTerms(map, topicIndex, s.topic, lab.name);
         if (lateName.length) err(lw, `the label's own words are taught after ${s.topic}: ${lateName.join(', ')}; cover it`);
@@ -218,7 +218,7 @@ export function check(data, map) {
         if (!fl) { err(cw, `not in data/labels/${st.figure}.json`); return; }
         if (!sameBox(c.box, fl.box)) err(cw, `box does not match the label file's ${JSON.stringify(fl.box)}`);
         if (asked.has(c.id)) err(cw, 'both asked and covered');
-        if (!isLater(fl.concept, s.topic) && !laterTerms(map, topicIndex, s.topic, fl.name).length) err(cw, `is covered but names nothing taught after ${s.topic}: ask it instead`);
+        if (!mustCover(fl, s.topic)) err(cw, `is covered but is neither marked "cover" nor names anything taught after ${s.topic}: ask it instead`);
         covered.add(c.id);
       });
 
@@ -234,7 +234,7 @@ export function check(data, map) {
         if (!str(h.why)) err(hw, 'why (the reason it is not asked) is missing');
         if (kind === 'hints' && !sameBox(h.box, fl.box)) err(hw, `box does not match the label file's ${JSON.stringify(fl.box)}`);
         if (asked.has(h.id) || covered.has(h.id) || other.has(h.id)) err(hw, 'listed twice (asked, covered, shown or hints)');
-        if (isLater(fl.concept, s.topic) || laterTerms(map, topicIndex, s.topic, fl.name).length) err(hw, `names something taught after ${s.topic}: it must be covered, not left visible`);
+        if (mustCover(fl, s.topic)) err(hw, `must be covered (later term or marked "cover"), not left visible`);
         other.add(h.id);
       });
 
@@ -243,8 +243,7 @@ export function check(data, map) {
       // word, never silently dropped).
       for (const fl of file.labels || []) {
         if (!fl.box) { err(`${sw} label ${fl.id}`, 'the label file has no box for it yet; run scripts/anp-figures.py'); continue; }
-        const later = isLater(fl.concept, s.topic) || laterTerms(map, topicIndex, s.topic, fl.name).length > 0;
-        if (later && !covered.has(fl.id)) err(`${sw} label ${fl.id}`, `names something taught after ${s.topic} and must be listed as covered`);
+        if (mustCover(fl, s.topic) && !covered.has(fl.id)) err(`${sw} label ${fl.id}`, fl.cover ? 'is marked "cover" in the label file and must be listed as covered' : `names something taught after ${s.topic} and must be listed as covered`);
         if (!asked.has(fl.id) && !covered.has(fl.id) && !other.has(fl.id)) err(`${sw} label ${fl.id}`, 'is on the figure but not asked, covered, shown or listed as a hint (regenerate the tool data)');
       }
     });

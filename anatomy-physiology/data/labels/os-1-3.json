@@ -14,7 +14,13 @@
         0,
         1
       ],
-      "concept": "chemical-level"
+      "concept": "chemical-level",
+      "box": [
+        518,
+        104,
+        83,
+        37
+      ]
     },
     {
       "id": "oxygen-atom",
@@ -27,7 +33,13 @@
       "lines": [
         2
       ],
-      "concept": "chemical-level"
+      "concept": "chemical-level",
+      "box": [
+        504,
+        183,
+        111,
+        22
+      ]
     },
     {
       "id": "chemical-level",
@@ -39,7 +51,13 @@
       "lines": [
         3
       ],
-      "concept": "chemical-level"
+      "concept": "chemical-level",
+      "box": [
+        493,
+        211,
+        127,
+        18
+      ]
     },
     {
       "id": "water-molecule",
@@ -52,7 +70,13 @@
       "lines": [
         7
       ],
-      "concept": "chemical-level"
+      "concept": "chemical-level",
+      "box": [
+        534,
+        327,
+        127,
+        18
+      ]
     },
     {
       "id": "smooth-muscle-cell",
@@ -65,7 +89,13 @@
       "lines": [
         8
       ],
-      "concept": "smooth-muscle-tissue"
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        550,
+        390,
+        156,
+        18
+      ]
     },
     {
       "id": "cellular-level",
@@ -78,7 +108,13 @@
       "lines": [
         10
       ],
-      "concept": "cell"
+      "concept": "cell",
+      "box": [
+        411,
+        420,
+        115,
+        18
+      ]
     },
     {
       "id": "organelle-1",
@@ -90,7 +126,13 @@
       "lines": [
         11
       ],
-      "concept": "organelle"
+      "concept": "organelle",
+      "box": [
+        640,
+        422,
+        85,
+        22
+      ]
     },
     {
       "id": "cell-fluid",
@@ -103,7 +145,13 @@
       "lines": [
         14
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        665,
+        463,
+        76,
+        18
+      ]
     },
     {
       "id": "organelle-2",
@@ -115,7 +163,13 @@
       "lines": [
         17
       ],
-      "concept": "organelle"
+      "concept": "organelle",
+      "box": [
+        545,
+        515,
+        85,
+        22
+      ]
     },
     {
       "id": "smooth-muscle-tissue",
@@ -127,7 +181,13 @@
       "lines": [
         19
       ],
-      "concept": "smooth-muscle-tissue"
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        360,
+        568,
+        174,
+        18
+      ]
     },
     {
       "id": "tissue-level",
@@ -139,7 +199,13 @@
       "lines": [
         20
       ],
-      "concept": "tissue"
+      "concept": "tissue",
+      "box": [
+        647,
+        611,
+        106,
+        19
+      ]
     },
     {
       "id": "bladder-organ",
@@ -151,7 +217,13 @@
       "lines": [
         21
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        589,
+        735,
+        70,
+        19
+      ]
     },
     {
       "id": "organ-level",
@@ -163,7 +235,13 @@
       "lines": [
         22
       ],
-      "concept": "organ"
+      "concept": "organ",
+      "box": [
+        371,
+        796,
+        102,
+        22
+      ]
     },
     {
       "id": "smooth-muscle",
@@ -176,7 +254,13 @@
         25,
         27
       ],
-      "concept": "smooth-muscle-tissue"
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        791,
+        848,
+        69,
+        39
+      ]
     },
     {
       "id": "skeletal-muscle",
@@ -189,7 +273,13 @@
         28,
         29
       ],
-      "concept": "skeletal-muscle-tissue"
+      "concept": "skeletal-muscle-tissue",
+      "box": [
+        589,
+        880,
+        71,
+        40
+      ]
     },
     {
       "id": "urinary-tract-system",
@@ -201,7 +291,13 @@
       "lines": [
         30
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        174,
+        937,
+        160,
+        21
+      ]
     },
     {
       "id": "kidney",
@@ -213,7 +309,13 @@
       "lines": [
         31
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        551,
+        960,
+        64,
+        22
+      ]
     },
     {
       "id": "organ-system-level",
@@ -225,7 +327,13 @@
       "lines": [
         32
       ],
-      "concept": "organ-system"
+      "concept": "organ-system",
+      "box": [
+        707,
+        982,
+        164,
+        22
+      ]
     },
     {
       "id": "ureter",
@@ -237,7 +345,13 @@
       "lines": [
         33
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        552,
+        996,
+        60,
+        18
+      ]
     },
     {
       "id": "bladder-system",
@@ -249,7 +363,13 @@
       "lines": [
         38
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        570,
+        1049,
+        72,
+        19
+      ]
     },
     {
       "id": "urethra",
@@ -260,7 +380,13 @@
       "lines": [
         39
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        552,
+        1072,
+        87,
+        30
+      ]
     },
     {
       "id": "organismal-level",
@@ -273,7 +399,13 @@
       "lines": [
         41
       ],
-      "concept": "organism"
+      "concept": "organism",
+      "box": [
+        368,
+        1159,
+        144,
+        22
+      ]
     }
   ]
 }

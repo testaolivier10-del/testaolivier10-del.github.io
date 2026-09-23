@@ -14,7 +14,13 @@
         0,
         1
       ],
-      "concept": "serous-membrane"
+      "concept": "serous-membrane",
+      "box": [
+        371,
+        21,
+        120,
+        50
+      ]
     },
     {
       "id": "pericardial-cavity",
@@ -27,7 +33,13 @@
         2,
         3
       ],
-      "concept": "pericardial-cavity"
+      "concept": "pericardial-cavity",
+      "box": [
+        371,
+        103,
+        110,
+        50
+      ]
     },
     {
       "id": "parietal-pericardium",
@@ -41,7 +53,13 @@
         4,
         5
       ],
-      "concept": "serous-membrane"
+      "concept": "serous-membrane",
+      "box": [
+        372,
+        185,
+        119,
+        50
+      ]
     },
     {
       "id": "air-space",
@@ -53,7 +71,13 @@
       "lines": [
         6
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        371,
+        275,
+        99,
+        25
+      ]
     },
     {
       "id": "balloon",
@@ -64,7 +88,13 @@
       "lines": [
         7
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        372,
+        336,
+        80,
+        21
+      ]
     }
   ]
 }

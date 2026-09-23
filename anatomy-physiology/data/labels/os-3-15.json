@@ -27,7 +27,13 @@
         0,
         1
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        475,
+        207,
+        90,
+        41
+      ]
     },
     {
       "id": "rough-er",
@@ -73,7 +79,13 @@
       "lines": [
         2
       ],
-      "concept": "golgi"
+      "concept": "golgi",
+      "box": [
+        480,
+        314,
+        92,
+        20
+      ]
     },
     {
       "id": "trans-face",
@@ -86,7 +98,13 @@
       "lines": [
         8
       ],
-      "concept": "golgi"
+      "concept": "golgi",
+      "box": [
+        480,
+        482,
+        91,
+        20
+      ]
     },
     {
       "id": "golgi-apparatus",
@@ -180,7 +198,13 @@
       "lines": [
         6
       ],
-      "concept": "golgi"
+      "concept": "golgi",
+      "box": [
+        657,
+        400,
+        142,
+        23
+      ]
     }
   ]
 }

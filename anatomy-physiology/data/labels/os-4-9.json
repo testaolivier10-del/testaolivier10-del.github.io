@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        484,
+        7,
+        128,
+        24
+      ]
     },
     {
       "id": "tubular",
@@ -26,7 +32,13 @@
       "lines": [
         1
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        1007,
+        53,
+        81,
+        19
+      ]
     },
     {
       "id": "simple-tubular",
@@ -38,7 +50,13 @@
       "lines": [
         2
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        630,
+        56,
+        141,
+        24
+      ]
     },
     {
       "id": "alveolar",
@@ -54,7 +72,13 @@
         3,
         5
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        8,
+        73,
+        86,
+        45
+      ]
     },
     {
       "id": "intestinal-glands",
@@ -66,7 +90,13 @@
       "lines": [
         4
       ],
-      "concept": "absorptive-surface"
+      "concept": "absorptive-surface",
+      "box": [
+        801,
+        94,
+        145,
+        23
+      ]
     },
     {
       "id": "simple-alveolar",
@@ -80,7 +110,13 @@
       "lines": [
         6
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        161,
+        101,
+        219,
+        24
+      ]
     },
     {
       "id": "surface-epithelium",
@@ -128,7 +164,13 @@
         12,
         14
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        373,
+        145,
+        142,
+        134
+      ]
     },
     {
       "id": "gland-cells",
@@ -143,7 +185,13 @@
         13,
         15
       ],
-      "concept": "gland"
+      "concept": "gland",
+      "box": [
+        109,
+        244,
+        62,
+        42
+      ]
     },
     {
       "id": "simple-coiled-tubular",
@@ -156,7 +204,13 @@
       "lines": [
         16
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        601,
+        292,
+        200,
+        23
+      ]
     },
     {
       "id": "merocrine-sweat-glands",
@@ -172,7 +226,13 @@
         17,
         18
       ],
-      "concept": "sweat-glands"
+      "concept": "sweat-glands",
+      "box": [
+        800,
+        333,
+        148,
+        46
+      ]
     },
     {
       "id": "simple-branched-alveolar",
@@ -185,7 +245,13 @@
       "lines": [
         19
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        153,
+        414,
+        237,
+        23
+      ]
     },
     {
       "id": "sebaceous-glands",
@@ -200,7 +266,13 @@
         20,
         21
       ],
-      "concept": "sebaceous-gland"
+      "concept": "sebaceous-gland",
+      "box": [
+        366,
+        505,
+        140,
+        46
+      ]
     },
     {
       "id": "simple-branched-tubular",
@@ -212,7 +284,13 @@
       "lines": [
         22
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        586,
+        535,
+        230,
+        24
+      ]
     },
     {
       "id": "gastric-mucous-glands",
@@ -229,7 +307,13 @@
         25,
         26
       ],
-      "concept": "gastric-glands"
+      "concept": "gastric-glands",
+      "box": [
+        800,
+        582,
+        194,
+        87
+      ]
     },
     {
       "id": "compound-alveolar",
@@ -243,7 +327,13 @@
       "lines": [
         27
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        130,
+        820,
+        257,
+        24
+      ]
     },
     {
       "id": "compound-tubuloalveolar",
@@ -256,7 +346,13 @@
       "lines": [
         28
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        428,
+        820,
+        242,
+        24
+      ]
     },
     {
       "id": "compound-tubular",
@@ -268,7 +364,13 @@
       "lines": [
         29
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        754,
+        820,
+        179,
+        24
+      ]
     },
     {
       "id": "compound-tubular-examples",
@@ -302,7 +404,13 @@
         34,
         36
       ],
-      "concept": "salivary-glands"
+      "concept": "salivary-glands",
+      "box": [
+        439,
+        1067,
+        223,
+        68
+      ]
     },
     {
       "id": "mammary-glands",
@@ -314,7 +422,13 @@
       "lines": [
         32
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        182,
+        1068,
+        154,
+        23
+      ]
     },
     {
       "id": "compound-ducts",
@@ -328,7 +442,13 @@
       "lines": [
         37
       ],
-      "concept": "exocrine-gland"
+      "concept": "exocrine-gland",
+      "box": [
+        465,
+        1159,
+        165,
+        24
+      ]
     }
   ]
 }

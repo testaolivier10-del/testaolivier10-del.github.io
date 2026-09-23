@@ -11,7 +11,13 @@
       "lines": [
         14
       ],
-      "concept": "transcription"
+      "concept": "transcription",
+      "box": [
+        621,
+        412,
+        164,
+        25
+      ]
     },
     {
       "id": "rna-transcript",
@@ -26,7 +32,13 @@
       "lines": [
         28
       ],
-      "concept": "rna"
+      "concept": "rna",
+      "box": [
+        194,
+        519,
+        150,
+        25
+      ]
     }
   ]
 }

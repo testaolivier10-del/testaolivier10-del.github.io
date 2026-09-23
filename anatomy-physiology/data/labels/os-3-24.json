@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        88,
+        7,
+        124,
+        20
+      ]
     },
     {
       "id": "free-nucleotides",
@@ -24,7 +30,13 @@
       "lines": [
         1
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        276,
+        47,
+        149,
+        20
+      ]
     },
     {
       "id": "dna-polymerase-top",
@@ -36,7 +48,13 @@
       "lines": [
         2
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        572,
+        48,
+        153,
+        24
+      ]
     },
     {
       "id": "leading-strand",
@@ -48,7 +66,13 @@
       "lines": [
         6
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        643,
+        210,
+        135,
+        23
+      ]
     },
     {
       "id": "helicase",
@@ -60,7 +84,13 @@
       "lines": [
         7
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        440,
+        260,
+        83,
+        19
+      ]
     },
     {
       "id": "template-dna",
@@ -76,7 +106,13 @@
         9,
         11
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        0,
+        266,
+        95,
+        61
+      ]
     },
     {
       "id": "lagging-strand",
@@ -89,7 +125,13 @@
         10,
         12
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        419,
+        299,
+        79,
+        40
+      ]
     },
     {
       "id": "replication-fork",
@@ -102,7 +144,13 @@
         15,
         16
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        164,
+        350,
+        105,
+        40
+      ]
     },
     {
       "id": "adenine",
@@ -114,7 +162,13 @@
       "lines": [
         17
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        88,
+        410,
+        81,
+        20
+      ]
     },
     {
       "id": "thymine",
@@ -126,7 +180,13 @@
       "lines": [
         18
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        89,
+        435,
+        84,
+        23
+      ]
     },
     {
       "id": "cytosine",
@@ -138,7 +198,13 @@
       "lines": [
         19
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        90,
+        459,
+        85,
+        23
+      ]
     },
     {
       "id": "guanine",
@@ -150,7 +216,13 @@
       "lines": [
         20
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        90,
+        483,
+        83,
+        20
+      ]
     },
     {
       "id": "dna-polymerase-bottom",
@@ -162,7 +234,13 @@
       "lines": [
         21
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        332,
+        484,
+        153,
+        23
+      ]
     },
     {
       "id": "template-strand",
@@ -176,7 +254,13 @@
       "lines": [
         22
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        553,
+        484,
+        268,
+        23
+      ]
     }
   ]
 }

@@ -11,7 +11,13 @@
       "lines": [
         1
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        108,
+        26,
+        153,
+        20
+      ]
     },
     {
       "id": "channel-protein",
@@ -26,7 +32,13 @@
         10,
         12
       ],
-      "concept": "ion-channel"
+      "concept": "ion-channel",
+      "box": [
+        147,
+        183,
+        81,
+        45
+      ]
     },
     {
       "id": "membrane-a",
@@ -39,7 +51,13 @@
         13,
         14
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        0,
+        303,
+        102,
+        41
+      ]
     },
     {
       "id": "cytoplasm-a",
@@ -52,7 +70,13 @@
       "lines": [
         20
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        107,
+        521,
+        100,
+        24
+      ]
     },
     {
       "id": "ecf-b",
@@ -64,7 +88,13 @@
       "lines": [
         22
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        458,
+        609,
+        153,
+        19
+      ]
     },
     {
       "id": "membrane-b",
@@ -77,7 +107,13 @@
         43,
         44
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        685,
+        816,
+        98,
+        41
+      ]
     },
     {
       "id": "carrier-proteins",
@@ -92,7 +128,13 @@
         46,
         48
       ],
-      "concept": "facilitated-diffusion"
+      "concept": "facilitated-diffusion",
+      "box": [
+        331,
+        897,
+        79,
+        44
+      ]
     },
     {
       "id": "cytoplasm-b",
@@ -105,7 +147,13 @@
       "lines": [
         55
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        455,
+        966,
+        100,
+        23
+      ]
     }
   ]
 }

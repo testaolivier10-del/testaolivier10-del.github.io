@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "tight-junction"
+      "concept": "tight-junction",
+      "box": [
+        184,
+        19,
+        131,
+        23
+      ]
     },
     {
       "id": "membranes-tight",
@@ -27,7 +33,13 @@
         6,
         7
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        26,
+        90,
+        107,
+        62
+      ]
     },
     {
       "id": "strands-of-transmembrane-proteins",
@@ -44,7 +56,13 @@
         12,
         13
       ],
-      "concept": "membrane-proteins"
+      "concept": "membrane-proteins",
+      "box": [
+        25,
+        200,
+        139,
+        66
+      ]
     },
     {
       "id": "intercellular-space-tight",
@@ -56,7 +74,13 @@
         23,
         26
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        25,
+        336,
+        110,
+        45
+      ]
     },
     {
       "id": "gap-junction",
@@ -68,7 +92,13 @@
       "lines": [
         1
       ],
-      "concept": "gap-junction"
+      "concept": "gap-junction",
+      "box": [
+        785,
+        19,
+        122,
+        23
+      ]
     },
     {
       "id": "membranes-gap",
@@ -84,7 +114,13 @@
         3,
         5
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        617,
+        65,
+        107,
+        62
+      ]
     },
     {
       "id": "gap-between-cells",
@@ -98,7 +134,13 @@
         8,
         9
       ],
-      "concept": "gap-junction"
+      "concept": "gap-junction",
+      "box": [
+        616,
+        159,
+        120,
+        41
+      ]
     },
     {
       "id": "connexons",
@@ -114,7 +156,13 @@
         18,
         20
       ],
-      "concept": "gap-junction"
+      "concept": "gap-junction",
+      "box": [
+        616,
+        254,
+        122,
+        65
+      ]
     },
     {
       "id": "anchoring-junctions",
@@ -126,7 +174,13 @@
       "lines": [
         27
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        454,
+        513,
+        187,
+        22
+      ]
     },
     {
       "id": "membranes-desmosome",
@@ -142,7 +196,13 @@
         30,
         32
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        25,
+        553,
+        108,
+        62
+      ]
     },
     {
       "id": "plaque-desmosome",
@@ -153,7 +213,13 @@
       "lines": [
         34
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        27,
+        642,
+        67,
+        23
+      ]
     },
     {
       "id": "cadherin-desmosome",
@@ -169,7 +235,13 @@
         39,
         41
       ],
-      "concept": "membrane-proteins"
+      "concept": "membrane-proteins",
+      "box": [
+        25,
+        688,
+        145,
+        65
+      ]
     },
     {
       "id": "intermediate-filament-keratin",
@@ -185,7 +257,13 @@
         45,
         47
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        25,
+        774,
+        113,
+        65
+      ]
     },
     {
       "id": "intercellular-space-desmosome",
@@ -197,7 +275,13 @@
         48,
         50
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        25,
+        864,
+        110,
+        44
+      ]
     },
     {
       "id": "desmosome",
@@ -209,7 +293,13 @@
       "lines": [
         52
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        262,
+        930,
+        118,
+        19
+      ]
     },
     {
       "id": "membranes-adherens",
@@ -225,7 +315,13 @@
         31,
         33
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        613,
+        553,
+        108,
+        62
+      ]
     },
     {
       "id": "plaque-adherens",
@@ -236,7 +332,13 @@
       "lines": [
         35
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        614,
+        642,
+        67,
+        23
+      ]
     },
     {
       "id": "cadherin-adherens",
@@ -252,7 +354,13 @@
         40,
         42
       ],
-      "concept": "membrane-proteins"
+      "concept": "membrane-proteins",
+      "box": [
+        612,
+        688,
+        145,
+        65
+      ]
     },
     {
       "id": "actin-filament",
@@ -267,7 +375,13 @@
       "lines": [
         44
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        613,
+        775,
+        120,
+        20
+      ]
     },
     {
       "id": "intercellular-space-adherens",
@@ -279,7 +393,13 @@
         49,
         51
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        613,
+        864,
+        110,
+        44
+      ]
     },
     {
       "id": "adherens",
@@ -292,7 +412,13 @@
       "lines": [
         53
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        833,
+        930,
+        95,
+        19
+      ]
     },
     {
       "id": "integrins",
@@ -304,7 +430,13 @@
       "lines": [
         58
       ],
-      "concept": "membrane-proteins"
+      "concept": "membrane-proteins",
+      "box": [
+        27,
+        1163,
+        80,
+        22
+      ]
     },
     {
       "id": "basal-lamina",
@@ -317,7 +449,13 @@
         59,
         60
       ],
-      "concept": "basement-membrane"
+      "concept": "basement-membrane",
+      "box": [
+        26,
+        1189,
+        65,
+        41
+      ]
     },
     {
       "id": "hemidesmosome",
@@ -329,7 +467,13 @@
       "lines": [
         61
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        232,
+        1234,
+        160,
+        20
+      ]
     }
   ]
 }

@@ -12,7 +12,13 @@
       "lines": [
         1
       ],
-      "concept": "synapse-basic"
+      "concept": "synapse-basic",
+      "box": [
+        404,
+        90,
+        190,
+        26
+      ]
     },
     {
       "id": "axon-terminal",
@@ -26,7 +32,13 @@
       "lines": [
         7
       ],
-      "concept": "neuron-parts-basic"
+      "concept": "neuron-parts-basic",
+      "box": [
+        779,
+        320,
+        140,
+        21
+      ]
     },
     {
       "id": "synaptic-vesicles",
@@ -41,7 +53,13 @@
         8,
         9
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        871,
+        409,
+        93,
+        47
+      ]
     },
     {
       "id": "neurotransmitters",
@@ -53,7 +71,13 @@
       "lines": [
         10
       ],
-      "concept": "neurotransmitter"
+      "concept": "neurotransmitter",
+      "box": [
+        179,
+        463,
+        176,
+        21
+      ]
     },
     {
       "id": "synaptic-cleft",
@@ -67,7 +91,13 @@
         11,
         12
       ],
-      "concept": "synapse-basic"
+      "concept": "synapse-basic",
+      "box": [
+        899,
+        611,
+        92,
+        46
+      ]
     },
     {
       "id": "ligand-gated-channels",
@@ -85,7 +115,13 @@
         14,
         15
       ],
-      "concept": "gated-channel-types"
+      "concept": "gated-channel-types",
+      "box": [
+        33,
+        642,
+        223,
+        71
+      ]
     },
     {
       "id": "postsynaptic-neuron",

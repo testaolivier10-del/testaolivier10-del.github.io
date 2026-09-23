@@ -11,7 +11,13 @@
       "lines": [
         3
       ],
-      "concept": "phospholipid"
+      "concept": "phospholipid",
+      "box": [
+        132,
+        79,
+        183,
+        24
+      ]
     },
     {
       "id": "polar-head-group",
@@ -28,7 +34,13 @@
         5,
         7
       ],
-      "concept": "phospholipid"
+      "concept": "phospholipid",
+      "box": [
+        63,
+        130,
+        264,
+        45
+      ]
     },
     {
       "id": "glycerol-backbone",
@@ -41,7 +53,13 @@
         4,
         8
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        371,
+        129,
+        96,
+        42
+      ]
     },
     {
       "id": "fatty-acid-tails",
@@ -58,7 +76,13 @@
         6,
         9
       ],
-      "concept": "phospholipid"
+      "concept": "phospholipid",
+      "box": [
+        639,
+        130,
+        167,
+        45
+      ]
     },
     {
       "id": "polar-head-schematic",
@@ -71,7 +95,13 @@
       "lines": [
         10
       ],
-      "concept": "phospholipid"
+      "concept": "phospholipid",
+      "box": [
+        975,
+        151,
+        118,
+        20
+      ]
     },
     {
       "id": "nonpolar-tail-schematic",
@@ -85,7 +115,13 @@
       "lines": [
         11
       ],
-      "concept": "phospholipid"
+      "concept": "phospholipid",
+      "box": [
+        973,
+        315,
+        129,
+        24
+      ]
     },
     {
       "id": "cholesterol",
@@ -113,7 +149,13 @@
       "lines": [
         29
       ],
-      "concept": "eicosanoids"
+      "concept": "eicosanoids",
+      "box": [
+        23,
+        991,
+        69,
+        24
+      ]
     },
     {
       "id": "pge2",
@@ -125,7 +167,13 @@
       "lines": [
         30
       ],
-      "concept": "eicosanoids"
+      "concept": "eicosanoids",
+      "box": [
+        574,
+        991,
+        60,
+        24
+      ]
     }
   ]
 }

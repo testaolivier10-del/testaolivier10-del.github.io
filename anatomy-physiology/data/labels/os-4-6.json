@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "epithelium-classification"
+      "concept": "epithelium-classification",
+      "box": [
+        252,
+        5,
+        74,
+        24
+      ]
     },
     {
       "id": "stratified",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "epithelium-classification"
+      "concept": "epithelium-classification",
+      "box": [
+        566,
+        5,
+        94,
+        20
+      ]
     },
     {
       "id": "squamous",
@@ -34,7 +46,13 @@
       "lines": [
         2
       ],
-      "concept": "epithelium-classification"
+      "concept": "epithelium-classification",
+      "box": [
+        6,
+        159,
+        109,
+        24
+      ]
     },
     {
       "id": "simple-squamous-epithelium",
@@ -46,7 +64,13 @@
       "lines": [
         3
       ],
-      "concept": "simple-squamous"
+      "concept": "simple-squamous",
+      "box": [
+        162,
+        280,
+        254,
+        24
+      ]
     },
     {
       "id": "stratified-squamous-epithelium",
@@ -58,7 +82,13 @@
       "lines": [
         4
       ],
-      "concept": "stratified-squamous"
+      "concept": "stratified-squamous",
+      "box": [
+        483,
+        280,
+        271,
+        24
+      ]
     },
     {
       "id": "cuboidal",
@@ -69,7 +99,13 @@
       "lines": [
         5
       ],
-      "concept": "epithelium-classification"
+      "concept": "epithelium-classification",
+      "box": [
+        12,
+        442,
+        93,
+        21
+      ]
     },
     {
       "id": "stratified-cuboidal-epithelium",
@@ -81,7 +117,13 @@
       "lines": [
         6
       ],
-      "concept": "stratified-cuboidal-columnar"
+      "concept": "stratified-cuboidal-columnar",
+      "box": [
+        490,
+        566,
+        254,
+        24
+      ]
     },
     {
       "id": "simple-cuboidal-epithelium",
@@ -93,7 +135,13 @@
       "lines": [
         7
       ],
-      "concept": "simple-cuboidal"
+      "concept": "simple-cuboidal",
+      "box": [
+        171,
+        570,
+        237,
+        23
+      ]
     },
     {
       "id": "pseudostratified-header",
@@ -104,7 +152,13 @@
       "lines": [
         8
       ],
-      "concept": "pseudostratified"
+      "concept": "pseudostratified",
+      "box": [
+        857,
+        572,
+        160,
+        20
+      ]
     },
     {
       "id": "columnar",
@@ -115,7 +169,13 @@
       "lines": [
         9
       ],
-      "concept": "epithelium-classification"
+      "concept": "epithelium-classification",
+      "box": [
+        12,
+        725,
+        101,
+        20
+      ]
     },
     {
       "id": "simple-columnar-epithelium",
@@ -127,7 +187,13 @@
       "lines": [
         10
       ],
-      "concept": "simple-columnar"
+      "concept": "simple-columnar",
+      "box": [
+        166,
+        852,
+        245,
+        24
+      ]
     },
     {
       "id": "stratified-columnar-epithelium",
@@ -139,7 +205,13 @@
       "lines": [
         11
       ],
-      "concept": "stratified-cuboidal-columnar"
+      "concept": "stratified-cuboidal-columnar",
+      "box": [
+        485,
+        852,
+        262,
+        24
+      ]
     },
     {
       "id": "pseudostratified-columnar-epithelium",
@@ -153,7 +225,13 @@
       "lines": [
         12
       ],
-      "concept": "pseudostratified"
+      "concept": "pseudostratified",
+      "box": [
+        778,
+        852,
+        322,
+        24
+      ]
     }
   ]
 }

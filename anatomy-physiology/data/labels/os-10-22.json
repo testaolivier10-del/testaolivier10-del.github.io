@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "intercalated-disc"
+      "concept": "intercalated-disc",
+      "box": [
+        447,
+        0,
+        171,
+        20
+      ]
     },
     {
       "id": "capillary",
@@ -25,7 +31,13 @@
       "lines": [
         1
       ],
-      "concept": "blood-vessel-basics"
+      "concept": "blood-vessel-basics",
+      "box": [
+        309,
+        0,
+        86,
+        24
+      ]
     },
     {
       "id": "desmosome",
@@ -37,7 +49,13 @@
       "lines": [
         2
       ],
-      "concept": "desmosome"
+      "concept": "desmosome",
+      "box": [
+        766,
+        14,
+        117,
+        19
+      ]
     },
     {
       "id": "gap-junction-fiber",
@@ -49,7 +67,13 @@
       "lines": [
         10
       ],
-      "concept": "gap-junction"
+      "concept": "gap-junction",
+      "box": [
+        502,
+        220,
+        126,
+        23
+      ]
     },
     {
       "id": "gap-junction",
@@ -61,7 +85,13 @@
       "lines": [
         11
       ],
-      "concept": "gap-junction"
+      "concept": "gap-junction",
+      "box": [
+        808,
+        396,
+        117,
+        23
+      ]
     },
     {
       "id": "nucleus",
@@ -72,7 +102,13 @@
       "lines": [
         13
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        287,
+        435,
+        79,
+        19
+      ]
     },
     {
       "id": "cardiac-muscle-fiber",
@@ -88,7 +124,13 @@
         12,
         14
       ],
-      "concept": "cardiac-muscle-tissue"
+      "concept": "cardiac-muscle-tissue",
+      "box": [
+        453,
+        434,
+        114,
+        41
+      ]
     }
   ]
 }

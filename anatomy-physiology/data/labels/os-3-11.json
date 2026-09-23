@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "exocytosis"
+      "concept": "exocytosis",
+      "box": [
+        8,
+        2,
+        101,
+        23
+      ]
     },
     {
       "id": "extracellular-fluid",
@@ -22,7 +28,13 @@
       "lines": [
         1
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        378,
+        89,
+        153,
+        20
+      ]
     },
     {
       "id": "cytoplasm",
@@ -34,7 +46,13 @@
       "lines": [
         14
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        399,
+        406,
+        100,
+        23
+      ]
     },
     {
       "id": "vesicle",
@@ -46,7 +64,13 @@
       "lines": [
         15
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        284,
+        592,
+        72,
+        19
+      ]
     }
   ]
 }

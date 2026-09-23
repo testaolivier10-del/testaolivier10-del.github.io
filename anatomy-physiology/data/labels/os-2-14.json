@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "monomer-polymer"
+      "concept": "monomer-polymer",
+      "box": [
+        3,
+        6,
+        241,
+        26
+      ]
     },
     {
       "id": "water-released",
@@ -41,7 +47,13 @@
       "lines": [
         5
       ],
-      "concept": "covalent-bond"
+      "concept": "covalent-bond",
+      "box": [
+        633,
+        244,
+        325,
+        26
+      ]
     },
     {
       "id": "hydrolysis",
@@ -52,7 +64,13 @@
       "lines": [
         6
       ],
-      "concept": "monomer-polymer"
+      "concept": "monomer-polymer",
+      "box": [
+        3,
+        306,
+        135,
+        25
+      ]
     },
     {
       "id": "water-added",
@@ -81,7 +99,13 @@
       "lines": [
         11
       ],
-      "concept": "covalent-bond"
+      "concept": "covalent-bond",
+      "box": [
+        14,
+        541,
+        324,
+        25
+      ]
     }
   ]
 }

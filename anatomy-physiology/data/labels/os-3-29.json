@@ -54,7 +54,13 @@
       "lines": [
         0
       ],
-      "concept": "translation"
+      "concept": "translation",
+      "box": [
+        160,
+        380,
+        104,
+        20
+      ]
     }
   ]
 }

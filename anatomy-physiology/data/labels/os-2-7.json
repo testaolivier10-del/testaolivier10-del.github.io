@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "subatomic-particles"
+      "concept": "subatomic-particles",
+      "box": [
+        1009,
+        28,
+        88,
+        22
+      ]
     },
     {
       "id": "hydrogen",
@@ -25,7 +31,13 @@
       "lines": [
         1
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        176,
+        173,
+        30,
+        26
+      ]
     },
     {
       "id": "electron-hydrogen",
@@ -38,7 +50,13 @@
       "lines": [
         2
       ],
-      "concept": "subatomic-particles"
+      "concept": "subatomic-particles",
+      "box": [
+        376,
+        309,
+        87,
+        22
+      ]
     },
     {
       "id": "helium",

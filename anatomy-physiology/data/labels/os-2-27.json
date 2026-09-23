@@ -11,7 +11,13 @@
       "lines": [
         1
       ],
-      "concept": "enzyme"
+      "concept": "enzyme",
+      "box": [
+        63,
+        11,
+        99,
+        20
+      ]
     },
     {
       "id": "active-sites",
@@ -24,7 +30,13 @@
         6,
         7
       ],
-      "concept": "enzyme"
+      "concept": "enzyme",
+      "box": [
+        200,
+        242,
+        61,
+        41
+      ]
     },
     {
       "id": "enzyme-a",

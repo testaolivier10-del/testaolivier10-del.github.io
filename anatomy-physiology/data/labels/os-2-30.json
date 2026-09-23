@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        46,
+        0,
+        82,
+        19
+      ]
     },
     {
       "id": "high-energy-bonds",
@@ -25,7 +31,13 @@
       "lines": [
         2
       ],
-      "concept": "atp-hydrolysis"
+      "concept": "atp-hydrolysis",
+      "box": [
+        441,
+        186,
+        170,
+        24
+      ]
     },
     {
       "id": "ribose",
@@ -38,7 +50,13 @@
       "lines": [
         8
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        182,
+        374,
+        70,
+        19
+      ]
     },
     {
       "id": "phosphate",
@@ -51,7 +69,13 @@
       "lines": [
         9
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        476,
+        374,
+        101,
+        23
+      ]
     },
     {
       "id": "adenosine",
@@ -62,7 +86,13 @@
       "lines": [
         10
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        122,
+        425,
+        102,
+        19
+      ]
     },
     {
       "id": "amp",
@@ -75,7 +105,13 @@
       "lines": [
         11
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        80,
+        477,
+        298,
+        23
+      ]
     },
     {
       "id": "adp",
@@ -88,7 +124,13 @@
       "lines": [
         12
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        157,
+        528,
+        264,
+        24
+      ]
     },
     {
       "id": "atp",
@@ -101,7 +143,13 @@
       "lines": [
         13
       ],
-      "concept": "atp"
+      "concept": "atp",
+      "box": [
+        214,
+        582,
+        262,
+        23
+      ]
     }
   ]
 }

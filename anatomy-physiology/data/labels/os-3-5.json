@@ -14,7 +14,13 @@
         0,
         2
       ],
-      "concept": "simple-diffusion"
+      "concept": "simple-diffusion",
+      "box": [
+        0,
+        4,
+        148,
+        40
+      ]
     },
     {
       "id": "extracellular-fluid",
@@ -26,7 +32,13 @@
       "lines": [
         1
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        402,
+        4,
+        154,
+        19
+      ]
     },
     {
       "id": "lipid-bilayer",
@@ -43,7 +55,13 @@
         4,
         5
       ],
-      "concept": "phospholipid-bilayer"
+      "concept": "phospholipid-bilayer",
+      "box": [
+        12,
+        147,
+        113,
+        64
+      ]
     },
     {
       "id": "cytoplasm",
@@ -55,7 +73,13 @@
       "lines": [
         6
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        422,
+        278,
+        101,
+        23
+      ]
     }
   ]
 }

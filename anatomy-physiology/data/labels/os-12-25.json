@@ -11,7 +11,13 @@
       "lines": [
         15
       ],
-      "concept": "threshold"
+      "concept": "threshold",
+      "box": [
+        518,
+        159,
+        104,
+        21
+      ]
     },
     {
       "id": "depolarizing-graded-potential",
@@ -27,7 +33,13 @@
         33,
         35
       ],
-      "concept": "graded-potential"
+      "concept": "graded-potential",
+      "box": [
+        173,
+        474,
+        161,
+        50
+      ]
     },
     {
       "id": "hyperpolarizing-graded-potential",
@@ -42,7 +54,13 @@
         34,
         36
       ],
-      "concept": "graded-potential"
+      "concept": "graded-potential",
+      "box": [
+        423,
+        474,
+        161,
+        50
+      ]
     }
   ]
 }

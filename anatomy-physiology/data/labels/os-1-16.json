@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "diaphragm"
+      "concept": "diaphragm",
+      "box": [
+        500,
+        127,
+        95,
+        22
+      ]
     },
     {
       "id": "right-hypochondriac-region",

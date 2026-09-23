@@ -96,7 +96,13 @@
       "lines": [
         74
       ],
-      "concept": "mitosis"
+      "concept": "mitosis",
+      "box": [
+        417,
+        824,
+        87,
+        20
+      ]
     }
   ]
 }

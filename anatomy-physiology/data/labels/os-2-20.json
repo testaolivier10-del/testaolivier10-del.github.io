@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        5,
+        57,
+        111,
+        31
+      ]
     },
     {
       "id": "amylopectin",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        0,
+        287,
+        153,
+        31
+      ]
     },
     {
       "id": "starch",
@@ -32,7 +44,13 @@
       "lines": [
         2
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        128,
+        346,
+        91,
+        25
+      ]
     },
     {
       "id": "glycogen",
@@ -43,7 +61,13 @@
       "lines": [
         3
       ],
-      "concept": "glycogen"
+      "concept": "glycogen",
+      "box": [
+        518,
+        346,
+        130,
+        31
+      ]
     },
     {
       "id": "cellulose",
@@ -58,7 +82,13 @@
         4,
         5
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        862,
+        346,
+        201,
+        25
+      ]
     }
   ]
 }

@@ -28,7 +28,13 @@
       "lines": [
         1
       ],
-      "concept": "protein"
+      "concept": "protein",
+      "box": [
+        408,
+        62,
+        186,
+        20
+      ]
     },
     {
       "id": "bonds",
@@ -41,7 +47,13 @@
       "lines": [
         2
       ],
-      "concept": "hydrogen-bond"
+      "concept": "hydrogen-bond",
+      "box": [
+        654,
+        228,
+        65,
+        20
+      ]
     },
     {
       "id": "alpha-helix",
@@ -54,7 +66,13 @@
       "lines": [
         4
       ],
-      "concept": "protein-shape"
+      "concept": "protein-shape",
+      "box": [
+        11,
+        411,
+        105,
+        24
+      ]
     },
     {
       "id": "secondary-structure",
@@ -101,7 +119,13 @@
       "lines": [
         6
       ],
-      "concept": "hemoglobin"
+      "concept": "hemoglobin",
+      "box": [
+        500,
+        731,
+        105,
+        20
+      ]
     },
     {
       "id": "quaternary-structure",
@@ -130,7 +154,13 @@
         9,
         10
       ],
-      "concept": "hemoglobin"
+      "concept": "hemoglobin",
+      "box": [
+        829,
+        887,
+        152,
+        45
+      ]
     }
   ]
 }

@@ -10,7 +10,13 @@
       "lines": [
         2
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        13,
+        43,
+        76,
+        23
+      ]
     },
     {
       "id": "fatty-acid-chains",
@@ -24,7 +30,13 @@
       "lines": [
         3
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        296,
+        43,
+        154,
+        23
+      ]
     },
     {
       "id": "triglyceride",
@@ -38,7 +50,13 @@
       "lines": [
         4
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        690,
+        43,
+        211,
+        23
+      ]
     },
     {
       "id": "water-molecules",
@@ -52,7 +70,13 @@
       "lines": [
         1
       ],
-      "concept": "monomer-polymer"
+      "concept": "monomer-polymer",
+      "box": [
+        1010,
+        24,
+        71,
+        18
+      ]
     }
   ]
 }

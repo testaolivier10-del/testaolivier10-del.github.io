@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        332,
+        8,
+        196,
+        25
+      ]
     },
     {
       "id": "thymus",
@@ -23,7 +29,13 @@
       "lines": [
         2
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        39,
+        84,
+        25
+      ]
     },
     {
       "id": "lymph-nodes",
@@ -36,7 +48,13 @@
         10,
         14
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        114,
+        71,
+        44
+      ]
     },
     {
       "id": "spleen",
@@ -47,7 +65,13 @@
       "lines": [
         16
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        191,
+        74,
+        25
+      ]
     },
     {
       "id": "lymphatic-vessels",
@@ -61,7 +85,13 @@
         18,
         19
       ],
-      "concept": "lymphatic-vessels"
+      "concept": "lymphatic-vessels",
+      "box": [
+        0,
+        424,
+        104,
+        44
+      ]
     },
     {
       "id": "respiratory-system",
@@ -73,7 +103,13 @@
       "lines": [
         1
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        886,
+        8,
+        208,
+        25
+      ]
     },
     {
       "id": "nasal-passage",
@@ -87,7 +123,13 @@
       "lines": [
         3
       ],
-      "concept": "nasal-cavity"
+      "concept": "nasal-cavity",
+      "box": [
+        587,
+        54,
+        150,
+        25
+      ]
     },
     {
       "id": "trachea",
@@ -99,7 +141,13 @@
       "lines": [
         13
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        585,
+        132,
+        90,
+        21
+      ]
     },
     {
       "id": "lungs",
@@ -111,7 +159,13 @@
       "lines": [
         17
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        587,
+        206,
+        69,
+        25
+      ]
     },
     {
       "id": "digestive-system",
@@ -123,7 +177,13 @@
       "lines": [
         20
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        328,
+        627,
+        185,
+        25
+      ]
     },
     {
       "id": "stomach",
@@ -134,7 +194,13 @@
       "lines": [
         26
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        714,
+        92,
+        22
+      ]
     },
     {
       "id": "liver",
@@ -145,7 +211,13 @@
       "lines": [
         35
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        806,
+        55,
+        21
+      ]
     },
     {
       "id": "gallbladder",
@@ -158,7 +230,13 @@
         36,
         37
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        0,
+        869,
+        80,
+        45
+      ]
     },
     {
       "id": "large-intestine",
@@ -171,7 +249,13 @@
         40,
         41
       ],
-      "concept": "alimentary-canal"
+      "concept": "alimentary-canal",
+      "box": [
+        0,
+        972,
+        87,
+        44
+      ]
     },
     {
       "id": "small-intestine",
@@ -184,7 +268,13 @@
         42,
         43
       ],
-      "concept": "alimentary-canal"
+      "concept": "alimentary-canal",
+      "box": [
+        0,
+        1076,
+        87,
+        44
+      ]
     },
     {
       "id": "urinary-system",
@@ -196,7 +286,13 @@
       "lines": [
         21
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        886,
+        627,
+        165,
+        25
+      ]
     },
     {
       "id": "kidneys",
@@ -208,7 +304,13 @@
       "lines": [
         34
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        587,
+        793,
+        86,
+        26
+      ]
     },
     {
       "id": "urinary-bladder",
@@ -221,7 +323,13 @@
         38,
         39
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        587,
+        933,
+        82,
+        45
+      ]
     },
     {
       "id": "male-reproductive-system",
@@ -235,7 +343,13 @@
         44,
         46
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        327,
+        1243,
+        200,
+        49
+      ]
     },
     {
       "id": "epididymis",
@@ -247,7 +361,13 @@
       "lines": [
         63
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        0,
+        1469,
+        111,
+        25
+      ]
     },
     {
       "id": "testes",
@@ -260,7 +380,13 @@
       "lines": [
         65
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        47,
+        1620,
+        73,
+        21
+      ]
     },
     {
       "id": "female-reproductive-system",
@@ -274,7 +400,13 @@
         45,
         47
       ],
-      "concept": "organ-system-roster"
+      "concept": "organ-system-roster",
+      "box": [
+        875,
+        1243,
+        225,
+        49
+      ]
     },
     {
       "id": "mammary-glands",
@@ -288,7 +420,13 @@
         50,
         53
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        586,
+        1329,
+        106,
+        49
+      ]
     },
     {
       "id": "ovaries",
@@ -300,7 +438,13 @@
       "lines": [
         62
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        586,
+        1466,
+        85,
+        21
+      ]
     },
     {
       "id": "uterus",
@@ -312,7 +456,13 @@
       "lines": [
         64
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        588,
+        1616,
+        73,
+        21
+      ]
     }
   ]
 }

@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "semipermeable-membrane"
+      "concept": "semipermeable-membrane",
+      "box": [
+        159,
+        284,
+        238,
+        23
+      ]
     }
   ]
 }

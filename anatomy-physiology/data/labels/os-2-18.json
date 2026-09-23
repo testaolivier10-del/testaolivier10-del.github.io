@@ -10,7 +10,13 @@
       "lines": [
         28
       ],
-      "concept": "glucose"
+      "concept": "glucose",
+      "box": [
+        2,
+        351,
+        113,
+        25
+      ]
     },
     {
       "id": "fructose",
@@ -21,7 +27,13 @@
       "lines": [
         29
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        371,
+        351,
+        120,
+        25
+      ]
     },
     {
       "id": "galactose",
@@ -32,7 +44,13 @@
       "lines": [
         30
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        764,
+        351,
+        134,
+        25
+      ]
     },
     {
       "id": "hexoses",
@@ -45,7 +63,13 @@
       "lines": [
         32
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        525,
+        405,
+        109,
+        25
+      ]
     },
     {
       "id": "deoxyribose",
@@ -56,7 +80,13 @@
       "lines": [
         51
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        161,
+        790,
+        164,
+        31
+      ]
     },
     {
       "id": "ribose",
@@ -67,7 +97,13 @@
       "lines": [
         52
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        557,
+        790,
+        97,
+        25
+      ]
     },
     {
       "id": "pentoses",
@@ -80,7 +116,13 @@
       "lines": [
         54
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        525,
+        836,
+        116,
+        25
+      ]
     }
   ]
 }

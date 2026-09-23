@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        74,
+        0,
+        115,
+        19
+      ]
     },
     {
       "id": "phospholipid-bilayer",
@@ -27,7 +33,13 @@
         1,
         2
       ],
-      "concept": "phospholipid-bilayer"
+      "concept": "phospholipid-bilayer",
+      "box": [
+        344,
+        117,
+        115,
+        44
+      ]
     },
     {
       "id": "intracellular",
@@ -42,7 +54,13 @@
       "lines": [
         3
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        77,
+        224,
+        109,
+        19
+      ]
     },
     {
       "id": "hydrophobic-tail",
@@ -56,7 +74,13 @@
       "lines": [
         4
       ],
-      "concept": "hydrophilic-hydrophobic"
+      "concept": "hydrophilic-hydrophobic",
+      "box": [
+        301,
+        233,
+        146,
+        23
+      ]
     },
     {
       "id": "hydrophilic-head",
@@ -70,7 +94,13 @@
       "lines": [
         5
       ],
-      "concept": "hydrophilic-hydrophobic"
+      "concept": "hydrophilic-hydrophobic",
+      "box": [
+        273,
+        288,
+        151,
+        22
+      ]
     }
   ]
 }

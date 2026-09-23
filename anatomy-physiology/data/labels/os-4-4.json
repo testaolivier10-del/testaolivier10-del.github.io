@@ -16,7 +16,13 @@
         3,
         4
       ],
-      "concept": "mucous-membrane"
+      "concept": "mucous-membrane",
+      "box": [
+        6,
+        39,
+        210,
+        91
+      ]
     },
     {
       "id": "serous-membranes",
@@ -33,7 +39,13 @@
         8,
         9
       ],
-      "concept": "serous-membrane"
+      "concept": "serous-membrane",
+      "box": [
+        5,
+        208,
+        206,
+        88
+      ]
     },
     {
       "id": "cutaneous-membrane",
@@ -47,7 +59,13 @@
         10,
         11
       ],
-      "concept": "cutaneous-membrane"
+      "concept": "cutaneous-membrane",
+      "box": [
+        5,
+        387,
+        206,
+        38
+      ]
     },
     {
       "id": "synovial-membranes",
@@ -62,7 +80,13 @@
         13,
         14
       ],
-      "concept": "synovial-membrane"
+      "concept": "synovial-membrane",
+      "box": [
+        5,
+        541,
+        210,
+        55
+      ]
     }
   ]
 }

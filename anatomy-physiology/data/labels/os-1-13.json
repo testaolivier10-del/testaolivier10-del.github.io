@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "superior-inferior"
+      "concept": "superior-inferior",
+      "box": [
+        450,
+        22,
+        101,
+        27
+      ]
     },
     {
       "id": "right",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        672,
+        70,
+        66,
+        28
+      ]
     },
     {
       "id": "left",
@@ -32,7 +44,13 @@
       "lines": [
         2
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        872,
+        70,
+        51,
+        23
+      ]
     },
     {
       "id": "cranial",
@@ -45,7 +63,13 @@
       "lines": [
         3
       ],
-      "concept": "superior-inferior"
+      "concept": "superior-inferior",
+      "box": [
+        90,
+        71,
+        86,
+        24
+      ]
     },
     {
       "id": "proximal-arm",
@@ -56,7 +80,13 @@
       "lines": [
         4
       ],
-      "concept": "proximal-distal"
+      "concept": "proximal-distal",
+      "box": [
+        1003,
+        230,
+        99,
+        24
+      ]
     },
     {
       "id": "posterior",
@@ -70,7 +100,13 @@
         5,
         8
       ],
-      "concept": "anterior-posterior"
+      "concept": "anterior-posterior",
+      "box": [
+        0,
+        288,
+        125,
+        52
+      ]
     },
     {
       "id": "anterior",
@@ -84,7 +120,13 @@
         6,
         9
       ],
-      "concept": "anterior-posterior"
+      "concept": "anterior-posterior",
+      "box": [
+        373,
+        288,
+        122,
+        52
+      ]
     },
     {
       "id": "medial",
@@ -109,7 +151,13 @@
       "lines": [
         10
       ],
-      "concept": "medial-lateral"
+      "concept": "medial-lateral",
+      "box": [
+        499,
+        451,
+        105,
+        24
+      ]
     },
     {
       "id": "caudal",
@@ -121,7 +169,13 @@
       "lines": [
         11
       ],
-      "concept": "superior-inferior"
+      "concept": "superior-inferior",
+      "box": [
+        87,
+        528,
+        86,
+        24
+      ]
     },
     {
       "id": "proximal-leg",
@@ -132,7 +186,13 @@
       "lines": [
         12
       ],
-      "concept": "proximal-distal"
+      "concept": "proximal-distal",
+      "box": [
+        500,
+        539,
+        102,
+        24
+      ]
     },
     {
       "id": "distal-hand",
@@ -143,7 +203,13 @@
       "lines": [
         13
       ],
-      "concept": "proximal-distal"
+      "concept": "proximal-distal",
+      "box": [
+        1036,
+        619,
+        66,
+        24
+      ]
     },
     {
       "id": "distal-foot",
@@ -154,7 +220,13 @@
       "lines": [
         14
       ],
-      "concept": "proximal-distal"
+      "concept": "proximal-distal",
+      "box": [
+        618,
+        1029,
+        70,
+        23
+      ]
     },
     {
       "id": "inferior",
@@ -165,7 +237,13 @@
       "lines": [
         15
       ],
-      "concept": "superior-inferior"
+      "concept": "superior-inferior",
+      "box": [
+        458,
+        1085,
+        85,
+        24
+      ]
     }
   ]
 }

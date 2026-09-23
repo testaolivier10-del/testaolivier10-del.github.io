@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "hydrogen-bond"
+      "concept": "hydrogen-bond",
+      "box": [
+        403,
+        0,
+        149,
+        23
+      ]
     },
     {
       "id": "adenine-structure",
@@ -24,7 +30,13 @@
       "lines": [
         1
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        564,
+        21,
+        82,
+        19
+      ]
     },
     {
       "id": "nitrogenous-bases-key",
@@ -37,7 +49,13 @@
       "lines": [
         2
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        95,
+        33,
+        168,
+        23
+      ]
     },
     {
       "id": "thymine-structure",
@@ -49,7 +67,13 @@
       "lines": [
         3
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        369,
+        34,
+        84,
+        23
+      ]
     },
     {
       "id": "adenine-key",
@@ -61,7 +85,13 @@
       "lines": [
         10
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        183,
+        63,
+        81,
+        19
+      ]
     },
     {
       "id": "thymine-key",
@@ -73,7 +103,13 @@
       "lines": [
         14
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        183,
+        88,
+        84,
+        23
+      ]
     },
     {
       "id": "guanine-key",
@@ -85,7 +121,13 @@
       "lines": [
         17
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        184,
+        113,
+        82,
+        20
+      ]
     },
     {
       "id": "cytosine-key",
@@ -97,7 +139,13 @@
       "lines": [
         20
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        184,
+        138,
+        85,
+        23
+      ]
     },
     {
       "id": "base-pair",
@@ -110,7 +158,13 @@
       "lines": [
         26
       ],
-      "concept": "dna"
+      "concept": "dna",
+      "box": [
+        160,
+        239,
+        92,
+        23
+      ]
     },
     {
       "id": "backbone-helix",
@@ -125,7 +179,13 @@
         33,
         34
       ],
-      "concept": "dna"
+      "concept": "dna",
+      "box": [
+        160,
+        298,
+        99,
+        61
+      ]
     },
     {
       "id": "cytosine-structure",
@@ -137,7 +197,13 @@
       "lines": [
         28
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        609,
+        274,
+        85,
+        24
+      ]
     },
     {
       "id": "guanine-structure",
@@ -149,7 +215,13 @@
       "lines": [
         30
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        413,
+        293,
+        83,
+        20
+      ]
     },
     {
       "id": "backbone-left",
@@ -163,7 +235,13 @@
         35,
         40
       ],
-      "concept": "dna"
+      "concept": "dna",
+      "box": [
+        275,
+        360,
+        156,
+        40
+      ]
     },
     {
       "id": "bases",
@@ -176,7 +254,13 @@
       "lines": [
         36
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        509,
+        360,
+        64,
+        20
+      ]
     },
     {
       "id": "backbone-right",
@@ -190,7 +274,13 @@
         37,
         41
       ],
-      "concept": "dna"
+      "concept": "dna",
+      "box": [
+        651,
+        360,
+        156,
+        40
+      ]
     },
     {
       "id": "nitrogenous-base",
@@ -202,7 +292,13 @@
       "lines": [
         42
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        367,
+        620,
+        170,
+        24
+      ]
     },
     {
       "id": "phosphate",
@@ -214,7 +310,13 @@
       "lines": [
         43
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        20,
+        710,
+        107,
+        23
+      ]
     },
     {
       "id": "sugar",
@@ -227,7 +329,13 @@
       "lines": [
         44
       ],
-      "concept": "nucleic-acid"
+      "concept": "nucleic-acid",
+      "box": [
+        219,
+        802,
+        66,
+        22
+      ]
     }
   ]
 }

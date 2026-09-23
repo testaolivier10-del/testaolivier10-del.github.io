@@ -103,3 +103,9 @@ test('subscripts join their word, and a capital-letter name keeps its case', () 
   assert.deepEqual(scanPage(m, page('You breathe out CO<sub>2</sub> through a band of tissue.'), 'a'), []);
   assert.equal(scanPage(m, page('The A band is dark.'), 'a').length, 1);
 });
+
+test('a Unicode subscript joins its word', () => {
+  const m = tiny();
+  m.concepts.push({ id: 'co', term: 'cardiac output', aliases: ['CO'], taughtIn: 'b', dependsOn: [] });
+  assert.deepEqual(scanPage(m, '<html><body><p>You breathe out CO₂.</p></body></html>', 'a'), []);
+});

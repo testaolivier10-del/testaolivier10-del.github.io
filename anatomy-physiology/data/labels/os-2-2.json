@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        171,
+        8,
+        67,
+        19
+      ]
     },
     {
       "id": "nitrogen-body",
@@ -24,7 +30,13 @@
       "lines": [
         8
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        287,
+        106,
+        80,
+        24
+      ]
     },
     {
       "id": "hydrogen-body",
@@ -36,7 +48,13 @@
       "lines": [
         15
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        0,
+        161,
+        89,
+        23
+      ]
     },
     {
       "id": "carbon-body",
@@ -48,7 +66,13 @@
       "lines": [
         22
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        1,
+        247,
+        71,
+        20
+      ]
     },
     {
       "id": "oxygen-body",
@@ -60,7 +84,13 @@
       "lines": [
         38
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        311,
+        426,
+        75,
+        24
+      ]
     },
     {
       "id": "oxygen",
@@ -72,7 +102,13 @@
       "lines": [
         5
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        79,
+        75,
+        23
+      ]
     },
     {
       "id": "carbon",
@@ -84,7 +120,13 @@
       "lines": [
         9
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        117,
+        71,
+        19
+      ]
     },
     {
       "id": "hydrogen",
@@ -96,7 +138,13 @@
       "lines": [
         12
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        407,
+        155,
+        90,
+        24
+      ]
     },
     {
       "id": "nitrogen",
@@ -108,7 +156,13 @@
       "lines": [
         16
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        407,
+        193,
+        80,
+        24
+      ]
     },
     {
       "id": "calcium",
@@ -120,7 +174,13 @@
       "lines": [
         19
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        232,
+        78,
+        19
+      ]
     },
     {
       "id": "phosphorus",
@@ -132,7 +192,13 @@
       "lines": [
         23
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        407,
+        270,
+        109,
+        23
+      ]
     },
     {
       "id": "potassium",
@@ -144,7 +210,13 @@
       "lines": [
         26
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        407,
+        308,
+        95,
+        20
+      ]
     },
     {
       "id": "sulfur",
@@ -156,7 +228,13 @@
       "lines": [
         29
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        347,
+        61,
+        19
+      ]
     },
     {
       "id": "sodium",
@@ -168,7 +246,13 @@
       "lines": [
         32
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        385,
+        74,
+        19
+      ]
     },
     {
       "id": "chlorine",
@@ -180,7 +264,13 @@
       "lines": [
         35
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        423,
+        81,
+        20
+      ]
     },
     {
       "id": "magnesium",
@@ -192,7 +282,13 @@
       "lines": [
         39
       ],
-      "concept": "element-compound"
+      "concept": "element-compound",
+      "box": [
+        406,
+        461,
+        106,
+        24
+      ]
     }
   ]
 }

@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        171,
+        22,
+        125,
+        20
+      ]
     },
     {
       "id": "histones",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        417,
+        73,
+        85,
+        20
+      ]
     },
     {
       "id": "chromatin",
@@ -34,7 +46,13 @@
       "lines": [
         5
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        183,
+        169,
+        98,
+        20
+      ]
     },
     {
       "id": "nucleosome",
@@ -46,7 +64,13 @@
       "lines": [
         7
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        519,
+        207,
+        116,
+        19
+      ]
     },
     {
       "id": "dna-helix",
@@ -59,7 +83,13 @@
       "lines": [
         11
       ],
-      "concept": "dna"
+      "concept": "dna",
+      "box": [
+        584,
+        366,
+        95,
+        19
+      ]
     }
   ]
 }

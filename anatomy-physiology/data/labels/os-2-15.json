@@ -14,7 +14,13 @@
       "lines": [
         0
       ],
-      "concept": "polarity"
+      "concept": "polarity",
+      "box": [
+        261,
+        16,
+        38,
+        25
+      ]
     },
     {
       "id": "partial-positive-2",
@@ -29,7 +35,13 @@
       "lines": [
         1
       ],
-      "concept": "polarity"
+      "concept": "polarity",
+      "box": [
+        371,
+        17,
+        39,
+        25
+      ]
     },
     {
       "id": "partial-negative",
@@ -44,7 +56,13 @@
       "lines": [
         5
       ],
-      "concept": "polarity"
+      "concept": "polarity",
+      "box": [
+        322,
+        161,
+        27,
+        25
+      ]
     },
     {
       "id": "water-molecule",
@@ -57,7 +75,13 @@
       "lines": [
         6
       ],
-      "concept": "water-properties"
+      "concept": "water-properties",
+      "box": [
+        224,
+        185,
+        191,
+        25
+      ]
     },
     {
       "id": "hydrated-sodium-ion",
@@ -72,7 +96,13 @@
         9,
         10
       ],
-      "concept": "solution"
+      "concept": "solution",
+      "box": [
+        763,
+        388,
+        248,
+        31
+      ]
     },
     {
       "id": "chloride-ion",
@@ -86,7 +116,13 @@
       "lines": [
         11
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        2,
+        411,
+        37,
+        25
+      ]
     },
     {
       "id": "sodium-ion",
@@ -100,7 +136,13 @@
       "lines": [
         12
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        2,
+        559,
+        57,
+        26
+      ]
     },
     {
       "id": "nacl-crystal",
@@ -115,7 +157,13 @@
       "lines": [
         13
       ],
-      "concept": "ionic-bond"
+      "concept": "ionic-bond",
+      "box": [
+        262,
+        725,
+        187,
+        31
+      ]
     },
     {
       "id": "hydrated-chloride-ion",
@@ -130,7 +178,13 @@
         21,
         22
       ],
-      "concept": "solution"
+      "concept": "solution",
+      "box": [
+        714,
+        1070,
+        257,
+        31
+      ]
     }
   ]
 }

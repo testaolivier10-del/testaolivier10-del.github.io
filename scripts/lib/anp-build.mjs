@@ -202,6 +202,10 @@ export function glossify(C, html, { depth, topic, seen, index }) {
       // Never mark inside a mark already placed in this text node.
       const start = m.index, end = start + m[0].length;
       if (marks.some(k => start < k.end && end > k.start)) continue;
+      // A match touching a sub/superscript is part of a formula (the CO in
+      // H<sub>2</sub>CO<sub>3</sub>), not the term.
+      const SUBSUP = /^<\/?(sub|sup)\b/i;
+      if ((start === 0 && SUBSUP.test(parts[i - 1] || '')) || (end === s.length && SUBSUP.test(parts[i + 1] || ''))) continue;
       seen.add(id);
       marks.push({ start, end, id, word: m[0] });
     }

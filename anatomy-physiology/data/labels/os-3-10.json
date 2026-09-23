@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        300,
+        0,
+        151,
+        19
+      ]
     },
     {
       "id": "phagocytosis",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "endocytosis"
+      "concept": "endocytosis",
+      "box": [
+        3,
+        45,
+        121,
+        23
+      ]
     },
     {
       "id": "pinocytosis",
@@ -35,7 +47,13 @@
       "lines": [
         2
       ],
-      "concept": "endocytosis"
+      "concept": "endocytosis",
+      "box": [
+        368,
+        45,
+        105,
+        23
+      ]
     },
     {
       "id": "receptor-mediated-endocytosis",
@@ -48,7 +66,13 @@
         3,
         4
       ],
-      "concept": "endocytosis"
+      "concept": "endocytosis",
+      "box": [
+        729,
+        45,
+        169,
+        43
+      ]
     },
     {
       "id": "large-particle",
@@ -60,7 +84,13 @@
       "lines": [
         9
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        219,
+        126,
+        123,
+        23
+      ]
     },
     {
       "id": "ligand",
@@ -72,7 +102,13 @@
       "lines": [
         15
       ],
-      "concept": "ligand"
+      "concept": "ligand",
+      "box": [
+        767,
+        190,
+        67,
+        23
+      ]
     },
     {
       "id": "plasma-membrane",
@@ -85,7 +121,13 @@
         17,
         18
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        10,
+        240,
+        100,
+        40
+      ]
     },
     {
       "id": "receptor",
@@ -98,7 +140,13 @@
       "lines": [
         19
       ],
-      "concept": "receptor-protein"
+      "concept": "receptor-protein",
+      "box": [
+        986,
+        303,
+        87,
+        23
+      ]
     },
     {
       "id": "vacuole",
@@ -111,7 +159,13 @@
       "lines": [
         20
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        197,
+        449,
+        77,
+        19
+      ]
     },
     {
       "id": "vesicle",
@@ -123,7 +177,13 @@
       "lines": [
         21
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        588,
+        449,
+        70,
+        19
+      ]
     },
     {
       "id": "intracellular-fluid",
@@ -136,7 +196,13 @@
       "lines": [
         22
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        300,
+        479,
+        144,
+        20
+      ]
     },
     {
       "id": "coated-vesicle",
@@ -148,7 +214,13 @@
       "lines": [
         23
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        890,
+        493,
+        132,
+        20
+      ]
     }
   ]
 }

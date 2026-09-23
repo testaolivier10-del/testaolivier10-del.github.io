@@ -3,6 +3,290 @@
  "version": 1,
  "sets": [
   {
+   "id": "directional-terms",
+   "title": "Directional terms on a body outline",
+   "chapter": "orientation",
+   "topic": "anatomical-position",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-1-13",
+     "topic": "anatomical-position",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "superior",
+       "name": "Superior",
+       "accept": [],
+       "box": [
+        450,
+        22,
+        101,
+        27
+       ],
+       "concept": "superior-inferior",
+       "taught": "anatomical-position",
+       "fn": "Toward the head, or above another part. In anatomical position your chest is superior to your abdomen.",
+       "follow": {
+        "q": "In anatomical position, which statement uses \"superior\" correctly?",
+        "options": [
+         "The nose is superior to the mouth",
+         "The knee is superior to the hip",
+         "The hand is superior to the elbow",
+         "The feet are superior to the knees"
+        ],
+        "correct": 0,
+        "why": "Superior means closer to the head. The nose sits above the mouth. The knee lies below the hip, the hand below the elbow (arms hang at the sides), and the feet below the knees.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "right",
+       "name": "Right",
+       "accept": [],
+       "box": [
+        672,
+        70,
+        66,
+        28
+       ],
+       "concept": null,
+       "fn": "The body's own right side: the subject's right, not yours. In a front view the subject's right appears on your left, which is why figures label it.",
+       "follow": {
+        "q": "You face a patient standing in anatomical position. On which side of your view is the patient's left arm?",
+        "options": [
+         "Your right",
+         "Your left",
+         "It depends on which way the palms face",
+         "Directly in front of you"
+        ],
+        "correct": 0,
+        "why": "Directional terms always use the patient's own left and right. Facing someone, their left arm is on your right, just as in a front-view figure.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "left",
+       "name": "Left",
+       "accept": [],
+       "box": [
+        872,
+        70,
+        51,
+        23
+       ],
+       "concept": null,
+       "fn": "The body's own left side: the subject's left, not yours. In a front view the subject's left appears on your right."
+      },
+      {
+       "id": "cranial",
+       "name": "Cranial",
+       "accept": [],
+       "box": [
+        90,
+        71,
+        86,
+        24
+       ],
+       "concept": "superior-inferior",
+       "taught": "anatomical-position",
+       "fn": "Toward the head end of the body; used much like superior. The word comes from the cranium, the skull."
+      },
+      {
+       "id": "proximal-arm",
+       "name": "Proximal",
+       "accept": [],
+       "box": [
+        1003,
+        230,
+        99,
+        24
+       ],
+       "concept": "proximal-distal",
+       "taught": "anatomical-position",
+       "fn": "On a limb, closer to where it attaches to the trunk. The elbow is proximal to the wrist; the knee is proximal to the ankle.",
+       "follow": {
+        "q": "Which statement uses \"proximal\" correctly?",
+        "options": [
+         "The elbow is proximal to the wrist",
+         "The wrist is proximal to the elbow",
+         "The ankle is proximal to the knee",
+         "The fingers are proximal to the palm"
+        ],
+        "correct": 0,
+        "why": "Proximal is measured along a limb from where it joins the trunk. The elbow is nearer the shoulder than the wrist is, so the elbow is proximal. The other three reverse the order.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "posterior",
+       "name": "Posterior or dorsal",
+       "accept": [],
+       "box": [
+        0,
+        288,
+        125,
+        52
+       ],
+       "concept": "anterior-posterior",
+       "taught": "anatomical-position",
+       "fn": "Toward the back of the body. Your spine and heels are on the posterior side. Dorsal (from dorsum, the back) means the same thing in an upright person."
+      },
+      {
+       "id": "anterior",
+       "name": "Anterior or ventral",
+       "accept": [],
+       "box": [
+        373,
+        288,
+        122,
+        52
+       ],
+       "concept": "anterior-posterior",
+       "taught": "anatomical-position",
+       "fn": "Toward the front of the body. Your nose and toes are on the anterior side. Ventral (belly side) means the same thing in a person standing upright.",
+       "follow": {
+        "q": "Which pair of terms means the same thing in a person standing in anatomical position?",
+        "options": [
+         "Anterior and ventral",
+         "Anterior and dorsal",
+         "Superior and caudal",
+         "Medial and lateral"
+        ],
+        "correct": 0,
+        "why": "Ventral means the belly side, and in an upright person the belly faces forward, so ventral and anterior coincide. Dorsal is the back, caudal is toward the tail, and medial and lateral are opposites.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "medial",
+       "name": "Medial",
+       "accept": [],
+       "box": [
+        768,
+        405,
+        76,
+        28
+       ],
+       "concept": "medial-lateral",
+       "taught": "anatomical-position",
+       "fn": "Toward the midline, the imaginary line down the center of the body. In anatomical position your little finger is medial to your thumb.",
+       "follow": {
+        "q": "In anatomical position, where is the thumb compared with the little finger?",
+        "options": [
+         "Lateral",
+         "Medial",
+         "Proximal",
+         "Deep"
+        ],
+        "correct": 0,
+        "why": "In anatomical position the palms face forward, so the thumb is on the outer side of the hand, farther from the midline. Farther from the midline is lateral; the little finger is medial.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lateral",
+       "name": "Lateral",
+       "accept": [],
+       "box": [
+        499,
+        451,
+        105,
+        24
+       ],
+       "concept": "medial-lateral",
+       "taught": "anatomical-position",
+       "fn": "Away from the midline, toward the side. In anatomical position your ears are lateral to your eyes."
+      },
+      {
+       "id": "caudal",
+       "name": "Caudal",
+       "accept": [],
+       "box": [
+        87,
+        528,
+        86,
+        24
+       ],
+       "concept": "superior-inferior",
+       "taught": "anatomical-position",
+       "fn": "Toward the tail end, the bottom of the trunk; used much like inferior. It comes from cauda, Latin for tail."
+      },
+      {
+       "id": "proximal-leg",
+       "name": "Proximal",
+       "accept": [],
+       "box": [
+        500,
+        539,
+        102,
+        24
+       ],
+       "concept": "proximal-distal",
+       "taught": "anatomical-position",
+       "fn": "On a limb, closer to where it attaches to the trunk. The elbow is proximal to the wrist; the knee is proximal to the ankle.",
+       "follow": {
+        "q": "Which statement uses \"proximal\" correctly?",
+        "options": [
+         "The elbow is proximal to the wrist",
+         "The wrist is proximal to the elbow",
+         "The ankle is proximal to the knee",
+         "The fingers are proximal to the palm"
+        ],
+        "correct": 0,
+        "why": "Proximal is measured along a limb from where it joins the trunk. The elbow is nearer the shoulder than the wrist is, so the elbow is proximal. The other three reverse the order.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "distal-hand",
+       "name": "Distal",
+       "accept": [],
+       "box": [
+        1036,
+        619,
+        66,
+        24
+       ],
+       "concept": "proximal-distal",
+       "taught": "anatomical-position",
+       "fn": "On a limb, farther from where it attaches to the trunk. The fingers are distal to the wrist; the toes are distal to the ankle."
+      },
+      {
+       "id": "distal-foot",
+       "name": "Distal",
+       "accept": [],
+       "box": [
+        618,
+        1029,
+        70,
+        23
+       ],
+       "concept": "proximal-distal",
+       "taught": "anatomical-position",
+       "fn": "On a limb, farther from where it attaches to the trunk. The fingers are distal to the wrist; the toes are distal to the ankle."
+      },
+      {
+       "id": "inferior",
+       "name": "Inferior",
+       "accept": [],
+       "box": [
+        458,
+        1085,
+        85,
+        24
+       ],
+       "concept": "superior-inferior",
+       "taught": "anatomical-position",
+       "fn": "Away from the head, or below another part. In anatomical position your knees are inferior to your hips."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "planes",
    "title": "Planes and sections",
    "chapter": "orientation",
@@ -32,7 +316,19 @@
        ],
        "concept": "sagittal-plane",
        "taught": "body-planes",
-       "fn": ""
+       "fn": "A vertical plane that divides the body into left and right parts. Down the exact middle it is the midsagittal plane, making equal halves; off center it is a parasagittal plane.",
+       "follow": {
+        "q": "A cut divides the brain into left and right halves. Which plane is it?",
+        "options": [
+         "Midsagittal plane",
+         "Frontal plane",
+         "Transverse plane",
+         "Oblique plane"
+        ],
+        "correct": 0,
+        "why": "A plane that separates left from right is sagittal, and one down the exact middle is midsagittal. A frontal plane separates front from back, and a transverse plane separates top from bottom.",
+        "level": "apply"
+       }
       },
       {
        "id": "frontal-plane",
@@ -50,7 +346,19 @@
        ],
        "concept": "frontal-plane",
        "taught": "body-planes",
-       "fn": ""
+       "fn": "A vertical plane that divides the body into front (anterior) and back (posterior) parts. It is also called the coronal plane.",
+       "follow": {
+        "q": "Which plane separates the anterior part of the body from the posterior part?",
+        "options": [
+         "Frontal (coronal) plane",
+         "Sagittal plane",
+         "Transverse plane",
+         "Midsagittal plane"
+        ],
+        "correct": 0,
+        "why": "The frontal plane runs side to side and top to bottom, like a wall you face, so it splits front from back. Sagittal planes split left from right, and transverse planes split top from bottom.",
+        "level": "recall"
+       }
       },
       {
        "id": "transverse-plane",
@@ -68,7 +376,19 @@
        ],
        "concept": "transverse-plane",
        "taught": "body-planes",
-       "fn": ""
+       "fn": "A horizontal plane that divides the body into upper (superior) and lower (inferior) parts. A slice along it is a cross section, the view in most CT scans.",
+       "follow": {
+        "q": "A CT scan shows a slice through the abdomen as if you were looking up from the feet. Which plane is the slice in?",
+        "options": [
+         "Transverse",
+         "Frontal",
+         "Sagittal",
+         "Oblique"
+        ],
+        "correct": 0,
+        "why": "A slice that shows the body in cross section, separating upper from lower, lies in the transverse (horizontal) plane. CT images are usually displayed that way, viewed from below.",
+        "level": "apply"
+       }
       },
       {
        "id": "oblique-plane",
@@ -84,7 +404,4156 @@
        ],
        "concept": "anatomical-plane-section",
        "taught": "body-planes",
-       "fn": ""
+       "fn": "Any plane cut at an angle between the three standard planes. Oblique sections are harder to read because structures appear stretched or tilted."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cavities",
+   "title": "Body cavities",
+   "chapter": "orientation",
+   "topic": "body-cavities",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-1-15",
+     "topic": "body-cavities",
+     "core": [
+      "compartments",
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cranial-cavity-lateral",
+       "name": "Cranial cavity",
+       "accept": [
+        "cranial"
+       ],
+       "box": [
+        93,
+        45,
+        70,
+        43
+       ],
+       "concept": "dorsal-cavity",
+       "taught": "body-cavities",
+       "fn": "The part of the dorsal body cavity inside the skull. It holds the brain."
+      },
+      {
+       "id": "cranial-cavity-anterior",
+       "name": "Cranial cavity",
+       "accept": [
+        "cranial"
+       ],
+       "box": [
+        827,
+        45,
+        71,
+        43
+       ],
+       "concept": "dorsal-cavity",
+       "taught": "body-cavities",
+       "fn": "The part of the dorsal body cavity inside the skull. It holds the brain."
+      },
+      {
+       "id": "vertebral-cavity-anterior",
+       "name": "Vertebral cavity",
+       "accept": [
+        "spinal cavity",
+        "vertebral",
+        "vertebral canal"
+       ],
+       "box": [
+        827,
+        115,
+        87,
+        43
+       ],
+       "concept": "dorsal-cavity",
+       "taught": "body-cavities",
+       "fn": "The part of the dorsal body cavity that runs down the back inside the spine. It holds the spinal cord and is continuous with the cranial cavity.",
+       "follow": {
+        "q": "The brain and the spinal cord sit in which body cavity?",
+        "options": [
+         "The dorsal body cavity",
+         "The ventral body cavity",
+         "The thoracic cavity",
+         "The mediastinum"
+        ],
+        "correct": 0,
+        "why": "The dorsal body cavity is the one continuous space made of the cranial cavity (brain) and the vertebral cavity (spinal cord). The ventral cavity, with the thoracic cavity and mediastinum inside it, holds the organs of the trunk.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "thoracic-cavity",
+       "name": "Thoracic cavity",
+       "accept": [
+        "thoracic"
+       ],
+       "box": [
+        367,
+        178,
+        145,
+        23
+       ],
+       "concept": "thoracic-cavity",
+       "taught": "body-cavities",
+       "fn": "The upper part of the ventral body cavity, above the diaphragm. It holds the two pleural cavities with the lungs and, between them, the mediastinum with the heart."
+      },
+      {
+       "id": "superior-mediastinum",
+       "name": "Superior mediastinum",
+       "accept": [],
+       "box": [
+        382,
+        199,
+        121,
+        40
+       ],
+       "concept": "mediastinum",
+       "taught": "body-cavities",
+       "fn": "The upper part of the mediastinum, above the heart. It holds the large vessels at the top of the heart, the trachea, the esophagus and the thymus."
+      },
+      {
+       "id": "dorsal-body-cavity",
+       "name": "Dorsal body cavity",
+       "accept": [
+        "dorsal",
+        "dorsal cavity"
+       ],
+       "box": [
+        0,
+        202,
+        63,
+        64
+       ],
+       "concept": "dorsal-cavity",
+       "taught": "body-cavities",
+       "fn": "The cavity toward the back of the body. It holds the brain and spinal cord and has two parts: the cranial cavity and the vertebral cavity."
+      },
+      {
+       "id": "pleural-cavity",
+       "name": "Pleural cavity",
+       "accept": [
+        "pleural"
+       ],
+       "box": [
+        383,
+        241,
+        115,
+        23
+       ],
+       "concept": "pleural-cavity",
+       "taught": "body-cavities",
+       "fn": "The thin space around each lung between two layers of serous membrane. Serous fluid in it lets the lung slide against the chest wall as you breathe.",
+       "follow": {
+        "q": "What lies directly between the two pleural cavities?",
+        "options": [
+         "The mediastinum",
+         "The pericardial cavity only",
+         "The diaphragm",
+         "The abdominopelvic cavity"
+        ],
+        "correct": 0,
+        "why": "The mediastinum is the central compartment of the thoracic cavity, between the two lungs' pleural cavities. It contains the heart in its own pericardial cavity plus the other midline organs. The diaphragm lies below all of them.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pericardial-cavity",
+       "name": "Pericardial cavity within the mediastinum",
+       "accept": [
+        "pericardial",
+        "pericardial cavity"
+       ],
+       "box": [
+        383,
+        262,
+        149,
+        61
+       ],
+       "concept": "pericardial-cavity",
+       "taught": "body-cavities",
+       "fn": "The thin, fluid-filled space around the heart, between two layers of serous membrane. It sits inside the mediastinum."
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        398,
+        336,
+        97,
+        22
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of muscle that separates the thoracic cavity from the abdominopelvic cavity. The heart rests on its upper surface, tilted so the apex points down and to your left."
+      },
+      {
+       "id": "vertebral-cavity-lateral",
+       "name": "Vertebral cavity",
+       "accept": [
+        "spinal cavity",
+        "vertebral",
+        "vertebral canal"
+       ],
+       "box": [
+        92,
+        359,
+        88,
+        43
+       ],
+       "concept": "dorsal-cavity",
+       "taught": "body-cavities",
+       "fn": "The part of the dorsal body cavity that runs down the back inside the spine. It holds the spinal cord and is continuous with the cranial cavity.",
+       "follow": {
+        "q": "The brain and the spinal cord sit in which body cavity?",
+        "options": [
+         "The dorsal body cavity",
+         "The ventral body cavity",
+         "The thoracic cavity",
+         "The mediastinum"
+        ],
+        "correct": 0,
+        "why": "The dorsal body cavity is the one continuous space made of the cranial cavity (brain) and the vertebral cavity (spinal cord). The ventral cavity, with the thoracic cavity and mediastinum inside it, holds the organs of the trunk.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ventral-body-cavity",
+       "name": "Ventral body cavity",
+       "accept": [
+        "ventral",
+        "ventral cavity"
+       ],
+       "box": [
+        953,
+        367,
+        149,
+        106
+       ],
+       "concept": "ventral-cavity",
+       "taught": "body-cavities",
+       "fn": "The large cavity at the front of the trunk. The diaphragm divides it into the thoracic cavity above and the abdominopelvic cavity below."
+      },
+      {
+       "id": "abdominal-cavity",
+       "name": "Abdominal cavity",
+       "accept": [
+        "abdominal"
+       ],
+       "box": [
+        368,
+        435,
+        157,
+        23
+       ],
+       "concept": "abdominopelvic-cavity",
+       "taught": "body-cavities",
+       "fn": "The upper part of the abdominopelvic cavity. It holds the stomach, liver, gallbladder, spleen, pancreas, kidneys and most of the intestines."
+      },
+      {
+       "id": "abdominopelvic-cavity",
+       "name": "Abdominopelvic cavity",
+       "accept": [
+        "abdominopelvic"
+       ],
+       "box": [
+        827,
+        447,
+        99,
+        65
+       ],
+       "concept": "abdominopelvic-cavity",
+       "taught": "body-cavities",
+       "fn": "The lower part of the ventral body cavity, below the diaphragm. It has no wall inside it, but is described as an upper abdominal cavity and a lower pelvic cavity."
+      },
+      {
+       "id": "pelvic-cavity",
+       "name": "Pelvic cavity",
+       "accept": [
+        "pelvic"
+       ],
+       "box": [
+        368,
+        525,
+        117,
+        22
+       ],
+       "concept": "abdominopelvic-cavity",
+       "taught": "body-cavities",
+       "fn": "The lower part of the abdominopelvic cavity, inside the bony pelvis. It holds the urinary bladder, the end of the intestine and the internal reproductive organs."
+      }
+     ]
+    },
+    {
+     "figure": "os-1-17",
+     "topic": "body-cavities",
+     "core": [
+      "compartments",
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "pericardial-cavity",
+       "name": "Pericardial cavity",
+       "accept": [
+        "pericardial space"
+       ],
+       "box": [
+        371,
+        103,
+        110,
+        50
+       ],
+       "concept": "pericardial-cavity",
+       "taught": "body-cavities",
+       "fn": "The thin space between the two layers of the serous membrane around the heart. In the comparison it is the air inside the balloon: a closed sac that the heart pushes into without ever entering it."
+      }
+     ],
+     "covered": [
+      {
+       "id": "visceral-pericardium",
+       "box": [
+        371,
+        21,
+        120,
+        50
+       ]
+      },
+      {
+       "id": "parietal-pericardium",
+       "box": [
+        372,
+        185,
+        119,
+        50
+       ]
+      }
+     ],
+     "shown": [
+      {
+       "id": "air-space",
+       "why": "Part of the fist-in-a-balloon comparison, not a body structure."
+      },
+      {
+       "id": "balloon",
+       "why": "Part of the fist-in-a-balloon comparison, not a body structure."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "regions",
+   "title": "Body regions and abdominal quadrants",
+   "chapter": "orientation",
+   "topic": "body-regions",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-1-12",
+     "topic": "body-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "frons",
+       "name": "Frons",
+       "accept": [
+        "forehead",
+        "frontal"
+       ],
+       "box": [
+        31,
+        0,
+        198,
+        20
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The forehead. Its adjective is frontal."
+      },
+      {
+       "id": "oculus",
+       "name": "Oculus",
+       "accept": [
+        "eye",
+        "ocular",
+        "orbital"
+       ],
+       "box": [
+        347,
+        0,
+        124,
+        36
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The eye. Its adjective is orbital or ocular."
+      },
+      {
+       "id": "bucca",
+       "name": "Bucca",
+       "accept": [
+        "buccal",
+        "cheek"
+       ],
+       "box": [
+        345,
+        57,
+        183,
+        20
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The cheek. Its adjective is buccal, as in a buccal swab from inside the cheek."
+      },
+      {
+       "id": "auris",
+       "name": "Auris",
+       "accept": [
+        "ear",
+        "otic"
+       ],
+       "box": [
+        344,
+        92,
+        137,
+        20
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The ear. Its adjective is otic."
+      },
+      {
+       "id": "facies",
+       "name": "Facies",
+       "accept": [
+        "face",
+        "facial"
+       ],
+       "box": [
+        133,
+        93,
+        61,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The face. Its adjective is facial."
+      },
+      {
+       "id": "nasus",
+       "name": "Nasus",
+       "accept": [
+        "nasal",
+        "nose"
+       ],
+       "box": [
+        345,
+        116,
+        167,
+        21
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The nose. Its adjective is nasal."
+      },
+      {
+       "id": "cervicis-anterior",
+       "name": "Cervicis",
+       "accept": [
+        "cervical",
+        "neck"
+       ],
+       "box": [
+        345,
+        149,
+        196,
+        20
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The neck. Its adjective is cervical, so the cervical region is the neck.",
+       "follow": {
+        "q": "A \"cervical\" injury is an injury to which region?",
+        "options": [
+         "The neck",
+         "The chest",
+         "The lower back",
+         "The wrist"
+        ],
+        "correct": 0,
+        "why": "Cervicis (cervix) means neck, so its adjective, cervical, refers to the neck region. The chest is thoracic, the lower back lumbar, and the wrist carpal.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "oris",
+       "name": "Oris",
+       "accept": [
+        "mouth",
+        "oral"
+       ],
+       "box": [
+        0,
+        159,
+        146,
+        20
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The mouth. Its adjective is oral."
+      },
+      {
+       "id": "mentis",
+       "name": "Mentis",
+       "accept": [
+        "chin",
+        "mental"
+       ],
+       "box": [
+        0,
+        189,
+        109,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The chin. Its adjective is mental (from mentum, chin), not to be confused with the mind."
+      },
+      {
+       "id": "thorax",
+       "name": "Thorcis or thorax",
+       "accept": [
+        "chest",
+        "thoracic",
+        "thoracis",
+        "thorax"
+       ],
+       "box": [
+        434,
+        189,
+        107,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The chest. Its adjective is thoracic."
+      },
+      {
+       "id": "axilla",
+       "name": "Axilla",
+       "accept": [
+        "armpit",
+        "axillary"
+       ],
+       "box": [
+        0,
+        234,
+        116,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The armpit. Its adjective is axillary."
+      },
+      {
+       "id": "mamma",
+       "name": "Mamma",
+       "accept": [
+        "breast",
+        "mammary"
+       ],
+       "box": [
+        434,
+        253,
+        92,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The breast. Its adjective is mammary."
+      },
+      {
+       "id": "brachium-anterior",
+       "name": "Brachium",
+       "accept": [
+        "arm",
+        "brachial"
+       ],
+       "box": [
+        0,
+        283,
+        104,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The arm in the strict anatomical sense: only the part between the shoulder and the elbow. Its adjective is brachial.",
+       "follow": {
+        "q": "In anatomical terms, the \"brachium\" is which part of the upper limb?",
+        "options": [
+         "Between the shoulder and the elbow",
+         "Between the elbow and the wrist",
+         "The whole limb from shoulder to fingers",
+         "The hand"
+        ],
+        "correct": 0,
+        "why": "Anatomy uses \"arm\" (brachium) only for the segment from shoulder to elbow. From elbow to wrist is the forearm (antebrachium: ante means before), and the hand is the manus.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "trunk",
+       "name": "Trunk",
+       "accept": [],
+       "box": [
+        541,
+        310,
+        56,
+        17
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The body apart from the head, neck and limbs: the thorax, abdomen and pelvis together."
+      },
+      {
+       "id": "abdomen",
+       "name": "Abdomen",
+       "accept": [
+        "abdominal"
+       ],
+       "box": [
+        434,
+        316,
+        95,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The belly, between the thorax and the pelvis. Its adjective is abdominal."
+      },
+      {
+       "id": "antecubitis",
+       "name": "Antecubitis",
+       "accept": [
+        "antecubital",
+        "front of elbow"
+       ],
+       "box": [
+        0,
+        328,
+        121,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The front of the elbow. Its adjective is antecubital; the antecubital area is where blood is most often drawn."
+      },
+      {
+       "id": "umbilicus",
+       "name": "Umbilicus",
+       "accept": [
+        "navel",
+        "umbilical"
+       ],
+       "box": [
+        434,
+        363,
+        87,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The navel. Its adjective is umbilical; the umbilical region is the central abdomen around it."
+      },
+      {
+       "id": "antebrachium-anterior",
+       "name": "Antebrachium",
+       "accept": [
+        "antebrachial",
+        "forearm"
+       ],
+       "box": [
+        0,
+        392,
+        113,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The forearm, between the elbow and the wrist. Ante- means before, so it is the part that comes after the brachium, the arm. Its adjective is antebrachial."
+      },
+      {
+       "id": "hip",
+       "name": "Hip",
+       "accept": [
+        "coxa",
+        "coxal"
+       ],
+       "box": [
+        434,
+        425,
+        59,
+        36
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The region where the thigh joins the trunk, on each side. Its adjective is coxal."
+      },
+      {
+       "id": "carpus",
+       "name": "Carpus",
+       "accept": [
+        "carpal",
+        "wrist"
+       ],
+       "box": [
+        0,
+        452,
+        62,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The wrist. Its adjective is carpal."
+      },
+      {
+       "id": "pelvis",
+       "name": "Pelvis",
+       "accept": [
+        "pelvic"
+       ],
+       "box": [
+        468,
+        523,
+        63,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The lowest part of the trunk, below the abdomen. Its adjective is pelvic."
+      },
+      {
+       "id": "palma",
+       "name": "Palma",
+       "accept": [
+        "palm",
+        "palmar"
+       ],
+       "box": [
+        0,
+        560,
+        104,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The palm of the hand. Its adjective is palmar."
+      },
+      {
+       "id": "inguen",
+       "name": "Inguen",
+       "accept": [
+        "groin",
+        "inguinal"
+       ],
+       "box": [
+        387,
+        572,
+        126,
+        38
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The groin, where the thigh meets the front of the trunk. Its adjective is inguinal."
+      },
+      {
+       "id": "crus",
+       "name": "Crus",
+       "accept": [
+        "crural",
+        "leg"
+       ],
+       "box": [
+        75,
+        727,
+        87,
+        38
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The leg in the strict anatomical sense: only the part between the knee and the ankle. Its adjective is crural."
+      },
+      {
+       "id": "tarsus",
+       "name": "Tarsus",
+       "accept": [
+        "ankle",
+        "tarsal"
+       ],
+       "box": [
+        74,
+        778,
+        69,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The ankle. Its adjective is tarsal."
+      },
+      {
+       "id": "pes",
+       "name": "Pes",
+       "accept": [
+        "foot",
+        "pedal"
+       ],
+       "box": [
+        380,
+        856,
+        88,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The foot. Its adjective is pedal, as in the pedal pulse on top of the foot."
+      },
+      {
+       "id": "cephalon",
+       "name": "Cephalon",
+       "accept": [
+        "cephalic",
+        "head"
+       ],
+       "box": [
+        926,
+        63,
+        134,
+        38
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The head. Its adjective is cephalic."
+      },
+      {
+       "id": "shoulder",
+       "name": "Shoulder",
+       "accept": [
+        "acromial"
+       ],
+       "box": [
+        678,
+        89,
+        81,
+        38
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The region where the upper limb joins the trunk. Its adjective is acromial."
+      },
+      {
+       "id": "cervicis-posterior",
+       "name": "Cervicis",
+       "accept": [
+        "cervical",
+        "neck"
+       ],
+       "box": [
+        922,
+        140,
+        129,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The neck. Its adjective is cervical, so the cervical region is the neck.",
+       "follow": {
+        "q": "A \"cervical\" injury is an injury to which region?",
+        "options": [
+         "The neck",
+         "The chest",
+         "The lower back",
+         "The wrist"
+        ],
+        "correct": 0,
+        "why": "Cervicis (cervix) means neck, so its adjective, cervical, refers to the neck region. The chest is thoracic, the lower back lumbar, and the wrist carpal.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "dorsum",
+       "name": "Dorsum",
+       "accept": [
+        "back",
+        "dorsal"
+       ],
+       "box": [
+        600,
+        139,
+        72,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The back. Its adjective is dorsal."
+      },
+      {
+       "id": "brachium-posterior",
+       "name": "Brachium",
+       "accept": [
+        "arm",
+        "brachial"
+       ],
+       "box": [
+        600,
+        198,
+        85,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The arm in the strict anatomical sense: only the part between the shoulder and the elbow. Its adjective is brachial.",
+       "follow": {
+        "q": "In anatomical terms, the \"brachium\" is which part of the upper limb?",
+        "options": [
+         "Between the shoulder and the elbow",
+         "Between the elbow and the wrist",
+         "The whole limb from shoulder to fingers",
+         "The hand"
+        ],
+        "correct": 0,
+        "why": "Anatomy uses \"arm\" (brachium) only for the segment from shoulder to elbow. From elbow to wrist is the forearm (antebrachium: ante means before), and the hand is the manus.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "lumbus",
+       "name": "Lumbus",
+       "accept": [
+        "loin",
+        "lumbar"
+       ],
+       "box": [
+        600,
+        332,
+        74,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The lower back, between the thorax and the pelvis. Its adjective is lumbar."
+      },
+      {
+       "id": "upper-limb",
+       "name": "Upper limb",
+       "accept": [],
+       "box": [
+        1049,
+        369,
+        53,
+        34
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The whole limb from the shoulder to the fingers: arm (brachium), forearm (antebrachium), wrist (carpus) and hand (manus)."
+      },
+      {
+       "id": "antebrachium-posterior",
+       "name": "Antebrachium",
+       "accept": [
+        "antebrachial",
+        "forearm"
+       ],
+       "box": [
+        535,
+        434,
+        117,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The forearm, between the elbow and the wrist. Ante- means before, so it is the part that comes after the brachium, the arm. Its adjective is antebrachial."
+      },
+      {
+       "id": "manus",
+       "name": "Manus",
+       "accept": [
+        "hand",
+        "manual"
+       ],
+       "box": [
+        568,
+        501,
+        74,
+        53
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The hand. Its adjective is manual."
+      },
+      {
+       "id": "gluteus",
+       "name": "Gluteus",
+       "accept": [
+        "buttock",
+        "gluteal"
+       ],
+       "box": [
+        622,
+        569,
+        82,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The buttock. Its adjective is gluteal."
+      },
+      {
+       "id": "lower-limb",
+       "name": "Lower limb",
+       "accept": [],
+       "box": [
+        954,
+        684,
+        59,
+        34
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The whole limb from the hip to the toes: thigh, leg (crus), ankle (tarsus) and foot (pes)."
+      },
+      {
+       "id": "popliteus",
+       "name": "Popliteus",
+       "accept": [
+        "back of knee",
+        "popliteal"
+       ],
+       "box": [
+        622,
+        690,
+        102,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The back of the knee. Its adjective is popliteal."
+      },
+      {
+       "id": "sura",
+       "name": "Sura",
+       "accept": [
+        "calf",
+        "sural"
+       ],
+       "box": [
+        622,
+        746,
+        57,
+        54
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The calf, the back of the leg. Its adjective is sural."
+      },
+      {
+       "id": "planta",
+       "name": "Planta",
+       "accept": [
+        "plantar",
+        "sole",
+        "sole of foot"
+       ],
+       "box": [
+        622,
+        877,
+        118,
+        37
+       ],
+       "concept": "regional-terms",
+       "taught": "body-regions",
+       "fn": "The sole of the foot. Its adjective is plantar."
+      }
+     ],
+     "covered": [
+      {
+       "id": "cranium",
+       "box": [
+        133,
+        30,
+        76,
+        54
+       ]
+      },
+      {
+       "id": "pollex",
+       "box": [
+        0,
+        518,
+        70,
+        34
+       ]
+      },
+      {
+       "id": "digits-fingers",
+       "box": [
+        0,
+        605,
+        137,
+        52
+       ]
+      },
+      {
+       "id": "pubis",
+       "box": [
+        387,
+        637,
+        59,
+        37
+       ]
+      },
+      {
+       "id": "patella",
+       "box": [
+        76,
+        657,
+        78,
+        52
+       ]
+      },
+      {
+       "id": "femur-anterior",
+       "box": [
+        386,
+        685,
+        75,
+        53
+       ]
+      },
+      {
+       "id": "digits-toes",
+       "box": [
+        0,
+        840,
+        138,
+        52
+       ]
+      },
+      {
+       "id": "hallux",
+       "box": [
+        64,
+        919,
+        143,
+        21
+       ]
+      },
+      {
+       "id": "olecranon",
+       "box": [
+        600,
+        256,
+        90,
+        71
+       ]
+      },
+      {
+       "id": "sacrum",
+       "box": [
+        600,
+        391,
+        70,
+        37
+       ]
+      },
+      {
+       "id": "femur-posterior",
+       "box": [
+        621,
+        628,
+        75,
+        54
+       ]
+      },
+      {
+       "id": "calcaneus",
+       "box": [
+        622,
+        808,
+        110,
+        53
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-1-16",
+     "topic": "body-regions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        500,
+        127,
+        95,
+        22
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of muscle that separates the thoracic cavity from the abdominopelvic cavity. The heart rests on its upper surface, tilted so the apex points down and to your left."
+      },
+      {
+       "id": "right-hypochondriac-region",
+       "name": "Right hypochondriac region",
+       "accept": [
+        "right hypochondriac"
+       ],
+       "box": [
+        64,
+        142,
+        128,
+        62
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The upper right of the nine abdominal regions, under the lower edge of the ribcage (hypo- under, chondro- cartilage). Most of the liver and the gallbladder lie here."
+      },
+      {
+       "id": "epigastric-region",
+       "name": "Epigastric region",
+       "accept": [
+        "epigastric"
+       ],
+       "box": [
+        226,
+        151,
+        90,
+        44
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The upper middle of the nine abdominal regions, above the stomach area (epi- upon, gastr- stomach). Much of the stomach and part of the liver lie here.",
+       "follow": {
+        "q": "A patient points to pain just below the tip of the breastbone, in the middle. Which region is that?",
+        "options": [
+         "Epigastric region",
+         "Umbilical region",
+         "Hypogastric region",
+         "Right hypochondriac region"
+        ],
+        "correct": 0,
+        "why": "The upper middle of the nine-region grid is the epigastric region. The umbilical region is the center around the navel, the hypogastric region is the lower middle, and the hypochondriac regions are the upper sides.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "left-hypochondriac-region",
+       "name": "Left hypochondriac region",
+       "accept": [
+        "left hypochondriac"
+       ],
+       "box": [
+        352,
+        142,
+        126,
+        62
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The upper left of the nine abdominal regions, under the lower edge of the ribcage. Part of the stomach and the spleen lie here."
+      },
+      {
+       "id": "right-lumbar-region",
+       "name": "Right lumbar region",
+       "accept": [
+        "right lumbar"
+       ],
+       "box": [
+        114,
+        282,
+        62,
+        62
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The middle right of the nine abdominal regions, at the level of the lower back (lumbus)."
+      },
+      {
+       "id": "umbilical-region",
+       "name": "Umbilical region",
+       "accept": [
+        "umbilical"
+       ],
+       "box": [
+        228,
+        288,
+        86,
+        44
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The central of the nine abdominal regions, around the navel."
+      },
+      {
+       "id": "left-lumbar-region",
+       "name": "Left lumbar region",
+       "accept": [
+        "left lumbar"
+       ],
+       "box": [
+        366,
+        282,
+        62,
+        62
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The middle left of the nine abdominal regions, at the level of the lower back (lumbus)."
+      },
+      {
+       "id": "right-iliac-region",
+       "name": "Right iliac region",
+       "accept": [
+        "right iliac",
+        "right inguinal region"
+       ],
+       "box": [
+        116,
+        410,
+        62,
+        62
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The lower right of the nine abdominal regions, next to the hip bone. The appendix is usually here. Also called the right inguinal region."
+      },
+      {
+       "id": "hypogastric-region",
+       "name": "Hypogastric region",
+       "accept": [
+        "hypogastric",
+        "pubic region"
+       ],
+       "box": [
+        218,
+        418,
+        106,
+        44
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The lower middle of the nine abdominal regions, below the navel. The urinary bladder lies here; it is also called the pubic region."
+      },
+      {
+       "id": "left-iliac-region",
+       "name": "Left iliac region",
+       "accept": [
+        "left iliac",
+        "left inguinal region"
+       ],
+       "box": [
+        368,
+        410,
+        60,
+        62
+       ],
+       "concept": "abdominopelvic-regions",
+       "taught": "body-regions",
+       "fn": "The lower left of the nine abdominal regions, next to the hip bone. Also called the left inguinal region."
+      },
+      {
+       "id": "ruq",
+       "name": "Right upper quadrant (RUQ)",
+       "accept": [
+        "ruq"
+       ],
+       "box": [
+        700,
+        222,
+        108,
+        62
+       ],
+       "concept": "abdominal-quadrants",
+       "taught": "body-regions",
+       "fn": "The upper right of the four abdominal quadrants, formed by a vertical and a horizontal line through the navel. It holds most of the liver and the gallbladder.",
+       "follow": {
+        "q": "Pain from an inflamed gallbladder is felt mainly in which quadrant?",
+        "options": [
+         "Right upper quadrant",
+         "Left upper quadrant",
+         "Right lower quadrant",
+         "Left lower quadrant"
+        ],
+        "correct": 0,
+        "why": "The liver fills most of the upper right abdomen, and the gallbladder sits under it, so gallbladder pain centers in the right upper quadrant. The appendix is usually in the right lower quadrant, and the spleen in the left upper.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "luq",
+       "name": "Left upper quadrant (LUQ)",
+       "accept": [
+        "luq"
+       ],
+       "box": [
+        850,
+        222,
+        90,
+        62
+       ],
+       "concept": "abdominal-quadrants",
+       "taught": "body-regions",
+       "fn": "The upper left of the four abdominal quadrants. It holds most of the stomach and the spleen."
+      },
+      {
+       "id": "rlq",
+       "name": "Right lower quadrant (RLQ)",
+       "accept": [
+        "rlq"
+       ],
+       "box": [
+        702,
+        319,
+        102,
+        62
+       ],
+       "concept": "abdominal-quadrants",
+       "taught": "body-regions",
+       "fn": "The lower right of the four abdominal quadrants. The appendix is usually here, so appendicitis pain settles in this quadrant."
+      },
+      {
+       "id": "llq",
+       "name": "Left lower quadrant (LLQ)",
+       "accept": [
+        "llq"
+       ],
+       "box": [
+        854,
+        319,
+        90,
+        62
+       ],
+       "concept": "abdominal-quadrants",
+       "taught": "body-regions",
+       "fn": "The lower left of the four abdominal quadrants, holding coils of the intestine."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plasma-membrane",
+   "title": "Parts of the plasma membrane",
+   "chapter": "cells",
+   "topic": "plasma-membrane",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-3-4",
+     "topic": "plasma-membrane",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "glycoprotein",
+       "name": "Glycoprotein",
+       "accept": [
+        "glycoproteins"
+       ],
+       "box": [
+        153,
+        0,
+        234,
+        44
+       ],
+       "concept": "glycocalyx",
+       "taught": "plasma-membrane",
+       "fn": "A membrane protein with a sugar chain attached on the outside. Together with glycolipids it forms the glycocalyx, the sugar coat that marks the cell's identity."
+      },
+      {
+       "id": "glycolipid",
+       "name": "Glycolipid",
+       "accept": [
+        "glycolipids"
+       ],
+       "box": [
+        657,
+        3,
+        186,
+        62
+       ],
+       "concept": "glycocalyx",
+       "taught": "plasma-membrane",
+       "fn": "A lipid in the outer layer of the membrane with a sugar chain attached. It is part of the glycocalyx, the sugar coat on the cell's outer surface."
+      },
+      {
+       "id": "peripheral-membrane-protein",
+       "name": "Peripheral membrane protein",
+       "accept": [
+        "peripheral protein",
+        "peripheral proteins"
+       ],
+       "box": [
+        0,
+        314,
+        189,
+        44
+       ],
+       "concept": "membrane-proteins",
+       "taught": "plasma-membrane",
+       "fn": "A protein attached loosely to one face of the membrane, usually to an integral protein, rather than set into the bilayer. Many are enzymes or anchor the cell's internal framework."
+      },
+      {
+       "id": "phospholipid-bilayer",
+       "name": "Phospholipid bilayer",
+       "accept": [
+        "bilayer",
+        "lipid bilayer"
+       ],
+       "box": [
+        760,
+        315,
+        117,
+        44
+       ],
+       "concept": "phospholipid-bilayer",
+       "taught": "plasma-membrane",
+       "fn": "The two-layer sheet of phospholipids that forms the membrane. Their water-loving heads face the fluid on both sides and their water-fearing tails face each other, so ions and water-soluble molecules cannot pass straight through.",
+       "follow": {
+        "q": "Why can a small lipid-soluble molecule cross the membrane on its own, but an ion cannot?",
+        "options": [
+         "The core of the bilayer is made of hydrophobic tails, which a lipid-soluble molecule can dissolve through and a charged ion cannot",
+         "Ions are too large to fit between phospholipids",
+         "The glycocalyx blocks ions",
+         "Cholesterol binds ions and holds them outside"
+        ],
+        "correct": 0,
+        "why": "The middle of the bilayer is a layer of fatty tails. A molecule that dissolves in lipid can pass through it; a charged ion is surrounded by water and is repelled by that hydrophobic core, so it needs a protein path.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "integral-membrane-protein",
+       "name": "Integral membrane protein",
+       "accept": [
+        "integral protein",
+        "integral proteins",
+        "transmembrane protein"
+       ],
+       "box": [
+        204,
+        358,
+        169,
+        44
+       ],
+       "concept": "membrane-proteins",
+       "taught": "plasma-membrane",
+       "fn": "A protein that spans the bilayer or is embedded in it. Many act as channels or carriers that let particular substances cross."
+      },
+      {
+       "id": "cholesterol",
+       "name": "Cholesterol",
+       "accept": [],
+       "box": [
+        434,
+        358,
+        107,
+        20
+       ],
+       "concept": "steroid",
+       "taught": "biomolecules",
+       "fn": "A steroid tucked between the phospholipids. It keeps the membrane from becoming too stiff in the cold or too fluid in the heat."
+      }
+     ],
+     "covered": [
+      {
+       "id": "channel-protein",
+       "box": [
+        595,
+        358,
+        144,
+        23
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cell-parts",
+   "title": "Parts of a generalized cell",
+   "chapter": "cells",
+   "topic": "organelles",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-3-13",
+     "topic": "organelles",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "mitochondria",
+       "name": "Mitochondria",
+       "accept": [
+        "mitochondrial",
+        "mitochondrion"
+       ],
+       "box": [
+        521,
+        3,
+        120,
+        19
+       ],
+       "concept": "mitochondrion",
+       "taught": "organelles",
+       "fn": "Organelles with a double membrane whose inner membrane is folded into shelves. They make most of the cell's ATP using oxygen, so active cells such as muscle have many.",
+       "follow": {
+        "q": "A cell uses a lot of ATP all the time. What would you expect to see in it?",
+        "options": [
+         "Many mitochondria",
+         "Many lysosomes",
+         "A very large Golgi apparatus",
+         "No cytoskeleton"
+        ],
+        "correct": 0,
+        "why": "Mitochondria make most of a cell's ATP, so cells with a high, steady demand (heart and skeletal muscle, for example) are packed with them.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "intermediate-filament",
+       "name": "Intermediate filament",
+       "accept": [
+        "intermediate filaments"
+       ],
+       "box": [
+        173,
+        31,
+        118,
+        40
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "A rope-like cytoskeleton fiber of medium thickness, made of tough proteins such as keratin. It resists pulling and holds the cell's shape."
+      },
+      {
+       "id": "plasma-membrane",
+       "name": "Plasma membrane",
+       "accept": [
+        "cell membrane"
+       ],
+       "box": [
+        628,
+        50,
+        101,
+        40
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The boundary of the cell: a phospholipid bilayer with proteins set in it. It controls what enters and leaves the cell."
+      },
+      {
+       "id": "ribosomes",
+       "name": "Ribosomes",
+       "accept": [
+        "ribosome"
+       ],
+       "box": [
+        116,
+        98,
+        105,
+        20
+       ],
+       "concept": "ribosome",
+       "taught": "organelles",
+       "fn": "Small particles, free in the cytosol or stuck to the rough ER, where proteins are built from amino acids."
+      },
+      {
+       "id": "microtubule",
+       "name": "Microtubule",
+       "accept": [
+        "microtubules"
+       ],
+       "box": [
+        682,
+        154,
+        108,
+        19
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "The thickest cytoskeleton fiber: a hollow tube of tubulin. Microtubules act as tracks for moving vesicles and organelles, form the core of cilia, and pull chromosomes apart during division."
+      },
+      {
+       "id": "rough-endoplasmic-reticulum",
+       "name": "Rough endoplasmic reticulum",
+       "accept": [
+        "rer",
+        "rough er"
+       ],
+       "box": [
+        7,
+        160,
+        177,
+        40
+       ],
+       "concept": "endoplasmic-reticulum",
+       "taught": "organelles",
+       "fn": "Folded sheets of membrane studded with ribosomes. Proteins made there are threaded inside it to be folded and then sent on to the Golgi apparatus, often for export or for the membrane.",
+       "follow": {
+        "q": "What makes rough endoplasmic reticulum look rough?",
+        "options": [
+         "Ribosomes attached to its surface",
+         "Stored fat droplets",
+         "Folds of its inner membrane",
+         "Vesicles budding from it"
+        ],
+        "correct": 0,
+        "why": "The bumps are ribosomes making proteins that go into the ER. Smooth ER lacks them, and folded inner membranes belong to mitochondria.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "centrosome",
+       "name": "Centrosome",
+       "accept": [
+        "centriole",
+        "centrioles",
+        "centrosomes"
+       ],
+       "box": [
+        696,
+        229,
+        114,
+        20
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "The region near the nucleus where microtubules are organized. It contains a pair of centrioles and, when the cell divides, organizes the fibers that separate the chromosomes."
+      },
+      {
+       "id": "microfilament",
+       "name": "Microfilament",
+       "accept": [
+        "actin filament",
+        "microfilaments"
+       ],
+       "box": [
+        696,
+        295,
+        119,
+        20
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "The thinnest cytoskeleton fiber, made of actin. Microfilaments let cells change shape and crawl, pinch in two when they divide, and hold up microvilli."
+      },
+      {
+       "id": "lysosome",
+       "name": "Lysosome",
+       "accept": [
+        "lysosomes"
+       ],
+       "box": [
+        667,
+        394,
+        96,
+        24
+       ],
+       "concept": "lysosome",
+       "taught": "organelles",
+       "fn": "A membrane sac full of digestive enzymes that work best in acid. It breaks down worn-out organelles, taken-in particles and large molecules so their parts can be reused."
+      },
+      {
+       "id": "golgi-apparatus",
+       "name": "Golgi apparatus",
+       "accept": [
+        "golgi",
+        "golgi body",
+        "golgi complex"
+       ],
+       "box": [
+        0,
+        441,
+        94,
+        45
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "A stack of flattened membrane sacs that receives proteins and lipids from the ER, modifies and sorts them, and ships them out in vesicles to the membrane, to lysosomes or out of the cell.",
+       "follow": {
+        "q": "A protein made for export leaves the rough ER. Where does it go next?",
+        "options": [
+         "To the Golgi apparatus, in a transport vesicle",
+         "Straight out of the cell through the membrane",
+         "Into a mitochondrion",
+         "Into the nucleus"
+        ],
+        "correct": 0,
+        "why": "Proteins for export travel from the rough ER to the Golgi apparatus in transport vesicles. The Golgi finishes and sorts them, then packs them into secretory vesicles that fuse with the plasma membrane.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "smooth-endoplasmic-reticulum",
+       "name": "Smooth endoplasmic reticulum",
+       "accept": [
+        "ser",
+        "smooth er"
+       ],
+       "box": [
+        624,
+        466,
+        188,
+        40
+       ],
+       "concept": "endoplasmic-reticulum",
+       "taught": "organelles",
+       "fn": "Tubes of membrane without ribosomes. They make lipids such as phospholipids and steroids, store calcium, and in liver cells help break down drugs and toxins."
+      },
+      {
+       "id": "secretory-vesicle",
+       "name": "Secretory vesicle",
+       "accept": [
+        "secretory vesicles",
+        "vesicle"
+       ],
+       "box": [
+        559,
+        526,
+        155,
+        23
+       ],
+       "concept": "vesicle",
+       "taught": "organelles",
+       "fn": "A membrane bubble that buds from the Golgi apparatus carrying finished product. It fuses with the plasma membrane and releases its contents outside the cell."
+      },
+      {
+       "id": "golgi-vesicle",
+       "name": "Golgi vesicle",
+       "accept": [
+        "golgi vesicles",
+        "vesicle"
+       ],
+       "box": [
+        0,
+        555,
+        118,
+        23
+       ],
+       "concept": "vesicle",
+       "taught": "organelles",
+       "fn": "A vesicle budding from the Golgi apparatus, carrying sorted proteins and lipids to their destination."
+      },
+      {
+       "id": "peroxisome",
+       "name": "Peroxisome",
+       "accept": [
+        "peroxisomes"
+       ],
+       "box": [
+        498,
+        562,
+        109,
+        20
+       ],
+       "concept": "peroxisome",
+       "taught": "organelles",
+       "fn": "A small membrane sac with enzymes that break down fatty acids and toxic substances. Its reactions make hydrogen peroxide, which another of its enzymes turns into water and oxygen."
+      },
+      {
+       "id": "cytoplasm",
+       "name": "Cytoplasm",
+       "accept": [
+        "cytosol"
+       ],
+       "box": [
+        97,
+        622,
+        100,
+        24
+       ],
+       "concept": "cell-parts",
+       "taught": "plasma-membrane",
+       "fn": "Everything inside the plasma membrane except the nucleus: the fluid cytosol and the organelles in it."
+      },
+      {
+       "id": "vacuole",
+       "name": "Vacuole",
+       "accept": [
+        "vacuoles"
+       ],
+       "box": [
+        373,
+        623,
+        78,
+        19
+       ],
+       "concept": null,
+       "fn": "A membrane-bound space holding fluid or stored material. Human cells have few and small ones."
+      }
+     ],
+     "covered": [
+      {
+       "id": "nucleus",
+       "box": [
+        57,
+        238,
+        79,
+        20
+       ]
+      },
+      {
+       "id": "nucleolus",
+       "box": [
+        17,
+        295,
+        94,
+        19
+       ]
+      },
+      {
+       "id": "chromatin",
+       "box": [
+        0,
+        361,
+        94,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-3-15",
+     "topic": "organelles",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "transport-vesicle",
+       "name": "Transport vesicle",
+       "accept": [
+        "transport vesicles",
+        "vesicle"
+       ],
+       "box": [
+        475,
+        207,
+        90,
+        41
+       ],
+       "concept": "vesicle",
+       "taught": "organelles",
+       "fn": "A vesicle that carries newly made proteins from the rough ER to the Golgi apparatus."
+      },
+      {
+       "id": "rough-er",
+       "name": "Rough ER",
+       "accept": [
+        "endoplasmic reticulum",
+        "rer",
+        "rough endoplasmic reticulum"
+       ],
+       "box": [
+        18,
+        344,
+        90,
+        26
+       ],
+       "concept": "endoplasmic-reticulum",
+       "taught": "organelles",
+       "fn": "Folded sheets of membrane studded with ribosomes. Proteins made there are threaded inside it to be folded and then sent on to the Golgi apparatus, often for export or for the membrane.",
+       "follow": {
+        "q": "What makes rough endoplasmic reticulum look rough?",
+        "options": [
+         "Ribosomes attached to its surface",
+         "Stored fat droplets",
+         "Folds of its inner membrane",
+         "Vesicles budding from it"
+        ],
+        "correct": 0,
+        "why": "The bumps are ribosomes making proteins that go into the ER. Smooth ER lacks them, and folded inner membranes belong to mitochondria.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "cis-face",
+       "name": "cis face",
+       "accept": [
+        "cis",
+        "cis face of the golgi"
+       ],
+       "box": [
+        192,
+        312,
+        70,
+        26
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "The receiving side of the Golgi apparatus, facing the ER. Transport vesicles fuse with it and deliver their proteins."
+      },
+      {
+       "id": "cisternae",
+       "name": "Cisternae",
+       "accept": [
+        "cisterna",
+        "golgi cisternae"
+       ],
+       "box": [
+        480,
+        314,
+        92,
+        20
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "The flattened membrane sacs stacked to form the Golgi apparatus. Proteins pass from one to the next and are modified along the way."
+      },
+      {
+       "id": "trans-face",
+       "name": "trans face",
+       "accept": [
+        "trans",
+        "trans face of the golgi"
+       ],
+       "box": [
+        480,
+        482,
+        91,
+        20
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "The shipping side of the Golgi apparatus, facing the plasma membrane. Finished products bud off it in vesicles."
+      },
+      {
+       "id": "golgi-apparatus",
+       "name": "Golgi apparatus",
+       "accept": [
+        "golgi",
+        "golgi body",
+        "golgi complex"
+       ],
+       "box": [
+        22,
+        544,
+        90,
+        46
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "A stack of flattened membrane sacs that receives proteins and lipids from the ER, modifies and sorts them, and ships them out in vesicles to the membrane, to lysosomes or out of the cell.",
+       "follow": {
+        "q": "A protein made for export leaves the rough ER. Where does it go next?",
+        "options": [
+         "To the Golgi apparatus, in a transport vesicle",
+         "Straight out of the cell through the membrane",
+         "Into a mitochondrion",
+         "Into the nucleus"
+        ],
+        "correct": 0,
+        "why": "Proteins for export travel from the rough ER to the Golgi apparatus in transport vesicles. The Golgi finishes and sorts them, then packs them into secretory vesicles that fuse with the plasma membrane.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "secretory-vesicle",
+       "name": "Secretory vesicle",
+       "accept": [
+        "secretory vesicles",
+        "vesicle"
+       ],
+       "box": [
+        22,
+        632,
+        90,
+        46
+       ],
+       "concept": "vesicle",
+       "taught": "organelles",
+       "fn": "A membrane bubble that buds from the Golgi apparatus carrying finished product. It fuses with the plasma membrane and releases its contents outside the cell."
+      },
+      {
+       "id": "plasma-membrane",
+       "name": "Plasma membrane",
+       "accept": [
+        "cell membrane"
+       ],
+       "box": [
+        278,
+        674,
+        160,
+        24
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The boundary of the cell: a phospholipid bilayer with proteins set in it. It controls what enters and leaves the cell."
+      },
+      {
+       "id": "trans-face-micrograph",
+       "name": "trans face",
+       "accept": [
+        "trans",
+        "trans face of the golgi"
+       ],
+       "box": [
+        762,
+        258,
+        90,
+        24
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "The shipping side of the Golgi apparatus, facing the plasma membrane. Finished products bud off it in vesicles."
+      },
+      {
+       "id": "cis-face-micrograph",
+       "name": "cis face",
+       "accept": [
+        "cis",
+        "cis face of the golgi"
+       ],
+       "box": [
+        893,
+        323,
+        72,
+        24
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "The receiving side of the Golgi apparatus, facing the ER. Transport vesicles fuse with it and deliver their proteins."
+      },
+      {
+       "id": "golgi-apparatus-micrograph",
+       "name": "Golgi apparatus",
+       "accept": [
+        "golgi",
+        "golgi body",
+        "golgi complex"
+       ],
+       "box": [
+        657,
+        400,
+        142,
+        23
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "A stack of flattened membrane sacs that receives proteins and lipids from the ER, modifies and sorts them, and ships them out in vesicles to the membrane, to lysosomes or out of the cell.",
+       "follow": {
+        "q": "A protein made for export leaves the rough ER. Where does it go next?",
+        "options": [
+         "To the Golgi apparatus, in a transport vesicle",
+         "Straight out of the cell through the membrane",
+         "Into a mitochondrion",
+         "Into the nucleus"
+        ],
+        "correct": 0,
+        "why": "Proteins for export travel from the rough ER to the Golgi apparatus in transport vesicles. The Golgi finishes and sorts them, then packs them into secretory vesicles that fuse with the plasma membrane.",
+        "level": "apply"
+       }
+      }
+     ],
+     "covered": [
+      {
+       "id": "nucleus",
+       "box": [
+        64,
+        20,
+        74,
+        26
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-3-17",
+     "topic": "organelles",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "lipid-bilayer",
+       "name": "Lipid bilayer",
+       "accept": [
+        "bilayer",
+        "phospholipid bilayer"
+       ],
+       "box": [
+        143,
+        0,
+        111,
+        23
+       ],
+       "concept": "phospholipid-bilayer",
+       "taught": "plasma-membrane",
+       "fn": "The two-layer sheet of phospholipids that forms the membrane. Their water-loving heads face the fluid on both sides and their water-fearing tails face each other, so ions and water-soluble molecules cannot pass straight through.",
+       "follow": {
+        "q": "Why can a small lipid-soluble molecule cross the membrane on its own, but an ion cannot?",
+        "options": [
+         "The core of the bilayer is made of hydrophobic tails, which a lipid-soluble molecule can dissolve through and a charged ion cannot",
+         "Ions are too large to fit between phospholipids",
+         "The glycocalyx blocks ions",
+         "Cholesterol binds ions and holds them outside"
+        ],
+        "correct": 0,
+        "why": "The middle of the bilayer is a layer of fatty tails. A molecule that dissolves in lipid can pass through it; a charged ion is surrounded by water and is repelled by that hydrophobic core, so it needs a protein path.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "crystalline-core",
+       "name": "Crystalline core",
+       "accept": [
+        "core"
+       ],
+       "box": [
+        148,
+        222,
+        98,
+        48
+       ],
+       "concept": "peroxisome",
+       "taught": "organelles",
+       "fn": "The dense center seen in many peroxisomes: a packed store of one of its enzymes."
+      }
+     ],
+     "covered": [
+      {
+       "id": "plasma-membrane",
+       "box": [
+        445,
+        237,
+        98,
+        40
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-3-18",
+     "topic": "organelles",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "column-of-tubulin-dimers",
+       "name": "Column of tubulin dimers",
+       "accept": [
+        "microtubule",
+        "protofilament",
+        "tubulin column"
+       ],
+       "box": [
+        0,
+        360,
+        124,
+        41
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "One of the rows of paired tubulin units that line up side by side to form the wall of a hollow microtubule."
+      },
+      {
+       "id": "tubulin-dimer",
+       "name": "Tubulin dimer",
+       "accept": [
+        "tubulin",
+        "tubulin dimers"
+       ],
+       "box": [
+        159,
+        360,
+        71,
+        41
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "The building block of a microtubule: a pair of tubulin proteins. Adding or removing them lets a microtubule grow or shrink quickly."
+      },
+      {
+       "id": "actin-subunit",
+       "name": "Actin subunit",
+       "accept": [
+        "actin",
+        "actin subunits",
+        "g-actin"
+       ],
+       "box": [
+        470,
+        381,
+        119,
+        20
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "The building block of a microfilament. Actin units link in two twisted strands; adding and removing them lets the filament grow and shrink."
+      },
+      {
+       "id": "fibrous-subunit",
+       "name": "Fibrous subunit (keratins coiled together)",
+       "accept": [
+        "keratin",
+        "keratins"
+       ],
+       "box": [
+        780,
+        360,
+        216,
+        45
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "The building block of an intermediate filament: long fibrous proteins (here, keratins) coiled together into a strong rope."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cell-junctions",
+   "title": "Cell junctions",
+   "chapter": "cells",
+   "topic": "cell-junctions",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-4-5",
+     "topic": "cell-junctions",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "tight-junction",
+       "name": "Tight junction",
+       "accept": [
+        "tight junctions"
+       ],
+       "box": [
+        184,
+        19,
+        131,
+        23
+       ],
+       "concept": "tight-junction",
+       "taught": "cell-junctions",
+       "fn": "A seal where strands of membrane proteins stitch neighboring cells together near their top. It stops fluid from leaking between the cells, so substances must pass through the cells instead.",
+       "follow": {
+        "q": "What is the main job of a tight junction?",
+        "options": [
+         "It seals the gap between neighboring cells so fluid cannot leak between them",
+         "It lets ions pass directly from one cell to the next",
+         "It anchors the cell to the layer beneath it",
+         "It spreads pulling forces across a sheet of cells"
+        ],
+        "correct": 0,
+        "why": "Tight junctions fuse the outer membranes of neighboring cells in a band. Gap junctions pass ions between cells, hemidesmosomes anchor cells to the layer below, and desmosomes spread mechanical stress.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "membranes-tight",
+       "name": "Adjacent plasma membranes",
+       "accept": [
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+       ],
+       "box": [
+        26,
+        90,
+        107,
+        62
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The plasma membranes of the two neighboring cells being joined."
+      },
+      {
+       "id": "strands-of-transmembrane-proteins",
+       "name": "Strands of transmembrane proteins",
+       "accept": [
+        "claudin",
+        "occludin",
+        "transmembrane protein",
+        "transmembrane proteins"
+       ],
+       "box": [
+        25,
+        200,
+        139,
+        66
+       ],
+       "concept": "membrane-proteins",
+       "taught": "plasma-membrane",
+       "fn": "The rows of membrane proteins that meet across the tiny gap between cells and zip their membranes together to form a tight junction."
+      },
+      {
+       "id": "intercellular-space-tight",
+       "name": "Intercellular space",
+       "accept": [],
+       "box": [
+        25,
+        336,
+        110,
+        45
+       ],
+       "concept": null,
+       "fn": "The narrow gap between neighboring cells, filled with extracellular fluid."
+      },
+      {
+       "id": "gap-junction",
+       "name": "Gap junction",
+       "accept": [
+        "gap junctions"
+       ],
+       "box": [
+        785,
+        19,
+        122,
+        23
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "A cluster of protein channels (connexons) that line up across two neighboring membranes, letting ions and small molecules pass straight from one cell to the next.",
+       "follow": {
+        "q": "Heart muscle cells contract together because electrical signals pass directly from cell to cell. Which junction allows that?",
+        "options": [
+         "Gap junctions",
+         "Tight junctions",
+         "Desmosomes",
+         "Hemidesmosomes"
+        ],
+        "correct": 0,
+        "why": "Gap junctions are open channels between cells, so ions carrying charge flow from one cell into the next. Tight junctions seal, and desmosomes and hemidesmosomes only anchor.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "membranes-gap",
+       "name": "Adjacent plasma membranes",
+       "accept": [
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+       ],
+       "box": [
+        617,
+        65,
+        107,
+        62
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The plasma membranes of the two neighboring cells being joined."
+      },
+      {
+       "id": "gap-between-cells",
+       "name": "Gap between cells",
+       "accept": [
+        "gap",
+        "intercellular gap"
+       ],
+       "box": [
+        616,
+        159,
+        120,
+        41
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "The narrow gap between two cells at a gap junction, bridged by the connexon channels."
+      },
+      {
+       "id": "connexons",
+       "name": "Connexons",
+       "accept": [
+        "connexin",
+        "connexins",
+        "connexon"
+       ],
+       "box": [
+        616,
+        254,
+        122,
+        65
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "The hollow protein channels of a gap junction. Two connexons, one in each cell's membrane, line up to make a tunnel between the cells."
+      },
+      {
+       "id": "anchoring-junctions",
+       "name": "Anchoring junctions",
+       "accept": [
+        "anchoring junction"
+       ],
+       "box": [
+        454,
+        513,
+        187,
+        22
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "Junctions that fasten cells to each other or to the layer beneath them so a sheet of cells can be stretched without tearing: desmosomes, adherens junctions and hemidesmosomes."
+      },
+      {
+       "id": "membranes-desmosome",
+       "name": "Adjacent plasma membranes",
+       "accept": [
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+       ],
+       "box": [
+        25,
+        553,
+        108,
+        62
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The plasma membranes of the two neighboring cells being joined."
+      },
+      {
+       "id": "plaque-desmosome",
+       "name": "Plaque",
+       "accept": [],
+       "box": [
+        27,
+        642,
+        67,
+        23
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "The dense protein pad on the inside of the membrane at an anchoring junction. The linking proteins attach to it on one side and the cytoskeleton on the other."
+      },
+      {
+       "id": "cadherin-desmosome",
+       "name": "Transmembrane glycoprotein (cadherin)",
+       "accept": [
+        "cadherin",
+        "cadherins"
+       ],
+       "box": [
+        25,
+        688,
+        145,
+        65
+       ],
+       "concept": "membrane-proteins",
+       "taught": "plasma-membrane",
+       "fn": "Cadherins: membrane proteins that reach across the gap and grip the matching proteins of the neighboring cell, holding the two cells together."
+      },
+      {
+       "id": "intercellular-space-desmosome",
+       "name": "Intercellular space",
+       "accept": [],
+       "box": [
+        25,
+        864,
+        110,
+        44
+       ],
+       "concept": null,
+       "fn": "The narrow gap between neighboring cells, filled with extracellular fluid."
+      },
+      {
+       "id": "desmosome",
+       "name": "Desmosome",
+       "accept": [
+        "desmosomes"
+       ],
+       "box": [
+        262,
+        930,
+        118,
+        19
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "A spot weld between two cells: protein plaques inside each cell, linked across the gap by cadherins and tied to intermediate filaments. It spreads pulling forces through a sheet of cells, as in skin and heart muscle."
+      },
+      {
+       "id": "membranes-adherens",
+       "name": "Adjacent plasma membranes",
+       "accept": [
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+       ],
+       "box": [
+        613,
+        553,
+        108,
+        62
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The plasma membranes of the two neighboring cells being joined."
+      },
+      {
+       "id": "plaque-adherens",
+       "name": "Plaque",
+       "accept": [],
+       "box": [
+        614,
+        642,
+        67,
+        23
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "The dense protein pad on the inside of the membrane at an anchoring junction. The linking proteins attach to it on one side and the cytoskeleton on the other."
+      },
+      {
+       "id": "cadherin-adherens",
+       "name": "Transmembrane glycoprotein (cadherin)",
+       "accept": [
+        "cadherin",
+        "cadherins"
+       ],
+       "box": [
+        612,
+        688,
+        145,
+        65
+       ],
+       "concept": "membrane-proteins",
+       "taught": "plasma-membrane",
+       "fn": "Cadherins: membrane proteins that reach across the gap and grip the matching proteins of the neighboring cell, holding the two cells together."
+      },
+      {
+       "id": "actin-filament",
+       "name": "Actin filament",
+       "accept": [
+        "actin",
+        "actin filaments",
+        "microfilament",
+        "microfilaments"
+       ],
+       "box": [
+        613,
+        775,
+        120,
+        20
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "A microfilament made of actin. At an adherens junction it ties the linking proteins to the rest of the cell's cytoskeleton."
+      },
+      {
+       "id": "intercellular-space-adherens",
+       "name": "Intercellular space",
+       "accept": [],
+       "box": [
+        613,
+        864,
+        110,
+        44
+       ],
+       "concept": null,
+       "fn": "The narrow gap between neighboring cells, filled with extracellular fluid."
+      },
+      {
+       "id": "adherens",
+       "name": "Adherens",
+       "accept": [
+        "adherens junction",
+        "adherens junctions"
+       ],
+       "box": [
+        833,
+        930,
+        95,
+        19
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "An adherens junction: a band of cadherins linking neighboring cells, tied inside each cell to actin microfilaments. It holds cells together and helps a sheet of cells fold."
+      },
+      {
+       "id": "integrins",
+       "name": "Integrins",
+       "accept": [
+        "integrin"
+       ],
+       "box": [
+        27,
+        1163,
+        80,
+        22
+       ],
+       "concept": "membrane-proteins",
+       "taught": "plasma-membrane",
+       "fn": "Membrane proteins that bind the cell to the material beneath it. At a hemidesmosome they anchor the cell to the layer it sits on."
+      },
+      {
+       "id": "hemidesmosome",
+       "name": "Hemidesmosome",
+       "accept": [
+        "hemidesmosomes"
+       ],
+       "box": [
+        232,
+        1234,
+        160,
+        20
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "Half of a desmosome: it anchors a cell to the layer beneath it rather than to another cell, using integrins."
+      }
+     ],
+     "covered": [
+      {
+       "id": "intermediate-filament-keratin",
+       "box": [
+        25,
+        774,
+        113,
+        65
+       ]
+      },
+      {
+       "id": "basal-lamina",
+       "box": [
+        26,
+        1189,
+        65,
+        41
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nucleus",
+   "title": "The nucleus and DNA packing",
+   "chapter": "cells",
+   "topic": "dna-genes",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-3-19",
+     "topic": "dna-genes",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "nuclear-pores",
+       "name": "Nuclear pores",
+       "accept": [
+        "nuclear pore",
+        "pores"
+       ],
+       "box": [
+        655,
+        23,
+        124,
+        23
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "Openings through the nuclear envelope, lined by protein complexes that let RNA and proteins pass in and out of the nucleus under control.",
+       "follow": {
+        "q": "What passes out of the nucleus through the nuclear pores?",
+        "options": [
+         "RNA copies of genes, on their way to the ribosomes",
+         "Whole chromosomes",
+         "Mitochondria",
+         "The nucleolus"
+        ],
+        "correct": 0,
+        "why": "DNA stays in the nucleus. What leaves are RNA copies of genes (and ribosome parts), which travel to the ribosomes in the cytoplasm to direct protein building.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "nuclear-envelope",
+       "name": "Nuclear envelope",
+       "accept": [
+        "nuclear membrane"
+       ],
+       "box": [
+        0,
+        55,
+        153,
+        24
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "The double membrane around the nucleus, continuous with the endoplasmic reticulum and pierced by nuclear pores."
+      },
+      {
+       "id": "chromatin",
+       "name": "Chromatin (condensed)",
+       "accept": [
+        "condensed chromatin",
+        "heterochromatin"
+       ],
+       "box": [
+        0,
+        112,
+        112,
+        44
+       ],
+       "concept": "chromatin-chromosome",
+       "taught": "dna-genes",
+       "fn": "DNA wound around histone proteins. Loose chromatin fills the nucleus between divisions; it condenses into chromosomes before a cell divides."
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [],
+       "box": [
+        655,
+        156,
+        79,
+        19
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "The largest organelle, enclosed by a double-membrane envelope. It holds the cell's DNA and controls which proteins the cell makes."
+      },
+      {
+       "id": "nucleolus",
+       "name": "Nucleolus",
+       "accept": [],
+       "box": [
+        0,
+        220,
+        91,
+        20
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "A dense region inside the nucleus, not bounded by a membrane, where the parts of ribosomes are made."
+      },
+      {
+       "id": "cisternae",
+       "name": "Cisternae",
+       "accept": [
+        "cisterna",
+        "cisternae of the endoplasmic reticulum",
+        "endoplasmic reticulum",
+        "rough er"
+       ],
+       "box": [
+        98,
+        578,
+        93,
+        19
+       ],
+       "concept": "endoplasmic-reticulum",
+       "taught": "organelles",
+       "fn": "The flattened spaces of the rough endoplasmic reticulum, continuous with the space inside the nuclear envelope."
+      }
+     ]
+    },
+    {
+     "figure": "os-3-22",
+     "topic": "dna-genes",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "chromosome",
+       "name": "Chromosome",
+       "accept": [
+        "chromosomes"
+       ],
+       "box": [
+        171,
+        22,
+        125,
+        20
+       ],
+       "concept": "chromatin-chromosome",
+       "taught": "dna-genes",
+       "fn": "One long DNA molecule with its proteins, coiled tightly just before cell division. Human body cells have 46."
+      },
+      {
+       "id": "histones",
+       "name": "Histones",
+       "accept": [
+        "histone"
+       ],
+       "box": [
+        417,
+        73,
+        85,
+        20
+       ],
+       "concept": "chromatin-chromosome",
+       "taught": "dna-genes",
+       "fn": "Proteins that DNA winds around like thread on a spool. They pack DNA into the nucleus and help control which genes can be read."
+      },
+      {
+       "id": "chromatin",
+       "name": "Chromatin",
+       "accept": [],
+       "box": [
+        183,
+        169,
+        98,
+        20
+       ],
+       "concept": "chromatin-chromosome",
+       "taught": "dna-genes",
+       "fn": "DNA wound around histone proteins. Loose chromatin fills the nucleus between divisions; it condenses into chromosomes before a cell divides."
+      },
+      {
+       "id": "nucleosome",
+       "name": "Nucleosome",
+       "accept": [
+        "nucleosomes"
+       ],
+       "box": [
+        519,
+        207,
+        116,
+        19
+       ],
+       "concept": "chromatin-chromosome",
+       "taught": "dna-genes",
+       "fn": "One unit of chromatin: a stretch of DNA wrapped around a core of eight histones, like a bead on a string."
+      },
+      {
+       "id": "dna-helix",
+       "name": "DNA helix",
+       "accept": [
+        "dna",
+        "double helix"
+       ],
+       "box": [
+        584,
+        366,
+        95,
+        19
+       ],
+       "concept": "dna",
+       "taught": "dna-genes",
+       "fn": "The DNA molecule itself: two strands twisted around each other, held together by paired bases."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mitosis",
+   "title": "Mitosis stages",
+   "chapter": "cells",
+   "topic": "cell-cycle",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-3-32",
+     "topic": "cell-cycle",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "prophase",
+       "name": "Prophase",
+       "accept": [],
+       "box": [
+        48,
+        9,
+        92,
+        26
+       ],
+       "concept": "mitosis",
+       "taught": "cell-cycle",
+       "fn": "The first stage of mitosis. Chromatin condenses into visible chromosomes (each two sister chromatids), the nucleolus disappears, and the spindle starts to form."
+      },
+      {
+       "id": "prometaphase",
+       "name": "Prometaphase",
+       "accept": [],
+       "box": [
+        212,
+        9,
+        132,
+        26
+       ],
+       "concept": "mitosis",
+       "taught": "cell-cycle",
+       "fn": "The stage between prophase and metaphase. The nuclear envelope breaks up and spindle fibers attach to each chromosome."
+      },
+      {
+       "id": "metaphase",
+       "name": "Metaphase",
+       "accept": [],
+       "box": [
+        410,
+        9,
+        100,
+        26
+       ],
+       "concept": "mitosis",
+       "taught": "cell-cycle",
+       "fn": "The stage when the chromosomes line up in a single row across the middle of the cell, the metaphase plate.",
+       "follow": {
+        "q": "Which event defines metaphase?",
+        "options": [
+         "Chromosomes line up across the middle of the cell",
+         "Sister chromatids separate and move to opposite ends",
+         "Two new nuclei form",
+         "Chromatin first condenses into chromosomes"
+        ],
+        "correct": 0,
+        "why": "Metaphase is the lining-up stage. Chromatids separate in anaphase, new nuclear envelopes form in telophase, and chromatin condenses in prophase.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "anaphase",
+       "name": "Anaphase",
+       "accept": [],
+       "box": [
+        594,
+        9,
+        94,
+        26
+       ],
+       "concept": "mitosis",
+       "taught": "cell-cycle",
+       "fn": "The stage when the sister chromatids of each chromosome split apart and are pulled to opposite ends of the cell."
+      },
+      {
+       "id": "telophase",
+       "name": "Telophase",
+       "accept": [],
+       "box": [
+        780,
+        9,
+        94,
+        26
+       ],
+       "concept": "mitosis",
+       "taught": "cell-cycle",
+       "fn": "The last stage of mitosis. A nuclear envelope forms around each set of chromosomes at the two ends, and the chromosomes loosen back into chromatin."
+      },
+      {
+       "id": "cytokinesis",
+       "name": "Cytokinesis",
+       "accept": [],
+       "box": [
+        954,
+        9,
+        122,
+        26
+       ],
+       "concept": "cytokinesis",
+       "taught": "cell-cycle",
+       "fn": "Division of the cytoplasm: a ring of actin pinches the cell in two at the cleavage furrow, making two daughter cells. It overlaps the end of mitosis."
+      }
+     ],
+     "shown": [
+      {
+       "id": "mitosis",
+       "why": "A bracket naming the whole run of stages, not one stage."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "epithelia",
+   "title": "Epithelial tissue types",
+   "chapter": "tissues",
+   "topic": "epithelium",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-4-6",
+     "topic": "epithelium",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "simple-squamous-epithelium",
+       "name": "Simple squamous epithelium",
+       "accept": [
+        "simple squamous"
+       ],
+       "box": [
+        162,
+        280,
+        254,
+        24
+       ],
+       "concept": "simple-squamous",
+       "taught": "epithelium",
+       "fn": "One layer of flat cells. Being so thin, it lets substances cross easily by diffusion and filtration: it lines the lungs' air sacs, the capillaries (endothelium) and the body cavities (mesothelium).",
+       "follow": {
+        "q": "Why is simple squamous epithelium found where substances must diffuse quickly, as in the lungs' air sacs?",
+        "options": [
+         "It is a single layer of flat cells, so the diffusion distance is very short",
+         "Its cells have many microvilli",
+         "It secretes mucus that speeds diffusion",
+         "Its many layers protect against friction"
+        ],
+        "correct": 0,
+        "why": "Diffusion is fastest over short distances. A single layer of very flat cells makes the barrier as thin as possible. Microvilli and mucus belong to columnar epithelia, and many layers would slow diffusion.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "stratified-squamous-epithelium",
+       "name": "Stratified squamous epithelium",
+       "accept": [
+        "stratified squamous"
+       ],
+       "box": [
+        483,
+        280,
+        271,
+        24
+       ],
+       "concept": "stratified-squamous",
+       "taught": "epithelium",
+       "fn": "Many layers of cells, flat at the surface. It resists friction and wear: keratinized in the epidermis of the skin, nonkeratinized in the mouth, esophagus and vagina.",
+       "follow": {
+        "q": "Why is the lining of the esophagus stratified rather than simple?",
+        "options": [
+         "Swallowed food rubs it, and many layers let worn surface cells be replaced from below",
+         "It must absorb nutrients quickly",
+         "It must let gases diffuse through",
+         "It must secrete large amounts of hormone"
+        ],
+        "correct": 0,
+        "why": "Stratified squamous epithelium protects against abrasion: the surface cells wear off and new cells from the deep layers replace them. Absorption and diffusion need thin single layers instead.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "stratified-cuboidal-epithelium",
+       "name": "Stratified cuboidal epithelium",
+       "accept": [
+        "stratified cuboidal"
+       ],
+       "box": [
+        490,
+        566,
+        254,
+        24
+       ],
+       "concept": "stratified-cuboidal-columnar",
+       "taught": "epithelium",
+       "fn": "Two or more layers of cube-shaped cells. It is uncommon and lines the ducts of some large glands, such as sweat glands."
+      },
+      {
+       "id": "simple-cuboidal-epithelium",
+       "name": "Simple cuboidal epithelium",
+       "accept": [
+        "simple cuboidal"
+       ],
+       "box": [
+        171,
+        570,
+        237,
+        23
+       ],
+       "concept": "simple-cuboidal",
+       "taught": "epithelium",
+       "fn": "One layer of cube-shaped cells with round central nuclei. It secretes and absorbs, lining kidney tubules and small gland ducts."
+      },
+      {
+       "id": "simple-columnar-epithelium",
+       "name": "Simple columnar epithelium",
+       "accept": [
+        "simple columnar"
+       ],
+       "box": [
+        166,
+        852,
+        245,
+        24
+       ],
+       "concept": "simple-columnar",
+       "taught": "epithelium",
+       "fn": "One layer of tall cells with nuclei near the base, often with microvilli and goblet cells. It absorbs and secretes, lining the stomach and intestines."
+      },
+      {
+       "id": "stratified-columnar-epithelium",
+       "name": "Stratified columnar epithelium",
+       "accept": [
+        "stratified columnar"
+       ],
+       "box": [
+        485,
+        852,
+        262,
+        24
+       ],
+       "concept": "stratified-cuboidal-columnar",
+       "taught": "epithelium",
+       "fn": "Several layers with tall cells at the surface. It is rare, found in parts of the male urethra and some large gland ducts."
+      },
+      {
+       "id": "pseudostratified-columnar-epithelium",
+       "name": "Pseudostratified columnar epithelium",
+       "accept": [
+        "pseudostratified ciliated columnar epithelium",
+        "pseudostratified columnar",
+        "pseudostratified epithelium"
+       ],
+       "box": [
+        778,
+        852,
+        322,
+        24
+       ],
+       "concept": "pseudostratified",
+       "taught": "epithelium",
+       "fn": "One layer of cells of different heights, so the nuclei sit at different levels and it looks layered, though every cell touches the basement membrane. Ciliated with goblet cells, it lines the airways and sweeps mucus.",
+       "follow": {
+        "q": "Pseudostratified epithelium looks layered. Why is it still classed as a single layer?",
+        "options": [
+         "Every cell touches the basement membrane, even though not every cell reaches the surface",
+         "Its cells are all the same height",
+         "It has only one nucleus per row",
+         "It has no basement membrane"
+        ],
+        "correct": 0,
+        "why": "Layers are counted by contact with the basement membrane. In pseudostratified epithelium every cell rests on it; the cells differ in height, so their nuclei sit at different levels and fake the look of layers.",
+        "level": "apply"
+       }
+      }
+     ],
+     "hints": [
+      {
+       "id": "simple",
+       "box": [
+        252,
+        5,
+        74,
+        24
+       ],
+       "why": "A row or column heading of the table: it would give the tissue name away."
+      },
+      {
+       "id": "stratified",
+       "box": [
+        566,
+        5,
+        94,
+        20
+       ],
+       "why": "A row or column heading of the table: it would give the tissue name away."
+      },
+      {
+       "id": "squamous",
+       "box": [
+        6,
+        159,
+        109,
+        24
+       ],
+       "why": "A row or column heading of the table: it would give the tissue name away."
+      },
+      {
+       "id": "cuboidal",
+       "box": [
+        12,
+        442,
+        93,
+        21
+       ],
+       "why": "A row or column heading of the table: it would give the tissue name away."
+      },
+      {
+       "id": "pseudostratified-header",
+       "box": [
+        857,
+        572,
+        160,
+        20
+       ],
+       "why": "A row or column heading of the table: it would give the tissue name away."
+      },
+      {
+       "id": "columnar",
+       "box": [
+        12,
+        725,
+        101,
+        20
+       ],
+       "why": "A row or column heading of the table: it would give the tissue name away."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muscle-tissues",
+   "title": "Muscle tissue: cardiac muscle",
+   "chapter": "tissues",
+   "topic": "muscle-tissue-overview",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-10-22",
+     "topic": "muscle-tissue-overview",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "intercalated-disc",
+       "name": "Intercalated discs",
+       "accept": [
+        "intercalated disc",
+        "intercalated disk",
+        "intercalated disks"
+       ],
+       "box": [
+        447,
+        0,
+        171,
+        20
+       ],
+       "concept": "intercalated-disc",
+       "taught": "muscle-tissue-overview",
+       "fn": "The thick, dark lines where cardiac muscle fibers join end to end. Desmosomes in them hold the cells together as they pull, and gap junctions let electrical signals pass so the cells contract together.",
+       "follow": {
+        "q": "Which two junctions make up an intercalated disc?",
+        "options": [
+         "Desmosomes and gap junctions",
+         "Tight junctions and gap junctions",
+         "Hemidesmosomes and tight junctions",
+         "Only tight junctions"
+        ],
+        "correct": 0,
+        "why": "Heart cells must both hold together under strain and signal each other instantly. Desmosomes give the grip, and gap junctions let ions flow from cell to cell so the heart contracts as a unit.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "capillary",
+       "name": "Capillary",
+       "accept": [
+        "capillaries"
+       ],
+       "box": [
+        309,
+        0,
+        86,
+        24
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "The smallest blood vessel, with a wall one cell thick. Heart muscle is threaded with capillaries because it works nonstop and needs a steady oxygen supply."
+      },
+      {
+       "id": "desmosome",
+       "name": "Desmosome",
+       "accept": [
+        "desmosomes"
+       ],
+       "box": [
+        766,
+        14,
+        117,
+        19
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "A spot weld in the intercalated disc that keeps neighboring heart muscle cells from pulling apart when they contract."
+      },
+      {
+       "id": "gap-junction-fiber",
+       "name": "Gap junction",
+       "accept": [
+        "gap junctions"
+       ],
+       "box": [
+        502,
+        220,
+        126,
+        23
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "Channels in the intercalated disc that let ions flow from one heart muscle cell to the next, so an electrical signal spreads and the cells contract together."
+      },
+      {
+       "id": "gap-junction",
+       "name": "Gap junction",
+       "accept": [
+        "gap junctions"
+       ],
+       "box": [
+        808,
+        396,
+        117,
+        23
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "Channels in the intercalated disc that let ions flow from one heart muscle cell to the next, so an electrical signal spreads and the cells contract together."
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [],
+       "box": [
+        287,
+        435,
+        79,
+        19
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "The nucleus of a cardiac muscle fiber. Most cardiac fibers have one, near the center of the cell."
+      },
+      {
+       "id": "cardiac-muscle-fiber",
+       "name": "Cardiac muscle fiber",
+       "accept": [
+        "cardiac muscle cell",
+        "cardiac myocyte",
+        "cardiomyocyte",
+        "muscle fiber"
+       ],
+       "box": [
+        453,
+        434,
+        114,
+        41
+       ],
+       "concept": "cardiac-muscle-tissue",
+       "taught": "muscle-tissue-overview",
+       "fn": "A single heart muscle cell: striated, branched, usually with one central nucleus, and joined end to end to its neighbors at intercalated discs."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nervous-tissue",
+   "title": "Nervous tissue: the neuron",
+   "chapter": "tissues",
+   "topic": "nervous-tissue-overview",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-12-8",
+     "topic": "nervous-tissue-overview",
+     "core": [
+      "structure-function",
+      "communication"
+     ],
+     "labels": [
+      {
+       "id": "axon",
+       "name": "Axon",
+       "accept": [],
+       "box": [
+        517,
+        93,
+        59,
+        21
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "The single long process that carries signals away from the neuron's cell body toward the next cell.",
+       "follow": {
+        "q": "Which way do signals travel along an axon?",
+        "options": [
+         "Away from the cell body, toward the axon terminals",
+         "Toward the cell body from the axon terminals",
+         "In both directions equally",
+         "Only within the cell body"
+        ],
+        "correct": 0,
+        "why": "Dendrites and the cell body receive signals; the axon carries them away from the cell body to its terminals, where the neuron passes the signal on.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "cell-membrane",
+       "name": "Cell membrane",
+       "accept": [
+        "neurolemma",
+        "plasma membrane"
+       ],
+       "box": [
+        2,
+        136,
+        153,
+        21
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The plasma membrane of the neuron. Changes in the charge across it are the signals neurons carry."
+      },
+      {
+       "id": "dendrites",
+       "name": "Dendrites",
+       "accept": [
+        "dendrite"
+       ],
+       "box": [
+        3,
+        201,
+        100,
+        21
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "Short branching processes that receive signals from other neurons and carry them toward the cell body."
+      }
+     ],
+     "covered": [
+      {
+       "id": "cell-body",
+       "box": [
+        416,
+        17,
+        168,
+        26
+       ]
+      },
+      {
+       "id": "oligodendrocyte",
+       "box": [
+        667,
+        93,
+        160,
+        26
+       ]
+      },
+      {
+       "id": "node-of-ranvier",
+       "box": [
+        475,
+        309,
+        162,
+        21
+       ]
+      },
+      {
+       "id": "myelin-sheath",
+       "box": [
+        474,
+        355,
+        139,
+        25
+       ]
+      },
+      {
+       "id": "synapse",
+       "box": [
+        474,
+        496,
+        93,
+        25
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "glands",
+   "title": "Exocrine glands and modes of secretion",
+   "chapter": "cell-communication",
+   "topic": "glands",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-4-9",
+     "topic": "glands",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "simple-tubular",
+       "name": "Simple tubular",
+       "accept": [
+        "simple tubular gland"
+       ],
+       "box": [
+        630,
+        56,
+        141,
+        24
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with one unbranched duct and a straight tube of secretory cells, like the glands of the intestine."
+      },
+      {
+       "id": "simple-alveolar",
+       "name": "Simple alveolar (acinar)",
+       "accept": [
+        "simple acinar",
+        "simple alveolar gland"
+       ],
+       "box": [
+        161,
+        101,
+        219,
+        24
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with one duct ending in a round sac (alveolus or acinus) of secretory cells. It occurs only as a stage in development."
+      },
+      {
+       "id": "surface-epithelium",
+       "name": "Surface epithelium",
+       "accept": [
+        "epithelium"
+       ],
+       "box": [
+        100,
+        145,
+        92,
+        42
+       ],
+       "concept": "epithelium",
+       "taught": "epithelium",
+       "fn": "The epithelium covering the surface from which the gland grew down, and onto which its duct opens."
+      },
+      {
+       "id": "duct",
+       "name": "Duct",
+       "accept": [
+        "gland duct"
+       ],
+       "box": [
+        315,
+        171,
+        44,
+        21
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "The tube that carries an exocrine gland's product to a surface. Its presence is what makes a gland exocrine."
+      },
+      {
+       "id": "gland-cells",
+       "name": "Gland cells",
+       "accept": [
+        "gland cell",
+        "secretory cell",
+        "secretory cells"
+       ],
+       "box": [
+        109,
+        244,
+        62,
+        42
+       ],
+       "concept": "gland",
+       "taught": "glands",
+       "fn": "The secretory cells of the gland, at the deep end of the duct. They make the product the duct carries away."
+      },
+      {
+       "id": "simple-coiled-tubular",
+       "name": "Simple coiled tubular",
+       "accept": [
+        "coiled tubular",
+        "simple coiled tubular gland"
+       ],
+       "box": [
+        601,
+        292,
+        200,
+        23
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland whose tube of secretory cells is coiled, like a sweat gland."
+      },
+      {
+       "id": "simple-branched-alveolar",
+       "name": "Simple branched alveolar",
+       "accept": [
+        "simple branched acinar",
+        "simple branched alveolar gland"
+       ],
+       "box": [
+        153,
+        414,
+        237,
+        23
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with one duct leading to several round secretory sacs, like the oil glands of the skin."
+      },
+      {
+       "id": "simple-branched-tubular",
+       "name": "Simple branched tubular",
+       "accept": [
+        "simple branched tubular gland"
+       ],
+       "box": [
+        586,
+        535,
+        230,
+        24
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with one duct leading to several branching tubes of secretory cells, like glands of the stomach."
+      },
+      {
+       "id": "compound-alveolar",
+       "name": "Compound alveolar (acinar)",
+       "accept": [
+        "compound acinar",
+        "compound alveolar gland"
+       ],
+       "box": [
+        130,
+        820,
+        257,
+        24
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with a branched duct system leading to round secretory sacs, like the mammary gland."
+      },
+      {
+       "id": "compound-tubuloalveolar",
+       "name": "Compound tubuloalveolar",
+       "accept": [
+        "compound tubuloalveolar gland",
+        "tubuloalveolar"
+       ],
+       "box": [
+        428,
+        820,
+        242,
+        24
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with a branched duct system and both tubes and sacs of secretory cells, like the salivary glands and the exocrine pancreas."
+      },
+      {
+       "id": "compound-tubular",
+       "name": "Compound tubular",
+       "accept": [
+        "compound tubular gland"
+       ],
+       "box": [
+        754,
+        820,
+        179,
+        24
+       ],
+       "concept": "exocrine-gland",
+       "taught": "glands",
+       "fn": "An exocrine gland with a branched duct system leading to tube-shaped secretory parts, like glands in the lining of the upper airway."
+      }
+     ],
+     "covered": [
+      {
+       "id": "intestinal-glands",
+       "box": [
+        801,
+        94,
+        145,
+        23
+       ]
+      },
+      {
+       "id": "merocrine-sweat-glands",
+       "box": [
+        800,
+        333,
+        148,
+        46
+       ]
+      },
+      {
+       "id": "sebaceous-glands",
+       "box": [
+        366,
+        505,
+        140,
+        46
+       ]
+      },
+      {
+       "id": "gastric-mucous-glands",
+       "box": [
+        800,
+        582,
+        194,
+        87
+       ]
+      },
+      {
+       "id": "compound-tubular-examples",
+       "box": [
+        703,
+        1056,
+        285,
+        90
+       ]
+      },
+      {
+       "id": "tubuloalveolar-examples",
+       "box": [
+        439,
+        1067,
+        223,
+        68
+       ]
+      },
+      {
+       "id": "mammary-glands",
+       "box": [
+        182,
+        1068,
+        154,
+        23
+       ]
+      }
+     ],
+     "hints": [
+      {
+       "id": "simple-ducts",
+       "box": [
+        484,
+        7,
+        128,
+        24
+       ],
+       "why": "A heading of the table: it would give the gland type away."
+      },
+      {
+       "id": "tubular",
+       "box": [
+        1007,
+        53,
+        81,
+        19
+       ],
+       "why": "A heading of the table: it would give the gland type away."
+      },
+      {
+       "id": "alveolar",
+       "box": [
+        8,
+        73,
+        86,
+        45
+       ],
+       "why": "A heading of the table: it would give the gland type away."
+      },
+      {
+       "id": "compound-ducts",
+       "box": [
+        465,
+        1159,
+        165,
+        24
+       ],
+       "why": "A heading of the table: it would give the gland type away."
+      }
+     ],
+     "shown": [
+      {
+       "id": "developmental-stage",
+       "why": "A note printed on the figure, not a structure."
+      }
+     ]
+    },
+    {
+     "figure": "os-4-10",
+     "topic": "glands",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "secretion",
+       "name": "Secretion",
+       "accept": [
+        "secretory product"
+       ],
+       "box": [
+        845,
+        26,
+        116,
+        25
+       ],
+       "concept": "exocytosis",
+       "taught": "active-transport",
+       "fn": "The product the gland cell releases."
+      },
+      {
+       "id": "secretory-vesicle",
+       "name": "Secretory vesicle",
+       "accept": [
+        "secretory vesicles",
+        "vesicle"
+       ],
+       "box": [
+        845,
+        99,
+        202,
+        30
+       ],
+       "concept": "vesicle",
+       "taught": "organelles",
+       "fn": "A membrane bubble that buds from the Golgi apparatus carrying finished product. It fuses with the plasma membrane and releases its contents outside the cell."
+      },
+      {
+       "id": "golgi-complex",
+       "name": "Golgi complex",
+       "accept": [
+        "golgi",
+        "golgi apparatus"
+       ],
+       "box": [
+        845,
+        185,
+        169,
+        29
+       ],
+       "concept": "golgi",
+       "taught": "organelles",
+       "fn": "A stack of flattened membrane sacs that receives proteins and lipids from the ER, modifies and sorts them, and ships them out in vesicles to the membrane, to lysosomes or out of the cell.",
+       "follow": {
+        "q": "A protein made for export leaves the rough ER. Where does it go next?",
+        "options": [
+         "To the Golgi apparatus, in a transport vesicle",
+         "Straight out of the cell through the membrane",
+         "Into a mitochondrion",
+         "Into the nucleus"
+        ],
+        "correct": 0,
+        "why": "Proteins for export travel from the rough ER to the Golgi apparatus in transport vesicles. The Golgi finishes and sorts them, then packs them into secretory vesicles that fuse with the plasma membrane.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "merocrine-secretion",
+       "name": "Merocrine secretion",
+       "accept": [
+        "merocrine"
+       ],
+       "box": [
+        7,
+        189,
+        169,
+        52
+       ],
+       "concept": "secretion-modes",
+       "taught": "glands",
+       "fn": "Release of product by exocytosis: vesicles fuse with the membrane and empty outside, and the cell stays whole. Salivary and most sweat glands secrete this way.",
+       "follow": {
+        "q": "In which mode of secretion does the gland cell survive intact?",
+        "options": [
+         "Merocrine",
+         "Holocrine",
+         "Apocrine, as classically described",
+         "All three destroy the cell"
+        ],
+        "correct": 0,
+        "why": "In merocrine secretion only the contents of vesicles leave, by exocytosis, so the cell loses nothing of itself. In holocrine secretion the whole cell bursts, and classical apocrine secretion pinches off the top of the cell.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [],
+       "box": [
+        846,
+        266,
+        100,
+        24
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "The nucleus of the gland cell."
+      },
+      {
+       "id": "apocrine-secretion",
+       "name": "Apocrine secretion",
+       "accept": [
+        "apocrine"
+       ],
+       "box": [
+        7,
+        563,
+        166,
+        53
+       ],
+       "concept": "secretion-modes",
+       "taught": "glands",
+       "fn": "The classic description: product collects at the top of the cell, which pinches off with it. The mammary gland releases fat droplets this way. The so-called apocrine sweat glands turn out to secrete mainly by exocytosis, so the name there is historical."
+      },
+      {
+       "id": "holocrine-secretion",
+       "name": "Holocrine secretion",
+       "accept": [
+        "holocrine"
+       ],
+       "box": [
+        7,
+        950,
+        166,
+        52
+       ],
+       "concept": "secretion-modes",
+       "taught": "glands",
+       "fn": "The whole cell fills with product, dies and breaks apart, becoming the secretion. New cells from below replace it. The oil (sebaceous) glands of the skin work this way."
+      }
+     ],
+     "hints": [
+      {
+       "id": "pinched-off-portion",
+       "box": [
+        845,
+        478,
+        250,
+        53
+       ],
+       "why": "A note beside the drawing that describes the answer."
+      },
+      {
+       "id": "cell-becomes-product",
+       "box": [
+        845,
+        942,
+        205,
+        85
+       ],
+       "why": "A note beside the drawing that describes the answer."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tissue-membranes",
+   "title": "Tissue membranes",
+   "chapter": "cell-communication",
+   "topic": "tissue-membranes-repair",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-4-4",
+     "topic": "tissue-membranes-repair",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "mucous-membranes",
+       "name": "Mucous membranes",
+       "accept": [
+        "mucosa",
+        "mucous membrane"
+       ],
+       "box": [
+        6,
+        39,
+        210,
+        91
+       ],
+       "concept": "mucous-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "Epithelium on loose connective tissue lining every tube that opens to the outside: the digestive, respiratory, urinary and reproductive tracts. Its goblet cells or glands keep it moist with mucus."
+      },
+      {
+       "id": "serous-membranes",
+       "name": "Serous membranes",
+       "accept": [
+        "serosa",
+        "serous membrane"
+       ],
+       "box": [
+        5,
+        208,
+        206,
+        88
+       ],
+       "concept": "serous-membrane",
+       "taught": "body-cavities",
+       "fn": "A thin two-layer membrane of simple squamous mesothelium lining the closed body cavities (pleural, pericardial and peritoneal) and covering the organs in them. It secretes serous fluid that lets organs slide."
+      },
+      {
+       "id": "cutaneous-membrane",
+       "name": "Cutaneous membrane",
+       "accept": [
+        "cutaneous",
+        "skin"
+       ],
+       "box": [
+        5,
+        387,
+        206,
+        38
+       ],
+       "concept": "cutaneous-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "The skin: a keratinized stratified squamous epithelium on dense connective tissue. It is the only dry membrane."
+      },
+      {
+       "id": "synovial-membranes",
+       "name": "Synovial membranes",
+       "accept": [
+        "synovial membrane",
+        "synovium"
+       ],
+       "box": [
+        5,
+        541,
+        210,
+        55
+       ],
+       "concept": "synovial-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "Connective tissue membrane, with no epithelium, lining the cavities of freely movable joints. It secretes the slippery fluid that lubricates the joint."
       }
      ]
     }
@@ -152,7 +4621,7 @@
        ],
        "concept": "major-organs",
        "taught": "body-organization",
-       "fn": "A soft organ in the upper chest, in front of the large vessels leaving the heart. It is large in children and shrinks after puberty, when much of it is replaced by fat."
+       "fn": "A soft organ in the upper chest, in front of the large vessels leaving the heart. It is large in children and shrinks with age, when much of it is replaced by fat."
       },
       {
        "id": "base-of-heart",
@@ -7181,6 +11650,15 @@
   }
  ],
  "figures": {
+  "os-1-13": {
+   "src": "figures/os-1-13.jpg",
+   "w": 1100,
+   "h": 1117,
+   "alt": "Two views of a standing woman with paired arrows. In the side view a vertical arrow runs from cranial at the head to caudal at the lower back, and a horizontal arrow runs from posterior (dorsal) at the back to anterior (ventral) at the front. In the front view, superior is at the top of the page and inferior at the bottom, right and left are marked on her own sides, an arrow runs from the midline outward to lateral, and arrows along the left arm and right leg run from proximal near the trunk to distal at the hand and foot.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
   "os-1-14": {
    "src": "figures/os-1-14.jpg",
    "w": 1100,
@@ -7188,6 +11666,177 @@
    "alt": "A woman standing in anatomical position, seen from the front and slightly to one side, crossed by four flat panels. A vertical panel running front to back divides her into right and left parts (the sagittal plane). A vertical panel running side to side divides her into front and back parts (the frontal, or coronal, plane). A horizontal panel at hip level divides her into upper and lower parts (the transverse plane). A slanted panel through the lower legs is an oblique plane.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.14",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-1-15": {
+   "src": "figures/os-1-15.jpg",
+   "w": 1100,
+   "h": 637,
+   "alt": "Side and front views of the body with the cavities shaded. The cranial cavity inside the skull holds the brain, and a narrow canal runs down from it through the backbone; together they form the dorsal body cavity. In the chest, the two lung spaces sit on either side of a central space whose lower part surrounds the heart. A dome-shaped diaphragm lies below the chest. Below it, the large abdominal cavity continues into the funnel-shaped pelvic cavity; chest, abdominal and pelvic spaces together form the ventral body cavity.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-1-17": {
+   "src": "figures/os-1-17.jpg",
+   "w": 883,
+   "h": 433,
+   "alt": "Left: the heart enclosed in a two-layered sac. The inner layer lies on the heart's surface, the outer layer forms the outside of the sac, and a thin space lies between them. Right: the same arrangement modeled by a fist pushed into a soft, partly filled balloon. The balloon wall touching the fist matches the inner layer, the far wall matches the outer layer, and the air inside matches the space between them.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-1-12": {
+   "src": "figures/os-1-12.jpg",
+   "w": 1100,
+   "h": 968,
+   "alt": "Front and back views of a person standing in anatomical position, with the surface divided into named regions: head, face, eyes, cheeks, ears, chin, neck, chest, armpit, arm, bend of the elbow, forearm, wrist, palm, fingers, abdomen, navel, hip, groin, pubic area, thigh, front of the knee, leg, ankle and foot on the front; head, neck, shoulder, back, arm, back of the elbow, lower back, sacrum, forearm, hand, buttock, thigh, back of the knee, calf, heel and sole on the back.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-1-16": {
+   "src": "figures/os-1-16.jpg",
+   "w": 1100,
+   "h": 568,
+   "alt": "Two front views of the abdomen showing the organs behind the wall. On the left, two vertical and two horizontal lines divide it into nine regions: right hypochondriac, epigastric and left hypochondriac across the top; right lumbar, umbilical and left lumbar across the middle; right iliac, hypogastric and left iliac across the bottom. On the right, one vertical and one horizontal line crossing at the navel divide it into four quadrants: right upper, left upper, right lower and left lower. The dome of the diaphragm is outlined at the top.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.16",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-3-4": {
+   "src": "figures/os-3-4.jpg",
+   "w": 875,
+   "h": 400,
+   "alt": "A section of plasma membrane: a phospholipid bilayer with proteins spanning it or sitting on its surfaces, cholesterol tucked between the phospholipids, and sugar chains attached to some proteins and lipids on the outer face.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane",
+   "license": "CC BY 4.0"
+  },
+  "os-3-13": {
+   "src": "figures/os-3-13.jpg",
+   "w": 813,
+   "h": 645,
+   "alt": "A cutaway drawing of a generalized human cell showing the plasma membrane, the nucleus, and the internal structures of the cytoplasm, including the endoplasmic reticulum, Golgi apparatus, mitochondria, lysosomes, peroxisomes, ribosomes and a pair of centrioles.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+   "license": "CC BY 4.0"
+  },
+  "os-3-15": {
+   "src": "figures/os-3-15.jpg",
+   "w": 1100,
+   "h": 738,
+   "alt": "The Golgi apparatus drawn as a stack of flattened, curved membrane sacs, with small vesicles arriving on the side facing the endoplasmic reticulum and budding off the far side, beside an electron micrograph of the same stacked sacs.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+   "license": "CC BY 4.0"
+  },
+  "os-3-17": {
+   "src": "figures/os-3-17.jpg",
+   "w": 541,
+   "h": 443,
+   "alt": "A peroxisome drawn as a small round sac bounded by a single membrane, with a dense, crystal-like core of enzymes inside.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+   "license": "CC BY 4.0"
+  },
+  "os-3-18": {
+   "src": "figures/os-3-18.jpg",
+   "w": 1100,
+   "h": 550,
+   "alt": "The three kinds of cytoskeleton fiber side by side: a hollow microtubule built from paired protein subunits, a thin microfilament made of two twisted strands of actin, and a rope-like intermediate filament made of many coiled protein strands.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.18",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+   "license": "CC BY 4.0"
+  },
+  "os-4-5": {
+   "src": "figures/os-4-5.jpg",
+   "w": 1100,
+   "h": 1284,
+   "alt": "Close-up drawings of the membranes of two neighboring cells joined in different ways: a tight junction, where strands of protein stitch the two membranes together; a gap junction, where paired protein tubes connect the two cells' interiors; and anchoring junctions, including a desmosome with dense plaques on each side linked across the gap by adhesion proteins and anchored inside to rope-like filaments.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-3-19": {
+   "src": "figures/os-3-19.jpg",
+   "w": 777,
+   "h": 599,
+   "alt": "Cutaway drawing of a cell nucleus. A double-layered nuclear envelope, studded with pores, surrounds the nucleus. Threads of chromatin fill the inside, and a dense, darker nucleolus sits within them. Flattened sacs of rough endoplasmic reticulum, dotted with ribosomes, curve around the outside of the envelope and connect to it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.19",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-3-the-nucleus-and-dna-replication",
+   "license": "CC BY 4.0"
+  },
+  "os-3-22": {
+   "src": "figures/os-3-22.jpg",
+   "w": 743,
+   "h": 584,
+   "alt": "Levels of DNA packing, from a compact X-shaped chromosome down to its chromatin fiber, then to beads of DNA wrapped around histone proteins (nucleosomes), then to the bare double helix, and finally to the helix drawn flat as a ladder.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.22",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-3-the-nucleus-and-dna-replication",
+   "license": "CC BY 4.0"
+  },
+  "os-3-32": {
+   "src": "figures/os-3-32.jpg",
+   "w": 1100,
+   "h": 847,
+   "alt": "A row of drawings, each with a short list of events underneath and a fluorescence micrograph below, showing a cell passing through the stages of mitosis and then cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two new nuclei form as the cell pinches in two.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.32",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division",
+   "license": "CC BY 4.0"
+  },
+  "os-4-6": {
+   "src": "figures/os-4-6.jpg",
+   "w": 1100,
+   "h": 883,
+   "alt": "A grid of drawings of epithelial sheets sitting on a basement membrane. Rows are squamous (flat), cuboidal (cube-shaped) and columnar (tall) cells; columns are simple (one layer) and stratified (many layers). A separate panel shows pseudostratified columnar epithelium: one layer of cells of different heights, nuclei at different levels, cilia on top.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-10-22": {
+   "src": "figures/os-10-22.jpg",
+   "w": 1018,
+   "h": 476,
+   "alt": "A small outline of the heart with a box on its wall, enlarged into a drawing of branching, striped cardiac muscle fibers beside a capillary. Each fiber has a central nucleus, and wavy intercalated discs join the fibers end to end. A further enlargement of one disc shows desmosomes holding the two membranes together and gap junctions bridging them.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.22",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-7-cardiac-muscle-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-12-8": {
+   "src": "figures/os-12-8.jpg",
+   "w": 825,
+   "h": 552,
+   "alt": "Drawing of a single neuron. An irregular cell body holding a nucleus sends out several short, branching dendrites. One long axon leaves the cell body and is wrapped in evenly spaced segments of insulating covering; a glial cell reaches out with two arms to form two of the segments. The axon ends in many branches whose tips meet the dendrites of the next neuron. At the upper left, the axon of another neuron ends on this neuron's dendrites.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-2-nervous-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-4-9": {
+   "src": "figures/os-4-9.jpg",
+   "w": 1100,
+   "h": 1192,
+   "alt": "A table of drawings of exocrine glands sunk into a surface epithelium. Each drawing shows surface cells, duct cells lining a pit, and secretory cells at its bottom. The simple glands have one unbranched duct; the compound glands have a branching duct. The secretory parts are tube-shaped (tubular), end in round sacs (alveolar, or acinar), or mix both (tubuloalveolar).",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-4-10": {
+   "src": "figures/os-4-10.jpg",
+   "w": 1100,
+   "h": 1119,
+   "alt": "Three drawings of a row of gland cells on a basement membrane, each with a nucleus below and a Golgi apparatus budding secretory vesicles above. Merocrine: vesicles fuse with the top of the cell and release their contents while the cell stays whole. Apocrine: the top of the cell, packed with vesicles, pinches off. Holocrine: the cell fills with product and the whole cell becomes the secretion.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-4-4": {
+   "src": "figures/os-4-4.jpg",
+   "w": 548,
+   "h": 800,
+   "alt": "Front view of a woman's body with text boxes pointing to four kinds of membrane: the lining of the mouth and airway, the linings around the lungs and the abdominal organs, the skin of the hand, and the inside of the knee joint.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-1-types-of-tissues",
    "license": "CC BY 4.0"
   },
   "os-19-2": {

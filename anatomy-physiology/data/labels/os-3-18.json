@@ -14,7 +14,13 @@
         0,
         3
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        0,
+        360,
+        124,
+        41
+      ]
     },
     {
       "id": "tubulin-dimer",
@@ -28,7 +34,13 @@
         1,
         6
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        159,
+        360,
+        71,
+        41
+      ]
     },
     {
       "id": "actin-subunit",
@@ -42,7 +54,13 @@
       "lines": [
         4
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        470,
+        381,
+        119,
+        20
+      ]
     },
     {
       "id": "fibrous-subunit",
@@ -57,7 +75,13 @@
         2,
         5
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        780,
+        360,
+        216,
+        45
+      ]
     }
   ]
 }

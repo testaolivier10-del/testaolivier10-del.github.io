@@ -13,7 +13,13 @@
       "lines": [
         18
       ],
-      "concept": "covalent-bond"
+      "concept": "covalent-bond",
+      "box": [
+        105,
+        495,
+        246,
+        24
+      ]
     }
   ]
 }

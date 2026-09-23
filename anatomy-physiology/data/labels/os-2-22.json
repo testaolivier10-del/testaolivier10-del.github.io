@@ -12,7 +12,13 @@
       "lines": [
         23
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        44,
+        119,
+        132,
+        27
+      ]
     },
     {
       "id": "unsaturated",
@@ -25,7 +31,13 @@
       "lines": [
         54
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        45,
+        417,
+        162,
+        26
+      ]
     }
   ]
 }

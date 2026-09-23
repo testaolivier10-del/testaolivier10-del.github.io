@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        521,
+        3,
+        120,
+        19
+      ]
     },
     {
       "id": "intermediate-filament",
@@ -25,7 +31,13 @@
         1,
         3
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        173,
+        31,
+        118,
+        40
+      ]
     },
     {
       "id": "plasma-membrane",
@@ -38,7 +50,13 @@
         2,
         4
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        628,
+        50,
+        101,
+        40
+      ]
     },
     {
       "id": "ribosomes",
@@ -50,7 +68,13 @@
       "lines": [
         5
       ],
-      "concept": "ribosome"
+      "concept": "ribosome",
+      "box": [
+        116,
+        98,
+        105,
+        20
+      ]
     },
     {
       "id": "microtubule",
@@ -62,7 +86,13 @@
       "lines": [
         6
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        682,
+        154,
+        108,
+        19
+      ]
     },
     {
       "id": "rough-endoplasmic-reticulum",
@@ -76,7 +106,13 @@
         8,
         9
       ],
-      "concept": "endoplasmic-reticulum"
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        7,
+        160,
+        177,
+        40
+      ]
     },
     {
       "id": "centrosome",
@@ -90,7 +126,13 @@
       "lines": [
         11
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        696,
+        229,
+        114,
+        20
+      ]
     },
     {
       "id": "nucleus",
@@ -101,7 +143,13 @@
       "lines": [
         12
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        57,
+        238,
+        79,
+        20
+      ]
     },
     {
       "id": "nucleolus",
@@ -112,7 +160,13 @@
       "lines": [
         13
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        17,
+        295,
+        94,
+        19
+      ]
     },
     {
       "id": "microfilament",
@@ -125,7 +179,13 @@
       "lines": [
         14
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        696,
+        295,
+        119,
+        20
+      ]
     },
     {
       "id": "chromatin",
@@ -136,7 +196,13 @@
       "lines": [
         18
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        0,
+        361,
+        94,
+        20
+      ]
     },
     {
       "id": "lysosome",
@@ -148,7 +214,13 @@
       "lines": [
         21
       ],
-      "concept": "lysosome"
+      "concept": "lysosome",
+      "box": [
+        667,
+        394,
+        96,
+        24
+      ]
     },
     {
       "id": "golgi-apparatus",
@@ -163,7 +235,13 @@
         23,
         24
       ],
-      "concept": "golgi"
+      "concept": "golgi",
+      "box": [
+        0,
+        441,
+        94,
+        45
+      ]
     },
     {
       "id": "smooth-endoplasmic-reticulum",
@@ -177,7 +255,13 @@
         25,
         26
       ],
-      "concept": "endoplasmic-reticulum"
+      "concept": "endoplasmic-reticulum",
+      "box": [
+        624,
+        466,
+        188,
+        40
+      ]
     },
     {
       "id": "secretory-vesicle",
@@ -190,7 +274,13 @@
       "lines": [
         28
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        559,
+        526,
+        155,
+        23
+      ]
     },
     {
       "id": "golgi-vesicle",
@@ -203,7 +293,13 @@
       "lines": [
         30
       ],
-      "concept": "vesicle"
+      "concept": "vesicle",
+      "box": [
+        0,
+        555,
+        118,
+        23
+      ]
     },
     {
       "id": "peroxisome",
@@ -215,7 +311,13 @@
       "lines": [
         31
       ],
-      "concept": "peroxisome"
+      "concept": "peroxisome",
+      "box": [
+        498,
+        562,
+        109,
+        20
+      ]
     },
     {
       "id": "cytoplasm",
@@ -227,7 +329,13 @@
       "lines": [
         32
       ],
-      "concept": "cell-parts"
+      "concept": "cell-parts",
+      "box": [
+        97,
+        622,
+        100,
+        24
+      ]
     },
     {
       "id": "vacuole",
@@ -239,7 +347,13 @@
       "lines": [
         33
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        373,
+        623,
+        78,
+        19
+      ]
     }
   ]
 }

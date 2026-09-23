@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "phospholipid-bilayer"
+      "concept": "phospholipid-bilayer",
+      "box": [
+        143,
+        0,
+        111,
+        23
+      ]
     },
     {
       "id": "plasma-membrane",
@@ -28,7 +34,13 @@
       ],
       "concept": "plasma-membrane",
       "cover": true,
-      "note": "OpenStax prints 'Plasma membrane' here, but the line marks the peroxisome's own membrane. Covered for good and never asked (docs/anp-needs-author.md, fig-3-17-membrane-label)."
+      "note": "OpenStax prints 'Plasma membrane' here, but the line marks the peroxisome's own membrane. Covered for good and never asked (docs/anp-needs-author.md, fig-3-17-membrane-label).",
+      "box": [
+        445,
+        237,
+        98,
+        40
+      ]
     },
     {
       "id": "crystalline-core",

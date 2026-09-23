@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "gene-expression"
+      "concept": "gene-expression",
+      "box": [
+        36,
+        0,
+        198,
+        25
+      ]
     },
     {
       "id": "rna-polymerase",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "transcription"
+      "concept": "transcription",
+      "box": [
+        378,
+        65,
+        165,
+        25
+      ]
     },
     {
       "id": "transcription-begins",
@@ -36,7 +48,13 @@
       "lines": [
         2
       ],
-      "concept": "transcription"
+      "concept": "transcription",
+      "box": [
+        810,
+        86,
+        197,
+        25
+      ]
     },
     {
       "id": "promoter",
@@ -49,7 +67,13 @@
       "lines": [
         3
       ],
-      "concept": "transcription"
+      "concept": "transcription",
+      "box": [
+        102,
+        212,
+        97,
+        21
+      ]
     }
   ]
 }

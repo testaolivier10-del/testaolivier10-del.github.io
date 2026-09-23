@@ -52,7 +52,8 @@ function isCaseSensitive(t) {
 
 export function termRegex(t) {
   const esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`(?<![\\w-])${esc}(?![\\w-])`, isCaseSensitive(t) ? 'g' : 'gi');
+  // Unicode sub/superscript digits belong to the word: CO₂ is not CO.
+  return new RegExp(`(?<![\\w-])${esc}(?![\\w\u2070-\u209F\u00B2\u00B3\u00B9-])`, isCaseSensitive(t) ? 'g' : 'gi');
 }
 
 export function indexMap(map) {
@@ -238,7 +239,7 @@ export function stripForScan(html) {
   s = removeClassBlocks(s, 'anp-nav-ref');
   // Subscripts and superscripts belong to the word they follow: CO<sub>2</sub>
   // is carbon dioxide ("CO2"), not "CO" (cardiac output) followed by a 2.
-  s = s.replace(/<\/?(sub|sup)\b[^>]*>/gi, '');
+  s = s.replace(/<\/?(sub|sup|tspan)\b[^>]*>/gi, '');
   return normalize(s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&'));
 }
 
