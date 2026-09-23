@@ -14,8 +14,8 @@ uses a term before the topic that teaches it (the spec, section 7).
 | | |
 |---|---|
 | Chapters | 27: 5 Foundations, 11 tagged A&P I, 11 tagged A&P II |
-| Topics | 162: 83 tagged A&P I, 79 tagged A&P II. By kind: 93 physiology, 50 anatomy, 19 mixed |
-| Concepts | 1,000, each with the topic that teaches it and the concepts it directly depends on |
+| Topics | 162: 83 tagged A&P I, 79 tagged A&P II. By kind: 91 physiology, 50 anatomy, 21 mixed |
+| Concepts | 1,039, each with the topic that teaches it and the concepts it directly depends on (about 3,600 terms and aliases) |
 | Core concepts | 8: homeostasis, flow down gradients, cell-to-cell communication, structure and function, mass balance, energy and ATP, membranes and compartments, interdependence of systems |
 | Pulled-forward short versions | 27 decisions recorded in `circularDependencies` |
 | Preview boxes | 32 |
@@ -41,7 +41,9 @@ fail its own check.
    skin, fascicle arrangement, pituitary disorders, iron handling, pathogen-specific defenses,
    airway defenses and urinary disorders. **Caveat:** openstax.org is blocked from this
    environment, so this comparison was made from the reviewer's knowledge of the book, not the
-   live table of contents (see `openstax-toc-offline` in `docs/anp-needs-author.md`).
+   live table of contents. **Rechecked 2026-09-23 against the live OpenStax site:** every
+   section's learning objectives and all 3,190 chapter key terms. That added 39 concepts and
+   about 1,200 aliases, all inside existing topics (spec section 19, items 14–21).
 3. **Ordering and accuracy review.** A second agent read the map as a skeptical instructor would.
    It looked for concepts that secretly need something taught later, and for factual errors. It
    found about 60 issues. Most were applied; the few I handled differently are listed after
