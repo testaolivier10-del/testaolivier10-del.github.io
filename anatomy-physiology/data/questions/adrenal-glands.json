@@ -175,12 +175,12 @@
       },
       {
         "name": "ACTH, in the days after stopping",
-        "answer": "up",
-        "why": "The drug's feedback is removed, so the hypothalamus and pituitary slowly restart, but the cortex needs weeks to months to respond fully."
+        "answer": "none",
+        "why": "The hypothalamus and pituitary were suppressed for months and take weeks to restart, so ACTH stays low at first; that is why the crisis comes on so fast."
       }
     ],
     "why": {
-      "correct": "During treatment, feedback from the drug suppresses ACTH and the zona fasciculata shrinks. When the drug stops suddenly, glucocorticoid activity crashes: blood glucose and blood pressure fall, the picture of an adrenal crisis. ACTH begins to rise, but the cortex has shrunk and responds slowly. That is why long courses of glucocorticoids are tapered."
+      "correct": "During treatment, feedback from the drug suppresses ACTH and the zona fasciculata shrinks. When the drug stops suddenly, glucocorticoid activity crashes: blood glucose and blood pressure fall, the picture of an adrenal crisis. ACTH stays low at first, and it rises only over weeks to months, while the shrunken cortex recovers more slowly still. That is why long courses of glucocorticoids are tapered."
     }
   },
   {
@@ -266,10 +266,10 @@
     ],
     "q": "A woman who has taken prednisone for a year for lung disease has a round face, a fat pad between her shoulders, thin skin and purple stretch marks. What would you expect her ACTH level to be?",
     "options": [
-      "Low, suppressed by the drug",
-      "High",
+      "Low",
+      "High, from a pituitary tumor",
       "Normal",
-      "Undetectable"
+      "Rising steadily as her adrenal glands shrink"
     ],
     "correct": 0,
     "why": {
@@ -278,7 +278,7 @@
         "Correct. The drug suppresses ACTH through negative feedback.",
         "High ACTH causes Cushing syndrome when a tumor releases it. Here the glucocorticoid comes from outside, and feedback suppresses ACTH.",
         "A large dose of glucocorticoid for a year does not leave the axis unchanged: feedback turns ACTH down.",
-        "Her pituitary is intact but switched off by feedback. It can restart if the drug is tapered."
+        "Her adrenal glands shrink because ACTH is low, not the other way round. The drug's feedback holds ACTH down."
       ]
     }
   },
@@ -570,7 +570,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Under ordinary chronic stress, the axis keeps working: cortisol is usually normal or high, or its daily rhythm flattens. The harm of the stage of exhaustion comes from prolonged exposure, the same effects as cortisol excess. \"Adrenal fatigue\" is not a recognized diagnosis. Exams may still expect \"resources are depleted\".",
+      "correct": "Under ordinary chronic stress, the axis keeps working: cortisol is usually normal or high, or its daily rhythm flattens. The harm of the stage of exhaustion comes from prolonged exposure, some of the same effects as cortisol excess. \"Adrenal fatigue\" is not a recognized diagnosis. Exams may still expect \"resources are depleted\".",
       "options": [
         "Cortisol does not vanish under chronic stress. A truly failed cortex is Addison disease, a separate illness.",
         "Correct. The glands do not wear out; long exposure does the damage.",

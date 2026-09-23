@@ -1,0 +1,37 @@
+{
+  "plasma-cell": {
+    "def": "A fully differentiated B cell, packed with rough endoplasmic reticulum, that releases large amounts of one antibody. Activation needs helper T cell help for T cell-dependent (protein) antigens but not for T cell-independent antigens such as repeating capsule sugars.",
+    "roots": [["plasma", "something formed"]],
+    "say": ""
+  },
+  "antibody-structure": {
+    "def": "An antibody (immunoglobulin) is a Y of two identical heavy chains and two identical light chains joined by disulfide bonds. The variable regions at the arm tips form two antigen-binding sites; the constant regions, including the Fc region of the stem, set the class and bind Fc receptor proteins and complement.",
+    "roots": [["immun/o", "immune"], ["globulin", "globular protein"], ["Fc", "fragment, crystallizable"]],
+    "say": "im-yoo-noh-GLOB-yoo-lin"
+  },
+  "antibody-classes": {
+    "def": "The five kinds of antibody, set by the heavy chain: IgG (main blood antibody, crosses to the fetus), IgA (in secretions), IgM (first made, a pentamer), IgE (on mast cells) and IgD (on naïve B cells). Class switching changes a B cell's class while keeping its variable region.",
+    "roots": [["Ig", "immunoglobulin"], ["penta-", "five"]],
+    "say": ""
+  },
+  "antibody-actions": {
+    "def": "The ways antibodies disable antigens: neutralization (blocking toxins and viruses from binding cells), agglutination (clumping), opsonization (coating for phagocytes), complement activation and directing natural killer cells. The antibody binds; other cells and proteins do the killing.",
+    "roots": [["neutral-", "neither side"], ["agglutin-", "to glue together"], ["opson-", "to prepare food"]],
+    "say": ""
+  },
+  "primary-secondary-response": {
+    "def": "The primary response to a first exposure has a lag of about 5–10 days and a low peak, mostly IgM then IgG. The secondary response to a later exposure comes from memory cells: faster, much higher, mostly IgG and better fitting. Seroconversion is when antibody first becomes detectable in the blood.",
+    "roots": [["prim-", "first"], ["secund-", "following"], ["sero-", "serum"]],
+    "say": ""
+  },
+  "active-passive": {
+    "def": "Active immunity is made by your own immune system, after infection or a vaccine; it is slow to start, leaves memory and lasts long. Passive immunity is borrowed antibody, from mother to baby or by injection; it works at once but fades in weeks to months.",
+    "roots": [["vacc-", "cow (from cowpox)"], ["immun-", "exempt"]],
+    "say": ""
+  },
+  "pathogen-responses": {
+    "def": "A pathogen is a microbe or parasite that can cause disease. Each type meets the defenses that can reach it: antibodies and complement for bacteria outside cells, Th1 cells and macrophages for bacteria inside cells, interferons, NK cells, antibodies and cytotoxic T cells for viruses, and Th2 cells, IgE and eosinophils for worms. Immune evasion is a pathogen's ways around them.",
+    "roots": [["path/o", "disease"], ["-gen", "producing"]],
+    "say": "PATH-oh-jen"
+  }
+}
