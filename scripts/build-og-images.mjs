@@ -60,7 +60,7 @@ const lessonCount = readdirSync('ochem/lessons').filter((f) => f.endsWith('.html
 const CARDS = [
   {
     out: 'assets/og-image.png',
-    badge: 'Free · No paywall',
+    badge: 'Free core · No ads',
     brand: 'LevlPrep',
     title: 'Free practice tools for certification exams',
     sub: 'Real question banks and interactive courses, with honest practice conditions.',
