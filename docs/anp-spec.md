@@ -35,7 +35,7 @@ Originality rules:
 3. COURSE STRUCTURE AND NAVIGATION
 ==================================================
 
-Mirror the ochem course:
+Mirror the ochem course. The course lives at levlprep.com/anatomy-physiology/ (decided in Phase 0 review).
 
 * A short Foundations section first: orientation and terminology (directional terms, planes, cavities, regions), a chemistry and physics primer (gradients, pressure, pH, diffusion, osmosis, electrical charge), cells and membrane transport, cell signaling basics, tissues. The exact contents come from the Phase 0 dependency map.
 * Chapters organized by body system after Foundations.
@@ -77,6 +77,7 @@ Every notes page: the full prose explanation of the topic, following the same or
 
 * Short sentences, active voice, second person ("your heart," not "the heart of the individual").
 * Define every technical term at first use, with a plain explanation and its word roots.
+* "Receptor" has two meanings, so never use it bare. Write "sensory receptor" for a sensor that detects a change, and "receptor protein" for a molecule that binds a messenger.
 * One name per structure. When a synonym matters (for example bicuspid and mitral valve), introduce it once, explicitly.
 * Concrete before abstract: an example or scenario first, then the general principle.
 * Explain mechanisms, not purposes. Write "low oxygen triggers chemoreceptors, which signal the brainstem to increase breathing rate," never "you breathe faster because your body needs oxygen."
@@ -105,6 +106,7 @@ Define a single visual system in one shared style file and use it in every figur
 * Default fix for circular dependencies: pull a short, general version forward into Foundations or Cells. Examples: resting membrane potential and basic electrical signaling (so muscle, neurons, and heart all build on it), chemical messengers and receptors (so hormones can appear in the bone chapter already understood at a basic level), feedback loops, gradients. Each pulled forward topic is short, has a concrete example immediately, and tells the student where the idea will reappear.
 * Use a marked preview box only for narrow one off facts that do not deserve a foundation topic (for example the bone chapter needing "parathyroid hormone raises blood calcium"). The preview box gives just enough and links to where it is taught fully.
 * Every defined term links to its definition page with a hover or tap tooltip, so students who enter mid course are never lost.
+* Until the page that teaches a term exists, show the term as plain text with its glossary hover definition. Do not create "coming soon" pages. When the teaching page is built, the link is added automatically from the dependency map, with no hand edits to the pages that use the term.
 * Build check: add a check alongside the existing site checks that fails the build if a page uses a tagged term before the page that defines it, unless the use is inside a preview box. The check reads the dependency map data file.
 
 ==================================================
@@ -140,7 +142,7 @@ Scenarios are tagged by system, topic, core concept, and the misconception they 
 
 8.3 Feedback loop builder
 Purpose: make the homeostasis framework automatic by using the same structure every time.
-How it works: the student drags cards into labeled slots (stimulus, receptor, afferent pathway, control center, efferent pathway, effector, response) and classifies the loop as negative or positive feedback. Cards include distractors. Each slot is checked individually with an explanation. After completion, the finished loop is shown as a diagram in the shared visual language.
+How it works: the student drags cards into labeled slots (stimulus, receptor (sensor), afferent pathway, control center, efferent pathway, effector, response) and classifies the loop as negative or positive feedback. Cards include distractors. Each slot is checked individually with an explanation. After completion, the finished loop is shown as a diagram in the shared visual language.
 Content: loops for thermoregulation, blood glucose, blood pressure, blood calcium, blood oxygen and carbon dioxide, osmolarity, and positive feedback examples (labor, clotting), plus any identified in Phase 0.
 
 8.4 Pathway tracer
@@ -216,7 +218,7 @@ Rules:
 * Unit quiz: short, per topic or small group of topics.
 * System exam: full exam for one body system.
 * A&P I cumulative final and A&P II cumulative final, weighted by the topic distribution from Phase 0.
-* TEAS A&P mode: 18 questions matching the TEAS 7 A&P blueprint, timed at the TEAS science pace (roughly 1.2 minutes per question), with results broken down by system.
+* TEAS A&P mode: 18 questions matching the TEAS 7 A&P blueprint, timed at the TEAS science pace (roughly 1.2 minutes per question), with results broken down by system. The 18 questions are split evenly across the systems listed in the TEAS 7 blueprint. The mode is labeled as an estimate, because ATI does not publish the exact split.
 * Lab practical exam: the timed practical from 8.1, built from a chosen set of systems.
 Every exam ends with a full review of every question and explanation, a breakdown by system and core concept, and missed items added to review.
 
@@ -263,7 +265,8 @@ Every lesson and notes page gets: a unique title and description within the exis
 
 * Run all content through the same two stage audit used for the NREMT and ochem review: one agent drafts or checks, a second skeptical agent verifies against current sources before anything is applied.
 * Include the OpenStax wording similarity check from section 2.
-* Flag anything ambiguous or where sources disagree for human review in a needs author file, instead of guessing.
+* Flag anything ambiguous or where sources disagree for human review in a needs author file, instead of guessing. The needs author file is docs/anp-needs-author.md.
+* Contested science: always teach the explanation best supported by current research and evidence. That is not simply the newest claim. Where a course exam or the TEAS may still expect an older answer, add a short "For your exam" note that gives the expected answer and says why it differs. Add every contested item to the needs author file for human review.
 * Add a changelog entry noting the new course follows current published sources and is pending review by a licensed A&P instructor.
 * Update the sources page with OpenStax attribution and any other sources used.
 
@@ -295,3 +298,16 @@ STOP for my review after respiratory and nervous, before continuing.
 
 Phase 3: The rest of A&P I and both cumulative finals.
 STOP for my review.
+
+==================================================
+19. DECISIONS LOG
+==================================================
+
+Decisions made at review checkpoints. The sections above already reflect them; this log records when and why.
+
+Phase 0 review (2026-09-23):
+1. Links to unbuilt pages: no "coming soon" pages. Until a chapter exists, a term shows as plain text with its glossary hover definition. Once the teaching page exists, the link is added automatically from the dependency map (section 7).
+2. Course URL: /anatomy-physiology/ (section 3).
+3. TEAS mode: the 18 questions are split evenly across the systems listed in the TEAS 7 blueprint, and the mode is labeled as an estimate (section 11).
+4. Contested science: teach the explanation best supported by current evidence, add a "For your exam" note where exams may expect an older answer, and log each item in docs/anp-needs-author.md (section 16).
+5. "Receptor": prose says "sensory receptor" or "receptor protein", and the loop builder slot reads "Receptor (sensor)" (sections 5 and 8.3).

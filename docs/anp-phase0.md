@@ -1,6 +1,7 @@
 # A&P course: Phase 0 dependency map
 
-Status: **awaiting review** (Phase 0 of `docs/anp-spec.md`). No lessons have been written.
+Status: **reviewed 2026-09-23**. The decisions are in `docs/anp-spec.md` section 19; open items are in
+`docs/anp-needs-author.md`. No lessons have been written.
 
 The map itself is `docs/anp-dependency-map.json`, and `node scripts/check-anp-map.mjs --order`
 prints the course order. This document explains the map. If the two ever disagree, the JSON is
@@ -19,7 +20,7 @@ uses a term before the topic that teaches it (the spec, section 7).
 | Pulled-forward short versions | 27 decisions recorded in `circularDependencies` |
 | Preview boxes | 32 |
 | Planned tool content | 105 comparison tables, 23 feedback loops, 68 pathways, 35 graphs, 89 prediction themes (L1–L4), 13 calculators, 87 lab practical image sets |
-| Open questions | 11, in `needsAuthor` (listed at the end) |
+| Open questions | In `docs/anp-needs-author.md` |
 
 Every concept's aliases are the words its topic "owns" in two places: the glossary tooltips, and
 the page check. When a plain word means two different things (ventricle, choroid, insertion, T4),
@@ -40,7 +41,7 @@ fail its own check.
    skin, fascicle arrangement, pituitary disorders, iron handling, pathogen-specific defenses,
    airway defenses and urinary disorders. **Caveat:** openstax.org is blocked from this
    environment, so this comparison was made from the reviewer's knowledge of the book, not the
-   live table of contents (see `openstax-toc-offline` below).
+   live table of contents (see `openstax-toc-offline` in `docs/anp-needs-author.md`).
 3. **Ordering and accuracy review.** A second agent read the map as a skeptical instructor would.
    It looked for concepts that secretly need something taught later, and for factual errors. It
    found about 60 issues. Most were applied; the few I handled differently are listed after
@@ -56,7 +57,7 @@ fail its own check.
    - Factual fixes: "myogenic response" was listed as the smooth muscle stretch-relaxation
      response, which is its opposite. Vitamin K was listed under anticoagulants. Hydrocephalus
      was listed as a bleed.
-   - Points where current sources disagree now have `needsAuthor` entries.
+   - Points where current sources disagree are logged in `docs/anp-needs-author.md`.
 
    Handled differently from the reviewer's suggestion:
    - ADH acting on the collecting duct, oxytocin in labor, and the breathing muscles needing
@@ -237,7 +238,7 @@ Highlights by chapter:
    - two bones used as landmarks
 
    The build check compares course order, not build order, so it will pass. But the "what this
-   builds on" links will point at pages that don't exist yet. See `pilot-forward-links`.
+   builds on" links will point at pages that don't exist yet. Decided: those terms show as plain text with a glossary hover until their page exists (spec section 7).
 2. **The feedback loop's standard examples** (temperature, childbirth) still need two preview
    boxes even at the end of Foundations. The alternative is examples built only from Foundations
    material, such as blood pH and blood glucose without naming insulin.
@@ -264,24 +265,10 @@ The biggest uncertainties:
   measure it on the cardiovascular sets and re-estimate before Phase 2)
 - how often the skeptical audit rejects a draft
 
-## Decisions for you (`needsAuthor`)
+## Decisions and open questions
 
-1. **pilot-forward-links:** during the pilot, prerequisite links to unbuilt chapters show a
-   "coming soon" page. The 22 concepts above get glossary entries in Phase 1, so tooltips work.
-   Accept, or build short stub topics instead?
-2. **course-slug:** `/anp/` (proposed, matches `/nremt/` and `/ochem/`) or `/anatomy-physiology/`?
-3. **teas-weighting:** ATI publishes no per-system count for the 18 A&P items. Proposal: weight
-   by this map's topic counts and label the result as an estimate.
-4. **receptor-two-meanings:** prose always says "sensory receptor" or "receptor protein". The
-   loop builder slot reads "Receptor (sensor)".
-5. **hypoxic-drive:** teach V/Q mismatch and the Haldane effect as the mechanism, and name hypoxic
-   drive as a misconception. Needs instructor review.
-6. **starling:** teach the classic picture that exams test, with a going-further box on the
-   revised Starling principle.
-7. **coagulation-model:** teach the cell-based sequence, and present the intrinsic and extrinsic
-   pathways as the lab model.
-8. **endocrine-course-tag:** endocrine is tagged A&P II. It is a filter only.
-9. **chemistry-kind:** the primer topics count as physiology for the 60% apply/analyze rule.
-10. **minor-contested:** precapillary sphincters, calcitonin in adults, apocrine secretion mode.
-11. **openstax-toc-offline:** re-run the coverage comparison against the live OpenStax table of
-    contents once the network allows it, before Phase 1 content is written.
+The Phase 0 review (2026-09-23) decided five questions: links to unbuilt pages, the course URL,
+TEAS weighting, the rule for contested science, and the two meanings of "receptor". They are
+recorded in the spec's decisions log (`docs/anp-spec.md`, section 19), and the spec sections they
+affect were updated. Everything still open, and every contested science item, is in
+`docs/anp-needs-author.md`, each with a recommendation.
