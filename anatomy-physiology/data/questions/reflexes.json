@@ -92,7 +92,7 @@
       "A tap on the patellar ligament stretches the quadriceps femoris",
       "Muscle spindles in the quadriceps fire",
       "Sensory axons enter the cord through the dorsal roots",
-      "The sensory axons excite interneurons, which then excite the quadriceps motor neurons",
+      "Interneurons relay the signal to the quadriceps motor neurons",
       "Quadriceps motor neurons fire and the muscle contracts",
       "The knee straightens"
     ],
@@ -499,7 +499,7 @@
     ],
     "q": "During the knee jerk, what stops the hamstrings from contracting against the kick?",
     "options": [
-      "Spindle sensory axons excite inhibitory interneurons that silence the hamstring motor neurons",
+      "Spindle axons excite inhibitory interneurons that silence the hamstring motor neurons",
       "The hamstrings are stretched too, so their own spindles relax them",
       "Golgi tendon organs in the quadriceps fire first and switch off the hamstring motor neurons",
       "The cortex sends a signal to relax the hamstrings before the tap"

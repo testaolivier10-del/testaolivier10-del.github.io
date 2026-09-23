@@ -138,7 +138,7 @@
     "misconception": "any motor damage makes muscles floppy",
     "q": "A limb is weak and floppy, its tendon jerks are absent, its muscles have wasted over six weeks and small twitches ripple under the skin. Where is the damage most likely to be?",
     "options": [
-      "The primary motor cortex of the opposite side",
+      "The opposite motor cortex",
       "The internal capsule",
       "The lateral corticospinal tract",
       "The ventral horn or ventral root"
@@ -488,8 +488,8 @@
     "q": "Fill the gap in the cerebellum's input and output routes: signals from the spinal cord enter through the inferior cerebellar peduncle → the cortex's motor plan, relayed by the pons, enters through ______ → corrections leave through the superior cerebellar peduncle toward the thalamus.",
     "options": [
       "The internal capsule",
-      "The corpus callosum between the hemispheres",
-      "The cerebral peduncle of the midbrain",
+      "The corpus callosum",
+      "The cerebral peduncle",
       "The middle cerebellar peduncle"
     ],
     "correct": 3,

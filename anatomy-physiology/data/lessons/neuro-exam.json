@@ -31,7 +31,7 @@
   "chain": [
     { "cause": "An artery supplying the right motor cortex and internal capsule is blocked by a clot.", "effect": "Upper motor neurons for the left face, arm and leg, and their axons, lose their blood supply and stop firing within minutes." },
     { "cause": "Commands no longer reach the crossed corticospinal and corticobulbar pathways to the left side.", "effect": "The left arm drifts down and the lower left face droops, while the forehead, which also gets input from the left hemisphere, still wrinkles." },
-    { "cause": "The examiner finds upper motor neuron weakness of the face and body on the same side, with no cranial nerve problem on the other side.", "effect": "The damage is placed above the brainstem, in the right cerebral hemisphere or internal capsule." },
+    { "cause": "The examiner finds upper motor neuron weakness of the face and body on the same side, with no cranial nerve problem on the other side.", "effect": "The damage is placed above the facial nucleus in the pons, most likely in the right cerebral hemisphere or internal capsule." },
     { "cause": "The onset was sudden and the patient was last known to be well two hours ago.", "effect": "A stroke is suspected, and a brain scan is done at once to tell an ischemic stroke from a hemorrhagic one before treatment." }
   ],
   "misconception": {
