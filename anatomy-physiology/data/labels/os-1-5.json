@@ -1,0 +1,318 @@
+{
+  "figure": "os-1-5",
+  "labels": [
+    {
+      "id": "lymphatic-system",
+      "name": "Lymphatic system",
+      "accept": [
+        "lymphatic system",
+        "lymphatic"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "thymus",
+      "name": "Thymus",
+      "accept": [
+        "thymus",
+        "thymus gland"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "lymph-nodes",
+      "name": "Lymph nodes",
+      "accept": [
+        "lymph nodes",
+        "lymph node"
+      ],
+      "lines": [
+        10,
+        14
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "accept": [
+        "spleen"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "lymphatic-vessels",
+      "name": "Lymphatic vessels",
+      "accept": [
+        "lymphatic vessels",
+        "lymph vessels",
+        "lymphatic vessel"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "lymphatic-vessels"
+    },
+    {
+      "id": "respiratory-system",
+      "name": "Respiratory system",
+      "accept": [
+        "respiratory system",
+        "respiratory"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "nasal-passage",
+      "name": "Nasal passage",
+      "accept": [
+        "nasal passage",
+        "nasal cavity",
+        "nasal passages",
+        "nose"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "nasal-cavity"
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "lungs",
+      "name": "Lungs",
+      "accept": [
+        "lungs",
+        "lung"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "digestive-system",
+      "name": "Digestive system",
+      "accept": [
+        "digestive system",
+        "digestive"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "accept": [
+        "stomach"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [
+        "liver"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "accept": [
+        "gallbladder",
+        "gall bladder"
+      ],
+      "lines": [
+        36,
+        37
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "large-intestine",
+      "name": "Large intestine",
+      "accept": [
+        "large intestine",
+        "colon"
+      ],
+      "lines": [
+        40,
+        41
+      ],
+      "concept": "alimentary-canal"
+    },
+    {
+      "id": "small-intestine",
+      "name": "Small intestine",
+      "accept": [
+        "small intestine",
+        "small bowel"
+      ],
+      "lines": [
+        42,
+        43
+      ],
+      "concept": "alimentary-canal"
+    },
+    {
+      "id": "urinary-system",
+      "name": "Urinary system",
+      "accept": [
+        "urinary system",
+        "urinary"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "kidneys",
+      "name": "Kidneys",
+      "accept": [
+        "kidneys",
+        "kidney"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "urinary-bladder",
+      "name": "Urinary bladder",
+      "accept": [
+        "urinary bladder",
+        "bladder"
+      ],
+      "lines": [
+        38,
+        39
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "male-reproductive-system",
+      "name": "Male reproductive system",
+      "accept": [
+        "male reproductive system",
+        "male reproductive",
+        "reproductive system"
+      ],
+      "lines": [
+        44,
+        46
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "epididymis",
+      "name": "Epididymis",
+      "accept": [
+        "epididymis",
+        "epididymides"
+      ],
+      "lines": [
+        63
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "testes",
+      "name": "Testes",
+      "accept": [
+        "testes",
+        "testicles",
+        "testis"
+      ],
+      "lines": [
+        65
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "female-reproductive-system",
+      "name": "Female reproductive system",
+      "accept": [
+        "female reproductive system",
+        "female reproductive",
+        "reproductive system"
+      ],
+      "lines": [
+        45,
+        47
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "mammary-glands",
+      "name": "Mammary glands",
+      "accept": [
+        "mammary glands",
+        "breasts",
+        "mammary gland"
+      ],
+      "lines": [
+        50,
+        53
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "ovaries",
+      "name": "Ovaries",
+      "accept": [
+        "ovaries",
+        "ovary"
+      ],
+      "lines": [
+        62
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [
+        "uterus",
+        "womb"
+      ],
+      "lines": [
+        64
+      ],
+      "concept": "major-organs"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "vessel-tunics": {
+    "def": "The three layers of a blood vessel wall: the tunica intima (endothelium on a basement membrane; in arteries, bounded by the internal elastic membrane), the tunica media (smooth muscle and elastic fibers; in arteries, bounded by the external elastic membrane) and the tunica externa, also called tunica adventitia (collagen). Large vessels carry their own small vessels and nerves, the vasa vasorum and nervi vasorum.",
+    "roots": [["tunica", "coat"], ["intima", "innermost"], ["media", "middle"], ["externa", "outer"], ["vasa vasorum", "vessels of the vessels"]],
+    "say": "TOO-nih-kuh IN-tih-muh; VAY-suh vay-SOR-um"
+  },
+  "artery-types": {
+    "def": "Elastic arteries, the largest arteries near the heart, have many elastic fibers in the tunica media; they stretch during ejection and recoil in diastole. Muscular arteries, farther out, have a thick smooth muscle media and distribute blood to organs.",
+    "roots": [],
+    "say": ""
+  },
+  "arteriole": {
+    "def": "The smallest artery, under about 0.1 mm across, with one to a few layers of smooth muscle. Arterioles are the main resistance vessels; their steady partial contraction, vascular tone, sets how much blood enters each capillary bed.",
+    "roots": [["arteri-", "artery"], ["-ole", "small"]],
+    "say": "ar-TEER-ee-ohl"
+  },
+  "capillary-types": {
+    "def": "Continuous capillaries have an unbroken endothelium; fenestrated capillaries have pores through their cells; sinusoids have large gaps and an incomplete basement membrane. An arteriole feeds a capillary bed; metarterioles, thoroughfare channels and arteriovenous anastomoses can shunt blood past it; pericytes wrap the wall; vasomotion is rhythmic arteriolar contraction. Precapillary sphincters are described classically, but their role in humans is unsettled.",
+    "roots": [["fenestra", "window"], ["sinus", "hollow"], ["peri-", "around"], ["-cyte", "cell"], ["meta-", "beyond"], ["micro-", "small"]],
+    "say": "FEN-es-tray-ted; sy-noo-SOYD; PAIR-ih-syte"
+  },
+  "venule-vein": {
+    "def": "Venules drain capillaries and merge into veins, which carry blood toward the heart at low pressure. Veins have a thin tunica media, a thick tunica externa, a wide lumen and, in the limbs especially, venous valves; they are capacitance vessels that hold large volumes of blood.",
+    "roots": [["ven-", "vein"], ["-ule", "small"]],
+    "say": "VEN-yool"
+  },
+  "venous-reservoir": {
+    "def": "The blood held in the systemic veins and venules, about 60 to 65 percent of the total at rest. Veins are highly compliant, so they store blood with little rise in pressure, and sympathetic venoconstriction can shift that stored blood toward the heart.",
+    "roots": [],
+    "say": ""
+  },
+  "venous-return": {
+    "def": "The flow of blood back to the heart through the veins, driven by a small pressure gradient and helped by the skeletal muscle pump, the respiratory pump and venoconstriction, with venous valves preventing backflow.",
+    "roots": [],
+    "say": ""
+  },
+  "varicose-veins": {
+    "def": "Swollen, lengthened, twisted superficial veins, usually in the legs, caused when venous valves become incompetent: blood falls back, pools and stretches the thin wall, which pulls the next valve open in turn.",
+    "roots": [["varix", "dilated vein"]],
+    "say": "VAIR-ih-kohs"
+  }
+}

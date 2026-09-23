@@ -1,0 +1,114 @@
+{
+  "figure": "os-19-33",
+  "labels": [
+    {
+      "id": "prepotential",
+      "name": "Prepotential (spontaneous depolarization)",
+      "accept": [
+        "prepotential (spontaneous depolarization)",
+        "prepotential",
+        "pacemaker potential",
+        "spontaneous depolarization"
+      ],
+      "lines": [
+        1,
+        3,
+        4
+      ],
+      "concept": "pacemaker-potential"
+    },
+    {
+      "id": "threshold",
+      "name": "Threshold",
+      "accept": [
+        "threshold",
+        "threshold potential"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "threshold"
+    },
+    {
+      "id": "slower-depolarization",
+      "name": "Slower depolarization",
+      "accept": [
+        "slower depolarization",
+        "slower prepotential",
+        "slower spontaneous depolarization"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "heart-rate-control"
+    },
+    {
+      "id": "threshold-parasympathetic",
+      "name": "Threshold",
+      "accept": [
+        "threshold",
+        "threshold potential"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "threshold"
+    },
+    {
+      "id": "hyperpolarization",
+      "name": "Hyperpolarization",
+      "accept": [
+        "hyperpolarization",
+        "hyperpolarisation"
+      ],
+      "box": [
+        314,
+        926,
+        230,
+        32
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "faster-depolarization",
+      "name": "Faster depolarization",
+      "accept": [
+        "faster depolarization",
+        "faster prepotential",
+        "faster spontaneous depolarization"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "heart-rate-control"
+    },
+    {
+      "id": "threshold-sympathetic",
+      "name": "Threshold",
+      "accept": [
+        "threshold",
+        "threshold potential"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "threshold"
+    },
+    {
+      "id": "reduced-repolarization",
+      "name": "Reduced repolarization",
+      "accept": [
+        "reduced repolarization",
+        "less repolarization",
+        "smaller repolarization"
+      ],
+      "box": [
+        310,
+        1459,
+        306,
+        34
+      ],
+      "concept": "heart-rate-control"
+    }
+  ]
+}
