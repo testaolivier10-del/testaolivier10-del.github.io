@@ -457,7 +457,7 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "Motor neurons to skeletal muscle sit in the ventral (anterior) horn, not the dorsal horn. The dorsal horn is the sensory side, where incoming sensory axons end.",
+      "correct": "Motor neurons to skeletal muscle sit in the ventral (anterior) horn, not the dorsal horn. The dorsal horn is the sensory side, where many incoming sensory axons end.",
       "options": [
         "Right. Motor commands travel down in descending tracts.",
         "Right. Tracts run in the white columns.",
@@ -483,9 +483,9 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Sensory axons entering through the dorsal root end in the dorsal horn, on interneurons and on neurons that relay the signal up the cord.",
+      "correct": "Many sensory axons entering through the dorsal root end in the dorsal horn, on interneurons and on neurons that relay the signal up the cord.",
       "options": [
-        "Correct. Incoming sensory axons end in the dorsal horn.",
+        "Correct. Many incoming sensory axons end in the dorsal horn.",
         "The ventral horn holds motor neurons, reached through interneurons, not directly by the dorsal root.",
         "The lateral horn holds sympathetic motor neurons.",
         "The ventral root carries motor axons out of the cord."

@@ -1,4 +1,4 @@
 {
   "about": "Chapters published on the live site. A topic is built (pages, bank, tools) only when its files exist AND its chapter is listed here. A chapter is added after it passes the two-stage audit and all checks (spec decision 53), so unfinished chapters can sit on the branch without going live when it is merged to main.",
-  "chapters": ["orientation", "chem-physics", "cells", "tissues", "cell-communication", "cardiovascular"]
+  "chapters": ["orientation", "chem-physics", "cells", "tissues", "cell-communication", "cardiovascular", "respiratory"]
 }

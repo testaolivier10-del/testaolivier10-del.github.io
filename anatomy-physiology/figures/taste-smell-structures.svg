@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img" aria-label="Two panels. Left, a taste bud: a pale, onion-shaped cluster of long, thin gustatory receptor cells set into the lining epithelium of the tongue. Their tips carry microvilli that poke into a small taste pore opening at the surface. Small basal cells sit at the base of the bud, and orange sensory nerve fibers enter the base and wrap around the receptor cells. Right, the olfactory epithelium in the roof of the nose, drawn with the bone above and the airway below. Orange olfactory sensory neurons have their cell bodies in the epithelium between tall supporting cells, with basal stem cells along the deep side. Each neuron sends a dendrite down to the surface, where hair-like cilia spread out in a layer of mucus that odorant molecules dissolve into, and an axon up through a hole in the cribriform plate of the ethmoid bone to synapse in the olfactory bulb, which continues backward as the olfactory tract.">
+<rect x="0" y="0" width="960" height="520" fill="#FFFFFF"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<text x="20" y="30" font-size="17" font-weight="800">Taste bud</text>
+<rect x="20" y="120" width="380" height="270" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<line x1="20" y1="120" x2="400" y2="120" stroke="#6B5E3C" stroke-width="3"/>
+<ellipse cx="210" cy="250" rx="82" ry="118" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<g fill="#F8E3B8" stroke="#E69F00" stroke-width="2">
+<ellipse cx="172" cy="255" rx="12" ry="92" transform="rotate(8 172 255)"/>
+<ellipse cx="192" cy="252" rx="12" ry="98" transform="rotate(4 192 252)"/>
+<ellipse cx="212" cy="250" rx="12" ry="100"/>
+<ellipse cx="232" cy="252" rx="12" ry="98" transform="rotate(-4 232 252)"/>
+<ellipse cx="252" cy="255" rx="12" ry="92" transform="rotate(-8 252 255)"/>
+</g>
+<g stroke="#E69F00" stroke-width="2">
+<line x1="200" y1="150" x2="204" y2="126"/><line x1="208" y1="150" x2="209" y2="124"/><line x1="216" y1="150" x2="215" y2="124"/><line x1="224" y1="150" x2="220" y2="126"/>
+</g>
+<rect x="198" y="114" width="26" height="10" fill="#FFFFFF"/>
+<g fill="#EEF2F1" stroke="#5D6B69" stroke-width="2">
+<circle cx="168" cy="352" r="9"/><circle cx="252" cy="352" r="9"/>
+</g>
+<g fill="none" stroke="#E69F00" stroke-width="3">
+<path d="M150 500 C 160 440 175 400 190 350"/>
+<path d="M270 500 C 262 440 250 400 236 350"/>
+<path d="M190 350 C 186 330 180 320 176 300"/>
+<path d="M236 350 C 240 330 246 320 250 300"/>
+</g>
+<text x="300" y="96" font-size="14" font-weight="700">Taste pore</text>
+<line x1="298" y1="92" x2="222" y2="120" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="300" y="150" font-size="14" font-weight="700">Microvilli</text>
+<line x1="298" y1="146" x2="226" y2="138" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="300" y="232" font-size="14" font-weight="700">Gustatory</text>
+<text x="300" y="249" font-size="14" font-weight="700">receptor cell</text>
+<line x1="298" y1="236" x2="262" y2="236" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="300" y="352" font-size="14" font-weight="700">Basal cell</text>
+<line x1="298" y1="348" x2="262" y2="352" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="26" y="210" font-size="14" font-weight="700">Epithelium</text>
+<line x1="80" y1="216" x2="100" y2="240" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="286" y="470" font-size="14" font-weight="700">Sensory neuron</text>
+<text x="286" y="487" font-size="14" font-weight="700">fibers</text>
+<line x1="284" y1="466" x2="266" y2="466" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="20" y="80" font-size="13" fill="#5D6B69">surface of the tongue</text>
+<text x="470" y="30" font-size="17" font-weight="800">Olfactory epithelium</text>
+<ellipse cx="640" cy="80" rx="140" ry="34" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<path d="M778 76 L 800 70 L 800 92 L 776 88" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<g fill="#D9DFDD" stroke="#5D6B69" stroke-width="2">
+<rect x="480" y="140" width="62" height="20"/><rect x="556" y="140" width="66" height="20"/><rect x="636" y="140" width="66" height="20"/><rect x="716" y="140" width="84" height="20"/>
+</g>
+<rect x="480" y="170" width="320" height="230" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<g fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5">
+<rect x="500" y="178" width="28" height="220" rx="10"/><rect x="578" y="178" width="28" height="220" rx="10"/><rect x="656" y="178" width="28" height="220" rx="10"/><rect x="736" y="178" width="28" height="220" rx="10"/>
+</g>
+<g fill="#EEF2F1" stroke="#5D6B69" stroke-width="2">
+<circle cx="542" cy="186" r="8"/><circle cx="622" cy="186" r="8"/><circle cx="702" cy="186" r="8"/>
+</g>
+<rect x="480" y="400" width="320" height="42" fill="#D2EAF8" stroke="#5D6B69" stroke-width="1.5"/>
+<g fill="none" stroke="#E69F00" stroke-width="3">
+<path d="M549 300 L 549 150 L 560 112"/>
+<path d="M629 300 L 629 150 L 612 112"/>
+<path d="M709 300 L 709 150 L 690 112"/>
+<path d="M549 300 L 549 400"/><path d="M629 300 L 629 400"/><path d="M709 300 L 709 400"/>
+</g>
+<g fill="#F8E3B8" stroke="#E69F00" stroke-width="2">
+<ellipse cx="549" cy="300" rx="11" ry="16"/><ellipse cx="629" cy="300" rx="11" ry="16"/><ellipse cx="709" cy="300" rx="11" ry="16"/>
+<circle cx="549" cy="402" r="6"/><circle cx="629" cy="402" r="6"/><circle cx="709" cy="402" r="6"/>
+</g>
+<g fill="none" stroke="#E69F00" stroke-width="1.5">
+<path d="M549 406 L 530 434 M549 406 L 545 438 M549 406 L 560 438 M549 406 L 572 432"/>
+<path d="M629 406 L 610 434 M629 406 L 625 438 M629 406 L 640 438 M629 406 L 652 432"/>
+<path d="M709 406 L 690 434 M709 406 L 705 438 M709 406 L 720 438 M709 406 L 732 432"/>
+</g>
+<g fill="#E69F00">
+<circle cx="586" cy="112" r="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/><circle cx="676" cy="112" r="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+</g>
+<g fill="#5D6B69">
+<circle cx="520" cy="478" r="4"/><circle cx="560" cy="492" r="4"/><circle cx="600" cy="470" r="4"/><circle cx="650" cy="488" r="4"/><circle cx="700" cy="474" r="4"/><circle cx="742" cy="494" r="4"/><circle cx="615" cy="430" r="4"/><circle cx="690" cy="424" r="4"/>
+</g>
+<text x="815" y="72" font-size="14" font-weight="700">Olfactory</text>
+<text x="815" y="89" font-size="14" font-weight="700">tract</text>
+<text x="470" y="126" font-size="14" font-weight="700">Olfactory bulb</text>
+<text x="815" y="146" font-size="14" font-weight="700">Cribriform</text>
+<text x="815" y="163" font-size="14" font-weight="700">plate</text>
+<line x1="813" y1="150" x2="800" y2="150" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="815" y="196" font-size="14" font-weight="700">Basal stem</text>
+<text x="815" y="213" font-size="14" font-weight="700">cell</text>
+<line x1="813" y1="192" x2="711" y2="186" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="815" y="258" font-size="14" font-weight="700">Supporting</text>
+<text x="815" y="275" font-size="14" font-weight="700">cell</text>
+<line x1="813" y1="262" x2="764" y2="262" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="815" y="306" font-size="14" font-weight="700">Olfactory</text>
+<text x="815" y="323" font-size="14" font-weight="700">sensory neuron</text>
+<line x1="813" y1="302" x2="721" y2="300" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="815" y="420" font-size="14" font-weight="700">Cilia in</text>
+<text x="815" y="437" font-size="14" font-weight="700">mucus</text>
+<line x1="813" y1="424" x2="734" y2="430" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="815" y="484" font-size="14" font-weight="700">Odorant</text>
+<text x="815" y="501" font-size="14" font-weight="700">molecules</text>
+<line x1="813" y1="482" x2="748" y2="492" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="470" y="512" font-size="13" fill="#5D6B69">air in the nose</text>
+</g>
+</svg>

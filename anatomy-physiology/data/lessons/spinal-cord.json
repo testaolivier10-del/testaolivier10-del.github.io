@@ -29,7 +29,7 @@
     "caption": "The spinal cord in cross section, back at the top. Name each horn and column, find the two midline grooves, and follow the dorsal root in and the ventral root out."
   },
   "chain": [
-    { "cause": "You step on a tack, and a sensory neuron in the sole of your foot fires.", "effect": "Its signal travels along its axon to its cell body in a dorsal root ganglion." },
+    { "cause": "You step on a tack, and a sensory neuron in the sole of your foot fires.", "effect": "Its signal travels along its axon toward the spinal cord, running past its cell body, which sits to one side in a dorsal root ganglion." },
     { "cause": "The same neuron's central process runs in through the dorsal root.", "effect": "It enters the back of the cord and ends in the dorsal horn." },
     { "cause": "In the dorsal horn it excites interneurons and neurons whose axons turn up the cord.", "effect": "The signal climbs the white columns in an ascending tract toward the brain, and local interneurons pass it to the ventral horn." },
     { "cause": "Motor neurons in the ventral horn are excited.", "effect": "Their axons leave through the ventral root and the joined nerve and reach the leg muscles, which contract and lift the foot." }
