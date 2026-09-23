@@ -1,0 +1,677 @@
+[
+  {
+    "id": "anp-hearing-balance-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-5",
+    "pin": "incus",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Malleus",
+      "Stapes",
+      "Incus",
+      "Tympanic membrane"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The incus is the middle ossicle. It links the malleus, attached to the eardrum, to the stapes in the oval window.",
+      "options": [
+        "The malleus is the ossicle attached to the inside of the eardrum, the first in the chain.",
+        "The stapes is the last ossicle, whose footplate sits in the oval window.",
+        "Correct. The middle bone of the chain is the incus.",
+        "The tympanic membrane is the sheet stretched across the end of the ear canal, not a bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-5",
+    "pin": "eustachian-tube",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Ear canal",
+      "Auditory tube",
+      "Cochlear nerve",
+      "Semicircular canal"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The auditory (eustachian) tube runs from the middle ear down to the upper throat behind the nose. It opens when you swallow and equalizes the air pressure on both sides of the eardrum.",
+      "options": [
+        "The ear canal runs from the outside to the eardrum, on the other side of the middle ear.",
+        "Correct. This is the auditory tube, also called the eustachian tube.",
+        "The cochlear nerve leaves the cochlea toward the brainstem; it is not a tube to the throat.",
+        "The semicircular canals are the looped channels of the inner ear, above the cochlea."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-7",
+    "pin": "basilar-membrane",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Tectorial membrane",
+      "Tympanic membrane",
+      "Scala tympani",
+      "Basilar membrane"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The basilar membrane forms the floor of the cochlear duct and carries the spiral organ. Sound makes it vibrate, which bends the hair cells' stereocilia.",
+      "options": [
+        "The tectorial membrane is the gel flap lying over the hair cells, above them rather than beneath.",
+        "The tympanic membrane is the eardrum, in the ear canal, not inside the cochlea.",
+        "The scala tympani is the lower fluid channel, below the membrane that is pinned.",
+        "Correct. The floor of the cochlear duct under the spiral organ is the basilar membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-14-12",
+    "pin": "cupula",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Cupula",
+      "Otolithic membrane",
+      "Macula",
+      "Tectorial membrane"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cupula is the tall gel cap in the ampulla of a semicircular canal. The stereocilia of the hair cells project into it, and flowing endolymph bends it when the head turns.",
+      "options": [
+        "Correct. The gel cap spanning the ampulla is the cupula.",
+        "The otolithic membrane is the crystal-topped gel over a macula in the utricle or saccule, not in a semicircular canal.",
+        "A macula is the patch of hair cells in the utricle or saccule.",
+        "The tectorial membrane lies over the hair cells of the cochlea, not the semicircular canals."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order, from a sound entering the ear to the hair cells being stimulated.",
+    "options": [
+      "Sound waves vibrate the tympanic membrane",
+      "The malleus, incus and stapes carry the vibration across the middle ear",
+      "The stapes rocks in the oval window",
+      "Pressure waves travel through the perilymph of the scala vestibuli",
+      "The basilar membrane vibrates",
+      "Stereocilia bend against the tectorial membrane"
+    ],
+    "why": {
+      "correct": "The eardrum vibrates, the ossicles pass the vibration to the oval window, the stapes sets up waves in the perilymph, the basilar membrane vibrates, and the stereocilia of the hair cells, whose tips touch the tectorial membrane, are bent."
+    }
+  },
+  {
+    "id": "anp-hearing-balance-6",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the stations of the auditory pathway in order, from the cochlea to the cortex.",
+    "options": [
+      "Cochlear branch of the vestibulocochlear nerve",
+      "Cochlear nuclei",
+      "Superior olivary nuclei",
+      "Inferior colliculus",
+      "Medial geniculate nucleus of the thalamus",
+      "Primary auditory cortex in the temporal lobe"
+    ],
+    "why": {
+      "correct": "Cochlear nerve fibers synapse in the cochlear nuclei of the brainstem. Signals then reach the superior olivary nuclei on both sides, where the two ears are compared, climb to the inferior colliculus of the midbrain, relay in the medial geniculate nucleus of the thalamus and arrive at the primary auditory cortex."
+    }
+  },
+  {
+    "id": "anp-hearing-balance-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a cold, fluid fills a child's left middle ear. Predict the change in each variable on the left side, compared with before the cold.",
+    "variables": [
+      {
+        "name": "Movement of the tympanic membrane in response to sound",
+        "answer": "down",
+        "why": "Fluid behind the eardrum resists its movement, so it vibrates less for the same sound."
+      },
+      {
+        "name": "Vibration passed along the ossicles to the oval window",
+        "answer": "down",
+        "why": "The ossicles are damped by the fluid and driven by a stiffer eardrum, so less vibration reaches the oval window."
+      },
+      {
+        "name": "Quietest sound heard through the air (hearing threshold)",
+        "answer": "up",
+        "why": "Less of each sound reaches the cochlea, so a sound must be louder before it is heard."
+      },
+      {
+        "name": "Response of the cochlea to a tuning fork pressed on the skull",
+        "answer": "none",
+        "why": "Bone conduction shakes the cochlea directly, bypassing the middle ear, and the cochlea itself is healthy."
+      },
+      {
+        "name": "Loudness in the left ear of a tuning fork placed on the forehead",
+        "answer": "up",
+        "why": "In the Weber test, a conductive loss makes the fork sound louder in the affected ear, because room noise no longer masks it there."
+      }
+    ],
+    "why": {
+      "correct": "Fluid in the middle ear causes a conductive hearing loss: sound in the air reaches the cochlea poorly, but sound through bone reaches it normally. The Weber test lateralizes to the affected ear."
+    }
+  },
+  {
+    "id": "anp-hearing-balance-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "pitch is coded by how fast the whole basilar membrane vibrates",
+    "q": "A smoke alarm gives a high-pitched 4,000 Hz tone. Where on the basilar membrane is the vibration largest?",
+    "options": [
+      "Near the apex, where the membrane is wide and floppy",
+      "Evenly along the whole length of the membrane",
+      "Near the base, where the membrane is narrow and stiff",
+      "At the round window, where the membrane ends"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "High frequencies vibrate the narrow, stiff base of the basilar membrane most, close to the oval window. Low frequencies travel farther and peak near the wide, floppy apex. Which hair cells are stimulated tells the brain the pitch.",
+      "options": [
+        "The wide, floppy apex vibrates most for low frequencies, not high ones.",
+        "Each frequency makes the traveling wave peak at one place; the membrane does not vibrate equally along its length.",
+        "Correct. High pitch is coded near the base.",
+        "The round window is where the scala tympani ends at the middle ear; the basilar membrane lies along the cochlear duct."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Brandt, 61, has operated a jackhammer for 30 years. His hearing test shows loss mainly at high frequencies, around 4,000 Hz, in both ears. Both Rinne tests show air conduction better than bone. Where is the damage most likely?",
+    "options": [
+      "Outer hair cells near the base of each cochlea",
+      "The ossicles of both middle ears",
+      "Hair cells near the apex of each cochlea",
+      "Both primary auditory cortices"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Normal Rinne tests rule out a conductive block, so this is sensorineural. High frequencies are sensed near the base of the cochlea, and noise damages hair cells there first, especially the outer hair cells.",
+      "options": [
+        "Correct. Noise-induced loss is sensorineural and starts at the high-frequency base.",
+        "Damaged ossicles would cause a conductive loss, with bone conduction better than air in the Rinne test.",
+        "The apex senses low frequencies, which he still hears.",
+        "Each ear sends signals to both hemispheres, and cortical damage would not give a frequency-specific loss like this."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "The stereocilia of a hair cell are pushed toward the tallest stereocilium. What happens to the hair cell?",
+    "options": [
+      "Tip links slacken, channels close and the cell hyperpolarizes",
+      "Tip links stretch, channels open, K+ flows in and the cell depolarizes",
+      "The hair cell fires an action potential along its axon to the brainstem",
+      "Tip links stretch, channels open, K+ flows out and the cell hyperpolarizes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bending toward the tallest stereocilium stretches the tip links, which pull mechanically gated channels open. K+ from the endolymph flows in and depolarizes the cell, which then releases more glutamate onto its sensory neuron.",
+      "options": [
+        "This is what happens when the bundle bends away from the tallest stereocilium.",
+        "Correct. Toward the tallest: channels open and the cell depolarizes.",
+        "Hair cells have no axon. They release neurotransmitter onto sensory neurons, which fire the action potentials.",
+        "K+ flows in, not out, because the endolymph around the stereocilia is rich in K+ and positively charged."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "In most neurons, opening K+ channels lets K+ leave and hyperpolarizes the cell. Why does opening the channels in a cochlear hair cell's stereocilia let K+ in and depolarize it?",
+    "options": [
+      "Their tips sit in endolymph, which is rich in K+ and positively charged",
+      "Hair cells keep almost no K+ inside, so any open K+ channel lets K+ rush in",
+      "The channels pump K+ in using ATP",
+      "K+ carries a negative charge in endolymph"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The tips of the stereocilia are bathed in endolymph, which is high in K+ and held about 80 mV positive to the perilymph. Both the chemical and electrical gradients push K+ into the cell when the channels open.",
+      "options": [
+        "Correct. The unusual fluid around the stereocilia reverses the usual K+ flow.",
+        "Hair cells, like other cells, hold plenty of K+ inside; the difference is the K+-rich, positive fluid outside the stereocilia.",
+        "The channels are passive, mechanically gated channels; ions move down their gradients without ATP.",
+        "K+ is always a positive ion."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap: stereocilia bend toward the tallest → tip links stretch → ______ → the hair cell depolarizes → voltage-gated Ca2+ channels open → the hair cell releases more glutamate.",
+    "options": [
+      "Mechanically gated channels open and K+ flows in from the endolymph",
+      "Voltage-gated Na+ channels open and the hair cell fires an action potential",
+      "The tectorial membrane releases neurotransmitter",
+      "Otoliths slide across the hair cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Stretched tip links pull mechanically gated channels open. K+ from the endolymph flows in and depolarizes the cell.",
+      "options": [
+        "Correct. Opening mechanically gated channels is the transduction step.",
+        "Hair cells do not fire action potentials; their sensory neurons do.",
+        "The tectorial membrane is a gel with no cells that release transmitter; it only holds the stereocilia tips.",
+        "Otoliths belong to the maculae of the vestibule, not the cochlea."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student traced how a sound reaches the brain from a cochlear hair cell. Which step is wrong?",
+    "options": [
+      "The basilar membrane moves and the stereocilia bend against the tectorial membrane",
+      "Mechanically gated channels open and the hair cell depolarizes",
+      "The hair cell fires action potentials along its own axon in the cochlear nerve",
+      "Sensory neurons of the spiral ganglion fire faster",
+      "Signals reach the cochlear nuclei in the brainstem"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Hair cells are epithelial sensory receptor cells with no axon. They release glutamate onto the endings of spiral ganglion neurons, and it is those neurons whose axons form the cochlear nerve.",
+      "options": [
+        "This step is right. Vibration of the basilar membrane bends the stereocilia.",
+        "This step is right. Bending opens mechanically gated channels.",
+        "This is the error. Hair cells have no axons; they pass the signal across a synapse.",
+        "This step is right. More glutamate release makes the sensory neurons fire faster.",
+        "This step is right. Cochlear nerve fibers synapse in the cochlear nuclei."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ms. Abara, 34, has muffled hearing in her right ear. In the Weber test she hears the tuning fork louder in her right ear. In the Rinne test on the right, she hears the fork longer on the mastoid process than beside the ear canal. What is the most likely diagnosis?",
+    "options": [
+      "Sensorineural hearing loss in the right ear",
+      "Conductive hearing loss in the right ear",
+      "Sensorineural hearing loss in the left ear",
+      "Conductive hearing loss in the left ear"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bone conduction beating air conduction on the right means sound is blocked on its way through the right external or middle ear: a conductive loss. The Weber test fits, because a conductive loss makes the fork louder in the affected ear.",
+      "options": [
+        "A right sensorineural loss would send the Weber sound to the left ear, and air conduction would still beat bone on the right.",
+        "Correct. Weber to the right plus bone better than air on the right means a right conductive loss.",
+        "A left sensorineural loss would also send the Weber sound right, but it would not make bone beat air in the right Rinne test.",
+        "A left conductive loss would send the Weber sound to the left ear."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient hears the Weber tuning fork louder in his right ear. His Rinne test shows air conduction better than bone conduction in both ears. Which is the most likely finding?",
+    "options": [
+      "Conductive hearing loss in the right ear",
+      "Conductive hearing loss in the left ear",
+      "Normal hearing in both ears",
+      "Sensorineural hearing loss in the left ear"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A Weber result lateralized to the right means either a right conductive loss or a left sensorineural loss. Air better than bone on both sides rules out a conductive block. So the left cochlea or cochlear nerve is damaged, and the sound goes to the better, right ear.",
+      "options": [
+        "A right conductive loss would make bone conduction beat air in the right Rinne test.",
+        "A left conductive loss would send the Weber sound to the left, not the right.",
+        "With normal hearing, the Weber sound is heard in the middle.",
+        "Correct. Weber toward the good ear with normal Rinne tests points to sensorineural loss in the other ear."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In otosclerosis, abnormal bone growth fixes the stapes so it cannot move in the oval window. What kind of hearing loss results, and what will the Rinne test show on that side?",
+    "options": [
+      "Sensorineural; air conduction better than bone",
+      "Conductive; air conduction better than bone",
+      "Conductive; bone conduction better than air",
+      "Sensorineural; bone conduction better than air"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A fixed stapes cannot pass vibration from the ossicles into the cochlea, so sound through the air is blocked in the middle ear: a conductive loss. Bone conduction reaches the healthy cochlea directly, so it is heard better than air.",
+      "options": [
+        "The cochlea and nerve are healthy; the block is in the middle ear, so the loss is conductive.",
+        "In a conductive loss, air conduction is the route that is blocked, so it is no longer better than bone.",
+        "Correct. A middle ear block is conductive, and bone beats air in the Rinne test.",
+        "In a sensorineural loss both routes are reduced and air still beats bone; here the cochlea is healthy."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "You turn up the volume on a song without changing its notes. How does your cochlea signal the louder sound?",
+    "options": [
+      "The traveling wave now peaks at a different place along the basilar membrane",
+      "The membrane moves farther and more sensory neurons fire, and fire faster",
+      "Only the outer hair cells respond to loud sounds",
+      "Each action potential in the cochlear nerve becomes larger"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A louder sound has a larger amplitude. The basilar membrane moves farther, each hair cell bends more and releases more glutamate, so its sensory neurons fire faster, and the peak spreads to recruit more hair cells.",
+      "options": [
+        "The place of the peak codes pitch, which has not changed.",
+        "Correct. Loudness is coded by firing rate and the number of neurons recruited.",
+        "Inner hair cells carry nearly all the signal to the brain at every loudness; outer hair cells mainly amplify.",
+        "Action potentials are all-or-none; they do not grow with stimulus strength."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "As a plane descends, your hearing becomes muffled until you swallow and your ears \"pop.\" What did the swallow do?",
+    "options": [
+      "It closed the auditory tube so outside air could no longer reach the eardrum",
+      "It moved the stapes back into the oval window",
+      "It drained fluid from the cochlea into the throat",
+      "It opened the auditory tube, equalizing pressure across the eardrum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "During descent the cabin air pressure rises above the pressure trapped in the middle ear, so the eardrum bows inward and vibrates poorly. Swallowing opens the auditory tube, air enters the middle ear, and the pressures equalize.",
+      "options": [
+        "The auditory tube connects the middle ear to the throat, not to the ear canal, and swallowing opens it.",
+        "The stapes stays in the oval window; the problem is the pressure difference across the eardrum.",
+        "The cochlea is sealed in bone and is not connected to the auditory tube.",
+        "Correct. Equal pressure lets the eardrum vibrate freely again."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "each ear sends signals only to the opposite hemisphere",
+    "q": "A stroke destroys the primary auditory cortex on the left side only. What happens to the patient's hearing?",
+    "options": [
+      "He is deaf in the right ear",
+      "He is deaf in the left ear",
+      "Neither ear goes deaf, since each ear reaches both hemispheres",
+      "He loses the ability to hear high-pitched sounds in both of his ears"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Auditory fibers cross at several levels, beginning at the superior olivary nuclei, so each ear reaches both auditory cortices. Losing one cortex does not deafen either ear, although locating sounds and understanding speech can suffer.",
+      "options": [
+        "Unlike touch, hearing from each ear reaches both hemispheres, so one-sided cortical damage does not deafen the opposite ear.",
+        "The left ear also sends signals to the intact right cortex.",
+        "Correct. Bilateral pathways protect against deafness from one-sided cortical damage.",
+        "Frequency is mapped across each auditory cortex; losing one side does not remove high pitches from both ears."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A lift starts to rise. Which part of the vestibular apparatus is best placed to sense this?",
+    "options": [
+      "The saccule, whose macula lies roughly vertical",
+      "The utricle, whose macula lies roughly horizontal",
+      "The lateral semicircular canal",
+      "The cochlear duct"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Up-and-down linear acceleration is sensed mainly by the saccule, whose macula stands vertical. As the lift accelerates upward, the heavy, crystal-topped gel lags and bends the stereocilia.",
+      "options": [
+        "Correct. The vertical macula of the saccule senses vertical movement.",
+        "The horizontal macula of the utricle senses forward, backward and sideways movement and head tilt.",
+        "The semicircular canals sense turning, not straight-line movement.",
+        "The cochlear duct is part of the hearing organ, not the vestibular apparatus."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A child spins in a chair for a minute and then stops suddenly. She feels as if she is spinning the other way. Why?",
+    "options": [
+      "Otoliths have come loose from the maculae",
+      "The endolymph keeps flowing and bends the cupula the opposite way",
+      "The cupula is heavy and is pulled downhill by gravity when she stops",
+      "The vestibulocochlear nerve keeps firing from fatigue"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "During steady spinning, the endolymph catches up with the canal and the cupula returns upright. When she stops, the fluid's inertia keeps it flowing, which bends the cupula the opposite way and signals a turn in the other direction.",
+      "options": [
+        "Loose otoliths cause brief positional dizziness, not the normal after-spin sensation everyone feels.",
+        "Correct. The lagging fluid now overshoots and bends the cupula the other way.",
+        "The cupula has the same density as endolymph and no crystals, so gravity does not pull it.",
+        "Nerve fatigue would reduce firing, not create a clear sense of turning in a particular direction."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-22",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which structures belong to the vestibular apparatus? Select all that apply.",
+    "options": [
+      "Utricle",
+      "Basilar membrane",
+      "Saccule",
+      "Semicircular canals",
+      "Tympanic membrane",
+      "Scala vestibuli"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "The vestibular apparatus is the vestibule, with the utricle and saccule, and the three semicircular canals. The basilar membrane and scala vestibuli belong to the cochlea, and the tympanic membrane to the external ear.",
+      "options": [
+        "Yes. The utricle senses tilt and horizontal movement.",
+        "No. The basilar membrane is in the cochlea and serves hearing.",
+        "Yes. The saccule senses vertical movement.",
+        "Yes. The semicircular canals sense turning.",
+        "No. The tympanic membrane is the eardrum, at the end of the ear canal.",
+        "No. Despite its name, the scala vestibuli is a channel of the cochlea."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "You turn your head quickly to the right while reading a sign. Through the vestibulo-ocular reflex, what do your eyes do?",
+    "options": [
+      "Both eyes turn right, ahead of the head",
+      "Only the right eye turns left",
+      "Both eyes stay fixed in their sockets and the image slides",
+      "Both eyes turn left by the same amount"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The semicircular canals signal the head turn to the vestibular nuclei, which drive the eye muscles to turn both eyes the same amount in the opposite direction. The image stays still on the retinas and the sign stays sharp.",
+      "options": [
+        "Turning the eyes with the head would make the image slide across the retinas, the opposite of what the reflex does.",
+        "The reflex moves both eyes together, keeping them aligned.",
+        "Without the reflex the image would slide and blur; the reflex prevents this.",
+        "Correct. The eyes counter-rotate to hold the image steady."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-24",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The tympanic membrane has about 17 times the area of the stapes footplate. What does this do to sound reaching the inner ear?",
+    "options": [
+      "It raises the pressure at the oval window, so less sound is reflected",
+      "It lowers the frequency of the sound so that the cochlea can detect it",
+      "It protects the cochlea by reducing the pressure of loud sounds",
+      "It lets sound bypass the ossicles"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The force collected over the large eardrum is delivered onto the small footplate. Pressure is force divided by area, so the pressure at the oval window rises about 17-fold, plus a little more from the lever of the ossicles. That boost lets sound pass from air into fluid instead of bouncing off.",
+      "options": [
+        "Correct. Concentrating force onto a small area raises pressure.",
+        "The middle ear does not change a sound's frequency; the pitch you hear is the pitch that arrived.",
+        "The area ratio raises pressure. Protection from loud sound comes from two small muscles that stiffen the ossicles.",
+        "The eardrum drives the ossicles; the area difference works through them."
+      ]
+    }
+  },
+  {
+    "id": "anp-hearing-balance-25",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does the round window do during hearing?",
+    "options": [
+      "It lets the stapes push air into the inner ear",
+      "It bulges outward each time the stapes pushes inward",
+      "It connects the cochlea to the semicircular canals",
+      "It drains endolymph into the middle ear"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Fluid cannot be squeezed into a smaller volume. When the stapes pushes the oval window in, the pressure wave travels through the perilymph and pushes the membrane of the round window out into the middle ear, which lets the fluid, and the basilar membrane, move.",
+      "options": [
+        "The inner ear holds fluid, not air, and the stapes sits in the oval window.",
+        "Correct. The round window is the pressure release for the incompressible fluid.",
+        "The round window opens from the scala tympani into the middle ear, not to the semicircular canals.",
+        "The round window is sealed by a membrane; no fluid drains through it."
+      ]
+    }
+  }
+]
