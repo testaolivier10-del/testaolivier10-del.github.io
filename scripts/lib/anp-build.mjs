@@ -249,7 +249,9 @@ export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) 
   const labels = all.filter(l => !covered.includes(l));
   const W = f.w || 1000, H = f.h || 1000;
   const pct = (v, of) => (100 * v / of).toFixed(2) + '%';
-  const at = b => `left:${pct(b[0], W)};top:${pct(b[1], H)};width:${pct(b[2], W)};height:${pct(b[3], H)}`;
+  // Detector padding can run a box a few pixels past the image edge; clip it.
+  const clip = b => { const x = Math.max(0, b[0]), y = Math.max(0, b[1]); return [x, y, Math.min(b[0] + b[2], W) - x, Math.min(b[1] + b[3], H) - y]; };
+  const at = b0 => { const b = clip(b0); return `left:${pct(b[0], W)};top:${pct(b[1], H)};width:${pct(b[2], W)};height:${pct(b[3], H)}`; };
   const maskHtml = masks && labels.length ? labels.map(l =>
     `<button type="button" class="anp-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="${at(l.box)}"><span>${esc(l.name)}</span></button>`).join('') : '';
   const coverHtml = covered.map(l => `<span class="anp-cover" aria-hidden="true" style="${at(l.box)}"></span>`).join('');
