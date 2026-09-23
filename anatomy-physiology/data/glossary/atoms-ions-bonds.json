@@ -1,0 +1,67 @@
+{
+  "atom": {
+    "def": "The smallest unit of an element that still behaves like that element: a nucleus of protons and neutrons with electrons arranged in shells around it.",
+    "roots": [["a-", "not"], ["tom/o", "cut"]],
+    "say": ""
+  },
+  "subatomic-particles": {
+    "def": "The three particles of an atom. Protons (positive) and neutrons (no charge) form the nucleus; electrons (negative, very light) occupy shells around it, and the outermost occupied shell is the valence shell.",
+    "roots": [["sub-", "below"], ["prot/o", "first"], ["neutr/o", "neither"]],
+    "say": ""
+  },
+  "atomic-number-isotopes": {
+    "def": "The atomic number is an atom's proton count, which defines the element; the mass number is protons plus neutrons. Isotopes are atoms of one element with different numbers of neutrons, and radioisotopes are isotopes whose unstable nuclei give off radiation.",
+    "roots": [["iso-", "equal"], ["top/o", "place"]],
+    "say": "EYE-so-tope"
+  },
+  "electric-charge": {
+    "def": "A property of particles that makes them push or pull on each other. Protons carry positive charge and electrons negative charge; opposite charges attract and like charges repel.",
+    "roots": [["electr/o", "electricity"]],
+    "say": ""
+  },
+  "ion": {
+    "def": "An atom or group of atoms with unequal numbers of protons and electrons, so it carries a net charge. A cation has lost electrons and is positive; an anion has gained electrons and is negative. The hydrogen ion, H+, is a lone proton.",
+    "roots": [["ion", "going"], ["cat-", "down"], ["an-", "up"]],
+    "say": "EYE-on; KAT-eye-on; AN-eye-on"
+  },
+  "electrolyte": {
+    "def": "A substance that separates into ions when it dissolves in water, so the water conducts electricity. In clinical use, the dissolved ions themselves, such as sodium, potassium, chloride and calcium.",
+    "roots": [["electr/o", "electricity"], ["-lyte", "able to be loosened"]],
+    "say": "ee-LEK-tro-lite"
+  },
+  "ionic-bond": {
+    "def": "The electrical attraction between a positive ion and a negative ion, formed after one atom transfers electrons to another. Strong in a dry crystal, weak in water, which separates the ions.",
+    "roots": [],
+    "say": ""
+  },
+  "covalent-bond": {
+    "def": "A bond in which two atoms share one or more pairs of electrons (single, double or triple bonds). The strongest bonds in the molecules of your body.",
+    "roots": [["co-", "together"], ["valent", "strength"]],
+    "say": "ko-VAY-lent"
+  },
+  "polarity": {
+    "def": "An uneven spread of charge. A polar covalent bond shares electrons unequally, leaving partial charges; a nonpolar bond shares them evenly. A polar molecule has a partly positive and a partly negative end, which depends on both its bonds and its shape.",
+    "roots": [["pol/o", "pole, end"]],
+    "say": ""
+  },
+  "hydrogen-bond": {
+    "def": "A weak attraction between a partly positive hydrogen atom, covalently bonded to oxygen or nitrogen, and a partly negative oxygen or nitrogen atom nearby. No electrons are shared or transferred.",
+    "roots": [["hydr/o", "water"], ["-gen", "producing"]],
+    "say": ""
+  },
+  "chemical-reaction": {
+    "def": "A process that breaks and forms chemical bonds, turning reactants into products without creating or destroying atoms. A synthesis reaction joins reactants into a larger product; a decomposition reaction splits a reactant into smaller products.",
+    "roots": [["syn-", "together"], ["de-", "apart"]],
+    "say": ""
+  },
+  "inorganic-organic": {
+    "def": "An organic compound contains carbon covalently bonded to hydrogen; an inorganic compound, such as water, sodium chloride or carbon dioxide, does not. Functional groups are small clusters of atoms, such as hydroxyl, carboxyl, amino and phosphate, that give organic molecules predictable behavior.",
+    "roots": [["in-", "not"], ["organ/o", "organ, living body"]],
+    "say": ""
+  },
+  "element-compound": {
+    "def": "Matter is anything that has mass and takes up space. An element is a substance made of one kind of atom, listed in the periodic table by atomic number; a compound is two or more different elements joined in a fixed ratio.",
+    "roots": [["com-", "together"], ["pon/o", "to put"]],
+    "say": ""
+  }
+}

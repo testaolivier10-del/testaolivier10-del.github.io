@@ -1,0 +1,37 @@
+{
+  "membrane-potential": {
+    "def": "The voltage across a cell's plasma membrane, always read as the inside compared with the outside. A value of −70 mV means the inside is 70 millivolts more negative than the outside.",
+    "roots": [["potentia", "power (Latin); a stored ability to push charge"]],
+    "say": ""
+  },
+  "resting-membrane-potential": {
+    "def": "The membrane potential of a cell that is not being disturbed: about −70 mV in a typical neuron and about −90 mV in skeletal and heart muscle. It comes mainly from potassium leaking out of the cell.",
+    "roots": [],
+    "say": ""
+  },
+  "k-leak": {
+    "def": "At rest, many potassium leak channels are open. Potassium diffuses out through them and leaves trapped negative proteins behind, which makes the inside negative; this is the main source of the resting potential.",
+    "roots": [],
+    "say": ""
+  },
+  "equilibrium-potential": {
+    "def": "The membrane voltage at which one ion has no net movement, because its electrical gradient exactly cancels its concentration gradient. About −90 mV for potassium and +60 mV for sodium.",
+    "roots": [["equi-", "equal"], ["libra", "balance (Latin)"]],
+    "say": "ee-kwih-LIB-ree-um"
+  },
+  "pump-maintains-gradients": {
+    "def": "The sodium–potassium pump keeps the sodium and potassium gradients steady by replacing ions that leak. Its direct effect on the resting voltage is only a few millivolts; if it stops, the gradients and the resting potential fade slowly.",
+    "roots": [],
+    "say": ""
+  },
+  "potassium-rmp": {
+    "def": "Because potassium leak sets most of the resting potential, blood potassium changes it. Hyperkalemia (high blood potassium) shrinks the potassium gradient and depolarizes cells; hypokalemia (low blood potassium) hyperpolarizes most cells.",
+    "roots": [["hyper-", "above"], ["hypo-", "below"], ["kal-", "potassium (Latin kalium)"], ["-emia", "blood condition"]],
+    "say": "hy-per-kuh-LEE-mee-uh"
+  },
+  "polarization-terms": {
+    "def": "Depolarization: the membrane potential becomes less negative than rest. Repolarization: it returns toward rest after a depolarization. Hyperpolarization: it becomes more negative than rest.",
+    "roots": [["de-", "away from, removing"], ["re-", "again"], ["hyper-", "above, beyond"]],
+    "say": ""
+  }
+}

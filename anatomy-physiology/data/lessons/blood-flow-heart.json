@@ -1,0 +1,48 @@
+{
+  "topic": "blood-flow-heart",
+  "hook": "<p>Mr. Reyes, 58, is shoveling snow when a crushing pressure spreads across his chest and down his left arm. It does not ease when he stops. In the hospital, a dye study shows a clot blocking the artery that runs down the front of his heart. Every minute it stays blocked, more of the muscle of his left ventricle dies.</p>",
+  "prereq": [
+    {
+      "q": "Which chamber pumps blood into the pulmonary trunk?",
+      "options": ["Left ventricle", "Right atrium", "Right ventricle"],
+      "correct": 2,
+      "why": "The right ventricle pumps through the pulmonary valve into the pulmonary trunk. The left ventricle pumps into the aorta, and the atria pump only into the ventricles below them.",
+      "review": "heart-chambers-valves"
+    },
+    {
+      "q": "Which valve lies between the left atrium and the left ventricle?",
+      "options": ["Mitral valve", "Tricuspid valve", "Aortic valve"],
+      "correct": 0,
+      "why": "The mitral valve (also called the bicuspid valve) is the left atrioventricular valve. The tricuspid is on the right, and the aortic valve guards the exit from the left ventricle.",
+      "review": "heart-chambers-valves"
+    },
+    {
+      "q": "Which process in a cell uses oxygen and makes most of its ATP?",
+      "options": ["Glycolysis", "Aerobic respiration", "Anaerobic metabolism"],
+      "correct": 1,
+      "why": "Aerobic respiration uses oxygen in the mitochondria and makes most of a cell's ATP. Glycolysis and anaerobic metabolism make only a little ATP and do not need oxygen.",
+      "review": "cellular-respiration"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-19-15",
+    "caption": "The coronary arteries and cardiac veins. Hide the labels and trace the left anterior descending artery from the aorta to the apex."
+  },
+  "chain": [
+    { "cause": "A fatty plaque in the wall of the left anterior descending artery cracks, and a blood clot forms on it.", "effect": "The artery is suddenly blocked, and blood stops reaching the front of the left ventricle." },
+    { "cause": "Blood stops reaching that muscle, and the small anastomoses cannot carry enough blood around the block.", "effect": "The muscle fibers downstream become ischemic: their oxygen supply falls far below demand." },
+    { "cause": "Without oxygen, aerobic respiration in those fibers slows.", "effect": "The fibers make too little ATP, shift to anaerobic metabolism and produce lactate." },
+    { "cause": "Lactate and other chemicals from the starved muscle build up.", "effect": "They stimulate pain-sensing nerve endings, and the patient feels crushing chest pain." },
+    { "cause": "Severe ischemia lasts more than about 20 to 30 minutes.", "effect": "The fibers die (a myocardial infarction), release troponin into the blood, and are later replaced by scar tissue that does not contract." }
+  ],
+  "misconception": {
+    "wrong": "Deoxygenated blood has no oxygen left in it, which is why it is blue.",
+    "right": "At rest, blood returning to the heart is still about 75 percent loaded with oxygen; the tissues take only about a quarter of what arrives. No blood is blue. Deoxygenated blood is dark red, and veins only look blue through the skin because of how skin handles light. Diagrams use blue as a code."
+  },
+  "check": ["anp-blood-flow-heart-1", "anp-blood-flow-heart-3", "anp-blood-flow-heart-6", "anp-blood-flow-heart-8", "anp-blood-flow-heart-10", "anp-blood-flow-heart-11", "anp-blood-flow-heart-19"],
+  "summary": "<p>The right ventricle pumps deoxygenated blood through the low-pressure pulmonary circuit, where it picks up oxygen in the pulmonary capillaries; the left ventricle pumps oxygenated blood through the high-pressure systemic circuit. The circuits are in series, so both ventricles pump the same volume each minute. Blood's path runs venae cavae, right atrium, tricuspid valve, right ventricle, pulmonary valve, pulmonary arteries, lungs, pulmonary veins, left atrium, mitral valve, left ventricle, aortic valve, aorta. Systole is contraction and diastole is relaxation; faster heart rates cut diastole most. The coronary arteries feed the heart muscle, mostly during diastole, and the cardiac veins drain through the coronary sinus into the right atrium. Ischemia that reverses causes angina; ischemia that lasts kills muscle in a myocardial infarction. Collateral circulation through anastomoses can limit damage when narrowing develops slowly.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies (chest pain and heart attack)" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

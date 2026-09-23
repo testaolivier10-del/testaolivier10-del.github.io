@@ -1,0 +1,53 @@
+{
+  "topic": "connective-tissue",
+  "hook": "<p>Marcus, 34, twisted his knee in a basketball game and tore a C-shaped cartilage pad inside it, a meniscus. The same week he cut his forearm on a car door. The cut closed in ten days. His surgeon warns that the inner part of the meniscus tear will probably never heal on its own. Both injuries hit connective tissue. The difference comes down to what each tissue is made of and whether blood vessels run through it.</p>",
+  "prereq": [
+    {
+      "q": "Which is the fluid part of blood?",
+      "options": ["Plasma", "Platelets", "Red blood cells"],
+      "correct": 0,
+      "why": "Plasma is the liquid part of blood, mostly water with dissolved salts, nutrients and proteins. Red cells, white cells and platelets are suspended in it.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "A cell that can divide and then become several different kinds of specialized cell is called what?",
+      "options": ["A red blood cell", "A stem cell", "A fully differentiated cell"],
+      "correct": 1,
+      "why": "A stem cell can divide to make more of itself and can differentiate into specialized cells. Fully differentiated cells, such as red blood cells, have already specialized.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "Which of the four primary tissue types is made of tightly packed cells with almost no material between them?",
+      "options": ["The connective type", "Epithelial tissue", "Nervous tissue"],
+      "correct": 1,
+      "why": "Epithelium is sheets of cells packed edge to edge, held by cell junctions. The connective type is the opposite: few cells in a lot of material between them.",
+      "review": "epithelium"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    {
+      "cause": "Cartilage has no blood vessels.",
+      "effect": "Oxygen and nutrients reach its chondrocytes only by diffusing through the matrix from vessels outside it."
+    },
+    {
+      "cause": "Diffusion through a thick, dense matrix is slow.",
+      "effect": "Chondrocytes are few, spread out and slow to divide or build new matrix."
+    },
+    {
+      "cause": "After a tear, only a few slow cells with a poor supply are near the damage.",
+      "effect": "New matrix is laid down very slowly, and the inner part of a torn meniscus, farthest from any vessel, often never fills in."
+    },
+    {
+      "cause": "Bone, by contrast, is full of blood vessels that deliver cells and nutrients to a break.",
+      "effect": "A broken bone usually heals in weeks, while torn cartilage may need surgery."
+    }
+  ],
+  "misconception": {
+    "wrong": "Blood can't be a connective tissue, because it is a liquid with no fibers.",
+    "right": "Connective tissue is defined by cells scattered in a large amount of extracellular matrix, and by its origin in the embryo's middle layer. Blood has both. Plasma is its liquid matrix, and its fiber-forming protein is there all along in dissolved form; it turns into threads when a blood clot forms."
+  },
+  "check": ["anp-connective-tissue-1", "anp-connective-tissue-4", "anp-connective-tissue-7", "anp-connective-tissue-10", "anp-connective-tissue-12", "anp-connective-tissue-15", "anp-connective-tissue-17"],
+  "summary": "<p>Connective tissue is cells scattered in a large extracellular matrix of ground substance and fibers: collagen fibers resist pulling, elastic fibers stretch and recoil, and reticular fibers form nets. Fibroblasts build the matrix, and macrophages engulf debris. Loose connective tissue (areolar, adipose, reticular) cushions, fills, stores fat and supports soft organs. Dense regular tissue forms tendons, ligaments and aponeuroses; dense irregular tissue forms the dermis and organ capsules. Cartilage (hyaline, fibrocartilage, elastic) is avascular and heals poorly; bone is mineralized and well supplied. Blood is a fluid connective tissue with plasma as its matrix. All of these arise from the embryo's middle layer, most by way of mesenchyme.</p>",
+  "connections": []
+}

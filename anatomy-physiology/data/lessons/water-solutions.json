@@ -1,0 +1,82 @@
+{
+  "topic": "water-solutions",
+  "hook": "<p>Mr. Okafor, 72, has been vomiting for two days and can barely stand. His nurse hangs a bag labeled \"0.9% sodium chloride\" and explains that its dissolved particles are close to those of his own blood. What does 0.9% mean, why does the particle count matter, and what makes sodium chloride dissolve at all? The answers all start with the water molecule.</p>",
+  "prereq": [
+    {
+      "q": "Why is a water molecule polar?",
+      "options": [
+        "Oxygen pulls the shared electrons harder than hydrogen, and the molecule is bent",
+        "Oxygen and hydrogen share electrons exactly equally",
+        "Water is held together by ionic bonds"
+      ],
+      "correct": 0,
+      "why": "Unequal sharing leaves oxygen partly negative and the hydrogens partly positive, and the bent shape keeps those partial charges from canceling.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "What is a hydrogen bond?",
+      "options": [
+        "A shared pair of electrons between hydrogen and oxygen in one molecule",
+        "A weak attraction between a partly positive hydrogen and a partly negative oxygen or nitrogen nearby",
+        "The transfer of an electron from hydrogen to another atom"
+      ],
+      "correct": 1,
+      "why": "A hydrogen bond is an attraction between partial charges, usually between neighboring molecules. No electrons are shared or transferred.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "What happens to an ionic compound such as potassium chloride in water?",
+      "options": [
+        "It stays as whole units held by covalent bonds",
+        "Its ions separate and spread through the water",
+        "Its ions gain protons and become neutral"
+      ],
+      "correct": 1,
+      "why": "Ionic bonds are weak in water. The ions separate and become free electrolytes.",
+      "review": "atoms-ions-bonds"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-2-15",
+    "caption": "Water dissolving sodium chloride. Oxygen ends of water molecules surround each sodium ion; hydrogen ends surround each chloride ion."
+  },
+  "chain": [
+    {
+      "cause": "Water's oxygen end is partly negative and its hydrogen ends are partly positive.",
+      "effect": "Water molecules are attracted to ions: oxygen ends turn toward Na+ and hydrogen ends toward Cl−."
+    },
+    {
+      "cause": "Many water molecules pull on each ion at the surface of a sodium chloride crystal.",
+      "effect": "The ions are pulled out one by one, and each travels wrapped in a shell of water."
+    },
+    {
+      "cause": "The freed ions spread evenly through the water.",
+      "effect": "A solution forms, and its concentration is the amount of sodium chloride divided by the volume: 9 g in a liter is 154 mmol/L."
+    },
+    {
+      "cause": "Each unit of sodium chloride releases two particles, Na+ and Cl−.",
+      "effect": "The solution's osmolarity, its total count of dissolved particles, is about twice its sodium chloride concentration: 154 × 2 ≈ 308 mOsm/L."
+    },
+    {
+      "cause": "Body fluid then loses water while keeping its dissolved particles, as when someone drinks nothing for days.",
+      "effect": "The same particles sit in less water, so sodium concentration and osmolality both rise."
+    }
+  ],
+  "misconception": {
+    "wrong": "A high blood sodium means the body holds too much sodium.",
+    "right": "Concentration is amount divided by volume. A person who loses water but not sodium, for example by drinking nothing for days, ends up with a high sodium concentration while holding a normal amount of sodium. A lab value tells you the ratio; the history tells you whether the solute rose or the water fell."
+  },
+  "check": [
+    "anp-water-solutions-1",
+    "anp-water-solutions-4",
+    "anp-water-solutions-7",
+    "anp-water-solutions-10",
+    "anp-water-solutions-11",
+    "anp-water-solutions-13",
+    "anp-water-solutions-15"
+  ],
+  "summary": "<p>Water is polar and its molecules hydrogen-bond to each other. That gives it a high capacity for heat, cooling as it evaporates, cohesion and surface tension, and the power to dissolve ions and polar molecules. In a solution, the solute dissolves in the solvent. Hydrophilic substances (ions and polar molecules) dissolve; hydrophobic, nonpolar ones are pushed into clusters by water holding on to itself. Mixtures can be solutions, colloids or suspensions, and blood is all three. Concentration is amount of solute divided by volume, measured in percent, mg/dL or mmol/L; it rises when solute is added or water is lost. Osmolarity counts every dissolved particle, each ion separately, and normal blood osmolality is about 275 to 295 mOsm/kg.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/bond-polarity.html", "label": "Organic chemistry: bond polarity" }
+  ]
+}

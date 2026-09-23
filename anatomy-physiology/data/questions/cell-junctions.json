@@ -1,0 +1,436 @@
+[
+  {
+    "id": "anp-cell-junctions-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Which junction lets ions pass directly from the cytoplasm of one cell into the cytoplasm of its neighbor?",
+    "options": [
+      "Tight junction",
+      "Desmosome",
+      "Gap junction",
+      "Glycocalyx"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A gap junction is a cluster of protein tunnels that link two cells' cytoplasm, so ions and small molecules pass straight through.",
+      "options": [
+        "A tight junction seals the space between cells. It does not connect their interiors.",
+        "A desmosome rivets cells together. Fluid can pass around it, but nothing passes through it from cell to cell.",
+        "Correct. Gap junction tunnels connect the cytoplasm of neighboring cells.",
+        "The glycocalyx is the sugar coat on the outside of a cell, not a junction."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Lindqvist's skin blisters with light rubbing. A biopsy shows skin cells that have separated from each other, although each cell is intact. Which junction has most likely failed?",
+    "options": [
+      "Gap junctions",
+      "Tight junctions",
+      "Microvilli",
+      "Desmosomes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Desmosomes hold skin cells together against pulling and rubbing. When they fail, friction separates the cells and fluid fills the splits as blisters.",
+      "options": [
+        "Gap junctions let ions pass between cells; they provide little strength, so their loss would not make cells separate.",
+        "Tight junctions seal the spaces between cells but are not what holds cells together against pulling.",
+        "Microvilli are surface folds that increase absorptive area; they are not junctions.",
+        "Correct. Loss of desmosomes lets cells pull apart under friction."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which proteins form the tunnels of a gap junction?",
+    "options": [
+      "Connexins",
+      "Cadherins",
+      "Claudins",
+      "Actin subunits"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Six connexins in each membrane form a connexon, and two docked connexons make one tunnel.",
+      "options": [
+        "Correct. Connexins build the connexons of gap junctions.",
+        "Cadherins are the adhesion proteins that cross the gap in desmosomes.",
+        "Claudins are the strand proteins of tight junctions.",
+        "Actin makes microfilaments of the cytoskeleton, not junction tunnels."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "A bacterial toxin loosens the tight junctions of the intestinal lining. What is the most direct result?",
+    "options": [
+      "The cells pull apart and blister",
+      "Neighboring cells stop sharing ions through tunnels",
+      "Fluid and ions leak between the cells",
+      "The microvilli shrink"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Tight junctions seal the spaces between lining cells. Loosen them, and fluid and ions can leak through the spaces instead of passing through the cells.",
+      "options": [
+        "Pulling apart and blistering follows loss of desmosomes, which hold cells together. Tight junctions seal rather than rivet.",
+        "Ion sharing through tunnels is the job of gap junctions, which this toxin does not target.",
+        "Correct. Loosened seals let fluid and ions pass between the cells.",
+        "Microvilli have an actin core and are not held up by tight junctions."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-5",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statements describe desmosomes? Select all that apply.",
+    "options": [
+      "They anchor intermediate filaments",
+      "Cadherins cross the gap between the cells",
+      "They seal the space between cells",
+      "They let ions pass from cell to cell",
+      "They are abundant in skin and heart"
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ],
+    "why": {
+      "correct": "A desmosome has a plaque on each side anchoring intermediate filaments, with cadherins gripping across the gap. It is common where tissue is pulled, like skin and heart.",
+      "options": [
+        "Correct. Intermediate filaments loop into the desmosome's plaques.",
+        "Correct. Cadherins reach across the gap and grip each other.",
+        "Sealing is the job of tight junctions. Fluid still passes around a desmosome.",
+        "Passing ions between cells is the job of gap junctions.",
+        "Correct. Skin and heart are under constant pulling, and desmosomes resist it."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Suppose every gap junction in the heart were blocked, while desmosomes and tight junctions stayed intact. What would change first?",
+    "options": [
+      "The heart wall would tear apart",
+      "Cells would stop contracting together",
+      "Blood would leak between the heart's cells",
+      "Each cell would stop making ATP"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Gap junctions let the electrical signal spread from each heart cell to its neighbors. Blocked, the signal could no longer pass cell to cell, so the cells would lose their coordinated wave of contraction.",
+      "options": [
+        "Holding the heart's cells together is the job of desmosomes, which are intact here.",
+        "Correct. Without gap junctions, the electrical signal cannot spread from cell to cell, so the contraction is no longer coordinated.",
+        "Sealing is the job of tight junctions, which are intact, and gap junctions do not seal.",
+        "Mitochondria make ATP inside each cell, which does not depend on gap junctions."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these steps in order to show how a sheet of skin cells resists a pull.",
+    "options": [
+      "Friction pulls on one skin cell",
+      "The pull reaches the desmosome plaques in its membrane",
+      "Cadherins pass the pull across the gap to the neighboring cell",
+      "The neighbor's intermediate filaments take up the pull",
+      "The force spreads across many linked cells"
+    ],
+    "why": {
+      "correct": "The pull travels from the cell to its desmosome plaques, across the gap through the cadherins, into the neighbor's intermediate filaments, and on through the whole linked net, so no one cell takes all of it."
+    }
+  },
+  {
+    "id": "anp-cell-junctions-8",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Fill in the missing step: six connexins in one membrane form a ______ → it docks with a matching structure in the neighbor's membrane → a continuous tunnel links the two cytoplasms.",
+    "options": [
+      "connexon",
+      "desmosome",
+      "plaque",
+      "tight junction strand"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Six connexins make a ring with a pore, the connexon. Two docked connexons form one gap junction tunnel.",
+      "options": [
+        "Correct. A connexon is the half-tunnel built from six connexins.",
+        "A desmosome is a riveting junction built from cadherins and plaques, not connexins.",
+        "A plaque is the dense protein pad inside a desmosome; it has no pore.",
+        "Tight junction strands are built from claudins and occludin and seal the gap rather than tunnel through it."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "q": "A medicine swallowed as a pill must cross the intestinal lining to reach the blood. Why must it pass through the lining cells rather than between them?",
+    "options": [
+      "Desmosomes block every molecule",
+      "Gap junctions pull it into cells",
+      "Tight junctions seal the gaps",
+      "Microvilli trap it at the surface"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Tight junctions form a continuous seal around each lining cell, so the space between cells is closed. A substance must cross the cells' own plasma membranes instead.",
+      "options": [
+        "Desmosomes are spot welds; fluid and small molecules pass around them freely.",
+        "Gap junctions connect one lining cell to another. They do not draw substances in from the intestine.",
+        "Correct. The continuous seal of tight junctions closes the route between the cells.",
+        "Microvilli increase surface area for absorption. They do not trap substances or block the space between cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-10",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "This sequence describes what happens to gap junctions when a cell is badly injured. One step is wrong. Which one?",
+    "options": [
+      "A cell is badly damaged",
+      "Calcium ions rise inside the damaged cell",
+      "Its connexons open wider",
+      "Ions stop passing between it and its neighbors",
+      "The healthy neighbors are sealed off from it"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A sharp rise in calcium ions (or a fall in pH) inside a cell closes its connexons. That is what stops ions passing and seals off the neighbors.",
+      "options": [
+        "This step is right. The sequence begins with serious damage to one cell.",
+        "This step is right. Damaged cells take in calcium ions from the extracellular fluid, where calcium is far higher.",
+        "This is the error. High calcium closes connexons; it does not open them.",
+        "This step is right. Closed connexons stop the flow of ions.",
+        "This step is right. Closing the tunnels protects the healthy cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which junction forms a continuous band all the way around a lining cell?",
+    "options": [
+      "Desmosome",
+      "Tight junction",
+      "Gap junction cluster",
+      "Hemidesmosome"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A tight junction runs as an unbroken band around each cell. Being continuous is what lets it seal.",
+      "options": [
+        "A desmosome is a small button-shaped spot, not a continuous seam.",
+        "Correct. The tight junction is a continuous band.",
+        "A gap junction is a cluster of tunnels at one spot.",
+        "A hemidesmosome is a spot that anchors a cell to the material beneath it."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A child with inherited deafness is found to carry a defective form of one connexin. Which job is lost in the affected cells of the ear?",
+    "options": [
+      "Riveting cells together against pulling",
+      "Sharing ions between neighboring cells",
+      "Sealing the spaces between cells",
+      "Anchoring cells to the layer below"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Connexins build gap junctions. A defective connexin blocks the flow of ions between neighboring cells, which these ear cells depend on.",
+      "options": [
+        "Riveting is done by desmosomes, which use cadherins, not connexins.",
+        "Correct. Connexins make gap junction tunnels, which share ions between cells.",
+        "Sealing is done by tight junctions, which use claudins and occludin.",
+        "Anchoring to the layer below is done by hemidesmosomes, not by connexins."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-13",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Which of these can pass through a gap junction? Select all that apply.",
+    "options": [
+      "Potassium ions",
+      "Glucose",
+      "ATP",
+      "A large protein",
+      "Water"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Gap junction tunnels pass water, ions and small molecules such as glucose, amino acids and ATP. Large molecules like proteins are too big.",
+      "options": [
+        "Correct. Ions pass freely, which is how gap junctions carry electrical current.",
+        "Correct. Glucose is a small molecule that fits through the tunnel.",
+        "Correct. ATP is small enough to pass.",
+        "A protein is far too large for the tunnel's pore.",
+        "Correct. Water passes through the tunnels."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "tight junctions are what hold cells together",
+    "q": "A sheet of cells has intact tight junctions, but all its desmosomes are destroyed. What would you expect?",
+    "options": [
+      "It leaks between cells but resists pulling",
+      "It stays sealed and resists pulling well",
+      "It leaks, and cells stop sharing ions",
+      "Sealed, but it tears easily when pulled"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Tight junctions seal but give little strength. Desmosomes provide the strength. With tight junctions intact and desmosomes gone, the sheet stays sealed but cannot resist pulling.",
+      "options": [
+        "The tight junctions are intact, so the sheet does not leak, and without desmosomes it cannot resist pulling.",
+        "The seal holds, but resisting pulling depends on desmosomes, which are gone.",
+        "The seal holds, and sharing ions depends on gap junctions, which are not affected.",
+        "Correct. The seal survives, but the strength does not."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-junctions-15",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Near the end of pregnancy, the number of gap junctions between cells in the uterine wall rises sharply. Predict each change.",
+    "variables": [
+      {
+        "name": "Flow of ions between neighboring uterine cells",
+        "answer": "up",
+        "why": "More gap junctions means more tunnels between the cells' cytoplasm, so more ions can pass from one to the next."
+      },
+      {
+        "name": "How closely the cells contract together",
+        "answer": "up",
+        "why": "Ion flow carries the electrical change from cell to cell, so a signal in one cell spreads quickly to many, and they contract together."
+      },
+      {
+        "name": "Seal between the cells against leaks",
+        "answer": "none",
+        "why": "Sealing is the job of tight junctions. Adding gap junctions does not change it."
+      }
+    ],
+    "why": {
+      "correct": "Gap junctions couple cells electrically. More of them lets a signal spread faster and wider, so the uterine wall contracts as a unit."
+    }
+  },
+  {
+    "id": "anp-cell-junctions-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these would you expect to be richest in desmosomes?",
+    "options": [
+      "Skin that is rubbed and stretched",
+      "Red blood cells floating in plasma",
+      "The urine held inside the bladder",
+      "White blood cells moving through tissue"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Desmosomes resist pulling, so they are most abundant in tissue under mechanical stress, such as skin.",
+      "options": [
+        "Correct. Skin is constantly pulled and rubbed, and its cells are held by many desmosomes.",
+        "Red blood cells float separately in plasma and are not joined to each other at all.",
+        "Urine is a fluid, not a sheet of cells, so it has no junctions.",
+        "White blood cells must move freely through tissue, so they are not riveted to neighbors."
+      ]
+    }
+  }
+]

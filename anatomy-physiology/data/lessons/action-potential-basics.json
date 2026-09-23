@@ -1,0 +1,62 @@
+{
+  "topic": "action-potential-basics",
+  "hook": "<p>Jamal, 24, gets a lidocaine injection before a filling. Ten minutes later his lower lip feels thick and numb, and he cannot feel the drill. The nerve endings in his tooth still respond to the drill's pressure. The message just never leaves them: lidocaine blocks the channels his nerve fibers need to send an electrical message toward his brain.</p>",
+  "prereq": [
+    {
+      "q": "A typical neuron's resting membrane potential is about:",
+      "options": ["−70 mV", "0 mV", "+30 mV"],
+      "correct": 0,
+      "why": "At rest the inside of a typical neuron is about 70 mV negative compared with the outside, set mainly by potassium leaking out.",
+      "review": "membrane-potential"
+    },
+    {
+      "q": "The membrane potential moves from −70 mV to −60 mV. This is:",
+      "options": ["Hyperpolarization", "Depolarization", "Repolarization"],
+      "correct": 1,
+      "why": "Any change to less negative than rest is a depolarization, even if the inside is still negative.",
+      "review": "membrane-potential"
+    },
+    {
+      "q": "A voltage-gated channel opens in response to:",
+      "options": ["A change in membrane potential", "A molecule binding to it", "Stretching or pressure on the membrane"],
+      "correct": 0,
+      "why": "Voltage-gated channels respond to changes in the voltage across the membrane. Ligand-gated channels respond to binding, and mechanically gated channels respond to physical force.",
+      "review": "passive-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-24",
+    "caption": "The stages of an action potential: rest, a depolarization to threshold, a steep rise, a steep fall, a brief dip below rest, and return to rest."
+  },
+  "chain": [
+    {
+      "cause": "A stimulus opens mechanically gated, ligand-gated or other channels, and positive ions enter.",
+      "effect": "A graded depolarization occurs, sized to the stimulus."
+    },
+    {
+      "cause": "The graded depolarization reaches threshold, about −55 mV.",
+      "effect": "Enough voltage-gated sodium channels open that sodium entry outpaces potassium exit."
+    },
+    {
+      "cause": "Sodium rushes in, and each bit of depolarization opens more sodium channels.",
+      "effect": "The membrane depolarizes rapidly to about +30 mV."
+    },
+    {
+      "cause": "The sodium channels close on their own, and the slower voltage-gated potassium channels open.",
+      "effect": "Potassium flows out, and the membrane repolarizes; the slow-closing potassium channels cause a brief hyperpolarization."
+    },
+    {
+      "cause": "Positive charge from the firing patch spreads along the inside of the membrane to the next patch.",
+      "effect": "The next patch reaches threshold and fires its own action potential, while the patch behind is refractory: the action potential propagates forward at full size."
+    }
+  ],
+  "misconception": {
+    "wrong": "A stronger stimulus produces a bigger action potential.",
+    "right": "Action potentials are all-or-none. Once threshold is reached, the full action potential happens, always to about the same peak. A stronger stimulus makes a bigger graded potential, and that produces action potentials more often (more per second), each one the same size. Size varies only in graded potentials."
+  },
+  "check": ["anp-action-potential-basics-3", "anp-action-potential-basics-5", "anp-action-potential-basics-6", "anp-action-potential-basics-8", "anp-action-potential-basics-11", "anp-action-potential-basics-13", "anp-action-potential-basics-15"],
+  "summary": "<p>Excitable cells, mainly neurons and muscle fibers, can produce action potentials because they have voltage-gated sodium and potassium channels. A graded potential is a small, local change sized to the stimulus; it can depolarize or hyperpolarize, and it fades with distance. If a depolarization reaches threshold (about −55 mV), sodium channels open in a self-reinforcing cycle and an all-or-none action potential follows: sodium in (to about +30 mV), then potassium out (repolarization), then a brief hyperpolarization. The refractory period, caused by sodium channels that cannot reopen right away, limits firing rate and keeps propagation one-way. Each patch of membrane regenerates the action potential, so it arrives at full size.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT: Anatomy and Physiology" }
+  ]
+}

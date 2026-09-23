@@ -198,6 +198,7 @@
   function courseOf(path){
     if(path.indexOf('/nremt') > -1) return 'nremt';
     if(path.indexOf('/ochem') > -1) return 'ochem';
+    if(path.indexOf('/anatomy-physiology') > -1) return 'anp';
     return 'site';
   }
 

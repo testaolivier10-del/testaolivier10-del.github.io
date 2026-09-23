@@ -1,0 +1,47 @@
+{
+  "gradient": {
+    "def": "A difference in some quantity between two places, such as a concentration gradient (a difference in concentration) or a temperature gradient. Things move down a gradient, from more to less, without an energy input; its steepness is the difference divided by the distance.",
+    "roots": [["grad-", "step"]],
+    "say": "GRAY-dee-ent"
+  },
+  "pressure": {
+    "def": "Force per unit area. In physiology it is measured in millimeters of mercury (mm Hg) and usually given relative to atmospheric pressure, the pressure of the surrounding air (about 760 mm Hg at sea level).",
+    "roots": [["atmo-", "vapor"], ["sphere", "ball"]],
+    "say": ""
+  },
+  "pressure-gradient": {
+    "def": "A difference in pressure between two points, written ΔP. Fluids flow from higher toward lower pressure, and flow depends on the difference, not on how high the pressures are.",
+    "roots": [["grad-", "step"]],
+    "say": ""
+  },
+  "blood-pressure-basic": {
+    "def": "Blood pressure is the pressure blood exerts on the walls of the blood vessels, usually measured in a large artery and written as the peak over the lowest value, such as 120/80 mm Hg. Blood volume is the total amount of blood, about 5 liters in an adult; less blood volume means less stretch of the vessel walls and a lower blood pressure.",
+    "roots": [],
+    "say": ""
+  },
+  "bulk-flow": {
+    "def": "The movement of a whole fluid, with everything dissolved or carried in it, from higher to lower pressure. Blood moving through vessels and air moving into the lungs are examples.",
+    "roots": [],
+    "say": ""
+  },
+  "hydrostatic-pressure": {
+    "def": "The pressure a fluid exerts, for example on the walls of its container. In a column of fluid it rises with depth, by about 0.74 mm Hg for each centimeter of water.",
+    "roots": [["hydro-", "water"], ["stat-", "standing"]],
+    "say": "hy-droh-STAT-ik"
+  },
+  "resistance": {
+    "def": "Anything that opposes flow, caused by friction between the fluid and the tube wall and within the fluid. It rises with a narrower radius, a longer tube and higher viscosity, the thickness or internal friction of the fluid.",
+    "roots": [["viscos-", "sticky"]],
+    "say": "vis-KOS-ih-tee"
+  },
+  "flow-equation": {
+    "def": "Flow equals the pressure gradient divided by resistance: F = ΔP/R. Doubling the pressure gradient doubles flow; doubling the resistance halves it.",
+    "roots": [],
+    "say": ""
+  },
+  "radius-resistance": {
+    "def": "Resistance depends on the fourth power of the radius (Poiseuille's law), so halving a tube's radius makes its resistance 16 times larger and its flow 16 times smaller at the same pressure gradient.",
+    "roots": [],
+    "say": "pwah-ZOY"
+  }
+}

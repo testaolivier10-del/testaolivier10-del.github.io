@@ -1,0 +1,37 @@
+{
+  "topic": "word-parts",
+  "hook": "<p>You are shadowing a nurse who hands you a chart. It reads: \"History of cholecystitis. Now reports gastralgia. Exam shows hepatomegaly.\" You have never seen those words. By the end of this lesson you will read them as an inflamed gallbladder, stomach pain and an enlarged liver, without looking anything up.</p>",
+  "prereq": [
+    {
+      "q": "Anatomy is the study of what?",
+      "options": ["The body's structures and where they are", "How the body's structures work", "The chemical changes inside cells"],
+      "correct": 0,
+      "why": "Anatomy (ana- = apart, -tomy = cutting) studies structure: shape, size, parts and position. How structures work is physiology.",
+      "review": "body-organization"
+    },
+    {
+      "q": "Which organ system includes the kidneys, ureters, urinary bladder and urethra?",
+      "options": ["Digestive system", "Urinary system", "Reproductive system"],
+      "correct": 1,
+      "why": "These four organs filter the blood, make urine, store it and carry it out: the urinary system.",
+      "review": "body-organization"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "You find the suffix at the end of the term.", "effect": "You know what kind of word it is: a condition, a procedure, a field or a description." },
+    { "cause": "Knowing the kind of word, you look at the front for a prefix.", "effect": "You learn how the meaning is modified: where, how much, how many or how fast." },
+    { "cause": "With the suffix and prefix set aside, the root or roots are left.", "effect": "You learn which body part or substance the term is about." },
+    { "cause": "You combine the parts, starting from the suffix.", "effect": "You get the literal meaning, which you then check against the definition." }
+  ],
+  "misconception": {
+    "wrong": "You decode a medical term by reading its parts from left to right.",
+    "right": "Reading left to right gives backwards English: pericarditis becomes \"around heart inflamed\". Start with the suffix, which says what kind of word it is, then the prefix, then the root: \"inflamed, around, the heart\", an inflamed sac around the heart."
+  },
+  "check": ["anp-word-parts-1", "anp-word-parts-3", "anp-word-parts-5", "anp-word-parts-8", "anp-word-parts-10", "anp-word-parts-14"],
+  "summary": "<p>Medical terms are built from word parts that keep their meaning wherever they appear. The word root carries the core meaning, usually a body part. A combining form is a root plus a linking vowel, usually o, which is kept between roots and before a suffix that starts with a consonant, and dropped before a suffix that starts with a vowel. A prefix sits in front and modifies the meaning. A suffix sits at the end and tells you what kind of word it is. Decode suffix first, then prefix, then root, and check the literal meaning against the definition.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch5", "label": "NREMT study notes: Medical Terminology" },
+    { "href": "/nremt/glossary.html", "label": "NREMT: EMT terminology glossary" }
+  ]
+}

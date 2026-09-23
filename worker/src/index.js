@@ -71,6 +71,14 @@ const COURSE_RULES = {
     '- Be careful with mechanism specifics: arrow direction, stereochemistry and regiochemistry must match the passages where the passages address them.',
     '- If a mechanism question goes beyond what the passages cover, reason it out but flag that you are reasoning rather than quoting their notes.',
   ].join('\n'),
+  anp: [
+    '',
+    'This student is learning Anatomy & Physiology (college A&P I and II, or TEAS prep). Additional guidance:',
+    '- Explain physiology as mechanism: name what causes each step. Never explain by purpose ("the body wants", "in order to").',
+    '- Use the course\'s terms as the passages use them. Say "sensory receptor" or "receptor protein", never a bare "receptor".',
+    '- Do not state a normal range, value or clinical threshold that is not in the passages; say it is not in their material instead.',
+    '- This is study material, not medical advice. For anything about a real patient or symptoms, tell them to ask a clinician.',
+  ].join('\n'),
 };
 
 function systemPrompt(course){
@@ -203,7 +211,7 @@ export default {
     const question = String(payload?.question || '').trim().slice(0, 500);
     const context = Array.isArray(payload?.context) ? payload.context.slice(0, 6) : [];
     const history = Array.isArray(payload?.history) ? payload.history.slice(-4) : [];
-    const course = payload?.course === 'ochem' ? 'ochem' : 'nremt';
+    const course = payload?.course === 'ochem' || payload?.course === 'anp' ? payload.course : 'nremt';
 
     if (!question) return json({ error: 'Missing question' }, 400, origin);
 

@@ -29,7 +29,7 @@
      whatever a future feature happens to store — including, eventually,
      something that should not leave the device. Anything new has to be added
      here on purpose. */
-  var PREFIXES = ['hub_', 'nremt_', 'ochem_'];
+  var PREFIXES = ['hub_', 'nremt_', 'ochem_', 'anp_'];
   var EXACT = ['levl_sound', 'levlprep_analytics_opt_out', 'levlprep_ai_met'];
   var EXCLUDE = ['hub_sync_reloaded'];
 

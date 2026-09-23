@@ -1,0 +1,22 @@
+{
+  "heart-location": {
+    "def": "Your heart sits in the mediastinum, between the lungs, behind the sternum and on the diaphragm, with about two thirds of its mass left of the midline. Its apex is the pointed lower tip, at about the fifth intercostal space on the left; its base is the broad upper, back end where the large vessels attach.",
+    "roots": [["apex", "tip"], ["inter-", "between"], ["cost/o", "rib"]],
+    "say": ""
+  },
+  "pericardium": {
+    "def": "The covering around the heart: a tough outer fibrous pericardium of dense connective tissue, and an inner serous pericardium folded into a parietal layer and a visceral layer with a film of serous fluid (the pericardial cavity) between them. The fibrous layer plus the parietal layer form the pericardial sac.",
+    "roots": [["peri-", "around"], ["cardi/o", "heart"], ["pariet-", "wall"], ["viscer-", "internal organ"], ["ser/o", "watery fluid"]],
+    "say": "pair-ih-KAR-dee-um"
+  },
+  "heart-wall": {
+    "def": "The three layers of the heart wall: the epicardium on the outside (the same layer as the visceral pericardium), the thick myocardium of cardiac muscle in the middle, and the endocardium, an endothelial lining, on the inside.",
+    "roots": [["epi-", "upon"], ["my/o", "muscle"], ["endo-", "within"], ["cardi/o", "heart"]],
+    "say": "ep-ih-KAR-dee-um, my-oh-KAR-dee-um, en-doh-KAR-dee-um"
+  },
+  "cardiac-tamponade": {
+    "def": "Compression of the heart by blood or fluid collecting in the pericardial cavity. Because the fibrous pericardium cannot stretch quickly, pressure in the sac rises, the heart cannot fill between beats, and blood pressure falls.",
+    "roots": [["cardi/o", "heart"], ["-ac", "pertaining to"], ["tampon", "plug (French)"]],
+    "say": "tam-poh-NAHD"
+  }
+}

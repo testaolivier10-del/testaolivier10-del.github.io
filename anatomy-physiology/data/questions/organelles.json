@@ -1,0 +1,465 @@
+[
+  {
+    "id": "anp-organelles-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which organelle has two membranes, the inner one folded into shelves, and makes most of a typical cell's ATP?",
+    "options": [
+      "Golgi apparatus",
+      "Mitochondrion",
+      "Smooth endoplasmic reticulum",
+      "Lysosome"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A mitochondrion has a smooth outer membrane and a folded inner membrane (cristae). The ATP-making protein complexes sit on that inner membrane.",
+      "options": [
+        "The Golgi is a stack of flattened sacs with single membranes. It modifies and sorts proteins; it does not make ATP.",
+        "Correct. The mitochondrion's folded inner membrane holds the ATP-making machinery.",
+        "The smooth ER is a network of single-membrane tubes. It makes lipids and breaks down some drugs.",
+        "A lysosome is a single-membrane sac of digestive enzymes."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A biopsy shows cells packed with rough ER and large Golgi stacks, with many vesicles near the surface facing a duct. What is these cells' main job most likely to be?",
+    "options": [
+      "Exporting large amounts of protein",
+      "Making steroids",
+      "Absorbing nutrients through a brush border",
+      "Moving fluid across their surface"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Rough ER builds and folds proteins for export, and the Golgi packages them into vesicles bound for the surface. A cell full of both is a protein exporter, like the pancreas cells that make digestive enzymes.",
+      "options": [
+        "Correct. Rough ER plus a large Golgi plus vesicles at the surface is the equipment of a protein-exporting cell.",
+        "Steroids are lipids made in the smooth ER. A steroid-making cell would be full of smooth ER, not rough ER.",
+        "Absorbing cells are marked by a brush border of microvilli, which this description does not mention.",
+        "Moving fluid across a surface is the job of cilia, which this description does not mention."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-3",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these structures are built from microtubules? Select all that apply.",
+    "options": [
+      "Cilia",
+      "The sperm flagellum",
+      "Centrioles",
+      "Microvilli",
+      "Intermediate filaments"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Cilia and flagella have a core of nine microtubule pairs around two central ones, and each centriole is nine sets of three microtubules. Microvilli have an actin core, and intermediate filaments are their own kind of fiber.",
+      "options": [
+        "Correct. A cilium's core is microtubules arranged as nine pairs around two.",
+        "Correct. A flagellum has the same microtubule core as a cilium, only longer.",
+        "Correct. Each centriole is a short cylinder of nine sets of three microtubules.",
+        "Microvilli have a core of actin microfilaments, which is why they do not beat.",
+        "Intermediate filaments are a separate, rope-like fiber of the cytoskeleton, not microtubules."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A drug stops microtubules from forming. Which process in the cell is affected most directly?",
+    "options": [
+      "The surface area provided by the brush border",
+      "Moving vesicles along tracks in the cell",
+      "Breakdown of hydrogen peroxide",
+      "Oxidation of fuel in mitochondria"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Motor proteins such as kinesin and dynein carry vesicles and organelles by walking along microtubules. Without microtubules, those tracks are gone.",
+      "options": [
+        "The brush border is made of microvilli, which have an actin core, not microtubules.",
+        "Correct. Microtubules are the tracks that motor proteins use to carry vesicles.",
+        "Catalase breaks down hydrogen peroxide inside peroxisomes. That does not depend on microtubule tracks.",
+        "Fuel oxidation happens on and inside the mitochondrion's inner membrane, not on microtubules."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Kowalski has been drinking heavily every day for months. His doctor notices that some of his medicines now wear off faster than expected. Which organelle has most likely increased in his liver cells?",
+    "options": [
+      "Rough ER",
+      "Lysosomes",
+      "Golgi apparatus",
+      "Smooth ER"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The smooth ER holds enzymes that break down alcohol and many drugs. Heavy drinking makes liver cells build more smooth ER with more of these enzymes, so some medicines are broken down faster.",
+      "options": [
+        "Rough ER makes proteins for export and for membranes. It is not the main site of drug breakdown.",
+        "Lysosomes digest material in acid and recycle worn-out parts. They do not break down most drugs.",
+        "The Golgi modifies, sorts and packages proteins. It does not break down drugs.",
+        "Correct. More smooth ER means more drug-breaking enzymes, so medicines wear off faster."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is autophagy?",
+    "options": [
+      "Recycling the cell's own worn-out parts",
+      "A cell dissolving after its lysosomes burst open",
+      "A ribosome building a protein for export",
+      "A mitochondrion dividing inside the cell"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Autophagy (auto- = self, -phagy = eating) is the controlled recycling of a cell's own worn-out organelles: they are wrapped in membrane, delivered to a lysosome and broken into reusable building blocks.",
+      "options": [
+        "Correct. Autophagy is self-eating for recycling, and the cell survives it.",
+        "That describes autolysis, self-digestion when lysosomes break open, which destroys the cell.",
+        "Protein building is the ribosome's job and has nothing to do with digestion.",
+        "Mitochondria do divide on their own, but that is not autophagy."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Put these steps in order for a digestive enzyme that a pancreas cell makes and releases.",
+    "options": [
+      "A ribosome on the rough ER builds the protein",
+      "The protein is folded inside the rough ER",
+      "A vesicle carries the protein to the Golgi apparatus",
+      "The Golgi modifies and sorts the protein",
+      "A vesicle leaving the Golgi carries it to the plasma membrane",
+      "The vesicle fuses with the plasma membrane and releases the enzyme"
+    ],
+    "why": {
+      "correct": "An exported protein is built by a bound ribosome, folded in the rough ER, carried by vesicle to the Golgi, modified and sorted there, then packaged into a vesicle that fuses with the plasma membrane and releases it outside the cell."
+    }
+  },
+  {
+    "id": "anp-organelles-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "q": "A few lysosomal enzymes leak into the cytosol of a healthy cell. Why do they cause little damage?",
+    "options": [
+      "The cytosol has no proteins for them to act on",
+      "They work poorly at the near-neutral pH of the cytosol",
+      "Catalase in the cytosol destroys them at once",
+      "Leaked enzymes are rebuilt into ribosomes straight away"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Lysosomal enzymes work best at about pH 4.5 to 5, the acidic interior of the lysosome. The cytosol is near pH 7.2, where they work poorly, so a small leak does little harm.",
+      "options": [
+        "The cytosol is full of proteins, which is exactly why a large leak (autolysis) destroys the cell.",
+        "Correct. These enzymes need acid, and the cytosol is close to neutral.",
+        "Catalase is inside peroxisomes and breaks down hydrogen peroxide, not other enzymes.",
+        "Ribosomes are not built from leaked enzymes; they build proteins, they are not recycled from them."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step: a very long fatty acid enters a peroxisome → peroxisome enzymes oxidize it, producing ______ → catalase breaks that product into water and oxygen.",
+    "options": [
+      "Hydrogen peroxide",
+      "ATP",
+      "Glucose",
+      "Stored calcium ions"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Peroxisome oxidations produce hydrogen peroxide, a reactive oxygen species. Catalase in the same peroxisome breaks it down to water and oxygen.",
+      "options": [
+        "Correct. Hydrogen peroxide is the by-product that catalase destroys.",
+        "Catalase does not act on ATP, and ATP is not what it turns into water and oxygen.",
+        "Oxidizing a fatty acid does not produce glucose, and catalase does not act on glucose.",
+        "Calcium ions are stored by the smooth ER. They are not made by oxidizing fatty acids."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "cilia and microvilli are the same structure",
+    "q": "A cell's surface projections are about 1 micrometer long, have a core of actin, and never move. What are they, and what do they do?",
+    "options": [
+      "Microvilli; they increase surface area",
+      "Cilia; they sweep fluid across the surface",
+      "Flagella; they move the cell",
+      "Microtubules; they carry vesicles"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Short, nonmoving projections with an actin core are microvilli. They multiply the surface area of the membrane, which speeds absorption.",
+      "options": [
+        "Correct. An actin core and no movement identify microvilli.",
+        "Cilia are longer, have a microtubule core, and beat.",
+        "A flagellum is much longer, has a microtubule core, and whips to move the cell.",
+        "Microtubules are fibers inside the cell, not projections of its surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-11",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "This sequence describes autophagy of a worn-out mitochondrion. One step is wrong. Which one?",
+    "options": [
+      "A membrane wraps the worn-out mitochondrion",
+      "The wrapped package fuses with a lysosome",
+      "Lysosomal enzymes digest it at the neutral pH inside the lysosome",
+      "The mitochondrion is broken into small building blocks",
+      "The cell reuses the building blocks"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The inside of a lysosome is acidic, at about pH 4.5 to 5. Its enzymes work in acid, not at neutral pH.",
+      "options": [
+        "This step is right. Autophagy begins by wrapping the old organelle in membrane.",
+        "This step is right. The package delivers its contents to a lysosome by fusing with it.",
+        "This is the error. The lysosome's interior is acidic, and its enzymes need that acid.",
+        "This step is right. Lysosomal enzymes break proteins, lipids and nucleic acids into their building blocks.",
+        "This step is right. Recycling the parts is the point of autophagy."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Adeyemi, 31, has had chest and sinus infections all his life and has now been found to be infertile. Both problems trace to a single inherited defect. Which structure is most likely affected?",
+    "options": [
+      "The actin core of the microvilli on airway cells",
+      "The digestive enzymes stored inside lysosomes",
+      "The microtubule core of cilia and flagella",
+      "The ribosomes on the rough ER"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Cilia and the sperm flagellum share the same microtubule core moved by dynein motors. If that machinery fails, airway cilia cannot sweep out trapped microbes, and sperm cannot swim.",
+      "options": [
+        "Microvilli do not move and do not clear the airways; a defect in them would not explain either problem.",
+        "A lysosomal enzyme defect causes material to build up inside cells. It does not stop cilia or sperm from moving.",
+        "Correct. One defect in the shared microtubule core stops both airway cilia and the sperm flagellum.",
+        "A general ribosome defect would affect protein building in every cell and would not single out cilia and sperm."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "energy"
+    ],
+    "q": "Mature red blood cells have no mitochondria. Which statement follows from that?",
+    "options": [
+      "They cannot make ATP and rely on ATP from plasma",
+      "They make ATP in the cytosol instead",
+      "They get their ATP from enzymes inside lysosomes",
+      "They make their ATP on the rough ER instead"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Red blood cells make ATP by breaking down glucose in the cytosol, a process that uses no oxygen. That is why they do not use up the oxygen they carry.",
+      "options": [
+        "Cells cannot take ATP from plasma in useful amounts; every cell makes its own. Red cells do make ATP.",
+        "Correct. Without mitochondria, red cells make ATP by breaking down glucose in the cytosol.",
+        "Lysosomes digest material; they do not make ATP. Mature red cells also lack lysosomes.",
+        "The rough ER builds proteins; it does not make ATP. Mature red cells also lack ER."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-14",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Which of these are part of the endomembrane system? Select all that apply.",
+    "options": [
+      "Endoplasmic reticulum",
+      "Golgi apparatus",
+      "Lysosomes",
+      "Mitochondria",
+      "Free ribosomes"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The endomembrane system is the set of membranes linked by vesicle traffic: the membrane around the nucleus, the ER, the Golgi, vesicles, lysosomes and the plasma membrane.",
+      "options": [
+        "Correct. The ER makes membrane and sends it onward by vesicle.",
+        "Correct. The Golgi receives vesicles from the ER and sends vesicles out.",
+        "Correct. Lysosomes receive their enzymes and membrane from the Golgi by vesicle.",
+        "Mitochondria have their own two membranes and divide on their own. They do not exchange membrane with the ER by vesicle.",
+        "Free ribosomes have no membrane at all, so they cannot be part of a membrane system."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "misconception": "mitochondria make energy",
+    "q": "Which statement about mitochondria is most accurate?",
+    "options": [
+      "They create new energy from the oxygen they take in",
+      "They store the body's reserve of ATP",
+      "They make energy without any fuel",
+      "They transfer energy from fuel into ATP"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Energy is never created. Mitochondria oxidize fuel molecules from food and capture the energy stored in their bonds as ATP. Oxygen is needed for those oxidations, but it is not the energy source.",
+      "options": [
+        "Oxygen is used in the reactions, but energy comes from the fuel's chemical bonds, and no energy is created.",
+        "Cells hold only a few seconds' worth of ATP; the body's energy reserves are fat and glycogen, not ATP in mitochondria.",
+        "Without fuel molecules, mitochondria have nothing to oxidize and make almost no ATP.",
+        "Correct. Mitochondria convert stored fuel energy into ATP; they do not create energy."
+      ]
+    }
+  },
+  {
+    "id": "anp-organelles-16",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "q": "A drug stops a cell's lysosomes from keeping their interior acidic. Predict each change.",
+    "variables": [
+      {
+        "name": "Activity of the lysosomal enzymes",
+        "answer": "down",
+        "why": "Lysosomal enzymes work best at about pH 4.5 to 5. As the interior drifts toward neutral, they work poorly."
+      },
+      {
+        "name": "Recycling of worn-out organelles by autophagy",
+        "answer": "down",
+        "why": "Autophagy ends in lysosomal digestion. With weak enzymes, the wrapped organelles are not broken down."
+      },
+      {
+        "name": "Amount of undigested material stored inside the cell",
+        "answer": "up",
+        "why": "Material keeps arriving at lysosomes but is no longer broken down, so it builds up."
+      }
+    ],
+    "why": {
+      "correct": "Lysosomes depend on their acid interior. Lose the acid and digestion slows, so recycling falls and undigested material builds up."
+    }
+  },
+  {
+    "id": "anp-organelles-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "What is the cytosol?",
+    "options": [
+      "The fluid part of the cytoplasm",
+      "All of the cytoplasm, including the organelles",
+      "The fluid that fills the spaces between cells",
+      "The fluid inside the endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cytosol (cyto- = cell, -sol = solution) is the fluid part of the cytoplasm: water with dissolved ions, nutrients and proteins, in which the organelles sit.",
+      "options": [
+        "Correct. The cytosol is the cytoplasm minus its organelles.",
+        "The cytoplasm is the cytosol plus the organelles. The cytosol is only the fluid.",
+        "The fluid between cells is interstitial fluid, which is outside the plasma membrane.",
+        "The space inside the ER is separated from the cytosol by the ER membrane."
+      ]
+    }
+  }
+]

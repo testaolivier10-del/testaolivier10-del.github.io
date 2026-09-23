@@ -1,0 +1,47 @@
+{
+  "cell-cycle": {
+    "def": "The ordered series of events from a cell's formation to its division: interphase (G1, S and G2, with DNA replicated in S) followed by the mitotic phase. A cell that stops cycling rests in G0.",
+    "roots": [["inter-", "between"]],
+    "say": ""
+  },
+  "cell-cycle-control": {
+    "def": "The system that decides when a cell moves through the cell cycle. Cyclins bind and switch on cyclin-dependent kinases (CDKs), which push the cell forward, and checkpoints pause it until conditions are met. Oncogenes are overactive division-promoting genes; tumor suppressor genes normally restrain division.",
+    "roots": [["kin-", "to move"], ["-ase", "enzyme"], ["onco-", "tumor"]],
+    "say": "SY-klin"
+  },
+  "mitosis": {
+    "def": "Division of the nucleus of a somatic cell into two nuclei with identical chromosome sets, in four phases: prophase, metaphase (chromosomes on the metaphase plate), anaphase (sister chromatids pulled apart by the mitotic spindle via their kinetochores) and telophase.",
+    "roots": [["mit-", "thread"], ["-osis", "process"], ["somat-", "body"], ["pro-", "before"], ["meta-", "middle"], ["ana-", "apart"], ["telo-", "end"]],
+    "say": "my-TOH-sis"
+  },
+  "cytokinesis": {
+    "def": "Division of the cytoplasm at the end of the mitotic phase. A ring of actin and myosin tightens around the middle of the cell, deepening a cleavage furrow until the cell pinches in two.",
+    "roots": [["cyto-", "cell"], ["kinesis", "movement"]],
+    "say": "sy-toh-kih-NEE-sis"
+  },
+  "stem-cell": {
+    "def": "An unspecialized cell that can divide to renew itself and can also give rise to specialized cells.",
+    "roots": [],
+    "say": ""
+  },
+  "stem-cell-potency": {
+    "def": "The range of cell types a stem cell's descendants can become: totipotent (every cell plus the supporting tissues of pregnancy), pluripotent (every body cell type), multipotent (several related types), oligopotent (a few) or unipotent (one).",
+    "roots": [["toti-", "whole"], ["pluri-", "many"], ["multi-", "many"], ["oligo-", "few"], ["uni-", "one"], ["potent-", "powerful"]],
+    "say": "toh-TIP-uh-tent; ploo-RIP-uh-tent"
+  },
+  "differentiation": {
+    "def": "The process by which a cell becomes specialized in structure and function, by switching on one set of genes and keeping others off. The genome itself is not changed.",
+    "roots": [["differ-", "to carry apart"]],
+    "say": ""
+  },
+  "apoptosis": {
+    "def": "Programmed cell death: an orderly self-destruction in which the cell's own enzymes dismantle it into membrane-wrapped pieces that neighboring cells engulf, without spilling its contents.",
+    "roots": [["apo-", "away"], ["-ptosis", "falling"]],
+    "say": "ap-op-TOH-sis"
+  },
+  "cancer-basic": {
+    "def": "Disease in which cells that have gathered mutations divide without control and escape apoptosis. The resulting mass is a tumor (neoplasm); spread of its cells to distant sites is metastasis.",
+    "roots": [["neo-", "new"], ["-plasm", "formed thing"], ["meta-", "change"], ["-stasis", "placement"]],
+    "say": "muh-TAS-tuh-sis"
+  }
+}

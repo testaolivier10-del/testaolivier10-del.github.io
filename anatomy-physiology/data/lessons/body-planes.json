@@ -1,0 +1,43 @@
+{
+  "topic": "body-planes",
+  "hook": "<p>Ms. Patel, 45, arrives after a car crash with pain high on her left side. A CT scanner turns her abdomen into 300 thin slices in a few seconds. The radiologist scrolls through them, finds bleeding around the spleen on one slice, then rebuilds the stack into a front-on view to show the surgeon. Reading those images means knowing which way each slice was cut.</p>",
+  "prereq": [
+    {
+      "q": "In the anatomical position, which way do the palms face?",
+      "options": ["Toward the thighs", "Forward", "Backward"],
+      "correct": 1,
+      "why": "The anatomical position has the arms at the sides with the palms facing forward and the thumbs pointing away from the body.",
+      "review": "anatomical-position"
+    },
+    {
+      "q": "Which term means toward the front of the body?",
+      "options": ["Anterior", "Superior", "Medial"],
+      "correct": 0,
+      "why": "Anterior (ante- = before) means toward the front. Superior means toward the head, and medial means toward the midline.",
+      "review": "anatomical-position"
+    },
+    {
+      "q": "Which term means closer to the midline?",
+      "options": ["Lateral", "Distal", "Medial"],
+      "correct": 2,
+      "why": "Medial means closer to the midline that divides the body into equal right and left halves.",
+      "review": "anatomical-position"
+    }
+  ],
+  "anatomy": { "figure": "os-1-14", "caption": "The sagittal, frontal (coronal) and transverse planes through a body in the anatomical position." },
+  "chain": [
+    { "cause": "In a CT scanner, an X-ray source spins around the body and sends beams through it from hundreds of angles.", "effect": "Detectors on the far side record how much each beam was weakened by the tissues it crossed." },
+    { "cause": "The computer has the weakening of every beam through one thin slice.", "effect": "It calculates the density at each point in that slice." },
+    { "cause": "The density at each point is shown as a shade from black (air) to white (bone).", "effect": "You see a transverse section, viewed as if from the patient's feet." },
+    { "cause": "The scanner builds a whole stack of transverse sections.", "effect": "The computer can rebuild the stack into sagittal or frontal sections without another scan." }
+  ],
+  "misconception": {
+    "wrong": "A plain X-ray shows a slice through the body.",
+    "right": "A radiograph is a projection, like a shadow. Every structure along each beam's path overlaps into one flat image, so the front and back of the chest lie on top of each other. CT, MRI and ultrasound make true sections; a plain X-ray does not."
+  },
+  "check": ["anp-body-planes-1", "anp-body-planes-3", "anp-body-planes-5", "anp-body-planes-8", "anp-body-planes-11", "anp-body-planes-13"],
+  "summary": "<p>A plane is an imaginary flat surface through the body; a section is the cut surface it produces. The sagittal plane divides right from left (midsagittal into equal halves, parasagittal into unequal parts). The frontal, or coronal, plane divides anterior from posterior. The transverse, or horizontal, plane divides superior from inferior, and its cut is a cross section. Oblique planes run at an angle. A structure's shape in a section depends on the direction of the cut. Radiographs are flat projections; CT, MRI, PET and ultrasound produce sections, each by a different physical mechanism.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT study notes: Anatomy and Physiology" }
+  ]
+}

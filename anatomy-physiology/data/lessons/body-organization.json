@@ -1,0 +1,24 @@
+{
+  "topic": "body-organization",
+  "hook": "<p>Mr. Okafor, 58, has kidneys that have almost stopped working. Over a week, his ankles swell, he gets short of breath lying flat, and his heart races. One failing organ has put three organ systems in trouble. To see why, you need to know how the body is built, level by level and system by system.</p>",
+  "prereq": [],
+  "anatomy": { "figure": "os-1-3", "caption": "The six levels of organization, from atoms and molecules at the top to a whole person at the base, traced through the urinary system." },
+  "chain": [
+    { "cause": "Atoms bond to each other.", "effect": "They form molecules, such as water and the large molecules that build cells." },
+    { "cause": "Molecules are arranged into working units.", "effect": "Cells form: the smallest units that can carry out the activities of life." },
+    { "cause": "Similar cells group together with the material around them.", "effect": "Tissues form, such as a sheet of muscle cells that contracts as one." },
+    { "cause": "Two or more kinds of tissue combine into one structure.", "effect": "An organ forms, such as the stomach, with a job no single tissue can do." },
+    { "cause": "Several organs work on a shared job.", "effect": "An organ system forms, such as the digestive system." },
+    { "cause": "All eleven organ systems work together and depend on each other.", "effect": "A whole organism, you, stays alive." }
+  ],
+  "misconception": {
+    "wrong": "Arteries carry blood high in oxygen and veins carry blood low in oxygen.",
+    "right": "Arteries and veins are named by the direction blood flows relative to the heart. Arteries carry blood away from the heart and veins carry it back. Most arteries do carry blood high in oxygen, but the arteries from your heart to your lungs carry blood low in oxygen, and the veins from your lungs back to your heart carry blood high in oxygen."
+  },
+  "check": ["anp-body-organization-1", "anp-body-organization-4", "anp-body-organization-6", "anp-body-organization-9", "anp-body-organization-12", "anp-body-organization-14"],
+  "summary": "<p>Anatomy studies structure; physiology studies how structures work, and what a structure can do follows from how it is built. Your body is organized in six levels: chemical, cell, tissue, organ, organ system and organism. Each level is built from the one below and gains abilities its parts lack. Eleven organ systems each have major organs and a main job, and they depend on each other. Arteries carry blood away from the heart, veins carry it back, and capillaries exchange materials with cells. Living things share a set of characteristics, and your body holds many internal conditions within a normal range.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT study notes: Anatomy and Physiology" },
+    { "href": "/nremt/body-map.html", "label": "NREMT: interactive patient body map" }
+  ]
+}

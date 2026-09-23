@@ -1,0 +1,481 @@
+[
+  {
+    "id": "anp-capillary-exchange-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "Which Starling force pulls fluid from the interstitial fluid into a capillary?",
+    "options": [
+      "Capillary hydrostatic pressure",
+      "Blood colloid osmotic pressure",
+      "Interstitial fluid colloid osmotic pressure",
+      "Arterial systolic pressure"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Blood colloid osmotic pressure is the osmotic pull of plasma proteins, mainly albumin, that cannot cross the capillary wall easily. It draws water toward the plasma, into the capillary.",
+      "options": [
+        "Capillary hydrostatic pressure is the push of blood against the capillary wall. It drives fluid out of the capillary, not in.",
+        "Correct. Plasma proteins stay in the capillary and pull water toward themselves, into the blood.",
+        "Interstitial fluid colloid osmotic pressure comes from the small amount of protein between the cells. It pulls fluid toward the interstitial fluid, out of the capillary.",
+        "Systolic pressure is the peak pressure in the large arteries. By the time blood reaches a capillary, much of it has been lost across the arterioles, and it is not one of the four Starling forces."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "At one point along a capillary, capillary hydrostatic pressure is 30 mm Hg, interstitial fluid hydrostatic pressure is 2 mm Hg, blood colloid osmotic pressure is 26 mm Hg and interstitial fluid colloid osmotic pressure is 4 mm Hg. What is the net filtration pressure, and which way does fluid move?",
+    "options": [
+      "−6 mm Hg, reabsorption into the capillary",
+      "+10 mm Hg, filtration out of the capillary",
+      "+6 mm Hg, filtration out of the capillary",
+      "+2 mm Hg, filtration out of the capillary"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Outward forces: CHP + IFCOP = 30 + 4 = 34 mm Hg. Inward forces: BCOP + IFHP = 26 + 2 = 28 mm Hg. NFP = 34 − 28 = +6 mm Hg. A positive value means filtration.",
+      "options": [
+        "This has the right size but the wrong sign. The outward forces (34 mm Hg) are larger than the inward forces (28 mm Hg), so the result is positive, which means filtration.",
+        "This comes from adding the interstitial hydrostatic pressure to the outward side instead of the inward side. IFHP pushes fluid into the capillary, so it belongs with BCOP.",
+        "Correct. (30 + 4) − (26 + 2) = +6 mm Hg, so fluid filters out.",
+        "This comes from subtracting IFHP from CHP but leaving out IFCOP: (30 − 2) − 26. IFCOP pulls fluid out of the capillary, so it must be added to the outward side."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Near the venule end of a capillary, CHP is 18 mm Hg, IFHP is 1 mm Hg, BCOP is 25 mm Hg and IFCOP is 3 mm Hg. What net filtration pressure do the four forces give?",
+    "options": [
+      "+7 mm Hg",
+      "−5 mm Hg",
+      "−9 mm Hg",
+      "+5 mm Hg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Outward: CHP + IFCOP = 18 + 3 = 21 mm Hg. Inward: BCOP + IFHP = 25 + 1 = 26 mm Hg. NFP = 21 − 26 = −5 mm Hg. The negative sign means the forces favor reabsorption at this point; in the revised Starling principle, that inward flow does not last at steady state.",
+      "options": [
+        "This is BCOP − CHP (25 − 18): it subtracts in the wrong direction and leaves out both interstitial forces. Subtract the inward total from the outward total.",
+        "Correct. (18 + 3) − (25 + 1) = −5 mm Hg.",
+        "This treats IFCOP as an inward force: (18 − 3) − (25 − 1) = −9. IFCOP pulls fluid toward the interstitial fluid, so it adds to the outward side.",
+        "This has the right size but the wrong sign. The inward forces (26 mm Hg) exceed the outward forces (21 mm Hg), so the result is negative."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "compartments"],
+    "misconception": "edema means there is too much blood in the tissue",
+    "q": "Mrs. Lindqvist, 61, has long-term liver disease. Her blood albumin is well below normal, and both of her ankles are swollen; pressing the skin leaves a dent. Which change best explains the swelling?",
+    "options": [
+      "Her capillary hydrostatic pressure has risen",
+      "Her capillary walls have become leaky to protein",
+      "Her blood colloid osmotic pressure has fallen",
+      "Her interstitial fluid hydrostatic pressure has fallen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The liver makes albumin, the protein that supplies most of blood colloid osmotic pressure. With less albumin, less pull holds fluid in the capillaries, net filtration pressure rises, and fluid collects in the interstitial spaces. Her ankles swell first because they sit lowest when she is upright.",
+      "options": [
+        "A rise in capillary pressure causes edema, but nothing in this case raises it. The finding that points to the cause is her low albumin.",
+        "Leaky capillaries cause the swelling of inflammation. Her problem is too little protein in the blood, not protein escaping through the wall.",
+        "Correct. Low albumin lowers the inward pull, so more fluid filters out and stays in the tissue.",
+        "Interstitial hydrostatic pressure rises, not falls, as fluid collects in the tissue. That rise is a result of the edema, and it pushes back against more filtration."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Within minutes of twisting his ankle, a soccer player's ankle is swollen. His blood pressure and blood proteins are normal. Which explanation fits the rapid swelling best?",
+    "options": [
+      "Histamine makes the capillaries leaky, so proteins escape into the tissue",
+      "The injury raises arterial pressure and so capillary pressure throughout his leg",
+      "Injured cells release albumin, raising the colloid osmotic pressure of the ankle's blood",
+      "Pain signals close the ankle's capillaries, trapping blood inside the injured tissue"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Injury triggers inflammation. Histamine and related chemicals widen the clefts between endothelial cells, so plasma proteins escape into the interstitial fluid. Interstitial oncotic pressure rises, the inward oncotic pull across the wall shrinks, and fluid filters out faster even though capillary pressure is unchanged.",
+      "options": [
+        "Correct. Increased permeability lets protein leak out, and the loss of the oncotic difference drives the swelling.",
+        "His blood pressure is normal, and a change in arterial pressure would not cause swelling in one ankle only. The cause is local.",
+        "Albumin is made by the liver and carried in plasma, not released by injured cells. A rise in blood colloid osmotic pressure would pull fluid into the capillaries and reduce swelling.",
+        "Closing capillaries would lower flow and filtration in the ankle. The swelling is interstitial fluid that filtered out, not blood trapped in the tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients", "compartments"],
+    "q": "Plasma contains far more sodium ions than protein molecules. Why do plasma proteins, and not sodium, create the osmotic pull that holds fluid in capillaries?",
+    "options": [
+      "Endothelial cells actively pump sodium ions back out of the capillary",
+      "Charged particles such as sodium ions cannot cause osmosis",
+      "Osmotic pressure depends on solute mass, and proteins are far heavier",
+      "Sodium crosses the wall freely and evens out; proteins are held back"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "An osmotic pull across a barrier needs a solute that stays on one side. Sodium passes through the clefts between endothelial cells, so plasma and interstitial fluid end up with nearly the same sodium concentration and no lasting difference. Proteins are held back, so they make a concentration difference, and that difference pulls water into the capillary.",
+      "options": [
+        "Endothelial cells do not pump sodium out of capillaries to set up a gradient. Sodium moves freely through the clefts.",
+        "Charged particles such as sodium do cause osmosis across membranes that block them, for example the plasma membrane of a cell. The point is whether the solute crosses this particular barrier.",
+        "Osmotic pressure depends on the number of dissolved particles, not their mass. By number, sodium ions far outnumber proteins.",
+        "Correct. Only solutes that cannot cross the capillary wall create a lasting osmotic difference across it."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-7",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Which changes would increase net filtration out of the capillaries in a tissue? Select all that apply.",
+    "options": [
+      "The arterioles feeding the tissue dilate",
+      "Pressure in the veins draining the tissue rises",
+      "Plasma albumin concentration falls",
+      "The arterioles feeding the tissue constrict",
+      "Plasma albumin concentration rises",
+      "The capillary walls become leaky to protein"
+    ],
+    "correct": [0, 1, 2, 5],
+    "why": {
+      "correct": "Filtration rises when capillary hydrostatic pressure rises (dilated arterioles, higher venous pressure), when blood colloid osmotic pressure falls (less albumin), or when protein leaks out and shrinks the oncotic difference (leaky walls).",
+      "options": [
+        "Increases filtration. Dilated arterioles lose less pressure, so more pressure reaches the capillaries and CHP rises.",
+        "Increases filtration. With no large resistance between capillaries and veins, a rise in venous pressure passes back into the capillaries and raises CHP.",
+        "Increases filtration. Less albumin means a lower blood colloid osmotic pressure, so less inward pull opposes filtration.",
+        "Decreases filtration. Constricted arterioles lose more pressure, so CHP downstream falls.",
+        "Decreases filtration. More albumin raises the inward oncotic pull.",
+        "Increases filtration. Protein leaking into the interstitial fluid raises IFCOP and shrinks the oncotic difference that holds fluid in the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["gradients", "compartments"],
+    "q": "A person's plasma protein concentration falls steadily over several weeks because of a very protein-poor diet. Predict the change in each variable once the protein level has fallen.",
+    "variables": [
+      { "name": "Blood colloid osmotic pressure", "answer": "down", "why": "Plasma proteins, mainly albumin, create blood colloid osmotic pressure. Fewer proteins means less osmotic pull." },
+      { "name": "Capillary hydrostatic pressure", "answer": "none", "why": "Capillary hydrostatic pressure depends on arterial pressure, arteriole resistance and venous pressure. None of these is changed directly by the protein level." },
+      { "name": "Net filtration pressure", "answer": "up", "why": "With less inward oncotic pull and unchanged outward push, the balance of the four forces shifts toward filtration." },
+      { "name": "Interstitial fluid volume", "answer": "up", "why": "More fluid filters out than drains away, so fluid collects between the cells: edema." },
+      { "name": "Interstitial fluid hydrostatic pressure", "answer": "up", "why": "As fluid collects in the tissue spaces, the pressure of that fluid rises. This rise partly opposes further filtration." }
+    ],
+    "why": {
+      "correct": "Less plasma protein lowers blood colloid osmotic pressure. Filtration then exceeds drainage, interstitial fluid collects, and its pressure rises until a new balance is reached with visible edema."
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["gradients"],
+    "q": "A cashier stands almost motionless at a register for six hours. Predict the change in each variable in the capillaries of her feet, compared with when she was lying down.",
+    "variables": [
+      { "name": "Venous pressure at the ankle", "answer": "up", "why": "Standing adds the weight of the column of blood above the ankle, and without walking the skeletal muscle pump does not empty the leg veins." },
+      { "name": "Capillary hydrostatic pressure in the feet", "answer": "up", "why": "No large resistance separates the capillaries from the veins, so the rise in venous pressure passes back into the capillaries." },
+      { "name": "Blood colloid osmotic pressure", "answer": "none", "why": "Standing does not change the amount of protein in her plasma, so the inward oncotic pull is about the same." },
+      { "name": "Fluid in the tissues of her feet", "answer": "up", "why": "Higher capillary pressure raises net filtration, so fluid collects in the tissues and her shoes feel tight." }
+    ],
+    "why": {
+      "correct": "Gravity raises venous pressure in the feet, which raises capillary hydrostatic pressure. With the oncotic pull unchanged, net filtration rises and fluid collects in the feet."
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-10",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": ["gradients", "compartments", "mass-balance"],
+    "q": "A healthy adult rapidly loses about 800 mL of blood from a leg wound, and the bleeding is then stopped. Predict each variable, first right after the bleed and then over the following hours as the body compensates.",
+    "variables": [
+      { "name": "Capillary hydrostatic pressure, right after the bleed", "answer": "down", "why": "Losing blood lowers arterial pressure, and the reflexes that follow constrict the arterioles, so less pressure reaches the capillaries." },
+      { "name": "Hematocrit, right after the bleed", "answer": "none", "why": "The wound lost whole blood, cells and plasma in the same proportion, so the fraction of blood made of red cells has not changed yet." },
+      { "name": "Net movement of interstitial fluid into the plasma, in the first hour", "answer": "up", "why": "With capillary pressure below the effective oncotic pull, fluid is reabsorbed into the blood for a limited time until proteins build up beneath the glycocalyx and stop it." },
+      { "name": "Hematocrit, several hours later", "answer": "down", "why": "Interstitial fluid, which contains no red cells, has been added to the plasma. The remaining red cells are now spread through more fluid." },
+      { "name": "Plasma protein concentration, several hours later", "answer": "down", "why": "The fluid drawn in from the interstitial spaces is low in protein, so it dilutes the plasma proteins until the liver makes more over the following days." }
+    ],
+    "why": {
+      "correct": "Right after the bleed, whole blood is gone but its composition is unchanged. Lower capillary pressure then lets protein-poor interstitial fluid move into the plasma for a while. That restores some plasma volume and dilutes the red cells and proteins, so hematocrit and protein concentration fall hours later."
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "compartments"],
+    "q": "Put the steps in sequence to show how kidney damage that lets protein leak into the urine leads to swelling of the legs.",
+    "options": [
+      "Albumin is lost from the blood into the urine",
+      "Plasma albumin concentration falls",
+      "Blood colloid osmotic pressure falls",
+      "Net filtration pressure in systemic capillaries rises",
+      "Fluid filters out faster than it drains away",
+      "Interstitial fluid collects, first in the lowest parts of the body"
+    ],
+    "why": {
+      "correct": "Protein lost in the urine lowers plasma albumin, which lowers blood colloid osmotic pressure. With less inward pull, net filtration rises. Once filtration outpaces drainage, fluid collects, and gravity makes it show first in the feet and ankles.",
+      "options": [
+        "The starting event: damaged kidneys let albumin pass into the urine.",
+        "Losing albumin faster than the liver replaces it lowers its concentration in plasma.",
+        "Albumin supplies most of blood colloid osmotic pressure, so less albumin means less inward pull.",
+        "With a smaller inward force and an unchanged outward push, the net filtration pressure becomes larger.",
+        "Faster filtration eventually exceeds the rate at which the tissue can drain.",
+        "The excess fluid is edema. Gravity pulls it toward the feet and ankles when the person is upright."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-12",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "This pathway explains swelling after a bee sting, but one step is wrong. Find the wrong step.",
+    "options": [
+      "Histamine is released in the stung tissue",
+      "Gaps between the endothelial cells of nearby capillaries widen",
+      "Plasma proteins leak into the interstitial fluid",
+      "Interstitial fluid colloid osmotic pressure falls",
+      "Net filtration rises, and fluid collects in the tissue"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When plasma proteins leak into the interstitial fluid, the protein concentration there goes up, so interstitial fluid colloid osmotic pressure rises. That rise pulls fluid out of the capillaries and shrinks the oncotic difference holding fluid in the blood.",
+      "options": [
+        "Correct as written. Histamine is released from mast cells in injured or stung tissue.",
+        "Correct as written. Histamine makes endothelial cells pull apart, widening the clefts between them.",
+        "Correct as written. Wider gaps let large plasma proteins escape.",
+        "This is the wrong step. More protein in the interstitial fluid raises its colloid osmotic pressure; it does not lower it.",
+        "Correct as written. A higher IFCOP favors filtration, so fluid collects faster than it drains away."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-13",
+    "type": "missing",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "misconception": "capillaries reabsorb most filtered fluid at the venule end",
+    "q": "In the revised Starling principle, sustained reabsorption shuts itself off. Complete the sequence: capillary hydrostatic pressure falls below the effective oncotic pull → fluid begins flowing into the capillary through the clefts → ____ → inward flow fades within minutes.",
+    "options": [
+      "Interstitial proteins build up in the space beneath the glycocalyx",
+      "Plasma proteins leak out through the clefts into the interstitial fluid",
+      "The arterioles dilate and raise the capillary pressure back up",
+      "The glycocalyx dissolves, making the capillary wall fully permeable"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Outward filtration normally washes the thin space beneath the glycocalyx, keeping its protein level near zero. Once flow reverses, the washing stops, interstitial proteins diffuse into that space, and its oncotic pressure rises. The effective oncotic pull into the blood shrinks, and the inward flow dies away.",
+      "options": [
+        "Correct. Protein accumulation beneath the glycocalyx cancels the inward oncotic pull.",
+        "The glycocalyx holds plasma proteins back whichever way fluid flows. Loss of plasma protein is not what stops reabsorption.",
+        "Arteriole diameter is set by local and nervous signals, not by the direction of flow across the capillary wall. Reabsorption fades even when capillary pressure stays low.",
+        "The glycocalyx stays in place. It is damaged in some diseases, but that is not part of the normal shutoff."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance", "compartments"],
+    "misconception": "capillaries reabsorb most filtered fluid at the venule end",
+    "q": "According to the revised Starling principle, in most tissues at steady state, how does the fluid filtered out of capillaries get back into the blood?",
+    "options": [
+      "It is reabsorbed at the venule end of the same capillaries it left",
+      "It diffuses into body cells and is released later as they die",
+      "It enters drainage vessels that return it to veins near the heart",
+      "It evaporates through the skin and is replaced by drinking water"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At steady state, most capillaries filter along their whole length and do not keep reabsorbing at their venule ends. The filtered fluid is carried away by a separate set of thin-walled drainage vessels that empty into large veins near the heart. You will meet them in the lymphatic system.",
+      "options": [
+        "This is the classic textbook picture, and exams often expect it. Direct measurements show that sustained venule-end reabsorption does not occur in most tissues.",
+        "Cells do not store filtered fluid and release it on dying. Interstitial fluid is drained continuously.",
+        "Correct. A separate drainage route returns the filtered fluid to the veins.",
+        "Water lost through the skin comes from the body's water as a whole. It is not the route that returns capillary filtrate to the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "In the classic textbook picture of capillary exchange that most exams expect, what happens at the venule end of a capillary, and which force is larger there?",
+    "options": [
+      "Net filtration; capillary hydrostatic pressure is larger",
+      "Net reabsorption; blood colloid osmotic pressure is larger",
+      "No net movement; the two forces are equal",
+      "Net reabsorption; capillary hydrostatic pressure is larger"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the classic picture, capillary hydrostatic pressure falls along the capillary while blood colloid osmotic pressure stays about 25 mm Hg. At the venule end, the oncotic pull is larger, so the model predicts net reabsorption of most of the fluid filtered upstream.",
+      "options": [
+        "That describes the arteriole end, where hydrostatic pressure is highest.",
+        "Correct for the classic model. The revised Starling principle shows this reabsorption is not sustained in most tissues, but this is the answer exams expect.",
+        "The classic model places the point of no net movement near the middle of the capillary, where CHP equals BCOP, not at the venule end.",
+        "Capillary hydrostatic pressure is lowest at the venule end, and a larger CHP would favor filtration, not reabsorption."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "Raising venous pressure by 10 mm Hg increases filtration in a capillary bed much more than raising arterial pressure by 10 mm Hg. What explains the difference?",
+    "options": [
+      "Veins have thicker walls than arteries, so they pass pressure changes on better",
+      "A rise in arterial pressure lowers blood colloid osmotic pressure and cancels out",
+      "Venous blood carries much more plasma protein than the arterial blood does",
+      "Arteriole resistance upstream of the capillaries absorbs most arterial changes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Capillary pressure sits between arterial and venous pressure, closer to venous, because most of the pressure drop happens in the arterioles upstream. An arterial rise is mostly used up crossing that resistance. There is little resistance between capillaries and veins, so a venous rise passes back into the capillaries almost fully.",
+      "options": [
+        "Veins have thinner walls than arteries, and wall thickness is not what decides how a pressure change reaches the capillaries.",
+        "Blood colloid osmotic pressure depends on plasma protein concentration. Arterial pressure does not change it.",
+        "Arterial and venous blood carry nearly the same protein concentration, because proteins are held back at the capillary wall.",
+        "Correct. The position of the main resistance, upstream of the capillaries, decides which pressure change reaches them."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "A small water-soluble drug given by vein reaches the interstitial fluid of skeletal muscle within minutes but barely enters the brain tissue. What difference between these capillaries best explains this?",
+    "options": [
+      "Brain capillaries are sinusoids with wide gaps between cells",
+      "Brain capillaries have sealed clefts between their cells",
+      "Brain capillaries have a much higher hydrostatic pressure",
+      "Muscle capillaries lack an endothelial lining"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Small water-soluble solutes cross continuous capillaries through the water-filled clefts between endothelial cells. In the brain those clefts are sealed, so a water-soluble drug cannot take that route and stays mostly in the blood. Lipid-soluble substances such as oxygen can still cross by passing through the cells.",
+      "options": [
+        "Sinusoids are the leakiest capillaries, found in places such as the liver and bone marrow. If brain capillaries were sinusoids, the drug would enter easily.",
+        "Correct. Sealed clefts block the main route for water-soluble solutes.",
+        "Hydrostatic pressure drives bulk flow of fluid, and the brain's capillary pressure is not unusually high. The drug's problem is the route through the wall.",
+        "Every capillary wall is made of endothelium. The difference is how tightly the endothelial cells are joined."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "misconception": "diffusion and filtration are the same process",
+    "q": "During a sprint, oxygen delivery from blood to the leg muscle cells rises sharply. Apart from the steeper oxygen gradient, which change in the capillary bed speeds diffusion?",
+    "options": [
+      "Higher capillary hydrostatic pressure pushes oxygen out faster by bulk flow",
+      "More capillaries open, adding surface area and shortening the distance",
+      "The capillary walls thicken and store extra oxygen",
+      "Plasma proteins carry the oxygen out through the clefts"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Diffusion rate rises with surface area and falls with distance. When more capillaries in a working muscle carry blood, the total exchange surface grows and each cell is closer to an open capillary, so oxygen diffuses to the cells faster.",
+      "options": [
+        "Oxygen leaves capillaries by diffusion down its concentration gradient. Bulk flow carries only a tiny fraction of the oxygen that diffusion moves.",
+        "Correct. More open capillaries means more area and a shorter path.",
+        "A thicker wall would lengthen the diffusion distance and slow oxygen delivery, and capillary walls do not thicken during a sprint.",
+        "Plasma proteins mostly stay in the blood, and oxygen does not need a carrier to cross the wall. It dissolves through the endothelial cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-19",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "Which substances cross a continuous capillary wall mainly by dissolving through the endothelial cells' plasma membranes? Select all that apply.",
+    "options": [
+      "Oxygen",
+      "Glucose",
+      "Carbon dioxide",
+      "Sodium ions",
+      "Albumin"
+    ],
+    "correct": [0, 2],
+    "why": {
+      "correct": "Lipid-soluble substances such as oxygen and carbon dioxide dissolve in the phospholipid bilayer and cross straight through the endothelial cells. Water-soluble solutes such as glucose and sodium use the water-filled clefts. Albumin is mostly held back.",
+      "options": [
+        "Crosses through the cells. Oxygen is small and lipid-soluble, so it dissolves in the bilayer.",
+        "Uses the clefts. Glucose is water-soluble and does not cross the bilayer easily.",
+        "Crosses through the cells. Carbon dioxide is lipid-soluble, like oxygen.",
+        "Uses the clefts. Charged ions cannot dissolve in the lipid bilayer.",
+        "Mostly held back. Albumin is too large for the clefts of a continuous capillary; a small amount crosses by transcytosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-capillary-exchange-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients", "compartments"],
+    "q": "The arterioles supplying the skin constrict strongly for about 30 minutes. What happens to fluid exchange in the skin's capillaries during that time?",
+    "options": [
+      "Capillary pressure falls; filtration slows and may briefly reverse",
+      "Capillary pressure rises, so filtration speeds up and the skin swells",
+      "Blood colloid osmotic pressure falls, so filtration speeds up in the skin",
+      "Nothing changes: arteriole diameter has no effect on the capillaries downstream"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Constricted arterioles lose more pressure, so less pressure reaches the capillaries and CHP falls. Filtration slows, and if CHP drops below the effective oncotic pull, interstitial fluid moves into the blood until protein builds up beneath the glycocalyx and stops it.",
+      "options": [
+        "Correct. Lower capillary pressure slows filtration and can cause temporary reabsorption.",
+        "Constriction upstream lowers, not raises, the pressure reaching the capillaries.",
+        "Blood colloid osmotic pressure depends on plasma protein, which arteriole diameter does not change.",
+        "Arterioles are the main resistance upstream of capillaries, so their diameter directly sets capillary pressure."
+      ]
+    }
+  }
+]

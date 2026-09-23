@@ -1,0 +1,50 @@
+{
+  "os-19-6": {
+    "file": "figures/openstax/os-19-6.jpg",
+    "w": 2233,
+    "h": 2100,
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.6",
+      "section": "19.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/cb38dd834e8826a56e8ca566a629460d056d2e83"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/cb38dd834e8826a56e8ca566a629460d056d2e83",
+    "alt": "Two drawings of the outside of the heart. The front view shows the four chambers from the surface, the ear-shaped flaps of the upper chambers, the large vessels leaving the top, and surface vessels running in fat-filled grooves toward the tip. The back view shows the veins entering the upper chambers and the surface vessels on the back of the heart.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.6",
+    "labels": []
+  },
+  "os-19-9": {
+    "file": "figures/openstax/os-19-9.jpg",
+    "w": 1656,
+    "h": 1159,
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.9",
+      "section": "19.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c9d5c770b3ddb5014230220f12028905df9b896e"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/c9d5c770b3ddb5014230220f12028905df9b896e",
+    "alt": "A front view of the heart cut open in a frontal plane. It shows the two upper and two lower chambers, the wall between the lower chambers, the valves between upper and lower chambers held by thin cords to small muscles on the lower chamber walls, the valves at the exits to the two large arteries, the large veins entering, and the thick muscular wall of the lower left chamber.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.9",
+    "labels": []
+  },
+  "os-19-12": {
+    "file": "figures/openstax/os-19-12.jpg",
+    "w": 1525,
+    "h": 1217,
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.12",
+      "section": "19.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ff0ff7b063895b5e36b4b72f9c29a120c825578f"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ff0ff7b063895b5e36b4b72f9c29a120c825578f",
+    "alt": "The heart seen from above with the upper chambers and large vessels removed, so all four valves are visible in one plane. Two large valves sit at the back, one with three flaps on the right side and one with two flaps on the left. Two smaller round valves with three half-moon flaps each sit in front of them.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.12",
+    "labels": []
+  }
+}

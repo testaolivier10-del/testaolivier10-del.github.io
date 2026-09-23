@@ -1,0 +1,52 @@
+{
+  "cell-parts": {
+    "def": "The three main parts of a typical cell: the plasma membrane (the outer boundary), the cytoplasm (everything inside the membrane except the nucleus) and the nucleus (the compartment that stores the cell's genetic instructions).",
+    "roots": [["cyto-", "cell"], ["-plasm", "formed material"]],
+    "say": "SY-toh-plaz-um"
+  },
+  "plasma-membrane": {
+    "def": "The thin outer boundary of a cell, also called the cell membrane: a phospholipid bilayer with proteins set into it. It controls what enters and leaves the cell.",
+    "roots": [["plasma", "something formed or molded"]],
+    "say": ""
+  },
+  "phospholipid-bilayer": {
+    "def": "Two sheets of phospholipids arranged tail to tail, with hydrophilic heads facing the water on each side and hydrophobic tails forming an oily core. It is the basic structure of every cell membrane.",
+    "roots": [["phospho-", "phosphate"], ["lip-", "fat"], ["bi-", "two"]],
+    "say": ""
+  },
+  "membrane-proteins": {
+    "def": "Proteins in or on a membrane. Integral proteins are embedded in the bilayer, most spanning it; peripheral proteins sit loosely on one surface. They transport substances, act as enzymes, bind signals, anchor the cell and mark its identity.",
+    "roots": [["integer", "whole"], ["peri-", "around"]],
+    "say": ""
+  },
+  "glycocalyx": {
+    "def": "The coat of sugar chains attached to proteins (glycoproteins) and lipids on the outer surface of the plasma membrane. It marks cell identity, cushions the cell and helps cells recognize each other.",
+    "roots": [["glyco-", "sugar"], ["calyx", "husk or cup"]],
+    "say": "gly-koh-KAY-liks"
+  },
+  "selective-permeability": {
+    "def": "The property of a plasma membrane that lets some substances cross freely, lets others cross only through specific proteins, and keeps others out. The cell can change it by changing its membrane proteins.",
+    "roots": [["per-", "through"], ["meare", "to pass"]],
+    "say": ""
+  },
+  "icf-ecf": {
+    "def": "Intracellular fluid (ICF) is the fluid inside cells. Extracellular fluid (ECF) is all fluid outside cells; its main parts are interstitial fluid, which bathes the cells, and plasma.",
+    "roots": [["intra-", "within"], ["extra-", "outside"], ["inter-", "between"], ["-stitial", "standing"]],
+    "say": "in-ter-STISH-ul"
+  },
+  "plasma": {
+    "def": "The fluid part of blood: mostly water, with dissolved salts, nutrients, wastes and proteins. It is the part of the extracellular fluid that travels through blood vessels.",
+    "roots": [["plasma", "something formed or molded"]],
+    "say": ""
+  },
+  "blood-cells-basic": {
+    "def": "The formed elements of blood. Red blood cells carry oxygen and lose their nucleus as they mature; white blood cells defend against infection; platelets are cell fragments that help seal breaks in blood vessels.",
+    "roots": [],
+    "say": ""
+  },
+  "ecf-icf-composition": {
+    "def": "The different ion contents of the fluids on each side of the plasma membrane: extracellular fluid is high in sodium and chloride, and intracellular fluid is high in potassium.",
+    "roots": [],
+    "say": ""
+  }
+}

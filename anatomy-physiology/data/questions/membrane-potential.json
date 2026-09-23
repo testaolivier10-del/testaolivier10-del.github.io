@@ -1,0 +1,524 @@
+[
+  {
+    "id": "anp-membrane-potential-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "A resting neuron's membrane potential is reported as −70 mV. What does the minus sign tell you?",
+    "options": [
+      "The inside of the cell is negative compared with the outside",
+      "The outside of the cell is negative compared with the inside",
+      "The cell has lost 70 mmol/L of positive ions",
+      "The cytosol holds more negative ions than positive ions throughout"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Membrane potential is always read as the inside compared with the outside. A negative value means the inside face of the membrane carries a slight excess of negative charge relative to the outside face.",
+      "options": [
+        "Correct. By convention the value is the inside relative to the outside, so −70 mV means the inside is 70 mV more negative.",
+        "This reverses the convention. The outside is the reference, and it is the inside that is negative.",
+        "Millivolts measure voltage, not concentration. Building −70 mV takes far fewer ions than that, and concentrations barely change.",
+        "The bulk cytosol is electrically neutral. The extra negative charge sits in a thin layer right against the inner face of the membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "An experimental cell has a membrane that lets potassium through and no other ion. It starts with 140 mmol/L K+ inside and 4 mmol/L outside. Where does its membrane potential settle?",
+    "options": [
+      "At 0 mV",
+      "At about −70 mV, the typical resting value",
+      "At about +60 mV",
+      "At about −90 mV"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "With only potassium able to cross, potassium leaves until the electrical pull inward balances its concentration push outward. That balance point is potassium's equilibrium potential, about −90 mV with these concentrations.",
+      "options": [
+        "Potassium still leaks out and leaves negative charge behind, so a voltage builds. A membrane passing only potassium settles at potassium's equilibrium potential, not at zero.",
+        "Real cells rest near −70 mV because a small sodium leak pulls them up from potassium's value. With no sodium leak, nothing pulls the voltage away from −90 mV.",
+        "About +60 mV is sodium's equilibrium potential. It would apply to a membrane that passed only sodium.",
+        "Correct. A membrane permeable only to potassium reaches potassium's equilibrium potential, about −90 mV."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A typical neuron rests at −70 mV. Potassium's equilibrium potential is about −90 mV and sodium's is about +60 mV. What best explains why the resting value lies so much closer to potassium's?",
+    "options": [
+      "Potassium ions are smaller and lighter than sodium ions",
+      "Far more potassium channels are open at rest",
+      "Each pump cycle moves more potassium ions than sodium ions",
+      "The body contains more total potassium than total sodium"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The membrane potential moves toward the equilibrium potential of the ion the membrane passes most easily. At rest, many potassium leak channels are open and few pass sodium, so the voltage sits near potassium's −90 mV, pulled only slightly toward sodium's +60 mV.",
+      "options": [
+        "Ion size alone does not set the resting value. What matters is how many open channels each ion has.",
+        "Correct. Permeability decides which ion dominates, and at rest the membrane passes potassium tens of times more easily than sodium.",
+        "The pump moves 3 Na+ out for every 2 K+ in, so it moves more sodium, not more potassium. Its direct effect on the voltage is only a few millivolts anyway.",
+        "Most of the body's sodium is outside cells and most potassium inside; total amounts do not decide the voltage. The open channels do."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "the potassium inside cells is what changes in hyperkalemia",
+    "q": "Mr. Okafor, 62, with kidney failure, has a blood potassium of 7.1 mmol/L (normal 3.5–5.0). What happens to the resting membrane potential of his heart muscle cells?",
+    "options": [
+      "It becomes more negative (hyperpolarized)",
+      "It does not change",
+      "It becomes less negative (depolarized)",
+      "It becomes positive"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Raising outside potassium shrinks the potassium concentration gradient. Less potassium needs to leave before the electrical pull balances it, so potassium's equilibrium potential moves toward zero, and the resting potential follows. The cells are depolarized.",
+      "options": [
+        "The voltage comes from potassium leaving the cell, not from potassium sitting outside. A smaller gradient means less leaves, so the inside becomes less negative, not more.",
+        "The inside concentration barely changes, but the gradient depends on both sides. Outside potassium rising from about 4 to 7 mmol/L is a large relative change and shrinks the gradient.",
+        "Correct. Hyperkalemia depolarizes resting cells by shrinking the potassium gradient that drives the leak.",
+        "Potassium still dominates at rest, and its equilibrium potential with 7 mmol/L outside is still well below zero (around −80 mV). The cell depolarizes but stays negative."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Ms. Reyes, 48, takes a water pill that makes her kidneys lose potassium. Her blood potassium is now 2.8 mmol/L. In most of her cells, how does the resting membrane potential change?",
+    "options": [
+      "It becomes more negative",
+      "It becomes less negative",
+      "It becomes positive",
+      "It does not change"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Hypokalemia (low blood potassium) makes the potassium gradient larger. More potassium must leave before the electrical pull balances it, so potassium's equilibrium potential and the resting potential both become more negative: the cells hyperpolarize.",
+      "options": [
+        "Correct. Low outside potassium steepens the gradient, and in most cells the resting potential hyperpolarizes.",
+        "Less negative is the effect of high blood potassium, which shrinks the gradient.",
+        "The resting potential stays negative. Potassium still dominates, and its equilibrium potential moves further below zero, not above it.",
+        "Outside potassium helps set the gradient that drives the leak. A drop from about 4 to 2.8 mmol/L is a large relative change, so the voltage shifts."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-6",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which of these make the inside of a resting cell more negative? Select all that apply.",
+    "options": [
+      "Potassium diffusing out through leak channels",
+      "Negatively charged proteins that cannot leave the cell",
+      "The pump moving 3 Na+ out for every 2 K+ in",
+      "Sodium diffusing in through leak channels",
+      "Water entering the cell by osmosis"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Potassium leaving carries positive charge out, and the trapped negative proteins it leaves behind cannot follow. The pump adds a small extra negativity because it exports one more positive charge than it imports each cycle.",
+      "options": [
+        "Correct. This is the main source of the resting potential.",
+        "Correct. These trapped anions are the negative charge left unbalanced when potassium leaves.",
+        "Correct, but small. Its direct contribution is only a few millivolts.",
+        "Sodium entering brings positive charge in. It pulls the voltage toward sodium's +60 mV, making the inside less negative.",
+        "Water carries no net charge, so osmosis does not directly change the membrane potential."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "depolarization means the inside becomes positive",
+    "q": "A neuron's membrane potential moves from −70 mV to −60 mV. The inside is still negative. What is this change called?",
+    "options": [
+      "Hyperpolarization",
+      "Repolarization",
+      "Depolarization",
+      "Reversal of polarity"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Depolarization is any change that makes the potential less negative than rest. It does not have to reach zero or become positive.",
+      "options": [
+        "Hyperpolarization is a change to more negative than rest, such as −70 to −80 mV.",
+        "Repolarization is a return toward rest after a depolarization. This change moves away from rest.",
+        "Correct. Moving from −70 to −60 mV is a depolarization, even though the inside stays negative.",
+        "Reversal of polarity would mean the inside became positive. Here it is still negative; it has only moved toward zero, which is a depolarization."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "A neuron at rest opens extra potassium channels, and its membrane potential moves from −70 mV to −78 mV. Which best explains the change?",
+    "options": [
+      "More potassium enters, neutralizing negative charge inside",
+      "More potassium leaves, moving the voltage toward −90 mV",
+      "More sodium leaks in, adding positive charge inside",
+      "The pump slows, so fewer positive ions are exported"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "More open potassium channels let more potassium leave, so the voltage moves further toward potassium's equilibrium potential. A value more negative than rest is a hyperpolarization.",
+      "options": [
+        "Potassium flows out of the cell, down its concentration gradient, not in. Potassium entering would make the inside less negative.",
+        "Correct. Increasing potassium permeability pulls the membrane toward potassium's −90 mV, a hyperpolarization.",
+        "A sodium leak would move the voltage toward sodium's +60 mV, a depolarization. The voltage here became more negative.",
+        "Exporting fewer positive ions would make the inside slightly less negative, the opposite of what happened. The cell also opened potassium channels, which is the direct cause."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "After a brief depolarization to +20 mV, a membrane returns to −70 mV. What is the return called?",
+    "options": [
+      "Hyperpolarization",
+      "Depolarization",
+      "Equilibrium",
+      "Repolarization"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Repolarization (re- = again) is the return of the membrane potential toward its resting value after a depolarization.",
+      "options": [
+        "Hyperpolarization would take the potential below −70 mV. This change stops at rest.",
+        "Depolarization is the move away from rest toward zero, which already happened on the way to +20 mV.",
+        "An equilibrium potential belongs to a single ion. The resting potential is a balance of several ions, and the return to it has its own name.",
+        "Correct. Moving from +20 mV back to −70 mV is repolarization."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-10",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Level 1. Extracellular potassium around a neuron rises from 4 to 8 mmol/L. Nothing else changes. Predict each variable.",
+    "variables": [
+      {
+        "name": "Potassium concentration gradient across the membrane",
+        "answer": "down",
+        "why": "Outside potassium rises while inside stays near 140 mmol/L, so the difference between the two sides shrinks."
+      },
+      {
+        "name": "How negative potassium's equilibrium potential is",
+        "answer": "down",
+        "why": "A smaller gradient is balanced by a smaller electrical pull, so potassium's equilibrium potential moves from about −95 toward −76 mV."
+      },
+      {
+        "name": "How negative the resting membrane potential is",
+        "answer": "down",
+        "why": "Rest sits near potassium's equilibrium potential, so it follows it toward zero: the cell depolarizes."
+      },
+      {
+        "name": "Potassium concentration inside the cell",
+        "answer": "none",
+        "why": "Only a tiny number of ions move to change the voltage, so the inside concentration stays near 140 mmol/L."
+      }
+    ],
+    "why": {
+      "correct": "Raising outside potassium shrinks the potassium gradient, which makes potassium's equilibrium potential and the resting potential less negative, while inside concentration barely changes."
+    }
+  },
+  {
+    "id": "anp-membrane-potential-11",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "misconception": "the pump creates the resting potential",
+    "q": "Level 4. A toxin completely blocks every sodium–potassium pump in a neuron. Predict each variable first in the first few seconds, then after several hours.",
+    "variables": [
+      {
+        "name": "How negative the resting potential is, in the first few seconds",
+        "answer": "down",
+        "why": "The pump's direct contribution disappears, but it was only a few millivolts, so the inside becomes only slightly less negative."
+      },
+      {
+        "name": "Sodium concentration inside the cell, after several hours",
+        "answer": "up",
+        "why": "Sodium keeps leaking in and nothing pumps it back out, so it slowly accumulates."
+      },
+      {
+        "name": "Potassium concentration gradient, after several hours",
+        "answer": "down",
+        "why": "Potassium keeps leaking out and is not replaced, so the gradient that drives the leak runs down."
+      },
+      {
+        "name": "How negative the resting potential is, after several hours",
+        "answer": "down",
+        "why": "With the gradients fading, potassium leak can no longer hold the inside negative, and the voltage drifts toward zero."
+      }
+    ],
+    "why": {
+      "correct": "Blocking the pump changes the voltage only a little at first, because leak channels, not the pump, make most of it. Over hours the gradients run down and the resting potential fades."
+    }
+  },
+  {
+    "id": "anp-membrane-potential-12",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Put the events that set up the resting membrane potential in order.",
+    "options": [
+      "The pump builds high potassium inside and high sodium outside",
+      "Potassium diffuses out through open leak channels",
+      "Negative proteins left behind make the inside negative",
+      "The negative inside pulls potassium back, slowing its exit",
+      "A small sodium leak settles the voltage near −70 mV"
+    ],
+    "why": {
+      "correct": "The gradients come first. Potassium then leaks out, leaving negative charge behind. That charge opposes further exit until the voltage nears −90 mV, and a small sodium leak pulls it up to about −70 mV."
+    }
+  },
+  {
+    "id": "anp-membrane-potential-13",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "One step in this account of the resting potential is wrong. Find it.",
+    "options": [
+      "Potassium is about 140 mmol/L inside and about 4 mmol/L outside",
+      "Many potassium leak channels are open at rest",
+      "Sodium leaves the cell through leak channels, carrying positive charge out",
+      "The negative inside opposes further potassium exit",
+      "The voltage settles near −70 mV"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Sodium is concentrated outside the cell, so it leaks in, not out. Its small inward leak makes the inside a little less negative.",
+      "options": [
+        "This is right: potassium is concentrated inside the cell.",
+        "This is right: open potassium leak channels are the main route for charge at rest.",
+        "This is the error. Sodium diffuses into the cell down its electrochemical gradient, adding positive charge inside.",
+        "This is right: the electrical pull on potassium grows as the inside becomes more negative.",
+        "This is right for a typical neuron: between potassium's −90 mV and sodium's +60 mV, close to potassium's."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-14",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Fill in the missing step. Potassium diffuses out through leak channels → ______ → the inside becomes negative → the negative inside pulls potassium back.",
+    "options": [
+      "Trapped negative proteins stay behind",
+      "Sodium rushes in to replace the potassium",
+      "The pump moves potassium back in at the same rate",
+      "Chloride leaves the cell alongside the potassium"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The inside becomes negative only because the charge that potassium was balancing stays behind. Large negative proteins cannot cross the membrane.",
+      "options": [
+        "Correct. Unbalanced negative charge left behind is what turns potassium loss into a voltage.",
+        "Sodium entering would add positive charge and oppose the negativity. At rest only a little sodium leaks in.",
+        "If the pump matched the leak instantly, no charge would separate on this timescale. The voltage comes from the leak itself.",
+        "If chloride left with potassium, the charges would cancel and no voltage would build."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "building the resting potential empties the cell of potassium",
+    "q": "A student says: \"Building a −70 mV resting potential must drain a large share of the cell's potassium.\" What is the best response?",
+    "options": [
+      "Correct: about half of the cell's potassium leaves",
+      "Correct, which is why the pump must refill the cell after every change in voltage",
+      "Incorrect: potassium does not move at rest",
+      "Incorrect: far fewer than one potassium ion in a thousand needs to leave"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Very little charge has to cross a thin membrane to create tens of millivolts. The concentrations inside and outside barely change; only a thin film of charge builds on each face of the membrane.",
+      "options": [
+        "If half the potassium left, the gradient itself would collapse. The number that moves is tiny.",
+        "The pump works steadily against the slow leak over time. It does not need to refill the cell after each voltage change, because each change moves very few ions.",
+        "Potassium does move at rest: its outward leak is what creates the voltage. The amount is just very small.",
+        "Correct. A tiny fraction of the potassium moves, and the concentrations stay essentially the same."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A resting cell suddenly opens so many sodium channels that it passes sodium far more easily than potassium. Where does its membrane potential head?",
+    "options": [
+      "Toward −90 mV",
+      "Toward +60 mV",
+      "Toward 0 mV and stops there",
+      "It stays at −70 mV"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The membrane potential moves toward the equilibrium potential of the ion the membrane passes most easily. With sodium dominating, the voltage heads toward sodium's equilibrium potential, about +60 mV.",
+      "options": [
+        "About −90 mV is potassium's equilibrium potential. It applies when potassium dominates.",
+        "Correct. Sodium flows in, carrying positive charge, and the inside heads toward sodium's +60 mV.",
+        "Zero has no special pull. Sodium keeps flowing in past zero because its concentration gradient still pushes it inward.",
+        "The resting value depends on which channels are open. Changing the dominant ion changes the voltage."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "Which statement best describes the main role of the sodium–potassium pump in a resting cell?",
+    "options": [
+      "It generates nearly all of the −70 mV by moving extra positive charge out",
+      "It keeps the ion gradients from running down",
+      "It opens potassium leak channels",
+      "It moves sodium into the cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pump's main job is long-term: it replaces the potassium that leaks out and removes the sodium that leaks in, keeping the gradients steady. Its direct voltage effect is only a few millivolts.",
+      "options": [
+        "The pump's direct contribution is a few millivolts. Potassium leak makes most of the resting potential.",
+        "Correct. The pump maintains the gradients that the leak channels use.",
+        "The pump is a transporter, not a channel opener. Leak channels are open on their own.",
+        "The pump moves sodium out of the cell, against its gradient."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-18",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-12-22",
+    "q": "In the setup shown, a student accidentally swaps the electrodes: the one in the cytosol becomes the reference, and the one outside becomes the recording electrode. The cell is unchanged. What does the meter now read?",
+    "options": [
+      "−70 mV",
+      "0 mV",
+      "+70 mV",
+      "−140 mV"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The voltage between the two faces is still 70 mV. Measured from the inside, the outside is 70 mV more positive, so the meter reads +70 mV. That is why the convention always reports the inside relative to the outside.",
+      "options": [
+        "This is the reading with the electrodes in their proper places. Swapping them flips the sign.",
+        "The charge separation has not changed, so the meter still sees a 70 mV difference.",
+        "Correct. Same size, opposite sign, because the reference point moved.",
+        "Swapping electrodes flips the sign; it does not double the size."
+      ]
+    }
+  },
+  {
+    "id": "anp-membrane-potential-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "Blood flow to part of a patient's brain stops. Within minutes, neurons in that area lose their resting potential. What is the most direct chain of events?",
+    "options": [
+      "Low oxygen opens sodium leak channels, which flood the cells with sodium",
+      "Less ATP is made, the pumps slow, and the gradients run down",
+      "Low oxygen blocks potassium leak channels, so no charge separates",
+      "Low oxygen raises the potassium concentration inside the neurons"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Neurons make most of their ATP with oxygen. Without ATP the pumps slow, leaks continue, and the gradients that the leak channels depend on fade, so the resting potential fades too.",
+      "options": [
+        "The leak channels do not need oxygen to stay in their usual state. The problem is the energy supply for the pump.",
+        "Correct. Energy failure stops the pump, and without the pump the gradients run down.",
+        "Potassium leak channels are passive; they do not need ATP to stay open.",
+        "Potassium keeps leaking out and is not pumped back, so inside potassium falls, not rises."
+      ]
+    }
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "os-4-9": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "4.9",
+      "section": "4.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/efcd47bfa4d84036f28a5b2a69f257b56876f6b8"
+    },
+    "alt": "Eight drawings of exocrine glands sunk into a surface epithelium. Glands at the top have one unbranched duct (simple); glands at the bottom have a branching duct system (compound). Glands on the right have tube-shaped secretory parts (tubular); glands on the left end in round sacs (alveolar, or acinar); one compound gland has both.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.9",
+    "labels": []
+  },
+  "os-4-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "4.10",
+      "section": "4.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d1a6afe524dfb5901fbc4ddeb21d96e937104123"
+    },
+    "alt": "Three rows of three gland cells on a basement membrane. Top row: vesicles from the Golgi apparatus fuse with the top of the cell and release their contents while the cell stays whole. Middle row: the top of the cell, packed with product, pinches off. Bottom row: a cell fills with product, breaks apart, and the whole cell becomes the secretion.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.10",
+    "labels": []
+  }
+}

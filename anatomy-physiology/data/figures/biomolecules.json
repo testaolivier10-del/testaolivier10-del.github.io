@@ -1,0 +1,90 @@
+{
+  "os-2-14": {
+    "source": "openstax",
+    "openstax": { "figure": "2.14", "section": "2.4", "url": "https://openstax.org/apps/archive/20260604.144757/resources/6b6e42254fc6b5c6e58b5b965781142c4418775a" },
+    "alt": "Two reactions shown one above the other. On top, two small building-block molecules join into one larger molecule and a molecule of water is released. Below, water is added to the larger molecule and it splits back into the two building blocks.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.14",
+    "labels": []
+  },
+  "os-2-18": {
+    "source": "openstax",
+    "openstax": { "figure": "2.18", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/a1aa86457e095ac6fa960a6a2cd87b0506254548" },
+    "alt": "Ring structures of five single sugars: glucose, fructose and galactose, which each have six carbons, and ribose and deoxyribose, which each have five. Deoxyribose has one fewer oxygen atom than ribose.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.18",
+    "labels": []
+  },
+  "os-2-20": {
+    "source": "openstax",
+    "openstax": { "figure": "2.20", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ba4123684548bcf6ef36a1bfb5f085608eb486c" },
+    "alt": "Three long chains built from glucose rings. Starch forms long chains with some branches, glycogen is much more heavily branched, and cellulose forms straight, unbranched chains lying side by side.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.20",
+    "labels": []
+  },
+  "os-2-21": {
+    "source": "openstax",
+    "openstax": { "figure": "2.21", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/4c57b4a7e7d8b5c8aeb90c67f774c20fed2bca54" },
+    "alt": "A glycerol molecule with three hydroxyl groups joins three long carbon chains, each ending in a carboxyl group. Three water molecules are released, and the result is one triglyceride.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.21",
+    "labels": []
+  },
+  "os-2-22": {
+    "source": "openstax",
+    "openstax": { "figure": "2.22", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/2e8091f4b7e300457f7ec897ae251b61126b7e9b" },
+    "alt": "Two carbon chains compared. The saturated chain has only single bonds and runs straight. The unsaturated chain has a double bond between two carbons, which puts a bend in the chain.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.22",
+    "labels": []
+  },
+  "os-2-23": {
+    "source": "openstax",
+    "openstax": { "figure": "2.23", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/82a59e82c125bb3cc199ff1d8c115d413beb8df3" },
+    "alt": "Structures of three lipids. A phospholipid has a head containing a phosphate group attached to glycerol and two long carbon tails. Cholesterol is built on four fused carbon rings. A third panel shows a lipid made from an unsaturated carbon chain.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.23",
+    "labels": []
+  },
+  "os-2-24": {
+    "source": "openstax",
+    "openstax": { "figure": "2.24", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/34d49cb46146d6953375fbef5f54d09c4ba8d383" },
+    "alt": "The general structure of an amino acid: a central carbon bonded to a hydrogen atom, an amino group, a carboxyl group and a variable side chain labeled R.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.24",
+    "labels": []
+  },
+  "os-2-25": {
+    "source": "openstax",
+    "openstax": { "figure": "2.25", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/dafa47df23f374608ef066fae20cc39be077e0d9" },
+    "alt": "Two amino acids join. The carboxyl group of one links to the amino group of the other, a molecule of water is released, and the new carbon-nitrogen link between them is highlighted as the peptide bond.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.25",
+    "labels": []
+  },
+  "os-2-26": {
+    "source": "openstax",
+    "openstax": { "figure": "2.26", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/eafbc46c874b884880ffdcfc4a1335895112ec85" },
+    "alt": "Four levels of a folded chain of amino acids. A straight sequence of amino acids; local coils and pleated sheets held by hydrogen bonds; the whole chain folded into a compact three-dimensional shape; and four folded chains fitted together into one working unit.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.26",
+    "labels": []
+  },
+  "os-2-28": {
+    "source": "openstax",
+    "openstax": { "figure": "2.28", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/4e7a11f3c5f7ff70784169c0a2d777aab0501104" },
+    "alt": "The parts of a nucleotide: a phosphate group, a five-carbon sugar and a nitrogen-containing base. The five bases are shown, the double-ring purines adenine and guanine and the single-ring pyrimidines cytosine, thymine and uracil, along with the two five-carbon sugars, ribose and deoxyribose.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.28",
+    "labels": []
+  },
+  "os-2-30": {
+    "source": "openstax",
+    "openstax": { "figure": "2.30", "section": "2.5", "url": "https://openstax.org/apps/archive/20260604.144757/resources/22c0b72bc1a6d3492fab8348e0b3850126b9f160" },
+    "alt": "The structure of adenosine triphosphate: the base adenine joined to the five-carbon sugar ribose, which carries a chain of three phosphate groups.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.30",
+    "labels": []
+  }
+}

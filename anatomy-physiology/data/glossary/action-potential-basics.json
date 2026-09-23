@@ -1,0 +1,37 @@
+{
+  "excitable-cell": {
+    "def": "A cell whose membrane can produce an action potential, because it has voltage-gated sodium and potassium channels. Neurons and muscle fibers are the main excitable cells.",
+    "roots": [["excitare", "to rouse (Latin)"]],
+    "say": ""
+  },
+  "graded-potential": {
+    "def": "A small, short-lived change in membrane potential whose size depends on the strength of the stimulus. It can depolarize or hyperpolarize, fades within a millimeter or two, and can add to other graded potentials.",
+    "roots": [],
+    "say": ""
+  },
+  "threshold": {
+    "def": "The membrane potential, about −55 mV in a typical neuron, at which enough voltage-gated sodium channels open that sodium entry outpaces potassium exit and an action potential starts.",
+    "roots": [],
+    "say": ""
+  },
+  "action-potential-basic": {
+    "def": "A rapid, all-or-none reversal of the membrane potential: sodium rushes in (to about +30 mV), then potassium flows out, returning the membrane to rest. It travels along the membrane without shrinking; in a neuron it is also called a nerve impulse.",
+    "roots": [],
+    "say": ""
+  },
+  "voltage-gated-na-k": {
+    "def": "Channels that open when the membrane depolarizes. Sodium channels open fast, then close on their own; potassium channels open slowly and close slowly. Together they shape the action potential.",
+    "roots": [],
+    "say": ""
+  },
+  "refractory-period-basic": {
+    "def": "A short time during and just after an action potential when the membrane cannot fire again, or fires only with a stronger stimulus, because its sodium channels cannot reopen until it repolarizes.",
+    "roots": [["refractarius", "stubborn (Latin)"]],
+    "say": "ree-FRAK-tor-ee"
+  },
+  "propagation-basic": {
+    "def": "The travel of an action potential along a membrane. Charge from a firing patch depolarizes the next patch to threshold, so each patch regenerates a full-sized action potential; the refractory patch behind keeps it moving one way.",
+    "roots": [["propagare", "to extend, spread (Latin)"]],
+    "say": ""
+  }
+}

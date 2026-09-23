@@ -1,0 +1,449 @@
+[
+  {
+    "id": "anp-dna-genes-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a DNA double helix, which base pairs with guanine?",
+    "options": [
+      "Adenine",
+      "Thymine",
+      "Cytosine",
+      "Another guanine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Guanine pairs with cytosine. A purine (guanine) pairs with a pyrimidine (cytosine), and the two line up to form three hydrogen bonds.",
+      "options": [
+        "Adenine is a purine, like guanine. Two purines together would make a rung too wide for the helix, and they cannot line up hydrogen bonds. Adenine pairs with thymine.",
+        "Thymine is a pyrimidine, so the width would fit, but its hydrogen-bonding groups do not line up with guanine's. Thymine pairs with adenine.",
+        "Correct. Guanine and cytosine form three hydrogen bonds and make a rung of standard width.",
+        "Two guanines are two purines: too wide for the helix, and their bonding groups do not match."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "One DNA strand reads 5′-GATTCA-3′. Which sequence is its complementary partner strand, written with its ends labeled?",
+    "options": [
+      "3′-CTAAGT-5′",
+      "5′-CTAAGT-3′",
+      "3′-GATTCA-5′",
+      "3′-CUAAGU-5′"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Pair each base (G→C, A→T, T→A, T→A, C→G, A→T) to get CTAAGT. The strands are antiparallel, so the partner's 3′ end lies opposite the first strand's 5′ end: 3′-CTAAGT-5′.",
+      "options": [
+        "Correct. The bases follow the pairing rule, and the ends are labeled in the opposite direction because DNA strands are antiparallel.",
+        "The bases are right, but the ends are labeled as if the strands ran the same way. DNA strands run in opposite directions.",
+        "This repeats the original sequence with the ends flipped. A partner strand has complementary bases, not the same ones.",
+        "DNA uses thymine, not the base written here as U. Paired with adenine, DNA always places thymine."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A sample of double-stranded human DNA is 22% thymine. What percentage of its bases is cytosine?",
+    "options": [
+      "22%",
+      "56%",
+      "28%",
+      "44%"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Thymine pairs with adenine, so A = T = 22%, and A + T = 44%. That leaves 56% for G + C. Guanine pairs with cytosine, so G = C, and C = 56% ÷ 2 = 28%.",
+      "options": [
+        "22% is the thymine value, and also the adenine value, since A pairs with T. Cytosine pairs with guanine, not thymine.",
+        "56% is guanine and cytosine together. Split it in half, because every guanine has one cytosine partner.",
+        "Correct. A + T = 44%, G + C = 56%, and cytosine is half of that.",
+        "44% is adenine plus thymine together, not cytosine."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A genetic lab receives a tube of a patient's blood. The technician explains that almost all the DNA she extracts comes from a small fraction of the cells in the tube. Which cells supply the DNA?",
+    "options": [
+      "Mature red blood cells",
+      "White blood cells",
+      "Platelets",
+      "Cells dissolved in the plasma"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "DNA sits in the nucleus. White blood cells have nuclei; mature red blood cells and platelets do not. So although red cells far outnumber white cells, the DNA comes from the white cells.",
+      "options": [
+        "Mature red blood cells are the most numerous cells in blood, but they have lost their nucleus, so they carry no chromosomes.",
+        "Correct. White blood cells are nucleated, so they hold the patient's chromosomes.",
+        "Platelets are cell fragments with no nucleus, so they contribute essentially no chromosomal DNA.",
+        "Plasma is the fluid part of blood, not a population of cells; it holds only traces of loose DNA fragments."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-5",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every structure that is part of the nucleus.",
+    "options": [
+      "Nuclear envelope",
+      "Nucleolus",
+      "Chromatin",
+      "Golgi apparatus",
+      "Lysosome",
+      "Nuclear pores"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "why": {
+      "correct": "The nucleus has a nuclear envelope pierced by nuclear pores, chromatin filling its interior, and one or more nucleoli. The Golgi apparatus and lysosomes are separate organelles in the cytoplasm.",
+      "options": [
+        "Part of the nucleus. The nuclear envelope is its double-membrane boundary.",
+        "Part of the nucleus. The nucleolus is a dense region inside it where ribosome halves are assembled.",
+        "Part of the nucleus. Chromatin is the DNA with its packing proteins.",
+        "Not part of the nucleus. The Golgi apparatus is a stack of membrane sacs in the cytoplasm that modifies and sorts proteins.",
+        "Not part of the nucleus. Lysosomes are digestive vesicles in the cytoplasm.",
+        "Part of the nucleus. Nuclear pores are channels through the envelope."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-6",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the levels of DNA packing in order, from least packed to most packed.",
+    "options": [
+      "Bare double helix",
+      "Nucleosomes: DNA wrapped around histone cores, like beads on a string",
+      "Coiled and looped chromatin fiber",
+      "Condensed chromosome in a dividing cell"
+    ],
+    "why": {
+      "correct": "DNA first wraps around histone cores to form nucleosomes. The string of nucleosomes coils into a thicker chromatin fiber, which folds into loops. When a cell divides, the loops compact much further into a visible chromosome."
+    }
+  },
+  {
+    "id": "anp-dna-genes-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a copied chromosome counts as two chromosomes",
+    "q": "One of your body cells has just finished copying all of its DNA and has not yet divided. How many chromosomes and how many chromatids does it contain?",
+    "options": [
+      "92 chromosomes and 92 chromatids",
+      "46 chromosomes and 46 chromatids",
+      "23 chromosomes and 46 chromatids",
+      "46 chromosomes and 92 chromatids"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Copying doubles the DNA but not the chromosome count. Each of the 46 chromosomes now consists of two sister chromatids joined at the centromere, so there are 46 chromosomes and 92 chromatids.",
+      "options": [
+        "This counts each chromatid as a separate chromosome. Sister chromatids stay joined, and together they are still one chromosome.",
+        "This is the cell before copying, when each chromosome is a single DNA molecule. Copying adds a second chromatid to each.",
+        "23 is the count in an egg or sperm cell, which carries one set. Your body cells carry two sets, 46 chromosomes.",
+        "Correct. 46 chromosomes, each made of two sister chromatids."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-8",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student lists the steps of DNA replication. Which step contains the error?",
+    "options": [
+      "Helicase separates the two strands by breaking the hydrogen bonds between paired bases.",
+      "Free nucleotides pair with the exposed bases: A with T and G with C.",
+      "DNA polymerase links the new nucleotides into a strand and removes most wrongly placed bases.",
+      "Each new double helix is made of two new strands, and the two old strands rejoin each other."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Replication is semiconservative. Each new double helix keeps one old strand, which served as the template, and pairs it with one new strand. The old strands do not rejoin.",
+      "options": [
+        "This step is right. Helicase breaks the hydrogen bonds between bases, which separates the strands without breaking either backbone.",
+        "This step is right. Free nucleotides pair with the template by the base-pairing rule.",
+        "This step is right. DNA polymerase joins the nucleotides with covalent bonds and proofreads as it goes.",
+        "This is the error. Each copy keeps one old strand and gains one new strand (semiconservative replication)."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step. Helicase unwinds the helix and separates the strands → free nucleotides pair with the exposed bases → ______ → two identical double helices, each with one old and one new strand.",
+    "options": [
+      "DNA polymerase joins the paired nucleotides into a new strand",
+      "Histones wrap each separated single strand into nucleosomes of its own",
+      "Helicase joins the paired nucleotides into a new strand",
+      "The nucleolus assembles the new strands"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Pairing places the right nucleotides, but something must join them with covalent bonds into a continuous strand. That is DNA polymerase's job.",
+      "options": [
+        "Correct. DNA polymerase links each nucleotide to the growing strand and proofreads it.",
+        "Histones package double-stranded DNA after copying. They do not build new strands.",
+        "Helicase separates strands; it does not link nucleotides. Linking is done by DNA polymerase.",
+        "The nucleolus assembles ribosome halves. It plays no part in copying DNA."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Researchers heat four DNA segments of equal length until their two strands separate. Which segment needs the highest temperature?",
+    "options": [
+      "A segment that is 30% guanine plus cytosine",
+      "A segment that is 45% guanine plus cytosine",
+      "A segment that is 70% adenine plus thymine",
+      "A segment that is 65% guanine plus cytosine"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heat separates the strands by breaking the hydrogen bonds between paired bases. A G–C pair has three hydrogen bonds and an A–T pair has two, so the segment with the most G–C pairs holds its strands together most strongly and needs the most heat.",
+      "options": [
+        "Only 30% G–C means mostly A–T pairs, with two hydrogen bonds each. This segment separates at a lower temperature.",
+        "45% G–C is more than some but less than the richest segment, so it separates before that one.",
+        "70% A–T means only 30% G–C. This is the same as the weakest segment and separates easily.",
+        "Correct. The most G–C pairs means the most hydrogen bonds holding the strands together."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Histone proteins are rich in amino acids that carry a positive charge. Why does DNA wrap tightly around them?",
+    "options": [
+      "DNA's bases form hydrogen bonds with the histones",
+      "The negative phosphate backbone is drawn to the positive histones",
+      "DNA's sugars are hydrophobic and hide inside the histone core, away from water",
+      "Histones cut the DNA into short pieces that fit neatly around each histone core"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each phosphate group in DNA's backbone carries a negative charge. Opposite charges attract, so the negative backbone clings to the positive histone surface.",
+      "options": [
+        "The bases are tucked into the middle of the helix, paired with each other. The histones contact the outside of the helix, which is the backbone.",
+        "Correct. The attraction between opposite charges holds DNA on the histone core.",
+        "Deoxyribose is a polar sugar, and the backbone faces the watery nucleus. The binding comes from charge, not from avoiding water.",
+        "Histones package DNA without cutting it. Each chromosome stays one continuous DNA molecule."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Of the 23 pairs of chromosomes in most of your body cells, how many pairs are autosomes?",
+    "options": [
+      "22",
+      "23",
+      "1",
+      "46"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Pairs 1 to 22 are autosomes. The 23rd pair is the sex chromosomes (XX or XY).",
+      "options": [
+        "Correct. 22 pairs of autosomes plus one pair of sex chromosomes.",
+        "23 is the total number of pairs, which includes the sex chromosomes.",
+        "One pair is the sex chromosomes, not the autosomes.",
+        "46 is the total number of chromosomes, not pairs of autosomes."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Bacteria are grown with nitrogen that makes their DNA heavy, then moved to ordinary nitrogen and allowed to copy their DNA exactly once. What will the new DNA molecules look like?",
+    "options": [
+      "Half of the molecules fully heavy and half of them fully light",
+      "All molecules fully light, with the heavy strands discarded",
+      "All molecules still fully heavy on both strands",
+      "Each molecule has one heavy strand and one light strand"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Replication is semiconservative. Each old heavy strand serves as a template and keeps its place, paired with a new strand built from light nucleotides. Every daughter molecule is one heavy plus one light strand.",
+      "options": [
+        "This would happen only if the old helix stayed intact and a whole new helix were built beside it. Instead, each copy keeps one old strand.",
+        "Old strands are not discarded. Every copy keeps one old heavy strand, so none can be entirely light after a single round.",
+        "The new strands are built from the light nucleotides now available, so the molecules cannot stay fully heavy.",
+        "Correct. One old strand plus one new strand in every molecule."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "different cell types contain different genes",
+    "q": "Compare a liver cell and a skin cell from the same person. Which statement about their DNA is accurate?",
+    "options": [
+      "The liver cell carries only the genes for liver work",
+      "They carry the same genome but use different genes",
+      "The skin cell has fewer chromosomes than the liver cell",
+      "Each carries a different sequence of bases in the same genes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Almost every cell with a nucleus carries the same genome, copied from the same first cell. Cells differ because each uses a different subset of genes.",
+      "options": [
+        "Cells do not discard the genes they do not use. A liver cell still carries the genes for skin proteins.",
+        "Correct. Same DNA, different genes in use.",
+        "Both have 46 chromosomes. Chromosome number does not differ between body cell types.",
+        "Every copy of your DNA comes from the same original through accurate replication, so the sequences are the same apart from rare copying errors."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is a gene?",
+    "options": [
+      "A whole chromosome, from one end to the other",
+      "A single nucleotide within the DNA strand",
+      "A stretch of DNA that codes for a working product",
+      "The histone core that DNA wraps around in a nucleosome"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A gene is a stretch of DNA whose sequence codes for a working product, usually a protein. One chromosome carries hundreds to thousands of genes.",
+      "options": [
+        "A chromosome is one whole DNA molecule and carries many genes.",
+        "A nucleotide is one building block. A gene is a sequence of many nucleotides.",
+        "Correct. A gene is a coding segment of DNA.",
+        "A histone core is a protein spool for packing DNA, not a piece of genetic information."
+      ]
+    }
+  },
+  {
+    "id": "anp-dna-genes-16",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A cell is treated with a drug that blocks helicase just before it begins to copy its DNA. Predict the change in each variable compared with an untreated cell.",
+    "variables": [
+      {
+        "name": "Amount of separated, single-stranded DNA exposed",
+        "answer": "down",
+        "why": "Helicase breaks the hydrogen bonds between base pairs. With it blocked, the strands stay paired, so fewer bases are exposed."
+      },
+      {
+        "name": "Amount of new DNA made",
+        "answer": "down",
+        "why": "DNA polymerase needs an exposed template strand to pair nucleotides against. No separated strands means no template, so little new DNA is made."
+      },
+      {
+        "name": "Number of chromosomes in the cell",
+        "answer": "none",
+        "why": "Chromosome number depends on how many DNA molecules there are. The existing 46 are not destroyed, and without copying none are added."
+      }
+    ]
+  },
+  {
+    "id": "anp-dna-genes-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A drug blocks transport through the nuclear pores. What would you expect to build up inside the nucleus?",
+    "options": [
+      "Mitochondria from the cytoplasm",
+      "Lysosomes from the Golgi apparatus",
+      "Newly assembled ribosome halves",
+      "Glucose from the blood"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Ribosome halves are assembled in the nucleolus and leave through the nuclear pores. With the pores blocked, they accumulate inside the nucleus.",
+      "options": [
+        "Mitochondria are made in the cytoplasm by the division of existing mitochondria. They never pass through nuclear pores.",
+        "Lysosomes bud from the Golgi apparatus in the cytoplasm. They never enter or leave the nucleus.",
+        "Correct. Ribosome halves built in the nucleolus exit through the pores, so blocking them traps the halves inside.",
+        "Glucose is a small molecule used for fuel in the cytoplasm; nothing about the pores would trap it in the nucleus."
+      ]
+    }
+  }
+]

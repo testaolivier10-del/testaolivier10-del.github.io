@@ -1,0 +1,327 @@
+[
+  {
+    "id": "anp-word-parts-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "In the term gastritis, which part is the word root?",
+    "options": ["gastr", "-itis", "gastro-", "the letter o"],
+    "correct": 0,
+    "why": {
+      "correct": "The word root carries the core meaning. In gastritis that is gastr, \"stomach\". The ending -itis adds \"inflamed\".",
+      "options": [
+        "Correct. gastr is the root; it names the body part, the stomach.",
+        "-itis is a suffix. It sits at the end and says the term names a condition: something inflamed.",
+        "gastr/o is the combining form, the root plus a linking vowel. In gastritis the vowel is dropped because -itis starts with a vowel, so the root alone is present.",
+        "Gastritis contains no combining vowel. It is dropped before a suffix that begins with a vowel."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What is a combining form?",
+    "options": [
+      "A prefix and a suffix joined without a root",
+      "Two roots joined without any vowel",
+      "A word root plus a linking vowel, such as cardi/o",
+      "A suffix that turns a noun into an adjective"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A combining form is a root with its combining vowel, almost always o, written with a slash: cardi/o, gastr/o, hepat/o. The vowel makes the parts easy to join and say.",
+      "options": [
+        "A term with only a prefix and a suffix, such as tachypnea, exists, but it is not what \"combining form\" means.",
+        "Roots joined to each other keep a vowel between them, as in gastroenterology. Joining them without one is the opposite of a combining form.",
+        "Correct. Root plus combining vowel is a combining form.",
+        "Suffixes such as -ac and -al do make adjectives, but they are suffixes, not combining forms."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A patient's chart says hepatomegaly. What does the term mean?",
+    "options": ["Pain in the liver", "An enlarged liver", "Removal of the liver", "An inflamed liver"],
+    "correct": 1,
+    "why": {
+      "correct": "Read the suffix first: -megaly means enlargement. The root hepat means liver. Hepatomegaly is an enlarged liver.",
+      "options": [
+        "Pain would be the suffix -algia. The term here ends in -megaly.",
+        "Correct. hepat (liver) + o + megaly (enlargement).",
+        "Removal would be the suffix -ectomy, as in hepatectomy.",
+        "Inflamed would be the suffix -itis. The term here ends in -megaly."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A surgeon removes a patient's kidney. Which term names the procedure?",
+    "options": ["Nephrotomy", "Nephrostomy", "Nephrology", "Nephrectomy"],
+    "correct": 3,
+    "why": {
+      "correct": "-ectomy means cutting out (ec- = out, tom = cut). Nephrectomy is removal of a kidney.",
+      "options": [
+        "-tomy means cutting into. A nephrotomy is an incision into the kidney; the kidney stays.",
+        "-ostomy means making an opening. A nephrostomy is a tube opening from the kidney through the skin; the kidney stays.",
+        "-logy means study of. Nephrology is the medical field that studies the kidneys.",
+        "Correct. nephr (kidney) + ectomy (cutting out)."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A patient is breathing 8 times a minute, far slower than normal. Which term describes this?",
+    "options": ["Bradypnea", "Tachypnea", "Apnea", "Dyspnea"],
+    "correct": 0,
+    "why": {
+      "correct": "The prefix brady- means slow and -pnea means breathing. Bradypnea is slow breathing.",
+      "options": [
+        "Correct. brady- (slow) + -pnea (breathing).",
+        "tachy- means fast. Tachypnea is fast breathing, the opposite of this patient.",
+        "a- means without. Apnea means no breathing at all, and this patient is breathing.",
+        "dys- means difficult. Dyspnea describes breathing that feels hard, whatever its rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-6",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every term that contains a prefix.",
+    "options": ["Subcutaneous", "Cardiology", "Pericarditis", "Gastritis", "Intercostal", "Hepatomegaly"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "A prefix sits before the root. sub- (under), peri- (around) and inter- (between) are prefixes. The other terms start directly with a root.",
+      "options": [
+        "Correct. sub- (under) + cutane (skin) + -ous (pertaining to).",
+        "Cardiology is cardi (root) + o + logy (suffix). It starts with the root.",
+        "Correct. peri- (around) + card (heart) + -itis (inflamed).",
+        "Gastritis is gastr (root) + itis (suffix). It starts with the root.",
+        "Correct. inter- (between) + cost (rib) + -al (pertaining to).",
+        "Hepatomegaly is hepat (root) + o + megaly (suffix). It starts with the root."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Put the steps for decoding an unfamiliar medical term in order.",
+    "options": [
+      "Read the suffix to learn what kind of word it is",
+      "Read the prefix, if there is one, to learn how the meaning is modified",
+      "Read the root or roots to learn which body part it is about",
+      "Combine the parts, starting from the suffix",
+      "Check the literal meaning against the definition"
+    ],
+    "why": { "correct": "Suffix first, because it says what kind of word you have (condition, procedure, field). Then the prefix, then the roots. Combine starting from the suffix, and finally confirm the meaning, because literal meanings are sometimes off." }
+  },
+  {
+    "id": "anp-word-parts-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which spelling correctly joins gastr/o and -itis?",
+    "options": ["Gastroitis", "Gastritis", "Gastrotitis", "Gastrotis"],
+    "correct": 1,
+    "why": {
+      "correct": "The combining vowel is dropped before a suffix that begins with a vowel. -itis begins with i, so gastr/o + itis = gastritis.",
+      "options": [
+        "Keeping the o before a vowel breaks the rule and makes an awkward double vowel.",
+        "Correct. Drop the o before a suffix starting with a vowel.",
+        "This keeps the o and adds an extra t between the parts. Neither belongs: the o is dropped, and the suffix is simply -itis.",
+        "This keeps the o and shortens the suffix to -tis. The suffix stays whole as -itis; it is the o that gets dropped."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Build the term for the study of the stomach and intestines: gastr + ____ + enter + o + logy.",
+    "options": ["o", "nothing", "a", "i"],
+    "correct": 0,
+    "why": {
+      "correct": "Between two roots the combining vowel stays, even when the next root starts with a vowel. So gastr + o + enter + o + logy = gastroenterology.",
+      "options": [
+        "Correct. The combining vowel o is kept between roots.",
+        "Dropping the vowel happens only before a suffix that starts with a vowel. Here the next part is a root, so the vowel stays.",
+        "The combining vowel is almost always o. \"Gastraenterology\" is not a term.",
+        "The combining vowel is almost always o. \"Gastrienterology\" is not a term."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-10",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student builds the term for an inflamed stomach. One step is wrong. Find it.",
+    "options": [
+      "Choose the root for stomach: gastr",
+      "Choose the suffix for inflamed: -itis",
+      "Keep the combining vowel o, since the suffix begins with a vowel",
+      "Join the parts to make a single word"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The rule runs the other way: the combining vowel is dropped before a suffix that begins with a vowel. Keeping it would give \"gastroitis\" instead of gastritis.",
+      "options": [
+        "This step is right. gastr is the root for stomach.",
+        "This step is right. -itis means inflamed.",
+        "This is the wrong step. Before a suffix that starts with a vowel, the o is dropped.",
+        "This step is right. The parts are written as one word: gastritis."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A 29-year-old woman tells the triage nurse that it burns when she passes urine. The nurse writes a single term in the chart for this symptom. Which term fits?",
+    "options": ["Dysuria", "Cystectomy", "Hematology", "Nephrostomy"],
+    "correct": 0,
+    "why": {
+      "correct": "dys- means difficult or painful, and -uria means a condition of the urine. Dysuria is painful or difficult passing of urine, which is what she describes.",
+      "options": [
+        "Correct. dys- (painful) + -uria (condition of the urine).",
+        "-ectomy is a procedure, removal. A cystectomy is removal of the bladder, not a symptom.",
+        "-logy names a field. Hematology is the study of blood, not a symptom.",
+        "-ostomy is a procedure that makes an opening. A nephrostomy drains the kidney through the skin."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Renal and nephrectomy both refer to the kidney, yet they use different roots. What explains this?",
+    "options": [
+      "They refer to different parts of the kidney",
+      "One root is Latin and the other is Greek",
+      "Renal describes disease, and nephr describes healthy tissue",
+      "Nephr is a prefix and ren is a root"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Many organs have a Latin root and a Greek root. ren is Latin and nephr is Greek, and both mean kidney. The Latin root often forms plain descriptive words (renal), while the Greek root often forms names of diseases and procedures (nephritis, nephrectomy).",
+      "options": [
+        "Both roots mean the whole kidney. Neither is specific to one part of it.",
+        "Correct. Two languages, one organ: ren (Latin) and nephr (Greek).",
+        "The pattern runs roughly the other way: renal is a plain description, and nephr appears in many disease names. Neither root means healthy or diseased.",
+        "Both are roots. Each names the kidney itself; a prefix would only modify a root."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-13",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every suffix that names a procedure rather than a condition.",
+    "options": ["-ectomy", "-algia", "-scopy", "-megaly", "-plasty", "-itis"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "-ectomy (cutting out), -scopy (looking inside with an instrument) and -plasty (surgical repair or reshaping) are things done to a patient. -algia, -megaly and -itis describe conditions a patient has.",
+      "options": [
+        "Correct. -ectomy is removal, a procedure.",
+        "-algia means pain, a condition.",
+        "Correct. -scopy means looking inside with an instrument, as in arthroscopy.",
+        "-megaly means enlargement, a condition.",
+        "Correct. -plasty means surgical repair or reshaping, as in rhinoplasty.",
+        "-itis means inflamed, a condition."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Build the term for an enlarged spleen.",
+    "options": ["Splenectomy", "Splenalgia", "Splenomegaly", "Splenitis"],
+    "correct": 2,
+    "why": {
+      "correct": "Root splen (spleen) + combining vowel o + suffix -megaly (enlargement). The vowel stays because -megaly starts with a consonant.",
+      "options": [
+        "-ectomy means removal. A splenectomy removes the spleen.",
+        "-algia means pain. Splenalgia is pain in the spleen, not enlargement.",
+        "Correct. splen + o + megaly.",
+        "-itis means inflamed. Splenitis is an inflamed spleen, not an enlarged one."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A medicine is given by subcutaneous injection. Where does the needle deliver it?",
+    "options": ["Into a vein", "Between one rib and the next", "Under the skin", "Into a muscle"],
+    "correct": 2,
+    "why": {
+      "correct": "sub- means under, cutane means skin, and -ous means pertaining to. A subcutaneous injection goes just under the skin.",
+      "options": [
+        "Into a vein is intravenous: intra- (inside) + ven (vein) + -ous.",
+        "Between one rib and the next is intercostal: inter- (between) + cost (rib) + -al.",
+        "Correct. sub- (under) + cutane (skin).",
+        "Into a muscle is intramuscular: intra- (inside) + muscul (muscle) + -ar."
+      ]
+    }
+  },
+  {
+    "id": "anp-word-parts-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "The word artery comes from a Greek word for an air duct. What does this example show about decoding?",
+    "options": [
+      "Arteries carry air as well as blood",
+      "Greek roots are less accurate than Latin roots",
+      "Word parts give a literal meaning that you still check against the definition",
+      "Only terms with a prefix can be decoded"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Ancient anatomists found arteries empty after death and guessed they carried air. The name kept that old guess. Word parts usually get you to the right meaning, but the definition is what counts.",
+      "options": [
+        "Arteries carry blood away from the heart. The air-duct name records an old mistake, not a fact.",
+        "Greek and Latin roots are equally useful. The problem here is an outdated idea behind the name, not the language.",
+        "Correct. Decoding gives the literal meaning; always confirm it with the definition.",
+        "Most terms can be decoded, with or without a prefix. Gastritis has no prefix and decodes cleanly."
+      ]
+    }
+  }
+]

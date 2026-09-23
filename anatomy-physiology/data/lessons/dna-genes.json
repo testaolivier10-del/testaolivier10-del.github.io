@@ -1,0 +1,45 @@
+{
+  "topic": "dna-genes",
+  "hook": "<p>Ms. Reyes, 34, has blood drawn for a genetic test. Almost every cell in her tube is a red blood cell, yet the lab gets no DNA from them. The DNA comes from the few white blood cells, because mature red blood cells have no nucleus. Where DNA lives, how it is built and how it is copied all follow from its structure.</p>",
+  "prereq": [
+    {
+      "q": "What are the monomers of a nucleic acid?",
+      "options": ["Amino acids", "Nucleotides", "Monosaccharides", "Fatty acids"],
+      "correct": 1,
+      "why": "Nucleic acids are polymers of nucleotides. Each nucleotide has a phosphate, a five-carbon sugar and a nitrogenous base.",
+      "review": "biomolecules"
+    },
+    {
+      "q": "What does an enzyme do to a chemical reaction?",
+      "options": ["It lowers the activation energy, which speeds the reaction", "It supplies the energy the reaction releases", "It becomes one of the products", "It raises the activation energy"],
+      "correct": 0,
+      "why": "An enzyme lowers the activation energy, so the reaction runs faster. It comes out of the reaction unchanged and does not change how much energy the reaction releases.",
+      "review": "enzymes-energy"
+    },
+    {
+      "q": "Which organelle is a network of membranes with ribosomes on its outer surface?",
+      "options": ["Golgi apparatus", "Smooth ER", "Rough ER", "Lysosome"],
+      "correct": 2,
+      "why": "Rough ER is studded with ribosomes, which gives it its rough look. Its membranes connect to the outer layer of the nuclear envelope.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-19",
+    "caption": "The nucleus: the nuclear envelope with its nuclear pores, chromatin inside, and the nucleolus."
+  },
+  "chain": [
+    { "cause": "Before a cell divides, helicase moves along each DNA double helix and breaks the hydrogen bonds between paired bases.", "effect": "The two strands separate, and the bases of each strand are exposed." },
+    { "cause": "The exposed bases act as templates.", "effect": "Free nucleotides pair with them by the base-pairing rule: A with T, G with C." },
+    { "cause": "DNA polymerase links the paired nucleotides with covalent bonds and proofreads each one.", "effect": "A new complementary strand grows along each old strand, with about one error left per billion bases." },
+    { "cause": "Each old strand is now paired with a new strand.", "effect": "Two identical double helices exist, each with one old and one new strand (semiconservative replication)." },
+    { "cause": "The two copies of each chromosome stay joined at the centromere.", "effect": "Each chromosome now consists of two identical sister chromatids, ready to be shared between two new cells." }
+  ],
+  "misconception": {
+    "wrong": "Chromosomes are always X-shaped, and each X is two chromosomes.",
+    "right": "Most of the time your DNA is loose chromatin, and each chromosome is a single long DNA molecule. The X shape appears only after the DNA has been copied and packed tightly, when a cell is about to divide. Even then the X is one chromosome made of two sister chromatids, so a cell holding 46 X shapes has 46 chromosomes and 92 chromatids."
+  },
+  "check": ["anp-dna-genes-1", "anp-dna-genes-3", "anp-dna-genes-7", "anp-dna-genes-8", "anp-dna-genes-11", "anp-dna-genes-14"],
+  "summary": "<p>Your DNA sits in the nucleus, behind a double nuclear envelope with nuclear pores; the nucleolus assembles ribosome halves. DNA is two antiparallel strands of nucleotides twisted into a double helix, paired A with T and G with C by hydrogen bonds. It winds around positively charged histones into nucleosomes and chromatin, and packs further into chromosomes: 46 in most body cells, 22 pairs of autosomes plus the sex chromosomes. A gene is a segment of DNA that codes for a working product, and your genome holds about 20,000 protein-coding genes. Before a cell divides, helicase separates the strands and DNA polymerase builds a new partner for each, giving two identical sister chromatids joined at a centromere.</p>",
+  "connections": []
+}

@@ -1,0 +1,5 @@
+{
+  "word-root": { "def": "The part of a medical term that carries its core meaning, usually a body part or substance, such as cardi (heart) in cardiology. A root plus a linking vowel, usually o, is a combining form, written cardi/o.", "roots": [], "say": "" },
+  "prefix": { "def": "A word part placed before a root that modifies its meaning, often telling where, how much, how many or how fast, such as tachy- (fast) in tachypnea.", "roots": [["pre-", "before"]], "say": "" },
+  "suffix": { "def": "A word part added at the end of a root that usually tells what kind of term it is: a condition (-itis, inflamed), a procedure (-ectomy, cutting out), a field (-logy, study of) or a description (-al, pertaining to).", "roots": [], "say": "" }
+}

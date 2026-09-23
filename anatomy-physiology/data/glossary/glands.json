@@ -1,0 +1,22 @@
+{
+  "gland": {
+    "def": "One cell or a group of epithelial cells that makes a product and releases it (secretion).",
+    "roots": [["glans", "acorn"]],
+    "say": ""
+  },
+  "exocrine-gland": {
+    "def": "A gland whose product travels through a duct, or for a single-cell gland directly, onto a surface such as the skin or the inside of the gut. A serous gland releases watery, enzyme-rich fluid; a mucous gland releases mucus.",
+    "roots": [["exo-", "outside"], ["-crine", "to secrete"], ["ser/o", "watery fluid"]],
+    "say": "EK-soh-krin"
+  },
+  "endocrine-gland": {
+    "def": "A ductless gland that releases hormones into the interstitial fluid, from where they diffuse into capillaries and travel in the blood to target cells.",
+    "roots": [["endo-", "within"], ["-crine", "to secrete"]],
+    "say": "EN-doh-krin"
+  },
+  "secretion-modes": {
+    "def": "The three ways an exocrine cell releases its product: merocrine (by exocytosis; the cell stays whole), apocrine (the product-filled apical end pinches off) and holocrine (the whole cell breaks apart and becomes the secretion).",
+    "roots": [["mero-", "part"], ["apo-", "off, away from"], ["holo-", "whole"]],
+    "say": "MER-oh-krin, AP-oh-krin, HOL-oh-krin"
+  }
+}

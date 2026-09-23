@@ -1,0 +1,480 @@
+[
+  {
+    "id": "anp-epithelium-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which list names the four primary tissue types?",
+    "options": [
+      "Epithelial, connective, muscle and nervous",
+      "Epithelial, glandular, muscle and nervous",
+      "Epithelial, connective, skeletal and blood",
+      "Squamous, cuboidal, columnar and transitional"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Every organ is built from just four tissue types: epithelial tissue covers and lines, the connective type supports and binds, muscle contracts, and nervous tissue carries electrical signals.",
+      "options": [
+        "Correct. These are the four primary tissue types.",
+        "Tissues that secrete are made mostly of epithelial cells, so they are a kind of epithelium, not a separate primary type. The connective type is missing from this list.",
+        "Skeleton and blood are both kinds of the connective type; they are not separate primary types. Muscle and nervous tissue are missing.",
+        "These are cell shapes and one subtype used to name epithelia. They are all kinds of one tissue type, not four different types."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "An epithelial cell's apical surface faces which direction?",
+    "options": [
+      "Toward the basement membrane",
+      "Toward the capillaries that supply its cells",
+      "Toward a lumen or the outside of the body",
+      "Toward the neighboring cells along its sides"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The apical surface (apex = tip) is the free face of an epithelial cell. It looks into a lumen, such as the inside of the trachea, or out to the environment. Microvilli and cilia sit on this face.",
+      "options": [
+        "The face on the basement membrane is the basal surface, the opposite of the apical surface.",
+        "The capillaries lie below the basement membrane, on the basal side. Nutrients reach the cell through its basal surface.",
+        "Correct. The apical surface faces the open space or the outside world.",
+        "The sides of the cell face neighbors and carry the tight junctions and desmosomes. They are the lateral surfaces, not the apical surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does it mean that epithelium is avascular?",
+    "options": [
+      "Its cells have no nuclei",
+      "It contains no blood vessels",
+      "It cannot divide or renew itself",
+      "It is not attached to any deeper tissue"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Avascular means without blood vessels (a- = without, vascul- = small vessel). Epithelial cells receive oxygen and nutrients by diffusion from capillaries in the tissue below the basement membrane.",
+      "options": [
+        "Most epithelial cells have nuclei. Only the dead surface cells of keratinized epithelium have lost them.",
+        "Correct. Epithelium has no blood vessels of its own.",
+        "Epithelium renews itself constantly; its deep cells divide to replace cells lost from the surface.",
+        "Epithelium is firmly attached to the tissue below by the basement membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Under a microscope you see one layer of flat cells lining a small blood vessel. What is this tissue called?",
+    "options": [
+      "Mesothelium",
+      "Transitional epithelium",
+      "Simple cuboidal epithelium",
+      "Endothelium"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "One layer of flat cells is simple squamous epithelium. The simple squamous lining of the heart and blood vessels has its own name: endothelium (endo- = within).",
+      "options": [
+        "Mesothelium is also simple squamous, but it is the surface layer of a serous membrane such as the pleura, not a vessel lining.",
+        "Transitional epithelium is many layers thick and lines the urinary passages, not blood vessels.",
+        "Cuboidal cells are about as tall as they are wide. The cells here are flat.",
+        "Correct. Endothelium is the simple squamous lining of the heart and blood vessels."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A researcher designs a membrane for an artificial lung. Oxygen must cross it as fast as possible. Which natural epithelium is the best model?",
+    "options": [
+      "Stratified squamous epithelium",
+      "Simple columnar epithelium",
+      "Simple squamous epithelium",
+      "Transitional epithelium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Diffusion is fastest over the shortest distance. A single layer of flat cells gives the thinnest barrier, which is why the air sacs of your lungs are lined with simple squamous epithelium.",
+      "options": [
+        "Many layers of cells make a thick barrier, which slows diffusion. Stratified squamous suits surfaces that are rubbed, not exchange surfaces.",
+        "Tall cells make a longer path than flat ones. Their many mitochondria power active transport, which a gas crossing by diffusion does not need.",
+        "Correct. A thin, single layer of flat cells gives the shortest diffusion distance.",
+        "Transitional epithelium is several layers thick even when stretched, and it lines urinary organs. Stretch does not make diffusion fast."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "pseudostratified epithelium has several layers",
+    "q": "In a slide of airway lining, nuclei sit at three different heights, but every cell touches the basement membrane. How should you classify it?",
+    "options": [
+      "Ciliated stratified columnar epithelium",
+      "Pseudostratified columnar epithelium",
+      "Transitional epithelium",
+      "Simple cuboidal epithelium"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The test for layers is contact with the basement membrane. If every cell touches it, the epithelium is one layer. Cells of different heights put their nuclei at different levels, so the sheet looks stratified but is not.",
+      "options": [
+        "Rows of nuclei are not layers of cells. In a stratified epithelium, the upper cells do not touch the basement membrane, and here every cell does.",
+        "Correct. Every cell touching the basement membrane means one layer; the varied heights make it look layered.",
+        "Transitional epithelium is truly stratified and lines the urinary passages. Its surface cells do not touch the basement membrane.",
+        "The name follows the cells that reach the surface. Here those cells are tall, so the tissue is columnar."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-7",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features are shared by every epithelium? Select all that apply.",
+    "options": [
+      "Cells joined closely by cell junctions",
+      "An apical surface and a basal surface",
+      "Blood vessels running between the cells",
+      "Attachment to a basement membrane",
+      "Several layers of cells"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Every epithelium is a sheet of closely joined cells with an apical and a basal surface, resting on a basement membrane. None has its own blood vessels, and many are only one layer thick.",
+      "options": [
+        "Correct. Tight junctions and desmosomes hold epithelial cells tightly together.",
+        "Correct. Every epithelial cell has a free apical face and a basal face toward deeper tissue.",
+        "Epithelium is avascular. Its vessels are in the tissue below the basement membrane.",
+        "Correct. Every epithelium rests on a basement membrane.",
+        "Simple epithelia are a single layer, so layering is not shared by all."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-8",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which two layers make up the basement membrane?",
+    "options": [
+      "The apical surface and the basal surface of the cells",
+      "The epidermis and the dermis",
+      "The basal lamina and the reticular lamina",
+      "Endothelium and mesothelium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The basement membrane is a mat of proteins outside the cells. The basal lamina is made by the epithelial cells; the reticular lamina, a net of thin fibers, is made by cells of the tissue underneath.",
+      "options": [
+        "These are the two faces of an epithelial cell, not layers of the basement membrane.",
+        "These are the two main layers of the skin. The epidermis sits on a basement membrane that separates it from the dermis.",
+        "Correct. Basal lamina plus reticular lamina make the basement membrane.",
+        "These are two named kinds of simple squamous epithelium, not parts of the basement membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A long-term smoker coughs up mucus every morning. A biopsy shows his tracheal lining has lost its cilia in many places. Which process has failed?",
+    "options": [
+      "Diffusion of oxygen across the tracheal lining",
+      "Sweeping of mucus up and out of the airway",
+      "Release of mucus by goblet cells",
+      "Stretching of the airway lining during breathing"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In respiratory epithelium, goblet cells release mucus that traps particles, and cilia beat in waves that carry the mucus toward the throat. Without cilia, the mucus pools, and coughing becomes the only way to clear it.",
+      "options": [
+        "Gas exchange happens across the thin lining of the air sacs, not across the trachea.",
+        "Correct. Cilia move the mucus sheet; lose them and mucus builds up.",
+        "Goblet cells still make mucus, often more of it in smokers. The problem is moving it, not making it.",
+        "The trachea is a fairly rigid tube and does not rely on stretchy epithelium. Transitional epithelium, which stretches, lines the urinary passages."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why is the lining of the esophagus nonkeratinized stratified squamous epithelium rather than the keratinized kind?",
+    "options": [
+      "A moist surface needs wear resistance but no waterproof layer",
+      "The esophagus absorbs nutrients, which keratin would block",
+      "Food does not rub the esophagus hard enough to need protection",
+      "Keratin would stop the esophagus from stretching when you swallow"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Swallowed food scrapes the esophagus, so it needs many layers. But the surface stays moist, so it has no need for the dead, keratin-filled layer that stops water loss from your skin. Its surface cells stay alive.",
+      "options": [
+        "Correct. Many layers resist wear; a moist surface needs no keratinized layer.",
+        "The esophagus moves food along; it does not absorb nutrients.",
+        "Food scrapes the esophagus with every swallow, which is why it has a many-layered lining.",
+        "Skin is keratinized and still stretches. Keratin mainly resists water loss and wear, not stretch."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps of airway clearing by respiratory epithelium in order.",
+    "options": [
+      "Goblet cells release mucus onto the surface",
+      "Inhaled dust and microbes stick to the mucus",
+      "Cilia beat in waves toward the throat",
+      "The mucus sheet moves up and out of the airway",
+      "You swallow the mucus"
+    ],
+    "why": {
+      "correct": "Mucus has to be on the surface before anything can stick to it. The cilia then move the loaded mucus sheet upward, and it ends up in the throat, where it is swallowed."
+    }
+  },
+  {
+    "id": "anp-epithelium-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A slide of an empty urinary bladder shows a lining six cells thick with rounded, dome-shaped surface cells. The same tissue from a full bladder looks only two or three cells thick with flat surface cells. What explains the difference?",
+    "options": [
+      "The surface cells die and flake off as the bladder fills",
+      "The full bladder was sampled from a different region with a different epithelium",
+      "The cells rearrange and flatten as the wall stretches",
+      "Cells in the full bladder shrink as they lose water to the urine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Transitional epithelium stretches. As the bladder fills, its cells slide past one another and flatten, so the sheet thins without tearing. When the bladder empties, the cells round up again.",
+      "options": [
+        "Losing cells every time the bladder filled would strip the lining. The cells stay in place and change shape.",
+        "The ureters, bladder and first part of the urethra are all lined by the same transitional epithelium. The change comes from stretch.",
+        "Correct. The cells flatten and rearrange as the wall stretches.",
+        "The surface cells seal tightly and block water movement between urine and the wall. The change is in shape, not water content."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-13",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step. Epithelium has no blood vessels → ______ → the deepest cells of a stratified epithelium are the best supplied → those deep cells are the ones that divide.",
+    "options": [
+      "Diffusion from capillaries below feeds its cells",
+      "Its cells make their own glucose from carbon dioxide",
+      "Its surface cells absorb what they need from the air or food passing by",
+      "Its basement membrane carries blood in channels between the cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Without vessels of its own, epithelium depends on diffusion from capillaries in the tissue beneath. Diffusion is fastest over short distances, so the cells nearest the basement membrane get the best supply.",
+      "options": [
+        "Correct. Diffusion from capillaries below links the missing vessels to the well-supplied deep cells.",
+        "Human cells cannot make glucose from carbon dioxide. They depend on nutrients delivered by the blood.",
+        "Surface cells may be dead or far from any supply. Nutrients come from below, not from the air.",
+        "The basement membrane is a protein mat with no blood flowing in it. Nutrients diffuse through it."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-14",
+    "type": "error",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This description of how the epidermis renews itself contains one wrong step. Find it.",
+    "options": [
+      "Cells in the deepest layer, nearest the capillaries, divide",
+      "Their daughter cells are pushed up toward the surface",
+      "The rising cells fill with keratin",
+      "The rising cells take in more blood from vessels between them",
+      "Surface cells die and flake off, and cells from below replace them"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Epithelium is avascular. There are no vessels between the cells of the epidermis, so cells moving up get farther from their supply, not closer to it.",
+      "options": [
+        "This step is right: the best-supplied cells, at the base, are the ones that divide.",
+        "This step is right: new cells push older ones upward.",
+        "This step is right: in keratinized epithelium, rising cells fill with keratin.",
+        "This is the error. The epidermis has no blood vessels; its supply diffuses up from capillaries in the dermis.",
+        "This step is right: the dead keratin-filled cells shed and are replaced from below."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which lining would you expect in a kidney tubule, where cells pull salts and nutrients back out of the fluid passing through by active transport?",
+    "options": [
+      "Keratinized stratified squamous epithelium",
+      "Pseudostratified ciliated columnar epithelium",
+      "Transitional epithelium",
+      "Simple cuboidal epithelium"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Active transport needs ATP and many transport proteins. Cube-shaped cells have room for mitochondria and other organelles, and microvilli add membrane area. One layer keeps the path short.",
+      "options": [
+        "A dry, dead, many-layered surface would block transport. It suits the skin, not a tubule.",
+        "This lining moves mucus with cilia in the airways. It does not do the absorbing a tubule needs.",
+        "Transitional epithelium stretches and seals in urine; it is not built for absorbing.",
+        "Correct. Simple cuboidal cells, many with microvilli, line the kidney tubules."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-16",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After years of smoking, patches of a man's tracheal lining change from pseudostratified ciliated columnar epithelium to stratified squamous epithelium. Predict the effect on each variable in those patches.",
+    "variables": [
+      {
+        "name": "Resistance of the lining to physical irritation",
+        "answer": "up",
+        "why": "Stratified squamous epithelium has many layers of cells, so damage to the surface cells leaves deeper cells intact."
+      },
+      {
+        "name": "Number of cilia on the surface",
+        "answer": "down",
+        "why": "Stratified squamous cells have no cilia, so the new lining cannot beat mucus upward."
+      },
+      {
+        "name": "Mucus released onto the surface by goblet cells",
+        "answer": "down",
+        "why": "The new lining has no goblet cells, so less mucus reaches the surface in those patches."
+      },
+      {
+        "name": "Clearing of trapped particles from those patches",
+        "answer": "down",
+        "why": "With no goblet cells to trap particles and no cilia to move mucus, particles stay where they land."
+      }
+    ]
+  },
+  {
+    "id": "anp-epithelium-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does a goblet cell release?",
+    "options": [
+      "Keratin",
+      "Serous fluid",
+      "Mucus",
+      "Urine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Goblet cells are cup-shaped cells scattered in columnar epithelia. They fill with mucus, a slippery gel, and release it onto the surface by exocytosis.",
+      "options": [
+        "Keratin is a tough protein that builds up inside cells of keratinized epithelium. It is not released.",
+        "Serous fluid comes from mesothelium, the simple squamous surface of serous membranes.",
+        "Correct. Goblet cells release mucus.",
+        "Urine is made by the kidneys and carried away through tubes lined with transitional epithelium."
+      ]
+    }
+  },
+  {
+    "id": "anp-epithelium-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The upper surface of the epiglottis, which food slides across, is covered by which epithelium?",
+    "options": [
+      "Simple squamous epithelium",
+      "Pseudostratified ciliated columnar epithelium with goblet cells",
+      "Transitional epithelium",
+      "Nonkeratinized stratified squamous epithelium"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Swallowed food scrapes the upper surface of the epiglottis, so it has a many-layered lining. The surface is moist, so it is nonkeratinized. Lower on its airway side, where food does not scrape, the lining becomes respiratory epithelium.",
+      "options": [
+        "A single flat layer would be scraped away by food. Simple squamous suits exchange surfaces.",
+        "Respiratory epithelium does cover the lower part of the epiglottis's airway side, where food does not scrape. On the food-facing surface, cilia and a single layer would be worn away.",
+        "Transitional epithelium stretches and lines urinary organs, not the throat.",
+        "Correct. Many layers resist wear, and the moist surface does not keratinize."
+      ]
+    }
+  }
+]

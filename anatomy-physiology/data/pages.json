@@ -1,0 +1,140 @@
+{
+  "about": "The A&P app and tool pages. scripts/build-anp.mjs writes each page's shell (head, header, SEO, a <div id=\"app\"> mount, the page's script and stylesheet) from this file; the page's behavior lives in its script. Tools read their content from data/tools/<slug>.json. docs/anp-phase1-architecture.md.",
+  "apps": [
+    {
+      "slug": "practice",
+      "section": "practice",
+      "h1": "Practice",
+      "title": "Practice questions | Anatomy & Physiology",
+      "desc": "Anatomy and physiology practice: drill a topic, a body system or a core concept, mix everything you have studied, or retry the questions you missed.",
+      "script": "apps/practice.js",
+      "css": "apps/apps.css"
+    },
+    {
+      "slug": "review",
+      "section": "review",
+      "h1": "Review",
+      "title": "Spaced review | Anatomy & Physiology",
+      "desc": "Your A&P spaced review queue: every question you missed comes back just before you would forget it, until you have it for good.",
+      "script": "apps/review.js",
+      "css": "apps/apps.css"
+    },
+    {
+      "slug": "exams",
+      "section": "exams",
+      "h1": "Exams",
+      "title": "A&P exams and TEAS practice | Anatomy & Physiology",
+      "desc": "Timed anatomy and physiology exams: unit quizzes, full system exams and a TEAS A&P practice mode, each ending with a full review.",
+      "script": "apps/exams.js",
+      "css": "apps/apps.css"
+    },
+    {
+      "slug": "flashcards",
+      "section": "flashcards",
+      "h1": "Flashcards",
+      "title": "A&P flashcards | Anatomy & Physiology",
+      "desc": "Spaced-repetition anatomy and physiology flashcards built from the glossary and the comparison tables, by topic, system or core concept.",
+      "script": "apps/flashcards.js",
+      "css": "apps/apps.css"
+    },
+    {
+      "slug": "mastery",
+      "section": "mastery",
+      "h1": "Dashboard",
+      "title": "Your A&P dashboard | Anatomy & Physiology",
+      "desc": "Your anatomy and physiology mastery by topic, system and core concept, with lab practical and prediction accuracy and what to study next.",
+      "script": "apps/mastery.js",
+      "css": "apps/apps.css"
+    },
+    {
+      "slug": "search",
+      "section": "search",
+      "h1": "Search",
+      "title": "Search the course | Anatomy & Physiology",
+      "desc": "Search every anatomy and physiology lesson, notes page, glossary term and tool in the course.",
+      "script": "apps/search.js",
+      "css": "apps/apps.css"
+    },
+    {
+      "slug": "tools",
+      "section": "tools",
+      "h1": "Tools",
+      "title": "A&P study tools | Anatomy & Physiology",
+      "desc": "Interactive anatomy and physiology tools: lab practical, predict the change, feedback loop builder, pathway tracer, graph reader, calculators and word roots.",
+      "script": "apps/tools-hub.js",
+      "css": "apps/apps.css"
+    }
+  ],
+  "tools": [
+    {
+      "slug": "lab-practical",
+      "name": "Virtual lab practical",
+      "blurb": "Identify structures on real figures: explore, study, quiz, or a timed practical.",
+      "title": "Virtual lab practical | Anatomy & Physiology",
+      "desc": "Practice A&P lab practicals online: identify labeled structures on real figures in explore, study, quiz or timed practical mode.",
+      "script": "tools/lab-practical.js",
+      "css": "tools/lab-practical.css",
+      "data": "lab-practical.json"
+    },
+    {
+      "slug": "predict",
+      "name": "Predict the change",
+      "blurb": "Something changes in the body: predict what goes up, down or stays the same, then see the chain.",
+      "title": "Predict the change: physiology reasoning | A&P",
+      "desc": "Train physiology reasoning: a perturbation happens, you predict whether each variable rises, falls or stays the same, then see the causal chain.",
+      "script": "tools/predict.js",
+      "css": "tools/predict.css",
+      "data": "predict.json"
+    },
+    {
+      "slug": "feedback-loops",
+      "name": "Feedback loop builder",
+      "blurb": "Build each homeostatic loop from stimulus to response.",
+      "title": "Feedback loop builder | Anatomy & Physiology",
+      "desc": "Build homeostatic feedback loops step by step: stimulus, sensory receptor, control center, effector and response, then classify the loop.",
+      "script": "tools/feedback-loops.js",
+      "css": "tools/feedback-loops.css",
+      "data": "feedback-loops.json"
+    },
+    {
+      "slug": "pathways",
+      "name": "Pathway tracer",
+      "blurb": "Put the steps of a pathway in order, find the missing step, or spot the error.",
+      "title": "Pathway tracer: A&P sequences | Anatomy & Physiology",
+      "desc": "Practice the sequences A&P asks you to know in order: blood through the heart, conduction, the cardiac cycle and more, with step-by-step feedback.",
+      "script": "tools/pathways.js",
+      "css": "tools/pathways.css",
+      "data": "pathways.json"
+    },
+    {
+      "slug": "graphs",
+      "name": "Graph reader",
+      "blurb": "Read values off physiology graphs, name the phases, and predict how curves shift.",
+      "title": "Graph reader: physiology graphs | Anatomy & Physiology",
+      "desc": "Learn to read physiology graphs: action potentials, the cardiac cycle, the Frank-Starling curve and more. Read values, name phases, predict shifts.",
+      "script": "tools/graphs.js",
+      "css": "tools/graphs.css",
+      "data": "graphs.json"
+    },
+    {
+      "slug": "calculators",
+      "name": "Worked-example calculators",
+      "blurb": "Cardiac output, MAP, flow and resistance, filtration and acid–base, every step shown.",
+      "title": "A&P calculators with every step shown | Anatomy & Physiology",
+      "desc": "Physiology calculators that show every step: cardiac output, mean arterial pressure, flow and resistance, filtration pressure and acid-base.",
+      "script": "tools/calculators.js",
+      "css": "tools/calculators.css",
+      "data": "calculators.json"
+    },
+    {
+      "slug": "word-roots",
+      "name": "Word root builder",
+      "blurb": "Decode medical terms from their parts, or build a term from its meaning.",
+      "title": "Medical word root builder | Anatomy & Physiology",
+      "desc": "Decode anatomy and medical terms from their prefixes, roots and suffixes, or build a term from its meaning. Linked to the course glossary.",
+      "script": "tools/word-roots.js",
+      "css": "tools/word-roots.css",
+      "data": "word-roots.json"
+    }
+  ]
+}

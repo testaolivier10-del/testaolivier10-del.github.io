@@ -1,0 +1,62 @@
+{
+  "primary-tissue-types": {
+    "def": "The four kinds of tissue that build every organ: epithelial tissue (covers and lines), connective (supports and binds), muscle (contracts) and nervous tissue (carries electrical signals).",
+    "roots": [],
+    "say": ""
+  },
+  "epithelium": {
+    "def": "A sheet of tightly joined cells that covers a body surface or lines a lumen. Its apical surface faces the open space, its basal surface rests on a basement membrane, and it has no blood vessels of its own.",
+    "roots": [["epi-", "upon"], ["thel-", "originally nipple; a thin covering layer"], ["a-", "without"], ["vascul-", "small vessel"]],
+    "say": "ep-ih-THEE-lee-um"
+  },
+  "basement-membrane": {
+    "def": "The thin mat of proteins under every epithelium that anchors it to the tissue below. It has two parts: the basal lamina, made by the epithelial cells, and the reticular lamina, made by the tissue beneath.",
+    "roots": [["lamina", "thin sheet"], ["reticul-", "little net"]],
+    "say": ""
+  },
+  "epithelium-classification": {
+    "def": "Epithelia are named by layers and by the shape of the surface cells. Simple means one layer and stratified means two or more; squamous cells are flat, cuboidal cells are cube-shaped and columnar cells are tall.",
+    "roots": [["strat-", "layer"], ["squam-", "scale"]],
+    "say": "SKWAY-mus"
+  },
+  "simple-squamous": {
+    "def": "One layer of flat cells, giving the shortest path for diffusion and filtration. It lines the air sacs of the lungs; it is called endothelium in the heart and blood vessels and mesothelium on serous membranes.",
+    "roots": [["endo-", "within"], ["meso-", "middle"]],
+    "say": ""
+  },
+  "simple-cuboidal": {
+    "def": "One layer of cube-shaped cells with round, central nuclei, specialized for secretion and absorption. It lines kidney tubules, thyroid follicles and small ducts.",
+    "roots": [],
+    "say": ""
+  },
+  "simple-columnar": {
+    "def": "One layer of tall cells, often with microvilli or cilia and with goblet cells that release mucus. It lines the digestive tract from the stomach through the intestines, the gallbladder and the uterine tubes.",
+    "roots": [["goblet", "cup"]],
+    "say": ""
+  },
+  "pseudostratified": {
+    "def": "A single layer of columnar cells of different heights, so the nuclei sit at different levels and the sheet looks layered. The ciliated form with goblet cells lines the inside of the nose, the trachea and the larger airways.",
+    "roots": [["pseudo-", "false"], ["strat-", "layer"]],
+    "say": "SOO-doh-STRAT-ih-fyed"
+  },
+  "stratified-squamous": {
+    "def": "Many layers of cells with flat cells at the surface, built to resist wear. The keratinized form, with dead keratin-filled surface cells, is the epidermis; the nonkeratinized form lines the mouth, esophagus and vagina.",
+    "roots": [["kerat-", "horn"]],
+    "say": "KAIR-uh-tin"
+  },
+  "tissue-example-sites": {
+    "def": "Where each epithelium is found: the epidermis (outer skin) over the dermis, thyroid follicles, alveoli (lung air sacs), the epiglottis and others. Each site's lining matches the wear and exchange it faces.",
+    "roots": [["derm-", "skin"], ["alveol-", "small hollow"], ["glott-", "tongue"]],
+    "say": "al-VEE-oh-lye"
+  },
+  "transitional-epithelium": {
+    "def": "A stratified epithelium whose dome-shaped surface cells flatten when the organ stretches, so the sheet thins without tearing. It lines the ureters, urinary bladder and first part of the urethra; also called urothelium.",
+    "roots": [["uro-", "urine"]],
+    "say": ""
+  },
+  "stratified-cuboidal-columnar": {
+    "def": "Rare stratified epithelia named for cube-shaped or tall surface cells. They line some large ducts, such as those carrying sweat, and parts of the male urethra.",
+    "roots": [],
+    "say": ""
+  }
+}

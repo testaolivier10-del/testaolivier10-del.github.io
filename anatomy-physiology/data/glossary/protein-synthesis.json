@@ -1,0 +1,37 @@
+{
+  "rna": {
+    "def": "Ribonucleic acid: a single-stranded nucleic acid with the sugar ribose and the base uracil in place of thymine. Messenger RNA carries a gene's message, ribosomal RNA forms much of the ribosome, and transfer RNA brings amino acids to it.",
+    "roots": [["ribo-", "ribose, the sugar"]],
+    "say": "ry-boh-noo-KLAY-ik"
+  },
+  "transcription": {
+    "def": "Copying a gene's DNA sequence into RNA in the nucleus. RNA polymerase binds at the gene's promoter and builds a complementary RNA; splicing then removes the introns and joins the exons.",
+    "roots": [["trans-", "across"], ["script-", "to write"], ["ex-", "out"], ["in-", "within"]],
+    "say": "tranz-KRIP-shun"
+  },
+  "genetic-code": {
+    "def": "The table that matches each three-base codon in mRNA to one amino acid or to a stop signal: 64 codons, 61 naming amino acids and 3 stops. A tRNA's anticodon pairs with its codon.",
+    "roots": [["anti-", "opposite"]],
+    "say": "KOH-don"
+  },
+  "translation": {
+    "def": "Building a polypeptide on a ribosome by reading the codons of an mRNA in order, with tRNAs bringing the matching amino acids. Several ribosomes reading one mRNA at once form a polyribosome.",
+    "roots": [["trans-", "across"], ["lat-", "carried"], ["poly-", "many"]],
+    "say": "tranz-LAY-shun"
+  },
+  "gene-expression": {
+    "def": "Using a gene to make its product. Cells control which genes they express, mainly through transcription factors, proteins that bind DNA near a gene and raise or lower its transcription. The proteome is the full set of proteins a cell holds at a given time.",
+    "roots": [["prote-", "protein"], ["-ome", "the whole set"]],
+    "say": "PROH-tee-ohm"
+  },
+  "mutation": {
+    "def": "A lasting change in the base sequence of DNA. Depending on how it alters the codons, it can leave the protein unchanged (silent), swap one amino acid (missense), end the protein early (nonsense) or shift the reading frame.",
+    "roots": [["mut-", "change"]],
+    "say": "myoo-TAY-shun"
+  },
+  "secretory-pathway": {
+    "def": "The route taken by proteins bound for secretion, the plasma membrane or lysosomes: made on ribosomes docked on the rough ER, modified in the ER and Golgi apparatus, then carried in vesicles to their destination, ending in exocytosis for secreted proteins.",
+    "roots": [["secret-", "separated, set apart"]],
+    "say": "sih-KREE-tuh-ree"
+  }
+}

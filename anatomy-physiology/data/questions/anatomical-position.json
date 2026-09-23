@@ -1,0 +1,349 @@
+[
+  {
+    "id": "anp-anatomical-position-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "In the anatomical position, which way do the palms face?",
+    "options": ["Toward the thighs", "Forward", "Backward", "Toward the midline, thumbs forward"],
+    "correct": 1,
+    "why": {
+      "correct": "In the anatomical position the arms hang at the sides with the palms facing forward and the thumbs pointing away from the body.",
+      "options": [
+        "Palms toward the thighs is how most people stand when relaxed, but it is not the anatomical position.",
+        "Correct. Palms forward, thumbs pointing away from the body.",
+        "Palms backward turns the thumbs toward the body, the opposite of the reference posture.",
+        "Palms toward the midline is the relaxed resting posture. The anatomical position turns the palms fully forward."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A patient is lying flat on their back, face up. What is this position called?",
+    "options": ["Prone", "Lateral", "Supine", "Caudal"],
+    "correct": 2,
+    "why": {
+      "correct": "Supine means lying face up, on the back. A handy link: supine, on your spine.",
+      "options": [
+        "Prone means lying face down, the opposite of this patient.",
+        "Lateral is a directional term meaning away from the midline. It does not name a lying position.",
+        "Correct. Face up, on the back, is supine.",
+        "Caudal is a directional term meaning toward the tail end. It does not name a lying position."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which term means closer to the midline of the body?",
+    "options": ["Lateral", "Medial", "Proximal", "Superficial"],
+    "correct": 1,
+    "why": {
+      "correct": "Medial (Latin medius = middle) means closer to the midline, the imaginary line dividing the body into equal right and left halves.",
+      "options": [
+        "Lateral is the opposite: farther from the midline, toward the side.",
+        "Correct. Medial means toward the midline.",
+        "Proximal means nearer to where a limb attaches to the trunk, which is not the same as nearer the midline.",
+        "Superficial means toward the body surface, a different axis altogether."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "In the anatomical position, how is the thumb described relative to the little finger?",
+    "options": ["Medial", "Proximal", "Deep", "Lateral"],
+    "correct": 3,
+    "misconception": "the thumb is medial",
+    "why": {
+      "correct": "With the palms forward, the thumb points away from the body, so it lies farther from the midline than the little finger. The thumb is lateral.",
+      "options": [
+        "The thumb is medial only if you picture the palms turned backward or in. In the anatomical position the palms face forward, so the little finger is the medial one.",
+        "Proximal and distal compare distance from the limb's attachment. The thumb and little finger are at about the same distance from the shoulder.",
+        "Deep compares distance from the surface. Both fingers are at the surface of the hand.",
+        "Correct. Palms forward puts the thumb on the lateral side."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement uses proximal correctly?",
+    "options": [
+      "The wrist is proximal to the elbow",
+      "The ankle is proximal to the knee",
+      "The elbow is proximal to the wrist",
+      "The fingers are proximal to the palm"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Proximal means nearer to where the limb attaches to the trunk. The elbow is nearer the shoulder than the wrist is, so the elbow is proximal to the wrist.",
+      "options": [
+        "The wrist is farther from the shoulder than the elbow, so the wrist is distal to the elbow.",
+        "The ankle is farther from the hip than the knee, so the ankle is distal to the knee.",
+        "Correct. Elbow is nearer the attachment than the wrist.",
+        "The fingers are farther from the shoulder than the palm, so they are distal to it."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Where does the breastbone lie relative to the heart?",
+    "options": ["Anterior", "Posterior", "Lateral", "Inferior"],
+    "correct": 0,
+    "why": {
+      "correct": "The breastbone sits at the front of the chest, in front of the heart. Toward the front is anterior.",
+      "options": [
+        "Correct. The breastbone is anterior to the heart.",
+        "Posterior means behind. The backbone, not the breastbone, is posterior to the heart.",
+        "The breastbone lies on the midline, directly in front of the heart. Neither is to the side of the other.",
+        "The breastbone runs along the front of the chest at the level of the heart, not below it."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-7",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every pair of terms that mean the same direction in a standing human.",
+    "options": ["Superior and cranial", "Anterior and ventral", "Medial and proximal", "Posterior and dorsal", "Lateral and distal"],
+    "correct": [0, 1, 3],
+    "why": {
+      "correct": "In an upright human, cranial matches superior, ventral matches anterior and dorsal matches posterior. Medial and lateral describe the midline, while proximal and distal describe distance along a limb, so those do not match.",
+      "options": [
+        "Correct. Toward the head is both superior and cranial in a standing person.",
+        "Correct. The belly side of a human is the front.",
+        "Medial means toward the midline; proximal means nearer a limb's attachment. They are different axes.",
+        "Correct. The back of a human is both posterior and dorsal.",
+        "Lateral means away from the midline; distal means farther from a limb's attachment. They are different axes."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement uses superficial or deep correctly?",
+    "options": [
+      "Bone is superficial to muscle in the thigh",
+      "The skin is deep to the fat under it",
+      "Muscle is deep to the skin",
+      "The skin is deep to the bone"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "From the surface inward, the thigh has skin, then fat, then muscle, then bone. Muscle lies farther from the surface than skin, so muscle is deep to the skin.",
+      "options": [
+        "Bone is the innermost layer, so it is deep to muscle, not superficial to it.",
+        "The skin is the outermost layer, so it is superficial to the fat, not deep to it.",
+        "Correct. Muscle lies farther from the surface than skin.",
+        "The skin is at the surface and the bone is innermost, so the skin is superficial to the bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A 71-year-old man has a stroke that damages the right side of his brain. Most pathways between the brain and the body cross the midline. Where would you expect weakness?",
+    "options": ["In the right arm and leg", "In the left arm and leg", "In both legs only", "In the face only, on the right"],
+    "correct": 1,
+    "why": {
+      "correct": "Because most brain-body pathways cross the midline, damage on one side of the brain affects the opposite side of the body. The weakness is contralateral: the left arm and leg.",
+      "options": [
+        "Weakness on the same side would be ipsilateral. That would happen only if the pathways stayed on one side, and most cross.",
+        "Correct. Right-sided brain damage, left-sided (contralateral) weakness.",
+        "Damage to one side of the brain affects one side of the body, not both legs.",
+        "The face on the same side would be ipsilateral, and the arm and leg would be spared. That does not fit crossing pathways."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Your right arm and right leg are on the same side of the body. Which term describes them?",
+    "options": ["Contralateral", "Bilateral", "Intermediate", "Ipsilateral"],
+    "correct": 3,
+    "why": {
+      "correct": "Ipsilateral (ipse = same, latus = side) means on the same side of the body.",
+      "options": [
+        "Contralateral means on opposite sides, such as the right arm and left leg.",
+        "Bilateral means on both sides, as in both arms. It does not describe two structures on one side.",
+        "Intermediate means lying between a medial and a lateral structure.",
+        "Correct. Same side is ipsilateral."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A patient lies supine on a stretcher. Which statement about her is correct?",
+    "options": [
+      "Her chest is now superior because it faces the ceiling",
+      "Her face is still anterior to her ears",
+      "Her feet are now posterior to her knees",
+      "Her back is now inferior to her chest"
+    ],
+    "correct": 1,
+    "misconception": "directional terms change with body position",
+    "why": {
+      "correct": "Directional terms always describe the body as if it stood in the anatomical position. Lying down changes nothing: the face is still anterior to the ears.",
+      "options": [
+        "Superior means toward the head, not toward the ceiling. Her chest is still anterior.",
+        "Correct. Directional terms do not change when the body lies down.",
+        "Her feet are still inferior (and distal) to her knees. Lying down does not make them posterior.",
+        "Her back is still posterior to her chest. Inferior means toward the feet, not toward the mattress."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "The nose is medial to the eye, and the ear is lateral to it. How is the eye described relative to the nose and ear?",
+    "options": ["Intermediate", "Proximal", "Superficial", "Contralateral"],
+    "correct": 0,
+    "why": {
+      "correct": "Intermediate means lying between a more medial structure and a more lateral one. The eye lies between the nose and the ear.",
+      "options": [
+        "Correct. Between medial and lateral is intermediate.",
+        "Proximal describes distance from a limb's attachment. The face is not on a limb.",
+        "Superficial compares distance from the surface, not position between two structures.",
+        "Contralateral means on the opposite side of the body. The eye, nose and ear here are on the same side."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A student raises an arm straight overhead and says, \"Now my hand is superior to my elbow, so it is proximal.\" What is the error?",
+    "options": [
+      "The hand is still distal to the elbow, because proximal and distal follow the limb, not the posture",
+      "The hand becomes inferior when the arm is raised",
+      "Proximal and distal are used only on the trunk",
+      "The hand is lateral, not proximal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Proximal and distal measure distance along the limb from where it attaches to the trunk. The hand is farther from the shoulder than the elbow in every posture, so it is always distal to the elbow. Terms are also read from the anatomical position, not from a raised arm.",
+      "options": [
+        "Correct. The hand is always distal to the elbow.",
+        "Directional terms are read from the anatomical position, where the hand hangs below the elbow. Raising the arm changes neither superior nor proximal.",
+        "Proximal and distal are used mainly on the limbs, the opposite of this claim.",
+        "Lateral compares distance from the midline, which is not the student's mistake. The mistake is about proximal and distal."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Here is a description of the anatomical position. One item is wrong. Find it.",
+    "options": [
+      "The body stands upright, facing forward.",
+      "The feet are flat on the floor and point forward.",
+      "The arms hang at the sides.",
+      "The palms face the thighs, with the thumbs forward."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the anatomical position the palms face forward and the thumbs point away from the body. Palms facing the thighs is the relaxed standing posture.",
+      "options": [
+        "This item is right. Upright and facing forward is part of the reference posture.",
+        "This item is right. The feet are flat and point forward.",
+        "This item is right. The arms hang at the sides.",
+        "This is the wrong item. The palms face forward, not toward the thighs."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "An EMT reports \"a laceration on the lateral left forearm, just proximal to the wrist.\" Where is the wound?",
+    "options": [
+      "On the thumb side of the left forearm, a little toward the elbow from the wrist",
+      "On the little-finger side of the left forearm, just below the elbow",
+      "On the thumb side of the right forearm, on the back of the hand",
+      "On the little-finger side of the left forearm, toward the fingers from the wrist"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Lateral on the forearm is the thumb side (palms forward). Left is the patient's left. Just proximal to the wrist means slightly toward the elbow from the wrist.",
+      "options": [
+        "Correct. Thumb side, left arm, slightly toward the elbow from the wrist.",
+        "The little-finger side is medial, not lateral, and \"just proximal to the wrist\" is near the wrist, not the elbow.",
+        "The report says the left forearm, and the patient's left is meant. The back of the hand is distal to the wrist.",
+        "The little-finger side is medial, and toward the fingers from the wrist is distal, not proximal."
+      ]
+    }
+  },
+  {
+    "id": "anp-anatomical-position-16",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put these structures of the upper limb in order from most proximal to most distal.",
+    "options": ["Shoulder", "Elbow", "Wrist", "Palm", "Fingertips"],
+    "why": { "correct": "Proximal means nearer the limb's attachment to the trunk, at the shoulder. Moving away from it you pass the elbow, the wrist, the palm and finally the fingertips, the most distal point." }
+  },
+  {
+    "id": "anp-anatomical-position-17",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Complete the pairs of opposites: superior ↔ inferior; anterior ↔ posterior; medial ↔ lateral; superficial ↔ ____.",
+    "options": ["Deep", "Distal", "Dorsal", "Caudal"],
+    "correct": 0,
+    "why": {
+      "correct": "Superficial means toward the body surface; its opposite is deep, away from the surface.",
+      "options": [
+        "Correct. Superficial and deep are the pair.",
+        "Distal is the opposite of proximal.",
+        "Dorsal is the opposite of ventral.",
+        "Caudal is the opposite of cranial."
+      ]
+    }
+  }
+]

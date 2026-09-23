@@ -1,0 +1,62 @@
+{
+  "topic": "membrane-potential",
+  "hook": "<p>Mr. Okafor, 62, has kidney failure and missed two treatments that clear waste from his blood. He arrives feeling weak, with a slow, irregular pulse. His blood potassium is 7.1 mmol/L (normal 3.5–5.0). Nothing is wrong with his heart muscle itself. The extra potassium outside his cells has shifted the voltage across every cell membrane, and his heart cells are the most sensitive to that shift.</p>",
+  "prereq": [
+    {
+      "q": "Where is potassium more concentrated at rest?",
+      "options": ["Inside the cell", "Outside the cell", "Equal on both sides"],
+      "correct": 0,
+      "why": "Potassium is about 140 mmol/L inside and about 4 mmol/L outside. Sodium is the reverse: high outside, low inside.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "In one cycle, what does the sodium–potassium pump move?",
+      "options": ["3 Na+ out and 2 K+ in", "2 Na+ out and 3 K+ in", "3 K+ out and 2 Na+ in"],
+      "correct": 0,
+      "why": "Using one ATP, the pump moves 3 sodium ions out of the cell and 2 potassium ions in, each against its concentration gradient.",
+      "review": "active-transport"
+    },
+    {
+      "q": "What does a voltage measure?",
+      "options": ["The difference in electrical potential between two points", "The number of ions in a solution", "The speed at which ions move"],
+      "correct": 0,
+      "why": "Voltage is a potential difference: how strongly separated charges push charge from one point toward another. It is measured in volts or, across membranes, millivolts.",
+      "review": "electricity-basics"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-22",
+    "caption": "One electrode inside the cell and one outside. The meter reports the inside compared with the outside: about −70 mV for a resting neuron."
+  },
+  "chain": [
+    {
+      "cause": "The sodium–potassium pump uses ATP to move 3 Na+ out and 2 K+ in, over and over.",
+      "effect": "Potassium is concentrated inside the cell (about 140 mmol/L) and sodium outside (about 145 mmol/L)."
+    },
+    {
+      "cause": "At rest, many potassium leak channels are open and few channels pass sodium.",
+      "effect": "Potassium diffuses out of the cell, down its concentration gradient."
+    },
+    {
+      "cause": "Each K+ that leaves carries a positive charge out, and the negatively charged proteins it balanced cannot follow.",
+      "effect": "The inside of the membrane becomes negative compared with the outside."
+    },
+    {
+      "cause": "The growing negative charge inside pulls K+ back toward the cell.",
+      "effect": "Potassium outflow slows as the voltage approaches potassium's equilibrium potential, about −90 mV."
+    },
+    {
+      "cause": "A small leak of sodium into the cell adds positive charge.",
+      "effect": "The voltage settles at about −70 mV, the resting membrane potential, and the pump keeps replacing the leaked ions so it stays there."
+    }
+  ],
+  "misconception": {
+    "wrong": "The sodium–potassium pump creates the resting potential by pushing out more positive charge than it brings in.",
+    "right": "The pump does move 3 positive charges out for every 2 in, but that direct effect is only a few millivolts. Most of the −70 mV comes from potassium diffusing out through leak channels and leaving negative charge behind. The pump's main job is slower: it keeps the potassium and sodium gradients from running down. Block the pump and the voltage changes only a little at first, then fades over minutes to hours as the gradients disappear."
+  },
+  "check": ["anp-membrane-potential-2", "anp-membrane-potential-4", "anp-membrane-potential-7", "anp-membrane-potential-10", "anp-membrane-potential-12", "anp-membrane-potential-16"],
+  "summary": "<p>The membrane potential is the voltage across the plasma membrane, read inside compared with outside. At rest it is about −70 mV in a neuron. Potassium leaks out through open channels and leaves negative charge behind; the voltage settles near potassium's equilibrium potential (about −90 mV), pulled a little toward sodium's (+60 mV) by a small sodium leak. Only a tiny number of ions move. The pump's direct effect is a few millivolts; its main role is keeping the gradients steady. Less negative than rest is depolarization, back toward rest is repolarization, and more negative is hyperpolarization. High blood potassium depolarizes the resting potential; low blood potassium hyperpolarizes it.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT: Anatomy and Physiology" }
+  ]
+}

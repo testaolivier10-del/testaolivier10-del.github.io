@@ -1,0 +1,56 @@
+{
+  "topic": "epithelium",
+  "hook": "<p>Dana, 52, has had burning acid reflux most nights for ten years. A camera passed down her esophagus shows a salmon-pink patch near her stomach. A tiny sample shows the usual many-layered lining of flat cells has been replaced there by a single layer of tall cells with mucus-filled cells among them. Her doctor calls it Barrett esophagus and schedules regular checks, because the new lining is more likely to turn cancerous. To see why acid would swap one lining for another, you need to know what each kind of epithelium is built to do.</p>",
+  "prereq": [
+    {
+      "q": "Two neighboring cells in a lining must stop fluid from leaking between them. Which cell junction does that?",
+      "options": ["Tight junction", "Gap junction", "Desmosome"],
+      "correct": 0,
+      "why": "Tight junctions fuse neighboring membranes into a seal that blocks the space between cells. Gap junctions are channels that pass ions from cell to cell, and desmosomes rivet cells together against pulling but leave gaps.",
+      "review": "cell-junctions"
+    },
+    {
+      "q": "What do microvilli do for a cell?",
+      "options": ["Beat to move fluid across the surface", "Increase the surface area of the plasma membrane", "Anchor the cell to its neighbors"],
+      "correct": 1,
+      "why": "Microvilli are tiny finger-like folds of the plasma membrane, stiffened by actin. They add membrane area for absorption. Cilia, not microvilli, beat.",
+      "review": "organelles"
+    },
+    {
+      "q": "If the distance a molecule must diffuse doubles, what happens to diffusion?",
+      "options": ["It slows down", "It speeds up", "It stays the same"],
+      "correct": 0,
+      "why": "Diffusion is fast over short distances and slows sharply as distance grows. That is why exchange surfaces are thin.",
+      "review": "diffusion-osmosis"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-4-6",
+    "caption": "Epithelia are named by the number of layers (simple or stratified) and the shape of the surface cells (squamous, cuboidal or columnar). Pseudostratified epithelium is one layer that only looks layered."
+  },
+  "chain": [
+    {
+      "cause": "Epithelium has no blood vessels of its own (it is avascular).",
+      "effect": "Its cells get oxygen and nutrients only by diffusion from capillaries below the basement membrane."
+    },
+    {
+      "cause": "Diffusion is fast only over short distances.",
+      "effect": "In a thick stratified squamous epithelium, the deepest cells, closest to the capillaries, are the best supplied, and they are the ones that divide."
+    },
+    {
+      "cause": "The deep cells divide.",
+      "effect": "Their daughter cells are pushed toward the surface, farther from the supply."
+    },
+    {
+      "cause": "In keratinized epithelium, the rising cells fill with keratin and die by a built-in program.",
+      "effect": "The surface becomes a tough, dry layer of dead cells that flakes off and is replaced from below."
+    }
+  ],
+  "misconception": {
+    "wrong": "Pseudostratified epithelium has several layers of cells, because you can see several rows of nuclei.",
+    "right": "Every cell in pseudostratified epithelium touches the basement membrane, so it is a single layer. The cells are different heights, and only the tall ones reach the surface, so their nuclei sit at different levels. That is why it only looks stratified (pseudo- = false). In a truly stratified epithelium, the upper cells rest on other cells and never touch the basement membrane."
+  },
+  "check": ["anp-epithelium-2", "anp-epithelium-4", "anp-epithelium-6", "anp-epithelium-9", "anp-epithelium-12", "anp-epithelium-15"],
+  "summary": "<p>Your body has four primary tissue types: epithelial, connective, muscle and nervous. Epithelium is a sheet of tightly joined cells with an apical surface facing a lumen or the outside and a basal surface on a basement membrane. It has no blood vessels, so it depends on diffusion from below. You name an epithelium by its layers (simple or stratified) and the shape of its surface cells (squamous, cuboidal or columnar). Thin simple squamous sheets handle diffusion, cuboidal and columnar cells secrete and absorb, pseudostratified ciliated columnar epithelium sweeps the airways, stratified squamous epithelium resists wear, and transitional epithelium stretches.</p>",
+  "connections": []
+}

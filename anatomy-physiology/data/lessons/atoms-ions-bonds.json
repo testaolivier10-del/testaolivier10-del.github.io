@@ -1,0 +1,65 @@
+{
+  "topic": "atoms-ions-bonds",
+  "hook": "<p>Dana, 34, runs a marathon on a hot day and drinks plain water at every station. At the finish she is confused and vomiting. Her blood test shows sodium far below its normal range. The sodium on that report is not the metal: it is the sodium ion, a sodium atom that has lost one electron. That single missing electron gives it a charge, and the charge is why its level matters.</p>",
+  "prereq": [
+    {
+      "q": "Which is the smallest level of organization in your body?",
+      "options": ["The cellular level", "The tissue level", "The chemical level"],
+      "correct": 2,
+      "why": "The chemical level, atoms and the molecules they form, is the base that cells, tissues and organs are built from.",
+      "review": "body-organization"
+    },
+    {
+      "q": "What is a molecule?",
+      "options": ["Two or more atoms joined together", "A single cell", "A group of similar cells"],
+      "correct": 0,
+      "why": "A molecule is two or more atoms joined together. Cells are built from enormous numbers of molecules.",
+      "review": "body-organization"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-2-8",
+    "caption": "Sodium hands its single valence electron to chlorine. The oppositely charged ions attract, forming ionic bonds, and many ions stack into a crystal."
+  },
+  "chain": [
+    {
+      "cause": "A sodium atom has one electron in its valence shell, and a chlorine atom has seven.",
+      "effect": "Sodium's lone valence electron moves to chlorine, leaving each atom with a full valence shell."
+    },
+    {
+      "cause": "Sodium now has 11 protons but 10 electrons, and chlorine has 17 protons but 18 electrons.",
+      "effect": "Sodium becomes the cation Na+ and chlorine becomes the anion Cl−."
+    },
+    {
+      "cause": "Opposite charges attract.",
+      "effect": "Na+ and Cl− are held together by ionic bonds, and many of them stack into a crystal of sodium chloride."
+    },
+    {
+      "cause": "The crystal enters water, whose polar molecules carry partial charges that attract each ion.",
+      "effect": "Water pulls the ions apart, so Na+ and Cl− spread through the water as separate, free ions."
+    },
+    {
+      "cause": "Free ions carry electric charge through the water around and inside your cells.",
+      "effect": "Sodium and chloride act as electrolytes: the charged particles a blood test measures and your nervous system, muscles and heart depend on."
+    }
+  ],
+  "misconception": {
+    "wrong": "An ion forms when an atom gains or loses protons.",
+    "right": "Ions form when an atom gains or loses electrons. The number of protons defines the element, so if protons changed, sodium would stop being sodium. Na+ still has 11 protons, like every sodium atom; it has one fewer electron than a neutral sodium atom, which leaves one proton's worth of charge unbalanced."
+  },
+  "check": [
+    "anp-atoms-ions-bonds-1",
+    "anp-atoms-ions-bonds-3",
+    "anp-atoms-ions-bonds-6",
+    "anp-atoms-ions-bonds-8",
+    "anp-atoms-ions-bonds-10",
+    "anp-atoms-ions-bonds-15",
+    "anp-atoms-ions-bonds-18"
+  ],
+  "summary": "<p>An atom is a nucleus of protons (positive) and neutrons (no charge) surrounded by electrons (negative) in shells. The atomic number, the proton count, defines the element; isotopes of an element differ only in neutrons. Atoms gain, lose or share valence electrons until their valence shell is full. Losing or gaining electrons makes ions: cations are positive, anions are negative, and dissolved ions are electrolytes. Opposite ions attract in ionic bonds, which water pulls apart. Shared electron pairs make covalent bonds, the strongest bonds in body molecules; unequal sharing makes them polar. Hydrogen bonds are weak attractions between the partial charges of polar molecules. Chemical reactions rearrange atoms by breaking and forming bonds, and organic compounds are those with carbon–hydrogen bonds.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/atomic-structure.html", "label": "Organic chemistry: atomic structure" },
+    { "href": "/ochem/lessons/bond-polarity.html", "label": "Organic chemistry: bond polarity" },
+    { "href": "/ochem/lessons/functional-groups.html", "label": "Organic chemistry: functional groups" }
+  ]
+}

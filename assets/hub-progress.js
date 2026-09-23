@@ -96,6 +96,15 @@
       { min: 20, title: 'Reaction Oracle' },
       { min: 30, title: 'Ochem Legend' },
     ],
+    anp: [
+      { min: 1,  title: 'Cell Scout' },
+      { min: 3,  title: 'Tissue Tracker' },
+      { min: 6,  title: 'Organ Explorer' },
+      { min: 10, title: 'System Navigator' },
+      { min: 15, title: 'Homeostasis Keeper' },
+      { min: 20, title: 'Physiology Pro' },
+      { min: 30, title: 'A&P Legend' },
+    ],
   };
 
   // Set by each subject's bootstrap (nav.js / ochem-nav.js) so the header chip

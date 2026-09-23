@@ -1,0 +1,60 @@
+{
+  "topic": "enzymes-energy",
+  "hook": "<p>Mr. Okafor, 45, drank windshield washer fluid from an unlabeled bottle two hours ago. The fluid contains methanol. He feels fine and his blood pH is normal, yet the emergency team gives him a drug called fomepizole right away. Methanol does little harm by itself: an enzyme in his liver turns it into formic acid, which can drive his blood pH down and damage his vision. Fomepizole blocks that enzyme.</p>",
+  "prereq": [
+    {
+      "q": "What happens to a protein when it is denatured?",
+      "options": ["It loses its folded shape, and with it the ability to do its job", "It is split into its separate amino acids", "It gains extra phosphate groups"],
+      "correct": 0,
+      "why": "Denaturation unfolds a protein by breaking the weak bonds, such as hydrogen bonds, that hold its shape. The chain of amino acids stays intact, but a protein's job depends on its shape, so it stops working. Enzymes are proteins, so this matters on this page.",
+      "review": "biomolecules"
+    },
+    {
+      "q": "A solution's pH falls from 7.4 to 7.0. What happened to its hydrogen ion (H+) concentration?",
+      "options": ["It fell", "It rose", "It stayed the same"],
+      "correct": 1,
+      "why": "pH goes down as H+ concentration goes up. A fall of 0.4 pH units means the H+ concentration rose about two and a half times. Enzymes are sensitive to these changes.",
+      "review": "acids-bases-ph"
+    },
+    {
+      "q": "In a chemical reaction, what are the substances you start with called?",
+      "options": ["Products", "Solutes", "Reactants"],
+      "correct": 2,
+      "why": "Reactants are the starting substances, and products are what the reaction makes. A solute is a substance dissolved in a solution, whether or not it reacts.",
+      "review": "atoms-ions-bonds"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-2-27",
+    "caption": "The steps of an enzyme reaction: substrates bind the active site, react, and leave as products while the enzyme returns to its original shape."
+  },
+  "chain": [
+    {
+      "cause": "A substrate molecule collides with an enzyme and fits into its active site.",
+      "effect": "The substrate binds, and the enzyme changes shape slightly, closing around it."
+    },
+    {
+      "cause": "The closed active site holds the substrate in a strained, well-aligned position.",
+      "effect": "The activation energy the reaction needs falls."
+    },
+    {
+      "cause": "With a lower activation energy, far more substrate molecules get over the energy hill each second.",
+      "effect": "The reaction rate rises, often by a factor of a million or more."
+    },
+    {
+      "cause": "The newly formed products no longer fit the active site well.",
+      "effect": "The products are released, and the unchanged enzyme binds a new substrate molecule."
+    }
+  ],
+  "misconception": {
+    "wrong": "ATP stores its energy in a special high-energy bond, and breaking that bond releases the energy.",
+    "right": "Breaking any chemical bond takes energy; it never releases it. ATP hydrolysis releases energy because its products, ADP and phosphate surrounded by water, are a more stable, lower-energy arrangement than ATP and water. The energy released is the difference between the two sides of the reaction, not something stored inside one bond."
+  },
+  "check": ["anp-enzymes-energy-1", "anp-enzymes-energy-3", "anp-enzymes-energy-5", "anp-enzymes-energy-10", "anp-enzymes-energy-13", "anp-enzymes-energy-16", "anp-enzymes-energy-20"],
+  "summary": "<p>Energy is the capacity to do work. It is potential (stored, including chemical energy in bonds) or kinetic (motion, including heat). Metabolism is all your chemical reactions: catabolism breaks molecules down and usually releases energy (exergonic); anabolism builds molecules and usually needs energy (endergonic). ATP links the two: catabolism rebuilds ATP, and ATP hydrolysis or phosphorylation powers the work. Every reaction must first get over its activation energy. Enzymes, mostly proteins, bind their substrate at an active site and lower that barrier without being used up and without changing the energy released or the equilibrium. Temperature, pH, the amounts of substrate and enzyme, cofactors and coenzymes, and inhibitors all change enzyme activity. In oxidation a molecule loses electrons; in reduction it gains them; electron carriers such as NAD+ and FAD move those electrons, and the energy they hold, between reactions.</p>",
+  "connections": [
+    { "href": "/ochem/notes/energy-diagrams.html", "label": "Organic chemistry: energy diagrams" },
+    { "href": "/ochem/notes/oxidation-states.html", "label": "Organic chemistry: oxidation states" },
+    { "href": "/ochem/notes/peptides-proteins.html", "label": "Organic chemistry: peptides and proteins" }
+  ]
+}

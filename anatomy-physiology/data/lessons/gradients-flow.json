@@ -1,0 +1,53 @@
+{
+  "topic": "gradients-flow",
+  "hook": "<p>Ms. Alvarez, 34, has lost a lot of blood in a car crash, and her blood pressure is falling. The paramedic passes over the small 22-gauge catheter and places a large 14-gauge one in her arm, hangs the fluid bag as high as it will go, and squeezes it in a pressure bag. The larger catheter is only a few times wider, yet it lets fluid run in many times faster. Every one of those choices comes from a single rule: flow equals the pressure gradient divided by resistance.</p>",
+  "prereq": [
+    {
+      "q": "A solution has 10 mmol of glucose dissolved in 1 liter. What does its concentration describe?",
+      "options": ["How much glucose is dissolved in each liter of the solution", "The total mass of the solution", "How fast the glucose moves through the solution"],
+      "correct": 0,
+      "why": "Concentration is the amount of solute in a given volume of solution, here 10 mmol per liter. A difference in concentration between two places is the first kind of gradient on this page.",
+      "review": "water-solutions"
+    },
+    {
+      "q": "Which vessels carry blood away from the heart toward the tissues?",
+      "options": ["Veins", "Arteries", "Capillaries"],
+      "correct": 1,
+      "why": "Arteries carry blood away from the heart. Capillaries are the tiny vessels in the tissues, and veins carry blood back to the heart. Blood pressure is highest in the large arteries and lowest in the large veins.",
+      "review": "body-organization"
+    },
+    {
+      "q": "A ball held at the top of a staircase has stored energy because of its position. What kind of energy is that?",
+      "options": ["Kinetic energy", "Chemical energy", "Potential energy"],
+      "correct": 2,
+      "why": "Stored energy, whether from position or structure, is potential energy. When the ball rolls down, it becomes kinetic energy. A gradient is also a kind of potential energy.",
+      "review": "enzymes-energy"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    {
+      "cause": "A tube carries fluid with a pressure gradient of 80 mm Hg and a resistance of 2 mm Hg for each mL/min, so flow is 80 ÷ 2 = 40 mL/min. The tube is squeezed until its radius is half of what it was.",
+      "effect": "The radius to the fourth power falls to ½ × ½ × ½ × ½ = 1/16 of its old value."
+    },
+    {
+      "cause": "Resistance depends on 1 ÷ radius to the fourth power, and the radius to the fourth power is now 1/16 as large.",
+      "effect": "Resistance rises 16-fold, from 2 to 32 mm Hg for each mL/min."
+    },
+    {
+      "cause": "Resistance is 16 times higher while the pressure gradient stays at 80 mm Hg.",
+      "effect": "Flow falls to 80 ÷ 32 = 2.5 mL/min: one-sixteenth of the original, not one-half."
+    },
+    {
+      "cause": "To restore 40 mL/min through the narrowed tube, the pressure gradient would have to rise 16-fold.",
+      "effect": "It would need 1,280 mm Hg, so changing the radius, not the pressure, is the powerful way to control flow."
+    }
+  ],
+  "misconception": {
+    "wrong": "Fluid flows because the pressure is high: the higher the pressure, the more it flows.",
+    "right": "Fluid flows only when there is a pressure difference between two points, and flow depends on that difference, not on how high the pressures are. A closed garden hose can be under high pressure with no flow at all. A tube with 100 mm Hg at one end and 90 at the other carries the same flow as the same tube with 20 at one end and 10 at the other, because both have a 10 mm Hg gradient."
+  },
+  "check": ["anp-gradients-flow-2", "anp-gradients-flow-3", "anp-gradients-flow-5", "anp-gradients-flow-7", "anp-gradients-flow-8", "anp-gradients-flow-14", "anp-gradients-flow-17"],
+  "summary": "<p>A gradient is a difference in a quantity, such as concentration or temperature, between two places; things move down gradients without an energy input. Pressure is force per unit area, measured in mm Hg and given relative to atmospheric pressure (760 mm Hg at sea level). Bulk flow moves a whole fluid from higher to lower pressure, and flow equals the pressure gradient divided by resistance (F = ΔP/R). Resistance rises with length and viscosity and falls steeply as radius grows: it depends on the fourth power of the radius, so halving a tube's radius makes resistance 16 times larger and flow 16 times smaller. Hydrostatic pressure is the pressure a fluid exerts, and it rises with depth. Blood pressure is the pressure of blood against vessel walls, and it falls when blood volume (about 5 liters) falls.</p>",
+  "connections": []
+}

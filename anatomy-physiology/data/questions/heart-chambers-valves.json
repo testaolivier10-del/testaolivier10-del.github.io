@@ -1,0 +1,447 @@
+[
+  {
+    "id": "anp-heart-chambers-valves-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which chamber receives blood from the superior and inferior venae cavae?",
+    "options": ["Left atrium", "Right ventricle", "Right atrium", "Left ventricle"],
+    "correct": 2,
+    "why": {
+      "correct": "Both venae cavae empty into the right atrium, the receiving chamber on the right side of the heart.",
+      "options": [
+        "The left atrium receives the pulmonary veins from the lungs, not the venae cavae.",
+        "The right ventricle receives blood from the right atrium, through the tricuspid valve, not directly from the venae cavae.",
+        "Correct. The venae cavae deliver blood from the body into the right atrium.",
+        "The left ventricle receives blood from the left atrium and sends it into the aorta."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which great vessel leaves the left ventricle?",
+    "options": ["Aorta", "Pulmonary trunk", "Superior vena cava", "Pulmonary veins"],
+    "correct": 0,
+    "why": {
+      "correct": "The aorta leaves the left ventricle and carries blood to the whole body.",
+      "options": [
+        "Correct. The left ventricle pumps into the aorta, through the aortic valve.",
+        "The pulmonary trunk leaves the right ventricle, carrying blood toward the lungs.",
+        "The superior vena cava is a vein that brings blood into the right atrium.",
+        "The pulmonary veins bring blood from the lungs into the left atrium. They enter the heart; they do not leave a ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-19-9",
+    "pin": "mitral-bicuspid-valve",
+    "q": "Name the pinned valve, between the left atrium and the left ventricle.",
+    "options": ["Tricuspid valve", "Aortic valve", "Pulmonary valve", "Mitral valve"],
+    "correct": 3,
+    "why": {
+      "correct": "The valve between the left atrium and the left ventricle is the mitral valve (also called the bicuspid valve). It has two cusps.",
+      "options": [
+        "The tricuspid valve sits between the right atrium and the right ventricle, on the other side of the heart.",
+        "The aortic valve sits at the exit from the left ventricle into the aorta, not between the left atrium and ventricle.",
+        "The pulmonary valve sits at the exit from the right ventricle into the pulmonary trunk.",
+        "Correct. This is the mitral valve, the left atrioventricular valve."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-19-9",
+    "pin": "chordae-tendineae",
+    "q": "Name the pinned structures: thin cords running from the valve cusps down to the ventricle wall.",
+    "options": ["Pectinate muscles", "Chordae tendineae", "Trabeculae carneae", "Papillary muscles"],
+    "correct": 1,
+    "why": {
+      "correct": "Chordae tendineae are collagen cords that tie the cusps of the atrioventricular valves to the papillary muscles.",
+      "options": [
+        "Pectinate muscles are comb-like muscle ridges in the atria, not cords attached to valve cusps.",
+        "Correct. These cords are the chordae tendineae.",
+        "Trabeculae carneae are ridges of muscle on the ventricle walls. They are thick muscle, not thin cords.",
+        "Papillary muscles are the cones of muscle that the cords attach to, not the cords themselves."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-19-9",
+    "pin": "fossa-ovalis",
+    "q": "Name the pinned shallow oval dip in the wall between the two atria.",
+    "options": ["Coronary sulcus", "Fossa ovalis", "Auricle", "Atrioventricular septum"],
+    "correct": 1,
+    "why": {
+      "correct": "The fossa ovalis is a shallow oval depression in the interatrial septum, seen from the right atrium.",
+      "options": [
+        "The coronary sulcus is a groove on the outside of the heart between the atria and ventricles, not a dip inside the atrial wall.",
+        "Correct. The oval dip in the interatrial septum is the fossa ovalis.",
+        "An auricle is an ear-shaped pouch on the front of each atrium, not a dip in the septum.",
+        "The atrioventricular septum lies between the atria and the ventricles, not between the two atria."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-19-12",
+    "pin": "pulmonary-valve",
+    "q": "In this view from above, name the pinned valve: the most anterior valve, with three half-moon cusps.",
+    "options": ["Aortic valve", "Mitral valve", "Pulmonary valve", "Tricuspid valve"],
+    "correct": 2,
+    "why": {
+      "correct": "The pulmonary valve is the most anterior of the four valves. It is a semilunar valve with three half-moon cusps, at the exit from the right ventricle.",
+      "options": [
+        "The aortic valve also has three half-moon cusps, but it sits behind the pulmonary valve, closer to the center of the heart.",
+        "The mitral valve has two flat cusps and lies at the back left, not in front.",
+        "Correct. The front-most semilunar valve is the pulmonary valve.",
+        "The tricuspid valve has three flat cusps held by cords, and it lies at the back right."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-19-6",
+    "pin": "auricle-of-left-atrium",
+    "q": "Name the pinned wrinkled, ear-shaped pouch on the front of the left atrium.",
+    "options": ["Left auricle", "Left ventricle", "Pulmonary trunk", "Coronary sulcus"],
+    "correct": 0,
+    "why": {
+      "correct": "Each atrium has an ear-shaped pouch on its front called an auricle. This one belongs to the left atrium.",
+      "options": [
+        "Correct. The ear-shaped pouch is the left auricle.",
+        "The left ventricle forms the left edge and apex of the heart, below the auricle. It is smooth, not a small wrinkled pouch.",
+        "The pulmonary trunk is the large vessel leaving the top of the right ventricle, just to the right of the left auricle.",
+        "The coronary sulcus is a fat-filled groove around the heart, not a pouch."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Order the parts of the mitral valve apparatus, starting at the opening between the left atrium and left ventricle and ending in the ventricle wall.",
+    "options": ["Valve cusps", "Chordae tendineae", "Papillary muscle", "Myocardium of the ventricle wall"],
+    "why": {
+      "correct": "The cusps hang into the ventricle, the chordae tendineae run from the cusp edges down to the papillary muscles, and the papillary muscles rise from the ventricle's myocardium.",
+      "options": [
+        "The cusps sit at the opening itself.",
+        "The chordae tendineae attach to the free edges of the cusps.",
+        "The papillary muscle anchors the lower ends of the cords.",
+        "The papillary muscle is an extension of the ventricle wall's myocardium."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-9",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which features belong to the semilunar valves? Select all that apply.",
+    "options": [
+      "Three half-moon, pocket-shaped cusps",
+      "Cusps held by chordae tendineae",
+      "Located at the exits from the ventricles",
+      "Include the pulmonary and aortic valves",
+      "Located between each atrium and its ventricle"
+    ],
+    "correct": [0, 2, 3],
+    "why": {
+      "correct": "The semilunar valves are the pulmonary and aortic valves. Each has three pocket-shaped cusps and guards the exit from a ventricle into its artery. They have no cords or muscles.",
+      "options": [
+        "Yes. Each semilunar valve has three half-moon cusps shaped like pockets.",
+        "No. Chordae tendineae hold the atrioventricular valves. Semilunar cusps have no cords.",
+        "Yes. The semilunar valves sit where each ventricle empties into its artery.",
+        "Yes. The pulmonary valve and the aortic valve are the two semilunar valves.",
+        "No. That location belongs to the atrioventricular valves, the tricuspid and the mitral."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "papillary muscles open the valves",
+    "q": "Mrs. Okafor, 71, tears one of the papillary muscles in her left ventricle. What happens each time her left ventricle contracts?",
+    "options": [
+      "The mitral valve cannot open, so blood cannot enter the ventricle",
+      "Mitral cusps flip into the left atrium and blood leaks backward",
+      "The aortic valve flips back into the ventricle and blood leaks in",
+      "The tricuspid valve closes too early, so the right atrium overfills"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Papillary muscles contract with the ventricle and pull the chordae tendineae tight, which stops the mitral cusps flipping up into the atrium. With one torn, the cusps it held swing up when the ventricle squeezes, and blood leaks backward into the left atrium.",
+      "options": [
+        "Papillary muscles do not open the valve. Blood pushes the cusps open. Their job is to keep the closed cusps from flipping up, so losing one causes backward leak, not a stuck valve.",
+        "Correct. Without the anchor, the cusps flip into the left atrium and blood flows backward with every contraction.",
+        "The aortic valve is a semilunar valve with no papillary muscles, so a torn papillary muscle does not affect it directly.",
+        "The tricuspid valve is on the right side of the heart. Mrs. Okafor's torn muscle is in the left ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "The pulmonary arteries carry blood that has just come back from the body, and the pulmonary veins carry blood that has just passed through the lungs. Why are they still called arteries and veins?",
+    "options": [
+      "Their walls are the same thickness as other arteries and veins",
+      "They are named after the chamber each one touches",
+      "The names are based on direction relative to the heart",
+      "They carry blood at the same pressure as the aorta and venae cavae"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "An artery carries blood away from the heart and a vein carries blood toward it. The pulmonary arteries leave the heart and the pulmonary veins return to it, so the names fit, whatever the blood carries.",
+      "options": [
+        "Wall thickness does not define an artery or vein. The definition is the direction of flow relative to the heart.",
+        "Names are not taken from the chambers: the aorta and the pulmonary trunk both leave ventricles but have different names.",
+        "Correct. Direction relative to the heart is the only rule for naming arteries and veins.",
+        "The vessels of the lungs work at much lower pressure than the aorta, so equal pressure cannot be the reason."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "misconception": "the left ventricle pumps more blood than the right",
+    "q": "The left ventricle wall is about three times as thick as the right ventricle wall. What best explains this?",
+    "options": [
+      "The left ventricle pumps a larger volume of blood with each beat",
+      "Blood leaving the left ventricle has to travel a longer distance",
+      "The blood in the left ventricle is thicker than the blood in the right",
+      "The left ventricle has to generate about five times higher pressure"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The vessels of the whole body resist flow far more than those of the lungs. To push the same volume through them, the left ventricle must raise pressure to about 120 mm Hg, versus about 25 mm Hg on the right. Muscle that works against a heavier load thickens.",
+      "options": [
+        "Both ventricles pump the same volume each beat. If they did not, blood would pile up on one side within minutes.",
+        "Distance alone is not the cause. What sets the work is the pressure needed to overcome the resistance of the vessels.",
+        "Blood on both sides is the same blood, with the same thickness. It passes through the right side first and the left side next.",
+        "Correct. The higher pressure load on the left ventricle is what thickens its wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-13",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Several chordae tendineae of the mitral valve snap. Predict what happens during each contraction of the left ventricle.",
+    "variables": [
+      {
+        "name": "Blood flowing backward into the left atrium",
+        "answer": "up",
+        "why": "Without the cords to hold them, the mitral cusps flip up into the left atrium when the ventricle squeezes, so blood leaks backward through the gap."
+      },
+      {
+        "name": "Volume of blood the left ventricle sends into the aorta each beat",
+        "answer": "down",
+        "why": "Some of the blood the ventricle squeezes goes backward into the atrium instead of forward, so less leaves through the aortic valve."
+      },
+      {
+        "name": "Pressure in the left atrium",
+        "answer": "up",
+        "why": "Extra blood pushed back into the left atrium on top of the blood arriving from the pulmonary veins raises the pressure inside it."
+      }
+    ],
+    "why": {
+      "correct": "Snapped cords let the mitral cusps flip, so the ventricle pushes some blood backward. More goes into the left atrium, raising its pressure, and less goes forward into the aorta."
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-14",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Fill the gap in the right side of the heart: right atrium → tricuspid valve → ____ → pulmonary valve → pulmonary trunk.",
+    "options": ["Right ventricle", "Left atrium", "Aorta", "Pulmonary veins"],
+    "correct": 0,
+    "why": {
+      "correct": "The tricuspid valve opens into the right ventricle, and the right ventricle pumps out through the pulmonary valve into the pulmonary trunk.",
+      "options": [
+        "Correct. The right ventricle lies between the tricuspid valve and the pulmonary valve.",
+        "The left atrium is on the other side of the interatrial septum and receives the pulmonary veins.",
+        "The aorta leaves the left ventricle through the aortic valve, not the right side.",
+        "The pulmonary veins bring blood from the lungs into the left atrium. They are not part of the right side of the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-15",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "This list of structures on the left side of the heart has one wrong step. Find it.",
+    "options": ["Pulmonary veins", "Left atrium", "Tricuspid valve", "Left ventricle", "Aortic valve", "Aorta"],
+    "correct": 2,
+    "why": {
+      "correct": "The valve between the left atrium and the left ventricle is the mitral valve. The tricuspid valve is on the right side, between the right atrium and right ventricle.",
+      "options": [
+        "Correct step. The pulmonary veins deliver blood from the lungs to the left atrium.",
+        "Correct step. The left atrium is the receiving chamber on the left side.",
+        "This is the wrong step. The left atrioventricular valve is the mitral valve, not the tricuspid.",
+        "Correct step. The left ventricle lies below the left atrium.",
+        "Correct step. The aortic valve guards the exit from the left ventricle.",
+        "Correct step. The aorta carries blood out of the left ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "The electrical signal that makes the atria contract cannot spread directly into the ventricle muscle. Which structure is responsible?",
+    "options": [
+      "The interventricular septum",
+      "The cardiac skeleton",
+      "The pericardial sac",
+      "The chordae tendineae"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cardiac skeleton is dense collagen lying between the atria and the ventricles. Collagen does not conduct electrical signals like muscle does, so the signal can cross only at one specialized pathway.",
+      "options": [
+        "The interventricular septum separates the right and left ventricles, so it lies between the two pumping chambers rather than between the atria and the ventricles.",
+        "Correct. The dense connective tissue of the cardiac skeleton insulates the atria from the ventricles.",
+        "The pericardial sac surrounds the whole heart on the outside. It does not sit between the atria and the ventricles.",
+        "The chordae tendineae are cords inside the ventricles that hold valve cusps. They do not block electrical signals between chambers."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Where would you find trabeculae carneae?",
+    "options": [
+      "On the inner walls of both ventricles",
+      "In the auricles of both atria",
+      "On the cusps of the semilunar valves",
+      "In the grooves on the heart's surface"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Trabeculae carneae are ridges and bridges of muscle on the inner walls of the ventricles.",
+      "options": [
+        "Correct. They line the inner walls of the ventricles.",
+        "The auricles are lined by pectinate muscles, the comb-like ridges of the atria.",
+        "Semilunar cusps are thin pockets of endocardium and connective tissue, with no muscle ridges.",
+        "The surface grooves are the sulci, filled with fat and surface vessels."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-18",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which vessels open into an atrium? Select all that apply.",
+    "options": ["Superior vena cava", "Pulmonary trunk", "Inferior vena cava", "Pulmonary veins", "Aorta"],
+    "correct": [0, 2, 3],
+    "why": {
+      "correct": "Veins bring blood into the atria: the venae cavae into the right atrium and the pulmonary veins into the left atrium. The pulmonary trunk and the aorta are arteries leaving the ventricles.",
+      "options": [
+        "Yes. The superior vena cava enters the right atrium.",
+        "No. The pulmonary trunk is an artery leaving the right ventricle.",
+        "Yes. The inferior vena cava enters the right atrium.",
+        "Yes. The pulmonary veins enter the left atrium.",
+        "No. The aorta is an artery leaving the left ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which groove on the surface of the heart marks the boundary between the atria and the ventricles?",
+    "options": [
+      "Anterior interventricular sulcus",
+      "Posterior interventricular sulcus",
+      "Coronary sulcus",
+      "Fossa ovalis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The coronary sulcus circles the heart like a crown, at the line where the atria meet the ventricles.",
+      "options": [
+        "The anterior interventricular sulcus runs down the front of the heart between the two ventricles, not around it.",
+        "The posterior interventricular sulcus runs down the back of the heart between the two ventricles.",
+        "Correct. The coronary sulcus separates atria above from ventricles below.",
+        "The fossa ovalis is a dip inside the interatrial septum, not a surface groove."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-chambers-valves-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A surgeon replaces a patient's aortic valve with a mechanical valve that has no cords or muscles attached. Why does the design not need them?",
+    "options": [
+      "The aortic valve is opened and closed by the aorta's smooth muscle",
+      "Semilunar cusps close by filling with backflowing blood",
+      "Blood does not flow back toward the left ventricle once it leaves",
+      "The papillary muscles of the left ventricle pull on the aortic cusps"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Semilunar valves have pocket-shaped cusps. Blood slipping back toward the ventricle fills the pockets, and the cusps bulge together and seal. No cords or muscles are involved, so a replacement needs none.",
+      "options": [
+        "No muscle opens or closes any heart valve. Blood moving against the cusps does it.",
+        "Correct. The pocket shape lets backflowing blood close the valve by itself.",
+        "Blood does start to flow back toward the ventricle when it relaxes. That backflow is what fills the pockets and closes the valve.",
+        "Papillary muscles attach only to the atrioventricular valves through the chordae tendineae, not to semilunar cusps."
+      ]
+    }
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "water-properties": {
+    "def": "The behaviors that follow from water's polarity and hydrogen bonds: it absorbs much heat with little warming, takes much heat to evaporate, clings to itself (cohesion and surface tension, the inward pull at a water surface), lubricates and cushions, takes part in reactions and dissolves many substances.",
+    "roots": [],
+    "say": ""
+  },
+  "solution": {
+    "def": "A mixture in which one substance, the solute, is spread evenly particle by particle through another, the solvent. In your body the solvent is almost always water.",
+    "roots": [["solut-", "loosened"], ["solv-", "to loosen"]],
+    "say": ""
+  },
+  "mixtures": {
+    "def": "A mixture is substances combined physically, without bonds between them. In a solution the particles are tiny and never settle; colloids hold larger particles that still do not settle; in a suspension the particles are large enough to settle on standing.",
+    "roots": [["koll-", "glue"], ["-oid", "like"], ["suspend-", "to hang"]],
+    "say": "KOL-oydz"
+  },
+  "hydrophilic-hydrophobic": {
+    "def": "Hydrophilic (water soluble) substances are ions and polar molecules, which attract water and dissolve. Hydrophobic substances are nonpolar and are pushed into clusters by water molecules bonding with each other.",
+    "roots": [["hydr/o", "water"], ["-philic", "loving"], ["-phobic", "fearing"]],
+    "say": "hy-dro-FIL-ik; hy-dro-FO-bik"
+  },
+  "concentration": {
+    "def": "The amount of solute in a given volume of solution: amount divided by volume. For electrolytes it is usually given in millimoles per liter (mmol/L), a unit that counts particles.",
+    "roots": [["con-", "together"], ["centr/o", "center"]],
+    "say": ""
+  },
+  "osmolarity": {
+    "def": "The total concentration of all dissolved particles in a solution, counting each ion separately, in milliosmoles per liter (mOsm/L). Osmolality is the same count per kilogram of water (mOsm/kg); normal blood osmolality is about 275 to 295 mOsm/kg.",
+    "roots": [["osm/o", "push"]],
+    "say": "oz-mo-LAR-ih-tee"
+  }
+}

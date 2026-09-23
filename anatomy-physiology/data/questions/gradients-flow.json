@@ -1,0 +1,544 @@
+[
+  {
+    "id": "anp-gradients-flow-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "What drives the bulk flow of blood along a blood vessel?",
+    "options": [
+      "The concentration gradient of oxygen along the vessel",
+      "The pressure difference between its two ends",
+      "The high pressure at the start of the vessel, whatever the pressure at its end",
+      "The viscosity of the blood"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bulk flow is driven by a pressure gradient: the fluid moves from the higher-pressure end toward the lower-pressure end.",
+      "options": [
+        "A concentration gradient moves individual dissolved particles, not the whole fluid. Blood moves as a whole because of a pressure difference.",
+        "Correct. A pressure difference between two points pushes the whole fluid from higher to lower pressure.",
+        "A high pressure with no difference produces no flow, as in a closed hose. What matters is how much higher the pressure is at one end than at the other.",
+        "Viscosity is part of resistance. It opposes flow rather than driving it."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "The pressure at the start of a tube is 100 mm Hg and at the end is 20 mm Hg. The tube's resistance is 4 mm Hg for each mL/min. What is the flow?",
+    "options": [
+      "25 mL/min",
+      "320 mL/min",
+      "20 mL/min",
+      "30 mL/min"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "First find the pressure gradient: ΔP = 100 − 20 = 80 mm Hg. Then F = ΔP / R = 80 ÷ 4 = 20 mL/min.",
+      "options": [
+        "This divides the starting pressure alone by the resistance (100 ÷ 4). Flow depends on the pressure difference, 80 mm Hg, not the starting pressure.",
+        "This multiplies the pressure gradient by the resistance (80 × 4). Resistance holds flow back, so you divide by it.",
+        "Correct. ΔP = 80 mm Hg, and 80 ÷ 4 = 20 mL/min.",
+        "This adds the two pressures (100 + 20 = 120) and divides by 4. The gradient is the difference between the pressures, not their sum."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "misconception": "halving the radius halves the flow",
+    "q": "The radius of a tube is cut to half its original value. The pressures at both ends stay the same, and so do the tube's length and the fluid. What happens to the flow?",
+    "options": [
+      "It falls to 1/2 of the original",
+      "It falls to 1/4 of the original",
+      "It is unchanged: pressure alone sets the flow",
+      "It falls to 1/16 of the original"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Resistance depends on 1 ÷ radius to the fourth power. Halving the radius makes the radius to the fourth power (½)⁴ = 1/16 as large, so resistance becomes 16 times larger. With ΔP unchanged, F = ΔP / R becomes 1/16 of the original.",
+      "options": [
+        "This treats flow as simply proportional to radius. Resistance depends on the fourth power of the radius, so the effect is far larger.",
+        "This squares the radius (½ × ½). Resistance depends on the radius multiplied by itself four times, not twice.",
+        "Flow depends on both the pressure gradient and resistance. Narrowing the tube raises resistance, so flow falls even though the pressures are unchanged.",
+        "Correct. Half the radius gives 16 times the resistance, so one-sixteenth of the flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Muscle in the wall of a small artery relaxes, and the artery's radius doubles. The pressure gradient across it does not change. By what factor does blood flow through it change?",
+    "options": [
+      "It becomes 2 times larger",
+      "It becomes 16 times larger",
+      "It becomes 4 times larger",
+      "It becomes one-sixteenth as large"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Doubling the radius makes the radius to the fourth power 2 × 2 × 2 × 2 = 16 times larger, so resistance falls to 1/16. With the same ΔP, flow becomes 16 times larger.",
+      "options": [
+        "Flow does not scale directly with radius. Radius acts through its fourth power.",
+        "Correct. Resistance falls to one-sixteenth, so flow rises 16-fold.",
+        "Four times would come from squaring the radius. The rule uses the fourth power.",
+        "This is the effect of halving the radius. A wider vessel has less resistance, so flow goes up, not down."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "higher pressure means more flow",
+    "q": "Two identical tubes carry the same fluid. Tube A has 150 mm Hg at its inlet and 140 mm Hg at its outlet. Tube B has 40 mm Hg at its inlet and 10 mm Hg at its outlet. Which statement is correct?",
+    "options": [
+      "Tube A carries more flow: its pressures are much higher",
+      "Both carry the same flow: they are identical tubes",
+      "Tube B carries three times the flow of tube A",
+      "Neither carries flow: the outlets are not at 0 mm Hg"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Flow depends on the pressure difference. Tube A has ΔP = 150 − 140 = 10 mm Hg; tube B has ΔP = 40 − 10 = 30 mm Hg. With the same resistance, tube B carries three times the flow.",
+      "options": [
+        "High pressures with a small difference drive little flow. Tube A's gradient is only 10 mm Hg.",
+        "Identical tubes have the same resistance, but their pressure gradients differ (10 versus 30 mm Hg), so their flows differ.",
+        "Correct. 30 mm Hg ÷ 10 mm Hg = 3, and with equal resistance, flow is proportional to ΔP.",
+        "Fluid flows whenever one end is at a higher pressure than the other. The outlet does not need to be at 0."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A nurse notices that an IV infusion is running slowly. The bag is hanging 50 cm above the patient's arm. She raises it to 100 cm above the arm and changes nothing else. Why does the fluid now run faster?",
+    "options": [
+      "The taller column raises pressure at the catheter and widens ΔP",
+      "Raising the bag lowers the viscosity of the fluid in the tubing",
+      "Raising the bag stretches and widens the catheter",
+      "The fluid gains kinetic energy while the bag is lifted and keeps it"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Hydrostatic pressure rises with the height of the fluid column: about 0.74 mm Hg per centimeter. Going from 50 to 100 cm adds roughly 37 mm Hg at the catheter. The pressure in the vein is unchanged, so ΔP grows and so does flow.",
+      "options": [
+        "Correct. A taller column means more hydrostatic pressure at the catheter, so a larger ΔP drives more flow.",
+        "Viscosity depends on the fluid itself and its temperature, not on the bag's height.",
+        "The catheter radius is fixed by the device. Raising the bag changes pressure, not resistance.",
+        "Lifting the bag is over in a moment, but the faster flow lasts as long as the bag stays high. What persists is the extra hydrostatic pressure from the taller column."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "A paramedic needs to give fluid as fast as possible to a patient who is bleeding heavily. Starting from one IV setup, which single change would raise flow the most?",
+    "options": [
+      "Doubling the pressure squeezing the fluid bag, using a pressure bag",
+      "Using a catheter of the same radius but half the length",
+      "Using a catheter with twice the internal radius and the same length",
+      "Warming the fluid enough to lower its viscosity by one-quarter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Flow depends on the radius to the fourth power. Doubling the radius cuts resistance to 1/16, so flow rises about 16-fold. Doubling the pressure or halving the length each only doubles flow, and a quarter less viscosity raises flow by about one-third.",
+      "options": [
+        "Flow is proportional to ΔP, so doubling the pressure doubles flow: a real gain, but far smaller than the radius change.",
+        "Resistance is proportional to length, so half the length halves resistance and doubles flow.",
+        "Correct. Twice the radius gives one-sixteenth the resistance and about 16 times the flow.",
+        "Resistance is proportional to viscosity. Cutting viscosity to three-quarters raises flow by a factor of 4/3, about 33%."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "A clamp narrows a tube carrying fluid. The pressures at the inlet and outlet are held constant. Predict each change.",
+    "variables": [
+      {
+        "name": "Resistance of the tube",
+        "answer": "up",
+        "why": "A smaller radius means more friction between the fluid and the wall for the fluid passing through, and resistance depends on 1 ÷ radius to the fourth power."
+      },
+      {
+        "name": "Pressure gradient between inlet and outlet",
+        "answer": "none",
+        "why": "The inlet and outlet pressures are held constant, so their difference does not change."
+      },
+      {
+        "name": "Flow through the tube",
+        "answer": "down",
+        "why": "F = ΔP / R. The same ΔP divided by a larger R gives less flow."
+      }
+    ],
+    "why": {
+      "correct": "Narrowing a tube raises its resistance steeply. With the pressure gradient fixed, flow falls."
+    }
+  },
+  {
+    "id": "anp-gradients-flow-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Which changes would increase the resistance of a tube to the flow of a fluid? Select all that apply.",
+    "options": [
+      "Making the tube longer",
+      "Raising the pressure at the inlet",
+      "Replacing the fluid with a more viscous one",
+      "Narrowing the tube's radius",
+      "Lowering the pressure at the outlet"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Resistance is set by the tube and the fluid: length, viscosity and radius. Pressures change the gradient, not the resistance.",
+      "options": [
+        "Increases resistance. Resistance is proportional to length.",
+        "Does not change resistance. It raises the pressure gradient, which increases flow through the same resistance.",
+        "Increases resistance. Resistance is proportional to viscosity.",
+        "Increases resistance, steeply, because resistance depends on 1 ÷ radius to the fourth power.",
+        "Does not change resistance. A lower outlet pressure widens the pressure gradient and increases flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-10",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Put the steps in order to show how tightening the muscle in a small artery's wall reduces blood flow through it, with the pressure gradient unchanged.",
+    "options": [
+      "Muscle in the artery wall contracts",
+      "The artery's radius shrinks",
+      "The radius to the fourth power shrinks much more",
+      "Resistance rises steeply",
+      "Flow falls: the same pressure gradient is divided by a larger resistance"
+    ],
+    "why": {
+      "correct": "The muscle narrows the radius. Because resistance depends on 1 ÷ radius to the fourth power, a small narrowing raises resistance a lot. With ΔP fixed, F = ΔP / R falls."
+    }
+  },
+  {
+    "id": "anp-gradients-flow-11",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A tube has an inlet pressure of 90 mm Hg, an outlet pressure of 10 mm Hg and a flow of 20 mL/min. Fill the gap in this calculation of its resistance. ΔP = 90 − 10 = 80 mm Hg → R = ΔP ÷ F = ______ → R = 4 mm Hg for each mL/min.",
+    "options": [
+      "20 ÷ 80",
+      "90 ÷ 20",
+      "80 ÷ 20",
+      "80 × 20"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Rearranging F = ΔP / R gives R = ΔP ÷ F. With ΔP = 80 mm Hg and F = 20 mL/min, R = 80 ÷ 20 = 4.",
+      "options": [
+        "This divides flow by the pressure gradient, which inverts the relationship. It gives 0.25, not 4.",
+        "This uses the inlet pressure instead of the pressure difference. Resistance is calculated from ΔP.",
+        "Correct. ΔP ÷ F = 80 ÷ 20 = 4 mm Hg for each mL/min.",
+        "Multiplying gives 1,600. Resistance is the pressure gradient divided by the flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-12",
+    "type": "error",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "A student works through what happens when a tube's radius is halved. One step is wrong. Find it.",
+    "options": [
+      "At the start, ΔP = 80 mm Hg and R = 2 mm Hg for each mL/min, so F = 40 mL/min.",
+      "The radius is halved; the pressures, length and fluid stay the same.",
+      "The radius to the fourth power becomes (½)⁴ = 1/16 of its old value.",
+      "Resistance therefore doubles, from 2 to 4 mm Hg for each mL/min.",
+      "The new flow is found with F = ΔP / R, using the new resistance."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Resistance depends on 1 ÷ radius to the fourth power. If the radius to the fourth power is 1/16 as large, resistance is 16 times larger (32, not 4), and flow becomes 80 ÷ 32 = 2.5 mL/min.",
+      "options": [
+        "This step is right: 80 ÷ 2 = 40 mL/min.",
+        "This step is right. It sets up a fair comparison by changing one thing only.",
+        "This step is right: ½ × ½ × ½ × ½ = 1/16.",
+        "This is the error. A radius term 1/16 as large makes resistance 16 times larger, not twice as large.",
+        "This step is right. The flow equation still applies; only R has changed."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "A patient's blood pressure is recorded as 120/80 mm Hg. What does the 120 mean?",
+    "options": [
+      "120 mm Hg above air pressure, at the peak of each beat",
+      "120 mm Hg in total, counting the air pressure",
+      "A 120 mm column of blood pushed up by each beat",
+      "120 mm Hg below the surrounding air pressure, between beats"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Body pressures are given relative to atmospheric pressure. The first number is the peak pressure during a heartbeat, 120 mm Hg above the pressure of the air around you.",
+      "options": [
+        "Correct. The reading is relative to atmospheric pressure, and the higher number is the peak during each beat.",
+        "Atmospheric pressure alone is about 760 mm Hg at sea level. Readings leave it out and give only the pressure above it.",
+        "The unit is millimeters of mercury, not blood. Mercury is about 13.6 times denser than water, so a column of blood at the same pressure would be far taller.",
+        "Arterial blood is at a higher pressure than the air, which is why it spurts from a cut artery. The lower number, 80, is the pressure between beats, and it too is above air pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
+    "q": "A 28-year-old man loses about 1.5 liters of blood from a deep leg wound. His blood pressure falls from 124/78 to 92/60 mm Hg. Which explanation fits?",
+    "options": [
+      "Less blood in the same stretchy vessels stretches their walls less",
+      "His remaining blood has thickened and now lowers the pressure",
+      "The air pressure around him has fallen during the bleeding",
+      "His blood vessels have lengthened and now lower the pressure"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Blood vessels form a closed, stretchy system. Blood pressure depends partly on how much blood fills it. With a lower blood volume, the walls are stretched less and the pressure falls.",
+      "options": [
+        "Correct. A smaller blood volume in the same vessels means less stretch and a lower pressure.",
+        "Losing whole blood does not thicken what remains. Higher viscosity would raise resistance, not explain a pressure drop.",
+        "The surrounding air pressure is not changed by bleeding. Blood pressure readings are already relative to it.",
+        "Vessel length does not change with blood loss."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Compared with lying flat, what happens to the pressure in the blood vessels of your feet when you stand up?",
+    "options": [
+      "It falls: blood drains away from the feet when you stand",
+      "It rises by roughly 90 mm Hg from the weight of the blood column",
+      "It stays the same: the heart pumps at the same pressure either way",
+      "It rises by about 760 mm Hg: the atmospheric pressure is added"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Standing puts a column of blood more than a meter tall between your heart and your feet. Hydrostatic pressure rises with the depth of a fluid column, so pressure in foot vessels rises by roughly 90 mm Hg.",
+      "options": [
+        "Gravity pulls blood toward the feet, not away, and the column above them raises the pressure.",
+        "Correct. The added hydrostatic pressure from the blood column raises foot-vessel pressure.",
+        "The heart's output is only part of the pressure. The weight of the blood column adds to it in the lowest parts of your body.",
+        "Atmospheric pressure acts on your whole body equally and does not change when you stand. The added pressure comes from the blood column."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "On a hot day the air is 40 °C and your skin is 34 °C. Which way does heat move between your skin and the air?",
+    "options": [
+      "From your skin to the air",
+      "In neither direction",
+      "In both directions equally",
+      "From the air to your skin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heat moves down a temperature gradient, from warmer to cooler. Here the air is warmer than your skin, so heat moves into your skin.",
+      "options": [
+        "That would be moving up the temperature gradient, from cooler (34 °C) to warmer (40 °C), which heat does not do on its own.",
+        "A 6 °C difference is a temperature gradient, so heat does move.",
+        "Heat moves in both directions only when there is no difference in temperature, and then the two cancel.",
+        "Correct. The air at 40 °C is warmer than skin at 34 °C, so heat moves into your skin."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A patient's blood has an unusually high concentration of cells. If the pressure gradient driving blood through a vessel stays the same, what happens to flow through that vessel?",
+    "options": [
+      "It rises: more cells carry more blood through the vessel",
+      "It stays the same: the pressure gradient has not changed",
+      "It falls: thicker blood raises the resistance",
+      "It falls: the thick blood narrows the vessel radius"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Most of blood's viscosity comes from its cells. More cells make blood more viscous, which raises resistance. With the same ΔP, F = ΔP / R falls.",
+      "options": [
+        "Flow is the volume of blood moving per minute. More cells make blood thicker and harder to push, so flow falls.",
+        "The same ΔP drives less flow when resistance is higher. Flow depends on both.",
+        "Correct. Higher viscosity means higher resistance and less flow at the same pressure gradient.",
+        "Thick blood does not narrow the vessel. The rise in resistance comes from viscosity."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-18",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which of these are examples of bulk flow? Select all that apply.",
+    "options": [
+      "Blood moving along an artery",
+      "A drop of dye slowly spreading through a still glass of water",
+      "Air moving into your lungs as you breathe in",
+      "Fluid running from an IV bag into a vein",
+      "Heat spreading from your warm hand into a cold metal rail"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Bulk flow is a whole fluid moving together, pushed by a pressure difference. Blood, inhaled air and IV fluid all qualify. Dye particles spreading through still water and heat passing into metal are driven by concentration and temperature gradients, with no pressure-driven flow of the fluid.",
+      "options": [
+        "Bulk flow. The heart creates a pressure difference that moves the whole blood, with everything in it.",
+        "Not bulk flow. The water is still; individual dye particles spread down their own concentration gradient.",
+        "Bulk flow. The pressure in your lungs drops below atmospheric, and air moves in as a whole.",
+        "Bulk flow. The pressure at the bag end is higher than in the vein, so the fluid moves as a whole.",
+        "Not bulk flow. Heat moves down a temperature gradient; no fluid moves at all."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "An artery's radius shrinks by 10%, to 0.9 of its original value, while the pressure gradient stays the same. About how much flow remains?",
+    "options": [
+      "About 90% of the original",
+      "About 66% of the original",
+      "About 50% of the original",
+      "About 10% of the original"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Flow depends on the radius to the fourth power: 0.9 × 0.9 × 0.9 × 0.9 ≈ 0.66. Resistance rises about 1.5-fold, so about two-thirds of the flow remains. A small narrowing costs a third of the flow.",
+      "options": [
+        "This treats flow as directly proportional to radius. The fourth-power rule makes the loss much larger.",
+        "Correct. 0.9⁴ ≈ 0.66, so about 66% of the flow remains.",
+        "Half the flow would need the radius to shrink to about 0.84 of its original value, a 16% narrowing.",
+        "This confuses the size of the narrowing (10%) with the flow that remains."
+      ]
+    }
+  },
+  {
+    "id": "anp-gradients-flow-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which of these is the steepest concentration gradient?",
+    "options": [
+      "A difference of 20 mmol/L across 10 mm",
+      "A difference of 10 mmol/L across 1 mm",
+      "A difference of 50 mmol/L across 100 mm",
+      "A difference of 5 mmol/L across 5 mm"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Steepness is the difference divided by the distance. The values are 2, 10, 0.5 and 1 mmol/L per mm, so 10 mmol/L across 1 mm is the steepest.",
+      "options": [
+        "20 ÷ 10 = 2 mmol/L per mm. The difference is larger, but it is spread over ten times the distance.",
+        "Correct. 10 ÷ 1 = 10 mmol/L per mm, the steepest of the four.",
+        "50 ÷ 100 = 0.5 mmol/L per mm. The largest difference, spread over the longest distance, gives the shallowest gradient.",
+        "5 ÷ 5 = 1 mmol/L per mm."
+      ]
+    }
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "os-2-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "2.13",
+      "section": "2.3",
+      "page": "2-3-chemical-reactions",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/77a7e797a22d00222941ae465b25152baf562628"
+    },
+    "alt": "Two energy graphs side by side, each plotting energy against the progress of a reaction. Without an enzyme, the reactants must climb a tall hump before falling to the lower energy of the products. With an enzyme, the hump is much lower, while the starting and ending energies are the same as before.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.13",
+    "labels": []
+  },
+  "os-2-27": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "2.27",
+      "section": "2.5",
+      "page": "2-5-organic-compounds-essential-to-human-functioning",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/97d389047c761b33ff23825a52139108608c0926"
+    },
+    "alt": "Four stages of an enzyme reaction: two substrate molecules approach the active site of an enzyme, bind in the active site, react while bound, and leave as a product while the enzyme returns to its starting shape.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.27",
+    "labels": []
+  }
+}

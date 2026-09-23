@@ -1,0 +1,26 @@
+{
+  "os-26-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "26.3",
+      "section": "26.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/345d0f0cc0cf0046b43b44cb2195ade1c0e4d57b"
+    },
+    "alt": "A small blood vessel running among several body cells. Plasma fills the vessel, interstitial fluid fills the spaces between the cells, and intracellular fluid fills each cell. Materials pass between the plasma and the cells through the interstitial fluid.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.3",
+    "labels": []
+  },
+  "os-20-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.16",
+      "section": "20.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/054f7d3a7aa9ed183f3acdad7f2b678bdd6121e7"
+    },
+    "alt": "The classic diagram of fluid exchange along a capillary from its arteriole end to its venule end: hydrostatic pressure exceeds colloid osmotic pressure at the arteriole end, where fluid filters out; the two are equal near the middle; and colloid osmotic pressure exceeds hydrostatic pressure at the venule end, where fluid is drawn back in.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.16",
+    "labels": []
+  }
+}

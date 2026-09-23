@@ -1,0 +1,500 @@
+[
+  {
+    "id": "anp-connective-tissue-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What feature defines connective tissue?",
+    "options": [
+      "Sheets of cells packed edge to edge on a basement membrane",
+      "Few cells scattered in a lot of extracellular matrix",
+      "Cells that shorten and pull when they are stimulated",
+      "A free surface facing a lumen or the outside"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Connective tissue is mostly matrix: ground substance and fibers made by relatively few, scattered cells. The matrix gives each connective tissue its properties.",
+      "options": [
+        "Cells packed edge to edge describe epithelium, the opposite arrangement.",
+        "Correct. Scattered cells in abundant extracellular matrix define connective tissue.",
+        "Shortening to pull is the job of muscle, the tissue type covered in the next topic.",
+        "A free apical surface facing a lumen belongs to epithelium. Connective tissue sits inside the body with no free surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What are the two parts of the extracellular matrix?",
+    "options": [
+      "Fibroblasts and macrophages",
+      "Plasma and platelets",
+      "Basal lamina and reticular lamina",
+      "Ground substance and fibers"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The matrix is made of ground substance, a water-holding gel, plus protein fibers (collagen, elastic and reticular) running through it. Cells sit in the matrix but are not part of it.",
+      "options": [
+        "These are cells that live in connective tissue. They make or clean the matrix; they are not the matrix itself.",
+        "These are parts of blood. Plasma is blood's matrix, but platelets are cell fragments, not matrix.",
+        "These are the two parts of the basement membrane under an epithelium.",
+        "Correct. Ground substance plus fibers make up the extracellular matrix."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which fiber lets a tissue stretch and then snap back to its resting length?",
+    "options": [
+      "Collagen fiber",
+      "Reticular fiber",
+      "Elastic fiber",
+      "Keratin filament"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Elastic fibers are built mainly of elastin, whose molecules uncoil when stretched and recoil when released. They can stretch to about one and a half times their length.",
+      "options": [
+        "Collagen fibers are very strong when pulled, but they barely stretch.",
+        "Reticular fibers are thin collagen strands that form supporting nets. They do not recoil like elastin.",
+        "Correct. Elastic fibers stretch and recoil.",
+        "Keratin fills cells of keratinized epithelium. It is not a connective tissue fiber."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-4",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cell makes the fibers and ground substance of connective tissue proper?",
+    "options": [
+      "Fibroblast",
+      "Macrophage",
+      "Adipocyte",
+      "Chondrocyte"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Fibroblasts (fibro- = fiber, -blast = builder) make collagen, elastic and reticular fibers and the ground substance. A less active one that maintains the matrix is called a fibrocyte.",
+      "options": [
+        "Correct. Fibroblasts build the matrix of connective tissue proper.",
+        "Macrophages engulf debris and bacteria. They clean the tissue; they don't build its matrix.",
+        "Adipocytes store triglyceride in fat droplets.",
+        "Chondrocytes make the matrix of cartilage, a supportive connective tissue, not connective tissue proper."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A splinter carries bacteria into the areolar tissue under your skin. Which resident connective tissue cell engulfs the bacteria by phagocytosis?",
+    "options": [
+      "Fibroblast",
+      "Adipocyte",
+      "Macrophage",
+      "Chondrocyte"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Macrophages (macro- = large, phag- = eat) engulf bacteria, dead cells and debris and digest them in lysosomes. Many come from a type of white blood cell that settles in tissues. You'll meet them again in the immune system chapter.",
+      "options": [
+        "Fibroblasts make fibers and ground substance. They don't engulf bacteria.",
+        "Adipocytes store fat. They don't engulf bacteria.",
+        "Correct. Macrophages are the phagocytes of connective tissue.",
+        "Chondrocytes live only in cartilage and build its matrix."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does a tendon resist a pull along its length far better than a pull from the side?",
+    "options": [
+      "Its elastic fibers stretch sideways but not lengthwise",
+      "Its collagen bundles run parallel to the pull",
+      "It has more ground substance than other connective tissues",
+      "Its cells contract to resist the force"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Tendons are dense regular connective tissue: thick collagen bundles lined up in one direction. Collagen is very strong in tension, so the tendon is strong along its fibers and weak across them.",
+      "options": [
+        "Tendons are mostly collagen, not elastic fibers, and their strength comes from how the collagen is lined up.",
+        "Correct. Parallel collagen bundles resist pulling along their length.",
+        "Dense connective tissue has little ground substance. Ground substance doesn't resist pulling.",
+        "Tendon cells are fibroblasts, which don't contract. The force comes from the muscle the tendon is attached to."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The dermis of your skin is stretched in many directions as you move. Which tissue fits that job?",
+    "options": [
+      "Dense regular connective tissue",
+      "Reticular tissue",
+      "Hyaline cartilage",
+      "Dense irregular tissue"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Dense irregular tissue has thick collagen bundles running in many directions, so it resists pulls from any direction. That is the dermis's tissue.",
+      "options": [
+        "Dense regular tissue resists pulling in one direction only. It suits tendons and ligaments.",
+        "Reticular tissue is a delicate net that supports soft organs such as the spleen. It is not strong.",
+        "Hyaline cartilage resists squeezing and is avascular. The dermis is a flexible, well-supplied layer.",
+        "Correct. Collagen bundles running every way resist stretch from any direction."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-8",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which are forms of loose connective tissue? Select all that apply.",
+    "options": [
+      "Areolar tissue",
+      "Adipose tissue",
+      "Tendon",
+      "Reticular tissue",
+      "Fibrocartilage"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Loose connective tissue has few, loosely woven fibers and plenty of ground substance. Its three forms are areolar, adipose and reticular tissue.",
+      "options": [
+        "Correct. Areolar tissue is the loose packing under epithelia.",
+        "Correct. Adipose tissue is loose connective tissue filled with fat cells.",
+        "A tendon is dense regular connective tissue, packed with parallel collagen.",
+        "Correct. Reticular tissue is a loose net of reticular fibers in soft organs.",
+        "Fibrocartilage is a supportive connective tissue, a kind of cartilage."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does a ligament connect?",
+    "options": [
+      "Bone to bone",
+      "Muscle to bone",
+      "Muscle to muscle",
+      "Skin to bone"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A ligament is dense regular connective tissue that joins one bone to another where they meet, holding them together.",
+      "options": [
+        "Correct. Ligaments join bone to bone.",
+        "A tendon connects muscle to bone.",
+        "Muscles can meet through flat sheets of tendon (aponeuroses), but a ligament joins bones.",
+        "Skin is anchored by the dermis and the loose tissue below it, not by ligaments."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An athlete tears the inner part of a knee meniscus and, in the same month, breaks a bone in her wrist. The bone heals in eight weeks; the meniscus tear does not heal. What best explains the difference?",
+    "options": [
+      "The meniscus is made of elastic cartilage, which tears more easily",
+      "Bone has no cells, so it simply sets like cement",
+      "The inner meniscus lacks blood vessels; bone has many",
+      "Fibrocartilage has a thick perichondrium that blocks healing"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Cartilage is avascular, so repair depends on slow diffusion and a few slow-dividing chondrocytes. Bone has a rich blood supply that brings cells and nutrients to a break, so it heals in weeks.",
+      "options": [
+        "Menisci are fibrocartilage, not elastic cartilage. The healing problem is the missing blood supply.",
+        "Bone is living tissue with cells throughout its matrix; its blood supply is what lets it heal.",
+        "Correct. No vessels in the inner meniscus means little repair; bone's rich supply supports healing.",
+        "Fibrocartilage has no perichondrium at all. A perichondrium would actually help, since it carries vessels and cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which type of cartilage forms the flexible flap of your outer ear?",
+    "options": [
+      "Hyaline cartilage",
+      "Fibrocartilage",
+      "Articular cartilage",
+      "Elastic cartilage"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Elastic cartilage has a dense web of elastic fibers in its matrix, so it bends and springs back. It shapes the ear flap and the epiglottis.",
+      "options": [
+        "Hyaline cartilage is only slightly flexible. It forms the tip of the nose and the rings of the trachea.",
+        "Fibrocartilage is packed with thick collagen and resists compression and pulling. It forms intervertebral discs and menisci.",
+        "Articular cartilage is hyaline cartilage on bone ends where they meet and glide.",
+        "Correct. Elastic cartilage gives the ear flap its bend-and-return flexibility."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An intervertebral disc is squeezed by your body weight and pulled as you bend and twist. Why is it made of fibrocartilage rather than hyaline cartilage?",
+    "options": [
+      "Thick collagen bundles resist pulling too",
+      "Fibrocartilage has blood vessels that speed repair",
+      "Fibrocartilage is the most flexible type of cartilage",
+      "Hyaline cartilage disappears after birth"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "All cartilage resists squeezing because its ground substance holds water. Fibrocartilage adds thick bundles of collagen, which resist pulling. A disc faces both, so it is fibrocartilage.",
+      "options": [
+        "Correct. Collagen bundles add strength in tension to cartilage's resistance to compression.",
+        "Fibrocartilage, like all cartilage, has no blood vessels.",
+        "Elastic cartilage is the most flexible type. Fibrocartilage is the toughest.",
+        "Hyaline cartilage is the most common cartilage in adults too, for example on bone ends and in the trachea."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In brown adipose tissue, a mitochondrial protein lets hydrogen ions leak back across the inner membrane without passing through the ATP-making machinery. What is the result?",
+    "options": [
+      "More ATP is made per glucose",
+      "The energy is released as heat",
+      "The cell stores more triglyceride in one large droplet",
+      "Oxygen use stops"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The electron transport chain still runs and still uses oxygen, but the hydrogen ions it pumps flow back without driving ATP production. The energy in that gradient is lost as heat, which warms the body.",
+      "options": [
+        "Letting the ions leak back bypasses ATP production, so less ATP is made, not more.",
+        "Correct. The energy is released as heat instead of being captured in ATP.",
+        "Brown fat cells store fat in many small droplets. The single large droplet is typical of white fat.",
+        "The electron transport chain keeps running, so oxygen use continues and can even rise."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-14",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps of forming a blood clot (short version) in order.",
+    "options": [
+      "A blood vessel is cut",
+      "Platelets stick to the damaged wall and to each other",
+      "A dissolved plasma protein turns into long, sticky threads",
+      "The threads tangle around the platelets and trap red cells",
+      "A jelly-like plug seals the leak"
+    ],
+    "why": {
+      "correct": "Damage comes first. Platelets gather at the site, then the dissolved protein forms threads that bind the platelet mass and trap cells into a clot. The blood chapter covers the full sequence."
+    }
+  },
+  {
+    "id": "anp-connective-tissue-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "blood is not a connective tissue",
+    "q": "Blood is classed as a connective tissue. Which part of blood plays the role of the extracellular matrix?",
+    "options": [
+      "Red blood cells",
+      "Platelets",
+      "Plasma",
+      "White blood cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In any connective tissue, cells sit in an extracellular matrix. In blood, that matrix is plasma, a liquid of water, salts, nutrients and dissolved proteins.",
+      "options": [
+        "Red cells are the most numerous cells of blood. They sit in the matrix; they are not the matrix.",
+        "Platelets are cell fragments carried in the matrix.",
+        "Correct. Plasma is blood's liquid matrix.",
+        "White cells are cells carried by blood, not its matrix."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mesenchyme is best described as what?",
+    "options": [
+      "The tough, vessel-carrying layer around most cartilage",
+      "Embryonic connective tissue made of stem cells",
+      "The protein mat that anchors an epithelium",
+      "The heat-making fat found in newborns"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Mesenchyme (mes- = middle) is loose embryonic connective tissue of star-shaped stem cells in a watery ground substance. Its cells differentiate into fibroblasts, fat cells, chondrocytes and the cells of bone.",
+      "options": [
+        "That is the perichondrium, a layer of dense irregular tissue.",
+        "Correct. Mesenchyme is embryonic connective tissue made of stem cells.",
+        "That is the basement membrane.",
+        "That describes brown adipose tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-17",
+    "type": "error",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This description of how cartilage gets its supplies contains one wrong step. Find it.",
+    "options": [
+      "Blood vessels run through the perichondrium around most cartilage",
+      "Oxygen and nutrients leave those vessels",
+      "Capillaries inside the matrix deliver them to each chondrocyte",
+      "Chondrocytes in the center are the farthest from the supply",
+      "Repair of damaged cartilage is slow"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Cartilage is avascular. There are no capillaries in its matrix; oxygen and nutrients must diffuse through the matrix to reach the chondrocytes.",
+      "options": [
+        "This step is right: the perichondrium carries the vessels that supply most cartilage.",
+        "This step is right: supplies leave the vessels outside the cartilage.",
+        "This is the error. Cartilage has no capillaries; supplies diffuse through the matrix.",
+        "This step is right: diffusion makes the central cells the least supplied.",
+        "This step is right: a poor supply and few slow cells make repair slow."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-18",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step. You press on articular cartilage → ______ → the cartilage flattens slightly → when the load lifts, water flows back and it springs back.",
+    "options": [
+      "Water is squeezed out of the ground substance",
+      "Elastic fibers in the matrix recoil and pull it thinner",
+      "Chondrocytes contract",
+      "Blood drains out of its capillaries"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Cartilage's ground substance is packed with large molecules that hold water. A load squeezes some water out, and the water flows back when the load is removed. That makes cartilage a shock absorber.",
+      "options": [
+        "Correct. Load pushes water out of the ground substance.",
+        "Articular cartilage is hyaline cartilage, with few elastic fibers, and recoil would restore shape, not flatten it.",
+        "Chondrocytes cannot contract; they maintain the matrix.",
+        "Cartilage has no capillaries."
+      ]
+    }
+  },
+  {
+    "id": "anp-connective-tissue-19",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A genetic disorder weakens a person's collagen fibers. Predict the effect on each variable.",
+    "variables": [
+      {
+        "name": "Strength of tendons and ligaments when pulled",
+        "answer": "down",
+        "why": "Tendons and ligaments get their strength in tension from parallel collagen bundles, so weaker collagen makes them easier to overstretch or tear."
+      },
+      {
+        "name": "Resistance of the dermis to tearing",
+        "answer": "down",
+        "why": "The dermis is dense irregular tissue built from collagen bundles, so weaker collagen lets the skin tear or bruise more easily."
+      },
+      {
+        "name": "Ability of bone to resist bending without breaking",
+        "answer": "down",
+        "why": "Collagen gives bone its flexibility; with weak collagen, the mineral matrix is more brittle and breaks more easily."
+      }
+    ]
+  }
+]

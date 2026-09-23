@@ -1,0 +1,50 @@
+{
+  "os-1-3": {
+    "file": "figures/openstax/os-1-3.jpg",
+    "w": 1242,
+    "h": 1467,
+    "source": "openstax",
+    "openstax": {
+      "figure": "1.3",
+      "section": "1.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1a8147ffd084d00853d19e47570b491abf6f2371"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/1a8147ffd084d00853d19e47570b491abf6f2371",
+    "alt": "A pyramid of six levels, smallest at the top. Two hydrogen atoms bond to one oxygen atom to make water. Below that, a single long, tapered muscle cell. Then a sheet of many such cells bound side by side. Then one organ, the urinary bladder with the tube that drains it. Then the whole urinary organ system: two kidneys, two ureters, the bladder and the urethra. At the base, a whole woman drinking a glass of water.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.3",
+    "labels": []
+  },
+  "os-1-4": {
+    "file": "figures/openstax/os-1-4.jpg",
+    "w": 978,
+    "h": 1616,
+    "source": "openstax",
+    "openstax": {
+      "figure": "1.4",
+      "section": "1.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9470e72cca7ce51cb7080746f15fbe1c379d29c3"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/9470e72cca7ce51cb7080746f15fbe1c379d29c3",
+    "alt": "Eight outlines of a woman's body, each showing one organ system. Skin covers the first. The second shows the bones and joints of the skeleton. The third shows the muscles that move the skeleton. The fourth shows the brain, the spinal cord and fibers running out to the limbs. The fifth marks the pituitary, the thyroid, the pancreas, the adrenals and the gonads. The sixth shows the heart with arteries and veins reaching every part of the body.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.4",
+    "labels": []
+  },
+  "os-1-5": {
+    "file": "figures/openstax/os-1-5.jpg",
+    "w": 1309,
+    "h": 2164,
+    "source": "openstax",
+    "openstax": {
+      "figure": "1.5",
+      "section": "1.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/14d9efd1f4ce4ca2dee5f013b1f98c49ab993573"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/14d9efd1f4ce4ca2dee5f013b1f98c49ab993573",
+    "alt": "Outlines of the body showing the remaining organ systems. The lymphatic system: the thymus in the chest, the spleen in the abdomen and a network of thin vessels with small nodes along them. The respiratory system: nasal passages, trachea and lungs. The digestive system: stomach, liver, gallbladder and the coiled intestines. The urinary system: kidneys and urinary bladder. The male reproductive system with the testes, and the female reproductive system with the ovaries, uterus and breasts.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.5",
+    "labels": []
+  }
+}

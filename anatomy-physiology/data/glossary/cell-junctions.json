@@ -1,0 +1,22 @@
+{
+  "cell-junction": {
+    "def": "A specialized spot where membrane proteins connect a cell to a neighboring cell or to the material around it. The three main types are tight junctions, desmosomes and gap junctions.",
+    "roots": [["junction", "a joining"]],
+    "say": ""
+  },
+  "tight-junction": {
+    "def": "A continuous band where strands of claudin and occludin proteins stitch the membranes of neighboring cells together. It seals the space between cells, so substances must pass through the cells rather than between them.",
+    "roots": [],
+    "say": ""
+  },
+  "desmosome": {
+    "def": "A button-shaped anchoring junction in which cadherins grip across the gap between two cells and dense plaques anchor intermediate filaments on each side. It holds cells together against pulling.",
+    "roots": [["desmos", "bond"], ["-some", "body"]],
+    "say": "DEZ-moh-sohm"
+  },
+  "gap-junction": {
+    "def": "A cluster of protein tunnels, each made of two docked connexons of six connexins, that connects the cytoplasm of neighboring cells. Water, ions and small molecules pass through, so electrical current can spread from cell to cell.",
+    "roots": [],
+    "say": ""
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "topic": "glands",
+  "hook": "<p>Mrs. Lee, 62, has a tumor pressing on the main duct of her pancreas. Her stools turn pale and greasy because the fat in her meals is no longer being digested. Yet her blood levels of the hormones her pancreas makes are normal. One organ, one blockage, and one function lost while the other carries on: the difference is where each product goes.</p>",
+  "prereq": [
+    {
+      "q": "A cell releases the contents of a vesicle by fusing the vesicle with its plasma membrane. What is this process called?",
+      "options": ["Endocytosis", "Exocytosis", "Facilitated diffusion"],
+      "correct": 1,
+      "why": "Exocytosis (exo- = outside, cyt/o = cell) is the fusion of a vesicle with the plasma membrane, which empties the vesicle's contents outside the cell. Endocytosis brings material in; facilitated diffusion moves single molecules through carrier or channel proteins.",
+      "review": "active-transport"
+    },
+    {
+      "q": "In an epithelium, which side of each cell faces the lumen or the outside surface?",
+      "options": ["The basal surface", "The apical surface", "The basement membrane"],
+      "correct": 1,
+      "why": "The apical surface faces the lumen or the outside. The basal surface faces the basement membrane and the connective tissue beneath it.",
+      "review": "epithelium"
+    },
+    {
+      "q": "A hormone reaches every tissue in the blood. Which cells does it change?",
+      "options": ["Every cell it touches", "Target cells that carry a matching receptor protein", "Only cells next to the gland that made it"],
+      "correct": 1,
+      "why": "A hormone changes only its target cells: the cells with a receptor protein that binds it. Other cells are exposed to it but do not respond.",
+      "review": "chemical-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-4-10",
+    "caption": "The three modes of secretion. Top: merocrine, where vesicles release their contents and the cell stays whole. Middle: apocrine, where the product-filled apical end pinches off. Bottom: holocrine, where the whole cell breaks apart and becomes the secretion."
+  },
+  "chain": [
+    {
+      "cause": "Ribosomes on the rough endoplasmic reticulum of a gland cell build a protein product.",
+      "effect": "The protein moves to the Golgi apparatus, which modifies it and packs it into secretory vesicles."
+    },
+    {
+      "cause": "The secretory vesicles travel to the apical surface of the cell.",
+      "effect": "Each vesicle fuses with the plasma membrane (exocytosis) and empties its product outside the cell."
+    },
+    {
+      "cause": "In an exocrine gland, the product lands in the lumen of a duct.",
+      "effect": "The duct carries the product to a surface, such as the skin or the inside of the gut, where it acts."
+    },
+    {
+      "cause": "In an endocrine gland there is no duct, so the product (a hormone) lands in the interstitial fluid.",
+      "effect": "The hormone diffuses into nearby capillaries and travels in the blood."
+    },
+    {
+      "cause": "The blood carries the hormone to every tissue.",
+      "effect": "Only target cells with a matching receptor protein bind it and change their activity."
+    }
+  ],
+  "misconception": {
+    "wrong": "Exocrine glands make enzymes and endocrine glands make hormones, so you can tell them apart by their product.",
+    "right": "The two kinds of gland are defined by the route their product takes, not by the chemical. An exocrine gland sends its product through a duct to a surface; an endocrine gland has no duct and releases its product toward the blood. Many exocrine glands make no enzymes at all (a goblet cell makes mucus), and enzymes and many hormones are both proteins. Always ask where the product goes."
+  },
+  "check": ["anp-glands-2", "anp-glands-3", "anp-glands-5", "anp-glands-6", "anp-glands-7", "anp-glands-12", "anp-glands-14"],
+  "summary": "<p>A gland is epithelium specialized to make and release a product. An exocrine gland keeps a duct that carries its product to a surface; the smallest is a single goblet cell, and larger ones are named by their duct (simple or compound) and secretory part (tubular, alveolar or both). A serous gland releases watery fluid; a mucous gland releases mucus. An endocrine gland is ductless: it releases hormones into interstitial fluid, and they travel in the blood to target cells. Exocrine cells release their product in three modes: merocrine (exocytosis; the cell survives), apocrine (the apical end pinches off) and holocrine (the whole cell breaks apart and stem cells replace it).</p>"
+}

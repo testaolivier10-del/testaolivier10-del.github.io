@@ -1,0 +1,223 @@
+/* Anatomy & Physiology course styles, on top of assets/theme.css.
+
+   Part 1 is the course's VISUAL LANGUAGE (docs/anp-spec.md section 6): one set
+   of colors and arrows used by every figure, diagram, graph and tool in the
+   course, so oxygenated blood, "sympathetic" or a "causes" arrow looks the same
+   everywhere. Authors use the class names only (docs/anp-authoring-guide.md);
+   no figure picks its own color.
+
+   The hues are the Okabe–Ito colorblind-safe set, and every pair that has to be
+   told apart (oxygenated vs deoxygenated, sympathetic vs parasympathetic,
+   afferent vs efferent) also differs in lightness, so they separate in
+   grayscale too. Dark mode swaps in lighter tints of the same hues. */
+
+/* ============================================================ 1. Visual language */
+:root{
+  --anp-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --anp-o2-fill:#F6D2BD;
+  --anp-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --anp-deo2-fill:#C3DDF0;
+  --anp-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --anp-symp-fill:#F1DAE7;
+  --anp-para:#009E73;      /* parasympathetic: bluish green */
+  --anp-para-fill:#C4E8DC;
+  --anp-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --anp-aff-fill:#F8E3B8;
+  --anp-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --anp-eff-fill:#D2EAF8;
+  --anp-hi:#8E3B2E;        /* the high side of a gradient */
+  --anp-hi-fill:#EFD5CF;
+  --anp-lo:#5B6B8C;        /* the low side */
+  --anp-lo-fill:#E1E6F0;
+  --anp-memb:#6B5E3C;      /* membranes */
+  --anp-shape:#5D6B69;     /* neutral structure */
+  --anp-shape-fill:#EEF2F1;
+  --anp-causes:#1F2A28;    /* "causes" arrows */
+  --anp-flows:#1F2A28;     /* "flows to" arrows */
+  --anp-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --anp-o2:#FF9A5C;  --anp-o2-fill:rgba(213,94,0,0.28);
+  --anp-deo2:#6CB8EC; --anp-deo2-fill:rgba(0,114,178,0.30);
+  --anp-symp:#E7A5CA; --anp-symp-fill:rgba(204,121,167,0.26);
+  --anp-para:#4FD1AA; --anp-para-fill:rgba(0,158,115,0.26);
+  --anp-aff:#F3C04F;  --anp-aff-fill:rgba(230,159,0,0.26);
+  --anp-eff:#8FD0F5;  --anp-eff-fill:rgba(86,180,233,0.24);
+  --anp-hi:#F0A08F;   --anp-hi-fill:rgba(142,59,46,0.34);
+  --anp-lo:#AEBBD6;   --anp-lo-fill:rgba(91,107,140,0.30);
+  --anp-memb:#D8C58F;
+  --anp-shape:#B7C4C1; --anp-shape-fill:rgba(183,196,193,0.10);
+  --anp-causes:#E6EEEC; --anp-flows:#E6EEEC;
+  --anp-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.anp-fig svg, svg.anp-svg{max-width:100%;height:auto;overflow:visible;}
+.anp-fig .shape{fill:var(--anp-shape-fill);stroke:var(--anp-shape);stroke-width:2;}
+.anp-fig .o2{fill:var(--anp-o2-fill);stroke:var(--anp-o2);stroke-width:2;}
+.anp-fig .deo2{fill:var(--anp-deo2-fill);stroke:var(--anp-deo2);stroke-width:2;}
+.anp-fig .symp{fill:var(--anp-symp-fill);stroke:var(--anp-symp);stroke-width:2;}
+.anp-fig .para{fill:var(--anp-para-fill);stroke:var(--anp-para);stroke-width:2;}
+.anp-fig .aff{fill:var(--anp-aff-fill);stroke:var(--anp-aff);stroke-width:2;}
+.anp-fig .eff{fill:var(--anp-eff-fill);stroke:var(--anp-eff);stroke-width:2;}
+.anp-fig .hi{fill:var(--anp-hi-fill);stroke:var(--anp-hi);stroke-width:2;}
+.anp-fig .lo{fill:var(--anp-lo-fill);stroke:var(--anp-lo);stroke-width:2;}
+.anp-fig .memb{fill:none;stroke:var(--anp-memb);stroke-width:3;}
+.anp-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.anp-fig .line{fill:none !important;}
+.anp-fig .o2.line{stroke:var(--anp-o2);} .anp-fig .deo2.line{stroke:var(--anp-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   anp-core.js, so an author only writes class="causes" or class="flows". */
+.anp-fig .causes{fill:none;stroke:var(--anp-causes);stroke-width:2.5;marker-end:url(#anp-head-causes);}
+.anp-fig .flows{fill:none;stroke:var(--anp-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#anp-head-flows);}
+.anp-fig .o2.flows{stroke:var(--anp-o2);} .anp-fig .deo2.flows{stroke:var(--anp-deo2);}
+.anp-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.anp-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.anp-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#anp-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.anp-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.anp-crumb a{color:var(--muted);text-decoration:none;}
+.anp-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.anp-hero{padding-top:22px;}
+.anp-hero h1{max-width:24ch;}
+.anp-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.anp-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.anp-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.anp-tag:hover{text-decoration:underline;}
+.anp-part{margin:0 0 30px;max-width:760px;}
+.anp-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.anp-part-n{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:50%;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);}
+.anp-part p,.anp-prose p,.anp-prose li{font-weight:600;line-height:1.7;}
+.anp-hint{color:var(--muted);font-size:14px;}
+.anp-small{color:var(--muted);font:700 13px var(--font-ui);}
+.anp-unbuilt{color:var(--muted);}
+.anp-links{margin:0;padding-left:20px;}
+.anp-links li{margin:4px 0;}
+.anp-plain{margin:6px 0 14px;padding-left:20px;}
+.anp-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+.anp-hook h2{color:var(--cink);}
+
+/* The causal chain: numbered cause -> effect steps. */
+.anp-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.anp-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.anp-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.anp-chain .anp-arrow{color:var(--cink);font-weight:900;}
+.anp-chain .anp-cause{font-weight:700;}
+.anp-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.anp-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.anp-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.anp-wrong b{color:var(--bad-text, #B3261E);}
+.anp-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the anatomy panel. */
+.anp-figure{margin:18px 0 24px;}
+.anp-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.anp-credit{display:block;font-size:12px;margin-top:3px;}
+.anp-figimg{position:relative;display:inline-block;max-width:100%;}
+.anp-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+.anp-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.anp-mask span{position:absolute;left:-9999px;}
+.anp-labels-hidden .anp-mask{background:var(--anp-mask);outline:2px solid var(--cink);cursor:pointer;}
+.anp-labels-hidden .anp-mask:focus-visible{outline:3px solid var(--accent);}
+.anp-labels-hidden .anp-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.anp-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.anp-prose{max-width:760px;}
+.anp-prose h2{font-size:23px;margin:34px 0 10px;}
+.anp-prose h3{font-size:18px;margin:24px 0 8px;}
+.anp-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.anp-prose table.compare th,.anp-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.anp-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.anp-prose table.compare tbody th{font-weight:800;}
+.anp-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.anp-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.anp-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.anp-preview{border:2px dashed var(--cink);}
+.anp-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.anp-onward{display:flex;gap:12px;justify-content:space-between;margin:34px 0 10px;max-width:760px;}
+.anp-prevnext{display:flex;flex-direction:column;padding:12px 16px;border-radius:14px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);font-weight:800;max-width:48%;}
+.anp-prevnext span{font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.anp-next{margin-left:auto;text-align:right;}
+.anp-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.anp-foot{padding:26px 0 40px;}
+.anp-beta-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (anp-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+.anp-tip{position:absolute;z-index:60;max-width:320px;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
+.anp-tip b{display:block;font-weight:900;margin-bottom:2px;}
+.anp-tip .anp-tip-roots{display:block;opacity:.8;font-size:12.5px;margin-top:4px;}
+.anp-tip a{color:inherit;}
+
+/* Questions. */
+.anp-qs{display:grid;gap:14px;}
+.anp-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.anp-q-stem{margin:0 0 10px;font-weight:700;}
+.anp-q-n{color:var(--cink);font-weight:900;}
+.anp-opts{margin:0;padding-left:20px;}
+.anp-opt-btns{display:grid;gap:8px;}
+.anp-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.anp-opt:hover:not(:disabled){border-color:var(--cink);}
+.anp-opt[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.anp-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.anp-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.anp-opt .anp-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.anp-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.anp-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.anp-q-feedback .anp-verdict{font-weight:900;}
+.anp-q-feedback .ok{color:var(--good-text, #1B7B5B);} .anp-q-feedback .no{color:var(--bad-text, #B3261E);}
+.anp-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.anp-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.anp-order li.pos-ok{border-color:var(--good, #1B7B5B);} .anp-order li.pos-no{border-color:var(--bad, #B3261E);}
+.anp-order .anp-order-text{flex:1;font-weight:700;}
+.anp-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.anp-predict{width:100%;border-collapse:collapse;}
+.anp-predict th,.anp-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.anp-predict .anp-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.anp-predict .anp-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.anp-predict .anp-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.anp-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .anp-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.anp-predict .anp-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.anp-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .anp-q-key{display:none;}
+
+/* Lists of chapters and topics. */
+.anp-partgroup h2{font-size:20px;margin:26px 0 10px;}
+.anp-chapters,.anp-topic-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.anp-chapters li,.anp-topic-list li{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:11px 15px;}
+.anp-chapters a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);flex:1;min-width:0;}
+.anp-topic-n{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:9px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);}
+.anp-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.anp-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.anp-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.anp-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.anp-steps li{margin:6px 0;}
+.anp-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.anp-filter input,.anp-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+.anp-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;}
+.anp-letters a{padding:4px 9px;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
+.anp-terms{margin:0;}
+.anp-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.anp-term dt{font-weight:900;}
+.anp-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
+.anp-roots{display:block;color:var(--muted);font-size:13.5px;}
+.anp-say{color:var(--muted);font-weight:700;font-size:13.5px;}
+
+@media (max-width:560px){
+  .anp-part h2{font-size:19px;}
+  .anp-prevnext{max-width:100%;}
+  .anp-onward{flex-direction:column;}
+}
+@media print{
+  .anp-toggle-labels,.anp-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .anp-q-key{display:block;}
+}

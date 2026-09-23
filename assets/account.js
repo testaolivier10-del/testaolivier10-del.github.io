@@ -726,7 +726,7 @@
      would turn "delete my account" into "and start tracking me again", which
      is the exact opposite of what was asked for. It is the one key that
      outlives the account on purpose. */
-  var CLEAR_PREFIXES = ['hub_', 'nremt_', 'ochem_', 'levlprep_'];
+  var CLEAR_PREFIXES = ['hub_', 'nremt_', 'ochem_', 'anp_', 'levlprep_'];
   var CLEAR_EXACT = ['levl_sound'];
   var CLEAR_KEEP = ['levlprep_analytics_opt_out'];
 

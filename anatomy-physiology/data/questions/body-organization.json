@@ -1,0 +1,365 @@
+[
+  {
+    "id": "anp-body-organization-1",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Put the levels of organization in order, from the smallest and simplest to the largest and most complex.",
+    "options": ["Chemical level (atoms and molecules)", "Cell", "Tissue", "Organ", "Organ system", "Organism"],
+    "why": { "correct": "Atoms bond into molecules; molecules are arranged into cells; similar cells group into tissues; two or more tissues build an organ; organs that share a job form an organ system; and all the organ systems together make the organism. Each level is built from the one below it." }
+  },
+  {
+    "id": "anp-body-organization-2",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Fill in the missing level: chemical level → cell → ____ → organ → organ system → organism.",
+    "options": ["Molecule", "Tissue", "Organism", "Organ system"],
+    "correct": 1,
+    "why": {
+      "correct": "Between the cell and the organ sits the tissue: a group of similar cells, with the material around them, working on one job. Organs are built from two or more kinds of tissue.",
+      "options": [
+        "Molecules belong to the chemical level, which comes before the cell. The gap sits after the cell, so it must be something built from cells.",
+        "Correct. Similar cells group into tissues, and two or more kinds of tissue make an organ.",
+        "The organism is the top level, a whole living individual. It is already at the end of the sequence.",
+        "An organ system is a group of organs, so it comes after the organ, not before it. It already appears later in the sequence."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement best describes the difference between anatomy and physiology?",
+    "options": [
+      "Anatomy studies structures; physiology studies how those structures work",
+      "Anatomy studies organs; physiology studies cells",
+      "Anatomy studies healthy bodies; physiology studies disease",
+      "Anatomy studies the whole body; physiology studies one system"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Anatomy (ana- = apart, -tomy = cutting) is the study of structure: shape, parts and position. Physiology (physi/o = nature, -logy = study of) is the study of how structures work, the chemical and physical events inside them.",
+      "options": [
+        "Correct. Structure versus function is the dividing line, and the two are linked because function follows from structure.",
+        "Both subjects work at every scale. Microscopic anatomy studies cells, and physiology studies whole organs such as the heart. Scale is not what separates them.",
+        "Both subjects study healthy bodies first. The study of disease is a different field, pathology.",
+        "Systemic anatomy studies one system at a time, and physiology studies whole-body events too. Whole versus part does not separate the two subjects."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A student measures how fast the heart's chambers fill with blood between beats. Which field is the student working in?",
+    "options": ["Gross anatomy", "Microscopic anatomy", "Physiology", "Regional anatomy"],
+    "correct": 2,
+    "why": {
+      "correct": "Measuring how fast chambers fill is studying how the heart works, an event over time. That is physiology.",
+      "options": [
+        "Gross anatomy would describe the size, shape and position of the heart's chambers, not how fast they fill.",
+        "Microscopic anatomy would look at heart cells and tissue under a microscope. Filling speed is a working event, not a structure.",
+        "Correct. Physiology studies how structures work, and a filling rate is a measure of function.",
+        "Regional anatomy studies all the structures in one body part together, such as the chest. It describes structure, not the speed of an event."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A surgeon preparing for a hand operation reviews every bone, muscle, joint and blood vessel in the hand together. Which approach to anatomy is this?",
+    "options": ["Systemic anatomy", "Microscopic anatomy", "Physiology", "Regional anatomy"],
+    "correct": 3,
+    "why": {
+      "correct": "Studying every structure in one part of the body together is regional anatomy. Surgeons work this way because an operation happens in one region, where all the systems overlap.",
+      "options": [
+        "Systemic anatomy follows one system through the whole body, for example every bone. The surgeon is doing the opposite: every system in one place.",
+        "Microscopic anatomy needs a microscope. The hand's bones, muscles and vessels are gross structures.",
+        "Physiology studies how structures work. The surgeon is reviewing structure and position.",
+        "Correct. One region, every structure in it, is regional anatomy."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "The wall of the urinary bladder contains a lining, layers of muscle, and supporting tissue with blood vessels running through it. At which level of organization is the bladder?",
+    "options": ["Tissue", "Organ", "Organ system", "Cell"],
+    "correct": 1,
+    "why": {
+      "correct": "The bladder is built from two or more kinds of tissue, has a recognizable shape and does a specific job (storing urine). That is the definition of an organ.",
+      "options": [
+        "A tissue is one group of similar cells. The bladder contains several kinds of tissue, so it is a level above tissue.",
+        "Correct. Several tissues combined into one structure with one job make an organ.",
+        "The organ system is the urinary system: kidneys, ureters, bladder and urethra together. The bladder alone is one of its organs.",
+        "A cell is a single unit. The bladder is made of millions of cells arranged in tissues."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-7",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Select all the organs that belong to the digestive system.",
+    "options": ["Liver", "Spleen", "Gallbladder", "Esophagus", "Kidney", "Appendix"],
+    "correct": [0, 2, 3, 5],
+    "why": {
+      "correct": "The digestive system includes the tube food passes through (mouth, esophagus, stomach, intestines, with the appendix attached) and the organs that feed juices into it (liver, gallbladder, pancreas).",
+      "options": [
+        "Correct. The liver makes a digestive juice that helps digest fatty foods, so it belongs to the digestive system.",
+        "The spleen sits near the stomach but belongs to the lymphatic system. It filters blood and houses immune cells.",
+        "Correct. The gallbladder stores the liver's digestive juice and releases it into the intestine.",
+        "Correct. The esophagus carries food from the throat to the stomach.",
+        "The kidney belongs to the urinary system. It filters blood and makes urine.",
+        "Correct. The appendix is a small pouch attached to the intestine, so it is part of the digestive system."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function", "interdependence"],
+    "q": "Select all the organs that belong to more than one organ system.",
+    "options": ["Pancreas", "Testis", "Heart", "Ovary", "Trachea"],
+    "correct": [0, 1, 3],
+    "why": {
+      "correct": "The pancreas and the gonads (testes and ovaries) each belong to two systems. Each releases chemical signals into the blood (endocrine system) and also does a second job.",
+      "options": [
+        "Correct. The pancreas releases digestive juices into the intestine (digestive system) and chemical signals into the blood (endocrine system).",
+        "Correct. A testis makes sperm cells (reproductive system) and releases chemical signals into the blood (endocrine system).",
+        "The heart is an organ of the cardiovascular system. This course does not place it in a second system.",
+        "Correct. An ovary releases egg cells (reproductive system) and chemical signals into the blood (endocrine system).",
+        "The trachea is the airway to the lungs, an organ of the respiratory system only."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What defines a vessel as an artery?",
+    "options": [
+      "It carries blood high in oxygen",
+      "It carries blood away from the heart",
+      "Its wall is a single layer of cells",
+      "It carries blood back to the heart"
+    ],
+    "correct": 1,
+    "misconception": "arteries are defined by carrying oxygenated blood",
+    "why": {
+      "correct": "Vessels are named by the direction of flow relative to the heart. Arteries carry blood away from the heart, whatever its oxygen content.",
+      "options": [
+        "Most arteries do carry blood high in oxygen, but not all. The arteries from the heart to the lungs carry blood low in oxygen and are still arteries.",
+        "Correct. Away from the heart defines an artery.",
+        "A wall one cell thick describes a capillary. Arteries have thick, muscular walls.",
+        "Carrying blood back to the heart defines a vein."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Oxygen passes from the blood to the cells of your calf muscle. In which vessels does most of this exchange happen?",
+    "options": ["Arteries", "Veins", "Capillaries", "The heart's chambers"],
+    "correct": 2,
+    "why": {
+      "correct": "Capillaries have a wall only one layer of flat cells thick, so oxygen, nutrients and wastes can pass across it. Thicker vessel walls do not allow much exchange.",
+      "options": [
+        "Arteries carry blood toward the tissues, but their walls are thick and muscular. Little oxygen crosses them.",
+        "Veins carry blood back toward the heart after exchange has already happened in the capillaries.",
+        "Correct. The thin capillary wall is the structure that allows exchange: structure sets function.",
+        "Blood in the heart's chambers does not supply the cells of the calf. The heart pumps blood out to the vessels that reach the calf."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "You touch a hot pan and pull your hand away before you think about it. Which characteristic of life does this show most directly?",
+    "options": ["Growth", "Reproduction", "Metabolism", "Responsiveness"],
+    "correct": 3,
+    "why": {
+      "correct": "Responsiveness is the ability to detect a change (heat on the skin) and react to it (moving the hand).",
+      "options": [
+        "Growth is an increase in size. Nothing grows when you pull your hand away.",
+        "Reproduction is making new cells or a new organism. It plays no part in this reaction.",
+        "Metabolism is the sum of the body's chemical changes. It powers the muscles, but the event described is detecting a change and reacting.",
+        "Correct. Detect a change, react to it: that is responsiveness."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["energy"],
+    "q": "What does the term metabolism mean?",
+    "options": [
+      "The sum of all the chemical changes in the body",
+      "The breakdown of food in the stomach",
+      "The rate at which the heart beats",
+      "The increase in the number of cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Metabolism (meta- = change, bol = throw) is every chemical change in your body: building large molecules from small ones, which uses energy, and breaking large molecules down, which releases energy.",
+      "options": [
+        "Correct. Metabolism covers both building up and breaking down, in every cell.",
+        "Breaking food down in the stomach is digestion, one small part of the body's chemical activity.",
+        "Heart rate is one measure of cardiovascular function, not the definition of metabolism.",
+        "More cells means growth. Metabolism supplies the energy and materials for growth, but it is not the same thing."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "This description of the levels of organization has one wrong step. Find it.",
+    "options": [
+      "Atoms bond to form molecules.",
+      "Molecules are arranged into cells.",
+      "Several organs combine to form a tissue.",
+      "Organs that share a job form an organ system.",
+      "Organ systems together make the organism."
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The order is reversed in that step. Similar cells group into tissues, and two or more kinds of tissue build an organ. Organs never combine to make a tissue.",
+      "options": [
+        "This step is right. Atoms bond to form molecules, such as water.",
+        "This step is right. Molecules arranged in the right way make a cell.",
+        "This is the wrong step. Tissues build organs, not the other way round.",
+        "This step is right. The stomach, intestines and liver, for example, form the digestive system.",
+        "This step is right. All the organ systems together make a whole living individual."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "On a cold day your skin cools, your muscles start small, rapid contractions that make heat, and your body temperature stays near 37 °C. What does this show?",
+    "options": [
+      "Body temperature can never change",
+      "The body keeps an internal condition within a normal range",
+      "Muscles work only in cold weather",
+      "The outside temperature sets body temperature"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A change (cooling) is detected and triggers a response (heat from muscle contractions) that pushes temperature back. The result is a value held within a normal range. The feedback loop topic later in Foundations shows the full mechanism.",
+      "options": [
+        "Body temperature does change, which is why the response is triggered. It is kept within a range, not fixed at one value.",
+        "Correct. Detecting a change and pushing the value back keeps it within its normal range.",
+        "Muscles work in every temperature. The heat-making contractions are one response among the many things muscles do.",
+        "If the outside temperature set body temperature, you would cool along with the air. The scenario shows the opposite."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-15",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": ["interdependence"],
+    "q": "You travel from sea level to a town high in the mountains. Predict each change on your first day there.",
+    "variables": [
+      { "name": "Pressure of the air around you", "answer": "down", "why": "Higher up, there is less air above you pressing down, so air pressure falls." },
+      { "name": "Oxygen entering your blood with each breath", "answer": "down", "why": "Air pressure pushes oxygen into your blood. Lower air pressure pushes less oxygen in with each breath." },
+      { "name": "Number of organ systems in your body", "answer": "none", "why": "Your organs and systems stay the same. What changes is how well they are supplied with oxygen." }
+    ]
+  },
+  {
+    "id": "anp-body-organization-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["interdependence"],
+    "q": "Mr. Okafor's kidneys have almost stopped working. Water builds up in his blood, his ankles swell, and fluid collects in his lungs. Which chain best explains why he is now short of breath?",
+    "options": [
+      "Urinary failure causes fluid to build up, the fluid in his lungs reduces oxygen entry, and breathing becomes hard",
+      "Urinary failure directly damages the airway, so air cannot reach his lungs",
+      "His lungs have failed first, which then caused his kidneys to fail",
+      "Swollen ankles press on the lungs from below and stop them expanding"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The kidneys normally remove extra water from the blood. When they fail, water builds up, some collects in the lungs, less oxygen can enter the blood, and he feels short of breath. One system's failure changes conditions for another.",
+      "options": [
+        "Correct. The urinary problem reaches the respiratory system through the extra fluid carried by the cardiovascular system.",
+        "The kidneys do not act on the airway directly. The link is the fluid that builds up in the blood.",
+        "The scenario begins with the kidneys. The lung problem follows from their failure, not the reverse.",
+        "Ankle swelling and lung fluid are both results of the same water buildup. The ankles cannot press on the lungs."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which organ system includes the thymus and the spleen?",
+    "options": ["Endocrine system", "Digestive system", "Cardiovascular system", "Lymphatic system"],
+    "correct": 3,
+    "why": {
+      "correct": "The thymus and the spleen are lymphatic organs. The lymphatic system returns leaked fluid to the blood and houses immune cells.",
+      "options": [
+        "The endocrine system releases chemical signals into the blood; its organs include the pituitary, thyroid and adrenals.",
+        "The spleen sits next to the stomach, but it is not part of the digestive tube and makes no digestive juice.",
+        "The spleen filters blood, but it is classed with the lymphatic organs, not with the heart and vessels.",
+        "Correct. Thymus and spleen are lymphatic organs."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-organization-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which structure carries urine from the urinary bladder out of the body?",
+    "options": ["Ureter", "Urethra", "Uterine tube", "Kidney"],
+    "correct": 1,
+    "why": {
+      "correct": "The single urethra drains the bladder to the outside. The two ureters bring urine into the bladder from the kidneys.",
+      "options": [
+        "The ureters carry urine from each kidney down to the bladder, into it rather than out of it.",
+        "Correct. The urethra carries urine from the bladder out of the body.",
+        "A uterine tube carries an egg cell from an ovary to the uterus. It is a reproductive organ.",
+        "The kidneys make urine. They do not carry it out of the body."
+      ]
+    }
+  }
+]

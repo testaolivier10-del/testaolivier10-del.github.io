@@ -1,0 +1,18 @@
+{
+  "os-19-15": {
+    "file": "figures/openstax/os-19-15.jpg",
+    "w": 2283,
+    "h": 2096,
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.15",
+      "section": "19.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bd3783ed9af6996c925bec923e6b274afa1f6c76"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/bd3783ed9af6996c925bec923e6b274afa1f6c76",
+    "alt": "Front and back views of the heart showing its own blood vessels. Red arteries branch from the base of the aorta: one runs down the front groove toward the tip, one curves around the left side in the groove between upper and lower chambers, and one runs around the right side and down the back. Blue veins run beside them and gather into a wide vein in the groove on the back of the heart that empties into the right upper chamber.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.15",
+    "labels": []
+  }
+}

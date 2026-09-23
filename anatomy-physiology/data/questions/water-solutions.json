@@ -1,0 +1,504 @@
+[
+  {
+    "id": "anp-water-solutions-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "On a hot day, sweat evaporates from your skin and your skin cools. What is the source of that cooling?",
+    "options": [
+      "Sweat is already colder than the skin when it first appears",
+      "Skin heat breaks the hydrogen bonds holding each escaping molecule",
+      "The ions in sweat absorb heat as they separate from each other",
+      "Air flowing over wet skin carries heat away whether or not any water leaves"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A water molecule can only leave the liquid as vapor once the hydrogen bonds to its neighbors are broken, and that takes a lot of heat. The heat comes from your skin, so as molecules evaporate your skin loses heat.",
+      "options": [
+        "Sweat is made from body fluid at body temperature. The cooling happens as it evaporates, not before.",
+        "Correct. Breaking hydrogen bonds to free each molecule soaks up heat from the skin.",
+        "The ions in sweat are already separate when sweat forms. The cooling comes from water molecules escaping as vapor.",
+        "Moving air helps mainly by carrying off the vapor so more water can evaporate. On wet skin, the large cooling effect depends on water actually leaving."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "During a long run, your leg muscles produce a lot of heat. Blood carries it to your skin, yet the blood's own temperature rises only slightly on the way. Which property of water explains this?",
+    "options": [
+      "Water takes in a large amount of heat for each degree it warms",
+      "Water has high surface tension, which traps heat inside the blood vessels",
+      "Water dissolves heat in the same way it dissolves ions",
+      "Water's nonpolar molecules do not interact with heat"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Much of the heat water absorbs goes into breaking hydrogen bonds rather than speeding up its molecules, so its temperature climbs slowly. Blood, mostly water, can carry a lot of heat with only a small rise.",
+      "options": [
+        "Correct. A large amount of heat per degree is what lets blood move heat without overheating.",
+        "Surface tension is the inward pull at a water surface. It does not trap or hold heat.",
+        "Heat is energy, not a substance, so it cannot dissolve. Water stores heat partly by breaking hydrogen bonds.",
+        "Water is polar, not nonpolar. Its polarity and hydrogen bonds are what give it its heat-absorbing property."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these would dissolve most readily in the water of your blood?",
+    "options": [
+      "Olive oil",
+      "Candle wax",
+      "Potassium chloride",
+      "A long chain of carbon and hydrogen atoms"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Potassium chloride is made of ions. Water's partial charges attract K+ and Cl−, pull them apart and surround each one, so it dissolves easily. It is hydrophilic.",
+      "options": [
+        "Oil is nonpolar and hydrophobic. Water molecules bond with each other and push the oil into droplets.",
+        "Wax is almost entirely carbon and hydrogen, so it is nonpolar and hydrophobic.",
+        "Correct. Ions attract water molecules and dissolve readily.",
+        "Carbon–hydrogen bonds are nonpolar, so a chain of them is hydrophobic and stays out of solution."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Only about 1 to 2% of the oxygen in your arterial blood travels dissolved in the watery part of the blood; the rest rides on a carrier molecule inside blood cells. Which property of oxygen gas best explains why so little dissolves?",
+    "options": [
+      "O2 carries a full negative charge that water repels",
+      "O2 is too large a molecule to fit between water molecules",
+      "O2 forms strong hydrogen bonds with itself instead of with water",
+      "O2 is a nonpolar molecule, so water attracts it only weakly"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The two oxygen atoms in O2 share electrons evenly, so the molecule is nonpolar. Water molecules attract each other far more strongly than they attract O2, so only a little O2 dissolves.",
+      "options": [
+        "O2 is a neutral molecule with no charge. Charged particles actually dissolve well in water.",
+        "O2 is a small molecule, smaller than many substances that dissolve well. Its low solubility comes from being nonpolar.",
+        "O2 has no hydrogen atoms, so it cannot form hydrogen bonds at all.",
+        "Correct. Being nonpolar, O2 is hydrophobic enough that little of it dissolves."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-5",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these are hydrophilic? Select all that apply.",
+    "options": [
+      "Sodium ions (Na+)",
+      "A molecule with many –OH groups",
+      "An oil droplet",
+      "Chloride ions (Cl−)",
+      "A molecule made only of carbon and hydrogen"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Ions and polar molecules attract water and dissolve. Na+ and Cl− carry full charges, and –OH groups are polar and form hydrogen bonds with water. Oil and pure carbon–hydrogen molecules are nonpolar and hydrophobic.",
+      "options": [
+        "Hydrophilic. The δ− oxygen ends of water molecules surround each sodium ion.",
+        "Hydrophilic. Each polar –OH group can hydrogen-bond with water.",
+        "Hydrophobic. Oil is nonpolar, so water pushes it into droplets.",
+        "Hydrophilic. The δ+ hydrogen ends of water molecules surround each chloride ion.",
+        "Hydrophobic. Carbon–hydrogen bonds are nonpolar, so water does not attract the molecule."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "A lab technician leaves a tube of a patient's blood standing in a rack. An hour later, a layer of blood cells has settled toward the bottom, with straw-colored liquid above. Which kind of mixture do the blood cells form within the blood?",
+    "options": [
+      "A solution",
+      "A suspension",
+      "A compound",
+      "A colloidal mixture"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Particles that settle when the mixture stands still are the mark of a suspension. Blood cells are large enough to sink once flow stops.",
+      "options": [
+        "In a solution, particles are single ions or small molecules and never settle. The cells settled, so they are not dissolved.",
+        "Correct. Large particles that settle on standing form a suspension.",
+        "A compound is atoms of different elements bonded in a fixed ratio. Blood is a mixture of many substances that are not bonded to each other.",
+        "Colloidal particles are too small to settle. Settling is what sets a suspension apart."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments"
+    ],
+    "q": "Blood is described as a solution, a colloidal mixture and a suspension all at once. Which pairing of blood component and mixture type is correct?",
+    "options": [
+      "Dissolved sodium and chloride ions form a suspension",
+      "Blood cells form a solution",
+      "Very large molecules in the liquid part are colloidal",
+      "Very large molecules in the liquid part settle out like blood cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Ions are the solution part, very large molecules are the colloidal part and cells are the suspension part. Only cells settle when blood stands still.",
+      "options": [
+        "Ions are the smallest particles and never settle; they make up the solution part of blood.",
+        "Cells are the largest particles and settle on standing; they are the suspension part.",
+        "Correct. Very large molecules stay spread through the liquid without settling: colloids.",
+        "Colloidal particles are kept spread out by the jostling of water molecules. Only the cells settle."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-8",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "In a bag of 0.9% sodium chloride for IV use, what are the solute and the solvent?",
+    "options": [
+      "The solute is water and the solvent is sodium chloride",
+      "Both are sodium chloride",
+      "The solute is the bag and the solvent is water",
+      "The solute is sodium chloride and the solvent is water"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The solute is the substance dissolved, sodium chloride. The solvent is the substance it dissolves in, water.",
+      "options": [
+        "This reverses them. The substance present in the larger amount, which does the dissolving, is the solvent: water.",
+        "A solution needs two roles: the dissolved substance and the substance it dissolves in.",
+        "The bag is only the container. It is not part of the solution.",
+        "Correct. Sodium chloride dissolves; water dissolves it."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "How many grams of sodium chloride does a 1-liter bag of 0.9% sodium chloride contain?",
+    "options": [
+      "0.9 g",
+      "90 g",
+      "9 g",
+      "0.09 g"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Percent for IV fluids means grams per 100 mL. 0.9 g per 100 mL, times 10 for 1,000 mL, gives 9 g per liter.",
+      "options": [
+        "0.9 g is the amount in 100 mL, not in a full liter. A liter is ten times larger.",
+        "90 g would be a 9% solution: this multiplies by 100 instead of 10.",
+        "Correct. 0.9 g/100 mL × 10 = 9 g in 1,000 mL.",
+        "0.09 g divides where it should multiply. A liter holds more than 100 mL, so it holds more solute."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A liter of fluid contains 9 g of sodium chloride. The molar mass of sodium chloride is 58.5 g per mole. What is its concentration in mmol/L?",
+    "options": [
+      "About 154 mmol/L",
+      "About 526 mmol/L",
+      "About 15 mmol/L",
+      "About 308 mmol/L"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Grams divided by molar mass gives moles: 9 ÷ 58.5 = 0.154 mol. Times 1,000 gives 154 mmol in one liter.",
+      "options": [
+        "Correct. 9 g ÷ 58.5 g/mol = 0.154 mol = 154 mmol per liter.",
+        "526 comes from multiplying 9 by 58.5. To turn grams into moles you divide by the molar mass.",
+        "15 is off by a factor of ten: 0.154 mol is 154 mmol, not 15.",
+        "308 is the osmolarity, counting Na+ and Cl− separately. The question asks for the concentration of sodium chloride itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-11",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "An elderly man loses water through breathing and skin during a heat wave and drinks nothing. Treat the water he loses as pure water. Predict the change in each variable in his body fluid.",
+    "variables": [
+      {
+        "name": "Volume of his body water",
+        "answer": "down",
+        "why": "Water is leaving and none is coming in, so the volume falls."
+      },
+      {
+        "name": "Total amount of sodium in his body fluid",
+        "answer": "none",
+        "why": "The lost fluid is pure water, so no sodium leaves. The amount of sodium stays the same."
+      },
+      {
+        "name": "Sodium concentration",
+        "answer": "up",
+        "why": "Concentration is amount divided by volume. The same amount of sodium in less water gives a higher concentration."
+      },
+      {
+        "name": "Osmolality of his blood",
+        "answer": "up",
+        "why": "Osmolality counts all dissolved particles per kilogram of water. The particles stay while the water shrinks, so the count per kilogram rises."
+      }
+    ]
+  },
+  {
+    "id": "anp-water-solutions-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "What is the osmolarity of a solution of 100 mmol/L calcium chloride (CaCl2)?",
+    "options": [
+      "100 mOsm/L",
+      "200 mOsm/L",
+      "400 mOsm/L",
+      "300 mOsm/L"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each CaCl2 separates into three particles: one Ca2+ and two Cl−. 100 mmol/L × 3 = 300 mOsm/L.",
+      "options": [
+        "100 counts each CaCl2 unit as one particle. In water it separates into three ions, and osmolarity counts every one.",
+        "200 counts two particles per unit, as for sodium chloride. CaCl2 has two chloride ions plus one calcium ion: three particles.",
+        "400 counts four particles. CaCl2 releases three: one calcium and two chloride.",
+        "Correct. Three particles per unit × 100 mmol/L = 300 mOsm/L."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "misconception": "osmolarity equals the concentration of the solute",
+    "q": "Fluid X holds 150 mmol/L of sodium chloride. Fluid Y holds 150 mmol/L of a molecule that stays whole when it dissolves. How do their osmolarities compare?",
+    "options": [
+      "They are equal: 150 mOsm/L each",
+      "X is about 300 mOsm/L and Y is about 150 mOsm/L",
+      "Y is higher than X",
+      "X is about 150 mOsm/L and Y is about 300 mOsm/L"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Osmolarity counts particles. Each sodium chloride releases two ions, so X has about 300 mOsm/L. Each molecule of Y stays as one particle, so Y has 150 mOsm/L.",
+      "options": [
+        "Equal concentrations of solute do not mean equal particle counts. Sodium chloride splits into two particles; Y does not split.",
+        "Correct. Two particles per unit doubles X's count; Y stays at one per molecule.",
+        "Osmolarity depends on the number of particles, not their size. A large molecule counts as one particle, the same as a small ion.",
+        "This swaps them. The solute that separates into ions, sodium chloride, is the one with the doubled count."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A patient's blood sodium is 140 mmol/L. A nursing student estimates her blood osmolality as 2 × 140 = 280 mOsm/kg, and the measured value is 288 mOsm/kg. Why does doubling the sodium give such a close estimate?",
+    "options": [
+      "Each sodium ion has a partner anion; together they are most particles",
+      "Each sodium ion splits into two separate particles when it dissolves in the blood",
+      "Sodium is counted twice because it carries a charge of +2",
+      "Osmolality is defined as twice the sodium concentration"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Sodium is the most plentiful cation in the liquid part of blood, and every positive charge is matched by a negative one, mostly chloride. Doubling sodium counts the sodium and its partner anions. Other dissolved substances make up the small remainder.",
+      "options": [
+        "Correct. Sodium plus its matching anions supplies most of the particles, so twice the sodium is a good estimate.",
+        "A sodium ion is a single charged atom and cannot split further. The doubling counts its partner anion, not a split.",
+        "Sodium's ion is Na+, with a charge of +1. The factor of two comes from counting the anions that balance it.",
+        "Osmolality is the count of all dissolved particles per kilogram of water. Doubling sodium only estimates it, which is why the estimate falls a little short."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "misconception": "a high concentration means the body holds too much of that substance",
+    "q": "Mrs. Lindqvist, 88, lives alone and has barely drunk anything for three days. Her blood sodium is high. Which conclusion does that result best support?",
+    "options": [
+      "She must have eaten a large amount of sodium chloride recently",
+      "Her body contains far more sodium than normal",
+      "Her body water has fallen, concentrating the sodium she has",
+      "Her sodium ions have gained extra charge"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Concentration is amount divided by volume. With little water coming in and some always leaving through breath, skin and urine, her body water shrinks, and even a normal amount of sodium becomes more concentrated.",
+      "options": [
+        "Nothing in the history suggests extra intake, and extra sodium is not needed to raise the concentration. Losing water does it on its own.",
+        "A high concentration can come from normal total sodium in too little water. The history points to water loss.",
+        "Correct. Less water, same sodium: higher concentration.",
+        "Sodium's charge is fixed at +1. A concentration counts how many ions there are per liter, not how charged they are."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-16",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these steps in order to show how a crystal of sodium chloride dissolves in the water of an IV bag.",
+    "options": [
+      "Water molecules crowd the surface of the crystal",
+      "Partly negative oxygen ends face the Na+ ions and partly positive hydrogen ends face the Cl− ions",
+      "Many small attractions pull individual ions out of the crystal",
+      "Each freed ion is surrounded by a shell of water molecules",
+      "The ions spread evenly through the water, forming a solution"
+    ],
+    "why": {
+      "correct": "Water molecules must first reach the crystal and line up by their partial charges. Their combined pull removes ions one by one, water shells keep the ions from rejoining the crystal, and the ions then spread evenly: a solution."
+    }
+  },
+  {
+    "id": "anp-water-solutions-17",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "This pathway explains how sweat cools your skin. Which step is wrong?",
+    "options": [
+      "Heat flows from your skin into the film of sweat",
+      "The heat breaks covalent bonds inside each water molecule",
+      "Water molecules freed from their neighbors escape into the air as vapor",
+      "The escaping molecules carry that heat away, so your skin cools"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Evaporating water stays H2O: its covalent O–H bonds do not break. The heat breaks the weak hydrogen bonds between neighboring molecules, which frees them to leave as vapor.",
+      "options": [
+        "This step is right. Warmer skin passes heat to the sweat on it.",
+        "This is the error. The heat breaks hydrogen bonds between molecules, not the covalent bonds within them.",
+        "This step is right. Once free of hydrogen bonds, a molecule can leave as vapor.",
+        "This step is right. The heat used to free each molecule leaves with it, so the skin loses heat."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-18",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Fill the gap: 154 mmol of sodium chloride dissolves in 1 liter of water → ______ → the osmolarity is about 308 mOsm/L",
+    "options": [
+      "Each unit of sodium chloride separates into two ions, Na+ and Cl−",
+      "Each unit of sodium chloride stays whole as one single particle in water",
+      "The water molecules split into two particles each",
+      "The sodium ions pair up, halving the particle count"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Osmolarity counts every dissolved particle. Each sodium chloride unit gives one Na+ and one Cl−, so 154 mmol/L × 2 = 308 mOsm/L.",
+      "options": [
+        "Correct. Two particles per unit doubles 154 to 308.",
+        "If each unit stayed whole, the osmolarity would be 154 mOsm/L, not 308.",
+        "Water is the solvent, and its molecules stay intact. Osmolarity counts solute particles only.",
+        "Like charges repel, so sodium ions do not pair up. Halving would give 77, not 308."
+      ]
+    }
+  },
+  {
+    "id": "anp-water-solutions-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A thin film of water lines the tiny air sacs of your lungs. Its surface tension pulls inward on each sac. What produces that surface tension?",
+    "options": [
+      "Ions in the film repel the air in the sac",
+      "Hydrogen bonds pull surface molecules inward toward those below",
+      "Covalent bonds link the water molecules into a solid sheet",
+      "Air pressure pushes the water molecules into a tighter packed arrangement"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Water molecules at a surface have water neighbors only below and beside them. Hydrogen bonds pull them inward and together, so the surface acts like a stretched skin that tends to shrink the sac it lines.",
+      "options": [
+        "Ions do not repel air, which is mostly uncharged molecules. The pull comes from hydrogen bonds between water molecules.",
+        "Correct. Unbalanced hydrogen bonding at the surface produces the inward pull.",
+        "Water molecules are not joined by covalent bonds to each other. Only weak hydrogen bonds link neighboring molecules, which is why the film stays liquid.",
+        "Surface tension arises within the water itself from hydrogen bonding. It would exist even if the air pressure changed."
+      ]
+    }
+  }
+]

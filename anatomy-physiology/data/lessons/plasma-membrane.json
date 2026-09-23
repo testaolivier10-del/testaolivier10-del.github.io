@@ -1,0 +1,81 @@
+{
+  "topic": "plasma-membrane",
+  "hook": "<p>The lab calls about Ms. Reyes, 58: her blood potassium reads 6.9 mmol/L, dangerously high. But she feels fine, the sample sat on a counter for three hours, and the plasma in the tube looks pink. A fresh sample reads 4.2, which is normal. Inside every red blood cell, potassium is about 25 times more concentrated than in plasma. When cells in the first tube burst, that potassium spilled out. A membrane less than 10 nanometers thick is all that normally keeps it in.</p>",
+  "prereq": [
+    {
+      "q": "A phospholipid is amphipathic. What does that mean?",
+      "options": [
+        "It has a water-attracting end and a water-avoiding end",
+        "It dissolves equally well in water and in oil",
+        "It carries a positive charge at both ends"
+      ],
+      "correct": 0,
+      "why": "Amphipathic (amphi- = both) means one molecule has both a hydrophilic part (the phosphate head) and a hydrophobic part (the fatty acid tails). That split is what makes phospholipids form a bilayer in water.",
+      "review": "biomolecules"
+    },
+    {
+      "q": "A semipermeable membrane separates two solutions. What does it do?",
+      "options": [
+        "Blocks every substance equally",
+        "Lets some substances through and blocks others",
+        "Lets every substance through at the same rate"
+      ],
+      "correct": 1,
+      "why": "A semipermeable membrane lets some substances cross (often water) and holds others back. The plasma membrane is a living version of this idea.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "Which of these is an ion?",
+      "options": [
+        "An oxygen molecule, O2",
+        "A glucose molecule",
+        "A potassium atom that has lost one electron, K+"
+      ],
+      "correct": 2,
+      "why": "An ion is an atom or molecule with a net charge because it has gained or lost electrons. K+ has lost one electron. O2 and glucose carry no net charge.",
+      "review": "atoms-ions-bonds"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-4",
+    "caption": "The plasma membrane: a phospholipid bilayer with integral and peripheral proteins, cholesterol between the phospholipids, and sugar chains (the glycocalyx) on the outer face."
+  },
+  "chain": [
+    {
+      "cause": "Phospholipids have a hydrophilic head and two hydrophobic tails, and your cells sit in water.",
+      "effect": "The phospholipids arrange themselves into two sheets, tail to tail: the phospholipid bilayer."
+    },
+    {
+      "cause": "The bilayer has an oily, hydrophobic core.",
+      "effect": "Small nonpolar molecules such as oxygen cross it, but ions and large polar molecules such as glucose are almost blocked."
+    },
+    {
+      "cause": "Ions and glucose are almost blocked by the bilayer.",
+      "effect": "They cross only through specific membrane proteins, so the membrane is selectively permeable."
+    },
+    {
+      "cause": "Selective permeability keeps ions from evening out, and membrane proteins keep moving sodium out and potassium in.",
+      "effect": "The intracellular fluid stays high in potassium and the extracellular fluid stays high in sodium."
+    },
+    {
+      "cause": "Each of those ion differences is a stored electrochemical gradient.",
+      "effect": "Cells can release that stored push later to do work, such as moving other substances or sending electrical signals."
+    }
+  ],
+  "misconception": {
+    "wrong": "The plasma membrane is a rigid wall, like a shell, with everything fixed in place.",
+    "right": "The plasma membrane is fluid. Its phospholipids drift sideways within their own sheet constantly, and many of its proteins drift too. It behaves more like a thin film of oil than a solid wall. That fluidity is why a small tear can reseal, and why the membrane can bend as a red blood cell squeezes through a capillary narrower than itself. The rigid cell wall you may remember from biology belongs to plants and bacteria, not to human cells."
+  },
+  "check": [
+    "anp-plasma-membrane-2",
+    "anp-plasma-membrane-4",
+    "anp-plasma-membrane-7",
+    "anp-plasma-membrane-10",
+    "anp-plasma-membrane-13",
+    "anp-plasma-membrane-16"
+  ],
+  "summary": "<p>A cell has three main parts: the plasma membrane, the cytoplasm and the nucleus. The plasma membrane is a phospholipid bilayer: hydrophilic heads face the water on both sides and hydrophobic tails form an oily core. Integral proteins span the bilayer; peripheral proteins sit on its surface. Sugar chains on the outer face form the glycocalyx, which carries cell identity markers. The fluid mosaic model describes the whole thing: a fluid patchwork of lipids and proteins. The core blocks ions and large polar molecules, and proteins give them specific paths across. That selective permeability keeps intracellular fluid high in potassium and extracellular fluid (interstitial fluid and plasma) high in sodium.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/lipids.html", "label": "Organic chemistry: lipids" }
+  ]
+}

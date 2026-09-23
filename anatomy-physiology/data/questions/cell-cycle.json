@@ -1,0 +1,441 @@
+[
+  {
+    "id": "anp-cell-cycle-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "In which phase of the cell cycle does a cell replicate its DNA?",
+    "options": ["G1 phase", "S phase", "G2 phase", "Metaphase"],
+    "correct": 1,
+    "why": {
+      "correct": "S stands for synthesis: DNA synthesis. During S phase each chromosome is copied into two sister chromatids.",
+      "options": [
+        "In G1 the cell grows and does its normal work. It has not yet copied its DNA.",
+        "Correct. DNA replication defines S phase.",
+        "In G2 the DNA has already been copied; the cell checks it and prepares to divide.",
+        "Metaphase is part of mitosis. The DNA was copied long before, in interphase."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A cell in G1 contains 6 picograms of DNA. How much DNA does it contain in G2, and how much does each daughter cell contain after cytokinesis?",
+    "options": [
+      "6 pg in G2; 3 pg in each daughter",
+      "12 pg in G2; 12 pg in each daughter",
+      "12 pg in G2; 6 pg in each daughter",
+      "6 pg in G2; 6 pg in each daughter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "S phase doubles the DNA, so G2 holds 12 pg. Mitosis and cytokinesis split it evenly, so each daughter returns to 6 pg, the same as the parent in G1.",
+      "options": [
+        "This skips S phase. The DNA doubles before division, so the daughters are not left with half.",
+        "Division splits the doubled DNA between two cells. Each daughter receives half of the 12 pg.",
+        "Correct. Doubled in S, then halved at division.",
+        "The DNA is replicated in S phase, so G2 holds twice the G1 amount."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "misconception": "chromosome number stays at 46 throughout mitosis",
+    "q": "How many chromosomes does one of your dividing body cells contain during anaphase, before cytokinesis?",
+    "options": ["23", "46", "92", "184"],
+    "correct": 2,
+    "why": {
+      "correct": "In anaphase the 46 pairs of sister chromatids separate, and each separated chromatid counts as a chromosome. The cell briefly holds 92 chromosomes, 46 moving to each end.",
+      "options": [
+        "23 is the count in an egg or sperm cell. Mitosis never halves the chromosome number.",
+        "46 is the count through metaphase, when sister chromatids are still joined. Once they separate, each is its own chromosome.",
+        "Correct. 46 chromatid pairs become 92 separate chromosomes.",
+        "This doubles the count twice. The DNA is replicated only once per cycle."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-4",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Put the events of the mitotic phase in order.",
+    "options": [
+      "Chromatin condenses into chromosomes and the spindle forms",
+      "Chromosomes line up on the metaphase plate",
+      "Sister chromatids separate and move to opposite ends",
+      "Nuclear envelopes re-form around each set of chromosomes",
+      "The cleavage furrow pinches the cell in two"
+    ],
+    "why": {
+      "correct": "Prophase condenses the chromosomes and builds the spindle. In metaphase they line up across the middle. In anaphase sister chromatids separate. In telophase new nuclei form. Cytokinesis finishes by pinching the cell in two."
+    }
+  },
+  {
+    "id": "anp-cell-cycle-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A woman with breast cancer receives paclitaxel, a drug that binds microtubules and stops them from growing or shrinking. At which point are her dividing tumor cells held?",
+    "options": [
+      "In G1, at the G1 checkpoint",
+      "In S phase, partway through DNA replication",
+      "In G0, as resting cells",
+      "In mitosis, before sister chromatids separate"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The mitotic spindle is built from microtubules that must grow and shrink to capture and pull chromosomes. Frozen microtubules cannot attach and pull correctly, so the spindle checkpoint keeps sister chromatids together and holds the cell in mitosis, where many cells die.",
+      "options": [
+        "The G1 checkpoint checks size, nutrients, signals and DNA damage. Microtubules are not needed to pass it.",
+        "DNA replication uses DNA polymerase and helicase, not microtubules.",
+        "The drug acts on dividing cells. It does not send them into G0, and cells already in G0 are largely unaffected.",
+        "Correct. The spindle cannot work, so the spindle checkpoint stops the cell in mitosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Ten days into chemotherapy that kills dividing cells, a patient develops mouth sores and a low white blood cell count, but her heart and brain function are unchanged. What best explains this pattern?",
+    "options": [
+      "Heart and brain cells lack the genes the drug acts on",
+      "The mouth lining and blood-forming cells divide often; most heart and brain cells rest in G0",
+      "The drug cannot reach the heart or brain through the blood",
+      "Mouth and blood cells are cancer cells too"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The drug harms cells that are dividing. The lining of the mouth and the stem cells that make blood cells divide constantly, so they are hit hard. Most heart and brain cells have left the cycle and rest in G0, so they are largely spared.",
+      "options": [
+        "Heart and brain cells carry the same genome as every other cell. The difference is whether they are dividing.",
+        "Correct. Fast-dividing normal cells are harmed; cells in G0 are spared.",
+        "The heart receives a large blood supply, so the drug reaches it. It spares heart cells because they are not dividing.",
+        "These are normal cells. They are harmed because, like tumor cells, they divide often."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A cell has lost both working copies of the gene for p53. Its DNA is then damaged by radiation. What is the most likely outcome?",
+    "options": [
+      "It stops at the G1 checkpoint until the damage is repaired",
+      "It triggers apoptosis at once",
+      "It keeps dividing and passes the damage to its descendants",
+      "It enters G0 permanently"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "p53 senses DNA damage and responds by halting the cycle or, if the damage is too great, triggering apoptosis. Without p53, neither response happens, so the cell divides with its damaged DNA and its descendants inherit the resulting mutations. That is why TP53 is a tumor suppressor gene.",
+      "options": [
+        "Halting at the G1 checkpoint in response to DNA damage depends on p53, which this cell lacks.",
+        "Damage-triggered apoptosis also depends on p53. Without it, the cell does not self-destruct.",
+        "Correct. With no p53, damaged cells keep dividing, and mutations pile up.",
+        "Leaving the cycle is not the default response to DNA damage. Without p53, the cell has no signal to stop."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A mutation locks a division-promoting signaling protein in its active form, so it signals \"divide\" even with no outside signal. What has the mutated gene become?",
+    "options": ["A tumor suppressor gene", "A cyclin", "A checkpoint", "An oncogene"],
+    "correct": 3,
+    "why": {
+      "correct": "An oncogene is the mutated, overactive form of a normal gene that promotes division. A protein stuck \"on\" is a stuck accelerator.",
+      "options": [
+        "A tumor suppressor gene restrains division. Its cancer-causing mutations remove function, not add it.",
+        "A cyclin is a normal cycle protein that activates a CDK. The mutation described turns a gene into something abnormal.",
+        "A checkpoint is a pause point in the cycle, not a gene.",
+        "Correct. A gain-of-function change in a division-promoting gene makes an oncogene."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Why must both copies of a tumor suppressor gene usually be lost before a cell escapes its control, while one mutated copy of an oncogene is often enough?",
+    "options": [
+      "One working brake copy still restrains division; one overactive accelerator copy drives it",
+      "Tumor suppressor genes sit on the sex chromosomes",
+      "Oncogenes are copied twice in S phase",
+      "Tumor suppressor genes mutate less often"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A tumor suppressor protein acts as a brake. One working copy of the gene usually makes enough brake, so both must be lost. An oncogene's product is an accelerator stuck on; the other, normal copy cannot switch it off, so one copy is enough.",
+      "options": [
+        "Correct. Losing a brake takes both copies; a stuck accelerator needs only one.",
+        "Tumor suppressor genes such as TP53, RB1 and BRCA1 sit on autosomes.",
+        "Every gene is copied once in S phase. This does not distinguish the two groups.",
+        "The explanation lies in what the proteins do, not in mutation rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-10",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student describes mitosis. Which step contains the error?",
+    "options": [
+      "Prophase: chromatin condenses and the spindle forms from the centrosomes.",
+      "Metaphase: sister chromatids separate and move to opposite ends of the cell.",
+      "Anaphase: kinetochore microtubules shorten, pulling chromatids apart.",
+      "Telophase: nuclear envelopes re-form and chromosomes loosen into chromatin."
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In metaphase the chromosomes line up on the metaphase plate with sister chromatids still joined. They separate in anaphase, and the spindle checkpoint prevents that until every chromosome is attached.",
+      "options": [
+        "This step is right. Prophase condenses the chromosomes and builds the spindle.",
+        "This is the error. Metaphase is when the chromosomes line up; separation is anaphase.",
+        "This step is right. Shortening kinetochore microtubules pull the chromatids apart in anaphase.",
+        "This step is right. Telophase rebuilds the two nuclei."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-11",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Fill in the missing phase. G1 phase → ______ → G2 phase → mitotic phase.",
+    "options": ["G0 phase", "Prophase", "S phase", "Cytokinesis"],
+    "correct": 2,
+    "why": {
+      "correct": "Interphase runs G1, then S (DNA replication), then G2, followed by the mitotic phase.",
+      "options": [
+        "G0 is a resting state outside the cycle, entered from G1. It is not a step between G1 and G2.",
+        "Prophase is the first phase of mitosis. It comes after G2.",
+        "Correct. S phase sits between G1 and G2.",
+        "Cytokinesis ends the mitotic phase. It comes last."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A drug stops myosin from pulling on actin filaments. A cell treated during mitosis completes telophase. What will it look like?",
+    "options": [
+      "Two normal daughter cells",
+      "One cell with two nuclei",
+      "One cell whose chromosomes never separated",
+      "Two cells, each without a nucleus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Cytokinesis depends on a ring of actin and myosin tightening to form the cleavage furrow. Mitosis itself uses spindle microtubules, so it finishes, leaving two nuclei in one undivided cell.",
+      "options": [
+        "Without the contractile ring, no cleavage furrow forms, so the cell does not split.",
+        "Correct. Mitosis completes, but cytokinesis fails.",
+        "Chromosomes are separated by spindle microtubules, which the drug does not affect.",
+        "The nuclei form normally in telophase. The problem is that the cytoplasm is not divided."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Researchers switch on four transcription factors in adult skin cells. The cells can then be grown into heart, liver or nerve-like cells, but not into the supporting tissues of pregnancy. How would you classify these cells?",
+    "options": ["Totipotent", "Pluripotent", "Multipotent", "Unipotent"],
+    "correct": 1,
+    "why": {
+      "correct": "Cells that can become any cell type of the body, but not the supporting tissues of pregnancy, are pluripotent. These are induced pluripotent stem cells.",
+      "options": [
+        "Totipotent cells can also form the supporting tissues of pregnancy. Only the fertilized egg and its first few divisions are totipotent.",
+        "Correct. Any body cell type, but not the supporting tissues: pluripotent.",
+        "Multipotent cells are limited to one family of related cells, such as blood cells. Heart, liver and nerve-like cells span unrelated families.",
+        "Unipotent cells produce only one cell type."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "The stem cells that produce red blood cells, all kinds of white blood cells and platelets are best described as:",
+    "options": ["totipotent", "unipotent", "multipotent", "pluripotent"],
+    "correct": 2,
+    "why": {
+      "correct": "They make several related cell types within one family, the blood cells, so they are multipotent.",
+      "options": [
+        "Totipotent cells can make every cell type plus the supporting tissues of pregnancy. Blood stem cells cannot make, say, liver cells.",
+        "Unipotent cells make only one type. These make many kinds of blood cell.",
+        "Correct. Several related types: multipotent.",
+        "Pluripotent cells can make every cell type of the body. Blood stem cells are limited to blood cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "cells specialize by losing the genes they do not need",
+    "q": "One intestinal stem cell gives rise to an absorptive cell covered with microvilli and to a cell that secretes digestive enzymes. What makes these two cells different?",
+    "options": [
+      "Each lost the genes the other one uses",
+      "They carry different numbers of chromosomes",
+      "One of them gained new genes from a neighboring cell",
+      "They hold different transcription factors, so they express different genes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Differentiation works through gene expression. Each cell holds a different mix of transcription factors, which switch on different genes. The proteins made from those genes build microvilli in one cell and digestive enzymes in the other. The genome is the same.",
+      "options": [
+        "Differentiated cells keep their whole genome; unused genes are switched off, not removed. Induced pluripotent stem cells show that the genes are still there.",
+        "Both are somatic cells made by mitosis, so both carry 46 chromosomes.",
+        "Cells do not pick up genes from their neighbors. Both carry the genome they inherited from the stem cell.",
+        "Correct. Same genome, different genes switched on."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Under the microscope, a cell shrinks, its DNA is cut into fragments, and it breaks into small membrane-wrapped pieces that neighboring cells engulf. The surrounding tissue is undamaged. What is happening?",
+    "options": [
+      "Death from injury: the cell swells and bursts",
+      "Cytokinesis",
+      "Apoptosis",
+      "Metastasis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Shrinking, DNA fragmentation and breakdown into membrane-wrapped pieces that are engulfed without harming the tissue are the signs of apoptosis, carried out by the cell's own caspase enzymes.",
+      "options": [
+        "A cell killed by injury swells and bursts, spilling its contents and harming the tissue. This cell shrinks and stays wrapped.",
+        "Cytokinesis splits one living cell into two living cells. It does not fragment the DNA.",
+        "Correct. This is orderly, programmed cell death.",
+        "Metastasis is the spread of cancer cells to distant sites, not the death of a cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A population of cells has lost the ability to carry out apoptosis, but still divides at its normal rate. Predict the change in each variable over the following weeks.",
+    "variables": [
+      { "name": "Number of cells in the population", "answer": "up", "why": "Cell number is set by division minus death. Division is unchanged, and death by apoptosis has stopped, so the population grows." },
+      { "name": "Number of cells carrying unrepaired DNA damage", "answer": "up", "why": "Cells with damage too great to repair are normally removed by apoptosis. They now survive and pass the damage to their descendants." },
+      { "name": "Amount of DNA in each cell in G1", "answer": "none", "why": "Each cell still replicates its DNA once in S phase and splits it evenly at division, so a cell in G1 holds the same amount as before." }
+    ]
+  },
+  {
+    "id": "anp-cell-cycle-18",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every feature typical of cells in a malignant tumor.",
+    "options": [
+      "They divide without the usual outside signals",
+      "They carry several mutations",
+      "They evade apoptosis",
+      "They can spread to distant sites",
+      "They stop dividing when crowded by neighbors",
+      "They have more checkpoints than normal cells"
+    ],
+    "correct": [0, 1, 2, 3],
+    "why": {
+      "correct": "Cancer cells have gathered several mutations. They divide without the usual signals, escape apoptosis, and in a malignant tumor can invade and spread by metastasis.",
+      "options": [
+        "Typical. Overactive oncogenes and lost tumor suppressors make division independent of outside signals.",
+        "Typical. Most cancers need several mutations, gathered over many divisions.",
+        "Typical. Blocking the path to apoptosis lets damaged cells survive.",
+        "Typical. Spread to distant sites is metastasis, the defining danger of a malignant tumor.",
+        "Not typical. Normal cells stop dividing when crowded; cancer cells keep dividing and pile up.",
+        "Not typical. Cancer cells usually have failed checkpoints, not extra ones."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A drug keeps a cell from destroying the cyclin that is active during mitosis. What happens to the matching CDK?",
+    "options": [
+      "It stays active",
+      "It is destroyed along with the cyclin",
+      "It becomes a cyclin itself",
+      "It switches off at the usual time"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A CDK is active only while bound to its cyclin. Normally the cell destroys the cyclin and the CDK falls silent. If the cyclin cannot be destroyed, the CDK stays bound and active, and the cell cannot leave mitosis normally.",
+      "options": [
+        "Correct. The cyclin stays, so the CDK stays active.",
+        "CDKs are present throughout the cycle. Only the cyclin is destroyed each round.",
+        "A CDK is a kinase, a different protein from the cyclin. It does not change into one.",
+        "The CDK switches off only when its cyclin is destroyed, which the drug prevents."
+      ]
+    }
+  },
+  {
+    "id": "anp-cell-cycle-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement defines somatic cells?",
+    "options": [
+      "Cells that have stopped dividing",
+      "All body cells except the line that becomes eggs and sperm",
+      "Unspecialized cells that renew themselves",
+      "Cells that have lost their nucleus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Somatic (somat- = body) cells are all body cells other than the line of cells that produces eggs and sperm. They divide by mitosis.",
+      "options": [
+        "Many somatic cells divide throughout life, such as those lining the intestine. Stopping division is being in G0.",
+        "Correct. Every body cell except the egg- and sperm-producing line.",
+        "That describes stem cells.",
+        "Only a few cells, such as mature red blood cells, lose their nucleus."
+      ]
+    }
+  }
+]

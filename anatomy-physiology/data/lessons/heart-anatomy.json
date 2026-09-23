@@ -1,0 +1,48 @@
+{
+  "topic": "heart-anatomy",
+  "hook": "<p>Jordan, 24, is brought in with a stab wound just left of his sternum. His blood pressure keeps falling, the veins in his neck bulge, and through a stethoscope his heartbeat sounds faint and distant. No large vessel was cut. The problem is a thin sac around his heart that is filling with blood and cannot stretch.</p>",
+  "prereq": [
+    {
+      "q": "Which body compartment lies between the two pleural cavities and holds the heart?",
+      "options": ["The mediastinum", "The abdominopelvic cavity", "The dorsal body cavity"],
+      "correct": 0,
+      "why": "The mediastinum is the central part of the thoracic cavity, between the two pleural cavities. The heart, the large vessels, the trachea and the esophagus all run through it.",
+      "review": "body-cavities"
+    },
+    {
+      "q": "A serous membrane has two layers. What lies between them?",
+      "options": ["A thick pad of fat", "A thin film of serous fluid", "A layer of skeletal muscle"],
+      "correct": 1,
+      "why": "The parietal layer lines a cavity wall and the visceral layer covers an organ. Between them is a potential space holding a thin film of serous fluid, which lets the layers slide with little friction.",
+      "review": "body-cavities"
+    },
+    {
+      "q": "Which tissue is built mostly of thick collagen fibers and resists being pulled?",
+      "options": ["Simple squamous epithelium", "Dense connective tissue", "Cardiac muscle tissue"],
+      "correct": 1,
+      "why": "Dense connective tissue is packed with collagen fibers, which resist pulling. Simple squamous epithelium is a single thin layer of flat cells, and cardiac muscle tissue contracts rather than resisting stretch.",
+      "review": "connective-tissue"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-19-5",
+    "caption": "The heart wall and its coverings, from the endocardium inside to the fibrous pericardium outside. Hide the labels and name each layer."
+  },
+  "chain": [
+    { "cause": "A wound or disease lets blood or fluid collect in the pericardial cavity faster than it drains.", "effect": "The volume of fluid inside the pericardial sac rises." },
+    { "cause": "The volume inside the sac rises, and the collagen of the fibrous pericardium cannot stretch quickly.", "effect": "Pressure inside the pericardial sac climbs steeply." },
+    { "cause": "High pressure in the sac presses on the outside of the heart.", "effect": "The thinner-walled parts of the heart, which fill at low pressure, are squeezed shut between beats." },
+    { "cause": "The compressed heart cannot fill fully between beats.", "effect": "Each beat pumps out less blood." },
+    { "cause": "Each beat pumps out less blood, and blood returning to the heart cannot get in.", "effect": "Blood pressure falls and the neck veins bulge: cardiac tamponade." }
+  ],
+  "misconception": {
+    "wrong": "The epicardium and the pericardium are two separate coverings, one on top of the other.",
+    "right": "The epicardium is the visceral layer of the serous pericardium. It is one sheet of tissue with two names, because it is both the outer layer of the heart wall and the inner layer of the pericardium. Outside it lies the pericardial cavity, then the parietal layer and the fibrous pericardium."
+  },
+  "check": ["anp-heart-anatomy-1", "anp-heart-anatomy-4", "anp-heart-anatomy-5", "anp-heart-anatomy-7", "anp-heart-anatomy-11", "anp-heart-anatomy-12"],
+  "summary": "<p>Your heart sits in the mediastinum, behind the sternum and on the diaphragm, with about two thirds of it left of the midline. The base is the broad upper, back end where the large vessels attach; the apex is the lower tip at the fifth intercostal space on the left. The fibrous pericardium is a tough collagen bag; inside it the serous pericardium folds into a parietal and a visceral layer with serous fluid between them. The heart wall is epicardium (the visceral pericardium), myocardium (the pumping muscle) and endocardium (endothelium). In cardiac tamponade, fluid in the sac cannot stretch the fibrous layer fast enough, so it squeezes the heart and stops it filling.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma (cardiac tamponade)" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

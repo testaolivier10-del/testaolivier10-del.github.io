@@ -1,0 +1,464 @@
+[
+  {
+    "id": "anp-plasma-membrane-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In the phospholipid bilayer, which part of each phospholipid faces the watery fluid on either side of the membrane?",
+    "options": [
+      "The fatty acid tails",
+      "The phosphate heads",
+      "A cholesterol ring bonded to each tail",
+      "A sugar chain at the end of each tail"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The phosphate heads are polar and hydrophilic, so they face the water: the outer sheet's heads face the extracellular fluid and the inner sheet's heads face the cytoplasm.",
+      "options": [
+        "The fatty acid tails are hydrophobic. They point inward and meet in the middle, forming the oily core, away from water.",
+        "Correct. The hydrophilic heads face the water on both sides of the membrane.",
+        "Cholesterol sits between phospholipids in the bilayer, but it is a separate molecule, not bonded to the tails.",
+        "Sugar chains are attached to some proteins and lipids on the outer surface only, and never to the hydrophobic tails."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "A researcher makes an artificial membrane that is a pure phospholipid bilayer, with no proteins. Which substance crosses it most easily?",
+    "options": [
+      "Sodium ions",
+      "Glucose",
+      "Oxygen",
+      "Potassium ions"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Oxygen is small and nonpolar, so it dissolves in the bilayer's hydrophobic core and crosses without any protein.",
+      "options": [
+        "Sodium ions carry a charge and hold a shell of water molecules around them. Moving them into the oily core costs a great deal of energy, so the bare bilayer almost blocks them.",
+        "Glucose is large and polar. It barely crosses a bare bilayer; cells take it in through specific transport proteins.",
+        "Correct. Oxygen is small and nonpolar, so it passes through the oily core on its own.",
+        "Potassium ions are charged, like sodium ions, so the hydrophobic core almost blocks them."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-3",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these are jobs done by membrane proteins? Select all that apply.",
+    "options": [
+      "Giving specific ions a path across the membrane",
+      "Forming the oily core that blocks ions",
+      "Speeding up reactions at the cell surface",
+      "Carrying sugar chains that mark the cell's identity",
+      "Storing the cell's genetic instructions"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Membrane proteins transport specific substances, act as enzymes, bind signals, anchor the cell and, as glycoproteins, carry identity markers.",
+      "options": [
+        "Correct. Transport proteins give specific ions and molecules a way across the bilayer.",
+        "The oily core is made by the fatty acid tails of the phospholipids, not by proteins.",
+        "Correct. Some membrane proteins are enzymes that work right at the cell surface.",
+        "Correct. Glycoproteins carry sugar chains that are part of the glycocalyx and mark cell identity.",
+        "Genetic instructions are stored in the nucleus, not in the plasma membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "misconception": "the fluid inside and outside cells has the same composition",
+    "q": "A blood sample from Mr. Tan sat for four hours before testing and was shaken hard. The lab reports plasma potassium of 6.8 mmol/L (normal 3.5 to 5.0), and the plasma looks pink. A fresh sample reads 4.1. What best explains the first result?",
+    "options": [
+      "His kidneys stopped removing potassium between the two draws",
+      "Burst red blood cells spilled their potassium into the plasma",
+      "Potassium moved out of the plasma and into the red blood cells",
+      "Platelets released sodium, which the machine read as potassium"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Red blood cells hold about 25 times more potassium than plasma does. When their membranes tear, that potassium pours into the plasma in the tube, so the lab measures a falsely high value. The pink color is from the contents of the burst cells.",
+      "options": [
+        "The fresh sample was normal, so his kidneys are handling potassium fine. The problem was in the tube, not in him.",
+        "Correct. Burst red cells released their potassium-rich cytoplasm into the plasma in the tube.",
+        "Potassium moving into cells would lower plasma potassium, not raise it.",
+        "Platelets do not release sodium in amounts that could do this, and lab machines measure sodium and potassium separately."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-5",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which description fits the glycocalyx?",
+    "options": [
+      "Sugar chains on the outer face of the membrane",
+      "A layer of fat just under the plasma membrane",
+      "A protein framework lining the inside of the membrane",
+      "A second bilayer wrapped around the outside of the cell"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The glycocalyx (glyco- = sugar, calyx = husk) is the coat of sugar chains attached to proteins and lipids on the outer surface of the plasma membrane.",
+      "options": [
+        "Correct. The glycocalyx is the sugar coat on the outside of the cell.",
+        "There is no fat layer under the membrane. The only lipid in the membrane is in the bilayer itself.",
+        "There is a protein framework under the membrane, but it is not the glycocalyx, and the glycocalyx is on the outside, never the inside.",
+        "Human cells have one plasma membrane, a single bilayer. The glycocalyx is sugar chains, not another bilayer."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A researcher rinses a membrane with salt water. Several proteins wash off. One protein stays until the whole membrane is dissolved with detergent. What best explains why it stays?",
+    "options": [
+      "It is held to the glycocalyx by sugar bonds",
+      "It sits loosely on the inner surface",
+      "Its hydrophobic region sits in the core",
+      "It is made of lipid rather than amino acids"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is an integral protein. Its hydrophobic amino acids sit inside the oily core of the bilayer, so it comes out only when the bilayer itself is broken apart.",
+      "options": [
+        "Sugar chains are attached to proteins, but they do not anchor a protein into the membrane. Its hydrophobic region does that.",
+        "A protein sitting loosely on a surface is a peripheral protein. Those are the ones that wash off with salt water.",
+        "Correct. An integral protein's hydrophobic region is held in the bilayer's core.",
+        "Membrane proteins are made of amino acids like every protein. What matters is which of those amino acids are hydrophobic."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Put these layers in order, starting in the interstitial fluid and moving into the cell.",
+    "options": [
+      "Interstitial fluid",
+      "Glycocalyx",
+      "Phosphate heads of the outer sheet",
+      "Fatty acid tails",
+      "Phosphate heads of the inner sheet",
+      "Cytoplasm"
+    ],
+    "why": {
+      "correct": "From outside in: the interstitial fluid bathes the cell; the glycocalyx is the sugar coat on the outer face; then come the hydrophilic heads of the outer sheet, the hydrophobic tails of both sheets meeting in the middle, the heads of the inner sheet, and finally the cytoplasm."
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-8",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "Complete the path a glucose molecule takes from the blood into a cell: plasma inside a capillary → ______ → plasma membrane → cytoplasm.",
+    "options": [
+      "Interstitial fluid",
+      "Intracellular fluid",
+      "The glycocalyx of a red blood cell",
+      "The nucleus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Glucose leaves the capillary into the interstitial fluid that bathes the cell, then crosses the plasma membrane into the cytoplasm.",
+      "options": [
+        "Correct. Interstitial fluid lies between the capillary and the cells it supplies.",
+        "Intracellular fluid is inside the cell. Glucose reaches it only after crossing the plasma membrane, so it cannot come before the membrane.",
+        "Red blood cells stay in the blood. Their glycocalyx is not on the path from plasma to a tissue cell.",
+        "The nucleus is deep inside the cell, past the cytoplasm, not between the blood and the cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-9",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This sequence explains how a phospholipid bilayer forms. One step is wrong. Which one?",
+    "options": [
+      "Phospholipids are placed in water",
+      "Their hydrophilic heads attract water molecules",
+      "Their hydrophobic tails are drawn toward the water",
+      "The molecules form two sheets with their tails facing inward",
+      "The oily core between the sheets blocks ions"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Hydrophobic tails do not mix with water. They are excluded from it, which is exactly why they end up hidden in the middle of the bilayer.",
+      "options": [
+        "This step is right. A bilayer forms when phospholipids are in water, as they are in your body.",
+        "This step is right. The polar heads are hydrophilic and interact with water.",
+        "This is the error. The tails are hydrophobic, so they are kept away from water, not drawn toward it.",
+        "This step is right. Tail to tail is the arrangement that shields every tail from water.",
+        "This step is right. The hydrophobic core is the barrier to charged particles."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "q": "A fluid sample contains sodium at 142 mmol/L and potassium at 4.2 mmol/L. Which fluid could it be?",
+    "options": [
+      "Cytoplasm from a red blood cell",
+      "Interstitial fluid",
+      "Fluid from inside a white blood cell",
+      "Intracellular fluid from any cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "High sodium and low potassium is the pattern of extracellular fluid. Interstitial fluid is extracellular fluid.",
+      "options": [
+        "Red cell cytoplasm is intracellular fluid. It is high in potassium and low in sodium, the reverse of this sample.",
+        "Correct. High sodium with low potassium marks extracellular fluid, and interstitial fluid is part of it.",
+        "Fluid inside a white blood cell is intracellular fluid, which has high potassium and low sodium.",
+        "Intracellular fluid in general has about 140 mmol/L potassium and only 10 to 15 mmol/L sodium."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Which of these fluids are part of the extracellular fluid? Select all that apply.",
+    "options": [
+      "Plasma",
+      "Interstitial fluid",
+      "The watery part of the cytoplasm",
+      "The fluid inside a red blood cell",
+      "The fluid inside the nucleus"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "why": {
+      "correct": "Extracellular fluid is all fluid outside cells. Its two main parts are interstitial fluid, which bathes the cells, and plasma, the fluid part of blood.",
+      "options": [
+        "Correct. Plasma is outside the blood cells, so it is extracellular fluid.",
+        "Correct. Interstitial fluid fills the spaces between cells and is most of the extracellular fluid.",
+        "The fluid of the cytoplasm is intracellular fluid.",
+        "A red blood cell is a cell, so the fluid inside it is intracellular, even though the cell itself floats in plasma.",
+        "The nucleus is inside the cell, so its fluid is intracellular."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does cholesterol do in the plasma membrane?",
+    "options": [
+      "Lets ions cross the core",
+      "Forms the sugar coat on the outer face",
+      "Carries glucose into the cell",
+      "Steadies how fluid the membrane is"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Cholesterol wedges between phospholipids. At body temperature it restrains the tails, making the membrane less fluid and less leaky; at low temperature it stops the tails packing into a stiff sheet. The membrane stays about equally fluid over a range of temperatures.",
+      "options": [
+        "Cholesterol is itself mostly nonpolar and makes the core less leaky, not more open to ions.",
+        "The sugar coat is the glycocalyx, made of sugar chains on proteins and lipids. Cholesterol is not part of it.",
+        "Glucose crosses through specific transport proteins, not through cholesterol.",
+        "Correct. Cholesterol buffers membrane fluidity in both directions."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the plasma membrane is a rigid wall",
+    "q": "A classmate says, \"Once a phospholipid is in the plasma membrane, it stays in exactly that spot.\" Which observation shows this is wrong?",
+    "options": [
+      "Phospholipids rarely flip from one sheet to the other",
+      "The glycocalyx is found only on the outer face",
+      "Integral proteins come out only when the bilayer is broken",
+      "Phospholipids keep drifting sideways in their sheet"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The membrane is fluid: each phospholipid moves sideways and swaps places with its neighbors millions of times a second. That is the \"fluid\" in the fluid mosaic model.",
+      "options": [
+        "This is true, but it supports the classmate's idea, since it describes a movement that almost never happens. It does not show that phospholipids move.",
+        "This is true, but it is about where sugars are, not about whether phospholipids move.",
+        "This is true, but it describes how firmly proteins are anchored in the bilayer, not whether lipids move.",
+        "Correct. Sideways drift within a sheet shows that phospholipids do not stay in one spot."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ms. Oduya's blood count shows a very low number of platelets but normal red and white blood cells. Which problem is she most likely to notice?",
+    "options": [
+      "Bleeding that is slow to stop after a small cut",
+      "Frequent infections that are slow to clear",
+      "Shortness of breath from poor oxygen delivery to tissues",
+      "A high potassium level in her plasma"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Platelets gather at a break in a blood vessel and help seal it. With too few platelets, small cuts keep bleeding longer.",
+      "options": [
+        "Correct. Platelets help seal breaks in blood vessels, so too few of them means slow-stopping bleeding.",
+        "Defending against infection is the job of white blood cells, and her white cell count is normal.",
+        "Oxygen is carried by red blood cells, and her red cell count is normal.",
+        "A low platelet count does not raise plasma potassium. Burst red cells in a sample can, but that is a different problem."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which part of the blood carries oxygen and, when mature, has no nucleus?",
+    "options": [
+      "White blood cells",
+      "Platelets",
+      "Red blood cells",
+      "Plasma"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Red blood cells carry oxygen from the lungs to the tissues. They push out their nucleus as they mature.",
+      "options": [
+        "White blood cells keep their nucleus and defend against infection; they do not carry oxygen.",
+        "Platelets have no nucleus, but they are cell fragments that help seal broken vessels, not oxygen carriers.",
+        "Correct. Mature red blood cells have no nucleus and carry oxygen.",
+        "Plasma is the fluid part of blood, not a cell. It carries only a little dissolved oxygen compared with red blood cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Why is a living plasma membrane described as selectively permeable, and not just semipermeable like a sheet of plastic with holes in it?",
+    "options": [
+      "It lets nothing cross except water",
+      "It blocks every nonpolar molecule",
+      "The cell can add or remove transport proteins",
+      "Its openings are all one size, so it sorts only by size"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each transport protein handles one substance or a small family of them, and the cell can change which ones are in its membrane. So the cell controls what crosses, which fixed holes cannot do.",
+      "options": [
+        "Many substances besides water cross, including oxygen, carbon dioxide, and ions and glucose through proteins.",
+        "Small nonpolar molecules such as oxygen cross the bilayer most easily of all.",
+        "Correct. Changing its set of transport proteins lets the cell change what crosses.",
+        "The membrane sorts mainly by solubility in oil and by protein identity, not by a single pore size."
+      ]
+    }
+  },
+  {
+    "id": "anp-plasma-membrane-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "q": "A blood sample is shaken hard and many of its red blood cells burst in the tube. Predict each change in the tube.",
+    "variables": [
+      {
+        "name": "Potassium measured in the sample's plasma",
+        "answer": "up",
+        "why": "The red cells' cytoplasm is potassium-rich. Their torn membranes no longer separate it from the plasma, so potassium spills into the plasma."
+      },
+      {
+        "name": "Potassium in the patient's own bloodstream",
+        "answer": "none",
+        "why": "The cells burst in the tube after it left the patient. Nothing changed in the patient's body."
+      },
+      {
+        "name": "Number of intact red blood cells in the tube",
+        "answer": "down",
+        "why": "Each cell whose membrane tears is no longer an intact cell, so the count of whole red cells falls."
+      }
+    ],
+    "why": {
+      "correct": "Burst cells release their intracellular fluid into the plasma in the tube, which gives a falsely high potassium result while the patient is unchanged."
+    }
+  }
+]

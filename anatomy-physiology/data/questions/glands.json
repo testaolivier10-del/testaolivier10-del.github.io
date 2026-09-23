@@ -1,0 +1,455 @@
+[
+  {
+    "id": "anp-glands-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "glands are classified by the chemical they make",
+    "q": "Which feature defines a gland as exocrine?",
+    "options": [
+      "It releases enzymes rather than hormones",
+      "Its product leaves through a duct",
+      "It is built from connective tissue",
+      "It has a dense network of capillaries"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Exocrine means secreting outward. The defining feature is the route: the product enters a duct (or, for a one-cell gland, lands directly on a surface) and acts on that surface.",
+      "options": [
+        "Many exocrine glands do release enzymes, but some release mucus or watery fluid instead. Glands are classified by where the product goes, not by what it is.",
+        "Correct. A duct that carries the product to a surface, such as the skin or the inside of the gut, is what makes a gland exocrine.",
+        "Glands of both kinds are built from epithelium, not connective tissue. A patch of epithelium grows down into the connective tissue beneath it and becomes the gland.",
+        "A dense capillary network is typical of endocrine glands, whose hormones must enter the blood. It does not define an exocrine gland."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Under the microscope, a cluster of epithelial cells sits wrapped in capillaries. You find no duct anywhere near it, and the cells are full of secretory vesicles. What kind of gland is this most likely to be?",
+    "options": [
+      "A simple tubular exocrine gland",
+      "A mucous gland",
+      "An endocrine gland",
+      "A unicellular exocrine gland"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "No duct plus a rich capillary supply is the signature of an endocrine gland. Its cells release hormones into the interstitial fluid, and the hormones diffuse into the nearby capillaries.",
+      "options": [
+        "A simple tubular gland is exocrine, so it has a duct running to a surface. The absence of any duct rules it out.",
+        "A mucous gland is a kind of exocrine gland. It releases mucus through a duct onto a surface, and no duct is present here.",
+        "Correct. Ductless cells surrounded by capillaries release their product toward the blood: that is an endocrine gland.",
+        "A unicellular exocrine gland, such as a goblet cell, is a single cell sitting in a surface lining. This is a cluster of cells with no surface to empty onto."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Mrs. Lee, 62, has a tumor pressing on the main duct of her pancreas. Her stools become greasy because she no longer digests fat well. Her blood levels of the hormones her pancreas makes stay normal. Which explanation fits both findings?",
+    "options": [
+      "The tumor destroyed the hormone-making cells first",
+      "Enzymes and hormones share the same duct",
+      "The tumor made hormones that replaced lost ones",
+      "Enzymes need the duct; hormones go into blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The pancreas holds two kinds of gland. Its enzyme-making cells are exocrine and drain through the duct, so a blocked duct stops enzymes reaching the gut and fat goes undigested. Its hormone clusters are endocrine: they release into interstitial fluid and capillaries, so a blocked duct does not affect them.",
+      "options": [
+        "If the hormone-making cells were destroyed, hormone levels would fall. They stayed normal.",
+        "If both products shared the duct, blocking it would lower both. Normal hormone levels show the hormones take a different route.",
+        "Nothing in the case suggests the tumor makes hormones, and it would not explain the undigested fat. The simpler explanation is that the two products take different routes.",
+        "Correct. Blocking the duct stops the exocrine product (enzymes) but not the endocrine product (hormones), which never used the duct."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-4",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A goblet cell in the lining of your airway releases mucus directly onto the surface. How is a goblet cell classified?",
+    "options": [
+      "A unicellular exocrine gland",
+      "A unicellular endocrine gland",
+      "A compound mucous gland",
+      "A holocrine gland"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A goblet cell is a gland made of one cell. It sits in the surface epithelium and releases mucus onto that surface, so it needs no duct and still counts as exocrine.",
+      "options": [
+        "Correct. One cell, releasing its product onto a surface: a unicellular exocrine gland.",
+        "An endocrine gland releases hormones toward the blood. A goblet cell releases mucus onto a surface, which is exocrine.",
+        "A compound gland is multicellular with a branching duct. A goblet cell is a single cell with no duct.",
+        "A holocrine cell breaks apart to release its product. A goblet cell releases mucus by exocytosis and survives to make more."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A gland has a duct that divides again and again, like the branches of a tree. Each smallest branch ends in a rounded sac of secretory cells. What is this gland's name?",
+    "options": [
+      "Simple tubular",
+      "Simple alveolar",
+      "Compound alveolar",
+      "Compound tubuloalveolar"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Name the duct first, then the secretory part. A branching duct makes the gland compound, and rounded sacs make it alveolar (also called acinar).",
+      "options": [
+        "Simple means one unbranched duct, and tubular means tube-shaped secretory parts. This gland has neither feature.",
+        "The sacs fit alveolar, but simple means an unbranched duct. This duct branches repeatedly.",
+        "Correct. A branching duct (compound) that ends in rounded sacs (alveolar) is a compound alveolar gland.",
+        "The branching duct fits compound, but a tubuloalveolar gland has both tube-shaped and sac-shaped secretory parts. Every branch here ends in a rounded sac."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a gland, cells near the base are small and dividing. Cells farther in are larger and packed with lipid. At the center, cells are breaking apart, and their fragments are part of the fluid the gland releases. Which mode of secretion is this?",
+    "options": [
+      "Merocrine",
+      "Holocrine",
+      "Apocrine",
+      "Endocrine"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In holocrine secretion the whole cell becomes the product. Cells fill with product, break apart, and are replaced by new cells from dividing stem cells at the base.",
+      "options": [
+        "In merocrine secretion the cell releases vesicle contents by exocytosis and stays whole. Here the cells break apart.",
+        "Correct. Whole cells breaking apart and joining the secretion, with dividing cells at the base replacing them, is holocrine secretion.",
+        "In apocrine secretion only the apical part of the cell pinches off, and the rest of the cell survives. Here whole cells break apart.",
+        "Endocrine describes where a product goes (into the blood), not how a cell releases it. It is not a mode of secretion."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-7",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A drug stops mitosis in the stem cells at the base of a holocrine gland for two weeks. Predict each variable at the end of that time.",
+    "variables": [
+      {
+        "name": "Number of new secretory cells produced in the gland",
+        "answer": "down",
+        "why": "New holocrine cells come from stem cells dividing by mitosis. Stopping mitosis stops that supply."
+      },
+      {
+        "name": "Amount of secretion the gland releases",
+        "answer": "down",
+        "why": "Each holocrine cell is used up when it breaks apart. With no new cells replacing them, fewer cells are left to fill and break apart, so output falls."
+      },
+      {
+        "name": "Output of a nearby merocrine gland whose cells are not dividing",
+        "answer": "none",
+        "why": "A merocrine cell releases its product by exocytosis and survives, so it does not depend on a steady supply of new cells. Its output is unaffected."
+      }
+    ]
+  },
+  {
+    "id": "anp-glands-8",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Select every statement that is true of endocrine glands.",
+    "options": [
+      "They have no duct.",
+      "Their product enters interstitial fluid and then the blood.",
+      "Their product changes the cells that carry a matching receptor protein.",
+      "Their product is carried to the inside of the gut through a duct.",
+      "They consist of a single cell."
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Endocrine glands are ductless. They release hormones into the interstitial fluid, the hormones diffuse into capillaries, and they act on target cells that carry the matching receptor protein.",
+      "options": [
+        "True. Endocrine glands are also called ductless glands.",
+        "True. The hormone leaves the cell into interstitial fluid and diffuses into nearby capillaries.",
+        "True. A hormone reaches every tissue in the blood but changes only its target cells, the ones with a matching receptor protein.",
+        "False. Delivery through a duct to a surface such as the inside of the gut is what exocrine glands do.",
+        "False. Endocrine glands such as the thyroid gland are made of many cells. The one-cell gland you know, the goblet cell, is exocrine."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order for an enzyme-making cell of the pancreas releasing its protein product.",
+    "options": [
+      "Ribosomes on the rough endoplasmic reticulum build the protein.",
+      "The Golgi apparatus modifies the protein and packs it into secretory vesicles.",
+      "The vesicles move to the apical surface of the cell.",
+      "Each vesicle fuses with the plasma membrane and empties its contents by exocytosis.",
+      "The product enters the lumen of the duct.",
+      "The duct carries the product to the inside of the gut."
+    ],
+    "why": {
+      "correct": "This is the secretory pathway followed by merocrine release: build the protein on the rough ER, pack it in the Golgi, move vesicles to the apical side, fuse by exocytosis, and let the duct carry the product to its surface."
+    }
+  },
+  {
+    "id": "anp-glands-10",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap. A thyroid gland cell releases its hormone by exocytosis → ______ → the hormone enters a capillary → the blood carries it through the body → it binds a receptor protein on a target cell.",
+    "options": [
+      "The hormone diffuses through the interstitial fluid",
+      "The hormone flows through a duct",
+      "The hormone lands on the skin surface",
+      "The hormone binds a receptor protein on the gland cell itself"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "An endocrine gland has no duct. Its hormone first enters the interstitial fluid around the cell, then diffuses into a nearby capillary.",
+      "options": [
+        "Correct. Between leaving the cell and entering a capillary, the hormone crosses the interstitial fluid by diffusion.",
+        "The thyroid gland is endocrine, so it has no duct. Ducts belong to exocrine glands.",
+        "Release onto a surface is what an exocrine gland does. An endocrine product heads for the blood.",
+        "A cell responding to its own product is autocrine signaling. That would not lead on to the hormone entering a capillary and traveling in the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-11",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This pathway for a compound alveolar exocrine gland contains one wrong step. Find it.",
+    "options": [
+      "Secretory cells in the sacs make an enzyme.",
+      "Vesicles release the enzyme into the lumen of the sac by exocytosis.",
+      "The enzyme diffuses into capillaries around the sac.",
+      "Small ducts join into larger ducts.",
+      "The main duct empties the enzyme onto the lining of the gut."
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "An exocrine product stays in the duct system and is delivered to a surface. Entering capillaries is the route of an endocrine product.",
+      "options": [
+        "This step is correct. The secretory portion of an alveolar gland is its rounded sacs.",
+        "This step is correct. Exocytosis on the apical side empties the product into the lumen of the sac.",
+        "This is the wrong step. An exocrine product does not enter the blood; it flows from the sac into the duct system.",
+        "This step is correct. In a compound gland, the branching ducts join like tree branches into one main duct.",
+        "This step is correct. The duct delivers the product to a surface, here the inside of the gut."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "misconception": "glands are classified by the chemical they make",
+    "q": "A student says: \"If a gland makes an enzyme it is exocrine, and if it makes a hormone it is endocrine.\" To decide the type of a gland you have never seen before, which observation settles it?",
+    "options": [
+      "Whether the product is a protein",
+      "Whether the cells store their product in secretory vesicles",
+      "Whether the product leaves by a duct or into the blood",
+      "Whether the gland is larger than a single cell"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Exocrine and endocrine describe the route, not the chemical. A duct to a surface means exocrine; release into interstitial fluid and then blood means endocrine. The student's rule fails whenever a product breaks the pattern, and it cannot classify mucus at all.",
+      "options": [
+        "Enzymes are proteins, and so are many hormones. Knowing the product is a protein does not tell you which way it leaves.",
+        "Both exocrine and endocrine cells can store their product in secretory vesicles and release it by exocytosis.",
+        "Correct. Tracing where the product goes is the test that defines the two kinds of gland.",
+        "Size separates a goblet cell from larger exocrine glands, but it does not separate exocrine from endocrine: both kinds include many-celled glands."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A gland's cells are packed with vesicles of protein, and the gland releases a thin, watery fluid rich in enzymes. What kind of exocrine gland is it?",
+    "options": [
+      "A mucous gland",
+      "A serous gland",
+      "A holocrine gland",
+      "A ductless gland"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A serous gland (ser/o = watery fluid) releases a thin, watery fluid that is often rich in enzymes. Its cells hold many protein-filled vesicles.",
+      "options": [
+        "A mucous gland releases thick, sticky mucus, made thick by large glycoproteins called mucins. This fluid is thin and watery.",
+        "Correct. Thin, watery, enzyme-rich fluid from protein-packed cells marks a serous gland.",
+        "Holocrine names how a cell releases its product (by breaking apart), not what the product is. Nothing here says the cells break apart.",
+        "A ductless gland is an endocrine gland. The question describes an exocrine gland."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "apocrine sweat glands are the model of apocrine secretion",
+    "q": "Which is the clearest example of true apocrine secretion in the human body?",
+    "options": [
+      "A goblet cell releasing mucus",
+      "The oil glands of the skin releasing their oily product",
+      "The thyroid gland releasing its hormone",
+      "Milk-making cells of the breast releasing fat droplets"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the milk-making gland of the breast, fat droplets leave from the apical end of the cell wrapped in a piece of its plasma membrane: true apocrine release. Some exams instead name the \"apocrine\" sweat-producing glands of the armpit, but electron microscope studies show those release mainly by exocytosis, so their name is historical.",
+      "options": [
+        "A goblet cell releases mucus by exocytosis and stays whole. That is merocrine secretion.",
+        "The oil glands of the skin are holocrine: whole cells fill with product and break apart.",
+        "The thyroid gland is endocrine. The three mode names describe exocrine glands, and its hormone release is not apocrine.",
+        "Correct. Fat droplets pinching off in a wrap of plasma membrane is the clearest example of apocrine release."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What happens to a merocrine gland cell after it releases its product?",
+    "options": [
+      "It stays whole and goes on making more product",
+      "Its apical part pinches off with the product",
+      "It breaks apart and becomes part of the secretion",
+      "It divides by mitosis to replace itself"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Merocrine release is exocytosis. Vesicles empty their contents, and the cell loses nothing else, so it keeps working.",
+      "options": [
+        "Correct. A merocrine cell releases only the vesicle contents and survives unchanged.",
+        "Losing the apical part of the cell with the product is apocrine secretion.",
+        "Breaking apart so the whole cell becomes the product is holocrine secretion.",
+        "A merocrine cell survives, so there is nothing to replace. Steady replacement by dividing stem cells is what holocrine glands need."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Cells in a tissue release a chemical that diffuses a few micrometers to their neighbors and changes them. The chemical never enters the blood. How is this release best classified?",
+    "options": [
+      "Endocrine signaling",
+      "Paracrine signaling",
+      "Exocrine secretion",
+      "Holocrine secretion"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An endocrine product enters the blood and can act far away. A chemical that diffuses only to nearby cells and acts on them is a paracrine signal. Lacking a duct does not by itself make cells an endocrine gland; the product must also reach the blood.",
+      "options": [
+        "Endocrine signaling needs the messenger to enter the blood. This chemical never does, so the cells are not acting as an endocrine gland.",
+        "Correct. Local diffusion to neighboring cells without entering the blood is paracrine signaling.",
+        "Exocrine secretion delivers a product through a duct onto a surface. This chemical acts on neighboring cells inside the tissue.",
+        "Holocrine describes a cell breaking apart to release its product. Nothing here says the cells break apart, and the question is about where the chemical acts."
+      ]
+    }
+  },
+  {
+    "id": "anp-glands-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which description matches apocrine secretion?",
+    "options": [
+      "Vesicles fuse with the plasma membrane and the cell stays whole",
+      "The product-filled apical end of the cell pinches off",
+      "The entire cell fills with product and breaks apart",
+      "The product diffuses from the cell into nearby capillaries"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Apo- means off or away. In apocrine secretion the apical end of the cell, holding the product, pinches off inside a wrap of plasma membrane, and the rest of the cell repairs itself.",
+      "options": [
+        "Vesicle fusion with the cell left whole is merocrine secretion.",
+        "Correct. Losing the product-filled apical part of the cell is apocrine secretion.",
+        "A whole cell breaking apart is holocrine secretion.",
+        "Diffusion into capillaries describes the route of an endocrine product, not a mode of secretion."
+      ]
+    }
+  }
+]

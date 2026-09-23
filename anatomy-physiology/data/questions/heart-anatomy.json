@@ -1,0 +1,453 @@
+[
+  {
+    "id": "anp-heart-anatomy-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "In which compartment of the body does the heart sit?",
+    "options": [
+      "The left pleural cavity",
+      "The mediastinum",
+      "The abdominopelvic cavity",
+      "The dorsal body cavity"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The heart sits in the mediastinum, the central compartment of the thoracic cavity. It lies between the lungs, behind the sternum, in front of the esophagus and vertebral column, and on the diaphragm.",
+      "options": [
+        "The left pleural cavity surrounds the left lung. The heart leans to the left, but it stays in the mediastinum, medial to that cavity.",
+        "Correct. The mediastinum lies between the two pleural cavities and holds the heart.",
+        "The abdominopelvic cavity lies below the diaphragm. The heart rests on top of the diaphragm, so it is above this cavity.",
+        "The dorsal body cavity holds the brain and spinal cord. The heart is in the ventral body cavity, in the thorax."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-19-2",
+    "pin": "apex-of-heart",
+    "q": "Name the pinned part of the heart: the pointed lower end that rests just above the diaphragm and points to the left.",
+    "options": ["Apex of the heart", "Base of the heart", "Pericardial cavity", "Mediastinum"],
+    "correct": 0,
+    "why": {
+      "correct": "The apex is the pointed lower end of the heart. It points inferiorly, anteriorly and to the left, and lies at about the fifth intercostal space on the left.",
+      "options": [
+        "Correct. The pointed lower tip is the apex.",
+        "The base is the broad upper, back end where the large vessels attach, not the lower tip.",
+        "The pericardial cavity is the thin fluid-filled space between the two serous layers around the heart, not a part of the heart itself.",
+        "The mediastinum is the whole central compartment of the chest that holds the heart, not one end of it."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-19-5",
+    "pin": "fibrous-pericardium",
+    "q": "Name the pinned layer: the outermost covering of the heart, made of tough dense connective tissue.",
+    "options": ["Parietal pericardium", "Epicardium", "Fibrous pericardium", "Endocardium"],
+    "correct": 2,
+    "why": {
+      "correct": "The fibrous pericardium is the outermost layer. Its dense collagen anchors the heart and resists stretch.",
+      "options": [
+        "The parietal pericardium is the serous layer fused to the inside of the fibrous pericardium. It is thin mesothelium, not tough dense connective tissue.",
+        "The epicardium is the visceral layer of the serous pericardium, on the surface of the heart. It is inside the pericardial cavity, not the outermost layer.",
+        "Correct. The tough outer bag is the fibrous pericardium.",
+        "The endocardium is the innermost layer of the heart wall, lining the spaces inside the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-19-5",
+    "pin": "epicardium",
+    "q": "Name the pinned layer: the thin layer that sits directly on the heart muscle, on the inner side of the pericardial cavity.",
+    "options": ["Parietal pericardium", "Epicardium", "Endocardium", "Myocardium"],
+    "correct": 1,
+    "why": {
+      "correct": "The epicardium lies on the outer surface of the myocardium, just inside the pericardial cavity. It is also called the visceral pericardium.",
+      "options": [
+        "The parietal pericardium is on the outer side of the pericardial cavity, fused to the fibrous pericardium. The pinned layer is on the inner side.",
+        "Correct. The layer on the heart muscle, facing the pericardial cavity, is the epicardium (visceral pericardium).",
+        "The endocardium lines the inside of the heart, on the inner surface of the myocardium, far from the pericardial cavity.",
+        "The myocardium is the thick muscle layer itself, not the thin covering on it."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-5",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A surgeon's needle passes from outside the heart all the way into the blood inside it. Put the layers it crosses in order, from outside to inside.",
+    "options": [
+      "Fibrous pericardium",
+      "Parietal pericardium",
+      "Pericardial cavity",
+      "Epicardium (visceral pericardium)",
+      "Myocardium",
+      "Endocardium"
+    ],
+    "why": {
+      "correct": "Outside to inside: the tough fibrous pericardium, the parietal serous layer fused to it, the fluid film of the pericardial cavity, the epicardium on the heart surface, the thick myocardium, and finally the endocardium lining the inside.",
+      "options": [
+        "The fibrous pericardium is the outermost bag, so the needle meets it first.",
+        "The parietal pericardium is fused to the inside of the fibrous pericardium, so it comes next.",
+        "The pericardial cavity is the fluid film between the parietal and visceral layers.",
+        "The epicardium is the visceral serous layer on the heart surface, the first layer of the heart wall.",
+        "The myocardium is the thick muscle in the middle of the wall.",
+        "The endocardium lines the inside of the heart, so it is the last layer before the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which layer of the heart wall contracts to pump blood?",
+    "options": ["Epicardium", "Endocardium", "Fibrous pericardium", "Myocardium"],
+    "correct": 3,
+    "why": {
+      "correct": "The myocardium is cardiac muscle tissue. It is the thickest layer, and its fibers shorten to squeeze blood out of the heart.",
+      "options": [
+        "The epicardium is a thin covering of mesothelium and connective tissue. It holds surface vessels and fat but does not contract.",
+        "The endocardium is a thin endothelial lining. It gives blood a smooth surface but has no contractile muscle.",
+        "The fibrous pericardium is not part of the heart wall at all. It is the collagen bag around the heart.",
+        "Correct. The myocardium is the muscle layer that pumps."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "the pericardium stretches easily to make room for fluid",
+    "q": "Jordan, 24, has a stab wound beside his sternum. Blood is collecting around his heart. His blood pressure falls and his neck veins bulge. Which property of which layer explains why a small amount of blood is so dangerous?",
+    "options": [
+      "The endocardium tears, so blood inside the heart leaks out through its wall",
+      "The epicardium thickens within minutes and stiffens the heart muscle below it",
+      "The fibrous pericardium cannot stretch quickly, so pressure in the sac rises",
+      "The myocardium relaxes fully, letting the heart balloon outward into the sac"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The fibrous pericardium is dense collagen and cannot expand fast. Blood collecting in the pericardial cavity therefore raises the pressure in the sac, which squeezes the heart and stops it filling between beats. That is cardiac tamponade.",
+      "options": [
+        "A tear in the endocardium alone would not put blood around the heart, and the signs here come from compression from outside, not from a leak inside.",
+        "The epicardium does not thicken within minutes, and a stiffer wall is not what compresses the heart in this scenario.",
+        "Correct. The unyielding fibrous pericardium turns a small added volume into a large rise in pressure.",
+        "If the heart could balloon outward it would fill more, not less. The problem is that the heart is squeezed and cannot expand."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-8",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which of these layers include a simple squamous epithelium? Select all that apply.",
+    "options": ["Endocardium", "Epicardium", "Parietal pericardium", "Fibrous pericardium", "Myocardium"],
+    "correct": [0, 1, 2],
+    "why": {
+      "correct": "The endocardium is lined by endothelium, and both layers of the serous pericardium (the epicardium and the parietal pericardium) are covered by mesothelium. Endothelium and mesothelium are both simple squamous epithelium.",
+      "options": [
+        "Yes. The endocardium is endothelium, a simple squamous epithelium, on thin connective tissue.",
+        "Yes. The epicardium is the visceral serous layer, so its surface is mesothelium, a simple squamous epithelium.",
+        "Yes. The parietal pericardium is the other serous layer, also covered by mesothelium.",
+        "No. The fibrous pericardium is dense connective tissue, mostly collagen, with no epithelial surface of its own.",
+        "No. The myocardium is cardiac muscle tissue, not epithelium."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student places two fingers between the ribs to feel the tap of the heart's tip against the chest wall. Where should she press?",
+    "options": [
+      "Just right of the sternum, at the level of the second rib",
+      "Fifth intercostal space, in line with the middle of the left clavicle",
+      "Directly over the upper sternum, at the level where the clavicles meet it",
+      "Tenth intercostal space on the left, near the lowest ribs"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The apex points inferiorly, anteriorly and to the left. In most adults it touches the chest wall at the fifth intercostal space, in line with the middle of the left clavicle.",
+      "options": [
+        "The upper right side of the sternum is near the base, where the large vessels attach. The tip of the heart points down and left, away from here.",
+        "Correct. This is where the apex lies in most adults.",
+        "The upper sternum is above the heart's base. The apex is much lower and to the left.",
+        "The tenth intercostal space is below the diaphragm's dome, in the region of the upper abdomen. The heart rests on the diaphragm, so its tip is higher than this."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement correctly describes the base of the heart?",
+    "options": [
+      "It is the broad upper, back end, where the large blood vessels attach",
+      "It is the pointed lower end of the heart, which rests on the diaphragm dome",
+      "It is the part of the heart closest to the sternum",
+      "It is the fluid-filled space around the heart"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Despite its name, the base is at the top and back of the heart. It faces toward the right shoulder, and the large vessels enter and leave there.",
+      "options": [
+        "Correct. The base is the wide upper, posterior end where the large vessels attach.",
+        "This describes the apex, the lower tip, not the base.",
+        "The front surface of the heart faces the sternum, but the base faces mostly backward and upward.",
+        "This describes the pericardial cavity, a space outside the heart wall, not a part of the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-11",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Blood leaks quickly into a patient's pericardial cavity. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Pressure inside the pericardial sac",
+        "answer": "up",
+        "why": "Added volume in a sac whose fibrous layer cannot stretch quickly raises the pressure inside it."
+      },
+      {
+        "name": "How much blood fills the heart between beats",
+        "answer": "down",
+        "why": "The high pressure outside the heart squeezes its thin-walled parts, so less blood can flow in between beats."
+      },
+      {
+        "name": "Blood pressure",
+        "answer": "down",
+        "why": "A heart that fills less pumps out less blood with each beat, so blood pressure falls."
+      },
+      {
+        "name": "Bulging of the neck veins",
+        "answer": "up",
+        "why": "Blood returning to the heart cannot get into the squeezed heart, so it backs up in the large veins, including those in the neck."
+      }
+    ],
+    "why": {
+      "correct": "Fluid in an unstretchable sac raises the pressure around the heart. The heart cannot fill, so it pumps out less, blood pressure falls, and blood backs up in the veins."
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Patient A develops tamponade after 150 mL of blood enters the pericardial cavity in 10 minutes. Patient B has 900 mL of fluid that built up over two months and has no sign of tamponade. What best explains the difference?",
+    "options": [
+      "Patient B's myocardium is weaker, so it is less affected by pressure",
+      "Serous fluid is thinner than blood, so it exerts no pressure",
+      "Patient B's parietal and visceral layers have fused, closing the cavity",
+      "Over weeks the fibrous pericardium enlarges, so pressure stays low"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Collagen in the fibrous pericardium cannot stretch fast, so a small, rapid volume causes a steep pressure rise. Over weeks the tissue remodels and the sac enlarges, so a large, slow volume can fit with little rise in pressure. Rate matters more than volume.",
+      "options": [
+        "A weaker muscle would make the heart more vulnerable to outside compression, not less, and nothing in the scenario says the muscle is weak.",
+        "Any fluid in a closed sac exerts pressure. What matters is how much the sac's pressure rises, which depends on how fast it can enlarge.",
+        "If the layers had fused there would be no cavity for 900 mL of fluid to fill, so this cannot explain Patient B.",
+        "Correct. Slow accumulation gives the fibrous pericardium time to enlarge; rapid accumulation does not."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-13",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Complete the layers of the heart wall, from outside to inside: epicardium → ____ → endocardium.",
+    "options": ["Myocardium", "Pericardial cavity", "Fibrous pericardium", "Parietal pericardium"],
+    "correct": 0,
+    "why": {
+      "correct": "The heart wall has three layers: epicardium outside, myocardium in the middle and endocardium inside.",
+      "options": [
+        "Correct. The myocardium, the muscle layer, sits between the epicardium and the endocardium.",
+        "The pericardial cavity lies outside the epicardium, between it and the parietal pericardium. It is not inside the heart wall.",
+        "The fibrous pericardium is the outermost covering, outside the whole heart wall.",
+        "The parietal pericardium lines the fibrous pericardium, outside the pericardial cavity, not within the heart wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "This explanation of cardiac tamponade has one wrong step. Find it.",
+    "options": [
+      "Blood collects in the pericardial cavity faster than it drains",
+      "The fibrous pericardium stretches easily, so the heart has extra room to fill",
+      "Pressure inside the pericardial sac presses on the outside of the heart",
+      "The heart fills less between beats, so it pumps out less blood",
+      "Blood pressure falls and blood backs up in the neck veins"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The fibrous pericardium is dense collagen and cannot stretch quickly. Because it does not give way, added fluid raises the pressure in the sac and squeezes the heart.",
+      "options": [
+        "This step is correct. Tamponade starts when fluid enters the cavity faster than it can leave.",
+        "This is the wrong step. The fibrous pericardium resists stretch, and that is exactly why pressure builds.",
+        "This step is correct. The raised pressure acts on the heart's outer surface.",
+        "This step is correct. A compressed heart cannot fill fully, so each beat sends out less blood.",
+        "This step is correct. Less blood pumped lowers blood pressure, and blood returning to the heart backs up in the veins."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What tissue makes up the fibrous pericardium?",
+    "options": [
+      "Simple squamous epithelium",
+      "Cardiac muscle tissue",
+      "Dense connective tissue",
+      "Loose areolar tissue with fat"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The fibrous pericardium is dense connective tissue, packed with collagen fibers. That is why it is tough and resists stretching.",
+      "options": [
+        "Simple squamous epithelium (mesothelium) covers the serous layers, not the fibrous pericardium.",
+        "Cardiac muscle tissue forms the myocardium. The pericardium has no muscle.",
+        "Correct. Dense collagen makes the fibrous pericardium strong and hard to stretch.",
+        "Loose tissue with fat lies under the epicardium, on the heart surface. It is not the tough outer bag."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A clinician drains fluid from around a patient's heart by passing a needle up from just below the sternum. For the needle tip to reach the fluid, which layers must it pierce last, just before the fluid?",
+    "options": [
+      "The epicardium and then the myocardium",
+      "The endocardium and then the full thickness of the myocardium",
+      "The fibrous pericardium and then the parietal pericardium",
+      "The myocardium and then the endocardium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The fluid sits in the pericardial cavity. From outside, the needle must cross the fibrous pericardium and the parietal layer fused to it. Past those, it is in the fluid. It should stop before the epicardium, which is the surface of the heart.",
+      "options": [
+        "The epicardium and myocardium are the heart wall itself. Piercing them means the needle has gone past the fluid and into the heart.",
+        "The endocardium lines the inside of the heart. A needle reaching it has passed through the entire heart wall.",
+        "Correct. The fibrous and parietal layers form the outer wall of the pericardial cavity.",
+        "These are the inner layers of the heart wall. Reaching them means the needle is inside the heart, not in the pericardial fluid."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "the epicardium and the pericardium are separate coverings",
+    "q": "A student writes: \"The heart is covered by the epicardium, and outside that is a separate visceral pericardium.\" What is wrong with this?",
+    "options": [
+      "The visceral pericardium lies inside the myocardium",
+      "The epicardium and the visceral pericardium are the same layer",
+      "The epicardium lies outside the fibrous pericardium",
+      "The visceral pericardium is made of dense collagen-rich connective tissue"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The epicardium is the visceral layer of the serous pericardium. One sheet of tissue carries both names, so there is no separate layer between them.",
+      "options": [
+        "The visceral pericardium is on the heart's outer surface. Inside the myocardium is the endocardium.",
+        "Correct. The epicardium is the visceral pericardium.",
+        "The fibrous pericardium is the outermost layer. The epicardium lies deep to it, on the heart itself.",
+        "The visceral pericardium is a serous membrane: mesothelium on thin connective tissue. Dense connective tissue describes the fibrous pericardium."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Inflammation roughens the serous pericardium and reduces its normal fluid film. What would you expect a clinician to hear through a stethoscope?",
+    "options": [
+      "Silence over the heart as its movement stops",
+      "A scratchy rubbing sound with each beat",
+      "A louder, sharper heartbeat with no extra sound",
+      "A bubbling sound from air in the pericardial cavity"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Normally a film of serous fluid lets the parietal and visceral layers slide silently. When the layers are rough and poorly lubricated, they rub against each other with every beat, producing a scratching sound.",
+      "options": [
+        "Friction between the layers does not stop the heart. The heart keeps beating, and the rubbing makes a sound.",
+        "Correct. Roughened layers with less fluid rub together, which makes a scratchy sound.",
+        "Less fluid removes lubrication, which adds a sound rather than just sharpening the normal one.",
+        "Inflammation does not bring air into the pericardial cavity. The sound comes from rubbing tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-19",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which statements about the heart's position are correct? Select all that apply.",
+    "options": [
+      "It rests on the diaphragm",
+      "About two thirds of its mass lies left of the midline",
+      "It lies posterior to the esophagus",
+      "Its apex points to the right shoulder",
+      "It lies between the two lungs"
+    ],
+    "correct": [0, 1, 4],
+    "why": {
+      "correct": "The heart sits on the diaphragm, between the lungs, with about two thirds of its mass left of the midline. It lies in front of the esophagus, and its apex points down and to the left.",
+      "options": [
+        "Correct. The heart's lower surface rests on the diaphragm.",
+        "Correct. The heart is tilted so most of its mass is left of the midline.",
+        "Incorrect. The esophagus lies behind the heart, so the heart is anterior to it.",
+        "Incorrect. The base faces toward the right shoulder. The apex points down, forward and to the left.",
+        "Correct. The two lungs lie on either side of the mediastinum, which holds the heart."
+      ]
+    }
+  }
+]

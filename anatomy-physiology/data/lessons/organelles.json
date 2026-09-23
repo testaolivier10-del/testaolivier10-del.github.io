@@ -1,0 +1,79 @@
+{
+  "topic": "organelles",
+  "hook": "<p>Jonah, 9, has had a wet cough almost every day since he was a baby, along with ear and sinus infections that keep coming back. Antibiotics help, then the infections return. A sample of cells brushed from inside his nose shows the problem under the microscope: the tiny beating projections on those cells are frozen in place. With nothing sweeping the sticky layer out of his airways, trapped microbes stay put. The same defect can later leave men infertile, because a sperm's tail is built the same way.</p>",
+  "prereq": [
+    {
+      "q": "Which part of a cell lies inside the plasma membrane but outside the nucleus?",
+      "options": [
+        "The glycocalyx",
+        "The cytoplasm",
+        "The interstitial fluid"
+      ],
+      "correct": 1,
+      "why": "The cytoplasm is everything inside the plasma membrane except the nucleus. The glycocalyx is on the outer surface, and interstitial fluid is outside the cell.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "What does an enzyme do?",
+      "options": [
+        "It supplies the energy a reaction needs",
+        "It is used up as the reaction runs",
+        "It speeds up a reaction by lowering its activation energy"
+      ],
+      "correct": 2,
+      "why": "An enzyme is a biological catalyst. It lowers the activation energy and is not used up. It does not supply energy to the reaction.",
+      "review": "enzymes-energy"
+    },
+    {
+      "q": "If you double the surface area of a membrane and change nothing else, what happens to the rate of diffusion across it?",
+      "options": [
+        "It rises",
+        "It falls",
+        "It stays the same"
+      ],
+      "correct": 0,
+      "why": "More surface area gives molecules more places to cross, so the diffusion rate rises. Cells use this with microvilli.",
+      "review": "diffusion-osmosis"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-13",
+    "caption": "A generalized human cell with its main organelles: the rough and smooth endoplasmic reticulum, Golgi apparatus, mitochondria, lysosomes, peroxisomes, ribosomes and centrioles."
+  },
+  "chain": [
+    {
+      "cause": "A ribosome on the rough endoplasmic reticulum builds a protein meant for export.",
+      "effect": "The new protein enters the ER, where it is folded and given sugar chains."
+    },
+    {
+      "cause": "The folded protein is ready to leave the ER.",
+      "effect": "A patch of ER membrane buds off around it as a vesicle, which travels to the Golgi apparatus."
+    },
+    {
+      "cause": "The vesicle fuses with the receiving face of the Golgi.",
+      "effect": "The Golgi modifies the protein, reads its chemical tags and sorts it by destination."
+    },
+    {
+      "cause": "The protein is sorted for export.",
+      "effect": "It is packaged into a vesicle that moves along microtubules to the plasma membrane."
+    },
+    {
+      "cause": "The vesicle's bilayer fuses with the plasma membrane.",
+      "effect": "The protein is released outside the cell, and the vesicle's membrane becomes part of the plasma membrane."
+    }
+  ],
+  "misconception": {
+    "wrong": "Mitochondria make energy.",
+    "right": "Energy cannot be created. Mitochondria convert energy that is already stored in the chemical bonds of fuel molecules from food into a form the cell can spend: ATP. They do this by oxidizing those fuels, which uses oxygen. A cell with no fuel or no oxygen gets almost nothing from its mitochondria, however many it has."
+  },
+  "check": [
+    "anp-organelles-2",
+    "anp-organelles-5",
+    "anp-organelles-8",
+    "anp-organelles-10",
+    "anp-organelles-13",
+    "anp-organelles-15"
+  ],
+  "summary": "<p>The cytoplasm is the cytosol (its fluid) plus the organelles. Ribosomes build proteins: free ones for the cytosol, bound ones on the rough ER for membranes, lysosomes and export. The smooth ER makes lipids, breaks down some drugs and stores calcium. Vesicles carry cargo between membranes; the Golgi modifies, sorts and packages it. Together these form the endomembrane system. Lysosomes digest material in acid and recycle worn-out parts (autophagy). Peroxisomes oxidize long fatty acids and toxins and destroy the hydrogen peroxide this makes. Mitochondria convert fuel energy into ATP. The cytoskeleton (microfilaments, intermediate filaments, microtubules) shapes the cell and moves things within it. Cilia move fluid, a flagellum moves a sperm, and microvilli add surface area.</p>",
+  "connections": []
+}

@@ -1,0 +1,475 @@
+[
+  {
+    "id": "anp-tissue-membranes-repair-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which tissue membrane has no epithelium?",
+    "options": [
+      "Mucous membrane",
+      "Serous membrane",
+      "Synovial membrane",
+      "Cutaneous membrane"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The synovial membrane is a connective tissue membrane. It is areolar connective tissue with a lining layer of cells facing the joint space, but no epithelium.",
+      "options": [
+        "A mucous membrane is an epithelial membrane: an epithelium over the lamina propria.",
+        "A serous membrane is an epithelial membrane: simple squamous mesothelium over thin connective tissue.",
+        "Correct. The synovial membrane is the one connective tissue membrane.",
+        "The cutaneous membrane (skin) has an epithelium: the keratinized stratified squamous epidermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A biopsy comes from the lining of a tube that opens to the outside of the body. It shows simple columnar epithelium with goblet cells, resting on loose connective tissue full of capillaries and white blood cells. Which membrane is this?",
+    "options": [
+      "A serous membrane",
+      "The cutaneous membrane",
+      "A synovial membrane",
+      "A mucous membrane"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A lining of a tract open to the outside, with epithelium over a lamina propria of loose connective tissue, is a mucous membrane (mucosa). The goblet cells keep it coated with mucus.",
+      "options": [
+        "A serous membrane lines a closed cavity and has simple squamous epithelium, not columnar epithelium with goblet cells.",
+        "The cutaneous membrane is the skin, whose surface is keratinized stratified squamous epithelium.",
+        "A synovial membrane has no epithelium and lines the space inside a movable joint.",
+        "Correct. Epithelium plus lamina propria, lining a tube open to the outside, is a mucosa."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon takes a sample of the shiny membrane covering the stomach's outer surface, inside the abdominal cavity. The surface cells are thin and flat, in a single layer. Which membrane is this, and what does it release?",
+    "options": [
+      "A mucous membrane releasing mucus",
+      "A serous membrane releasing serous fluid",
+      "A synovial membrane releasing joint fluid",
+      "A mucous membrane releasing serous fluid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The outer covering of the stomach is the visceral peritoneum, a serous membrane. Its simple squamous mesothelium releases thin serous fluid into the closed peritoneal cavity, which lets organs slide with little friction.",
+      "options": [
+        "The stomach's inner lining is a mucous membrane, but this sample is from its outer surface, facing the closed abdominal cavity.",
+        "Correct. A single layer of flat cells lining a closed cavity is a serous membrane, and it releases serous fluid.",
+        "Synovial membranes line the spaces inside movable joints, not the abdominal cavity.",
+        "A mucous membrane lines a tract open to the outside and is not simple squamous. This membrane faces a closed cavity."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-4",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every membrane that is an epithelial membrane.",
+    "options": [
+      "Mucous membrane",
+      "Serous membrane",
+      "Cutaneous membrane",
+      "Synovial membrane",
+      "Plasma membrane"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "An epithelial membrane is an epithelium attached to connective tissue. The mucous, serous and cutaneous membranes all fit.",
+      "options": [
+        "Epithelial membrane: epithelium over the lamina propria.",
+        "Epithelial membrane: mesothelium over thin connective tissue.",
+        "Epithelial membrane: the epidermis over the dermis.",
+        "Not an epithelial membrane. The synovial membrane is made of connective tissue alone.",
+        "Not a tissue membrane at all. A plasma membrane is the lipid bilayer around a single cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "An hour after a bee sting, the skin around it is puffy. Which change directly causes the puffiness?",
+    "options": [
+      "Vasoconstriction of the small arteries nearby",
+      "Fibroblasts laying down collagen at the site",
+      "Leakier small vessels letting fluid out",
+      "Mast cells dividing rapidly at the site"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Histamine opens gaps between the endothelial cells of capillaries and the smallest veins. Water and proteins from plasma leak into the interstitial fluid, and the tissue swells.",
+      "options": [
+        "Inflammation causes vasodilation, not vasoconstriction. Narrower arteries would bring less blood and would not cause swelling.",
+        "Collagen is laid down days later during repair. It does not explain swelling within an hour.",
+        "Correct. Fluid leaking out of leaky vessels into the interstitial fluid is what makes the tissue swell.",
+        "Mast cells release histamine within minutes; they do not multiply to cause swelling. The swelling comes from fluid, not extra cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-6",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Before a small skin injury, a person takes a drug that blocks the receptor proteins histamine binds to. It does not change how much histamine mast cells release. Predict each variable at the injury site, compared with the same injury without the drug.",
+    "variables": [
+      {
+        "name": "Amount of histamine released by mast cells",
+        "answer": "none",
+        "why": "The drug acts on the receptor proteins of the target cells, not on the mast cells, so release is unchanged."
+      },
+      {
+        "name": "Blood flow into the area",
+        "answer": "down",
+        "why": "With its receptor proteins blocked, histamine causes less vasodilation of the small arteries, so less blood flows in and the area is less red and warm."
+      },
+      {
+        "name": "Swelling",
+        "answer": "down",
+        "why": "Histamine can no longer make capillaries and the smallest veins as leaky, so less fluid leaks into the interstitial fluid."
+      }
+    ]
+  },
+  {
+    "id": "anp-tissue-membranes-repair-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Put the steps of tissue repair after a deep cut in order.",
+    "options": [
+      "Blood vessels break and a blood clot stops the bleeding.",
+      "Mast cells and damaged cells release histamine and other chemical messengers.",
+      "Vasodilation and leaky capillaries make the area red, warm and swollen.",
+      "Macrophages engulf dead cells and debris by phagocytosis.",
+      "New capillaries grow in and fibroblasts lay down collagen.",
+      "Surviving cells regenerate the surface, and collagen deep in the gap becomes scar tissue."
+    ],
+    "why": {
+      "correct": "Bleeding and clotting come first. Chemical messengers then start inflammation, whose vessel changes bring in white blood cells. Macrophages clear the debris, which lets new capillaries and fibroblasts move in. The final outcome is regeneration where cells can divide and the framework survives, and fibrosis where it does not."
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Adams, 66, had part of his heart muscle die when an artery feeding it was blocked. Months later, an ultrasound shows that part of the heart wall is thin and does not move when the rest of the heart beats. Which best explains this?",
+    "options": [
+      "Scar tissue replaced the dead muscle",
+      "The dead muscle regenerated but is still immature",
+      "Inflammation is still going on in that part of the wall",
+      "Apoptosis removed the cells without any repair"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Cardiac muscle regenerates very little because its cells rarely divide. Fibroblasts filled the gap with collagen (fibrosis). Scar tissue holds the wall together but cannot contract, so that region stays still.",
+      "options": [
+        "Correct. Cardiac muscle cells rarely divide, so the heart repairs by fibrosis, and scar tissue does not contract.",
+        "Cardiac muscle regenerates very little. Months later, the region is scar, not immature muscle.",
+        "Inflammation after an injury like this settles within weeks. A thin, still wall months later reflects scar tissue.",
+        "Cells that die from lost blood supply die by necrosis, not apoptosis, and the gap they leave is filled by repair."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After surgery removes a large part of the liver, the liver regrows much of its lost mass. After the same amount of heart muscle dies, the heart forms a scar. What difference between the two tissues best explains this?",
+    "options": [
+      "Mature liver cells can divide again",
+      "Liver has a richer blood supply than the heart",
+      "Heart muscle has no fibroblasts to lay down collagen",
+      "Liver damage sets off no inflammation at all"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Regeneration needs cells of the lost type that can divide. Mature liver cells can re-enter the cell cycle and multiply; cardiac muscle cells rarely do, so the heart fills the gap with scar tissue.",
+      "options": [
+        "Correct. Whether the working cells can divide is the main factor that decides regeneration or fibrosis.",
+        "The heart has a very rich blood supply too. Blood supply alone does not decide whether a tissue regenerates.",
+        "The heart does have fibroblasts; they are what make the scar. Having fibroblasts favors fibrosis, not regeneration.",
+        "Liver injury does cause inflammation. Inflammation starts repair in both organs; the outcome differs because of cell division."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a tissue sample, a patch of cells has swollen, their plasma membranes have ruptured, and white blood cells crowd the area around them. How did these cells most likely die?",
+    "options": [
+      "Apoptosis",
+      "Mitosis",
+      "Regeneration",
+      "Necrosis"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Swelling, membrane rupture, many neighboring cells dying together, and inflammation around them are the marks of necrosis, cell death caused by injury.",
+      "options": [
+        "In apoptosis the cell shrinks and breaks into sealed pieces, and no inflammation follows.",
+        "Mitosis is cell division, not cell death.",
+        "Regeneration replaces lost cells; it is not a way cells die.",
+        "Correct. Swollen, ruptured cells with inflammation around them point to necrosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does apoptosis not set off inflammation, when necrosis does?",
+    "options": [
+      "Apoptotic cells release extra histamine",
+      "It occurs in tissues without blood vessels",
+      "Its contents stay sealed until engulfed",
+      "Necrotic cells shrink and are engulfed whole"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In apoptosis the cell breaks into small membrane-wrapped pieces, and macrophages engulf them before anything spills. In necrosis the membrane ruptures and the spilled contents act as danger signals that start inflammation.",
+      "options": [
+        "Histamine comes mainly from mast cells, and extra histamine would promote inflammation, not prevent it.",
+        "Apoptosis happens throughout the body, including in tissues with a rich blood supply, such as the gut lining.",
+        "Correct. The apoptotic cell breaks into membrane-wrapped pieces that macrophages engulf before anything spills, so there are no danger signals to start inflammation.",
+        "This describes apoptosis, not necrosis. Necrotic cells swell and burst."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-12",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "This explanation of the signs of inflammation contains one wrong step. Find it.",
+    "options": [
+      "Injury makes mast cells release histamine by exocytosis.",
+      "Histamine causes vasoconstriction of the small arteries feeding the area.",
+      "Histamine opens gaps between endothelial cells of capillaries and the smallest veins.",
+      "Water and proteins leak into the interstitial fluid, and the tissue swells.",
+      "Chemical messengers and pressure from swelling stimulate pain-sensing nerve endings."
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Histamine causes vasodilation, not vasoconstriction. Wider small arteries bring in more warm blood, which is why an inflamed area is red and warm.",
+      "options": [
+        "This step is correct. Mast cells hold histamine in granules and release it when tissue is injured.",
+        "This is the wrong step. Vasoconstriction would reduce blood flow and make the area pale and cool, the opposite of what you see.",
+        "This step is correct. That leakiness is what lets fluid and white blood cells out of the vessels.",
+        "This step is correct. Fluid leaking into the interstitial fluid causes the swelling.",
+        "This step is correct. That is where the pain of inflammation comes from."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-13",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Fill the gap. Mast cells release histamine → ______ → more warm blood flows into the area → the skin looks red and feels warm.",
+    "options": [
+      "Nearby small arteries dilate",
+      "Fibroblasts lay down collagen",
+      "The capillaries clot and seal shut",
+      "Macrophages engulf all the debris"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Histamine causes vasodilation of the small arteries that feed the injured area. Wider vessels carry more warm blood in, causing redness and heat.",
+      "options": [
+        "Correct. Vasodilation is the step between histamine release and increased blood flow.",
+        "Collagen deposition is a later repair step and does not change blood flow.",
+        "Clotted capillaries would reduce blood flow, not increase it.",
+        "Macrophages clear debris, but that does not explain the increased blood flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A child gets a shallow scrape on one knee and a deep, gaping cut on the other. Which injury is more likely to heal without a visible scar, and what makes the difference?",
+    "options": [
+      "The deep cut: it forms a larger clot",
+      "The scrape: its framework survives",
+      "Both heal alike: skin regenerates well",
+      "Neither: skin injuries all heal by fibrosis"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Epidermis regenerates well, but it needs an intact framework to rebuild the right shape. In a shallow scrape the deeper connective tissue survives, so stem cells regrow normal skin. In a deep cut the framework is destroyed and collagen fills the gap as scar tissue.",
+      "options": [
+        "A bigger clot does not make regeneration more likely. The deep cut destroys the framework, so it is the one that scars.",
+        "Correct. Surviving framework plus dividing stem cells in the epidermis allows regeneration without a scar.",
+        "Both involve skin, but depth decides the outcome. The deep cut loses its framework and scars.",
+        "Shallow injuries of the epidermis regenerate without scarring. Fibrosis fills only deeper gaps."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is the parenchyma of an organ?",
+    "options": [
+      "Its supporting connective tissue framework",
+      "Its outer serous covering",
+      "Its working cells, such as liver cells",
+      "The scar tissue that forms after injury"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The parenchyma is the organ's working cells, the ones that do its job. Regeneration replaces parenchyma with parenchyma; fibrosis replaces it with connective tissue.",
+      "options": [
+        "The connective tissue framework supports the parenchyma and carries its blood vessels, but it is not the parenchyma.",
+        "A serous covering is a membrane on the outside of some organs, not their working cells.",
+        "Correct. The parenchyma is the functional cells of an organ.",
+        "Scar tissue replaces lost parenchyma; it is not parenchyma."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient's knee is swollen. A needle drawn into the space inside the knee returns a large volume of thick, slippery fluid. Which membrane made this fluid, and what is it made of?",
+    "options": [
+      "A serous membrane made of simple squamous epithelium",
+      "A mucous membrane made of epithelium and lamina propria",
+      "A synovial membrane made of connective tissue",
+      "The cutaneous membrane made of epidermis and dermis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The space inside a movable joint such as the knee is lined by a synovial membrane. It is a connective tissue membrane, and its lining cells release the thick, slippery joint fluid.",
+      "options": [
+        "Serous membranes line the closed body cavities, such as the pleural and peritoneal cavities, not joint spaces.",
+        "Mucous membranes line tracts open to the outside of the body. The space inside the knee is sealed.",
+        "Correct. A synovial membrane, made of connective tissue, lines the joint and releases its fluid.",
+        "The skin covers the knee from outside. It does not line the joint space or release joint fluid."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which feature sets the cutaneous membrane apart from the other two epithelial membranes?",
+    "options": [
+      "Its surface is dry and keratinized",
+      "It rests on a layer of connective tissue",
+      "It covers or lines a surface of your body",
+      "Its epithelium has more than one layer of cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cutaneous membrane is the only dry membrane. Its outer cells are dead and filled with keratin, and it releases no mucus or serous fluid onto its surface.",
+      "options": [
+        "Correct. A dry, keratinized surface is what sets the skin apart.",
+        "All three epithelial membranes rest on connective tissue, so this does not set the skin apart.",
+        "Every tissue membrane covers or lines something, so this does not distinguish the skin.",
+        "The mucosa of the mouth is also stratified, so having several cell layers is not unique to the skin."
+      ]
+    }
+  },
+  {
+    "id": "anp-tissue-membranes-repair-18",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A person's liver is injured again and again over many years by heavy drinking. Each injury is followed by repair. Predict each variable after years of this, compared with a healthy liver.",
+    "variables": [
+      {
+        "name": "Amount of collagen in the liver",
+        "answer": "up",
+        "why": "With each round of injury, fibroblasts lay down more collagen, and fibrosis builds up faster than it is removed."
+      },
+      {
+        "name": "Number of working liver cells (parenchyma)",
+        "answer": "down",
+        "why": "Scar tissue gradually replaces working cells, and the scar distorts the framework that regeneration needs."
+      },
+      {
+        "name": "The liver's ability to do its jobs",
+        "answer": "down",
+        "why": "Scar tissue holds the organ together but does not do the work of the lost liver cells, so function falls as the scar grows."
+      }
+    ]
+  }
+]

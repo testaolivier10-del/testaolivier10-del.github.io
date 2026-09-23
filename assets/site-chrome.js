@@ -215,11 +215,17 @@
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   }
 
+  // The three courses' own keys; anything else is treated as NREMT, the
+  // original course, exactly as before A&P existed.
+  function courseKeyOf(subject){
+    return subject === 'ochem' || subject === 'anp' ? subject : 'nremt';
+  }
+
   function render(cfg){
     var mount = document.getElementById('site-header');
     if(!mount) return;
     // The course tint (see --ctint in theme.css) keys off this.
-    document.body.setAttribute('data-course', cfg.subject === 'ochem' ? 'ochem' : 'nremt');
+    document.body.setAttribute('data-course', courseKeyOf(cfg.subject));
 
     mount.innerHTML =
       '<div class="site-header__inner">' +
@@ -388,7 +394,7 @@
     // namespace sync and pick its rank names — so the tutor keys off that
     // rather than guessing from a URL.
     window.LEVLPREP_COURSE = {
-      key: cfg.subject === 'ochem' ? 'ochem' : 'nremt',
+      key: courseKeyOf(cfg.subject),
       name: cfg.course || 'LevlPrep'
     };
     var el = document.createElement('script');

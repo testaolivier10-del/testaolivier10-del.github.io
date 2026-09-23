@@ -32,6 +32,7 @@ const PROGRESS = {
   nremt_option_order: '{"0":[1,0]}',
   ochem_progress: '{"pka":0.7}',
   ochem_mastery_v1: '{"sn2":{"s":0.8}}',
+  anp_progress_v1: '{"q":{"anp-cardiac-cycle-1":{"n":1}}}',
   levl_sound: 'on',
   levlprep_visits: '{"firstDay":"2026-01-02"}',
   levlprep_reported_v1: '{"nremt:5":true}',

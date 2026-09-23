@@ -1,0 +1,37 @@
+{
+  "topic": "anatomical-position",
+  "hook": "<p>A paramedic radios the hospital: \"Deep cut on the left forearm, just above the wrist.\" The patient is lying on a stretcher with his arm across his chest. Is \"above\" toward the elbow or toward the fingers? The emergency team needs one answer. Anatomical directional terms give it, because they are all defined from one fixed reference posture.</p>",
+  "prereq": [
+    {
+      "q": "In the term anatomy (ana- = apart, -tomy = cutting), what kind of word part is -tomy?",
+      "options": ["A prefix", "A suffix", "A combining vowel"],
+      "correct": 1,
+      "why": "-tomy sits at the end of the term, so it is a suffix. A prefix sits at the front, as ana- does here.",
+      "review": "word-parts"
+    },
+    {
+      "q": "Which part of a medical term usually names the body part?",
+      "options": ["The suffix", "The prefix", "The word root"],
+      "correct": 2,
+      "why": "The word root carries the core meaning, usually a body part, such as cardi (heart).",
+      "review": "word-parts"
+    }
+  ],
+  "anatomy": { "figure": "os-1-13", "caption": "The anatomical position, with cranial and caudal, anterior and posterior, superior and inferior, medial and lateral, and proximal and distal marked on the body." },
+  "chain": [
+    { "cause": "Everyone agrees to describe the body in one reference posture, the anatomical position.", "effect": "Each directional term gets one fixed meaning." },
+    { "cause": "Each term has a fixed meaning tied to that posture.", "effect": "A term describes where one structure lies relative to another, no matter how the person is actually lying or moving." },
+    { "cause": "A location is reported with those fixed terms, such as \"lateral left forearm, proximal to the wrist\".", "effect": "Every reader finds the same spot on the patient." },
+    { "cause": "Everyone finds the same spot.", "effect": "Wrong-side and wrong-site mistakes become less likely." }
+  ],
+  "misconception": {
+    "wrong": "When a patient lies down, the directional terms change: the front of a supine patient becomes superior.",
+    "right": "Directional terms always describe the body as if it were standing in the anatomical position. A supine patient's chest is still anterior, and their feet are still inferior to their knees, whichever way they face. Supine and prone only describe how the body is lying."
+  },
+  "check": ["anp-anatomical-position-1", "anp-anatomical-position-4", "anp-anatomical-position-6", "anp-anatomical-position-9", "anp-anatomical-position-11", "anp-anatomical-position-13", "anp-anatomical-position-15"],
+  "summary": "<p>The anatomical position is standing upright, facing forward, feet flat and forward, arms at the sides with palms forward. Every directional term describes the body as if it were in this posture, and right and left are the patient's own. Supine is face up and prone is face down. The paired terms compare two structures: superior and inferior (cranial and caudal), anterior and posterior (ventral and dorsal), medial and lateral (with intermediate between), proximal and distal on the limbs, superficial and deep, and ipsilateral and contralateral. In the anatomical position the thumb is lateral.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch5", "label": "NREMT study notes: Medical Terminology" },
+    { "href": "/nremt/body-map.html", "label": "NREMT: interactive patient body map" }
+  ]
+}

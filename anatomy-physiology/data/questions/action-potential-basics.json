@@ -1,0 +1,518 @@
+[
+  {
+    "id": "anp-action-potential-basics-1",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which of these are excitable cells? Select all that apply.",
+    "options": [
+      "A neuron",
+      "A skeletal muscle fiber",
+      "A heart muscle cell",
+      "A red blood cell",
+      "A fibroblast in a tendon"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Excitable cells are cells whose membranes can produce action potentials. Neurons and muscle fibers have the voltage-gated sodium and potassium channels this requires.",
+      "options": [
+        "Correct. Neurons produce action potentials along their axons.",
+        "Correct. A skeletal muscle fiber's action potential starts its contraction.",
+        "Correct. Heart muscle cells produce action potentials, a longer kind covered in the heart chapter.",
+        "A red blood cell has a resting potential but lacks the voltage-gated channels needed for an action potential.",
+        "A fibroblast has a resting potential too, but it is not excitable."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "A light touch depolarizes a nerve ending by 3 mV. A firmer touch at the same spot depolarizes it by 9 mV. Neither reaches threshold. What kind of change is this?",
+    "options": [
+      "Two action potentials of different sizes",
+      "Graded potentials",
+      "A refractory period",
+      "Hyperpolarization"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A graded potential is a small, local change whose size depends on stimulus strength. A stronger touch opens more mechanically gated channels, so the depolarization is larger.",
+      "options": [
+        "Action potentials are all-or-none: they do not come in different sizes, and they start only at threshold, which neither touch reached.",
+        "Correct. Size tracking stimulus strength is the defining feature of a graded potential.",
+        "A refractory period is a time after an action potential when the membrane cannot fire again. No action potential happened here.",
+        "Hyperpolarization makes the membrane more negative. These changes made it less negative."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A stimulus depolarizes a neuron's membrane from −70 mV to −60 mV. Threshold is −55 mV. What happens next?",
+    "options": [
+      "A small action potential that peaks below +30 mV",
+      "A full action potential, delayed slightly",
+      "The depolarization fades and the membrane returns to rest",
+      "The membrane stays at −60 mV until another stimulus arrives"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Below threshold, the few sodium channels that open cannot outpace potassium leaving, so the self-reinforcing cycle never starts. The graded potential fades and the membrane returns to about −70 mV.",
+      "options": [
+        "There is no small action potential. Action potentials are all-or-none.",
+        "No action potential occurs at all if threshold is not reached, delayed or otherwise.",
+        "Correct. A subthreshold depolarization is a graded potential that dies away.",
+        "Graded potentials are short-lived. Potassium leak pulls the membrane back to rest once the stimulus ends."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "a stronger stimulus makes a bigger action potential",
+    "q": "A sensory nerve fiber fires action potentials that peak at +30 mV when you touch it lightly. You press twice as hard. What changes in the fiber's action potentials?",
+    "options": [
+      "Each one peaks at about +60 mV",
+      "Each one lasts twice as long",
+      "They occur more often",
+      "They travel twice as fast"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Action potentials are all-or-none, so their size does not change. A stronger stimulus makes a larger graded potential at the nerve ending, which triggers action potentials more often. Frequency carries the strength.",
+      "options": [
+        "The peak is set by the sodium and potassium channels, not by the stimulus. Every action potential in this fiber reaches about the same peak.",
+        "Duration is also set by the channels' timing, so each action potential lasts about the same time.",
+        "Correct. Stimulus strength is coded as how many action potentials arrive per second.",
+        "Speed depends on the axon itself, such as its diameter, not on how hard the stimulus was."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Jamal gets a lidocaine injection before a filling. Lidocaine blocks voltage-gated sodium channels in the nerve fibers of his lip and tooth. Why can he no longer feel the drill?",
+    "options": [
+      "His nerve fibers cannot produce action potentials",
+      "His nerve fibers' resting potential drops to −90 mV",
+      "His nerve endings no longer produce graded potentials",
+      "His nerve fibers become permanently refractory"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The rapid depolarization of an action potential depends on voltage-gated sodium channels. With them blocked, a depolarization can reach threshold values but no action potential follows, so no message travels to his brain.",
+      "options": [
+        "Correct. No sodium channels, no action potential, so nothing carries the message along the fiber.",
+        "The resting potential is set by leak channels, which lidocaine does not block. It stays near −70 mV.",
+        "Graded potentials at the nerve endings come from other channels, such as mechanically gated ones, and still occur. They just cannot be turned into action potentials.",
+        "Refractoriness follows an action potential and lasts milliseconds. Here, the drug prevents action potentials altogether, and the effect wears off as the drug is cleared."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-6",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication",
+      "gradients"
+    ],
+    "q": "Level 2. A toxin blocks the voltage-gated sodium channels in a nerve fiber. A stimulus is applied to the fiber's nerve ending. Predict each variable compared with before the toxin.",
+    "variables": [
+      {
+        "name": "Resting membrane potential",
+        "answer": "none",
+        "why": "Rest is set by leak channels and the ion gradients, which the toxin does not touch."
+      },
+      {
+        "name": "Graded potential at the nerve ending",
+        "answer": "none",
+        "why": "The stimulus still opens its own channels at the ending, so the graded potential is the same size."
+      },
+      {
+        "name": "Number of action potentials along the fiber",
+        "answer": "down",
+        "why": "Without voltage-gated sodium channels, reaching threshold cannot start the self-reinforcing sodium entry, so no action potentials occur."
+      },
+      {
+        "name": "Peak voltage reached along the fiber",
+        "answer": "down",
+        "why": "With no sodium rush, the membrane never swings to +30 mV; it only shows fading graded changes."
+      }
+    ],
+    "why": {
+      "correct": "Blocking voltage-gated sodium channels leaves rest and graded potentials intact but abolishes action potentials, so nothing travels along the fiber."
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the events of an action potential in order, starting from rest.",
+    "options": [
+      "A graded depolarization reaches threshold",
+      "Voltage-gated sodium channels open and sodium rushes in",
+      "The membrane reaches about +30 mV",
+      "Sodium channels close and potassium flows out through voltage-gated channels",
+      "The membrane dips briefly below rest",
+      "Potassium channels close and the membrane returns to rest"
+    ],
+    "why": {
+      "correct": "Threshold opens the sodium channels; sodium entry drives the rise to about +30 mV; sodium channels then close as slow potassium channels let potassium out (repolarization); the slow-closing potassium channels cause a brief hyperpolarization before rest returns."
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-8",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication",
+      "gradients"
+    ],
+    "misconception": "the pump repolarizes the membrane after each action potential",
+    "q": "One step in this account of an action potential is wrong. Find it.",
+    "options": [
+      "The membrane is depolarized to threshold",
+      "Voltage-gated sodium channels open, and sodium enters",
+      "The membrane reaches about +30 mV",
+      "The sodium–potassium pump then repolarizes the membrane",
+      "Slow-closing potassium channels cause a brief hyperpolarization"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Repolarization comes from potassium flowing out through voltage-gated potassium channels, after the sodium channels close on their own. The pump is far too slow to do this, and so few ions move in one action potential that the pump need not act at once.",
+      "options": [
+        "This is right: an action potential starts when the membrane reaches threshold.",
+        "This is right: sodium entry drives the rapid depolarization.",
+        "This is right: the peak is about +30 mV in a typical neuron.",
+        "This is the error. Potassium leaving through voltage-gated channels repolarizes the membrane; the pump only keeps the gradients steady over time.",
+        "This is right: extra potassium leaves while those channels close, so the membrane dips below rest."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill in the missing step. Membrane reaches threshold → ______ → membrane rises rapidly to about +30 mV.",
+    "options": [
+      "Voltage-gated potassium channels open and potassium leaves",
+      "Voltage-gated sodium channels open and sodium rushes in",
+      "The pump moves 3 Na+ out and 2 K+ in",
+      "Leak channels close"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At threshold, enough voltage-gated sodium channels open that sodium entry outpaces potassium exit. The entering positive charge drives the rapid rise.",
+      "options": [
+        "Potassium leaving would make the inside more negative. That drives repolarization, which comes after the peak.",
+        "Correct. Sodium rushing in drives the rapid rise toward sodium's equilibrium potential.",
+        "The pump moves more positive charge out than in, which would make the inside slightly more negative, and it is far too slow to shape an action potential.",
+        "Leak channels stay open throughout. The rise comes from voltage-gated sodium channels opening."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-10",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "gradients"
+    ],
+    "figure": "os-12-24",
+    "q": "On this graph, the trace climbs steeply from about −55 mV to about +30 mV. What ion movement produces that steep climb?",
+    "options": [
+      "Potassium flowing out of the cell",
+      "Chloride flowing into the cell",
+      "Sodium flowing into the cell",
+      "Sodium being pumped out of the cell"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The steep rise is sodium rushing in through voltage-gated sodium channels, down its electrochemical gradient, pulling the membrane toward sodium's equilibrium potential.",
+      "options": [
+        "Potassium leaving makes the inside more negative. It produces the steep fall after the peak.",
+        "Chloride entering brings negative charge in, which would hyperpolarize the membrane.",
+        "Correct. Sodium entry drives the rising part of the action potential.",
+        "Pumping sodium out would make the inside more negative, and the pump is too slow to produce a change within a millisecond."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-11",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-12-25",
+    "q": "This graph shows several depolarizing bumps of different sizes, and several hyperpolarizing dips. Only the largest depolarizing bump triggers an action potential. What does the graph show about graded potentials?",
+    "options": [
+      "Only those reaching threshold trigger an action potential",
+      "They are all-or-none, just like action potentials",
+      "The hyperpolarizing dips bring the membrane closer to threshold",
+      "Longer stimuli trigger action potentials whatever their size"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The bumps grow with stimulus size, which is what graded means. An action potential starts only when a depolarization reaches the threshold line.",
+      "options": [
+        "Correct. The bumps vary in size, which is what graded means, and threshold is the gate to an action potential.",
+        "The bumps come in several sizes, so they are not all-or-none. Only action potentials are.",
+        "Threshold lies above rest, so dips below rest move the membrane farther from it.",
+        "The wider bump on the graph lasts longer but stays below threshold. Duration alone does not start an action potential; reaching threshold does."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A stimulus hyperpolarizes a neuron's dendrite from −70 mV to −76 mV. A second, depolarizing stimulus of the usual size then arrives. Compared with usual, how likely is the neuron to reach threshold?",
+    "options": [
+      "More likely",
+      "Less likely",
+      "Equally likely",
+      "Certain, whatever the size of the second stimulus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Graded potentials add together. The hyperpolarization moved the membrane farther from threshold, so the same depolarization now falls short more often. Hyperpolarizing graded potentials make firing less likely.",
+      "options": [
+        "Starting from a more negative value puts threshold farther away, not closer.",
+        "Correct. The membrane needs a bigger depolarization to reach threshold from −76 mV.",
+        "Graded potentials combine, so the earlier hyperpolarization changes the outcome.",
+        "Nothing makes firing certain regardless of stimulus size. Here the odds went down."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "An action potential starts in the middle of an axon in a lab dish. Charge spreads in both directions from the firing patch. Why does an action potential in a living neuron, which starts near the cell body, travel only toward the axon terminals?",
+    "options": [
+      "The patch just behind it has just fired and is refractory",
+      "Axons have sodium channels only on the side facing the terminals",
+      "Positive charge spreads in only one direction inside an axon",
+      "The axon terminals attract positive ions"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Charge spreads both ways, but the patch behind has just fired: its sodium channels have closed on their own and cannot reopen yet. Only the patch ahead can reach threshold and fire.",
+      "options": [
+        "Correct. The refractory period of the patch behind makes propagation one-way.",
+        "Voltage-gated sodium channels are spread along the axon. Their state, not their position, prevents backward firing.",
+        "Charge spreads both ways from the firing patch. The lab-dish example shows this: started in the middle, the action potential travels in both directions.",
+        "The terminals do not pull ions toward themselves. Propagation is driven by each patch firing in turn."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A strong stimulus is applied to a neuron half a millisecond after an action potential has started. What happens?",
+    "options": [
+      "A second action potential starts at once",
+      "The first action potential grows larger",
+      "No second action potential starts",
+      "The membrane hyperpolarizes immediately"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Half a millisecond in, the membrane is in its refractory period. The sodium channels are either already open or have closed on their own and cannot reopen until the membrane repolarizes, so a new action potential cannot start.",
+      "options": [
+        "The sodium channels are not available to start a new action potential during the refractory period.",
+        "Action potentials are all-or-none; an extra stimulus does not add to one in progress.",
+        "Correct. The refractory period blocks a second action potential this soon.",
+        "The stimulus is depolarizing, and the membrane is in the middle of an action potential. Nothing here causes an immediate hyperpolarization."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "gradients"
+    ],
+    "q": "A drug keeps the voltage-gated potassium channels of a neuron from opening. Sodium channels work normally. How does the neuron's action potential change?",
+    "options": [
+      "It never reaches threshold",
+      "Its peak rises far above +60 mV",
+      "It shows a deeper dip below rest",
+      "It lasts longer"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Sodium channels still open and close on their own, so the rise is normal. But the fast exit of potassium that drives repolarization is gone; only the slower leak channels bring the membrane back, so repolarization takes longer.",
+      "options": [
+        "Threshold and the rise depend on sodium channels, which work normally.",
+        "Sodium entry cannot drive the membrane past sodium's equilibrium potential, about +60 mV.",
+        "The dip below rest is caused by voltage-gated potassium channels that are slow to close. With them blocked, the dip is smaller, not deeper.",
+        "Correct. Without voltage-gated potassium channels, repolarization relies on leak channels and is slow."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "An action potential travels one meter from your spinal cord to your foot. How does its size at the foot compare with its size near the spinal cord?",
+    "options": [
+      "Much smaller, like a graded potential",
+      "Slightly smaller",
+      "Larger",
+      "About the same"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each patch of axon regenerates a fresh, full-sized action potential as the one before it depolarizes it to threshold. Propagation is rebuilding at every patch, not passive spreading, so the size does not shrink with distance.",
+      "options": [
+        "Graded potentials fade within a millimeter or two, but action potentials are rebuilt at every patch.",
+        "Rebuilding the action potential at each patch restores the full size, so there is no gradual loss.",
+        "The peak is set by the same channels at every patch, so it does not grow either.",
+        "Correct. An action potential arrives as large as it started."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Two axons have no insulating wrapping. One is 10 times wider than the other. Which carries action potentials faster?",
+    "options": [
+      "The wider axon",
+      "The narrower axon",
+      "Both at the same speed",
+      "Neither; axons without wrapping cannot propagate action potentials"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Charge spreads farther inside a wider axon before leaking out, so it brings patches farther ahead to threshold sooner. Wider axons conduct faster.",
+      "options": [
+        "Correct. Greater diameter means faster propagation.",
+        "A narrow axon resists the spread of charge more, so each patch reaches threshold later. It is slower.",
+        "Diameter affects speed, so the two differ.",
+        "Unwrapped axons do propagate action potentials, just more slowly than wrapped ones of similar size."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "gradients"
+    ],
+    "q": "Mr. Okafor, 62, has a blood potassium of 8.0 mmol/L. His muscle cells have been held partly depolarized for hours, yet his muscles are weak rather than twitchy. What best explains the weakness?",
+    "options": [
+      "The depolarization has made his resting potential more negative",
+      "Many sodium channels are stuck closed",
+      "His potassium channels cannot open",
+      "The extra potassium blocks his sodium–potassium pumps"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Voltage-gated sodium channels close on their own after opening and cannot reopen until the membrane repolarizes. A membrane held depolarized for a long time keeps many of them in that closed state, so fewer are available to produce an action potential, and the cells respond weakly or not at all.",
+      "options": [
+        "High blood potassium makes the resting potential less negative, not more.",
+        "Correct. Sustained depolarization leaves too few sodium channels ready to open.",
+        "High outside potassium does not stop potassium channels from opening. The problem lies with the sodium channels.",
+        "Higher potassium outside does not block the pump. The weakness comes from the sodium channels, not the pump."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-basics-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which feature belongs to a graded potential but not to an action potential?",
+    "options": [
+      "It can hyperpolarize the membrane",
+      "It depends on voltage-gated sodium channels",
+      "It travels long distances without shrinking",
+      "It has a refractory period"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Graded potentials can go in either direction, depending on which channels the stimulus opens. An action potential is always a depolarization followed by repolarization.",
+      "options": [
+        "Correct. Only graded potentials can hyperpolarize the membrane.",
+        "Action potentials depend on voltage-gated sodium channels. Graded potentials come from whatever channels the stimulus opens.",
+        "This describes an action potential. Graded potentials fade within a millimeter or two.",
+        "The refractory period follows an action potential. Graded potentials have none and can add together."
+      ]
+    }
+  }
+]

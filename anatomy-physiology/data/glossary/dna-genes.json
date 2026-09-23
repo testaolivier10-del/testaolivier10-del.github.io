@@ -1,0 +1,27 @@
+{
+  "nucleus": {
+    "def": "The organelle that holds a cell's DNA. A double-membrane nuclear envelope with nuclear pores surrounds it, and a dense nucleolus inside it assembles ribosome parts.",
+    "roots": [["nucle-", "kernel"], ["-olus", "little (in nucleolus)"]],
+    "say": "NOO-klee-us"
+  },
+  "dna": {
+    "def": "Deoxyribonucleic acid: two antiparallel strands of nucleotides twisted into a double helix, held together by base pairing (A with T, G with C). Its base sequence stores inherited information.",
+    "roots": [["de-", "removed"], ["oxy-", "oxygen"], ["helix", "spiral"]],
+    "say": "dee-OK-see-ry-boh-noo-KLAY-ik"
+  },
+  "chromatin-chromosome": {
+    "def": "Chromatin is DNA wound around histone proteins into nucleosomes and folded further. A chromosome is one DNA molecule with its proteins; once copied, it has two identical sister chromatids joined at the centromere.",
+    "roots": [["chromo-", "color"], ["-some", "body"], ["centro-", "center"], ["-mere", "part"], ["auto-", "self"]],
+    "say": "KROH-muh-tin; KROH-muh-sohm"
+  },
+  "gene": {
+    "def": "A segment of DNA whose base sequence codes for a working product, usually a protein. The genome is all the DNA in one set of chromosomes: about 3.1 billion base pairs and roughly 20,000 protein-coding genes in humans.",
+    "roots": [["gen-", "to produce"], ["-ome", "the whole set"]],
+    "say": "JEEN; JEE-nohm"
+  },
+  "dna-replication": {
+    "def": "The copying of DNA before a cell divides. Helicase separates the strands, and DNA polymerase builds a new complementary strand on each old one, giving two identical molecules that each keep one old strand.",
+    "roots": [["helic-", "spiral"], ["poly-", "many"], ["-ase", "enzyme"]],
+    "say": "puh-LIM-er-ayz"
+  }
+}

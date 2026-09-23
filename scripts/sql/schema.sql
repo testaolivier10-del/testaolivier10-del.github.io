@@ -77,7 +77,7 @@ begin
   -- Validated here rather than trusted from the browser. This function is
   -- reachable by anyone who can open the site, so the only things that stop it
   -- becoming a free text-storage service are these bounds.
-  if p_course not in ('nremt', 'ochem') then
+  if p_course not in ('nremt', 'ochem', 'anp') then
     raise exception 'unknown course';
   end if;
   if p_reason not in ('wrong-answer', 'unclear', 'typo', 'outdated', 'other') then

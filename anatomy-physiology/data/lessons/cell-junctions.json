@@ -1,0 +1,64 @@
+{
+  "topic": "cell-junctions",
+  "hook": "<p>Ms. Haddad, 52, has painful sores in her mouth and soft blisters on her chest that tear open when her shirt rubs them. A skin biopsy shows the cause: her skin cells have come apart from one another, leaving fluid-filled splits. Her immune system is making proteins that attack the adhesion proteins in her desmosomes, the rivets that hold skin cells together. Without them, ordinary friction is enough to pull her skin apart.</p>",
+  "prereq": [
+    {
+      "q": "Which kind of membrane protein spans the whole phospholipid bilayer?",
+      "options": [
+        "A peripheral protein",
+        "An integral protein",
+        "A glycocalyx sugar chain"
+      ],
+      "correct": 1,
+      "why": "Integral proteins are embedded in the bilayer, and most span it completely. Junction proteins that reach across to a neighboring cell are integral proteins.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "Which fiber of the cytoskeleton is rope-like and resists pulling forces?",
+      "options": [
+        "Microtubules",
+        "Microfilaments",
+        "Intermediate filaments"
+      ],
+      "correct": 2,
+      "why": "Intermediate filaments are the tough, rope-like fibers that resist tension. Desmosomes anchor them.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-4-5",
+    "caption": "Types of cell junction: a tight junction sealing two membranes together, a gap junction with tunnels between the cells, and anchoring junctions, including the desmosome."
+  },
+  "chain": [
+    {
+      "cause": "Friction pulls on one skin cell.",
+      "effect": "The pull is passed to the desmosomes in that cell's plasma membrane."
+    },
+    {
+      "cause": "Cadherins in each desmosome grip the cadherins of the neighboring cell, and plaques anchor intermediate filaments on both sides.",
+      "effect": "The pull is passed through the desmosome into the intermediate filaments of the neighboring cell."
+    },
+    {
+      "cause": "Every cell's intermediate filaments are linked to its neighbors' filaments through desmosomes.",
+      "effect": "The force spreads across a whole net of cells instead of landing on one."
+    },
+    {
+      "cause": "No single cell takes the full force.",
+      "effect": "The sheet of cells resists tearing. If the cadherins are attacked, the pull stays on single cells, and they separate into blisters."
+    }
+  ],
+  "misconception": {
+    "wrong": "Tight junctions are the strongest junctions, the ones that hold cells together.",
+    "right": "Tight junctions seal; they do not provide much strength. Their job is to close the space between cells, so substances must pass through the cells rather than between them. The junctions that hold cells together against pulling are desmosomes, which anchor each cell's intermediate filaments to its neighbors'. A sheet of cells can be well sealed and still tear if its desmosomes fail, as blistering diseases show."
+  },
+  "check": [
+    "anp-cell-junctions-2",
+    "anp-cell-junctions-4",
+    "anp-cell-junctions-6",
+    "anp-cell-junctions-9",
+    "anp-cell-junctions-12",
+    "anp-cell-junctions-14"
+  ],
+  "summary": "<p>A cell junction is a spot where membrane proteins connect a cell to its neighbor. Tight junctions form a continuous seal of claudin and occludin strands, so substances must cross a sheet of cells through the cells, not between them; they also fence membrane proteins onto one face. Desmosomes are button-like anchoring junctions: cadherins grip across the gap and plaques anchor intermediate filaments, so pulling forces spread across many cells. Gap junctions are clusters of connexin tunnels that let water, ions and small molecules pass straight from one cell's cytoplasm to the next, which lets electrical current spread and coordinates cells such as those of the heart.</p>",
+  "connections": []
+}

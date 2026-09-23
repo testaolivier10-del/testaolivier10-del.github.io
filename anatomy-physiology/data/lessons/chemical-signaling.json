@@ -1,0 +1,58 @@
+{
+  "topic": "chemical-signaling",
+  "hook": "<p>Priya, 16, uses a reliever inhaler when her airways tighten and she starts to wheeze. It works within minutes. During a bad month she used it many times a day, and each puff seemed to help less. Her doctor added a steroid tablet, which took several hours to make a difference. Two drugs, two speeds, and a response that faded with overuse: all three come down to the proteins these messengers bind.</p>",
+  "prereq": [
+    {
+      "q": "Which kind of molecule crosses the phospholipid bilayer most easily?",
+      "options": ["A small hydrophobic (lipid-soluble) molecule", "A charged ion", "A large hydrophilic protein"],
+      "correct": 0,
+      "why": "The core of the bilayer is made of hydrophobic fatty acid tails. Small hydrophobic molecules dissolve through it; ions and large hydrophilic molecules cannot.",
+      "review": "water-solutions"
+    },
+    {
+      "q": "What is a transcription factor?",
+      "options": ["A protein that binds DNA and switches genes on or off", "An enzyme that copies DNA before division", "A ribosome that reads messenger RNA"],
+      "correct": 0,
+      "why": "Transcription factors bind DNA near genes and increase or decrease their transcription, which changes which proteins the cell makes.",
+      "review": "protein-synthesis"
+    },
+    {
+      "q": "How does a cell release molecules stored in vesicles?",
+      "options": ["Endocytosis", "Exocytosis", "Osmosis"],
+      "correct": 1,
+      "why": "In exocytosis, a vesicle fuses with the plasma membrane and empties its contents outside the cell.",
+      "review": "active-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-27",
+    "caption": "A synapse: the axon terminal of one neuron, a narrow synaptic cleft, and the postsynaptic cell with receptor proteins in its membrane."
+  },
+  "chain": [
+    {
+      "cause": "A water-soluble messenger (the first messenger) binds its receptor protein on the target cell's membrane.",
+      "effect": "The receptor protein changes shape and switches on a G protein on the inner face of the membrane."
+    },
+    {
+      "cause": "The active G protein switches on a membrane enzyme.",
+      "effect": "The enzyme converts many ATP molecules into cAMP, the second messenger."
+    },
+    {
+      "cause": "cAMP switches on enzymes that phosphorylate other proteins.",
+      "effect": "Many target proteins change shape and activity: the signal is amplified at every step."
+    },
+    {
+      "cause": "The changed proteins alter what the cell is doing.",
+      "effect": "The cell responds, for example an airway smooth muscle cell relaxes; when the first messenger leaves and cAMP is broken down, the response ends."
+    }
+  ],
+  "misconception": {
+    "wrong": "A hormone affects every cell it reaches, because blood carries it everywhere.",
+    "right": "Blood carries a hormone to nearly every cell, but only target cells respond: cells with receptor proteins that fit it. A cell without those receptor proteins ignores the hormone, however much is present. And the response depends on the receptor protein, not the messenger: the same messenger can make one cell contract and another relax."
+  },
+  "check": ["anp-chemical-signaling-2", "anp-chemical-signaling-5", "anp-chemical-signaling-7", "anp-chemical-signaling-9", "anp-chemical-signaling-12", "anp-chemical-signaling-15", "anp-chemical-signaling-17"],
+  "summary": "<p>A chemical messenger is a ligand: it binds a specific receptor protein, and only target cells carrying that receptor protein respond. Messengers are grouped by distance: autocrine (the same cell), paracrine (neighbors, such as nitric oxide, cytokines and eicosanoids), neurotransmitters (across a synapse) and hormones (through the blood). Water-soluble messengers bind receptor proteins in the membrane and often act through a G protein and a second messenger such as cAMP: fast, short-lived and amplified. Lipid-soluble messengers cross the membrane and bind intracellular receptors that change gene expression: slow and lasting. Cells up-regulate or down-regulate their receptor proteins. Nervous signaling is fast and precise; endocrine signaling is slower, widespread and longer-lasting.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT: Anatomy and Physiology" }
+  ]
+}

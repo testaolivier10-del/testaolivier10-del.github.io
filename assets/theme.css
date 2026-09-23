@@ -207,6 +207,9 @@
    the page registered; the hub and NREMT keep the mint defaults above. */
 body[data-course="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
 :root[data-theme="dark"] body[data-course="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
+/* Anatomy & Physiology: a warm coral, the one hue neither other course uses. */
+body[data-course="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
+:root[data-theme="dark"] body[data-course="anp"]{--ctint:rgba(236,132,108,0.18);--cink:#F2B9A9;}
 
 /* ==========================================================================
    2. Base

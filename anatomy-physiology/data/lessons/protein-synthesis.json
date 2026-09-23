@@ -1,0 +1,87 @@
+{
+  "topic": "protein-synthesis",
+  "hook": "<p>Mr. Novak, 42, is short of breath, and his liver tests are abnormal. His blood level of alpha-1 antitrypsin, a protein his liver cells make and secrete to shield his lungs from protein-digesting enzymes, is very low. Both of his copies of the gene carry the same one-base change. His liver cells still build the protein, but it misfolds and gets stuck in the ER, so little reaches his blood, and the trapped protein harms the liver cells.</p>",
+  "prereq": [
+    {
+      "q": "In DNA, which base pairs with adenine?",
+      "options": [
+        "Guanine",
+        "Cytosine",
+        "Thymine",
+        "Adenine"
+      ],
+      "correct": 2,
+      "why": "Adenine pairs with thymine, forming two hydrogen bonds. Guanine pairs with cytosine.",
+      "review": "dna-genes"
+    },
+    {
+      "q": "Which organelle is studded with ribosomes and receives proteins as they are made?",
+      "options": [
+        "Smooth ER",
+        "Rough ER",
+        "Mitochondrion",
+        "Lysosome"
+      ],
+      "correct": 1,
+      "why": "Rough ER carries ribosomes on its outer surface, and the proteins they make pass into it.",
+      "review": "organelles"
+    },
+    {
+      "q": "A vesicle fuses with the plasma membrane and releases its contents outside the cell. What is this process called?",
+      "options": [
+        "Exocytosis",
+        "Endocytosis",
+        "Osmosis",
+        "Facilitated diffusion"
+      ],
+      "correct": 0,
+      "why": "Exocytosis releases the contents of a vesicle to the outside of the cell. Endocytosis is the reverse: taking material in.",
+      "review": "active-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-29",
+    "caption": "From gene to protein: a gene is transcribed into mRNA in the nucleus, and the mRNA is translated on a ribosome in the cytoplasm."
+  },
+  "chain": [
+    {
+      "cause": "Transcription factors bind DNA near a gene's promoter.",
+      "effect": "RNA polymerase binds the promoter and transcribes the gene into RNA."
+    },
+    {
+      "cause": "The first RNA copy contains introns between its exons.",
+      "effect": "The spliceosome removes the introns and joins the exons; a cap and tail are added, making finished mRNA."
+    },
+    {
+      "cause": "The finished mRNA passes through a nuclear pore into the cytoplasm.",
+      "effect": "A ribosome binds it and starts at the AUG start codon."
+    },
+    {
+      "cause": "tRNAs whose anticodons match each codon bring their amino acids.",
+      "effect": "The ribosome joins them by peptide bonds into a polypeptide, until a stop codon releases it."
+    },
+    {
+      "cause": "A signal sequence at the front of the chain docks the ribosome on the rough ER.",
+      "effect": "The protein enters the ER, folds and gains sugars, then moves in vesicles to the Golgi apparatus."
+    },
+    {
+      "cause": "The Golgi apparatus sorts the protein into secretory vesicles.",
+      "effect": "The vesicles fuse with the plasma membrane and release the protein by exocytosis."
+    }
+  ],
+  "misconception": {
+    "wrong": "Each cell type has its own genes: liver cells have liver genes and skin cells have skin genes.",
+    "right": "Almost every cell in your body carries the same genome. Cells differ in gene expression: each cell type carries its own mix of transcription factors, which switch on a different subset of genes. A skin cell still carries the genes for pancreas enzymes; it just never transcribes them."
+  },
+  "check": [
+    "anp-protein-synthesis-2",
+    "anp-protein-synthesis-4",
+    "anp-protein-synthesis-6",
+    "anp-protein-synthesis-7",
+    "anp-protein-synthesis-12",
+    "anp-protein-synthesis-16",
+    "anp-protein-synthesis-11"
+  ],
+  "summary": "<p>A gene is used in two steps. Transcription, in the nucleus, copies the gene into RNA: RNA polymerase binds the promoter, and the spliceosome then removes introns and joins exons to make mRNA. Translation, on ribosomes in the cytoplasm, reads the mRNA three bases at a time: each codon is matched by a tRNA anticodon and names one amino acid or a stop. Proteins with a signal sequence enter the rough ER and follow the secretory pathway through the Golgi apparatus to exocytosis. Transcription factors decide which genes each cell expresses, so cells with the same genome make different proteomes. A mutation changes the DNA sequence; its effect depends on what it does to the codons.</p>",
+  "connections": []
+}

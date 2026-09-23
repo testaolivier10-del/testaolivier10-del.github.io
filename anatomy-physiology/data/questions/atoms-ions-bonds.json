@@ -1,0 +1,481 @@
+[
+  {
+    "id": "anp-atoms-ions-bonds-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "ions form by gaining or losing protons",
+    "q": "A potassium atom has 19 protons and 19 electrons. The potassium found inside your cells has 19 protons and 18 electrons. What is it?",
+    "options": [
+      "An anion with a charge of −1",
+      "A cation with a charge of +1",
+      "A neutral atom of a different element",
+      "An isotope of potassium with one fewer neutron"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Charge is protons minus electrons: +19 − 18 = +1. A positive ion is a cation, written K+. The proton count still says potassium.",
+      "options": [
+        "An anion has more electrons than protons. This particle has one fewer electron than protons, so its net charge is positive, not negative.",
+        "Correct. One more proton than electrons gives a +1 charge, and a positively charged ion is a cation: K+.",
+        "The element is fixed by the number of protons. It is still 19, so this is still potassium, and with unequal protons and electrons it is not neutral.",
+        "Isotopes differ in neutrons, and the question describes a change in electrons. Losing an electron changes charge, not mass number."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Calcium has atomic number 20. The calcium ion in your blood is Ca2+. How many electrons does that ion have?",
+    "options": [
+      "20",
+      "22",
+      "2",
+      "18"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Atomic number 20 means 20 protons. A +2 charge means two more protons than electrons, so 20 − 2 = 18 electrons.",
+      "options": [
+        "20 electrons would balance the 20 protons and give a neutral atom, not an ion with a +2 charge.",
+        "22 electrons would give 20 − 22 = −2, a negative ion. Ca2+ is positive, so it has fewer electrons than protons.",
+        "The 2 in Ca2+ is the size of the charge, not the number of electrons. Calcium loses two electrons from its valence shell and keeps the other 18.",
+        "Correct. Twenty protons minus eighteen electrons leaves a net charge of +2."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Carbon-12 and carbon-14 are isotopes of carbon. What is different between an atom of each?",
+    "options": [
+      "The number of protons in the nucleus",
+      "The number of electrons in a neutral atom",
+      "The element they belong to",
+      "The number of neutrons in the nucleus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Isotopes have the same number of protons and different numbers of neutrons. Carbon-12 has 6 neutrons; carbon-14 has 8. The mass number changes, the element does not.",
+      "options": [
+        "Both have 6 protons. The proton count is the atomic number, and it is what makes both of them carbon.",
+        "A neutral atom has as many electrons as protons. Both have 6 protons, so both neutral atoms have 6 electrons.",
+        "Both are carbon, because both have 6 protons. Isotopes are versions of one element.",
+        "Correct. Mass number is protons plus neutrons: 6 + 6 = 12 and 6 + 8 = 14."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ms. Patel, 58, has a bone scan. A small dose of a technetium radioisotope is injected into a vein, and a camera later shows where it collected in her skeleton. What property of the radioisotope makes the scan possible?",
+    "options": [
+      "Its unstable nucleus gives off radiation that a camera can detect",
+      "Its extra electrons carry a charge that the camera reads as an electrical signal",
+      "It forms ionic bonds with bone that show up as a different color on film",
+      "Its atoms are heavier than other atoms, so they sink toward bone"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A radioisotope has an unstable nucleus that emits radiation as it breaks down. The radiation passes out of the body, and the camera maps where it came from.",
+      "options": [
+        "Correct. The scan detects radiation coming from unstable nuclei, not anything to do with charge or color.",
+        "Radioisotopes are defined by their nuclei, not by extra electrons. The camera detects radiation, not charge.",
+        "The tracer does collect where bone is being repaired, but bonds are invisible to a camera. What the camera records is radiation.",
+        "Isotopes differ in mass only slightly, and mass does not steer atoms through the blood. The signal comes from radiation."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-5",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these separate into ions when they dissolve in your body water, and so count as electrolytes? Select all that apply.",
+    "options": [
+      "Sodium chloride (NaCl)",
+      "Oxygen gas (O2)",
+      "Potassium chloride (KCl)",
+      "Nitrogen gas (N2)",
+      "Calcium chloride (CaCl2)"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Sodium chloride, potassium chloride and calcium chloride are built from ions held by ionic bonds. In water they separate into Na+, K+, Ca2+ and Cl− ions. Oxygen and nitrogen gas are held together by covalent bonds and dissolve as whole, uncharged molecules.",
+      "options": [
+        "Electrolyte. It separates into Na+ and Cl−.",
+        "Not an electrolyte. O2 is two oxygen atoms sharing electrons in a covalent bond. It dissolves as an uncharged molecule.",
+        "Electrolyte. It separates into K+ and Cl−.",
+        "Not an electrolyte. N2 is held by a covalent triple bond and dissolves without forming ions.",
+        "Electrolyte. It separates into one Ca2+ and two Cl− ions."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Reyes, 70, has a low blood potassium level. His nurse adds potassium chloride (KCl) to his IV fluid. Once it is in his blood, in what form is the potassium?",
+    "options": [
+      "As whole KCl units, each held together by a covalent bond",
+      "As neutral potassium atoms that have picked up an electron from the water",
+      "As small crystals of KCl carried along in the blood",
+      "As K+ ions, separated from the Cl− ions and surrounded by water"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "KCl is held together by ionic bonds, which are weak in water. Water separates the ions, so the potassium circulates as free K+ ions and the chloride as free Cl− ions.",
+      "options": [
+        "KCl is ionic, not covalent: potassium transferred an electron to chlorine rather than sharing one. In water the ions separate.",
+        "Potassium stays a cation in body water. Nothing in blood hands it an electron back, and a lab measures it as the K+ ion.",
+        "A crystal forms only when there is little water between the ions. In blood, water separates the ions, so no crystals remain.",
+        "Correct. Ionic bonds break apart in water, releasing K+ and Cl− as separate electrolytes."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these steps in order to show how sodium and chlorine form sodium chloride.",
+    "options": [
+      "Sodium, with one electron in its valence shell, meets chlorine, with seven",
+      "Sodium's single valence electron moves to chlorine",
+      "Sodium now has one more proton than electrons (Na+) and chlorine one more electron than protons (Cl−)",
+      "The opposite charges attract, forming ionic bonds",
+      "Many ions pack together into a repeating crystal"
+    ],
+    "why": {
+      "correct": "The electron moves first, and only then do the atoms carry charges. The charges create the attraction (the ionic bond), and many attractions together build the crystal."
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a hydrogen bond is the bond that holds hydrogen inside a molecule",
+    "q": "Which kind of bond holds each hydrogen atom to the oxygen atom inside a single water molecule?",
+    "options": [
+      "A hydrogen bond",
+      "A polar covalent bond",
+      "An ionic bond",
+      "A nonpolar covalent bond"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Inside one water molecule, oxygen and hydrogen share a pair of electrons: a covalent bond. Oxygen pulls the pair harder than hydrogen does, so the sharing is unequal and the bond is polar.",
+      "options": [
+        "A hydrogen bond is the weak attraction between a hydrogen of one water molecule and the oxygen of another. The bond inside a molecule is a shared electron pair.",
+        "Correct. A shared pair makes it covalent; oxygen's stronger pull makes it polar.",
+        "No electron is transferred between oxygen and hydrogen and no ions form. They share electrons.",
+        "Oxygen pulls shared electrons much harder than hydrogen, so the sharing is unequal. Equal sharing, as in H2 or O2, is nonpolar."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Each carbon–oxygen bond in carbon dioxide (O=C=O) is polar, yet the carbon dioxide molecule as a whole is nonpolar. What explains this?",
+    "options": [
+      "Carbon and oxygen pull on shared electrons with equal strength",
+      "Its bonds are ionic rather than covalent",
+      "Its two polar bonds point in opposite directions and cancel",
+      "It has no shared electrons between its atoms"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Molecular polarity depends on bonds and shape together. In straight-line CO2, oxygen pulls electrons toward each end equally hard, so the two pulls cancel. Water's bonds meet at an angle, so its pulls do not cancel and water is polar.",
+      "options": [
+        "Oxygen pulls much harder than carbon, which is why each bond is polar. The cancellation comes from shape, not from equal sharing.",
+        "Carbon and oxygen share electron pairs in two double bonds. No electrons are transferred and no ions form.",
+        "Correct. Equal pulls in opposite directions cancel, leaving no partly positive or partly negative end.",
+        "Carbon shares two pairs with each oxygen. Those shared pairs are the covalent bonds that hold the molecule together."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which pair of atoms can form a hydrogen bond?",
+    "options": [
+      "A hydrogen of one water molecule and the oxygen of its neighbor",
+      "The two hydrogen atoms within the same water molecule",
+      "A carbon atom and one of its hydrogen atoms within a methane molecule",
+      "A sodium ion and a chloride ion in a crystal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A hydrogen bond forms between a partly positive hydrogen, already covalently bonded to oxygen or nitrogen, and a partly negative oxygen or nitrogen nearby. Neighboring water molecules fit that description exactly.",
+      "options": [
+        "Correct. The δ+ hydrogen of one molecule is attracted to the δ− oxygen of the next.",
+        "The two hydrogens in one water molecule both carry partial positive charges. Like charges repel, so they do not attract each other.",
+        "Carbon and hydrogen share electrons almost equally, so a C–H bond gives hydrogen almost no partial positive charge. The carbon–hydrogen link here is a covalent bond, not a hydrogen bond.",
+        "Na+ and Cl− carry full charges and are held by ionic bonds. A hydrogen bond involves partial charges and a hydrogen atom."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-11",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A neutral chlorine atom (17 protons, 17 electrons) gains one electron. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Number of protons",
+        "answer": "none",
+        "why": "Only electrons move when an ion forms. The proton count stays at 17, which is why the particle is still chlorine."
+      },
+      {
+        "name": "Number of electrons",
+        "answer": "up",
+        "why": "Gaining an electron raises the count from 17 to 18, which fills chlorine's valence shell."
+      },
+      {
+        "name": "Net charge",
+        "answer": "down",
+        "why": "With 17 protons and 18 electrons, the net charge falls from 0 to −1. The atom has become the chloride anion, Cl−."
+      },
+      {
+        "name": "Mass number",
+        "answer": "none",
+        "why": "Mass number counts protons and neutrons. Neither changed, and an electron's mass is too small to count."
+      }
+    ]
+  },
+  {
+    "id": "anp-atoms-ions-bonds-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "ions form by gaining or losing protons",
+    "q": "Fill the gap: Neutral sodium atom (11 protons, 11 electrons) → ______ → sodium ion, Na+ (11 protons, 10 electrons) → attraction to a chloride ion",
+    "options": [
+      "Sodium gains one proton",
+      "Sodium loses one electron",
+      "Sodium loses one proton",
+      "Sodium gains an extra neutron"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The before and after counts answer it: protons stay at 11 while electrons fall from 11 to 10. Losing its one valence electron leaves sodium with a +1 charge.",
+      "options": [
+        "The ion still has 11 protons. Gaining a proton would turn sodium into a different element, magnesium.",
+        "Correct. One fewer electron, same protons: a net charge of +1.",
+        "The ion still has 11 protons. Losing one would make the atom neon, a different element. Only electrons move when ions form.",
+        "A neutron has no charge, so gaining one could never produce a +1 charge. It would make a heavier isotope of sodium instead."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-13",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a hydrogen bond is a shared or transferred electron",
+    "q": "This pathway explains how neighboring water molecules cling together. Which step is wrong?",
+    "options": [
+      "Within each water molecule, oxygen pulls the shared electrons more strongly than hydrogen does",
+      "The oxygen end gains a partial negative charge and each hydrogen gains a partial positive charge",
+      "A hydrogen of one molecule hands its electron to the oxygen of the next molecule",
+      "The partial opposite charges attract, forming a hydrogen bond between the two molecules"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "No electron moves between molecules in a hydrogen bond. The attraction is between partial charges that already exist because of unequal sharing inside each molecule. Transferring an electron would make ions, which is how an ionic bond forms, not a hydrogen bond.",
+      "options": [
+        "This step is right. Oxygen's stronger pull on shared electrons is where water's polarity starts.",
+        "This step is right. Unequal sharing leaves partial charges, δ− on oxygen and δ+ on each hydrogen.",
+        "This is the error. Nothing is transferred between molecules; the partial charges simply attract.",
+        "This step is right. The attraction between a δ+ hydrogen and a δ− oxygen on another molecule is the hydrogen bond."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "Your cells split hydrogen peroxide: 2 H2O2 → 2 H2O + O2. How would you classify this reaction?",
+    "options": [
+      "A decomposition reaction: one reactant splits apart",
+      "A synthesis reaction: smaller reactants join into a larger product",
+      "Not a chemical reaction: no bonds are broken or formed",
+      "The formation of ionic bonds between hydrogen and oxygen"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "One kind of reactant, H2O2, breaks into two smaller products, water and oxygen gas. That is the AB → A + B pattern of a decomposition reaction.",
+      "options": [
+        "Correct. One reactant, two smaller products: decomposition.",
+        "Synthesis goes the other way: small reactants combine into one larger product (A + B → AB). Here one reactant breaks apart.",
+        "Bonds do change: O–O bonds in peroxide break, and new O=O bonds form in oxygen gas. The atoms end up in new substances, which defines a chemical reaction.",
+        "Hydrogen and oxygen share electrons in covalent bonds in all three substances. No ions form."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "any compound containing carbon is organic",
+    "q": "Which of these is an organic compound?",
+    "options": [
+      "Carbon dioxide (CO2), which you exhale",
+      "Methane (CH4)",
+      "Water (H2O)",
+      "Sodium chloride (NaCl)"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An organic compound has carbon covalently bonded to hydrogen. Methane is one carbon bonded to four hydrogens.",
+      "options": [
+        "Carbon dioxide contains carbon but no carbon–hydrogen bond, so it is classed as inorganic. Containing carbon is not enough.",
+        "Correct. Four carbon–hydrogen bonds make methane organic.",
+        "Water has no carbon at all, so it is inorganic.",
+        "Sodium chloride has no carbon and is held by ionic bonds. It is inorganic."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which substance is a molecule but not a compound?",
+    "options": [
+      "Water (H2O)",
+      "Sodium chloride (NaCl)",
+      "Oxygen gas (O2)",
+      "A sodium ion (Na+)"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A molecule is two or more atoms joined together. A compound needs two or more different elements. O2 is two atoms of one element, so it is a molecule but not a compound.",
+      "options": [
+        "Water is both: its atoms are covalently joined, and they come from two different elements.",
+        "Sodium chloride is a compound, since it contains two elements in a fixed ratio. It is not a molecule, because it is a crystal of ions rather than separate units.",
+        "Correct. Two oxygen atoms share electrons, making a molecule, but only one element is present.",
+        "A sodium ion is a single charged atom. It is neither a molecule nor a compound."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An oxygen atom has 8 protons, 8 electrons and 10 neutrons. What are its atomic number and mass number?",
+    "options": [
+      "Atomic number 18, mass number 8",
+      "Atomic number 8, mass number 18",
+      "Atomic number 8, mass number 10",
+      "Atomic number 10, mass number 18"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Atomic number counts protons: 8. Mass number counts protons plus neutrons: 8 + 10 = 18. This is the isotope oxygen-18.",
+      "options": [
+        "The two numbers are swapped. Atomic number is the proton count (8); mass number is protons plus neutrons (18).",
+        "Correct. 8 protons; 8 + 10 = 18 protons plus neutrons.",
+        "10 is the neutron count alone. Mass number adds the protons too: 8 + 10 = 18.",
+        "Atomic number is the proton count, which is 8 for every oxygen atom. The neutron count does not set the atomic number."
+      ]
+    }
+  },
+  {
+    "id": "anp-atoms-ions-bonds-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A long chain molecule is folded into a compact shape. Gentle heating makes it unfold, but its chain of atoms stays intact. Which attractions most likely broke?",
+    "options": [
+      "Hydrogen bonds between different parts of the chain",
+      "Covalent bonds between the atoms of the chain",
+      "The attraction between electrons and protons in each atom",
+      "Every bond in the molecule, which then re-formed as a straight chain"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Hydrogen bonds are weak, so modest heat breaks them. Many hydrogen bonds between different parts of a chain hold it folded; breaking them lets the chain unfold while the stronger covalent bonds of the chain survive.",
+      "options": [
+        "Correct. Weak hydrogen bonds hold the fold; they give way to heat first.",
+        "The chain stayed intact, so its covalent bonds did not break. Covalent bonds are far stronger than hydrogen bonds and need a chemical reaction to break.",
+        "Gentle heat does not strip electrons from atoms. The atoms themselves are unchanged.",
+        "If every bond broke, the chain would fall apart into separate atoms. The chain survived, so only the weak attractions gave way."
+      ]
+    }
+  }
+]

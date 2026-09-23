@@ -1,0 +1,475 @@
+[
+  {
+    "id": "anp-chemical-signaling-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "What is a ligand?",
+    "options": [
+      "A protein channel that is always open",
+      "A molecule that binds specifically to a site on a protein",
+      "An enzyme that breaks down chemical messengers",
+      "A cell that responds to a hormone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A ligand (Latin ligare, to bind) is any molecule that binds specifically to a site on a protein. Chemical messengers, and drugs that bind the same proteins, are ligands.",
+      "options": [
+        "A channel that is always open is a leak channel. A ligand is the molecule that binds, not the protein.",
+        "Correct. Binding specifically to a protein is what makes a molecule a ligand.",
+        "Some enzymes do break down messengers, but a ligand is the molecule that binds, not an enzyme acting on it.",
+        "A cell that responds to a messenger is a target cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["communication"],
+    "misconception": "a hormone affects every cell it reaches",
+    "q": "A hormone in the blood reaches cells in the liver, skin and bone equally. Only the liver cells respond. What best explains this?",
+    "options": [
+      "The hormone is broken down before reaching the skin and bone",
+      "Liver cells have more ATP than skin and bone cells",
+      "Only the liver cells carry receptor proteins that bind this hormone",
+      "The hormone enters every cell but acts only in the liver"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Only target cells respond to a messenger, and a target cell is one with receptor proteins that fit it. The skin and bone cells meet the hormone but have no receptor proteins for it.",
+      "options": [
+        "The question says the hormone reaches all three tissues equally. Reaching a cell is not enough; the cell must have a matching receptor protein.",
+        "Energy supply does not decide which cells respond. Receptor proteins do.",
+        "Correct. Matching receptor proteins make the liver cells target cells.",
+        "Whether a messenger enters a cell depends on its solubility, not the tissue. The response still requires a matching receptor protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "The same neurotransmitter slows the heart rate but makes smooth muscle in the gut contract harder. How can one messenger have opposite-seeming effects?",
+    "options": [
+      "It reaches the heart in a smaller amount",
+      "Heart cells and gut cells carry different receptor proteins for it",
+      "It is converted into a different molecule in the gut",
+      "Heart muscle has no receptor proteins, so it responds indirectly"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The receptor protein, and the machinery it is linked to inside the cell, decides the response. Different receptor proteins for the same messenger can start different pathways in different cells.",
+      "options": [
+        "A smaller amount would give a weaker version of the same response, not a different kind of response.",
+        "Correct. Different receptor proteins link the same messenger to different responses.",
+        "The same molecule acts in both places; the difference lies in the cells receiving it.",
+        "If heart cells had no receptor proteins for it, they would not respond to it at all. They do respond, through their own receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Endothelial cells lining a blood vessel release nitric oxide. It diffuses a few micrometers into the smooth muscle around the vessel, which relaxes. What kind of signaling is this?",
+    "options": [
+      "Autocrine",
+      "Endocrine (hormonal)",
+      "Synaptic",
+      "Paracrine"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Paracrine signaling (para- = beside) is a messenger acting on neighboring cells after diffusing a short distance. Nitric oxide from the endothelium acting on nearby smooth muscle is a classic example.",
+      "options": [
+        "Autocrine signaling acts on the releasing cell itself. Here the endothelium signals a different, neighboring cell.",
+        "A hormone travels in the blood to distant targets. Nitric oxide acts only a few micrometers away and is gone within seconds.",
+        "Synaptic signaling is a neuron releasing neurotransmitter across a synapse. Endothelial cells are not neurons.",
+        "Correct. Short-distance diffusion to a neighbor is paracrine signaling."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "An activated white blood cell releases an interleukin. The interleukin binds receptor proteins on that same white blood cell and drives it to divide. What kind of signaling is this?",
+    "options": [
+      "Paracrine",
+      "Autocrine",
+      "Endocrine (hormonal)",
+      "Synaptic"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Autocrine signaling (auto- = self) is a messenger binding receptor proteins on the same cell that released it.",
+      "options": [
+        "Paracrine signaling acts on neighboring cells. Here the releasing cell is also the target.",
+        "Correct. The cell signals itself.",
+        "The interleukin never travels in the blood to a distant target.",
+        "No neuron or synapse is involved."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Leo, 30, takes ibuprofen for a sprained ankle for two weeks. The pain and swelling ease, but he develops stomach pain. Which explanation fits both effects?",
+    "options": [
+      "Ibuprofen blocks receptor proteins for neurotransmitters in the ankle and stomach",
+      "Ibuprofen reduces the making of prostaglandins, which sensitize pain nerve endings and protect the stomach lining",
+      "Ibuprofen raises cAMP in every cell",
+      "Ibuprofen kills white blood cells in the ankle and stomach"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Ibuprofen blocks the enzyme that makes prostaglandins from a membrane fatty acid. Less prostaglandin means less sensitized pain nerve endings and less vessel dilation in the ankle, but also less protection for the stomach lining.",
+      "options": [
+        "Ibuprofen does not act on neurotransmitter receptor proteins. Its effects come from reduced prostaglandin production.",
+        "Correct. One enzyme block explains both the relief and the side effect.",
+        "Ibuprofen is not a general cAMP booster. A change in one local messenger, prostaglandins, explains both effects.",
+        "Ibuprofen does not kill white blood cells. It reduces a local messenger."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication", "structure-function"],
+    "q": "A newly discovered messenger is a small, hydrophobic molecule made from cholesterol. Where are its receptor proteins most likely to be?",
+    "options": [
+      "Inside the target cell, in the cytosol or nucleus",
+      "In the plasma membrane, facing out",
+      "In the blood plasma",
+      "On the outside of the nuclear envelope only"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A small hydrophobic molecule dissolves through the phospholipid bilayer, so it can reach receptor proteins inside the cell. Steroids made from cholesterol bind intracellular receptors.",
+      "options": [
+        "Correct. Lipid-soluble messengers cross the membrane and bind intracellular receptors.",
+        "Membrane receptor proteins serve water-soluble messengers that cannot cross the bilayer.",
+        "Proteins in the plasma carry lipid-soluble messengers, but they are transport proteins, not the receptor proteins that start the response.",
+        "Intracellular receptors sit in the cytosol or inside the nucleus, not on the outer surface of the nuclear envelope."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication", "structure-function"],
+    "q": "Priya's reliever inhaler opens her airways within minutes. A steroid tablet she takes for the same problem needs several hours to work, and its effect lasts much longer. What best explains the difference?",
+    "options": [
+      "The tablet is absorbed slowly from the gut",
+      "The inhaled drug's receptor protein is on the surface and acts through a second messenger; the steroid acts inside the cell by changing gene expression",
+      "The steroid acts on a different organ",
+      "The inhaled drug is more concentrated"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The inhaled drug binds a membrane receptor protein and raises cAMP, which changes proteins the muscle cell already has: seconds to minutes. The steroid crosses the membrane, binds an intracellular receptor and changes transcription, so the cell must make new proteins: hours to start, and the proteins persist.",
+      "options": [
+        "Absorption takes some time, but even a steroid given into a vein takes hours to act. The delay comes from making new proteins.",
+        "Correct. Changing existing proteins is fast; changing gene expression is slow and lasting.",
+        "Both drugs act on the same airways. The speed difference comes from where their receptor proteins are and what they change.",
+        "Concentration changes how strong a response is, not whether it takes minutes or hours to start."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Put the steps of a G-protein-coupled receptor pathway in order.",
+    "options": [
+      "The first messenger binds a receptor protein in the membrane",
+      "The receptor protein switches on a G protein",
+      "The G protein switches on a membrane enzyme",
+      "The enzyme converts ATP into cAMP",
+      "cAMP switches on enzymes that phosphorylate target proteins",
+      "The phosphorylated proteins change the cell's activity"
+    ],
+    "why": {
+      "correct": "The signal passes from the first messenger outside, through the receptor protein and G protein in the membrane, to the enzyme making cAMP (the second messenger) inside, and then to phosphorylated proteins that carry out the response."
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-10",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "One step in this account of a water-soluble messenger's action is wrong. Find it.",
+    "options": [
+      "The messenger travels dissolved in the plasma",
+      "It crosses the plasma membrane and binds a receptor protein in the nucleus",
+      "A G protein is switched on",
+      "cAMP is made from ATP",
+      "Enzymes switched on by cAMP phosphorylate target proteins"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A water-soluble messenger cannot cross the hydrophobic core of the bilayer. It binds a receptor protein in the plasma membrane and passes its signal inward through a G protein and second messenger.",
+      "options": [
+        "This is right: water-soluble messengers dissolve in the plasma.",
+        "This is the error. Crossing the membrane and binding a receptor protein in the nucleus describes a lipid-soluble messenger.",
+        "This is right: the occupied membrane receptor protein switches on a G protein.",
+        "This is right: the enzyme switched on by the G protein makes cAMP from ATP.",
+        "This is right: phosphorylation changes the activity of the target proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-11",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Fill in the missing step at a synapse. Action potential reaches the axon terminal → voltage-gated calcium channels open and calcium enters → ______ → neurotransmitter binds receptor proteins on the postsynaptic cell.",
+    "options": [
+      "The action potential jumps across the synaptic cleft",
+      "The postsynaptic cell releases calcium into the cleft",
+      "Vesicles fuse with the membrane and release neurotransmitter by exocytosis",
+      "Neurotransmitter is made from ATP in the cleft"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Calcium entry triggers vesicles full of neurotransmitter to fuse with the presynaptic membrane and empty into the cleft. The neurotransmitter then diffuses across and binds receptor proteins.",
+      "options": [
+        "The electrical signal cannot cross the cleft; that is why a chemical messenger is needed.",
+        "The calcium that matters here enters the presynaptic axon terminal. The postsynaptic cell does not release it.",
+        "Correct. Calcium triggers exocytosis of neurotransmitter.",
+        "Neurotransmitter is made inside the presynaptic neuron and stored in vesicles, not made in the cleft."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-12",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Level 2. A drug blocks the enzyme that breaks down cAMP in heart muscle cells. A messenger that raises cAMP in these cells then binds its receptor protein as usual. Predict each variable compared with no drug.",
+    "variables": [
+      { "name": "Number of receptor proteins occupied by the messenger", "answer": "none", "why": "The drug acts inside the cell, after the receptor protein; it does not change how much messenger binds." },
+      { "name": "cAMP concentration inside the cells", "answer": "up", "why": "cAMP is still made at the usual rate but broken down more slowly, so it builds up." },
+      { "name": "Phosphorylation of the target proteins", "answer": "up", "why": "More cAMP switches on more of the enzymes that phosphorylate target proteins." },
+      { "name": "How long the response lasts after the messenger leaves", "answer": "up", "why": "Breaking down cAMP is what ends the response; slowing that step lets the response continue longer." }
+    ],
+    "why": { "correct": "Blocking cAMP breakdown leaves the first messenger's binding unchanged but raises cAMP, strengthening and prolonging everything downstream." }
+  },
+  {
+    "id": "anp-chemical-signaling-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "A hormone present in the blood at less than a billionth of a mole per liter causes a large response in its target cells. What best explains how so little hormone can do so much?",
+    "options": [
+      "Each hormone molecule binds thousands of receptor proteins at once",
+      "Each step of the second messenger pathway multiplies the signal",
+      "The hormone is converted into ATP inside the cell",
+      "Target cells concentrate the hormone a millionfold before responding"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "One occupied receptor protein switches on many G proteins, each switched-on enzyme makes many cAMP molecules, and each enzyme cAMP switches on modifies many proteins. This signal amplification turns a few messenger molecules into a large response.",
+      "options": [
+        "One messenger molecule binds one receptor protein at a time. The multiplying happens inside the cell.",
+        "Correct. Amplification at each step explains the large response.",
+        "Hormones are not fuel. They carry information by binding receptor proteins; they do not become ATP.",
+        "Target cells do not need to concentrate the hormone. The pathway downstream of the receptor protein does the multiplying."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "During a bad month, Priya uses her reliever inhaler many times a day. Each puff opens her airways less than before, even though the dose is the same. Which change in her airway muscle cells best explains this?",
+    "options": [
+      "Up-regulation of the drug's receptor proteins",
+      "The drug's receptor proteins moved into the nucleus",
+      "Down-regulation of the drug's receptor proteins",
+      "Her airway muscle stopped making ATP"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "When a messenger or drug stays high for a long time, target cells reduce their receptor proteins, often by endocytosis and breakdown. With fewer receptor proteins, the same dose produces a smaller response.",
+      "options": [
+        "Up-regulation would add receptor proteins and make the response stronger, not weaker.",
+        "Membrane receptor proteins are not moved into the nucleus. Down-regulated receptor proteins are taken in and broken down.",
+        "Correct. Fewer receptor proteins, weaker response to the same dose.",
+        "Nothing here points to an energy failure. The same dose working less points to fewer receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "The nerve to a skeletal muscle is cut. Weeks later, the muscle fibers respond strongly to even tiny amounts of the nerve's neurotransmitter applied anywhere on their surface. What happened?",
+    "options": [
+      "The fibers up-regulated receptor proteins for that neurotransmitter",
+      "The fibers down-regulated receptor proteins for that neurotransmitter",
+      "The neurotransmitter became lipid-soluble",
+      "The fibers became autocrine cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "When a messenger stays low for a long time, target cells add receptor proteins. Without the nerve's neurotransmitter, the fibers insert its receptor proteins across their whole surface and become far more sensitive.",
+      "options": [
+        "Correct. Long-term absence of a messenger leads to up-regulation.",
+        "Down-regulation would reduce receptor proteins and weaken the response. The response became stronger.",
+        "Solubility is a property of the molecule and does not change. The change is in the target cells.",
+        "Autocrine signaling means a cell responding to its own messenger. The fibers are responding to a neurotransmitter applied from outside."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-16",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication", "structure-function"],
+    "q": "Which statements are true of lipid-soluble messengers such as steroids? Select all that apply.",
+    "options": [
+      "They diffuse through the phospholipid bilayer",
+      "They bind intracellular receptors",
+      "They mostly change gene expression",
+      "They usually act within milliseconds",
+      "They travel in blood mostly bound to proteins that carry them"
+    ],
+    "correct": [0, 1, 2, 4],
+    "why": {
+      "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Being hydrophobic, they ride in the blood bound to carrier proteins. Making new proteins takes hours, so they are slow.",
+      "options": [
+        "True. Their hydrophobic structure lets them dissolve through the bilayer.",
+        "True. Their receptor proteins are in the cytosol or nucleus.",
+        "True. The messenger–receptor pair acts as a transcription factor.",
+        "False. Changing gene expression takes hours. Millisecond responses belong to neurotransmitters acting on ion channels.",
+        "True. Hydrophobic molecules dissolve poorly in plasma, so most are carried bound to proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "You touch a hot pan and pull your hand away in a fraction of a second. Why is this response carried by the nervous system rather than by a hormone?",
+    "options": [
+      "Hormones cannot reach the arm",
+      "Hormones only affect organs, not muscles",
+      "Neurotransmitters are carried in the blood faster than hormones",
+      "Nerve signals reach specific muscles in milliseconds; hormones take seconds or longer"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Nervous signaling sends action potentials along axons and releases neurotransmitter across synapses onto specific muscle fibers within milliseconds. A hormone must travel through the blood and reaches every target cell, so it is too slow and too widespread for a precise, split-second action.",
+      "options": [
+        "Blood reaches the arm, so hormones can too. The problem is speed and precision.",
+        "Many hormones act on muscle. The issue is the time a hormone takes to arrive and act.",
+        "Neurotransmitters are not carried in the blood; they cross the synaptic cleft.",
+        "Correct. Fast, precise responses are the strength of nervous signaling."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "figure": "os-17-5",
+    "q": "In the pathway shown, a mutation leaves the G protein unable to be switched on. The first messenger still binds its receptor protein normally. What happens?",
+    "options": [
+      "cAMP rises, and the cell responds",
+      "No cAMP is made, and the cell does not respond",
+      "The messenger enters the cell instead",
+      "The receptor protein makes cAMP directly"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The G protein links the receptor protein to the enzyme that makes cAMP. With that link broken, binding at the surface produces no second messenger, so the signal stops at the membrane.",
+      "options": [
+        "cAMP is made only after the G protein switches on the membrane enzyme, which cannot happen here.",
+        "Correct. Without the G protein, the signal cannot pass from the receptor protein to the cAMP-making enzyme.",
+        "A water-soluble messenger cannot cross the membrane, whatever happens to the G protein.",
+        "The receptor protein does not make cAMP; a separate membrane enzyme does, once a G protein switches it on."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "figure": "os-12-27",
+    "q": "At the synapse shown, a drug occupies the receptor proteins on the postsynaptic membrane without opening them. The presynaptic neuron fires normally. What is the result?",
+    "options": [
+      "Neurotransmitter is released, but the postsynaptic cell shows little or no graded potential",
+      "No neurotransmitter is released",
+      "The postsynaptic cell fires more often",
+      "The presynaptic neuron's action potential stops before reaching the terminal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Everything on the presynaptic side works: the action potential arrives, calcium enters and neurotransmitter is released. But with its receptor proteins blocked, the neurotransmitter cannot open the postsynaptic channels, so the postsynaptic cell barely responds.",
+      "options": [
+        "Correct. Release is normal; the block is at the receptor proteins.",
+        "Release depends on the presynaptic side, which the drug does not affect.",
+        "Blocking receptor proteins reduces the postsynaptic response; it does not increase firing.",
+        "The drug acts on the postsynaptic membrane. The presynaptic action potential travels normally."
+      ]
+    }
+  },
+  {
+    "id": "anp-chemical-signaling-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Which phrase describes a receptor protein rather than a sensory receptor?",
+    "options": [
+      "A nerve ending in the skin that detects pressure",
+      "A cell in the eye that detects light",
+      "A protein that binds a specific chemical messenger",
+      "A nerve ending that detects heat"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A receptor protein is a molecule that binds a messenger and changes shape to start a response. A sensory receptor is a cell or nerve ending that detects a change in the body or its surroundings.",
+      "options": [
+        "This detects a physical change, so it is a sensory receptor.",
+        "This detects light, so it is a sensory receptor.",
+        "Correct. Binding a chemical messenger is what a receptor protein does.",
+        "This detects temperature, so it is a sensory receptor."
+      ]
+    }
+  }
+]

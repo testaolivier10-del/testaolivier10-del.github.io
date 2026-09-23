@@ -35,7 +35,9 @@
   function courseKey(){
     var declared = window.LEVLPREP_COURSE && window.LEVLPREP_COURSE.key;
     if(declared) return declared;
-    return location.pathname.indexOf('/ochem') === 0 ? 'ochem' : 'nremt';
+    if(location.pathname.indexOf('/ochem') === 0) return 'ochem';
+    if(location.pathname.indexOf('/anatomy-physiology') === 0) return 'anp';
+    return 'nremt';
   }
 
   // NREMT's reference pages. questions.json is deliberately absent: 2.3MB of
@@ -77,15 +79,27 @@
       .catch(function(){ return []; });
   }
 
+  // A&P's notes pages that exist, listed by the course generator
+  // (scripts/build-anp.mjs) so the assistant indexes only built topics.
+  function anpPages(){
+    return fetch('/anatomy-physiology/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
-    return courseKey() === 'ochem' ? ochemPages() : Promise.resolve(NREMT_PAGES);
+    var k = courseKey();
+    if(k === 'ochem') return ochemPages();
+    if(k === 'anp') return anpPages();
+    return Promise.resolve(NREMT_PAGES);
   }
 
   // Where "I couldn't find that" should send someone next.
   function fallbackLink(q){
-    return courseKey() === 'ochem'
-      ? '<a href="/ochem/learn.html">search the textbook</a>'
-      : '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    var k = courseKey();
+    if(k === 'ochem') return '<a href="/ochem/learn.html">search the textbook</a>';
+    if(k === 'anp') return '<a href="/anatomy-physiology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
   // NREMT's six exam domains, for deep-linking into the question bank.
@@ -908,12 +922,19 @@
       'Explain E1 vs E2 simply',
       'Why is benzene aromatic?',
       'Give me an analogy for resonance'
+    ],
+    anp: [
+      'Walk me through the cardiac cycle',
+      'Why does osmosis move water?',
+      'Explain negative feedback with an example',
+      'What sets the resting membrane potential?'
     ]
   };
 
   var GREETING = {
     nremt: 'Ask me anything from this course — the notes, glossary, mnemonics, flow diagrams and skill sheets are all indexed. I can define a term, explain it a different way, or point you at the page it came from.',
-    ochem: 'Ask me anything from this course — all 121 textbook sections are indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.'
+    ochem: 'Ask me anything from this course — all 121 textbook sections are indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.',
+    anp: 'Ask me anything from this course: every Anatomy & Physiology notes page built so far is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

@@ -199,6 +199,9 @@ export function stripForScan(html) {
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<head[\s\S]*?<\/head>/gi, ' ');
   s = removeClassBlocks(s, 'anp-preview');
+  // Navigation that names another topic ("Next: Organelles and the
+  // cytoskeleton") points somewhere; it does not teach, so it is not a use.
+  s = removeClassBlocks(s, 'anp-nav-ref');
   return normalize(s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&'));
 }
 

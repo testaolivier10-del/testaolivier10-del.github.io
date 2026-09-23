@@ -1,0 +1,37 @@
+{
+  "tissue-membrane": {
+    "def": "A thin sheet of tissue that covers a body surface or lines a body cavity or hollow organ. An epithelial membrane is an epithelium on connective tissue (mucous, serous, cutaneous); a connective tissue membrane has no epithelium (synovial).",
+    "roots": [],
+    "say": ""
+  },
+  "mucous-membrane": {
+    "def": "An epithelial membrane (mucosa) lining a tract that opens to the outside of the body, such as the digestive and respiratory tracts. Its epithelium rests on the lamina propria, a layer of loose connective tissue, and in most places it is coated with mucus.",
+    "roots": [["muc/o", "mucus"], ["lamina", "thin layer"], ["propria", "its own"]],
+    "say": "myoo-KOH-sah; LAM-ih-nah PROH-pree-ah"
+  },
+  "cutaneous-membrane": {
+    "def": "The skin: a keratinized stratified squamous epidermis on a dermis of dense irregular connective tissue. It is the only dry membrane.",
+    "roots": [["cutane/o", "skin"]],
+    "say": "kyoo-TAY-nee-us"
+  },
+  "synovial-membrane": {
+    "def": "A connective tissue membrane, with no epithelium, that lines the cavities of movable joints and releases a thick, slippery fluid that reduces friction.",
+    "roots": [["syn-", "together"], ["ov/o", "egg"]],
+    "say": "sih-NOH-vee-al"
+  },
+  "inflammation-basic": {
+    "def": "The response of tissue to injury: chemical messengers such as histamine from mast cells dilate small arteries and make small vessels leaky, causing redness, heat, swelling and pain, and white blood cells move in to clear debris.",
+    "roots": [["inflamm/o", "to set on fire"], ["-ation", "process"]],
+    "say": ""
+  },
+  "tissue-repair": {
+    "def": "The replacement of damaged tissue, either by regeneration (the same kind of working cells divide and replace the lost ones) or by fibrosis (fibroblasts fill the gap with collagen, forming scar tissue). The parenchyma is an organ's working cells.",
+    "roots": [["re-", "again"], ["gener/o", "to produce"], ["fibr/o", "fiber"], ["-osis", "condition"]],
+    "say": "pah-RENG-kih-mah"
+  },
+  "necrosis": {
+    "def": "Cell death caused by injury, such as lost blood supply, crushing, burns or poisons. The cells swell and burst, and their spilled contents trigger inflammation.",
+    "roots": [["necr/o", "death"], ["-osis", "condition"]],
+    "say": "neh-KROH-sis"
+  }
+}

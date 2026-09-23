@@ -1,0 +1,540 @@
+[
+  {
+    "id": "anp-homeostasis-feedback-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "What is a set point?",
+    "options": [
+      "The highest value a regulated variable can safely reach",
+      "The target value a feedback loop regulates a variable toward",
+      "The point at which a positive feedback loop ends",
+      "The place in the body where a sensory receptor sits"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The set point is the target value, such as about 37 °C for body temperature. It sits inside the normal range, and negative feedback pulls the variable back toward it.",
+      "options": [
+        "The top of the normal range is not the set point. The set point sits inside the range, and the variable swings above and below it.",
+        "Correct. The set point is the value the control center compares the input with.",
+        "A positive feedback loop ends with an outside event, such as delivery of a baby. That is not what a set point means.",
+        "A set point is a value, not a location. Sensory receptors detect the variable; the control center compares it with the set point."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-2",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis", "communication"],
+    "q": "Put the parts of a feedback loop in the order the signal travels.",
+    "options": [
+      "Stimulus",
+      "Sensory receptor (sensor)",
+      "Afferent pathway",
+      "Control center",
+      "Efferent pathway",
+      "Effector",
+      "Response"
+    ],
+    "why": {
+      "correct": "A stimulus changes the regulated variable. The sensory receptor detects it and sends information along the afferent pathway (toward) to the control center. The control center compares it with the set point and sends commands along the efferent pathway (away) to the effector, which produces the response."
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "You walk into a cold room. Nerve signals from your brain make the smooth muscle in the walls of your skin's blood vessels contract, and less warm blood reaches your skin. In this loop, what is the effector?",
+    "options": [
+      "The cold air of the room",
+      "The nerves carrying signals from the brain",
+      "The smooth muscle in the skin's blood vessels",
+      "The temperature control center in the brain"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The effector is the tissue that carries out the command. Here the smooth muscle in the vessel walls contracts, causing vasoconstriction.",
+      "options": [
+        "The cold air causes the stimulus, the drop in temperature. It is not part of the body's loop.",
+        "Nerves carrying commands from the brain are the efferent pathway, not the effector.",
+        "Correct. The smooth muscle does the work that changes the variable, so it is the effector.",
+        "The brain region that compares temperature with the set point is the control center."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis", "communication"],
+    "q": "Cold-sensitive nerve endings in your skin fire action potentials that travel along sensory nerves to your brain. In the feedback loop, what are those sensory nerves?",
+    "options": [
+      "The efferent pathway",
+      "The control center",
+      "The afferent pathway",
+      "The effector"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The afferent pathway (af- = toward) carries information from the sensory receptor toward the control center. Sensory nerves running from the skin to the brain do exactly that.",
+      "options": [
+        "The efferent pathway carries commands away from the control center to the effector. These nerves carry information toward it.",
+        "The control center is where input is compared with the set point: here, a region of the brain. The nerves only carry the information there.",
+        "Correct. Signals arriving at the control center travel on the afferent pathway.",
+        "An effector carries out a response. These nerves do not change body temperature themselves."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "During a run, your body temperature rises above its set point. Predict how each variable changes as your temperature control loop responds.",
+    "variables": [
+      {
+        "name": "Diameter of the blood vessels in your skin",
+        "answer": "up",
+        "why": "The control center sends signals that relax the smooth muscle of skin blood vessels, so they dilate (vasodilation)."
+      },
+      {
+        "name": "Amount of sweat released onto your skin",
+        "answer": "up",
+        "why": "The control center signals glands in the skin to release sweat; as it evaporates, it carries heat away."
+      },
+      {
+        "name": "Heat lost from your skin to the air",
+        "answer": "up",
+        "why": "More warm blood near the surface and more evaporating sweat both increase heat loss, which opposes the rise in temperature."
+      }
+    ]
+  },
+  {
+    "id": "anp-homeostasis-feedback-6",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis", "communication"],
+    "q": "In a patient, the nerves that carry commands from the brain to the blood vessels of the skin have been damaged, so those vessels can no longer constrict. The patient sits in a cold room for an hour. Compared with a person whose loop is intact, predict each variable.",
+    "variables": [
+      {
+        "name": "Blood flow to the skin",
+        "answer": "up",
+        "why": "With the efferent pathway to the vessels broken, the command to constrict never arrives, so the skin vessels stay wider than in an intact person."
+      },
+      {
+        "name": "Heat lost through the skin",
+        "answer": "up",
+        "why": "More warm blood near the cold surface loses more heat to the air."
+      },
+      {
+        "name": "Body temperature after an hour",
+        "answer": "down",
+        "why": "Heat loss is not reduced, so body temperature falls further below the set point than it would in a person with an intact loop."
+      }
+    ]
+  },
+  {
+    "id": "anp-homeostasis-feedback-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Platelets stick to a torn blood vessel wall. The stuck platelets release chemicals that make more passing platelets stick, and those release still more of the chemicals. What kind of loop is this?",
+    "options": [
+      "Positive feedback",
+      "Negative feedback",
+      "Mass balance",
+      "Feedforward control"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each response (more platelets sticking) strengthens the stimulus that caused it (more of the chemicals). A response that amplifies its own stimulus is positive feedback. The loop ends only when the tear is sealed.",
+      "options": [
+        "Correct. The response strengthens the stimulus, so the change grows until an outside event, sealing the tear, stops it.",
+        "Negative feedback would oppose the change and reduce platelet sticking. Here each step increases it.",
+        "Mass balance compares inputs and outputs of a substance. It does not describe a loop in which a response amplifies itself.",
+        "Feedforward control starts a response before a variable changes. Here the response follows and strengthens an existing change."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis", "communication"],
+    "q": "During labor, a woman's contractions grow stronger and more frequent for hours. Within minutes of the baby's delivery, the strong contractions stop. What best explains why they stop?",
+    "options": [
+      "Negative feedback has lowered the contractions back to their set point",
+      "The uterine muscle has used up all of its ATP",
+      "Delivery removes the stretch that was driving the loop",
+      "The control center has adjusted to a new set point"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Labor contractions are driven by positive feedback: stretch of the lower opening of the uterus causes hormone release, which strengthens contractions, which cause more stretch. A positive loop cannot stop itself. Delivery is an outside event that removes the stretch, so the stimulus disappears and the loop ends.",
+      "options": [
+        "The contractions grew stronger, not steadier, which is positive feedback. There is no set point that they are returned to.",
+        "Muscle does not simply run out of ATP within minutes of delivery. The loop stops because its stimulus is gone.",
+        "Correct. Removing the stretch removes the stimulus, and a positive loop ends when its stimulus is removed from outside.",
+        "Positive feedback does not settle at a set point. The loop ends because something outside it, delivery, removes the stimulus."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "misconception": "negative feedback means lowering a variable",
+    "q": "A person's blood pH falls to 7.30. Their lungs and kidneys respond in ways that raise the pH back toward 7.40. What kind of feedback is this?",
+    "options": [
+      "Positive feedback, because the pH goes up",
+      "Negative feedback, because the response opposes the fall",
+      "Positive feedback, because the change is corrected",
+      "Neither, because the pH is outside the normal range"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "\"Negative\" means the response opposes the stimulus, not that it lowers the variable. The stimulus was a fall in pH; the response raises it. Opposing the change back toward the set point is negative feedback.",
+      "options": [
+        "Positive feedback would push the pH further in the direction it was already moving, lower still. Raising it opposes the change.",
+        "Correct. A fall triggered a rise: the response opposes the change, which is negative feedback.",
+        "Correcting a change back toward the set point is what negative feedback does, not positive feedback.",
+        "Feedback loops are triggered exactly when a variable moves away from its set point; being outside the normal range is the stimulus."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-10",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every statement that is true of negative feedback.",
+    "options": [
+      "The response opposes the stimulus.",
+      "It moves the regulated variable back toward the set point.",
+      "It can raise a variable that has fallen.",
+      "It keeps going until an outside event stops it.",
+      "The response makes the original change larger."
+    ],
+    "correct": [0, 1, 2],
+    "why": {
+      "correct": "Negative feedback opposes the change. That pulls the variable back toward the set point, whichever direction it moved, and the loop switches itself off as the stimulus shrinks.",
+      "options": [
+        "True. Opposing the stimulus is the defining feature of negative feedback.",
+        "True. Opposing the change returns the variable toward its set point.",
+        "True. If the variable falls, the opposing response raises it, as when shivering-type muscle contractions warm a cold body.",
+        "False. Needing an outside event to stop is a feature of positive feedback. Negative feedback stops itself as the stimulus shrinks.",
+        "False. A response that enlarges the original change is positive feedback."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis", "mass-balance"],
+    "q": "Each day for a week, a person takes in 2.8 liters of water and loses 2.4 liters. What happens to the total water in their body over that week?",
+    "options": [
+      "It stays the same",
+      "It falls",
+      "It rises",
+      "It rises, then falls to the starting value"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Mass balance: change = input − output = 2.8 L − 2.4 L = +0.4 L per day. With input greater than output every day, body water builds up.",
+      "options": [
+        "The amount stays the same only if input equals output. Here input is larger by 0.4 liters a day.",
+        "Body water falls only when output exceeds input. Here output is smaller.",
+        "Correct. Input exceeds output, so water accumulates, about 0.4 liters a day.",
+        "Nothing in the numbers changes during the week. As long as input exceeds output, water keeps accumulating."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "For four days a person takes in 200 mmol of sodium a day, and their kidneys excrete 170 mmol a day. By how much does total body sodium change over the four days?",
+    "options": [
+      "It falls by 120 mmol",
+      "It rises by 30 mmol",
+      "It rises by 120 mmol",
+      "It rises by 800 mmol"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Change per day = input − output = 200 − 170 = +30 mmol. Over four days: 30 × 4 = +120 mmol.",
+      "options": [
+        "The sign is wrong. Input is larger than output, so sodium builds up rather than falling.",
+        "30 mmol is the change for one day. Multiply by four days.",
+        "Correct. +30 mmol per day for four days is +120 mmol.",
+        "800 mmol is the total input over four days. The change in the body is input minus output."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-13",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "This description of the loop that corrects a rise in body temperature contains one wrong step. Find it.",
+    "options": [
+      "Exercise warms the blood above the set point.",
+      "Warm-sensitive nerve endings in the skin fire more action potentials.",
+      "Sensory nerves carry the signals to the temperature control center in the brain.",
+      "The control center signals the skin's blood vessels to constrict.",
+      "More heat is lost from the skin, and temperature falls back toward the set point."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "To lose heat, the skin's blood vessels dilate, bringing warm blood to the surface. Constriction would keep warm blood away from the skin and reduce heat loss, which is the response to cold.",
+      "options": [
+        "This step is correct. A rise in temperature is the stimulus.",
+        "This step is correct. These nerve endings are the sensory receptors.",
+        "This step is correct. This is the afferent pathway to the control center.",
+        "This is the wrong step. A rise in temperature calls for vasodilation of skin vessels, not vasoconstriction.",
+        "This step is correct, but only if the vessels dilate. It is the response that opposes the stimulus."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-14",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis", "communication"],
+    "q": "Fill the gap in the loop. Stimulus → sensory receptor (sensor) → ______ → control center → efferent pathway → effector → response.",
+    "options": [
+      "Set point",
+      "Afferent pathway",
+      "Regulated variable",
+      "Target cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Information travels from the sensory receptor toward the control center along the afferent pathway (af- = toward).",
+      "options": [
+        "The set point is the value the control center compares against. It is not a step the signal travels along.",
+        "Correct. The afferent pathway links the sensory receptor to the control center.",
+        "The regulated variable is what the stimulus changes and the response corrects. It is not a pathway.",
+        "A target cell is a cell with a receptor protein for a messenger. It is not a slot in the loop."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "Mrs. Park, 84, lives alone without air conditioning. During a week-long heat wave her body temperature climbs to 39.5 °C. Tests show her nerves and temperature control center work normally, but her skin blood vessels dilate less and she sweats much less than a younger person. Where is her temperature loop failing?",
+    "options": [
+      "At the sensory receptors, which no longer detect heat",
+      "At the afferent pathway, which no longer carries signals",
+      "At the control center, which has lost its set point",
+      "At the effectors, which cannot remove heat fast enough"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Her sensors, pathways and control center work, so the command to lose heat is sent. Her effectors, the skin blood vessels and the glands that release sweat, respond weakly, and the heat load of the heat wave is larger than they can oppose. That is a homeostatic imbalance caused by overwhelmed effectors.",
+      "options": [
+        "Her nerves and control center work normally, and her body is responding to the heat, so detection is intact.",
+        "The case says her nerves work normally. Signals are reaching the control center.",
+        "The control center works normally and is sending commands. The problem is how strongly the effectors carry them out.",
+        "Correct. Weak vasodilation and little sweat mean the effectors cannot match the heat load."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-16",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "You step from a warm house into cold air and stay outside for an hour. Predict each variable, compared with just before you stepped out.",
+    "variables": [
+      {
+        "name": "Skin temperature in the first minute",
+        "answer": "down",
+        "why": "Cold air draws heat from your skin at once, before any loop has had time to respond. This fall is the stimulus."
+      },
+      {
+        "name": "Blood flow to the skin after the loop has responded",
+        "answer": "down",
+        "why": "The control center signals the smooth muscle of skin blood vessels to contract, and vasoconstriction keeps warm blood away from the surface."
+      },
+      {
+        "name": "Heat produced by skeletal muscles after the loop has responded",
+        "answer": "up",
+        "why": "Skeletal muscles, acting as effectors, contract in rapid small bursts (you shiver), and those contractions release heat."
+      },
+      {
+        "name": "Body temperature after an hour",
+        "answer": "none",
+        "why": "Reduced heat loss and increased heat production oppose the cooling, so negative feedback holds body temperature close to its set point, near where it started."
+      }
+    ]
+  },
+  {
+    "id": "anp-homeostasis-feedback-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "communication"],
+    "q": "A person loses a large volume of blood quickly, and their blood pressure falls. Stretch-sensitive sensory receptors in the walls of their large arteries detect the fall, and a control center in the brain responds. Predict each variable as the loop responds.",
+    "variables": [
+      {
+        "name": "Signals from the stretch-sensitive sensory receptors",
+        "answer": "down",
+        "why": "Lower pressure stretches the artery walls less, so the stretch-sensitive sensory receptors fire fewer action potentials; the control center reads this as a fall."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "The control center sends signals along the efferent pathway that speed up the heart, which pumps more blood per minute and raises pressure."
+      },
+      {
+        "name": "Diameter of small arteries",
+        "answer": "down",
+        "why": "The control center triggers vasoconstriction of small arteries. Narrower vessels raise resistance, which raises pressure back toward the set point."
+      }
+    ]
+  },
+  {
+    "id": "anp-homeostasis-feedback-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "What does the control center of a feedback loop do?",
+    "options": [
+      "It detects the change in the regulated variable",
+      "It carries out the response that changes the variable",
+      "It compares the input with the set point and sends commands",
+      "It carries signals from the sensor toward the brain"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The control center (integrating center) receives the input, compares it with the set point, and sends commands along the efferent pathway.",
+      "options": [
+        "Detecting the change is the job of the sensory receptor (sensor).",
+        "Carrying out the response is the job of the effector.",
+        "Correct. Comparing input with the set point and deciding on an output is what the control center does.",
+        "Carrying signals toward the control center is the job of the afferent pathway."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "Body temperature normally swings a little above and below 37 °C instead of staying perfectly flat. What best explains this?",
+    "options": [
+      "Negative feedback responds after a delay, so each correction overshoots slightly",
+      "Positive feedback takes over whenever temperature passes 37 °C",
+      "The set point changes randomly from minute to minute",
+      "The sensory receptors switch off once the set point is reached"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Detecting a change, sending signals and getting effectors working all take time. By the time the response takes hold, the variable has moved, so the correction carries it slightly past the set point, and the loop then corrects the other way. The result is small swings within the normal range.",
+      "options": [
+        "Correct. The time lag in a negative feedback loop produces small oscillations around the set point.",
+        "Positive feedback would push temperature further away, not back. The small swings come from negative feedback.",
+        "The set point shifts slowly over the day, not randomly minute to minute, and that would not explain swings around it.",
+        "Sensory receptors keep reporting the variable; that is how the loop detects the next swing. Switching off is not the cause."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "A patient's body temperature climbs to 42 °C. The heat speeds up chemical reactions in every cell, and faster reactions release more heat. What is the danger in this situation?",
+    "options": [
+      "Negative feedback will lower the temperature too far",
+      "A positive feedback loop drives temperature still higher",
+      "The set point will fall to match the new temperature",
+      "Mass balance forces heat output to equal heat input"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Higher temperature causes more heat release, which raises temperature further: the response strengthens the stimulus. When negative feedback has failed, this harmful positive feedback loop can drive temperature up until cells are damaged, so outside cooling is needed.",
+      "options": [
+        "Negative feedback has already failed to hold the temperature; the danger is that it is being overwhelmed, not that it overcorrects.",
+        "Correct. More heat causes more heat: a positive feedback loop that needs outside intervention to stop.",
+        "A set point does not fall to match a rising temperature. The problem is that the variable is being driven away from the set point.",
+        "Mass balance describes what happens when input and output differ; it does not force them to match. Here heat input exceeds output, so heat builds up."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "communication"],
+    "q": "When the blood carries too little oxygen, the kidneys release a hormone. The hormone travels in the blood to the blood-forming tissue inside the bones, which makes more red blood cells. In this loop, what is the efferent pathway?",
+    "options": [
+      "The kidney cells that detect low oxygen",
+      "The hormone traveling in the blood",
+      "The new red blood cells",
+      "The blood-forming tissue in the bones"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The efferent pathway carries the command from the control center to the effector. Here the command is a hormone carried in the blood from the kidneys to the blood-forming tissue. An efferent pathway can be a hormone as well as a nerve.",
+      "options": [
+        "The kidney cells that detect low oxygen act as the sensory receptor and the control center; they are not the pathway.",
+        "Correct. The hormone carries the command to the effector, so it is the efferent pathway.",
+        "More red blood cells carrying more oxygen is the response, not the pathway.",
+        "The blood-forming tissue carries out the command, so it is the effector."
+      ]
+    }
+  },
+  {
+    "id": "anp-homeostasis-feedback-22",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Which of these is regulated by positive feedback?",
+    "options": [
+      "Body temperature on a cold day",
+      "Blood pressure after standing up",
+      "Blood pH after exercise",
+      "Contractions of the uterus during labor"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In labor, stronger contractions cause more stretch, which causes more hormone release and stronger contractions still. The response strengthens the stimulus, which is positive feedback.",
+      "options": [
+        "Body temperature is held near its set point by negative feedback: cold triggers responses that warm you.",
+        "Blood pressure is held by negative feedback: a fall triggers responses that raise it.",
+        "Blood pH is held by negative feedback: a fall triggers responses that raise it back toward 7.40.",
+        "Correct. Labor contractions build on themselves until delivery ends the loop."
+      ]
+    }
+  }
+]

@@ -47,7 +47,8 @@ function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     if (SKIP_DIRS.has(name)) continue;
     const full = join(dir, name);
-    if (statSync(full).isDirectory()) walk(full, out);
+    // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;

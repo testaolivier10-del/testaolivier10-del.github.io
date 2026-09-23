@@ -1,0 +1,26 @@
+{
+  "os-12-24": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.24",
+      "section": "12.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9a6fe596e6ed7098011728b9813736cee03516d0"
+    },
+    "alt": "A graph of membrane potential in millivolts against time, marked with six numbered stages. The trace sits flat at minus 70 millivolts, creeps upward after a stimulus, shoots steeply up to about plus 30 millivolts, falls back just as steeply, dips below minus 70 for a moment, and then settles back at minus 70.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.24",
+    "labels": []
+  },
+  "os-12-25": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.25",
+      "section": "12.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5bb704dbd33867c5cf2af64de357e682ce789fc3"
+    },
+    "alt": "A graph of membrane potential against time with a dashed threshold line near minus 55 millivolts. On the left, upward bumps from minus 70 grow with stimulus size; a longer stimulus gives a wider bump, and only the largest bump crosses the threshold line. On the right, downward dips from minus 70 get deeper, reaching nearly minus 90 millivolts.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.25",
+    "labels": []
+  }
+}

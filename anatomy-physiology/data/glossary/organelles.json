@@ -1,0 +1,57 @@
+{
+  "organelle": {
+    "def": "A structure in the cytoplasm with a specific job; most are wrapped in their own membrane. The cytosol is the fluid part of the cytoplasm in which the organelles sit.",
+    "roots": [["organ", "organ"], ["-elle", "little"], ["-sol", "solution"]],
+    "say": "or-guh-NEL"
+  },
+  "ribosome": {
+    "def": "A tiny particle of protein and nucleic acid, with no membrane, that builds proteins by linking amino acids. Free ribosomes make proteins for the cytosol; ribosomes on the rough ER make proteins for membranes, lysosomes and export.",
+    "roots": [["ribo-", "from ribose, a sugar"], ["-some", "body"]],
+    "say": "RY-boh-sohm"
+  },
+  "endoplasmic-reticulum": {
+    "def": "A network of membrane sacs and tubes in the cytoplasm. Rough ER is studded with ribosomes and folds new proteins; smooth ER has no ribosomes and makes lipids, breaks down some drugs and stores calcium ions.",
+    "roots": [["endo-", "within"], ["-plasm", "formed material"], ["reticulum", "little net"]],
+    "say": "en-doh-PLAZ-mik reh-TIK-yoo-lum"
+  },
+  "vesicle": {
+    "def": "A small sphere of membrane that carries cargo within a cell. It buds off one membrane and fuses with another.",
+    "roots": [["vesica", "bladder"], ["-cle", "small"]],
+    "say": "VES-ih-kul"
+  },
+  "golgi": {
+    "def": "A stack of flattened membrane sacs that modifies, sorts and packages proteins arriving from the ER and sends them in vesicles to the plasma membrane, out of the cell, or to lysosomes. With the ER, vesicles, lysosomes and plasma membrane it forms the endomembrane system.",
+    "roots": [["endo-", "within"]],
+    "say": "GOHL-jee"
+  },
+  "lysosome": {
+    "def": "A membrane sac of digestive enzymes that work in acid. It digests material taken into the cell and recycles worn-out parts (autophagy); if lysosomes burst, the cell digests itself (autolysis).",
+    "roots": [["lysis", "breaking apart"], ["-some", "body"], ["auto-", "self"], ["-phagy", "eating"]],
+    "say": "LY-soh-sohm"
+  },
+  "peroxisome": {
+    "def": "A small membrane sac of oxidizing enzymes that breaks down very long fatty acids and some toxins. Catalase inside it destroys the hydrogen peroxide these reactions make. Hydrogen peroxide is a reactive oxygen species; free radicals are reactive molecules with an unpaired electron.",
+    "roots": [["peroxi-", "from hydrogen peroxide"], ["-some", "body"]],
+    "say": "per-OK-sih-sohm"
+  },
+  "mitochondrion": {
+    "def": "A bean-shaped organelle with a smooth outer membrane and a folded inner membrane that uses oxygen to oxidize fuel molecules and captures the released energy as ATP.",
+    "roots": [["mito-", "thread"], ["chondrion", "granule"]],
+    "say": "my-toh-KON-dree-on"
+  },
+  "cytoskeleton": {
+    "def": "The network of protein fibers in the cytoplasm: microfilaments (actin), intermediate filaments and microtubules. It shapes the cell, holds organelles, provides tracks for transport and, with motor proteins such as myosin, produces movement. Microtubules grow from the centrosome, which holds a pair of centrioles.",
+    "roots": [["cyto-", "cell"], ["centr-", "center"]],
+    "say": "sy-toh-SKEL-eh-ton"
+  },
+  "cilia-flagella": {
+    "def": "Mobile projections of the cell surface with a core of microtubules. Cilia are short and numerous and move fluid across the cell surface; a flagellum is long and single and moves the cell, as in a sperm.",
+    "roots": [["cilium", "eyelash"], ["flagellum", "little whip"]],
+    "say": "SIL-ee-uh; fluh-JEL-uh"
+  },
+  "microvilli": {
+    "def": "Tiny, nonmoving, finger-like folds of the plasma membrane with a core of actin that increase surface area for absorption. A dense layer of them forms a brush border.",
+    "roots": [["micro-", "small"]],
+    "say": "my-kroh-VIL-eye"
+  }
+}

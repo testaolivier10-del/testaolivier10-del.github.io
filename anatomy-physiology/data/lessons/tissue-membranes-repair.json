@@ -1,0 +1,79 @@
+{
+  "topic": "tissue-membranes-repair",
+  "hook": "<p>Jamal, 24, slices his palm on a kitchen knife. The bleeding stops in a few minutes, but within the hour the skin around the cut is red, warm, swollen and sore. A week later new skin covers the gap, and a month later a thin pale line is all that remains. Each of those changes has a cause you can trace, starting with the sheet of tissue the knife went through.</p>",
+  "prereq": [
+    {
+      "q": "A serous membrane lines which kind of space?",
+      "options": [
+        "A tube that opens to the outside of the body",
+        "A closed body cavity, such as the pleural cavity",
+        "The space inside a single cell"
+      ],
+      "correct": 1,
+      "why": "Serous membranes (the pleura, pericardium and peritoneum) line closed body cavities. Their parietal and visceral layers slide on a thin film of serous fluid.",
+      "review": "body-cavities"
+    },
+    {
+      "q": "Which connective tissue cell makes collagen fibers?",
+      "options": [
+        "Macrophage",
+        "Fibroblast",
+        "Adipocyte"
+      ],
+      "correct": 1,
+      "why": "Fibroblasts make the fibers and ground substance of connective tissue, including collagen. Macrophages engulf debris by phagocytosis, and adipocytes store fat.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "What happens to a blood vessel's diameter and the blood flow through it during vasodilation?",
+      "options": [
+        "Diameter increases and flow increases",
+        "Diameter decreases and flow increases",
+        "Diameter increases and flow decreases"
+      ],
+      "correct": 0,
+      "why": "In vasodilation the smooth muscle in the vessel wall relaxes, the vessel widens, and resistance falls, so more blood flows through it.",
+      "review": "muscle-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-4-4",
+    "caption": "The four tissue membranes: mucous membranes line tracts open to the outside, serous membranes line closed body cavities, the cutaneous membrane is your skin, and synovial membranes line the cavities of movable joints."
+  },
+  "chain": [
+    {
+      "cause": "A cut breaks blood vessels and kills some cells by necrosis.",
+      "effect": "A blood clot stops the bleeding, and damaged cells and mast cells release histamine and other chemical messengers."
+    },
+    {
+      "cause": "Histamine acts on nearby small arteries, capillaries and the smallest veins.",
+      "effect": "The small arteries dilate and the small vessels become leaky, so the area turns red, warm and swollen, and white blood cells move out into the tissue."
+    },
+    {
+      "cause": "Macrophages among those white blood cells engulf dead cells and debris by phagocytosis.",
+      "effect": "The cleared space fills with new capillaries and dividing fibroblasts."
+    },
+    {
+      "cause": "With the gap cleared and supplied with capillaries, surviving working cells beside it divide, if they are a type that can.",
+      "effect": "Where the framework survived, the new cells regenerate the tissue and its function returns."
+    },
+    {
+      "cause": "Where the working cells cannot divide, or the gap is too large for them to fill, the fibroblasts keep laying down collagen.",
+      "effect": "The collagen becomes scar tissue (fibrosis), which holds the tissue together but does not do the lost cells' work."
+    }
+  ],
+  "misconception": {
+    "wrong": "Once a wound has healed, the tissue is back to normal.",
+    "right": "Healing ends in either regeneration or fibrosis. Only regeneration restores the original working cells. Fibrosis fills the gap with collagen, and scar tissue does not do the lost cells' job: a scar in heart muscle cannot contract, and a scar in the liver does not do liver work. Whether a tissue regenerates depends mainly on whether its working cells can divide and whether its framework survives."
+  },
+  "check": [
+    "anp-tissue-membranes-repair-2",
+    "anp-tissue-membranes-repair-5",
+    "anp-tissue-membranes-repair-6",
+    "anp-tissue-membranes-repair-8",
+    "anp-tissue-membranes-repair-10",
+    "anp-tissue-membranes-repair-14",
+    "anp-tissue-membranes-repair-16"
+  ],
+  "summary": "<p>Tissue membranes are sheets that cover or line. Epithelial membranes pair an epithelium with connective tissue: the mucous membrane (mucosa, over a lamina propria) lines tracts open to the outside, the serous membrane lines closed cavities, and the cutaneous membrane is the dry, keratinized skin. The synovial membrane is a connective tissue membrane lining movable joints. Injury starts inflammation: histamine from mast cells dilates small arteries (redness, heat) and makes small vessels leaky (swelling), and chemical messengers cause pain. Macrophages clear the debris; then the tissue regenerates if its working cells (parenchyma) can divide and its framework survives, or fills with collagen as scar tissue (fibrosis) if not. Necrosis is injury-caused cell death that ruptures cells and triggers inflammation; apoptosis does neither.</p>"
+}

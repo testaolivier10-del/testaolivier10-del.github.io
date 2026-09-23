@@ -1,0 +1,27 @@
+{
+  "capillary-diffusion": {
+    "def": "The net movement of each solute between plasma and interstitial fluid, down its own concentration gradient. Lipid-soluble substances such as oxygen and carbon dioxide pass through the endothelial cells; small water-soluble ones pass through the clefts between them.",
+    "roots": [["capill-", "hair (capillaris = hair-like)"], ["diffus-", "spread out"]],
+    "say": ""
+  },
+  "capillary-hydrostatic": {
+    "def": "The pressure of blood against the inside of a capillary wall (CHP), also called blood hydrostatic pressure. It pushes fluid out of the capillary, and falls from about 35 mm Hg at the arteriole end to about 15 mm Hg at the venule end.",
+    "roots": [["hydr/o", "water"], ["-static", "standing, at rest"]],
+    "say": "hy-droh-STAT-ik"
+  },
+  "colloid-osmotic": {
+    "def": "The osmotic pressure made by dissolved proteins that cannot cross the wall between two fluids; also called oncotic pressure. In plasma (blood colloid osmotic pressure, BCOP) it is about 25 mm Hg, mostly from albumin, and it pulls fluid into capillaries.",
+    "roots": [["koll-", "glue"], ["-oid", "like"], ["onc/o", "mass, bulk"]],
+    "say": "KOL-oyd oz-MOT-ik; on-KOT-ik"
+  },
+  "net-filtration-capillary": {
+    "def": "The sum of the four Starling forces across a capillary wall: NFP = (CHP + IFCOP) − (BCOP + IFHP). A positive value means capillary filtration, fluid moving out; a negative value means capillary reabsorption, fluid moving in.",
+    "roots": [["filtr-", "strain through felt"]],
+    "say": ""
+  },
+  "edema": {
+    "def": "An excess of fluid in the interstitial spaces, which forms when fluid filters out of capillaries faster than it drains away. Causes are higher capillary pressure, lower plasma protein, leaky capillary walls, or blocked drainage; widespread swelling is systemic edema.",
+    "roots": [["oidema", "swelling (Greek)"]],
+    "say": "eh-DEE-muh"
+  }
+}

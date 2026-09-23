@@ -1,0 +1,37 @@
+{
+  "energy-forms": {
+    "def": "Energy is the capacity to do work. Potential energy is stored energy (chemical energy is potential energy held in the arrangement of atoms and bonds); kinetic energy is the energy of motion, including heat. An exergonic reaction releases energy, and an endergonic reaction takes energy in.",
+    "roots": [["kinet-", "motion"], ["ex-", "out"], ["end-", "within"], ["erg-", "work"]],
+    "say": "ex-er-GON-ik, en-der-GON-ik"
+  },
+  "metabolism": {
+    "def": "All the chemical reactions in your body. Catabolism breaks large molecules into smaller ones and usually releases energy; anabolism builds large molecules from smaller ones and usually needs energy.",
+    "roots": [["metabol-", "change"], ["-ism", "process"], ["cata-", "down"], ["ana-", "up"]],
+    "say": "meh-TAB-oh-lizm, kuh-TAB-oh-lizm, uh-NAB-oh-lizm"
+  },
+  "atp-hydrolysis": {
+    "def": "The splitting of ATP by water into ADP and phosphate, which releases energy because the products are more stable than ATP. An ATPase is an enzyme that does this; phosphorylation is attaching a phosphate group to another molecule, which changes its energy and shape.",
+    "roots": [["hydro-", "water"], ["-lysis", "splitting"], ["-ase", "enzyme"]],
+    "say": "fos-for-ih-LAY-shun"
+  },
+  "enzyme": {
+    "def": "A biological catalyst, almost always a protein. Its substrate binds a pocket called the active site, and the enzyme lowers the activation energy, the energy the reactants must gain before they can react.",
+    "roots": [["en-", "in"], ["zyme", "leaven (yeast)"], ["sub-", "under"]],
+    "say": "EN-zime"
+  },
+  "reaction-rates": {
+    "def": "The reaction rate is how fast reactants become products; more reactant, higher temperature or a catalyst raises it. A reversible reaction runs both ways, and at chemical equilibrium the forward and reverse rates are equal, so the amounts stop changing. In an exchange reaction, parts of two molecules trade places.",
+    "roots": [["equi-", "equal"], ["libra", "balance"], ["cata-", "down"], ["-lyst", "loosen"]],
+    "say": "ee-kwih-LIB-ree-um"
+  },
+  "enzyme-factors": {
+    "def": "Temperature, pH, the amounts of substrate and enzyme, helpers and inhibitors all change how fast an enzyme works. A cofactor is a non-protein helper, often a metal ion; a coenzyme is an organic cofactor, often made from a vitamin.",
+    "roots": [["co-", "together"]],
+    "say": ""
+  },
+  "redox": {
+    "def": "Oxidation is the loss of electrons and reduction is the gain of electrons; they always happen together in an oxidation-reduction reaction. Electron carriers such as NAD+ (which becomes NADH) and FAD pick up electrons in one reaction and deliver them in another.",
+    "roots": [["red-", "back"], ["-ox", "from oxygen"]],
+    "say": "REE-doks"
+  }
+}

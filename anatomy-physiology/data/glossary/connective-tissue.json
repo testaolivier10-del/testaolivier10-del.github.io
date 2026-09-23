@@ -1,0 +1,67 @@
+{
+  "connective-tissue": {
+    "def": "Tissue made of relatively few cells scattered in a large extracellular matrix of ground substance and fibers. Its groups are connective tissue proper (loose and dense), supportive connective tissue (cartilage and bone) and fluid connective tissue (blood).",
+    "roots": [["extra-", "outside"]],
+    "say": ""
+  },
+  "ct-fibers": {
+    "def": "Protein fibers in the matrix: collagen fibers are strong when pulled but barely stretch, elastic fibers (made of elastin) stretch and recoil, and reticular fibers are thin collagen strands that form supporting nets.",
+    "roots": [["kolla", "glue"], ["-gen", "producing"], ["reticul-", "little net"]],
+    "say": "KOL-uh-jen; ee-LAS-tin"
+  },
+  "fibroblast": {
+    "def": "The main cell of connective tissue proper, which makes fibers and ground substance. A less active one that maintains the matrix is called a fibrocyte.",
+    "roots": [["fibro-", "fiber"], ["-blast", "builder, germ"], ["-cyte", "cell"]],
+    "say": "FYE-broh-blast"
+  },
+  "macrophage-basic": {
+    "def": "A large cell in connective tissue that engulfs bacteria, dead cells and debris by phagocytosis and digests them. Any cell that eats this way is a phagocyte.",
+    "roots": [["macro-", "large"], ["phag-", "eat"], ["-cyte", "cell"]],
+    "say": "MAK-roh-fayj"
+  },
+  "loose-ct": {
+    "def": "Connective tissue with few, loosely woven fibers and plenty of ground substance. Its forms are areolar tissue (packing under epithelia), adipose tissue (fat cells, called adipocytes; brown fat makes heat) and reticular tissue (nets in soft organs).",
+    "roots": [["areola", "small open space"], ["adip-", "fat"]],
+    "say": "uh-REE-oh-lar; AD-ih-pose"
+  },
+  "dense-ct": {
+    "def": "Connective tissue packed with thick collagen bundles and few cells. In dense regular tissue the bundles run parallel (tendons, ligaments); in dense irregular tissue they run every way (dermis, organ capsules).",
+    "roots": [],
+    "say": ""
+  },
+  "tendon-ligament": {
+    "def": "Cords of dense regular connective tissue. A tendon joins muscle to bone, a ligament joins bone to bone, and an aponeurosis is a tendon spread into a flat sheet.",
+    "roots": [["apo-", "off, away from"], ["neur-", "sinew"]],
+    "say": "ap-oh-noo-ROH-sis"
+  },
+  "cartilage": {
+    "def": "Firm, flexible, avascular connective tissue whose chondrocytes sit in pockets in a water-rich matrix, usually wrapped in a perichondrium. Its types are hyaline cartilage (smooth), fibrocartilage (thick collagen) and elastic cartilage (elastic fibers).",
+    "roots": [["chondr-", "cartilage"], ["peri-", "around"], ["hyal-", "glass"]],
+    "say": "KON-droh-site; HYE-uh-lin"
+  },
+  "cartilage-example-sites": {
+    "def": "Hyaline cartilage forms articular cartilage on bone ends, the nose tip and the trachea's rings; fibrocartilage forms intervertebral discs and the menisci of the knee; elastic cartilage forms the ear flap and epiglottis.",
+    "roots": [["articul-", "joint"], ["inter-", "between"], ["menisc-", "crescent"]],
+    "say": "meh-NIS-kus; meh-NIS-kye"
+  },
+  "bone-tissue-basic": {
+    "def": "Osseous tissue: hard connective tissue whose matrix is collagen hardened by calcium-containing mineral crystals. It is rich in blood vessels, so it heals well.",
+    "roots": [["os-, oste-", "bone"]],
+    "say": "OSS-ee-us"
+  },
+  "blood-as-ct": {
+    "def": "Blood is a fluid connective tissue: red cells, white cells and platelets carried in a liquid matrix, plasma. Its fiber-forming protein stays dissolved until a clot forms.",
+    "roots": [],
+    "say": ""
+  },
+  "clot-basic": {
+    "def": "A jelly-like plug that seals a cut vessel: platelets clump at the damage, and a dissolved plasma protein forms sticky threads that trap red cells.",
+    "roots": [],
+    "say": ""
+  },
+  "mesenchyme": {
+    "def": "Loose embryonic connective tissue of star-shaped mesenchymal cells in a watery ground substance. These stem cells give rise to fibroblasts, fat cells, chondrocytes and the cells that build bone.",
+    "roots": [["mes-", "middle"], ["-enchyme", "poured-in tissue"]],
+    "say": "MEZ-en-kime"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "topic": "capillary-exchange",
+  "hook": "<p>Mrs. Lindqvist, 61, has had liver disease for years. Lately her shoes will not fit by evening, and when her nurse presses a thumb into the skin over her shin, the dent stays for half a minute. Her heart and veins are fine. Her blood test shows the real problem: her albumin, a protein her liver makes, is far below normal.</p>",
+  "prereq": [
+    {
+      "q": "What is hydrostatic pressure?",
+      "options": ["The pressure a fluid exerts on the walls of its container", "The pull of water toward a region with more solute", "The pressure of the air in the lungs"],
+      "correct": 0,
+      "why": "Hydrostatic pressure is the pressure a fluid exerts on the walls around it, such as blood pushing on a vessel wall. The pull of water toward more solute is osmotic pressure.",
+      "review": "gradients-flow"
+    },
+    {
+      "q": "A membrane lets water through but blocks a solute. The solute is more concentrated on side 1. Which way does water move by osmosis?",
+      "options": ["From side 1 to side 2", "From side 2 to side 1", "It does not move, because the solute cannot cross"],
+      "correct": 1,
+      "why": "Water moves by osmosis toward the side with more solute that cannot cross, which is side 1. The blocked solute is exactly what creates the osmotic pull.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "Which is the most abundant plasma protein?",
+      "options": ["Fibrinogen", "Hemoglobin", "Albumin"],
+      "correct": 2,
+      "why": "Albumin, made by the liver, is the most abundant plasma protein. Fibrinogen is a clotting protein present in smaller amounts, and hemoglobin is inside red blood cells, not dissolved in plasma.",
+      "review": "blood-composition"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-26-3",
+    "caption": "A capillary among body cells. Plasma inside the capillary and interstitial fluid between the cells are the two fluids capillary exchange connects. Hide the labels and name each fluid."
+  },
+  "chain": [
+    { "cause": "The heart's pumping keeps blood in the capillaries under pressure.", "effect": "Capillary hydrostatic pressure pushes water and small solutes out through the capillary wall: filtration." },
+    { "cause": "Plasma proteins, mainly albumin, are too large to pass the glycocalyx that lines the capillary.", "effect": "The proteins stay in the plasma and create blood colloid osmotic pressure, an osmotic pull back into the capillary." },
+    { "cause": "Capillary hydrostatic pressure is larger than the effective oncotic pull along most of the capillary.", "effect": "Fluid filters out, briskly near the arteriole end and slowly near the venule end." },
+    { "cause": "The filtered fluid collects in the interstitial spaces.", "effect": "It drains into a separate set of thin-walled vessels that return it to the veins near the heart." },
+    { "cause": "Plasma albumin falls, for example in liver disease.", "effect": "The oncotic pull shrinks, filtration outpaces drainage, and fluid collects between the cells: edema." }
+  ],
+  "misconception": {
+    "wrong": "Capillaries filter fluid at their arteriole end and reabsorb almost all of it at their venule end.",
+    "right": "That is the classic textbook picture, and exams still expect it. Direct measurements show that in most tissues at steady state, fluid filters out along almost the whole capillary. When pressure falls low enough to start reabsorption, proteins build up in the thin layer of fluid beneath the glycocalyx and stop it within minutes. The filtered fluid returns to the blood through a separate drainage route instead. Reabsorption does happen for a while after a sudden fall in capillary pressure, such as after bleeding, and all the time in a few special beds such as those in the kidneys and intestine."
+  },
+  "check": ["anp-capillary-exchange-2", "anp-capillary-exchange-4", "anp-capillary-exchange-7", "anp-capillary-exchange-8", "anp-capillary-exchange-13", "anp-capillary-exchange-15", "anp-capillary-exchange-18"],
+  "summary": "<p>Capillaries exchange materials in two ways. Diffusion moves each solute down its own gradient: oxygen and carbon dioxide straight through the endothelial cells, and small water-soluble solutes through the clefts between them. Bulk flow moves fluid, and four Starling forces set its direction: capillary hydrostatic pressure pushes fluid out, blood colloid osmotic pressure from plasma proteins pulls it in, and two small interstitial forces act the other way. Net filtration pressure is (CHP + IFCOP) − (BCOP + IFHP). In most tissues fluid filters out along the whole capillary and returns through a separate drainage route; exams still expect reabsorption at the venule end. Edema forms when capillary pressure rises, plasma protein falls, the wall leaks, or drainage is blocked.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Pathophysiology, the blood and blood vessels" }
+  ]
+}

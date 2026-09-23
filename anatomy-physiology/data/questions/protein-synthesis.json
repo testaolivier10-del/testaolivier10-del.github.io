@@ -1,0 +1,501 @@
+[
+  {
+    "id": "anp-protein-synthesis-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which feature is found in RNA but not in DNA?",
+    "options": [
+      "The base thymine",
+      "Two strands wound into a double helix",
+      "The base uracil",
+      "The sugar deoxyribose"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "RNA uses uracil where DNA uses thymine. Uracil pairs with adenine, just as thymine does.",
+      "options": [
+        "Thymine is a DNA base. RNA has uracil in its place.",
+        "DNA is the double helix. RNA is a single strand, though it can fold back on itself.",
+        "Correct. Uracil replaces thymine in RNA.",
+        "Deoxyribose is DNA's sugar. RNA's sugar is ribose, which has one more oxygen atom."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The template strand of a gene reads 3′-TACGGC-5′. What mRNA does RNA polymerase make from it?",
+    "options": [
+      "5′-ATGCCG-3′",
+      "5′-AUGCCG-3′",
+      "5′-UACGGC-3′",
+      "5′-TACGGC-3′"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "RNA polymerase pairs RNA nucleotides with the template: T→A, A→U, C→G, G→C. The mRNA is 5′-AUGCCG-3′, which begins with the start codon AUG.",
+      "options": [
+        "The pairing is right, but this uses T. RNA has no thymine; it places U opposite A.",
+        "Correct. Complementary bases, with U opposite A and the ends running opposite to the template.",
+        "This copies the template's own bases, swapping T for U. The mRNA must be complementary to the template, not the same.",
+        "This repeats the template itself. An mRNA is built from complementary RNA bases."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An mRNA codon reads 5′-GCA-3′. Which tRNA anticodon pairs with it?",
+    "options": [
+      "3′-CGU-5′",
+      "3′-CGT-5′",
+      "3′-GCA-5′",
+      "3′-UGC-5′"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The anticodon pairs base by base with the codon: G with C, C with G, A with U. Written in the opposite direction, it is 3′-CGU-5′.",
+      "options": [
+        "Correct. Each base pairs with its partner, and tRNA uses U.",
+        "tRNA is RNA, so it carries U, not T.",
+        "This is the codon itself. The anticodon must be complementary to the codon.",
+        "These bases are complementary but in the wrong order: the first base of the codon must pair with the base at the 3′ end of the anticodon."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An mRNA reads 5′-AUG UUU GGC UAA-3′. Using AUG = methionine (start), UUU = phenylalanine, GGC = glycine and UAA = stop, what does a ribosome make?",
+    "options": [
+      "Methionine–phenylalanine–glycine–stop",
+      "Phenylalanine–glycine",
+      "Methionine–phenylalanine–glycine",
+      "Methionine alone"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ribosome starts at AUG, which adds methionine, then reads UUU (phenylalanine) and GGC (glycine). At UAA no tRNA fits, a release protein frees the chain, and no amino acid is added.",
+      "options": [
+        "A stop codon is not an amino acid. It ends translation without adding anything.",
+        "The start codon AUG also codes for methionine, so the chain begins with methionine.",
+        "Correct. Three amino acids, then the chain is released at the stop codon.",
+        "AUG both starts translation and codes for methionine. The ribosome keeps reading until it reaches a stop codon."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A mutation changes the codon GGC to GGU. Both codons code for glycine. What happens to the protein?",
+    "options": [
+      "It is cut short at that codon",
+      "Every amino acid after that point changes",
+      "One amino acid is swapped for a different one",
+      "It is unchanged"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "This is a silent mutation. The genetic code is redundant, and a change in the third base often leaves the amino acid the same. The ribosome still adds glycine, so the protein is identical.",
+      "options": [
+        "A protein is cut short only if the new codon is a stop codon. GGU codes for glycine.",
+        "Every later codon changes only in a frameshift, when bases are added or deleted. A one-base substitution keeps the reading frame.",
+        "An amino acid swap is a missense mutation. Here the new codon names the same amino acid.",
+        "Correct. Same amino acid, same protein: a silent mutation."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Two mutations hit the same gene near its start. One deletes a single base. The other deletes three neighboring bases that make up one codon. Which comparison is most accurate?",
+    "options": [
+      "The single-base deletion shifts every later codon; the three-base deletion removes one amino acid",
+      "Both shift every later codon, so both proteins are equally scrambled",
+      "The three-base deletion shifts every later codon; the single-base deletion removes one amino acid",
+      "Neither changes the protein: the code is redundant"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The code is read in groups of three from the start codon. Losing one base shifts the reading frame, so every codon after it is misread. Losing a whole codon keeps the frame: the protein lacks one amino acid and the rest reads normally.",
+      "options": [
+        "Correct. One base lost is a frameshift; three bases lost is an in-frame deletion.",
+        "Deleting a multiple of three bases leaves the reading frame intact, so only the three-base deletion keeps the rest of the protein normal.",
+        "This reverses the two. It is the loss of one base, not three, that throws off the triplet reading.",
+        "Redundancy lets some base substitutions go unnoticed. It cannot hide a lost base or a lost codon."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a mutation means the protein is not made at all",
+    "q": "A 42-year-old man has lung damage and liver injury. Both copies of his alpha-1 antitrypsin gene carry the same missense mutation. Liver cells normally make this protein and secrete it into the blood. His liver cells transcribe and translate the gene at a normal rate. Where does most of his alpha-1 antitrypsin end up?",
+    "options": [
+      "Secreted into his blood at a normal level",
+      "Trapped in the ER of his liver cells",
+      "In the nucleus, stuck behind the nuclear pores",
+      "Nowhere: the gene is no longer transcribed"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The swapped amino acid makes the protein misfold in the ER. Misfolded protein is held back in the ER, where much of it clumps, so little moves on through the Golgi apparatus to be secreted. That explains both problems: low blood levels leave the lungs unprotected, and the trapped protein injures the liver cells.",
+      "options": [
+        "If it were secreted at a normal level, his lungs would be protected and his liver cells would not be injured. Very little reaches the blood.",
+        "Correct. The misfolded protein is held in the ER instead of continuing along the secretory pathway.",
+        "The protein is made on ribosomes docked on the rough ER and enters the ER; it never goes into the nucleus. The mutation affects folding, not the pores.",
+        "The stem says transcription and translation run normally. The problem arises after translation, when the protein folds."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man eats wild mushrooms, and two days later he has signs of liver failure. The mushrooms contained a toxin that blocks the RNA polymerase that copies protein-coding genes. Which step fails first in his liver cells?",
+    "options": [
+      "Copying genes into mRNA",
+      "Reading mRNA codons on ribosomes",
+      "Copying DNA before the cell divides",
+      "Releasing proteins by exocytosis"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "RNA polymerase carries out transcription. With it blocked, no new mRNA is made. Existing mRNAs are broken down within hours, so protein production then collapses too, and the liver cells, which are exposed first and make proteins at a high rate, die.",
+      "options": [
+        "Correct. Blocking RNA polymerase stops transcription directly.",
+        "Ribosomes keep reading the mRNA already present until it is broken down. Translation fails later, as a consequence.",
+        "DNA is copied by DNA polymerase, a different enzyme.",
+        "Exocytosis falls later, once there are no new proteins to ship. It is not the step the toxin blocks."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order for a pancreas cell making a digestive enzyme and releasing it from the cell.",
+    "options": [
+      "RNA polymerase transcribes the gene",
+      "The spliceosome removes introns and joins exons",
+      "The mRNA leaves the nucleus through a nuclear pore",
+      "A ribosome begins translation, and its signal sequence docks it on the rough ER",
+      "Transport vesicles carry the protein from the ER to the Golgi apparatus",
+      "A secretory vesicle fuses with the plasma membrane by exocytosis"
+    ],
+    "why": {
+      "correct": "The gene is transcribed and the RNA spliced in the nucleus. The finished mRNA exits through a pore. Translation begins in the cytosol, and the signal sequence sends the ribosome to the rough ER. The protein passes to the Golgi apparatus in transport vesicles and leaves the cell by exocytosis."
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-10",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student describes translation. Which step contains the error?",
+    "options": [
+      "The small ribosome half binds the mRNA and moves to the start codon, AUG.",
+      "Each tRNA's anticodon pairs with a matching codon on the DNA.",
+      "The ribosome forms a peptide bond between the growing chain and the new amino acid.",
+      "At a stop codon, a release protein frees the finished polypeptide."
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Translation reads mRNA, not DNA. tRNA anticodons pair with codons on the mRNA, on a ribosome in the cytoplasm, while the DNA stays in the nucleus.",
+      "options": [
+        "This step is right. Translation starts at the AUG codon.",
+        "This is the error. Anticodons pair with mRNA codons; the DNA never leaves the nucleus.",
+        "This step is right. The rRNA of the large ribosome half forms the peptide bond.",
+        "This step is right. No tRNA matches a stop codon, so a release protein ends translation."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-11",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every step that takes place inside the nucleus.",
+    "options": [
+      "Transcription",
+      "Splicing out introns",
+      "Translation",
+      "Adding sugar chains in the Golgi apparatus",
+      "Adding the cap and tail to the mRNA"
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ],
+    "why": {
+      "correct": "Transcription, splicing and the addition of the cap and tail all happen in the nucleus. Only the finished mRNA leaves. Translation and the secretory pathway happen in the cytoplasm.",
+      "options": [
+        "In the nucleus. The DNA template stays there.",
+        "In the nucleus. The spliceosome works on the RNA before it leaves.",
+        "Not in the nucleus. Ribosomes translate mRNA in the cytoplasm.",
+        "Not in the nucleus. The Golgi apparatus is in the cytoplasm.",
+        "In the nucleus. The cap and tail are added before the mRNA exits through a pore."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "misconception": "different cell types contain different genes",
+    "q": "Pancreas cells make large amounts of a digestive enzyme, while skin cells from the same person make none. What best explains the difference?",
+    "options": [
+      "The skin cells lost that gene long ago",
+      "The skin cells carry a mutation in that gene",
+      "Each cell type carries its own transcription factors",
+      "The pancreas cells carry many extra copies of the gene"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Both cell types carry the same genome. Pancreas cells hold transcription factors that switch the enzyme's gene on, and skin cells do not, so only pancreas cells transcribe it.",
+      "options": [
+        "Your body cells keep the whole genome. The gene is present in skin cells but switched off.",
+        "A mutation would affect the gene's sequence, not a whole cell type's pattern of use. The gene is normal in both.",
+        "Correct. Different transcription factors switch on different sets of genes.",
+        "Both cell types carry the same number of copies. The difference is in how much the gene is transcribed."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Human cells have about 20,000 protein-coding genes but make many more distinct proteins. Which process contributes most directly to this?",
+    "options": [
+      "Alternative splicing of mRNA",
+      "Each codon naming several amino acids",
+      "DNA replication before division",
+      "Polyribosomes reading one mRNA"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Alternative splicing keeps or skips different exons, so one gene yields several mRNAs and several related proteins. Changes to proteins after translation add still more variety.",
+      "options": [
+        "Correct. One gene, several spliced versions, several proteins.",
+        "The code is unambiguous: each codon names only one amino acid. Several codons can name the same amino acid, which is the reverse.",
+        "Replication copies the same genes. It creates no new proteins.",
+        "A polyribosome makes many copies of the same protein from one mRNA, not different proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Under a microscope, a cell shows single mRNA molecules each dotted with ten ribosomes. What does this tell you?",
+    "options": [
+      "The mRNA is being spliced by ten spliceosomes",
+      "Each ribosome makes one tenth of the whole protein",
+      "Ten different proteins come from one mRNA molecule",
+      "Ten copies of one protein are being built at once"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "This is a polyribosome. Each ribosome starts at the start codon and reads the whole message, so each builds a full copy of the same protein. It makes many copies quickly from one message.",
+      "options": [
+        "Splicing happens in the nucleus before translation, and spliceosomes are not ribosomes.",
+        "Each ribosome reads the mRNA from start codon to stop codon and makes a complete chain.",
+        "The ribosomes all read the same codons in the same frame, so they make the same protein.",
+        "Correct. Many ribosomes, many copies of one protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-15",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step. The ribosome moves along the mRNA, adding amino acids → the ribosome reaches UGA → ______ → the ribosome halves separate.",
+    "options": [
+      "A tRNA carrying a stop amino acid enters the ribosome",
+      "The ribosome returns to the start codon",
+      "A release protein frees the polypeptide",
+      "RNA polymerase detaches from the mRNA"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "UGA is a stop codon. No tRNA pairs with it. A release protein binds instead and frees the finished polypeptide from the last tRNA.",
+      "options": [
+        "No tRNA and no amino acid match a stop codon. That is what makes it a stop.",
+        "The ribosome does not reread the message. It lets go of the chain and comes apart.",
+        "Correct. A release protein ends translation at the stop codon.",
+        "RNA polymerase works on DNA in the nucleus. It plays no part in translation."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Researchers remove the signal sequence from the gene of an enzyme that a cell normally secretes. Where does the enzyme now end up?",
+    "options": [
+      "Outside the cell, released as before",
+      "In the cytosol",
+      "In the plasma membrane",
+      "In lysosomes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The signal sequence docks the ribosome on the rough ER. Without it, the ribosome stays free and releases the finished enzyme into the cytosol, so it never enters the secretory pathway.",
+      "options": [
+        "Secretion requires entry into the ER, which depends on the signal sequence. Without it, the enzyme cannot reach exocytosis.",
+        "Correct. No signal sequence, no ER entry: the enzyme stays in the cytosol.",
+        "Membrane proteins also enter through the ER, which needs the signal sequence.",
+        "Lysosome proteins also pass through the ER and Golgi apparatus first, which needs the signal sequence."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A drug blocks ribosomes in a pancreas cell that secretes a digestive enzyme. Predict the change in each variable over the next hour.",
+    "variables": [
+      {
+        "name": "Rate at which new polypeptides are made",
+        "answer": "down",
+        "why": "Ribosomes form the peptide bonds. With them blocked, no new amino acid chains are built."
+      },
+      {
+        "name": "Amount of newly made enzyme arriving at the Golgi apparatus",
+        "answer": "down",
+        "why": "Proteins reach the Golgi apparatus only after being made on ribosomes docked on the rough ER. No new chains means none enter the ER, so fewer vesicles bring new enzyme to the Golgi."
+      },
+      {
+        "name": "Number of genes in the nucleus",
+        "answer": "none",
+        "why": "The drug acts on ribosomes in the cytoplasm. The DNA in the nucleus, and so the genes, are untouched."
+      }
+    ]
+  },
+  {
+    "id": "anp-protein-synthesis-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Of the 64 codons in the genetic code, how many specify an amino acid?",
+    "options": [
+      "20",
+      "64",
+      "3",
+      "61"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "61 codons name amino acids and 3 are stop codons (UAA, UAG, UGA).",
+      "options": [
+        "20 is the number of amino acids. Most amino acids have more than one codon.",
+        "64 is the total. Three of them are stop codons that name no amino acid.",
+        "3 is the number of stop codons.",
+        "Correct. 64 minus the 3 stop codons."
+      ]
+    }
+  },
+  {
+    "id": "anp-protein-synthesis-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A single-base change turns the tenth codon of a 400-codon gene from UAC into UAG. What is the most likely result?",
+    "options": [
+      "A protein with one different amino acid",
+      "A normal protein",
+      "A nine-amino-acid chain that does not work",
+      "A longer protein than normal, with extra amino acids"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "UAG is a stop codon. This is a nonsense mutation. The ribosome stops at codon 10, releasing only the first nine amino acids, far too short to fold into the working protein.",
+      "options": [
+        "That would be a missense mutation. UAG names no amino acid; it ends translation.",
+        "The protein ends 390 codons early, so it cannot be normal.",
+        "Correct. A nonsense mutation near the start gives a short, useless chain.",
+        "A stop codon ends translation. It cannot make the chain longer."
+      ]
+    }
+  }
+]

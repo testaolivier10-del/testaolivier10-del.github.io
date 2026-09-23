@@ -1,0 +1,42 @@
+{
+  "chambers": {
+    "def": "The four spaces inside the heart: two upper atria that receive blood from veins and two lower ventricles that pump blood into arteries. Surface grooves (the coronary and interventricular sulci) mark their boundaries; auricles, pectinate muscles and trabeculae carneae are features of their walls.",
+    "roots": [["atri-", "entrance hall"], ["ventricul-", "little belly"], ["auricul-", "little ear"], ["pectin-", "comb"], ["trabecula", "little beam"], ["carne-", "flesh"], ["sulcus", "groove"]],
+    "say": "AY-tree-um; VEN-trih-kul; truh-BEK-yoo-lee KAR-nee-ee"
+  },
+  "septa": {
+    "def": "The dividing walls of the heart: the interatrial septum between the atria, the thick interventricular septum between the ventricles, and the atrioventricular septum between the atria and ventricles.",
+    "roots": [["saept-", "fence"], ["inter-", "between"]],
+    "say": "SEP-tuh"
+  },
+  "av-valves": {
+    "def": "The valves between each atrium and its ventricle: the tricuspid valve on the right and the mitral (bicuspid) valve on the left. Chordae tendineae tie their cusps to papillary muscles, which keep the cusps from flipping into the atria when the ventricles contract.",
+    "roots": [["tri-", "three"], ["bi-", "two"], ["cusp", "point"], ["chord-", "string"], ["tendin-", "tendon"], ["papilla", "nipple"]],
+    "say": "MY-trul; KOR-dee ten-DIN-ee-ee"
+  },
+  "semilunar-valves": {
+    "def": "The pulmonary and aortic valves, at the exits from the right and left ventricles. Each has three pocket-shaped cusps that fill with blood slipping back toward the ventricle and seal the opening; they have no cords or muscles.",
+    "roots": [["semi-", "half"], ["lun-", "moon"]],
+    "say": "sem-ee-LOO-nur"
+  },
+  "fossa-ovalis": {
+    "def": "A shallow oval dip in the interatrial septum, seen from the right atrium. It marks where an opening between the atria sealed after birth.",
+    "roots": [["fossa", "shallow pit"], ["ovalis", "oval"]],
+    "say": "FOSS-uh oh-VAL-iss"
+  },
+  "great-vessels": {
+    "def": "The large vessels at the base of the heart: the superior and inferior venae cavae (into the right atrium), the pulmonary trunk (out of the right ventricle, splitting into the pulmonary arteries), the pulmonary veins (into the left atrium) and the aorta (out of the left ventricle).",
+    "roots": [["vena", "vein"], ["cava", "hollow"], ["pulmon-", "lung"]],
+    "say": "VEE-nuh KAY-vuh; ay-OR-tuh"
+  },
+  "wall-thickness": {
+    "def": "The left ventricle wall is about three times thicker than the right because it pumps into the high-resistance vessels of the whole body and must generate about five times the pressure; heart muscle thickens when it works against a heavier load. Both ventricles pump the same volume per beat.",
+    "roots": [],
+    "say": ""
+  },
+  "cardiac-skeleton": {
+    "def": "Four rings of dense connective tissue around the heart valves, joined into one sheet between the atria and the ventricles. It holds the valve openings in shape, anchors the heart muscle, and blocks electrical signals from crossing straight from atria to ventricles.",
+    "roots": [["cardi/o", "heart"], ["-ac", "pertaining to"]],
+    "say": ""
+  }
+}
