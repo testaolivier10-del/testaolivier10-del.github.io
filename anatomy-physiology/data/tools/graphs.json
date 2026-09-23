@@ -6353,7 +6353,7 @@
     "gradients"
    ],
    "intro": "One quiet breath of 4 seconds: the change in lung volume (top) and the alveolar and intrapleural pressures, written relative to the air outside (bottom). 0 means equal to atmospheric pressure.",
-   "alt": "Two panels sharing a time axis from 0 to 4 seconds. Top: lung volume rises smoothly from 0 to 0.5 liters at 2 seconds and falls back to 0 at 4 seconds. Bottom: alveolar pressure dips to −1 millimeter of mercury at 1 second, returns to 0 at 2 seconds, rises to +1 at 3 seconds and returns to 0 at 4 seconds. Intrapleural pressure starts at −4, falls to −6 at 2 seconds and returns to −4 at 4 seconds, staying below atmospheric throughout.",
+   "alt": "Two panels sharing a time axis from 0 to 4 seconds. Top: lung volume rises smoothly from 0 to 0.5 liters at 2 seconds and falls back to 0 at 4 seconds. Bottom: alveolar pressure dips to −1 millimeter of mercury at 1 second, returns to 0 at 2 seconds, rises to +1 at 3 seconds and returns to 0 at 4 seconds. Intrapleural pressure starts at −4, falls to about −6 by 1 second and stays near −6 until the end of the breath in, then rises back to about −4 by 3 seconds, staying below atmospheric throughout. The gap between the two pressure curves tracks lung volume.",
    "x": {
     "min": 0,
     "max": 4,
@@ -6434,7 +6434,7 @@
     },
     {
      "y": {
-      "min": -8,
+      "min": -9,
       "max": 3,
       "label": "Pressure vs atmospheric",
       "unit": "mm Hg",
@@ -6516,15 +6516,15 @@
         ],
         [
          0.5,
-         -4.3
-        ],
-        [
-         1,
          -5
         ],
         [
+         1,
+         -6
+        ],
+        [
          1.5,
-         -5.7
+         -6.4
         ],
         [
          2,
@@ -6532,15 +6532,15 @@
         ],
         [
          2.5,
-         -5.7
-        ],
-        [
-         3,
          -5
         ],
         [
+         3,
+         -4
+        ],
+        [
          3.5,
-         -4.3
+         -3.6
         ],
         [
          4,
@@ -6764,15 +6764,15 @@
          ],
          [
           0.5,
-          -4.6
+          -5.3
          ],
          [
           1,
-          -6
+          -7
          ],
          [
           1.5,
-          -7.4
+          -8.1
          ],
          [
           2,
@@ -6780,15 +6780,15 @@
          ],
          [
           2.5,
-          -7.4
+          -6.7
          ],
          [
           3,
-          -6
+          -5
          ],
          [
           3.5,
-          -4.6
+          -3.9
          ],
          [
           4,

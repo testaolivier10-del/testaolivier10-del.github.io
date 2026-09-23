@@ -32,7 +32,7 @@
     { "cause": "Odorant molecules from food rise up the back of your throat into your nose.", "effect": "They dissolve in the mucus over the olfactory epithelium and bind odorant receptor proteins on the cilia of olfactory sensory neurons." },
     { "cause": "An activated odorant receptor protein switches on a G protein.", "effect": "The G protein switches on an enzyme that makes cAMP, and cAMP opens cation channels in the cilia." },
     { "cause": "Na+ and Ca2+ flow in, and the Ca2+ opens chloride channels so that Cl− flows out.", "effect": "The neuron depolarizes. Receptor potentials like this spread to the axon and fire action potentials." },
-    { "cause": "Action potentials travel along the axons through the cribriform plate.", "effect": "The axons synapse in the olfactory bulb, where all neurons with the same receptor protein converge on one cluster of synapses." },
+    { "cause": "Action potentials travel along the axons through the cribriform plate.", "effect": "The axons synapse in the olfactory bulb, where all neurons with the same receptor protein converge on a few small clusters of synapses." },
     { "cause": "The olfactory tract carries the sorted signals to the olfactory cortex and the limbic system, with no first stop in the thalamus.", "effect": "Your brain combines the smell with the taste signals arriving through cranial nerves VII, IX and X, and you perceive one flavor." }
   ],
   "misconception": {

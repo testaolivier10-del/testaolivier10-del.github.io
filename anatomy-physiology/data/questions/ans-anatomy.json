@@ -122,7 +122,7 @@
     "q": "Where are the cell bodies of sympathetic preganglionic neurons?",
     "options": [
       "In the brainstem and in sacral segments S2–S4",
-      "In the lateral horn of spinal segments T1–L2",
+      "In the lateral horn of the spinal cord, segments T1–L2",
       "In the chain ganglia beside the vertebral column",
       "In the ventral horn at every spinal segment"
     ],
@@ -255,7 +255,7 @@
       "A sympathetic preganglionic fiber entering the chain",
       "A parasympathetic postganglionic fiber heading to the arm",
       "A somatic motor fiber heading to an arm muscle",
-      "An unmyelinated sympathetic postganglionic fiber"
+      "An unmyelinated sympathetic postganglionic fiber returning from the chain"
     ],
     "correct": 3,
     "why": {

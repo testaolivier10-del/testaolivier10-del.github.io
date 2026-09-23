@@ -119,7 +119,8 @@
         545,
         146,
         47
-      ]
+      ],
+      "note": "Panel (b): OpenStax draws two leaders from this one label; the upper one ends on the gray ramus, but the lower one ends on the white ramus (the branch the solid preganglionic axon enters by). The label is kept because the text names the structure correctly; the lower leader is a printed error (docs/anp-needs-author.md)."
     },
     {
       "id": "spinal-nerve-b",
@@ -209,6 +210,30 @@
         120,
         27
       ]
+    },
+    {
+      "id": "chain-ganglion-no-synapse",
+      "name": "Sympathetic chain ganglion",
+      "accept": [
+        "no synapse in spinal ganglion",
+        "spinal ganglion",
+        "chain ganglion",
+        "sympathetic trunk ganglion",
+        "paravertebral ganglion",
+        "chain ganglia"
+      ],
+      "lines": [
+        50,
+        52
+      ],
+      "box": [
+        936,
+        949,
+        156,
+        50
+      ],
+      "concept": "sympathetic-anatomy",
+      "note": "Panel (c): OpenStax prints 'No synapse in spinal ganglion', but the leader ends on the sympathetic chain (trunk) ganglion that the preganglionic axon passes through; 'spinal ganglion' usually means the dorsal root ganglion."
     },
     {
       "id": "prevertebral-ganglion",

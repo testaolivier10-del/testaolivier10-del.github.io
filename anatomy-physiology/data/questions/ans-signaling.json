@@ -9,10 +9,10 @@
     ],
     "q": "Which autonomic neurons release acetylcholine?",
     "options": [
-      "Only parasympathetic preganglionic neurons",
+      "Only parasympathetic neurons, both preganglionic and postganglionic",
       "All preganglionic neurons, all parasympathetic postganglionic neurons, and sympathetic postganglionic neurons to sweat glands",
-      "All postganglionic neurons of both divisions",
-      "Only neurons that end on the adrenal medulla"
+      "All postganglionic neurons of both the sympathetic and parasympathetic divisions",
+      "Only the preganglionic neurons that end on the adrenal medulla"
     ],
     "correct": 1,
     "why": {
@@ -79,9 +79,9 @@
         "why": "A slower, weaker heart pumps less blood into the arteries each minute, so arterial pressure falls."
       },
       {
-        "name": "Diameter of small arteries in the skin",
+        "name": "Sweating",
         "answer": "none",
-        "why": "Skin vessels constrict through alpha-1 receptor proteins, which a beta-1 blocker does not touch."
+        "why": "Eccrine sweat glands respond to acetylcholine on muscarinic receptor proteins, which a beta-1 blocker does not touch."
       },
       {
         "name": "Pupil diameter",
@@ -90,7 +90,7 @@
       }
     ],
     "why": {
-      "correct": "A beta-1 blocker removes the sympathetic push on the heart only. Heart rate and force fall, so blood pressure falls. Targets that respond through alpha or muscarinic receptor proteins, such as skin vessels and the pupil, are unchanged."
+      "correct": "A beta-1 blocker removes the sympathetic push on the heart only. Heart rate and force fall, so blood pressure falls. Targets that respond through alpha or muscarinic receptor proteins, such as the sweat glands and the pupil, are unchanged."
     }
   },
   {
@@ -183,11 +183,11 @@
     "core": [
       "communication"
     ],
-    "q": "A farmworker is poisoned by an organophosphate insecticide, which blocks acetylcholinesterase. He is drooling and sweating, his pupils are pinpoint, his heart rate is slow, and his muscles twitch and grow weak. He is given atropine. Which problem will atropine not fix?",
+    "q": "A farmworker is poisoned by an organophosphate insecticide, which blocks acetylcholinesterase. He is drooling and sweating, his pupils are pinpoint, his heart rate is slow, his airways are filling with secretions, and his muscles twitch and grow weak. He is given atropine. Which problem will atropine not fix?",
     "options": [
       "The heart rate of 42 beats per minute",
       "The drooling",
-      "The pinpoint pupils",
+      "The airway secretions",
       "The muscle twitching and weakness"
     ],
     "correct": 3,
@@ -196,7 +196,7 @@
       "options": [
         "Atropine blocks the muscarinic receptor proteins through which acetylcholine slows the heart, so the rate rises.",
         "Saliva secretion is driven by acetylcholine on muscarinic receptor proteins, which atropine blocks.",
-        "The circular muscle of the iris narrows the pupil through muscarinic receptor proteins, which atropine blocks.",
+        "Airway glands secrete in response to acetylcholine on muscarinic receptor proteins, which atropine blocks. Drying these secretions is the main goal of atropine treatment.",
         "Correct. Skeletal muscle responds through nicotinic receptor proteins, which atropine leaves untouched."
       ]
     }
@@ -247,7 +247,7 @@
     "q": "Ms. Reyes has a lung condition in which her small airways narrow easily. Days after starting propranolol for her blood pressure, she becomes short of breath and wheezy. What is the most likely cause?",
     "options": [
       "Propranolol activated her alpha-1 receptor proteins",
-      "Propranolol blocked beta-2 receptor proteins on her airway smooth muscle",
+      "Propranolol blocked the beta-2 receptor proteins on her airway smooth muscle",
       "Propranolol blocked muscarinic receptor proteins in her airways",
       "Propranolol slowed her heart so much that fluid backed up into her lungs"
     ],
@@ -455,7 +455,7 @@
     "q": "What kind of receptor protein is the nicotinic receptor protein on a postganglionic neuron?",
     "options": [
       "A G protein–coupled receptor",
-      "A ligand-gated ion channel",
+      "A ligand-gated channel that lets sodium in",
       "A voltage-gated calcium channel",
       "An enzyme that splits acetylcholine"
     ],

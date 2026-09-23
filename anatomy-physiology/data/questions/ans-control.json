@@ -36,7 +36,7 @@
     ],
     "q": "In a resting adult, atropine raises the heart rate by about 30 beats a minute, but a beta blocker lowers it by only a few beats. What does this show?",
     "options": [
-      "At rest, vagal tone on the heart is much stronger than sympathetic tone",
+      "At rest, vagal tone on the heart is much stronger than its sympathetic tone",
       "The heart carries no beta-1 receptor proteins while the body is at rest",
       "Atropine directly stimulates beta-1 receptor proteins",
       "The sympathetic division is silent at rest"
@@ -62,20 +62,20 @@
       "homeostasis",
       "communication"
     ],
-    "q": "A patient is given an injection of phenylephrine, an alpha-1 agonist, into a vein. Predict each variable, first in the first few seconds and then about a minute later, once autonomic reflexes have acted. Compare each with the value before the injection.",
+    "q": "A patient is given an injection of phenylephrine, an alpha-1 agonist, into a vein. Predict each variable, first as the direct effect of the drug, before any reflex acts, and then about a minute later, once autonomic reflexes have acted. Compare each with the value before the injection.",
     "variables": [
       {
-        "name": "Diameter of skin blood vessels, first few seconds",
+        "name": "Diameter of skin blood vessels, direct drug effect",
         "answer": "down",
         "why": "Phenylephrine activates alpha-1 receptor proteins on vessel smooth muscle, which contracts and narrows the vessels."
       },
       {
-        "name": "Blood pressure, first few seconds",
+        "name": "Blood pressure, direct drug effect",
         "answer": "up",
         "why": "Narrower vessels throughout the body raise the pressure the heart must push against, so arterial pressure rises."
       },
       {
-        "name": "Heart rate, first few seconds",
+        "name": "Heart rate, direct drug effect",
         "answer": "none",
         "why": "Phenylephrine does not act on beta-1 receptor proteins, so it does not directly change the heart rate."
       },
@@ -313,7 +313,7 @@
     ],
     "q": "Select every effect of strong sympathetic activation.",
     "options": [
-      "Blood vessels in skeletal muscle widen",
+      "Blood vessels in the skin narrow",
       "The liver releases glucose into the blood",
       "The pupils narrow",
       "Sweating increases",
@@ -327,9 +327,9 @@
       5
     ],
     "why": {
-      "correct": "Sympathetic activation widens skeletal muscle vessels and airways (beta-2, mostly epinephrine), releases glucose from the liver (beta-2), and drives sweating (muscarinic, through cholinergic sympathetic fibers). It widens the pupils and slows the gut.",
+      "correct": "Sympathetic activation narrows skin vessels (alpha-1), widens the airways (beta-2, mostly epinephrine), releases glucose from the liver (beta-2), and drives sweating (muscarinic, through cholinergic sympathetic fibers). It widens the pupils and slows the gut.",
       "options": [
-        "Correct. Beta-2 receptor proteins and chemicals from working muscle widen these vessels.",
+        "Correct. Norepinephrine from the vasomotor nerves acts on alpha-1 receptor proteins and contracts the smooth muscle of skin vessels.",
         "Correct. Epinephrine on beta-2 receptor proteins makes the liver break down glycogen.",
         "Narrowing the pupils is a parasympathetic effect. Sympathetic activity widens them through alpha-1 receptor proteins.",
         "Correct. Sympathetic cholinergic fibers drive the eccrine sweat glands.",
@@ -361,7 +361,7 @@
       3
     ],
     "why": {
-      "correct": "Parasympathetic activation slows the heart, speeds gut movement and secretion, and relaxes the gut sphincters, all through muscarinic receptor proteins. Widened pupils, glucose release and sweating are sympathetic effects.",
+      "correct": "Parasympathetic activation slows the heart and speeds gut movement and secretion, mostly through muscarinic receptor proteins. It also relaxes the gut sphincters. Widened pupils, glucose release and sweating are sympathetic effects.",
       "options": [
         "Correct. More vagal tone slows the heart.",
         "Correct. This is the rest-and-digest pattern.",
@@ -540,21 +540,21 @@
       "homeostasis",
       "communication"
     ],
-    "q": "On a hot afternoon, a resting hiker's skin flushes and she sweats, yet her heart rate is unchanged. What does this show about the sympathetic division?",
+    "q": "On a warm afternoon, a resting hiker's skin flushes and she sweats, yet her pupils do not widen and her gut keeps working. What does this show about the sympathetic division?",
     "options": [
       "It acts only as an all-or-none mass discharge",
       "Its output can be targeted at some effectors without the others",
       "Sweating and skin blood flow are controlled by the parasympathetic division",
-      "Heat blocks beta-1 receptor proteins in the heart"
+      "Heat blocks the alpha-1 receptor proteins of the iris"
     ],
     "correct": 1,
     "why": {
-      "correct": "The hypothalamus can raise sympathetic output to the sweat glands and change its output to the skin vessels so they widen, without changing its output to the heart. Mass discharge is one mode, not the only one.",
+      "correct": "The hypothalamus can raise sympathetic output to the sweat glands and change its output to the skin vessels so they widen, without changing its output to the iris or the gut. Mass discharge is one mode, not the only one.",
       "options": [
         "Mass discharge happens in emergencies, but the sympathetic division also adjusts single targets.",
         "Correct. Temperature control uses selective sympathetic output.",
         "Sweat glands and skin vessels have no parasympathetic supply.",
-        "Heat does not block beta-1 receptor proteins. The heart rate is unchanged because the heart is not being targeted."
+        "Heat does not block alpha-1 receptor proteins. The pupils are unchanged because the iris is not being targeted."
       ]
     }
   },
@@ -571,7 +571,7 @@
     "options": [
       "It falls, because sympathetic input to the heart is removed",
       "It stays the same, because the two effects cancel exactly",
-      "It rises, because the larger vagal brake is removed",
+      "It rises, because removing both tones takes away the larger vagal brake",
       "It stops, because the heart needs autonomic input to beat"
     ],
     "correct": 2,

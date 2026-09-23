@@ -32,7 +32,7 @@
     "say": "VAY-gul"
   },
   "sympathetic-effects": {
-    "def": "The fight-or-flight pattern: faster, stronger heartbeat (through the cardiac accelerator nerves), constricted skin and gut vessels and dilated skeletal muscle vessels (through the vasomotor nerves and epinephrine), wider airways and pupils, glucose release from the liver, sweating, and slowed gut and bladder emptying. It can be widespread and is prolonged by adrenal epinephrine.",
+    "def": "The fight-or-flight pattern: faster, stronger heartbeat (through the cardiac accelerator nerves), constricted skin and gut vessels (through the vasomotor nerves) and dilated vessels in working skeletal muscle (through local chemicals and epinephrine), wider airways and pupils, glucose release from the liver, sweating, and slowed gut and bladder emptying. It can be widespread and is prolonged by adrenal epinephrine.",
     "roots": [
       [
         "vas-",

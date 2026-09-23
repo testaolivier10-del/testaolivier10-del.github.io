@@ -342,7 +342,7 @@
     "q": "A soccer player is kicked hard on the outer side of the knee, just below the joint. Afterward his toes drag when he walks, and he lifts his knee high with each step. Which nerve was injured?",
     "options": [
       "Femoral nerve",
-      "Tibial nerve behind the knee",
+      "Tibial nerve",
       "Obturator nerve",
       "Common fibular nerve"
     ],
@@ -366,21 +366,21 @@
       "structure-function",
       "interdependence"
     ],
-    "q": "After a diving accident, a young man is paralyzed below the neck, yet he keeps breathing on his own using his diaphragm. Between which limits is his cord injury most likely?",
+    "q": "After a diving accident, a young man cannot grip with his hands or move his trunk or legs, yet he breathes on his own using his diaphragm. Which level of cord injury best fits?",
     "options": [
-      "Above C3",
-      "At C5 or below",
-      "At T12 or below",
-      "Anywhere in the cervical cord"
+      "C2",
+      "C6",
+      "T6",
+      "L1"
     ],
     "correct": 1,
     "why": {
-      "correct": "The phrenic nerve (C3 to C5) is the diaphragm’s only motor supply. An injury at or below C5 leaves most or all of those segments working, so the diaphragm still contracts.",
+      "correct": "The phrenic nerve (C3 to C5) is the diaphragm’s only motor supply. A C6 injury leaves those segments connected to the brain, so the diaphragm still contracts. Everything below it loses control from the brain, including the hand segments (C8 and T1), the trunk and the legs.",
       "options": [
-        "An injury above C3 cuts every phrenic nerve segment off from the brain, so the diaphragm stops and he could not breathe on his own.",
-        "Correct. With C3 to C5 spared, the phrenic nerves still drive the diaphragm.",
-        "At T12 or below his arms would still work, but he is paralyzed below the neck.",
-        "Not anywhere: an injury above C3 would stop diaphragm breathing, so the level must be low in the neck."
+        "A C2 injury is above C3, so it cuts every phrenic nerve segment off from the brain. The diaphragm would stop and he would need a ventilator.",
+        "Correct. C3 to C5 are spared, so the phrenic nerves still drive the diaphragm, but the hands, trunk and legs lose control.",
+        "A T6 injury is below the hand segments (C8 and T1), so his grip would still work.",
+        "An L1 injury spares the hands and most of the trunk; only the legs and lower body would be affected."
       ]
     }
   },
@@ -563,7 +563,7 @@
     "options": [
       "In the right T10 dorsal root ganglion",
       "In the right T10 ventral horn",
-      "In the skin cells along the whole band of the rash",
+      "In the skin cells of the rash",
       "In the T10 ventral root"
     ],
     "correct": 0,
@@ -646,7 +646,7 @@
       "It forms where a sensory dorsal root and a motor ventral root join",
       "Each of its axons carries signals in both directions",
       "It contains both myelinated and unmyelinated axons",
-      "It carries both somatic axons and autonomic axons to the organs it reaches"
+      "It carries both somatic and autonomic axons"
     ],
     "correct": 0,
     "why": {
@@ -655,7 +655,7 @@
         "Correct. The two roots join to form it.",
         "Each axon carries action potentials in one direction only. The nerve is mixed because it holds two kinds of axons, not two-way axons.",
         "Nerves do hold both myelinated and unmyelinated axons, but \"mixed\" refers to sensory plus motor axons.",
-        "Some spinal nerves carry autonomic axons, but that is not why they are called mixed."
+        "Every spinal nerve does carry some autonomic axons, but that is not why it is called mixed."
       ]
     }
   },

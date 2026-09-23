@@ -74,7 +74,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "The optic chiasm is the X-shaped crossing just in front of the pituitary gland, where axons from the nasal half of each retina cross to the other side.",
+      "correct": "The optic chiasm is the X-shaped crossing just above the pituitary gland, in front of its stalk, where axons from the nasal half of each retina cross to the other side.",
       "options": [
         "The optic tracts run back from the chiasm toward the thalamus; the pinned structure is where the two nerves meet.",
         "The lateral geniculate nucleus is the relay in the thalamus, farther back along the pathway.",
@@ -338,10 +338,10 @@
     "misconception": "glaucoma damages the lens",
     "q": "Mrs. Adeyemi, 66, has had no eye pain, but her optometrist finds raised pressure in both eyes and loss of vision at the edges of both visual fields. The drainage of aqueous humor is slow. Which cells are being lost to cause her vision loss?",
     "options": [
-      "Rods in the periphery of the retina",
+      "Rods in the periphery of the retina that see the edges of the field",
       "Retinal ganglion cells, whose axons pass through the optic disc",
       "Cells of the lens",
-      "Cells of the ciliary processes"
+      "Cells of the ciliary processes that secrete the aqueous humor"
     ],
     "correct": 1,
     "why": {
@@ -562,10 +562,10 @@
     "figure": "os-14-18",
     "q": "In very dim light only rods work. Using the curves, why can you see objects but not their colors?",
     "options": [
-      "All rods share one pigment, so their response cannot distinguish wavelength from brightness",
-      "Rods absorb no light below 500 nm",
+      "Rods share one pigment, so they cannot tell wavelength from brightness",
+      "Rods absorb no light at wavelengths shorter than about 500 nm",
       "Rods absorb every wavelength equally",
-      "Rods peak at a wavelength no object reflects"
+      "Rods absorb best at a wavelength that almost no object in nature reflects"
     ],
     "correct": 0,
     "why": {

@@ -7413,12 +7413,12 @@
        "follow": {
         "q": "Sympathetic preganglionic neurons leave the spinal cord only from T1 to L2, yet sweat glands in the skin of the neck and of the foot get sympathetic fibers. How?",
         "options": [
-         "Preganglionic axons climb or descend in the chain ganglia before synapsing",
-         "Cranial nerves carry sympathetic fibers to the neck and the foot",
-         "The adrenal medulla sends sympathetic axons to the skin",
-         "Neck and foot skin are supplied from the celiac ganglion"
+         "Cranial nerves carry sympathetic fibers up to the neck and down to the foot",
+         "The adrenal medulla sends sympathetic axons out to the skin",
+         "Preganglionic axons climb or descend in the chain before synapsing",
+         "Neck and foot skin are both supplied from the celiac ganglion"
         ],
-        "correct": 0,
+        "correct": 2,
         "why": "Preganglionic axons that enter the chain can run up or down it and synapse in a ganglion at another level, so the chain carries sympathetic output from T1 to L2 to every level of the body. Cranial nerves carry parasympathetic, not sympathetic, fibers; the adrenal medulla releases hormones into the blood rather than sending axons; and the celiac ganglion serves abdominal organs.",
         "level": "apply"
        }
@@ -7441,13 +7441,13 @@
        "follow": {
         "q": "A tumor at the top of the chest damages the sympathetic chain in the neck on one side. Which sign would you expect on that side of the face?",
         "options": [
-         "A wide pupil",
+         "A wide pupil on that side",
+         "Heavy sweating of that side of the face",
          "A small pupil and a drooping eyelid",
-         "Excess sweating",
-         "A fast heart rate"
+         "A faster heart rate"
         ],
-        "correct": 1,
-        "why": "The superior cervical ganglion supplies the head, including the muscle that widens the pupil and a small muscle that helps hold the eyelid up. Losing it leaves a small pupil, a slight droop and dry skin on that side. A wide pupil and excess sweating are what sympathetic activity causes, not its loss, and the heart is not supplied from this ganglion alone.",
+        "correct": 2,
+        "why": "The superior cervical ganglion supplies the head, including the muscle that widens the pupil and a small muscle that helps hold the eyelid up. Losing it leaves a small pupil, a slight droop and dry skin on that side. A wide pupil and heavy sweating are what sympathetic activity causes, not its loss, and the heart is not supplied from this ganglion alone.",
         "level": "analyze"
        }
       },
@@ -8029,12 +8029,12 @@
        "follow": {
         "q": "A preganglionic axon enters the chain at T1 and synapses in a chain ganglion at the same level. Where does its postganglionic axon go next to reach the sweat glands of the skin?",
         "options": [
-         "Back into the spinal nerve through the gray ramus",
-         "Into the dorsal root",
-         "Down a splanchnic nerve",
-         "Into the ventral horn"
+         "Into the dorsal root and back into the cord",
+         "Down a splanchnic nerve to a ganglion in front of the spine",
+         "Into the ventral horn of the gray matter",
+         "Back into the spinal nerve through the gray ramus"
         ],
-        "correct": 0,
+        "correct": 3,
         "why": "The postganglionic axon leaves the chain ganglion through the gray ramus communicans and joins the spinal nerve, which carries it out to the skin. The dorsal root carries sensory axons into the cord, splanchnic nerves carry preganglionic axons to collateral ganglia, and the ventral horn is inside the cord.",
         "level": "apply"
        }
@@ -8060,12 +8060,12 @@
        "follow": {
         "q": "Why are white rami communicantes found only from T1 to L2, while gray rami are found at every spinal level?",
         "options": [
-         "White rami carry preganglionic axons, which leave the cord only from T1 to L2",
-         "White rami carry sensory axons from the chest only",
-         "Gray rami carry preganglionic axons from the brainstem",
-         "The lumbar and sacral cord have no spinal nerves"
+         "White rami carry sensory axons from the chest and upper abdomen only",
+         "Gray rami carry preganglionic axons that come down from the brainstem",
+         "The lumbar and sacral cord have no spinal nerves that could carry them",
+         "Only T1 to L2 has the preganglionic neurons that white rami carry"
         ],
-        "correct": 0,
+        "correct": 3,
         "why": "White rami carry the myelinated preganglionic axons into the chain, and those neurons exist only in the T1 to L2 lateral horns. Gray rami carry postganglionic axons back out to every spinal nerve so that the whole body wall and limbs get sympathetic fibers. White rami are not sensory routes, the brainstem sends no preganglionic axons into the chain, and every level has spinal nerves.",
         "level": "analyze"
        }
@@ -8233,6 +8233,27 @@
        "fn": "The spinal cord in cross section. The sympathetic preganglionic neuron's cell body sits in the lateral horn of the gray matter, and its axon leaves through the ventral root."
       },
       {
+       "id": "chain-ganglion-no-synapse",
+       "name": "Sympathetic chain ganglion",
+       "accept": [
+        "no synapse in spinal ganglion",
+        "spinal ganglion",
+        "chain ganglion",
+        "sympathetic trunk ganglion",
+        "paravertebral ganglion",
+        "chain ganglia"
+       ],
+       "box": [
+        936,
+        949,
+        156,
+        50
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A ganglion of the sympathetic chain. Here the preganglionic axon passes straight through it without synapsing, on its way into a splanchnic nerve. (OpenStax prints 'spinal ganglion' on this label; the structure is the chain ganglion, not the dorsal root ganglion.)"
+      },
+      {
        "id": "prevertebral-ganglion",
        "name": "Prevertebral ganglion",
        "accept": [
@@ -8252,12 +8273,12 @@
        "follow": {
         "q": "A preganglionic axon passes through a chain ganglion without synapsing and continues in a splanchnic nerve. Where does it synapse?",
         "options": [
+         "In the dorsal root ganglion beside the cord",
          "In a prevertebral (collateral) ganglion",
-         "In the dorsal root ganglion",
-         "In the ventral horn",
-         "It never synapses before the organ"
+         "In the ventral horn of the spinal cord",
+         "It does not synapse before reaching the organ"
         ],
-        "correct": 0,
+        "correct": 1,
         "why": "Axons in the splanchnic nerves synapse in the prevertebral ganglia in front of the spine, such as the celiac ganglion. The dorsal root ganglion holds sensory neurons, the ventral horn is inside the cord, and only the adrenal medulla is reached with no synapse on the way.",
         "level": "recall"
        }
@@ -8278,6 +8299,1942 @@
        "concept": "sympathetic-anatomy",
        "taught": "ans-anatomy",
        "fn": "A nerve of preganglionic sympathetic axons that pass through the chain without synapsing and run forward to a prevertebral ganglion in front of the spine."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eye-anatomy",
+   "title": "Eye anatomy",
+   "chapter": "special-senses",
+   "topic": "vision",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-14-13",
+     "topic": "vision",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "eyebrow",
+       "name": "Eyebrow",
+       "accept": [
+        "brow"
+       ],
+       "box": [
+        864,
+        76,
+        103,
+        28
+       ],
+       "concept": null,
+       "fn": "A ridge of short, thick hairs over the brow. It sheds sweat and falling particles to the side, away from the eye."
+      },
+      {
+       "id": "orbicularis-oculi",
+       "name": "Orbicularis oculi muscle",
+       "accept": [
+        "orbicularis oculi"
+       ],
+       "box": [
+        863,
+        125,
+        180,
+        50
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The ring of skeletal muscle inside the eyelids and around the orbit. It closes the eye, gently when you blink and tightly when you squeeze the eyes shut."
+      },
+      {
+       "id": "levator-palpebrae-superioris",
+       "name": "Levator palpebrae superioris muscle",
+       "accept": [
+        "levator palpebrae superioris",
+        "levator palpebrae"
+       ],
+       "box": [
+        863,
+        207,
+        202,
+        54
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "A thin muscle that runs from the back of the orbit into the upper eyelid. It raises the upper eyelid to open the eye.",
+       "follow": {
+        "q": "A patient cannot fully raise the right upper eyelid, but can still squeeze both eyes shut. Which muscle is most likely weak?",
+        "options": [
+         "Orbicularis oculi",
+         "Levator palpebrae superioris",
+         "Superior rectus",
+         "Inferior oblique"
+        ],
+        "correct": 1,
+        "why": "The levator palpebrae superioris lifts the upper eyelid, so its weakness leaves the lid drooping. The orbicularis oculi closes the eye, and it still works because the eyes squeeze shut. The superior rectus and inferior oblique move the eyeball, not the lid.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "palpebral-conjunctiva",
+       "name": "Palpebral conjunctiva",
+       "accept": [],
+       "box": [
+        864,
+        268,
+        235,
+        28
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "The part of the conjunctiva that lines the inner surface of the eyelids. It folds back onto the eyeball as the conjunctiva that covers the white of the eye."
+      },
+      {
+       "id": "eyelashes",
+       "name": "Eyelashes",
+       "accept": [
+        "eyelash",
+        "lashes"
+       ],
+       "box": [
+        864,
+        318,
+        120,
+        28
+       ],
+       "concept": null,
+       "fn": "Rows of stiff hairs along the eyelid margins. Touching them sets off a blink, which keeps particles off the surface of the eye."
+      },
+      {
+       "id": "cornea",
+       "name": "Cornea",
+       "accept": [],
+       "box": [
+        863,
+        395,
+        91,
+        24
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The clear, curved front of the fibrous tunic, continuous with the sclera. It has no blood vessels and does most of the eye's bending (refraction) of incoming light."
+      },
+      {
+       "id": "conjunctiva",
+       "name": "Conjunctiva",
+       "accept": [
+        "bulbar conjunctiva",
+        "ocular conjunctiva"
+       ],
+       "box": [
+        863,
+        575,
+        136,
+        29
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "A thin mucous membrane covering the white of the eye and lining the eyelids. It stops at the edge of the cornea and keeps the eye's surface moist.",
+       "follow": {
+        "q": "In conjunctivitis (\"pink eye\") the conjunctiva is inflamed. Which part of the eye's surface stays clear, because the conjunctiva does not cover it?",
+        "options": [
+         "The white of the eye",
+         "The inside of the eyelids",
+         "The cornea",
+         "The corners of the eye"
+        ],
+        "correct": 2,
+        "why": "The conjunctiva covers the white of the eye and lines the eyelids, but it stops at the edge of the cornea. Its tiny blood vessels swell in conjunctivitis and turn the white and the lid linings red, while the cornea, which has no blood vessels, stays clear.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-14-14",
+     "topic": "vision",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "superior-oblique-muscle",
+       "name": "Superior oblique muscle",
+       "accept": [
+        "superior oblique"
+       ],
+       "box": [
+        115,
+        4,
+        145,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle whose tendon loops through the trochlea before attaching to the top of the eyeball. It rotates the eye so it looks down and out."
+      },
+      {
+       "id": "trochlea",
+       "name": "Trochlea",
+       "accept": [
+        "trochlea of the orbit"
+       ],
+       "box": [
+        529,
+        16,
+        82,
+        20
+       ],
+       "concept": null,
+       "fn": "A small loop of cartilage (\"pulley\") at the upper inner corner of the orbit. The superior oblique tendon passes through it and changes direction toward the eyeball."
+      },
+      {
+       "id": "superior-oblique-tendon",
+       "name": "Superior oblique tendon",
+       "accept": [
+        "tendon of superior oblique"
+       ],
+       "box": [
+        529,
+        50,
+        146,
+        41
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "The tendon of the superior oblique muscle. It passes through the trochlea, turns back and attaches to the top of the eyeball, so the muscle pulls from the front of the orbit.",
+       "follow": {
+        "q": "Why does the superior oblique pull the front of the eyeball down, even though the muscle itself lies along the top of the orbit?",
+        "options": [
+         "Its tendon loops through the trochlea, so the pull comes from the front of the orbit",
+         "It attaches to the bottom of the eyeball",
+         "It starts from the floor of the orbit",
+         "It works only together with the inferior rectus"
+        ],
+        "correct": 0,
+        "why": "The tendon runs forward to the trochlea, turns back through it and attaches to the top of the eyeball behind its center. The pull therefore comes from the front inner corner of the orbit, which rotates the eye to look down and out. The muscle attaches to the top of the eyeball and starts at the back of the orbit, not the floor.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "superior-rectus-muscle",
+       "name": "Superior rectus muscle",
+       "accept": [
+        "superior rectus"
+       ],
+       "box": [
+        530,
+        105,
+        136,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the top of the eyeball. It turns the eye upward."
+      },
+      {
+       "id": "lateral-rectus-muscle",
+       "name": "Lateral rectus muscle",
+       "accept": [
+        "lateral rectus"
+       ],
+       "box": [
+        530,
+        160,
+        123,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the outer side of the eyeball. It turns the eye outward, away from the nose; the abducens nerve (VI) supplies it.",
+       "follow": {
+        "q": "A patient's left eye cannot turn outward, away from the nose. Which muscle, and which nerve, is most likely affected?",
+        "options": [
+         "Medial rectus, oculomotor nerve (III)",
+         "Lateral rectus, abducens nerve (VI)",
+         "Superior oblique, trochlear nerve (IV)",
+         "Inferior rectus, oculomotor nerve (III)"
+        ],
+        "correct": 1,
+        "why": "The lateral rectus is the only muscle that turns the eye outward, and the abducens nerve supplies it alone. The medial rectus turns the eye inward, the superior oblique turns it down and out with help from others, and the inferior rectus turns it down.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "common-tendinous-ring",
+       "name": "Common tendinous ring",
+       "accept": [],
+       "box": [
+        11,
+        337,
+        129,
+        44
+       ],
+       "concept": null,
+       "fn": "A ring of tendon at the back of the orbit around the optic nerve. The four rectus muscles all start from it."
+      },
+      {
+       "id": "inferior-rectus-muscle",
+       "name": "Inferior rectus muscle",
+       "accept": [
+        "inferior rectus"
+       ],
+       "box": [
+        218,
+        338,
+        124,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the bottom of the eyeball. It turns the eye downward."
+      },
+      {
+       "id": "inferior-oblique-muscle",
+       "name": "Inferior oblique muscle",
+       "accept": [
+        "inferior oblique"
+       ],
+       "box": [
+        406,
+        338,
+        132,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the floor of the orbit under the eyeball to its outer side. It rotates the eye so it looks up and out."
+      },
+      {
+       "id": "superior-rectus-anterior",
+       "name": "Superior rectus",
+       "accept": [
+        "superior rectus muscle"
+       ],
+       "box": [
+        701,
+        18,
+        82,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the top of the eyeball. It turns the eye upward."
+      },
+      {
+       "id": "trochlea-anterior",
+       "name": "Trochlea",
+       "accept": [
+        "trochlea of the orbit"
+       ],
+       "box": [
+        1019,
+        18,
+        82,
+        20
+       ],
+       "concept": null,
+       "fn": "A small loop of cartilage (\"pulley\") at the upper inner corner of the orbit. The superior oblique tendon passes through it and changes direction toward the eyeball."
+      },
+      {
+       "id": "superior-oblique-anterior",
+       "name": "Superior oblique",
+       "accept": [
+        "superior oblique muscle"
+       ],
+       "box": [
+        1020,
+        77,
+        82,
+        43
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle whose tendon loops through the trochlea before attaching to the top of the eyeball. It rotates the eye so it looks down and out."
+      },
+      {
+       "id": "lateral-rectus-anterior",
+       "name": "Lateral rectus",
+       "accept": [
+        "lateral rectus muscle"
+       ],
+       "box": [
+        627,
+        233,
+        122,
+        20
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the outer side of the eyeball. It turns the eye outward, away from the nose; the abducens nerve (VI) supplies it."
+      },
+      {
+       "id": "medial-rectus",
+       "name": "Medial rectus",
+       "accept": [
+        "medial rectus muscle"
+       ],
+       "box": [
+        981,
+        233,
+        121,
+        20
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the side of the eyeball nearest the nose. It turns the eye inward, toward the nose."
+      },
+      {
+       "id": "inferior-oblique-anterior",
+       "name": "Inferior oblique",
+       "accept": [
+        "inferior oblique muscle"
+       ],
+       "box": [
+        684,
+        289,
+        71,
+        43
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the floor of the orbit under the eyeball to its outer side. It rotates the eye so it looks up and out."
+      },
+      {
+       "id": "inferior-rectus-anterior",
+       "name": "Inferior rectus",
+       "accept": [
+        "inferior rectus muscle"
+       ],
+       "box": [
+        955,
+        289,
+        69,
+        40
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the bottom of the eyeball. It turns the eye downward."
+      }
+     ]
+    },
+    {
+     "figure": "os-14-15",
+     "topic": "vision",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "posterior-cavity",
+       "name": "Posterior cavity (vitreous chamber)",
+       "accept": [
+        "posterior segment"
+       ],
+       "box": [
+        866,
+        59,
+        177,
+        41
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "The large space behind the lens, filled with the clear, jelly-like vitreous humor. The vitreous holds the eyeball's shape and presses the retina flat against the choroid."
+      },
+      {
+       "id": "superior-rectus-muscle",
+       "name": "Superior rectus muscle",
+       "accept": [
+        "superior rectus"
+       ],
+       "box": [
+        0,
+        110,
+        138,
+        42
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the top of the eyeball. It turns the eye upward."
+      },
+      {
+       "id": "scleral-venous-sinus",
+       "name": "Scleral venous sinus (canal of Schlemm)",
+       "accept": [
+        "canal of schlemm",
+        "schlemm canal",
+        "schlemm's canal"
+       ],
+       "box": [
+        880,
+        125,
+        188,
+        45
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "A ring-shaped channel where the sclera meets the cornea. Aqueous humor drains into it and back into the blood; if drainage fails, pressure in the eye rises (glaucoma).",
+       "follow": {
+        "q": "The scleral venous sinus becomes blocked. What happens inside the eye?",
+        "options": [
+         "Aqueous humor builds up and pressure in the eye rises",
+         "Vitreous humor drains away and the eye softens",
+         "The lens can no longer change shape",
+         "The pupil stays wide open"
+        ],
+        "correct": 0,
+        "why": "The ciliary processes keep making aqueous humor, which normally drains through the scleral venous sinus. If it cannot drain, the fluid builds up and pressure rises (glaucoma), which can damage the optic nerve. The vitreous humor is not drained this way, and lens shape and pupil size depend on muscles.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "sclera",
+       "name": "Sclera",
+       "accept": [
+        "white of the eye"
+       ],
+       "box": [
+        0,
+        171,
+        63,
+        20
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The tough, white outer coat of the eyeball (fibrous tunic). It protects the eye, keeps its shape and gives the extrinsic eye muscles an attachment."
+      },
+      {
+       "id": "suspensory-ligaments-upper",
+       "name": "Suspensory ligaments",
+       "accept": [
+        "suspensory ligament",
+        "zonule fibers",
+        "zonules",
+        "ciliary zonule"
+       ],
+       "box": [
+        880,
+        190,
+        201,
+        25
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "Fine fibers (zonule fibers) that run from the ciliary body to the edge of the lens and hold it in place. Their pull on the lens sets how round it is."
+      },
+      {
+       "id": "choroid",
+       "name": "Choroid",
+       "accept": [],
+       "box": [
+        0,
+        228,
+        75,
+        20
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The dark, blood-rich layer of the vascular tunic between the sclera and the retina. It feeds the outer retina and absorbs stray light."
+      },
+      {
+       "id": "lens",
+       "name": "Lens",
+       "accept": [],
+       "box": [
+        881,
+        236,
+        53,
+        21
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "A clear, flexible disc behind the iris, held by the suspensory ligaments. It changes shape to fine-tune focus for near and far objects (accommodation)."
+      },
+      {
+       "id": "cornea",
+       "name": "Cornea",
+       "accept": [],
+       "box": [
+        880,
+        268,
+        76,
+        20
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The clear, curved front of the fibrous tunic, continuous with the sclera. It has no blood vessels and does most of the eye's bending (refraction) of incoming light."
+      },
+      {
+       "id": "retina",
+       "name": "Retina",
+       "accept": [
+        "neural tunic"
+       ],
+       "box": [
+        0,
+        284,
+        64,
+        21
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The inner, neural tunic of the eyeball. It holds the rods and cones that turn light into electrical signals, and the neurons that send those signals out through the optic nerve."
+      },
+      {
+       "id": "iris",
+       "name": "Iris",
+       "accept": [],
+       "box": [
+        881,
+        300,
+        37,
+        20
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The colored ring of the vascular tunic in front of the lens. Its two sets of smooth muscle change the size of the pupil and so control how much light enters."
+      },
+      {
+       "id": "pupil",
+       "name": "Pupil",
+       "accept": [],
+       "box": [
+        881,
+        331,
+        54,
+        24
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The opening at the center of the iris. Light passes through it to the lens; it narrows in bright light and widens in dim light."
+      },
+      {
+       "id": "fovea-centralis",
+       "name": "Fovea centralis",
+       "accept": [
+        "fovea"
+       ],
+       "box": [
+        0,
+        344,
+        138,
+        20
+       ],
+       "concept": "photoreceptors",
+       "taught": "vision",
+       "fn": "A small pit in the center of the retina, packed with cones and without rods. It gives the sharpest, most detailed color vision."
+      },
+      {
+       "id": "anterior-cavity",
+       "name": "Anterior cavity (contains aqueous humor)",
+       "accept": [
+        "anterior segment"
+       ],
+       "box": [
+        865,
+        372,
+        235,
+        45
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "The space in front of the lens, filled with watery aqueous humor. The iris divides it into the anterior and posterior chambers."
+      },
+      {
+       "id": "posterior-chamber",
+       "name": "Posterior chamber",
+       "accept": [],
+       "box": [
+        881,
+        421,
+        169,
+        20
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "The narrow part of the anterior cavity between the iris and the lens. The ciliary processes release aqueous humor into it, and the fluid flows through the pupil into the anterior chamber."
+      },
+      {
+       "id": "optic-nerve",
+       "name": "Optic (II) nerve",
+       "accept": [
+        "optic",
+        "cranial nerve ii",
+        "cn ii"
+       ],
+       "box": [
+        0,
+        425,
+        135,
+        24
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "Cranial nerve II. It is made of the axons of retinal ganglion cells and carries visual signals from the retina toward the brain."
+      },
+      {
+       "id": "anterior-chamber",
+       "name": "Anterior chamber",
+       "accept": [],
+       "box": [
+        880,
+        442,
+        160,
+        21
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "The part of the anterior cavity between the cornea and the iris. Aqueous humor fills it and drains out at its edge through the scleral venous sinus."
+      },
+      {
+       "id": "suspensory-ligaments-lower",
+       "name": "Suspensory ligaments",
+       "accept": [
+        "suspensory ligament",
+        "zonule fibers",
+        "zonules",
+        "ciliary zonule"
+       ],
+       "box": [
+        880,
+        480,
+        201,
+        25
+       ],
+       "concept": "lens-humors",
+       "taught": "vision",
+       "fn": "Fine fibers (zonule fibers) that run from the ciliary body to the edge of the lens and hold it in place. Their pull on the lens sets how round it is."
+      },
+      {
+       "id": "central-retinal-vessels",
+       "name": "Central retinal artery and vein",
+       "accept": [
+        "central retinal artery",
+        "central retinal vein",
+        "central retinal vessels"
+       ],
+       "box": [
+        0,
+        484,
+        135,
+        45
+       ],
+       "concept": null,
+       "fn": "The blood vessels that enter and leave the eye through the optic nerve and branch over the inner surface of the retina, supplying its inner layers."
+      },
+      {
+       "id": "ciliary-body",
+       "name": "Ciliary body",
+       "accept": [],
+       "box": [
+        866,
+        524,
+        128,
+        24
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "The thickened ring of the vascular tunic around the lens. It holds the ciliary muscle and the ciliary processes, which make aqueous humor."
+      },
+      {
+       "id": "optic-disc-blind-spot",
+       "name": "Optic disc (blind spot)",
+       "accept": [
+        "blind spot",
+        "optic disk"
+       ],
+       "box": [
+        0,
+        544,
+        103,
+        46
+       ],
+       "concept": "photoreceptors",
+       "taught": "vision",
+       "fn": "The spot where the optic nerve leaves the back of the eye. It has no rods or cones, so light falling on it is not detected: the blind spot.",
+       "follow": {
+        "q": "Why is there a blind spot in each eye's field of view?",
+        "options": [
+         "The fovea has too many cones to separate the image",
+         "The optic disc, where the optic nerve leaves, has no rods or cones",
+         "The lens cannot focus light onto the back of the eye",
+         "The choroid blocks light at one point"
+        ],
+        "correct": 1,
+        "why": "Axons from the whole retina gather at the optic disc and leave the eye there as the optic nerve, so that spot has no photoreceptors and cannot detect light. The fovea is the point of sharpest vision, not a blind spot, and the lens and choroid do not create a single unseeing point.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ciliary-process",
+       "name": "Ciliary process",
+       "accept": [
+        "ciliary processes"
+       ],
+       "box": [
+        881,
+        545,
+        138,
+        24
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "Folds on the inner surface of the ciliary body. They make aqueous humor, and the suspensory ligaments attach to them."
+      },
+      {
+       "id": "ciliary-muscle",
+       "name": "Ciliary muscle",
+       "accept": [
+        "ciliary muscles"
+       ],
+       "box": [
+        881,
+        566,
+        131,
+        24
+       ],
+       "concept": "eye-tunics",
+       "taught": "vision",
+       "fn": "Smooth muscle in the ciliary body. When it contracts, tension on the suspensory ligaments eases and the lens rounds up to focus on near objects.",
+       "follow": {
+        "q": "You look up from a far-off sign to read your phone. What does the ciliary muscle do?",
+        "options": [
+         "Relaxes, so the suspensory ligaments pull the lens flat",
+         "Contracts, so the suspensory ligaments slacken and the lens rounds up",
+         "Contracts, so the pupil widens",
+         "Relaxes, so the cornea becomes more curved"
+        ],
+        "correct": 1,
+        "why": "Near focus needs a rounder, stronger lens. Contracting the ciliary muscle draws the ciliary body toward the lens, which eases the tension on the suspensory ligaments and lets the elastic lens round up. Relaxing it does the opposite, for distant objects. Pupil size is set by the iris muscles, and the cornea's shape does not change.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "inferior-rectus-muscle",
+       "name": "Inferior rectus muscle",
+       "accept": [
+        "inferior rectus"
+       ],
+       "box": [
+        0,
+        601,
+        126,
+        42
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "An extrinsic eye muscle that runs from the common tendinous ring to the bottom of the eyeball. It turns the eye downward."
+      }
+     ],
+     "covered": [
+      {
+       "id": "lateral-orientation",
+       "box": [
+        201,
+        32,
+        70,
+        20
+       ]
+      },
+      {
+       "id": "medial-orientation",
+       "box": [
+        201,
+        633,
+        68,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-14-22",
+     "topic": "vision",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "left-visual-field",
+       "name": "Left visual field",
+       "accept": [],
+       "box": [
+        321,
+        1,
+        196,
+        27
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "Everything you see to the left of the point you are looking at. Signals from it end up in the right visual cortex."
+      },
+      {
+       "id": "right-visual-field",
+       "name": "Right visual field",
+       "accept": [],
+       "box": [
+        599,
+        1,
+        214,
+        33
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "Everything you see to the right of the point you are looking at. Signals from it end up in the left visual cortex."
+      },
+      {
+       "id": "binocular-field",
+       "name": "Binocular field",
+       "accept": [
+        "binocular visual field",
+        "binocular zone"
+       ],
+       "box": [
+        464,
+        82,
+        186,
+        26
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "The central part of the view that both eyes see at once. Comparing the two slightly different images gives depth perception."
+      },
+      {
+       "id": "visual-field-left-eye",
+       "name": "Visual field of left eye",
+       "accept": [
+        "visual field of the left eye",
+        "left eye visual field"
+       ],
+       "box": [
+        109,
+        226,
+        146,
+        63
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "The whole area the left eye sees on its own. It overlaps with the right eye's field in the middle."
+      },
+      {
+       "id": "visual-field-right-eye",
+       "name": "Visual field of right eye",
+       "accept": [
+        "visual field of the right eye",
+        "right eye visual field"
+       ],
+       "box": [
+        955,
+        226,
+        147,
+        63
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "The whole area the right eye sees on its own. It overlaps with the left eye's field in the middle."
+      },
+      {
+       "id": "pituitary-gland",
+       "name": "Pituitary gland",
+       "accept": [
+        "pituitary",
+        "hypophysis"
+       ],
+       "box": [
+        917,
+        520,
+        185,
+        33
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A small gland hanging from the underside of the brain just behind the optic chiasm. A growth here can press on the chiasm and cut off vision to the sides."
+      },
+      {
+       "id": "optic-nerves",
+       "name": "Optic nerves",
+       "accept": [
+        "optic nerve",
+        "cranial nerve ii",
+        "cn ii"
+       ],
+       "box": [
+        87,
+        584,
+        168,
+        32
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "The two cranial nerves II, one from each eye. Each carries every signal from its own eye's retina back to the optic chiasm."
+      },
+      {
+       "id": "optic-chiasm",
+       "name": "Optic chiasm",
+       "accept": [
+        "optic chiasma",
+        "chiasm"
+       ],
+       "box": [
+        932,
+        615,
+        170,
+        32
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "The X-shaped crossing just in front of the pituitary gland where the two optic nerves meet. Fibers from the nasal (inner) half of each retina cross to the other side here.",
+       "follow": {
+        "q": "A pituitary tumor presses on the middle of the optic chiasm from below. Which loss of vision is expected?",
+        "options": [
+         "Total blindness in one eye",
+         "Loss of the outer (temporal) half of the visual field in both eyes",
+         "Loss of the left visual field in both eyes",
+         "Loss of only the central binocular field"
+        ],
+        "correct": 1,
+        "why": "The fibers crossing in the middle of the chiasm come from the nasal half of each retina, which sees the outer half of that eye's field. Pressing on them removes the outer field on both sides (tunnel vision). Blindness in one eye needs damage to one optic nerve, and losing one whole side of the field in both eyes needs damage behind the chiasm, in an optic tract or the cortex.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "optic-tract",
+       "name": "Optic tract",
+       "accept": [
+        "optic tracts"
+       ],
+       "box": [
+        116,
+        715,
+        140,
+        33
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "The bundle leaving the optic chiasm on each side. Each carries the signals for the opposite half of the visual field, from both eyes, to the thalamus.",
+       "follow": {
+        "q": "The right optic tract is cut. What does the patient lose?",
+        "options": [
+         "All vision in the right eye",
+         "The left visual field of both eyes",
+         "The right visual field of both eyes",
+         "The outer half of each eye's field"
+        ],
+        "correct": 1,
+        "why": "Behind the chiasm, the right optic tract carries fibers from the right half of both retinas, and those halves see the left side of the world. Cutting it removes the left visual field in both eyes. Losing one whole eye would mean damage in front of the chiasm, and losing the outer fields of both eyes points to the chiasm itself.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "lateral-geniculate-nucleus",
+       "name": "Lateral geniculate nucleus of thalamus",
+       "accept": [
+        "lateral geniculate nucleus",
+        "lgn",
+        "lateral geniculate body"
+       ],
+       "box": [
+        0,
+        802,
+        258,
+        58
+       ],
+       "concept": "visual-pathway",
+       "taught": "vision",
+       "fn": "A relay nucleus in the thalamus. Optic tract fibers synapse here, and its neurons send the visual signals on to the visual cortex in the occipital lobe."
+      },
+      {
+       "id": "left-visual-cortex",
+       "name": "Left visual cortex",
+       "accept": [
+        "left primary visual cortex"
+       ],
+       "box": [
+        142,
+        1016,
+        137,
+        58
+       ],
+       "concept": "functional-areas",
+       "taught": "higher-functions",
+       "fn": "The primary visual cortex at the back of the occipital lobe. Each side receives the opposite half of the visual field and is where visual perception begins."
+      },
+      {
+       "id": "right-visual-cortex",
+       "name": "Right visual cortex",
+       "accept": [
+        "right primary visual cortex"
+       ],
+       "box": [
+        843,
+        1016,
+        156,
+        58
+       ],
+       "concept": "functional-areas",
+       "taught": "higher-functions",
+       "fn": "The primary visual cortex at the back of the occipital lobe. Each side receives the opposite half of the visual field and is where visual perception begins."
+      }
+     ],
+     "covered": [
+      {
+       "id": "suprachiasmatic-nucleus",
+       "box": [
+        887,
+        711,
+        215,
+        95
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ear-anatomy",
+   "title": "Ear anatomy",
+   "chapter": "special-senses",
+   "topic": "hearing-balance",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-14-5",
+     "topic": "hearing-balance",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "malleus",
+       "name": "Malleus",
+       "accept": [
+        "hammer"
+       ],
+       "box": [
+        438,
+        104,
+        95,
+        24
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The first auditory ossicle, the \"hammer\". It is attached to the tympanic membrane and passes its vibrations to the incus."
+      },
+      {
+       "id": "incus",
+       "name": "Incus",
+       "accept": [
+        "anvil"
+       ],
+       "box": [
+        568,
+        104,
+        69,
+        24
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The middle auditory ossicle, the \"anvil\". It passes vibrations from the malleus to the stapes."
+      },
+      {
+       "id": "stapes",
+       "name": "Stapes (attached to oval window)",
+       "accept": [
+        "stirrup"
+       ],
+       "box": [
+        882,
+        104,
+        220,
+        56
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The last and smallest auditory ossicle, the \"stirrup\". Its footplate sits in the oval window and pushes vibrations into the fluid of the cochlea.",
+       "follow": {
+        "q": "In the middle ear, vibrations pass from the tympanic membrane through the ossicles in which order?",
+        "options": [
+         "Stapes, incus, malleus",
+         "Incus, malleus, stapes",
+         "Malleus, incus, stapes",
+         "Malleus, stapes, incus"
+        ],
+        "correct": 2,
+        "why": "The malleus is attached to the tympanic membrane, the incus sits in the middle, and the stapes ends in the oval window, where it pushes on the fluid of the cochlea.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "vestibule",
+       "name": "Vestibule",
+       "accept": [],
+       "box": [
+        882,
+        201,
+        112,
+        24
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "The central chamber of the bony inner ear between the cochlea and the semicircular canals. It holds the utricle and saccule, which sense head tilt and straight-line acceleration."
+      },
+      {
+       "id": "auricle",
+       "name": "Auricle",
+       "accept": [
+        "pinna"
+       ],
+       "box": [
+        0,
+        242,
+        83,
+        24
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The visible flap of the external ear, cartilage covered with skin. It gathers sound waves and funnels them into the ear canal."
+      },
+      {
+       "id": "vestibular-nerve",
+       "name": "Vestibular nerve",
+       "accept": [
+        "vestibular division",
+        "vestibular branch"
+       ],
+       "box": [
+        882,
+        266,
+        189,
+        23
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "The part of the vestibulocochlear nerve (VIII) that carries balance signals from the vestibule and semicircular canals to the brainstem."
+      },
+      {
+       "id": "cochlear-nerve",
+       "name": "Cochlear nerve",
+       "accept": [
+        "cochlear division",
+        "cochlear branch"
+       ],
+       "box": [
+        882,
+        330,
+        178,
+        24
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "The part of the vestibulocochlear nerve (VIII) that carries sound signals from the cochlea to the brainstem."
+      },
+      {
+       "id": "round-window",
+       "name": "Round window",
+       "accept": [],
+       "box": [
+        883,
+        394,
+        171,
+        24
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "A membrane-covered opening between the middle ear and the cochlea, below the oval window. It bulges out when the stapes pushes in, so the cochlear fluid has room to move."
+      },
+      {
+       "id": "ear-canal",
+       "name": "Ear canal",
+       "accept": [
+        "external acoustic meatus",
+        "external auditory canal",
+        "auditory canal",
+        "external auditory meatus"
+       ],
+       "box": [
+        0,
+        434,
+        111,
+        24
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The tube through the temporal bone from the auricle to the tympanic membrane. It carries sound to the eardrum, and its glands make earwax."
+      },
+      {
+       "id": "cochlea",
+       "name": "Cochlea",
+       "accept": [],
+       "box": [
+        882,
+        459,
+        102,
+        23
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The snail-shaped part of the inner ear. Its fluid-filled ducts and the spiral organ inside them turn sound vibrations into nerve signals."
+      },
+      {
+       "id": "eustachian-tube",
+       "name": "Eustachian tube",
+       "accept": [
+        "auditory tube",
+        "pharyngotympanic tube"
+       ],
+       "box": [
+        883,
+        548,
+        186,
+        23
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The auditory tube, running from the middle ear down to the throat. It opens when you swallow or yawn, so air pressure on both sides of the eardrum stays equal.",
+       "follow": {
+        "q": "A person with a head cold, whose auditory tubes are swollen shut, flies on a plane that descends. Why do the ears hurt?",
+        "options": [
+         "Air cannot enter the middle ear, so the higher outside pressure pushes the eardrum inward",
+         "The cochlear fluid drains into the throat",
+         "The ossicles lock together",
+         "Air leaves the inner ear through the round window"
+        ],
+        "correct": 0,
+        "why": "As the plane descends, cabin pressure rises. Normally swallowing opens the auditory tube and lets air into the middle ear to match. With the tube blocked, pressure outside the eardrum is higher than inside, so the eardrum is pushed in and stretched, which hurts. The cochlea, ossicles and round window are not what equalizes pressure.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tympanic-membrane",
+       "name": "Tympanic membrane",
+       "accept": [
+        "eardrum",
+        "ear drum"
+       ],
+       "box": [
+        388,
+        563,
+        130,
+        51
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The eardrum, a thin membrane at the inner end of the ear canal. Sound waves make it vibrate, and it passes the vibration to the malleus."
+      },
+      {
+       "id": "tympanic-cavity",
+       "name": "Tympanic cavity",
+       "accept": [
+        "middle ear cavity",
+        "middle ear"
+       ],
+       "box": [
+        579,
+        563,
+        119,
+        56
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The air-filled space of the middle ear in the temporal bone. It holds the three ossicles and connects to the throat through the auditory tube."
+      },
+      {
+       "id": "external-ear",
+       "name": "External ear",
+       "accept": [],
+       "box": [
+        223,
+        669,
+        144,
+        23
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The auricle and the ear canal, ending at the tympanic membrane. It collects sound waves and channels them in."
+      },
+      {
+       "id": "middle-ear",
+       "name": "Middle ear",
+       "accept": [],
+       "box": [
+        527,
+        669,
+        126,
+        23
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The air-filled tympanic cavity with the three ossicles. It passes vibrations from the tympanic membrane to the oval window and boosts their force."
+      },
+      {
+       "id": "inner-ear",
+       "name": "Inner ear",
+       "accept": [
+        "internal ear"
+       ],
+       "box": [
+        733,
+        669,
+        108,
+        23
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "The fluid-filled chambers inside the temporal bone: the cochlea for hearing, and the vestibule and semicircular canals for balance."
+      }
+     ]
+    },
+    {
+     "figure": "os-14-7",
+     "topic": "hearing-balance",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "organ-of-corti",
+       "name": "Organ of Corti",
+       "accept": [
+        "spiral organ"
+       ],
+       "box": [
+        913,
+        73,
+        138,
+        25
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The spiral organ: a strip of hair cells and supporting cells on the basilar membrane, with the tectorial membrane over it. It turns vibrations into signals in the cochlear nerve."
+      },
+      {
+       "id": "bony-cochlear-wall",
+       "name": "Bony cochlear wall",
+       "accept": [
+        "bony wall",
+        "bony labyrinth"
+       ],
+       "box": [
+        270,
+        95,
+        177,
+        24
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The spiral of dense temporal bone that encloses and protects the cochlea's fluid-filled ducts."
+      },
+      {
+       "id": "scala-vestibuli",
+       "name": "Scala vestibuli",
+       "accept": [
+        "vestibular duct"
+       ],
+       "box": [
+        269,
+        145,
+        139,
+        21
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The upper fluid-filled channel of the cochlea. It starts at the oval window, so pressure waves from the stapes travel along it first."
+      },
+      {
+       "id": "cochlear-duct",
+       "name": "Cochlear duct",
+       "accept": [
+        "scala media"
+       ],
+       "box": [
+        269,
+        187,
+        136,
+        21
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The middle channel of the cochlea, between the scala vestibuli and the scala tympani. It holds the spiral organ with its hair cells."
+      },
+      {
+       "id": "tectorial-membrane",
+       "name": "Tectorial membrane",
+       "accept": [],
+       "box": [
+        269,
+        228,
+        188,
+        21
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "A gel-like flap lying over the hair cells. The tips of their stereocilia touch it, so when the basilar membrane moves, the stereocilia bend against it."
+      },
+      {
+       "id": "basilar-membrane",
+       "name": "Basilar membrane",
+       "accept": [],
+       "box": [
+        270,
+        272,
+        173,
+        21
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The floor of the cochlear duct, on which the spiral organ sits. It vibrates with sound, and each spot along it vibrates most to one pitch.",
+       "follow": {
+        "q": "A high-pitched tone makes the basilar membrane vibrate most near which part of the cochlea?",
+        "options": [
+         "The apex, where the membrane is wide and floppy",
+         "The base, near the oval window, where the membrane is narrow and stiff",
+         "Evenly along its whole length",
+         "Only in the scala tympani"
+        ],
+        "correct": 1,
+        "why": "The basilar membrane is narrow and stiff at the base and wider and more flexible toward the apex. High frequencies make the stiff base vibrate most, and low frequencies travel on to the apex. That place code is how the cochlea sorts pitch.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "scala-tympani",
+       "name": "Scala tympani",
+       "accept": [
+        "tympanic duct"
+       ],
+       "box": [
+        269,
+        310,
+        137,
+        26
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "The lower fluid-filled channel of the cochlea. It ends at the round window, where the pressure waves are released."
+      },
+      {
+       "id": "spiral-ganglion",
+       "name": "Spiral ganglion",
+       "accept": [
+        "cochlear ganglion"
+       ],
+       "box": [
+        459,
+        435,
+        144,
+        25
+       ],
+       "concept": null,
+       "fn": "The cluster of sensory neuron cell bodies in the cochlea's bony core. Their fibers pick up signals from the hair cells and form the cochlear nerve."
+      },
+      {
+       "id": "cochlear-nerve",
+       "name": "Cochlear branch of N VIII",
+       "accept": [
+        "cochlear nerve",
+        "cochlear branch",
+        "cochlear branch of cranial nerve viii",
+        "cochlear branch of the vestibulocochlear nerve"
+       ],
+       "box": [
+        938,
+        474,
+        159,
+        43
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "The cochlear part of cranial nerve VIII. Its fibers start at the spiral ganglion and carry hearing signals to the brainstem."
+      }
+     ]
+    },
+    {
+     "figure": "os-14-8",
+     "topic": "hearing-balance",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "tectorial-membrane",
+       "name": "Tectorial membrane",
+       "accept": [],
+       "box": [
+        996,
+        9,
+        102,
+        41
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "A gel-like flap lying over the hair cells. The tips of their stereocilia touch it, so when the basilar membrane moves, the stereocilia bend against it."
+      },
+      {
+       "id": "tether",
+       "name": "Tether",
+       "accept": [
+        "tip link",
+        "tip links"
+       ],
+       "box": [
+        996,
+        62,
+        65,
+        20
+       ],
+       "concept": "hair-cell-transduction",
+       "taught": "hearing-balance",
+       "fn": "A fine link (tip link) joining the tip of each stereocilium to its taller neighbor. When the stereocilia bend, it pulls ion channels open."
+      },
+      {
+       "id": "stereocilia",
+       "name": "Stereocilia",
+       "accept": [
+        "stereocilium"
+       ],
+       "box": [
+        996,
+        102,
+        101,
+        21
+       ],
+       "concept": "hair-cell-transduction",
+       "taught": "hearing-balance",
+       "fn": "Stiff, graded bundles of projections on top of a hair cell. Bending them toward the tallest opens ion channels and depolarizes the cell; bending them back closes the channels.",
+       "follow": {
+        "q": "Stereocilia on a hair cell bend toward the tallest one. What happens first?",
+        "options": [
+         "The cell fires an action potential down its own axon",
+         "The tethers pull ion channels open and the cell depolarizes",
+         "The tectorial membrane releases neurotransmitter",
+         "The channels close and the cell hyperpolarizes"
+        ],
+        "correct": 1,
+        "why": "Bending toward the tallest stereocilium stretches the tethers, which pull ion channels open; positive ions flow in and the hair cell depolarizes, so it releases more neurotransmitter onto its nerve fibers. The hair cell itself has no axon, and bending the other way closes the channels.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "hair-cell",
+       "name": "Hair cell",
+       "accept": [
+        "hair cells",
+        "inner hair cell"
+       ],
+       "box": [
+        997,
+        191,
+        79,
+        19
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "A sensory receptor cell with a bundle of stereocilia on top. Bending the stereocilia changes how much neurotransmitter it releases onto the nerve fibers at its base."
+      }
+     ]
+    },
+    {
+     "figure": "os-14-11",
+     "topic": "hearing-balance",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "macula-inner-ear",
+       "name": "Macula",
+       "accept": [
+        "maculae"
+       ],
+       "box": [
+        1,
+        156,
+        68,
+        19
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "A patch of hair cells and supporting cells in the wall of the utricle or saccule, covered by the otolithic membrane. It senses head tilt and straight-line acceleration."
+      },
+      {
+       "id": "utricle",
+       "name": "Utricle (cut)",
+       "accept": [],
+       "box": [
+        0,
+        214,
+        100,
+        22
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "The larger of the two sacs in the vestibule, drawn cut open here. Its macula lies roughly flat and senses tilt and forward-backward acceleration."
+      },
+      {
+       "id": "saccule",
+       "name": "Saccule",
+       "accept": [],
+       "box": [
+        153,
+        214,
+        74,
+        19
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "The smaller sac in the vestibule, next to the cochlea. Its macula stands upright and senses up-and-down movement."
+      },
+      {
+       "id": "endolymph",
+       "name": "Endolymph",
+       "accept": [],
+       "box": [
+        289,
+        301,
+        98,
+        22
+       ],
+       "concept": null,
+       "fn": "The fluid inside the membranous ducts and sacs of the inner ear, including the utricle and saccule. It bathes the tops of the hair cells."
+      },
+      {
+       "id": "macula-section",
+       "name": "Macula",
+       "accept": [
+        "maculae"
+       ],
+       "box": [
+        288,
+        325,
+        69,
+        19
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "A patch of hair cells and supporting cells in the wall of the utricle or saccule, covered by the otolithic membrane. It senses head tilt and straight-line acceleration."
+      },
+      {
+       "id": "otoliths-section",
+       "name": "Otoliths",
+       "accept": [
+        "otolith",
+        "otoconia",
+        "ear stones"
+       ],
+       "box": [
+        288,
+        361,
+        72,
+        19
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "Tiny crystals of calcium carbonate on top of the otolithic membrane. Their weight makes the membrane slide when you tilt your head."
+      },
+      {
+       "id": "otolithic-membrane-section",
+       "name": "Otolithic membrane",
+       "accept": [],
+       "box": [
+        288,
+        414,
+        96,
+        38
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "The gel layer over a macula, weighted by otoliths. When the head tilts or speeds up, it lags and slides, bending the stereocilia beneath it.",
+       "follow": {
+        "q": "You tilt your head forward. What makes the hair cells in the macula respond?",
+        "options": [
+         "Fluid rushing around a semicircular canal",
+         "The heavy otolithic membrane slides with gravity and bends the stereocilia",
+         "Sound waves arriving through the oval window",
+         "The utricle swelling with endolymph"
+        ],
+        "correct": 1,
+        "why": "Otoliths make the otolithic membrane heavier than the fluid around it, so when the head tilts, gravity pulls it downhill and it bends the stereocilia beneath it. Fluid lag in a semicircular canal signals turning, and sound is handled by the cochlea.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "hair-cells-section",
+       "name": "Hair cells",
+       "accept": [
+        "hair cell"
+       ],
+       "box": [
+        288,
+        475,
+        84,
+        19
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "Sensory receptor cells of the macula. Their stereocilia reach up into the otolithic membrane, and bending them changes the signal sent down the vestibular nerve."
+      },
+      {
+       "id": "vestibular-nerve",
+       "name": "Vestibular division of vestibulocochlear nerve",
+       "accept": [
+        "vestibular nerve",
+        "vestibular division",
+        "vestibular branch"
+       ],
+       "box": [
+        288,
+        526,
+        195,
+        38
+       ],
+       "concept": "cranial-nerve-list",
+       "taught": "cranial-nerves",
+       "fn": "The vestibular part of cranial nerve VIII. It carries signals from the maculae and semicircular canals to the brainstem and cerebellum."
+      },
+      {
+       "id": "otolithic-membrane-detail",
+       "name": "Otolithic membrane",
+       "accept": [],
+       "box": [
+        659,
+        3,
+        96,
+        38
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "The gel layer over a macula, weighted by otoliths. When the head tilts or speeds up, it lags and slides, bending the stereocilia beneath it."
+      },
+      {
+       "id": "otoliths-detail",
+       "name": "Otoliths",
+       "accept": [
+        "otolith",
+        "otoconia",
+        "ear stones"
+       ],
+       "box": [
+        994,
+        4,
+        72,
+        19
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "Tiny crystals of calcium carbonate on top of the otolithic membrane. Their weight makes the membrane slide when you tilt your head."
+      },
+      {
+       "id": "hair-cell-detail",
+       "name": "Hair cell",
+       "accept": [
+        "hair cells"
+       ],
+       "box": [
+        1027,
+        66,
+        75,
+        18
+       ],
+       "concept": "cochlea",
+       "taught": "hearing-balance",
+       "fn": "Sensory receptor cells of the macula. Their stereocilia reach up into the otolithic membrane, and bending them changes the signal sent down the vestibular nerve."
+      },
+      {
+       "id": "macula-detail",
+       "name": "Macula",
+       "accept": [
+        "maculae"
+       ],
+       "box": [
+        1011,
+        211,
+        69,
+        19
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "A patch of hair cells and supporting cells in the wall of the utricle or saccule, covered by the otolithic membrane. It senses head tilt and straight-line acceleration."
+      }
+     ]
+    },
+    {
+     "figure": "os-14-12",
+     "topic": "hearing-balance",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cupula",
+       "name": "Cupula",
+       "accept": [],
+       "box": [
+        427,
+        284,
+        70,
+        23
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "A tall gel cap over the hair cells in the ampulla of a semicircular canal. When the head turns, the fluid lags and pushes it over, bending the stereocilia.",
+       "follow": {
+        "q": "You start spinning to the right in a desk chair. Which sensor detects it, and how?",
+        "options": [
+         "The macula, as otoliths slide with gravity",
+         "The cupula in a semicircular canal ampulla, pushed over by lagging fluid",
+         "The basilar membrane, vibrating at a low pitch",
+         "The tympanic membrane, pushed by changing air pressure"
+        ],
+        "correct": 1,
+        "why": "When the head starts to turn, the fluid in the canal lags behind and pushes the cupula over, bending the hair cells' stereocilia. The maculae sense tilt and straight-line acceleration, the basilar membrane responds to sound, and the eardrum is part of hearing.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "ampulla",
+       "name": "Ampulla",
+       "accept": [
+        "ampullae"
+       ],
+       "box": [
+        458,
+        329,
+        79,
+        22
+       ],
+       "concept": "vestibular-apparatus",
+       "taught": "hearing-balance",
+       "fn": "The swelling at the base of each semicircular canal. It holds the ridge of hair cells and the cupula that sense turning of the head."
+      },
+      {
+       "id": "ampullary-nerve",
+       "name": "Ampullary nerve",
+       "accept": [
+        "vestibular nerve"
+       ],
+       "box": [
+        122,
+        495,
+        145,
+        23
+       ],
+       "concept": null,
+       "fn": "The branch of the vestibular nerve that leaves the ampulla. It carries the signals of the hair cells under the cupula to the brainstem."
+      }
+     ],
+     "hints": [
+      {
+       "id": "cupula-bending-note",
+       "box": [
+        624,
+        479,
+        215,
+        60
+       ],
+       "why": "A note printed beside the drawing that names the cupula: it would give the answer away."
       }
      ]
     }
@@ -16574,7 +18531,7 @@
        ],
        "concept": "skull-landmarks",
        "taught": "skull",
-       "fn": "The plate of hyaline cartilage that forms the front of the nasal septum, the wall between the left and right sides of the nasal cavity.",
+       "fn": "The plate of hyaline cartilage that forms the front of the nasal septum, the wall between the left and right sides of the nasal cavity. Along the top of the nose it spreads into a wing on each side that shapes the side of the nose, and this line points to that wing.",
        "follow": {
         "q": "The septal cartilage forms part of which structure?",
         "options": [
@@ -16732,7 +18689,7 @@
          "Vibrate to make the sound of the voice"
         ],
         "correct": 2,
-        "why": "The curled conchae break the airstream into turbulent flow, so more air touches the warm, moist, mucus-covered lining, which warms it, adds water and traps particles. The smell receptors sit in the olfactory epithelium in the roof, and the voice comes from the vocal folds.",
+        "why": "The curled conchae break the airstream into turbulent flow, so more air touches the warm, moist, mucus-covered lining, which warms it, adds water and traps particles. The sensory receptors for smell sit in the olfactory epithelium in the roof, and the voice comes from the vocal folds.",
         "level": "recall"
        }
       },
@@ -17741,7 +19698,7 @@
        ],
        "concept": "larynx",
        "taught": "upper-airway",
-       "fn": "The true vocal cord (vocal fold): the pale band on each side of the glottis. Air passing between the two cords makes them vibrate, producing the voice. They look white because they have few blood vessels.",
+       "fn": "The true vocal cord (vocal fold): the pale band on each side of the glottis. Air passing between the two cords makes them vibrate, producing the voice. They look pearly white because a thick stratified squamous lining covers a vocal ligament with few blood vessels.",
        "follow": {
         "q": "What makes the true vocal cords produce a sound?",
         "options": [
@@ -18435,8 +20392,7 @@
        "id": "terminal-bronchiole",
        "name": "Terminal bronchiole",
        "accept": [
-        "terminal bronchioles",
-        "bronchiole"
+        "terminal bronchioles"
        ],
        "box": [
         29,
@@ -19262,6 +21218,87 @@
    "alt": "Three panels, each pairing a small schematic with a three-dimensional drawing of a spinal cord cross section, its spinal nerve and the neighboring sympathetic chain ganglion. In the top panel a red fiber leaves the lateral horn, enters the chain through the white ramus communicans and synapses in the ganglion at the same level. In the middle panel the fiber climbs the chain to synapse in a higher ganglion, and postganglionic fibers return to spinal nerves through gray rami communicantes. In the bottom panel the fiber passes through the chain without synapsing and runs in a splanchnic nerve to a prevertebral ganglion, where it synapses.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.3",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-1-divisions-of-the-autonomic-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-14-13": {
+   "src": "figures/os-14-13.jpg",
+   "w": 1100,
+   "h": 720,
+   "alt": "A side view of the eye in its bony socket, cut through the middle. Fat fills the socket around the eyeball, and straight muscles run from the back of the socket to the eyeball, with the optic nerve between them. Above the eye, a long muscle runs forward into the upper eyelid. A thin ring of muscle lies in both eyelids under the skin, a thin membrane lines the inside of the lids and folds back over the white of the eye, and the clear dome at the front bulges out between the lids. The eyebrow and eyelashes are also shown.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-14": {
+   "src": "figures/os-14-14.jpg",
+   "w": 1100,
+   "h": 423,
+   "alt": "Two drawings of the six muscles that move the right eye. Left, a side view: four straight muscles run from a ring of tendon at the back of the socket to the top, bottom and sides of the eyeball, and a slanting muscle runs along the upper inner wall to a small pulley at the front of the socket, then turns back to the top of the eyeball. A second slanting muscle curves under the eyeball from the front of the socket. Right, a front view of the eyeball with the six muscles attached around it and red arrows showing the direction each one pulls.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.14",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-15": {
+   "src": "figures/os-14-15.jpg",
+   "w": 1100,
+   "h": 685,
+   "alt": "A side view of the eyeball cut open. The wall has three layers: a tough white outer coat that becomes the clear dome at the front, a dark middle layer rich in blood vessels, and a thin yellow inner layer at the back with a small pit near its center and a pale spot where the optic nerve leaves. Behind the colored ring and its central opening sits the lens, held by fine threads to a ring of muscle and folded tissue. A small chamber lies in front of the lens and a large gel-filled chamber behind it. Muscles are attached above and below the eyeball.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-22": {
+   "src": "figures/os-14-22.jpg",
+   "w": 1100,
+   "h": 1154,
+   "alt": "A view of the brain from below with both eyes at the front. Colored wedges show what each eye sees: the left half of the scene in purple and the right half in green, overlapping in the middle. Fibers from each eye run back in two nerves that meet in an X-shaped crossing in front of the pituitary gland; fibers from the half of each retina nearer the nose cross to the other side, while those from the outer half stay on the same side. Behind the crossing, the green fibers all run on the left and the purple fibers on the right, to a relay in the thalamus on each side and then fan out to the visual cortex at the back of the brain.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.22",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-2-central-processing",
+   "license": "CC BY 4.0"
+  },
+  "os-14-5": {
+   "src": "figures/os-14-5.jpg",
+   "w": 1100,
+   "h": 702,
+   "alt": "A cut through the side of the head showing the ear. On the outside, the flap of the ear leads into a canal through the skull bone that ends at a thin membrane. Behind the membrane is a small air-filled space colored red, holding a chain of three tiny bones; the last one sits in an opening in the bony wall of the inner ear. A tube runs down and forward from this space toward the throat. Deeper in the bone lie a snail-shaped coil, three looped canals above it and the chamber between them, with two nerve branches leaving toward the brain. Brackets under the drawing divide it into outer, middle and inner parts.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-7": {
+   "src": "figures/os-14-7.jpg",
+   "w": 1100,
+   "h": 531,
+   "alt": "A small drawing of the snail-shaped coil with a box around one turn, and an enlarged cross section of that turn. Inside the bony wall are three fluid-filled channels: an upper one, a small triangular middle one, and a lower one. On the floor of the middle channel sits a row of sensory cells covered by a flap of membrane. Nerve fibers run from these cells to a cluster of nerve cell bodies in the bony core and join a nerve bundle leaving the coil.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-8": {
+   "src": "figures/os-14-8.jpg",
+   "w": 1100,
+   "h": 488,
+   "alt": "Left, a cross section of one turn of the snail-shaped coil with a box around the row of sensory cells. Right, an enlarged view of that row: tall yellow cells stand among pink supporting cells, each with a bundle of rod-like projections of increasing height on its top. The tips of the projections are joined by fine links and touch a membrane that lies over them. Nerve endings wrap the base of each cell.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-11": {
+   "src": "figures/os-14-11.jpg",
+   "w": 1100,
+   "h": 580,
+   "alt": "Top left, the inner ear with two small sacs in the chamber between the coil and the looped canals highlighted in blue. Bottom left, a cross section of one sac: a patch of sensory cells in its wall is covered by a gel layer topped with tiny crystals, with nerve fibers leaving below. Right, two enlarged views of that patch for a head held upright and a head tilted forward: when the head tilts, the crystal-weighted gel slides downhill and bends the projections on the sensory cells.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+   "license": "CC BY 4.0"
+  },
+  "os-14-12": {
+   "src": "figures/os-14-12.jpg",
+   "w": 1100,
+   "h": 542,
+   "alt": "Top left, the inner ear with the swelling at the base of one looped canal boxed. Below it, an enlarged cut through that swelling: a ridge of sensory cells whose projections stick up into a tall gel cap that spans the canal, with nerve fibers leaving from the base. Top right, a head turning. Bottom right, the same swelling while the head turns: the fluid in the canal lags behind, and red arrows show it bending the gel cap the opposite way to the turn.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
    "license": "CC BY 4.0"
   }
  }

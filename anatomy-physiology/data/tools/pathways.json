@@ -691,15 +691,14 @@
       "kind": "causal",
       "intro": "Put your fingers on your Adam’s apple and swallow a mouthful of water. Trace how your airway is sealed so the water goes into your esophagus, not your larynx.",
       "steps": [
-        { "id": "lift", "label": "Larynx pulled up", "text": "Muscles attached to the hyoid bone pull the larynx up and forward, tucking it under the base of the tongue.", "why": "This is the jump you feel first. Moving the larynx up and forward sets up everything after it: it brings the opening of the larynx under the epiglottis." },
-        { "id": "vocal", "label": "Vocal folds close", "text": "The vocal folds close, shutting the glottis.", "why": "The seal is built from the inside out, and the vocal folds are the innermost and lowest seal, guarding the narrowest part of the airway." },
+        { "id": "lift", "label": "Larynx up, folds shut", "text": "Muscles attached to the hyoid bone pull the larynx up and forward, tucking it under the base of the tongue, and the vocal folds close, shutting the glottis.", "why": "These two happen together at the start of the swallow. Lifting the larynx brings its opening under the epiglottis, and the vocal folds are the innermost and lowest seal, guarding the narrowest part of the airway." },
         { "id": "vestibular", "label": "Vestibular folds close", "text": "The vestibular folds, just above the vocal folds, close too.", "why": "The upper pair of folds closes after the lower pair, adding a second seal from the inside." },
         { "id": "epiglottis", "label": "Epiglottis tips over", "text": "The upward movement and the pressure of the water tip the epiglottis down and back over the opening of the larynx.", "why": "The epiglottis is the last, outer cover. It folds only once the larynx has risen under it and the swallowed water presses on it." },
         { "id": "pass", "label": "Water into esophagus", "text": "The water slides over the covered opening and into the esophagus, while breathing stops for a moment.", "why": "With the larynx sealed, the only open path from the laryngopharynx leads back into the esophagus." },
         { "id": "reopen", "label": "Airway reopens", "text": "The larynx drops, the epiglottis rises, the folds open and breathing resumes.", "why": "The seal is released only after the water has passed, so the next breath draws in air, not water." }
       ],
       "missing": {
-        "at": 3,
+        "at": 2,
         "distractors": [
           { "text": "The pressure of the water folds the cricoid cartilage down and back over the opening of the larynx.", "why": "The cricoid cartilage is a complete ring below the thyroid cartilage; it cannot fold. The flap that covers the larynx is the epiglottis, made of elastic cartilage." },
           { "text": "The vocal folds snap open, and a burst of air from the lungs blows the water up and out of the pharynx.", "why": "That is a cough. It fires only if water gets past the seal and touches the lining below the folds." },
@@ -707,11 +706,11 @@
         ]
       },
       "error": {
-        "at": 1,
-        "text": "The vocal folds open wide, so the water can pass through the larynx.",
+        "at": 0,
+        "text": "The larynx rises, and the vocal folds open wide so the water can pass through it.",
         "why": "Water must never enter the larynx. The vocal folds close, shutting the glottis, as the inner seal; if water touches the lining below them, you cough."
       },
-      "summary": "Lift, then seal from the inside out: vocal folds, vestibular folds, and last the epiglottis as an outer cover. Only then does the water pass, and the airway opens again once it is gone. Laughing while you drink can break the sequence, and the cough reflex is the backup."
+      "summary": "Lift the larynx and seal it from the inside out: vocal folds, vestibular folds, and last the epiglottis as an outer cover. Only then does the water pass, and the airway opens again once it is gone. Laughing while you drink can break the sequence, and the cough reflex is the backup."
     },
     {
       "id": "air-route",
@@ -765,8 +764,7 @@
       "intro": "At the end of a quiet breath out, no air is moving. Trace what happens from the first nerve signal until air stops flowing in.",
       "steps": [
         { "id": "signal", "label": "Brainstem fires", "text": "Neurons in the brainstem fire, and the signal travels down the phrenic nerves to the diaphragm and the intercostal nerves to the external intercostals.", "why": "Quiet inspiration is active: muscles do the work, and they contract only when their nerves fire." },
-        { "id": "diaphragm", "label": "Diaphragm flattens", "text": "The diaphragm contracts, flattens and moves down, lengthening the thoracic cavity.", "why": "The contracting dome pulls down on its central part; this does most of the work of a quiet breath in." },
-        { "id": "ribs", "label": "Ribs rise", "text": "The external intercostals lift the ribs up and out, widening the thoracic cavity.", "why": "Lifting the ribs like a bucket handle enlarges the chest from side to side and from front to back." },
+        { "id": "muscles", "label": "Thorax enlarges", "text": "The diaphragm contracts, flattens and moves down, and the external intercostals lift the ribs up and out: the thoracic cavity gets longer and wider.", "why": "Both muscles contract together when their nerves fire. The diaphragm does most of the work of a quiet breath in; the ribs rising like a bucket handle widen the chest from side to side and from front to back." },
         { "id": "ipp", "label": "Intrapleural pressure falls", "text": "The chest wall moves outward and pulls harder on the pleural fluid film: intrapleural pressure falls from about −4 to about −6 mm Hg.", "why": "The fluid film holds the lung to the chest wall, so an outward pull on the wall stretches the film and lowers its pressure." },
         { "id": "expand", "label": "Lungs expand", "text": "Transpulmonary pressure rises from 4 to about 6 mm Hg, and the lungs and alveoli expand.", "why": "Transpulmonary pressure is alveolar minus intrapleural pressure; a larger difference stretches the lungs to a larger size." },
         { "id": "palv", "label": "Alveolar pressure falls", "text": "By Boyle’s law, the larger alveolar volume lowers alveolar pressure to about −1 mm Hg.", "why": "The same number of gas molecules in a larger space strike the walls less often, so the pressure falls." },
@@ -774,7 +772,7 @@
         { "id": "stop", "label": "Gradient gone: flow stops", "text": "Alveolar pressure climbs back to 0, and when it equals atmospheric pressure, flow stops.", "why": "Incoming air adds molecules to the alveoli, raising their pressure until no gradient is left." }
       ],
       "missing": {
-        "at": 5,
+        "at": 4,
         "distractors": [
           { "text": "The lungs pull air in by contracting their own smooth muscle.", "why": "The lungs have no muscle that sucks air in. They expand passively because the chest wall pulls on them through the pleural film." },
           { "text": "Alveolar pressure rises above atmospheric pressure.", "why": "A pressure above atmospheric would push air out. For air to flow in, alveolar pressure must fall below it." },
@@ -782,7 +780,7 @@
         ]
       },
       "error": {
-        "at": 3,
+        "at": 2,
         "text": "The chest wall moves outward, and intrapleural pressure rises from about −4 to about −2 mm Hg.",
         "why": "An outward pull on the pleural film lowers its pressure further below atmospheric, to about −6 mm Hg. That larger negative pressure is what raises transpulmonary pressure and expands the lungs."
       },
@@ -870,13 +868,12 @@
       "steps": [
         { "id": "enter", "label": "CO2 diffuses in", "text": "Carbon dioxide diffuses from the plasma into the red blood cell.", "why": "The muscle makes carbon dioxide, so PCO2 around the cell is higher than inside it." },
         { "id": "enzyme", "label": "Carbonic anhydrase acts", "text": "Carbonic anhydrase speeds CO2 + H2O → H2CO3.", "why": "This first step is slow on its own. The enzyme speeds it thousands of times, so it finishes while the cell is still in the capillary." },
-        { "id": "split", "label": "Carbonic acid splits", "text": "Carbonic acid splits into H+ and HCO3−.", "why": "The second step happens almost instantly once carbonic acid forms." },
-        { "id": "buffer", "label": "H+ binds hemoglobin", "text": "The hydrogen ion binds deoxyhemoglobin.", "why": "Hemoglobin is giving up oxygen at this moment, and deoxyhemoglobin binds H+ more readily, so it mops up the acid just when it is made." },
+        { "id": "split", "label": "Split; H+ bound", "text": "Carbonic acid splits into H+ and HCO3−, and the H+ binds deoxyhemoglobin.", "why": "The split is almost instant. Hemoglobin is giving up oxygen at this moment, and deoxyhemoglobin binds H+ more readily, so it mops up the acid as it forms." },
         { "id": "band3", "label": "Band 3: HCO3− out, Cl− in", "text": "Bicarbonate leaves through band 3, and one chloride ion comes in for each.", "why": "Bicarbonate is building up inside, so it moves out down its concentration gradient. A one-for-one swap keeps the charge across the membrane unchanged." },
         { "id": "swell", "label": "Cell swells slightly", "text": "The cell has gained ions, so water follows and it swells a little.", "why": "Bicarbonate made inside and chloride brought in add dissolved particles, and water follows solute by osmosis. Venous hematocrit is a few percent higher for this reason." }
       ],
       "missing": {
-        "at": 4,
+        "at": 3,
         "distractors": [
           { "text": "Bicarbonate leaves through band 3, and one sodium ion leaves alongside each one.", "why": "Band 3 is an exchanger for negative ions: one bicarbonate out, one chloride in." },
           { "text": "The sodium–potassium pump drives bicarbonate out of the cell.", "why": "The chloride shift uses no ATP. It is facilitated diffusion through band 3, each ion moving down its own gradient." },
@@ -884,8 +881,8 @@
         ]
       },
       "error": {
-        "at": 3,
-        "text": "The hydrogen ion binds oxyhemoglobin, which holds H+ more tightly than deoxyhemoglobin.",
+        "at": 2,
+        "text": "Carbonic acid splits into H+ and HCO3−, and the H+ binds oxyhemoglobin, which holds H+ more tightly than deoxyhemoglobin.",
         "why": "It is the other way round: deoxyhemoglobin binds H+ more readily. That is why hemoglobin becomes a better buffer as it gives up oxygen in the tissues."
       },
       "summary": "In, convert, split, buffer, swap: carbonic anhydrase makes bicarbonate fast, hemoglobin soaks up the H+, and band 3 trades bicarbonate for chloride so more carbon dioxide can follow. In the lungs every step runs backward."
@@ -935,8 +932,7 @@
       "intro": "A man smokes a pack a day for decades. Trace how the smoke turns healthy alveoli into air trapping and breathlessness.",
       "steps": [
         { "id": "inflame", "label": "Chronic inflammation", "text": "Smoke irritates the lungs, draws in neutrophils and activates alveolar macrophages.", "why": "The chain begins with the body’s defensive response to a constant irritant." },
-        { "id": "enzymes", "label": "Enzymes released", "text": "These cells release protein-digesting enzymes that break down elastic fibers in the alveolar walls.", "why": "Neutrophils and macrophages carry enzymes for destroying microbes and debris, and they damage the tissue around them too." },
-        { "id": "blocked", "label": "Protection disabled", "text": "Smoke inactivates alpha-1 antitrypsin, the protein that normally blocks those enzymes.", "why": "Normally the protective proteins keep the enzymes in check. With them disabled, the balance tips toward digestion." },
+        { "id": "enzymes", "label": "Enzymes unchecked", "text": "These cells release protein-digesting enzymes that break down elastic fibers in the alveolar walls, while smoke inactivates alpha-1 antitrypsin, the protein that normally blocks them.", "why": "Normally protective proteins keep the enzymes in check. Smoke adds enzymes and disables the protection at the same time, so the balance tips toward digestion." },
         { "id": "walls", "label": "Walls destroyed", "text": "Alveolar walls and their capillaries are destroyed faster than they are repaired, and small alveoli merge into large spaces.", "why": "Unopposed enzymes digest the walls, and each lost wall takes its capillaries with it." },
         { "id": "recoil", "label": "Recoil and support lost", "text": "Elastic recoil weakens, and the small airways lose the outward pull that held them open.", "why": "Elastic fibers both push air out and act like guy ropes on the outside of the small airways, which have no cartilage." },
         { "id": "collapse", "label": "Airways collapse", "text": "During each breath out, the pressure around the small airways squeezes them shut.", "why": "Without the outward pull, nothing resists the rising pressure around the airways as the lungs shrink." },
@@ -951,7 +947,7 @@
         ]
       },
       "error": {
-        "at": 4,
+        "at": 3,
         "text": "The lungs become stiffer, and elastic recoil strengthens.",
         "why": "Losing elastic fibers makes the lungs floppier: compliance rises and recoil weakens. That is why breathing out, not in, becomes the hard part."
       },

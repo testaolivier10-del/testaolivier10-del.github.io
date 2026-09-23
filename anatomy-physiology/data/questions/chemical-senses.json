@@ -62,7 +62,7 @@
     ],
     "q": "Daniel, 34, fell off his bike and struck the back of his head. Two weeks later he says food \"has no taste\". On testing, he correctly identifies sweet, salty, sour and bitter solutions placed on his tongue, but he cannot identify coffee or vanilla by sniffing. Which structures were most likely damaged?",
     "options": [
-      "The gustatory receptor cells of his tongue",
+      "The gustatory receptor cells in the taste buds of his tongue",
       "Olfactory axons passing through the cribriform plate",
       "The facial nerve on one side",
       "The gustatory cortex in the insula"
@@ -343,8 +343,8 @@
     "q": "The smell of a particular sunscreen instantly brings back a childhood beach holiday, along with the feelings that went with it. Which feature of the olfactory pathway best explains this?",
     "options": [
       "Olfactory sensory neurons are replaced throughout life",
-      "Olfactory signals reach the amygdala and areas beside the hippocampus within one or two synapses",
-      "Olfactory signals are filtered by the thalamus before reaching the cortex",
+      "Olfactory signals reach the amygdala and cortex near the hippocampus within two synapses",
+      "Olfactory signals are filtered by the thalamus before they reach the olfactory cortex",
       "Odorant receptor proteins keep a record of odors met before"
     ],
     "correct": 1,

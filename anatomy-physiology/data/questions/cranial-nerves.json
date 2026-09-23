@@ -329,7 +329,7 @@
         "Correct. The left eye cannot abduct, so the left abducens nerve is affected.",
         "The right abducens nerve turns the right eye outward, which is needed for looking right, not left.",
         "The oculomotor nerve turns the eye inward, up and down, not outward.",
-        "The trochlear nerve turns the eye down and in, and its damage causes double vision looking down."
+        "The trochlear nerve supplies the muscle that turns the eye down, most strongly when it points toward the nose, and its damage causes double vision looking down."
       ]
     }
   },
@@ -341,7 +341,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "After surgery to remove a lymph node from the side of her neck, a woman cannot shrug her right shoulder fully, and turning her head against resistance is weak. Which nerve was injured?",
+    "q": "After surgery to remove a lymph node from the side of her neck, a woman’s right shoulder droops, and she cannot shrug it fully or raise her arm above her head. Which nerve was injured?",
     "options": [
       "Right phrenic nerve",
       "Right vagus nerve",
@@ -350,11 +350,11 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "The accessory nerve (XI) supplies the trapezius, which shrugs the shoulder, and the sternocleidomastoid, which turns the head. It crosses the side of the neck just under the skin, where neck surgery can injure it.",
+      "correct": "The accessory nerve (XI) supplies the sternocleidomastoid, which turns the head, and the trapezius, which shrugs the shoulder and helps swing the arm overhead. After it passes the sternocleidomastoid, it crosses the side of the neck just under the skin to reach the trapezius. Surgery there weakens the trapezius but usually spares head turning.",
       "options": [
         "The phrenic nerve runs to the diaphragm; it does not move the shoulder.",
         "The vagus nerve supplies the throat, voice box and organs of the chest and abdomen, not the trapezius.",
-        "Correct. A weak shrug and weak head turning point to the accessory nerve.",
+        "Correct. A drooping shoulder and a weak shrug point to the accessory nerve’s supply to the trapezius.",
         "The hypoglossal nerve moves the tongue, not the neck and shoulder."
       ]
     }
@@ -597,7 +597,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "The trochlear nerve (IV) supplies the one eye muscle that turns the eye down and in, the movement used for reading and looking at stairs.",
+      "correct": "The trochlear nerve (IV) supplies the one eye muscle that turns the eye down, most strongly when the eye points toward the nose: the position used for reading and looking at stairs.",
       "options": [
         "Abducens damage causes double vision looking to the side, not down.",
         "Oculomotor damage would usually also cause a drooping lid and a wide center of the eye, which she does not have.",

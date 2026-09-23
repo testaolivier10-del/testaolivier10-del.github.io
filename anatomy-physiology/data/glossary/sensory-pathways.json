@@ -5,7 +5,7 @@
     "say": ""
   },
   "receptor-types-stimulus": {
-    "def": "Sensory receptors grouped by the stimulus they respond to: mechanoreceptors (touch, pressure, vibration, stretch), thermoreceptors (temperature), nociceptors (stimuli that damage tissue), chemoreceptors (particular chemicals), the photoreceptor (light) and osmoreceptors (the solute concentration of body fluids).",
+    "def": "Sensory receptors grouped by the stimulus they respond to: mechanoreceptors (touch, pressure, vibration, stretch), thermoreceptors (temperature), nociceptors (stimuli that damage tissue), chemoreceptors (particular chemicals) and osmoreceptors (the solute concentration of body fluids). The photoreceptor class responds to light.",
     "roots": [["mechano-", "machine, physical force"], ["thermo-", "heat"], ["noci-", "harm"], ["chemo-", "chemical"], ["photo-", "light"], ["osmo-", "push, osmotic"]],
     "say": "NOH-see-sep-ter"
   },

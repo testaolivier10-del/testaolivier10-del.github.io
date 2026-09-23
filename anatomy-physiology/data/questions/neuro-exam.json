@@ -192,21 +192,21 @@
     "core": [
       "interdependence"
     ],
-    "q": "A touch of cotton on the clear front surface of a patient's left eye makes neither eye blink. Touching the right eye makes both eyes blink. Which nerve is most likely damaged?",
+    "q": "You touch a wisp of cotton to the clear front surface of each of a patient's eyes in turn. Touching either eye makes only the right eye blink; the left eye stays open both times. Which nerve is most likely damaged?",
     "options": [
-      "The left facial nerve",
+      "The left trigeminal nerve",
       "The right facial nerve",
-      "The optic nerve of the left eye",
-      "The left trigeminal nerve"
+      "The left facial nerve",
+      "The right trigeminal nerve"
     ],
-    "correct": 3,
+    "correct": 2,
     "why": {
-      "correct": "In the corneal reflex, the touch travels in on the trigeminal nerve (V) and the blink goes out on both facial nerves (VII). Touching the right eye makes both eyes blink, so both facial nerves work. Touching the left eye gives no blink at all, so the signal is not getting in: the left trigeminal nerve.",
+      "correct": "In the corneal reflex, the touch travels in on the trigeminal nerve (V) of the side touched, and the blink goes out on both facial nerves (VII). Touching either eye makes the right eye blink, so both trigeminal nerves carry the touch in. The left eye never blinks, so the signal is not getting out to it: the left facial nerve.",
       "options": [
-        "If the left facial nerve were damaged, the left eye would fail to blink from either side, but the right eye would still blink when the left eye is touched.",
-        "Both eyes blink when the right eye is touched, so the right facial nerve works.",
-        "The optic nerve carries vision. It is not part of the corneal reflex arc.",
-        "Correct. The sensory side of the arc from the left eye has failed."
+        "If the left trigeminal nerve were damaged, touching the left eye would make neither eye blink. Here the right eye blinks every time.",
+        "The right eye blinks every time, so the right facial nerve works.",
+        "Correct. The motor side of the arc to the left eye has failed, so the left eye cannot close whichever eye is touched.",
+        "Touching the right eye still triggers a blink, so the right trigeminal nerve carries the touch in."
       ]
     }
   },

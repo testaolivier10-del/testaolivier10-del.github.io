@@ -233,7 +233,7 @@
     "options": [
       "Outer hair cells near the base of each cochlea",
       "The ossicles of both middle ears",
-      "Hair cells near the apex of each cochlea",
+      "Inner and outer hair cells near the apex of each cochlea",
       "Both primary auditory cortices"
     ],
     "correct": 0,
@@ -658,7 +658,7 @@
     ],
     "q": "What does the round window do during hearing?",
     "options": [
-      "It lets the stapes push air into the inner ear",
+      "It lets the stapes push air from the middle ear into the inner ear",
       "It bulges outward each time the stapes pushes inward",
       "It connects the cochlea to the semicircular canals",
       "It drains endolymph into the middle ear"

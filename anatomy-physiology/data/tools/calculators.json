@@ -555,7 +555,7 @@
         "require": "abs(V2 - V1) >= 0.2",
         "asks": [
           { "key": "P2", "unit": "mm Hg", "tol": { "abs": 1, "rel": 0.002 }, "prompt": "A sealed container holds {V1} L of air at {P1} mm Hg. Its volume changes to {V2} L at the same temperature. What is the new pressure?" },
-          { "key": "P2", "unit": "mm Hg", "tol": { "abs": 1, "rel": 0.002 }, "prompt": "Before any air can flow, a person’s lung volume changes from {V1} L to {V2} L. The starting pressure was {P1} mm Hg. What is the alveolar pressure now?" }
+          { "key": "P2", "unit": "mm Hg", "tol": { "abs": 1, "rel": 0.002 }, "prompt": "A sealed bag of air at {P1} mm Hg is squeezed or stretched from {V1} L to {V2} L at the same temperature. What is the pressure inside it now?" }
         ]
       }
     },
@@ -697,7 +697,7 @@
       ],
       "meaning": [
         { "when": "R < 0.7", "text": "A ratio of {R} means air leaves too slowly for the volume the person can move: an obstructive pattern. Narrowed airways, as in asthma, raise resistance and close early during the forced breath out." },
-        { "when": "FVC < 3.5", "text": "The ratio of {R} is normal, but the FVC of {FVC} L is small. Small lungs that empty quickly suggest restriction, which only a measured total lung capacity can confirm." },
+        { "when": "FVC < 3.5", "text": "A ratio of {R} is normal: the air leaves quickly. Whether an FVC of {FVC} L is small depends on the value predicted for the person’s age, sex and height. If it is well below predicted, small lungs that empty quickly suggest restriction, which only a measured total lung capacity can confirm." },
         { "when": "1", "text": "A ratio of {R} is normal: the air leaves quickly. Compare the FVC with the value predicted for the person’s age, sex and height as well." }
       ],
       "note": "Many guidelines use the fixed cutoff of 0.70. Lung-function societies now prefer the lower limit of normal for the person’s age, sex and height, because the normal ratio falls with age.",
@@ -865,6 +865,7 @@
         { "label": "Pure oxygen, 600 mm Hg", "values": { "Hb": 15, "S": 100, "PO2": 600 } }
       ],
       "practice": {
+        "require": "(PO2 >= 95 && S >= 94) || (PO2 == 60 && S >= 87 && S <= 92) || (PO2 == 40 && S >= 70 && S <= 78)",
         "asks": [
           { "key": "total", "unit": "mL/100 mL", "tol": { "abs": 0.1, "rel": 0.01 }, "prompt": "A blood sample has {Hb} g of hemoglobin per 100 mL, a saturation of {S}% and a PO2 of {PO2} mm Hg. How much oxygen does 100 mL carry? (1.34 mL per g of hemoglobin; 0.003 mL per 100 mL per mm Hg dissolved.)" }
         ]
