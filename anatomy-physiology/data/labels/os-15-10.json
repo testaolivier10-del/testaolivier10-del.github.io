@@ -1,0 +1,65 @@
+{
+  "figure": "os-15-10",
+  "labels": [
+    {
+      "id": "pretectal-nucleus",
+      "name": "Pretectal nucleus",
+      "accept": [
+        "pretectal nuclei",
+        "pretectal area"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": null,
+      "box": [
+        531,
+        33,
+        88,
+        41
+      ]
+    },
+    {
+      "id": "oculomotor-nerves",
+      "name": "Oculomotor nerves (III)",
+      "accept": [
+        "oculomotor nerve",
+        "oculomotor nerves",
+        "cranial nerve iii",
+        "cn iii",
+        "oculomotor"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        373,
+        101,
+        114,
+        46
+      ]
+    },
+    {
+      "id": "ciliary-ganglia",
+      "name": "Ciliary ganglia",
+      "accept": [
+        "ciliary ganglion",
+        "ciliary"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "parasympathetic-anatomy",
+      "box": [
+        276,
+        163,
+        76,
+        46
+      ]
+    }
+  ]
+}

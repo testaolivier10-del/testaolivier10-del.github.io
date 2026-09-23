@@ -1,0 +1,261 @@
+{
+  "figure": "os-14-22",
+  "labels": [
+    {
+      "id": "left-visual-field",
+      "name": "Left visual field",
+      "accept": [
+        "left visual field"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        321,
+        1,
+        196,
+        27
+      ]
+    },
+    {
+      "id": "right-visual-field",
+      "name": "Right visual field",
+      "accept": [
+        "right visual field"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        599,
+        1,
+        214,
+        33
+      ]
+    },
+    {
+      "id": "binocular-field",
+      "name": "Binocular field",
+      "accept": [
+        "binocular field",
+        "binocular visual field",
+        "binocular zone"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        464,
+        82,
+        186,
+        26
+      ]
+    },
+    {
+      "id": "visual-field-left-eye",
+      "name": "Visual field of left eye",
+      "accept": [
+        "visual field of left eye",
+        "visual field of the left eye",
+        "left eye visual field"
+      ],
+      "lines": [
+        6,
+        9,
+        10
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        109,
+        226,
+        146,
+        63
+      ]
+    },
+    {
+      "id": "visual-field-right-eye",
+      "name": "Visual field of right eye",
+      "accept": [
+        "visual field of right eye",
+        "visual field of the right eye",
+        "right eye visual field"
+      ],
+      "lines": [
+        7,
+        8,
+        11
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        955,
+        226,
+        147,
+        63
+      ]
+    },
+    {
+      "id": "pituitary-gland",
+      "name": "Pituitary gland",
+      "accept": [
+        "pituitary gland",
+        "pituitary",
+        "hypophysis"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "major-organs",
+      "box": [
+        917,
+        520,
+        185,
+        33
+      ]
+    },
+    {
+      "id": "optic-nerves",
+      "name": "Optic nerves",
+      "accept": [
+        "optic nerves",
+        "optic nerve",
+        "cranial nerve ii",
+        "cn ii"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        87,
+        584,
+        168,
+        32
+      ]
+    },
+    {
+      "id": "optic-chiasm",
+      "name": "Optic chiasm",
+      "accept": [
+        "optic chiasm",
+        "optic chiasma",
+        "chiasm"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        932,
+        615,
+        170,
+        32
+      ]
+    },
+    {
+      "id": "suprachiasmatic-nucleus",
+      "name": "Suprachiasmatic nucleus of hypothalamus",
+      "accept": [
+        "suprachiasmatic nucleus",
+        "scn",
+        "suprachiasmatic nucleus of hypothalamus"
+      ],
+      "lines": [
+        20,
+        22,
+        23
+      ],
+      "concept": "circadian-rhythm",
+      "box": [
+        887,
+        711,
+        215,
+        95
+      ]
+    },
+    {
+      "id": "optic-tract",
+      "name": "Optic tract",
+      "accept": [
+        "optic tract",
+        "optic tracts"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        116,
+        715,
+        140,
+        33
+      ]
+    },
+    {
+      "id": "lateral-geniculate-nucleus",
+      "name": "Lateral geniculate nucleus of thalamus",
+      "accept": [
+        "lateral geniculate nucleus",
+        "lgn",
+        "lateral geniculate body",
+        "lateral geniculate nucleus of thalamus"
+      ],
+      "lines": [
+        24,
+        25,
+        26
+      ],
+      "concept": "visual-pathway",
+      "box": [
+        0,
+        802,
+        258,
+        58
+      ]
+    },
+    {
+      "id": "left-visual-cortex",
+      "name": "Left visual cortex",
+      "accept": [
+        "left visual cortex",
+        "visual cortex",
+        "primary visual cortex",
+        "left primary visual cortex"
+      ],
+      "lines": [
+        27,
+        29
+      ],
+      "concept": "functional-areas",
+      "box": [
+        142,
+        1016,
+        137,
+        58
+      ]
+    },
+    {
+      "id": "right-visual-cortex",
+      "name": "Right visual cortex",
+      "accept": [
+        "right visual cortex",
+        "visual cortex",
+        "primary visual cortex",
+        "right primary visual cortex"
+      ],
+      "lines": [
+        28,
+        30
+      ],
+      "concept": "functional-areas",
+      "box": [
+        843,
+        1016,
+        156,
+        58
+      ]
+    }
+  ]
+}

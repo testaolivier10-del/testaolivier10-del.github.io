@@ -1,0 +1,97 @@
+{
+  "figure": "os-14-10",
+  "labels": [
+    {
+      "id": "oval-window-base",
+      "name": "Oval window base",
+      "accept": [
+        "oval window",
+        "base",
+        "base of cochlea",
+        "oval window base"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cochlea",
+      "box": [
+        303,
+        239,
+        166,
+        20
+      ]
+    },
+    {
+      "id": "tectorial-membrane",
+      "name": "Tectorial membrane",
+      "accept": [
+        "tectorial membrane"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "cochlea",
+      "box": [
+        1003,
+        280,
+        99,
+        41
+      ]
+    },
+    {
+      "id": "apex",
+      "name": "Apex",
+      "accept": [
+        "apex",
+        "apex of cochlea",
+        "cochlear apex"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cochlea",
+      "box": [
+        991,
+        367,
+        56,
+        24
+      ]
+    },
+    {
+      "id": "basilar-membrane",
+      "name": "Basilar membrane",
+      "accept": [
+        "basilar membrane"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "cochlea",
+      "box": [
+        1004,
+        440,
+        98,
+        41
+      ]
+    },
+    {
+      "id": "round-window",
+      "name": "Round window",
+      "accept": [
+        "round window"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "cochlea",
+      "box": [
+        333,
+        491,
+        136,
+        20
+      ]
+    }
+  ]
+}

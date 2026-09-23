@@ -1,0 +1,117 @@
+{
+  "figure": "os-14-26",
+  "labels": [
+    {
+      "id": "frontal-lobe",
+      "name": "Frontal lobe",
+      "accept": [
+        "frontal lobe"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cerebral-lobes",
+      "box": [
+        5,
+        28,
+        123,
+        22
+      ]
+    },
+    {
+      "id": "parietal-lobe",
+      "name": "Parietal lobe",
+      "accept": [
+        "parietal lobe"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cerebral-lobes",
+      "box": [
+        872,
+        28,
+        129,
+        22
+      ]
+    },
+    {
+      "id": "dorsal-visual-stream",
+      "name": "Dorsal visual stream",
+      "accept": [
+        "dorsal visual stream",
+        "dorsal stream",
+        "where pathway",
+        "where stream"
+      ],
+      "lines": [
+        2,
+        3,
+        4
+      ],
+      "concept": "visual-streams",
+      "box": [
+        870,
+        125,
+        231,
+        73
+      ]
+    },
+    {
+      "id": "occipital-lobe",
+      "name": "Occipital lobe",
+      "accept": [
+        "occipital lobe"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "cerebral-lobes",
+      "box": [
+        871,
+        258,
+        140,
+        26
+      ]
+    },
+    {
+      "id": "ventral-visual-stream",
+      "name": "Ventral visual stream",
+      "accept": [
+        "ventral visual stream",
+        "ventral stream",
+        "what pathway",
+        "what stream"
+      ],
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "concept": "visual-streams",
+      "box": [
+        870,
+        371,
+        231,
+        73
+      ]
+    },
+    {
+      "id": "temporal-lobe",
+      "name": "Temporal lobe",
+      "accept": [
+        "temporal lobe"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cerebral-lobes",
+      "box": [
+        132,
+        486,
+        147,
+        26
+      ]
+    }
+  ]
+}

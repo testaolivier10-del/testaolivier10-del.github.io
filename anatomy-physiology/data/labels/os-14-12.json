@@ -1,0 +1,77 @@
+{
+  "figure": "os-14-12",
+  "labels": [
+    {
+      "id": "cupula",
+      "name": "Cupula",
+      "accept": [
+        "cupula"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        427,
+        284,
+        70,
+        23
+      ]
+    },
+    {
+      "id": "ampulla",
+      "name": "Ampulla",
+      "accept": [
+        "ampulla",
+        "ampullae"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        458,
+        329,
+        79,
+        22
+      ]
+    },
+    {
+      "id": "ampullary-nerve",
+      "name": "Ampullary nerve",
+      "accept": [
+        "ampullary nerve",
+        "vestibular nerve"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": null,
+      "box": [
+        122,
+        495,
+        145,
+        23
+      ]
+    },
+    {
+      "id": "cupula-bending-note",
+      "name": "As the head rotates, cupula bends in opposite direction of the rotation",
+      "accept": [
+        "cupula"
+      ],
+      "lines": [
+        16,
+        18,
+        19
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        624,
+        479,
+        215,
+        60
+      ]
+    }
+  ]
+}

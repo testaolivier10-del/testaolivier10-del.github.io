@@ -1,0 +1,287 @@
+{
+  "figure": "os-14-14",
+  "labels": [
+    {
+      "id": "superior-oblique-muscle",
+      "name": "Superior oblique muscle",
+      "accept": [
+        "superior oblique",
+        "superior oblique muscle"
+      ],
+      "lines": [
+        0,
+        4
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        115,
+        4,
+        145,
+        40
+      ]
+    },
+    {
+      "id": "trochlea",
+      "name": "Trochlea",
+      "accept": [
+        "trochlea",
+        "trochlea of the orbit"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": null,
+      "box": [
+        529,
+        16,
+        82,
+        20
+      ]
+    },
+    {
+      "id": "superior-oblique-tendon",
+      "name": "Superior oblique tendon",
+      "accept": [
+        "superior oblique tendon",
+        "tendon of superior oblique"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        529,
+        50,
+        146,
+        41
+      ]
+    },
+    {
+      "id": "superior-rectus-muscle",
+      "name": "Superior rectus muscle",
+      "accept": [
+        "superior rectus",
+        "superior rectus muscle"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        530,
+        105,
+        136,
+        40
+      ]
+    },
+    {
+      "id": "lateral-rectus-muscle",
+      "name": "Lateral rectus muscle",
+      "accept": [
+        "lateral rectus",
+        "lateral rectus muscle"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        530,
+        160,
+        123,
+        40
+      ]
+    },
+    {
+      "id": "common-tendinous-ring",
+      "name": "Common tendinous ring",
+      "accept": [
+        "common tendinous ring",
+        "annulus of zinn",
+        "tendinous ring"
+      ],
+      "lines": [
+        21,
+        24
+      ],
+      "concept": null,
+      "box": [
+        11,
+        337,
+        129,
+        44
+      ]
+    },
+    {
+      "id": "inferior-rectus-muscle",
+      "name": "Inferior rectus muscle",
+      "accept": [
+        "inferior rectus",
+        "inferior rectus muscle"
+      ],
+      "lines": [
+        22,
+        25
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        218,
+        338,
+        124,
+        40
+      ]
+    },
+    {
+      "id": "inferior-oblique-muscle",
+      "name": "Inferior oblique muscle",
+      "accept": [
+        "inferior oblique",
+        "inferior oblique muscle"
+      ],
+      "lines": [
+        23,
+        26
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        406,
+        338,
+        132,
+        40
+      ]
+    },
+    {
+      "id": "superior-rectus-anterior",
+      "name": "Superior rectus",
+      "accept": [
+        "superior rectus",
+        "superior rectus muscle"
+      ],
+      "lines": [
+        2,
+        5
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        701,
+        18,
+        82,
+        40
+      ]
+    },
+    {
+      "id": "trochlea-anterior",
+      "name": "Trochlea",
+      "accept": [
+        "trochlea",
+        "trochlea of the orbit"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": null,
+      "box": [
+        1019,
+        18,
+        82,
+        20
+      ]
+    },
+    {
+      "id": "superior-oblique-anterior",
+      "name": "Superior oblique",
+      "accept": [
+        "superior oblique",
+        "superior oblique muscle"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        1020,
+        77,
+        82,
+        43
+      ]
+    },
+    {
+      "id": "lateral-rectus-anterior",
+      "name": "Lateral rectus",
+      "accept": [
+        "lateral rectus",
+        "lateral rectus muscle"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        627,
+        233,
+        122,
+        20
+      ]
+    },
+    {
+      "id": "medial-rectus",
+      "name": "Medial rectus",
+      "accept": [
+        "medial rectus",
+        "medial rectus muscle"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        981,
+        233,
+        121,
+        20
+      ]
+    },
+    {
+      "id": "inferior-oblique-anterior",
+      "name": "Inferior oblique",
+      "accept": [
+        "inferior oblique",
+        "inferior oblique muscle"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        684,
+        289,
+        71,
+        43
+      ]
+    },
+    {
+      "id": "inferior-rectus-anterior",
+      "name": "Inferior rectus",
+      "accept": [
+        "inferior rectus",
+        "inferior rectus muscle"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        955,
+        289,
+        69,
+        40
+      ]
+    }
+  ]
+}

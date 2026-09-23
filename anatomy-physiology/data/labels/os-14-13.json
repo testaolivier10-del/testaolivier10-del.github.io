@@ -1,0 +1,134 @@
+{
+  "figure": "os-14-13",
+  "labels": [
+    {
+      "id": "eyebrow",
+      "name": "Eyebrow",
+      "accept": [
+        "eyebrow",
+        "brow"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": null,
+      "box": [
+        864,
+        76,
+        103,
+        28
+      ]
+    },
+    {
+      "id": "orbicularis-oculi",
+      "name": "Orbicularis oculi muscle",
+      "accept": [
+        "orbicularis oculi",
+        "orbicularis oculi muscle"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "facial-expression-muscles",
+      "box": [
+        863,
+        125,
+        180,
+        50
+      ]
+    },
+    {
+      "id": "levator-palpebrae-superioris",
+      "name": "Levator palpebrae superioris muscle",
+      "accept": [
+        "levator palpebrae superioris",
+        "levator palpebrae superioris muscle",
+        "levator palpebrae"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        863,
+        207,
+        202,
+        54
+      ]
+    },
+    {
+      "id": "palpebral-conjunctiva",
+      "name": "Palpebral conjunctiva",
+      "accept": [
+        "palpebral conjunctiva"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        864,
+        268,
+        235,
+        28
+      ]
+    },
+    {
+      "id": "eyelashes",
+      "name": "Eyelashes",
+      "accept": [
+        "eyelashes",
+        "eyelash",
+        "lashes"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null,
+      "box": [
+        864,
+        318,
+        120,
+        28
+      ]
+    },
+    {
+      "id": "cornea",
+      "name": "Cornea",
+      "accept": [
+        "cornea"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        863,
+        395,
+        91,
+        24
+      ]
+    },
+    {
+      "id": "conjunctiva",
+      "name": "Conjunctiva",
+      "accept": [
+        "conjunctiva",
+        "bulbar conjunctiva",
+        "ocular conjunctiva"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        863,
+        575,
+        136,
+        29
+      ]
+    }
+  ]
+}

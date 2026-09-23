@@ -1,0 +1,89 @@
+{
+  "figure": "os-14-18",
+  "labels": [
+    {
+      "id": "green-cones",
+      "name": "Green cones",
+      "accept": [
+        "green cones",
+        "green cone",
+        "m cones",
+        "medium-wavelength cones",
+        "m cone"
+      ],
+      "lines": [
+        5,
+        9
+      ],
+      "concept": "photoreceptors",
+      "box": [
+        697,
+        55,
+        88,
+        58
+      ]
+    },
+    {
+      "id": "red-cones",
+      "name": "Red cones",
+      "accept": [
+        "red cones",
+        "red cone",
+        "l cones",
+        "long-wavelength cones",
+        "l cone"
+      ],
+      "lines": [
+        6,
+        10
+      ],
+      "concept": "photoreceptors",
+      "box": [
+        824,
+        56,
+        86,
+        57
+      ]
+    },
+    {
+      "id": "blue-cones",
+      "name": "Blue cones",
+      "accept": [
+        "blue cones",
+        "blue cone",
+        "s cones",
+        "short-wavelength cones",
+        "s cone"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "photoreceptors",
+      "box": [
+        224,
+        87,
+        148,
+        26
+      ]
+    },
+    {
+      "id": "rods",
+      "name": "Rods",
+      "accept": [
+        "rods",
+        "rod",
+        "rod cells"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "photoreceptors",
+      "box": [
+        572,
+        87,
+        76,
+        26
+      ]
+    }
+  ]
+}

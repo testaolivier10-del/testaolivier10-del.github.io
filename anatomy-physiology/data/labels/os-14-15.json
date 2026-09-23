@@ -1,0 +1,473 @@
+{
+  "figure": "os-14-15",
+  "labels": [
+    {
+      "id": "lateral-orientation",
+      "name": "Lateral",
+      "accept": [
+        "lateral"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "medial-lateral",
+      "cover": true,
+      "note": "OpenStax prints 'Lateral' above this view, but the view is a sagittal cut showing the superior and inferior rectus muscles, so the top of the drawing is superior, not lateral. Covered for good and never asked.",
+      "box": [
+        201,
+        32,
+        70,
+        20
+      ]
+    },
+    {
+      "id": "posterior-cavity",
+      "name": "Posterior cavity (vitreous chamber)",
+      "accept": [
+        "posterior cavity",
+        "vitreous chamber",
+        "posterior segment",
+        "vitreous cavity"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "lens-humors",
+      "box": [
+        866,
+        59,
+        177,
+        41
+      ]
+    },
+    {
+      "id": "superior-rectus-muscle",
+      "name": "Superior rectus muscle",
+      "accept": [
+        "superior rectus",
+        "superior rectus muscle"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        0,
+        110,
+        138,
+        42
+      ]
+    },
+    {
+      "id": "scleral-venous-sinus",
+      "name": "Scleral venous sinus (canal of Schlemm)",
+      "accept": [
+        "scleral venous sinus",
+        "canal of schlemm",
+        "schlemm canal",
+        "schlemm's canal"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": "lens-humors",
+      "box": [
+        880,
+        125,
+        188,
+        45
+      ]
+    },
+    {
+      "id": "sclera",
+      "name": "Sclera",
+      "accept": [
+        "sclera",
+        "white of the eye"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        0,
+        171,
+        63,
+        20
+      ]
+    },
+    {
+      "id": "suspensory-ligaments-upper",
+      "name": "Suspensory ligaments",
+      "accept": [
+        "suspensory ligaments",
+        "suspensory ligament",
+        "zonule fibers",
+        "zonules",
+        "ciliary zonule"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "lens-humors",
+      "box": [
+        880,
+        190,
+        201,
+        25
+      ]
+    },
+    {
+      "id": "choroid",
+      "name": "Choroid",
+      "accept": [
+        "choroid"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        0,
+        228,
+        75,
+        20
+      ]
+    },
+    {
+      "id": "lens",
+      "name": "Lens",
+      "accept": [
+        "lens"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "lens-humors",
+      "box": [
+        881,
+        236,
+        53,
+        21
+      ]
+    },
+    {
+      "id": "cornea",
+      "name": "Cornea",
+      "accept": [
+        "cornea"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        880,
+        268,
+        76,
+        20
+      ]
+    },
+    {
+      "id": "retina",
+      "name": "Retina",
+      "accept": [
+        "retina",
+        "neural tunic"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        0,
+        284,
+        64,
+        21
+      ]
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "accept": [
+        "iris"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        881,
+        300,
+        37,
+        20
+      ]
+    },
+    {
+      "id": "pupil",
+      "name": "Pupil",
+      "accept": [
+        "pupil"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        881,
+        331,
+        54,
+        24
+      ]
+    },
+    {
+      "id": "fovea-centralis",
+      "name": "Fovea centralis",
+      "accept": [
+        "fovea centralis",
+        "fovea"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "photoreceptors",
+      "box": [
+        0,
+        344,
+        138,
+        20
+      ]
+    },
+    {
+      "id": "anterior-cavity",
+      "name": "Anterior cavity (contains aqueous humor)",
+      "accept": [
+        "anterior cavity",
+        "anterior segment"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "lens-humors",
+      "box": [
+        865,
+        372,
+        235,
+        45
+      ]
+    },
+    {
+      "id": "posterior-chamber",
+      "name": "Posterior chamber",
+      "accept": [
+        "posterior chamber"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "lens-humors",
+      "box": [
+        881,
+        421,
+        169,
+        20
+      ]
+    },
+    {
+      "id": "optic-nerve",
+      "name": "Optic (II) nerve",
+      "accept": [
+        "optic nerve",
+        "optic",
+        "cranial nerve ii",
+        "cn ii",
+        "optic (ii) nerve"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        425,
+        135,
+        24
+      ]
+    },
+    {
+      "id": "anterior-chamber",
+      "name": "Anterior chamber",
+      "accept": [
+        "anterior chamber"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "lens-humors",
+      "box": [
+        880,
+        442,
+        160,
+        21
+      ]
+    },
+    {
+      "id": "suspensory-ligaments-lower",
+      "name": "Suspensory ligaments",
+      "accept": [
+        "suspensory ligaments",
+        "suspensory ligament",
+        "zonule fibers",
+        "zonules",
+        "ciliary zonule"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "lens-humors",
+      "box": [
+        880,
+        480,
+        201,
+        25
+      ]
+    },
+    {
+      "id": "central-retinal-vessels",
+      "name": "Central retinal artery and vein",
+      "accept": [
+        "central retinal artery and vein",
+        "central retinal artery",
+        "central retinal vein",
+        "central retinal vessels"
+      ],
+      "lines": [
+        22,
+        23
+      ],
+      "concept": null,
+      "box": [
+        0,
+        484,
+        135,
+        45
+      ]
+    },
+    {
+      "id": "ciliary-body",
+      "name": "Ciliary body",
+      "accept": [
+        "ciliary body"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        866,
+        524,
+        128,
+        24
+      ]
+    },
+    {
+      "id": "optic-disc-blind-spot",
+      "name": "Optic disc (blind spot)",
+      "accept": [
+        "optic disc",
+        "blind spot",
+        "optic disk",
+        "optic disc (blind spot)"
+      ],
+      "lines": [
+        25,
+        27
+      ],
+      "concept": "photoreceptors",
+      "box": [
+        0,
+        544,
+        103,
+        46
+      ]
+    },
+    {
+      "id": "ciliary-process",
+      "name": "Ciliary process",
+      "accept": [
+        "ciliary process",
+        "ciliary processes"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        881,
+        545,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "ciliary-muscle",
+      "name": "Ciliary muscle",
+      "accept": [
+        "ciliary muscle",
+        "ciliary muscles"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "eye-tunics",
+      "box": [
+        881,
+        566,
+        131,
+        24
+      ]
+    },
+    {
+      "id": "inferior-rectus-muscle",
+      "name": "Inferior rectus muscle",
+      "accept": [
+        "inferior rectus",
+        "inferior rectus muscle"
+      ],
+      "lines": [
+        29,
+        30
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        0,
+        601,
+        126,
+        42
+      ]
+    },
+    {
+      "id": "medial-orientation",
+      "name": "Medial",
+      "accept": [
+        "medial"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "medial-lateral",
+      "cover": true,
+      "note": "OpenStax prints 'Medial' below this view, but the view is a sagittal cut showing the superior and inferior rectus muscles, so the bottom of the drawing is inferior, not medial. Covered for good and never asked.",
+      "box": [
+        201,
+        633,
+        68,
+        20
+      ]
+    }
+  ]
+}

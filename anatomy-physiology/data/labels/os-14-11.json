@@ -1,0 +1,243 @@
+{
+  "figure": "os-14-11",
+  "labels": [
+    {
+      "id": "macula-inner-ear",
+      "name": "Macula",
+      "accept": [
+        "macula",
+        "maculae"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        1,
+        156,
+        68,
+        19
+      ]
+    },
+    {
+      "id": "utricle",
+      "name": "Utricle (cut)",
+      "accept": [
+        "utricle"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        0,
+        214,
+        100,
+        22
+      ]
+    },
+    {
+      "id": "saccule",
+      "name": "Saccule",
+      "accept": [
+        "saccule"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        153,
+        214,
+        74,
+        19
+      ]
+    },
+    {
+      "id": "endolymph",
+      "name": "Endolymph",
+      "accept": [
+        "endolymph"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": null,
+      "box": [
+        289,
+        301,
+        98,
+        22
+      ]
+    },
+    {
+      "id": "macula-section",
+      "name": "Macula",
+      "accept": [
+        "macula",
+        "maculae"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        288,
+        325,
+        69,
+        19
+      ]
+    },
+    {
+      "id": "otoliths-section",
+      "name": "Otoliths",
+      "accept": [
+        "otoliths",
+        "otolith",
+        "otoconia",
+        "ear stones"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        288,
+        361,
+        72,
+        19
+      ]
+    },
+    {
+      "id": "otolithic-membrane-section",
+      "name": "Otolithic membrane",
+      "accept": [
+        "otolithic membrane"
+      ],
+      "lines": [
+        19,
+        21
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        288,
+        414,
+        96,
+        38
+      ]
+    },
+    {
+      "id": "hair-cells-section",
+      "name": "Hair cells",
+      "accept": [
+        "hair cells",
+        "hair cell"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "cochlea",
+      "box": [
+        288,
+        475,
+        84,
+        19
+      ]
+    },
+    {
+      "id": "vestibular-nerve",
+      "name": "Vestibular division of vestibulocochlear nerve",
+      "accept": [
+        "vestibular nerve",
+        "vestibular division",
+        "vestibular division of vestibulocochlear nerve",
+        "vestibular branch"
+      ],
+      "lines": [
+        27,
+        29
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        288,
+        526,
+        195,
+        38
+      ]
+    },
+    {
+      "id": "otolithic-membrane-detail",
+      "name": "Otolithic membrane",
+      "accept": [
+        "otolithic membrane"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        659,
+        3,
+        96,
+        38
+      ]
+    },
+    {
+      "id": "otoliths-detail",
+      "name": "Otoliths",
+      "accept": [
+        "otoliths",
+        "otolith",
+        "otoconia",
+        "ear stones"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        994,
+        4,
+        72,
+        19
+      ]
+    },
+    {
+      "id": "hair-cell-detail",
+      "name": "Hair cell",
+      "accept": [
+        "hair cell",
+        "hair cells"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cochlea",
+      "box": [
+        1027,
+        66,
+        75,
+        18
+      ]
+    },
+    {
+      "id": "macula-detail",
+      "name": "Macula",
+      "accept": [
+        "macula",
+        "maculae"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        1011,
+        211,
+        69,
+        19
+      ]
+    }
+  ]
+}

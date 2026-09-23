@@ -1,0 +1,252 @@
+{
+  "figure": "os-15-3",
+  "labels": [
+    {
+      "id": "sympathetic-chain-ganglion",
+      "name": "Sympathetic chain ganglion",
+      "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "chain ganglion"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        936,
+        89,
+        151,
+        51
+      ]
+    },
+    {
+      "id": "white-ramus-communicans",
+      "name": "White ramus communicans",
+      "accept": [
+        "white ramus",
+        "white rami communicantes",
+        "white rami",
+        "white communicating ramus"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        936,
+        257,
+        146,
+        46
+      ]
+    },
+    {
+      "id": "spinal-nerve",
+      "name": "Spinal nerve",
+      "accept": [
+        "spinal nerves"
+      ],
+      "lines": [
+        11,
+        14
+      ],
+      "concept": "spinal-nerve",
+      "box": [
+        653,
+        282,
+        71,
+        47
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        13
+      ],
+      "concept": "major-organs",
+      "box": [
+        504,
+        306,
+        120,
+        27
+      ]
+    },
+    {
+      "id": "dorsal-root-ganglion",
+      "name": "Dorsal root ganglion",
+      "accept": [
+        "drg",
+        "spinal ganglion",
+        "posterior root ganglion"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        572,
+        379,
+        118,
+        50
+      ]
+    },
+    {
+      "id": "gray-ramus-communicans",
+      "name": "Gray ramus communicans",
+      "accept": [
+        "gray ramus",
+        "grey ramus communicans",
+        "grey ramus",
+        "gray rami communicantes",
+        "gray rami",
+        "gray communicating ramus"
+      ],
+      "lines": [
+        30,
+        31
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        936,
+        545,
+        146,
+        47
+      ]
+    },
+    {
+      "id": "spinal-nerve-b",
+      "name": "Spinal nerve",
+      "accept": [
+        "spinal nerves"
+      ],
+      "lines": [
+        35,
+        39
+      ],
+      "concept": "spinal-nerve",
+      "box": [
+        656,
+        632,
+        71,
+        47
+      ]
+    },
+    {
+      "id": "spinal-cord-b",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        38
+      ],
+      "concept": "major-organs",
+      "box": [
+        504,
+        656,
+        120,
+        27
+      ]
+    },
+    {
+      "id": "sympathetic-chain-ganglion-c",
+      "name": "Sympathetic chain ganglion",
+      "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "chain ganglion"
+      ],
+      "lines": [
+        43,
+        46
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        936,
+        784,
+        151,
+        51
+      ]
+    },
+    {
+      "id": "spinal-nerve-c",
+      "name": "Spinal nerve",
+      "accept": [
+        "spinal nerves"
+      ],
+      "lines": [
+        51,
+        55
+      ],
+      "concept": "spinal-nerve",
+      "box": [
+        650,
+        972,
+        71,
+        47
+      ]
+    },
+    {
+      "id": "spinal-cord-c",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        54
+      ],
+      "concept": "major-organs",
+      "box": [
+        504,
+        996,
+        120,
+        27
+      ]
+    },
+    {
+      "id": "prevertebral-ganglion",
+      "name": "Prevertebral ganglion",
+      "accept": [
+        "prevertebral ganglia",
+        "collateral ganglion",
+        "collateral ganglia"
+      ],
+      "lines": [
+        57,
+        61
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        936,
+        1012,
+        129,
+        50
+      ]
+    },
+    {
+      "id": "splanchnic-nerve",
+      "name": "Splanchnic nerve",
+      "accept": [
+        "splanchnic nerves",
+        "splanchnic"
+      ],
+      "lines": [
+        66
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        655,
+        1063,
+        177,
+        26
+      ]
+    }
+  ]
+}

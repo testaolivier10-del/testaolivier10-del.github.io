@@ -1,0 +1,170 @@
+{
+  "figure": "os-14-7",
+  "labels": [
+    {
+      "id": "organ-of-corti",
+      "name": "Organ of Corti",
+      "accept": [
+        "organ of corti",
+        "spiral organ"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cochlea",
+      "box": [
+        913,
+        73,
+        138,
+        25
+      ]
+    },
+    {
+      "id": "bony-cochlear-wall",
+      "name": "Bony cochlear wall",
+      "accept": [
+        "bony cochlear wall",
+        "bony wall",
+        "bony labyrinth"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cochlea",
+      "box": [
+        270,
+        95,
+        177,
+        24
+      ]
+    },
+    {
+      "id": "scala-vestibuli",
+      "name": "Scala vestibuli",
+      "accept": [
+        "scala vestibuli",
+        "vestibular duct"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cochlea",
+      "box": [
+        269,
+        145,
+        139,
+        21
+      ]
+    },
+    {
+      "id": "cochlear-duct",
+      "name": "Cochlear duct",
+      "accept": [
+        "cochlear duct",
+        "scala media"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cochlea",
+      "box": [
+        269,
+        187,
+        136,
+        21
+      ]
+    },
+    {
+      "id": "tectorial-membrane",
+      "name": "Tectorial membrane",
+      "accept": [
+        "tectorial membrane"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cochlea",
+      "box": [
+        269,
+        228,
+        188,
+        21
+      ]
+    },
+    {
+      "id": "basilar-membrane",
+      "name": "Basilar membrane",
+      "accept": [
+        "basilar membrane"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "cochlea",
+      "box": [
+        270,
+        272,
+        173,
+        21
+      ]
+    },
+    {
+      "id": "scala-tympani",
+      "name": "Scala tympani",
+      "accept": [
+        "scala tympani",
+        "tympanic duct"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cochlea",
+      "box": [
+        269,
+        310,
+        137,
+        26
+      ]
+    },
+    {
+      "id": "spiral-ganglion",
+      "name": "Spiral ganglion",
+      "accept": [
+        "spiral ganglion",
+        "cochlear ganglion"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null,
+      "box": [
+        459,
+        435,
+        144,
+        25
+      ]
+    },
+    {
+      "id": "cochlear-nerve",
+      "name": "Cochlear branch of N VIII",
+      "accept": [
+        "cochlear nerve",
+        "cochlear branch",
+        "cochlear branch of cranial nerve viii",
+        "cochlear branch of the vestibulocochlear nerve",
+        "cochlear branch of n viii"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        938,
+        474,
+        159,
+        43
+      ]
+    }
+  ]
+}

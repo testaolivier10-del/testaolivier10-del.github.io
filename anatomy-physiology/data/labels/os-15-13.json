@@ -1,0 +1,114 @@
+{
+  "figure": "os-15-13",
+  "labels": [
+    {
+      "id": "pons",
+      "name": "Pons",
+      "accept": [],
+      "lines": [
+        5
+      ],
+      "concept": "brainstem",
+      "box": [
+        229,
+        130,
+        62,
+        23
+      ]
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla oblongata"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "brainstem",
+      "box": [
+        200,
+        245,
+        92,
+        23
+      ]
+    },
+    {
+      "id": "dorsal-nucleus-of-vagus-and-nucleus-ambiguus",
+      "name": "Dorsal nucleus of the vagus nerve and nucleus ambiguus",
+      "accept": [
+        "dorsal nucleus of the vagus",
+        "dorsal nucleus of the vagus nerve",
+        "dorsal motor nucleus of the vagus",
+        "dorsal vagal nucleus",
+        "nucleus ambiguus",
+        "vagal nuclei",
+        "dorsal nucleus of the vagus and nucleus ambiguus"
+      ],
+      "lines": [
+        7,
+        8,
+        10
+      ],
+      "concept": null,
+      "box": [
+        6,
+        303,
+        219,
+        78
+      ]
+    },
+    {
+      "id": "cranial-nerve-x",
+      "name": "Cranial nerve X",
+      "accept": [
+        "vagus nerve",
+        "vagus",
+        "cn x",
+        "cranial nerve 10"
+      ],
+      "box": [
+        541,
+        284,
+        168,
+        78
+      ],
+      "concept": "vagus-nerve"
+    },
+    {
+      "id": "superior-cervical-ganglion",
+      "name": "Superior cervical ganglion",
+      "accept": [
+        "superior cervical",
+        "chain ganglion",
+        "sympathetic chain ganglion"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        506,
+        390,
+        182,
+        53
+      ]
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "accept": [],
+      "lines": [
+        14
+      ],
+      "concept": "major-organs",
+      "box": [
+        1027,
+        512,
+        69,
+        23
+      ]
+    }
+  ]
+}

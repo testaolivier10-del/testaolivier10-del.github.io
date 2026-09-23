@@ -1,0 +1,187 @@
+{
+  "figure": "os-15-6",
+  "labels": [
+    {
+      "id": "preganglionic-axon",
+      "name": "Autonomic preganglionic axon",
+      "accept": [
+        "preganglionic axon",
+        "preganglionic fiber",
+        "preganglionic neuron",
+        "autonomic presynaptic axon",
+        "presynaptic axon",
+        "autonomic presynaptic axon (myelinated)"
+      ],
+      "lines": [
+        3,
+        5,
+        8,
+        11
+      ],
+      "concept": "pre-postganglionic",
+      "note": "OpenStax prints 'Autonomic presynaptic axon'; the axon runs from the central neuron to the ganglion, so it is the preganglionic axon.",
+      "box": [
+        405,
+        340,
+        126,
+        96
+      ]
+    },
+    {
+      "id": "postganglionic-axon",
+      "name": "Autonomic postganglionic axon",
+      "accept": [
+        "postganglionic axon",
+        "postganglionic fiber",
+        "postganglionic neuron",
+        "autonomic postsynaptic axon",
+        "postsynaptic axon",
+        "autonomic postsynaptic axon (unmyelinated)"
+      ],
+      "lines": [
+        4,
+        6,
+        9,
+        12
+      ],
+      "concept": "pre-postganglionic",
+      "note": "OpenStax prints 'Autonomic postsynaptic axon'; the axon runs from the ganglionic neuron to the effector, so it is the postganglionic axon.",
+      "box": [
+        687,
+        340,
+        149,
+        96
+      ]
+    },
+    {
+      "id": "smooth-muscle",
+      "name": "Smooth muscle",
+      "accept": [
+        "target effector: smooth muscle",
+        "target effector smooth muscle"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        857,
+        565,
+        153,
+        44
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        17
+      ],
+      "concept": "major-organs",
+      "box": [
+        102,
+        644,
+        116,
+        26
+      ]
+    },
+    {
+      "id": "postganglionic-varicosity",
+      "name": "Postganglionic varicosity",
+      "accept": [
+        "varicosity",
+        "varicosities",
+        "postganglionic varicosities"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "pre-postganglionic",
+      "box": [
+        747,
+        15,
+        333,
+        50
+      ]
+    },
+    {
+      "id": "somatic-motor-neuron",
+      "name": "Somatic motor neuron",
+      "accept": [
+        "motor neuron",
+        "somatic motor neuron (myelinated)",
+        "lower motor neuron"
+      ],
+      "lines": [
+        20,
+        21,
+        22
+      ],
+      "concept": "motor-neuron",
+      "box": [
+        395,
+        772,
+        148,
+        72
+      ]
+    },
+    {
+      "id": "skeletal-muscle",
+      "name": "Skeletal muscle",
+      "accept": [
+        "target effector: skeletal muscle",
+        "target effector skeletal muscle"
+      ],
+      "lines": [
+        25,
+        27
+      ],
+      "concept": "skeletal-muscle-tissue",
+      "box": [
+        857,
+        1030,
+        155,
+        45
+      ]
+    },
+    {
+      "id": "spinal-cord-b",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        26
+      ],
+      "concept": "major-organs",
+      "box": [
+        102,
+        1053,
+        116,
+        25
+      ]
+    },
+    {
+      "id": "synaptic-terminal",
+      "name": "Synaptic terminal",
+      "accept": [
+        "axon terminal",
+        "synaptic knob",
+        "terminal bouton",
+        "axon ends at synapse (synaptic terminal)"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "neuron-parts-basic",
+      "box": [
+        746,
+        1119,
+        216,
+        49
+      ]
+    }
+  ]
+}

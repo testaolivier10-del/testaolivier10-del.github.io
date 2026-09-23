@@ -1,0 +1,674 @@
+{
+  "figure": "os-15-2",
+  "labels": [
+    {
+      "id": "left-chain-ganglia",
+      "name": "Left chain ganglia",
+      "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "sympathetic chain ganglion",
+        "chain ganglion",
+        "left sympathetic chain",
+        "left chain ganglion"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        315,
+        154,
+        113,
+        50
+      ]
+    },
+    {
+      "id": "right-chain-ganglia",
+      "name": "Right chain ganglia",
+      "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "sympathetic chain ganglion",
+        "chain ganglion",
+        "right sympathetic chain",
+        "right chain ganglion"
+      ],
+      "lines": [
+        29,
+        34
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        0,
+        292,
+        123,
+        50
+      ]
+    },
+    {
+      "id": "superior-cervical-ganglion",
+      "name": "Superior cervical ganglion",
+      "accept": [
+        "superior cervical"
+      ],
+      "box": [
+        396,
+        312,
+        248,
+        80
+      ],
+      "concept": "sympathetic-anatomy"
+    },
+    {
+      "id": "greater-splanchnic-nerve",
+      "name": "Greater splanchnic nerve",
+      "accept": [
+        "greater splanchnic",
+        "splanchnic nerve",
+        "greater thoracic splanchnic nerve"
+      ],
+      "box": [
+        388,
+        661,
+        179,
+        80
+      ],
+      "concept": "sympathetic-anatomy"
+    },
+    {
+      "id": "lesser-splanchnic-nerve",
+      "name": "Lesser splanchnic nerve",
+      "accept": [
+        "lesser splanchnic",
+        "splanchnic nerve",
+        "lesser thoracic splanchnic nerve"
+      ],
+      "box": [
+        556,
+        679,
+        118,
+        140
+      ],
+      "concept": "sympathetic-anatomy"
+    },
+    {
+      "id": "celiac-ganglion",
+      "name": "Celiac ganglion",
+      "accept": [
+        "coeliac ganglion",
+        "celiac",
+        "collateral ganglion",
+        "prevertebral ganglion"
+      ],
+      "lines": [
+        51,
+        56
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        689,
+        590,
+        92,
+        50
+      ]
+    },
+    {
+      "id": "superior-mesenteric-ganglion",
+      "name": "Superior mesenteric ganglion",
+      "accept": [
+        "superior mesenteric",
+        "collateral ganglion",
+        "prevertebral ganglion"
+      ],
+      "lines": [
+        100,
+        101,
+        104
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        540,
+        964,
+        117,
+        74
+      ]
+    },
+    {
+      "id": "inferior-mesenteric-ganglion",
+      "name": "Inferior mesenteric ganglion",
+      "accept": [
+        "inferior mesenteric",
+        "collateral ganglion",
+        "prevertebral ganglion"
+      ],
+      "lines": [
+        128,
+        134,
+        137
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        516,
+        1188,
+        117,
+        74
+      ]
+    },
+    {
+      "id": "eye",
+      "name": "Eye",
+      "accept": [
+        "eyes",
+        "eyeball"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null,
+      "box": [
+        905,
+        67,
+        48,
+        26
+      ]
+    },
+    {
+      "id": "lacrimal-gland",
+      "name": "Lacrimal gland",
+      "accept": [
+        "tear gland",
+        "lacrimal glands"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "eye-accessory",
+      "box": [
+        905,
+        146,
+        149,
+        26
+      ]
+    },
+    {
+      "id": "mucous-membrane-nose-palate",
+      "name": "Mucous membrane of the nose and palate",
+      "accept": [
+        "mucous membrane nose and palate",
+        "mucous membrane (nose and palate)",
+        "nasal mucosa",
+        "mucous membrane of nose and palate",
+        "mucous membrane of the nose"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "mucous-membrane",
+      "box": [
+        905,
+        181,
+        194,
+        49
+      ]
+    },
+    {
+      "id": "submaxillary-gland",
+      "name": "Submaxillary gland",
+      "accept": [
+        "submandibular gland",
+        "submaxillary",
+        "submandibular"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        905,
+        238,
+        191,
+        26
+      ]
+    },
+    {
+      "id": "sublingual-gland",
+      "name": "Sublingual gland",
+      "accept": [
+        "sublingual"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        905,
+        281,
+        168,
+        26
+      ]
+    },
+    {
+      "id": "mucous-membrane-mouth",
+      "name": "Mucous membrane of the mouth",
+      "accept": [
+        "mucous membrane mouth",
+        "mucous membrane (mouth)",
+        "oral mucosa",
+        "mucous membrane of mouth"
+      ],
+      "lines": [
+        36,
+        39
+      ],
+      "concept": "mucous-membrane",
+      "box": [
+        905,
+        323,
+        194,
+        45
+      ]
+    },
+    {
+      "id": "parotid-gland",
+      "name": "Parotid gland",
+      "accept": [
+        "parotid"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        905,
+        381,
+        137,
+        26
+      ]
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "accept": [],
+      "lines": [
+        42
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        460,
+        64,
+        22
+      ]
+    },
+    {
+      "id": "larynx",
+      "name": "Larynx",
+      "accept": [
+        "voice box"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "larynx",
+      "box": [
+        905,
+        516,
+        76,
+        25
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "windpipe"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "major-organs",
+      "box": [
+        904,
+        550,
+        90,
+        22
+      ]
+    },
+    {
+      "id": "bronchi",
+      "name": "Bronchi",
+      "accept": [
+        "bronchus"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "bronchial-tree",
+      "box": [
+        905,
+        592,
+        83,
+        21
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "oesophagus"
+      ],
+      "lines": [
+        60
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        625,
+        118,
+        26
+      ]
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "accept": [],
+      "lines": [
+        67
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        676,
+        95,
+        23
+      ]
+    },
+    {
+      "id": "abdominal-blood-vessels",
+      "name": "Abdominal blood vessels",
+      "accept": [
+        "abdominal vessels",
+        "blood vessels"
+      ],
+      "lines": [
+        78,
+        79
+      ],
+      "concept": "blood-vessel-basics",
+      "box": [
+        904,
+        768,
+        142,
+        46
+      ]
+    },
+    {
+      "id": "liver-and-bile-duct",
+      "name": "Liver and bile duct",
+      "accept": [
+        "liver",
+        "liver and bile ducts"
+      ],
+      "lines": [
+        86,
+        89
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        854,
+        99,
+        45
+      ]
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [],
+      "lines": [
+        99
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        952,
+        102,
+        22
+      ]
+    },
+    {
+      "id": "adrenal-gland",
+      "name": "Adrenal gland",
+      "accept": [
+        "adrenal",
+        "adrenal glands",
+        "suprarenal gland"
+      ],
+      "lines": [
+        109
+      ],
+      "concept": "major-organs",
+      "box": [
+        904,
+        1040,
+        143,
+        26
+      ]
+    },
+    {
+      "id": "small-intestine",
+      "name": "Small intestine",
+      "accept": [
+        "small bowel"
+      ],
+      "lines": [
+        121
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        905,
+        1150,
+        150,
+        22
+      ]
+    },
+    {
+      "id": "large-intestine",
+      "name": "Large intestine",
+      "accept": [
+        "large bowel",
+        "colon"
+      ],
+      "lines": [
+        148,
+        157
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        905,
+        1280,
+        91,
+        46
+      ]
+    },
+    {
+      "id": "rectum",
+      "name": "Rectum",
+      "accept": [],
+      "lines": [
+        178
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        905,
+        1365,
+        84,
+        22
+      ]
+    },
+    {
+      "id": "kidney",
+      "name": "Kidney",
+      "accept": [
+        "kidneys"
+      ],
+      "lines": [
+        184
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        1413,
+        77,
+        25
+      ]
+    },
+    {
+      "id": "bladder",
+      "name": "Bladder",
+      "accept": [
+        "urinary bladder"
+      ],
+      "lines": [
+        190
+      ],
+      "concept": "major-organs",
+      "box": [
+        905,
+        1467,
+        86,
+        22
+      ]
+    },
+    {
+      "id": "gonads",
+      "name": "Gonads",
+      "accept": [
+        "gonad",
+        "testes",
+        "ovaries"
+      ],
+      "lines": [
+        197
+      ],
+      "concept": "major-organs",
+      "box": [
+        904,
+        1530,
+        87,
+        22
+      ]
+    },
+    {
+      "id": "external-genitalia",
+      "name": "External genitalia",
+      "accept": [
+        "genitalia",
+        "genitals"
+      ],
+      "lines": [
+        201
+      ],
+      "concept": null,
+      "box": [
+        905,
+        1593,
+        175,
+        26
+      ]
+    },
+    {
+      "id": "skin",
+      "name": "Skin",
+      "accept": [],
+      "lines": [
+        98
+      ],
+      "concept": "major-organs",
+      "box": [
+        22,
+        950,
+        53,
+        22
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        193
+      ],
+      "concept": "major-organs",
+      "box": [
+        86,
+        1493,
+        118,
+        26
+      ]
+    },
+    {
+      "id": "ganglion-impar",
+      "name": "Ganglion impar",
+      "accept": [
+        "coccygeal ganglia",
+        "coccygeal ganglia fused together",
+        "coccygeal ganglion",
+        "coccygeal ganglia fused together (ganglion impar)"
+      ],
+      "lines": [
+        194,
+        196,
+        198
+      ],
+      "concept": "sympathetic-anatomy",
+      "box": [
+        302,
+        1493,
+        188,
+        74
+      ]
+    },
+    {
+      "id": "pons",
+      "name": "Pons",
+      "accept": [],
+      "lines": [
+        8
+      ],
+      "concept": "brainstem",
+      "box": [
+        131,
+        111,
+        60,
+        22
+      ]
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla oblongata"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "brainstem",
+      "box": [
+        104,
+        216,
+        86,
+        21
+      ]
+    }
+  ]
+}

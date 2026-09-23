@@ -6207,6 +6207,286 @@
    ]
   },
   {
+   "id": "spinal-cord-section",
+   "title": "Spinal cord cross section",
+   "chapter": "cns",
+   "topic": "spinal-cord",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "spinal-cord-section",
+     "topic": "spinal-cord",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "posterior-median-sulcus",
+       "name": "Posterior median sulcus",
+       "accept": [
+        "dorsal median sulcus"
+       ],
+       "box": [
+        504,
+        46,
+        174,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The shallow groove running down the back midline of the spinal cord. It divides the white matter at the back into right and left halves."
+      },
+      {
+       "id": "posterior-column",
+       "name": "Posterior column",
+       "accept": [
+        "dorsal column",
+        "posterior white column",
+        "dorsal funiculus",
+        "posterior funiculus"
+       ],
+       "box": [
+        504,
+        86,
+        125,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The white matter between the posterior median sulcus and the dorsal horn. Its tracts are ascending: they carry fine touch, vibration and the sense of limb position up to the brain."
+      },
+      {
+       "id": "dorsal-horn",
+       "name": "Dorsal horn",
+       "accept": [
+        "posterior horn",
+        "posterior gray horn"
+       ],
+       "box": [
+        504,
+        126,
+        86,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The narrow gray horn reaching toward the back. Sensory axons arriving through the dorsal root end here on interneurons and on neurons whose axons carry the signal up the cord."
+      },
+      {
+       "id": "lateral-horn",
+       "name": "Lateral horn",
+       "accept": [
+        "lateral gray horn"
+       ],
+       "box": [
+        504,
+        171,
+        90,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "A small gray bump between the dorsal and ventral horns, found only from about T1 to L2. It holds the cell bodies of the autonomic (sympathetic) motor neurons that control glands, smooth muscle and the heart.",
+       "follow": {
+        "q": "A section shows a small gray bump sticking out at each side, between the dorsal and ventral horns. Which part of the cord did the section come from?",
+        "options": [
+         "The upper neck, near C2",
+         "The thoracic cord, near T6",
+         "The sacral cord, near S3",
+         "The coccygeal cord, near Co1"
+        ],
+        "correct": 1,
+        "why": "Lateral horns hold sympathetic motor neurons and exist only from about T1 to L2, so a section showing them comes from the thoracic or upper lumbar cord. Neck, sacral and coccygeal sections have dorsal and ventral horns but no lateral horn.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lateral-column",
+       "name": "Lateral column",
+       "accept": [
+        "lateral white column",
+        "lateral funiculus"
+       ],
+       "box": [
+        504,
+        211,
+        109,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The white matter at each side of the cord, between the dorsal and ventral horns. It carries ascending tracts (including those for pain and temperature) and descending tracts that control movement."
+      },
+      {
+       "id": "central-canal",
+       "name": "Central canal",
+       "accept": [],
+       "box": [
+        504,
+        251,
+        96,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The tiny canal in the middle of the gray matter, running the length of the cord. It is lined by ependymal cells and holds cerebrospinal fluid, continuous with the fourth ventricle above."
+      },
+      {
+       "id": "ventral-horn",
+       "name": "Ventral horn",
+       "accept": [
+        "anterior horn",
+        "anterior gray horn"
+       ],
+       "box": [
+        504,
+        291,
+        90,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The broad gray horn reaching toward the front. It holds the cell bodies of the motor neurons whose axons leave through the ventral root to the skeletal muscles.",
+       "follow": {
+        "q": "A virus destroys neurons in one region of the spinal cord's gray matter. The patient's muscles weaken and waste away, but touch and pain are still felt. Which region was destroyed?",
+        "options": [
+         "Dorsal horn",
+         "Posterior column",
+         "Ventral horn",
+         "Dorsal root ganglion"
+        ],
+        "correct": 2,
+        "why": "The ventral horn holds the cell bodies of the motor neurons to skeletal muscle, so losing them leaves muscles without signals while sensation, which enters through the dorsal root and dorsal horn, is spared. The dorsal horn, posterior column and dorsal root ganglion all handle incoming sensory signals.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "anterior-column",
+       "name": "Anterior column",
+       "accept": [
+        "ventral column",
+        "anterior white column",
+        "anterior funiculus"
+       ],
+       "box": [
+        504,
+        331,
+        118,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The white matter between the ventral horn and the anterior median fissure. It carries descending tracts that control movement and some ascending tracts."
+      },
+      {
+       "id": "anterior-median-fissure",
+       "name": "Anterior median fissure",
+       "accept": [
+        "ventral median fissure"
+       ],
+       "box": [
+        504,
+        371,
+        170,
+        19
+       ],
+       "concept": "spinal-cord-section",
+       "taught": "spinal-cord",
+       "fn": "The deep groove running down the front midline of the spinal cord. Because the groove at the front is deep and the one at the back is shallow, it tells you which way a section faces.",
+       "follow": {
+        "q": "You are handed an unlabeled spinal cord section. Which feature tells you which side is the front?",
+        "options": [
+         "The deep midline groove, which is at the front",
+         "The central canal, which sits closer to the front",
+         "The shallow midline groove, which is at the front",
+         "The broad gray horns, which point toward the back"
+        ],
+        "correct": 0,
+        "why": "The anterior median fissure is deep and the posterior median sulcus is shallow, so the deep groove marks the front. The broad ventral horns also point to the front, not the back, and the central canal sits in the middle of the gray matter.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "dorsal-root",
+       "name": "Dorsal root",
+       "accept": [
+        "posterior root",
+        "sensory root"
+       ],
+       "box": [
+        158,
+        48,
+        83,
+        19
+       ],
+       "concept": "spinal-roots",
+       "taught": "spinal-cord",
+       "fn": "The bundle of sensory axons entering the back of the cord. It carries signals from the skin, muscles and organs into the dorsal horn.",
+       "follow": {
+        "q": "A surgeon cuts one dorsal root to relieve pain. What is the expected result in the region that root supplies?",
+        "options": [
+         "Loss of feeling, with movement spared",
+         "Paralysis, with feeling spared",
+         "Loss of both feeling and movement",
+         "No change, because the ventral root takes over"
+        ],
+        "correct": 0,
+        "why": "The dorsal root carries only sensory axons into the cord, so cutting it removes feeling from its region while the motor axons in the ventral root still reach the muscles. Paralysis would follow damage to the ventral root, and the ventral root carries no sensory signals to take over.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "dorsal-root-ganglion",
+       "name": "Dorsal root ganglion",
+       "accept": [
+        "drg",
+        "posterior root ganglion",
+        "spinal ganglion"
+       ],
+       "box": [
+        18,
+        98,
+        148,
+        19
+       ],
+       "concept": "spinal-roots",
+       "taught": "spinal-cord",
+       "fn": "The swelling on the dorsal root just outside the cord. It holds the cell bodies of the sensory neurons whose axons run in the dorsal root.",
+       "follow": {
+        "q": "Where are the cell bodies of the sensory neurons that bring touch signals from your hand into the spinal cord?",
+        "options": [
+         "In the ventral horn",
+         "In the lateral horn",
+         "In the dorsal root ganglion",
+         "In the central canal"
+        ],
+        "correct": 2,
+        "why": "Sensory neuron cell bodies sit in the dorsal root ganglion, outside the cord. The ventral horn holds motor neurons, the lateral horn holds autonomic motor neurons, and the central canal is a fluid-filled channel with no neurons in it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ventral-root",
+       "name": "Ventral root",
+       "accept": [
+        "anterior root",
+        "motor root"
+       ],
+       "box": [
+        122,
+        366,
+        86,
+        19
+       ],
+       "concept": "spinal-roots",
+       "taught": "spinal-cord",
+       "fn": "The bundle of motor axons leaving the front of the cord from ventral horn neurons. Just beyond the ganglion it joins the dorsal root, so the nerve they form carries both sensory and motor axons."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "brachial-plexus",
    "title": "Brachial plexus",
    "chapter": "pns",
@@ -6486,6 +6766,250 @@
        "concept": "named-nerves",
        "taught": "spinal-nerves",
        "fn": "The branch of the sciatic nerve that continues down the back of the leg. It moves the calf muscles that point the foot and the muscles of the sole, and carries feeling from the sole."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dermatome-map",
+   "title": "Dermatome map",
+   "chapter": "pns",
+   "topic": "spinal-nerves",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "dermatome-landmarks",
+     "topic": "spinal-nerves",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "c5-dermatome",
+       "name": "C5 dermatome",
+       "accept": [
+        "c5",
+        "c5 spinal nerve",
+        "c5 nerve",
+        "c5 root"
+       ],
+       "box": [
+        150,
+        165,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The C5 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve C5. Its standard landmark is the skin over the outer side of the upper arm."
+      },
+      {
+       "id": "c6-dermatome",
+       "name": "C6 dermatome",
+       "accept": [
+        "c6",
+        "c6 spinal nerve",
+        "c6 nerve",
+        "c6 root"
+       ],
+       "box": [
+        71,
+        387,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The C6 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve C6. Its standard landmark is the thumb. Across the hand, C6 is the thumb, C7 the middle finger and C8 the little finger.",
+       "follow": {
+        "q": "A patient has numbness of the thumb only. Which spinal nerve root is most likely involved?",
+        "options": [
+         "C8",
+         "C6",
+         "L5",
+         "T1"
+        ],
+        "correct": 1,
+        "why": "The thumb lies in the C6 dermatome. C8 covers the little finger side of the hand, T1 the inner forearm, and L5 the top of the foot.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "c7-dermatome",
+       "name": "C7 dermatome",
+       "accept": [
+        "c7",
+        "c7 spinal nerve",
+        "c7 nerve",
+        "c7 root"
+       ],
+       "box": [
+        108,
+        423,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The C7 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve C7. Its standard landmark is the middle finger."
+      },
+      {
+       "id": "c8-dermatome",
+       "name": "C8 dermatome",
+       "accept": [
+        "c8",
+        "c8 spinal nerve",
+        "c8 nerve",
+        "c8 root"
+       ],
+       "box": [
+        365,
+        410,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The C8 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve C8. Its standard landmark is the little finger."
+      },
+      {
+       "id": "t4-dermatome",
+       "name": "T4 dermatome",
+       "accept": [
+        "t4",
+        "t4 spinal nerve",
+        "t4 nerve",
+        "t4 root"
+       ],
+       "box": [
+        285,
+        163,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The T4 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve T4. Its standard landmark is the chest at the level of the nipples. The thoracic dermatomes run as horizontal bands around the trunk."
+      },
+      {
+       "id": "t10-dermatome",
+       "name": "T10 dermatome",
+       "accept": [
+        "t10",
+        "t10 spinal nerve",
+        "t10 nerve",
+        "t10 root"
+       ],
+       "box": [
+        245,
+        247,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The T10 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve T10. Its standard landmark is the navel.",
+       "follow": {
+        "q": "After an injury to the spinal cord, a patient has lost feeling from the level of the navel down. At about which segment is the injury?",
+        "options": [
+         "T4",
+         "L1",
+         "T10",
+         "C8"
+        ],
+        "correct": 2,
+        "why": "The navel is the T10 landmark, so feeling lost from the navel down points to a cord injury at about T10. T4 is the nipple line, L1 the groin, and C8 the little finger.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "l1-dermatome",
+       "name": "L1 dermatome",
+       "accept": [
+        "l1",
+        "l1 spinal nerve",
+        "l1 nerve",
+        "l1 root"
+       ],
+       "box": [
+        213,
+        311,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The L1 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve L1. Its standard landmark is the groin."
+      },
+      {
+       "id": "l4-dermatome",
+       "name": "L4 dermatome",
+       "accept": [
+        "l4",
+        "l4 spinal nerve",
+        "l4 nerve",
+        "l4 root"
+       ],
+       "box": [
+        261,
+        485,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The L4 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve L4. Its standard landmark is the inner side of the leg just below the knee."
+      },
+      {
+       "id": "l5-dermatome",
+       "name": "L5 dermatome",
+       "accept": [
+        "l5",
+        "l5 spinal nerve",
+        "l5 nerve",
+        "l5 root"
+       ],
+       "box": [
+        215,
+        583,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The L5 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve L5. Its standard landmark is the top of the foot and the big toe.",
+       "follow": {
+        "q": "Pressure on one nerve root in the lower back causes numbness on the top of the foot and the big toe. Which root is affected?",
+        "options": [
+         "S1",
+         "L1",
+         "C7",
+         "L5"
+        ],
+        "correct": 3,
+        "why": "The top of the foot and the big toe form the L5 dermatome. S1 covers the outer edge of the foot and the little toe, L1 the groin, and C7 the middle finger.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "s1-dermatome",
+       "name": "S1 dermatome",
+       "accept": [
+        "s1",
+        "s1 spinal nerve",
+        "s1 nerve",
+        "s1 root"
+       ],
+       "box": [
+        321,
+        595,
+        30,
+        30
+       ],
+       "concept": "dermatomes",
+       "taught": "spinal-nerves",
+       "fn": "The S1 dermatome: the strip of skin whose sensation reaches the spinal cord through the dorsal root of spinal nerve S1. Its standard landmark is the outer edge of the foot and the little toe."
       }
      ]
     }
@@ -6820,6 +7344,940 @@
        "concept": "cranial-nerve-list",
        "taught": "cranial-nerves",
        "fn": "Cranial nerve XI, a motor nerve whose roots come mostly from the upper spinal cord and rise into the skull before leaving it. It moves the sternocleidomastoid and trapezius, which turn the head and shrug the shoulders."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sympathetic-chain",
+   "title": "Sympathetic chain and ganglia",
+   "chapter": "autonomic",
+   "topic": "ans-anatomy",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-15-2",
+     "topic": "ans-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "left-chain-ganglia",
+       "name": "Left chain ganglia",
+       "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "sympathetic chain ganglion",
+        "chain ganglion",
+        "left sympathetic chain",
+        "left chain ganglion"
+       ],
+       "box": [
+        315,
+        154,
+        113,
+        50
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The row of sympathetic ganglia running beside the spinal cord on each side, from the neck to the coccyx and linked into a chain. Preganglionic axons from T1 to L2 enter it and synapse here, or climb or descend in the chain before synapsing, so every body level gets sympathetic fibers."
+      },
+      {
+       "id": "right-chain-ganglia",
+       "name": "Right chain ganglia",
+       "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "sympathetic chain ganglion",
+        "chain ganglion",
+        "right sympathetic chain",
+        "right chain ganglion"
+       ],
+       "box": [
+        0,
+        292,
+        123,
+        50
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The row of sympathetic ganglia running beside the spinal cord on each side, from the neck to the coccyx and linked into a chain. Preganglionic axons from T1 to L2 enter it and synapse here, or climb or descend in the chain before synapsing, so every body level gets sympathetic fibers.",
+       "follow": {
+        "q": "Sympathetic preganglionic neurons leave the spinal cord only from T1 to L2, yet sweat glands in the skin of the neck and of the foot get sympathetic fibers. How?",
+        "options": [
+         "Preganglionic axons climb or descend in the chain ganglia before synapsing",
+         "Cranial nerves carry sympathetic fibers to the neck and the foot",
+         "The adrenal medulla sends sympathetic axons to the skin",
+         "Neck and foot skin are supplied from the celiac ganglion"
+        ],
+        "correct": 0,
+        "why": "Preganglionic axons that enter the chain can run up or down it and synapse in a ganglion at another level, so the chain carries sympathetic output from T1 to L2 to every level of the body. Cranial nerves carry parasympathetic, not sympathetic, fibers; the adrenal medulla releases hormones into the blood rather than sending axons; and the celiac ganglion serves abdominal organs.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "superior-cervical-ganglion",
+       "name": "Superior cervical ganglion",
+       "accept": [
+        "superior cervical"
+       ],
+       "box": [
+        396,
+        312,
+        248,
+        80
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The largest and highest ganglion of the sympathetic chain, in the neck. Preganglionic axons climb the chain to synapse here, and its postganglionic axons supply the head: the eye (widening the pupil), the glands of the face and the blood vessels of the head.",
+       "follow": {
+        "q": "A tumor at the top of the chest damages the sympathetic chain in the neck on one side. Which sign would you expect on that side of the face?",
+        "options": [
+         "A wide pupil",
+         "A small pupil and a drooping eyelid",
+         "Excess sweating",
+         "A fast heart rate"
+        ],
+        "correct": 1,
+        "why": "The superior cervical ganglion supplies the head, including the muscle that widens the pupil and a small muscle that helps hold the eyelid up. Losing it leaves a small pupil, a slight droop and dry skin on that side. A wide pupil and excess sweating are what sympathetic activity causes, not its loss, and the heart is not supplied from this ganglion alone.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "greater-splanchnic-nerve",
+       "name": "Greater splanchnic nerve",
+       "accept": [
+        "greater splanchnic",
+        "splanchnic nerve",
+        "greater thoracic splanchnic nerve"
+       ],
+       "box": [
+        388,
+        661,
+        179,
+        80
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A nerve formed by preganglionic axons from about T5 to T9 that pass through the chain ganglia without synapsing. It runs down to the celiac ganglion, where the axons synapse on neurons that supply the upper abdominal organs."
+      },
+      {
+       "id": "lesser-splanchnic-nerve",
+       "name": "Lesser splanchnic nerve",
+       "accept": [
+        "lesser splanchnic",
+        "splanchnic nerve",
+        "lesser thoracic splanchnic nerve"
+       ],
+       "box": [
+        556,
+        679,
+        118,
+        140
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A nerve formed by preganglionic axons from about T10 and T11 that pass through the chain without synapsing. It runs to the celiac and superior mesenteric ganglia in front of the spine."
+      },
+      {
+       "id": "celiac-ganglion",
+       "name": "Celiac ganglion",
+       "accept": [
+        "coeliac ganglion",
+        "celiac",
+        "collateral ganglion",
+        "prevertebral ganglion"
+       ],
+       "box": [
+        689,
+        590,
+        92,
+        50
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A collateral (prevertebral) sympathetic ganglion in front of the spine, high in the abdomen. Preganglionic axons reach it through the splanchnic nerves, and its postganglionic axons supply the stomach, liver, pancreas and spleen.",
+       "follow": {
+        "q": "Where do the preganglionic axons in the greater splanchnic nerve synapse?",
+        "options": [
+         "In the chain ganglion at their own level",
+         "In the celiac ganglion",
+         "In the wall of the stomach",
+         "In the dorsal root ganglion"
+        ],
+        "correct": 1,
+        "why": "Splanchnic nerves carry preganglionic axons that pass through the chain without synapsing and end in a collateral ganglion in front of the spine, here the celiac ganglion. Synapsing in the chain is the route to the body wall and limbs, ganglia in the organ wall are parasympathetic terminal ganglia, and the dorsal root ganglion holds sensory neurons.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "superior-mesenteric-ganglion",
+       "name": "Superior mesenteric ganglion",
+       "accept": [
+        "superior mesenteric",
+        "collateral ganglion",
+        "prevertebral ganglion"
+       ],
+       "box": [
+        540,
+        964,
+        117,
+        74
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A collateral (prevertebral) sympathetic ganglion in front of the spine, just below the celiac ganglion. Its postganglionic axons supply much of the intestines."
+      },
+      {
+       "id": "inferior-mesenteric-ganglion",
+       "name": "Inferior mesenteric ganglion",
+       "accept": [
+        "inferior mesenteric",
+        "collateral ganglion",
+        "prevertebral ganglion"
+       ],
+       "box": [
+        516,
+        1188,
+        117,
+        74
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The lowest collateral (prevertebral) sympathetic ganglion, in front of the spine, low in the abdomen. Preganglionic axons from the upper lumbar cord synapse here, and its postganglionic axons supply the end of the intestines, the bladder and the genital organs."
+      },
+      {
+       "id": "eye",
+       "name": "Eye",
+       "accept": [
+        "eyes",
+        "eyeball"
+       ],
+       "box": [
+        905,
+        67,
+        48,
+        26
+       ],
+       "concept": null,
+       "fn": "The eyeball. Sympathetic fibers from the superior cervical ganglion widen the pupil; parasympathetic fibers narrow it."
+      },
+      {
+       "id": "lacrimal-gland",
+       "name": "Lacrimal gland",
+       "accept": [
+        "tear gland",
+        "lacrimal glands"
+       ],
+       "box": [
+        905,
+        146,
+        149,
+        26
+       ],
+       "concept": "eye-accessory",
+       "taught": "vision",
+       "fn": "The tear gland, above the outer corner of the eye. It gets autonomic fibers from both divisions; the parasympathetic supply is what drives tear secretion."
+      },
+      {
+       "id": "mucous-membrane-nose-palate",
+       "name": "Mucous membrane of the nose and palate",
+       "accept": [
+        "mucous membrane nose and palate",
+        "mucous membrane (nose and palate)",
+        "nasal mucosa",
+        "mucous membrane of nose and palate",
+        "mucous membrane of the nose"
+       ],
+       "box": [
+        905,
+        181,
+        194,
+        49
+       ],
+       "concept": "mucous-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "The mucous membrane lining the nose and the roof of the mouth. Its glands and blood vessels are under autonomic control."
+      },
+      {
+       "id": "mucous-membrane-mouth",
+       "name": "Mucous membrane of the mouth",
+       "accept": [
+        "mucous membrane mouth",
+        "mucous membrane (mouth)",
+        "oral mucosa",
+        "mucous membrane of mouth"
+       ],
+       "box": [
+        905,
+        323,
+        194,
+        45
+       ],
+       "concept": "mucous-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "The mucous membrane lining the mouth. Its small glands and blood vessels are under autonomic control."
+      },
+      {
+       "id": "heart",
+       "name": "Heart",
+       "accept": [],
+       "box": [
+        905,
+        460,
+        64,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The heart. Sympathetic fibers from the upper thoracic cord (T1 to T4), relayed in the chain ganglia, raise the heart rate and the force of each beat.",
+       "follow": {
+        "q": "Sympathetic preganglionic neurons that speed up the heart lie in which part of the spinal cord?",
+        "options": [
+         "Cervical cord, C1 to C4",
+         "Upper thoracic cord, T1 to T4",
+         "Lumbar cord, L3 to L5",
+         "Sacral cord, S2 to S4"
+        ],
+        "correct": 1,
+        "why": "The sympathetic outflow to the heart comes from the lateral horns of about T1 to T4; the axons synapse in the cervical and upper thoracic chain ganglia. The cervical and lower lumbar segments have no sympathetic preganglionic neurons, and S2 to S4 give parasympathetic output.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        904,
+        550,
+        90,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe. Autonomic fibers act on the smooth muscle and glands of its wall."
+      },
+      {
+       "id": "esophagus",
+       "name": "Esophagus",
+       "accept": [
+        "oesophagus"
+       ],
+       "box": [
+        905,
+        625,
+        118,
+        26
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The muscular tube carrying swallowed food from the throat to the stomach. Sympathetic fibers reach it from the chain ganglia."
+      },
+      {
+       "id": "stomach",
+       "name": "Stomach",
+       "accept": [],
+       "box": [
+        905,
+        676,
+        95,
+        23
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The stomach. Its sympathetic fibers come from the celiac ganglion, and sympathetic activity slows its movements and secretions."
+      },
+      {
+       "id": "abdominal-blood-vessels",
+       "name": "Abdominal blood vessels",
+       "accept": [
+        "abdominal vessels",
+        "blood vessels"
+       ],
+       "box": [
+        904,
+        768,
+        142,
+        46
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "The blood vessels of the abdominal organs. Sympathetic fibers from the celiac ganglion narrow them, which shifts blood away from the gut during fight or flight."
+      },
+      {
+       "id": "pancreas",
+       "name": "Pancreas",
+       "accept": [],
+       "box": [
+        905,
+        952,
+        102,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The pancreas, behind the stomach. Its sympathetic supply comes from the celiac ganglion."
+      },
+      {
+       "id": "adrenal-gland",
+       "name": "Adrenal gland",
+       "accept": [
+        "adrenal",
+        "adrenal glands",
+        "suprarenal gland"
+       ],
+       "box": [
+        904,
+        1040,
+        143,
+        26
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The adrenal gland on top of each kidney. Its inner part, the adrenal medulla, gets preganglionic axons directly with no ganglion in between; its chromaffin cells act as postganglionic neurons and release epinephrine into the blood.",
+       "follow": {
+        "q": "Which organ receives sympathetic preganglionic axons directly, with no ganglion between the spinal cord and the organ?",
+        "options": [
+         "The heart",
+         "The adrenal medulla",
+         "The stomach",
+         "The eye"
+        ],
+        "correct": 1,
+        "why": "Preganglionic axons pass through the chain and the celiac ganglion without synapsing and end on the chromaffin cells of the adrenal medulla, which act like postganglionic neurons and release epinephrine into the blood. The heart, stomach and eye are reached by postganglionic axons from chain or collateral ganglia.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "kidney",
+       "name": "Kidney",
+       "accept": [
+        "kidneys"
+       ],
+       "box": [
+        905,
+        1413,
+        77,
+        25
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The kidney. Sympathetic fibers narrow its blood vessels, which lowers the blood flow through it."
+      },
+      {
+       "id": "bladder",
+       "name": "Bladder",
+       "accept": [
+        "urinary bladder"
+       ],
+       "box": [
+        905,
+        1467,
+        86,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The urinary bladder. Its sympathetic supply comes from the inferior mesenteric ganglion."
+      },
+      {
+       "id": "gonads",
+       "name": "Gonads",
+       "accept": [
+        "gonad",
+        "testes",
+        "ovaries"
+       ],
+       "box": [
+        904,
+        1530,
+        87,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The testes or ovaries. They get sympathetic fibers from the lower thoracic and upper lumbar cord."
+      },
+      {
+       "id": "external-genitalia",
+       "name": "External genitalia",
+       "accept": [
+        "genitalia",
+        "genitals"
+       ],
+       "box": [
+        905,
+        1593,
+        175,
+        26
+       ],
+       "concept": null,
+       "fn": "The external genital organs. Their sympathetic supply comes through the inferior mesenteric ganglion."
+      },
+      {
+       "id": "skin",
+       "name": "Skin",
+       "accept": [],
+       "box": [
+        22,
+        950,
+        53,
+        22
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The skin. Sympathetic postganglionic fibers from the chain ganglia run back into the spinal nerves to reach its sweat glands, the arrector pili muscles and its blood vessels."
+      },
+      {
+       "id": "spinal-cord",
+       "name": "Spinal cord",
+       "accept": [],
+       "box": [
+        86,
+        1493,
+        118,
+        26
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The spinal cord. Sympathetic preganglionic cell bodies sit in its lateral horns from T1 to L2, which is why the sympathetic division is called thoracolumbar.",
+       "follow": {
+        "q": "Why is the sympathetic division called thoracolumbar?",
+        "options": [
+         "Its ganglia lie only in the chest and the lower back",
+         "Its preganglionic neurons lie in the spinal cord from T1 to L2",
+         "It supplies only organs of the chest and abdomen",
+         "Its nerves leave through the thoracic and lumbar vertebrae only after synapsing"
+        ],
+        "correct": 1,
+        "why": "The name comes from where the preganglionic cell bodies sit: the lateral horns of the thoracic and upper lumbar cord, T1 to L2. The chain ganglia run from the neck to the coccyx, the division supplies the whole body including the head and skin, and the axons leave the cord before synapsing.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ganglion-impar",
+       "name": "Ganglion impar",
+       "accept": [
+        "coccygeal ganglia",
+        "coccygeal ganglia fused together",
+        "coccygeal ganglion",
+        "coccygeal ganglia fused together (ganglion impar)"
+       ],
+       "box": [
+        302,
+        1493,
+        188,
+        74
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The single ganglion where the two sympathetic chains meet and fuse in front of the coccyx. It is the lowest ganglion of the chain."
+      },
+      {
+       "id": "pons",
+       "name": "Pons",
+       "accept": [],
+       "box": [
+        131,
+        111,
+        60,
+        22
+       ],
+       "concept": "brainstem",
+       "taught": "brain-regions",
+       "fn": "The middle part of the brainstem. No sympathetic preganglionic neurons lie here; the sympathetic outflow starts in the thoracic cord."
+      },
+      {
+       "id": "medulla",
+       "name": "Medulla",
+       "accept": [
+        "medulla oblongata"
+       ],
+       "box": [
+        104,
+        216,
+        86,
+        21
+       ],
+       "concept": "brainstem",
+       "taught": "brain-regions",
+       "fn": "The medulla oblongata, the lowest part of the brainstem. It holds centers that drive sympathetic output down the spinal cord to the lateral horns."
+      }
+     ],
+     "covered": [
+      {
+       "id": "submaxillary-gland",
+       "box": [
+        905,
+        238,
+        191,
+        26
+       ]
+      },
+      {
+       "id": "sublingual-gland",
+       "box": [
+        905,
+        281,
+        168,
+        26
+       ]
+      },
+      {
+       "id": "parotid-gland",
+       "box": [
+        905,
+        381,
+        137,
+        26
+       ]
+      },
+      {
+       "id": "larynx",
+       "box": [
+        905,
+        516,
+        76,
+        25
+       ]
+      },
+      {
+       "id": "bronchi",
+       "box": [
+        905,
+        592,
+        83,
+        21
+       ]
+      },
+      {
+       "id": "liver-and-bile-duct",
+       "box": [
+        905,
+        854,
+        99,
+        45
+       ]
+      },
+      {
+       "id": "small-intestine",
+       "box": [
+        905,
+        1150,
+        150,
+        22
+       ]
+      },
+      {
+       "id": "large-intestine",
+       "box": [
+        905,
+        1280,
+        91,
+        46
+       ]
+      },
+      {
+       "id": "rectum",
+       "box": [
+        905,
+        1365,
+        84,
+        22
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-15-3",
+     "topic": "ans-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sympathetic-chain-ganglion",
+       "name": "Sympathetic chain ganglion",
+       "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "chain ganglion"
+       ],
+       "box": [
+        936,
+        89,
+        151,
+        51
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "One ganglion of the row of sympathetic ganglia running beside the spinal cord on each side, from the neck to the coccyx and linked to its neighbors. Preganglionic axons from T1 to L2 enter it and synapse here, or climb or descend in the chain before synapsing, so every body level gets sympathetic fibers.",
+       "follow": {
+        "q": "A preganglionic axon enters the chain at T1 and synapses in a chain ganglion at the same level. Where does its postganglionic axon go next to reach the sweat glands of the skin?",
+        "options": [
+         "Back into the spinal nerve through the gray ramus",
+         "Into the dorsal root",
+         "Down a splanchnic nerve",
+         "Into the ventral horn"
+        ],
+        "correct": 0,
+        "why": "The postganglionic axon leaves the chain ganglion through the gray ramus communicans and joins the spinal nerve, which carries it out to the skin. The dorsal root carries sensory axons into the cord, splanchnic nerves carry preganglionic axons to collateral ganglia, and the ventral horn is inside the cord.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "white-ramus-communicans",
+       "name": "White ramus communicans",
+       "accept": [
+        "white ramus",
+        "white rami communicantes",
+        "white rami",
+        "white communicating ramus"
+       ],
+       "box": [
+        936,
+        257,
+        146,
+        46
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The short branch carrying myelinated preganglionic axons from the spinal nerve into the chain ganglion. White rami exist only from T1 to L2, where the sympathetic preganglionic neurons are, and the myelin gives them their white color.",
+       "follow": {
+        "q": "Why are white rami communicantes found only from T1 to L2, while gray rami are found at every spinal level?",
+        "options": [
+         "White rami carry preganglionic axons, which leave the cord only from T1 to L2",
+         "White rami carry sensory axons from the chest only",
+         "Gray rami carry preganglionic axons from the brainstem",
+         "The lumbar and sacral cord have no spinal nerves"
+        ],
+        "correct": 0,
+        "why": "White rami carry the myelinated preganglionic axons into the chain, and those neurons exist only in the T1 to L2 lateral horns. Gray rami carry postganglionic axons back out to every spinal nerve so that the whole body wall and limbs get sympathetic fibers. White rami are not sensory routes, the brainstem sends no preganglionic axons into the chain, and every level has spinal nerves.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "spinal-nerve",
+       "name": "Spinal nerve",
+       "accept": [
+        "spinal nerves"
+       ],
+       "box": [
+        653,
+        282,
+        71,
+        47
+       ],
+       "concept": "spinal-nerve",
+       "taught": "spinal-nerves",
+       "fn": "The mixed nerve formed where the dorsal and ventral roots join. Sympathetic preganglionic axons ride in it briefly before leaving through the white ramus, and postganglionic axons rejoin it through the gray ramus."
+      },
+      {
+       "id": "spinal-cord",
+       "name": "Spinal cord",
+       "accept": [],
+       "box": [
+        504,
+        306,
+        120,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The spinal cord in cross section. The sympathetic preganglionic neuron's cell body sits in the lateral horn of the gray matter, and its axon leaves through the ventral root."
+      },
+      {
+       "id": "dorsal-root-ganglion",
+       "name": "Dorsal root ganglion",
+       "accept": [
+        "drg",
+        "spinal ganglion",
+        "posterior root ganglion"
+       ],
+       "box": [
+        572,
+        379,
+        118,
+        50
+       ],
+       "concept": "spinal-roots",
+       "taught": "spinal-cord",
+       "fn": "The swelling on the dorsal root that holds the cell bodies of sensory neurons. It is not an autonomic ganglion: no autonomic synapses happen here."
+      },
+      {
+       "id": "gray-ramus-communicans",
+       "name": "Gray ramus communicans",
+       "accept": [
+        "gray ramus",
+        "grey ramus communicans",
+        "grey ramus",
+        "gray rami communicantes",
+        "gray rami",
+        "gray communicating ramus"
+       ],
+       "box": [
+        936,
+        545,
+        146,
+        47
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "The short branch carrying unmyelinated postganglionic axons from the chain ganglion back into the spinal nerve. It is found at every spinal level and brings sympathetic fibers to the sweat glands, arrector pili muscles and blood vessels of the body wall and limbs.",
+       "follow": {
+        "q": "Which structure carries unmyelinated postganglionic axons from a chain ganglion back into the spinal nerve?",
+        "options": [
+         "White ramus communicans",
+         "Gray ramus communicans",
+         "Splanchnic nerve",
+         "Dorsal root"
+        ],
+        "correct": 1,
+        "why": "The gray ramus carries unmyelinated postganglionic axons, which is why it looks gray. The white ramus carries myelinated preganglionic axons into the chain, a splanchnic nerve carries preganglionic axons on to a collateral ganglion, and the dorsal root carries sensory axons into the cord.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "spinal-nerve-b",
+       "name": "Spinal nerve",
+       "accept": [
+        "spinal nerves"
+       ],
+       "box": [
+        656,
+        632,
+        71,
+        47
+       ],
+       "concept": "spinal-nerve",
+       "taught": "spinal-nerves",
+       "fn": "The mixed nerve formed where the dorsal and ventral roots join. Sympathetic preganglionic axons ride in it briefly before leaving through the white ramus, and postganglionic axons rejoin it through the gray ramus."
+      },
+      {
+       "id": "spinal-cord-b",
+       "name": "Spinal cord",
+       "accept": [],
+       "box": [
+        504,
+        656,
+        120,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The spinal cord in cross section. The sympathetic preganglionic neuron's cell body sits in the lateral horn of the gray matter, and its axon leaves through the ventral root."
+      },
+      {
+       "id": "sympathetic-chain-ganglion-c",
+       "name": "Sympathetic chain ganglion",
+       "accept": [
+        "chain ganglia",
+        "sympathetic chain ganglia",
+        "sympathetic chain",
+        "sympathetic trunk",
+        "paravertebral ganglia",
+        "chain ganglion"
+       ],
+       "box": [
+        936,
+        784,
+        151,
+        51
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "One ganglion of the row of sympathetic ganglia running beside the spinal cord on each side, from the neck to the coccyx and linked to its neighbors. Preganglionic axons from T1 to L2 enter it and synapse here, or climb or descend in the chain before synapsing, so every body level gets sympathetic fibers."
+      },
+      {
+       "id": "spinal-nerve-c",
+       "name": "Spinal nerve",
+       "accept": [
+        "spinal nerves"
+       ],
+       "box": [
+        650,
+        972,
+        71,
+        47
+       ],
+       "concept": "spinal-nerve",
+       "taught": "spinal-nerves",
+       "fn": "The mixed nerve formed where the dorsal and ventral roots join. Sympathetic preganglionic axons ride in it briefly before leaving through the white ramus."
+      },
+      {
+       "id": "spinal-cord-c",
+       "name": "Spinal cord",
+       "accept": [],
+       "box": [
+        504,
+        996,
+        120,
+        27
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The spinal cord in cross section. The sympathetic preganglionic neuron's cell body sits in the lateral horn of the gray matter, and its axon leaves through the ventral root."
+      },
+      {
+       "id": "prevertebral-ganglion",
+       "name": "Prevertebral ganglion",
+       "accept": [
+        "prevertebral ganglia",
+        "collateral ganglion",
+        "collateral ganglia"
+       ],
+       "box": [
+        936,
+        1012,
+        129,
+        50
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A collateral sympathetic ganglion in front of the spine, such as the celiac ganglion. Preganglionic axons reach it through a splanchnic nerve without synapsing in the chain, and its postganglionic axons supply abdominal and pelvic organs.",
+       "follow": {
+        "q": "A preganglionic axon passes through a chain ganglion without synapsing and continues in a splanchnic nerve. Where does it synapse?",
+        "options": [
+         "In a prevertebral (collateral) ganglion",
+         "In the dorsal root ganglion",
+         "In the ventral horn",
+         "It never synapses before the organ"
+        ],
+        "correct": 0,
+        "why": "Axons in the splanchnic nerves synapse in the prevertebral ganglia in front of the spine, such as the celiac ganglion. The dorsal root ganglion holds sensory neurons, the ventral horn is inside the cord, and only the adrenal medulla is reached with no synapse on the way.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "splanchnic-nerve",
+       "name": "Splanchnic nerve",
+       "accept": [
+        "splanchnic nerves",
+        "splanchnic"
+       ],
+       "box": [
+        655,
+        1063,
+        177,
+        26
+       ],
+       "concept": "sympathetic-anatomy",
+       "taught": "ans-anatomy",
+       "fn": "A nerve of preganglionic sympathetic axons that pass through the chain without synapsing and run forward to a prevertebral ganglion in front of the spine."
       }
      ]
     }
@@ -17770,6 +19228,40 @@
    "alt": "An outline of the trunk and pelvis showing the spinal cord and the numbered spinal nerves on both sides, from C1 at the neck to S5 at the sacrum. Brackets group the nerves into four networks: C1 to C4 in the neck, C5 to T1 at the shoulder, L1 to L4 in the lower back and L5 to S5 in the pelvis. On one side, nerves leave the neck network toward the diaphragm, five nerves leave the shoulder network toward the arm, and nerves leave the lower networks for the front of the thigh and, as one thick nerve that splits in two, the back of the thigh.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.24",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "spinal-cord-section": {
+   "src": "figures/spinal-cord-section.svg",
+   "w": 700,
+   "h": 440,
+   "alt": "A cross section of the spinal cord with the back (dorsal) side at the top. A butterfly-shaped core of gray matter surrounds a tiny central canal. Its two narrow dorsal horns reach toward the back, two broad ventral horns reach toward the front, and small lateral horns stick out at the sides. The white matter around it is divided on each side into posterior, lateral and anterior columns, with a shallow posterior median sulcus at the back and a deep anterior median fissure at the front. On the left, an orange dorsal root with a swollen dorsal root ganglion enters the back of the cord, and a blue ventral root leaves the front; the two join into one nerve.",
+   "credit": "LevlPrep",
+   "license": "LevlPrep original"
+  },
+  "dermatome-landmarks": {
+   "src": "figures/dermatome-landmarks.svg",
+   "w": 520,
+   "h": 660,
+   "alt": "Front view of a body outline in anatomical position, palms facing forward, with ten numbered markers on dermatome landmarks. 1: the outer side of the right upper arm. 2: the tip of the right thumb. 3: the tip of the right middle finger. 4: the tip of the left little finger. 5: the chest at the level of the nipples. 6: the navel. 7: the right groin. 8: the inner side of the left leg just below the knee. 9: the top of the right foot near the big toe. 10: the outer edge of the left foot near the little toe.",
+   "credit": "LevlPrep",
+   "license": "LevlPrep original"
+  },
+  "os-15-2": {
+   "src": "figures/os-15-2.jpg",
+   "w": 1100,
+   "h": 1621,
+   "alt": "A drawing of the brainstem and spinal cord from the front, with the segments labeled from the pons down to S5 and a column of ganglia beside the cord on each side. Solid lines leave the cord only between T1 and L2. Some run to the chain of ganglia beside the cord, and some run past it as the greater and lesser splanchnic nerves to three round ganglia in front of the spine: the celiac, superior mesenteric and inferior mesenteric ganglia. Dashed lines run from the ganglia to a column of organs on the right, from the eye, tear gland and saliva glands at the top through the heart, airways, stomach, liver, pancreas, adrenal gland and intestines to the bladder and genitals at the bottom. A patch of skin on the left is supplied from the chain.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-1-divisions-of-the-autonomic-nervous-system",
+   "license": "CC BY 4.0"
+  },
+  "os-15-3": {
+   "src": "figures/os-15-3.jpg",
+   "w": 1100,
+   "h": 1312,
+   "alt": "Three panels, each pairing a small schematic with a three-dimensional drawing of a spinal cord cross section, its spinal nerve and the neighboring sympathetic chain ganglion. In the top panel a red fiber leaves the lateral horn, enters the chain through the white ramus communicans and synapses in the ganglion at the same level. In the middle panel the fiber climbs the chain to synapse in a higher ganglion, and postganglionic fibers return to spinal nerves through gray rami communicantes. In the bottom panel the fiber passes through the chain without synapsing and runs in a splanchnic nerve to a prevertebral ganglion, where it synapses.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 15.3",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-1-divisions-of-the-autonomic-nervous-system",
    "license": "CC BY 4.0"
   }
  }

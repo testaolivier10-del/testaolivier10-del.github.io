@@ -1,0 +1,81 @@
+{
+  "figure": "os-16-2",
+  "labels": [
+    {
+      "id": "mental-status",
+      "name": "Mental status",
+      "accept": [
+        "mental status exam",
+        "mental status examination"
+      ],
+      "box": [
+        0,
+        110,
+        206,
+        30
+      ],
+      "concept": "neuro-exam-parts"
+    },
+    {
+      "id": "coordination",
+      "name": "Coordination",
+      "accept": [
+        "coordination exam",
+        "coordination examination"
+      ],
+      "box": [
+        908,
+        407,
+        194,
+        31
+      ],
+      "concept": "neuro-exam-parts"
+    },
+    {
+      "id": "cranial-nerves",
+      "name": "Cranial nerves",
+      "accept": [
+        "cranial nerve exam",
+        "cranial nerve examination",
+        "cranial nerve"
+      ],
+      "box": [
+        102,
+        564,
+        220,
+        30
+      ],
+      "concept": "neuro-exam-parts"
+    },
+    {
+      "id": "motor",
+      "name": "Motor",
+      "accept": [
+        "motor exam",
+        "motor examination"
+      ],
+      "box": [
+        376,
+        715,
+        95,
+        30
+      ],
+      "concept": "neuro-exam-parts"
+    },
+    {
+      "id": "sensory",
+      "name": "Sensory",
+      "accept": [
+        "sensory exam",
+        "sensory examination"
+      ],
+      "box": [
+        798,
+        715,
+        130,
+        30
+      ],
+      "concept": "neuro-exam-parts"
+    }
+  ]
+}

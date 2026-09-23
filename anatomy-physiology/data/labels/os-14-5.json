@@ -1,0 +1,300 @@
+{
+  "figure": "os-14-5",
+  "labels": [
+    {
+      "id": "malleus",
+      "name": "Malleus",
+      "accept": [
+        "malleus",
+        "hammer"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "ear-regions",
+      "box": [
+        438,
+        104,
+        95,
+        24
+      ]
+    },
+    {
+      "id": "incus",
+      "name": "Incus",
+      "accept": [
+        "incus",
+        "anvil"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "ear-regions",
+      "box": [
+        568,
+        104,
+        69,
+        24
+      ]
+    },
+    {
+      "id": "stapes",
+      "name": "Stapes (attached to oval window)",
+      "accept": [
+        "stapes",
+        "stirrup"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "ear-regions",
+      "box": [
+        882,
+        104,
+        220,
+        56
+      ]
+    },
+    {
+      "id": "vestibule",
+      "name": "Vestibule",
+      "accept": [
+        "vestibule"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "vestibular-apparatus",
+      "box": [
+        882,
+        201,
+        112,
+        24
+      ]
+    },
+    {
+      "id": "auricle",
+      "name": "Auricle",
+      "accept": [
+        "auricle",
+        "pinna"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "ear-regions",
+      "box": [
+        0,
+        242,
+        83,
+        24
+      ]
+    },
+    {
+      "id": "vestibular-nerve",
+      "name": "Vestibular nerve",
+      "accept": [
+        "vestibular nerve",
+        "vestibular division",
+        "vestibular branch"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        882,
+        266,
+        189,
+        23
+      ]
+    },
+    {
+      "id": "cochlear-nerve",
+      "name": "Cochlear nerve",
+      "accept": [
+        "cochlear nerve",
+        "cochlear division",
+        "cochlear branch"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        882,
+        330,
+        178,
+        24
+      ]
+    },
+    {
+      "id": "round-window",
+      "name": "Round window",
+      "accept": [
+        "round window"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cochlea",
+      "box": [
+        883,
+        394,
+        171,
+        24
+      ]
+    },
+    {
+      "id": "ear-canal",
+      "name": "Ear canal",
+      "accept": [
+        "ear canal",
+        "external acoustic meatus",
+        "external auditory canal",
+        "auditory canal",
+        "external auditory meatus"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "ear-regions",
+      "box": [
+        0,
+        434,
+        111,
+        24
+      ]
+    },
+    {
+      "id": "cochlea",
+      "name": "Cochlea",
+      "accept": [
+        "cochlea"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "cochlea",
+      "box": [
+        882,
+        459,
+        102,
+        23
+      ]
+    },
+    {
+      "id": "eustachian-tube",
+      "name": "Eustachian tube",
+      "accept": [
+        "eustachian tube",
+        "auditory tube",
+        "pharyngotympanic tube"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ear-regions",
+      "box": [
+        883,
+        548,
+        186,
+        23
+      ]
+    },
+    {
+      "id": "tympanic-membrane",
+      "name": "Tympanic membrane",
+      "accept": [
+        "tympanic membrane",
+        "eardrum",
+        "ear drum"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "ear-regions",
+      "box": [
+        388,
+        563,
+        130,
+        51
+      ]
+    },
+    {
+      "id": "tympanic-cavity",
+      "name": "Tympanic cavity",
+      "accept": [
+        "tympanic cavity",
+        "middle ear cavity",
+        "middle ear"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "ear-regions",
+      "box": [
+        579,
+        563,
+        119,
+        56
+      ]
+    },
+    {
+      "id": "external-ear",
+      "name": "External ear",
+      "accept": [
+        "external ear",
+        "outer ear"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "ear-regions",
+      "box": [
+        223,
+        669,
+        144,
+        23
+      ]
+    },
+    {
+      "id": "middle-ear",
+      "name": "Middle ear",
+      "accept": [
+        "middle ear"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "ear-regions",
+      "box": [
+        527,
+        669,
+        126,
+        23
+      ]
+    },
+    {
+      "id": "inner-ear",
+      "name": "Inner ear",
+      "accept": [
+        "inner ear",
+        "internal ear"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "ear-regions",
+      "box": [
+        733,
+        669,
+        108,
+        23
+      ]
+    }
+  ]
+}

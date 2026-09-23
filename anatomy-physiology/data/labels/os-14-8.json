@@ -1,0 +1,79 @@
+{
+  "figure": "os-14-8",
+  "labels": [
+    {
+      "id": "tectorial-membrane",
+      "name": "Tectorial membrane",
+      "accept": [
+        "tectorial membrane"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "cochlea",
+      "box": [
+        996,
+        9,
+        102,
+        41
+      ]
+    },
+    {
+      "id": "tether",
+      "name": "Tether",
+      "accept": [
+        "tether",
+        "tip link",
+        "tip links"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "hair-cell-transduction",
+      "box": [
+        996,
+        62,
+        65,
+        20
+      ]
+    },
+    {
+      "id": "stereocilia",
+      "name": "Stereocilia",
+      "accept": [
+        "stereocilia",
+        "stereocilium"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "hair-cell-transduction",
+      "box": [
+        996,
+        102,
+        101,
+        21
+      ]
+    },
+    {
+      "id": "hair-cell",
+      "name": "Hair cell",
+      "accept": [
+        "hair cell",
+        "hair cells",
+        "inner hair cell"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cochlea",
+      "box": [
+        997,
+        191,
+        79,
+        19
+      ]
+    }
+  ]
+}

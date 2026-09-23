@@ -1,0 +1,139 @@
+{
+  "figure": "os-15-5",
+  "labels": [
+    {
+      "id": "synaptic-vesicles",
+      "name": "Synaptic vesicles",
+      "accept": [
+        "synaptic vesicle",
+        "vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "synaptic-vesicle-release",
+      "box": [
+        490,
+        32,
+        172,
+        26
+      ]
+    },
+    {
+      "id": "neurotransmitter",
+      "name": "Neurotransmitter",
+      "accept": [
+        "neurotransmitters",
+        "transmitter",
+        "norepinephrine"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "neurotransmitter",
+      "box": [
+        792,
+        77,
+        168,
+        21
+      ]
+    },
+    {
+      "id": "postganglionic-varicosities",
+      "name": "Postganglionic varicosities",
+      "accept": [
+        "varicosities",
+        "varicosity",
+        "postganglionic varicosity"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "pre-postganglionic",
+      "box": [
+        183,
+        98,
+        148,
+        45
+      ]
+    },
+    {
+      "id": "postganglionic-axon",
+      "name": "Postganglionic axon",
+      "accept": [
+        "postganglionic fiber",
+        "postganglionic neuron",
+        "postganglionic axons"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "pre-postganglionic",
+      "box": [
+        5,
+        315,
+        148,
+        45
+      ]
+    },
+    {
+      "id": "smooth-muscle",
+      "name": "Smooth muscle",
+      "accept": [
+        "smooth muscle cell",
+        "smooth muscle tissue"
+      ],
+      "lines": [
+        6,
+        8
+      ],
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        268,
+        371,
+        83,
+        45
+      ]
+    },
+    {
+      "id": "sarcolemma",
+      "name": "Sarcolemma",
+      "accept": [
+        "plasma membrane",
+        "cell membrane",
+        "muscle cell membrane"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        971,
+        383,
+        130,
+        22
+      ]
+    },
+    {
+      "id": "neurotransmitter-receptors",
+      "name": "Neurotransmitter receptors",
+      "accept": [
+        "neurotransmitter receptor",
+        "receptors",
+        "receptor proteins",
+        "receptor protein",
+        "receptor"
+      ],
+      "box": [
+        482,
+        404,
+        162,
+        48
+      ],
+      "concept": "receptor-protein"
+    }
+  ]
+}
