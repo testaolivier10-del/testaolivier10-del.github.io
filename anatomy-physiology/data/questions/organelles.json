@@ -94,7 +94,7 @@
     "q": "A drug stops microtubules from forming. Which process in the cell is affected most directly?",
     "options": [
       "The surface area provided by the brush border",
-      "Moving vesicles along tracks in the cell",
+      "Moving vesicles along tracks through the cytoplasm",
       "Breakdown of hydrogen peroxide",
       "Oxidation of fuel in mitochondria"
     ],
@@ -195,7 +195,7 @@
     "q": "A few lysosomal enzymes leak into the cytosol of a healthy cell. Why do they cause little damage?",
     "options": [
       "The cytosol has no proteins for them to act on",
-      "They work poorly at the near-neutral pH of the cytosol",
+      "They work poorly at the near-neutral pH found in the cytosol",
       "Catalase in the cytosol destroys them at once",
       "Leaked enzymes are rebuilt into ribosomes straight away"
     ],
@@ -304,7 +304,7 @@
     "options": [
       "The actin core of the microvilli on airway cells",
       "The digestive enzymes stored inside lysosomes",
-      "The microtubule core of cilia and flagella",
+      "The microtubule core shared by cilia and flagella",
       "The ribosomes on the rough ER"
     ],
     "correct": 2,

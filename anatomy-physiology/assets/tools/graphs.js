@@ -42,6 +42,12 @@
     else s = String(Math.round(v * 1000) / 1000);
     return s.replace('-', '−');
   }
+  /* Tick labels on one axis share their decimals: 7.0, 7.2, 7.4, not 7, 7.2. */
+  function tickFmt(ticks){
+    var d = 0;
+    (ticks || []).forEach(function(t){ var m = String(t).split('.')[1]; if(m && m.length > d) d = m.length; });
+    return function(v){ return d && Math.abs(v) < 1000 ? v.toFixed(d).replace('-', '−') : fmt(v); };
+  }
   function unitText(u){ return u ? (/^[%°]/.test(u) ? u : ' ' + u) : ''; }
 
   /* ---------------------------------------------------------------- routing */
@@ -185,9 +191,10 @@
       // axes
       L.axes.appendChild(el('line', { x1: ML, x2: ML, y1: top, y2: top + h, 'class': 'gr-axis' }));
       L.axes.appendChild(el('line', { x1: ML, x2: ML + PW, y1: top + h, y2: top + h, 'class': 'gr-axis' }));
+      var yf = tickFmt(ya.ticks);
       (ya.ticks || []).forEach(function(t){
         L.axes.appendChild(el('line', { x1: ML - 4, x2: ML, y1: sy(k, t), y2: sy(k, t), 'class': 'gr-axis' }));
-        L.axes.appendChild(el('text', { x: ML - 7, y: sy(k, t) + 4, 'text-anchor': 'end', 'class': 'gr-tick' }, fmt(t)));
+        L.axes.appendChild(el('text', { x: ML - 7, y: sy(k, t) + 4, 'text-anchor': 'end', 'class': 'gr-tick' }, yf(t)));
       });
       var yt = ya.label + (ya.unit ? ' (' + ya.unit + ')' : '');
       L.axes.appendChild(el('text', { x: 14, y: top + h / 2, 'text-anchor': 'middle', transform: 'rotate(-90 14 ' + (top + h / 2) + ')', 'class': 'gr-axis-title' }, yt));
@@ -215,10 +222,11 @@
         L.axes.appendChild(el('text', { x: x + 3, y: base + 12, 'text-anchor': 'end', transform: 'rotate(-40 ' + (x + 3) + ' ' + (base + 12) + ')', 'class': 'gr-tick' }, c));
       });
     } else {
+      var xf = tickFmt(X.ticks);
       (X.ticks || []).forEach(function(t){
         var x = sx(t);
         L.axes.appendChild(el('line', { x1: x, x2: x, y1: base, y2: base + 4, 'class': 'gr-axis' }));
-        L.axes.appendChild(el('text', { x: x, y: base + 17, 'text-anchor': 'middle', 'class': 'gr-tick' }, fmt(t)));
+        L.axes.appendChild(el('text', { x: x, y: base + 17, 'text-anchor': 'middle', 'class': 'gr-tick' }, xf(t)));
       });
     }
     L.axes.appendChild(el('text', { x: ML + PW / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'gr-axis-title' }, X.label + (X.unit ? ' (' + X.unit + ')' : '')));

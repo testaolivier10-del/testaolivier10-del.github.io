@@ -1,0 +1,182 @@
+{
+  "figure": "os-17-4",
+  "labels": [
+    {
+      "id": "lipid-soluble-hormone",
+      "name": "Lipid-soluble hormone",
+      "accept": [
+        "lipid-soluble hormone",
+        "hormone",
+        "lipid soluble hormone",
+        "steroid hormone"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "messenger-solubility"
+    },
+    {
+      "id": "transport-protein",
+      "name": "Transport protein",
+      "accept": [
+        "transport protein",
+        "binding protein",
+        "carrier protein"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "messenger-solubility"
+    },
+    {
+      "id": "capillary",
+      "name": "Capillary",
+      "accept": [
+        "capillary",
+        "capillaries"
+      ],
+      "box": [
+        656,
+        30,
+        104,
+        30
+      ],
+      "concept": "blood-vessel-basics"
+    },
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "box": [
+        844,
+        118,
+        196,
+        30
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol"
+      ],
+      "box": [
+        640,
+        180,
+        124,
+        30
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "receptor-hormone-complex",
+      "name": "Receptor-hormone complex",
+      "accept": [
+        "receptor-hormone complex",
+        "intracellular receptor",
+        "receptor hormone complex"
+      ],
+      "box": [
+        318,
+        280,
+        218,
+        54
+      ],
+      "concept": "intracellular-receptor"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "box": [
+        646,
+        298,
+        94,
+        30
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "dna",
+      "name": "DNA",
+      "accept": [
+        "dna",
+        "deoxyribonucleic acid"
+      ],
+      "box": [
+        866,
+        420,
+        58,
+        28
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "transcription",
+      "name": "Transcription",
+      "accept": [
+        "transcription"
+      ],
+      "box": [
+        524,
+        455,
+        146,
+        30
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "mrna",
+      "name": "mRNA",
+      "accept": [
+        "mrna",
+        "messenger rna"
+      ],
+      "box": [
+        866,
+        485,
+        78,
+        28
+      ],
+      "concept": "rna"
+    },
+    {
+      "id": "translation",
+      "name": "Translation",
+      "accept": [
+        "translation"
+      ],
+      "box": [
+        528,
+        562,
+        126,
+        30
+      ],
+      "concept": "translation"
+    },
+    {
+      "id": "activated-protein",
+      "name": "Activated protein",
+      "accept": [
+        "activated protein",
+        "new protein",
+        "protein"
+      ],
+      "box": [
+        928,
+        647,
+        110,
+        54
+      ],
+      "concept": "protein"
+    }
+  ]
+}

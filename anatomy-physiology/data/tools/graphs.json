@@ -1777,13 +1777,13 @@
      "notes": [
       {
        "x": 0.9,
-       "y": -48,
+       "y": -41,
        "text": "graded",
        "anchor": "middle"
       },
       {
        "x": 0.9,
-       "y": -41,
+       "y": -48,
        "text": "potential",
        "anchor": "middle"
       }
@@ -2152,8 +2152,8 @@
        ],
        "label": "contractile cell",
        "labelAt": [
-        300,
-        -80
+        292,
+        -68
        ],
        "anchor": "start"
       }

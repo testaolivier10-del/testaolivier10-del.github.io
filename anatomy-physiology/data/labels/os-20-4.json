@@ -1,0 +1,171 @@
+{
+  "figure": "os-20-4",
+  "labels": [
+    {
+      "id": "elastic-artery",
+      "name": "Elastic artery",
+      "accept": [
+        "elastic artery",
+        "elastic arteries",
+        "conducting artery"
+      ],
+      "lines": [
+        1,
+        7
+      ],
+      "concept": "artery-types"
+    },
+    {
+      "id": "tunica-externa",
+      "name": "Tunica externa",
+      "accept": [
+        "tunica externa",
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+      ],
+      "lines": [
+        0,
+        6
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-media",
+      "name": "Tunica media",
+      "accept": [
+        "tunica media",
+        "media"
+      ],
+      "lines": [
+        11,
+        14
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-intima",
+      "name": "Tunica intima",
+      "accept": [
+        "tunica intima",
+        "intima",
+        "tunica interna"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "muscular-artery",
+      "name": "Muscular artery",
+      "accept": [
+        "muscular artery",
+        "muscular arteries",
+        "distributing artery"
+      ],
+      "lines": [
+        2,
+        8
+      ],
+      "concept": "artery-types"
+    },
+    {
+      "id": "tunica-externa-muscular",
+      "name": "Tunica externa",
+      "accept": [
+        "tunica externa",
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+      ],
+      "lines": [
+        5,
+        10
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-media-muscular",
+      "name": "Tunica media",
+      "accept": [
+        "tunica media",
+        "media"
+      ],
+      "lines": [
+        12,
+        15
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-intima-muscular",
+      "name": "Tunica intima",
+      "accept": [
+        "tunica intima",
+        "intima",
+        "tunica interna"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "arteriole",
+      "name": "Arteriole",
+      "accept": [
+        "arteriole",
+        "arterioles"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "arteriole"
+    },
+    {
+      "id": "tunica-externa-arteriole",
+      "name": "Tunica externa",
+      "accept": [
+        "tunica externa",
+        "tunica adventitia",
+        "externa",
+        "adventitia"
+      ],
+      "lines": [
+        4,
+        9
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-media-arteriole",
+      "name": "Tunica media",
+      "accept": [
+        "tunica media",
+        "media"
+      ],
+      "lines": [
+        13,
+        16
+      ],
+      "concept": "vessel-tunics"
+    },
+    {
+      "id": "tunica-intima-arteriole",
+      "name": "Tunica intima",
+      "accept": [
+        "tunica intima",
+        "intima",
+        "tunica interna"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "vessel-tunics"
+    }
+  ]
+}

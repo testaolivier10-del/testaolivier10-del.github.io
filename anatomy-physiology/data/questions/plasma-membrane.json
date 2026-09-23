@@ -97,7 +97,7 @@
     "q": "A blood sample from Mr. Tan sat for four hours before testing and was shaken hard. The lab reports plasma potassium of 6.8 mmol/L (normal 3.5 to 5.0), and the plasma looks pink. A fresh sample reads 4.1. What best explains the first result?",
     "options": [
       "His kidneys stopped removing potassium between the two draws",
-      "Burst red blood cells spilled their potassium into the plasma",
+      "Burst red blood cells spilled their potassium into the plasma in the tube",
       "Potassium moved out of the plasma and into the red blood cells",
       "Platelets released sodium, which the machine read as potassium"
     ],
@@ -150,7 +150,7 @@
     "options": [
       "It is held to the glycocalyx by sugar bonds",
       "It sits loosely on the inner surface",
-      "Its hydrophobic region sits in the core",
+      "Its hydrophobic region sits in the bilayer's oily core",
       "It is made of lipid rather than amino acids"
     ],
     "correct": 2,
@@ -311,7 +311,7 @@
       "Lets ions cross the core",
       "Forms the sugar coat on the outer face",
       "Carries glucose into the cell",
-      "Steadies how fluid the membrane is"
+      "Steadies the membrane's fluidity as temperature shifts"
     ],
     "correct": 3,
     "why": {
@@ -338,7 +338,7 @@
       "Phospholipids rarely flip from one sheet to the other",
       "The glycocalyx is found only on the outer face",
       "Integral proteins come out only when the bilayer is broken",
-      "Phospholipids keep drifting sideways in their sheet"
+      "Phospholipids keep drifting sideways, trading places within their sheet"
     ],
     "correct": 3,
     "why": {

@@ -148,7 +148,7 @@
     "q": "Suppose every gap junction in the heart were blocked, while desmosomes and tight junctions stayed intact. What would change first?",
     "options": [
       "The heart wall would tear apart",
-      "Cells would stop contracting together",
+      "The heart's cells would stop contracting together",
       "Blood would leak between the heart's cells",
       "Each cell would stop making ATP"
     ],
@@ -302,7 +302,7 @@
     "q": "A child with inherited deafness is found to carry a defective form of one connexin. Which job is lost in the affected cells of the ear?",
     "options": [
       "Riveting cells together against pulling",
-      "Sharing ions between neighboring cells",
+      "Sharing ions directly between neighboring cells",
       "Sealing the spaces between cells",
       "Anchoring cells to the layer below"
     ],
@@ -364,7 +364,7 @@
       "It leaks between cells but resists pulling",
       "It stays sealed and resists pulling well",
       "It leaks, and cells stop sharing ions",
-      "Sealed, but it tears easily when pulled"
+      "It stays sealed, but it tears easily when pulled"
     ],
     "correct": 3,
     "why": {

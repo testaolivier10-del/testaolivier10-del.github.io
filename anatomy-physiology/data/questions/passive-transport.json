@@ -38,7 +38,7 @@
     "options": [
       "They shrink as water leaves them",
       "They keep their normal size",
-      "They swell as water enters them",
+      "They swell as water moves into them",
       "They take in sodium from the water"
     ],
     "correct": 2,
@@ -96,7 +96,7 @@
     "options": [
       "Glucose starts crossing the bilayer directly",
       "The gradient reverses at high glucose",
-      "Nearly every carrier is already occupied",
+      "Nearly every carrier is already occupied by glucose",
       "The carriers switch to moving other solutes"
     ],
     "correct": 2,
@@ -446,7 +446,7 @@
     ],
     "q": "Glucose enters a cell in your thigh muscle by facilitated diffusion, yet uptake continues for hours without the inside reaching the outside concentration. What keeps the gradient pointing inward?",
     "options": [
-      "The cell attaches a phosphate to glucose as it enters",
+      "The cell attaches a phosphate to each glucose as soon as it enters",
       "Carriers let glucose in but block it from leaving",
       "Aquaporins wash glucose into the cell with water",
       "The cell spends ATP to push glucose through the carrier"
