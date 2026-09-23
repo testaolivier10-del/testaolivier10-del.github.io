@@ -1,0 +1,163 @@
+<p>Helper T cells and cytotoxic T cells are both T lymphocytes, and under a microscope they look the same, yet one kind gives orders and the other kills. This page compares helper T cells vs cytotoxic T cells, adds the regulatory T cells that hold both in check, and follows a T cell from its first meeting with an antigen-presenting cell to the effector and memory cells it leaves behind. It ends with what happens when T cells meet a transplanted organ: rejection, graft-versus-host disease and why tissue typing matters.</p>
+
+<h2>Cell-mediated immunity: T cells that act in person</h2>
+<p>A virus gets into the cells lining your nose and starts copying itself. Inside those cells it is out of reach of anything floating in your blood or tissue fluid. The only way to stop it is to find the infected cells and destroy them before they release the next wave of virus. That is the work of T cells.</p>
+<p><em>Cell-mediated immunity</em> is the arm of adaptive immunity carried out by T cells acting directly, cell to cell, rather than by antibodies released into body fluids. You met the ground rules in the last topic:</p>
+<ul>
+<li>A T cell has one kind of antigen receptor, the <strong>T cell receptor</strong>, and every receptor on that cell fits the same epitope.</li>
+<li>A T cell cannot see a whole microbe. It sees only a short peptide cut from a protein and held up in an MHC protein on another cell's surface.</li>
+<li>MHC class I proteins sit on nearly every cell with a nucleus and display peptides made inside that cell. MHC class II proteins sit mainly on antigen-presenting cells (dendritic cells, macrophages and B cells) and display peptides from material they have engulfed.</li>
+</ul>
+<p>T cells leave the thymus as naïve cells: they have passed negative selection but have not yet met their antigen. They fall into three working types, defined by what they do and by one surface protein each carries.</p>
+
+<h2>CD4 and CD8: the markers that sort T cells</h2>
+<p>"CD" stands for cluster of differentiation, a numbering system for surface proteins that tell white blood cells apart. Two of them divide T cells into two families:</p>
+<ul>
+<li><strong>CD4</strong> binds the side of an <strong>MHC class II</strong> protein. Helper T cells and regulatory T cells carry CD4.</li>
+<li><strong>CD8</strong> binds the side of an <strong>MHC class I</strong> protein. Cytotoxic T cells carry CD8.</li>
+</ul>
+<p>CD4 and CD8 are coreceptor proteins. The T cell receptor grips the peptide and the MHC groove; CD4 or CD8 clamps onto the MHC protein beside it and strengthens the signal. So the marker decides which kind of MHC, and therefore which kind of cell, a T cell can respond to. A handy rule: <strong>4 × 2 = 8 and 8 × 1 = 8</strong>. CD4 goes with class II, CD8 with class I.</p>
+<p>That pairing has a logic you can predict from. MHC class I is on almost every cell and shows what that cell is making, including viral proteins. The cell that answers class I, the cytotoxic T cell, is the one that kills. MHC class II is on the cells that engulf and present. The cell that answers class II, the helper T cell, is the one that coordinates.</p>
+
+<h2>T cell activation</h2>
+<p>A naïve T cell does nothing until it is activated, and activation happens in a lymph node, not at the site of infection. <a class="figref" href="#fig-t-activation">Figure 1</a> shows the three signals it needs.</p>
+<ol>
+<li><strong>A dendritic cell brings the antigen.</strong> At the site of infection, a dendritic cell engulfs microbes, is switched on by its pattern recognition receptors, and travels through lymphatic vessels to the nearest lymph node. On the way it cuts microbial proteins into peptides and loads them into its MHC proteins.</li>
+<li><strong>Signal 1: recognition.</strong> Thousands of naïve T cells pass through the node each hour. The rare one whose T cell receptor fits a displayed peptide binds it, with CD4 or CD8 clamping onto the MHC protein.</li>
+<li><strong>Signal 2: costimulation.</strong> A second pair of proteins must also meet: <em>CD28</em> on the T cell binds <em>B7</em> proteins on the dendritic cell. <em>Costimulation</em> (co- = together) is this second, confirming signal. A dendritic cell makes plenty of B7 only after it has sensed a microbe, so costimulation tells the T cell "this antigen came with danger."</li>
+<li><strong>Signal 3: cytokines.</strong> The dendritic cell and nearby cells release cytokines that steer what kind of cell the T cell becomes.</li>
+<li><strong>Clonal expansion.</strong> The activated T cell makes interleukin-2 (IL-2) and the receptor protein for it, so it stimulates itself (autocrine signaling). It divides every 6 to 8 hours for about a week, building a clone of thousands of identical cells.</li>
+<li><strong>Differentiation.</strong> Most of the clone become <em>effector T cells</em> (effector = one that brings about an effect): short-lived cells that leave the node and do the work. A smaller number become memory T cells.</li>
+</ol>
+<figure id="fig-t-activation" class="anp-fig">
+<svg viewBox="0 0 640 300" role="img" aria-label="A dendritic cell on the left touches a naive T cell on the right at three points. Signal 1: an MHC protein holding a peptide on the dendritic cell binds the T cell receptor, with CD4 or CD8 beside it. Signal 2: B7 on the dendritic cell binds CD28 on the T cell, labeled costimulation. Signal 3: cytokines drift from the dendritic cell to the T cell. An arrow leads from the T cell to a row of identical daughter cells labeled clonal expansion driven by IL-2, which split into many effector T cells and fewer memory T cells.">
+<ellipse class="shape" cx="110" cy="130" rx="85" ry="70"/>
+<text class="lbl" x="55" y="125">dendritic</text>
+<text class="lbl" x="75" y="145">cell</text>
+<ellipse class="lo" cx="330" cy="130" rx="70" ry="70"/>
+<text class="lbl" x="285" y="125">naïve</text>
+<text class="lbl" x="285" y="145">T cell</text>
+<line class="causes" x1="195" y1="95" x2="260" y2="95"/>
+<text class="lbl-sm" x="196" y="82">1: MHC + peptide</text>
+<text class="lbl-sm" x="196" y="112">→ T cell receptor</text>
+<line class="causes" x1="195" y1="150" x2="260" y2="150"/>
+<text class="lbl-sm" x="196" y="140">2: B7 → CD28</text>
+<text class="lbl-sm" x="196" y="170">(costimulation)</text>
+<line class="flows" x1="170" y1="190" x2="275" y2="185"/>
+<text class="lbl-sm" x="180" y="215">3: cytokines</text>
+<line class="causes" x1="400" y1="130" x2="440" y2="130"/>
+<circle class="accent" cx="465" cy="95" r="16"/>
+<circle class="accent" cx="505" cy="95" r="16"/>
+<circle class="accent" cx="545" cy="95" r="16"/>
+<circle class="accent" cx="585" cy="95" r="16"/>
+<circle class="accent" cx="465" cy="165" r="16"/>
+<circle class="accent" cx="505" cy="165" r="16"/>
+<circle class="accent" cx="545" cy="165" r="16"/>
+<circle class="hi" cx="585" cy="165" r="16"/>
+<text class="lbl-sm" x="445" y="60">clonal expansion (IL-2)</text>
+<text class="lbl-sm" x="445" y="205">many effector T cells</text>
+<text class="lbl-sm" x="530" y="225">few memory T cells</text>
+<line class="flows" x1="585" y1="183" x2="585" y2="212"/>
+</svg>
+<figcaption>T cell activation in a lymph node. Recognition (signal 1) without costimulation (signal 2) leaves the T cell unresponsive. With both, and with cytokines (signal 3), the T cell expands into a clone of effector and memory cells.</figcaption>
+</figure>
+<p>Why two signals? Recognition alone happens all the time, because some T cells that escaped negative selection meet their self-peptide on healthy tissue. Without B7 on the presenting cell, a T cell that gets signal 1 alone goes into clonal anergy, the lasting shutdown you met under self-tolerance. Requiring both signals means a T cell expands only when its antigen appears together with signs of infection.</p>
+<p>The whole process takes time. On a first encounter, effector T cells take about a week to build up. When the infection clears, 90 to 95% of the effector cells die by apoptosis, and the memory cells stay. On a later encounter, the memory cells respond within a day or two.</p>
+<aside class="going-further"><p>Going further: dendritic cells can also load peptides from engulfed microbes into MHC class I, called cross-presentation. It is how cytotoxic T cells get activated against a virus that does not infect dendritic cells themselves. Helper T cells usually have to "license" the dendritic cell first, through another pair of surface proteins (CD40 ligand on the helper T cell and CD40 on the dendritic cell), which is one reason cytotoxic responses are weak without helper T cells.</p></aside>
+
+<h2>Helper T cells: the coordinators</h2>
+<p>A <em>helper T cell</em> is a CD4 T cell that, once activated, directs other immune cells by releasing cytokines and by touching them through surface proteins. It kills nothing itself. Almost every adaptive response depends on it:</p>
+<ul>
+<li>it helps B cells multiply and release antibodies against most protein antigens (you will see how in the next topic);</li>
+<li>it helps cytotoxic T cells expand, by supplying IL-2 and licensing dendritic cells;</li>
+<li>it switches macrophages into more powerful killers;</li>
+<li>it recruits neutrophils and eosinophils to the right place.</li>
+</ul>
+<p>Activated helper T cells split into subsets, each with its own cytokine mix and each suited to a different kind of threat. The cytokines around the helper T cell at activation (signal 3) decide which subset it becomes.</p>
+<table class="compare">
+<thead><tr><th></th><th>Th1 cells</th><th>Th2 cells</th></tr></thead>
+<tbody>
+<tr><th>Switched on by</th><td>IL-12 from dendritic cells and macrophages that have met bacteria or viruses</td><td>IL-4 and signals from tissues damaged by worms</td></tr>
+<tr><th>Main cytokines released</th><td>Interferon gamma, IL-2</td><td>IL-4, IL-5, IL-13</td></tr>
+<tr><th>Main targets</th><td>Macrophages and cytotoxic T cells</td><td>B cells, eosinophils, mast cells, gut and airway lining</td></tr>
+<tr><th>Main effect</th><td>Macrophages kill what they have engulfed; cytotoxic T cells expand</td><td>Eosinophils gather, mucus rises, the gut lining turns over and expels worms</td></tr>
+<tr><th>Best against</th><td>Viruses and bacteria that live inside cells, such as Salmonella and mycobacteria</td><td>Parasitic worms</td></tr>
+<tr><th>When it goes wrong</th><td>Chronic inflammation that damages tissue</td><td>Allergy</td></tr>
+</tbody>
+</table>
+<p>Th1 and Th2 cells hold each other back: interferon gamma blocks Th2 development, and IL-4 blocks Th1 development. A response therefore tends to commit to one direction.</p>
+<aside class="going-further"><p>Going further: there are more than two subsets. Th17 cells release IL-17, which calls neutrophils to fight fungi and bacteria at body surfaces. Follicular helper T cells (Tfh) move into the B cell zones of lymph nodes and, in the germinal centers, give B cells most of the help they need to make high-quality antibody. Older textbooks give that job to Th2 cells.</p></aside>
+<aside class="for-your-exam"><p>For your exam: many textbooks and exams teach only Th1 and Th2, with "Th1 = cell-mediated immunity, Th2 = help for B cells and antibody." Current evidence gives most B cell help to follicular helper T cells, while Th2 cytokines steer B cells toward the antibody class used against worms. If a question offers only Th1 or Th2 for "helps B cells," choose Th2.</p></aside>
+
+<h2>Cytotoxic T cells: the killers</h2>
+<p>A <em>cytotoxic T cell</em> (cyt/o = cell, tox- = poison) is a CD8 T cell that kills cells displaying its antigen on MHC class I. Its targets are cells infected with a virus or with bacteria that live in the cytoplasm, and some cancer cells. <a class="figref" href="#fig-os-21-20">Figure 2</a> contrasts it with the helper T cell.</p>
+<figure id="fig-os-21-20" data-fig="os-21-20"><figcaption>Helper and cytotoxic T cells. Top: a helper T cell recognizes antigen in MHC II on a dendritic cell, using its T cell receptor and CD4, and responds by releasing cytokines. Bottom: a cytotoxic T cell recognizes antigen in MHC I on an infected cell, using its T cell receptor and CD8, and kills it with perforins and granzymes.</figcaption></figure>
+<p>Here is how one killing happens:</p>
+<ol>
+<li><strong>Recognition.</strong> The cytotoxic T cell crawls over cells in the infected tissue. When its T cell receptor and CD8 bind a viral peptide in MHC class I, it grips that cell tightly.</li>
+<li><strong>Aim.</strong> It turns its store of granules toward the contact point, so its weapons hit only that cell.</li>
+<li><strong>Perforin.</strong> The granules release <em>perforin</em> (perfor- = to bore through), a protein that inserts into the target's plasma membrane and forms pores.</li>
+<li><strong>Granzymes.</strong> <em>Granzymes</em> (granule enzymes) enter through the pores. They activate the target's own caspases, the protein-cutting enzymes that carry out apoptosis.</li>
+<li><strong>Fas ligand.</strong> A second route needs no granules. <em>Fas ligand</em> on the cytotoxic T cell binds a death receptor protein called Fas on the target, which also switches on its caspases.</li>
+<li><strong>Apoptosis and release.</strong> The target cell dies by apoptosis within minutes. The cytotoxic T cell lets go and moves on to the next infected cell. One cell can kill many targets in a row.</li>
+</ol>
+<p>Why apoptosis rather than bursting the cell open? A cell that dies by apoptosis breaks up into tidy fragments that macrophages engulf. Viral particles still being assembled inside it are destroyed with it instead of being spilled into the tissue, and there is little inflammation.</p>
+<p>Notice what cytotoxic T cells cannot see. A cell that makes no MHC class I cannot show them its peptides. Mature red blood cells have no nucleus and carry almost no MHC class I, so a parasite hiding inside them escapes cytotoxic T cells. Some viruses shut down MHC class I in the cells they infect; those cells are then targets for natural killer cells, which attack cells that are missing MHC class I.</p>
+<table class="compare">
+<thead><tr><th></th><th>Cytotoxic T cell</th><th>Natural killer cell</th></tr></thead>
+<tbody>
+<tr><th>Immunity type</th><td>Adaptive</td><td>Innate</td></tr>
+<tr><th>What it recognizes</th><td>One specific peptide in MHC class I</td><td>Stress signals, and missing MHC class I</td></tr>
+<tr><th>Needs activation and clonal expansion first?</th><td>Yes: about a week on first exposure</td><td>No: acts within hours</td></tr>
+<tr><th>How it kills</th><td>Perforin, granzymes, Fas ligand; apoptosis</td><td>Perforin, granzymes, Fas ligand; apoptosis</td></tr>
+<tr><th>Leaves memory cells?</th><td>Yes</td><td>Mostly no</td></tr>
+</tbody>
+</table>
+
+<h2>Regulatory T cells: the brakes</h2>
+<p>A <em>regulatory T cell</em> (Treg) is a CD4 T cell that suppresses other lymphocytes. Most come straight from the thymus: they are T cells whose receptors bind self-peptides fairly strongly, but instead of being deleted they are switched onto a suppressor program by a gene-control protein called FOXP3. They then circulate and damp responses in three main ways:</p>
+<ul>
+<li>they release the inhibitory cytokines IL-10 and TGF-beta;</li>
+<li>they soak up IL-2, starving nearby T cells of their growth signal;</li>
+<li>they strip B7 from dendritic cells, so other T cells cannot get costimulation.</li>
+</ul>
+<p>Regulatory T cells are part of peripheral tolerance: they stop self-reactive T cells that slipped through negative selection, and they shut a response down after an infection clears. What happens without them is shown by a rare inherited disease, IPEX, caused by a broken FOXP3 gene. Affected baby boys make no working regulatory T cells, and their T cells attack their own gut, skin and pancreatic beta cells. Many develop type 1 diabetes in the first months of life.</p>
+<table class="compare">
+<thead><tr><th></th><th>Helper T cell</th><th>Cytotoxic T cell</th><th>Regulatory T cell</th></tr></thead>
+<tbody>
+<tr><th>Surface marker</th><td>CD4</td><td>CD8</td><td>CD4 (with FOXP3 inside)</td></tr>
+<tr><th>MHC class it recognizes</th><td>Class II</td><td>Class I</td><td>Class II</td></tr>
+<tr><th>Cells that present to it</th><td>Dendritic cells, macrophages, B cells</td><td>Any cell with a nucleus (after activation by a dendritic cell)</td><td>Dendritic cells</td></tr>
+<tr><th>Main action</th><td>Directs other cells with cytokines and contact</td><td>Kills infected and abnormal cells</td><td>Suppresses other lymphocytes</td></tr>
+<tr><th>Main tools</th><td>Cytokines (interferon gamma, IL-2, IL-4 and others)</td><td>Perforin, granzymes, Fas ligand</td><td>IL-10, TGF-beta, IL-2 uptake</td></tr>
+<tr><th>If this type is lost</th><td>Most adaptive responses fail, including antibody and cytotoxic responses</td><td>Viral infections and some cancers spread</td><td>T cells attack the body's own tissues</td></tr>
+</tbody>
+</table>
+
+<h2>Memory T cells</h2>
+<p>After an infection, memory T cells, made during clonal expansion, remain for years or decades. There are more of them than there were naïve cells for that antigen, they need less costimulation to respond, and some sit in the tissues where the microbe first entered, such as the skin and the lining of the airways. So a second encounter meets a faster, larger T cell response. A vaccine works partly by leaving memory T cells behind.</p>
+
+<h2>Transplant rejection</h2>
+<p>Transplant a kidney from one person to another, and the recipient's T cells treat the new organ much as they would an infected tissue. <em>Transplant rejection</em> is the immune destruction of a transplanted organ or tissue.</p>
+<h3>Why the response is so strong</h3>
+<p>In humans, MHC proteins are called <em>HLA</em> (human leukocyte antigens), because they were first found on white blood cells. The HLA genes are the most variable genes in the population, so two unrelated people almost never share the same set. A donor's HLA proteins, with their own peptides in the groove, look to the recipient's T cells like "self MHC holding a foreign peptide." Between 1 and 10% of all your T cells react to any one foreign HLA type, compared with far fewer than 1 in 10,000 for a typical microbial peptide. That is why rejection is so vigorous.</p>
+<h3>Tissue typing and crossmatching</h3>
+<p><em>Tissue typing</em> identifies the HLA types of donor and recipient so the closest match can be chosen. An identical twin is a perfect match and needs no drugs against rejection; siblings have a one-in-four chance of an HLA-identical match. Before an organ transplant, the lab also checks ABO compatibility and performs a crossmatch, as for a transfusion: it mixes the recipient's serum with the donor's white blood cells and looks for antibodies that bind them.</p>
+<p>A red cell transfusion is different. Mature red blood cells carry almost no HLA, so blood is matched only for ABO, Rh and other red cell antigens, not tissue typed.</p>
+<h3>The three tempos of rejection</h3>
+<table class="compare">
+<thead><tr><th></th><th>Hyperacute rejection</th><th>Acute rejection</th><th>Chronic rejection</th></tr></thead>
+<tbody>
+<tr><th>When</th><td>Minutes to hours</td><td>Days to months</td><td>Months to years</td></tr>
+<tr><th>Main cause</th><td>Antibodies the recipient already has, against ABO or HLA on the donor's blood vessels</td><td>Recipient T cells (helper and cytotoxic) attacking donor HLA</td><td>Slow T cell and antibody damage</td></tr>
+<tr><th>What happens</th><td>Clots form in the organ's vessels and it dies</td><td>Cytotoxic T cells kill graft cells; the organ swells and fails</td><td>Graft arteries narrow and the organ scars</td></tr>
+<tr><th>Prevented or treated by</th><td>ABO matching and crossmatching</td><td>Drugs that suppress T cells</td><td>Hard to prevent; the main long-term cause of graft loss</td></tr>
+</tbody>
+</table>
+<p>Most transplant recipients take immunosuppressant drugs for life. The mainstay drugs, such as tacrolimus and cyclosporine, block T cell activation by stopping activated T cells from making IL-2. Because they damp all T cell responses, recipients get more infections and some virus-driven cancers.</p>
+<h3>Graft-versus-host disease</h3>
+<p>In a bone marrow (hematopoietic stem cell) transplant, the attack can run the other way. <em>Graft-versus-host disease</em> (GVHD) is damage caused when mature T cells in the donor's graft recognize the recipient's HLA as foreign and attack the recipient's tissues, most often the skin, liver and gut. The recipient's own immune system has usually been wiped out before the transplant, so nothing stops the donor cells. The same donor T cells can also attack leftover leukemia cells, a helpful graft-versus-leukemia effect.</p>
+<aside class="going-further"><p>Going further: a transplanted cornea is rejected much less often than other grafts, even without close matching. The cornea has no blood vessels or lymphatic vessels, so donor antigens reach the recipient's lymph nodes slowly, and the eye actively damps immune responses inside it.</p></aside>
+
+<h2>Summary</h2>
+<p>T cells see only peptides held in MHC proteins. CD4 T cells answer MHC class II and CD8 T cells answer MHC class I. A naïve T cell is activated in a lymph node by a dendritic cell: recognition (signal 1), costimulation through B7 and CD28 (signal 2) and cytokines (signal 3). IL-2 drives clonal expansion into effector T cells and memory T cells. Helper T cells coordinate: Th1 cells arm macrophages and cytotoxic T cells against microbes inside cells, and Th2 cells direct the response to worms. Cytotoxic T cells kill infected and abnormal cells by apoptosis, using perforin, granzymes and Fas ligand. Regulatory T cells suppress other lymphocytes and keep responses to self in check. Transplant rejection is driven mostly by T cells reacting to foreign HLA; tissue typing, crossmatching and immunosuppressant drugs reduce it, and in graft-versus-host disease donor T cells attack the recipient.</p>
