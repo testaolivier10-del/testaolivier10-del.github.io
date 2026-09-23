@@ -54,6 +54,23 @@ export function scanUseTerms(concept) {
   return out;
 }
 
+/* Everyday words (map.everydayWords, decision 51): common words a student
+   already roughly knows ("nerve", "cartilage", "fever"). They may be used in
+   their everyday sense before their topic; the technical terms of the same
+   concept stay strict. Their plurals count too. */
+const everydayCache = new WeakMap();
+export function everydaySet(map) {
+  if (everydayCache.has(map)) return everydayCache.get(map);
+  const set = new Set();
+  for (const w of (map.everydayWords && map.everydayWords.words) || []) {
+    const t = normalize(w).toLowerCase();
+    set.add(t);
+    const p = plural(t); if (p) set.add(p.toLowerCase());
+  }
+  everydayCache.set(map, set);
+  return set;
+}
+
 export function normalize(s) {
   return s.replace(/[‐-―−]/g, '-').replace(/\s+/g, ' ').trim();
 }
@@ -164,6 +181,11 @@ export function validateMap(map) {
   };
   for (const c of map.concepts) visit(c.id, []);
 
+  // Everyday words must be real terms of the map, so the list cannot hide a typo.
+  const allTerms = new Set(map.concepts.flatMap(c => [c.term, ...(c.aliases || [])].map(t => normalize(t).toLowerCase())));
+  for (const w of (map.everydayWords && map.everydayWords.words) || [])
+    if (!allTerms.has(normalize(w).toLowerCase())) err(`everydayWords: "${w}" is not a term or alias of any concept`);
+
   // A word on a page must point at one concept, or the page check cannot
   // tell which topic a page is leaning on.
   const owner = new Map();
@@ -202,10 +224,12 @@ export function scanPage(map, html, topicId) {
   if (here === undefined) return [`declares unknown topic "${topicId}"`];
   const text = maskAllowed(map, stripForScan(html), here, topicIndex);
   const problems = [];
+  const everyday = everydaySet(map);
   for (const c of map.concepts) {
     const there = topicIndex.get(c.taughtIn);
     if (there <= here) continue;
     for (const t of scanUseTerms(c)) {
+      if (everyday.has(t.toLowerCase())) continue;
       const m = text.match(termRegex(t));
       if (m) { problems.push(`uses "${m[0]}" (${c.id}), which is not taught until ${c.taughtIn}; teach it first or put this use inside a preview box`); break; }
     }

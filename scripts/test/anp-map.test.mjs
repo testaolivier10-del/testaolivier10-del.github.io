@@ -115,3 +115,13 @@ test('a plural of a later term is a use of it', () => {
   m.concepts.push({ id: 'keratin', term: 'keratin', aliases: [], taughtIn: 'b', dependsOn: [] });
   assert.equal(scanPage(m, '<html><body><p>Keratins are tough.</p></body></html>', 'a').length, 1);
 });
+
+test('an everyday word may be used early; the technical term may not', () => {
+  const m = tiny();
+  m.concepts.push({ id: 'nerve', term: 'nerve', aliases: ['nerves', 'spinal nerve'], taughtIn: 'b', dependsOn: [] });
+  m.everydayWords = { words: ['nerve', 'nerves'] };
+  assert.deepEqual(scanPage(m, '<html><body><p>A nerve in your arm.</p></body></html>', 'a'), []);
+  assert.equal(scanPage(m, '<html><body><p>A spinal nerve.</p></body></html>', 'a').length, 1);
+  m.everydayWords.words.push('nervez');
+  assert.ok(validateMap(m).errors.some(e => e.includes('nervez')));
+});

@@ -209,6 +209,10 @@
     {"id":"inheritance","title":"Inheritance","chapter":"development","course":"II","kind":"physiology","coreConcepts":["structure-function"],"searchPhrase":"genetics basics dominant recessive Punnett square"},
     {"id":"aging","title":"Aging across the body","chapter":"development","course":"II","kind":"physiology","coreConcepts":["interdependence","homeostasis"],"searchPhrase":"effects of aging on body systems"}
   ],
+  "everydayWords": {
+    "about": "Common words any student already roughly knows. They may be used in their everyday sense before the topic that teaches them (spec section 7, decision 51); the page check skips them and the glossary gives each a hover definition linking to where it is taught. Technical terms stay strict.",
+    "words": ["ribs","nerve","nerves","cartilage","muscle cell","tendon","tendons","ligament","ligaments","blood clot","clot","hormone","hormones","gland","glands","sweat glands","inflammation","hair","nail","nails","sweating","shivering","bone marrow","hip bone","thirst","pus","fever","vaccine","allergy","saliva","mucus","bile","colon","rectum","puberty","menstruation","red blood cells","white blood cells","platelets","heart attack","serum"]
+  },
   "concepts": [
     {"id":"anatomy","term":"anatomy","aliases":["gross anatomy","microscopic anatomy","regional anatomy","systemic anatomy"],"taughtIn":"body-organization","dependsOn":[]},
     {"id":"physiology","term":"physiology","aliases":[],"taughtIn":"body-organization","dependsOn":[]},
@@ -850,12 +854,12 @@
     {"id":"pericardium","term":"pericardium (layers)","aliases":["fibrous pericardium","serous pericardium","parietal pericardium","visceral pericardium","pericardial sac"],"taughtIn":"heart-anatomy","dependsOn":["pericardial-cavity","dense-ct"]},
     {"id":"heart-wall","term":"layers of the heart wall","aliases":["epicardium","myocardium","endocardium"],"taughtIn":"heart-anatomy","dependsOn":["pericardium","cardiac-muscle-tissue","simple-squamous"]},
     {"id":"cardiac-tamponade","term":"cardiac tamponade","aliases":[],"taughtIn":"heart-anatomy","dependsOn":["pericardium"]},
-    {"id":"chambers","term":"chambers of the heart","aliases":["atrium","atria","right atrium","left atrium","right ventricle","left ventricle","ventricle (heart)","auricle (heart)","anterior interventricular sulcus","posterior interventricular sulcus","coronary sulcus","pectinate muscles","trabeculae carneae"],"taughtIn":"heart-chambers-valves","dependsOn":["heart-wall"]},
+    {"id":"chambers","term":"chambers of the heart","aliases":["atrium","atria","right atrium","left atrium","right ventricle","left ventricle","ventricle (heart)","auricle (heart)","anterior interventricular sulcus","posterior interventricular sulcus","coronary sulcus","pectinate muscles","trabeculae carneae"],"taughtIn":"heart-anatomy","dependsOn":["heart-wall"]},
+    {"id":"great-vessels","term":"great vessels","aliases":["superior vena cava","inferior vena cava","pulmonary trunk","pulmonary arteries","pulmonary veins","aorta","pulmonary artery","ascending aorta","aortic arch","arch of aorta"],"taughtIn":"heart-anatomy","dependsOn":["chambers","blood-vessel-basics"]},
     {"id":"septa","term":"septa of the heart","aliases":["interatrial septum","interventricular septum","atrioventricular septum"],"taughtIn":"heart-chambers-valves","dependsOn":["chambers"]},
     {"id":"av-valves","term":"atrioventricular valves","aliases":["AV valves","tricuspid valve","mitral valve","bicuspid valve","chordae tendineae","papillary muscles","left atrioventricular valve","right atrioventricular valve"],"taughtIn":"heart-chambers-valves","dependsOn":["chambers"]},
     {"id":"semilunar-valves","term":"semilunar valves","aliases":["pulmonary valve","aortic valve","semilunar valve"],"taughtIn":"heart-chambers-valves","dependsOn":["chambers"]},
     {"id":"fossa-ovalis","term":"fossa ovalis","aliases":[],"taughtIn":"heart-chambers-valves","dependsOn":["septa","foramen-ovale"]},
-    {"id":"great-vessels","term":"great vessels","aliases":["superior vena cava","inferior vena cava","pulmonary trunk","pulmonary arteries","pulmonary veins","aorta","pulmonary artery"],"taughtIn":"heart-chambers-valves","dependsOn":["chambers","blood-vessel-basics"]},
     {"id":"wall-thickness","term":"why the left ventricle wall is thicker","aliases":[],"taughtIn":"heart-chambers-valves","dependsOn":["chambers","pressure"]},
     {"id":"cardiac-skeleton","term":"cardiac skeleton","aliases":["fibrous skeleton (heart)"],"taughtIn":"heart-chambers-valves","dependsOn":["av-valves","semilunar-valves","dense-ct"]},
     {"id":"oxygenated-deoxygenated","term":"oxygenated and deoxygenated blood","aliases":["oxygenated blood","deoxygenated blood","oxygen-poor","oxygen-rich"],"taughtIn":"blood-flow-heart","dependsOn":["blood-as-ct"]},
@@ -896,7 +900,7 @@
     {"id":"venous-reservoir","term":"veins as a blood reservoir","aliases":["venous reservoir","compliance (vascular)","venous reserve"],"taughtIn":"vessel-structure","dependsOn":["venule-vein"]},
     {"id":"venous-return","term":"venous return","aliases":["skeletal muscle pump","respiratory pump"],"taughtIn":"vessel-structure","dependsOn":["venule-vein","pressure-gradient","ventilation-pressures"]},
     {"id":"varicose-veins","term":"varicose veins","aliases":[],"taughtIn":"vessel-structure","dependsOn":["venous-return"]},
-    {"id":"aorta-parts","term":"parts of the aorta","aliases":["ascending aorta","aortic arch","descending aorta","thoracic aorta","abdominal aorta","aortic hiatus"],"taughtIn":"systemic-arteries","dependsOn":["great-vessels"]},
+    {"id":"aorta-parts","term":"parts of the aorta","aliases":["descending aorta","thoracic aorta","abdominal aorta","aortic hiatus"],"taughtIn":"systemic-arteries","dependsOn":["great-vessels"]},
     {"id":"head-neck-arteries","term":"arteries of the head and neck","aliases":["brachiocephalic trunk","common carotid artery","carotid artery","internal carotid artery","external carotid artery","vertebral artery","carotid sinus","vertebral arteries","brachiocephalic artery","carotid sinuses"],"taughtIn":"systemic-arteries","dependsOn":["aorta-parts"]},
     {"id":"cerebral-arterial-circle","term":"cerebral arterial circle","aliases":["circle of Willis","basilar artery","anterior cerebral artery","middle cerebral artery","posterior cerebral artery","anterior communicating artery","posterior communicating artery","arterial circle"],"taughtIn":"systemic-arteries","dependsOn":["head-neck-arteries","cerebrum"]},
     {"id":"limb-arteries","term":"arteries of the limbs","aliases":["subclavian artery","axillary artery","brachial artery","radial artery","ulnar artery","femoral artery","popliteal artery","posterior tibial artery","dorsalis pedis artery","anterior tibial artery","deep femoral artery","palmar arches"],"taughtIn":"systemic-arteries","dependsOn":["aorta-parts","humerus","femur"]},

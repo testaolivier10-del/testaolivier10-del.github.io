@@ -179,18 +179,17 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   24.6 prints "about 36 ATP" (caption note). Figure 20.6 draws classic precapillary sphincters
   (caption note; not a lab practical set). Figure 19.18 prints "Bachman's bundle" and Figure 1.12 prints "Thorcis" (both shown correctly spelled, with the printed form accepted). Figure 19.25
   was not used (it calls third-degree block partial conduction).
-- **Labels covered by the ordering rule:** on the first heart lesson (Heart position and
-  coverings) the chamber and great-vessel labels are covered because those names are taught in
-  the next topic. The rule requires it; the reviewer may prefer a preview box instead. The
+- **Labels covered by the ordering rule:** decided for the heart (spec decision 52: chambers and
+  great vessels are now taught in the first heart lesson, so its figure shows them). The
   "Basal lamina" label is likewise covered on the cell-junctions panel until epithelium.
 - **Map gaps found while labeling:** six thoracic aortic branches (internal thoracic, esophageal, intercostal, mediastinal,
   pericardial, superior phrenic) have no map concept; the bronchial arteries belong to the
   lung blood supply topic and their label is covered until then.
   "ligand" is taught in Chemical signaling, after the passive-transport topic that needs
   ligand-gated channels (worded around).
-- **Plain-word paraphrases forced by ordering** (spec decision 38): ribs, cartilage, femur,
-  intestine names, nerve, inflammation, urea (glycerol used instead), hemoglobin, kidney cell
-  names, fever. The reviewer may want some as preview boxes.
+- **Plain-word paraphrases:** decided by the owner (spec decision 51): everyday body words may be
+  used early, and Foundations was rewritten with natural wording. Technical terms (femur,
+  intestine names, urea, hemoglobin, kidney cell names) still wait for their topics.
 - **Normal values chosen:** body temperature about 36.6 °C with a For your exam note for 37 °C;
   hypertension categories from the ACC/AHA guideline (130/80 and 140/90); HRmax 220 − age with
   208 − 0.7 × age noted; MAP = DBP + one third of PP at resting rates; EF 50–70% normal;

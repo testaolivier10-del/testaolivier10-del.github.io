@@ -44,6 +44,7 @@ and 16); where this guide and the spec differ, the spec wins. File formats are i
 - **Later concepts:** use one only inside a declared preview box:
   `<aside class="anp-preview" data-concept="<concept-id>"><p>Preview: ...</p></aside>`. Give just
   enough (one or two sentences) and name the topic where it is taught.
+- **Everyday body words** (spec decision 51): the words listed under `everydayWords` in the map (rib, nerve, cartilage, fever, hormone, gland and the like) may be used in their everyday sense before their topic; the glossary hover links forward. Their technical forms ("spinal nerve", "true ribs", "skeletal muscle") stay strict.
 - **Everyday words:** plain English is always fine. "The pressure in the aorta" is fine before the
   course teaches "systolic pressure".
 - **Short pulled-forward versions:** if a concept has one (the brief says "SHORT VERSION"), keep
