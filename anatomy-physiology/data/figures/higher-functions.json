@@ -57,7 +57,7 @@
     "ext": "svg",
     "w": 700,
     "h": 320,
-    "alt": "A graph of sleep stages across an 8-hour night. The vertical axis lists, from top to bottom, awake, REM, N1, N2 and N3 (deep); the horizontal axis shows hours 0 to 8 after falling asleep. The line drops from awake through N1 and N2 to N3 within the first hour, then cycles up and down about every 90 minutes. Long periods of N3 occur in the first two cycles, a short one in the third, and none after about 4 hours. REM periods, highlighted in color, are short early in the night (about 10 minutes at 1.4 hours) and get longer toward morning (about 40 minutes near 7 hours). Brief awakenings occur late in the night.",
+    "alt": "A graph of sleep stages across an 8-hour night. The vertical axis lists, from top to bottom, awake, REM, N1, N2 and N3 (deep); the horizontal axis shows hours 0 to 8 after lights out. The line drops from awake through N1 and N2 to N3 within the first hour, then cycles up and down about every 90 minutes. Long periods of N3 occur in the first two cycles, a short one in the third, and none after about 4 hours. REM periods, highlighted in color, are short early in the night (about 10 minutes at 1.4 hours) and get longer toward morning (about 40 minutes near 7 hours). Brief awakenings occur late in the night.",
     "labels": []
   }
 }

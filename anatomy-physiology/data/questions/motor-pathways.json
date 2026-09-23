@@ -4,15 +4,22 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
-    "q": "Which neuron is called the final common pathway to a skeletal muscle?",
-    "options": ["An upper motor neuron in the precentral gyrus", "A lower motor neuron in the ventral horn", "An interneuron in the dorsal horn", "A neuron of the red nucleus"],
+    "core": [
+      "communication"
+    ],
+    "q": "Which neuron is called the final common path to a skeletal muscle?",
+    "options": [
+      "An upper motor neuron in the precentral gyrus",
+      "A lower motor neuron in the ventral horn",
+      "An interneuron in the dorsal horn",
+      "A neuron of the red nucleus"
+    ],
     "correct": 1,
     "why": {
       "correct": "Every command to a skeletal muscle, from the cortex, the brainstem or a spinal circuit, must pass through the lower motor neuron, because only its axon leaves the CNS and reaches the muscle fibers.",
       "options": [
         "An upper motor neuron's axon stays inside the CNS and ends on lower motor neurons or interneurons. It never reaches the muscle.",
-        "Correct. The lower motor neuron is the only route out to the muscle, so it is the final common pathway.",
+        "Correct. The lower motor neuron is the only route out to the muscle, so it is the final common path.",
         "Dorsal horn interneurons handle incoming sensory signals. They do not send axons to muscle.",
         "The red nucleus holds upper motor neurons of the rubrospinal tract, which end on lower motor neurons in the cord."
       ]
@@ -23,12 +30,13 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the corticospinal pathway for moving the right hand in order, starting in the brain.",
     "options": [
       "Upper motor neuron in the left precentral gyrus",
       "Internal capsule",
-      "Cerebral peduncle of the midbrain",
       "Pyramid of the medulla oblongata",
       "Pyramidal decussation",
       "Right lateral corticospinal tract",
@@ -43,9 +51,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Roughly what share of corticospinal axons cross at the pyramidal decussation?",
-    "options": ["About 10–15%", "About 50%", "About 85–90%", "All of them"],
+    "options": [
+      "About 10–15%",
+      "About 50%",
+      "About 85–90%",
+      "Every one of them"
+    ],
     "correct": 2,
     "why": {
       "correct": "About 85–90% cross in the lower medulla and form the lateral corticospinal tract. The remaining 10–15% descend uncrossed as the anterior corticospinal tract, and most of those cross later in the cord.",
@@ -53,7 +68,7 @@
         "That is the share that does not cross at the decussation: the anterior corticospinal tract.",
         "The split is far from even. The large majority cross in the medulla.",
         "Correct. Most corticospinal axons cross at the pyramidal decussation.",
-        "The anterior corticospinal tract, about 10–15% of the axons, stays uncrossed in the medulla."
+        "Not every axon crosses here. The anterior corticospinal tract, about 10–15% of the axons, stays uncrossed in the medulla."
       ]
     }
   },
@@ -62,9 +77,17 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["communication", "structure-function"],
+    "core": [
+      "communication",
+      "structure-function"
+    ],
     "q": "Blood flow is cut off to a small area of the left internal capsule that carries corticospinal axons. Which side of the body becomes weak?",
-    "options": ["The left side", "The right side", "Both sides equally", "Neither side, since the cortex is undamaged"],
+    "options": [
+      "The left side of the body",
+      "The right side of the body",
+      "Both sides equally",
+      "Neither side"
+    ],
     "correct": 1,
     "why": {
       "correct": "The internal capsule lies above the pyramidal decussation. The corticospinal axons there have not crossed yet, and they are on their way to cross in the lower medulla and control the right side. Losing them weakens the right side.",
@@ -81,11 +104,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-16-12",
     "pin": "lateral-corticospinal-tract",
     "q": "Name the pinned tract.",
-    "options": ["Lateral corticospinal tract", "Anterior corticospinal tract", "Spinothalamic tract", "Dorsal column"],
+    "options": [
+      "Lateral corticospinal tract",
+      "Anterior corticospinal tract",
+      "Spinothalamic tract",
+      "Dorsal column"
+    ],
     "correct": 0,
     "why": {
       "correct": "The lateral corticospinal tract runs in the lateral white column and carries the crossed corticospinal axons to lower motor neurons for the limbs.",
@@ -102,10 +132,17 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "misconception": "any motor damage makes muscles floppy",
     "q": "A limb is weak and floppy, its tendon jerks are absent, its muscles have wasted over six weeks and small twitches ripple under the skin. Where is the damage most likely to be?",
-    "options": ["The primary motor cortex", "The internal capsule", "The lateral corticospinal tract", "The ventral horn or ventral root"],
+    "options": [
+      "The primary motor cortex of the opposite side",
+      "The internal capsule",
+      "The lateral corticospinal tract",
+      "The ventral horn or ventral root"
+    ],
     "correct": 3,
     "why": {
       "correct": "Flaccidity, lost tendon jerks, marked atrophy and fasciculations are lower motor neuron signs. The lower motor neuron's cell body is in the ventral horn, and its axon leaves through the ventral root.",
@@ -122,10 +159,23 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every finding that points to upper motor neuron damage, weeks after the injury.",
-    "options": ["Spasticity", "Fasciculations", "Brisk tendon jerks (hyperreflexia)", "A Babinski sign", "Marked atrophy within weeks", "Flaccid paralysis that never changes"],
-    "correct": [0, 2, 3],
+    "options": [
+      "Spasticity",
+      "Fasciculations",
+      "Brisk tendon jerks (hyperreflexia)",
+      "A Babinski sign",
+      "Marked atrophy within weeks",
+      "Flaccid paralysis that never changes"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
     "why": {
       "correct": "Upper motor neuron damage frees the lower motor neurons and spinal circuits from descending control: tone rises (spasticity), tendon jerks become brisk and the big toe goes up when the sole is stroked.",
       "options": [
@@ -143,13 +193,16 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function", "communication"],
+    "core": [
+      "structure-function",
+      "communication"
+    ],
     "q": "Patient A cannot move the lower right side of her face, but she wrinkles her forehead normally on both sides. Patient B cannot move any part of the right side of his face, forehead included. Which statement explains the difference?",
     "options": [
-      "A has damage to the right facial nerve; B has damage to the left motor cortex",
-      "Both have right facial nerve damage, more severe in B",
-      "A has damage to the left motor cortex or its corticobulbar axons; B has damage to the right facial nerve",
-      "A has damage to the right motor cortex; B has damage to the left facial nerve"
+      "A: right facial nerve; B: left motor cortex",
+      "A and B: right facial nerve, worse in B",
+      "A: left motor cortex or its axons; B: right facial nerve",
+      "A: the right motor cortex or its axons; B: the left facial nerve"
     ],
     "correct": 2,
     "why": {
@@ -168,15 +221,42 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 2,
-    "core": ["structure-function", "communication"],
+    "core": [
+      "structure-function",
+      "communication"
+    ],
     "q": "A knife wound cuts through the right half of the spinal cord at T8. Weeks later, predict the change in each finding compared with before the injury.",
     "variables": [
-      { "name": "Voluntary strength of the right leg", "answer": "down", "why": "The right lateral corticospinal tract has already crossed in the medulla and carries commands for the right leg, so cutting it at T8 weakens the right leg." },
-      { "name": "Muscle tone and tendon jerks in the right leg", "answer": "up", "why": "The right leg's lower motor neurons below T8 survive but lose descending control, so after the early floppy phase tone and tendon jerks increase." },
-      { "name": "Vibration and position sense in the right leg", "answer": "down", "why": "The right dorsal column carries fine touch, vibration and position from the right side and does not cross until the medulla." },
-      { "name": "Pain and temperature sense in the right leg", "answer": "none", "why": "Pain from the right leg crosses in the cord near where it enters and climbs in the left spinothalamic tract, which is intact." },
-      { "name": "Pain and temperature sense in the left leg", "answer": "down", "why": "Pain from the left leg crosses within a segment or two and climbs in the right spinothalamic tract, which is cut." },
-      { "name": "Voluntary strength of the left leg", "answer": "none", "why": "Commands for the left leg descend in the left lateral corticospinal tract, which is intact." }
+      {
+        "name": "Voluntary strength of the right leg",
+        "answer": "down",
+        "why": "The right lateral corticospinal tract has already crossed in the medulla and carries commands for the right leg, so cutting it at T8 weakens the right leg."
+      },
+      {
+        "name": "Muscle tone and tendon jerks in the right leg",
+        "answer": "up",
+        "why": "The right leg's lower motor neurons below T8 survive but lose descending control, so after the early floppy phase tone and tendon jerks increase."
+      },
+      {
+        "name": "Vibration and position sense in the right leg",
+        "answer": "down",
+        "why": "The right dorsal column carries fine touch, vibration and position from the right side and does not cross until the medulla."
+      },
+      {
+        "name": "Pain and temperature sense in the right leg",
+        "answer": "none",
+        "why": "Pain from the right leg crosses in the cord near where it enters and climbs in the left spinothalamic tract, which is intact."
+      },
+      {
+        "name": "Pain and temperature sense in the left leg",
+        "answer": "down",
+        "why": "Pain from the left leg crosses within a segment or two and climbs in the right spinothalamic tract, which is cut."
+      },
+      {
+        "name": "Voluntary strength of the left leg",
+        "answer": "none",
+        "why": "Commands for the left leg descend in the left lateral corticospinal tract, which is intact."
+      }
     ],
     "why": {
       "correct": "Damage to one half of the cord removes the motor tract and dorsal column for the same side, both of which crossed higher up, and the spinothalamic tract carrying pain from the opposite side, which crossed at entry. The result: same-side upper motor neuron weakness and loss of position sense, opposite-side loss of pain and temperature."
@@ -188,15 +268,42 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 2,
-    "core": ["structure-function", "communication"],
+    "core": [
+      "structure-function",
+      "communication"
+    ],
     "q": "Blood flow stops to the arm and face area of the left primary motor cortex, and the neurons there die. Three weeks later, predict each finding compared with before.",
     "variables": [
-      { "name": "Strength of the right arm", "answer": "down", "why": "The upper motor neurons for the right arm are in the left precentral gyrus, and their axons cross at the pyramidal decussation." },
-      { "name": "Tendon jerks in the right arm", "answer": "up", "why": "The right arm's lower motor neurons are healthy but lose descending control, so after the early floppy phase their tendon jerks become brisk." },
-      { "name": "Strength of the lower right face", "answer": "down", "why": "The lower face part of the right facial nucleus receives corticobulbar input mainly from the left hemisphere." },
-      { "name": "Strength of the right forehead", "answer": "none", "why": "The forehead part of the facial nucleus also receives input from the right hemisphere, which is undamaged." },
-      { "name": "Strength of the left arm", "answer": "none", "why": "The left arm is driven by the right motor cortex, which is undamaged." },
-      { "name": "Muscle bulk of the right arm", "answer": "none", "why": "Lower motor neurons still supply the muscle, so there is no fast wasting; at most slight disuse thinning over months." }
+      {
+        "name": "Strength of the right arm",
+        "answer": "down",
+        "why": "The upper motor neurons for the right arm are in the left precentral gyrus, and their axons cross at the pyramidal decussation."
+      },
+      {
+        "name": "Tendon jerks in the right arm",
+        "answer": "up",
+        "why": "The right arm's lower motor neurons are healthy but lose descending control, so after the early floppy phase their tendon jerks become brisk."
+      },
+      {
+        "name": "Strength of the lower right face",
+        "answer": "down",
+        "why": "The lower face part of the right facial nucleus receives corticobulbar input mainly from the left hemisphere."
+      },
+      {
+        "name": "Strength of the right forehead",
+        "answer": "none",
+        "why": "The forehead part of the facial nucleus also receives input from the right hemisphere, which is undamaged."
+      },
+      {
+        "name": "Strength of the left arm",
+        "answer": "none",
+        "why": "The left arm is driven by the right motor cortex, which is undamaged."
+      },
+      {
+        "name": "Muscle bulk of the right arm",
+        "answer": "none",
+        "why": "Lower motor neurons still supply the muscle, so there is no fast wasting; at most slight disuse thinning over months."
+      }
     ],
     "why": {
       "correct": "Loss of upper motor neurons in the left cortex weakens the right arm and lower right face, with spasticity and brisk tendon jerks appearing over the following weeks. The forehead is spared because of its input from both hemispheres, and muscle bulk is kept because the lower motor neurons survive."
@@ -207,13 +314,15 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A 9-month-old baby's big toe extends upward when the outer edge of her sole is stroked. What does this mean?",
     "options": [
-      "Damage to her corticospinal tract",
-      "Damage to her lower motor neurons",
-      "A normal finding at her age, with immature corticospinal axons",
-      "Weakness of her toe flexor muscles"
+      "Damage to her corticospinal tract above the lumbar cord",
+      "Damage to the lower motor neurons that supply her toes",
+      "A normal finding at her age",
+      "Weakness of the muscles that curl her toes downward"
     ],
     "correct": 2,
     "why": {
@@ -231,17 +340,24 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which brainstem motor tract drives the antigravity extensor muscles that keep you upright when you start to tip?",
-    "options": ["Tectospinal tract", "Vestibulospinal tract", "Rubrospinal tract", "Corticobulbar tract"],
+    "options": [
+      "Tectospinal tract",
+      "Vestibulospinal tract",
+      "Rubrospinal tract",
+      "Anterior corticospinal tract"
+    ],
     "correct": 1,
     "why": {
-      "correct": "The vestibulospinal tract runs uncrossed from the vestibular nuclei, which receive balance signals from the inner ear, to motor neurons for the extensor muscles of the trunk and legs.",
+      "correct": "The vestibulospinal tract runs uncrossed from the vestibular nuclei, which receive balance signals from the balance organs deep in the skull, to motor neurons for the extensor muscles of the trunk and legs.",
       "options": [
         "The tectospinal tract, from the superior colliculus, turns the head and neck toward a sudden sight or sound.",
         "Correct. Balance signals drive posture through the vestibulospinal tract.",
         "The rubrospinal tract, from the red nucleus, helps drive flexor muscles of the arm and is small in humans.",
-        "The corticobulbar tract runs from the cortex to the cranial nerve motor nuclei. It does not reach the spinal cord."
+        "The anterior corticospinal tract carries voluntary commands from the cortex to neck and trunk muscles. It does not carry the balance signals that correct a tip."
       ]
     }
   },
@@ -251,13 +367,31 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "In Parkinson's disease, the dopamine neurons of the substantia nigra die. Predict each change in the basal nuclei loop.",
     "variables": [
-      { "name": "Activity of the direct (go) pathway", "answer": "down", "why": "Dopamine normally excites the direct-pathway striatal neurons, so losing it weakens them." },
-      { "name": "Activity of the indirect (stop) pathway", "answer": "up", "why": "Dopamine normally inhibits the indirect-pathway striatal neurons, so losing it frees them." },
-      { "name": "Inhibition of the thalamus by the globus pallidus output", "answer": "up", "why": "Less direct-pathway inhibition and more indirect-pathway excitation both make the globus pallidus output fire more." },
-      { "name": "Ease of starting a movement", "answer": "down", "why": "A more inhibited thalamus excites the motor cortex less, so movements are slow, small and hard to start." }
+      {
+        "name": "Activity of the direct (go) pathway",
+        "answer": "down",
+        "why": "Dopamine normally excites the direct-pathway striatal neurons, so losing it weakens them."
+      },
+      {
+        "name": "Activity of the indirect (stop) pathway",
+        "answer": "up",
+        "why": "Dopamine normally inhibits the indirect-pathway striatal neurons, so losing it frees them."
+      },
+      {
+        "name": "Inhibition of the thalamus by the globus pallidus output",
+        "answer": "up",
+        "why": "Less direct-pathway inhibition and more indirect-pathway excitation both make the globus pallidus output fire more."
+      },
+      {
+        "name": "Ease of starting a movement",
+        "answer": "down",
+        "why": "A more inhibited thalamus excites the motor cortex less, so movements are slow, small and hard to start."
+      }
     ],
     "why": {
       "correct": "Dopamine favors movement by boosting the direct pathway and damping the indirect one. Without it, the brake from the globus pallidus on the thalamus presses harder, and movement becomes slow and hard to begin."
@@ -268,9 +402,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A man's right hand shakes as it nears a cup and he overshoots it, but the hand is still at rest and his grip is strong. Rapidly flipping his right hand over and back is clumsy. Where is the damage most likely to be?",
-    "options": ["The left cerebellar hemisphere", "The right cerebellar hemisphere", "The left substantia nigra", "The right lateral corticospinal tract"],
+    "options": [
+      "The left cerebellar hemisphere",
+      "The right cerebellar hemisphere",
+      "The left substantia nigra",
+      "The right lateral corticospinal tract"
+    ],
     "correct": 1,
     "why": {
       "correct": "Intention tremor, overshooting (dysmetria) and clumsy rapid alternating movements with normal strength are cerebellar signs. Cerebellar damage shows on the same side, and the lateral hemisphere handles skilled limb movement, so the right cerebellar hemisphere is the likely site.",
@@ -287,11 +428,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-16-15",
     "pin": "vermis",
     "q": "Name the pinned region of the cerebellum.",
-    "options": ["Vermis", "Cerebellar hemisphere", "Flocculonodular lobe", "Middle cerebellar peduncle"],
+    "options": [
+      "Vermis",
+      "Cerebellar hemisphere",
+      "Flocculonodular lobe",
+      "Middle cerebellar peduncle"
+    ],
     "correct": 0,
     "why": {
       "correct": "The vermis is the narrow midline strip joining the two cerebellar hemispheres. With the strip beside it, it forms the spinocerebellum, which controls posture and corrects movement as it happens.",
@@ -308,7 +456,9 @@
     "type": "error",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "This sequence describes how the direct pathway of the basal nuclei lets a chosen movement go ahead. Which step is wrong?",
     "options": [
       "The motor cortex excites direct-pathway neurons of the striatum",
@@ -332,17 +482,24 @@
     "type": "missing",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Fill the gap in the cerebellum's input and output routes: signals from the spinal cord enter through the inferior cerebellar peduncle → the cortex's motor plan, relayed by the pons, enters through ______ → corrections leave through the superior cerebellar peduncle toward the thalamus.",
-    "options": ["The middle cerebellar peduncle", "The internal capsule", "The corpus callosum", "The cerebral peduncle"],
-    "correct": 0,
+    "options": [
+      "The internal capsule",
+      "The corpus callosum between the hemispheres",
+      "The cerebral peduncle of the midbrain",
+      "The middle cerebellar peduncle"
+    ],
+    "correct": 3,
     "why": {
       "correct": "The middle cerebellar peduncle, the largest, joins the pons and carries the relayed copy of the cortex's motor plan into the cerebellum.",
       "options": [
-        "Correct. The middle peduncle carries input from the pons.",
         "The internal capsule is a band of axons deep in each cerebral hemisphere, not a connection of the cerebellum.",
         "The corpus callosum joins the two cerebral hemispheres to each other.",
-        "The cerebral peduncles are stalks on the front of the midbrain that carry the corticospinal axons down. They do not enter the cerebellum."
+        "The cerebral peduncles are stalks on the front of the midbrain that carry the corticospinal axons down. They do not enter the cerebellum.",
+        "Correct. The middle peduncle carries input from the pons."
       ]
     }
   },
@@ -351,13 +508,15 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A 58-year-old has wasting and twitching of the muscles of both hands, yet his knee jerks are brisk, both big toes go up when his soles are stroked, and sensation is normal everywhere. What best explains this mixture?",
     "options": [
-      "Damage to the dorsal columns only",
+      "Damage to the dorsal columns of the cord",
       "Damage to both upper and lower motor neurons",
       "Damage to one cerebellar hemisphere",
-      "Damage to peripheral nerves of the arms only"
+      "Damage to the peripheral nerves of both arms"
     ],
     "correct": 1,
     "why": {
@@ -366,7 +525,7 @@
         "Dorsal column damage would remove vibration and position sense, and sensation here is normal.",
         "Correct. Both motor neuron types are affected, and sensation is spared.",
         "Cerebellar damage causes clumsiness with normal strength and no wasting, twitching or Babinski sign.",
-        "Peripheral nerve damage alone would explain the hands, but not the brisk knee jerks and upward toes, and it would usually affect sensation too."
+        "Damage to the arm nerves would explain the hands, but not the brisk knee jerks and upward toes, and it would usually affect sensation too."
       ]
     }
   },
@@ -375,11 +534,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-14-28",
     "pin": "decussation-of-pyramids",
     "q": "Name the pinned structure.",
-    "options": ["Pyramidal decussation", "Cerebral peduncle", "Anterior corticospinal tract", "Internal capsule"],
+    "options": [
+      "Pyramidal decussation",
+      "Cerebral peduncle",
+      "Anterior corticospinal tract",
+      "Internal capsule"
+    ],
     "correct": 0,
     "why": {
       "correct": "At the junction of the medulla and spinal cord, most corticospinal axons cross the midline in the pyramidal decussation (the decussation of the pyramids) and continue as the lateral corticospinal tract.",

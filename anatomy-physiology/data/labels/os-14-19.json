@@ -1,0 +1,304 @@
+{
+  "figure": "os-14-19",
+  "labels": [
+    {
+      "id": "postcentral-gyrus",
+      "name": "Post-central gyrus",
+      "accept": [
+        "postcentral gyrus",
+        "post-central gyrus",
+        "primary somatosensory cortex",
+        "somatosensory cortex"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "functional-areas",
+      "box": [
+        556,
+        156,
+        161,
+        23
+      ]
+    },
+    {
+      "id": "third-order-neuron",
+      "name": "Third order neuron",
+      "accept": [
+        "third-order neuron",
+        "third order neuron",
+        "3rd order neuron"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        548,
+        257,
+        166,
+        20
+      ]
+    },
+    {
+      "id": "thalamus",
+      "name": "Thalamus",
+      "accept": [
+        "thalamus"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "diencephalon",
+      "box": [
+        0,
+        316,
+        90,
+        20
+      ]
+    },
+    {
+      "id": "second-order-neuron",
+      "name": "Second order neuron",
+      "accept": [
+        "second-order neuron",
+        "second order neuron",
+        "2nd order neuron"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        514,
+        403,
+        185,
+        20
+      ]
+    },
+    {
+      "id": "midbrain",
+      "name": "Midbrain",
+      "accept": [
+        "midbrain",
+        "mesencephalon"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "brainstem",
+      "box": [
+        500,
+        491,
+        82,
+        20
+      ]
+    },
+    {
+      "id": "medial-lemniscus",
+      "name": "Medial lemniscus",
+      "accept": [
+        "medial lemniscus"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        0,
+        534,
+        150,
+        20
+      ]
+    },
+    {
+      "id": "nucleus-gracilis",
+      "name": "Nucleus gracilis",
+      "accept": [
+        "nucleus gracilis",
+        "gracile nucleus"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        0,
+        578,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "nucleus-cuneatus",
+      "name": "Nucleus cuneatus",
+      "accept": [
+        "nucleus cuneatus",
+        "cuneate nucleus"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        0,
+        609,
+        156,
+        20
+      ]
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla",
+        "medulla oblongata"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "brainstem",
+      "box": [
+        480,
+        637,
+        76,
+        20
+      ]
+    },
+    {
+      "id": "lateral-spinothalamic-tract",
+      "name": "Lateral spinothalamic tract",
+      "accept": [
+        "lateral spinothalamic tract",
+        "spinothalamic tract",
+        "lateral spinothalamic"
+      ],
+      "lines": [
+        10,
+        12,
+        14
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        980,
+        766,
+        122,
+        61
+      ]
+    },
+    {
+      "id": "fasciculus-gracilis",
+      "name": "Fasciculus gracilis",
+      "accept": [
+        "fasciculus gracilis",
+        "gracile fasciculus"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        0,
+        777,
+        158,
+        23
+      ]
+    },
+    {
+      "id": "fasciculus-cuneatus",
+      "name": "Fasciculus cuneatus",
+      "accept": [
+        "fasciculus cuneatus",
+        "cuneate fasciculus"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        0,
+        819,
+        176,
+        19
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [
+        "spinal cord"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "spinal-cord-gross",
+      "box": [
+        472,
+        799,
+        105,
+        24
+      ]
+    },
+    {
+      "id": "first-order-neuron",
+      "name": "First order neuron",
+      "accept": [
+        "first-order neuron",
+        "first order neuron",
+        "1st order neuron"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "ascending-pathways",
+      "box": [
+        439,
+        880,
+        158,
+        20
+      ]
+    },
+    {
+      "id": "dorsal-root-ganglion",
+      "name": "Dorsal root ganglion",
+      "accept": [
+        "dorsal root ganglion",
+        "drg",
+        "posterior root ganglion",
+        "spinal ganglion"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        0,
+        899,
+        99,
+        44
+      ]
+    },
+    {
+      "id": "dorsal-root-ganglion-right",
+      "name": "Dorsal root ganglion",
+      "accept": [
+        "dorsal root ganglion",
+        "drg",
+        "posterior root ganglion",
+        "spinal ganglion"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        980,
+        899,
+        104,
+        44
+      ]
+    }
+  ]
+}

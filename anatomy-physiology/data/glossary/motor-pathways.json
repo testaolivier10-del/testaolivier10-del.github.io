@@ -1,6 +1,6 @@
 {
   "umn-lmn": {
-    "def": "The two neurons of a voluntary motor command. An upper motor neuron has its cell body in the motor cortex or a brainstem nucleus and its axon inside the CNS; a lower motor neuron has its cell body in the ventral horn or a cranial nerve motor nucleus and sends its axon to skeletal muscle, the final common pathway.",
+    "def": "The two neurons of a voluntary motor command. An upper motor neuron has its cell body in the motor cortex or a brainstem nucleus and its axon inside the CNS; a lower motor neuron has its cell body in the ventral horn or a cranial nerve motor nucleus and sends its axon to skeletal muscle, the final common path.",
     "roots": [],
     "say": ""
   },
@@ -26,7 +26,7 @@
   },
   "descending-brainstem-tracts": {
     "def": "Motor tracts from brainstem upper motor neurons to the spinal cord: the vestibulospinal tract (balance and antigravity posture), the reticulospinal tracts (tone, posture and walking), the tectospinal tract (turning the head toward a sight or sound) and the rubrospinal tract from the red nucleus (arm flexors; small in humans).",
-    "roots": [["rubr-", "red"], ["tect-", "roof"], ["vestibul-", "entrance hall, the inner ear"]],
+    "roots": [["rubr-", "red"], ["tect-", "roof"], ["vestibul-", "entrance hall, named for a balance chamber deep in the skull"]],
     "say": ""
   }
 }

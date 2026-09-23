@@ -211,7 +211,7 @@
     "q": "The lips occupy more of the primary somatosensory cortex than the whole back. What best explains this?",
     "options": [
       "The lips are closer to the brain, so their signals arrive stronger",
-      "The lips have far more sensory receptors per square centimeter, and each signal needs cortex to receive it",
+      "The lips have far more sensory receptors per square centimeter than the back",
       "The back sends most of its touch signals to the cerebellum instead of to the cerebral cortex",
       "The lips are used for speech, so they are mapped in Broca's area as well"
     ],
@@ -262,8 +262,8 @@
     ],
     "q": "After damage to his right parietal lobe, Mr. Haddad eats only the food on the right half of his plate and shaves only the right side of his face. His vision and strength test normal. What best explains this?",
     "options": [
-      "Loss of the primary visual cortex on the right",
-      "Damage to Broca's area",
+      "Loss of the primary visual cortex in the right occipital lobe",
+      "Damage to Broca's area in the left frontal lobe",
       "Weakness of the left arm from motor cortex damage",
       "Loss of the right hemisphere's attention to the left side of space"
     ],
@@ -453,8 +453,8 @@
     ],
     "q": "Why does the EEG show slow, large waves in deep sleep but fast, small waves when you are awake and thinking?",
     "options": [
-      "In deep sleep many cortical neurons' synaptic potentials rise and fall in step, so they add up",
-      "Neurons fire more action potentials in deep sleep",
+      "In deep sleep, cortical neurons' synaptic potentials rise and fall together",
+      "Neurons fire more action potentials in deep sleep than when awake",
       "The skull becomes thinner during sleep, so the signal is less damped",
       "The EEG records muscle activity, which is greatest during sleep"
     ],
@@ -480,10 +480,10 @@
     ],
     "q": "Years ago, surgeons cut Ms. Novak's corpus callosum to stop her seizures from spreading. With her eyes closed, she is handed a key in her left hand. What happens?",
     "options": [
-      "She names it at once, because touch reaches both hemispheres equally",
-      "She cannot name it, but her left hand can pick it out of a pile",
-      "She cannot name it or pick it out, because the left hand has no sensation",
-      "She names it, but cannot pick it out, because the right hemisphere controls speech"
+      "She names it at once and picks it out with either hand",
+      "She cannot name it, but her left hand can pick it out",
+      "She can neither name it nor pick it out with her left hand",
+      "She names it but cannot pick it out with her left hand"
     ],
     "correct": 1,
     "why": {
@@ -492,7 +492,7 @@
         "Touch from one hand reaches mainly the opposite hemisphere, and without the corpus callosum it cannot be shared.",
         "Correct. The right hemisphere knows the key but cannot speak it.",
         "Sensation in the left hand is normal; it reaches the right hemisphere, which can guide the hand.",
-        "In most people speech is produced by the left hemisphere, not the right."
+        "Naming needs the left hemisphere, which produces speech in most people, and the touch cannot reach it; the right hemisphere can still guide the left hand."
       ]
     }
   },
@@ -621,7 +621,7 @@
     "why": {
       "correct": "Strong, repeated activity lets calcium into the postsynaptic cell, which triggers the insertion of more glutamate receptor proteins. The same glutamate now opens more channels, giving a larger EPSP.",
       "options": [
-        "A more negative resting potential would make the cell harder to excite, not give a larger EPSP.",
+        "A more negative resting potential would move the cell further from threshold. That is not what long-term potentiation changes; the EPSP grows because more glutamate receptor proteins open.",
         "Myelin speeds conduction along an axon; it does not change the size of an EPSP at a synapse on the dendrites.",
         "Fewer receptor proteins would shrink the EPSP.",
         "Correct. More receptor proteins mean a bigger response to the same transmitter."

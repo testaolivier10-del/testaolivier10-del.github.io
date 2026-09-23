@@ -1,6 +1,6 @@
 {
   "topic": "higher-functions",
-  "hook": "<p>Mr. Castillo, 62, is eating breakfast when his words suddenly stop coming. He understands everything his wife says and nods to answer, but when he tries to speak he manages only \"Coffee... no... walk,\" slowly and with great effort, and he is plainly frustrated. His right hand is weak too. A blocked artery has cut off blood to a small part of his left frontal lobe, just in front of the area that moves his face and hand.</p>",
+  "hook": "<p>Mr. Castillo, 62, is eating breakfast when his words suddenly stop coming. He understands everything his wife says and nods to answer, but when he tries to speak he manages only \"Coffee... no... walk,\" slowly and with great effort, and he is plainly frustrated. His right hand is weak too. A blocked artery has cut off blood to the lower part of his left frontal lobe: the area just in front of the one that moves his face and hand, and part of that motor area too.</p>",
   "prereq": [
     {
       "q": "Which sulcus separates the frontal lobe from the parietal lobe?",
@@ -30,13 +30,13 @@
   },
   "chain": [
     { "cause": "Sound waves from a spoken word reach your ears, and signals relay through the thalamus.", "effect": "The primary auditory cortex in the temporal lobe receives the sound." },
-    { "cause": "The primary auditory cortex passes the sound pattern to Wernicke's area beside it.", "effect": "Wernicke's area recognizes the word and its meaning." },
+    { "cause": "In the classic model, the primary auditory cortex passes the sound pattern to Wernicke's area beside it.", "effect": "Wernicke's area recognizes the word and its meaning." },
     { "cause": "Wernicke's area sends the word forward along a curved band of white matter.", "effect": "Broca's area in the frontal lobe receives it and builds a speech plan." },
     { "cause": "Broca's area passes the plan to the face area of the primary motor cortex next to it.", "effect": "The primary motor cortex drives the muscles of the lips, tongue and throat, and you say the word." }
   ],
   "misconception": {
     "wrong": "Memories are stored in the hippocampus.",
-    "right": "The hippocampus is needed to form new declarative memories and to consolidate them, but long-term memories end up stored in the cerebral cortex. Henry Molaison, who lost most of both hippocampi, could not form new memories of events, yet he kept memories from years before his surgery and could still learn new skills, which depend on the basal nuclei and cerebellum."
+    "right": "The hippocampus is needed to form new declarative memories and to consolidate them, but long-term memories end up stored in the cerebral cortex. Henry Molaison, who lost much of both hippocampi, could not form new memories of events, yet he kept his general knowledge from before his surgery and could still learn new skills, which depend on the basal nuclei and cerebellum."
   },
   "check": ["anp-higher-functions-3", "anp-higher-functions-6", "anp-higher-functions-8", "anp-higher-functions-12", "anp-higher-functions-14", "anp-higher-functions-15", "anp-higher-functions-18", "anp-higher-functions-23"],
   "summary": "<p>Cortical areas are specialized. The primary motor cortex (precentral gyrus, area 4) sends commands to the opposite side, planned by the premotor and supplemental motor areas; the prefrontal cortex runs executive function. The primary somatosensory (postcentral gyrus), visual (occipital) and auditory (temporal) cortices receive signals first, association areas interpret them, and multimodal integration areas combine them. Body maps along the two central gyri give the most cortex to the hands, lips and tongue. The hemispheres specialize, with language usually on the left. Damage to Broca's area causes expressive aphasia, to Wernicke's area receptive aphasia, and to the link between them conduction aphasia. Working memory holds about four chunks; the hippocampus consolidates declarative memories into the cortex by strengthening synapses, while procedural memory uses the basal nuclei and cerebellum. The EEG records summed synaptic potentials, and sleep cycles every 90 minutes through N1, N2, N3 and REM.</p>",

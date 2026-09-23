@@ -1,0 +1,93 @@
+{
+  "figure": "os-16-15",
+  "labels": [
+    {
+      "id": "hemisphere",
+      "name": "Hemisphere",
+      "accept": [
+        "hemisphere",
+        "cerebellar hemisphere",
+        "hemispheres"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cerebellar-divisions",
+      "box": [
+        621,
+        55,
+        111,
+        23
+      ]
+    },
+    {
+      "id": "vermis",
+      "name": "Vermis",
+      "accept": [
+        "vermis"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cerebellar-divisions",
+      "box": [
+        791,
+        55,
+        68,
+        20
+      ]
+    },
+    {
+      "id": "flocculonodular-lobe",
+      "name": "Flocculonodular lobe",
+      "accept": [
+        "flocculonodular lobe",
+        "flocculonodular"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "cerebellar-divisions",
+      "box": [
+        491,
+        523,
+        129,
+        38
+      ]
+    },
+    {
+      "id": "nodulus",
+      "name": "Nodulus",
+      "accept": [
+        "nodulus",
+        "nodule"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cerebellar-divisions",
+      "box": [
+        784,
+        545,
+        80,
+        19
+      ]
+    },
+    {
+      "id": "flocculus",
+      "name": "Flocculus",
+      "accept": [
+        "flocculus"
+      ],
+      "lines": [],
+      "concept": "cerebellar-divisions",
+      "box": [
+        1014,
+        548,
+        86,
+        20
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "figure": "os-14-28",
+  "labels": [
+    {
+      "id": "precentral-gyrus",
+      "name": "Pre-central gyrus",
+      "accept": [
+        "precentral gyrus",
+        "pre-central gyrus",
+        "primary motor cortex",
+        "motor cortex"
+      ],
+      "lines": [],
+      "concept": "functional-areas",
+      "box": [
+        821,
+        81,
+        272,
+        38
+      ]
+    },
+    {
+      "id": "cerebral-peduncle",
+      "name": "Cerebral peduncle",
+      "accept": [
+        "cerebral peduncle",
+        "cerebral peduncles"
+      ],
+      "lines": [],
+      "concept": "brainstem",
+      "box": [
+        768,
+        774,
+        292,
+        35
+      ]
+    },
+    {
+      "id": "midbrain",
+      "name": "Midbrain",
+      "accept": [
+        "midbrain",
+        "mesencephalon"
+      ],
+      "lines": [],
+      "concept": "brainstem",
+      "box": [
+        769,
+        868,
+        136,
+        32
+      ]
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla",
+        "medulla oblongata"
+      ],
+      "lines": [],
+      "concept": "brainstem",
+      "box": [
+        808,
+        1232,
+        127,
+        32
+      ]
+    },
+    {
+      "id": "pyramids",
+      "name": "Pyramids",
+      "accept": [
+        "pyramids",
+        "pyramid",
+        "medullary pyramids",
+        "pyramids of the medulla"
+      ],
+      "lines": [],
+      "concept": "corticospinal",
+      "box": [
+        16,
+        1323,
+        149,
+        34
+      ]
+    },
+    {
+      "id": "decussation-of-pyramids",
+      "name": "Decussation of pyramids",
+      "accept": [
+        "decussation of pyramids",
+        "decussation of the pyramids",
+        "pyramidal decussation",
+        "motor decussation",
+        "decussation"
+      ],
+      "lines": [],
+      "concept": "corticospinal",
+      "box": [
+        17,
+        1517,
+        197,
+        72
+      ]
+    },
+    {
+      "id": "lateral-corticospinal-tract",
+      "name": "Lateral corticospinal tract",
+      "accept": [
+        "lateral corticospinal tract",
+        "lateral corticospinal",
+        "lateral cst"
+      ],
+      "lines": [],
+      "concept": "corticospinal",
+      "box": [
+        16,
+        1756,
+        205,
+        109
+      ]
+    },
+    {
+      "id": "anterior-corticospinal-tract",
+      "name": "Anterior corticospinal tract",
+      "accept": [
+        "anterior corticospinal tract",
+        "anterior corticospinal",
+        "ventral corticospinal tract"
+      ],
+      "lines": [],
+      "concept": "corticospinal",
+      "box": [
+        806,
+        1723,
+        201,
+        110
+      ]
+    },
+    {
+      "id": "upper-motor-neuron",
+      "name": "Upper motor neuron",
+      "accept": [
+        "upper motor neuron",
+        "umn",
+        "upper motor neurons"
+      ],
+      "lines": [],
+      "concept": "umn-lmn",
+      "box": [
+        808,
+        1890,
+        200,
+        71
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [
+        "spinal cord"
+      ],
+      "lines": [],
+      "concept": "spinal-cord-gross",
+      "box": [
+        808,
+        2069,
+        179,
+        34
+      ]
+    },
+    {
+      "id": "lower-motor-neuron",
+      "name": "Lower motor neuron",
+      "accept": [
+        "lower motor neuron",
+        "lmn",
+        "lower motor neurons",
+        "motor neuron"
+      ],
+      "lines": [],
+      "concept": "umn-lmn",
+      "box": [
+        233,
+        2172,
+        200,
+        69
+      ]
+    }
+  ]
+}

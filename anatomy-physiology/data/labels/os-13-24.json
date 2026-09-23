@@ -1,0 +1,261 @@
+{
+  "figure": "os-13-24",
+  "labels": [
+    {
+      "id": "cervical-plexus",
+      "name": "Cervical plexus",
+      "accept": [
+        "cervical plexus"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "nerve-plexuses",
+      "box": [
+        906,
+        166,
+        196,
+        31
+      ]
+    },
+    {
+      "id": "brachial-plexus",
+      "name": "Brachial plexus",
+      "accept": [
+        "brachial plexus"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "nerve-plexuses",
+      "box": [
+        907,
+        329,
+        195,
+        31
+      ]
+    },
+    {
+      "id": "phrenic-nerve",
+      "name": "Phrenic nerve",
+      "accept": [
+        "phrenic nerve",
+        "phrenic"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "named-nerves",
+      "box": [
+        4,
+        312,
+        178,
+        26
+      ]
+    },
+    {
+      "id": "axillary-nerve",
+      "name": "Axillary nerve",
+      "accept": [
+        "axillary nerve",
+        "axillary"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "named-nerves",
+      "box": [
+        2,
+        381,
+        176,
+        31
+      ]
+    },
+    {
+      "id": "median-nerve",
+      "name": "Median nerve",
+      "accept": [
+        "median nerve",
+        "median"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "named-nerves",
+      "box": [
+        4,
+        431,
+        175,
+        26
+      ]
+    },
+    {
+      "id": "radial-nerve",
+      "name": "Radial nerve",
+      "accept": [
+        "radial nerve",
+        "radial"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "named-nerves",
+      "box": [
+        4,
+        476,
+        163,
+        26
+      ]
+    },
+    {
+      "id": "ulnar-nerve",
+      "name": "Ulnar nerve",
+      "accept": [
+        "ulnar nerve",
+        "ulnar"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "named-nerves",
+      "box": [
+        4,
+        520,
+        151,
+        26
+      ]
+    },
+    {
+      "id": "lumbar-plexus",
+      "name": "Lumbar plexus",
+      "accept": [
+        "lumbar plexus"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "nerve-plexuses",
+      "box": [
+        907,
+        1249,
+        189,
+        31
+      ]
+    },
+    {
+      "id": "femoral-nerve",
+      "name": "Femoral nerve",
+      "accept": [
+        "femoral nerve",
+        "femoral"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "named-nerves",
+      "box": [
+        4,
+        1442,
+        186,
+        26
+      ]
+    },
+    {
+      "id": "obturator-nerve",
+      "name": "Obturator nerve",
+      "accept": [
+        "obturator nerve",
+        "obturator"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "named-nerves",
+      "box": [
+        3,
+        1486,
+        202,
+        26
+      ]
+    },
+    {
+      "id": "sacral-plexus",
+      "name": "Sacral plexus",
+      "accept": [
+        "sacral plexus"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "nerve-plexuses",
+      "box": [
+        906,
+        1534,
+        175,
+        31
+      ]
+    },
+    {
+      "id": "common-fibular-nerve",
+      "name": "Common fibular nerve",
+      "accept": [
+        "common fibular nerve",
+        "common peroneal nerve",
+        "fibular nerve",
+        "peroneal nerve",
+        "common fibular"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "named-nerves",
+      "box": [
+        2,
+        1684,
+        162,
+        59
+      ]
+    },
+    {
+      "id": "sciatic-nerve",
+      "name": "Sciatic nerve",
+      "accept": [
+        "sciatic nerve",
+        "sciatic"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "named-nerves",
+      "box": [
+        3,
+        1797,
+        167,
+        27
+      ]
+    },
+    {
+      "id": "tibial-nerve",
+      "name": "Tibial nerve",
+      "accept": [
+        "tibial nerve",
+        "tibial"
+      ],
+      "lines": [],
+      "concept": "named-nerves",
+      "box": [
+        390,
+        1786,
+        142,
+        28
+      ]
+    }
+  ]
+}

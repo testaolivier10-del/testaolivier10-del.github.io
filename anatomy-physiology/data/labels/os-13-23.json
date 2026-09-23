@@ -1,0 +1,305 @@
+{
+  "figure": "os-13-23",
+  "labels": [
+    {
+      "id": "olfactory-nerve",
+      "name": "Olfactory nerve I",
+      "accept": [
+        "olfactory nerve",
+        "olfactory",
+        "cn i",
+        "cni",
+        "cn 1",
+        "cranial nerve i",
+        "cranial nerve 1",
+        "olfactory nerve i"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        35,
+        92,
+        44
+      ]
+    },
+    {
+      "id": "oculomotor-nerve",
+      "name": "Oculomotor nerve III",
+      "accept": [
+        "oculomotor nerve",
+        "oculomotor",
+        "cn iii",
+        "cniii",
+        "cn 3",
+        "cranial nerve iii",
+        "cranial nerve 3",
+        "oculomotor nerve iii"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        103,
+        117,
+        45
+      ]
+    },
+    {
+      "id": "optic-nerve",
+      "name": "Optic nerve II",
+      "accept": [
+        "optic nerve",
+        "optic",
+        "cn ii",
+        "cnii",
+        "cn 2",
+        "cranial nerve ii",
+        "cranial nerve 2",
+        "optic nerve ii"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        606,
+        127,
+        135,
+        25
+      ]
+    },
+    {
+      "id": "trochlear-nerve",
+      "name": "Trochlear nerve IV",
+      "accept": [
+        "trochlear nerve",
+        "trochlear",
+        "cn iv",
+        "cniv",
+        "cn 4",
+        "cranial nerve iv",
+        "cranial nerve 4",
+        "trochlear nerve iv"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        180,
+        94,
+        44
+      ]
+    },
+    {
+      "id": "trigeminal-nerve",
+      "name": "Trigeminal nerve V",
+      "accept": [
+        "trigeminal nerve",
+        "trigeminal",
+        "cn v",
+        "cnv",
+        "cn 5",
+        "cranial nerve v",
+        "cranial nerve 5",
+        "trigeminal nerve v"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        605,
+        217,
+        181,
+        26
+      ]
+    },
+    {
+      "id": "abducens-nerve",
+      "name": "Abducens nerve VI",
+      "accept": [
+        "abducens nerve",
+        "abducens",
+        "cn vi",
+        "cnvi",
+        "cn 6",
+        "cranial nerve vi",
+        "cranial nerve 6",
+        "abducens nerve vi"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        247,
+        101,
+        44
+      ]
+    },
+    {
+      "id": "facial-nerve",
+      "name": "Facial nerve VII",
+      "accept": [
+        "facial nerve",
+        "facial",
+        "cn vii",
+        "cnvii",
+        "cn 7",
+        "cranial nerve vii",
+        "cranial nerve 7",
+        "facial nerve vii"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        607,
+        292,
+        153,
+        21
+      ]
+    },
+    {
+      "id": "vestibulocochlear-nerve",
+      "name": "Vestibulocochlear nerve VIII",
+      "accept": [
+        "vestibulocochlear nerve",
+        "vestibulocochlear",
+        "cn viii",
+        "cnviii",
+        "cn 8",
+        "cranial nerve viii",
+        "cranial nerve 8",
+        "vestibulocochlear nerve viii",
+        "auditory nerve",
+        "acoustic nerve"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        309,
+        171,
+        43
+      ]
+    },
+    {
+      "id": "glossopharyngeal-nerve",
+      "name": "Glossopharyngeal nerve IX",
+      "accept": [
+        "glossopharyngeal nerve",
+        "glossopharyngeal",
+        "cn ix",
+        "cnix",
+        "cn 9",
+        "cranial nerve ix",
+        "cranial nerve 9",
+        "glossopharyngeal nerve ix"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        606,
+        348,
+        180,
+        45
+      ]
+    },
+    {
+      "id": "hypoglossal-nerve",
+      "name": "Hypoglossal nerve XII",
+      "accept": [
+        "hypoglossal nerve",
+        "hypoglossal",
+        "cn xii",
+        "cnxii",
+        "cn 12",
+        "cranial nerve xii",
+        "cranial nerve 12",
+        "hypoglossal nerve xii"
+      ],
+      "lines": [
+        15,
+        16
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        379,
+        121,
+        44
+      ]
+    },
+    {
+      "id": "vagus-nerve",
+      "name": "Vagus nerve X",
+      "accept": [
+        "vagus nerve",
+        "vagus",
+        "cn x",
+        "cnx",
+        "cn 10",
+        "cranial nerve x",
+        "cranial nerve 10",
+        "vagus nerve x"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "vagus-nerve",
+      "box": [
+        606,
+        417,
+        147,
+        25
+      ]
+    },
+    {
+      "id": "accessory-nerve",
+      "name": "Accessory nerve XI",
+      "accept": [
+        "accessory nerve",
+        "accessory",
+        "cn xi",
+        "cnxi",
+        "cn 11",
+        "cranial nerve xi",
+        "cranial nerve 11",
+        "accessory nerve xi",
+        "spinal accessory nerve",
+        "spinal accessory"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "cranial-nerve-list",
+      "box": [
+        0,
+        439,
+        105,
+        44
+      ]
+    }
+  ]
+}
