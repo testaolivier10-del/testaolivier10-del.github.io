@@ -238,7 +238,10 @@ if (isMain) {
   const ids = only ? [only] : map.topics.map(t => t.id).filter(t =>
     exists(join(DATA, 'lessons', `${t}.json`)) || exists(join(DATA, 'notes', `${t}.html`)) || exists(join(DATA, 'questions', `${t}.json`)));
   if (only && !topicIndex.has(only)) { console.error(`unknown topic ${only}`); process.exit(1); }
-  let failed = 0, total = 0;
+  let failed = 0, total = 0, draftFails = 0;
+  const pubPath = join(DATA, 'published.json');
+  const PUBLISHED = exists(pubPath) ? new Set(readJson(pubPath).chapters) : null;
+  const chapterOf = id => map.topics[topicIndex.get(id)].chapter;
   for (const id of ids) {
     const r = checkTopic(id, glossary, figures);
     total += r.questions;
@@ -247,9 +250,11 @@ if (isMain) {
       for (const e of r.errors) console.log(`  FAIL: ${e}`);
       for (const w of r.warns) console.log(`  warning: ${w}`);
     }
-    if (r.errors.length) failed++;
+    // With --check, only a published chapter fails the build (decision 53): a
+    // chapter still being written is reported but does not block CI.
+    if (r.errors.length) { if (!PUBLISHED || PUBLISHED.has(chapterOf(id))) failed++; else draftFails++; }
   }
-  console.log(`A&P content: ${ids.length} topics, ${total} questions, ${failed} failing.`);
+  console.log(`A&P content: ${ids.length} topics, ${total} questions, ${failed} failing${draftFails ? ` (+${draftFails} in unpublished chapters)` : ''}.`);
 
   // --- tools: each tool's content file against its own validator
   // (scripts/lib/anp-tool-checks/<slug>.mjs, docs/anp-tools-contract.md).

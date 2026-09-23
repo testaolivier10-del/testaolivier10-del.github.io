@@ -1,0 +1,606 @@
+[
+  {
+    "id": "anp-respiratory-disorders-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Which spirometry result confirms the airflow obstruction of COPD?",
+    "options": [
+      "FEV1 ÷ FVC below 0.70 after an airway-opening drug",
+      "FEV1 ÷ FVC above 0.90 on a test done before any drug",
+      "A total lung capacity well below the predicted normal value",
+      "A vital capacity that doubles after albuterol"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In COPD, air leaves the lungs slowly, so FEV1 falls more than FVC. A ratio below 0.70, measured after a drug that opens the airways, shows obstruction that persists.",
+      "options": [
+        "Correct. A low ratio that persists after the drug defines COPD's obstruction.",
+        "A high ratio means air leaves quickly for the volume moved, which fits normal lungs or restrictive disease, not obstruction.",
+        "A small total lung capacity is the mark of restrictive disease. In COPD, trapped air often makes it normal or larger.",
+        "A large improvement after albuterol points to reversible obstruction, as in asthma, and in any case vital capacity does not double."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "After albuterol, a patient's FVC is 4.0 L and her FEV1 is 2.4 L. What is her FEV1 ÷ FVC, and what does it show?",
+    "options": [
+      "1.67: restrictive disease",
+      "0.60: airflow obstruction",
+      "0.60: normal for her age and size",
+      "0.85: airflow obstruction"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "FEV1 ÷ FVC = 2.4 ÷ 4.0 = 0.60. That is below 0.70 after the airway-opening drug, so she has persistent airflow obstruction.",
+      "options": [
+        "1.67 comes from dividing FVC by FEV1, the wrong way round. FEV1 can never be larger than FVC, so the ratio is always below 1.",
+        "Correct. 0.60 is below the 0.70 cutoff.",
+        "The ratio is right, but 0.60 is below 0.70, so it is not normal.",
+        "0.85 does not follow from these numbers, and a ratio that high would not show obstruction."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "interdependence",
+      "structure-function"
+    ],
+    "q": "Emphysema destroys many alveolar walls in a man's lungs. Predict the change in each variable, compared with healthy lungs.",
+    "variables": [
+      {
+        "name": "Surface area for gas exchange",
+        "answer": "down",
+        "why": "Small alveoli merge into fewer, larger spaces, which have much less wall area, and the capillaries in the lost walls are gone."
+      },
+      {
+        "name": "Elastic recoil of the lungs",
+        "answer": "down",
+        "why": "Protein-digesting enzymes have broken down the elastic fibers."
+      },
+      {
+        "name": "Lung compliance",
+        "answer": "up",
+        "why": "With less elastic tissue to stretch, the lungs inflate more easily for a given pressure change."
+      },
+      {
+        "name": "Residual volume",
+        "answer": "up",
+        "why": "Without elastic support, small airways collapse during expiration and trap air behind them."
+      },
+      {
+        "name": "FEV1",
+        "answer": "down",
+        "why": "Collapsing airways and weak recoil slow the flow of air out during a forced breath."
+      }
+    ],
+    "why": {
+      "correct": "Destroying alveolar walls removes surface area and elastic fibers. Weaker recoil and loss of the outward pull on small airways make them collapse during expiration, so air is trapped, residual volume rises and FEV1 falls. The lungs become more compliant, not stiffer."
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-4",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-22-18",
+    "q": "Using the lung volumes in the figure, which band becomes larger in severe emphysema?",
+    "options": [
+      "Tidal volume",
+      "Inspiratory reserve volume",
+      "Vital capacity",
+      "Residual volume"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In emphysema, small airways collapse during expiration and trap air, so more air stays in the lungs after the fullest breath out. Residual volume, at the bottom of the scale, grows.",
+      "options": [
+        "Tidal volume at rest is about normal or smaller. The trapped air is added below it, at the bottom of the scale.",
+        "Inspiratory reserve volume shrinks, because the lungs start each breath already overinflated.",
+        "Vital capacity falls, because trapped air takes up space that could otherwise be breathed in and out.",
+        "Correct. Trapped air enlarges the residual volume."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why do the smallest airways collapse during expiration in emphysema but not in healthy lungs?",
+    "options": [
+      "Their smooth muscle goes into spasm with each breath out",
+      "Mucus plugs block them",
+      "They have lost the elastic fibers that held them open",
+      "Their cartilage rings have been dissolved"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The smallest airways have no cartilage. In healthy lungs, elastic fibers in the surrounding alveolar walls attach to their outside and pull them open. Emphysema destroys those fibers, so when pressure around the airways rises during expiration, they are squeezed shut.",
+      "options": [
+        "Smooth muscle spasm is the mechanism of asthma, and it responds to drugs that open the airways. Emphysema's collapse does not.",
+        "Mucus plugging is the main problem in chronic bronchitis, not emphysema.",
+        "Correct. Loss of elastic support lets the airways collapse.",
+        "The smallest airways, the bronchioles, never had cartilage rings. They rely on the pull of surrounding tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "How is chronic bronchitis defined?",
+    "options": [
+      "Destruction of alveolar walls seen on a CT scan of the chest",
+      "Episodes of wheezing that fully reverse with albuterol",
+      "An infection of the alveoli with fever",
+      "A daily cough with mucus for 3 months in each of 2 years"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Chronic bronchitis is defined by symptoms: a productive cough on most days for at least three months in each of two consecutive years, with no other cause.",
+      "options": [
+        "Destruction of alveolar walls defines emphysema.",
+        "Wheezing that reverses fully is typical of asthma.",
+        "Infection of the alveoli with fever describes pneumonia.",
+        "Correct. The definition rests on a long-lasting cough with mucus."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-7",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every feature that is typical of emphysema rather than chronic bronchitis or asthma.",
+    "options": [
+      "Destruction of alveolar walls",
+      "Raised lung compliance",
+      "Daily cough with large amounts of mucus",
+      "Reduced diffusion of gases across the lung",
+      "Obstruction that reverses fully with albuterol",
+      "Enlarged mucus glands in the airway walls"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Emphysema destroys alveolar walls, which lowers the surface for diffusion and removes elastic fibers, so compliance rises. A daily productive cough and enlarged mucus glands mark chronic bronchitis; fully reversible obstruction marks asthma.",
+      "options": [
+        "Correct. This is the defining change of emphysema.",
+        "Correct. With less elastic tissue, the lungs stretch more easily.",
+        "A daily cough with mucus is the defining symptom of chronic bronchitis.",
+        "Correct. Losing alveolar walls and their capillaries shrinks the diffusion surface.",
+        "Emphysema's obstruction does not reverse with drugs that open the airways; asthma's largely does.",
+        "Enlarged mucus glands are a feature of chronic bronchitis."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence"
+    ],
+    "misconception": "asthma and COPD are the same disease",
+    "q": "Two patients each have FEV1 ÷ FVC of 0.55. After inhaling albuterol, Ms. Rao's ratio rises to 0.80; Mr. Dunn's rises only to 0.58. Which pairing is most likely?",
+    "options": [
+      "Ms. Rao has emphysema; Mr. Dunn has asthma",
+      "Both have pulmonary edema",
+      "Ms. Rao has asthma; Mr. Dunn has COPD",
+      "Both have restrictive disease"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Asthma's obstruction comes largely from smooth muscle contraction, which albuterol relaxes through beta-2 receptor proteins, so the ratio returns toward normal. COPD's obstruction persists after the drug: collapsed airways and thickened, mucus-filled walls do not reverse.",
+      "options": [
+        "This reverses the pattern. Emphysema's obstruction barely changes with albuterol; asthma's improves a lot.",
+        "Pulmonary edema does not usually produce a low ratio that corrects with albuterol; it mainly stiffens the lungs and floods alveoli.",
+        "Correct. Reversible obstruction fits asthma; persistent obstruction fits COPD.",
+        "Restrictive disease lowers volumes but keeps the ratio normal or high. Both ratios here are low."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence",
+      "homeostasis"
+    ],
+    "misconception": "oxygen should be withheld in COPD because of the hypoxic drive",
+    "q": "A paramedic finds Mr. Chen, who has severe COPD, breathless with an SpO2 of 80%. What is the best-supported approach to oxygen?",
+    "options": [
+      "Withhold oxygen, because it will remove his hypoxic drive and stop his breathing",
+      "Give only room air until his PCO2 is measured",
+      "Give maximal oxygen and aim for 100% saturation",
+      "Give oxygen, adjusting it to a target saturation of about 88–92% and watching his breathing"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "He is dangerously hypoxic and needs oxygen. Because large amounts can raise PCO2 in some people with severe COPD, mainly by worsening ventilation–perfusion mismatch and through the Haldane effect, oxygen is adjusted to a target saturation, often 88–92%, while his breathing and alertness are watched.",
+      "options": [
+        "Oxygen is never withheld from a hypoxic patient. The hypoxic-drive explanation that many exams still teach plays at most a small part in the rise in PCO2.",
+        "Delaying oxygen leaves him severely hypoxic, which is far more dangerous than a controlled rise in PCO2.",
+        "Aiming for 100% can release hypoxic pulmonary vasoconstriction throughout his lungs and, with the Haldane effect, raise his PCO2. A lower target avoids this while correcting the hypoxemia.",
+        "Correct. Controlled oxygen to a target range treats the hypoxemia safely."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence"
+    ],
+    "q": "After years of severe COPD, a patient develops swollen ankles and an enlarged right ventricle. What links the lung disease to the heart?",
+    "options": [
+      "Widespread hypoxic pulmonary vasoconstriction raises pulmonary artery pressure and the right ventricle's afterload",
+      "Low oxygen weakens the left ventricle, which backs blood into the lungs",
+      "Mucus from the lungs blocks the coronary arteries",
+      "Polycythemia makes the right ventricle fill with too little blood"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Low alveolar oxygen throughout the lungs constricts pulmonary arterioles for years. Pulmonary artery pressure rises, the right ventricle pumps against a high afterload, thickens and eventually fails. This right-sided heart failure caused by lung disease is cor pulmonale; blood backs up into the systemic veins and fluid collects in the ankles.",
+      "options": [
+        "Correct. Pulmonary hypertension from chronic hypoxia strains the right ventricle.",
+        "Left ventricular failure backs blood into the lungs, not the ankles, and it is not the usual link from COPD to the right heart.",
+        "Mucus stays in the airways; it does not enter the blood or the coronary arteries.",
+        "Polycythemia thickens the blood and adds to the workload, but it does not reduce filling of the right ventricle, and it is not the main cause."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A man with long-standing COPD and low blood oxygen has a hematocrit of 56%. What caused the high hematocrit?",
+    "options": [
+      "Dehydration from rapid breathing",
+      "Carbon dioxide retention stimulating the bone marrow directly to divide",
+      "Chronic hypoxemia stimulating erythropoietin release from the kidneys",
+      "Smoke damaging the spleen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Long-term low blood oxygen makes the kidneys release more erythropoietin, which speeds erythropoiesis in the bone marrow. The red blood cell count and hematocrit rise: polycythemia.",
+      "options": [
+        "Loss of water can concentrate the blood slightly, but a hematocrit this high in chronic hypoxemia comes from more red blood cells being made.",
+        "Carbon dioxide does not directly drive red blood cell production. The signal is low oxygen sensed by the kidneys.",
+        "Correct. This is the erythropoietin feedback loop responding to low oxygen.",
+        "Smoke does not act on the spleen to raise the red blood cell count."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
+    "q": "Mrs. Ito has severe left-sided heart failure and wakes up gasping, with crackles in both lungs. What mainly drives fluid into her lungs?",
+    "options": [
+      "A leak in the respiratory membrane caused by infection",
+      "Low blood colloid osmotic pressure from liver failure",
+      "Blocked lymphatic vessels in the lungs",
+      "Raised hydrostatic pressure in her pulmonary capillaries"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Her weak left ventricle cannot pump out all the blood reaching it. Pressure rises in the left atrium, the pulmonary veins and the pulmonary capillaries. Filtration then outpaces lymph drainage, and fluid collects first around the alveoli and then inside them: cardiogenic pulmonary edema.",
+      "options": [
+        "A leaky membrane causes noncardiogenic pulmonary edema, as in sepsis or pneumonia. Her edema follows from heart failure.",
+        "Low colloid osmotic pressure adds to edema in some patients, but nothing here points to liver failure, and her heart failure explains it.",
+        "Lung lymphatics are working hard, not blocked. They are overwhelmed by the extra filtration.",
+        "Correct. High capillary pressure pushes fluid out: cardiogenic pulmonary edema."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "q": "In early pulmonary edema, a patient's arterial PO2 is low but his PCO2 is normal or slightly low. Why is oxygen affected first?",
+    "options": [
+      "Edema fluid reacts with oxygen",
+      "Carbon dioxide is far more soluble and diffuses more readily",
+      "Carbon dioxide leaves the blood by a route that avoids the membrane",
+      "Hemoglobin releases carbon dioxide faster when fluid is present"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Carbon dioxide is about 20 times more soluble than oxygen, so it diffuses far more readily through a thickened, fluid-filled membrane. Oxygen transfer suffers first. The rapid breathing driven by sensory receptors in the alveolar walls also blows off carbon dioxide, keeping PCO2 normal or low.",
+      "options": [
+        "Edema fluid is mostly water and plasma solutes; it does not react with oxygen.",
+        "Correct. Higher solubility lets carbon dioxide diffuse through the thicker barrier.",
+        "Carbon dioxide leaves the blood through the same respiratory membrane that oxygen crosses; there is no other route.",
+        "Fluid in the lung tissue does not change how hemoglobin releases carbon dioxide."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence",
+      "gradients"
+    ],
+    "q": "Why does a patient with left-sided heart failure become more breathless when lying flat?",
+    "options": [
+      "More venous return raises pressure in the pulmonary capillaries",
+      "The weight of the chest compresses both lungs when lying down",
+      "Lying flat stops the diaphragm from contracting fully",
+      "Lying flat lowers the colloid osmotic pressure of the blood plasma"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Lying down moves blood from the legs and abdomen into the chest. More blood reaches the heart and lungs, but the failing left ventricle cannot pump it on, so pulmonary capillary pressure and edema increase. This is orthopnea, relieved by sitting up.",
+      "options": [
+        "Correct. Extra venous return overloads the failing left side.",
+        "The chest wall and ribs hold their shape when you lie down; posture does not crush the lungs. The problem is the extra blood reaching the failing left side.",
+        "The diaphragm works when you lie down; you breathe normally in your sleep. Abdominal contents push on it a little, but that does not explain fluid building up in the lungs.",
+        "Posture does not change the protein concentration of the plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A patient with sepsis develops pulmonary edema, although his heart pumps normally and his pulmonary capillary pressure is normal. What is the mechanism?",
+    "options": [
+      "Raised capillary hydrostatic pressure caused by a failing left ventricle",
+      "Inflammation makes the respiratory membrane leak fluid and proteins",
+      "Too little surfactant is made because of fever",
+      "Air leaks into the pleural cavity"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In noncardiogenic pulmonary edema, inflammation damages the capillary wall and the alveolar lining. Fluid and plasma proteins leak out even at normal pressure, and the protein-rich fluid floods the alveoli.",
+      "options": [
+        "The question says his heart and capillary pressure are normal, which rules out the cardiogenic mechanism.",
+        "Correct. A leaky membrane lets fluid out at normal pressure.",
+        "Surfactant can be damaged in severe lung injury, but fever does not stop its production, and this is not the main cause of the fluid leak.",
+        "Air in the pleural cavity is a pneumothorax. It collapses the lung but does not fill the alveoli with fluid."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
+    "q": "Mr. Osei has pneumonia filling his right lower lobe. On high-flow oxygen, his SpO2 rises only from 86% to 90%. Why does oxygen help so little?",
+    "options": [
+      "Blood passing the filled alveoli never meets the extra oxygen, and blood passing healthy alveoli was already nearly saturated",
+      "Bacteria in the lung consume the extra oxygen",
+      "High-flow oxygen blocks the respiratory centers",
+      "His hemoglobin has lost its ability to bind oxygen"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The consolidated alveoli are full of inflammatory fluid, so blood flowing past them gets no air at all. Extra oxygen reaches only the healthy alveoli, and the blood there was already about 97% saturated, so it can carry little more. When the two streams mix, the unoxygenated blood still pulls the average down.",
+      "options": [
+        "Correct. Blood that bypasses air cannot be helped by more oxygen in the air.",
+        "Bacteria use a trivial amount of oxygen compared with the oxygen passing through the lungs.",
+        "Oxygen does not block the respiratory centers.",
+        "Pneumonia does not change hemoglobin. Blood that reaches ventilated alveoli still loads oxygen normally."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-17",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Put the steps in order to show how tuberculosis infection develops and can later become active.",
+    "options": [
+      "A person breathes in tiny airborne droplets carrying the bacteria",
+      "Alveolar macrophages engulf the bacteria",
+      "The bacteria survive and multiply inside the macrophages",
+      "T cells activate the macrophages and a granuloma walls off the infection",
+      "The bacteria stay dormant for years as latent infection",
+      "Immunity weakens and the bacteria break out as active disease"
+    ],
+    "why": {
+      "correct": "Tuberculosis is airborne. Alveolar macrophages take up the bacteria, which survive inside them. Weeks later, T cells activate the macrophages, and a granuloma contains the infection, often for life. If immunity later weakens, the dormant bacteria can reactivate."
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described how smoking causes emphysema. One step is wrong. Which one?",
+    "options": [
+      "Smoke draws neutrophils and macrophages into the lungs",
+      "These cells release protein-digesting enzymes",
+      "Smoke inactivates alpha-1 antitrypsin, which normally blocks the enzymes",
+      "Elastic fibers in alveolar walls are broken down",
+      "The lungs become stiffer and less compliant",
+      "Small airways collapse during expiration and trap air"
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "Losing elastic fibers makes the lungs more compliant, not less: they stretch more easily and recoil less. Stiffer, less compliant lungs are a feature of restrictive disease such as pulmonary fibrosis.",
+      "options": [
+        "This step is right. Smoke causes chronic inflammation in the lungs.",
+        "This step is right. The inflammatory cells release enzymes that digest proteins.",
+        "This step is right. Smoke tips the balance toward digestion by inactivating the protective protein.",
+        "This step is right. The enzymes destroy elastic fibers and alveolar walls.",
+        "This is the error. Emphysema raises lung compliance.",
+        "This step is right. Without elastic support, small airways collapse and trap air."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-19",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
+    "q": "Fill the gap: left ventricle fails → pressure rises in the left atrium and pulmonary veins → ____ → fluid collects around and in the alveoli.",
+    "options": [
+      "Pulmonary capillary hydrostatic pressure rises",
+      "The blood colloid osmotic pressure in the lungs rises",
+      "Lymph flow from the lungs stops",
+      "The respiratory membrane becomes leaky"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Backed-up pressure reaches the pulmonary capillaries. Higher capillary hydrostatic pressure pushes out more fluid than the lymphatics can remove.",
+      "options": [
+        "Correct. Higher capillary pressure drives filtration into the lung tissue.",
+        "A higher colloid osmotic pressure would hold fluid in the blood, opposing edema.",
+        "Lymph flow rises, not stops, as the lymphatics try to keep up; edema forms when filtration exceeds even that raised flow.",
+        "A leaky membrane is the mechanism of noncardiogenic edema, not of edema from heart failure."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "A woman's TB skin test is positive. She has no symptoms and a normal chest X-ray. What is her status?",
+    "options": [
+      "Latent TB infection that is not contagious",
+      "Active tuberculosis that spreads by coughing",
+      "No infection: a positive test without symptoms is a false result",
+      "Pneumonia caused by the TB vaccine"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A positive test shows her immune system has met the bacterium. With no symptoms and a normal X-ray, the bacteria are held in check in granulomas: latent infection. It does not spread to others, but treatment is often offered to prevent later activation.",
+      "options": [
+        "Correct. Latent infection causes no symptoms and does not spread.",
+        "Active TB causes symptoms such as a long cough, fever and weight loss, and usually an abnormal X-ray.",
+        "A positive test in someone without symptoms usually means latent infection, not a false result.",
+        "A positive test does not mean pneumonia; she has no symptoms of lung infection."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man with emphysema breathes out slowly through pursed lips. How does this help him?",
+    "options": [
+      "It warms the air before it reaches the alveoli",
+      "It strengthens his diaphragm",
+      "It raises the oxygen content of the air he breathes in",
+      "It holds collapsing small airways open longer"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Narrowing the outlet at the lips keeps pressure inside the airways higher during expiration. That pressure pushes outward on the small airways, which have lost their elastic support, so they stay open longer and more trapped air escapes.",
+      "options": [
+        "Pursed lips act during expiration, not on the air coming in.",
+        "Pursed-lip breathing does not strengthen the diaphragm; hyperinflation actually flattens and weakens it.",
+        "The air he breathes in is ordinary room air; pursing the lips on the way out does not change its oxygen.",
+        "Correct. Back-pressure splints the small airways open."
+      ]
+    }
+  },
+  {
+    "id": "anp-respiratory-disorders-22",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Which disorder mainly causes air to reach alveoli that receive no blood, rather than blood reaching alveoli that receive no air?",
+    "options": [
+      "Pneumonia",
+      "Pulmonary edema at the alveolar stage",
+      "Pulmonary embolism",
+      "Asthma"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A pulmonary embolism is a clot blocking a pulmonary artery. The alveoli beyond it are still ventilated but receive no blood, so they act as dead space.",
+      "options": [
+        "In pneumonia, the alveoli fill with fluid but are still perfused: blood without air.",
+        "At the alveolar stage, fluid floods alveoli that are still perfused: blood without air.",
+        "Correct. Air reaches alveoli whose blood supply is blocked.",
+        "In asthma, narrowed airways reduce ventilation of alveoli that are still perfused: blood with too little air."
+      ]
+    }
+  }
+]

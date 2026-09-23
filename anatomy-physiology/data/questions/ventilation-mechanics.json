@@ -1,0 +1,718 @@
+[
+  {
+    "id": "anp-ventilation-mechanics-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "A sealed container holds 500 mL of air at 760 mm Hg. It is squeezed to 400 mL at constant temperature. What is the new pressure?",
+    "options": [
+      "608 mm Hg",
+      "950 mm Hg",
+      "860 mm Hg",
+      "660 mm Hg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Boyle's law: P₂ = P₁ × V₁ ÷ V₂ = 760 × 500 ÷ 400 = 950 mm Hg. A smaller volume gives a higher pressure.",
+      "options": [
+        "608 comes from 760 × 400 ÷ 500, the ratio upside down. That would be the answer for an expansion, not a squeeze.",
+        "Correct. 760 × 500 ÷ 400 = 950 mm Hg.",
+        "860 comes from adding the 100 mL change to 760. Pressure and volume are related by a ratio, not by adding the difference.",
+        "660 comes from subtracting the 100 mL change from 760. Pressure changes by a ratio, and a squeeze raises it."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "At the end of a quiet breath out, the air in a person's lungs has a volume of 2.500 L at 760 mm Hg. The breathing muscles enlarge the lungs to 2.505 L before any air flows in. What is alveolar pressure now, relative to atmospheric pressure?",
+    "options": [
+      "About −1.5 mm Hg",
+      "About +1.5 mm Hg",
+      "About −5 mm Hg",
+      "0 mm Hg (equal to atmospheric)"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "P₂ = 760 × 2.500 ÷ 2.505 = 758.5 mm Hg, which is about 1.5 mm Hg below the 760 mm Hg outside. Air will flow in down that gradient.",
+      "options": [
+        "Correct. 760 × 2.500 ÷ 2.505 ≈ 758.5 mm Hg, about −1.5 relative to atmospheric.",
+        "A larger volume lowers the pressure, so the sign must be negative.",
+        "−5 treats the 5 mL volume change as if it were a pressure change in mm Hg. Use Boyle's law to find the pressure.",
+        "Alveolar pressure equals atmospheric pressure only when no air is flowing and volume is steady. Here the volume has just risen."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "figure": "breath-pressures",
+    "q": "According to the graph, what is the intrapleural pressure at the end of breathing in?",
+    "options": [
+      "About 0 mm Hg",
+      "About −1 mm Hg",
+      "About −6 mm Hg",
+      "About −4 mm Hg"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Intrapleural pressure falls steadily during inspiration, from about −4 to about −6 mm Hg at 2 seconds, the end of breathing in.",
+      "options": [
+        "0 is where alveolar pressure sits at the end of breathing in, not intrapleural pressure.",
+        "−1 is the lowest alveolar pressure, reached at mid-inspiration.",
+        "Correct. Intrapleural pressure reaches its lowest value, about −6, at the end of inspiration.",
+        "−4 is the intrapleural pressure at rest, at the start of breathing in and the end of breathing out."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-4",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "breath-pressures",
+    "q": "At what moment in this breath is air flowing into the lungs fastest?",
+    "options": [
+      "At 0 seconds, as breathing in begins",
+      "At about 1 second, when alveolar pressure is lowest",
+      "At 2 seconds, when lung volume is largest",
+      "At 3 seconds, when alveolar pressure is highest"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Airflow is driven by the gradient between atmospheric and alveolar pressure. At about 1 second, alveolar pressure is about −1 mm Hg, the steepest inward gradient, and the volume curve is rising most steeply.",
+      "options": [
+        "At 0 seconds alveolar pressure is still 0, so there is no gradient and no flow yet.",
+        "Correct. The largest pressure difference gives the fastest inflow.",
+        "At 2 seconds alveolar pressure is back to 0: the gradient, and so the flow, has stopped. Volume is largest because flow has just ended.",
+        "At 3 seconds alveolar pressure is above atmospheric, so air is flowing out, not in."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-5",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "breath-pressures",
+    "misconception": "air keeps flowing in until the lungs are full",
+    "q": "At 2 seconds lung volume is at its largest, yet no air is flowing. What does the graph show that explains this?",
+    "options": [
+      "Transpulmonary pressure has fallen to zero",
+      "Intrapleural pressure has returned to −4 mm Hg",
+      "Alveolar pressure equals atmospheric pressure",
+      "The lungs cannot stretch any further"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Air flows only down a pressure gradient. At 2 seconds, alveolar pressure is back to 0, equal to atmospheric pressure, so there is no gradient and flow stops.",
+      "options": [
+        "Transpulmonary pressure is at its largest at 2 seconds, about 6 mm Hg, holding the lungs at their larger size.",
+        "At 2 seconds intrapleural pressure is at its lowest, about −6; it returns to −4 only at the end of breathing out.",
+        "Correct. With alveolar and atmospheric pressures equal, nothing drives airflow.",
+        "A quiet breath uses only a small part of the lungs' stretch; a deep breath can add liters more. Flow stops because the gradient is gone."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-6",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "breath-pressures",
+    "q": "Using the graph, what is the transpulmonary pressure at 0 seconds, before the breath begins?",
+    "options": [
+      "−4 mm Hg",
+      "0 mm Hg",
+      "6 mm Hg",
+      "4 mm Hg"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Transpulmonary pressure = alveolar pressure − intrapleural pressure = 0 − (−4) = 4 mm Hg.",
+      "options": [
+        "−4 is the intrapleural pressure itself. Transpulmonary pressure is the difference between alveolar and intrapleural pressure.",
+        "0 is the alveolar pressure at rest. Subtract the intrapleural pressure from it.",
+        "6 mm Hg is the transpulmonary pressure at the end of breathing in, at 2 seconds.",
+        "Correct. 0 − (−4) = 4 mm Hg."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "communication"
+    ],
+    "q": "Order the events of a quiet breath in, from the nerve signal to the airflow.",
+    "options": [
+      "Signals travel down the phrenic nerves",
+      "The diaphragm contracts and flattens",
+      "The thoracic cavity enlarges",
+      "Intrapleural pressure falls",
+      "The lungs expand",
+      "Alveolar pressure falls below atmospheric and air flows in"
+    ],
+    "why": {
+      "correct": "Nerve signal, muscle contraction, larger thorax, lower intrapleural pressure, lung expansion, lower alveolar pressure by Boyle's law, and finally airflow down the gradient.",
+      "options": [
+        "Neurons in the brainstem send the signal down the phrenic nerves (C3 to C5).",
+        "The diaphragm contracts, flattening and moving down.",
+        "The thorax gets longer, and the external intercostals also widen it.",
+        "The chest wall moves out, and the pleural film holding the lung to it is pulled harder, so intrapleural pressure falls.",
+        "Transpulmonary pressure rises, and the lungs stretch.",
+        "The larger alveolar volume lowers alveolar pressure, and air flows in down the gradient."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-8",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "This sequence for a quiet breath out has one wrong step. Find it.",
+    "options": [
+      "The diaphragm and external intercostals relax",
+      "The internal intercostals contract to pull the ribs down",
+      "The stretched lungs recoil and thoracic volume falls",
+      "Alveolar pressure rises to about +1 mm Hg",
+      "Air flows out until alveolar pressure is back to atmospheric"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Quiet expiration is passive. No muscle contracts to push air out; the lungs and chest wall recoil on their own. The internal intercostals join in only during forced expiration.",
+      "options": [
+        "Correct step. Expiration begins when the inspiratory muscles relax.",
+        "This is the wrong step. The internal intercostals contract only in forced expiration, not in a quiet breath.",
+        "Correct step. Elastic recoil shrinks the lungs and the thorax.",
+        "Correct step. By Boyle's law, the smaller alveolar volume raises alveolar pressure.",
+        "Correct step. Air flows out down the gradient until the pressures are equal."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "Fill the gap in quiet inspiration: the lungs expand → ____ → air flows into the alveoli.",
+    "options": [
+      "Intrapleural pressure rises above atmospheric",
+      "The airways contract and push air inward",
+      "Surfactant pulls air into the alveoli",
+      "Alveolar pressure falls below atmospheric"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "By Boyle's law, the enlarged alveoli hold the same air in more space, so alveolar pressure falls below atmospheric pressure, and air flows in down the gradient.",
+      "options": [
+        "Intrapleural pressure falls during inspiration, and stays below atmospheric in quiet breathing.",
+        "Airways do not pump air. Contraction of airway smooth muscle would narrow them and hinder flow.",
+        "Surfactant lowers surface tension; it does not move air.",
+        "Correct. The drop in alveolar pressure creates the gradient that drives inflow."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-10",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A knife wound opens a hole through the chest wall into the left pleural cavity, and air enters it (a pneumothorax). Predict the change in each variable on the left side, compared with before the injury.",
+    "variables": [
+      {
+        "name": "Intrapleural pressure",
+        "answer": "up",
+        "why": "Air enters until the pressure in the cavity approaches atmospheric pressure, so it rises from about −4 toward 0."
+      },
+      {
+        "name": "Transpulmonary pressure",
+        "answer": "down",
+        "why": "Transpulmonary pressure is alveolar minus intrapleural pressure; with intrapleural pressure near 0, it falls toward 0."
+      },
+      {
+        "name": "Volume of the left lung",
+        "answer": "down",
+        "why": "Without transpulmonary pressure to hold it open, the lung recoils toward its hilum and collapses."
+      },
+      {
+        "name": "Airflow into the left lung with each breath",
+        "answer": "down",
+        "why": "The collapsed lung is no longer held to the chest wall, so it barely expands when the chest does, and little air flows into it."
+      }
+    ],
+    "why": {
+      "correct": "Air in the pleural cavity raises intrapleural pressure toward atmospheric. Transpulmonary pressure disappears, the lung's own recoil collapses it, and the chest wall's movements no longer expand it."
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-11",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "During an asthma attack, a person's bronchioles narrow. Predict the change in each variable, compared with before the attack, before any treatment.",
+    "variables": [
+      {
+        "name": "Bronchiole radius",
+        "answer": "down",
+        "why": "Smooth muscle contraction, a swollen wall and mucus in the lumen all shrink the radius."
+      },
+      {
+        "name": "Airway resistance",
+        "answer": "up",
+        "why": "Resistance depends on 1 ÷ r⁴, so a smaller radius raises it steeply."
+      },
+      {
+        "name": "Airflow for the same pressure difference",
+        "answer": "down",
+        "why": "Flow = ΔP ÷ R. With R higher and ΔP unchanged, flow falls."
+      },
+      {
+        "name": "Pressure difference the breathing muscles must create",
+        "answer": "up",
+        "why": "To move enough air through higher resistance, the muscles must contract harder and create a larger gradient, recruiting accessory muscles."
+      },
+      {
+        "name": "Time needed to breathe out fully",
+        "answer": "up",
+        "why": "Airways narrow further as the lungs shrink during expiration, so air leaves slowly and some is trapped."
+      }
+    ],
+    "why": {
+      "correct": "Narrowed bronchioles raise resistance by the fourth-power rule, so each breath moves less air unless the muscles generate a larger pressure difference. Breathing out is hit hardest, because the airways narrow further as the lungs shrink."
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-12",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
+    "q": "After a car crash, a torn lung acts as a one-way valve: air enters the right pleural cavity with each breath and cannot leave (a tension pneumothorax). Predict the change in each variable across the respiratory and cardiovascular systems as the pressure builds.",
+    "variables": [
+      {
+        "name": "Pressure in the right pleural cavity",
+        "answer": "up",
+        "why": "Air is added with every breath and none leaves, so the pressure climbs above atmospheric."
+      },
+      {
+        "name": "Venous return to the heart",
+        "answer": "down",
+        "why": "The rising pressure pushes the mediastinum aside and compresses the great veins and the heart, so less blood returns to the right atrium."
+      },
+      {
+        "name": "Cardiac output",
+        "answer": "down",
+        "why": "Less venous return means less filling (lower preload), so stroke volume and cardiac output fall."
+      },
+      {
+        "name": "Arterial blood pressure",
+        "answer": "down",
+        "why": "Blood pressure depends on cardiac output; with output falling, pressure falls. This is obstructive shock."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Falling arterial pressure reduces baroreceptor firing, and the cardiovascular center raises sympathetic drive to the heart."
+      }
+    ],
+    "why": {
+      "correct": "A tension pneumothorax collapses one lung and keeps building pressure in the chest. That squeezes the great veins and heart, so venous return, cardiac output and blood pressure fall, and the baroreceptor reflex speeds the heart. Removing the air with a needle and a chest tube reverses it."
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "the lungs expand because air rushes in",
+    "q": "Mr. Hale has a stab wound in his right chest wall. His airways are open and his diaphragm contracts normally, but his right lung has collapsed. Which change best explains the collapse?",
+    "options": [
+      "Intrapleural pressure rose to atmospheric",
+      "Alveolar pressure in the right lung fell far below atmospheric",
+      "The wound cut the right phrenic nerve",
+      "Surfactant leaked out through the wound"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Air entering through the wound raises intrapleural pressure to atmospheric. Transpulmonary pressure falls to zero, and the lung's own elastic recoil collapses it, even though its airways are open.",
+      "options": [
+        "Correct. With intrapleural pressure at atmospheric, there is no pressure difference across the lung wall to hold the lung open against its recoil.",
+        "With the lung collapsed and its airways open, alveolar pressure stays near atmospheric. The problem is the pressure outside the lung, not inside it.",
+        "The question says the diaphragm contracts normally, so the phrenic nerve is working.",
+        "Surfactant lines the inside of the alveoli; a wound in the chest wall does not reach it, and losing it would stiffen the lung, not collapse it all at once."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Baby Amara is born at 28 weeks of pregnancy. Within hours she is breathing fast, grunting, and the soft tissue between her ribs is sucked inward with each breath. Her lungs are stiff. What best explains her stiff lungs?",
+    "options": [
+      "Her pleural cavities contain air",
+      "Her bronchioles are constricted",
+      "Too few elastic fibers make her lungs recoil weakly",
+      "Too little surfactant in her alveoli"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Type II alveolar cells usually make enough surfactant only by about 34 to 36 weeks. Without it, the water lining her alveoli has high surface tension, compliance is low, and many alveoli collapse at the end of each breath and must be reopened with great effort.",
+      "options": [
+        "Air in a pleural cavity would collapse a lung, but nothing here suggests a pneumothorax; her whole lungs are stiff.",
+        "Narrow bronchioles raise resistance, which slows airflow; they would not make the lung tissue itself stiff.",
+        "Fewer elastic fibers would make the lungs easier to inflate, not stiffer: compliance would rise, not fall.",
+        "Correct. Surfactant deficiency means high surface tension and low compliance."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient takes in 0.6 L of air while her transpulmonary pressure rises from 4 to 7 mm Hg. What is her lung compliance?",
+    "options": [
+      "1.8 L/mm Hg",
+      "0.2 L/mm Hg",
+      "5 L/mm Hg",
+      "0.086 L/mm Hg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Compliance = ΔV ÷ ΔP = 0.6 L ÷ (7 − 4) mm Hg = 0.6 ÷ 3 = 0.2 L per mm Hg.",
+      "options": [
+        "1.8 comes from multiplying 0.6 by 3. Compliance is volume divided by pressure change.",
+        "Correct. 0.6 L ÷ 3 mm Hg = 0.2 L/mm Hg.",
+        "5 comes from 3 ÷ 0.6, the division upside down.",
+        "0.086 comes from dividing by the final pressure, 7, instead of by the change in pressure, 3."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Swelling and muscle contraction narrow an airway to one third of its original radius. By what factor does its resistance to airflow rise?",
+    "options": [
+      "3 times",
+      "9 times",
+      "27 times",
+      "81 times"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Resistance is proportional to 1 ÷ r⁴. If r falls to one third, r⁴ falls to (1/3)⁴ = 1/81, so resistance rises 81-fold.",
+      "options": [
+        "3 would apply if resistance depended on radius alone. It depends on the fourth power of the radius.",
+        "9 uses the square of the radius change. Resistance depends on the fourth power.",
+        "27 uses the cube of the radius change. Resistance depends on the fourth power.",
+        "Correct. 3⁴ = 81."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "During an asthma attack, Ms. Chen uses an albuterol inhaler, and within minutes she breathes more easily. How does albuterol work?",
+    "options": [
+      "It stimulates the vagus nerve to widen the airways",
+      "It dissolves mucus plugs in her bronchioles",
+      "It raises the surface tension in her alveoli",
+      "It activates beta-2 receptor proteins, relaxing airway smooth muscle"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Albuterol is a beta-2 agonist. It binds beta-2 receptor proteins on airway smooth muscle, the muscle relaxes, the bronchioles widen, and resistance falls steeply because of the fourth-power rule.",
+      "options": [
+        "The vagus nerve releases acetylcholine, which contracts airway smooth muscle. Stimulating it would narrow the airways.",
+        "Albuterol acts on smooth muscle; it does not break down mucus.",
+        "Higher surface tension would make the lungs stiffer and breathing harder, not easier.",
+        "Correct. Bronchodilation through beta-2 receptor proteins lowers airway resistance."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-18",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every muscle that contracts to push air out during a forceful breath out, such as blowing out candles.",
+    "options": [
+      "Internal intercostals",
+      "External intercostals",
+      "Rectus abdominis",
+      "Diaphragm",
+      "Transversus abdominis",
+      "External oblique"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
+    "why": {
+      "correct": "Forced expiration uses the internal intercostals, which pull the ribs down, and the abdominal wall muscles, which push the abdominal organs up against the diaphragm.",
+      "options": [
+        "Correct. The internal intercostals pull the ribs down and in.",
+        "The external intercostals lift the ribs; they are muscles of inspiration.",
+        "Correct. The rectus abdominis compresses the abdomen and pushes the diaphragm up.",
+        "The diaphragm is the main muscle of inspiration. It is pushed up passively in forced expiration.",
+        "Correct. The transversus abdominis squeezes the abdomen.",
+        "Correct. The external oblique helps compress the abdomen."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "air is pushed into the lungs by higher pressure inside them",
+    "q": "During a quiet breath in, how does alveolar pressure compare with atmospheric pressure?",
+    "options": [
+      "About 1 mm Hg lower",
+      "About 1 mm Hg higher",
+      "Equal throughout",
+      "About 4 mm Hg lower"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "For air to flow in, alveolar pressure must be below atmospheric pressure. In a quiet breath in, it dips to about 1 mm Hg below.",
+      "options": [
+        "Correct. A dip of about 1 mm Hg is enough to draw half a liter in.",
+        "Alveolar pressure is about 1 mm Hg higher during a quiet breath out, when air flows out.",
+        "If the pressures were equal, there would be no gradient and no airflow.",
+        "About −4 mm Hg is the resting intrapleural pressure, not the alveolar pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Why is intrapleural pressure below atmospheric pressure even at rest, between breaths?",
+    "options": [
+      "The pleural fluid is under tension between the inward-recoiling lungs and the outward-springing chest wall",
+      "The pleural cavity contains a small pocket of low-pressure air",
+      "The diaphragm is contracted between breaths, pulling on the pleura",
+      "Alveolar pressure is below atmospheric at rest"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The lungs' elastic fibers and surface tension pull them inward; the chest wall tends to spring outward. The pleural fluid film holds the two together, so the film is pulled from both sides and its pressure falls below atmospheric.",
+      "options": [
+        "Correct. Opposing recoil of lungs and chest wall lowers the pressure in the film between them.",
+        "A healthy pleural cavity contains no air at all, only a thin film of fluid. Air there would be a pneumothorax.",
+        "Between breaths the diaphragm is relaxed; the negative pressure is present even with all breathing muscles at rest.",
+        "Between breaths alveolar pressure equals atmospheric pressure, because no air is flowing."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What supplies the energy for a quiet breath out?",
+    "options": [
+      "Contraction of the internal intercostals",
+      "Contraction of the abdominal wall muscles",
+      "Elastic recoil of lungs and chest wall",
+      "Contraction of the diaphragm"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Quiet expiration is passive. Energy stored in the stretched lungs and chest wall during inspiration is released as they recoil, shrinking the thorax and raising alveolar pressure.",
+      "options": [
+        "The internal intercostals contract only in forced expiration.",
+        "The abdominal wall muscles contract only in forced expiration.",
+        "Correct. Elastic recoil does the work of a quiet breath out.",
+        "Diaphragm contraction enlarges the thorax, which draws air in, not out."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-22",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "the smallest airways have the most resistance",
+    "q": "In healthy lungs, where does most of the resistance to airflow lie?",
+    "options": [
+      "The terminal bronchioles",
+      "The alveolar ducts",
+      "The medium-sized bronchi",
+      "The respiratory bronchioles"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each bronchiole is narrow, but there are so many side by side that their combined cross-section is huge and air moves through them slowly. The fewer, medium-sized bronchi carry the fast flow and provide most of the resistance.",
+      "options": [
+        "Terminal bronchioles are very numerous and arranged in parallel, so their combined resistance is small in health.",
+        "Alveolar ducts are part of the respiratory zone, where the total cross-section is enormous and flow is very slow.",
+        "Correct. The medium-sized bronchi provide most of the resistance in healthy lungs.",
+        "Respiratory bronchioles are even more numerous than terminal bronchioles, so their combined resistance is tiny."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-23",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "q": "During an asthma attack, Leila's wheezing is loudest and her airflow slowest when she breathes out. Why is breathing out harder than breathing in?",
+    "options": [
+      "Her expiratory muscles are weaker than her diaphragm",
+      "Surfactant is used up during each breath out",
+      "Her vocal folds close during each breath out",
+      "Her airways narrow further as her lungs shrink and pressure around them rises"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Expanding lung tissue pulls the airways open during inspiration. During expiration the lungs shrink, that pull weakens, and in forced expiration the rising pressure around the airways squeezes them, so already-narrowed bronchioles narrow further or close, trapping air.",
+      "options": [
+        "Muscle strength is not the problem; she can recruit her abdominal muscles. Narrowed airways limit the flow.",
+        "Surfactant is not consumed breath by breath, and it acts in the alveoli, not on airway radius.",
+        "The vocal folds open for breathing; the wheeze comes from air forced through narrowed bronchioles.",
+        "Correct. Airway radius falls during expiration, and resistance rises with the fourth power of that fall."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-24",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which change lowers lung compliance, making the lungs harder to inflate?",
+    "options": [
+      "Scar tissue forming in the alveolar walls",
+      "Type II cells secreting extra surfactant",
+      "Destruction of elastic fibers in the alveolar walls",
+      "Relaxation of bronchiole smooth muscle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Scar tissue (fibrosis) stiffens the alveolar walls, so a larger change in transpulmonary pressure is needed for the same change in volume: compliance falls.",
+      "options": [
+        "Correct. Fibrosis makes the lungs stiff.",
+        "More surfactant lowers surface tension, which raises compliance.",
+        "Losing elastic fibers makes the lungs easier to inflate, so compliance rises, although recoil during expiration weakens.",
+        "Relaxing airway smooth muscle lowers airway resistance; it does not change how stretchable the lung tissue is."
+      ]
+    }
+  },
+  {
+    "id": "anp-ventilation-mechanics-25",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Two patients have complete spinal cord injuries: one at the C2 level, the other at the C7 level. Only one needs a machine to breathe for him. Which patient, and what explains it?",
+    "options": [
+      "The C7 patient: his intercostal and abdominal muscles are paralyzed",
+      "The C7 patient: his diaphragm has lost its nerve supply",
+      "The C2 patient: his diaphragm has lost its nerve supply",
+      "The C2 patient: his brainstem no longer sends breathing signals"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The phrenic nerves arise from spinal segments C3 to C5. An injury at C2 cuts the brainstem's signals off above them, so the diaphragm is paralyzed. At C7, the phrenic nerves still work, and the diaphragm alone can keep him breathing, although weakly.",
+      "options": [
+        "The C7 patient has lost his intercostal and abdominal muscles, but quiet expiration is passive and his diaphragm still works, so he can breathe on his own.",
+        "At C7, the injury is below C3 to C5, where the phrenic nerves arise, so his diaphragm keeps its nerve supply.",
+        "Correct. The phrenic nerves arise from C3 to C5, below a C2 injury, so the brainstem's signals cannot reach them.",
+        "A C2 injury lies below the brainstem, which still sends signals; they simply cannot get past the injury to the phrenic nerves."
+      ]
+    }
+  }
+]

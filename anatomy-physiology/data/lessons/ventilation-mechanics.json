@@ -1,0 +1,49 @@
+{
+  "topic": "ventilation-mechanics",
+  "hook": "<p>Jordan, a tall, thin 19-year-old, is sitting in class when he feels a sudden sharp pain in the right side of his chest and becomes short of breath. His doctor hears almost no breath sounds over his right lung. An X-ray shows the lung shrunk down toward its root, with a dark band of air between it and the chest wall. Nothing has blocked his airway, and his breathing muscles work normally. So why can't that lung fill with air?</p>",
+  "prereq": [
+    {
+      "q": "Air flows through a tube from region A to region B. What must be true?",
+      "options": ["Pressure is higher at A than at B", "Pressure is higher at B than at A", "The two pressures are equal"],
+      "correct": 0,
+      "why": "A fluid, including air, flows down a pressure gradient: from higher pressure to lower pressure. With no pressure difference there is no flow.",
+      "review": "gradients-flow"
+    },
+    {
+      "q": "What do the external intercostal muscles do when they contract?",
+      "options": ["Pull the ribs down and in", "Pull the ribs up and out", "Flatten the diaphragm"],
+      "correct": 1,
+      "why": "The external intercostals run down and forward between neighboring ribs. Contracting, they lift the ribs up and out, which enlarges the chest. The internal intercostals pull the ribs down.",
+      "review": "trunk-muscles"
+    },
+    {
+      "q": "What fills the pleural cavity of a healthy person?",
+      "options": ["Air", "A thin film of pleural fluid", "Loose connective tissue"],
+      "correct": 1,
+      "why": "The pleural cavity is a very narrow gap between visceral and parietal pleura, holding only a thin film of serous pleural fluid.",
+      "review": "lower-airway-lungs"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-17",
+    "caption": "Quiet inspiration and expiration. Hide the labels and name the muscles that contract to breathe in and what the thoracic cavity does in each phase."
+  },
+  "chain": [
+    { "cause": "Signals from the brainstem travel down the phrenic nerves and the intercostal nerves.", "effect": "The diaphragm contracts and flattens, and the external intercostals lift the ribs, so the thoracic cavity enlarges." },
+    { "cause": "The chest wall moves outward, and the film of pleural fluid holds the lungs to it.", "effect": "Intrapleural pressure falls from about −4 to about −6 mm Hg, so transpulmonary pressure rises and the lungs expand." },
+    { "cause": "The alveoli enlarge while holding the same amount of air.", "effect": "By Boyle's law, alveolar pressure falls to about 1 mm Hg below atmospheric pressure." },
+    { "cause": "Alveolar pressure is now lower than atmospheric pressure.", "effect": "Air flows in through the airways down the pressure gradient." },
+    { "cause": "As air enters, alveolar pressure rises back to atmospheric pressure.", "effect": "The gradient disappears and airflow stops: the end of inspiration." }
+  ],
+  "misconception": {
+    "wrong": "Your lungs expand because air rushes into them, or because the lungs themselves pull the air in.",
+    "right": "Lungs have no muscle of their own. The breathing muscles enlarge the thorax first; the pleural fluid film makes the lungs follow; the larger alveolar volume lowers alveolar pressure (Boyle's law); and only then does air flow in, down the pressure gradient. Expansion causes the airflow, not the other way round. That is why a lung collapses when air gets into its pleural cavity, even though its airways are wide open."
+  },
+  "check": ["anp-ventilation-mechanics-1", "anp-ventilation-mechanics-3", "anp-ventilation-mechanics-7", "anp-ventilation-mechanics-10", "anp-ventilation-mechanics-14", "anp-ventilation-mechanics-16", "anp-ventilation-mechanics-20", "anp-ventilation-mechanics-23"],
+  "summary": "<p>Pulmonary ventilation is airflow down a pressure gradient. Boyle's law (P₁V₁ = P₂V₂) links volume and pressure: enlarging the alveoli lowers alveolar pressure. At rest, alveolar pressure equals atmospheric pressure and intrapleural pressure is about −4 mm Hg, because the lungs recoil inward while the chest wall springs outward; transpulmonary pressure (alveolar minus intrapleural) holds the lungs open. In quiet inspiration, the diaphragm and external intercostals enlarge the thorax, intrapleural pressure falls to about −6, the lungs expand, alveolar pressure falls to about −1 and air flows in. Quiet expiration is passive elastic recoil; forced breathing adds accessory muscles, the internal intercostals and the abdominal wall muscles. Air in the pleural cavity (pneumothorax) removes the transpulmonary pressure and the lung collapses. Lung compliance (ΔV ÷ ΔP) is set by elastic fibers and by surface tension, which surfactant from type II cells lowers. Airway resistance depends on the fourth power of airway radius: parasympathetic signals, histamine and leukotrienes cause bronchoconstriction; epinephrine on beta-2 receptor proteins causes bronchodilation. Asthma narrows the airways by muscle contraction, swelling and mucus.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-10", "label": "NREMT: Ventilation and oxygen equipment" },
+    { "href": "/nremt/study-notes.html#chapter-19", "label": "NREMT: Respiratory emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma" }
+  ]
+}

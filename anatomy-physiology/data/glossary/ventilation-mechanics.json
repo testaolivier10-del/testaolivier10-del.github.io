@@ -1,0 +1,111 @@
+{
+  "boyles-law": {
+    "def": "For a fixed amount of gas at constant temperature, pressure and volume are inversely related: P₁ × V₁ = P₂ × V₂. Enlarging the alveoli lowers the pressure of the air inside them; shrinking them raises it.",
+    "roots": [],
+    "say": ""
+  },
+  "ventilation-pressures": {
+    "def": "Pulmonary ventilation is the movement of air into and out of the lungs, driven by pressure differences. Alveolar (intrapulmonary, intra-alveolar) pressure is the pressure inside the alveoli and returns to atmospheric whenever airflow stops. Intrapleural pressure, in the pleural fluid film, is about 4 mm Hg below atmospheric at rest. Transpulmonary pressure, alveolar minus intrapleural, holds the lungs open.",
+    "roots": [
+      [
+        "pulmon-",
+        "lung"
+      ],
+      [
+        "ventil-",
+        "to fan, air out"
+      ],
+      [
+        "intra-",
+        "within"
+      ],
+      [
+        "trans-",
+        "across"
+      ]
+    ],
+    "say": "in-truh-PLOOR-ul"
+  },
+  "inspiration": {
+    "def": "Breathing in (inhalation). In quiet breathing, the diaphragm and external intercostals contract and enlarge the thorax; intrapleural pressure falls, the lungs expand, alveolar pressure falls below atmospheric, and air flows in. Forced inspiration adds accessory muscles such as the scalenes, sternocleidomastoid and pectoralis minor.",
+    "roots": [
+      [
+        "in-",
+        "in"
+      ],
+      [
+        "spir-",
+        "to breathe"
+      ]
+    ],
+    "say": ""
+  },
+  "expiration": {
+    "def": "Breathing out (exhalation). Quiet expiration is passive elastic recoil of the lungs and chest wall, which raises alveolar pressure above atmospheric. Forced expiration adds the internal intercostals and abdominal wall muscles. One inspiration plus one expiration is a respiratory cycle.",
+    "roots": [
+      [
+        "ex-",
+        "out"
+      ],
+      [
+        "spir-",
+        "to breathe"
+      ]
+    ],
+    "say": ""
+  },
+  "pneumothorax": {
+    "def": "Air in a pleural cavity, from a chest wound or a leak from the lung. Intrapleural pressure rises toward atmospheric, transpulmonary pressure is lost and the lung on that side collapses. In a tension pneumothorax, trapped air builds pressure that compresses the other lung and the great veins.",
+    "roots": [
+      [
+        "pneumo-",
+        "air, lung"
+      ],
+      [
+        "thorax",
+        "chest"
+      ]
+    ],
+    "say": "noo-moh-THOR-aks"
+  },
+  "compliance-surfactant": {
+    "def": "Lung compliance is the change in lung volume per change in transpulmonary pressure (ΔV ÷ ΔP): how easily the lungs stretch. It is set by elastic fibers and by the surface tension of the fluid lining the alveoli. Surfactant, a phospholipid-rich film from type II alveolar cells, lowers that surface tension, raising compliance and keeping small alveoli open. Thoracic wall compliance is how easily the chest wall expands.",
+    "roots": [
+      [
+        "compli-",
+        "to fill up, yield"
+      ],
+      [
+        "surf-act-ant",
+        "surface-active agent"
+      ]
+    ],
+    "say": "sur-FAK-tunt"
+  },
+  "airway-resistance": {
+    "def": "The opposition to airflow through the airways, which rises steeply as airway radius falls (resistance depends on 1 ÷ r⁴). Bronchoconstriction (smooth muscle contraction, from acetylcholine, histamine or leukotrienes) raises it; bronchodilation (relaxation, from epinephrine on beta-2 receptor proteins) lowers it. Asthma is a chronic inflammatory airway disease in which bronchoconstriction, wall swelling and mucus narrow the airways.",
+    "roots": [
+      [
+        "bronch-",
+        "windpipe"
+      ],
+      [
+        "con-",
+        "together"
+      ],
+      [
+        "strict-",
+        "draw tight"
+      ],
+      [
+        "dilat-",
+        "widen"
+      ],
+      [
+        "asthma",
+        "panting"
+      ]
+    ],
+    "say": "AZ-muh"
+  }
+}

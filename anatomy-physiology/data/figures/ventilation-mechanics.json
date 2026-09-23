@@ -1,0 +1,80 @@
+{
+  "os-22-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.15",
+      "section": "22.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2e0d73008ea7502a0bfbc8bd3bb2cfa89855c517",
+      "page": "22-3-the-process-of-breathing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/2e0d73008ea7502a0bfbc8bd3bb2cfa89855c517",
+    "alt": "Two gas containers with pistons. In the left one the piston has been pulled up, so the same number of gas molecules spread through a larger space; a note says that as volume increases, pressure decreases. In the right one the piston has been pushed down, so the molecules are crowded into a smaller space and strike the walls more often; a note says that as volume decreases, pressure increases. A box below gives the relationship between pressure and volume.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.15",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1130
+  },
+  "os-22-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.16",
+      "section": "22.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/7a5c6e27687a94a90b4f1831d5664894e7dd257e",
+      "page": "22-3-the-process-of-breathing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/7a5c6e27687a94a90b4f1831d5664894e7dd257e",
+    "alt": "Both lungs inside the chest, each wrapped in two thin membranes with a narrow space between them, resting on the diaphragm. Labels give the pressures at rest: the air inside the lungs at 760 mm Hg, equal to the air outside; the space between the membranes at 756 mm Hg, 4 below atmospheric; and the difference across the lung wall, 4 mm Hg.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.16",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 836
+  },
+  "os-22-17": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.17",
+      "section": "22.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5ae96ca57ec74c0100efe6d029917e51d981c5e2",
+      "page": "22-3-the-process-of-breathing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5ae96ca57ec74c0100efe6d029917e51d981c5e2",
+    "alt": "Two side views of a person's chest. Breathing in: the domed diaphragm contracts and moves down, the external intercostal muscles contract and lift the ribs, and the chest cavity expands as air flows in through the nose. Breathing out: the diaphragm relaxes and rises, the external intercostals relax, and the chest cavity gets smaller as air flows out.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.17",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 813
+  },
+  "os-22-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.12",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/3a2cfa6d95c36b31436aa70c1109a7a5f422f3a8",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/3a2cfa6d95c36b31436aa70c1109a7a5f422f3a8",
+    "alt": "Two drawings of an airway wall in cross section. The normal wall has a thin mucus layer over the epithelium with goblet cells, a thin lamina propria with a few cells, a thin smooth muscle layer, glands and cartilage. The wall during an asthma attack has thicker, cell-studded mucus, a lamina propria crowded with mast cells, macrophages, eosinophils and neutrophils, a thicker smooth muscle layer and more glands.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.12",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1223
+  },
+  "breath-pressures": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 640,
+    "h": 500,
+    "alt": "Two stacked graphs across one 4-second quiet breath. Top: lung volume rises from 0 to about 0.5 liters over the 2 seconds of breathing in and falls back to 0 over the 2 seconds of breathing out. Bottom: pressures in mm Hg relative to atmospheric pressure, shown as a flat line at 0. Alveolar pressure dips to about minus 1 at 1 second, is back to 0 at 2 seconds, rises to about plus 1 at 3 seconds and returns to 0 at 4 seconds. Intrapleural pressure falls from about minus 4 to about minus 6 at 2 seconds, then rises back to minus 4. A bracket at 2 seconds marks the transpulmonary pressure, 6 mm Hg.",
+    "labels": []
+  }
+}

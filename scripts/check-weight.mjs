@@ -414,7 +414,11 @@ const DATA_BUDGETS = [
      every chapter, so each new chapter raises these with its measured size. */
   ['anatomy-physiology/assets/bank-core.json', 120],
   ['anatomy-physiology/assets/bank-why.json', 180],
-  ['anatomy-physiology/assets/glossary.json', 46],
+  /* 46 -> 52: the glossary carries every written definition, published or
+     not, so an early page can show a hover for a later term (spec section 7).
+     It grows as each chapter is written; measured 47.3 KB with respiratory
+     drafted. Each chapter raises it by its measured size. */
+  ['anatomy-physiology/assets/glossary.json', 52],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
