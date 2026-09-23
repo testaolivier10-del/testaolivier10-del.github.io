@@ -1,0 +1,697 @@
+[
+  {
+    "id": "anp-cranial-nerves-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-23",
+    "pin": "trigeminal-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Facial nerve",
+      "Trigeminal nerve",
+      "Abducens nerve",
+      "Vestibulocochlear nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The trigeminal nerve (V) is the thick root on the side of the pons, the largest cranial nerve.",
+      "options": [
+        "The facial nerve (VII) emerges lower, at the border between the pons and the medulla oblongata.",
+        "Correct. The thick root from the side of the pons is the trigeminal nerve.",
+        "The abducens nerve (VI) is a thin nerve near the midline at the lower border of the pons.",
+        "The vestibulocochlear nerve (VIII) emerges beside the facial nerve at the pons–medulla border, below this root."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-23",
+    "pin": "vagus-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Glossopharyngeal nerve",
+      "Hypoglossal nerve",
+      "Vagus nerve",
+      "Accessory nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The vagus nerve (X) leaves the side of the medulla oblongata as a row of rootlets, just below the glossopharyngeal nerve.",
+      "options": [
+        "The glossopharyngeal nerve (IX) leaves the medulla just above the vagus rootlets.",
+        "The hypoglossal nerve (XII) leaves the front of the medulla, closer to the midline.",
+        "Correct. This is the vagus nerve, cranial nerve X.",
+        "The accessory nerve (XI) runs up alongside the medulla from the spinal cord, below and outside the vagus rootlets."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-23",
+    "pin": "abducens-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Abducens nerve",
+      "Trochlear nerve",
+      "Oculomotor nerve",
+      "Facial nerve"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The abducens nerve (VI) is the thin nerve leaving near the midline at the lower border of the pons. It supplies the eye muscle that turns the eye outward.",
+      "options": [
+        "Correct. This is the abducens nerve, VI.",
+        "The trochlear nerve (IV) is a very thin nerve that curves around the side of the midbrain, higher up.",
+        "The oculomotor nerve (III) leaves the front of the midbrain, above the pons.",
+        "The facial nerve (VII) leaves the side of the brainstem at the pons–medulla border, farther from the midline."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-23",
+    "pin": "hypoglossal-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Vagus nerve",
+      "Accessory nerve",
+      "Glossopharyngeal nerve",
+      "Hypoglossal nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The hypoglossal nerve (XII) leaves the front of the medulla oblongata as a row of rootlets and supplies the muscles of the tongue.",
+      "options": [
+        "The vagus nerve (X) leaves the side of the medulla, farther from the midline.",
+        "The accessory nerve (XI) rises from the spinal cord alongside the medulla, lower and more to the side.",
+        "The glossopharyngeal nerve (IX) leaves the upper side of the medulla, above the vagus.",
+        "Correct. The rootlets at the front of the medulla form the hypoglossal nerve."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-23",
+    "pin": "oculomotor-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Optic nerve",
+      "Oculomotor nerve",
+      "Trochlear nerve",
+      "Olfactory nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The oculomotor nerve (III) leaves the front of the midbrain, between the cerebral peduncles, just behind the optic nerves.",
+      "options": [
+        "The optic nerves (II) are the thick nerves that cross in an X in front of the midbrain.",
+        "Correct. This is the oculomotor nerve, III.",
+        "The trochlear nerve (IV) is thinner and wraps around the side of the midbrain from behind.",
+        "The olfactory nerves (I) lie under the frontal lobes, far forward."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-23",
+    "pin": "facial-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Trigeminal nerve",
+      "Glossopharyngeal nerve",
+      "Facial nerve",
+      "Abducens nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The facial nerve (VII) leaves the side of the brainstem at the border between the pons and the medulla oblongata, beside the vestibulocochlear nerve.",
+      "options": [
+        "The trigeminal nerve (V) is the thicker root higher up, on the side of the pons.",
+        "The glossopharyngeal nerve (IX) leaves the medulla, below this level.",
+        "Correct. This is the facial nerve, VII.",
+        "The abducens nerve (VI) leaves nearer the midline at the same level."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-7",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cranial nerves are purely sensory? Select all that apply.",
+    "options": [
+      "Olfactory (I)",
+      "Optic (II)",
+      "Trigeminal (V)",
+      "Vestibulocochlear (VIII)",
+      "Hypoglossal (XII)",
+      "Oculomotor (III)"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "The three purely sensory cranial nerves carry smell (I), vision (II), and hearing and balance (VIII).",
+      "options": [
+        "Yes. The olfactory nerve carries only smell.",
+        "Yes. The optic nerve carries only vision.",
+        "No. The trigeminal nerve is both: it carries feeling from the face and supplies the chewing muscles.",
+        "Yes. The vestibulocochlear nerve carries only hearing and balance.",
+        "No. The hypoglossal nerve is motor, to the tongue muscles.",
+        "No. The oculomotor nerve is motor, to most eye muscles, with parasympathetic axons."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these cranial nerves in numerical order, lowest number first.",
+    "options": [
+      "Optic",
+      "Trochlear",
+      "Facial",
+      "Glossopharyngeal",
+      "Hypoglossal"
+    ],
+    "why": {
+      "correct": "Optic is II, trochlear IV, facial VII, glossopharyngeal IX and hypoglossal XII. The numbers follow the order in which the nerves attach, from front to back along the underside of the brain.",
+      "options": [
+        "Optic nerve: II.",
+        "Trochlear nerve: IV.",
+        "Facial nerve: VII.",
+        "Glossopharyngeal nerve: IX.",
+        "Hypoglossal nerve: XII."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the facial nerve carries sensation from the face",
+    "q": "A woman wakes to find the whole left side of her face slack: her left brow will not lift, her left eye will not close, and her mouth droops on the left. Touch on her left cheek feels normal. Which nerve is affected?",
+    "options": [
+      "Left trigeminal nerve",
+      "Left facial nerve",
+      "Left oculomotor nerve",
+      "Left hypoglossal nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The facial nerve (VII) supplies all the muscles of facial expression, including the forehead, the orbicularis oculi and the muscles around the mouth. Normal touch on the cheek shows the trigeminal nerve is working. This picture is typical of Bell’s palsy.",
+      "options": [
+        "The trigeminal nerve carries feeling from the face and moves the chewing muscles. Her feeling is normal, and the trigeminal nerve does not move the brow, eyelid muscle or mouth.",
+        "Correct. Paralysis of the whole half face with normal feeling points to the facial nerve.",
+        "The oculomotor nerve raises the upper lid and moves the eye, but it does not close the eye or move the forehead or mouth.",
+        "The hypoglossal nerve moves the tongue, not the face."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a head injury, a man’s right eye rests turned down and out. His right upper lid droops, and the dark opening at the center of his right eye stays wide when a light shines on it. Which nerve is damaged?",
+    "options": [
+      "Right abducens nerve",
+      "Right trochlear nerve",
+      "Right oculomotor nerve",
+      "Right optic nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The oculomotor nerve (III) moves the eye up, down and in, raises the upper lid, and carries the parasympathetic axons that narrow the center of the eye in light. With III lost, the two eye muscles still working (supplied by IV and VI) pull the eye down and out.",
+      "options": [
+        "Abducens damage leaves the eye turned in, not out, and does not affect the lid or the response to light.",
+        "Trochlear damage causes double vision looking down, but no drooping lid or wide center of the eye.",
+        "Correct. All three signs fit the oculomotor nerve.",
+        "Optic nerve damage causes loss of vision in that eye. It would not move the eye out of position or lower the lid."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient sticks out his tongue and it points to the right. Which nerve is most likely damaged?",
+    "options": [
+      "Left hypoglossal nerve",
+      "Left glossopharyngeal nerve",
+      "Right glossopharyngeal nerve",
+      "Right hypoglossal nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each hypoglossal nerve supplies its own half of the tongue, and each half pushes its side forward. When the right nerve fails, the left half pushes harder and turns the tongue toward the weak right side.",
+      "options": [
+        "A weak left side would let the right half push harder, turning the tongue to the left.",
+        "The glossopharyngeal nerve carries taste and touch from the back of the tongue; it does not move the tongue.",
+        "The glossopharyngeal nerve does not move the tongue on either side.",
+        "Correct. The tongue points toward the side of the damaged hypoglossal nerve."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient sees double only when looking to his left. When he tries, his left eye cannot turn outward past the midline. Which nerve is affected?",
+    "options": [
+      "Left abducens nerve",
+      "Right abducens nerve",
+      "Left oculomotor nerve",
+      "Left trochlear nerve"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The abducens nerve (VI) supplies the muscle that turns the eye outward. Looking left needs the left eye to turn outward, which fails, so the two eyes point in different directions and he sees double.",
+      "options": [
+        "Correct. The left eye cannot abduct, so the left abducens nerve is affected.",
+        "The right abducens nerve turns the right eye outward, which is needed for looking right, not left.",
+        "The oculomotor nerve turns the eye inward, up and down, not outward.",
+        "The trochlear nerve turns the eye down and in, and its damage causes double vision looking down."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After surgery to remove a lymph node from the side of her neck, a woman cannot shrug her right shoulder fully, and turning her head against resistance is weak. Which nerve was injured?",
+    "options": [
+      "Right phrenic nerve",
+      "Right vagus nerve",
+      "Right accessory nerve",
+      "Right hypoglossal nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The accessory nerve (XI) supplies the trapezius, which shrugs the shoulder, and the sternocleidomastoid, which turns the head. It crosses the side of the neck just under the skin, where neck surgery can injure it.",
+      "options": [
+        "The phrenic nerve runs to the diaphragm; it does not move the shoulder.",
+        "The vagus nerve supplies the throat, voice box and organs of the chest and abdomen, not the trapezius.",
+        "Correct. A weak shrug and weak head turning point to the accessory nerve.",
+        "The hypoglossal nerve moves the tongue, not the neck and shoulder."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Which cranial nerve carries most of the body’s parasympathetic axons, including those that slow the heart?",
+    "options": [
+      "Facial nerve",
+      "Glossopharyngeal nerve",
+      "Oculomotor nerve",
+      "Vagus nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "About three quarters of all parasympathetic axons travel in the vagus nerves, which supply the heart, lungs and most digestive organs.",
+      "options": [
+        "The facial nerve carries parasympathetic axons only to the tear glands and two pairs of saliva glands.",
+        "The glossopharyngeal nerve carries parasympathetic axons only to the largest saliva gland.",
+        "The oculomotor nerve carries parasympathetic axons only to muscles inside the eye.",
+        "Correct. The vagus nerve carries most parasympathetic output, including to the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-15",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Which are functions of the vagus nerve? Select all that apply.",
+    "options": [
+      "Slowing the heart",
+      "Moving the muscles of the voice box",
+      "Carrying sensory signals from the stomach to the brainstem",
+      "Moving the tongue",
+      "Increasing the activity of the stomach and intestines",
+      "Closing the eyes"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "The vagus nerve is both motor and sensory. It supplies the throat and voice box, sends parasympathetic output to the heart, lungs and digestive organs, and carries sensory signals back from those organs.",
+      "options": [
+        "Yes. Vagal acetylcholine slows the heart’s pacemaker.",
+        "Yes. The vagus nerve supplies all the muscles of the voice box, so damage makes the voice hoarse.",
+        "Yes. Most vagal axons are sensory, carrying signals such as stomach stretch to the brainstem.",
+        "No. The tongue is moved by the hypoglossal nerve.",
+        "Yes. Vagal parasympathetic output increases gut muscle activity and gland secretion.",
+        "No. Closing the eyes is done by the orbicularis oculi, supplied by the facial nerve."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A dentist injects anesthetic near a branch of the maxillary division of the trigeminal nerve. Which area goes numb?",
+    "options": [
+      "The forehead",
+      "The cheek, upper lip and upper teeth",
+      "The lower lip, chin and lower teeth",
+      "The front two-thirds of the tongue, for taste"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The maxillary division (V2) carries feeling from the cheek, upper lip, upper teeth and palate.",
+      "options": [
+        "The forehead belongs to the ophthalmic division (V1).",
+        "Correct. That is the area of the maxillary division.",
+        "The lower lip, chin and lower teeth belong to the mandibular division (V3).",
+        "Taste from the front of the tongue is carried by the facial nerve, not the trigeminal."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An examiner touches a wisp of cotton to the surface of a patient’s left eye: neither eye blinks. Touching the right eye makes both eyes blink. Which nerve is most likely damaged?",
+    "options": [
+      "Left facial nerve",
+      "Right facial nerve",
+      "Left trigeminal nerve",
+      "Left oculomotor nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The touch travels in on the trigeminal nerve (V1) of the side touched, and the blink goes out on both facial nerves. Touching the right eye makes both eyes blink, so both facial nerves work. Only the left touch fails, so the left trigeminal input is lost.",
+      "options": [
+        "If the left facial nerve were damaged, touching the right eye would make only the right eye blink. Here both eyes blink.",
+        "If the right facial nerve were damaged, the right eye would fail to blink whichever eye was touched.",
+        "Correct. The left trigeminal nerve cannot carry the touch in, so no blink is triggered.",
+        "The oculomotor nerve raises the upper lid; it does not close the eye or carry touch."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-18",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the gag response: touch at the back of the throat → ____ carries the signal in → medulla oblongata → vagus nerve → throat muscles contract.",
+    "options": [
+      "Hypoglossal nerve",
+      "Trigeminal nerve",
+      "Accessory nerve",
+      "Glossopharyngeal nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The glossopharyngeal nerve (IX) carries touch from the upper throat and the back of the tongue to the medulla. The vagus nerve (X) then drives the throat muscles.",
+      "options": [
+        "The hypoglossal nerve is motor to the tongue; it carries no touch in.",
+        "The trigeminal nerve carries touch from the face and the front of the mouth, not the back of the throat.",
+        "The accessory nerve is motor to the sternocleidomastoid and trapezius.",
+        "Correct. IX carries the touch in and X carries the command out."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This list pairs each cranial nerve with a function. One pairing is wrong. Find it.",
+    "options": [
+      "Olfactory nerve: smell",
+      "Optic nerve: vision",
+      "Trigeminal nerve: facial expression",
+      "Vestibulocochlear nerve: hearing and balance",
+      "Hypoglossal nerve: tongue movement"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The trigeminal nerve carries feeling from the face and supplies the chewing muscles. Facial expression belongs to the facial nerve.",
+      "options": [
+        "Correct pairing. The olfactory nerve carries smell.",
+        "Correct pairing. The optic nerve carries vision.",
+        "This is the wrong pairing. Facial expression is the facial nerve; the trigeminal nerve feels the face and moves the jaw.",
+        "Correct pairing. The vestibulocochlear nerve carries hearing and balance.",
+        "Correct pairing. The hypoglossal nerve moves the tongue."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which three cranial nerves leave the skull together through the jugular foramen?",
+    "options": [
+      "Facial, vestibulocochlear and glossopharyngeal",
+      "Oculomotor, trochlear and abducens",
+      "Glossopharyngeal, vagus and accessory",
+      "Vagus, accessory and hypoglossal"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "IX, X and XI all pass through the jugular foramen at the base of the skull.",
+      "options": [
+        "The facial and vestibulocochlear nerves enter the internal acoustic meatus; only IX uses the jugular foramen.",
+        "These three eye muscle nerves pass through the superior orbital fissure.",
+        "Correct. Glossopharyngeal, vagus and accessory share the jugular foramen.",
+        "The hypoglossal nerve has its own opening, the hypoglossal canal."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a fall onto the front of his head, a cook finds that food tastes flat and he cannot smell coffee brewing. Which nerve was most likely damaged, and where?",
+    "options": [
+      "Optic nerve, in the optic canal",
+      "Olfactory nerve, at the cribriform plate",
+      "Facial nerve, in the temporal bone",
+      "Trigeminal nerve, at the foramen rotundum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The short olfactory axons pass up through the holes of the cribriform plate. A blow to the front of the head can shear them there. Much of flavor is smell, so food tastes flat.",
+      "options": [
+        "The optic nerve carries vision; its damage would affect sight, not smell.",
+        "Correct. Shearing of the olfactory axons at the cribriform plate causes loss of smell.",
+        "Facial nerve damage could reduce taste from the front of the tongue, but it would not stop him smelling coffee.",
+        "The trigeminal nerve carries touch from the face; it does not carry smell."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-22",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An older woman reports double vision when she reads or walks down stairs, and she tilts her head to reduce it. Her eyelids and the centers of her eyes look normal. Which nerve is most likely affected?",
+    "options": [
+      "Abducens nerve",
+      "Oculomotor nerve",
+      "Optic nerve",
+      "Trochlear nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The trochlear nerve (IV) supplies the one eye muscle that turns the eye down and in, the movement used for reading and looking at stairs.",
+      "options": [
+        "Abducens damage causes double vision looking to the side, not down.",
+        "Oculomotor damage would usually also cause a drooping lid and a wide center of the eye, which she does not have.",
+        "Optic nerve damage reduces vision itself rather than causing double vision.",
+        "Correct. Double vision looking down, eased by tilting the head, fits the trochlear nerve."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-23",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Which cranial nerves carry parasympathetic axons? Select all that apply.",
+    "options": [
+      "Oculomotor (III)",
+      "Trigeminal (V)",
+      "Facial (VII)",
+      "Glossopharyngeal (IX)",
+      "Vagus (X)",
+      "Accessory (XI)"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "Parasympathetic axons travel in III, VII, IX and X (\"1973\").",
+      "options": [
+        "Yes. III narrows the center of the eye and adjusts focus for near vision.",
+        "No. The trigeminal nerve has no parasympathetic axons of its own, though some ride along its branches after leaving other nerves.",
+        "Yes. VII supplies the tear glands and two pairs of saliva glands.",
+        "Yes. IX supplies the largest saliva gland.",
+        "Yes. X supplies the heart, lungs and most digestive organs.",
+        "No. The accessory nerve is motor to two neck and shoulder muscles."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-24",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which nerve carries taste from the front two-thirds of the tongue?",
+    "options": [
+      "Trigeminal nerve",
+      "Facial nerve",
+      "Glossopharyngeal nerve",
+      "Hypoglossal nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The facial nerve (VII) carries taste from the front two-thirds of the tongue.",
+      "options": [
+        "The trigeminal nerve carries touch, not taste, from the front of the tongue.",
+        "Correct. Taste from the front two-thirds travels in the facial nerve.",
+        "The glossopharyngeal nerve carries taste from the back third of the tongue.",
+        "The hypoglossal nerve is motor to the tongue muscles and carries no taste."
+      ]
+    }
+  },
+  {
+    "id": "anp-cranial-nerves-25",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient’s voice has become hoarse. When she says \"ah\", the back of the roof of her mouth rises on the left but stays low on the right, and the small hanging tag at the back of her mouth is pulled toward the left. Which nerve is damaged?",
+    "options": [
+      "Left vagus nerve",
+      "Right vagus nerve",
+      "Right glossopharyngeal nerve",
+      "Right hypoglossal nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The vagus nerve supplies the muscles that lift the back of the roof of the mouth and the muscles of the voice box. The right side stays low because the right vagus nerve is damaged, and the healthy left side pulls the tag toward itself. Voice box weakness makes the voice hoarse.",
+      "options": [
+        "If the left vagus were damaged, the left side would stay low and the tag would be pulled to the right.",
+        "Correct. The right side fails to rise and the voice is hoarse: right vagus nerve.",
+        "The glossopharyngeal nerve mainly carries sensation from the throat; it does not lift the roof of the mouth or move the voice box.",
+        "The hypoglossal nerve moves the tongue; its damage makes the tongue point to one side, not the roof of the mouth."
+      ]
+    }
+  }
+]
