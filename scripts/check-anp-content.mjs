@@ -28,7 +28,7 @@ export const TYPES = ['single', 'vignette', 'graph', 'multi', 'order', 'missing'
 export const LEVELS = ['recall', 'apply', 'analyze'];
 const POS_RE = /\b[Oo]ptions?\s+(one|two|three|four|five|[1-6]|[A-F])\b|\b(first|second|third|fourth|fifth|last)\s+(option|choice|answer)\b|\b(choice|answer)\s+[A-F]\b/;
 const MIN_QUESTIONS = 15;
-const ALLOWED_LICENSES = ['CC BY 4.0', 'CC BY', 'public domain'];
+const ALLOWED_LICENSES = ['CC BY 4.0', 'CC BY', 'public domain', 'LevlPrep original'];
 // The OpenStax figure catalog (every A&P 2e figure with its caption credits),
 // kept outside the repo. When present, a figure must be in it and carry no
 // third-party credit. See spec section 2 and decision 22.
@@ -181,6 +181,12 @@ export function checkTopic(id, glossary, figures) {
     for (const [fid, f] of Object.entries(F)) {
       if (!ALLOWED_LICENSES.includes(f.license)) err(`figure ${fid}: license "${f.license}" is not allowed (CC BY 4.0, CC BY or public domain only; spec section 2)`);
       if (!f.credit) err(`figure ${fid}: credit missing`);
+      // Our own diagrams registered as figures (so a question can show one) are
+      // SVG files drawn for the course, stored at anatomy-physiology/figures/<id>.svg.
+      if (f.source === 'levlprep') {
+        if (f.license !== 'LevlPrep original') err(`figure ${fid}: our own diagrams carry the license "LevlPrep original"`);
+        if (f.ext !== 'svg' || !exists(join(ROOT, 'anatomy-physiology', 'figures', `${fid}.svg`))) err(`figure ${fid}: our own diagram must be anatomy-physiology/figures/${fid}.svg with "ext": "svg"`);
+      } else if (f.license === 'LevlPrep original') err(`figure ${fid}: "LevlPrep original" is only for source "levlprep"`);
       if (!f.alt || f.alt.length < 20) err(`figure ${fid}: alt text missing`);
       if (f.source === 'openstax') {
         const url = f.openstax && f.openstax.url;

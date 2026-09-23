@@ -1,0 +1,753 @@
+{
+  "figure": "os-1-12",
+  "labels": [
+    {
+      "id": "frons",
+      "name": "Frons",
+      "accept": [
+        "frons",
+        "forehead",
+        "frontal"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "oculus",
+      "name": "Oculus",
+      "accept": [
+        "oculus",
+        "eye",
+        "ocular",
+        "orbital"
+      ],
+      "box": [
+        347,
+        0,
+        124,
+        36
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "cranium",
+      "name": "Cranium",
+      "accept": [
+        "cranium",
+        "cranial",
+        "skull"
+      ],
+      "lines": [
+        1,
+        2,
+        4
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "bucca",
+      "name": "Bucca",
+      "accept": [
+        "bucca",
+        "buccal",
+        "cheek"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "auris",
+      "name": "Auris",
+      "accept": [
+        "auris",
+        "ear",
+        "otic"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "facies",
+      "name": "Facies",
+      "accept": [
+        "facies",
+        "face",
+        "facial"
+      ],
+      "lines": [
+        7,
+        9,
+        11
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "nasus",
+      "name": "Nasus",
+      "accept": [
+        "nasus",
+        "nasal",
+        "nose"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "cervicis-anterior",
+      "name": "Cervicis",
+      "accept": [
+        "cervicis",
+        "cervical",
+        "neck"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "oris",
+      "name": "Oris",
+      "accept": [
+        "oris",
+        "mouth",
+        "oral"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "mentis",
+      "name": "Mentis",
+      "accept": [
+        "mentis",
+        "chin",
+        "mental"
+      ],
+      "lines": [
+        19,
+        22
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "thorax",
+      "name": "Thorcis or thorax",
+      "accept": [
+        "thorcis or thorax",
+        "chest",
+        "thoracic",
+        "thoracis",
+        "thorax"
+      ],
+      "lines": [
+        20,
+        23,
+        25
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "axilla",
+      "name": "Axilla",
+      "accept": [
+        "axilla",
+        "armpit",
+        "axillary"
+      ],
+      "lines": [
+        27,
+        28
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "mamma",
+      "name": "Mamma",
+      "accept": [
+        "mamma",
+        "breast",
+        "mammary"
+      ],
+      "lines": [
+        29,
+        31,
+        34
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "brachium-anterior",
+      "name": "Brachium",
+      "accept": [
+        "brachium",
+        "arm",
+        "brachial"
+      ],
+      "lines": [
+        33,
+        36
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "trunk",
+      "name": "Trunk",
+      "accept": [
+        "trunk"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "abdomen",
+      "name": "Abdomen",
+      "accept": [
+        "abdomen",
+        "abdominal"
+      ],
+      "lines": [
+        39,
+        42
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "antecubitis",
+      "name": "Antecubitis",
+      "accept": [
+        "antecubitis",
+        "antecubital",
+        "front of elbow"
+      ],
+      "lines": [
+        40,
+        43,
+        45
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "umbilicus",
+      "name": "Umbilicus",
+      "accept": [
+        "umbilicus",
+        "navel",
+        "umbilical"
+      ],
+      "lines": [
+        46,
+        49,
+        52
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "antebrachium-anterior",
+      "name": "Antebrachium",
+      "accept": [
+        "antebrachium",
+        "antebrachial",
+        "forearm"
+      ],
+      "lines": [
+        51,
+        54,
+        56
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "hip",
+      "name": "Hip",
+      "accept": [
+        "hip",
+        "coxa",
+        "coxal"
+      ],
+      "lines": [
+        55,
+        58
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "carpus",
+      "name": "Carpus",
+      "accept": [
+        "carpus",
+        "carpal",
+        "wrist"
+      ],
+      "lines": [
+        60,
+        62,
+        63
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "pollex",
+      "name": "Pollex",
+      "accept": [
+        "pollex",
+        "thumb"
+      ],
+      "lines": [
+        65,
+        68
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "pelvis",
+      "name": "Pelvis",
+      "accept": [
+        "pelvis",
+        "pelvic"
+      ],
+      "lines": [
+        67,
+        70
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "palma",
+      "name": "Palma",
+      "accept": [
+        "palma",
+        "palm",
+        "palmar"
+      ],
+      "lines": [
+        71,
+        74
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "digits-fingers",
+      "name": "Digits (phalanges)",
+      "accept": [
+        "digits (phalanges)",
+        "digital",
+        "digits",
+        "fingers",
+        "phalangeal",
+        "phalanges"
+      ],
+      "box": [
+        0,
+        605,
+        137,
+        52
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "inguen",
+      "name": "Inguen",
+      "accept": [
+        "inguen",
+        "groin",
+        "inguinal"
+      ],
+      "lines": [
+        73,
+        76
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "pubis",
+      "name": "Pubis",
+      "accept": [
+        "pubis",
+        "pubic"
+      ],
+      "lines": [
+        79,
+        81
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "patella",
+      "name": "Patella",
+      "accept": [
+        "patella",
+        "kneecap",
+        "patellar"
+      ],
+      "box": [
+        76,
+        657,
+        78,
+        52
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "femur-anterior",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "femoral",
+        "thigh"
+      ],
+      "lines": [
+        85,
+        87,
+        89
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "crus",
+      "name": "Crus",
+      "accept": [
+        "crus",
+        "crural",
+        "leg"
+      ],
+      "lines": [
+        91,
+        92
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "tarsus",
+      "name": "Tarsus",
+      "accept": [
+        "tarsus",
+        "ankle",
+        "tarsal"
+      ],
+      "lines": [
+        95,
+        97,
+        99
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "digits-toes",
+      "name": "Digits (phalanges)",
+      "accept": [
+        "digits (phalanges)",
+        "digital",
+        "digits",
+        "phalangeal",
+        "phalanges",
+        "toes"
+      ],
+      "box": [
+        0,
+        840,
+        138,
+        52
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "pes",
+      "name": "Pes",
+      "accept": [
+        "pes",
+        "foot",
+        "pedal"
+      ],
+      "lines": [
+        102,
+        103
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "hallux",
+      "name": "Hallux",
+      "accept": [
+        "hallux",
+        "great toe"
+      ],
+      "lines": [
+        106
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "cephalon",
+      "name": "Cephalon",
+      "accept": [
+        "cephalon",
+        "cephalic",
+        "head"
+      ],
+      "box": [
+        926,
+        63,
+        134,
+        38
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "shoulder",
+      "name": "Shoulder",
+      "accept": [
+        "shoulder",
+        "acromial"
+      ],
+      "lines": [
+        5,
+        8
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "cervicis-posterior",
+      "name": "Cervicis",
+      "accept": [
+        "cervicis",
+        "cervical",
+        "neck"
+      ],
+      "lines": [
+        13,
+        16
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "dorsum",
+      "name": "Dorsum",
+      "accept": [
+        "dorsum",
+        "back",
+        "dorsal"
+      ],
+      "lines": [
+        12,
+        15,
+        18
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "brachium-posterior",
+      "name": "Brachium",
+      "accept": [
+        "brachium",
+        "arm",
+        "brachial"
+      ],
+      "lines": [
+        21,
+        24,
+        26
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "olecranon",
+      "name": "Olecranon",
+      "accept": [
+        "olecranon",
+        "back of elbow",
+        "olecranal"
+      ],
+      "lines": [
+        30,
+        32,
+        35,
+        37
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "lumbus",
+      "name": "Lumbus",
+      "accept": [
+        "lumbus",
+        "loin",
+        "lumbar"
+      ],
+      "lines": [
+        41,
+        44,
+        47
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "upper-limb",
+      "name": "Upper limb",
+      "accept": [
+        "upper limb"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [
+        "sacrum",
+        "sacral"
+      ],
+      "lines": [
+        50,
+        53
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "antebrachium-posterior",
+      "name": "Antebrachium",
+      "accept": [
+        "antebrachium",
+        "antebrachial",
+        "forearm"
+      ],
+      "lines": [
+        57,
+        59,
+        61
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "manus",
+      "name": "Manus",
+      "accept": [
+        "manus",
+        "hand",
+        "manual"
+      ],
+      "lines": [
+        64,
+        66,
+        69
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "gluteus",
+      "name": "Gluteus",
+      "accept": [
+        "gluteus",
+        "buttock",
+        "gluteal"
+      ],
+      "lines": [
+        72,
+        75,
+        77
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "femur-posterior",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "femoral",
+        "thigh"
+      ],
+      "lines": [
+        78,
+        80,
+        83
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "lower-limb",
+      "name": "Lower limb",
+      "accept": [
+        "lower limb"
+      ],
+      "lines": [
+        84,
+        88
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "popliteus",
+      "name": "Popliteus",
+      "accept": [
+        "popliteus",
+        "back of knee",
+        "popliteal"
+      ],
+      "lines": [
+        86,
+        90
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "sura",
+      "name": "Sura",
+      "accept": [
+        "sura",
+        "calf",
+        "sural"
+      ],
+      "lines": [
+        93,
+        94,
+        96
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "calcaneus",
+      "name": "Calcaneus",
+      "accept": [
+        "calcaneus",
+        "calcaneal",
+        "heel",
+        "heel of foot"
+      ],
+      "lines": [
+        98,
+        100,
+        101
+      ],
+      "concept": "regional-terms"
+    },
+    {
+      "id": "planta",
+      "name": "Planta",
+      "accept": [
+        "planta",
+        "plantar",
+        "sole",
+        "sole of foot"
+      ],
+      "lines": [
+        104,
+        105
+      ],
+      "concept": "regional-terms"
+    }
+  ]
+}

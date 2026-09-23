@@ -1,0 +1,335 @@
+{
+  "figure": "os-4-5",
+  "labels": [
+    {
+      "id": "tight-junction",
+      "name": "Tight junction",
+      "accept": [
+        "tight junction",
+        "tight junctions"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "tight-junction"
+    },
+    {
+      "id": "membranes-tight",
+      "name": "Adjacent plasma membranes",
+      "accept": [
+        "adjacent plasma membranes",
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+      ],
+      "lines": [
+        4,
+        6,
+        7
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "strands-of-transmembrane-proteins",
+      "name": "Strands of transmembrane proteins",
+      "accept": [
+        "strands of transmembrane proteins",
+        "claudin",
+        "occludin",
+        "transmembrane protein",
+        "transmembrane proteins"
+      ],
+      "lines": [
+        11,
+        12,
+        13
+      ],
+      "concept": "membrane-proteins"
+    },
+    {
+      "id": "intercellular-space-tight",
+      "name": "Intercellular space",
+      "accept": [
+        "intercellular space"
+      ],
+      "lines": [
+        23,
+        26
+      ],
+      "concept": null
+    },
+    {
+      "id": "gap-junction",
+      "name": "Gap junction",
+      "accept": [
+        "gap junction",
+        "gap junctions"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "gap-junction"
+    },
+    {
+      "id": "membranes-gap",
+      "name": "Adjacent plasma membranes",
+      "accept": [
+        "adjacent plasma membranes",
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+      ],
+      "lines": [
+        2,
+        3,
+        5
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "gap-between-cells",
+      "name": "Gap between cells",
+      "accept": [
+        "gap between cells",
+        "gap",
+        "intercellular gap"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "gap-junction"
+    },
+    {
+      "id": "connexons",
+      "name": "Connexons",
+      "accept": [
+        "connexons",
+        "connexin",
+        "connexins",
+        "connexon"
+      ],
+      "lines": [
+        16,
+        18,
+        20
+      ],
+      "concept": "gap-junction"
+    },
+    {
+      "id": "anchoring-junctions",
+      "name": "Anchoring junctions",
+      "accept": [
+        "anchoring junctions",
+        "anchoring junction"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "desmosome"
+    },
+    {
+      "id": "membranes-desmosome",
+      "name": "Adjacent plasma membranes",
+      "accept": [
+        "adjacent plasma membranes",
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+      ],
+      "lines": [
+        28,
+        30,
+        32
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "plaque-desmosome",
+      "name": "Plaque",
+      "accept": [
+        "plaque"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "desmosome"
+    },
+    {
+      "id": "cadherin-desmosome",
+      "name": "Transmembrane glycoprotein (cadherin)",
+      "accept": [
+        "transmembrane glycoprotein (cadherin)",
+        "cadherin",
+        "cadherins",
+        "transmembrane glycoprotein"
+      ],
+      "lines": [
+        37,
+        39,
+        41
+      ],
+      "concept": "membrane-proteins"
+    },
+    {
+      "id": "intermediate-filament-keratin",
+      "name": "Intermediate filament (keratin)",
+      "accept": [
+        "intermediate filament (keratin)",
+        "intermediate filament",
+        "intermediate filaments",
+        "keratin"
+      ],
+      "lines": [
+        43,
+        45,
+        47
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "intercellular-space-desmosome",
+      "name": "Intercellular space",
+      "accept": [
+        "intercellular space"
+      ],
+      "lines": [
+        48,
+        50
+      ],
+      "concept": null
+    },
+    {
+      "id": "desmosome",
+      "name": "Desmosome",
+      "accept": [
+        "desmosome",
+        "desmosomes"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "desmosome"
+    },
+    {
+      "id": "membranes-adherens",
+      "name": "Adjacent plasma membranes",
+      "accept": [
+        "adjacent plasma membranes",
+        "cell membrane",
+        "plasma membrane",
+        "plasma membranes"
+      ],
+      "lines": [
+        29,
+        31,
+        33
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "plaque-adherens",
+      "name": "Plaque",
+      "accept": [
+        "plaque"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "desmosome"
+    },
+    {
+      "id": "cadherin-adherens",
+      "name": "Transmembrane glycoprotein (cadherin)",
+      "accept": [
+        "transmembrane glycoprotein (cadherin)",
+        "cadherin",
+        "cadherins",
+        "transmembrane glycoprotein"
+      ],
+      "lines": [
+        38,
+        40,
+        42
+      ],
+      "concept": "membrane-proteins"
+    },
+    {
+      "id": "actin-filament",
+      "name": "Actin filament",
+      "accept": [
+        "actin filament",
+        "actin",
+        "actin filaments",
+        "microfilament",
+        "microfilaments"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "intercellular-space-adherens",
+      "name": "Intercellular space",
+      "accept": [
+        "intercellular space"
+      ],
+      "lines": [
+        49,
+        51
+      ],
+      "concept": null
+    },
+    {
+      "id": "adherens",
+      "name": "Adherens",
+      "accept": [
+        "adherens",
+        "adherens junction",
+        "adherens junctions"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "desmosome"
+    },
+    {
+      "id": "integrins",
+      "name": "Integrins",
+      "accept": [
+        "integrins",
+        "integrin"
+      ],
+      "lines": [
+        58
+      ],
+      "concept": "membrane-proteins"
+    },
+    {
+      "id": "basal-lamina",
+      "name": "Basal lamina",
+      "accept": [
+        "basal lamina",
+        "basement membrane"
+      ],
+      "lines": [
+        59,
+        60
+      ],
+      "concept": "basement-membrane"
+    },
+    {
+      "id": "hemidesmosome",
+      "name": "Hemidesmosome",
+      "accept": [
+        "hemidesmosome",
+        "hemidesmosomes"
+      ],
+      "lines": [
+        61
+      ],
+      "concept": "desmosome"
+    }
+  ]
+}

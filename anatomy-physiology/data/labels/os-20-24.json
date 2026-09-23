@@ -11,7 +11,13 @@
       "lines": [
         4
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        8,
+        173,
+        131,
+        28
+      ]
     },
     {
       "id": "right-common-carotid-artery",
@@ -42,7 +48,13 @@
       "lines": [
         9
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        10,
+        242,
+        225,
+        34
+      ]
     },
     {
       "id": "left-common-carotid-artery",
@@ -57,7 +69,13 @@
         7,
         8
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        764,
+        237,
+        276,
+        28
+      ]
     },
     {
       "id": "left-subclavian-artery",
@@ -71,7 +89,13 @@
       "lines": [
         10
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        764,
+        283,
+        206,
+        28
+      ]
     },
     {
       "id": "brachiocephalic-trunk",
@@ -84,7 +108,13 @@
       "lines": [
         11
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        9,
+        310,
+        293,
+        34
+      ]
     },
     {
       "id": "axillary-artery",
@@ -113,7 +143,13 @@
         12,
         13
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        8,
+        362,
+        152,
+        28
+      ]
     },
     {
       "id": "pulmonary-trunk",
@@ -124,7 +160,13 @@
       "lines": [
         14
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        764,
+        387,
+        225,
+        34
+      ]
     },
     {
       "id": "ascending-aorta",
@@ -136,7 +178,13 @@
         15,
         17
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        8,
+        430,
+        225,
+        34
+      ]
     },
     {
       "id": "descending-aorta",
@@ -150,7 +198,13 @@
         16,
         18
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        764,
+        431,
+        241,
+        34
+      ]
     },
     {
       "id": "diaphragm",
@@ -161,7 +215,13 @@
       "lines": [
         20
       ],
-      "concept": "diaphragm"
+      "concept": "diaphragm",
+      "box": [
+        764,
+        479,
+        153,
+        34
+      ]
     },
     {
       "id": "celiac-trunk",
@@ -174,7 +234,13 @@
       "lines": [
         21
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        9,
+        515,
+        168,
+        28
+      ]
     },
     {
       "id": "renal-artery",
@@ -186,7 +252,13 @@
       "lines": [
         22
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        785,
+        541,
+        86,
+        28
+      ]
     },
     {
       "id": "brachial-artery",
@@ -198,7 +270,13 @@
       "lines": [
         25
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        9,
+        606,
+        116,
+        28
+      ]
     },
     {
       "id": "superior-mesenteric-artery",
@@ -228,7 +306,13 @@
       "lines": [
         27
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        817,
+        656,
+        122,
+        28
+      ]
     },
     {
       "id": "inferior-mesenteric-artery",
@@ -241,7 +325,13 @@
       "lines": [
         29
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        818,
+        695,
+        254,
+        28
+      ]
     },
     {
       "id": "radial-artery",
@@ -253,7 +343,13 @@
       "lines": [
         30
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        10,
+        696,
+        93,
+        28
+      ]
     },
     {
       "id": "common-iliac-artery",
@@ -266,7 +362,13 @@
         32,
         33
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        817,
+        733,
+        190,
+        28
+      ]
     },
     {
       "id": "ulnar-artery",
@@ -278,7 +380,13 @@
       "lines": [
         34
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        9,
+        743,
+        82,
+        28
+      ]
     },
     {
       "id": "internal-iliac-artery",
@@ -291,7 +399,13 @@
         35,
         36
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        818,
+        782,
+        168,
+        28
+      ]
     },
     {
       "id": "external-iliac-artery",
@@ -304,7 +418,13 @@
         38,
         39
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        10,
+        823,
+        177,
+        28
+      ]
     },
     {
       "id": "palmar-arches",
@@ -319,7 +439,13 @@
         41,
         43
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        9,
+        907,
+        106,
+        61
+      ]
     },
     {
       "id": "deep-femoral-artery",
@@ -334,7 +460,13 @@
         42,
         44
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        865,
+        936,
+        110,
+        61
+      ]
     },
     {
       "id": "femoral-artery",
@@ -346,7 +478,13 @@
       "lines": [
         45
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        704,
+        1094,
+        118,
+        28
+      ]
     },
     {
       "id": "descending-genicular-artery",
@@ -374,7 +512,13 @@
       "lines": [
         47
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        137,
+        1245,
+        122,
+        34
+      ]
     },
     {
       "id": "posterior-tibial-artery",
@@ -386,7 +530,13 @@
       "lines": [
         48
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        137,
+        1323,
+        195,
+        28
+      ]
     },
     {
       "id": "anterior-tibial-artery",
@@ -398,7 +548,13 @@
       "lines": [
         49
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        135,
+        1416,
+        182,
+        27
+      ]
     },
     {
       "id": "fibular-artery",
@@ -411,7 +567,13 @@
       "lines": [
         50
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        137,
+        1482,
+        101,
+        28
+      ]
     },
     {
       "id": "dorsalis-pedis-artery",
@@ -425,7 +587,13 @@
         51,
         52
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        704,
+        1618,
+        195,
+        34
+      ]
     },
     {
       "id": "plantar-arch",
@@ -437,7 +605,13 @@
       "lines": [
         53
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        136,
+        1709,
+        169,
+        29
+      ]
     }
   ]
 }

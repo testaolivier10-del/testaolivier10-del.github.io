@@ -1,0 +1,87 @@
+{
+  "figure": "os-2-14",
+  "labels": [
+    {
+      "id": "dehydration-synthesis",
+      "name": "Dehydration synthesis",
+      "accept": [
+        "dehydration synthesis",
+        "condensation",
+        "dehydration"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "monomer-polymer"
+    },
+    {
+      "id": "water-released",
+      "name": "H2O",
+      "accept": [
+        "h2o",
+        "water"
+      ],
+      "box": [
+        534,
+        134,
+        50,
+        34
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "linked-a",
+      "name": "Monomers linked by covalent bond",
+      "accept": [
+        "monomers linked by covalent bond",
+        "covalent bond",
+        "dimer",
+        "polymer"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "covalent-bond"
+    },
+    {
+      "id": "hydrolysis",
+      "name": "Hydrolysis",
+      "accept": [
+        "hydrolysis"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "monomer-polymer"
+    },
+    {
+      "id": "water-added",
+      "name": "H2O",
+      "accept": [
+        "h2o",
+        "water"
+      ],
+      "box": [
+        426,
+        434,
+        50,
+        34
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "linked-b",
+      "name": "Monomers linked by covalent bond",
+      "accept": [
+        "monomers linked by covalent bond",
+        "covalent bond",
+        "dimer",
+        "polymer"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "covalent-bond"
+    }
+  ]
+}

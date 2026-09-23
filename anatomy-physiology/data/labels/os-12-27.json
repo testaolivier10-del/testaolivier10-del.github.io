@@ -1,0 +1,107 @@
+{
+  "figure": "os-12-27",
+  "labels": [
+    {
+      "id": "presynaptic-neuron",
+      "name": "Presynaptic neuron",
+      "accept": [
+        "presynaptic neuron",
+        "presynaptic",
+        "presynaptic cell"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "synapse-basic"
+    },
+    {
+      "id": "axon-terminal",
+      "name": "Axon terminal",
+      "accept": [
+        "axon terminal",
+        "synaptic end bulb",
+        "synaptic knob",
+        "terminal bouton"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "neuron-parts-basic"
+    },
+    {
+      "id": "synaptic-vesicles",
+      "name": "Synaptic vesicles",
+      "accept": [
+        "synaptic vesicles",
+        "synaptic vesicle",
+        "vesicle",
+        "vesicles"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "neurotransmitters",
+      "name": "Neurotransmitters",
+      "accept": [
+        "neurotransmitters",
+        "neurotransmitter"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "neurotransmitter"
+    },
+    {
+      "id": "synaptic-cleft",
+      "name": "Synaptic cleft",
+      "accept": [
+        "synaptic cleft",
+        "cleft",
+        "synaptic gap"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "synapse-basic"
+    },
+    {
+      "id": "ligand-gated-channels",
+      "name": "Ligand-gated channels with receptors for neurotransmitters",
+      "accept": [
+        "ligand-gated channels with receptors for neurotransmitters",
+        "ligand gated channels",
+        "ligand-gated channel",
+        "ligand-gated channels",
+        "neurotransmitter receptors",
+        "receptors"
+      ],
+      "lines": [
+        13,
+        14,
+        15
+      ],
+      "concept": "gated-channel-types"
+    },
+    {
+      "id": "postsynaptic-neuron",
+      "name": "Postsynaptic neuron",
+      "accept": [
+        "postsynaptic neuron",
+        "postsynaptic",
+        "postsynaptic cell"
+      ],
+      "box": [
+        422,
+        776,
+        194,
+        28
+      ],
+      "concept": "synapse-basic"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "figure": "os-12-25",
+  "labels": [
+    {
+      "id": "threshold",
+      "name": "Threshold",
+      "accept": [
+        "threshold",
+        "threshold potential"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "threshold"
+    },
+    {
+      "id": "depolarizing-graded-potential",
+      "name": "Depolarizing graded potential",
+      "accept": [
+        "depolarizing graded potential",
+        "depolarization",
+        "depolarizing",
+        "epsp",
+        "graded potential"
+      ],
+      "lines": [
+        33,
+        35
+      ],
+      "concept": "graded-potential"
+    },
+    {
+      "id": "hyperpolarizing-graded-potential",
+      "name": "Hyperpolarizing graded potential",
+      "accept": [
+        "hyperpolarizing graded potential",
+        "hyperpolarization",
+        "hyperpolarizing",
+        "ipsp"
+      ],
+      "lines": [
+        34,
+        36
+      ],
+      "concept": "graded-potential"
+    }
+  ]
+}

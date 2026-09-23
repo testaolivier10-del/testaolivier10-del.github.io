@@ -1,0 +1,60 @@
+{
+  "figure": "os-3-29",
+  "labels": [
+    {
+      "id": "transcription",
+      "name": "Transcription",
+      "accept": [
+        "transcription"
+      ],
+      "box": [
+        154,
+        203,
+        114,
+        24
+      ],
+      "concept": "transcription"
+    },
+    {
+      "id": "dna",
+      "name": "DNA",
+      "accept": [
+        "dna",
+        "deoxyribonucleic acid"
+      ],
+      "box": [
+        354,
+        201,
+        52,
+        24
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "mrna",
+      "name": "mRNA",
+      "accept": [
+        "mrna",
+        "messenger rna"
+      ],
+      "box": [
+        318,
+        302,
+        64,
+        24
+      ],
+      "concept": "rna"
+    },
+    {
+      "id": "translation",
+      "name": "Translation",
+      "accept": [
+        "translation"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "translation"
+    }
+  ]
+}

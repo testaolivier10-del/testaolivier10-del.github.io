@@ -1,0 +1,168 @@
+{
+  "figure": "os-20-27",
+  "labels": [
+    {
+      "id": "anterior-communicating",
+      "name": "Anterior communicating",
+      "accept": [
+        "anterior communicating",
+        "anterior communicating artery"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cerebral-arterial-circle",
+      "box": [
+        792,
+        75,
+        292,
+        32
+      ]
+    },
+    {
+      "id": "middle-cerebral",
+      "name": "Middle cerebral",
+      "accept": [
+        "middle cerebral",
+        "middle cerebral artery"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cerebral-arterial-circle",
+      "box": [
+        11,
+        130,
+        193,
+        26
+      ]
+    },
+    {
+      "id": "anterior-cerebral",
+      "name": "Anterior cerebral",
+      "accept": [
+        "anterior cerebral",
+        "anterior cerebral artery"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cerebral-arterial-circle",
+      "box": [
+        792,
+        131,
+        208,
+        26
+      ]
+    },
+    {
+      "id": "ophthalmic",
+      "name": "Ophthalmic",
+      "accept": [
+        "ophthalmic",
+        "ophthalmic artery"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "head-neck-arteries",
+      "box": [
+        10,
+        231,
+        147,
+        31
+      ]
+    },
+    {
+      "id": "posterior-communicating",
+      "name": "Posterior communicating",
+      "accept": [
+        "posterior communicating",
+        "posterior communicating artery"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cerebral-arterial-circle",
+      "box": [
+        793,
+        238,
+        302,
+        31
+      ]
+    },
+    {
+      "id": "posterior-cerebral",
+      "name": "Posterior cerebral",
+      "accept": [
+        "posterior cerebral",
+        "posterior cerebral artery"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "cerebral-arterial-circle",
+      "box": [
+        793,
+        297,
+        219,
+        26
+      ]
+    },
+    {
+      "id": "internal-carotid",
+      "name": "Internal carotid",
+      "accept": [
+        "internal carotid",
+        "internal carotid artery"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "head-neck-arteries",
+      "box": [
+        12,
+        323,
+        187,
+        26
+      ]
+    },
+    {
+      "id": "basilar",
+      "name": "Basilar",
+      "accept": [
+        "basilar",
+        "basilar artery"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "cerebral-arterial-circle",
+      "box": [
+        11,
+        377,
+        94,
+        26
+      ]
+    },
+    {
+      "id": "vertebral",
+      "name": "Vertebral",
+      "accept": [
+        "vertebral",
+        "vertebral artery",
+        "vertebral arteries"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "head-neck-arteries",
+      "box": [
+        10,
+        422,
+        118,
+        26
+      ]
+    }
+  ]
+}

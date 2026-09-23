@@ -1,0 +1,100 @@
+{
+  "figure": "os-3-4",
+  "labels": [
+    {
+      "id": "glycoprotein",
+      "name": "Glycoprotein",
+      "accept": [
+        "glycoprotein",
+        "glycoproteins"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "glycocalyx"
+    },
+    {
+      "id": "glycolipid",
+      "name": "Glycolipid",
+      "accept": [
+        "glycolipid",
+        "glycolipids"
+      ],
+      "lines": [
+        1,
+        3,
+        4
+      ],
+      "concept": "glycocalyx"
+    },
+    {
+      "id": "peripheral-membrane-protein",
+      "name": "Peripheral membrane protein",
+      "accept": [
+        "peripheral membrane protein",
+        "peripheral protein",
+        "peripheral proteins"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "membrane-proteins"
+    },
+    {
+      "id": "phospholipid-bilayer",
+      "name": "Phospholipid bilayer",
+      "accept": [
+        "phospholipid bilayer",
+        "bilayer",
+        "lipid bilayer"
+      ],
+      "lines": [
+        6,
+        8
+      ],
+      "concept": "phospholipid-bilayer"
+    },
+    {
+      "id": "integral-membrane-protein",
+      "name": "Integral membrane protein",
+      "accept": [
+        "integral membrane protein",
+        "integral protein",
+        "integral proteins",
+        "transmembrane protein"
+      ],
+      "lines": [
+        9,
+        12
+      ],
+      "concept": "membrane-proteins"
+    },
+    {
+      "id": "cholesterol",
+      "name": "Cholesterol",
+      "accept": [
+        "cholesterol"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "steroid"
+    },
+    {
+      "id": "channel-protein",
+      "name": "Channel protein",
+      "accept": [
+        "channel protein",
+        "channel",
+        "channel proteins",
+        "ion channel"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ion-channel"
+    }
+  ]
+}

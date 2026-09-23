@@ -1,0 +1,136 @@
+{
+  "figure": "os-2-15",
+  "labels": [
+    {
+      "id": "partial-positive-1",
+      "name": "δ+ (partial positive charge)",
+      "accept": [
+        "δ+ (partial positive charge)",
+        "partial positive",
+        "partial positive charge",
+        "slightly positive",
+        "δ+"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "polarity"
+    },
+    {
+      "id": "partial-positive-2",
+      "name": "δ+ (partial positive charge)",
+      "accept": [
+        "δ+ (partial positive charge)",
+        "partial positive",
+        "partial positive charge",
+        "slightly positive",
+        "δ+"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "polarity"
+    },
+    {
+      "id": "partial-negative",
+      "name": "δ- (partial negative charge)",
+      "accept": [
+        "δ- (partial negative charge)",
+        "partial negative",
+        "partial negative charge",
+        "slightly negative",
+        "δ-"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "polarity"
+    },
+    {
+      "id": "water-molecule",
+      "name": "Water molecule",
+      "accept": [
+        "water molecule",
+        "h2o",
+        "water"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "hydrated-sodium-ion",
+      "name": "Hydrated sodium ion",
+      "accept": [
+        "hydrated sodium ion",
+        "hydrated sodium",
+        "hydration shell",
+        "sodium ion"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "solution"
+    },
+    {
+      "id": "chloride-ion",
+      "name": "Cl-",
+      "accept": [
+        "cl-",
+        "chloride",
+        "chloride ion",
+        "cl"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "sodium-ion",
+      "name": "Na+",
+      "accept": [
+        "na+",
+        "na",
+        "sodium",
+        "sodium ion"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "nacl-crystal",
+      "name": "Crystal of NaCl",
+      "accept": [
+        "crystal of nacl",
+        "nacl",
+        "salt",
+        "salt crystal",
+        "sodium chloride"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "ionic-bond"
+    },
+    {
+      "id": "hydrated-chloride-ion",
+      "name": "Hydrated chloride ion",
+      "accept": [
+        "hydrated chloride ion",
+        "chloride ion",
+        "hydrated chloride",
+        "hydration shell"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "solution"
+    }
+  ]
+}

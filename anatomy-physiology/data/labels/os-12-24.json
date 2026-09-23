@@ -1,0 +1,149 @@
+{
+  "figure": "os-12-24",
+  "labels": [
+    {
+      "id": "plus-30-mv",
+      "name": "+30 mV",
+      "accept": [
+        "+30 mv",
+        "+30",
+        "30",
+        "30 mv"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "action-potential-basic"
+    },
+    {
+      "id": "voltage-rises",
+      "name": "Voltage rises",
+      "accept": [
+        "voltage rises",
+        "depolarization",
+        "depolarize",
+        "rising phase"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "voltage-falls",
+      "name": "Voltage falls",
+      "accept": [
+        "voltage falls",
+        "falling phase",
+        "repolarization",
+        "repolarize"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "zero-mv",
+      "name": "0 mV",
+      "accept": [
+        "0 mv",
+        "0",
+        "zero"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "voltage"
+    },
+    {
+      "id": "threshold",
+      "name": "Threshold",
+      "accept": [
+        "threshold",
+        "threshold potential"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "threshold"
+    },
+    {
+      "id": "minus-55-mv",
+      "name": "-55 mV",
+      "accept": [
+        "-55 mv",
+        "-55",
+        "threshold"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "threshold"
+    },
+    {
+      "id": "at-rest",
+      "name": "At rest",
+      "accept": [
+        "at rest",
+        "rest",
+        "resting membrane potential",
+        "resting potential"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "resting-membrane-potential"
+    },
+    {
+      "id": "minus-70-mv",
+      "name": "-70 mV",
+      "accept": [
+        "-70 mv",
+        "-70",
+        "resting membrane potential"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "resting-membrane-potential"
+    },
+    {
+      "id": "stimulus-applied",
+      "name": "Stimulus applied",
+      "accept": [
+        "stimulus applied",
+        "stimulus"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null
+    },
+    {
+      "id": "end-of-action-potential",
+      "name": "End of action potential",
+      "accept": [
+        "end of action potential",
+        "hyperpolarization",
+        "undershoot"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "action-potential-basic"
+    },
+    {
+      "id": "return-to-rest",
+      "name": "Return to rest",
+      "accept": [
+        "return to rest",
+        "return to resting potential"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "resting-membrane-potential"
+    }
+  ]
+}

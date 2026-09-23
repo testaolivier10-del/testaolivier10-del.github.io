@@ -1,0 +1,124 @@
+{
+  "figure": "os-4-10",
+  "labels": [
+    {
+      "id": "secretion",
+      "name": "Secretion",
+      "accept": [
+        "secretion",
+        "secretory product"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "exocytosis"
+    },
+    {
+      "id": "secretory-vesicle",
+      "name": "Secretory vesicle",
+      "accept": [
+        "secretory vesicle",
+        "secretory vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "golgi-complex",
+      "name": "Golgi complex",
+      "accept": [
+        "golgi complex",
+        "golgi",
+        "golgi apparatus"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "merocrine-secretion",
+      "name": "Merocrine secretion",
+      "accept": [
+        "merocrine secretion",
+        "merocrine"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "secretion-modes"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "pinched-off-portion",
+      "name": "Pinched off portion of cell is the secretion",
+      "accept": [
+        "pinched off portion of cell is the secretion",
+        "apical portion",
+        "pinched off portion",
+        "pinched-off portion of cell"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "secretion-modes"
+    },
+    {
+      "id": "apocrine-secretion",
+      "name": "Apocrine secretion",
+      "accept": [
+        "apocrine secretion",
+        "apocrine"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "secretion-modes"
+    },
+    {
+      "id": "cell-becomes-product",
+      "name": "Mature cell dies and becomes secretory product",
+      "accept": [
+        "mature cell dies and becomes secretory product",
+        "dying cell",
+        "mature cell dies",
+        "ruptured cell"
+      ],
+      "lines": [
+        10,
+        12,
+        14
+      ],
+      "concept": "secretion-modes"
+    },
+    {
+      "id": "holocrine-secretion",
+      "name": "Holocrine secretion",
+      "accept": [
+        "holocrine secretion",
+        "holocrine"
+      ],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "secretion-modes"
+    }
+  ]
+}

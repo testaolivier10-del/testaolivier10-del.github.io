@@ -1,0 +1,19 @@
+{
+  "figure": "os-3-7",
+  "labels": [
+    {
+      "id": "semipermeable-membrane",
+      "name": "Semipermeable membrane",
+      "accept": [
+        "semipermeable membrane",
+        "membrane",
+        "selectively permeable membrane",
+        "semipermeable"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "semipermeable-membrane"
+    }
+  ]
+}

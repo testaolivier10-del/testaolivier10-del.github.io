@@ -1,0 +1,131 @@
+{
+  "figure": "os-2-8",
+  "labels": [
+    {
+      "id": "sodium-atom",
+      "name": "Na (sodium atom)",
+      "accept": [
+        "na (sodium atom)",
+        "na",
+        "sodium",
+        "sodium atom"
+      ],
+      "box": [
+        216,
+        242,
+        42,
+        32
+      ],
+      "concept": "atom"
+    },
+    {
+      "id": "chlorine-atom",
+      "name": "Cl (chlorine atom)",
+      "accept": [
+        "cl (chlorine atom)",
+        "chlorine",
+        "chlorine atom",
+        "cl"
+      ],
+      "box": [
+        826,
+        242,
+        40,
+        32
+      ],
+      "concept": "atom"
+    },
+    {
+      "id": "sodium-ion",
+      "name": "Na+ (sodium ion)",
+      "accept": [
+        "na+ (sodium ion)",
+        "cation",
+        "na+",
+        "sodium ion"
+      ],
+      "box": [
+        255,
+        812,
+        58,
+        36
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "chloride-ion",
+      "name": "Cl- (chloride ion)",
+      "accept": [
+        "cl- (chloride ion)",
+        "anion",
+        "chloride",
+        "chloride ion",
+        "cl-"
+      ],
+      "box": [
+        775,
+        812,
+        50,
+        36
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "net-positive-charge",
+      "name": "Net positive charge",
+      "accept": [
+        "net positive charge",
+        "positive",
+        "positive charge"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "electric-charge"
+    },
+    {
+      "id": "net-negative-charge",
+      "name": "Net negative charge",
+      "accept": [
+        "net negative charge",
+        "negative",
+        "negative charge"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "electric-charge"
+    },
+    {
+      "id": "chloride-in-crystal",
+      "name": "Cl- (chloride ion)",
+      "accept": [
+        "cl- (chloride ion)",
+        "chloride",
+        "chloride ion",
+        "cl",
+        "cl-"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "sodium-in-crystal",
+      "name": "Na (sodium ion)",
+      "accept": [
+        "na (sodium ion)",
+        "na",
+        "na+",
+        "sodium",
+        "sodium ion"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "ion"
+    }
+  ]
+}

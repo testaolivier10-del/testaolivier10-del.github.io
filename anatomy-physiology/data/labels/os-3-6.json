@@ -1,0 +1,111 @@
+{
+  "figure": "os-3-6",
+  "labels": [
+    {
+      "id": "ecf-a",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "channel-protein",
+      "name": "Channel protein",
+      "accept": [
+        "channel protein",
+        "channel",
+        "channel proteins",
+        "ion channel"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "ion-channel"
+    },
+    {
+      "id": "membrane-a",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "cell membrane"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "cytoplasm-a",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol",
+        "intracellular fluid"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "ecf-b",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "membrane-b",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "cell membrane"
+      ],
+      "lines": [
+        43,
+        44
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "carrier-proteins",
+      "name": "Carrier proteins",
+      "accept": [
+        "carrier proteins",
+        "carrier protein",
+        "carriers",
+        "transporter"
+      ],
+      "lines": [
+        46,
+        48
+      ],
+      "concept": "facilitated-diffusion"
+    },
+    {
+      "id": "cytoplasm-b",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol",
+        "intracellular fluid"
+      ],
+      "lines": [
+        55
+      ],
+      "concept": "cell-parts"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "figure": "os-1-15",
+  "labels": [
+    {
+      "id": "cranial-cavity-lateral",
+      "name": "Cranial cavity",
+      "accept": [
+        "cranial cavity",
+        "cranial"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "dorsal-cavity"
+    },
+    {
+      "id": "cranial-cavity-anterior",
+      "name": "Cranial cavity",
+      "accept": [
+        "cranial cavity",
+        "cranial"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "dorsal-cavity"
+    },
+    {
+      "id": "vertebral-cavity-anterior",
+      "name": "Vertebral cavity",
+      "accept": [
+        "vertebral cavity",
+        "spinal cavity",
+        "vertebral",
+        "vertebral canal"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "dorsal-cavity"
+    },
+    {
+      "id": "thoracic-cavity",
+      "name": "Thoracic cavity",
+      "accept": [
+        "thoracic cavity",
+        "thoracic"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "thoracic-cavity"
+    },
+    {
+      "id": "superior-mediastinum",
+      "name": "Superior mediastinum",
+      "accept": [
+        "superior mediastinum",
+        "mediastinum"
+      ],
+      "lines": [
+        7,
+        9
+      ],
+      "concept": "mediastinum"
+    },
+    {
+      "id": "dorsal-body-cavity",
+      "name": "Dorsal body cavity",
+      "accept": [
+        "dorsal body cavity",
+        "dorsal",
+        "dorsal cavity",
+        "posterior body cavity"
+      ],
+      "lines": [
+        8,
+        10,
+        12
+      ],
+      "concept": "dorsal-cavity"
+    },
+    {
+      "id": "pleural-cavity",
+      "name": "Pleural cavity",
+      "accept": [
+        "pleural cavity",
+        "pleural"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "pleural-cavity"
+    },
+    {
+      "id": "pericardial-cavity",
+      "name": "Pericardial cavity within the mediastinum",
+      "accept": [
+        "pericardial cavity within the mediastinum",
+        "pericardial",
+        "pericardial cavity"
+      ],
+      "lines": [
+        13,
+        14,
+        15
+      ],
+      "concept": "pericardial-cavity"
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "diaphragm"
+    },
+    {
+      "id": "vertebral-cavity-lateral",
+      "name": "Vertebral cavity",
+      "accept": [
+        "vertebral cavity",
+        "spinal cavity",
+        "vertebral",
+        "vertebral canal"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "dorsal-cavity"
+    },
+    {
+      "id": "ventral-body-cavity",
+      "name": "Ventral body cavity",
+      "accept": [
+        "ventral body cavity",
+        "anterior body cavity",
+        "ventral",
+        "ventral cavity"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "ventral-cavity"
+    },
+    {
+      "id": "abdominal-cavity",
+      "name": "Abdominal cavity",
+      "accept": [
+        "abdominal cavity",
+        "abdominal"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "abdominopelvic-cavity"
+    },
+    {
+      "id": "abdominopelvic-cavity",
+      "name": "Abdominopelvic cavity",
+      "accept": [
+        "abdominopelvic cavity",
+        "abdominopelvic"
+      ],
+      "lines": [
+        24,
+        26,
+        27
+      ],
+      "concept": "abdominopelvic-cavity"
+    },
+    {
+      "id": "pelvic-cavity",
+      "name": "Pelvic cavity",
+      "accept": [
+        "pelvic cavity",
+        "pelvic"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "abdominopelvic-cavity"
+    }
+  ]
+}

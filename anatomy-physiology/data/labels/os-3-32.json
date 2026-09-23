@@ -1,0 +1,102 @@
+{
+  "figure": "os-3-32",
+  "labels": [
+    {
+      "id": "prophase",
+      "name": "Prophase",
+      "accept": [
+        "prophase"
+      ],
+      "box": [
+        48,
+        9,
+        92,
+        26
+      ],
+      "concept": "mitosis"
+    },
+    {
+      "id": "prometaphase",
+      "name": "Prometaphase",
+      "accept": [
+        "prometaphase"
+      ],
+      "box": [
+        212,
+        9,
+        132,
+        26
+      ],
+      "concept": "mitosis"
+    },
+    {
+      "id": "metaphase",
+      "name": "Metaphase",
+      "accept": [
+        "metaphase"
+      ],
+      "box": [
+        410,
+        9,
+        100,
+        26
+      ],
+      "concept": "mitosis"
+    },
+    {
+      "id": "anaphase",
+      "name": "Anaphase",
+      "accept": [
+        "anaphase"
+      ],
+      "box": [
+        594,
+        9,
+        94,
+        26
+      ],
+      "concept": "mitosis"
+    },
+    {
+      "id": "telophase",
+      "name": "Telophase",
+      "accept": [
+        "telophase"
+      ],
+      "box": [
+        780,
+        9,
+        94,
+        26
+      ],
+      "concept": "mitosis"
+    },
+    {
+      "id": "cytokinesis",
+      "name": "Cytokinesis",
+      "accept": [
+        "cytokinesis"
+      ],
+      "box": [
+        954,
+        9,
+        122,
+        26
+      ],
+      "concept": "cytokinesis"
+    },
+    {
+      "id": "mitosis",
+      "name": "Mitosis",
+      "accept": [
+        "mitosis",
+        "m phase",
+        "mitotic phase"
+      ],
+      "lines": [
+        74
+      ],
+      "concept": "mitosis"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "figure": "os-4-4",
+  "labels": [
+    {
+      "id": "mucous-membranes",
+      "name": "Mucous membranes",
+      "accept": [
+        "mucous membranes",
+        "mucosa",
+        "mucous membrane"
+      ],
+      "lines": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "concept": "mucous-membrane"
+    },
+    {
+      "id": "serous-membranes",
+      "name": "Serous membranes",
+      "accept": [
+        "serous membranes",
+        "serosa",
+        "serous membrane"
+      ],
+      "lines": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "concept": "serous-membrane"
+    },
+    {
+      "id": "cutaneous-membrane",
+      "name": "Cutaneous membrane",
+      "accept": [
+        "cutaneous membrane",
+        "cutaneous",
+        "skin"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "cutaneous-membrane"
+    },
+    {
+      "id": "synovial-membranes",
+      "name": "Synovial membranes",
+      "accept": [
+        "synovial membranes",
+        "synovial membrane",
+        "synovium"
+      ],
+      "lines": [
+        12,
+        13,
+        14
+      ],
+      "concept": "synovial-membrane"
+    }
+  ]
+}

@@ -131,6 +131,11 @@ The full explanation, in the lesson's order of ideas. Length follows the topic, 
   own caption</figcaption></figure>`, and in a lesson with `"anatomy": { "figure":
   "heart-external", "caption": "..." }`. Check the other topics' figure files before
   registering: never register the same OpenStax figure twice.
+- A graph or image question needs a registered figure. To use one of your own diagrams there,
+  save it as `anatomy-physiology/figures/<id>.svg` (standalone: `role="img"`, an `aria-label`,
+  colors written in from the anp.css tokens, no page CSS classes) and register it with
+  `"source": "levlprep", "license": "LevlPrep original", "ext": "svg", "credit": "LevlPrep"`
+  and real `w`/`h` (spec decision 44).
 - **Our own diagrams** (physiology schematics, graphs, causal chains): write inline SVG inside
   `<figure id="fig-..." class="anp-fig">...<figcaption>...</figcaption></figure>`, using only
   these classes, never color attributes:

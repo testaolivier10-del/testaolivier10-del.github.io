@@ -1,0 +1,116 @@
+{
+  "figure": "os-2-27",
+  "labels": [
+    {
+      "id": "substrates",
+      "name": "Substrates",
+      "accept": [
+        "substrates",
+        "substrate"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "active-sites",
+      "name": "Active sites",
+      "accept": [
+        "active sites",
+        "active site"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "enzyme-a",
+      "name": "Enzyme",
+      "accept": [
+        "enzyme"
+      ],
+      "box": [
+        80,
+        311,
+        74,
+        26
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "enzyme-b",
+      "name": "Enzyme",
+      "accept": [
+        "enzyme"
+      ],
+      "box": [
+        373,
+        311,
+        74,
+        26
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "enzyme-c",
+      "name": "Enzyme",
+      "accept": [
+        "enzyme"
+      ],
+      "box": [
+        666,
+        311,
+        74,
+        26
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "enzyme-d",
+      "name": "Enzyme",
+      "accept": [
+        "enzyme"
+      ],
+      "box": [
+        959,
+        311,
+        74,
+        26
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "product-bound",
+      "name": "Product",
+      "accept": [
+        "product",
+        "products"
+      ],
+      "box": [
+        665,
+        203,
+        70,
+        26
+      ],
+      "concept": "chemical-reaction"
+    },
+    {
+      "id": "product-released",
+      "name": "Product",
+      "accept": [
+        "product",
+        "products"
+      ],
+      "box": [
+        957,
+        65,
+        70,
+        26
+      ],
+      "concept": "chemical-reaction"
+    }
+  ]
+}

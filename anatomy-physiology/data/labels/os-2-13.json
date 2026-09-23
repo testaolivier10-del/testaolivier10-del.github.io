@@ -1,0 +1,110 @@
+{
+  "figure": "os-2-13",
+  "labels": [
+    {
+      "id": "activation-energy",
+      "name": "Activation energy required",
+      "accept": [
+        "activation energy required",
+        "activation energy"
+      ],
+      "lines": [
+        0,
+        1,
+        3
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "less-activation-energy",
+      "name": "Less activation energy required",
+      "accept": [
+        "less activation energy required",
+        "activation energy",
+        "less activation energy",
+        "lower activation energy"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "reactants-a",
+      "name": "Reactants",
+      "accept": [
+        "reactants",
+        "reactant",
+        "substrates"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "chemical-reaction"
+    },
+    {
+      "id": "reactants-b",
+      "name": "Reactants",
+      "accept": [
+        "reactants",
+        "reactant",
+        "substrates"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "chemical-reaction"
+    },
+    {
+      "id": "product-a",
+      "name": "Product",
+      "accept": [
+        "product",
+        "products"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "chemical-reaction"
+    },
+    {
+      "id": "product-b",
+      "name": "Product",
+      "accept": [
+        "product",
+        "products"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "chemical-reaction"
+    },
+    {
+      "id": "without-enzyme",
+      "name": "Progress of reaction without enzyme",
+      "accept": [
+        "progress of reaction without enzyme",
+        "uncatalyzed reaction",
+        "without enzyme"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "enzyme"
+    },
+    {
+      "id": "with-enzyme",
+      "name": "Progress of reaction with enzyme",
+      "accept": [
+        "progress of reaction with enzyme",
+        "catalyzed reaction",
+        "with enzyme"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "enzyme"
+    }
+  ]
+}

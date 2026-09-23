@@ -1,0 +1,111 @@
+{
+  "figure": "os-12-22",
+  "labels": [
+    {
+      "id": "zero-mv",
+      "name": "0 mV",
+      "accept": [
+        "0 mv",
+        "0",
+        "zero"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "voltage"
+    },
+    {
+      "id": "minus-70-mv",
+      "name": "-70 mV",
+      "accept": [
+        "-70 mv",
+        "-70",
+        "resting membrane potential"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "resting-membrane-potential"
+    },
+    {
+      "id": "plus-70-mv",
+      "name": "+70 mV",
+      "accept": [
+        "+70 mv",
+        "+70",
+        "70"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "voltage"
+    },
+    {
+      "id": "reference-electrode",
+      "name": "Reference electrode",
+      "accept": [
+        "reference electrode"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": null
+    },
+    {
+      "id": "recording-microelectrode",
+      "name": "Recording microelectrode",
+      "accept": [
+        "recording microelectrode",
+        "microelectrode",
+        "recording electrode"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null
+    },
+    {
+      "id": "voltmeter",
+      "name": "Voltmeter",
+      "accept": [
+        "voltmeter"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "voltage"
+    },
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "box": [
+        9,
+        221,
+        162,
+        26
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "cytosol",
+      "name": "Cytosol",
+      "accept": [
+        "cytosol",
+        "cytoplasm",
+        "icf",
+        "intracellular fluid"
+      ],
+      "box": [
+        9,
+        479,
+        74,
+        26
+      ],
+      "concept": "cell-parts"
+    }
+  ]
+}

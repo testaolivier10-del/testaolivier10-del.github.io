@@ -1,0 +1,72 @@
+{
+  "figure": "os-1-14",
+  "labels": [
+    {
+      "id": "sagittal-plane",
+      "name": "Sagittal plane",
+      "accept": [
+        "sagittal plane",
+        "midsagittal plane",
+        "parasagittal plane",
+        "sagittal"
+      ],
+      "box": [
+        16,
+        16,
+        132,
+        88
+      ],
+      "concept": "sagittal-plane"
+    },
+    {
+      "id": "frontal-plane",
+      "name": "Frontal (coronal) plane",
+      "accept": [
+        "frontal (coronal) plane",
+        "coronal",
+        "coronal plane",
+        "frontal",
+        "frontal plane"
+      ],
+      "box": [
+        912,
+        76,
+        154,
+        132
+      ],
+      "concept": "frontal-plane"
+    },
+    {
+      "id": "transverse-plane",
+      "name": "Transverse plane",
+      "accept": [
+        "transverse plane",
+        "cross section",
+        "horizontal plane",
+        "transverse"
+      ],
+      "box": [
+        914,
+        326,
+        186,
+        84
+      ],
+      "concept": "transverse-plane"
+    },
+    {
+      "id": "oblique-plane",
+      "name": "Oblique plane",
+      "accept": [
+        "oblique plane",
+        "oblique"
+      ],
+      "box": [
+        778,
+        808,
+        242,
+        44
+      ],
+      "concept": "anatomical-plane-section"
+    }
+  ]
+}

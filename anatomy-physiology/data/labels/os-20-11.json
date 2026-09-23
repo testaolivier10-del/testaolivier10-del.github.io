@@ -1,0 +1,117 @@
+{
+  "figure": "os-20-11",
+  "labels": [
+    {
+      "id": "temporal-artery",
+      "name": "Temporal artery",
+      "accept": [
+        "temporal artery",
+        "superficial temporal artery",
+        "temporal"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "facial-artery",
+      "name": "Facial artery",
+      "accept": [
+        "facial artery",
+        "facial"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "common-carotid-artery",
+      "name": "Common carotid artery",
+      "accept": [
+        "common carotid artery",
+        "carotid artery",
+        "common carotid",
+        "carotid"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "brachial-artery",
+      "name": "Brachial artery",
+      "accept": [
+        "brachial artery",
+        "brachial"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "radial-artery",
+      "name": "Radial artery",
+      "accept": [
+        "radial artery",
+        "radial"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "femoral-artery",
+      "name": "Femoral artery",
+      "accept": [
+        "femoral artery",
+        "femoral"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "popliteal-artery",
+      "name": "Popliteal artery",
+      "accept": [
+        "popliteal artery",
+        "popliteal"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "posterior-tibial-artery",
+      "name": "Posterior tibial artery",
+      "accept": [
+        "posterior tibial artery",
+        "posterior tibial"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "dorsalis-pedis-artery",
+      "name": "Dorsalis pedis artery",
+      "accept": [
+        "dorsalis pedis artery",
+        "dorsalis pedis",
+        "dorsal artery of the foot"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "limb-arteries"
+    }
+  ]
+}

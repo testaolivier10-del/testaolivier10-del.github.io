@@ -1,0 +1,236 @@
+{
+  "figure": "os-2-17",
+  "labels": [
+    {
+      "id": "base",
+      "name": "Base",
+      "accept": [
+        "base",
+        "alkaline",
+        "basic"
+      ],
+      "box": [
+        194,
+        12,
+        102,
+        40
+      ],
+      "concept": "base"
+    },
+    {
+      "id": "drain-cleaner",
+      "name": "Liquid drain cleaner (pH 14)",
+      "accept": [
+        "liquid drain cleaner (ph 14)",
+        "14",
+        "drain cleaner",
+        "liquid drain cleaner"
+      ],
+      "box": [
+        608,
+        216,
+        330,
+        82
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "bleach-lye",
+      "name": "Bleaches, oven cleaner, lye (pH 13.5)",
+      "accept": [
+        "bleaches, oven cleaner, lye (ph 13.5)",
+        "13.5",
+        "bleach",
+        "lye",
+        "oven cleaner"
+      ],
+      "box": [
+        608,
+        400,
+        456,
+        84
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "ammonia",
+      "name": "Ammonia solution (pH 10.5 to 11.5)",
+      "accept": [
+        "ammonia solution (ph 10.5 to 11.5)",
+        "ammonia",
+        "ammonia solution"
+      ],
+      "box": [
+        608,
+        594,
+        300,
+        82
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "baking-soda",
+      "name": "Baking soda (pH 9.5)",
+      "accept": [
+        "baking soda (ph 9.5)",
+        "9.5",
+        "baking soda",
+        "sodium bicarbonate"
+      ],
+      "box": [
+        608,
+        782,
+        212,
+        84
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "sea-water",
+      "name": "Sea water (pH 8)",
+      "accept": [
+        "sea water (ph 8)",
+        "8",
+        "sea water",
+        "seawater"
+      ],
+      "box": [
+        608,
+        938,
+        178,
+        82
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "neutral",
+      "name": "Neutral",
+      "accept": [
+        "neutral",
+        "7",
+        "ph 7"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "blood",
+      "name": "Blood (pH 7.4)",
+      "accept": [
+        "blood (ph 7.4)",
+        "7.4",
+        "blood"
+      ],
+      "box": [
+        608,
+        1078,
+        148,
+        84
+      ],
+      "concept": "normal-blood-ph"
+    },
+    {
+      "id": "milk-urine-saliva",
+      "name": "Milk, urine, saliva (pH 6.3 to 6.6)",
+      "accept": [
+        "milk, urine, saliva (ph 6.3 to 6.6)",
+        "milk",
+        "saliva",
+        "urine"
+      ],
+      "box": [
+        608,
+        1208,
+        290,
+        84
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "black-coffee",
+      "name": "Black coffee (pH 5)",
+      "accept": [
+        "black coffee (ph 5)",
+        "5",
+        "black coffee",
+        "coffee"
+      ],
+      "box": [
+        608,
+        1353,
+        210,
+        84
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "juice-soda",
+      "name": "Grapefruit juice, soda, tomato juice (pH 2.5 to 3.5)",
+      "accept": [
+        "grapefruit juice, soda, tomato juice (ph 2.5 to 3.5)",
+        "grapefruit juice",
+        "soda",
+        "tomato juice"
+      ],
+      "box": [
+        608,
+        1530,
+        362,
+        122
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "lemon-vinegar",
+      "name": "Lemon juice, vinegar (pH 2)",
+      "accept": [
+        "lemon juice, vinegar (ph 2)",
+        "2",
+        "lemon juice",
+        "vinegar"
+      ],
+      "box": [
+        608,
+        1720,
+        348,
+        84
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "battery-acid",
+      "name": "Battery acid, hydrochloric acid (pH 0)",
+      "accept": [
+        "battery acid, hydrochloric acid (ph 0)",
+        "0",
+        "battery acid",
+        "hcl",
+        "hydrochloric acid"
+      ],
+      "box": [
+        608,
+        1946,
+        486,
+        84
+      ],
+      "concept": "ph"
+    },
+    {
+      "id": "acid",
+      "name": "Acid",
+      "accept": [
+        "acid",
+        "acidic"
+      ],
+      "box": [
+        200,
+        2184,
+        90,
+        40
+      ],
+      "concept": "acid"
+    }
+  ]
+}

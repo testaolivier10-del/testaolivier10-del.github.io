@@ -1,0 +1,216 @@
+{
+  "figure": "os-24-4",
+  "labels": [
+    {
+      "id": "glycolysis",
+      "name": "Glycolysis",
+      "accept": [
+        "glycolysis"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "glucose",
+      "name": "Glucose",
+      "accept": [
+        "glucose",
+        "c6h12o6"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "glucose"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "pyruvate-molecules",
+      "name": "Pyruvate molecules",
+      "accept": [
+        "pyruvate molecules",
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "pyruvate-to-acetyl-coa",
+      "name": "Transformation of pyruvate into acetyl CoA",
+      "accept": [
+        "transformation of pyruvate into acetyl coa",
+        "acetyl coa formation",
+        "link reaction",
+        "pyruvate oxidation",
+        "transition reaction"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "pyruvate",
+      "name": "Pyruvate",
+      "accept": [
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "matrix-acetyl-coa",
+      "name": "Mitochondrial matrix",
+      "accept": [
+        "mitochondrial matrix",
+        "matrix"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "co2-acetyl-coa",
+      "name": "CO2",
+      "accept": [
+        "co2",
+        "carbon dioxide"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "metabolic-co2"
+    },
+    {
+      "id": "acetyl-coa",
+      "name": "Acetyl CoA",
+      "accept": [
+        "acetyl coa",
+        "acetyl coenzyme a",
+        "acetyl-coa"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "krebs-cycle",
+      "name": "Krebs cycle",
+      "accept": [
+        "krebs cycle",
+        "citric acid cycle",
+        "krebs",
+        "tca cycle"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "co2-krebs",
+      "name": "CO2",
+      "accept": [
+        "co2",
+        "carbon dioxide"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "metabolic-co2"
+    },
+    {
+      "id": "matrix-krebs",
+      "name": "Mitochondrial matrix",
+      "accept": [
+        "mitochondrial matrix",
+        "matrix"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "oxidative-phosphorylation",
+      "name": "Oxidative phosphorylation",
+      "accept": [
+        "oxidative phosphorylation",
+        "electron transport",
+        "electron transport chain"
+      ],
+      "box": [
+        14,
+        766,
+        248,
+        26
+      ],
+      "concept": "aerobic-respiration"
+    },
+    {
+      "id": "mitochondrial-inner-membrane",
+      "name": "Mitochondrial inner membrane",
+      "accept": [
+        "mitochondrial inner membrane",
+        "inner membrane",
+        "inner mitochondrial membrane"
+      ],
+      "lines": [
+        20,
+        22,
+        23
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "redox-reactions",
+      "name": "Redox reactions",
+      "accept": [
+        "redox reactions",
+        "oxidation-reduction reactions",
+        "redox"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "h2o",
+      "name": "H2O",
+      "accept": [
+        "h2o",
+        "water"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "aerobic-respiration"
+    }
+  ]
+}

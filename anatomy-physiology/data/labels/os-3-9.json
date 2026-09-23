@@ -1,0 +1,140 @@
+{
+  "figure": "os-3-9",
+  "labels": [
+    {
+      "id": "extracellular-space",
+      "name": "Extracellular space",
+      "accept": [
+        "extracellular space",
+        "ecf",
+        "extracellular fluid",
+        "outside the cell"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "na-gradient",
+      "name": "Na+",
+      "accept": [
+        "na+",
+        "na",
+        "sodium"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "ecf-icf-composition"
+    },
+    {
+      "id": "sodium",
+      "name": "Sodium (Na+)",
+      "accept": [
+        "sodium (na+)",
+        "na",
+        "na+",
+        "sodium",
+        "sodium ion"
+      ],
+      "lines": [
+        9,
+        12
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "potassium",
+      "name": "Potassium (K+)",
+      "accept": [
+        "potassium (k+)",
+        "k",
+        "k+",
+        "potassium",
+        "potassium ion"
+      ],
+      "lines": [
+        10,
+        14
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "cell membrane"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "phosphate",
+      "name": "Phosphate",
+      "accept": [
+        "phosphate",
+        "phosphate group",
+        "pi"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "atp-hydrolysis"
+    },
+    {
+      "id": "atp",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "adp",
+      "name": "ADP",
+      "accept": [
+        "adp",
+        "adenosine diphosphate"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol",
+        "intracellular fluid"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "k-gradient",
+      "name": "K+",
+      "accept": [
+        "k+",
+        "k",
+        "potassium"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "ecf-icf-composition"
+    }
+  ]
+}

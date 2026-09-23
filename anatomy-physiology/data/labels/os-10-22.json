@@ -1,0 +1,94 @@
+{
+  "figure": "os-10-22",
+  "labels": [
+    {
+      "id": "intercalated-disc",
+      "name": "Intercalated discs",
+      "accept": [
+        "intercalated discs",
+        "intercalated disc",
+        "intercalated disk",
+        "intercalated disks"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "intercalated-disc"
+    },
+    {
+      "id": "capillary",
+      "name": "Capillary",
+      "accept": [
+        "capillary",
+        "capillaries"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "blood-vessel-basics"
+    },
+    {
+      "id": "desmosome",
+      "name": "Desmosome",
+      "accept": [
+        "desmosome",
+        "desmosomes"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "desmosome"
+    },
+    {
+      "id": "gap-junction-fiber",
+      "name": "Gap junction",
+      "accept": [
+        "gap junction",
+        "gap junctions"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "gap-junction"
+    },
+    {
+      "id": "gap-junction",
+      "name": "Gap junction",
+      "accept": [
+        "gap junction",
+        "gap junctions"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "gap-junction"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "cardiac-muscle-fiber",
+      "name": "Cardiac muscle fiber",
+      "accept": [
+        "cardiac muscle fiber",
+        "cardiac muscle cell",
+        "cardiac myocyte",
+        "cardiomyocyte",
+        "muscle fiber"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "cardiac-muscle-tissue"
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "figure": "os-17-5",
+  "labels": [
+    {
+      "id": "capillary",
+      "name": "Capillary",
+      "accept": [
+        "capillary",
+        "capillaries"
+      ],
+      "box": [
+        124,
+        24,
+        88,
+        26
+      ],
+      "concept": "blood-vessel-basics"
+    },
+    {
+      "id": "water-soluble-hormone",
+      "name": "Water-soluble hormone",
+      "accept": [
+        "water-soluble hormone",
+        "first messenger",
+        "hormone",
+        "water soluble hormone"
+      ],
+      "box": [
+        474,
+        16,
+        134,
+        48
+      ],
+      "concept": "messenger-solubility"
+    },
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "extracellular fluid",
+        "ecf"
+      ],
+      "box": [
+        16,
+        100,
+        164,
+        26
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "cell-membrane-receptor",
+      "name": "Cell membrane receptor",
+      "accept": [
+        "cell membrane receptor",
+        "membrane receptor",
+        "receptor",
+        "receptor protein"
+      ],
+      "box": [
+        420,
+        100,
+        146,
+        48
+      ],
+      "concept": "receptor-protein"
+    },
+    {
+      "id": "g-protein",
+      "name": "G protein (activated)",
+      "accept": [
+        "g protein (activated)",
+        "activated g protein",
+        "g protein"
+      ],
+      "box": [
+        400,
+        190,
+        192,
+        26
+      ],
+      "concept": "second-messenger"
+    },
+    {
+      "id": "adenylyl-cyclase",
+      "name": "Adenylyl cyclase",
+      "accept": [
+        "adenylyl cyclase",
+        "adenylate cyclase"
+      ],
+      "box": [
+        476,
+        228,
+        110,
+        50
+      ],
+      "concept": "second-messenger"
+    },
+    {
+      "id": "atp-1",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "box": [
+        392,
+        272,
+        40,
+        24
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "box": [
+        230,
+        325,
+        80,
+        26
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "camp",
+      "name": "cAMP",
+      "accept": [
+        "camp",
+        "cyclic adenosine monophosphate",
+        "cyclic amp",
+        "second messenger"
+      ],
+      "box": [
+        424,
+        338,
+        60,
+        26
+      ],
+      "concept": "second-messenger"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol"
+      ],
+      "box": [
+        28,
+        424,
+        104,
+        26
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "dna",
+      "name": "DNA",
+      "accept": [
+        "dna",
+        "deoxyribonucleic acid"
+      ],
+      "box": [
+        304,
+        450,
+        48,
+        24
+      ],
+      "concept": "dna"
+    },
+    {
+      "id": "protein-kinase",
+      "name": "Protein kinase",
+      "accept": [
+        "protein kinase",
+        "kinase"
+      ],
+      "box": [
+        538,
+        432,
+        72,
+        50
+      ],
+      "concept": "second-messenger"
+    },
+    {
+      "id": "activated-protein-kinase",
+      "name": "Activated protein kinase",
+      "accept": [
+        "activated protein kinase",
+        "active protein kinase"
+      ],
+      "box": [
+        522,
+        500,
+        90,
+        74
+      ],
+      "concept": "second-messenger"
+    },
+    {
+      "id": "atp-2",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "box": [
+        340,
+        522,
+        42,
+        24
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "adp",
+      "name": "ADP",
+      "accept": [
+        "adp",
+        "adenosine diphosphate"
+      ],
+      "box": [
+        368,
+        600,
+        46,
+        24
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "activated-protein",
+      "name": "Activated protein",
+      "accept": [
+        "activated protein",
+        "phosphorylated protein"
+      ],
+      "box": [
+        24,
+        688,
+        160,
+        24
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "inactive-protein",
+      "name": "Inactive protein",
+      "accept": [
+        "inactive protein",
+        "unphosphorylated protein"
+      ],
+      "box": [
+        232,
+        688,
+        146,
+        24
+      ],
+      "concept": "protein"
+    }
+  ]
+}

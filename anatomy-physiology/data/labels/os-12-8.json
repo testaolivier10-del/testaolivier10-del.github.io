@@ -1,0 +1,106 @@
+{
+  "figure": "os-12-8",
+  "labels": [
+    {
+      "id": "cell-body",
+      "name": "Cell body (soma)",
+      "accept": [
+        "cell body (soma)",
+        "cell body",
+        "perikaryon",
+        "soma"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "neuron-parts-basic"
+    },
+    {
+      "id": "axon",
+      "name": "Axon",
+      "accept": [
+        "axon"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "neuron-parts-basic"
+    },
+    {
+      "id": "oligodendrocyte",
+      "name": "Oligodendrocyte",
+      "accept": [
+        "oligodendrocyte",
+        "oligodendrocytes"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cns-glia"
+    },
+    {
+      "id": "cell-membrane",
+      "name": "Cell membrane",
+      "accept": [
+        "cell membrane",
+        "neurolemma",
+        "plasma membrane"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "dendrites",
+      "name": "Dendrites",
+      "accept": [
+        "dendrites",
+        "dendrite"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "neuron-parts-basic"
+    },
+    {
+      "id": "node-of-ranvier",
+      "name": "Node of Ranvier",
+      "accept": [
+        "node of ranvier",
+        "myelin sheath gap",
+        "node",
+        "nodes of ranvier"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "myelin"
+    },
+    {
+      "id": "myelin-sheath",
+      "name": "Myelin sheath",
+      "accept": [
+        "myelin sheath",
+        "myelin"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "myelin"
+    },
+    {
+      "id": "synapse",
+      "name": "Synapse",
+      "accept": [
+        "synapse",
+        "axon terminal",
+        "synapses"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "synapse-basic"
+    }
+  ]
+}

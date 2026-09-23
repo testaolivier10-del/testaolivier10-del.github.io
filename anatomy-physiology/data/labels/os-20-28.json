@@ -1,0 +1,348 @@
+{
+  "figure": "os-20-28",
+  "labels": [
+    {
+      "id": "aortic-arch",
+      "name": "Aortic arch",
+      "accept": [
+        "aortic arch",
+        "arch of aorta",
+        "arch of the aorta"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "internal-thoracic-artery",
+      "name": "Internal thoracic",
+      "accept": [
+        "internal thoracic",
+        "internal thoracic artery",
+        "internal mammary artery"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": null
+    },
+    {
+      "id": "bronchial-arteries",
+      "name": "Bronchial",
+      "accept": [
+        "bronchial",
+        "bronchial artery",
+        "bronchial arteries"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null
+    },
+    {
+      "id": "esophageal-arteries",
+      "name": "Esophageal",
+      "accept": [
+        "esophageal",
+        "esophageal artery",
+        "esophageal arteries"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null
+    },
+    {
+      "id": "intercostal-arteries",
+      "name": "Intercostal",
+      "accept": [
+        "intercostal",
+        "intercostal artery",
+        "intercostal arteries",
+        "posterior intercostal arteries"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": null
+    },
+    {
+      "id": "mediastinal-arteries",
+      "name": "Mediastinal",
+      "accept": [
+        "mediastinal",
+        "mediastinal artery",
+        "mediastinal arteries"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null
+    },
+    {
+      "id": "pericardial-arteries",
+      "name": "Pericardial",
+      "accept": [
+        "pericardial",
+        "pericardial artery",
+        "pericardial arteries"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": null
+    },
+    {
+      "id": "superior-phrenic-arteries",
+      "name": "Superior phrenic",
+      "accept": [
+        "superior phrenic",
+        "superior phrenic artery",
+        "superior phrenic arteries"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": null
+    },
+    {
+      "id": "thoracic-aorta",
+      "name": "Thoracic aorta",
+      "accept": [
+        "thoracic aorta",
+        "descending thoracic aorta"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "aortic-hiatus",
+      "name": "Aortic hiatus",
+      "accept": [
+        "aortic hiatus"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "inferior-phrenic-arteries",
+      "name": "Inferior phrenic",
+      "accept": [
+        "inferior phrenic",
+        "inferior phrenic artery",
+        "inferior phrenic arteries"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "celiac-trunk",
+      "name": "Celiac trunk",
+      "accept": [
+        "celiac trunk",
+        "celiac artery",
+        "coeliac trunk"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "diaphragm"
+    },
+    {
+      "id": "left-gastric-artery",
+      "name": "Left gastric",
+      "accept": [
+        "left gastric",
+        "left gastric artery"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "adrenal-artery",
+      "name": "Adrenal",
+      "accept": [
+        "adrenal",
+        "adrenal artery",
+        "suprarenal artery",
+        "adrenal arteries"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "splenic-artery",
+      "name": "Splenic",
+      "accept": [
+        "splenic",
+        "splenic artery"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "common-hepatic-artery",
+      "name": "Common hepatic",
+      "accept": [
+        "common hepatic",
+        "common hepatic artery",
+        "hepatic artery"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "renal-artery",
+      "name": "Renal",
+      "accept": [
+        "renal",
+        "renal artery"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "gonadal-artery",
+      "name": "Gonadal",
+      "accept": [
+        "gonadal",
+        "gonadal artery",
+        "ovarian artery",
+        "testicular artery"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "superior-mesenteric-artery",
+      "name": "Superior mesenteric",
+      "accept": [
+        "superior mesenteric",
+        "superior mesenteric artery",
+        "sma"
+      ],
+      "box": [
+        871,
+        709,
+        229,
+        28
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "lumbar-arteries",
+      "name": "Lumbar",
+      "accept": [
+        "lumbar",
+        "lumbar artery",
+        "lumbar arteries"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "abdominal-aorta",
+      "name": "Abdominal aorta",
+      "accept": [
+        "abdominal aorta"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "median-sacral-artery",
+      "name": "Median sacral",
+      "accept": [
+        "median sacral",
+        "median sacral artery"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "inferior-mesenteric-artery",
+      "name": "Inferior mesenteric",
+      "accept": [
+        "inferior mesenteric",
+        "inferior mesenteric artery",
+        "ima"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "common-iliac-artery",
+      "name": "Common iliac",
+      "accept": [
+        "common iliac",
+        "common iliac artery"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "internal-iliac-artery",
+      "name": "Internal iliac",
+      "accept": [
+        "internal iliac",
+        "internal iliac artery"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "external-iliac-artery",
+      "name": "External iliac",
+      "accept": [
+        "external iliac",
+        "external iliac artery"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "abdominal-arteries"
+    }
+  ]
+}

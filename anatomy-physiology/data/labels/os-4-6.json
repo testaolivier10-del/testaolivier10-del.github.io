@@ -1,0 +1,159 @@
+{
+  "figure": "os-4-6",
+  "labels": [
+    {
+      "id": "simple",
+      "name": "Simple",
+      "accept": [
+        "simple",
+        "simple epithelium"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "epithelium-classification"
+    },
+    {
+      "id": "stratified",
+      "name": "Stratified",
+      "accept": [
+        "stratified",
+        "stratified epithelium"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "epithelium-classification"
+    },
+    {
+      "id": "squamous",
+      "name": "Squamous",
+      "accept": [
+        "squamous"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "epithelium-classification"
+    },
+    {
+      "id": "simple-squamous-epithelium",
+      "name": "Simple squamous epithelium",
+      "accept": [
+        "simple squamous epithelium",
+        "simple squamous"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "simple-squamous"
+    },
+    {
+      "id": "stratified-squamous-epithelium",
+      "name": "Stratified squamous epithelium",
+      "accept": [
+        "stratified squamous epithelium",
+        "stratified squamous"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "stratified-squamous"
+    },
+    {
+      "id": "cuboidal",
+      "name": "Cuboidal",
+      "accept": [
+        "cuboidal"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "epithelium-classification"
+    },
+    {
+      "id": "stratified-cuboidal-epithelium",
+      "name": "Stratified cuboidal epithelium",
+      "accept": [
+        "stratified cuboidal epithelium",
+        "stratified cuboidal"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "stratified-cuboidal-columnar"
+    },
+    {
+      "id": "simple-cuboidal-epithelium",
+      "name": "Simple cuboidal epithelium",
+      "accept": [
+        "simple cuboidal epithelium",
+        "simple cuboidal"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "simple-cuboidal"
+    },
+    {
+      "id": "pseudostratified-header",
+      "name": "Pseudostratified",
+      "accept": [
+        "pseudostratified"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "pseudostratified"
+    },
+    {
+      "id": "columnar",
+      "name": "Columnar",
+      "accept": [
+        "columnar"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "epithelium-classification"
+    },
+    {
+      "id": "simple-columnar-epithelium",
+      "name": "Simple columnar epithelium",
+      "accept": [
+        "simple columnar epithelium",
+        "simple columnar"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "simple-columnar"
+    },
+    {
+      "id": "stratified-columnar-epithelium",
+      "name": "Stratified columnar epithelium",
+      "accept": [
+        "stratified columnar epithelium",
+        "stratified columnar"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "stratified-cuboidal-columnar"
+    },
+    {
+      "id": "pseudostratified-columnar-epithelium",
+      "name": "Pseudostratified columnar epithelium",
+      "accept": [
+        "pseudostratified columnar epithelium",
+        "pseudostratified ciliated columnar epithelium",
+        "pseudostratified columnar",
+        "pseudostratified epithelium"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "pseudostratified"
+    }
+  ]
+}

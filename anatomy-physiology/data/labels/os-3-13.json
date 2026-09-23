@@ -1,0 +1,245 @@
+{
+  "figure": "os-3-13",
+  "labels": [
+    {
+      "id": "mitochondria",
+      "name": "Mitochondria",
+      "accept": [
+        "mitochondria",
+        "mitochondrial",
+        "mitochondrion"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "intermediate-filament",
+      "name": "Intermediate filament",
+      "accept": [
+        "intermediate filament",
+        "intermediate filaments"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "cell membrane"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "ribosomes",
+      "name": "Ribosomes",
+      "accept": [
+        "ribosomes",
+        "ribosome"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "ribosome"
+    },
+    {
+      "id": "microtubule",
+      "name": "Microtubule",
+      "accept": [
+        "microtubule",
+        "microtubules"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "rough-endoplasmic-reticulum",
+      "name": "Rough endoplasmic reticulum",
+      "accept": [
+        "rough endoplasmic reticulum",
+        "rer",
+        "rough er"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "endoplasmic-reticulum"
+    },
+    {
+      "id": "centrosome",
+      "name": "Centrosome",
+      "accept": [
+        "centrosome",
+        "centriole",
+        "centrioles",
+        "centrosomes"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "nucleolus",
+      "name": "Nucleolus",
+      "accept": [
+        "nucleolus"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "microfilament",
+      "name": "Microfilament",
+      "accept": [
+        "microfilament",
+        "actin filament",
+        "microfilaments"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "chromatin",
+      "name": "Chromatin",
+      "accept": [
+        "chromatin"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "lysosome",
+      "name": "Lysosome",
+      "accept": [
+        "lysosome",
+        "lysosomes"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "lysosome"
+    },
+    {
+      "id": "golgi-apparatus",
+      "name": "Golgi apparatus",
+      "accept": [
+        "golgi apparatus",
+        "golgi",
+        "golgi body",
+        "golgi complex"
+      ],
+      "lines": [
+        23,
+        24
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "smooth-endoplasmic-reticulum",
+      "name": "Smooth endoplasmic reticulum",
+      "accept": [
+        "smooth endoplasmic reticulum",
+        "ser",
+        "smooth er"
+      ],
+      "lines": [
+        25,
+        26
+      ],
+      "concept": "endoplasmic-reticulum"
+    },
+    {
+      "id": "secretory-vesicle",
+      "name": "Secretory vesicle",
+      "accept": [
+        "secretory vesicle",
+        "secretory vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "golgi-vesicle",
+      "name": "Golgi vesicle",
+      "accept": [
+        "golgi vesicle",
+        "golgi vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "peroxisome",
+      "name": "Peroxisome",
+      "accept": [
+        "peroxisome",
+        "peroxisomes"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "peroxisome"
+    },
+    {
+      "id": "cytoplasm",
+      "name": "Cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytosol"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "vacuole",
+      "name": "Vacuole",
+      "accept": [
+        "vacuole",
+        "vacuoles"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": null
+    }
+  ]
+}

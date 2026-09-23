@@ -1,0 +1,171 @@
+{
+  "figure": "os-1-13",
+  "labels": [
+    {
+      "id": "superior",
+      "name": "Superior",
+      "accept": [
+        "superior"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "superior-inferior"
+    },
+    {
+      "id": "right",
+      "name": "Right",
+      "accept": [
+        "right"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": null
+    },
+    {
+      "id": "left",
+      "name": "Left",
+      "accept": [
+        "left"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": null
+    },
+    {
+      "id": "cranial",
+      "name": "Cranial",
+      "accept": [
+        "cranial",
+        "cephalic",
+        "superior"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "superior-inferior"
+    },
+    {
+      "id": "proximal-arm",
+      "name": "Proximal",
+      "accept": [
+        "proximal"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "proximal-distal"
+    },
+    {
+      "id": "posterior",
+      "name": "Posterior or dorsal",
+      "accept": [
+        "posterior or dorsal",
+        "dorsal",
+        "posterior"
+      ],
+      "lines": [
+        5,
+        8
+      ],
+      "concept": "anterior-posterior"
+    },
+    {
+      "id": "anterior",
+      "name": "Anterior or ventral",
+      "accept": [
+        "anterior or ventral",
+        "anterior",
+        "ventral"
+      ],
+      "lines": [
+        6,
+        9
+      ],
+      "concept": "anterior-posterior"
+    },
+    {
+      "id": "medial",
+      "name": "Medial",
+      "accept": [
+        "medial"
+      ],
+      "box": [
+        768,
+        405,
+        76,
+        28
+      ],
+      "concept": "medial-lateral"
+    },
+    {
+      "id": "lateral",
+      "name": "Lateral",
+      "accept": [
+        "lateral"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "medial-lateral"
+    },
+    {
+      "id": "caudal",
+      "name": "Caudal",
+      "accept": [
+        "caudal",
+        "inferior"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "superior-inferior"
+    },
+    {
+      "id": "proximal-leg",
+      "name": "Proximal",
+      "accept": [
+        "proximal"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "proximal-distal"
+    },
+    {
+      "id": "distal-hand",
+      "name": "Distal",
+      "accept": [
+        "distal"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "proximal-distal"
+    },
+    {
+      "id": "distal-foot",
+      "name": "Distal",
+      "accept": [
+        "distal"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "proximal-distal"
+    },
+    {
+      "id": "inferior",
+      "name": "Inferior",
+      "accept": [
+        "inferior"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "superior-inferior"
+    }
+  ]
+}

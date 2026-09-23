@@ -1,0 +1,82 @@
+{
+  "figure": "os-3-19",
+  "labels": [
+    {
+      "id": "nuclear-pores",
+      "name": "Nuclear pores",
+      "accept": [
+        "nuclear pores",
+        "nuclear pore",
+        "pores"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "nuclear-envelope",
+      "name": "Nuclear envelope",
+      "accept": [
+        "nuclear envelope",
+        "nuclear membrane"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "chromatin",
+      "name": "Chromatin (condensed)",
+      "accept": [
+        "chromatin (condensed)",
+        "chromatin",
+        "condensed chromatin",
+        "heterochromatin"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "nucleolus",
+      "name": "Nucleolus",
+      "accept": [
+        "nucleolus"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "cisternae",
+      "name": "Cisternae",
+      "accept": [
+        "cisternae",
+        "cisterna",
+        "cisternae of the endoplasmic reticulum",
+        "endoplasmic reticulum",
+        "rough er"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "endoplasmic-reticulum"
+    }
+  ]
+}
