@@ -99,7 +99,7 @@
       "options": [
         "19 mm Hg is the P50 of fetal hemoglobin, whose curve lies to the left.",
         "Correct. Adult hemoglobin's P50 is about 26.8 mm Hg.",
-        "At 40 mm Hg, adult hemoglobin is about 75% saturated, not 50%.",
+        "At 40 mm Hg, adult hemoglobin is well above 50% saturated on this graph, about 80%.",
         "At 80 mm Hg both curves are near 96% saturated."
       ]
     }
@@ -188,7 +188,7 @@
   {
     "id": "anp-oxygen-transport-8",
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"
@@ -326,16 +326,16 @@
     "misconception": "a normal SpO2 means enough oxygen",
     "q": "A family is found drowsy with headaches in a house with a faulty furnace. Their pulse oximeters read 98 to 99%, and an arterial blood sample shows a normal PO2. Why are both readings misleading?",
     "options": [
-      "Carbon monoxide raises both PO2 and saturation",
+      "Carbon monoxide raises both the dissolved PO2 and the oximeter's saturation reading",
       "The finger probes were placed on cold fingers",
       "The furnace fumes contain extra oxygen",
-      "The oximeter counts carboxyhemoglobin as oxyhemoglobin, and PO2 reflects only dissolved oxygen"
+      "Oximeters read carboxyhemoglobin as oxyhemoglobin; PO2 ignores hemoglobin"
     ],
     "correct": 3,
     "why": {
       "correct": "A standard two-light oximeter cannot distinguish carboxyhemoglobin from oxyhemoglobin, so it reads near normal. PO2 measures only dissolved oxygen, which carbon monoxide does not change. Meanwhile, much of the hemoglobin is carrying carbon monoxide. A CO-oximeter measures carboxyhemoglobin directly.",
       "options": [
-        "Carbon monoxide does not raise PO2; it leaves it normal while cutting the oxygen carried on hemoglobin.",
+        "Carbon monoxide does not raise PO2; it leaves it normal while cutting the oxygen carried on hemoglobin. The oximeter reads high because it mistakes carboxyhemoglobin for oxyhemoglobin.",
         "Cold fingers give weak or failed readings, but they do not explain a normal PO2 as well.",
         "Faulty burning makes carbon monoxide because there is too little oxygen, not extra oxygen.",
         "Correct. Neither measurement sees the hemoglobin occupied by carbon monoxide."

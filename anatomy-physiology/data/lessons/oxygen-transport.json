@@ -31,7 +31,7 @@
   "chain": [
     { "cause": "A muscle starts working hard, using more oxygen and making more carbon dioxide, acid and heat.", "effect": "Tissue PO2 falls, and the PCO2, H+ and temperature of the blood passing through rise." },
     { "cause": "Carbon dioxide and H+ bind the globin chains, and heat weakens the oxygen–heme bond (the Bohr effect plus temperature).", "effect": "Hemoglobin shifts toward its tense, low-affinity shape: the dissociation curve shifts to the right." },
-    { "cause": "The right-shifted curve gives a lower saturation at any PO2, and the tissue PO2 has also fallen onto the steep part of the curve.", "effect": "Hemoglobin releases much more of its oxygen, up to about two-thirds of what it carried in." },
+    { "cause": "The right-shifted curve gives a lower saturation at any PO2, and the tissue PO2 has also fallen onto the steep part of the curve.", "effect": "Hemoglobin releases much more of its oxygen: in hard-working muscle, three-quarters or more of what it carried in." },
     { "cause": "The released oxygen dissolves in plasma and diffuses down a steep gradient into the muscle cells.", "effect": "Oxygen delivery rises to meet the muscle's use, with no hormone or nerve signal needed." }
   ],
   "misconception": {
