@@ -1,0 +1,47 @@
+{
+  "topic": "cardiac-cycle",
+  "hook": "<p>Mr. Abara, 81, has started stopping halfway up his stairs to catch his breath. Through a stethoscope, his doctor hears a harsh whoosh between the lub and the dub, loudest just right of his upper sternum. An ultrasound confirms it: his aortic valve has stiffened with calcium and opens to only a third of its normal size, so his left ventricle must squeeze far harder to push each beat through it.</p>",
+  "prereq": [
+    {
+      "q": "Blood flows between two points only when:",
+      "options": ["There is a pressure difference between them", "Both points are at high pressure", "A valve is present between them"],
+      "correct": 0,
+      "why": "Fluid flows down a pressure gradient, from higher to lower pressure. With no pressure difference there is no flow, whatever the absolute pressures.",
+      "review": "gradients-flow"
+    },
+    {
+      "q": "Which valve lies between the left atrium and the left ventricle?",
+      "options": ["The tricuspid valve", "The aortic valve", "The mitral valve"],
+      "correct": 2,
+      "why": "The mitral (bicuspid) valve is the left atrioventricular valve. The tricuspid valve is on the right, and the aortic valve is a semilunar valve at the exit of the left ventricle.",
+      "review": "heart-chambers-valves"
+    },
+    {
+      "q": "Which ECG event comes just before the ventricles contract?",
+      "options": ["The P wave", "The QRS complex", "The T wave"],
+      "correct": 1,
+      "why": "The QRS complex records ventricular depolarization, which triggers ventricular contraction a moment later.",
+      "review": "ecg"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-19-27",
+    "caption": "The phases of one heartbeat. In each drawing, find which chambers are contracting and which valves are open."
+  },
+  "chain": [
+    { "cause": "The QRS complex spreads through the ventricles, and ventricular muscle contracts.", "effect": "Ventricular pressure rises above atrial pressure, so the mitral valve closes: S1, and the start of isovolumetric contraction." },
+    { "cause": "With both valves closed, the contracting ventricle squeezes a fixed volume of blood.", "effect": "Pressure climbs steeply until it passes aortic pressure, about 80 mm Hg, and the aortic valve opens." },
+    { "cause": "Blood flows down the pressure gradient from ventricle to aorta.", "effect": "Volume falls from EDV (about 120 mL) to ESV (about 50 mL): a stroke volume of about 70 mL." },
+    { "cause": "The ventricle relaxes and its pressure falls below aortic pressure.", "effect": "Blood slips back, fills the aortic cusps and closes the valve: S2, the dicrotic notch, and the start of isovolumetric relaxation." },
+    { "cause": "Ventricular pressure keeps falling until it drops below atrial pressure.", "effect": "The mitral valve opens and the ventricle fills, mostly passively, until the atria contract to top it off." }
+  ],
+  "misconception": {
+    "wrong": "The heart sounds are made by the valve cusps slapping together, or by the heart muscle contracting.",
+    "right": "Muscle contraction is almost silent through a stethoscope, and the thin cusps are too soft to clap. Each sound comes from moving blood being stopped abruptly as a set of valves closes, which sets the blood, cusps and chamber walls vibrating together. That is why S1 is timed exactly to atrioventricular valve closure and S2 to semilunar valve closure."
+  },
+  "check": ["anp-cardiac-cycle-1", "anp-cardiac-cycle-3", "anp-cardiac-cycle-6", "anp-cardiac-cycle-8", "anp-cardiac-cycle-12", "anp-cardiac-cycle-10", "anp-cardiac-cycle-17"],
+  "summary": "<p>Valves open and close only because of the pressure difference across them. In each cycle the ventricles fill mostly passively, are topped off by atrial contraction, contract with both valves closed (isovolumetric contraction) until the aortic valve opens, eject blood, and relax with both valves closed (isovolumetric relaxation) until the mitral valve opens. S1 (lub) is atrioventricular valve closure and S2 (dub) is semilunar valve closure; murmurs are turbulent flow through a narrowed (stenotic) or leaking (regurgitant) valve. Stroke volume = EDV − ESV, about 120 − 50 = 70 mL at rest, and ejection fraction = SV ÷ EDV, about 58 percent. A pressure–volume loop traces one beat counterclockwise; its width is the stroke volume.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies" }
+  ]
+}

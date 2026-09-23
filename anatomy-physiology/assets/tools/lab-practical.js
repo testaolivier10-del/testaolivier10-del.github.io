@@ -80,7 +80,7 @@
   var QUAL = ['left','right','superior','inferior','anterior','posterior','medial','lateral','internal','external','proximal','distal','deep','superficial','ascending','descending','greater','lesser','upper','lower','visceral','parietal','dorsal','ventral','cranial','caudal','common','middle','great','small'];
   function norm(s){
     s = String(s == null ? '' : s).toLowerCase();
-    if(s.normalize) s = s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    if(s.normalize) s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     s = s.replace(/\([^)]*\)/g, ' ').replace(/&/g, ' and ').replace(/[’'`]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
     s = s.replace(/^the /, '');
     return s.split(' ').filter(Boolean).map(function(w){ return w.length > 3 && /[^s]s$/.test(w) ? w.slice(0, -1) : w; }).join(' ');
@@ -514,7 +514,7 @@
       }
       function wireFeedback(){
         var nx = app.querySelector('.lp-nextbtn');
-        if(nx) nx.addEventListener('click', function(){ k++; z = z; step(); });
+        if(nx) nx.addEventListener('click', function(){ k++; step(); });
         wireFollow(app, it, !answered || !p.follow);
       }
       draw();
@@ -527,7 +527,7 @@
       else if(g.ok && g.exact) v = '<p class="lp-verdict ok" tabindex="-1"><b>Correct:</b> ' + esc(lab.name) + '.</p>';
       else if(g.ok) v = '<p class="lp-verdict ok" tabindex="-1"><b>Accepted.</b> Spelling: <b>' + esc(lab.name) + '</b>.</p>';
       else {
-        var why = g.gaveUp ? '' : g.side ? ' Right structure, but the side or position word is missing or wrong.' : g.near ? ' ' + esc(g.typed || '') + ' names a different structure' + (g.pick ? '' : '') + '.' : g.pick ? ' That mask covers <b>' + esc(g.pick.name) + '</b>.' : '';
+        var why = g.gaveUp ? '' : g.side ? ' Right structure, but the side or position word is missing or wrong.' : g.near ? ' “' + esc(g.typed || '') + '” names a different structure: ' + esc(g.near.name) + '.' : g.pick ? ' That mask covers <b>' + esc(g.pick.name) + '</b>.' : '';
         v = '<p class="lp-verdict no" tabindex="-1"><b>Not quite.</b> It is <b>' + esc(lab.name) + '</b>.' + why + '</p>';
       }
       return v + (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +

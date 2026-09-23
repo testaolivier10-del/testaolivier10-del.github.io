@@ -1,0 +1,196 @@
+{
+  "figure": "os-20-25",
+  "labels": [
+    {
+      "id": "right-common-carotid-artery",
+      "name": "Right common carotid artery",
+      "accept": [
+        "right common carotid artery",
+        "common carotid artery",
+        "common carotid",
+        "right common carotid"
+      ],
+      "box": [
+        112,
+        8,
+        217,
+        72
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "left-common-carotid-artery",
+      "name": "Left common carotid artery",
+      "accept": [
+        "left common carotid artery",
+        "common carotid artery",
+        "common carotid",
+        "left common carotid"
+      ],
+      "box": [
+        836,
+        9,
+        195,
+        71
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "right-subclavian-artery",
+      "name": "Right subclavian artery",
+      "accept": [
+        "right subclavian artery",
+        "subclavian artery",
+        "right subclavian",
+        "subclavian"
+      ],
+      "box": [
+        7,
+        198,
+        240,
+        72
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "left-subclavian-artery",
+      "name": "Left subclavian artery",
+      "accept": [
+        "left subclavian artery",
+        "subclavian artery",
+        "left subclavian",
+        "subclavian"
+      ],
+      "box": [
+        837,
+        198,
+        217,
+        72
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "brachiocephalic-artery",
+      "name": "Brachiocephalic artery",
+      "accept": [
+        "brachiocephalic artery",
+        "brachiocephalic trunk",
+        "innominate artery",
+        "brachiocephalic"
+      ],
+      "box": [
+        7,
+        402,
+        232,
+        70
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "aortic-arch",
+      "name": "Aortic arch",
+      "accept": [
+        "aortic arch",
+        "arch of aorta",
+        "arch of the aorta"
+      ],
+      "box": [
+        836,
+        423,
+        158,
+        28
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "ascending-aorta",
+      "name": "Ascending aorta",
+      "accept": [
+        "ascending aorta"
+      ],
+      "box": [
+        7,
+        567,
+        240,
+        35
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "descending-aorta",
+      "name": "Descending aorta",
+      "accept": [
+        "descending aorta",
+        "descending thoracic aorta"
+      ],
+      "box": [
+        838,
+        557,
+        258,
+        35
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "left-coronary-artery",
+      "name": "Left coronary artery",
+      "accept": [
+        "left coronary artery",
+        "lca",
+        "left coronary"
+      ],
+      "box": [
+        837,
+        666,
+        192,
+        72
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "right-coronary-artery",
+      "name": "Right coronary artery",
+      "accept": [
+        "right coronary artery",
+        "rca",
+        "right coronary"
+      ],
+      "box": [
+        7,
+        707,
+        215,
+        70
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "thoracic-aorta",
+      "name": "Thoracic aorta",
+      "accept": [
+        "thoracic aorta",
+        "descending thoracic aorta"
+      ],
+      "box": [
+        835,
+        850,
+        213,
+        28
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "abdominal-aorta",
+      "name": "Abdominal aorta",
+      "accept": [
+        "abdominal aorta"
+      ],
+      "box": [
+        768,
+        976,
+        241,
+        28
+      ],
+      "concept": "aorta-parts"
+    }
+  ]
+}

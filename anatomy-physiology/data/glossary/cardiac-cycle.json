@@ -1,0 +1,37 @@
+{
+  "valve-rule": {
+    "def": "Heart valves are passive: a valve opens when pressure behind it (upstream) is higher than pressure in front of it, and closes when pressure in front becomes higher and blood starts to flow backward.",
+    "roots": [],
+    "say": ""
+  },
+  "cycle-phases": {
+    "def": "The five phases of each heartbeat: ventricular filling, atrial contraction (atrial systole), isovolumetric contraction (both valves closed, pressure rising), ventricular ejection, and isovolumetric relaxation (both valves closed, pressure falling). Isovolumic is another name for isovolumetric.",
+    "roots": [["iso-", "equal"], ["volum-", "volume"], ["-metric", "measure"]],
+    "say": "eye-soh-vol-yoo-MET-rik"
+  },
+  "heart-sounds": {
+    "def": "The sounds of each beat, heard as lub-dub: S1 (lub) from closure of the atrioventricular valves at the start of ventricular systole, and S2 (dub) from closure of the semilunar valves at its end. A murmur is the sound of turbulent flow, usually through a narrowed (stenotic) or leaking (regurgitant) valve.",
+    "roots": [["sten-", "narrow"], ["-osis", "condition"], ["re-", "back"], ["gurgit-", "flood"]],
+    "say": "sten-OH-sis; ree-gur-jih-TAY-shun"
+  },
+  "edv-esv": {
+    "def": "End-diastolic volume (EDV) is the volume in a ventricle at the end of diastole, just before it contracts (about 120 mL at rest). End-systolic volume (ESV) is the volume left at the end of systole, after ejection (about 50 mL at rest).",
+    "roots": [["dia-", "apart"], ["systole", "contraction"]],
+    "say": "dy-AS-toh-lee; SIS-toh-lee"
+  },
+  "stroke-volume": {
+    "def": "The volume of blood one ventricle ejects in one beat: SV = EDV − ESV, about 70 mL at rest.",
+    "roots": [],
+    "say": ""
+  },
+  "ejection-fraction": {
+    "def": "The share of the end-diastolic volume that a ventricle ejects in one beat: EF = SV ÷ EDV × 100. A normal left ventricular value is about 50 to 70 percent.",
+    "roots": [["e-", "out"], ["ject-", "throw"]],
+    "say": ""
+  },
+  "pv-loop": {
+    "def": "A graph of left ventricular pressure against left ventricular volume over one beat. It traces a counterclockwise loop whose corners are the four valve events and whose width is the stroke volume.",
+    "roots": [],
+    "say": ""
+  }
+}
