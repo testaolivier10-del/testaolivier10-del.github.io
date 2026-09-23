@@ -1,0 +1,47 @@
+{
+  "topic": "nervous-system-organization",
+  "hook": "<p>Jamal, 24, put his hand through a window. The cut at his wrist is small but deep. Now he cannot feel his little finger, he cannot spread his fingers apart, and the skin on the little-finger side of his palm stays dry while the rest of his hand sweats. One cut caused three different losses, because the one nerve it severed carried three different kinds of axons. Sorting out which is which is what this topic is about.</p>",
+  "prereq": [
+    {
+      "q": "What is a nerve?",
+      "options": ["A single, very long neuron", "A bundle of many axons wrapped in connective tissue", "A cluster of neuron cell bodies"],
+      "correct": 1,
+      "why": "A nerve is an organ-level cable: many axons from many different neurons, bundled together with connective tissue and blood vessels. It is not one cell, and the cell bodies of its axons lie elsewhere.",
+      "review": "nervous-tissue-overview"
+    },
+    {
+      "q": "In a feedback loop, what does the efferent pathway do?",
+      "options": ["Carries signals from the control center to the effector", "Carries signals from the sensory receptor to the control center", "Detects a change in the regulated variable"],
+      "correct": 0,
+      "why": "Efferent means carrying away. The efferent pathway carries the control center's command out to the effector. The afferent pathway carries signals in from the sensory receptor, and the sensory receptor does the detecting.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "Which kind of muscle tissue makes up the walls of your stomach and blood vessels?",
+      "options": ["Skeletal muscle", "Cardiac muscle", "Smooth muscle"],
+      "correct": 2,
+      "why": "Smooth muscle lines hollow organs and blood vessels. Skeletal muscle moves the skeleton, and cardiac muscle is found only in the heart.",
+      "review": "muscle-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-2",
+    "caption": "The central and peripheral nervous systems. Hide the labels and name the two parts of the CNS, then the two kinds of PNS structure."
+  },
+  "chain": [
+    { "cause": "You step on a tack, and it presses into the skin of your heel.", "effect": "Sensory receptors in the skin respond and start signals: this is sensory input." },
+    { "cause": "The signals travel along axons of the sensory (afferent) division, inside a nerve in your leg, which is part of the PNS.", "effect": "They reach the spinal cord, part of the CNS." },
+    { "cause": "In the gray matter of the spinal cord and brain, neurons combine the incoming signals with other information.", "effect": "Integration settles on a response: lift the foot, and prepare the body for trouble." },
+    { "cause": "Commands leave the CNS along axons of the motor (efferent) division, through nerves of the PNS.", "effect": "Somatic motor axons reach skeletal muscles of the leg, and autonomic axons reach the heart and sweat glands." },
+    { "cause": "The effectors receive the commands: this is motor output.", "effect": "Your leg muscles contract and lift your foot, while sympathetic signals speed your heart and make your palms sweat." }
+  ],
+  "misconception": {
+    "wrong": "The central nervous system handles conscious actions, and the peripheral nervous system handles automatic ones.",
+    "right": "CNS versus PNS is a division by location; somatic versus autonomic is a division by function, and each system has parts in both locations. The neurons that decide to speed your heart sit in the brain (CNS), and the neurons that decide to move your leg do too. Both commands then travel out through nerves of the PNS. The somatic system is defined by its effector, skeletal muscle, and the autonomic system by its effectors, cardiac muscle, smooth muscle and glands."
+  },
+  "check": ["anp-nervous-system-organization-2", "anp-nervous-system-organization-5", "anp-nervous-system-organization-7", "anp-nervous-system-organization-10", "anp-nervous-system-organization-13", "anp-nervous-system-organization-16", "anp-nervous-system-organization-18"],
+  "summary": "<p>Your nervous system does three jobs: sensory input, integration and motor output. By location it has two parts: the central nervous system (brain and spinal cord), which integrates, and the peripheral nervous system (nerves, ganglia and sensory receptors), which carries signals in and out. By direction, the sensory (afferent) division carries signals toward the CNS and the motor (efferent) division carries them out to effectors. The motor division splits by effector: the somatic nervous system controls skeletal muscle, mostly consciously; the autonomic nervous system controls cardiac muscle, smooth muscle and glands, mostly unconsciously, through its sympathetic (fight-or-flight) and parasympathetic (rest-and-digest) divisions. In the CNS, gray matter holds cell bodies and white matter holds bundles of insulated axons. A cluster of cell bodies is a nucleus in the CNS and a ganglion in the PNS; a bundle of axons is a tract in the CNS and a nerve in the PNS.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" width="680" height="440" role="img" aria-label="A graph of a neuron membrane potential in millivolts against time in milliseconds, from 0 to 6 ms, with six numbered phases. 1: the membrane rests at minus 70. 2: after a stimulus at 0.5 ms it depolarizes to the threshold line at minus 55, reached at about 0.9 ms. 3: the rising phase shoots up to a peak of about plus 30 at 1.4 ms. 4: the falling phase drops back to minus 70 by about 2.2 ms. 5: the afterhyperpolarization dips to about minus 80 near 2.8 ms. 6: the membrane returns to rest at minus 70 by about 5 ms. A shaded band from about 0.9 to 2.1 ms marks the absolute refractory period, and a second band from about 2.1 to 4.8 ms marks the relative refractory period.">
+<rect x="0" y="0" width="680" height="440" fill="#FFFFFF"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<rect x="174.0" y="50.0" width="112.0" height="330.0" fill="#EFD5CF" stroke="none"/>
+<rect x="286.0" y="50.0" width="252.0" height="330.0" fill="#E1E6F0" stroke="none"/>
+<text x="230.0" y="26.0" font-size="12.5" font-weight="800" fill="#8E3B2E" text-anchor="middle">absolute</text>
+<text x="230.0" y="40.0" font-size="12.5" font-weight="800" fill="#8E3B2E" text-anchor="middle">refractory period</text>
+<text x="412.0" y="26.0" font-size="12.5" font-weight="800" fill="#5B6B8C" text-anchor="middle">relative</text>
+<text x="412.0" y="40.0" font-size="12.5" font-weight="800" fill="#5B6B8C" text-anchor="middle">refractory period</text>
+<line x1="90" y1="380.0" x2="650" y2="380.0" stroke="#5D6B69" stroke-width="2"/>
+<line x1="90" y1="380.0" x2="90" y2="50.0" stroke="#5D6B69" stroke-width="2"/>
+<line x1="85" y1="75.4" x2="90" y2="75.4" stroke="#5D6B69" stroke-width="2"/>
+<text x="81" y="79.4" font-size="12.5" font-weight="700" text-anchor="end">+30</text>
+<line x1="85" y1="151.5" x2="90" y2="151.5" stroke="#5D6B69" stroke-width="2"/>
+<text x="81" y="155.5" font-size="12.5" font-weight="700" text-anchor="end">0</text>
+<line x1="85" y1="291.2" x2="90" y2="291.2" stroke="#5D6B69" stroke-width="2"/>
+<text x="81" y="295.2" font-size="12.5" font-weight="700" text-anchor="end">−55</text>
+<line x1="85" y1="329.2" x2="90" y2="329.2" stroke="#5D6B69" stroke-width="2"/>
+<text x="81" y="333.2" font-size="12.5" font-weight="700" text-anchor="end">−70</text>
+<line x1="85" y1="354.6" x2="90" y2="354.6" stroke="#5D6B69" stroke-width="2"/>
+<text x="81" y="358.6" font-size="12.5" font-weight="700" text-anchor="end">−80</text>
+<text x="18" y="215.0" font-size="13" font-weight="800" text-anchor="middle" transform="rotate(-90 18 215.0)">Membrane potential (mV)</text>
+<line x1="90.0" y1="380.0" x2="90.0" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="90.0" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">0</text>
+<line x1="183.3" y1="380.0" x2="183.3" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="183.3" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">1</text>
+<line x1="276.7" y1="380.0" x2="276.7" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="276.7" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">2</text>
+<line x1="370.0" y1="380.0" x2="370.0" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="370.0" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">3</text>
+<line x1="463.3" y1="380.0" x2="463.3" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="463.3" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">4</text>
+<line x1="556.7" y1="380.0" x2="556.7" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="556.7" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">5</text>
+<line x1="650.0" y1="380.0" x2="650.0" y2="385.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="650.0" y="400.0" font-size="12.5" font-weight="700" text-anchor="middle">6</text>
+<text x="370.0" y="422.0" font-size="13" font-weight="800" text-anchor="middle">Time (ms)</text>
+<line x1="90" y1="151.5" x2="650" y2="151.5" stroke="#5D6B69" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="90" y1="291.2" x2="650" y2="291.2" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="646" y="285.2" font-size="12.5" font-weight="700" fill="#5D6B69" text-anchor="end">threshold</text>
+<line x1="90" y1="329.2" x2="650" y2="329.2" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="646" y="323.2" font-size="12.5" font-weight="700" fill="#5D6B69" text-anchor="end">rest</text>
+<line x1="136.7" y1="240.4" x2="136.7" y2="314.0" stroke="#1F2A28" stroke-width="2"/>
+<path d="M131.7,308.9 L136.7,321.6 L141.7,308.9 z" fill="#1F2A28"/>
+<text x="136.7" y="234.4" font-size="12.5" font-weight="700" text-anchor="middle">stimulus</text>
+<polyline fill="none" stroke="#0072B2" stroke-width="3.5" stroke-linejoin="round" points="90.0,329.2 91.9,329.2 93.7,329.2 95.6,329.2 97.5,329.2 99.3,329.2 101.2,329.2 103.1,329.2 104.9,329.2 106.8,329.2 108.7,329.2 110.5,329.2 112.4,329.2 114.3,329.2 116.1,329.2 118.0,329.2 119.9,329.2 121.7,329.2 123.6,329.2 125.5,329.2 127.3,329.2 129.2,329.2 131.1,329.2 132.9,329.2 134.8,329.2 136.7,329.2 138.5,326.2 140.4,323.3 142.3,320.5 144.1,317.8 146.0,315.2 147.9,312.7 149.7,310.3 151.6,308.0 153.5,305.8 155.3,303.7 157.2,301.8 159.1,299.9 160.9,298.3 162.8,296.7 164.7,295.3 166.5,294.1 168.4,293.0 170.3,292.1 172.1,291.5 174.0,291.2 175.9,289.7 177.7,286.0 179.6,280.6 181.5,273.5 183.3,265.1 185.2,255.4 187.1,244.8 188.9,233.2 190.8,221.0 192.7,208.2 194.5,195.2 196.4,182.1 198.3,169.0 200.1,156.2 202.0,143.8 203.9,132.0 205.7,121.0 207.6,110.9 209.5,101.9 211.3,94.0 213.2,87.4 215.1,82.2 216.9,78.4 218.8,76.2 220.7,75.4 222.5,75.8 224.4,76.9 226.3,78.9 228.1,81.6 230.0,85.0 231.9,89.2 233.7,94.1 235.6,99.6 237.5,105.8 239.3,112.6 241.2,119.9 243.1,127.7 244.9,136.0 246.8,144.7 248.7,153.7 250.5,163.1 252.4,172.7 254.3,182.5 256.1,192.3 258.0,202.3 259.9,212.3 261.7,222.2 263.6,231.9 265.5,241.5 267.3,250.9 269.2,259.9 271.1,268.6 272.9,276.9 274.8,284.7 276.7,292.1 278.5,298.8 280.4,305.0 282.3,310.5 284.1,315.4 286.0,319.6 287.9,323.0 289.7,325.7 291.6,327.7 293.5,328.8 295.3,329.2 297.2,330.6 299.1,331.9 300.9,333.2 302.8,334.5 304.7,335.8 306.5,337.1 308.4,338.3 310.3,339.6 312.1,340.8 314.0,341.9 315.9,343.1 317.7,344.2 319.6,345.2 321.5,346.2 323.3,347.2 325.2,348.1 327.1,349.0 328.9,349.8 330.8,350.5 332.7,351.2 334.5,351.8 336.4,352.4 338.3,352.9 340.1,353.4 342.0,353.8 343.9,354.1 345.7,354.3 347.6,354.5 349.5,354.6 351.3,354.6 353.2,354.6 355.1,354.6 356.9,354.6 358.8,354.5 360.7,354.5 362.5,354.4 364.4,354.4 366.3,354.3 368.1,354.2 370.0,354.1 371.9,354.0 373.7,353.9 375.6,353.8 377.5,353.6 379.3,353.5 381.2,353.3 383.1,353.1 384.9,353.0 386.8,352.8 388.7,352.6 390.5,352.4 392.4,352.2 394.3,352.0 396.1,351.7 398.0,351.5 399.9,351.3 401.7,351.0 403.6,350.8 405.5,350.5 407.3,350.2 409.2,350.0 411.1,349.7 412.9,349.4 414.8,349.1 416.7,348.8 418.5,348.5 420.4,348.2 422.3,347.8 424.1,347.5 426.0,347.2 427.9,346.9 429.7,346.5 431.6,346.2 433.5,345.8 435.3,345.5 437.2,345.1 439.1,344.8 440.9,344.4 442.8,344.1 444.7,343.7 446.5,343.4 448.4,343.0 450.3,342.6 452.1,342.3 454.0,341.9 455.9,341.6 457.7,341.2 459.6,340.8 461.5,340.5 463.3,340.1 465.2,339.8 467.1,339.4 468.9,339.0 470.8,338.7 472.7,338.3 474.5,338.0 476.4,337.7 478.3,337.3 480.1,337.0 482.0,336.7 483.9,336.3 485.7,336.0 487.6,335.7 489.5,335.4 491.3,335.1 493.2,334.8 495.1,334.5 496.9,334.2 498.8,333.9 500.7,333.6 502.5,333.3 504.4,333.1 506.3,332.8 508.1,332.6 510.0,332.3 511.9,332.1 513.7,331.9 515.6,331.7 517.5,331.4 519.3,331.2 521.2,331.1 523.1,330.9 524.9,330.7 526.8,330.5 528.7,330.4 530.5,330.2 532.4,330.1 534.3,330.0 536.1,329.9 538.0,329.7 539.9,329.6 541.7,329.6 543.6,329.5 545.5,329.4 547.3,329.4 549.2,329.3 551.1,329.3 552.9,329.3 554.8,329.2 556.7,329.2 558.5,329.2 560.4,329.2 562.3,329.2 564.1,329.2 566.0,329.2 567.9,329.2 569.7,329.2 571.6,329.2 573.5,329.2 575.3,329.2 577.2,329.2 579.1,329.2 580.9,329.2 582.8,329.2 584.7,329.2 586.5,329.2 588.4,329.2 590.3,329.2 592.1,329.2 594.0,329.2 595.9,329.2 597.7,329.2 599.6,329.2 601.5,329.2 603.3,329.2 605.2,329.2 607.1,329.2 608.9,329.2 610.8,329.2 612.7,329.2 614.5,329.2 616.4,329.2 618.3,329.2 620.1,329.2 622.0,329.2 623.9,329.2 625.7,329.2 627.6,329.2 629.5,329.2 631.3,329.2 633.2,329.2 635.1,329.2 636.9,329.2 638.8,329.2 640.7,329.2 642.5,329.2 644.4,329.2 646.3,329.2 648.1,329.2 650.0,329.2"/>
+<circle cx="113.3" cy="309.2" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="113.3" y="313.7" font-size="13" font-weight="800" text-anchor="middle">1</text>
+<circle cx="161.2" cy="281.5" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="161.2" y="286.0" font-size="13" font-weight="800" text-anchor="middle">2</text>
+<circle cx="172.5" cy="189.6" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="172.5" y="194.1" font-size="13" font-weight="800" text-anchor="middle">3</text>
+<circle cx="275.3" cy="189.6" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="275.3" y="194.1" font-size="13" font-weight="800" text-anchor="middle">4</text>
+<circle cx="351.3" cy="376.6" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="351.3" y="381.1" font-size="13" font-weight="800" text-anchor="middle">5</text>
+<circle cx="603.3" cy="309.2" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="603.3" y="313.7" font-size="13" font-weight="800" text-anchor="middle">6</text>
+<text x="232.7" y="73.4" font-size="12.5" font-weight="700">peak about +30</text>
+<text x="388.7" y="374.6" font-size="12.5" font-weight="700">about −80</text>
+</g></svg>

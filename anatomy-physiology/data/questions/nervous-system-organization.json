@@ -1,0 +1,579 @@
+[
+  {
+    "id": "anp-nervous-system-organization-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-2",
+    "pin": "ganglion",
+    "q": "Name the pinned structure, a small swelling on a nerve beside the spinal cord.",
+    "options": [
+      "Nucleus",
+      "Tract",
+      "Ganglion",
+      "Gray matter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A cluster of neuron cell bodies outside the CNS is a ganglion. Ganglia appear as small swellings along nerves, and they belong to the PNS.",
+      "options": [
+        "A nucleus is also a cluster of cell bodies, but it lies inside the CNS. This swelling sits outside the spinal cord, in the PNS.",
+        "A tract is a bundle of axons inside the CNS, not a swelling on a nerve.",
+        "Correct. A swelling on a nerve that holds neuron cell bodies is a ganglion.",
+        "Gray matter is CNS tissue. This structure lies outside the brain and spinal cord."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-2",
+    "pin": "spinal-cord",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Spinal cord",
+      "Nerve",
+      "Ganglion",
+      "Tract"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The spinal cord runs down from the brain inside the vertebral column. With the brain, it forms the central nervous system.",
+      "options": [
+        "Correct. The long central column running down from the brain is the spinal cord, part of the CNS.",
+        "Nerves branch off the spinal cord and run out into the body. The pinned structure is the central column they branch from.",
+        "A ganglion is a small swelling on a nerve, not the long central column.",
+        "Tracts are bundles of axons inside the CNS, too small to see on a whole-body drawing. The pinned structure is the whole spinal cord."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-3",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which structures are part of the peripheral nervous system? Select all that apply.",
+    "options": [
+      "A nerve in the forearm",
+      "The spinal cord",
+      "A ganglion beside the spinal cord",
+      "Sensory receptors in the skin",
+      "Gray matter of the brain"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "The PNS is everything outside the brain and spinal cord: nerves, ganglia and sensory receptors. The spinal cord and the brain's gray matter are CNS.",
+      "options": [
+        "Yes. Nerves run outside the CNS, so they are PNS.",
+        "No. The spinal cord and the brain together make up the CNS.",
+        "Yes. A ganglion is a cluster of cell bodies outside the CNS, so it is PNS.",
+        "Yes. Sensory receptors sit at the ends of PNS axons, out in the tissues.",
+        "No. Gray matter is found in the brain and spinal cord, so it is CNS tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-4",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which division of the nervous system carries signals toward the CNS?",
+    "options": [
+      "The motor (efferent) division",
+      "The sensory (afferent) division",
+      "The somatic nervous system",
+      "The parasympathetic division of the ANS"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The sensory division is also called the afferent division: afferent signals arrive at the CNS, carrying input from sensory receptors.",
+      "options": [
+        "The motor (efferent) division carries signals away from the CNS, out to effectors.",
+        "Correct. Sensory, or afferent, axons carry signals in toward the CNS.",
+        "The somatic nervous system is part of the motor division. It carries commands out to skeletal muscle.",
+        "The parasympathetic division is part of the autonomic motor output, so its signals travel away from the CNS."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "As your stomach fills after a large meal, stretch-sensitive sensory receptors in its wall start sending signals to your brain. Which division carries those signals?",
+    "options": [
+      "The somatic nervous system",
+      "The motor division",
+      "The sensory division",
+      "The sympathetic division"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The signals start at sensory receptors and travel toward the CNS, so they are carried by the sensory (afferent) division. Sensory input comes from internal organs as well as from the skin.",
+      "options": [
+        "The somatic nervous system is motor output to skeletal muscle. These signals are traveling in, not out.",
+        "The motor division carries signals away from the CNS. These travel toward the brain.",
+        "Correct. Input from sensory receptors, heading to the CNS, travels in the sensory division.",
+        "The sympathetic division carries commands out from the CNS. It does not carry sensory input in."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which effectors does the somatic nervous system control?",
+    "options": [
+      "Skeletal muscles",
+      "Cardiac muscle and glands",
+      "Smooth muscle of blood vessels",
+      "Smooth muscle, cardiac muscle and glands"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The somatic nervous system controls skeletal muscle, the muscle attached to your skeleton. The other effectors belong to the autonomic nervous system.",
+      "options": [
+        "Correct. Somatic motor neurons run to skeletal muscles.",
+        "Cardiac muscle and glands are autonomic effectors.",
+        "Smooth muscle in vessel walls is controlled by the autonomic nervous system.",
+        "This is the full list of autonomic effectors, not somatic ones."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "somatic means voluntary",
+    "q": "You step out of a warm house into freezing wind and start to shiver without deciding to. Which part of the nervous system carries the commands that make you shiver?",
+    "options": [
+      "The autonomic nervous system",
+      "The somatic nervous system",
+      "The sensory division",
+      "The parasympathetic division"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Shivering is rapid contraction of skeletal muscles, and skeletal muscle is controlled only by the somatic nervous system. \"Voluntary\" is a useful rule of thumb for somatic output, but the effector is what defines the division.",
+      "options": [
+        "Shivering is involuntary, but the autonomic nervous system does not reach skeletal muscle. Its effectors are cardiac muscle, smooth muscle and glands.",
+        "Correct. The effector is skeletal muscle, so the commands travel in somatic motor neurons.",
+        "The skin's sensory receptors detect the cold, and the sensory division carries that input in. The commands that produce shivering travel out, in the motor division.",
+        "The parasympathetic division is autonomic and has no axons to skeletal muscle, so it cannot produce shivering."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these are controlled by the autonomic nervous system? Select all that apply.",
+    "options": [
+      "How fast your heart beats",
+      "Sweating from your palms",
+      "Writing your name",
+      "Movement of food along your gut",
+      "Blinking on purpose to signal a friend"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "The autonomic nervous system controls cardiac muscle, smooth muscle and glands: heart rate, sweat glands and the smooth muscle of the gut. Writing and deliberate blinking use skeletal muscle, so they are somatic.",
+      "options": [
+        "Yes. Heart rate is set by autonomic signals to cardiac muscle.",
+        "Yes. Sweat glands are glands, and glands are autonomic effectors.",
+        "No. Writing uses skeletal muscles of the hand, controlled by the somatic nervous system.",
+        "Yes. The gut wall's smooth muscle is an autonomic effector.",
+        "No. The muscles that close your eyes are skeletal muscles, so a deliberate blink is somatic output."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "A large dog runs at you, barking, and your sympathetic division takes over. Predict each change.",
+    "variables": [
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Sympathetic signals to the heart make it beat faster: part of the fight-or-flight pattern."
+      },
+      {
+        "name": "Movement and secretion in the gut",
+        "answer": "down",
+        "why": "Sympathetic signals slow the smooth muscle of the gut and its digestive secretions, so digestion is put on hold."
+      },
+      {
+        "name": "Sweating from the palms",
+        "answer": "up",
+        "why": "Sympathetic axons reach the sweat glands, and sympathetic activation makes them secrete."
+      }
+    ],
+    "why": {
+      "correct": "Sympathetic (fight-or-flight) activation speeds the heart, makes the palms sweat and slows digestion."
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-10",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "An hour after a large dinner you are lying on the couch, and the balance of your autonomic output shifts toward the parasympathetic division. Predict each change compared with an hour of brisk walking.",
+    "variables": [
+      {
+        "name": "Heart rate",
+        "answer": "down",
+        "why": "Parasympathetic signals to the heart slow its beat, and sympathetic drive to the heart falls, so the rate drops."
+      },
+      {
+        "name": "Movement and secretion in the gut",
+        "answer": "up",
+        "why": "Parasympathetic signals stimulate the gut's smooth muscle and digestive glands: rest-and-digest."
+      },
+      {
+        "name": "Commands to skeletal muscles of the legs",
+        "answer": "down",
+        "why": "You are lying still, so somatic motor output to the leg muscles falls. This change is somatic, not autonomic: the autonomic nervous system does not control skeletal muscle."
+      }
+    ],
+    "why": {
+      "correct": "At rest after a meal, parasympathetic activity dominates: the heart slows and digestion speeds up. Somatic output to the legs drops because you are not moving, a separate change in a separate system."
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order, from touching a hot pan to pulling your hand away.",
+    "options": [
+      "Sensory receptors in the skin detect the heat",
+      "Sensory (afferent) axons in a nerve carry signals to the spinal cord",
+      "Neurons in the CNS integrate the input and determine a response",
+      "Motor (efferent) axons in a nerve carry commands to the arm",
+      "Skeletal muscles of the arm contract"
+    ],
+    "why": {
+      "correct": "Every nervous system task runs sensory input, then integration, then motor output. The signal goes in through the sensory division, is processed in the CNS, and goes out through the motor division to the effectors.",
+      "options": [
+        "Sensation comes first: sensory receptors detect the change.",
+        "The sensory division carries the input to the CNS.",
+        "Integration happens in the CNS.",
+        "The motor division carries the command out.",
+        "The effectors, here skeletal muscles, respond."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-12",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap in the nervous system's three jobs: sensory input → ____ → motor output.",
+    "options": [
+      "Integration",
+      "Afferent division",
+      "Sensation",
+      "Effector"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Between detecting a change and responding to it, the CNS integrates: it combines the input with other information and determines a response.",
+      "options": [
+        "Correct. Integration is the processing step between input and output.",
+        "The afferent division carries the sensory input. It is part of the first step, not a separate job between input and output.",
+        "Sensation is another word for the first step, sensory input, so it cannot fill the middle.",
+        "The effector is what responds to motor output. It comes at the end, not in the middle."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "This pathway, from stepping on a tack to lifting your foot, has one wrong step. Find it.",
+    "options": [
+      "Sensory receptors in the heel start signals",
+      "Afferent axons in a leg nerve carry the signals to the spinal cord",
+      "Neurons in the spinal cord's gray matter integrate the input",
+      "Afferent axons carry commands from the spinal cord to the leg muscles",
+      "Skeletal muscles of the leg contract and lift the foot"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Commands going out from the CNS to muscles travel in efferent (motor) axons, not afferent ones. Afferent axons only carry signals toward the CNS.",
+      "options": [
+        "Correct step. Sensory receptors in the skin start the signals.",
+        "Correct step. Afferent axons carry input toward the CNS.",
+        "Correct step. Integration happens where neurons connect, in gray matter.",
+        "This is the wrong step. Signals leaving the CNS travel in efferent axons of the motor division.",
+        "Correct step. Skeletal muscles are the effectors that respond."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is a bundle of axons inside the CNS called?",
+    "options": [
+      "A nerve",
+      "A ganglion",
+      "A nucleus",
+      "A tract"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Inside the CNS, a bundle of axons is a tract. The same kind of bundle outside the CNS is a nerve.",
+      "options": [
+        "A nerve is a bundle of axons in the PNS, not the CNS.",
+        "A ganglion is a cluster of cell bodies in the PNS.",
+        "A nucleus is a cluster of cell bodies in the CNS, not a bundle of axons.",
+        "Correct. A CNS bundle of axons is a tract."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A pathologist describes a small, sharply bounded patch of gray matter deep inside the brain whose neurons all help control swallowing. What is this structure?",
+    "options": [
+      "A ganglion",
+      "A nucleus",
+      "A tract",
+      "A nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A cluster of neuron cell bodies inside the CNS, forming an island of gray matter with a shared job, is a nucleus.",
+      "options": [
+        "A ganglion is a cluster of cell bodies too, but it lies in the PNS. This one is inside the brain.",
+        "Correct. A CNS cluster of cell bodies with one job is a nucleus.",
+        "A tract is a bundle of axons, which forms white matter, not gray matter.",
+        "A nerve is a bundle of axons outside the CNS."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does white matter look white?",
+    "options": [
+      "It holds few blood vessels, so less blood tints the tissue a darker color",
+      "It is packed with neuron cell bodies, which are pale",
+      "It is mostly connective tissue with collagen fibers",
+      "Many of its axons are wrapped in fatty layers made by glial cells"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "White matter is mostly bundles of axons, and many are wrapped in layers of fatty glial membrane. That fat reflects light and looks white.",
+      "options": [
+        "White matter does have fewer capillaries than gray matter, but blood supply is not what sets its color. The fat around its axons is.",
+        "Cell bodies are concentrated in gray matter, not white matter.",
+        "The CNS has very little collagen-rich connective tissue inside it. White matter is axons and glial cells.",
+        "Correct. The fatty wrapping around the axons gives white matter its color."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "You look at a cross section of the spinal cord. Where do you find the gray matter?",
+    "options": [
+      "In a thin layer around the outside",
+      "In a butterfly-shaped core, surrounded by white matter",
+      "Scattered evenly through the white matter",
+      "In ganglia beside the cord rather than in the cord itself"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the spinal cord, gray matter forms a butterfly-shaped core and white matter surrounds it. This is the reverse of most of the brain, where gray matter forms the outer layer.",
+      "options": [
+        "A thin outer layer of gray matter is the pattern in most of the brain, not the spinal cord.",
+        "Correct. The spinal cord has gray matter inside and white matter outside.",
+        "Gray and white matter are separate regions, not mixed evenly.",
+        "Ganglia are PNS structures. The spinal cord has its own gray matter inside it."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "autonomic means peripheral",
+    "q": "Which statement about the divisions of the nervous system is correct?",
+    "options": [
+      "The autonomic nervous system lies entirely in the PNS",
+      "The CNS controls voluntary actions and the PNS controls involuntary ones",
+      "The somatic and autonomic nervous systems both have parts in the CNS and the PNS",
+      "Somatic and autonomic axons travel in separate nerves"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "CNS and PNS divide the system by location; somatic and autonomic divide it by function. Both the somatic and the autonomic systems start with neurons in the CNS and send their commands out through PNS nerves.",
+      "options": [
+        "The neurons that control autonomic output, for example those that decide to speed the heart, sit in the brain and spinal cord. Only part of the autonomic system lies in the PNS.",
+        "This mixes two separate ways of dividing the system. Both voluntary and involuntary commands start in the CNS and travel out through the PNS.",
+        "Correct. Each functional system has CNS neurons that issue commands and PNS axons that carry them.",
+        "Many nerves carry somatic motor, autonomic and sensory axons together. That is why a cut at the wrist can cause numbness, weakness and loss of sweating at once."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Jamal cuts a nerve deep in his wrist. Afterward, the skin of his little finger is numb, he cannot spread his fingers, and that skin no longer sweats. Which kinds of axons did the cut sever?",
+    "options": [
+      "Sensory axons alone",
+      "Sensory and somatic motor axons, but not autonomic ones",
+      "Sensory, somatic motor and autonomic axons",
+      "Autonomic axons alone"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each finding points to a different kind of axon. Numbness means sensory axons were cut; weak finger muscles mean somatic motor axons to skeletal muscle were cut; dry skin means autonomic axons to the sweat glands were cut. One nerve carried all three.",
+      "options": [
+        "Sensory loss explains the numbness, but not the weak finger muscles or the dry skin.",
+        "This explains the numbness and weakness, but sweat glands are autonomic effectors, so losing sweating means autonomic axons were cut too.",
+        "Correct. Numbness, weakness and loss of sweating each come from a different kind of axon in the same nerve.",
+        "Autonomic loss explains the dry skin, but autonomic axons do not reach skeletal muscle or carry touch."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Which description matches the parasympathetic division?",
+    "options": [
+      "Dominates during calm, slowing the heart and promoting digestion",
+      "Dominates during stress, speeding the heart and pausing digestion",
+      "Controls skeletal muscle during rest",
+      "Carries sensory input from the internal organs"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The parasympathetic division is the rest-and-digest branch of the autonomic nervous system: it slows the heart and stimulates the gut.",
+      "options": [
+        "Correct. That is the rest-and-digest pattern.",
+        "That is the sympathetic, fight-or-flight pattern.",
+        "Skeletal muscle is controlled by the somatic nervous system at all times, not by any autonomic division.",
+        "Input from the organs travels in the sensory division. The parasympathetic division is motor output."
+      ]
+    }
+  },
+  {
+    "id": "anp-nervous-system-organization-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A single sensory axon runs from a fingertip to the spinal cord and then up toward the brain. Which list names, in order, the structures it passes through or belongs to?",
+    "options": [
+      "Tract, then nucleus, then nerve",
+      "Ganglion (its cell body), then nerve, then nucleus",
+      "Nerve, then tract, then ganglion",
+      "Nerve, then ganglion (its cell body), then tract"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the PNS the axon runs in a nerve, and its cell body sits in a ganglion beside the spinal cord. Once inside the CNS the same axon runs on in a tract. Only the name of the bundle changes at the CNS border.",
+      "options": [
+        "A tract is inside the CNS, so it cannot come first on the way from the fingertip.",
+        "The axon leaves the fingertip in a nerve, not a ganglion, and inside the CNS it travels in a tract, not a nucleus.",
+        "A ganglion lies in the PNS, outside the spinal cord, so it cannot come after the tract.",
+        "Correct. Nerve and ganglion in the PNS, then tract in the CNS."
+      ]
+    }
+  }
+]

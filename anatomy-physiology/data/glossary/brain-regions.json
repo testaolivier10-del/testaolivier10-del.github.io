@@ -1,0 +1,57 @@
+{
+  "cerebrum": {
+    "def": "The largest part of the brain: two cerebral hemispheres separated by the longitudinal fissure and joined by the corpus callosum. Its outer layer, the cerebral cortex, is gray matter folded into gyri and sulci over a core of white matter that includes the internal capsule.",
+    "roots": [["cerebrum", "brain"], ["hemi-", "half"], ["cortex", "bark"], ["gyrus", "circle"], ["sulcus", "furrow"], ["corpus callosum", "tough body"]],
+    "say": "suh-REE-brum; JY-rus; SUL-kus"
+  },
+  "cerebral-lobes": {
+    "def": "The divisions of each cerebral hemisphere: frontal, parietal, temporal and occipital lobes, named for the skull bones over them, plus the insula buried in the lateral sulcus. The central sulcus separates frontal from parietal, the lateral sulcus lies above the temporal lobe, and the parieto-occipital sulcus separates parietal from occipital.",
+    "roots": [["pariet-", "wall"], ["tempor-", "temple"], ["occipit-", "back of the head"], ["insula", "island"]],
+    "say": "puh-RY-uh-tul; ok-SIP-ih-tul; IN-suh-luh"
+  },
+  "diencephalon": {
+    "def": "The central part of the brain between the cerebrum and the brainstem, made of the thalamus, hypothalamus and epithalamus. The thalamus relays and filters almost all input to the cerebral cortex.",
+    "roots": [["di-", "through"], ["encephal-", "brain"], ["thalamus", "inner chamber"], ["epi-", "upon"]],
+    "say": "dy-en-SEF-uh-lon; THAL-uh-mus"
+  },
+  "hypothalamus": {
+    "def": "A small region of the diencephalon below and in front of the thalamus, just above the pituitary gland. Its nuclei act as control centers for many homeostatic loops.",
+    "roots": [["hypo-", "below"], ["thalamus", "inner chamber"]],
+    "say": "hy-poh-THAL-uh-mus"
+  },
+  "hypothalamus-roles": {
+    "def": "The hypothalamus regulates body temperature, water balance and thirst, hunger, autonomic output (heart rate, blood pressure, digestion), the daily sleep-wake timing and the body's side of emotion, and it controls the pituitary gland. It acts through autonomic neurons, hormones and drives.",
+    "roots": [],
+    "say": ""
+  },
+  "brainstem": {
+    "def": "The stalk linking the cerebrum and diencephalon to the spinal cord: the midbrain (with the cerebral peduncles and the superior and inferior colliculi), the pons and the medulla oblongata. Its nuclei control heart rate, blood vessel diameter and breathing rhythm.",
+    "roots": [["pons", "bridge"], ["medulla", "marrow"], ["oblongata", "lengthened"], ["colliculus", "little hill"], ["pedunculus", "little foot"]],
+    "say": "ponz; meh-DUL-uh ob-long-GAH-tuh; kuh-LIK-yoo-lus"
+  },
+  "cerebellum": {
+    "def": "The folded structure behind the brainstem that compares intended movement with actual movement and corrects force, timing and direction, and helps keep balance. Damage causes ataxia, clumsy uncoordinated movement on the same side.",
+    "roots": [["cerebellum", "little brain"], ["a-", "without"], ["tax-", "order"]],
+    "say": "sair-uh-BEL-um; uh-TAK-see-uh"
+  },
+  "basal-nuclei": {
+    "def": "Masses of gray matter deep in the cerebrum (the caudate and putamen, together the striatum, and the globus pallidus), working with the subthalamus and substantia nigra. They help select wanted movements and suppress unwanted ones; the older name is basal ganglia.",
+    "roots": [["cauda", "tail"], ["putamen", "shell"], ["globus pallidus", "pale globe"], ["substantia nigra", "black substance"]],
+    "say": "KAW-dayt; pyoo-TAY-men; GLOH-bus PAL-ih-dus"
+  },
+  "limbic-system": {
+    "def": "A ring of structures at the inner border of the cerebrum, including the hippocampus, amygdala and cingulate gyrus (the limbic lobe), linked to the hypothalamus. It links emotion, memory and the body's responses to them.",
+    "roots": [["limbus", "border"], ["hippocampus", "seahorse"], ["amygdala", "almond"]],
+    "say": "LIM-bik; hip-oh-KAM-pus; uh-MIG-duh-luh"
+  },
+  "reticular-formation": {
+    "def": "A net of neurons through the core of the brainstem. Its upward part, the reticular activating system, keeps the cerebral cortex awake and alert; it also filters repeated input and sets background muscle tension.",
+    "roots": [["reticulum", "little net"]],
+    "say": "reh-TIK-yoo-lur"
+  },
+  "brain-development": {
+    "def": "The neural plate folds into the neural tube (neurulation); its front end forms three primary brain vesicles (prosencephalon or forebrain, mesencephalon, rhombencephalon or hindbrain), then five secondary vesicles that become the cerebrum, diencephalon, midbrain, pons and cerebellum, and medulla. Neural crest cells form structures outside the CNS.",
+    "roots": [["neur-", "nerve"], ["encephal-", "brain"], ["pros-", "forward"], ["mes-", "middle"], ["rhomb-", "diamond shape"], ["tel-", "end"], ["met-", "after"], ["myel-", "marrow"]],
+    "say": "pros-en-SEF-uh-lon; mez-en-SEF-uh-lon; rom-ben-SEF-uh-lon"
+  }
+}

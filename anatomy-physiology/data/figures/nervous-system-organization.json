@@ -1,0 +1,18 @@
+{
+  "os-12-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.2",
+      "section": "12.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/37beec4ad5ed1d7d66aa510af01f5abf5d0070c8",
+      "page": "12-1-basic-structure-and-function-of-the-nervous-system"
+    },
+    "alt": "Outline of a standing human body from the front showing the nervous system in yellow. The brain sits in the head and the spinal cord runs down from it through the neck and trunk. Nerves branch from the spinal cord between the ribs, through the trunk and down both arms and legs to the fingers and toes. A small swelling on a nerve beside the spinal cord is marked. Labels group the brain and spinal cord together and the nerves and swelling together.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.2",
+    "labels": [],
+    "w": 841,
+    "h": 760,
+    "ext": "jpg"
+  }
+}

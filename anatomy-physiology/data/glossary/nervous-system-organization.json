@@ -1,0 +1,37 @@
+{
+  "cns-pns": {
+    "def": "The central nervous system (CNS) is the brain and spinal cord, where integration happens. The peripheral nervous system (PNS) is everything else: the nerves, the ganglia along them and the sensory receptors at their ends.",
+    "roots": [["centr-", "center"], ["peri-", "around"], ["pher-", "carry"]],
+    "say": "per-IF-er-ul"
+  },
+  "sensory-motor-division": {
+    "def": "The sensory (afferent) division carries signals from sensory receptors toward the CNS. The motor (efferent) division carries signals away from the CNS to effectors, the muscles and glands.",
+    "roots": [["af-", "toward"], ["ef-", "away from"], ["fer-", "carry"], ["mot-", "move"]],
+    "say": "AF-er-ent; EF-er-ent"
+  },
+  "somatic-ns": {
+    "def": "The part of the motor division that controls skeletal muscle. One motor neuron runs from the CNS to the muscle, it always excites the muscle, and most of its output is under conscious control.",
+    "roots": [["somat-", "body"]],
+    "say": "so-MAT-ik"
+  },
+  "autonomic-ns-basic": {
+    "def": "The part of the motor division that controls cardiac muscle, smooth muscle and glands, mostly without conscious control. Its sympathetic division (fight-or-flight) dominates in stress and exercise; its parasympathetic division (rest-and-digest) dominates at rest.",
+    "roots": [["auto-", "self"], ["nom-", "law"], ["sym-", "together"], ["path-", "feeling"], ["para-", "beside"]],
+    "say": "aw-toh-NOM-ik"
+  },
+  "gray-white-matter": {
+    "def": "Gray matter is CNS tissue rich in neuron cell bodies, dendrites and axon terminals, where integration happens. White matter is CNS tissue made mostly of axon bundles wrapped in fatty glial layers, which carry signals between regions.",
+    "roots": [],
+    "say": ""
+  },
+  "ganglion-nucleus-tract": {
+    "def": "A cluster of neuron cell bodies is a nucleus in the CNS and a ganglion in the PNS. A bundle of axons is a tract in the CNS and a nerve in the PNS.",
+    "roots": [["ganglion", "swelling, knot"], ["nucle-", "kernel"], ["tract-", "drawn out"]],
+    "say": "GANG-glee-on"
+  },
+  "nervous-system-functions": {
+    "def": "The three steps of every nervous system task: sensory input (sensory receptors detect a change), integration (neurons process the input and determine a response) and motor output (signals go to effectors).",
+    "roots": [["sens-", "feel, perceive"], ["integr-", "whole"], ["mot-", "move"]],
+    "say": ""
+  }
+}

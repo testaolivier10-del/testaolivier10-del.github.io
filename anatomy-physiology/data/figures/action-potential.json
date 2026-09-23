@@ -1,0 +1,28 @@
+{
+  "os-12-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.23",
+      "section": "12.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9da311b63c79bb32fd0911d50753adf46d87552e",
+      "page": "12-4-the-action-potential"
+    },
+    "alt": "A graph of membrane potential in millivolts against time. The trace sits flat at minus 70, climbs to a dashed threshold line at minus 55, then shoots straight up to a rounded peak at plus 30. Labels mark the upstroke as depolarization and the equally steep downstroke as repolarization. The trace falls past minus 70 into a shallow dip labeled hyperpolarization, then curves back up to rest at minus 70.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.23",
+    "labels": [],
+    "w": 686,
+    "h": 435,
+    "ext": "jpg"
+  },
+  "neuron-ap-refractory": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 680,
+    "h": 440,
+    "alt": "A graph of a neuron membrane potential in millivolts against time in milliseconds, from 0 to 6 ms, with six numbered phases. 1: rest at minus 70. 2: after a stimulus at 0.5 ms, depolarization to the threshold line at minus 55, reached at about 0.9 ms. 3: the rising phase, up to a peak of about plus 30 at 1.4 ms. 4: the falling phase, back to minus 70 by about 2.2 ms. 5: the afterhyperpolarization, a dip to about minus 80 near 2.8 ms. 6: return to rest at minus 70 by about 5 ms. A shaded band from about 0.9 to 2.1 ms marks the absolute refractory period, and a second band from about 2.1 to 4.8 ms marks the relative refractory period.",
+    "labels": []
+  }
+}

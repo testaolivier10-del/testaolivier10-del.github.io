@@ -1,8 +1,8 @@
 {
   "os-22-21": {
     "file": "figures/openstax/os-22-21.jpg",
-    "w": 1840,
-    "h": 625,
+    "w": 1100,
+    "h": 374,
     "source": "openstax",
     "openstax": {
       "figure": "22.21",
@@ -19,8 +19,8 @@
   },
   "os-22-23": {
     "file": "figures/openstax/os-22-23.jpg",
-    "w": 2165,
-    "h": 980,
+    "w": 1100,
+    "h": 498,
     "source": "openstax",
     "openstax": {
       "figure": "22.23",

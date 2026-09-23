@@ -25,7 +25,10 @@ Needs Pillow:  pip install pillow
 """
 import json, os, sys, glob, urllib.request, io
 from collections import deque
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFile
+# A few OpenStax originals end a handful of bytes short on the server itself;
+# the missing bytes are the last pixels of the last row, so decode them anyway.
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'anatomy-physiology', 'data', 'figures')
@@ -45,8 +48,15 @@ def load_catalog():
 
 
 def fetch(url, dest):
+    # A cached download is reused only if it decodes completely; a transfer cut
+    # off halfway is fetched again.
     if os.path.exists(dest):
-        return open(dest, 'rb').read()
+        data = open(dest, 'rb').read()
+        try:
+            Image.open(io.BytesIO(data)).load()
+            return data
+        except Exception:
+            os.remove(dest)
     req = urllib.request.Request(url, headers={'User-Agent': 'LevlPrep figure pipeline'})
     data = urllib.request.urlopen(req, timeout=60).read()
     os.makedirs(os.path.dirname(dest), exist_ok=True)
