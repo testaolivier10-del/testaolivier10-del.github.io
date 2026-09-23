@@ -1,0 +1,688 @@
+[
+  {
+    "id": "anp-spinal-nerves-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-24",
+    "pin": "brachial-plexus",
+    "q": "Name the pinned plexus.",
+    "options": [
+      "Cervical plexus",
+      "Brachial plexus",
+      "Lumbar plexus",
+      "Sacral plexus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The plexus formed by the ventral rami of C5 to T1, at the level of the shoulder, is the brachial plexus. Its nerves supply the upper limb.",
+      "options": [
+        "The cervical plexus is higher, formed by C1 to C4. It supplies the neck and the diaphragm, not the arm.",
+        "Correct. C5 to T1 form the brachial plexus.",
+        "The lumbar plexus comes from L1 to L4 in the lower back and supplies the front of the thigh.",
+        "The sacral plexus sits in the pelvis, from L4 to S4, and supplies the back of the thigh, the leg and the foot."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-24",
+    "pin": "phrenic-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Axillary nerve",
+      "Intercostal nerve",
+      "Phrenic nerve",
+      "Ulnar nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The phrenic nerve leaves the cervical plexus (C3 to C5) and runs down to the diaphragm, its only motor supply.",
+      "options": [
+        "The axillary nerve leaves the brachial plexus toward the shoulder and deltoid, not down to the diaphragm.",
+        "Intercostal nerves are thoracic ventral rami running between the ribs. They do not come from the cervical plexus.",
+        "Correct. This is the phrenic nerve, from C3 to C5.",
+        "The ulnar nerve comes from the lower brachial plexus (C8 and T1) and runs to the hand."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-24",
+    "pin": "sciatic-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Femoral nerve",
+      "Sciatic nerve",
+      "Obturator nerve",
+      "Tibial nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The sciatic nerve is the thick nerve leaving the sacral plexus for the back of the thigh. It is the largest nerve in the body and later divides into the tibial and common fibular nerves.",
+      "options": [
+        "The femoral nerve leaves the lumbar plexus for the front of the thigh.",
+        "Correct. The thick nerve from the sacral plexus is the sciatic nerve.",
+        "The obturator nerve leaves the lumbar plexus through the obturator foramen to the medial thigh; it is much thinner.",
+        "The tibial nerve is one of the two branches the sciatic nerve divides into, lower down, not the whole trunk."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-24",
+    "pin": "radial-nerve",
+    "q": "Name the pinned nerve of the upper limb.",
+    "options": [
+      "Median nerve",
+      "Ulnar nerve",
+      "Radial nerve",
+      "Axillary nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The radial nerve is a terminal branch of the brachial plexus that runs to the back of the arm and forearm and supplies the extensors.",
+      "options": [
+        "The median nerve runs down the middle of the front of the forearm to the carpal tunnel. On this figure it is the branch just above the pinned one.",
+        "The ulnar nerve is the lowest of this group on the figure, the one heading to the medial side of the forearm and hand.",
+        "Correct. This is the radial nerve.",
+        "The axillary nerve is the highest branch shown, turning toward the shoulder."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-24",
+    "pin": "femoral-nerve",
+    "q": "Name the pinned nerve.",
+    "options": [
+      "Femoral nerve",
+      "Common fibular nerve",
+      "Sciatic nerve",
+      "Obturator nerve"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The femoral nerve (L2 to L4) leaves the lumbar plexus, passes into the front of the thigh and supplies the quadriceps femoris.",
+      "options": [
+        "Correct. This is the femoral nerve.",
+        "The common fibular nerve is a branch of the sciatic nerve behind the knee, far lower than this.",
+        "The sciatic nerve runs down the back of the thigh from the sacral plexus, not across the front.",
+        "The obturator nerve also comes from L2 to L4, but on this figure it is the branch just below the pinned one, heading to the medial thigh."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How many pairs of spinal nerves do you have, and how are they divided?",
+    "options": [
+      "31 pairs: 7 cervical, 12 thoracic, 5 lumbar, 5 sacral, 2 coccygeal",
+      "33 pairs, one for each vertebra",
+      "31 pairs: 8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal",
+      "12 pairs: one for each thoracic vertebra"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "You have 31 pairs: 8 cervical, 12 thoracic, 5 lumbar, 5 sacral and 1 coccygeal. There are 8 cervical nerves but only 7 cervical vertebrae, because C1 leaves above the first vertebra.",
+      "options": [
+        "The total is right, but there are 8 cervical nerves, not 7, and only 1 coccygeal.",
+        "Nerves do not match vertebrae one for one: there is an extra cervical nerve, and the fused sacral and coccygeal bones give 5 sacral and 1 coccygeal nerve.",
+        "Correct. 8 + 12 + 5 + 5 + 1 = 31 pairs.",
+        "Twelve pairs is the count of thoracic spinal nerves only; they are one part of the full 31."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the connective tissue layers of a nerve from the outside in, ending with what they wrap.",
+    "options": [
+      "Epineurium",
+      "Perineurium",
+      "Endoneurium",
+      "A single axon"
+    ],
+    "why": {
+      "correct": "The epineurium wraps the whole nerve, the perineurium wraps each fascicle inside it, and the endoneurium wraps each single axon.",
+      "options": [
+        "Outermost: dense irregular connective tissue around the whole nerve.",
+        "Around each fascicle, a bundle of axons.",
+        "Around each single axon and its Schwann cells.",
+        "The axon itself is the innermost part."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon cuts across a nerve and sees several round bundles, each with its own sleeve. Which layer forms the sleeve around each bundle?",
+    "options": [
+      "Epineurium",
+      "Endoneurium",
+      "Perineurium",
+      "Myelin sheath"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each bundle is a fascicle, and the perineurium wraps each fascicle. Its cells are joined by tight junctions and control what passes from the blood into the fascicle.",
+      "options": [
+        "The epineurium wraps the whole nerve and holds the fascicles together; it is the outer layer, not the sleeve around each bundle.",
+        "The endoneurium wraps single axons inside a fascicle, not whole bundles.",
+        "Correct. The perineurium wraps each fascicle.",
+        "Myelin wraps single axons and is made by Schwann cells; it is not a connective tissue layer around a bundle."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-9",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "predictLevel": 2,
+    "q": "A surgeon cuts the right L5 dorsal root to relieve pain, leaving the ventral root intact. Predict the change in each variable on the right side, compared with before surgery.",
+    "variables": [
+      {
+        "name": "Action potentials reaching the L5 dorsal horn from the L5 dermatome",
+        "answer": "down",
+        "why": "The sensory axons from the L5 dermatome enter the cord only through the L5 dorsal root, which is cut."
+      },
+      {
+        "name": "Sensation over the top of the right foot (L5 dermatome)",
+        "answer": "down",
+        "why": "L5 signals no longer arrive, so sensation falls. It is reduced rather than absent, because the L4 and S1 dermatomes overlap this area."
+      },
+      {
+        "name": "Motor commands leaving the cord through the L5 ventral root",
+        "answer": "none",
+        "why": "The motor axons leave through the ventral root, which is intact, so the brain can still send commands out."
+      },
+      {
+        "name": "Strength of ankle dorsiflexion when the person tries",
+        "answer": "none",
+        "why": "The motor axons to the dorsiflexors are uncut, so voluntary strength is kept."
+      }
+    ],
+    "why": {
+      "correct": "The dorsal root is purely sensory, so cutting it removes input from its dermatome, reduced rather than abolished because of overlap, while every motor pathway through the ventral root is spared."
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a fracture of the middle of the humerus, a patient cannot extend his wrist or fingers; his hand hangs limply when he holds his arm out, palm down. Which nerve is most likely injured?",
+    "options": [
+      "Median nerve",
+      "Radial nerve",
+      "Ulnar nerve",
+      "Musculocutaneous nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The radial nerve spirals around the shaft of the humerus and supplies the wrist and finger extensors. Damage there causes wrist drop.",
+      "options": [
+        "The median nerve supplies most of the flexors of the wrist and fingers and the thenar muscles. Damage weakens gripping and the thumb, not extension.",
+        "Correct. Wrist drop after a mid-shaft humerus fracture points to the radial nerve.",
+        "The ulnar nerve supplies most of the small muscles inside the hand. Damage weakens finger spreading and can curl the ring and little fingers, but wrist extension is spared.",
+        "The musculocutaneous nerve supplies the elbow flexors at the front of the arm, not the wrist extensors."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A data-entry clerk wakes at night with numbness and tingling in her thumb, index and middle fingers. Her little finger feels normal, and her thumb is weak when she pinches. Pressure on which nerve best explains this?",
+    "options": [
+      "Ulnar nerve at the elbow",
+      "Radial nerve at the humerus",
+      "Axillary nerve where it wraps the humerus",
+      "Median nerve in the carpal tunnel"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The median nerve passes through the carpal tunnel and supplies the skin of the thumb, index and middle fingers on the palm side and most of the thenar muscles. Squeezing it there is carpal tunnel syndrome.",
+      "options": [
+        "The ulnar nerve supplies the little finger and half the ring finger, which feel normal here.",
+        "The radial nerve supplies the extensors and mainly the back of the hand; it does not explain numb fingertips on the palm side with a weak pinch.",
+        "The axillary nerve supplies the deltoid and the skin over the shoulder, far from the fingers.",
+        "Correct. This is the median nerve, compressed in the carpal tunnel."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "You bang the inside of your elbow on a table edge and feel a jolt of tingling shoot into your little finger. Which nerve did you hit?",
+    "options": [
+      "Radial nerve",
+      "Ulnar nerve",
+      "Median nerve",
+      "Axillary nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The ulnar nerve runs behind the medial epicondyle of the humerus, just under the skin. It carries sensation from the little finger and half the ring finger, so a knock there tingles in those fingers.",
+      "options": [
+        "The radial nerve runs on the back and outer side of the arm; its skin area is the back of the hand near the thumb, not the little finger.",
+        "Correct. The \"funny bone\" is the ulnar nerve behind the medial epicondyle.",
+        "The median nerve supplies the thumb side of the palm and fingers, not the little finger.",
+        "The axillary nerve supplies the shoulder, not the hand."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A soccer player is kicked hard on the outer side of the knee, just below the joint. Afterward his toes drag when he walks, and he lifts his knee high with each step. Which nerve was injured?",
+    "options": [
+      "Femoral nerve",
+      "Tibial nerve behind the knee",
+      "Obturator nerve",
+      "Common fibular nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The common fibular nerve wraps around the neck of the fibula just under the skin and supplies the dorsiflexors at the front of the leg. Damage causes foot drop.",
+      "options": [
+        "The femoral nerve supplies the quadriceps; damage makes the knee buckle, not the toes drag.",
+        "The tibial nerve runs deep in the back of the leg to the plantar flexors, so it is not easily hit at the side of the knee, and its loss would weaken pushing off rather than lifting the foot.",
+        "The obturator nerve supplies the adductors of the medial thigh, not the muscles that lift the foot.",
+        "Correct. A blow at the fibular neck injures the common fibular nerve, causing foot drop."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "interdependence"
+    ],
+    "q": "After a diving accident, a young man is paralyzed below the neck, yet he keeps breathing on his own using his diaphragm. Between which limits is his cord injury most likely?",
+    "options": [
+      "Above C3",
+      "At C5 or below",
+      "At T12 or below",
+      "Anywhere in the cervical cord"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The phrenic nerve (C3 to C5) is the diaphragm’s only motor supply. An injury at or below C5 leaves most or all of those segments working, so the diaphragm still contracts.",
+      "options": [
+        "An injury above C3 cuts every phrenic nerve segment off from the brain, so the diaphragm stops and he could not breathe on his own.",
+        "Correct. With C3 to C5 spared, the phrenic nerves still drive the diaphragm.",
+        "At T12 or below his arms would still work, but he is paralyzed below the neck.",
+        "Not anywhere: an injury above C3 would stop diaphragm breathing, so the level must be low in the neck."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-15",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statements about the rami of spinal nerves are correct? Select all that apply.",
+    "options": [
+      "The dorsal ramus supplies the deep back muscles and the skin of the back",
+      "The ventral rami supply the limbs",
+      "Rami carry only motor axons",
+      "The thoracic ventral rami form the intercostal nerves",
+      "The brachial plexus is formed from dorsal rami"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Both rami are mixed. The dorsal ramus supplies the back. The ventral ramus supplies the front and sides of the trunk and the limbs, forming the plexuses in the neck and limb regions and the intercostal nerves in the thorax.",
+      "options": [
+        "Correct. The dorsal ramus turns backward to the erector spinae and the skin near the midline of the back.",
+        "Correct. The limbs are supplied by ventral rami, through the brachial, lumbar and sacral plexuses.",
+        "Incorrect. Rami form after the dorsal and ventral roots have joined, so each carries both sensory and motor axons.",
+        "Correct. T1 to T11 ventral rami run alone between the ribs as intercostal nerves.",
+        "Incorrect. All the plexuses, the brachial included, are formed from ventral rami."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-16",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the organization of the brachial plexus, from the cord outward: roots → trunks → ____ → cords → terminal branches.",
+    "options": [
+      "Rami",
+      "Divisions",
+      "Fascicles",
+      "Ganglia"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each of the three trunks splits into an anterior and a posterior division, and the divisions regroup into the lateral, posterior and medial cords.",
+      "options": [
+        "The roots of the brachial plexus are themselves ventral rami; rami come before the trunks, not after.",
+        "Correct. Trunks split into divisions, which regroup into cords.",
+        "Fascicles are bundles of axons inside any nerve, not a stage of the plexus.",
+        "Ganglia are clusters of cell bodies. The plexus holds only axons."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-17",
+    "type": "graph",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "dermatome-landmarks",
+    "q": "In the figure, which spinal nerve supplies the skin at marker 6, the navel?",
+    "options": [
+      "T4",
+      "T10",
+      "L1",
+      "T12"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The navel lies in the T10 dermatome. The thoracic dermatomes run as horizontal bands, T4 at the nipple line and T10 at the navel.",
+      "options": [
+        "T4 is the nipple line, marker 5, well above the navel.",
+        "Correct. The navel is the T10 landmark.",
+        "L1 supplies the groin, marker 7, below the navel.",
+        "T12 lies below the navel, just above the groin."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-18",
+    "type": "graph",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "dermatome-landmarks",
+    "q": "In the figure, which spinal nerve supplies the skin at marker 2, the tip of the thumb?",
+    "options": [
+      "C5",
+      "C8",
+      "C7",
+      "C6"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The thumb is in the C6 dermatome. Across the hand, C6 is the thumb, C7 the middle finger and C8 the little finger.",
+      "options": [
+        "C5 supplies the outer side of the upper arm, marker 1, not the thumb.",
+        "C8 supplies the little finger side of the hand, marker 4.",
+        "C7 supplies the middle finger, marker 3.",
+        "Correct. The thumb is the C6 landmark."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-19",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "dermatome-landmarks",
+    "q": "A patient reports numbness only at marker 10 in the figure, the outer edge of the foot near the little toe. Which dorsal root is most likely affected?",
+    "options": [
+      "L4",
+      "L5",
+      "S1",
+      "S3"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The outer edge of the foot, the little toe and the heel form the S1 dermatome, so the S1 root is the likely one.",
+      "options": [
+        "L4 supplies the inner side of the leg below the knee, marker 8.",
+        "L5 supplies the top of the foot and the big toe, marker 9.",
+        "Correct. The lateral foot and little toe are the S1 landmark.",
+        "S3 supplies skin near the buttocks and perineum, not the foot."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "one dorsal root alone supplies each dermatome",
+    "q": "A surgeon cuts one thoracic dorsal root, T8, to treat pain. Afterward, the T8 band of skin feels slightly dull but is not numb. What best explains this?",
+    "options": [
+      "Neighboring dermatomes overlap, so T7 and T9 still supply part of the T8 band",
+      "The T8 ventral root carries enough sensory axons to take over",
+      "The dorsal root ganglion was left intact, so its neurons still send signals into the cord",
+      "Sensory axons regrow through the cut root within hours"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each patch of skin is supplied mainly by one spinal nerve and partly by the ones above and below. With only T8 cut, T7 and T9 still carry some signals from the band, so sensation is reduced but not lost.",
+      "options": [
+        "Correct. Overlap from neighboring dermatomes keeps partial sensation.",
+        "The ventral root carries motor axons out; it cannot bring sensory signals in to replace a cut dorsal root.",
+        "The ganglion holds the cell bodies, but their central axons run through the cut root to the cord, so the ganglion alone cannot deliver the signal.",
+        "Regrowth, where it happens, takes weeks to months at about a millimeter a day, and cut dorsal roots regrow into the cord poorly."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A 70-year-old develops a painful, blistering rash in a band that starts at his spine on the right, wraps around his side and ends at his navel. The rash never crosses the midline. Where has the virus been lying dormant?",
+    "options": [
+      "In the right T10 dorsal root ganglion",
+      "In the right T10 ventral horn",
+      "In the skin cells along the whole band of the rash",
+      "In the T10 ventral root"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "After chickenpox the virus stays dormant in the sensory cell bodies of a dorsal root ganglion. When it reactivates it travels out along those axons, so the rash fills that ganglion’s dermatome on one side: here T10, which reaches the navel.",
+      "options": [
+        "Correct. The right T10 dorsal root ganglion holds the sensory cell bodies for that band.",
+        "The ventral horn holds motor neurons. A reactivation there would not produce a rash following one sensory strip of skin.",
+        "The rash appears in the skin, but the virus waits between outbreaks inside nerve cell bodies, not in the skin.",
+        "The ventral root carries motor axons and holds no cell bodies."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-22",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This path of a sensory signal from the skin of the sole of the foot to the spinal cord has one wrong step. Find it.",
+    "options": [
+      "Sensory ending in the skin of the sole",
+      "Tibial nerve",
+      "Sciatic nerve",
+      "Femoral nerve",
+      "Sacral plexus and a ventral ramus",
+      "Dorsal root ganglion and dorsal root"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The sole is supplied by the tibial nerve, which joins the sciatic nerve and runs up the back of the thigh into the sacral plexus. The femoral nerve belongs to the lumbar plexus and serves the front of the thigh, so it is not on this path.",
+      "options": [
+        "Correct step. The signal starts at a sensory ending in the skin of the sole.",
+        "Correct step. The tibial nerve supplies the sole of the foot.",
+        "Correct step. The tibial nerve is one of the two branches that make up the sciatic nerve.",
+        "This is the wrong step. The femoral nerve runs down the front of the thigh from the lumbar plexus; it plays no part in this path.",
+        "Correct step. The sciatic nerve comes from the sacral plexus, whose axons sort back into ventral rami and spinal nerves.",
+        "Correct step. In the spinal nerve, sensory axons pass their cell bodies in the dorsal root ganglion and enter the cord through the dorsal root."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A fall onto the shoulder fractures the surgical neck of the humerus. A week later the patient cannot lift his arm out to the side, and the skin over the outer shoulder is numb. Which nerve was damaged?",
+    "options": [
+      "Radial nerve",
+      "Axillary nerve",
+      "Musculocutaneous nerve",
+      "Phrenic nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The axillary nerve wraps around the surgical neck of the humerus and supplies the deltoid, the main abductor of the arm, and the skin over the shoulder.",
+      "options": [
+        "The radial nerve is at risk lower on the humerus, around its shaft, and its loss causes wrist drop rather than a weak shoulder.",
+        "Correct. The axillary nerve supplies the deltoid and wraps the surgical neck.",
+        "The musculocutaneous nerve supplies the elbow flexors, not the deltoid.",
+        "The phrenic nerve runs to the diaphragm, not to the shoulder muscles."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-24",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why is every spinal nerve a mixed nerve?",
+    "options": [
+      "It forms where a sensory dorsal root and a motor ventral root join",
+      "Each of its axons carries signals in both directions",
+      "It contains both myelinated and unmyelinated axons",
+      "It carries both somatic axons and autonomic axons to the organs it reaches"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A spinal nerve begins where the dorsal root (sensory axons) and the ventral root (motor axons) join, so from that point it carries both kinds of axon side by side.",
+      "options": [
+        "Correct. The two roots join to form it.",
+        "Each axon carries action potentials in one direction only. The nerve is mixed because it holds two kinds of axons, not two-way axons.",
+        "Nerves do hold both myelinated and unmyelinated axons, but \"mixed\" refers to sensory plus motor axons.",
+        "Some spinal nerves carry autonomic axons, but that is not why they are called mixed."
+      ]
+    }
+  },
+  {
+    "id": "anp-spinal-nerves-25",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Marcus has burning pain from his buttock down the back of his thigh to the outer edge of his foot, a numb little toe, and weak push-off onto his toes. His knee extension is normal. Which structure is most likely compressed?",
+    "options": [
+      "The femoral nerve in the femoral triangle",
+      "The L4 root",
+      "The S1 root",
+      "The common fibular nerve at the knee"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Pain along the sciatic path, numbness in the S1 dermatome (little toe, outer foot) and weak plantar flexion all fit the S1 root, usually pressed by a herniated disc. That picture is called sciatica.",
+      "options": [
+        "The femoral nerve supplies the quadriceps and the front of the thigh; his knee extension is normal and his pain is at the back.",
+        "The L4 root supplies the inner leg below the knee and helps knee extension, both normal here.",
+        "Correct. The S1 dermatome and weak plantar flexion point to the S1 root.",
+        "The common fibular nerve causes foot drop and numbness on the top of the foot, and it would not explain pain in the buttock and thigh."
+      ]
+    }
+  }
+]

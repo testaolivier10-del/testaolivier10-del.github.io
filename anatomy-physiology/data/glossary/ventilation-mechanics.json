@@ -69,18 +69,14 @@
     "say": "noo-moh-THOR-aks"
   },
   "compliance-surfactant": {
-    "def": "Lung compliance is the change in lung volume per change in transpulmonary pressure (ΔV ÷ ΔP): how easily the lungs stretch. It is set by elastic fibers and by the surface tension of the fluid lining the alveoli. Surfactant, a phospholipid-rich film from type II alveolar cells, lowers that surface tension, raising compliance and keeping small alveoli open. Thoracic wall compliance is how easily the chest wall expands.",
+    "def": "Lung compliance is the change in lung volume per change in transpulmonary pressure (ΔV ÷ ΔP): how easily the lungs stretch. It is set by elastic fibers and by the surface tension of the fluid lining the alveoli, which surfactant lowers, so surfactant raises compliance. Thoracic wall compliance is how easily the chest wall expands.",
     "roots": [
       [
         "compli-",
         "to fill up, yield"
-      ],
-      [
-        "surf-act-ant",
-        "surface-active agent"
       ]
     ],
-    "say": "sur-FAK-tunt"
+    "say": ""
   },
   "airway-resistance": {
     "def": "The opposition to airflow through the airways, which rises steeply as airway radius falls (resistance depends on 1 ÷ r⁴). Bronchoconstriction (smooth muscle contraction, from acetylcholine, histamine or leukotrienes) raises it; bronchodilation (relaxation, from epinephrine on beta-2 receptor proteins) lowers it. Asthma is a chronic inflammatory airway disease in which bronchoconstriction, wall swelling and mucus narrow the airways.",

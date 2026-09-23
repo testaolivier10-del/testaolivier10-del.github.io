@@ -254,7 +254,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Which alveolar cells secrete a lipid-rich film that lowers surface tension and divide to replace damaged wall cells?",
+    "q": "Which alveolar cells secrete surfactant and divide to replace damaged wall cells?",
     "options": [
       "Type I alveolar cells",
       "Alveolar macrophages",
@@ -263,12 +263,12 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Type II alveolar cells are cuboidal cells that secrete the surface-tension-lowering film and act as the repair cells of the alveolar wall, turning into new type I cells.",
+      "correct": "Type II alveolar cells are cuboidal cells that secrete surfactant, the film that lowers surface tension, and act as the repair cells of the alveolar wall, turning into new type I cells.",
       "options": [
-        "Type I cells form the thin gas-crossing wall. They rarely, if ever, divide and do not secrete the film.",
+        "Type I cells form the thin gas-crossing wall. They rarely, if ever, divide and do not secrete surfactant.",
         "Alveolar macrophages engulf particles and microorganisms; they do not build the wall.",
         "Capillary endothelial cells line the blood side of the respiratory membrane, not the air side.",
-        "Correct. Type II cells secrete the film and replace lost type I cells."
+        "Correct. Type II cells secrete surfactant and replace lost type I cells."
       ]
     }
   },
@@ -307,8 +307,8 @@
   {
     "id": "anp-lower-airway-lungs-12",
     "type": "vignette",
-    "level": "analyze",
-    "diff": 3,
+    "level": "apply",
+    "diff": 2,
     "core": [
       "structure-function",
       "gradients"
@@ -326,7 +326,7 @@
       "options": [
         "Correct. A longer diffusion distance slows diffusion.",
         "Oxygen still has to cross the whole thickened barrier; extra fluid lengthens the path rather than helping.",
-        "Surface area is only one factor. Distance also sets diffusion rate, and it has increased.",
+        "Nothing here changes the gradient or the area, but distance also sets diffusion rate, and it has increased.",
         "Oxygen still moves from alveolar air, where there is more of it, into the blood; only its rate changes."
       ]
     }

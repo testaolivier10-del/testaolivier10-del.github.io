@@ -315,15 +315,20 @@ export function questionForPage(C, q, topicId) {
     figure: q.figure, pin: q.pin, why: q.why, misconception: q.misconception,
     // A figure question carries its image by path from the course root; the
     // runtime prefixes the page's base, so the same data works on any page.
-    fig: q.figure && C.figures[q.figure] ? figForQuestion(C, q.figure, topicId) : undefined,
+    fig: q.figure && C.figures[q.figure] ? figForQuestion(C, q.figure, topicId, q.type === 'image' ? q.pin : null) : undefined,
   };
 }
 
-function figForQuestion(C, id, topicId) {
+function figForQuestion(C, id, topicId, pin) {
   const f = C.figures[id], W = f.w || 1000, H = f.h || 800;
-  const covers = (f.labels || []).filter(l => l.box && laterLabel(C, l, topicId))
-    .map(l => [l.box[0] / W, l.box[1] / H, l.box[2] / W, l.box[3] / H].map(v => +(100 * v).toFixed(2)));
-  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}) };
+  const pct = b => [b[0] / W, b[1] / H, b[2] / W, b[3] / H].map(v => +(100 * v).toFixed(2));
+  const labels = (f.labels || []).filter(l => l.box);
+  // An identification question covers every printed label, or the answer
+  // could be read off the figure, and marks the pinned label's box as the
+  // target. Any other figure question covers only labels taught later.
+  const target = pin ? labels.find(l => l.id === pin) : null;
+  const covers = labels.filter(l => target ? l !== target : laterLabel(C, l, topicId)).map(l => pct(l.box));
+  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}) };
 }
 
 /* The question as static HTML (readable without JavaScript; anp-questions.js

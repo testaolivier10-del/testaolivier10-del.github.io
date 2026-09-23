@@ -4560,6 +4560,493 @@
    ]
   },
   {
+   "id": "neuron-structure",
+   "title": "Neuron structure",
+   "chapter": "nervous-tissue",
+   "topic": "neurons-glia",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-12-8",
+     "topic": "neurons-glia",
+     "core": [
+      "structure-function",
+      "communication"
+     ],
+     "labels": [
+      {
+       "id": "cell-body",
+       "name": "Cell body (soma)",
+       "accept": [
+        "perikaryon",
+        "soma"
+       ],
+       "box": [
+        416,
+        17,
+        168,
+        26
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "The neuron's cell body, or soma. It holds the nucleus and the dark clumps of rough ER (Nissl bodies) that make the proteins for the whole neuron, and it receives signals along with the dendrites.",
+       "follow": {
+        "q": "Why is a neuron's cell body packed with so much rough ER?",
+        "options": [
+         "It stores calcium to trigger the neuron's signals",
+         "It makes the myelin that wraps the neuron's axon",
+         "It breaks down worn-out organelles returned from the axon",
+         "It makes proteins for the whole neuron, axon included"
+        ],
+        "correct": 3,
+        "why": "Almost all of a neuron's proteins are made in the soma and shipped down the axon by axonal transport, and the axon can hold hundreds of times more cytoplasm than the soma. That takes a lot of ribosome-studded rough ER, seen as Nissl bodies. Myelin is made by glial cells, not the neuron, and breaking down worn-out parts is the job of lysosomes.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "axon",
+       "name": "Axon",
+       "accept": [],
+       "box": [
+        517,
+        93,
+        59,
+        21
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "The single long process that carries action potentials away from the cell body. It leaves the soma at the axon hillock and ends in branched axon terminals; this one is wrapped in segments of myelin."
+      },
+      {
+       "id": "oligodendrocyte",
+       "name": "Oligodendrocyte",
+       "accept": [
+        "oligodendrocytes"
+       ],
+       "box": [
+        667,
+        93,
+        160,
+        26
+       ],
+       "concept": "cns-glia",
+       "taught": "neurons-glia",
+       "fn": "A CNS glial cell with a few arms. Each arm wraps a segment of a different axon in layers of myelin, so one oligodendrocyte myelinates parts of many axons.",
+       "follow": {
+        "q": "How does an oligodendrocyte differ from a Schwann cell in the way it makes myelin?",
+        "options": [
+         "It myelinates only axons in the PNS",
+         "It makes myelin from protein rather than from layers of membrane",
+         "It wraps segments of many different axons, one per arm",
+         "It wraps only one segment of one axon"
+        ],
+        "correct": 2,
+        "why": "An oligodendrocyte, in the CNS, sends out several arms, and each arm wraps a segment of a different axon. A Schwann cell, in the PNS, wraps a single segment of a single axon. Both build myelin the same basic way, from many layers of their own plasma membrane.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "cell-membrane",
+       "name": "Cell membrane",
+       "accept": [
+        "plasma membrane"
+       ],
+       "box": [
+        2,
+        136,
+        153,
+        21
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The neuron's plasma membrane. Ion channels in it let the charge across the membrane change, and those changes, graded potentials and action potentials, are the neuron's signals."
+      },
+      {
+       "id": "dendrites",
+       "name": "Dendrites",
+       "accept": [
+        "dendrite"
+       ],
+       "box": [
+        3,
+        201,
+        100,
+        21
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "Short, tapering, heavily branched processes that receive signals from other neurons, often on tiny dendritic spines, and carry graded potentials toward the cell body.",
+       "follow": {
+        "q": "Which comparison between dendrites and the axon is correct?",
+        "options": [
+         "Dendrites carry action potentials away from the soma; the axon carries graded potentials toward it",
+         "A neuron usually has many axons but a single dendrite",
+         "Dendrites are wrapped in myelin and the axon is bare",
+         "Dendrites carry graded potentials toward the soma; the axon carries action potentials away"
+        ],
+        "correct": 3,
+        "why": "Signals come in on the dendrites as graded potentials and spread toward the soma; the single axon carries action potentials away from it. A neuron usually has many dendrites and one axon, and it is the axon, not the dendrites, that is often myelinated.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "node-of-ranvier",
+       "name": "Node of Ranvier",
+       "accept": [
+        "myelin sheath gap",
+        "node",
+        "nodes of ranvier"
+       ],
+       "box": [
+        475,
+        309,
+        162,
+        21
+       ],
+       "concept": "myelin",
+       "taught": "neurons-glia",
+       "fn": "A tiny gap between two segments of myelin where the axon's membrane is bare. Voltage-gated sodium channels are packed densely at the nodes and sparse under the myelin.",
+       "follow": {
+        "q": "Along a myelinated axon, where are voltage-gated sodium channels most densely packed?",
+        "options": [
+         "At the nodes of Ranvier, the bare gaps between segments",
+         "Under the middle of each myelin segment, where insulation is thickest",
+         "Evenly along the whole axon",
+         "Only on the dendrites"
+        ],
+        "correct": 0,
+        "why": "The membrane under the myelin has few voltage-gated sodium channels, while the bare nodes of Ranvier between segments are packed with them. Dendrites carry graded potentials and are not where the axon's channels sit.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "myelin-sheath",
+       "name": "Myelin sheath",
+       "accept": [
+        "myelin"
+       ],
+       "box": [
+        474,
+        355,
+        139,
+        25
+       ],
+       "concept": "myelin",
+       "taught": "neurons-glia",
+       "fn": "Many tight layers of a glial cell's plasma membrane spiraled around an axon segment. Being mostly lipid, it insulates the axon, so action potentials travel much faster, and its fat makes white matter white."
+      },
+      {
+       "id": "synapse",
+       "name": "Synapse",
+       "accept": [
+        "axon terminal",
+        "synapses"
+       ],
+       "box": [
+        474,
+        496,
+        93,
+        25
+       ],
+       "concept": "synapse-basic",
+       "taught": "chemical-signaling",
+       "fn": "Where an axon terminal meets the next neuron. The terminal releases neurotransmitter, which crosses a narrow gap and binds receptor proteins on the next cell."
+      }
+     ]
+    },
+    {
+     "figure": "os-12-9",
+     "topic": "neurons-glia",
+     "core": [
+      "structure-function",
+      "communication"
+     ],
+     "labels": [
+      {
+       "id": "bipolar-neuron",
+       "name": "Bipolar neuron",
+       "accept": [
+        "bipolar"
+       ],
+       "box": [
+        611,
+        158,
+        147,
+        25
+       ],
+       "concept": "neuron-classes",
+       "taught": "neurons-glia",
+       "fn": "A neuron with two processes, one axon and one dendrite, leaving opposite ends of the cell body. Bipolar neurons are rare, found only in a few sense organs: the eye, the smell-sensing lining of the nose and the inner parts of the ear.",
+       "follow": {
+        "q": "Where would you expect to find bipolar neurons?",
+        "options": [
+         "Throughout the gray matter of the brain and spinal cord, where they integrate signals",
+         "In every ganglion beside the spinal cord",
+         "In a few sense organs: the eye, the nose and the inner parts of the ear",
+         "In skeletal muscles"
+        ],
+        "correct": 2,
+        "why": "Bipolar neurons are rare and sit in a few sense organs: the light-sensing layer of the eye, the smell-sensing lining of the nose and the inner parts of the ear. Spinal cord gray matter is full of multipolar neurons, and the ganglia beside the spinal cord hold the cell bodies of unipolar sensory neurons. Skeletal muscle holds no neuron cell bodies at all.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "unipolar-neuron",
+       "name": "Unipolar neuron",
+       "accept": [
+        "unipolar",
+        "pseudounipolar neuron",
+        "pseudounipolar"
+       ],
+       "box": [
+        109,
+        247,
+        159,
+        25
+       ],
+       "concept": "neuron-classes",
+       "taught": "neurons-glia",
+       "fn": "A neuron with one short process that splits like a T into two long branches: one runs out to a sensory receptor ending and the other into the CNS. Most sensory neurons are this type, with the cell body in a ganglion.",
+       "follow": {
+        "q": "A neuron's cell body sits in a ganglion beside the spinal cord, and its single process splits into two long branches. What is it most likely to be?",
+        "options": [
+         "An interneuron",
+         "A sensory neuron",
+         "A somatic motor neuron",
+         "A bipolar neuron in a sense organ"
+        ],
+        "correct": 1,
+        "why": "One process that splits in two makes it unipolar, and most unipolar neurons are sensory neurons whose cell bodies sit in ganglia outside the CNS. Interneurons and somatic motor neurons are multipolar with their cell bodies in the CNS, and bipolar neurons have two separate processes.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "multipolar-neuron",
+       "name": "Multipolar neuron",
+       "accept": [
+        "multipolar"
+       ],
+       "box": [
+        366,
+        543,
+        172,
+        25
+       ],
+       "concept": "neuron-classes",
+       "taught": "neurons-glia",
+       "fn": "A neuron with one axon and two or more dendrites. It is by far the most common type: every motor neuron and nearly every interneuron in the CNS is multipolar."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "glial-cells",
+   "title": "Glial cells",
+   "chapter": "nervous-tissue",
+   "topic": "neurons-glia",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-12-11",
+     "topic": "neurons-glia",
+     "core": [
+      "structure-function",
+      "homeostasis"
+     ],
+     "labels": [
+      {
+       "id": "microglial-cell",
+       "name": "Microglial cell",
+       "accept": [
+        "microglia",
+        "microglial cells",
+        "microglial"
+       ],
+       "box": [
+        6,
+        23,
+        136,
+        25
+       ],
+       "concept": "cns-glia",
+       "taught": "neurons-glia",
+       "fn": "A small CNS glial cell with fine, constantly moving processes. Microglia patrol the tissue and, where they find damage or infection, multiply and engulf dead cells, debris and microbes, acting as the CNS's resident defense cells.",
+       "follow": {
+        "q": "A small area of brain tissue is injured, leaving dead cells and debris. Which glial cells move in and engulf the debris?",
+        "options": [
+         "Ependymal cells",
+         "Oligodendrocytes",
+         "Microglia",
+         "Satellite cells"
+        ],
+        "correct": 2,
+        "why": "Microglia patrol the CNS and, when they detect damage, multiply, move to the spot and engulf dead cells and debris. Ependymal cells line fluid-filled cavities, oligodendrocytes make myelin, and satellite cells are PNS glia around cell bodies in ganglia.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "astrocyte",
+       "name": "Astrocyte",
+       "accept": [
+        "astrocytes"
+       ],
+       "box": [
+        5,
+        172,
+        99,
+        25
+       ],
+       "concept": "cns-glia",
+       "taught": "neurons-glia",
+       "fn": "A star-shaped CNS glial cell with many branching processes. Astrocytes take up excess potassium and neurotransmitter around neurons, wrap the brain's capillaries with their end-feet, store glycogen, and wall off injuries with a glial scar.",
+       "follow": {
+        "q": "During intense firing, potassium ions build up in the narrow spaces around neurons. Which glial cell takes up the excess?",
+        "options": [
+         "Oligodendrocytes, which wrap segments of nearby axons in myelin",
+         "Microglia, which engulf debris",
+         "Ependymal cells, which line fluid-filled cavities",
+         "Astrocytes, which regulate the fluid around neurons"
+        ],
+        "correct": 3,
+        "why": "Astrocytes take up the potassium that leaks out of firing neurons, and the neurotransmitter released at synapses, keeping the fluid around neurons within its normal range. Oligodendrocytes make myelin, microglia clear debris, and ependymal cells line the fluid-filled cavities.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "ependymal-cells",
+       "name": "Ependymal cells",
+       "accept": [
+        "ependymal cell",
+        "ependymal"
+       ],
+       "box": [
+        274,
+        608,
+        163,
+        25
+       ],
+       "concept": "cns-glia",
+       "taught": "neurons-glia",
+       "fn": "A single layer of cube- to column-shaped CNS glial cells lining the fluid-filled cavities inside the brain and the canal down the middle of the spinal cord. Many carry cilia whose beating helps keep that fluid moving."
+      },
+      {
+       "id": "oligodendrocytes",
+       "name": "Oligodendrocytes",
+       "accept": [
+        "oligodendrocyte"
+       ],
+       "box": [
+        654,
+        608,
+        173,
+        25
+       ],
+       "concept": "cns-glia",
+       "taught": "neurons-glia",
+       "fn": "CNS glial cells with a few arms. Each arm flattens and wraps a segment of a different axon in myelin, so one oligodendrocyte can myelinate segments of dozens of axons."
+      }
+     ]
+    },
+    {
+     "figure": "os-12-12",
+     "topic": "neurons-glia",
+     "core": [
+      "structure-function",
+      "homeostasis"
+     ],
+     "labels": [
+      {
+       "id": "satellite-cells",
+       "name": "Satellite cells",
+       "accept": [
+        "satellite cell",
+        "satellite"
+       ],
+       "box": [
+        0,
+        300,
+        130,
+        21
+       ],
+       "concept": "pns-glia",
+       "taught": "neurons-glia",
+       "fn": "Flattened PNS glial cells covering the cell bodies of neurons in a ganglion. They support those neurons and regulate the fluid around them, much as astrocytes do in the CNS.",
+       "follow": {
+        "q": "Satellite cells in a ganglion do a job much like which CNS glial cell?",
+        "options": [
+         "Astrocytes, which tend the fluid around neurons",
+         "Oligodendrocytes, which make myelin",
+         "Microglia, which engulf debris and dead cells",
+         "Ependymal cells, which line fluid-filled cavities"
+        ],
+        "correct": 0,
+        "why": "Satellite cells cover neuron cell bodies in PNS ganglia and control the fluid around them, the same role astrocytes play around neurons in the CNS. In the PNS, myelin comes from Schwann cells, and there is no PNS match for ependymal cells.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "schwann-cells",
+       "name": "Schwann cells",
+       "accept": [
+        "schwann cell",
+        "neurolemmocytes",
+        "neurolemmocyte"
+       ],
+       "box": [
+        610,
+        318,
+        145,
+        22
+       ],
+       "concept": "pns-glia",
+       "taught": "neurons-glia",
+       "fn": "PNS glial cells lined up along axons. Each one wraps a single segment of a single axon in myelin, or cradles several thin unmyelinated axons, and after an injury they guide the cut axon as it regrows.",
+       "follow": {
+        "q": "A PNS axon has 200 myelin segments along its length. How many Schwann cells made them?",
+        "options": [
+         "One, which wraps all 200 segments",
+         "About 20, since each cell wraps about ten segments",
+         "200, one cell for each segment",
+         "None; PNS myelin comes from oligodendrocytes"
+        ],
+        "correct": 2,
+        "why": "Each Schwann cell wraps just one segment of one axon, so 200 segments need 200 Schwann cells. It is the oligodendrocyte, in the CNS, whose arms wrap segments of several axons, and oligodendrocytes do not myelinate PNS axons.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "axon",
+       "name": "Axon",
+       "accept": [
+        "axons"
+       ],
+       "box": [
+        67,
+        432,
+        60,
+        21
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "The long process of the ganglion neuron, wrapped segment by segment by Schwann cells. It carries action potentials past the cell body, which sits off to one side, on into the CNS."
+      }
+     ],
+     "covered": [
+      {
+       "id": "ganglionic-neuron-cell-body",
+       "box": [
+        590,
+        57,
+        202,
+        71
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "heart-position",
    "title": "The heart in the chest and its wall",
    "chapter": "cardiovascular",
@@ -12674,6 +13161,2259 @@
      ]
     }
    ]
+  },
+  {
+   "id": "upper-airway",
+   "title": "Nose and upper airway (sagittal)",
+   "chapter": "respiratory",
+   "topic": "upper-airway",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-22-3",
+     "topic": "upper-airway",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "root",
+       "name": "Root",
+       "accept": [
+        "root of the nose",
+        "nasal root"
+       ],
+       "box": [
+        521,
+        29,
+        61,
+        23
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The top of the external nose, where it meets the forehead between the eyes."
+      },
+      {
+       "id": "bridge",
+       "name": "Bridge",
+       "accept": [
+        "bridge of the nose",
+        "nasal bridge"
+       ],
+       "box": [
+        511,
+        95,
+        80,
+        28
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The upper, bony part of the nose's ridge, just below the root. The nasal bones form it."
+      },
+      {
+       "id": "dorsum-nasi",
+       "name": "Dorsum nasi",
+       "accept": [
+        "dorsum of the nose",
+        "nasal dorsum"
+       ],
+       "box": [
+        480,
+        199,
+        143,
+        23
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The ridge of the external nose, running from the root down to the tip."
+      },
+      {
+       "id": "ala",
+       "name": "Ala",
+       "accept": [
+        "alae",
+        "ala of the nose",
+        "nasal ala",
+        "wing of the nose"
+       ],
+       "box": [
+        527,
+        299,
+        47,
+        23
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The flared wing on each side of the nose. Cartilage stiffens it, and it forms the outer wall of a nostril."
+      },
+      {
+       "id": "apex",
+       "name": "Apex",
+       "accept": [
+        "tip of the nose",
+        "nasal tip",
+        "apex of the nose"
+       ],
+       "box": [
+        517,
+        325,
+        67,
+        28
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The tip of the external nose."
+      },
+      {
+       "id": "philtrum",
+       "name": "Philtrum",
+       "accept": [],
+       "box": [
+        502,
+        364,
+        98,
+        23
+       ],
+       "concept": null,
+       "fn": "The vertical groove between the bottom of the nose and the upper lip. It is a landmark of the face, not part of the airway."
+      },
+      {
+       "id": "frontal-bone",
+       "name": "Frontal bone",
+       "accept": [
+        "frontal"
+       ],
+       "box": [
+        107,
+        462,
+        143,
+        23
+       ],
+       "concept": "cranial-bones",
+       "taught": "skull",
+       "fn": "The forehead bone. Its lower edge meets the nasal bones at the root of the nose."
+      },
+      {
+       "id": "nasal-bone",
+       "name": "Nasal bone",
+       "accept": [
+        "nasal bones"
+       ],
+       "box": [
+        107,
+        585,
+        130,
+        24
+       ],
+       "concept": "facial-bones",
+       "taught": "skull",
+       "fn": "One of a pair of small bones that form the bony bridge of the nose."
+      },
+      {
+       "id": "maxillary-bone",
+       "name": "Maxillary bone",
+       "accept": [
+        "maxilla"
+       ],
+       "box": [
+        107,
+        635,
+        163,
+        28
+       ],
+       "concept": "facial-bones",
+       "taught": "skull",
+       "fn": "The upper jaw bone. Its upward process sits beside the nasal bone and frames the side of the nasal opening."
+      },
+      {
+       "id": "septal-cartilage",
+       "name": "Septal cartilage",
+       "accept": [],
+       "box": [
+        106,
+        705,
+        175,
+        29
+       ],
+       "concept": "skull-landmarks",
+       "taught": "skull",
+       "fn": "The plate of hyaline cartilage that forms the front of the nasal septum, the wall between the left and right sides of the nasal cavity.",
+       "follow": {
+        "q": "The septal cartilage forms part of which structure?",
+        "options": [
+         "The nasal septum",
+         "The nasal conchae",
+         "The ala of the nose",
+         "The frontal sinus"
+        ],
+        "correct": 0,
+        "why": "The septal cartilage is the front of the nasal septum, the midline wall that splits the nasal cavity into left and right halves. The conchae are shelves on the side walls, the ala is supported by the alar cartilage, and the frontal sinus is a space in the frontal bone.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "major-alar-cartilage",
+       "name": "Major alar cartilage",
+       "accept": [
+        "alar cartilage"
+       ],
+       "box": [
+        107,
+        829,
+        212,
+        28
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The curved cartilage that shapes the tip of the nose and the ala on each side, holding the nostril open."
+      },
+      {
+       "id": "septal-cartilage-lower",
+       "name": "Septal cartilage",
+       "accept": [],
+       "box": [
+        106,
+        878,
+        175,
+        29
+       ],
+       "concept": "skull-landmarks",
+       "taught": "skull",
+       "fn": "The plate of hyaline cartilage that forms the front of the nasal septum, the wall between the left and right sides of the nasal cavity."
+      }
+     ]
+    },
+    {
+     "figure": "os-22-4",
+     "topic": "upper-airway",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sphenoidal-sinus",
+       "name": "Sphenoidal sinus",
+       "accept": [
+        "sphenoid sinus"
+       ],
+       "box": [
+        22,
+        41,
+        191,
+        28
+       ],
+       "concept": "paranasal-sinuses",
+       "taught": "skull",
+       "fn": "An air-filled space in the sphenoid bone, behind and above the nasal cavity. Like the other paranasal sinuses, it is lined with mucous membrane and drains into the nasal cavity."
+      },
+      {
+       "id": "frontal-sinus",
+       "name": "Frontal sinus",
+       "accept": [],
+       "box": [
+        873,
+        59,
+        146,
+        24
+       ],
+       "concept": "paranasal-sinuses",
+       "taught": "skull",
+       "fn": "An air-filled space in the frontal bone above the eyes. It drains into the nasal cavity; the sinuses make the skull lighter and add mucus and moisture to the air."
+      },
+      {
+       "id": "ethmoid-bone",
+       "name": "Ethmoid bone",
+       "accept": [
+        "ethmoid"
+       ],
+       "box": [
+        873,
+        95,
+        156,
+        23
+       ],
+       "concept": "cranial-bones",
+       "taught": "skull",
+       "fn": "The skull bone between the eye sockets. Its thin, perforated roof plate forms the top of the nasal cavity, and the nerve fibers for smell pass up through its holes."
+      },
+      {
+       "id": "olfactory-epithelium",
+       "name": "Olfactory epithelium",
+       "accept": [],
+       "box": [
+        872,
+        129,
+        219,
+        29
+       ],
+       "concept": "olfaction",
+       "taught": "chemical-senses",
+       "fn": "The patch of epithelium in the roof of the nasal cavity that holds the sensory receptors for smell."
+      },
+      {
+       "id": "nasal-meatuses",
+       "name": "Nasal meatuses (superior, middle, and inferior)",
+       "accept": [
+        "nasal meatus",
+        "meatuses",
+        "meatus"
+       ],
+       "box": [
+        22,
+        130,
+        191,
+        84
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The grooves of air space under each nasal concha. Air flowing through these narrow channels touches a large area of warm, moist lining."
+      },
+      {
+       "id": "nasal-conchae",
+       "name": "Nasal conchae",
+       "accept": [
+        "nasal concha",
+        "conchae",
+        "concha",
+        "turbinates"
+       ],
+       "box": [
+        873,
+        184,
+        167,
+        23
+       ],
+       "concept": "facial-bones",
+       "taught": "skull",
+       "fn": "The three curled shelves (superior, middle and inferior) on each side wall of the nasal cavity. They make inhaled air swirl against the warm, moist mucous membrane, which warms, humidifies and cleans it.",
+       "follow": {
+        "q": "What do the nasal conchae do to the air you breathe in?",
+        "options": [
+         "Close off the nasal cavity whenever you swallow",
+         "Hold the sensory receptors that detect smells",
+         "Make it swirl so the lining can warm and clean it",
+         "Vibrate to make the sound of the voice"
+        ],
+        "correct": 2,
+        "why": "The curled conchae break the airstream into turbulent flow, so more air touches the warm, moist, mucus-covered lining, which warms it, adds water and traps particles. The smell receptors sit in the olfactory epithelium in the roof, and the voice comes from the vocal folds.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pharyngeal-tonsil",
+       "name": "Pharyngeal tonsil",
+       "accept": [
+        "adenoid",
+        "adenoids"
+       ],
+       "box": [
+        22,
+        230,
+        191,
+        28
+       ],
+       "concept": "lymphoid-organs",
+       "taught": "lymphatic-system",
+       "fn": "Lymphoid tissue on the back wall of the nasopharynx, also called the adenoid. It traps microbes carried in with the air; when it swells in a child it can block breathing through the nose.",
+       "follow": {
+        "q": "A child's pharyngeal tonsil (adenoid) is badly swollen. Which is it most likely to block?",
+        "options": [
+         "Breathing through the nose",
+         "Breathing through the mouth",
+         "Swallowing food",
+         "Closing the glottis"
+        ],
+        "correct": 0,
+        "why": "The pharyngeal tonsil sits in the nasopharynx, the air-only passage behind the nasal cavity. A swollen one blocks air coming from the nose, so the child breathes through the mouth. Food and mouth breathing use the oropharynx below it, and the glottis is in the larynx.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "nasal-vestibule",
+       "name": "Nasal vestibule",
+       "accept": [
+        "vestibule"
+       ],
+       "box": [
+        873,
+        240,
+        171,
+        23
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The skin-lined entrance just inside each nostril. Its coarse hairs filter large particles out of incoming air."
+      },
+      {
+       "id": "opening-of-auditory-tube",
+       "name": "Opening of auditory tube",
+       "accept": [
+        "opening of the auditory tube",
+        "auditory tube",
+        "pharyngotympanic tube",
+        "eustachian tube"
+       ],
+       "box": [
+        65,
+        272,
+        148,
+        56
+       ],
+       "concept": "ear-regions",
+       "taught": "hearing-balance",
+       "fn": "Where the auditory tube opens into the nasopharynx. The tube links the middle ear to the throat, so air pressure on both sides of the eardrum can equalize."
+      },
+      {
+       "id": "nostril",
+       "name": "Nostril",
+       "accept": [
+        "naris",
+        "nares",
+        "external naris"
+       ],
+       "box": [
+        873,
+        284,
+        77,
+        23
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "One of the two openings of the nose (the nares), through which air enters the nasal cavity."
+      },
+      {
+       "id": "nasopharynx",
+       "name": "Nasopharynx",
+       "accept": [],
+       "box": [
+        63,
+        337,
+        150,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The upper part of the pharynx, behind the nasal cavity. Only air passes through it, and its ciliated lining sweeps mucus down toward the throat."
+      },
+      {
+       "id": "tongue",
+       "name": "Tongue",
+       "accept": [],
+       "box": [
+        872,
+        405,
+        89,
+        28
+       ],
+       "concept": null,
+       "fn": "The muscular organ on the floor of the mouth. It belongs to the digestive system, but its back forms the front wall of the oropharynx."
+      },
+      {
+       "id": "palatine-tonsil",
+       "name": "Palatine tonsil",
+       "accept": [
+        "palatine tonsils",
+        "tonsil"
+       ],
+       "box": [
+        56,
+        426,
+        157,
+        23
+       ],
+       "concept": "lymphoid-organs",
+       "taught": "lymphatic-system",
+       "fn": "Lymphoid tissue in each side wall of the oropharynx. It samples microbes entering through the mouth."
+      },
+      {
+       "id": "lingual-tonsil",
+       "name": "Lingual tonsil",
+       "accept": [
+        "lingual tonsils"
+       ],
+       "box": [
+        873,
+        443,
+        148,
+        28
+       ],
+       "concept": "lymphoid-organs",
+       "taught": "lymphatic-system",
+       "fn": "Lymphoid tissue at the back of the tongue, in the front wall of the oropharynx."
+      },
+      {
+       "id": "epiglottis",
+       "name": "Epiglottis",
+       "accept": [],
+       "box": [
+        873,
+        489,
+        107,
+        28
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The leaf-shaped flap of elastic cartilage at the top of the larynx. When you swallow, the larynx rises and the epiglottis folds down over its opening, steering food and drink toward the esophagus.",
+       "follow": {
+        "q": "What does the epiglottis do each time you swallow?",
+        "options": [
+         "Rises to seal the nasal cavity from the throat",
+         "Folds down over the entrance to the larynx",
+         "Vibrates to make a swallowing sound",
+         "Pulls the auditory tube open"
+        ],
+        "correct": 1,
+        "why": "As the larynx is pulled up during a swallow, the epiglottis tips down over its entrance, so food slides past into the esophagus instead of the airway. It does not seal the nose, make sound or work the auditory tube.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "oropharynx",
+       "name": "Oropharynx",
+       "accept": [],
+       "box": [
+        78,
+        522,
+        135,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The middle part of the pharynx, behind the mouth. Both air and food pass through it, so it is lined with stratified squamous epithelium that stands up to rubbing.",
+       "follow": {
+        "q": "Why is the oropharynx lined with stratified squamous epithelium instead of a ciliated lining like the nasopharynx?",
+        "options": [
+         "Oxygen must diffuse across it quickly into the blood",
+         "Swallowed food would wear a thin lining away",
+         "It makes the mucus that traps dust",
+         "It never comes into contact with air"
+        ],
+        "correct": 1,
+        "why": "Food passes through the oropharynx, and many layers of flat cells can lose their surface cells to friction and still protect the tissue beneath. Gas exchange does not happen in the pharynx, the mucus comes from goblet cells and glands, and air passes through the oropharynx on every breath.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "hyoid-bone",
+       "name": "Hyoid bone",
+       "accept": [
+        "hyoid"
+       ],
+       "box": [
+        873,
+        549,
+        130,
+        28
+       ],
+       "concept": "hyoid",
+       "taught": "skull",
+       "fn": "The U-shaped bone in the upper neck that does not join any other bone. The larynx hangs from it, and tongue and neck muscles attach to it."
+      },
+      {
+       "id": "laryngopharynx",
+       "name": "Laryngopharynx",
+       "accept": [
+        "hypopharynx"
+       ],
+       "box": [
+        33,
+        573,
+        180,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The lowest part of the pharynx, behind the larynx. It leads forward into the larynx for air and back into the esophagus for food."
+      },
+      {
+       "id": "vestibular-fold",
+       "name": "Vestibular fold",
+       "accept": [
+        "vestibular folds",
+        "false vocal cord",
+        "false vocal cords",
+        "false vocal fold"
+       ],
+       "box": [
+        53,
+        617,
+        160,
+        23
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The upper pair of folds in the larynx, also called the false vocal cords. They do not make the voice; they help close the larynx to protect the airway."
+      },
+      {
+       "id": "thyroid-cartilage",
+       "name": "Thyroid cartilage",
+       "accept": [],
+       "box": [
+        872,
+        620,
+        186,
+        28
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The largest cartilage of the larynx, a shield of hyaline cartilage in the front of the neck. Its front ridge is the laryngeal prominence (Adam's apple)."
+      },
+      {
+       "id": "vocal-fold",
+       "name": "Vocal fold",
+       "accept": [
+        "vocal folds",
+        "true vocal cord",
+        "true vocal cords",
+        "vocal cord",
+        "true vocal fold"
+       ],
+       "box": [
+        99,
+        656,
+        114,
+        24
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The lower pair of folds in the larynx, the true vocal cords. Air pushed out between them makes them vibrate, which produces the voice."
+      },
+      {
+       "id": "cricoid-cartilage",
+       "name": "Cricoid cartilage",
+       "accept": [
+        "cricoid"
+       ],
+       "box": [
+        872,
+        682,
+        181,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The ring of hyaline cartilage at the bottom of the larynx, the only complete ring of cartilage in the airway. The trachea begins just below it."
+      }
+     ],
+     "covered": [
+      {
+       "id": "hard-palate",
+       "box": [
+        873,
+        324,
+        133,
+        28
+       ]
+      },
+      {
+       "id": "soft-palate",
+       "box": [
+        872,
+        366,
+        125,
+        28
+       ]
+      },
+      {
+       "id": "uvula",
+       "box": [
+        142,
+        383,
+        72,
+        23
+       ]
+      },
+      {
+       "id": "fauces",
+       "box": [
+        125,
+        472,
+        88,
+        23
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-22-6",
+     "topic": "upper-airway",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "nasal-cavity",
+       "name": "Nasal cavity",
+       "accept": [],
+       "box": [
+        11,
+        144,
+        138,
+        28
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The air space inside the nose, divided into left and right by the nasal septum. Its mucous membrane warms, moistens and cleans the air you breathe in."
+      },
+      {
+       "id": "tongue",
+       "name": "Tongue",
+       "accept": [],
+       "box": [
+        61,
+        411,
+        90,
+        29
+       ],
+       "concept": null,
+       "fn": "The muscular organ on the floor of the mouth. It belongs to the digestive system, but its back forms the front wall of the oropharynx."
+      },
+      {
+       "id": "epiglottis",
+       "name": "Epiglottis",
+       "accept": [],
+       "box": [
+        887,
+        470,
+        107,
+        28
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The flap of elastic cartilage at the top of the larynx that folds down over the laryngeal opening during a swallow."
+      },
+      {
+       "id": "larynx",
+       "name": "Larynx (voice box)",
+       "accept": [
+        "voice box"
+       ],
+       "box": [
+        887,
+        566,
+        203,
+        28
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The voice box: a short tube of cartilages, ligaments and membranes between the laryngopharynx and the trachea. It keeps the airway open, guards it during swallowing and makes the voice."
+      },
+      {
+       "id": "esophagus",
+       "name": "Esophagus",
+       "accept": [
+        "oesophagus"
+       ],
+       "box": [
+        887,
+        654,
+        129,
+        28
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The muscular tube behind the trachea that carries swallowed food from the laryngopharynx to the stomach. It is part of the digestive tract, not the airway."
+      },
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        886,
+        700,
+        98,
+        24
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe, which carries air from the larynx down into the chest. It lies in front of the esophagus."
+      },
+      {
+       "id": "nasopharynx",
+       "name": "Nasopharynx",
+       "accept": [],
+       "box": [
+        85,
+        775,
+        150,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The upper part of the pharynx (green here), behind the nasal cavity. Only air passes through it."
+      },
+      {
+       "id": "oropharynx",
+       "name": "Oropharynx",
+       "accept": [],
+       "box": [
+        324,
+        775,
+        135,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The middle part of the pharynx (teal here), behind the mouth. Air and food both pass through it."
+      },
+      {
+       "id": "laryngopharynx",
+       "name": "Laryngopharynx",
+       "accept": [
+        "hypopharynx"
+       ],
+       "box": [
+        548,
+        775,
+        180,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The lowest part of the pharynx (purple here), behind the larynx. It opens into both the larynx and the esophagus."
+      }
+     ],
+     "covered": [
+      {
+       "id": "hard-palate",
+       "box": [
+        13,
+        275,
+        133,
+        28
+       ]
+      },
+      {
+       "id": "soft-palate",
+       "box": [
+        886,
+        284,
+        125,
+        28
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "larynx",
+   "title": "Larynx",
+   "chapter": "respiratory",
+   "topic": "upper-airway",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-22-7",
+     "topic": "upper-airway",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "epiglottis",
+       "name": "Epiglottis",
+       "accept": [],
+       "box": [
+        3,
+        23,
+        124,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The leaf-shaped flap of elastic cartilage at the top of the larynx. It folds down over the laryngeal opening when you swallow."
+      },
+      {
+       "id": "body-of-hyoid-bone",
+       "name": "Body of hyoid bone",
+       "accept": [
+        "body of the hyoid bone"
+       ],
+       "box": [
+        3,
+        66,
+        227,
+        30
+       ],
+       "concept": "hyoid",
+       "taught": "skull",
+       "fn": "The front, central part of the U-shaped hyoid bone. The larynx hangs from it by the thyrohyoid membrane."
+      },
+      {
+       "id": "thyrohyoid-membrane",
+       "name": "Thyrohyoid membrane",
+       "accept": [],
+       "box": [
+        817,
+        91,
+        266,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The sheet of connective tissue joining the top of the thyroid cartilage to the hyoid bone. It suspends the larynx from the hyoid."
+      },
+      {
+       "id": "thyroid-cartilage",
+       "name": "Thyroid cartilage",
+       "accept": [],
+       "box": [
+        1,
+        138,
+        216,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The largest cartilage of the larynx: two plates of hyaline cartilage joined in front like a shield. It protects the vocal folds, which attach to its inner surface."
+      },
+      {
+       "id": "laryngeal-prominence",
+       "name": "Laryngeal prominence",
+       "accept": [
+        "adam's apple",
+        "adams apple"
+       ],
+       "box": [
+        819,
+        186,
+        280,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The ridge at the front of the thyroid cartilage where its two plates meet, known as the Adam's apple. It is usually larger in adult men."
+      },
+      {
+       "id": "cricothyroid-ligament",
+       "name": "Cricothyroid ligament",
+       "accept": [
+        "cricothyroid membrane"
+       ],
+       "box": [
+        2,
+        259,
+        249,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The band of connective tissue between the thyroid cartilage above and the cricoid cartilage below. It lies just under the skin, below the vocal folds.",
+       "follow": {
+        "q": "Something is stuck at the vocal folds and the person cannot breathe. Where can an emergency airway be opened through the front of the neck, below the blockage?",
+        "options": [
+         "Through the thyrohyoid membrane",
+         "Through the laryngeal prominence",
+         "Through the cricothyroid ligament",
+         "Through the epiglottis"
+        ],
+        "correct": 2,
+        "why": "The cricothyroid ligament lies just under the skin between the thyroid and cricoid cartilages, below the level of the vocal folds, so an opening there bypasses a blockage at the glottis. The thyrohyoid membrane is above the vocal folds, the laryngeal prominence is solid cartilage, and the epiglottis is at the top of the larynx.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "cricoid-cartilage",
+       "name": "Cricoid cartilage",
+       "accept": [
+        "cricoid"
+       ],
+       "box": [
+        818,
+        278,
+        212,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The ring of hyaline cartilage at the base of the larynx. It is the only complete ring of cartilage in the airway, and the trachea hangs from it.",
+       "follow": {
+        "q": "What sets the cricoid cartilage apart from the other cartilages of the airway?",
+        "options": [
+         "It vibrates to produce the sound of the voice",
+         "It is the airway's only complete ring",
+         "It is made of elastic cartilage so it can fold",
+         "It hangs directly from the body of the hyoid bone"
+        ],
+        "correct": 1,
+        "why": "The cricoid is a full ring, like a signet ring with its wide part at the back, so it holds the lower larynx open all the way around. The vocal folds make the voice, the epiglottis is the elastic cartilage, and the thyroid cartilage is the one that hangs from the hyoid bone.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "cricotracheal-ligament",
+       "name": "Cricotracheal ligament",
+       "accept": [],
+       "box": [
+        2,
+        302,
+        263,
+        31
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The ligament that joins the bottom of the cricoid cartilage to the top of the trachea."
+      },
+      {
+       "id": "epiglottis-lateral",
+       "name": "Epiglottis",
+       "accept": [],
+       "box": [
+        5,
+        527,
+        125,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The leaf-shaped flap of elastic cartilage at the top of the larynx. It folds down over the laryngeal opening when you swallow."
+      },
+      {
+       "id": "thyrohyoid-membrane-posterior",
+       "name": "Thyrohyoid membrane",
+       "accept": [],
+       "box": [
+        4,
+        577,
+        265,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The sheet of connective tissue joining the top of the thyroid cartilage to the hyoid bone. It suspends the larynx from the hyoid."
+      },
+      {
+       "id": "body-of-hyoid-bone-lateral",
+       "name": "Body of hyoid bone",
+       "accept": [
+        "body of the hyoid bone"
+       ],
+       "box": [
+        820,
+        601,
+        227,
+        29
+       ],
+       "concept": "hyoid",
+       "taught": "skull",
+       "fn": "The front, central part of the U-shaped hyoid bone. The larynx hangs from it by the thyrohyoid membrane."
+      },
+      {
+       "id": "fatty-pad",
+       "name": "Fatty pad",
+       "accept": [
+        "fat pad",
+        "preepiglottic fat"
+       ],
+       "box": [
+        820,
+        631,
+        116,
+        30
+       ],
+       "concept": null,
+       "fn": "A pad of fat in front of the epiglottis, between it and the hyoid bone and thyrohyoid membrane. It gives the epiglottis a soft cushion to move against."
+      },
+      {
+       "id": "cuneiform-cartilage",
+       "name": "Cuneiform cartilage",
+       "accept": [
+        "cuneiform cartilages",
+        "cuneiform"
+       ],
+       "box": [
+        4,
+        641,
+        231,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "A small rod of elastic cartilage in the fold of tissue that runs from each arytenoid cartilage up to the epiglottis. It stiffens that fold."
+      },
+      {
+       "id": "thyrohyoid-membrane-anterior",
+       "name": "Thyrohyoid membrane",
+       "accept": [],
+       "box": [
+        818,
+        664,
+        266,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The sheet of connective tissue joining the top of the thyroid cartilage to the hyoid bone. It suspends the larynx from the hyoid."
+      },
+      {
+       "id": "corniculate-cartilage",
+       "name": "Corniculate cartilage",
+       "accept": [
+        "corniculate cartilages",
+        "corniculate"
+       ],
+       "box": [
+        4,
+        674,
+        242,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "A small horn-shaped cartilage perched on top of each arytenoid cartilage."
+      },
+      {
+       "id": "vestibular-fold",
+       "name": "Vestibular fold",
+       "accept": [
+        "vestibular folds",
+        "false vocal cord",
+        "false vocal cords",
+        "false vocal fold"
+       ],
+       "box": [
+        819,
+        695,
+        170,
+        24
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The upper pair of folds in the larynx, the false vocal cords. They do not make the voice; they help close off the larynx."
+      },
+      {
+       "id": "arytenoid-cartilage",
+       "name": "Arytenoid cartilage",
+       "accept": [
+        "arytenoid cartilages",
+        "arytenoid"
+       ],
+       "box": [
+        4,
+        716,
+        222,
+        30
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "One of a pair of small pyramid-shaped cartilages sitting on the back of the cricoid cartilage. The vocal folds attach to them, and muscles that swivel them open and close the gap between the folds.",
+       "follow": {
+        "q": "Small muscles pivot the arytenoid cartilages. What does that change?",
+        "options": [
+         "The tension and spacing of the vocal folds",
+         "How far the nasal conchae stick out into the air",
+         "Where the hyoid bone sits in the neck",
+         "Whether the auditory tube is open"
+        ],
+        "correct": 0,
+        "why": "The back ends of the vocal folds attach to the arytenoid cartilages, so rotating or sliding them spreads the folds apart for breathing, brings them together for speech, and changes how tight they are, which changes the pitch. The conchae, hyoid and auditory tube are not moved by these muscles.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "vocal-fold",
+       "name": "Vocal fold",
+       "accept": [
+        "vocal folds",
+        "true vocal cord",
+        "true vocal cords",
+        "vocal cord",
+        "true vocal fold"
+       ],
+       "box": [
+        819,
+        720,
+        121,
+        25
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The lower pair of folds in the larynx, the true vocal cords. Air pushed between them makes them vibrate and produce sound.",
+       "follow": {
+        "q": "You take a breath, hold it and bear down to lift something heavy. What closes the airway?",
+        "options": [
+         "The vocal folds close the glottis",
+         "The epiglottis rises to seal the nose",
+         "The cricoid cartilage folds inward",
+         "The thyroid cartilage squeezes shut"
+        ],
+        "correct": 0,
+        "why": "Muscles pull the vocal folds together so the glottis, the opening between them, is shut and air is held in the chest. The epiglottis covers the larynx during swallowing and never seals the nose, and the cricoid and thyroid cartilages are rigid.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "thyroid-cartilage-lateral",
+       "name": "Thyroid cartilage",
+       "accept": [],
+       "box": [
+        818,
+        755,
+        216,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The largest cartilage of the larynx: two plates of hyaline cartilage joined in front like a shield. It protects the vocal folds, which attach to its inner surface."
+      },
+      {
+       "id": "cricoid-cartilage-lateral",
+       "name": "Cricoid cartilage",
+       "accept": [
+        "cricoid"
+       ],
+       "box": [
+        4,
+        790,
+        212,
+        29
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The ring of hyaline cartilage at the base of the larynx. It is the only complete ring of cartilage in the airway, and the trachea hangs from it."
+      },
+      {
+       "id": "cricothyroid-ligament-lateral",
+       "name": "Cricothyroid ligament",
+       "accept": [
+        "cricothyroid membrane"
+       ],
+       "box": [
+        819,
+        790,
+        250,
+        31
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The band of connective tissue between the thyroid cartilage above and the cricoid cartilage below. It lies just under the skin, below the vocal folds."
+      },
+      {
+       "id": "cricotracheal-ligament-lateral",
+       "name": "Cricotracheal ligament",
+       "accept": [],
+       "box": [
+        819,
+        833,
+        264,
+        31
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The ligament that joins the bottom of the cricoid cartilage to the top of the trachea."
+      }
+     ],
+     "covered": [
+      {
+       "id": "tracheal-cartilages",
+       "box": [
+        817,
+        355,
+        226,
+        29
+       ]
+      },
+      {
+       "id": "tracheal-cartilages-lateral",
+       "box": [
+        4,
+        879,
+        224,
+        30
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-22-8",
+     "topic": "upper-airway",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "pyriform-fossa",
+       "name": "Pyriform fossa",
+       "accept": [
+        "piriform fossa",
+        "piriform recess",
+        "pyriform recess",
+        "pyriform sinus",
+        "piriform sinus"
+       ],
+       "box": [
+        909,
+        138,
+        162,
+        28
+       ],
+       "concept": null,
+       "fn": "A pocket of the laryngopharynx on each side of the larynx. Swallowed food and drink run through these pockets around the larynx on the way to the esophagus, and a fish bone can catch here."
+      },
+      {
+       "id": "esophagus",
+       "name": "Esophagus",
+       "accept": [
+        "oesophagus"
+       ],
+       "box": [
+        48,
+        139,
+        130,
+        29
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The entrance to the esophagus, behind the larynx. Swallowed food goes here, not into the airway."
+      },
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        79,
+        210,
+        100,
+        24
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe, seen here through the open glottis below the vocal folds."
+      },
+      {
+       "id": "true-vocal-cord",
+       "name": "True vocal cord",
+       "accept": [
+        "true vocal cords",
+        "vocal cord",
+        "vocal cords",
+        "vocal fold",
+        "vocal folds",
+        "true vocal fold"
+       ],
+       "box": [
+        907,
+        273,
+        189,
+        24
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The true vocal cord (vocal fold): the pale band on each side of the glottis. Air passing between the two cords makes them vibrate, producing the voice. They look white because they have few blood vessels.",
+       "follow": {
+        "q": "What makes the true vocal cords produce a sound?",
+        "options": [
+         "Nerve signals alone, with the glottis shut",
+         "The epiglottis striking them as it folds down",
+         "Air breathed out making them vibrate",
+         "The tongue pressing on them from above"
+        ],
+        "correct": 2,
+        "why": "Sound comes from air pushed up from the lungs between the nearly closed cords, which sets them vibrating. Muscles set their tension and spacing, but without airflow there is no sound. The epiglottis and tongue do not make them vibrate.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "vestibular-fold",
+       "name": "Vestibular fold",
+       "accept": [
+        "vestibular folds",
+        "false vocal cord",
+        "false vocal cords",
+        "false vocal fold"
+       ],
+       "box": [
+        4,
+        299,
+        175,
+        23
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The false vocal cord on each side, above the true vocal cord. It does not make the voice; it helps close off the larynx."
+      },
+      {
+       "id": "glottis",
+       "name": "Glottis",
+       "accept": [
+        "rima glottidis"
+       ],
+       "box": [
+        90,
+        343,
+        87,
+        24
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The vocal folds together with the opening between them. Widening it lets air through; closing it stops air, as when you hold your breath or build up pressure for a cough."
+      },
+      {
+       "id": "epiglottis",
+       "name": "Epiglottis",
+       "accept": [],
+       "box": [
+        908,
+        401,
+        119,
+        27
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The epiglottis seen from above, at the front of the laryngeal opening. It folds back over the opening during swallowing."
+      },
+      {
+       "id": "tongue",
+       "name": "Tongue",
+       "accept": [],
+       "box": [
+        907,
+        554,
+        93,
+        28
+       ],
+       "concept": null,
+       "fn": "The back of the tongue, which forms the front wall of the oropharynx."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bronchial-tree",
+   "title": "Bronchial tree and lungs",
+   "chapter": "respiratory",
+   "topic": "lower-airway-lungs",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-22-2",
+     "topic": "lower-airway-lungs",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "nasal-cavity",
+       "name": "Nasal cavity",
+       "accept": [],
+       "box": [
+        7,
+        181,
+        139,
+        29
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "The air space inside the nose, where inhaled air is warmed, moistened and cleaned."
+      },
+      {
+       "id": "nostril",
+       "name": "Nostril",
+       "accept": [
+        "naris",
+        "nares",
+        "external naris"
+       ],
+       "box": [
+        7,
+        214,
+        78,
+        24
+       ],
+       "concept": "nasal-cavity",
+       "taught": "upper-airway",
+       "fn": "One of the two openings of the nose (the nares), where air enters the nasal cavity."
+      },
+      {
+       "id": "pharynx",
+       "name": "Pharynx",
+       "accept": [
+        "throat"
+       ],
+       "box": [
+        973,
+        269,
+        98,
+        28
+       ],
+       "concept": "pharynx",
+       "taught": "upper-airway",
+       "fn": "The throat: a muscular tube, shared by air and food, that runs from behind the nasal cavity down to the larynx and the esophagus."
+      },
+      {
+       "id": "larynx",
+       "name": "Larynx",
+       "accept": [
+        "voice box"
+       ],
+       "box": [
+        7,
+        372,
+        82,
+        28
+       ],
+       "concept": "larynx",
+       "taught": "upper-airway",
+       "fn": "The voice box, between the pharynx and the trachea. It keeps the airway open, guards it during swallowing and makes the voice."
+      },
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        972,
+        418,
+        96,
+        24
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe: a tube held open by C-shaped rings of hyaline cartilage that carries air from the larynx into the chest, where it splits into the two main bronchi."
+      },
+      {
+       "id": "right-main-bronchus",
+       "name": "Right main bronchus",
+       "accept": [
+        "right primary bronchus"
+       ],
+       "box": [
+        6,
+        551,
+        125,
+        52
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "The first branch of the trachea to the right lung. It is wider, shorter and more vertical than the left main bronchus.",
+       "follow": {
+        "q": "A child breathes in a peanut. It most often lodges in the right main bronchus. Why?",
+        "options": [
+         "It is wider and more vertical than the left",
+         "It has more cartilage rings, which catch objects",
+         "It is longer than the left main bronchus",
+         "The heart presses the left one shut"
+        ],
+        "correct": 0,
+        "why": "The right main bronchus is wider and continues almost straight down from the trachea, so an object falling down the airway tends to follow it. The left bronchus angles off more sharply to pass beside the heart, but the heart does not close it, and cartilage rings do not catch objects.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "left-main-bronchus",
+       "name": "Left main bronchus",
+       "accept": [
+        "left primary bronchus"
+       ],
+       "box": [
+        973,
+        551,
+        109,
+        52
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "The first branch of the trachea to the left lung. It is longer, narrower and more horizontal than the right, because it runs out beside the heart."
+      },
+      {
+       "id": "right-lung",
+       "name": "Right lung",
+       "accept": [],
+       "box": [
+        7,
+        662,
+        117,
+        29
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The right lung, which has three lobes and is larger than the left."
+      },
+      {
+       "id": "left-lung",
+       "name": "Left lung",
+       "accept": [],
+       "box": [
+        973,
+        684,
+        101,
+        29
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The left lung, which has two lobes and a notch where the heart sits, so it is smaller than the right."
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        973,
+        800,
+        127,
+        29
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of skeletal muscle under the lungs that separates the thoracic and abdominopelvic cavities. When it contracts it flattens, making the chest cavity larger and drawing air in."
+      }
+     ],
+     "covered": [
+      {
+       "id": "oral-cavity",
+       "box": [
+        6,
+        249,
+        124,
+        29
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-22-13",
+     "topic": "lower-airway-lungs",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        930,
+        38,
+        102,
+        24
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe: a tube held open by C-shaped rings of hyaline cartilage that carries air from the larynx into the chest, where it splits into the two main bronchi."
+      },
+      {
+       "id": "superior-lobe-left",
+       "name": "Superior lobe",
+       "accept": [
+        "upper lobe",
+        "left superior lobe"
+       ],
+       "box": [
+        931,
+        125,
+        156,
+        29
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The upper lobe of the left lung, separated from its inferior lobe by the oblique fissure."
+      },
+      {
+       "id": "superior-lobe-right",
+       "name": "Superior lobe",
+       "accept": [
+        "upper lobe",
+        "right superior lobe"
+       ],
+       "box": [
+        4,
+        284,
+        156,
+        30
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The upper lobe of the right lung, separated from the middle lobe by the horizontal fissure."
+      },
+      {
+       "id": "main-bronchus",
+       "name": "Main (primary) bronchus",
+       "accept": [
+        "primary bronchus",
+        "mainstem bronchus"
+       ],
+       "box": [
+        934,
+        203,
+        161,
+        50
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "A main (primary) bronchus: one of the two first branches of the trachea. Each enters its lung at the hilum."
+      },
+      {
+       "id": "lobar-bronchus",
+       "name": "Lobar (secondary) bronchus",
+       "accept": [
+        "secondary bronchus"
+       ],
+       "box": [
+        934,
+        294,
+        133,
+        75
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "A lobar (secondary) bronchus: a branch of a main bronchus that supplies one lobe. The right lung has three and the left has two.",
+       "follow": {
+        "q": "Which airway supplies one whole lobe of a lung?",
+        "options": [
+         "A main (primary) bronchus",
+         "A lobar (secondary) bronchus",
+         "A segmental (tertiary) bronchus",
+         "A terminal bronchiole"
+        ],
+        "correct": 1,
+        "why": "Each main bronchus serves a whole lung and splits into lobar bronchi, one per lobe. Each lobar bronchus then splits into segmental bronchi, one per segment of the lobe, and the branching continues down to the terminal bronchioles.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "segmental-bronchus",
+       "name": "Segmental (tertiary) bronchus",
+       "accept": [
+        "tertiary bronchus"
+       ],
+       "box": [
+        934,
+        407,
+        121,
+        75
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "A segmental (tertiary) bronchus: a branch of a lobar bronchus that supplies one segment of a lobe. Each segment has its own airway and blood supply."
+      },
+      {
+       "id": "middle-lobe",
+       "name": "Middle lobe",
+       "accept": [
+        "right middle lobe"
+       ],
+       "box": [
+        25,
+        506,
+        135,
+        24
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The middle lobe, found only in the right lung, between its superior and inferior lobes.",
+       "follow": {
+        "q": "How many lobes does each lung have?",
+        "options": [
+         "Right two, left three",
+         "Right three, left two",
+         "Three in each",
+         "Two in each"
+        ],
+        "correct": 1,
+        "why": "The right lung has superior, middle and inferior lobes. The left has only superior and inferior lobes, because the heart takes up room on the left side.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "cardiac-notch",
+       "name": "Cardiac notch",
+       "accept": [],
+       "box": [
+        931,
+        506,
+        161,
+        25
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The indentation in the front edge of the left lung that makes room for the heart."
+      },
+      {
+       "id": "inferior-lobe-right",
+       "name": "Inferior lobe",
+       "accept": [
+        "lower lobe",
+        "right inferior lobe"
+       ],
+       "box": [
+        21,
+        608,
+        139,
+        24
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The lower lobe of the right lung, resting on the diaphragm below the oblique fissure."
+      },
+      {
+       "id": "inferior-lobe-left",
+       "name": "Inferior lobe",
+       "accept": [
+        "lower lobe",
+        "left inferior lobe"
+       ],
+       "box": [
+        932,
+        611,
+        139,
+        24
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The lower lobe of the left lung, resting on the diaphragm below the oblique fissure."
+      },
+      {
+       "id": "right-lung",
+       "name": "Right lung",
+       "accept": [],
+       "box": [
+        299,
+        724,
+        119,
+        28
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The right lung, which has three lobes and is larger than the left."
+      },
+      {
+       "id": "left-lung",
+       "name": "Left lung",
+       "accept": [],
+       "box": [
+        674,
+        724,
+        103,
+        28
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The left lung, which has two lobes and a notch where the heart sits, so it is smaller than the right."
+      }
+     ]
+    },
+    {
+     "figure": "os-22-14",
+     "topic": "lower-airway-lungs",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "intercostal-muscle",
+       "name": "Intercostal muscle",
+       "accept": [
+        "intercostal muscles",
+        "intercostals"
+       ],
+       "box": [
+        958,
+        70,
+        120,
+        48
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The muscle between two neighboring ribs, part of the chest wall. The intercostal muscles move the ribs when you breathe."
+      },
+      {
+       "id": "lung-inset",
+       "name": "Lung",
+       "accept": [],
+       "box": [
+        804,
+        94,
+        63,
+        29
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The surface of the lung, covered by the visceral pleura. Inside, the lung is spongy, filled with branching airways and tiny air sacs."
+      },
+      {
+       "id": "lung",
+       "name": "Lung",
+       "accept": [],
+       "box": [
+        678,
+        123,
+        64,
+        29
+       ],
+       "concept": "lungs",
+       "taught": "lower-airway-lungs",
+       "fn": "The left lung, wrapped in its pleural sac. It is soft and spongy, filled with branching airways and tiny air sacs."
+      },
+      {
+       "id": "pleural-sac",
+       "name": "Pleural sac",
+       "accept": [
+        "pleura",
+        "pleurae"
+       ],
+       "box": [
+        678,
+        187,
+        137,
+        24
+       ],
+       "concept": "pleura",
+       "taught": "lower-airway-lungs",
+       "fn": "The pleura around one lung: a closed sac of serous membrane with two layers, one on the lung and one on the chest wall, and the pleural cavity between them."
+      },
+      {
+       "id": "parietal-pleura",
+       "name": "Parietal pleura",
+       "accept": [],
+       "box": [
+        694,
+        231,
+        98,
+        52
+       ],
+       "concept": "pleura",
+       "taught": "lower-airway-lungs",
+       "fn": "The outer layer of the pleura. It lines the inside of the chest wall, the top of the diaphragm and the side of the mediastinum."
+      },
+      {
+       "id": "intercostal-muscles",
+       "name": "Intercostal muscles",
+       "accept": [
+        "intercostal muscle",
+        "intercostals"
+       ],
+       "box": [
+        19,
+        238,
+        120,
+        47
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The muscle between two neighboring ribs, part of the chest wall. The intercostal muscles move the ribs when you breathe."
+      },
+      {
+       "id": "visceral-pleura",
+       "name": "Visceral pleura",
+       "accept": [
+        "pulmonary pleura"
+       ],
+       "box": [
+        689,
+        359,
+        103,
+        52
+       ],
+       "concept": "pleura",
+       "taught": "lower-airway-lungs",
+       "fn": "The inner layer of the pleura, stuck to the surface of the lung and dipping into its fissures."
+      },
+      {
+       "id": "pleural-cavity",
+       "name": "Pleural cavity",
+       "accept": [
+        "pleural space",
+        "intrapleural space"
+       ],
+       "box": [
+        930,
+        469,
+        165,
+        28
+       ],
+       "concept": "pleural-cavity",
+       "taught": "body-cavities",
+       "fn": "The thin space between the parietal and visceral pleura. A film of pleural fluid in it lets the layers slide and holds the lung against the chest wall.",
+       "follow": {
+        "q": "What does the pleural cavity of a healthy person contain?",
+        "options": [
+         "Air that fills the lungs with each breath",
+         "A thin film of pleural fluid",
+         "Blood returning to the heart",
+         "Nothing at all, since the layers are fused"
+        ],
+        "correct": 1,
+        "why": "The two pleural layers are separated only by a thin film of serous fluid. It lets them glide over each other and makes them cling together, so the lung follows the chest wall. Air in this space is abnormal, and blood stays inside vessels.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        678,
+        531,
+        127,
+        29
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of skeletal muscle under the lungs that separates the thoracic and abdominopelvic cavities. When it contracts it flattens, making the chest cavity larger and drawing air in."
+      },
+      {
+       "id": "chest-wall",
+       "name": "Chest wall (rib cage, sternum, thoracic vertebrae, connective tissue, intercostal muscles)",
+       "accept": [
+        "thoracic wall"
+       ],
+       "box": [
+        64,
+        745,
+        418,
+        77
+       ],
+       "concept": null,
+       "fn": "Everything that encloses the thoracic cavity: the rib cage, sternum, thoracic vertebrae, connective tissue and intercostal muscles. The pleura links the lungs to it, so the lungs follow its movements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "alveoli",
+   "title": "Alveolus and respiratory membrane",
+   "chapter": "respiratory",
+   "topic": "lower-airway-lungs",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-22-10",
+     "topic": "lower-airway-lungs",
+     "core": [
+      "structure-function",
+      "gradients"
+     ],
+     "labels": [
+      {
+       "id": "terminal-bronchiole",
+       "name": "Terminal bronchiole",
+       "accept": [
+        "terminal bronchioles",
+        "bronchiole"
+       ],
+       "box": [
+        29,
+        94,
+        210,
+        22
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "The last airway of the conducting zone. Its wall has no alveoli, so it only carries air."
+      },
+      {
+       "id": "smooth-muscle",
+       "name": "Smooth muscle",
+       "accept": [
+        "smooth muscle tissue"
+       ],
+       "box": [
+        82,
+        156,
+        156,
+        22
+       ],
+       "concept": "smooth-muscle-tissue",
+       "taught": "muscle-tissue-overview",
+       "fn": "Bands of smooth muscle that wrap the bronchioles. Contracting narrows the airway and relaxing widens it, which changes how easily air flows.",
+       "follow": {
+        "q": "The smooth muscle around a bronchiole contracts. What happens to air flow through that bronchiole?",
+        "options": [
+         "It rises, because the airway widens",
+         "It falls, because the airway narrows",
+         "It stays the same, since cartilage holds it open",
+         "It reverses direction"
+        ],
+        "correct": 1,
+        "why": "Contraction squeezes the bronchiole to a smaller radius, and a narrower tube resists flow much more, so less air gets through. Bronchioles have no cartilage to hold them open, which is why their smooth muscle controls their size.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "deoxygenated-blood",
+       "name": "Deoxygenated blood from pulmonary artery",
+       "accept": [
+        "deoxygenated blood from the pulmonary artery",
+        "pulmonary artery",
+        "pulmonary arteriole"
+       ],
+       "box": [
+        846,
+        239,
+        251,
+        51
+       ],
+       "concept": "oxygenated-deoxygenated",
+       "taught": "blood-flow-heart",
+       "fn": "A branch of the pulmonary artery bringing oxygen-poor blood from the right ventricle to the capillaries around the alveoli.",
+       "follow": {
+        "q": "The blood reaching the alveolar capillaries from the pulmonary artery is:",
+        "options": [
+         "Oxygen-rich, from the left ventricle",
+         "Oxygen-poor, from the right ventricle",
+         "Oxygen-rich, from the aorta through the bronchial arteries",
+         "Oxygen-poor, from the left atrium"
+        ],
+        "correct": 1,
+        "why": "The pulmonary circuit starts at the right ventricle, which pumps oxygen-poor blood returning from the body into the pulmonary trunk and arteries. The left ventricle and aorta carry oxygen-rich blood to the body, and the left atrium receives oxygen-rich blood from the lungs.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "oxygenated-blood",
+       "name": "Oxygenated blood to pulmonary vein",
+       "accept": [
+        "oxygenated blood to the pulmonary vein",
+        "pulmonary vein",
+        "pulmonary venule"
+       ],
+       "box": [
+        846,
+        324,
+        205,
+        51
+       ],
+       "concept": "oxygenated-deoxygenated",
+       "taught": "blood-flow-heart",
+       "fn": "A vessel carrying oxygen-rich blood away from the alveolar capillaries toward the pulmonary veins, which return it to the left atrium."
+      },
+      {
+       "id": "respiratory-bronchiole",
+       "name": "Respiratory bronchiole",
+       "accept": [
+        "respiratory bronchioles"
+       ],
+       "box": [
+        846,
+        393,
+        240,
+        25
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "The first airway of the respiratory zone: a bronchiole with a few alveoli budding from its wall, so gases start to move between air and blood here.",
+       "follow": {
+        "q": "Where does the respiratory zone begin?",
+        "options": [
+         "At the terminal bronchioles",
+         "At the respiratory bronchioles",
+         "At the main bronchi",
+         "At the larynx"
+        ],
+        "correct": 1,
+        "why": "The respiratory zone starts where alveoli first appear, in the walls of the respiratory bronchioles. Everything above that, down to and including the terminal bronchioles, is conducting zone that only moves air.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "alveolus",
+       "name": "Alveolus",
+       "accept": [
+        "alveoli",
+        "air sac"
+       ],
+       "box": [
+        845,
+        505,
+        98,
+        22
+       ],
+       "concept": "alveoli",
+       "taught": "lower-airway-lungs",
+       "fn": "A tiny air sac whose wall is mostly very thin type I alveolar cells, wrapped in capillaries. Oxygen and carbon dioxide diffuse across this thin wall.",
+       "follow": {
+        "q": "What makes the wall of an alveolus suited to moving gases between air and blood?",
+        "options": [
+         "It is lined with a thick layer of mucus",
+         "It is stiffened by plates of cartilage",
+         "It is extremely thin",
+         "It is wrapped in bands of smooth muscle"
+        ],
+        "correct": 2,
+        "why": "Diffusion is fast only over short distances, and the alveolar wall is a single layer of very flat cells pressed against capillaries. Mucus, cartilage or muscle in the way would thicken the barrier and slow diffusion.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "alveolar-sac",
+       "name": "Alveolar sac",
+       "accept": [
+        "alveolar sacs"
+       ],
+       "box": [
+        3,
+        512,
+        95,
+        46
+       ],
+       "concept": "alveoli",
+       "taught": "lower-airway-lungs",
+       "fn": "A cluster of alveoli at the end of an alveolar duct, like a bunch of grapes."
+      },
+      {
+       "id": "capillaries",
+       "name": "Capillaries",
+       "accept": [
+        "capillary",
+        "pulmonary capillaries",
+        "capillary network"
+       ],
+       "box": [
+        846,
+        644,
+        110,
+        26
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "The dense net of capillaries around the alveoli, where the blood picks up oxygen and gives up carbon dioxide."
+      },
+      {
+       "id": "alveolar-duct",
+       "name": "Alveolar duct",
+       "accept": [
+        "alveolar ducts"
+       ],
+       "box": [
+        386,
+        673,
+        95,
+        46
+       ],
+       "concept": "bronchial-tree",
+       "taught": "lower-airway-lungs",
+       "fn": "A short passage off a respiratory bronchiole whose wall is made almost entirely of alveoli. It leads to the alveolar sacs."
+      },
+      {
+       "id": "alveolar-pores",
+       "name": "Alveolar pores",
+       "accept": [
+        "alveolar pore",
+        "pores of kohn"
+       ],
+       "box": [
+        298,
+        769,
+        95,
+        50
+       ],
+       "concept": "alveoli",
+       "taught": "lower-airway-lungs",
+       "fn": "Small openings in the walls between neighboring alveoli. They let air pass from one alveolus to the next, which evens out pressure and gives air a way around a blocked airway."
+      }
+     ]
+    }
+   ]
   }
  ],
  "figures": {
@@ -13053,6 +15793,114 @@
    "alt": "The abdominal organs with the veins that drain the gut. Veins from the stomach, pancreas, spleen and intestines gather into three main veins that join behind the pancreas into a single large vein running up into the liver.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.43",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-22-3": {
+   "src": "figures/os-22-3.jpg",
+   "w": 1100,
+   "h": 982,
+   "alt": "Three drawings of the nose. A front view and a side view of a face name the parts of the outer nose from the root between the eyes down the ridge to the tip and the flared wings beside each nostril. A third drawing shows the framework beneath: the nasal and upper jaw bones at the top and plates of cartilage, including the septal cartilage, forming the lower nose.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.3",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-22-4": {
+   "src": "figures/os-22-4.jpg",
+   "w": 1100,
+   "h": 762,
+   "alt": "A midline cut through the head and neck seen from the side. The nasal cavity with three curled shelves on its side wall sits above the roof of the mouth, with the sinuses of the frontal and sphenoid bones around it. Behind the nose, mouth and voice box the throat is divided into upper, middle and lower parts. The voice box below shows the leaf-shaped flap at its top, its two pairs of folds, and the large shield-shaped cartilage and ring-shaped cartilage in its wall, with the hyoid bone above.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-22-6": {
+   "src": "figures/os-22-6.jpg",
+   "w": 1100,
+   "h": 816,
+   "alt": "A side view outline of the head and neck with the throat shaded in three colors: the upper part behind the nasal cavity, the middle part behind the mouth and the lower part behind the voice box, continuing down as the esophagus behind the trachea.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-22-7": {
+   "src": "figures/os-22-7.jpg",
+   "w": 1100,
+   "h": 1014,
+   "alt": "The voice box from the front and from the right side. The front view shows the U-shaped hyoid bone at the top with the leaf-shaped flap rising behind it, the large shield-shaped cartilage with a ridge in the midline, the ring-shaped cartilage below it joined by a ligament, and the rings of the windpipe beneath. The side view adds the small paired cartilages at the back and the two folds inside.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-22-8": {
+   "src": "figures/os-22-8.jpg",
+   "w": 1100,
+   "h": 643,
+   "alt": "The inside of the voice box viewed from above, looking down the throat. Two pale white bands form a V-shaped opening leading down into the windpipe; a pair of pinker folds lies above and outside them. The leaf-shaped flap sits at the front near the base of the tongue, and the opening of the esophagus lies behind.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-22-2": {
+   "src": "figures/os-22-2.jpg",
+   "w": 1100,
+   "h": 925,
+   "alt": "The upper body with the respiratory organs drawn in. Air passages run from the nostril and nasal cavity through the throat and voice box into the windpipe, which divides into a right and a left branch entering the two lungs. The right lung sits behind the ribs, and the dome-shaped diaphragm lies beneath both lungs.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-22-13": {
+   "src": "figures/os-22-13.jpg",
+   "w": 1100,
+   "h": 757,
+   "alt": "Both lungs from the front with the branching airway drawn inside. The windpipe divides into a main branch for each lung, which divides into a branch for each lobe and then smaller branches. The right lung has three lobes separated by two grooves; the left has two lobes and a hollow in its front edge where the heart sits.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+   "license": "CC BY 4.0"
+  },
+  "os-22-14": {
+   "src": "figures/os-22-14.jpg",
+   "w": 1100,
+   "h": 829,
+   "alt": "The chest from the front with the rib cage and intercostal muscles drawn on one side and a lung shown on the other, resting on the domed diaphragm. An enlarged box shows the edge of the lung: a thin membrane covering the lung, a second thin membrane lining the chest wall beside a rib and intercostal muscle, and a very narrow space between the two.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.14",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+   "license": "CC BY 4.0"
+  },
+  "os-22-10": {
+   "src": "figures/os-22-10.jpg",
+   "w": 1100,
+   "h": 840,
+   "alt": "A small airway wrapped in spiral bands of smooth muscle branches into smaller airways, the first of which have a few air sacs budding from their walls. These lead through short passages into grape-like clusters of air sacs, some cut open to show holes linking neighbors. A net of small blood vessels, blue where they arrive and red where they leave, covers one cluster.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+   "license": "CC BY 4.0"
+  },
+  "os-12-9": {
+   "src": "figures/os-12-9.jpg",
+   "w": 893,
+   "h": 566,
+   "alt": "Three line drawings of neurons. In the first, a round cell body hangs below a single short stalk that joins one long process, which ends in branches at both ends. In the second, an oval cell body sits in the middle of a line, with one branched process leaving each end. In the third, a cell body with many short branched processes sends out one long process that ends in branches.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-2-nervous-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-12-11": {
+   "src": "figures/os-12-11.jpg",
+   "w": 825,
+   "h": 637,
+   "alt": "A drawing of four kinds of support cells among two large branching neurons. A star-shaped cell with many processes touches the neurons and a blood-vessel-like surface. Two small cells with fine, bristly processes sit nearby. A row of cube-shaped cells lines a surface at the lower left, sending long thin processes up into the tissue. Pale cells at the lower right send out arms that wrap segments of several different axons in layered sleeves.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-2-nervous-tissue",
+   "license": "CC BY 4.0"
+  },
+  "os-12-12": {
+   "src": "figures/os-12-12.jpg",
+   "w": 790,
+   "h": 494,
+   "alt": "A drawing of a sensory neuron's round cell body covered by a layer of flattened cells, like tiles over a ball. A single stalk leaves the cell body and joins an axon that runs across the bottom of the picture. Elongated cells wrapped around the axon sit end to end along it, and the cut end of the axon shows the layers wrapped around it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-2-nervous-tissue",
    "license": "CC BY 4.0"
   }
  }

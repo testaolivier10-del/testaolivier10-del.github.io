@@ -1,0 +1,32 @@
+{
+  "nerve-structure": {
+    "def": "A nerve is a bundle of axons in the peripheral nervous system wrapped in three connective tissue layers: endoneurium around each axon, perineurium around each bundle (fascicle), and epineurium around the whole nerve.",
+    "roots": [["endo-", "within"], ["peri-", "around"], ["epi-", "upon"], ["neur/o", "nerve"]],
+    "say": "en-doh-NOOR-ee-um, pair-ih-NOOR-ee-um, ep-ih-NOOR-ee-um"
+  },
+  "spinal-nerve": {
+    "def": "One of the 31 pairs of nerves (8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal) formed where a dorsal root and a ventral root join in the intervertebral foramen. Every spinal nerve is a mixed nerve, carrying both sensory and motor axons.",
+    "roots": [["spin-", "spine"]],
+    "say": ""
+  },
+  "rami": {
+    "def": "The branches a spinal nerve splits into just outside the intervertebral foramen. The dorsal ramus supplies the deep back muscles and the skin of the back; the larger ventral ramus supplies the front and sides of the trunk and the limbs. Both are mixed.",
+    "roots": [["ramus", "branch"]],
+    "say": "RAY-mus, RAY-my"
+  },
+  "nerve-plexuses": {
+    "def": "Networks where the ventral rami of neighboring spinal nerves branch, join and exchange axons before giving off named nerves: the cervical (C1–C4), brachial (C5–T1), lumbar (L1–L4) and sacral (L4–S4) plexuses.",
+    "roots": [["plexus", "braid"], ["brachi-", "arm"], ["lumb-", "loin, lower back"]],
+    "say": "PLEK-sus"
+  },
+  "named-nerves": {
+    "def": "The major nerves that leave the plexuses: phrenic (diaphragm), axillary (deltoid), radial (arm and forearm extensors), median (most forearm flexors and the thumb), ulnar (small hand muscles), femoral (quadriceps), sciatic (back of the thigh), dividing into the tibial and fibular nerves, plus the intercostal nerves between the ribs. Sciatica is pain along the sciatic nerve's path, usually from a compressed lower lumbar or sacral root.",
+    "roots": [["phren-", "diaphragm"], ["cost-", "rib"]],
+    "say": "sy-AT-ik"
+  },
+  "dermatomes": {
+    "def": "A dermatome is the strip of skin whose sensory axons travel in one spinal nerve and enter the cord through one dorsal root. Neighboring dermatomes overlap, so damage to one root reduces sensation rather than abolishing it.",
+    "roots": [["derm-", "skin"], ["-tome", "cut, section"]],
+    "say": "DER-muh-tome"
+  }
+}

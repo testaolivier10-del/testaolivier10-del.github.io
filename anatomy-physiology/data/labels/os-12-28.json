@@ -1,0 +1,256 @@
+{
+  "figure": "os-12-28",
+  "labels": [
+    {
+      "id": "ionotropic-receptor",
+      "name": "Neurotransmitter binds to ionotropic receptor, channel opens",
+      "accept": [
+        "neurotransmitter binds to ionotropic receptor, channel opens",
+        "ionotropic receptor",
+        "ionotropic",
+        "ionotropic receptors",
+        "ligand-gated channel",
+        "ligand gated channel"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "receptor-classes-neural",
+      "box": [
+        9,
+        0,
+        341,
+        48
+      ]
+    },
+    {
+      "id": "neurotransmitter-released",
+      "name": "Neurotransmitter released into synaptic cleft",
+      "accept": [
+        "neurotransmitter released into synaptic cleft",
+        "neurotransmitter",
+        "neurotransmitters"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "neurotransmitter",
+      "box": [
+        573,
+        0,
+        252,
+        48
+      ]
+    },
+    {
+      "id": "ions",
+      "name": "Ions",
+      "accept": [
+        "ions",
+        "ion"
+      ],
+      "box": [
+        13,
+        151,
+        53,
+        21
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "postsynaptic-membrane",
+      "name": "Postsynaptic membrane",
+      "accept": [
+        "postsynaptic membrane",
+        "postsynaptic",
+        "plasma membrane"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "synapse-basic",
+      "box": [
+        856,
+        280,
+        128,
+        44
+      ]
+    },
+    {
+      "id": "cytosol",
+      "name": "Cytosol",
+      "accept": [
+        "cytosol",
+        "cytoplasm"
+      ],
+      "box": [
+        744,
+        437,
+        73,
+        26
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "metabotropic-receptor",
+      "name": "Neurotransmitter binds to metabotropic receptor",
+      "accept": [
+        "neurotransmitter binds to metabotropic receptor",
+        "metabotropic receptor",
+        "metabotropic",
+        "metabotropic receptors",
+        "g protein-coupled receptor",
+        "g-protein-coupled receptor"
+      ],
+      "lines": [
+        7,
+        9
+      ],
+      "concept": "receptor-classes-neural",
+      "box": [
+        42,
+        565,
+        239,
+        47
+      ]
+    },
+    {
+      "id": "first-messenger",
+      "name": "Neurotransmitter (first messenger) released into synaptic cleft",
+      "accept": [
+        "neurotransmitter (first messenger) released into synaptic cleft",
+        "first messenger",
+        "neurotransmitter",
+        "neurotransmitters"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "neurotransmitter",
+      "box": [
+        490,
+        565,
+        328,
+        49
+      ]
+    },
+    {
+      "id": "ions-b",
+      "name": "Ions",
+      "accept": [
+        "ions",
+        "ion"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ion",
+      "box": [
+        840,
+        656,
+        50,
+        21
+      ]
+    },
+    {
+      "id": "postsynaptic-membrane-b",
+      "name": "Postsynaptic membrane",
+      "accept": [
+        "postsynaptic membrane",
+        "postsynaptic",
+        "plasma membrane"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "synapse-basic",
+      "box": [
+        856,
+        823,
+        128,
+        44
+      ]
+    },
+    {
+      "id": "cytosol-b",
+      "name": "Cytosol",
+      "accept": [
+        "cytosol",
+        "cytoplasm"
+      ],
+      "box": [
+        744,
+        975,
+        73,
+        25
+      ],
+      "concept": "cell-parts"
+    },
+    {
+      "id": "g-protein",
+      "name": "G protein activated and binds to effector protein",
+      "accept": [
+        "g protein activated and binds to effector protein",
+        "g protein",
+        "g-protein",
+        "effector protein"
+      ],
+      "lines": [
+        14,
+        16,
+        18
+      ],
+      "concept": "second-messenger",
+      "box": [
+        39,
+        1060,
+        201,
+        72
+      ]
+    },
+    {
+      "id": "atp",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "box": [
+        309,
+        1044,
+        42,
+        20
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "second-messenger",
+      "name": "Second messenger molecules produced, activating enzymes that open channel",
+      "accept": [
+        "second messenger molecules produced, activating enzymes that open channel",
+        "second messenger",
+        "second messengers",
+        "camp",
+        "cyclic amp"
+      ],
+      "lines": [
+        15,
+        17,
+        20,
+        21
+      ],
+      "concept": "second-messenger",
+      "box": [
+        630,
+        1070,
+        204,
+        94
+      ]
+    }
+  ]
+}

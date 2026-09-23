@@ -1,0 +1,47 @@
+{
+  "topic": "higher-functions",
+  "hook": "<p>Mr. Castillo, 62, is eating breakfast when his words suddenly stop coming. He understands everything his wife says and nods to answer, but when he tries to speak he manages only \"Coffee... no... walk,\" slowly and with great effort, and he is plainly frustrated. His right hand is weak too. A blocked artery has cut off blood to a small part of his left frontal lobe, just in front of the area that moves his face and hand.</p>",
+  "prereq": [
+    {
+      "q": "Which sulcus separates the frontal lobe from the parietal lobe?",
+      "options": ["The lateral sulcus", "The central sulcus", "The parieto-occipital sulcus"],
+      "correct": 1,
+      "why": "The central sulcus runs from the top of the hemisphere down its side, with the frontal lobe in front and the parietal lobe behind. The lateral sulcus lies above the temporal lobe.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "Which structure is needed to form new memories of facts and events?",
+      "options": ["The hippocampus", "The cerebellum", "The amygdala"],
+      "correct": 0,
+      "why": "The hippocampus, part of the limbic system in the temporal lobe, is needed to form new memories of facts and events. The cerebellum coordinates movement; the amygdala judges emotional importance.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "At a chemical synapse, what makes an excitatory postsynaptic potential (EPSP)?",
+      "options": ["Neurotransmitter binds to receptor proteins that let positive ions into the postsynaptic cell", "The action potential jumps directly across the gap", "The postsynaptic cell releases neurotransmitter back to the presynaptic cell"],
+      "correct": 0,
+      "why": "Neurotransmitter released from the presynaptic terminal binds to receptor proteins on the postsynaptic membrane. Opening channels that let positive ions in depolarizes the cell a little: an EPSP.",
+      "review": "synapses"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-16-5",
+    "caption": "The functional areas of the cerebral cortex. Hide the labels and name the primary motor, somatosensory, visual and auditory areas, then the two language areas."
+  },
+  "chain": [
+    { "cause": "Sound waves from a spoken word reach your ears, and signals relay through the thalamus.", "effect": "The primary auditory cortex in the temporal lobe receives the sound." },
+    { "cause": "The primary auditory cortex passes the sound pattern to Wernicke's area beside it.", "effect": "Wernicke's area recognizes the word and its meaning." },
+    { "cause": "Wernicke's area sends the word forward along a curved band of white matter.", "effect": "Broca's area in the frontal lobe receives it and builds a speech plan." },
+    { "cause": "Broca's area passes the plan to the face area of the primary motor cortex next to it.", "effect": "The primary motor cortex drives the muscles of the lips, tongue and throat, and you say the word." }
+  ],
+  "misconception": {
+    "wrong": "Memories are stored in the hippocampus.",
+    "right": "The hippocampus is needed to form new declarative memories and to consolidate them, but long-term memories end up stored in the cerebral cortex. Henry Molaison, who lost most of both hippocampi, could not form new memories of events, yet he kept memories from years before his surgery and could still learn new skills, which depend on the basal nuclei and cerebellum."
+  },
+  "check": ["anp-higher-functions-3", "anp-higher-functions-6", "anp-higher-functions-8", "anp-higher-functions-12", "anp-higher-functions-14", "anp-higher-functions-15", "anp-higher-functions-18", "anp-higher-functions-23"],
+  "summary": "<p>Cortical areas are specialized. The primary motor cortex (precentral gyrus, area 4) sends commands to the opposite side, planned by the premotor and supplemental motor areas; the prefrontal cortex runs executive function. The primary somatosensory (postcentral gyrus), visual (occipital) and auditory (temporal) cortices receive signals first, association areas interpret them, and multimodal integration areas combine them. Body maps along the two central gyri give the most cortex to the hands, lips and tongue. The hemispheres specialize, with language usually on the left. Damage to Broca's area causes expressive aphasia, to Wernicke's area receptive aphasia, and to the link between them conduction aphasia. Working memory holds about four chunks; the hippocampus consolidates declarative memories into the cortex by strengthening synapses, while procedural memory uses the basal nuclei and cerebellum. The EEG records summed synaptic potentials, and sleep cycles every 90 minutes through N1, N2, N3 and REM.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Altered mental status" },
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

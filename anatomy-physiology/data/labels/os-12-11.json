@@ -1,0 +1,80 @@
+{
+  "figure": "os-12-11",
+  "labels": [
+    {
+      "id": "microglial-cell",
+      "name": "Microglial cell",
+      "accept": [
+        "microglial cell",
+        "microglia",
+        "microglial cells",
+        "microglial"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cns-glia",
+      "box": [
+        6,
+        23,
+        136,
+        25
+      ]
+    },
+    {
+      "id": "astrocyte",
+      "name": "Astrocyte",
+      "accept": [
+        "astrocyte",
+        "astrocytes"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cns-glia",
+      "box": [
+        5,
+        172,
+        99,
+        25
+      ]
+    },
+    {
+      "id": "ependymal-cells",
+      "name": "Ependymal cells",
+      "accept": [
+        "ependymal cells",
+        "ependymal cell",
+        "ependymal"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cns-glia",
+      "box": [
+        274,
+        608,
+        163,
+        25
+      ]
+    },
+    {
+      "id": "oligodendrocytes",
+      "name": "Oligodendrocytes",
+      "accept": [
+        "oligodendrocytes",
+        "oligodendrocyte"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cns-glia",
+      "box": [
+        654,
+        608,
+        173,
+        25
+      ]
+    }
+  ]
+}

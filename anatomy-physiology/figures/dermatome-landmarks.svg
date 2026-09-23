@@ -1,44 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 660" width="520" height="660" role="img" aria-label="Front view of a body outline in anatomical position, palms facing forward, with ten numbered markers on dermatome landmarks. 1: skin over the outer side of the right upper arm. 2: the tip of the right thumb. 3: the tip of the right middle finger. 4: the tip of the left little finger. 5: the chest at the level of the nipples. 6: the navel. 7: the right groin. 8: the inner side of the left leg just below the knee. 9: the top of the right foot near the big toe. 10: the outer edge of the left foot near the little toe.">
 <rect x="0" y="0" width="520" height="660" fill="#FFFFFF"/>
 <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-<polyline points="190,130 164,245 146,345" stroke="#5D6B69" stroke-width="30"/>
-<polyline points="330,130 356,245 374,345" stroke="#5D6B69" stroke-width="30"/>
+<polyline points="184,132 150,245 128,345" stroke="#5D6B69" stroke-width="30"/>
+<polyline points="336,132 370,245 392,345" stroke="#5D6B69" stroke-width="30"/>
 <polyline points="232,330 226,470 222,585" stroke="#5D6B69" stroke-width="40"/>
 <polyline points="288,330 294,470 298,585" stroke="#5D6B69" stroke-width="40"/>
-<polyline points="190,130 164,245 146,345" stroke="#EEF2F1" stroke-width="26"/>
-<polyline points="330,130 356,245 374,345" stroke="#EEF2F1" stroke-width="26"/>
+<polyline points="184,132 150,245 128,345" stroke="#EEF2F1" stroke-width="26"/>
+<polyline points="336,132 370,245 392,345" stroke="#EEF2F1" stroke-width="26"/>
 <polyline points="232,330 226,470 222,585" stroke="#EEF2F1" stroke-width="36"/>
 <polyline points="288,330 294,470 298,585" stroke="#EEF2F1" stroke-width="36"/>
 <g stroke="#5D6B69" stroke-width="9">
-<line x1="136" y1="370" x2="112" y2="392"/>
-<line x1="136" y1="378" x2="132" y2="414"/>
-<line x1="142" y1="380" x2="141" y2="420"/>
-<line x1="148" y1="380" x2="150" y2="416"/>
-<line x1="153" y1="376" x2="158" y2="406"/>
-<line x1="384" y1="370" x2="408" y2="392"/>
-<line x1="384" y1="378" x2="388" y2="414"/>
-<line x1="378" y1="380" x2="379" y2="420"/>
-<line x1="372" y1="380" x2="370" y2="416"/>
-<line x1="367" y1="376" x2="362" y2="406"/>
+<line x1="118" y1="370" x2="94" y2="392"/>
+<line x1="118" y1="378" x2="114" y2="414"/>
+<line x1="124" y1="380" x2="123" y2="420"/>
+<line x1="130" y1="380" x2="132" y2="416"/>
+<line x1="135" y1="376" x2="140" y2="406"/>
+<line x1="402" y1="370" x2="426" y2="392"/>
+<line x1="402" y1="378" x2="406" y2="414"/>
+<line x1="396" y1="380" x2="397" y2="420"/>
+<line x1="390" y1="380" x2="388" y2="416"/>
+<line x1="385" y1="376" x2="380" y2="406"/>
 </g>
 <g stroke="#EEF2F1" stroke-width="5">
-<line x1="136" y1="370" x2="112" y2="392"/>
-<line x1="136" y1="378" x2="132" y2="414"/>
-<line x1="142" y1="380" x2="141" y2="420"/>
-<line x1="148" y1="380" x2="150" y2="416"/>
-<line x1="153" y1="376" x2="158" y2="406"/>
-<line x1="384" y1="370" x2="408" y2="392"/>
-<line x1="384" y1="378" x2="388" y2="414"/>
-<line x1="378" y1="380" x2="379" y2="420"/>
-<line x1="372" y1="380" x2="370" y2="416"/>
-<line x1="367" y1="376" x2="362" y2="406"/>
+<line x1="118" y1="370" x2="94" y2="392"/>
+<line x1="118" y1="378" x2="114" y2="414"/>
+<line x1="124" y1="380" x2="123" y2="420"/>
+<line x1="130" y1="380" x2="132" y2="416"/>
+<line x1="135" y1="376" x2="140" y2="406"/>
+<line x1="402" y1="370" x2="426" y2="392"/>
+<line x1="402" y1="378" x2="406" y2="414"/>
+<line x1="396" y1="380" x2="397" y2="420"/>
+<line x1="390" y1="380" x2="388" y2="416"/>
+<line x1="385" y1="376" x2="380" y2="406"/>
 </g>
 </g>
-<ellipse cx="144" cy="365" rx="17" ry="20" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
-<ellipse cx="376" cy="365" rx="17" ry="20" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<ellipse cx="126" cy="365" rx="17" ry="20" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<ellipse cx="394" cy="365" rx="17" ry="20" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
 <ellipse cx="216" cy="604" rx="26" ry="13" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
 <ellipse cx="304" cy="604" rx="26" ry="13" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
-<path d="M190 122 Q260 108 330 122 L340 146 L324 250 Q318 295 324 340 L196 340 Q202 295 196 250 L180 146 Z" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<path d="M194 122 Q260 110 326 122 L332 146 L322 250 Q318 295 324 340 L196 340 Q202 295 198 250 L188 146 Z" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
 <rect x="245" y="96" width="30" height="24" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
 <ellipse cx="260" cy="60" rx="33" ry="41" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
 <rect x="244" y="112" width="32" height="14" fill="#EEF2F1"/>
@@ -47,25 +47,25 @@
 
 <g font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="800" text-anchor="middle">
 <g fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5">
-<circle cx="178" cy="172" r="13"/>
-<circle cx="104" cy="402" r="13"/>
-<circle cx="141" cy="438" r="13"/>
-<circle cx="362" cy="425" r="13"/>
+<circle cx="165" cy="180" r="13"/>
+<circle cx="86" cy="402" r="13"/>
+<circle cx="123" cy="438" r="13"/>
+<circle cx="380" cy="425" r="13"/>
 <circle cx="300" cy="178" r="13"/>
 <circle cx="260" cy="262" r="13"/>
-<circle cx="226" cy="322" r="13"/>
+<circle cx="228" cy="326" r="13"/>
 <circle cx="276" cy="500" r="13"/>
 <circle cx="230" cy="598" r="13"/>
 <circle cx="336" cy="610" r="13"/>
 </g>
 <g fill="#1F2A28">
-<text x="178" y="177">1</text>
-<text x="104" y="407">2</text>
-<text x="141" y="443">3</text>
-<text x="362" y="430">4</text>
+<text x="165" y="185">1</text>
+<text x="86" y="407">2</text>
+<text x="123" y="443">3</text>
+<text x="380" y="430">4</text>
 <text x="300" y="183">5</text>
 <text x="260" y="267">6</text>
-<text x="226" y="327">7</text>
+<text x="228" y="331">7</text>
 <text x="276" y="505">8</text>
 <text x="230" y="603">9</text>
 <text x="336" y="615">10</text>

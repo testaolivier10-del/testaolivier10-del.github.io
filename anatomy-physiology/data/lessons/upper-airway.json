@@ -29,7 +29,7 @@
     "caption": "The upper airway in a midsagittal section. Hide the labels and name the three parts of the pharynx, the nasal conchae, the epiglottis, the thyroid and cricoid cartilages, and the two pairs of folds in the larynx."
   },
   "chain": [
-    { "cause": "You swallow, and muscles attached to the hyoid bone pull the larynx up and forward under the base of the tongue.", "effect": "The epiglottis tips down and back over the opening of the larynx, and the vocal and vestibular folds close." },
+    { "cause": "You swallow, and muscles attached to the hyoid bone pull the larynx up and forward under the base of the tongue.", "effect": "The vocal and vestibular folds close, and the epiglottis tips down and back over the opening of the larynx." },
     { "cause": "With the larynx covered and sealed, food moves down through the laryngopharynx.", "effect": "It slides past the larynx into the esophagus instead of into the airway." },
     { "cause": "If a crumb slips past the seal, it touches sensory receptors in the lining of the larynx below the folds.", "effect": "Sensory fibers of the vagus nerve signal the brainstem, which triggers the cough reflex." },
     { "cause": "The cough reflex draws a deep breath in, closes the vocal folds, and contracts the abdominal wall muscles hard.", "effect": "Pressure builds in the chest; when the vocal folds open suddenly, a blast of air carries the crumb up and out." }

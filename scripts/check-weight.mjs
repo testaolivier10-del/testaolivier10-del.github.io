@@ -418,7 +418,8 @@ const DATA_BUDGETS = [
      not, so an early page can show a hover for a later term (spec section 7).
      It grows as each chapter is written; measured 47.3 KB with respiratory
      drafted. Each chapter raises it by its measured size. */
-  ['anatomy-physiology/assets/glossary.json', 52],
+  /* 52 -> 64: respiratory and the nervous chapters drafted (56.8 KB). */
+  ['anatomy-physiology/assets/glossary.json', 64],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —

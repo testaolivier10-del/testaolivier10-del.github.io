@@ -1,0 +1,49 @@
+{
+  "topic": "spinal-nerves",
+  "hook": "<p>Marcus, 44, a roofer, lifted a bundle of shingles and felt a pop in his lower back. Now a burning pain runs from his right buttock down the back of his thigh and calf to the outer edge of his foot, and his little toe feels numb. His thigh muscles work, but he struggles to rise onto the toes of his right foot. One pinched nerve root, S1, explains every part of that picture, and by the end of this topic you will be able to say why.</p>",
+  "prereq": [
+    {
+      "q": "Which root of a spinal cord segment carries sensory axons into the cord?",
+      "options": ["The ventral root", "The dorsal root", "Both roots equally"],
+      "correct": 1,
+      "why": "The dorsal root carries sensory axons in, and its ganglion holds their cell bodies. The ventral root carries motor axons out from the ventral horn.",
+      "review": "spinal-cord"
+    },
+    {
+      "q": "Which kind of connective tissue forms a tough wrapping made mostly of collagen fibers running in many directions?",
+      "options": ["Dense irregular connective tissue", "Areolar tissue", "Adipose tissue"],
+      "correct": 0,
+      "why": "Dense irregular connective tissue is packed with collagen fibers running in several directions, so it resists pulling from any side. It wraps organs such as nerves and forms the dermis.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "In the peripheral nervous system, what is a nerve?",
+      "options": ["A single long neuron", "A cluster of neuron cell bodies", "A bundle of axons wrapped in connective tissue"],
+      "correct": 2,
+      "why": "A nerve is a bundle of many axons with connective tissue around them. A cluster of cell bodies outside the CNS is a ganglion.",
+      "review": "nervous-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-13-24",
+    "caption": "The spinal nerves and the four main nerve plexuses. Hide the labels and name each plexus and the major nerves that leave it."
+  },
+  "chain": [
+    { "cause": "A pinprick touches the skin on the outer edge of your right foot, in the S1 dermatome.", "effect": "Sensory endings there fire action potentials in sensory axons that run in small skin branches joining the tibial nerve." },
+    { "cause": "The action potentials travel up the tibial nerve and the sciatic nerve.", "effect": "They reach the sacral plexus, where the S1 axons sort back into the S1 ventral ramus." },
+    { "cause": "The ventral ramus joins the S1 spinal nerve inside the sacrum's openings.", "effect": "In the spinal nerve, the sensory axons separate from the motor axons and enter the dorsal root." },
+    { "cause": "The signal passes the cell bodies in the S1 dorsal root ganglion and continues along the dorsal root.", "effect": "It enters the dorsal horn of the S1 segment of the cord, where it is passed on toward the brain." },
+    { "cause": "A herniated disc presses on the S1 root before it joins the plexus.", "effect": "Signals from that dermatome are blocked or distorted, so the outer foot feels numb and pain is felt along the whole path the S1 axons serve, the pattern called sciatica." }
+  ],
+  "misconception": {
+    "wrong": "Each dorsal root supplies its dermatome alone, so cutting one dorsal root leaves a sharply bordered numb band.",
+    "right": "Neighboring dermatomes overlap: each patch of skin is supplied mainly by one spinal nerve and partly by the nerves above and below. Cutting one dorsal root only reduces sensation in its dermatome. A band of complete numbness appears only when two or three neighboring roots are damaged. The sharp borders on dermatome maps are a drawing convention."
+  },
+  "check": ["anp-spinal-nerves-1", "anp-spinal-nerves-5", "anp-spinal-nerves-8", "anp-spinal-nerves-10", "anp-spinal-nerves-13", "anp-spinal-nerves-17", "anp-spinal-nerves-20"],
+  "summary": "<p>A nerve is a bundle of axons wrapped in endoneurium (each axon), perineurium (each fascicle) and epineurium (the whole nerve). Each spinal nerve forms where a sensory dorsal root and a motor ventral root join in the intervertebral foramen, so all 31 pairs (8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal) are mixed nerves. Each splits into a dorsal ramus, for the deep back muscles and the skin of the back, and a larger ventral ramus, for the front and sides of the trunk and the limbs. The thoracic ventral rami run alone as intercostal nerves; the others weave into the cervical (C1–C4), brachial (C5–T1), lumbar (L1–L4) and sacral (L4–S4) plexuses. Key nerves: phrenic (diaphragm), axillary (deltoid), radial (extensors; wrist drop), median (carpal tunnel), ulnar (hand muscles; funny bone), femoral (quadriceps), sciatic, dividing into tibial (plantar flexion) and fibular (dorsiflexion; foot drop). A dermatome is the skin strip supplied by one spinal nerve; neighboring dermatomes overlap.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" },
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

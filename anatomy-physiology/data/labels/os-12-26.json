@@ -1,0 +1,124 @@
+{
+  "figure": "os-12-26",
+  "labels": [
+    {
+      "id": "summation-at-axon-hillock",
+      "name": "Summation at axon hillock",
+      "accept": [
+        "summation at axon hillock",
+        "summation at the axon hillock",
+        "summation",
+        "axon hillock",
+        "trigger zone",
+        "spatial summation",
+        "temporal summation"
+      ],
+      "lines": [
+        0,
+        2,
+        1
+      ],
+      "concept": "summation-neural",
+      "box": [
+        671,
+        290,
+        344,
+        28
+      ]
+    },
+    {
+      "id": "plus-30-mv",
+      "name": "30 mV",
+      "accept": [
+        "30 mv",
+        "+30 mv",
+        "30",
+        "+30"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "action-potential-basic",
+      "box": [
+        59,
+        328,
+        44,
+        26
+      ]
+    },
+    {
+      "id": "minus-55-mv",
+      "name": "-55 mV",
+      "accept": [
+        "-55 mv",
+        "-55",
+        "threshold",
+        "threshold potential"
+      ],
+      "concept": "threshold",
+      "box": [
+        47,
+        438,
+        56,
+        26
+      ]
+    },
+    {
+      "id": "minus-70-mv",
+      "name": "-70 mV",
+      "accept": [
+        "-70 mv",
+        "-70",
+        "resting membrane potential",
+        "resting potential"
+      ],
+      "concept": "resting-membrane-potential",
+      "box": [
+        47,
+        565,
+        56,
+        27
+      ]
+    },
+    {
+      "id": "epsps",
+      "name": "EPSPs",
+      "accept": [
+        "epsps",
+        "epsp",
+        "excitatory postsynaptic potential",
+        "excitatory postsynaptic potentials"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "epsp-ipsp",
+      "box": [
+        1005,
+        358,
+        97,
+        27
+      ]
+    },
+    {
+      "id": "ipsps",
+      "name": "IPSPs",
+      "accept": [
+        "ipsps",
+        "ipsp",
+        "inhibitory postsynaptic potential",
+        "inhibitory postsynaptic potentials"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "epsp-ipsp",
+      "box": [
+        1006,
+        400,
+        89,
+        28
+      ]
+    }
+  ]
+}

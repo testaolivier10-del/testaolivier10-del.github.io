@@ -113,6 +113,15 @@ export function checkTopic(id, glossary, figures) {
         if (q.type !== 'order' && (!q.why || !Array.isArray(q.why.options) || q.why.options.length !== n)) err(`${w}: why.options must explain every option (${n})`);
         if ((q.type === 'graph' || q.type === 'image') && !q.figure) err(`${w}: ${q.type} needs a figure`);
         if (q.figure && figures && !figures[q.figure]) err(`${w}: unknown figure "${q.figure}"`);
+        // An identification question points at one named label: the page covers
+        // the rest and highlights that one (data/labels/<figure>.json).
+        if (q.type === 'image' && q.figure) {
+          const lf = join(DATA, 'labels', `${q.figure}.json`);
+          const ids = exists(lf) ? new Set(readJson(lf).labels.filter(l => l.box).map(l => l.id)) : null;
+          if (!q.pin) err(`${w}: image question needs a "pin" (a label id on ${q.figure})`);
+          else if (!ids) err(`${w}: figure ${q.figure} has no named labels yet (data/labels/${q.figure}.json), so pin "${q.pin}" cannot be shown`);
+          else if (!ids.has(q.pin)) err(`${w}: pin "${q.pin}" is not a label on ${q.figure}`);
+        }
       }
       const all = [q.why?.correct, ...((q.why && q.why.options) || []), ...(q.variables || []).map(v => v.why)].map(strip).join(' ');
       const m = all.match(POS_RE);

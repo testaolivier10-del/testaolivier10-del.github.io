@@ -1,0 +1,63 @@
+{
+  "os-16-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "16.5",
+      "section": "16.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/385f61296392cbf2ac4c5cbcb26b8dc590bea08f",
+      "page": "16-2-the-mental-status-exam"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/385f61296392cbf2ac4c5cbcb26b8dc590bea08f",
+    "alt": "A side view of the left hemisphere with its functional areas shaded. In the frontal lobe, a green strip just in front of the central sulcus is the primary motor cortex, with a motor association area and a frontal eye field in front of it; a circle low in the frontal lobe marks Broca's area, within the prefrontal cortex. Just behind the central sulcus a dark pink strip is the primary somatosensory cortex, with a sensory association area behind it. A circle in the upper temporal lobe marks Wernicke's area. At the back of the occipital lobe is the primary visual cortex with the visual association area around it, and in the temporal lobe the primary auditory cortex with the auditory association area. A dotted outline where the parietal, temporal and occipital lobes meet marks a general interpretation area.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 16.5",
+    "labels": [],
+    "w": 1100,
+    "h": 568,
+    "ext": "jpg"
+  },
+  "os-14-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.23",
+      "section": "14.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/96080eb5404fe1fe6cef01dd1f93387a46102c71",
+      "page": "14-2-central-processing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/96080eb5404fe1fe6cef01dd1f93387a46102c71",
+    "alt": "A slice through one hemisphere along the postcentral gyrus, with a distorted human figure drawn over it. Body parts are labeled in order along the cortex: the genitals, toes, foot and leg on the medial surface; then hip, trunk, neck, head, shoulder, arm, elbow, forearm, wrist and hand over the top; then each finger and thumb; then eye, nose, face, lips, teeth, gums and jaw, tongue and throat low on the side. The figure's hand, lips and tongue are drawn very large and its trunk and legs small.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.23",
+    "labels": [],
+    "w": 1100,
+    "h": 1096,
+    "ext": "jpg"
+  },
+  "os-16-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "16.6",
+      "section": "16.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/248ada5fedc5d295c1ec6f7638211936bec9d7d4",
+      "page": "16-2-the-mental-status-exam"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/248ada5fedc5d295c1ec6f7638211936bec9d7d4",
+    "alt": "A side view of the left hemisphere. An outlined area low in the frontal lobe is labeled Broca's area, and an outlined area at the back of the upper temporal lobe is labeled Wernicke's area. A curved bundle of fibers arches from one to the other.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 16.6",
+    "labels": [],
+    "w": 1100,
+    "h": 746,
+    "ext": "jpg"
+  },
+  "sleep-hypnogram": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 700,
+    "h": 320,
+    "alt": "A graph of sleep stages across an 8-hour night. The vertical axis lists, from top to bottom, awake, REM, N1, N2 and N3 (deep); the horizontal axis shows hours 0 to 8 after falling asleep. The line drops from awake through N1 and N2 to N3 within the first hour, then cycles up and down about every 90 minutes. Long periods of N3 occur in the first two cycles, a short one in the third, and none after about 4 hours. REM periods, highlighted in color, are short early in the night (about 10 minutes at 1.4 hours) and get longer toward morning (about 40 minutes near 7 hours). Brief awakenings occur late in the night.",
+    "labels": []
+  }
+}

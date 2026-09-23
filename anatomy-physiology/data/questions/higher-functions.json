@@ -1,0 +1,631 @@
+[
+  {
+    "id": "anp-higher-functions-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-16-5",
+    "pin": "primary-motor-cortex",
+    "q": "Name the pinned area.",
+    "options": [
+      "Primary somatosensory cortex",
+      "Premotor cortex",
+      "Primary motor cortex",
+      "Prefrontal cortex"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The strip just in front of the central sulcus, the precentral gyrus, is the primary motor cortex. It sends commands to the skeletal muscles of the opposite side.",
+      "options": [
+        "The primary somatosensory cortex is the strip just behind the central sulcus, in the parietal lobe.",
+        "The premotor cortex (motor association area) lies further forward, in front of the pinned strip.",
+        "Correct. The precentral gyrus is the primary motor cortex.",
+        "The prefrontal cortex is the front of the frontal lobe, well ahead of the motor strip."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-16-5",
+    "pin": "primary-visual-cortex",
+    "q": "Name the pinned area.",
+    "options": [
+      "Primary visual cortex",
+      "Primary auditory cortex",
+      "Visual association area",
+      "Wernicke's area"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The area at the very back of the occipital lobe is the primary visual cortex, the first cortical area to receive visual signals.",
+      "options": [
+        "Correct. The rearmost area of the occipital lobe is the primary visual cortex.",
+        "The primary auditory cortex is at the top of the temporal lobe, inside the lateral sulcus.",
+        "The visual association area surrounds the primary visual cortex, in front of the pinned area.",
+        "Wernicke's area is at the back of the upper temporal lobe, not at the back of the occipital lobe."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Castillo, 62, understands what is said to him, but his own speech is slow, effortful and made of single words, and he is frustrated by it. His right arm is weak. Where is the damage most likely to be?",
+    "options": [
+      "Left lower frontal lobe",
+      "Left upper temporal lobe",
+      "Right parietal lobe",
+      "Left occipital lobe"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Slow, effortful speech with good understanding is expressive (Broca's) aphasia, from damage to Broca's area in the lower left frontal lobe. Broca's area lies next to the motor cortex, so right-sided weakness often comes with it.",
+      "options": [
+        "Correct. Broca's area is in the lower left frontal lobe.",
+        "Damage to Wernicke's area in the upper left temporal lobe causes fluent speech with poor understanding, the opposite pattern.",
+        "Right parietal damage typically causes neglect of the left side of space, not loss of speech.",
+        "Left occipital damage causes loss of vision in the right half of the scene, not trouble speaking."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mrs. Lindqvist, 74, speaks quickly and with normal rhythm, but her sentences are full of wrong and made-up words and make little sense. She cannot follow simple spoken instructions and does not seem aware that anything is wrong. Which area is most likely damaged?",
+    "options": [
+      "Broca's area",
+      "The primary motor cortex",
+      "The cerebellum",
+      "Wernicke's area"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Fluent but meaningless speech, poor understanding and little awareness of the problem is receptive (Wernicke's) aphasia, from damage to Wernicke's area in the upper left temporal lobe.",
+      "options": [
+        "Damage to Broca's area makes speech slow and effortful, while understanding stays mostly good.",
+        "Damage to the primary motor cortex weakens the muscles of the opposite side; it does not make speech meaningless.",
+        "Cerebellar damage makes speech slurred and poorly timed, but the words and their meaning are correct.",
+        "Correct. Wernicke's area is needed to understand language and choose meaningful words."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A patient speaks fluently and understands speech well, but cannot repeat a short phrase such as \"no ifs, ands or buts\" after hearing it. Where is the damage most likely to be?",
+    "options": [
+      "In the primary auditory cortex of both hemispheres",
+      "In Broca's area, in the lower left frontal lobe, which assembles fluent speech",
+      "In the motor areas that control the lips and tongue",
+      "In the white matter connecting Wernicke's area to Broca's area"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Fluent speech means Broca's area works, and good understanding means Wernicke's area works. Repetition needs the word to travel from Wernicke's area to Broca's area, so a break in the connecting white matter causes conduction aphasia: poor repetition out of line with everything else.",
+      "options": [
+        "Loss of both primary auditory cortices would stop the patient understanding speech, which this patient does well.",
+        "Damage to Broca's area makes spontaneous speech slow and effortful, not fluent.",
+        "Weak lip and tongue muscles slur all speech, not just repetition.",
+        "Correct. Damage to the connection between the two areas causes conduction aphasia."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Loss of blood flow destroys the hand area of the left primary motor cortex, and nothing else. Predict the change in each.",
+    "variables": [
+      {
+        "name": "Strength of the right hand",
+        "answer": "down",
+        "why": "The left primary motor cortex sends commands to the muscles of the right side, and its hand area drives the right hand, so the right hand weakens."
+      },
+      {
+        "name": "Strength of the left hand",
+        "answer": "none",
+        "why": "The left hand is controlled by the right hemisphere's motor cortex, which is undamaged."
+      },
+      {
+        "name": "Ability to feel touch on the right hand",
+        "answer": "none",
+        "why": "Touch reaches the primary somatosensory cortex in the postcentral gyrus, behind the central sulcus, which was not damaged."
+      },
+      {
+        "name": "Understanding of spoken words",
+        "answer": "none",
+        "why": "Understanding depends on Wernicke's area in the temporal lobe, far from the hand area of the motor strip."
+      }
+    ],
+    "why": {
+      "correct": "Each primary area has one job for one side of the body. Destroying the hand area of the left precentral gyrus weakens only the right hand; sensation, the other hand and language, handled by other areas, are unchanged."
+    }
+  },
+  {
+    "id": "anp-higher-functions-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Late in the evening, after 16 hours awake, you drink a strong coffee. Predict the change in each over the next hour.",
+    "variables": [
+      {
+        "name": "Binding of adenosine to its receptor proteins in the brain",
+        "answer": "down",
+        "why": "Caffeine occupies the adenosine receptor proteins, so the adenosine that built up while you were awake cannot bind to them."
+      },
+      {
+        "name": "Feeling of sleepiness",
+        "answer": "down",
+        "why": "Adenosine binding normally inhibits the brain's arousal systems. With binding blocked, that inhibition eases and you feel more alert."
+      },
+      {
+        "name": "Time it takes to fall asleep once in bed",
+        "answer": "up",
+        "why": "With the sleep pressure signal blocked, the arousal systems stay active longer, so falling asleep takes longer."
+      }
+    ],
+    "why": {
+      "correct": "Adenosine builds up during waking and binds receptor proteins that inhibit arousal. Caffeine blocks those receptor proteins, so sleepiness falls and sleep is delayed, even though the adenosine is still there."
+    }
+  },
+  {
+    "id": "anp-higher-functions-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the homunculus is drawn to body size",
+    "q": "The lips occupy more of the primary somatosensory cortex than the whole back. What best explains this?",
+    "options": [
+      "The lips are closer to the brain, so their signals arrive stronger",
+      "The lips have far more sensory receptors per square centimeter, and each signal needs cortex to receive it",
+      "The back sends most of its touch signals to the cerebellum instead of to the cerebral cortex",
+      "The lips are used for speech, so they are mapped in Broca's area as well"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cortex given to a body part depends on how densely it is supplied with sensory receptors, not on its size. The lips have many more per square centimeter than the back, and every incoming signal needs cortical neurons to receive it, so the lips get a large area.",
+      "options": [
+        "Distance from the brain does not change signal strength; action potentials arrive at full size.",
+        "Correct. Sensory receptor density sets how much cortex a body part gets.",
+        "Touch from the back reaches the somatosensory cortex too; it simply needs less cortex because it has fewer sensory receptors.",
+        "The map in the somatosensory cortex is about sensation, and Broca's area does not receive touch signals."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Loss of blood flow damages the medial surface of the right precentral gyrus, inside the longitudinal fissure. Which body part is most likely to be weak?",
+    "options": [
+      "The left hand",
+      "The right leg",
+      "The left leg and foot",
+      "The face on both sides"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "On the motor map the legs and feet lie on the medial surface, hanging into the longitudinal fissure. The right hemisphere controls the left side, so the left leg and foot weaken.",
+      "options": [
+        "The hand area lies on the lateral surface, not the medial surface.",
+        "The right leg is controlled by the left hemisphere.",
+        "Correct. The medial right precentral gyrus controls the left leg and foot.",
+        "The face area lies lowest on the lateral surface, just above the lateral sulcus."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After damage to his right parietal lobe, Mr. Haddad eats only the food on the right half of his plate and shaves only the right side of his face. His vision and strength test normal. What best explains this?",
+    "options": [
+      "Loss of the primary visual cortex on the right",
+      "Damage to Broca's area",
+      "Weakness of the left arm from motor cortex damage",
+      "Loss of the right hemisphere's attention to the left side of space"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The right parietal multimodal integration area attends to both sides of space. When it is damaged, the left side of space drops out of awareness even though the eyes and muscles work, so the person ignores everything on the left.",
+      "options": [
+        "Loss of the right primary visual cortex would cause blindness in the left half of the scene, but his vision tests normal.",
+        "Broca's area is in the left frontal lobe and handles speech production.",
+        "His strength tests normal, and weakness would not explain ignoring the left half of his plate.",
+        "Correct. This is neglect of the left side of space after right parietal damage."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman can describe a face in detail (the shape of the nose, the color of the eyes) but cannot tell that it is her husband's until he speaks. Which statement best explains this?",
+    "options": [
+      "Her primary visual cortex is damaged, so she cannot see the face",
+      "Her Wernicke's area is damaged, so she cannot name him",
+      "Her hippocampus is damaged, so she has lost all her memories of her husband and their life",
+      "Her primary visual cortex works, but part of her visual association area is damaged"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "She sees every feature, so the primary visual cortex works. Recognizing a face is the job of part of the visual association area; damage there leaves sight intact but removes recognition. She knows him by voice, so her memory of him is intact.",
+      "options": [
+        "She can describe the features in detail, so she can see the face.",
+        "She knows him once he speaks, so she can understand and name him; the failure is visual only.",
+        "She recognizes his voice, so her memory of him is intact.",
+        "Correct. Seeing without recognizing points to the association area, not the primary area."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "memories are stored in the hippocampus",
+    "q": "After encephalitis destroys both of his hippocampi, Mr. Park cannot remember his nurse from one visit to the next. Which ability is he most likely to keep?",
+    "options": [
+      "Remembering what he ate this morning",
+      "Learning the names of new staff",
+      "Getting better at a new motor skill with daily practice",
+      "Recalling a conversation from an hour ago"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The hippocampi are needed to form new declarative memories, so he has anterograde amnesia for facts and events. Procedural memory for skills uses the basal nuclei and cerebellum, so he can still improve at a practiced skill, as Henry Molaison did at mirror drawing.",
+      "options": [
+        "This morning's meal is a new memory of an event, which needs the hippocampi to form.",
+        "New names are new facts, which need the hippocampi to form.",
+        "Correct. Procedural learning does not depend on the hippocampus.",
+        "A conversation an hour ago is a new memory of an event, which needs the hippocampi."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A football player is knocked out by a tackle. Afterward he cannot recall the play itself or the few minutes before it, but he remembers the rest of the game and his whole childhood. Which memories did he lose, and why those?",
+    "options": [
+      "The oldest ones, because they are stored in the hippocampus",
+      "Procedural memories, because the blow damaged the cerebellum",
+      "The most recent ones, because they had not yet been consolidated",
+      "Memories scattered at random through his life, because the blow damaged random patches of cortex"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is retrograde amnesia. Memories from just before an injury are the least consolidated, so they are the most easily lost; older ones are already stored securely in the cortex.",
+      "options": [
+        "Old memories are stored in the cortex and survive best; he kept his childhood memories.",
+        "Nothing suggests he lost skills; he lost memories of events.",
+        "Correct. Recent memories are lost first because they have not been consolidated.",
+        "The pattern is not random: it is the most recent memories that were lost."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-14",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which describe REM sleep? Select all that apply.",
+    "options": [
+      "The EEG shows fast, small waves like the awake brain",
+      "Most skeletal muscles are paralyzed, but the diaphragm keeps working",
+      "Slow, large delta waves dominate the EEG",
+      "Most vivid, story-like dreams happen",
+      "REM periods are longest in the first cycle of the night"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "In REM sleep the EEG looks awake, the eyes dart, dreams are vivid, and brainstem neurons block the motor neurons to almost all skeletal muscles except the eye muscles and diaphragm. REM periods lengthen toward morning.",
+      "options": [
+        "Yes. The REM EEG is fast and small, like being awake.",
+        "Yes. The body is limp except the eye muscles and the diaphragm, so breathing continues.",
+        "No. Slow, large delta waves are the sign of N3, deep non-REM sleep.",
+        "Yes. Most vivid, story-like dreams happen in REM sleep.",
+        "No. REM periods are shortest early in the night and grow longer toward morning."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-15",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "sleep-hypnogram",
+    "q": "According to this graph, when does most N3 (deep) sleep happen?",
+    "options": [
+      "Evenly across the night",
+      "In the first three hours",
+      "In the last three hours",
+      "Only during brief awakenings"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The line reaches N3 for long stretches in the first two cycles (about 0.6 to 1.2 and 2 to 2.6 hours), briefly around 4 hours, and not at all after that. Deep sleep is concentrated early in the night.",
+      "options": [
+        "The graph shows N3 early and absent late, not evenly spread.",
+        "Correct. Nearly all N3 falls in the first three hours.",
+        "The last three hours contain REM and N2 but no N3.",
+        "Awakenings are at the top of the graph, the opposite of N3."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-16",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "sleep-hypnogram",
+    "q": "Using this graph, predict what someone who sleeps only the first four hours of the night misses most.",
+    "options": [
+      "Most of their N3 deep sleep",
+      "Most of their N1 sleep",
+      "Most of their REM sleep",
+      "All of their N2 sleep"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "REM periods on the graph grow from about 10 minutes early in the night to 40 minutes or more after 5 hours. Cutting the night at 4 hours removes the longest REM periods, while nearly all N3 has already happened.",
+      "options": [
+        "Nearly all N3 falls in the first three hours, so a four-hour sleeper gets most of it.",
+        "N1 is brief at any time and is not concentrated late.",
+        "Correct. The longest REM periods come in the last part of the night.",
+        "N2 occurs in every cycle, including the first four hours."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Why does the EEG show slow, large waves in deep sleep but fast, small waves when you are awake and thinking?",
+    "options": [
+      "In deep sleep many cortical neurons' synaptic potentials rise and fall in step, so they add up",
+      "Neurons fire more action potentials in deep sleep",
+      "The skull becomes thinner during sleep, so the signal is less damped",
+      "The EEG records muscle activity, which is greatest during sleep"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The EEG records the summed EPSPs and IPSPs of many aligned cortical neurons. In deep sleep huge numbers of them swing up and down together, so their currents add into slow, large waves. Awake, groups work on different things at different times, so the currents partly cancel into fast, small waves.",
+      "options": [
+        "Correct. Synchrony makes the summed signal large.",
+        "The EEG mainly reflects synaptic potentials, not action potentials, and the size of the waves depends on how synchronized the neurons are.",
+        "The skull does not change thickness.",
+        "The EEG picks up the summed synaptic currents of the cortex, and muscles are most relaxed, not most active, during sleep."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Years ago, surgeons cut Ms. Novak's corpus callosum to stop her seizures from spreading. With her eyes closed, she is handed a key in her left hand. What happens?",
+    "options": [
+      "She names it at once, because touch reaches both hemispheres equally",
+      "She cannot name it, but her left hand can pick it out of a pile",
+      "She cannot name it or pick it out, because the left hand has no sensation",
+      "She names it, but cannot pick it out, because the right hemisphere controls speech"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Touch from the left hand reaches the right hemisphere. With the corpus callosum cut, it cannot be passed to the left hemisphere, which produces speech in most people. So she cannot say \"key,\" but the right hemisphere knows the object and guides the left hand to choose it.",
+      "options": [
+        "Touch from one hand reaches mainly the opposite hemisphere, and without the corpus callosum it cannot be shared.",
+        "Correct. The right hemisphere knows the key but cannot speak it.",
+        "Sensation in the left hand is normal; it reaches the right hemisphere, which can guide the hand.",
+        "In most people speech is produced by the left hemisphere, not the right."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-19",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Put the steps in order for repeating aloud a word you hear, using the classic model of language.",
+    "options": [
+      "The primary auditory cortex receives the sound",
+      "Wernicke's area recognizes the word",
+      "White matter carries the word forward to the frontal lobe",
+      "Broca's area builds the speech plan",
+      "The primary motor cortex drives the muscles of speech"
+    ],
+    "why": {
+      "correct": "Sound reaches the primary auditory cortex, Wernicke's area recognizes the word, a curved band of white matter carries it to Broca's area, Broca's area plans the speech, and the face area of the primary motor cortex drives the muscles.",
+      "options": [
+        "Hearing starts in the primary auditory cortex of the temporal lobe.",
+        "Wernicke's area, beside it, recognizes the word and its meaning.",
+        "The arcuate fasciculus links the temporal and frontal language areas.",
+        "Broca's area assembles fluent speech.",
+        "The motor cortex's face area moves the lips, tongue and throat."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-20",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This sequence describes how a visual signal becomes recognition of a friend's face. Find the wrong step.",
+    "options": [
+      "Signals from the eyes relay through the thalamus",
+      "The primary visual cortex in the occipital lobe receives them first",
+      "The primary auditory cortex recognizes the face",
+      "Multimodal integration areas link the face with the friend's voice and name"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Faces are recognized by the visual association area around and below the primary visual cortex, not by the primary auditory cortex, which receives sound.",
+      "options": [
+        "Right. Visual signals relay in the thalamus on their way to the cortex.",
+        "Right. The primary visual cortex is the first cortical stop.",
+        "This is the error. The visual association area recognizes faces; the primary auditory cortex receives sound.",
+        "Right. Integration areas combine what you see with other senses and memory."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a car crash injures the front of both frontal lobes, Mr. Ruiz, 30, walks, talks and remembers normally, but he is impulsive, makes rude remarks, and cannot stick to a plan. Which area was damaged?",
+    "options": [
+      "Primary motor cortex",
+      "Prefrontal cortex",
+      "Primary somatosensory cortex",
+      "Hippocampus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Impulsiveness, poor judgment and trouble planning with normal movement, speech and memory are loss of executive function, run by the prefrontal cortex at the front of the frontal lobes, as in the case of Phineas Gage.",
+      "options": [
+        "Primary motor cortex damage causes weakness, and his movement is normal.",
+        "Correct. The prefrontal cortex runs executive function.",
+        "Primary somatosensory damage causes numbness, not changes in behavior.",
+        "Hippocampal damage stops new memories forming, and his memory is normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Current research puts the capacity of working memory at about how many chunks of information?",
+    "options": [
+      "About 1",
+      "About 20",
+      "About 4",
+      "Unlimited"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "When people are prevented from rehearsing or grouping, working memory holds about four chunks. Many exams still give the older figure of 7 plus or minus 2.",
+      "options": [
+        "People can hold more than one item; you can keep a short list in mind.",
+        "Twenty items is far beyond what people hold without rehearsal.",
+        "Correct. About four chunks.",
+        "Long-term memory has no known limit, but working memory is small."
+      ]
+    }
+  },
+  {
+    "id": "anp-higher-functions-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "After long-term potentiation, the same amount of glutamate released at a synapse produces a larger EPSP than before. What change in the postsynaptic cell best explains this?",
+    "options": [
+      "Its resting membrane potential has become more negative",
+      "Its axon has been freshly myelinated",
+      "It has stopped making receptor proteins for glutamate",
+      "It has more glutamate receptor proteins in its membrane"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Strong, repeated activity lets calcium into the postsynaptic cell, which triggers the insertion of more glutamate receptor proteins. The same glutamate now opens more channels, giving a larger EPSP.",
+      "options": [
+        "A more negative resting potential would make the cell harder to excite, not give a larger EPSP.",
+        "Myelin speeds conduction along an axon; it does not change the size of an EPSP at a synapse on the dendrites.",
+        "Fewer receptor proteins would shrink the EPSP.",
+        "Correct. More receptor proteins mean a bigger response to the same transmitter."
+      ]
+    }
+  }
+]

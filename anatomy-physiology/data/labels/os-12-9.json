@@ -1,0 +1,62 @@
+{
+  "figure": "os-12-9",
+  "labels": [
+    {
+      "id": "bipolar-neuron",
+      "name": "Bipolar neuron",
+      "accept": [
+        "bipolar neuron",
+        "bipolar",
+        "bipolar cell"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "neuron-classes",
+      "box": [
+        611,
+        158,
+        147,
+        25
+      ]
+    },
+    {
+      "id": "unipolar-neuron",
+      "name": "Unipolar neuron",
+      "accept": [
+        "unipolar neuron",
+        "unipolar",
+        "pseudounipolar neuron",
+        "pseudounipolar"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "neuron-classes",
+      "box": [
+        109,
+        247,
+        159,
+        25
+      ]
+    },
+    {
+      "id": "multipolar-neuron",
+      "name": "Multipolar neuron",
+      "accept": [
+        "multipolar neuron",
+        "multipolar"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "neuron-classes",
+      "box": [
+        366,
+        543,
+        172,
+        25
+      ]
+    }
+  ]
+}

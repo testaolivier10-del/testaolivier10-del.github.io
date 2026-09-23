@@ -1,0 +1,112 @@
+{
+  "figure": "os-12-2",
+  "labels": [
+    {
+      "id": "central-nervous-system",
+      "name": "Central nervous system",
+      "accept": [
+        "central nervous system",
+        "cns"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cns-pns",
+      "box": [
+        595,
+        13,
+        248,
+        25
+      ]
+    },
+    {
+      "id": "brain",
+      "name": "Brain",
+      "accept": [
+        "brain"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "major-organs",
+      "box": [
+        595,
+        55,
+        60,
+        21
+      ]
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [
+        "spinal cord",
+        "cord"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs",
+      "box": [
+        594,
+        140,
+        115,
+        25
+      ]
+    },
+    {
+      "id": "peripheral-nervous-system",
+      "name": "Peripheral nervous system",
+      "accept": [
+        "peripheral nervous system",
+        "pns"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cns-pns",
+      "box": [
+        0,
+        287,
+        278,
+        25
+      ]
+    },
+    {
+      "id": "ganglion",
+      "name": "Ganglion",
+      "accept": [
+        "ganglion",
+        "ganglia"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "ganglion-nucleus-tract",
+      "box": [
+        127,
+        329,
+        95,
+        25
+      ]
+    },
+    {
+      "id": "nerve",
+      "name": "Nerve",
+      "accept": [
+        "nerve",
+        "nerves"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "nerve",
+      "box": [
+        128,
+        416,
+        67,
+        21
+      ]
+    }
+  ]
+}

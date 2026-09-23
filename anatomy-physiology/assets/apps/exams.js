@@ -671,7 +671,7 @@
           (opts[i] ? '<span class="anp-opt-why">' + html(opts[i]) + '</span>' : '') + '</li>';
       }).join('') + '</ul>';
     }
-    var fig = q.fig ? '<div class="anp-q-fig anp-figimg"><img src="' + esc(BASE + q.fig.src) + '" alt="' + esc(q.fig.alt) + '" width="' + q.fig.w + '" height="' + q.fig.h + '" loading="lazy"></div>' : '';
+    var fig = q.fig ? '<div class="anp-q-fig anp-figimg"><img src="' + esc(BASE + q.fig.src) + '" alt="' + esc(q.fig.alt) + '" width="' + q.fig.w + '" height="' + q.fig.h + '" loading="lazy">' + (window.AnpQuestions && window.AnpQuestions.figMarks ? window.AnpQuestions.figMarks(q.fig) : '') + '</div>' : '';
     var t = TOPIC[q.topic];
     return '<li class="anp-q anp-ex-ritem ' + cls + '">' +
       '<p class="anp-ex-verdict"><span class="anp-ex-vtag">' + verdict + (r.score > 0 && !r.correct ? ' (' + Math.round(r.score * 100) + '%)' : '') + '</span>' +

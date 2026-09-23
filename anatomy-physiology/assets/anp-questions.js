@@ -19,6 +19,13 @@
   function shuffle(a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   // Author content may carry inline markup (<i>, <sub>); it is our own data.
   function html(s){ return String(s == null ? '' : s); }
+  /* Covered labels, and the pinned label an identification question asks
+     about (a highlighted box with an arrow). Shared with the exams page. */
+  function figMarks(fig){
+    var at = function(b){ return 'left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%'; };
+    return (fig.covers || []).map(function(b){ return '<span class="anp-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
+      (fig.pin ? '<span class="anp-pin" role="img" aria-label="The label in question" style="' + at(fig.pin) + '"><span aria-hidden="true">?</span></span>' : '');
+  }
   function report(q){ return window.LevlReport ? window.LevlReport.button('anp', q.id) : ''; }
   var DIR = [{ v: 'up', label: 'Increases' }, { v: 'down', label: 'Decreases' }, { v: 'none', label: 'No change' }];
 
@@ -31,7 +38,7 @@
     wrap.setAttribute('data-qid', q.id);
     var stem = '<p class="anp-q-stem">' + (opts.n ? '<span class="anp-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>';
     var fig = q.fig ? '<div class="anp-q-fig anp-figimg"><img src="' + esc((window.ANP_BASE || '') + q.fig.src) + '" alt="' + esc(q.fig.alt) + '" width="' + q.fig.w + '" height="' + q.fig.h + '" loading="lazy">' +
-      (q.fig.covers || []).map(function(b){ return '<span class="anp-cover" aria-hidden="true" style="left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%"></span>'; }).join('') + '</div>' : '';
+      figMarks(q.fig) + '</div>' : '';
     wrap.innerHTML = stem + fig + '<div class="anp-q-body"></div><div class="anp-q-feedback" aria-live="polite"></div><div class="anp-q-actions"></div>';
     var body = wrap.querySelector('.anp-q-body');
     var fb = wrap.querySelector('.anp-q-feedback');
@@ -187,5 +194,5 @@
     });
   }
 
-  window.AnpQuestions = { render: render, hydrate: hydrate, shuffle: shuffle };
+  window.AnpQuestions = { render: render, hydrate: hydrate, shuffle: shuffle, figMarks: figMarks };
 })();

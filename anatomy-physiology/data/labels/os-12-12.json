@@ -1,0 +1,87 @@
+{
+  "figure": "os-12-12",
+  "labels": [
+    {
+      "id": "ganglionic-neuron-cell-body",
+      "name": "Peripheral ganglionic neuron cell body (unipolar cell)",
+      "accept": [
+        "peripheral ganglionic neuron cell body",
+        "ganglionic neuron cell body",
+        "neuron cell body",
+        "cell body",
+        "unipolar neuron",
+        "unipolar cell",
+        "sensory neuron cell body"
+      ],
+      "lines": [
+        0,
+        1,
+        2
+      ],
+      "concept": "neuron-parts-basic",
+      "box": [
+        590,
+        57,
+        202,
+        71
+      ]
+    },
+    {
+      "id": "satellite-cells",
+      "name": "Satellite cells",
+      "accept": [
+        "satellite cells",
+        "satellite cell",
+        "satellite"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "pns-glia",
+      "box": [
+        0,
+        300,
+        130,
+        21
+      ]
+    },
+    {
+      "id": "schwann-cells",
+      "name": "Schwann cells",
+      "accept": [
+        "schwann cells",
+        "schwann cell",
+        "neurolemmocytes",
+        "neurolemmocyte"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "pns-glia",
+      "box": [
+        610,
+        318,
+        145,
+        22
+      ]
+    },
+    {
+      "id": "axon",
+      "name": "Axon",
+      "accept": [
+        "axon",
+        "axons"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "neuron-parts-basic",
+      "box": [
+        67,
+        432,
+        60,
+        21
+      ]
+    }
+  ]
+}

@@ -69,11 +69,11 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "Intrapleural pressure falls steadily during inspiration, from about −4 to about −6 mm Hg at 2 seconds, the end of breathing in.",
+      "correct": "Intrapleural pressure falls during inspiration, from about −4 to about −6 mm Hg by 2 seconds, the end of breathing in.",
       "options": [
         "0 is where alveolar pressure sits at the end of breathing in, not intrapleural pressure.",
         "−1 is the lowest alveolar pressure, reached at mid-inspiration.",
-        "Correct. Intrapleural pressure reaches its lowest value, about −6, at the end of inspiration.",
+        "Correct. At the end of inspiration intrapleural pressure is about −6 mm Hg.",
         "−4 is the intrapleural pressure at rest, at the start of breathing in and the end of breathing out."
       ]
     }
@@ -127,7 +127,7 @@
       "correct": "Air flows only down a pressure gradient. At 2 seconds, alveolar pressure is back to 0, equal to atmospheric pressure, so there is no gradient and flow stops.",
       "options": [
         "Transpulmonary pressure is at its largest at 2 seconds, about 6 mm Hg, holding the lungs at their larger size.",
-        "At 2 seconds intrapleural pressure is at its lowest, about −6; it returns to −4 only at the end of breathing out.",
+        "At 2 seconds intrapleural pressure is still about −6; it climbs back toward −4 only during breathing out.",
         "Correct. With alveolar and atmospheric pressures equal, nothing drives airflow.",
         "A quiet breath uses only a small part of the lungs' stretch; a deep breath can add liters more. Flow stops because the gradient is gone."
       ]
@@ -480,8 +480,8 @@
     "options": [
       "It stimulates the vagus nerve to widen the airways",
       "It dissolves mucus plugs in her bronchioles",
-      "It raises the surface tension in her alveoli",
-      "It activates beta-2 receptor proteins, relaxing airway smooth muscle"
+      "It raises the surface tension of the fluid lining her alveoli",
+      "It activates beta-2 receptor proteins on airway muscle"
     ],
     "correct": 3,
     "why": {
@@ -567,7 +567,7 @@
     ],
     "q": "Why is intrapleural pressure below atmospheric pressure even at rest, between breaths?",
     "options": [
-      "The pleural fluid is under tension between the inward-recoiling lungs and the outward-springing chest wall",
+      "Lungs recoil inward while the chest wall springs outward",
       "The pleural cavity contains a small pocket of low-pressure air",
       "The diaphragm is contracted between breaths, pulling on the pleura",
       "Alveolar pressure is below atmospheric at rest"
@@ -612,8 +612,8 @@
   {
     "id": "anp-ventilation-mechanics-22",
     "type": "single",
-    "level": "analyze",
-    "diff": 3,
+    "level": "recall",
+    "diff": 2,
     "core": [
       "gradients"
     ],
@@ -649,7 +649,7 @@
       "Her expiratory muscles are weaker than her diaphragm",
       "Surfactant is used up during each breath out",
       "Her vocal folds close during each breath out",
-      "Her airways narrow further as her lungs shrink and pressure around them rises"
+      "Her airways narrow further as her lungs shrink"
     ],
     "correct": 3,
     "why": {

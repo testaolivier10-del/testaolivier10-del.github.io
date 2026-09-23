@@ -28,7 +28,7 @@
     "say": "BRONG-kus; BRONG-kye; BRONG-kee-ohl"
   },
   "alveoli": {
-    "def": "The tiny air sacs, about 0.2 mm across and numbering hundreds of millions, where gases cross between air and blood. They cluster in alveolar sacs. Thin type I alveolar cells form the wall; cuboidal type II cells secrete a surface-tension-lowering film and replace type I cells; alveolar macrophages engulf particles; alveolar pores link neighbors.",
+    "def": "The tiny air sacs, about 0.2 mm across and numbering hundreds of millions, where gases cross between air and blood. They cluster in alveolar sacs. Thin type I alveolar cells form the wall; cuboidal type II cells secrete surfactant, a film that lowers surface tension, and replace type I cells; alveolar macrophages engulf particles; alveolar pores link neighbors.",
     "roots": [
       [
         "alveol-",
@@ -36,6 +36,16 @@
       ]
     ],
     "say": "al-VEE-oh-lye"
+  },
+  "surfactant": {
+    "def": "A film of about 90% lipids, mostly phospholipids, and 10% proteins that type II alveolar cells secrete onto the water lining the alveoli. It lowers surface tension, so the alveoli stay open and inflate more easily.",
+    "roots": [
+      [
+        "surf-act-ant",
+        "short for surface-active agent"
+      ]
+    ],
+    "say": "sur-FAK-tunt"
   },
   "respiratory-membrane": {
     "def": "The barrier between alveolar air and capillary blood: a type I alveolar cell, the fused basement membranes and a capillary endothelial cell, about 0.5 µm thick in all. Its thinness and huge area let oxygen and carbon dioxide diffuse across quickly.",

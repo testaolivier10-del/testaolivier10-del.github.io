@@ -74,7 +74,7 @@
     "ext": "svg",
     "w": 640,
     "h": 500,
-    "alt": "Two stacked graphs across one 4-second quiet breath. Top: lung volume rises from 0 to about 0.5 liters over the 2 seconds of breathing in and falls back to 0 over the 2 seconds of breathing out. Bottom: pressures in mm Hg relative to atmospheric pressure, shown as a flat line at 0. Alveolar pressure dips to about minus 1 at 1 second, is back to 0 at 2 seconds, rises to about plus 1 at 3 seconds and returns to 0 at 4 seconds. Intrapleural pressure falls from about minus 4 to about minus 6 at 2 seconds, then rises back to minus 4. A bracket at 2 seconds marks the transpulmonary pressure, 6 mm Hg.",
+    "alt": "Two stacked graphs across one 4-second quiet breath. Top: lung volume rises from 0 to about 0.5 liters over the 2 seconds of breathing in and falls back to 0 over the 2 seconds of breathing out. Bottom: pressures in mm Hg relative to atmospheric pressure, shown as a flat line at 0. Alveolar pressure dips to about minus 1 at 1 second, is back to 0 at 2 seconds, rises to about plus 1 at 3 seconds and returns to 0 at 4 seconds. Intrapleural pressure falls from about minus 4 to about minus 6 during breathing in and rises back to about minus 4 during breathing out. A bracket at 2 seconds marks the transpulmonary pressure, 6 mm Hg; the gap between the two curves rises and falls with lung volume.",
     "labels": []
   }
 }

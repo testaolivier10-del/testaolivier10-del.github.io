@@ -1,0 +1,28 @@
+{
+  "os-13-24": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "13.24",
+      "section": "13.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/52d03bc6b3572cb7b46923c2c136ffe4bc48d53d",
+      "page": "13-4-the-peripheral-nervous-system"
+    },
+    "alt": "An outline of the trunk and pelvis showing the spinal cord and the numbered spinal nerves on both sides, from C1 at the neck to S5 at the sacrum. Brackets group the nerves into four networks: C1 to C4 in the neck, C5 to T1 at the shoulder, L1 to L4 in the lower back and L5 to S5 in the pelvis. On one side, nerves leave the neck network toward the diaphragm, five nerves leave the shoulder network toward the arm, and nerves leave the lower networks for the front of the thigh and, as one thick nerve that splits in two, the back of the thigh.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.24",
+    "labels": [],
+    "w": 1516,
+    "h": 2518,
+    "ext": "jpg"
+  },
+  "dermatome-landmarks": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 520,
+    "h": 660,
+    "alt": "Front view of a body outline in anatomical position, palms facing forward, with ten numbered markers on dermatome landmarks. 1: the outer side of the right upper arm. 2: the tip of the right thumb. 3: the tip of the right middle finger. 4: the tip of the left little finger. 5: the chest at the level of the nipples. 6: the navel. 7: the right groin. 8: the inner side of the left leg just below the knee. 9: the top of the right foot near the big toe. 10: the outer edge of the left foot near the little toe.",
+    "labels": []
+  }
+}

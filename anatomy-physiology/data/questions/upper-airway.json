@@ -342,7 +342,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Fill the gap in swallowing: muscles pull the larynx up under the tongue → ____ → the vocal and vestibular folds close → food slides into the esophagus.",
+    "q": "Fill the gap in swallowing: muscles pull the larynx up under the tongue, and the vocal and vestibular folds close → ____ → food slides into the esophagus.",
     "options": [
       "The epiglottis tips back over the opening of the larynx",
       "The cricoid cartilage opens to let food through",
@@ -351,10 +351,10 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "As the larynx rises, the epiglottis tips down and back over its opening, then the folds inside seal it a second time.",
+      "correct": "As the larynx rises, with its folds already closed, the epiglottis tips down and back over its opening, a second cover.",
       "options": [
-        "Correct. The epiglottis covering the laryngeal opening is the first seal.",
-        "The cricoid cartilage is a rigid ring of the larynx, below the entrance to the esophagus; it does not open for food.",
+        "Correct. The epiglottis covering the laryngeal opening is the outer seal, added after the folds inside have closed.",
+        "The cricoid cartilage is a rigid ring of the larynx, in front of the start of the esophagus; it does not open for food.",
         "The conchae are fixed shelves of bone in the nasal cavity; they do not move or close anything.",
         "The vocal folds close during swallowing; they vibrate only when air is pushed through them to make sound."
       ]
@@ -372,7 +372,7 @@
     "options": [
       "His mucus has stopped trapping particles",
       "His goblet cells have been destroyed",
-      "His cilia beat weakly or have been lost, so little mucus is carried up",
+      "His cilia beat weakly or have been lost",
       "His cough reflex has become oversensitive"
     ],
     "correct": 2,
@@ -397,7 +397,7 @@
     "q": "How do the nasal conchae help clean the air you breathe in?",
     "options": [
       "They secrete antibodies directly into the air",
-      "They make the air swirl, so particles hit the mucus and stick",
+      "They swirl the air so particles strike the mucus",
       "They squeeze the air so it moves faster",
       "They carry cilia that sweep particles out through the nares"
     ],

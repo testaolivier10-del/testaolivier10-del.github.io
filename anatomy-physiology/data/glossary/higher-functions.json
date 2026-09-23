@@ -1,0 +1,32 @@
+{
+  "functional-areas": {
+    "def": "Areas of the cerebral cortex with particular jobs (localization of function), many known by Brodmann's area numbers. Primary areas send out movement (primary motor cortex, precentral gyrus) or first receive a sense (primary somatosensory cortex in the postcentral gyrus, primary visual and auditory cortex); association areas plan movement or interpret one sense; multimodal integration areas combine senses; the prefrontal cortex runs executive function.",
+    "roots": [["pre-", "before"], ["post-", "after"], ["soma", "body"], ["multi-", "many"]],
+    "say": "BROHD-mahnz"
+  },
+  "somatotopy": {
+    "def": "The point-to-point map of the body along the primary somatosensory and primary motor cortex, with the legs on the medial surface and the face lowest on the side. Parts with dense sensory receptors or fine control (hands, lips, tongue) get the most cortex, drawn as the homunculus.",
+    "roots": [["soma", "body"], ["topos", "place"], ["homunculus", "little man"]],
+    "say": "soh-muh-TOT-uh-pee; hoh-MUNK-yoo-lus"
+  },
+  "lateralization": {
+    "def": "Differences in function between the two cerebral hemispheres: language is handled mainly by the left hemisphere in most people, and spatial attention, face recognition and the emotional tone of speech mainly by the right. The corpus callosum shares information between them.",
+    "roots": [["later-", "side"]],
+    "say": ""
+  },
+  "language-areas": {
+    "def": "Broca's area in the lower left frontal lobe (producing fluent, grammatical speech) and Wernicke's area in the upper left temporal lobe (understanding language), joined by a band of white matter. Damage causes aphasia: expressive (Broca's), receptive (Wernicke's) or conduction aphasia.",
+    "roots": [["a-", "without"], ["phasis", "speech"]],
+    "say": "BROH-kuhz; VER-nih-kuhz; uh-FAY-zhuh"
+  },
+  "memory": {
+    "def": "The storing and recall of information. Short-term and working memory hold a few items briefly; long-term memory is declarative (episodic and factual) or procedural (skills). The hippocampus consolidates new declarative memories into the cortex by strengthening synapses. Anterograde amnesia is loss of new memory formation; retrograde amnesia is loss of memories from before an injury.",
+    "roots": [["antero-", "forward"], ["retro-", "backward"], ["a-", "without"], ["mnesis", "memory"], ["con-", "together"], ["solidus", "firm"]],
+    "say": "am-NEE-zhuh"
+  },
+  "sleep-consciousness": {
+    "def": "Consciousness needs the reticular activating system and the cerebral cortex. The EEG records the cortex's summed synaptic potentials: fast small waves when awake, slow large waves in deep sleep. Sleep cycles about every 90 minutes through non-REM stages N1, N2 and N3 and REM sleep, when the EEG looks awake, the eyes dart, dreams are vivid and most skeletal muscles are paralyzed.",
+    "roots": [["electro-", "electric"], ["encephal-", "brain"], ["-gram", "record"]],
+    "say": "ee-LEK-troh-en-SEF-uh-loh-gram"
+  }
+}

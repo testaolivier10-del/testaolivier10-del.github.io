@@ -509,15 +509,15 @@
     ],
     "q": "Order these values for a typical healthy young man, from smallest to largest.",
     "options": [
-      "Tidal volume (about 500 mL)",
-      "Residual volume (about 1,200 mL)",
-      "Functional residual capacity (about 2,400 mL)",
-      "Inspiratory capacity (about 3,500 mL)",
-      "Vital capacity (about 4,700 mL)",
-      "Total lung capacity (about 5,900 mL)"
+      "Tidal volume",
+      "Residual volume",
+      "Functional residual capacity",
+      "Inspiratory capacity",
+      "Vital capacity",
+      "Total lung capacity"
     ],
     "why": {
-      "correct": "Tidal volume is the smallest. Residual volume is about 1,200 mL. FRC adds the expiratory reserve volume to it. Inspiratory capacity is tidal volume plus the large inspiratory reserve. Vital capacity adds the expiratory reserve to that. Total lung capacity, all four volumes, is the largest."
+      "correct": "Tidal volume (about 500 mL) is the smallest. Residual volume is about 1,200 mL. Functional residual capacity adds the expiratory reserve volume to it (about 2,400 mL). Inspiratory capacity is tidal volume plus the large inspiratory reserve (about 3,500 mL). Vital capacity adds the expiratory reserve to that (about 4,700 mL). Total lung capacity, all four volumes, is the largest (about 5,900 mL)."
     }
   },
   {

@@ -263,7 +263,7 @@
     "options": [
       "Exercise lowers the PO2 of her alveolar air below that of her venous blood",
       "Her lungs make less surfactant during exercise",
-      "Exchange across the thick membrane is slow, and fast blood flow leaves too little time",
+      "Faster blood flow leaves too little time to cross the thick membrane",
       "Exercise shrinks her respiratory membrane's surface area"
     ],
     "correct": 2,
@@ -326,7 +326,7 @@
       "It falls, because there is less oxygen in the tissue",
       "It rises, because arterial blood carries more dissolved oxygen",
       "It stays the same, because arterial PO2 has not changed",
-      "It rises, because the gradient from blood to tissue is steeper"
+      "It rises, because the blood-to-tissue gradient is steeper"
     ],
     "correct": 3,
     "why": {
@@ -349,7 +349,7 @@
     ],
     "figure": "os-22-23",
     "pin": "interstitial-fluid",
-    "q": "Name the pinned compartment that every gas molecule crosses between the capillary and the tissue cells.",
+    "q": "Name the pinned compartment.",
     "options": [
       "Blood plasma",
       "Interstitial fluid",
@@ -456,15 +456,15 @@
     ],
     "q": "Order these places from highest to lowest PO2, for a person at rest at sea level.",
     "options": [
-      "Dry air outside the body (about 159 mm Hg)",
-      "Breathed-in air, warmed and moistened, in the trachea (about 150 mm Hg)",
-      "Alveolar air (about 100 mm Hg)",
-      "Arterial blood (about 95 mm Hg)",
-      "Tissue fluid around resting cells (about 40 mm Hg)",
-      "The inside of a working muscle cell (lower still)"
+      "Dry air outside the body",
+      "Breathed-in air, warmed and moistened, in the trachea",
+      "Alveolar air",
+      "Arterial blood",
+      "Tissue fluid around resting cells",
+      "The inside of a working muscle cell"
     ],
     "why": {
-      "correct": "Oxygen falls step by step: water vapor dilutes it in the airways, mixing and constant removal lower it in the alveoli, a little venous blood lowers arterial blood slightly, and cells using oxygen keep the tissue fluid and cell interior lowest. Oxygen diffuses downhill at every step."
+      "correct": "Oxygen falls step by step: dry air about 159 mm Hg; water vapor dilutes it in the airways to about 150; mixing and constant removal lower it in the alveoli to about 100; a little venous blood lowers arterial blood slightly, to about 95; cells using oxygen keep the tissue fluid at about 40 and the inside of a working cell lower still. Oxygen diffuses downhill at every step."
     }
   },
   {
@@ -558,7 +558,7 @@
     "q": "In a person standing upright, which part of the lungs has the highest ventilation–perfusion ratio, and why?",
     "options": [
       "The bases, because they get the most ventilation",
-      "The tops, because blood flow falls off toward the top more than ventilation does",
+      "The tops, where blood flow falls off more than ventilation",
       "The bases, because gravity pulls air downward",
       "Neither: in healthy lungs V/Q is exactly the same everywhere"
     ],
