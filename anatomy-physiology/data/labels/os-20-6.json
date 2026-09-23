@@ -109,12 +109,12 @@
     },
     {
       "id": "metarteriole",
-      "name": "Metarteriole (serves as vascular shunt when precapillary sphincters are closed)",
+      "name": "Metarteriole",
       "accept": [
-        "metarteriole (serves as vascular shunt when precapillary sphincters are closed)",
         "metarteriole",
-        "vascular shunt",
-        "metarterioles"
+        "metarteriole (serves as vascular shunt when precapillary sphincters are closed)",
+        "metarterioles",
+        "vascular shunt"
       ],
       "lines": [
         8,
