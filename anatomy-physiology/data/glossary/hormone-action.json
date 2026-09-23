@@ -1,0 +1,82 @@
+{
+  "endocrine-system": {
+    "def": "All the hormone-secreting glands and cells of the body taken together: dedicated glands such as the pituitary, thyroid and adrenal glands, organs with a hormone-making part such as the pancreas, and scattered hormone-secreting cells in organs such as the stomach, heart and kidneys. Its parts are linked only by the blood.",
+    "roots": [
+      [
+        "endo-",
+        "within"
+      ],
+      [
+        "-crine",
+        "to secrete, release"
+      ]
+    ],
+    "say": "EN-doh-krin"
+  },
+  "hormone-classes": {
+    "def": "The four chemical classes of hormones: amine hormones (single changed amino acids), peptide hormones (short amino acid chains), protein hormones (long folded chains) and steroid hormones (built from cholesterol). Androgens are steroid hormones that drive male characteristics.",
+    "roots": [
+      [
+        "andr-",
+        "male"
+      ],
+      [
+        "-gen",
+        "producing"
+      ]
+    ],
+    "say": "AN-droh-jen"
+  },
+  "hormone-transport": {
+    "def": "Water-soluble hormones travel dissolved in the plasma; lipid-soluble hormones travel mostly bound to carrier proteins. Only free (unbound) hormone reaches target cells. A hormone's half-life is the time for half of it to be cleared from the blood.",
+    "roots": [],
+    "say": ""
+  },
+  "water-soluble-mechanism": {
+    "def": "A water-soluble hormone binds a receptor protein in the plasma membrane. A G protein switches on adenylyl cyclase, which makes cAMP; cAMP switches on protein kinase A, which phosphorylates target proteins in a phosphorylation cascade. Phosphodiesterase ends the signal by breaking cAMP down. Other pathways use IP3, DAG and calcium.",
+    "roots": [
+      [
+        "kin-",
+        "to move"
+      ],
+      [
+        "-ase",
+        "enzyme"
+      ]
+    ],
+    "say": "AD-en-il-il SY-klays"
+  },
+  "lipid-soluble-mechanism": {
+    "def": "A lipid-soluble hormone diffuses through the plasma membrane and binds an intracellular receptor protein. The hormone–receptor complex binds a hormone response element on DNA and changes transcription, so the cell makes new proteins over hours.",
+    "roots": [],
+    "say": ""
+  },
+  "hormone-stimuli": {
+    "def": "The three triggers for hormone release: a humoral stimulus (a change in an ion or nutrient in the blood), a hormonal stimulus (another hormone) and a neural stimulus (a nerve signal).",
+    "roots": [
+      [
+        "humor",
+        "body fluid"
+      ]
+    ],
+    "say": "HYOO-mer-ul"
+  },
+  "hormone-interactions": {
+    "def": "The ways hormones combine at a target: permissive (one hormone is needed for another's full effect), synergistic (together they give more than the sum of each alone) and antagonistic (they push the same variable in opposite directions).",
+    "roots": [
+      [
+        "syn-",
+        "together"
+      ],
+      [
+        "erg-",
+        "work"
+      ],
+      [
+        "anti-",
+        "against"
+      ]
+    ],
+    "say": ""
+  }
+}

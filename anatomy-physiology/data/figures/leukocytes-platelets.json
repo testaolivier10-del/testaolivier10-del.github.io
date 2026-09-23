@@ -1,0 +1,38 @@
+{
+  "os-18-11": {
+    "file": "figures/openstax/os-18-11.jpg",
+    "w": 1100,
+    "h": 359,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.11",
+      "section": "18.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0b2a8ffb53060940faf88f67d502d5e2a0454c06",
+      "page": "18-4-leukocytes-and-platelets"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/0b2a8ffb53060940faf88f67d502d5e2a0454c06",
+    "alt": "Drawings of three white blood cells with granules, side by side. The left cell has a nucleus of several dark lobes joined by thin strands and faint, tiny pink-lilac granules. The middle cell has a two-lobed nucleus and many larger red-orange granules. The right cell is packed with large dark purple granules that nearly hide its nucleus.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.11",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-18-12": {
+    "file": "figures/openstax/os-18-12.jpg",
+    "w": 846,
+    "h": 1225,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.12",
+      "section": "18.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/cad32a7b189610ad1a620ff051bb8feb328b4ed2",
+      "page": "18-4-leukocytes-and-platelets"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/cad32a7b189610ad1a620ff051bb8feb328b4ed2",
+    "alt": "A three-step flowchart of platelet production. A hormone from the kidneys and liver acts on a stem cell, which becomes a large precursor cell, then an even larger cell with a many-lobed nucleus and long arms of cytoplasm. Small fragments break off the ends of the arms as platelets.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.12",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

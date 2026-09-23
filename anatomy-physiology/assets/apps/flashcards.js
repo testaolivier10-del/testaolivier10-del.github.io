@@ -471,7 +471,7 @@
   /* ---- boot ---- */
   app.innerHTML = '<div class="anp-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
-  Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'data/tools/flashcards.json')]).then(function(res){
+  Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/tool-data/flashcards.json')]).then(function(res){
     buildCards(res[0], res[1]);
     var valid = prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length || /^core:/.test(prefs.deck);
     if(!valid) prefs.deck = 'all';

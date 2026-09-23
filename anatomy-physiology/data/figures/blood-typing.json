@@ -1,0 +1,38 @@
+{
+  "os-18-15": {
+    "file": "figures/openstax/os-18-15.jpg",
+    "w": 1100,
+    "h": 1006,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.15",
+      "section": "18.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ce2a5857e2670efef399e9e2d04a4e2a0ce07ec3",
+      "page": "18-6-blood-typing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ce2a5857e2670efef399e9e2d04a4e2a0ce07ec3",
+    "alt": "A drawing of the organ that joins mother and fetus, with a fetal blood vessel branching inside a pool of maternal blood, and two enlarged panels. The first panel shows the first birth: red cells from the baby leak across a break into the mother's blood, and her immune cells begin making Y-shaped antibodies against them. The second panel shows a later pregnancy: many antibodies are already present in the mother's blood, and they cross into the fetal vessel and attach to the fetus's red cells.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.15",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-18-17": {
+    "file": "figures/openstax/os-18-17.jpg",
+    "w": 1100,
+    "h": 845,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.17",
+      "section": "18.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/10506feb0f2ee02f5a0821d51cf014c8316939ba",
+      "page": "18-6-blood-typing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/10506feb0f2ee02f5a0821d51cf014c8316939ba",
+    "alt": "A table of the four ABO blood types. For each type, a red blood cell is drawn with the surface markers it carries: round-tipped markers for type A, diamond-tipped markers for type B, both for type AB and none for type O. Rows below show the Y-shaped antibodies in each type's plasma, the markers on its red cells, and the donor types it can receive in an emergency.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.17",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

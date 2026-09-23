@@ -1849,6 +1849,1298 @@
         "why": "During slow-wave sleep the hippocampus replays the day’s patterns to the cortex, strengthening them. People who sleep after learning remember more."
       },
       "summary": "Cortical areas fire for each part of an experience; the hippocampus links them; synapses strengthen; replay in slow-wave sleep builds direct cortical links; finally the cortex holds the memory on its own."
+    },
+    {
+      "id": "dorsal-column-route",
+      "title": "An ascending sensory pathway: vibration from the big toe",
+      "topic": "sensory-pathways",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A clinician holds a buzzing tuning fork on your right big toe, and a moment later you feel the buzz. Trace the signal from the toe to the cortex through the dorsal column–medial lemniscus pathway.",
+      "steps": [
+        {
+          "id": "fire",
+          "label": "Lamellated corpuscles fire",
+          "text": "The vibration deforms lamellated corpuscles in the skin of the toe, and their sensory neurons fire.",
+          "why": "Every pathway starts at a sensory receptor. Lamellated corpuscles are phasic, so a vibration, which keeps changing, fires them over and over."
+        },
+        {
+          "id": "enter",
+          "label": "Dorsal root",
+          "text": "The first-order axon passes its cell body in a dorsal root ganglion and enters the cord through a dorsal root.",
+          "why": "The first-order neuron is the sensory neuron itself, and all somatic sensory axons enter the cord through the dorsal roots."
+        },
+        {
+          "id": "climb",
+          "label": "Right dorsal column",
+          "text": "Without synapsing, it turns upward in the right dorsal column, in the fasciculus gracilis.",
+          "why": "The dorsal column axon climbs on the side it entered. Axons from below about T6 run in the fasciculus gracilis, near the midline."
+        },
+        {
+          "id": "medulla",
+          "label": "Nucleus gracilis",
+          "text": "It synapses on a second-order neuron in the nucleus gracilis of the lower medulla oblongata.",
+          "why": "The first synapse of this pathway comes only in the medulla, a meter or more from the toe."
+        },
+        {
+          "id": "cross",
+          "label": "Crosses in the medulla",
+          "text": "The second-order axon crosses the midline in the medulla.",
+          "why": "Crossing (decussation) always happens on the second-order axon, so the left side of the brain feels the right side of the body."
+        },
+        {
+          "id": "lemniscus",
+          "label": "Left medial lemniscus",
+          "text": "It climbs through the brainstem in the left medial lemniscus to the thalamus.",
+          "why": "After crossing, the axons gather into the flat ribbon of the medial lemniscus on the opposite side."
+        },
+        {
+          "id": "thalamus",
+          "label": "Relay in the thalamus",
+          "text": "In the thalamus it synapses on a third-order neuron.",
+          "why": "Every pathway to conscious touch relays in the thalamus before the cortex."
+        },
+        {
+          "id": "cortex",
+          "label": "Left somatosensory cortex",
+          "text": "The third-order axon runs through the internal capsule to the foot area of the left primary somatosensory cortex, and you feel the buzz.",
+          "why": "The foot is mapped near the top of the postcentral gyrus, in the longitudinal fissure. Arrival there produces the perception."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The second-order axon crosses the midline in the spinal cord, within a segment or two of entry.",
+            "why": "That is the plan of the spinothalamic tract. The dorsal column pathway crosses only in the medulla."
+          },
+          {
+            "text": "The second-order axon stays on the right and climbs to the right thalamus.",
+            "why": "The second-order axon always crosses; if it did not, the right hemisphere would feel the right foot."
+          },
+          {
+            "text": "The axon joins a spinocerebellar tract and ends in the cerebellum.",
+            "why": "The spinocerebellar tracts carry unconscious position signals to the cerebellum and never reach awareness. Conscious vibration goes to the cortex."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Without synapsing, it crosses and climbs in the left dorsal column.",
+        "why": "The first-order axon climbs the dorsal column on the side it entered, the right. Crossing waits until after the synapse in the medulla."
+      },
+      "summary": "Three neurons in a row: the first climbs uncrossed to the medulla, the second crosses there and rises in the medial lemniscus to the thalamus, and the third reaches the somatosensory cortex. Because it crosses so high, damage to one side of the cord removes vibration and position on the same side."
+    },
+    {
+      "id": "spinothalamic-route",
+      "title": "Pain from a pinprick on the right hand",
+      "topic": "sensory-pathways",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You prick your right index finger on a thorn. Trace the signal through the spinothalamic tract until you feel it.",
+      "steps": [
+        {
+          "id": "noci",
+          "label": "Nociceptors fire",
+          "text": "The thorn damages the skin, and free nerve endings that act as nociceptors fire.",
+          "why": "Nociceptors detect harm to tissue, not pain itself; pain is what the brain later makes of their signal."
+        },
+        {
+          "id": "root",
+          "label": "Dorsal root",
+          "text": "The first-order axon passes its cell body in a dorsal root ganglion and enters the cervical cord through a dorsal root.",
+          "why": "Sensory axons from the index finger enter at about C6–C7, the segments whose dermatomes cover it."
+        },
+        {
+          "id": "horn",
+          "label": "Synapse in the dorsal horn",
+          "text": "It synapses almost at once on a second-order neuron in the dorsal horn.",
+          "why": "Unlike the dorsal column axon, the pain axon ends within a segment or two of where it entered."
+        },
+        {
+          "id": "cross",
+          "label": "Crosses in the cord",
+          "text": "The second-order axon crosses the midline in front of the central canal.",
+          "why": "The crossing happens in the cord, close to the level of entry, which is why a cord lesion removes pain from the opposite side."
+        },
+        {
+          "id": "tract",
+          "label": "Left spinothalamic tract",
+          "text": "It climbs in the left spinothalamic tract, through the brainstem, sending branches to the reticular formation.",
+          "why": "The crossed axons run in the lateral and anterior columns. Branches to the reticular formation help make pain arousing."
+        },
+        {
+          "id": "thalamus",
+          "label": "Relay in the thalamus",
+          "text": "It synapses on a third-order neuron in the thalamus.",
+          "why": "Like other conscious senses of the body, pain relays in the thalamus."
+        },
+        {
+          "id": "cortex",
+          "label": "Cortex, insula, limbic areas",
+          "text": "Third-order neurons carry it to the hand area of the left primary somatosensory cortex and to the insula and limbic areas, and you feel a sharp, unpleasant prick.",
+          "why": "The somatosensory cortex tells you where it hurts; the insula and limbic areas add how unpleasant it is."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "It climbs without synapsing in the right dorsal column to the medulla.",
+            "why": "That is the dorsal column route for fine touch and vibration. Pain axons synapse in the dorsal horn."
+          },
+          {
+            "text": "It synapses directly on motor neurons in the ventral horn.",
+            "why": "Nociceptor signals reach motor neurons only through interneurons, and that is not the route to awareness. The pain pathway runs through the dorsal horn."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "It climbs in the right spinothalamic tract, on the same side as the finger.",
+        "why": "The second-order axon has already crossed in the cord, so it climbs in the left spinothalamic tract, opposite the finger."
+      },
+      "summary": "Pain and temperature use three neurons: the first ends in the dorsal horn, the second crosses at once and climbs the opposite spinothalamic tract to the thalamus, and the third reaches the cortex, insula and limbic areas."
+    },
+    {
+      "id": "corticospinal-route",
+      "title": "The corticospinal pathway: point your right index finger",
+      "topic": "motor-pathways",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You decide to point your right index finger. Trace the command from the cortex to the finger muscles.",
+      "steps": [
+        {
+          "id": "umn",
+          "label": "Upper motor neurons fire",
+          "text": "Upper motor neurons in the finger area of the left precentral gyrus fire.",
+          "why": "Voluntary commands start in the motor cortex, laid out as a map: the hand area sits partway down the precentral gyrus."
+        },
+        {
+          "id": "capsule",
+          "label": "Internal capsule",
+          "text": "Their axons funnel down through the internal capsule.",
+          "why": "Leaving the cortex, the axons pack tightly into the internal capsule beside sensory axons, which is why a small injury here weakens a whole side."
+        },
+        {
+          "id": "peduncle",
+          "label": "Cerebral peduncle",
+          "text": "They run in the cerebral peduncle on the front of the midbrain.",
+          "why": "The midbrain is the first level of the brainstem they pass."
+        },
+        {
+          "id": "pons",
+          "label": "Through the pons",
+          "text": "They pass in small bundles among the nuclei of the pons.",
+          "why": "Below the midbrain comes the pons, where the tract splits into bundles."
+        },
+        {
+          "id": "pyramid",
+          "label": "Pyramid of the medulla",
+          "text": "They regroup as the pyramid on the front of the medulla oblongata.",
+          "why": "The bundles gather again on the front of the medulla, forming the ridge that gives the pyramidal tract its name."
+        },
+        {
+          "id": "cross",
+          "label": "Pyramidal decussation",
+          "text": "At the junction of the medulla and the spinal cord, most of them cross the midline at the pyramidal decussation.",
+          "why": "About 85 to 90% of the axons cross here, so the left cortex commands the right side of the body."
+        },
+        {
+          "id": "lateral",
+          "label": "Right lateral tract",
+          "text": "They descend in the right lateral corticospinal tract to the cervical enlargement.",
+          "why": "The crossed axons run in the lateral white column and end where the limb’s motor neurons are, in the enlargement."
+        },
+        {
+          "id": "lmn",
+          "label": "Synapse in the ventral horn",
+          "text": "They synapse on lower motor neurons in the right ventral horn, some of them directly.",
+          "why": "Direct synapses onto the finger motor neurons give the fine, individual finger control this tract is known for."
+        },
+        {
+          "id": "out",
+          "label": "Out to the forearm",
+          "text": "The lower motor neurons’ axons leave through the ventral roots and travel through the brachial plexus to the forearm.",
+          "why": "The lower motor neuron is the final common path: only its axon leaves the CNS for skeletal muscle."
+        },
+        {
+          "id": "point",
+          "label": "The finger points",
+          "text": "Acetylcholine at the neuromuscular junctions makes the finger’s extensor muscles contract, and the finger points.",
+          "why": "The last step is the muscle itself contracting."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "They cross the midline in the internal capsule.",
+            "why": "The internal capsule lies within one hemisphere. The corticospinal tract crosses at the bottom of the medulla."
+          },
+          {
+            "text": "They stay uncrossed and descend in the left lateral corticospinal tract.",
+            "why": "Then the left cortex would move the left hand. Most axons cross at the pyramidal decussation before descending."
+          },
+          {
+            "text": "They synapse in the thalamus, which relays them to the spinal cord.",
+            "why": "The thalamus relays signals up to the cortex. Corticospinal axons run all the way from the cortex to the cord without a relay."
+          }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "They synapse on lower motor neurons in the right dorsal horn.",
+        "why": "Lower motor neurons sit in the ventral horn. The dorsal horn receives sensory input."
+      },
+      "summary": "Two neurons carry every voluntary command: an upper motor neuron from the cortex, crossing at the pyramidal decussation, and a lower motor neuron from the ventral horn to the muscle. Damage above the crossing weakens the opposite side; damage in the cord weakens the same side."
+    },
+    {
+      "id": "reflex-arc-knee",
+      "title": "The reflex arc: the knee jerk",
+      "topic": "reflexes",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A clinician taps just below your kneecap, and your lower leg kicks about 20 milliseconds later. Trace the signal through the five parts of the reflex arc.",
+      "steps": [
+        {
+          "id": "tap",
+          "label": "Tap stretches quadriceps",
+          "text": "The tap pushes in the patellar ligament, which pulls on the quadriceps femoris and stretches it for a split second.",
+          "why": "Every reflex starts with a stimulus. Here it is a brief stretch of the muscle."
+        },
+        {
+          "id": "spindle",
+          "label": "Muscle spindles fire",
+          "text": "Stretch opens mechanically gated channels in the endings wrapped around the muscle spindles, and their sensory neurons fire.",
+          "why": "The muscle spindle is the sensory receptor, the first part of the arc. It lies parallel to the muscle fibers, so it stretches with them."
+        },
+        {
+          "id": "in",
+          "label": "In through the dorsal root",
+          "text": "The action potentials travel past the cell body in a dorsal root ganglion and into the cord through the dorsal roots of about L2 to L4.",
+          "why": "The sensory neuron, the second part of the arc, carries the signal into the CNS."
+        },
+        {
+          "id": "synapse",
+          "label": "One synapse, ventral horn",
+          "text": "In the ventral horn, the sensory axons release glutamate directly onto the lower motor neurons of the quadriceps.",
+          "why": "The integration center, the third part, is a single synapse: the stretch reflex is monosynaptic."
+        },
+        {
+          "id": "out",
+          "label": "Out through the ventral root",
+          "text": "The lower motor neurons fire, and their action potentials leave through the ventral roots and the femoral nerve.",
+          "why": "The motor neuron, the fourth part, carries the command out to the muscle."
+        },
+        {
+          "id": "nmj",
+          "label": "Acetylcholine at the junction",
+          "text": "At the neuromuscular junctions, acetylcholine triggers action potentials in the quadriceps muscle fibers.",
+          "why": "The signal must cross from nerve to muscle before the effector can respond."
+        },
+        {
+          "id": "kick",
+          "label": "Quadriceps contracts: kick",
+          "text": "The quadriceps femoris, the effector, contracts, and the knee straightens.",
+          "why": "The effector’s response completes the arc. Most of the 20 ms delay was spent in the axons."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The signal climbs to the primary motor cortex, which decides to straighten the knee.",
+            "why": "The knee jerk needs no brain: its circuit lies in the spinal cord, which is why the kick comes before you notice the tap."
+          },
+          {
+            "text": "The sensory axons excite inhibitory interneurons that silence the quadriceps motor neurons.",
+            "why": "Inhibitory interneurons in this reflex act on the antagonist, the hamstrings (reciprocal inhibition), not on the stretched muscle."
+          },
+          {
+            "text": "Golgi tendon organs in the patellar ligament report the tap to the dorsal horn.",
+            "why": "The sensor of every deep tendon reflex is the muscle spindle. Tendon organs report tension and inhibit the same muscle."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The lower motor neurons fire, and their action potentials leave through the dorsal roots.",
+        "why": "Motor axons leave through the ventral roots. The dorsal roots carry only sensory axons into the cord."
+      },
+      "summary": "Sensory receptor, sensory neuron, integration center, motor neuron, effector: every reflex runs on these five parts. In the knee jerk the integration center is one synapse, so a missing knee jerk can mean a break anywhere along a short, testable arc."
+    },
+    {
+      "id": "corneal-blink",
+      "title": "The corneal reflex: a touch on the eye makes both eyes blink",
+      "topic": "neuro-exam",
+      "core": [
+        "communication",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A clinician touches a wisp of cotton to the clear front surface of a patient’s right eye, and both eyes blink. Trace the arc through the brainstem.",
+      "steps": [
+        {
+          "id": "touch",
+          "label": "Cotton touches the eye",
+          "text": "The cotton touches the clear front surface of the right eye.",
+          "why": "The stimulus is a light touch on a surface packed with sensitive nerve endings."
+        },
+        {
+          "id": "v1",
+          "label": "Ophthalmic branch of V fires",
+          "text": "Nerve endings of the ophthalmic division of the right trigeminal nerve fire.",
+          "why": "Touch from the surface of the eye is carried by V1, the sensory division for the forehead and eye."
+        },
+        {
+          "id": "pons",
+          "label": "Into the pons",
+          "text": "The signal travels to the trigeminal nuclei in the brainstem at the level of the pons.",
+          "why": "The trigeminal nerve joins the brainstem at the pons, where its sensory axons end."
+        },
+        {
+          "id": "both",
+          "label": "Signal sent to both sides",
+          "text": "Interneurons carry the signal to the facial nuclei on both sides of the brainstem.",
+          "why": "Because the signal is shared with both sides, touching one eye makes both blink."
+        },
+        {
+          "id": "vii",
+          "label": "Both facial nerves fire",
+          "text": "Motor neurons of both facial nuclei fire, and their axons run out in the facial nerves.",
+          "why": "The facial nerve (VII) supplies the muscles of facial expression, including the ones that close the eyes."
+        },
+        {
+          "id": "blink",
+          "label": "Both eyes blink",
+          "text": "The orbicularis oculi on each side contracts, and both eyes blink.",
+          "why": "The ring of muscle around each eye closes the lids."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The optic nerve carries the touch signal to the brainstem.",
+            "why": "The optic nerve carries vision only. Touch on the eye travels in the trigeminal nerve."
+          },
+          {
+            "text": "The facial nerve carries the touch signal into the pons.",
+            "why": "The facial nerve carries the blink out, not the touch in. V feels, VII moves."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Motor neurons of the oculomotor nuclei fire, and their axons run out in the oculomotor nerves.",
+        "why": "The oculomotor nerve raises the upper lid. Closing the eyes is done by the orbicularis oculi, supplied by the facial nerve."
+      },
+      "summary": "The corneal reflex tests two cranial nerves and a stretch of brainstem at once: V1 carries the touch in, the pons shares it with both sides, and both facial nerves carry the blink out. In a deeply unresponsive patient, an absent corneal reflex points to failure of the brainstem around the pons."
+    },
+    {
+      "id": "odorant-to-signal",
+      "title": "From an odorant to a smell",
+      "topic": "chemical-senses",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Coffee is brewing in the next room. Trace one odorant molecule from the air in your nose to a signal in your olfactory cortex.",
+      "steps": [
+        {
+          "id": "dissolve",
+          "label": "Odorant dissolves in mucus",
+          "text": "The odorant reaches the olfactory epithelium at the top of the nose and dissolves in its mucus.",
+          "why": "An odorant must dissolve in the watery film before it can reach the cilia of the sensory neurons."
+        },
+        {
+          "id": "bind",
+          "label": "Binds a receptor protein",
+          "text": "It binds an odorant receptor protein on a cilium of an olfactory sensory neuron.",
+          "why": "Each neuron makes one of about 400 kinds of odorant receptor protein, and each odorant binds several kinds."
+        },
+        {
+          "id": "gprot",
+          "label": "G protein activated",
+          "text": "The receptor protein activates a G protein, which switches on an enzyme that makes cAMP.",
+          "why": "Odorant receptor proteins are G protein–coupled, so a second messenger carries the signal inside."
+        },
+        {
+          "id": "cation",
+          "label": "Cation channels open",
+          "text": "cAMP opens ligand-gated cation channels in the cilium, and Na+ and Ca2+ flow in.",
+          "why": "The second messenger is the ligand that opens these channels."
+        },
+        {
+          "id": "chloride",
+          "label": "Chloride flows out",
+          "text": "The Ca2+ opens chloride channels, and Cl− flows out, depolarizing the cell further.",
+          "why": "These neurons keep unusually high chloride inside, so opening chloride channels adds a second, larger depolarizing current."
+        },
+        {
+          "id": "fire",
+          "label": "Action potentials fire",
+          "text": "The depolarization spreads to the axon, and if it reaches threshold, action potentials fire.",
+          "why": "The receptor potential is graded; firing begins only at threshold."
+        },
+        {
+          "id": "plate",
+          "label": "Through the cribriform plate",
+          "text": "The unmyelinated axon carries them up through a hole in the cribriform plate, in the olfactory nerve.",
+          "why": "The axons of all the olfactory sensory neurons together form the olfactory nerve (I)."
+        },
+        {
+          "id": "bulb",
+          "label": "Olfactory bulb",
+          "text": "In the olfactory bulb, all axons from neurons with the same receptor protein converge on the same few clusters of synapses.",
+          "why": "The bulb sorts the signals by receptor type and pools weak signals before passing them on."
+        },
+        {
+          "id": "cortex",
+          "label": "Olfactory cortex, no thalamus",
+          "text": "The olfactory tract carries the signal straight to the olfactory cortex of the temporal lobe and to limbic areas.",
+          "why": "Smell is the one sense that reaches the cortex without first relaying in the thalamus."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The Ca2+ opens potassium channels, and K+ flows out, hyperpolarizing the cell.",
+            "why": "Hyperpolarization would silence the neuron. In olfactory neurons the Ca2+ opens chloride channels, and chloride leaving depolarizes them."
+          },
+          {
+            "text": "The cell releases neurotransmitter onto a separate sensory neuron in the epithelium.",
+            "why": "That is how taste cells work. Olfactory sensory neurons are neurons themselves and fire their own action potentials."
+          }
+        ]
+      },
+      "error": {
+        "at": 8,
+        "text": "The olfactory tract carries the signal to the thalamus, which relays it to the olfactory cortex.",
+        "why": "Smell reaches the olfactory cortex directly. Only later do some signals pass through the thalamus to the frontal lobe."
+      },
+      "summary": "An odorant binds a G protein–coupled receptor protein, cAMP opens cation channels, and chloride leaving boosts the depolarization. Axons pass through the cribriform plate to the olfactory bulb, and the olfactory tract reaches the cortex and limbic system without a stop in the thalamus."
+    },
+    {
+      "id": "light-to-cortex",
+      "title": "Light through the eye to the cortex",
+      "topic": "vision",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "Light from a friend waving on your right enters your eye. Follow it through the eye, and then follow the signal it starts to your visual cortex.",
+      "steps": [
+        {
+          "id": "cornea",
+          "label": "Cornea",
+          "text": "Light passes through the cornea, which does about two thirds of the bending.",
+          "why": "The cornea is the first clear surface, and the jump from air into it bends light the most."
+        },
+        {
+          "id": "aqueous",
+          "label": "Aqueous humor",
+          "text": "It crosses the aqueous humor in the anterior chamber.",
+          "why": "Behind the cornea lies the watery fluid that fills the front of the eye."
+        },
+        {
+          "id": "pupil",
+          "label": "Pupil",
+          "text": "It passes through the pupil, the opening in the iris.",
+          "why": "The iris sits in front of the lens, and its opening sets how much light goes on."
+        },
+        {
+          "id": "lens",
+          "label": "Lens",
+          "text": "The lens adds the remaining bending, adjusted for distance.",
+          "why": "The lens lies just behind the iris and is the only part whose bending can change."
+        },
+        {
+          "id": "vitreous",
+          "label": "Vitreous humor",
+          "text": "Light crosses the clear gel of the vitreous humor.",
+          "why": "The gel fills the large cavity behind the lens."
+        },
+        {
+          "id": "layers",
+          "label": "Through the retina’s layers",
+          "text": "It passes through the nearly transparent ganglion cell and bipolar cell layers of the retina.",
+          "why": "The light-sensitive cells lie at the back of the retina, so light crosses the other layers first."
+        },
+        {
+          "id": "photo",
+          "label": "Rods and cones respond",
+          "text": "Rods and cones absorb it, hyperpolarize and change their glutamate release.",
+          "why": "Photoreceptors turn light into an electrical change and pass it on at a synapse."
+        },
+        {
+          "id": "bipolar",
+          "label": "Bipolar cells",
+          "text": "Bipolar cells respond with graded potentials.",
+          "why": "Bipolar cells carry the signal toward the front of the retina."
+        },
+        {
+          "id": "ganglion",
+          "label": "Ganglion cells fire",
+          "text": "Retinal ganglion cells fire action potentials.",
+          "why": "Ganglion cells are the first cells in the pathway to fire action potentials."
+        },
+        {
+          "id": "nerve",
+          "label": "Optic nerve",
+          "text": "Their axons leave at the optic disc in the optic nerve.",
+          "why": "All ganglion cell axons exit together at the optic disc, the blind spot."
+        },
+        {
+          "id": "chiasm",
+          "label": "Optic chiasm",
+          "text": "At the optic chiasm, axons from the nasal half of each retina cross.",
+          "why": "Crossing the nasal fibers sends each half of the visual field to one side of the brain."
+        },
+        {
+          "id": "tract",
+          "label": "Left optic tract",
+          "text": "The left optic tract carries everything from your right visual field.",
+          "why": "Behind the chiasm, each tract holds the temporal fibers of the same eye and the nasal fibers of the other."
+        },
+        {
+          "id": "lgn",
+          "label": "Lateral geniculate nucleus",
+          "text": "The axons synapse in the lateral geniculate nucleus of the left thalamus.",
+          "why": "Like other senses except smell, vision relays in the thalamus."
+        },
+        {
+          "id": "cortex",
+          "label": "Left primary visual cortex",
+          "text": "The optic radiation carries the signal to the primary visual cortex of the left occipital lobe.",
+          "why": "The primary visual cortex maps the opposite visual field point by point."
+        }
+      ],
+      "missing": {
+        "at": 10,
+        "distractors": [
+          {
+            "text": "At the optic chiasm, axons from the temporal half of each retina cross.",
+            "why": "Temporal fibers stay on their own side. It is the nasal fibers that cross."
+          },
+          {
+            "text": "At the optic chiasm, every axon from each eye crosses to the other side.",
+            "why": "Only the nasal fibers cross. If all crossed, each eye would report to only one hemisphere, and a chiasm tumor would blind both eyes completely."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The lens does about two thirds of the bending, at a fixed power.",
+        "why": "The cornea does about two thirds of the bending at a fixed power. The lens does the remaining third, and it is the part that can change."
+      },
+      "summary": "Light is bent by the cornea and the lens, crosses the fluids and the inner retina, and is caught by rods and cones at the back. The signal passes through bipolar and ganglion cells, the optic nerve, chiasm and tract, and the lateral geniculate nucleus to the occipital cortex opposite the half of the field it came from."
+    },
+    {
+      "id": "tear-flow",
+      "title": "Tear flow",
+      "topic": "vision",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "A speck of dust makes your eye water, and a moment later your nose runs. Follow the tears from where they are made to where they drain.",
+      "steps": [
+        {
+          "id": "gland",
+          "label": "Lacrimal gland",
+          "text": "The lacrimal gland, in the upper outer corner of the orbit, makes tears.",
+          "why": "Tears start in the gland, driven by parasympathetic fibers carried by the facial nerve."
+        },
+        {
+          "id": "ducts",
+          "label": "Lacrimal ducts",
+          "text": "Several small lacrimal ducts carry them onto the upper outer part of the eye.",
+          "why": "The ducts open under the upper lid, so tears land on the top outer corner of the eye."
+        },
+        {
+          "id": "blink",
+          "label": "Blinks sweep them inward",
+          "text": "Each blink sweeps the tears across the eye toward the inner corner.",
+          "why": "The lids spread the film across the eye and push it toward the nose."
+        },
+        {
+          "id": "puncta",
+          "label": "Lacrimal puncta",
+          "text": "They drain into the lacrimal puncta, one tiny opening on the edge of each lid at the inner corner.",
+          "why": "The drainage openings sit at the inner corner, where the blinks deliver the tears."
+        },
+        {
+          "id": "canaliculi",
+          "label": "Lacrimal canaliculi",
+          "text": "Short lacrimal canaliculi carry them to the lacrimal sac.",
+          "why": "Each punctum leads into a little channel that runs to the sac."
+        },
+        {
+          "id": "sac",
+          "label": "Lacrimal sac",
+          "text": "The tears collect in the lacrimal sac.",
+          "why": "The sac gathers tears from both lids before they drain down."
+        },
+        {
+          "id": "duct",
+          "label": "Nasolacrimal duct",
+          "text": "The nasolacrimal duct carries them down through the nasolacrimal canal.",
+          "why": "The duct runs down inside the bony canal of the skull toward the nose."
+        },
+        {
+          "id": "nose",
+          "label": "Into the nose",
+          "text": "The tears empty into the nose below the lowest nasal concha.",
+          "why": "This last step is why crying gives you a runny nose, and why an eye drop can leave a taste in your throat."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The tears drain straight into the nasolacrimal duct from the surface of the eye.",
+            "why": "Tears first enter the puncta and run through the canaliculi into the sac; the duct begins below the sac."
+          },
+          {
+            "text": "Lacrimal ducts carry them back into the lacrimal gland.",
+            "why": "The ducts carry tears out of the gland onto the eye. Nothing returns tears to the gland."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "They drain into openings at the outer corner of each lid.",
+        "why": "The lacrimal puncta sit at the inner corner, near the nose, where blinking delivers the tears."
+      },
+      "summary": "Lacrimal gland, lacrimal ducts, across the eye, lacrimal puncta, canaliculi, lacrimal sac, nasolacrimal duct, nose. Tears are made at the upper outer corner and drain at the inner corner."
+    },
+    {
+      "id": "phototransduction-steps",
+      "title": "Phototransduction in a rod",
+      "topic": "vision",
+      "core": [
+        "communication"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A rod sits in the dark, depolarized and releasing glutamate. Then a single photon arrives. Trace how light changes the rod’s signal.",
+      "steps": [
+        {
+          "id": "photon",
+          "label": "Retinal absorbs a photon",
+          "text": "Retinal in a rhodopsin molecule absorbs a photon.",
+          "why": "Light acts at only one step: the absorption by retinal."
+        },
+        {
+          "id": "isomer",
+          "label": "11-cis to all-trans",
+          "text": "The kink in retinal straightens: 11-cis-retinal becomes all-trans-retinal.",
+          "why": "This photoisomerization is the only step that needs light; everything after it is chemistry."
+        },
+        {
+          "id": "active",
+          "label": "Rhodopsin becomes active",
+          "text": "The opsin changes shape, and rhodopsin becomes active.",
+          "why": "The shape change of retinal forces a shape change in the opsin around it."
+        },
+        {
+          "id": "transducin",
+          "label": "Transducin switched on",
+          "text": "Active rhodopsin switches on many molecules of the G protein transducin.",
+          "why": "Opsin is a G protein–coupled receptor protein, and one active rhodopsin activates dozens of transducins: the first amplification."
+        },
+        {
+          "id": "enzyme",
+          "label": "Enzyme breaks down cGMP",
+          "text": "Transducin switches on an enzyme that breaks down cGMP.",
+          "why": "Each enzyme destroys many cGMP molecules: the second amplification."
+        },
+        {
+          "id": "close",
+          "label": "Cation channels close",
+          "text": "With less cGMP, the cation channels close, and the dark current stops.",
+          "why": "cGMP was holding those channels open; as it falls, they shut."
+        },
+        {
+          "id": "hyper",
+          "label": "Rod hyperpolarizes",
+          "text": "K+ still leaks out, so the rod hyperpolarizes from about −40 mV toward −70 mV.",
+          "why": "With Na+ no longer coming in, the outward K+ leak pulls the voltage down."
+        },
+        {
+          "id": "less",
+          "label": "Less glutamate released",
+          "text": "The hyperpolarized rod releases less glutamate onto its bipolar cells.",
+          "why": "Release depends on depolarization, so the signal of light is a drop in glutamate."
+        },
+        {
+          "id": "bipolar",
+          "label": "Bipolar, ganglion cells act",
+          "text": "The bipolar cells respond to the change, and the ganglion cells change their firing.",
+          "why": "The change in glutamate is the message passed on toward the brain."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Active rhodopsin opens sodium channels directly, and the rod depolarizes.",
+            "why": "Rhodopsin acts through a G protein, and light closes channels. The rod hyperpolarizes in light."
+          },
+          {
+            "text": "Active rhodopsin triggers action potentials in the rod’s axon.",
+            "why": "Rods make no action potentials. They signal with graded changes in voltage and glutamate release."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "cGMP rises and opens more cation channels, and the rod depolarizes.",
+        "why": "Light lowers cGMP. The channels close, the dark current stops and the rod hyperpolarizes, the reverse of most sensory receptors."
+      },
+      "summary": "Light straightens retinal, rhodopsin activates transducin, and an enzyme destroys cGMP. The cGMP-held channels close, the dark current stops, the rod hyperpolarizes and its glutamate release falls. Two amplifying steps let one photon matter."
+    },
+    {
+      "id": "near-focus",
+      "title": "Focusing on something near",
+      "topic": "vision",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You look up at a distant tree, then down at a text message on your phone. Trace how the lens changes shape to focus the near image.",
+      "steps": [
+        {
+          "id": "spread",
+          "label": "Near light spreads out",
+          "text": "Light from the nearby phone arrives spreading out, so it needs more bending than light from the tree.",
+          "why": "The problem to be solved comes first: a near object’s rays diverge."
+        },
+        {
+          "id": "cn3",
+          "label": "Oculomotor nerve fires",
+          "text": "Parasympathetic fibers of the oculomotor nerve fire.",
+          "why": "The near response is driven by the oculomotor nerve."
+        },
+        {
+          "id": "contract",
+          "label": "Ciliary muscle contracts",
+          "text": "The ring of the ciliary muscle contracts, becomes smaller and moves in toward the lens.",
+          "why": "Because the ciliary muscle is a ring, contracting shrinks it."
+        },
+        {
+          "id": "slack",
+          "label": "Zonule fibers go slack",
+          "text": "The zonule fibers that hold the lens go slack.",
+          "why": "With the ring closer to the lens, its threads no longer pull on the lens rim."
+        },
+        {
+          "id": "round",
+          "label": "Lens rounds up",
+          "text": "Released from tension, the elastic lens bulges into a rounder shape.",
+          "why": "The lens rounds up by its own elasticity when nothing stretches it."
+        },
+        {
+          "id": "bend",
+          "label": "More bending",
+          "text": "The rounder lens bends light more.",
+          "why": "A more curved surface bends light more strongly."
+        },
+        {
+          "id": "focus",
+          "label": "Image falls on the retina",
+          "text": "The near image comes to a focus on the retina, and the text is sharp.",
+          "why": "The extra bending brings the diverging rays together on the retina instead of behind it."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The zonule fibers tighten and squeeze the lens rounder.",
+            "why": "Tight zonule fibers stretch the lens thin and flat. The lens rounds up when they go slack."
+          },
+          {
+            "text": "The cornea changes shape to add the bending.",
+            "why": "The cornea’s power is fixed. Only the lens can change its bending."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "The ciliary muscle relaxes, and the ring widens away from the lens.",
+        "why": "That is the state for far vision. For near vision the ciliary muscle contracts and the ring shrinks toward the lens."
+      },
+      "summary": "For near vision the oculomotor nerve contracts the ciliary muscle, the zonule fibers go slack, and the elastic lens rounds up and bends light more. With age the lens stiffens and no longer rounds up: presbyopia."
+    },
+    {
+      "id": "sound-to-cortex",
+      "title": "Sound through the ear to the cortex",
+      "topic": "hearing-balance",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A friend calls your name from across the room. Trace the sound from the air to your auditory cortex.",
+      "steps": [
+        {
+          "id": "auricle",
+          "label": "Auricle funnels sound",
+          "text": "The auricle collects the sound waves and funnels them into the ear canal.",
+          "why": "The external ear is the entrance, and its folds help tell whether a sound is above or below you."
+        },
+        {
+          "id": "drum",
+          "label": "Tympanic membrane vibrates",
+          "text": "The pressure waves vibrate the tympanic membrane at the end of the canal.",
+          "why": "The eardrum seals the canal from the middle ear and moves with the waves."
+        },
+        {
+          "id": "ossicles",
+          "label": "Ossicles carry it across",
+          "text": "The malleus, incus and stapes carry the vibration across the middle ear, raising its pressure about 20-fold.",
+          "why": "The large eardrum and the lever of the ossicles concentrate the force onto the small oval window."
+        },
+        {
+          "id": "oval",
+          "label": "Stapes rocks oval window",
+          "text": "The stapes rocks in the oval window and sets up pressure waves in the perilymph of the scala vestibuli.",
+          "why": "The oval window is where the air-borne vibration becomes a fluid wave."
+        },
+        {
+          "id": "basilar",
+          "label": "Basilar membrane vibrates",
+          "text": "The waves make the basilar membrane vibrate most at the place tuned to each frequency, while the round window bulges out.",
+          "why": "Fluid cannot be compressed, so each inward push of the stapes is matched at the round window, and the wave peaks at its own place."
+        },
+        {
+          "id": "bend",
+          "label": "Stereocilia bend",
+          "text": "The stereocilia of the hair cells, touching the tectorial membrane above them, are bent back and forth.",
+          "why": "The hair cells ride on the basilar membrane, so its movement bends their stereocilia against the tectorial membrane."
+        },
+        {
+          "id": "release",
+          "label": "Hair cells release glutamate",
+          "text": "Channels open and close with each bend, and the hair cells release glutamate in rhythm with the sound.",
+          "why": "Bending opens mechanically gated channels, and K+ entering from endolymph depolarizes the cell."
+        },
+        {
+          "id": "nerve",
+          "label": "Cochlear nerve fires",
+          "text": "Sensory neurons with cell bodies in the spiral ganglion fire, in the cochlear branch of the vestibulocochlear nerve.",
+          "why": "The hair cell has no axon, so its sensory neuron carries the signal to the brain."
+        },
+        {
+          "id": "cn",
+          "label": "Cochlear nuclei",
+          "text": "The axons synapse in the cochlear nuclei of the brainstem, on the same side.",
+          "why": "The first relay is on the same side as the ear."
+        },
+        {
+          "id": "olive",
+          "label": "Superior olivary nuclei",
+          "text": "Signals from both ears meet in the superior olivary nuclei, which compare timing and loudness.",
+          "why": "This is the first place the two ears are compared, which is how you locate the sound."
+        },
+        {
+          "id": "ic",
+          "label": "Inferior colliculus",
+          "text": "The signal climbs to the inferior colliculus of the midbrain.",
+          "why": "The inferior colliculus also turns your head toward a sudden sound."
+        },
+        {
+          "id": "mgn",
+          "label": "Medial geniculate nucleus",
+          "text": "It relays in the medial geniculate nucleus of the thalamus.",
+          "why": "Hearing, like vision and touch, relays in the thalamus."
+        },
+        {
+          "id": "cortex",
+          "label": "Primary auditory cortex",
+          "text": "It reaches the primary auditory cortex in the temporal lobe, and you hear your name.",
+          "why": "The cortex keeps the cochlea’s map of frequency, from low notes to high."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The stapes pushes on the round window and sets up waves in the scala tympani.",
+            "why": "The stapes sits in the oval window, which opens into the scala vestibuli. The round window at the end of the scala tympani bulges out to relieve the pressure."
+          },
+          {
+            "text": "The malleus vibrates the hair cells directly.",
+            "why": "The ossicles never touch the hair cells. They move the fluid through the oval window, and the fluid moves the basilar membrane."
+          }
+        ]
+      },
+      "error": {
+        "at": 11,
+        "text": "It relays in the lateral geniculate nucleus of the thalamus.",
+        "why": "The lateral geniculate nucleus is the visual relay. Hearing relays in its medial neighbor, the medial geniculate nucleus."
+      },
+      "summary": "Air, bone, then fluid: the eardrum and ossicles deliver sound to the oval window, the basilar membrane sorts it by pitch, and bent stereocilia make hair cells release glutamate. The signal climbs through the cochlear nuclei, superior olives, inferior colliculus and medial geniculate nucleus to the temporal lobe, reaching both hemispheres from each ear."
+    },
+    {
+      "id": "hair-cell-steps",
+      "title": "How a hair cell turns a bend into a signal",
+      "topic": "hearing-balance",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A sound pushes the basilar membrane upward, and the stereocilia of an inner hair cell bend toward their tallest member. Trace how that bend becomes a burst of action potentials.",
+      "steps": [
+        {
+          "id": "bend",
+          "label": "Bundle bends to the tallest",
+          "text": "The stereocilia bend toward the tallest stereocilium.",
+          "why": "The stimulus is a tiny deflection of the staircase-shaped bundle."
+        },
+        {
+          "id": "tiplinks",
+          "label": "Tip links stretch",
+          "text": "The tip links joining each stereocilium to its taller neighbor are stretched.",
+          "why": "Bending toward the tall side pulls the short tips away from their neighbors."
+        },
+        {
+          "id": "open",
+          "label": "Channels open",
+          "text": "The mechanically gated channels at the ends of the tip links open.",
+          "why": "Each tip link tugs its channel open, like a string on a trapdoor."
+        },
+        {
+          "id": "kin",
+          "label": "K+ flows in",
+          "text": "K+ flows into the cell from the K+-rich endolymph around the stereocilia.",
+          "why": "Endolymph is high in K+ and about 80 mV positive, so both gradients push K+ into the cell."
+        },
+        {
+          "id": "depol",
+          "label": "Hair cell depolarizes",
+          "text": "The hair cell depolarizes.",
+          "why": "Positive charge entering makes the inside less negative."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium channels open",
+          "text": "Voltage-gated Ca2+ channels at the base of the cell open, and Ca2+ enters.",
+          "why": "The depolarization spreads to the base, where the synapse is."
+        },
+        {
+          "id": "glu",
+          "label": "More glutamate released",
+          "text": "Calcium triggers the release of more glutamate onto the sensory neuron.",
+          "why": "As at any chemical synapse, calcium entry triggers exocytosis of transmitter."
+        },
+        {
+          "id": "fire",
+          "label": "Sensory neuron fires faster",
+          "text": "The cochlear sensory neuron fires faster than its resting rate.",
+          "why": "Because some channels are open at rest, the neuron has a background rate that can rise for one direction of bending and fall for the other."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "K+ flows out of the cell into the endolymph, as in most cells.",
+            "why": "Around the stereocilia the gradient is reversed: endolymph is K+-rich and positive, so K+ flows in and depolarizes the cell."
+          },
+          {
+            "text": "Na+ from the perilymph rushes in through voltage-gated sodium channels.",
+            "why": "The stereocilia stand in endolymph, which is low in Na+. The current through the tip-link channels is carried mainly by K+."
+          }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "The hair cell fires an action potential down its own axon to the brainstem.",
+        "why": "A hair cell has no axon. It releases glutamate onto a sensory neuron, and that neuron carries the action potentials."
+      },
+      "summary": "Bending toward the tallest stereocilium stretches the tip links, opens channels, and lets K+ flow in from the endolymph. The cell depolarizes, Ca2+ enters at its base, more glutamate is released, and the sensory neuron fires faster. Bending the other way does the reverse."
+    },
+    {
+      "id": "sympathetic-to-sweat",
+      "title": "Sympathetic pathway: spinal cord to effector",
+      "topic": "ans-anatomy",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You are nervous before an exam, and sweat breaks out on your palms. Trace the sympathetic signal from the spinal cord to a sweat gland in your palm.",
+      "steps": [
+        {
+          "id": "lateral",
+          "label": "Lateral horn neuron fires",
+          "text": "A preganglionic neuron in the lateral horn of an upper thoracic segment fires.",
+          "why": "Sympathetic preganglionic cell bodies sit only in the lateral horn of T1–L2."
+        },
+        {
+          "id": "ventral",
+          "label": "Out the ventral root",
+          "text": "Its axon leaves the cord through the ventral root.",
+          "why": "Like all motor output, preganglionic axons leave through the ventral root."
+        },
+        {
+          "id": "nerve",
+          "label": "Into the spinal nerve",
+          "text": "It enters the spinal nerve for about a centimeter.",
+          "why": "The ventral root joins the dorsal root to form the spinal nerve just outside the cord."
+        },
+        {
+          "id": "white",
+          "label": "White ramus communicans",
+          "text": "It turns off into the white ramus communicans.",
+          "why": "The white ramus is the connecting branch into the chain, white because its preganglionic fibers are myelinated."
+        },
+        {
+          "id": "chain",
+          "label": "Synapse in a chain ganglion",
+          "text": "It enters the sympathetic chain, climbs to a higher level, and synapses on a postganglionic neuron in a chain ganglion.",
+          "why": "The skin’s supply relays in the chain, and climbing the chain lets upper thoracic outflow reach the arm’s spinal nerves."
+        },
+        {
+          "id": "gray",
+          "label": "Gray ramus communicans",
+          "text": "The unmyelinated postganglionic axon returns to a spinal nerve through a gray ramus communicans.",
+          "why": "Gray rami carry unmyelinated postganglionic fibers back out; every spinal nerve has one."
+        },
+        {
+          "id": "arm",
+          "label": "Out along the arm’s nerves",
+          "text": "It rides out in the nerves of the arm to the skin of the palm.",
+          "why": "Postganglionic fibers travel with the spinal nerves to the skin and limbs."
+        },
+        {
+          "id": "gland",
+          "label": "Sweat gland secretes",
+          "text": "Its varicosities release transmitter onto the sweat gland, which secretes sweat.",
+          "why": "The effector is a gland in the skin, reached only by sympathetic fibers."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "It turns off into the gray ramus communicans.",
+            "why": "Gray rami carry unmyelinated postganglionic fibers back out of the chain. Myelinated preganglionic fibers enter through the white ramus."
+          },
+          {
+            "text": "It runs through the dorsal root ganglion into the chain.",
+            "why": "The dorsal root carries only sensory axons in. Preganglionic axons leave by the ventral root and reach the chain through the white ramus."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "It passes through the chain without synapsing and runs in a splanchnic nerve to the celiac ganglion.",
+        "why": "That is the route to the abdominal organs. Fibers for the skin synapse in the chain ganglia and return to the spinal nerves."
+      },
+      "summary": "Lateral horn, ventral root, spinal nerve, white ramus, chain ganglion (synapse), gray ramus, spinal nerve, effector. Two neurons, with the ganglion near the cord: a short preganglionic fiber and a long postganglionic one."
+    },
+    {
+      "id": "sympathetic-to-adrenal",
+      "title": "Sympathetic pathway through the adrenal medulla",
+      "topic": "ans-anatomy",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A car swerves toward you, and within seconds epinephrine pours into your blood. Trace the sympathetic route that releases it.",
+      "steps": [
+        {
+          "id": "lateral",
+          "label": "Lateral horn neuron fires",
+          "text": "A preganglionic neuron in the lateral horn of a lower thoracic segment fires.",
+          "why": "Every sympathetic route starts with a preganglionic neuron in the lateral horn of T1–L2."
+        },
+        {
+          "id": "ventral",
+          "label": "Ventral root and white ramus",
+          "text": "Its axon leaves through the ventral root and enters the chain through the white ramus communicans.",
+          "why": "Preganglionic fibers reach the chain through the white rami."
+        },
+        {
+          "id": "through",
+          "label": "Through the chain, no synapse",
+          "text": "It passes through the chain ganglion without synapsing.",
+          "why": "Fibers bound for the abdomen do not relay in the chain."
+        },
+        {
+          "id": "splanchnic",
+          "label": "Splanchnic nerve",
+          "text": "It runs in a splanchnic nerve toward the celiac ganglion.",
+          "why": "Splanchnic nerves carry preganglionic fibers from the chain to the abdomen."
+        },
+        {
+          "id": "celiac",
+          "label": "Through the celiac ganglion",
+          "text": "It passes through the celiac ganglion without synapsing.",
+          "why": "Unlike most fibers arriving there, these have no second neuron to meet."
+        },
+        {
+          "id": "chromaffin",
+          "label": "Onto chromaffin cells",
+          "text": "It ends on chromaffin cells in the adrenal medulla and releases acetylcholine onto them.",
+          "why": "The chromaffin cells take the place of postganglionic neurons: same embryonic origin, but no axons."
+        },
+        {
+          "id": "release",
+          "label": "Epinephrine into the blood",
+          "text": "The chromaffin cells release epinephrine (about 80%) and norepinephrine into the blood.",
+          "why": "Without axons, the cells release their product into the blood, as an endocrine gland does."
+        },
+        {
+          "id": "circulate",
+          "label": "Reaches the whole body",
+          "text": "Epinephrine circulates to cells all over the body, including cells no sympathetic fiber touches, for a few minutes.",
+          "why": "As a hormone it reaches every tissue, and it lasts minutes after the nerve signal stops."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "It synapses in the celiac ganglion on a postganglionic neuron whose axon reaches the adrenal medulla.",
+            "why": "The adrenal medulla is the exception: preganglionic fibers reach it directly, with no postganglionic neuron."
+          },
+          {
+            "text": "It synapses in the chain ganglion, and a gray ramus carries the signal to the adrenal gland.",
+            "why": "Gray rami return fibers to the spinal nerves for the skin and limbs. The adrenal route passes through the chain without synapsing."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The chromaffin cells send axons to the heart and release norepinephrine onto it.",
+        "why": "Chromaffin cells have no axons. They release epinephrine and some norepinephrine into the blood, which carries them everywhere."
+      },
+      "summary": "Lateral horn, ventral root, white ramus, through the chain, splanchnic nerve, through the celiac ganglion, chromaffin cells, epinephrine into the blood. One neuron only: the adrenal medulla behaves like a sympathetic ganglion that secretes into the blood."
+    },
+    {
+      "id": "pupil-reflex-arc",
+      "title": "The pupillary light reflex as an autonomic reflex",
+      "topic": "ans-control",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A doctor shines a penlight into your right eye, and both pupils narrow within a second. Trace the autonomic reflex arc.",
+      "steps": [
+        {
+          "id": "retina",
+          "label": "Retinal ganglion cells fire",
+          "text": "Light strikes the right retina, and retinal ganglion cells fire.",
+          "why": "The sensory side starts in the retina."
+        },
+        {
+          "id": "optic",
+          "label": "Optic nerve",
+          "text": "Signals travel along the right optic nerve.",
+          "why": "The afferent pathway is the optic nerve."
+        },
+        {
+          "id": "pretectal",
+          "label": "Pretectal nuclei, both sides",
+          "text": "They reach the pretectal nuclei of the midbrain on both sides.",
+          "why": "The midbrain is the integration center, and it shares the signal with both sides."
+        },
+        {
+          "id": "ew",
+          "label": "Edinger–Westphal nuclei",
+          "text": "Each pretectal nucleus signals the parasympathetic nucleus of the oculomotor nerve (the Edinger–Westphal nucleus) on both sides.",
+          "why": "These nuclei hold the preganglionic parasympathetic neurons for the eye."
+        },
+        {
+          "id": "pre",
+          "label": "Preganglionic fibers in III",
+          "text": "Preganglionic fibers run in both oculomotor nerves to the ciliary ganglia.",
+          "why": "The efferent side is the two-neuron chain; the preganglionic fiber is long."
+        },
+        {
+          "id": "post",
+          "label": "Short postganglionic fibers",
+          "text": "Short postganglionic fibers release acetylcholine onto muscarinic receptor proteins of the circular iris muscle.",
+          "why": "The terminal ganglion sits right behind the eye, so the postganglionic fibers are short."
+        },
+        {
+          "id": "narrow",
+          "label": "Both pupils narrow",
+          "text": "The circular muscle contracts, and both pupils narrow.",
+          "why": "The effector responds, and less light reaches each retina."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Preganglionic fibers leave the cord at T1 and climb the sympathetic chain to the eye.",
+            "why": "That sympathetic route drives the dilator muscle, which widens the pupil in dim light."
+          },
+          {
+            "text": "Motor neurons in the facial nerve carry the command to the iris.",
+            "why": "The facial nerve carries parasympathetic fibers to glands, not to the eye. The pupil’s narrowing travels in the oculomotor nerve."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Short postganglionic fibers release norepinephrine onto alpha-1 receptor proteins of the circular iris muscle.",
+        "why": "Parasympathetic postganglionic neurons are cholinergic and act on muscarinic receptor proteins. Norepinephrine on alpha-1 contracts the dilator, which widens the pupil."
+      },
+      "summary": "Retina, optic nerve, pretectal nuclei, Edinger–Westphal nuclei, oculomotor nerves, ciliary ganglia, circular muscle. Because the midbrain sends the signal to both sides, one lit eye narrows both pupils, and one test checks the optic nerve, the midbrain and the oculomotor nerve."
     }
   ]
 }

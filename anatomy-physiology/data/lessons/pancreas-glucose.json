@@ -1,0 +1,47 @@
+{
+  "topic": "pancreas-glucose",
+  "hook": "<p>Aisha, 14, has been getting up four times a night to urinate, drinking bottle after bottle of water, and losing weight even though she is always hungry. Today she is drowsy and breathing deeply, and her breath smells oddly fruity. Her blood glucose is 510 mg/dL, five times normal. The cause is a loss of cells that make up about 1 percent of her pancreas.</p>",
+  "prereq": [
+    {
+      "q": "How do endocrine glands differ from exocrine glands?",
+      "options": ["Endocrine glands release their products into ducts that open onto a surface", "Endocrine glands release hormones into the blood, with no ducts", "Endocrine glands are found only in the brain"],
+      "correct": 1,
+      "why": "Endocrine glands are ductless: their hormones enter the interstitial fluid and then the blood. Exocrine glands, such as sweat glands, release their products through ducts.",
+      "review": "glands"
+    },
+    {
+      "q": "Glucose crosses most cell membranes through a carrier protein, moving from higher to lower concentration without using ATP. What is this called?",
+      "options": ["Facilitated diffusion", "Primary active transport", "Osmosis"],
+      "correct": 0,
+      "why": "A carrier protein that moves a molecule down its concentration gradient without spending ATP carries out facilitated diffusion.",
+      "review": "passive-transport"
+    },
+    {
+      "q": "A water-soluble hormone such as a peptide cannot cross the plasma membrane. How does it change what a target cell does?",
+      "options": ["It binds a receptor protein inside the nucleus and switches on genes directly", "It binds a receptor protein on the cell surface, which sets off a second-messenger or enzyme cascade inside", "It dissolves in the membrane and changes its shape"],
+      "correct": 1,
+      "why": "Water-soluble hormones bind receptor proteins in the plasma membrane. The receptor protein then starts a chain of signals inside the cell, such as cyclic AMP and protein kinases, which change existing proteins within seconds to minutes.",
+      "review": "hormone-action"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-26",
+    "caption": "The pancreas, with a close-up of its tissue. Hide the labels and find the hormone-making islet among the enzyme-making clusters."
+  },
+  "chain": [
+    { "cause": "After a meal, glucose absorbed from the gut raises blood glucose.", "effect": "More glucose enters the beta cells of the pancreatic islets, and their ATP level rises." },
+    { "cause": "Rising ATP closes ATP-sensitive potassium channels in the beta cell membrane.", "effect": "The membrane depolarizes, voltage-gated calcium channels open, and calcium triggers the release of insulin into the blood." },
+    { "cause": "Insulin binds receptor proteins on skeletal muscle, fat and liver cells.", "effect": "Muscle and fat cells move GLUT4 carriers into their membranes and take up glucose; the liver switches on glycogenesis and switches off glycogenolysis and gluconeogenesis." },
+    { "cause": "Glucose moves out of the blood into cells and storage.", "effect": "Blood glucose falls back toward 70 to 99 mg/dL." },
+    { "cause": "Blood glucose falls, so less glucose enters the beta cells.", "effect": "Insulin release drops (negative feedback), and as glucose keeps drifting down between meals, alpha cells release glucagon, which makes the liver release glucose." }
+  ],
+  "misconception": {
+    "wrong": "Insulin puts glucose into every cell, so without insulin no cell can use glucose.",
+    "right": "Insulin moves GLUT4 carriers into the membranes of skeletal muscle and fat cells, which is where most glucose goes after a meal. But brain cells, liver cells and red blood cells take up glucose through carriers that are always in their membranes. That is why, in untreated diabetes, the brain still gets glucose while muscle and fat go short, and why the brain is the organ that fails first when glucose falls too low."
+  },
+  "check": ["anp-pancreas-glucose-3", "anp-pancreas-glucose-6", "anp-pancreas-glucose-9", "anp-pancreas-glucose-12", "anp-pancreas-glucose-14", "anp-pancreas-glucose-15", "anp-pancreas-glucose-17", "anp-pancreas-glucose-18"],
+  "summary": "<p>The pancreatic islets are the endocrine part of the pancreas: beta cells make insulin, alpha cells make glucagon, and delta cells make somatostatin, which damps both. Beta cells sense glucose directly: more glucose raises ATP, closes potassium channels, depolarizes the cell and lets calcium trigger insulin release. Insulin lowers blood glucose by moving GLUT4 into muscle and fat membranes, driving glycogenesis and shutting off glycogenolysis and gluconeogenesis. Glucagon raises blood glucose by switching on glycogenolysis and gluconeogenesis in the liver. The two form a negative feedback loop that holds fasting glucose at about 70 to 99 mg/dL. In diabetes mellitus, the loss of insulin (type 1) or insulin resistance with failing beta cells (type 2) leaves glucose high, which causes polyuria and polydipsia and, with no insulin at all, acid blood from unchecked fat breakdown. Hypoglycemia, below 70 mg/dL, starves the brain; glucagon and epinephrine are the first defenses.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Diabetic emergencies" }
+  ]
+}

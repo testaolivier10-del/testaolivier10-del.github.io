@@ -1,0 +1,37 @@
+{
+  "pancreatic-islets": {
+    "def": "Small clusters of endocrine cells scattered through the pancreas, about 1 to 2 percent of its mass. Beta cells make insulin, alpha cells make glucagon, delta cells make somatostatin and PP cells make pancreatic polypeptide. Also called the islets of Langerhans.",
+    "roots": [["insul-", "island"], ["pan-", "all"], ["creas", "flesh"]],
+    "say": "LANG-er-hahnz"
+  },
+  "glucose-storage-terms": {
+    "def": "Glycogenesis is building glycogen from glucose; glycogenolysis is breaking glycogen down to glucose; gluconeogenesis is making new glucose from non-carbohydrates such as lactate, glycerol and amino acids, mainly in the liver.",
+    "roots": [["glyc/o", "sugar"], ["-genesis", "making"], ["-lysis", "breaking apart"], ["neo-", "new"]],
+    "say": "gloo-koh-nee-oh-JEN-eh-sis"
+  },
+  "insulin": {
+    "def": "The protein hormone of the pancreatic beta cells, released when blood glucose rises. It lowers blood glucose by moving GLUT4 carriers into muscle and fat cell membranes, driving glycogenesis and blocking glycogenolysis and gluconeogenesis; it also stores fat and moves potassium into cells.",
+    "roots": [["insul-", "island"], ["-in", "substance"]],
+    "say": ""
+  },
+  "glucagon": {
+    "def": "The peptide hormone of the pancreatic alpha cells, released when blood glucose falls. It acts mainly on the liver, switching on glycogenolysis and gluconeogenesis, so blood glucose rises.",
+    "roots": [["gluc-", "glucose"], ["-agon", "leading"]],
+    "say": "GLOO-kah-gon"
+  },
+  "glucose-loop": {
+    "def": "The negative feedback loop that holds blood glucose, the concentration of glucose in plasma, at about 70 to 99 mg/dL fasting. High glucose makes beta cells release insulin, which lowers it; low glucose makes alpha cells release glucagon, which raises it.",
+    "roots": [["gluc/o", "glucose, sweet"]],
+    "say": ""
+  },
+  "diabetes-mellitus": {
+    "def": "A group of diseases with chronically high blood glucose (hyperglycemia) from too little insulin, too little response to it, or both. Type 1 is loss of beta cells to the immune system; type 2 is insulin resistance with beta cells that cannot keep up. Polyuria and polydipsia are its classic signs.",
+    "roots": [["diabetes", "passing through, a siphon"], ["mellitus", "honeyed"], ["poly-", "much"], ["dips-", "thirst"], ["hyper-", "above"], ["-emia", "blood condition"]],
+    "say": "dy-uh-BEE-teez MEL-ih-tus"
+  },
+  "hypoglycemia": {
+    "def": "A blood glucose below 70 mg/dL. It triggers glucagon and epinephrine release (shakiness, sweating, a fast heart) and, as the brain runs short of glucose, confusion, seizures and loss of consciousness.",
+    "roots": [["hypo-", "below"], ["glyc-", "sugar"], ["-emia", "blood condition"]],
+    "say": "hy-poh-gly-SEE-mee-uh"
+  }
+}

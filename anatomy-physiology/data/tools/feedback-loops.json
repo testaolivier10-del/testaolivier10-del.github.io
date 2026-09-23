@@ -1156,6 +1156,276 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "stretch-reflex-posture",
+      "title": "Your calf muscles are stretched as you tip forward",
+      "topic": "reflexes",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You are standing on a bus when it brakes hard. Your body tips forward, which stretches your calf muscles. A split second later, before you have decided anything, they contract and pull you back upright.",
+      "slots": {
+        "stimulus": {
+          "text": "The calf muscles are stretched as you tip forward",
+          "short": "Calf muscles stretched",
+          "why": "The regulated variable is muscle length. Tipping forward lengthens the gastrocnemius and soleus beyond their length a moment before."
+        },
+        "sensor": {
+          "text": "Muscle spindles in the calf muscles",
+          "short": "Muscle spindles",
+          "why": "Spindles lie parallel to the ordinary muscle fibers, so they are stretched with the muscle. Stretch opens mechanically gated channels in their sensory endings, and the faster and farther the stretch, the faster they fire."
+        },
+        "afferent": {
+          "text": "Spindle sensory neurons entering the cord through the dorsal roots",
+          "short": "Spindle sensory axons",
+          "why": "The spindle’s sensory neuron has its cell body in a dorsal root ganglion and carries the signal into the sacral cord."
+        },
+        "control": {
+          "text": "A single synapse on lower motor neurons in the ventral horn",
+          "short": "One synapse, ventral horn",
+          "why": "The stretch reflex is monosynaptic. The integration center is the synapse where the sensory axon releases glutamate directly onto the motor neurons of the same muscle."
+        },
+        "efferent": {
+          "text": "Lower motor neurons leaving through the ventral roots and the tibial nerve",
+          "short": "Lower motor neurons",
+          "why": "The lower motor neuron is the final common path to skeletal muscle: its axon leaves in the ventral root and reaches the calf in the tibial nerve."
+        },
+        "effector": {
+          "text": "The gastrocnemius and soleus",
+          "short": "Calf muscles",
+          "why": "The stretched muscle itself is the effector: acetylcholine at its neuromuscular junctions makes its fibers contract."
+        },
+        "response": {
+          "text": "The calf muscles contract and shorten, pulling you back upright",
+          "short": "Muscle shortens: you straighten",
+          "why": "Contraction shortens the muscle back toward its earlier length, which removes the stretch that started the loop."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Golgi tendon organs in the calcaneal tendon",
+          "why": "Tendon organs sit in series with the muscle and report tension, not length. Their reflex inhibits the same muscle, the opposite of what is needed here."
+        },
+        {
+          "text": "Interneurons that inhibit the calf muscles’ own motor neurons",
+          "why": "In a stretch reflex the inhibitory interneurons act on the antagonist, the tibialis anterior (reciprocal inhibition), not on the stretched muscle."
+        },
+        {
+          "text": "The primary motor cortex decides to tighten the calf",
+          "why": "The loop closes in the spinal cord in a few tens of milliseconds, before any decision. A cut high in the cord would not stop it."
+        },
+        {
+          "text": "The tibialis anterior contracts and lifts the toes",
+          "why": "The tibialis anterior is the antagonist of the calf. The stretch reflex inhibits it, so it does not fight the correction."
+        }
+      ],
+      "classify": "The response (the muscle shortening) opposes the stimulus (the muscle being stretched), so this is negative feedback: it holds muscle length, and with it your posture, near where it was.",
+      "failure": {
+        "part": "afferent",
+        "q": "A disease destroys the large sensory axons from the muscle spindles of the legs, but spares the motor neurons and muscles. What happens when a clinician taps the calcaneal tendon?",
+        "options": [
+          {
+            "text": "The ankle jerk is brisker, because the motor neurons are released from control",
+            "why": "Brisk reflexes come from losing descending control, which is upper motor neuron damage. Here the loop has lost its way in."
+          },
+          {
+            "text": "The ankle jerk is absent, because the stretch signal never reaches the cord",
+            "why": "Right. The spindles still sense the stretch, but without their sensory axons nothing reaches the ventral horn, so the healthy motor neurons are never told to fire."
+          },
+          {
+            "text": "The ankle jerk is normal, because the motor neurons and muscle are healthy",
+            "why": "A healthy output is useless without an input. Every part of the arc must work for the reflex to appear."
+          },
+          {
+            "text": "The calf contracts but the foot does not move, because the tendon is loose",
+            "why": "The tendon is not damaged. The break is in the sensory limb, so the calf never receives the command at all."
+          }
+        ],
+        "correct": 1
+      }
+    },
+    {
+      "id": "pupillary-light",
+      "title": "Bright light narrows the pupils",
+      "topic": "vision",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You step out of a dark building into bright sunshine. Within about a second both pupils narrow, and the light reaching your retinas falls back toward a comfortable level.",
+      "slots": {
+        "stimulus": {
+          "text": "More light strikes the retina",
+          "short": "More light on the retina",
+          "why": "The regulated variable is the amount of light reaching the retina, which rose when you stepped into the sun."
+        },
+        "sensor": {
+          "text": "Photoreceptors and light-sensitive ganglion cells in the retina",
+          "short": "Retinal light sensors",
+          "why": "Rods and cones, and a small set of retinal ganglion cells that respond to light themselves, detect the increase."
+        },
+        "afferent": {
+          "text": "Ganglion cell axons in the optic nerve and optic tract, leaving before the thalamus",
+          "short": "Optic nerve and tract",
+          "why": "The signal travels in the optic nerve, then peels off the optic tract before the lateral geniculate nucleus, toward the midbrain."
+        },
+        "control": {
+          "text": "The pretectal area of the midbrain, which signals the oculomotor parasympathetic nuclei on both sides",
+          "short": "Pretectal area, midbrain",
+          "why": "The pretectal area integrates the signal and sends it to both sides, which is why the unlit pupil narrows too."
+        },
+        "efferent": {
+          "text": "Parasympathetic fibers in both oculomotor nerves, relaying in a ganglion behind each eye",
+          "short": "Oculomotor parasympathetics",
+          "why": "The command travels in the parasympathetic axons of each oculomotor nerve, with a relay in the small ganglion behind the eye."
+        },
+        "effector": {
+          "text": "The circular sphincter muscle of each iris",
+          "short": "Iris sphincter muscles",
+          "why": "The ring of smooth muscle around each pupil contracts, making the opening smaller."
+        },
+        "response": {
+          "text": "Both pupils narrow (miosis), so less light reaches each retina",
+          "short": "Pupils narrow: less light",
+          "why": "A smaller opening lets less light in, pushing the variable back toward its earlier level."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The radial dilator fibers of the iris contract",
+          "why": "The dilator fibers widen the pupil. They are driven by sympathetic fibers, whose output falls in bright light."
+        },
+        {
+          "text": "The lateral geniculate nucleus of the thalamus",
+          "why": "That is the relay for seeing, on the way to the visual cortex. The pupil reflex leaves the pathway before the thalamus."
+        },
+        {
+          "text": "The ciliary muscle contracts and the lens rounds up",
+          "why": "That is accommodation, part of the near response to a close object, not the response to bright light."
+        },
+        {
+          "text": "Sympathetic fibers in the facial nerve",
+          "why": "The pupil’s narrowing is parasympathetic, and those fibers travel in the oculomotor nerve, not the facial nerve."
+        }
+      ],
+      "classify": "The response (less light entering) opposes the stimulus (more light striking the retina), so this is negative feedback. In dim light the loop runs the other way and the pupils widen.",
+      "failure": {
+        "part": "efferent",
+        "q": "After a head injury, rising pressure squeezes the right oculomotor nerve. The optic nerves are healthy. A light is shone into the right eye. What do the pupils do?",
+        "options": [
+          {
+            "text": "Neither pupil narrows, because the light signal cannot get in",
+            "why": "The light signal enters through the right optic nerve, which is healthy. This is an efferent problem, not an afferent one."
+          },
+          {
+            "text": "Both pupils narrow normally",
+            "why": "The right pupil’s command travels in the squeezed nerve, so it cannot narrow."
+          },
+          {
+            "text": "The left pupil narrows, but the right stays wide",
+            "why": "Right. The signal gets in and the midbrain sends commands to both sides, but only the left oculomotor nerve can carry its command. A wide, unresponsive pupil after a head injury is an emergency sign."
+          },
+          {
+            "text": "The right pupil narrows, but the left stays wide",
+            "why": "The left oculomotor nerve is healthy and still receives the midbrain’s command, so the left pupil narrows. It is the right one that cannot."
+          }
+        ],
+        "correct": 2
+      }
+    },
+    {
+      "id": "standing-pressure",
+      "title": "Blood pressure dips as you stand up",
+      "topic": "ans-control",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You stand up quickly after lying on a couch. Blood pools in the veins of your legs, less returns to your heart, and the pressure in your large arteries dips. Within a few heartbeats it is back to normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Pressure in the large arteries falls",
+          "short": "Arterial pressure falls",
+          "why": "The regulated variable is the blood pressure in the large arteries. Standing lets blood pool in the legs, so less is pumped out and the pressure dips."
+        },
+        "sensor": {
+          "text": "Stretch-sensitive sensory receptors in the walls of the large arteries near the heart and in the neck",
+          "short": "Stretch sensors, artery walls",
+          "why": "These sensory receptors fire in proportion to how far the artery wall is stretched. Lower pressure stretches it less, so they fire less."
+        },
+        "afferent": {
+          "text": "Visceral sensory neurons in the glossopharyngeal and vagus nerves",
+          "short": "Nerves IX and X",
+          "why": "The glossopharyngeal nerve carries signals from the sensors in the neck and the vagus nerve from those near the heart."
+        },
+        "control": {
+          "text": "Autonomic centers in the medulla oblongata",
+          "short": "Medulla oblongata centers",
+          "why": "The brainstem holds the main autonomic reflex centers. They compare the input with the usual level and reset autonomic output."
+        },
+        "efferent": {
+          "text": "Less vagal output, and more sympathetic output through the cardiac accelerator and vasomotor nerves",
+          "short": "Vagus down, sympathetic up",
+          "why": "The two divisions change in opposite directions: vagal tone on the heart falls while sympathetic tone to the heart and vessels rises."
+        },
+        "effector": {
+          "text": "The heart’s pacemaker and muscle, and the smooth muscle of small arteries and veins",
+          "short": "Heart and vessel muscle",
+          "why": "Beta-1 receptor proteins speed and strengthen the heart; alpha-1 receptor proteins constrict the vessels."
+        },
+        "response": {
+          "text": "The heart beats faster and harder and the vessels constrict, so arterial pressure rises back toward normal",
+          "short": "Pressure back to normal",
+          "why": "More blood pumped into narrower vessels raises the pressure, which restores the stretch on the artery walls and removes the stimulus."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Parasympathetic fibers constrict the small arteries",
+          "why": "Most blood vessels have no parasympathetic fibers. They are controlled by changing sympathetic tone alone."
+        },
+        {
+          "text": "Vagal output rises to slow the heart",
+          "why": "That is the response to a rise in pressure. Here pressure has fallen, so vagal output falls."
+        },
+        {
+          "text": "Warm neurons in the hypothalamus drive sweating",
+          "why": "That belongs to temperature control. This loop is run by the medulla oblongata, from the stretch of the artery walls."
+        },
+        {
+          "text": "The primary motor cortex tightens the leg muscles",
+          "why": "The correction is automatic and autonomic. It works in someone who is not paying attention, within a few heartbeats."
+        }
+      ],
+      "classify": "The response (pressure rising) opposes the stimulus (pressure falling), so this is negative feedback, carried entirely by changes in autonomic tone. A rise in pressure runs the same loop the other way.",
+      "failure": {
+        "part": "effector",
+        "q": "A man takes a drug that blocks alpha-1 receptor proteins, then stands up quickly. The sensory receptors, nerves and medulla oblongata all work normally. What happens?",
+        "options": [
+          {
+            "text": "The heart rate fails to rise, because the reflex is blocked",
+            "why": "The heart works through beta-1 and muscarinic receptor proteins, which the drug does not touch, so the heart rate rises."
+          },
+          {
+            "text": "Pressure does not fall at all, because the sensors still detect the change",
+            "why": "Detecting a fall does not prevent it. The correction depends on the effectors responding."
+          },
+          {
+            "text": "Pressure recovers fully, because the heart makes up the difference",
+            "why": "The heart speeds up, but without vessel constriction it cannot fully restore the pressure, especially on standing."
+          },
+          {
+            "text": "The heart rate rises, but the pressure recovers less than usual, and he may feel dizzy",
+            "why": "Right. The medulla sends more sympathetic output everywhere, but NE cannot constrict vessels through blocked alpha-1 receptor proteins. Only the heart responds, so the pressure stays low for longer."
+          }
+        ],
+        "correct": 3
+      }
     }
   ]
 }

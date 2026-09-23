@@ -143,7 +143,7 @@
     { "id": "constrict/o", "type": "root", "form": "constrict/o", "meaning": "draw tight, narrow", "origin": "Latin", "from": "constringere, constrictus (to draw tight)" },
     { "id": "dilat/o", "type": "root", "form": "dilat/o", "meaning": "widen", "origin": "Latin", "from": "dilatare (to spread out)" },
     { "id": "dendr/o", "type": "root", "form": "dendr/o", "meaning": "tree", "origin": "Greek", "from": "dendron (tree)" },
-    { "id": "polar/o", "type": "root", "form": "polar/o", "meaning": "pole (a charged side)", "origin": "Greek, via Latin", "from": "polos (pivot, axis); Latin polaris" },
+    { "id": "polar/o", "type": "root", "form": "polar/o", "meaning": "pole (a charged side)", "origin": "Greek, via Latin", "from": "polos (pivot, axis); Latin polāris" },
     { "id": "flamm/o", "type": "root", "form": "flamm/o", "meaning": "flame", "origin": "Latin", "from": "flamma (flame)" },
     { "id": "necr/o", "type": "root", "form": "necr/o", "meaning": "dead, death", "origin": "Greek", "from": "nekros (dead body)" },
     { "id": "fer/o", "type": "root", "form": "fer/o", "meaning": "carry", "origin": "Latin", "from": "ferre (to carry)" },

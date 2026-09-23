@@ -1,0 +1,38 @@
+{
+  "os-18-2": {
+    "file": "figures/openstax/os-18-2.jpg",
+    "w": 1100,
+    "h": 689,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.2",
+      "section": "18.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/7fa48eed7793f19b4120a18fbd89b434fe2d1274",
+      "page": "18-1-an-overview-of-blood"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/7fa48eed7793f19b4120a18fbd89b434fe2d1274",
+    "alt": "Three glass tubes of spun blood side by side. In each, a straw-yellow fluid layer sits on top, a thin pale band lies in the middle, and a dark red column fills the bottom. In the left tube the red column fills a little under half the tube; in the middle tube it is much shorter; in the right tube it is much taller. Brackets beside the left tube name the three layers and give typical percentages for women and men.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.2",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-18-4": {
+    "file": "figures/openstax/os-18-4.jpg",
+    "w": 1100,
+    "h": 836,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.4",
+      "section": "18.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b97929a2a971004a37d547f85bda626c407dc574",
+      "page": "18-2-production-of-the-formed-elements"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b97929a2a971004a37d547f85bda626c407dc574",
+    "alt": "A branching flowchart of blood cell production. A single stem cell at the top divides; one daughter loops back to stay a stem cell, and the other splits into two branches. The left, larger branch passes through several precursor cells to a large many-lobed cell that sheds platelets, to a red blood cell, and to four kinds of white blood cell. The right branch passes through a precursor to three kinds of white blood cell with large round nuclei.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.4",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

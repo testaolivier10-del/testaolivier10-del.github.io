@@ -1,0 +1,48 @@
+{
+  "topic": "blood-composition",
+  "hook": "<p>Ana, 19, has been vomiting for three days. Her hematocrit is 54%, well above normal. After two liters of salt solution through a drip, it is 44%. Nobody added or removed a single red blood cell: what changed was her plasma. To read a blood test like hers, you need to know what blood is made of and what each part does.</p>",
+  "prereq": [
+    {
+      "q": "Blood is classed as which kind of tissue?",
+      "options": ["Epithelial tissue", "Connective tissue", "Muscle tissue"],
+      "correct": 1,
+      "why": "Blood is a connective tissue: cells scattered in an extracellular matrix. In blood the matrix is a fluid, the plasma.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "Where are blood cells made in an adult?",
+      "options": ["In the red bone marrow", "In the yellow bone marrow", "In the compact bone of the shaft"],
+      "correct": 0,
+      "why": "Red bone marrow, in the flat bones and the ends of some long bones, is where hematopoiesis happens in adults. Yellow marrow is mostly fat.",
+      "review": "bone-structure"
+    },
+    {
+      "q": "What is the normal pH range of arterial blood?",
+      "options": ["6.8 to 7.0", "7.0 to 7.2", "7.35 to 7.45"],
+      "correct": 2,
+      "why": "Normal arterial blood pH is 7.35–7.45, slightly alkaline. Buffers hold it in this narrow range.",
+      "review": "acids-bases-ph"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-18-2",
+    "caption": "Spun blood samples. Hide the labels and name the three layers from top to bottom, then say what each contains."
+  },
+  "chain": [
+    { "cause": "Your liver makes albumin and releases it into the plasma.", "effect": "Albumin becomes the most abundant plasma protein, dissolved in the blood but too large to cross most capillary walls." },
+    { "cause": "Albumin is held inside the capillaries while water and small solutes cross freely.", "effect": "The plasma has an osmotic pressure that the interstitial fluid lacks, and water is drawn toward the blood." },
+    { "cause": "This osmotic pull opposes the blood pressure pushing fluid out through the capillary walls.", "effect": "Most of the water in plasma stays in the blood, and plasma volume holds steady." },
+    { "cause": "If a failing liver makes too little albumin, the osmotic pull weakens.", "effect": "More water leaves the blood for the tissues, which swell, and plasma volume falls." }
+  ],
+  "misconception": {
+    "wrong": "A high hematocrit means the body is making too many red blood cells.",
+    "right": "The hematocrit is a ratio: red cell volume divided by total blood volume. It rises when red cells increase, but it also rises when plasma is lost, as in dehydration, with no change in red cell production. Giving fluid brings it back down within hours. Before you read a hematocrit, ask which part of the ratio moved."
+  },
+  "check": ["anp-blood-composition-1", "anp-blood-composition-4", "anp-blood-composition-6", "anp-blood-composition-9", "anp-blood-composition-11", "anp-blood-composition-14", "anp-blood-composition-17"],
+  "summary": "<p>Blood is a connective tissue: about 55% plasma and 45% formed elements (red blood cells, white blood cells and platelets). Plasma is about 92% water carrying proteins, electrolytes, nutrients, wastes, gases and hormones. The plasma proteins are albumin (most abundant; made by the liver; its osmotic pull holds water in the blood and it carries poorly soluble substances), globulins (transport proteins, and gamma globulins made by white blood cells for immune defense) and fibrinogen (forms the threads of a clot). Serum is plasma without its clotting proteins. The hematocrit, or packed cell volume, is the percentage of blood volume that is red blood cells (about 37–47% in women, 42–52% in men); it changes with red cell volume or plasma volume. All formed elements come from hematopoietic stem cells in red bone marrow, through myeloid and lymphoid stem cells, steered by growth factors such as erythropoietin, thrombopoietin and colony-stimulating factors. Blood transports, regulates pH, temperature and fluid balance, and protects against blood loss and infection.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/ochem/lessons/peptides-proteins.html", "label": "Organic chemistry: peptides and proteins" }
+  ]
+}

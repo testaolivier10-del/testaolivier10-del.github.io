@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 470" width="660" height="470" role="img" aria-label="Left: a kidney with the adrenal gland sitting on its upper end like a cap; a box marks the slice enlarged on the right. Right: a slice through the adrenal gland from its surface (top) to its center (bottom). A thin connective tissue capsule covers the surface. Under it, the cortex has three layers: a thin zona glomerulosa of cells in rounded clusters, which makes aldosterone; a thick zona fasciculata of cells in straight columns, which makes cortisol; and a zona reticularis of cells in a branching network, which makes adrenal androgens such as DHEA. At the center is the medulla, with larger chromaffin cells around a blood vessel, which makes epinephrine and norepinephrine.">
+<rect x="0" y="0" width="660" height="470" fill="#FFFFFF"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<path d="M110,190 C60,190 40,250 45,300 C50,360 80,420 130,420 C175,420 190,385 170,355 C155,335 155,300 172,280 C195,255 180,190 110,190 Z" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="2"/>
+<text x="95" y="335" font-size="15" font-weight="800" text-anchor="middle">kidney</text>
+<path d="M62,205 C70,150 100,120 118,112 C140,125 175,160 172,208 C150,190 90,188 62,205 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<path d="M88,196 C100,165 125,150 142,160 C152,170 150,185 146,194 C125,188 105,189 88,196 Z" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.5"/>
+<text x="118" y="96" font-size="15" font-weight="800" text-anchor="middle">adrenal gland</text>
+<rect x="108" y="112" width="22" height="58" fill="none" stroke="#1F2A28" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="130" y1="115" x2="300" y2="40" stroke="#1F2A28" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="130" y1="170" x2="300" y2="430" stroke="#1F2A28" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="300" y="40" width="150" height="12" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
+<rect x="300" y="52" width="150" height="52" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<rect x="300" y="104" width="150" height="158" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.5"/>
+<rect x="300" y="262" width="150" height="70" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="1.5"/>
+<rect x="300" y="332" width="150" height="98" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.5"/>
+<ellipse cx="318" cy="78" rx="12" ry="18" fill="none" stroke="#E69F00" stroke-width="1.5"/>
+<circle cx="318" cy="70" r="2.5" fill="#1F2A28"/>
+<circle cx="318" cy="84" r="2.5" fill="#1F2A28"/>
+<ellipse cx="348" cy="78" rx="12" ry="18" fill="none" stroke="#E69F00" stroke-width="1.5"/>
+<circle cx="348" cy="70" r="2.5" fill="#1F2A28"/>
+<circle cx="348" cy="84" r="2.5" fill="#1F2A28"/>
+<ellipse cx="378" cy="78" rx="12" ry="18" fill="none" stroke="#E69F00" stroke-width="1.5"/>
+<circle cx="378" cy="70" r="2.5" fill="#1F2A28"/>
+<circle cx="378" cy="84" r="2.5" fill="#1F2A28"/>
+<ellipse cx="408" cy="78" rx="12" ry="18" fill="none" stroke="#E69F00" stroke-width="1.5"/>
+<circle cx="408" cy="70" r="2.5" fill="#1F2A28"/>
+<circle cx="408" cy="84" r="2.5" fill="#1F2A28"/>
+<ellipse cx="438" cy="78" rx="12" ry="18" fill="none" stroke="#E69F00" stroke-width="1.5"/>
+<circle cx="438" cy="70" r="2.5" fill="#1F2A28"/>
+<circle cx="438" cy="84" r="2.5" fill="#1F2A28"/>
+<rect x="306" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="312" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="312" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="323" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="329" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="329" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="340" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="346" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="346" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="357" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="363" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="363" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="374" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="380" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="380" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="391" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="397" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="397" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="408" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="414" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="414" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="425" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="431" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="431" cy="248" r="2.2" fill="#1F2A28"/>
+<rect x="442" y="110" width="12" height="146" rx="5" fill="none" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="448" cy="120" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="136" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="152" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="168" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="184" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="200" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="216" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="232" r="2.2" fill="#1F2A28"/>
+<circle cx="448" cy="248" r="2.2" fill="#1F2A28"/>
+<line x1="312" y1="275" x2="312" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="312" y1="275" x2="336" y2="275" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="312" cy="275" r="2.5" fill="#1F2A28"/>
+<line x1="312" y1="297" x2="312" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="312" y1="297" x2="336" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="312" cy="297" r="2.5" fill="#1F2A28"/>
+<line x1="312" y1="319" x2="336" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="312" cy="319" r="2.5" fill="#1F2A28"/>
+<line x1="336" y1="275" x2="336" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="336" y1="275" x2="360" y2="275" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="336" y1="275" x2="360" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="336" cy="275" r="2.5" fill="#1F2A28"/>
+<line x1="336" y1="297" x2="336" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="336" y1="297" x2="360" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="336" y1="297" x2="360" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="336" cy="297" r="2.5" fill="#1F2A28"/>
+<line x1="336" y1="319" x2="360" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="336" cy="319" r="2.5" fill="#1F2A28"/>
+<line x1="360" y1="275" x2="360" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="360" y1="275" x2="384" y2="275" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="360" cy="275" r="2.5" fill="#1F2A28"/>
+<line x1="360" y1="297" x2="360" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="360" y1="297" x2="384" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="360" cy="297" r="2.5" fill="#1F2A28"/>
+<line x1="360" y1="319" x2="384" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="360" cy="319" r="2.5" fill="#1F2A28"/>
+<line x1="384" y1="275" x2="384" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="384" y1="275" x2="408" y2="275" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="384" y1="275" x2="408" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="384" cy="275" r="2.5" fill="#1F2A28"/>
+<line x1="384" y1="297" x2="384" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="384" y1="297" x2="408" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="384" y1="297" x2="408" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="384" cy="297" r="2.5" fill="#1F2A28"/>
+<line x1="384" y1="319" x2="408" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="384" cy="319" r="2.5" fill="#1F2A28"/>
+<line x1="408" y1="275" x2="408" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="408" y1="275" x2="432" y2="275" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="408" cy="275" r="2.5" fill="#1F2A28"/>
+<line x1="408" y1="297" x2="408" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<line x1="408" y1="297" x2="432" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="408" cy="297" r="2.5" fill="#1F2A28"/>
+<line x1="408" y1="319" x2="432" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="408" cy="319" r="2.5" fill="#1F2A28"/>
+<line x1="432" y1="275" x2="432" y2="297" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="432" cy="275" r="2.5" fill="#1F2A28"/>
+<line x1="432" y1="297" x2="432" y2="319" stroke="#5B6B8C" stroke-width="3"/>
+<circle cx="432" cy="297" r="2.5" fill="#1F2A28"/>
+<circle cx="432" cy="319" r="2.5" fill="#1F2A28"/>
+<ellipse cx="375" cy="392" rx="22" ry="12" fill="#F6D2BD" stroke="#D55E00" stroke-width="1.5"/>
+<circle cx="322" cy="350" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="322" cy="350" r="3" fill="#1F2A28"/>
+<circle cx="352" cy="352" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="352" cy="352" r="3" fill="#1F2A28"/>
+<circle cx="398" cy="350" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="398" cy="350" r="3" fill="#1F2A28"/>
+<circle cx="428" cy="352" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="428" cy="352" r="3" fill="#1F2A28"/>
+<circle cx="318" cy="380" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="318" cy="380" r="3" fill="#1F2A28"/>
+<circle cx="432" cy="384" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="432" cy="384" r="3" fill="#1F2A28"/>
+<circle cx="322" cy="414" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="322" cy="414" r="3" fill="#1F2A28"/>
+<circle cx="350" cy="418" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="350" cy="418" r="3" fill="#1F2A28"/>
+<circle cx="400" cy="418" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="400" cy="418" r="3" fill="#1F2A28"/>
+<circle cx="430" cy="414" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="430" cy="414" r="3" fill="#1F2A28"/>
+<circle cx="375" cy="356" r="11" fill="none" stroke="#CC79A7" stroke-width="1.5"/><circle cx="375" cy="356" r="3" fill="#1F2A28"/>
+<line x1="450" y1="46" x2="468" y2="36" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="472" y="40" font-size="15" font-weight="800">Capsule</text>
+<line x1="450" y1="78" x2="468" y2="76" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="472" y="80" font-size="15" font-weight="800">Zona glomerulosa</text>
+<text x="472" y="97" font-size="12.5" font-weight="700" fill="#5D6B69">aldosterone</text>
+<line x1="450" y1="183" x2="468" y2="176" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="472" y="180" font-size="15" font-weight="800">Zona fasciculata</text>
+<text x="472" y="197" font-size="12.5" font-weight="700" fill="#5D6B69">cortisol</text>
+<line x1="450" y1="297" x2="468" y2="288" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="472" y="292" font-size="15" font-weight="800">Zona reticularis</text>
+<text x="472" y="309" font-size="12.5" font-weight="700" fill="#5D6B69">androgens (DHEA)</text>
+<line x1="450" y1="381" x2="468" y2="372" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="472" y="376" font-size="15" font-weight="800">Medulla</text>
+<text x="472" y="393" font-size="12.5" font-weight="700" fill="#5D6B69">epinephrine,</text>
+<text x="472" y="410" font-size="12.5" font-weight="700" fill="#5D6B69">norepinephrine</text>
+<line x1="290" y1="54" x2="290" y2="330" stroke="#1F2A28" stroke-width="1.5"/><line x1="290" y1="54" x2="296" y2="54" stroke="#1F2A28" stroke-width="1.5"/><line x1="290" y1="330" x2="296" y2="330" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="282" y="196" font-size="15" font-weight="800" text-anchor="end">Cortex</text>
+<text x="300" y="455" font-size="12.5" font-weight="700" fill="#5D6B69">surface at top, center at bottom</text>
+</g></svg>

@@ -1,0 +1,37 @@
+{
+  "blood-functions": {
+    "def": "What blood does: it transports gases, nutrients, wastes, hormones and heat; it regulates pH, body temperature and fluid balance; and it protects against blood loss (clotting) and infection (white blood cells and immune proteins).",
+    "roots": [],
+    "say": ""
+  },
+  "plasma-proteins": {
+    "def": "The proteins dissolved in plasma, about 7% of it: albumin (most abundant, made by the liver; its osmotic pull holds water in the blood), globulins (transport proteins, plus immune gamma globulins made by white blood cells) and fibrinogen (the clotting protein that forms the threads of a clot).",
+    "roots": [["albus", "white"], ["globulus", "little ball"], ["fibr-", "fiber"], ["-gen", "producing"]],
+    "say": "al-BYOO-min; GLOB-yoo-linz; fy-BRIN-oh-jen"
+  },
+  "formed-elements": {
+    "def": "The cells and cell fragments of blood: red blood cells, white blood cells and platelets, about 45% of blood volume. Platelets are fragments, not whole cells, which is why the group is called elements.",
+    "roots": [],
+    "say": ""
+  },
+  "hematocrit": {
+    "def": "The percentage of a blood sample's volume made up of red blood cells, read from the packed red column of a spun sample (the packed cell volume): about 37–47% in women and 42–52% in men. The thin pale layer above the red column is the buffy coat of white blood cells and platelets.",
+    "roots": [["hemat-", "blood"], ["-crit", "to separate"]],
+    "say": "hee-MAT-oh-krit"
+  },
+  "hematopoiesis": {
+    "def": "The making of blood cells in red bone marrow. A hematopoietic stem cell (hemocytoblast) gives rise to myeloid stem cells, which make red blood cells, megakaryocytes (which shed platelets) and most white blood cells, and to lymphoid stem cells, which make the immune system's central white blood cells. Growth factors such as erythropoietin, thrombopoietin and colony-stimulating factors steer it.",
+    "roots": [["hemato-", "blood"], ["-poiesis", "making"], ["myel-", "marrow"], ["mega-", "large"], ["kary-", "nucleus"], ["-cyte", "cell"], ["-blast", "bud, germ"]],
+    "say": "hee-mat-oh-poy-EE-sis; meg-uh-KAIR-ee-oh-site"
+  },
+  "serum": {
+    "def": "The clear fluid left when blood clots: plasma without fibrinogen and the other clotting proteins, which the clot used up.",
+    "roots": [["serum", "whey"]],
+    "say": "SEER-um"
+  },
+  "blood-properties": {
+    "def": "Blood's physical characteristics: about 5 L in an adult (7–8% of body weight), always red (bright when full of oxygen, dark when not), pH 7.35–7.45, roughly four to five times as viscous as water, and, deep in the trunk, at the temperature of the organs around it. Whole blood is blood with nothing added or removed.",
+    "roots": [],
+    "say": ""
+  }
+}

@@ -598,7 +598,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 <main id="main" class="xshell anp-app">
   ${crumbNav(crumbItems, depth)}
   <header class="hero anp-hero"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>
-  <div id="app" class="anp-app-mount" data-slug="${entry.slug}"${entry.data ? ` data-src="${depth}data/tools/${entry.data}"` : ''}><noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript></div>
+  <div id="app" class="anp-app-mount" data-slug="${entry.slug}"${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}><noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript></div>
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
@@ -680,9 +680,32 @@ const bank = bankJson();
 put('assets/bank-core.json', bank.core);
 put('assets/bank-why.json', bank.why);
 
+/* Tool data as served: only items whose topic is built, so a chapter's tool
+   items go live with its pages and not before (spec decision 53). The source
+   files in data/tools/ hold every chapter, published or not, and are what the
+   content check validates; the tool pages read these filtered copies. */
+function publishedTool(file) {
+  const d = JSON.parse(readFileSync(join(C.data, 'tools', file), 'utf8'));
+  const live = (x) => !x.topic || C.built.has(x.topic);
+  for (const k of Object.keys(d)) if (Array.isArray(d[k]) && d[k].some(x => x && typeof x === 'object' && 'topic' in x)) d[k] = d[k].filter(live);
+  if (file === 'lab-practical.json') {
+    for (const set of d.sets) set.stations = set.stations.filter(live);
+    d.sets = d.sets.filter(set => set.stations.length);
+    const used = new Set(d.sets.flatMap(set => set.stations.map(st => st.figure)));
+    d.figures = Object.fromEntries(Object.entries(d.figures).filter(([id]) => used.has(id)));
+  }
+  if (file === 'calculators.json') d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));
+  if (file === 'word-roots.json') {
+    const used = new Set(d.terms.flatMap(t => t.segs.map(sg => sg[1])));
+    d.parts = d.parts.filter(pt => used.has(pt.id));
+  }
+  return JSON.stringify(d);
+}
+for (const f of readdirSync(join(C.data, 'tools')).filter(f => f.endsWith('.json')).sort()) put(`assets/tool-data/${f}`, publishedTool(f));
+
 // Generated folders hold nothing else: a page for a topic that lost its data
 // would otherwise live on, unlinked and stale.
-const OWNED_DIRS = ['lessons', 'notes', 'chapters', 'concepts', 'tools'];
+const OWNED_DIRS = ['lessons', 'notes', 'chapters', 'concepts', 'tools', 'assets/tool-data'];
 const stale = [];
 for (const d of OWNED_DIRS) {
   const dir = join(OUT, d);

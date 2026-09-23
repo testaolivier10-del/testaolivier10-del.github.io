@@ -1,0 +1,56 @@
+{
+  "os-18-6": {
+    "file": "figures/openstax/os-18-6.jpg",
+    "w": 614,
+    "h": 706,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.6",
+      "section": "18.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/687a93f8015ab116f5f9bc537521e3999fcc4e5b",
+      "page": "18-3-erythrocytes"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/687a93f8015ab116f5f9bc537521e3999fcc4e5b",
+    "alt": "A color-enhanced scanning electron micrograph of about fifteen red blood cells. Each is a smooth round disc with a raised rim and a shallow dimple in the center on both faces; cells seen edge-on look like thick ovals.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.6",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-18-7": {
+    "file": "figures/openstax/os-18-7.jpg",
+    "w": 1100,
+    "h": 555,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.7",
+      "section": "18.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/77d1defdd1bc3c0e72e371fbb841ab81cba640ee",
+      "page": "18-3-erythrocytes"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/77d1defdd1bc3c0e72e371fbb841ab81cba640ee",
+    "alt": "Two drawings of the oxygen-carrying protein of red blood cells. On the left, four folded protein chains, two of one kind and two of another, are packed together, and each holds a small flat disc with an iron ion at its center. On the right, the chemical structure of one disc: a large ring of four smaller nitrogen-containing rings with one iron atom bonded in the middle.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.7",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-18-8": {
+    "file": "figures/openstax/os-18-8.jpg",
+    "w": 1100,
+    "h": 1430,
+    "source": "openstax",
+    "openstax": {
+      "figure": "18.8",
+      "section": "18.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e8386446b36358889e9988cf8e77ead8abe841a8",
+      "page": "18-3-erythrocytes"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e8386446b36358889e9988cf8e77ead8abe841a8",
+    "alt": "A numbered cycle diagram of the red blood cell's life. New cells form in the marrow of the skeleton and pass through stages into the bloodstream, where they circulate. Old cells are engulfed by a large scavenger cell. Inside it the protein is split: the protein chains become amino acids; the iron is carried away by a blood protein and either reused in the marrow or stored in the liver; and the rest of the pigment is converted in two steps into a green and then a yellow pigment that the liver handles.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.8",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

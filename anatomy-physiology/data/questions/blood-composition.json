@@ -1,0 +1,415 @@
+[
+  {
+    "id": "anp-blood-composition-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which plasma protein is the most abundant?",
+    "options": ["Fibrinogen", "Albumin", "Gamma globulin", "Beta globulin"],
+    "correct": 1,
+    "why": {
+      "correct": "Albumin makes up about 55–60% of plasma protein. It is made by the liver.",
+      "options": [
+        "Fibrinogen is the smallest of the three main groups, about 4–7% of plasma protein.",
+        "Correct. Albumin is more than half of all plasma protein.",
+        "Gamma globulins are one part of the globulins, which together make up about 35–38%.",
+        "Beta globulins are another part of the globulins, and they are far less abundant than albumin."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "structure-function"],
+    "q": "A man with long-standing liver damage has swollen ankles and a low level of one plasma protein. Which protein is most likely low, and why would that let fluid build up in his tissues?",
+    "options": [
+      "Fibrinogen: without it, blood leaks out of the capillaries into the tissues",
+      "Gamma globulins: without them, infection inflames the tissues",
+      "Albumin: less of it means a weaker osmotic pull holding water in the blood",
+      "Beta globulins: without them, hormones cannot reach the kidneys"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The liver makes albumin, and albumin supplies most of the plasma's osmotic pull. It stays in the capillaries, so water is drawn toward it. With less albumin, the pull weakens, more water leaves the blood, and the tissues swell.",
+      "options": [
+        "Fibrinogen is made by the liver too, and a failing liver can lower it, but a low fibrinogen causes bleeding. Fluid leaving the blood as clear fluid is set by osmotic pull, and fibrinogen is too scarce to supply much of that.",
+        "Gamma globulins are made by white blood cells, not the liver, and swollen ankles from liver disease are not caused by infection.",
+        "Correct. Low albumin weakens the osmotic pull that keeps water in the blood.",
+        "Hormone carriers do not set how much water stays in the blood, and hormone delivery does not explain swelling."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-18-2",
+    "q": "Compare the middle tube with the left tube. What has changed?",
+    "options": [
+      "The plasma layer has become darker",
+      "The red column is shorter, so the hematocrit is lower",
+      "The buffy coat is much thicker",
+      "The red column is taller, so the hematocrit is higher"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the middle tube the packed red column fills a much smaller fraction of the tube, and the plasma fills more. Red cells make up less of the blood's volume: the hematocrit is lower than normal.",
+      "options": [
+        "The plasma in both tubes is the same straw color. The difference is in how much of each tube it fills.",
+        "Correct. A shorter red column means a lower hematocrit.",
+        "The buffy coat is a thin band in both tubes, well under a tenth of the height.",
+        "That describes the right tube, where the red column is taller than normal. In the middle tube it is shorter."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A spun blood sample is 50 mm tall. The packed red column is 20 mm tall. What is the hematocrit?",
+    "options": ["20%", "30%", "40%", "60%"],
+    "correct": 2,
+    "why": {
+      "correct": "Hematocrit = red column ÷ whole column × 100% = 20 ÷ 50 × 100% = 40%.",
+      "options": [
+        "20 is the height of the red column in millimeters, not a percentage of the whole.",
+        "30 is the height of the plasma layer (50 − 20), not a percentage.",
+        "Correct. 20 ÷ 50 = 0.40, which is 40%.",
+        "60% is the share of plasma (30 ÷ 50). The hematocrit is the share of red cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A woman has a blood volume of 4.0 L and a hematocrit of 40%. About how much of her blood is plasma?",
+    "options": ["1.6 L", "2.0 L", "4.0 L", "2.4 L"],
+    "correct": 3,
+    "why": {
+      "correct": "Red cells are 40% of 4.0 L = 1.6 L. The rest, 4.0 − 1.6 = 2.4 L, is plasma (the buffy coat is too small to matter).",
+      "options": [
+        "1.6 L is her red cell volume, 40% of her blood.",
+        "2.0 L would be half her blood. At a hematocrit of 40%, plasma is 60%, not 50%.",
+        "4.0 L is her whole blood volume, cells and plasma together.",
+        "Correct. 60% of 4.0 L is 2.4 L of plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["homeostasis", "structure-function"],
+    "q": "A runner loses 2 L of sweat on a hot day and drinks nothing. Sweat comes from plasma water; no red blood cells are lost. Predict the change in each variable in his blood.",
+    "variables": [
+      { "name": "Plasma volume", "answer": "down", "why": "Sweat is made from water drawn out of the plasma, so plasma volume shrinks." },
+      { "name": "Red blood cell volume", "answer": "none", "why": "No red cells leave the body in sweat, and new ones take days to make, so the red cell volume is unchanged." },
+      { "name": "Hematocrit", "answer": "up", "why": "The same red cell volume now sits in a smaller total blood volume, so red cells are a larger fraction of it." },
+      { "name": "Plasma protein concentration", "answer": "up", "why": "The proteins stay in the blood while water leaves, so the same amount of protein is dissolved in less water." },
+      { "name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen, so the blood is thicker." }
+    ],
+    "why": {
+      "correct": "Losing plasma water leaves the cells and proteins in a smaller volume. Every concentration and ratio that has red cells or proteins on top rises, including the hematocrit, even though the body has not made a single extra red blood cell."
+    }
+  },
+  {
+    "id": "anp-blood-composition-7",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What is the buffy coat in a spun blood sample?",
+    "options": [
+      "The layer of white blood cells and platelets between plasma and red cells",
+      "The top layer of straw-colored plasma",
+      "The packed red blood cells at the bottom",
+      "A film of fat floating on the plasma after a meal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The buffy coat is the thin, pale band between the plasma and the packed red cells. It holds the white blood cells and platelets, less than 1% of the sample.",
+      "options": [
+        "Correct. White blood cells and platelets settle between the lighter plasma and the denser red cells.",
+        "The top layer is plasma, the fluid part of blood, not the buffy coat.",
+        "The packed red cells are the bottom layer, whose height gives the hematocrit.",
+        "Fat can make plasma cloudy after a fatty meal, but the buffy coat is a layer of cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put the steps in order to show how platelets are made.",
+    "options": [
+      "A hematopoietic stem cell divides",
+      "One daughter cell becomes a myeloid stem cell",
+      "Thrombopoietin drives it to become a megakaryoblast",
+      "The megakaryoblast grows into a megakaryocyte with a huge, many-lobed nucleus",
+      "The megakaryocyte pushes extensions of cytoplasm into a marrow vessel",
+      "Flowing blood pinches the extensions into platelets"
+    ],
+    "why": {
+      "correct": "Platelets come from the myeloid branch. A myeloid stem cell, driven by thrombopoietin, becomes a megakaryoblast and then a giant megakaryocyte, which copies its DNA without dividing. The megakaryocyte reaches into a marrow vessel, and the blood breaks its extensions into thousands of platelets."
+    }
+  },
+  {
+    "id": "anp-blood-composition-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A lab lets one blood sample clot in a plain tube and spins another that contains a chemical that stops clotting. The fluid from the first tube lacks one protein that the fluid from the second tube has. Which protein?",
+    "options": ["Albumin", "Alpha globulin", "Fibrinogen", "Gamma globulin"],
+    "correct": 2,
+    "why": {
+      "correct": "The first tube gives serum; the second gives plasma. Serum is plasma without its clotting proteins, because they were used up building the clot. Fibrinogen is the main one.",
+      "options": [
+        "Albumin does not take part in clotting, so it is present in both serum and plasma.",
+        "Alpha globulins are transport proteins, and they stay in serum.",
+        "Correct. Fibrinogen is turned into the threads of the clot, so serum has none.",
+        "Gamma globulins are immune proteins. They remain in serum, which is why many immune tests use serum."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Select every item that is a formed element of blood.",
+    "options": ["Platelets", "Albumin", "White blood cells", "Red blood cells", "Fibrinogen", "Glucose"],
+    "correct": [0, 2, 3],
+    "why": {
+      "correct": "Formed elements are the cells and cell fragments of blood: red blood cells, white blood cells and platelets. Proteins and dissolved molecules belong to the plasma.",
+      "options": [
+        "Correct. Platelets are cell fragments, which is why the group is called formed elements rather than cells.",
+        "Albumin is a plasma protein, dissolved in the fluid part of blood.",
+        "Correct. White blood cells are formed elements.",
+        "Correct. Red blood cells are by far the most numerous formed element.",
+        "Fibrinogen is a plasma protein, not a cell or fragment.",
+        "Glucose is a nutrient dissolved in plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "misconception": "hematocrit measures how many red cells the body has",
+    "q": "Ana, 19, arrives dehydrated after three days of vomiting. Her hematocrit is 54%. After 2 L of salt solution by drip, it is 44% a few hours later. What best explains the fall?",
+    "options": [
+      "Her marrow slowed red blood cell production overnight",
+      "The salt solution destroyed some of her red blood cells",
+      "Her plasma volume rose, diluting the same red cell volume",
+      "Her kidneys removed the extra red blood cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Hematocrit is red cell volume divided by total blood volume. Dehydration had shrunk her plasma, raising the ratio. The drip restored plasma volume, so the same red cells became a smaller share of a larger total.",
+      "options": [
+        "Red blood cells circulate for about 120 days, so slowing production for a few hours would barely change their number.",
+        "A salt solution given in the right concentration does not burst red blood cells. Her red cell volume is unchanged.",
+        "Correct. The denominator of the ratio grew; the numerator stayed the same.",
+        "The kidneys filter plasma, not whole cells. They do not remove red blood cells from the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A person has a hematocrit of 60%. Compared with normal blood, how does the resistance to blood flow change?",
+    "options": [
+      "It falls, because more cells carry more oxygen",
+      "It rises, because the blood is more viscous",
+      "It does not change, because viscosity depends only on plasma proteins",
+      "It falls, because packed cells slide past each other"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Most of blood's viscosity comes from its red cells. A hematocrit of 60% makes blood thicker, and viscosity is one of the factors that set resistance: more viscous blood meets more resistance.",
+      "options": [
+        "Carrying more oxygen does not lower resistance. Resistance depends on viscosity and vessel size, and viscosity has risen.",
+        "Correct. Higher hematocrit, higher viscosity, higher resistance.",
+        "Plasma proteins add a little to viscosity, but red cells contribute most of it.",
+        "More cells rub against each other and the vessel walls more, not less. Crowded cells raise viscosity."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "In an adult, which of these bones contains red bone marrow that makes blood cells?",
+    "options": ["The shaft of the tibia", "The bones of the fingers", "The sternum", "The shaft of the radius"],
+    "correct": 2,
+    "why": {
+      "correct": "In adults, red marrow is found in the flat bones of the trunk and skull (sternum, ribs, vertebrae, hip bones, skull) and in the upper ends of the femur and humerus.",
+      "options": [
+        "The shafts of long bones hold yellow, fatty marrow in adults.",
+        "The small bones of the hands and feet hold mostly yellow marrow in adults.",
+        "Correct. The sternum is a flat bone full of red marrow, which is why marrow samples are sometimes taken from it.",
+        "The radius shaft, like other limb-bone shafts, holds yellow marrow in adults."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "structure-function"],
+    "q": "After a course of chemotherapy, which kills dividing cells in the marrow, a patient's white blood cell count is very low. Her doctor prescribes a drug to speed its recovery. Which growth factor is that drug most likely to be?",
+    "options": ["Erythropoietin", "Thrombopoietin", "Albumin", "A colony-stimulating factor"],
+    "correct": 3,
+    "why": {
+      "correct": "Colony-stimulating factors drive marrow precursors to make white blood cells. Given as a drug after chemotherapy, one speeds the recovery of the white cell count.",
+      "options": [
+        "Erythropoietin speeds red blood cell production, not white.",
+        "Thrombopoietin drives megakaryocytes and platelet production.",
+        "Albumin is a plasma protein that holds water in the blood. It is not a growth factor.",
+        "Correct. Colony-stimulating factors steer marrow cells toward white blood cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Complete the branching: hematopoietic stem cell → myeloid stem cell or ____ → the family of white blood cells at the heart of the immune system.",
+    "options": ["Lymphoid stem cell", "Megakaryocyte", "Monoblast", "Mesenchymal cell"],
+    "correct": 0,
+    "why": {
+      "correct": "The hematopoietic stem cell's daughters commit to one of two branches: the myeloid branch or the lymphoid branch. Lymphoid stem cells give rise to the immune system's central family of white blood cells.",
+      "options": [
+        "Correct. The lymphoid stem cell is the other branch.",
+        "A megakaryocyte is a late cell on the myeloid branch that sheds platelets.",
+        "A monoblast is a stage on the myeloid branch that leads to one kind of white blood cell.",
+        "Mesenchymal cells are embryonic connective tissue cells, not a branch of blood cell production."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-16",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student described how a lab prepares serum. One step is wrong. Which one?",
+    "options": [
+      "Blood is drawn into a plain tube with nothing to stop clotting",
+      "The sample stands for about half an hour and forms a clot",
+      "Fibrinogen is converted into the threads of the clot",
+      "The tube is spun, and the fluid on top, still rich in fibrinogen, is collected as serum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Serum is the fluid left after clotting. Its fibrinogen was used up building the clot, so serum has little or none. Fluid that still contains fibrinogen would be plasma.",
+      "options": [
+        "This step is right. Serum needs blood that is allowed to clot.",
+        "This step is right. Blood in a plain tube clots within about half an hour.",
+        "This step is right. Clotting turns fibrinogen into insoluble threads that trap the cells.",
+        "This is the error. Serum lacks fibrinogen; the clot consumed it."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "blood in veins is blue",
+    "q": "A student says the blood in her arm veins is blue until it meets oxygen outside the body. What is the best reply?",
+    "options": [
+      "Correct: venous blood is blue and turns red on contact with air",
+      "Venous blood is dark red; veins look blue because of how skin handles light",
+      "Venous blood is purple because it carries carbon dioxide",
+      "Venous blood is blue only in the limbs and red in the core"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Blood is always red. Red blood cells full of oxygen make it bright scarlet; with less oxygen it is dark red. Veins look blue through skin because skin scatters and absorbs red and blue light differently, not because the blood is blue.",
+      "options": [
+        "Blood drawn into a sealed tube, never meeting air, is still dark red. It is not blue inside the body.",
+        "Correct. The color of a vein seen through skin is an effect of light in the skin.",
+        "Carbon dioxide does not turn blood purple. Blood with less oxygen is darker red.",
+        "Blood in the limbs and the core is the same color for the same oxygen content. Blood is never blue."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-18",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every way blood helps keep conditions in the body stable.",
+    "options": [
+      "Buffers in blood take up or release hydrogen ions",
+      "Blood carries heat from active muscles to the skin",
+      "Blood makes hormones in the plasma",
+      "Albumin's osmotic pull helps set how much water stays in the vessels",
+      "Red blood cells divide in the bloodstream to replace losses"
+    ],
+    "correct": [0, 1, 3],
+    "why": {
+      "correct": "Blood regulates pH through its buffers, body temperature by carrying heat, and fluid balance through the osmotic pull of its proteins.",
+      "options": [
+        "Correct. Bicarbonate, phosphate and proteins buffer blood pH within 7.35–7.45.",
+        "Correct. Blood picks up heat in warm tissues and loses it where skin vessels are widened.",
+        "Blood carries hormones; glands make them. Plasma itself makes no hormones.",
+        "Correct. Albumin held in the capillaries draws water toward the blood.",
+        "Mature red blood cells cannot divide. New ones come from the marrow."
+      ]
+    }
+  },
+  {
+    "id": "anp-blood-composition-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A patient's liver is failing. Which growth factor is her body now likely to make too little of, and which formed element would fall as a result?",
+    "options": [
+      "Erythropoietin; red blood cells",
+      "Thrombopoietin; platelets",
+      "Colony-stimulating factor; white blood cells",
+      "Thrombopoietin; red blood cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Thrombopoietin is made mainly by the liver and drives megakaryocytes to make platelets. A failing liver makes less of it, so platelet counts can fall.",
+      "options": [
+        "Erythropoietin comes from the kidneys, not the liver.",
+        "Correct. Less thrombopoietin, fewer platelets.",
+        "Colony-stimulating factors are made by white blood cells, vessel lining cells and marrow fibroblasts, not mainly by the liver.",
+        "Thrombopoietin does come mainly from the liver, but it drives platelet production, not red cell production."
+      ]
+    }
+  }
+]

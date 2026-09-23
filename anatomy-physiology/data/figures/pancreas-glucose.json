@@ -1,0 +1,48 @@
+{
+  "os-23-26": {
+    "file": "figures/openstax/os-23-26.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.26",
+      "section": "23.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/65de80fe9396d266a09772aa978551d22566f5d8",
+      "page": "23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/65de80fe9396d266a09772aa978551d22566f5d8",
+    "alt": "Top: the pancreas, a long pale lobulated organ, with its broad head tucked into the curve of the first part of the small intestine and its narrow tail extending to the right; a main duct runs its length and joins the bile duct. Bottom: an enlarged square of pancreatic tissue. Most of it is round clusters of pink cells around tiny ducts that drain into a larger green duct, labeled as exocrine cells secreting pancreatic juice and acinar cells secreting digestive enzymes. Two pale blue-green islands of cells with capillaries running through them are labeled as pancreatic islet cells secreting hormones.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.26",
+    "labels": [],
+    "w": 637,
+    "h": 827,
+    "ext": "jpg"
+  },
+  "os-17-19": {
+    "file": "figures/openstax/os-17-19.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "17.19",
+      "section": "17.9",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/487e075211439565328660c016d1916ccc4e0aa1",
+      "page": "17-9-the-endocrine-pancreas"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/487e075211439565328660c016d1916ccc4e0aa1",
+    "alt": "A loop diagram built around a glucose meter reading 90 mg/dL, labeled homeostasis, 70 to 100 mg/dL. An arrow up-left leads to a meter reading 160 mg/dL, labeled hyperglycemia, then to the pancreas, where beta cells release insulin. Insulin's effects are listed with small drawings of a mitochondrion, the liver and endoplasmic reticulum: body cells take up glucose and use it in cellular respiration, the liver stores glucose as glycogen instead of breaking glycogen down, and amino acids and glycerol are not made into glucose. Blood glucose then decreases back to the center. An arrow down-left leads to a meter reading 50 mg/dL, labeled hypoglycemia, then to the pancreas, where alpha cells release glucagon. Glucagon's effects are listed: cells take up less glucose, liver glycogen is broken down into glucose and released, and amino acids and glycerol are made into glucose and released. Blood glucose then increases back to the center.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.19",
+    "labels": [],
+    "w": 1100,
+    "h": 1546,
+    "ext": "jpg"
+  },
+  "glucose-insulin-meal": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 640,
+    "h": 540,
+    "alt": "Two stacked graphs over the 3 hours after a carbohydrate meal eaten at time 0. Top: blood glucose in mg/dL, with a shaded normal fasting range of 70 to 99. In a healthy person, glucose starts at about 88, peaks at about 135 at 45 minutes, is back below 100 by 2 hours and is at about 86 by 2.5 hours. In a person with type 2 diabetes, shown as a dashed line, glucose starts at about 140, rises to a peak of about 240 at 90 minutes, and is still about 190 at 3 hours. Bottom: plasma insulin in a healthy person in microunits per mL. It starts at about 6, jumps within 5 to 10 minutes, peaks at about 58 at 45 minutes, and falls back to about 7 by 3 hours, rising and falling with glucose.",
+    "labels": []
+  }
+}

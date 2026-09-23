@@ -1,0 +1,93 @@
+{
+  "topic": "hormone-action",
+  "hook": "<p>A man stung by a bee collapses with a severe allergic reaction. The paramedic injects epinephrine, and within two minutes his blood pressure rises and his wheezing eases. At the hospital he also gets a steroid, which will not do anything visible for hours but will keep the reaction from flaring up again tomorrow. Both drugs copy hormones. Why does one act in minutes and the other in hours?</p>",
+  "prereq": [
+    {
+      "q": "Which messenger can cross the plasma membrane by diffusing through the phospholipid bilayer?",
+      "options": [
+        "A peptide made of amino acids",
+        "A steroid made from cholesterol",
+        "A charged ion such as sodium"
+      ],
+      "correct": 1,
+      "why": "The core of the bilayer is hydrophobic. Lipid-soluble molecules such as steroids diffuse through it; peptides and ions are hydrophilic and cannot.",
+      "review": "chemical-signaling"
+    },
+    {
+      "q": "What is a second messenger?",
+      "options": [
+        "A hormone released by a second gland",
+        "A molecule made inside a cell that carries a signal onward from a membrane receptor protein",
+        "A neurotransmitter that crosses a second synapse"
+      ],
+      "correct": 1,
+      "why": "A second messenger such as cAMP is made inside the target cell after the first messenger binds a receptor protein in the membrane. It carries the signal to the cell's machinery.",
+      "review": "chemical-signaling"
+    },
+    {
+      "q": "How does an endocrine gland differ from an exocrine gland?",
+      "options": [
+        "It releases its product into the blood, with no duct",
+        "It releases its product through a duct onto a surface",
+        "It is made of nervous tissue rather than epithelium"
+      ],
+      "correct": 0,
+      "why": "Endocrine glands are ductless: their hormones pass into the fluid around the cells and then into the blood. Exocrine glands release their products through ducts.",
+      "review": "glands"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-17-2",
+    "caption": "The endocrine glands and hormone-secreting organs, scattered from the head to the pelvis and linked only by the blood. Hide the labels and name each gland."
+  },
+  "chain": [
+    {
+      "cause": "A water-soluble hormone such as epinephrine binds its receptor protein in the target cell's plasma membrane.",
+      "effect": "The receptor protein changes shape and switches on a G protein on the inside of the membrane."
+    },
+    {
+      "cause": "The active G protein switches on adenylyl cyclase.",
+      "effect": "Adenylyl cyclase converts ATP into cAMP, the second messenger."
+    },
+    {
+      "cause": "cAMP binds protein kinase A.",
+      "effect": "Protein kinase A phosphorylates target proteins, and some of those are kinases that phosphorylate more proteins: a phosphorylation cascade that amplifies the signal."
+    },
+    {
+      "cause": "The phosphorylated enzymes and channels change their activity.",
+      "effect": "The cell's behavior changes within seconds, for example a liver cell releases glucose."
+    },
+    {
+      "cause": "Phosphodiesterase breaks down cAMP and phosphatases remove the added phosphates once the hormone leaves.",
+      "effect": "The response ends within minutes."
+    }
+  ],
+  "misconception": {
+    "wrong": "Hormones enter their target cells to act.",
+    "right": "Only lipid-soluble hormones (steroids and the thyroid gland's amines) enter cells. Water-soluble hormones, which include all peptide and protein hormones and epinephrine, never enter: they bind a receptor protein in the plasma membrane, and second messengers carry the signal inside. That difference is why water-soluble hormones act in seconds to minutes and lipid-soluble ones in hours."
+  },
+  "check": [
+    "anp-hormone-action-2",
+    "anp-hormone-action-3",
+    "anp-hormone-action-5",
+    "anp-hormone-action-9",
+    "anp-hormone-action-11",
+    "anp-hormone-action-13",
+    "anp-hormone-action-20"
+  ],
+  "summary": "<p>The endocrine system is every hormone-secreting gland and cell in the body, linked only by the blood. Hormones come in four chemical classes: amines, peptides, proteins and steroids. What matters most is solubility. Water-soluble hormones (peptides, proteins, epinephrine and norepinephrine) travel free in the plasma, have short half-lives, and bind receptor proteins in the plasma membrane; G proteins, adenylyl cyclase, cAMP and protein kinase A (or IP3, DAG and calcium) change existing proteins within seconds, and phosphodiesterase ends the signal. Lipid-soluble hormones (steroids and the thyroid gland's amines) ride on carrier proteins, last hours, cross the membrane, and their hormone–receptor complexes bind hormone response elements to change transcription, so responses take hours and last days. Only free hormone acts. Glands release hormones in response to humoral, hormonal or neural stimuli, and negative feedback stops the release. Hormones interact permissively, synergistically or antagonistically.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-18",
+      "label": "NREMT: General pharmacology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-23",
+      "label": "NREMT: Allergic reactions"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-6",
+      "label": "NREMT: Anatomy and physiology"
+    }
+  ]
+}

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "anp-hormone-action-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "A newly discovered hormone is built from cholesterol. Where would you expect to find its receptor protein in a target cell?",
+    "options": [
+      "On the outer surface of the plasma membrane",
+      "Inside the cell, in the cytosol or nucleus",
+      "In the membrane of secretory vesicles",
+      "On the carrier protein that transports it"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A hormone built from cholesterol is a steroid, and steroids are lipid-soluble. It diffuses through the phospholipid bilayer, so its receptor protein can sit inside the cell, in the cytosol or the nucleus.",
+      "options": [
+        "Membrane receptor proteins serve water-soluble hormones, which cannot cross the bilayer. A steroid crosses it.",
+        "Correct. Lipid-soluble hormones bind intracellular receptor proteins.",
+        "Secretory vesicles belong to the cell that makes and releases a water-soluble hormone, not to the target cell's receptor machinery.",
+        "A carrier protein moves the hormone through the blood. It is not a receptor protein and does not start a response in the target cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-2",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A man with a severe allergic reaction gets injected epinephrine and a steroid drug at the same time. His breathing improves within minutes, but the steroid's effect only appears hours later. What best explains the difference?",
+    "options": [
+      "The steroid is injected more deeply and absorbed into the blood more slowly",
+      "Epinephrine switches on existing proteins through a second messenger; the steroid must first change gene transcription",
+      "The steroid is cleared from the blood much faster, so less of it reaches the target cells",
+      "Epinephrine enters its target cells directly, while the steroid must wait for a carrier protein to let it in"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Epinephrine is water-soluble. It binds membrane receptor proteins, and G proteins and cAMP switch on kinases that change proteins the cell already has, within seconds. The steroid is lipid-soluble. It works through an intracellular receptor protein that changes transcription, and making new mRNA and protein takes hours.",
+      "options": [
+        "Both drugs reach the blood quickly; the delay is inside the target cells, not in absorption.",
+        "Correct. Changing existing proteins is fast; making new ones is slow.",
+        "Steroids have long half-lives because carrier proteins protect them. Fast clearance is a feature of water-soluble hormones such as epinephrine.",
+        "Epinephrine does not enter its target cells; it binds a receptor protein on the surface. The steroid crosses the membrane by itself once it leaves its carrier protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A hormone has a half-life of 20 minutes. Its blood level is 120 units when the gland stops secreting. What is the level after 1 hour, assuming no more is released?",
+    "options": [
+      "40 units",
+      "60 units",
+      "15 units",
+      "30 units"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "One hour is 60 ÷ 20 = 3 half-lives. 120 → 60 → 30 → 15 units. The fraction left is (1/2)³ = 1/8, and 120 × 1/8 = 15.",
+      "options": [
+        "40 units comes from dividing by 3, the number of half-lives. Each half-life halves the level instead.",
+        "60 units is the level after one half-life (20 minutes), not after three.",
+        "Correct. Three halvings: 120, 60, 30, 15.",
+        "30 units is the level after two half-lives (40 minutes)."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A lipid-soluble hormone has a total blood concentration of 200 units, and 95% of it is bound to carrier proteins. How much of it can reach target cells and bind their receptor proteins?",
+    "options": [
+      "190 units",
+      "10 units",
+      "200 units",
+      "95 units"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Only free hormone leaves the capillaries and binds receptor proteins. Free fraction = 100% − 95% = 5%, and 5% of 200 = 10 units.",
+      "options": [
+        "190 units is the bound hormone, which cannot leave the blood while it is attached to a carrier protein.",
+        "Correct. The free 5%, 10 units, is the active part.",
+        "Not all of it is available: the bound hormone is a reservoir, not an active form.",
+        "95 is the bound percentage, not an amount in units."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order to show how a water-soluble hormone changes a target cell's activity through cAMP.",
+    "options": [
+      "The hormone binds a receptor protein in the plasma membrane",
+      "The receptor protein switches on a G protein",
+      "The G protein switches on adenylyl cyclase",
+      "Adenylyl cyclase converts ATP into cAMP",
+      "cAMP switches on protein kinase A",
+      "Protein kinase A phosphorylates target proteins, changing their activity"
+    ],
+    "why": {
+      "correct": "The first messenger never enters the cell. Its receptor protein activates a G protein, which activates adenylyl cyclase. Adenylyl cyclase makes cAMP from ATP, cAMP activates protein kinase A, and the kinase phosphorylates target proteins, which changes the cell's behavior."
+    }
+  },
+  {
+    "id": "anp-hormone-action-6",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order to show how a lipid-soluble hormone leads to a new protein in its target cell.",
+    "options": [
+      "The hormone comes off its carrier protein in the plasma",
+      "Free hormone diffuses through the target cell's plasma membrane",
+      "It binds its intracellular receptor protein",
+      "The hormone–receptor complex binds a hormone response element on DNA",
+      "Transcription of the controlled gene changes",
+      "New mRNA is translated into a new protein"
+    ],
+    "why": {
+      "correct": "Only free hormone leaves the blood. It crosses the membrane, binds its receptor protein inside the cell, and the complex binds a hormone response element. Transcription changes, and the new mRNA is translated into protein."
+    }
+  },
+  {
+    "id": "anp-hormone-action-7",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student wrote out how a water-soluble hormone acts. One step is wrong. Which one?",
+    "options": [
+      "The hormone binds a receptor protein on the cell surface",
+      "A G protein switches on adenylyl cyclase",
+      "Adenylyl cyclase makes cAMP from ATP",
+      "cAMP enters the nucleus and binds a hormone response element",
+      "Protein kinase A phosphorylates target proteins"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "cAMP does not bind DNA at a hormone response element. It switches on protein kinase A in the cytosol. Hormone response elements are where the hormone–receptor complexes of lipid-soluble hormones bind.",
+      "options": [
+        "This step is right. A water-soluble hormone binds a receptor protein in the plasma membrane.",
+        "This step is right. The activated G protein switches on adenylyl cyclase.",
+        "This step is right. Adenylyl cyclase converts ATP into cAMP, the second messenger.",
+        "This is the error. cAMP acts by switching on protein kinase A; binding a hormone response element is how lipid-soluble hormones work.",
+        "This step is right. The kinase changes target proteins by phosphorylating them."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-8",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the pathway: hormone binds a membrane receptor protein → G protein switches on → adenylyl cyclase converts ATP into ____ → protein kinase A switches on.",
+    "options": [
+      "cAMP",
+      "IP3",
+      "DAG",
+      "mRNA"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Adenylyl cyclase converts ATP into cyclic AMP (cAMP), the second messenger that switches on protein kinase A.",
+      "options": [
+        "Correct. cAMP is made from ATP by adenylyl cyclase.",
+        "IP3 is a second messenger made by splitting a membrane phospholipid, not from ATP by adenylyl cyclase. It releases calcium.",
+        "DAG is the other product of splitting that phospholipid. It stays in the membrane and helps switch on a different kinase.",
+        "mRNA is made by transcription, which is how lipid-soluble hormones act. Adenylyl cyclase does not make it."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A drug blocks phosphodiesterase in a target cell. The hormone that raises cAMP in that cell is at its normal level. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "cAMP in the cell",
+        "answer": "up",
+        "why": "cAMP is still made by adenylyl cyclase, but phosphodiesterase can no longer break it down, so it builds up."
+      },
+      {
+        "name": "Protein kinase A activity",
+        "answer": "up",
+        "why": "More cAMP is available to bind and switch on protein kinase A."
+      },
+      {
+        "name": "Phosphorylated target proteins",
+        "answer": "up",
+        "why": "A more active kinase phosphorylates more of its target proteins."
+      },
+      {
+        "name": "Hormone bound to membrane receptor proteins",
+        "answer": "none",
+        "why": "The drug acts inside the cell. Binding depends on the hormone level and the number of receptor protein molecules, which have not changed."
+      }
+    ],
+    "why": {
+      "correct": "Phosphodiesterase is one of the switches that end the cAMP signal. Blocking it makes the same hormone signal stronger and longer, without any change at the membrane."
+    }
+  },
+  {
+    "id": "anp-hormone-action-10",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A new drug pushes a steroid hormone off its carrier proteins in the blood. Predict the change in each variable in the first hour, before the gland has adjusted its secretion.",
+    "variables": [
+      {
+        "name": "Free hormone in the plasma",
+        "answer": "up",
+        "why": "Hormone knocked off the carrier proteins becomes free hormone."
+      },
+      {
+        "name": "Bound hormone in the plasma",
+        "answer": "down",
+        "why": "Less hormone stays attached to the carrier proteins."
+      },
+      {
+        "name": "Effect on target cells",
+        "answer": "up",
+        "why": "Only free hormone can reach target cells and bind their receptor proteins, so more free hormone means a stronger effect."
+      },
+      {
+        "name": "Rate at which the hormone is cleared from the blood",
+        "answer": "up",
+        "why": "Free hormone is exposed to the liver's enzymes and to filtering by the kidneys; bound hormone is shielded, so clearance speeds up."
+      }
+    ],
+    "why": {
+      "correct": "Carrier proteins hold most of a lipid-soluble hormone in an inactive reservoir. Displacing it raises free, active hormone and its effect, and also exposes it to clearance. Over time negative feedback slows the gland and the free level drifts back."
+    }
+  },
+  {
+    "id": "anp-hormone-action-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "When blood calcium falls, four small glands on the back of the thyroid gland release a hormone that raises it. Which kind of stimulus is this?",
+    "options": [
+      "A neural stimulus",
+      "A hormonal stimulus",
+      "A permissive stimulus",
+      "A humoral stimulus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A humoral stimulus is a change in the level of an ion or nutrient in the blood acting directly on the gland. Here the calcium level itself triggers release.",
+      "options": [
+        "A neural stimulus is a nerve signal to the gland, such as sympathetic fibers triggering the adrenal medulla. No nerve is involved here.",
+        "A hormonal stimulus is another hormone triggering release. Here the trigger is calcium, an ion, not a hormone.",
+        "Permissive describes how two hormones interact at a target cell, not what triggers a gland to secrete.",
+        "Correct. A blood ion level acting on the gland is a humoral stimulus."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every example of a neural or hormonal stimulus (not a humoral one).",
+    "options": [
+      "Sympathetic preganglionic fibers trigger the adrenal medulla to release epinephrine",
+      "A rise in glucose in the blood after a meal triggers pancreatic cells to release a hormone",
+      "A pituitary hormone triggers the thyroid gland to release its hormones",
+      "A fall in blood calcium triggers the small glands on the thyroid gland",
+      "A hypothalamic hormone triggers the pituitary gland to release a hormone"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Nerve signals (the adrenal medulla) are neural stimuli, and one hormone triggering another gland (hypothalamus to pituitary, pituitary to thyroid) is a hormonal stimulus. Changes in glucose or calcium in the blood are humoral stimuli.",
+      "options": [
+        "Correct. Nerve fibers trigger release: a neural stimulus.",
+        "Glucose is a nutrient in the blood acting on the gland directly: a humoral stimulus.",
+        "Correct. One hormone triggering another gland is a hormonal stimulus.",
+        "Calcium is an ion in the blood acting on the gland directly: a humoral stimulus.",
+        "Correct. The hypothalamus's hormone triggers the pituitary gland: a hormonal stimulus."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In an experiment, hormone X alone has no effect on fat cells. Hormone Y alone makes them release a little stored fat. With both present, they release a great deal. Which interaction does hormone X show?",
+    "options": [
+      "Antagonistic",
+      "Permissive",
+      "Negative feedback",
+      "Down-regulation"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Hormone X has no effect of its own but lets hormone Y act fully. That is a permissive effect, often caused by X raising the number of Y's receptor proteins or the machinery behind them.",
+      "options": [
+        "Antagonistic hormones push a variable in opposite directions. Here X does not oppose Y; it helps it.",
+        "Correct. X is needed for Y's full effect but does nothing alone.",
+        "Negative feedback is a loop that reduces a gland's output when a variable overshoots. It does not describe two hormones acting on one target.",
+        "Down-regulation would make the cells less responsive, not more."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Hormone P alone raises a variable by 10 units and hormone Q alone raises it by 15 units. Given together, they raise it by 60 units. How do they interact?",
+    "options": [
+      "Synergistically",
+      "Additively",
+      "Antagonistically",
+      "Permissively"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Together they give 60 units, far more than 10 + 15 = 25. Two hormones that both have an effect and together give more than the sum are synergistic.",
+      "options": [
+        "Correct. 60 is more than the 25 you would expect by adding.",
+        "An additive result would be 10 + 15 = 25 units. The combined effect is much larger.",
+        "Antagonistic hormones push in opposite directions, so together they would give less, not more.",
+        "In a permissive interaction, one hormone has no effect alone. Here both have an effect alone."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-15",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-17-5",
+    "pin": "adenylyl-cyclase",
+    "q": "Name the pinned enzyme.",
+    "options": [
+      "G protein",
+      "Protein kinase",
+      "Adenylyl cyclase",
+      "Phosphodiesterase"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Adenylyl cyclase is the membrane enzyme that an activated G protein switches on. It converts ATP into cAMP.",
+      "options": [
+        "The G protein is the switch just inside the membrane that sits between the receptor protein and this enzyme.",
+        "Protein kinase sits further along the pathway, in the cytoplasm, and is switched on by cAMP.",
+        "Correct. This membrane enzyme makes cAMP from ATP.",
+        "Phosphodiesterase breaks cAMP down; it is not drawn in this figure."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-16",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-17-4",
+    "pin": "receptor-hormone-complex",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Carrier protein",
+      "Hormone response element",
+      "Receptor–hormone complex",
+      "Messenger RNA"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Inside the cell, the lipid-soluble hormone has bound its intracellular receptor protein, forming a hormone–receptor complex (printed on this figure with the words the other way round) that then moves to the DNA.",
+      "options": [
+        "The carrier protein holds the hormone in the blood and is left behind in the capillary.",
+        "The hormone response element is a DNA sequence in the nucleus, where the complex binds next.",
+        "Correct. The hormone bound to its receptor protein inside the cell forms this complex.",
+        "Messenger RNA is made later, when the gene is transcribed."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which class of hormone is built from cholesterol?",
+    "options": [
+      "Amine hormones",
+      "Peptide hormones",
+      "Protein hormones",
+      "Steroid hormones"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Steroid hormones are lipids made from cholesterol, with four fused carbon rings. Androgens are one group of steroid hormones.",
+      "options": [
+        "Amine hormones are single amino acids, chemically changed.",
+        "Peptide hormones are short chains of amino acids.",
+        "Protein hormones are longer, folded chains of amino acids.",
+        "Correct. Steroids are built from cholesterol."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A child's body makes too little of a protein hormone. His parents ask why he needs injections instead of a tablet, when his grandmother takes her steroid hormone as a tablet. What is the best answer?",
+    "options": [
+      "Protein hormones are too large to dissolve in the blood",
+      "Steroid hormones do not need receptor proteins, so they work from the gut",
+      "Protein hormones are destroyed by the carrier proteins in the plasma",
+      "A swallowed protein is digested into amino acids, while a steroid is absorbed intact"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Protein hormones are chains of amino acids. The gut digests them like any dietary protein, so almost none reaches the blood intact. A steroid is a small lipid that is absorbed as it is and then works normally.",
+      "options": [
+        "Protein hormones are water-soluble and dissolve readily in plasma; that is how injected ones travel.",
+        "Steroids do need receptor proteins, inside their target cells. They act there, not in the gut.",
+        "Carrier proteins bind lipid-soluble hormones and protect them. They do not destroy protein hormones.",
+        "Correct. Digestion breaks proteins into amino acids; steroids survive it."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A person's blood level of a hormone has been abnormally low for months. When a normal amount of that hormone is given, her target cells respond more strongly than a healthy person's. What best explains this?",
+    "options": [
+      "Her target cells have up-regulated their receptor proteins for it",
+      "Her carrier proteins have stopped binding the hormone",
+      "Her gland has started making a more powerful form of the hormone",
+      "Her target cells have down-regulated their receptor proteins"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A hormone that stays low for a long time leads target cells to add receptor protein molecules (up-regulation). With more receptor proteins, the same amount of hormone gives a bigger response.",
+      "options": [
+        "Correct. More receptor protein molecules make the cells more sensitive.",
+        "Nothing in the scenario points to a change in binding in the blood, and the hormone given is the normal form.",
+        "Her gland's output is low; the response here is to hormone given from outside.",
+        "Down-regulation happens when a hormone stays high, and it makes cells less sensitive, the opposite of what is seen."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-20",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every hormone that travels in the blood mostly bound to carrier proteins.",
+    "options": [
+      "Epinephrine from the adrenal medulla",
+      "A steroid hormone from the outer part of the adrenal gland",
+      "An androgen from the testes",
+      "A short peptide hormone",
+      "The thyroid gland's iodine-carrying amine hormones"
+    ],
+    "correct": [
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Lipid-soluble hormones travel mostly bound to carrier proteins: steroids, including androgens, and the thyroid gland's amines. Water-soluble hormones such as epinephrine and peptides dissolve in the plasma.",
+      "options": [
+        "Epinephrine is water-soluble and dissolves in the plasma, which is one reason its half-life is only about two minutes.",
+        "Correct. Steroids are lipid-soluble and ride on carrier proteins.",
+        "Correct. Androgens are steroids, so they travel bound to carrier proteins.",
+        "Peptides are water-soluble and travel dissolved in the plasma.",
+        "Correct. These amines are unusually hydrophobic and travel almost entirely bound."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A mutation changes a steroid hormone's intracellular receptor protein so that it still binds the hormone normally but can no longer bind DNA. What happens in the target cell when the hormone arrives?",
+    "options": [
+      "The hormone switches on adenylyl cyclase instead",
+      "The hormone cannot cross the plasma membrane",
+      "The target genes are not switched on or off, so the usual new proteins are not made",
+      "The cell responds normally, because binding the hormone is what counts"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A lipid-soluble hormone acts through its hormone–receptor complex binding a hormone response element on DNA. If the complex cannot bind DNA, transcription does not change, and the proteins that carry out the response are not made.",
+      "options": [
+        "Steroid hormones do not use adenylyl cyclase for their main effect. A broken intracellular receptor protein does not reroute the hormone to a membrane pathway.",
+        "Crossing the membrane depends on the hormone being lipid-soluble, not on the receptor protein. The hormone still gets in.",
+        "Correct. Without DNA binding, the hormone–receptor complex cannot change transcription.",
+        "Binding is only the first step. The response comes from the complex changing which genes are transcribed."
+      ]
+    }
+  },
+  {
+    "id": "anp-hormone-action-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "What is an androgen?",
+    "options": [
+      "A water-soluble hormone that acts through cAMP",
+      "A steroid hormone that drives male characteristics",
+      "A carrier protein that transports lipid-soluble hormones in the blood",
+      "An amine hormone made from tryptophan"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Androgens (andr- = male, -gen = producing) are steroid hormones that drive male characteristics such as facial hair and a deeper voice. Both sexes make some, in the gonads and the adrenal glands.",
+      "options": [
+        "Androgens are steroids, so they are lipid-soluble and act through intracellular receptor proteins, not cAMP.",
+        "Correct. Androgens are a group of steroid hormones.",
+        "Carrier proteins transport androgens; they are not androgens themselves.",
+        "The amine made from tryptophan is a sleep-related hormone from the brain, not an androgen."
+      ]
+    }
+  }
+]
