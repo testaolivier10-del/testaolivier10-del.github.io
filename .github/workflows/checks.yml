@@ -47,6 +47,13 @@ jobs:
       # would catch either one — they just mislead a student.
       - name: no dead topics, and mastery cannot overstate coverage
         run: node scripts/check-curriculum.mjs --check
+      # The A&P course's one rule: nothing is used before it is taught. The
+      # dependency map is checked for concepts that lean on later topics, and
+      # every A&P page for tagged terms whose topic comes after it, outside a
+      # marked preview box. Neither mistake breaks a page; both lose a student
+      # who entered mid-course.
+      - name: the A&P course uses no concept before it is taught
+        run: node scripts/check-anp-map.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.
