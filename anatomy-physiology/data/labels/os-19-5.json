@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "pericardial-cavity"
+      "concept": "pericardial-cavity",
+      "box": [
+        743,
+        282,
+        168,
+        25
+      ]
     },
     {
       "id": "endocardium",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": "heart-wall"
+      "concept": "heart-wall",
+      "box": [
+        88,
+        387,
+        133,
+        22
+      ]
     },
     {
       "id": "fibrous-pericardium",
@@ -32,7 +44,13 @@
       "lines": [
         2
       ],
-      "concept": "pericardium"
+      "concept": "pericardium",
+      "box": [
+        858,
+        425,
+        194,
+        25
+      ]
     },
     {
       "id": "myocardium",
@@ -45,7 +63,13 @@
       "lines": [
         3
       ],
-      "concept": "heart-wall"
+      "concept": "heart-wall",
+      "box": [
+        89,
+        446,
+        124,
+        25
+      ]
     },
     {
       "id": "parietal-pericardium",
@@ -60,7 +84,13 @@
         4,
         5
       ],
-      "concept": "pericardium"
+      "concept": "pericardium",
+      "box": [
+        857,
+        523,
+        224,
+        48
+      ]
     },
     {
       "id": "epicardium",

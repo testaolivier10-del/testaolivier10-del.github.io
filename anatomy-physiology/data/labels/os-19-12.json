@@ -13,7 +13,13 @@
       "lines": [
         1
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        111,
+        56,
+        189,
+        32
+      ]
     },
     {
       "id": "bicuspid-mitral-valve",
@@ -32,7 +38,13 @@
         3,
         4
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        849,
+        56,
+        197,
+        57
+      ]
     },
     {
       "id": "aortic-valve",
@@ -44,7 +56,13 @@
       "lines": [
         11
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        112,
+        716,
+        151,
+        26
+      ]
     },
     {
       "id": "pulmonary-valve",
@@ -57,7 +75,13 @@
       "lines": [
         12
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        851,
+        724,
+        210,
+        32
+      ]
     }
   ]
 }

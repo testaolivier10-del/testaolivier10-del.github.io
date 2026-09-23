@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        280,
+        32,
+        72,
+        24
+      ]
     },
     {
       "id": "superior-vena-cava",
@@ -22,7 +28,13 @@
       "lines": [
         1
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        0,
+        88,
+        227,
+        29
+      ]
     },
     {
       "id": "left-pulmonary-artery",
@@ -34,7 +46,13 @@
       "lines": [
         2
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        837,
+        88,
+        247,
+        29
+      ]
     },
     {
       "id": "right-pulmonary-artery",
@@ -46,7 +64,13 @@
       "lines": [
         3
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        0,
+        133,
+        264,
+        30
+      ]
     },
     {
       "id": "left-atrium",
@@ -58,7 +82,13 @@
       "lines": [
         4
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        837,
+        148,
+        128,
+        25
+      ]
     },
     {
       "id": "pulmonary-trunk",
@@ -69,7 +99,13 @@
       "lines": [
         5
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        0,
+        188,
+        193,
+        29
+      ]
     },
     {
       "id": "left-pulmonary-veins",
@@ -83,7 +119,13 @@
       "lines": [
         6
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        837,
+        200,
+        241,
+        30
+      ]
     },
     {
       "id": "right-pulmonary-veins",
@@ -98,7 +140,13 @@
         7,
         8
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        0,
+        232,
+        193,
+        53
+      ]
     },
     {
       "id": "mitral-bicuspid-valve",
@@ -116,7 +164,13 @@
         9,
         10
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        837,
+        270,
+        252,
+        29
+      ]
     },
     {
       "id": "right-atrium",
@@ -128,7 +182,13 @@
       "lines": [
         11
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        0,
+        309,
+        145,
+        29
+      ]
     },
     {
       "id": "aortic-valve",
@@ -140,7 +200,13 @@
       "lines": [
         12
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        836,
+        332,
+        141,
+        24
+      ]
     },
     {
       "id": "fossa-ovalis",
@@ -151,7 +217,13 @@
       "lines": [
         13
       ],
-      "concept": "fossa-ovalis"
+      "concept": "fossa-ovalis",
+      "box": [
+        0,
+        354,
+        150,
+        25
+      ]
     },
     {
       "id": "pulmonary-valve",
@@ -164,7 +236,13 @@
       "lines": [
         14
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        837,
+        375,
+        195,
+        29
+      ]
     },
     {
       "id": "tricuspid-valve",
@@ -178,7 +256,13 @@
       "lines": [
         15
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        0,
+        386,
+        177,
+        30
+      ]
     },
     {
       "id": "left-ventricle",
@@ -190,7 +274,13 @@
       "lines": [
         16
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        837,
+        421,
+        152,
+        25
+      ]
     },
     {
       "id": "right-ventricle",
@@ -202,7 +292,13 @@
       "lines": [
         17
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        0,
+        432,
+        169,
+        29
+      ]
     },
     {
       "id": "papillary-muscle",
@@ -214,7 +310,13 @@
       "lines": [
         18
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        837,
+        465,
+        193,
+        30
+      ]
     },
     {
       "id": "chordae-tendineae",
@@ -228,7 +330,13 @@
       "lines": [
         19
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        0,
+        475,
+        224,
+        24
+      ]
     },
     {
       "id": "interventricular-septum",
@@ -256,7 +364,13 @@
       "lines": [
         21
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        0,
+        520,
+        233,
+        25
+      ]
     },
     {
       "id": "epicardium",
@@ -268,7 +382,13 @@
       "lines": [
         22
       ],
-      "concept": "heart-wall"
+      "concept": "heart-wall",
+      "box": [
+        837,
+        545,
+        135,
+        29
+      ]
     },
     {
       "id": "moderator-band",
@@ -280,7 +400,13 @@
       "lines": [
         23
       ],
-      "concept": "ventricular-conduction"
+      "concept": "ventricular-conduction",
+      "box": [
+        0,
+        572,
+        186,
+        25
+      ]
     },
     {
       "id": "myocardium",
@@ -291,7 +417,13 @@
       "lines": [
         24
       ],
-      "concept": "heart-wall"
+      "concept": "heart-wall",
+      "box": [
+        837,
+        584,
+        146,
+        29
+      ]
     },
     {
       "id": "inferior-vena-cava",
@@ -303,7 +435,13 @@
       "lines": [
         25
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        0,
+        620,
+        208,
+        25
+      ]
     },
     {
       "id": "endocardium",
@@ -314,7 +452,13 @@
       "lines": [
         26
       ],
-      "concept": "heart-wall"
+      "concept": "heart-wall",
+      "box": [
+        837,
+        622,
+        157,
+        25
+      ]
     }
   ]
 }

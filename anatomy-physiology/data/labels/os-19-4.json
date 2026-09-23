@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        951,
+        30,
+        56,
+        20
+      ]
     },
     {
       "id": "superior-vena-cava",
@@ -22,7 +28,13 @@
       "lines": [
         1
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        443,
+        51,
+        167,
+        24
+      ]
     },
     {
       "id": "left-pulmonary-arteries",
@@ -37,7 +49,13 @@
         2,
         4
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        951,
+        82,
+        132,
+        40
+      ]
     },
     {
       "id": "right-pulmonary-arteries",
@@ -52,7 +70,13 @@
         3,
         5
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        386,
+        102,
+        144,
+        40
+      ]
     },
     {
       "id": "pulmonary-trunk",
@@ -63,7 +87,13 @@
       "lines": [
         6
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        951,
+        136,
+        144,
+        23
+      ]
     },
     {
       "id": "left-atrium",
@@ -75,7 +105,13 @@
       "lines": [
         7
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        951,
+        170,
+        97,
+        19
+      ]
     },
     {
       "id": "right-pulmonary-veins",
@@ -90,7 +126,13 @@
         8,
         10
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        385,
+        186,
+        145,
+        40
+      ]
     },
     {
       "id": "pulmonary-veins",
@@ -105,7 +147,13 @@
         9,
         11
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        950,
+        204,
+        133,
+        39
+      ]
     },
     {
       "id": "pulmonary-semilunar-valve",
@@ -120,7 +168,13 @@
         14,
         16
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        438,
+        247,
+        100,
+        60
+      ]
     },
     {
       "id": "aortic-semilunar-valve",
@@ -133,7 +187,13 @@
         13,
         15
       ],
-      "concept": "semilunar-valves"
+      "concept": "semilunar-valves",
+      "box": [
+        950,
+        258,
+        143,
+        39
+      ]
     },
     {
       "id": "mitral-valve",
@@ -148,7 +208,13 @@
       "lines": [
         17
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        951,
+        311,
+        102,
+        20
+      ]
     },
     {
       "id": "right-atrium",
@@ -160,7 +226,13 @@
       "lines": [
         18
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        443,
+        329,
+        109,
+        24
+      ]
     },
     {
       "id": "left-ventricle",
@@ -172,7 +244,13 @@
       "lines": [
         19
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        951,
+        365,
+        114,
+        20
+      ]
     },
     {
       "id": "tricuspid-valve",
@@ -186,7 +264,13 @@
       "lines": [
         20
       ],
-      "concept": "av-valves"
+      "concept": "av-valves",
+      "box": [
+        469,
+        370,
+        131,
+        23
+      ]
     },
     {
       "id": "right-ventricle",
@@ -198,7 +282,13 @@
       "lines": [
         21
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        471,
+        403,
+        125,
+        23
+      ]
     },
     {
       "id": "inferior-vena-cava",
@@ -210,7 +300,13 @@
       "lines": [
         22
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        471,
+        435,
+        154,
+        19
+      ]
     },
     {
       "id": "systemic-veins-upper-body",
@@ -224,7 +320,13 @@
         27,
         29
       ],
-      "concept": "systemic-circuit"
+      "concept": "systemic-circuit",
+      "box": [
+        9,
+        623,
+        104,
+        63
+      ]
     },
     {
       "id": "systemic-capillaries-upper-body",
@@ -239,7 +341,13 @@
         30,
         31
       ],
-      "concept": "systemic-circuit"
+      "concept": "systemic-circuit",
+      "box": [
+        638,
+        624,
+        93,
+        84
+      ]
     },
     {
       "id": "systemic-arteries-upper-body",
@@ -253,7 +361,13 @@
         33,
         36
       ],
-      "concept": "systemic-circuit"
+      "concept": "systemic-circuit",
+      "box": [
+        638,
+        724,
+        103,
+        64
+      ]
     },
     {
       "id": "pulmonary-capillaries",
@@ -268,7 +382,13 @@
         37,
         38
       ],
-      "concept": "pulmonary-circuit"
+      "concept": "pulmonary-circuit",
+      "box": [
+        9,
+        748,
+        100,
+        63
+      ]
     },
     {
       "id": "pulmonary-trunk-loop",
@@ -280,7 +400,13 @@
         39,
         40
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        637,
+        815,
+        100,
+        39
+      ]
     },
     {
       "id": "right-atrium-loop",
@@ -292,7 +418,13 @@
       "lines": [
         41
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        10,
+        842,
+        110,
+        24
+      ]
     },
     {
       "id": "left-atrium-loop",
@@ -304,7 +436,13 @@
       "lines": [
         43
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        638,
+        879,
+        98,
+        20
+      ]
     },
     {
       "id": "right-ventricle-loop",
@@ -317,7 +455,13 @@
         44,
         45
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        9,
+        899,
+        80,
+        40
+      ]
     },
     {
       "id": "left-ventricle-loop",
@@ -330,7 +474,13 @@
         46,
         47
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        637,
+        929,
+        80,
+        40
+      ]
     },
     {
       "id": "systemic-veins-lower-body",
@@ -344,7 +494,13 @@
         49,
         51
       ],
-      "concept": "systemic-circuit"
+      "concept": "systemic-circuit",
+      "box": [
+        9,
+        971,
+        100,
+        63
+      ]
     },
     {
       "id": "systemic-arteries-lower-body",
@@ -358,7 +514,13 @@
         52,
         53
       ],
-      "concept": "systemic-circuit"
+      "concept": "systemic-circuit",
+      "box": [
+        638,
+        1000,
+        99,
+        64
+      ]
     },
     {
       "id": "systemic-capillaries-lower-body",
@@ -372,7 +534,13 @@
         55,
         56
       ],
-      "concept": "systemic-circuit"
+      "concept": "systemic-circuit",
+      "box": [
+        9,
+        1096,
+        120,
+        63
+      ]
     }
   ]
 }

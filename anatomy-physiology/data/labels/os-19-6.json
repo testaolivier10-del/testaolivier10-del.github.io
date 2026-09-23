@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        826,
+        22,
+        233,
+        24
+      ]
     },
     {
       "id": "brachiocephalic-trunk",
@@ -26,7 +32,13 @@
       "lines": [
         1
       ],
-      "concept": "head-neck-arteries"
+      "concept": "head-neck-arteries",
+      "box": [
+        203,
+        26,
+        189,
+        23
+      ]
     },
     {
       "id": "left-subclavian-artery",
@@ -39,7 +51,13 @@
       "lines": [
         2
       ],
-      "concept": "limb-arteries"
+      "concept": "limb-arteries",
+      "box": [
+        826,
+        54,
+        189,
+        24
+      ]
     },
     {
       "id": "superior-vena-cava",
@@ -51,7 +69,13 @@
       "lines": [
         3
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        202,
+        60,
+        171,
+        24
+      ]
     },
     {
       "id": "aortic-arch",
@@ -64,7 +88,13 @@
       "lines": [
         4
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        826,
+        83,
+        101,
+        19
+      ]
     },
     {
       "id": "right-pulmonary-artery",
@@ -77,7 +107,13 @@
         5,
         7
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        202,
+        98,
+        148,
+        44
+      ]
     },
     {
       "id": "ligamentum-arteriosum",
@@ -88,7 +124,13 @@
       "lines": [
         6
       ],
-      "concept": "neonatal-transition"
+      "concept": "neonatal-transition",
+      "box": [
+        826,
+        105,
+        207,
+        24
+      ]
     },
     {
       "id": "left-pulmonary-artery",
@@ -100,7 +142,13 @@
       "lines": [
         8
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        826,
+        134,
+        189,
+        24
+      ]
     },
     {
       "id": "ascending-aorta",
@@ -111,7 +159,13 @@
       "lines": [
         9
       ],
-      "concept": "aorta-parts"
+      "concept": "aorta-parts",
+      "box": [
+        202,
+        155,
+        147,
+        23
+      ]
     },
     {
       "id": "left-pulmonary-veins",
@@ -125,7 +179,13 @@
       "lines": [
         10
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        826,
+        166,
+        183,
+        24
+      ]
     },
     {
       "id": "pulmonary-trunk",
@@ -136,7 +196,13 @@
       "lines": [
         11
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        203,
+        177,
+        147,
+        23
+      ]
     },
     {
       "id": "right-pulmonary-veins",
@@ -151,7 +217,13 @@
         12,
         14
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        202,
+        209,
+        148,
+        40
+      ]
     },
     {
       "id": "auricle-of-left-atrium",
@@ -165,7 +237,13 @@
       "lines": [
         13
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        826,
+        216,
+        175,
+        20
+      ]
     },
     {
       "id": "circumflex-artery",
@@ -179,7 +257,13 @@
       "lines": [
         16
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        258,
+        153,
+        24
+      ]
     },
     {
       "id": "right-atrium",
@@ -191,7 +275,13 @@
       "lines": [
         17
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        203,
+        262,
+        111,
+        24
+      ]
     },
     {
       "id": "right-coronary-artery",
@@ -203,7 +293,13 @@
       "lines": [
         18
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        203,
+        298,
+        186,
+        24
+      ]
     },
     {
       "id": "left-coronary-artery",
@@ -216,7 +312,13 @@
       "lines": [
         19
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        299,
+        174,
+        24
+      ]
     },
     {
       "id": "anterior-cardiac-vein",
@@ -228,7 +330,13 @@
       "lines": [
         20
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        202,
+        330,
+        181,
+        20
+      ]
     },
     {
       "id": "left-ventricle",
@@ -240,7 +348,13 @@
       "lines": [
         21
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        826,
+        347,
+        117,
+        20
+      ]
     },
     {
       "id": "right-ventricle",
@@ -252,7 +366,13 @@
       "lines": [
         22
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        203,
+        362,
+        129,
+        24
+      ]
     },
     {
       "id": "great-cardiac-vein",
@@ -263,7 +383,13 @@
       "lines": [
         23
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        396,
+        161,
+        20
+      ]
     },
     {
       "id": "right-marginal-artery",
@@ -276,7 +402,13 @@
       "lines": [
         24
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        203,
+        398,
+        185,
+        24
+      ]
     },
     {
       "id": "anterior-interventricular-artery",
@@ -290,7 +422,13 @@
       "lines": [
         25
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        423,
+        258,
+        24
+      ]
     },
     {
       "id": "small-cardiac-vein",
@@ -301,7 +439,13 @@
       "lines": [
         26
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        202,
+        425,
+        162,
+        20
+      ]
     },
     {
       "id": "inferior-vena-cava",
@@ -313,7 +457,13 @@
       "lines": [
         27
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        203,
+        455,
+        157,
+        20
+      ]
     },
     {
       "id": "apex",
@@ -326,7 +476,13 @@
       "lines": [
         28
       ],
-      "concept": "heart-location"
+      "concept": "heart-location",
+      "box": [
+        826,
+        481,
+        54,
+        23
+      ]
     },
     {
       "id": "aorta-posterior",
@@ -337,7 +493,13 @@
       "lines": [
         29
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        389,
+        574,
+        57,
+        19
+      ]
     },
     {
       "id": "superior-vena-cava-posterior",
@@ -349,7 +511,13 @@
       "lines": [
         30
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        826,
+        580,
+        171,
+        24
+      ]
     },
     {
       "id": "right-pulmonary-artery-posterior",
@@ -361,7 +529,13 @@
       "lines": [
         31
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        827,
+        613,
+        200,
+        24
+      ]
     },
     {
       "id": "left-pulmonary-artery-posterior",
@@ -373,7 +547,13 @@
       "lines": [
         32
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        203,
+        626,
+        188,
+        24
+      ]
     },
     {
       "id": "right-pulmonary-veins-posterior",
@@ -387,7 +567,13 @@
       "lines": [
         33
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        827,
+        646,
+        194,
+        24
+      ]
     },
     {
       "id": "left-pulmonary-veins-posterior",
@@ -401,7 +587,13 @@
       "lines": [
         34
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        203,
+        661,
+        182,
+        24
+      ]
     },
     {
       "id": "right-atrium-posterior",
@@ -413,7 +605,13 @@
       "lines": [
         35
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        827,
+        694,
+        111,
+        24
+      ]
     },
     {
       "id": "auricle-of-left-atrium-posterior",
@@ -427,7 +625,13 @@
       "lines": [
         36
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        202,
+        704,
+        175,
+        20
+      ]
     },
     {
       "id": "left-atrium-posterior",
@@ -439,7 +643,13 @@
       "lines": [
         37
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        203,
+        734,
+        99,
+        19
+      ]
     },
     {
       "id": "inferior-vena-cava-posterior",
@@ -451,7 +661,13 @@
       "lines": [
         38
       ],
-      "concept": "great-vessels"
+      "concept": "great-vessels",
+      "box": [
+        827,
+        735,
+        157,
+        20
+      ]
     },
     {
       "id": "coronary-sinus",
@@ -462,7 +678,13 @@
       "lines": [
         39
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        767,
+        137,
+        24
+      ]
     },
     {
       "id": "circumflex-branch-posterior",
@@ -478,7 +700,13 @@
         40,
         42
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        202,
+        769,
+        189,
+        44
+      ]
     },
     {
       "id": "small-cardiac-vein-posterior",
@@ -489,7 +717,13 @@
       "lines": [
         43
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        801,
+        161,
+        20
+      ]
     },
     {
       "id": "great-cardiac-vein-posterior",
@@ -500,7 +734,13 @@
       "lines": [
         44
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        202,
+        825,
+        162,
+        20
+      ]
     },
     {
       "id": "right-coronary-artery-posterior",
@@ -512,7 +752,13 @@
       "lines": [
         45
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        827,
+        833,
+        186,
+        24
+      ]
     },
     {
       "id": "posterior-vein-of-left-ventricle",
@@ -526,7 +772,13 @@
         46,
         48
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        203,
+        863,
+        145,
+        41
+      ]
     },
     {
       "id": "posterior-interventricular-artery",
@@ -553,7 +805,13 @@
       "lines": [
         49
       ],
-      "concept": "coronary-circulation"
+      "concept": "coronary-circulation",
+      "box": [
+        826,
+        911,
+        169,
+        20
+      ]
     },
     {
       "id": "left-ventricle-posterior",
@@ -565,7 +823,13 @@
       "lines": [
         50
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        203,
+        927,
+        116,
+        20
+      ]
     },
     {
       "id": "right-ventricle-posterior",
@@ -577,7 +841,13 @@
       "lines": [
         51
       ],
-      "concept": "chambers"
+      "concept": "chambers",
+      "box": [
+        827,
+        954,
+        128,
+        24
+      ]
     },
     {
       "id": "apex-posterior",
@@ -590,7 +860,13 @@
       "lines": [
         52
       ],
-      "concept": "heart-location"
+      "concept": "heart-location",
+      "box": [
+        349,
+        997,
+        55,
+        24
+      ]
     }
   ]
 }

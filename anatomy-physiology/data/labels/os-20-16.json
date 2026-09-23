@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "net-filtration-capillary"
+      "concept": "net-filtration-capillary",
+      "box": [
+        109,
+        6,
+        101,
+        22
+      ]
     },
     {
       "id": "no-net-movement",
@@ -26,7 +32,13 @@
       "lines": [
         1
       ],
-      "concept": "net-filtration-capillary"
+      "concept": "net-filtration-capillary",
+      "box": [
+        435,
+        6,
+        189,
+        22
+      ]
     },
     {
       "id": "reabsorption",
@@ -40,7 +52,13 @@
       "lines": [
         2
       ],
-      "concept": "net-filtration-capillary"
+      "concept": "net-filtration-capillary",
+      "box": [
+        833,
+        6,
+        147,
+        26
+      ]
     },
     {
       "id": "arterial-end-nfp",

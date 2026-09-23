@@ -15,7 +15,13 @@
         1,
         3
       ],
-      "concept": "voltage-gated-na-k"
+      "concept": "voltage-gated-na-k",
+      "box": [
+        0,
+        9,
+        144,
+        50
+      ]
     },
     {
       "id": "slow-ca-channels-open",
@@ -30,7 +36,13 @@
       "lines": [
         2
       ],
-      "concept": "l-type-calcium"
+      "concept": "l-type-calcium",
+      "box": [
+        512,
+        35,
+        271,
+        30
+      ]
     },
     {
       "id": "ca-close-k-open",
@@ -48,7 +60,13 @@
         7,
         8
       ],
-      "concept": "l-type-calcium"
+      "concept": "l-type-calcium",
+      "box": [
+        794,
+        52,
+        274,
+        82
+      ]
     },
     {
       "id": "plateau",
@@ -61,7 +79,13 @@
       "lines": [
         9
       ],
-      "concept": "cardiac-ap"
+      "concept": "cardiac-ap",
+      "box": [
+        432,
+        116,
+        133,
+        27
+      ]
     },
     {
       "id": "repolarization",
@@ -106,7 +130,13 @@
         11,
         12
       ],
-      "concept": "voltage-gated-na-k"
+      "concept": "voltage-gated-na-k",
+      "box": [
+        878,
+        232,
+        195,
+        25
+      ]
     },
     {
       "id": "voltage-gated-na-channels-open",
@@ -124,7 +154,13 @@
         16,
         18
       ],
-      "concept": "voltage-gated-na-k"
+      "concept": "voltage-gated-na-k",
+      "box": [
+        0,
+        334,
+        150,
+        79
+      ]
     },
     {
       "id": "influx-of-na",
@@ -138,7 +174,13 @@
       "lines": [
         23
       ],
-      "concept": "voltage-gated-na-k"
+      "concept": "voltage-gated-na-k",
+      "box": [
+        0,
+        461,
+        135,
+        25
+      ]
     },
     {
       "id": "refractory-period",
