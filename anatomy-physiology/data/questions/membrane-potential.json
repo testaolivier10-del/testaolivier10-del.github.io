@@ -62,7 +62,7 @@
     "q": "A typical neuron rests at −70 mV. Potassium's equilibrium potential is about −90 mV and sodium's is about +60 mV. What best explains why the resting value lies so much closer to potassium's?",
     "options": [
       "Potassium ions are smaller and lighter than sodium ions",
-      "Far more potassium channels are open at rest",
+      "Far more potassium channels than sodium channels are open at rest",
       "Each pump cycle moves more potassium ions than sodium ions",
       "The body contains more total potassium than total sodium"
     ],

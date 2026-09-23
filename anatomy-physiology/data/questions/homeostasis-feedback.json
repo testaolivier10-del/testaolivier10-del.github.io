@@ -473,7 +473,7 @@
     "options": [
       "It detects the change in the regulated variable",
       "It carries out the response that changes the variable",
-      "It compares input with the set point",
+      "It compares the incoming signal with the set point",
       "It carries signals from the sensor toward the brain"
     ],
     "correct": 2,
@@ -497,7 +497,7 @@
     ],
     "q": "Body temperature normally swings a little above and below 37 °C instead of staying perfectly flat. What best explains this?",
     "options": [
-      "Corrections lag behind, so they overshoot",
+      "Each correction lags behind and overshoots the set point",
       "Positive feedback takes over whenever temperature passes 37 °C",
       "The set point changes randomly from minute to minute",
       "The sensory receptors switch off once the set point is reached"
@@ -524,7 +524,7 @@
     "q": "A patient's body temperature climbs to 42 °C. The heat speeds up chemical reactions in every cell, and faster reactions release more heat. What is the danger in this situation?",
     "options": [
       "Negative feedback will lower the temperature too far",
-      "Positive feedback drives it higher still",
+      "Positive feedback will drive the temperature higher",
       "The set point will fall to match the new temperature",
       "Mass balance forces heat output to equal heat input"
     ],

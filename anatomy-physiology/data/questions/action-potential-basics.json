@@ -396,7 +396,7 @@
       "It never reaches threshold",
       "Its peak rises far above +60 mV",
       "It shows a deeper dip below rest",
-      "It lasts longer"
+      "It returns to rest more slowly"
     ],
     "correct": 3,
     "why": {
