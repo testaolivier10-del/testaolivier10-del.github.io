@@ -44,7 +44,6 @@
   "summary": "<p>At an electrical synapse, gap junctions pass current directly, almost instantly and usually both ways. At a chemical synapse, an action potential in the presynaptic neuron's axon terminal opens voltage-gated calcium channels; calcium triggers exocytosis of neurotransmitter, which crosses the cleft and binds receptor proteins on the postsynaptic neuron. Ionotropic receptor proteins are ligand-gated channels (fast, brief); metabotropic ones work through G proteins (slower, longer, amplified). The result is an EPSP, a depolarization toward threshold, or an IPSP, which moves the membrane away from it. The trigger zone adds these by temporal and spatial summation and fires if the sum reaches threshold. The major neurotransmitters are acetylcholine, the amino acids glutamate, GABA and glycine, the biogenic amines norepinephrine, dopamine and serotonin, neuropeptides such as endorphins, and nitric oxide. The signal ends by diffusion, degradation and reuptake, and drugs and toxins act by changing release, binding, degradation or reuptake. Neurons are wired in circuits with divergence and convergence.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" },
-    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
-    { "href": "/nremt/study-notes.html#chapter-39", "label": "NREMT: Hazardous materials (nerve agents)" }
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" }
   ]
 }
