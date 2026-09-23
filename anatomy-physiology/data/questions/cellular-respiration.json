@@ -36,7 +36,7 @@
     "q": "A mature red blood cell carries oxygen all day, yet it turns every glucose it uses into lactate. What explains this?",
     "options": [
       "It has no mitochondria, so pyruvate cannot be broken down with oxygen",
-      "Its oxygen-carrying protein holds the oxygen too tightly for the cell to use",
+      "Its oxygen-carrying protein holds oxygen too tightly to use",
       "Its glycolysis enzymes work only when oxygen is absent",
       "It makes lactate so that it can save its oxygen for other tissues"
     ],
@@ -243,7 +243,7 @@
     ],
     "q": "Fill in the missing step in a cell with no oxygen. Glycolysis splits glucose into pyruvate and reduces NAD+ to NADH → ______ → NAD+ is available again → glycolysis continues, netting 2 ATP per glucose.",
     "options": [
-      "NADH hands its electrons to the electron transport chain as usual",
+      "NADH hands its electrons to the chain as usual",
       "Pyruvate accepts electrons from NADH and becomes lactate",
       "Pyruvate enters the citric acid cycle and releases CO2",
       "Lactate gives its electrons to oxygen"
@@ -306,7 +306,7 @@
     "options": [
       "It regenerates the NAD+ that glycolysis needs to keep running",
       "Lactate is itself a form of stored ATP",
-      "It moves pyruvate into the mitochondrion faster than it could get there on its own",
+      "It moves pyruvate into the mitochondrion faster",
       "It releases CO2, which drives the electron transport chain"
     ],
     "correct": 0,
@@ -410,7 +410,7 @@
     ],
     "q": "The cells of your heart wall pack thousands of mitochondria. Which statement best explains why this matters for how they make ATP?",
     "options": [
-      "Glycolysis happens inside mitochondria, so having more mitochondria means glucose is split faster",
+      "Glycolysis happens inside mitochondria, so more of them split glucose faster",
       "Mitochondria store ready-made ATP that heart cells draw on during each beat",
       "Mitochondria run the aerobic stages, which yield about 15 times more ATP per glucose",
       "Mitochondria make glucose for the heart from the oxygen in blood"

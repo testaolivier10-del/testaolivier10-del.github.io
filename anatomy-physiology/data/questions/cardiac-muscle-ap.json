@@ -179,7 +179,7 @@
     ],
     "figure": "os-10-22",
     "pin": "intercalated-disc",
-    "q": "Name the pinned dark, wavy line where two cardiac muscle cells join end to end.",
+    "q": "Name the pinned structure.",
     "options": [
       "Sarcoplasmic reticulum",
       "Sarcolemma",
@@ -207,7 +207,7 @@
     ],
     "figure": "os-10-22",
     "pin": "gap-junction",
-    "q": "In the enlarged intercalated disc, name the pinned junction that forms channels connecting the cytoplasm of the two cells.",
+    "q": "In the enlarged intercalated disc, name the pinned junction.",
     "options": [
       "Desmosome",
       "Tight junction",

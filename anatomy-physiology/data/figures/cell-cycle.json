@@ -7,7 +7,7 @@
       "url": "https://openstax.org/apps/archive/20260604.144757/resources/5d2db326a6b84df174c93b23c16bb6f365ee1502",
       "page": "3-5-cell-growth-and-division"
     },
-    "alt": "The cell cycle drawn as a circle. Most of the circle is interphase, split into G1, S and G2. A smaller arc is the mitotic phase: mitosis followed by cytokinesis. A side branch off G1 leads to G0, where a cell stops cycling.",
+    "alt": "The cell cycle drawn as a circle. Most of the circle is interphase, split into G1, S and G2. A smaller wedge, labeled M, is the mitotic phase. Arrows lead from G1 out to G0, labeled as cells not actively dividing, and back.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.30",
     "labels": [],
@@ -39,7 +39,7 @@
       "url": "https://openstax.org/apps/archive/20260604.144757/resources/2ba72c4d367a458ff9ce47243d3c2df4a741a7d9",
       "page": "3-5-cell-growth-and-division"
     },
-    "alt": "The cell cycle circle with its checkpoints marked: one late in G1, one at the end of G2, and one during mitosis. Next to each, the cyclin and cyclin-dependent kinase pair that drives the cell past it.",
+    "alt": "The cell cycle circle with its checkpoints marked: one late in G1, one at the end of G2, and one during mitosis. Around the circle, four cyclin and cyclin-dependent kinase pairs are placed where each acts: two in G1, one in S and one at the step from G2 into mitosis.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.33",
     "labels": [],

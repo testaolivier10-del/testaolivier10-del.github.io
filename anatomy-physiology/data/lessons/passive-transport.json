@@ -1,6 +1,6 @@
 {
   "topic": "passive-transport",
-  "hook": "<p>A new nurse reaches for a 1-liter bag labeled \"sterile water\" to run into Mr. Okafor's vein. The pharmacist stops her. Pure water has almost no solutes, so red blood cells bathed in it take on water, swell and burst. Infused straight into a vein, it can burst enough red cells to spill their contents, including potassium, into the plasma. The bag she needed was 0.9% saline, which leaves red cells exactly the size they are.</p>",
+  "hook": "<p>A new nurse reaches for a 1-liter bag labeled \"sterile water\" to run into Mr. Okafor's vein. The pharmacist stops her. Pure water has almost no solutes, so red blood cells bathed in it take on water, swell and burst. Infused straight into a vein, it can burst enough red cells to spill their contents, including potassium, into the plasma. The bag she needed was 0.9% saline, which leaves red cells at their normal size.</p>",
   "prereq": [
     {
       "q": "Water and solute are separated by a membrane that lets water through but not the solute. Which way does water move by osmosis?",
@@ -10,7 +10,7 @@
         "It does not move until pressure is applied"
       ],
       "correct": 1,
-      "why": "Osmosis is the diffusion of water toward the side with more solute particles, which is the side where water itself is less concentrated.",
+      "why": "Osmosis is the net movement of water across a semipermeable membrane toward the side with more solute particles that the membrane holds back. Water follows solute.",
       "review": "diffusion-osmosis"
     },
     {
@@ -43,10 +43,10 @@
   "chain": [
     {
       "cause": "Red blood cells are bathed in pure water, which has far fewer solute particles than the cells' own fluid.",
-      "effect": "Water is more concentrated outside the cells than inside them."
+      "effect": "The cells now hold far more trapped solute particles than the fluid around them."
     },
     {
-      "cause": "Water is more concentrated outside, and water crosses the membrane easily through the bilayer and aquaporins.",
+      "cause": "The cells hold more trapped solute, and water crosses the membrane easily through the bilayer and aquaporins.",
       "effect": "Water moves into the cells by osmosis, while the cells' potassium and proteins stay trapped inside."
     },
     {

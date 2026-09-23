@@ -1,0 +1,70 @@
+{
+  "figure": "os-1-17",
+  "labels": [
+    {
+      "id": "visceral-pericardium",
+      "name": "Visceral pericardium",
+      "accept": [
+        "visceral pericardium",
+        "epicardium",
+        "visceral layer",
+        "visceral serous pericardium"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "serous-membrane"
+    },
+    {
+      "id": "pericardial-cavity",
+      "name": "Pericardial cavity",
+      "accept": [
+        "pericardial cavity",
+        "pericardial space"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "pericardial-cavity"
+    },
+    {
+      "id": "parietal-pericardium",
+      "name": "Parietal pericardium",
+      "accept": [
+        "parietal pericardium",
+        "parietal layer",
+        "parietal serous pericardium"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "serous-membrane"
+    },
+    {
+      "id": "air-space",
+      "name": "Air space",
+      "accept": [
+        "air space",
+        "air"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null
+    },
+    {
+      "id": "balloon",
+      "name": "Balloon",
+      "accept": [
+        "balloon"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "topic": "vessel-structure",
+  "hook": "<p>Ms. Delgado, 52, has worked 12-hour shifts on her feet as a nurse for 25 years. Her lower legs ache by evening, and swollen, twisting blue veins now bulge under the skin of her calves. The tiny one-way valves inside those veins have stopped sealing, so blood falls back down her legs every time she stands, pools, and stretches the thin vein walls a little more each year.</p>",
+  "prereq": [
+    {
+      "q": "Which tissue lines the inside of every blood vessel?",
+      "options": ["Simple squamous epithelium (endothelium)", "Stratified squamous epithelium", "Dense regular connective tissue"],
+      "correct": 0,
+      "why": "Blood vessels are lined by endothelium, a simple squamous epithelium: one layer of flat cells, thin enough for substances to cross easily.",
+      "review": "epithelium"
+    },
+    {
+      "q": "Which fibers let a tissue stretch and then spring back to its original shape?",
+      "options": ["Collagen fibers", "Elastic fibers", "Reticular fibers"],
+      "correct": 1,
+      "why": "Elastic fibers, made of elastin, stretch and recoil. Collagen fibers resist stretching, and reticular fibers form fine supporting meshes.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "When the smooth muscle in a vessel wall contracts, the vessel:",
+      "options": ["Widens (vasodilation)", "Narrows (vasoconstriction)", "Gets longer"],
+      "correct": 1,
+      "why": "The smooth muscle wraps around the vessel in rings, so its contraction squeezes the vessel narrower: vasoconstriction.",
+      "review": "muscle-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-20-4",
+    "caption": "Walls of an elastic artery, a muscular artery and an arteriole. Hide the labels and name the tunica intima, tunica media and tunica externa in each."
+  },
+  "chain": [
+    { "cause": "The left ventricle ejects blood into the aorta faster than it can flow on into smaller arteries.", "effect": "The elastic fibers of the aortic wall stretch and store energy." },
+    { "cause": "The aortic valve closes and the stretched elastic fibers recoil.", "effect": "Blood keeps flowing forward during diastole, and aortic pressure falls only to about 80 mm Hg." },
+    { "cause": "Blood reaches the arterioles, whose smooth muscle holds them partly contracted (vascular tone).", "effect": "Their radius sets the resistance at the entrance to each capillary bed, and so how much blood each bed receives." },
+    { "cause": "Blood passes through capillaries whose wall is a single layer of endothelium.", "effect": "Gases, nutrients and wastes cross the thin wall; continuous, fenestrated and sinusoidal capillaries let through progressively larger substances." },
+    { "cause": "Blood enters thin-walled, compliant veins at low pressure.", "effect": "Veins hold most of the blood volume, and the skeletal muscle pump, the respiratory pump and venoconstriction push it back to the heart through one-way valves." }
+  ],
+  "misconception": {
+    "wrong": "Veins carry blood back to the heart at high pressure, just like arteries in reverse, and their valves are pumps.",
+    "right": "By the time blood reaches the veins, most of its pressure has been spent in the arterioles and capillaries: venules are at about 15 to 20 mm Hg and the right atrium near 0. Venous valves are passive one-way flaps that only stop backflow. What actually moves blood up your legs is the squeeze of your skeletal muscles and the pressure changes of breathing, with the valves making sure the movement goes only one way."
+  },
+  "check": ["anp-vessel-structure-1", "anp-vessel-structure-3", "anp-vessel-structure-7", "anp-vessel-structure-11", "anp-vessel-structure-14", "anp-vessel-structure-16", "anp-vessel-structure-12"],
+  "summary": "<p>Vessel walls have three tunics: the intima (endothelium on a basement membrane, with an internal elastic membrane in arteries), the media (smooth muscle and elastic fibers) and the externa (collagen, carrying the vasa vasorum and nervi vasorum). Elastic arteries near the heart stretch and recoil to keep pressure up between beats; muscular arteries distribute blood to organs; arterioles are the resistance vessels, and their vascular tone sets flow into each capillary bed. Capillaries are one endothelial layer, continuous, fenestrated or sinusoidal; metarterioles, thoroughfare channels and arteriovenous anastomoses can shunt blood past them. Venules and veins have thin walls, wide lumens and valves; as compliant capacitance vessels they hold about 60 to 65 percent of the blood. Venous return depends on the skeletal muscle pump, the respiratory pump and venoconstriction, and failed valves lead to varicose veins.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

@@ -136,7 +136,7 @@
     "options": [
       "Heart and brain cells lack the genes the drug acts on",
       "The mouth lining and blood-forming cells divide often; most heart and brain cells rest in G0",
-      "The drug is carried in the blood but cannot pass out of the vessels into heart tissue or brain tissue at all",
+      "The drug cannot pass out of the vessels into heart or brain tissue",
       "Mouth and blood cells are cancer cells too"
     ],
     "correct": 1,
@@ -160,7 +160,7 @@
     ],
     "q": "A cell has lost both working copies of the gene for p53. Its DNA is then damaged by radiation. What is the most likely outcome?",
     "options": [
-      "It stops at the G1 checkpoint and waits until the damage is repaired",
+      "It halts at the G1 checkpoint until repair",
       "It triggers apoptosis at once",
       "It keeps dividing and passes the damage to its descendants",
       "It enters G0 permanently"
@@ -371,7 +371,7 @@
     "options": [
       "Each lost the genes the other one uses",
       "They carry different numbers of chromosomes",
-      "One of them took up extra genes from a neighboring cell during its development in the lining",
+      "One took up extra genes from a neighboring cell",
       "They hold different transcription factors, so they express different genes"
     ],
     "correct": 3,

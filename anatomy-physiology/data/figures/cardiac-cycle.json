@@ -11,7 +11,10 @@
     "alt": "A circular diagram of one heartbeat with five drawings of the heart around it, each showing which chambers are contracting and which valves are open. Starting at the top and going clockwise: the atria contract; the ventricles begin to contract with all valves shut; the ventricles eject blood into the two great arteries; the ventricles relax with all valves shut; the ventricles fill. Small ECG tracings at the corners highlight the P wave, the QRS complex and the T wave. An inner ring marks atrial systole and diastole and ventricular systole and diastole.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.27",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1215,
+    "ext": "jpg"
   },
   "os-19-28": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "One ECG beat with its P wave, QRS complex and T wave, above two colored bars on the same time axis. The upper bar shows atrial systole starting after the P wave and ending at the QRS complex, with atrial diastole before and after. The lower bar shows ventricular systole from the QRS complex to the end of the T wave, with ventricular diastole before and after. A bottom bar spans one cardiac cycle.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.28",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 523,
+    "ext": "jpg"
   },
   "os-19-29": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "A graph of pressure in mm Hg over one heartbeat, with three traces. Aortic pressure falls slowly to about 80, rises with ventricular pressure to about 120, dips at a notch where the aortic valve closes, then falls slowly. Ventricular pressure is near zero, rises steeply after the mitral valve closes, crosses aortic pressure where the aortic valve opens, peaks near 120, and falls steeply below atrial pressure where the mitral valve opens. Atrial pressure stays below about 10 with small bumps. Below the graph, a heart sounds trace shows the first sound, lub, at mitral valve closure, the second, dub, at aortic valve closure, and a faint third sound early in filling.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.29",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 831,
+    "ext": "jpg"
   },
   "os-19-30": {
     "source": "openstax",
@@ -53,6 +62,9 @@
     "alt": "The front of a person's chest with the rib cage and heart drawn in. Four colored spots mark where each valve is heard best: the aortic valve just right of the upper sternum, the pulmonary valve just left of the upper sternum, the tricuspid valve at the lower left edge of the sternum, and the mitral valve farther left, near the apex of the heart.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.30",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 871,
+    "ext": "jpg"
   }
 }

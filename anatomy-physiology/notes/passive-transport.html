@@ -107,7 +107,7 @@
 <ul>
 <li><strong>Simple diffusion</strong> straight through the bilayer.</li>
 <li><strong><span class="gl" tabindex="0" data-c="facilitated-diffusion">Facilitated diffusion</span></strong> through a membrane <a class="gl" href="../notes/biomolecules.html" data-c="protein">protein</a>: an <span class="gl" tabindex="0" data-c="ion-channel">ion channel</span>, an <span class="gl" tabindex="0" data-c="aquaporin">aquaporin</span> or a carrier.</li>
-<li><strong>Osmosis</strong>: the diffusion of water, which decides whether a cell swells or shrinks.</li>
+<li><strong>Osmosis</strong>: the net movement of water across the membrane, which decides whether a cell swells or shrinks.</li>
 <li><strong>Filtration</strong>: fluid pushed through a barrier by pressure.</li>
 </ul>
 
@@ -176,10 +176,10 @@
 <div class="worked">
 <p><strong>Worked example: glucose uptake by a cell with a fixed number of carriers.</strong></p>
 <p>Step 1. A cell's membrane has enough glucose carriers to move at most 100 units of glucose per minute. That is its transport maximum.</p>
-<p>Step 2. Outside glucose is low. Most carriers sit empty, waiting for a molecule to bump into them. The cell takes up 40 units per minute.</p>
-<p>Step 3. Double the outside glucose. Twice as many molecules bump into the empty carriers, so uptake almost doubles, to about 70 units per minute. Fewer carriers are empty now.</p>
-<p>Step 4. Double the outside glucose again. Nearly every carrier is already busy, so there are few empty ones left to fill. Uptake creeps up to about 90 units per minute.</p>
-<p>Step 5. Raise outside glucose tenfold. Every carrier is occupied all the time. Uptake reaches the transport maximum, 100 units per minute, and goes no higher.</p>
+<p>Step 2. Outside glucose is low. Most carriers sit empty, waiting for a molecule to bump into them. The cell takes up 10 units per minute.</p>
+<p>Step 3. Double the outside glucose. Twice as many molecules bump into the empty carriers, so uptake almost doubles, to about 18 units per minute. Fewer carriers are empty now.</p>
+<p>Step 4. Double the outside glucose again. More of the carriers are busy now, so uptake rises less than twofold, to about 31 units per minute.</p>
+<p>Step 5. Raise outside glucose tenfold from there. Most carriers are occupied almost all the time, so a tenfold rise in glucose gives less than a threefold rise in uptake: about 82 units per minute. Further increases only creep closer to the transport maximum of 100 units per minute, and uptake never goes above it.</p>
 <p>Conclusion: with carriers, the rate rises with the gradient at first, then levels off. To raise the maximum, the cell must add carriers, not glucose. With simple diffusion, doubling the gradient doubles the rate every time.</p>
 </div>
 <p><a class="figref" href="#fig-saturation">Figure 3</a> shows the two patterns side by side.</p>
@@ -220,8 +220,8 @@
 
 <h2>Osmosis and tonicity</h2>
 <p>Now picture a nurse about to infuse a liter of fluid into a patient's <a class="gl" href="../notes/body-organization.html" data-c="blood-vessel-basics">vein</a>. Plasma surrounds the red blood cells, so whatever goes in the bag decides what happens to them. If the fluid is right, the cells stay the same size. If it is wrong, they shrink or swell and burst. Which happens depends on osmosis.</p>
-<p>Recall that osmosis is the diffusion of water across a semipermeable membrane toward the side with more solute particles. Water crosses a plasma membrane easily, through the bilayer and through aquaporins. Many solutes do not. So when the fluid outside a cell changes, water moves in or out until the solute concentration inside matches the outside again, and the cell's volume changes as it does.</p>
-<p><strong>Tonicity</strong> (ton- = tension, stretching) describes how a solution outside a cell changes that cell's volume. It depends on the solutes that <em>cannot</em> cross the membrane, because only those hold water on their side. There are three cases (<a class="figref" href="#fig-os-3-8">Figure 4</a>):</p>
+<p>Recall that osmosis is the net movement of water across a semipermeable membrane toward the side with more solute particles that the membrane holds back: water follows solute. Water crosses a plasma membrane easily, through the bilayer and through aquaporins. Many solutes do not. So when the fluid outside a cell changes, water moves in or out until the solute concentration inside matches the outside again, and the cell's volume changes as it does.</p>
+<p><strong>Tonicity</strong> (ton- = tension, stretching) describes how a solution outside a cell changes that cell's volume. It depends on the solutes that <em>cannot</em> cross the membrane, because only those keep a lasting difference between the two sides. There are three cases (<a class="figref" href="#fig-os-3-8">Figure 4</a>):</p>
 <ul>
 <li><strong>Isotonic</strong> (iso- = equal): the solution has the same concentration of nonpenetrating solutes as the cell. Water moves in and out equally, and the cell keeps its volume. For red blood cells, 0.9% sodium chloride (normal saline, about 300 <a class="gl" href="../notes/water-solutions.html" data-c="osmolarity">mOsm</a>/L) is isotonic.</li>
 <li><strong>Hypotonic</strong> (hypo- = under): the solution has fewer nonpenetrating solutes than the cell. Water moves into the cell, which swells. A red blood cell swollen far enough tears open and spills its contents. That is <strong>osmotic hemolysis</strong> (hemo- = blood, -lysis = breaking apart).</li>
@@ -232,11 +232,12 @@
 <p><strong>Worked example: predicting what happens to a red blood cell.</strong></p>
 <p>Step 1. Find the cell's starting point. The fluid inside a red blood cell is about 300 mOsm/L, and almost all of those solutes (potassium, proteins, phosphates) cannot cross its membrane.</p>
 <p>Step 2. Find the outside solution's nonpenetrating solutes. Take 0.45% sodium chloride, half-strength saline: about 150 mOsm/L. Sodium and chloride are held outside, so all of it counts.</p>
-<p>Step 3. Compare. Outside, 150; inside, 300. The inside has more solute particles, so the water concentration is lower inside.</p>
+<p>Step 3. Compare. Outside, 150; inside, 300. The inside has more solute particles that cannot leave.</p>
 <p>Step 4. Predict water movement. Water moves by osmosis toward the side with more solute: into the cell.</p>
 <p>Step 5. Predict the result. The cell swells. The solution is hypotonic to the red blood cell. If it were much weaker still, as with pure water, the cells would swell until they burst: osmotic hemolysis.</p>
 <p>Conclusion: compare nonpenetrating solutes on the two sides; water moves toward the side with more; the cell's volume follows the water.</p>
 </div>
+<aside class="for-your-exam"><p>For your exam: many exams describe osmosis as water diffusing down its own concentration gradient, so they may say water is "more concentrated" in a hypotonic solution than in the cell. Know that wording. It gives the same direction as water follows solute, which is the rule to reason with: the held-back solute drives the water, as the osmosis topic explains.</p></aside>
 <div class="table-wrap"><table class="compare">
 <thead><tr><th></th><th>Isotonic</th><th>Hypotonic</th><th>Hypertonic</th></tr></thead>
 <tbody>
@@ -258,7 +259,7 @@
 <p>In your body, <strong>filtration</strong> (filtrum = felt, used to strain liquids) is the movement of water and small solutes through a membrane or a thin barrier, pushed by a <a class="gl" href="../notes/gradients-flow.html" data-c="hydrostatic-pressure">hydrostatic pressure</a> gradient. Particles too large for the openings stay behind. The push comes from pressure, not from each solute's own concentration gradient, so water and small solutes travel together in <a class="gl" href="../notes/gradients-flow.html" data-c="bulk-flow">bulk flow</a>.</p>
 <p>The main examples:</p>
 <ul>
-<li><strong>Capillary walls.</strong> <a class="gl" href="../notes/gradients-flow.html" data-c="blood-pressure-basic">Blood pressure</a> inside a capillary pushes water and small solutes out through the narrow gaps between the cells of its wall, into the interstitial fluid. Blood cells and most of the proteins dissolved in plasma are too large, so they stay in the blood. A later topic on capillaries explains what pulls fluid back in and balances this outward push.</li>
+<li><strong>Capillary walls.</strong> <a class="gl" href="../notes/gradients-flow.html" data-c="blood-pressure-basic">Blood pressure</a> inside a capillary pushes water and small solutes out through the narrow gaps between the cells of its wall, into the interstitial fluid. Blood cells and most of the proteins dissolved in plasma are too large, so they stay in the blood. A later topic on capillaries explains the force that opposes this outward push, and how the fluid that leaves gets back to the blood.</li>
 <li><strong>The kidneys.</strong> Blood pressure pushes water and small solutes out of the blood through a special filter. That fluid is the starting material for urine.</li>
 </ul>
 <p>Filtration counts as passive transport because the cells of the barrier spend no ATP to move the fluid. The energy is stored in the pressure, which the heart built up earlier.</p>
@@ -268,7 +269,7 @@
 <p>Step 2. Look only at pressure for now; the capillary topic adds the other forces. Suppose the fluid pressure inside a stretch of capillary is 30 <a class="gl" href="../notes/gradients-flow.html" data-c="pressure">mm Hg</a> and the fluid outside is at about 0 mm Hg. The pressure gradient across the wall is 30 mm Hg.</p>
 <p>Step 3. Suppose the capillary wall's resistance stays the same, and the pressure inside rises to 45 mm Hg, as it would if the veins draining that capillary were partly blocked. The gradient is now 45 mm Hg.</p>
 <p>Step 4. With the same resistance, flow is proportional to the gradient: 45 divided by 30 is 1.5.</p>
-<p>Conclusion: the rate of filtration out of that capillary rises by half. Fluid builds up in the tissue around it faster, which you would see as swelling.</p>
+<p>Conclusion: counting pressure alone, the rate of filtration out of that capillary rises by half. In a real capillary, proteins held in the blood pull against the push, so the net outward push rises by even more than half; the capillary topic shows why. Either way, fluid builds up in the tissue around it faster, which you would see as swelling.</p>
 </div>
 
 <h2>Putting it together</h2>

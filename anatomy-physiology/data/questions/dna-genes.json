@@ -19,7 +19,7 @@
       "correct": "Guanine pairs with cytosine. A purine (guanine) pairs with a pyrimidine (cytosine), and the two line up to form three hydrogen bonds.",
       "options": [
         "Adenine is a purine, like guanine. Two purines together would make a rung too wide for the helix, and they cannot line up hydrogen bonds. Adenine pairs with thymine.",
-        "Thymine is a pyrimidine, so the width would fit, but its hydrogen-bonding groups do not line up with guanine's. Thymine pairs with adenine.",
+        "Thymine is a pyrimidine, so the width would fit, but its hydrogen-bonding groups do not line up well with guanine's. Thymine pairs with adenine.",
         "Correct. Guanine and cytosine form three hydrogen bonds and make a rung of standard width.",
         "Two guanines are two purines: too wide for the helix, and their bonding groups do not match."
       ]
@@ -274,8 +274,8 @@
     "options": [
       "DNA's bases form hydrogen bonds with the histones",
       "The negative phosphate backbone is drawn to the positive histones",
-      "DNA's sugars are hydrophobic and hide inside the histone core, away from water",
-      "Histones cut the DNA into short pieces that fit neatly around each histone core"
+      "DNA's sugars are hydrophobic and hide inside the histone core",
+      "Histones cut the DNA into short pieces that fit each core"
     ],
     "correct": 1,
     "why": {
@@ -352,7 +352,7 @@
     "q": "Compare a liver cell and a skin cell from the same person. Which statement about their DNA is accurate?",
     "options": [
       "The liver cell carries only the genes for liver work",
-      "They carry the same genome but use different genes",
+      "They carry the same genome, but each uses a different set of genes",
       "The skin cell has fewer chromosomes than the liver cell",
       "Each carries a different sequence of bases in the same genes"
     ],
@@ -379,7 +379,7 @@
     "options": [
       "A whole chromosome, from one end to the other",
       "A single nucleotide within the DNA strand",
-      "A stretch of DNA that codes for a working product",
+      "A stretch of DNA whose base sequence codes for a working product",
       "The histone core that DNA wraps around in a nucleosome"
     ],
     "correct": 2,

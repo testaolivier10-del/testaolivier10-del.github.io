@@ -344,7 +344,7 @@
       var lines = wrap(l.slots[k].short, 21);
       s += '<g><rect class="' + cls[k] + '" x="' + cx + '" y="' + cy + '" width="' + BW + '" height="' + BH + '" rx="11"/>' +
         '<text class="lbl-sm fl-svg-l" x="' + (cx + BW / 2) + '" y="' + (cy + 17) + '" text-anchor="middle">' + esc(LABELS[k]) + '</text>' +
-        lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + BW / 2) + '" y="' + (cy + (lines.length === 3 ? 33 : 38) + i * 14.5) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
+        lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + BW / 2) + '" y="' + (cy + (lines.length === 3 ? 33 : lines.length === 2 ? 39 : 46) + i * 14.5) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
     });
     var lx = X[0] + BW / 2, rx = X[1] + BW / 2;
     // down the left column

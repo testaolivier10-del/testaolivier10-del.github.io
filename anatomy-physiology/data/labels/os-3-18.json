@@ -1,0 +1,63 @@
+{
+  "figure": "os-3-18",
+  "labels": [
+    {
+      "id": "column-of-tubulin-dimers",
+      "name": "Column of tubulin dimers",
+      "accept": [
+        "column of tubulin dimers",
+        "microtubule",
+        "protofilament",
+        "tubulin column"
+      ],
+      "lines": [
+        0,
+        3
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "tubulin-dimer",
+      "name": "Tubulin dimer",
+      "accept": [
+        "tubulin dimer",
+        "tubulin",
+        "tubulin dimers"
+      ],
+      "lines": [
+        1,
+        6
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "actin-subunit",
+      "name": "Actin subunit",
+      "accept": [
+        "actin subunit",
+        "actin",
+        "actin subunits",
+        "g-actin"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "fibrous-subunit",
+      "name": "Fibrous subunit (keratins coiled together)",
+      "accept": [
+        "fibrous subunit (keratins coiled together)",
+        "fibrous subunit",
+        "keratin",
+        "keratins"
+      ],
+      "lines": [
+        2,
+        5
+      ],
+      "concept": "cytoskeleton"
+    }
+  ]
+}

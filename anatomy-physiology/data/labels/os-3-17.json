@@ -1,0 +1,47 @@
+{
+  "figure": "os-3-17",
+  "labels": [
+    {
+      "id": "lipid-bilayer",
+      "name": "Lipid bilayer",
+      "accept": [
+        "lipid bilayer",
+        "bilayer",
+        "phospholipid bilayer"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "phospholipid-bilayer"
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "membrane",
+        "peroxisome membrane"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "crystalline-core",
+      "name": "Crystalline core",
+      "accept": [
+        "crystalline core",
+        "core"
+      ],
+      "box": [
+        148,
+        222,
+        98,
+        48
+      ],
+      "concept": "peroxisome"
+    }
+  ]
+}

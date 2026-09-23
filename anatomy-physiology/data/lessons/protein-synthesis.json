@@ -82,6 +82,6 @@
     "anp-protein-synthesis-16",
     "anp-protein-synthesis-11"
   ],
-  "summary": "<p>A gene is used in two steps. Transcription, in the nucleus, copies the gene into RNA: RNA polymerase binds the promoter, and the spliceosome then removes introns and joins exons to make mRNA. Translation, on ribosomes in the cytoplasm, reads the mRNA three bases at a time: each codon is matched by a tRNA anticodon and names one amino acid or a stop. Proteins with a signal sequence enter the rough ER and follow the secretory pathway through the Golgi apparatus to exocytosis. Transcription factors decide which genes each cell expresses, so cells with the same genome make different proteomes. A mutation changes the DNA sequence; its effect depends on what it does to the codons.</p>",
+  "summary": "<p>A gene is used in two steps. Transcription, in the nucleus, copies the gene into RNA: RNA polymerase binds the promoter, and the spliceosome then removes introns and joins exons to make mRNA. Translation, on ribosomes in the cytoplasm, reads the mRNA three bases at a time: each codon names one amino acid or a stop, and each amino-acid codon is matched by a tRNA anticodon. Proteins with a signal sequence enter the rough ER and follow the secretory pathway through the Golgi apparatus to exocytosis. Transcription factors decide which genes each cell expresses, so cells with the same genome make different proteomes. A mutation changes the DNA sequence; its effect depends on what it does to the codons.</p>",
   "connections": []
 }

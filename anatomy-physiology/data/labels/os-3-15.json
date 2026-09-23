@@ -1,0 +1,186 @@
+{
+  "figure": "os-3-15",
+  "labels": [
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus"
+      ],
+      "box": [
+        64,
+        20,
+        74,
+        26
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "transport-vesicle",
+      "name": "Transport vesicle",
+      "accept": [
+        "transport vesicle",
+        "transport vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "rough-er",
+      "name": "Rough ER",
+      "accept": [
+        "rough er",
+        "endoplasmic reticulum",
+        "rer",
+        "rough endoplasmic reticulum"
+      ],
+      "box": [
+        18,
+        344,
+        90,
+        26
+      ],
+      "concept": "endoplasmic-reticulum"
+    },
+    {
+      "id": "cis-face",
+      "name": "cis face",
+      "accept": [
+        "cis face",
+        "cis",
+        "cis face of the golgi"
+      ],
+      "box": [
+        192,
+        312,
+        70,
+        26
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "cisternae",
+      "name": "Cisternae",
+      "accept": [
+        "cisternae",
+        "cisterna",
+        "golgi cisternae"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "trans-face",
+      "name": "trans face",
+      "accept": [
+        "trans face",
+        "trans",
+        "trans face of the golgi"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "golgi-apparatus",
+      "name": "Golgi apparatus",
+      "accept": [
+        "golgi apparatus",
+        "golgi",
+        "golgi body",
+        "golgi complex"
+      ],
+      "box": [
+        22,
+        544,
+        90,
+        46
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "secretory-vesicle",
+      "name": "Secretory vesicle",
+      "accept": [
+        "secretory vesicle",
+        "secretory vesicles",
+        "vesicle"
+      ],
+      "box": [
+        22,
+        632,
+        90,
+        46
+      ],
+      "concept": "vesicle"
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "plasma membrane",
+        "cell membrane"
+      ],
+      "box": [
+        278,
+        674,
+        160,
+        24
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "trans-face-micrograph",
+      "name": "trans face",
+      "accept": [
+        "trans face",
+        "trans",
+        "trans face of the golgi"
+      ],
+      "box": [
+        762,
+        258,
+        90,
+        24
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "cis-face-micrograph",
+      "name": "cis face",
+      "accept": [
+        "cis face",
+        "cis",
+        "cis face of the golgi"
+      ],
+      "box": [
+        893,
+        323,
+        72,
+        24
+      ],
+      "concept": "golgi"
+    },
+    {
+      "id": "golgi-apparatus-micrograph",
+      "name": "Golgi apparatus",
+      "accept": [
+        "golgi apparatus",
+        "golgi",
+        "golgi body",
+        "golgi complex"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "golgi"
+    }
+  ]
+}

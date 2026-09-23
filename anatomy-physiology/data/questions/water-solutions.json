@@ -143,7 +143,7 @@
     "core": [
       "compartments"
     ],
-    "q": "A lab technician leaves a tube of a patient's blood standing in a rack. An hour later, a layer of blood cells has settled toward the bottom, with straw-colored liquid above. Which kind of mixture do the blood cells form within the blood?",
+    "q": "A lab technician leaves a tube of a patient's blood, treated to stop clotting, standing in a rack. An hour later, a layer of blood cells has settled toward the bottom, with straw-colored liquid above. Which kind of mixture do the blood cells form within the blood?",
     "options": [
       "A solution",
       "A suspension",
@@ -488,7 +488,7 @@
       "Ions in the film repel the air in the sac",
       "Hydrogen bonds pull surface molecules inward toward those below",
       "Covalent bonds link the water molecules into a solid sheet",
-      "Air pressure pushes the water molecules into a tighter packed arrangement"
+      "Air pressure packs the water molecules more tightly"
     ],
     "correct": 1,
     "why": {

@@ -26,7 +26,7 @@
   ],
   "anatomy": {
     "figure": "os-3-32",
-    "caption": "The stages of mitosis and cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two nuclei form as the cell pinches in two."
+    "caption": "The stages of mitosis and cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two nuclei form as the cell pinches in two. The figure shows late prophase as a separate stage, prometaphase."
   },
   "chain": [
     { "cause": "In G1, a cell receives signals to divide, and its cyclin level rises.", "effect": "Cyclin binds and activates its CDK, and the active pair drives the cell past the G1 checkpoint." },

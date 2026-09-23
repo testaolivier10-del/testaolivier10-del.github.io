@@ -330,7 +330,7 @@
     "q": "A student raises an arm straight overhead and says, \"Now my hand is superior to my elbow, so it is proximal.\" What is the error?",
     "options": [
       "The hand is still distal to the elbow in every posture",
-      "The hand becomes inferior when the arm is raised",
+      "The hand becomes proximal only when the elbow is bent",
       "Proximal and distal are used only on the trunk",
       "The hand is lateral, not proximal"
     ],
@@ -339,7 +339,7 @@
       "correct": "Proximal and distal measure distance along the limb from where it attaches to the trunk. The hand is farther from the shoulder than the elbow in every posture, so it is always distal to the elbow. Terms are also read from the anatomical position, not from a raised arm.",
       "options": [
         "Correct. The hand is always distal to the elbow.",
-        "Directional terms are read from the anatomical position, where the hand hangs below the elbow. Raising the arm changes neither superior nor proximal.",
+        "Bending the elbow does not change the order along the limb. The hand stays farther from the shoulder than the elbow, so it stays distal.",
         "Proximal and distal are used mainly on the limbs, the opposite of this claim.",
         "Lateral compares distance from the midline, which is not the student's mistake. The mistake is about proximal and distal."
       ]

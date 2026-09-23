@@ -1,0 +1,218 @@
+{
+  "figure": "os-1-16",
+  "labels": [
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "diaphragm"
+    },
+    {
+      "id": "right-hypochondriac-region",
+      "name": "Right hypochondriac region",
+      "accept": [
+        "right hypochondriac region",
+        "right hypochondriac"
+      ],
+      "box": [
+        64,
+        142,
+        128,
+        62
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "epigastric-region",
+      "name": "Epigastric region",
+      "accept": [
+        "epigastric region",
+        "epigastric"
+      ],
+      "box": [
+        226,
+        151,
+        90,
+        44
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "left-hypochondriac-region",
+      "name": "Left hypochondriac region",
+      "accept": [
+        "left hypochondriac region",
+        "left hypochondriac"
+      ],
+      "box": [
+        352,
+        142,
+        126,
+        62
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "right-lumbar-region",
+      "name": "Right lumbar region",
+      "accept": [
+        "right lumbar region",
+        "right lumbar"
+      ],
+      "box": [
+        114,
+        282,
+        62,
+        62
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "umbilical-region",
+      "name": "Umbilical region",
+      "accept": [
+        "umbilical region",
+        "umbilical"
+      ],
+      "box": [
+        228,
+        288,
+        86,
+        44
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "left-lumbar-region",
+      "name": "Left lumbar region",
+      "accept": [
+        "left lumbar region",
+        "left lumbar"
+      ],
+      "box": [
+        366,
+        282,
+        62,
+        62
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "right-iliac-region",
+      "name": "Right iliac region",
+      "accept": [
+        "right iliac region",
+        "right iliac",
+        "right inguinal region"
+      ],
+      "box": [
+        116,
+        410,
+        62,
+        62
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "hypogastric-region",
+      "name": "Hypogastric region",
+      "accept": [
+        "hypogastric region",
+        "hypogastric",
+        "pubic region"
+      ],
+      "box": [
+        218,
+        418,
+        106,
+        44
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "left-iliac-region",
+      "name": "Left iliac region",
+      "accept": [
+        "left iliac region",
+        "left iliac",
+        "left inguinal region"
+      ],
+      "box": [
+        368,
+        410,
+        60,
+        62
+      ],
+      "concept": "abdominopelvic-regions"
+    },
+    {
+      "id": "ruq",
+      "name": "Right upper quadrant (RUQ)",
+      "accept": [
+        "right upper quadrant (ruq)",
+        "right upper quadrant",
+        "ruq"
+      ],
+      "box": [
+        700,
+        222,
+        108,
+        62
+      ],
+      "concept": "abdominal-quadrants"
+    },
+    {
+      "id": "luq",
+      "name": "Left upper quadrant (LUQ)",
+      "accept": [
+        "left upper quadrant (luq)",
+        "left upper quadrant",
+        "luq"
+      ],
+      "box": [
+        850,
+        222,
+        90,
+        62
+      ],
+      "concept": "abdominal-quadrants"
+    },
+    {
+      "id": "rlq",
+      "name": "Right lower quadrant (RLQ)",
+      "accept": [
+        "right lower quadrant (rlq)",
+        "right lower quadrant",
+        "rlq"
+      ],
+      "box": [
+        702,
+        319,
+        102,
+        62
+      ],
+      "concept": "abdominal-quadrants"
+    },
+    {
+      "id": "llq",
+      "name": "Left lower quadrant (LLQ)",
+      "accept": [
+        "left lower quadrant (llq)",
+        "left lower quadrant",
+        "llq"
+      ],
+      "box": [
+        854,
+        319,
+        90,
+        62
+      ],
+      "concept": "abdominal-quadrants"
+    }
+  ]
+}

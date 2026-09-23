@@ -330,11 +330,11 @@
     }
     function nodeBox(n, isRoot){
       var cls = 'pc-node' + (isRoot ? ' pc-root' : '') + (n.vars.length ? ' pc-end ' + n.vars[0].v.answer : '');
-      return '<span class="' + cls + '">' + esc(n.text) + '</span>' + (n.vars.length ? '<span class="pc-badges">' + n.vars.map(badge).join('') + '</span>' : '');
+      return '<span class="pc-nodewrap"><span class="' + cls + '">' + esc(n.text) + '</span>' + (n.vars.length ? '<span class="pc-badges">' + n.vars.map(badge).join('') + '</span>' : '') + '</span>';
     }
     function segment(n, isRoot){
       var run = [n];
-      while(run[run.length - 1].kids.length === 1 && !run[run.length - 1].vars.length) run.push(run[run.length - 1].kids[0]);
+      while(run[run.length - 1].kids.length === 1) run.push(run[run.length - 1].kids[0]);
       var lastN = run[run.length - 1];
       var html = '<div class="pc-run">' + run.map(function(x, i){ return '<span class="pc-step">' + (i ? arrow() : '') + nodeBox(x, isRoot && i === 0) + '</span>'; }).join('') + '</div>';
       if(lastN.kids.length) html += '<ul class="pc-branch">' + lastN.kids.map(function(kid){ return '<li>' + arrow() + '<div class="pc-sub">' + segment(kid, false) + '</div></li>'; }).join('') + '</ul>';

@@ -1,0 +1,160 @@
+{
+  "figure": "os-20-10",
+  "labels": [
+    {
+      "id": "pulse-pressure",
+      "name": "Pulse pressure",
+      "accept": [
+        "pulse pressure"
+      ],
+      "box": [
+        6,
+        84,
+        29,
+        155
+      ],
+      "concept": "pulse-pressure"
+    },
+    {
+      "id": "systolic-pressure",
+      "name": "Systolic pressure",
+      "accept": [
+        "systolic pressure",
+        "systolic blood pressure",
+        "systolic"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "blood-pressure"
+    },
+    {
+      "id": "mean-arterial-pressure",
+      "name": "Mean arterial pressure",
+      "accept": [
+        "mean arterial pressure",
+        "map"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "map"
+    },
+    {
+      "id": "diastolic-pressure",
+      "name": "Diastolic pressure",
+      "accept": [
+        "diastolic pressure",
+        "diastolic blood pressure",
+        "diastolic"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "blood-pressure"
+    },
+    {
+      "id": "aorta",
+      "name": "Aorta",
+      "accept": [
+        "aorta"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "elastic-arteries",
+      "name": "Elastic arteries",
+      "accept": [
+        "elastic arteries",
+        "elastic artery"
+      ],
+      "lines": [
+        19,
+        27
+      ],
+      "concept": "artery-types"
+    },
+    {
+      "id": "muscular-arteries",
+      "name": "Muscular arteries",
+      "accept": [
+        "muscular arteries",
+        "muscular artery"
+      ],
+      "lines": [
+        20,
+        28
+      ],
+      "concept": "artery-types"
+    },
+    {
+      "id": "arterioles",
+      "name": "Arterioles",
+      "accept": [
+        "arterioles",
+        "arteriole"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "arteriole"
+    },
+    {
+      "id": "capillaries",
+      "name": "Capillaries",
+      "accept": [
+        "capillaries",
+        "capillary"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "blood-vessel-basics"
+    },
+    {
+      "id": "venules",
+      "name": "Venules",
+      "accept": [
+        "venules",
+        "venule"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "medium-and-large-veins",
+      "name": "Medium and large veins",
+      "accept": [
+        "medium and large veins",
+        "veins",
+        "large veins",
+        "medium veins"
+      ],
+      "lines": [
+        24,
+        26,
+        30
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "venae-cavae",
+      "name": "Venae cavae",
+      "accept": [
+        "venae cavae",
+        "vena cava",
+        "venae cava"
+      ],
+      "lines": [
+        25,
+        29
+      ],
+      "concept": "great-vessels"
+    }
+  ]
+}

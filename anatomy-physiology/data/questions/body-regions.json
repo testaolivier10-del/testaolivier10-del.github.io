@@ -72,7 +72,7 @@
       "correct": "The antecubital region (ante- = in front of, cubitus = elbow) is the front of the elbow. Large veins lie just under the skin there, which is why it is the usual site for drawing blood.",
       "options": [
         "Antebrachial is the forearm, from elbow to wrist, not the crease of the elbow itself.",
-        "Popliteal is the hollow behind the knee, the lower limb's match for the front of the elbow.",
+        "Popliteal is the hollow behind the knee, in the lower limb, not the elbow.",
         "Axillary is the armpit.",
         "Correct. Front of the elbow is antecubital."
       ]
@@ -426,8 +426,8 @@
   {
     "id": "anp-body-regions-17",
     "type": "vignette",
-    "level": "apply",
-    "diff": 3,
+    "level": "recall",
+    "diff": 1,
     "core": [
       "structure-function"
     ],

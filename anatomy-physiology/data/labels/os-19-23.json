@@ -1,0 +1,143 @@
+{
+  "figure": "os-19-23",
+  "labels": [
+    {
+      "id": "r-wave",
+      "name": "R",
+      "accept": [
+        "r",
+        "r wave"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "ecg-waves"
+    },
+    {
+      "id": "r-wave-2",
+      "name": "R",
+      "accept": [
+        "r",
+        "r wave"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "ecg-waves"
+    },
+    {
+      "id": "q-wave",
+      "name": "Q",
+      "accept": [
+        "q",
+        "q wave"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "ecg-waves"
+    },
+    {
+      "id": "s-wave",
+      "name": "S",
+      "accept": [
+        "s",
+        "s wave"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ecg-waves"
+    },
+    {
+      "id": "pr-segment",
+      "name": "P-R segment",
+      "accept": [
+        "p-r segment",
+        "pr segment"
+      ],
+      "lines": [
+        7,
+        8,
+        12
+      ],
+      "concept": "ecg-intervals"
+    },
+    {
+      "id": "st-segment",
+      "name": "S-T segment",
+      "accept": [
+        "s-t segment",
+        "st segment"
+      ],
+      "lines": [
+        6,
+        9,
+        13
+      ],
+      "concept": "ecg-intervals"
+    },
+    {
+      "id": "p-wave",
+      "name": "P wave",
+      "accept": [
+        "p wave",
+        "p"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "ecg-waves"
+    },
+    {
+      "id": "t-wave",
+      "name": "T wave",
+      "accept": [
+        "t wave",
+        "t"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "ecg-waves"
+    },
+    {
+      "id": "pr-interval",
+      "name": "PR interval",
+      "accept": [
+        "pr interval",
+        "p-r interval"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "ecg-intervals"
+    },
+    {
+      "id": "qt-interval",
+      "name": "QT interval",
+      "accept": [
+        "qt interval",
+        "q-t interval"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "ecg-intervals"
+    },
+    {
+      "id": "qrs-complex",
+      "name": "QRS complex",
+      "accept": [
+        "qrs complex",
+        "qrs",
+        "qrs wave"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "ecg-waves"
+    }
+  ]
+}

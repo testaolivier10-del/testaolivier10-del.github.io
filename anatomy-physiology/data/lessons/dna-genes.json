@@ -31,7 +31,7 @@
   "chain": [
     { "cause": "Before a cell divides, helicase moves along each DNA double helix and breaks the hydrogen bonds between paired bases.", "effect": "The two strands separate, and the bases of each strand are exposed." },
     { "cause": "The exposed bases act as templates.", "effect": "Free nucleotides pair with them by the base-pairing rule: A with T, G with C." },
-    { "cause": "DNA polymerase links the paired nucleotides with covalent bonds and proofreads each one.", "effect": "A new complementary strand grows along each old strand, with about one error left per billion bases." },
+    { "cause": "DNA polymerase links the paired nucleotides with covalent bonds and proofreads each one.", "effect": "A new complementary strand grows along each old strand. After proofreading, and repair by other enzymes, about one error per billion bases is left." },
     { "cause": "Each old strand is now paired with a new strand.", "effect": "Two identical double helices exist, each with one old and one new strand (semiconservative replication)." },
     { "cause": "The two copies of each chromosome stay joined at the centromere.", "effect": "Each chromosome now consists of two identical sister chromatids, ready to be shared between two new cells." }
   ],

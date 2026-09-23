@@ -98,7 +98,9 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
 .pc-branch > li:last-child{margin-bottom:0;}
 .pc-branch > li > .pc-arr{margin-top:11px;}
 .pc-sub{flex:1;min-width:0;}
-.pc-badges{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:6px;}
+.pc-nodewrap{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;max-width:100%;}
+.pc-run .pc-step{flex:0 1 auto;min-width:min(100%,10em);}
+.pc-badges{display:flex;flex-wrap:wrap;gap:4px;}
 .pc-badge{display:inline-block;padding:3px 9px;border-radius:var(--radius-pill);border:2px solid var(--anp-shape);background:var(--white);font:800 12px var(--font-ui);color:var(--ink);}
 .pc-badge.up{border-color:var(--anp-hi);} .pc-badge.down{border-color:var(--anp-lo);}
 .pc-mark.ok{color:var(--good-text);} .pc-mark.no{color:var(--bad-text);}

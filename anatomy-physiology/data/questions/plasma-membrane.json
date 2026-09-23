@@ -406,27 +406,27 @@
   {
     "id": "anp-plasma-membrane-16",
     "type": "single",
-    "level": "analyze",
-    "diff": 3,
+    "level": "apply",
+    "diff": 2,
     "core": [
       "structure-function",
       "compartments"
     ],
-    "q": "Why is a living plasma membrane described as selectively permeable, and not just semipermeable like a sheet of plastic with holes in it?",
+    "q": "A lab compares two sheets that both block sodium ions at first. One is plastic with tiny holes punched in it. The other is a living cell's plasma membrane. After a signal arrives, the cell's membrane starts letting sodium through, while the plastic sheet stays the same. What best explains the change?",
     "options": [
-      "It lets nothing cross except water",
-      "It blocks every nonpolar molecule",
-      "The cell can add or remove transport proteins",
-      "Its openings are all one size, so it sorts only by size"
+      "Its phospholipids drifted apart and left open gaps",
+      "The signal made the oily core attract charged ions",
+      "The cell added transport proteins that let sodium cross",
+      "Sodium bound to the glycocalyx and was pulled through"
     ],
     "correct": 2,
     "why": {
-      "correct": "Each transport protein handles one substance or a small family of them, and the cell can change which ones are in its membrane. So the cell controls what crosses, which fixed holes cannot do.",
+      "correct": "A living membrane holds transport proteins, each for one substance or a small family of them, and the cell can add or remove them. Adding proteins that carry sodium opens a path for sodium. That control is what makes the membrane selectively permeable; holes punched in plastic cannot change.",
       "options": [
-        "Many substances besides water cross, including oxygen, carbon dioxide, and ions and glucose through proteins.",
-        "Small nonpolar molecules such as oxygen cross the bilayer most easily of all.",
-        "Correct. Changing its set of transport proteins lets the cell change what crosses.",
-        "The membrane sorts mainly by solubility in oil and by protein identity, not by a single pore size."
+        "Phospholipids drift sideways but stay packed side by side. The bilayer does not open gaps for ions.",
+        "The oily core blocks charged particles such as sodium ions, whatever signal arrives. Ions cross through proteins.",
+        "Correct. By adding transport proteins, the cell changes what crosses its membrane.",
+        "The glycocalyx is sugar chains on the outer face. It does not carry sodium across the membrane."
       ]
     }
   },

@@ -1,0 +1,42 @@
+{
+  "figure": "os-19-32",
+  "labels": [
+    {
+      "id": "vagus-nerve",
+      "name": "The vagus nerve",
+      "accept": [
+        "the vagus nerve",
+        "vagus nerve",
+        "vagus",
+        "cranial nerve x",
+        "cn x",
+        "vagal nerve"
+      ],
+      "box": [
+        0,
+        451,
+        297,
+        36
+      ],
+      "concept": "vagus-nerve"
+    },
+    {
+      "id": "sympathetic-cardiac-nerves",
+      "name": "Sympathetic cardiac nerves",
+      "accept": [
+        "sympathetic cardiac nerves",
+        "cardiac nerves",
+        "sympathetic cardiac nerve",
+        "cardiac accelerator nerves",
+        "cardioaccelerator nerves"
+      ],
+      "box": [
+        310,
+        932,
+        498,
+        39
+      ],
+      "concept": "heart-rate-control"
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   },
   "transcription": {
     "def": "Copying a gene's DNA sequence into RNA in the nucleus. RNA polymerase binds at the gene's promoter and builds a complementary RNA; splicing then removes the introns and joins the exons.",
-    "roots": [["trans-", "across"], ["script-", "to write"], ["ex-", "out"], ["in-", "within"]],
+    "roots": [["trans-", "across"], ["script-", "to write"], ["exon", "from expressed region"], ["intron", "from intragenic (within-gene) region"]],
     "say": "tranz-KRIP-shun"
   },
   "genetic-code": {

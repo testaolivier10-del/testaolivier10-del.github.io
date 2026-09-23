@@ -59,7 +59,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "A section cuts through the right eye and the right ear but misses the nose. Which plane made it?",
+    "q": "A section cuts through the right eye and the part of the brain directly behind it. It misses the nose and the left eye. Which plane made it?",
     "options": [
       "Midsagittal",
       "Transverse",
@@ -71,7 +71,7 @@
       "correct": "A vertical cut that stays on the right side, off the midline, is parasagittal. It divides the head into unequal right and left parts.",
       "options": [
         "A midsagittal cut runs down the exact midline, through the middle of the nose.",
-        "A horizontal cut at eye level would pass through both eyes and both ears, not just the right ones.",
+        "A horizontal cut at eye level would pass through both eyes, not just the right one.",
         "Correct. Off the midline, dividing right from left unequally: parasagittal.",
         "A frontal cut through the eyes would pass through both eyes, since it runs from side to side."
       ]

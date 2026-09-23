@@ -97,7 +97,7 @@
       "structure-function",
       "compartments"
     ],
-    "q": "A 22-year-old man is stabbed just to the left of his breastbone, and the blade reaches his heart. Which compartment of the thoracic cavity has the blade entered?",
+    "q": "A 22-year-old man is stabbed just to the left of his breastbone, and the blade reaches his heart. Which compartment of the thoracic cavity contains the organ the blade reached?",
     "options": [
       "The left pleural cavity",
       "The abdominal cavity",
@@ -108,7 +108,7 @@
     "why": {
       "correct": "The heart lies in the mediastinum, the central compartment between the two lungs, running from the breastbone in front to the backbone behind. A blade that reaches the heart has entered the mediastinum.",
       "options": [
-        "The left pleural cavity is the thin space around the left lung, lateral to the heart. A blade could cross it, but the heart itself is in the mediastinum.",
+        "The left pleural cavity is the thin space around the left lung, lateral to the heart. The heart itself is in the mediastinum.",
         "The abdominal cavity lies below the diaphragm. The heart is above it.",
         "The vertebral canal is part of the dorsal body cavity, inside the backbone. It is posterior to the whole thoracic cavity.",
         "Correct. The heart sits in the mediastinum, directly behind the breastbone."

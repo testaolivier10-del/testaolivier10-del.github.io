@@ -1,0 +1,103 @@
+{
+  "figure": "os-19-20",
+  "labels": [
+    {
+      "id": "rapid-influx-of-ca",
+      "name": "Rapid influx of Ca2+",
+      "accept": [
+        "rapid influx of ca2+",
+        "calcium influx",
+        "rapid calcium influx",
+        "ca influx",
+        "influx of calcium"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "l-type-calcium"
+    },
+    {
+      "id": "depolarization",
+      "name": "Depolarization",
+      "accept": [
+        "depolarization",
+        "depolarisation"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "outflux-of-k",
+      "name": "Outflux of K+",
+      "accept": [
+        "outflux of k+",
+        "potassium efflux",
+        "k efflux",
+        "efflux of potassium",
+        "potassium outflux",
+        "outflux of potassium"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "voltage-gated-na-k"
+    },
+    {
+      "id": "repolarization",
+      "name": "Repolarization",
+      "accept": [
+        "repolarization",
+        "repolarisation"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "polarization-terms"
+    },
+    {
+      "id": "slow-influx-of-na",
+      "name": "Slow influx of Na+",
+      "accept": [
+        "slow influx of na+",
+        "slow sodium influx",
+        "sodium influx",
+        "funny current",
+        "na influx"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "pacemaker-potential"
+    },
+    {
+      "id": "prepotential",
+      "name": "Prepotential",
+      "accept": [
+        "prepotential",
+        "pacemaker potential",
+        "prepotential depolarization"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "pacemaker-potential"
+    },
+    {
+      "id": "threshold",
+      "name": "Threshold",
+      "accept": [
+        "threshold",
+        "threshold potential"
+      ],
+      "box": [
+        954,
+        250,
+        124,
+        24
+      ],
+      "concept": "threshold"
+    }
+  ]
+}

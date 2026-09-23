@@ -198,7 +198,7 @@
     "options": [
       "Pancreas",
       "Testis",
-      "Heart",
+      "Urinary bladder",
       "Ovary",
       "Trachea"
     ],
@@ -212,7 +212,7 @@
       "options": [
         "Correct. The pancreas releases digestive juices into the intestine (digestive system) and chemical signals into the blood (endocrine system).",
         "Correct. A testis makes sperm cells (reproductive system) and releases chemical signals into the blood (endocrine system).",
-        "The heart is an organ of the cardiovascular system. This course does not place it in a second system.",
+        "The urinary bladder stores urine until you empty it. It is an organ of the urinary system only.",
         "Correct. An ovary releases egg cells (reproductive system) and chemical signals into the blood (endocrine system).",
         "The trachea is the airway to the lungs, an organ of the respiratory system only."
       ]

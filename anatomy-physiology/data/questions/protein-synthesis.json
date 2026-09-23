@@ -106,8 +106,8 @@
   {
     "id": "anp-protein-synthesis-5",
     "type": "single",
-    "level": "analyze",
-    "diff": 2,
+    "level": "apply",
+    "diff": 1,
     "core": [
       "structure-function"
     ],
@@ -221,7 +221,7 @@
       "RNA polymerase transcribes the gene",
       "The spliceosome removes introns and joins exons",
       "The mRNA leaves the nucleus through a nuclear pore",
-      "A ribosome begins translation, and its signal sequence docks it on the rough ER",
+      "A ribosome begins translation, and the new chain's signal sequence docks it on the rough ER",
       "Transport vesicles carry the protein from the ER to the Golgi apparatus",
       "A secretory vesicle fuses with the plasma membrane by exocytosis"
     ],
@@ -301,7 +301,7 @@
     "options": [
       "The skin cells lost that gene long ago",
       "The skin cells carry a mutation in that gene",
-      "Each cell type carries its own transcription factors",
+      "Each cell type carries its own mix of transcription factors",
       "The pancreas cells carry many extra copies of the gene"
     ],
     "correct": 2,
@@ -354,7 +354,7 @@
       "The mRNA is being spliced by ten spliceosomes",
       "Each ribosome makes one tenth of the whole protein",
       "Ten different proteins come from one mRNA molecule",
-      "Ten copies of one protein are being built at once"
+      "Ten copies of the same protein are being built at once"
     ],
     "correct": 3,
     "why": {
@@ -485,7 +485,7 @@
       "A protein with one different amino acid",
       "A normal protein",
       "A nine-amino-acid chain that does not work",
-      "A longer protein than normal, with extra amino acids"
+      "A longer protein than normal"
     ],
     "correct": 2,
     "why": {

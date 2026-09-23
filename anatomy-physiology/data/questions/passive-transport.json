@@ -92,7 +92,7 @@
       "gradients"
     ],
     "misconception": "transport always speeds up with a bigger gradient",
-    "q": "A cell takes up glucose on carrier proteins. Raising outside glucose from 5 to 10 mmol/L nearly doubles uptake, but raising it from 40 to 80 mmol/L barely changes it. What best explains this?",
+    "q": "A cell takes up glucose on carrier proteins. Raising outside glucose from 1 to 2 mmol/L nearly doubles uptake, but raising it from 40 to 80 mmol/L barely changes it. What best explains this?",
     "options": [
       "Glucose starts crossing the bilayer directly",
       "The gradient reverses at high glucose",
@@ -229,7 +229,7 @@
     "q": "This sequence explains what happens to a red blood cell placed in a hypotonic solution. One step is wrong. Which one?",
     "options": [
       "The solution has fewer nonpenetrating solutes than the cell",
-      "Water is more concentrated outside the cell than inside",
+      "The trapped solutes inside the cell cannot leave to even out",
       "Water moves out of the cell by osmosis",
       "The cell swells",
       "If the swelling is severe, the membrane tears"
@@ -239,7 +239,7 @@
       "correct": "In a hypotonic solution, water moves into the cell, toward the side with more solute particles. It does not move out.",
       "options": [
         "This step is right. That is what makes a solution hypotonic to the cell.",
-        "This step is right. Fewer solute particles outside means water is more concentrated there.",
+        "This step is right. The cell's potassium, proteins and phosphates stay inside, so the difference in solute particles lasts.",
         "This is the error. Water moves into the cell, toward its trapped solutes.",
         "This step is right. Water entering increases the cell's volume.",
         "This step is right. A tear from severe swelling is osmotic hemolysis."
@@ -388,7 +388,7 @@
       "gradients",
       "compartments"
     ],
-    "q": "The pressure inside a patient's leg capillaries rises from 30 to 45 mm Hg because the veins draining them are partly blocked. The capillary walls do not change. What happens to filtration out of those capillaries?",
+    "q": "Count only the pressure pushing fluid out, as in the filtration worked example. The pressure inside a patient's leg capillaries rises from 30 to 45 mm Hg because the veins draining them are partly blocked, and the pressure outside stays near 0. The capillary walls do not change. By this pressure-only reasoning, what happens to filtration out of those capillaries?",
     "options": [
       "It falls by about half",
       "It stays the same",
@@ -397,7 +397,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Flow equals the pressure gradient divided by resistance. With the wall's resistance unchanged, raising the gradient from 30 to 45 mm Hg multiplies flow by 1.5. More fluid leaves into the tissue, which can show as swelling.",
+      "correct": "Flow equals the pressure gradient divided by resistance. With the wall's resistance unchanged, raising the gradient from 30 to 45 mm Hg multiplies flow by 1.5. More fluid leaves into the tissue, which can show as swelling. In a real capillary, proteins held in the blood pull against the push, so the net rise is even larger; the capillary topic shows why.",
       "options": [
         "A higher pressure inside pushes more fluid out, not less.",
         "Filtration depends on the pressure gradient, and the gradient has risen.",

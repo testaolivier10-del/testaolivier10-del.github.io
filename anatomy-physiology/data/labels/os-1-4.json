@@ -1,0 +1,314 @@
+{
+  "figure": "os-1-4",
+  "labels": [
+    {
+      "id": "integumentary-system",
+      "name": "Integumentary system",
+      "accept": [
+        "integumentary system",
+        "integumentary"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "hair",
+      "name": "Hair",
+      "accept": [
+        "hair"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "hair-follicle"
+    },
+    {
+      "id": "skin",
+      "name": "Skin",
+      "accept": [
+        "skin"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "nails",
+      "name": "Nails",
+      "accept": [
+        "nails",
+        "nail"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "nail"
+    },
+    {
+      "id": "skeletal-system",
+      "name": "Skeletal system",
+      "accept": [
+        "skeletal system",
+        "skeletal"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "cartilage",
+      "name": "Cartilage",
+      "accept": [
+        "cartilage"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cartilage"
+    },
+    {
+      "id": "bones",
+      "name": "Bones",
+      "accept": [
+        "bones",
+        "bone"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": null
+    },
+    {
+      "id": "joints",
+      "name": "Joints",
+      "accept": [
+        "joints",
+        "articulations",
+        "joint"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": null
+    },
+    {
+      "id": "muscular-system",
+      "name": "Muscular system",
+      "accept": [
+        "muscular system",
+        "muscular"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "skeletal-muscles",
+      "name": "Skeletal muscles",
+      "accept": [
+        "skeletal muscles",
+        "muscles",
+        "skeletal muscle"
+      ],
+      "lines": [
+        30,
+        31
+      ],
+      "concept": "skeletal-muscle-tissue"
+    },
+    {
+      "id": "tendons",
+      "name": "Tendons",
+      "accept": [
+        "tendons",
+        "tendon"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "tendon-ligament"
+    },
+    {
+      "id": "nervous-system",
+      "name": "Nervous system",
+      "accept": [
+        "nervous system",
+        "nervous"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "brain",
+      "name": "Brain",
+      "accept": [
+        "brain"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [
+        "spinal cord"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "peripheral-nerves",
+      "name": "Peripheral nerves",
+      "accept": [
+        "peripheral nerves",
+        "nerve",
+        "nerves",
+        "peripheral nerve"
+      ],
+      "lines": [
+        32,
+        33
+      ],
+      "concept": "nerve"
+    },
+    {
+      "id": "endocrine-system",
+      "name": "Endocrine system",
+      "accept": [
+        "endocrine system",
+        "endocrine"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "pituitary-gland",
+      "name": "Pituitary gland",
+      "accept": [
+        "pituitary gland",
+        "pituitary"
+      ],
+      "lines": [
+        37,
+        40
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "thyroid-gland",
+      "name": "Thyroid gland",
+      "accept": [
+        "thyroid gland",
+        "thyroid"
+      ],
+      "lines": [
+        43,
+        46
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [
+        "pancreas"
+      ],
+      "lines": [
+        51
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "adrenal-glands",
+      "name": "Adrenal glands",
+      "accept": [
+        "adrenal glands",
+        "adrenal gland",
+        "adrenals"
+      ],
+      "lines": [
+        52,
+        53
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "testes",
+      "name": "Testes",
+      "accept": [
+        "testes",
+        "testicles",
+        "testis"
+      ],
+      "lines": [
+        55
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "ovaries",
+      "name": "Ovaries",
+      "accept": [
+        "ovaries",
+        "ovary"
+      ],
+      "lines": [
+        57
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "cardiovascular-system",
+      "name": "Cardiovascular system",
+      "accept": [
+        "cardiovascular system",
+        "cardiovascular",
+        "circulatory system"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "organ-system-roster"
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "accept": [
+        "heart"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "blood-vessels",
+      "name": "Blood vessels",
+      "accept": [
+        "blood vessels",
+        "arteries and veins",
+        "blood vessel",
+        "vessels"
+      ],
+      "lines": [
+        54,
+        56
+      ],
+      "concept": "blood-vessel-basics"
+    }
+  ]
+}

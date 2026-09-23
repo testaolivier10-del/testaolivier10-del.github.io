@@ -1,0 +1,543 @@
+[
+  {
+    "id": "anp-vessel-structure-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which layer of an artery wall contains most of its smooth muscle?",
+    "options": [
+      "Tunica intima",
+      "Tunica externa",
+      "Tunica media",
+      "The basement membrane"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The tunica media is the middle layer: rings of smooth muscle mixed with elastic fibers. Its contraction narrows the vessel.",
+      "options": [
+        "The tunica intima is the endothelial lining with a thin layer of connective tissue. It has no muscle layer.",
+        "The tunica externa is mostly collagen. It anchors the vessel and resists overstretching.",
+        "Correct. The media is the muscle layer.",
+        "The basement membrane is the thin sheet the endothelium sits on, part of the tunica intima."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What makes up the wall of a capillary?",
+    "options": [
+      "All three tunics, each very thin",
+      "A single layer of endothelial cells on a basement membrane",
+      "Endothelium and one layer of smooth muscle",
+      "Smooth muscle wrapped in a collagen sleeve, with no endothelial lining inside"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A capillary wall is only the tunica intima: one layer of endothelial cells and its basement membrane. That keeps the diffusion distance between blood and tissue tiny.",
+      "options": [
+        "Capillaries have no tunica media and no tunica externa.",
+        "Correct. Pericytes wrap around some capillaries, but the wall itself is one cell thick.",
+        "Capillaries have no smooth muscle layer. Arterioles do.",
+        "Every vessel is lined by endothelium; capillaries have nothing else."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-4",
+    "q": "Compare the three walls in the figure. Which vessel stretches most with each ventricular ejection and recoils during diastole, keeping blood moving between beats?",
+    "options": [
+      "The arteriole",
+      "The muscular artery",
+      "All three stretch about equally",
+      "The elastic artery"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The elastic artery's tunica media is packed with layers of elastic fibers. They stretch as blood surges in during ejection and recoil when the aortic valve closes, pushing blood onward during diastole.",
+      "options": [
+        "The arteriole's wall is mostly a few smooth muscle cells. It adjusts resistance rather than storing stretch.",
+        "The muscular artery's media is mostly smooth muscle with fewer elastic fibers, so it stretches much less.",
+        "The walls differ in elastic content, and so in how much they stretch and recoil.",
+        "Correct. Elastic arteries, such as the aorta, act as the pressure reservoir between beats."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-5",
+    "q": "Liver cells make large proteins, such as albumin, that must enter the blood. Which capillary type shown in the figure fits the liver?",
+    "options": [
+      "The one with large gaps between cells and an incomplete basement membrane",
+      "The one with an unbroken wall and complete basement membrane",
+      "The one with small pores through the cells on a complete basement membrane",
+      "None of them; the liver has no capillaries"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Sinusoids have large gaps between endothelial cells and an incomplete basement membrane, so large proteins and even blood cells can pass. The liver, spleen and red bone marrow have them.",
+      "options": [
+        "Correct. This is a sinusoid.",
+        "Continuous capillaries let small solutes through their clefts but hold back large proteins.",
+        "Fenestrated capillaries pass fluid and small molecules quickly, but their intact basement membrane holds back most large proteins.",
+        "The liver is full of capillaries; they are the sinusoid type."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-5",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "figure": "os-20-15",
+    "q": "In the figure, the muscles around the vein contract. What happens to the valve below the squeezed segment?",
+    "options": [
+      "It opens and lets blood down toward the foot",
+      "It closes",
+      "It stays open until the muscles relax",
+      "It is pressed shut by the bulging muscle itself"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Squeezing raises pressure in that segment. Blood tries to flow both ways, but downward flow fills the cusps of the lower valve and shuts it, so blood can only move up through the valve above.",
+      "options": [
+        "Backward flow is exactly what closes a venous valve. Blood cannot pass down through it.",
+        "Correct. Like heart valves, venous valves close when pressure in front of them exceeds pressure behind them: here, pressure in the squeezed segment is higher than below it.",
+        "The lower valve closes during contraction; the upper valve closes during relaxation.",
+        "The valve closes because of a pressure difference, not because muscle touches it."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What do the vasa vasorum do?",
+    "options": [
+      "Carry sympathetic nerve signals to the smooth muscle of capillaries",
+      "Supply blood to the outer layers of large vessel walls",
+      "Connect arterioles directly to venules",
+      "Form the valves inside veins"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Thick walls are too far from the lumen for diffusion to feed them. The vasa vasorum, small vessels in the tunica externa, supply the outer layers.",
+      "options": [
+        "The nerves in the wall are the nervi vasorum, and capillaries have no smooth muscle for them to control.",
+        "Correct. The name means vessels of the vessels.",
+        "That is an arteriovenous anastomosis.",
+        "Venous valves are folds of the tunica intima."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Why are arterioles, rather than large arteries, the main site of resistance to blood flow?",
+    "options": [
+      "They carry blood at the highest pressure in the body",
+      "They have the thickest walls of any vessel",
+      "Their radius is small and tightly controlled, and resistance depends on radius⁴",
+      "They lack an endothelial lining, leaving blood in direct contact with their smooth muscle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Resistance depends on 1 ÷ radius to the fourth power, so small vessels resist flow strongly and small changes in their radius matter a great deal. Arterioles also have the most smooth muscle relative to their size, so they can change radius widely.",
+      "options": [
+        "Pressure is highest in the large arteries; it drops as blood passes through the arterioles.",
+        "Large arteries have thicker walls. Arterioles have thick walls only relative to their small lumen.",
+        "Correct. Small radius plus strong control of radius makes arterioles the resistance vessels.",
+        "Every vessel, arterioles included, is lined by endothelium."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Walking into a cold wind, your sympathetic nerves to the arterioles of your skin fire faster. Predict each change in those arterioles and the capillary beds they feed.",
+    "variables": [
+      {
+        "name": "Arteriole radius",
+        "answer": "down",
+        "why": "Norepinephrine binds alpha adrenergic receptor proteins on the smooth muscle, which contracts further and narrows the vessel."
+      },
+      {
+        "name": "Arteriole resistance",
+        "answer": "up",
+        "why": "Resistance depends on 1 ÷ radius to the fourth power, so a smaller radius raises it steeply."
+      },
+      {
+        "name": "Blood flow into the skin's capillary beds",
+        "answer": "down",
+        "why": "With the pressure gradient about the same and resistance higher, flow = ΔP ÷ R falls."
+      }
+    ],
+    "why": {
+      "correct": "More sympathetic tone narrows the skin's arterioles, raising their resistance and cutting flow into the skin, which reduces heat loss from warm blood near the surface."
+    }
+  },
+  {
+    "id": "anp-vessel-structure-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An endocrine gland releases its hormones into the blood, and they must pass into capillaries quickly. Which capillary type would you expect in the gland?",
+    "options": [
+      "Continuous capillaries sealed by tight junctions",
+      "Fenestrated capillaries",
+      "Sinusoids with no basement membrane at all",
+      "No capillaries; hormones enter veins directly"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Fenestrated capillaries have pores through their endothelial cells that let fluid and small molecules, such as many hormones, pass quickly. Endocrine glands, the kidneys and the intestinal lining have them.",
+      "options": [
+        "Tight-junction-sealed continuous capillaries, as in the brain, restrict passage. That fits a barrier, not a gland that releases hormones.",
+        "Correct. Pores speed exchange of small molecules.",
+        "Sinusoids have an incomplete basement membrane, not none at all, and they are found in tissues that pass large proteins or whole cells, such as the liver.",
+        "Exchange with tissues happens in capillaries; veins are too thick-walled."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-10",
+    "type": "order",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these steps in order to show how varicose veins develop.",
+    "options": [
+      "A venous valve's cusps no longer meet",
+      "Blood leaks back down through the valve when you stand",
+      "Blood pools in the segment below, raising its pressure",
+      "The thin vein wall stretches",
+      "The stretch pulls the next valve's cusps apart, and it fails too"
+    ],
+    "why": {
+      "correct": "One incompetent valve lets blood fall back and pool. The pooled blood raises pressure and stretches the thin wall, and the widening pulls the next valve's cusps apart. The failure spreads, and the veins become swollen and twisted."
+    }
+  },
+  {
+    "id": "anp-vessel-structure-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An artery and a vein of similar size lie side by side on a slide. Which features identify the vein? Select all that apply.",
+    "options": [
+      "A thin tunica media",
+      "A tunica externa thicker than its media",
+      "A wide lumen, often collapsed into an oval",
+      "A prominent wavy internal elastic membrane",
+      "A thick ring of smooth muscle holding it round"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Veins carry blood at low pressure, and their walls reflect it: a thin media, a relatively thick externa, and a wide lumen that collapses when empty.",
+      "options": [
+        "Identifies the vein. Low pressure needs little muscle.",
+        "Identifies the vein. Its thickest layer is the collagen-rich externa.",
+        "Identifies the vein. The thin wall collapses without blood pressure holding it open.",
+        "Identifies the artery. The internal elastic membrane is prominent in arteries.",
+        "Identifies the artery. A thick muscular media keeps the artery round even when empty."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "A blood donor gives about 500 mL of blood. Within minutes, sympathetic nerves fire more strongly to her veins. How does that help keep blood flowing to her heart and brain?",
+    "options": [
+      "It dilates the veins so they can hold the donated volume",
+      "It closes every venous valve in the body at once and holds the remaining blood in place there",
+      "It constricts the veins, shrinking the venous reservoir and moving stored blood toward the heart",
+      "It makes the capillaries fenestrated so fluid enters faster"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "About 60 to 65 percent of blood sits in the compliant systemic veins. Sympathetic venoconstriction reduces their capacity, raises venous pressure and pushes that stored blood toward the heart, partly making up for the volume lost.",
+      "options": [
+        "Dilating the veins would let more blood pool in them, which is the opposite of what she needs.",
+        "Valves are passive. Nerves do not open or close them, and blocking flow would stop venous return.",
+        "Correct. The veins act as a blood reservoir the body can draw on.",
+        "Capillary type is a fixed structural feature of each tissue; nerves do not change it within minutes."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "When you breathe in, pressure in your thoracic cavity falls and pressure in your abdomen rises. What happens to blood flow from your abdominal veins into your chest?",
+    "options": [
+      "It increases",
+      "It decreases",
+      "It stops until you breathe out",
+      "It reverses direction"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Lower pressure around the veins in the chest and higher pressure around those in the abdomen widen the pressure gradient toward the heart, so venous return rises. This is the respiratory pump.",
+      "options": [
+        "Correct. A wider pressure gradient increases flow.",
+        "Flow slows when you breathe out, when the pressure changes reverse.",
+        "Flow toward the heart continues through both phases of breathing; it only speeds up and slows down.",
+        "Venous valves in the limbs and the direction of the gradient keep flow heading toward the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-14",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "A student describes the skeletal muscle pump. One step is wrong. Find it.",
+    "options": [
+      "The calf muscle contracts and squeezes the veins running through it.",
+      "Pressure in the squeezed segment of vein rises.",
+      "The valve above the segment opens and the valve below it closes.",
+      "Blood moves up toward the heart.",
+      "When the muscle relaxes, the valve above opens wider and blood falls back into the segment."
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "When the muscle relaxes, pressure in the segment falls. Blood above starts to flow back, fills the cusps of the valve above and closes it, so blood cannot fall back. The segment refills from below.",
+      "options": [
+        "This step is right. Many limb veins run between and through skeletal muscles.",
+        "This step is right. Squeezing a closed segment raises its pressure.",
+        "This step is right. Each valve responds to the pressure difference across it.",
+        "This step is right. The closed lower valve leaves only one way out.",
+        "This is the error. The valve above closes on relaxation; that is what stops blood from falling back."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
+    "q": "A soldier stands motionless at attention on a hot parade ground for an hour, then faints. What is the most likely chain of events?",
+    "options": [
+      "His arteries stiffened, raising pressure to his brain",
+      "Blood pooled in his leg veins without muscle contractions, so less reached his heart and brain",
+      "His venous valves failed all at once",
+      "Standing still made his heart beat so fast that its ventricles no longer had time to fill at all"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Standing still switches off the skeletal muscle pump. Blood pools in the compliant leg veins under gravity, less blood returns to the heart, less is pumped out, and blood flow to the brain falls until he faints. Heat widens skin vessels and adds to the pooling.",
+      "options": [
+        "Arteries do not stiffen in an hour, and higher pressure to the brain would not cause fainting.",
+        "Correct. Venous return depends on the muscle pump when you are upright.",
+        "Valves do not fail suddenly; varicose veins develop over years.",
+        "His heart rate may rise, but the problem starts with too little blood returning, not with the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "precapillary sphincters control flow into every capillary",
+    "q": "According to current evidence in humans, which structures mainly control how much blood enters a capillary bed?",
+    "options": [
+      "The arterioles feeding the bed",
+      "The venous valves downstream",
+      "The pericytes of the venules",
+      "The capillaries' own endothelial pores"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Arteriolar smooth muscle sets the resistance at the entrance to each bed and responds to nerves and to local chemicals. Discrete precapillary sphincters have been found in only some tissues and species, and their role in humans is unsettled. For your exam, many tests still expect the answer \"precapillary sphincters\".",
+      "options": [
+        "Correct. Arterioles are the resistance vessels that set flow into each bed.",
+        "Venous valves only stop backflow in veins. They do not control flow into capillaries.",
+        "Venule pericytes support the wall and affect its leakiness; they do not meter flow into the bed.",
+        "Pores affect what crosses the wall, not how much blood flows through the bed."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "With age, elastic fibers in the aortic wall are replaced by stiffer collagen. Each beat still ejects the same volume. Predict each change in the aorta.",
+    "variables": [
+      {
+        "name": "How much the aorta stretches during ejection",
+        "answer": "down",
+        "why": "Collagen resists stretch far more than elastic fibers, so the wall gives less."
+      },
+      {
+        "name": "Peak aortic pressure during ejection",
+        "answer": "up",
+        "why": "The same volume forced into a less stretchy tube raises its pressure more."
+      },
+      {
+        "name": "Lowest aortic pressure between beats",
+        "answer": "down",
+        "why": "Less stretch stored means less recoil during diastole to keep pressure up."
+      }
+    ],
+    "why": {
+      "correct": "A stiffer aorta works less well as an elastic reservoir: pressure rises higher during each ejection and falls lower between beats."
+    }
+  },
+  {
+    "id": "anp-vessel-structure-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is an arteriovenous anastomosis?",
+    "options": [
+      "A small vessel running in the tunica externa that feeds blood to the wall of a large artery",
+      "A pore through a capillary's endothelial cell",
+      "A direct connection from an arteriole to a venule that bypasses the capillaries",
+      "A fold of the intima that forms a venous valve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "An arteriovenous anastomosis links an arteriole straight to a venule, so blood can skip the capillary bed. It is one kind of vascular shunt, common in the skin of the fingers, toes and ears.",
+      "options": [
+        "Those are the vasa vasorum.",
+        "That is a fenestration.",
+        "Correct. Anastomosis means a connection between vessels.",
+        "That describes a venous valve."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The same extra 100 mL of blood is added to a large vein and to a large artery of similar size. Which statement is correct?",
+    "options": [
+      "The artery's pressure rises much less",
+      "Both pressures rise by the same amount",
+      "Neither pressure changes",
+      "The vein's pressure rises much less"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Veins are highly compliant: their thin walls stretch with little rise in pressure. That is why they can hold most of the blood volume as a reservoir. The thick artery wall resists stretch, so the same volume raises its pressure far more.",
+      "options": [
+        "A stronger, stiffer wall stretches less, so the same added volume raises the artery's pressure more, not less.",
+        "Their compliances differ greatly, so their pressures change by different amounts.",
+        "Adding volume to a closed elastic tube always raises its pressure.",
+        "Correct. This is what makes veins capacitance vessels."
+      ]
+    }
+  },
+  {
+    "id": "anp-vessel-structure-20",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Fill the gap. An arteriole constricts until its radius is half of what it was. Radius becomes ½ → radius to the fourth power becomes ______ → resistance becomes 16 times as large.",
+    "options": [
+      "½ of its old value",
+      "⅛ of its old value",
+      "1/16 of its old value",
+      "2 times its old value"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "(½)⁴ = ½ × ½ × ½ × ½ = 1/16. Resistance depends on 1 ÷ radius to the fourth power, so it becomes 16 times as large.",
+      "options": [
+        "That is the radius itself, not the radius to the fourth power.",
+        "That is (½)³, the cube, not the fourth power.",
+        "Correct. (½)⁴ = 1/16.",
+        "Halving the radius makes the fourth-power term smaller, not larger."
+      ]
+    }
+  }
+]
