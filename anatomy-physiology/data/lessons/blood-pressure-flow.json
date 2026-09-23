@@ -1,0 +1,44 @@
+{
+  "topic": "blood-pressure-flow",
+  "hook": "<p>Mr. Okonkwo, 64, is in the emergency department after a severe infection. His blood pressure reads 88/48. The doctor calculates his mean arterial pressure, gets 61, and orders treatment at once: below about 65 mm Hg, too little blood is being pushed through his brain and kidneys. To follow her reasoning you need three ideas: pressure, resistance, and the flow they produce.</p>",
+  "prereq": [
+    {
+      "q": "In the flow equation F = ΔP / R, what happens to flow if resistance doubles and the pressure gradient stays the same?",
+      "options": ["Flow doubles", "Flow halves", "Flow does not change"],
+      "correct": 1,
+      "why": "Flow is the pressure gradient divided by resistance. Dividing by twice the resistance gives half the flow.",
+      "review": "gradients-flow"
+    },
+    {
+      "q": "Which vessels are called the resistance vessels, because their smooth muscle changes their radius from moment to moment?",
+      "options": ["Capillaries", "Arterioles", "Large veins"],
+      "correct": 1,
+      "why": "Arterioles have a thick layer of smooth muscle relative to their size. Constricting or relaxing it changes their radius and so their resistance.",
+      "review": "vessel-structure"
+    },
+    {
+      "q": "Where is the brachial artery, used for measuring blood pressure with a cuff?",
+      "options": ["On the inner side of the upper arm, down to the front of the elbow", "On the thumb side of the wrist", "Behind the knee"],
+      "correct": 0,
+      "why": "The brachial artery runs down the inner arm beside the humerus to the front of the elbow, where the stethoscope is placed during a cuff reading.",
+      "review": "systemic-arteries"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Smooth muscle in the arterioles of a working muscle relaxes (vasodilation).", "effect": "The radius of those arterioles increases." },
+    { "cause": "Resistance depends on 1 ÷ radius⁴, so a small increase in radius has a large effect.", "effect": "The resistance of that muscle's vascular bed falls steeply; a 19% wider radius halves it." },
+    { "cause": "The pressure difference across the bed is set by arterial and venous pressure, which have not changed.", "effect": "By F = ΔP / R, blood flow through the muscle rises; half the resistance means twice the flow." },
+    { "cause": "Less pressure is used up across the wider arterioles.", "effect": "More of the arterial pressure reaches the capillaries of that muscle, and because the muscle's bed is in parallel with every other organ, total peripheral resistance falls only slightly." }
+  ],
+  "misconception": {
+    "wrong": "Blood moves slowest in the capillaries because each capillary is so narrow that it holds the blood back.",
+    "right": "Velocity depends on total cross-sectional area, not on the width of one vessel. The same total flow passes through all the capillaries together as through the aorta, but billions of capillaries side by side have about a thousand times the aorta's cross-sectional area. Velocity = flow ÷ area, so blood slows about a thousandfold, then speeds up again as veins merge."
+  },
+  "check": ["anp-blood-pressure-flow-3", "anp-blood-pressure-flow-5", "anp-blood-pressure-flow-7", "anp-blood-pressure-flow-8", "anp-blood-pressure-flow-10", "anp-blood-pressure-flow-11", "anp-blood-pressure-flow-12", "anp-blood-pressure-flow-13"],
+  "summary": "<p>Arterial blood pressure swings between systolic pressure, the peak during ejection, and diastolic pressure, held up between beats by the recoil of elastic arteries. Pulse pressure is their difference and widens when stroke volume rises or the aorta stiffens. Mean arterial pressure, the average that drives flow, is about diastolic plus one-third of pulse pressure at rest, because diastole lasts longer than systole; at fast heart rates the true mean is higher. Flow through any vessel, organ or the whole circuit follows F = ΔP / R. Resistance depends on vessel length, blood viscosity and, most strongly, vessel radius to the fourth power, so arterioles control it; total peripheral resistance is the resistance of the whole systemic circuit. Pressure falls most steeply across the arterioles. Velocity equals flow divided by total cross-sectional area, so blood moves slowest in the capillaries. A sphygmomanometer finds systolic pressure at the first Korotkoff sound and diastolic at the last; a small cuff or a low arm reads too high.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-13", "label": "NREMT: Vital signs and monitoring devices (blood pressure)" },
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology (perfusion)" }
+  ]
+}

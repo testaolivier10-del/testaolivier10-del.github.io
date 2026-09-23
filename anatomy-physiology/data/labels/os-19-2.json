@@ -1,0 +1,333 @@
+{
+  "figure": "os-19-2",
+  "labels": [
+    {
+      "id": "first-rib",
+      "name": "1st rib",
+      "accept": [
+        "1st rib",
+        "first rib",
+        "rib 1"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "ribs"
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "aortic-arch",
+      "name": "Aortic arch",
+      "accept": [
+        "aortic arch",
+        "arch of aorta",
+        "arch of the aorta"
+      ],
+      "lines": [
+        3,
+        6
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "thymus",
+      "name": "Thymus",
+      "accept": [
+        "thymus",
+        "thymus gland"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "base-of-heart",
+      "name": "Base",
+      "accept": [
+        "base",
+        "base of heart",
+        "base of the heart",
+        "heart base"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "heart-location"
+    },
+    {
+      "id": "diaphragm-sagittal",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "diaphragm"
+    },
+    {
+      "id": "thoracic-aorta",
+      "name": "Thoracic aorta",
+      "accept": [
+        "thoracic aorta",
+        "descending thoracic aorta"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "esophagus",
+        "oesophagus"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "mediastinum",
+      "name": "Mediastinum",
+      "accept": [
+        "mediastinum"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "mediastinum"
+    },
+    {
+      "id": "arch-of-aorta",
+      "name": "Arch of aorta",
+      "accept": [
+        "arch of aorta",
+        "aortic arch",
+        "arch of the aorta"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "superior-vena-cava",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "pulmonary-trunk",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary trunk"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-lung",
+      "name": "Right lung",
+      "accept": [
+        "right lung",
+        "lung"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "left-auricle",
+      "name": "Left auricle",
+      "accept": [
+        "left auricle",
+        "auricle",
+        "left atrial appendage",
+        "auricle of left atrium"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-auricle",
+      "name": "Right auricle",
+      "accept": [
+        "right auricle",
+        "auricle",
+        "right atrial appendage",
+        "auricle of right atrium"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "left-lung",
+      "name": "Left lung",
+      "accept": [
+        "left lung",
+        "lung"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "right-atrium",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-ventricle",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "left-ventricle",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "ribs",
+      "name": "Ribs (cut)",
+      "accept": [
+        "ribs (cut)",
+        "ribs",
+        "rib",
+        "cut ribs"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "ribs"
+    },
+    {
+      "id": "pericardial-cavity",
+      "name": "Pericardial cavity",
+      "accept": [
+        "pericardial cavity"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "pericardial-cavity"
+    },
+    {
+      "id": "apex-of-heart",
+      "name": "Apex of heart",
+      "accept": [
+        "apex of heart",
+        "apex",
+        "apex of the heart",
+        "cardiac apex"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "heart-location"
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "diaphragm"
+    },
+    {
+      "id": "parietal-pleura",
+      "name": "Edge of parietal pleura (cut)",
+      "accept": [
+        "edge of parietal pleura (cut)",
+        "parietal pleura",
+        "edge of parietal pleura",
+        "pleura"
+      ],
+      "lines": [
+        31,
+        33
+      ],
+      "concept": "serous-membrane"
+    },
+    {
+      "id": "parietal-pericardium",
+      "name": "Edge of parietal pericardium (cut)",
+      "accept": [
+        "edge of parietal pericardium (cut)",
+        "parietal pericardium",
+        "edge of parietal pericardium",
+        "pericardium",
+        "pericardial sac"
+      ],
+      "lines": [
+        32,
+        34
+      ],
+      "concept": "pericardium"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "blood-pressure": {
+    "def": "The pressure of blood in the large systemic arteries, which swings with each heartbeat between systolic pressure, the peak during ejection, and diastolic pressure, the lowest point just before the next ejection. It is written systolic over diastolic, for example 120/80 mm Hg.",
+    "roots": [["systol-", "contraction"], ["diastol-", "dilation, expansion"]],
+    "say": "sis-TOL-ik; dy-uh-STOL-ik"
+  },
+  "pulse-pressure": {
+    "def": "Systolic pressure minus diastolic pressure: the size of each beat's pressure swing. It widens with a larger stroke volume or a stiffer aorta and narrows when stroke volume is small.",
+    "roots": [["puls-", "beat, push"]],
+    "say": ""
+  },
+  "map": {
+    "def": "The average pressure in the arteries over a whole cardiac cycle, which drives blood through the organs. At rest it is estimated as diastolic pressure plus one-third of the pulse pressure; the estimate runs low at fast heart rates.",
+    "roots": [],
+    "say": ""
+  },
+  "vascular-flow": {
+    "def": "The volume of blood passing a point per minute. In any vessel, organ or the whole circuit it follows F = ΔP / R: the pressure difference between the two ends divided by the resistance.",
+    "roots": [["vascul-", "little vessel"]],
+    "say": ""
+  },
+  "resistance-factors": {
+    "def": "Vascular resistance is set by vessel length, blood viscosity and, most strongly, vessel radius, because resistance depends on 1 ÷ radius⁴. Total peripheral resistance (TPR) is the resistance of the whole systemic circulation; most of it is in the arterioles.",
+    "roots": [["periph-", "around, the outer edge"]],
+    "say": ""
+  },
+  "pressure-profile": {
+    "def": "The way blood pressure changes along the systemic circulation: high and pulsing in the arteries, falling most steeply across the arterioles, lower through the capillaries, and falling slowly to near zero in the veins and at the right atrium.",
+    "roots": [],
+    "say": ""
+  },
+  "velocity-area": {
+    "def": "Blood velocity equals flow divided by the total cross-sectional area of the vessels at that level. The capillaries together have the largest total area, so blood moves slowest there, about 0.3 mm/s, compared with about 30 cm/s in the aorta.",
+    "roots": [["veloc-", "swift"]],
+    "say": ""
+  },
+  "bp-measurement": {
+    "def": "Measuring arterial pressure with a sphygmomanometer: a cuff squeezes the brachial artery shut and is slowly let down. The first Korotkoff sound marks systolic pressure and the last marks diastolic pressure. A cuff that is too small or an arm below heart level gives a reading that is too high.",
+    "roots": [["sphygmo-", "pulse"], ["mano-", "thin"], ["-meter", "measure"]],
+    "say": "sfig-moh-muh-NOM-ih-ter; kuh-ROT-kof"
+  }
+}

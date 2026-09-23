@@ -1,0 +1,897 @@
+{
+  "about": "Feedback loop builder (docs/anp-spec.md section 8.3). Each loop fills the seven slots every loop in the course uses: Stimulus, Receptor (sensor), Afferent pathway, Control center, Efferent pathway, Effector, Response. Each slot has the card text, a short label for the finished diagram, and why it belongs there. Distractor cards belong in no slot. Then the learner classifies the loop (kind) and predicts the effect of a failed part. \"map\" names the dependency-map loop this one fulfils. Item ids: feedback-loops:<loop>:<slot>, :kind and :failure. Checked by scripts/lib/anp-tool-checks/feedback-loops.mjs.",
+  "slots": [
+    {
+      "id": "stimulus",
+      "label": "Stimulus"
+    },
+    {
+      "id": "sensor",
+      "label": "Receptor (sensor)"
+    },
+    {
+      "id": "afferent",
+      "label": "Afferent pathway"
+    },
+    {
+      "id": "control",
+      "label": "Control center"
+    },
+    {
+      "id": "efferent",
+      "label": "Efferent pathway"
+    },
+    {
+      "id": "effector",
+      "label": "Effector"
+    },
+    {
+      "id": "response",
+      "label": "Response"
+    }
+  ],
+  "loops": [
+    {
+      "id": "temperature-cold",
+      "title": "Body temperature falls",
+      "topic": "homeostasis-feedback",
+      "map": "Generic loop anatomy: stimulus to response (introduces every slot)",
+      "core": [
+        "homeostasis"
+      ],
+      "kind": "negative",
+      "scenario": "You step outside on a winter morning at −5 °C. Within a minute your fingers go pale and you start to shiver, and your body temperature stays close to 37 °C.",
+      "slots": {
+        "stimulus": {
+          "text": "Cold air cools your skin and blood",
+          "short": "Skin and blood cool",
+          "why": "The stimulus is the change in the regulated variable: here, temperature falling below its set point."
+        },
+        "sensor": {
+          "text": "Cold-sensitive nerve endings in the skin and temperature-sensitive neurons in the brain",
+          "short": "Cold-sensitive nerve endings",
+          "why": "These sensory receptors detect the fall. Cold-sensitive endings in the skin fire more as the skin cools."
+        },
+        "afferent": {
+          "text": "Sensory nerves carry signals to the brain",
+          "short": "Sensory nerves to the brain",
+          "why": "The afferent pathway carries information toward the control center. Here that is sensory nerves carrying action potentials."
+        },
+        "control": {
+          "text": "Temperature control center in the brain",
+          "short": "Brain’s temperature center",
+          "why": "The control center compares the incoming temperature with the set point and sends out commands."
+        },
+        "efferent": {
+          "text": "Nerves to skin blood vessels and skeletal muscles",
+          "short": "Nerves to vessels and muscles",
+          "why": "The efferent pathway carries commands away from the control center, here as nerve signals."
+        },
+        "effector": {
+          "text": "Smooth muscle of skin blood vessels, and skeletal muscles",
+          "short": "Vessel smooth muscle; skeletal muscle",
+          "why": "Effectors carry out the commands. Smooth muscle narrows the skin vessels; skeletal muscles contract in rapid small bursts."
+        },
+        "response": {
+          "text": "Skin vessels constrict to keep heat in, and muscles shiver to release heat, so body temperature rises back toward the set point",
+          "short": "Heat kept in and made: temperature rises",
+          "why": "Vasoconstriction keeps warm blood away from the skin, and the rapid bursts of muscle contraction release heat. Both push temperature back up, opposing the fall."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Glands in the skin release sweat",
+          "why": "Sweat carries heat away. That is a response for when temperature rises, the opposite of what this loop needs."
+        },
+        {
+          "text": "The set point is lowered to match the cold",
+          "why": "The set point stays where it is. The loop works by pushing temperature back toward it."
+        },
+        {
+          "text": "Warm-sensitive nerve endings fire faster",
+          "why": "Cooling makes warm-sensitive endings fire less, not more. The cold-sensitive endings are the ones signaling here."
+        }
+      ],
+      "classify": "The response (heat kept in and made) opposes the stimulus (a fall in temperature), so this is negative feedback. As temperature returns toward the set point, the stimulus shrinks and the loop eases off by itself.",
+      "failure": {
+        "part": "effector",
+        "q": "An 85-year-old’s skin vessels constrict weakly and their muscles shiver weakly: the effectors are weakened. What happens during a long cold day outdoors?",
+        "options": [
+          {
+            "text": "Body temperature drifts below normal, because the fall is detected but the response is too weak to oppose it",
+            "why": "Right. The sensors, pathways and control center all work, but the loop can only correct as much as its effectors can deliver. This is why older adults are more at risk when they get very cold."
+          },
+          {
+            "text": "Body temperature stays normal, because the control center lowers the set point instead",
+            "why": "The control center does not move the set point to excuse a failing response. It keeps sending commands the effectors cannot fully carry out."
+          },
+          {
+            "text": "Body temperature rises, because weak effectors make the sensors misread the cold as heat",
+            "why": "Nothing in this failure affects the sensors. They still detect cold correctly."
+          },
+          {
+            "text": "Nothing changes, because the sensors still detect the cold",
+            "why": "Detecting a change is not enough. Without a strong enough response, the variable is not pushed back."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "temperature-hot",
+      "title": "Body temperature rises",
+      "topic": "homeostasis-feedback",
+      "core": [
+        "homeostasis"
+      ],
+      "kind": "negative",
+      "scenario": "You run for half an hour on a warm afternoon. Your skin flushes and you sweat, and your body temperature settles just above 37 °C instead of climbing.",
+      "slots": {
+        "stimulus": {
+          "text": "Exercise and warm air raise your body temperature",
+          "short": "Body warms",
+          "why": "The stimulus is a rise in the regulated variable above its set point. Working muscles release heat faster than it is lost."
+        },
+        "sensor": {
+          "text": "Warm-sensitive nerve endings in the skin and temperature-sensitive neurons in the brain",
+          "short": "Warm-sensitive nerve endings",
+          "why": "These sensory receptors fire more as they warm, detecting the rise."
+        },
+        "afferent": {
+          "text": "Sensory nerves carry signals to the brain",
+          "short": "Sensory nerves to the brain",
+          "why": "The afferent pathway carries the information toward the control center."
+        },
+        "control": {
+          "text": "Temperature control center in the brain",
+          "short": "Brain’s temperature center",
+          "why": "The control center compares the higher temperature with the set point and sends out commands."
+        },
+        "efferent": {
+          "text": "Nerves to skin blood vessels and to glands in the skin",
+          "short": "Nerves to vessels and skin glands",
+          "why": "The efferent pathway carries the commands out, here as nerve signals."
+        },
+        "effector": {
+          "text": "Smooth muscle of skin blood vessels, and glands in the skin that release sweat",
+          "short": "Vessel smooth muscle; skin glands",
+          "why": "The smooth muscle relaxes to widen the vessels, and the glands release sweat."
+        },
+        "response": {
+          "text": "Skin vessels dilate so more heat leaves, and sweat evaporates and carries heat away, so body temperature falls back toward the set point",
+          "short": "Heat lost: temperature falls",
+          "why": "More warm blood near the surface and evaporating sweat both remove heat, opposing the rise."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Skeletal muscles shiver",
+          "why": "Shivers release heat. That would make the rise worse, so it belongs to the loop for falling temperature."
+        },
+        {
+          "text": "Skin vessels constrict to keep warm blood in",
+          "why": "Constriction holds heat in. It is the response to cold, the opposite of what is needed here."
+        },
+        {
+          "text": "Cold-sensitive nerve endings fire faster",
+          "why": "Warming makes cold-sensitive endings fire less. The warm-sensitive endings detect this rise."
+        }
+      ],
+      "classify": "The response (heat lost) opposes the stimulus (a rise in temperature), so this is negative feedback.",
+      "failure": {
+        "part": "response",
+        "q": "On a very humid day, sweat drips off instead of evaporating, so the sweat removes little heat. What happens to body temperature during a long run?",
+        "options": [
+          {
+            "text": "It keeps rising, because the loop is running but its main way of losing heat is not working",
+            "why": "Right. The loop detects the rise and commands the skin glands to release sweat, but sweat cools only when it evaporates. If heat is made faster than it is lost, temperature climbs, which is how exertional heat illness develops."
+          },
+          {
+            "text": "It stays normal, because the glands simply release more sweat",
+            "why": "More sweat does not help if it cannot evaporate. It drips away and takes water, not heat, with it."
+          },
+          {
+            "text": "It falls, because the skin vessels dilate",
+            "why": "Dilation moves heat to the skin, but on a hot, humid day the skin cannot shed it fast enough to lower body temperature."
+          },
+          {
+            "text": "It stays normal, because the set point moves up to match",
+            "why": "Exercise does not move the set point. The control center keeps trying to bring temperature down to the same target."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "glucose-high",
+      "title": "Glucose in the blood rises after a meal",
+      "topic": "homeostasis-feedback",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "An hour after a large bowl of pasta, glucose absorbed from your gut has pushed up the glucose level in your blood. Two hours later it is back near its usual level.",
+      "slots": {
+        "stimulus": {
+          "text": "Glucose in your blood rises after a meal",
+          "short": "Glucose level rises",
+          "why": "The stimulus is the rise in a regulated variable, the concentration of glucose in the blood."
+        },
+        "sensor": {
+          "text": "Gland cells in the pancreas detect the rise",
+          "short": "Pancreas gland cells sense it",
+          "why": "Some gland cells in the pancreas are themselves the sensor: they respond directly to the glucose level of the blood flowing past them."
+        },
+        "afferent": {
+          "text": "No separate pathway: the sensing cells are the deciding cells",
+          "short": "None: same cells",
+          "why": "Here the sensor and the control center are the same cells, so the afferent pathway is as short as it can be. No nerve is needed."
+        },
+        "control": {
+          "text": "The same pancreas gland cells set how much hormone to release",
+          "short": "Same cells set hormone output",
+          "why": "These cells compare the glucose level with their set point and release more hormone the higher it is."
+        },
+        "efferent": {
+          "text": "A hormone carried in the blood",
+          "short": "Hormone in the blood",
+          "why": "The command travels as a chemical messenger in the blood. An efferent pathway does not have to be a nerve."
+        },
+        "effector": {
+          "text": "Liver, muscle and fat cells",
+          "short": "Liver, muscle, fat cells",
+          "why": "These target cells have receptor proteins for the hormone and respond by taking up glucose."
+        },
+        "response": {
+          "text": "Cells take up and store glucose, so the glucose level falls back toward the set point",
+          "short": "Glucose taken up: level falls",
+          "why": "Glucose moves out of the blood into cells, opposing the rise."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Sensory nerves carry signals to the brain",
+          "why": "This loop needs no nerve: the pancreas cells sense the glucose themselves and respond directly."
+        },
+        {
+          "text": "A hormone that raises the glucose level",
+          "why": "That is the between-meals loop. After a meal the pancreas releases the hormone that lowers glucose."
+        },
+        {
+          "text": "Glucose is released from the liver into the blood",
+          "why": "That would push glucose further up, the opposite of what this loop does."
+        }
+      ],
+      "classify": "The response (glucose leaves the blood) opposes the stimulus (a rise in the glucose level), so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "Suppose the pancreas gland cells still detect the rise in glucose but can no longer make the hormone that lowers it. What happens after meals?",
+        "options": [
+          {
+            "text": "The glucose level rises and stays high, because the command to take up glucose never reaches the cells",
+            "why": "Right. The rise is detected, but with no hormone the efferent pathway is broken, so the effectors never get the signal."
+          },
+          {
+            "text": "The glucose level stays normal, because the liver, muscle and fat cells sense the glucose themselves",
+            "why": "Those cells are effectors, not sensors. They take up glucose in response to the hormone, which is now missing."
+          },
+          {
+            "text": "The glucose level falls too low, because nothing stops the loop",
+            "why": "With no hormone, nothing drives glucose into the cells, so the level cannot fall."
+          },
+          {
+            "text": "The glucose level stays normal, because the brain takes over as the control center",
+            "why": "The brain is not part of this loop. There is no other path for the command to take."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "oxygen-low",
+      "title": "Blood oxygen is low",
+      "topic": "homeostasis-feedback",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You move to a mountain town where each breath brings in less oxygen. Over the next few weeks, your blood slowly gains more red blood cells.",
+      "slots": {
+        "stimulus": {
+          "text": "Your blood carries too little oxygen",
+          "short": "Blood oxygen low",
+          "why": "The stimulus is a fall in the oxygen the blood delivers to tissues."
+        },
+        "sensor": {
+          "text": "Cells in the kidneys detect the low oxygen",
+          "short": "Kidney cells sense it",
+          "why": "Specialized kidney cells respond directly to the oxygen level in the blood reaching them."
+        },
+        "afferent": {
+          "text": "No separate pathway: the kidney cells that sense also respond",
+          "short": "None: same cells",
+          "why": "The sensing cells and the deciding cells are the same, so no nerve carries the information."
+        },
+        "control": {
+          "text": "The same kidney cells set how much hormone to release",
+          "short": "Same cells set hormone output",
+          "why": "The lower the oxygen, the more hormone these cells release."
+        },
+        "efferent": {
+          "text": "A hormone carried in the blood",
+          "short": "Hormone in the blood",
+          "why": "The command travels in the blood to a distant target."
+        },
+        "effector": {
+          "text": "Blood-forming tissue inside the bones",
+          "short": "Blood-forming tissue in bones",
+          "why": "This tissue responds to the hormone by producing red blood cells faster."
+        },
+        "response": {
+          "text": "More red blood cells are made, the blood carries more oxygen, and the signal fades",
+          "short": "More red cells: oxygen rises",
+          "why": "More red blood cells carry more oxygen, which removes the stimulus."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The lungs breathe faster",
+          "why": "Faster breathing is a separate, quick response controlled by the brain. This loop works through the kidneys and a hormone, over days to weeks."
+        },
+        {
+          "text": "Sensory nerves carry signals to the brain",
+          "why": "No nerve is involved: the kidney cells sense oxygen and release the hormone themselves."
+        },
+        {
+          "text": "Fewer red blood cells are made",
+          "why": "Fewer red cells would carry even less oxygen, pushing the variable further from its set point."
+        }
+      ],
+      "classify": "The response (more oxygen carried) opposes the stimulus (too little oxygen), so this is negative feedback. As oxygen recovers, hormone release falls again.",
+      "failure": {
+        "part": "efferent",
+        "q": "Badly damaged kidneys make very little of the hormone, even when oxygen is low. What happens to the red blood cell count?",
+        "options": [
+          {
+            "text": "It falls and stays low, because the blood-forming tissue never gets the command to make more",
+            "why": "Right. Red cells wear out and are replaced only as fast as the hormone drives production. With the efferent pathway broken, the count drifts down."
+          },
+          {
+            "text": "It rises, because the low oxygen acts on the bones directly",
+            "why": "The blood-forming tissue responds to the hormone, not to oxygen itself. Without the hormone, production slows."
+          },
+          {
+            "text": "It stays normal, because the lungs make up for it",
+            "why": "The lungs cannot make red blood cells. Breathing faster does not replace the missing hormone."
+          },
+          {
+            "text": "It stays normal, because the sensor still detects low oxygen",
+            "why": "Detection alone does nothing if the command cannot be sent."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "childbirth",
+      "title": "Contractions in childbirth",
+      "topic": "homeostasis-feedback",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "positive",
+      "scenario": "Late in labor, contractions come harder and closer together, each one pushing the baby further down, until the baby is born.",
+      "slots": {
+        "stimulus": {
+          "text": "The baby’s head stretches the lower opening of the uterus",
+          "short": "Head stretches the uterus opening",
+          "why": "The stimulus is stretch of the lower opening of the uterus."
+        },
+        "sensor": {
+          "text": "Stretch-sensitive sensory receptors in the lower uterus",
+          "short": "Stretch sensors in the uterus",
+          "why": "These sensory receptors fire more as the opening stretches."
+        },
+        "afferent": {
+          "text": "Sensory nerves carry signals to the brain",
+          "short": "Sensory nerves to the brain",
+          "why": "The afferent pathway carries the stretch information to the brain."
+        },
+        "control": {
+          "text": "The brain",
+          "short": "Brain",
+          "why": "The brain is the control center: more stretch signals lead to more hormone release."
+        },
+        "efferent": {
+          "text": "The pituitary gland releases a hormone into the blood",
+          "short": "Pituitary hormone in the blood",
+          "why": "The command travels as a hormone released from the pituitary gland into the blood."
+        },
+        "effector": {
+          "text": "Smooth muscle of the uterus",
+          "short": "Uterine smooth muscle",
+          "why": "The hormone makes the smooth muscle of the uterus contract harder."
+        },
+        "response": {
+          "text": "Stronger contractions push the head down further, stretching the opening even more",
+          "short": "Stronger contractions: more stretch",
+          "why": "The response increases the very stimulus that started it: more stretch, more hormone, stronger contractions."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Smooth muscle of the uterus relaxes",
+          "why": "Relaxing would reduce the stretch. In this loop the uterus contracts harder."
+        },
+        {
+          "text": "The loop switches itself off as the stretch shrinks",
+          "why": "That is how negative feedback ends. Here the stretch keeps growing until an outside event, the birth, removes it."
+        },
+        {
+          "text": "Temperature control center in the brain",
+          "why": "Body temperature is a different variable with its own loop."
+        }
+      ],
+      "classify": "The response (stronger contractions, more stretch) strengthens the stimulus, so this is positive feedback. It stops only when something outside the loop ends it: delivery removes the stretch.",
+      "failure": {
+        "part": "efferent",
+        "q": "Suppose the pituitary gland could not release the hormone during labor. What would happen to this loop?",
+        "options": [
+          {
+            "text": "Contractions would not build up through this loop, so labor would progress slowly",
+            "why": "Right. The stretch is still sensed and signaled, but the command that strengthens the contractions never reaches the uterus. Hospitals can give the hormone as a drug to stand in for the missing pathway."
+          },
+          {
+            "text": "Contractions would stop at once, because the sensor fails too",
+            "why": "The sensor is not affected. Stretch is still detected; the command is what is missing."
+          },
+          {
+            "text": "Contractions would grow stronger faster, because nothing limits the loop",
+            "why": "The hormone is what strengthens the contractions. Without it, they cannot build up this way."
+          },
+          {
+            "text": "Nothing would change, because the uterus senses its own stretch and contracts harder",
+            "why": "In this loop the stronger contractions depend on the hormone. Remove it, and the loop cannot drive them."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "baroreflex-fall",
+      "title": "Baroreceptor reflex: pressure falls",
+      "topic": "bp-short-term",
+      "map": "Baroreceptor reflex: pressure falls and pressure rises",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You stand up quickly after lying down. Blood pools in your leg veins and your mean arterial pressure dips, but within a few heartbeats it is back near normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Mean arterial pressure falls",
+          "short": "MAP falls",
+          "why": "The stimulus is a fall in the regulated variable, mean arterial pressure."
+        },
+        "sensor": {
+          "text": "Baroreceptors in the carotid sinuses and aortic arch stretch less and fire less",
+          "short": "Baroreceptors fire less",
+          "why": "Baroreceptors are stretch-sensitive sensory receptors in the artery wall. Lower pressure stretches the wall less, so they fire fewer action potentials."
+        },
+        "afferent": {
+          "text": "Fewer impulses in the glossopharyngeal and vagus nerves",
+          "short": "Fewer impulses in nerves IX and X",
+          "why": "The carotid sinuses report through the glossopharyngeal nerves and the aortic arch through the vagus nerves. Fewer impulses reach the brainstem."
+        },
+        "control": {
+          "text": "Cardiovascular center in the medulla oblongata",
+          "short": "Cardiovascular center, medulla",
+          "why": "The cardiovascular center reads less input as low pressure."
+        },
+        "efferent": {
+          "text": "Sympathetic output rises and vagal output falls",
+          "short": "Sympathetic up, vagal down",
+          "why": "The commands leave on autonomic nerves: more sympathetic, less parasympathetic."
+        },
+        "effector": {
+          "text": "SA node, ventricular muscle, and smooth muscle of arterioles and veins",
+          "short": "SA node, ventricles, vessels",
+          "why": "The SA node speeds up, the ventricles contract harder, arterioles constrict and veins squeeze blood toward the heart."
+        },
+        "response": {
+          "text": "Heart rate, stroke volume and TPR rise, so MAP rises back toward its set point",
+          "short": "HR, SV, TPR rise: MAP recovers",
+          "why": "By MAP = HR × SV × TPR, pressure climbs back, which restores baroreceptor firing and removes the stimulus."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Vagal output rises and sympathetic output falls",
+          "why": "That is the command for a rise in pressure. It would lower pressure further here."
+        },
+        {
+          "text": "The kidneys release renin",
+          "why": "Renin starts a hormone loop that raises pressure over minutes to hours. The baroreceptor reflex works through nerves within seconds."
+        },
+        {
+          "text": "Osmoreceptors in the hypothalamus",
+          "why": "Osmoreceptors sense the concentration of the plasma, not arterial pressure."
+        }
+      ],
+      "classify": "The response (pressure rises) opposes the stimulus (pressure falls), so the baroreceptor reflex is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "Long-standing diabetes mellitus has damaged a patient’s autonomic nerves, so commands from the cardiovascular center barely reach the heart and vessels. What happens when this patient stands up?",
+        "options": [
+          {
+            "text": "Pressure falls and stays low for minutes, so the patient feels lightheaded or faints",
+            "why": "Right. The fall is sensed and the center responds, but the efferent pathway cannot deliver the commands. Heart rate and TPR do not rise, and orthostatic hypotension results."
+          },
+          {
+            "text": "Pressure recovers normally, because the baroreceptors still work",
+            "why": "Sensing the fall is only the start. Without working efferent nerves, the effectors never get the command."
+          },
+          {
+            "text": "Pressure rises too high, because the loop has no brake",
+            "why": "A broken efferent pathway weakens the response; it does not strengthen it."
+          },
+          {
+            "text": "Heart rate rises extra fast to make up for the vessels",
+            "why": "The same damaged autonomic nerves supply the SA node, so heart rate cannot rise much either."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "baroreflex-rise",
+      "title": "Baroreceptor reflex: pressure rises",
+      "topic": "bp-short-term",
+      "map": "Baroreceptor reflex: pressure falls and pressure rises",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You strain to lift something heavy, then relax. Your arterial pressure overshoots for a few seconds, and your heart rate drops sharply before everything settles.",
+      "slots": {
+        "stimulus": {
+          "text": "Mean arterial pressure rises suddenly",
+          "short": "MAP rises",
+          "why": "The stimulus is a rise in mean arterial pressure."
+        },
+        "sensor": {
+          "text": "Baroreceptors in the carotid sinuses and aortic arch stretch more and fire faster",
+          "short": "Baroreceptors fire more",
+          "why": "Higher pressure stretches the artery wall more, and the baroreceptors fire faster."
+        },
+        "afferent": {
+          "text": "More impulses in the glossopharyngeal and vagus nerves",
+          "short": "More impulses in nerves IX and X",
+          "why": "More impulses travel to the brainstem."
+        },
+        "control": {
+          "text": "Cardiovascular center in the medulla oblongata",
+          "short": "Cardiovascular center, medulla",
+          "why": "The cardiovascular center reads more input as high pressure."
+        },
+        "efferent": {
+          "text": "Vagal output rises and sympathetic output falls",
+          "short": "Vagal up, sympathetic down",
+          "why": "The commands shift toward the parasympathetic side."
+        },
+        "effector": {
+          "text": "SA node, ventricular muscle, and smooth muscle of arterioles and veins",
+          "short": "SA node, ventricles, vessels",
+          "why": "The SA node slows, ventricular contractions weaken slightly, and arterioles and veins relax."
+        },
+        "response": {
+          "text": "Heart rate, stroke volume and TPR fall, so MAP falls back toward its set point",
+          "short": "HR, SV, TPR fall: MAP recovers",
+          "why": "Lower heart rate, stroke volume and resistance bring pressure back down, and baroreceptor firing returns to normal."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Sympathetic output rises and vagal output falls",
+          "why": "That command raises pressure. It is the response to a fall, not a rise."
+        },
+        {
+          "text": "Atrial muscle cells release ANP",
+          "why": "ANP responds to atrial stretch from high blood volume and acts over hours through the kidneys. It is a separate loop."
+        },
+        {
+          "text": "Chemoreceptors report falling pH",
+          "why": "Chemical sensors report blood chemistry. This loop is driven by stretch of the artery wall."
+        }
+      ],
+      "classify": "The response (pressure falls) opposes the stimulus (pressure rises), so this is negative feedback.",
+      "failure": {
+        "part": "sensor",
+        "q": "A person’s blood pressure stays high for weeks. Their baroreceptors reset and now treat the higher pressure as normal. What does the baroreceptor reflex do about the high pressure?",
+        "options": [
+          {
+            "text": "It stops opposing it and defends the new, higher level instead",
+            "why": "Right. After resetting, the sensors fire at their normal rate at the high pressure, so the control center sees nothing to correct. This is why the baroreceptor reflex handles fast changes but cannot fix a pressure that stays high for weeks."
+          },
+          {
+            "text": "It keeps lowering pressure until it returns to the old normal",
+            "why": "Once the sensors reset, they no longer report the pressure as high, so the loop has no stimulus to act on."
+          },
+          {
+            "text": "It raises pressure further, because the reset makes it positive feedback",
+            "why": "Resetting moves the level the loop defends. The loop still opposes changes around that level."
+          },
+          {
+            "text": "It stops working at all, so pressure swings wildly",
+            "why": "The reflex still corrects sudden changes; it just centers them on the new level."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "raas",
+      "title": "Renin–angiotensin–aldosterone: pressure and volume fall",
+      "topic": "bp-long-term",
+      "map": "Renin–angiotensin–aldosterone and blood pressure",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "After a day of vomiting, a patient has lost fluid and their blood pressure is low. Over the next hours their kidneys make very little urine and their pressure slowly improves.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood pressure and blood volume fall",
+          "short": "Pressure and volume fall",
+          "why": "The stimulus is the fall in blood volume and pressure, felt in the kidney’s own vessels."
+        },
+        "sensor": {
+          "text": "Pressure-sensing cells in the walls of the kidney’s small arteries",
+          "short": "Pressure-sensing kidney cells",
+          "why": "Specialized cells in the kidney’s vessel walls respond to lower pressure (and to sympathetic signals and low salt delivery in the kidney)."
+        },
+        "afferent": {
+          "text": "No separate pathway: the sensing cells release the enzyme themselves",
+          "short": "None: same cells",
+          "why": "The sensing cells and the releasing cells are the same, so no nerve or hormone carries the information to them."
+        },
+        "control": {
+          "text": "The same kidney cells set how much renin to release",
+          "short": "Same cells release renin",
+          "why": "These cells release more renin the lower the pressure they sense."
+        },
+        "efferent": {
+          "text": "Renin leads to angiotensin II, which triggers aldosterone release; both travel in the blood",
+          "short": "Angiotensin II and aldosterone",
+          "why": "Renin converts angiotensinogen to angiotensin I, ACE converts that to angiotensin II, and angiotensin II makes the adrenal cortex release aldosterone. The commands travel as chemical messengers in the blood."
+        },
+        "effector": {
+          "text": "Arteriole smooth muscle and the kidney tubules",
+          "short": "Arterioles; kidney tubules",
+          "why": "Angiotensin II constricts arterioles. Aldosterone makes the kidney tubules reabsorb more sodium, and water follows."
+        },
+        "response": {
+          "text": "TPR rises and the kidneys keep more sodium and water, so blood volume and pressure rise",
+          "short": "TPR and volume rise: pressure recovers",
+          "why": "Higher resistance raises pressure within minutes; retained sodium and water restore volume over hours to days."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Stretched atrial cells release ANP",
+          "why": "ANP responds to high volume and makes the kidneys lose sodium, the opposite of what is needed here."
+        },
+        {
+          "text": "The kidneys excrete more sodium and water",
+          "why": "Losing more sodium and water would lower volume further."
+        },
+        {
+          "text": "Baroreceptors in the carotid sinuses fire faster",
+          "why": "Low pressure makes baroreceptors fire less, and they belong to the fast nerve-based loop."
+        }
+      ],
+      "classify": "The response (pressure and volume rise) opposes the stimulus (pressure and volume fall), so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "A patient takes an ACE inhibitor, so little angiotensin I is converted to angiotensin II. They then lose blood in an accident. How does this loop respond?",
+        "options": [
+          {
+            "text": "Renin rises, but little angiotensin II or aldosterone follows, so this loop helps restore pressure less than usual",
+            "why": "Right. The sensor and control center still work, so renin release rises. The broken step in the efferent pathway means the vasoconstriction and sodium retention it would trigger are much smaller."
+          },
+          {
+            "text": "The loop responds normally, because renin still rises",
+            "why": "Renin is only the first step. Its effects depend on angiotensin II being made."
+          },
+          {
+            "text": "Renin release stops, because the drug blocks the kidney cells",
+            "why": "The drug blocks the converting enzyme, not the renin-releasing cells. Renin actually rises."
+          },
+          {
+            "text": "Aldosterone rises more than usual to make up for the missing angiotensin II",
+            "why": "Angiotensin II is the main stimulus for aldosterone release, so aldosterone rises less, not more."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "adh-osmolarity",
+      "title": "ADH: plasma osmolarity rises",
+      "topic": "bp-long-term",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "After a salty meal and a long afternoon without a drink, your plasma is slightly more concentrated than usual. You feel thirsty and pass only a little dark urine.",
+      "slots": {
+        "stimulus": {
+          "text": "Plasma osmolarity rises",
+          "short": "Osmolarity rises",
+          "why": "The stimulus is a rise in the concentration of solutes in the plasma."
+        },
+        "sensor": {
+          "text": "Osmoreceptors in the hypothalamus",
+          "short": "Hypothalamic osmoreceptors",
+          "why": "Osmoreceptors are sensory receptors that shrink when the fluid around them becomes more concentrated, and they fire more."
+        },
+        "afferent": {
+          "text": "Signals within the hypothalamus",
+          "short": "Within the hypothalamus",
+          "why": "The sensors sit in the hypothalamus itself, so the afferent pathway is short: neurons within the same region."
+        },
+        "control": {
+          "text": "The hypothalamus",
+          "short": "Hypothalamus",
+          "why": "The hypothalamus compares plasma osmolarity with its set point."
+        },
+        "efferent": {
+          "text": "ADH released from the posterior pituitary into the blood",
+          "short": "ADH in the blood",
+          "why": "Hypothalamic neurons release ADH from their endings in the posterior pituitary, and it travels in the blood."
+        },
+        "effector": {
+          "text": "Cells of the kidney tubules",
+          "short": "Kidney tubule cells",
+          "why": "ADH makes the kidney tubules more permeable to water."
+        },
+        "response": {
+          "text": "The tubules reabsorb more water, so less, more concentrated urine is made and plasma osmolarity falls",
+          "short": "Water kept: osmolarity falls",
+          "why": "Water returned to the blood dilutes the plasma, opposing the rise. Thirst, driven by the same sensors, adds water by mouth."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The adrenal cortex releases aldosterone",
+          "why": "Aldosterone makes the kidneys keep sodium. Keeping more solute would not correct concentrated plasma."
+        },
+        {
+          "text": "The kidney tubules let more water leave in the urine",
+          "why": "Losing more water would make the plasma even more concentrated."
+        },
+        {
+          "text": "Stretched atrial cells release ANP",
+          "why": "ANP responds to atrial stretch from high volume, not to plasma concentration."
+        }
+      ],
+      "classify": "The response (water kept, plasma diluted) opposes the stimulus (plasma too concentrated), so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "After a head injury, the posterior pituitary releases almost no ADH (diabetes insipidus). What happens?",
+        "options": [
+          {
+            "text": "The kidneys make large volumes of dilute urine, and plasma osmolarity rises unless the person drinks a lot",
+            "why": "Right. The rise in osmolarity is sensed, but no ADH reaches the tubules, so they cannot hold water back. Thirst still works, so drinking can keep up if water is available."
+          },
+          {
+            "text": "Urine becomes very concentrated, because the kidneys sense the high osmolarity themselves",
+            "why": "The tubules keep water only when ADH tells them to. Without it, urine stays dilute."
+          },
+          {
+            "text": "Nothing changes, because aldosterone takes over the job",
+            "why": "Aldosterone controls sodium, not the water permeability of the tubules. It cannot replace ADH."
+          },
+          {
+            "text": "Plasma osmolarity falls, because the kidneys keep too much water",
+            "why": "That would be the result of too much ADH. With none, water is lost."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "anp-volume",
+      "title": "ANP: blood volume rises",
+      "topic": "bp-long-term",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "A patient receives two liters of IV fluid over half an hour. Over the next hours they pass much more urine than usual, and their blood volume returns toward normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood volume rises",
+          "short": "Blood volume rises",
+          "why": "The stimulus is a rise in blood volume, which raises venous return and stretches the atria."
+        },
+        "sensor": {
+          "text": "Atrial muscle cells are stretched",
+          "short": "Stretched atrial cells",
+          "why": "Atrial muscle cells respond directly to being stretched."
+        },
+        "afferent": {
+          "text": "No separate pathway: the stretched cells release the hormone themselves",
+          "short": "None: same cells",
+          "why": "The stretched cells are also the ones that release the hormone, so nothing needs to carry the signal to them."
+        },
+        "control": {
+          "text": "The same atrial muscle cells set how much ANP to release",
+          "short": "Same cells release ANP",
+          "why": "The more they are stretched, the more ANP they release."
+        },
+        "efferent": {
+          "text": "ANP carried in the blood",
+          "short": "ANP in the blood",
+          "why": "The command travels as a hormone in the blood."
+        },
+        "effector": {
+          "text": "The kidneys, and the smooth muscle of arterioles",
+          "short": "Kidneys; arterioles",
+          "why": "ANP makes the kidneys excrete more sodium and water, relaxes arterioles and holds back renin, aldosterone and ADH."
+        },
+        "response": {
+          "text": "The kidneys excrete more sodium and water, so blood volume falls back toward normal",
+          "short": "Sodium and water lost: volume falls",
+          "why": "Excreting sodium and water lowers blood volume, opposing the rise."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The kidneys release renin",
+          "why": "Renin starts the loop that keeps sodium and raises volume, the opposite of what is needed here."
+        },
+        {
+          "text": "ADH release rises",
+          "why": "More ADH would make the kidneys keep water and raise volume further."
+        },
+        {
+          "text": "Osmoreceptors in the hypothalamus",
+          "why": "Isotonic fluid raises volume without changing concentration. This loop senses stretch, not osmolarity."
+        }
+      ],
+      "classify": "The response (volume lost in urine) opposes the stimulus (volume rises), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "A patient’s kidneys are badly damaged. Their stretched atria release plenty of ANP, but the kidneys respond to it only weakly. What happens to blood volume?",
+        "options": [
+          {
+            "text": "It stays high and fluid builds up, because the command is sent but the effector cannot carry it out",
+            "why": "Right. The sensor, control center and pathway all work, and ANP levels are high. The weak kidney response lets sodium and water, and so volume, stay high."
+          },
+          {
+            "text": "It falls to normal, because ANP levels are high",
+            "why": "A high hormone level achieves nothing if the target cannot respond to it."
+          },
+          {
+            "text": "It falls too low, because the loop overshoots",
+            "why": "The effector is weak, so the loop undershoots; it does not overshoot."
+          },
+          {
+            "text": "It stays normal, because the atrial cells stop being stretched",
+            "why": "The atria stay stretched as long as the volume stays high. The stimulus persists."
+          }
+        ],
+        "correct": 0
+      }
+    }
+  ]
+}

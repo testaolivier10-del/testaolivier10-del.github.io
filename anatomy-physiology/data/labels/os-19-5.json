@@ -1,0 +1,84 @@
+{
+  "figure": "os-19-5",
+  "labels": [
+    {
+      "id": "pericardial-cavity",
+      "name": "Pericardial cavity",
+      "accept": [
+        "pericardial cavity"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "pericardial-cavity"
+    },
+    {
+      "id": "endocardium",
+      "name": "Endocardium",
+      "accept": [
+        "endocardium"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "heart-wall"
+    },
+    {
+      "id": "fibrous-pericardium",
+      "name": "Fibrous pericardium",
+      "accept": [
+        "fibrous pericardium"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "pericardium"
+    },
+    {
+      "id": "myocardium",
+      "name": "Myocardium",
+      "accept": [
+        "myocardium",
+        "heart muscle",
+        "cardiac muscle layer"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "heart-wall"
+    },
+    {
+      "id": "parietal-pericardium",
+      "name": "Parietal layer of serous pericardium",
+      "accept": [
+        "parietal layer of serous pericardium",
+        "parietal pericardium",
+        "parietal layer",
+        "parietal serous pericardium"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "pericardium"
+    },
+    {
+      "id": "epicardium",
+      "name": "Epicardium (visceral layer of serous pericardium)",
+      "accept": [
+        "epicardium (visceral layer of serous pericardium)",
+        "epicardium",
+        "visceral pericardium",
+        "visceral layer of serous pericardium",
+        "visceral layer"
+      ],
+      "box": [
+        857,
+        641,
+        243,
+        48
+      ],
+      "concept": "heart-wall"
+    }
+  ]
+}

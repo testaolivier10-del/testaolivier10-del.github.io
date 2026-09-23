@@ -163,14 +163,24 @@
 .anp-ex-opts li.is-right{border-color:var(--good);background:var(--tint-good);}
 .anp-ex-opts li.is-wrong{border-color:var(--bad);background:var(--tint-coral);}
 .anp-ex-opts .anp-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.anp-ex-opts li.is-right .anp-opt-why,.anp-ex-opts li.is-wrong .anp-opt-why{color:var(--ink);}
 .anp-ex-tag{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:var(--radius-pill);font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;vertical-align:1px;}
-.anp-ex-tag.key{background:var(--good);color:var(--paper);}
-.anp-ex-tag.ok{background:var(--tint-good);color:var(--good-text);}
-.anp-ex-tag.no{background:var(--bad);color:var(--paper);}
+.anp-ex-tag.key{background:var(--good-text);color:var(--white);}
+.anp-ex-tag.ok{background:var(--white);color:var(--good-text);box-shadow:inset 0 0 0 1.5px var(--good-text);}
+.anp-ex-tag.no{background:var(--bad-text);color:var(--white);}
 .anp-ex-orders{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
 .anp-ex-orders .anp-small{margin:0 0 6px;}
-.anp-ex-scroll{overflow-x:auto;}
-.anp-ex-ptable td{white-space:nowrap;font-weight:700;}
+.anp-ex-vars{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.anp-ex-vars li{display:flex;flex-direction:column;gap:3px;padding:10px 13px;border-radius:12px;border:2px solid var(--line);background:var(--paper);}
+.anp-ex-vars li.is-ok{border-color:var(--good);}
+.anp-ex-vars li.is-no{border-color:var(--bad);}
+.anp-ex-vname{font:800 15px/1.4 var(--font-ui);}
+.anp-ex-vpick{font:700 14px var(--font-ui);}
+.anp-ex-vwhy{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);}
+.anp-ex-mark{display:inline-block;width:1.3em;font-weight:900;}
+.is-ok > .anp-ex-vname .anp-ex-mark,.anp-order li.pos-ok .anp-ex-mark{color:var(--good-text);}
+.is-no > .anp-ex-vname .anp-ex-mark,.anp-order li.pos-no .anp-ex-mark{color:var(--bad-text);}
+.anp-ex-q .anp-order button:disabled{visibility:hidden;}
 .anp-ex-why{margin:12px 0 0;font-weight:600;line-height:1.6;}
 .anp-ex-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 0;font:800 14px var(--font-ui);}
 .anp-ex-links a{color:var(--cink);}

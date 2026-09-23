@@ -199,6 +199,15 @@ export function checkTopic(id, glossary, figures) {
     else texts.push(g.def);
   }
 
+  // --- "receptor" is never bare (spec section 5): "sensory receptor" for a
+  // sensor, "receptor protein" for a binding molecule, or a named receptor
+  // protein ("beta-1 receptors"). Bare means straight after a determiner.
+  const plain = rawAll0 => rawAll0.replace(/<[^>]+>/g, ' ');
+  for (const t of [notes, ...texts]) {
+    const m = plain(t).match(/(?:^|[^A-Za-z-])(?:a|an|the|its|their|matching|same|each|every|no|these|those|this|that|any|own|specific)\s+receptors?\b(?!\s+proteins?|\s*\(sensor\)|-)/i);
+    if (m) { err(`bare "receptor": "${m[0].trim()}" (write "sensory receptor" or "receptor protein")`); break; }
+  }
+
   // --- links into the NREMT notes route by #chapter-N (nremt/study-notes.html)
   const rawAll = [notes, ...['lessons', 'questions'].map(d => exists(join(DATA, d, `${id}.json`)) ? readFileSync(join(DATA, d, `${id}.json`), 'utf8') : '')].join('\n');
   for (const m of rawAll.matchAll(/study-notes\.html#([A-Za-z0-9_-]+)/g)) {

@@ -1,0 +1,63 @@
+{
+  "figure": "os-19-12",
+  "labels": [
+    {
+      "id": "tricuspid-valve",
+      "name": "Tricuspid valve",
+      "accept": [
+        "tricuspid valve",
+        "right atrioventricular valve",
+        "right av valve",
+        "tricuspid"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "bicuspid-mitral-valve",
+      "name": "Bicuspid (mitral) valve",
+      "accept": [
+        "bicuspid (mitral) valve",
+        "bicuspid valve",
+        "mitral valve",
+        "left atrioventricular valve",
+        "left av valve",
+        "mitral",
+        "bicuspid"
+      ],
+      "lines": [
+        2,
+        3,
+        4
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "aortic-valve",
+      "name": "Aortic valve",
+      "accept": [
+        "aortic valve",
+        "aortic semilunar valve"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "pulmonary-valve",
+      "name": "Pulmonary valve",
+      "accept": [
+        "pulmonary valve",
+        "pulmonary semilunar valve",
+        "pulmonic valve"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "semilunar-valves"
+    }
+  ]
+}

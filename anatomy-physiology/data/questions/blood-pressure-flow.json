@@ -4,9 +4,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "In a reading of 118/76 mm Hg, what does 76 represent?",
-    "options": ["The lowest pressure in the large arteries, just before the next ejection", "The pressure in the veins", "The average pressure over the whole cardiac cycle", "The pressure inside the left ventricle during diastole"],
+    "options": [
+      "The lowest pressure in the large arteries",
+      "The pressure in the veins",
+      "The average pressure over the whole cardiac cycle",
+      "The pressure inside the left ventricle during diastole"
+    ],
     "correct": 0,
     "why": {
       "correct": "The second number is diastolic pressure: the lowest pressure in the large arteries, reached at the end of diastole just before the ventricle ejects again.",
@@ -23,9 +30,16 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A 78-year-old man's blood pressure is 150/70 mm Hg. What is his pulse pressure?",
-    "options": ["70 mm Hg", "80 mm Hg", "97 mm Hg", "110 mm Hg"],
+    "options": [
+      "70 mm Hg",
+      "80 mm Hg",
+      "97 mm Hg",
+      "110 mm Hg"
+    ],
     "correct": 1,
     "why": {
       "correct": "Pulse pressure = systolic − diastolic = 150 − 70 = 80 mm Hg.",
@@ -42,9 +56,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A resting patient's blood pressure is 110/68 mm Hg. Estimate her mean arterial pressure.",
-    "options": ["89 mm Hg", "96 mm Hg", "82 mm Hg", "42 mm Hg"],
+    "options": [
+      "89 mm Hg",
+      "96 mm Hg",
+      "82 mm Hg",
+      "42 mm Hg"
+    ],
     "correct": 2,
     "why": {
       "correct": "Pulse pressure = 110 − 68 = 42 mm Hg. One-third of it is 14 mm Hg. MAP ≈ 68 + 14 = 82 mm Hg.",
@@ -61,16 +82,23 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "During a sprint, a runner's heart rate is 170 beats per minute and her blood pressure is 160/80 mm Hg. How does the resting estimate, diastolic plus one-third of the pulse pressure, compare with her true mean arterial pressure?",
-    "options": ["It gives the true mean exactly, at any heart rate", "It overestimates the true mean", "It cannot be used, because pulse pressure is zero during a sprint", "It underestimates the true mean"],
+    "options": [
+      "It matches the true mean",
+      "It overestimates the true mean",
+      "It cannot be applied during a sprint",
+      "It underestimates the true mean"
+    ],
     "correct": 3,
     "why": {
       "correct": "The one-third weighting assumes the arteries spend about two-thirds of each cycle near diastolic pressure, which fits resting heart rates. At fast rates diastole shortens far more than systole, so a larger share of each cycle is spent near the peak. The true mean is higher than the estimate of 80 + 80 ÷ 3 ≈ 107 mm Hg.",
       "options": [
-        "The one-third rule is fitted to resting heart rates. It is an estimate whose accuracy depends on how the cycle is split between systole and diastole.",
+        "The one-third rule is fitted to resting heart rates. How well it matches depends on how each cycle is split between systole and diastole, and a sprint changes that split.",
         "An overestimate would need more time spent near diastolic pressure. A fast heart rate does the opposite: diastole shrinks.",
-        "Her pulse pressure is 160 − 80 = 80 mm Hg, larger than at rest, not zero.",
+        "The formula can be applied at any rate: her pulse pressure is 160 − 80 = 80 mm Hg. The problem is that its one-third weighting no longer fits.",
         "Correct. With diastole shortened, the true mean is higher than the resting formula predicts."
       ]
     }
@@ -80,13 +108,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "Over decades, elastic fibers in Mr. Park's aorta have been replaced by stiffer collagen. His blood pressure has changed from 120/80 at age 30 to 160/70 at age 80. Which explanation fits both changes?",
     "options": [
-      "His heart ejects twice the stroke volume it used to",
-      "A stiff aorta stretches less during ejection and recoils less during diastole",
-      "His arterioles have dilated, so less pressure is lost across them",
-      "His veins have become stiffer, pushing blood back into the arteries"
+      "His heart now ejects twice the stroke volume",
+      "His stiff aorta stretches less and recoils less",
+      "His arterioles have dilated widely",
+      "His veins now push blood back into his arteries"
     ],
     "correct": 1,
     "why": {
@@ -104,9 +135,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "The artery feeding a kidney has a mean pressure of 95 mm Hg, and the vein draining it has a pressure of 5 mm Hg. The kidney's vascular resistance is 0.15 mm Hg for each mL/min. What is the blood flow through the kidney?",
-    "options": ["633 mL/min", "13.5 mL/min", "600 mL/min", "667 mL/min"],
+    "options": [
+      "633 mL/min",
+      "13.5 mL/min",
+      "600 mL/min",
+      "667 mL/min"
+    ],
     "correct": 2,
     "why": {
       "correct": "ΔP = 95 − 5 = 90 mm Hg. F = ΔP / R = 90 ÷ 0.15 = 600 mL/min.",
@@ -123,9 +161,17 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "Blood flow through an organ is 200 mL/min. Its arterioles constrict until their radius is half of what it was. Mean arterial pressure and venous pressure do not change. What is the new flow, assuming the arterioles set all of the organ's resistance?",
-    "options": ["100 mL/min", "50 mL/min", "25 mL/min", "12.5 mL/min"],
+    "options": [
+      "100 mL/min",
+      "50 mL/min",
+      "25 mL/min",
+      "12.5 mL/min"
+    ],
     "correct": 3,
     "why": {
       "correct": "Resistance depends on 1 ÷ radius⁴. Halving the radius makes radius⁴ one-sixteenth as large, so resistance becomes 16 times larger. With the same pressure difference, flow becomes one-sixteenth: 200 ÷ 16 = 12.5 mL/min.",
@@ -143,14 +189,37 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "Smooth muscle in the arterioles of one calf muscle relaxes as the muscle starts to work. The pressure in the large arteries stays the same. Predict the change in each variable.",
     "variables": [
-      { "name": "Radius of the calf muscle's arterioles", "answer": "up", "why": "Relaxed smooth muscle in the arteriole wall lets the vessel widen: vasodilation." },
-      { "name": "Resistance of the calf muscle's vascular bed", "answer": "down", "why": "Resistance depends on 1 ÷ radius⁴, so a wider radius lowers resistance steeply." },
-      { "name": "Blood flow through the calf muscle", "answer": "up", "why": "By F = ΔP / R, with the pressure difference unchanged and resistance lower, flow rises." },
-      { "name": "Pressure in the calf muscle's capillaries", "answer": "up", "why": "Less pressure is used up across the wider arterioles, so more of the arterial pressure reaches the capillaries downstream." },
-      { "name": "Total peripheral resistance", "answer": "down", "why": "The calf bed is one of many beds in parallel. Lowering the resistance of one lowers the total a little." }
+      {
+        "name": "Radius of the calf muscle's arterioles",
+        "answer": "up",
+        "why": "Relaxed smooth muscle in the arteriole wall lets the vessel widen: vasodilation."
+      },
+      {
+        "name": "Resistance of the calf muscle's vascular bed",
+        "answer": "down",
+        "why": "Resistance depends on 1 ÷ radius⁴, so a wider radius lowers resistance steeply."
+      },
+      {
+        "name": "Blood flow through the calf muscle",
+        "answer": "up",
+        "why": "By F = ΔP / R, with the pressure difference unchanged and resistance lower, flow rises."
+      },
+      {
+        "name": "Pressure in the calf muscle's capillaries",
+        "answer": "up",
+        "why": "Less pressure is used up across the wider arterioles, so more of the arterial pressure reaches the capillaries downstream."
+      },
+      {
+        "name": "Total peripheral resistance",
+        "answer": "down",
+        "why": "The calf bed is one of many beds in parallel. Lowering the resistance of one lowers the total a little."
+      }
     ],
     "why": {
       "correct": "Vasodilation widens the arterioles, and through the fourth-power rule resistance falls sharply. With the same driving pressure, flow to the muscle rises. Less pressure is lost across the arterioles, so capillary pressure in that bed rises, and total peripheral resistance falls slightly because the bed is in parallel with all the others."
@@ -162,12 +231,27 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 1,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "q": "A person's aorta gradually stiffens with age, while the heart ejects the same stroke volume at the same rate. Predict the change in each variable.",
     "variables": [
-      { "name": "Systolic pressure", "answer": "up", "why": "A stiff aorta stretches less to take in each ejection, so the same volume raises the pressure more." },
-      { "name": "Diastolic pressure", "answer": "down", "why": "Less stretch is stored during ejection, so there is less recoil to hold pressure up during diastole." },
-      { "name": "Pulse pressure", "answer": "up", "why": "Pulse pressure is systolic minus diastolic. A higher peak and a lower trough widen the gap." }
+      {
+        "name": "Systolic pressure",
+        "answer": "up",
+        "why": "A stiff aorta stretches less to take in each ejection, so the same volume raises the pressure more."
+      },
+      {
+        "name": "Diastolic pressure",
+        "answer": "down",
+        "why": "Less stretch is stored during ejection, so there is less recoil to hold pressure up during diastole."
+      },
+      {
+        "name": "Pulse pressure",
+        "answer": "up",
+        "why": "Pulse pressure is systolic minus diastolic. A higher peak and a lower trough widen the gap."
+      }
     ],
     "why": {
       "correct": "Elastic stretch and recoil damp the pressure swing. Without them, the peak rises and the trough falls, so pulse pressure widens."
@@ -178,18 +262,20 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "figure": "os-20-10",
-    "q": "On this graph of pressure along the systemic circulation, where is the steepest fall in pressure, and why is it there?",
+    "q": "On this graph of pressure along the systemic circulation, across which vessels does the pressure fall most steeply?",
     "options": [
-      "In the capillaries, because they are the narrowest single vessels",
-      "In the arterioles, because they hold the largest share of the resistance",
-      "In the veins, because the valves block flow",
-      "In the aorta, because it loses pressure as it stretches"
+      "The capillaries",
+      "The arterioles",
+      "The medium and large veins",
+      "The aorta and elastic arteries"
     ],
     "correct": 1,
     "why": {
-      "correct": "The steepest drop, from about 85 to about 35 mm Hg, is across the arterioles. By F = ΔP / R, the same flow passes every level, so the level with the largest resistance uses up the largest pressure difference.",
+      "correct": "The steepest drop, from about 85 to about 35 mm Hg, is across the arterioles. The same flow passes every level, and by F = ΔP / R the level with the largest resistance uses up the largest pressure difference. Arterioles hold the largest share of the resistance.",
       "options": [
         "Single capillaries are narrow, but billions of them lie in parallel, so their combined resistance is smaller than that of the arterioles. The graph shows a smaller drop across them.",
         "Correct. Arterioles are the resistance vessels, so the pressure falls most across them.",
@@ -203,13 +289,16 @@
     "type": "graph",
     "level": "analyze",
     "diff": 2,
-    "core": ["gradients", "structure-function"],
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
     "figure": "os-20-13",
     "misconception": "blood is slowest in capillaries because they are narrow",
     "q": "Compare the total cross-sectional area graph with the velocity graph. Why is velocity lowest in the capillaries?",
     "options": [
       "Their combined cross-sectional area is the largest of any level",
-      "Each capillary is the narrowest vessel, so it squeezes the blood",
+      "Each capillary is narrow enough to squeeze the blood",
       "The heart's push has run out by the time blood gets there",
       "Less blood flows through the capillaries than through the aorta"
     ],
@@ -229,10 +318,17 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "figure": "os-20-12",
     "q": "In this recording, the first tapping sound is heard when cuff pressure reaches 118 mm Hg, and the last one at 78 mm Hg. What are the systolic and diastolic pressures?",
-    "options": ["Systolic 130, diastolic 78", "Systolic 118, diastolic 60", "Systolic 118, diastolic 78", "Systolic 78, diastolic 118"],
+    "options": [
+      "Systolic 130, diastolic 78",
+      "Systolic 118, diastolic 60",
+      "Systolic 118, diastolic 78",
+      "Systolic 78, diastolic 118"
+    ],
     "correct": 2,
     "why": {
       "correct": "The first Korotkoff sound appears when cuff pressure just falls below the peak of the arterial wave, so it marks systolic pressure (118). The sounds stop when cuff pressure falls below the trough, so the artery stays open and flow is smooth: diastolic pressure (78).",
@@ -249,15 +345,22 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A medical assistant uses a standard adult cuff on a patient with a very large upper arm. The cuff's bladder wraps only halfway around the arm. How will the reading compare with the true pressure?",
-    "options": ["It will be too low", "It will be correct, because the gauge measures pressure directly", "It will be too high", "It will show systolic correctly but diastolic too low"],
+    "options": [
+      "It will read too low",
+      "It will read accurately",
+      "It will read too high",
+      "Only the diastolic value will be wrong"
+    ],
     "correct": 2,
     "why": {
       "correct": "A cuff that is too small cannot spread its pressure over the whole artery, so it needs extra pressure to squeeze the artery shut. Both the first and last sounds occur at a higher cuff pressure than the true arterial pressure, so the reading is too high.",
       "options": [
         "A cuff that is too large tends to read low. A too-small cuff has the opposite effect.",
-        "The gauge measures the cuff's pressure, not the artery's. The two match only when the cuff transmits its pressure fully to the artery.",
+        "The gauge measures the cuff's pressure, not the artery's. The two match only when the cuff transmits its pressure fully to the artery, which a small cuff does not.",
         "Correct. An undersized cuff overestimates blood pressure.",
         "The same error affects both sounds, because both depend on the cuff squeezing the artery closed."
       ]
@@ -268,9 +371,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Total systemic flow is 6 L/min. The total cross-sectional area of all the systemic capillaries is 4,000 cm². What is the average velocity of blood in the capillaries?",
-    "options": ["0.025 cm/s", "1.5 cm/s", "0.67 cm/s", "25 cm/s"],
+    "options": [
+      "0.025 cm/s",
+      "1.5 cm/s",
+      "0.67 cm/s",
+      "25 cm/s"
+    ],
     "correct": 0,
     "why": {
       "correct": "Convert flow: 6 L/min = 6,000 cm³/min = 100 cm³/s. Velocity = flow ÷ area = 100 ÷ 4,000 = 0.025 cm/s, a quarter of a millimeter per second.",
@@ -287,10 +397,22 @@
     "type": "multi",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Select every factor that sets the resistance of a blood vessel.",
-    "options": ["Vessel radius", "The pressure difference between its ends", "Vessel length", "Blood viscosity", "The speed of the blood inside it"],
-    "correct": [0, 2, 3],
+    "options": [
+      "Vessel radius",
+      "The pressure difference between its ends",
+      "Vessel length",
+      "Blood viscosity",
+      "The speed of the blood inside it"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
     "why": {
       "correct": "Resistance depends on the vessel's radius (to the fourth power), its length and the viscosity of the blood. The pressure difference and the speed of blood are results of flow, not properties of the vessel that set resistance.",
       "options": [
@@ -307,7 +429,9 @@
     "type": "order",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Put the steps of measuring blood pressure with a cuff and stethoscope in order.",
     "options": [
       "Inflate the cuff until the brachial artery is squeezed shut and no sound is heard",
@@ -325,22 +449,22 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 2,
-    "core": ["gradients"],
-    "q": "Ms. Adeyemi has anemia, with a hematocrit of 25%. Her heart is pumping blood with the same pressure difference across her circulation as before. What happens to blood flow, and why?",
+    "core": [
+      "gradients"
+    ],
+    "q": "Ms. Adeyemi has anemia, with a hematocrit of 25%. The pressure difference across her circulation is the same as before. Compared with before her anemia, what happens to blood flow?",
     "options": [
-      "Flow falls, because fewer red cells carry less oxygen",
-      "Flow is unchanged, because flow depends only on pressure",
-      "Flow rises, because thinner blood has lower viscosity and so lower resistance",
-      "Flow falls, because thinner blood leaks out of the vessels"
+      "Flow falls",
+      "Flow does not change",
+      "Flow rises"
     ],
     "correct": 2,
     "why": {
       "correct": "Viscosity depends mostly on the hematocrit. With fewer red cells, blood is less viscous, resistance falls, and by F = ΔP / R the same pressure difference drives more flow.",
       "options": [
-        "Oxygen content does fall, but the question is about flow. Oxygen content does not appear in the flow equation.",
-        "Flow depends on the pressure difference and the resistance. Viscosity is part of resistance, so changing it changes flow.",
-        "Correct. Lower hematocrit means lower viscosity, lower resistance and higher flow.",
-        "Lower viscosity does not make blood leak from vessels; it only lowers resistance to flow along them."
+        "Her blood carries less oxygen, but oxygen content is not part of the flow equation. Flow falls only if resistance rises or the pressure difference falls, and neither has happened.",
+        "Flow depends on the pressure difference and the resistance. Viscosity is part of resistance, so a change in viscosity changes flow even with the same pressure difference.",
+        "Correct. Fewer red cells make the blood less viscous, resistance falls, and F = ΔP / R rises."
       ]
     }
   },
@@ -349,9 +473,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A person at rest has a mean arterial pressure of 90 mm Hg, a right atrial pressure of 0 mm Hg and a total systemic flow of 4.5 L/min. What is the total peripheral resistance?",
-    "options": ["405 mm Hg·min/L", "20 mm Hg·min/L", "0.05 mm Hg·min/L", "94.5 mm Hg·min/L"],
+    "options": [
+      "405 mm Hg·min/L",
+      "20 mm Hg·min/L",
+      "0.05 mm Hg·min/L",
+      "94.5 mm Hg·min/L"
+    ],
     "correct": 1,
     "why": {
       "correct": "R = ΔP / F. ΔP = 90 − 0 = 90 mm Hg. R = 90 ÷ 4.5 = 20 mm Hg·min/L.",
@@ -368,7 +499,9 @@
     "type": "error",
     "level": "analyze",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A student described the pressure of blood as it travels through the systemic circuit. One step is wrong. Which one?",
     "options": [
       "In the aorta, pressure swings between about 120 and 80 mm Hg with each beat",
@@ -394,9 +527,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A seated patient's blood pressure is measured with her arm hanging by her side, so the cuff is about 26 cm below her heart. At heart level her pressure is 124/78. Each centimeter of blood adds about 0.77 mm Hg. What will the cuff read?",
-    "options": ["124/78", "144/98", "104/58", "144/78"],
+    "options": [
+      "124/78",
+      "144/98",
+      "104/58",
+      "144/78"
+    ],
     "correct": 1,
     "why": {
       "correct": "26 cm × 0.77 mm Hg per cm ≈ 20 mm Hg. The weight of the column of blood above the cuff adds to the pressure through the whole cycle, so both numbers rise: 124 + 20 = 144 and 78 + 20 = 98.",

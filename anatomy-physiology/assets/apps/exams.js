@@ -649,16 +649,17 @@
     var body = '';
     function tag(t, c){ return '<span class="anp-ex-tag ' + c + '">' + t + '</span>'; }
     if(q.type === 'predict'){
-      body = '<div class="anp-ex-scroll"><table class="anp-predict anp-ex-ptable"><thead><tr><th scope="col">Variable</th><th scope="col">You</th><th scope="col">Answer</th></tr></thead><tbody>' +
-        q.variables.map(function(v, k){
-          var mine = r.pick && r.pick[k], ok = mine === v.answer;
-          function dir(d){ return d === 'up' ? 'Increases' : d === 'down' ? 'Decreases' : d === 'none' ? 'No change' : '—'; }
-          return '<tr class="' + (ok ? 'var-ok' : 'var-no') + '"><th scope="row">' + html(v.name) + (v.why ? '<div class="anp-var-why">' + html(v.why) + '</div>' : '') + '</th><td>' + dir(mine) + '</td><td><b>' + dir(v.answer) + '</b></td></tr>';
-        }).join('') + '</tbody></table></div>';
+      body = '<ul class="anp-ex-vars">' + q.variables.map(function(v, k){
+        var mine = r.pick && r.pick[k], ok = mine === v.answer;
+        function dir(d){ return d === 'up' ? 'Increases' : d === 'down' ? 'Decreases' : d === 'none' ? 'No change' : 'No answer'; }
+        return '<li class="' + (ok ? 'is-ok' : 'is-no') + '"><span class="anp-ex-vname"><span class="anp-ex-mark" aria-hidden="true">' + (ok ? '✓' : '✗') + '</span>' + html(v.name) + '</span>' +
+          '<span class="anp-ex-vpick">You: ' + dir(mine) + (ok ? '' : ' <span aria-hidden="true">&middot;</span> Answer: <b>' + dir(v.answer) + '</b>') + '<span class="anp-ex-sr"> (' + (ok ? 'right' : 'wrong') + ')</span></span>' +
+          (v.why ? '<span class="anp-ex-vwhy">' + html(v.why) + '</span>' : '') + '</li>';
+      }).join('') + '</ul>';
     } else if(q.type === 'order'){
       var mine = r.pick || [];
       body = '<div class="anp-ex-orders">' +
-        (mine.length ? '<div><p class="anp-small">Your order</p><ol class="anp-order">' + mine.map(function(i, k){ return '<li class="' + (i === k ? 'pos-ok' : 'pos-no') + '"><span class="anp-order-text">' + html(q.options[i]) + '</span></li>'; }).join('') + '</ol></div>' : '') +
+        (mine.length ? '<div><p class="anp-small">Your order</p><ol class="anp-order">' + mine.map(function(i, k){ return '<li class="' + (i === k ? 'pos-ok' : 'pos-no') + '"><span class="anp-ex-mark" aria-hidden="true">' + (i === k ? '✓' : '✗') + '</span><span class="anp-order-text">' + html(q.options[i]) + '</span><span class="anp-ex-sr">' + (i === k ? ' (right place)' : ' (wrong place)') + '</span></li>'; }).join('') + '</ol></div>' : '') +
         '<div><p class="anp-small">Correct order</p><ol class="anp-order">' + q.options.map(function(o){ return '<li><span class="anp-order-text">' + html(o) + '</span></li>'; }).join('') + '</ol></div></div>';
     } else {
       var key = [].concat(q.correct), picks = r.pick == null ? [] : [].concat(r.pick);

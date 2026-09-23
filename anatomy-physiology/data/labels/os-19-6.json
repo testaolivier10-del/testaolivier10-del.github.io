@@ -1,0 +1,596 @@
+{
+  "figure": "os-19-6",
+  "labels": [
+    {
+      "id": "left-common-carotid-artery",
+      "name": "Left common carotid artery",
+      "accept": [
+        "left common carotid artery",
+        "left common carotid",
+        "common carotid artery",
+        "common carotid"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "brachiocephalic-trunk",
+      "name": "Brachiocephalic trunk",
+      "accept": [
+        "brachiocephalic trunk",
+        "brachiocephalic artery",
+        "innominate artery"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "left-subclavian-artery",
+      "name": "Left subclavian artery",
+      "accept": [
+        "left subclavian artery",
+        "left subclavian",
+        "subclavian artery"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "superior-vena-cava",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "aortic-arch",
+      "name": "Aortic arch",
+      "accept": [
+        "aortic arch",
+        "arch of aorta",
+        "arch of the aorta"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "right-pulmonary-artery",
+      "name": "Right pulmonary artery",
+      "accept": [
+        "right pulmonary artery",
+        "pulmonary artery"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "ligamentum-arteriosum",
+      "name": "Ligamentum arteriosum",
+      "accept": [
+        "ligamentum arteriosum"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "neonatal-transition"
+    },
+    {
+      "id": "left-pulmonary-artery",
+      "name": "Left pulmonary artery",
+      "accept": [
+        "left pulmonary artery",
+        "pulmonary artery"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "ascending-aorta",
+      "name": "Ascending aorta",
+      "accept": [
+        "ascending aorta"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "left-pulmonary-veins",
+      "name": "Left pulmonary veins",
+      "accept": [
+        "left pulmonary veins",
+        "pulmonary veins",
+        "left pulmonary vein",
+        "pulmonary vein"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "pulmonary-trunk",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary trunk"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-pulmonary-veins",
+      "name": "Right pulmonary veins",
+      "accept": [
+        "right pulmonary veins",
+        "pulmonary veins",
+        "right pulmonary vein",
+        "pulmonary vein"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "auricle-of-left-atrium",
+      "name": "Auricle of left atrium",
+      "accept": [
+        "auricle of left atrium",
+        "left auricle",
+        "auricle",
+        "left atrial appendage"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "circumflex-artery",
+      "name": "Circumflex artery",
+      "accept": [
+        "circumflex artery",
+        "circumflex",
+        "circumflex branch",
+        "left circumflex artery"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "right-atrium",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-coronary-artery",
+      "name": "Right coronary artery",
+      "accept": [
+        "right coronary artery",
+        "rca"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "left-coronary-artery",
+      "name": "Left coronary artery",
+      "accept": [
+        "left coronary artery",
+        "lca",
+        "left main coronary artery"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "anterior-cardiac-vein",
+      "name": "Anterior cardiac vein",
+      "accept": [
+        "anterior cardiac vein",
+        "anterior cardiac veins"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "left-ventricle",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-ventricle",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "great-cardiac-vein",
+      "name": "Great cardiac vein",
+      "accept": [
+        "great cardiac vein"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "right-marginal-artery",
+      "name": "Right marginal artery",
+      "accept": [
+        "right marginal artery",
+        "marginal artery",
+        "marginal branch"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "anterior-interventricular-artery",
+      "name": "Anterior interventricular artery",
+      "accept": [
+        "anterior interventricular artery",
+        "left anterior descending artery",
+        "left anterior descending",
+        "lad"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "small-cardiac-vein",
+      "name": "Small cardiac vein",
+      "accept": [
+        "small cardiac vein"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "apex",
+      "name": "Apex",
+      "accept": [
+        "apex",
+        "apex of heart",
+        "apex of the heart"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "heart-location"
+    },
+    {
+      "id": "aorta-posterior",
+      "name": "Aorta",
+      "accept": [
+        "aorta"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "superior-vena-cava-posterior",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-pulmonary-artery-posterior",
+      "name": "Right pulmonary artery",
+      "accept": [
+        "right pulmonary artery",
+        "pulmonary artery"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-pulmonary-artery-posterior",
+      "name": "Left pulmonary artery",
+      "accept": [
+        "left pulmonary artery",
+        "pulmonary artery"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-pulmonary-veins-posterior",
+      "name": "Right pulmonary veins",
+      "accept": [
+        "right pulmonary veins",
+        "pulmonary veins",
+        "right pulmonary vein",
+        "pulmonary vein"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-pulmonary-veins-posterior",
+      "name": "Left pulmonary veins",
+      "accept": [
+        "left pulmonary veins",
+        "pulmonary veins",
+        "left pulmonary vein",
+        "pulmonary vein"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-atrium-posterior",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "auricle-of-left-atrium-posterior",
+      "name": "Auricle of left atrium",
+      "accept": [
+        "auricle of left atrium",
+        "left auricle",
+        "auricle",
+        "left atrial appendage"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "left-atrium-posterior",
+      "name": "Left atrium",
+      "accept": [
+        "left atrium",
+        "la"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "inferior-vena-cava-posterior",
+      "name": "Inferior vena cava",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "coronary-sinus",
+      "name": "Coronary sinus",
+      "accept": [
+        "coronary sinus"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "circumflex-branch-posterior",
+      "name": "Circumflex branch of left coronary artery",
+      "accept": [
+        "circumflex branch of left coronary artery",
+        "circumflex artery",
+        "circumflex branch",
+        "circumflex",
+        "left circumflex artery"
+      ],
+      "lines": [
+        40,
+        42
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "small-cardiac-vein-posterior",
+      "name": "Small cardiac vein",
+      "accept": [
+        "small cardiac vein"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "great-cardiac-vein-posterior",
+      "name": "Great cardiac vein",
+      "accept": [
+        "great cardiac vein"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "right-coronary-artery-posterior",
+      "name": "Right coronary artery",
+      "accept": [
+        "right coronary artery",
+        "rca"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "posterior-vein-of-left-ventricle",
+      "name": "Posterior vein of left ventricle",
+      "accept": [
+        "posterior vein of left ventricle",
+        "posterior cardiac vein",
+        "posterior vein of the left ventricle"
+      ],
+      "lines": [
+        46,
+        48
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "posterior-interventricular-artery",
+      "name": "Posterior interventricular artery",
+      "accept": [
+        "posterior interventricular artery",
+        "posterior descending artery",
+        "pda"
+      ],
+      "box": [
+        827,
+        874,
+        273,
+        24
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "middle-cardiac-vein",
+      "name": "Middle cardiac vein",
+      "accept": [
+        "middle cardiac vein"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "coronary-circulation"
+    },
+    {
+      "id": "left-ventricle-posterior",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-ventricle-posterior",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        51
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "apex-posterior",
+      "name": "Apex",
+      "accept": [
+        "apex",
+        "apex of heart",
+        "apex of the heart"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "heart-location"
+    }
+  ]
+}

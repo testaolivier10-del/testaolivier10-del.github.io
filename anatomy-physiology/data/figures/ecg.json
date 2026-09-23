@@ -11,7 +11,10 @@
     "alt": "Outline of a standing body seen from the front with the rib cage drawn in. Dots mark where ECG electrodes go: one on each wrist, one on each ankle, and six across the chest, two beside the sternum and four curving out to the left under the left breast area.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.22",
-    "labels": []
+    "labels": [],
+    "w": 1069,
+    "h": 1769,
+    "ext": "jpg"
   },
   "os-19-23": {
     "source": "openstax",
@@ -25,6 +28,9 @@
     "alt": "Top: a regular ECG rhythm strip on grid paper, with a bracket showing that one large square is 5 millimeters and a box spanning 1 second. The tall spikes are four large squares apart. Bottom: an enlargement of two beats, labeling the P wave, the Q, R and S points of the QRS complex, and the T wave, with brackets for the PR interval, the QT interval, the PR segment, the ST segment and the QRS complex.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.23",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 715,
+    "ext": "jpg"
   }
 }

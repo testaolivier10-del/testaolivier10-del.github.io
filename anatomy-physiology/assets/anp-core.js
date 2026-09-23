@@ -213,8 +213,33 @@
     out.updated = Math.max(a.updated || 0, b.updated || 0);
     return JSON.stringify(out);
   }
+
+  /* The flashcard schedule, merged card by card (newest review wins), so a
+     sync pull on any A&P page never overwrites cards reviewed on this device.
+     The flashcards page registers the same rule; this covers every other page. */
+  function mergeCards(localRaw, cloudRaw){
+    var mine = null, theirs = null;
+    try{ mine = JSON.parse(localRaw); }catch(e){}
+    try{ theirs = JSON.parse(cloudRaw); }catch(e){ return localRaw; }
+    function ok(x){ return x && typeof x === 'object' && x.v === 1 && x.cards && typeof x.cards === 'object'; }
+    if(!ok(theirs)) return localRaw;
+    if(!ok(mine)) return cloudRaw;
+    var out = { v: 1, cards: {}, fresh: theirs.fresh || { day: '', n: 0 }, paid: theirs.paid || { day: '', xp: 0 } };
+    Object.keys(theirs.cards).forEach(function(id){ out.cards[id] = theirs.cards[id]; });
+    Object.keys(mine.cards).forEach(function(id){
+      var a = mine.cards[id], b = out.cards[id];
+      if(!b || ((a && a.t) || 0) > ((b && b.t) || 0)) out.cards[id] = a;
+    });
+    [['fresh', 'n'], ['paid', 'xp']].forEach(function(p){
+      var a = mine[p[0]] || { day: '' }, b = out[p[0]];
+      if(String(a.day) > String(b.day)) out[p[0]] = a;
+      else if(a.day === b.day){ var o = { day: a.day }; o[p[1]] = Math.max(a[p[1]] || 0, b[p[1]] || 0); out[p[0]] = o; }
+    });
+    return JSON.stringify(out);
+  }
+
   if(window.StudyHubAccount){
-    var mergers = {}; mergers[KEY] = merge;
+    var mergers = {}; mergers[KEY] = merge; mergers['anp_flashcards_v1'] = mergeCards;
     window.StudyHubAccount.registerNamespace('anp', [KEY, 'anp_flashcards_v1', 'anp_prefs_v1'], mergers);
   }
 

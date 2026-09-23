@@ -95,7 +95,9 @@
 @media (max-width:520px){
   .calc-card{padding:16px 14px;border-radius:18px;}
   .calc-head h2{font-size:19px;}
-  .calc-chips{grid-template-columns:minmax(0,1fr);}
+  .calc-chips{grid-template-columns:minmax(0,1fr);gap:6px;}
+  .calc-chip{padding:9px 12px;}
+  .calc-chip span{display:none;}
   .calc-result-value{font-size:24px;}
   .calc-mode{padding:9px 14px;}
   .calc-formula{font-size:14px;}

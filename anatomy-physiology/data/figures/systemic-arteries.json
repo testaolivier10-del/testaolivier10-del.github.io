@@ -1,67 +1,75 @@
 {
   "os-20-24": {
     "file": "figures/openstax/os-20-24.jpg",
-    "w": 1404,
-    "h": 2275,
+    "w": 1100,
+    "h": 1782,
     "source": "openstax",
     "openstax": {
       "figure": "20.24",
       "section": "20.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/44ffb5f589d4448f44fe51e57f8c6b2072678ea4"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/44ffb5f589d4448f44fe51e57f8c6b2072678ea4",
+      "page": "20-5-circulatory-pathways"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/44ffb5f589d4448f44fe51e57f8c6b2072678ea4",
     "alt": "A front view of a standing woman with her main arteries drawn in red. The aorta rises from the heart, arches, and runs down the back of the trunk, giving branches to the head, both arms, the abdominal organs and the kidneys, then splits in the pelvis into two branches that run down each leg to the foot. The arm arteries divide at the elbow into two forearm branches that meet in arches in the palm.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.24",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   },
   "os-20-25": {
     "file": "figures/openstax/os-20-25.jpg",
-    "w": 1264,
-    "h": 1347,
+    "w": 1100,
+    "h": 1172,
     "source": "openstax",
     "openstax": {
       "figure": "20.25",
       "section": "20.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a8fa0e944e59e334396116aebfed7783448d14ed"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a8fa0e944e59e334396116aebfed7783448d14ed",
+      "page": "20-5-circulatory-pathways"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/a8fa0e944e59e334396116aebfed7783448d14ed",
     "alt": "The aorta on its own. It rises from the aortic valve, where two small arteries leave for the heart muscle, curves up and over to the left, and runs straight down. Three branches leave the top of the curve: one short trunk on the right that splits in two, then separate branches to the left side of the neck and the left arm.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.25",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   },
   "os-20-27": {
     "file": "figures/openstax/os-20-27.jpg",
-    "w": 1550,
-    "h": 913,
+    "w": 1100,
+    "h": 648,
     "source": "openstax",
     "openstax": {
       "figure": "20.27",
       "section": "20.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ad81523d6f8187d6df2fd981afa686087d9bb76e"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ad81523d6f8187d6df2fd981afa686087d9bb76e",
+      "page": "20-5-circulatory-pathways"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/ad81523d6f8187d6df2fd981afa686087d9bb76e",
     "alt": "The underside of the brain with its arteries in red. Two arteries rise along the front of the spinal column and join into one midline artery on the brainstem. That artery splits at its top end, and short connecting arteries link it to the two arteries arriving at the front, closing a ring of arteries around the base of the brain.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.27",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   },
   "os-20-28": {
     "file": "figures/openstax/os-20-28.jpg",
-    "w": 1800,
-    "h": 1700,
+    "w": 1100,
+    "h": 1039,
     "source": "openstax",
     "openstax": {
       "figure": "20.28",
       "section": "20.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/db54e20ed55d7379e52c10e54d5ea37583c2e57b"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/db54e20ed55d7379e52c10e54d5ea37583c2e57b",
+      "page": "20-5-circulatory-pathways"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/db54e20ed55d7379e52c10e54d5ea37583c2e57b",
     "alt": "The aorta running down the back of the chest and abdomen in front of the spine, with the ribs, diaphragm and kidneys in place. Small branches leave it in the chest for the chest wall and organs. It passes through an opening in the diaphragm, gives off a short trunk that splits three ways, single branches to the gut, paired branches to the kidneys and to the reproductive glands, and splits into two large branches in the pelvis.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.28",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   },
   "os-20-11": {
     "file": "figures/openstax/os-20-11.jpg",
@@ -71,12 +79,14 @@
     "openstax": {
       "figure": "20.11",
       "section": "20.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b1d5a333807f4a41c3d26bd19c6264e3ad49b978"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b1d5a333807f4a41c3d26bd19c6264e3ad49b978",
+      "page": "20-2-blood-flow-blood-pressure-and-resistance"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/b1d5a333807f4a41c3d26bd19c6264e3ad49b978",
     "alt": "An outline drawing of a standing woman with black dots at the places where a pulse can be felt: the temple, the jaw, the side of the neck, the inner arm above the elbow, the thumb side of the wrist, the groin, the back of the knee, behind the inner ankle and on the top of the foot.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.11",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   }
 }

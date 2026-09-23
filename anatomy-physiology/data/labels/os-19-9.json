@@ -1,0 +1,320 @@
+{
+  "figure": "os-19-9",
+  "labels": [
+    {
+      "id": "aorta",
+      "name": "Aorta",
+      "accept": [
+        "aorta"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "superior-vena-cava",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-pulmonary-artery",
+      "name": "Left pulmonary artery",
+      "accept": [
+        "left pulmonary artery",
+        "pulmonary artery"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-pulmonary-artery",
+      "name": "Right pulmonary artery",
+      "accept": [
+        "right pulmonary artery",
+        "pulmonary artery"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-atrium",
+      "name": "Left atrium",
+      "accept": [
+        "left atrium",
+        "la"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "pulmonary-trunk",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary trunk"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "left-pulmonary-veins",
+      "name": "Left pulmonary veins",
+      "accept": [
+        "left pulmonary veins",
+        "pulmonary veins",
+        "left pulmonary vein",
+        "pulmonary vein"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "right-pulmonary-veins",
+      "name": "Right pulmonary veins",
+      "accept": [
+        "right pulmonary veins",
+        "pulmonary veins",
+        "right pulmonary vein",
+        "pulmonary vein"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "mitral-bicuspid-valve",
+      "name": "Mitral (bicuspid) valve",
+      "accept": [
+        "mitral (bicuspid) valve",
+        "mitral valve",
+        "bicuspid valve",
+        "left atrioventricular valve",
+        "left av valve",
+        "mitral",
+        "bicuspid"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "right-atrium",
+      "name": "Right atrium",
+      "accept": [
+        "right atrium",
+        "ra"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "aortic-valve",
+      "name": "Aortic valve",
+      "accept": [
+        "aortic valve",
+        "aortic semilunar valve"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "fossa-ovalis",
+      "name": "Fossa ovalis",
+      "accept": [
+        "fossa ovalis"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "fossa-ovalis"
+    },
+    {
+      "id": "pulmonary-valve",
+      "name": "Pulmonary valve",
+      "accept": [
+        "pulmonary valve",
+        "pulmonary semilunar valve",
+        "pulmonic valve"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "semilunar-valves"
+    },
+    {
+      "id": "tricuspid-valve",
+      "name": "Tricuspid valve",
+      "accept": [
+        "tricuspid valve",
+        "right atrioventricular valve",
+        "right av valve",
+        "tricuspid"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "left-ventricle",
+      "name": "Left ventricle",
+      "accept": [
+        "left ventricle",
+        "lv"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "right-ventricle",
+      "name": "Right ventricle",
+      "accept": [
+        "right ventricle",
+        "rv"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "papillary-muscle",
+      "name": "Papillary muscle",
+      "accept": [
+        "papillary muscle",
+        "papillary muscles"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "chordae-tendineae",
+      "name": "Chordae tendineae",
+      "accept": [
+        "chordae tendineae",
+        "chorda tendinea",
+        "heart strings",
+        "tendinous cords"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "av-valves"
+    },
+    {
+      "id": "interventricular-septum",
+      "name": "Interventricular septum",
+      "accept": [
+        "interventricular septum",
+        "ivs",
+        "ventricular septum"
+      ],
+      "box": [
+        838,
+        506,
+        262,
+        29
+      ],
+      "concept": "septa"
+    },
+    {
+      "id": "trabeculae-carneae",
+      "name": "Trabeculae carneae",
+      "accept": [
+        "trabeculae carneae",
+        "trabecula carnea"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "chambers"
+    },
+    {
+      "id": "epicardium",
+      "name": "Epicardium",
+      "accept": [
+        "epicardium",
+        "visceral pericardium"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "heart-wall"
+    },
+    {
+      "id": "moderator-band",
+      "name": "Moderator band",
+      "accept": [
+        "moderator band",
+        "septomarginal trabecula"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "ventricular-conduction"
+    },
+    {
+      "id": "myocardium",
+      "name": "Myocardium",
+      "accept": [
+        "myocardium"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "heart-wall"
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "endocardium",
+      "name": "Endocardium",
+      "accept": [
+        "endocardium"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "heart-wall"
+    }
+  ]
+}
