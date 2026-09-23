@@ -1,0 +1,131 @@
+{
+  "figure": "os-2-23",
+  "labels": [
+    {
+      "id": "phosphatidylcholine",
+      "name": "Phosphatidylcholine",
+      "accept": [
+        "phosphatidylcholine",
+        "lecithin"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "phospholipid"
+    },
+    {
+      "id": "polar-head-group",
+      "name": "Phosphorus-containing group (polar head)",
+      "accept": [
+        "phosphorus-containing group (polar head)",
+        "head",
+        "hydrophilic head",
+        "phosphate group",
+        "phosphate head",
+        "polar head"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "phospholipid"
+    },
+    {
+      "id": "glycerol-backbone",
+      "name": "Glycerol backbone",
+      "accept": [
+        "glycerol backbone",
+        "glycerol"
+      ],
+      "lines": [
+        4,
+        8
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "fatty-acid-tails",
+      "name": "2 fatty acid chains (nonpolar tail)",
+      "accept": [
+        "2 fatty acid chains (nonpolar tail)",
+        "fatty acid chains",
+        "fatty acid tails",
+        "hydrophobic tail",
+        "nonpolar tail",
+        "tails"
+      ],
+      "lines": [
+        6,
+        9
+      ],
+      "concept": "phospholipid"
+    },
+    {
+      "id": "polar-head-schematic",
+      "name": "Polar head",
+      "accept": [
+        "polar head",
+        "head",
+        "hydrophilic head"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "phospholipid"
+    },
+    {
+      "id": "nonpolar-tail-schematic",
+      "name": "Nonpolar tail",
+      "accept": [
+        "nonpolar tail",
+        "hydrophobic tail",
+        "tail",
+        "tails"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "phospholipid"
+    },
+    {
+      "id": "cholesterol",
+      "name": "Cholesterol",
+      "accept": [
+        "cholesterol"
+      ],
+      "box": [
+        132,
+        555,
+        612,
+        24
+      ],
+      "concept": "steroid"
+    },
+    {
+      "id": "pgf2a",
+      "name": "PGF2α",
+      "accept": [
+        "pgf2α",
+        "pgf2 alpha",
+        "pgf2a",
+        "prostaglandin f2 alpha"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "eicosanoids"
+    },
+    {
+      "id": "pge2",
+      "name": "PGE2",
+      "accept": [
+        "pge2",
+        "prostaglandin e2"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "eicosanoids"
+    }
+  ]
+}

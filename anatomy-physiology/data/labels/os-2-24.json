@@ -1,0 +1,71 @@
+{
+  "figure": "os-2-24",
+  "labels": [
+    {
+      "id": "amino-group",
+      "name": "Amino group",
+      "accept": [
+        "amino group",
+        "amine group",
+        "nh2"
+      ],
+      "box": [
+        212,
+        12,
+        220,
+        40
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "carboxyl-group",
+      "name": "Carboxyl group",
+      "accept": [
+        "carboxyl group",
+        "carboxylic acid group",
+        "cooh"
+      ],
+      "box": [
+        708,
+        12,
+        260,
+        40
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "alpha-carbon",
+      "name": "α carbon",
+      "accept": [
+        "α carbon",
+        "alpha carbon",
+        "central carbon"
+      ],
+      "box": [
+        2,
+        632,
+        162,
+        36
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "side-chain",
+      "name": "Side chain (R group)",
+      "accept": [
+        "side chain (r group)",
+        "r",
+        "r group",
+        "side chain",
+        "variable group"
+      ],
+      "box": [
+        490,
+        660,
+        110,
+        78
+      ],
+      "concept": "protein"
+    }
+  ]
+}

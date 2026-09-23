@@ -26,7 +26,9 @@
         1,
         2
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "cover": true,
+      "note": "OpenStax prints 'Plasma membrane' here, but the line marks the peroxisome's own membrane. Covered for good and never asked (docs/anp-needs-author.md, fig-3-17-membrane-label)."
     },
     {
       "id": "crystalline-core",

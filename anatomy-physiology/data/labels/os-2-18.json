@@ -1,0 +1,86 @@
+{
+  "figure": "os-2-18",
+  "labels": [
+    {
+      "id": "glucose",
+      "name": "Glucose",
+      "accept": [
+        "glucose"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "glucose"
+    },
+    {
+      "id": "fructose",
+      "name": "Fructose",
+      "accept": [
+        "fructose"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "galactose",
+      "name": "Galactose",
+      "accept": [
+        "galactose"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "hexoses",
+      "name": "Hexoses",
+      "accept": [
+        "hexoses",
+        "hexose",
+        "six-carbon sugars"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "deoxyribose",
+      "name": "Deoxyribose",
+      "accept": [
+        "deoxyribose"
+      ],
+      "lines": [
+        51
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "ribose",
+      "name": "Ribose",
+      "accept": [
+        "ribose"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "pentoses",
+      "name": "Pentoses",
+      "accept": [
+        "pentoses",
+        "five-carbon sugars",
+        "pentose"
+      ],
+      "lines": [
+        54
+      ],
+      "concept": "carbohydrate"
+    }
+  ]
+}

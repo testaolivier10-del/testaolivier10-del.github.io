@@ -1,0 +1,136 @@
+{
+  "figure": "os-2-26",
+  "labels": [
+    {
+      "id": "primary-structure",
+      "name": "Primary structure",
+      "accept": [
+        "primary structure",
+        "primary"
+      ],
+      "box": [
+        36,
+        62,
+        154,
+        24
+      ],
+      "concept": "protein-shape"
+    },
+    {
+      "id": "chain-of-amino-acids",
+      "name": "Chain of amino acids",
+      "accept": [
+        "chain of amino acids",
+        "amino acid chain",
+        "amino acids",
+        "polypeptide"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "bonds",
+      "name": "Bonds",
+      "accept": [
+        "bonds",
+        "hydrogen bond",
+        "hydrogen bonds"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "hydrogen-bond"
+    },
+    {
+      "id": "alpha-helix",
+      "name": "Alpha-helix",
+      "accept": [
+        "alpha-helix",
+        "alpha helix",
+        "α helix"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "protein-shape"
+    },
+    {
+      "id": "secondary-structure",
+      "name": "Secondary structure (pleated sheet)",
+      "accept": [
+        "secondary structure (pleated sheet)",
+        "beta pleated sheet",
+        "beta sheet",
+        "pleated sheet",
+        "secondary structure"
+      ],
+      "box": [
+        408,
+        454,
+        306,
+        24
+      ],
+      "concept": "protein-shape"
+    },
+    {
+      "id": "tertiary-structure",
+      "name": "Tertiary structure",
+      "accept": [
+        "tertiary structure",
+        "tertiary"
+      ],
+      "box": [
+        36,
+        858,
+        152,
+        24
+      ],
+      "concept": "protein-shape"
+    },
+    {
+      "id": "heme-units",
+      "name": "Heme units",
+      "accept": [
+        "heme units",
+        "heme",
+        "heme group",
+        "heme groups"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "hemoglobin"
+    },
+    {
+      "id": "quaternary-structure",
+      "name": "Quaternary structure",
+      "accept": [
+        "quaternary structure",
+        "quaternary"
+      ],
+      "box": [
+        602,
+        886,
+        182,
+        24
+      ],
+      "concept": "protein-shape"
+    },
+    {
+      "id": "hemoglobin",
+      "name": "Hemoglobin (globular protein)",
+      "accept": [
+        "hemoglobin (globular protein)",
+        "globular protein",
+        "hemoglobin"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "hemoglobin"
+    }
+  ]
+}

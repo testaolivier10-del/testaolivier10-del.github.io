@@ -1,0 +1,31 @@
+{
+  "figure": "os-2-22",
+  "labels": [
+    {
+      "id": "saturated",
+      "name": "Saturated",
+      "accept": [
+        "saturated",
+        "saturated fat",
+        "saturated fatty acid"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "unsaturated",
+      "name": "Unsaturated",
+      "accept": [
+        "unsaturated",
+        "unsaturated fat",
+        "unsaturated fatty acid"
+      ],
+      "lines": [
+        54
+      ],
+      "concept": "triglyceride"
+    }
+  ]
+}

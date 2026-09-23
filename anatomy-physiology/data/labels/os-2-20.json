@@ -1,0 +1,64 @@
+{
+  "figure": "os-2-20",
+  "labels": [
+    {
+      "id": "amylose",
+      "name": "Amylose",
+      "accept": [
+        "amylose"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "amylopectin",
+      "name": "Amylopectin",
+      "accept": [
+        "amylopectin"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "starch",
+      "name": "Starch",
+      "accept": [
+        "starch"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "glycogen",
+      "name": "Glycogen",
+      "accept": [
+        "glycogen"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "glycogen"
+    },
+    {
+      "id": "cellulose",
+      "name": "Cellulose (fiber)",
+      "accept": [
+        "cellulose (fiber)",
+        "cellulose",
+        "dietary fiber",
+        "fiber"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "carbohydrate"
+    }
+  ]
+}

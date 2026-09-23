@@ -225,6 +225,9 @@ export function glossify(C, html, { depth, topic, seen, index }) {
    after the page's topic, the label is covered for good on that page: a figure
    must not teach a word early any more than the text may (spec section 7). */
 export function laterLabel(C, l, topicId) {
+  // A label marked "cover" is wrong or misleading as printed: covered on every
+  // page and never quizzed.
+  if (l.cover) return true;
   if (!topicId) return false;
   const c = l.concept && C.concepts.get(l.concept);
   if (c && C.topicIndex.get(c.taughtIn) > C.topicIndex.get(topicId)) return true;

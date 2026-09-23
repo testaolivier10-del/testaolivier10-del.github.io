@@ -1,0 +1,21 @@
+{
+  "figure": "os-2-25",
+  "labels": [
+    {
+      "id": "peptide-bond",
+      "name": "Peptide bond",
+      "accept": [
+        "peptide bond",
+        "amide bond",
+        "peptide bonds"
+      ],
+      "box": [
+        286,
+        542,
+        232,
+        36
+      ],
+      "concept": "protein"
+    }
+  ]
+}

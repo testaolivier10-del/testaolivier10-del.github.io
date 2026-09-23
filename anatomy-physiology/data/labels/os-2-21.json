@@ -1,0 +1,58 @@
+{
+  "figure": "os-2-21",
+  "labels": [
+    {
+      "id": "glycerol",
+      "name": "Glycerol",
+      "accept": [
+        "glycerol"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "fatty-acid-chains",
+      "name": "3 fatty acid chains",
+      "accept": [
+        "3 fatty acid chains",
+        "fatty acid",
+        "fatty acid chains",
+        "fatty acids"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "triglyceride",
+      "name": "Triglyceride, or neutral fat",
+      "accept": [
+        "triglyceride, or neutral fat",
+        "fat",
+        "neutral fat",
+        "triglyceride"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "water-molecules",
+      "name": "3 water molecules",
+      "accept": [
+        "3 water molecules",
+        "3h2o",
+        "h2o",
+        "water"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "monomer-polymer"
+    }
+  ]
+}

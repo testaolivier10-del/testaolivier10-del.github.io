@@ -1,0 +1,107 @@
+{
+  "figure": "os-2-30",
+  "labels": [
+    {
+      "id": "adenine",
+      "name": "Adenine",
+      "accept": [
+        "adenine",
+        "a"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "high-energy-bonds",
+      "name": "High-energy bonds",
+      "accept": [
+        "high-energy bonds",
+        "high energy bonds",
+        "phosphate bonds",
+        "phosphoanhydride bonds"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "atp-hydrolysis"
+    },
+    {
+      "id": "ribose",
+      "name": "Ribose",
+      "accept": [
+        "ribose",
+        "ribose sugar",
+        "sugar"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "phosphate",
+      "name": "Phosphate",
+      "accept": [
+        "phosphate",
+        "phosphate groups",
+        "phosphates"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "adenosine",
+      "name": "Adenosine",
+      "accept": [
+        "adenosine"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "amp",
+      "name": "Adenosine monophosphate (AMP)",
+      "accept": [
+        "adenosine monophosphate (amp)",
+        "adenosine monophosphate",
+        "amp"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "adp",
+      "name": "Adenosine diphosphate (ADP)",
+      "accept": [
+        "adenosine diphosphate (adp)",
+        "adenosine diphosphate",
+        "adp"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "atp",
+      "name": "Adenosine triphosphate (ATP)",
+      "accept": [
+        "adenosine triphosphate (atp)",
+        "adenosine triphosphate",
+        "atp"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "atp"
+    }
+  ]
+}

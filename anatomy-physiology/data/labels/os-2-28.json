@@ -1,0 +1,192 @@
+{
+  "figure": "os-2-28",
+  "labels": [
+    {
+      "id": "pyrimidines",
+      "name": "Pyrimidines",
+      "accept": [
+        "pyrimidines",
+        "pyrimidine"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "nitrogenous-base",
+      "name": "Nitrogenous base",
+      "accept": [
+        "nitrogenous base",
+        "base",
+        "nitrogenous bases"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "cytosine",
+      "name": "Cytosine (C)",
+      "accept": [
+        "cytosine (c)",
+        "c",
+        "cytosine"
+      ],
+      "lines": [
+        9,
+        12
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "thymine",
+      "name": "Thymine (in DNA) (T)",
+      "accept": [
+        "thymine (in dna) (t)",
+        "t",
+        "thymine"
+      ],
+      "lines": [
+        10,
+        13
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "uracil",
+      "name": "Uracil (in RNA) (U)",
+      "accept": [
+        "uracil (in rna) (u)",
+        "u",
+        "uracil"
+      ],
+      "lines": [
+        11,
+        14
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "purines",
+      "name": "Purines",
+      "accept": [
+        "purines",
+        "purine"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "phosphate-group",
+      "name": "Phosphate group",
+      "accept": [
+        "phosphate group",
+        "phosphate"
+      ],
+      "lines": [
+        20,
+        21
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "pentose-sugar",
+      "name": "Pentose sugar",
+      "accept": [
+        "pentose sugar",
+        "five-carbon sugar",
+        "pentose",
+        "sugar"
+      ],
+      "lines": [
+        22,
+        25
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "adenine",
+      "name": "Adenine (A)",
+      "accept": [
+        "adenine (a)",
+        "a",
+        "adenine"
+      ],
+      "lines": [
+        27,
+        29
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "guanine",
+      "name": "Guanine (G)",
+      "accept": [
+        "guanine (g)",
+        "g",
+        "guanine"
+      ],
+      "lines": [
+        26,
+        28
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "phosphodiester-linkage",
+      "name": "Phosphodiester linkage",
+      "accept": [
+        "phosphodiester linkage",
+        "phosphodiester",
+        "phosphodiester bond"
+      ],
+      "lines": [
+        30,
+        31
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "polynucleotide",
+      "name": "Polynucleotide",
+      "accept": [
+        "polynucleotide",
+        "nucleic acid",
+        "polynucleotide chain"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "deoxyribose",
+      "name": "Deoxyribose (in DNA)",
+      "accept": [
+        "deoxyribose (in dna)",
+        "deoxyribose"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "nucleic-acid"
+    },
+    {
+      "id": "ribose",
+      "name": "Ribose (in RNA)",
+      "accept": [
+        "ribose (in rna)",
+        "ribose"
+      ],
+      "lines": [
+        54
+      ],
+      "concept": "nucleic-acid"
+    }
+  ]
+}
