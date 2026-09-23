@@ -4,9 +4,16 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A patient's heart rate is 80 beats/min and his stroke volume is 65 mL. What is his cardiac output?",
-    "options": ["145 mL/min", "5.2 L/min", "1.2 L/min", "52 L/min"],
+    "options": [
+      "145 mL/min",
+      "5.2 L/min",
+      "1.2 L/min",
+      "52 L/min"
+    ],
     "correct": 1,
     "why": {
       "correct": "CO = HR × SV = 80 beats/min × 65 mL/beat = 5,200 mL/min = 5.2 L/min.",
@@ -23,9 +30,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A patient's cardiac output is 6.0 L/min and her heart rate is 75 beats/min. What is her stroke volume?",
-    "options": ["450 mL", "12.5 mL", "0.8 mL", "80 mL"],
+    "options": [
+      "450 mL",
+      "12.5 mL",
+      "0.8 mL",
+      "80 mL"
+    ],
     "correct": 3,
     "why": {
       "correct": "Rearrange CO = HR × SV to SV = CO ÷ HR. Convert 6.0 L/min to 6,000 mL/min. SV = 6,000 ÷ 75 = 80 mL per beat.",
@@ -43,13 +57,32 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "A patient starts taking a beta blocker, a drug that blocks beta-1 adrenergic receptor proteins in the heart. Predict the change in each variable at rest, compared with before the drug.",
     "variables": [
-      { "name": "Heart rate", "answer": "down", "why": "With beta-1 receptor proteins blocked, norepinephrine cannot steepen the pacemaker potential, so the SA node reaches threshold more slowly." },
-      { "name": "Contractility", "answer": "down", "why": "Blocking beta-1 receptor proteins on ventricular cells lowers cyclic AMP, so less calcium enters through L-type channels and less is released from the sarcoplasmic reticulum." },
-      { "name": "Filling time", "answer": "up", "why": "A slower heart rate lengthens each diastole, so the ventricles have longer to fill." },
-      { "name": "Cardiac output", "answer": "down", "why": "Heart rate falls, and the slightly better filling does not fully make up for it and for the weaker contraction, so the product HR × SV falls." }
+      {
+        "name": "Heart rate",
+        "answer": "down",
+        "why": "With beta-1 receptor proteins blocked, norepinephrine cannot steepen the pacemaker potential, so the SA node reaches threshold more slowly."
+      },
+      {
+        "name": "Contractility",
+        "answer": "down",
+        "why": "Blocking beta-1 receptor proteins on ventricular cells lowers cyclic AMP, so less calcium enters through L-type channels and less is released from the sarcoplasmic reticulum."
+      },
+      {
+        "name": "Filling time",
+        "answer": "up",
+        "why": "A slower heart rate lengthens each diastole, so the ventricles have longer to fill."
+      },
+      {
+        "name": "Cardiac output",
+        "answer": "down",
+        "why": "Heart rate falls, and the slightly better filling does not fully make up for it and for the weaker contraction, so the product HR × SV falls."
+      }
     ],
     "why": {
       "correct": "A beta blocker removes the sympathetic push on both the SA node and the ventricular muscle. Heart rate and contractility fall. Longer diastoles improve filling a little, which partly offsets the fall in stroke volume, but cardiac output ends up lower."
@@ -61,14 +94,36 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A person lying flat raises both legs, and blood pooled in the leg veins flows back toward the heart, increasing venous return. Before any reflex acts, predict the change in each variable.",
     "variables": [
-      { "name": "End-diastolic volume", "answer": "up", "why": "More venous return fills the ventricles more during diastole." },
-      { "name": "Stretch of ventricular muscle (preload)", "answer": "up", "why": "A larger end-diastolic volume stretches the ventricular wall further." },
-      { "name": "Stroke volume", "answer": "up", "why": "By the Frank–Starling mechanism, the more-stretched ventricle contracts more forcefully and ejects more." },
-      { "name": "Heart rate", "answer": "none", "why": "Venous return acts on filling and stretch, not directly on the SA node, so heart rate does not change before a reflex acts." },
-      { "name": "Cardiac output", "answer": "up", "why": "Stroke volume has risen at the same heart rate, so HR × SV is larger." }
+      {
+        "name": "End-diastolic volume",
+        "answer": "up",
+        "why": "More venous return fills the ventricles more during diastole."
+      },
+      {
+        "name": "Stretch of ventricular muscle (preload)",
+        "answer": "up",
+        "why": "A larger end-diastolic volume stretches the ventricular wall further."
+      },
+      {
+        "name": "Stroke volume",
+        "answer": "up",
+        "why": "By the Frank–Starling mechanism, the more-stretched ventricle contracts more forcefully and ejects more."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "none",
+        "why": "Venous return acts on filling and stretch, not directly on the SA node, so heart rate does not change before a reflex acts."
+      },
+      {
+        "name": "Cardiac output",
+        "answer": "up",
+        "why": "Stroke volume has risen at the same heart rate, so HR × SV is larger."
+      }
     ],
     "why": {
       "correct": "More venous return raises preload. Through the Frank–Starling mechanism, the stretched ventricle ejects more, so stroke volume and cardiac output rise without any change in heart rate."
@@ -80,15 +135,42 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 3,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "A healthy student starts a steady jog. Predict the change in each variable across the nervous, muscular and cardiovascular systems during the jog, compared with rest.",
     "variables": [
-      { "name": "Sympathetic activity to the heart", "answer": "up", "why": "Signals from the motor cortex and from sensory receptors in moving muscles and joints reach the cardiovascular center, which increases cardioaccelerator output and reduces vagal output." },
-      { "name": "Venous return", "answer": "up", "why": "Rhythmic contraction of the leg muscles squeezes the deep veins (the skeletal muscle pump), and deeper breathing strengthens the respiratory pump." },
-      { "name": "Heart rate", "answer": "up", "why": "Less vagal tone and more norepinephrine on the SA node steepen the pacemaker potential." },
-      { "name": "End-systolic volume", "answer": "down", "why": "Sympathetic stimulation raises contractility, so the ventricle squeezes out more of its blood." },
-      { "name": "Stroke volume", "answer": "up", "why": "Greater venous return raises EDV and greater contractility lowers ESV, so EDV − ESV rises." },
-      { "name": "Cardiac output", "answer": "up", "why": "Both heart rate and stroke volume rise, so their product rises several-fold." }
+      {
+        "name": "Sympathetic activity to the heart",
+        "answer": "up",
+        "why": "Signals from the motor cortex and from sensory receptors in moving muscles and joints reach the cardiovascular center, which increases cardioaccelerator output and reduces vagal output."
+      },
+      {
+        "name": "Venous return",
+        "answer": "up",
+        "why": "Rhythmic contraction of the leg muscles squeezes the deep veins (the skeletal muscle pump), and deeper breathing strengthens the respiratory pump."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Less vagal tone and more norepinephrine on the SA node steepen the pacemaker potential."
+      },
+      {
+        "name": "End-systolic volume",
+        "answer": "down",
+        "why": "Sympathetic stimulation raises contractility, so the ventricle squeezes out more of its blood."
+      },
+      {
+        "name": "Stroke volume",
+        "answer": "up",
+        "why": "Greater venous return raises EDV and greater contractility lowers ESV, so EDV − ESV rises."
+      },
+      {
+        "name": "Cardiac output",
+        "answer": "up",
+        "why": "Both heart rate and stroke volume rise, so their product rises several-fold."
+      }
     ],
     "why": {
       "correct": "The nervous system raises sympathetic and lowers parasympathetic drive to the heart, and working skeletal muscles push more blood back through the veins. Heart rate rises, contractility rises and filling improves, so stroke volume and cardiac output both rise."
@@ -99,14 +181,16 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-19-33",
     "q": "Compare the resting trace with the sympathetic stimulation trace. What change in the SA node cell raises the heart rate?",
     "options": [
       "The threshold is lowered to a more negative value",
       "Each action potential lasts longer",
       "The pacemaker potential climbs to threshold faster",
-      "The peak of each action potential is higher"
+      "The peak of each action potential reaches a higher voltage"
     ],
     "correct": 2,
     "why": {
@@ -124,14 +208,16 @@
     "type": "graph",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-19-33",
     "q": "In the parasympathetic stimulation trace, which two changes together slow the heart rate?",
     "options": [
-      "The cell starts each cycle more negative and its climb to threshold is slower",
-      "The threshold rises and the action potentials become smaller",
-      "The cell stays depolarized longer and the threshold falls",
-      "The action potentials are faster but separated by long pauses at threshold"
+      "It starts lower and climbs more slowly",
+      "The threshold rises and the action potentials shrink",
+      "It stays depolarized longer and the threshold falls",
+      "It fires quickly but pauses at threshold between beats"
     ],
     "correct": 0,
     "why": {
@@ -149,13 +235,16 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "structure-function"],
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
     "q": "Why does stretching a ventricle during filling make its next contraction stronger?",
     "options": [
-      "Stretch triggers a sympathetic reflex that releases norepinephrine onto the ventricle",
-      "Stretch moves sarcomeres toward optimal length and makes troponin more sensitive to calcium",
-      "Stretch opens extra L-type calcium channels, letting more calcium in",
-      "Stretch lengthens the action potential's plateau, so the muscle contracts for longer"
+      "It triggers a sympathetic reflex that releases norepinephrine onto the ventricle",
+      "It improves filament overlap and troponin's calcium sensitivity",
+      "It opens extra L-type calcium channels, letting more calcium in",
+      "It lengthens the action potential's plateau phase in every cell"
     ],
     "correct": 1,
     "why": {
@@ -173,13 +262,15 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "For a few beats, a person's right ventricle ejects 5 mL more per beat than her left ventricle. Within a few beats, the two outputs match again, with no change in nerve signals. What restores the match?",
     "options": [
-      "The vagus nerve slows the right ventricle",
-      "The pulmonary valve partly closes to limit right-sided output",
-      "More blood returns to the left ventricle, stretching it, so it ejects more",
-      "The left ventricle's contractility rises through circulating epinephrine"
+      "The vagus nerve slowing the right ventricle",
+      "The pulmonary valve partly closing to limit right-sided output",
+      "The Frank–Starling mechanism in the left ventricle",
+      "Circulating epinephrine raising left ventricular contractility"
     ],
     "correct": 2,
     "why": {
@@ -187,7 +278,7 @@
       "options": [
         "Heart rate is shared by both ventricles, because one SA node drives them. The vagus cannot slow one ventricle alone, and the question says nerve signals did not change.",
         "Semilunar valves open and close passively with pressure differences. They do not partly close to regulate flow.",
-        "Correct. The Frank–Starling mechanism matches left-sided output to right-sided output beat by beat.",
+        "Correct. The extra blood stretches the left ventricle, which then ejects more, matching the right ventricle's output beat by beat.",
         "A hormone would change contractility, and the question describes a match restored within a few beats without any change in signals. Stretch alone does it."
       ]
     }
@@ -197,14 +288,17 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis", "structure-function"],
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
     "misconception": "preload and afterload are the same thing",
     "q": "Mr. Liu's aortic valve has narrowed and stiffened, so his left ventricle must generate a much higher pressure to eject blood. Which volume changes first, and which way?",
     "options": [
-      "End-diastolic volume falls, because the ventricle fills less",
-      "End-systolic volume falls, because the ventricle squeezes harder",
-      "End-systolic volume rises, because more blood is left after ejection",
-      "End-diastolic volume rises, because the valve lets blood leak back"
+      "End-diastolic volume falls",
+      "End-systolic volume falls",
+      "End-systolic volume rises",
+      "End-diastolic volume rises"
     ],
     "correct": 2,
     "why": {
@@ -222,7 +316,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "What is afterload?",
     "options": [
       "The stretch on ventricular muscle at the end of filling",
@@ -246,10 +342,23 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Select every factor that increases contractility (a positive inotropic factor).",
-    "options": ["Norepinephrine on beta-1 receptor proteins", "Hyperkalemia", "Epinephrine from the adrenal medulla", "A calcium channel blocker", "Thyroid hormones", "Acidosis"],
-    "correct": [0, 2, 4],
+    "options": [
+      "Norepinephrine on beta-1 receptor proteins",
+      "Hyperkalemia",
+      "Epinephrine from the adrenal medulla",
+      "A calcium channel blocker",
+      "Thyroid hormones",
+      "Acidosis"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
     "why": {
       "correct": "Norepinephrine and epinephrine act through beta-1 receptor proteins to raise the calcium available to the cross-bridges, and thyroid hormones also raise contractility. Hyperkalemia, calcium channel blockers and acidosis all weaken contraction.",
       "options": [
@@ -267,22 +376,22 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
-    "q": "A patient's heart rate is 38 beats/min, and she feels faint. A paramedic gives atropine, a drug that blocks muscarinic receptor proteins. What happens to her heart rate, and why?",
+    "core": [
+      "communication"
+    ],
+    "q": "A patient's heart rate is 38 beats/min, and she feels faint. A paramedic gives atropine, a drug that blocks muscarinic receptor proteins. What happens to her heart rate?",
     "options": [
-      "It falls, as sympathetic signals are blocked",
-      "It rises, as vagal slowing of the SA node is blocked",
-      "It rises, as atropine stimulates beta-1 receptor proteins",
-      "It stays the same, as the SA node has no muscarinic receptor proteins"
+      "It falls",
+      "It rises",
+      "It stays the same"
     ],
     "correct": 1,
     "why": {
       "correct": "The vagus nerve releases acetylcholine onto muscarinic receptor proteins on SA node cells, which slows the pacemaker potential. Blocking those receptor proteins removes vagal tone, so the pacemaker potential climbs faster and heart rate rises toward the SA node's own rate.",
       "options": [
-        "Sympathetic signals to the heart act through beta-1 receptor proteins, which atropine does not block.",
-        "Correct. Atropine removes the parasympathetic brake on the SA node.",
-        "Atropine blocks muscarinic receptor proteins; it does not act on beta-1 receptor proteins.",
-        "SA node cells do carry muscarinic receptor proteins. That is how the vagus nerve slows them."
+        "A fall would need more vagal effect or less sympathetic effect. Atropine removes vagal effect, and it does not block the beta-1 receptor proteins that carry sympathetic signals.",
+        "Correct. Atropine blocks the muscarinic receptor proteins through which the vagus slows the SA node, so the pacemaker potential climbs faster.",
+        "The SA node does carry muscarinic receptor proteins; that is how the vagus nerve slows it. Blocking them removes vagal tone and changes the rate."
       ]
     }
   },
@@ -291,7 +400,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the steps in order to show how sympathetic stimulation increases stroke volume.",
     "options": [
       "Sympathetic nerves release norepinephrine onto ventricular muscle",
@@ -310,13 +421,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "misconception": "a faster heart always pumps more",
     "q": "An abnormal rhythm raises a patient's heart rate from 180 to 220 beats/min, and his cardiac output falls from 8.1 to 4.8 L/min. What best explains the fall?",
     "options": [
       "The SA node is exhausted and fires weaker impulses",
-      "Diastole is so short that the ventricles fill far less, so stroke volume falls more than heart rate rises",
-      "Afterload rises at fast rates, so the ventricle cannot open its valve",
+      "Filling time is too short for the ventricles to fill",
+      "Afterload rises sharply at fast heart rates",
       "The ventricles contract too forcefully and damage the valves"
     ],
     "correct": 1,
@@ -335,9 +448,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A 70-year-old has a resting cardiac output of 4.5 L/min. His highest cardiac output on an exercise test is 13.5 L/min. What is his cardiac reserve?",
-    "options": ["9.0 L/min", "18.0 L/min", "3.0 L/min", "13.5 L/min"],
+    "options": [
+      "9.0 L/min",
+      "18.0 L/min",
+      "3.0 L/min",
+      "13.5 L/min"
+    ],
     "correct": 0,
     "why": {
       "correct": "Cardiac reserve = highest cardiac output − resting cardiac output = 13.5 − 4.5 = 9.0 L/min.",
@@ -354,7 +474,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A student described how the parasympathetic system slows the heart. One step is wrong. Which one?",
     "options": [
       "The cardioinhibitory center in the medulla oblongata increases its output",
@@ -380,9 +502,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Complete the equation: cardiac output = heart rate × ____.",
-    "options": ["Stroke volume", "End-diastolic volume", "Ejection fraction", "Mean arterial pressure"],
+    "options": [
+      "Stroke volume",
+      "End-diastolic volume",
+      "Ejection fraction",
+      "Mean arterial pressure"
+    ],
     "correct": 0,
     "why": {
       "correct": "Cardiac output = heart rate × stroke volume: beats per minute times milliliters per beat gives milliliters per minute.",
@@ -399,9 +528,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A drug raises contractility. Before the drug, EDV is 130 mL and ESV is 60 mL. After it, EDV is still 130 mL but ESV is 40 mL. By how much has stroke volume changed?",
-    "options": ["Up by 10 mL", "Up by 20 mL", "Down by 20 mL", "Up by 40 mL"],
+    "options": [
+      "Up by 10 mL",
+      "Up by 20 mL",
+      "Down by 20 mL",
+      "Up by 40 mL"
+    ],
     "correct": 1,
     "why": {
       "correct": "Before: SV = 130 − 60 = 70 mL. After: SV = 130 − 40 = 90 mL. Stroke volume rose by 20 mL, all from a smaller end-systolic volume.",
@@ -418,9 +554,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Where is the cardiovascular center that contains the cardioaccelerator and cardioinhibitory centers?",
-    "options": ["Hypothalamus", "Cerebral cortex", "Medulla oblongata", "SA node"],
+    "options": [
+      "Hypothalamus",
+      "Cerebral cortex",
+      "Medulla oblongata",
+      "SA node"
+    ],
     "correct": 2,
     "why": {
       "correct": "The cardiovascular center is a network of neurons in the medulla oblongata of the brainstem. It sends sympathetic output through the cardiac accelerator nerves and parasympathetic output through the vagus nerves.",
@@ -437,12 +580,15 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "After a heart transplant, a patient's new heart has no nerve connections to his brain. When he starts walking briskly, his cardiac output still rises, though more slowly than before. Which pair of mechanisms can explain the rise?",
     "options": [
-      "The Frank–Starling mechanism and epinephrine from the adrenal medulla",
+      "The Frank–Starling mechanism and adrenal epinephrine",
       "The vagus nerve and the cardioaccelerator center",
-      "Sympathetic nerves through the cardiac plexus and acetylcholine",
+      "Sympathetic nerves in the cardiac plexus and acetylcholine",
       "The cardioinhibitory center and a longer filling time"
     ],
     "correct": 0,

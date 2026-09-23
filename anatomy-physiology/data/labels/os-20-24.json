@@ -1,0 +1,443 @@
+{
+  "figure": "os-20-24",
+  "labels": [
+    {
+      "id": "vertebral-artery",
+      "name": "Vertebral",
+      "accept": [
+        "vertebral",
+        "vertebral artery"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "right-common-carotid-artery",
+      "name": "Right common carotid",
+      "accept": [
+        "right common carotid",
+        "right common carotid artery",
+        "common carotid artery",
+        "common carotid"
+      ],
+      "box": [
+        764,
+        194,
+        296,
+        34
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "right-subclavian-artery",
+      "name": "Right subclavian",
+      "accept": [
+        "right subclavian",
+        "right subclavian artery",
+        "subclavian artery",
+        "subclavian"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "left-common-carotid-artery",
+      "name": "Left common carotid",
+      "accept": [
+        "left common carotid",
+        "left common carotid artery",
+        "common carotid artery",
+        "common carotid"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "left-subclavian-artery",
+      "name": "Left subclavian",
+      "accept": [
+        "left subclavian",
+        "left subclavian artery",
+        "subclavian artery",
+        "subclavian"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "brachiocephalic-trunk",
+      "name": "Brachiocephalic trunk",
+      "accept": [
+        "brachiocephalic trunk",
+        "brachiocephalic artery",
+        "innominate artery"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "head-neck-arteries"
+    },
+    {
+      "id": "axillary-artery",
+      "name": "Axillary",
+      "accept": [
+        "axillary",
+        "axillary artery"
+      ],
+      "box": [
+        766,
+        336,
+        98,
+        33
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "aortic-arch",
+      "name": "Aortic arch",
+      "accept": [
+        "aortic arch",
+        "arch of aorta",
+        "arch of the aorta"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "pulmonary-trunk",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary trunk"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "ascending-aorta",
+      "name": "Ascending aorta",
+      "accept": [
+        "ascending aorta"
+      ],
+      "lines": [
+        15,
+        17
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "descending-aorta",
+      "name": "Descending aorta",
+      "accept": [
+        "descending aorta",
+        "thoracic aorta",
+        "descending thoracic aorta"
+      ],
+      "lines": [
+        16,
+        18
+      ],
+      "concept": "aorta-parts"
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "diaphragm"
+    },
+    {
+      "id": "celiac-trunk",
+      "name": "Celiac trunk",
+      "accept": [
+        "celiac trunk",
+        "celiac artery",
+        "coeliac trunk"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "renal-artery",
+      "name": "Renal",
+      "accept": [
+        "renal",
+        "renal artery"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "brachial-artery",
+      "name": "Brachial",
+      "accept": [
+        "brachial",
+        "brachial artery"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "superior-mesenteric-artery",
+      "name": "Superior mesenteric",
+      "accept": [
+        "superior mesenteric",
+        "superior mesenteric artery",
+        "sma"
+      ],
+      "box": [
+        817,
+        615,
+        283,
+        34
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "gonadal-artery",
+      "name": "Gonadal",
+      "accept": [
+        "gonadal",
+        "gonadal artery",
+        "ovarian artery",
+        "testicular artery"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "inferior-mesenteric-artery",
+      "name": "Inferior mesenteric",
+      "accept": [
+        "inferior mesenteric",
+        "inferior mesenteric artery",
+        "ima"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "radial-artery",
+      "name": "Radial",
+      "accept": [
+        "radial",
+        "radial artery"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "common-iliac-artery",
+      "name": "Common iliac",
+      "accept": [
+        "common iliac",
+        "common iliac artery"
+      ],
+      "lines": [
+        32,
+        33
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "ulnar-artery",
+      "name": "Ulnar",
+      "accept": [
+        "ulnar",
+        "ulnar artery"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "internal-iliac-artery",
+      "name": "Internal iliac",
+      "accept": [
+        "internal iliac",
+        "internal iliac artery"
+      ],
+      "lines": [
+        35,
+        36
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "external-iliac-artery",
+      "name": "External iliac",
+      "accept": [
+        "external iliac",
+        "external iliac artery"
+      ],
+      "lines": [
+        38,
+        39
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "palmar-arches",
+      "name": "Palmar arches",
+      "accept": [
+        "palmar arches",
+        "palmar arch",
+        "superficial palmar arch",
+        "deep palmar arch"
+      ],
+      "lines": [
+        41,
+        43
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "deep-femoral-artery",
+      "name": "Deep femoral",
+      "accept": [
+        "deep femoral",
+        "deep femoral artery",
+        "profunda femoris",
+        "deep artery of the thigh"
+      ],
+      "lines": [
+        42,
+        44
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "femoral-artery",
+      "name": "Femoral",
+      "accept": [
+        "femoral",
+        "femoral artery"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "descending-genicular-artery",
+      "name": "Descending genicular",
+      "accept": [
+        "descending genicular",
+        "descending genicular artery",
+        "genicular artery"
+      ],
+      "box": [
+        707,
+        1187,
+        162,
+        68
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "popliteal-artery",
+      "name": "Popliteal",
+      "accept": [
+        "popliteal",
+        "popliteal artery"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "posterior-tibial-artery",
+      "name": "Posterior tibial",
+      "accept": [
+        "posterior tibial",
+        "posterior tibial artery"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "anterior-tibial-artery",
+      "name": "Anterior tibial",
+      "accept": [
+        "anterior tibial",
+        "anterior tibial artery"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "fibular-artery",
+      "name": "Fibular",
+      "accept": [
+        "fibular",
+        "fibular artery",
+        "peroneal artery"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "dorsalis-pedis-artery",
+      "name": "Dorsalis pedis",
+      "accept": [
+        "dorsalis pedis",
+        "dorsalis pedis artery",
+        "dorsal artery of the foot"
+      ],
+      "lines": [
+        51,
+        52
+      ],
+      "concept": "limb-arteries"
+    },
+    {
+      "id": "plantar-arch",
+      "name": "Plantar arch",
+      "accept": [
+        "plantar arch",
+        "plantar arterial arch"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "limb-arteries"
+    }
+  ]
+}

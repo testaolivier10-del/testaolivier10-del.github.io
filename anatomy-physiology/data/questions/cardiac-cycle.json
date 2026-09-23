@@ -1,0 +1,572 @@
+[
+  {
+    "id": "anp-cardiac-cycle-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "valves are pushed open by muscle",
+    "q": "What makes the aortic valve open?",
+    "options": [
+      "The papillary muscles pull its cusps apart",
+      "Left ventricular pressure rises above aortic pressure",
+      "A nerve signal arriving with the QRS complex",
+      "Aortic pressure rises above left ventricular pressure"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Valves open and close only because of the pressure difference across them. When pressure behind the aortic valve (in the ventricle) exceeds pressure in front of it (in the aorta), blood pushes the cusps aside.",
+      "options": [
+        "Papillary muscles attach to the atrioventricular valves, not the semilunar valves, and they never pull any valve open.",
+        "Correct. The valve opens when ventricular pressure exceeds aortic pressure, at about 80 mm Hg at rest.",
+        "Valves have no muscle and receive no nerve signals. The QRS complex triggers ventricular contraction, which raises pressure; pressure then opens the valve.",
+        "Higher pressure in the aorta than in the ventricle pushes blood backward into the cusps, which closes the valve."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "During isovolumetric contraction of the left ventricle, which valves are open?",
+    "options": [
+      "The mitral valve only",
+      "The aortic valve only",
+      "Both the mitral and the aortic valve",
+      "Neither valve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Ventricular pressure has risen above atrial pressure, which closed the mitral valve, but it is still below aortic pressure, so the aortic valve stays shut. With both closed, volume cannot change while pressure climbs.",
+      "options": [
+        "The mitral valve closed at the very start of this phase, when ventricular pressure rose above atrial pressure.",
+        "The aortic valve opens only when ventricular pressure passes aortic pressure, which ends this phase.",
+        "Both valves open at once would let blood flow straight from atrium to aorta. That never happens in a normal heart.",
+        "Correct. That is what isovolumetric means: the volume stays the same because blood cannot leave or enter."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-19-29",
+    "q": "Use the graph. At the moment the aortic valve opens, about what is the left ventricular pressure?",
+    "options": [
+      "About 10 mm Hg",
+      "About 120 mm Hg",
+      "About 80 mm Hg",
+      "About 100 mm Hg"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The aortic valve opens where the rising ventricular trace crosses the aortic trace. Aortic pressure has fallen to its lowest value, about 80 mm Hg, so that is where the crossing happens.",
+      "options": [
+        "Around 10 mm Hg is where the mitral valve closes, as ventricular pressure first rises above atrial pressure.",
+        "120 mm Hg is the peak reached during ejection, after the valve is already open.",
+        "Correct. Ventricular pressure must exceed aortic pressure, about 80 mm Hg, before the valve opens.",
+        "About 100 mm Hg is near where the aortic valve closes at the end of ejection, not where it opens."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-4",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-19-29",
+    "q": "On the graph, find the interval between the mitral valve closing and the aortic valve opening. What happens to the volume of blood in the left ventricle during that interval?",
+    "options": [
+      "It rises steadily",
+      "It stays the same",
+      "It falls quickly",
+      "It falls slowly"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Between those two events ventricular pressure is above atrial pressure (mitral valve shut) and below aortic pressure (aortic valve shut). Blood can neither enter nor leave, so volume is constant while pressure climbs: isovolumetric contraction.",
+      "options": [
+        "The mitral valve has closed, so no more blood can enter from the atrium.",
+        "Correct. Both valves are closed, so blood can neither enter nor leave: isovolumetric contraction.",
+        "Ejection starts only once the aortic valve opens, at the end of this interval.",
+        "A healthy closed mitral valve does not leak, and the aortic valve is still shut, so no blood leaves."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-5",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-19-28",
+    "q": "Look at the chart lining up the ECG with systole and diastole. Which ECG event marks the start of ventricular systole?",
+    "options": [
+      "The P wave",
+      "The QRS complex",
+      "The T wave",
+      "The flat line after the T wave"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The QRS complex is ventricular depolarization, which triggers ventricular contraction. On the chart, ventricular systole begins at the QRS complex.",
+      "options": [
+        "The P wave is atrial depolarization. It leads to atrial systole, not ventricular systole.",
+        "Correct. Electrical depolarization comes just before the contraction it triggers.",
+        "The T wave is ventricular repolarization. Ventricular systole ends around the end of the T wave.",
+        "After the T wave the ventricles are relaxed and filling: ventricular diastole."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-6",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Starting with atrial contraction, put the phases of the cardiac cycle in order.",
+    "options": [
+      "Atrial contraction",
+      "Isovolumetric contraction",
+      "Ventricular ejection",
+      "Isovolumetric relaxation",
+      "Ventricular filling"
+    ],
+    "why": {
+      "correct": "The atria top off the ventricles; the ventricles contract with both valves closed until the aortic valve opens; blood is ejected; the aortic valve closes and pressure falls with both valves closed; the mitral valve opens and the ventricles fill until the atria contract again."
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-7",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Fill the gap in this calculation. A left ventricle has an EDV of 130 mL and an ESV of 60 mL. SV = 130 − 60 = 70 mL → EF = ______ → EF = 54 percent.",
+    "options": [
+      "60 ÷ 130 × 100",
+      "70 ÷ 60 × 100",
+      "70 ÷ 130 × 100",
+      "130 ÷ 70 × 100"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Ejection fraction is stroke volume divided by end-diastolic volume: 70 ÷ 130 = 0.54, which is 54 percent.",
+      "options": [
+        "This divides the volume left behind (ESV) by EDV, giving the fraction that stays, 46 percent.",
+        "This divides by ESV instead of EDV, giving 117 percent, which is impossible for a fraction ejected.",
+        "Correct. EF = SV ÷ EDV × 100.",
+        "This inverts the fraction and gives 186 percent."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A left ventricle holds 150 mL at the end of diastole and ejects 60 mL per beat. What is its ejection fraction?",
+    "options": [
+      "40 percent",
+      "60 percent",
+      "90 percent",
+      "25 percent"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "EF = SV ÷ EDV × 100 = 60 ÷ 150 × 100 = 40 percent. That is clearly below the normal range of about 50 to 70 percent.",
+      "options": [
+        "Correct. 60 ÷ 150 = 0.40.",
+        "This is the fraction left behind: ESV = 150 − 60 = 90 mL, and 90 ÷ 150 = 60 percent.",
+        "This is the ESV in mL (150 − 60 = 90), not a percentage ejected.",
+        "This divides 60 by 240, which has no meaning here."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "q": "Patient A has EDV 120 mL and ESV 50 mL. Patient B has EDV 200 mL and ESV 135 mL. Which statement is correct?",
+    "options": [
+      "Their stroke volumes are similar, but B's ejection fraction is much lower",
+      "B pumps more blood per beat and so has the stronger ventricle",
+      "Both ventricles empty the same share of their contents",
+      "A has the lower ejection fraction and the smaller stroke volume of the two patients"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A: SV = 70 mL, EF = 70 ÷ 120 = 58 percent. B: SV = 65 mL, EF = 65 ÷ 200 = 33 percent. The stroke volumes are close, but B's enlarged ventricle ejects only a third of its contents. Ejection fraction reveals the weakness that stroke volume hides.",
+      "options": [
+        "Correct. 70 versus 65 mL per beat, but 58 versus 33 percent ejected.",
+        "B pumps slightly less per beat (65 versus 70 mL), and its low ejection fraction points to a weaker ventricle.",
+        "A ejects 58 percent and B ejects 33 percent.",
+        "A has the higher ejection fraction (58 versus 33 percent) and the larger stroke volume (70 versus 65 mL)."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Mr. Abara, 81, gets short of breath climbing stairs. His doctor hears a harsh whooshing sound that starts after S1 and ends before S2, loudest just right of the upper sternum. An ultrasound shows stiff, calcified aortic valve cusps. What best explains the sound?",
+    "options": [
+      "Blood leaking back into the left ventricle while it relaxes",
+      "Blood forced at high speed through a narrowed aortic valve during ejection",
+      "The mitral valve failing to close at the start of systole",
+      "Blood rushing into the left ventricle through the mitral valve as it fills early in diastole"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The murmur falls between S1 and S2, so it happens during ventricular systole. A narrowed (stenotic) aortic valve makes blood jet through a small opening during ejection, and the turbulence is heard as a murmur, best at the aortic listening spot.",
+      "options": [
+        "Backflow through a leaky aortic valve happens in diastole, after S2, not between S1 and S2.",
+        "Correct. This is aortic stenosis.",
+        "A leaky mitral valve also gives a murmur during systole, but it is heard best at the apex, and his ultrasound shows the aortic valve is the problem.",
+        "Early filling happens in diastole, after S2. Normal filling is usually silent."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-11",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Severe aortic valve stenosis narrows the opening of the aortic valve. Predict each change during ventricular ejection, compared with a healthy heart.",
+    "variables": [
+      {
+        "name": "Peak left ventricular pressure",
+        "answer": "up",
+        "why": "The narrowed opening resists flow, so the ventricle must generate a higher pressure to drive blood through it."
+      },
+      {
+        "name": "Pressure difference between left ventricle and aorta",
+        "answer": "up",
+        "why": "Normally the two pressures run almost together during ejection. Across a narrow valve, a large difference is needed to push blood through."
+      },
+      {
+        "name": "Turbulence of flow through the aortic valve",
+        "answer": "up",
+        "why": "Blood jets through the small opening at high speed and swirls, which is heard as a murmur between S1 and S2."
+      },
+      {
+        "name": "Stroke volume",
+        "answer": "down",
+        "why": "Less blood gets through the narrowed valve in the time available, so more is left behind: ESV rises and SV = EDV − ESV falls."
+      }
+    ],
+    "why": {
+      "correct": "A narrowed outflow valve makes the ventricle work at higher pressure, creates a large pressure gradient and turbulence across the valve, and, when severe, reduces how much is ejected. Over time the left ventricular wall thickens."
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which statements describe the left ventricle during isovolumetric relaxation? Select all that apply.",
+    "options": [
+      "Both the mitral and aortic valves are closed",
+      "Ventricular pressure is falling steeply",
+      "Ventricular volume stays at the end-systolic volume",
+      "Blood is flowing from the ventricle into the aorta",
+      "The mitral valve is open"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The aortic valve has just closed (S2) and the mitral valve has not yet opened, so the relaxing ventricle loses pressure with no change in volume, which stays at ESV.",
+      "options": [
+        "True. Aortic pressure is above ventricular pressure, and ventricular pressure is still above atrial pressure.",
+        "True. The muscle is relaxing inside a sealed chamber.",
+        "True. No blood can enter or leave until the mitral valve opens.",
+        "False. The aortic valve closed at the start of this phase, so ejection has ended.",
+        "False. The mitral valve opens only when ventricular pressure falls below atrial pressure, which ends this phase."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-13",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A student lists the events of one left-sided cardiac cycle. One statement is wrong. Find it.",
+    "options": [
+      "Ventricular pressure rises above atrial pressure, and the mitral valve closes.",
+      "Mitral valve closure is heard as the first heart sound, S1.",
+      "Ventricular pressure rises above aortic pressure, and the aortic valve opens.",
+      "Aortic valve closure is heard as the first heart sound, S1.",
+      "Ventricular pressure falls below atrial pressure, and the mitral valve opens."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Closure of the semilunar valves, including the aortic valve, makes the second heart sound, S2 (dub). S1 (lub) comes from atrioventricular valve closure.",
+      "options": [
+        "This statement is right. It starts isovolumetric contraction.",
+        "This statement is right. S1 is atrioventricular valve closure.",
+        "This statement is right. It starts ejection.",
+        "This is the error. Aortic valve closure is S2, which marks the end of ventricular systole.",
+        "This statement is right. It ends isovolumetric relaxation and starts filling."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "What produces the dicrotic notch on the aortic pressure trace?",
+    "options": [
+      "The atria contracting at the end of diastole and pushing extra blood into the aorta",
+      "The papillary muscles relaxing at the end of systole",
+      "A second, smaller contraction of the ventricle",
+      "Brief backflow that closes the aortic valve, then rebounds off it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "As the ventricle relaxes, its pressure drops below aortic pressure. Blood in the aorta briefly flows back toward the ventricle and fills the valve cusps, which snap shut. The sudden stop against the closed valve gives a small dip and rebound in aortic pressure.",
+      "options": [
+        "The atria empty into the ventricles, not the aorta, and they contract near the end of diastole, not when the notch appears.",
+        "Papillary muscles act on the atrioventricular valves. They play no part at the aortic valve.",
+        "The ventricle contracts once per beat. The notch comes from the valve closing, not from a second squeeze.",
+        "Correct. The notch marks aortic valve closure and the end of ejection."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "heart sounds are the valve cusps slapping together",
+    "q": "Which statement best explains how the first heart sound is produced?",
+    "options": [
+      "The ventricular muscle contracting makes a sound as its fibers slide",
+      "The thin cusps of the mitral and tricuspid valves slap against each other like two hands clapping as they shut",
+      "Moving blood is stopped abruptly as the valves close, setting blood, cusps and walls vibrating",
+      "Blood rushing out through the aortic and pulmonary valves strikes the artery walls"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "When the atrioventricular valves close, the moving blood behind them is halted suddenly. That abrupt stop sets the blood, the valve structures and the chamber walls vibrating together, and the stethoscope picks up the vibration.",
+      "options": [
+        "Muscle contraction itself is essentially silent through a stethoscope. The sound is timed to valve closure.",
+        "The cusps are too thin and soft to make an audible clap. The sound comes from the vibration of the whole blood-filled system.",
+        "Correct. The heart sounds are vibrations set up by blood decelerating against closing valves.",
+        "Outflow through normal semilunar valves is smooth and silent, and it happens after S1, not at it."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "On a patient's pressure–volume loop, the right edge sits at 140 mL and the left edge at 60 mL. What is the stroke volume?",
+    "options": [
+      "60 mL",
+      "140 mL",
+      "200 mL",
+      "80 mL"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The right edge of the loop is EDV and the left edge is ESV, so the width is the stroke volume: 140 − 60 = 80 mL.",
+      "options": [
+        "60 mL is the left edge, the ESV: the volume left behind.",
+        "140 mL is the right edge, the EDV: the volume before contraction.",
+        "Adding the two volumes has no meaning. Stroke volume is their difference.",
+        "Correct. SV = EDV − ESV = 140 − 60."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "On a left ventricular pressure–volume loop, one side is a vertical line that rises from about 10 to 80 mm Hg at the loop's largest volume. Which phase does it show?",
+    "options": [
+      "Ventricular filling",
+      "Ventricular ejection",
+      "Isovolumetric contraction",
+      "Isovolumetric relaxation"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A vertical line means pressure changes with no change in volume. At the largest volume (EDV), with pressure rising, that is isovolumetric contraction, between mitral valve closure and aortic valve opening.",
+      "options": [
+        "During filling, volume rises, so the line runs across the bottom of the loop, not up the side.",
+        "During ejection volume falls, so that side runs across the top from right to left.",
+        "Correct. Rising pressure at constant maximum volume is isovolumetric contraction.",
+        "Isovolumetric relaxation is also vertical, but pressure falls and it sits at the smallest volume (ESV), on the left side."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Ms. Ferreira's mitral valve cusps no longer seal fully. During which part of the cycle does blood leak backward through this valve?",
+    "options": [
+      "During ventricular filling",
+      "During ventricular systole",
+      "During atrial contraction",
+      "Only during isovolumetric relaxation"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Blood leaks backward through a valve whenever the pressure gradient drives it the wrong way while the valve should be shut. For the mitral valve that is all of ventricular systole, when left ventricular pressure (up to about 120 mm Hg) far exceeds atrial pressure. The leak makes a murmur between S1 and S2.",
+      "options": [
+        "During filling the mitral valve is supposed to be open, and blood flows forward, from atrium to ventricle, down its pressure gradient.",
+        "Correct. Left ventricular pressure is far above atrial pressure throughout systole, so blood is driven backward through the leaky valve: mitral regurgitation, a murmur between S1 and S2.",
+        "Atrial contraction pushes blood forward into the ventricle through the open mitral valve.",
+        "Leaking starts as soon as ventricular pressure rises above atrial pressure, so it runs through isovolumetric contraction and ejection. By the end of relaxation, ventricular pressure falls below atrial pressure and the backward push stops."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Heart rate rises from 75 to 150 beats per minute. Which part of each cycle loses the most time?",
+    "options": [
+      "Ventricular ejection",
+      "Isovolumetric contraction",
+      "Atrial contraction",
+      "Ventricular diastole"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "At 75 per minute each cycle lasts 0.8 second, with about 0.3 second of ventricular systole and 0.5 of diastole. At 150 per minute the cycle is 0.4 second; systole shrinks only a little, to about 0.25 second, so diastole drops to about 0.15 second.",
+      "options": [
+        "Ejection shortens only slightly as the rate rises.",
+        "Isovolumetric contraction is already very short, about 0.05 second, and changes little.",
+        "Atrial contraction lasts about 0.1 second and changes little.",
+        "Correct. Nearly all the lost time comes out of diastole, the ventricles' time to relax and fill."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "What is end-diastolic volume?",
+    "options": [
+      "The volume a ventricle ejects in one beat",
+      "The volume in a ventricle just before it contracts, when it is fullest",
+      "The volume left in a ventricle just after ejection, when it is at its emptiest",
+      "The volume the atria add by contracting"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "End-diastolic volume (EDV) is the volume at the end of ventricular diastole, just before systole. At rest it is about 120 mL.",
+      "options": [
+        "That is stroke volume, EDV − ESV.",
+        "Correct. It is the largest volume of the cycle.",
+        "That is end-systolic volume (ESV), about 50 mL at rest.",
+        "The atrial contribution is only part of EDV, about 20 percent at rest."
+      ]
+    }
+  },
+  {
+    "id": "anp-cardiac-cycle-21",
+    "type": "multi",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which changes, each on its own, would increase stroke volume? Select all that apply.",
+    "options": [
+      "EDV rises while ESV stays the same",
+      "ESV falls while EDV stays the same",
+      "ESV rises while EDV stays the same",
+      "EDV falls while ESV stays the same",
+      "EDV and ESV both rise by the same amount"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "why": {
+      "correct": "SV = EDV − ESV. Stroke volume rises if the ventricle starts fuller (higher EDV) or empties further (lower ESV).",
+      "options": [
+        "Increases SV. Starting with more blood and leaving the same amount means more is ejected.",
+        "Increases SV. Leaving less blood behind from the same starting volume means more is ejected.",
+        "Decreases SV. More is left behind from the same starting volume.",
+        "Decreases SV. Less is available to eject while the same amount stays behind.",
+        "No change. The difference between the two stays the same."
+      ]
+    }
+  }
+]
