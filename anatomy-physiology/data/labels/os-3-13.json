@@ -323,8 +323,7 @@
       "id": "cytoplasm",
       "name": "Cytoplasm",
       "accept": [
-        "cytoplasm",
-        "cytosol"
+        "cytoplasm"
       ],
       "lines": [
         32

@@ -323,7 +323,9 @@
       "name": "Marginal artery",
       "accept": [
         "marginal artery",
-        "marginal branch"
+        "marginal branch",
+        "left marginal artery",
+        "obtuse marginal artery"
       ],
       "lines": [
         27,

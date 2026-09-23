@@ -83,7 +83,9 @@
       {
        "id": "cranial",
        "name": "Cranial",
-       "accept": [],
+       "accept": [
+        "cephalic"
+       ],
        "box": [
         90,
         71,
@@ -123,7 +125,10 @@
       {
        "id": "posterior",
        "name": "Posterior or dorsal",
-       "accept": [],
+       "accept": [
+        "posterior",
+        "dorsal"
+       ],
        "box": [
         0,
         288,
@@ -137,7 +142,10 @@
       {
        "id": "anterior",
        "name": "Anterior or ventral",
-       "accept": [],
+       "accept": [
+        "anterior",
+        "ventral"
+       ],
        "box": [
         373,
         288,
@@ -930,8 +938,10 @@
       },
       {
        "id": "thorax",
-       "name": "Thorcis or thorax",
+       "name": "Thoracis or thorax",
        "accept": [
+        "thorcis or thorax",
+        "thorcis",
         "chest",
         "thoracic",
         "thoracis",
@@ -1089,7 +1099,7 @@
        ],
        "concept": "regional-terms",
        "taught": "body-regions",
-       "fn": "The forearm, between the elbow and the wrist. Ante- means before, so it is the part that comes after the brachium, the arm. Its adjective is antebrachial."
+       "fn": "The forearm, between the elbow and the wrist. Ante- means before or in front of: it is the fore-arm, the part of the limb just beyond the brachium, the arm. Its adjective is antebrachial."
       },
       {
        "id": "hip",
@@ -1380,7 +1390,7 @@
        ],
        "concept": "regional-terms",
        "taught": "body-regions",
-       "fn": "The forearm, between the elbow and the wrist. Ante- means before, so it is the part that comes after the brachium, the arm. Its adjective is antebrachial."
+       "fn": "The forearm, between the elbow and the wrist. Ante- means before or in front of: it is the fore-arm, the part of the limb just beyond the brachium, the arm. Its adjective is antebrachial."
       },
       {
        "id": "manus",
@@ -1645,7 +1655,7 @@
        ],
        "concept": "abdominopelvic-regions",
        "taught": "body-regions",
-       "fn": "The upper middle of the nine abdominal regions, above the stomach area (epi- upon, gastr- stomach). Much of the stomach and part of the liver lie here.",
+       "fn": "The upper middle of the nine abdominal regions, over the stomach (epi- upon, gastr- stomach). Much of the stomach and part of the liver lie here.",
        "follow": {
         "q": "A patient points to pain just below the tip of the breastbone, in the middle. Which region is that?",
         "options": [
@@ -1937,8 +1947,8 @@
        "follow": {
         "q": "Why can a small lipid-soluble molecule cross the membrane on its own, but an ion cannot?",
         "options": [
-         "The core of the bilayer is made of hydrophobic tails, which a lipid-soluble molecule can dissolve through and a charged ion cannot",
-         "Ions are too large to fit between phospholipids",
+         "Its hydrophobic core lets lipid-soluble molecules dissolve through but repels ions",
+         "Ions are too large to squeeze through the gaps between neighboring phospholipids",
          "The glycocalyx blocks ions",
          "Cholesterol binds ions and holds them outside"
         ],
@@ -2034,7 +2044,7 @@
          "No cytoskeleton"
         ],
         "correct": 0,
-        "why": "Mitochondria make most of a cell's ATP, so cells with a high, steady demand, such as the muscle cells of the heart, are packed with them.",
+        "why": "Mitochondria make most of a cell's ATP, so cells with a high, steady demand, such as the cells of the heart wall, are packed with them.",
         "level": "apply"
        }
       },
@@ -2282,9 +2292,7 @@
       {
        "id": "cytoplasm",
        "name": "Cytoplasm",
-       "accept": [
-        "cytosol"
-       ],
+       "accept": [],
        "box": [
         97,
         622,
@@ -2614,8 +2622,8 @@
        "follow": {
         "q": "Why can a small lipid-soluble molecule cross the membrane on its own, but an ion cannot?",
         "options": [
-         "The core of the bilayer is made of hydrophobic tails, which a lipid-soluble molecule can dissolve through and a charged ion cannot",
-         "Ions are too large to fit between phospholipids",
+         "Its hydrophobic core lets lipid-soluble molecules dissolve through but repels ions",
+         "Ions are too large to squeeze through the gaps between neighboring phospholipids",
          "The glycocalyx blocks ions",
          "Cholesterol binds ions and holds them outside"
         ],
@@ -2638,7 +2646,7 @@
        ],
        "concept": "peroxisome",
        "taught": "organelles",
-       "fn": "The dense center seen in many peroxisomes: a packed store of one of its enzymes."
+       "fn": "The dense center drawn here: in many animals a peroxisome holds a crystal of one of its enzymes, but human peroxisomes usually have no such core."
       }
      ],
      "covered": [
@@ -2665,7 +2673,6 @@
        "id": "column-of-tubulin-dimers",
        "name": "Column of tubulin dimers",
        "accept": [
-        "microtubule",
         "protofilament",
         "tubulin column"
        ],
@@ -2713,23 +2720,17 @@
        "concept": "cytoskeleton",
        "taught": "organelles",
        "fn": "The building block of a microfilament. Actin units link in two twisted strands; adding and removing them lets the filament grow and shrink."
-      },
+      }
+     ],
+     "covered": [
       {
        "id": "fibrous-subunit",
-       "name": "Fibrous subunit (keratins coiled together)",
-       "accept": [
-        "keratin",
-        "keratins"
-       ],
        "box": [
         780,
         360,
         216,
         45
-       ],
-       "concept": "cytoskeleton",
-       "taught": "organelles",
-       "fn": "The building block of an intermediate filament: long fibrous proteins (here, keratins) coiled together into a strong rope."
+       ]
       }
      ]
     }
@@ -2767,8 +2768,8 @@
        "follow": {
         "q": "What is the main job of a tight junction?",
         "options": [
-         "It seals the gap between neighboring cells so fluid cannot leak between them",
-         "It lets ions pass directly from one cell to the next",
+         "It seals neighboring cells together so fluid cannot leak between them",
+         "It forms open channels that let ions pass directly from one cell to the next",
          "It anchors the cell to the layer beneath it",
          "It spreads pulling forces across a sheet of cells"
         ],
@@ -2843,7 +2844,7 @@
        "taught": "cell-junctions",
        "fn": "A cluster of protein channels (connexons) that line up across two neighboring membranes, letting ions and small molecules pass straight from one cell to the next.",
        "follow": {
-        "q": "Heart muscle cells contract together because electrical signals pass directly from cell to cell. Which junction allows that?",
+        "q": "The cells of the heart wall contract together because electrical signals pass directly from cell to cell. Which junction allows that?",
         "options": [
          "Gap junctions",
          "Tight junctions",
@@ -3523,8 +3524,8 @@
        "follow": {
         "q": "Why is simple squamous epithelium found where substances must diffuse quickly, as in the lungs' air sacs?",
         "options": [
-         "It is a single layer of flat cells, so the diffusion distance is very short",
-         "Its cells have many microvilli",
+         "It is one layer of flat cells, so the diffusion distance is very short",
+         "Its cells are covered in microvilli that add surface area for diffusion",
          "It secretes mucus that speeds diffusion",
          "Its many layers protect against friction"
         ],
@@ -3551,8 +3552,8 @@
        "follow": {
         "q": "Why is the lining of the esophagus stratified rather than simple?",
         "options": [
-         "Swallowed food rubs it, and many layers let worn surface cells be replaced from below",
-         "It must absorb nutrients quickly",
+         "Food rubs it, and many layers let worn surface cells be replaced",
+         "It must absorb nutrients quickly from the food passing over its surface",
          "It must let gases diffuse through",
          "It must release large amounts of product"
         ],
@@ -3645,8 +3646,8 @@
        "follow": {
         "q": "Pseudostratified epithelium looks layered. Why is it still classed as a single layer?",
         "options": [
-         "Every cell touches the basement membrane, even though not every cell reaches the surface",
-         "Its cells are all the same height",
+         "Every cell rests on the basement membrane, though not all reach the surface",
+         "Its nuclei line up in a single row, even though the cells are stacked on top of each other",
          "It has only one nucleus per row",
          "It has no basement membrane"
         ],
@@ -3911,7 +3912,6 @@
        "id": "cell-membrane",
        "name": "Cell membrane",
        "accept": [
-        "neurolemma",
         "plasma membrane"
        ],
        "box": [
@@ -4170,7 +4170,7 @@
        ],
        "concept": "exocrine-gland",
        "taught": "glands",
-       "fn": "An exocrine gland with a branched duct system and both tubes and sacs of secretory cells, like the salivary glands and the exocrine pancreas."
+       "fn": "An exocrine gland with a branched duct system and both tubes and sacs of secretory cells, like the larger glands that empty into the mouth and the exocrine pancreas."
       },
       {
        "id": "compound-tubular",
@@ -4186,7 +4186,7 @@
        ],
        "concept": "exocrine-gland",
        "taught": "glands",
-       "fn": "An exocrine gland with a branched duct system leading to tube-shaped secretory parts, like glands in the lining of the upper airway."
+       "fn": "An exocrine gland with a branched duct system leading to tube-shaped secretory parts, like the mucous glands of the mouth."
       }
      ],
      "covered": [
@@ -4386,7 +4386,7 @@
        ],
        "concept": "secretion-modes",
        "taught": "glands",
-       "fn": "Release of product by exocytosis: vesicles fuse with the membrane and empty outside, and the cell stays whole. Salivary glands and the glands that make watery sweat secrete this way.",
+       "fn": "Release of product by exocytosis: vesicles fuse with the membrane and empty outside, and the cell stays whole. The glands that make watery sweat secrete this way, and so do many glands that empty into the mouth.",
        "follow": {
         "q": "In which mode of secretion does the gland cell survive intact?",
         "options": [
@@ -4746,14 +4746,14 @@
        ],
        "concept": "pericardial-cavity",
        "taught": "body-cavities",
-       "fn": "The thin space between the two layers of serous pericardium. A few milliliters of serous fluid in it let the heart slide as it beats; if fluid or blood fills it quickly, the heart cannot expand (cardiac tamponade).",
+       "fn": "The thin space between the two layers of serous pericardium. A thin film of serous fluid in it, about 15 to 50 mL, lets the heart slide as it beats; if fluid or blood fills it quickly, the heart cannot expand (cardiac tamponade).",
        "follow": {
         "q": "A stab wound lets blood collect quickly between the layers of the serous pericardium. Why does the heart pump less blood?",
         "options": [
-         "The stiff fibrous pericardium cannot stretch, so the trapped blood squeezes the heart and it cannot fill between beats",
+         "The fibrous pericardium cannot stretch, so trapped blood squeezes the heart and it cannot fill",
          "The blood dilutes the serous fluid, so the heart loses its lubrication and stops",
          "The blood clots onto the myocardium and paralyzes it",
-         "The pericardial cavity is connected to the pleural cavity, so the lungs collapse"
+         "The pericardial cavity opens into the pleural cavity, so the blood spreads and collapses the lungs"
         ],
         "correct": 0,
         "why": "The fibrous pericardium is tough and barely stretches. Blood that builds up quickly in the pericardial cavity has nowhere to go, so pressure around the heart rises and the heart cannot expand to fill. Less filling means less blood pumped out with each beat. This is cardiac tamponade.",
@@ -4940,14 +4940,14 @@
        ],
        "concept": "pericardial-cavity",
        "taught": "body-cavities",
-       "fn": "The thin space between the two layers of serous pericardium. A few milliliters of serous fluid in it let the heart slide as it beats; if fluid or blood fills it quickly, the heart cannot expand (cardiac tamponade).",
+       "fn": "The thin space between the two layers of serous pericardium. A thin film of serous fluid in it, about 15 to 50 mL, lets the heart slide as it beats; if fluid or blood fills it quickly, the heart cannot expand (cardiac tamponade).",
        "follow": {
         "q": "A stab wound lets blood collect quickly between the layers of the serous pericardium. Why does the heart pump less blood?",
         "options": [
-         "The stiff fibrous pericardium cannot stretch, so the trapped blood squeezes the heart and it cannot fill between beats",
+         "The fibrous pericardium cannot stretch, so trapped blood squeezes the heart and it cannot fill",
          "The blood dilutes the serous fluid, so the heart loses its lubrication and stops",
          "The blood clots onto the myocardium and paralyzes it",
-         "The pericardial cavity is connected to the pleural cavity, so the lungs collapse"
+         "The pericardial cavity opens into the pleural cavity, so the blood spreads and collapses the lungs"
         ],
         "correct": 0,
         "why": "The fibrous pericardium is tough and barely stretches. Blood that builds up quickly in the pericardial cavity has nowhere to go, so pressure around the heart rises and the heart cannot expand to fill. Less filling means less blood pumped out with each beat. This is cardiac tamponade.",
@@ -5306,9 +5306,9 @@
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
         "options": [
-         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps only to the nearby lungs, which need far lower pressure than the whole body",
          "It pumps less blood per beat than the left ventricle",
-         "It receives blood that has less oxygen, so its muscle is weaker",
+         "It receives blood with less oxygen, so its own muscle is weaker and cannot grow as thick",
          "Its wall is thinned by the pressure of the lungs pressing on it"
         ],
         "correct": 0,
@@ -5610,9 +5610,9 @@
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
         "options": [
-         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps only to the nearby lungs, which need far lower pressure than the whole body",
          "It pumps less blood per beat than the left ventricle",
-         "It receives blood that has less oxygen, so its muscle is weaker",
+         "It receives blood with less oxygen, so its own muscle is weaker and cannot grow as thick",
          "Its wall is thinned by the pressure of the lungs pressing on it"
         ],
         "correct": 0,
@@ -6114,9 +6114,9 @@
        "follow": {
         "q": "Why does the aortic valve close as the left ventricle relaxes?",
         "options": [
-         "Pressure in the aorta is now higher than in the ventricle, so blood pushes back and fills the cusps",
+         "Blood pushed back by the higher aortic pressure fills the cusps",
          "Chordae tendineae pull the cusps closed",
-         "The papillary muscles contract and close it",
+         "The papillary muscles contract and pull the cusps together as the ventricle relaxes",
          "The heart's nerves signal it to close"
         ],
         "correct": 0,
@@ -6136,7 +6136,7 @@
        ],
        "concept": "fossa-ovalis",
        "taught": "heart-chambers-valves",
-       "fn": "A shallow oval dip in the interatrial septum, seen from the right atrium. Before birth it was an opening that let blood pass from the right atrium to the left; it seals soon after birth."
+       "fn": "A shallow oval dip in the interatrial septum, seen from the right atrium. Before birth it was an opening that let blood pass from the right atrium to the left; its flap is pressed shut at birth and usually fuses within the first year, though in about a quarter of adults a small gap remains."
       },
       {
        "id": "pulmonary-valve",
@@ -6176,7 +6176,7 @@
         "q": "What closes the tricuspid valve?",
         "options": [
          "Pressure in the right ventricle rising above pressure in the right atrium",
-         "The papillary muscles pulling the cusps shut",
+         "The papillary muscles contracting and pulling the cusps down against the valve ring",
          "A nerve signal that tightens the valve ring",
          "The chordae tendineae shortening"
         ],
@@ -6231,9 +6231,9 @@
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
         "options": [
-         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps only to the nearby lungs, which need far lower pressure than the whole body",
          "It pumps less blood per beat than the left ventricle",
-         "It receives blood that has less oxygen, so its muscle is weaker",
+         "It receives blood with less oxygen, so its own muscle is weaker and cannot grow as thick",
          "Its wall is thinned by the pressure of the lungs pressing on it"
         ],
         "correct": 0,
@@ -6443,7 +6443,7 @@
         "q": "What closes the tricuspid valve?",
         "options": [
          "Pressure in the right ventricle rising above pressure in the right atrium",
-         "The papillary muscles pulling the cusps shut",
+         "The papillary muscles contracting and pulling the cusps down against the valve ring",
          "A nerve signal that tightens the valve ring",
          "The chordae tendineae shortening"
         ],
@@ -6502,9 +6502,9 @@
        "follow": {
         "q": "Why does the aortic valve close as the left ventricle relaxes?",
         "options": [
-         "Pressure in the aorta is now higher than in the ventricle, so blood pushes back and fills the cusps",
+         "Blood pushed back by the higher aortic pressure fills the cusps",
          "Chordae tendineae pull the cusps closed",
-         "The papillary muscles contract and close it",
+         "The papillary muscles contract and pull the cusps together as the ventricle relaxes",
          "The heart's nerves signal it to close"
         ],
         "correct": 0,
@@ -6743,9 +6743,9 @@
        "follow": {
         "q": "Why does the aortic valve close as the left ventricle relaxes?",
         "options": [
-         "Pressure in the aorta is now higher than in the ventricle, so blood pushes back and fills the cusps",
+         "Blood pushed back by the higher aortic pressure fills the cusps",
          "Chordae tendineae pull the cusps closed",
-         "The papillary muscles contract and close it",
+         "The papillary muscles contract and pull the cusps together as the ventricle relaxes",
          "The heart's nerves signal it to close"
         ],
         "correct": 0,
@@ -6861,7 +6861,7 @@
         "q": "What closes the tricuspid valve?",
         "options": [
          "Pressure in the right ventricle rising above pressure in the right atrium",
-         "The papillary muscles pulling the cusps shut",
+         "The papillary muscles contracting and pulling the cusps down against the valve ring",
          "A nerve signal that tightens the valve ring",
          "The chordae tendineae shortening"
         ],
@@ -6888,9 +6888,9 @@
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
         "options": [
-         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps only to the nearby lungs, which need far lower pressure than the whole body",
          "It pumps less blood per beat than the left ventricle",
-         "It receives blood that has less oxygen, so its muscle is weaker",
+         "It receives blood with less oxygen, so its own muscle is weaker and cannot grow as thick",
          "Its wall is thinned by the pressure of the lungs pressing on it"
         ],
         "correct": 0,
@@ -6940,7 +6940,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": "Capillary beds in the tissues of the head, neck and arms. Here blood gives oxygen and nutrients to the cells and picks up carbon dioxide, turning deoxygenated.",
+       "fn": "The capillaries in the tissues of the head, neck and arms. Here blood gives oxygen and nutrients to the cells and picks up carbon dioxide, turning deoxygenated.",
        "follow": {
         "q": "What happens to blood as it passes through systemic capillaries?",
         "options": [
@@ -6950,7 +6950,7 @@
          "It collects into the pulmonary veins"
         ],
         "correct": 0,
-        "why": "Cells use oxygen and make carbon dioxide, so each gas moves down its concentration gradient: oxygen out of the blood into the tissues, carbon dioxide from the tissues into the blood. The reverse happens in the pulmonary capillaries.",
+        "why": "Cells use oxygen and make carbon dioxide, so each gas moves down its pressure gradient: oxygen out of the blood into the tissues, carbon dioxide from the tissues into the blood. The reverse happens in the pulmonary capillaries.",
         "level": "apply"
        }
       },
@@ -7097,9 +7097,9 @@
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
         "options": [
-         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps only to the nearby lungs, which need far lower pressure than the whole body",
          "It pumps less blood per beat than the left ventricle",
-         "It receives blood that has less oxygen, so its muscle is weaker",
+         "It receives blood with less oxygen, so its own muscle is weaker and cannot grow as thick",
          "Its wall is thinned by the pressure of the lungs pressing on it"
         ],
         "correct": 0,
@@ -7175,7 +7175,7 @@
        ],
        "concept": "systemic-circuit",
        "taught": "blood-flow-heart",
-       "fn": "Capillary beds in the tissues of the abdomen, pelvis and legs, where blood unloads oxygen and nutrients to the cells and picks up carbon dioxide and wastes."
+       "fn": "The capillaries in the tissues of the abdomen, pelvis and legs, where blood unloads oxygen and nutrients to the cells and picks up carbon dioxide and wastes."
       }
      ]
     }
@@ -7258,7 +7258,7 @@
         "q": "Where do the coronary arteries branch from?",
         "options": [
          "The base of the aorta, just past the aortic valve",
-         "The pulmonary trunk",
+         "The pulmonary trunk, just past the pulmonary valve",
          "The coronary sinus",
          "The right atrium"
         ],
@@ -7335,7 +7335,7 @@
         "options": [
          "The front of the left ventricle and the interventricular septum",
          "The right atrium",
-         "The back of the right ventricle",
+         "The back of the right ventricle and the lower part of the right atrium",
          "The pulmonary valve"
         ],
         "correct": 0,
@@ -7496,7 +7496,9 @@
        "id": "marginal-artery-posterior",
        "name": "Marginal artery",
        "accept": [
-        "marginal branch"
+        "marginal branch",
+        "left marginal artery",
+        "obtuse marginal artery"
        ],
        "box": [
         590,
@@ -7506,7 +7508,7 @@
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
-       "fn": "A branch of the right coronary artery that runs along the lower right edge of the heart and supplies the right ventricle."
+       "fn": "A marginal branch of the circumflex artery that runs down the left edge of the heart and supplies the side wall of the left ventricle."
       },
       {
        "id": "posterior-interventricular-artery",
@@ -7588,7 +7590,7 @@
         "q": "Where do the coronary arteries branch from?",
         "options": [
          "The base of the aorta, just past the aortic valve",
-         "The pulmonary trunk",
+         "The pulmonary trunk, just past the pulmonary valve",
          "The coronary sinus",
          "The right atrium"
         ],
@@ -7600,7 +7602,9 @@
       {
        "id": "middle-cardiac-vein",
        "name": "Middle cardiac vein",
-       "accept": [],
+       "accept": [
+        "posterior interventricular vein"
+       ],
        "box": [
         773,
         929,
@@ -7668,9 +7672,10 @@
      "labels": [
       {
        "id": "bachmanns-bundle",
-       "name": "Bachman’s bundle",
+       "name": "Bachmann’s bundle",
        "accept": [
-        "bachmann's bundle",
+        "bachman’s bundle",
+        "bachman's bundle",
         "bachmann bundle",
         "bachman bundle",
         "interatrial band"
@@ -7705,8 +7710,8 @@
        "follow": {
         "q": "Why does the SA node, and not the AV node, normally set the heart rate?",
         "options": [
-         "Its cells reach threshold on their own faster than any other autorhythmic cells, so they trigger every beat first",
-         "It is the only part of the heart that can depolarize on its own",
+         "Its cells reach threshold on their own faster than any other autorhythmic cells",
+         "It is the only part of the heart whose cells can depolarize on their own without a signal",
          "It receives the most blood from the coronary arteries",
          "It is the largest mass of conducting tissue"
         ],
@@ -7758,7 +7763,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": "One of three pathways through the right atrial wall that carry the signal from the SA node toward the AV node."
+       "fn": "One of three preferred routes through the right atrial muscle that carry the signal from the SA node toward the AV node a little faster. They are not insulated cables like the bundle branches."
       },
       {
        "id": "atrioventricular-node",
@@ -7778,13 +7783,13 @@
        "follow": {
         "q": "What does the delay at the AV node accomplish?",
         "options": [
-         "It gives the atria time to finish pushing blood into the ventricles before the ventricles contract",
-         "It lets the SA node recover before the next beat",
+         "It gives the atria time to finish filling the ventricles before they contract",
+         "It lets the SA node's cells recover and repolarize before they fire the next beat",
          "It lets the coronary arteries fill",
          "It keeps the two atria from contracting together"
         ],
         "correct": 0,
-        "why": "The cardiac skeleton insulates the atria from the ventricles everywhere except at the AV node, and conduction there is slow. That pause lets atrial contraction top up the ventricles; if the ventricles fired at the same moment, the atria would be squeezing against closed valves.",
+        "why": "The cardiac skeleton insulates the atria from the ventricles everywhere except where the AV bundle passes through it, and conduction through the AV node just above it is slow. That pause lets atrial contraction top up the ventricles; if the ventricles fired at the same moment, the atria would be squeezing against closed valves.",
         "level": "apply"
        }
       },
@@ -7821,7 +7826,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": "One of three pathways through the right atrial wall that carry the signal from the SA node toward the AV node."
+       "fn": "One of three preferred routes through the right atrial muscle that carry the signal from the SA node toward the AV node a little faster. They are not insulated cables like the bundle branches."
       },
       {
        "id": "posterior-internodal",
@@ -7838,7 +7843,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": "One of three pathways through the right atrial wall that carry the signal from the SA node toward the AV node."
+       "fn": "One of three preferred routes through the right atrial muscle that carry the signal from the SA node toward the AV node a little faster. They are not insulated cables like the bundle branches."
       },
       {
        "id": "left-ventricle",
@@ -7914,9 +7919,9 @@
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
         "options": [
-         "It pumps blood only to the nearby lungs, which need a much lower pressure than the whole body",
+         "It pumps only to the nearby lungs, which need far lower pressure than the whole body",
          "It pumps less blood per beat than the left ventricle",
-         "It receives blood that has less oxygen, so its muscle is weaker",
+         "It receives blood with less oxygen, so its own muscle is weaker and cannot grow as thick",
          "Its wall is thinned by the pressure of the lungs pressing on it"
         ],
         "correct": 0,
@@ -7927,7 +7932,12 @@
       {
        "id": "bundle-branches",
        "name": "Right and left bundle branches",
-       "accept": [],
+       "accept": [
+        "bundle branches",
+        "bundle branch",
+        "right bundle branch",
+        "left bundle branch"
+       ],
        "box": [
         887,
         538,
@@ -7958,8 +7968,8 @@
        "follow": {
         "q": "Purkinje fibers deliver the signal to the apex first. Why does that matter?",
         "options": [
-         "The ventricles contract from the bottom up, pushing blood toward the aortic and pulmonary valves at the top",
-         "It lets the atria contract before the ventricles",
+         "The ventricles contract from the apex up, pushing blood toward the valves at the top",
+         "It lets the atria finish contracting before the ventricles start to squeeze from the top down",
          "It keeps the AV valves open during contraction",
          "It slows the heart rate"
         ],
@@ -8264,8 +8274,8 @@
        "follow": {
         "q": "A continuous capillary lets glucose through but keeps plasma proteins in the blood. What explains that?",
         "options": [
-         "The only route across is narrow clefts between endothelial cells, too small for large proteins",
-         "Its endothelial cells have large pores that only glucose fits through",
+         "The only route across is narrow clefts between endothelial cells, too small for proteins",
+         "Its endothelial cells have pores sized so that glucose fits through but proteins are too big",
          "Its basement membrane is incomplete",
          "Smooth muscle in its wall squeezes proteins back"
         ],
@@ -8312,9 +8322,9 @@
        "follow": {
         "q": "Why would red bone marrow need sinusoid capillaries rather than continuous ones?",
         "options": [
-         "Newly made blood cells must be able to pass through the wall into the blood",
+         "New blood cells must be able to pass through the wall into the blood",
          "Bone marrow needs a higher blood pressure",
-         "Sinusoids keep proteins out of the marrow",
+         "Sinusoids keep plasma proteins out of the marrow so they do not clog the new cells",
          "Sinusoids have more smooth muscle to control flow"
         ],
         "correct": 0,
@@ -8445,8 +8455,8 @@
        "follow": {
         "q": "Compared with an artery of similar size, a vein has a thinner tunica media and a wider lumen. Why does that suit it?",
         "options": [
-         "Blood in veins is at low pressure, so the wall needs little muscle and the wide, stretchy vessel can hold a large volume of blood",
-         "Veins must withstand higher pressure than arteries",
+         "Its blood is at low pressure, and a thin, wide vessel can hold a large volume",
+         "Veins must withstand higher pressure than arteries, and a wide lumen spreads that pressure out",
          "Veins exchange gases through their walls",
          "A thin wall keeps blood from flowing backward"
         ],
@@ -8540,8 +8550,8 @@
        "follow": {
         "q": "Why do large vessels need vasa vasorum, while capillaries do not?",
         "options": [
-         "Nutrients diffuse only a short distance from the lumen, so a thick wall needs its own supply from outside",
-         "Large vessels carry blood with too little oxygen for any cell",
+         "Diffusion from the lumen reaches only a short way into a thick wall",
+         "Blood inside large vessels has too little oxygen left to supply the cells of their walls",
          "Vasa vasorum carry the nerve signals to the wall",
          "Vasa vasorum drain excess fluid from the lumen"
         ],
@@ -8655,7 +8665,7 @@
          "The veins stretch and bulge because blood falls back and collects in them",
          "Arterial pressure in the legs falls to zero",
          "Blood flows faster back to the heart",
-         "The capillaries of the legs stop filling"
+         "The capillaries of the legs stop filling, and the skin of the legs turns pale and cold"
         ],
         "correct": 0,
         "why": "Valves hold up the column of blood between the muscle squeezes that push it upward. When they fail, blood falls back and pools; the thin-walled veins stretch and twist into varicose veins.",
@@ -8897,7 +8907,7 @@
          "Left subclavian artery"
         ],
         "correct": 0,
-        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so only the left carotid is a direct branch.",
+        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so of the two common carotid arteries only the left one branches straight from the arch.",
         "level": "recall"
        }
       },
@@ -9082,7 +9092,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": "The lowest unpaired branch of the abdominal aorta. It supplies the last part of the gut, down to the end of the tract in the pelvis."
+       "fn": "The lowest unpaired branch of the abdominal aorta. It supplies the last part of the gut, down to the upper part of its last straight stretch. Branches of the internal iliac artery supply the lowest few centimeters."
       },
       {
        "id": "radial-artery",
@@ -9187,7 +9197,8 @@
        "name": "Deep femoral",
        "accept": [
         "deep femoral artery",
-        "deep artery of the thigh"
+        "deep artery of the thigh",
+        "profunda femoris"
        ],
        "box": [
         865,
@@ -9457,7 +9468,7 @@
          "Left subclavian artery"
         ],
         "correct": 0,
-        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so only the left carotid is a direct branch.",
+        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so of the two common carotid arteries only the left one branches straight from the arch.",
         "level": "recall"
        }
       },
@@ -9528,7 +9539,7 @@
         "q": "Where do the coronary arteries branch from?",
         "options": [
          "The base of the aorta, just past the aortic valve",
-         "The pulmonary trunk",
+         "The pulmonary trunk, just past the pulmonary valve",
          "The coronary sinus",
          "The right atrium"
         ],
@@ -9618,7 +9629,7 @@
        ],
        "concept": "cerebral-arterial-circle",
        "taught": "systemic-arteries",
-       "fn": "The largest branch of the internal carotid artery. It runs out to the side of the brain and supplies most of its outer surface, which is why blockage of this artery is the most common cause of a stroke."
+       "fn": "The largest branch of the internal carotid artery. It runs out to the side of the brain and supplies most of its outer surface, so it is the artery most often blocked when a clot cuts off blood flow to part of the brain."
       },
       {
        "id": "anterior-cerebral",
@@ -9670,7 +9681,7 @@
        "follow": {
         "q": "Why does a slowly narrowing internal carotid artery often cause no symptoms at first?",
         "options": [
-         "The cerebral arterial circle lets blood reach that side from the other carotid and the basilar artery",
+         "Blood reaches that side around the cerebral arterial circle",
          "The brain can store enough oxygen for weeks",
          "The external carotid artery takes over supplying the brain directly",
          "The vertebral arteries grow larger within days"
@@ -9779,7 +9790,7 @@
          "Left subclavian artery"
         ],
         "correct": 0,
-        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so only the left carotid is a direct branch.",
+        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so of the two common carotid arteries only the left one branches straight from the arch.",
         "level": "recall"
        }
       },
@@ -9798,22 +9809,6 @@
        ],
        "concept": null,
        "fn": "A branch of the subclavian artery that runs down the inside of the front chest wall beside the sternum, supplying the chest wall. Surgeons often use it to bypass a blocked coronary artery."
-      },
-      {
-       "id": "bronchial-arteries",
-       "name": "Bronchial",
-       "accept": [
-        "bronchial artery",
-        "bronchial arteries"
-       ],
-       "box": [
-        874,
-        235,
-        107,
-        23
-       ],
-       "concept": null,
-       "fn": "Small branches of the thoracic aorta that bring oxygenated blood to the airway tubes and supporting tissue of the lungs. The pulmonary arteries carry blood to be oxygenated; these feed the lung tissue itself."
       },
       {
        "id": "esophageal-arteries",
@@ -10165,7 +10160,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": "The lowest unpaired branch of the abdominal aorta. It supplies the last part of the gut, down to the end of the tract in the pelvis."
+       "fn": "The lowest unpaired branch of the abdominal aorta. It supplies the last part of the gut, down to the upper part of its last straight stretch. Branches of the internal iliac artery supply the lowest few centimeters."
       },
       {
        "id": "common-iliac-artery",
@@ -10214,6 +10209,17 @@
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
        "fn": "The branch of the common iliac artery headed to the leg. It passes under the ligament in the groin and becomes the femoral artery."
+      }
+     ],
+     "covered": [
+      {
+       "id": "bronchial-arteries",
+       "box": [
+        874,
+        235,
+        107,
+        23
+       ]
       }
      ]
     }
@@ -10284,8 +10290,8 @@
        "follow": {
         "q": "Why is the carotid pulse often still felt when the radial pulse is not?",
         "options": [
-         "The carotid artery is closer to the heart and larger, so a weak pressure wave still reaches it",
-         "The carotid artery has its own pump",
+         "The carotid is large and near the heart, so a weak pressure wave still reaches it",
+         "The carotid artery has a band of heart muscle in its wall that pumps with every beat",
          "The radial artery is a vein",
          "The carotid pulse is caused by breathing"
         ],
@@ -10632,23 +10638,6 @@
        "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
-       "id": "renal",
-       "name": "Renal",
-       "accept": [
-        "renal vein",
-        "renal veins"
-       ],
-       "box": [
-        833,
-        527,
-        75,
-        24
-       ],
-       "concept": "venae-cavae-tributaries",
-       "taught": "systemic-veins",
-       "fn": "The vein that carries blood from each kidney to the inferior vena cava. The left one is longer, because it crosses in front of the aorta to reach the inferior vena cava on the right."
-      },
-      {
        "id": "gonadal",
        "name": "Gonadal",
        "accept": [
@@ -10684,8 +10673,8 @@
        "follow": {
         "q": "Why is the median cubital vein the usual choice for drawing blood?",
         "options": [
-         "It is large and close to the surface at the front of the elbow, where it stays put",
-         "It carries oxygenated blood",
+         "It is wide, lies just under the skin and does not roll",
+         "It carries oxygenated blood straight from the brachial artery",
          "It is the only vein in the arm with no valves",
          "It is deep, so the needle is less painful"
         ],
@@ -10748,7 +10737,13 @@
       {
        "id": "common-iliac",
        "name": "Right and left common iliac",
-       "accept": [],
+       "accept": [
+        "common iliac",
+        "common iliac vein",
+        "common iliac veins",
+        "right common iliac",
+        "left common iliac"
+       ],
        "box": [
         939,
         687,
@@ -10829,7 +10824,8 @@
        "id": "deep-femoral",
        "name": "Deep femoral",
        "accept": [
-        "deep femoral vein"
+        "deep femoral vein",
+        "profunda femoris vein"
        ],
        "box": [
         756,
@@ -10878,7 +10874,8 @@
        "id": "great-saphenous",
        "name": "Great saphenous",
        "accept": [
-        "great saphenous vein"
+        "great saphenous vein",
+        "long saphenous vein"
        ],
        "box": [
         180,
@@ -10892,8 +10889,8 @@
        "follow": {
         "q": "Why do varicose veins usually appear in the superficial veins of the legs, such as the great saphenous vein?",
         "options": [
-         "Blood in them must rise a long way against gravity, and if their valves fail it pools and stretches the thin walls",
-         "They carry blood at arterial pressure",
+         "Blood must rise a long way against gravity, and failed valves let it pool",
+         "They carry blood at arterial pressure, which stretches their thin walls over time",
          "They have thicker walls than other veins",
          "They carry blood away from the heart"
         ],
@@ -10939,7 +10936,8 @@
        "id": "small-saphenous",
        "name": "Small saphenous",
        "accept": [
-        "small saphenous vein"
+        "small saphenous vein",
+        "short saphenous vein"
        ],
        "box": [
         180,
@@ -11015,6 +11013,17 @@
        "concept": "limb-veins",
        "taught": "systemic-veins",
        "fn": "An arch of superficial veins on the top of the foot. It gives rise to the great saphenous vein on the inner side and the small saphenous vein on the outer side."
+      }
+     ],
+     "covered": [
+      {
+       "id": "renal",
+       "box": [
+        833,
+        527,
+        75,
+        24
+       ]
       }
      ]
     },
@@ -11453,8 +11462,8 @@
        "follow": {
         "q": "Why is the median cubital vein the usual choice for drawing blood?",
         "options": [
-         "It is large and close to the surface at the front of the elbow, where it stays put",
-         "It carries oxygenated blood",
+         "It is wide, lies just under the skin and does not roll",
+         "It carries oxygenated blood straight from the brachial artery",
          "It is the only vein in the arm with no valves",
          "It is deep, so the needle is less painful"
         ],
@@ -11723,7 +11732,8 @@
        "id": "deep-femoral",
        "name": "Deep femoral",
        "accept": [
-        "deep femoral vein"
+        "deep femoral vein",
+        "profunda femoris vein"
        ],
        "box": [
         4,
@@ -11773,7 +11783,8 @@
        "id": "great-saphenous",
        "name": "Great saphenous",
        "accept": [
-        "great saphenous vein"
+        "great saphenous vein",
+        "long saphenous vein"
        ],
        "box": [
         367,
@@ -11787,8 +11798,8 @@
        "follow": {
         "q": "Why do varicose veins usually appear in the superficial veins of the legs, such as the great saphenous vein?",
         "options": [
-         "Blood in them must rise a long way against gravity, and if their valves fail it pools and stretches the thin walls",
-         "They carry blood at arterial pressure",
+         "Blood must rise a long way against gravity, and failed valves let it pool",
+         "They carry blood at arterial pressure, which stretches their thin walls over time",
          "They have thicker walls than other veins",
          "They carry blood away from the heart"
         ],
@@ -11817,7 +11828,8 @@
        "id": "small-saphenous",
        "name": "Small saphenous",
        "accept": [
-        "small saphenous vein"
+        "small saphenous vein",
+        "short saphenous vein"
        ],
        "box": [
         367,
@@ -11999,7 +12011,8 @@
        "id": "deep-femoral-posterior",
        "name": "Deep femoral",
        "accept": [
-        "deep femoral vein"
+        "deep femoral vein",
+        "profunda femoris vein"
        ],
        "box": [
         942,
@@ -12049,7 +12062,8 @@
        "id": "great-saphenous-posterior",
        "name": "Great saphenous",
        "accept": [
-        "great saphenous vein"
+        "great saphenous vein",
+        "long saphenous vein"
        ],
        "box": [
         615,
@@ -12063,8 +12077,8 @@
        "follow": {
         "q": "Why do varicose veins usually appear in the superficial veins of the legs, such as the great saphenous vein?",
         "options": [
-         "Blood in them must rise a long way against gravity, and if their valves fail it pools and stretches the thin walls",
-         "They carry blood at arterial pressure",
+         "Blood must rise a long way against gravity, and failed valves let it pool",
+         "They carry blood at arterial pressure, which stretches their thin walls over time",
          "They have thicker walls than other veins",
          "They carry blood away from the heart"
         ],
@@ -12093,7 +12107,8 @@
        "id": "small-saphenous-posterior",
        "name": "Small saphenous",
        "accept": [
-        "small saphenous vein"
+        "small saphenous vein",
+        "short saphenous vein"
        ],
        "box": [
         615,
@@ -12231,12 +12246,12 @@
        "taught": "systemic-veins",
        "fn": "The vein formed behind the pancreas by the splenic and superior mesenteric veins. It carries blood rich in absorbed nutrients from the gut and spleen to the liver's capillaries, not to the heart.",
        "follow": {
-        "q": "Why does blood from the gut pass through the liver before it reaches the heart?",
+        "q": "Blood leaving the stomach and intestines reaches which organ before it reaches the heart?",
         "options": [
-         "The hepatic portal vein links the gut's capillaries to the liver's, so the liver can process absorbed nutrients and remove toxins first",
-         "The gut's veins are too small to reach the inferior vena cava",
-         "The liver pumps blood toward the heart",
-         "The blood must pick up oxygen in the liver"
+         "The liver, through the hepatic portal vein",
+         "The heart directly, through the inferior vena cava",
+         "The lungs, through the pulmonary arteries",
+         "The spleen, through the splenic vein"
         ],
         "correct": 0,
         "why": "A portal system joins two capillary beds in a row. Nutrients and drugs absorbed from the gut go first to the liver, which stores, converts or breaks them down; only then does the blood leave by the hepatic veins for the inferior vena cava.",
@@ -12326,11 +12341,11 @@
       },
       {
        "id": "gastroepiploic",
-       "name": "Gastroepiploic",
+       "name": "Left gastroepiploic (gastro-omental)",
        "accept": [
-        "gastroepiploic vein",
-        "gastro-omental vein",
-        "left gastroepiploic vein"
+        "left gastroepiploic vein",
+        "left gastro-omental",
+        "left gastro-omental vein"
        ],
        "box": [
         849,
@@ -12340,16 +12355,16 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": "Veins along the greater curve of the stomach (also called gastroepiploic veins) that drain into the splenic and superior mesenteric veins."
+       "fn": "The vein along the left part of the stomach's greater curve. It drains into the splenic vein. Gastroepiploic and gastro-omental are two names for the same veins."
       },
       {
        "id": "gastro-omental",
-       "name": "Gastro-omental",
+       "name": "Right gastro-omental (gastroepiploic)",
        "accept": [
-        "gastro-omental vein",
-        "gastroomental",
-        "gastroepiploic vein",
-        "right gastro-omental vein"
+        "right gastro-omental vein",
+        "right gastroomental vein",
+        "right gastroepiploic",
+        "right gastroepiploic vein"
        ],
        "box": [
         6,
@@ -12359,7 +12374,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": "Veins along the greater curve of the stomach (also called gastroepiploic veins) that drain into the splenic and superior mesenteric veins."
+       "fn": "The vein along the right part of the stomach's greater curve. It drains into the superior mesenteric vein. Gastro-omental and gastroepiploic are two names for the same veins."
       },
       {
        "id": "pancreatic",

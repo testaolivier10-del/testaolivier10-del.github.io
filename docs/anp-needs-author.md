@@ -177,14 +177,15 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   "Plasma membrane" on the peroxisome's own membrane (label covered for good, never quizzed;
   spec decision 48; human peroxisomes also usually lack the crystalline core it draws). Figure
   24.6 prints "about 36 ATP" (caption note). Figure 20.6 draws classic precapillary sphincters
-  (caption note; not a lab practical set). Figure 19.18 prints "Bachman's bundle". Figure 19.25
+  (caption note; not a lab practical set). Figure 19.18 prints "Bachman's bundle" and Figure 1.12 prints "Thorcis" (both shown correctly spelled, with the printed form accepted). Figure 19.25
   was not used (it calls third-degree block partial conduction).
 - **Labels covered by the ordering rule:** on the first heart lesson (Heart position and
   coverings) the chamber and great-vessel labels are covered because those names are taught in
   the next topic. The rule requires it; the reviewer may prefer a preview box instead. The
   "Basal lamina" label is likewise covered on the cell-junctions panel until epithelium.
-- **Map gaps found while labeling:** seven thoracic aortic branches (internal thoracic, bronchial,
-  esophageal, intercostal, mediastinal, pericardial, superior phrenic) have no map concept.
+- **Map gaps found while labeling:** six thoracic aortic branches (internal thoracic, esophageal, intercostal, mediastinal,
+  pericardial, superior phrenic) have no map concept; the bronchial arteries belong to the
+  lung blood supply topic and their label is covered until then.
   "ligand" is taught in Chemical signaling, after the passive-transport topic that needs
   ligand-gated channels (worded around).
 - **Plain-word paraphrases forced by ordering** (spec decision 38): ribs, cartilage, femur,

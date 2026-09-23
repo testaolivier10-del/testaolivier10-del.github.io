@@ -196,9 +196,11 @@
     },
     {
       "id": "thorax",
-      "name": "Thorcis or thorax",
+      "name": "Thoracis or thorax",
       "accept": [
+        "thoracis or thorax",
         "thorcis or thorax",
+        "thorcis",
         "chest",
         "thoracic",
         "thoracis",

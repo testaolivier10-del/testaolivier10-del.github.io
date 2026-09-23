@@ -57,8 +57,7 @@
       "name": "Cranial",
       "accept": [
         "cranial",
-        "cephalic",
-        "superior"
+        "cephalic"
       ],
       "lines": [
         3
@@ -163,8 +162,7 @@
       "id": "caudal",
       "name": "Caudal",
       "accept": [
-        "caudal",
-        "inferior"
+        "caudal"
       ],
       "lines": [
         11

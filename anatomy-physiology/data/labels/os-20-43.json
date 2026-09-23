@@ -114,12 +114,13 @@
     },
     {
       "id": "gastroepiploic",
-      "name": "Gastroepiploic",
+      "name": "Left gastroepiploic (gastro-omental)",
       "accept": [
-        "gastroepiploic",
-        "gastroepiploic vein",
-        "gastro-omental vein",
-        "left gastroepiploic vein"
+        "left gastroepiploic (gastro-omental)",
+        "left gastroepiploic",
+        "left gastroepiploic vein",
+        "left gastro-omental",
+        "left gastro-omental vein"
       ],
       "lines": [
         9
@@ -134,13 +135,14 @@
     },
     {
       "id": "gastro-omental",
-      "name": "Gastro-omental",
+      "name": "Right gastro-omental (gastroepiploic)",
       "accept": [
-        "gastro-omental",
-        "gastro-omental vein",
-        "gastroomental",
-        "gastroepiploic vein",
-        "right gastro-omental vein"
+        "right gastro-omental (gastroepiploic)",
+        "right gastro-omental",
+        "right gastro-omental vein",
+        "right gastroomental vein",
+        "right gastroepiploic",
+        "right gastroepiploic vein"
       ],
       "lines": [
         10,
