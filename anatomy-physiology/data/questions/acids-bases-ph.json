@@ -258,7 +258,7 @@
     "diff": 3,
     "core": ["homeostasis"],
     "q": "A patient with a long-running illness produces extra acid every day. For a while his blood pH stays near normal, but his blood bicarbonate level falls steadily. Then his pH starts to drop quickly. What best explains this pattern?",
-    "options": ["His buffer was working in reverse and releasing acid", "Each buffered H+ used up a bicarbonate until few were left", "Bicarbonate turned into a strong acid once its level fell", "The pH scale becomes linear below 7.35"],
+    "options": ["His buffer was working in reverse and releasing acid", "Each buffered H+ used up a bicarbonate; few were left", "Bicarbonate turned into a strong acid once its level fell", "The pH scale becomes linear below 7.35"],
     "correct": 1,
     "why": {
       "correct": "A buffer holds acid rather than removing it, and every hydrogen ion bicarbonate takes up converts one bicarbonate into carbonic acid. While bicarbonate is plentiful, pH barely moves. Once the store runs low, new acid has little to take it up, so pH falls sharply.",

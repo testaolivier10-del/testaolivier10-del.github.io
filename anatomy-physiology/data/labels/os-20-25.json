@@ -11,10 +11,10 @@
         "right common carotid"
       ],
       "box": [
-        112,
-        8,
-        217,
-        72
+        110,
+        6,
+        221,
+        76
       ],
       "concept": "head-neck-arteries"
     },
@@ -28,10 +28,10 @@
         "left common carotid"
       ],
       "box": [
-        836,
-        9,
-        195,
-        71
+        834,
+        7,
+        199,
+        75
       ],
       "concept": "head-neck-arteries"
     },
@@ -45,10 +45,10 @@
         "subclavian"
       ],
       "box": [
-        7,
-        198,
-        240,
-        72
+        5,
+        196,
+        244,
+        76
       ],
       "concept": "limb-arteries"
     },
@@ -62,10 +62,10 @@
         "subclavian"
       ],
       "box": [
-        837,
-        198,
-        217,
-        72
+        835,
+        196,
+        221,
+        76
       ],
       "concept": "limb-arteries"
     },
@@ -79,10 +79,10 @@
         "brachiocephalic"
       ],
       "box": [
-        7,
-        402,
-        232,
-        70
+        5,
+        400,
+        236,
+        74
       ],
       "concept": "head-neck-arteries"
     },
@@ -95,10 +95,10 @@
         "arch of the aorta"
       ],
       "box": [
-        836,
-        423,
-        158,
-        28
+        834,
+        421,
+        162,
+        32
       ],
       "concept": "aorta-parts"
     },
@@ -109,10 +109,10 @@
         "ascending aorta"
       ],
       "box": [
-        7,
-        567,
-        240,
-        35
+        5,
+        565,
+        244,
+        39
       ],
       "concept": "aorta-parts"
     },
@@ -124,10 +124,10 @@
         "descending thoracic aorta"
       ],
       "box": [
-        838,
-        557,
-        258,
-        35
+        836,
+        555,
+        262,
+        39
       ],
       "concept": "aorta-parts"
     },
@@ -140,10 +140,10 @@
         "left coronary"
       ],
       "box": [
-        837,
-        666,
-        192,
-        72
+        835,
+        664,
+        196,
+        76
       ],
       "concept": "coronary-circulation"
     },
@@ -156,10 +156,10 @@
         "right coronary"
       ],
       "box": [
-        7,
-        707,
-        215,
-        70
+        5,
+        705,
+        219,
+        74
       ],
       "concept": "coronary-circulation"
     },
@@ -171,10 +171,10 @@
         "descending thoracic aorta"
       ],
       "box": [
-        835,
-        850,
-        213,
-        28
+        833,
+        848,
+        217,
+        32
       ],
       "concept": "aorta-parts"
     },
@@ -185,10 +185,10 @@
         "abdominal aorta"
       ],
       "box": [
-        768,
-        976,
-        241,
-        28
+        766,
+        974,
+        245,
+        32
       ],
       "concept": "aorta-parts"
     }

@@ -98,6 +98,360 @@
    "histology": false,
    "stations": [
     {
+     "figure": "os-19-2",
+     "topic": "heart-anatomy",
+     "core": [
+      "structure-function",
+      "compartments"
+     ],
+     "labels": [
+      {
+       "id": "first-rib",
+       "name": "1st rib",
+       "accept": [
+        "first rib",
+        "rib 1"
+       ],
+       "box": [
+        1022,
+        57,
+        63,
+        20
+       ],
+       "concept": "ribs",
+       "taught": "thoracic-cage",
+       "fn": ""
+      },
+      {
+       "id": "trachea",
+       "name": "Trachea",
+       "accept": [
+        "windpipe"
+       ],
+       "box": [
+        640,
+        85,
+        82,
+        21
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The windpipe: a tube held open by rings of stiff tissue that carries air between the throat and the lungs. It runs down the chest just in front of the esophagus and above the heart."
+      },
+      {
+       "id": "thymus",
+       "name": "Thymus",
+       "accept": [
+        "thymus gland"
+       ],
+       "box": [
+        640,
+        139,
+        81,
+        23
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "A soft organ in the upper chest, in front of the large vessels leaving the heart. It is large in children and shrinks after puberty, when much of it is replaced by fat."
+      },
+      {
+       "id": "base-of-heart",
+       "name": "Base",
+       "accept": [
+        "base of heart",
+        "base of the heart",
+        "heart base"
+       ],
+       "box": [
+        1022,
+        189,
+        55,
+        20
+       ],
+       "concept": "heart-location",
+       "taught": "heart-anatomy",
+       "fn": "The broad upper end of the heart, where the large vessels enter and leave. Despite the name it is at the top: the heart sits upside down compared with a jar standing on its base."
+      },
+      {
+       "id": "diaphragm-sagittal",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        642,
+        266,
+        103,
+        24
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of muscle that separates the thoracic cavity from the abdominopelvic cavity. The heart rests on its upper surface, tilted so the apex points down and to your left."
+      },
+      {
+       "id": "esophagus",
+       "name": "Esophagus",
+       "accept": [
+        "oesophagus"
+       ],
+       "box": [
+        754,
+        339,
+        107,
+        23
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The muscular tube that carries swallowed food from the throat to the stomach. It runs through the mediastinum behind the heart and the trachea."
+      },
+      {
+       "id": "mediastinum",
+       "name": "Mediastinum",
+       "accept": [],
+       "box": [
+        740,
+        438,
+        118,
+        20
+       ],
+       "concept": "mediastinum",
+       "taught": "body-cavities",
+       "fn": "The central compartment of the thoracic cavity, between the two lungs. It holds the heart inside its pericardial sac, the large vessels, the trachea, the esophagus and the thymus."
+      },
+      {
+       "id": "right-lung",
+       "name": "Right lung",
+       "accept": [
+        "lung"
+       ],
+       "box": [
+        0,
+        565,
+        93,
+        24
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The organ where blood takes up oxygen and gives off carbon dioxide. The right lung is slightly larger than the left, because the heart bulges into the left side of the chest."
+      },
+      {
+       "id": "left-lung",
+       "name": "Left lung",
+       "accept": [
+        "lung"
+       ],
+       "box": [
+        740,
+        658,
+        84,
+        24
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The organ where blood takes up oxygen and gives off carbon dioxide. The left lung is a little smaller than the right and has a notch that makes room for the heart, which sits more to the left."
+      },
+      {
+       "id": "ribs",
+       "name": "Ribs (cut)",
+       "accept": [
+        "rib",
+        "cut ribs"
+       ],
+       "box": [
+        0,
+        753,
+        89,
+        24
+       ],
+       "concept": "ribs",
+       "taught": "thoracic-cage",
+       "fn": ""
+      },
+      {
+       "id": "pericardial-cavity",
+       "name": "Pericardial cavity",
+       "accept": [],
+       "box": [
+        740,
+        759,
+        155,
+        23
+       ],
+       "concept": "pericardial-cavity",
+       "taught": "body-cavities",
+       "fn": "The thin space between the two layers of serous pericardium. A few milliliters of serous fluid in it let the heart slide as it beats; if fluid or blood fills it quickly, the heart cannot expand (cardiac tamponade).",
+       "follow": {
+        "q": "A stab wound lets blood collect quickly between the layers of the serous pericardium. Why does the heart pump less blood?",
+        "options": [
+         "The stiff fibrous pericardium cannot stretch, so the trapped blood squeezes the heart and it cannot fill between beats",
+         "The blood dilutes the serous fluid, so the heart loses its lubrication and stops",
+         "The blood clots onto the myocardium and paralyzes it",
+         "The pericardial cavity is connected to the pleural cavity, so the lungs collapse"
+        ],
+        "correct": 0,
+        "why": "The fibrous pericardium is tough and barely stretches. Blood that builds up quickly in the pericardial cavity has nowhere to go, so pressure around the heart rises and the heart cannot expand to fill. Less filling means less blood pumped out with each beat. This is cardiac tamponade.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "apex-of-heart",
+       "name": "Apex of heart",
+       "accept": [
+        "apex",
+        "apex of the heart",
+        "cardiac apex"
+       ],
+       "box": [
+        739,
+        806,
+        126,
+        23
+       ],
+       "concept": "heart-location",
+       "taught": "heart-anatomy",
+       "fn": "The pointed lower tip of the heart. It points down, forward and to your left and rests on the diaphragm, which is why the strongest heartbeat is felt on the left side of the chest."
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        359,
+        893,
+        104,
+        24
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of muscle that separates the thoracic cavity from the abdominopelvic cavity. The heart rests on its upper surface, tilted so the apex points down and to your left."
+      },
+      {
+       "id": "parietal-pericardium",
+       "name": "Edge of parietal pericardium (cut)",
+       "accept": [
+        "parietal pericardium"
+       ],
+       "box": [
+        482,
+        950,
+        154,
+        45
+       ],
+       "concept": "pericardium",
+       "taught": "heart-anatomy",
+       "fn": "The cut edge of the pericardial sac that encloses the heart: a tough outer fibrous layer lined by the parietal layer of serous pericardium. It anchors the heart in the mediastinum and keeps it from overfilling."
+      }
+     ],
+     "covered": [
+      {
+       "id": "aortic-arch",
+       "box": [
+        1021,
+        131,
+        61,
+        41
+       ]
+      },
+      {
+       "id": "thoracic-aorta",
+       "box": [
+        1020,
+        247,
+        80,
+        41
+       ]
+      },
+      {
+       "id": "inferior-vena-cava",
+       "box": [
+        680,
+        306,
+        162,
+        20
+       ]
+      },
+      {
+       "id": "arch-of-aorta",
+       "box": [
+        739,
+        504,
+        121,
+        21
+       ]
+      },
+      {
+       "id": "superior-vena-cava",
+       "box": [
+        0,
+        518,
+        172,
+        24
+       ]
+      },
+      {
+       "id": "pulmonary-trunk",
+       "box": [
+        740,
+        562,
+        150,
+        23
+       ]
+      },
+      {
+       "id": "left-auricle",
+       "box": [
+        740,
+        609,
+        104,
+        20
+       ]
+      },
+      {
+       "id": "right-auricle",
+       "box": [
+        0,
+        613,
+        113,
+        24
+       ]
+      },
+      {
+       "id": "right-atrium",
+       "box": [
+        0,
+        660,
+        110,
+        24
+       ]
+      },
+      {
+       "id": "right-ventricle",
+       "box": [
+        0,
+        707,
+        128,
+        24
+       ]
+      },
+      {
+       "id": "left-ventricle",
+       "box": [
+        740,
+        711,
+        119,
+        20
+       ]
+      },
+      {
+       "id": "parietal-pleura",
+       "box": [
+        242,
+        950,
+        144,
+        45
+       ]
+      }
+     ]
+    },
+    {
      "figure": "os-19-5",
      "topic": "heart-anatomy",
      "core": [
@@ -3736,10 +4090,10 @@
         "right common carotid"
        ],
        "box": [
-        112,
-        8,
-        217,
-        72
+        110,
+        6,
+        221,
+        76
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
@@ -3752,10 +4106,10 @@
         "left common carotid"
        ],
        "box": [
-        836,
-        9,
-        195,
-        71
+        834,
+        7,
+        199,
+        75
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
@@ -3780,10 +4134,10 @@
         "right subclavian"
        ],
        "box": [
-        7,
-        198,
-        240,
-        72
+        5,
+        196,
+        244,
+        76
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
@@ -3796,10 +4150,10 @@
         "left subclavian"
        ],
        "box": [
-        837,
-        198,
-        217,
-        72
+        835,
+        196,
+        221,
+        76
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
@@ -3814,10 +4168,10 @@
         "brachiocephalic"
        ],
        "box": [
-        7,
-        402,
-        232,
-        70
+        5,
+        400,
+        236,
+        74
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
@@ -3831,10 +4185,10 @@
         "arch of the aorta"
        ],
        "box": [
-        836,
-        423,
-        158,
-        28
+        834,
+        421,
+        162,
+        32
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
@@ -3857,10 +4211,10 @@
        "name": "Ascending aorta",
        "accept": [],
        "box": [
-        7,
-        567,
-        240,
-        35
+        5,
+        565,
+        244,
+        39
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
@@ -3873,10 +4227,10 @@
         "descending thoracic aorta"
        ],
        "box": [
-        838,
-        557,
-        258,
-        35
+        836,
+        555,
+        262,
+        39
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
@@ -3890,10 +4244,10 @@
         "left coronary"
        ],
        "box": [
-        837,
-        666,
-        192,
-        72
+        835,
+        664,
+        196,
+        76
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
@@ -3907,10 +4261,10 @@
         "right coronary"
        ],
        "box": [
-        7,
-        707,
-        215,
-        70
+        5,
+        705,
+        219,
+        74
        ],
        "concept": "coronary-circulation",
        "taught": "blood-flow-heart",
@@ -3935,10 +4289,10 @@
         "descending thoracic aorta"
        ],
        "box": [
-        835,
-        850,
-        213,
-        28
+        833,
+        848,
+        217,
+        32
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
@@ -3949,10 +4303,10 @@
        "name": "Abdominal aorta",
        "accept": [],
        "box": [
-        768,
-        976,
-        241,
-        28
+        766,
+        974,
+        245,
+        32
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
@@ -4137,6 +4491,2691 @@
        "fn": "A branch of each subclavian artery that climbs through the neck bones to the base of the brain, where the two join to form the basilar artery."
       }
      ]
+    },
+    {
+     "figure": "os-20-28",
+     "topic": "systemic-arteries",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "aortic-arch",
+       "name": "Aortic arch",
+       "accept": [
+        "arch of aorta",
+        "arch of the aorta"
+       ],
+       "box": [
+        764,
+        37,
+        121,
+        23
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": "The curve of the aorta above the heart, turning back and to the left. Its three branches supply the head and arms: the brachiocephalic trunk, the left common carotid artery and the left subclavian artery.",
+       "follow": {
+        "q": "Which vessel is NOT a branch of the aortic arch?",
+        "options": [
+         "Right common carotid artery",
+         "Brachiocephalic trunk",
+         "Left common carotid artery",
+         "Left subclavian artery"
+        ],
+        "correct": 0,
+        "why": "On the right side the arch gives one trunk, the brachiocephalic trunk, which then splits into the right common carotid and right subclavian arteries. The left common carotid and left subclavian leave the arch directly, so only the left carotid is a direct branch.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "internal-thoracic-artery",
+       "name": "Internal thoracic",
+       "accept": [
+        "internal thoracic artery",
+        "internal mammary artery"
+       ],
+       "box": [
+        8,
+        98,
+        174,
+        24
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "bronchial-arteries",
+       "name": "Bronchial",
+       "accept": [
+        "bronchial artery",
+        "bronchial arteries"
+       ],
+       "box": [
+        874,
+        235,
+        107,
+        23
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "esophageal-arteries",
+       "name": "Esophageal",
+       "accept": [
+        "esophageal artery",
+        "esophageal arteries"
+       ],
+       "box": [
+        874,
+        270,
+        132,
+        28
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "intercostal-arteries",
+       "name": "Intercostal",
+       "accept": [
+        "intercostal artery",
+        "intercostal arteries",
+        "posterior intercostal arteries"
+       ],
+       "box": [
+        26,
+        323,
+        117,
+        23
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "mediastinal-arteries",
+       "name": "Mediastinal",
+       "accept": [
+        "mediastinal artery",
+        "mediastinal arteries"
+       ],
+       "box": [
+        874,
+        306,
+        127,
+        23
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "pericardial-arteries",
+       "name": "Pericardial",
+       "accept": [
+        "pericardial artery",
+        "pericardial arteries"
+       ],
+       "box": [
+        874,
+        342,
+        119,
+        23
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "superior-phrenic-arteries",
+       "name": "Superior phrenic",
+       "accept": [
+        "superior phrenic artery",
+        "superior phrenic arteries"
+       ],
+       "box": [
+        25,
+        358,
+        180,
+        28
+       ],
+       "concept": null,
+       "fn": ""
+      },
+      {
+       "id": "thoracic-aorta",
+       "name": "Thoracic aorta",
+       "accept": [
+        "descending thoracic aorta"
+       ],
+       "box": [
+        870,
+        405,
+        160,
+        23
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": "The descending aorta above the diaphragm. It gives small branches to the chest wall, esophagus and airways before passing through the aortic hiatus."
+      },
+      {
+       "id": "aortic-hiatus",
+       "name": "Aortic hiatus",
+       "accept": [],
+       "box": [
+        871,
+        439,
+        138,
+        23
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "inferior-phrenic-arteries",
+       "name": "Inferior phrenic",
+       "accept": [
+        "inferior phrenic artery",
+        "inferior phrenic arteries"
+       ],
+       "box": [
+        26,
+        457,
+        164,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "celiac-trunk",
+       "name": "Celiac trunk",
+       "accept": [
+        "celiac artery",
+        "coeliac trunk"
+       ],
+       "box": [
+        862,
+        488,
+        144,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The first unpaired branch of the abdominal aorta, just below the diaphragm. It quickly splits to supply the stomach, liver, spleen and part of the pancreas."
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        26,
+        508,
+        123,
+        28
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of muscle that separates the thoracic cavity from the abdominopelvic cavity. The heart rests on its upper surface, tilted so the apex points down and to your left."
+      },
+      {
+       "id": "left-gastric-artery",
+       "name": "Left gastric",
+       "accept": [
+        "left gastric artery"
+       ],
+       "box": [
+        872,
+        525,
+        123,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "adrenal-artery",
+       "name": "Adrenal",
+       "accept": [
+        "adrenal artery",
+        "suprarenal artery",
+        "adrenal arteries"
+       ],
+       "box": [
+        25,
+        559,
+        91,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "splenic-artery",
+       "name": "Splenic",
+       "accept": [
+        "splenic artery"
+       ],
+       "box": [
+        871,
+        562,
+        87,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "common-hepatic-artery",
+       "name": "Common hepatic",
+       "accept": [
+        "common hepatic artery"
+       ],
+       "box": [
+        871,
+        597,
+        185,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "renal-artery",
+       "name": "Renal",
+       "accept": [
+        "renal artery"
+       ],
+       "box": [
+        26,
+        602,
+        71,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "A paired branch of the abdominal aorta to each kidney. The kidneys receive about a fifth of the heart's output at rest, so these are short, wide arteries."
+      },
+      {
+       "id": "gonadal-artery",
+       "name": "Gonadal",
+       "accept": [
+        "gonadal artery",
+        "ovarian artery",
+        "testicular artery"
+       ],
+       "box": [
+        25,
+        686,
+        99,
+        24
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "A paired, slender branch of the abdominal aorta to the testes or ovaries (the testicular or ovarian artery)."
+      },
+      {
+       "id": "superior-mesenteric-artery",
+       "name": "Superior mesenteric",
+       "accept": [
+        "superior mesenteric artery",
+        "sma"
+       ],
+       "box": [
+        871,
+        709,
+        229,
+        28
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "An unpaired branch of the abdominal aorta just below the celiac trunk. It supplies most of the gut below the stomach: the long, narrow part where most food is absorbed and the first half of the wider part that follows."
+      },
+      {
+       "id": "lumbar-arteries",
+       "name": "Lumbar",
+       "accept": [
+        "lumbar artery",
+        "lumbar arteries"
+       ],
+       "box": [
+        26,
+        754,
+        90,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "abdominal-aorta",
+       "name": "Abdominal aorta",
+       "accept": [],
+       "box": [
+        871,
+        782,
+        179,
+        23
+       ],
+       "concept": "aorta-parts",
+       "taught": "systemic-arteries",
+       "fn": "The descending aorta below the diaphragm. It gives off the celiac trunk, the mesenteric, renal and gonadal arteries, and ends by splitting into the two common iliac arteries.",
+       "follow": {
+        "q": "The abdominal aorta ends by dividing into which pair of arteries?",
+        "options": [
+         "Common iliac arteries",
+         "Femoral arteries",
+         "Renal arteries",
+         "Internal iliac arteries"
+        ],
+        "correct": 0,
+        "why": "At about the level of the navel the abdominal aorta splits into the right and left common iliac arteries. Each then divides into an internal iliac (pelvis) and an external iliac, which becomes the femoral artery in the thigh.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "median-sacral-artery",
+       "name": "Median sacral",
+       "accept": [
+        "median sacral artery"
+       ],
+       "box": [
+        26,
+        815,
+        153,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "inferior-mesenteric-artery",
+       "name": "Inferior mesenteric",
+       "accept": [
+        "inferior mesenteric artery",
+        "ima"
+       ],
+       "box": [
+        872,
+        854,
+        201,
+        24
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The lowest unpaired branch of the abdominal aorta. It supplies the last part of the gut, down to the end of the tract in the pelvis."
+      },
+      {
+       "id": "common-iliac-artery",
+       "name": "Common iliac",
+       "accept": [
+        "common iliac artery"
+       ],
+       "box": [
+        25,
+        856,
+        151,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "One of the two terminal branches of the abdominal aorta. Each splits into an internal iliac artery to the pelvis and an external iliac artery to the leg."
+      },
+      {
+       "id": "internal-iliac-artery",
+       "name": "Internal iliac",
+       "accept": [
+        "internal iliac artery"
+       ],
+       "box": [
+        26,
+        916,
+        133,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The branch of the common iliac artery that supplies the pelvic organs, the buttocks and the inner thigh."
+      },
+      {
+       "id": "external-iliac-artery",
+       "name": "External iliac",
+       "accept": [
+        "external iliac artery"
+       ],
+       "box": [
+        872,
+        922,
+        141,
+        23
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The branch of the common iliac artery headed to the leg. It passes under the ligament in the groin and becomes the femoral artery."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pulse-points",
+   "title": "Pulse points",
+   "chapter": "cardiovascular",
+   "topic": "systemic-arteries",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-20-11",
+     "topic": "systemic-arteries",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "temporal-artery",
+       "name": "Temporal artery",
+       "accept": [
+        "superficial temporal artery",
+        "temporal"
+       ],
+       "box": [
+        0,
+        45,
+        183,
+        29
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "facial-artery",
+       "name": "Facial artery",
+       "accept": [
+        "facial"
+       ],
+       "box": [
+        0,
+        99,
+        147,
+        29
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "common-carotid-artery",
+       "name": "Common carotid artery",
+       "accept": [
+        "common carotid"
+       ],
+       "box": [
+        0,
+        128,
+        264,
+        29
+       ],
+       "concept": "head-neck-arteries",
+       "taught": "systemic-arteries",
+       "fn": ""
+      },
+      {
+       "id": "brachial-artery",
+       "name": "Brachial artery",
+       "accept": [
+        "brachial"
+       ],
+       "box": [
+        0,
+        326,
+        171,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The main artery of the upper arm, continuing from the axillary artery. It runs along the inner arm and is where blood pressure is measured with a cuff; at the elbow it splits into the radial and ulnar arteries.",
+       "follow": {
+        "q": "Blood pressure cuffs are placed on the upper arm because they compress which artery?",
+        "options": [
+         "Brachial artery",
+         "Radial artery",
+         "Axillary artery",
+         "Subclavian artery"
+        ],
+        "correct": 0,
+        "why": "The brachial artery runs close to the skin along the inner upper arm, at about the level of the heart, so a cuff can squeeze it shut and a stethoscope at the elbow can hear flow return.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "radial-artery",
+       "name": "Radial artery",
+       "accept": [
+        "radial"
+       ],
+       "box": [
+        0,
+        455,
+        151,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The forearm artery on the thumb side, from the brachial artery. At the wrist it lies just under the skin over the bone, where the radial pulse is taken."
+      },
+      {
+       "id": "femoral-artery",
+       "name": "Femoral artery",
+       "accept": [
+        "femoral"
+       ],
+       "box": [
+        0,
+        492,
+        172,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The main artery of the thigh, continuing from the external iliac artery. In the groin it lies close to the skin, where the femoral pulse is felt and where catheters are often inserted."
+      },
+      {
+       "id": "popliteal-artery",
+       "name": "Popliteal artery",
+       "accept": [
+        "popliteal"
+       ],
+       "box": [
+        0,
+        712,
+        176,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The continuation of the femoral artery behind the knee, where the popliteal pulse is felt. Below the knee it splits into the anterior and posterior tibial arteries."
+      },
+      {
+       "id": "posterior-tibial-artery",
+       "name": "Posterior tibial artery",
+       "accept": [
+        "posterior tibial"
+       ],
+       "box": [
+        0,
+        917,
+        238,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The branch of the popliteal artery down the back of the leg. It passes behind the bump on the inner ankle, where its pulse is felt, and continues into the sole of the foot."
+      },
+      {
+       "id": "dorsalis-pedis-artery",
+       "name": "Dorsalis pedis artery",
+       "accept": [
+        "dorsalis pedis",
+        "dorsal artery of the foot"
+       ],
+       "box": [
+        0,
+        989,
+        237,
+        29
+       ],
+       "concept": "limb-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The continuation of the anterior tibial artery on the top of the foot, where the pedal pulse is felt. Checking it tells you blood is reaching the end of the leg."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "major-veins",
+   "title": "Major veins",
+   "chapter": "cardiovascular",
+   "topic": "systemic-veins",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-20-35",
+     "topic": "systemic-veins",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "external-jugular",
+       "name": "External jugular",
+       "accept": [
+        "external jugular vein"
+       ],
+       "box": [
+        119,
+        218,
+        183,
+        30
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "internal-jugular",
+       "name": "Internal jugular",
+       "accept": [
+        "internal jugular vein"
+       ],
+       "box": [
+        833,
+        223,
+        175,
+        30
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "subclavian",
+       "name": "Subclavian",
+       "accept": [
+        "subclavian vein"
+       ],
+       "box": [
+        118,
+        268,
+        131,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "brachiocephalic",
+       "name": "Brachiocephalic",
+       "accept": [
+        "brachiocephalic vein",
+        "brachiocephalic veins",
+        "innominate vein"
+       ],
+       "box": [
+        833,
+        285,
+        185,
+        30
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "axillary",
+       "name": "Axillary",
+       "accept": [
+        "axillary vein"
+       ],
+       "box": [
+        118,
+        313,
+        92,
+        30
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "cephalic",
+       "name": "Cephalic",
+       "accept": [
+        "cephalic vein"
+       ],
+       "box": [
+        118,
+        340,
+        107,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "superior-vena-cava",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        832,
+        347,
+        223,
+        30
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
+       "follow": {
+        "q": "Blood from your right arm reaches the heart through which vessel?",
+        "options": [
+         "Superior vena cava",
+         "Inferior vena cava",
+         "Pulmonary trunk",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "Veins above the diaphragm, including those of the arms, head and neck, drain into the superior vena cava, which opens into the right atrium. The inferior vena cava drains the body below the diaphragm.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "brachial",
+       "name": "Brachial",
+       "accept": [
+        "brachial vein",
+        "brachial veins"
+       ],
+       "box": [
+        119,
+        369,
+        99,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "intercostal",
+       "name": "Intercostal",
+       "accept": [
+        "intercostal vein",
+        "intercostal veins",
+        "posterior intercostal veins"
+       ],
+       "box": [
+        833,
+        404,
+        124,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "basilic",
+       "name": "Basilic",
+       "accept": [
+        "basilic vein"
+       ],
+       "box": [
+        119,
+        422,
+        82,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "hepatic",
+       "name": "Hepatic",
+       "accept": [
+        "hepatic vein",
+        "hepatic veins"
+       ],
+       "box": [
+        119,
+        482,
+        94,
+        30
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "inferior-vena-cava",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        833,
+        497,
+        205,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
+      },
+      {
+       "id": "renal",
+       "name": "Renal",
+       "accept": [
+        "renal vein",
+        "renal veins"
+       ],
+       "box": [
+        833,
+        527,
+        75,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "gonadal",
+       "name": "Gonadal",
+       "accept": [
+        "gonadal vein",
+        "ovarian vein",
+        "testicular vein"
+       ],
+       "box": [
+        832,
+        560,
+        105,
+        25
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "median-cubital",
+       "name": "Median cubital",
+       "accept": [
+        "median cubital vein"
+       ],
+       "box": [
+        118,
+        566,
+        169,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "lumbar",
+       "name": "Lumbar",
+       "accept": [
+        "lumbar vein",
+        "lumbar veins"
+       ],
+       "box": [
+        940,
+        627,
+        95,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "radial",
+       "name": "Radial",
+       "accept": [
+        "radial vein",
+        "radial veins"
+       ],
+       "box": [
+        10,
+        632,
+        80,
+        25
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "median-antebrachial",
+       "name": "Median antebrachial",
+       "accept": [
+        "median antebrachial vein",
+        "median vein of the forearm"
+       ],
+       "box": [
+        9,
+        681,
+        232,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "common-iliac",
+       "name": "Right and left common iliac",
+       "accept": [],
+       "box": [
+        939,
+        687,
+        157,
+        51
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "ulnar",
+       "name": "Ulnar",
+       "accept": [
+        "ulnar vein",
+        "ulnar veins"
+       ],
+       "box": [
+        9,
+        721,
+        71,
+        25
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "external-iliac",
+       "name": "External iliac",
+       "accept": [
+        "external iliac vein"
+       ],
+       "box": [
+        940,
+        766,
+        151,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "palmar-venous-arches",
+       "name": "Palmar venous arches",
+       "accept": [
+        "palmar venous arch",
+        "palmar arches"
+       ],
+       "box": [
+        9,
+        803,
+        174,
+        52
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "internal-iliac",
+       "name": "Internal iliac",
+       "accept": [
+        "internal iliac vein"
+       ],
+       "box": [
+        940,
+        815,
+        143,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "deep-femoral",
+       "name": "Deep femoral",
+       "accept": [
+        "deep femoral vein"
+       ],
+       "box": [
+        756,
+        893,
+        94,
+        52
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "digital",
+       "name": "Digital",
+       "accept": [
+        "digital veins",
+        "digital vein"
+       ],
+       "box": [
+        9,
+        894,
+        79,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral",
+       "name": "Femoral",
+       "accept": [
+        "femoral vein"
+       ],
+       "box": [
+        758,
+        972,
+        99,
+        25
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "great-saphenous",
+       "name": "Great saphenous",
+       "accept": [
+        "great saphenous vein"
+       ],
+       "box": [
+        180,
+        1010,
+        201,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "popliteal",
+       "name": "Popliteal",
+       "accept": [
+        "popliteal vein"
+       ],
+       "box": [
+        181,
+        1142,
+        104,
+        30
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "posterior-tibial",
+       "name": "Posterior tibial",
+       "accept": [
+        "posterior tibial vein",
+        "posterior tibial veins"
+       ],
+       "box": [
+        760,
+        1299,
+        165,
+        25
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "small-saphenous",
+       "name": "Small saphenous",
+       "accept": [
+        "small saphenous vein"
+       ],
+       "box": [
+        180,
+        1303,
+        201,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "anterior-tibial",
+       "name": "Anterior tibial",
+       "accept": [
+        "anterior tibial vein",
+        "anterior tibial veins"
+       ],
+       "box": [
+        760,
+        1335,
+        155,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "fibular",
+       "name": "Fibular",
+       "accept": [
+        "fibular vein",
+        "fibular veins",
+        "peroneal vein"
+       ],
+       "box": [
+        181,
+        1368,
+        86,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "plantar-venous-arch",
+       "name": "Plantar venous arch",
+       "accept": [],
+       "box": [
+        181,
+        1530,
+        228,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "dorsal-venous-arch",
+       "name": "Dorsal venous arch",
+       "accept": [
+        "dorsal venous arch of the foot"
+       ],
+       "box": [
+        181,
+        1601,
+        221,
+        24
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      }
+     ]
+    },
+    {
+     "figure": "os-20-37",
+     "topic": "systemic-veins",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "superior-sagittal-sinus",
+       "name": "Superior sagittal sinus",
+       "accept": [
+        "superior sagittal"
+       ],
+       "box": [
+        6,
+        85,
+        237,
+        28
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "inferior-sagittal-sinus",
+       "name": "Inferior sagittal sinus",
+       "accept": [
+        "inferior sagittal"
+       ],
+       "box": [
+        7,
+        135,
+        220,
+        28
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "straight-sinus",
+       "name": "Straight sinus",
+       "accept": [],
+       "box": [
+        6,
+        186,
+        150,
+        28
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "occipital",
+       "name": "Occipital",
+       "accept": [
+        "occipital vein"
+       ],
+       "box": [
+        6,
+        237,
+        99,
+        28
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "temporal",
+       "name": "Temporal",
+       "accept": [
+        "temporal vein",
+        "superficial temporal vein"
+       ],
+       "box": [
+        886,
+        254,
+        106,
+        28
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "cavernous-sinus",
+       "name": "Cavernous sinus",
+       "accept": [],
+       "box": [
+        887,
+        338,
+        181,
+        23
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "right-transverse-sinus",
+       "name": "Right transverse sinus",
+       "accept": [],
+       "box": [
+        7,
+        389,
+        236,
+        28
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "maxillary",
+       "name": "Maxillary",
+       "accept": [
+        "maxillary vein"
+       ],
+       "box": [
+        887,
+        406,
+        103,
+        27
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "occipital-sinus",
+       "name": "Occipital sinus",
+       "accept": [],
+       "box": [
+        6,
+        441,
+        159,
+        28
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "facial",
+       "name": "Facial",
+       "accept": [
+        "facial vein"
+       ],
+       "box": [
+        888,
+        466,
+        70,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "sigmoid-sinus",
+       "name": "Sigmoid sinus",
+       "accept": [],
+       "box": [
+        7,
+        493,
+        153,
+        28
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "petrosal-sinus",
+       "name": "Petrosal sinus",
+       "accept": [
+        "inferior petrosal sinus",
+        "superior petrosal sinus"
+       ],
+       "box": [
+        7,
+        545,
+        153,
+        23
+       ],
+       "concept": "dural-sinuses",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "external-jugular",
+       "name": "External jugular",
+       "accept": [
+        "external jugular vein"
+       ],
+       "box": [
+        7,
+        596,
+        172,
+        28
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "internal-jugular",
+       "name": "Internal jugular",
+       "accept": [
+        "internal jugular vein"
+       ],
+       "box": [
+        888,
+        626,
+        163,
+        28
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "vertebral",
+       "name": "Vertebral",
+       "accept": [
+        "vertebral vein"
+       ],
+       "box": [
+        6,
+        648,
+        103,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "right-subclavian",
+       "name": "Right subclavian",
+       "accept": [
+        "right subclavian vein"
+       ],
+       "box": [
+        888,
+        816,
+        177,
+        28
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "axillary",
+       "name": "Axillary",
+       "accept": [
+        "axillary vein"
+       ],
+       "box": [
+        887,
+        874,
+        86,
+        28
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "superior-vena-cava",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        887,
+        932,
+        213,
+        28
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-chambers-valves",
+       "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
+       "follow": {
+        "q": "Blood from your right arm reaches the heart through which vessel?",
+        "options": [
+         "Superior vena cava",
+         "Inferior vena cava",
+         "Pulmonary trunk",
+         "Aorta"
+        ],
+        "correct": 0,
+        "why": "Veins above the diaphragm, including those of the arms, head and neck, drain into the superior vena cava, which opens into the right atrium. The inferior vena cava drains the body below the diaphragm.",
+        "level": "recall"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-20-38",
+     "topic": "systemic-veins",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "subclavian",
+       "name": "Subclavian",
+       "accept": [
+        "subclavian vein"
+       ],
+       "box": [
+        358,
+        15,
+        162,
+        30
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "axillary",
+       "name": "Axillary",
+       "accept": [
+        "axillary vein"
+       ],
+       "box": [
+        360,
+        80,
+        106,
+        35
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "cephalic",
+       "name": "Cephalic",
+       "accept": [
+        "cephalic vein"
+       ],
+       "box": [
+        361,
+        144,
+        125,
+        35
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "subscapular",
+       "name": "Subscapular",
+       "accept": [
+        "subscapular vein"
+       ],
+       "box": [
+        361,
+        284,
+        178,
+        34
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "brachial",
+       "name": "Brachial",
+       "accept": [
+        "brachial vein",
+        "brachial veins"
+       ],
+       "box": [
+        359,
+        398,
+        122,
+        30
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "basilic",
+       "name": "Basilic",
+       "accept": [
+        "basilic vein"
+       ],
+       "box": [
+        359,
+        443,
+        100,
+        30
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "median-cubital",
+       "name": "Median cubital",
+       "accept": [
+        "median cubital vein"
+       ],
+       "box": [
+        358,
+        585,
+        211,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "cephalic-forearm",
+       "name": "Cephalic",
+       "accept": [
+        "cephalic vein"
+       ],
+       "box": [
+        361,
+        653,
+        125,
+        35
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "radial",
+       "name": "Radial",
+       "accept": [
+        "radial vein",
+        "radial veins"
+       ],
+       "box": [
+        359,
+        732,
+        97,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "median-antebrachial",
+       "name": "Median antebrachial",
+       "accept": [
+        "median antebrachial vein",
+        "median vein of the forearm"
+       ],
+       "box": [
+        358,
+        807,
+        179,
+        63
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "basilic-forearm",
+       "name": "Basilic",
+       "accept": [
+        "basilic vein"
+       ],
+       "box": [
+        775,
+        852,
+        100,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "ulnar",
+       "name": "Ulnar",
+       "accept": [
+        "ulnar vein",
+        "ulnar veins"
+       ],
+       "box": [
+        775,
+        911,
+        86,
+        29
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "palmar-venous-arches",
+       "name": "Palmar venous arches",
+       "accept": [
+        "palmar venous arch",
+        "palmar arches"
+       ],
+       "box": [
+        775,
+        1071,
+        321,
+        30
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "digital",
+       "name": "Digital",
+       "accept": [
+        "digital veins",
+        "digital vein"
+       ],
+       "box": [
+        778,
+        1163,
+        88,
+        35
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      }
+     ]
+    },
+    {
+     "figure": "os-20-41",
+     "topic": "systemic-veins",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "common-iliac",
+       "name": "Common iliac",
+       "accept": [
+        "common iliac vein"
+       ],
+       "box": [
+        367,
+        16,
+        146,
+        22
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "internal-iliac",
+       "name": "Internal iliac",
+       "accept": [
+        "internal iliac vein"
+       ],
+       "box": [
+        367,
+        52,
+        130,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "external-iliac",
+       "name": "External iliac",
+       "accept": [
+        "external iliac vein"
+       ],
+       "box": [
+        10,
+        83,
+        137,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "gluteal",
+       "name": "Gluteal",
+       "accept": [
+        "gluteal vein",
+        "gluteal veins"
+       ],
+       "box": [
+        367,
+        84,
+        81,
+        22
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "lateral-sacral",
+       "name": "Lateral sacral",
+       "accept": [
+        "lateral sacral vein",
+        "lateral sacral veins"
+       ],
+       "box": [
+        367,
+        115,
+        144,
+        22
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "internal-pudendal",
+       "name": "Internal pudendal",
+       "accept": [
+        "internal pudendal vein"
+       ],
+       "box": [
+        367,
+        146,
+        183,
+        27
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "obturator",
+       "name": "Obturator",
+       "accept": [
+        "obturator vein"
+       ],
+       "box": [
+        366,
+        184,
+        107,
+        22
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral",
+       "name": "Femoral",
+       "accept": [
+        "femoral vein"
+       ],
+       "box": [
+        367,
+        223,
+        91,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "deep-femoral",
+       "name": "Deep femoral",
+       "accept": [
+        "deep femoral vein"
+       ],
+       "box": [
+        4,
+        240,
+        143,
+        27
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral-circumflex",
+       "name": "Femoral circumflex",
+       "accept": [
+        "femoral circumflex vein",
+        "circumflex femoral vein",
+        "circumflex femoral veins"
+       ],
+       "box": [
+        366,
+        263,
+        112,
+        47
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral-2",
+       "name": "Femoral",
+       "accept": [
+        "femoral vein"
+       ],
+       "box": [
+        367,
+        320,
+        91,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "great-saphenous",
+       "name": "Great saphenous",
+       "accept": [
+        "great saphenous vein"
+       ],
+       "box": [
+        367,
+        400,
+        182,
+        27
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "popliteal",
+       "name": "Popliteal",
+       "accept": [
+        "popliteal vein"
+       ],
+       "box": [
+        367,
+        475,
+        95,
+        27
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "small-saphenous",
+       "name": "Small saphenous",
+       "accept": [
+        "small saphenous vein"
+       ],
+       "box": [
+        367,
+        561,
+        182,
+        27
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "anterior-tibial",
+       "name": "Anterior tibial",
+       "accept": [
+        "anterior tibial vein",
+        "anterior tibial veins"
+       ],
+       "box": [
+        366,
+        598,
+        142,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "posterior-tibial",
+       "name": "Posterior tibial",
+       "accept": [
+        "posterior tibial vein",
+        "posterior tibial veins"
+       ],
+       "box": [
+        367,
+        646,
+        151,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "fibular",
+       "name": "Fibular",
+       "accept": [
+        "fibular vein",
+        "fibular veins",
+        "peroneal vein"
+       ],
+       "box": [
+        367,
+        708,
+        80,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "dorsal-venous-arch",
+       "name": "Dorsal venous arch",
+       "accept": [
+        "dorsal venous arch of the foot"
+       ],
+       "box": [
+        367,
+        864,
+        201,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "digital",
+       "name": "Digital",
+       "accept": [
+        "digital veins",
+        "digital vein"
+       ],
+       "box": [
+        367,
+        908,
+        72,
+        27
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "external-iliac-posterior",
+       "name": "External iliac",
+       "accept": [
+        "external iliac vein"
+       ],
+       "box": [
+        942,
+        23,
+        137,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "internal-pudendal-posterior",
+       "name": "Internal pudendal",
+       "accept": [
+        "internal pudendal vein"
+       ],
+       "box": [
+        616,
+        85,
+        102,
+        51
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "gluteal-posterior",
+       "name": "Gluteal",
+       "accept": [
+        "gluteal vein",
+        "gluteal veins"
+       ],
+       "box": [
+        941,
+        104,
+        82,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "obturator-posterior",
+       "name": "Obturator",
+       "accept": [
+        "obturator vein"
+       ],
+       "box": [
+        615,
+        148,
+        107,
+        23
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral-posterior",
+       "name": "Femoral",
+       "accept": [
+        "femoral vein"
+       ],
+       "box": [
+        616,
+        187,
+        92,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "deep-femoral-posterior",
+       "name": "Deep femoral",
+       "accept": [
+        "deep femoral vein"
+       ],
+       "box": [
+        942,
+        248,
+        143,
+        28
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral-circumflex-posterior",
+       "name": "Femoral circumflex",
+       "accept": [
+        "femoral circumflex vein",
+        "circumflex femoral vein",
+        "circumflex femoral veins"
+       ],
+       "box": [
+        615,
+        262,
+        112,
+        48
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "femoral-posterior-2",
+       "name": "Femoral",
+       "accept": [
+        "femoral vein"
+       ],
+       "box": [
+        616,
+        336,
+        92,
+        23
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "great-saphenous-posterior",
+       "name": "Great saphenous",
+       "accept": [
+        "great saphenous vein"
+       ],
+       "box": [
+        615,
+        412,
+        121,
+        52
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "popliteal-posterior",
+       "name": "Popliteal",
+       "accept": [
+        "popliteal vein"
+       ],
+       "box": [
+        616,
+        498,
+        95,
+        27
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "small-saphenous-posterior",
+       "name": "Small saphenous",
+       "accept": [
+        "small saphenous vein"
+       ],
+       "box": [
+        615,
+        560,
+        121,
+        53
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "anterior-tibial-posterior",
+       "name": "Anterior tibial",
+       "accept": [
+        "anterior tibial vein",
+        "anterior tibial veins"
+       ],
+       "box": [
+        615,
+        636,
+        142,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "posterior-tibial-posterior",
+       "name": "Posterior tibial",
+       "accept": [
+        "posterior tibial vein",
+        "posterior tibial veins"
+       ],
+       "box": [
+        615,
+        688,
+        101,
+        47
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "fibular-posterior",
+       "name": "Fibular",
+       "accept": [
+        "fibular vein",
+        "fibular veins",
+        "peroneal vein"
+       ],
+       "box": [
+        616,
+        745,
+        80,
+        22
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "lateral-plantar",
+       "name": "Lateral plantar",
+       "accept": [
+        "lateral plantar vein",
+        "lateral plantar veins"
+       ],
+       "box": [
+        941,
+        774,
+        159,
+        28
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "medial-plantar",
+       "name": "Medial plantar",
+       "accept": [
+        "medial plantar vein",
+        "medial plantar veins"
+       ],
+       "box": [
+        941,
+        813,
+        159,
+        28
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "plantar-venous-arch",
+       "name": "Plantar venous arch",
+       "accept": [],
+       "box": [
+        940,
+        851,
+        159,
+        47
+       ],
+       "concept": "limb-veins",
+       "taught": "systemic-veins",
+       "fn": ""
+      }
+     ]
+    },
+    {
+     "figure": "os-20-43",
+     "topic": "systemic-veins",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "hepatic-portal",
+       "name": "Hepatic portal",
+       "accept": [
+        "hepatic portal vein",
+        "portal vein"
+       ],
+       "box": [
+        6,
+        14,
+        184,
+        30
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "cystic",
+       "name": "Cystic",
+       "accept": [
+        "cystic vein"
+       ],
+       "box": [
+        6,
+        54,
+        83,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "gallbladder",
+       "name": "Gall bladder",
+       "accept": [
+        "gallbladder"
+       ],
+       "box": [
+        6,
+        95,
+        153,
+        25
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": ""
+      },
+      {
+       "id": "right-gastric",
+       "name": "Right gastric",
+       "accept": [
+        "right gastric vein"
+       ],
+       "box": [
+        850,
+        113,
+        156,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "splenic",
+       "name": "Splenic",
+       "accept": [
+        "splenic vein"
+       ],
+       "box": [
+        849,
+        189,
+        105,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "superior-mesenteric",
+       "name": "Superior mesenteric",
+       "accept": [
+        "superior mesenteric vein",
+        "smv"
+       ],
+       "box": [
+        5,
+        196,
+        264,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "gastroepiploic",
+       "name": "Gastroepiploic",
+       "accept": [
+        "gastroepiploic vein",
+        "gastro-omental vein",
+        "left gastroepiploic vein"
+       ],
+       "box": [
+        849,
+        231,
+        178,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "gastro-omental",
+       "name": "Gastro-omental",
+       "accept": [
+        "gastro-omental vein",
+        "gastroomental",
+        "gastroepiploic vein",
+        "right gastro-omental vein"
+       ],
+       "box": [
+        6,
+        244,
+        190,
+        25
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "pancreatic",
+       "name": "Pancreatic",
+       "accept": [
+        "pancreatic vein",
+        "pancreatic veins"
+       ],
+       "box": [
+        850,
+        273,
+        134,
+        26
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "pancreaticoduodenal",
+       "name": "Pancreaticoduodenal",
+       "accept": [
+        "pancreaticoduodenal vein"
+       ],
+       "box": [
+        6,
+        291,
+        255,
+        25
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "middle-colic",
+       "name": "Middle colic",
+       "accept": [
+        "middle colic vein"
+       ],
+       "box": [
+        6,
+        339,
+        147,
+        25
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "inferior-mesenteric",
+       "name": "Inferior mesenteric",
+       "accept": [
+        "inferior mesenteric vein",
+        "imv"
+       ],
+       "box": [
+        849,
+        381,
+        247,
+        25
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "right-colic",
+       "name": "Right colic",
+       "accept": [
+        "right colic vein"
+       ],
+       "box": [
+        6,
+        387,
+        131,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "left-colic",
+       "name": "Left colic",
+       "accept": [
+        "left colic vein"
+       ],
+       "box": [
+        850,
+        426,
+        113,
+        26
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "ileocolic",
+       "name": "Ileocolic",
+       "accept": [
+        "ileocolic vein"
+       ],
+       "box": [
+        6,
+        434,
+        106,
+        25
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "sigmoid",
+       "name": "Sigmoid",
+       "accept": [
+        "sigmoid vein",
+        "sigmoid veins"
+       ],
+       "box": [
+        849,
+        471,
+        106,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "intestinal",
+       "name": "Intestinal",
+       "accept": [
+        "intestinal veins",
+        "intestinal vein",
+        "jejunal and ileal veins"
+       ],
+       "box": [
+        6,
+        482,
+        115,
+        25
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      },
+      {
+       "id": "superior-rectal",
+       "name": "Superior rectal",
+       "accept": [
+        "superior rectal vein"
+       ],
+       "box": [
+        849,
+        517,
+        181,
+        31
+       ],
+       "concept": "hepatic-portal",
+       "taught": "systemic-veins",
+       "fn": ""
+      }
+     ]
     }
    ]
   }
@@ -4149,6 +7188,15 @@
    "alt": "A woman standing in anatomical position, seen from the front and slightly to one side, crossed by four flat panels. A vertical panel running front to back divides her into right and left parts (the sagittal plane). A vertical panel running side to side divides her into front and back parts (the frontal, or coronal, plane). A horizontal panel at hip level divides her into upper and lower parts (the transverse plane). A slanted panel through the lower legs is an oblique plane.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.14",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+   "license": "CC BY 4.0"
+  },
+  "os-19-2": {
+   "src": "figures/os-19-2.jpg",
+   "w": 1100,
+   "h": 997,
+   "alt": "Front view of an opened chest with the ribs cut away. The heart sits in the middle of the chest between the two lungs, resting on the dome of the diaphragm, with its pointed tip angled down and to the left. A dashed line marks the cut edge of the sac around the heart. A small side view shows the heart behind the sternum and in front of the esophagus and vertebral column.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy",
    "license": "CC BY 4.0"
   },
   "os-19-5": {
@@ -4238,6 +7286,69 @@
    "h": 648,
    "alt": "The underside of the brain with its arteries in red. Two arteries rise along the front of the spinal column and join into one midline artery on the brainstem. That artery splits at its top end, and short connecting arteries link it to the two arteries arriving at the front, closing a ring of arteries around the base of the brain.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.27",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-28": {
+   "src": "figures/os-20-28.jpg",
+   "w": 1100,
+   "h": 1039,
+   "alt": "The aorta running down the back of the chest and abdomen in front of the spine, with the ribs, diaphragm and kidneys in place. Small branches leave it in the chest for the chest wall and organs. It passes through an opening in the diaphragm, gives off a short trunk that splits three ways, single branches to the gut, paired branches to the kidneys and to the reproductive glands, and splits into two large branches in the pelvis.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.28",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-11": {
+   "src": "figures/os-20-11.jpg",
+   "w": 684,
+   "h": 1054,
+   "alt": "An outline drawing of a standing woman with black dots at the places where a pulse can be felt: the temple, the jaw, the side of the neck, the inner arm above the elbow, the thumb side of the wrist, the groin, the back of the knee, behind the inner ankle and on the top of the foot.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-2-blood-flow-blood-pressure-and-resistance",
+   "license": "CC BY 4.0"
+  },
+  "os-20-35": {
+   "src": "figures/os-20-35.jpg",
+   "w": 1100,
+   "h": 1673,
+   "alt": "A front view of a standing woman with her main veins drawn in blue. Veins from the head, neck and arms join into two large trunks that meet in one large vein entering the top of the heart. Veins from the legs, pelvis, kidneys and liver join a second large vein that runs up the back of the abdomen to the bottom of the heart. Superficial veins run up the inner and outer sides of each arm, and a long vein runs up the inner side of each leg.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.35",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-37": {
+   "src": "figures/os-20-37.jpg",
+   "w": 1100,
+   "h": 1067,
+   "alt": "A side view of the head and neck showing the veins. Wide venous channels run inside the skull, along the top midline and around the back and base of the skull, and drain into a large deep vein running down the neck beside the airway. A smaller vein runs down the outside of the neck, and veins from the face and scalp join both. The neck veins end in a vein running under the collarbone.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.37",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-38": {
+   "src": "figures/os-20-38.jpg",
+   "w": 1100,
+   "h": 1246,
+   "alt": "The veins of the right arm, front view, with deep veins shown darker than superficial ones. Deep veins run beside the forearm and arm bones. A superficial vein runs up the thumb side, another up the little-finger side, and a short vein crosses the front of the elbow to link them. All drain into a vein in the armpit and then one under the collarbone.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.38",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-41": {
+   "src": "figures/os-20-41.jpg",
+   "w": 1100,
+   "h": 1024,
+   "alt": "The veins of the lower limb in front and back views. Deep veins run beside the leg and thigh bones and join into one vein behind the knee and one in the thigh, which passes into the pelvis. A long superficial vein runs from the inner ankle up the inner side of the leg to the groin, and a shorter one runs up the back of the calf to the back of the knee. A venous arch crosses the top of the foot.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.41",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
+   "license": "CC BY 4.0"
+  },
+  "os-20-43": {
+   "src": "figures/os-20-43.jpg",
+   "w": 1100,
+   "h": 709,
+   "alt": "The abdominal organs with the veins that drain the gut. Veins from the stomach, pancreas, spleen and intestines gather into three main veins that join behind the pancreas into a single large vein running up into the liver.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.43",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
    "license": "CC BY 4.0"
   }
