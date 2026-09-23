@@ -1,0 +1,217 @@
+{
+  "figure": "os-22-13",
+  "labels": [
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "major-organs",
+      "box": [
+        930,
+        38,
+        102,
+        24
+      ]
+    },
+    {
+      "id": "superior-lobe-left",
+      "name": "Superior lobe",
+      "accept": [
+        "superior lobe",
+        "upper lobe",
+        "left superior lobe"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "lungs",
+      "box": [
+        931,
+        125,
+        156,
+        29
+      ]
+    },
+    {
+      "id": "superior-lobe-right",
+      "name": "Superior lobe",
+      "accept": [
+        "superior lobe",
+        "upper lobe",
+        "right superior lobe"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "lungs",
+      "box": [
+        4,
+        284,
+        156,
+        30
+      ]
+    },
+    {
+      "id": "main-bronchus",
+      "name": "Main (primary) bronchus",
+      "accept": [
+        "main bronchus",
+        "primary bronchus",
+        "main (primary) bronchus",
+        "mainstem bronchus"
+      ],
+      "box": [
+        934,
+        203,
+        161,
+        50
+      ],
+      "concept": "bronchial-tree"
+    },
+    {
+      "id": "lobar-bronchus",
+      "name": "Lobar (secondary) bronchus",
+      "accept": [
+        "lobar bronchus",
+        "secondary bronchus",
+        "lobar (secondary) bronchus"
+      ],
+      "box": [
+        934,
+        294,
+        133,
+        75
+      ],
+      "concept": "bronchial-tree"
+    },
+    {
+      "id": "segmental-bronchus",
+      "name": "Segmental (tertiary) bronchus",
+      "accept": [
+        "segmental bronchus",
+        "tertiary bronchus",
+        "segmental (tertiary) bronchus"
+      ],
+      "box": [
+        934,
+        407,
+        121,
+        75
+      ],
+      "concept": "bronchial-tree"
+    },
+    {
+      "id": "middle-lobe",
+      "name": "Middle lobe",
+      "accept": [
+        "middle lobe",
+        "right middle lobe"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "lungs",
+      "box": [
+        25,
+        506,
+        135,
+        24
+      ]
+    },
+    {
+      "id": "cardiac-notch",
+      "name": "Cardiac notch",
+      "accept": [
+        "cardiac notch"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "lungs",
+      "box": [
+        931,
+        506,
+        161,
+        25
+      ]
+    },
+    {
+      "id": "inferior-lobe-right",
+      "name": "Inferior lobe",
+      "accept": [
+        "inferior lobe",
+        "lower lobe",
+        "right inferior lobe"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "lungs",
+      "box": [
+        21,
+        608,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "inferior-lobe-left",
+      "name": "Inferior lobe",
+      "accept": [
+        "inferior lobe",
+        "lower lobe",
+        "left inferior lobe"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "lungs",
+      "box": [
+        932,
+        611,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "right-lung",
+      "name": "Right lung",
+      "accept": [
+        "right lung"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "lungs",
+      "box": [
+        299,
+        724,
+        119,
+        28
+      ]
+    },
+    {
+      "id": "left-lung",
+      "name": "Left lung",
+      "accept": [
+        "left lung"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "lungs",
+      "box": [
+        674,
+        724,
+        103,
+        28
+      ]
+    }
+  ]
+}

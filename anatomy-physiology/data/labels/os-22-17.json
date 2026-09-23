@@ -1,0 +1,142 @@
+{
+  "figure": "os-22-17",
+  "labels": [
+    {
+      "id": "thoracic-cavity-reduces",
+      "name": "Thoracic cavity reduces",
+      "accept": [
+        "thoracic cavity reduces",
+        "thoracic cavity gets smaller",
+        "thoracic cavity shrinks",
+        "thoracic cavity decreases"
+      ],
+      "lines": [
+        5,
+        8
+      ],
+      "concept": "thoracic-cavity",
+      "box": [
+        569,
+        360,
+        172,
+        47
+      ]
+    },
+    {
+      "id": "thoracic-cavity-expands",
+      "name": "Thoracic cavity expands",
+      "accept": [
+        "thoracic cavity expands",
+        "thoracic cavity enlarges",
+        "thoracic cavity gets larger",
+        "thoracic cavity increases"
+      ],
+      "lines": [
+        6,
+        9
+      ],
+      "concept": "thoracic-cavity",
+      "box": [
+        2,
+        363,
+        172,
+        53
+      ]
+    },
+    {
+      "id": "external-intercostal-muscles-relax",
+      "name": "External intercostal muscles relax",
+      "accept": [
+        "external intercostal muscles relax",
+        "external intercostals relax"
+      ],
+      "lines": [
+        12,
+        15,
+        16
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        570,
+        434,
+        213,
+        48
+      ]
+    },
+    {
+      "id": "external-intercostal-muscles-contract",
+      "name": "External intercostal muscles contract",
+      "accept": [
+        "external intercostal muscles contract",
+        "external intercostals contract"
+      ],
+      "lines": [
+        13,
+        17,
+        18
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        4,
+        441,
+        213,
+        47
+      ]
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "diaphragm",
+      "box": [
+        4,
+        545,
+        127,
+        29
+      ]
+    },
+    {
+      "id": "diaphragm-contracts",
+      "name": "Diaphragm contracts",
+      "accept": [
+        "diaphragm contracts",
+        "the diaphragm contracts"
+      ],
+      "lines": [
+        31,
+        33
+      ],
+      "concept": "diaphragm",
+      "box": [
+        284,
+        721,
+        117,
+        45
+      ]
+    },
+    {
+      "id": "diaphragm-relaxes",
+      "name": "Diaphragm relaxes",
+      "accept": [
+        "diaphragm relaxes",
+        "the diaphragm relaxes"
+      ],
+      "lines": [
+        32,
+        34
+      ],
+      "concept": "diaphragm",
+      "box": [
+        814,
+        740,
+        116,
+        45
+      ]
+    }
+  ]
+}

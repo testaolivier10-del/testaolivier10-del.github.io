@@ -1,0 +1,192 @@
+{
+  "figure": "os-22-14",
+  "labels": [
+    {
+      "id": "intercostal-muscle",
+      "name": "Intercostal muscle",
+      "accept": [
+        "intercostal muscle",
+        "intercostal muscles",
+        "intercostals"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        958,
+        70,
+        120,
+        48
+      ]
+    },
+    {
+      "id": "lung-inset",
+      "name": "Lung",
+      "accept": [
+        "lung"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "lungs",
+      "box": [
+        804,
+        94,
+        63,
+        29
+      ]
+    },
+    {
+      "id": "lung",
+      "name": "Lung",
+      "accept": [
+        "lung"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "lungs",
+      "box": [
+        678,
+        123,
+        64,
+        29
+      ]
+    },
+    {
+      "id": "pleural-sac",
+      "name": "Pleural sac",
+      "accept": [
+        "pleural sac",
+        "pleura",
+        "pleurae"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "pleura",
+      "box": [
+        678,
+        187,
+        137,
+        24
+      ]
+    },
+    {
+      "id": "parietal-pleura",
+      "name": "Parietal pleura",
+      "accept": [
+        "parietal pleura"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "pleura",
+      "box": [
+        694,
+        231,
+        98,
+        52
+      ]
+    },
+    {
+      "id": "intercostal-muscles",
+      "name": "Intercostal muscles",
+      "accept": [
+        "intercostal muscles",
+        "intercostal muscle",
+        "intercostals"
+      ],
+      "lines": [
+        6,
+        8
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        19,
+        238,
+        120,
+        47
+      ]
+    },
+    {
+      "id": "visceral-pleura",
+      "name": "Visceral pleura",
+      "accept": [
+        "visceral pleura",
+        "pulmonary pleura"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "pleura",
+      "box": [
+        689,
+        359,
+        103,
+        52
+      ]
+    },
+    {
+      "id": "pleural-cavity",
+      "name": "Pleural cavity",
+      "accept": [
+        "pleural cavity",
+        "pleural space",
+        "intrapleural space"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "pleural-cavity",
+      "box": [
+        930,
+        469,
+        165,
+        28
+      ]
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "diaphragm",
+      "box": [
+        678,
+        531,
+        127,
+        29
+      ]
+    },
+    {
+      "id": "chest-wall",
+      "name": "Chest wall (rib cage, sternum, thoracic vertebrae, connective tissue, intercostal muscles)",
+      "accept": [
+        "chest wall",
+        "thoracic wall"
+      ],
+      "lines": [
+        13,
+        14,
+        16,
+        15
+      ],
+      "concept": null,
+      "box": [
+        64,
+        745,
+        418,
+        77
+      ]
+    }
+  ]
+}

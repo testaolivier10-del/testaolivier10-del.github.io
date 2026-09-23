@@ -1,0 +1,32 @@
+{
+  "neuron-structure": {
+    "def": "The soma (cell body) holds the nucleus and Nissl bodies (rough ER); the axon hillock is where the axon leaves it; the initial segment just beyond is the trigger zone, where action potentials start; the axon's cytoplasm is axoplasm, and its side branches are axon collaterals.",
+    "roots": [["soma", "body"], ["hillock", "small hill"], ["-plasm", "formed substance"], ["later-", "side"]],
+    "say": "SOH-mah; AK-soh-plaz-um"
+  },
+  "neuron-classes": {
+    "def": "By shape, neurons are multipolar (one axon, many dendrites), bipolar (one axon, one dendrite) or unipolar, also called pseudounipolar (one process that splits in two). By job, they are sensory neurons (toward the CNS), interneurons (within the CNS) or motor neurons (out to effectors).",
+    "roots": [["multi-", "many"], ["bi-", "two"], ["uni-", "one"], ["pseudo-", "false"], ["pol-", "pole"], ["inter-", "between"]],
+    "say": "SOO-doh-yoo-nih-POH-ler"
+  },
+  "cns-glia": {
+    "def": "The four glial cells of the CNS: astrocytes (regulate the fluid around neurons, wrap capillaries, form scars), oligodendrocytes (myelinate segments of many axons), microglia (resident immune cells that engulf debris) and ependymal cells (line the fluid-filled spaces of the brain and spinal cord).",
+    "roots": [["astr-", "star"], ["oligo-", "few"], ["dendr-", "branch"], ["micro-", "small"], ["ependyma", "upper garment"], ["-cyte", "cell"]],
+    "say": "AS-troh-site; oh-lih-goh-DEN-droh-site; my-KROH-glee-uh; eh-PEN-dih-mul"
+  },
+  "pns-glia": {
+    "def": "The two glial cells of the PNS: Schwann cells, which myelinate one segment of one axon or cradle several unmyelinated axons and guide axon regrowth, and satellite cells, which cover neuron cell bodies in ganglia.",
+    "roots": [["satelles", "attendant"]],
+    "say": "SHWAHN"
+  },
+  "myelin": {
+    "def": "Many tightly wrapped layers of a glial cell's plasma membrane around an axon segment, mostly lipid, which insulate it and speed signals along it. The bare gaps between segments are nodes of Ranvier; axons with this wrapping are myelinated, those without it unmyelinated.",
+    "roots": [["myel-", "marrow"]],
+    "say": "MY-eh-lin; RAHN-vee-ay"
+  },
+  "nerve-regeneration": {
+    "def": "Regrowth of a cut axon. In the PNS, the part beyond the cut breaks down, Schwann cells form a tube and the axon regrows along it at about 1 mm per day; in the CNS, missing guidance, growth-blocking myelin proteins and the astrocyte scar usually prevent regrowth.",
+    "roots": [["re-", "again"], ["gener-", "produce"]],
+    "say": ""
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "figure": "os-22-3",
+  "labels": [
+    {
+      "id": "root",
+      "name": "Root",
+      "accept": [
+        "root",
+        "root of the nose",
+        "nasal root"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        521,
+        29,
+        61,
+        23
+      ]
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge",
+      "accept": [
+        "bridge",
+        "bridge of the nose",
+        "nasal bridge"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        511,
+        95,
+        80,
+        28
+      ]
+    },
+    {
+      "id": "dorsum-nasi",
+      "name": "Dorsum nasi",
+      "accept": [
+        "dorsum nasi",
+        "dorsum of the nose",
+        "nasal dorsum"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        480,
+        199,
+        143,
+        23
+      ]
+    },
+    {
+      "id": "ala",
+      "name": "Ala",
+      "accept": [
+        "ala",
+        "alae",
+        "ala of the nose",
+        "nasal ala",
+        "wing of the nose"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        527,
+        299,
+        47,
+        23
+      ]
+    },
+    {
+      "id": "apex",
+      "name": "Apex",
+      "accept": [
+        "apex",
+        "tip of the nose",
+        "nasal tip",
+        "apex of the nose"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        517,
+        325,
+        67,
+        28
+      ]
+    },
+    {
+      "id": "philtrum",
+      "name": "Philtrum",
+      "accept": [
+        "philtrum"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": null,
+      "box": [
+        502,
+        364,
+        98,
+        23
+      ]
+    },
+    {
+      "id": "frontal-bone",
+      "name": "Frontal bone",
+      "accept": [
+        "frontal bone",
+        "frontal"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        107,
+        462,
+        143,
+        23
+      ]
+    },
+    {
+      "id": "nasal-bone",
+      "name": "Nasal bone",
+      "accept": [
+        "nasal bone",
+        "nasal bones"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "facial-bones",
+      "box": [
+        107,
+        585,
+        130,
+        24
+      ]
+    },
+    {
+      "id": "maxillary-bone",
+      "name": "Maxillary bone",
+      "accept": [
+        "maxillary bone",
+        "maxilla"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "facial-bones",
+      "box": [
+        107,
+        635,
+        163,
+        28
+      ]
+    },
+    {
+      "id": "septal-cartilage",
+      "name": "Septal cartilage",
+      "accept": [
+        "septal cartilage"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        106,
+        705,
+        175,
+        29
+      ]
+    },
+    {
+      "id": "major-alar-cartilage",
+      "name": "Major alar cartilage",
+      "accept": [
+        "major alar cartilage",
+        "alar cartilage"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        107,
+        829,
+        212,
+        28
+      ]
+    },
+    {
+      "id": "septal-cartilage-lower",
+      "name": "Septal cartilage",
+      "accept": [
+        "septal cartilage"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        106,
+        878,
+        175,
+        29
+      ]
+    }
+  ]
+}

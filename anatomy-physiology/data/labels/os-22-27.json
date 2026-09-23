@@ -1,0 +1,43 @@
+{
+  "figure": "os-22-27",
+  "labels": [
+    {
+      "id": "fetal-hemoglobin",
+      "name": "Fetal hemoglobin",
+      "accept": [
+        "fetal hemoglobin",
+        "hbf",
+        "fetal hemoglobin curve"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "fetal-hemoglobin",
+      "box": [
+        751,
+        227,
+        197,
+        29
+      ]
+    },
+    {
+      "id": "adult-hemoglobin",
+      "name": "Adult hemoglobin",
+      "accept": [
+        "adult hemoglobin",
+        "hba",
+        "adult hemoglobin curve"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "hemoglobin",
+      "box": [
+        749,
+        275,
+        200,
+        29
+      ]
+    }
+  ]
+}

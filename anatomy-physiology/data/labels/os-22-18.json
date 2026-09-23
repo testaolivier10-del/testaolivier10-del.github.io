@@ -1,0 +1,141 @@
+{
+  "figure": "os-22-18",
+  "labels": [
+    {
+      "id": "inspiratory-reserve-volume",
+      "name": "Inspiratory reserve volume",
+      "accept": [
+        "inspiratory reserve volume",
+        "irv"
+      ],
+      "box": [
+        320,
+        80,
+        165,
+        57
+      ],
+      "concept": "lung-volumes"
+    },
+    {
+      "id": "tidal-volume",
+      "name": "Tidal volume",
+      "accept": [
+        "tidal volume",
+        "tv",
+        "vt"
+      ],
+      "box": [
+        333,
+        213,
+        138,
+        23
+      ],
+      "concept": "lung-volumes"
+    },
+    {
+      "id": "expiratory-reserve-volume",
+      "name": "Expiratory reserve volume",
+      "accept": [
+        "expiratory reserve volume",
+        "erv"
+      ],
+      "box": [
+        319,
+        252,
+        166,
+        57
+      ],
+      "concept": "lung-volumes"
+    },
+    {
+      "id": "residual-volume",
+      "name": "Residual volume",
+      "accept": [
+        "residual volume",
+        "rv"
+      ],
+      "box": [
+        314,
+        346,
+        178,
+        24
+      ],
+      "concept": "lung-volumes"
+    },
+    {
+      "id": "inspiratory-capacity",
+      "name": "Inspiratory capacity",
+      "accept": [
+        "inspiratory capacity",
+        "ic"
+      ],
+      "box": [
+        546,
+        103,
+        207,
+        28
+      ],
+      "concept": "lung-capacities"
+    },
+    {
+      "id": "functional-residual-capacity",
+      "name": "Functional residual capacity",
+      "accept": [
+        "functional residual capacity",
+        "frc"
+      ],
+      "box": [
+        559,
+        282,
+        180,
+        61
+      ],
+      "concept": "lung-capacities"
+    },
+    {
+      "id": "vital-capacity",
+      "name": "Vital capacity",
+      "accept": [
+        "vital capacity",
+        "vc"
+      ],
+      "box": [
+        800,
+        134,
+        143,
+        28
+      ],
+      "concept": "lung-capacities"
+    },
+    {
+      "id": "residual-volume-bar",
+      "name": "Residual volume",
+      "accept": [
+        "residual volume",
+        "rv"
+      ],
+      "box": [
+        821,
+        325,
+        95,
+        57
+      ],
+      "concept": "lung-volumes"
+    },
+    {
+      "id": "total-lung-capacity",
+      "name": "Total lung capacity",
+      "accept": [
+        "total lung capacity",
+        "tlc"
+      ],
+      "box": [
+        993,
+        179,
+        92,
+        94
+      ],
+      "concept": "lung-capacities"
+    }
+  ]
+}

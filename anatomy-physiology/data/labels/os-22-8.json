@@ -1,0 +1,159 @@
+{
+  "figure": "os-22-8",
+  "labels": [
+    {
+      "id": "pyriform-fossa",
+      "name": "Pyriform fossa",
+      "accept": [
+        "pyriform fossa",
+        "piriform fossa",
+        "piriform recess",
+        "pyriform recess",
+        "pyriform sinus",
+        "piriform sinus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": null,
+      "box": [
+        909,
+        138,
+        162,
+        28
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "esophagus",
+        "oesophagus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "major-organs",
+      "box": [
+        48,
+        139,
+        130,
+        29
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs",
+      "box": [
+        79,
+        210,
+        100,
+        24
+      ]
+    },
+    {
+      "id": "true-vocal-cord",
+      "name": "True vocal cord",
+      "accept": [
+        "true vocal cord",
+        "true vocal cords",
+        "vocal cord",
+        "vocal cords",
+        "vocal fold",
+        "vocal folds",
+        "true vocal fold"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "larynx",
+      "box": [
+        907,
+        273,
+        189,
+        24
+      ]
+    },
+    {
+      "id": "vestibular-fold",
+      "name": "Vestibular fold",
+      "accept": [
+        "vestibular fold",
+        "vestibular folds",
+        "false vocal cord",
+        "false vocal cords",
+        "false vocal fold"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "larynx",
+      "box": [
+        4,
+        299,
+        175,
+        23
+      ]
+    },
+    {
+      "id": "glottis",
+      "name": "Glottis",
+      "accept": [
+        "glottis",
+        "rima glottidis"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "larynx",
+      "box": [
+        90,
+        343,
+        87,
+        24
+      ]
+    },
+    {
+      "id": "epiglottis",
+      "name": "Epiglottis",
+      "accept": [
+        "epiglottis"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "larynx",
+      "box": [
+        908,
+        401,
+        119,
+        27
+      ]
+    },
+    {
+      "id": "tongue",
+      "name": "Tongue",
+      "accept": [
+        "tongue"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null,
+      "box": [
+        907,
+        554,
+        93,
+        28
+      ]
+    }
+  ]
+}

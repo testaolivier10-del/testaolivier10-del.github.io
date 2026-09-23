@@ -1,0 +1,186 @@
+{
+  "figure": "os-22-16",
+  "labels": [
+    {
+      "id": "atmospheric-pressure",
+      "name": "Atmospheric pressure",
+      "accept": [
+        "atmospheric pressure",
+        "barometric pressure",
+        "patm"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "pressure",
+      "box": [
+        444,
+        3,
+        243,
+        28
+      ]
+    },
+    {
+      "id": "parietal-pleura",
+      "name": "Parietal pleura",
+      "accept": [
+        "parietal pleura"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "pleura",
+      "box": [
+        933,
+        269,
+        164,
+        28
+      ]
+    },
+    {
+      "id": "visceral-pleura",
+      "name": "Visceral pleura",
+      "accept": [
+        "visceral pleura",
+        "pulmonary pleura"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "pleura",
+      "box": [
+        929,
+        332,
+        170,
+        28
+      ]
+    },
+    {
+      "id": "transpulmonary-pressure",
+      "name": "Transpulmonary pressure",
+      "accept": [
+        "transpulmonary pressure"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "ventilation-pressures",
+      "box": [
+        5,
+        386,
+        282,
+        28
+      ]
+    },
+    {
+      "id": "pleural-cavity",
+      "name": "Pleural cavity",
+      "accept": [
+        "pleural cavity",
+        "pleural space",
+        "intrapleural space"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "pleural-cavity",
+      "box": [
+        930,
+        420,
+        153,
+        28
+      ]
+    },
+    {
+      "id": "intrapleural-pressure",
+      "name": "Intrapleural pressure",
+      "accept": [
+        "intrapleural pressure",
+        "pleural pressure",
+        "pip"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "ventilation-pressures",
+      "box": [
+        7,
+        544,
+        233,
+        28
+      ]
+    },
+    {
+      "id": "thoracic-wall",
+      "name": "Thoracic wall",
+      "accept": [
+        "thoracic wall",
+        "chest wall"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null,
+      "box": [
+        927,
+        549,
+        149,
+        24
+      ]
+    },
+    {
+      "id": "lung",
+      "name": "Lung",
+      "accept": [
+        "lung"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "lungs",
+      "box": [
+        928,
+        608,
+        63,
+        28
+      ]
+    },
+    {
+      "id": "intra-alveolar-pressure",
+      "name": "Intra-alveolar pressure",
+      "accept": [
+        "intra-alveolar pressure",
+        "intrapulmonary pressure",
+        "alveolar pressure",
+        "palv"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "ventilation-pressures",
+      "box": [
+        307,
+        769,
+        274,
+        27
+      ]
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "diaphragm",
+      "box": [
+        682,
+        769,
+        126,
+        28
+      ]
+    }
+  ]
+}

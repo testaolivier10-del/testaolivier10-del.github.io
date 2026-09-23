@@ -1,0 +1,50 @@
+{
+  "os-12-9": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.9",
+      "section": "12.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/23b2dfb9d515e5e0b6c5275db6ac195dca3c801d",
+      "page": "12-2-nervous-tissue"
+    },
+    "alt": "Three line drawings of neurons. In the first, a round cell body hangs below a single short stalk that joins one long process, which ends in branches at both ends. In the second, an oval cell body sits in the middle of a line, with one branched process leaving each end. In the third, a cell body with many short branched processes sends out one long process that ends in branches.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.9",
+    "labels": [],
+    "w": 893,
+    "h": 566,
+    "ext": "jpg"
+  },
+  "os-12-11": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.11",
+      "section": "12.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d5ddd72143c60060583919fa105d60fdb8625a31",
+      "page": "12-2-nervous-tissue"
+    },
+    "alt": "A drawing of four kinds of support cells among two large branching neurons. A star-shaped cell with many processes touches the neurons and a blood-vessel-like surface. Two small cells with fine, bristly processes sit nearby. A row of cube-shaped cells lines a surface at the lower left, sending long thin processes up into the tissue. Pale cells at the lower right send out arms that wrap segments of several different axons in layered sleeves.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.11",
+    "labels": [],
+    "w": 825,
+    "h": 637,
+    "ext": "jpg"
+  },
+  "os-12-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.12",
+      "section": "12.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/789953ea2d7ad8748316c97fe41ba07a2cf92af7",
+      "page": "12-2-nervous-tissue"
+    },
+    "alt": "A drawing of a sensory neuron's round cell body covered by a layer of flattened cells, like tiles over a ball. A single stalk leaves the cell body and joins an axon that runs across the bottom of the picture. Elongated cells wrapped around the axon sit end to end along it, and the cut end of the axon shows the layers wrapped around it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.12",
+    "labels": [],
+    "w": 790,
+    "h": 494,
+    "ext": "jpg"
+  }
+}

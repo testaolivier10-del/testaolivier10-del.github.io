@@ -1,0 +1,48 @@
+{
+  "topic": "brain-protection",
+  "hook": "<p>Jordan, 16, is hit on the side of the head by a baseball. He is knocked out for a minute, then gets up, says he feels fine and wants to keep playing. An hour later he is drowsy and hard to wake, and his left arm is getting weak. A scan shows a lens-shaped clot between his skull and the tough outer membrane around his brain: a torn artery has been bleeding into a space that is normally closed.</p>",
+  "prereq": [
+    {
+      "q": "What does a tight junction do between two epithelial or endothelial cells?",
+      "options": ["Seals the gap so substances cannot pass between the cells", "Lets ions pass directly from one cell to the next", "Anchors the cells' cytoskeletons together against stretching"],
+      "correct": 0,
+      "why": "Tight junctions seal neighboring cells together near their surface, so substances must go through the cells rather than between them. Gap junctions let ions pass cell to cell; desmosomes anchor cells against pulling.",
+      "review": "cell-junctions"
+    },
+    {
+      "q": "Which glial cells line the fluid-filled spaces inside the brain and spinal cord?",
+      "options": ["Astrocytes", "Ependymal cells", "Oligodendrocytes"],
+      "correct": 1,
+      "why": "Ependymal cells line the brain's internal fluid spaces and the central canal of the spinal cord. Astrocytes support neurons and wrap capillaries; oligodendrocytes make myelin in the CNS.",
+      "review": "neurons-glia"
+    },
+    {
+      "q": "Which part of the brain lies between the diencephalon and the pons?",
+      "options": ["The medulla oblongata", "The cerebellum", "The midbrain"],
+      "correct": 2,
+      "why": "From top to bottom the brainstem is midbrain, pons, medulla oblongata, and the midbrain sits just below the diencephalon. The cerebellum lies behind the brainstem.",
+      "review": "brain-regions"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-13-18",
+    "caption": "The ventricles and the path of cerebrospinal fluid. Hide the labels and name each ventricle and the openings that join them, then follow the arrows out to the arachnoid granulations."
+  },
+  "chain": [
+    { "cause": "Cells covering the choroid plexus in the lateral ventricles pump sodium into the ventricle, and chloride and bicarbonate follow.", "effect": "Water follows the solute, and new CSF collects in the lateral ventricles." },
+    { "cause": "CSF is secreted continuously, so it keeps pushing on the fluid ahead of it.", "effect": "CSF flows through the interventricular foramina into the third ventricle, then down the cerebral aqueduct into the fourth ventricle." },
+    { "cause": "The only exits from the fourth ventricle are the median and lateral apertures.", "effect": "CSF flows out into the subarachnoid space and spreads around the brain and spinal cord." },
+    { "cause": "CSF pressure in the subarachnoid space is a little higher than the pressure of the blood in the venous channels of the dura.", "effect": "CSF flows through the arachnoid granulations into the venous blood, balancing what the choroid plexus makes." },
+    { "cause": "If a tumor pinches the cerebral aqueduct shut, CSF made above the block cannot leave.", "effect": "The lateral and third ventricles swell, pressure inside the skull rises, and the fourth ventricle stays normal: obstructive hydrocephalus." }
+  ],
+  "misconception": {
+    "wrong": "The blood–brain barrier is a wall of astrocytes wrapped around the brain's capillaries.",
+    "right": "The barrier itself is the endothelial cells of the brain's capillaries, sealed edge to edge by continuous tight junctions, with no pores and few transport vesicles. Astrocyte end-feet cover the outside of the capillary and send signals that keep the endothelial cells in this sealed state, but molecules could slip between the end-feet. Everything that enters brain tissue has to pass through the endothelial cells themselves."
+  },
+  "check": ["anp-brain-protection-1", "anp-brain-protection-6", "anp-brain-protection-9", "anp-brain-protection-10", "anp-brain-protection-14", "anp-brain-protection-15", "anp-brain-protection-20"],
+  "summary": "<p>Three meninges cover the brain and spinal cord: the tough dura mater, the web-like arachnoid mater and the tender pia mater. In the skull the epidural and subdural spaces are only potential spaces, while the subarachnoid space holds CSF and the surface vessels. The four ventricles, left from the neural tube's hollow, are joined by the interventricular foramina and the cerebral aqueduct and open through the median and lateral apertures. The choroid plexuses secrete about 500 mL of CSF a day; it flows through the ventricles into the subarachnoid space, floats and cushions the brain, and returns to venous blood, classically through the arachnoid granulations. A blocked path causes hydrocephalus, and a lumbar puncture samples CSF below the end of the cord. The blood–brain barrier is the sealed endothelium of brain capillaries. Epidural hematomas are fast arterial bleeds, subdural hematomas slower venous bleeds, and subarachnoid hemorrhage puts blood into the CSF.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" },
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Altered mental status" }
+  ]
+}

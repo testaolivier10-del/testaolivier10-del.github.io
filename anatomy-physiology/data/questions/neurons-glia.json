@@ -1,0 +1,688 @@
+[
+  {
+    "id": "anp-neurons-glia-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-11",
+    "pin": "astrocyte",
+    "q": "Name the pinned glial cell.",
+    "options": [
+      "Oligodendrocyte",
+      "Microglial cell",
+      "Astrocyte",
+      "Ependymal cell"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The star-shaped cell with many branching processes reaching to neurons and blood vessels is an astrocyte.",
+      "options": [
+        "Oligodendrocytes have a few arms that end in myelin wraps around axons, not many fine star-like processes.",
+        "Microglial cells are small, with short, fine, bristly processes. This cell is large and star-shaped.",
+        "Correct. Its star shape gives the astrocyte its name (astr- = star).",
+        "Ependymal cells form a single layer lining a fluid-filled space. This cell sits among the neurons."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-11",
+    "pin": "ependymal-cells",
+    "q": "Name the pinned cells.",
+    "options": [
+      "Ependymal cells",
+      "Satellite cells",
+      "Astrocyte end-feet",
+      "Schwann cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The row of cube-shaped cells lining a fluid-filled space in the CNS is ependymal cells.",
+      "options": [
+        "Correct. Ependymal cells line the fluid-filled cavities of the brain and the central canal of the spinal cord.",
+        "Satellite cells cover neuron cell bodies in PNS ganglia. They do not line a fluid-filled space in the CNS.",
+        "Astrocyte end-feet wrap capillaries. They are the ends of star-shaped cells, not a lining layer of cells.",
+        "Schwann cells wrap axons in the PNS. They are not found lining spaces in the CNS."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-11",
+    "pin": "microglial-cell",
+    "q": "Name the pinned glial cell.",
+    "options": [
+      "Astrocyte",
+      "Oligodendrocyte",
+      "Ependymal cell",
+      "Microglia"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The small cell with fine, bristly processes is a microglial cell, one of the resident immune cells of the CNS.",
+      "options": [
+        "Astrocytes are much larger, with long star-like processes.",
+        "Oligodendrocytes wrap axon segments in myelin. This small cell wraps nothing.",
+        "Ependymal cells sit side by side in a lining layer.",
+        "Correct. Microglia are the small glia (micro- = small) that patrol the CNS and engulf debris."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-12",
+    "pin": "satellite-cells",
+    "q": "In this drawing of a neuron in a ganglion, name the pinned cells that cover the cell body.",
+    "options": [
+      "Schwann cells",
+      "Satellite cells",
+      "Astrocytes",
+      "Microglia"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Flattened glial cells covering the cell body of a neuron in a PNS ganglion are satellite cells.",
+      "options": [
+        "Schwann cells line up along the axon, not over the cell body.",
+        "Correct. Satellite cells cover the somas of neurons in ganglia.",
+        "Astrocytes do a similar job around neurons, but they are CNS cells. A ganglion is in the PNS.",
+        "Microglia are small immune cells of the CNS. They do not form a covering over neurons in PNS ganglia."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-9",
+    "pin": "bipolar-neuron",
+    "q": "Name the pinned type of neuron.",
+    "options": [
+      "Multipolar neuron",
+      "Unipolar neuron",
+      "Bipolar neuron",
+      "Interneuron"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "One process leaves each end of the cell body, one dendrite and one axon, so this is a bipolar neuron.",
+      "options": [
+        "A multipolar neuron has three or more processes. This one has two.",
+        "A unipolar neuron has a single process that splits in two. Here two separate processes leave opposite ends of the cell body.",
+        "Correct. Two processes, at opposite ends of the soma, make a bipolar neuron.",
+        "Interneuron is a functional class, not a shape. The question asks for the shape shown."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-12-8",
+    "pin": "node-of-ranvier",
+    "q": "Name the pinned gap on the axon.",
+    "options": [
+      "Node of Ranvier",
+      "Axon hillock",
+      "Axon collateral branch",
+      "Initial segment"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The short bare gap between two segments of myelin is a node of Ranvier.",
+      "options": [
+        "Correct. Nodes of Ranvier are the gaps between myelin segments, where the axon's membrane is bare.",
+        "The axon hillock is where the axon leaves the soma, not a gap between myelin segments.",
+        "An axon collateral is a side branch of the axon.",
+        "The initial segment is the first stretch of axon after the hillock, before the myelin starts."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Researchers map the density of voltage-gated sodium channels along a neuron. Where do they expect the highest density, and where do action potentials start?",
+    "options": [
+      "In the axon's initial segment",
+      "On the dendrites, where signals arrive",
+      "In the soma, beside the nucleus",
+      "In the axon terminals"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The initial segment has the densest voltage-gated sodium channels, so it reaches threshold before any other part of the neuron. It is the trigger zone, where action potentials begin.",
+      "options": [
+        "Correct. The initial segment is packed with voltage-gated sodium channels and acts as the trigger zone.",
+        "Dendrites have relatively few voltage-gated sodium channels and mostly carry graded potentials.",
+        "The soma's membrane has far fewer voltage-gated sodium channels than the initial segment.",
+        "Axon terminals release neurotransmitter at the far end of the axon. Action potentials arrive there; they do not start there."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A stained neuron shows dark clumps packed through its cell body and into the bases of its dendrites, but none in the axon or the axon hillock. What are the clumps, and what does their position tell you?",
+    "options": [
+      "Mitochondria, showing the soma uses more energy than any other part",
+      "Myelin fragments, showing the dendrites are insulated",
+      "Rough ER, showing the soma makes most of the neuron's proteins",
+      "Synaptic vesicles, showing the soma releases neurotransmitter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The clumps are Nissl bodies, stacks of rough ER with ribosomes. They mark the soma as the neuron's protein factory; the axon relies on proteins shipped out to it by axonal transport.",
+      "options": [
+        "Mitochondria are spread throughout the neuron, including the axon and its terminals. They are not the dark clumps.",
+        "Myelin wraps axons, not dendrites, and it is made by glial cells, not stored in the neuron's soma.",
+        "Correct. These are Nissl bodies, and their absence from the axon means it depends on the soma for proteins.",
+        "Synaptic vesicles are concentrated in the axon terminals, the one place this stain does not show clumps."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-9",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the path a signal takes through a multipolar neuron: dendrites → soma → axon hillock → ____ → axon → axon terminals.",
+    "options": [
+      "Node of Ranvier",
+      "Initial segment",
+      "Axon collateral branch",
+      "Nissl body"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Graded potentials spread from the dendrites and soma past the hillock to the initial segment, the trigger zone, where the action potential starts and then travels down the axon.",
+      "options": [
+        "Nodes of Ranvier lie along the myelinated axon, after the action potential has already started.",
+        "Correct. The initial segment follows the hillock and is where the action potential begins.",
+        "Axon collaterals are side branches farther along the axon. They are not the step between the hillock and the axon.",
+        "Nissl bodies are rough ER in the soma, not a region the signal passes through."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A neuron's cell body sits in a ganglion beside the spinal cord. A single short stalk leaves it and splits into two long branches, one running to the skin and one into the spinal cord. How is it classified?",
+    "options": [
+      "Multipolar sensory neuron",
+      "Multipolar motor neuron",
+      "Bipolar interneuron",
+      "Unipolar sensory neuron"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "One process that splits in two makes it unipolar (pseudounipolar). Carrying signals from the skin toward the CNS, with its soma in a ganglion, makes it a sensory neuron.",
+      "options": [
+        "A multipolar neuron has many processes leaving its soma. This one has a single stalk that splits in two.",
+        "Motor neurons have many dendrites, and their somas sit in the CNS, not in a ganglion.",
+        "A bipolar neuron has two separate processes, and interneurons lie entirely inside the CNS.",
+        "Correct. This is the typical sensory neuron: unipolar, with its soma in a ganglion."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A neuron lies entirely inside the spinal cord. It receives signals from a sensory neuron's axon terminals and passes them on to a motor neuron. What kind of neuron is it?",
+    "options": [
+      "A motor neuron",
+      "A sensory neuron",
+      "A glial cell",
+      "An interneuron"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A neuron entirely within the CNS that connects other neurons is an interneuron. Interneurons do the integrating, and they are by far the most numerous neurons.",
+      "options": [
+        "A motor neuron sends its axon out of the CNS to an effector. This one stays inside the spinal cord.",
+        "A sensory neuron carries signals in from a sensory receptor, and its soma lies in a ganglion outside the CNS.",
+        "Glial cells support neurons but do not pass signals from one neuron to another. This cell is a neuron.",
+        "Correct. Interneurons connect other neurons inside the CNS."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-12",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statements about multipolar neurons are correct? Select all that apply.",
+    "options": [
+      "They have one axon and two or more dendrites",
+      "Motor neurons are multipolar",
+      "Most interneurons are multipolar",
+      "They are the rarest shape of neuron",
+      "Their somas usually sit in ganglia beside the spinal cord"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Multipolar neurons have one axon and many dendrites. They are the most common shape, and include motor neurons and nearly all interneurons, whose somas sit in CNS gray matter.",
+      "options": [
+        "Correct. That is the definition of multipolar.",
+        "Correct. Motor neurons have many dendrites and one axon.",
+        "Correct. Nearly all interneurons are multipolar.",
+        "Incorrect. Multipolar neurons are by far the most common. Bipolar neurons are the rare ones.",
+        "Incorrect. Somas in ganglia beside the spinal cord belong to unipolar sensory neurons."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A researcher traces the arms of one glial cell in the white matter of the brain and finds that it has wrapped myelin around segments of 30 different axons. Which cell is it?",
+    "options": [
+      "A Schwann cell",
+      "An astrocyte",
+      "A satellite glial cell",
+      "An oligodendrocyte"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Only oligodendrocytes myelinate segments of many different axons, one per arm, and they are found in the CNS, which includes the brain's white matter.",
+      "options": [
+        "A Schwann cell myelinates a single segment of a single axon, and it works in the PNS, not the brain.",
+        "Astrocytes regulate the fluid around neurons and wrap capillaries. They do not make myelin.",
+        "Satellite cells cover neuron cell bodies in PNS ganglia. They do not make myelin.",
+        "Correct. One oligodendrocyte can myelinate segments of dozens of axons."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A few days after a small area of brain tissue is damaged, which glial cells multiply, move to the site and engulf the dead cells?",
+    "options": [
+      "Microglia",
+      "Ependymal cells",
+      "Oligodendrocytes",
+      "Schwann cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Microglia are the resident immune cells of the CNS. When they detect damage they multiply, move to the spot and clear debris by phagocytosis.",
+      "options": [
+        "Correct. Microglia are the CNS's phagocytes.",
+        "Ependymal cells line fluid-filled spaces and help move and make that fluid. They are not phagocytes.",
+        "Oligodendrocytes make myelin. They do not engulf debris.",
+        "Schwann cells help clear debris after a nerve injury, but they are found in the PNS, not the brain."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-15",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the events of peripheral nerve regeneration in order, starting from the cut.",
+    "options": [
+      "The part of the axon beyond the cut breaks down, along with its myelin",
+      "Schwann cells and macrophages clear the debris",
+      "Schwann cells multiply and line up to form a regeneration tube",
+      "A sprout from the cut end grows along the tube at about 1 mm per day",
+      "The axon reaches its target and Schwann cells wrap it in new myelin"
+    ],
+    "why": {
+      "correct": "The far segment degenerates, its debris is cleared, Schwann cells build a guiding tube, the axon regrows along it, and it is remyelinated when it reaches its target.",
+      "options": [
+        "First: cut off from the soma's supply of proteins, the far segment breaks down.",
+        "Second: the wreckage is cleared, within a few weeks in the PNS.",
+        "Third: the Schwann cells form a column inside the empty connective tissue tube.",
+        "Fourth: the regrowing axon follows the tube.",
+        "Last: reconnection and new myelin."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-16",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This description of how a cut axon in a nerve of the forearm regrows has one wrong step. Find it.",
+    "options": [
+      "The axon segment beyond the cut breaks down within days",
+      "Macrophages and Schwann cells clear the myelin debris",
+      "Oligodendrocytes multiply and line up to form a guiding tube",
+      "A sprout from the cut end grows along the tube",
+      "The regrown axon is wrapped in new myelin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A forearm nerve is in the PNS, where Schwann cells multiply and form the regeneration tube. Oligodendrocytes are CNS cells and do not form guiding tubes.",
+      "options": [
+        "Correct step. Without proteins from the soma, the far segment breaks down.",
+        "Correct step. Schwann cells and macrophages from the blood clear the debris.",
+        "This is the wrong step. In the PNS it is Schwann cells, not oligodendrocytes, that form the tube.",
+        "Correct step. The sprout follows the Schwann cell tube.",
+        "Correct step. Schwann cells remyelinate the regrown axon."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Marco's cut nerve is repaired 15 cm from the tip of his thumb. Assuming the axons regrow at about 1 mm per day once they cross the repair, about how long until feeling can start to return to the tip of the thumb?",
+    "options": [
+      "About 15 days",
+      "About 5 months",
+      "About 1 year",
+      "About 1.5 days"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "15 cm is 150 mm. At 1 mm per day, 150 mm takes about 150 days, which is about 5 months (150 ÷ 30). In practice it takes a little longer, because the sprouts first have to cross the repair site.",
+      "options": [
+        "15 days would mean regrowth of 10 mm per day. The distance is 150 mm, not 15 mm.",
+        "Correct. 150 mm ÷ 1 mm/day = 150 days, about 5 months.",
+        "A year is about 365 days, more than twice as long as 150 mm of regrowth at 1 mm per day.",
+        "1.5 days would require regrowth of 100 mm per day, far faster than axons regrow."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "neurons can never regrow",
+    "q": "A woman's spinal cord is damaged in a fall, cutting many axons. Her cell bodies above the injury survive, yet her axons do not grow back across it. What is the main reason?",
+    "options": [
+      "Mature neurons cannot divide, so the cut axons cannot be replaced",
+      "The axons are unmyelinated, and only myelinated axons can regrow",
+      "Microglia attack and destroy the neurons' cell bodies",
+      "The glial surroundings in the CNS block axon regrowth"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Regrowing an axon does not require the neuron to divide; it requires a surviving cell body and a path to grow along. In the CNS, oligodendrocytes form no guiding tube, CNS myelin contains proteins that stop growing axons, and astrocytes seal the injury with a scar.",
+      "options": [
+        "Neurons do not divide, but a cut axon regrows from its surviving cell body, as happens in PNS nerves. Division is not the issue.",
+        "Most axons in the spinal cord's white matter are myelinated, and myelination is not what allows regrowth.",
+        "The question states that the cell bodies survive. Microglia clear debris; they are not the reason the axons fail to regrow.",
+        "Correct. The CNS environment, not the neuron's inability to divide, is the main barrier."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-19",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An axon in a peripheral nerve is cut. Predict each change over the following two weeks, compared with before the cut.",
+    "variables": [
+      {
+        "name": "Intact axon beyond the cut",
+        "answer": "down",
+        "why": "The far segment is cut off from the proteins shipped out from the soma, so it fragments and breaks down within days."
+      },
+      {
+        "name": "Number of Schwann cells at the injured segment",
+        "answer": "up",
+        "why": "Once the myelin debris is cleared, Schwann cells multiply and line up to form the regeneration tube."
+      },
+      {
+        "name": "Protein synthesis in the neuron's cell body",
+        "answer": "up",
+        "why": "The surviving soma swells and ramps up production of the proteins needed to regrow the axon."
+      }
+    ],
+    "why": {
+      "correct": "After a PNS axon is cut, the far segment breaks down, Schwann cells multiply to build a guiding tube, and the cell body steps up protein synthesis to supply regrowth."
+    }
+  },
+  {
+    "id": "anp-neurons-glia-20",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statements about the myelin sheath are correct? Select all that apply.",
+    "options": [
+      "It is made of many layers of a glial cell's plasma membrane",
+      "It is mostly lipid",
+      "It is interrupted at intervals by nodes of Ranvier",
+      "It is secreted by the neuron's own soma",
+      "It covers dendrites as well as axons"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Myelin is layer on layer of glial plasma membrane, mostly lipid, wrapped around axon segments that are separated by bare nodes of Ranvier.",
+      "options": [
+        "Correct. A Schwann cell or oligodendrocyte spirals its own membrane around the axon.",
+        "Correct. About 70 to 80% of myelin's dry weight is lipid.",
+        "Correct. The gaps between myelin segments are nodes of Ranvier.",
+        "Incorrect. Myelin is made by glial cells, not by the neuron.",
+        "Incorrect. Only axons are myelinated. Dendrites are never wrapped."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Most tumors that start in brain tissue itself arise from glial cells rather than from neurons. What best explains this?",
+    "options": [
+      "Glial cells keep the ability to divide, while mature neurons do not",
+      "Glial cells are exposed to more blood-borne toxins than neurons are",
+      "Neurons are protected from damage by the myelin wrapped around them",
+      "Glial cells far outnumber neurons, about ten to one"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Tumors grow from cells that divide. Glial cells keep dividing throughout life, while mature neurons do not, so most brain tumors are gliomas.",
+      "options": [
+        "Correct. A cell that divides can divide out of control; a cell that does not divide cannot form a tumor.",
+        "Blood exposure does not explain which cells form tumors. The ability to divide does.",
+        "Myelin wraps axons, not whole neurons, and it has nothing to do with tumor formation.",
+        "Direct counts find glia and neurons in roughly equal numbers overall. Even if glia were more numerous, cell division, not cell number, is what allows tumors."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What do ependymal cells do?",
+    "options": [
+      "Wrap axons in the CNS in myelin",
+      "Cover neuron cell bodies in ganglia",
+      "Line the brain's fluid-filled spaces",
+      "Engulf debris after injury"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Ependymal cells line the cavities inside the brain and the central canal of the spinal cord; their cilia help move the fluid, and some help produce it.",
+      "options": [
+        "That is the job of oligodendrocytes.",
+        "That is the job of satellite cells in the PNS.",
+        "Correct. Ependymal cells form the lining of the CNS's fluid-filled spaces.",
+        "That is the job of microglia."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-23",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Compared with an oligodendrocyte, why is a Schwann cell better able to support regrowth of a cut axon?",
+    "options": [
+      "It serves one axon segment and can multiply to guide regrowth",
+      "It makes thicker myelin that shields the axon from further injury",
+      "It releases neurotransmitter that attracts the growing axon",
+      "It can turn into a new neuron to replace the damaged one"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A Schwann cell serves a single segment of a single axon and keeps its nucleus and cytoplasm in a living outer layer, the neurilemma. After injury it can clear debris, multiply and form the regeneration tube. An oligodendrocyte serves many axons and forms no such tube.",
+      "options": [
+        "Correct. One axon per cell and a living outer layer let Schwann cells rebuild the path.",
+        "Myelin thickness does not decide whether an axon regrows, and myelin does not prevent the cut.",
+        "Glial cells do not guide regrowth with neurotransmitter. Schwann cells release growth-promoting proteins and provide an adhesive tube.",
+        "Schwann cells do not become neurons. The neuron survives and regrows its own axon."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-24",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Direct counts of whole human brains compare the number of neurons with the number of glial cells. What do they find?",
+    "options": [
+      "About ten glial cells for every neuron, in every brain region",
+      "About ten neurons for every glial cell",
+      "Roughly equal numbers overall, varying by region",
+      "Almost no glial cells in adults"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Counting dissolved nuclei from whole brains gives about 86 billion neurons and a similar number of other cells, mostly glia: close to one to one overall, with large differences between regions. Some exams still expect the older \"ten to one\" figure.",
+      "options": [
+        "This is the older textbook figure, and direct counts do not support it overall or in every region.",
+        "Neurons do outnumber glia in a few densely packed regions, but not overall.",
+        "Correct. The overall ratio is near one to one.",
+        "Glial cells make up about half of the brain's cells in adults."
+      ]
+    }
+  },
+  {
+    "id": "anp-neurons-glia-25",
+    "type": "multi",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which pairings of a CNS glial cell with a PNS glial cell that does a similar job are correct? Select all that apply.",
+    "options": [
+      "Oligodendrocyte and Schwann cell: both make myelin",
+      "Astrocyte and satellite cell: both surround neurons and regulate the fluid around them",
+      "Microglia and satellite cell: both are phagocytes",
+      "Ependymal cell and Schwann cell: both line fluid-filled spaces"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "why": {
+      "correct": "Oligodendrocytes and Schwann cells both make myelin; astrocytes and satellite cells both surround neurons and control their surroundings. Ependymal cells have no PNS counterpart.",
+      "options": [
+        "Correct. Each is the myelin maker on its side of the CNS–PNS border.",
+        "Correct. Satellite cells do for ganglion neurons much of what astrocytes do in the CNS.",
+        "Incorrect. Satellite cells are not the PNS's phagocytes; in a damaged nerve, Schwann cells and macrophages from the blood clear the debris.",
+        "Incorrect. Schwann cells wrap axons. Ependymal cells have no PNS equivalent."
+      ]
+    }
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "topic": "action-potential",
+  "hook": "<p>Dana, 31, notices that her right eye blurs whenever she steps out of a hot shower, and clears once she cools down. A month ago her left leg tingled for a week. Her MRI shows patches of lost myelin in her brain: multiple sclerosis. Nothing is wrong with her neurons' action potentials themselves. What has failed is how those action potentials travel, and heat is enough to tip the damaged axons from slow into silent.</p>",
+  "prereq": [
+    {
+      "q": "A neuron at rest sits at about −70 mV. At about what membrane potential does it reach threshold?",
+      "options": ["−90 mV", "−55 mV", "+30 mV"],
+      "correct": 1,
+      "why": "Threshold in a typical neuron is about −55 mV: the point where sodium entry outruns potassium exit and the action potential takes off. −90 mV is potassium's equilibrium potential, and +30 mV is the peak.",
+      "review": "action-potential-basics"
+    },
+    {
+      "q": "Which cells make the myelin sheath around axons in the peripheral nervous system?",
+      "options": ["Astrocytes", "Oligodendrocytes", "Schwann cells"],
+      "correct": 2,
+      "why": "Schwann cells wrap peripheral axons. Oligodendrocytes make myelin in the CNS, and astrocytes do not make myelin.",
+      "review": "neurons-glia"
+    },
+    {
+      "q": "If potassium were the only ion that could cross a neuron's membrane, the membrane would settle near potassium's equilibrium potential. About what is that value?",
+      "options": ["−90 mV", "−70 mV", "+60 mV"],
+      "correct": 0,
+      "why": "Potassium's equilibrium potential is about −90 mV. The resting potential, −70 mV, sits a little above it because some sodium also leaks in. +60 mV is sodium's equilibrium potential.",
+      "review": "membrane-potential"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-23",
+    "caption": "The action potential graph. Hide the labels and name the upstroke, the downstroke and the dip below rest, then give the voltage at rest, at threshold and at the peak."
+  },
+  "chain": [
+    { "cause": "A graded depolarization brings the trigger zone to threshold, about −55 mV.", "effect": "Enough sodium activation gates open that sodium entering outruns potassium leaving." },
+    { "cause": "Sodium entry depolarizes the membrane, which opens more activation gates.", "effect": "Positive feedback drives the rising phase to about +30 mV in about half a millisecond." },
+    { "cause": "About a millisecond after opening, inactivation gates plug the sodium channels, and the delayed potassium channels open.", "effect": "Sodium inflow stops, potassium flows out, and the falling phase repolarizes the membrane." },
+    { "cause": "The potassium channels close slowly.", "effect": "Extra potassium leaves, and the membrane dips to about −80 mV: the afterhyperpolarization." },
+    { "cause": "Repolarization lets the sodium channels reset to the closed, ready state over a few milliseconds.", "effect": "The absolute refractory period ends, then the relative one, and the membrane can fire normally again." },
+    { "cause": "Current from the firing patch spreads along the inside of the axon; myelin keeps it from leaking out.", "effect": "The next patch or node reaches threshold and fires, so the action potential moves forward: continuously in bare axons, node to node (saltatory) in myelinated ones." }
+  ],
+  "misconception": {
+    "wrong": "The refractory period happens because the sodium–potassium pump has to restore the ion concentrations after each action potential.",
+    "right": "One action potential moves only a tiny fraction of the ions, and the pump works slowly in the background. The refractory period comes from the sodium channels: after they open they inactivate, and they cannot reset until the membrane repolarizes. While none are ready, no stimulus works (absolute); while only some are ready and potassium channels are still open, only a stronger stimulus works (relative)."
+  },
+  "check": ["anp-action-potential-1", "anp-action-potential-3", "anp-action-potential-6", "anp-action-potential-8", "anp-action-potential-11", "anp-action-potential-13", "anp-action-potential-16", "anp-action-potential-19"],
+  "summary": "<p>The voltage-gated sodium channel has a fast activation gate and a slower inactivation gate, so it cycles from closed (ready) to open to inactivated, and resets only when the membrane repolarizes. Delayed potassium channels open slowly and close slowly. Together they give the phases: rest at −70 mV, depolarization to threshold at −55 mV, a rising phase to about +30 mV driven by sodium entry, a falling phase driven by potassium exit, and an afterhyperpolarization to about −80 mV. In the absolute refractory period no stimulus can fire the membrane; in the relative refractory period a stronger one can. Action potentials travel by continuous conduction in unmyelinated axons and by faster, cheaper saltatory conduction between nodes of Ranvier in myelinated ones. Conduction velocity rises with axon diameter, myelination and warmth. In demyelinating diseases such as multiple sclerosis, current leaks out where myelin is lost, and conduction slows or fails.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology (nervous system)" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" }
+  ]
+}

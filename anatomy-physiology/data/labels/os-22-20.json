@@ -1,0 +1,249 @@
+{
+  "figure": "os-22-20",
+  "labels": [
+    {
+      "id": "pons",
+      "name": "Pons",
+      "accept": [
+        "pons"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "brainstem",
+      "box": [
+        709,
+        145,
+        63,
+        23
+      ]
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla",
+        "medulla oblongata"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "brainstem",
+      "box": [
+        88,
+        168,
+        97,
+        24
+      ]
+    },
+    {
+      "id": "pontine-respiratory-group",
+      "name": "Pontine respiratory group (PRG)",
+      "accept": [
+        "pontine respiratory group",
+        "prg",
+        "pontine respiratory group (prg)"
+      ],
+      "lines": [
+        4,
+        6,
+        9
+      ],
+      "concept": "respiratory-centers",
+      "box": [
+        956,
+        374,
+        146,
+        96
+      ]
+    },
+    {
+      "id": "pneumotaxic-center",
+      "name": "Pneumotaxic center",
+      "accept": [
+        "pneumotaxic center",
+        "pneumotaxic centre"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "respiratory-centers",
+      "box": [
+        709,
+        383,
+        226,
+        25
+      ]
+    },
+    {
+      "id": "pons-detail",
+      "name": "Pons",
+      "accept": [
+        "pons"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "brainstem",
+      "box": [
+        88,
+        432,
+        66,
+        24
+      ]
+    },
+    {
+      "id": "apneustic-center",
+      "name": "Apneustic center",
+      "accept": [
+        "apneustic center",
+        "apneustic centre"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "respiratory-centers",
+      "box": [
+        707,
+        435,
+        195,
+        29
+      ]
+    },
+    {
+      "id": "ventral-respiratory-group-vrg",
+      "name": "Ventral respiratory group (VRG)",
+      "accept": [
+        "ventral respiratory group",
+        "vrg",
+        "ventral respiratory group (vrg)"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "respiratory-centers",
+      "box": [
+        86,
+        544,
+        212,
+        62
+      ]
+    },
+    {
+      "id": "dorsal-respiratory-group-drg",
+      "name": "Dorsal respiratory group (DRG)",
+      "accept": [
+        "dorsal respiratory group",
+        "drg",
+        "dorsal respiratory group (drg)"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "respiratory-centers",
+      "box": [
+        707,
+        566,
+        205,
+        63
+      ]
+    },
+    {
+      "id": "medulla-detail",
+      "name": "Medulla",
+      "accept": [
+        "medulla",
+        "medulla oblongata"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "brainstem",
+      "box": [
+        88,
+        627,
+        97,
+        24
+      ]
+    },
+    {
+      "id": "accessory-respiratory-muscles",
+      "name": "Accessory respiratory muscles",
+      "accept": [
+        "accessory respiratory muscles",
+        "accessory muscles",
+        "accessory muscles of breathing",
+        "accessory breathing muscles"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        37,
+        867,
+        326,
+        27
+      ]
+    },
+    {
+      "id": "internal-intercostal-muscle",
+      "name": "Internal intercostal muscle",
+      "accept": [
+        "internal intercostal muscle",
+        "internal intercostal muscles",
+        "internal intercostals",
+        "internal intercostal"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        297,
+        1177,
+        293,
+        24
+      ]
+    },
+    {
+      "id": "external-intercostal-muscle",
+      "name": "External intercostal muscle",
+      "accept": [
+        "external intercostal muscle",
+        "external intercostal muscles",
+        "external intercostals",
+        "external intercostal"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "breathing-muscles",
+      "box": [
+        563,
+        1362,
+        302,
+        24
+      ]
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "diaphragm",
+      "box": [
+        877,
+        1396,
+        130,
+        29
+      ]
+    }
+  ]
+}

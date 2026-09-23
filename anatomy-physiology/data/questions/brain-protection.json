@@ -1,0 +1,582 @@
+[
+  {
+    "id": "anp-brain-protection-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-17",
+    "pin": "dura-mater",
+    "q": "Name the pinned layer.",
+    "options": [
+      "Dura mater",
+      "Arachnoid mater",
+      "Pia mater",
+      "Periosteum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The dura mater is the thick outer meningeal layer against the inside of the skull. In the skull it has two layers, which split to enclose the venous channel in the midline.",
+      "options": [
+        "Correct. The thick layer against the bone is the dura mater.",
+        "The arachnoid mater is the thin layer just inside the dura, with web-like strands reaching down to the pia.",
+        "The pia mater is the thin layer stuck to the brain surface, following it into the sulci.",
+        "Periosteum covers the outside of bone; inside the skull its role is taken by the outer layer of the dura, which is not a separate named membrane here."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "figure": "os-13-17",
+    "pin": "subarachnoid-space",
+    "q": "Name the pinned space.",
+    "options": [
+      "Subdural space",
+      "Subarachnoid space",
+      "Epidural space",
+      "Longitudinal fissure"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The subarachnoid space lies between the arachnoid and the pia. It is a real space, crossed by web-like strands and filled with CSF.",
+      "options": [
+        "The subdural space lies between the dura and the arachnoid, above the pinned space, and is normally only a potential space.",
+        "Correct. The space crossed by strands between the arachnoid and the pia is the subarachnoid space.",
+        "The epidural space lies outside the dura, between it and the bone; in the skull it is only a potential space.",
+        "The longitudinal fissure is the deep groove between the two hemispheres, not a space between meningeal layers."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-18",
+    "pin": "choroid-plexus",
+    "q": "Name the pinned structure, the main source of cerebrospinal fluid.",
+    "options": [
+      "Arachnoid granulation",
+      "Interventricular foramen",
+      "Choroid plexus",
+      "Corpus callosum"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The choroid plexus is a tuft of capillaries covered by modified ependymal cells inside each ventricle. It secretes most of the CSF.",
+      "options": [
+        "Arachnoid granulations sit at the top of the head, where CSF returns to venous blood, not inside a ventricle.",
+        "The interventricular foramen is the small opening from each lateral ventricle into the third ventricle, not a tuft of tissue.",
+        "Correct. The tuft of tissue in the ventricle is the choroid plexus.",
+        "The corpus callosum is the white-matter band above the lateral ventricles, not a source of fluid."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-18",
+    "pin": "cerebral-aqueduct",
+    "q": "Name the pinned channel through the midbrain.",
+    "options": [
+      "Central canal",
+      "Cerebral aqueduct",
+      "Interventricular foramen",
+      "Median aperture"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cerebral aqueduct is the narrow canal through the midbrain that joins the third ventricle to the fourth.",
+      "options": [
+        "The central canal runs down the middle of the spinal cord, below the fourth ventricle.",
+        "Correct. The canal through the midbrain is the cerebral aqueduct.",
+        "The interventricular foramen joins each lateral ventricle to the third ventricle, higher up in the brain.",
+        "The median aperture is an opening in the roof of the fourth ventricle into the subarachnoid space."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-18",
+    "pin": "fourth-ventricle",
+    "q": "Name the pinned chamber between the brainstem and the cerebellum.",
+    "options": [
+      "Third ventricle",
+      "Lateral ventricle",
+      "Subarachnoid space",
+      "Fourth ventricle"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The fourth ventricle is the tent-shaped space between the pons and medulla in front and the cerebellum behind.",
+      "options": [
+        "The third ventricle is a narrow midline slit in the diencephalon, higher up.",
+        "The lateral ventricles lie deep in the cerebral hemispheres.",
+        "The subarachnoid space surrounds the brain outside the pia; the pinned space is inside the brain.",
+        "Correct. The chamber between brainstem and cerebellum is the fourth ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-6",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "q": "Put the places cerebrospinal fluid passes through in order, from where most of it is made to where it returns to the blood.",
+    "options": [
+      "Choroid plexus of a lateral ventricle",
+      "Third ventricle",
+      "Cerebral aqueduct",
+      "Fourth ventricle",
+      "Subarachnoid space",
+      "Arachnoid granulations"
+    ],
+    "why": {
+      "correct": "CSF made in the lateral ventricles passes through the interventricular foramina to the third ventricle, down the cerebral aqueduct to the fourth ventricle, out through the apertures into the subarachnoid space, and back into venous blood at the arachnoid granulations.",
+      "options": [
+        "The choroid plexuses of the lateral ventricles make the most CSF, which drains through the interventricular foramina.",
+        "The third ventricle lies in the midline of the diencephalon.",
+        "The aqueduct runs through the midbrain.",
+        "The fourth ventricle lies between the brainstem and the cerebellum; CSF leaves it through the median and lateral apertures.",
+        "CSF spreads around the brain and spinal cord here.",
+        "The granulations push into the venous channels in the dura, where CSF enters the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-7",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "Fill the gap in the path of CSF: lateral ventricle → interventricular foramen → third ventricle → ____ → fourth ventricle.",
+    "options": [
+      "Cerebral aqueduct",
+      "Central canal",
+      "Median aperture",
+      "Arachnoid granulation"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cerebral aqueduct, running through the midbrain, carries CSF from the third ventricle to the fourth.",
+      "options": [
+        "Correct. The aqueduct links the third and fourth ventricles.",
+        "The central canal continues below the fourth ventricle into the spinal cord.",
+        "The median aperture is an exit from the fourth ventricle, after it, not before it.",
+        "Arachnoid granulations are where CSF leaves the subarachnoid space, at the end of the path."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-8",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "This description of CSF flow contains one wrong step. Find it.",
+    "options": [
+      "The choroid plexus secretes CSF into the lateral ventricles",
+      "CSF flows through the interventricular foramina into the third ventricle",
+      "CSF flows from the fourth ventricle back up into the lateral ventricles",
+      "CSF leaves through the median and lateral apertures into the subarachnoid space"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "CSF flows one way: lateral ventricles → third ventricle → cerebral aqueduct → fourth ventricle → apertures. It does not flow back up from the fourth ventricle into the lateral ventricles; it leaves the fourth ventricle through the apertures.",
+      "options": [
+        "Right. The lateral ventricles' choroid plexuses make most of the CSF.",
+        "Right. The interventricular foramina join the lateral ventricles to the third.",
+        "This is the error. From the fourth ventricle, CSF flows out into the subarachnoid space, not back up.",
+        "Right. The apertures are the exits into the subarachnoid space."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-9",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "q": "A small tumor pinches the cerebral aqueduct shut. Predict the change in each over the following days.",
+    "variables": [
+      {
+        "name": "Size of the lateral ventricles",
+        "answer": "up",
+        "why": "The choroid plexuses above the block keep secreting CSF, which cannot pass the aqueduct, so it builds up and swells the ventricles above it."
+      },
+      {
+        "name": "Size of the fourth ventricle",
+        "answer": "none",
+        "why": "The fourth ventricle lies below the block. Its own CSF still drains out through the apertures, so it stays normal size."
+      },
+      {
+        "name": "Pressure inside the skull",
+        "answer": "up",
+        "why": "Fluid is added to a closed bony box faster than it leaves, so the swelling ventricles press the brain against the skull and pressure rises."
+      },
+      {
+        "name": "Rate of CSF secretion by the choroid plexuses",
+        "answer": "none",
+        "why": "Secretion is driven by the choroid plexus cells' ion pumping and changes little as pressure rises, which is why the fluid keeps building up."
+      }
+    ],
+    "why": {
+      "correct": "A block at the cerebral aqueduct traps CSF made in the lateral and third ventricles. Those ventricles swell and pressure in the skull rises, while the fourth ventricle below the block stays normal and secretion continues: obstructive hydrocephalus."
+    }
+  },
+  {
+    "id": "anp-brain-protection-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Jordan, 16, is hit on the side of the head by a baseball and knocked out briefly. He wakes and seems fine, then an hour later becomes drowsy. A scan shows a lens-shaped clot that stops at the skull's sutures. Which vessel was most likely torn?",
+    "options": [
+      "A bridging vein",
+      "An artery at the base of the brain",
+      "A capillary of the choroid plexus",
+      "The middle meningeal artery"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A blow to the thin temporal bone can tear the middle meningeal artery, which runs on the inside of the skull. Its arterial blood peels the dura off the bone, making a compact, lens-shaped epidural hematoma that stops at the sutures, where the dura is most firmly attached. Arterial pressure makes it grow fast.",
+      "options": [
+        "Torn bridging veins cause a subdural hematoma, which spreads as a thin crescent and builds slowly.",
+        "A burst artery at the base of the brain bleeds into the subarachnoid space, mixing blood with CSF rather than forming a lens-shaped clot against the skull.",
+        "The choroid plexus lies inside the ventricles, far from the skull, and does not cause a clot between skull and dura.",
+        "Correct. A torn middle meningeal artery causes an epidural hematoma."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Mr. Kowalski, 81, takes a blood-thinning drug. Three weeks after a minor fall he becomes gradually more confused and complains of headache. A scan shows a thin crescent of blood spread over one hemisphere. Where is the blood?",
+    "options": [
+      "Between the skull and the dura mater",
+      "In the subarachnoid space",
+      "Between the dura mater and the arachnoid mater",
+      "Inside the lateral ventricle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is a chronic subdural hematoma: blood from torn bridging veins between the dura and the arachnoid. Nothing holds those layers together, so blood spreads as a crescent. Brain shrinkage with age stretches the bridging veins, the blood thinner keeps them bleeding, and low venous pressure makes it build slowly.",
+      "options": [
+        "Blood between skull and dura is an epidural hematoma, which is usually arterial, fast and lens-shaped.",
+        "Blood in the subarachnoid space mixes with the CSF and outlines the sulci; it usually causes a sudden severe headache.",
+        "Correct. A slowly building crescent over the brain is a subdural hematoma.",
+        "Blood inside a ventricle would sit in the fluid spaces deep in the brain, not over the surface of a hemisphere."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Ms. Tran, 44, has a sudden, explosive headache she calls the worst of her life, and a stiff neck. Her scan is normal, but a lumbar puncture returns fluid mixed with blood. Where did the bleeding happen?",
+    "options": [
+      "Into the subarachnoid space",
+      "Into the epidural space",
+      "Into the subdural space",
+      "Into the choroid plexus of a lateral ventricle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A lumbar puncture samples fluid from the subarachnoid space. Blood in that fluid means blood entered the subarachnoid space and mixed with the CSF: a subarachnoid hemorrhage, typically from a burst weak spot in an artery at the base of the brain.",
+      "options": [
+        "Correct. Blood in the CSF places the bleed in the subarachnoid space.",
+        "Blood in the epidural space collects outside the dura and does not mix with the CSF that a lumbar puncture samples.",
+        "Blood in the subdural space lies outside the arachnoid and does not enter the CSF.",
+        "The choroid plexus makes CSF, but a sudden worst-ever headache with bloody CSF points to a burst artery in the subarachnoid space."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which meningeal layer is stuck to the surface of the brain and follows it into every sulcus?",
+    "options": [
+      "Pia mater",
+      "Dura mater",
+      "Arachnoid mater",
+      "The inner layer of the dura"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The pia mater is a very thin layer attached to the brain's surface, dipping into every sulcus and carrying small blood vessels.",
+      "options": [
+        "Correct. The pia mater follows the brain surface everywhere.",
+        "The dura mater is the tough outer layer against the skull.",
+        "The arachnoid mater lies against the dura and bridges over the sulci rather than following them.",
+        "The inner layer of the dura faces the brain but only folds down between major parts, such as the hemispheres, not into each sulcus."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Which of these would cross the blood–brain barrier most easily?",
+    "options": [
+      "A large protein molecule circulating in the plasma",
+      "Dopamine injected into a vein",
+      "A small, lipid-soluble anesthetic gas",
+      "Sodium ions dissolved in the plasma"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Brain capillary endothelial cells are sealed by tight junctions, so substances must pass through the cells. Small lipid-soluble molecules dissolve straight through the cell membranes, so an anesthetic gas crosses easily.",
+      "options": [
+        "Large proteins cannot pass between the sealed cells, and brain endothelium carries very few transport vesicles, so they barely enter.",
+        "Dopamine is water-soluble and has no carrier protein in the barrier, so it stays in the blood. Its precursor levodopa, an amino acid, is carried across instead.",
+        "Correct. Small lipid-soluble molecules cross the barrier freely.",
+        "Charged ions cannot dissolve through the lipid membrane and cannot slip between the sealed cells, so they cross only slowly through specific channels and pumps."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "astrocytes form the blood-brain barrier",
+    "q": "Which structure is the barrier itself in the blood–brain barrier?",
+    "options": [
+      "The layer of astrocyte end-feet that wraps the outside of each brain capillary",
+      "The pia mater covering the brain surface",
+      "The capillary endothelial cells sealed by continuous tight junctions",
+      "The cells covering the choroid plexus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The barrier is the brain capillary endothelium: cells sealed edge to edge by tight junctions, with no pores and few vesicles. Everything entering brain tissue has to pass through these cells.",
+      "options": [
+        "Astrocyte end-feet cover the capillaries and keep the endothelium in its barrier state, but molecules could slip between them; they are not the barrier itself.",
+        "The pia mater is a meningeal layer on the brain's surface, not part of every capillary wall.",
+        "Correct. The sealed endothelial cells are the barrier.",
+        "The choroid plexus covering cells form the blood–CSF barrier, a separate barrier between blood and CSF."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why is a lumbar puncture needle placed between the third and fourth lumbar vertebrae in an adult?",
+    "options": [
+      "The subarachnoid space is widest in the neck, so the lower back is the only safe alternative",
+      "The spinal cord ends at about the first or second lumbar vertebra, so below it the space holds only floating nerve roots",
+      "The dura mater ends at the third lumbar vertebra, so the needle does not have to pierce it",
+      "The choroid plexus in the lower spinal canal makes fresh CSF there"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In an adult the spinal cord ends at about the first or second lumbar vertebra, but the CSF-filled subarachnoid space continues to about the second sacral vertebra. Below the cord's end, the needle meets only floating nerve roots, which slide away from it.",
+      "options": [
+        "The reason is not the width of the space in the neck; it is that the lower back holds no spinal cord to injure.",
+        "Correct. Below the end of the cord, the needle cannot hit the cord.",
+        "The dura continues to about the second sacral vertebra, and the needle must pass through it to reach the CSF.",
+        "There is no choroid plexus in the spinal canal; CSF there has flowed down from the brain."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-17",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Which describe normal CSF compared with blood plasma? Select all that apply.",
+    "options": [
+      "Much less protein",
+      "Very few cells",
+      "Somewhat lower glucose",
+      "More protein, to keep water in the ventricles",
+      "Many red blood cells"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The choroid plexus cells are joined by tight junctions and secrete CSF rather than letting plasma leak through, so CSF has almost no protein, very few cells, and glucose about two thirds of the blood level.",
+      "options": [
+        "Yes. CSF protein is less than 1% of the plasma level.",
+        "Yes. Normal CSF has only a few white blood cells and no red cells.",
+        "Yes. CSF glucose is about two thirds of the blood level.",
+        "No. CSF has much less protein than plasma, not more.",
+        "No. Red blood cells in CSF mean bleeding into the subarachnoid space, or a needle that nicked a vessel."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "In the skull of a healthy person, which space around the brain is a real, fluid-filled space?",
+    "options": [
+      "Epidural space",
+      "Subdural space",
+      "The space inside the dura's two layers everywhere",
+      "Subarachnoid space"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The subarachnoid space, between the arachnoid and the pia, is a real space filled with CSF. The epidural and subdural spaces in the skull open only when something such as blood forces the layers apart.",
+      "options": [
+        "In the skull the dura is fused to the bone, so the epidural space is only a potential space. Around the spinal cord it is real.",
+        "The arachnoid lies pressed against the dura, so the subdural space is only a potential space.",
+        "The dura's two layers are fused except where they split to enclose the venous channels; there is no general fluid space between them.",
+        "Correct. The subarachnoid space is real and holds CSF."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Hydrocephalus makes an infant's head grow abnormally large, but in an adult it causes headache, vomiting and drowsiness with a normal head size. Why the difference?",
+    "options": [
+      "Adults do not make cerebrospinal fluid",
+      "An infant's skull bones are not yet fused, so the skull expands instead of pressure rising",
+      "Adults have no arachnoid granulations",
+      "An infant's brain has no ventricles"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In an infant the skull bones are separated by soft gaps, so as CSF builds up the skull expands and the head grows. In an adult the fused skull cannot expand, so the same build-up raises pressure inside the skull, which causes headache, vomiting and drowsiness.",
+      "options": [
+        "Adults make about 500 mL of CSF a day.",
+        "Correct. An unfused skull expands; a fused one cannot, so pressure rises.",
+        "Adults do have arachnoid granulations; the difference lies in whether the skull can expand.",
+        "The ventricles form from the neural tube's hollow and are present from early development."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "q": "A scan shows that both lateral ventricles and the third ventricle are enlarged, but the fourth ventricle is normal. Where is the blockage most likely to be?",
+    "options": [
+      "At the arachnoid granulations",
+      "At the median and lateral apertures",
+      "At one interventricular foramen",
+      "In the cerebral aqueduct"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Ventricles above a block enlarge and those below stay normal. The third ventricle is enlarged and the fourth is not, so the block lies between them: the cerebral aqueduct.",
+      "options": [
+        "A failure of return at the arachnoid granulations would back fluid up into all four ventricles, including the fourth.",
+        "A block at the apertures would enlarge the fourth ventricle too, since it lies above them.",
+        "A block at one interventricular foramen would enlarge only that lateral ventricle, not the third ventricle.",
+        "Correct. A block in the cerebral aqueduct enlarges the lateral and third ventricles and spares the fourth."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-protection-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Some toxins in the blood trigger vomiting even though they cannot cross the blood–brain barrier. How?",
+    "options": [
+      "They reach an area on the floor of the fourth ventricle whose capillaries lack the barrier",
+      "They dissolve through the tight junctions of brain capillaries",
+      "They travel in the cerebrospinal fluid from the lumbar region to the brain",
+      "Astrocytes carry them across the capillary wall"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A few small areas around the ventricles have leaky capillaries, so their neurons can sample the blood directly. One on the floor of the fourth ventricle detects toxins and triggers vomiting.",
+      "options": [
+        "Correct. This area lacks the barrier, so its neurons sense the toxin in the blood.",
+        "Tight junctions seal the gaps between cells; molecules do not dissolve through them.",
+        "CSF flows from the brain down to the lumbar region and back up around the cord slowly; a toxin that cannot cross into CSF would not be in it in the first place.",
+        "Astrocytes do not ferry molecules across the capillary wall; they keep the endothelium sealed."
+      ]
+    }
+  }
+]

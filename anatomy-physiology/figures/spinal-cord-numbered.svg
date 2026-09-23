@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" width="700" height="440" role="img" aria-label="The same spinal cord cross section, back side at the top, with nine numbered pointers on the right and three on the left instead of names. On the right, from top to bottom: 1, the shallow midline groove at the back; 2, the white matter between that groove and the dorsal horn; 3, the narrow gray horn reaching toward the back; 4, the small gray bump at the side; 5, the white matter at the side; 6, the tiny hole in the center; 7, the broad gray horn reaching toward the front; 8, the white matter at the front beside the midline; 9, the deep midline groove at the front. On the left: 10, the orange root entering the back of the cord; 11, the swelling on that root; 12, the blue root leaving the front.">
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<rect x="0" y="0" width="700" height="440" fill="#FFFFFF"/>
+<ellipse cx="330" cy="220" rx="150" ry="120" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2.5"/>
+<g fill="#B7C4C1"><ellipse cx="368" cy="160" rx="14" ry="55" transform="rotate(25 368 160)"/><ellipse cx="372" cy="272" rx="34" ry="42" transform="rotate(-20 372 272)"/><ellipse cx="394" cy="214" rx="20" ry="12"/><ellipse cx="350" cy="220" rx="35" ry="28"/><ellipse cx="292" cy="160" rx="14" ry="55" transform="rotate(-25 292 160)"/><ellipse cx="288" cy="272" rx="34" ry="42" transform="rotate(20 288 272)"/><ellipse cx="266" cy="214" rx="20" ry="12"/><ellipse cx="310" cy="220" rx="35" ry="28"/><rect x="300" y="205" width="60" height="25"/></g>
+<circle cx="330" cy="217" r="5" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5"/>
+<line x1="330" y1="100" x2="330" y2="186" stroke="#5D6B69" stroke-width="2"/>
+<path d="M321 341 L330 262 L339 341 Z" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<path d="M262 116 C 220 118 185 135 152 152" fill="none" stroke="#E69F00" stroke-width="5"/>
+<ellipse cx="128" cy="166" rx="28" ry="16" transform="rotate(35 128 166)" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+<path d="M110 182 C 95 196 88 206 80 214" fill="none" stroke="#E69F00" stroke-width="5"/>
+<path d="M256 318 C 210 312 150 290 82 226" fill="none" stroke="#56B4E9" stroke-width="5"/>
+<line x1="80" y1="216" x2="18" y2="216" stroke="#E69F00" stroke-width="5"/>
+<line x1="80" y1="224" x2="18" y2="224" stroke="#56B4E9" stroke-width="5"/>
+<text x="330" y="30" font-size="13" font-weight="700" text-anchor="middle" fill="#5D6B69">Posterior (dorsal)</text>
+<text x="330" y="430" font-size="13" font-weight="700" text-anchor="middle" fill="#5D6B69">Anterior (ventral)</text>
+<line x1="330" y1="130" x2="500" y2="56" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="330" cy="130" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="56" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="61" font-size="13" font-weight="800" text-anchor="middle">1</text>
+<line x1="346" y1="130" x2="500" y2="96" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="346" cy="130" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="96" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="101" font-size="13" font-weight="800" text-anchor="middle">2</text>
+<line x1="386" y1="128" x2="500" y2="136" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="386" cy="128" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="136" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="141" font-size="13" font-weight="800" text-anchor="middle">3</text>
+<line x1="408" y1="214" x2="500" y2="181" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="408" cy="214" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="181" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="186" font-size="13" font-weight="800" text-anchor="middle">4</text>
+<line x1="452" y1="236" x2="500" y2="221" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="452" cy="236" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="221" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="226" font-size="13" font-weight="800" text-anchor="middle">5</text>
+<line x1="333" y1="217" x2="500" y2="261" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="333" cy="217" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="261" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="266" font-size="13" font-weight="800" text-anchor="middle">6</text>
+<line x1="382" y1="288" x2="500" y2="301" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="382" cy="288" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="301" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="306" font-size="13" font-weight="800" text-anchor="middle">7</text>
+<line x1="352" y1="322" x2="500" y2="341" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="352" cy="322" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="341" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="346" font-size="13" font-weight="800" text-anchor="middle">8</text>
+<line x1="332" y1="332" x2="500" y2="381" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="332" cy="332" r="2.5" fill="#1F2A28"/>
+<circle cx="514" cy="381" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="514" y="386" font-size="13" font-weight="800" text-anchor="middle">9</text>
+<line x1="212" y1="128" x2="200" y2="68" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="212" cy="128" r="2.5" fill="#1F2A28"/>
+<circle cx="200" cy="58" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="200" y="63" font-size="13" font-weight="800" text-anchor="middle">10</text>
+<line x1="120" y1="160" x2="80" y2="118" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="120" cy="160" r="2.5" fill="#1F2A28"/>
+<circle cx="80" cy="108" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="80" y="113" font-size="13" font-weight="800" text-anchor="middle">11</text>
+<line x1="200" y1="303" x2="165" y2="364" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="200" cy="303" r="2.5" fill="#1F2A28"/>
+<circle cx="165" cy="376" r="12" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.5"/><text x="165" y="381" font-size="13" font-weight="800" text-anchor="middle">12</text>
+</g>
+</svg>

@@ -1,0 +1,48 @@
+{
+  "topic": "neurons-glia",
+  "hook": "<p>Marco, 38, a carpenter, slices into the base of his thumb with a chisel. The surgeon finds a cut nerve, stitches its ends together and tells him feeling will creep back toward his fingertip at about a millimeter a day. Down the hall, a young woman who damaged her spinal cord in a fall hears a very different outlook: the axons cut inside her spinal cord will almost certainly not grow back. Same kind of axon, opposite outcome. The difference lies in the glial cells around them.</p>",
+  "prereq": [
+    {
+      "q": "Which part of a neuron carries its signal away from the cell body?",
+      "options": ["A dendrite", "The axon", "The nucleus"],
+      "correct": 1,
+      "why": "The axon carries the neuron's signal away from the cell body to its axon terminals. Dendrites carry incoming signals toward the cell body, and the nucleus holds the DNA.",
+      "review": "nervous-tissue-overview"
+    },
+    {
+      "q": "What happens when a neuron's membrane reaches threshold?",
+      "options": ["It fires an all-or-none action potential", "It produces a small graded potential that fades", "Its sodium–potassium pumps stop"],
+      "correct": 0,
+      "why": "Threshold is the membrane voltage at which enough voltage-gated sodium channels open to trigger an action potential. Below threshold, a change stays a graded potential. The pumps run all the time.",
+      "review": "action-potential-basics"
+    },
+    {
+      "q": "Which of these is part of the peripheral nervous system?",
+      "options": ["The spinal cord", "A nerve in the arm", "Gray matter in the brain"],
+      "correct": 1,
+      "why": "The PNS is everything outside the brain and spinal cord, including nerves and ganglia. The spinal cord and the brain's gray matter are CNS.",
+      "review": "nervous-system-organization"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-11",
+    "caption": "The glial cells of the CNS around two neurons. Hide the labels and name each glial cell, then say what it does."
+  },
+  "chain": [
+    { "cause": "A chisel cuts through an axon in a peripheral nerve.", "effect": "The part beyond the cut loses its supply of proteins from the cell body and breaks down within days, along with its myelin." },
+    { "cause": "Schwann cells in the damaged segment break down their myelin and call in macrophages from the blood.", "effect": "The debris is cleared within a few weeks, leaving the connective tissue tube around each axon empty." },
+    { "cause": "With the debris gone, the Schwann cells multiply.", "effect": "They line up inside the empty tube, forming a regeneration tube coated with growth-promoting proteins." },
+    { "cause": "The cell body, still alive, ramps up protein synthesis, and sprouts grow from the cut end of the axon.", "effect": "A sprout that enters the regeneration tube is guided along it at about 1 millimeter per day." },
+    { "cause": "The regrowing axon reaches its target.", "effect": "Schwann cells wrap it in new myelin, and function can return. In the CNS, oligodendrocytes form no such tube, and the astrocyte scar and myelin proteins block regrowth." }
+  ],
+  "misconception": {
+    "wrong": "Nerve cells can never grow back once they are damaged.",
+    "right": "A neuron that dies is not replaced, because mature neurons do not divide. But a cut axon is a different matter: as long as its cell body survives, the axon can regrow. In the PNS it often does, at about a millimeter a day, guided by a tube of Schwann cells. In the CNS it usually does not, mainly because of the surroundings: oligodendrocytes form no guiding tube, CNS myelin contains proteins that stop growing axons, and astrocytes seal the injury with a scar. CNS axons given a graft of peripheral nerve to grow through can regrow for centimeters."
+  },
+  "check": ["anp-neurons-glia-1", "anp-neurons-glia-7", "anp-neurons-glia-11", "anp-neurons-glia-13", "anp-neurons-glia-15", "anp-neurons-glia-18", "anp-neurons-glia-20", "anp-neurons-glia-23"],
+  "summary": "<p>A neuron's soma holds the nucleus and Nissl bodies (rough ER) and supplies the axon by axonal transport. Signals arrive at the dendrites and soma, spread to the initial segment just beyond the axon hillock, and trigger action potentials there, in the trigger zone; the axon, with its axoplasm and collaterals, carries them to the axon terminals. By shape, neurons are multipolar (most neurons, including motor neurons and interneurons), bipolar (a few sense organs) or unipolar (most sensory neurons); by job, they are sensory neurons, interneurons or motor neurons. The CNS has four glial cells (astrocytes, oligodendrocytes, microglia and ependymal cells) and the PNS two (Schwann cells and satellite cells); overall, glia and neurons are about equal in number. Oligodendrocytes and Schwann cells make the myelin sheath, lipid-rich wraps of membrane separated by nodes of Ranvier: one oligodendrocyte myelinates segments of many axons, one Schwann cell a single segment of one axon. Cut PNS axons can regrow along a tube of Schwann cells at about 1 mm per day; CNS axons rarely regrow because of the glial environment. Mature neurons do not divide, but glial cells do.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" },
+    { "href": "/nremt/study-notes.html#chapter-30", "label": "NREMT: Soft-tissue trauma" }
+  ]
+}

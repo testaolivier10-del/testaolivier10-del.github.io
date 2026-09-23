@@ -1,0 +1,329 @@
+{
+  "figure": "os-22-12",
+  "labels": [
+    {
+      "id": "mucus-a",
+      "name": "Mucus",
+      "accept": [
+        "mucus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "simple-columnar",
+      "box": [
+        832,
+        13,
+        89,
+        26
+      ]
+    },
+    {
+      "id": "goblet-cell-a",
+      "name": "Goblet cell",
+      "accept": [
+        "goblet cell",
+        "goblet cells"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "simple-columnar",
+      "box": [
+        831,
+        71,
+        136,
+        26
+      ]
+    },
+    {
+      "id": "epithelium",
+      "name": "Epithelium",
+      "accept": [
+        "epithelium",
+        "epithelial tissue",
+        "pseudostratified ciliated columnar epithelium",
+        "respiratory epithelium"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "epithelium",
+      "box": [
+        832,
+        132,
+        134,
+        31
+      ]
+    },
+    {
+      "id": "basement-membrane-a",
+      "name": "Basement membrane",
+      "accept": [
+        "basement membrane"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "basement-membrane",
+      "box": [
+        832,
+        176,
+        263,
+        26
+      ]
+    },
+    {
+      "id": "lamina-propria-a",
+      "name": "Lamina propria",
+      "accept": [
+        "lamina propria"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "mucous-membrane",
+      "box": [
+        832,
+        248,
+        188,
+        30
+      ]
+    },
+    {
+      "id": "smooth-muscle-a",
+      "name": "Smooth muscle",
+      "accept": [
+        "smooth muscle"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        831,
+        303,
+        194,
+        27
+      ]
+    },
+    {
+      "id": "gland-a",
+      "name": "Gland",
+      "accept": [
+        "gland",
+        "glands",
+        "mucous gland",
+        "submucosal gland"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "gland",
+      "box": [
+        832,
+        383,
+        81,
+        26
+      ]
+    },
+    {
+      "id": "cartilage",
+      "name": "Cartilage",
+      "accept": [
+        "cartilage",
+        "hyaline cartilage"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cartilage",
+      "box": [
+        831,
+        451,
+        118,
+        31
+      ]
+    },
+    {
+      "id": "mucus-b",
+      "name": "Mucus",
+      "accept": [
+        "mucus"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "simple-columnar",
+      "box": [
+        832,
+        643,
+        89,
+        26
+      ]
+    },
+    {
+      "id": "goblet-cell-b",
+      "name": "Goblet cell",
+      "accept": [
+        "goblet cell",
+        "goblet cells"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "simple-columnar",
+      "box": [
+        831,
+        697,
+        136,
+        26
+      ]
+    },
+    {
+      "id": "basement-membrane-b",
+      "name": "Basement membrane",
+      "accept": [
+        "basement membrane"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "basement-membrane",
+      "box": [
+        832,
+        760,
+        263,
+        26
+      ]
+    },
+    {
+      "id": "mast-cell",
+      "name": "Mast cell",
+      "accept": [
+        "mast cell",
+        "mast cells"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "inflammation-basic",
+      "box": [
+        832,
+        820,
+        114,
+        26
+      ]
+    },
+    {
+      "id": "lamina-propria-b",
+      "name": "Lamina propria",
+      "accept": [
+        "lamina propria"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "mucous-membrane",
+      "box": [
+        832,
+        859,
+        188,
+        30
+      ]
+    },
+    {
+      "id": "macrophage",
+      "name": "Macrophage",
+      "accept": [
+        "macrophage",
+        "macrophages"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "macrophage-basic",
+      "box": [
+        832,
+        897,
+        157,
+        30
+      ]
+    },
+    {
+      "id": "eosinophil",
+      "name": "Eosinophil",
+      "accept": [
+        "eosinophil",
+        "eosinophils"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "granulocytes",
+      "box": [
+        832,
+        933,
+        132,
+        30
+      ]
+    },
+    {
+      "id": "smooth-muscle-b",
+      "name": "Smooth muscle",
+      "accept": [
+        "smooth muscle"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        832,
+        969,
+        193,
+        26
+      ]
+    },
+    {
+      "id": "gland-b",
+      "name": "Gland",
+      "accept": [
+        "gland",
+        "glands",
+        "mucous gland",
+        "submucosal gland"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "gland",
+      "box": [
+        832,
+        1029,
+        81,
+        27
+      ]
+    },
+    {
+      "id": "neutrophil",
+      "name": "Neutrophil",
+      "accept": [
+        "neutrophil",
+        "neutrophils"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "granulocytes",
+      "box": [
+        832,
+        1152,
+        131,
+        30
+      ]
+    }
+  ]
+}

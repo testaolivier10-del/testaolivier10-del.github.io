@@ -1,0 +1,201 @@
+{
+  "figure": "os-22-10",
+  "labels": [
+    {
+      "id": "terminal-bronchiole",
+      "name": "Terminal bronchiole",
+      "accept": [
+        "terminal bronchiole",
+        "terminal bronchioles",
+        "bronchiole"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "bronchial-tree",
+      "box": [
+        29,
+        94,
+        210,
+        22
+      ]
+    },
+    {
+      "id": "smooth-muscle",
+      "name": "Smooth muscle",
+      "accept": [
+        "smooth muscle",
+        "smooth muscle tissue"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "smooth-muscle-tissue",
+      "box": [
+        82,
+        156,
+        156,
+        22
+      ]
+    },
+    {
+      "id": "deoxygenated-blood",
+      "name": "Deoxygenated blood from pulmonary artery",
+      "accept": [
+        "deoxygenated blood from pulmonary artery",
+        "deoxygenated blood from the pulmonary artery",
+        "pulmonary artery",
+        "pulmonary arteriole",
+        "deoxygenated blood"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "oxygenated-deoxygenated",
+      "box": [
+        846,
+        239,
+        251,
+        51
+      ]
+    },
+    {
+      "id": "oxygenated-blood",
+      "name": "Oxygenated blood to pulmonary vein",
+      "accept": [
+        "oxygenated blood to pulmonary vein",
+        "oxygenated blood to the pulmonary vein",
+        "pulmonary vein",
+        "pulmonary venule",
+        "oxygenated blood"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "oxygenated-deoxygenated",
+      "box": [
+        846,
+        324,
+        205,
+        51
+      ]
+    },
+    {
+      "id": "respiratory-bronchiole",
+      "name": "Respiratory bronchiole",
+      "accept": [
+        "respiratory bronchiole",
+        "respiratory bronchioles"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "bronchial-tree",
+      "box": [
+        846,
+        393,
+        240,
+        25
+      ]
+    },
+    {
+      "id": "alveolus",
+      "name": "Alveolus",
+      "accept": [
+        "alveolus",
+        "alveoli",
+        "air sac"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "alveoli",
+      "box": [
+        845,
+        505,
+        98,
+        22
+      ]
+    },
+    {
+      "id": "alveolar-sac",
+      "name": "Alveolar sac",
+      "accept": [
+        "alveolar sac",
+        "alveolar sacs"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "alveoli",
+      "box": [
+        3,
+        512,
+        95,
+        46
+      ]
+    },
+    {
+      "id": "capillaries",
+      "name": "Capillaries",
+      "accept": [
+        "capillaries",
+        "capillary",
+        "pulmonary capillaries",
+        "capillary network"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "blood-vessel-basics",
+      "box": [
+        846,
+        644,
+        110,
+        26
+      ]
+    },
+    {
+      "id": "alveolar-duct",
+      "name": "Alveolar duct",
+      "accept": [
+        "alveolar duct",
+        "alveolar ducts"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "bronchial-tree",
+      "box": [
+        386,
+        673,
+        95,
+        46
+      ]
+    },
+    {
+      "id": "alveolar-pores",
+      "name": "Alveolar pores",
+      "accept": [
+        "alveolar pores",
+        "alveolar pore",
+        "pores of kohn"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "alveoli",
+      "box": [
+        298,
+        769,
+        95,
+        50
+      ]
+    }
+  ]
+}

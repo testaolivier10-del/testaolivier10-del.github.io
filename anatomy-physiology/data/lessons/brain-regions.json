@@ -1,0 +1,47 @@
+{
+  "topic": "brain-regions",
+  "hook": "<p>Ms. Reyes, 58, wakes up dizzy. When she reaches for her glasses her left hand swings past them, and she staggers to the left as she walks. Her strength is normal and she can feel everything. A scan shows a small bleed in the left side of her cerebellum, a structure behind the brainstem that does not start movements but makes them accurate.</p>",
+  "prereq": [
+    {
+      "q": "In the CNS, what is gray matter mostly made of?",
+      "options": ["Myelinated axons", "Neuron cell bodies, dendrites and synapses", "Connective tissue"],
+      "correct": 1,
+      "why": "Gray matter holds neuron cell bodies, dendrites and synapses. White matter is mostly myelinated axons, which look white because of the fatty myelin.",
+      "review": "nervous-system-organization"
+    },
+    {
+      "q": "What is a cluster of neuron cell bodies inside the CNS called?",
+      "options": ["A ganglion", "A tract", "A nucleus"],
+      "correct": 2,
+      "why": "Inside the CNS a cluster of cell bodies is a nucleus; outside it, a ganglion. A tract is a bundle of axons inside the CNS.",
+      "review": "nervous-system-organization"
+    },
+    {
+      "q": "In a negative feedback loop for body temperature, what does the control center do?",
+      "options": ["Compares the sensed temperature with the set point and signals the effectors", "Produces the heat itself", "Detects the temperature of the skin"],
+      "correct": 0,
+      "why": "The control center compares incoming information with the set point and sends commands to effectors that oppose the change. Sensing is the job of sensory receptors; producing or losing heat is the effectors' job.",
+      "review": "homeostasis-feedback"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-13-7",
+    "caption": "The lobes of the cerebrum from the side. Hide the labels and name the four lobes and the three sulci that separate them."
+  },
+  "chain": [
+    { "cause": "The motor areas of the frontal lobe send a command to move your hand, and a copy of the command reaches the cerebellum through the pons.", "effect": "The cerebellum now holds the intended movement." },
+    { "cause": "As the hand moves, sensory signals from its muscles and joints, and from the balance organs of the ear, reach the cerebellum.", "effect": "The cerebellum now also holds the actual movement." },
+    { "cause": "The cerebellum compares the intended movement with the actual one.", "effect": "It detects any error in force, timing or direction." },
+    { "cause": "The cerebellum sends corrections through the thalamus to the motor areas of the cortex.", "effect": "The cortex adjusts its command while the movement is under way, and the hand stops on target." },
+    { "cause": "If the cerebellum is damaged, the error is never corrected.", "effect": "The hand overshoots and the walk staggers, even though strength is normal: ataxia, on the same side as the damage." }
+  ],
+  "misconception": {
+    "wrong": "The cerebellum is where movements are started, so damage to it paralyzes you.",
+    "right": "Movements start in the motor areas of the frontal lobe, with the basal nuclei helping select which one goes ahead. The cerebellum compares the command with what the body actually does and corrects it. Damage to the cerebellum leaves strength intact but makes movement clumsy and poorly timed (ataxia) on the same side of the body, while damage to the motor areas or internal capsule causes weakness on the opposite side."
+  },
+  "check": ["anp-brain-regions-1", "anp-brain-regions-8", "anp-brain-regions-10", "anp-brain-regions-12", "anp-brain-regions-13", "anp-brain-regions-17", "anp-brain-regions-19"],
+  "summary": "<p>The brain grows from the front of the neural tube: three primary vesicles (forebrain, midbrain, hindbrain) become five secondary vesicles and then the cerebrum, diencephalon, midbrain, pons and cerebellum, and medulla oblongata. The cerebrum's two hemispheres are separated by the longitudinal fissure and joined by the corpus callosum; its folded cortex is split by the central, lateral and parieto-occipital sulci into frontal, parietal, temporal and occipital lobes, with the insula buried in the lateral sulcus. The thalamus relays and filters input to the cortex, and the hypothalamus controls temperature, water, hunger, autonomic output, daily rhythms and the pituitary gland. The brainstem links brain and spinal cord and runs breathing and circulation; the reticular formation in its core keeps the cortex awake. The cerebellum corrects movement, the basal nuclei select it, and the limbic system links emotion and memory.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

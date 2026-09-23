@@ -1,0 +1,448 @@
+{
+  "figure": "os-22-7",
+  "labels": [
+    {
+      "id": "epiglottis",
+      "name": "Epiglottis",
+      "accept": [
+        "epiglottis"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "larynx",
+      "box": [
+        3,
+        23,
+        124,
+        29
+      ]
+    },
+    {
+      "id": "body-of-hyoid-bone",
+      "name": "Body of hyoid bone",
+      "accept": [
+        "body of hyoid bone",
+        "body of the hyoid bone",
+        "hyoid bone",
+        "hyoid"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "hyoid",
+      "box": [
+        3,
+        66,
+        227,
+        30
+      ]
+    },
+    {
+      "id": "thyrohyoid-membrane",
+      "name": "Thyrohyoid membrane",
+      "accept": [
+        "thyrohyoid membrane"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "larynx",
+      "box": [
+        817,
+        91,
+        266,
+        30
+      ]
+    },
+    {
+      "id": "thyroid-cartilage",
+      "name": "Thyroid cartilage",
+      "accept": [
+        "thyroid cartilage"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "larynx",
+      "box": [
+        1,
+        138,
+        216,
+        29
+      ]
+    },
+    {
+      "id": "laryngeal-prominence",
+      "name": "Laryngeal prominence",
+      "accept": [
+        "laryngeal prominence",
+        "adam's apple",
+        "adams apple"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "larynx",
+      "box": [
+        819,
+        186,
+        280,
+        29
+      ]
+    },
+    {
+      "id": "cricothyroid-ligament",
+      "name": "Cricothyroid ligament",
+      "accept": [
+        "cricothyroid ligament",
+        "cricothyroid membrane"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "larynx",
+      "box": [
+        2,
+        259,
+        249,
+        30
+      ]
+    },
+    {
+      "id": "cricoid-cartilage",
+      "name": "Cricoid cartilage",
+      "accept": [
+        "cricoid cartilage",
+        "cricoid"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "larynx",
+      "box": [
+        818,
+        278,
+        212,
+        29
+      ]
+    },
+    {
+      "id": "cricotracheal-ligament",
+      "name": "Cricotracheal ligament",
+      "accept": [
+        "cricotracheal ligament"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "larynx",
+      "box": [
+        2,
+        302,
+        263,
+        31
+      ]
+    },
+    {
+      "id": "tracheal-cartilages",
+      "name": "Tracheal cartilages",
+      "accept": [
+        "tracheal cartilages",
+        "tracheal cartilage",
+        "tracheal rings",
+        "tracheal ring"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "trachea",
+      "box": [
+        817,
+        355,
+        226,
+        29
+      ]
+    },
+    {
+      "id": "epiglottis-lateral",
+      "name": "Epiglottis",
+      "accept": [
+        "epiglottis"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "larynx",
+      "box": [
+        5,
+        527,
+        125,
+        29
+      ]
+    },
+    {
+      "id": "thyrohyoid-membrane-posterior",
+      "name": "Thyrohyoid membrane",
+      "accept": [
+        "thyrohyoid membrane"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "larynx",
+      "box": [
+        4,
+        577,
+        265,
+        30
+      ]
+    },
+    {
+      "id": "body-of-hyoid-bone-lateral",
+      "name": "Body of hyoid bone",
+      "accept": [
+        "body of hyoid bone",
+        "body of the hyoid bone",
+        "hyoid bone",
+        "hyoid"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "hyoid",
+      "box": [
+        820,
+        601,
+        227,
+        29
+      ]
+    },
+    {
+      "id": "fatty-pad",
+      "name": "Fatty pad",
+      "accept": [
+        "fatty pad",
+        "fat pad",
+        "preepiglottic fat"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": null,
+      "box": [
+        820,
+        631,
+        116,
+        30
+      ]
+    },
+    {
+      "id": "cuneiform-cartilage",
+      "name": "Cuneiform cartilage",
+      "accept": [
+        "cuneiform cartilage",
+        "cuneiform cartilages",
+        "cuneiform"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "larynx",
+      "box": [
+        4,
+        641,
+        231,
+        30
+      ]
+    },
+    {
+      "id": "thyrohyoid-membrane-anterior",
+      "name": "Thyrohyoid membrane",
+      "accept": [
+        "thyrohyoid membrane"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "larynx",
+      "box": [
+        818,
+        664,
+        266,
+        30
+      ]
+    },
+    {
+      "id": "corniculate-cartilage",
+      "name": "Corniculate cartilage",
+      "accept": [
+        "corniculate cartilage",
+        "corniculate cartilages",
+        "corniculate"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "larynx",
+      "box": [
+        4,
+        674,
+        242,
+        30
+      ]
+    },
+    {
+      "id": "vestibular-fold",
+      "name": "Vestibular fold",
+      "accept": [
+        "vestibular fold",
+        "vestibular folds",
+        "false vocal cord",
+        "false vocal cords",
+        "false vocal fold"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "larynx",
+      "box": [
+        819,
+        695,
+        170,
+        24
+      ]
+    },
+    {
+      "id": "arytenoid-cartilage",
+      "name": "Arytenoid cartilage",
+      "accept": [
+        "arytenoid cartilage",
+        "arytenoid cartilages",
+        "arytenoid"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "larynx",
+      "box": [
+        4,
+        716,
+        222,
+        30
+      ]
+    },
+    {
+      "id": "vocal-fold",
+      "name": "Vocal fold",
+      "accept": [
+        "vocal fold",
+        "vocal folds",
+        "true vocal cord",
+        "true vocal cords",
+        "vocal cord",
+        "true vocal fold"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "larynx",
+      "box": [
+        819,
+        720,
+        121,
+        25
+      ]
+    },
+    {
+      "id": "thyroid-cartilage-lateral",
+      "name": "Thyroid cartilage",
+      "accept": [
+        "thyroid cartilage"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "larynx",
+      "box": [
+        818,
+        755,
+        216,
+        29
+      ]
+    },
+    {
+      "id": "cricoid-cartilage-lateral",
+      "name": "Cricoid cartilage",
+      "accept": [
+        "cricoid cartilage",
+        "cricoid"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "larynx",
+      "box": [
+        4,
+        790,
+        212,
+        29
+      ]
+    },
+    {
+      "id": "cricothyroid-ligament-lateral",
+      "name": "Cricothyroid ligament",
+      "accept": [
+        "cricothyroid ligament",
+        "cricothyroid membrane"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "larynx",
+      "box": [
+        819,
+        790,
+        250,
+        31
+      ]
+    },
+    {
+      "id": "cricotracheal-ligament-lateral",
+      "name": "Cricotracheal ligament",
+      "accept": [
+        "cricotracheal ligament"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "larynx",
+      "box": [
+        819,
+        833,
+        264,
+        31
+      ]
+    },
+    {
+      "id": "tracheal-cartilages-lateral",
+      "name": "Tracheal cartilages",
+      "accept": [
+        "tracheal cartilages",
+        "tracheal cartilage",
+        "tracheal rings",
+        "tracheal ring"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "trachea",
+      "box": [
+        4,
+        879,
+        224,
+        30
+      ]
+    }
+  ]
+}

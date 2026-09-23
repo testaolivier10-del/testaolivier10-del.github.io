@@ -1,0 +1,37 @@
+{
+  "ap-phases": {
+    "def": "The stages of a neuron action potential: rest at about −70 mV, depolarization to threshold at about −55 mV, a rising phase to about +30 mV as sodium enters, a falling phase as potassium leaves, and an afterhyperpolarization to about −80 mV before the membrane returns to rest.",
+    "roots": [["hyper-", "above, beyond"]],
+    "say": ""
+  },
+  "na-inactivation": {
+    "def": "The closing of a voltage-gated sodium channel by its inactivation gate about a millisecond after the activation gate opens. An inactivated channel cannot open again until the membrane repolarizes and resets it.",
+    "roots": [["in-", "not"]],
+    "say": ""
+  },
+  "refractory-periods": {
+    "def": "The absolute refractory period is the time, about 1 ms from threshold through most of the falling phase, when no stimulus can start another action potential. The relative refractory period follows it, when only a stronger-than-normal stimulus can.",
+    "roots": [["refractarius", "stubborn (Latin)"], ["absolutus", "complete (Latin)"]],
+    "say": ""
+  },
+  "continuous-conduction": {
+    "def": "The way an action potential travels along an unmyelinated axon: every patch of membrane fires in turn, each next to the last. It is slow, about 0.5 to 2 m/s.",
+    "roots": [["continuus", "joined, uninterrupted (Latin)"]],
+    "say": ""
+  },
+  "saltatory-conduction": {
+    "def": "The way an action potential travels along a myelinated axon: current flows under the myelin and the action potential is regenerated only at the nodes of Ranvier, so it seems to leap from node to node. It is fast and uses less energy.",
+    "roots": [["saltare", "to leap, to dance (Latin)"]],
+    "say": "SAL-tuh-tor-ee"
+  },
+  "conduction-velocity": {
+    "def": "The speed at which an action potential travels along an axon, from about 0.5 m/s in thin unmyelinated fibers to about 120 m/s in wide myelinated ones. It rises with axon diameter, myelination and temperature.",
+    "roots": [["velocitas", "speed (Latin)"]],
+    "say": ""
+  },
+  "demyelination": {
+    "def": "Damage to or loss of the myelin sheath, which lets current leak out between nodes so conduction slows or fails. Multiple sclerosis, in which the immune system attacks CNS myelin, is the commonest demyelinating disease.",
+    "roots": [["de-", "remove"], ["myel-", "marrow (root of myelin)"], ["scler-", "hard"], ["-osis", "condition"]],
+    "say": "dee-my-uh-lin-AY-shun"
+  }
+}

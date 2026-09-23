@@ -1,0 +1,484 @@
+{
+  "figure": "os-22-4",
+  "labels": [
+    {
+      "id": "sphenoidal-sinus",
+      "name": "Sphenoidal sinus",
+      "accept": [
+        "sphenoidal sinus",
+        "sphenoid sinus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        22,
+        41,
+        191,
+        28
+      ]
+    },
+    {
+      "id": "frontal-sinus",
+      "name": "Frontal sinus",
+      "accept": [
+        "frontal sinus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        873,
+        59,
+        146,
+        24
+      ]
+    },
+    {
+      "id": "ethmoid-bone",
+      "name": "Ethmoid bone",
+      "accept": [
+        "ethmoid bone",
+        "ethmoid"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        873,
+        95,
+        156,
+        23
+      ]
+    },
+    {
+      "id": "olfactory-epithelium",
+      "name": "Olfactory epithelium",
+      "accept": [
+        "olfactory epithelium"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "olfaction",
+      "box": [
+        872,
+        129,
+        219,
+        29
+      ]
+    },
+    {
+      "id": "nasal-meatuses",
+      "name": "Nasal meatuses (superior, middle, and inferior)",
+      "accept": [
+        "nasal meatuses",
+        "nasal meatus",
+        "meatuses",
+        "meatus"
+      ],
+      "lines": [
+        4,
+        5,
+        7
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        22,
+        130,
+        191,
+        84
+      ]
+    },
+    {
+      "id": "nasal-conchae",
+      "name": "Nasal conchae",
+      "accept": [
+        "nasal conchae",
+        "nasal concha",
+        "conchae",
+        "concha",
+        "turbinates"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "facial-bones",
+      "box": [
+        873,
+        184,
+        167,
+        23
+      ]
+    },
+    {
+      "id": "pharyngeal-tonsil",
+      "name": "Pharyngeal tonsil",
+      "accept": [
+        "pharyngeal tonsil",
+        "adenoid",
+        "adenoids"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        22,
+        230,
+        191,
+        28
+      ]
+    },
+    {
+      "id": "nasal-vestibule",
+      "name": "Nasal vestibule",
+      "accept": [
+        "nasal vestibule",
+        "vestibule"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        873,
+        240,
+        171,
+        23
+      ]
+    },
+    {
+      "id": "opening-of-auditory-tube",
+      "name": "Opening of auditory tube",
+      "accept": [
+        "opening of auditory tube",
+        "opening of the auditory tube",
+        "auditory tube",
+        "pharyngotympanic tube",
+        "eustachian tube"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "ear-regions",
+      "box": [
+        65,
+        272,
+        148,
+        56
+      ]
+    },
+    {
+      "id": "nostril",
+      "name": "Nostril",
+      "accept": [
+        "nostril",
+        "naris",
+        "nares",
+        "external naris"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        873,
+        284,
+        77,
+        23
+      ]
+    },
+    {
+      "id": "hard-palate",
+      "name": "Hard palate",
+      "accept": [
+        "hard palate"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        873,
+        324,
+        133,
+        28
+      ]
+    },
+    {
+      "id": "nasopharynx",
+      "name": "Nasopharynx",
+      "accept": [
+        "nasopharynx"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "pharynx",
+      "box": [
+        63,
+        337,
+        150,
+        28
+      ]
+    },
+    {
+      "id": "soft-palate",
+      "name": "Soft palate",
+      "accept": [
+        "soft palate"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        872,
+        366,
+        125,
+        28
+      ]
+    },
+    {
+      "id": "uvula",
+      "name": "Uvula",
+      "accept": [
+        "uvula"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        142,
+        383,
+        72,
+        23
+      ]
+    },
+    {
+      "id": "tongue",
+      "name": "Tongue",
+      "accept": [
+        "tongue"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": null,
+      "box": [
+        872,
+        405,
+        89,
+        28
+      ]
+    },
+    {
+      "id": "palatine-tonsil",
+      "name": "Palatine tonsil",
+      "accept": [
+        "palatine tonsil",
+        "palatine tonsils",
+        "tonsil"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        56,
+        426,
+        157,
+        23
+      ]
+    },
+    {
+      "id": "lingual-tonsil",
+      "name": "Lingual tonsil",
+      "accept": [
+        "lingual tonsil",
+        "lingual tonsils"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        873,
+        443,
+        148,
+        28
+      ]
+    },
+    {
+      "id": "fauces",
+      "name": "Fauces",
+      "accept": [
+        "fauces"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        125,
+        472,
+        88,
+        23
+      ]
+    },
+    {
+      "id": "epiglottis",
+      "name": "Epiglottis",
+      "accept": [
+        "epiglottis"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "larynx",
+      "box": [
+        873,
+        489,
+        107,
+        28
+      ]
+    },
+    {
+      "id": "oropharynx",
+      "name": "Oropharynx",
+      "accept": [
+        "oropharynx"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "pharynx",
+      "box": [
+        78,
+        522,
+        135,
+        28
+      ]
+    },
+    {
+      "id": "hyoid-bone",
+      "name": "Hyoid bone",
+      "accept": [
+        "hyoid bone",
+        "hyoid"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "hyoid",
+      "box": [
+        873,
+        549,
+        130,
+        28
+      ]
+    },
+    {
+      "id": "laryngopharynx",
+      "name": "Laryngopharynx",
+      "accept": [
+        "laryngopharynx",
+        "hypopharynx"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "pharynx",
+      "box": [
+        33,
+        573,
+        180,
+        28
+      ]
+    },
+    {
+      "id": "vestibular-fold",
+      "name": "Vestibular fold",
+      "accept": [
+        "vestibular fold",
+        "vestibular folds",
+        "false vocal cord",
+        "false vocal cords",
+        "false vocal fold"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "larynx",
+      "box": [
+        53,
+        617,
+        160,
+        23
+      ]
+    },
+    {
+      "id": "thyroid-cartilage",
+      "name": "Thyroid cartilage",
+      "accept": [
+        "thyroid cartilage"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "larynx",
+      "box": [
+        872,
+        620,
+        186,
+        28
+      ]
+    },
+    {
+      "id": "vocal-fold",
+      "name": "Vocal fold",
+      "accept": [
+        "vocal fold",
+        "vocal folds",
+        "true vocal cord",
+        "true vocal cords",
+        "vocal cord",
+        "true vocal fold"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "larynx",
+      "box": [
+        99,
+        656,
+        114,
+        24
+      ]
+    },
+    {
+      "id": "cricoid-cartilage",
+      "name": "Cricoid cartilage",
+      "accept": [
+        "cricoid cartilage",
+        "cricoid"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "larynx",
+      "box": [
+        872,
+        682,
+        181,
+        29
+      ]
+    }
+  ]
+}

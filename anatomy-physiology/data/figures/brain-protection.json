@@ -1,0 +1,36 @@
+{
+  "os-13-17": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "13.17",
+      "section": "13.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b29ce6b50efa0d318868b53e86dbbf3672eb9cb5",
+      "page": "13-3-circulation-and-the-central-nervous-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b29ce6b50efa0d318868b53e86dbbf3672eb9cb5",
+    "alt": "A cut through the top of the head across the midline groove between the hemispheres. From outside in: bone; the thick, two-layered dura mater, which splits in the midline to enclose a large triangular venous channel; the thin arachnoid mater; a space crossed by fine strands; and the pia mater on the folded cortex. Rounded knobs of arachnoid push up through the dura into the venous channel. Veins from the brain surface cross the layers to reach it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.17",
+    "labels": [],
+    "w": 949,
+    "h": 515,
+    "ext": "jpg"
+  },
+  "os-13-18": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "13.18",
+      "section": "13.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/65b175d65cc4e4d696c6115ef4e8ec768f3915c9",
+      "page": "13-3-circulation-and-the-central-nervous-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/65b175d65cc4e4d696c6115ef4e8ec768f3915c9",
+    "alt": "The brain and upper spinal cord cut down the midline, with the fluid spaces shaded blue. A C-shaped chamber in the hemisphere connects through a small opening to a narrow midline chamber, then a thin canal through the midbrain leads to a chamber between the brainstem and the cerebellum. Tufts of tissue lie in the chambers. Arrows show fluid leaving the lower chamber through openings, flowing around the brain and down around the spinal cord, and entering a large venous channel at the top of the head through knobs of the arachnoid. The spinal cord has a thin central canal.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.18",
+    "labels": [],
+    "w": 1065,
+    "h": 693,
+    "ext": "jpg"
+  }
+}

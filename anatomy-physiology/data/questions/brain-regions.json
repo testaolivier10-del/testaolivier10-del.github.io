@@ -1,0 +1,613 @@
+[
+  {
+    "id": "anp-brain-regions-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-7",
+    "pin": "occipital-lobe",
+    "q": "Name the pinned lobe.",
+    "options": [
+      "Parietal lobe",
+      "Temporal lobe",
+      "Occipital lobe",
+      "Frontal lobe"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The occipital lobe is the back of each hemisphere, behind the parieto-occipital sulcus and above the cerebellum. It handles vision.",
+      "options": [
+        "The parietal lobe lies on top, between the central sulcus and the parieto-occipital sulcus, in front of the pinned lobe.",
+        "The temporal lobe lies along the side below the lateral sulcus, not at the back of the hemisphere.",
+        "Correct. The rearmost lobe, sitting above the cerebellum, is the occipital lobe.",
+        "The frontal lobe is at the front of the hemisphere, in front of the central sulcus."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-7",
+    "pin": "central-sulcus",
+    "q": "Name the pinned groove.",
+    "options": [
+      "Lateral sulcus",
+      "Central sulcus",
+      "Parieto-occipital sulcus",
+      "Longitudinal fissure"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The central sulcus runs from the top of the hemisphere down its side and separates the frontal lobe in front from the parietal lobe behind.",
+      "options": [
+        "The lateral sulcus is the deep groove along the side of the brain with the temporal lobe below it; it runs front to back, not over the top.",
+        "Correct. The groove between the frontal and parietal lobes is the central sulcus.",
+        "The parieto-occipital sulcus lies further back, between the parietal and occipital lobes.",
+        "The longitudinal fissure runs front to back down the midline between the two hemispheres, so a side view does not show it as a groove across the hemisphere."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-12",
+    "pin": "pons",
+    "q": "Name the pinned part of the brainstem.",
+    "options": [
+      "Midbrain",
+      "Medulla oblongata",
+      "Cerebellum",
+      "Pons"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The pons is the rounded bulge in the middle of the brainstem, between the midbrain above and the medulla below. Its bulk is axons crossing to the cerebellum.",
+      "options": [
+        "The midbrain is the short top part of the brainstem, above the pinned bulge.",
+        "The medulla oblongata is the narrow lowest part that continues as the spinal cord, below the pinned bulge.",
+        "The cerebellum lies behind the brainstem; it is not part of the brainstem itself.",
+        "Correct. The bulging middle part of the brainstem is the pons."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-11",
+    "pin": "hypothalamus",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Hypothalamus",
+      "Thalamus",
+      "Pituitary gland",
+      "Midbrain"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The hypothalamus lies below and in front of the thalamus, with the pituitary gland hanging from its underside. It is part of the diencephalon.",
+      "options": [
+        "Correct. The region below the thalamus that the pituitary hangs from is the hypothalamus.",
+        "The thalamus is the larger, egg-shaped mass above and behind the pinned region.",
+        "The pituitary gland hangs below on a short stalk; the pinned region is the part of the brain it hangs from.",
+        "The midbrain is the top of the brainstem, behind and below the pinned region."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-6",
+    "pin": "longitudinal-fissure",
+    "q": "In the front view, name the pinned groove.",
+    "options": [
+      "Central sulcus",
+      "Corpus callosum",
+      "Longitudinal fissure",
+      "Lateral sulcus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The longitudinal fissure is the deep midline groove that separates the right and left cerebral hemispheres.",
+      "options": [
+        "The central sulcus runs across each hemisphere from top to side, separating frontal from parietal lobe; it does not divide the two hemispheres.",
+        "The corpus callosum is the band of white matter at the floor of this groove, deep inside, not the groove itself.",
+        "Correct. The midline groove between the hemispheres is the longitudinal fissure.",
+        "The lateral sulcus is on the side of each hemisphere, above the temporal lobe."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-15-12",
+    "pin": "hippocampus",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Amygdala",
+      "Hippocampus",
+      "Cingulate gyrus",
+      "Corpus callosum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The hippocampus curls along the floor of the temporal lobe at the bottom of the limbic ring. It is needed to form new memories of facts and events.",
+      "options": [
+        "The amygdala is the small almond-shaped mass at the front tip of the hippocampus, not the long curved structure.",
+        "Correct. The curved structure along the bottom of the limbic ring is the hippocampus.",
+        "The cingulate gyrus arches over the top of the corpus callosum, at the top of the ring.",
+        "The corpus callosum is the white-matter band in the middle of the ring, joining the two hemispheres."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-13-9",
+    "pin": "putamen",
+    "q": "Name the pinned mass of gray matter.",
+    "options": [
+      "Caudate",
+      "Globus pallidus",
+      "Thalamus",
+      "Putamen"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The putamen is the outermost of the basal nuclei in this section. With the caudate it forms the striatum.",
+      "options": [
+        "The caudate lies closer to the midline, beside the central fluid space, not in the outer position.",
+        "The globus pallidus lies just inside the putamen, toward the midline.",
+        "The thalamus is part of the diencephalon, lower and nearer the midline; this slice is taken in front of it.",
+        "Correct. The outer mass is the putamen."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-8",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which secondary brain vesicle becomes both the pons and the cerebellum?",
+    "options": [
+      "Myelencephalon",
+      "Mesencephalon",
+      "Metencephalon",
+      "Telencephalon"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The hindbrain (rhombencephalon) splits into the metencephalon, which becomes the pons and cerebellum, and the myelencephalon, which becomes the medulla oblongata.",
+      "options": [
+        "The myelencephalon is the lower half of the hindbrain; it becomes the medulla oblongata.",
+        "The mesencephalon does not split and becomes the midbrain.",
+        "Correct. The metencephalon forms the pons and the cerebellum.",
+        "The telencephalon becomes the cerebrum."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-9",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps of early brain development in order.",
+    "options": [
+      "A strip of cells along the embryo's back thickens into the neural plate",
+      "The plate's edges rise as neural folds with a neural groove between them",
+      "The folds fuse, closing the groove into the neural tube",
+      "The front of the tube forms three primary brain vesicles",
+      "The forebrain and hindbrain each divide, giving five secondary vesicles"
+    ],
+    "why": {
+      "correct": "Neurulation turns the flat neural plate into the neural tube by the end of the fourth week. Its front end then swells into three primary vesicles, and by the fifth week the forebrain and hindbrain have split to give five.",
+      "options": [
+        "The neural plate is the starting point, in the third week.",
+        "The plate folds up at its edges, leaving a groove down the middle.",
+        "Fusion of the folds closes the tube; this ends neurulation.",
+        "The three primary vesicles are the forebrain, midbrain and hindbrain.",
+        "The five secondary vesicles become the adult brain regions."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the cerebellum starts movement",
+    "q": "Mr. Brandt, 52, overshoots when he reaches for a cup with his left hand, and he walks with a wide, staggering walk. The strength in all four limbs is normal. Where is the damage most likely to be?",
+    "options": [
+      "The left side of the cerebellum",
+      "The right side of the cerebellum",
+      "The left frontal lobe",
+      "The left occipital lobe"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Clumsy, poorly timed movement with normal strength is ataxia, the sign of cerebellar damage. Each side of the cerebellum coordinates the same side of the body, so a clumsy left hand points to the left cerebellum.",
+      "options": [
+        "Correct. Ataxia of the left arm comes from the left side of the cerebellum.",
+        "The cerebellum coordinates the same side, not the opposite side, so right-sided damage would make the right hand clumsy.",
+        "Damage to the frontal lobe's movement areas causes weakness on the opposite side. Mr. Brandt's strength is normal, and his left side is affected.",
+        "The occipital lobe handles vision; damage there causes loss of vision in part of what you see, not clumsy reaching with normal sight."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Mrs. Nwosu, 68, has had a slowly worsening tremor of her right hand at rest, stiff muscles, and great difficulty starting to walk. Loss of which neurons best explains these signs?",
+    "options": [
+      "Neurons of the hippocampus",
+      "Dopamine neurons of the substantia nigra",
+      "Neurons of the cerebellar cortex",
+      "Neurons of the reticular activating system"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "These are the signs of Parkinson's disease. Dopamine from the substantia nigra makes it easier for the striatum to release the brake on a planned movement. When those neurons die, the brake stays on too hard, so movement is slow and hard to start, muscles are stiff, and a tremor appears at rest.",
+      "options": [
+        "Loss of hippocampal neurons impairs forming new memories, not starting movements.",
+        "Correct. Death of dopamine neurons in the substantia nigra causes Parkinson's disease.",
+        "Cerebellar damage causes ataxia: movement that overshoots and staggers, with a tremor during movement rather than at rest, and no difficulty starting.",
+        "Loss of the reticular activating system lowers alertness and can cause coma; it does not cause a resting tremor."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient cannot be woken by loud noise or pain after an injury to the core of the upper brainstem on both sides. His cerebral cortex is undamaged. What best explains this?",
+    "options": [
+      "The injury destroyed the basal nuclei, which start all movement",
+      "The injury cut the corpus callosum, so the hemispheres cannot communicate",
+      "The injury destroyed the hypothalamus, which controls body temperature",
+      "The injury destroyed the reticular activating system, which keeps the cortex awake"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The reticular activating system, in the core of the brainstem, sends a steady stream of signals through the thalamus that keeps the cortex awake. Destroy it on both sides and even an undamaged cortex cannot be roused, which is coma.",
+      "options": [
+        "The basal nuclei lie deep in the cerebrum, not in the brainstem, and their loss affects the selection of movement, not wakefulness.",
+        "The corpus callosum lies in the cerebrum. Cutting it leaves a person fully awake; the hemispheres just share less information.",
+        "The hypothalamus is in the diencephalon, not the brainstem core, and loss of temperature control does not by itself prevent waking.",
+        "Correct. Loss of the reticular activating system on both sides causes coma."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-13",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "Which does the hypothalamus regulate? Select all that apply.",
+    "options": [
+      "Body temperature",
+      "Thirst and water balance",
+      "Release of hormones by the pituitary gland",
+      "The timing and force of a movement while it is under way",
+      "Heart rate, through the autonomic nervous system",
+      "The relay of touch signals to the cerebral cortex"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "The hypothalamus is the control center for temperature, water balance and thirst, hunger, autonomic output and the pituitary gland. Correcting movement is the cerebellum's job, and relaying touch to the cortex is the thalamus's.",
+      "options": [
+        "Yes. Hypothalamic neurons sense blood temperature and drive sweating, skin blood flow and shivering.",
+        "Yes. The hypothalamus creates thirst and controls a hormone that makes the kidneys keep water.",
+        "Yes. The hypothalamus controls the pituitary gland just below it.",
+        "No. Correcting the force and timing of movement is the cerebellum's job.",
+        "Yes. The hypothalamus sends axons to the brainstem and spinal cord neurons of the sympathetic and parasympathetic divisions.",
+        "No. Relaying touch and other body sensations to the cortex is the thalamus's job."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-14",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Over several years, most of the dopamine neurons of the substantia nigra die. Predict the change in each.",
+    "variables": [
+      {
+        "name": "Dopamine released into the striatum",
+        "answer": "down",
+        "why": "The substantia nigra is the source of the striatum's dopamine, so fewer neurons release less of it."
+      },
+      {
+        "name": "Ease of starting a planned movement",
+        "answer": "down",
+        "why": "Dopamine makes it easier for the striatum to release the globus pallidus's brake on the thalamus; with less dopamine the brake stays on, so movements are hard to start."
+      },
+      {
+        "name": "Inhibition of the thalamus by the globus pallidus",
+        "answer": "up",
+        "why": "Without dopamine's help, the striatum cannot switch off the globus pallidus's output as well, so the thalamus stays more inhibited."
+      },
+      {
+        "name": "Ability to form new memories of events",
+        "answer": "none",
+        "why": "New memories of events depend on the hippocampus, which this loss does not directly affect."
+      }
+    ],
+    "why": {
+      "correct": "Losing substantia nigra dopamine leaves the basal nuclei's brake on movement on too hard: the thalamus stays inhibited and movement is slow and hard to start. Memory formation, a hippocampal job, is not directly affected."
+    }
+  },
+  {
+    "id": "anp-brain-regions-15",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This is the loop the basal nuclei use to select a movement. Find the wrong step.",
+    "options": [
+      "The cerebral cortex plans a movement and signals the striatum",
+      "The striatum signals the globus pallidus",
+      "The globus pallidus signals the cerebellum",
+      "The loop returns to the cerebral cortex, and the movement starts"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The basal nuclei loop runs cortex → striatum → globus pallidus → thalamus → cortex. The globus pallidus sends its output to the thalamus, not to the cerebellum.",
+      "options": [
+        "Right. The striatum receives the input to the basal nuclei from the cortex.",
+        "Right. The striatum acts on the globus pallidus, the output nucleus.",
+        "This is the error. The globus pallidus inhibits the thalamus, which relays back to the cortex; the cerebellum runs a separate correcting loop.",
+        "Right. Through the thalamus, the loop returns to the cortex's motor areas."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-16",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap, going from top to bottom through the center of the brain: cerebrum → ____ → midbrain → pons → medulla oblongata → spinal cord.",
+    "options": [
+      "Diencephalon",
+      "Cerebellum",
+      "Corpus callosum",
+      "Basal nuclei"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The diencephalon (thalamus, hypothalamus, epithalamus) sits between the cerebrum above and the brainstem, which starts with the midbrain, below.",
+      "options": [
+        "Correct. The diencephalon links the cerebrum to the brainstem.",
+        "The cerebellum lies behind the brainstem, attached beside the pons, not in the line from cerebrum to midbrain.",
+        "The corpus callosum is white matter inside the cerebrum, joining the two hemispheres side to side.",
+        "The basal nuclei are gray matter inside the cerebrum, not a separate level below it."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a severe head injury, Mr. Osei's brain swells and is pushed down through the foramen magnum, compressing the lowest part of his brainstem. Which change is most immediately life-threatening?",
+    "options": [
+      "Loss of the sense of smell",
+      "Loss of the rhythm of breathing and control of the heart",
+      "Loss of the ability to form new memories",
+      "Loss of coordination on one side of the body"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The lowest part of the brainstem is the medulla oblongata, which passes through the foramen magnum. Its nuclei set the basic rhythm of breathing, the heartbeat and blood vessel diameter, so crushing it stops breathing and circulation.",
+      "options": [
+        "Smell does not depend on the medulla, and losing it is not life-threatening.",
+        "Correct. Compressing the medulla stops breathing and circulation.",
+        "Forming new memories depends on the hippocampus in the temporal lobe, not the medulla.",
+        "Coordination depends on the cerebellum. It may be affected too, but losing it is not what kills first."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Signals from nearly every sense synapse in the thalamus on the way to the cerebral cortex. Which sense is the exception?",
+    "options": [
+      "Vision",
+      "Smell",
+      "Hearing",
+      "Touch"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Smell signals reach the cortex, and the limbic system, without first relaying in the thalamus. Every other sense passes through the thalamus first.",
+      "options": [
+        "Visual signals relay in the thalamus before reaching the occipital lobe.",
+        "Correct. Smell is the one sense that bypasses the thalamus on its way to the cortex.",
+        "Hearing signals relay in the thalamus before reaching the temporal lobe.",
+        "Touch signals from the body relay in the thalamus before reaching the parietal lobe."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the thick white matter under the cortex has no clinical significance",
+    "q": "A small bleed destroys part of the right internal capsule. Which result is most likely?",
+    "options": [
+      "Clumsy, staggering movement of the right arm and leg",
+      "Loss of the sense of smell on the right",
+      "Weakness of the left arm and leg",
+      "Loss of hearing in both ears"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The internal capsule is the compact band that carries the axons running between the cortex and the brainstem and spinal cord. Movement commands for the left side of the body come from the right hemisphere, so damage to the right internal capsule weakens the left side.",
+      "options": [
+        "Clumsy staggering movement with normal strength is cerebellar ataxia, and the right side of the body is controlled by the left hemisphere.",
+        "Smell does not travel through the internal capsule.",
+        "Correct. Motor axons from the right hemisphere pass through the right internal capsule and control the left side.",
+        "Each ear sends signals to both sides of the brain, and hearing does not depend on this band."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "basal ganglia is the correct anatomical name",
+    "q": "Why does this course call the caudate, putamen and globus pallidus the basal nuclei rather than the basal ganglia?",
+    "options": [
+      "They are made of white matter, and a ganglion is made of gray matter",
+      "They lie in the brainstem, and ganglia lie only in the cerebrum",
+      "They contain glial cells only, and a ganglion contains neurons",
+      "They are clusters of neuron cell bodies inside the CNS, and a ganglion is a cluster outside it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the strict terms of the nervous system, a nucleus is a cluster of neuron cell bodies inside the CNS and a ganglion is one outside it. These structures are deep in the cerebrum, so they are nuclei. \"Basal ganglia\" is the older name, still common.",
+      "options": [
+        "They are gray matter, masses of cell bodies, not white matter.",
+        "They lie deep in the cerebrum, not the brainstem.",
+        "They are made of neurons, with glia among them like all gray matter.",
+        "Correct. Inside the CNS a cluster of cell bodies is a nucleus."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A rare disease destroys both amygdalae. What change would you most expect?",
+    "options": [
+      "Loss of vision in both eyes",
+      "Unsteady walking and slurred speech",
+      "Weaker fear responses to real threats",
+      "Inability to regulate body temperature"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The amygdala judges how emotionally important something is, especially a threat, and drives fear and its body responses through the hypothalamus. Without both amygdalae, fear responses are blunted.",
+      "options": [
+        "Vision depends on the occipital lobe, not the amygdala.",
+        "Unsteady walking and slurred speech are signs of cerebellar damage.",
+        "Correct. Losing the amygdalae blunts fear.",
+        "Temperature control is the hypothalamus's job."
+      ]
+    }
+  },
+  {
+    "id": "anp-brain-regions-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where is the insula?",
+    "options": [
+      "On the medial surface, above the corpus callosum",
+      "At the back of the brainstem, under the occipital lobes",
+      "In the center of the brain, just above the pituitary gland",
+      "Deep in the lateral sulcus, covered by the other lobes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The insula is a buried island of cortex at the bottom of the lateral sulcus. You see it only when you pull the temporal lobe down.",
+      "options": [
+        "That describes the cingulate gyrus, part of the limbic lobe.",
+        "That describes the cerebellum.",
+        "That describes the hypothalamus.",
+        "Correct. The insula is hidden in the lateral sulcus."
+      ]
+    }
+  }
+]

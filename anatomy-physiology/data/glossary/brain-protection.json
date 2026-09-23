@@ -1,0 +1,27 @@
+{
+  "meninges": {
+    "def": "The three membranes around the brain and spinal cord: the tough dura mater outside, the web-like arachnoid mater, and the thin pia mater on the nervous tissue. The epidural space lies outside the dura, the subdural space between dura and arachnoid, and the CSF-filled subarachnoid space between arachnoid and pia.",
+    "roots": [["meninx", "membrane"], ["dura", "tough"], ["mater", "mother"], ["arachn-", "spider"], ["pia", "tender"], ["epi-", "upon"], ["sub-", "under"]],
+    "say": "meh-NIN-jeez; DOO-ruh MAY-ter; uh-RAK-noyd; PEE-uh"
+  },
+  "ventricles-brain": {
+    "def": "The four connected fluid-filled chambers inside the brain, left from the hollow of the neural tube: two lateral ventricles, the third ventricle and the fourth ventricle. The interventricular foramina and the cerebral aqueduct join them, and the median and lateral apertures open the fourth ventricle into the subarachnoid space.",
+    "roots": [["ventriculus", "little belly"], ["foramen", "opening"], ["aqua", "water"], ["ductus", "channel"], ["apertura", "opening"]],
+    "say": "VEN-trih-kulz; AK-wuh-dukt"
+  },
+  "csf": {
+    "def": "Cerebrospinal fluid: the clear fluid secreted mainly by the choroid plexuses (about 500 mL a day) that fills the ventricles and subarachnoid space, floats and cushions the brain, and returns to venous blood, classically through the arachnoid granulations. Excess CSF enlarging the ventricles is hydrocephalus; a lumbar puncture samples it.",
+    "roots": [["cerebr-", "brain"], ["spin-", "spine"], ["choroid", "membrane-like"], ["plexus", "braid"], ["hydro-", "water"], ["cephal-", "head"]],
+    "say": "suh-REE-broh-SPY-nul; KOR-oyd PLEK-sus; hy-droh-SEF-uh-lus"
+  },
+  "blood-brain-barrier": {
+    "def": "The brain capillary wall's control of what enters brain tissue: endothelial cells sealed by tight junctions, with no pores and few vesicles, maintained by astrocyte end-feet. Small lipid-soluble molecules cross freely, glucose and amino acids need carrier proteins, and most proteins, ions and water-soluble drugs are kept out.",
+    "roots": [],
+    "say": ""
+  },
+  "intracranial-bleeds": {
+    "def": "Bleeding inside the skull around the brain. An epidural hematoma is usually arterial, between skull and dura, and lens-shaped; a subdural hematoma is usually from torn bridging veins, between dura and arachnoid, and crescent-shaped; a subarachnoid hemorrhage puts blood into the CSF.",
+    "roots": [["hemat-", "blood"], ["-oma", "mass"], ["hemorrhage", "bursting forth of blood"]],
+    "say": "hee-muh-TOH-muh"
+  }
+}

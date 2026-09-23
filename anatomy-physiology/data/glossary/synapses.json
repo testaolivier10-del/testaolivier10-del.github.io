@@ -1,0 +1,47 @@
+{
+  "synapse": {
+    "def": "A junction where a neuron passes a signal to another cell. The presynaptic neuron sends the signal from its axon terminal; the postsynaptic neuron receives it, usually on a dendrite or the cell body.",
+    "roots": [["syn-", "together"], ["haptein", "to fasten (Greek)"], ["pre-", "before"], ["post-", "after"]],
+    "say": "SIN-aps"
+  },
+  "chemical-synapse-steps": {
+    "def": "Signaling across a synaptic cleft by a neurotransmitter: an action potential opens voltage-gated calcium channels in the axon terminal, calcium triggers exocytosis of synaptic vesicles, the neurotransmitter diffuses across and binds receptor proteins on the postsynaptic membrane, and it is then removed.",
+    "roots": [],
+    "say": ""
+  },
+  "electrical-synapse": {
+    "def": "A synapse where gap junctions join two neurons, so ions and current pass directly from one to the other. It is almost instant, usually two-way, and makes coupled neurons fire in step.",
+    "roots": [],
+    "say": ""
+  },
+  "epsp-ipsp": {
+    "def": "Graded potentials caused by a neurotransmitter in a postsynaptic neuron. An excitatory postsynaptic potential (EPSP) is a small depolarization toward threshold; an inhibitory postsynaptic potential (IPSP) hyperpolarizes the membrane or holds it near rest, away from threshold.",
+    "roots": [["ex-", "out"], ["citare", "to set in motion (Latin)"], ["inhibere", "to hold back (Latin)"]],
+    "say": ""
+  },
+  "summation-neural": {
+    "def": "The adding together of postsynaptic potentials at the trigger zone. In temporal summation one input fires repeatedly in quick succession; in spatial summation several inputs fire at about the same time. An action potential fires if the sum reaches threshold.",
+    "roots": [["tempus", "time (Latin)"], ["spatium", "space (Latin)"]],
+    "say": ""
+  },
+  "receptor-classes-neural": {
+    "def": "The two classes of receptor protein for neurotransmitters. An ionotropic receptor protein is a ligand-gated channel: fast and brief. A metabotropic receptor protein acts through a G protein and often a second messenger: slower, longer-lasting and amplified.",
+    "roots": [["iono-", "ion"], ["trop-", "turning, acting on"], ["metabo-", "change"]],
+    "say": "eye-ON-oh-TROH-pik; meh-TAB-oh-TROH-pik"
+  },
+  "neurotransmitter-classes": {
+    "def": "The main neurotransmitters, grouped by chemistry: acetylcholine; amino acids (glutamate, the main excitatory one, and GABA and glycine, the main inhibitory ones); biogenic amines (norepinephrine, dopamine, serotonin); neuropeptides such as endorphins; and gases such as nitric oxide.",
+    "roots": [["bio-", "life"], ["-genic", "produced by"], ["endo-", "within"]],
+    "say": ""
+  },
+  "transmitter-removal": {
+    "def": "The clearing of a neurotransmitter from the synaptic cleft, which ends its signal: by diffusion away, by degradation (enzymes such as acetylcholinesterase break it down), or by reuptake (transporter proteins carry it back into the axon terminal or nearby astrocytes).",
+    "roots": [["re-", "back"]],
+    "say": ""
+  },
+  "neural-circuits": {
+    "def": "Patterns of connection among neurons. In divergence one neuron synapses on many, spreading its signal; in convergence many neurons synapse on one, which sums their inputs.",
+    "roots": [["di-", "apart"], ["con-", "together"], ["vergere", "to turn, incline (Latin)"]],
+    "say": ""
+  }
+}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" width="700" height="440" role="img" aria-label="A cross section of the spinal cord with the back (dorsal) side at the top. A butterfly-shaped core of gray matter surrounds a tiny central canal. Its two narrow dorsal horns reach toward the back, two broad ventral horns reach toward the front, and small lateral horns stick out at the sides. The white matter around it is divided on each side into posterior, lateral and anterior columns, with a shallow posterior median sulcus at the back and a deep anterior median fissure at the front. On the left, an orange dorsal root with a swollen dorsal root ganglion enters the back of the cord, and a blue ventral root leaves the front; the two join into one nerve.">
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<rect x="0" y="0" width="700" height="440" fill="#FFFFFF"/>
+<ellipse cx="330" cy="220" rx="150" ry="120" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2.5"/>
+<g fill="#B7C4C1"><ellipse cx="368" cy="160" rx="14" ry="55" transform="rotate(25 368 160)"/><ellipse cx="372" cy="272" rx="34" ry="42" transform="rotate(-20 372 272)"/><ellipse cx="394" cy="214" rx="20" ry="12"/><ellipse cx="350" cy="220" rx="35" ry="28"/><ellipse cx="292" cy="160" rx="14" ry="55" transform="rotate(-25 292 160)"/><ellipse cx="288" cy="272" rx="34" ry="42" transform="rotate(20 288 272)"/><ellipse cx="266" cy="214" rx="20" ry="12"/><ellipse cx="310" cy="220" rx="35" ry="28"/><rect x="300" y="205" width="60" height="25"/></g>
+<circle cx="330" cy="217" r="5" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5"/>
+<line x1="330" y1="100" x2="330" y2="186" stroke="#5D6B69" stroke-width="2"/>
+<path d="M321 341 L330 262 L339 341 Z" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<path d="M262 116 C 220 118 185 135 152 152" fill="none" stroke="#E69F00" stroke-width="5"/>
+<ellipse cx="128" cy="166" rx="28" ry="16" transform="rotate(35 128 166)" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+<path d="M110 182 C 95 196 88 206 80 214" fill="none" stroke="#E69F00" stroke-width="5"/>
+<path d="M256 318 C 210 312 150 290 82 226" fill="none" stroke="#56B4E9" stroke-width="5"/>
+<line x1="80" y1="216" x2="18" y2="216" stroke="#E69F00" stroke-width="5"/>
+<line x1="80" y1="224" x2="18" y2="224" stroke="#56B4E9" stroke-width="5"/>
+<text x="330" y="30" font-size="13" font-weight="700" text-anchor="middle" fill="#5D6B69">Posterior (dorsal)</text>
+<text x="330" y="430" font-size="13" font-weight="700" text-anchor="middle" fill="#5D6B69">Anterior (ventral)</text>
+<line x1="330" y1="130" x2="500" y2="56" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="330" cy="130" r="2.5" fill="#1F2A28"/>
+<text x="506" y="60" font-size="13.5" font-weight="700">Posterior median sulcus</text>
+<line x1="346" y1="130" x2="500" y2="96" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="346" cy="130" r="2.5" fill="#1F2A28"/>
+<text x="506" y="100" font-size="13.5" font-weight="700">Posterior column</text>
+<line x1="386" y1="128" x2="500" y2="136" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="386" cy="128" r="2.5" fill="#1F2A28"/>
+<text x="506" y="140" font-size="13.5" font-weight="700">Dorsal horn</text>
+<line x1="408" y1="214" x2="500" y2="181" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="408" cy="214" r="2.5" fill="#1F2A28"/>
+<text x="506" y="185" font-size="13.5" font-weight="700">Lateral horn</text>
+<line x1="452" y1="236" x2="500" y2="221" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="452" cy="236" r="2.5" fill="#1F2A28"/>
+<text x="506" y="225" font-size="13.5" font-weight="700">Lateral column</text>
+<line x1="333" y1="217" x2="500" y2="261" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="333" cy="217" r="2.5" fill="#1F2A28"/>
+<text x="506" y="265" font-size="13.5" font-weight="700">Central canal</text>
+<line x1="382" y1="288" x2="500" y2="301" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="382" cy="288" r="2.5" fill="#1F2A28"/>
+<text x="506" y="305" font-size="13.5" font-weight="700">Ventral horn</text>
+<line x1="352" y1="322" x2="500" y2="341" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="352" cy="322" r="2.5" fill="#1F2A28"/>
+<text x="506" y="345" font-size="13.5" font-weight="700">Anterior column</text>
+<line x1="332" y1="332" x2="500" y2="381" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="332" cy="332" r="2.5" fill="#1F2A28"/>
+<text x="506" y="385" font-size="13.5" font-weight="700">Anterior median fissure</text>
+<line x1="212" y1="128" x2="200" y2="68" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="212" cy="128" r="2.5" fill="#1F2A28"/>
+<text x="200" y="62" font-size="13.5" font-weight="700" text-anchor="middle">Dorsal root</text>
+<line x1="120" y1="160" x2="80" y2="118" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="120" cy="160" r="2.5" fill="#1F2A28"/>
+<text x="20" y="112" font-size="13.5" font-weight="700" text-anchor="start">Dorsal root ganglion</text>
+<line x1="200" y1="303" x2="165" y2="364" stroke="#1F2A28" stroke-width="1.2"/>
+<circle cx="200" cy="303" r="2.5" fill="#1F2A28"/>
+<text x="165" y="380" font-size="13.5" font-weight="700" text-anchor="middle">Ventral root</text>
+</g>
+</svg>

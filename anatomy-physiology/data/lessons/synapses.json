@@ -1,0 +1,50 @@
+{
+  "topic": "synapses",
+  "hook": "<p>Mr. Ruiz, 45, sprayed an organophosphate insecticide on a hot afternoon without gloves. An hour later he is drenched in sweat and drooling, the muscles of his arms are twitching in small ripples, and his breathing is getting weak. Nothing in the poison excites his nerves directly. It jams the enzyme that clears acetylcholine from his synapses, so every signal his neurons send keeps acting long after it should have stopped.</p>",
+  "prereq": [
+    {
+      "q": "What can pass directly from one cell's cytosol to its neighbor's through a gap junction?",
+      "options": ["Ions and small molecules", "Whole organelles", "Nothing: gap junctions seal the space between cells"],
+      "correct": 0,
+      "why": "Gap junctions are protein tunnels that link two cells' cytosols, so ions and small molecules pass straight through. Sealing the space between cells is the job of tight junctions.",
+      "review": "cell-junctions"
+    },
+    {
+      "q": "At the neuromuscular junction, what directly triggers the synaptic vesicles to release acetylcholine?",
+      "options": ["Sodium entering the axon terminal", "Calcium entering the axon terminal", "Acetylcholinesterase in the cleft"],
+      "correct": 1,
+      "why": "The action potential opens voltage-gated calcium channels in the axon terminal. Calcium entering triggers the vesicles to fuse with the membrane and release acetylcholine.",
+      "review": "neuromuscular-junction"
+    },
+    {
+      "q": "A messenger binds a membrane receptor protein that has no pore. The receptor protein switches on a G protein inside the cell. What usually happens next?",
+      "options": ["The messenger enters the nucleus", "The receptor protein opens and lets ions through", "An enzyme makes a second messenger such as cAMP"],
+      "correct": 2,
+      "why": "A G protein switches on a membrane enzyme that makes a second messenger, such as cyclic AMP, which carries the signal on inside the cell.",
+      "review": "chemical-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-27",
+    "caption": "A chemical synapse. Hide the labels and name the presynaptic and postsynaptic neurons, the axon terminal, the synaptic vesicles, the synaptic cleft and the channels the neurotransmitter binds."
+  },
+  "chain": [
+    { "cause": "An action potential reaches the axon terminal of the presynaptic neuron.", "effect": "The depolarization opens voltage-gated calcium channels, and calcium rushes into the terminal." },
+    { "cause": "Calcium binds sensor proteins on docked synaptic vesicles.", "effect": "The vesicles fuse with the membrane and release neurotransmitter into the synaptic cleft by exocytosis." },
+    { "cause": "The neurotransmitter diffuses across the cleft and binds receptor proteins on the postsynaptic membrane.", "effect": "Ionotropic receptor proteins open at once; metabotropic ones act more slowly through G proteins. Either way, ion channels open or close." },
+    { "cause": "Ions flow through the opened channels.", "effect": "The postsynaptic membrane depolarizes (an EPSP) or hyperpolarizes or is held near rest (an IPSP)." },
+    { "cause": "EPSPs and IPSPs from many synapses spread to the trigger zone and add together (spatial and temporal summation).", "effect": "If the sum reaches threshold, the postsynaptic neuron fires an action potential." },
+    { "cause": "Diffusion, enzymes and reuptake transporters clear the neurotransmitter from the cleft.", "effect": "The receptor proteins empty, the channels close, and the synapse is ready for the next signal." }
+  ],
+  "misconception": {
+    "wrong": "Each neurotransmitter is either excitatory or inhibitory in itself.",
+    "right": "The receptor protein, not the neurotransmitter, decides the effect. Acetylcholine excites skeletal muscle through ionotropic receptor proteins that let sodium in, and slows the heart through metabotropic receptor proteins that open potassium channels. Glutamate and GABA are called excitatory and inhibitory only because nearly all of their receptor proteins in the adult brain work that way."
+  },
+  "check": ["anp-synapses-3", "anp-synapses-6", "anp-synapses-8", "anp-synapses-10", "anp-synapses-13", "anp-synapses-15", "anp-synapses-17", "anp-synapses-19"],
+  "summary": "<p>At an electrical synapse, gap junctions pass current directly, almost instantly and usually both ways. At a chemical synapse, an action potential in the presynaptic neuron's axon terminal opens voltage-gated calcium channels; calcium triggers exocytosis of neurotransmitter, which crosses the cleft and binds receptor proteins on the postsynaptic neuron. Ionotropic receptor proteins are ligand-gated channels (fast, brief); metabotropic ones work through G proteins (slower, longer, amplified). The result is an EPSP, a depolarization toward threshold, or an IPSP, which moves the membrane away from it. The trigger zone adds these by temporal and spatial summation and fires if the sum reaches threshold. The major neurotransmitters are acetylcholine, the amino acids glutamate, GABA and glycine, the biogenic amines norepinephrine, dopamine and serotonin, neuropeptides such as endorphins, and nitric oxide. The signal ends by diffusion, degradation and reuptake, and drugs and toxins act by changing release, binding, degradation or reuptake. Neurons are wired in circuits with divergence and convergence.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/nremt/study-notes.html#chapter-39", "label": "NREMT: Hazardous materials (nerve agents)" }
+  ]
+}

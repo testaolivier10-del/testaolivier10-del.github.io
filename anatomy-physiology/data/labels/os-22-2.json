@@ -1,0 +1,209 @@
+{
+  "figure": "os-22-2",
+  "labels": [
+    {
+      "id": "nasal-cavity",
+      "name": "Nasal cavity",
+      "accept": [
+        "nasal cavity"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        7,
+        181,
+        139,
+        29
+      ]
+    },
+    {
+      "id": "nostril",
+      "name": "Nostril",
+      "accept": [
+        "nostril",
+        "naris",
+        "nares",
+        "external naris"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        7,
+        214,
+        78,
+        24
+      ]
+    },
+    {
+      "id": "oral-cavity",
+      "name": "Oral cavity",
+      "accept": [
+        "oral cavity",
+        "mouth"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        6,
+        249,
+        124,
+        29
+      ]
+    },
+    {
+      "id": "pharynx",
+      "name": "Pharynx",
+      "accept": [
+        "pharynx",
+        "throat"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "pharynx",
+      "box": [
+        973,
+        269,
+        98,
+        28
+      ]
+    },
+    {
+      "id": "larynx",
+      "name": "Larynx",
+      "accept": [
+        "larynx",
+        "voice box"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "larynx",
+      "box": [
+        7,
+        372,
+        82,
+        28
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "major-organs",
+      "box": [
+        972,
+        418,
+        96,
+        24
+      ]
+    },
+    {
+      "id": "right-main-bronchus",
+      "name": "Right main bronchus",
+      "accept": [
+        "right main bronchus",
+        "right primary bronchus",
+        "main bronchus",
+        "primary bronchus"
+      ],
+      "lines": [
+        6,
+        8
+      ],
+      "concept": "bronchial-tree",
+      "box": [
+        6,
+        551,
+        125,
+        52
+      ]
+    },
+    {
+      "id": "left-main-bronchus",
+      "name": "Left main bronchus",
+      "accept": [
+        "left main bronchus",
+        "left primary bronchus",
+        "main bronchus",
+        "primary bronchus"
+      ],
+      "lines": [
+        7,
+        9
+      ],
+      "concept": "bronchial-tree",
+      "box": [
+        973,
+        551,
+        109,
+        52
+      ]
+    },
+    {
+      "id": "right-lung",
+      "name": "Right lung",
+      "accept": [
+        "right lung",
+        "lung"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "lungs",
+      "box": [
+        7,
+        662,
+        117,
+        29
+      ]
+    },
+    {
+      "id": "left-lung",
+      "name": "Left lung",
+      "accept": [
+        "left lung",
+        "lung"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "lungs",
+      "box": [
+        973,
+        684,
+        101,
+        29
+      ]
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [
+        "diaphragm"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "diaphragm",
+      "box": [
+        973,
+        800,
+        127,
+        29
+      ]
+    }
+  ]
+}

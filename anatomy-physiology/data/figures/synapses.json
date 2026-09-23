@@ -1,0 +1,44 @@
+{
+  "os-12-26": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.26",
+      "section": "12.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4f76dd06f910524ab2c7f1fab8063e91314e9ca6",
+      "page": "12-5-communication-between-neurons"
+    },
+    "alt": "A drawing of a multipolar neuron with green and magenta axon endings touching its dendrites and cell body; a box at the start of its axon leads by an arrow to a graph below. The graph plots membrane potential against time, with lines at minus 70, minus 55 and plus 30 millivolts. From rest, green upward steps (EPSPs) climb in stages to point A, still below minus 55. Magenta downward curves (IPSPs) then pull the trace back down, green steps push it up again, another magenta curve pulls it down, and a final green rise reaches minus 55 at point B, labeled summation at axon hillock. There the trace shoots up above plus 30, falls steeply below minus 70, and recovers to rest.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.26",
+    "labels": [],
+    "w": 1608,
+    "h": 1033,
+    "ext": "jpg"
+  },
+  "os-12-28": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.28",
+      "section": "12.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2825892fb890044724c3af8df42f739d2b5d533d",
+      "page": "12-5-communication-between-neurons"
+    },
+    "alt": "Two views of a postsynaptic membrane. Top: neurotransmitter molecules released into the synaptic cleft bind directly to channel proteins in the membrane, and each channel opens at once, letting ions flow through into the cytosol; the caption calls this direct activation with an immediate response. Bottom: neurotransmitter binds a different membrane protein that is not a channel; inside the cell, an activated G protein binds an effector enzyme, which turns ATP into many second messenger molecules, and these act on a separate channel protein, which opens and lets ions in; the caption calls this indirect activation, a prolonged response amplified over time.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.28",
+    "labels": [],
+    "w": 985,
+    "h": 1210,
+    "ext": "jpg"
+  },
+  "synaptic-summation": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 680,
+    "h": 520,
+    "alt": "Four small graphs of membrane potential at a neuron trigger zone against time, 0 to 40 milliseconds, each with dashed lines at rest, minus 70, and threshold, minus 55. A, one EPSP: excitatory input E1 fires once, and the membrane rises about 6 millivolts, then fades back to rest without reaching threshold. B, temporal summation: E1 fires three times, 3 milliseconds apart; each small depolarization starts before the last has faded, so they stack up to threshold and an action potential fires. C, spatial summation: inputs E1, E2 and E3 fire at the same moment; their depolarizations add into one large one that reaches threshold, and an action potential fires. D, EPSP plus IPSP: E1 and inhibitory input I1 fire together; the depolarization and hyperpolarization nearly cancel, and the membrane barely moves from rest.",
+    "labels": []
+  }
+}

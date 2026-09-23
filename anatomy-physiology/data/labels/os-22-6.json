@@ -1,0 +1,196 @@
+{
+  "figure": "os-22-6",
+  "labels": [
+    {
+      "id": "nasal-cavity",
+      "name": "Nasal cavity",
+      "accept": [
+        "nasal cavity"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nasal-cavity",
+      "box": [
+        11,
+        144,
+        138,
+        28
+      ]
+    },
+    {
+      "id": "hard-palate",
+      "name": "Hard palate",
+      "accept": [
+        "hard palate"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        13,
+        275,
+        133,
+        28
+      ]
+    },
+    {
+      "id": "soft-palate",
+      "name": "Soft palate",
+      "accept": [
+        "soft palate"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        886,
+        284,
+        125,
+        28
+      ]
+    },
+    {
+      "id": "tongue",
+      "name": "Tongue",
+      "accept": [
+        "tongue"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null,
+      "box": [
+        61,
+        411,
+        90,
+        29
+      ]
+    },
+    {
+      "id": "epiglottis",
+      "name": "Epiglottis",
+      "accept": [
+        "epiglottis"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "larynx",
+      "box": [
+        887,
+        470,
+        107,
+        28
+      ]
+    },
+    {
+      "id": "larynx",
+      "name": "Larynx (voice box)",
+      "accept": [
+        "larynx",
+        "voice box"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "larynx",
+      "box": [
+        887,
+        566,
+        203,
+        28
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "esophagus",
+        "oesophagus"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "major-organs",
+      "box": [
+        887,
+        654,
+        129,
+        28
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs",
+      "box": [
+        886,
+        700,
+        98,
+        24
+      ]
+    },
+    {
+      "id": "nasopharynx",
+      "name": "Nasopharynx",
+      "accept": [
+        "nasopharynx"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "pharynx",
+      "box": [
+        85,
+        775,
+        150,
+        28
+      ]
+    },
+    {
+      "id": "oropharynx",
+      "name": "Oropharynx",
+      "accept": [
+        "oropharynx"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "pharynx",
+      "box": [
+        324,
+        775,
+        135,
+        28
+      ]
+    },
+    {
+      "id": "laryngopharynx",
+      "name": "Laryngopharynx",
+      "accept": [
+        "laryngopharynx",
+        "hypopharynx"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "pharynx",
+      "box": [
+        548,
+        775,
+        180,
+        28
+      ]
+    }
+  ]
+}

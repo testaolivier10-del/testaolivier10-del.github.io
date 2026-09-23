@@ -1,0 +1,615 @@
+[
+  {
+    "id": "anp-action-potential-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "During the rising phase of a neuron's action potential, what are the two gates of a voltage-gated sodium channel doing?",
+    "options": [
+      "Activation gate shut, inactivation gate open",
+      "Both gates open",
+      "Activation gate open, inactivation gate plugging the pore",
+      "Both gates shut"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Sodium can pass only while both gates are open. Depolarization swings the fast activation gate open, and the slower inactivation gate has not yet swung in, so sodium rushes in and drives the rising phase.",
+      "options": [
+        "This is the closed, ready state at rest. The channel can open, but no sodium flows yet.",
+        "Correct. For well under a millisecond both gates are open, and sodium floods in.",
+        "This is the inactivated state, reached about a millisecond later, at the peak and during the falling phase. No sodium flows.",
+        "Both gates are shut only briefly, while a channel resets after repolarization. During the rising phase the activation gate is open."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-2",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "neuron-ap-refractory",
+    "q": "On this graph, a second stimulus twice as strong as the first arrives at 1.5 ms. What happens?",
+    "options": [
+      "No second action potential starts",
+      "A second, smaller action potential starts at once",
+      "A second action potential starts and peaks higher than the first",
+      "The first action potential is pushed to a higher peak"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "At 1.5 ms the membrane is at the peak, inside the absolute refractory period. Every sodium channel is open or inactivated, so there are no ready channels for a second stimulus to open, however strong it is.",
+      "options": [
+        "Correct. In the absolute refractory period no stimulus can start another action potential.",
+        "A smaller second action potential is possible only in the relative refractory period, which begins later, at about 2.1 ms.",
+        "Action potentials are all-or-none. A stronger stimulus never makes a taller one, and in this window it cannot make one at all.",
+        "The peak is capped by sodium inactivation and potassium opening. Extra stimulus cannot push it higher."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-3",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "figure": "neuron-ap-refractory",
+    "q": "At 3 ms on this graph, a stimulus exactly as strong as the one that started the first action potential arrives. It fails to trigger a second one. Why?",
+    "options": [
+      "The sodium–potassium pump has not yet restored the ion concentrations",
+      "Voltage-gated potassium channels have closed and cannot reopen yet",
+      "Some sodium channels are still inactivated, and open potassium channels hold the membrane below rest",
+      "Every sodium channel is still in the inactivated state"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At 3 ms the membrane is in the relative refractory period. Only some sodium channels have reset to the ready state, and the slow potassium channels are still open, holding the membrane near −80 mV, farther from threshold. A normal stimulus falls short; a stronger one would work.",
+      "options": [
+        "One action potential moves only a tiny fraction of the ions. The concentrations have barely changed, so the pump is not what limits a second spike.",
+        "The potassium channels are still open at 3 ms; that is what holds the membrane below rest. And potassium channels closing would not block a new spike.",
+        "Correct. Fewer ready sodium channels plus a membrane pulled below rest mean a normal stimulus cannot reach threshold.",
+        "If every sodium channel were inactivated, no stimulus of any strength would work. That describes the absolute refractory period, which ended at about 2.1 ms."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-12-23",
+    "q": "On this graph, what holds the membrane below −70 mV during the dip labeled hyperpolarization?",
+    "options": [
+      "Sodium–potassium pumps moving three sodium out for every two potassium in",
+      "Chloride rushing in through voltage-gated channels",
+      "Sodium channels stuck in the open state",
+      "Voltage-gated potassium channels that are slow to close"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The delayed potassium channels close slowly, so for a few milliseconds after repolarization potassium keeps leaving. The membrane drifts toward potassium's equilibrium potential of about −90 mV and dips to about −80 mV before the channels close.",
+      "options": [
+        "The pump works steadily in the background and contributes only a few millivolts. It does not make the dip after each spike.",
+        "Chloride channels are not part of the axon's action potential. The dip is carried by potassium.",
+        "Open sodium channels would push the membrane up toward +60 mV, not down below rest. At this point they are resetting from the inactivated state.",
+        "Correct. Potassium keeps flowing out through slow-closing channels, so the membrane overshoots below rest."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "gradients",
+      "communication"
+    ],
+    "misconception": "sodium channels set the resting potential",
+    "q": "A dentist injects a low dose of local anesthetic that blocks about half of the voltage-gated sodium channels in a nerve. Predict each variable in the affected axons, compared with before the injection.",
+    "variables": [
+      {
+        "name": "Resting membrane potential",
+        "answer": "none",
+        "why": "Voltage-gated sodium channels are closed at rest. Potassium leak channels and the pump set the resting potential, and the drug does not touch them."
+      },
+      {
+        "name": "Sodium channels available to open",
+        "answer": "down",
+        "why": "The drug blocks half of them, so fewer can open when the membrane depolarizes."
+      },
+      {
+        "name": "Depolarization needed to reach threshold",
+        "answer": "up",
+        "why": "With fewer channels, the membrane must depolarize further before sodium flowing in outruns potassium flowing out."
+      },
+      {
+        "name": "Speed of the rising phase",
+        "answer": "down",
+        "why": "Less sodium enters per moment, so the membrane climbs toward the peak more slowly."
+      },
+      {
+        "name": "Conduction velocity",
+        "answer": "down",
+        "why": "Each firing patch sends less current ahead, so the next patch takes longer to reach threshold."
+      },
+      {
+        "name": "Signals reaching the brain from the numbed area",
+        "answer": "down",
+        "why": "Where too few channels remain, action potentials fail to reach threshold and stop, so fewer signals get through."
+      }
+    ],
+    "why": {
+      "correct": "A local anesthetic removes ready sodium channels. The resting potential is untouched, but threshold rises, each spike rises more slowly and sends less current forward, conduction slows, and in the most affected fibers action potentials fail altogether."
+    }
+  },
+  {
+    "id": "anp-action-potential-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "misconception": "myelin makes the action potential bigger",
+    "q": "An immune attack strips the myelin from a 3 mm stretch of a CNS axon. Predict each variable for signals traveling along that axon, compared with before.",
+    "variables": [
+      {
+        "name": "Current leaking out across the bare stretch",
+        "answer": "up",
+        "why": "Without the insulating layers of membrane, current escapes through the axon membrane instead of flowing along the inside."
+      },
+      {
+        "name": "Current reaching the next healthy node",
+        "answer": "down",
+        "why": "More leaks out on the way, so less arrives to depolarize the next node."
+      },
+      {
+        "name": "Time for the next node to reach threshold",
+        "answer": "up",
+        "why": "A smaller current depolarizes the node more slowly, so it reaches threshold later, if at all."
+      },
+      {
+        "name": "Conduction velocity through the damaged stretch",
+        "answer": "down",
+        "why": "Each delay at a node adds up, and the bare stretch has few sodium channels to help, so the signal slows or stops."
+      },
+      {
+        "name": "Peak voltage of an action potential at a healthy node that does fire",
+        "answer": "none",
+        "why": "Action potentials are all-or-none. A node that reaches threshold fires a full-sized spike, set by its own channels and gradients."
+      }
+    ],
+    "why": {
+      "correct": "Myelin does not make action potentials bigger; it keeps current inside the axon so the next node reaches threshold quickly. Strip it away and current leaks out, the next node depolarizes slowly or not at all, and conduction slows or is blocked, while any spike that does fire is still full-sized."
+    }
+  },
+  {
+    "id": "anp-action-potential-7",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
+    "misconception": "hyperkalemia always makes cells more excitable",
+    "q": "A patient's blood potassium rises from 4.5 to 6.5 mmol/L over an hour, then keeps climbing to 8.5 mmol/L and stays there for several hours. Predict each variable for his neurons and muscle fibers, first during the modest early rise and then after hours at the high level. Compare with normal unless stated otherwise.",
+    "variables": [
+      {
+        "name": "Resting membrane potential (less negative counts as up), early rise",
+        "answer": "up",
+        "why": "More potassium outside shrinks the potassium gradient, so less potassium leaks out and the inside becomes less negative."
+      },
+      {
+        "name": "Ease of reaching threshold, early rise",
+        "answer": "up",
+        "why": "The resting potential now sits a few millivolts closer to −55 mV, and most sodium channels are still ready, so a smaller stimulus reaches threshold."
+      },
+      {
+        "name": "Sodium channels in the closed, ready state, after hours at 8.5 mmol/L",
+        "answer": "down",
+        "why": "A membrane held depolarized for hours lets more and more sodium channels drift into the inactivated state, and they cannot reset without repolarization."
+      },
+      {
+        "name": "Ease of reaching threshold after hours, compared with the early rise",
+        "answer": "down",
+        "why": "With fewer ready sodium channels, threshold rises, so the cells that first fired more easily now fire less easily or not at all."
+      },
+      {
+        "name": "Peak of the action potentials that do fire, after hours",
+        "answer": "down",
+        "why": "Fewer ready sodium channels let in less sodium, and the depolarized starting point shrinks the swing, so the spikes are smaller."
+      }
+    ],
+    "why": {
+      "correct": "Early on, a smaller potassium gradient moves the resting potential closer to threshold and cells fire more easily. Held depolarized for hours, sodium channels pile up in the inactivated state, threshold rises and spikes shrink or fail. That is why severe hyperkalemia causes weakness and a dangerous heart rhythm rather than nonstop firing."
+    }
+  },
+  {
+    "id": "anp-action-potential-8",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Put the events of a neuron action potential in order, starting when a graded depolarization reaches the trigger zone.",
+    "options": [
+      "The membrane reaches threshold, about −55 mV",
+      "Sodium activation gates open, and sodium rushing in drives the membrane to about +30 mV",
+      "Sodium inactivation gates plug the channels as delayed potassium channels open",
+      "Potassium flows out and the membrane repolarizes",
+      "Slow-closing potassium channels leave the membrane near −80 mV",
+      "Potassium channels close and the membrane returns to −70 mV"
+    ],
+    "why": {
+      "correct": "Threshold starts the positive feedback of sodium entry, which carries the membrane to the peak. Inactivation stops the sodium inflow as potassium channels open; potassium leaving repolarizes the membrane and, because those channels close slowly, overshoots into the afterhyperpolarization before rest returns."
+    }
+  },
+  {
+    "id": "anp-action-potential-9",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "One step in this account of an action potential is wrong. Find it.",
+    "options": [
+      "Threshold is reached and sodium activation gates open",
+      "Sodium enters and the membrane rises to about +30 mV",
+      "At the peak, the sodium channels reset to the closed, ready state",
+      "Potassium flows out through delayed potassium channels",
+      "The membrane dips to about −80 mV before returning to rest"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At the peak the sodium channels inactivate; they do not reset. The inactivation gate plugs the pore, and the channel returns to the ready state only after the membrane repolarizes. That is why the peak is followed by the absolute refractory period.",
+      "options": [
+        "This step is right. At threshold, enough activation gates open that sodium entry outruns potassium exit.",
+        "This step is right. Sodium entry drives the rising phase to about +30 mV.",
+        "This is the error. At the peak the channels are inactivated, not reset. Resetting needs repolarization and takes a few milliseconds.",
+        "This step is right. The delayed potassium channels are open by the peak and carry the falling phase.",
+        "This step is right. Slow-closing potassium channels cause the afterhyperpolarization."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-10",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Fill the gap: Sodium channels inactivate at the peak → ______ → the membrane dips below rest → potassium channels close and rest returns",
+    "options": [
+      "Sodium–potassium pumps move sodium out and repolarize the membrane",
+      "Potassium flows out through delayed potassium channels",
+      "Chloride enters through ligand-gated channels",
+      "Sodium activation gates close before any potassium moves"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With sodium inflow stopped, potassium leaving through the now-open delayed potassium channels carries the membrane back down. Those channels are slow to close, which produces the dip below rest that follows.",
+      "options": [
+        "The pump is far too slow to repolarize a membrane in a millisecond. It restores gradients over many action potentials, in the background.",
+        "Correct. Potassium outflow is the falling phase, and its slow shutoff causes the dip.",
+        "Ligand-gated channels open in response to chemical messengers, not as a step in the axon's action potential.",
+        "Without potassium moving out, closing sodium gates alone would leave the membrane depolarized. The falling phase needs potassium outflow."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "Dana, 31, has multiple sclerosis. After a hot shower, the vision in her right eye blurs, and it clears once she cools off. Which explanation fits?",
+    "options": [
+      "Heat melts some of the remaining myelin, which regrows once she cools",
+      "Warmth speeds sodium inactivation, so current at demyelinated stretches falls short of threshold",
+      "Warmth slows every axon in her body below a useful speed",
+      "Heat raises her resting potential above threshold, so her neurons fire nonstop"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Warmth makes sodium channels inactivate sooner, so each action potential carries a little less current. Healthy axons have plenty to spare. In a demyelinated stretch that was barely bringing the next node to threshold, that small loss causes conduction block. Cooling restores the margin.",
+      "options": [
+        "Myelin is not melted by a shower, and it could not regrow in minutes. The change is too fast to be structural.",
+        "Correct. A small, reversible loss of current tips barely-conducting demyelinated axons into block.",
+        "Warmth speeds conduction in healthy axons. Only axons already near failure are affected.",
+        "Nonstop firing would cause positive symptoms such as flashing lights, not blurring. The resting potential does not rise to threshold in a warm shower."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these axons conducts action potentials fastest?",
+    "options": [
+      "An unmyelinated axon 2 µm wide",
+      "An unmyelinated axon 20 µm wide",
+      "An unmyelinated axon 0.5 µm wide",
+      "A myelinated axon 10 µm wide"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Width and myelin both raise conduction velocity, but myelin has the bigger effect. A myelinated axon 10 µm wide conducts at roughly 50 to 60 m/s; an unmyelinated axon has to be enormously wider to come close.",
+      "options": [
+        "A thin unmyelinated axon conducts at only about 1 m/s: every patch must fire in turn, and its narrow core resists current.",
+        "Twice the width of the myelinated axon helps, but without myelin every patch must still fire in turn, which keeps it far slower.",
+        "This is the slowest of the four: the thinnest core and no myelin.",
+        "Correct. Saltatory conduction in a moderately wide axon beats continuous conduction in a wider one."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A motor axon conducts at 60 m/s. How long does an action potential take to travel 0.9 m from the spinal cord to a muscle in the foot?",
+    "options": [
+      "1.5 ms",
+      "54 ms",
+      "15 ms",
+      "150 ms"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Time = distance ÷ velocity = 0.9 m ÷ 60 m/s = 0.015 s = 15 ms.",
+      "options": [
+        "This is ten times too short: 0.015 s is 15 ms, not 1.5 ms. Check the conversion from seconds to milliseconds.",
+        "This multiplies distance by velocity (0.9 × 60 = 54). Time is distance divided by velocity.",
+        "Correct. 0.9 ÷ 60 = 0.015 s, which is 15 ms.",
+        "This is ten times too long. 0.015 s × 1,000 = 15 ms."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A neuron's absolute refractory period lasts 1.25 ms. What is the highest rate at which it could possibly fire?",
+    "options": [
+      "80 action potentials per second",
+      "125 action potentials per second",
+      "8,000 action potentials per second",
+      "800 action potentials per second"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The shortest possible gap between spikes is one absolute refractory period, 1.25 ms = 0.00125 s. 1 s ÷ 0.00125 s = 800 per second. Real neurons fire below this ceiling.",
+      "options": [
+        "This is ten times too low. Recheck the conversion: 1.25 ms is 0.00125 s.",
+        "This uses the digits of 1.25 rather than dividing one second by the refractory period.",
+        "This is ten times too high. 1 ÷ 0.00125 = 800.",
+        "Correct. One second holds 800 gaps of 1.25 ms."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-15",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every change that increases the conduction velocity of an axon.",
+    "options": [
+      "Demyelination",
+      "A wider axon",
+      "Cooling the limb with an ice pack",
+      "Myelination",
+      "Rewarming a cooled limb to normal body temperature",
+      "A drug that blocks half of the voltage-gated sodium channels"
+    ],
+    "correct": [
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "A wider core lowers internal resistance, myelin keeps current inside and limits firing to the nodes, and warmth speeds channel opening. Losing myelin, cooling and blocking sodium channels all slow conduction.",
+      "options": [
+        "Demyelination lets current leak out between nodes, so it slows conduction or blocks it.",
+        "Correct. Less internal resistance lets current spread farther ahead.",
+        "Cold slows channel gating, so conduction slows. That is part of why ice numbs.",
+        "Correct. Myelin allows saltatory conduction.",
+        "Correct. Channels gate faster at normal body temperature than in a cooled limb.",
+        "Fewer sodium channels send less current ahead, so the next patch reaches threshold later."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the action potential jumps outside the axon",
+    "q": "During saltatory conduction, what happens in the stretch of axon under the myelin between two nodes of Ranvier?",
+    "options": [
+      "Current flows along the inside with little leak, and no action potential fires there",
+      "The action potential leaps through the extracellular fluid outside the myelin sheath to the next node",
+      "A full action potential fires in every patch, but faster than without myelin",
+      "No current flows until the next node fires on its own"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Myelin insulates the internode and very few sodium channels sit there. Current from the firing node flows through the inside of the axon to the next node with little loss, and only the node regenerates the action potential.",
+      "options": [
+        "Correct. Current travels the whole way; only the slow firing step is skipped.",
+        "Nothing leaps outside. \"Saltatory\" describes how the spike seems to hop from node to node; the current runs inside the axon.",
+        "The internode has too few sodium channels to fire, and it is not in contact with the extracellular fluid. Firing happens only at the nodes.",
+        "A node fires only when current from the previous node depolarizes it to threshold. Without current flowing under the myelin, nothing would reach it."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A stimulus much stronger than usual arrives during the relative refractory period. What happens?",
+    "options": [
+      "No action potential can start until the membrane is fully back at rest",
+      "An action potential starts, taller than usual",
+      "An action potential starts, a little smaller than usual",
+      "The membrane rises to +30 mV and stays there"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In the relative refractory period some sodium channels have reset, so a strong enough stimulus reaches threshold. Because not all have reset, and potassium channels are still open, the spike is a little smaller than a normal one.",
+      "options": [
+        "That describes the absolute refractory period. In the relative period a stronger-than-normal stimulus can succeed.",
+        "A stronger stimulus does not make a taller spike. The peak depends on the channels and gradients, and here fewer channels are ready.",
+        "Correct. Fewer ready sodium channels give a slightly smaller spike.",
+        "Sodium channels inactivate within about a millisecond whatever the stimulus, so the membrane cannot stay at the peak."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "communication"
+    ],
+    "q": "Kenji eats pufferfish that was badly prepared and contains tetrodotoxin, which blocks voltage-gated sodium channels from the outside. Within an hour his lips tingle, his limbs weaken and his breathing becomes shallow. Tests on his nerve cells would show nearly normal resting potentials. Which statement explains both findings?",
+    "options": [
+      "The toxin blocks potassium leak channels, which set the resting potential",
+      "The toxin stops the sodium–potassium pump, and the gradients take hours to run down",
+      "Sodium channels are closed at rest, so blocking them spares the resting potential but stops action potentials",
+      "The toxin holds sodium channels open, so the membrane stays at the peak"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The resting potential depends on potassium leak channels and the gradients, not on voltage-gated sodium channels, which are closed at rest. With those channels blocked, depolarization cannot trigger the sodium inflow of an action potential, so nerves to his muscles, including those for breathing, stop conducting.",
+      "options": [
+        "Blocking the leak channels would change the resting potential, which is nearly normal. Tetrodotoxin acts on voltage-gated sodium channels.",
+        "A slowly failing pump would not cause weakness within an hour, and the question states the toxin blocks sodium channels.",
+        "Correct. The channels the toxin blocks do nothing at rest, but every action potential needs them.",
+        "The toxin blocks the channel pore; it does not hold channels open. Channels held open would depolarize the resting membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "q": "Sodium's equilibrium potential is about +60 mV, yet a neuron's action potential peaks near +30 mV. Why does the rise stop short?",
+    "options": [
+      "The sodium gradient is used up by all the sodium that has entered during the rising phase",
+      "The sodium–potassium pump switches on at the peak",
+      "Sodium's equilibrium potential falls to +30 mV during the spike",
+      "Sodium channels inactivate and potassium channels open, cutting the rise off"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Two things end the rise at once: the inactivation gates plug the sodium channels, stopping the inward flow, and the delayed potassium channels open, starting an outward flow. The membrane turns around before it can reach +60 mV.",
+      "options": [
+        "Only a tiny fraction of the sodium crosses in one action potential. The gradient is almost unchanged.",
+        "The pump runs all the time and is far too slow to stop a spike in a fraction of a millisecond.",
+        "Because concentrations barely change, sodium's equilibrium potential stays near +60 mV.",
+        "Correct. Timing, not the gradient, sets the peak: inactivation plus potassium outflow."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is saltatory conduction?",
+    "options": [
+      "Every patch of an unmyelinated axon firing in turn, one after another",
+      "Action potentials regenerated only at the nodes of Ranvier",
+      "The spread of a graded potential across the cell body",
+      "Conduction that depends on the salt concentration of the blood"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In a myelinated axon, current flows under the myelin and the action potential is regenerated only at the nodes of Ranvier, so it seems to leap from node to node (Latin saltare, to leap).",
+      "options": [
+        "That is continuous conduction, in an unmyelinated axon.",
+        "Correct. Firing only at the nodes is what makes it fast and cheap.",
+        "Graded potentials spread passively and fade; they are not conducted this way.",
+        "The name comes from the Latin for \"to leap\", not from salt."
+      ]
+    }
+  },
+  {
+    "id": "anp-action-potential-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A researcher records a depolarization at one end of an axon and again 5 cm farther along. Which finding shows it is an action potential rather than a graded potential?",
+    "options": [
+      "It is the same size at both recording sites",
+      "It is a depolarization rather than a hyperpolarization",
+      "It gets larger when the stimulus is made stronger",
+      "It is much smaller at the second recording site"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "An action potential is regenerated at full size by every patch or node it reaches, so it arrives as large as it started. A graded potential fades within a millimeter or two.",
+      "options": [
+        "Correct. Arriving undiminished is the mark of a regenerated, all-or-none signal.",
+        "Graded potentials can depolarize too, so a depolarization alone does not tell them apart.",
+        "Growing with stimulus strength is the mark of a graded potential. Action potentials stay the same size.",
+        "Shrinking with distance is how a graded potential behaves."
+      ]
+    }
+  }
+]

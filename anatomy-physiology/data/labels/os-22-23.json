@@ -1,0 +1,70 @@
+{
+  "figure": "os-22-23",
+  "labels": [
+    {
+      "id": "blood-plasma",
+      "name": "Blood plasma",
+      "accept": [
+        "blood plasma",
+        "plasma"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "plasma",
+      "box": [
+        894,
+        40,
+        140,
+        26
+      ]
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid",
+      "accept": [
+        "interstitial fluid",
+        "tissue fluid"
+      ],
+      "box": [
+        353,
+        36,
+        95,
+        47
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "tissue-cell",
+      "name": "Tissue cell",
+      "accept": [
+        "tissue cell",
+        "tissue cells",
+        "body cell"
+      ],
+      "box": [
+        89,
+        252,
+        104,
+        22
+      ],
+      "concept": null
+    },
+    {
+      "id": "red-blood-cell",
+      "name": "Red blood cell",
+      "accept": [
+        "red blood cell",
+        "rbc",
+        "erythrocyte"
+      ],
+      "box": [
+        661,
+        362,
+        137,
+        22
+      ],
+      "concept": "blood-cells-basic"
+    }
+  ]
+}

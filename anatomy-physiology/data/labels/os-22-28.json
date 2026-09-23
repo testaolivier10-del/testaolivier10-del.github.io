@@ -1,0 +1,73 @@
+{
+  "figure": "os-22-28",
+  "labels": [
+    {
+      "id": "co2-carried-in-rbc",
+      "name": "CO2 carried in RBC",
+      "accept": [
+        "co2 carried in rbc",
+        "co2 carried in red blood cell",
+        "carbon dioxide carried in red blood cell",
+        "carried in red blood cell",
+        "carried in rbc"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "co2-forms",
+      "box": [
+        846,
+        24,
+        252,
+        32
+      ]
+    },
+    {
+      "id": "hco3-dissolved-in-plasma",
+      "name": "HCO3− dissolved in plasma as carbonic acid",
+      "accept": [
+        "bicarbonate",
+        "hco3",
+        "bicarbonate in plasma",
+        "bicarbonate ions",
+        "hco3- dissolved in plasma"
+      ],
+      "lines": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "concept": "co2-forms",
+      "box": [
+        846,
+        262,
+        254,
+        82
+      ]
+    },
+    {
+      "id": "co2-dissolved-in-plasma",
+      "name": "CO2 dissolved in plasma",
+      "accept": [
+        "co2 dissolved in plasma",
+        "dissolved co2",
+        "dissolved in plasma",
+        "dissolved carbon dioxide",
+        "carbon dioxide dissolved in plasma"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "co2-forms",
+      "box": [
+        846,
+        424,
+        220,
+        57
+      ]
+    }
+  ]
+}
