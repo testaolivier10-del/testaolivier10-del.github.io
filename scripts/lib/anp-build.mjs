@@ -53,7 +53,13 @@ export function loadCourse(root) {
     const id = f.slice(0, -5);
     if (figures[id]) figures[id] = { ...figures[id], labels: readJson(join(labelDir, f)).labels || [] };
   }
-  const built = new Set(map.topics.map(t => t.id).filter(id => lessons[id] && notes[id] && questions[id]));
+  // Published chapters (data/published.json, decision 53): a finished topic in an
+  // unpublished chapter is checked but not built, so the branch can carry work
+  // in progress while main only shows audited chapters.
+  const pubPath = join(data, 'published.json');
+  const published = existsSync(pubPath) ? new Set(readJson(pubPath).chapters) : null;
+  const chapterIdOf = id => map.topics[topicIndex.get(id)].chapter;
+  const built = new Set(map.topics.map(t => t.id).filter(id => lessons[id] && notes[id] && questions[id] && (!published || published.has(chapterIdOf(id)))));
   const chapterOf = id => map.chapters.find(c => c.id === map.topics[topicIndex.get(id)].chapter);
   return { map, topicIndex, concepts, lessons, notes, questions, glossary, figures, built, chapterOf, data };
 }
