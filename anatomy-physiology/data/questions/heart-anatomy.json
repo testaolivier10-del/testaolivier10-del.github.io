@@ -31,7 +31,7 @@
     "core": ["structure-function"],
     "figure": "os-19-2",
     "pin": "apex-of-heart",
-    "q": "Name the pinned part of the heart: the pointed lower end that rests just above the diaphragm and points to the left.",
+    "q": "Name the pinned part of the heart.",
     "options": ["Apex of the heart", "Base of the heart", "Pericardial cavity", "Mediastinum"],
     "correct": 0,
     "why": {
@@ -52,7 +52,7 @@
     "core": ["structure-function"],
     "figure": "os-19-5",
     "pin": "fibrous-pericardium",
-    "q": "Name the pinned layer: the outermost covering of the heart, made of tough dense connective tissue.",
+    "q": "Name the pinned layer.",
     "options": ["Parietal pericardium", "Epicardium", "Fibrous pericardium", "Endocardium"],
     "correct": 2,
     "why": {
@@ -143,12 +143,12 @@
     "options": [
       "The endocardium tears, so blood inside the heart leaks out through its wall",
       "The epicardium thickens within minutes and stiffens the heart muscle below it",
-      "The fibrous pericardium cannot stretch quickly, so pressure in the sac rises",
+      "The fibrous pericardium cannot stretch quickly, so pressure in the sac rises steeply",
       "The myocardium relaxes fully, letting the heart balloon outward into the sac"
     ],
     "correct": 2,
     "why": {
-      "correct": "The fibrous pericardium is dense collagen and cannot expand fast. Blood collecting in the pericardial cavity therefore raises the pressure in the sac, which squeezes the heart and stops it filling between beats. That is cardiac tamponade.",
+      "correct": "The fibrous pericardium is dense collagen and cannot expand fast. Blood collecting in the pericardial cavity therefore raises the pressure in the sac, which squeezes the heart and keeps it from filling fully between beats. That is cardiac tamponade.",
       "options": [
         "A tear in the endocardium alone would not put blood around the heart, and the signs here come from compression from outside, not from a leak inside.",
         "The epicardium does not thicken within minutes, and a stiffer wall is not what compresses the heart in this scenario.",
@@ -361,7 +361,7 @@
     "options": [
       "The epicardium and then the myocardium",
       "The endocardium and then the full thickness of the myocardium",
-      "The fibrous pericardium and then the parietal pericardium",
+      "The fibrous pericardium and then the parietal pericardium fused to it",
       "The myocardium and then the endocardium"
     ],
     "correct": 2,

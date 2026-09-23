@@ -45,7 +45,7 @@
     "core": ["structure-function"],
     "figure": "os-19-9",
     "pin": "mitral-bicuspid-valve",
-    "q": "Name the pinned valve, between the left atrium and the left ventricle.",
+    "q": "Name the pinned valve.",
     "options": ["Tricuspid valve", "Aortic valve", "Pulmonary valve", "Mitral valve"],
     "correct": 3,
     "why": {
@@ -66,7 +66,7 @@
     "core": ["structure-function"],
     "figure": "os-19-9",
     "pin": "chordae-tendineae",
-    "q": "Name the pinned structures: thin cords running from the valve cusps down to the ventricle wall.",
+    "q": "Name the pinned structures.",
     "options": ["Pectinate muscles", "Chordae tendineae", "Trabeculae carneae", "Papillary muscles"],
     "correct": 1,
     "why": {
@@ -87,7 +87,7 @@
     "core": ["structure-function"],
     "figure": "os-19-9",
     "pin": "fossa-ovalis",
-    "q": "Name the pinned shallow oval dip in the wall between the two atria.",
+    "q": "Name the pinned structure.",
     "options": ["Coronary sulcus", "Fossa ovalis", "Auricle", "Atrioventricular septum"],
     "correct": 1,
     "why": {
@@ -129,7 +129,7 @@
     "core": ["structure-function"],
     "figure": "os-19-6",
     "pin": "auricle-of-left-atrium",
-    "q": "Name the pinned wrinkled, ear-shaped pouch on the front of the left atrium.",
+    "q": "Name the pinned structure.",
     "options": ["Left auricle", "Left ventricle", "Pulmonary trunk", "Coronary sulcus"],
     "correct": 0,
     "why": {
@@ -253,7 +253,7 @@
     "why": {
       "correct": "The vessels of the whole body resist flow far more than those of the lungs. To push the same volume through them, the left ventricle must raise pressure to about 120 mm Hg, versus about 25 mm Hg on the right. Muscle that works against a heavier load thickens.",
       "options": [
-        "Both ventricles pump the same volume each beat. If they did not, blood would pile up on one side within minutes.",
+        "On average, both ventricles pump the same volume each beat. If they did not, blood would pile up on one side within minutes.",
         "Distance alone is not the cause. What sets the work is the pressure needed to overcome the resistance of the vessels.",
         "Blood on both sides is the same blood, with the same thickness. It passes through the right side first and the left side next.",
         "Correct. The higher pressure load on the left ventricle is what thickens its wall."
@@ -291,7 +291,7 @@
   {
     "id": "anp-heart-chambers-valves-14",
     "type": "missing",
-    "level": "apply",
+    "level": "recall",
     "diff": 1,
     "core": ["structure-function"],
     "q": "Fill the gap in the right side of the heart: right atrium → tricuspid valve → ____ → pulmonary valve → pulmonary trunk.",

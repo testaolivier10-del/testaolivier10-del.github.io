@@ -30,14 +30,14 @@
   },
   "chain": [
     { "cause": "The ventricle muscle contracts, raising the pressure of the blood inside the ventricle.", "effect": "Blood pushes up on the cusps of the atrioventricular valve, and the cusps meet and seal the opening." },
-    { "cause": "The papillary muscles, part of the same ventricle wall, contract at the same moment.", "effect": "They pull the chordae tendineae tight." },
+    { "cause": "The papillary muscles, part of the same ventricle wall, contract along with it.", "effect": "They pull the chordae tendineae tight." },
     { "cause": "The taut chordae tendineae hold the cusp edges down.", "effect": "The cusps cannot flip up into the atrium, so blood does not flow backward into the atrium." },
-    { "cause": "With the atrioventricular valve sealed, rising ventricular pressure pushes blood toward the exit.", "effect": "Blood presses the semilunar valve's cusps flat against the artery wall and flows out into the artery." },
+    { "cause": "With the atrioventricular valve sealed, ventricular pressure keeps rising until it is higher than the pressure in the artery.", "effect": "Blood presses the semilunar valve's cusps flat against the artery wall and flows out into the artery." },
     { "cause": "When the ventricle relaxes and blood starts to slip back toward it, blood fills the semilunar cusps' pockets.", "effect": "The three pockets bulge together and seal, so blood does not flow back into the ventricle." }
   ],
   "misconception": {
     "wrong": "The left ventricle has a thicker wall because it pumps more blood than the right ventricle.",
-    "right": "Both ventricles pump the same volume of blood each beat. The left wall is thicker because the vessels of the whole body resist flow far more than the vessels of the lungs, so the left ventricle has to generate about five times the pressure (about 120 versus 25 mm Hg). Heart muscle thickens when it works against a heavier load."
+    "right": "On average, both ventricles pump the same volume of blood each beat. The left wall is thicker because the vessels of the whole body resist flow far more than the vessels of the lungs, so the left ventricle has to generate about five times the pressure (about 120 versus 25 mm Hg). Heart muscle thickens when it works against a heavier load."
   },
   "check": ["anp-heart-chambers-valves-1", "anp-heart-chambers-valves-3", "anp-heart-chambers-valves-8", "anp-heart-chambers-valves-10", "anp-heart-chambers-valves-12", "anp-heart-chambers-valves-14", "anp-heart-chambers-valves-16"],
   "summary": "<p>Two atria receive blood from veins; two ventricles pump it into arteries. The venae cavae enter the right atrium, the pulmonary trunk leaves the right ventricle, the pulmonary veins enter the left atrium, and the aorta leaves the left ventricle. The tricuspid and mitral valves sit between atria and ventricles and are held by chordae tendineae and papillary muscles; the pulmonary and aortic semilunar valves guard the exits and close by filling like pockets. Three septa divide the chambers, and the fossa ovalis marks the interatrial septum. The left ventricle wall is thickest because it works against the highest pressure. The cardiac skeleton anchors the valves and muscle and stops electrical signals crossing straight from atria to ventricles.</p>",

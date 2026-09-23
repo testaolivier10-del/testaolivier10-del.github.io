@@ -1,0 +1,206 @@
+{
+  "figure": "os-3-36",
+  "labels": [
+    {
+      "id": "totipotent",
+      "name": "Totipotent embryonic stem cell",
+      "accept": [
+        "totipotent embryonic stem cell",
+        "totipotent",
+        "totipotent stem cell",
+        "zygote"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "stem-cell-potency"
+    },
+    {
+      "id": "human-embryonic-stem-cell",
+      "name": "Human embryonic stem cell",
+      "accept": [
+        "human embryonic stem cell",
+        "embryonic stem cell",
+        "embryonic stem cells"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "stem-cell"
+    },
+    {
+      "id": "pluripotent",
+      "name": "Pluripotent embryonic stem cells",
+      "accept": [
+        "pluripotent embryonic stem cells",
+        "pluripotent",
+        "pluripotent stem cell",
+        "pluripotent stem cells"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "stem-cell-potency"
+    },
+    {
+      "id": "induced-pluripotent",
+      "name": "Induced pluripotent stem cells",
+      "accept": [
+        "induced pluripotent stem cells",
+        "induced pluripotent stem cell",
+        "ips cells",
+        "ipsc"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "stem-cell-potency"
+    },
+    {
+      "id": "endoderm",
+      "name": "Endoderm line",
+      "accept": [
+        "endoderm line",
+        "endoderm"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "germ-layers"
+    },
+    {
+      "id": "mesoderm",
+      "name": "Mesoderm line",
+      "accept": [
+        "mesoderm line",
+        "mesoderm"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "germ-layers"
+    },
+    {
+      "id": "ectoderm",
+      "name": "Ectoderm line",
+      "accept": [
+        "ectoderm line",
+        "ectoderm"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "germ-layers"
+    },
+    {
+      "id": "multipotent",
+      "name": "Multipotent stem cells",
+      "accept": [
+        "multipotent stem cells",
+        "adult stem cells",
+        "multipotent",
+        "multipotent stem cell"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "stem-cell-potency"
+    },
+    {
+      "id": "adult-sources",
+      "name": "Adult bone marrow, skin, cord blood, deciduous teeth",
+      "accept": [
+        "adult bone marrow, skin, cord blood, deciduous teeth",
+        "adult stem cell sources",
+        "bone marrow",
+        "cord blood"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "stem-cell"
+    },
+    {
+      "id": "lung",
+      "name": "Lung",
+      "accept": [
+        "lung",
+        "lung cell",
+        "lungs"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [
+        "pancreas",
+        "pancreas cell",
+        "pancreatic cell"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "heart-muscle",
+      "name": "Heart muscle",
+      "accept": [
+        "heart muscle",
+        "cardiac muscle",
+        "cardiac muscle cell"
+      ],
+      "lines": [
+        12,
+        16
+      ],
+      "concept": "cardiac-muscle-tissue"
+    },
+    {
+      "id": "red-blood-cell",
+      "name": "Red blood cell",
+      "accept": [
+        "red blood cell",
+        "erythrocyte",
+        "rbc",
+        "red blood cells"
+      ],
+      "lines": [
+        13,
+        17
+      ],
+      "concept": "blood-cells-basic"
+    },
+    {
+      "id": "skin",
+      "name": "Skin",
+      "accept": [
+        "skin",
+        "epidermis",
+        "skin cell"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "neuron",
+      "name": "Neuron",
+      "accept": [
+        "neuron",
+        "nerve cell",
+        "neurons"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "neuron"
+    }
+  ]
+}

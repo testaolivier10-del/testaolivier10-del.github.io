@@ -1,0 +1,334 @@
+{
+  "figure": "os-4-9",
+  "labels": [
+    {
+      "id": "simple-ducts",
+      "name": "Simple ducts",
+      "accept": [
+        "simple ducts",
+        "simple duct",
+        "simple gland",
+        "simple glands"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "tubular",
+      "name": "Tubular",
+      "accept": [
+        "tubular",
+        "tubular gland",
+        "tubular glands"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "simple-tubular",
+      "name": "Simple tubular",
+      "accept": [
+        "simple tubular",
+        "simple tubular gland"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "alveolar",
+      "name": "Alveolar (acinar)",
+      "accept": [
+        "alveolar (acinar)",
+        "acinar",
+        "acinar gland",
+        "alveolar",
+        "alveolar gland"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "intestinal-glands",
+      "name": "Intestinal glands",
+      "accept": [
+        "intestinal glands",
+        "intestinal gland"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "absorptive-surface"
+    },
+    {
+      "id": "simple-alveolar",
+      "name": "Simple alveolar (acinar)",
+      "accept": [
+        "simple alveolar (acinar)",
+        "simple acinar",
+        "simple alveolar",
+        "simple alveolar gland"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "surface-epithelium",
+      "name": "Surface epithelium",
+      "accept": [
+        "surface epithelium",
+        "epithelium"
+      ],
+      "box": [
+        100,
+        145,
+        92,
+        42
+      ],
+      "concept": "epithelium"
+    },
+    {
+      "id": "duct",
+      "name": "Duct",
+      "accept": [
+        "duct",
+        "gland duct"
+      ],
+      "box": [
+        315,
+        171,
+        44,
+        21
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "developmental-stage",
+      "name": "Not found in adult; a stage in development of simple branched glands",
+      "accept": [
+        "not found in adult; a stage in development of simple branched glands",
+        "developmental stage",
+        "stage in development"
+      ],
+      "lines": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "gland-cells",
+      "name": "Gland cells",
+      "accept": [
+        "gland cells",
+        "gland cell",
+        "secretory cell",
+        "secretory cells"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "gland"
+    },
+    {
+      "id": "simple-coiled-tubular",
+      "name": "Simple coiled tubular",
+      "accept": [
+        "simple coiled tubular",
+        "coiled tubular",
+        "simple coiled tubular gland"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "merocrine-sweat-glands",
+      "name": "Merocrine sweat glands",
+      "accept": [
+        "merocrine sweat glands",
+        "eccrine sweat glands",
+        "merocrine sweat gland",
+        "sweat gland",
+        "sweat glands"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "sweat-glands"
+    },
+    {
+      "id": "simple-branched-alveolar",
+      "name": "Simple branched alveolar",
+      "accept": [
+        "simple branched alveolar",
+        "simple branched acinar",
+        "simple branched alveolar gland"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "sebaceous-glands",
+      "name": "Sebaceous (oil) glands",
+      "accept": [
+        "sebaceous (oil) glands",
+        "oil glands",
+        "sebaceous gland",
+        "sebaceous glands"
+      ],
+      "lines": [
+        20,
+        21
+      ],
+      "concept": "sebaceous-gland"
+    },
+    {
+      "id": "simple-branched-tubular",
+      "name": "Simple branched tubular",
+      "accept": [
+        "simple branched tubular",
+        "simple branched tubular gland"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "gastric-mucous-glands",
+      "name": "Gastric glands; and mucous glands of esophagus, tongue, duodenum",
+      "accept": [
+        "gastric glands; and mucous glands of esophagus, tongue, duodenum",
+        "gastric gland",
+        "gastric glands",
+        "mucous glands"
+      ],
+      "lines": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "concept": "gastric-glands"
+    },
+    {
+      "id": "compound-alveolar",
+      "name": "Compound alveolar (acinar)",
+      "accept": [
+        "compound alveolar (acinar)",
+        "compound acinar",
+        "compound alveolar",
+        "compound alveolar gland"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "compound-tubuloalveolar",
+      "name": "Compound tubuloalveolar",
+      "accept": [
+        "compound tubuloalveolar",
+        "compound tubuloalveolar gland",
+        "tubuloalveolar"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "compound-tubular",
+      "name": "Compound tubular",
+      "accept": [
+        "compound tubular",
+        "compound tubular gland"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "exocrine-gland"
+    },
+    {
+      "id": "compound-tubular-examples",
+      "name": "Mucous glands (in mouth); bulbourethral glands (in male reproductive system); and testes (seminiferous tubules)",
+      "accept": [
+        "mucous glands (in mouth); bulbourethral glands (in male reproductive system); and testes (seminiferous tubules)",
+        "bulbourethral glands",
+        "mucous glands",
+        "seminiferous tubules",
+        "testes"
+      ],
+      "box": [
+        703,
+        1056,
+        285,
+        90
+      ],
+      "concept": "accessory-glands-male"
+    },
+    {
+      "id": "tubuloalveolar-examples",
+      "name": "Salivary glands; glands of respiratory passages; and pancreas",
+      "accept": [
+        "salivary glands; glands of respiratory passages; and pancreas",
+        "pancreas",
+        "salivary gland",
+        "salivary glands"
+      ],
+      "lines": [
+        31,
+        34,
+        36
+      ],
+      "concept": "salivary-glands"
+    },
+    {
+      "id": "mammary-glands",
+      "name": "Mammary glands",
+      "accept": [
+        "mammary glands",
+        "mammary gland"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "compound-ducts",
+      "name": "Compound ducts",
+      "accept": [
+        "compound ducts",
+        "compound duct",
+        "compound gland",
+        "compound glands"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "exocrine-gland"
+    }
+  ]
+}

@@ -6,7 +6,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "A red blood cell from your big toe has just arrived at your heart through the inferior vena cava. Put the structures it passes through in order until it leaves the heart again.",
+    "q": "A red blood cell from your big toe has just arrived at your heart through the inferior vena cava. Put the structures it passes through in order until it leaves the left side of the heart.",
     "options": [
       "Right atrium",
       "Right ventricle",
@@ -37,7 +37,7 @@
     ],
     "figure": "os-19-15",
     "pin": "anterior-interventricular-artery",
-    "q": "Name the pinned artery: it runs down the front of the heart in the groove between the two ventricles, toward the apex.",
+    "q": "Name the pinned artery.",
     "options": [
       "Circumflex artery",
       "Right coronary artery",
@@ -58,7 +58,7 @@
   },
   {
     "type": "vignette",
-    "level": "analyze",
+    "level": "apply",
     "diff": 2,
     "core": [
       "structure-function"
@@ -207,7 +207,7 @@
     "q": "Ms. Lee, 64, gets a tight pressure in her chest when she climbs two flights of stairs. It fades after three minutes of rest. Her blood troponin level is normal. What best describes what is happening to her heart muscle?",
     "options": [
       "Heart muscle is dying and being replaced by scar",
-      "Ischemia during exertion that reverses at rest",
+      "Ischemia during exertion that reverses when she rests",
       "The pericardial sac is filling with blood",
       "Deoxygenated blood is mixing into the aorta"
     ],
@@ -390,7 +390,7 @@
     ],
     "figure": "os-19-15",
     "pin": "coronary-sinus",
-    "q": "On this back view of the heart, name the pinned wide vein lying in the groove between the atria and the ventricles, which the other cardiac veins empty into.",
+    "q": "Name the pinned vessel.",
     "options": [
       "Great cardiac vein",
       "Inferior vena cava",
@@ -418,7 +418,7 @@
     ],
     "figure": "os-19-4",
     "pin": "pulmonary-veins",
-    "q": "Name the pinned vessels, which carry blood from the lungs into the left atrium.",
+    "q": "Name the pinned vessels.",
     "options": [
       "Pulmonary arteries",
       "Aorta",
