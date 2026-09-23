@@ -322,7 +322,7 @@
     "q": "What is afterload?",
     "options": [
       "The stretch on ventricular muscle at the end of filling",
-      "The pressure a ventricle must overcome to eject blood",
+      "The pressure a ventricle must overcome to open its valve and eject blood",
       "The volume left in the ventricle after it contracts",
       "The strength of contraction at a given stretch"
     ],
@@ -425,16 +425,16 @@
       "homeostasis"
     ],
     "misconception": "a faster heart always pumps more",
-    "q": "An abnormal rhythm raises a patient's heart rate from 180 to 220 beats/min, and his cardiac output falls from 8.1 to 4.8 L/min. What best explains the fall?",
+    "q": "An abnormal rhythm raises a patient's heart rate from 180 to 220 beats/min, and his cardiac output falls from 5.4 to 4.4 L/min. What best explains the fall?",
     "options": [
       "The SA node is exhausted and fires weaker impulses",
       "Filling time is too short for the ventricles to fill",
       "Afterload rises sharply at fast heart rates",
-      "The ventricles contract too forcefully and damage the valves"
+      "The ventricles contract too forcefully"
     ],
     "correct": 1,
     "why": {
-      "correct": "Most of the shortening at fast rates comes out of diastole. At 220 beats/min, filling time is so short that EDV and stroke volume collapse. Stroke volume fell by half while heart rate rose by only a fifth, so HR × SV fell.",
+      "correct": "Most of the shortening at fast rates comes out of diastole. At 220 beats/min, filling time is so short that EDV and stroke volume collapse. Stroke volume fell by a third while heart rate rose by only a fifth, so HR × SV fell.",
       "options": [
         "SA node action potentials are all-or-none and do not weaken. Here the rhythm is fast because impulses are frequent, not weak.",
         "Correct. Filling time limits stroke volume at very high heart rates.",
