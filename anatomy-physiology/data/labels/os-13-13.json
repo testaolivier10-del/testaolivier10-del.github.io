@@ -10,7 +10,13 @@
       "lines": [
         8
       ],
-      "concept": "cerebellum"
+      "concept": "cerebellum",
+      "box": [
+        720,
+        50,
+        118,
+        21
+      ]
     },
     {
       "id": "pons",
@@ -21,7 +27,13 @@
       "lines": [
         28
       ],
-      "concept": "brainstem"
+      "concept": "brainstem",
+      "box": [
+        0,
+        178,
+        56,
+        21
+      ]
     },
     {
       "id": "arbor-vitae",
@@ -36,7 +48,13 @@
         34,
         36
       ],
-      "concept": "cerebellum"
+      "concept": "cerebellum",
+      "box": [
+        720,
+        199,
+        157,
+        84
+      ]
     },
     {
       "id": "inferior-olive",
@@ -48,7 +66,13 @@
       "lines": [
         42
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        0,
+        357,
+        123,
+        21
+      ]
     }
   ]
 }

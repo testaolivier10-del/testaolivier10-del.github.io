@@ -11,7 +11,13 @@
         2,
         4
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        990,
+        38,
+        102,
+        50
+      ]
     },
     {
       "id": "hypothalamic-nuclei",
@@ -23,7 +29,13 @@
       "lines": [
         7
       ],
-      "concept": "hypothalamus"
+      "concept": "hypothalamus",
+      "box": [
+        7,
+        82,
+        200,
+        27
+      ]
     },
     {
       "id": "corpus-callosum",
@@ -35,7 +47,13 @@
         10,
         11
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        990,
+        130,
+        96,
+        45
+      ]
     },
     {
       "id": "amygdala",
@@ -46,7 +64,13 @@
       "lines": [
         15
       ],
-      "concept": "limbic-system"
+      "concept": "limbic-system",
+      "box": [
+        7,
+        187,
+        106,
+        27
+      ]
     },
     {
       "id": "thalamus",
@@ -57,7 +81,13 @@
       "lines": [
         17
       ],
-      "concept": "diencephalon"
+      "concept": "diencephalon",
+      "box": [
+        989,
+        241,
+        106,
+        22
+      ]
     },
     {
       "id": "hippocampus",
@@ -68,7 +98,13 @@
       "lines": [
         20
       ],
-      "concept": "limbic-system"
+      "concept": "limbic-system",
+      "box": [
+        7,
+        355,
+        141,
+        26
+      ]
     }
   ]
 }

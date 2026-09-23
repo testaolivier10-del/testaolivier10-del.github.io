@@ -26,7 +26,13 @@
       "lines": [
         2
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        135,
+        174,
+        54,
+        31
+      ]
     },
     {
       "id": "trunk",
@@ -96,7 +102,13 @@
         1,
         3
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        419,
+        163,
+        43,
+        52
+      ]
     },
     {
       "id": "elbow",
@@ -240,7 +252,13 @@
       "lines": [
         7
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        779,
+        541,
+        57,
+        34
+      ]
     },
     {
       "id": "nose",
@@ -265,7 +283,13 @@
       "lines": [
         8
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        805,
+        648,
+        70,
+        34
+      ]
     },
     {
       "id": "lips",
@@ -277,7 +301,13 @@
       "lines": [
         9
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        834,
+        694,
+        60,
+        29
+      ]
     },
     {
       "id": "teeth-gums-jaw",
@@ -304,7 +334,13 @@
       "lines": [
         12
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        772,
+        840,
+        97,
+        30
+      ]
     },
     {
       "id": "pharynx",
@@ -316,7 +352,13 @@
       "lines": [
         13
       ],
-      "concept": "pharynx"
+      "concept": "pharynx",
+      "box": [
+        725,
+        885,
+        106,
+        30
+      ]
     },
     {
       "id": "foot",
@@ -328,7 +370,13 @@
       "lines": [
         4
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        129,
+        275,
+        63,
+        25
+      ]
     },
     {
       "id": "toes",
@@ -340,7 +388,13 @@
       "lines": [
         5
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        119,
+        319,
+        68,
+        25
+      ]
     },
     {
       "id": "genitals",
@@ -352,7 +406,13 @@
       "lines": [
         6
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        118,
+        361,
+        107,
+        25
+      ]
     }
   ]
 }

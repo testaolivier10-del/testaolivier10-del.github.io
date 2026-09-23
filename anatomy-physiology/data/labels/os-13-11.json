@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "diencephalon"
+      "concept": "diencephalon",
+      "box": [
+        769,
+        95,
+        102,
+        21
+      ]
     },
     {
       "id": "hypothalamus",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": "hypothalamus"
+      "concept": "hypothalamus",
+      "box": [
+        2,
+        567,
+        144,
+        26
+      ]
     },
     {
       "id": "pituitary-gland",
@@ -34,7 +46,13 @@
       "lines": [
         2
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        2,
+        626,
+        143,
+        25
+      ]
     }
   ]
 }

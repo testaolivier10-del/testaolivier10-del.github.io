@@ -1,0 +1,722 @@
+[
+  {
+    "id": "anp-sensory-pathways-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "figure": "os-14-19",
+    "pin": "medial-lemniscus",
+    "q": "Name the pinned structure in the brainstem.",
+    "options": [
+      "Spinothalamic tract",
+      "Fasciculus cuneatus",
+      "Medial lemniscus",
+      "Internal capsule"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The medial lemniscus is the ribbon of crossed second-order axons of the dorsal column pathway, climbing from the medulla oblongata to the thalamus.",
+      "options": [
+        "The spinothalamic tract carries pain and temperature; in this figure it is the separate bundle drawn on the other pathway.",
+        "The fasciculus cuneatus is a bundle of first-order axons in the dorsal column of the spinal cord, below the medulla.",
+        "Correct. After crossing in the medulla, the second-order axons form the medial lemniscus.",
+        "The internal capsule is the band of white matter between the thalamus and the cortex, above the brainstem."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-2",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps of the dorsal column–medial lemniscus pathway in order, for vibration felt on the left index finger.",
+    "options": [
+      "A lamellated corpuscle in the fingertip depolarizes, firing action potentials",
+      "The first-order axon passes its cell body in a cervical dorsal root ganglion and enters the cord",
+      "The axon climbs, without synapsing, in the left fasciculus cuneatus",
+      "It synapses in the nucleus cuneatus of the medulla oblongata",
+      "The second-order axon crosses the midline and rises in the right medial lemniscus",
+      "A third-order neuron in the right thalamus projects to the right postcentral gyrus"
+    ],
+    "why": {
+      "correct": "The first-order neuron runs from the fingertip up the same side of the cord to the medulla. The second-order neuron crosses there and rises in the medial lemniscus to the thalamus. The third-order neuron reaches the somatosensory cortex of the opposite hemisphere.",
+      "options": [
+        "Transduction happens first, at the sensory receptor.",
+        "The first-order neuron’s cell body is in the dorsal root ganglion; its axon enters through the dorsal root.",
+        "Axons from the arm run in the fasciculus cuneatus, on the same side, with no synapse in the cord.",
+        "The first synapse is in the nucleus cuneatus of the lower medulla.",
+        "The second-order axon crosses in the medulla and forms the medial lemniscus.",
+        "The thalamus relays the signal to the primary somatosensory cortex."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "figure": "os-14-19",
+    "pin": "lateral-spinothalamic-tract",
+    "q": "Name the pinned tract in the spinal cord.",
+    "options": [
+      "Fasciculus gracilis",
+      "Lateral spinothalamic tract",
+      "Medial lemniscus",
+      "Dorsal root"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The lateral spinothalamic tract is the bundle of crossed second-order axons carrying pain and temperature up the side of the cord opposite the body part.",
+      "options": [
+        "The fasciculus gracilis lies in the dorsal column, at the back of the cord, and carries fine touch from the lower body.",
+        "Correct. This is the lateral spinothalamic tract.",
+        "The medial lemniscus is in the brainstem, not the spinal cord.",
+        "The dorsal root is outside the cord, entering at the back."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "figure": "os-14-19",
+    "pin": "fasciculus-gracilis",
+    "q": "Name the pinned bundle of axons at the back of the spinal cord.",
+    "options": [
+      "Fasciculus gracilis",
+      "Fasciculus cuneatus",
+      "Spinothalamic tract",
+      "Spinocerebellar tract"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The fasciculus gracilis is the part of the dorsal column nearest the midline. It carries fine touch, vibration and position from the lower body, below about T6.",
+      "options": [
+        "Correct. The medial bundle of the dorsal column is the fasciculus gracilis.",
+        "The fasciculus cuneatus lies lateral to it and carries signals from the upper body and arm.",
+        "The spinothalamic tract runs in the lateral and anterior columns, not at the back of the cord.",
+        "The spinocerebellar tracts run in the lateral columns toward the cerebellum."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-5",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "misconception": "all sensory pathways cross at the same level",
+    "q": "A stab wound cuts the left half of the spinal cord at T10. Below the injury, which pattern of sensory loss do you expect?",
+    "options": [
+      "All sensation lost on the left side only",
+      "All sensation lost on the right side only",
+      "Pain and temperature lost on the left; vibration and position lost on the right side",
+      "Vibration and position lost on the left; pain and temperature lost on the right"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The dorsal column pathway climbs on the same side and crosses only in the medulla, so the cut removes vibration and position from the left. Pain and temperature axons cross within a segment or two of entering, so the left spinothalamic tract carries signals from the right, and those are lost on the right.",
+      "options": [
+        "This would need both pathways to run on the left, but the spinothalamic axons in the left cord serve the right side of the body.",
+        "This would need both pathways to have crossed below T10, but dorsal column axons do not cross until the medulla.",
+        "This reverses the two pathways. Pain and temperature cross early, so the left tract serves the right side.",
+        "Correct. Dorsal column loss is on the same side; spinothalamic loss is on the opposite side."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Chili peppers contain capsaicin, which binds a channel protein on certain free nerve endings, the same channel that opens with painful heat. Which type of sensory receptor does capsaicin stimulate?",
+    "options": [
+      "Nociceptor",
+      "Mechanoreceptor",
+      "Photoreceptor",
+      "Osmoreceptor"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The channel opened by capsaicin and by damaging heat is found on nociceptors, free nerve endings that detect harmful stimuli. That is why chili \"burns\" without any heat.",
+      "options": [
+        "Correct. Capsaicin stimulates nociceptors, which respond to heat intense enough to damage tissue.",
+        "Mechanoreceptors respond to physical deformation such as touch and stretch, not to chemicals or heat.",
+        "A photoreceptor responds to light and sits in the eye.",
+        "Osmoreceptors respond to the solute concentration of body fluids, in the hypothalamus."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "predictLevel": 1,
+    "q": "You press a fingertip lightly, then press the same spot twice as hard. Predict the change in each variable in one tactile sensory neuron, compared with the light press.",
+    "variables": [
+      {
+        "name": "Size of the graded receptor potential in the ending",
+        "answer": "up",
+        "why": "A stronger deformation opens more mechanically gated channels, so more Na+ enters and the graded depolarization is larger."
+      },
+      {
+        "name": "Height of each action potential",
+        "answer": "none",
+        "why": "Action potentials are all-or-none: once threshold is reached, each one peaks at the same voltage."
+      },
+      {
+        "name": "Number of action potentials per second",
+        "answer": "up",
+        "why": "The larger receptor potential holds the trigger zone further above threshold, so each new action potential fires sooner after the last."
+      },
+      {
+        "name": "Number of nearby sensory neurons firing",
+        "answer": "up",
+        "why": "A harder press deforms a wider patch of skin and reaches higher-threshold endings, recruiting more neurons."
+      }
+    ],
+    "why": {
+      "correct": "Stimulus strength is coded by the frequency of action potentials and by the number of neurons firing, not by the size of each action potential."
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "predictLevel": 2,
+    "q": "A dentist injects a local anesthetic that blocks voltage-gated sodium channels in the nerve to a lower tooth, partway along its length. The tooth is then drilled. Predict the change in each variable, compared with no anesthetic.",
+    "variables": [
+      {
+        "name": "Receptor potentials in the nociceptor endings in the tooth",
+        "answer": "none",
+        "why": "The drilling still opens channels in the endings, which lie beyond the blocked stretch of nerve, so receptor potentials still form."
+      },
+      {
+        "name": "Action potentials reaching the brainstem from the tooth",
+        "answer": "down",
+        "why": "Action potentials need voltage-gated sodium channels to regenerate along the axon. Where the channels are blocked, conduction fails."
+      },
+      {
+        "name": "Pain perceived from the tooth",
+        "answer": "down",
+        "why": "Without signals reaching the brainstem, thalamus and cortex, no pain is perceived, even though the tissue is being stimulated."
+      }
+    ],
+    "why": {
+      "correct": "The anesthetic leaves transduction intact but stops conduction along the axon, so nociception at the ending never becomes a perception."
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "You feel your socks when you first put them on, but a minute later you no longer notice them. What best explains this?",
+    "options": [
+      "The socks stop pressing on the skin once the fabric warms up and stretches to fit",
+      "Rapidly adapting mechanoreceptors stop firing while the pressure holds steady",
+      "Nociceptors in the skin become exhausted",
+      "The dorsal columns stop conducting after a minute"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Phasic, rapidly adapting mechanoreceptors such as tactile corpuscles and hair follicle endings fire when a stimulus starts and fall silent while it holds steady, so the steady pressure of socks stops being reported.",
+      "options": [
+        "The socks still press on the skin; what changes is the response of the sensory receptors, not the stimulus.",
+        "Correct. Phasic mechanoreceptors adapt to a steady stimulus.",
+        "Socks do not stimulate nociceptors, which respond to harmful stimuli, and nociceptors adapt very little anyway.",
+        "The dorsal columns keep conducting whatever signals arrive; the drop happens at the sensory receptors and at synapses along the way."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A sprained ankle keeps hurting for hours while you sit still, instead of fading like the feel of a ring on your finger. Why?",
+    "options": [
+      "Nociceptors are tonic and keep firing while the stimulus lasts",
+      "Pain travels in the dorsal columns, which do not adapt",
+      "Nociceptors are encapsulated endings with thick capsules",
+      "The thalamus blocks signals from the ring but not from the ankle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Nociceptors are tonic, slowly adapting sensory receptors: they keep firing for as long as the damaging stimulus, here the chemicals from injured tissue, is present.",
+      "options": [
+        "Correct. Nociceptors adapt very little.",
+        "Pain travels in the spinothalamic tract, not the dorsal columns.",
+        "Nociceptors are free nerve endings, with no capsule.",
+        "The ring fades because the touch endings adapt, not because the thalamus selects between the two."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication",
+      "interdependence"
+    ],
+    "q": "A 60-year-old man has crushing pain that spreads down the inner side of his left arm during a heart attack. His arm is healthy. What best explains why he feels pain in his arm?",
+    "options": [
+      "Nerves from the heart run down the arm",
+      "Blood backs up into the arm and stretches its vessels",
+      "Heart and arm pain axons converge on the same dorsal horn neurons",
+      "The phrenic nerve carries heart pain up to the C3 to C5 dermatomes of the shoulder"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Visceral pain axons from the heart enter the cord at about T1 to T4, the same segments that receive skin axons from the chest and inner arm. They converge on shared second-order neurons, and the brain assigns the pain to the skin that line usually reports.",
+      "options": [
+        "No nerves run from the heart into the arm; the arm pain is referred, not local.",
+        "A heart attack does not stretch the arm’s vessels, and his arm is healthy.",
+        "Correct. This is referred pain, explained by convergence in the dorsal horn.",
+        "The phrenic nerve carries sensation from the diaphragm and causes shoulder-tip pain, not inner arm pain from the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "After a fall from a bike, a teenager has blood collecting in the abdomen under the left side of the diaphragm. She complains of pain at the tip of her left shoulder, which is uninjured. Which spinal segments explain this?",
+    "options": [
+      "T1 to T4",
+      "C3 to C5",
+      "T10 to L1",
+      "L4 to S1"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The diaphragm’s sensory axons run in the phrenic nerve to C3 to C5, which also supply the skin over the shoulder. Irritation of the diaphragm is therefore referred to the shoulder tip.",
+      "options": [
+        "T1 to T4 receive heart pain, referred to the chest and inner arm.",
+        "Correct. The phrenic nerve enters the cord at C3 to C5, which also supply the shoulder skin.",
+        "T10 to L1 receive signals from organs such as the appendix and kidney, referred to the navel, flank and groin.",
+        "L4 to S1 supply the leg and foot."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Daniel has lost pain and temperature sensation across both shoulders and arms, but fine touch and vibration there are normal. A cavity has formed in the center of his cervical spinal cord. Why is only pain and temperature affected?",
+    "options": [
+      "The cavity has destroyed both dorsal columns along the back of the cord",
+      "The cavity presses on the dorsal root ganglia",
+      "Nociceptors in the arms have died",
+      "Crossing spinothalamic axons pass just in front of the central canal"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Second-order pain and temperature axons cross the midline in front of the central canal, within a segment or two of entry. A central cavity cuts these crossing axons from both sides at the levels it spans, while the dorsal columns, off to the back, are spared.",
+      "options": [
+        "If the dorsal columns were destroyed, fine touch and vibration would be lost, but they are normal.",
+        "The dorsal root ganglia lie outside the cord in the intervertebral foramina; a cavity inside the cord cannot reach them.",
+        "Nociceptors in the skin are not affected by damage inside the spinal cord.",
+        "Correct. A central cord cavity cuts the crossing spinothalamic axons."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A blocked artery damages the lateral part of the left medulla oblongata. The patient has lost pain and temperature on the left side of the face and on the right side of the body. How does one small area of damage cause loss on opposite sides?",
+    "options": [
+      "Its uncrossed face pain axons run beside already crossed body pain axons",
+      "Both pathways cross at the medulla, so both losses should be on the right side",
+      "The left facial nerve and the right spinal nerves were both damaged",
+      "The dorsal columns cross in the medulla and carry pain from both sides"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Pain and temperature axons from the left face descend on the left in the medulla before their second-order neurons cross. The spinothalamic axons from the right body crossed back in the spinal cord and now run on the left. One lesion on the left side of the medulla catches both.",
+      "options": [
+        "Correct. Uncrossed face fibers and already-crossed body fibers run side by side in the lateral medulla.",
+        "Spinothalamic axons cross in the spinal cord, not the medulla, so the body loss is on the side opposite the damage while the face loss is on the same side.",
+        "The facial nerve moves the face; feeling from the face travels in the trigeminal nerve. No nerve outside the brain was damaged.",
+        "The dorsal columns carry fine touch and vibration, not pain and temperature."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-15",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which sensations travel in the dorsal column–medial lemniscus pathway? Select all that apply.",
+    "options": [
+      "Vibration",
+      "Fine touch and two-point discrimination",
+      "Pain",
+      "Conscious sense of joint position",
+      "Temperature"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "The dorsal column pathway carries fine touch, two-point discrimination, vibration and conscious proprioception. Pain and temperature travel in the spinothalamic tract.",
+      "options": [
+        "Yes. Vibration from lamellated corpuscles travels in the dorsal columns.",
+        "Yes. Precise touch and two-point discrimination use the dorsal columns.",
+        "No. Pain travels in the spinothalamic tract.",
+        "Yes. Conscious proprioception travels in the dorsal columns.",
+        "No. Temperature travels in the spinothalamic tract."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "In the spinothalamic tract, where does the second-order axon cross the midline?",
+    "options": [
+      "In the medulla oblongata, at the same level where the dorsal column axons cross",
+      "In the thalamus",
+      "In the spinal cord, within a segment or two of where the signal entered",
+      "In the internal capsule"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The first-order neuron synapses in the dorsal horn, and the second-order axon crosses in front of the central canal within a segment or two, then climbs on the opposite side.",
+      "options": [
+        "The dorsal column pathway crosses in the medulla; the spinothalamic tract has already crossed by then.",
+        "The thalamus is where the second-order neuron ends, not where it crosses.",
+        "Correct. Spinothalamic axons cross in the spinal cord close to their level of entry.",
+        "The internal capsule carries third-order axons from the thalamus to the cortex; no crossing happens there."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-17",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap in the pain pathway from the right hand: nociceptor → first-order neuron → synapse in the right dorsal horn → ____ → left thalamus → third-order neuron → left primary somatosensory cortex.",
+    "options": [
+      "First-order axon rising in the right dorsal column",
+      "Second-order axon crossing and rising in the left spinothalamic tract",
+      "Second-order axon rising on the same side in the right medial lemniscus",
+      "Third-order axon crossing in the medulla"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "After the synapse in the dorsal horn, the second-order axon crosses within a segment or two and rises in the opposite spinothalamic tract to the thalamus.",
+      "options": [
+        "The dorsal column carries fine touch and position, and its first-order axons do not synapse in the dorsal horn.",
+        "Correct. The crossed second-order axon climbs in the left spinothalamic tract.",
+        "The medial lemniscus carries the dorsal column pathway, and it rises on the side opposite the body part, not the same side.",
+        "The third-order neuron runs from the thalamus to the cortex; it does not cross in the medulla."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "This description of the dorsal column–medial lemniscus pathway for the right foot has one wrong step. Find it.",
+    "options": [
+      "A tactile corpuscle in the right sole fires action potentials",
+      "The first-order axon enters through a sacral dorsal root",
+      "The first-order axon synapses in the right dorsal horn",
+      "The axon climbs in the right fasciculus gracilis",
+      "The second-order axon crosses in the medulla into the left medial lemniscus",
+      "A third-order neuron runs from the left thalamus to the left postcentral gyrus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In the dorsal column pathway, the first-order axon does not synapse in the dorsal horn. It climbs the dorsal column all the way to the medulla. Synapsing in the dorsal horn is what the spinothalamic tract does.",
+      "options": [
+        "Correct step. Tactile corpuscles detect light touch.",
+        "Correct step. Signals from the sole enter through sacral dorsal roots.",
+        "This is the wrong step. Dorsal column first-order axons rise without synapsing until the medulla.",
+        "Correct step. Axons from the lower body run in the fasciculus gracilis on the same side.",
+        "Correct step. The second-order axon crosses in the medulla and forms the medial lemniscus.",
+        "Correct step. The thalamus relays to the somatosensory cortex of the opposite hemisphere."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Sensory endings in the wall of the urinary bladder fire as it fills and stretches. How are they classified?",
+    "options": [
+      "Exteroceptors and chemoreceptors",
+      "Proprioceptors and thermoreceptors",
+      "Interoceptors and nociceptors",
+      "Interoceptors and mechanoreceptors"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "They sit in an internal organ, so they are interoceptors, and they respond to stretch, a physical deformation, so they are mechanoreceptors.",
+      "options": [
+        "Exteroceptors respond to stimuli from outside the body, and stretch is not a chemical stimulus.",
+        "Proprioceptors are in muscles, tendons and joints, and stretch is not temperature.",
+        "They are interoceptors, but ordinary filling is not a damaging stimulus, so they are not nociceptors.",
+        "Correct. Internal location, stretch stimulus: interoceptor and mechanoreceptor."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Sensory receptors in your arteries report your blood pressure to the brainstem every second, yet you never feel your blood pressure. Which statement explains this?",
+    "options": [
+      "These sensory receptors adapt completely within seconds",
+      "The signals are a sensation that does not become a perception",
+      "Blood pressure signals travel in the dorsal columns, which do not reach awareness",
+      "Blood pressure signals are blocked in the spinal cord"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Sensation is the detection of a stimulus and its delivery into the CNS. These signals are delivered to the brainstem and used there, but they are not relayed to the cortex for conscious interpretation, so there is no perception.",
+      "options": [
+        "The stretch-sensitive endings in artery walls are slowly adapting; they keep reporting pressure.",
+        "Correct. The brainstem uses the signals without any conscious perception.",
+        "These signals travel in cranial nerves to the brainstem, not in the spinal cord’s dorsal columns, and the dorsal columns do reach awareness.",
+        "These signals do not pass through the spinal cord at all; they travel in cranial nerves straight to the brainstem."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A woman cannot feel a vibrating tuning fork on either ankle and cannot tell whether her big toe is being moved up or down. Pain and temperature in her legs are normal, and she sways when she stands with her eyes closed. Where is the damage most likely?",
+    "options": [
+      "Both dorsal columns of the spinal cord",
+      "Both spinothalamic tracts",
+      "The left thalamus",
+      "The cerebellum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Vibration and joint position travel in the dorsal columns, and both legs are affected. With position sense gone, she relies on vision to stay balanced, so she sways with her eyes closed. Pain and temperature, in the spinothalamic tracts, are spared.",
+      "options": [
+        "Correct. Both dorsal columns carry vibration and position from the legs.",
+        "Damage to the spinothalamic tracts would remove pain and temperature, which are normal.",
+        "A left thalamic lesion would remove sensation from the whole right side, not both legs, and would include pain.",
+        "The cerebellum coordinates movement but does not produce conscious loss of vibration sense."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-22",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A small bleed damages the right thalamus. Which pattern of sensory loss is expected?",
+    "options": [
+      "Right side of the body only, all sensations",
+      "Left face only",
+      "Fine touch on the right, pain on the left",
+      "Left side of the body and face, all sensations"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "By the time sensory pathways reach the thalamus, every one of them, from the body and from the face, has crossed. The right thalamus therefore relays all sensation from the left side of the body and face.",
+      "options": [
+        "The right thalamus serves the left side, because all pathways have crossed below it.",
+        "The face pathway and the body pathways both pass through the thalamus, so the body would be affected too.",
+        "A split pattern like this arises in the spinal cord, where the two pathways cross at different levels, not in the thalamus.",
+        "Correct. Above the medulla all pathways have crossed, so the loss is on the whole opposite side."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Pressing gently on the side of your closed eye makes you see a faint ring of light, although no light enters the eye. What does this show?",
+    "options": [
+      "Pressure produces light inside the eye",
+      "Pressure fires the vision pathway, which the brain reads as light",
+      "Mechanoreceptors in the eye send the signal to the somatosensory cortex instead",
+      "The optic nerve adapts to steady pressure"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The modality you perceive depends on which pathway is active, not on the stimulus. Pressure fires neurons of the vision pathway, and signals on that line are perceived as light. This is the labeled line principle.",
+      "options": [
+        "No light is produced; the signal is triggered by pressure.",
+        "Correct. Any signal on the vision pathway is perceived as light.",
+        "If touch endings were responsible, you would feel pressure, not see light.",
+        "Adaptation would make a sensation fade; it does not explain seeing light."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-24",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "You stub your toe and feel a sharp jolt at once, then a second or so later a throbbing ache that lasts. What explains the two waves?",
+    "options": [
+      "The sharp pain travels in the dorsal columns and the ache in the spinothalamic tract",
+      "The ache is referred pain from an internal organ",
+      "Fast pain runs in myelinated axons; slow pain in slower unmyelinated ones",
+      "The same axons fire twice because of the refractory period"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Myelinated nociceptive axons conduct quickly and carry sharp, well-localized fast pain. Unmyelinated axons conduct slowly and carry burning or aching slow pain, which arrives later and lasts longer.",
+      "options": [
+        "Both kinds of pain travel in the spinothalamic tract.",
+        "The toe is not an internal organ, and both waves come from the injured toe.",
+        "Correct. Two kinds of axon with different conduction speeds.",
+        "The refractory period lasts milliseconds and would not produce a second wave a second later with a different quality."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-25",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Where do the spinocerebellar tracts carry proprioceptive signals?",
+    "options": [
+      "To the cerebellum, on the same side, without reaching awareness",
+      "To the thalamus, then to the postcentral gyrus",
+      "To the hypothalamus, which sets body temperature",
+      "To the medulla, where they cross to the opposite cortex"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The spinocerebellar tracts carry signals from muscles and joints to the cerebellum on the same side. The cerebellum uses them to coordinate movement, and they are never consciously perceived.",
+      "options": [
+        "Correct. Unconscious proprioception goes to the ipsilateral cerebellum.",
+        "That route, through the thalamus to the cortex, is the dorsal column pathway, which carries conscious proprioception.",
+        "The hypothalamus receives temperature information, not proprioception from muscles.",
+        "The spinocerebellar tracts do not end in the medulla or reach the cortex."
+      ]
+    }
+  },
+  {
+    "id": "anp-sensory-pathways-26",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In the trigeminal sensory pathway, where are the cell bodies of the first-order neurons?",
+    "options": [
+      "In the dorsal root ganglia of the cervical nerves",
+      "In the trigeminal ganglion beside the pons",
+      "In the thalamus",
+      "In the postcentral gyrus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The first-order neurons for the face have their cell bodies in the trigeminal ganglion, the cranial nerve equivalent of a dorsal root ganglion.",
+      "options": [
+        "Cervical dorsal root ganglia serve the neck and arm, not the face.",
+        "Correct. The trigeminal ganglion holds the first-order cell bodies for the face.",
+        "The thalamus holds the third-order cell bodies.",
+        "The postcentral gyrus is where the third-order axons end."
+      ]
+    }
+  }
+]

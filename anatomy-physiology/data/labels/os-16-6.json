@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "language-areas"
+      "concept": "language-areas",
+      "box": [
+        0,
+        331,
+        169,
+        27
+      ]
     },
     {
       "id": "wernickes-area",
@@ -25,7 +31,13 @@
       "lines": [
         1
       ],
-      "concept": "language-areas"
+      "concept": "language-areas",
+      "box": [
+        890,
+        334,
+        212,
+        27
+      ]
     }
   ]
 }

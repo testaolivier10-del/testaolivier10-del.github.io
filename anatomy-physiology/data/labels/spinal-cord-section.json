@@ -1,0 +1,196 @@
+{
+  "figure": "spinal-cord-section",
+  "labels": [
+    {
+      "id": "posterior-median-sulcus",
+      "name": "Posterior median sulcus",
+      "accept": [
+        "posterior median sulcus",
+        "dorsal median sulcus"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        46,
+        174,
+        19
+      ]
+    },
+    {
+      "id": "posterior-column",
+      "name": "Posterior column",
+      "accept": [
+        "posterior column",
+        "dorsal column",
+        "posterior white column",
+        "dorsal funiculus",
+        "posterior funiculus"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        86,
+        125,
+        19
+      ]
+    },
+    {
+      "id": "dorsal-horn",
+      "name": "Dorsal horn",
+      "accept": [
+        "dorsal horn",
+        "posterior horn",
+        "posterior gray horn"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        126,
+        86,
+        19
+      ]
+    },
+    {
+      "id": "lateral-horn",
+      "name": "Lateral horn",
+      "accept": [
+        "lateral horn",
+        "lateral gray horn"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        171,
+        90,
+        19
+      ]
+    },
+    {
+      "id": "lateral-column",
+      "name": "Lateral column",
+      "accept": [
+        "lateral column",
+        "lateral white column",
+        "lateral funiculus"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        211,
+        109,
+        19
+      ]
+    },
+    {
+      "id": "central-canal",
+      "name": "Central canal",
+      "accept": [
+        "central canal"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        251,
+        96,
+        19
+      ]
+    },
+    {
+      "id": "ventral-horn",
+      "name": "Ventral horn",
+      "accept": [
+        "ventral horn",
+        "anterior horn",
+        "anterior gray horn"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        291,
+        90,
+        19
+      ]
+    },
+    {
+      "id": "anterior-column",
+      "name": "Anterior column",
+      "accept": [
+        "anterior column",
+        "ventral column",
+        "anterior white column",
+        "anterior funiculus"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        331,
+        118,
+        19
+      ]
+    },
+    {
+      "id": "anterior-median-fissure",
+      "name": "Anterior median fissure",
+      "accept": [
+        "anterior median fissure",
+        "ventral median fissure"
+      ],
+      "concept": "spinal-cord-section",
+      "box": [
+        504,
+        371,
+        170,
+        19
+      ]
+    },
+    {
+      "id": "dorsal-root",
+      "name": "Dorsal root",
+      "accept": [
+        "dorsal root",
+        "posterior root",
+        "sensory root"
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        158,
+        48,
+        83,
+        19
+      ]
+    },
+    {
+      "id": "dorsal-root-ganglion",
+      "name": "Dorsal root ganglion",
+      "accept": [
+        "dorsal root ganglion",
+        "drg",
+        "posterior root ganglion",
+        "spinal ganglion"
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        18,
+        98,
+        148,
+        19
+      ]
+    },
+    {
+      "id": "ventral-root",
+      "name": "Ventral root",
+      "accept": [
+        "ventral root",
+        "anterior root",
+        "motor root"
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        122,
+        366,
+        86,
+        19
+      ]
+    }
+  ]
+}

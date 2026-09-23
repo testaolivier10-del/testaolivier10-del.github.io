@@ -1761,6 +1761,656 @@
    "front": "What is the most common cause of right-sided heart failure?",
    "back": "Left-sided heart failure.",
    "why": "Blood backing up into the lungs raises pulmonary pressure, and the right ventricle fails against that higher afterload."
+  },
+  {
+   "id": "zones-gas-exchange",
+   "topic": "upper-airway",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Conducting vs respiratory zone",
+   "front": "Conducting zone vs respiratory zone: where do oxygen and carbon dioxide cross between air and blood?",
+   "back": "Only in the respiratory zone: the smallest airways with alveoli in their walls, and the alveoli themselves.",
+   "why": "The conducting zone, from the nose to the last airways without alveoli, only filters, warms, humidifies and carries air. Gas can cross only where the wall is thin simple squamous epithelium next to capillaries."
+  },
+  {
+   "id": "zones-lining",
+   "topic": "upper-airway",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Conducting vs respiratory zone",
+   "front": "Conducting zone vs respiratory zone: what lines each, and why?",
+   "back": "Conducting zone: mostly pseudostratified ciliated columnar epithelium with goblet cells. Respiratory zone: simple squamous epithelium, with no cilia or mucus.",
+   "why": "Thick, ciliated, mucus-covered lining traps and clears particles; the thinnest possible lining lets gases diffuse fast. Each zone’s lining fits its job."
+  },
+  {
+   "id": "zones-upper-tract",
+   "topic": "upper-airway",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Conducting vs respiratory zone",
+   "front": "Is the whole upper respiratory tract conducting zone or respiratory zone?",
+   "back": "All of it is conducting zone, and so is much of the lower tract.",
+   "why": "The upper and lower tracts divide the airway by place; the two zones divide it by job. No gas exchange happens anywhere above the smallest airways."
+  },
+  {
+   "id": "escalator",
+   "topic": "upper-airway",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where does the mucociliary escalator carry mucus, and what happens to it?",
+   "back": "Cilia sweep it backward from the nasal cavity and upward from the trachea and the air tubes of the lungs, to the pharynx, where it is swallowed.",
+   "why": "Trapped particles and microbes end up in the stomach, where acid destroys them. Smoke slows and destroys the cilia, leaving coughing as the only way to clear mucus."
+  },
+  {
+   "id": "vocal-vestibular",
+   "topic": "upper-airway",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Vocal folds vs vestibular folds",
+   "front": "Vocal folds vs vestibular folds: which pair makes sound, and which lies higher?",
+   "back": "The lower pair, the true vocal cords (vocal folds), vibrate to make sound. The upper vestibular folds (false vocal cords) do not.",
+   "why": "The vocal folds hold an elastic ligament and small muscles that tighten them, and their stratified squamous lining withstands vibrating hundreds of times a second. Both pairs help seal the airway."
+  },
+  {
+   "id": "cricoid-ring",
+   "topic": "upper-airway",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which is the only complete ring of cartilage in the airway?",
+   "back": "The cricoid cartilage, just below the thyroid cartilage.",
+   "why": "The rings that hold the trachea open below it are C-shaped, open at the back where the esophagus lies."
+  },
+  {
+   "id": "type-i-ii-job",
+   "topic": "lower-airway-lungs",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Type I vs type II alveolar cells",
+   "front": "Type I vs type II alveolar cells: what is the main job of each?",
+   "back": "Type I: form the thin wall that gases cross. Type II: secrete surfactant, the lipid-protein film that lowers surface tension.",
+   "why": "Type I cells are simple squamous and spread extremely thin; type II cells are cuboidal, with the machinery to make and secrete surfactant."
+  },
+  {
+   "id": "type-i-ii-numbers",
+   "topic": "lower-airway-lungs",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Type I vs type II alveolar cells",
+   "front": "Type I vs type II alveolar cells: which covers more of the alveolar surface, and which is more numerous?",
+   "back": "Type I cells cover about 95% of the surface; type II cells are more numerous but cover only about 5%.",
+   "why": "Each type I cell spreads into a huge, thin sheet, so a few of them cover most of the area. Type II cells are small and cuboidal."
+  },
+  {
+   "id": "type-ii-repair",
+   "topic": "lower-airway-lungs",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Type I vs type II alveolar cells",
+   "front": "After the alveolar wall is injured, which cells replace lost type I cells?",
+   "back": "Type II alveolar cells, which divide and turn into new type I cells.",
+   "why": "Type I cells rarely, if ever, divide, so repair depends on type II cells."
+  },
+  {
+   "id": "right-bronchus",
+   "topic": "lower-airway-lungs",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does an inhaled peanut usually lodge in the right primary bronchus?",
+   "back": "The right primary bronchus is wider, shorter and more nearly vertical than the left.",
+   "why": "The left bronchus angles further sideways to pass under the aortic arch and around the heart, so objects fall more directly into the right."
+  },
+  {
+   "id": "two-circulations",
+   "topic": "lower-airway-lungs",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Pulmonary vs bronchial circulation",
+   "front": "Pulmonary vs bronchial circulation: which carries oxygenated blood in its arteries, and what is it for?",
+   "back": "The bronchial arteries, from the systemic circuit, carry oxygenated blood to feed the airway walls, connective tissue and visceral pleura.",
+   "why": "The pulmonary arteries carry deoxygenated blood from the right ventricle to be loaded with oxygen in the alveolar capillaries; the bronchial arteries supply the lung’s own tissue."
+  },
+  {
+   "id": "pleural-fluid",
+   "topic": "lower-airway-lungs",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does the thin film of pleural fluid make the lungs follow the chest wall?",
+   "back": "A thin liquid film between two smooth surfaces lets them slide but resists pulling them apart, so the lung surface moves out with the chest wall.",
+   "why": "Like two wet panes of glass: easy to slide, hard to separate. Let air into the gap between the layers and the lung no longer follows."
+  },
+  {
+   "id": "boyle-breath",
+   "topic": "ventilation-mechanics",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "By Boyle’s law, why does air flow in when the diaphragm contracts?",
+   "back": "The chest and lungs enlarge, so alveolar pressure falls below atmospheric (to about −1 mm Hg), and air flows down that gradient.",
+   "why": "For a fixed amount of gas, a larger volume means a lower pressure: the same molecules strike the walls less often."
+  },
+  {
+   "id": "alv-vs-ipp",
+   "topic": "ventilation-mechanics",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Alveolar vs intrapleural pressure",
+   "front": "Alveolar vs intrapleural pressure: which returns to atmospheric whenever airflow stops?",
+   "back": "Alveolar pressure. Intrapleural pressure stays below atmospheric, about −4 to −6 mm Hg, throughout quiet breathing.",
+   "why": "The alveoli connect to the outside through the airways, so their pressure evens out when flow stops. The sealed pleural film is pulled between the inward-recoiling lung and the outward-springing chest wall."
+  },
+  {
+   "id": "quiet-expiration",
+   "topic": "ventilation-mechanics",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Quiet vs forced breathing",
+   "front": "Which muscles power a quiet breath out?",
+   "back": "None: quiet expiration is passive. The stretched lungs recoil and the relaxed muscles let the chest settle.",
+   "why": "Energy stored in the stretched elastic fibers during inspiration pushes the air out. Forced expiration adds the internal intercostals and abdominal wall muscles."
+  },
+  {
+   "id": "surfactant-effect",
+   "topic": "ventilation-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What does surfactant do to lung compliance, and why?",
+   "back": "It raises compliance by lowering the surface tension of the fluid lining the alveoli.",
+   "why": "Surface tension accounts for more than half of the lungs’ resistance to stretch. Surfactant phospholipids push between water molecules at the surface and weaken their pull."
+  },
+  {
+   "id": "bronchoconstrict-signal",
+   "topic": "ventilation-mechanics",
+   "core": [
+    "gradients",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Bronchoconstriction vs bronchodilation",
+   "front": "Bronchoconstriction vs bronchodilation: which signal causes each?",
+   "back": "Constriction: acetylcholine from the vagus nerve on muscarinic receptor proteins, and histamine and leukotrienes from mast cells. Dilation: epinephrine on beta-2 receptor proteins.",
+   "why": "Human airway smooth muscle gets few sympathetic fibers, so circulating epinephrine is the main dilator, which is why injected epinephrine opens the airways in a severe allergic reaction."
+  },
+  {
+   "id": "pneumothorax-one-side",
+   "topic": "ventilation-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a pneumothorax usually collapse only one lung?",
+   "back": "Each lung has its own pleural cavity, so the seal on the other side stays intact.",
+   "why": "Only a tension pneumothorax, where trapped air pushes the mediastinum across, threatens the other lung and the heart."
+  },
+  {
+   "id": "obs-res-basic",
+   "topic": "lung-volumes",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Obstructive vs restrictive disease",
+   "front": "Obstructive vs restrictive disease: what is the basic problem in each?",
+   "back": "Obstructive: narrowed airways, so air has trouble getting out. Restrictive: the lungs or chest cannot expand fully, so air has trouble getting in.",
+   "why": "Airway resistance rises steeply as radius falls, which slows the breath out. Stiff lungs, a stiff or loaded chest wall, or weak muscles limit how far the lungs fill."
+  },
+  {
+   "id": "obs-res-ratio",
+   "topic": "lung-volumes",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Obstructive vs restrictive disease",
+   "front": "Obstructive vs restrictive disease: what happens to the FEV1/FVC ratio?",
+   "back": "Obstructive: low, below about 0.70. Restrictive: normal or high.",
+   "why": "In obstruction air leaves slowly, so FEV1 falls far more than FVC. In restriction the volume is small, but the open airways let it out quickly."
+  },
+  {
+   "id": "obs-res-tlc",
+   "topic": "lung-volumes",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Obstructive vs restrictive disease",
+   "front": "Obstructive vs restrictive disease: what happens to total lung capacity and residual volume?",
+   "back": "Obstructive: TLC normal or raised, residual volume raised (air trapping). Restrictive: TLC low, which defines restriction.",
+   "why": "Narrowed airways close early during a forced breath out and trap air behind them. Restriction is confirmed only by a measured TLC, because spirometry cannot see the residual volume."
+  },
+  {
+   "id": "vc-sum",
+   "topic": "lung-volumes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which volumes add up to vital capacity?",
+   "back": "Tidal volume + inspiratory reserve volume + expiratory reserve volume (about 500 + 3,000 + 1,200 = 4,700 mL).",
+   "why": "Vital capacity is the most you can breathe out after the deepest breath in, so it includes every volume except the residual volume, which never leaves."
+  },
+  {
+   "id": "rv-spirometer",
+   "topic": "lung-volumes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can’t a spirometer measure residual volume, FRC or total lung capacity?",
+   "back": "They all include the residual volume, which never passes the mouthpiece.",
+   "why": "A spirometer measures only air that crosses the mouth. Helium dilution or a sealed body box (using Boyle’s law) is needed."
+  },
+  {
+   "id": "alveolar-vent",
+   "topic": "lung-volumes",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why do fast, shallow breaths deliver less fresh air than slow, deep ones at the same minute ventilation?",
+   "back": "About 150 mL of every breath only fills the dead space, so more breaths pay that cost more often.",
+   "why": "Alveolar ventilation = (tidal volume − dead space) × rate: 24 breaths of 250 mL give 2.4 L/min, but 6 breaths of 1,000 mL give 5.1 L/min."
+  },
+  {
+   "id": "ext-int-where",
+   "topic": "gas-exchange",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "External vs internal respiration",
+   "front": "External vs internal respiration: where does each happen?",
+   "back": "External: between alveolar air and blood in the pulmonary capillaries. Internal: between blood in systemic capillaries and the tissue cells.",
+   "why": "Both are simple diffusion down partial pressure gradients; only the direction of each gas differs."
+  },
+  {
+   "id": "ext-int-direction",
+   "topic": "gas-exchange",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "External vs internal respiration",
+   "front": "External vs internal respiration: which way does oxygen move in each?",
+   "back": "External: from air into blood (PO2 100 → 40). Internal: from blood into cells (PO2 95 → 40 or lower).",
+   "why": "Cells use oxygen and make carbon dioxide, so the gradients in the tissues run opposite to those in the lungs."
+  },
+  {
+   "id": "ext-int-cellular",
+   "topic": "gas-exchange",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "External vs internal respiration",
+   "front": "How is internal respiration different from cellular respiration?",
+   "back": "Internal respiration is gases crossing between blood and cells; cellular respiration is the chemistry inside the cell that uses the oxygen and makes the carbon dioxide.",
+   "why": "Internal respiration adjusts itself: a cell using oxygen faster lowers its PO2, which steepens the gradient and draws more oxygen from the blood."
+  },
+  {
+   "id": "altitude-po2",
+   "topic": "gas-exchange",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Air on a high mountain is still about 21% oxygen. Why is its PO2 lower?",
+   "back": "Partial pressure = total pressure × fraction. The total pressure is lower, so oxygen’s share is lower.",
+   "why": "At 4,300 m, moist airway air has a PO2 of about 85 mm Hg instead of 150: (455 − 47) × 0.209."
+  },
+  {
+   "id": "co2-small-gradient",
+   "topic": "gas-exchange",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Why can a carbon dioxide gradient of only 6 mm Hg move as much gas as an oxygen gradient of 60?",
+   "back": "Carbon dioxide is about 20 times more soluble than oxygen.",
+   "why": "Rate depends on gradient × solubility: 6 × 20 = 120 against 60 × 1, so carbon dioxide crosses about twice as readily."
+  },
+  {
+   "id": "hpv",
+   "topic": "gas-exchange",
+   "core": [
+    "gradients",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Systemic vs pulmonary arterioles",
+   "front": "Systemic vs pulmonary arterioles: how does each respond to low PO2?",
+   "back": "Systemic arterioles dilate; pulmonary arterioles constrict (hypoxic pulmonary vasoconstriction).",
+   "why": "Systemic dilation brings more blood to tissue short of oxygen. Pulmonary constriction sends blood away from poorly ventilated alveoli toward well-ventilated ones, matching blood flow to airflow."
+  },
+  {
+   "id": "o2-forms",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "In what two forms does blood carry oxygen, and in what shares?",
+   "back": "Bound to hemoglobin, about 98.5%; dissolved in plasma, about 1.5%.",
+   "why": "Plasma dissolves only 0.3 mL per 100 mL at a PO2 of 100 mm Hg. The small dissolved share still sets the PO2, which decides how much hemoglobin loads."
+  },
+  {
+   "id": "right-left-shift",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Right shift vs left shift",
+   "front": "Right shift vs left shift of the dissociation curve: what happens to P50 and to oxygen released?",
+   "back": "Right: P50 rises and more oxygen is released. Left: P50 falls and less is released.",
+   "why": "A right shift lowers hemoglobin’s affinity, so saturation is lower at any tissue PO2; a left shift raises affinity."
+  },
+  {
+   "id": "right-shift-causes",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Right shift vs left shift",
+   "front": "Which four factors shift the dissociation curve to the right?",
+   "back": "More carbon dioxide, more H+ (lower pH), higher temperature and more 2,3-BPG.",
+   "why": "Each is higher in active tissue, so hemoglobin unloads more where oxygen is needed. Memory aid: “CADET, face right.”"
+  },
+  {
+   "id": "left-shift-causes",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Right shift vs left shift",
+   "front": "Name two causes of a left shift besides less carbon dioxide, fewer H+ and cooler blood.",
+   "back": "Fetal hemoglobin and carbon monoxide (also less 2,3-BPG, as in stored blood).",
+   "why": "Fetal hemoglobin binds 2,3-BPG weakly; carbon monoxide holds hemoglobin in its relaxed, high-affinity shape."
+  },
+  {
+   "id": "curve-flat-top",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Why does breathing extra oxygen add almost nothing to hemoglobin in a healthy person at sea level?",
+   "back": "At a PO2 of 100 mm Hg hemoglobin is already about 98% saturated, on the flat top of the curve.",
+   "why": "The flat top also protects loading when PO2 falls, for example at moderate altitude: at 60 mm Hg saturation is still about 90%."
+  },
+  {
+   "id": "co-oximeter",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "In carbon monoxide poisoning, why are arterial PO2 and SpO2 both misleadingly normal?",
+   "back": "PO2 measures only dissolved oxygen, which is normal; a standard oximeter reads carboxyhemoglobin as oxyhemoglobin.",
+   "why": "The oxygen content is low and the curve is shifted left. A CO-oximeter, using several wavelengths, measures carboxyhemoglobin directly."
+  },
+  {
+   "id": "hypoxia-types",
+   "topic": "oxygen-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Types of hypoxia",
+   "front": "Which type of hypoxia has a normal arterial PO2 and oxygen content but a high venous PO2?",
+   "back": "Histotoxic hypoxia, as in cyanide poisoning.",
+   "why": "Oxygen arrives but the cells cannot use it, so it stays in the blood. In stagnant hypoxia, slow flow lets tissues strip more oxygen, and venous PO2 falls instead."
+  },
+  {
+   "id": "co2-forms",
+   "topic": "co2-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "In what three forms does blood carry carbon dioxide, and roughly what shares?",
+   "back": "Bicarbonate about 70%, carbaminohemoglobin about 20 to 23%, dissolved about 7 to 10%.",
+   "why": "Only the dissolved form sets PCO2 and crosses membranes, but most is converted to bicarbonate inside red blood cells, thanks to carbonic anhydrase."
+  },
+  {
+   "id": "bohr-haldane",
+   "topic": "co2-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Bohr effect vs Haldane effect",
+   "front": "Bohr effect vs Haldane effect: what changes in each?",
+   "back": "Bohr: carbon dioxide and H+ lower hemoglobin’s affinity for oxygen. Haldane: less oxygen on hemoglobin lets the blood carry more carbon dioxide.",
+   "why": "They are the same chemistry seen from opposite sides: binding H+ and carbon dioxide at some sites lowers hemoglobin’s hold on oxygen, and binding oxygen lowers its hold on them."
+  },
+  {
+   "id": "chloride-shift",
+   "topic": "co2-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "What is the chloride shift, and why is it needed?",
+   "back": "Band 3 swaps one bicarbonate out of the red blood cell for one chloride in.",
+   "why": "Bicarbonate building up inside would slow its own formation. The one-for-one swap moves it into the plasma without changing the charge across the membrane, and uses no ATP."
+  },
+  {
+   "id": "co2-ph",
+   "topic": "co2-transport",
+   "core": [
+    "gradients",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Arterial PCO2 rises. Which way does blood pH go, and why?",
+   "back": "Down: CO2 + H2O ⇌ H2CO3 ⇌ H+ + HCO3− is pushed to the right, releasing hydrogen ions.",
+   "why": "Because carbon dioxide leaves only through the lungs, breathing can change blood acid within minutes."
+  },
+  {
+   "id": "chemo-stimulus",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Central vs peripheral chemoreceptors",
+   "front": "Central vs peripheral chemoreceptors: what does each mainly sense?",
+   "back": "Central: hydrogen ions made from carbon dioxide in the brain’s fluid. Peripheral: low PO2, and also high PCO2 and low pH of arterial blood.",
+   "why": "Carbon dioxide crosses the blood–brain barrier and forms acid in poorly buffered fluid. Only the peripheral chemoreceptors respond to low oxygen."
+  },
+  {
+   "id": "chemo-where",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Central vs peripheral chemoreceptors",
+   "front": "Central vs peripheral chemoreceptors: where is each, and how does its signal reach the medulla?",
+   "back": "Central: near the front surface of the medulla oblongata, with short connections in the brainstem. Peripheral: carotid bodies (glossopharyngeal nerves) and aortic bodies (vagus nerves).",
+   "why": "The carotid bodies sit at the fork of each common carotid artery and are the main peripheral chemoreceptors in humans."
+  },
+  {
+   "id": "chemo-speed",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Central vs peripheral chemoreceptors",
+   "front": "Central vs peripheral chemoreceptors: which responds faster, and which supplies most of the response to carbon dioxide?",
+   "back": "Peripheral chemoreceptors respond within seconds; central chemoreceptors are slower but supply most of the steady response, roughly two thirds to four fifths.",
+   "why": "Carbon dioxide takes tens of seconds to minutes to change the pH of the brain’s fluid, but it acts on a large, sensitive population of central neurons."
+  },
+  {
+   "id": "co2-main-drive",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why does breathing barely change when arterial PO2 falls from 95 to 60 mm Hg?",
+   "back": "Hemoglobin stays about 90% saturated or more over that range, and the carotid bodies respond strongly only below about 60 mm Hg.",
+   "why": "Carbon dioxide, which changes pH directly, is the minute-to-minute drive. A rise from 40 to 45 mm Hg roughly doubles ventilation."
+  },
+  {
+   "id": "hyper-hypo",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Hyperventilation vs hypoventilation",
+   "front": "Hyperventilation vs hypoventilation: what defines each?",
+   "back": "Arterial PCO2: below 35 mm Hg is hyperventilation; above 45 mm Hg is hypoventilation.",
+   "why": "The terms compare ventilation with carbon dioxide production, not breathing rate. Rapid, shallow breathing can be hypoventilation, because much of each breath only fills the dead space."
+  },
+  {
+   "id": "hyperpnea",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "How does hyperpnea in exercise differ from hyperventilation?",
+   "back": "In hyperpnea ventilation rises to match metabolism, so arterial PCO2 stays normal; in hyperventilation PCO2 falls.",
+   "why": "During moderate exercise, arterial PCO2, PO2 and pH hardly change, so the chemoreceptors are not what drives the rise; central command and limb proprioceptors are."
+  },
+  {
+   "id": "copd-oxygen",
+   "topic": "breathing-control",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Giving a lot of oxygen to some people with long-term carbon dioxide retention raises their PCO2. What is the better-supported cause?",
+   "back": "Worsening ventilation–perfusion mismatch (oxygen reverses hypoxic pulmonary vasoconstriction) plus the Haldane effect.",
+   "why": "Loss of a “hypoxic drive to breathe” plays at most a small part. For your exam: many EMT and nursing materials still give hypoxic drive; know it, but never withhold oxygen from a hypoxic patient."
+  },
+  {
+   "id": "eca-site",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Emphysema vs chronic bronchitis vs asthma",
+   "front": "Emphysema vs chronic bronchitis vs asthma: where is the main problem in each?",
+   "back": "Emphysema: the alveolar walls. Chronic bronchitis: the bronchi and bronchioles. Asthma: the bronchi and bronchioles.",
+   "why": "All three are obstructive, but emphysema destroys the tissue that holds small airways open, while the other two narrow the airway lumen itself."
+  },
+  {
+   "id": "eca-reversible",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Emphysema vs chronic bronchitis vs asthma",
+   "front": "Emphysema vs chronic bronchitis vs asthma: which obstruction largely reverses with a drug that opens the airways?",
+   "back": "Asthma, especially between attacks. Chronic bronchitis reverses little and emphysema not at all.",
+   "why": "A bronchodilator relaxes smooth muscle. It cannot restore destroyed elastic fibers or clear thickened, mucus-filled walls."
+  },
+  {
+   "id": "eca-compliance",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence",
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Emphysema vs chronic bronchitis vs asthma",
+   "front": "Emphysema vs chronic bronchitis vs asthma: which raises lung compliance and lowers gas diffusion?",
+   "back": "Emphysema.",
+   "why": "Losing elastic fibers makes the lungs stretch more easily, and losing alveolar walls removes surface area and its capillaries. Compliance and diffusion stay near normal in the other two."
+  },
+  {
+   "id": "eca-cough",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Emphysema vs chronic bronchitis vs asthma",
+   "front": "Which of the three is defined by symptoms: a cough bringing up mucus on most days for at least three months in two years in a row?",
+   "back": "Chronic bronchitis.",
+   "why": "Enlarged mucus glands and extra goblet cells make far more mucus, and damaged cilia cannot clear it."
+  },
+  {
+   "id": "edema-types",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Cardiogenic vs noncardiogenic pulmonary edema",
+   "front": "Cardiogenic vs noncardiogenic pulmonary edema: what goes wrong in each?",
+   "back": "Cardiogenic: pressure in the pulmonary capillaries rises, as in left-sided heart failure. Noncardiogenic: the capillary wall and respiratory membrane become leaky.",
+   "why": "That is why cardiogenic edema fluid is low in protein and noncardiogenic fluid is high in protein."
+  },
+  {
+   "id": "tb-latent-active",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Latent vs active tuberculosis",
+   "front": "Latent TB infection vs active TB disease: which one spreads to others?",
+   "back": "Only active TB of the lungs or airways. In latent infection the bacteria are held in check inside granulomas and cause no symptoms.",
+   "why": "Active TB can develop later if immunity weakens, for example with HIV, some cancer treatments, diabetes or old age."
+  },
+  {
+   "id": "four-failures",
+   "topic": "respiratory-disorders",
+   "core": [
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "Every lung disorder breaks at least one of four steps. What are they?",
+   "back": "Ventilation, diffusion, matching of air to blood (V/Q), and control of breathing.",
+   "why": "Ask which step a disease breaks, then follow its effects through the gases, the pH, the heart and the blood."
   }
  ]
 }

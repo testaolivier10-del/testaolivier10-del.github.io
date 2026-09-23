@@ -892,6 +892,270 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "co2-high",
+      "title": "Carbon dioxide rises in the blood",
+      "topic": "breathing-control",
+      "map": "Blood carbon dioxide and pH (chemoreceptor loop)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You hold your breath for 40 seconds. Carbon dioxide keeps arriving at your lungs but none leaves. When you let go, your first breaths are deep and fast, and within a minute your breathing settles back to normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Arterial PCO2 rises, and hydrogen ions rise with it",
+          "short": "PCO2 and H+ rise",
+          "why": "The regulated variable is arterial PCO2. Through CO2 + H2O ⇌ H+ + HCO3−, more carbon dioxide also means more hydrogen ions and a lower pH."
+        },
+        "sensor": {
+          "text": "Central chemoreceptors in the medulla oblongata, and peripheral chemoreceptors in the carotid and aortic bodies",
+          "short": "Central and peripheral chemoreceptors",
+          "why": "Carbon dioxide crosses the blood–brain barrier and lowers the pH of the brain’s fluid, which the central chemoreceptors sense; they supply most of the response. The carotid bodies sense the rise in arterial PCO2 within seconds."
+        },
+        "afferent": {
+          "text": "Short connections within the brainstem, and the glossopharyngeal and vagus nerves",
+          "short": "Brainstem links; cranial nerves IX, X",
+          "why": "The central chemoreceptors sit next to the respiratory centers, so short links within the brainstem carry their signal. The glossopharyngeal nerves carry signals from the carotid bodies and the vagus nerves from the aortic bodies."
+        },
+        "control": {
+          "text": "The respiratory centers in the medulla oblongata and pons",
+          "short": "Respiratory centers",
+          "why": "These groups of neurons generate the breathing rhythm and set how deep and fast each breath is."
+        },
+        "efferent": {
+          "text": "Motor neurons in the phrenic and intercostal nerves",
+          "short": "Phrenic and intercostal nerves",
+          "why": "The phrenic nerves (from spinal segments C3 to C5) carry the command to the diaphragm, and the intercostal nerves to the intercostal muscles."
+        },
+        "effector": {
+          "text": "The diaphragm and the intercostal muscles",
+          "short": "Diaphragm and intercostals",
+          "why": "These breathing muscles contract harder and more often, enlarging the thorax more with each breath."
+        },
+        "response": {
+          "text": "Deeper, faster breathing raises alveolar ventilation, more carbon dioxide is breathed out, and arterial PCO2 and pH return toward normal",
+          "short": "More ventilation: PCO2 falls",
+          "why": "At a steady carbon dioxide production, arterial PCO2 is inversely proportional to alveolar ventilation, so more ventilation lowers it and removes the stimulus."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Central chemoreceptors detect a fall in blood oxygen",
+          "why": "Central chemoreceptors respond to hydrogen ions in the brain’s fluid, not to oxygen. Only the peripheral chemoreceptors make you breathe more when oxygen is low."
+        },
+        {
+          "text": "Baroreceptors in the carotid sinus",
+          "why": "Baroreceptors sit next to the carotid bodies but sense stretch from blood pressure. They report to the cardiovascular center, not the respiratory centers."
+        },
+        {
+          "text": "Breathing becomes slower and shallower",
+          "why": "Less ventilation would let carbon dioxide build up further, pushing the variable away from its set point."
+        },
+        {
+          "text": "The kidneys excrete more acid over the next few days",
+          "why": "The kidneys do adjust pH, but over days. This loop corrects PCO2 within minutes, by breathing."
+        }
+      ],
+      "classify": "The response (more carbon dioxide breathed out) opposes the stimulus (carbon dioxide rising), so this is negative feedback. As PCO2 falls back, chemoreceptor firing and breathing ease off.",
+      "failure": {
+        "part": "efferent",
+        "q": "A diving accident injures the spinal cord at the level of the second cervical vertebra, cutting the pathway from the brainstem to the motor neurons of the phrenic nerves. The chemoreceptors and respiratory centers still work. What happens to arterial PCO2 without a ventilator?",
+        "options": [
+          {
+            "text": "It climbs, because the command to breathe cannot reach the diaphragm",
+            "why": "Right. The chemoreceptors fire hard and the respiratory centers send their command, but the injury lies above the C3 to C5 segments that give rise to the phrenic nerves, so the diaphragm never gets it. With no ventilation, carbon dioxide builds up."
+          },
+          {
+            "text": "It stays normal, because the chemoreceptors still sense it",
+            "why": "Sensing is only the first step. If the command cannot reach the muscles, detecting the rise changes nothing."
+          },
+          {
+            "text": "It falls, because the respiratory centers fire harder",
+            "why": "Firing harder only helps if the signal reaches the muscles. Here it is blocked below the brainstem."
+          },
+          {
+            "text": "It stays normal, because the diaphragm contracts on its own rhythm",
+            "why": "The diaphragm is skeletal muscle. It contracts only when its motor neurons fire; the rhythm comes from the brainstem."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "o2-low",
+      "title": "Oxygen falls in the arterial blood",
+      "topic": "breathing-control",
+      "map": "Low blood oxygen (peripheral chemoreceptor loop)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "A hiker drives from the coast to a pass at 4,000 m. Within minutes of arriving, her arterial PO2 has fallen below 60 mm Hg, and she notices she is breathing more deeply even while sitting still.",
+      "slots": {
+        "stimulus": {
+          "text": "Arterial PO2 falls, strongly below about 60 mm Hg",
+          "short": "Arterial PO2 falls",
+          "why": "The variable is the partial pressure of oxygen in arterial blood. Above about 60 mm Hg hemoglobin stays nearly full and the sensors respond little; below it, they respond steeply."
+        },
+        "sensor": {
+          "text": "Peripheral chemoreceptors, mainly the carotid bodies",
+          "short": "Carotid bodies",
+          "why": "The carotid bodies, at the fork of each common carotid artery, are the only sensors that make you breathe more when oxygen is low. The aortic bodies play a small part in adults."
+        },
+        "afferent": {
+          "text": "The glossopharyngeal nerves",
+          "short": "Glossopharyngeal nerves",
+          "why": "Signals from the carotid bodies travel to the medulla oblongata in the glossopharyngeal nerves; the few from the aortic bodies travel in the vagus nerves."
+        },
+        "control": {
+          "text": "The respiratory centers in the brainstem",
+          "short": "Respiratory centers",
+          "why": "The dorsal respiratory group receives the chemoreceptor input, and the medullary and pontine groups raise the depth and rate of breathing."
+        },
+        "efferent": {
+          "text": "The phrenic and intercostal nerves",
+          "short": "Phrenic and intercostal nerves",
+          "why": "These carry the stronger, more frequent commands from the brainstem and spinal cord to the breathing muscles."
+        },
+        "effector": {
+          "text": "The diaphragm and intercostal muscles",
+          "short": "Diaphragm and intercostals",
+          "why": "They contract harder and more often, moving more air in and out each minute."
+        },
+        "response": {
+          "text": "More ventilation raises alveolar PO2, and with it arterial PO2",
+          "short": "More air: PO2 rises",
+          "why": "More fresh air reaching the alveoli raises alveolar PO2, so more oxygen diffuses into the blood and the stimulus shrinks."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Central chemoreceptors in the medulla oblongata",
+          "why": "The central chemoreceptors do not sense oxygen at all. At altitude they even act as a brake, because the extra breathing lowers carbon dioxide."
+        },
+        {
+          "text": "Sensors that measure how much oxygen the blood carries",
+          "why": "The carotid bodies sense the partial pressure of oxygen, not the amount carried. That is why anemia or carbon monoxide poisoning, with a normal PO2, barely raises breathing."
+        },
+        {
+          "text": "The kidneys release erythropoietin",
+          "why": "Erythropoietin does rise at altitude, but it acts over weeks, through the bone marrow. This loop answers within seconds, through breathing."
+        }
+      ],
+      "classify": "The response (more oxygen reaching the blood) opposes the stimulus (oxygen falling), so this is negative feedback. As arterial PO2 recovers, carotid body firing falls again.",
+      "failure": {
+        "part": "sensor",
+        "q": "A man had both carotid bodies removed during neck surgery years ago. He takes a cable car to 4,000 m, and his arterial PO2 falls to 50 mm Hg. How does his breathing respond, compared with someone whose carotid bodies are intact?",
+        "options": [
+          {
+            "text": "It barely rises, because nothing now senses the low oxygen",
+            "why": "Right. The carotid bodies are the only sensors that drive breathing up when oxygen falls. Without them, his central chemoreceptors still respond to carbon dioxide, but nothing reports the low PO2."
+          },
+          {
+            "text": "It rises normally, because the central chemoreceptors take over",
+            "why": "The central chemoreceptors sense hydrogen ions made from carbon dioxide, not oxygen. They cannot stand in for the carotid bodies here."
+          },
+          {
+            "text": "It rises more than normal, because the brake from carbon dioxide is gone",
+            "why": "The carbon dioxide brake appears only when breathing rises. Without the oxygen sensors, breathing does not rise in the first place."
+          },
+          {
+            "text": "It stops, because the respiratory rhythm comes from the carotid bodies",
+            "why": "The rhythm is generated in the medulla oblongata. He breathes normally at sea level; only the response to low oxygen is lost."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "lung-inflation",
+      "title": "The lungs inflate a lot (Hering–Breuer reflex)",
+      "topic": "breathing-control",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "During a hard run, each breath grows to about three times its resting size. As the lungs fill, each breath in is cut short a little earlier, which limits how far they are stretched.",
+      "slots": {
+        "stimulus": {
+          "text": "The lungs inflate far more than in a resting breath",
+          "short": "Large lung inflation",
+          "why": "The variable is how far the lungs are stretched. At rest the reflex is weak; it becomes active at breaths about three times resting size or more."
+        },
+        "sensor": {
+          "text": "Stretch-sensitive sensory receptors in the smooth muscle of the airways",
+          "short": "Airway stretch sensors",
+          "why": "These sensory receptors fire faster as the airways and lungs are stretched by inflation."
+        },
+        "afferent": {
+          "text": "The vagus nerves",
+          "short": "Vagus nerves",
+          "why": "Signals from the lung stretch sensors travel up the vagus nerves to the medulla oblongata."
+        },
+        "control": {
+          "text": "The respiratory centers in the medulla oblongata",
+          "short": "Respiratory centers",
+          "why": "The stretch signals inhibit the neurons that drive inspiration, switching the breath in off sooner."
+        },
+        "efferent": {
+          "text": "Fewer signals in the phrenic nerves",
+          "short": "Phrenic nerves go quiet",
+          "why": "Once inspiration is switched off, the burst of signals down the phrenic nerves stops."
+        },
+        "effector": {
+          "text": "The diaphragm",
+          "short": "Diaphragm",
+          "why": "The diaphragm, the main muscle of inspiration, stops contracting when its commands stop."
+        },
+        "response": {
+          "text": "The breath in ends sooner, and further inflation is limited",
+          "short": "Breath in cut short",
+          "why": "Ending inspiration earlier stops the lungs from stretching further, opposing the stimulus."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Irritant sensory receptors in the airway lining detect dust and smoke",
+          "why": "Irritant sensory receptors cause coughing and bronchoconstriction. They respond to particles and fumes, not to inflation."
+        },
+        {
+          "text": "The glossopharyngeal nerves",
+          "why": "The glossopharyngeal nerves carry signals from the carotid bodies. Lung stretch signals travel in the vagus nerves."
+        },
+        {
+          "text": "The diaphragm contracts harder to fill the lungs further",
+          "why": "That would stretch the lungs more, pushing the variable further from where the reflex holds it."
+        }
+      ],
+      "classify": "The response (the breath in stops) opposes the stimulus (the lungs stretching further), so this is negative feedback.",
+      "failure": {
+        "part": "afferent",
+        "q": "A patient’s vagus nerves are blocked on both sides by a local anesthetic. What happens to his breathing?",
+        "options": [
+          {
+            "text": "Little changes at rest; only very large breaths run on",
+            "why": "Right. In adults at rest the reflex is weak, so quiet breathing barely changes. Its job is limiting very large breaths, and without the vagus nerves the stretch signals cannot reach the medulla."
+          },
+          {
+            "text": "He stops breathing, because the vagus nerves carry the rhythm",
+            "why": "The rhythm comes from neurons in the medulla oblongata. The vagus nerves carry sensory information to them, not the rhythm itself."
+          },
+          {
+            "text": "His diaphragm is paralyzed",
+            "why": "The diaphragm is driven by the phrenic nerves, which are untouched."
+          },
+          {
+            "text": "His breaths become very small",
+            "why": "Losing a signal that ends inspiration cannot make breaths smaller. If anything, large breaths go on longer."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

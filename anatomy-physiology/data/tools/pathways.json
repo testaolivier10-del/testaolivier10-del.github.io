@@ -648,6 +648,282 @@
         "why": "Baroreceptor firing tracks stretch: less pressure, less stretch, fewer action potentials. It is the drop in firing that tells the cardiovascular center pressure has fallen."
       },
       "summary": "Less stretch, less firing, less parasympathetic and more sympathetic output: the heart speeds up and pumps harder, vessels tighten, and pressure recovers. The reflex corrects within seconds but cannot change blood volume."
+    },
+    {
+      "id": "cough-reflex",
+      "title": "The cough reflex",
+      "topic": "upper-airway",
+      "core": ["structure-function", "communication"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A crumb slips past your vocal folds while you laugh and eat. Trace the reflex that blasts it back out.",
+      "steps": [
+        { "id": "irritate", "label": "Lining irritated", "text": "The crumb irritates sensory receptors in the lining of the larynx or trachea.", "why": "The reflex starts with detection: sensory receptors in the airway lining respond to touch and chemical irritants." },
+        { "id": "vagus", "label": "Vagus nerve to brainstem", "text": "Sensory fibers in the vagus nerve carry the signal to the brainstem.", "why": "The signal must reach the control center before any muscle can respond, and the vagus nerve carries sensation from the larynx and trachea." },
+        { "id": "breath-in", "label": "Deep breath in", "text": "The brainstem triggers a quick, deep breath in.", "why": "Filling the lungs first stores the volume of air that will later carry the crumb out." },
+        { "id": "close", "label": "Vocal folds close", "text": "The vocal folds snap shut, sealing the airway at the larynx.", "why": "The airway must be sealed before the squeeze, or the air would leak out slowly instead of building pressure." },
+        { "id": "squeeze", "label": "Pressure builds", "text": "The abdominal wall muscles and internal intercostals contract hard, and the pressure of the air in the chest climbs steeply.", "why": "Squeezing a sealed volume of air into less space raises its pressure: the same molecules strike the walls more often." },
+        { "id": "open", "label": "Folds open: blast", "text": "The vocal folds open suddenly, and air bursts out at high speed, carrying the crumb with it.", "why": "Releasing the seal lets the large pressure difference drive a fast burst of air up the trachea and out through the mouth." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "The epiglottis tips down and back to cover the opening of the larynx.", "why": "The epiglottis covers the larynx when you swallow. In a cough the airway is sealed by the vocal folds, which then open to release the blast." },
+          { "text": "Cilia sweep the crumb up toward the pharynx.", "why": "The mucociliary escalator moves mucus slowly, a few millimeters a minute. The cough reflex is the fast backup when something gets past it." },
+          { "text": "The diaphragm relaxes so air can flow out slowly.", "why": "A slow outflow would not dislodge anything. The cough needs the airway sealed while pressure builds." }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The trigeminal nerve carries the signal to the brainstem.",
+        "why": "The trigeminal nerve carries irritation from the nasal mucosa and starts a sneeze. Irritation of the larynx, trachea and large air tubes travels in the vagus nerve and starts a cough."
+      },
+      "summary": "Sense the irritant, breathe in deep, seal the vocal folds, squeeze, then open: the sudden release of high-pressure air carries the irritant out. A sneeze uses the same sequence, started from the nose through the trigeminal nerve and aimed out through the nose."
+    },
+    {
+      "id": "air-route",
+      "title": "Air to the alveoli and back",
+      "topic": "lower-airway-lungs",
+      "core": ["structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "Follow one breath of air in through your nose, all the way to an alveolus. When you breathe out, it leaves by the same route in reverse.",
+      "steps": [
+        { "id": "nares", "label": "Nares", "text": "Air enters through the nares, the two openings at the bottom of the nose.", "why": "The nares are the entrance to the respiratory tract; coarse hairs just inside catch large particles." },
+        { "id": "nasal-cavity", "label": "Nasal cavity", "text": "Air swirls between the conchae of the nasal cavity, where it is filtered, warmed and moistened.", "why": "Behind the nares lies the nasal cavity, the first part of the conducting zone that conditions the air." },
+        { "id": "nasopharynx", "label": "Nasopharynx", "text": "Air passes back into the nasopharynx, behind the nasal cavity.", "why": "The back of the nasal cavity opens into the top part of the pharynx, which only air passes through." },
+        { "id": "oropharynx", "label": "Oropharynx", "text": "Air moves down through the oropharynx, behind the mouth.", "why": "The pharynx continues downward; air from the nose and air breathed through the mouth meet here." },
+        { "id": "laryngopharynx", "label": "Laryngopharynx", "text": "Air reaches the laryngopharynx, where the routes for air and food split.", "why": "The lowest part of the pharynx leads forward into the larynx and back into the esophagus." },
+        { "id": "larynx", "label": "Larynx (glottis)", "text": "Air passes through the larynx, between the vocal folds.", "why": "The larynx is the gateway to the lower airway, and the glottis is the narrowest part of the adult airway." },
+        { "id": "trachea", "label": "Trachea", "text": "Air flows down the trachea, held open by C-shaped rings of cartilage.", "why": "The trachea begins at the lower edge of the larynx, at the cricoid cartilage." },
+        { "id": "primary", "label": "Primary bronchus", "text": "At the carina, air enters a right or left primary bronchus.", "why": "The trachea divides into one primary bronchus for each lung." },
+        { "id": "secondary", "label": "Secondary bronchus", "text": "Air enters a secondary (lobar) bronchus, one for each lobe.", "why": "Inside the lung, each primary bronchus branches to serve the lobes: three on the right, two on the left." },
+        { "id": "tertiary", "label": "Tertiary bronchus", "text": "Air enters a tertiary (segmental) bronchus serving one bronchopulmonary segment.", "why": "Each lobar bronchus divides again, one branch for each segment of the lobe." },
+        { "id": "bronchiole", "label": "Bronchioles", "text": "After more divisions, air enters bronchioles, less than 1 mm wide with no cartilage.", "why": "The bronchi keep branching and narrowing until cartilage disappears from their walls." },
+        { "id": "terminal", "label": "Terminal bronchiole", "text": "Air reaches a terminal bronchiole, the last airway of the conducting zone.", "why": "This is the end of the pipe system: no alveoli open from its wall." },
+        { "id": "respiratory", "label": "Respiratory bronchiole", "text": "Air enters a respiratory bronchiole, with a few alveoli budding from its wall.", "why": "The first alveoli appear here, so this is where the respiratory zone begins." },
+        { "id": "duct", "label": "Alveolar duct", "text": "Air passes along an alveolar duct, whose walls are almost all alveolar openings.", "why": "Beyond the respiratory bronchioles, alveoli crowd the walls so densely that little else remains." },
+        { "id": "alveolus", "label": "Alveolar sac → alveolus", "text": "Air reaches an alveolar sac and its alveoli, where oxygen and carbon dioxide cross the respiratory membrane.", "why": "The duct ends in a cluster of alveoli, the dead end of the route, where air meets the pulmonary capillaries." }
+      ],
+      "missing": {
+        "at": 11,
+        "distractors": [
+          { "text": "Air reaches the carina, where the trachea divides.", "why": "The carina is where the trachea splits into the primary bronchi, much higher up the tree." },
+          { "text": "Air enters the esophagus behind the trachea.", "why": "The esophagus carries food. Air leaves the pharynx forward, into the larynx, and never enters the esophagus in normal breathing." },
+          { "text": "Air enters a pulmonary capillary.", "why": "Air never enters a blood vessel. Only the gases cross the respiratory membrane into the blood, and only in the alveoli." }
+        ]
+      },
+      "error": {
+        "at": 12,
+        "text": "Air enters a respiratory bronchiole, the last airway with cartilage in its wall.",
+        "why": "Cartilage has already disappeared by the bronchioles. The respiratory bronchiole is defined by the few alveoli budding from its wall, which make it the start of the respiratory zone."
+      },
+      "summary": "Nose, pharynx, larynx, trachea, then a tree of bronchi and bronchioles to the terminal bronchioles: the conducting zone. From the respiratory bronchioles on, alveoli line the way: the respiratory zone. Air leaves by the same route, so some stale air is always left in the tubes at the start of the next breath."
+    },
+    {
+      "id": "inspiration",
+      "title": "Inspiration: nerve signal to airflow",
+      "topic": "ventilation-mechanics",
+      "core": ["gradients"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "At the end of a quiet breath out, no air is moving. Trace what happens from the first nerve signal until air stops flowing in.",
+      "steps": [
+        { "id": "signal", "label": "Brainstem fires", "text": "Neurons in the brainstem fire, and the signal travels down the phrenic nerves to the diaphragm and the intercostal nerves to the external intercostals.", "why": "Quiet inspiration is active: muscles do the work, and they contract only when their nerves fire." },
+        { "id": "diaphragm", "label": "Diaphragm flattens", "text": "The diaphragm contracts, flattens and moves down, lengthening the thoracic cavity.", "why": "The contracting dome pulls down on its central part; this does most of the work of a quiet breath in." },
+        { "id": "ribs", "label": "Ribs rise", "text": "The external intercostals lift the ribs up and out, widening the thoracic cavity.", "why": "Lifting the ribs like a bucket handle enlarges the chest from side to side and from front to back." },
+        { "id": "ipp", "label": "Intrapleural pressure falls", "text": "The chest wall moves outward and pulls harder on the pleural fluid film: intrapleural pressure falls from about −4 to about −6 mm Hg.", "why": "The fluid film holds the lung to the chest wall, so an outward pull on the wall stretches the film and lowers its pressure." },
+        { "id": "expand", "label": "Lungs expand", "text": "Transpulmonary pressure rises from 4 to about 6 mm Hg, and the lungs and alveoli expand.", "why": "Transpulmonary pressure is alveolar minus intrapleural pressure; a larger difference stretches the lungs to a larger size." },
+        { "id": "palv", "label": "Alveolar pressure falls", "text": "By Boyle’s law, the larger alveolar volume lowers alveolar pressure to about −1 mm Hg.", "why": "The same number of gas molecules in a larger space strike the walls less often, so the pressure falls." },
+        { "id": "inflow", "label": "Air flows in", "text": "Air flows down the pressure gradient from the atmosphere into the alveoli.", "why": "Air, like any fluid, flows from higher to lower pressure, and the alveoli are now below atmospheric." },
+        { "id": "stop", "label": "Gradient gone: flow stops", "text": "Alveolar pressure climbs back to 0, and when it equals atmospheric pressure, flow stops.", "why": "Incoming air adds molecules to the alveoli, raising their pressure until no gradient is left." }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          { "text": "The lungs pull air in by contracting their own smooth muscle.", "why": "The lungs have no muscle that sucks air in. They expand passively because the chest wall pulls on them through the pleural film." },
+          { "text": "Alveolar pressure rises above atmospheric pressure.", "why": "A pressure above atmospheric would push air out. For air to flow in, alveolar pressure must fall below it." },
+          { "text": "Intrapleural pressure rises to atmospheric pressure.", "why": "That is what happens in a pneumothorax, and it collapses the lung. In a normal breath in, intrapleural pressure falls." }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The chest wall moves outward, and intrapleural pressure rises from about −4 to about −2 mm Hg.",
+        "why": "An outward pull on the pleural film lowers its pressure further below atmospheric, to about −6 mm Hg. That larger negative pressure is what raises transpulmonary pressure and expands the lungs."
+      },
+      "summary": "Nerve signal, muscles contract, thorax enlarges, intrapleural pressure falls, the lungs expand, alveolar pressure falls by Boyle’s law, and air flows in until the gradient is gone. Quiet expiration is the same chain run backward by elastic recoil, with no muscle needed."
+    },
+    {
+      "id": "oxygen-trip",
+      "title": "Oxygen from air to a tissue cell",
+      "topic": "oxygen-transport",
+      "core": ["gradients", "structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "Follow one oxygen molecule from a breath of air to the mitochondria of a muscle cell in your leg.",
+      "steps": [
+        { "id": "breathe", "label": "Breathed in", "text": "Air is breathed in, warmed and moistened, and reaches the alveoli, where its PO2 is about 100 mm Hg.", "why": "Mixing with the air already in the alveoli lowers the PO2 from about 150 in the airways to about 100 mm Hg." },
+        { "id": "membrane", "label": "Crosses membrane", "blood": "exchange", "text": "Oxygen diffuses across the respiratory membrane and dissolves in the plasma of a pulmonary capillary.", "why": "Blood arriving from the tissues has a PO2 of about 40, so oxygen moves down a 60 mm Hg gradient." },
+        { "id": "heme", "label": "Binds hemoglobin", "blood": "exchange", "text": "Oxygen diffuses into a red blood cell and binds heme iron, forming oxyhemoglobin; blood leaves the lungs about 97 to 98% saturated.", "why": "Oxygen must dissolve in plasma before it can reach hemoglobin. At a PO2 near 100 mm Hg hemoglobin sits on the flat top of its curve and loads almost fully." },
+        { "id": "heart", "label": "Left heart", "blood": "o2", "text": "The pulmonary veins carry the blood to the left atrium, and the left ventricle pumps it into the aorta.", "why": "Oxygenated blood returns to the left side of the heart, which pumps it through the systemic circuit." },
+        { "id": "arteries", "label": "Systemic arteries", "blood": "o2", "text": "Systemic arteries carry the blood to a capillary bed in the working muscle.", "why": "The arteries branch down to arterioles that feed each capillary bed." },
+        { "id": "unload", "label": "Hemoglobin unloads", "blood": "exchange", "text": "Low PO2, high PCO2, acid and warmth in the muscle make hemoglobin release oxygen, which dissolves in the plasma.", "why": "At the low PO2 of the tissue, hemoglobin is on the steep part of its curve, and the right shift from carbon dioxide, acid and heat releases even more." },
+        { "id": "cell", "label": "Into the cell", "text": "Oxygen diffuses from the plasma through the interstitial fluid into the cell.", "why": "The cell keeps using oxygen, so its PO2 stays below that of the blood and oxygen keeps moving in." },
+        { "id": "mito", "label": "Mitochondria", "text": "In the mitochondria, the electron transport chain uses the oxygen.", "why": "Oxygen is the final electron acceptor of aerobic respiration, and using it up is what keeps the gradient running from the air to the cell." }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          { "text": "Oxygen stays dissolved in the plasma instead of entering red blood cells, because plasma carries almost all of the oxygen that blood delivers to the tissues.", "why": "Plasma dissolves only 0.3 mL of oxygen per 100 mL at a PO2 of 100 mm Hg. About 98.5% of the oxygen in blood rides on hemoglobin." },
+          { "text": "Oxygen binds the globin chains of hemoglobin rather than its iron.", "why": "Oxygen binds the iron at the center of each heme group, one oxygen molecule per iron, so one hemoglobin carries four." },
+          { "text": "Oxygen is pumped into red blood cells by active transport.", "why": "Nothing pumps oxygen. It crosses every membrane by simple diffusion, down its partial pressure gradient." }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "High PO2 and low PCO2 in the muscle make hemoglobin hold on to its oxygen more tightly.",
+        "why": "Working muscle has a low PO2 and a high PCO2, with acid and heat. Those conditions put hemoglobin on the steep part of its curve and shift the curve right, so it releases oxygen."
+      },
+      "summary": "Every step runs downhill in PO2: air 150, alveoli 100, arterial blood about 95, tissue 40 or less, mitochondria lowest. Hemoglobin carries almost all of it between the lungs and the tissues, loading on the flat top of its curve and unloading on the steep middle."
+    },
+    {
+      "id": "co2-trip",
+      "title": "Carbon dioxide from a tissue cell to air",
+      "topic": "co2-transport",
+      "core": ["gradients", "homeostasis"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "flow",
+      "intro": "Follow one carbon dioxide molecule, made in a muscle cell, to the air you breathe out. Most carbon dioxide travels as bicarbonate, so follow that route.",
+      "steps": [
+        { "id": "made", "label": "Made in mitochondria", "text": "A cell makes carbon dioxide in its mitochondria during cellular respiration.", "why": "Carbon dioxide is a waste product of aerobic respiration, so the trip starts where it is made." },
+        { "id": "out", "label": "Into a capillary", "blood": "exchange", "text": "Carbon dioxide diffuses out of the cell, through the interstitial fluid and into a systemic capillary.", "why": "PCO2 is highest in the cell and lower in the arriving blood, so it moves down its gradient: internal respiration." },
+        { "id": "rbc", "label": "Into a red blood cell", "blood": "exchange", "text": "Most of it diffuses on into a red blood cell.", "why": "The red blood cell holds the enzyme that turns carbon dioxide into bicarbonate quickly; the plasma has almost none." },
+        { "id": "ca", "label": "Carbonic anhydrase", "blood": "exchange", "text": "Carbonic anhydrase converts it to carbonic acid, which splits into a hydrogen ion and a bicarbonate ion.", "why": "At high PCO2 the reaction runs to the right, and the enzyme lets it finish within the second the blood spends in the capillary." },
+        { "id": "shift", "label": "H+ bound; chloride shift", "blood": "deo2", "text": "The hydrogen ion binds deoxyhemoglobin, and the bicarbonate leaves the cell through band 3 in exchange for chloride.", "why": "Removing both products keeps the reaction running: hemoglobin buffers the H+, and the chloride shift moves bicarbonate out into the plasma." },
+        { "id": "veins", "label": "Veins → right heart", "blood": "deo2", "text": "The bicarbonate travels in the plasma through the veins and the right side of the heart to a pulmonary capillary.", "why": "Venous blood returns to the right side of the heart, which pumps it to the lungs." },
+        { "id": "back-in", "label": "Bicarbonate re-enters", "blood": "exchange", "text": "Alveolar PCO2 is lower, and bicarbonate re-enters the red blood cell in exchange for chloride.", "why": "In the lungs the whole sequence reverses, starting with the chloride shift in reverse." },
+        { "id": "reform", "label": "CO2 re-formed", "blood": "exchange", "text": "Oxygen binds hemoglobin, which releases its hydrogen ions; they combine with bicarbonate, and carbonic anhydrase turns the carbonic acid into carbon dioxide and water.", "why": "Oxyhemoglobin holds H+ less tightly (the Haldane effect), and at low PCO2 the reaction runs to the left." },
+        { "id": "alveolus", "label": "Into the alveolus", "blood": "exchange", "text": "Carbon dioxide diffuses out of the red blood cell, across the respiratory membrane and into the alveoli.", "why": "Blood PCO2 of about 46 exceeds the alveolar 40 mm Hg, so it diffuses out: external respiration." },
+        { "id": "exhale", "label": "Breathed out", "text": "You breathe it out.", "why": "Expiration carries the alveolar air, and the carbon dioxide in it, back up the airway to the outside." }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          { "text": "The bicarbonate stays inside the red blood cell, bound to hemoglobin, and is carried there all the way through the veins to the lungs.", "why": "Bicarbonate does not bind hemoglobin, and building up inside the cell would slow the reaction. Most of it leaves through band 3 and travels in the plasma." },
+          { "text": "The hydrogen ion stays free in the plasma, and venous blood becomes strongly acidic.", "why": "Almost all the hydrogen ions bind hemoglobin, which buffers them. Venous pH is only about 7.36, against 7.40 in arterial blood." },
+          { "text": "An ATP-driven pump swaps bicarbonate out for sodium in.", "why": "Band 3 swaps bicarbonate for chloride, one negative ion for another, by facilitated diffusion. No ATP is used." }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Carbonic anhydrase in the plasma converts it to carbonic acid, which splits into a hydrogen ion and a bicarbonate ion.",
+        "why": "Plasma has almost none of the enzyme, so little bicarbonate forms there. The fast conversion happens inside red blood cells."
+      },
+      "summary": "Made in the cell, diffused into the blood, turned into bicarbonate inside red blood cells, carried in the plasma, turned back into carbon dioxide in the lungs, and breathed out. The same reactions run in both places; only the direction differs, set by PCO2."
+    },
+    {
+      "id": "chloride-shift",
+      "title": "Inside a red blood cell: bicarbonate and the chloride shift",
+      "topic": "co2-transport",
+      "core": ["gradients", "homeostasis"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A red blood cell enters a capillary in a working muscle. Trace what carbon dioxide does inside it, step by step.",
+      "steps": [
+        { "id": "enter", "label": "CO2 diffuses in", "text": "Carbon dioxide diffuses from the plasma into the red blood cell.", "why": "The muscle makes carbon dioxide, so PCO2 around the cell is higher than inside it." },
+        { "id": "enzyme", "label": "Carbonic anhydrase acts", "text": "Carbonic anhydrase speeds CO2 + H2O → H2CO3.", "why": "This first step is slow on its own. The enzyme speeds it thousands of times, so it finishes while the cell is still in the capillary." },
+        { "id": "split", "label": "Carbonic acid splits", "text": "Carbonic acid splits into H+ and HCO3−.", "why": "The second step happens almost instantly once carbonic acid forms." },
+        { "id": "buffer", "label": "H+ binds hemoglobin", "text": "The hydrogen ion binds deoxyhemoglobin.", "why": "Hemoglobin is giving up oxygen at this moment, and deoxyhemoglobin binds H+ more readily, so it mops up the acid just when it is made." },
+        { "id": "band3", "label": "Band 3: HCO3− out, Cl− in", "text": "Bicarbonate leaves through band 3, and one chloride ion comes in for each.", "why": "Bicarbonate is building up inside, so it moves out down its concentration gradient. A one-for-one swap keeps the charge across the membrane unchanged." },
+        { "id": "swell", "label": "Cell swells slightly", "text": "The cell has gained ions, so water follows and it swells a little.", "why": "Bicarbonate made inside and chloride brought in add dissolved particles, and water follows solute by osmosis. Venous hematocrit is a few percent higher for this reason." }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          { "text": "Bicarbonate leaves through band 3, and one sodium ion leaves alongside each one.", "why": "Band 3 is an exchanger for negative ions: one bicarbonate out, one chloride in." },
+          { "text": "The sodium–potassium pump drives bicarbonate out of the cell.", "why": "The chloride shift uses no ATP. It is facilitated diffusion through band 3, each ion moving down its own gradient." },
+          { "text": "Bicarbonate binds the heme iron in place of oxygen.", "why": "Heme iron binds oxygen and carbon monoxide. Bicarbonate is carried in the plasma, not on hemoglobin." }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The hydrogen ion binds oxyhemoglobin, which holds H+ more tightly than deoxyhemoglobin.",
+        "why": "It is the other way round: deoxyhemoglobin binds H+ more readily. That is why hemoglobin becomes a better buffer as it gives up oxygen in the tissues."
+      },
+      "summary": "In, convert, split, buffer, swap: carbonic anhydrase makes bicarbonate fast, hemoglobin soaks up the H+, and band 3 trades bicarbonate for chloride so more carbon dioxide can follow. In the lungs every step runs backward."
+    },
+    {
+      "id": "central-chemoreceptor",
+      "title": "Carbon dioxide drives breathing through the brain",
+      "topic": "breathing-control",
+      "core": ["homeostasis", "communication"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Your arterial PCO2 creeps up from 40 to 45 mm Hg. Trace how that change reaches the neurons that set your breathing, and how breathing brings it back.",
+      "steps": [
+        { "id": "rise", "label": "Arterial PCO2 rises", "text": "Arterial PCO2 rises.", "why": "The loop starts with the regulated variable moving away from its set point." },
+        { "id": "bbb", "label": "CO2 crosses the barrier", "text": "Carbon dioxide crosses the blood–brain barrier into the brain’s interstitial fluid.", "why": "Carbon dioxide is small and dissolves in lipids, so it crosses easily. Hydrogen ions and bicarbonate cross poorly." },
+        { "id": "acid", "label": "H+ forms in brain fluid", "text": "In the brain’s fluid, carbon dioxide forms carbonic acid, which releases hydrogen ions.", "why": "The same reaction as in blood runs to the right when PCO2 rises." },
+        { "id": "ph", "label": "Brain fluid pH falls", "text": "The fluid holds little protein and buffers poorly, so its pH falls more than blood pH would.", "why": "Fewer buffers means more of the new hydrogen ions stay free." },
+        { "id": "sense", "label": "Central chemoreceptors fire", "text": "Central chemoreceptors near the front surface of the medulla oblongata sense the rise in hydrogen ions.", "why": "These neurons respond to H+ in the fluid around them, not to oxygen." },
+        { "id": "centers", "label": "Centers drive harder", "text": "They stimulate the respiratory centers, which send stronger, more frequent bursts down the phrenic and intercostal nerves.", "why": "Short connections within the brainstem carry the signal to the control center, which sets depth and rate." },
+        { "id": "ventilate", "label": "Ventilation rises", "text": "Breathing gets deeper and faster, and alveolar ventilation rises.", "why": "The diaphragm and intercostals contract harder and more often." },
+        { "id": "restore", "label": "PCO2 falls back", "text": "More carbon dioxide is breathed out, and arterial PCO2 falls back toward 40 mm Hg.", "why": "At steady production, PCO2 is inversely proportional to alveolar ventilation: negative feedback removes the stimulus." }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          { "text": "Hydrogen ions from the blood cross the blood–brain barrier freely into the brain’s interstitial fluid.", "why": "Hydrogen ions cross the barrier poorly. That is why acid added to the blood by other causes reaches the central chemoreceptors only slowly." },
+          { "text": "The carotid bodies send the signal to the cerebral cortex.", "why": "The carotid bodies report to the medulla oblongata through the glossopharyngeal nerves. This chain is the central route, which accounts for most of the response to carbon dioxide." },
+          { "text": "Low oxygen crosses into the brain and stimulates the central chemoreceptors.", "why": "Central chemoreceptors do not sense oxygen. Only the peripheral chemoreceptors respond to a low PO2." }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Central chemoreceptors in the carotid bodies sense the fall in oxygen.",
+        "why": "Central chemoreceptors lie in the medulla oblongata and sense hydrogen ions made from carbon dioxide. The carotid bodies are peripheral chemoreceptors, and oxygen has not changed in this chain."
+      },
+      "summary": "Carbon dioxide slips across the blood–brain barrier, becomes acid in poorly buffered brain fluid, and the central chemoreceptors drive breathing up until the extra carbon dioxide is blown off. Over a day or two they adapt to a lasting change, as bicarbonate in the cerebrospinal fluid is adjusted."
+    },
+    {
+      "id": "emphysema-development",
+      "title": "How smoking causes emphysema",
+      "topic": "respiratory-disorders",
+      "core": ["interdependence", "structure-function"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A man smokes a pack a day for decades. Trace how the smoke turns healthy alveoli into air trapping and breathlessness.",
+      "steps": [
+        { "id": "inflame", "label": "Chronic inflammation", "text": "Smoke irritates the lungs, draws in neutrophils and activates alveolar macrophages.", "why": "The chain begins with the body’s defensive response to a constant irritant." },
+        { "id": "enzymes", "label": "Enzymes released", "text": "These cells release protein-digesting enzymes that break down elastic fibers in the alveolar walls.", "why": "Neutrophils and macrophages carry enzymes for destroying microbes and debris, and they damage the tissue around them too." },
+        { "id": "blocked", "label": "Protection disabled", "text": "Smoke inactivates alpha-1 antitrypsin, the protein that normally blocks those enzymes.", "why": "Normally the protective proteins keep the enzymes in check. With them disabled, the balance tips toward digestion." },
+        { "id": "walls", "label": "Walls destroyed", "text": "Alveolar walls and their capillaries are destroyed faster than they are repaired, and small alveoli merge into large spaces.", "why": "Unopposed enzymes digest the walls, and each lost wall takes its capillaries with it." },
+        { "id": "recoil", "label": "Recoil and support lost", "text": "Elastic recoil weakens, and the small airways lose the outward pull that held them open.", "why": "Elastic fibers both push air out and act like guy ropes on the outside of the small airways, which have no cartilage." },
+        { "id": "collapse", "label": "Airways collapse", "text": "During each breath out, the pressure around the small airways squeezes them shut.", "why": "Without the outward pull, nothing resists the rising pressure around the airways as the lungs shrink." },
+        { "id": "trap", "label": "Air trapped", "text": "Air is trapped behind the closed airways: residual volume rises and the chest becomes barrel-shaped.", "why": "Air that cannot get out stays in the lungs, which become overinflated and flatten the diaphragm." }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          { "text": "Goblet cells multiply and mucus plugs the bronchi.", "why": "That is the mechanism of chronic bronchitis. Emphysema is a disease of the alveolar walls, and people with it cough up little mucus." },
+          { "text": "Scar tissue builds up in the alveolar walls, thickening them and making the whole lung stiffer.", "why": "Scarring is fibrosis, which lowers compliance. Emphysema destroys walls and raises compliance." },
+          { "text": "Airway smooth muscle contracts in response to histamine.", "why": "Bronchoconstriction driven by mast cells is the mechanism of asthma, which largely reverses. The damage in emphysema does not." }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The lungs become stiffer, and elastic recoil strengthens.",
+        "why": "Losing elastic fibers makes the lungs floppier: compliance rises and recoil weakens. That is why breathing out, not in, becomes the hard part."
+      },
+      "summary": "Inflammation, unchecked enzymes, lost walls: less surface for diffusion, and less elastic support for the airways, which collapse and trap air on every breath out. Pursed-lip breathing keeps the airway pressure up and holds them open a little longer."
     }
   ]
 }

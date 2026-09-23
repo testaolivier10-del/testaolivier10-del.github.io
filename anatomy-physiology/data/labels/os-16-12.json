@@ -12,7 +12,13 @@
         1,
         2
       ],
-      "concept": "corticospinal"
+      "concept": "corticospinal",
+      "box": [
+        764,
+        656,
+        330,
+        33
+      ]
     },
     {
       "id": "anterior-corticospinal-tract",
@@ -25,7 +31,13 @@
         3,
         4
       ],
-      "concept": "corticospinal"
+      "concept": "corticospinal",
+      "box": [
+        762,
+        752,
+        340,
+        32
+      ]
     },
     {
       "id": "dorsal-column",
@@ -39,7 +51,13 @@
         5,
         6
       ],
-      "concept": "ascending-pathways"
+      "concept": "ascending-pathways",
+      "box": [
+        764,
+        857,
+        193,
+        27
+      ]
     },
     {
       "id": "spinothalamic-tracts",
@@ -52,7 +70,13 @@
       "lines": [
         7
       ],
-      "concept": "ascending-pathways"
+      "concept": "ascending-pathways",
+      "box": [
+        763,
+        957,
+        270,
+        34
+      ]
     }
   ]
 }

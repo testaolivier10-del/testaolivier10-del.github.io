@@ -1,0 +1,47 @@
+{
+  "sensation-perception": {
+    "def": "Sensation is the detection of a stimulus and the delivery of signals about it into the CNS, whether or not you are aware of it. Perception is the conscious awareness and interpretation of a sensation, produced by the cerebral cortex.",
+    "roots": [["sens-", "feel"], ["percept-", "take in, grasp"]],
+    "say": ""
+  },
+  "receptor-types-stimulus": {
+    "def": "Sensory receptors grouped by the stimulus they respond to: mechanoreceptors (touch, pressure, vibration, stretch), thermoreceptors (temperature), nociceptors (stimuli that damage tissue), chemoreceptors (particular chemicals), the photoreceptor (light) and osmoreceptors (the solute concentration of body fluids).",
+    "roots": [["mechano-", "machine, physical force"], ["thermo-", "heat"], ["noci-", "harm"], ["chemo-", "chemical"], ["photo-", "light"], ["osmo-", "push, osmotic"]],
+    "say": "NOH-see-sep-ter"
+  },
+  "receptor-types-location": {
+    "def": "Sensory receptors grouped by where their stimulus comes from: exteroceptors (outside the body), interoceptors (internal organs and vessels) and proprioceptors (muscles, tendons and joints). Proprioception is the sense of body position; kinesthesia is the sense of movement.",
+    "roots": [["extero-", "outside"], ["intero-", "inside"], ["proprio-", "one's own"], ["kine-", "movement"], ["-esthesia", "sensation"]],
+    "say": "proh-pree-oh-SEP-shun, kin-es-THEE-zhuh"
+  },
+  "receptor-potential": {
+    "def": "The local, graded change in membrane potential produced when a stimulus opens ion channels in a sensory receptor, a step called sensory transduction. In the ending of a sensory neuron it is also called a generator potential; if it reaches threshold at the trigger zone, action potentials fire, faster for a stronger stimulus.",
+    "roots": [["trans-", "across"], ["duc-", "lead"]],
+    "say": ""
+  },
+  "adaptation": {
+    "def": "A fall in a sensory receptor's response to a stimulus that stays constant. Tonic (slowly adapting) sensory receptors, such as nociceptors and proprioceptors, keep firing; phasic (rapidly adapting) ones, such as lamellated corpuscles, fire at the start and end of a stimulus and signal change.",
+    "roots": [["ton-", "tension, steady"], ["phas-", "appearance, phase"]],
+    "say": ""
+  },
+  "ascending-pathways": {
+    "def": "Chains of neurons that carry sensory signals up the spinal cord and brainstem. Conscious pathways use a first-order neuron (sensory receptor to CNS), a second-order neuron (crosses the midline, a decussation, and rises to the thalamus) and a third-order neuron (thalamus to cortex). The dorsal column system (fasciculus gracilis and cuneatus, then the medial lemniscus) carries fine touch, vibration and proprioception and crosses in the medulla; the spinothalamic tract carries pain and temperature and crosses in the spinal cord; the spinocerebellar tracts carry unconscious proprioception to the cerebellum.",
+    "roots": [["decuss-", "cross like an X"], ["lemniscus", "ribbon"], ["gracil-", "slender"], ["cune-", "wedge"]],
+    "say": "dee-kuh-SAY-shun, lem-NIS-kus"
+  },
+  "pain-referred": {
+    "def": "Nociception is the detection and signaling of tissue damage; pain is the unpleasant experience the brain produces from it. Referred pain is pain from an internal organ felt in skin or muscle, because both send axons into the same spinal segments and converge on shared second-order neurons.",
+    "roots": [["noci-", "harm"]],
+    "say": ""
+  },
+  "general-special-senses": {
+    "def": "The general senses use sensory receptors spread through the body: somatosensation (touch, pressure, vibration, temperature, pain and position) and the visceral senses from internal organs. The special senses (smell, taste, vision, hearing and balance) have sensory receptors gathered in organs in the head. A sensory modality is one kind of sense; a submodality is a variety within it.",
+    "roots": [["somat-", "body"], ["viscer-", "internal organ"]],
+    "say": ""
+  },
+  "face-sensory-pathway": {
+    "def": "The route for touch, pain and temperature from the face: first-order neurons in the trigeminal ganglion, second-order neurons in trigeminal nuclei of the pons and medulla whose axons cross and rise to the thalamus, and third-order neurons to the face area of the postcentral gyrus.",
+    "roots": [["tri-", "three"], ["gemin-", "twin"]],
+    "say": ""
+  }
+}

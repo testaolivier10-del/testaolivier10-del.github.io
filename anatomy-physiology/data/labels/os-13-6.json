@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        444,
+        1,
+        95,
+        20
+      ]
     },
     {
       "id": "corpus-callosum",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        0,
+        15,
+        148,
+        23
+      ]
     },
     {
       "id": "longitudinal-fissure",
@@ -33,7 +45,13 @@
         2,
         3
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        952,
+        19,
+        112,
+        40
+      ]
     },
     {
       "id": "right-hemisphere",
@@ -45,7 +63,13 @@
       "lines": [
         4
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        482,
+        57,
+        156,
+        23
+      ]
     },
     {
       "id": "left-hemisphere",
@@ -58,7 +82,13 @@
         5,
         7
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        996,
+        312,
+        106,
+        45
+      ]
     },
     {
       "id": "cerebral-cortex",
@@ -70,7 +100,13 @@
       "lines": [
         6
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        0,
+        328,
+        139,
+        19
+      ]
     }
   ]
 }

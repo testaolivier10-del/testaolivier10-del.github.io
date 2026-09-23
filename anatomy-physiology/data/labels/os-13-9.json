@@ -11,7 +11,13 @@
       "lines": [
         3
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        476,
+        152,
+        158,
+        21
+      ]
     },
     {
       "id": "striatum",
@@ -23,7 +29,13 @@
       "lines": [
         4
       ],
-      "concept": "basal-nuclei"
+      "concept": "basal-nuclei",
+      "box": [
+        10,
+        190,
+        103,
+        22
+      ]
     },
     {
       "id": "caudate",
@@ -35,7 +47,13 @@
       "lines": [
         5
       ],
-      "concept": "basal-nuclei"
+      "concept": "basal-nuclei",
+      "box": [
+        22,
+        215,
+        91,
+        22
+      ]
     },
     {
       "id": "putamen",
@@ -46,7 +64,13 @@
       "lines": [
         6
       ],
-      "concept": "basal-nuclei"
+      "concept": "basal-nuclei",
+      "box": [
+        23,
+        245,
+        94,
+        21
+      ]
     },
     {
       "id": "corpus-callosum",
@@ -58,7 +82,13 @@
         7,
         8
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        595,
+        269,
+        91,
+        46
+      ]
     },
     {
       "id": "globus-pallidus",
@@ -69,7 +99,13 @@
       "lines": [
         9
       ],
-      "concept": "basal-nuclei"
+      "concept": "basal-nuclei",
+      "box": [
+        11,
+        475,
+        153,
+        26
+      ]
     }
   ]
 }

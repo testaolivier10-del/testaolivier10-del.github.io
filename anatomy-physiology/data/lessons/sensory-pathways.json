@@ -1,0 +1,49 @@
+{
+  "topic": "sensory-pathways",
+  "hook": "<p>Daniel, 29, shows his doctor painless burn blisters on both hands. He has picked up hot pans without noticing. Yet with his eyes closed he can name a coin placed in his palm and feel a buzzing tuning fork on his knuckles. Touch works; pain and temperature do not, across both shoulders and arms. A scan finds a fluid-filled cavity in the center of his neck's spinal cord. The reason only some sensations vanished lies in where each sensory pathway crosses the midline.</p>",
+  "prereq": [
+    {
+      "q": "How does a graded potential differ from an action potential?",
+      "options": ["It is all-or-none and travels without fading", "Its size varies with the stimulus and it fades with distance", "It occurs only in muscle cells"],
+      "correct": 1,
+      "why": "A graded potential is a local change whose size depends on the stimulus strength, and it fades as it spreads. An action potential is all-or-none and is regenerated along the axon without fading.",
+      "review": "action-potential-basics"
+    },
+    {
+      "q": "Which structure relays almost all sensory signals on their way to the cerebral cortex?",
+      "options": ["Thalamus", "Cerebellum", "Hypothalamus"],
+      "correct": 0,
+      "why": "The thalamus is the relay and filter for sensory input to the cortex. The cerebellum coordinates movement, and the hypothalamus controls autonomic and endocrine functions.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "Where is the primary somatosensory cortex?",
+      "options": ["In the precentral gyrus of the frontal lobe", "In the occipital lobe", "In the postcentral gyrus of the parietal lobe"],
+      "correct": 2,
+      "why": "The primary somatosensory cortex lies in the postcentral gyrus, just behind the central sulcus. The precentral gyrus holds the primary motor cortex, and the occipital lobe holds the primary visual cortex.",
+      "review": "higher-functions"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-14-19",
+    "caption": "The two main ascending pathways. Hide the labels and name the tracts, the three neurons and the relay in each, then say where each pathway crosses."
+  },
+  "chain": [
+    { "cause": "You step on a tack with your right foot.", "effect": "Nociceptors in the skin open ion channels, and a graded receptor potential depolarizes their endings to threshold." },
+    { "cause": "Action potentials fire in the first-order neurons, whose cell bodies sit in a lumbar or sacral dorsal root ganglion.", "effect": "The signal enters the right dorsal horn, where the first-order axon synapses on a second-order neuron." },
+    { "cause": "The second-order axon crosses the midline within a segment or two.", "effect": "It climbs in the left spinothalamic tract, through the brainstem, to the left thalamus." },
+    { "cause": "A third-order neuron in the left thalamus fires.", "effect": "Its axon reaches the foot area of the left primary somatosensory cortex, near the top of the postcentral gyrus." },
+    { "cause": "The left cortex receives the signal on a line that always reports the right foot.", "effect": "You perceive a sharp pain in your right foot, even though every neuron above the cord's crossing point lies on the left." }
+  ],
+  "misconception": {
+    "wrong": "All sensory signals from one side of the body cross to the other side at the same place, so damage to one side of the spinal cord removes all feeling on one side.",
+    "right": "The two main pathways cross at different levels. Pain and temperature axons (spinothalamic tract) cross in the spinal cord, within a segment or two of where they enter. Fine touch, vibration and position axons (dorsal column–medial lemniscus) climb on the same side and cross in the medulla. So damage to the left half of the cord removes fine touch and position on the left but pain and temperature on the right."
+  },
+  "check": ["anp-sensory-pathways-2", "anp-sensory-pathways-5", "anp-sensory-pathways-8", "anp-sensory-pathways-11", "anp-sensory-pathways-13", "anp-sensory-pathways-16", "anp-sensory-pathways-19", "anp-sensory-pathways-22"],
+  "summary": "<p>Sensation is the detection of a stimulus and the delivery of its signal into the CNS; perception is the conscious interpretation of it in the cortex. Sensory receptors are classed by stimulus (mechanoreceptor, thermoreceptor, nociceptor, chemoreceptor, photoreceptor, osmoreceptor), by location (exteroceptors, interoceptors, proprioceptors) and by structure. Transduction opens ion channels and produces a graded receptor potential; stronger stimuli raise the firing frequency and recruit more neurons. Tonic sensory receptors keep firing during a steady stimulus; phasic ones adapt quickly and signal change. Conscious pathways use three neurons: first-order (ganglion to CNS), second-order (crosses the midline, up to the thalamus) and third-order (thalamus to the postcentral gyrus). The dorsal column–medial lemniscus pathway (fine touch, vibration, proprioception) crosses in the medulla; the spinothalamic tract (pain, temperature, crude touch) crosses in the spinal cord. The face uses the trigeminal pathway. Nociception is the signal; pain is the perception, and visceral pain can be referred to skin that shares its spinal segments.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" },
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies (referred pain)" },
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" }
+  ]
+}

@@ -12,7 +12,13 @@
         0,
         1
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        0,
+        66,
+        145,
+        41
+      ]
     },
     {
       "id": "arachnoid-granulation",
@@ -25,7 +31,13 @@
       "lines": [
         2
       ],
-      "concept": "csf"
+      "concept": "csf",
+      "box": [
+        874,
+        116,
+        193,
+        24
+      ]
     },
     {
       "id": "subarachnoid-space",
@@ -36,7 +48,13 @@
       "lines": [
         3
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        875,
+        162,
+        182,
+        24
+      ]
     },
     {
       "id": "dura-mater",
@@ -50,7 +68,13 @@
       "lines": [
         4
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        875,
+        208,
+        192,
+        24
+      ]
     },
     {
       "id": "choroid-plexus",
@@ -61,7 +85,13 @@
       "lines": [
         5
       ],
-      "concept": "csf"
+      "concept": "csf",
+      "box": [
+        0,
+        222,
+        135,
+        23
+      ]
     },
     {
       "id": "lateral-ventricle",
@@ -73,7 +103,13 @@
       "lines": [
         6
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        875,
+        279,
+        186,
+        23
+      ]
     },
     {
       "id": "interventricular-foramen",
@@ -86,7 +122,13 @@
         7,
         8
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        0,
+        311,
+        135,
+        40
+      ]
     },
     {
       "id": "third-ventricle",
@@ -98,7 +140,13 @@
       "lines": [
         9
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        0,
+        378,
+        128,
+        19
+      ]
     },
     {
       "id": "cerebral-aqueduct",
@@ -111,7 +159,13 @@
       "lines": [
         10
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        308,
+        452,
+        166,
+        24
+      ]
     },
     {
       "id": "median-aperture",
@@ -123,7 +177,13 @@
       "lines": [
         11
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        802,
+        503,
+        150,
+        23
+      ]
     },
     {
       "id": "lateral-aperture",
@@ -136,7 +196,13 @@
       "lines": [
         12
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        308,
+        510,
+        145,
+        23
+      ]
     },
     {
       "id": "fourth-ventricle",
@@ -148,7 +214,13 @@
       "lines": [
         13
       ],
-      "concept": "ventricles-brain"
+      "concept": "ventricles-brain",
+      "box": [
+        309,
+        568,
+        140,
+        19
+      ]
     },
     {
       "id": "central-canal",
@@ -159,7 +231,13 @@
       "lines": [
         14
       ],
-      "concept": "spinal-cord-section"
+      "concept": "spinal-cord-section",
+      "box": [
+        783,
+        600,
+        122,
+        19
+      ]
     }
   ]
 }

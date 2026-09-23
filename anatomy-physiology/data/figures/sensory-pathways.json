@@ -1,0 +1,18 @@
+{
+  "os-14-19": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "14.19",
+      "section": "14.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/315269b9a0a9e79e9eea6a4014d77a681c37af24",
+      "page": "14-2-central-processing"
+    },
+    "alt": "Two side-by-side drawings of a pathway from the right side of the body to the brain, each with a slice of spinal cord at the bottom, slices of medulla and midbrain above it, and a slice of cerebral hemisphere at the top. Left: a pink sensory neuron enters the back of the cord through a ganglion and climbs on the same side in a bundle at the back of the cord to the medulla; a second, teal neuron crosses there and rises to a relay in the thalamus; a third, purple neuron runs to the gyrus behind the central sulcus. Right: the pink neuron ends as soon as it enters the cord, the teal neuron crosses at once and climbs in a bundle on the opposite side of the cord to the thalamus, and a purple neuron again runs to the cortex.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 14.19",
+    "labels": [],
+    "w": 2230,
+    "h": 2290,
+    "ext": "jpg"
+  }
+}

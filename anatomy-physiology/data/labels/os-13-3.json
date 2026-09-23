@@ -12,7 +12,13 @@
         10,
         13
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        284,
+        139,
+        136,
+        42
+      ]
     },
     {
       "id": "mesencephalon-primary",
@@ -25,7 +31,13 @@
         15,
         18
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        284,
+        188,
+        133,
+        43
+      ]
     },
     {
       "id": "rhombencephalon",
@@ -38,7 +50,13 @@
         22,
         25
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        284,
+        263,
+        156,
+        43
+      ]
     },
     {
       "id": "telencephalon",
@@ -49,7 +67,13 @@
       "lines": [
         8
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        496,
+        118,
+        122,
+        22
+      ]
     },
     {
       "id": "diencephalon",
@@ -60,7 +84,13 @@
       "lines": [
         12
       ],
-      "concept": "diencephalon"
+      "concept": "diencephalon",
+      "box": [
+        497,
+        154,
+        116,
+        22
+      ]
     },
     {
       "id": "mesencephalon",
@@ -71,7 +101,13 @@
       "lines": [
         16
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        496,
+        188,
+        133,
+        22
+      ]
     },
     {
       "id": "metencephalon",
@@ -82,7 +118,13 @@
       "lines": [
         20
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        496,
+        243,
+        129,
+        22
+      ]
     },
     {
       "id": "myelencephalon",
@@ -93,7 +135,13 @@
       "lines": [
         23
       ],
-      "concept": "brain-development"
+      "concept": "brain-development",
+      "box": [
+        496,
+        281,
+        137,
+        22
+      ]
     },
     {
       "id": "cerebrum",
@@ -104,7 +152,13 @@
       "lines": [
         3
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        795,
+        57,
+        89,
+        19
+      ]
     },
     {
       "id": "eye-cup",
@@ -116,7 +170,13 @@
       "lines": [
         6
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        796,
+        93,
+        73,
+        22
+      ]
     },
     {
       "id": "thalamus-hypothalamus-epithalamus",
@@ -131,7 +191,13 @@
         11,
         14
       ],
-      "concept": "diencephalon"
+      "concept": "diencephalon",
+      "box": [
+        795,
+        118,
+        138,
+        63
+      ]
     },
     {
       "id": "midbrain",
@@ -143,7 +209,13 @@
       "lines": [
         17
       ],
-      "concept": "brainstem"
+      "concept": "brainstem",
+      "box": [
+        796,
+        188,
+        77,
+        19
+      ]
     },
     {
       "id": "pons",
@@ -154,7 +226,13 @@
       "lines": [
         19
       ],
-      "concept": "brainstem"
+      "concept": "brainstem",
+      "box": [
+        796,
+        220,
+        50,
+        18
+      ]
     },
     {
       "id": "cerebellum",
@@ -165,7 +243,13 @@
       "lines": [
         21
       ],
-      "concept": "cerebellum"
+      "concept": "cerebellum",
+      "box": [
+        796,
+        249,
+        100,
+        19
+      ]
     },
     {
       "id": "medulla-oblongata",
@@ -177,7 +261,13 @@
       "lines": [
         24
       ],
-      "concept": "brainstem"
+      "concept": "brainstem",
+      "box": [
+        796,
+        281,
+        152,
+        22
+      ]
     }
   ]
 }

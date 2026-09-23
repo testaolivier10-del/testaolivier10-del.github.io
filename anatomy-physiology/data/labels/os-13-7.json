@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        483,
+        2,
+        144,
+        21
+      ]
     },
     {
       "id": "precentral-gyrus",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": "functional-areas"
+      "concept": "functional-areas",
+      "box": [
+        127,
+        49,
+        163,
+        25
+      ]
     },
     {
       "id": "postcentral-gyrus",
@@ -32,7 +44,13 @@
       "lines": [
         2
       ],
-      "concept": "functional-areas"
+      "concept": "functional-areas",
+      "box": [
+        484,
+        49,
+        171,
+        25
+      ]
     },
     {
       "id": "frontal-lobe",
@@ -43,7 +61,13 @@
       "lines": [
         3
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        0,
+        93,
+        119,
+        21
+      ]
     },
     {
       "id": "parietal-lobe",
@@ -54,7 +78,13 @@
       "lines": [
         4
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        484,
+        97,
+        126,
+        21
+      ]
     },
     {
       "id": "parieto-occipital-sulcus",
@@ -67,7 +97,13 @@
         5,
         6
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        577,
+        152,
+        158,
+        46
+      ]
     },
     {
       "id": "lateral-sulcus",
@@ -80,7 +116,13 @@
       "lines": [
         7
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        578,
+        227,
+        140,
+        21
+      ]
     },
     {
       "id": "occipital-lobe",
@@ -91,7 +133,13 @@
       "lines": [
         8
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        577,
+        293,
+        137,
+        25
+      ]
     },
     {
       "id": "temporal-lobe",
@@ -102,7 +150,13 @@
       "lines": [
         9
       ],
-      "concept": "cerebral-lobes"
+      "concept": "cerebral-lobes",
+      "box": [
+        577,
+        374,
+        143,
+        25
+      ]
     }
   ]
 }

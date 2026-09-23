@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "blood-vessel-basics"
+      "concept": "blood-vessel-basics",
+      "box": [
+        210,
+        4,
+        58,
+        19
+      ]
     },
     {
       "id": "superior-sagittal-sinus",
@@ -23,7 +29,13 @@
       "lines": [
         1
       ],
-      "concept": "dural-sinuses"
+      "concept": "dural-sinuses",
+      "box": [
+        549,
+        4,
+        196,
+        23
+      ]
     },
     {
       "id": "bone",
@@ -36,7 +48,13 @@
       "lines": [
         2
       ],
-      "concept": "cranial-bones"
+      "concept": "cranial-bones",
+      "box": [
+        780,
+        89,
+        55,
+        20
+      ]
     },
     {
       "id": "dura-mater",
@@ -48,7 +66,13 @@
       "lines": [
         3
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        780,
+        149,
+        105,
+        20
+      ]
     },
     {
       "id": "arachnoid-mater",
@@ -60,7 +84,13 @@
       "lines": [
         4
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        0,
+        154,
+        151,
+        20
+      ]
     },
     {
       "id": "subdural-space",
@@ -71,7 +101,13 @@
       "lines": [
         5
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        779,
+        181,
+        142,
+        24
+      ]
     },
     {
       "id": "subarachnoid-space",
@@ -83,7 +119,13 @@
         6,
         7
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        0,
+        203,
+        128,
+        44
+      ]
     },
     {
       "id": "arachnoid-granulation",
@@ -98,7 +140,13 @@
         8,
         9
       ],
-      "concept": "csf"
+      "concept": "csf",
+      "box": [
+        778,
+        237,
+        136,
+        44
+      ]
     },
     {
       "id": "pia-mater",
@@ -110,7 +158,13 @@
       "lines": [
         10
       ],
-      "concept": "meninges"
+      "concept": "meninges",
+      "box": [
+        2,
+        265,
+        92,
+        20
+      ]
     },
     {
       "id": "arachnoid-trabeculae",
@@ -122,7 +176,13 @@
       "lines": [
         11
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        0,
+        301,
+        190,
+        19
+      ]
     },
     {
       "id": "longitudinal-fissure",
@@ -133,7 +193,13 @@
       "lines": [
         12
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        780,
+        305,
+        171,
+        23
+      ]
     },
     {
       "id": "cerebral-cortex",
@@ -145,7 +211,13 @@
       "lines": [
         13
       ],
-      "concept": "cerebrum"
+      "concept": "cerebrum",
+      "box": [
+        779,
+        344,
+        140,
+        19
+      ]
     },
     {
       "id": "cerebral-vein",
@@ -156,7 +228,13 @@
       "lines": [
         14
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        1,
+        355,
+        122,
+        20
+      ]
     }
   ]
 }
