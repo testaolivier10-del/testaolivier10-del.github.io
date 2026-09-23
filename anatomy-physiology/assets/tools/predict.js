@@ -119,7 +119,7 @@
             ['5', '8', 'all'].map(function(v){ return '<option value="' + v + '"' + (v === filters.length ? ' selected' : '') + '>' + (v === 'all' ? 'Every match' : v + ' scenarios') + '</option>'; }).join('') + '</select></label>' +
         '</div>' +
         '<div class="pc-startrow"><button type="button" class="btn-press" id="pc-start"' + (list.length ? '' : ' disabled') + '>' + (list.length ? 'Start ' + len + ' scenario' + (len === 1 ? '' : 's') : 'No scenarios match') + '</button>' +
-          '<span class="anp-small" aria-live="polite">' + list.length + ' match' + (list.length === 1 ? 'es' : '') + ' your filters. Easier levels come first.</span></div>' +
+          '<span class="anp-small" aria-live="polite">' + list.length + (list.length === 1 ? ' scenario matches' : ' scenarios match') + ' your filters. Easier levels come first.</span></div>' +
       '</section>' +
       '<section class="pc-panel pc-ladder" aria-labelledby="pc-ladder-h">' +
         '<h2 id="pc-ladder-h" class="pc-h3">The four levels</h2>' +

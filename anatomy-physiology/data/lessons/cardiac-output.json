@@ -1,0 +1,48 @@
+{
+  "topic": "cardiac-output",
+  "hook": "<p>Mrs. Haddad, 81, is brought in dizzy and pale. Her pulse is 36 beats per minute. Her heart muscle is healthy and each beat ejects a normal volume, yet she is barely perfusing her brain. The fix is not to make her heart squeeze harder: it is to make it beat faster. To see why, you need the equation that ties heart rate and stroke volume to the blood your heart delivers each minute.</p>",
+  "prereq": [
+    {
+      "q": "A ventricle's end-diastolic volume is 120 mL and its end-systolic volume is 50 mL. What is its stroke volume?",
+      "options": ["170 mL", "70 mL", "2.4 mL"],
+      "correct": 1,
+      "why": "Stroke volume is the volume ejected in one beat: EDV − ESV = 120 − 50 = 70 mL.",
+      "review": "cardiac-cycle"
+    },
+    {
+      "q": "What sets the rate at which the SA node fires?",
+      "options": ["How fast its pacemaker potential climbs to threshold", "How strongly the ventricles contract", "The volume of blood in the atria"],
+      "correct": 0,
+      "why": "SA node cells drift up to threshold on their own. The steeper that pacemaker potential, the sooner each action potential fires and the faster the heart rate.",
+      "review": "conduction-system"
+    },
+    {
+      "q": "Which neurotransmitter do parasympathetic fibers of the vagus nerve release onto the heart?",
+      "options": ["Norepinephrine", "Epinephrine", "Acetylcholine"],
+      "correct": 2,
+      "why": "Parasympathetic postganglionic fibers are cholinergic: they release acetylcholine, which acts on muscarinic receptor proteins.",
+      "review": "ans-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-19-32",
+    "caption": "Autonomic nerves to the heart. Hide the labels and name the nerve that slows the heart and the nerves that speed it."
+  },
+  "chain": [
+    { "cause": "More blood returns to the heart through the veins (greater venous return).", "effect": "The ventricle fills more during diastole, so end-diastolic volume rises and its muscle is stretched further (greater preload)." },
+    { "cause": "Stretch moves the cardiac sarcomeres toward optimal length and makes troponin more sensitive to calcium.", "effect": "The same calcium release switches on more cross-bridges, so the next contraction is stronger." },
+    { "cause": "The stronger contraction ejects more of the blood in the ventricle.", "effect": "Stroke volume rises: this is the Frank–Starling mechanism." },
+    { "cause": "Stroke volume has risen while heart rate is unchanged.", "effect": "Cardiac output, HR × SV, rises, and the extra blood reaches the other ventricle, which fills more and matches it within a few beats." }
+  ],
+  "misconception": {
+    "wrong": "A faster heart rate always increases cardiac output.",
+    "right": "Cardiac output is heart rate times stroke volume, and faster rates shorten diastole most. At very high rates the ventricles do not have time to fill, so stroke volume falls further than heart rate rises. A heart beating 220 times a minute can pump less than one beating 180 times a minute."
+  },
+  "check": ["anp-cardiac-output-1", "anp-cardiac-output-3", "anp-cardiac-output-6", "anp-cardiac-output-8", "anp-cardiac-output-10", "anp-cardiac-output-13", "anp-cardiac-output-15", "anp-cardiac-output-21"],
+  "summary": "<p>Cardiac output is the volume one ventricle pumps each minute: CO = HR × SV, about 5 L/min at rest. Stroke volume is set by preload, the stretch at the end of filling, which depends on venous return and filling time; by contractility, the strength of contraction at a given stretch, raised by sympathetic stimulation through beta-1 receptor proteins and calcium; and by afterload, the pressure the ventricle must overcome to eject. Through the Frank–Starling mechanism, more filling produces a stronger contraction, which keeps the two ventricles matched. Heart rate is set by the cardiovascular center in the medulla oblongata: the cardioaccelerator center speeds the SA node through sympathetic nerves and the cardiac plexus, and the cardioinhibitory center slows it through the vagus nerves. Very fast rates cut filling time and can lower output. Cardiac reserve is the gap between highest and resting cardiac output.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology (perfusion)" }
+  ]
+}

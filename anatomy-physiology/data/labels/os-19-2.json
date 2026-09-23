@@ -12,13 +12,7 @@
       "lines": [
         0
       ],
-      "concept": "ribs",
-      "box": [
-        1022,
-        57,
-        63,
-        20
-      ]
+      "concept": "ribs"
     },
     {
       "id": "trachea",
@@ -30,13 +24,7 @@
       "lines": [
         1
       ],
-      "concept": "major-organs",
-      "box": [
-        640,
-        85,
-        82,
-        21
-      ]
+      "concept": "major-organs"
     },
     {
       "id": "aortic-arch",
@@ -50,13 +38,7 @@
         3,
         6
       ],
-      "concept": "aorta-parts",
-      "box": [
-        1021,
-        131,
-        61,
-        41
-      ]
+      "concept": "aorta-parts"
     },
     {
       "id": "thymus",
@@ -68,13 +50,7 @@
       "lines": [
         4
       ],
-      "concept": "major-organs",
-      "box": [
-        640,
-        139,
-        81,
-        23
-      ]
+      "concept": "major-organs"
     },
     {
       "id": "base-of-heart",
@@ -88,13 +64,7 @@
       "lines": [
         9
       ],
-      "concept": "heart-location",
-      "box": [
-        1022,
-        189,
-        55,
-        20
-      ]
+      "concept": "heart-location"
     },
     {
       "id": "diaphragm-sagittal",
@@ -105,13 +75,7 @@
       "lines": [
         11
       ],
-      "concept": "diaphragm",
-      "box": [
-        642,
-        266,
-        103,
-        24
-      ]
+      "concept": "diaphragm"
     },
     {
       "id": "thoracic-aorta",
@@ -120,16 +84,13 @@
         "thoracic aorta",
         "descending thoracic aorta"
       ],
-      "lines": [
-        12
-      ],
-      "concept": "aorta-parts",
       "box": [
-        1021,
-        268,
-        56,
-        19
-      ]
+        1020,
+        247,
+        80,
+        41
+      ],
+      "concept": "aorta-parts"
     },
     {
       "id": "inferior-vena-cava",
@@ -141,13 +102,7 @@
       "lines": [
         13
       ],
-      "concept": "great-vessels",
-      "box": [
-        680,
-        306,
-        162,
-        20
-      ]
+      "concept": "great-vessels"
     },
     {
       "id": "esophagus",
@@ -159,13 +114,7 @@
       "lines": [
         14
       ],
-      "concept": "major-organs",
-      "box": [
-        754,
-        339,
-        107,
-        23
-      ]
+      "concept": "major-organs"
     },
     {
       "id": "mediastinum",
@@ -176,13 +125,7 @@
       "lines": [
         16
       ],
-      "concept": "mediastinum",
-      "box": [
-        740,
-        438,
-        118,
-        20
-      ]
+      "concept": "mediastinum"
     },
     {
       "id": "arch-of-aorta",
@@ -195,13 +138,7 @@
       "lines": [
         17
       ],
-      "concept": "aorta-parts",
-      "box": [
-        739,
-        504,
-        121,
-        21
-      ]
+      "concept": "aorta-parts"
     },
     {
       "id": "superior-vena-cava",
@@ -213,13 +150,7 @@
       "lines": [
         18
       ],
-      "concept": "great-vessels",
-      "box": [
-        0,
-        518,
-        172,
-        24
-      ]
+      "concept": "great-vessels"
     },
     {
       "id": "pulmonary-trunk",
@@ -230,13 +161,7 @@
       "lines": [
         19
       ],
-      "concept": "great-vessels",
-      "box": [
-        740,
-        562,
-        150,
-        23
-      ]
+      "concept": "great-vessels"
     },
     {
       "id": "right-lung",
@@ -248,13 +173,7 @@
       "lines": [
         20
       ],
-      "concept": "major-organs",
-      "box": [
-        0,
-        565,
-        93,
-        24
-      ]
+      "concept": "major-organs"
     },
     {
       "id": "left-auricle",
@@ -268,13 +187,7 @@
       "lines": [
         21
       ],
-      "concept": "chambers",
-      "box": [
-        740,
-        609,
-        104,
-        20
-      ]
+      "concept": "chambers"
     },
     {
       "id": "right-auricle",
@@ -288,13 +201,7 @@
       "lines": [
         22
       ],
-      "concept": "chambers",
-      "box": [
-        0,
-        613,
-        113,
-        24
-      ]
+      "concept": "chambers"
     },
     {
       "id": "left-lung",
@@ -306,13 +213,7 @@
       "lines": [
         23
       ],
-      "concept": "major-organs",
-      "box": [
-        740,
-        658,
-        84,
-        24
-      ]
+      "concept": "major-organs"
     },
     {
       "id": "right-atrium",
@@ -324,13 +225,7 @@
       "lines": [
         24
       ],
-      "concept": "chambers",
-      "box": [
-        0,
-        660,
-        110,
-        24
-      ]
+      "concept": "chambers"
     },
     {
       "id": "right-ventricle",
@@ -342,13 +237,7 @@
       "lines": [
         25
       ],
-      "concept": "chambers",
-      "box": [
-        0,
-        707,
-        128,
-        24
-      ]
+      "concept": "chambers"
     },
     {
       "id": "left-ventricle",
@@ -360,13 +249,7 @@
       "lines": [
         26
       ],
-      "concept": "chambers",
-      "box": [
-        740,
-        711,
-        119,
-        20
-      ]
+      "concept": "chambers"
     },
     {
       "id": "ribs",
@@ -380,13 +263,7 @@
       "lines": [
         27
       ],
-      "concept": "ribs",
-      "box": [
-        0,
-        753,
-        89,
-        24
-      ]
+      "concept": "ribs"
     },
     {
       "id": "pericardial-cavity",
@@ -397,13 +274,7 @@
       "lines": [
         28
       ],
-      "concept": "pericardial-cavity",
-      "box": [
-        740,
-        759,
-        155,
-        23
-      ]
+      "concept": "pericardial-cavity"
     },
     {
       "id": "apex-of-heart",
@@ -417,13 +288,7 @@
       "lines": [
         29
       ],
-      "concept": "heart-location",
-      "box": [
-        739,
-        806,
-        126,
-        23
-      ]
+      "concept": "heart-location"
     },
     {
       "id": "diaphragm",
@@ -434,13 +299,7 @@
       "lines": [
         30
       ],
-      "concept": "diaphragm",
-      "box": [
-        359,
-        893,
-        104,
-        24
-      ]
+      "concept": "diaphragm"
     },
     {
       "id": "parietal-pleura",
@@ -455,13 +314,7 @@
         31,
         33
       ],
-      "concept": "serous-membrane",
-      "box": [
-        242,
-        950,
-        144,
-        45
-      ]
+      "concept": "serous-membrane"
     },
     {
       "id": "parietal-pericardium",
@@ -477,13 +330,7 @@
         32,
         34
       ],
-      "concept": "pericardium",
-      "box": [
-        482,
-        950,
-        154,
-        45
-      ]
+      "concept": "pericardium"
     }
   ]
 }
