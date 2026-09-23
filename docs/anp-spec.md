@@ -1,6 +1,6 @@
 LEVLPREP: ANATOMY & PHYSIOLOGY COURSE SPEC
 
-Build a complete Anatomy & Physiology course for LevlPrep. Work in phases and stop for my review at every checkpoint marked STOP. Reuse the existing ochem course structure, page generators, templates, and shared systems (XP, streaks, daily goals, spaced review queue, flashcards, mastery tracking, account sync, offline support, "Report a problem" link) wherever possible so the site stays consistent. Commit to a branch, not main, and tell me the branch name at each checkpoint.
+Build a complete Anatomy & Physiology course for LevlPrep. Work in phases and stop for my review at every checkpoint marked STOP (see "Review and working mode" in section 18: after Phase 0, the only STOP is after the Phase 1 pilot). Reuse the existing ochem course structure, page generators, templates, and shared systems (XP, streaks, daily goals, spaced review queue, flashcards, mastery tracking, account sync, offline support, "Report a problem" link) wherever possible so the site stays consistent. Commit to a branch, not main, and tell me the branch name at each checkpoint.
 
 ==================================================
 1. GOAL
@@ -280,7 +280,13 @@ Every page and tool must pass the existing accessibility, console, weight, and b
 18. PHASES
 ==================================================
 
-Phase 0: Concept dependency map. Do not write any lessons.
+Review and working mode (updated 2026-09-23):
+* The only remaining review stop is after the Phase 1 pilot is built.
+* Everything else runs without stopping: the OpenStax coverage recheck, and all of Phases 2 and 3. Make the best judgment call, record every decision and its reasoning in the decisions log (section 19), and record contested science in docs/anp-needs-author.md.
+* When each chapter is done, give a short summary and continue without waiting for a reply.
+* Stop early only if something would break the site, would require deleting or rewriting work that has already been reviewed, or needs a choice between options with major consequences for the whole course that cannot be made with confidence.
+
+Phase 0: Concept dependency map. Do not write any lessons. (Done and reviewed, 2026-09-23.)
 * List every concept required by the coverage standard and, for each, the concepts it directly depends on.
 * Identify every circular dependency and recommend pull forward or preview box per section 7.
 * Produce a chapter and topic order with no concept before its prerequisites, each topic tagged A&P I or A&P II and with its core concepts.
@@ -288,16 +294,14 @@ Phase 0: Concept dependency map. Do not write any lessons.
 * Save the map as a data file in the repo for the build check.
 * Give me an estimate of how long Phases 1 to 3 will take based on the actual topic count.
 * Summarize for me: the proposed chapter order, the pulled forward foundation topics, every preview box and why, the planned tool content per chapter, and anything that could not be cleanly ordered.
-STOP for my review.
+STOP for my review. (Done.)
 
 Phase 1: Pilot. Build Foundations plus the full cardiovascular chapter using every standard in this spec: page template, writing standards, visual language, concept ordering and the build check, and working versions of every tool (lab practical, predict the change, feedback loop builder, pathway tracer, graph reader, calculators, word root builder, flashcards) with cardiovascular content. Include the question bank for these topics, the course home page, the cardiovascular chapter page, and the relevant dashboard pieces. Run the audit and all site checks. Show me what you built, anything flagged for human review, and any spec decisions you had to make. Mark the course as Beta on the site.
 STOP for my review.
 
-Phase 2: Respiratory and nervous systems, then the rest of A&P II, then the TEAS mode. Publish each system as it passes the audit.
-STOP for my review after respiratory and nervous, before continuing.
+Phase 2: Respiratory and nervous systems, then the rest of A&P II, then the TEAS mode. Publish each system as it passes the audit. No review stop: give a short summary after each chapter and continue.
 
-Phase 3: The rest of A&P I and both cumulative finals.
-STOP for my review.
+Phase 3: The rest of A&P I and both cumulative finals. No review stop: give a short summary after each chapter and continue.
 
 ==================================================
 19. DECISIONS LOG
@@ -320,4 +324,4 @@ Phase 0 follow-up review (2026-09-23):
 10. Apocrine sweat glands: keep the standard name, say it is historical (they secrete mainly by exocytosis), use the mammary gland as the apocrine example, and add a "For your exam" note. Pending instructor review.
 11. OpenStax coverage: rerun against the live OpenStax A&P 2e table of contents (all 169 sections' learning objectives and all 28 chapters' key terms) and the fixes applied to the dependency map.
 12. TEAS areas: confirmed by the project owner from ATI's official TEAS 7 content outline as 12 areas with 18 scored A&P questions. One question per area, with the remaining 6 rotating (section 11). Only the area names are used; the outline is not copied into the repo or the site.
-
+13. Review stops: after Phase 0, the only review stop is after the Phase 1 pilot. The OpenStax coverage recheck and Phases 2 and 3 run without stopping; every judgment call is logged here with its reasoning, contested science goes to docs/anp-needs-author.md, and each finished chapter gets a short summary without waiting for a reply. Early stops only for site breakage, rewriting already-reviewed work, or an undecidable course-wide choice (section 18).
