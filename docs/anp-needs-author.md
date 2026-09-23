@@ -82,9 +82,120 @@ review by a licensed A&P instructor.
   mammary gland's release of lipid droplets is the example of true apocrine secretion.
 - **For your exam:** many exams give apocrine sweat glands as the example of apocrine secretion.
 
+### osmosis-mechanism: how water crosses a membrane
+- **Status:** pending review. Applied in the Phase 1 pilot (spec decision 49).
+- **Where:** `diffusion-osmosis`, `passive-transport`, later `fluid-compartments`.
+- **Evidence-based position:** osmotic water flow through membrane pores (including aquaporins)
+  is pressure-driven bulk flow. The solute the membrane holds back lowers the water pressure in
+  the pores on its side, and water streams toward it. It is not water diffusing down its own
+  concentration gradient, and not solute "binding" water (Kramer & Myers, Am J Phys 2012).
+  "Water follows solute" is taught as the working rule.
+- **For your exam:** many textbooks and exams define osmosis as the diffusion of water from
+  higher to lower water concentration. It predicts the same direction.
+
+### atp-yield: ATP per glucose
+- **Status:** pending review.
+- **Where:** `cellular-respiration` (For your exam note; caption of OpenStax Figure 24.6, which
+  prints "about 36"), later `carbohydrate-metabolism`.
+- **Evidence-based position:** about 30–32 ATP per glucose: about 2.5 per NADH and 1.5 per
+  reduced FAD, counting the proton cost of exporting ATP from the mitochondrion (Hinkle 2005).
+- **For your exam:** many textbooks and exams still say 36 or 38.
+
+### glia-ratio: glial cells vs neurons
+- **Status:** pending review.
+- **Where:** `nervous-tissue-overview` (notes aside, question 17), later `neurons-glia`.
+- **Evidence-based position:** direct counts find about 86 billion neurons and a similar number
+  of other cells, most of them glia: near 1:1 overall, varying widely by region (Azevedo 2009;
+  von Bartheld 2016).
+- **For your exam:** many texts say glia outnumber neurons about 10 to 1.
+
+### cholesterol-source: where the body's cholesterol is made
+- **Status:** pending review.
+- **Where:** `biomolecules`, later `lipid-protein-metabolism`.
+- **Evidence-based position:** the body makes most of its cholesterol, and nearly every cell can
+  make some; in humans the liver makes roughly 10% of it, though the liver dominates uptake and
+  clearance (Dietschy & Turley 2002).
+- **For your exam:** many texts say "the liver makes most (about 80%) of your cholesterol". A
+  For your exam note has not been added yet; the reviewer should decide whether one is needed.
+
+### adult-neurogenesis: do adult human brains make new neurons?
+- **Status:** pending review.
+- **Where:** `nervous-tissue-overview` (going-further box), later `neurons-glia`.
+- **Position taught:** mature neurons do not divide; whether new neurons form in adult human
+  brains (for example in the hippocampus) is presented as unsettled, because recent studies
+  disagree.
+
+### exercise-acidosis-and-lactate
+- **Status:** pending review.
+- **Where:** `cellular-respiration`, later `muscle-metabolism`.
+- **Position taught:** lactate is a fuel, not a waste, and not the cause of soreness a day or two
+  later. The acid of hard exercise comes from the whole process of splitting glucose and
+  spending ATP; what causes fatigue is still debated (going-further box).
+- **For your exam:** many exams still say "lactic acid buildup causes fatigue and soreness".
+
+### long-term-blood-pressure: how much the kidneys set it
+- **Status:** pending review.
+- **Where:** `bp-long-term`.
+- **Position taught:** the kidneys set long-term blood pressure mainly through pressure
+  natriuresis (the Guyton model), hedged with "mainly"; how much long-term sympathetic activity
+  also contributes is debated.
+
+### internodal-pathways: specialized atrial routes
+- **Status:** pending review.
+- **Where:** `conduction-system`.
+- **Position taught:** preferred routes through atrial muscle, not insulated tracts like the
+  bundle branches; whether they exist as separate tracts is disputed.
+
+### facial-vein-valves: the "danger triangle"
+- **Status:** pending review (audit of topics 103–110 in progress).
+- **Where:** `systemic-veins`.
+- **Evidence-based position:** facial and ophthalmic veins do have valves (Zhang & Stringer
+  2010), although infection can still spread toward the cavernous sinus.
+- **For your exam:** many texts say facial veins are valveless.
+
 ## Open items
 
-None. Items that come up during Phase 1 go here.
+None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
+
+## Phase 1 pilot: judgment calls for instructor review
+
+Not contested science, but places where the writers chose a number, a simplification or a
+wording, listed so a licensed A&P instructor can check them. Each is taught as stated.
+
+- **Figures with printed labels that are wrong or misleading:** OpenStax Figure 3.17 prints
+  "Plasma membrane" on the peroxisome's own membrane (label covered for good, never quizzed;
+  spec decision 48; human peroxisomes also usually lack the crystalline core it draws). Figure
+  24.6 prints "about 36 ATP" (caption note). Figure 20.6 draws classic precapillary sphincters
+  (caption note; not a lab practical set). Figure 19.18 prints "Bachman's bundle". Figure 19.25
+  was not used (it calls third-degree block partial conduction).
+- **Labels covered by the ordering rule:** on the first heart lesson (Heart position and
+  coverings) the chamber and great-vessel labels are covered because those names are taught in
+  the next topic. The rule requires it; the reviewer may prefer a preview box instead. The
+  "Basal lamina" label is likewise covered on the cell-junctions panel until epithelium.
+- **Map gaps found while labeling:** seven thoracic aortic branches (internal thoracic, bronchial,
+  esophageal, intercostal, mediastinal, pericardial, superior phrenic) have no map concept.
+  "ligand" is taught in Chemical signaling, after the passive-transport topic that needs
+  ligand-gated channels (worded around).
+- **Plain-word paraphrases forced by ordering** (spec decision 38): ribs, cartilage, femur,
+  intestine names, nerve, inflammation, urea (glycerol used instead), hemoglobin, kidney cell
+  names, fever. The reviewer may want some as preview boxes.
+- **Normal values chosen:** body temperature about 36.6 °C with a For your exam note for 37 °C;
+  hypertension categories from the ACC/AHA guideline (130/80 and 140/90); HRmax 220 − age with
+  208 − 0.7 × age noted; MAP = DBP + one third of PP at resting rates; EF 50–70% normal;
+  intrinsic rates SA 60–100, AV junction 40–60, ventricles 20–40; K+ equilibrium potential about
+  −90 mV; cardiac AP numbers; blood distribution (veins 60–65%); capillary area and velocity;
+  hemorrhage classes 15/30/40%; pump share of resting ATP 20–40%.
+- **Simplifications:** hyperkalemia as a smaller K+ gradient only; inward-rectifier K+ channels
+  as "leak channels that close while depolarized"; hyperthermia as harmful positive feedback;
+  the Bainbridge reflex as weak in humans; appendicitis pain migration; D5W as isosmotic in the
+  bag but hypotonic once infused.
+- **Classification conventions:** eleven organ systems (immune treated as a chapter, not a
+  twelfth system); dorsal and ventral body cavities (with a caveat); older names for the nine
+  abdominal regions with the newer ones as alternates; filtration counted as passive transport;
+  vesicle transport counted as active transport; anaphase counted as 92 chromosomes; flashcards
+  do not change mastery (spec decision 39).
+- **Etymology to confirm:** "alkaline" from Arabic al-qily; "saphenous" (Greek "visible" vs
+  Arabic "hidden"); "exon" and "intron" from "expressed region" and "intragenic region".
 
 ## Decided at the Phase 0 reviews
 

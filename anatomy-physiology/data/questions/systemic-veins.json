@@ -9,7 +9,7 @@
     ],
     "figure": "os-20-38",
     "pin": "median-cubital",
-    "q": "Name the pinned vein: the superficial vein crossing the front of the elbow, linking the veins on the thumb side and the little-finger side.",
+    "q": "Name the pinned vein.",
     "options": [
       "Cephalic vein",
       "Median cubital vein",
@@ -37,7 +37,7 @@
     ],
     "figure": "os-20-41",
     "pin": "great-saphenous",
-    "q": "Name the pinned vein: the long superficial vein running from in front of the inner ankle up the inner side of the leg and thigh to the groin.",
+    "q": "Name the pinned vein.",
     "options": [
       "Femoral vein",
       "Small saphenous vein",
@@ -65,7 +65,7 @@
     ],
     "figure": "os-20-37",
     "pin": "superior-sagittal-sinus",
-    "q": "Name the pinned channel: the dural venous sinus running along the top of the brain in the midline.",
+    "q": "Name the pinned channel.",
     "options": [
       "Superior sagittal sinus",
       "Transverse sinus",
@@ -93,7 +93,7 @@
     ],
     "figure": "os-20-43",
     "pin": "hepatic-portal",
-    "q": "Name the pinned vessel: the vein that carries blood from the stomach, spleen, pancreas and intestines into the liver.",
+    "q": "Name the pinned vessel.",
     "options": [
       "Inferior vena cava",
       "Superior mesenteric vein",
@@ -105,7 +105,7 @@
       "correct": "The hepatic portal vein forms behind the pancreas where the superior mesenteric and splenic veins join. It carries blood from the gut's capillaries to the liver's sinusoids.",
       "options": [
         "The inferior vena cava receives blood from the liver through the hepatic veins, after the liver has processed it. No gut vein drains into it directly.",
-        "The superior mesenteric vein is a tributary of the pinned vein. It drains the intestines, not the whole list of organs.",
+        "The superior mesenteric vein is a tributary of the pinned vein. It drains most of the intestines, while the pinned vessel collects from the stomach, spleen and pancreas as well.",
         "Correct. The hepatic portal vein collects blood from all the gut organs and delivers it to the liver.",
         "The splenic vein is the other main tributary. It drains the spleen and parts of the pancreas and stomach."
       ]
@@ -121,7 +121,7 @@
     ],
     "figure": "os-20-35",
     "pin": "brachiocephalic",
-    "q": "Name the pinned vein: formed on each side where the internal jugular and subclavian veins meet.",
+    "q": "Name the pinned vein.",
     "options": [
       "Brachiocephalic vein",
       "Superior vena cava",
@@ -356,7 +356,7 @@
     ],
     "q": "A student traced blood from the back of the right hand to the heart along the superficial route. Which step is wrong?",
     "options": [
-      "Veins on the back of the hand drain into the cephalic vein",
+      "Veins on the back of the hand drain into the cephalic vein on the thumb side",
       "The cephalic vein drains into the axillary vein",
       "The axillary vein continues as the subclavian vein",
       "The subclavian vein drains straight into the superior vena cava",

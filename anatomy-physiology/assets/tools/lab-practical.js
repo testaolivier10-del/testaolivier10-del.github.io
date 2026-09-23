@@ -280,11 +280,11 @@
     { key: 'practical', label: 'Timed practical', blurb: 'A bell-ringer practical: fixed stations, a timer at each, no going back, full review at the end.' }
   ];
   function modeTabs(active, setId){
-    return '<div class="lp-modes" role="tablist" aria-label="Mode">' + MODES.map(function(m){
+    return '<nav class="lp-modes" aria-label="Mode">' + MODES.map(function(m){
       if(setId && m.key === 'practical') return '';
       var href = m.key === 'practical' ? '#practical' : setId ? '#' + m.key + '/' + setId : '#' + m.key;
-      return '<a role="tab" class="lp-mode" href="' + href + '" aria-selected="' + (m.key === active ? 'true' : 'false') + '">' + esc(m.label) + '</a>';
-    }).join('') + '</div>';
+      return '<a class="lp-mode" href="' + href + '"' + (m.key === active ? ' aria-current="true"' : '') + '>' + esc(m.label) + '</a>';
+    }).join('') + '</nav>';
   }
   function paint(html){
     stopTimer();
@@ -334,7 +334,7 @@
           return '<li><a class="lp-card" href="#' + mode + '/' + esc(s.id) + '">' +
             '<span class="lp-card-title">' + esc(s.title) + (s.histology ? ' <span class="lp-tag">Histology</span>' : '') + '</span>' +
             '<span class="lp-card-meta">' + its.length + ' structures on ' + s.stations.length + ' figure' + (s.stations.length > 1 ? 's' : '') + (t ? ' · ' + esc(t.title) : '') + '</span>' +
-            '<span class="lp-meter" aria-label="' + right + ' of ' + its.length + ' named right' + (missedN ? ', ' + missedN + ' missed' : '') + '"><span class="lp-meter-ok" style="width:' + (its.length ? 100 * right / its.length : 0) + '%"></span><span class="lp-meter-no" style="width:' + (its.length ? 100 * missedN / its.length : 0) + '%"></span></span>' +
+            '<span class="lp-meter" role="img" aria-label="' + right + ' of ' + its.length + ' named right' + (missedN ? ', ' + missedN + ' missed' : '') + '"><span class="lp-meter-ok" style="width:' + (its.length ? 100 * right / its.length : 0) + '%"></span><span class="lp-meter-no" style="width:' + (its.length ? 100 * missedN / its.length : 0) + '%"></span></span>' +
             '</a></li>';
         }).join('') + '</ul>';
       }).join('');
@@ -664,7 +664,7 @@
       if(core() && !core().allowed('lab-timed-practical')) return;
       runPractical(buildPractical(ids, +form.count.value, form.kind.value, form.follow.checked), +form.time.value);
     });
-    focusEl(app.querySelector('.lp-mode[aria-selected="true"]'));
+    focusEl(app.querySelector('.lp-mode[aria-current="true"]'));
     document.title = 'Timed lab practical | Anatomy & Physiology';
   }
 

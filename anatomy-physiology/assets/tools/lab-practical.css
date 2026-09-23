@@ -21,7 +21,7 @@
 .lp-modes{display:flex;flex-wrap:wrap;gap:4px;border-bottom:2px solid var(--line);margin:4px 0 12px;}
 .lp-mode{padding:9px 14px;border-bottom:3px solid transparent;margin-bottom:-2px;color:var(--muted);font:800 14.5px var(--font-ui);text-decoration:none;border-radius:10px 10px 0 0;}
 .lp-mode:hover{color:var(--ink);}
-.lp-mode[aria-selected="true"]{color:var(--cink);border-bottom-color:var(--cink);background:var(--ctint);}
+.lp-mode[aria-current="true"]{color:var(--cink);border-bottom-color:var(--cink);background:var(--ctint);}
 
 /* Set list */
 .lp-review{margin:0 0 14px;}

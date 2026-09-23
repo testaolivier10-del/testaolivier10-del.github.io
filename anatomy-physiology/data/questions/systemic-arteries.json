@@ -9,7 +9,7 @@
     ],
     "figure": "os-20-24",
     "pin": "brachiocephalic-trunk",
-    "q": "Name the pinned artery: the short first branch on the right side of the aortic arch, which splits into the arteries to the right arm and the right side of the neck.",
+    "q": "Name the pinned artery.",
     "options": [
       "Right common carotid artery",
       "Brachiocephalic trunk",
@@ -37,7 +37,7 @@
     ],
     "figure": "os-20-24",
     "pin": "celiac-trunk",
-    "q": "Name the pinned artery: the first single branch from the front of the abdominal aorta, just below the diaphragm.",
+    "q": "Name the pinned artery.",
     "options": [
       "Superior mesenteric artery",
       "Renal artery",
@@ -65,7 +65,7 @@
     ],
     "figure": "os-20-27",
     "pin": "basilar",
-    "q": "Name the pinned artery: the single midline artery on the front of the brainstem, formed where two arteries from the neck join.",
+    "q": "Name the pinned artery.",
     "options": [
       "Anterior communicating artery",
       "Internal carotid artery",
@@ -93,7 +93,7 @@
     ],
     "figure": "os-20-25",
     "pin": "left-subclavian-artery",
-    "q": "Name the pinned artery: the last branch leaving the top of the aortic arch, heading toward the left arm.",
+    "q": "Name the pinned artery.",
     "options": [
       "Left subclavian artery",
       "Left common carotid artery",
@@ -121,7 +121,7 @@
     ],
     "figure": "os-20-11",
     "pin": "dorsalis-pedis-artery",
-    "q": "Name the artery whose pulse is felt at the pinned point on the top of the foot.",
+    "q": "Name the artery whose pulse is felt at the pinned point.",
     "options": [
       "Posterior tibial artery",
       "Popliteal artery",
@@ -391,7 +391,7 @@
     "q": "The vertebral arteries carry a pulse just like the carotid arteries, yet you can never feel it through the skin. Why?",
     "options": [
       "They carry blood too slowly to make a wave",
-      "They run through holes in the cervical vertebrae, deep inside bone",
+      "They run through holes in the cervical vertebrae",
       "Their walls have no elastic tissue to stretch",
       "They receive blood only between heartbeats"
     ],
@@ -400,7 +400,7 @@
       "correct": "You can feel a pulse only where an artery lies near the skin over something firm. The vertebral arteries climb through the transverse processes of the cervical vertebrae, so bone surrounds them and your fingers cannot press them.",
       "options": [
         "The pulse is a pressure wave in the artery wall, not the blood's own speed. The vertebral arteries carry a pulse wave like every systemic artery.",
-        "Correct. Depth and the surrounding bone make them impossible to palpate.",
+        "Correct. They lie deep in the neck, inside a column of bone, so your fingers cannot press them against anything.",
         "Arteries of this size have elastic tissue in their walls, and the pulse wave travels along them. The reason is where they run.",
         "Every systemic artery receives blood through the whole cardiac cycle, and the vertebral arteries are no exception."
       ]

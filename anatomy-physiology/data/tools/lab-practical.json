@@ -4589,7 +4589,7 @@
        ],
        "concept": "ribs",
        "taught": "thoracic-cage",
-       "fn": ""
+       "fn": "The first and shortest rib, just under the collarbone. The top of the heart's large vessels sits just below its level."
       },
       {
        "id": "trachea",
@@ -4732,7 +4732,7 @@
        ],
        "concept": "ribs",
        "taught": "thoracic-cage",
-       "fn": ""
+       "fn": "The ribs, cut away in this view to open the thoracic cavity. They and the sternum form the bony cage that shields the heart and lungs."
       },
       {
        "id": "pericardial-cavity",
@@ -7683,7 +7683,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "A band of conducting fibers that carries the SA node's signal across to the left atrium, so both atria contract almost together."
       },
       {
        "id": "sinoatrial-node",
@@ -7701,7 +7701,19 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "A cluster of autorhythmic cells in the wall of the right atrium near the superior vena cava. It depolarizes on its own fastest, so it sets the heart rate: the heart's pacemaker.",
+       "follow": {
+        "q": "Why does the SA node, and not the AV node, normally set the heart rate?",
+        "options": [
+         "Its cells reach threshold on their own faster than any other autorhythmic cells, so they trigger every beat first",
+         "It is the only part of the heart that can depolarize on its own",
+         "It receives the most blood from the coronary arteries",
+         "It is the largest mass of conducting tissue"
+        ],
+        "correct": 0,
+        "why": "Several parts of the conduction system can fire on their own, but the SA node's pacemaker potential rises fastest. Its action potential sweeps through the heart and resets the slower cells before they reach threshold themselves.",
+        "level": "apply"
+       }
       },
       {
        "id": "left-atrium",
@@ -7746,7 +7758,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "One of three pathways through the right atrial wall that carry the signal from the SA node toward the AV node."
       },
       {
        "id": "atrioventricular-node",
@@ -7762,7 +7774,19 @@
        ],
        "concept": "av-node",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "A cluster of conducting cells in the floor of the right atrium near the septum. It conducts slowly, delaying the signal about a tenth of a second so the atria finish emptying before the ventricles contract. It is the only normal path from atria to ventricles.",
+       "follow": {
+        "q": "What does the delay at the AV node accomplish?",
+        "options": [
+         "It gives the atria time to finish pushing blood into the ventricles before the ventricles contract",
+         "It lets the SA node recover before the next beat",
+         "It lets the coronary arteries fill",
+         "It keeps the two atria from contracting together"
+        ],
+        "correct": 0,
+        "why": "The cardiac skeleton insulates the atria from the ventricles everywhere except at the AV node, and conduction there is slow. That pause lets atrial contraction top up the ventricles; if the ventricles fired at the same moment, the atria would be squeezing against closed valves.",
+        "level": "apply"
+       }
       },
       {
        "id": "av-bundle",
@@ -7780,7 +7804,7 @@
        ],
        "concept": "ventricular-conduction",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "The bundle of His: the only conducting link through the insulating cardiac skeleton, carrying the signal from the AV node into the top of the interventricular septum."
       },
       {
        "id": "middle-internodal",
@@ -7797,7 +7821,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "One of three pathways through the right atrial wall that carry the signal from the SA node toward the AV node."
       },
       {
        "id": "posterior-internodal",
@@ -7814,7 +7838,7 @@
        ],
        "concept": "sa-node",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "One of three pathways through the right atrial wall that carry the signal from the SA node toward the AV node."
       },
       {
        "id": "left-ventricle",
@@ -7912,7 +7936,7 @@
        ],
        "concept": "ventricular-conduction",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "The two branches of the AV bundle that run down either side of the interventricular septum toward the apex, carrying the signal to each ventricle."
       },
       {
        "id": "purkinje-fibers",
@@ -7930,7 +7954,19 @@
        ],
        "concept": "ventricular-conduction",
        "taught": "conduction-system",
-       "fn": ""
+       "fn": "Large, fast-conducting fibers that spread from the bundle branches through the ventricle walls, starting at the apex. They make the ventricles contract from the apex upward, squeezing blood toward the exits.",
+       "follow": {
+        "q": "Purkinje fibers deliver the signal to the apex first. Why does that matter?",
+        "options": [
+         "The ventricles contract from the bottom up, pushing blood toward the aortic and pulmonary valves at the top",
+         "It lets the atria contract before the ventricles",
+         "It keeps the AV valves open during contraction",
+         "It slows the heart rate"
+        ],
+        "correct": 0,
+        "why": "The exits from the ventricles are at the top. Contraction that starts at the apex and moves upward squeezes blood toward them, like squeezing a tube of toothpaste from the closed end.",
+        "level": "apply"
+       }
       }
      ],
      "covered": [
@@ -9011,7 +9047,7 @@
         24
        ],
        "concept": null,
-       "fn": ""
+       "fn": "A branch of the subclavian artery that runs down the inside of the front chest wall beside the sternum, supplying the chest wall. Surgeons often use it to bypass a blocked coronary artery."
       },
       {
        "id": "bronchial-arteries",
@@ -9027,7 +9063,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "Small branches of the thoracic aorta that bring oxygenated blood to the airway tubes and supporting tissue of the lungs. The pulmonary arteries carry blood to be oxygenated; these feed the lung tissue itself."
       },
       {
        "id": "esophageal-arteries",
@@ -9043,7 +9079,7 @@
         28
        ],
        "concept": null,
-       "fn": ""
+       "fn": "Small branches of the thoracic aorta that supply the esophagus."
       },
       {
        "id": "intercostal-arteries",
@@ -9060,7 +9096,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "Paired arteries that run along the lower edge of each rib, supplying the intercostal muscles and the chest wall. Most branch from the thoracic aorta."
       },
       {
        "id": "mediastinal-arteries",
@@ -9076,7 +9112,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "Small branches of the thoracic aorta that supply the tissues of the mediastinum."
       },
       {
        "id": "pericardial-arteries",
@@ -9092,7 +9128,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "Small branches of the thoracic aorta that supply the back of the pericardium."
       },
       {
        "id": "superior-phrenic-arteries",
@@ -9108,7 +9144,7 @@
         28
        ],
        "concept": null,
-       "fn": ""
+       "fn": "Small branches of the thoracic aorta that supply the upper surface of the diaphragm (phren- means diaphragm)."
       },
       {
        "id": "thoracic-aorta",
@@ -9138,7 +9174,7 @@
        ],
        "concept": "aorta-parts",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The opening at the back of the diaphragm through which the descending aorta passes. Above it the vessel is the thoracic aorta, below it the abdominal aorta."
       },
       {
        "id": "inferior-phrenic-arteries",
@@ -9155,7 +9191,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The first branches of the abdominal aorta, supplying the underside of the diaphragm."
       },
       {
        "id": "celiac-trunk",
@@ -9202,7 +9238,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the celiac trunk that supplies the lesser curve of the stomach and the lower esophagus."
       },
       {
        "id": "adrenal-artery",
@@ -9220,7 +9256,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "Small paired branches of the abdominal aorta (the middle suprarenal arteries) that supply the adrenal glands on top of the kidneys."
       },
       {
        "id": "splenic-artery",
@@ -9236,7 +9272,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The largest branch of the celiac trunk. It runs to the left behind the stomach to the spleen, giving branches to the stomach and pancreas on the way."
       },
       {
        "id": "common-hepatic-artery",
@@ -9252,7 +9288,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the celiac trunk that runs to the right. It gives off branches to the stomach and continues as the hepatic artery proper, which brings oxygenated blood to the liver."
       },
       {
        "id": "renal-artery",
@@ -9320,7 +9356,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "Paired branches from the back of the abdominal aorta that supply the lower back muscles, the lumbar vertebrae and the spinal cord."
       },
       {
        "id": "abdominal-aorta",
@@ -9362,7 +9398,7 @@
        ],
        "concept": "abdominal-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A small, single artery that continues from the back of the aorta where it splits, running down the front of the sacrum and coccyx."
       },
       {
        "id": "inferior-mesenteric-artery",
@@ -9462,7 +9498,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The superficial temporal artery, a branch of the external carotid artery that runs up in front of the ear. Its pulse can be felt just in front of the ear."
       },
       {
        "id": "facial-artery",
@@ -9478,7 +9514,7 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "A branch of the external carotid artery that crosses the lower edge of the jaw on its way to the face. Its pulse can be felt where it crosses the jaw."
       },
       {
        "id": "common-carotid-artery",
@@ -9494,7 +9530,19 @@
        ],
        "concept": "head-neck-arteries",
        "taught": "systemic-arteries",
-       "fn": ""
+       "fn": "The large artery up each side of the neck. Its pulse, felt beside the trachea, is the one to check in an unresponsive person, because it is strong and close to the heart.",
+       "follow": {
+        "q": "Why is the carotid pulse often still felt when the radial pulse is not?",
+        "options": [
+         "The carotid artery is closer to the heart and larger, so a weak pressure wave still reaches it",
+         "The carotid artery has its own pump",
+         "The radial artery is a vein",
+         "The carotid pulse is caused by breathing"
+        ],
+        "correct": 0,
+        "why": "Each beat sends a pressure wave outward from the heart. When pressure is low, the wave is still strong enough to feel in a large artery close to the heart but fades before it reaches a small artery at the wrist.",
+        "level": "apply"
+       }
       },
       {
        "id": "brachial-artery",
@@ -9510,19 +9558,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": "The main artery of the upper arm, continuing from the axillary artery. It runs along the inner arm and is where blood pressure is measured with a cuff; at the elbow it splits into the radial and ulnar arteries.",
-       "follow": {
-        "q": "Blood pressure cuffs are placed on the upper arm because they compress which artery?",
-        "options": [
-         "Brachial artery",
-         "Radial artery",
-         "Axillary artery",
-         "Subclavian artery"
-        ],
-        "correct": 0,
-        "why": "The brachial artery runs close to the skin along the inner upper arm, at about the level of the heart, so a cuff can squeeze it shut and a stethoscope at the elbow can hear flow return.",
-        "level": "recall"
-       }
+       "fn": "The main artery of the upper arm. Its pulse is felt on the inner side of the elbow, and it is the artery heard with a stethoscope when blood pressure is taken."
       },
       {
        "id": "radial-artery",
@@ -9538,7 +9574,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": "The forearm artery on the thumb side, from the brachial artery. At the wrist it lies just under the skin over the bone, where the radial pulse is taken."
+       "fn": "The forearm artery on the thumb side. Its pulse is felt on the inner wrist just below the thumb, the most common place to count a heart rate."
       },
       {
        "id": "femoral-artery",
@@ -9554,7 +9590,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": "The main artery of the thigh, continuing from the external iliac artery. In the groin it lies close to the skin, where the femoral pulse is felt and where catheters are often inserted."
+       "fn": "The main artery of the thigh. Its pulse is felt in the groin, midway between the bony point of the hip and the pubic bone."
       },
       {
        "id": "popliteal-artery",
@@ -9570,7 +9606,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": "The continuation of the femoral artery behind the knee, where the popliteal pulse is felt. Below the knee it splits into the anterior and posterior tibial arteries."
+       "fn": "The artery behind the knee. Its pulse is felt deep in the back of the knee, easiest with the knee slightly bent."
       },
       {
        "id": "posterior-tibial-artery",
@@ -9586,7 +9622,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": "The branch of the popliteal artery down the back of the leg. It passes behind the bump on the inner ankle, where its pulse is felt, and continues into the sole of the foot."
+       "fn": "The artery that passes behind the bump on the inner ankle, where its pulse is felt."
       },
       {
        "id": "dorsalis-pedis-artery",
@@ -9603,7 +9639,7 @@
        ],
        "concept": "limb-arteries",
        "taught": "systemic-arteries",
-       "fn": "The continuation of the anterior tibial artery on the top of the foot, where the pedal pulse is felt. Checking it tells you blood is reaching the end of the leg."
+       "fn": "The artery on the top of the foot. Its pulse (the pedal pulse) shows whether blood is reaching the end of the leg."
       }
      ]
     }
@@ -9637,7 +9673,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the side of the neck that drains the scalp and face. It is often visible when a person strains or lies flat, and it empties into the subclavian vein."
       },
       {
        "id": "internal-jugular",
@@ -9653,7 +9689,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the neck, beside the common carotid artery. It drains the brain (from the dural venous sinuses), face and neck and joins the subclavian vein to form the brachiocephalic vein."
       },
       {
        "id": "subclavian",
@@ -9669,7 +9705,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The continuation of the axillary vein under the collarbone. It drains the arm and joins the internal jugular vein to form the brachiocephalic vein. It is a common site for a central line."
       },
       {
        "id": "brachiocephalic",
@@ -9687,7 +9723,19 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Each side has one: formed where the internal jugular and subclavian veins meet, behind the collarbone. The right and left brachiocephalic veins join to form the superior vena cava. Unlike the artery, there are two.",
+       "follow": {
+        "q": "How does venous drainage of the head differ from its arterial supply at the root of the neck?",
+        "options": [
+         "There are two brachiocephalic veins but only one brachiocephalic artery (trunk)",
+         "There are two brachiocephalic arteries but no brachiocephalic veins",
+         "Veins from the head drain straight into the right atrium",
+         "The jugular veins join the aorta"
+        ],
+        "correct": 0,
+        "why": "On the arterial side only the right has a brachiocephalic trunk; the left carotid and subclavian leave the aortic arch directly. On the venous side both sides form a brachiocephalic vein, and the two merge into the superior vena cava.",
+        "level": "recall"
+       }
       },
       {
        "id": "axillary",
@@ -9703,7 +9751,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large vein of the armpit, formed by the basilic and brachial veins and joined by the cephalic vein. It becomes the subclavian vein."
       },
       {
        "id": "cephalic",
@@ -9719,7 +9767,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the thumb side of the arm. It runs up to the shoulder and empties into the axillary vein, and is often used for IV lines."
       },
       {
        "id": "superior-vena-cava",
@@ -9764,7 +9812,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The paired deep veins that run beside the brachial artery in the upper arm and join the basilic vein to form the axillary vein."
       },
       {
        "id": "intercostal",
@@ -9782,7 +9830,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins along the lower edge of each rib that drain the chest wall, mostly into the azygos system."
       },
       {
        "id": "basilic",
@@ -9798,7 +9846,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the little-finger side of the arm. It dives deep partway up the arm and joins the brachial veins to form the axillary vein."
       },
       {
        "id": "hepatic",
@@ -9815,7 +9863,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The veins that carry blood out of the liver into the inferior vena cava, just below the diaphragm. This blood has already passed through both the gut's capillaries and the liver's."
       },
       {
        "id": "inferior-vena-cava",
@@ -9848,7 +9896,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that carries blood from each kidney to the inferior vena cava. The left one is longer, because it crosses in front of the aorta to reach the inferior vena cava on the right."
       },
       {
        "id": "gonadal",
@@ -9866,7 +9914,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein from each testis or ovary. The right one drains into the inferior vena cava, the left into the vein from the left kidney."
       },
       {
        "id": "median-cubital",
@@ -9882,7 +9930,19 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A short superficial vein at the front of the elbow linking the cephalic and basilic veins. It is the usual vein for drawing blood, because it is large, near the surface and held in place.",
+       "follow": {
+        "q": "Why is the median cubital vein the usual choice for drawing blood?",
+        "options": [
+         "It is large and close to the surface at the front of the elbow, where it stays put",
+         "It carries oxygenated blood",
+         "It is the only vein in the arm with no valves",
+         "It is deep, so the needle is less painful"
+        ],
+        "correct": 0,
+        "why": "Veins are used rather than arteries because their pressure is low. This one is wide, lies just under the skin in the antecubital area and is anchored by the tissue around it, so it is easy to find and does not roll away from the needle.",
+        "level": "apply"
+       }
       },
       {
        "id": "lumbar",
@@ -9899,7 +9959,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins that drain the back wall of the abdomen and empty into the inferior vena cava."
       },
       {
        "id": "radial",
@@ -9916,7 +9976,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins that run beside the radial artery on the thumb side of the forearm."
       },
       {
        "id": "median-antebrachial",
@@ -9933,7 +9993,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein running up the middle of the front of the forearm, draining into the median cubital or basilic vein."
       },
       {
        "id": "common-iliac",
@@ -9947,7 +10007,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The veins formed by the external and internal iliac veins. The right and left common iliac veins join to form the inferior vena cava."
       },
       {
        "id": "ulnar",
@@ -9964,7 +10024,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins that run beside the ulnar artery on the little-finger side of the forearm."
       },
       {
        "id": "external-iliac",
@@ -9980,7 +10040,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The continuation of the femoral vein above the groin. It joins the internal iliac vein to form the common iliac vein."
       },
       {
        "id": "palmar-venous-arches",
@@ -9997,7 +10057,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Arching veins in the palm that collect blood from the fingers and pass it to the veins of the forearm."
       },
       {
        "id": "internal-iliac",
@@ -10013,7 +10073,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the pelvic organs and buttocks and joins the external iliac vein to form the common iliac vein."
       },
       {
        "id": "deep-femoral",
@@ -10029,7 +10089,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep vein that drains the thigh muscles into the femoral vein."
       },
       {
        "id": "digital",
@@ -10046,7 +10106,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The small veins of the fingers or toes."
       },
       {
        "id": "femoral",
@@ -10062,7 +10122,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the thigh, beside the femoral artery. It continues as the external iliac vein above the groin."
       },
       {
        "id": "great-saphenous",
@@ -10078,7 +10138,19 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The longest vein in the body: a superficial vein that runs from the inner foot up the inner leg and thigh to join the femoral vein in the groin. It is often used as a graft for coronary bypass surgery.",
+       "follow": {
+        "q": "Why do varicose veins usually appear in the superficial veins of the legs, such as the great saphenous vein?",
+        "options": [
+         "Blood in them must rise a long way against gravity, and if their valves fail it pools and stretches the thin walls",
+         "They carry blood at arterial pressure",
+         "They have thicker walls than other veins",
+         "They carry blood away from the heart"
+        ],
+        "correct": 0,
+        "why": "Venous valves hold up the column of blood between heartbeats. In the legs that column is tall. When valves weaken, blood falls back and pools, and the thin-walled superficial veins, with little muscle around them for support, stretch and twist.",
+        "level": "apply"
+       }
       },
       {
        "id": "popliteal",
@@ -10094,7 +10166,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep vein behind the knee, formed by the tibial veins and joined by the small saphenous vein. It continues as the femoral vein."
       },
       {
        "id": "posterior-tibial",
@@ -10111,7 +10183,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the posterior tibial artery at the back of the leg. Calf muscle contraction squeezes them, pushing blood up toward the heart."
       },
       {
        "id": "small-saphenous",
@@ -10127,7 +10199,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein that runs up the back of the calf from the outer foot and drains into the popliteal vein behind the knee."
       },
       {
        "id": "anterior-tibial",
@@ -10144,7 +10216,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the anterior tibial artery at the front of the leg. They join the posterior tibial veins to form the popliteal vein."
       },
       {
        "id": "fibular",
@@ -10162,7 +10234,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the fibular artery on the outer side of the leg, draining into the posterior tibial veins."
       },
       {
        "id": "plantar-venous-arch",
@@ -10176,7 +10248,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "An arch of deep veins in the sole of the foot that drains into the tibial veins."
       },
       {
        "id": "dorsal-venous-arch",
@@ -10192,7 +10264,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "An arch of superficial veins on the top of the foot. It gives rise to the great saphenous vein on the inner side and the small saphenous vein on the outer side."
       }
      ]
     },
@@ -10217,7 +10289,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A dural venous sinus along the top midline of the brain, inside a fold of the dura mater. It collects blood from the brain and also takes up cerebrospinal fluid."
       },
       {
        "id": "inferior-sagittal-sinus",
@@ -10233,7 +10305,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A small dural venous sinus in the lower edge of the fold of dura mater between the two halves of the brain. It drains into the straight sinus."
       },
       {
        "id": "straight-sinus",
@@ -10247,7 +10319,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A dural venous sinus that runs back along the fold of dura mater, collecting blood from the inferior sagittal sinus and deep brain veins."
       },
       {
        "id": "occipital",
@@ -10263,7 +10335,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the back of the scalp."
       },
       {
        "id": "temporal",
@@ -10280,7 +10352,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The superficial temporal vein in front of the ear, draining the side of the scalp."
       },
       {
        "id": "cavernous-sinus",
@@ -10294,7 +10366,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A dural venous sinus on each side of the pituitary gland. Veins from the face and eye connect with it, which is how an infection of the face can spread inside the skull."
       },
       {
        "id": "right-transverse-sinus",
@@ -10308,7 +10380,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A dural venous sinus running around the back of the skull on the right. It receives blood from the sinuses at the back of the head and continues as the sigmoid sinus."
       },
       {
        "id": "maxillary",
@@ -10324,7 +10396,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A deep vein of the face that drains the upper jaw region and joins the temporal vein."
       },
       {
        "id": "occipital-sinus",
@@ -10338,7 +10410,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A small dural venous sinus at the back of the skull."
       },
       {
        "id": "facial",
@@ -10354,7 +10426,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the face, running down and back across the cheek to empty into the internal jugular vein."
       },
       {
        "id": "sigmoid-sinus",
@@ -10368,7 +10440,19 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The S-shaped dural venous sinus that continues from the transverse sinus and exits the skull as the internal jugular vein.",
+       "follow": {
+        "q": "Blood from the dural venous sinuses leaves the skull through which vein?",
+        "options": [
+         "Internal jugular vein",
+         "External jugular vein",
+         "Vertebral vein",
+         "Facial vein"
+        ],
+        "correct": 0,
+        "why": "The sinuses drain toward the sigmoid sinus, which passes through the base of the skull and becomes the internal jugular vein. The external jugular drains the scalp and face from outside the skull.",
+        "level": "recall"
+       }
       },
       {
        "id": "petrosal-sinus",
@@ -10385,7 +10469,7 @@
        ],
        "concept": "dural-sinuses",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A dural venous sinus along the base of the skull that drains the cavernous sinus toward the sigmoid sinus and internal jugular vein."
       },
       {
        "id": "external-jugular",
@@ -10401,7 +10485,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the side of the neck that drains the scalp and face. It is often visible when a person strains or lies flat, and it empties into the subclavian vein."
       },
       {
        "id": "internal-jugular",
@@ -10417,7 +10501,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the neck, beside the common carotid artery. It drains the brain (from the dural venous sinuses), face and neck and joins the subclavian vein to form the brachiocephalic vein."
       },
       {
        "id": "vertebral",
@@ -10433,7 +10517,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that runs down through the neck bones beside the vertebral artery, draining the back of the neck into the brachiocephalic vein."
       },
       {
        "id": "right-subclavian",
@@ -10449,7 +10533,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The continuation of the axillary vein under the collarbone. It drains the arm and joins the internal jugular vein to form the brachiocephalic vein. It is a common site for a central line."
       },
       {
        "id": "axillary",
@@ -10465,7 +10549,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large vein of the armpit, formed by the basilic and brachial veins and joined by the cephalic vein. It becomes the subclavian vein."
       },
       {
        "id": "superior-vena-cava",
@@ -10518,7 +10602,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The continuation of the axillary vein under the collarbone. It drains the arm and joins the internal jugular vein to form the brachiocephalic vein. It is a common site for a central line."
       },
       {
        "id": "axillary",
@@ -10534,7 +10618,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large vein of the armpit, formed by the basilic and brachial veins and joined by the cephalic vein. It becomes the subclavian vein."
       },
       {
        "id": "cephalic",
@@ -10550,7 +10634,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the thumb side of the arm. It runs up to the shoulder and empties into the axillary vein, and is often used for IV lines."
       },
       {
        "id": "subscapular",
@@ -10566,7 +10650,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the back of the shoulder around the scapula into the axillary vein."
       },
       {
        "id": "brachial",
@@ -10583,7 +10667,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The paired deep veins that run beside the brachial artery in the upper arm and join the basilic vein to form the axillary vein."
       },
       {
        "id": "basilic",
@@ -10599,7 +10683,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the little-finger side of the arm. It dives deep partway up the arm and joins the brachial veins to form the axillary vein."
       },
       {
        "id": "median-cubital",
@@ -10615,7 +10699,19 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A short superficial vein at the front of the elbow linking the cephalic and basilic veins. It is the usual vein for drawing blood, because it is large, near the surface and held in place.",
+       "follow": {
+        "q": "Why is the median cubital vein the usual choice for drawing blood?",
+        "options": [
+         "It is large and close to the surface at the front of the elbow, where it stays put",
+         "It carries oxygenated blood",
+         "It is the only vein in the arm with no valves",
+         "It is deep, so the needle is less painful"
+        ],
+        "correct": 0,
+        "why": "Veins are used rather than arteries because their pressure is low. This one is wide, lies just under the skin in the antecubital area and is anchored by the tissue around it, so it is easy to find and does not roll away from the needle.",
+        "level": "apply"
+       }
       },
       {
        "id": "cephalic-forearm",
@@ -10631,7 +10727,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the thumb side of the arm. It runs up to the shoulder and empties into the axillary vein, and is often used for IV lines."
       },
       {
        "id": "radial",
@@ -10648,7 +10744,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins that run beside the radial artery on the thumb side of the forearm."
       },
       {
        "id": "median-antebrachial",
@@ -10665,7 +10761,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein running up the middle of the front of the forearm, draining into the median cubital or basilic vein."
       },
       {
        "id": "basilic-forearm",
@@ -10681,7 +10777,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein on the little-finger side of the arm. It dives deep partway up the arm and joins the brachial veins to form the axillary vein."
       },
       {
        "id": "ulnar",
@@ -10698,7 +10794,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins that run beside the ulnar artery on the little-finger side of the forearm."
       },
       {
        "id": "palmar-venous-arches",
@@ -10715,7 +10811,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Arching veins in the palm that collect blood from the fingers and pass it to the veins of the forearm."
       },
       {
        "id": "digital",
@@ -10732,7 +10828,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The small veins of the fingers or toes."
       }
      ]
     },
@@ -10757,7 +10853,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The veins formed by the external and internal iliac veins. The right and left common iliac veins join to form the inferior vena cava."
       },
       {
        "id": "internal-iliac",
@@ -10773,7 +10869,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the pelvic organs and buttocks and joins the external iliac vein to form the common iliac vein."
       },
       {
        "id": "external-iliac",
@@ -10789,7 +10885,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The continuation of the femoral vein above the groin. It joins the internal iliac vein to form the common iliac vein."
       },
       {
        "id": "gluteal",
@@ -10806,7 +10902,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The superior and inferior gluteal veins drain the buttock muscles into the internal iliac vein."
       },
       {
        "id": "lateral-sacral",
@@ -10823,7 +10919,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins beside the sacrum that drain the back of the pelvis into the internal iliac vein."
       },
       {
        "id": "internal-pudendal",
@@ -10839,7 +10935,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the external genitals and the floor of the pelvis into the internal iliac vein."
       },
       {
        "id": "obturator",
@@ -10855,7 +10951,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the inner thigh muscles and passes through the obturator foramen of the hip bone to join the internal iliac vein."
       },
       {
        "id": "femoral",
@@ -10871,7 +10967,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the thigh, beside the femoral artery. It continues as the external iliac vein above the groin."
       },
       {
        "id": "deep-femoral",
@@ -10887,7 +10983,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep vein that drains the thigh muscles into the femoral vein."
       },
       {
        "id": "femoral-circumflex",
@@ -10905,7 +11001,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins that wrap around the top of the femur and drain the hip region into the deep femoral or femoral vein."
       },
       {
        "id": "femoral-2",
@@ -10921,7 +11017,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the thigh, beside the femoral artery. It continues as the external iliac vein above the groin."
       },
       {
        "id": "great-saphenous",
@@ -10937,7 +11033,19 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The longest vein in the body: a superficial vein that runs from the inner foot up the inner leg and thigh to join the femoral vein in the groin. It is often used as a graft for coronary bypass surgery.",
+       "follow": {
+        "q": "Why do varicose veins usually appear in the superficial veins of the legs, such as the great saphenous vein?",
+        "options": [
+         "Blood in them must rise a long way against gravity, and if their valves fail it pools and stretches the thin walls",
+         "They carry blood at arterial pressure",
+         "They have thicker walls than other veins",
+         "They carry blood away from the heart"
+        ],
+        "correct": 0,
+        "why": "Venous valves hold up the column of blood between heartbeats. In the legs that column is tall. When valves weaken, blood falls back and pools, and the thin-walled superficial veins, with little muscle around them for support, stretch and twist.",
+        "level": "apply"
+       }
       },
       {
        "id": "popliteal",
@@ -10953,7 +11061,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep vein behind the knee, formed by the tibial veins and joined by the small saphenous vein. It continues as the femoral vein."
       },
       {
        "id": "small-saphenous",
@@ -10969,7 +11077,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein that runs up the back of the calf from the outer foot and drains into the popliteal vein behind the knee."
       },
       {
        "id": "anterior-tibial",
@@ -10986,7 +11094,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the anterior tibial artery at the front of the leg. They join the posterior tibial veins to form the popliteal vein."
       },
       {
        "id": "posterior-tibial",
@@ -11003,7 +11111,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the posterior tibial artery at the back of the leg. Calf muscle contraction squeezes them, pushing blood up toward the heart."
       },
       {
        "id": "fibular",
@@ -11021,7 +11129,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the fibular artery on the outer side of the leg, draining into the posterior tibial veins."
       },
       {
        "id": "dorsal-venous-arch",
@@ -11037,7 +11145,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "An arch of superficial veins on the top of the foot. It gives rise to the great saphenous vein on the inner side and the small saphenous vein on the outer side."
       },
       {
        "id": "digital",
@@ -11054,7 +11162,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The small veins of the fingers or toes."
       },
       {
        "id": "external-iliac-posterior",
@@ -11070,7 +11178,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The continuation of the femoral vein above the groin. It joins the internal iliac vein to form the common iliac vein."
       },
       {
        "id": "internal-pudendal-posterior",
@@ -11086,7 +11194,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the external genitals and the floor of the pelvis into the internal iliac vein."
       },
       {
        "id": "gluteal-posterior",
@@ -11103,7 +11211,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The superior and inferior gluteal veins drain the buttock muscles into the internal iliac vein."
       },
       {
        "id": "obturator-posterior",
@@ -11119,7 +11227,7 @@
        ],
        "concept": "venae-cavae-tributaries",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the inner thigh muscles and passes through the obturator foramen of the hip bone to join the internal iliac vein."
       },
       {
        "id": "femoral-posterior",
@@ -11135,7 +11243,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the thigh, beside the femoral artery. It continues as the external iliac vein above the groin."
       },
       {
        "id": "deep-femoral-posterior",
@@ -11151,7 +11259,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep vein that drains the thigh muscles into the femoral vein."
       },
       {
        "id": "femoral-circumflex-posterior",
@@ -11169,7 +11277,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins that wrap around the top of the femur and drain the hip region into the deep femoral or femoral vein."
       },
       {
        "id": "femoral-posterior-2",
@@ -11185,7 +11293,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large deep vein of the thigh, beside the femoral artery. It continues as the external iliac vein above the groin."
       },
       {
        "id": "great-saphenous-posterior",
@@ -11201,7 +11309,19 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The longest vein in the body: a superficial vein that runs from the inner foot up the inner leg and thigh to join the femoral vein in the groin. It is often used as a graft for coronary bypass surgery.",
+       "follow": {
+        "q": "Why do varicose veins usually appear in the superficial veins of the legs, such as the great saphenous vein?",
+        "options": [
+         "Blood in them must rise a long way against gravity, and if their valves fail it pools and stretches the thin walls",
+         "They carry blood at arterial pressure",
+         "They have thicker walls than other veins",
+         "They carry blood away from the heart"
+        ],
+        "correct": 0,
+        "why": "Venous valves hold up the column of blood between heartbeats. In the legs that column is tall. When valves weaken, blood falls back and pools, and the thin-walled superficial veins, with little muscle around them for support, stretch and twist.",
+        "level": "apply"
+       }
       },
       {
        "id": "popliteal-posterior",
@@ -11217,7 +11337,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep vein behind the knee, formed by the tibial veins and joined by the small saphenous vein. It continues as the femoral vein."
       },
       {
        "id": "small-saphenous-posterior",
@@ -11233,7 +11353,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A superficial vein that runs up the back of the calf from the outer foot and drains into the popliteal vein behind the knee."
       },
       {
        "id": "anterior-tibial-posterior",
@@ -11250,7 +11370,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the anterior tibial artery at the front of the leg. They join the posterior tibial veins to form the popliteal vein."
       },
       {
        "id": "posterior-tibial-posterior",
@@ -11267,7 +11387,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the posterior tibial artery at the back of the leg. Calf muscle contraction squeezes them, pushing blood up toward the heart."
       },
       {
        "id": "fibular-posterior",
@@ -11285,7 +11405,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The deep veins beside the fibular artery on the outer side of the leg, draining into the posterior tibial veins."
       },
       {
        "id": "lateral-plantar",
@@ -11302,7 +11422,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A deep vein on the outer side of the sole that drains into the posterior tibial veins."
       },
       {
        "id": "medial-plantar",
@@ -11319,7 +11439,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A deep vein on the inner side of the sole that drains into the posterior tibial veins."
       },
       {
        "id": "plantar-venous-arch",
@@ -11333,7 +11453,7 @@
        ],
        "concept": "limb-veins",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "An arch of deep veins in the sole of the foot that drains into the tibial veins."
       }
      ]
     },
@@ -11359,7 +11479,19 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein formed behind the pancreas by the splenic and superior mesenteric veins. It carries blood rich in absorbed nutrients from the gut and spleen to the liver's capillaries, not to the heart.",
+       "follow": {
+        "q": "Why does blood from the gut pass through the liver before it reaches the heart?",
+        "options": [
+         "The hepatic portal vein links the gut's capillaries to the liver's, so the liver can process absorbed nutrients and remove toxins first",
+         "The gut's veins are too small to reach the inferior vena cava",
+         "The liver pumps blood toward the heart",
+         "The blood must pick up oxygen in the liver"
+        ],
+        "correct": 0,
+        "why": "A portal system joins two capillary beds in a row. Nutrients and drugs absorbed from the gut go first to the liver, which stores, converts or breaks them down; only then does the blood leave by the hepatic veins for the inferior vena cava.",
+        "level": "apply"
+       }
       },
       {
        "id": "cystic",
@@ -11375,7 +11507,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The small vein of the gallbladder, which drains into the hepatic portal vein."
       },
       {
        "id": "gallbladder",
@@ -11391,7 +11523,7 @@
        ],
        "concept": "major-organs",
        "taught": "body-organization",
-       "fn": ""
+       "fn": "The small sac under the liver that stores and concentrates the fluid the liver makes to help digest fats. Its vein drains into the hepatic portal system."
       },
       {
        "id": "right-gastric",
@@ -11407,7 +11539,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein along the lesser curve of the stomach that drains straight into the hepatic portal vein."
       },
       {
        "id": "splenic",
@@ -11423,7 +11555,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the spleen and some of the stomach and pancreas. Behind the pancreas it joins the superior mesenteric vein to form the hepatic portal vein."
       },
       {
        "id": "superior-mesenteric",
@@ -11440,7 +11572,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The large vein that drains most of the gut below the stomach, beside the superior mesenteric artery. It joins the splenic vein to form the hepatic portal vein."
       },
       {
        "id": "gastroepiploic",
@@ -11458,7 +11590,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins along the greater curve of the stomach (also called gastroepiploic veins) that drain into the splenic and superior mesenteric veins."
       },
       {
        "id": "gastro-omental",
@@ -11477,7 +11609,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins along the greater curve of the stomach (also called gastroepiploic veins) that drain into the splenic and superior mesenteric veins."
       },
       {
        "id": "pancreatic",
@@ -11494,7 +11626,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Small veins from the pancreas that drain into the splenic vein."
       },
       {
        "id": "pancreaticoduodenal",
@@ -11510,7 +11642,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins that drain the head of the pancreas and the first part of the gut after the stomach into the superior mesenteric or hepatic portal vein."
       },
       {
        "id": "middle-colic",
@@ -11526,7 +11658,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the part of the wide gut crossing the abdomen into the superior mesenteric vein."
       },
       {
        "id": "inferior-mesenteric",
@@ -11543,7 +11675,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the last part of the gut, down into the pelvis. It usually empties into the splenic vein."
       },
       {
        "id": "right-colic",
@@ -11559,7 +11691,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the rising part of the wide gut on the right side into the superior mesenteric vein."
       },
       {
        "id": "left-colic",
@@ -11575,7 +11707,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "A vein that drains the descending part of the wide gut on the left side into the inferior mesenteric vein."
       },
       {
        "id": "ileocolic",
@@ -11591,7 +11723,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the end of the narrow gut and the start of the wide gut, including the appendix, into the superior mesenteric vein."
       },
       {
        "id": "sigmoid",
@@ -11608,7 +11740,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "Veins that drain the S-shaped last loop of the wide gut into the inferior mesenteric vein."
       },
       {
        "id": "intestinal",
@@ -11626,7 +11758,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The many veins from the long, narrow part of the gut that join to form the superior mesenteric vein."
       },
       {
        "id": "superior-rectal",
@@ -11642,7 +11774,7 @@
        ],
        "concept": "hepatic-portal",
        "taught": "systemic-veins",
-       "fn": ""
+       "fn": "The vein that drains the upper end of the tract in the pelvis into the inferior mesenteric vein."
       }
      ]
     }
@@ -11933,7 +12065,7 @@
    "src": "figures/os-20-27.jpg",
    "w": 1100,
    "h": 648,
-   "alt": "The underside of the brain with its arteries in red. Two arteries rise along the front of the spinal column and join into one midline artery on the brainstem. That artery splits at its top end, and short connecting arteries link it to the two arteries arriving at the front, closing a ring of arteries around the base of the brain.",
+   "alt": "The underside of the brain with its arteries in red. Two arteries run up the underside of the brainstem and join into one midline artery. That artery splits at its top end, and short connecting arteries link it to the two arteries arriving at the front, closing a ring of arteries around the base of the brain.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.27",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-5-circulatory-pathways",
    "license": "CC BY 4.0"

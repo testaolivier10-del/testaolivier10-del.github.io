@@ -115,7 +115,7 @@
     "q": "Over decades, elastic fibers in Mr. Park's aorta have been replaced by stiffer collagen. His blood pressure has changed from 120/80 at age 30 to 160/70 at age 80. Which explanation fits both changes?",
     "options": [
       "His heart now ejects twice the stroke volume",
-      "His stiff aorta stretches less and recoils less",
+      "His stiff aorta stretches and recoils less",
       "His arterioles have dilated widely",
       "His veins now push blood back into his arteries"
     ],
@@ -322,20 +322,20 @@
       "gradients"
     ],
     "figure": "os-20-12",
-    "q": "In this recording, the first tapping sound is heard when cuff pressure reaches 118 mm Hg, and the last one at 78 mm Hg. What are the systolic and diastolic pressures?",
+    "q": "Read this recording. Find the cuff pressure at the first Korotkoff sound and at the last one. What are the systolic and diastolic pressures?",
     "options": [
-      "Systolic 130, diastolic 78",
-      "Systolic 118, diastolic 60",
-      "Systolic 118, diastolic 78",
-      "Systolic 78, diastolic 118"
+      "Systolic 130, diastolic 80",
+      "Systolic 120, diastolic 70",
+      "Systolic 120, diastolic 80",
+      "Systolic 80, diastolic 120"
     ],
     "correct": 2,
     "why": {
-      "correct": "The first Korotkoff sound appears when cuff pressure just falls below the peak of the arterial wave, so it marks systolic pressure (118). The sounds stop when cuff pressure falls below the trough, so the artery stays open and flow is smooth: diastolic pressure (78).",
+      "correct": "The first Korotkoff sound appears when cuff pressure just falls below the peak of the arterial wave, at about 120 mm Hg, so that is systolic pressure. The sounds stop when cuff pressure falls below the trough, at about 80 mm Hg: the artery then stays open and flow is smooth, so that is diastolic pressure.",
       "options": [
-        "130 is where the cuff pressure started, above systolic, when no sound was heard.",
-        "Diastolic pressure is the cuff pressure at the last sound, 78, not a lower value after the sounds have stopped.",
-        "Correct. First sound = systolic; last sound = diastolic.",
+        "130 is where the cuff pressure starts, above the peaks of the wave, when no sound is heard yet. The first sound comes at about 120.",
+        "The sounds stop when cuff pressure reaches about 80. Cuff pressures near 70 come after the last sound, when the artery is already open all the time.",
+        "Correct. First sound = systolic, about 120; last sound = diastolic, about 80.",
         "This reverses the two. Cuff pressure falls during the reading, so the first sound is at the higher, systolic pressure."
       ]
     }
