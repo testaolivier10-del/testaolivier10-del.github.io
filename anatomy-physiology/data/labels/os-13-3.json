@@ -1,0 +1,183 @@
+{
+  "figure": "os-13-3",
+  "labels": [
+    {
+      "id": "prosencephalon",
+      "name": "Prosencephalon (Forebrain)",
+      "accept": [
+        "prosencephalon",
+        "forebrain"
+      ],
+      "lines": [
+        10,
+        13
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "mesencephalon-primary",
+      "name": "Mesencephalon (Midbrain)",
+      "accept": [
+        "mesencephalon",
+        "midbrain"
+      ],
+      "lines": [
+        15,
+        18
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "rhombencephalon",
+      "name": "Rhombencephalon (Hindbrain)",
+      "accept": [
+        "rhombencephalon",
+        "hindbrain"
+      ],
+      "lines": [
+        22,
+        25
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "telencephalon",
+      "name": "Telencephalon",
+      "accept": [
+        "telencephalon"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "diencephalon",
+      "name": "Diencephalon",
+      "accept": [
+        "diencephalon"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "diencephalon"
+    },
+    {
+      "id": "mesencephalon",
+      "name": "Mesencephalon",
+      "accept": [
+        "mesencephalon"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "metencephalon",
+      "name": "Metencephalon",
+      "accept": [
+        "metencephalon"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "myelencephalon",
+      "name": "Myelencephalon",
+      "accept": [
+        "myelencephalon"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "brain-development"
+    },
+    {
+      "id": "cerebrum",
+      "name": "Cerebrum",
+      "accept": [
+        "cerebrum"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "eye-cup",
+      "name": "Eye cup",
+      "accept": [
+        "eye cup",
+        "optic cup"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null
+    },
+    {
+      "id": "thalamus-hypothalamus-epithalamus",
+      "name": "Thalamus, hypothalamus, and epithalamus",
+      "accept": [
+        "thalamus hypothalamus and epithalamus",
+        "thalamus, hypothalamus, epithalamus",
+        "diencephalon"
+      ],
+      "lines": [
+        9,
+        11,
+        14
+      ],
+      "concept": "diencephalon"
+    },
+    {
+      "id": "midbrain",
+      "name": "Midbrain",
+      "accept": [
+        "midbrain",
+        "mesencephalon"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "brainstem"
+    },
+    {
+      "id": "pons",
+      "name": "Pons",
+      "accept": [
+        "pons"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "brainstem"
+    },
+    {
+      "id": "cerebellum",
+      "name": "Cerebellum",
+      "accept": [
+        "cerebellum"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "cerebellum"
+    },
+    {
+      "id": "medulla-oblongata",
+      "name": "Medulla oblongata",
+      "accept": [
+        "medulla oblongata",
+        "medulla"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "brainstem"
+    }
+  ]
+}

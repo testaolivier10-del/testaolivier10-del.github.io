@@ -1,0 +1,54 @@
+{
+  "figure": "os-13-13",
+  "labels": [
+    {
+      "id": "cerebellum",
+      "name": "Cerebellum",
+      "accept": [
+        "cerebellum"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cerebellum"
+    },
+    {
+      "id": "pons",
+      "name": "Pons",
+      "accept": [
+        "pons"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "brainstem"
+    },
+    {
+      "id": "arbor-vitae",
+      "name": "Deep cerebellar white matter (arbor vitae)",
+      "accept": [
+        "arbor vitae",
+        "deep cerebellar white matter",
+        "cerebellar white matter"
+      ],
+      "lines": [
+        30,
+        34,
+        36
+      ],
+      "concept": "cerebellum"
+    },
+    {
+      "id": "inferior-olive",
+      "name": "Inferior olive",
+      "accept": [
+        "inferior olive",
+        "olive"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": null
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "figure": "os-16-6",
+  "labels": [
+    {
+      "id": "brocas-area",
+      "name": "Broca’s area",
+      "accept": [
+        "broca's area",
+        "broca area",
+        "brocas area"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "language-areas"
+    },
+    {
+      "id": "wernickes-area",
+      "name": "Wernicke’s area",
+      "accept": [
+        "wernicke's area",
+        "wernicke area",
+        "wernickes area"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "language-areas"
+    }
+  ]
+}

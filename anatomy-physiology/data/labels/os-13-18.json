@@ -1,0 +1,165 @@
+{
+  "figure": "os-13-18",
+  "labels": [
+    {
+      "id": "superior-sagittal-sinus",
+      "name": "Superior sagittal sinus",
+      "accept": [
+        "superior sagittal sinus",
+        "sagittal sinus"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "arachnoid-granulation",
+      "name": "Arachnoid granulation",
+      "accept": [
+        "arachnoid granulation",
+        "arachnoid granulations",
+        "arachnoid villi"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "csf"
+    },
+    {
+      "id": "subarachnoid-space",
+      "name": "Subarachnoid space",
+      "accept": [
+        "subarachnoid space"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "dura-mater",
+      "name": "Meningeal dura mater",
+      "accept": [
+        "meningeal dura mater",
+        "dura mater",
+        "dura",
+        "meningeal layer"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "choroid-plexus",
+      "name": "Choroid plexus",
+      "accept": [
+        "choroid plexus"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "csf"
+    },
+    {
+      "id": "lateral-ventricle",
+      "name": "Right lateral ventricle",
+      "accept": [
+        "right lateral ventricle",
+        "lateral ventricle"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "interventricular-foramen",
+      "name": "Interventricular foramen",
+      "accept": [
+        "interventricular foramen",
+        "foramen of monro"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "third-ventricle",
+      "name": "Third ventricle",
+      "accept": [
+        "third ventricle",
+        "3rd ventricle"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "cerebral-aqueduct",
+      "name": "Cerebral aqueduct",
+      "accept": [
+        "cerebral aqueduct",
+        "aqueduct of sylvius",
+        "mesencephalic aqueduct"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "median-aperture",
+      "name": "Median aperture",
+      "accept": [
+        "median aperture",
+        "foramen of magendie"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "lateral-aperture",
+      "name": "Lateral aperture",
+      "accept": [
+        "lateral aperture",
+        "lateral apertures",
+        "foramen of luschka"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "fourth-ventricle",
+      "name": "Fourth ventricle",
+      "accept": [
+        "fourth ventricle",
+        "4th ventricle"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "central-canal",
+      "name": "Central canal",
+      "accept": [
+        "central canal"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "spinal-cord-section"
+    }
+  ]
+}

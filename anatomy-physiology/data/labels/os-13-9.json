@@ -1,0 +1,75 @@
+{
+  "figure": "os-13-9",
+  "labels": [
+    {
+      "id": "lateral-ventricle",
+      "name": "Lateral ventricle",
+      "accept": [
+        "lateral ventricle",
+        "lateral ventricles"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "ventricles-brain"
+    },
+    {
+      "id": "striatum",
+      "name": "Striatum",
+      "accept": [
+        "striatum",
+        "corpus striatum"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "basal-nuclei"
+    },
+    {
+      "id": "caudate",
+      "name": "Caudate",
+      "accept": [
+        "caudate",
+        "caudate nucleus"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "basal-nuclei"
+    },
+    {
+      "id": "putamen",
+      "name": "Putamen",
+      "accept": [
+        "putamen"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "basal-nuclei"
+    },
+    {
+      "id": "corpus-callosum",
+      "name": "Corpus callosum",
+      "accept": [
+        "corpus callosum"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "globus-pallidus",
+      "name": "Globus pallidus",
+      "accept": [
+        "globus pallidus"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "basal-nuclei"
+    }
+  ]
+}

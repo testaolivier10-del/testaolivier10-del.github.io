@@ -1,0 +1,58 @@
+{
+  "figure": "os-16-12",
+  "labels": [
+    {
+      "id": "lateral-corticospinal-tract",
+      "name": "Lateral corticospinal tract",
+      "accept": [
+        "lateral corticospinal tract"
+      ],
+      "lines": [
+        0,
+        1,
+        2
+      ],
+      "concept": "corticospinal"
+    },
+    {
+      "id": "anterior-corticospinal-tract",
+      "name": "Anterior corticospinal tract",
+      "accept": [
+        "anterior corticospinal tract",
+        "ventral corticospinal tract"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "corticospinal"
+    },
+    {
+      "id": "dorsal-column",
+      "name": "Dorsal column",
+      "accept": [
+        "dorsal column",
+        "posterior column",
+        "dorsal columns"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "ascending-pathways"
+    },
+    {
+      "id": "spinothalamic-tracts",
+      "name": "Spinothalamic tracts",
+      "accept": [
+        "spinothalamic tracts",
+        "spinothalamic tract",
+        "anterolateral system"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "ascending-pathways"
+    }
+  ]
+}

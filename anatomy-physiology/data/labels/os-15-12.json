@@ -1,0 +1,74 @@
+{
+  "figure": "os-15-12",
+  "labels": [
+    {
+      "id": "cingulate-gyrus",
+      "name": "Cingulate gyrus",
+      "accept": [
+        "cingulate gyrus"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": null
+    },
+    {
+      "id": "hypothalamic-nuclei",
+      "name": "Hypothalamic nuclei",
+      "accept": [
+        "hypothalamic nuclei",
+        "hypothalamus"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "hypothalamus"
+    },
+    {
+      "id": "corpus-callosum",
+      "name": "Corpus callosum",
+      "accept": [
+        "corpus callosum"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "amygdala",
+      "name": "Amygdala",
+      "accept": [
+        "amygdala"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "limbic-system"
+    },
+    {
+      "id": "thalamus",
+      "name": "Thalamus",
+      "accept": [
+        "thalamus"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "diencephalon"
+    },
+    {
+      "id": "hippocampus",
+      "name": "Hippocampus",
+      "accept": [
+        "hippocampus"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "limbic-system"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "figure": "os-13-12",
+  "labels": [
+    {
+      "id": "midbrain",
+      "name": "Midbrain",
+      "accept": [
+        "midbrain",
+        "mesencephalon"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "brainstem"
+    },
+    {
+      "id": "pons",
+      "name": "Pons",
+      "accept": [
+        "pons"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "brainstem"
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla",
+        "medulla oblongata"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "brainstem"
+    }
+  ]
+}

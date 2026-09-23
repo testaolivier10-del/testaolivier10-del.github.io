@@ -1,0 +1,40 @@
+{
+  "figure": "os-13-11",
+  "labels": [
+    {
+      "id": "thalamus",
+      "name": "Thalamus",
+      "accept": [
+        "thalamus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "diencephalon"
+    },
+    {
+      "id": "hypothalamus",
+      "name": "Hypothalamus",
+      "accept": [
+        "hypothalamus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "hypothalamus"
+    },
+    {
+      "id": "pituitary-gland",
+      "name": "Pituitary gland",
+      "accept": [
+        "pituitary gland",
+        "pituitary",
+        "hypophysis"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs"
+    }
+  ]
+}

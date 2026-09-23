@@ -1,0 +1,76 @@
+{
+  "figure": "os-13-6",
+  "labels": [
+    {
+      "id": "cerebrum",
+      "name": "Cerebrum",
+      "accept": [
+        "cerebrum"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "corpus-callosum",
+      "name": "Corpus callosum",
+      "accept": [
+        "corpus callosum"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "longitudinal-fissure",
+      "name": "Longitudinal fissure",
+      "accept": [
+        "longitudinal fissure"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "right-hemisphere",
+      "name": "Right hemisphere",
+      "accept": [
+        "right hemisphere",
+        "right cerebral hemisphere"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "left-hemisphere",
+      "name": "Left hemisphere",
+      "accept": [
+        "left hemisphere",
+        "left cerebral hemisphere"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "cerebral-cortex",
+      "name": "Cerebral cortex",
+      "accept": [
+        "cerebral cortex",
+        "cortex"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cerebrum"
+    }
+  ]
+}

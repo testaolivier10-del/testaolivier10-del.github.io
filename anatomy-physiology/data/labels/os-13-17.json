@@ -1,0 +1,162 @@
+{
+  "figure": "os-13-17",
+  "labels": [
+    {
+      "id": "veins",
+      "name": "Veins",
+      "accept": [
+        "veins",
+        "vein"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "blood-vessel-basics"
+    },
+    {
+      "id": "superior-sagittal-sinus",
+      "name": "Superior sagittal sinus",
+      "accept": [
+        "superior sagittal sinus",
+        "sagittal sinus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "bone",
+      "name": "Bone",
+      "accept": [
+        "bone",
+        "skull",
+        "cranial bone"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cranial-bones"
+    },
+    {
+      "id": "dura-mater",
+      "name": "Dura mater",
+      "accept": [
+        "dura mater",
+        "dura"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "arachnoid-mater",
+      "name": "Arachnoid mater",
+      "accept": [
+        "arachnoid mater",
+        "arachnoid"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "subdural-space",
+      "name": "Subdural space",
+      "accept": [
+        "subdural space"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "subarachnoid-space",
+      "name": "Subarachnoid space",
+      "accept": [
+        "subarachnoid space"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "arachnoid-granulation",
+      "name": "Arachnoid granulation villi",
+      "accept": [
+        "arachnoid granulation",
+        "arachnoid granulations",
+        "arachnoid villi",
+        "arachnoid granulation villi"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "csf"
+    },
+    {
+      "id": "pia-mater",
+      "name": "Pia mater",
+      "accept": [
+        "pia mater",
+        "pia"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "meninges"
+    },
+    {
+      "id": "arachnoid-trabeculae",
+      "name": "Arachnoid trabeculae",
+      "accept": [
+        "arachnoid trabeculae",
+        "trabeculae"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": null
+    },
+    {
+      "id": "longitudinal-fissure",
+      "name": "Longitudinal fissure",
+      "accept": [
+        "longitudinal fissure"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "cerebral-cortex",
+      "name": "Cerebral cortex",
+      "accept": [
+        "cerebral cortex",
+        "cortex"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "cerebrum"
+    },
+    {
+      "id": "cerebral-vein",
+      "name": "Cerebral vein",
+      "accept": [
+        "cerebral vein"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": null
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "figure": "os-14-23",
+  "labels": [
+    {
+      "id": "hip",
+      "name": "Hip",
+      "accept": [
+        "hip",
+        "hips"
+      ],
+      "concept": null,
+      "box": [
+        142,
+        118,
+        24,
+        44
+      ]
+    },
+    {
+      "id": "leg",
+      "name": "Leg",
+      "accept": [
+        "leg",
+        "legs"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": null
+    },
+    {
+      "id": "trunk",
+      "name": "Trunk",
+      "accept": [
+        "trunk"
+      ],
+      "concept": null,
+      "box": [
+        238,
+        125,
+        32,
+        70
+      ]
+    },
+    {
+      "id": "neck",
+      "name": "Neck",
+      "accept": [
+        "neck"
+      ],
+      "concept": null,
+      "box": [
+        288,
+        145,
+        34,
+        62
+      ]
+    },
+    {
+      "id": "head",
+      "name": "Head",
+      "accept": [
+        "head"
+      ],
+      "concept": null,
+      "box": [
+        338,
+        160,
+        34,
+        65
+      ]
+    },
+    {
+      "id": "shoulder",
+      "name": "Shoulder",
+      "accept": [
+        "shoulder",
+        "shoulders"
+      ],
+      "concept": null,
+      "box": [
+        368,
+        160,
+        52,
+        105
+      ]
+    },
+    {
+      "id": "arm",
+      "name": "Arm",
+      "accept": [
+        "arm",
+        "arms"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": null
+    },
+    {
+      "id": "elbow",
+      "name": "Elbow",
+      "accept": [
+        "elbow"
+      ],
+      "concept": null,
+      "box": [
+        494,
+        200,
+        55,
+        72
+      ]
+    },
+    {
+      "id": "forearm",
+      "name": "Forearm",
+      "accept": [
+        "forearm"
+      ],
+      "concept": null,
+      "box": [
+        504,
+        218,
+        70,
+        93
+      ]
+    },
+    {
+      "id": "wrist",
+      "name": "Wrist",
+      "accept": [
+        "wrist"
+      ],
+      "concept": null,
+      "box": [
+        549,
+        238,
+        50,
+        58
+      ]
+    },
+    {
+      "id": "hand",
+      "name": "Hand",
+      "accept": [
+        "hand",
+        "hands"
+      ],
+      "concept": null,
+      "box": [
+        611,
+        291,
+        63,
+        50
+      ]
+    },
+    {
+      "id": "little-finger",
+      "name": "Little",
+      "accept": [
+        "little",
+        "little finger",
+        "pinky"
+      ],
+      "concept": null,
+      "box": [
+        649,
+        356,
+        57,
+        40
+      ]
+    },
+    {
+      "id": "ring-finger",
+      "name": "Ring",
+      "accept": [
+        "ring",
+        "ring finger"
+      ],
+      "concept": null,
+      "box": [
+        666,
+        384,
+        55,
+        42
+      ]
+    },
+    {
+      "id": "middle-finger",
+      "name": "Middle",
+      "accept": [
+        "middle",
+        "middle finger"
+      ],
+      "concept": null,
+      "box": [
+        676,
+        411,
+        75,
+        53
+      ]
+    },
+    {
+      "id": "index-finger",
+      "name": "Index",
+      "accept": [
+        "index",
+        "index finger"
+      ],
+      "concept": null,
+      "box": [
+        714,
+        434,
+        62,
+        42
+      ]
+    },
+    {
+      "id": "thumb",
+      "name": "Thumb",
+      "accept": [
+        "thumb"
+      ],
+      "concept": null,
+      "box": [
+        714,
+        456,
+        80,
+        50
+      ]
+    },
+    {
+      "id": "eye",
+      "name": "Eye",
+      "accept": [
+        "eye",
+        "eyes"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null
+    },
+    {
+      "id": "nose",
+      "name": "Nose",
+      "accept": [
+        "nose"
+      ],
+      "concept": null,
+      "box": [
+        784,
+        600,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "face",
+      "name": "Face",
+      "accept": [
+        "face"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": null
+    },
+    {
+      "id": "lips",
+      "name": "Lips",
+      "accept": [
+        "lips",
+        "lip"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null
+    },
+    {
+      "id": "teeth-gums-jaw",
+      "name": "Teeth, gums, and jaw",
+      "accept": [
+        "teeth gums and jaw",
+        "teeth",
+        "jaw"
+      ],
+      "concept": null,
+      "box": [
+        665,
+        723,
+        103,
+        95
+      ]
+    },
+    {
+      "id": "tongue",
+      "name": "Tongue",
+      "accept": [
+        "tongue"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": null
+    },
+    {
+      "id": "pharynx",
+      "name": "Pharynx",
+      "accept": [
+        "pharynx",
+        "throat"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "pharynx"
+    },
+    {
+      "id": "foot",
+      "name": "Foot",
+      "accept": [
+        "foot",
+        "feet"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null
+    },
+    {
+      "id": "toes",
+      "name": "Toes",
+      "accept": [
+        "toes",
+        "toe"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": null
+    },
+    {
+      "id": "genitals",
+      "name": "Genitals",
+      "accept": [
+        "genitals",
+        "genitalia"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null
+    }
+  ]
+}

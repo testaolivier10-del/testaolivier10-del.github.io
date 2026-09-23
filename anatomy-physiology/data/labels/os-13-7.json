@@ -1,0 +1,108 @@
+{
+  "figure": "os-13-7",
+  "labels": [
+    {
+      "id": "central-sulcus",
+      "name": "Central sulcus",
+      "accept": [
+        "central sulcus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cerebral-lobes"
+    },
+    {
+      "id": "precentral-gyrus",
+      "name": "Precentral gyrus",
+      "accept": [
+        "precentral gyrus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "postcentral-gyrus",
+      "name": "Postcentral gyrus",
+      "accept": [
+        "postcentral gyrus"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "frontal-lobe",
+      "name": "Frontal lobe",
+      "accept": [
+        "frontal lobe"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cerebral-lobes"
+    },
+    {
+      "id": "parietal-lobe",
+      "name": "Parietal lobe",
+      "accept": [
+        "parietal lobe"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cerebral-lobes"
+    },
+    {
+      "id": "parieto-occipital-sulcus",
+      "name": "Parieto-occipital sulcus",
+      "accept": [
+        "parieto-occipital sulcus",
+        "parietooccipital sulcus"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "cerebral-lobes"
+    },
+    {
+      "id": "lateral-sulcus",
+      "name": "Lateral sulcus",
+      "accept": [
+        "lateral sulcus",
+        "lateral fissure",
+        "sylvian fissure"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "cerebral-lobes"
+    },
+    {
+      "id": "occipital-lobe",
+      "name": "Occipital lobe",
+      "accept": [
+        "occipital lobe"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cerebral-lobes"
+    },
+    {
+      "id": "temporal-lobe",
+      "name": "Temporal lobe",
+      "accept": [
+        "temporal lobe"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cerebral-lobes"
+    }
+  ]
+}

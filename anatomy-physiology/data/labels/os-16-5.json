@@ -1,0 +1,195 @@
+{
+  "figure": "os-16-5",
+  "labels": [
+    {
+      "id": "motor-areas",
+      "name": "Motor areas",
+      "accept": [
+        "motor areas",
+        "motor cortex"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "sensory-areas",
+      "name": "Sensory areas and related association areas",
+      "accept": [
+        "sensory areas",
+        "sensory areas and related association areas"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "primary-motor-cortex",
+      "name": "Primary motor cortex",
+      "accept": [
+        "primary motor cortex",
+        "motor cortex",
+        "precentral gyrus",
+        "m1"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "motor-association-area",
+      "name": "Motor association area",
+      "accept": [
+        "motor association area",
+        "premotor cortex",
+        "premotor area"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "frontal-eye-field",
+      "name": "Frontal eye field",
+      "accept": [
+        "frontal eye field",
+        "frontal eye fields"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "prefrontal-cortex",
+      "name": "Prefrontal cortex",
+      "accept": [
+        "prefrontal cortex"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "brocas-area",
+      "name": "Broca’s area",
+      "accept": [
+        "broca's area",
+        "broca area",
+        "brocas area"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "language-areas"
+    },
+    {
+      "id": "primary-somatosensory-cortex",
+      "name": "Primary somatosensory cortex",
+      "accept": [
+        "primary somatosensory cortex",
+        "somatosensory cortex",
+        "postcentral gyrus",
+        "s1"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "sensory-association-area",
+      "name": "Sensory association area",
+      "accept": [
+        "sensory association area",
+        "somatosensory association area",
+        "somatosensory association cortex"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "wernickes-area",
+      "name": "Wernicke’s area",
+      "accept": [
+        "wernicke's area",
+        "wernicke area",
+        "wernickes area"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "language-areas"
+    },
+    {
+      "id": "general-interpretation-area",
+      "name": "General interpretation area",
+      "accept": [
+        "general interpretation area",
+        "gnostic area"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "primary-visual-cortex",
+      "name": "Primary visual cortex",
+      "accept": [
+        "primary visual cortex",
+        "visual cortex",
+        "v1"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "visual-association-area",
+      "name": "Visual association area",
+      "accept": [
+        "visual association area",
+        "visual association cortex"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "primary-auditory-cortex",
+      "name": "Primary auditory cortex",
+      "accept": [
+        "primary auditory cortex",
+        "auditory cortex",
+        "a1"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "functional-areas"
+    },
+    {
+      "id": "auditory-association-area",
+      "name": "Auditory association area",
+      "accept": [
+        "auditory association area",
+        "auditory association cortex"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "functional-areas"
+    }
+  ]
+}
