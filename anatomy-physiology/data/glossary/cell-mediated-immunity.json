@@ -1,0 +1,27 @@
+{
+  "helper-t": {
+    "def": "A CD4 T cell that recognizes antigen in MHC class II and, once activated, directs other immune cells with cytokines and surface contact. Th1 cells arm macrophages and cytotoxic T cells against microbes inside cells; Th2 cells direct the response to parasitic worms.",
+    "roots": [["CD", "cluster of differentiation"], ["Th", "T helper"]],
+    "say": ""
+  },
+  "cytotoxic-t": {
+    "def": "A CD8 T cell that recognizes antigen in MHC class I and kills the cell showing it, by releasing perforin (which makes pores) and granzymes (which trigger caspases) or by binding Fas with its Fas ligand, so the target dies by apoptosis.",
+    "roots": [["cyt/o", "cell"], ["tox-", "poison"], ["perfor-", "to bore through"]],
+    "say": "sy-toh-TOK-sik"
+  },
+  "regulatory-t": {
+    "def": "A CD4 T cell, set up by the gene-control protein FOXP3, that suppresses other lymphocytes with IL-10 and TGF-beta, by taking up IL-2 and by removing B7 from dendritic cells. It keeps responses to self in check and ends responses after an infection.",
+    "roots": [["regul-", "rule"]],
+    "say": ""
+  },
+  "t-activation": {
+    "def": "The switching on of a naïve T cell in a lymph node, which needs recognition of its peptide in MHC (signal 1), costimulation by B7 binding CD28 (signal 2) and cytokines (signal 3). IL-2 then drives clonal expansion into effector T cells and memory T cells.",
+    "roots": [["co-", "together"], ["effect-", "to bring about"]],
+    "say": ""
+  },
+  "transplant-rejection": {
+    "def": "Immune destruction of a transplanted organ or tissue, mostly by recipient T cells reacting to the donor's HLA (MHC) proteins: hyperacute (minutes, existing antibodies), acute (days to months, T cells) or chronic (months to years). Tissue typing matches HLA; in graft-versus-host disease, donor T cells attack the recipient.",
+    "roots": [["trans-", "across"], ["plant-", "to plant"], ["HLA", "human leukocyte antigen"]],
+    "say": ""
+  }
+}

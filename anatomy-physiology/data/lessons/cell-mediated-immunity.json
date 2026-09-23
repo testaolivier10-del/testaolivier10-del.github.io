@@ -1,0 +1,48 @@
+{
+  "topic": "cell-mediated-immunity",
+  "hook": "<p>Mr. Okafor, 52, received a kidney from a deceased donor eight weeks ago. He ran out of his tacrolimus tablets on a trip and skipped them for five days. Now he has a low fever, the new kidney is swollen and tender, and he is making much less urine. A biopsy shows the kidney packed with his own T cells, killing the donor cells one by one. To see why one missed drug lets this happen, you need to know how T cells are switched on and what each kind does.</p>",
+  "prereq": [
+    {
+      "q": "Which cells carry MHC class I proteins?",
+      "options": ["Only antigen-presenting cells", "Nearly every cell with a nucleus", "Only T cells and B cells"],
+      "correct": 1,
+      "why": "MHC class I proteins sit on nearly every nucleated cell and display peptides made inside that cell. MHC class II proteins are the ones found mainly on antigen-presenting cells.",
+      "review": "adaptive-immunity"
+    },
+    {
+      "q": "What is apoptosis?",
+      "options": ["Programmed cell death, in which a cell dismantles itself into tidy fragments", "Bursting of a cell after water rushes in", "Division of a cell into two identical daughters"],
+      "correct": 0,
+      "why": "Apoptosis is programmed cell death: enzymes inside the cell take it apart into membrane-wrapped fragments that phagocytes engulf, with little inflammation.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "A lymphocyte whose receptor fits one antigen meets that antigen and multiplies into many identical cells. What is this called?",
+      "options": ["Negative selection", "Clonal selection and expansion", "Antigen processing"],
+      "correct": 1,
+      "why": "Clonal selection picks out the rare lymphocyte whose receptor fits the antigen; clonal expansion is its division into a clone of identical cells.",
+      "review": "adaptive-immunity"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-21-20",
+    "caption": "Helper and cytotoxic T cells. Hide the labels and name the protein that pairs with MHC II, the one that pairs with MHC I, and the two weapons the cytotoxic T cell releases."
+  },
+  "chain": [
+    { "cause": "A dendritic cell engulfs a virus at the site of infection, senses it, and carries viral peptides in its MHC proteins to a lymph node.", "effect": "It displays those peptides and makes B7 proteins on its surface." },
+    { "cause": "A naïve T cell whose receptor fits one of the peptides binds it (signal 1), and its CD28 binds the B7 (costimulation, signal 2).", "effect": "The T cell is activated and starts making IL-2 and IL-2 receptor proteins." },
+    { "cause": "IL-2 acts on the same cell and its neighbors.", "effect": "The T cell divides again and again: clonal expansion into thousands of identical effector T cells and some memory T cells." },
+    { "cause": "Effector cytotoxic T cells leave the node and find infected cells showing the viral peptide in MHC class I.", "effect": "They release perforin and granzymes and engage Fas, switching on the target's caspases." },
+    { "cause": "Caspases take the infected cell apart from inside.", "effect": "The cell dies by apoptosis before it can release new virus, and macrophages engulf the fragments." }
+  ],
+  "misconception": {
+    "wrong": "T cells recognize a virus or bacterium directly, the way antibodies do.",
+    "right": "A T cell receptor cannot bind a free microbe or a whole protein. It binds only a short peptide held in an MHC protein on another cell's surface. That is why T cells need antigen-presenting cells to be activated, why cytotoxic T cells find infected cells rather than free virus, and why a cell that stops making MHC class I becomes invisible to them."
+  },
+  "check": ["anp-cell-mediated-immunity-1", "anp-cell-mediated-immunity-4", "anp-cell-mediated-immunity-6", "anp-cell-mediated-immunity-8", "anp-cell-mediated-immunity-11", "anp-cell-mediated-immunity-13", "anp-cell-mediated-immunity-16"],
+  "summary": "<p>T cells see only peptides held in MHC proteins. CD4 T cells (helper and regulatory) answer MHC class II; CD8 T cells (cytotoxic) answer MHC class I. A naïve T cell is activated in a lymph node by a dendritic cell that provides recognition (signal 1), costimulation through B7 and CD28 (signal 2) and cytokines (signal 3); recognition without costimulation causes anergy. IL-2 drives clonal expansion into effector and memory T cells. Helper T cells direct B cells, cytotoxic T cells and macrophages with cytokines; Th1 cells fight microbes inside cells and Th2 cells fight worms. Cytotoxic T cells kill infected and abnormal cells by apoptosis with perforin, granzymes and Fas ligand. Regulatory T cells suppress other lymphocytes. Transplant rejection is mainly T cells reacting to foreign HLA, reduced by tissue typing, crossmatching and drugs that block T cell activation; in graft-versus-host disease, donor T cells attack the recipient.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-37", "label": "NREMT: Patients with special challenges (transplant recipients)" }
+  ]
+}

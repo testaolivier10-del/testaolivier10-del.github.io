@@ -30,7 +30,7 @@
   },
   "chain": [
     { "cause": "Your liver makes albumin and releases it into the plasma.", "effect": "Albumin becomes the most abundant plasma protein, dissolved in the blood but too large to cross most capillary walls." },
-    { "cause": "Albumin is held inside the capillaries while water and small solutes cross freely.", "effect": "The plasma has an osmotic pressure that the interstitial fluid lacks, and water is drawn toward the blood." },
+    { "cause": "Albumin is held inside the capillaries while water and small solutes cross freely.", "effect": "The plasma has a much larger protein osmotic pressure than the interstitial fluid, and water is drawn toward the blood." },
     { "cause": "This osmotic pull opposes the blood pressure pushing fluid out through the capillary walls.", "effect": "Most of the water in plasma stays in the blood, and plasma volume holds steady." },
     { "cause": "If a failing liver makes too little albumin, the osmotic pull weakens.", "effect": "More water leaves the blood for the tissues, which swell, and plasma volume falls." }
   ],

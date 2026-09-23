@@ -100,6 +100,27 @@
       ]
     },
     {
+      "id": "normal-blood",
+      "name": "Normal Blood",
+      "accept": [
+        "normal blood",
+        "normal"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "hematocrit",
+      "cover": true,
+      "note": "A tube title printed under a hematocrit tube. Questions on this figure (anp-blood-composition-3, anp-erythrocytes-17) ask the student to read the tubes and name which is normal, low or high, so the titles would give the answers away. Covered for good; the normal ranges stay visible.",
+      "box": [
+        307,
+        588,
+        197,
+        26
+      ]
+    },
+    {
       "id": "anemia",
       "name": "Anemia",
       "accept": [
@@ -110,6 +131,8 @@
         14
       ],
       "concept": "anemia",
+      "cover": true,
+      "note": "A tube title printed under a hematocrit tube. Questions on this figure (anp-blood-composition-3, anp-erythrocytes-17) ask the student to read the tubes and name which is normal, low or high, so the titles would give the answers away. Covered for good; the normal ranges stay visible.",
       "box": [
         635,
         588,
@@ -127,11 +150,55 @@
         15
       ],
       "concept": "polycythemia",
+      "cover": true,
+      "note": "A tube title printed under a hematocrit tube. Questions on this figure (anp-blood-composition-3, anp-erythrocytes-17) ask the student to read the tubes and name which is normal, low or high, so the titles would give the answers away. Covered for good; the normal ranges stay visible.",
       "box": [
         904,
         588,
         192,
         32
+      ]
+    },
+    {
+      "id": "depressed-hematocrit",
+      "name": "Depressed hematocrit %",
+      "accept": [
+        "depressed hematocrit",
+        "low hematocrit"
+      ],
+      "lines": [
+        16,
+        20
+      ],
+      "concept": "hematocrit",
+      "cover": true,
+      "note": "A tube title printed under a hematocrit tube. Questions on this figure (anp-blood-composition-3, anp-erythrocytes-17) ask the student to read the tubes and name which is normal, low or high, so the titles would give the answers away. Covered for good; the normal ranges stay visible.",
+      "box": [
+        609,
+        618,
+        170,
+        57
+      ]
+    },
+    {
+      "id": "elevated-hematocrit",
+      "name": "Elevated hematocrit %",
+      "accept": [
+        "elevated hematocrit",
+        "high hematocrit"
+      ],
+      "lines": [
+        17,
+        21
+      ],
+      "concept": "hematocrit",
+      "cover": true,
+      "note": "A tube title printed under a hematocrit tube. Questions on this figure (anp-blood-composition-3, anp-erythrocytes-17) ask the student to read the tubes and name which is normal, low or high, so the titles would give the answers away. Covered for good; the normal ranges stay visible.",
+      "box": [
+        915,
+        619,
+        170,
+        56
       ]
     }
   ]

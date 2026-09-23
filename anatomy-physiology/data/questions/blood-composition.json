@@ -28,7 +28,7 @@
     "options": [
       "Fibrinogen: without it, blood leaks out of the capillaries into the tissues",
       "Gamma globulins: without them, infection inflames the tissues",
-      "Albumin: less of it means a weaker osmotic pull holding water in the blood",
+      "Albumin: less of it means a weaker osmotic pull holding water in his blood vessels",
       "Beta globulins: without them, hormones cannot reach the kidneys"
     ],
     "correct": 2,
@@ -132,7 +132,7 @@
     "core": ["structure-function"],
     "q": "What is the buffy coat in a spun blood sample?",
     "options": [
-      "White blood cells and platelets between plasma and red cells",
+      "White blood cells and platelets, in a thin band between plasma and red cells",
       "The top layer of straw-colored plasma",
       "The packed red blood cells at the bottom",
       "A film of fat that floats on top of the plasma after a fatty meal"
@@ -346,7 +346,7 @@
       "Blood is drawn into a plain tube with nothing to stop clotting",
       "The sample stands for about half an hour and forms a clot",
       "Fibrinogen is converted into the threads of the clot",
-      "The tube is spun, and the fluid on top, still rich in fibrinogen, is collected as serum"
+      "The tube is spun and the fibrinogen-rich fluid on top is kept as serum"
     ],
     "correct": 3,
     "why": {
