@@ -1,0 +1,89 @@
+{
+  "topic": "lung-volumes",
+  "hook": "<p>Mr. Adebayo, 58, broke four ribs in a fall. Every breath hurts, so he takes tiny breaths, 32 of them a minute. The air he moves each minute looks normal, about 6.4 liters, yet he is drowsy and his blood carbon dioxide is climbing. The problem is not how much air he moves. It is how little of each breath gets past his airways to his alveoli.</p>",
+  "prereq": [
+    {
+      "q": "Where in the airways does gas exchange with the blood happen?",
+      "options": [
+        "Along the whole airway, from the nose onward",
+        "Only in the respiratory zone: respiratory bronchioles, alveolar ducts and alveoli",
+        "Only in the trachea and the main bronchi"
+      ],
+      "correct": 1,
+      "why": "The conducting zone, from the nose to the terminal bronchioles, only carries, warms and cleans air. Gas exchange happens only in the respiratory zone, where alveoli sit next to capillaries.",
+      "review": "upper-airway"
+    },
+    {
+      "q": "During a quiet breath in, what makes air flow into the lungs?",
+      "options": [
+        "The diaphragm contracts, the chest enlarges, and alveolar pressure falls below atmospheric pressure",
+        "Air is pushed in because atmospheric pressure rises during each breath",
+        "The lungs actively expand themselves by contracting muscle in the alveolar walls"
+      ],
+      "correct": 0,
+      "why": "Contraction of the diaphragm and external intercostals enlarges the chest. By Boyle's law, the larger volume lowers alveolar pressure below atmospheric pressure, and air flows in down that pressure gradient.",
+      "review": "ventilation-mechanics"
+    },
+    {
+      "q": "An airway narrows to half its radius. What happens to its resistance to airflow?",
+      "options": [
+        "It doubles",
+        "It rises about 16-fold",
+        "It halves"
+      ],
+      "correct": 1,
+      "why": "Resistance varies with the fourth power of the radius, so halving the radius raises resistance 2 × 2 × 2 × 2 = 16 times.",
+      "review": "ventilation-mechanics"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-18",
+    "caption": "A spirogram with the four volumes and four capacities. Hide the labels and name each band and bar."
+  },
+  "chain": [
+    {
+      "cause": "Pain makes a patient breathe faster with much smaller breaths: tidal volume falls from 500 to 200 mL while the rate rises.",
+      "effect": "Minute ventilation, tidal volume times rate, stays about normal."
+    },
+    {
+      "cause": "Each breath must first fill the conducting zone, about 150 mL of anatomical dead space, whatever the breath's size.",
+      "effect": "Dead space takes up a much larger share of each small breath: 150 of 200 mL instead of 150 of 500 mL."
+    },
+    {
+      "cause": "Only the part of each breath beyond the dead space reaches the alveoli.",
+      "effect": "Alveolar ventilation, (tidal volume − dead space) × rate, falls sharply, here from 4.2 to 1.6 L/min."
+    },
+    {
+      "cause": "Less fresh air reaches the alveoli each minute, while the tissues keep using oxygen and making carbon dioxide at the same rate.",
+      "effect": "Oxygen in the alveolar air falls and carbon dioxide builds up, so the blood leaving the lungs carries less oxygen and more carbon dioxide."
+    }
+  ],
+  "misconception": {
+    "wrong": "Minute ventilation tells you how much fresh air reaches the alveoli, so breathing faster always means better ventilation.",
+    "right": "Minute ventilation counts all the air moved, including the roughly 150 mL of each breath that only fills the conducting airways and leaves again. What reaches the alveoli is alveolar ventilation, (tidal volume − dead space) × rate. Fast, shallow breathing can keep minute ventilation normal while alveolar ventilation collapses: 24 breaths of 250 mL deliver only 2.4 L/min of fresh air, against 4.2 L/min from 12 breaths of 500 mL."
+  },
+  "check": [
+    "anp-lung-volumes-2",
+    "anp-lung-volumes-6",
+    "anp-lung-volumes-9",
+    "anp-lung-volumes-11",
+    "anp-lung-volumes-12",
+    "anp-lung-volumes-14",
+    "anp-lung-volumes-18"
+  ],
+  "summary": "<p>Four respiratory volumes stack up to fill the lungs: tidal volume (about 500 mL, one quiet breath), inspiratory reserve volume (extra air you can breathe in), expiratory reserve volume (extra air you can breathe out) and residual volume (air you can never breathe out). Capacities are sums of volumes: inspiratory capacity (TV + IRV), functional residual capacity (ERV + RV, the resting balance point), vital capacity (TV + IRV + ERV) and total lung capacity (all four). Spirometry cannot measure residual volume or any capacity that includes it. In forced spirometry, obstructive disease lowers the FEV1/FVC ratio below about 0.70 and traps air; restrictive disease lowers total lung capacity and FVC with a normal or high ratio. Minute ventilation is tidal volume × respiratory rate, but only alveolar ventilation, (tidal volume − dead space) × rate, reaches the alveoli, so shallow breathing wastes a larger share of each breath.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-19",
+      "label": "NREMT: Respiratory emergencies"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-10",
+      "label": "NREMT: Ventilation and oxygen equipment"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-31",
+      "label": "NREMT: Chest and abdominal trauma (rib fractures)"
+    }
+  ]
+}

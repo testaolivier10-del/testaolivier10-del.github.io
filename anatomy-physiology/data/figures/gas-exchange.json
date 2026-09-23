@@ -1,0 +1,38 @@
+{
+  "os-22-21": {
+    "file": "figures/openstax/os-22-21.jpg",
+    "w": 1840,
+    "h": 625,
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.21",
+      "section": "22.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/73d4c0445ad4852b20f98c5d64d65c1c5e589d56",
+      "page": "22-4-gas-exchange"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/73d4c0445ad4852b20f98c5d64d65c1c5e589d56",
+    "alt": "Three identical sealed containers, each with a pressure gauge below it. The first holds only oxygen molecules and its gauge reads 159 mm Hg. The second holds only nitrogen molecules and reads 597 mm Hg. The third holds both sets of molecules mixed together and reads 756 mm Hg, the sum of the other two.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.21",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-22-23": {
+    "file": "figures/openstax/os-22-23.jpg",
+    "w": 2165,
+    "h": 980,
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.23",
+      "section": "22.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/51782420a77f633a98451518ad50874b71d9c762",
+      "page": "22-4-gas-exchange"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/51782420a77f633a98451518ad50874b71d9c762",
+    "alt": "Gas exchange in a body tissue. On the left, orange tissue cells with blue nuclei; in the middle, a pale band of interstitial fluid; on the right, blood plasma in a capillary holding a red blood cell. Black arrows carry carbon dioxide out of the tissue cells, across the interstitial fluid and into the plasma and the red blood cell. Purple arrows carry oxygen the other way: a large one from the red blood cell, where it has detached from hemoglobin, and a small one from oxygen dissolved in the plasma, into the tissue cells.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.23",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

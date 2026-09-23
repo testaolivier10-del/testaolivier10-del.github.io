@@ -70,7 +70,7 @@
         "effector": {
           "text": "Smooth muscle of skin blood vessels, and skeletal muscles",
           "short": "Vessel smooth muscle; skeletal muscle",
-          "why": "Effectors carry out the commands. Smooth muscle narrows the skin vessels; skeletal muscles contract in rapid small bursts."
+          "why": "Effectors carry out the commands. Smooth muscle narrows the skin vessels; skeletal muscles contract in rapid small bursts (shivering)."
         },
         "response": {
           "text": "Skin vessels constrict to keep heat in, and muscles shiver to release heat, so body temperature rises back toward the set point",
@@ -80,7 +80,7 @@
       },
       "distractors": [
         {
-          "text": "Glands in the skin release sweat",
+          "text": "Sweat glands release sweat",
           "why": "Sweat carries heat away. That is a response for when temperature rises, the opposite of what this loop needs."
         },
         {
@@ -148,13 +148,13 @@
           "why": "The control center compares the higher temperature with the set point and sends out commands."
         },
         "efferent": {
-          "text": "Nerves to skin blood vessels and to glands in the skin",
-          "short": "Nerves to vessels and skin glands",
+          "text": "Nerves to skin blood vessels and to sweat glands",
+          "short": "Nerves to vessels and sweat glands",
           "why": "The efferent pathway carries the commands out, here as nerve signals."
         },
         "effector": {
-          "text": "Smooth muscle of skin blood vessels, and glands in the skin that release sweat",
-          "short": "Vessel smooth muscle; skin glands",
+          "text": "Smooth muscle of skin blood vessels, and sweat glands",
+          "short": "Vessel smooth muscle; sweat glands",
           "why": "The smooth muscle relaxes to widen the vessels, and the glands release sweat."
         },
         "response": {
@@ -166,7 +166,7 @@
       "distractors": [
         {
           "text": "Skeletal muscles shiver",
-          "why": "Shivers release heat. That would make the rise worse, so it belongs to the loop for falling temperature."
+          "why": "Shivering releases heat. That would make the rise worse, so it belongs to the loop for falling temperature."
         },
         {
           "text": "Skin vessels constrict to keep warm blood in",
@@ -184,10 +184,10 @@
         "options": [
           {
             "text": "It keeps rising as heat is made faster than it is lost",
-            "why": "Right. The loop detects the rise and commands the skin glands to release sweat, but sweat cools only when it evaporates. If heat is made faster than it is lost, temperature climbs, which is how exertional heat illness develops."
+            "why": "Right. The loop detects the rise and commands the sweat glands to release sweat, but sweat cools only when it evaporates. If heat is made faster than it is lost, temperature climbs, which is how exertional heat illness develops."
           },
           {
-            "text": "It stays normal, because the glands simply release more sweat",
+            "text": "It stays normal, because the sweat glands simply release more sweat",
             "why": "More sweat does not help if it cannot evaporate. It drips away and takes water, not heat, with it."
           },
           {
@@ -325,8 +325,8 @@
           "why": "The command travels in the blood to a distant target."
         },
         "effector": {
-          "text": "Blood-forming tissue inside the bones",
-          "short": "Blood-forming tissue in bones",
+          "text": "Bone marrow",
+          "short": "Bone marrow",
           "why": "This tissue responds to the hormone by producing red blood cells faster."
         },
         "response": {
@@ -355,12 +355,12 @@
         "q": "Badly damaged kidneys make very little of the hormone, even when oxygen is low. What happens to the red blood cell count?",
         "options": [
           {
-            "text": "It falls and stays low, because the blood-forming tissue never gets the command to make more",
+            "text": "It falls and stays low, because the bone marrow never gets the command to make more",
             "why": "Right. Red cells wear out and are replaced only as fast as the hormone drives production. With the efferent pathway broken, the count drifts down."
           },
           {
-            "text": "It rises, because the low oxygen acts on the bones directly",
-            "why": "The blood-forming tissue responds to the hormone, not to oxygen itself. Without the hormone, production slows."
+            "text": "It rises, because the low oxygen acts on the bone marrow directly",
+            "why": "The bone marrow responds to the hormone, not to oxygen itself. Without the hormone, production slows."
           },
           {
             "text": "It stays normal, because the lungs make up for it",

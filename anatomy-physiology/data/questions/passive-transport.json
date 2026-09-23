@@ -281,7 +281,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "You step on a tack. The pressure deforms the membranes of touch-sensing endings in the sole of your foot, and ion channels in them open. Which kind of channel opened?",
+    "q": "You step on a tack. The pressure deforms the membranes of touch-sensing nerve endings in the sole of your foot, and ion channels in them open. Which kind of channel opened?",
     "options": [
       "A voltage-gated ion channel",
       "A ligand-gated ion channel",
@@ -308,7 +308,7 @@
       "structure-function",
       "communication"
     ],
-    "q": "A channel in a muscle's membrane stays closed until a molecule released by the cell that controls the muscle binds to it. What type of channel is this?",
+    "q": "A channel in a muscle cell's membrane stays closed until a molecule released by the nerve that controls the muscle binds to it. What type of channel is this?",
     "options": [
       "A mechanically gated channel",
       "A ligand-gated channel",

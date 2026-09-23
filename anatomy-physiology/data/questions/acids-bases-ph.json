@@ -125,7 +125,7 @@
     "options": ["His blood pH has risen, because he has lost hydrogen ions", "His blood pH has fallen, because he has lost a strong acid", "His blood pH is unchanged, because stomach fluid never mixes with blood", "His blood pH has fallen, because he has gained hydroxide ions"],
     "correct": 0,
     "why": {
-      "correct": "Stomach fluid is rich in hydrogen ions. Losing it repeatedly removes acid from the body, so hydrogen ions in the blood fall and pH rises toward alkalemia. Tingling and cramps are typical of alkalemia, which makes signaling cells and muscles fire too easily.",
+      "correct": "Stomach fluid is rich in hydrogen ions. Losing it repeatedly removes acid from the body, so hydrogen ions in the blood fall and pH rises toward alkalemia. Tingling and cramps are typical of alkalemia, which makes nerves and muscles fire too easily.",
       "options": [
         "Correct. Losing acid raises blood pH, an alkalosis, and his symptoms fit alkalemia.",
         "Losing an acid takes hydrogen ions away, which raises pH. It does not lower it.",
@@ -357,9 +357,9 @@
     "options": ["Tingling around the mouth and muscle cramps", "Drowsiness sliding toward coma", "Weaker heart contractions with no other signs", "No symptoms, because the value is within the normal range"],
     "correct": 0,
     "why": {
-      "correct": "A pH of 7.52 is above 7.45: alkalemia. Alkalemia makes signaling cells and muscles fire too easily, producing tingling around the mouth and in the fingers, cramps and spasms.",
+      "correct": "A pH of 7.52 is above 7.45: alkalemia. Alkalemia makes nerves and muscles fire too easily, producing tingling around the mouth and in the fingers, cramps and spasms.",
       "options": [
-        "Correct. Overexcitable signaling cells and muscles are the signature of alkalemia.",
+        "Correct. Overexcitable nerves and muscles are the signature of alkalemia.",
         "Drowsiness and coma come from acidemia, which depresses the nervous system. Her pH is high.",
         "Weaker heart contractions go with acidemia. Her pH is on the alkaline side.",
         "The normal range ends at 7.45. A value of 7.52 is above it."

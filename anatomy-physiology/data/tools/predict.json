@@ -525,7 +525,7 @@
         "sens": "Warm-sensitive sensory receptors fire more",
         "cc": "Control center detects the rise",
         "dil": "Skin blood vessels dilate (vasodilation)",
-        "sw": "Glands in the skin release more sweat",
+        "sw": "Sweat glands release more sweat",
         "loss": "More heat leaves the body",
         "sp": "Target value stays the same"
       },
@@ -559,7 +559,7 @@
             "cc",
             "sw"
           ],
-          "why": "The control center signals glands in the skin to release sweat. As sweat evaporates, it carries heat away."
+          "why": "The control center signals the sweat glands to release sweat. As sweat evaporates, it carries heat away."
         },
         {
           "id": "heat-loss",
@@ -580,7 +580,7 @@
           "chain": [
             "sp"
           ],
-          "why": "Exercise raises your temperature, not your target. The control center compares the higher temperature with an unchanged set point and responds to the difference. (During an infection it is different: there the set point itself moves up.)"
+          "why": "Exercise raises your temperature, not your target. The control center compares the higher temperature with an unchanged set point and responds to the difference. (A fever is different: there the set point itself moves up.)"
         }
       ]
     },

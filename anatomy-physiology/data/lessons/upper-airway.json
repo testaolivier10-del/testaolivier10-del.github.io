@@ -1,0 +1,47 @@
+{
+  "topic": "upper-airway",
+  "hook": "<p>Mr. Evans, 58, is laughing at dinner when he suddenly stands up, clutching his throat. He cannot speak, cannot cough and makes no sound at all. A piece of steak has lodged in his larynx, the gateway where the paths for air and food split. Another diner wraps her arms around him from behind and gives sharp upward thrusts below his ribs until the meat flies out. Why could he not speak, and why could he not cough it out himself?</p>",
+  "prereq": [
+    {
+      "q": "Which tissue lines most of the nasal cavity and the trachea?",
+      "options": ["Simple squamous epithelium", "Pseudostratified ciliated columnar epithelium", "Keratinized stratified squamous epithelium"],
+      "correct": 1,
+      "why": "Pseudostratified ciliated columnar epithelium, with its goblet cells, is called respiratory epithelium because it lines most of the air passages. Simple squamous epithelium lines the alveoli, and keratinized stratified squamous epithelium is the epidermis.",
+      "review": "epithelium"
+    },
+    {
+      "q": "What do the paranasal sinuses have in common?",
+      "options": ["They are air spaces in skull bones around the nasal cavity", "They are blood-filled spaces in the brain's coverings", "They are cartilage plates that shape the nose"],
+      "correct": 0,
+      "why": "The frontal, maxillary, sphenoid and ethmoid sinuses are air-filled spaces inside those skull bones, lined with mucous membrane and opening into the nasal cavity.",
+      "review": "skull"
+    },
+    {
+      "q": "What do cilia on an epithelial cell do?",
+      "options": ["Absorb nutrients from the surface", "Anchor the cell to the basement membrane", "Beat to move fluid or mucus across the cell surface"],
+      "correct": 2,
+      "why": "Cilia are short hair-like projections built on microtubules. They beat in coordinated waves and move a layer of fluid or mucus across the surface of the cell.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-4",
+    "caption": "The upper airway in a midsagittal section. Hide the labels and name the three parts of the pharynx, the nasal conchae, the epiglottis, the thyroid and cricoid cartilages, and the two pairs of folds in the larynx."
+  },
+  "chain": [
+    { "cause": "You swallow, and muscles attached to the hyoid bone pull the larynx up and forward under the base of the tongue.", "effect": "The epiglottis tips down and back over the opening of the larynx, and the vocal and vestibular folds close." },
+    { "cause": "With the larynx covered and sealed, food moves down through the laryngopharynx.", "effect": "It slides past the larynx into the esophagus instead of into the airway." },
+    { "cause": "If a crumb slips past the seal, it touches sensory receptors in the lining of the larynx below the folds.", "effect": "Sensory fibers of the vagus nerve signal the brainstem, which triggers the cough reflex." },
+    { "cause": "The cough reflex draws a deep breath in, closes the vocal folds, and contracts the abdominal wall muscles hard.", "effect": "Pressure builds in the chest; when the vocal folds open suddenly, a blast of air carries the crumb up and out." }
+  ],
+  "misconception": {
+    "wrong": "The respiratory tract is one continuous gas-exchange surface, so oxygen starts entering the blood as soon as air enters the nose.",
+    "right": "Oxygen and carbon dioxide cross between air and blood only in the respiratory zone, deep in the lungs, where alveoli have walls one thin cell thick. The nose, pharynx, larynx, trachea and the branching air tubes are the conducting zone: their walls are thick, glandular and ciliated, and they only filter, warm, humidify and deliver air."
+  },
+  "check": ["anp-upper-airway-1", "anp-upper-airway-4", "anp-upper-airway-7", "anp-upper-airway-10", "anp-upper-airway-12", "anp-upper-airway-15", "anp-upper-airway-17"],
+  "summary": "<p>The conducting zone (nose to the smallest air tubes without alveoli) cleans, warms, humidifies and delivers air; only the respiratory zone, deep in the lungs, exchanges gases with blood. Air enters through the nares into the nasal cavity, divided by the nasal septum; the conchae make it swirl so particles stick to mucus, and blood-rich mucosa warms and moistens it. Mucus, the cilia of the mucociliary escalator, and the cough and sneeze reflexes defend the airway. The pharynx has three parts: the nasopharynx (air only; pharyngeal tonsil, auditory tube openings), the oropharynx and the laryngopharynx (air and food; stratified squamous lining). The larynx is built on the thyroid cartilage (with the laryngeal prominence), the ring-shaped cricoid cartilage and the epiglottis, which covers the airway when you swallow. The vocal folds (true vocal cords) vibrate to make sound; the glottis is the folds plus the gap between them; the vestibular folds above do not make sound.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-9", "label": "NREMT: Airway management" }
+  ]
+}

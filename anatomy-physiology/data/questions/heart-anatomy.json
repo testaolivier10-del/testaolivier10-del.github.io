@@ -449,5 +449,91 @@
         "Correct. The two lungs lie on either side of the mediastinum, which holds the heart."
       ]
     }
+  },
+  {
+    "id": "anp-heart-anatomy-20",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-19-2",
+    "pin": "pulmonary-trunk",
+    "q": "Name the pinned structure.",
+    "options": ["Superior vena cava", "Arch of aorta", "Left auricle", "Pulmonary trunk"],
+    "correct": 3,
+    "why": {
+      "correct": "The pulmonary trunk is the short, wide vessel leaving the top of the right ventricle at the front of the base. It splits into the right and left pulmonary arteries, one to each lung.",
+      "options": [
+        "The superior vena cava comes down into the right atrium on the heart's right side (the left of the drawing). It does not leave the front of the ventricles.",
+        "The arch of the aorta curves up, back and to the left above the heart, over the top of the pinned vessel.",
+        "The left auricle is the ear-shaped pouch of the left atrium, lying just beside the pinned vessel. It is part of a chamber, not a vessel.",
+        "Correct. This is the pulmonary trunk, leaving the right ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A cardiologist threads a thin catheter from a large vein in the groin up through the inferior vena cava toward the heart. Which chamber does the catheter tip enter first?",
+    "options": ["Right atrium", "Left atrium", "Right ventricle", "Left ventricle"],
+    "correct": 0,
+    "why": {
+      "correct": "The inferior vena cava carries blood from everything below the diaphragm and opens into the right atrium. A catheter following that vein reaches the right atrium first.",
+      "options": [
+        "Correct. Both venae cavae empty into the right atrium.",
+        "The left atrium receives the pulmonary veins from the lungs, not the venae cavae.",
+        "The right ventricle lies below the right atrium and receives blood from it. The catheter would have to pass through the right atrium first.",
+        "The left ventricle receives blood from the left atrium and sends it out through the aorta. No vein opens into it."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-22",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which of these vessels carry blood that is low in oxygen? Select all that apply.",
+    "options": ["Superior vena cava", "Pulmonary veins", "Pulmonary trunk", "Aorta", "Inferior vena cava", "Pulmonary arteries"],
+    "correct": [0, 2, 4, 5],
+    "why": {
+      "correct": "Blood low in oxygen returns from the body's tissues through the two venae cavae into the right atrium. The right ventricle sends it out through the pulmonary trunk and pulmonary arteries to the lungs. Blood that has picked up oxygen in the lungs returns through the pulmonary veins to the left atrium and leaves the left ventricle through the aorta.",
+      "options": [
+        "Yes. The superior vena cava returns blood from the head, neck, arms and upper chest after the tissues have taken oxygen from it.",
+        "No. The pulmonary veins carry blood that has just picked up oxygen in the lungs back to the left atrium.",
+        "Yes. The pulmonary trunk carries blood from the right ventricle toward the lungs, before it picks up oxygen.",
+        "No. The aorta carries blood rich in oxygen from the left ventricle out to the body.",
+        "Yes. The inferior vena cava returns blood from below the diaphragm after the tissues have taken oxygen from it.",
+        "Yes. The pulmonary arteries are the two branches of the pulmonary trunk, carrying blood low in oxygen to the lungs."
+      ]
+    }
+  },
+  {
+    "id": "anp-heart-anatomy-23",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "misconception": "arteries are defined by carrying blood rich in oxygen",
+    "q": "A student says the pulmonary veins are misnamed: veins carry blood low in oxygen, but these carry blood rich in oxygen. What is wrong with the argument?",
+    "options": [
+      "The pulmonary veins really carry blood low in oxygen, like other veins",
+      "They drain into the left atrium, which makes them part of the heart",
+      "A vessel's name depends on its direction relative to the heart",
+      "Vessels inside the chest follow a separate naming system from the body"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "An artery carries blood away from the heart and a vein carries blood toward it. Oxygen content plays no part in the definition. The pulmonary veins carry blood toward the heart, so they are veins even though that blood has just picked up oxygen in the lungs.",
+      "options": [
+        "The pulmonary veins carry blood that has just passed through the lungs, so it is rich in oxygen. The student has the oxygen right; the definition is what is wrong.",
+        "Draining into a chamber does not make a vessel part of the heart. The venae cavae drain into the right atrium and are still veins.",
+        "Correct. Direction relative to the heart, not oxygen content, decides whether a vessel is an artery or a vein.",
+        "The same rule applies everywhere: the pulmonary trunk and aorta both carry blood away from the heart and are both arteries."
+      ]
+    }
   }
 ]

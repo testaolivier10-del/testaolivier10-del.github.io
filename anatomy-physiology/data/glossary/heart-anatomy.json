@@ -18,5 +18,15 @@
     "def": "Compression of the heart by blood or fluid collecting in the pericardial cavity. Because the fibrous pericardium cannot stretch quickly, pressure in the sac rises, the heart cannot fill between beats, and blood pressure falls.",
     "roots": [["cardi/o", "heart"], ["-ac", "pertaining to"], ["tampon", "plug (French)"]],
     "say": "tam-poh-NAHD"
+  },
+  "chambers": {
+    "def": "The four spaces inside the heart: two upper atria that receive blood from veins and two lower ventricles that pump blood into arteries. Surface grooves (the coronary and interventricular sulci) mark their boundaries; auricles, pectinate muscles and trabeculae carneae are features of their walls.",
+    "roots": [["atri-", "entrance hall"], ["ventricul-", "little belly"], ["auricul-", "little ear"], ["pectin-", "comb"], ["trabecula", "little beam"], ["carne-", "flesh"], ["sulcus", "groove"]],
+    "say": "AY-tree-um; VEN-trih-kul; truh-BEK-yoo-lee KAR-nee-ee"
+  },
+  "great-vessels": {
+    "def": "The large vessels at the base of the heart: the superior and inferior venae cavae (into the right atrium), the pulmonary trunk (out of the right ventricle, splitting into the right and left pulmonary arteries), the pulmonary veins (into the left atrium) and the aorta (out of the left ventricle, rising as the ascending aorta and curving over as the aortic arch).",
+    "roots": [["vena", "vein"], ["cava", "hollow"], ["pulmon-", "lung"]],
+    "say": "VEE-nuh KAY-vuh; ay-OR-tuh"
   }
 }

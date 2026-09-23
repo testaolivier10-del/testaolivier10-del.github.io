@@ -4608,6 +4608,23 @@
        "fn": "The windpipe: a tube held open by rings of stiff tissue that carries air between the throat and the lungs. It runs down the chest just in front of the esophagus and above the heart."
       },
       {
+       "id": "aortic-arch",
+       "name": "Aortic arch",
+       "accept": [
+        "arch of aorta",
+        "arch of the aorta"
+       ],
+       "box": [
+        1021,
+        131,
+        61,
+        41
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The curve of the aorta above the heart. After rising from the left ventricle as the ascending aorta, the aorta arches up, back and to the left over the pulmonary trunk, then runs down behind the heart."
+      },
+      {
        "id": "thymus",
        "name": "Thymus",
        "accept": [
@@ -4656,6 +4673,22 @@
        "fn": "The dome-shaped sheet of muscle that separates the thoracic cavity from the abdominopelvic cavity. The heart rests on its upper surface, tilted so the apex points down and to your left."
       },
       {
+       "id": "inferior-vena-cava",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        680,
+        306,
+        162,
+        20
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The largest vein in the body. It carries blood low in oxygen from everything below the diaphragm (legs, abdomen and pelvis) up through the diaphragm into the right atrium."
+      },
+      {
        "id": "esophagus",
        "name": "Esophagus",
        "accept": [
@@ -4686,6 +4719,65 @@
        "fn": "The central compartment of the thoracic cavity, between the two lungs. It holds the heart inside its pericardial sac, the large vessels, the trachea, the esophagus and the thymus."
       },
       {
+       "id": "arch-of-aorta",
+       "name": "Arch of aorta",
+       "accept": [
+        "aortic arch",
+        "arch of the aorta"
+       ],
+       "box": [
+        739,
+        504,
+        121,
+        21
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The curve of the aorta above the heart. After rising from the left ventricle as the ascending aorta, the aorta arches up, back and to the left over the pulmonary trunk, then runs down behind the heart."
+      },
+      {
+       "id": "superior-vena-cava",
+       "name": "Superior vena cava",
+       "accept": [
+        "svc"
+       ],
+       "box": [
+        0,
+        518,
+        172,
+        24
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The large vein that returns blood low in oxygen from the head, neck, arms and upper chest, entering the right atrium from above.",
+       "follow": {
+        "q": "Which chamber does this vessel empty into?",
+        "options": [
+         "Right atrium",
+         "Left atrium",
+         "Right ventricle",
+         "Left ventricle"
+        ],
+        "correct": 0,
+        "why": "Both venae cavae empty into the right atrium, the receiving chamber on the heart's right side. The left atrium receives the pulmonary veins, and the ventricles receive blood only from the atria above them.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [],
+       "box": [
+        740,
+        562,
+        150,
+        23
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The short, wide artery that leaves the right ventricle at the front of the heart's base. It splits into the right and left pulmonary arteries, which carry blood low in oxygen to the lungs."
+      },
+      {
        "id": "right-lung",
        "name": "Right lung",
        "accept": [
@@ -4702,6 +4794,42 @@
        "fn": "The organ where blood takes up oxygen and gives off carbon dioxide. The right lung is slightly larger than the left, because the heart bulges into the left side of the chest."
       },
       {
+       "id": "left-auricle",
+       "name": "Left auricle",
+       "accept": [
+        "auricle",
+        "left atrial appendage",
+        "auricle of left atrium"
+       ],
+       "box": [
+        740,
+        609,
+        104,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-anatomy",
+       "fn": "The ear-shaped pouch of the left atrium, peeking out beside the pulmonary trunk. The rest of the left atrium lies at the back of the heart, where the pulmonary veins enter it."
+      },
+      {
+       "id": "right-auricle",
+       "name": "Right auricle",
+       "accept": [
+        "auricle",
+        "right atrial appendage",
+        "auricle of right atrium"
+       ],
+       "box": [
+        0,
+        613,
+        113,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-anatomy",
+       "fn": "The ear-shaped pouch of the right atrium, lying against the root of the aorta. Inside, its wall is ridged with pectinate muscles."
+      },
+      {
        "id": "left-lung",
        "name": "Left lung",
        "accept": [
@@ -4716,6 +4844,66 @@
        "concept": "major-organs",
        "taught": "body-organization",
        "fn": "The organ where blood takes up oxygen and gives off carbon dioxide. The left lung is a little smaller than the right and has a notch that makes room for the heart, which sits more to the left."
+      },
+      {
+       "id": "right-atrium",
+       "name": "Right atrium",
+       "accept": [
+        "ra"
+       ],
+       "box": [
+        0,
+        660,
+        110,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-anatomy",
+       "fn": "The receiving chamber on the heart's right side, forming its right edge. Both venae cavae empty into it, and it passes blood down to the right ventricle."
+      },
+      {
+       "id": "right-ventricle",
+       "name": "Right ventricle",
+       "accept": [
+        "rv"
+       ],
+       "box": [
+        0,
+        707,
+        128,
+        24
+       ],
+       "concept": "chambers",
+       "taught": "heart-anatomy",
+       "fn": "The pumping chamber that forms most of the heart's front surface. It receives blood from the right atrium and pumps it out through the pulmonary trunk to the lungs."
+      },
+      {
+       "id": "left-ventricle",
+       "name": "Left ventricle",
+       "accept": [
+        "lv"
+       ],
+       "box": [
+        740,
+        711,
+        119,
+        20
+       ],
+       "concept": "chambers",
+       "taught": "heart-anatomy",
+       "fn": "The pumping chamber that forms the heart's left edge and its apex. It receives blood from the left atrium and pumps it out through the aorta to the rest of the body. Its wall is the thickest of the four chambers.",
+       "follow": {
+        "q": "Which vessel carries blood out of this chamber?",
+        "options": [
+         "Pulmonary trunk",
+         "Aorta",
+         "Superior vena cava",
+         "Pulmonary veins"
+        ],
+        "correct": 1,
+        "why": "The left ventricle pumps blood out through the aorta to the rest of the body. The pulmonary trunk leaves the right ventricle, and the superior vena cava and pulmonary veins bring blood into the atria.",
+        "level": "recall"
+       }
       },
       {
        "id": "ribs",
@@ -4811,102 +4999,12 @@
      ],
      "covered": [
       {
-       "id": "aortic-arch",
-       "box": [
-        1021,
-        131,
-        61,
-        41
-       ]
-      },
-      {
        "id": "thoracic-aorta",
        "box": [
         1020,
         247,
         80,
         41
-       ]
-      },
-      {
-       "id": "inferior-vena-cava",
-       "box": [
-        680,
-        306,
-        162,
-        20
-       ]
-      },
-      {
-       "id": "arch-of-aorta",
-       "box": [
-        739,
-        504,
-        121,
-        21
-       ]
-      },
-      {
-       "id": "superior-vena-cava",
-       "box": [
-        0,
-        518,
-        172,
-        24
-       ]
-      },
-      {
-       "id": "pulmonary-trunk",
-       "box": [
-        740,
-        562,
-        150,
-        23
-       ]
-      },
-      {
-       "id": "left-auricle",
-       "box": [
-        740,
-        609,
-        104,
-        20
-       ]
-      },
-      {
-       "id": "right-auricle",
-       "box": [
-        0,
-        613,
-        113,
-        24
-       ]
-      },
-      {
-       "id": "right-atrium",
-       "box": [
-        0,
-        660,
-        110,
-        24
-       ]
-      },
-      {
-       "id": "right-ventricle",
-       "box": [
-        0,
-        707,
-        128,
-        24
-       ]
-      },
-      {
-       "id": "left-ventricle",
-       "box": [
-        740,
-        711,
-        119,
-        20
        ]
       },
       {
@@ -5090,7 +5188,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
        "follow": {
         "q": "Blood from your right arm reaches the heart through which vessel?",
@@ -5106,6 +5204,23 @@
        }
       },
       {
+       "id": "aortic-arch",
+       "name": "Aortic arch",
+       "accept": [
+        "arch of aorta",
+        "arch of the aorta"
+       ],
+       "box": [
+        826,
+        83,
+        101,
+        19
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The curve of the aorta above the heart, turning up, back and to the left over the pulmonary trunk. Beyond it, the aorta runs down behind the heart."
+      },
+      {
        "id": "right-pulmonary-artery",
        "name": "Right pulmonary artery",
        "accept": [],
@@ -5116,7 +5231,7 @@
         44
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The branch of the pulmonary trunk that carries blood to the right lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen."
       },
       {
@@ -5130,7 +5245,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The branch of the pulmonary trunk that carries blood to the left lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen.",
        "follow": {
         "q": "What makes a pulmonary artery an artery?",
@@ -5146,6 +5261,20 @@
        }
       },
       {
+       "id": "ascending-aorta",
+       "name": "Ascending aorta",
+       "accept": [],
+       "box": [
+        202,
+        155,
+        147,
+        23
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The first part of the aorta. It rises from the left ventricle, just past the aortic valve and behind the pulmonary trunk, before curving over as the aortic arch."
+      },
+      {
        "id": "left-pulmonary-veins",
        "name": "Left pulmonary veins",
        "accept": [
@@ -5158,7 +5287,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that return blood from the left lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung.",
        "follow": {
         "q": "Where do the pulmonary veins empty?",
@@ -5184,7 +5313,7 @@
         23
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
        "follow": {
         "q": "Which chamber pumps blood into the pulmonary trunk?",
@@ -5212,7 +5341,7 @@
         40
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that return blood from the right lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung."
       },
       {
@@ -5229,7 +5358,7 @@
         20
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The ear-shaped pouch on the front of the left atrium. It adds a little extra room to the atrium, letting it hold more blood before the blood moves on to the ventricle."
       },
       {
@@ -5245,7 +5374,7 @@
         24
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -5273,7 +5402,7 @@
         20
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -5301,7 +5430,7 @@
         24
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
@@ -5329,7 +5458,7 @@
         20
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
@@ -5360,7 +5489,7 @@
         19
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest artery. It leaves the left ventricle through the aortic valve and carries blood to every part of the body except the lungs' air sacs."
       },
       {
@@ -5376,7 +5505,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
        "follow": {
         "q": "Blood from your right arm reaches the heart through which vessel?",
@@ -5402,7 +5531,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The branch of the pulmonary trunk that carries blood to the right lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen."
       },
       {
@@ -5416,7 +5545,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The branch of the pulmonary trunk that carries blood to the left lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen.",
        "follow": {
         "q": "What makes a pulmonary artery an artery?",
@@ -5444,7 +5573,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that return blood from the right lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung."
       },
       {
@@ -5460,7 +5589,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that return blood from the left lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung.",
        "follow": {
         "q": "Where do the pulmonary veins empty?",
@@ -5488,7 +5617,7 @@
         24
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -5517,7 +5646,7 @@
         20
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The ear-shaped pouch on the front of the left atrium. It adds a little extra room to the atrium, letting it hold more blood before the blood moves on to the ventricle."
       },
       {
@@ -5533,7 +5662,7 @@
         19
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
        "follow": {
         "q": "Blood entering the left atrium has just come from where?",
@@ -5561,7 +5690,7 @@
         20
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
@@ -5577,7 +5706,7 @@
         20
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -5605,7 +5734,7 @@
         24
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
@@ -5667,30 +5796,12 @@
        ]
       },
       {
-       "id": "aortic-arch",
-       "box": [
-        826,
-        83,
-        101,
-        19
-       ]
-      },
-      {
        "id": "ligamentum-arteriosum",
        "box": [
         826,
         105,
         207,
         24
-       ]
-      },
-      {
-       "id": "ascending-aorta",
-       "box": [
-        202,
-        155,
-        147,
-        23
        ]
       },
       {
@@ -5867,7 +5978,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest artery. It leaves the left ventricle through the aortic valve and carries blood to every part of the body except the lungs' air sacs."
       },
       {
@@ -5883,7 +5994,7 @@
         29
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
        "follow": {
         "q": "Blood from your right arm reaches the heart through which vessel?",
@@ -5909,7 +6020,7 @@
         29
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The branch of the pulmonary trunk that carries blood to the left lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen.",
        "follow": {
         "q": "What makes a pulmonary artery an artery?",
@@ -5935,7 +6046,7 @@
         30
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The branch of the pulmonary trunk that carries blood to the right lung. It is an artery because it carries blood away from the heart, even though that blood is low in oxygen."
       },
       {
@@ -5951,7 +6062,7 @@
         25
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
        "follow": {
         "q": "Blood entering the left atrium has just come from where?",
@@ -5977,7 +6088,7 @@
         29
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
        "follow": {
         "q": "Which chamber pumps blood into the pulmonary trunk?",
@@ -6005,7 +6116,7 @@
         30
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that return blood from the left lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung.",
        "follow": {
         "q": "Where do the pulmonary veins empty?",
@@ -6033,7 +6144,7 @@
         53
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that return blood from the right lung to the left atrium. They are veins because they carry blood toward the heart, and the blood in them has just picked up oxygen in the lung."
       },
       {
@@ -6081,7 +6192,7 @@
         29
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -6198,7 +6309,7 @@
         25
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -6226,7 +6337,7 @@
         29
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
@@ -6317,7 +6428,7 @@
         25
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "Ridges of muscle on the inner walls of the ventricles. They add strength to the ventricle wall and help it squeeze evenly."
       },
       {
@@ -6375,7 +6486,7 @@
         25
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
@@ -6559,7 +6670,7 @@
         20
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest artery. It leaves the left ventricle through the aortic valve and carries blood to every part of the body except the lungs' air sacs."
       },
       {
@@ -6575,7 +6686,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
        "follow": {
         "q": "Blood from your right arm reaches the heart through which vessel?",
@@ -6603,7 +6714,7 @@
         40
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The pulmonary arteries of the left lung. They carry deoxygenated blood from the pulmonary trunk to the left lung, the start of the pulmonary circuit."
       },
       {
@@ -6619,7 +6730,7 @@
         40
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The pulmonary arteries of the right lung. They carry deoxygenated blood from the pulmonary trunk to the right lung, the start of the pulmonary circuit."
       },
       {
@@ -6633,7 +6744,7 @@
         23
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
        "follow": {
         "q": "Which chamber pumps blood into the pulmonary trunk?",
@@ -6661,7 +6772,7 @@
         19
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
        "follow": {
         "q": "Blood entering the left atrium has just come from where?",
@@ -6689,7 +6800,7 @@
         40
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that carry oxygenated blood from the right lung to the left atrium, closing the pulmonary circuit."
       },
       {
@@ -6705,7 +6816,7 @@
         39
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The veins that carry oxygenated blood from the left lung to the left atrium, closing the pulmonary circuit."
       },
       {
@@ -6797,7 +6908,7 @@
         24
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -6825,7 +6936,7 @@
         20
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -6883,7 +6994,7 @@
         23
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
@@ -6911,7 +7022,7 @@
         19
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
@@ -7008,7 +7119,7 @@
         39
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
        "follow": {
         "q": "Which chamber pumps blood into the pulmonary trunk?",
@@ -7036,7 +7147,7 @@
         24
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -7064,7 +7175,7 @@
         20
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
        "follow": {
         "q": "Blood entering the left atrium has just come from where?",
@@ -7092,7 +7203,7 @@
         40
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
@@ -7120,7 +7231,7 @@
         40
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -7197,6 +7308,23 @@
      ],
      "labels": [
       {
+       "id": "aortic-arch",
+       "name": "Aortic arch",
+       "accept": [
+        "arch of aorta",
+        "arch of the aorta"
+       ],
+       "box": [
+        10,
+        75,
+        99,
+        19
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The curve of the aorta above the heart, turning up, back and to the left over the pulmonary trunk. Beyond it, the aorta runs down behind the heart."
+      },
+      {
        "id": "left-coronary-artery",
        "name": "Left coronary artery",
        "accept": [
@@ -7214,6 +7342,20 @@
        "fn": "The first branch of the aorta on the left. After a short course it splits into the anterior interventricular artery and the circumflex artery, which together supply most of the left ventricle."
       },
       {
+       "id": "ascending-aorta",
+       "name": "Ascending aorta",
+       "accept": [],
+       "box": [
+        10,
+        122,
+        144,
+        23
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The first part of the aorta, rising from the left ventricle before it curves over as the aortic arch. Its only branches are the right and left coronary arteries, which leave it just above the aortic valve."
+      },
+      {
        "id": "pulmonary-trunk",
        "name": "Pulmonary trunk",
        "accept": [],
@@ -7224,7 +7366,7 @@
         23
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
        "follow": {
         "q": "Which chamber pumps blood into the pulmonary trunk?",
@@ -7298,7 +7440,7 @@
         23
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -7556,7 +7698,7 @@
         41
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -7632,26 +7774,7 @@
        "fn": "A branch of the right coronary artery that runs along the lower right edge of the heart and supplies the right ventricle."
       }
      ],
-     "covered": [
-      {
-       "id": "aortic-arch",
-       "box": [
-        10,
-        75,
-        99,
-        19
-       ]
-      },
-      {
-       "id": "ascending-aorta",
-       "box": [
-        10,
-        122,
-        144,
-        23
-       ]
-      }
-     ]
+     "covered": []
     }
    ]
   },
@@ -7670,6 +7793,23 @@
       "structure-function"
      ],
      "labels": [
+      {
+       "id": "arch-of-aorta",
+       "name": "Arch of aorta",
+       "accept": [
+        "aortic arch",
+        "arch of the aorta"
+       ],
+       "box": [
+        886,
+        145,
+        130,
+        21
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The curve of the aorta above the heart, turning up, back and to the left over the pulmonary trunk. Beyond it, the aorta runs down behind the heart."
+      },
       {
        "id": "bachmanns-bundle",
        "name": "Bachmann’s bundle",
@@ -7733,7 +7873,7 @@
         21
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper left chamber. It receives blood returning from the lungs through the four pulmonary veins and passes it through the mitral valve to the left ventricle.",
        "follow": {
         "q": "Blood entering the left atrium has just come from where?",
@@ -7858,7 +7998,7 @@
         21
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower left chamber and the heart's main pump. It pushes blood through the aortic valve into the aorta and on to the whole body, which takes high pressure, so its wall is the thickest in the heart.",
        "follow": {
         "q": "For years, the pressure in a person's body arteries has been well above normal. Which chamber's wall thickens most?",
@@ -7886,7 +8026,7 @@
         26
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The upper right chamber. It receives blood returning from the body through the superior and inferior venae cavae, plus the heart's own used blood, and passes it through the tricuspid valve to the right ventricle.",
        "follow": {
         "q": "Which vessels empty into the right atrium?",
@@ -7914,7 +8054,7 @@
         25
        ],
        "concept": "chambers",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The lower right chamber. It pumps blood through the pulmonary valve into the pulmonary trunk and on to the lungs. The lungs are close and offer little resistance, so its wall is much thinner than the left ventricle's.",
        "follow": {
         "q": "Why is the right ventricle's wall thinner than the left ventricle's?",
@@ -7979,17 +8119,7 @@
        }
       }
      ],
-     "covered": [
-      {
-       "id": "arch-of-aorta",
-       "box": [
-        886,
-        145,
-        130,
-        21
-       ]
-      }
-     ]
+     "covered": []
     }
    ]
   },
@@ -8895,8 +9025,8 @@
         152,
         28
        ],
-       "concept": "aorta-parts",
-       "taught": "systemic-arteries",
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
        "fn": "The curve of the aorta above the heart, turning back and to the left. Its three branches supply the head and arms: the brachiocephalic trunk, the left common carotid artery and the left subclavian artery.",
        "follow": {
         "q": "Which vessel is NOT a branch of the aortic arch?",
@@ -8922,7 +9052,7 @@
         34
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The short, wide vessel that leaves the right ventricle through the pulmonary valve and splits into the right and left pulmonary arteries. It carries blood to the lungs.",
        "follow": {
         "q": "Which chamber pumps blood into the pulmonary trunk?",
@@ -8947,8 +9077,8 @@
         225,
         34
        ],
-       "concept": "aorta-parts",
-       "taught": "systemic-arteries",
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
        "fn": "The first part of the aorta, rising from the left ventricle. Its only branches are the right and left coronary arteries."
       },
       {
@@ -9456,8 +9586,8 @@
         162,
         32
        ],
-       "concept": "aorta-parts",
-       "taught": "systemic-arteries",
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
        "fn": "The curve of the aorta above the heart, turning back and to the left. Its three branches supply the head and arms: the brachiocephalic trunk, the left common carotid artery and the left subclavian artery.",
        "follow": {
         "q": "Which vessel is NOT a branch of the aortic arch?",
@@ -9482,8 +9612,8 @@
         244,
         39
        ],
-       "concept": "aorta-parts",
-       "taught": "systemic-arteries",
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
        "fn": "The first part of the aorta, rising from the left ventricle. Its only branches are the right and left coronary arteries."
       },
       {
@@ -9778,8 +9908,8 @@
         121,
         23
        ],
-       "concept": "aorta-parts",
-       "taught": "systemic-arteries",
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
        "fn": "The curve of the aorta above the heart, turning back and to the left. Its three branches supply the head and arms: the brachiocephalic trunk, the left common carotid artery and the left subclavian artery.",
        "follow": {
         "q": "Which vessel is NOT a branch of the aortic arch?",
@@ -10538,7 +10668,7 @@
         30
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
        "follow": {
         "q": "Blood from your right arm reaches the heart through which vessel?",
@@ -10634,7 +10764,7 @@
         24
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The largest vein in the body. It returns blood from everything below the diaphragm (legs, abdomen and pelvis) to the right atrium, entering it from below."
       },
       {
@@ -11323,7 +11453,7 @@
         28
        ],
        "concept": "great-vessels",
-       "taught": "heart-chambers-valves",
+       "taught": "heart-anatomy",
        "fn": "The large vein that returns blood from the head, neck, arms and chest to the right atrium, entering it from above.",
        "follow": {
         "q": "Blood from your right arm reaches the heart through which vessel?",

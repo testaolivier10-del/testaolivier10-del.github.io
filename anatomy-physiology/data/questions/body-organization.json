@@ -176,9 +176,9 @@
     "why": {
       "correct": "The digestive system includes the tube food passes through (mouth, esophagus, stomach, intestines, with the appendix attached) and the organs that feed juices into it (liver, gallbladder, pancreas).",
       "options": [
-        "Correct. The liver makes a digestive juice that helps digest fatty foods, so it belongs to the digestive system.",
+        "Correct. The liver makes bile, a digestive juice that helps digest fatty foods, so it belongs to the digestive system.",
         "The spleen sits near the stomach but belongs to the lymphatic system. It filters blood and houses immune cells.",
-        "Correct. The gallbladder stores the liver's digestive juice and releases it into the intestine.",
+        "Correct. The gallbladder stores bile from the liver and releases it into the intestine.",
         "Correct. The esophagus carries food from the throat to the stomach.",
         "The kidney belongs to the urinary system. It filters blood and makes urine.",
         "Correct. The appendix is a small pouch attached to the intestine, so it is part of the digestive system."
@@ -208,12 +208,12 @@
       3
     ],
     "why": {
-      "correct": "The pancreas and the gonads (testes and ovaries) each belong to two systems. Each releases chemical signals into the blood (endocrine system) and also does a second job.",
+      "correct": "The pancreas and the gonads (testes and ovaries) each belong to two systems. Each releases hormones into the blood (endocrine system) and also does a second job.",
       "options": [
-        "Correct. The pancreas releases digestive juices into the intestine (digestive system) and chemical signals into the blood (endocrine system).",
-        "Correct. A testis makes sperm cells (reproductive system) and releases chemical signals into the blood (endocrine system).",
+        "Correct. The pancreas releases digestive juices into the intestine (digestive system) and hormones into the blood (endocrine system).",
+        "Correct. A testis makes sperm cells (reproductive system) and releases hormones into the blood (endocrine system).",
         "The urinary bladder stores urine until you empty it. It is an organ of the urinary system only.",
-        "Correct. An ovary releases egg cells (reproductive system) and chemical signals into the blood (endocrine system).",
+        "Correct. An ovary releases egg cells (reproductive system) and hormones into the blood (endocrine system).",
         "The trachea is the airway to the lungs, an organ of the respiratory system only."
       ]
     }
@@ -359,7 +359,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "On a cold day your skin cools, your muscles start small, rapid contractions that make heat, and your body temperature stays near 37 °C. What does this show?",
+    "q": "On a cold day your skin cools, you start shivering, with small, rapid muscle contractions that make heat, and your body temperature stays near 37 °C. What does this show?",
     "options": [
       "Body temperature can never change",
       "The body keeps an internal condition within a normal range",
@@ -368,11 +368,11 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "A change (cooling) is detected and triggers a response (heat from muscle contractions) that pushes temperature back. The result is a value held within a normal range. The feedback loop topic later in Foundations shows the full mechanism.",
+      "correct": "A change (cooling) is detected and triggers a response (heat from shivering) that pushes temperature back. The result is a value held within a normal range. The feedback loop topic later in Foundations shows the full mechanism.",
       "options": [
         "Body temperature does change, which is why the response is triggered. It is kept within a range, not fixed at one value.",
         "Correct. Detecting a change and pushing the value back keeps it within its normal range.",
-        "Muscles work in every temperature. The heat-making contractions are one response among the many things muscles do.",
+        "Muscles work in every temperature. Shivering is one response among the many things muscles do.",
         "If the outside temperature set body temperature, you would cool along with the air. The scenario shows the opposite."
       ]
     }
@@ -453,7 +453,7 @@
     "why": {
       "correct": "The thymus and the spleen are lymphatic organs. The lymphatic system returns leaked fluid to the blood and houses immune cells.",
       "options": [
-        "The thymus does release a few chemical signals into the blood, but both the thymus and the spleen are classed as lymphatic organs. The endocrine system's main organs are the pituitary, thyroid, adrenals, pancreas and gonads.",
+        "The thymus does release a few hormones into the blood, but both the thymus and the spleen are classed as lymphatic organs. The endocrine system's main organs are the pituitary, thyroid, adrenals, pancreas and gonads.",
         "The spleen sits next to the stomach, but it is not part of the digestive tube and makes no digestive juice.",
         "The spleen filters blood, but it is classed with the lymphatic organs, not with the heart and vessels.",
         "Correct. Thymus and spleen are lymphatic organs."

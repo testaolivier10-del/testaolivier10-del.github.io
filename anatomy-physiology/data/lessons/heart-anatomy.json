@@ -25,13 +25,13 @@
     }
   ],
   "anatomy": {
-    "figure": "os-19-5",
-    "caption": "The heart wall and its coverings, from the endocardium inside to the fibrous pericardium outside. Hide the labels and name each layer."
+    "figure": "os-19-2",
+    "caption": "Your heart in the mediastinum, resting on the diaphragm, with three of its chambers, both auricles and the great vessels at its base. Hide the labels and name each chamber and vessel."
   },
   "chain": [
     { "cause": "A wound or disease lets blood or fluid collect in the pericardial cavity faster than it drains.", "effect": "The volume of fluid inside the pericardial sac rises." },
     { "cause": "The volume inside the sac rises, and the collagen of the fibrous pericardium cannot stretch quickly.", "effect": "Pressure inside the pericardial sac climbs steeply." },
-    { "cause": "High pressure in the sac presses on the outside of the heart.", "effect": "The thinner-walled parts of the heart, which fill at low pressure, are pressed inward and partly collapse between beats." },
+    { "cause": "High pressure in the sac presses on the outside of the heart.", "effect": "The thinnest-walled chambers, which fill at low pressure (the atria and the right ventricle), are pressed inward and partly collapse between beats." },
     { "cause": "The compressed heart cannot fill fully between beats.", "effect": "Each beat pumps out less blood." },
     { "cause": "Each beat pumps out less blood, and blood returning to the heart cannot get in.", "effect": "Blood pressure falls and the neck veins bulge: cardiac tamponade." }
   ],
@@ -39,8 +39,8 @@
     "wrong": "The epicardium and the pericardium are two separate coverings, one on top of the other.",
     "right": "The epicardium is the visceral layer of the serous pericardium. It is one sheet of tissue with two names, because it is both the outer layer of the heart wall and the inner layer of the pericardium. Outside it lies the pericardial cavity, then the parietal layer and the fibrous pericardium."
   },
-  "check": ["anp-heart-anatomy-1", "anp-heart-anatomy-4", "anp-heart-anatomy-5", "anp-heart-anatomy-7", "anp-heart-anatomy-11", "anp-heart-anatomy-12"],
-  "summary": "<p>Your heart sits in the mediastinum, behind the sternum and on the diaphragm, with about two thirds of it left of the midline. The base is the broad upper, back end where the large vessels attach; the apex is the lower tip at the fifth intercostal space on the left. The fibrous pericardium is a tough collagen bag; inside it the serous pericardium folds into a parietal and a visceral layer with serous fluid between them. The heart wall is epicardium (the visceral pericardium), myocardium (the pumping muscle) and endocardium (endothelium). In cardiac tamponade, fluid in the sac cannot stretch the fibrous layer fast enough, so it squeezes the heart and stops it filling.</p>",
+  "check": ["anp-heart-anatomy-1", "anp-heart-anatomy-4", "anp-heart-anatomy-5", "anp-heart-anatomy-7", "anp-heart-anatomy-12", "anp-heart-anatomy-20", "anp-heart-anatomy-22", "anp-heart-anatomy-23"],
+  "summary": "<p>Your heart sits in the mediastinum, behind the sternum and on the diaphragm, with about two thirds of it left of the midline. The base is the broad upper, back end where the great vessels attach; the apex is the lower tip at the fifth intercostal space on the left. The fibrous pericardium is a tough collagen bag; inside it the serous pericardium folds into a parietal and a visceral layer with serous fluid between them. The heart wall is epicardium (the visceral pericardium), myocardium (the pumping muscle) and endocardium (endothelium). Two atria, each with an ear-shaped auricle, receive blood; two ventricles pump it out. The venae cavae bring blood low in oxygen into the right atrium, and the right ventricle sends it out through the pulmonary trunk and pulmonary arteries to the lungs. The pulmonary veins bring blood rich in oxygen into the left atrium, and the left ventricle sends it out through the aorta: first the ascending aorta, then the aortic arch. In cardiac tamponade, fluid in the sac cannot stretch the fibrous layer fast enough, so it squeezes the heart and stops it filling.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma (cardiac tamponade)" },
     { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }

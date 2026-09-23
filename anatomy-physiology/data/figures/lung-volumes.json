@@ -1,0 +1,20 @@
+{
+  "os-22-18": {
+    "file": "figures/openstax/os-22-18.jpg",
+    "w": 1940,
+    "h": 781,
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.18",
+      "section": "22.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4c87f180f435531cbb43bfc7235e305ed339bd78",
+      "page": "22-3-the-process-of-breathing"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/4c87f180f435531cbb43bfc7235e305ed339bd78",
+    "alt": "Two panels on a vertical scale from 0 to 6,000 milliliters. The left panel is a spirogram: a trace of lung volume over time shows small, regular breaths between about 2,500 and 2,900 mL, one deepest possible breath in to 6,000 mL, and one fullest possible breath out to about 1,200 mL. Colored bands behind the trace mark the four volumes: residual volume from 0 to about 1,200 mL, expiratory reserve volume up to about 2,500 mL, tidal volume up to about 2,900 mL, and inspiratory reserve volume up to 6,000 mL. The right panel shows the capacities as bars built from those volumes: inspiratory capacity above functional residual capacity; vital capacity above residual volume; and total lung capacity spanning the whole scale.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.18",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

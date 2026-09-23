@@ -1,9 +1,4 @@
 {
-  "chambers": {
-    "def": "The four spaces inside the heart: two upper atria that receive blood from veins and two lower ventricles that pump blood into arteries. Surface grooves (the coronary and interventricular sulci) mark their boundaries; auricles, pectinate muscles and trabeculae carneae are features of their walls.",
-    "roots": [["atri-", "entrance hall"], ["ventricul-", "little belly"], ["auricul-", "little ear"], ["pectin-", "comb"], ["trabecula", "little beam"], ["carne-", "flesh"], ["sulcus", "groove"]],
-    "say": "AY-tree-um; VEN-trih-kul; truh-BEK-yoo-lee KAR-nee-ee"
-  },
   "septa": {
     "def": "The dividing walls of the heart: the interatrial septum between the atria, the thick interventricular septum between the ventricles, and the atrioventricular septum between the atria and ventricles.",
     "roots": [["saept-", "fence"], ["inter-", "between"]],
@@ -23,11 +18,6 @@
     "def": "A shallow oval dip in the interatrial septum, seen from the right atrium. It marks where an opening between the atria sealed after birth.",
     "roots": [["fossa", "shallow pit"], ["ovalis", "oval"]],
     "say": "FOSS-uh oh-VAL-iss"
-  },
-  "great-vessels": {
-    "def": "The large vessels at the base of the heart: the superior and inferior venae cavae (into the right atrium), the pulmonary trunk (out of the right ventricle, splitting into the pulmonary arteries), the pulmonary veins (into the left atrium) and the aorta (out of the left ventricle).",
-    "roots": [["vena", "vein"], ["cava", "hollow"], ["pulmon-", "lung"]],
-    "say": "VEE-nuh KAY-vuh; ay-OR-tuh"
   },
   "wall-thickness": {
     "def": "The left ventricle wall is about three times thicker than the right because it pumps into the high-resistance vessels of the whole body and must generate about five times the pressure; heart muscle thickens when it works against a heavier load. On average, both ventricles pump the same volume per beat.",

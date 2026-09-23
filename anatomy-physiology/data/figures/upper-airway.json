@@ -1,0 +1,87 @@
+{
+  "os-22-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.3",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a97155291e8ffc669518800b731f25200b9203b6",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/a97155291e8ffc669518800b731f25200b9203b6",
+    "alt": "Three drawings of the nose. A front view and a side view of a face name the parts of the outer nose from the root between the eyes down the ridge to the tip and the flared wings beside each nostril. A third drawing shows the framework beneath: the nasal and upper jaw bones at the top and plates of cartilage, including the septal cartilage, forming the lower nose.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.3",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 982
+  },
+  "os-22-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.4",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/dbbae187749a6cc16b96e3221925513794698cf8",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/dbbae187749a6cc16b96e3221925513794698cf8",
+    "alt": "A midline cut through the head and neck seen from the side. The nasal cavity with three curled shelves on its side wall sits above the roof of the mouth, with the sinuses of the frontal and sphenoid bones around it. Behind the nose, mouth and voice box the throat is divided into upper, middle and lower parts. The voice box below shows the leaf-shaped flap at its top, its two pairs of folds, and the large shield-shaped cartilage and ring-shaped cartilage in its wall, with the hyoid bone above.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.4",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 762
+  },
+  "os-22-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.6",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e985f332487607e299788c29241ed2dde11ae59b",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e985f332487607e299788c29241ed2dde11ae59b",
+    "alt": "A side view outline of the head and neck with the throat shaded in three colors: the upper part behind the nasal cavity, the middle part behind the mouth and the lower part behind the voice box, continuing down as the esophagus behind the trachea.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.6",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 816
+  },
+  "os-22-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.7",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/cbef6fd77f1e4b1fd1c4ab67937f510b3fae9664",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/cbef6fd77f1e4b1fd1c4ab67937f510b3fae9664",
+    "alt": "The voice box from the front and from the right side. The front view shows the U-shaped hyoid bone at the top with the leaf-shaped flap rising behind it, the large shield-shaped cartilage with a ridge in the midline, the ring-shaped cartilage below it joined by a ligament, and the rings of the windpipe beneath. The side view adds the small paired cartilages at the back and the two folds inside.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.7",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1014
+  },
+  "os-22-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.8",
+      "section": "22.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b38b0f188edcf5662d547204c7d254534d7bb8b2",
+      "page": "22-1-organs-and-structures-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b38b0f188edcf5662d547204c7d254534d7bb8b2",
+    "alt": "The inside of the voice box viewed from above, looking down the throat. Two pale white bands form a V-shaped opening leading down into the windpipe; a pair of pinker folds lies above and outside them. The leaf-shaped flap sits at the front near the base of the tongue, and the opening of the esophagus lies behind.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.8",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 643
+  }
+}

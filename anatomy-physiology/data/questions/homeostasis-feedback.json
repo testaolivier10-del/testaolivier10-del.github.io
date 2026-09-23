@@ -118,7 +118,7 @@
       {
         "name": "Amount of sweat released onto your skin",
         "answer": "up",
-        "why": "The control center signals glands in the skin to release sweat; as it evaporates, it carries heat away."
+        "why": "The control center signals the sweat glands to release sweat; as it evaporates, it carries heat away."
       },
       {
         "name": "Heat lost from your skin to the air",
@@ -261,7 +261,7 @@
       "options": [
         "True. Opposing the stimulus is the defining feature of negative feedback.",
         "True. Opposing the change returns the variable toward its set point.",
-        "True. If the variable falls, the opposing response raises it, as when shivering-type muscle contractions warm a cold body.",
+        "True. If the variable falls, the opposing response raises it, as when shivering warms a cold body.",
         "False. Needing an outside event to stop is a feature of positive feedback. Negative feedback stops itself as the stimulus shrinks.",
         "False. A response that enlarges the original change is positive feedback."
       ]
@@ -392,7 +392,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Her sensors, pathways and control center work, so the command to lose heat is sent. Her effectors, the skin blood vessels and the glands that release sweat, respond weakly, and the heat load of the heat wave is larger than they can oppose. That is a homeostatic imbalance caused by overwhelmed effectors.",
+      "correct": "Her sensors, pathways and control center work, so the command to lose heat is sent. Her effectors, the skin blood vessels and the sweat glands, respond weakly, and the heat load of the heat wave is larger than they can oppose. That is a homeostatic imbalance caused by overwhelmed effectors.",
       "options": [
         "Her nerves and control center work normally, and her body is responding to the heat, so detection is intact.",
         "The case says her nerves work normally. Signals are reaching the control center.",
@@ -424,7 +424,7 @@
       {
         "name": "Heat produced by skeletal muscles after the loop has responded",
         "answer": "up",
-        "why": "Skeletal muscles, acting as effectors, contract in rapid small bursts (you shiver), and those contractions release heat."
+        "why": "Skeletal muscles, acting as effectors, contract in rapid small bursts (shivering), and those contractions release heat."
       },
       {
         "name": "Body temperature after an hour",
@@ -548,21 +548,21 @@
       "homeostasis",
       "communication"
     ],
-    "q": "When the blood carries too little oxygen, the kidneys release a hormone. The hormone travels in the blood to the blood-forming tissue inside the bones, which makes more red blood cells. In this loop, what is the efferent pathway?",
+    "q": "When the blood carries too little oxygen, the kidneys release a hormone. The hormone travels in the blood to the bone marrow, which makes more red blood cells. In this loop, what is the efferent pathway?",
     "options": [
       "The kidney cells that detect low oxygen",
       "The hormone traveling in the blood to the bones",
       "The new red blood cells",
-      "The blood-forming tissue in the bones"
+      "The bone marrow"
     ],
     "correct": 1,
     "why": {
-      "correct": "The efferent pathway carries the command from the control center to the effector. Here the command is a hormone carried in the blood from the kidneys to the blood-forming tissue. An efferent pathway can be a hormone as well as a nerve.",
+      "correct": "The efferent pathway carries the command from the control center to the effector. Here the command is a hormone carried in the blood from the kidneys to the bone marrow. An efferent pathway can be a hormone as well as a nerve.",
       "options": [
         "The kidney cells that detect low oxygen act as the sensory receptor and the control center; they are not the pathway.",
         "Correct. The hormone carries the command to the effector, so it is the efferent pathway.",
         "More red blood cells carrying more oxygen is the response, not the pathway.",
-        "The blood-forming tissue carries out the command, so it is the effector."
+        "The bone marrow carries out the command, so it is the effector."
       ]
     }
   },

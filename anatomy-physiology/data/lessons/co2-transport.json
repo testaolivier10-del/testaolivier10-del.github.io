@@ -1,0 +1,93 @@
+{
+  "topic": "co2-transport",
+  "hook": "<p>Ms. Petrov, 44, is on a ventilator after surgery, and the machine's breathing rate has been set too low. Within twenty minutes, a blood sample from her artery shows her carbon dioxide has climbed and her blood has turned more acidic. Nothing is wrong with her kidneys or her metabolism. The change comes from how your blood carries carbon dioxide: mostly as bicarbonate, made by an enzyme in red blood cells, in a reaction that releases acid.</p>",
+  "prereq": [
+    {
+      "q": "Carbon dioxide reacts with water. What does the carbonic acid it forms split into?",
+      "options": [
+        "A hydrogen ion and a bicarbonate ion",
+        "Oxygen and glucose",
+        "A hydroxide ion and carbon monoxide"
+      ],
+      "correct": 0,
+      "why": "CO2 + H2O ⇌ H2CO3 ⇌ H+ + HCO3−. Carbonic acid is a weak acid that splits into a hydrogen ion and a bicarbonate ion; this is the carbonic acid–bicarbonate buffer.",
+      "review": "acids-bases-ph"
+    },
+    {
+      "q": "A carrier protein lets an ion cross a membrane down its concentration gradient without using ATP. What is this called?",
+      "options": [
+        "Primary active transport",
+        "Facilitated diffusion",
+        "Endocytosis"
+      ],
+      "correct": 1,
+      "why": "Facilitated diffusion uses a channel or carrier protein, moves a substance down its gradient, and needs no ATP.",
+      "review": "passive-transport"
+    },
+    {
+      "q": "In an active tissue, more carbon dioxide and a lower pH make hemoglobin do what?",
+      "options": [
+        "Bind oxygen more tightly",
+        "Release oxygen more readily",
+        "Stop carrying oxygen at all"
+      ],
+      "correct": 1,
+      "why": "This is the Bohr effect: carbon dioxide and hydrogen ions lower hemoglobin's affinity for oxygen, shifting the dissociation curve right, so more oxygen unloads where it is being used.",
+      "review": "oxygen-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-22-28",
+    "caption": "Carbon dioxide leaving tissue cells and entering the blood. Hide the labels and name the three forms it travels in."
+  },
+  "chain": [
+    {
+      "cause": "A working tissue cell makes carbon dioxide, so the PCO2 inside it is higher than in the capillary blood.",
+      "effect": "Carbon dioxide diffuses out of the cell, into the capillary and on into a red blood cell."
+    },
+    {
+      "cause": "Inside the red blood cell, carbonic anhydrase speeds the reaction of carbon dioxide with water.",
+      "effect": "Carbonic acid forms and splits at once into a hydrogen ion and a bicarbonate ion."
+    },
+    {
+      "cause": "Hemoglobin is unloading oxygen at the same time, and deoxyhemoglobin binds hydrogen ions readily.",
+      "effect": "The hydrogen ions are buffered, the reaction keeps running toward bicarbonate, and more carbon dioxide can be taken up (the Haldane effect)."
+    },
+    {
+      "cause": "Bicarbonate builds up inside the red blood cell.",
+      "effect": "Band 3 swaps it for chloride from the plasma (the chloride shift), and the bicarbonate is carried in the plasma to the lungs."
+    },
+    {
+      "cause": "In the lungs, alveolar PCO2 is low and oxygen binds hemoglobin, which releases its hydrogen ions.",
+      "effect": "Every step reverses: bicarbonate re-enters the red blood cell, becomes carbon dioxide again, and diffuses into the alveoli to be breathed out."
+    }
+  ],
+  "misconception": {
+    "wrong": "Carbon dioxide travels mainly on hemoglobin, bound to the same site as oxygen.",
+    "right": "Only about a fifth of the carbon dioxide in blood rides on hemoglobin, as carbaminohemoglobin, and it binds to the amino groups at the ends of the globin chains, not to the iron where oxygen binds. About 70% travels as bicarbonate ions in the plasma, made inside red blood cells by carbonic anhydrase. Carbon monoxide is the gas that competes with oxygen for the iron."
+  },
+  "check": [
+    "anp-co2-transport-1",
+    "anp-co2-transport-3",
+    "anp-co2-transport-6",
+    "anp-co2-transport-10",
+    "anp-co2-transport-13",
+    "anp-co2-transport-14",
+    "anp-co2-transport-16"
+  ],
+  "summary": "<p>Blood carries carbon dioxide in three forms: about 7–10% dissolved, about 20–23% as carbaminohemoglobin (bound to the amino groups of globin) and about 70% as bicarbonate. Carbonic anhydrase in red blood cells speeds CO2 + H2O ⇌ H2CO3 ⇌ H+ + HCO3− in whichever direction the concentrations push it: toward bicarbonate in the tissues and back to carbon dioxide in the lungs. Bicarbonate leaves the red blood cell in exchange for chloride through band 3 (the chloride shift), a passive exchange that reverses in the lungs. Deoxyhemoglobin buffers the hydrogen ions and binds more carbon dioxide, so blood that has unloaded oxygen can carry more carbon dioxide (the Haldane effect); in the lungs, oxygen binding drives carbon dioxide out. Because carbon dioxide forms carbonic acid, a higher PCO2 lowers blood pH and a lower PCO2 raises it, so breathing changes blood pH within minutes.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-19",
+      "label": "NREMT: Respiratory emergencies"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-6",
+      "label": "NREMT: Anatomy and physiology"
+    },
+    {
+      "href": "/ochem/lessons/bronsted.html",
+      "label": "Organic chemistry: Brønsted acids and bases"
+    }
+  ]
+}

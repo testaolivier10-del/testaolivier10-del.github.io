@@ -1253,7 +1253,7 @@
      "type": "shift",
      "level": "analyze",
      "diff": 3,
-     "q": "At 30 minutes, an infection makes the control center raise the set point to 38.5 °C. How does the graph change after that?",
+     "q": "At 30 minutes, an infection causes a fever: the control center raises the set point to 38.5 °C. How does the graph change after that?",
      "options": [
       "The temperature climbs, then swings around 38.5 °C",
       "The loop stops working, so the temperature drifts without control",

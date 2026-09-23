@@ -1,0 +1,500 @@
+[
+  {
+    "id": "anp-co2-transport-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "most carbon dioxide travels on hemoglobin",
+    "q": "In venous blood, which form carries the largest share of the carbon dioxide?",
+    "options": [
+      "Carbaminohemoglobin",
+      "Bicarbonate ions in the plasma",
+      "Carbon dioxide dissolved in plasma",
+      "Carbonic acid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "About 70% of the carbon dioxide in blood travels as bicarbonate. It is made inside red blood cells by carbonic anhydrase and carried mostly in the plasma after the chloride shift.",
+      "options": [
+        "Carbaminohemoglobin carries about 20–23%, a real but smaller share.",
+        "Correct. Bicarbonate carries about 70%.",
+        "Dissolved carbon dioxide is only about 7–10%, even though carbon dioxide is far more soluble than oxygen.",
+        "Carbonic acid exists only for an instant before it splits into a hydrogen ion and bicarbonate, so almost none is present at any moment."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Why does very little bicarbonate form in the plasma itself, even though the plasma is full of water and carbon dioxide?",
+    "options": [
+      "Plasma has almost no carbonic anhydrase, so the reaction is too slow",
+      "Carbon dioxide cannot dissolve in plasma",
+      "Plasma is too alkaline for carbonic acid to form",
+      "Chloride in the plasma blocks the reaction"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Without an enzyme, carbon dioxide reacts with water too slowly to reach equilibrium in the second or so blood spends in a capillary. Carbonic anhydrase sits inside red blood cells, so that is where almost all the bicarbonate is made.",
+      "options": [
+        "Correct. The uncatalyzed reaction is slow, and the enzyme that speeds it is inside red blood cells.",
+        "Carbon dioxide dissolves in plasma well; about 7–10% of it travels that way.",
+        "Plasma pH is about 7.4, close to neutral, and carbonic acid can form at that pH. The limit is speed, not pH.",
+        "Chloride does not block the reaction. It takes part only in the exchange for bicarbonate across the red blood cell membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-22-28",
+    "q": "The figure shows three routes for carbon dioxide leaving the tissue cells. Which route carries the largest share?",
+    "options": [
+      "Dissolving in the plasma and staying there",
+      "Staying inside the tissue cell until exhaled",
+      "Conversion inside the red blood cell to bicarbonate",
+      "Binding to hemoglobin inside the red blood cell"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Inside the red blood cell, carbonic anhydrase converts carbon dioxide to carbonic acid, which splits into a hydrogen ion and bicarbonate. The bicarbonate then moves into the plasma. This route carries about 70% of the carbon dioxide.",
+      "options": [
+        "Dissolved carbon dioxide is the smallest share, about 7–10%.",
+        "Carbon dioxide cannot stay in the tissue cell: it diffuses out down its partial pressure gradient and must reach the lungs in the blood.",
+        "Correct. Conversion to bicarbonate carries about 70%.",
+        "Binding to hemoglobin as carbaminohemoglobin carries about 20–23%, the middle share."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-4",
+    "type": "graph",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-22-28",
+    "q": "In the red blood cell in the figure, carbon dioxide and water form carbonic acid. What speeds this step?",
+    "options": [
+      "Band 3",
+      "Hemoglobin",
+      "Carbonic anhydrase",
+      "Chloride ions"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Carbonic anhydrase is the enzyme in red blood cells that speeds the reaction of carbon dioxide with water by thousands of times.",
+      "options": [
+        "Band 3 is the membrane carrier protein that swaps bicarbonate for chloride. It moves the product; it does not make it.",
+        "Hemoglobin binds the hydrogen ions and some carbon dioxide, but it is not the enzyme that forms carbonic acid.",
+        "Correct. Carbonic anhydrase catalyzes CO2 + H2O ⇌ H2CO3.",
+        "Chloride ions enter in exchange for bicarbonate. They do not catalyze anything."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A drug blocks carbonic anhydrase in red blood cells. Predict the change in each variable as blood passes through an active tissue, compared with before the drug.",
+    "variables": [
+      {
+        "name": "Bicarbonate made inside red blood cells",
+        "answer": "down",
+        "why": "Without the enzyme, carbon dioxide reacts with water too slowly to reach equilibrium while the blood is in the capillary, so less bicarbonate forms."
+      },
+      {
+        "name": "Carbon dioxide carried as dissolved gas",
+        "answer": "up",
+        "why": "Carbon dioxide that is not converted to bicarbonate stays dissolved, so the dissolved share rises."
+      },
+      {
+        "name": "PCO2 of the blood leaving the tissue",
+        "answer": "up",
+        "why": "Dissolved carbon dioxide is the form that sets PCO2. With more of it left unconverted, PCO2 rises."
+      },
+      {
+        "name": "Chloride moving into red blood cells",
+        "answer": "down",
+        "why": "The chloride shift swaps chloride in for bicarbonate out. With less bicarbonate made, less chloride moves in."
+      }
+    ],
+    "why": {
+      "correct": "Carbonic anhydrase is what lets red blood cells turn carbon dioxide into bicarbonate quickly. Blocking it leaves more carbon dioxide dissolved, which raises PCO2 in the blood and tissues, and it slows the chloride shift because there is less bicarbonate to exchange."
+    }
+  },
+  {
+    "id": "anp-co2-transport-6",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Put the steps in order to trace carbon dioxide from a tissue cell to the air.",
+    "options": [
+      "Carbon dioxide diffuses out of the tissue cell and into a red blood cell",
+      "Carbonic anhydrase converts it to carbonic acid, which splits; hemoglobin binds the hydrogen ion",
+      "Bicarbonate leaves the red blood cell in exchange for chloride",
+      "Bicarbonate travels in the plasma to a pulmonary capillary",
+      "Bicarbonate re-enters the red blood cell and is converted back to carbon dioxide",
+      "Carbon dioxide diffuses into the alveoli and is breathed out"
+    ],
+    "why": {
+      "correct": "In the tissues, carbon dioxide enters the blood, is converted to bicarbonate in red blood cells, and the bicarbonate moves into the plasma by the chloride shift. In the lungs every step reverses: bicarbonate re-enters the red blood cell, is converted back to carbon dioxide, and the carbon dioxide diffuses into the alveoli."
+    }
+  },
+  {
+    "id": "anp-co2-transport-7",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "Fill the gap: in a systemic capillary, bicarbonate leaves the red blood cell through band 3, and in exchange ____ enters the cell.",
+    "options": [
+      "Chloride",
+      "Sodium",
+      "Potassium",
+      "Oxygen"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Band 3 swaps one bicarbonate ion for one chloride ion. Both are negative ions, so the exchange keeps the charge across the membrane unchanged. This is the chloride shift.",
+      "options": [
+        "Correct. Chloride enters as bicarbonate leaves.",
+        "Sodium is a positive ion. Swapping it for bicarbonate, a negative ion, would change the charge across the membrane; band 3 exchanges negative ions only.",
+        "Potassium is also a positive ion and is kept inside cells by the sodium–potassium pump, not exchanged for bicarbonate.",
+        "Oxygen is leaving the red blood cell in a systemic capillary, and it crosses by simple diffusion, not through band 3."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-8",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A student described what happens to carbon dioxide in a red blood cell in a systemic capillary. One step is wrong. Which one?",
+    "options": [
+      "Carbon dioxide diffuses into the red blood cell",
+      "Carbonic anhydrase speeds its reaction with water",
+      "Carbonic acid splits into a hydrogen ion and bicarbonate",
+      "Band 3 pumps bicarbonate out using ATP",
+      "Chloride enters the cell as bicarbonate leaves"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Band 3 is a passive exchanger. Bicarbonate and chloride each move down their own concentration gradients, which is facilitated diffusion, and no ATP is used.",
+      "options": [
+        "This step is right. The PCO2 in the plasma is higher than inside the red blood cell, so carbon dioxide diffuses in.",
+        "This step is right. Carbonic anhydrase speeds CO2 + H2O ⇌ H2CO3.",
+        "This step is right. Carbonic acid splits almost at once.",
+        "This is the error. The chloride shift is facilitated diffusion through band 3, not an ATP-driven pump.",
+        "This step is right. Chloride moves in as bicarbonate moves out, one for one."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "gradients"
+    ],
+    "q": "A free diver holds her breath for 60 seconds. What happens to her arterial PCO2 and blood pH by the end of the breath-hold?",
+    "options": [
+      "PCO2 rises and pH rises",
+      "PCO2 falls and pH falls",
+      "PCO2 falls and pH rises",
+      "PCO2 rises and pH falls"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Her cells keep making carbon dioxide, but none is breathed out, so PCO2 rises. More carbon dioxide drives CO2 + H2O ⇌ H2CO3 ⇌ H+ + HCO3− to the right, more hydrogen ions are freed, and pH falls.",
+      "options": [
+        "PCO2 does rise, but more carbon dioxide makes more hydrogen ions, which lowers pH rather than raising it.",
+        "Without breathing, carbon dioxide cannot leave, so PCO2 cannot fall.",
+        "This is what happens when someone breathes fast and deep: carbon dioxide is blown off, and pH rises. A breath-hold does the opposite.",
+        "Correct. Carbon dioxide builds up, and the extra carbonic acid lowers pH."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "As blood passes through the lungs and hemoglobin binds oxygen, how does that help carbon dioxide leave the blood?",
+    "options": [
+      "Oxygen reacts with bicarbonate to form carbon dioxide",
+      "Oxyhemoglobin releases hydrogen ions, which combine with bicarbonate to form carbon dioxide",
+      "Oxygen activates carbonic anhydrase, which otherwise stays switched off",
+      "Oxygen pushes chloride out of the red blood cell, dragging carbon dioxide with it"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is the Haldane effect in the lungs. Oxyhemoglobin holds hydrogen ions less well than deoxyhemoglobin, so it releases them. They combine with bicarbonate to form carbonic acid, which carbonic anhydrase converts to carbon dioxide and water. Oxyhemoglobin also releases the carbon dioxide it held as carbaminohemoglobin.",
+      "options": [
+        "Oxygen does not react with bicarbonate. The link runs through hemoglobin and the hydrogen ions it releases.",
+        "Correct. Released hydrogen ions drive the reaction back toward carbon dioxide.",
+        "Carbonic anhydrase is always active. It speeds the reaction in whichever direction the concentrations push it; oxygen does not switch it on.",
+        "Chloride does leave the red blood cell in the lungs, but only in exchange for bicarbonate coming in. It does not carry carbon dioxide."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "compartments"
+    ],
+    "q": "Red blood cells in venous blood are slightly larger than those in arterial blood. What causes the difference?",
+    "options": [
+      "Deoxyhemoglobin takes up more space than oxyhemoglobin",
+      "Venous blood is at a higher pressure, which stretches the cells",
+      "The cells have gained bicarbonate and chloride, and water follows by osmosis",
+      "Carbon dioxide gas bubbles form inside the cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In the tissues, carbonic anhydrase makes bicarbonate inside the red blood cell and the chloride shift brings chloride in. The hydrogen ions made at the same time are bound to hemoglobin, so they do not count as free particles. The cell ends up with more dissolved particles, water moves in by osmosis, and the cell swells slightly. Venous hematocrit is a few percent higher for this reason.",
+      "options": [
+        "Losing oxygen changes hemoglobin's shape slightly, but not its volume enough to swell the cell. The swelling comes from water entering.",
+        "Venous pressure is lower than arterial pressure, not higher.",
+        "Correct. More osmotically active particles inside the cell draw in water.",
+        "Carbon dioxide stays dissolved or chemically bound in blood; it does not form bubbles."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "most carbon dioxide travels on hemoglobin",
+    "q": "Select every statement that is true of carbaminohemoglobin.",
+    "options": [
+      "Carbon dioxide binds to amino groups on the globin chains",
+      "It forms more readily with deoxyhemoglobin than with oxyhemoglobin",
+      "It carries about 70% of the carbon dioxide in blood",
+      "Carbon dioxide binds to the iron in each heme group",
+      "Its formation needs carbonic anhydrase",
+      "It does not block oxygen from binding the heme iron"
+    ],
+    "correct": [
+      0,
+      1,
+      5
+    ],
+    "why": {
+      "correct": "Carbon dioxide binds the free amino groups at the ends of the globin chains, not the heme iron, so it does not take oxygen's place. Deoxyhemoglobin forms carbaminohemoglobin more readily, which is part of the Haldane effect. It carries about 20–23% of the carbon dioxide, and it forms directly, without an enzyme.",
+      "options": [
+        "Correct. The binding site is the amino groups of globin.",
+        "Correct. Deoxyhemoglobin binds carbon dioxide more readily, one cause of the Haldane effect.",
+        "About 70% is the share carried as bicarbonate. Carbaminohemoglobin carries about 20–23%.",
+        "The heme iron is where oxygen (and carbon monoxide) binds. Carbon dioxide binds the protein chains instead.",
+        "Carbamino binding happens directly between carbon dioxide and the amino groups. Carbonic anhydrase speeds the bicarbonate reaction, not this one.",
+        "Correct. Because it binds a different site, it does not compete with oxygen for the iron, although it lowers hemoglobin's affinity for oxygen slightly."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
+    "q": "Two samples of blood are exposed to the same PCO2 of 45 mmHg. Sample 1 is fully oxygenated; sample 2 has been stripped of oxygen. Which holds more carbon dioxide?",
+    "options": [
+      "They hold the same amount, because PCO2 is the same",
+      "Sample 1, because oxyhemoglobin binds more carbon dioxide",
+      "Sample 2, because deoxyhemoglobin buffers more hydrogen ions and forms more carbaminohemoglobin",
+      "Neither holds any carbon dioxide until carbonic anhydrase is added"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is the Haldane effect. At the same PCO2, deoxygenated blood carries more carbon dioxide, because deoxyhemoglobin binds hydrogen ions more readily (pulling more carbon dioxide into bicarbonate) and forms carbaminohemoglobin more readily.",
+      "options": [
+        "PCO2 sets only the dissolved carbon dioxide. The total the blood holds also depends on how much is converted to bicarbonate and bound to hemoglobin, which depends on oxygenation.",
+        "This reverses the Haldane effect: oxyhemoglobin binds less carbon dioxide and fewer hydrogen ions.",
+        "Correct. Less oxygen on hemoglobin means more carbon dioxide carried at the same PCO2.",
+        "Red blood cells already contain carbonic anhydrase, and dissolved carbon dioxide needs no enzyme at all."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-14",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 1,
+    "core": [
+      "homeostasis",
+      "gradients"
+    ],
+    "q": "A student breathes fast and deep on purpose for one minute. Predict the change in each variable in his arterial blood by the end of the minute.",
+    "variables": [
+      {
+        "name": "PCO2",
+        "answer": "down",
+        "why": "He is breathing out carbon dioxide faster than his cells make it, so the carbon dioxide in his alveoli and arterial blood falls."
+      },
+      {
+        "name": "Hydrogen ion concentration",
+        "answer": "down",
+        "why": "Less carbon dioxide pulls CO2 + H2O ⇌ H2CO3 ⇌ H+ + HCO3− to the left, which uses up hydrogen ions."
+      },
+      {
+        "name": "pH",
+        "answer": "up",
+        "why": "pH rises when free hydrogen ions fall."
+      }
+    ],
+    "why": {
+      "correct": "Breathing more than the body's carbon dioxide production requires lowers PCO2. The carbonic acid reaction runs to the left, hydrogen ions are consumed, and pH rises."
+    }
+  },
+  {
+    "id": "anp-co2-transport-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "What happens to chloride as blood flows through a pulmonary capillary?",
+    "options": [
+      "Chloride moves into red blood cells as bicarbonate moves out",
+      "Chloride moves out of red blood cells as bicarbonate moves in",
+      "Chloride is breathed out with the carbon dioxide",
+      "Chloride stays where it is, because the chloride shift happens only in the tissues"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the lungs, bicarbonate is being converted back to carbon dioxide inside red blood cells, so bicarbonate inside falls. Bicarbonate from the plasma moves in through band 3, and chloride moves out: the chloride shift in reverse.",
+      "options": [
+        "This is the direction in the systemic capillaries, where bicarbonate is being made inside the red blood cell.",
+        "Correct. The exchange reverses in the lungs.",
+        "Chloride is an ion dissolved in body fluids; it cannot be exhaled as a gas.",
+        "Band 3 works in both directions, driven by the gradients. In the lungs, the gradients are reversed, so the shift reverses."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "gradients"
+    ],
+    "q": "Blood passing a working muscle gains a large amount of carbon dioxide, which forms carbonic acid. Yet its pH falls only from about 7.40 to 7.36. What mainly prevents a bigger fall?",
+    "options": [
+      "The chloride shift removes the hydrogen ions from the red blood cell",
+      "Carbonic anhydrase destroys the hydrogen ions",
+      "Deoxyhemoglobin binds most of the hydrogen ions as it gives up oxygen",
+      "The hydrogen ions are exhaled from the muscle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Hemoglobin is unloading oxygen in the same capillary where hydrogen ions are being made, and deoxyhemoglobin binds hydrogen ions more readily than oxyhemoglobin. It buffers most of them, so the free hydrogen ion concentration rises only a little.",
+      "options": [
+        "The chloride shift moves bicarbonate out, not hydrogen ions. Chloride enters in exchange for bicarbonate.",
+        "Carbonic anhydrase speeds the reaction that makes hydrogen ions; it does not remove them.",
+        "Correct. Buffering by deoxyhemoglobin keeps venous pH close to arterial pH.",
+        "Hydrogen ions are not a gas and cannot be exhaled. Only carbon dioxide leaves through the lungs."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "During brisk walking, a man's cardiac output is 8 L/min. His venous blood holds 53 mL of carbon dioxide per 100 mL and his arterial blood 48 mL per 100 mL. How much carbon dioxide does he unload in his lungs each minute?",
+    "options": [
+      "40 mL/min",
+      "400 mL/min",
+      "4,000 mL/min",
+      "4.2 L/min"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Difference = 53 − 48 = 5 mL per 100 mL. Cardiac output 8,000 mL/min is 80 lots of 100 mL. 80 × 5 = 400 mL/min.",
+      "options": [
+        "40 comes from using 8 lots of 100 mL instead of 80: 8 L is 8,000 mL, which is 80 lots of 100 mL.",
+        "Correct. 80 × 5 mL = 400 mL of carbon dioxide per minute.",
+        "4,000 comes from multiplying 8,000 by 5 without dividing by 100: the 5 mL is per 100 mL of blood, not per mL.",
+        "4.2 L/min is about the total carbon dioxide in 8 L of venous blood (53 mL per 100 mL × 80), not the amount unloaded. Only the difference between venous and arterial blood is unloaded."
+      ]
+    }
+  },
+  {
+    "id": "anp-co2-transport-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "interdependence"
+    ],
+    "q": "During exercise, blood leaving a hard-working leg muscle has given up most of its oxygen. Besides the higher PCO2 in the muscle, what lets this blood load extra carbon dioxide?",
+    "options": [
+      "The low oxygen switches on carbonic anhydrase",
+      "Its hemoglobin, now mostly deoxygenated, binds more hydrogen ions and more carbon dioxide",
+      "The muscle secretes bicarbonate directly into the blood",
+      "The higher temperature makes carbon dioxide less soluble"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is the Haldane effect. Deoxyhemoglobin buffers hydrogen ions better, which pulls more carbon dioxide into bicarbonate, and it forms carbaminohemoglobin more readily. The more oxygen the muscle takes, the more carbon dioxide the blood can take away.",
+      "options": [
+        "Carbonic anhydrase is not switched on by low oxygen. It is always active and speeds the reaction in the direction the concentrations push it.",
+        "Correct. Unloading oxygen raises the blood's capacity for carbon dioxide.",
+        "Muscle cells release carbon dioxide, which becomes bicarbonate inside red blood cells. They do not secrete bicarbonate into the blood.",
+        "A warmer liquid does dissolve gases less well, but that would lower carbon dioxide loading, not raise it."
+      ]
+    }
+  }
+]

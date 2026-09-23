@@ -6,7 +6,7 @@
   "chain": [
     { "cause": "Atoms bond to each other.", "effect": "They form molecules, such as water and the large molecules that build cells." },
     { "cause": "Molecules are arranged into working units.", "effect": "Cells form: the smallest units that can carry out the activities of life." },
-    { "cause": "Similar cells group together with the material around them.", "effect": "Tissues form, such as a sheet of cells that all contract together." },
+    { "cause": "Similar cells group together with the material around them.", "effect": "Tissues form, such as a sheet of muscle cells that contract together." },
     { "cause": "Two or more kinds of tissue combine into one structure.", "effect": "An organ forms, such as the stomach, with a job no single tissue can do." },
     { "cause": "Several organs work on a shared job.", "effect": "An organ system forms, such as the digestive system." },
     { "cause": "All eleven organ systems work together and depend on each other.", "effect": "A whole organism, you, stays alive." }

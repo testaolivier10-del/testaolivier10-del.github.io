@@ -1,6 +1,6 @@
 {
   "topic": "homeostasis-feedback",
-  "hook": "<p>Mr. Okafor, 81, is found at home during a winter power cut. His body temperature is 33 °C, and he is confused, and his muscles barely shake. A healthy young adult in the same cold room would have held close to 37 °C for hours. The difference lies in one loop of parts: what senses the cold, what decides, and what does the warming.</p>",
+  "hook": "<p>Mr. Okafor, 81, is found at home during a winter power cut. His body temperature is 33 °C, and he is confused and barely shivering. A healthy young adult in the same cold room would have held close to 37 °C for hours. The difference lies in one loop of parts: what senses the cold, what decides, and what does the warming.</p>",
   "prereq": [
     {
       "q": "What happens to blood flow through a small artery when the smooth muscle in its wall contracts?",
@@ -36,7 +36,7 @@
     },
     {
       "cause": "The control center sends commands along nerves, the efferent pathway.",
-      "effect": "The effectors act: smooth muscle in skin blood vessels contracts, and skeletal muscles contract in rapid small bursts (you shiver)."
+      "effect": "The effectors act: smooth muscle in skin blood vessels contracts, and skeletal muscles contract in rapid small bursts (shivering)."
     },
     {
       "cause": "Vasoconstriction keeps warm blood away from the skin, and the muscle contractions release heat.",

@@ -1,0 +1,32 @@
+{
+  "lung-volumes": {
+    "def": "The four non-overlapping volumes that together fill the lungs: tidal volume (one quiet breath, about 500 mL), inspiratory reserve volume (extra air you can breathe in), expiratory reserve volume (extra air you can breathe out) and residual volume (air that can never be breathed out).",
+    "roots": [["tid-", "tide"], ["re-", "back"], ["serv-", "keep"], ["residu-", "left behind"]],
+    "say": ""
+  },
+  "lung-capacities": {
+    "def": "Sums of two or more respiratory volumes: inspiratory capacity (TV + IRV), functional residual capacity (ERV + RV), vital capacity (TV + IRV + ERV) and total lung capacity (all four volumes).",
+    "roots": [["capac-", "able to hold"], ["vita", "life"]],
+    "say": ""
+  },
+  "spirometry": {
+    "def": "Measuring the volumes of air breathed in and out, and how fast they move. Forced spirometry gives the forced vital capacity (FVC) and FEV1, the volume blown out in the first second; a low FEV1/FVC ratio shows obstructive disease, and small lungs with a normal ratio suggest restrictive disease.",
+    "roots": [["spir-", "breathe"], ["-metry", "process of measuring"], ["ob-", "against"], ["restrict-", "hold back"]],
+    "say": "spy-ROM-eh-tree"
+  },
+  "minute-ventilation": {
+    "def": "The total volume of air moved into or out of the lungs each minute: tidal volume times respiratory rate, about 6 L/min at rest. The respiratory rate is the number of breaths per minute, 12 to 20 in a resting adult.",
+    "roots": [["ventil-", "fan, move air"]],
+    "say": ""
+  },
+  "dead-space": {
+    "def": "Air that is breathed in and out but takes no part in gas exchange. Anatomical dead space is the volume of the conducting airways, about 150 mL; alveolar dead space is alveoli that get air but no blood flow; total dead space is the two added together.",
+    "roots": [["anatom-", "cutting up (structure)"], ["alveol-", "small cavity"]],
+    "say": ""
+  },
+  "alveolar-ventilation": {
+    "def": "The volume of fresh air that reaches the alveoli each minute: (tidal volume − dead space) × respiratory rate, about 4.2 L/min at rest. Shallow breathing lowers it even when minute ventilation stays the same.",
+    "roots": [["alveol-", "small cavity"], ["-ar", "pertaining to"]],
+    "say": "al-VEE-oh-lar"
+  }
+}

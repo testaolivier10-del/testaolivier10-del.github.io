@@ -1,0 +1,27 @@
+{
+  "co2-forms": {
+    "def": "Blood carries carbon dioxide in three forms: about 70% as bicarbonate ions, about 20–23% as carbaminohemoglobin (carbon dioxide bound to the amino groups of globin, not the heme iron) and about 7–10% dissolved.",
+    "roots": [["carb-", "carbon"], ["amino", "amino group"], ["hem/o", "blood"], ["globin", "the globular protein of hemoglobin"]],
+    "say": "kar-BAM-ih-noh-HEE-moh-gloh-bin"
+  },
+  "carbonic-anhydrase": {
+    "def": "The enzyme in red blood cells that speeds the reaction CO2 + H2O ⇌ H2CO3 by thousands of times, in whichever direction the concentrations push it: toward bicarbonate in the tissues and back to carbon dioxide in the lungs.",
+    "roots": [["an-", "without"], ["hydr-", "water"], ["-ase", "enzyme"]],
+    "say": "kar-BON-ik an-HY-drayz"
+  },
+  "chloride-shift": {
+    "def": "The one-for-one exchange of bicarbonate for chloride across the red blood cell membrane through the carrier protein band 3. In the tissues bicarbonate leaves and chloride enters; in the lungs the exchange reverses. It is passive and uses no ATP.",
+    "roots": [],
+    "say": ""
+  },
+  "haldane": {
+    "def": "The less oxygen hemoglobin carries, the more carbon dioxide the blood can carry, because deoxyhemoglobin binds more hydrogen ions and more carbon dioxide. It helps blood load carbon dioxide in the tissues and unload it in the lungs.",
+    "roots": [],
+    "say": "HAWL-dayn"
+  },
+  "co2-ph": {
+    "def": "Carbon dioxide forms carbonic acid, which releases hydrogen ions, so a higher PCO2 lowers blood pH and a lower PCO2 raises it. Normal arterial PCO2 is about 40 mmHg (35–45).",
+    "roots": [],
+    "say": ""
+  }
+}

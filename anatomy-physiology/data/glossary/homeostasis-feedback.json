@@ -10,7 +10,7 @@
     "say": ""
   },
   "set-point": {
-    "def": "The target value a feedback loop holds a regulated variable near, such as about 37 °C for body temperature. It sits inside the normal range and can shift, for example during an infection.",
+    "def": "The target value a feedback loop holds a regulated variable near, such as about 37 °C for body temperature. It sits inside the normal range and can shift, for example during a fever.",
     "roots": [],
     "say": ""
   },

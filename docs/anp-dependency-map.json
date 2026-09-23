@@ -211,7 +211,7 @@
   ],
   "everydayWords": {
     "about": "Common words any student already roughly knows. They may be used in their everyday sense before the topic that teaches them (spec section 7, decision 51); the page check skips them and the glossary gives each a hover definition linking to where it is taught. Technical terms stay strict.",
-    "words": ["ribs","nerve","nerves","cartilage","muscle cell","tendon","tendons","ligament","ligaments","blood clot","clot","hormone","hormones","gland","glands","sweat glands","inflammation","hair","nail","nails","sweating","shivering","bone marrow","hip bone","thirst","pus","fever","vaccine","allergy","saliva","mucus","bile","colon","rectum","puberty","menstruation","red blood cells","white blood cells","platelets","heart attack","serum"]
+    "words": ["ribs","nerve","nerves","cartilage","muscle cell","tendon","tendons","ligament","ligaments","blood clot","clot","hormone","hormones","gland","glands","sweat glands","inflammation","hair","nail","nails","sweating","shivering","bone marrow","hip bone","thirst","pus","fever","vaccine","allergy","saliva","mucus","bile","colon","rectum","puberty","menstruation","red blood cells","white blood cells","platelets","heart attack","serum","red blood cell","white blood cell","platelet","rib cage","nerve cell"]
   },
   "concepts": [
     {"id":"anatomy","term":"anatomy","aliases":["gross anatomy","microscopic anatomy","regional anatomy","systemic anatomy"],"taughtIn":"body-organization","dependsOn":[]},

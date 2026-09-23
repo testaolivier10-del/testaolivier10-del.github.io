@@ -323,7 +323,7 @@
     "level": "apply",
     "diff": 2,
     "core": ["gradients"],
-    "q": "Fill the gap. Blood cells are placed in pure water → the inside of each cell has more dissolved particles than the water outside → ______ → the cells swell and many burst.",
+    "q": "Fill the gap. Red blood cells are placed in pure water → the inside of each cell has more dissolved particles than the water outside → ______ → the cells swell and many burst.",
     "options": [
       "Dissolved particles diffuse out of the cells until both sides are equal",
       "Water moves into the cells by osmosis",
@@ -444,7 +444,7 @@
     "level": "analyze",
     "diff": 2,
     "core": ["gradients"],
-    "q": "Blood cells are moved from 0.9% sodium chloride (about the same osmolarity as their insides) into a much saltier solution. Their membranes let water cross but hold back most of the salt. Predict each change over the next few minutes.",
+    "q": "Red blood cells are moved from 0.9% sodium chloride (about the same osmolarity as their insides) into a much saltier solution. Their membranes let water cross but hold back most of the salt. Predict each change over the next few minutes.",
     "variables": [
       {
         "name": "Volume of each cell",

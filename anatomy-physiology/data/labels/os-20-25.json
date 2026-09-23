@@ -100,7 +100,7 @@
         162,
         32
       ],
-      "concept": "aorta-parts"
+      "concept": "great-vessels"
     },
     {
       "id": "ascending-aorta",
@@ -114,7 +114,7 @@
         244,
         39
       ],
-      "concept": "aorta-parts"
+      "concept": "great-vessels"
     },
     {
       "id": "descending-aorta",

@@ -1,6 +1,6 @@
 {
   "topic": "organelles",
-  "hook": "<p>Jonah, 9, has had a wet cough almost every day since he was a baby, along with ear and sinus infections that keep coming back. Antibiotics help, then the infections return. A sample of cells brushed from inside his nose shows the problem under the microscope: the tiny beating projections on those cells are frozen in place. With nothing sweeping the sticky layer out of his airways, trapped microbes stay put. The same defect can later leave men infertile, because a sperm's tail is built the same way.</p>",
+  "hook": "<p>Jonah, 9, has had a wet cough almost every day since he was a baby, along with ear and sinus infections that keep coming back. Antibiotics help, then the infections return. A sample of cells brushed from inside his nose shows the problem under the microscope: the tiny beating projections on those cells are frozen in place. With nothing sweeping mucus out of his airways, the microbes trapped in it stay put. The same defect can later leave men infertile, because a sperm's tail is built the same way.</p>",
   "prereq": [
     {
       "q": "Which part of a cell lies inside the plasma membrane but outside the nucleus?",

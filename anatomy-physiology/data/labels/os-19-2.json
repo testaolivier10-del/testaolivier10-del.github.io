@@ -50,7 +50,7 @@
         3,
         6
       ],
-      "concept": "aorta-parts",
+      "concept": "great-vessels",
       "box": [
         1021,
         131,
@@ -192,7 +192,7 @@
       "lines": [
         17
       ],
-      "concept": "aorta-parts",
+      "concept": "great-vessels",
       "box": [
         739,
         504,

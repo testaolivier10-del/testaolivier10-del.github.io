@@ -1,0 +1,16 @@
+{
+  "os-22-28": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.28",
+      "section": "22.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0a5914bd4c88ad10cfa14f60d326a729fc88f7a4",
+      "page": "22-5-transport-of-gases"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/0a5914bd4c88ad10cfa14f60d326a729fc88f7a4",
+    "alt": "A drawing of a capillary running diagonally between tissue cells, with two red blood cells inside it. An arrow carries carbon dioxide from a tissue cell at the top into one red blood cell, where the equation CO2 plus H2O gives H2CO3, which gives HCO3 minus plus H plus, is written; an arrow then leads from that cell into the plasma. A second arrow carries carbon dioxide from a tissue cell at the bottom into the plasma. Three labels name the forms: carbon dioxide carried in the red blood cell, bicarbonate in the plasma, and carbon dioxide dissolved in plasma.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.28",
+    "labels": []
+  }
+}
