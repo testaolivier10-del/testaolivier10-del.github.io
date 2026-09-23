@@ -1,0 +1,22 @@
+{
+  "charge-separation": {
+    "def": "A state in which positive and negative charges are held apart by a barrier, so one region has extra positive charge and a nearby region extra negative charge. Separating charge takes energy, which is stored as potential energy; in your cells, a very thin layer of separated charge lines the two faces of the membrane.",
+    "roots": [],
+    "say": ""
+  },
+  "voltage": {
+    "def": "The difference in electrical potential energy per unit of charge between two points, also called potential difference, measured in volts. It exists only where charge is separated; voltages across cell membranes are a few tens of millivolts (mV; 1 mV = 0.001 V), written as the inside compared with the outside.",
+    "roots": [["milli-", "one thousandth"]],
+    "say": "VOLE-tij"
+  },
+  "current": {
+    "def": "The flow of electric charge, measured in amperes. In your body it is an ion current, carried by ions moving through fluid or across a membrane; by convention its direction is the direction positive charge moves, and current equals voltage divided by electrical resistance.",
+    "roots": [["curr-", "run"]],
+    "say": ""
+  },
+  "electrochemical-gradient": {
+    "def": "The total push on an ion: its concentration gradient combined with the electrical gradient (the voltage), which pushes positive ions toward the negative side and negative ions toward the positive side. The two parts can add together or oppose each other.",
+    "roots": [["electr/o", "electric"], ["chem-", "chemical"]],
+    "say": "ee-LEK-troh-KEM-ih-kul"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "topic": "cell-cycle",
+  "hook": "<p>Ms. Okafor, 51, starts chemotherapy for breast cancer. Ten days later she has painful mouth sores and her white blood cell count has dropped, but her heart and brain work normally. The drug harms cells that are dividing. Which of her cells divide, and how often, decides where the side effects appear.</p>",
+  "prereq": [
+    {
+      "q": "A cell has just finished copying its DNA and has not yet divided. How many chromosomes and chromatids does one of your body cells hold at this point?",
+      "options": ["46 chromosomes and 92 chromatids", "92 chromosomes and 92 chromatids", "23 chromosomes and 46 chromatids"],
+      "correct": 0,
+      "why": "Copying doubles the DNA but not the chromosome count. Each of the 46 chromosomes is now two sister chromatids joined at the centromere.",
+      "review": "dna-genes"
+    },
+    {
+      "q": "What does a transcription factor do?",
+      "options": ["It joins amino acids into a chain on the ribosome", "It binds DNA near a gene and raises or lowers that gene's transcription", "It removes introns from the first RNA copy"],
+      "correct": 1,
+      "why": "Transcription factors bind specific DNA sequences near a gene and make RNA polymerase more or less likely to start copying it. The mix a cell holds decides which genes it expresses.",
+      "review": "protein-synthesis"
+    },
+    {
+      "q": "Which part of the cytoskeleton is built from tubulin and can grow and shrink quickly?",
+      "options": ["Intermediate filaments", "Actin filaments", "Microtubules"],
+      "correct": 2,
+      "why": "Microtubules are hollow tubes of tubulin that grow from the centrosome and can lengthen or shorten quickly. Actin filaments are thinner, and intermediate filaments are the stable, ropelike ones.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-32",
+    "caption": "The stages of mitosis and cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two nuclei form as the cell pinches in two."
+  },
+  "chain": [
+    { "cause": "In G1, a cell receives signals to divide, and its cyclin level rises.", "effect": "Cyclin binds and activates its CDK, and the active pair drives the cell past the G1 checkpoint." },
+    { "cause": "Past the G1 checkpoint, the cell is committed to the cycle.", "effect": "In S phase, it replicates its DNA, so each chromosome becomes two sister chromatids." },
+    { "cause": "The G2 checkpoint confirms the DNA is fully and correctly copied.", "effect": "The cell enters mitosis: chromosomes condense and the mitotic spindle forms (prophase)." },
+    { "cause": "Spindle microtubules attach to the kinetochores of every chromosome from both sides.", "effect": "The chromosomes line up on the metaphase plate, and the spindle checkpoint is satisfied (metaphase)." },
+    { "cause": "The proteins holding the sister chromatids together are cut, and the kinetochore microtubules shorten.", "effect": "The chromatids move to opposite ends of the cell (anaphase)." },
+    { "cause": "A full set of chromosomes arrives at each end.", "effect": "A nuclear envelope re-forms around each set (telophase), and an actin–myosin ring pinches the cell in two (cytokinesis)." }
+  ],
+  "misconception": {
+    "wrong": "Cells specialize by losing the genes they do not need.",
+    "right": "A specialized cell keeps the whole genome. Differentiation changes which genes are switched on: each cell type holds its own mix of transcription factors, and those decide which genes it expresses. The proof is that adult skin cells can be turned back into pluripotent stem cells by switching on a few transcription factors. That would be impossible if the genes for other cell types had been thrown away."
+  },
+  "check": ["anp-cell-cycle-2", "anp-cell-cycle-3", "anp-cell-cycle-5", "anp-cell-cycle-7", "anp-cell-cycle-10", "anp-cell-cycle-12", "anp-cell-cycle-15"],
+  "summary": "<p>The cell cycle is interphase (G1, S and G2, with DNA replicated in S) followed by the mitotic phase. Cells that stop dividing rest in G0. Cyclins switch on CDKs, which drive the cell forward, and checkpoints in G1, at the end of G2 and during mitosis pause it until conditions are met. Mitosis divides the nucleus of a somatic cell in four phases, prophase, metaphase, anaphase and telophase, giving two identical nuclei; cytokinesis then splits the cytoplasm with an actin–myosin ring. Stem cells renew themselves and give rise to specialized cells; their potency ranges from totipotent to unipotent. Differentiation works by switching genes on and off, not by losing them. Apoptosis removes cells in an orderly way. Cancer arises when mutations in oncogenes and tumor suppressor genes let a cell divide without control and escape apoptosis.</p>",
+  "connections": []
+}

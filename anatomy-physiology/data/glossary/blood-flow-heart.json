@@ -1,0 +1,117 @@
+{
+  "oxygenated-deoxygenated": {
+    "def": "Oxygenated (oxygen-rich) blood has just left the lungs, with its hemoglobin about 97 to 98 percent loaded with oxygen. Deoxygenated (oxygen-poor) blood has passed through the tissues and given up some oxygen, but at rest it is still about 75 percent loaded; both are red.",
+    "roots": [
+      [
+        "oxy-",
+        "oxygen"
+      ],
+      [
+        "de-",
+        "removed"
+      ]
+    ],
+    "say": ""
+  },
+  "pulmonary-circuit": {
+    "def": "The loop that carries blood from the right ventricle through the pulmonary trunk and arteries to the pulmonary capillaries around the alveoli, where it picks up oxygen and gives off carbon dioxide, and back through the pulmonary veins to the left atrium. It works at low pressure.",
+    "roots": [
+      [
+        "pulmon-",
+        "lung"
+      ]
+    ],
+    "say": "PUL-muh-nair-ee"
+  },
+  "systemic-circuit": {
+    "def": "The loop that carries oxygenated blood from the left ventricle through the aorta and its branches to the capillaries of every tissue except the lung's air sacs, and back through veins and the venae cavae to the right atrium. It works at high pressure.",
+    "roots": [
+      [
+        "system-",
+        "the whole body"
+      ]
+    ],
+    "say": "sis-TEM-ik"
+  },
+  "heart-pathway": {
+    "def": "The order blood takes: venae cavae, right atrium, tricuspid valve, right ventricle, pulmonary valve, pulmonary trunk and arteries, lungs, pulmonary veins, left atrium, mitral valve, left ventricle, aortic valve, aorta, body.",
+    "roots": [],
+    "say": ""
+  },
+  "coronary-circulation": {
+    "def": "The heart muscle's own blood supply. The right and left coronary arteries leave the aorta just above the aortic valve and branch (left anterior descending, circumflex, marginal and posterior interventricular arteries); cardiac veins drain into the coronary sinus, which empties into the right atrium.",
+    "roots": [
+      [
+        "coron-",
+        "crown"
+      ],
+      [
+        "circum-",
+        "around"
+      ],
+      [
+        "flex-",
+        "bend"
+      ]
+    ],
+    "say": "KOR-uh-nair-ee"
+  },
+  "mi-ischemia": {
+    "def": "Myocardial ischemia is blood flow to heart muscle too low for its oxygen demand; when it reverses it causes angina. A myocardial infarction (heart attack) is death of heart muscle from ischemia that lasts too long, usually a clot on a cracked fatty plaque.",
+    "roots": [
+      [
+        "isch-",
+        "hold back"
+      ],
+      [
+        "-emia",
+        "blood condition"
+      ],
+      [
+        "my/o",
+        "muscle"
+      ],
+      [
+        "cardi/o",
+        "heart"
+      ],
+      [
+        "infarct",
+        "stuffed in"
+      ],
+      [
+        "angina",
+        "strangling"
+      ]
+    ],
+    "say": "is-KEE-mee-uh; in-FARK-shun; an-JY-nuh"
+  },
+  "vascular-anastomosis": {
+    "def": "A connection between two blood vessels. Where branches of two arteries join, blood can reach tissue by a second route, called collateral circulation.",
+    "roots": [
+      [
+        "ana-",
+        "again"
+      ],
+      [
+        "stom-",
+        "mouth"
+      ]
+    ],
+    "say": "uh-nas-tuh-MOH-sis"
+  },
+  "systole-diastole": {
+    "def": "Systole is the contraction phase of a heart chamber and diastole is its relaxation and refilling phase. One cardiac cycle is one full heartbeat, from the start of one beat to the start of the next.",
+    "roots": [
+      [
+        "systol-",
+        "contraction"
+      ],
+      [
+        "diastol-",
+        "expansion"
+      ]
+    ],
+    "say": "SIS-tuh-lee; dy-AS-tuh-lee"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "topic": "circulatory-disorders",
+  "hook": "<p>Carlos, 27, lays his motorcycle down on a wet road and tears a deep gash in his thigh. Twenty minutes later, in the ambulance, his blood pressure is 112/90, close to normal. But his heart rate is 128, his skin is pale, cool and clammy, and he keeps asking the same question. The crew treats him as a patient in shock, near-normal pressure and all.</p>",
+  "prereq": [
+    {
+      "q": "When baroreceptor firing falls, what does the cardiovascular center do?",
+      "options": ["Raises vagal output and lowers sympathetic output", "Raises sympathetic output and lowers vagal output", "Stops all output to the heart until pressure recovers"],
+      "correct": 1,
+      "why": "Less baroreceptor input means pressure has fallen. The cardiovascular center raises sympathetic output and lowers vagal output, which raises heart rate, contractility and TPR.",
+      "review": "bp-short-term"
+    },
+    {
+      "q": "Which change increases filtration out of systemic capillaries and can cause edema?",
+      "options": ["A rise in venous pressure", "A rise in plasma albumin", "Constriction of the arterioles feeding the bed"],
+      "correct": 0,
+      "why": "A rise in venous pressure passes back into the capillaries and raises capillary hydrostatic pressure, so more fluid filters out. More albumin or constricted arterioles would reduce filtration.",
+      "review": "capillary-exchange"
+    },
+    {
+      "q": "What does angiotensin II do to the kidneys' handling of salt and water?",
+      "options": ["Makes them excrete more, through ANP", "Has no effect on the kidneys", "Makes them keep more, directly and through aldosterone"],
+      "correct": 2,
+      "why": "Angiotensin II makes the kidneys keep sodium directly and releases aldosterone, which increases sodium reabsorption further. Water follows the sodium.",
+      "review": "bp-long-term"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-19-16",
+    "caption": "A coronary angiogram. Dye fills the heart's arteries and stops where atherosclerotic plaque blocks them. Hide the labels and find the blocked vessels."
+  },
+  "chain": [
+    { "cause": "Carlos loses blood quickly from the torn vessels in his thigh.", "effect": "Blood volume falls, so venous return, stroke volume and cardiac output fall." },
+    { "cause": "Lower cardiac output lowers MAP, and baroreceptor firing falls.", "effect": "Sympathetic output rises: his heart rate climbs, and arterioles in his skin, gut and kidneys constrict." },
+    { "cause": "Constricted arterioles raise TPR while stroke volume stays low.", "effect": "His diastolic pressure is held up, his pulse pressure narrows, and his skin turns pale and cool." },
+    { "cause": "Constricted arterioles and low pressure lower capillary hydrostatic pressure, and renin, angiotensin II, aldosterone and ADH rise.", "effect": "Interstitial fluid moves into his plasma, and his kidneys keep salt and water." },
+    { "cause": "If bleeding continues, these responses are overwhelmed and oxygen delivery falls below what his tissues need.", "effect": "His cells shift to anaerobic metabolism, lactate rises and pressure falls: progressive shock." }
+  ],
+  "misconception": {
+    "wrong": "A bleeding patient with a normal blood pressure is not in shock.",
+    "right": "Shock is too little oxygen delivery to the tissues, not low blood pressure. The baroreceptor reflex holds MAP near normal after losing up to about 30 percent of blood volume, by raising heart rate and constricting arterioles. A fast heart rate, a narrow pulse pressure and cool, pale skin are the early signs. A falling blood pressure is a late sign that compensation is failing."
+  },
+  "check": ["anp-circulatory-disorders-3", "anp-circulatory-disorders-6", "anp-circulatory-disorders-8", "anp-circulatory-disorders-11", "anp-circulatory-disorders-13", "anp-circulatory-disorders-16", "anp-circulatory-disorders-19"],
+  "summary": "<p>Hypertension is pressure that stays above normal; the kidneys hold it high, TPR rises, and over years it thickens the left ventricle and damages arteries. Atherosclerosis builds plaques in the tunica intima that narrow arteries and can rupture into a thrombus, causing heart attacks and strokes. Heart failure is a heart that cannot pump enough at normal filling pressures: left-sided failure congests the lungs, right-sided failure the systemic veins, and the compensating reflexes and hormones eventually make it worse. Shock is too little oxygen delivery to the tissues. It is hypovolemic, cardiogenic, obstructive or distributive, depending on whether volume, the pump, the circuit or vessel tone has failed. After a hemorrhage, the reflex holds pressure within seconds, fluid moves into the plasma over hours, the kidneys rebuild volume over a day, and proteins and red cells return over days to weeks.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-29", "label": "NREMT: Bleeding control" },
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" }
+  ]
+}

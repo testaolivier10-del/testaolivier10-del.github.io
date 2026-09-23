@@ -37,6 +37,7 @@ const OPENSTAX_CATALOG = CATALOG_PATH && existsSync(CATALOG_PATH)
   ? new Map(JSON.parse(readFileSync(CATALOG_PATH, 'utf8')).map(c => [c.url, c])) : null;
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
+const NREMT_CHAPTERS = JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'study-notes.json'), 'utf8')).chapters.length;
 const exists = p => existsSync(p);
 
 function glossaryAll() {
@@ -198,6 +199,13 @@ export function checkTopic(id, glossary, figures) {
     else texts.push(g.def);
   }
 
+  // --- links into the NREMT notes route by #chapter-N (nremt/study-notes.html)
+  const rawAll = [notes, ...['lessons', 'questions'].map(d => exists(join(DATA, d, `${id}.json`)) ? readFileSync(join(DATA, d, `${id}.json`), 'utf8') : '')].join('\n');
+  for (const m of rawAll.matchAll(/study-notes\.html#([A-Za-z0-9_-]+)/g)) {
+    const n = (m[1].match(/^chapter-(\d+)$/) || [])[1];
+    if (!n || +n < 1 || +n > NREMT_CHAPTERS) err(`link: nremt/study-notes.html#${m[1]} does not route; use #chapter-N (1-${NREMT_CHAPTERS})`);
+  }
+
   // --- ordering: all of it, as one page
   const page = `<html><head></head><body>${notes}<div>${texts.map(t => `<p>${t}</p>`).join('')}</div></body></html>`;
   for (const p of scanPage(map, page, id)) err(`ORDER: ${p}`);
@@ -223,5 +231,22 @@ if (isMain) {
     if (r.errors.length) failed++;
   }
   console.log(`A&P content: ${ids.length} topics, ${total} questions, ${failed} failing.`);
-  if (args.includes('--check') && failed) process.exit(1);
+
+  // --- tools: each tool's content file against its own validator
+  // (scripts/lib/anp-tool-checks/<slug>.mjs, docs/anp-tools-contract.md).
+  let toolFails = 0;
+  if (!only) {
+    const toolDir = join(DATA, 'tools');
+    const checkDir = join(ROOT, 'scripts', 'lib', 'anp-tool-checks');
+    for (const f of exists(toolDir) ? readdirSync(toolDir).filter(f => f.endsWith('.json')).sort() : []) {
+      const slug = f.replace(/\.json$/, '');
+      const v = join(checkDir, `${slug}.mjs`);
+      if (!exists(v)) { console.log(`tool ${slug}: FAIL: no validator at scripts/lib/anp-tool-checks/${slug}.mjs`); toolFails++; continue; }
+      const { check } = await import(v);
+      const errs = check(readJson(join(toolDir, f)), map) || [];
+      if (errs.length) { toolFails++; console.log(`tool ${slug}: FAIL`); for (const e of errs) console.log(`  FAIL: ${e}`); }
+    }
+    console.log(`A&P tools: ${toolFails} failing.`);
+  }
+  if (args.includes('--check') && (failed || toolFails)) process.exit(1);
 }

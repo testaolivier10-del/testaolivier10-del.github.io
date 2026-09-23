@@ -126,7 +126,7 @@ The full explanation, in the lesson's order of ideas. Length follows the topic, 
     "license": "CC BY 4.0", "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.4", "labels": [] } }
   ```
 
-  Leave `labels` empty. The figure pipeline finds the label boxes and fills them in. Use a
+  Leave `labels` empty. The figure pipeline finds the label boxes, and the named labels go in `data/labels/<figure id>.json`. Use a
   figure in notes with `<figure id="fig-heart-external" data-fig="heart-external"><figcaption>your
   own caption</figcaption></figure>`, and in a lesson with `"anatomy": { "figure":
   "heart-external", "caption": "..." }`. Check the other topics' figure files before

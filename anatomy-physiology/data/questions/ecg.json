@@ -1,0 +1,506 @@
+[
+  {
+    "id": "anp-ecg-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which electrical event does the P wave record?",
+    "options": [
+      "Depolarization of the atria",
+      "Firing of the SA node alone",
+      "Depolarization of the ventricles",
+      "Repolarization of the atria"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The P wave is the wave of depolarization spreading across both atria after the SA node fires.",
+      "options": [
+        "Correct. The atria contract just after the P wave.",
+        "The SA node is too small for its own activity to show from the skin. The P wave comes from the much larger mass of atrial muscle.",
+        "Ventricular depolarization is the QRS complex.",
+        "Atrial repolarization happens during the QRS complex and is hidden by it."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Why does a normal ECG show no separate wave for atrial repolarization?",
+    "options": [
+      "The atria do not repolarize until the next P wave",
+      "It happens during the QRS complex, which is far larger and hides it",
+      "Atrial cells repolarize too slowly and gradually to produce any measurable voltage change",
+      "Atrial repolarization is recorded as the T wave"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The atria repolarize at the same moment the ventricles depolarize. The ventricles' large signal swamps the atria's small one.",
+      "options": [
+        "The atria repolarize well before the next beat; a cell must repolarize before it can fire again.",
+        "Correct. Atrial repolarization overlaps the QRS complex and is hidden in it.",
+        "Repolarization does produce a voltage change. The T wave is ventricular repolarization, for example.",
+        "The T wave is ventricular repolarization."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-19-23",
+    "q": "On the rhythm strip at the top of the figure, the tall R spikes are 4 large squares apart, and each large square is 0.20 second. What is the heart rate?",
+    "options": [
+      "60 beats per minute",
+      "100 beats per minute",
+      "75 beats per minute",
+      "48 beats per minute"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "4 × 0.20 second = 0.80 second per beat, and 60 ÷ 0.80 = 75 beats per minute. The shortcut gives the same: 300 ÷ 4 = 75.",
+      "options": [
+        "60 per minute would need 5 large squares (1.0 second) between beats.",
+        "100 per minute would need 3 large squares (0.60 second) between beats.",
+        "Correct. 300 ÷ 4 large squares = 75.",
+        "This treats each large square as 0.25 second, not 0.20."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-19-23",
+    "q": "Which measurement labeled in the enlarged part of the figure lengthens if conduction through the AV node slows?",
+    "options": [
+      "The QRS complex",
+      "The ST segment",
+      "The QT interval",
+      "The PR interval"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The PR interval runs from the start of atrial depolarization to the start of ventricular depolarization. Most of that time is the AV nodal delay, so slower AV conduction lengthens it.",
+      "options": [
+        "The QRS complex measures how fast the ventricles depolarize, after the signal has left the AV node.",
+        "The ST segment is the plateau after the ventricles have depolarized. The AV node plays no part.",
+        "The QT interval covers ventricular depolarization and repolarization, which start after the AV node.",
+        "Correct. The PR interval is the window on the AV node."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-5",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap in this heart rate calculation. Two R waves are 3 large squares apart. 3 × 0.20 second = 0.60 second per beat → ______ → 100 beats per minute.",
+    "options": [
+      "0.60 × 60",
+      "60 ÷ 0.60",
+      "300 × 3",
+      "0.60 ÷ 60"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Beats per minute = 60 seconds ÷ seconds per beat = 60 ÷ 0.60 = 100. The shortcut 300 ÷ 3 gives the same.",
+      "options": [
+        "Multiplying gives 36, which has no meaning here. Divide a minute by the time per beat.",
+        "Correct. 60 ÷ 0.60 = 100.",
+        "The shortcut divides 300 by the number of squares; it does not multiply. 300 × 3 = 900.",
+        "This gives 0.01, the number of minutes per beat, not beats per minute."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Mr. Osei, 68, feels well. His ECG shows a regular rhythm at 64 per minute. Every P wave is followed by a narrow QRS complex, but every PR interval measures 0.28 second. Which finding fits?",
+    "options": [
+      "Third-degree heart block",
+      "Atrial fibrillation",
+      "First-degree heart block",
+      "Ventricular tachycardia"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A PR interval longer than 0.20 second means the AV node conducts slowly. Because every P wave still reaches the ventricles, it is first-degree heart block.",
+      "options": [
+        "In third-degree block no signals cross, so P waves and QRS complexes are unrelated. Here every P wave is followed by its QRS.",
+        "Atrial fibrillation has no P waves and an irregular rhythm. This rhythm is regular with a P wave before every beat.",
+        "Correct. Every beat conducts, but each is delayed at the AV node.",
+        "Ventricular tachycardia is fast, with wide QRS complexes and no linked P waves."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Ms. Brennan, 79, has palpitations. Her monitor shows narrow QRS complexes at about 120 per minute, spaced with no pattern at all, and a wobbling baseline with no P waves. What is happening in her heart?",
+    "options": [
+      "The atria are depolarizing chaotically, and the AV node passes signals at irregular moments",
+      "The SA node is firing faster than normal but conduction is normal",
+      "The ventricles are depolarizing chaotically and pump no blood",
+      "No signals are crossing the AV node at all, so a backup pacemaker in the ventricles has taken over"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is atrial fibrillation. Chaotic atrial wavelets replace the P wave, and the AV node lets signals through at irregular times, giving irregularly irregular narrow QRS complexes.",
+      "options": [
+        "Correct. Narrow QRS complexes show the ventricles are still activated through the normal conducting system.",
+        "Sinus tachycardia would be regular, with a P wave before each QRS complex.",
+        "In ventricular fibrillation there are no QRS complexes at all. Hers are clear and narrow.",
+        "A ventricular backup pacemaker would give a slow, regular rhythm with wide QRS complexes."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A man collapses in a gym. He has no pulse, and the monitor shows an irregular wavy line with no recognizable P waves, QRS complexes or T waves. Which treatment addresses the rhythm directly?",
+    "options": [
+      "An artificial pacemaker to speed up his heart",
+      "A drug that slows the AV node",
+      "Defibrillation",
+      "Waiting for his SA node to recover on its own"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is ventricular fibrillation. A shock depolarizes most of the heart at once, so all those cells become refractory together, the chaotic wavelets die out, and the SA node can take back control.",
+      "options": [
+        "A pacemaker adds regular pulses to a heart that is too slow. It cannot stop chaotic activity already running through the ventricles.",
+        "The problem is in the ventricles, not the AV node. Slowing the AV node would not reach the chaotic ventricular wavelets.",
+        "Correct. Defibrillation resets the ventricles' chaotic electrical activity.",
+        "Ventricular fibrillation pumps no blood. It rarely stops on its own, and death follows within minutes without a shock."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A beat on a rhythm strip started in the ventricular muscle rather than coming through the AV node. Which features would you expect for that beat? Select all that apply.",
+    "options": [
+      "A QRS complex 0.12 second or wider",
+      "No P wave linked to it",
+      "A PR interval of 0.16 second",
+      "A QRS complex narrower than usual",
+      "An unusual QRS shape"
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ],
+    "why": {
+      "correct": "A beat that starts in ventricular muscle spreads slowly from cell to cell instead of through the Purkinje network, so its QRS complex is wide and oddly shaped, and it has no P wave in front of it.",
+      "options": [
+        "Expected. Slow muscle-to-muscle spread makes the QRS complex wide.",
+        "Expected. The atria did not start this beat, so no P wave leads into it.",
+        "Not expected. A normal PR interval means the beat came from the atria through the AV node.",
+        "Not expected. Without the fast conducting network, depolarization takes longer, not shorter.",
+        "Expected. The unusual path of spread changes the direction the lead sees, and so the shape."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-10",
+    "type": "order",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Put these parts of one normal beat in the order they appear on the ECG.",
+    "options": [
+      "P wave",
+      "PR segment",
+      "QRS complex",
+      "ST segment",
+      "T wave"
+    ],
+    "why": {
+      "correct": "The atria depolarize (P wave), the signal crosses the AV node (PR segment), the ventricles depolarize (QRS complex), they hold their plateau (ST segment), and they repolarize (T wave)."
+    }
+  },
+  {
+    "id": "anp-ecg-11",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student lists what each part of the ECG shows. One statement is wrong. Find it.",
+    "options": [
+      "The P wave shows atrial depolarization.",
+      "The PR interval is mostly the AV nodal delay.",
+      "The QRS complex shows ventricular depolarization.",
+      "The ST segment is flat because the ventricles are fully repolarized.",
+      "The T wave shows ventricular repolarization."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "During the ST segment the ventricles are fully depolarized, sitting in the plateau of their action potential. With every cell at about the same voltage, little current flows between regions, so the line is flat.",
+      "options": [
+        "This statement is right.",
+        "This statement is right. The PR interval spans the atria, the AV node and the conducting fibers, and the AV node takes most of the time.",
+        "This statement is right.",
+        "This is the error. The ventricles are fully depolarized, not repolarized, during the ST segment. They repolarize during the T wave.",
+        "This statement is right."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-12",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient takes a drug that slows conduction through the AV node but has no effect on the SA node or the ventricles. Every beat still conducts. Predict each change on the ECG.",
+    "variables": [
+      {
+        "name": "PR interval",
+        "answer": "up",
+        "why": "The PR interval is mostly AV nodal delay, so slower AV conduction lengthens it."
+      },
+      {
+        "name": "Number of P waves per minute",
+        "answer": "none",
+        "why": "The SA node sets how often P waves occur, and the drug does not affect it."
+      },
+      {
+        "name": "QRS duration",
+        "answer": "none",
+        "why": "Once the signal leaves the AV node, the ventricles depolarize through the normal fast network, at the normal speed."
+      }
+    ],
+    "why": {
+      "correct": "Slowing the AV node stretches the gap between each P wave and its QRS complex without changing the rate of P waves or the width of the QRS."
+    }
+  },
+  {
+    "id": "anp-ecg-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "During a heart attack, the ST segment rises above the baseline in the leads facing the injured wall. What causes this?",
+    "options": [
+      "The injured cells depolarize faster than normal",
+      "Injured cells cannot hold a normal plateau, so current flows during the ST segment",
+      "The AV node stops conducting, so an extra P wave appears inside the ST segment of each beat",
+      "The ventricles repolarize twice during each beat"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Normally all ventricular cells sit at the same plateau voltage during the ST segment, so no current flows and the line is flat. Ischemic cells cannot hold that voltage, so a voltage difference appears between them and healthy cells, and the segment shifts off the baseline.",
+      "options": [
+        "Faster depolarization would change the QRS complex, and injured cells tend to conduct more slowly, not faster.",
+        "Correct. The ST segment is normally silent; injury makes current flow during it.",
+        "Loss of AV conduction affects the P-to-QRS relationship, not the level of the ST segment.",
+        "Each ventricular cell repolarizes once per beat, during the T wave."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "you can shock a flat line",
+    "q": "A patient's monitor shows a completely flat line in every lead, and the leads are firmly attached. Why would defibrillation not restore a rhythm?",
+    "options": [
+      "A shock only works on atrial rhythms",
+      "The shock would make the heart beat too fast",
+      "The flat line shows the SA node is firing normally, so the heart needs no treatment",
+      "A shock works by resetting chaotic electrical activity, and there is none to reset"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Defibrillation depolarizes the heart all at once, so every cell becomes refractory together and chaotic wavelets die out. With no electrical activity at all, there is nothing for the shock to reset, and it cannot start a beat.",
+      "options": [
+        "Shocks are the standard treatment for ventricular fibrillation, a ventricular rhythm.",
+        "A shock does not speed up the heart; it resets its electrical activity once.",
+        "A firing SA node would produce P waves. A flat line means no electrical activity is reaching the skin, which is an emergency.",
+        "Correct. A flat line needs chest compressions and drugs, not a shock."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In one lead, a wave of depolarization travels directly away from the lead's positive electrode. What does that lead record?",
+    "options": [
+      "A downward deflection",
+      "An upward deflection",
+      "A flat line",
+      "An upward and then a downward deflection of equal size"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Depolarization moving toward a positive electrode draws an upward deflection; moving away from it draws a downward one.",
+      "options": [
+        "Correct. Movement away from the positive electrode points the trace down.",
+        "An upward deflection means depolarization is moving toward the positive electrode.",
+        "A small or flat deflection means the wave is moving at right angles to the lead.",
+        "A two-part deflection of equal size fits a wave passing across the lead, not one heading directly away."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A rhythm is irregular. On a 6-second strip you count 11 QRS complexes. What is the heart rate?",
+    "options": [
+      "About 66 per minute",
+      "About 110 per minute",
+      "About 55 per minute",
+      "About 180 per minute"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A 6-second strip is one tenth of a minute, so multiply by 10: 11 × 10 = 110 per minute. This method works when the spacing between beats varies.",
+      "options": [
+        "This multiplies by 6 instead of 10. There are ten 6-second periods in a minute.",
+        "Correct. 11 × 10 = 110.",
+        "This halves the correct answer, as if the strip were 12 seconds long.",
+        "This would need 18 complexes in 6 seconds."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Mrs. Tanaka's strip shows regular P waves at 80 per minute and regular wide QRS complexes at 36 per minute. The PR intervals are all different, because the P waves and QRS complexes have no fixed relationship. Where is the pacemaker for her ventricles?",
+    "options": [
+      "In the SA node",
+      "In the AV node, pacing the ventricles at its own intrinsic rate",
+      "In the atrial muscle",
+      "In the ventricular conduction system, below a complete block"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "P waves and QRS complexes marching independently mean no signals cross from atria to ventricles: third-degree block. A rate of 36 with wide complexes fits a backup pacemaker in the ventricular conduction system, whose intrinsic rate is 20 to 40.",
+      "options": [
+        "The SA node is pacing the atria at 80. Its signals are not reaching the ventricles.",
+        "An AV node pacemaker would usually give 40 to 60 per minute with narrow QRS complexes, because its signal would still use the bundle branches and Purkinje fibers.",
+        "Atrial signals are not reaching the ventricles at all, so the atria cannot be pacing them.",
+        "Correct. The slow rate and wide QRS complexes both point below the AV node."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient's QT interval is much longer than normal for their heart rate. What does that tell you about their ventricular cells?",
+    "options": [
+      "They depolarize more slowly than normal",
+      "They receive their signals from the atria later than normal",
+      "Their action potentials last longer than normal",
+      "They are depolarized by fewer Purkinje fibers"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The QT interval spans ventricular depolarization and repolarization, so it tracks how long the ventricular action potential lasts. A long QT means the cells take longer to repolarize.",
+      "options": [
+        "Slow depolarization would widen the QRS complex. A long QT with a normal QRS points to slow repolarization.",
+        "Late arrival from the atria lengthens the PR interval, which is measured before the QT interval starts.",
+        "Correct. Drugs, inherited channel disorders and low blood potassium can all lengthen the action potential.",
+        "A problem with the Purkinje network would change the QRS complex, not mainly the time to repolarize."
+      ]
+    }
+  },
+  {
+    "id": "anp-ecg-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "misconception": "a normal ECG means the heart is pumping",
+    "q": "A patient in cardiac care has no pulse, but the monitor shows organized beats: P waves, narrow QRS complexes and T waves at 70 per minute. How can both be true?",
+    "options": [
+      "The monitor is showing a delayed recording",
+      "The ECG records electrical activity, and the muscle is not contracting effectively in response",
+      "The atria are pumping but the ventricles are not",
+      "A normal rate and rhythm prove the heart is pumping, so the pulse check must be mistaken"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An ECG records only electrical events. Normally contraction follows each one, but electrical activity can continue even when the muscle fails to pump, for example after severe blood loss or when fluid compresses the heart. The patient needs treatment for that cause, not a shock.",
+      "options": [
+        "Monitors display in real time. The mismatch is real, not a display delay.",
+        "Correct. Electrical activity and pumping are separate events, and the ECG shows only the first.",
+        "The QRS complexes show the ventricles are depolarizing; the problem is that the muscle is not pumping effectively after that.",
+        "An ECG cannot show pumping. A normal-looking rhythm with no pulse is a recognized emergency."
+      ]
+    }
+  }
+]

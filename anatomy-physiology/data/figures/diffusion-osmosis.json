@@ -1,0 +1,18 @@
+{
+  "os-3-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.7",
+      "section": "3.1",
+      "page": "3-1-the-cell-membrane",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bef3a25cb3ad6886bec3679ba1ac469cd4affe02"
+    },
+    "alt": "Two beakers, each divided down the middle by a membrane that lets water through but not the dissolved particles. In the first beaker the fluid levels are equal and one side holds more dissolved particles. In the second beaker water has crossed into the side with more particles, so the fluid level on that side is now higher.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.7",
+    "labels": [],
+    "w": 544,
+    "h": 308,
+    "ext": "jpg"
+  }
+}

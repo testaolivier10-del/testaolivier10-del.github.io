@@ -1,0 +1,32 @@
+{
+  "aorta-parts": {
+    "def": "The named sections of the aorta: the ascending aorta rising from the left ventricle, the aortic arch curving over to the left, and the descending aorta, which is the thoracic aorta in the chest and, after it passes through the aortic hiatus of the diaphragm, the abdominal aorta.",
+    "roots": [["aort-", "lifted up"], ["thorac-", "chest"], ["hiat-", "gap"]],
+    "say": "ay-OR-tuh; hy-AY-tus"
+  },
+  "head-neck-arteries": {
+    "def": "The brachiocephalic trunk (right side only), the common carotid arteries, which split into external carotids for the face and scalp and internal carotids for the brain, and the vertebral arteries from the subclavians. The carotid sinus is the pressure-sensing bulge at the start of each internal carotid.",
+    "roots": [["brachi-", "arm"], ["cephal-", "head"], ["karot-", "stupor (Greek)"], ["sinus", "hollow, pocket"]],
+    "say": "bray-kee-oh-seh-FAL-ik; kuh-ROT-id"
+  },
+  "cerebral-arterial-circle": {
+    "def": "A ring of connected arteries under the brain, also called the circle of Willis: the anterior communicating artery, the anterior cerebral arteries, the internal carotids, the posterior communicating arteries and the posterior cerebral arteries from the basilar artery. It is an anastomosis that can reroute blood around a slowly narrowed artery.",
+    "roots": [["cerebr-", "brain"], ["basi-", "base"]],
+    "say": "suh-REE-brul; BAS-ih-lur"
+  },
+  "limb-arteries": {
+    "def": "In the arm, one artery renamed at landmarks: subclavian, axillary, brachial, then the radial and ulnar arteries, which join in the palmar arches. In the leg: femoral (with its deep femoral branch), popliteal, then the anterior tibial, which becomes the dorsalis pedis, and the posterior tibial.",
+    "roots": [["sub-", "under"], ["clavi-", "collarbone"], ["axilla", "armpit"], ["brachi-", "arm"], ["poplit-", "back of the knee"], ["dorsum", "back, top"], ["ped-", "foot"]],
+    "say": "sub-KLAY-vee-un; pop-lih-TEE-ul; dor-SAY-lis PEE-dis"
+  },
+  "abdominal-arteries": {
+    "def": "The branches of the abdominal aorta: three single gut arteries (celiac trunk, superior mesenteric, inferior mesenteric) and paired renal and gonadal arteries, ending in the common iliac arteries, which split into internal iliacs for the pelvis and external iliacs for the legs. The celiac trunk splits into the left gastric, splenic and common hepatic arteries.",
+    "roots": [["celi-", "belly"], ["mes-", "middle"], ["enter-", "gut"], ["ren-", "kidney"], ["gon-", "seed"], ["gastr-", "stomach"], ["hepat-", "liver"]],
+    "say": "SEE-lee-ak; mez-en-TAIR-ik; ILL-ee-ak"
+  },
+  "pulse-points": {
+    "def": "Places where an artery runs near the skin over firm tissue, so its pulse, the pressure wave from each heartbeat, can be felt: temporal, facial, carotid, brachial, radial, femoral, popliteal, posterior tibial and dorsalis pedis.",
+    "roots": [["puls-", "beat, push"]],
+    "say": ""
+  }
+}

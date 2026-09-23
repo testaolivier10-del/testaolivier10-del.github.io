@@ -1,0 +1,611 @@
+[
+  {
+    "id": "anp-circulatory-disorders-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "shock means low blood pressure",
+    "q": "Which statement defines circulatory shock?",
+    "options": [
+      "Systolic blood pressure below 90 mm Hg on two readings",
+      "Too little oxygen delivered to the tissues by the circulation",
+      "A sudden loss of consciousness from low blood pressure",
+      "A heart rate above 100 beats/min at any point after an injury"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Shock is a failure of the circulation to deliver enough oxygen for the tissues' needs. Cells then switch to anaerobic metabolism and lactate rises. Blood pressure may still be near normal while reflexes compensate.",
+      "options": [
+        "Low pressure is common in shock, but it is often a late sign. A patient can be in shock with a pressure that reflexes are still holding up.",
+        "Correct. The definition is about oxygen delivery, not a pressure number.",
+        "Fainting is a brief loss of consciousness from reduced brain flow, often on standing. It is not the same as shock.",
+        "A fast heart rate is an early sign of shock, but many things raise heart rate, and it does not define shock."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Using the 2017 American categories, how is an average blood pressure of 136/78 mm Hg classified?",
+    "options": [
+      "Normal",
+      "Elevated",
+      "Stage 2 hypertension",
+      "Stage 1 hypertension"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Systolic 136 falls in the 130 to 139 range, which is stage 1. Diastolic 78 is normal, but when the two numbers fall in different categories, the higher category counts. The reading is stage 1 hypertension.",
+      "options": [
+        "Normal needs a systolic below 120 and a diastolic below 80. A systolic of 136 is well above that.",
+        "Elevated covers systolic 120 to 129 with diastolic below 80. A systolic of 136 is above that range.",
+        "Stage 2 starts at 140 systolic or 90 diastolic. Neither number reaches that.",
+        "Correct. The systolic value of 136 places the reading in stage 1."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-3",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "interdependence",
+      "compartments"
+    ],
+    "q": "A healthy adult rapidly loses about 1 L of blood (roughly 20 percent of blood volume), and the bleeding is then stopped. Predict each variable, first in the first minutes and then later as compensation proceeds. Compare each with its value before the bleed unless stated otherwise.",
+    "variables": [
+      {
+        "name": "Hematocrit, first minutes",
+        "answer": "none",
+        "why": "Whole blood was lost, cells and plasma together, so the fraction made of red cells has not changed yet."
+      },
+      {
+        "name": "Heart rate, ten minutes later",
+        "answer": "up",
+        "why": "Lower MAP reduces baroreceptor firing, so sympathetic output to the SA node rises and vagal output falls."
+      },
+      {
+        "name": "Pulse pressure, ten minutes later",
+        "answer": "down",
+        "why": "Stroke volume is smaller, which lowers systolic pressure, while arteriole constriction holds diastolic pressure up."
+      },
+      {
+        "name": "Hematocrit, eight hours later",
+        "answer": "down",
+        "why": "Low capillary pressure has drawn interstitial fluid, which has no red cells, into the plasma, diluting the remaining cells."
+      },
+      {
+        "name": "Urine output, first day",
+        "answer": "down",
+        "why": "Aldosterone makes the kidneys keep sodium and the high ADH makes them keep water."
+      },
+      {
+        "name": "Red blood cell count, three weeks later compared with the first day",
+        "answer": "up",
+        "why": "Lower oxygen delivery to the kidneys raised EPO, which drives red blood cell production in the red bone marrow."
+      }
+    ],
+    "why": {
+      "correct": "Immediately, the loss of whole blood lowers volume without changing blood's makeup. Within minutes the reflex speeds the heart and constricts arterioles. Over hours, fluid moves into the plasma and dilutes it, and the kidneys keep salt and water. Over weeks, EPO rebuilds the red cells."
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A 70-year-old with a spreading kidney infection has a blood pressure of 82/44, a heart rate of 118, a temperature of 39.4 °C and warm, flushed skin. IV fluids raise her pressure only briefly. What is the main problem in her circulation?",
+    "options": [
+      "Too little blood volume from fluid loss",
+      "Widespread vasodilation that lowers TPR",
+      "A weakened left ventricle that pumps too little",
+      "A blockage that stops the heart from filling"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is septic shock, a form of distributive shock. Signals released in response to the infection, including cytokines and nitric oxide, dilate vessels throughout the body. TPR falls sharply, and early on the skin is warm because blood flows freely to it.",
+      "options": [
+        "In hypovolemic shock, reflex constriction makes the skin cool and pale, and fluids restore pressure. Her warm skin and poor response to fluids point elsewhere.",
+        "Correct. Low TPR from widespread vasodilation is the core problem in septic shock.",
+        "A failing pump causes cardiogenic shock, with cool skin from reflex constriction. Early in sepsis, cardiac output is often high.",
+        "An obstruction causes obstructive shock, with cool skin and high venous pressure. Nothing here suggests a blockage."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-5",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "After a diving accident injures his lower cervical spinal cord, a 19-year-old has a blood pressure of 78/40, a heart rate of 52 and warm, dry skin. Why is his heart rate slow instead of fast?",
+    "options": [
+      "His baroreceptors were damaged by the force of the neck injury",
+      "His blood volume is higher than normal after the injury",
+      "Sympathetic supply to his heart is cut; vagal supply is intact",
+      "His SA node was bruised along with his cervical spinal cord"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is neurogenic shock. The injury cuts the sympathetic pathways that run down the spinal cord from the brainstem, so arterioles and veins lose their tone and dilate, and the heart loses its sympathetic drive. The vagus nerve leaves the brainstem directly and is untouched, so unopposed vagal output keeps the heart rate low.",
+      "options": [
+        "The baroreceptors and their nerves (IX and X) run outside the spinal cord and still signal the fall in pressure. The problem is that the response cannot travel down the cord.",
+        "Nothing suggests a higher blood volume. The low pressure comes from loss of vessel tone, which pools blood in dilated veins.",
+        "Correct. Loss of sympathetic output with intact vagal output explains the slow heart and warm, dry skin.",
+        "The SA node is in the heart, far from the injury. It is working, under the control of the vagus nerve alone."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Two hours after a large myocardial infarction, a 66-year-old has a blood pressure of 80/58, a heart rate of 112, cool clammy skin and crackles throughout both lungs. Which type of shock is this, and why are his lungs wet?",
+    "options": [
+      "Cardiogenic; blood backs up behind the weak left ventricle",
+      "Hypovolemic; blood lost into the damaged heart muscle wall",
+      "Distributive; dilated lung vessels leak plasma proteins",
+      "Obstructive; a large clot blocks the pulmonary trunk"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A large infarct leaves the left ventricle too weak to pump out what the lungs deliver. Cardiac output falls, which is cardiogenic shock. Pressure rises in the left atrium and lung capillaries, and fluid filters into the lung tissue and air spaces, causing the crackles.",
+      "options": [
+        "Correct. A failing pump with high filling pressure behind it is cardiogenic shock.",
+        "An infarct does not bleed away enough blood to cause hypovolemic shock, and low volume would leave the lungs dry, not wet.",
+        "His cool, clammy skin shows reflex vasoconstriction, not widespread vasodilation. The lung fluid comes from high capillary pressure.",
+        "A clot in the pulmonary trunk would cause obstructive shock but would not back fluid up into the lungs, which lie beyond the right ventricle's outflow."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "A man with a stab wound to the chest has a blood pressure of 76/60, bulging jugular veins and faint, muffled heart sounds. His lungs are clear. What is causing his shock?",
+    "options": [
+      "Blood loss from the wound has lowered his blood volume",
+      "His left ventricle has been weakened by the wound",
+      "His arterioles have dilated from the pain of the injury",
+      "Blood in the pericardial cavity is squeezing his heart"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Blood collecting in the pericardial cavity (cardiac tamponade) presses on the heart, so the ventricles cannot fill. Blood backs up in the systemic veins, making the jugular veins bulge, and cardiac output falls. This is obstructive shock.",
+      "options": [
+        "Blood loss would leave the neck veins flat, because venous pressure falls. His bulging veins show blood backing up.",
+        "A weak left ventricle would back fluid into the lungs, but his lungs are clear. The problem is filling, not pumping strength.",
+        "Pain raises sympathetic output and constricts arterioles; it does not cause widespread dilation. Bulging neck veins do not fit that picture.",
+        "Correct. Tamponade prevents filling, which is obstructive shock."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "A 72-year-old with a past myocardial infarction wakes at night gasping and must sit up to breathe. Crackles are heard at the bases of both lungs, and her ankles are not swollen. Which is the most likely problem?",
+    "options": [
+      "Right-sided heart failure, raising systemic venous pressure",
+      "Left-sided heart failure, raising lung capillary pressure",
+      "Hypovolemic shock, from blood lost into the lungs",
+      "Distributive shock, from dilation of the lungs' vessels"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A left ventricle damaged by the infarct cannot pump out all that the lungs deliver. Pressure backs up into the left atrium, pulmonary veins and lung capillaries, and fluid filters into the lungs. Lying flat returns more blood from the legs to the chest and worsens it.",
+      "options": [
+        "Right-sided failure backs blood up into the systemic veins and causes ankle swelling and bulging neck veins, not wet lungs. Her ankles are normal.",
+        "Correct. Breathlessness when lying flat and crackles in the lungs point to left-sided failure.",
+        "She shows no signs of shock or blood loss. The fluid in her lungs is filtered plasma, not lost blood.",
+        "Distributive shock lowers pressure throughout the body. Her problem is a backlog of blood behind a weak left ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "compartments"
+    ],
+    "q": "In right-sided heart failure, what causes the swelling in the ankles?",
+    "options": [
+      "Low plasma albumin reduces the oncotic pull back into the capillaries",
+      "Leaky capillary walls let plasma proteins escape into the tissues",
+      "High systemic venous pressure raises capillary hydrostatic pressure",
+      "Low cardiac output lowers the pressure in the ankle's arterioles"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The right ventricle cannot pump out all the blood that returns to it, so pressure rises in the systemic veins. Venous pressure passes back into the capillaries, raising capillary hydrostatic pressure. More fluid filters out than drains away, and gravity pulls it to the ankles.",
+      "options": [
+        "Albumin is usually normal in heart failure. The swelling comes from high capillary pressure.",
+        "The capillary wall is not unusually leaky here. The extra filtration is driven by pressure.",
+        "Correct. Backed-up venous pressure raises capillary pressure and filtration.",
+        "Lower arteriole pressure would reduce capillary pressure and filtration, which would not cause swelling."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-10",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Over several months, a patient's left ventricle weakens after a myocardial infarction. Predict each variable, compared with before the infarction.",
+    "variables": [
+      {
+        "name": "Stroke volume",
+        "answer": "down",
+        "why": "A weaker ventricle ejects less blood with each beat, and its flattened Frank–Starling curve limits any rise from more filling."
+      },
+      {
+        "name": "Pressure in the lung capillaries",
+        "answer": "up",
+        "why": "Blood the left ventricle cannot eject backs up into the left atrium and pulmonary veins."
+      },
+      {
+        "name": "Renin release",
+        "answer": "up",
+        "why": "Lower cardiac output lowers pressure in the kidney's small arteries, and sympathetic stimulation adds to renin release."
+      },
+      {
+        "name": "Blood volume",
+        "answer": "up",
+        "why": "Aldosterone and ADH make the kidneys keep salt and water."
+      },
+      {
+        "name": "Sympathetic output to the heart and arterioles",
+        "answer": "up",
+        "why": "Lower cardiac output reduces baroreceptor firing, so the cardiovascular center raises sympathetic output."
+      },
+      {
+        "name": "ANP release",
+        "answer": "up",
+        "why": "Higher filling pressures stretch the atria, so they release more ANP, though not enough to offset the RAAS."
+      }
+    ],
+    "why": {
+      "correct": "A weak left ventricle lowers stroke volume and backs blood up into the lungs. The nervous system and the kidneys read the low output as low pressure: sympathetic output, renin, aldosterone and ADH rise, and blood volume grows. The extra volume raises filling pressures further, worsening congestion."
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "A plaque narrows a short segment of artery from a radius of 3 mm to a radius of 2 mm. By roughly how much does that segment's resistance rise?",
+    "options": [
+      "About 1.5 times",
+      "About 2.3 times",
+      "About 5 times",
+      "About 81 times"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Resistance varies with 1 / radius⁴. The ratio of new to old resistance is (3 ÷ 2)⁴ = 1.5⁴ = 1.5 × 1.5 × 1.5 × 1.5 ≈ 5.06. A one-third cut in radius makes resistance about 5 times higher.",
+      "options": [
+        "This uses the radius ratio, 1.5, without raising it to the fourth power.",
+        "This squares the ratio (1.5² ≈ 2.25). Resistance depends on the fourth power, not the second.",
+        "Correct. 1.5⁴ ≈ 5.",
+        "This raises 3 to the fourth power instead of the ratio 3 ÷ 2."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-12",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps of atherosclerosis in order, from the first injury to a heart attack.",
+    "options": [
+      "The endothelium of an artery is injured",
+      "Cholesterol-carrying particles enter the tunica intima and are chemically altered",
+      "Macrophages engulf the particles and become foam cells",
+      "Smooth muscle cells move in and form a fibrous cap over a fatty core",
+      "The cap ruptures and platelets stick to the exposed core",
+      "A thrombus blocks the coronary artery, causing a myocardial infarction"
+    ],
+    "why": {
+      "correct": "Endothelial injury lets cholesterol-carrying particles into the intima. Macrophages engulf them and become foam cells, smooth muscle cells build a fibrous cap, and a thin cap can rupture. Platelets then build a thrombus that can block the artery."
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "In chronic heart failure, why do the responses that raise blood volume eventually make the patient worse?",
+    "options": [
+      "Extra volume raises filling pressures and congestion without adding much stroke volume",
+      "Extra volume dilutes the blood so much that it can no longer carry enough oxygen",
+      "Extra volume switches off the baroreceptor reflex, so heart rate falls to dangerous levels",
+      "Extra volume lowers TPR so much that the patient develops distributive shock"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The kidneys keep salt and water as if pressure were low. A failing ventricle sits on the flat part of its Frank–Starling curve, so more filling adds little stroke volume. The extra volume mostly raises venous and capillary pressures, worsening fluid in the lungs and tissues.",
+      "options": [
+        "Correct. More filling brings more congestion and little extra output.",
+        "Retained fluid dilutes the blood only mildly. The main harm is higher pressure behind the failing pump.",
+        "Heart failure raises sympathetic output and heart rate. The baroreceptor reflex is not switched off by extra volume.",
+        "In heart failure TPR rises, from sympathetic stimulation and angiotensin II. It does not fall."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-14",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient has lost about 20 percent of blood volume and is still compensating. Which findings would you expect? Select all that apply.",
+    "options": [
+      "A fast heart rate",
+      "Cool, pale, clammy skin",
+      "A narrowed pulse pressure",
+      "Reduced urine output",
+      "Warm, flushed skin",
+      "A heart rate slower than normal"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "In compensated hypovolemic shock, sympathetic output raises heart rate and constricts the skin's arterioles. Diastolic pressure is held up while stroke volume falls, so pulse pressure narrows. The RAAS and ADH make the kidneys keep salt and water, so urine output falls.",
+      "options": [
+        "Correct. The baroreceptor reflex speeds the heart.",
+        "Correct. Skin arterioles constrict, and sympathetic stimulation of sweat glands makes the skin clammy.",
+        "Correct. Systolic pressure falls with stroke volume while vasoconstriction holds diastolic pressure up.",
+        "Correct. Aldosterone and ADH reduce the loss of salt and water in urine.",
+        "Warm, flushed skin means dilated skin vessels, as in early septic shock. In blood loss the skin vessels constrict.",
+        "A slow heart rate is expected in neurogenic shock, not in blood loss, where the reflex speeds the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-15",
+    "type": "error",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "This pathway describes one vicious cycle of progressive shock, but one step is wrong. Find the wrong step.",
+    "options": [
+      "MAP falls below what the reflexes can correct",
+      "Blood flow through the coronary arteries falls",
+      "The heart muscle receives too little oxygen",
+      "The heart's contractility increases",
+      "Cardiac output falls, and MAP falls further"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heart muscle starved of oxygen contracts more weakly, so contractility falls, not rises. That fall in contractility lowers cardiac output, which lowers pressure and coronary flow further: a positive feedback loop.",
+      "options": [
+        "This step is right. Progressive shock begins when compensation can no longer hold MAP up.",
+        "This step is right. Coronary flow depends on aortic pressure, so it falls when MAP falls.",
+        "This step is right. Less coronary flow delivers less oxygen to the heart muscle.",
+        "This is the wrong step. Ischemic heart muscle makes less ATP and contracts more weakly.",
+        "This step is right. Weaker contraction lowers stroke volume and cardiac output, closing the loop."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "A 78-year-old has an average blood pressure of 168/78. What best explains a high systolic pressure with a normal diastolic pressure?",
+    "options": [
+      "Her heart rate is too slow, so diastole is too short",
+      "Her stiff aorta stretches less when blood is ejected",
+      "Her blood volume is too low to fill the arteries",
+      "Her arterioles have dilated with age, lowering TPR"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A young, elastic aorta stretches as the ventricle ejects, absorbing part of each surge. With age the aorta stiffens, so the same stroke volume raises pressure more during systole, and there is less stored recoil to hold pressure up in diastole. Systolic pressure rises and pulse pressure widens.",
+      "options": [
+        "A slow heart rate lengthens diastole, not shortens it, and would not explain a high systolic value.",
+        "Correct. Arterial stiffening raises systolic pressure and widens pulse pressure.",
+        "Low volume would lower pressures, not raise systolic pressure to 168.",
+        "Lower TPR would lower pressure, especially diastolic, and would not raise systolic pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-17",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "compartments"
+    ],
+    "q": "Complete the sequence: a person loses blood → arterioles constrict and MAP falls → capillary hydrostatic pressure falls below the inward oncotic pull → ____ → hematocrit falls over the next hours.",
+    "options": [
+      "Red bone marrow releases fewer red blood cells",
+      "The kidneys excrete more water in dilute urine",
+      "Red blood cells leak out through the capillary clefts",
+      "Interstitial fluid moves into the plasma for a time"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "With capillary pressure below the inward oncotic pull, fluid moves from the interstitial spaces into the capillaries for a time. That fluid has no red cells, so it dilutes the remaining cells and hematocrit falls.",
+      "options": [
+        "Marrow output does not drop after a bleed; EPO rises and increases it over days. The hours-long fall in hematocrit is dilution.",
+        "After a bleed, ADH and aldosterone make the kidneys keep water, not excrete it.",
+        "Red blood cells are far too large to pass through the clefts between endothelial cells.",
+        "Correct. Protein-poor, cell-free fluid added to the plasma lowers hematocrit."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "After 15 years of untreated hypertension, a man's left ventricular wall is much thicker than normal. What drove the thickening?",
+    "options": [
+      "Higher afterload, which the ventricle had to overcome with every beat",
+      "A lower preload, which let the ventricle's wall shrink inward and thicken",
+      "Repeated infections of the heart muscle caused by the higher pressure",
+      "Extra ANP released by the ventricle, which made its muscle cells divide"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "With higher arterial pressure, the left ventricle must generate more pressure to open the aortic valve and eject. That extra work makes its muscle cells enlarge (hypertrophy), so the wall thickens. A thick wall is stiff, fills poorly and needs more oxygen.",
+      "options": [
+        "Correct. Pressure overload from a higher afterload thickens the ventricle.",
+        "Hypertension does not lower preload, and a lower preload would not build new muscle.",
+        "Hypertension is not an infection and does not cause one. The thickening is an adaptation to extra work.",
+        "ANP comes mainly from the atria and does not make cardiac muscle cells divide. Adult cardiac muscle cells enlarge rather than divide."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "shock means low blood pressure",
+    "q": "Carlos, 27, has a deep thigh wound. His pressure is 112/90, heart rate 128, and his skin is pale, cool and clammy. Which statement best describes his condition?",
+    "options": [
+      "He is not in shock: his systolic pressure is above 90 mm Hg",
+      "He is in distributive shock from widespread vasodilation",
+      "He is in compensated shock, with pressure held up by the reflex",
+      "He is in irreversible shock, shown by his narrow pulse pressure"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Blood loss has lowered his stroke volume, but the baroreceptor reflex is holding MAP up with a fast heart and strong arteriole constriction. The narrow pulse pressure (22 mm Hg) and cool, clammy skin show how hard the reflex is working. This is compensated hypovolemic shock, and it can progress quickly if bleeding continues.",
+      "options": [
+        "Shock is defined by oxygen delivery, not a pressure number. His fast heart, narrow pulse pressure and cool skin are early signs of shock.",
+        "Widespread vasodilation would make his skin warm and his diastolic pressure low. His cool skin and high diastolic pressure show constriction.",
+        "Correct. His reflexes are compensating for the lost volume.",
+        "A narrow pulse pressure is an early sign of compensation, not a sign of irreversible damage. He is alert enough to talk and still compensating."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man with a coronary plaque that narrowed his artery by half for years suddenly has a heart attack at rest. What most likely happened in the artery?",
+    "options": [
+      "The plaque slowly grew until it closed the artery that morning",
+      "The fibrous cap cracked, and a thrombus formed on the plaque",
+      "The artery went into spasm because his blood pressure fell",
+      "Cholesterol broke off the plaque and dissolved in his blood"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A sudden blockage at rest usually comes from plaque rupture. The fibrous cap cracks, blood meets the fatty core, platelets stick, and a thrombus forms within minutes and blocks the artery.",
+      "options": [
+        "Plaques grow over years, not in a single morning. A sudden event points to rupture and a thrombus.",
+        "Correct. Cap rupture triggers a thrombus that blocks the artery suddenly.",
+        "Spasm can narrow a coronary artery, but a fall in blood pressure relaxes arteries rather than making them spasm. Rupture with a thrombus is the usual cause.",
+        "Cholesterol does not dissolve in blood. When plaque contents are exposed, the result is a clot, not dissolved cholesterol."
+      ]
+    }
+  },
+  {
+    "id": "anp-circulatory-disorders-21",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "interdependence"
+    ],
+    "q": "What is the most common cause of right-sided heart failure?",
+    "options": [
+      "A diet very low in salt",
+      "Low blood volume after a bleed",
+      "An enlarged, congested liver",
+      "Left-sided heart failure"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When the left ventricle fails, pressure backs up into the lungs. The right ventricle must then pump against a higher pressure in the pulmonary circuit, and over time it fails too.",
+      "options": [
+        "A low-salt diet lowers blood volume and filling pressure. It does not damage the right ventricle.",
+        "Low blood volume lowers filling pressures. It causes hypovolemic shock, not heart failure.",
+        "An enlarged liver is a result of right-sided failure, as blood backs up into the systemic veins, not its cause.",
+        "Correct. Left-sided failure raises the pressure the right ventricle must pump against."
+      ]
+    }
+  }
+]

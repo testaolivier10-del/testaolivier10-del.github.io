@@ -1,0 +1,32 @@
+{
+  "hypertension": {
+    "def": "Arterial blood pressure that stays above normal on repeated measurements; by the 2017 American guidelines, 130/80 mm Hg or more (stage 2 at 140/90 or more). Also called high blood pressure, it usually causes no symptoms but thickens the left ventricle and damages arteries over years.",
+    "roots": [["hyper-", "above, excessive"], ["tens-", "stretched, pressure"], ["-ion", "condition"]],
+    "say": "hy-per-TEN-shun"
+  },
+  "atherosclerosis": {
+    "def": "The buildup of plaques of fat, foam cells and fibrous tissue in the tunica intima of large and medium arteries. Plaques narrow the lumen and can rupture, triggering a thrombus that blocks the artery.",
+    "roots": [["ather/o", "gruel, paste"], ["scler/o", "hard"], ["-osis", "condition"]],
+    "say": "ATH-er-oh-skleh-ROH-sis"
+  },
+  "heart-failure": {
+    "def": "A condition in which the heart cannot pump enough blood for the body's needs, or can only do so at abnormally high filling pressures. Left-sided failure backs blood up into the lungs; right-sided failure backs it up into the systemic veins; congestive heart failure names the resulting congestion.",
+    "roots": [],
+    "say": ""
+  },
+  "shock": {
+    "def": "Failure of the circulation to deliver enough oxygen to the tissues, so cells switch to anaerobic metabolism and lactate rises. Hypovolemic shock comes from too little volume, cardiogenic shock from a failing pump, and obstructive shock from a blockage of flow into or out of the heart.",
+    "roots": [["hypo-", "below"], ["vol-", "volume"], ["-emia", "blood condition"], ["cardi/o", "heart"], ["-genic", "produced by"]],
+    "say": ""
+  },
+  "distributive-shock": {
+    "def": "Shock caused by widespread vasodilation, which drops TPR and pools blood in dilated vessels; also called vascular shock. Its main forms are septic shock (from sepsis, the body's poorly controlled response to an infection), neurogenic shock (loss of sympathetic tone) and shock from a severe allergic reaction.",
+    "roots": [["sept-", "rotting"], ["neur/o", "nerve"]],
+    "say": ""
+  },
+  "hemorrhage-compensation": {
+    "def": "The body's responses to blood loss: the baroreceptor reflex within seconds, movement of interstitial fluid into the plasma over hours, the RAAS, ADH and thirst over a day, and replacement of plasma proteins and red blood cells over days to weeks.",
+    "roots": [["hem/o", "blood"], ["-rrhage", "bursting forth"]],
+    "say": ""
+  }
+}

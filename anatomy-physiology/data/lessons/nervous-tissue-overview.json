@@ -1,0 +1,75 @@
+{
+  "topic": "nervous-tissue-overview",
+  "hook": "<p>Jamal, 24, slipped while carrying a glass tabletop and sliced the inside of his wrist. The bleeding stopped with pressure, but his thumb and first two fingers are numb, and he cannot bring his thumb across his palm. The glass cut a nerve. One cut through one cord silenced signals flowing both ways: feeling coming in from his fingers and commands going out to his thumb muscles. To see how one cut does both, you need to know what a nerve is made of.</p>",
+  "prereq": [
+    {
+      "q": "Which primary tissue type carries electrical signals?",
+      "options": [
+        "Nervous tissue",
+        "Epithelial tissue",
+        "Muscle tissue"
+      ],
+      "correct": 0,
+      "why": "Nervous tissue carries electrical signals from place to place. Muscle tissue responds to signals by contracting, and epithelium covers and lines surfaces.",
+      "review": "epithelium"
+    },
+    {
+      "q": "How does a cell release the contents of a vesicle to the outside?",
+      "options": [
+        "Osmosis across the membrane",
+        "Exocytosis: the vesicle fuses with the plasma membrane",
+        "Diffusion through a gap junction"
+      ],
+      "correct": 1,
+      "why": "In exocytosis, a vesicle fuses with the plasma membrane and empties its contents outside the cell. Osmosis moves water, and gap junctions connect two cells' cytoplasm.",
+      "review": "active-transport"
+    },
+    {
+      "q": "Which organelles build proteins that a cell ships to other places?",
+      "options": [
+        "Lysosomes",
+        "Mitochondria",
+        "Rough ER and the Golgi apparatus"
+      ],
+      "correct": 2,
+      "why": "Ribosomes on the rough ER make these proteins, and the Golgi apparatus modifies, sorts and packages them into vesicles. Mitochondria make ATP, and lysosomes break things down.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-12-8",
+    "caption": "A neuron: the cell body holds the nucleus, branched dendrites receive signals, and one long axon carries the signal away to its axon terminals."
+  },
+  "chain": [
+    {
+      "cause": "Axon terminals of other neurons release chemicals onto this neuron's dendrites and cell body.",
+      "effect": "The dendrites and cell body receive many incoming signals at once."
+    },
+    {
+      "cause": "The incoming signals add together in the cell body.",
+      "effect": "If they are strong enough, the neuron starts a signal of its own where the axon leaves the cell body."
+    },
+    {
+      "cause": "The signal starts in the axon.",
+      "effect": "It travels the length of the axon, faster where glial cells wrap and insulate it, and reaches the axon terminals."
+    },
+    {
+      "cause": "The signal reaches the axon terminals.",
+      "effect": "They release chemicals by exocytosis, and the next cell (a neuron, muscle fiber or secreting cell) responds."
+    }
+  ],
+  "misconception": {
+    "wrong": "A nerve and a neuron are the same thing.",
+    "right": "A neuron is one cell. A nerve is a cable made of the axons of many neurons, held together by connective tissue that carries blood vessels. The cell bodies of those neurons are not in the nerve; they sit in or near the brain and spinal cord. A single nerve can hold thousands of axons carrying signals in both directions."
+  },
+  "check": [
+    "anp-nervous-tissue-overview-2",
+    "anp-nervous-tissue-overview-4",
+    "anp-nervous-tissue-overview-6",
+    "anp-nervous-tissue-overview-9",
+    "anp-nervous-tissue-overview-11",
+    "anp-nervous-tissue-overview-15"
+  ],
+  "summary": "<p>Nervous tissue is built from neurons, which carry signals, and glial cells, which support, insulate, feed and protect them. A neuron's cell body holds the nucleus and makes its proteins; dendrites receive signals; the single axon carries the signal away to axon terminals, which release chemicals onto the next cell. Mature neurons do not divide and depend on a constant supply of oxygen and glucose, while glial cells can divide. A nerve is a bundle of many axons wrapped in connective tissue with blood vessels, found outside the brain and spinal cord, and it usually carries signals both ways.</p>",
+  "connections": []
+}

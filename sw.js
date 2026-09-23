@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v35';
+const CACHE_NAME = 'levlprep-v36';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -102,6 +102,20 @@ const PRECACHE_URLS = [
   'ochem/assets/concept-teach.json',
   'ochem/assets/mastery-engine.js',
   'ochem/assets/ochem-xp.js',
+  // The A&P shell: the course home, the lesson list, search and the runtime
+  // every A&P page loads. Lessons, notes and figures are cached as visited.
+  'anatomy-physiology/index.html',
+  'anatomy-physiology/learn.html',
+  'anatomy-physiology/search.html',
+  'anatomy-physiology/tools.html',
+  'anatomy-physiology/manifest.json',
+  'anatomy-physiology/assets/anp.css',
+  'anatomy-physiology/assets/anp-curriculum.js',
+  'anatomy-physiology/assets/anp-core.js',
+  'anatomy-physiology/assets/anp-questions.js',
+  'anatomy-physiology/assets/anp-nav.js',
+  'anatomy-physiology/assets/anp-glossary.js',
+  'anatomy-physiology/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude
@@ -115,6 +129,8 @@ const PRECACHE_URLS = [
 const DEFERRED_URLS = [
   'nremt/assets/questions-core.json',
   'nremt/assets/explanations.json',
+  'anatomy-physiology/assets/bank-core.json',
+  'anatomy-physiology/assets/bank-why.json',
 ];
 
 self.addEventListener('install', event => {

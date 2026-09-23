@@ -1,0 +1,522 @@
+[
+  {
+    "id": "anp-body-cavities-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cavity holds the brain?",
+    "options": [
+      "Vertebral canal",
+      "Mediastinum",
+      "Cranial cavity",
+      "Pericardial cavity"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The cranial cavity (crani/o = skull) is the space inside the skull, and it holds the brain. With the vertebral canal it forms the dorsal body cavity.",
+      "options": [
+        "The vertebral canal is the other part of the dorsal body cavity. It runs down through the backbone and holds the spinal cord, not the brain.",
+        "The mediastinum is the central compartment of the thoracic cavity. It holds the heart, the trachea and the esophagus.",
+        "Correct. The brain sits in the cranial cavity, inside the skull.",
+        "The pericardial cavity is the thin fluid-filled space around the heart, in the mediastinum."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Which structure separates the thoracic cavity from the abdominopelvic cavity?",
+    "options": [
+      "The diaphragm",
+      "The mediastinum",
+      "The pleura",
+      "The peritoneum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The diaphragm is a dome-shaped sheet of muscle that stretches across the trunk. Everything in the ventral body cavity above it is thoracic; everything below it is abdominopelvic.",
+      "options": [
+        "Correct. The diaphragm is the muscular wall between the chest and the abdomen.",
+        "The mediastinum is the central region between the two lungs. It runs from the neck down to the diaphragm, but it does not divide the chest from the abdomen.",
+        "The pleura is the serous membrane around each lung. It stays above the diaphragm.",
+        "The peritoneum is the serous membrane of the abdominopelvic cavity. It lines the space below the diaphragm; it is not the wall between the two cavities."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-3",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Select every structure that lies in the mediastinum.",
+    "options": [
+      "Heart",
+      "Right lung",
+      "Esophagus",
+      "Trachea",
+      "Spleen",
+      "Thymus"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "The mediastinum is the central compartment of the thoracic cavity, between the lungs. It holds the heart, the large vessels, the trachea, the esophagus and the thymus.",
+      "options": [
+        "Correct. The heart, wrapped in its own serous membrane, sits in the lower part of the mediastinum.",
+        "Each lung lies lateral to the mediastinum, wrapped by the pleura on its own side of the chest.",
+        "Correct. The esophagus runs down through the mediastinum, behind the trachea and heart.",
+        "Correct. The trachea (windpipe) runs down the mediastinum before it splits toward the lungs.",
+        "The spleen is below the diaphragm, in the abdominal cavity.",
+        "Correct. The thymus sits in the upper mediastinum, above the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "A 22-year-old man is stabbed just to the left of his breastbone, and the blade reaches his heart. Which compartment of the thoracic cavity has the blade entered?",
+    "options": [
+      "The left pleural cavity",
+      "The abdominal cavity",
+      "The vertebral canal",
+      "The mediastinum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The heart lies in the mediastinum, the central compartment between the two lungs, running from the breastbone in front to the backbone behind. A blade that reaches the heart has entered the mediastinum.",
+      "options": [
+        "The left pleural cavity is the thin space around the left lung, lateral to the heart. A blade could cross it, but the heart itself is in the mediastinum.",
+        "The abdominal cavity lies below the diaphragm. The heart is above it.",
+        "The vertebral canal is part of the dorsal body cavity, inside the backbone. It is posterior to the whole thoracic cavity.",
+        "Correct. The heart sits in the mediastinum, directly behind the breastbone."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-5",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which layer of a serous membrane lines the wall of the cavity?",
+    "options": [
+      "The visceral layer",
+      "The parietal layer",
+      "The serosa",
+      "The serous fluid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The parietal layer (paries = wall) lines the wall of the cavity. The membrane then folds back as the visceral layer to cover the organ.",
+      "options": [
+        "The visceral layer (viscera = internal organs) covers the organ, not the wall.",
+        "Correct. Parietal means wall: it lines the cavity wall.",
+        "The serosa is the name often given to the visceral layer on the outside of an organ such as the stomach. It is on the organ, not the wall.",
+        "Serous fluid is the thin film between the two layers. It is not a layer of the membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "organs sit inside their serous cavity",
+    "q": "A student says, \"The right lung sits inside the right pleural cavity.\" Where does the right lung actually lie?",
+    "options": [
+      "Inside the pleural cavity, floating in serous fluid",
+      "In the thoracic cavity, but outside the pleural cavity",
+      "In the mediastinum, with the pleural cavity below it",
+      "In the abdominopelvic cavity, just above the diaphragm"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pleural cavity is only the thin, fluid-filled gap between the visceral layer on the lung and the parietal layer on the chest wall. The lung is covered by the visceral layer and lies outside that gap, like a fist in a balloon that never enters the air inside.",
+      "options": [
+        "This is the common error. The organ is never inside its serous cavity; only a thin film of serous fluid is.",
+        "Correct. In the thoracic cavity, yes; in the pleural cavity, no.",
+        "The mediastinum is the central compartment between the lungs. The lungs lie lateral to it, and the pleural cavities surround the lungs, not lie below them.",
+        "Everything above the diaphragm is thoracic. The abdominopelvic cavity is below the diaphragm."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Put these spaces in order from the largest, which contains the others, to the smallest.",
+    "options": [
+      "Ventral body cavity",
+      "Thoracic cavity",
+      "Mediastinum",
+      "Pericardial cavity"
+    ],
+    "why": {
+      "correct": "The ventral body cavity contains the thoracic cavity above the diaphragm. The thoracic cavity contains the mediastinum between the lungs. The mediastinum contains the heart and the thin pericardial cavity around it."
+    }
+  },
+  {
+    "id": "anp-body-cavities-8",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Complete the statement. The dorsal body cavity = the cranial cavity + the ____.",
+    "options": [
+      "vertebral canal",
+      "pelvic cavity",
+      "pleural cavity",
+      "mediastinum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The dorsal body cavity has two continuous parts: the cranial cavity inside the skull, holding the brain, and the vertebral canal inside the backbone, holding the spinal cord.",
+      "options": [
+        "Correct. The vertebral canal is the lower part of the dorsal body cavity.",
+        "The pelvic cavity is the lower part of the abdominopelvic cavity, in the ventral body cavity.",
+        "The pleural cavities are serous spaces around the lungs, in the ventral body cavity.",
+        "The mediastinum is the central compartment of the thoracic cavity, in the ventral body cavity."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ms. Reyes, 34, has a sharp pain on the right side of her chest each time she breathes in. Her doctor hears a grating sound over that area with every breath. What best explains the pain and the sound?",
+    "options": [
+      "Fluid has leaked into her vertebral canal",
+      "Her lung has slipped into the pericardial cavity",
+      "The pleural layers are rough and rubbing",
+      "Her diaphragm has separated the two pleural cavities"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Normally a film of serous fluid lets the visceral layer on the lung glide over the parietal layer on the chest wall. When infection or injury makes the layers swollen and rough, they rub with each breath. The rubbing causes sharp pain and a grating sound.",
+      "options": [
+        "The vertebral canal holds the spinal cord in the dorsal body cavity. It does not move with breathing and would not make a grating sound in the chest.",
+        "The lung and the pericardial cavity are on different sides of the mediastinum. The lung cannot slip into the heart's serous space.",
+        "Correct. Rough layers rub instead of gliding, and each breath moves them.",
+        "The diaphragm lies below the lungs. The mediastinum, not the diaphragm, separates the right and left pleural cavities, and that separation is normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon opens the front wall of the abdomen to reach the stomach. Which serous membrane must the surgeon pass through?",
+    "options": [
+      "The pleura",
+      "The serous membrane around the heart",
+      "The peritoneum",
+      "The protective layers around the brain"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The peritoneum lines the abdominal wall (its parietal layer) and covers the abdominal organs (its visceral layer). To reach the stomach from the front, the surgeon cuts through the parietal layer into the peritoneal cavity.",
+      "options": [
+        "The pleura surrounds the lungs, above the diaphragm. An incision in the front of the abdomen does not reach it.",
+        "The serous membrane around the heart is in the mediastinum, above the diaphragm.",
+        "Correct. The peritoneum lines the abdominopelvic cavity.",
+        "The brain's protective layers are in the dorsal body cavity, inside the skull."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "In which cavity does an empty urinary bladder lie?",
+    "options": [
+      "Pelvic cavity",
+      "Thoracic cavity",
+      "Abdominal cavity",
+      "Vertebral canal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The urinary bladder lies in the pelvic cavity, the lower part of the abdominopelvic cavity, inside the ring of the hip bones. When it fills, it rises into the abdominal cavity, because no wall separates the two.",
+      "options": [
+        "Correct. The empty bladder sits low, in the pelvic cavity.",
+        "The thoracic cavity is above the diaphragm. It holds the heart and lungs.",
+        "The abdominal cavity is the upper part of the abdominopelvic cavity. A very full bladder can rise into it, but an empty one stays in the pelvis.",
+        "The vertebral canal is inside the backbone and holds the spinal cord."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-12",
+    "type": "error",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A needle is passed through the chest wall to drain extra fluid from around a lung. A student lists what it passes through, from outside in. One step is wrong. Find it.",
+    "options": [
+      "Skin and the fat beneath it",
+      "Muscle of the chest wall",
+      "Visceral layer of the pleura",
+      "Fluid in the pleural cavity"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The layer lining the chest wall is the parietal layer (paries = wall). The needle crosses it and then reaches the fluid in the pleural cavity. The visceral layer is on the surface of the lung, beyond the fluid, and the needle should never reach it.",
+      "options": [
+        "This step is right. The needle passes through the skin and fat first.",
+        "This step is right. Muscle forms much of the chest wall.",
+        "This is the wrong step. The needle crosses the parietal layer on the chest wall, not the visceral layer on the lung.",
+        "This step is right. The fluid collects in the pleural cavity, between the two layers."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-13",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Fluid builds up in a patient's pericardial cavity faster than it is removed. Predict each change.",
+    "variables": [
+      {
+        "name": "Space between the two serous layers around the heart",
+        "answer": "up",
+        "why": "The extra fluid collects between the layers and pushes them apart."
+      },
+      {
+        "name": "How fully the heart can fill between beats",
+        "answer": "down",
+        "why": "The fluid-filled sac presses on the heart from outside, so less blood can flow in to fill it."
+      },
+      {
+        "name": "Number of layers in the serous membrane",
+        "answer": "none",
+        "why": "The membrane still has one parietal and one visceral layer; only the gap between them changes."
+      }
+    ],
+    "why": {
+      "correct": "A serous cavity works because it is nearly empty. Fluid that fills it separates the layers and presses on the organ, so the heart cannot fill fully."
+    }
+  },
+  {
+    "id": "anp-body-cavities-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "A cyclist hits the handlebars and tears her spleen. The spleen bleeds into the serous space around it. Where does the blood collect?",
+    "options": [
+      "The left pleural cavity",
+      "The peritoneal cavity",
+      "The pericardial cavity",
+      "The mediastinum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The spleen lies in the abdominal cavity, covered by the peritoneum. Blood from its surface collects in the peritoneal cavity, between the layer on the organs and the layer lining the abdominal wall.",
+      "options": [
+        "The left pleural cavity surrounds the left lung, above the diaphragm. The spleen is below it.",
+        "Correct. The spleen is an abdominal organ covered by peritoneum.",
+        "The pericardial cavity surrounds the heart, in the mediastinum.",
+        "The mediastinum is the central compartment of the thoracic cavity, above the diaphragm."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does the film of serous fluid between the two layers of a serous membrane do?",
+    "options": [
+      "It carries oxygen to the organ",
+      "It lets the layers slide with little friction",
+      "It forms a hard shell that shields the organ",
+      "It glues the organ to the backbone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Two smooth, wet surfaces with a thin film of fluid between them slide past each other with very little friction. The heart beats and the lungs expand without the layers wearing.",
+      "options": [
+        "Oxygen reaches organs in the blood. Serous fluid is a thin lubricating film.",
+        "Correct. The fluid film lets the visceral layer glide over the parietal layer.",
+        "The fluid is watery and thin. Protection from blows comes from bone and the body wall.",
+        "Serous fluid does not attach organs to bone. It lets them move."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-16",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Select every organ that lies in the abdominopelvic cavity.",
+    "options": [
+      "Liver",
+      "Heart",
+      "Urinary bladder",
+      "Kidneys",
+      "Thymus",
+      "Spleen"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Below the diaphragm, the abdominal cavity holds the liver, spleen, stomach, intestines and, against its back wall, the kidneys. The pelvic cavity holds the urinary bladder.",
+      "options": [
+        "Correct. The liver sits in the upper right of the abdominal cavity, just under the diaphragm.",
+        "The heart is in the mediastinum, above the diaphragm.",
+        "Correct. The bladder is in the pelvic cavity.",
+        "Correct. The kidneys lie against the back wall of the abdominal cavity, behind the peritoneum.",
+        "The thymus is in the upper mediastinum, above the heart.",
+        "Correct. The spleen is in the upper left of the abdominal cavity."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "A wound lets air into a patient's right pleural cavity, and the right lung collapses. The left lung keeps working. What explains this?",
+    "options": [
+      "Each lung has its own separate pleural cavity",
+      "The diaphragm seals the left lung off inside the abdomen",
+      "Air cannot enter a pleural cavity from outside",
+      "The left lung sits in the dorsal body cavity"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each lung has its own pleural cavity, and the mediastinum lies between them. Air in the right pleural cavity separates the layers around the right lung only. The left pleural cavity stays sealed, so the left lung keeps its layers together.",
+      "options": [
+        "Correct. Separate pleural cavities, with the mediastinum between them, limit the problem to one side.",
+        "The diaphragm lies below both lungs. Both lungs are in the thoracic cavity, not the abdomen.",
+        "A wound through the chest wall is exactly how air enters a pleural cavity. That is what happened to the right lung.",
+        "Both lungs are in the ventral body cavity. The dorsal body cavity holds only the brain and spinal cord."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is the serosa of the stomach?",
+    "options": [
+      "The layer lining the abdominal wall",
+      "The fluid in the peritoneal cavity",
+      "The visceral layer covering the stomach",
+      "The muscle that churns the stomach"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The visceral layer of a serous membrane on the outside of an organ is often called its serosa. On the stomach it is the smooth, wet outer covering, part of the peritoneum.",
+      "options": [
+        "The layer lining the abdominal wall is the parietal layer of the peritoneum, not the stomach's serosa.",
+        "The fluid is serous fluid, a thin film between the layers.",
+        "Correct. The serosa is the visceral layer on the organ's surface.",
+        "The muscle layers lie inside the serosa. The serosa is the outermost covering."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-cavities-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "When the diaphragm contracts, what happens to the thoracic cavity?",
+    "options": [
+      "It gets smaller",
+      "It gets larger",
+      "It stays the same size",
+      "It merges with the abdominal cavity"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The diaphragm is a dome of muscle. When it contracts, the dome flattens and moves down, which enlarges the thoracic cavity from below. Air then flows into the lungs.",
+      "options": [
+        "Smaller would need the dome to bulge higher, which happens when the diaphragm relaxes, not when it contracts.",
+        "Correct. Flattening the dome enlarges the chest cavity from below.",
+        "The chest cavity's size changes with each breath; the diaphragm is its movable floor.",
+        "The diaphragm stays a closed wall when it contracts. It changes shape but does not open."
+      ]
+    }
+  }
+]

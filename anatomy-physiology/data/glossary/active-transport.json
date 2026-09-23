@@ -1,0 +1,32 @@
+{
+  "active-transport": {
+    "def": "Movement of a substance across a membrane that requires the cell to supply energy, usually from ATP. It usually moves the substance against its gradient; vesicle transport also counts.",
+    "roots": [["activus", "doing, acting"]],
+    "say": ""
+  },
+  "primary-active-transport": {
+    "def": "Active transport in which the carrier, called a pump, splits ATP itself and uses the energy to move a substance against its gradient. The sodium–potassium pump and calcium pumps are examples.",
+    "roots": [["primus", "first"]],
+    "say": ""
+  },
+  "na-k-pump": {
+    "def": "An ATP-splitting membrane protein (the Na+/K+ ATPase) that moves three sodium ions out of the cell and two potassium ions in per cycle, both against their gradients. It builds the sodium gradient and keeps cell volume steady.",
+    "roots": [["-ase", "enzyme"]],
+    "say": ""
+  },
+  "secondary-active-transport": {
+    "def": "Active transport in which a carrier uses one substance moving down its gradient, usually sodium, to move another against its gradient. In symport both move the same way; in antiport they move in opposite directions. The gradient it spends was built by the sodium–potassium pump.",
+    "roots": [["sym-", "together"], ["anti-", "opposite"], ["portare", "to carry"], ["co-", "with"]],
+    "say": ""
+  },
+  "endocytosis": {
+    "def": "Taking material into a cell by folding a patch of plasma membrane around it and pinching it off as a vesicle. Its forms are phagocytosis (large particles), pinocytosis (droplets of fluid) and receptor-mediated endocytosis (specific substances bound to receptor proteins).",
+    "roots": [["endo-", "within"], ["cyto-", "cell"], ["-osis", "process"], ["phago-", "eating"], ["pino-", "drinking"]],
+    "say": "en-doh-sy-TOH-sis; fag-oh-sy-TOH-sis; pin-oh-sy-TOH-sis"
+  },
+  "exocytosis": {
+    "def": "Release of material from a cell when a vesicle fuses with the plasma membrane and empties its contents outside. It is how cells secrete products, and it adds the vesicle's membrane and proteins to the cell surface.",
+    "roots": [["exo-", "outside"], ["cyto-", "cell"], ["-osis", "process"]],
+    "say": "ek-soh-sy-TOH-sis"
+  }
+}

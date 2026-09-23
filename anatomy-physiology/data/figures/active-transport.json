@@ -1,0 +1,50 @@
+{
+  "os-3-9": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.9",
+      "section": "3.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1f7a353d3a62910ed75d0c049f798dd461c18d2d",
+      "page": "3-1-the-cell-membrane"
+    },
+    "alt": "A plasma membrane with sodium-potassium pumps set into it. Each pump moves sodium ions out of the cytoplasm into the extracellular fluid and potassium ions from the extracellular fluid into the cytoplasm, each against its concentration gradient.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.9",
+    "labels": [],
+    "w": 1052,
+    "h": 500,
+    "ext": "jpg"
+  },
+  "os-3-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.10",
+      "section": "3.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/f8ba32b2d6f53d42ccc9479a05a9fe2fb6d80ba9",
+      "page": "3-1-the-cell-membrane"
+    },
+    "alt": "Three ways a cell takes material in by folding its plasma membrane around it. In the first, the membrane reaches around a large particle and encloses it. In the second, the membrane dips inward and pinches off a small pocket of extracellular fluid. In the third, particles bound to receptor proteins gather in a coated pit, which pinches off as a coated vesicle.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.10",
+    "labels": [],
+    "w": 1100,
+    "h": 546,
+    "ext": "jpg"
+  },
+  "os-3-11": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.11",
+      "section": "3.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b916fcc13d21c7e538a362dcbe847c69e55b7e19",
+      "page": "3-1-the-cell-membrane"
+    },
+    "alt": "A vesicle inside a cell moves to the plasma membrane, its membrane merges with the plasma membrane, and its contents spill into the extracellular fluid.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.11",
+    "labels": [],
+    "w": 544,
+    "h": 612,
+    "ext": "jpg"
+  }
+}

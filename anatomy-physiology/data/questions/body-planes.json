@@ -4,9 +4,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which plane divides the body into right and left parts?",
-    "options": ["Frontal plane", "Transverse plane", "Sagittal plane", "Oblique plane"],
+    "options": [
+      "Frontal plane",
+      "Transverse plane",
+      "Sagittal plane",
+      "Oblique plane"
+    ],
     "correct": 2,
     "why": {
       "correct": "The sagittal plane (sagitta = arrow) is a vertical plane running front to back, so it separates right from left.",
@@ -23,9 +30,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which plane divides the body into anterior and posterior parts?",
-    "options": ["Frontal plane", "Midsagittal plane", "Transverse plane", "Parasagittal plane"],
+    "options": [
+      "Frontal plane",
+      "Midsagittal plane",
+      "Transverse plane",
+      "Parasagittal plane"
+    ],
     "correct": 0,
     "why": {
       "correct": "The frontal plane, also called the coronal plane, is a vertical plane running from side to side, so it separates front from back.",
@@ -42,9 +56,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A section cuts through the right eye and the right ear but misses the nose. Which plane made it?",
-    "options": ["Midsagittal", "Transverse", "Parasagittal", "Frontal"],
+    "options": [
+      "Midsagittal",
+      "Transverse",
+      "Parasagittal",
+      "Frontal"
+    ],
     "correct": 2,
     "why": {
       "correct": "A vertical cut that stays on the right side, off the midline, is parasagittal. It divides the head into unequal right and left parts.",
@@ -61,9 +82,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What is another name for the frontal plane?",
-    "options": ["Median plane", "Coronal plane", "Horizontal plane", "Axial plane"],
+    "options": [
+      "Median plane",
+      "Coronal plane",
+      "Horizontal plane",
+      "Axial plane"
+    ],
     "correct": 1,
     "why": {
       "correct": "The frontal plane is also called the coronal plane (corona = crown), because it runs like a headband over the head from ear to ear.",
@@ -80,7 +108,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A pathologist sees a round ring of tissue with a hollow center under the microscope. What is the most likely explanation?",
     "options": [
       "A tube cut in cross section",
@@ -95,7 +125,7 @@
         "Correct. A tube cut across shows a ring.",
         "A tube cut along its length shows two parallel walls with the channel between them, not a ring.",
         "A solid ball cut through its middle gives a filled disk, with no hollow center.",
-        "A flat sheet cut at a slant gives a band, not a closed ring."
+        "A flat sheet cut at a slant gives a straight strip, not a closed ring."
       ]
     }
   },
@@ -104,10 +134,22 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every term that names the transverse plane or its cut.",
-    "options": ["Horizontal plane", "Coronal plane", "Cross section", "Axial plane", "Median plane"],
-    "correct": [0, 2, 3],
+    "options": [
+      "Horizontal plane",
+      "Coronal plane",
+      "Cross section",
+      "Axial plane",
+      "Median plane"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
     "why": {
       "correct": "The transverse plane is also called the horizontal plane, imaging staff call it the axial plane, and the section it produces is a cross section.",
       "options": [
@@ -124,12 +166,14 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What is the difference between a plane and a section?",
     "options": [
       "A plane is horizontal; a section is vertical",
-      "A plane is an imaginary flat surface; a section is the cut surface it produces",
-      "A plane is used for organs; a section is used for the whole body",
+      "A plane is an imaginary surface; a section is the cut it produces",
+      "A plane is used for single organs; a section is used for the whole body",
       "A plane is seen on a scan; a section is seen only in dissection"
     ],
     "correct": 1,
@@ -148,9 +192,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A pregnant patient needs imaging of her gallbladder, and her doctor wants to avoid ionizing radiation. Which method fits best?",
-    "options": ["CT scan", "Ultrasound", "PET scan", "Radiograph"],
+    "options": [
+      "CT scan",
+      "Ultrasound",
+      "PET scan",
+      "Radiograph"
+    ],
     "correct": 1,
     "why": {
       "correct": "Ultrasound makes images from echoes of sound waves and uses no ionizing radiation. The gallbladder is a fluid-filled organ, which ultrasound shows well.",
@@ -167,12 +218,14 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "On a radiograph of the forearm, the bones look white and the surrounding soft tissue looks gray. What causes this difference?",
     "options": [
-      "Bone reflects sound waves back to the probe",
+      "Bone reflects sound waves back toward the probe on the skin",
       "Bone gives off radio signals in a magnetic field",
-      "Bone absorbs more X-rays, so fewer reach the detector behind it",
+      "Bone absorbs more of the X-rays passing through it",
       "Bone takes up more of an injected tracer"
     ],
     "correct": 2,
@@ -181,7 +234,7 @@
       "options": [
         "Reflected sound waves are how ultrasound works, not radiographs.",
         "Radio signals in a magnetic field are how MRI works.",
-        "Correct. More absorption means fewer X-rays reach the detector, which shows as white.",
+        "Correct. More absorption means fewer X-rays reach the detector behind the bone, which shows as white.",
         "Tracer uptake is how PET works. A radiograph uses no tracer."
       ]
     }
@@ -191,7 +244,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Put the steps of making a CT image in order.",
     "options": [
       "An X-ray source spins around the patient, sending beams through from many angles",
@@ -200,20 +255,24 @@
       "The densities are shown as shades from black to white in a transverse section",
       "The stack of transverse sections is rebuilt into sagittal or frontal views"
     ],
-    "why": { "correct": "Beams pass through from many angles; detectors measure how much each is weakened; the computer turns those measurements into the density at each point; the densities become a grayscale transverse section; and a stack of sections can be rebuilt in other planes." }
+    "why": {
+      "correct": "Beams pass through from many angles; detectors measure how much each is weakened; the computer turns those measurements into the density at each point; the densities become a grayscale transverse section; and a stack of sections can be rebuilt in other planes."
+    }
   },
   {
     "id": "anp-body-planes-11",
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "On a chest radiograph, a coin in the patient's shirt pocket appears on top of the heart shadow. Why can't the radiograph alone tell whether the coin is in front of or behind the heart?",
     "options": [
-      "The coin is too small to show on a radiograph",
+      "A coin is too small and too faint to show clearly on a radiograph",
       "Radiographs show only soft tissue",
       "The heart blocks all X-rays",
-      "A radiograph is a flat projection that overlaps everything along each beam's path"
+      "Radiographs flatten everything on a beam's path into one image"
     ],
     "correct": 3,
     "misconception": "a plain X-ray shows a slice",
@@ -232,9 +291,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A radiologist reads a transverse CT slice of a patient's abdomen. The liver appears on the left side of the screen. On which side of the patient is the liver?",
-    "options": ["The patient's left", "It cannot be known from a CT slice", "The patient's right", "It depends on whether the patient was prone"],
+    "options": [
+      "The patient's left",
+      "It cannot be known from a CT slice",
+      "The patient's right",
+      "It depends on whether the patient was prone"
+    ],
     "correct": 2,
     "why": {
       "correct": "Transverse CT images are viewed as if you stand at the patient's feet looking toward the head, just as when you face a person. The patient's right appears on the left of the screen. The liver lies on the patient's right.",
@@ -251,9 +317,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A patient with a metal fragment near the eye needs imaging. Which method is most likely to be unsafe?",
-    "options": ["Radiograph", "CT scan", "Ultrasound", "MRI"],
+    "options": [
+      "Radiograph",
+      "CT scan",
+      "Ultrasound",
+      "MRI"
+    ],
     "correct": 3,
     "why": {
       "correct": "MRI uses a very strong magnet. It can pull on some metal objects in the body, so a metal fragment near the eye can move and cause injury.",
@@ -270,9 +343,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
-    "q": "A doctor wants to see which areas of a patient's body contain very active cells, such as an active cancer. Which method is designed for this?",
-    "options": ["PET scan", "Radiograph", "Ultrasound", "Midsagittal dissection"],
+    "core": [
+      "structure-function"
+    ],
+    "q": "A doctor wants to see which areas of a patient's body contain very active cells, such as an active cancer. Which method shows this best?",
+    "options": [
+      "PET scan",
+      "Radiograph",
+      "Ultrasound",
+      "Midsagittal dissection"
+    ],
     "correct": 0,
     "why": {
       "correct": "PET uses an injected tracer that very active cells take up more of, so it maps activity. It is usually combined with CT to place that activity on the anatomy.",
@@ -289,9 +369,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Complete the list. Sagittal divides right from left; frontal divides anterior from posterior; transverse divides ____.",
-    "options": ["Medial from lateral", "Superior from inferior", "Proximal from distal", "Superficial from deep"],
+    "options": [
+      "Medial from lateral",
+      "Superior from inferior",
+      "Proximal from distal",
+      "Superficial from deep"
+    ],
     "correct": 1,
     "why": {
       "correct": "The transverse plane is horizontal, so it separates the upper (superior) part from the lower (inferior) part.",
@@ -308,7 +395,9 @@
     "type": "error",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student lists how each imaging method works. One entry is wrong. Find it.",
     "options": [
       "Radiograph: X-rays absorbed by dense tissue leave white areas on a flat image",

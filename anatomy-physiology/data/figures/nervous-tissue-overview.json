@@ -1,0 +1,18 @@
+{
+  "os-12-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "12.8",
+      "section": "12.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5eb1ce492d604faad88e5b8b096fc7ac4a8fcb8f",
+      "page": "12-2-nervous-tissue"
+    },
+    "alt": "Drawing of a single neuron. An irregular cell body holding a nucleus sends out several short, branching dendrites. One long axon leaves the cell body and is wrapped in evenly spaced segments of insulating covering; a glial cell reaches out with two arms to form two of the segments. The axon ends in many branches whose tips meet the dendrites of the next neuron. At the upper left, the axon of another neuron ends on this neuron's dendrites.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.8",
+    "labels": [],
+    "w": 825,
+    "h": 552,
+    "ext": "jpg"
+  }
+}

@@ -1,0 +1,509 @@
+{
+  "about": "Worked-example calculators (docs/anp-spec.md section 8.6). Each calculator is data: inputs, derived values as expressions, worked steps as templates, reference ranges, what the answer means, and a practice generator. {key} in a template prints that value; {key:2} forces 2 decimals; {key:+} adds a sign. Scored item id: calculators:<id>:practice. Validator: scripts/lib/anp-tool-checks/calculators.mjs.",
+  "version": 1,
+  "groups": [
+    { "id": "foundations", "title": "Foundations" },
+    { "id": "cardiovascular", "title": "Cardiovascular system" }
+  ],
+  "calculators": [
+    {
+      "id": "flow",
+      "group": "foundations",
+      "title": "Flow, pressure gradient and resistance",
+      "short": "Flow = ΔP / R",
+      "topic": "gradients-flow",
+      "core": ["gradients"],
+      "level": "apply",
+      "diff": 1,
+      "intro": "A pressure gradient pushes fluid and resistance holds it back. Enter the pressure at each end of a tube and the tube's resistance to find the flow.",
+      "formula": "F = ΔP ÷ R",
+      "inputs": [
+        { "key": "P1", "label": "Pressure at the inlet", "sym": "P<sub>1</sub>", "unit": "mm Hg", "default": 90, "min": 0, "max": 300, "step": 1, "gen": [60, 120, 5] },
+        { "key": "P2", "label": "Pressure at the outlet", "sym": "P<sub>2</sub>", "unit": "mm Hg", "default": 10, "min": 0, "max": 300, "step": 1, "gen": [0, 30, 5] },
+        { "key": "R", "label": "Resistance of the tube", "sym": "R", "unit": "mm Hg per mL/min", "default": 2, "min": 0.1, "max": 100, "step": 0.1, "dp": 1, "gen": { "choices": [1, 1.5, 2, 2.5, 4, 5, 8] } }
+      ],
+      "derived": [
+        { "key": "dP", "expr": "P1 - P2", "dp": 0 },
+        { "key": "F", "expr": "dP / R", "dp": 1 },
+        { "key": "Fhalf", "expr": "F / 2", "dp": 1 },
+        { "key": "F2", "expr": "F * 2", "dp": 1 }
+      ],
+      "invalid": [
+        { "when": "P1 <= P2", "text": "Make the inlet pressure higher than the outlet pressure. With no pressure difference there is no gradient to push fluid from inlet to outlet, and if the outlet were higher, fluid would flow the other way." },
+        { "when": "R <= 0", "text": "Resistance must be greater than zero." }
+      ],
+      "steps": [
+        { "title": "Find the pressure gradient", "text": "ΔP = P<sub>1</sub> − P<sub>2</sub> = {P1} mm Hg − {P2} mm Hg = <b>{dP} mm Hg</b>. Only the difference between the two ends matters, not how high the pressures are." },
+        { "title": "Write the flow equation", "text": "F = ΔP ÷ R: flow rises with the gradient and falls with resistance." },
+        { "title": "Substitute, keeping the units", "text": "F = {dP} mm Hg ÷ {R} mm Hg per mL/min" },
+        { "title": "Calculate and cancel the units", "text": "{dP} ÷ {R} = {F}. The mm Hg on the top and bottom cancel, leaving mL/min. <b>F = {F} mL/min</b>." }
+      ],
+      "results": [
+        { "key": "F", "label": "Flow", "unit": "mL/min", "normal": "There is no single normal value for a tube: flow is whatever ΔP and R allow." }
+      ],
+      "meaning": [
+        { "when": "1", "text": "A gradient of {dP} mm Hg pushes {F} mL/min through this resistance. Double the gradient and flow doubles to {F2} mL/min; double the resistance and flow halves to {Fhalf} mL/min. Raise both pressures by the same amount and nothing changes, because the gradient is the same." }
+      ],
+      "presets": [
+        { "label": "Worked example: 90 and 10 mm Hg", "values": { "P1": 90, "P2": 10, "R": 2 } },
+        { "label": "Same gradient, higher pressures", "values": { "P1": 190, "P2": 110, "R": 2 } },
+        { "label": "Resistance doubled", "values": { "P1": 90, "P2": 10, "R": 4 } }
+      ],
+      "practice": {
+        "require": "P1 - P2 >= 30",
+        "asks": [
+          { "key": "F", "unit": "mL/min", "tol": { "abs": 0.1, "rel": 0.02 }, "prompt": "Fluid flows through a tube. The pressure at the inlet is {P1} mm Hg and the pressure at the outlet is {P2} mm Hg. The tube's resistance is {R} mm Hg per mL/min. What is the flow?" },
+          { "key": "F", "unit": "mL/min", "tol": { "abs": 0.1, "rel": 0.02 }, "prompt": "A pump holds the start of a rubber tube at {P1} mm Hg, and the far end drains into a container at {P2} mm Hg. The tube has a resistance of {R} mm Hg per mL/min. How much fluid flows through it each minute?" }
+        ]
+      }
+    },
+    {
+      "id": "radius",
+      "group": "foundations",
+      "title": "Radius and resistance: the fourth-power rule",
+      "short": "Halving the radius",
+      "topic": "gradients-flow",
+      "core": ["gradients", "structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Resistance depends on 1 ÷ radius<sup>4</sup> (Poiseuille). Change a tube's radius while the pressure gradient stays the same, and see what happens to resistance and flow.",
+      "formula": "R ∝ 1 ÷ r<sup>4</sup>, so at the same ΔP, new F = old F × (r<sub>new</sub> ÷ r<sub>old</sub>)<sup>4</sup>",
+      "inputs": [
+        { "key": "F0", "label": "Flow before the change", "sym": "F<sub>old</sub>", "unit": "mL/min", "default": 40, "min": 0.1, "max": 10000, "step": 1, "gen": [20, 100, 10] },
+        { "key": "f", "label": "New radius as a fraction of the old one", "sym": "r<sub>new</sub> ÷ r<sub>old</sub>", "unit": "", "default": 0.5, "min": 0.05, "max": 5, "step": 0.05, "dp": 2, "gen": { "choices": [0.5, 0.75, 0.8, 0.9, 1.1, 1.2, 2] }, "hint": "0.5 means half the radius; 2 means double." }
+      ],
+      "derived": [
+        { "key": "f4", "expr": "f ^ 4", "dp": 4 },
+        { "key": "Rx", "expr": "1 / f4", "dp": 2 },
+        { "key": "F1", "expr": "F0 * f4", "dp": 1 },
+        { "key": "pct", "expr": "f4 * 100", "dp": 0 },
+        { "key": "pctR", "expr": "f * 100", "dp": 0 },
+        { "key": "Fx", "expr": "f4", "dp": 2 }
+      ],
+      "invalid": [
+        { "when": "f <= 0", "text": "The radius fraction must be greater than zero." },
+        { "when": "F0 <= 0", "text": "Enter a flow greater than zero." }
+      ],
+      "steps": [
+        { "title": "Write the rule", "text": "Resistance depends on 1 ÷ radius<sup>4</sup>. Length and viscosity have not changed, so only the radius term matters, and ΔP stays the same." },
+        { "title": "Raise the radius change to the fourth power", "text": "({f})<sup>4</sup> = {f} × {f} × {f} × {f} = <b>{f4}</b>. The new radius<sup>4</sup> is {f4} times the old one." },
+        { "title": "Find the change in resistance", "text": "Resistance changes by 1 ÷ {f4} = <b>{Rx}</b>, so the new resistance is {Rx} times the old resistance." },
+        { "title": "Find the new flow", "text": "At the same ΔP, flow changes by the inverse of the resistance change: F = {F0} mL/min × {f4} = <b>{F1} mL/min</b>." },
+        { "title": "Compare", "text": "{F1} ÷ {F0} = {Fx}, so the new flow is <b>{pct}%</b> of the original, from a radius that is {pctR}% of the original." }
+      ],
+      "results": [
+        { "key": "F1", "label": "New flow", "unit": "mL/min" },
+        { "key": "Rx", "label": "New resistance", "unit": "× the old value" }
+      ],
+      "meaning": [
+        { "when": "f < 1", "text": "Narrowing the radius to {pctR}% cut flow to {pct}%. The drop is far bigger than the change in radius, because radius counts four times over. To push the original {F0} mL/min through the narrowed tube, the pressure gradient would have to rise {Rx}-fold. That is why a small change in the radius of a tube is a far stronger control of flow than a change in pressure." },
+        { "when": "f > 1", "text": "Widening the radius to {pctR}% raised flow to {pct}% of the original: a {pctR}% radius gives a {Fx}-fold flow, because radius counts four times over. A small widening is a powerful way to increase flow without raising the pressure gradient." },
+        { "when": "1", "text": "With the radius unchanged, resistance and flow are unchanged." }
+      ],
+      "presets": [
+        { "label": "Halve the radius", "values": { "F0": 40, "f": 0.5 } },
+        { "label": "Narrow by 10%", "values": { "F0": 40, "f": 0.9 } },
+        { "label": "Narrow by 25%", "values": { "F0": 40, "f": 0.75 } },
+        { "label": "Double the radius", "values": { "F0": 40, "f": 2 } }
+      ],
+      "practice": {
+        "asks": [
+          { "key": "F1", "unit": "mL/min", "tol": { "abs": 0.1, "rel": 0.03 }, "prompt": "A tube carries {F0} mL/min. Its radius changes to {f} times its original value ({pctR}% of the original radius), while the pressure gradient, length and viscosity stay the same. What is the new flow?" }
+        ]
+      }
+    },
+    {
+      "id": "sv-ef",
+      "group": "cardiovascular",
+      "title": "Stroke volume and ejection fraction",
+      "short": "SV = EDV − ESV",
+      "topic": "cardiac-cycle",
+      "core": ["gradients", "structure-function"],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Stroke volume is how much blood one ventricle ejects in one beat. Ejection fraction is what share of its filled volume that is. Enter the ventricle's volume at the end of diastole and at the end of systole.",
+      "formula": "SV = EDV − ESV;  EF = SV ÷ EDV × 100%",
+      "inputs": [
+        { "key": "EDV", "label": "End-diastolic volume", "sym": "EDV", "unit": "mL", "default": 120, "min": 20, "max": 400, "step": 1, "gen": [90, 190, 5], "hint": "Typical at rest: about 120 mL (roughly 100 to 160)." },
+        { "key": "ESV", "label": "End-systolic volume", "sym": "ESV", "unit": "mL", "default": 50, "min": 5, "max": 380, "step": 1, "gen": [30, 130, 5], "hint": "Typical at rest: about 50 mL (roughly 35 to 70)." }
+      ],
+      "derived": [
+        { "key": "SV", "expr": "EDV - ESV", "dp": 0 },
+        { "key": "EFf", "expr": "SV / EDV", "dp": 3 },
+        { "key": "EF", "expr": "EFf * 100", "dp": 0 },
+        { "key": "left", "expr": "100 - EF", "dp": 0 }
+      ],
+      "invalid": [
+        { "when": "ESV >= EDV", "text": "End-systolic volume must be smaller than end-diastolic volume. The ventricle ejects blood during systole, so it holds less at the end of systole than at the end of diastole." }
+      ],
+      "steps": [
+        { "title": "Stroke volume is what the ventricle ejects", "text": "SV = EDV − ESV = {EDV} mL − {ESV} mL = <b>{SV} mL per beat</b>." },
+        { "title": "Ejection fraction is the share of the filled volume ejected", "text": "EF = SV ÷ EDV = {SV} mL ÷ {EDV} mL = {EFf}. The mL cancel, so EF has no units." },
+        { "title": "Convert to a percentage", "text": "{EFf} × 100 = <b>{EF}%</b>. The other {left}% of the blood (the ESV) stays in the ventricle." }
+      ],
+      "results": [
+        { "key": "SV", "label": "Stroke volume", "unit": "mL", "normal": "About 60 to 100 mL per beat in a resting adult.", "bands": [
+          { "when": "SV < 55", "label": "below resting range", "tone": "lo" },
+          { "when": "SV <= 100", "label": "resting range", "tone": "ok" },
+          { "label": "above resting range", "tone": "hi" }
+        ] },
+        { "key": "EF", "label": "Ejection fraction", "unit": "%", "normal": "About 50 to 70 percent. 40 percent or less is called reduced.", "bands": [
+          { "when": "EF <= 40", "label": "reduced", "tone": "lo" },
+          { "when": "EF < 50", "label": "mildly reduced", "tone": "lo" },
+          { "when": "EF <= 72", "label": "normal", "tone": "ok" },
+          { "label": "above the usual range", "tone": "hi" }
+        ] }
+      ],
+      "meaning": [
+        { "when": "EF <= 40", "text": "An EF of {EF}% means the ventricle ejects less than two-fifths of the blood it holds. A value of 40% or less is the cutoff clinicians use for a ventricle that contracts weakly. The blood left behind raises the ESV, so the next beat starts from a fuller ventricle." },
+        { "when": "EF < 50", "text": "An EF of {EF}% is below the normal range but above the 40% cutoff for a clearly weak ventricle; clinicians call this mildly reduced." },
+        { "when": "EF <= 72", "text": "An EF of {EF}% is normal: in each beat the ventricle ejects about {EF}% of what it holds and keeps the rest, {ESV} mL, as the end-systolic volume." },
+        { "when": "1", "text": "An EF of {EF}% is above the usual range. It can happen when the ventricle is strongly stimulated, or when its cavity is small and its wall thick, so little blood is left at the end of systole." },
+        { "when": "SV < 55 && EF >= 50", "also": true, "text": "Notice that EF is normal here but SV is small: the ventricle is ejecting a normal share of a small filled volume. Low filling lowers stroke volume even when the ventricle contracts well." },
+        { "when": "SV >= 55 && EF <= 40", "also": true, "text": "Notice that SV is near normal even though EF is low: a ventricle that has enlarged holds more blood, so a small share of a big EDV can still be a normal-sized stroke volume." }
+      ],
+      "presets": [
+        { "label": "Typical resting adult", "values": { "EDV": 120, "ESV": 50 } },
+        { "label": "Weakly contracting ventricle", "values": { "EDV": 200, "ESV": 130 } },
+        { "label": "Poorly filled ventricle", "values": { "EDV": 80, "ESV": 35 } }
+      ],
+      "practice": {
+        "require": "EDV - ESV >= 35 && EDV - ESV <= 105",
+        "asks": [
+          { "key": "EF", "unit": "%", "tol": { "abs": 1 }, "prompt": "A ventricle holds {EDV} mL at the end of diastole and {ESV} mL at the end of systole. What is its ejection fraction, as a percentage?" },
+          { "key": "SV", "unit": "mL", "tol": { "abs": 0.5 }, "prompt": "An echocardiogram shows a left ventricle with an end-diastolic volume of {EDV} mL and an end-systolic volume of {ESV} mL. What is the stroke volume?" }
+        ]
+      }
+    },
+    {
+      "id": "pulse-pressure",
+      "group": "cardiovascular",
+      "title": "Pulse pressure",
+      "short": "PP = SBP − DBP",
+      "topic": "blood-pressure-flow",
+      "core": ["gradients", "structure-function"],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Pulse pressure is how far arterial pressure swings with each beat: the systolic peak minus the diastolic low.",
+      "formula": "PP = SBP − DBP",
+      "inputs": [
+        { "key": "SBP", "label": "Systolic pressure", "sym": "SBP", "unit": "mm Hg", "default": 120, "min": 40, "max": 280, "step": 1, "gen": [96, 176, 2] },
+        { "key": "DBP", "label": "Diastolic pressure", "sym": "DBP", "unit": "mm Hg", "default": 80, "min": 20, "max": 200, "step": 1, "gen": [52, 100, 2] }
+      ],
+      "derived": [
+        { "key": "PP", "expr": "SBP - DBP", "dp": 0 },
+        { "key": "quarter", "expr": "SBP / 4", "dp": 0 }
+      ],
+      "invalid": [
+        { "when": "DBP >= SBP", "text": "Diastolic pressure must be lower than systolic pressure: it is the lowest arterial pressure between beats." }
+      ],
+      "steps": [
+        { "title": "Subtract the low from the peak", "text": "PP = SBP − DBP = {SBP} mm Hg − {DBP} mm Hg = <b>{PP} mm Hg</b>." },
+        { "title": "Compare it with the systolic pressure", "text": "A quarter of the systolic pressure is {quarter} mm Hg. A pulse pressure below that is called narrow; one above about 60 mm Hg is called wide." }
+      ],
+      "results": [
+        { "key": "PP", "label": "Pulse pressure", "unit": "mm Hg", "normal": "About 40 mm Hg in a healthy young adult at rest.", "bands": [
+          { "when": "PP < SBP / 4", "label": "narrow", "tone": "lo" },
+          { "when": "PP > 60", "label": "wide", "tone": "hi" },
+          { "label": "typical", "tone": "ok" }
+        ] }
+      ],
+      "meaning": [
+        { "when": "PP < SBP / 4", "text": "A narrow pulse pressure means each beat adds little pressure to the arteries. The usual reason is a small stroke volume, for example after heavy blood loss, or when a narrowed aortic valve lets blood out only slowly." },
+        { "when": "PP > 60", "text": "A wide pulse pressure means arterial pressure swings far with each beat. Two common causes: stiff arteries that cannot stretch to take up each stroke volume, which becomes common with age, or a larger stroke volume ejected more forcefully, as during exercise." },
+        { "when": "1", "text": "The {PP} mm Hg swing is the pressure each stroke volume adds as it stretches the elastic arteries. Elastic recoil of those walls then keeps pressure up between beats." }
+      ],
+      "presets": [
+        { "label": "Typical: 120/80", "values": { "SBP": 120, "DBP": 80 } },
+        { "label": "Stiff arteries: 160/70", "values": { "SBP": 160, "DBP": 70 } },
+        { "label": "Small stroke volume: 90/75", "values": { "SBP": 90, "DBP": 75 } }
+      ],
+      "practice": {
+        "require": "SBP - DBP >= 18 && SBP - DBP <= 90",
+        "asks": [
+          { "key": "PP", "unit": "mm Hg", "tol": { "abs": 0.5 }, "prompt": "A patient's blood pressure is {SBP}/{DBP} mm Hg. What is the pulse pressure?" }
+        ]
+      }
+    },
+    {
+      "id": "map",
+      "group": "cardiovascular",
+      "title": "Mean arterial pressure",
+      "short": "MAP ≈ DBP + ⅓ PP",
+      "topic": "blood-pressure-flow",
+      "core": ["gradients", "homeostasis"],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Mean arterial pressure (MAP) is the average pressure in your arteries over a whole cardiac cycle, the pressure that drives blood through your tissues. From a cuff reading you can estimate it.",
+      "formula": "MAP ≈ DBP + ⅓ × (SBP − DBP)",
+      "inputs": [
+        { "key": "SBP", "label": "Systolic pressure", "sym": "SBP", "unit": "mm Hg", "default": 120, "min": 40, "max": 280, "step": 1, "gen": [96, 170, 2] },
+        { "key": "DBP", "label": "Diastolic pressure", "sym": "DBP", "unit": "mm Hg", "default": 80, "min": 20, "max": 200, "step": 1, "gen": [52, 100, 2] }
+      ],
+      "derived": [
+        { "key": "PP", "expr": "SBP - DBP", "dp": 0 },
+        { "key": "third", "expr": "PP / 3", "dp": 1 },
+        { "key": "MAPx", "expr": "DBP + PP / 3", "dp": 1 },
+        { "key": "MAP", "expr": "round(DBP + PP / 3, 0)", "dp": 0 },
+        { "key": "avg", "expr": "(SBP + DBP) / 2", "dp": 0 }
+      ],
+      "invalid": [
+        { "when": "DBP >= SBP", "text": "Diastolic pressure must be lower than systolic pressure: it is the lowest arterial pressure between beats." }
+      ],
+      "steps": [
+        { "title": "Find the pulse pressure", "text": "PP = SBP − DBP = {SBP} mm Hg − {DBP} mm Hg = {PP} mm Hg." },
+        { "title": "Take one third of it", "text": "{PP} mm Hg ÷ 3 = {third} mm Hg." },
+        { "title": "Add that to the diastolic pressure", "text": "MAP ≈ DBP + ⅓ PP = {DBP} mm Hg + {third} mm Hg = {MAPx} mm Hg, or <b>about {MAP} mm Hg</b>." },
+        { "title": "Why one third and not one half", "text": "At a resting heart rate, diastole lasts about twice as long as systole, so the arteries spend about two-thirds of each cycle near diastolic pressure. The time-weighted average therefore sits one third of the way up from DBP. The simple average, (SBP + DBP) ÷ 2 = {avg} mm Hg, would overstate it." }
+      ],
+      "results": [
+        { "key": "MAP", "label": "Mean arterial pressure", "unit": "mm Hg", "normal": "About 70 to 100 mm Hg in a resting adult. Below about 60 to 65 mm Hg, the brain, heart and kidneys may not get enough flow.", "bands": [
+          { "when": "MAP < 60", "label": "too low for steady organ flow", "tone": "lo" },
+          { "when": "MAP < 70", "label": "low", "tone": "lo" },
+          { "when": "MAP <= 100", "label": "typical", "tone": "ok" },
+          { "label": "high", "tone": "hi" }
+        ] }
+      ],
+      "meaning": [
+        { "when": "MAP < 60", "text": "A MAP of about {MAP} mm Hg is too low to keep enough blood flowing through the vessels of the brain, heart and kidneys. In emergency care, keeping MAP at about 65 mm Hg or above is a common target." },
+        { "when": "MAP < 70", "text": "A MAP of about {MAP} mm Hg is below the usual resting range. Many people run low without harm, but a fall to this level from a higher baseline means less pressure is driving blood through the tissues." },
+        { "when": "MAP <= 100", "text": "A MAP of about {MAP} mm Hg is in the usual resting range. It is the average pressure pushing blood from the aorta, through the tissues, back toward the right atrium, where pressure is close to zero." },
+        { "when": "1", "text": "A MAP of about {MAP} mm Hg is high. The walls of the arteries and the left ventricle work against this higher pressure with every beat." }
+      ],
+      "note": "This is an estimate, and it assumes a resting heart rate. As heart rate rises, diastole shortens more than systole, so the arteries spend less time near diastolic pressure and the true mean moves toward the simple average. A monitor connected to a catheter in an artery measures MAP directly by averaging the whole pressure wave.",
+      "presets": [
+        { "label": "Typical: 120/80", "values": { "SBP": 120, "DBP": 80 } },
+        { "label": "Wide pulse pressure: 160/70", "values": { "SBP": 160, "DBP": 70 } },
+        { "label": "After heavy blood loss: 84/60", "values": { "SBP": 84, "DBP": 60 } }
+      ],
+      "practice": {
+        "require": "SBP - DBP >= 25 && SBP - DBP <= 80",
+        "asks": [
+          { "key": "MAPx", "show": "MAP", "unit": "mm Hg", "tol": { "abs": 1.2 }, "prompt": "A patient's blood pressure is {SBP}/{DBP} mm Hg and their heart rate is at rest. Estimate the mean arterial pressure to the nearest whole mm Hg." }
+        ]
+      }
+    },
+    {
+      "id": "organ-flow",
+      "group": "cardiovascular",
+      "title": "Flow and resistance in vessels",
+      "short": "Organ flow = ΔP / R",
+      "topic": "blood-pressure-flow",
+      "core": ["gradients", "structure-function"],
+      "level": "analyze",
+      "diff": 3,
+      "intro": "The flow equation applied to one organ: the pressure gradient across it is arterial pressure minus the pressure in its veins, and its resistance is set mostly by the radius of its arterioles. Change that radius and see what happens to the organ's blood flow.",
+      "formula": "F = (MAP − P<sub>vein</sub>) ÷ R;  R ∝ 1 ÷ r<sup>4</sup>",
+      "inputs": [
+        { "key": "MAP", "label": "Mean arterial pressure", "sym": "MAP", "unit": "mm Hg", "default": 93, "min": 30, "max": 180, "step": 1, "gen": [80, 100, 1] },
+        { "key": "Pv", "label": "Pressure in the organ's veins", "sym": "P<sub>vein</sub>", "unit": "mm Hg", "default": 5, "min": 0, "max": 40, "step": 1, "gen": [2, 8, 1] },
+        { "key": "R", "label": "The organ's resistance", "sym": "R", "unit": "mm Hg·min/L", "default": 80, "min": 5, "max": 1000, "step": 1, "gen": { "choices": [60, 80, 100, 120, 150] } },
+        { "key": "f", "label": "Arteriole radius after the change, as a fraction of before", "sym": "r<sub>new</sub> ÷ r<sub>old</sub>", "unit": "", "default": 0.9, "min": 0.3, "max": 2, "step": 0.05, "dp": 2, "gen": { "choices": [0.8, 0.85, 0.9, 1.1, 1.2] }, "hint": "0.9 means the arterioles narrow by 10%." }
+      ],
+      "derived": [
+        { "key": "dP", "expr": "MAP - Pv", "dp": 0 },
+        { "key": "F0", "expr": "dP / R", "dp": 2 },
+        { "key": "f4", "expr": "f ^ 4", "dp": 3 },
+        { "key": "R1", "expr": "R / f4", "dp": 0 },
+        { "key": "F1", "expr": "dP / R1", "dp": 2 },
+        { "key": "pct", "expr": "F1 / F0 * 100", "dp": 0 },
+        { "key": "narrow", "expr": "(1 - f) * 100", "dp": 0 },
+        { "key": "widen", "expr": "(f - 1) * 100", "dp": 0 }
+      ],
+      "invalid": [
+        { "when": "Pv >= MAP", "text": "Venous pressure must be below arterial pressure, or there is no gradient to push blood through the organ." },
+        { "when": "f <= 0", "text": "The radius fraction must be greater than zero." }
+      ],
+      "steps": [
+        { "title": "Find the pressure gradient across the organ", "text": "ΔP = MAP − P<sub>vein</sub> = {MAP} mm Hg − {Pv} mm Hg = {dP} mm Hg." },
+        { "title": "Find the flow before the change", "text": "F = ΔP ÷ R = {dP} mm Hg ÷ {R} mm Hg·min/L = <b>{F0} L/min</b>. The mm Hg cancel, leaving L/min." },
+        { "title": "Find the new resistance", "text": "Radius<sup>4</sup> changes by ({f})<sup>4</sup> = {f4}, so resistance changes by 1 ÷ {f4}: R = {R} ÷ {f4} = {R1} mm Hg·min/L." },
+        { "title": "Find the new flow", "text": "MAP is held steady by the rest of the circulation, so ΔP is still {dP} mm Hg. F = {dP} ÷ {R1} = <b>{F1} L/min</b>." },
+        { "title": "Compare", "text": "{F1} ÷ {F0} × 100 = <b>{pct}%</b> of the original flow." }
+      ],
+      "results": [
+        { "key": "F0", "label": "Flow before", "unit": "L/min" },
+        { "key": "F1", "label": "Flow after", "unit": "L/min" }
+      ],
+      "meaning": [
+        { "when": "f < 1", "text": "Narrowing this organ's arterioles by only {narrow}% cut its blood flow to {pct}% of what it was, with no change in arterial pressure. Arterioles set most of an organ's resistance, and resistance varies with 1 ÷ radius<sup>4</sup>, so small changes in arteriole radius are how your body sends more blood to one organ and less to another." },
+        { "when": "f > 1", "text": "Widening this organ's arterioles by only {widen}% raised its blood flow to {pct}% of what it was, with no change in arterial pressure. Vasodilation in one organ is how that organ draws more of the blood the heart pumps out." },
+        { "when": "1", "text": "With the arterioles unchanged, the organ's flow is set by its pressure gradient and resistance alone: {F0} L/min." }
+      ],
+      "note": "The organ values are round illustrations: at rest your kidneys receive about 1.1 L/min and your brain about 0.75 L/min.",
+      "presets": [
+        { "label": "Kidneys at rest", "values": { "MAP": 93, "Pv": 5, "R": 80, "f": 1 } },
+        { "label": "Brain at rest", "values": { "MAP": 93, "Pv": 5, "R": 117, "f": 1 } },
+        { "label": "Arterioles narrow 10%", "values": { "MAP": 93, "Pv": 5, "R": 80, "f": 0.9 } },
+        { "label": "Arterioles widen 20%", "values": { "MAP": 93, "Pv": 5, "R": 80, "f": 1.2 } }
+      ],
+      "practice": {
+        "asks": [
+          { "key": "F1", "unit": "L/min", "tol": { "abs": 0.02, "rel": 0.03 }, "prompt": "Mean arterial pressure is {MAP} mm Hg and the pressure in an organ's veins is {Pv} mm Hg. The organ's resistance is {R} mm Hg·min/L. Its arterioles then change to {f} times their original radius, while MAP and venous pressure stay the same. What is the organ's new blood flow?" },
+          { "key": "F0", "unit": "L/min", "tol": { "abs": 0.02, "rel": 0.02 }, "prompt": "Mean arterial pressure is {MAP} mm Hg and the pressure in an organ's veins is {Pv} mm Hg. The organ's vascular resistance is {R} mm Hg·min/L. What is the organ's blood flow?" }
+        ]
+      }
+    },
+    {
+      "id": "cardiac-output",
+      "group": "cardiovascular",
+      "title": "Cardiac output",
+      "short": "CO = HR × SV",
+      "topic": "cardiac-output",
+      "core": ["homeostasis"],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Cardiac output (CO) is the volume of blood one ventricle pumps each minute: the number of beats per minute times the volume of each beat.",
+      "formula": "CO = HR × SV",
+      "inputs": [
+        { "key": "HR", "label": "Heart rate", "sym": "HR", "unit": "beats/min", "default": 70, "min": 20, "max": 250, "step": 1, "gen": [52, 110, 1] },
+        { "key": "SV", "label": "Stroke volume", "sym": "SV", "unit": "mL/beat", "default": 70, "min": 5, "max": 250, "step": 1, "gen": [45, 105, 1] }
+      ],
+      "derived": [
+        { "key": "COml", "expr": "HR * SV", "dp": 0 },
+        { "key": "CO", "expr": "COml / 1000", "dp": 2 }
+      ],
+      "invalid": [],
+      "steps": [
+        { "title": "Write the equation", "text": "CO = HR × SV" },
+        { "title": "Substitute, keeping the units", "text": "CO = {HR} beats/min × {SV} mL/beat" },
+        { "title": "Multiply, and let the beats cancel", "text": "{HR} × {SV} = {COml}. Beats/min × mL/beat: the beats cancel, leaving <b>{COml} mL/min</b>." },
+        { "title": "Convert to liters per minute", "text": "{COml} mL/min ÷ 1,000 mL/L = <b>{CO} L/min</b>." }
+      ],
+      "results": [
+        { "key": "CO", "label": "Cardiac output", "unit": "L/min", "normal": "About 4 to 8 L/min in a resting adult, typically near 5.", "bands": [
+          { "when": "CO < 4", "label": "below resting range", "tone": "lo" },
+          { "when": "CO <= 8", "label": "resting range", "tone": "ok" },
+          { "label": "above resting range", "tone": "hi" }
+        ] }
+      ],
+      "meaning": [
+        { "when": "CO < 4", "text": "A cardiac output of {CO} L/min is below the resting range: less blood reaches the tissues each minute. It can come from a slow heart rate, a small stroke volume, or both." },
+        { "when": "CO <= 8", "text": "A cardiac output of {CO} L/min is in the resting range. Your blood volume is about 5 liters, so roughly all of it passes through each side of the heart every minute." },
+        { "when": "1", "text": "A cardiac output of {CO} L/min is above the resting range, as during exercise. The gap between resting and maximum output is the cardiac reserve: about 20 L/min is reachable in a young adult at peak effort." },
+        { "when": "HR > 150", "also": true, "text": "At a heart rate this fast, filling time shortens, so the ventricles fill less and stroke volume usually falls. A faster heart does not always pump more." }
+      ],
+      "presets": [
+        { "label": "Resting adult", "values": { "HR": 70, "SV": 70 } },
+        { "label": "Trained athlete at rest", "values": { "HR": 50, "SV": 100 } },
+        { "label": "Hard exercise", "values": { "HR": 180, "SV": 110 } },
+        { "label": "Fast rate, poor filling", "values": { "HR": 170, "SV": 30 } }
+      ],
+      "practice": {
+        "asks": [
+          { "key": "CO", "unit": "L/min", "tol": { "abs": 0.05, "rel": 0.015 }, "prompt": "A person's heart rate is {HR} beats/min and each beat ejects {SV} mL. What is the cardiac output in liters per minute?" },
+          { "key": "CO", "unit": "L/min", "tol": { "abs": 0.05, "rel": 0.015 }, "prompt": "An echocardiogram measures a stroke volume of {SV} mL while the monitor shows a heart rate of {HR} beats/min. Calculate the cardiac output in L/min." }
+        ]
+      }
+    },
+    {
+      "id": "nfp",
+      "group": "cardiovascular",
+      "title": "Net filtration pressure in a capillary",
+      "short": "NFP = (CHP + IFCOP) − (BCOP + IFHP)",
+      "topic": "capillary-exchange",
+      "core": ["gradients", "compartments", "mass-balance"],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Four Starling forces decide whether fluid moves out of a capillary or back in at one point along it. Enter the four pressures to find the net filtration pressure (NFP).",
+      "formula": "NFP = (CHP + IFCOP) − (BCOP + IFHP)",
+      "inputs": [
+        { "key": "CHP", "label": "Capillary hydrostatic pressure (pushes out)", "sym": "CHP", "unit": "mm Hg", "default": 35, "min": 0, "max": 90, "step": 1, "gen": [12, 45, 1], "hint": "About 35 at the arteriole end, falling to about 15 at the venule end." },
+        { "key": "IFCOP", "label": "Interstitial fluid colloid osmotic pressure (pulls out)", "sym": "IFCOP", "unit": "mm Hg", "default": 3, "min": 0, "max": 30, "step": 1, "gen": [0, 6, 1], "hint": "Small; varies by tissue." },
+        { "key": "BCOP", "label": "Blood colloid osmotic pressure (pulls in)", "sym": "BCOP", "unit": "mm Hg", "default": 25, "min": 0, "max": 40, "step": 1, "gen": [17, 28, 1], "hint": "About 25, mostly from albumin." },
+        { "key": "IFHP", "label": "Interstitial fluid hydrostatic pressure (pushes in)", "sym": "IFHP", "unit": "mm Hg", "default": 0, "min": -10, "max": 30, "step": 1, "gen": [-2, 3, 1], "hint": "Close to zero in most loose tissues." }
+      ],
+      "derived": [
+        { "key": "out", "expr": "CHP + IFCOP", "dp": 0 },
+        { "key": "in", "expr": "BCOP + IFHP", "dp": 0 },
+        { "key": "NFP", "expr": "out - in", "dp": 0 }
+      ],
+      "invalid": [],
+      "steps": [
+        { "title": "Add the forces that move fluid out", "text": "CHP pushes out and IFCOP pulls out: {CHP} + {IFCOP} = <b>{out} mm Hg outward</b>." },
+        { "title": "Add the forces that move fluid in", "text": "BCOP pulls in and IFHP pushes in: {BCOP} + {IFHP:p} = <b>{in} mm Hg inward</b>." },
+        { "title": "Subtract inward from outward", "text": "NFP = {out} mm Hg − {in} mm Hg = <b>{NFP:+} mm Hg</b>." },
+        { "title": "Read the sign", "text": "A positive NFP favors filtration, fluid moving out of the capillary. A negative NFP favors reabsorption, fluid moving in. For a given capillary wall, the bigger the number, the faster fluid moves." }
+      ],
+      "results": [
+        { "key": "NFP", "label": "Net filtration pressure", "unit": "mm Hg", "signed": true, "normal": "Classic textbook values give about +13 mm Hg at the arteriole end and about −7 mm Hg at the venule end.", "bands": [
+          { "when": "NFP > 0", "label": "favors filtration", "tone": "ok" },
+          { "when": "NFP == 0", "label": "no net movement", "tone": "ok" },
+          { "label": "favors reabsorption", "tone": "lo" }
+        ] }
+      ],
+      "meaning": [
+        { "when": "NFP > 0", "text": "With an NFP of {NFP:+} mm Hg, fluid filters out of the capillary into the interstitial fluid here. Plasma proteins stay behind. In most tissues, fluid filters out like this along almost the whole length of the capillary, and a separate drainage route carries it back to the blood." },
+        { "when": "NFP == 0", "text": "The outward and inward forces balance, so there is no net fluid movement at this point." },
+        { "when": "1", "text": "An NFP of {NFP:+} mm Hg predicts reabsorption, fluid moving back into the capillary. In most tissues that inward flow lasts only minutes: as fluid flows in, proteins build up in the thin layer just beneath the glycocalyx, the inward pull weakens, and the flow fades. At steady state most capillaries keep filtering slowly all the way to the venule end (the revised Starling principle). Lasting reabsorption happens only for a while after capillary pressure falls suddenly, as after blood loss, and in a few special beds such as the kidneys and the lining of the intestine." },
+        { "when": "BCOP < 20", "also": true, "text": "BCOP is low here. With less plasma protein holding fluid in the blood, filtration speeds up at every point along the capillary; this is one cause of edema." },
+        { "when": "CHP > 40", "also": true, "text": "CHP is high here, as when venous pressure rises, for example after standing still for hours. More pressure pushes fluid out, and if filtration outpaces drainage, edema follows." }
+      ],
+      "exam": "Most textbooks and exams still teach the classic picture: net filtration at the arteriole end, net reabsorption at the venule end, with about 85 to 90 percent of the filtered fluid reabsorbed. If a question asks what happens at the venule end, answer \"net reabsorption\". The calculation here gives the same numbers; only the interpretation of a negative NFP differs.",
+      "presets": [
+        { "label": "Arteriole end", "values": { "CHP": 35, "IFCOP": 3, "BCOP": 25, "IFHP": 0 } },
+        { "label": "Venule end", "values": { "CHP": 15, "IFCOP": 3, "BCOP": 25, "IFHP": 0 } },
+        { "label": "Low plasma protein", "values": { "CHP": 35, "IFCOP": 3, "BCOP": 15, "IFHP": 0 } },
+        { "label": "Standing still for hours", "values": { "CHP": 45, "IFCOP": 3, "BCOP": 25, "IFHP": 1 } }
+      ],
+      "practice": {
+        "asks": [
+          { "key": "NFP", "unit": "mm Hg", "signed": true, "tol": { "abs": 0.5 }, "prompt": "At one point along a capillary, CHP = {CHP} mm Hg, IFCOP = {IFCOP} mm Hg, BCOP = {BCOP} mm Hg and IFHP = {IFHP} mm Hg. What is the net filtration pressure? Give a negative value if it favors reabsorption." }
+        ]
+      }
+    },
+    {
+      "id": "tpr",
+      "group": "cardiovascular",
+      "title": "Total peripheral resistance from MAP and cardiac output",
+      "short": "TPR = MAP / CO",
+      "topic": "bp-short-term",
+      "core": ["gradients", "homeostasis"],
+      "level": "apply",
+      "diff": 2,
+      "intro": "The flow equation for your whole systemic circuit gives MAP = CO × TPR. Rearranged, it tells you the total peripheral resistance (TPR) from a MAP and a cardiac output.",
+      "formula": "TPR = MAP ÷ CO",
+      "inputs": [
+        { "key": "MAP", "label": "Mean arterial pressure", "sym": "MAP", "unit": "mm Hg", "default": 90, "min": 20, "max": 200, "step": 1, "gen": [70, 110, 1] },
+        { "key": "CO", "label": "Cardiac output", "sym": "CO", "unit": "L/min", "default": 5, "min": 0.5, "max": 40, "step": 0.1, "dp": 1, "gen": [3.5, 8, 0.1] }
+      ],
+      "derived": [
+        { "key": "TPR", "expr": "MAP / CO", "dp": 1 },
+        { "key": "TPRd", "expr": "round(TPR * 80, 0)", "dp": 0 },
+        { "key": "TPRr", "expr": "(MAP - 5) / CO", "dp": 1 }
+      ],
+      "invalid": [
+        { "when": "CO <= 0", "text": "Cardiac output must be greater than zero." }
+      ],
+      "steps": [
+        { "title": "Start from the flow equation", "text": "For the whole systemic circuit, CO = (MAP − right atrial pressure) ÷ TPR. Right atrial pressure is close to 0 mm Hg, so CO ≈ MAP ÷ TPR, which rearranges to MAP = CO × TPR." },
+        { "title": "Rearrange for TPR", "text": "TPR = MAP ÷ CO" },
+        { "title": "Substitute, keeping the units", "text": "TPR = {MAP} mm Hg ÷ {CO} L/min = <b>{TPR} mm Hg·min/L</b>." },
+        { "title": "Check the units", "text": "mm Hg divided by L/min gives mm Hg·min/L. Intensive care monitors often multiply by 80 to report the same value in dyn·s/cm<sup>5</sup>: {TPRd}." }
+      ],
+      "results": [
+        { "key": "TPR", "label": "Total peripheral resistance", "unit": "mm Hg·min/L", "normal": "Roughly 12 to 20 mm Hg·min/L in a resting adult.", "bands": [
+          { "when": "TPR < 12", "label": "low", "tone": "lo" },
+          { "when": "TPR <= 20", "label": "resting range", "tone": "ok" },
+          { "label": "high", "tone": "hi" }
+        ] }
+      ],
+      "meaning": [
+        { "when": "TPR < 12", "text": "TPR is low: arterioles across the body are wider than usual, as in exercising muscle. MAP stays up only because cardiac output is high enough to match; if cardiac output did not rise, MAP would fall." },
+        { "when": "TPR <= 20", "text": "TPR is in the resting range. Most of it comes from the arterioles, whose radius is set moment to moment by sympathetic tone and local conditions." },
+        { "when": "1", "text": "TPR is high: arterioles across the body are narrower than usual, for example from strong sympathetic vasoconstriction. The heart must hold a higher arterial pressure to push the same cardiac output through them." }
+      ],
+      "note": "Ignoring right atrial pressure slightly overstates TPR. If right atrial pressure were 5 mm Hg, TPR would be ({MAP} − 5) ÷ {CO} = {TPRr} mm Hg·min/L.",
+      "presets": [
+        { "label": "Resting adult", "values": { "MAP": 90, "CO": 5 } },
+        { "label": "Exercise", "values": { "MAP": 105, "CO": 18 } },
+        { "label": "Strong vasoconstriction", "values": { "MAP": 85, "CO": 3.2 } }
+      ],
+      "practice": {
+        "asks": [
+          { "key": "TPR", "unit": "mm Hg·min/L", "tol": { "abs": 0.1, "rel": 0.02 }, "prompt": "A person has a mean arterial pressure of {MAP} mm Hg and a cardiac output of {CO} L/min. Treating right atrial pressure as zero, what is their total peripheral resistance?" }
+        ]
+      }
+    }
+  ]
+}

@@ -4,47 +4,63 @@
     "openstax": {
       "figure": "3.19",
       "section": "3.3",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/83b9432fabdc1a4d12f4ae6ed9c404c678f55122"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/83b9432fabdc1a4d12f4ae6ed9c404c678f55122",
+      "page": "3-3-the-nucleus-and-dna-replication"
     },
     "alt": "Cutaway drawing of a cell nucleus. A double-layered nuclear envelope, studded with pores, surrounds the nucleus. Threads of chromatin fill the inside, and a dense, darker nucleolus sits within them.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.19",
-    "labels": []
+    "labels": [],
+    "w": 777,
+    "h": 599,
+    "ext": "jpg"
   },
   "os-3-22": {
     "source": "openstax",
     "openstax": {
       "figure": "3.22",
       "section": "3.3",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/647d3546c5b7f5cb57b87eda7bfb1b3599e6f231"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/647d3546c5b7f5cb57b87eda7bfb1b3599e6f231",
+      "page": "3-3-the-nucleus-and-dna-replication"
     },
     "alt": "Levels of DNA packing, from a compact X-shaped chromosome down to its chromatin fiber, then to beads of DNA wrapped around histone proteins (nucleosomes), then to the bare double helix, and finally to the helix drawn flat as a ladder.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.22",
-    "labels": []
+    "labels": [],
+    "w": 743,
+    "h": 584,
+    "ext": "jpg"
   },
   "os-3-23": {
     "source": "openstax",
     "openstax": {
       "figure": "3.23",
       "section": "3.3",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/aa0504395647ce5483e8e341b4f6247630f3c262"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/aa0504395647ce5483e8e341b4f6247630f3c262",
+      "page": "3-3-the-nucleus-and-dna-replication"
     },
     "alt": "The DNA double helix with its four bases shown in different colors. A close-up shows paired bases held together by hydrogen bonds between two sugar-phosphate backbones, and a lower panel shows one nucleotide: a phosphate, a sugar and a nitrogenous base.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.23",
-    "labels": []
+    "labels": [],
+    "w": 817,
+    "h": 822,
+    "ext": "jpg"
   },
   "os-3-24": {
     "source": "openstax",
     "openstax": {
       "figure": "3.24",
       "section": "3.3",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/335f694f2d46c62b4020c3bd37fee4de939e4007"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/335f694f2d46c62b4020c3bd37fee4de939e4007",
+      "page": "3-3-the-nucleus-and-dna-replication"
     },
     "alt": "DNA replication. A chromosome unwinds into its double helix. At a Y-shaped fork, helicase separates the two strands, and DNA polymerase enzymes build a new strand along each old one: continuously on one strand and in short pieces on the other.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.24",
-    "labels": []
+    "labels": [],
+    "w": 819,
+    "h": 506,
+    "ext": "jpg"
   }
 }

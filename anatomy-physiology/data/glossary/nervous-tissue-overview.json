@@ -1,0 +1,41 @@
+{
+  "neuron": {
+    "def": "A cell of nervous tissue that receives signals, combines them and sends a signal of its own to other cells; also called a nerve cell. Mature neurons do not divide.",
+    "roots": [
+      [
+        "neur-",
+        "nerve"
+      ]
+    ],
+    "say": "NOOR-on"
+  },
+  "neuron-parts-basic": {
+    "def": "The cell body holds a neuron's nucleus and makes its proteins; dendrites are short branches that receive signals; the single axon carries the signal away, ending in axon terminals (synaptic end bulbs) that release chemicals onto the next cell.",
+    "roots": [
+      [
+        "dendr-",
+        "tree"
+      ],
+      [
+        "axon",
+        "axis"
+      ]
+    ],
+    "say": "DEN-drite; AK-son"
+  },
+  "glial-cell": {
+    "def": "A support cell of nervous tissue (also called glia or neuroglia). Glial cells hold neurons in place, wrap and insulate axons, control the fluid around neurons and engulf debris, and unlike mature neurons they can divide.",
+    "roots": [
+      [
+        "glia",
+        "glue"
+      ]
+    ],
+    "say": "GLEE-ul"
+  },
+  "nerve": {
+    "def": "A cable of many axons, bundled with connective tissue and blood vessels, that runs outside the brain and spinal cord. It usually carries signals in both directions, in different axons.",
+    "roots": [],
+    "say": ""
+  }
+}

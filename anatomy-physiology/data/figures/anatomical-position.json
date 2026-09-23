@@ -1,18 +1,20 @@
 {
   "os-1-13": {
     "file": "figures/openstax/os-1-13.jpg",
-    "w": 1303,
-    "h": 1323,
+    "w": 1100,
+    "h": 1117,
     "source": "openstax",
     "openstax": {
       "figure": "1.13",
       "section": "1.6",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/077db56686dd31b966e5b0f56eefbc6e2ddc7214"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/077db56686dd31b966e5b0f56eefbc6e2ddc7214",
+      "page": "1-6-anatomical-terminology"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/077db56686dd31b966e5b0f56eefbc6e2ddc7214",
     "alt": "Two views of a standing woman with paired arrows. In the side view a vertical arrow runs from cranial at the head to caudal at the lower back, and a horizontal arrow runs from posterior (dorsal) at the back to anterior (ventral) at the front. In the front view, superior is at the top of the page and inferior at the bottom, right and left are marked on her own sides, an arrow runs from the midline outward to lateral, and arrows along the left arm and right leg run from proximal near the trunk to distal at the hand and foot.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.13",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   }
 }

@@ -1,0 +1,495 @@
+[
+  {
+    "id": "anp-diffusion-osmosis-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "misconception": "particles stop moving at equilibrium",
+    "q": "A drop of dye has spread evenly through a glass of still water. What are the dye particles doing now?",
+    "options": [
+      "They have stopped moving because the gradient is gone",
+      "They are all drifting slowly toward the bottom of the glass",
+      "They keep moving at random, crossing each way equally",
+      "They move only when the water is stirred or warmed"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The particles' random motion comes from heat and never stops. At equilibrium, as many particles cross any line one way as cross it the other way each second, so net diffusion is zero even though the particles keep moving.",
+      "options": [
+        "The gradient is what disappears, not the motion. Without a gradient there is no net movement, but each particle still zigzags at random.",
+        "Dissolved dye particles do not settle out of solution. Their random motion keeps them spread through the water.",
+        "Correct. Net diffusion has stopped, but individual particles keep moving and crossing in both directions in equal numbers.",
+        "Stirring or warming speeds the motion, but particles move at random all the time because of heat, even in still water at room temperature."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "In your lungs, the air holds more oxygen and less carbon dioxide than the blood arriving from your body. What happens across the thin barrier between them?",
+    "options": [
+      "Oxygen diffuses into the blood while carbon dioxide diffuses out of it",
+      "Oxygen diffuses into the blood, and carbon dioxide stays in the blood until the oxygen has finished",
+      "Both gases diffuse into the blood, because blood moves faster than air",
+      "Neither gas crosses until the heart pushes it across"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each substance diffuses down its own concentration gradient, whatever the others are doing. Oxygen is higher in the air, so it moves into the blood; carbon dioxide is higher in the blood, so it moves into the air, at the same moment.",
+      "options": [
+        "Correct. The two gases have opposite gradients, so they diffuse in opposite directions at the same time.",
+        "Gases do not take turns. Carbon dioxide has its own gradient from blood to air, and it diffuses down it at the same time oxygen diffuses the other way.",
+        "Carbon dioxide is more concentrated in the blood, so its net diffusion is out of the blood. The speed of the blood does not set the direction.",
+        "The heart moves blood by bulk flow along the vessels, but crossing the thin barrier is diffusion, driven by the concentration gradients."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "A container is divided by a membrane that lets water cross but not glucose. Both sides start as equal volumes of pure water. You dissolve glucose in side B. Predict each change over the next hour.",
+    "variables": [
+      {
+        "name": "Volume of fluid on side A",
+        "answer": "down",
+        "why": "Side A now has fewer dissolved particles than side B, so water leaves side A by osmosis."
+      },
+      {
+        "name": "Volume of fluid on side B",
+        "answer": "up",
+        "why": "Water follows solute: it moves into side B, where the glucose is, so the volume on side B rises."
+      },
+      {
+        "name": "Amount of glucose on side A",
+        "answer": "none",
+        "why": "The membrane does not let glucose cross, so no glucose reaches side A."
+      },
+      {
+        "name": "Osmolarity of side B, compared with just after the glucose was added",
+        "answer": "down",
+        "why": "The same glucose is now dissolved in more water, so side B becomes more dilute."
+      }
+    ],
+    "why": {
+      "correct": "The glucose cannot cross, so it cannot even out by diffusion. Instead water crosses toward it by osmosis: side B gains volume and becomes more dilute, and side A loses volume."
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "A substance takes 3 seconds to diffuse across a layer of tissue. The layer becomes three times as thick. Roughly how long does the same trip take now?",
+    "options": [
+      "About 9 seconds",
+      "About 27 seconds",
+      "About 1 second",
+      "About 18 seconds"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Diffusion time grows with the square of the distance. Three times the distance gives 3 × 3 = 9 times the time: 3 seconds × 9 = 27 seconds.",
+      "options": [
+        "This triples the time, treating diffusion time as proportional to distance. Time grows with the square of the distance, so it rises ninefold.",
+        "Correct. Three times the distance squared is nine times the time, and 3 × 9 = 27 seconds.",
+        "A thicker layer makes diffusion slower, not faster. This answer divides instead of multiplying.",
+        "This multiplies the time by 6 (twice the thickness factor). Squaring the factor of 3 gives 9, not 6."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-5",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "Which changes would speed the net diffusion of oxygen across a barrier? Select all that apply.",
+    "options": [
+      "Doubling the surface area of the barrier",
+      "Making the barrier thicker",
+      "Raising the oxygen concentration on the high side",
+      "Replacing oxygen with a much larger particle",
+      "Making the barrier thinner"
+    ],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "A larger surface area lets more particles cross each second, a bigger concentration difference makes the gradient steeper, and a thinner barrier shortens the diffusion distance. All three speed net diffusion.",
+      "options": [
+        "Correct. Twice the area means twice as many places for particles to cross each second.",
+        "A thicker barrier lengthens the diffusion distance, which slows net diffusion.",
+        "Correct. A larger concentration difference is a steeper gradient, so more particles cross from the high side than cross back.",
+        "Larger particles move more slowly and spread more slowly, so this would slow diffusion rather than speed it.",
+        "Correct. A thinner barrier means a shorter distance, and diffusion is much faster over short distances."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "Mr. Patel, 70, has a weak heart, and fluid has collected in his lungs, thickening the barrier between the air and his blood. The oxygen in the air he breathes is normal, yet his blood oxygen is low. Which factor in diffusion has changed most?",
+    "options": [
+      "The temperature of the air and blood",
+      "The size of the oxygen molecule",
+      "The concentration of oxygen in the air he is breathing in",
+      "The diffusion distance between the air and his blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Fluid thickens the barrier, so oxygen has farther to travel. A longer diffusion distance slows net diffusion, so less oxygen enters his blood each minute even though the air is normal.",
+      "options": [
+        "His body temperature is essentially unchanged, so this factor has not changed enough to explain the low oxygen.",
+        "An oxygen molecule is the same size whatever the disease. Particle size is fixed.",
+        "The question states that the air he breathes is normal, so the concentration on the air side has not changed.",
+        "Correct. The fluid layer lengthens the diffusion distance, and diffusion slows steeply as distance grows."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "A membrane that lets water cross, but not sodium chloride or glucose, separates two solutions. Side A holds 100 mmol/L sodium chloride. Side B holds 150 mmol/L glucose. Which way does water move?",
+    "options": [
+      "From side A to side B, toward the higher number of millimoles",
+      "In neither direction, because the solutes are different substances",
+      "From side B to side A, toward the higher particle count",
+      "In neither direction, because neither solute can cross"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Count particles. Sodium chloride gives 2 per unit: 100 × 2 = 200 mOsm/L on side A. Glucose gives 1: 150 mOsm/L on side B. Water follows solute, so it moves from B into A.",
+      "options": [
+        "Millimoles of solute are not the measure that counts. Side A releases 200 mOsm/L of particles against 150 on side B, so water moves the other way.",
+        "Osmosis depends on the number of dissolved particles, not on what they are. The particle counts differ, so water moves.",
+        "Correct. Side A has 200 mOsm/L and side B 150 mOsm/L, so water moves from B toward A.",
+        "Solutes that cannot cross are exactly the ones that drive osmosis. Because neither crosses, the difference in particle count stays, and water moves."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A membrane that lets only water cross separates 150 mmol/L sodium chloride from 300 mmol/L glucose. What happens to the water?",
+    "options": [
+      "Water moves into the glucose side, which has more millimoles per liter",
+      "Water moves into the sodium chloride side, because salt holds water more strongly",
+      "Water moves into the glucose side, because glucose molecules are larger",
+      "There is no net water movement: both sides have 300 mOsm/L"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Sodium chloride gives 2 particles per unit: 150 × 2 = 300 mOsm/L. Glucose gives 1: 300 mOsm/L. With equal particle counts on both sides, water crosses equally in both directions and there is no net movement.",
+      "options": [
+        "Millimoles of solute are not what counts. The sodium chloride splits into two ions, so both sides have the same particle count.",
+        "Osmosis depends on the number of particles, not on the kind. Salt has no special pull on water once the counts are equal.",
+        "Particle size does not matter for osmosis; particle number does. Both sides have the same number.",
+        "Correct. Both sides are 300 mOsm/L, so there is no difference to drive osmosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "homeostasis"],
+    "q": "A marathon runner drinks far more plain water than she sweats out. Her blood becomes more dilute. What happens to her brain cells?",
+    "options": [
+      "Water moves out of them, and they shrink",
+      "Water moves into them, and they swell",
+      "Salt diffuses out of them into her blood, and their size is unchanged",
+      "Nothing happens, because brain cells are protected by the skull"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Diluted blood means the fluid around her cells has fewer dissolved particles than the inside of the cells. Water follows solute, so it moves into the cells by osmosis and they swell. In the rigid skull, that raises pressure on the brain.",
+      "options": [
+        "This is the direction for blood that has become more concentrated. Here the outside has become more dilute, so water moves in.",
+        "Correct. The inside of each cell now has more dissolved particles than the fluid around it, so water moves in.",
+        "The cell membranes hold most ions back, so the main change is water moving, not salt. And any change in particles would not leave the cells unchanged.",
+        "The skull protects the brain from knocks, but it does not stop osmosis across each cell's membrane. The rigid skull actually makes swelling more dangerous."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "A membrane lets both water and substance X cross freely. Side A holds a solution of X; side B holds pure water. What is the state after a long time?",
+    "options": [
+      "Side A ends up holding more water, because X keeps drawing water toward it",
+      "Side B holds all of X, because X moves away from where it is concentrated",
+      "X evens out on both sides, and neither side gains water for good",
+      "Nothing crosses at all, because both sides started out at the same pressure"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "X can cross, so it diffuses down its own gradient until it is equally concentrated on both sides. Then it no longer makes one side different from the other, so it drives no lasting water movement. Only particles the membrane holds back cause lasting osmosis.",
+      "options": [
+        "That would happen only if the membrane held X back. Because X crosses, it spreads to both sides and the difference disappears.",
+        "Net diffusion moves X from high to low concentration until the two sides are equal, not until all of it is on the other side.",
+        "Correct. X evens out by diffusion, so there is no lasting difference in particle count and no lasting difference in water.",
+        "Diffusion is driven by the concentration gradient of X, not by a pressure difference, so X crosses even when the pressures are equal."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "What does a solution's osmotic pressure measure?",
+    "options": [
+      "The pressure needed to stop water moving into it by osmosis",
+      "The pressure the solution exerts on the walls of its container",
+      "The pressure a pump must supply to push the solution along a tube",
+      "The pressure of the air above the solution"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Osmotic pressure is the pressure you would need to apply to a solution to stop water from entering it by osmosis. It measures how strongly the solution draws water in, and it rises with the number of dissolved particles the membrane holds back.",
+      "options": [
+        "Correct. It is the pressure that would exactly balance the osmotic pull of the solution.",
+        "That describes hydrostatic pressure, the push a fluid exerts on its surroundings.",
+        "A pump supplies a pressure gradient for bulk flow. That has nothing to do with dissolved particles drawing water.",
+        "That is atmospheric pressure, the weight of the air above."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Two solutions are separated by a membrane that lets only water through. One is 285 mOsm/L and the other 290 mOsm/L. Using about 19 mm Hg per mOsm/L, roughly how large is the difference in osmotic pressure?",
+    "options": [
+      "About 5 mm Hg",
+      "About 19 mm Hg",
+      "About 95 mm Hg",
+      "About 5,500 mm Hg"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The difference in osmolarity is 290 − 285 = 5 mOsm/L. Multiply by about 19 mm Hg per mOsm/L: 5 × 19 = 95 mm Hg. A tiny difference in particle count creates a large pressure.",
+      "options": [
+        "This is the difference in osmolarity, in mOsm/L. It still has to be converted to mm Hg.",
+        "This is the pressure for a difference of 1 mOsm/L. The difference here is 5 mOsm/L.",
+        "Correct. 5 mOsm/L × 19 mm Hg per mOsm/L ≈ 95 mm Hg.",
+        "This is roughly the osmotic pressure of one whole solution against pure water (290 × 19). The question asks about the difference between the two solutions."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-13",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A U-shaped tube has a membrane at its bottom that lets only water cross. Both arms start at the same level with pure water. Put the events in order after solute is added to the right arm.",
+    "options": [
+      "Solute is dissolved in the right arm",
+      "Water moves from the left arm into the right arm by osmosis",
+      "The fluid level in the right arm rises above the left",
+      "The taller column raises the hydrostatic pressure on the right side of the membrane",
+      "Net water movement stops when that hydrostatic push balances the osmotic pull"
+    ],
+    "why": {
+      "correct": "The solute makes the right arm the side with more particles, so water moves in by osmosis and its level rises. The extra height adds hydrostatic pressure that pushes water back. When the push equals the osmotic pull, net movement stops. That balancing pressure is the solution's osmotic pressure."
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-14",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Fill the gap. Blood cells are placed in pure water → the inside of each cell has more dissolved particles than the water outside → ______ → the cells swell and many burst.",
+    "options": [
+      "Dissolved particles diffuse out of the cells until both sides are equal",
+      "Water moves into the cells by osmosis",
+      "Water moves out of the cells by osmosis",
+      "Water is pushed into the cells by bulk flow from a higher pressure outside"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Water follows solute. The cells hold dissolved particles their membranes keep in, and the water outside has none, so water moves into the cells by osmosis and they swell.",
+      "options": [
+        "The membrane holds most of these particles back, so they cannot even out by diffusion. That is why water moves instead.",
+        "Correct. Water moves toward the side with more dissolved particles, which is the inside of the cells.",
+        "Water moves toward more dissolved particles, so here it moves in, not out. Moving out would shrink the cells.",
+        "No outside pressure is pushing. The water moves because of the difference in dissolved particles, which is osmosis, not bulk flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-15",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A student explains why salted cucumber slices go limp. One step is wrong. Find it.",
+    "options": [
+      "Salt dissolves in the thin film of water on the slices, making a very concentrated solution",
+      "The cucumber's cell membranes let water cross but hold back most of the salt",
+      "Water moves from the salty film into the cells, toward fewer dissolved particles",
+      "The cells lose volume and the slices go limp"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Water moves toward the side with more dissolved particles, not fewer. The salty film outside has more particles than the inside of the cells, so water moves out of the cells, which is why they lose volume.",
+      "options": [
+        "This step is right: the salt dissolves in the surface water and makes a concentrated solution.",
+        "This step is right: the membranes are semipermeable, open to water but not to most of the salt.",
+        "This is the error. Water follows solute, so it moves out of the cells into the salty film, not into the cells.",
+        "This step is right: losing water shrinks the cells, and the slices go limp."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients", "structure-function"],
+    "q": "Oxygen diffuses from a capillary to a cell a few micrometers away in a fraction of a second. Why can't diffusion alone carry oxygen from your lungs to your toes?",
+    "options": [
+      "Oxygen cannot diffuse through liquid, only through air",
+      "The oxygen concentration gradient reverses partway down the body",
+      "Diffusion time grows with the square of the distance, so a meter would take years",
+      "Diffusion works only across membranes, and there is none between the lungs and the toes"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Diffusion is a random walk. Its time grows with the square of the distance, so a trip a million times longer takes about a million million times as long: roughly five years for a meter. Bulk flow of blood carries oxygen the long way instead.",
+      "options": [
+        "Oxygen does diffuse through liquid; that is how it reaches your cells from the blood. It is just slow over long distances.",
+        "Oxygen falls steadily from lungs to tissues; the gradient does not reverse. The problem is the distance, not the direction.",
+        "Correct. Time grows with the square of distance, so diffusion that takes a fraction of a second over micrometers takes years over a meter.",
+        "Diffusion needs no membrane: dye spreads through a glass of water without one. A membrane can only limit it."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-17",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "figure": "os-3-7",
+    "q": "The figure shows a beaker divided by a membrane that lets water cross but not the solute, before and after some time passes. Which statement describes what happened?",
+    "options": [
+      "Solute crossed into the side with less solute until the concentrations matched",
+      "Water crossed into the side with more solute, raising its fluid level",
+      "Water crossed into the side with less solute, raising its fluid level",
+      "Nothing crossed; the difference in level comes from the weight of the solute"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The membrane holds the solute back, so the solute cannot even out. Water moves instead, toward the side with more dissolved particles, and that side's level rises.",
+      "options": [
+        "The membrane does not let the solute cross, so the solute cannot even out by diffusion.",
+        "Correct. Water follows solute across the membrane, so the fluid level rises on the side with more dissolved particles.",
+        "This reverses the direction. Water moves toward more dissolved particles, not fewer.",
+        "The fluid level changed because water crossed the membrane. The weight of dissolved particles does not raise a fluid level."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients", "structure-function"],
+    "q": "What makes a membrane semipermeable?",
+    "options": [
+      "It lets some substances cross and blocks others",
+      "It lets water cross the membrane in only one direction",
+      "It lets substances cross only half of the time",
+      "It uses energy to move every substance across"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A semipermeable (selectively permeable) membrane is open to some substances and closed to others. The membrane around each of your cells lets water cross easily but holds back proteins and most ions.",
+      "options": [
+        "Correct. Which substances it lets through is what makes it semipermeable.",
+        "Water crosses a semipermeable membrane in both directions all the time. Osmosis is the net difference between the two directions.",
+        "The prefix semi- means partly, as in partly permeable: open to some substances. It does not describe timing.",
+        "Many substances cross without any energy input, by diffusion. Being semipermeable describes what can cross, not how much energy it takes."
+      ]
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-19",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Blood cells are moved from 0.9% sodium chloride (about the same osmolarity as their insides) into a much saltier solution. Their membranes let water cross but hold back most of the salt. Predict each change over the next few minutes.",
+    "variables": [
+      {
+        "name": "Volume of each cell",
+        "answer": "down",
+        "why": "The saltier outside has more dissolved particles than the inside of the cells, so water moves out by osmosis and the cells shrink."
+      },
+      {
+        "name": "Osmolarity inside each cell",
+        "answer": "up",
+        "why": "The cells keep their dissolved particles but lose water, so the particles are packed into less water."
+      },
+      {
+        "name": "Amount of dissolved particles inside each cell",
+        "answer": "none",
+        "why": "The membranes hold these particles back, so the count inside stays the same; only water leaves."
+      }
+    ],
+    "why": {
+      "correct": "Water follows solute. It leaves the cells toward the saltier outside, so the cells shrink, and the same particles in less water raise the osmolarity inside until it matches the outside."
+    }
+  },
+  {
+    "id": "anp-diffusion-osmosis-20",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Which of these are examples of diffusion, not bulk flow or osmosis? Select all that apply.",
+    "options": [
+      "Carbon dioxide moving from a working cell into nearby blood",
+      "Blood pumped from the heart along an artery",
+      "The smell of coffee spreading through a still room",
+      "Water moving into a cell that holds more dissolved particles than its surroundings",
+      "Oxygen moving from the air in your lungs into your blood"
+    ],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Diffusion is dissolved or airborne particles spreading down their own concentration gradient by random motion. Carbon dioxide leaving a cell, coffee aroma in still air and oxygen entering the blood all fit. Pumped blood is bulk flow, and water crossing toward more solute is osmosis.",
+      "options": [
+        "Correct. The cell makes carbon dioxide, so it is more concentrated inside, and it diffuses out down its gradient.",
+        "This is bulk flow: the whole fluid moves together, driven by the pressure gradient the heart creates.",
+        "Correct. With no air current, the aroma particles spread by their own random motion, from high to low concentration.",
+        "This is osmosis: net water movement across a semipermeable membrane toward the side with more dissolved particles.",
+        "Correct. Oxygen is more concentrated in the air than in the arriving blood, so it diffuses into the blood."
+      ]
+    }
+  }
+]

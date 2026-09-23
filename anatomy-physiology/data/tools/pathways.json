@@ -1,0 +1,653 @@
+{
+  "about": "Pathway tracer content (docs/anp-spec.md section 8.4, docs/anp-tools-contract.md). Each pathway gives three scored items with permanent ids: pathways:<id>:order, pathways:<id>:missing and pathways:<id>:error. steps are in the correct order; each step's why says why it comes where it does. label is the short name drawn on the diagram. kind 'flow' draws 'flows to' arrows (blood moving), 'causal' draws 'causes' arrows. cycle: the last step leads back to the first. missing.at is the step blanked out; error.at is the step replaced by error.text. Validator: scripts/lib/anp-tool-checks/pathways.mjs.",
+  "pathways": [
+    {
+      "id": "enzyme-cycle",
+      "title": "An enzyme's catalytic cycle",
+      "topic": "enzymes-energy",
+      "core": ["energy"],
+      "level": "apply",
+      "diff": 1,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "One enzyme molecule converts thousands of substrate molecules a second. Trace one turn of the cycle, starting as a substrate arrives.",
+      "steps": [
+        { "id": "collide", "label": "Substrate binds", "text": "A substrate molecule collides with the enzyme and fits into its active site.", "why": "Nothing happens until the substrate is in place. It binds only if its shape and charges match the active site, which is why each enzyme works on so few substrates." },
+        { "id": "close", "label": "Enzyme closes around it", "text": "The enzyme changes shape slightly and closes around the bound substrate.", "why": "Binding itself triggers the shape change, so it has to follow binding. An empty active site has nothing to close around." },
+        { "id": "strain", "label": "Activation energy falls", "text": "The closed active site holds the substrate strained and well aligned, which lowers the activation energy.", "why": "The strain and alignment come from the closed shape, so the energy barrier drops only after the enzyme has closed." },
+        { "id": "react", "label": "Substrate becomes product", "text": "Far more substrate molecules get over the lowered energy hill each second, so the reaction runs much faster.", "why": "A lower barrier means more collisions have enough energy to react. The enzyme adds no energy of its own; it only lowers the hill." },
+        { "id": "release", "label": "Products released", "text": "The products no longer fit the active site well and are released.", "why": "The products have a different shape from the substrate, so once the reaction has happened they lose their grip on the site." },
+        { "id": "reuse", "label": "Enzyme free again", "text": "The unchanged enzyme is free to bind a new substrate molecule.", "why": "The enzyme is not used up or changed by the reaction, so the cycle can start again as soon as the site is empty." }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          { "text": "The enzyme adds heat to the substrate until it has enough energy to react.", "why": "Enzymes add no energy. They speed a reaction by lowering the activation energy it needs, not by heating the substrate." },
+          { "text": "The enzyme is used up and becomes part of the product.", "why": "An enzyme comes out of the reaction unchanged; that is why one enzyme can convert thousands of substrate molecules." },
+          { "text": "The products bind the active site and change the enzyme permanently.", "why": "The products leave the site because they no longer fit it well. A permanent change to the enzyme would stop it working, not help the reaction." }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The enzyme is changed by the reaction, so the cell must make a new enzyme for the next substrate.",
+        "why": "An enzyme is a catalyst: it leaves the reaction unchanged and binds the next substrate straight away. A cell does make new enzymes, but to replace worn-out ones, not after every reaction."
+      },
+      "summary": "Binding comes first, and binding causes the shape change that lowers the activation energy. The enzyme speeds the reaction without adding energy and comes out unchanged, so the cycle repeats."
+    },
+    {
+      "id": "protein-synthesis",
+      "title": "Protein synthesis: gene to secreted protein",
+      "topic": "protein-synthesis",
+      "core": ["structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A pancreas cell is about to make and export a digestive enzyme. Trace the protein from its gene to outside the cell.",
+      "steps": [
+        { "id": "tf", "label": "Gene switched on", "text": "Transcription factors bind DNA near the gene's promoter.", "why": "A gene is not copied until it is switched on. Transcription factors are the switch: they recruit the enzyme that does the copying." },
+        { "id": "transcribe", "label": "Transcription", "text": "RNA polymerase binds the promoter and transcribes the gene into a first RNA copy.", "why": "RNA polymerase can attach at the promoter only once the transcription factors are in place, so transcription follows them." },
+        { "id": "splice", "label": "Introns spliced out", "text": "The spliceosome removes the introns and joins the exons, and a protective cap and tail are added, making finished mRNA.", "why": "The first copy still contains introns, which do not code for the protein. Only processed mRNA is allowed out of the nucleus, so processing comes before export." },
+        { "id": "export", "label": "mRNA leaves nucleus", "text": "The finished mRNA passes through a nuclear pore into the cytoplasm.", "why": "Ribosomes work in the cytoplasm, so the mRNA must leave the nucleus before it can be read." },
+        { "id": "start", "label": "Ribosome starts at AUG", "text": "A ribosome binds the mRNA and starts at the AUG start codon.", "why": "Translation needs mRNA and a ribosome together. The start codon sets the reading frame, so every later codon is read in the right groups of three." },
+        { "id": "dock", "label": "Ribosome docks on rough ER", "text": "The first amino acids made form a signal sequence, which docks the ribosome on the rough ER.", "why": "The signal sequence is at the front of the chain, so it appears early in translation. It marks the protein for export and sends the ribosome to the ER before much of the chain is built." },
+        { "id": "elongate", "label": "Chain grows into the ER", "text": "tRNAs bring amino acids to match each codon, and the ribosome links them by peptide bonds, threading the growing chain into the ER until a stop codon ends it.", "why": "Once docked, the ribosome keeps reading codon by codon; each amino acid can be added only after its tRNA has paired with the codon." },
+        { "id": "fold", "label": "Folds, gains sugars", "text": "Inside the ER, the chain folds into its working shape and has sugar chains added.", "why": "Folding and adding sugars happen inside the ER, so they follow the chain's entry into it." },
+        { "id": "golgi", "label": "Golgi sorts it", "text": "Vesicles carry the protein to the Golgi apparatus, which modifies it further and packs it into secretory vesicles.", "why": "Proteins leave the ER in vesicles, and the Golgi is the next station. It sorts proteins by where they are going, so packing for export happens there." },
+        { "id": "exocytosis", "label": "Exocytosis", "text": "The secretory vesicles fuse with the plasma membrane and release the protein outside the cell by exocytosis.", "why": "Release is the last step because the vesicle must first be packed and carried to the membrane." }
+      ],
+      "missing": {
+        "at": 2,
+        "level": "apply",
+        "distractors": [
+          { "text": "The ribosome removes the introns as it reads the mRNA in the cytoplasm.", "why": "Introns are removed in the nucleus by the spliceosome before the mRNA leaves. Ribosomes never see them." },
+          { "text": "DNA replication makes a second copy of the gene for the ribosome to read.", "why": "DNA replication copies the whole genome before a cell divides; it has no part in making a protein. Ribosomes read mRNA, never DNA." },
+          { "text": "tRNAs carry the first RNA copy out through a nuclear pore.", "why": "tRNAs bring amino acids to the ribosome during translation. The mRNA leaves the nucleus on its own, and only after processing." }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "tRNAs bring amino acids to match each codon, and the ribosome links them by hydrogen bonds, threading the growing chain into the ER.",
+        "why": "Amino acids in a chain are joined by covalent peptide bonds. Hydrogen bonds pair the anticodon with the codon, and later help hold the folded chain in shape, but they do not link the amino acids."
+      },
+      "summary": "Every step makes the next one possible: the switched-on gene is transcribed, the RNA is processed so it can leave the nucleus, the ribosome translates it, the signal sequence routes it through the ER and Golgi apparatus, and exocytosis releases it."
+    },
+    {
+      "id": "secretory-pathway",
+      "title": "The secretory pathway: ER to Golgi to exocytosis",
+      "topic": "protein-synthesis",
+      "core": ["structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A cell in your pancreas is making a glycoprotein to release outside the cell. Start as the first part of the chain comes out of the ribosome.",
+      "steps": [
+        { "id": "signal", "label": "Signal sequence appears", "text": "A signal sequence appears at the front of the new amino acid chain as a free ribosome begins translation.", "why": "The ribosome builds the chain from the front end first, so the signal sequence is the first part to exist." },
+        { "id": "dock", "label": "Ribosome docks on ER", "text": "The signal sequence docks the ribosome on the membrane of the rough ER.", "why": "Only a chain carrying the signal can dock, so docking follows the signal's appearance. This is what makes the ER rough." },
+        { "id": "thread", "label": "Chain threads into ER", "text": "The growing chain threads through a channel into the space inside the ER as the ribosome keeps building it.", "why": "With the ribosome sitting on the ER, each new stretch of chain is pushed straight into the ER instead of into the cytosol." },
+        { "id": "fold", "label": "Folds, sugars added", "text": "Inside the ER, the chain folds and gains sugar chains, becoming a glycoprotein.", "why": "The enzymes that add sugars and help folding are inside the ER, so these changes need the chain to be there first." },
+        { "id": "to-golgi", "label": "Vesicle to Golgi", "text": "A transport vesicle buds off the ER and fuses with the receiving side of the Golgi apparatus.", "why": "The protein cannot leave the ER through the cytosol; it travels enclosed in membrane, so a vesicle carries it to the next station." },
+        { "id": "golgi", "label": "Golgi modifies and sorts", "text": "Moving through the Golgi apparatus, the protein's sugars are trimmed and changed, and it is sorted for export.", "why": "The Golgi works in sequence from its receiving side to its shipping side, so sorting follows arrival." },
+        { "id": "secretory-vesicle", "label": "Secretory vesicle", "text": "A secretory vesicle buds from the shipping side of the Golgi and moves along microtubules toward the plasma membrane.", "why": "Only sorted, finished proteins are packed into secretory vesicles, so packing comes after the Golgi's work." },
+        { "id": "exocytosis", "label": "Exocytosis", "text": "The vesicle fuses with the plasma membrane and releases the glycoprotein outside the cell.", "why": "Fusion can happen only once the vesicle reaches the membrane; its membrane then becomes part of the plasma membrane." }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          { "text": "The folded glycoprotein passes through a nuclear pore into the nucleus for sorting.", "why": "Proteins for export never enter the nucleus. Sorting happens in the Golgi apparatus, reached by vesicle from the ER." },
+          { "text": "A lysosome engulfs the glycoprotein and carries it to the Golgi apparatus.", "why": "Lysosomes break material down; they do not transport finished proteins. Transport vesicles carry proteins from the ER to the Golgi." },
+          { "text": "The glycoprotein diffuses through the cytosol to the Golgi apparatus.", "why": "A protein made into the ER stays enclosed in membrane all the way out of the cell. It moves in vesicles, never loose in the cytosol." }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The signal sequence docks the ribosome on the membrane of the smooth ER.",
+        "why": "Ribosomes dock on the rough ER; the attached ribosomes are what make it look rough. Smooth ER has no ribosomes and makes lipids, not secreted proteins."
+      },
+      "summary": "The signal sequence at the front of the chain sends the ribosome to the rough ER. From there the protein stays enclosed in membrane: ER, vesicle, Golgi apparatus, secretory vesicle, and out by exocytosis."
+    },
+    {
+      "id": "cell-cycle",
+      "title": "The cell cycle",
+      "topic": "cell-cycle",
+      "core": ["structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "A skin stem cell has just divided. Follow one of its daughter cells around the cycle until it divides in turn.",
+      "steps": [
+        { "id": "g1", "label": "G1: grow", "text": "In G1, the new cell grows, makes proteins and organelles, and does its normal work.", "why": "A daughter cell starts at about half size. It must grow and build supplies before it can afford to copy its DNA." },
+        { "id": "g1-check", "label": "G1 checkpoint", "text": "Growth signals raise cyclin levels, and active cyclin–CDK pairs push the cell past the G1 checkpoint.", "why": "The checkpoint sits before DNA copying because copying commits the cell to dividing. A cell without growth signals, or with damaged DNA, stops here or leaves the cycle into G0." },
+        { "id": "s", "label": "S: copy DNA", "text": "In S phase, the cell replicates its DNA, so each chromosome becomes two sister chromatids.", "why": "Past the checkpoint, the cell is committed. The DNA must be copied before division so each daughter cell can get a full set." },
+        { "id": "g2", "label": "G2: check the copy", "text": "In G2, the cell makes the proteins needed for division, and the G2 checkpoint confirms the DNA is fully and correctly copied.", "why": "The copy can be checked only after it is made, and it must be checked before division so errors are not passed on." },
+        { "id": "mitosis", "label": "Mitosis", "text": "In mitosis, the sister chromatids are separated into two identical sets, each in its own nucleus.", "why": "Once the copy passes the G2 checkpoint, the cell divides its nucleus: one chromatid of every chromosome goes to each set." },
+        { "id": "cytokinesis", "label": "Cytokinesis", "text": "In cytokinesis, an actin–myosin ring pinches the cytoplasm in two.", "why": "The cell splits only after the two sets of chromosomes are apart, so each daughter gets one complete nucleus." },
+        { "id": "daughters", "label": "Two daughter cells", "text": "Two genetically identical daughter cells enter G1, or leave the cycle into G0.", "why": "Division produces two cells with the same genes. Each starts the cycle again or stops dividing and specializes." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "In G2, the cell replicates its DNA a second time so each daughter gets two copies.", "why": "DNA is replicated once per cycle, in S phase. A second round would give the daughter cells double the normal DNA." },
+          { "text": "In G2, the chromosomes line up on the metaphase plate.", "why": "Lining up on the metaphase plate happens in metaphase, part of mitosis. In G2 the chromosomes are still loose chromatin." },
+          { "text": "In G2, the cell splits in two, and each half then copies its DNA.", "why": "Copying comes before splitting, never after: each daughter must receive a complete copy made in S phase." }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The cell passes the G1 checkpoint automatically after a fixed time, whether or not it receives growth signals.",
+        "why": "Passing the G1 checkpoint needs growth signals and undamaged DNA; they raise cyclin levels and switch on CDKs. That control is what keeps most cells from dividing, and losing it is how cancer begins."
+      },
+      "summary": "Grow, check, copy, check again, divide the nucleus, divide the cell. The two checkpoints sit exactly where a mistake would be costly: before the DNA is copied and before it is shared out."
+    },
+    {
+      "id": "mitosis",
+      "title": "Phases of mitosis",
+      "topic": "cell-cycle",
+      "core": ["structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "The cell has copied its DNA and passed the G2 checkpoint. Trace mitosis and cytokinesis from start to finish.",
+      "steps": [
+        { "id": "prophase", "label": "Prophase", "text": "Prophase: chromatin condenses into visible chromosomes, each made of two sister chromatids, and the mitotic spindle begins to form.", "why": "Long, loose chromatin would tangle and break if it were pulled, so it must condense before it can be moved." },
+        { "id": "late-prophase", "label": "Spindle grips chromosomes", "text": "Late prophase: the nuclear envelope breaks down, and spindle microtubules attach to the kinetochores of each chromosome.", "why": "The spindle forms outside the nucleus, so the nuclear envelope must break down before the microtubules can reach the kinetochores." },
+        { "id": "metaphase", "label": "Metaphase", "text": "Metaphase: pulled evenly from both poles, the chromosomes line up on the metaphase plate, and the spindle checkpoint confirms every one is attached.", "why": "Chromosomes can line up only after microtubules from both poles have attached and pull on them equally." },
+        { "id": "anaphase", "label": "Anaphase", "text": "Anaphase: the proteins holding sister chromatids together are cut, and the kinetochore microtubules shorten, pulling the chromatids to opposite poles.", "why": "Separation waits until every chromosome is attached. If it started early, one daughter cell could get both copies of a chromosome and the other none." },
+        { "id": "telophase", "label": "Telophase", "text": "Telophase: a full set of chromosomes reaches each pole, a nuclear envelope re-forms around each set, and the chromosomes loosen.", "why": "The envelopes can re-form only once the two sets have arrived at the poles and are far apart." },
+        { "id": "cytokinesis", "label": "Cytokinesis", "text": "Cytokinesis: a cleavage furrow deepens as an actin–myosin ring tightens, splitting the cell in two.", "why": "The furrow forms between the two separated sets, so the split gives each daughter cell one nucleus. It starts during late anaphase or telophase and finishes after them." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "Anaphase: the chromosomes replicate, so each chromatid becomes a new pair.", "why": "The DNA was already replicated in S phase. Nothing is copied during mitosis; the chromatids made in S phase are only separated." },
+          { "text": "Anaphase: the nuclear envelope re-forms around the chromosomes on the metaphase plate.", "why": "The envelope re-forms in telophase, around two separated sets. Re-forming it at the metaphase plate would trap both copies in one nucleus." },
+          { "text": "Anaphase: whole chromosomes, each still made of two sister chromatids, move to opposite poles.", "why": "In mitosis the sister chromatids themselves separate, so each pole gets one copy of every chromosome. Moving whole chromosomes would give each daughter cell only some of the chromosomes, each in two copies." }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Metaphase: the chromosomes line up on the metaphase plate before any spindle microtubules have attached to them.",
+        "why": "The chromosomes line up because microtubules from both poles are attached and pulling equally. Without attachment nothing moves them to the plate, and the spindle checkpoint would hold the cell in metaphase."
+      },
+      "summary": "Condense, attach, line up, separate, rebuild, split. Each phase sets up the next: the envelope must break down before the spindle can attach, attachment lines the chromosomes up, and only when all are attached are the chromatids pulled apart."
+    },
+    {
+      "id": "cellular-respiration",
+      "title": "Stages of cellular respiration",
+      "topic": "cellular-respiration",
+      "core": ["energy"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A liver cell is working steadily with plenty of oxygen. Trace one glucose molecule from the blood to ATP.",
+      "steps": [
+        { "id": "uptake", "label": "Glucose enters cell", "text": "Glucose enters the cell from the blood through carrier proteins, by facilitated diffusion.", "why": "Glucose must be inside the cell before any stage can use it, and it is too polar to cross the lipid bilayer on its own." },
+        { "id": "glycolysis", "label": "Glycolysis (cytosol)", "text": "In the cytosol, glycolysis splits each glucose into two pyruvate, making a net 2 ATP and some NADH without using oxygen.", "why": "Glycolysis is the only stage that can use glucose directly, and its enzymes are in the cytosol, where glucose arrives." },
+        { "id": "pyruvate", "label": "Pyruvate to mitochondria", "text": "With oxygen available, pyruvate moves into a mitochondrion and is trimmed to a two-carbon fragment, releasing CO2.", "why": "The rest of the pathway runs inside mitochondria, so pyruvate has to be carried in and prepared before the cycle can use it." },
+        { "id": "cycle", "label": "Citric acid cycle", "text": "The citric acid cycle breaks the fragments down to CO2, loading electron carriers, mostly NADH, and making a little ATP.", "why": "The cycle takes in the prepared fragments, so it follows their formation. Its main product is loaded electron carriers, not ATP." },
+        { "id": "etc", "label": "Electron transport chain", "text": "NADH and the other loaded carriers hand their electrons to the electron transport chain in the inner mitochondrial membrane, which uses their energy to pump hydrogen ions across it.", "why": "The chain runs on the electrons that glycolysis and the cycle loaded onto carriers, so it comes after them." },
+        { "id": "atp", "label": "Most ATP made", "text": "Hydrogen ions flow back across the membrane through ATP-making enzymes, producing most of the cell's ATP, and oxygen accepts the spent electrons, forming water.", "why": "The pumped hydrogen ion gradient is what powers ATP production. Oxygen is needed at this very end; without it the chain backs up and the whole aerobic pathway stops." }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          { "text": "In the mitochondria, the citric acid cycle splits glucose directly into CO2.", "why": "The citric acid cycle cannot use glucose. Glucose must first be split into pyruvate by glycolysis, in the cytosol." },
+          { "text": "In the cytosol, glucose combines with oxygen and releases all its energy as ATP in one step.", "why": "Energy is released in many small steps across several stages. Oxygen is used only at the end of the electron transport chain." },
+          { "text": "In the nucleus, glucose is stored as glycogen until the mitochondria need it.", "why": "Glycogen is stored in the cytosol, not the nucleus, and storing glucose is the opposite of breaking it down for ATP." }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Hydrogen ions flow back across the membrane, producing most of the cell's ATP, and carbon dioxide accepts the spent electrons, forming water.",
+        "why": "Oxygen is the final electron acceptor, and it forms water. Carbon dioxide is a waste product given off earlier, as pyruvate is trimmed and in the citric acid cycle; it accepts nothing."
+      },
+      "summary": "Glycolysis splits glucose in the cytosol; the citric acid cycle finishes breaking it down in the mitochondria and loads electron carriers; the electron transport chain uses those electrons, with oxygen at the end, to make most of the ATP."
+    },
+    {
+      "id": "resting-potential",
+      "title": "How the resting membrane potential forms",
+      "topic": "membrane-potential",
+      "core": ["gradients", "communication"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Picture a newly made nerve cell setting up its resting potential. Trace how the inside ends up at about −70 mV.",
+      "steps": [
+        { "id": "pump", "label": "Pump builds gradients", "text": "The sodium–potassium pump uses ATP to move 3 Na+ out and 2 K+ in, over and over.", "why": "Every later step needs the gradients, and only active transport can build them: potassium ends up concentrated inside and sodium outside." },
+        { "id": "leak", "label": "K+ leak channels open", "text": "At rest, many potassium leak channels are open and few channels pass sodium.", "why": "The membrane's permeability decides which gradient matters. Because mostly potassium can cross, potassium's gradient drives what happens next." },
+        { "id": "k-out", "label": "K+ diffuses out", "text": "Potassium diffuses out of the cell down its concentration gradient.", "why": "With the leak channels open and potassium concentrated inside, net diffusion carries it outward." },
+        { "id": "negative", "label": "Inside turns negative", "text": "Each K+ that leaves carries a positive charge out, and the negatively charged proteins it balanced cannot follow.", "why": "The large negative proteins are trapped inside, so the loss of positive charge leaves the inside of the membrane negative." },
+        { "id": "slows", "label": "Outflow slows near −90 mV", "text": "The growing negative charge inside pulls K+ back, so potassium outflow slows as the voltage nears potassium's equilibrium potential, about −90 mV.", "why": "The electrical gradient builds as charge separates, and it opposes the concentration gradient until the two nearly balance." },
+        { "id": "settle", "label": "Settles at −70 mV", "text": "A small sodium leak into the cell adds positive charge, so the voltage settles at about −70 mV, and the pump keeps replacing the leaked ions.", "why": "Sodium's small leak pulls the voltage a little above potassium's equilibrium potential. The pump keeps the gradients from running down, so the resting potential stays steady." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "Sodium rushes into the cell through open sodium channels, making the inside negative.", "why": "Sodium is positive, so sodium entering would make the inside less negative, not more. At rest, few channels pass sodium." },
+          { "text": "Negatively charged proteins leave the cell along with the potassium, so the charges stay balanced.", "why": "The proteins are too large to cross the membrane. They stay behind, and that unbalanced negative charge is what makes the inside negative." },
+          { "text": "The pump moves 3 K+ out for every 2 Na+ in, making the inside negative.", "why": "The pump moves 3 Na+ out and 2 K+ in. Its direct electrical effect is only a few millivolts; most of the resting potential comes from potassium leaking out." }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Potassium diffuses into the cell down its concentration gradient.",
+        "why": "Potassium is concentrated inside the cell (about 140 mmol/L against about 5 outside), so its concentration gradient carries it out, not in."
+      },
+      "summary": "The pump builds the gradients, the open potassium leak channels let potassium out, the trapped negative proteins make the inside negative, and a small sodium leak sets the final value near −70 mV."
+    },
+    {
+      "id": "action-potential",
+      "title": "Action potential: stimulus to repolarization",
+      "topic": "action-potential-basics",
+      "core": ["communication", "gradients"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "You press a fingertip on a table. Trace one action potential in a nerve cell, from rest and back to rest.",
+      "steps": [
+        { "id": "rest", "label": "At rest, −70 mV", "text": "The membrane sits at its resting membrane potential, about −70 mV.", "why": "Every action potential starts from rest, where the sodium and potassium gradients are ready and the voltage-gated channels are closed." },
+        { "id": "stimulus", "label": "Stimulus opens channels", "text": "A stimulus opens mechanically gated or ligand-gated channels, and positive ions enter.", "why": "Voltage-gated channels open only once the membrane depolarizes, so another kind of channel has to start the change." },
+        { "id": "graded", "label": "Graded depolarization", "text": "The entering positive charge makes a graded depolarization, sized to the stimulus.", "why": "The entering positive ions reduce the negative charge inside. A bigger stimulus opens more channels and makes a bigger graded potential." },
+        { "id": "threshold", "label": "Threshold, about −55 mV", "text": "The graded depolarization reaches threshold, about −55 mV.", "why": "Only a graded potential large enough to reach threshold triggers an action potential; a smaller one fades out." },
+        { "id": "na-in", "label": "Na+ rushes in", "text": "Enough voltage-gated sodium channels open that sodium rushes in, and each bit of depolarization opens more of them.", "why": "Threshold is the voltage at which sodium entry outpaces potassium exit, so the depolarization feeds on itself." },
+        { "id": "peak", "label": "Peak near +30 mV", "text": "The membrane depolarizes rapidly to about +30 mV, and the sodium channels close on their own.", "why": "The runaway sodium entry drives the voltage up in about a millisecond; the rise stops as the sodium channels close by themselves." },
+        { "id": "k-out", "label": "K+ out: repolarization", "text": "The slower voltage-gated potassium channels open, potassium flows out, and the membrane repolarizes.", "why": "The potassium channels were opened by the same depolarization but respond more slowly, so their effect comes after the peak." },
+        { "id": "hyper", "label": "Brief hyperpolarization", "text": "The potassium channels are slow to close, so extra potassium leaves and the membrane briefly hyperpolarizes below −70 mV.", "why": "Potassium keeps leaving until its channels close, carrying the voltage past rest toward potassium's equilibrium potential." },
+        { "id": "back", "label": "Back to rest", "text": "As the voltage-gated potassium channels close, the membrane returns to about −70 mV.", "why": "With the extra potassium channels shut, the leak channels alone set the voltage again, and the membrane is ready for the next action potential." }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          { "text": "Voltage-gated potassium channels open first, and potassium rushes into the cell.", "why": "Potassium is concentrated inside, so it flows out, not in. And the potassium channels open more slowly than the sodium channels; they cause repolarization, not the rise." },
+          { "text": "The sodium–potassium pump speeds up and pumps sodium into the cell.", "why": "The pump always moves sodium out of the cell. The rise comes from sodium flowing in through voltage-gated channels, down its gradient." },
+          { "text": "A stronger stimulus makes a bigger action potential, up to about +90 mV.", "why": "Action potentials are all-or-none: once threshold is reached, each one peaks near the same value. A stronger stimulus makes them fire more often, not bigger." }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The slower voltage-gated potassium channels open, potassium flows into the cell, and the membrane repolarizes.",
+        "why": "Potassium flows out of the cell, down its gradient. Losing positive charge from the inside is what makes the voltage fall back toward rest; potassium entering would push it up."
+      },
+      "summary": "A stimulus makes a graded depolarization; at threshold, sodium entry runs away and the voltage spikes; slower potassium exit brings it back down, a little past rest, and then the membrane settles."
+    },
+    {
+      "id": "second-messenger",
+      "title": "Second messenger cascade: hormone to cell response",
+      "topic": "chemical-signaling",
+      "core": ["communication"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "An inhaler delivers a water-soluble drug that relaxes airway smooth muscle. Trace the signal from outside the cell to the response.",
+      "steps": [
+        { "id": "bind", "label": "Messenger binds", "text": "The water-soluble first messenger binds its receptor protein on the outside of the target cell's membrane.", "why": "A water-soluble messenger cannot cross the lipid bilayer, so it must act from outside, on a receptor protein in the membrane." },
+        { "id": "g-protein", "label": "G protein switched on", "text": "The receptor protein changes shape and switches on a G protein on the inner face of the membrane.", "why": "Binding changes the receptor protein's shape, and the new shape reaches through the membrane to the G protein inside." },
+        { "id": "enzyme", "label": "Membrane enzyme on", "text": "The active G protein switches on an enzyme in the membrane.", "why": "The G protein is a relay: it carries the signal from the receptor protein to the enzyme that makes the second messenger." },
+        { "id": "camp", "label": "ATP to cAMP", "text": "The enzyme converts many ATP molecules into cAMP, the second messenger.", "why": "Each active enzyme makes many cAMP molecules, so the signal is already amplified by this step." },
+        { "id": "phosph", "label": "Enzymes phosphorylate", "text": "cAMP switches on enzymes that phosphorylate other proteins.", "why": "cAMP carries the signal through the cytosol. The enzymes it activates each add phosphate groups to many target proteins, amplifying the signal again." },
+        { "id": "response", "label": "Cell responds", "text": "The phosphorylated proteins change shape and activity, and the smooth muscle cell relaxes.", "why": "A phosphate group changes a protein's shape, and shape sets function. The response depends on which proteins this cell type contains." },
+        { "id": "end", "label": "Signal switched off", "text": "When the messenger leaves the receptor protein and cAMP is broken down, the response ends.", "why": "Without a steady supply of new cAMP, the signal fades, so the cell responds only while the first messenger is present." }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          { "text": "The messenger crosses the plasma membrane and binds a receptor protein in the nucleus.", "why": "That is how lipid-soluble messengers act. A water-soluble messenger cannot cross the lipid bilayer, so it binds a membrane receptor protein." },
+          { "text": "The messenger itself is converted into cAMP inside the cell.", "why": "The messenger stays outside. cAMP is made inside the cell from ATP, by a membrane enzyme that the signal switches on." },
+          { "text": "The receptor protein opens a pore that lets ATP flow into the cell.", "why": "ATP is already inside the cell. The receptor protein relays the signal through a G protein to the enzyme that turns ATP into cAMP." }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The enzyme converts one ATP molecule into one cAMP molecule, so the signal stays the same size.",
+        "why": "Each active enzyme makes many cAMP molecules, and each cAMP-activated enzyme changes many proteins. That amplification is why a tiny amount of messenger produces a large response."
+      },
+      "summary": "The first messenger never enters the cell. Its receptor protein switches on a G protein, which switches on the enzyme that makes cAMP, which switches on enzymes that change many proteins: a relay that amplifies the signal at each step."
+    },
+    {
+      "id": "tissue-repair",
+      "title": "Tissue repair after an injury",
+      "topic": "tissue-membranes-repair",
+      "core": ["homeostasis", "structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You cut your forearm on a sheet of metal. Trace how the wound is repaired.",
+      "steps": [
+        { "id": "injury", "label": "Vessels break, cells die", "text": "The cut breaks blood vessels and kills some cells by necrosis.", "why": "The injury itself starts everything that follows: broken vessels bleed and dying cells release their contents." },
+        { "id": "clot", "label": "Clot; histamine released", "text": "A blood clot stops the bleeding, and damaged cells and mast cells release histamine and other chemical messengers.", "why": "Bleeding has to stop first. The released messengers are the signals that start inflammation." },
+        { "id": "inflame", "label": "Inflammation", "text": "Histamine dilates nearby small arteries and makes the small vessels leaky, so the area turns red, warm and swollen, and white blood cells move out into the tissue.", "why": "Wider vessels bring more blood (redness and warmth), and leaky vessels let fluid and white blood cells out (swelling)." },
+        { "id": "clear", "label": "Macrophages clear debris", "text": "Macrophages among those white blood cells engulf dead cells and debris by phagocytosis.", "why": "The macrophages arrive with the inflammation. New tissue cannot fill a space still full of debris, so clearing comes before rebuilding." },
+        { "id": "rebuild", "label": "Capillaries, fibroblasts grow", "text": "New capillaries and dividing fibroblasts fill the cleared space.", "why": "The cleared space needs a blood supply and a collagen framework before the working cells can repair it." },
+        { "id": "outcome", "label": "Regeneration or scar", "text": "Where the working cells can divide and the framework survived, they regenerate the tissue; elsewhere, collagen from the fibroblasts forms scar tissue.", "why": "The outcome depends on the tissue: regeneration restores function, while fibrosis only holds the tissue together." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "Fibroblasts lay down scar tissue on top of the dead cells and debris.", "why": "Debris must be cleared before new tissue can form. Scar laid over dead tissue would trap it and slow healing." },
+          { "text": "The small vessels constrict, and the swelling drains away before any cells arrive.", "why": "Inflammation widens vessels and makes them leaky so white blood cells can reach the wound. Constriction would keep them out." },
+          { "text": "The working cells of the tissue divide straight away, before the gap has a blood supply.", "why": "Dividing cells need oxygen and nutrients, so new capillaries must grow into the cleared space first." }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Histamine constricts nearby small arteries, so the area turns pale and cool, and white blood cells stay in the blood.",
+        "why": "Histamine dilates small arteries and makes small vessels leaky. That is why an inflamed area is red, warm and swollen, and why white blood cells can leave the blood to reach the wound."
+      },
+      "summary": "Stop the bleeding, raise the alarm, bring in white blood cells, clear the debris, rebuild the framework, then regenerate or scar. Each stage prepares the ground for the next."
+    },
+    {
+      "id": "temperature-loop",
+      "title": "A homeostatic loop: body temperature falls",
+      "topic": "homeostasis-feedback",
+      "core": ["homeostasis", "communication"],
+      "level": "apply",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "You step outside on a −5 °C morning. Trace the negative feedback loop that holds your body temperature near 37 °C.",
+      "steps": [
+        { "id": "stimulus", "label": "Stimulus: skin cools", "text": "Cold air cools your skin and the blood flowing through it: the stimulus.", "why": "A loop responds only to a change in a regulated variable. Nothing happens until something moves the variable." },
+        { "id": "sensor", "label": "Sensory receptors detect", "text": "Cold-sensitive nerve endings in the skin, the sensory receptors, detect the fall.", "why": "The change must be detected before any part of the body can respond to it." },
+        { "id": "afferent", "label": "Afferent pathway", "text": "Sensory nerves carry action potentials to the brain: the afferent pathway.", "why": "Afferent means carrying toward the control center, so it links the sensor to the control center." },
+        { "id": "control", "label": "Control center compares", "text": "The temperature control center in your brain compares the input with the set point, about 37 °C.", "why": "The control center can decide on a correction only after the information reaches it." },
+        { "id": "efferent", "label": "Efferent pathway", "text": "Nerves carry commands from the brain to the skin's blood vessels and to skeletal muscles: the efferent pathway.", "why": "Efferent means carrying away from the control center, so the commands go out only after the comparison." },
+        { "id": "effector", "label": "Effectors act", "text": "Smooth muscle in skin blood vessels contracts (vasoconstriction), and skeletal muscles contract in rapid small bursts: you shiver.", "why": "The effectors act on the commands they receive. Muscles and glands are the body's effectors." },
+        { "id": "response", "label": "Response: temperature rises", "text": "Less warm blood reaches the skin, so less heat is lost, and the working muscles release heat: body temperature rises toward the set point.", "why": "The response opposes the stimulus, which is what makes this negative feedback." },
+        { "id": "off", "label": "Loop eases off", "text": "As your temperature nears the set point, the sensory receptors signal less and the effectors ease off.", "why": "The response has removed the stimulus, so the loop switches itself off. Negative feedback stops itself." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "The skin's blood vessels decide on their own to constrict, without any signal from the brain.", "why": "In this loop the decision is made centrally: the control center in the brain compares the input with the set point and sends commands out." },
+          { "text": "The control center raises the set point to match the colder skin.", "why": "The set point stays near 37 °C. The control center compares the input with it and orders a correction; it does not move the target to fit the change." },
+          { "text": "Glands in the skin release sweat to warm it.", "why": "Evaporating sweat carries heat away; it is used when you are too hot. It would make cold worse." }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Warm blood is sent to the skin, so more heat is lost, and body temperature falls further, away from the set point.",
+        "why": "That response would strengthen the change, which is positive feedback. Temperature regulation is negative feedback: vasoconstriction keeps warm blood away from the skin, so less heat is lost."
+      },
+      "summary": "Stimulus, sensory receptor, afferent pathway, control center, efferent pathway, effector, response: the same seven parts in every loop. Here the response opposes the fall, so the loop is negative feedback and shuts itself off."
+    },
+    {
+      "id": "blood-flow",
+      "title": "Blood through the heart and body",
+      "topic": "blood-flow-heart",
+      "core": ["gradients", "structure-function"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "cycle": true,
+      "intro": "Follow one red blood cell once around both circuits. Start as it returns from the body to the right atrium.",
+      "steps": [
+        { "id": "venae-cavae", "label": "Venae cavae → right atrium", "blood": "deo2", "text": "Deoxygenated blood returns from the body through the superior and inferior venae cavae into the right atrium.", "why": "Blood that has given up oxygen in the body drains back to the heart. The venae cavae open into the right atrium, the receiving chamber for the systemic circuit." },
+        { "id": "tricuspid", "label": "Tricuspid valve", "blood": "deo2", "text": "Blood passes through the tricuspid valve into the right ventricle.", "why": "Pressure in the right atrium is higher than in the relaxed right ventricle, so blood flows down that gradient through the right atrioventricular valve." },
+        { "id": "rv", "label": "Right ventricle", "blood": "deo2", "text": "The right ventricle contracts; the tricuspid valve snaps shut and blood is pushed toward the lungs.", "why": "Contraction raises pressure in the ventricle above the atrium, which closes the tricuspid valve and stops backflow." },
+        { "id": "pulm-valve", "label": "Pulmonary valve", "blood": "deo2", "text": "Blood passes through the pulmonary valve into the pulmonary trunk.", "why": "When right ventricular pressure exceeds pressure in the pulmonary trunk, the pulmonary valve is pushed open." },
+        { "id": "pulm-arteries", "label": "Pulmonary arteries", "blood": "deo2", "text": "The pulmonary trunk divides into the right and left pulmonary arteries, which carry blood to the lungs.", "why": "Arteries carry blood away from the heart. These are the only arteries in the adult that carry deoxygenated blood." },
+        { "id": "pulm-caps", "label": "Pulmonary capillaries", "blood": "exchange", "text": "In the pulmonary capillaries around the alveoli, blood picks up oxygen and gives off carbon dioxide.", "why": "Gas exchange happens only across capillary walls, and each gas diffuses down its own gradient between alveolar air and blood." },
+        { "id": "pulm-veins", "label": "Pulmonary veins → left atrium", "blood": "o2", "text": "Oxygenated blood returns through the pulmonary veins into the left atrium.", "why": "The capillaries drain into veins that carry blood back to the heart. The pulmonary veins are the only veins in the adult that carry oxygenated blood." },
+        { "id": "mitral", "label": "Mitral valve", "blood": "o2", "text": "Blood passes through the mitral (bicuspid) valve into the left ventricle.", "why": "Pressure in the left atrium is higher than in the relaxed left ventricle, so blood flows through the left atrioventricular valve." },
+        { "id": "lv", "label": "Left ventricle", "blood": "o2", "text": "The left ventricle contracts; the mitral valve snaps shut and pressure builds to about 120 mm Hg.", "why": "The left ventricle has the thickest wall because it must push blood through the whole systemic circuit, which has far more resistance than the lungs." },
+        { "id": "aortic-valve", "label": "Aortic valve", "blood": "o2", "text": "Blood passes through the aortic valve into the aorta.", "why": "When left ventricular pressure exceeds aortic pressure, the aortic valve is pushed open." },
+        { "id": "arteries", "label": "Aorta → systemic arteries", "blood": "o2", "text": "The aorta and its branching arteries carry blood to every organ.", "why": "The aorta is the trunk of the systemic circuit; blood flows out along the pressure gradient into smaller and smaller arteries." },
+        { "id": "sys-caps", "label": "Systemic capillaries", "blood": "exchange", "text": "In systemic capillaries, blood gives oxygen and nutrients to the tissue cells and picks up carbon dioxide and wastes.", "why": "The arteries end in capillaries, the only vessels thin enough for exchange. Oxygen diffuses toward the cells because they use it up." },
+        { "id": "veins", "label": "Systemic veins", "blood": "deo2", "text": "Blood drains from the capillaries into larger and larger veins that lead back toward the heart.", "why": "The capillaries drain into veins; pressure keeps falling along the circuit, so blood keeps moving toward the low pressure of the right atrium." }
+      ],
+      "missing": {
+        "at": 5,
+        "level": "apply",
+        "distractors": [
+          { "text": "In the left atrium, blood picks up oxygen from the air in the lungs.", "why": "Gas exchange happens only across the thin walls of capillaries. The left atrium receives blood that is already oxygenated." },
+          { "text": "In the systemic capillaries, blood gives oxygen to the tissues.", "why": "That happens, but later: blood reaches the systemic capillaries only after it has passed through the left side of the heart and the aorta." },
+          { "text": "Blood flows from the pulmonary arteries through the interventricular septum into the left ventricle.", "why": "The septum is a solid wall; in an adult heart no blood crosses it. Blood reaches the left side only by passing through the lungs." }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "Blood passes through the tricuspid valve into the left ventricle.",
+        "why": "The tricuspid valve is on the right side, between the right atrium and right ventricle. Blood enters the left ventricle through the mitral (bicuspid) valve."
+      },
+      "summary": "Right heart, lungs, left heart, body, and back: two circuits in series. Each valve opens when the pressure behind it is higher than the pressure ahead of it, so blood moves one way only."
+    },
+    {
+      "id": "coronary",
+      "title": "Coronary circulation",
+      "topic": "blood-flow-heart",
+      "core": ["structure-function", "gradients"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "Heart muscle cannot use the blood inside its chambers. Trace the blood that supplies the heart wall itself.",
+      "steps": [
+        { "id": "aorta", "label": "Left ventricle → aorta", "blood": "o2", "text": "The left ventricle ejects oxygenated blood into the aorta.", "why": "The coronary supply starts from the highest-pressure blood in the body, just after it leaves the heart." },
+        { "id": "origin", "label": "Coronary arteries arise", "blood": "o2", "text": "The right and left coronary arteries branch off the aorta just above the aortic valve.", "why": "They are the first branches of the aorta, so the heart muscle gets freshly oxygenated blood." },
+        { "id": "diastole", "label": "Fill mostly in diastole", "blood": "o2", "text": "Blood flows into the coronary arteries mostly during diastole.", "why": "During systole, contracting muscle squeezes the vessels running through the ventricle walls, especially on the left. Flow resumes when the muscle relaxes." },
+        { "id": "branches", "label": "Branches over the heart", "blood": "o2", "text": "The anterior interventricular and circumflex arteries (from the left) and the right coronary artery's branches carry blood over the heart's surface and into the wall.", "why": "The main arteries branch to reach every region of the myocardium; small anastomoses link some of the branches." },
+        { "id": "myo-caps", "label": "Capillaries in myocardium", "blood": "exchange", "text": "In the myocardium's dense capillaries, the muscle removes about three quarters of the oxygen delivered.", "why": "Heart muscle works nonstop and relies on aerobic respiration, so it extracts much more oxygen than most tissues. It can meet extra demand mainly by getting more flow." },
+        { "id": "cardiac-veins", "label": "Cardiac veins", "blood": "deo2", "text": "Deoxygenated blood drains into the great, middle and small cardiac veins.", "why": "The capillaries drain into veins, which run alongside the arteries back toward the heart's posterior surface." },
+        { "id": "sinus", "label": "Coronary sinus → right atrium", "blood": "deo2", "text": "The cardiac veins empty into the coronary sinus, which opens into the right atrium.", "why": "The right atrium receives all deoxygenated blood returning to the heart, including the heart's own." }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          { "text": "Blood flows into the coronary arteries mostly during systole, when the ventricle squeezes it in.", "why": "Contraction squeezes the vessels inside the ventricle wall and cuts flow. Most coronary flow happens during diastole, which is why a very fast heart rate, with short diastoles, can starve the muscle." },
+          { "text": "Blood soaks into the heart wall directly from the left ventricle's chamber.", "why": "The wall is too thick for oxygen to diffuse far from the chamber. The heart has its own arteries, capillaries and veins." },
+          { "text": "Blood from the coronary sinus flows back into the coronary arteries.", "why": "The coronary sinus is the end of the route; it drains into the right atrium. Blood reaches the coronary arteries only from the aorta." }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The cardiac veins empty into the coronary sinus, which opens into the left atrium.",
+        "why": "The coronary sinus opens into the right atrium, which receives deoxygenated blood. The left atrium receives oxygenated blood from the pulmonary veins."
+      },
+      "summary": "Aorta, coronary arteries (filling mainly in diastole), capillaries that extract most of the oxygen, cardiac veins, coronary sinus, right atrium."
+    },
+    {
+      "id": "cardiac-excitation",
+      "title": "Contractile cell: action potential to contraction",
+      "topic": "cardiac-muscle-ap",
+      "core": ["communication", "gradients"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A ventricular contractile cell is resting at about −90 mV when its neighbor fires. Trace its action potential and the contraction it causes.",
+      "steps": [
+        { "id": "spread", "label": "Current via gap junctions", "text": "Positive charge from the neighboring cell spreads in through gap junctions in the intercalated discs, depolarizing the cell to threshold.", "why": "Contractile cells do not fire on their own; they are triggered by current flowing in from cells that have already fired." },
+        { "id": "phase0", "label": "Na+ in: rapid upstroke", "text": "Voltage-gated sodium channels open, and sodium rushes in: the membrane depolarizes rapidly to about +20 mV (phase 0).", "why": "At threshold, sodium entry feeds on itself, just as in a neuron." },
+        { "id": "phase1", "label": "Brief partial repolarization", "text": "The sodium channels inactivate and some potassium leaves, so the voltage dips slightly (phase 1).", "why": "The fast sodium channels close within a millisecond or two of opening, removing the inward current." },
+        { "id": "plateau", "label": "Ca2+ in: plateau", "text": "L-type calcium channels open; calcium entering balances potassium leaving, holding the voltage near 0 mV for about 200 ms (phase 2).", "why": "The L-type channels were opened by the depolarization but respond more slowly. Their inward current is what makes the cardiac action potential so long." },
+        { "id": "cicr", "label": "SR releases Ca2+", "text": "The entering calcium opens calcium-release channels in the sarcoplasmic reticulum, which releases much more calcium into the cytosol.", "why": "This is calcium-induced calcium release: the small trigger from outside the cell releases the large internal store." },
+        { "id": "contract", "label": "Cell contracts", "text": "Calcium binds troponin, cross-bridges form, and the cell contracts.", "why": "Contraction needs cytosolic calcium to rise, so it follows the release, and it lasts while the plateau keeps calcium coming in." },
+        { "id": "phase3", "label": "K+ out: repolarization", "text": "The L-type channels close and more potassium channels open, so the membrane repolarizes to about −90 mV (phase 3).", "why": "When the inward calcium current stops, the outward potassium current is no longer balanced and wins." },
+        { "id": "relax", "label": "Ca2+ removed: relaxation", "text": "Calcium is pumped back into the sarcoplasmic reticulum and out of the cell, and the cell relaxes.", "why": "Once calcium stops entering, the pumps lower cytosolic calcium, troponin releases it, and cross-bridges stop forming." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "The sodium channels stay open for 200 ms, holding the voltage at +20 mV.", "why": "Fast sodium channels inactivate within a millisecond or two. The long plateau comes from calcium entering through L-type channels, balanced by potassium leaving." },
+          { "text": "Potassium channels close completely, so the voltage stays high with no current flowing.", "why": "Potassium keeps leaving during the plateau. The voltage holds steady because calcium entry balances that loss, not because currents stop." },
+          { "text": "The cell immediately repolarizes to −90 mV, as a neuron would.", "why": "The immediate return is what a neuron does. A cardiac contractile cell has a plateau of about 200 ms first, which lets calcium in and gives a long refractory period." }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The entering calcium binds troponin directly and supplies all the calcium for contraction; the sarcoplasmic reticulum is not involved.",
+        "why": "The calcium that enters through L-type channels is only a trigger. It opens calcium-release channels in the sarcoplasmic reticulum, which supplies most of the calcium that binds troponin."
+      },
+      "summary": "Sodium in makes the upstroke; calcium in makes the plateau and triggers the sarcoplasmic reticulum to release far more calcium, which drives contraction; potassium out ends it, and calcium pumps let the cell relax."
+    },
+    {
+      "id": "conduction",
+      "title": "The cardiac conduction system",
+      "topic": "conduction-system",
+      "core": ["communication"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "One heartbeat starts. Trace the electrical signal from where it begins to the contracting ventricles.",
+      "steps": [
+        { "id": "sa", "label": "SA node fires", "text": "Pacemaker cells in the SA node, in the wall of the right atrium, reach threshold first and fire.", "why": "The SA node has the fastest intrinsic rate, so it reaches threshold before any other pacemaker and sets the heart rate." },
+        { "id": "atria", "label": "Atria depolarize", "text": "The impulse spreads cell to cell through gap junctions across both atria, and the atria contract.", "why": "Current passes through gap junctions from each fired cell to its neighbors; a band of fibers carries it quickly to the left atrium." },
+        { "id": "av", "label": "Reaches AV node", "text": "The impulse reaches the AV node, the only electrical path from the atria to the ventricles.", "why": "The cardiac skeleton insulates the atria from the ventricles everywhere else, so the signal must funnel through the AV node." },
+        { "id": "delay", "label": "AV nodal delay", "text": "The AV node conducts slowly, delaying the impulse by about 0.1 s.", "why": "Its small, poorly connected cells conduct slowly. The delay lets the atria finish emptying into the ventricles before the ventricles contract." },
+        { "id": "bundle", "label": "AV bundle (bundle of His)", "text": "The impulse passes into the atrioventricular bundle, which crosses into the top of the interventricular septum.", "why": "The bundle is the continuation of the AV node, carrying the signal through the cardiac skeleton." },
+        { "id": "branches", "label": "Bundle branches", "text": "The right and left bundle branches carry the impulse down the septum toward the apex.", "why": "The bundle splits to serve each ventricle, and the branches run down the septum first, so the apex is reached early." },
+        { "id": "purkinje", "label": "Purkinje fibers", "text": "Purkinje fibers spread the impulse rapidly through the ventricular walls, from the apex upward.", "why": "Purkinje fibers conduct fastest of all, so the whole ventricle is activated within a fraction of a second." },
+        { "id": "contract", "label": "Ventricles contract", "text": "Ventricular contractile cells depolarize and contract from the apex toward the base, squeezing blood up toward the aortic and pulmonary valves.", "why": "Because activation reaches the apex first, contraction starts there and wrings blood upward toward the outflow valves." }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          { "text": "The AV node speeds the impulse up so the ventricles contract at the same moment as the atria.", "why": "The AV node slows the impulse. If atria and ventricles contracted together, the atria could not finish emptying into the ventricles." },
+          { "text": "The impulse crosses the cardiac skeleton directly from the atrial walls into the ventricular walls.", "why": "The cardiac skeleton is an electrical insulator. The only path through it is the AV node and AV bundle." },
+          { "text": "Purkinje fibers carry the impulse back up to the SA node to start the next beat.", "why": "Each beat starts afresh when SA node cells depolarize on their own again; the impulse does not travel back." }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The right and left bundle branches carry the impulse up the septum toward the base of the heart.",
+        "why": "The bundle branches run down the septum toward the apex. Activating the apex first is what lets the ventricles contract from the bottom up and push blood toward the outflow valves at the base."
+      },
+      "summary": "SA node, atria, AV node (the delay), AV bundle, bundle branches, Purkinje fibers, ventricles. The delay lets the atria finish filling the ventricles, and apex-first activation squeezes blood toward the valves."
+    },
+    {
+      "id": "cardiac-cycle",
+      "title": "Phases of the cardiac cycle",
+      "topic": "cardiac-cycle",
+      "core": ["gradients"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Follow the left side of the heart through one beat at rest. Start as the atria contract at the end of diastole.",
+      "steps": [
+        { "id": "atrial-systole", "label": "Atrial systole", "text": "The atria contract and push the last blood into the ventricles, which reach their end-diastolic volume.", "why": "The P wave comes first in each beat, so the atria contract while the ventricles are still relaxed and the AV valves are open." },
+        { "id": "av-close", "label": "AV valves close (S1)", "text": "The ventricles begin to contract; ventricular pressure rises above atrial pressure and the AV valves close, making the first heart sound.", "why": "The impulse reaches the ventricles after the AV nodal delay. A valve closes when pressure ahead of it becomes higher than pressure behind it." },
+        { "id": "ivc", "label": "Isovolumetric contraction", "text": "With all four valves closed, the ventricle contracts and its pressure rises steeply, but its volume does not change.", "why": "Ventricular pressure is above atrial pressure but still below aortic pressure, so no valve is open and blood has nowhere to go." },
+        { "id": "sl-open", "label": "Semilunar valves open", "text": "Ventricular pressure rises above aortic pressure, about 80 mm Hg, and the aortic valve opens.", "why": "The steep pressure rise eventually overtakes the pressure in the aorta, pushing the valve open." },
+        { "id": "ejection", "label": "Ventricular ejection", "text": "Blood is ejected into the aorta; ventricular volume falls from end-diastolic to end-systolic volume.", "why": "With the valve open, blood flows down the pressure gradient from the ventricle into the aorta." },
+        { "id": "sl-close", "label": "Semilunar valves close (S2)", "text": "The ventricles relax; ventricular pressure falls below aortic pressure and the aortic valve closes, making the second heart sound.", "why": "As the muscle relaxes, ventricular pressure drops, and blood starting to flow back fills the cusps and snaps the valve shut." },
+        { "id": "ivr", "label": "Isovolumetric relaxation", "text": "With all four valves closed again, ventricular pressure falls steeply while volume stays at end-systolic volume.", "why": "Ventricular pressure is below aortic pressure but still above atrial pressure, so again no valve is open." },
+        { "id": "av-open", "label": "AV valves open", "text": "Ventricular pressure falls below atrial pressure, and the AV valves open.", "why": "Blood has been collecting in the atria, so once ventricular pressure drops below theirs, the gradient pushes the AV valves open." },
+        { "id": "filling", "label": "Ventricular filling", "text": "Blood flows passively from the atria into the ventricles, rapidly at first; most filling happens now, before the atria contract.", "why": "The relaxed ventricle has low pressure, so blood flows in down the gradient. At rest, atrial contraction adds only the last part." }
+      ],
+      "missing": {
+        "at": 2,
+        "level": "analyze",
+        "distractors": [
+          { "text": "The aortic valve opens as soon as the AV valves close, and ejection begins.", "why": "Ventricular pressure is still far below aortic pressure when the AV valves close. It must first rise with every valve shut, which is isovolumetric contraction." },
+          { "text": "The ventricle keeps filling from the atria while its pressure rises.", "why": "The AV valves have just closed, so no blood can enter. Volume stays fixed at end-diastolic volume until the aortic valve opens." },
+          { "text": "The ventricle relaxes and its pressure falls with all valves closed.", "why": "That is isovolumetric relaxation, which comes after ejection. Right after the AV valves close, the ventricle is contracting, not relaxing." }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The ventricles relax; ventricular pressure falls below aortic pressure and the AV valves close, making the second heart sound.",
+        "why": "At the end of ejection it is the semilunar valves that close, making the second heart sound. The AV valves are already closed; they closed at the start of systole with the first heart sound."
+      },
+      "summary": "Every event is a pressure comparison: a valve opens when the pressure behind it is higher and closes when the pressure ahead of it is higher. Both isovolumetric phases happen because ventricular pressure lies between atrial and arterial pressure."
+    },
+    {
+      "id": "frank-starling",
+      "title": "Frank–Starling: more filling, bigger stroke volume",
+      "topic": "cardiac-output",
+      "core": ["homeostasis"],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You lie down and raise your legs, and more blood returns to your heart. Trace how the heart pumps out the extra blood without any nerve signal.",
+      "steps": [
+        { "id": "vr", "label": "Venous return rises", "text": "Raising your legs drains blood from the leg veins toward the heart, and venous return rises.", "why": "The change starts outside the heart: more blood arrives in the right atrium each minute." },
+        { "id": "edv", "label": "End-diastolic volume rises", "text": "More blood fills the ventricle during diastole, so end-diastolic volume, the preload, rises.", "why": "With more blood arriving, more flows into the ventricle before it contracts." },
+        { "id": "stretch", "label": "Fibers stretched", "text": "The larger volume stretches the ventricular muscle fibers further.", "why": "The ventricle wall must stretch to hold the extra blood." },
+        { "id": "overlap", "label": "Filaments overlap better", "text": "Stretch brings the thick and thin filaments toward their best overlap and makes the filaments more sensitive to calcium.", "why": "Resting cardiac fibers sit shorter than their best length, so moderate stretch moves them toward it." },
+        { "id": "force", "label": "Stronger contraction", "text": "Each fiber contracts more forcefully.", "why": "More cross-bridges can form at a better overlap and higher calcium sensitivity, so force rises." },
+        { "id": "sv", "label": "Stroke volume rises", "text": "Stroke volume rises, so the ventricle ejects the extra blood it received.", "why": "A more forceful contraction empties more of the larger volume, so output rises to match input." }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          { "text": "Sympathetic nerves release norepinephrine, which makes the ventricle contract harder.", "why": "Sympathetic stimulation does raise contractility, but that is a separate, nervous mechanism. The Frank–Starling mechanism works inside the heart muscle itself, even in a heart with no nerves." },
+          { "text": "Heart rate doubles so the heart can pump out the extra blood.", "why": "The Frank–Starling mechanism changes stroke volume, not heart rate. It needs no signal from outside the heart." },
+          { "text": "The ventricle wall thickens so it can hold the extra blood.", "why": "Thickening takes weeks of extra workload. In one beat, the wall holds more blood by stretching." }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Each fiber is overstretched and contracts more weakly, so the extra blood stays in the ventricle.",
+        "why": "In a normal heart, the extra stretch from more filling moves fibers toward, not past, their best length, so they contract more forcefully. Weaker contraction with stretch appears only at extreme volumes or in a failing heart."
+      },
+      "summary": "More in, more stretch, more force, more out. The Frank–Starling mechanism matches what the ventricle ejects to what it receives, beat by beat, without any nerve or hormone."
+    },
+    {
+      "id": "capillary-exchange",
+      "title": "Fluid through a capillary bed",
+      "topic": "capillary-exchange",
+      "core": ["gradients", "mass-balance"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Blood enters a capillary in the skin of your hand. Trace the fluid that leaves it, using the revised Starling principle, the picture measurements support.",
+      "steps": [
+        { "id": "chp", "label": "CHP about 35 mm Hg", "text": "Blood enters the capillary with a hydrostatic pressure of about 35 mm Hg, what is left after the resistance of the arterioles.", "why": "Pressure from the heart's pumping falls most across the arterioles, so this is the pressure that reaches the capillary." },
+        { "id": "filter", "label": "Filtration through clefts", "text": "Capillary hydrostatic pressure pushes water and small solutes out through the clefts between endothelial cells.", "why": "Hydrostatic pressure inside is higher than outside, so fluid is pushed outward through the gaps in the wall." },
+        { "id": "glycocalyx", "label": "Glycocalyx holds proteins", "text": "The glycocalyx lining the capillary holds the plasma proteins back, so their colloid osmotic pressure, about 25 mm Hg, pulls against filtration.", "why": "Proteins that cannot pass create an osmotic pull toward the plasma. The glycocalyx, not the whole wall, is the barrier that holds them." },
+        { "id": "washout", "label": "Space beneath is washed out", "text": "The nearly protein-free filtrate streams through the clefts and keeps the space beneath the glycocalyx low in protein.", "why": "Outward flow carries away any protein that diffuses back, so the oncotic pressure that matters on the tissue side stays near zero." },
+        { "id": "slow", "label": "Filtration slows, continues", "text": "Hydrostatic pressure falls to about 15 mm Hg at the venule end; filtration slows, but at steady state it continues along almost the whole capillary.", "why": "If pressure fell low enough for fluid to flow back in, protein would build up beneath the glycocalyx and stop the inflow within minutes." },
+        { "id": "interstitial", "label": "Fluid bathes the cells", "text": "The filtered fluid joins the interstitial fluid around the cells.", "why": "Fluid that has crossed the capillary wall ends up in the spaces between cells." },
+        { "id": "return", "label": "Drains back to veins", "text": "The excess interstitial fluid drains into the lymphatic system and returns to large veins near the heart.", "why": "Because filtration outpaces reabsorption, mass balance requires a return route; without it, fluid would collect in the tissues as edema." }
+      ],
+      "missing": {
+        "at": 3,
+        "level": "analyze",
+        "distractors": [
+          { "text": "Plasma proteins leak freely into the interstitial fluid, so the oncotic pull disappears.", "why": "The glycocalyx holds plasma proteins back. If they leaked freely, the oncotic pull would vanish and edema would follow, which is what happens when the glycocalyx is damaged." },
+          { "text": "Most of the filtered fluid is reabsorbed at the venule end of the capillary.", "why": "That is the classic textbook picture, and exams may still expect it. Direct measurements show that, at steady state in most tissues, reabsorption does not last, because protein builds up beneath the glycocalyx and stops it." },
+          { "text": "The sodium–potassium pump in the capillary wall pumps the filtrate back into the blood.", "why": "Fluid crosses capillary walls by bulk flow driven by pressure differences, not by pumps in the endothelium." }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Plasma proteins pass freely through the glycocalyx, and their colloid osmotic pressure pulls fluid out of the capillary.",
+        "why": "The glycocalyx holds plasma proteins back. Because they stay in the plasma, their colloid osmotic pressure pulls fluid into the capillary, opposing filtration."
+      },
+      "summary": "Hydrostatic pressure pushes fluid out; the oncotic pull of the proteins held back by the glycocalyx opposes it; at steady state filtration wins along most of the capillary, and the lymphatic system returns the excess. For your exam: many courses still teach net reabsorption at the venule end, returning 85 to 90 percent of the filtrate."
+    },
+    {
+      "id": "baroreceptor-reflex",
+      "title": "Baroreceptor reflex: pressure falls",
+      "topic": "bp-short-term",
+      "core": ["homeostasis", "communication"],
+      "level": "apply",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "You stand up quickly from lying down, and blood pools in your leg veins. Trace the reflex that restores your blood pressure within seconds.",
+      "steps": [
+        { "id": "fall", "label": "Pressure falls", "text": "Venous return falls, stroke volume falls, and mean arterial pressure drops.", "why": "Blood pooling in the legs reduces preload; by the Frank–Starling mechanism, less filling means a smaller stroke volume and lower pressure." },
+        { "id": "less-stretch", "label": "Less stretch", "text": "The walls of the carotid sinuses and aortic arch stretch less.", "why": "Artery walls stretch in proportion to the pressure inside them, so lower pressure means less stretch." },
+        { "id": "fewer-ap", "label": "Baroreceptors fire less", "text": "The baroreceptors fire fewer action potentials.", "why": "Baroreceptors are stretch-sensitive nerve endings: their firing rate tracks wall stretch." },
+        { "id": "afferent", "label": "Signal to medulla", "text": "The glossopharyngeal and vagus nerves carry the reduced signal to the cardiovascular center in the medulla oblongata.", "why": "These are the afferent pathways from the carotid sinuses and aortic arch to the control center." },
+        { "id": "center", "label": "Autonomic output shifts", "text": "The cardiovascular center reduces parasympathetic output to the heart and increases sympathetic output.", "why": "The control center compares the input with the set point and responds to a fall by shifting the balance toward sympathetic activity." },
+        { "id": "heart", "label": "Heart rate, contractility up", "text": "Heart rate and contractility rise, raising cardiac output.", "why": "Sympathetic stimulation speeds the SA node and strengthens contraction; less vagal activity removes the brake on the SA node." },
+        { "id": "vessels", "label": "Vessels constrict", "text": "Arterioles constrict, raising total peripheral resistance, and veins constrict, raising venous return.", "why": "Sympathetic fibers release norepinephrine onto vascular smooth muscle, which contracts." },
+        { "id": "restored", "label": "Pressure restored", "text": "Mean arterial pressure rises back toward its set point, and baroreceptor firing returns toward normal.", "why": "MAP equals cardiac output times total peripheral resistance, and both have risen. As pressure recovers, the stimulus fades: negative feedback." }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          { "text": "The cardiovascular center increases parasympathetic output to the heart.", "why": "More parasympathetic output would slow the heart and lower pressure further. A fall in pressure calls for less parasympathetic and more sympathetic output." },
+          { "text": "The kidneys increase urine output to raise blood volume.", "why": "More urine would lower blood volume. Kidney control of blood volume is also far too slow to explain a correction within seconds." },
+          { "text": "The baroreceptors constrict the arterioles directly.", "why": "Baroreceptors are sensory nerve endings; they only detect stretch. The commands to the vessels come from the cardiovascular center through sympathetic nerves." }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "The baroreceptors fire more action potentials.",
+        "why": "Baroreceptor firing tracks stretch: less pressure, less stretch, fewer action potentials. It is the drop in firing that tells the cardiovascular center pressure has fallen."
+      },
+      "summary": "Less stretch, less firing, less parasympathetic and more sympathetic output: the heart speeds up and pumps harder, vessels tighten, and pressure recovers. The reflex corrects within seconds but cannot change blood volume."
+    }
+  ]
+}

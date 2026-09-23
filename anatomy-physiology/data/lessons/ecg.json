@@ -1,0 +1,85 @@
+{
+  "topic": "ecg",
+  "hook": "<p>Ms. Brennan, 79, notices her heart fluttering while she gardens. At the clinic, a nurse places ten sticky electrodes on her chest, wrists and ankles. Within a minute the printout shows the problem: no P waves at all, just a wobbling line, and QRS complexes spaced with no pattern. Her atria are no longer contracting in step, and blood pooling there could form a clot.</p>",
+  "prereq": [
+    {
+      "q": "Which structure normally sets the heart's rate?",
+      "options": [
+        "The AV node",
+        "The SA node",
+        "The Purkinje fibers"
+      ],
+      "correct": 1,
+      "why": "The SA node's pacemaker potential climbs fastest, so it reaches threshold first and resets every slower pacemaker.",
+      "review": "conduction-system"
+    },
+    {
+      "q": "Why does the signal pause at the AV node for about 0.1 second?",
+      "options": [
+        "AV node cells are small, joined by few gap junctions, and have slow calcium-driven upstrokes",
+        "The AV node is several centimeters long",
+        "The vagus nerve holds the signal until the atria are empty"
+      ],
+      "correct": 0,
+      "why": "The AV node conducts at only about 0.05 meters per second because of its small cells, few gap junctions and slow calcium-driven upstrokes.",
+      "review": "conduction-system"
+    },
+    {
+      "q": "During the plateau of a ventricular muscle cell's action potential, the cell is:",
+      "options": [
+        "At its resting potential",
+        "Depolarized, near 0 mV",
+        "Hyperpolarized"
+      ],
+      "correct": 1,
+      "why": "During the plateau, Ca²⁺ entering through L-type channels balances K⁺ leaving, so the cell stays depolarized near 0 mV for about 0.2 second.",
+      "review": "cardiac-muscle-ap"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-19-22",
+    "caption": "Where the 10 electrodes of a standard 12-lead ECG are placed: each wrist and ankle, and six across the chest."
+  },
+  "chain": [
+    {
+      "cause": "The SA node fires and a wave of depolarization spreads across both atria.",
+      "effect": "Current flows between depolarized and resting atrial muscle, and the skin electrodes record the P wave."
+    },
+    {
+      "cause": "The signal reaches the AV node, which conducts slowly.",
+      "effect": "Almost no muscle is changing voltage, so the trace is flat: the PR segment."
+    },
+    {
+      "cause": "The signal races through the bundle branches and Purkinje fibers into the large ventricular muscle mass.",
+      "effect": "The ventricles depolarize within about 0.1 second, drawing the tall, narrow QRS complex; atrial repolarization is hidden inside it."
+    },
+    {
+      "cause": "Every ventricular cell is now in its plateau, at about the same voltage.",
+      "effect": "No current flows between regions, so the trace is flat again: the ST segment."
+    },
+    {
+      "cause": "Ventricular cells repolarize, spread out over time.",
+      "effect": "The broad T wave appears, and the trace returns to baseline until the next P wave."
+    }
+  ],
+  "misconception": {
+    "wrong": "An ECG shows how well the heart is pumping.",
+    "right": "An ECG records only the heart's electrical activity. Contraction usually follows each electrical event, but the ECG cannot show it. A patient can have organized P waves, QRS complexes and T waves on the monitor and still have no pulse, because the muscle is not pumping effectively. To check pumping, you feel for a pulse."
+  },
+  "check": [
+    "anp-ecg-1",
+    "anp-ecg-3",
+    "anp-ecg-4",
+    "anp-ecg-6",
+    "anp-ecg-11",
+    "anp-ecg-7",
+    "anp-ecg-19"
+  ],
+  "summary": "<p>The electrocardiogram (ECG or EKG) records, from the skin, the summed voltage changes of the heart; each lead is one view, and depolarization moving toward a lead's positive electrode draws an upward deflection. The P wave is atrial depolarization, the QRS complex is ventricular depolarization (hiding atrial repolarization), and the T wave is ventricular repolarization. The PR interval, 0.12 to 0.20 second, is mostly AV nodal delay; the flat ST segment is the ventricular plateau; the QT interval spans the ventricular action potential. On paper running at 25 mm per second, rate = 300 ÷ large squares between beats. Arrhythmias include tachycardia (above 100), bradycardia (below 60), first-, second- and third-degree heart block, atrial fibrillation, ventricular tachycardia and ventricular fibrillation, which is treated by defibrillation. An artificial pacemaker fires when the heart's own rate is too slow.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-20",
+      "label": "NREMT: Cardiac emergencies"
+    }
+  ]
+}

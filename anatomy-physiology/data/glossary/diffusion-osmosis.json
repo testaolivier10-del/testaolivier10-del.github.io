@@ -1,0 +1,27 @@
+{
+  "diffusion": {
+    "def": "The spreading of particles from where they are more concentrated to where they are less concentrated, driven by their own random motion. Net diffusion is the overall movement left after subtracting the particles crossing one way from those crossing the other; it stops at equilibrium, though the particles keep moving.",
+    "roots": [["dif-", "apart"], ["fus-", "pour"]],
+    "say": "dih-FYOO-zhun"
+  },
+  "diffusion-rate": {
+    "def": "Net diffusion is faster with a steeper concentration gradient, a higher temperature, smaller particles, a larger surface area to cross, a shorter diffusion distance and a barrier that the particle crosses easily. The time to diffuse grows with the square of the distance, so diffusion works only over very short distances.",
+    "roots": [],
+    "say": ""
+  },
+  "semipermeable-membrane": {
+    "def": "A thin sheet that lets some substances cross and blocks others, also called a selectively permeable membrane. The membrane around each of your cells lets water, oxygen and carbon dioxide cross easily but holds back proteins and most ions.",
+    "roots": [["semi-", "partly"], ["per-", "through"], ["mea-", "pass"]],
+    "say": "sem-ee-PER-mee-uh-bul"
+  },
+  "osmosis": {
+    "def": "The net movement of water across a semipermeable membrane from the side with fewer dissolved particles to the side with more (from lower to higher osmolarity). Only particles the membrane holds back count: water follows solute.",
+    "roots": [["osmos", "a push"], ["-osis", "process"]],
+    "say": "oz-MOH-sis"
+  },
+  "osmotic-pressure": {
+    "def": "The pressure needed to stop water moving into a solution by osmosis. It rises with the number of dissolved particles the membrane holds back, by about 19 mm Hg for each mOsm/L at body temperature, and water moves toward the side where it is higher.",
+    "roots": [["osmos", "a push"]],
+    "say": "oz-MOT-ik"
+  }
+}

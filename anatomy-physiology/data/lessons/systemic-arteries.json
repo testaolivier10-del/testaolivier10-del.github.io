@@ -1,0 +1,48 @@
+{
+  "topic": "systemic-arteries",
+  "hook": "<p>A 58-year-old man slumps over at a bus stop. The first EMT on scene kneels, slides two fingers into the groove beside his windpipe, and feels for the carotid pulse. In ten seconds she has to decide whether his heart is still pushing blood, and her answer depends on knowing exactly where that artery runs.</p>",
+  "prereq": [
+    {
+      "q": "Which great vessel carries blood out of the left ventricle?",
+      "options": ["Pulmonary trunk", "Aorta", "Superior vena cava"],
+      "correct": 1,
+      "why": "The left ventricle ejects into the aorta through the aortic valve. The pulmonary trunk leaves the right ventricle, and the superior vena cava brings blood into the right atrium.",
+      "review": "heart-chambers-valves"
+    },
+    {
+      "q": "The aorta and its largest branches have a thick layer of elastic fibers in the tunica media. What does that elastic tissue do with each heartbeat?",
+      "options": ["It stretches as blood is ejected, then recoils", "It contracts to pump blood forward", "It stops blood leaking through the wall"],
+      "correct": 0,
+      "why": "Elastic arteries stretch when the ventricle ejects blood and recoil between beats. The stretch travels down the arteries as the pulse. Smooth muscle, not elastic tissue, is what contracts.",
+      "review": "vessel-structure"
+    },
+    {
+      "q": "What is an anastomosis?",
+      "options": ["A narrowing inside an artery", "A connection between vessels that gives blood a second route", "A valve inside a vein"],
+      "correct": 1,
+      "why": "An anastomosis joins two vessels, so if one route is blocked, blood can still reach the tissue by the other.",
+      "review": "blood-flow-heart"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-20-24",
+    "caption": "The major systemic arteries, front view. Hide the labels and name each artery, then trace it back to the aorta."
+  },
+  "chain": [
+    { "cause": "The left ventricle ejects its stroke volume into the ascending aorta.", "effect": "The elastic wall of the aorta stretches outward." },
+    { "cause": "The stretched section of wall recoils and pushes on the blood and wall just ahead of it.", "effect": "The bulge moves along the arteries as a pressure wave, several meters per second, far faster than the blood itself." },
+    { "cause": "The wave reaches an artery that runs close to the skin over bone, such as the radial artery at the wrist.", "effect": "The artery wall pushes outward against a fingertip pressing it onto the bone, and you feel a pulse." },
+    { "cause": "Each beat that ejects enough blood sends one wave.", "effect": "Counting the pulse for a set time gives the heart rate, and a pulse that is missing or weak points to low pressure or a blocked or squeezed artery upstream." }
+  ],
+  "misconception": {
+    "wrong": "Each side of the aortic arch branches the same way: a trunk on the left matches the brachiocephalic trunk on the right.",
+    "right": "Only the right side has a brachiocephalic trunk. It splits into the right subclavian and right common carotid arteries. On the left, the common carotid and subclavian arteries leave the arch directly, so the arch has three branches, not four."
+  },
+  "check": ["anp-systemic-arteries-1", "anp-systemic-arteries-6", "anp-systemic-arteries-8", "anp-systemic-arteries-9", "anp-systemic-arteries-10", "anp-systemic-arteries-11", "anp-systemic-arteries-16"],
+  "summary": "<p>Every systemic artery branches from the aorta, which rises as the ascending aorta, curves as the aortic arch and descends through the chest and, past the aortic hiatus, the abdomen. The arch gives the brachiocephalic trunk (right side only), the left common carotid and the left subclavian arteries. Each common carotid splits into an external carotid for the face and scalp and an internal carotid for the brain; the carotid sinus at its base senses pressure. The vertebral arteries join as the basilar artery, and with the internal carotids form the cerebral arterial circle. One tube runs down each limb under changing names: subclavian, axillary, brachial, then radial and ulnar; and femoral, popliteal, then the tibial arteries and dorsalis pedis. The abdominal aorta gives three single gut arteries (celiac trunk, superior and inferior mesenteric) and paired renal and gonadal arteries, then splits into the common iliacs. Pulse points are where an artery runs near the skin over bone: carotid for an unresponsive adult, brachial for an infant, radial for routine checks.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-12", "label": "NREMT: Primary assessment (checking a pulse)" },
+    { "href": "/nremt/study-notes.html#chapter-13", "label": "NREMT: Vital signs and monitoring devices" },
+    { "href": "/nremt/study-notes.html#chapter-29", "label": "NREMT: Bleeding control" }
+  ]
+}

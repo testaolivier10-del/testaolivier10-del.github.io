@@ -1,0 +1,75 @@
+{
+  "topic": "muscle-tissue-overview",
+  "hook": "<p>Ray, 61, had a large blockage in one of the arteries feeding his heart. By the time it was opened, part of his heart wall had gone without blood for hours. Six weeks later, a scan shows that patch is thin and doesn't move when the rest of the heart squeezes. The muscle that died there has been replaced by collagen, and it will not grow back. A torn thigh muscle, by contrast, can rebuild itself. The three muscle tissues look and behave differently, and their structure explains why.</p>",
+  "prereq": [
+    {
+      "q": "Which cell junction lets ions pass directly from one cell's cytoplasm into its neighbor's?",
+      "options": [
+        "Desmosome",
+        "Gap junction",
+        "Tight junction"
+      ],
+      "correct": 1,
+      "why": "A gap junction is a cluster of channels that connect two cells, so ions and small molecules pass straight across. Desmosomes rivet cells together against pulling, and tight junctions seal the space between cells.",
+      "review": "cell-junctions"
+    },
+    {
+      "q": "If a tube's radius is cut in half and the pressure gradient stays the same, what happens to flow through it?",
+      "options": [
+        "It falls to about one-sixteenth",
+        "It falls to one-half",
+        "It doubles"
+      ],
+      "correct": 0,
+      "why": "Resistance depends on 1 / radius to the fourth power. Halving the radius makes resistance 16 times larger, so flow falls to 1/16.",
+      "review": "gradients-flow"
+    },
+    {
+      "q": "Which primary tissue type contracts?",
+      "options": [
+        "Epithelial tissue",
+        "Nervous tissue",
+        "Muscle tissue"
+      ],
+      "correct": 2,
+      "why": "Of the four primary tissue types, only muscle is made of cells that shorten with force. Epithelium covers and lines, and nervous tissue carries electrical signals.",
+      "review": "epithelium"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-22",
+    "caption": "Cardiac muscle fibers are short, striated and branched, with one central nucleus each. They meet end to end at intercalated discs, which contain desmosomes and gap junctions."
+  },
+  "chain": [
+    {
+      "cause": "One cardiac muscle fiber produces an electrical change across its plasma membrane.",
+      "effect": "Ions carrying that change flow out of it through the gap junctions in its intercalated discs."
+    },
+    {
+      "cause": "Ions flow through the gap junctions into the neighboring fibers.",
+      "effect": "The neighbors undergo the same electrical change, which triggers their own contraction."
+    },
+    {
+      "cause": "Each neighbor passes the change on through its own intercalated discs.",
+      "effect": "The change sweeps across a whole region of the heart within a fraction of a second."
+    },
+    {
+      "cause": "The fibers of that region contract almost together and pull hard on one another.",
+      "effect": "Desmosomes in the discs keep the fibers from pulling apart, and the region squeezes as one unit."
+    }
+  ],
+  "misconception": {
+    "wrong": "Striated muscle is voluntary muscle; the two words mean the same thing.",
+    "right": "Striation describes structure: whether actin and myosin are stacked in lined-up repeating units that show as stripes. Voluntary describes control: whether you can make the muscle contract by choice. Skeletal muscle happens to be both, but cardiac muscle is striated and involuntary. Stripes tell you how the filaments are arranged, not who is in charge."
+  },
+  "check": [
+    "anp-muscle-tissue-overview-1",
+    "anp-muscle-tissue-overview-4",
+    "anp-muscle-tissue-overview-7",
+    "anp-muscle-tissue-overview-9",
+    "anp-muscle-tissue-overview-12",
+    "anp-muscle-tissue-overview-15"
+  ],
+  "summary": "<p>Muscle tissue is made of muscle fibers that contract by pulling actin filaments with myosin. All muscle shares four properties: it responds to signals, contracts, stretches (extensibility) and recoils (elasticity). Skeletal muscle has long, striated fibers with many nuclei at the edge and is voluntary. Cardiac muscle has short, branched, striated fibers with one central nucleus, joined by intercalated discs whose gap junctions and desmosomes make the heart wall contract as a unit; it is involuntary and replaces lost fibers very poorly. Smooth muscle has spindle-shaped, nonstriated fibers, lines hollow organs and vessels, and is involuntary. In vessel walls, smooth muscle narrows vessels (vasoconstriction) or lets them widen (vasodilation), which changes resistance and flow.</p>",
+  "connections": []
+}

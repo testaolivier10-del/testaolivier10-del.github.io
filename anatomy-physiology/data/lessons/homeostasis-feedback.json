@@ -1,0 +1,57 @@
+{
+  "topic": "homeostasis-feedback",
+  "hook": "<p>Mr. Okafor, 81, is found at home during a winter power cut. His body temperature is 33 °C, and he is confused, and his muscles barely shake. A healthy young adult in the same cold room would have held close to 37 °C for hours. The difference lies in one loop of parts: what senses the cold, what decides, and what does the warming.</p>",
+  "prereq": [
+    {
+      "q": "What happens to blood flow through a small artery when the smooth muscle in its wall contracts?",
+      "options": ["The artery narrows and flow falls", "The artery widens and flow rises", "The artery narrows and flow rises"],
+      "correct": 0,
+      "why": "Contraction of the smooth muscle narrows the vessel (vasoconstriction). A narrower vessel resists flow more, so less blood flows through it. Relaxation widens it (vasodilation) and flow rises.",
+      "review": "muscle-tissue-overview"
+    },
+    {
+      "q": "How does a hormone reach a target cell far from the gland that released it?",
+      "options": ["Along a nerve as action potentials", "Through a duct onto a surface", "In the blood"],
+      "correct": 2,
+      "why": "A hormone enters the blood and travels through the body. It changes only target cells with a receptor protein that binds it. Nerves carry action potentials, and ducts belong to exocrine glands.",
+      "review": "chemical-signaling"
+    },
+    {
+      "q": "What does a nerve carry from one place to another?",
+      "options": ["Blood", "Action potentials along neuron fibers", "Hormones in a duct"],
+      "correct": 1,
+      "why": "A nerve is a bundle of neuron fibers. Each fiber carries action potentials, the electrical signals of neurons, from one place to another.",
+      "review": "nervous-tissue-overview"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    {
+      "cause": "Cold air draws heat from your skin, and skin temperature falls (the stimulus).",
+      "effect": "Cold-sensitive nerve endings in the skin, the sensory receptors, fire more action potentials."
+    },
+    {
+      "cause": "Those action potentials travel along sensory nerves, the afferent pathway, to your brain.",
+      "effect": "The temperature control center compares the input with the set point, about 37 °C, and detects a fall below it."
+    },
+    {
+      "cause": "The control center sends commands along nerves, the efferent pathway.",
+      "effect": "The effectors act: smooth muscle in skin blood vessels contracts, and skeletal muscles contract in rapid small bursts (you shiver)."
+    },
+    {
+      "cause": "Vasoconstriction keeps warm blood away from the skin, and the muscle contractions release heat.",
+      "effect": "Heat loss falls and heat production rises: the response opposes the fall in temperature."
+    },
+    {
+      "cause": "As body temperature returns toward the set point, the stimulus shrinks.",
+      "effect": "The sensory receptors signal less, the commands weaken, and the effectors ease off: negative feedback switches itself off."
+    }
+  ],
+  "misconception": {
+    "wrong": "Negative feedback lowers a variable, and positive feedback raises it.",
+    "right": "\"Negative\" and \"positive\" describe the direction of the response compared with the stimulus, not whether the variable goes up or down. In negative feedback the response opposes the change: a fall in blood pH triggers a response that raises it, and that is still negative feedback. In positive feedback the response strengthens the change, pushing the variable further the way it was already going, whether that is up or down."
+  },
+  "check": ["anp-homeostasis-feedback-3", "anp-homeostasis-feedback-5", "anp-homeostasis-feedback-8", "anp-homeostasis-feedback-9", "anp-homeostasis-feedback-12", "anp-homeostasis-feedback-15", "anp-homeostasis-feedback-17"],
+  "summary": "<p>Homeostasis is the maintenance of fairly stable internal conditions while the outside world changes. Each regulated variable swings within a normal range around a set point. A feedback loop has seven parts: a stimulus changes the variable, a sensory receptor (sensor) detects it, the afferent pathway carries the information to the control center, which compares it with the set point, and the efferent pathway (nerves or a hormone) carries commands to an effector (a muscle or gland), whose response acts back on the variable. In negative feedback the response opposes the change and the loop switches itself off; almost all homeostasis works this way. In positive feedback the response strengthens the change until an outside event ends it, as in childbirth and blood clotting. Mass balance says a substance stays constant only when input equals output. A homeostatic imbalance is a variable held outside its normal range because some part of the loop has failed.</p>",
+  "connections": []
+}

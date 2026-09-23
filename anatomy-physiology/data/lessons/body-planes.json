@@ -38,6 +38,6 @@
   "check": ["anp-body-planes-1", "anp-body-planes-3", "anp-body-planes-5", "anp-body-planes-8", "anp-body-planes-11", "anp-body-planes-13"],
   "summary": "<p>A plane is an imaginary flat surface through the body; a section is the cut surface it produces. The sagittal plane divides right from left (midsagittal into equal halves, parasagittal into unequal parts). The frontal, or coronal, plane divides anterior from posterior. The transverse, or horizontal, plane divides superior from inferior, and its cut is a cross section. Oblique planes run at an angle. A structure's shape in a section depends on the direction of the cut. Radiographs are flat projections; CT, MRI, PET and ultrasound produce sections, each by a different physical mechanism.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT study notes: Anatomy and Physiology" }
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT study notes: Anatomy and Physiology" }
   ]
 }

@@ -4,11 +4,15 @@
     "openstax": {
       "figure": "4.5",
       "section": "4.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/916a0c3c69b9faebb95d3745f923eb78a509d06a"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/916a0c3c69b9faebb95d3745f923eb78a509d06a",
+      "page": "4-2-epithelial-tissue"
     },
     "alt": "Close-up drawings of the membranes of two neighboring cells joined in different ways: a tight junction, where strands of protein stitch the two membranes together; a gap junction, where paired protein tubes connect the two cells' interiors; and anchoring junctions, including a desmosome with dense plaques on each side linked across the gap by adhesion proteins and anchored inside to rope-like filaments.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.5",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1284,
+    "ext": "jpg"
   }
 }

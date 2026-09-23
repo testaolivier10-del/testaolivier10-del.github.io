@@ -4,23 +4,31 @@
     "openstax": {
       "figure": "3.3",
       "section": "3.1",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/28a6e812d6bf47c0dc1c0d8431badba122d205b1"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/28a6e812d6bf47c0dc1c0d8431badba122d205b1",
+      "page": "3-1-the-cell-membrane"
     },
     "alt": "Two sheets of phospholipids lined up tail to tail. The water-loving heads of the outer sheet face the fluid outside the cell, the heads of the inner sheet face the cytoplasm, and the water-avoiding tails meet in the middle of the membrane.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.3",
-    "labels": []
+    "labels": [],
+    "w": 457,
+    "h": 308,
+    "ext": "jpg"
   },
   "os-3-4": {
     "source": "openstax",
     "openstax": {
       "figure": "3.4",
       "section": "3.1",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b43fe17f2018f510b2e76cf067595c36442cf752"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b43fe17f2018f510b2e76cf067595c36442cf752",
+      "page": "3-1-the-cell-membrane"
     },
     "alt": "A section of plasma membrane: a phospholipid bilayer with proteins spanning it or sitting on its surfaces, cholesterol tucked between the phospholipids, and sugar chains attached to some proteins and lipids on the outer face.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.4",
-    "labels": []
+    "labels": [],
+    "w": 875,
+    "h": 400,
+    "ext": "jpg"
   }
 }

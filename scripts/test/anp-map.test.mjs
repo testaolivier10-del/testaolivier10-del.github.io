@@ -85,3 +85,21 @@ test('a term is matched as a whole word, and acronyms by case', () => {
   assert.deepEqual(scanPage(m, '<p>Hormonelike? No: the add-on and adhesion.</p>', 'a'), []);
   assert.equal(scanPage(m, '<p>ADH rises.</p>', 'a').length, 1);
 });
+
+test('an allowed term that contains a later one is not a use of the later one', () => {
+  const m = tiny();
+  m.concepts.push({ id: 'acid', term: 'acid', aliases: [], taughtIn: 'b', dependsOn: [] });
+  m.concepts.push({ id: 'amino-acid', term: 'amino acid', aliases: [], taughtIn: 'a', dependsOn: [] });
+  const page = t => `<html><body><p>${t}</p></body></html>`;
+  assert.deepEqual(scanPage(m, page('An amino acid joins the chain.'), 'a'), []);
+  assert.equal(scanPage(m, page('An amino acid is an acid.'), 'a').length, 1);
+});
+
+test('subscripts join their word, and a capital-letter name keeps its case', () => {
+  const m = tiny();
+  m.concepts.push({ id: 'co', term: 'cardiac output', aliases: ['CO'], taughtIn: 'b', dependsOn: [] });
+  m.concepts.push({ id: 'a-band', term: 'A band', aliases: [], taughtIn: 'b', dependsOn: [] });
+  const page = t => `<html><body><p>${t}</p></body></html>`;
+  assert.deepEqual(scanPage(m, page('You breathe out CO<sub>2</sub> through a band of tissue.'), 'a'), []);
+  assert.equal(scanPage(m, page('The A band is dark.'), 'a').length, 1);
+});

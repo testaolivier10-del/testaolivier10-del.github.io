@@ -1,0 +1,44 @@
+{
+  "topic": "body-cavities",
+  "hook": "<p>Ms. Reyes, 34, has had a cold for a week. Now a sharp pain stabs the right side of her chest every time she breathes in, and eases when she holds her breath. Through a stethoscope, her doctor hears a creaking, grating sound with each breath. Two thin layers that normally glide over each other around her lung have become inflamed and rough, and now they rub.</p>",
+  "prereq": [
+    {
+      "q": "Which term means toward the back of the body?",
+      "options": ["Anterior", "Posterior", "Lateral"],
+      "correct": 1,
+      "why": "Posterior (post- = behind) means toward the back. Anterior means toward the front, and lateral means away from the midline.",
+      "review": "anatomical-position"
+    },
+    {
+      "q": "What is an organ?",
+      "options": ["A group of similar cells doing one job", "A structure made of two or more kinds of tissue that does a specific job", "A group of organs working on a shared job"],
+      "correct": 1,
+      "why": "An organ combines two or more kinds of tissue into one structure with a specific job. A group of similar cells is a tissue, and a group of organs is an organ system.",
+      "review": "body-organization"
+    },
+    {
+      "q": "Which plane divides the body into superior and inferior parts?",
+      "options": ["Transverse plane", "Frontal plane", "Sagittal plane"],
+      "correct": 0,
+      "why": "The transverse (horizontal) plane divides upper from lower. The frontal plane divides front from back, and the sagittal plane divides right from left.",
+      "review": "body-planes"
+    }
+  ],
+  "anatomy": { "figure": "os-1-15", "caption": "The dorsal body cavity (cranial cavity and vertebral canal) and the ventral body cavity (thoracic and abdominopelvic cavities), with the diaphragm between the chest and the abdomen." },
+  "chain": [
+    { "cause": "A serous membrane lines the wall of a cavity and then folds back to cover the organ inside it.", "effect": "The membrane has two layers, parietal on the wall and visceral on the organ, with a thin closed space between them." },
+    { "cause": "The cells of both layers release a small amount of watery serous fluid into that space.", "effect": "A thin film of fluid coats both surfaces." },
+    { "cause": "The film of fluid sits between two smooth, wet surfaces.", "effect": "The layers slide over each other with very little friction as the heart beats and the lungs expand." },
+    { "cause": "Infection or injury makes the layers swollen and rough.", "effect": "Sliding turns into rubbing, so each movement causes sharp pain and a grating sound a clinician can hear." }
+  ],
+  "misconception": {
+    "wrong": "The lungs sit inside the pleural cavity, and the heart sits inside the pericardial cavity.",
+    "right": "A serous cavity is only the thin, fluid-filled space between the two layers of a serous membrane. The organ is wrapped by the visceral layer and lies outside that space, the way your fist pushed into a soft balloon is wrapped by the balloon but never enters the air inside it. The lung is in the thoracic cavity, but not in the pleural cavity."
+  },
+  "check": ["anp-body-cavities-1", "anp-body-cavities-4", "anp-body-cavities-6", "anp-body-cavities-9", "anp-body-cavities-11", "anp-body-cavities-14", "anp-body-cavities-16"],
+  "summary": "<p>The dorsal body cavity holds the brain in the cranial cavity and the spinal cord in the vertebral canal, both encased in bone. The ventral body cavity lies in front of it and is split by the diaphragm into the thoracic cavity above and the abdominopelvic cavity below. The thoracic cavity holds two pleural cavities and, between them, the mediastinum, which contains the pericardial cavity around the heart. The abdominopelvic cavity is the abdominal cavity above and the pelvic cavity below, with no wall between them. Serous membranes line these ventral spaces: a parietal layer on the wall, a visceral layer on the organ, and a film of serous fluid between them that lets organs slide with little friction. The pleural, pericardial and peritoneal cavities are those thin, fluid-filled spaces, not the organs themselves.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT study notes: Anatomy and Physiology" },
+    { "href": "/nremt/body-map.html", "label": "NREMT: interactive patient body map" }
+  ]
+}

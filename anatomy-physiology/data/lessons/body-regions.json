@@ -1,0 +1,44 @@
+{
+  "topic": "body-regions",
+  "hook": "<p>Jordan, 19, woke up with a dull ache around his navel. By evening the pain has moved low on his right side, and it is sharp when he coughs or walks. The triage nurse writes \"periumbilical pain moving to the right lower quadrant\". That one line points the whole team toward his appendix.</p>",
+  "prereq": [
+    {
+      "q": "Which plane divides the body into right and left parts?",
+      "options": ["Transverse plane", "Sagittal plane", "Frontal plane"],
+      "correct": 1,
+      "why": "The sagittal plane divides right from left. The midsagittal plane makes equal halves. The transverse plane divides upper from lower, and the frontal plane divides front from back.",
+      "review": "body-planes"
+    },
+    {
+      "q": "Which cavity holds the stomach, liver and intestines?",
+      "options": ["Thoracic cavity", "Dorsal body cavity", "Abdominopelvic cavity"],
+      "correct": 2,
+      "why": "The abdominopelvic cavity lies below the diaphragm and holds the abdominal organs. The thoracic cavity is above the diaphragm, and the dorsal body cavity holds the brain and spinal cord.",
+      "review": "body-cavities"
+    },
+    {
+      "q": "When you face a patient, where is the patient's right side?",
+      "options": ["On your left", "On your right", "It depends on whether the patient is supine"],
+      "correct": 0,
+      "why": "Right and left always mean the patient's own sides. Facing the patient, their right is on your left, whether they are standing or lying down.",
+      "review": "anatomical-position"
+    }
+  ],
+  "anatomy": { "figure": "os-1-12", "caption": "Regions of the body on a person in the anatomical position, seen from the front and from the back." },
+  "chain": [
+    { "cause": "A clinician draws a midsagittal line and a transverse line through the navel.", "effect": "The abdomen is split into four quadrants, named by the patient's own right and left." },
+    { "cause": "Each quadrant lies over a predictable set of organs.", "effect": "The site of pain, swelling or a wound narrows the list of organs that could be involved." },
+    { "cause": "A problem inflames the parietal layer of the peritoneum on the abdominal wall.", "effect": "Pain becomes sharp and fixed at that spot, so the patient can point to one quadrant." },
+    { "cause": "The team records that quadrant in shared terms.", "effect": "Everyone examines, images and operates on the same place." }
+  ],
+  "misconception": {
+    "wrong": "In anatomy, the arm is the whole upper limb and the leg is the whole lower limb.",
+    "right": "Anatomically, the arm is only the part from the shoulder to the elbow (the brachial region), and the forearm is from the elbow to the wrist (the antebrachial region). The leg is only the part from the knee to the ankle (the crural region); the thigh, from hip to knee, is the femoral region. A report of a fractured leg means a break below the knee."
+  },
+  "check": ["anp-body-regions-1", "anp-body-regions-3", "anp-body-regions-6", "anp-body-regions-9", "anp-body-regions-12", "anp-body-regions-15"],
+  "summary": "<p>Regional terms name areas of the body surface in the anatomical position, most from Latin or Greek roots: cephalic (head), cervical (neck), thoracic (chest), lumbar (lower back), brachial (arm, shoulder to elbow), antebrachial (forearm), femoral (thigh) and crural (leg, knee to ankle). Two lines through the navel, one midsagittal and one transverse, divide the abdomen into four quadrants: right upper, left upper, right lower and left lower, named for the patient's own sides. Two vertical and two horizontal lines divide it more finely into nine abdominopelvic regions: right and left hypochondriac with the epigastric between them, right and left lumbar with the umbilical between them, and right and left iliac with the hypogastric between them. Clinicians use quadrants for quick description and the nine regions for more exact location.</p>",
+  "connections": [
+    { "href": "/nremt/body-map.html", "label": "NREMT: interactive patient body map" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT study notes: Anatomy and Physiology" }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "blood-volume-bp": {
+    "def": "The link between how much blood you have and your long-term blood pressure: more volume raises venous return, stroke volume and cardiac output, so MAP rises; less volume lowers them. Only restoring volume corrects a lasting change.",
+    "roots": [],
+    "say": ""
+  },
+  "kidney-volume-control": {
+    "def": "The principle that blood volume is set by how much sodium and water the kidneys excrete, the one loss route adjusted to match intake. Water follows sodium, so keeping sodium keeps fluid in the plasma and interstitial fluid.",
+    "roots": [],
+    "say": ""
+  },
+  "raas-bp": {
+    "def": "The role of the renin–angiotensin–aldosterone system in raising blood pressure: low pressure makes the kidneys release renin, leading to angiotensin II, which constricts arterioles, releases aldosterone so the kidneys keep sodium and water, and triggers ADH and thirst.",
+    "roots": [["angi/o", "vessel"], ["tens-", "stretched, pressure"]],
+    "say": "an-jee-oh-TEN-sin"
+  },
+  "adh-bp": {
+    "def": "The role of antidiuretic hormone in blood pressure: it makes the kidneys keep water, and at the high levels a large fall in volume produces, it also constricts arterioles. Its other name, vasopressin, reflects that effect.",
+    "roots": [["anti-", "against"], ["di-", "through"], ["-uretic", "relating to urine"], ["vas/o", "vessel"]],
+    "say": "vay-zoh-PRESS-in"
+  },
+  "anp-bp": {
+    "def": "The role of atrial natriuretic peptide in lowering blood pressure: released when the atria are stretched, it makes the kidneys excrete sodium and water, lowers renin, aldosterone and ADH, and relaxes arterioles.",
+    "roots": [["natri-", "sodium"], ["-uretic", "relating to urine"]],
+    "say": "nay-tree-yoo-RET-ik"
+  }
+}

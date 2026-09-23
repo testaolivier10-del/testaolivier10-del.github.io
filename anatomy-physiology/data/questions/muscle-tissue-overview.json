@@ -1,0 +1,512 @@
+[
+ {
+  "id": "anp-muscle-tissue-overview-1",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which muscle tissue has long, cylindrical fibers, each with many nuclei pressed against its edge?",
+  "options": [
+   "Smooth muscle tissue",
+   "Cardiac muscle tissue",
+   "Skeletal muscle tissue",
+   "Visceral (smooth) muscle tissue"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Each skeletal muscle fiber forms in the embryo when many small cells fuse end to end. The fused fiber is long and keeps all their nuclei, which sit just under its plasma membrane.",
+   "options": [
+    "Smooth muscle fibers are small and spindle-shaped, with a single nucleus in the center.",
+    "Cardiac fibers are short and branched, with one central nucleus (occasionally two).",
+    "Correct. Long, cylindrical, multinucleated fibers with nuclei at the edge are skeletal muscle.",
+    "Visceral muscle is another name for smooth muscle, which has one central nucleus per fiber."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-2",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Where are intercalated discs found?",
+  "options": [
+   "Between neighboring cardiac muscle fibers",
+   "Between skeletal muscle fibers and their tendon",
+   "Inside each smooth muscle fiber",
+   "Between the nuclei of a skeletal muscle fiber"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "An intercalated disc is the zigzag joint where two cardiac fibers meet end to end. It holds desmosomes and gap junctions, and it shows as a dark line across the fibers in a stained slide.",
+   "options": [
+    "Correct. Intercalated discs join cardiac fibers end to end.",
+    "A skeletal fiber attaches to its tendon through collagen, not through intercalated discs. Skeletal fibers have no discs.",
+    "Smooth muscle fibers have no intercalated discs; where they are linked, it is by gap junctions between fibers.",
+    "A skeletal fiber is one continuous cell, so there are no joints between its nuclei."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-3",
+  "type": "multi",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which features do skeletal and cardiac muscle tissue share? Select all that apply.",
+  "options": [
+   "Striations",
+   "Voluntary control",
+   "Actin and myosin filaments",
+   "Many nuclei at the edge of each fiber",
+   "Intercalated discs"
+  ],
+  "correct": [
+   0,
+   2
+  ],
+  "why": {
+   "correct": "Both are striated, because both stack actin and myosin in lined-up repeating units. They differ in control, nuclei and junctions.",
+   "options": [
+    "Correct. Both show the light and dark bands of striated muscle.",
+    "Only skeletal muscle is voluntary. You cannot make your heart beat by deciding to.",
+    "Correct. Every muscle tissue, smooth included, contracts using actin and myosin.",
+    "Only skeletal fibers have many nuclei at the edge. A cardiac fiber usually has one nucleus in its center.",
+    "Only cardiac muscle has intercalated discs."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-4",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A pathologist examines a slide of muscle. The fibers are striated and branched, each has one nucleus in its center, and dark zigzag lines cross the fibers where they meet. Which organ did the sample come from?",
+  "options": [
+   "The biceps in the upper arm",
+   "The heart",
+   "The wall of the stomach",
+   "The wall of the urinary bladder"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Branched, striated fibers with central nuclei and intercalated discs (the dark zigzag lines) are cardiac muscle, which is found only in the heart wall.",
+   "options": [
+    "The biceps is skeletal muscle: unbranched fibers with many nuclei at the edge and no discs.",
+    "Correct. Only cardiac muscle has branched striated fibers joined by intercalated discs.",
+    "The stomach wall is smooth muscle, which has no striations.",
+    "The bladder wall is smooth muscle: spindle-shaped fibers with no striations and no discs."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-5",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "gradients"
+  ],
+  "q": "The smooth muscle around a small artery contracts and cuts its radius to half. With the pressure gradient unchanged, what happens to the resistance of that artery?",
+  "options": [
+   "It doubles",
+   "It rises to four times its starting value",
+   "It rises to 16 times its starting value",
+   "It falls to half"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Resistance is proportional to 1 / radius to the fourth power. Half the radius gives (1/2) to the fourth = 1/16 of the starting radius-to-the-fourth, so resistance becomes 16 times larger.",
+   "options": [
+    "Doubling would be true only if resistance depended on the radius itself, not its fourth power.",
+    "Four times would come from squaring the radius. Resistance depends on the fourth power.",
+    "Correct. (1/2) to the fourth power is 1/16, so resistance rises 16-fold.",
+    "A narrower vessel has more resistance to flow, not less."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-6",
+  "type": "predict",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "gradients"
+  ],
+  "q": "You step outside without gloves on a freezing day. The smooth muscle in the walls of the small arteries supplying your fingers contracts. Predict the effect on each variable in those arteries and fingers.",
+  "variables": [
+   {
+    "name": "Radius of the small arteries",
+    "answer": "down",
+    "why": "Contracting smooth muscle rings squeeze the vessel narrower: vasoconstriction."
+   },
+   {
+    "name": "Resistance to blood flow in those arteries",
+    "answer": "up",
+    "why": "Resistance rises steeply as radius falls, with the fourth power of the radius."
+   },
+   {
+    "name": "Blood flow into the fingers",
+    "answer": "down",
+    "why": "With the pressure gradient about the same, higher resistance means lower flow."
+   },
+   {
+    "name": "Skin temperature of the fingers",
+    "answer": "down",
+    "why": "Less warm blood reaches the fingers, so they cool toward the outside air."
+   }
+  ],
+  "why": {
+   "correct": "Vasoconstriction narrows the vessels, resistance rises with the fourth power of the radius, flow falls, and less warm blood reaches the skin, so the fingers turn pale and cold."
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-7",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "striated means voluntary",
+  "q": "A classmate says, \"If a muscle is striated, it must be under voluntary control.\" Which tissue shows the claim is wrong?",
+  "options": [
+   "Skeletal muscle of the thigh",
+   "Smooth muscle of the intestine",
+   "Smooth muscle of a blood vessel",
+   "Cardiac muscle of the heart"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "Cardiac muscle is striated but involuntary. Striation describes how the filaments are arranged; voluntary describes how contraction is controlled.",
+   "options": [
+    "Thigh muscle is striated and voluntary, so it fits the claim instead of disproving it.",
+    "Intestinal smooth muscle is involuntary, but it is also nonstriated, so it says nothing about striated muscle.",
+    "Vessel smooth muscle is nonstriated, so it cannot test a claim about striated muscle.",
+    "Correct. Cardiac muscle is striated yet you cannot make it contract by choice."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-8",
+  "type": "error",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "structure-function"
+  ],
+  "q": "This description of how a region of the heart wall contracts together contains one wrong step. Find it.",
+  "options": [
+   "One cardiac fiber produces an electrical change across its membrane",
+   "Ions carrying the change pass through desmosomes into the next fiber",
+   "The next fiber undergoes the same electrical change and contracts",
+   "The change spreads fiber by fiber across the region",
+   "Desmosomes hold the fibers together as they pull on each other"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Ions pass between cardiac fibers through gap junctions, the channels in the intercalated discs. Desmosomes are anchoring junctions that hold the fibers together; they have no channel for ions.",
+   "options": [
+    "This step is right: the process starts with an electrical change in one fiber.",
+    "This is the error. Ions cross through gap junctions. Desmosomes rivet cells together and pass nothing between them.",
+    "This step is right: the incoming ions trigger the same change and contraction in the neighbor.",
+    "This step is right: each fiber passes the change on, so it sweeps across the region.",
+    "This step is right: desmosomes keep the contracting fibers from tearing apart."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-9",
+  "type": "order",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "gradients"
+  ],
+  "q": "Put the steps of vasoconstriction in a small artery in order.",
+  "options": [
+   "Smooth muscle fibers in the vessel wall contract",
+   "The ring of muscle around the vessel tightens",
+   "The vessel's radius shrinks",
+   "Resistance to blood flow rises",
+   "Blood flow through that vessel falls"
+  ],
+  "why": {
+   "correct": "Contraction of the smooth muscle fibers tightens the ring around the vessel, which shrinks its radius. A smaller radius raises resistance sharply, and with the same pressure gradient, flow falls."
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-10",
+  "type": "missing",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Fill in the missing step. A cardiac fiber undergoes an electrical change → ______ → the neighboring fiber undergoes the same change → the neighbor contracts.",
+  "options": [
+   "Ions flow into the neighbor through gap junctions",
+   "Desmosomes pull the neighbor's membrane toward the first fiber",
+   "The neighbor fuses with the first fiber",
+   "A tendon passes the pull on to the neighbor"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Gap junctions in the intercalated disc connect the cytoplasm of the two fibers. Ions carrying the electrical change pass straight through them into the neighbor.",
+   "options": [
+    "Correct. Gap junctions carry the ions from fiber to fiber.",
+    "Desmosomes hold fibers together mechanically. They do not carry electrical changes.",
+    "Cardiac fibers stay separate cells joined at discs. Fusion into one cell happens in developing skeletal muscle.",
+    "The heart has no tendons between its fibers; the fibers are joined directly at intercalated discs."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-11",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Your stomach wall stretches well beyond its resting size after a large meal without being damaged. Which property of muscle tissue does this show?",
+  "options": [
+   "Elasticity",
+   "Extensibility",
+   "Responsiveness",
+   "Ability to contract"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Extensibility (ex- = out, tend- = stretch) is the ability to be stretched beyond resting length without damage.",
+   "options": [
+    "Elasticity is recoil back to resting length after a stretch, the opposite half of the story.",
+    "Correct. Being stretched without damage is extensibility.",
+    "Responsiveness is reacting to signals with an electrical change across the membrane.",
+    "Contraction is active shortening, not being stretched."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-12",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "After you empty your bladder, its wall returns to its smaller resting size without any new signal to contract. Which property of muscle tissue is at work?",
+  "options": [
+   "Extensibility",
+   "Responsiveness",
+   "Elasticity",
+   "Voluntary control"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Elasticity is the ability to recoil to resting length once a stretching force is removed. The stretched wall springs back on its own.",
+   "options": [
+    "Extensibility is being stretched, which happened as the bladder filled. The return afterward is recoil.",
+    "Responsiveness needs a signal, and the question says none was given.",
+    "Correct. Recoil to resting length after stretch is elasticity.",
+    "The bladder wall is smooth muscle, which is involuntary, and recoil is passive."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-13",
+  "type": "vignette",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Months after part of Ray's heart wall died from lack of blood, the patch is still thin, stiff and does not contract. A thigh muscle torn in a fall, by contrast, regains most of its function. What best explains the difference?",
+  "options": [
+   "Cardiac muscle has no blood supply, so nothing can reach the damaged area",
+   "Adult cardiac fibers almost never divide, so collagen fills the gap",
+   "Cardiac fibers are nonstriated and cannot rebuild their filaments",
+   "Skeletal muscle is voluntary, and practice regrows its fibers"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Well under 1% of cardiac fibers are replaced each year. Dead fibers leave gaps that fibroblasts fill with collagen, which cannot contract. Skeletal muscle has stem cells beside its fibers that multiply and repair damage.",
+   "options": [
+    "The heart wall has a rich blood supply. The damage happened because one artery was blocked, not because the tissue lacks vessels.",
+    "Correct. Cardiac fibers are almost never replaced, so a noncontracting collagen patch replaces them.",
+    "Cardiac muscle is striated. Striation has nothing to do with replacing lost fibers.",
+    "Repair depends on stem cells beside the fibers, not on voluntary control."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-14",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which of these is lined with smooth muscle tissue?",
+  "options": [
+   "The wall of the intestines",
+   "The muscle that bends your elbow",
+   "The wall of the heart",
+   "The muscles that move your eyes"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Smooth muscle, also called visceral muscle, forms the walls of hollow organs such as the intestines, stomach, bladder, uterus, airways and blood vessels.",
+   "options": [
+    "Correct. The intestinal wall contains layers of smooth muscle.",
+    "The muscle that bends your elbow is skeletal muscle attached to bone by tendons.",
+    "The heart wall is cardiac muscle.",
+    "The eye-moving muscles are skeletal muscles; you can move your eyes by choice."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-15",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "striated means voluntary",
+  "q": "Smooth muscle contains actin and myosin, just as skeletal muscle does. Why does it show no striations?",
+  "options": [
+   "Its fibers have too many nuclei to see the bands",
+   "It is involuntary, and only voluntary muscle forms stripes",
+   "Its filaments crisscross instead of lining up",
+   "It contains no myosin, only actin"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Stripes appear only when actin and myosin are stacked in short repeating units lined up across the fiber. In smooth muscle, the filaments crisscross at angles, so no bands line up.",
+   "options": [
+    "Smooth fibers have one nucleus each. Nuclei do not create or hide striations anyway.",
+    "Control does not create stripes. Cardiac muscle is involuntary and still striated.",
+    "Correct. Filament arrangement, not filament type, decides whether stripes show.",
+    "Smooth muscle has both actin and myosin; that is how it contracts."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-16",
+  "type": "multi",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which muscle tissues are involuntary? Select all that apply.",
+  "options": [
+   "Skeletal muscle tissue",
+   "Cardiac muscle tissue",
+   "Smooth muscle tissue"
+  ],
+  "correct": [
+   1,
+   2
+  ],
+  "why": {
+   "correct": "You cannot make your heart or your stomach contract by choice. Both cardiac and smooth muscle respond to the nervous system, blood chemicals and local conditions.",
+   "options": [
+    "Skeletal muscle is voluntary: you can start its contractions by choice.",
+    "Correct. Cardiac muscle beats with no decision on your part.",
+    "Correct. Smooth muscle in organ and vessel walls is not under conscious control."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-17",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "When you straighten your bent elbow, the muscle on the front of your arm does not push the forearm straight. Why not?",
+  "options": [
+   "It is too weak to push against gravity",
+   "Pushing needs more ATP than muscle can supply",
+   "It relaxes completely whenever the arm is bent",
+   "A shortening fiber can pull but not push"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "Contraction means myosin pulling actin filaments so the fiber shortens. A shortening cell can pull but cannot push, so a different muscle on the back of the arm pulls the elbow straight.",
+   "options": [
+    "Strength is not the issue. No muscle of any strength can push.",
+    "ATP powers the pulling of actin by myosin. There is no pushing action to power.",
+    "It is the muscle on the back of the arm that straightens the elbow, by pulling.",
+    "Correct. Muscle only pulls; opposing muscles move a joint back."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-18",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A newborn's thigh muscle fibers each contain hundreds of nuclei. How did one fiber come to have so many?",
+  "options": [
+   "Many embryonic cells fused together into one fiber",
+   "Its nucleus divided many times without the cell dividing",
+   "Stem cells beside it pushed their nuclei into it after birth",
+   "Nuclei from the blood entered the fiber"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "In the embryo, many small muscle-forming cells line up and fuse end to end. The fused fiber keeps every nucleus.",
+   "options": [
+    "Correct. Fusion of many embryonic cells gives each skeletal fiber its many nuclei.",
+    "This describes a different route to many nuclei. Skeletal fibers get theirs by fusion.",
+    "Stem cells beside the fibers can later fuse with damaged fibers for repair, but that is not how a fiber first forms.",
+    "Nuclei do not travel through the blood into muscle fibers."
+   ]
+  }
+ },
+ {
+  "id": "anp-muscle-tissue-overview-19",
+  "type": "single",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A drug blocks the gap junctions in the intercalated discs of the heart but leaves the desmosomes intact. What would you expect?",
+  "options": [
+   "The fibers would pull apart as they contract",
+   "The fibers would contract out of step",
+   "The fibers would lose their striations",
+   "The heart would contract more strongly than normal"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Gap junctions pass the electrical change from fiber to fiber. Without them, each fiber would contract on its own timing, so the region could not squeeze as a unit.",
+   "options": [
+    "Desmosomes hold the fibers together, and they are left intact.",
+    "Correct. Without gap junctions, the electrical change cannot spread, so fibers lose coordination.",
+    "Striations come from filament arrangement inside each fiber, which the drug does not touch.",
+    "Uncoordinated fibers pull against one another, so the wall squeezes less effectively, not more."
+   ]
+  }
+ }
+]

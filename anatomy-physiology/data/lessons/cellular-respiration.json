@@ -1,0 +1,45 @@
+{
+  "topic": "cellular-respiration",
+  "hook": "<p>Mr. Hale, 58, is carried out of a house fire, confused and breathing fast. His blood carries plenty of oxygen, yet his blood lactate is very high. Burning plastics released cyanide, which blocks the last step of the chain his mitochondria use to make ATP. His cells have oxygen but cannot use it, so they fall back on a route that makes ATP without it.</p>",
+  "prereq": [
+    {
+      "q": "When NAD+ picks up electrons and becomes NADH, what has happened to it?",
+      "options": ["It has been oxidized", "It has been reduced", "It has been hydrolyzed"],
+      "correct": 1,
+      "why": "Reduction is the gain of electrons. NAD+ gains two electrons (with an H+) and becomes NADH. The molecule that gave up the electrons was oxidized.",
+      "review": "enzymes-energy"
+    },
+    {
+      "q": "What happens when a cell hydrolyzes ATP?",
+      "options": ["ATP splits into ADP and phosphate, releasing energy the cell uses for work", "ATP joins with ADP to store energy", "ATP gains a fourth phosphate group"],
+      "correct": 0,
+      "why": "Hydrolysis splits off the outer phosphate, leaving ADP and phosphate and releasing energy for cell work. Cells then rebuild ATP from ADP and phosphate using energy from fuel.",
+      "review": "biomolecules"
+    },
+    {
+      "q": "Which feature of a mitochondrion greatly increases the area where ATP-making proteins sit?",
+      "options": ["Its smooth outer membrane", "The ribosomes on its surface", "The folds of its inner membrane, the cristae"],
+      "correct": 2,
+      "why": "The inner membrane folds into cristae. The protein complexes that make most ATP sit in that membrane, so more folds mean more of them.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-24-4",
+    "caption": "The stages of cellular respiration: glycolysis in the cytosol, then pyruvate breakdown, the citric acid cycle and the electron transport chain in the mitochondrion."
+  },
+  "chain": [
+    { "cause": "Enzymes in the cytosol split glucose by glycolysis.", "effect": "Each glucose becomes two pyruvate, with a net gain of 2 ATP and 2 NADH." },
+    { "cause": "With oxygen available, pyruvate enters the mitochondrion and is taken apart by the citric acid cycle.", "effect": "Its carbon leaves as CO2, and its electrons are loaded onto NADH and reduced FAD." },
+    { "cause": "NADH and reduced FAD hand their electrons to the electron transport chain in the inner membrane.", "effect": "The energy released pumps H+ across the inner membrane, and oxygen accepts the electrons at the end, forming water." },
+    { "cause": "The H+ gradient drives H+ back across the membrane through an ATP-making enzyme.", "effect": "About 26–28 more ATP are made, for a total of about 30–32 ATP per glucose." },
+    { "cause": "If oxygen is missing or the chain is blocked, NADH cannot be oxidized and NAD+ runs short.", "effect": "Pyruvate takes the electrons from NADH and becomes lactate, restoring NAD+, so glycolysis continues at only 2 ATP per glucose." }
+  ],
+  "misconception": {
+    "wrong": "Lactic acid is a toxic waste product that builds up in tired muscles and causes the soreness you feel a day or two after hard exercise.",
+    "right": "Lactate is a fuel, not a waste. It leaves the cells that make it, and heart muscle and other cells turn it back into pyruvate and oxidize it, while the liver rebuilds glucose from it. Blood lactate is back to its resting level within an hour or so after exercise, so it cannot cause soreness that peaks one to two days later. That delayed soreness comes from small injuries inside the muscle and their repair. Converting pyruvate to lactate is what lets glycolysis keep running when oxygen is short, because it regenerates NAD+."
+  },
+  "check": ["anp-cellular-respiration-2", "anp-cellular-respiration-3", "anp-cellular-respiration-5", "anp-cellular-respiration-9", "anp-cellular-respiration-12", "anp-cellular-respiration-14", "anp-cellular-respiration-16"],
+  "summary": "<p>Cellular respiration breaks down fuel inside cells and captures the energy as ATP. Glycolysis splits glucose into two pyruvate in the cytosol, netting 2 ATP and 2 NADH without oxygen. With oxygen, pyruvate enters the mitochondrion, and the citric acid cycle releases its carbon as CO2 while loading NADH and reduced FAD. The electron transport chain in the inner membrane passes their electrons to oxygen, forming water, and uses the energy to pump H+; H+ flowing back makes most of the ATP. The total is about 30–32 ATP per glucose, a range because the ratios are not whole numbers and vary with the cell. Without oxygen, pyruvate becomes lactate, which regenerates NAD+ and keeps glycolysis going at 2 ATP per glucose. The metabolism chapter covers each stage in full.</p>",
+  "connections": []
+}

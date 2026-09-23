@@ -1,0 +1,75 @@
+{
+  "topic": "passive-transport",
+  "hook": "<p>A new nurse reaches for a 1-liter bag labeled \"sterile water\" to run into Mr. Okafor's vein. The pharmacist stops her. Pure water has almost no solutes, so red blood cells bathed in it take on water, swell and burst. Infused straight into a vein, it can burst enough red cells to spill their contents, including potassium, into the plasma. The bag she needed was 0.9% saline, which leaves red cells exactly the size they are.</p>",
+  "prereq": [
+    {
+      "q": "Water and solute are separated by a membrane that lets water through but not the solute. Which way does water move by osmosis?",
+      "options": [
+        "Toward the side with fewer solute particles",
+        "Toward the side with more solute particles",
+        "It does not move until pressure is applied"
+      ],
+      "correct": 1,
+      "why": "Osmosis is the diffusion of water toward the side with more solute particles, which is the side where water itself is less concentrated.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "Which of these crosses a bare phospholipid bilayer most easily?",
+      "options": [
+        "Sodium ions",
+        "Glucose",
+        "Oxygen"
+      ],
+      "correct": 2,
+      "why": "Oxygen is small and nonpolar, so it dissolves in the oily core and passes through. Ions and glucose are almost blocked by the bilayer and need membrane proteins.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "What does an electrochemical gradient combine?",
+      "options": [
+        "A concentration difference and a charge difference",
+        "A pressure difference and a temperature difference",
+        "Two concentration differences for two different ions"
+      ],
+      "correct": 0,
+      "why": "An ion feels two pushes across a membrane: its concentration gradient and the electrical gradient from the charge difference. Together they make its electrochemical gradient.",
+      "review": "electricity-basics"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-6",
+    "caption": "Facilitated diffusion: a solute crosses through an open channel protein, or binds to a carrier protein that changes shape and releases it on the other side."
+  },
+  "chain": [
+    {
+      "cause": "Red blood cells are bathed in pure water, which has far fewer solute particles than the cells' own fluid.",
+      "effect": "Water is more concentrated outside the cells than inside them."
+    },
+    {
+      "cause": "Water is more concentrated outside, and water crosses the membrane easily through the bilayer and aquaporins.",
+      "effect": "Water moves into the cells by osmosis, while the cells' potassium and proteins stay trapped inside."
+    },
+    {
+      "cause": "Water keeps entering and the trapped solutes keep drawing it in.",
+      "effect": "Each cell swells until its membrane is stretched past its limit."
+    },
+    {
+      "cause": "The stretched membranes tear.",
+      "effect": "The cells burst (osmotic hemolysis) and spill their contents, including potassium, into the plasma."
+    }
+  ],
+  "misconception": {
+    "wrong": "A solution with the same osmolarity as a cell is always isotonic to it.",
+    "right": "Tonicity depends only on the solutes that cannot cross the membrane. Put red blood cells in 300 mOsm/L glycerol, which has the same osmolarity as the cells. Glycerol crosses red cell membranes, so it diffuses in; water follows it by osmosis, and the cells swell and burst. The glycerol solution is isosmotic but hypotonic. To predict what a solution does to a cell, count only the solutes that stay on their side."
+  },
+  "check": [
+    "anp-passive-transport-2",
+    "anp-passive-transport-4",
+    "anp-passive-transport-7",
+    "anp-passive-transport-10",
+    "anp-passive-transport-13",
+    "anp-passive-transport-16"
+  ],
+  "summary": "<p>Passive transport moves a substance down its gradient with no ATP spent by the cell. Small nonpolar molecules cross the bilayer by simple diffusion, whose rate rises in step with the gradient. Ions cross through selective, fast ion channels: leak channels stay open, and gated channels open to a voltage change, a binding molecule or a mechanical stretch. Water crosses fastest through aquaporins. Glucose crosses on carrier proteins by facilitated diffusion, which saturates at a transport maximum. Water follows nonpenetrating solutes, so an isotonic solution leaves a cell's volume unchanged, a hypotonic one swells it (osmotic hemolysis in red cells) and a hypertonic one shrinks it (crenation). Filtration pushes water and small solutes through a barrier by hydrostatic pressure.</p>",
+  "connections": []
+}

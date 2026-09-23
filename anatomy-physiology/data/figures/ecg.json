@@ -1,0 +1,30 @@
+{
+  "os-19-22": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.22",
+      "section": "19.2",
+      "page": "19-2-cardiac-muscle-and-electrical-activity",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/7df05b196f3f81d4b488a8558de4a385caa188bc"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/7df05b196f3f81d4b488a8558de4a385caa188bc",
+    "alt": "Outline of a standing body seen from the front with the rib cage drawn in. Dots mark where ECG electrodes go: one on each wrist, one on each ankle, and six across the chest, two beside the sternum and four curving out to the left under the left breast area.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.22",
+    "labels": []
+  },
+  "os-19-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.23",
+      "section": "19.2",
+      "page": "19-2-cardiac-muscle-and-electrical-activity",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d2b02a992ba896646801eae232b3acf8bfde879d"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/d2b02a992ba896646801eae232b3acf8bfde879d",
+    "alt": "Top: a regular ECG rhythm strip on grid paper, with a bracket showing that one large square is 5 millimeters and a box spanning 1 second. The tall spikes are four large squares apart. Bottom: an enlargement of two beats, labeling the P wave, the Q, R and S points of the QRS complex, and the T wave, with brackets for the PR interval, the QT interval, the PR segment, the ST segment and the QRS complex.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.23",
+    "labels": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "homeostasis": {
+    "def": "The maintenance of fairly stable conditions inside your body while conditions outside change. Each regulated variable moves within a normal range and is pulled back whenever it drifts.",
+    "roots": [["homeo-", "alike, same"], ["-stasis", "standing still"]],
+    "say": "hoh-mee-oh-STAY-sis"
+  },
+  "regulated-variable": {
+    "def": "A condition your body actively holds within a normal range, such as body temperature, blood pressure, blood pH or the level of glucose in the blood.",
+    "roots": [],
+    "say": ""
+  },
+  "set-point": {
+    "def": "The target value a feedback loop holds a regulated variable near, such as about 37 °C for body temperature. It sits inside the normal range and can shift, for example during an infection.",
+    "roots": [],
+    "say": ""
+  },
+  "sensory-receptor": {
+    "def": "In a feedback loop, the cell or structure that detects a change in a regulated variable (also called the sensor). It is a whole cell or structure, not a receptor protein.",
+    "roots": [["sens-", "to perceive"], ["recept-", "to receive"]],
+    "say": ""
+  },
+  "control-center": {
+    "def": "The part of a feedback loop that receives input from the afferent pathway, compares it with the set point, and sends commands along the efferent pathway (also called the integrating center).",
+    "roots": [],
+    "say": ""
+  },
+  "afferent-pathway": {
+    "def": "The route, usually a nerve, that carries information from the sensory receptor toward the control center.",
+    "roots": [["af- (ad-)", "toward"], ["fer", "to carry"]],
+    "say": "AF-er-ent"
+  },
+  "efferent-pathway": {
+    "def": "The route that carries commands away from the control center to the effector: nerves carrying action potentials, or a hormone traveling in the blood.",
+    "roots": [["ef- (ex-)", "away from"], ["fer", "to carry"]],
+    "say": "EF-er-ent"
+  },
+  "effector": {
+    "def": "The cell, tissue or organ that carries out the control center's command and so changes the regulated variable; almost always a muscle or a gland.",
+    "roots": [["effect-", "to bring about"], ["-or", "one who does"]],
+    "say": ""
+  },
+  "negative-feedback": {
+    "def": "A loop in which the response opposes the stimulus, moving the regulated variable back toward the set point; the loop switches itself off as the change shrinks. Most homeostatic loops work this way.",
+    "roots": [],
+    "say": ""
+  },
+  "positive-feedback": {
+    "def": "A loop in which the response strengthens the stimulus, pushing the variable further in the same direction until an event outside the loop ends it, as in childbirth and blood clotting.",
+    "roots": [],
+    "say": ""
+  },
+  "mass-balance": {
+    "def": "The rule that the amount of a substance in your body stays constant only when input (intake plus production) equals output (excretion plus use). If input exceeds output, the amount rises; if output exceeds input, it falls.",
+    "roots": [],
+    "say": ""
+  },
+  "homeostatic-imbalance": {
+    "def": "A state in which a regulated variable stays outside its normal range because some part of its feedback loop (sensor, control center, pathway or effector) has failed or been overwhelmed. Many diseases are failed regulation of this kind.",
+    "roots": [],
+    "say": ""
+  },
+  "feedback-examples": {
+    "def": "The loops this course returns to again and again: body temperature, blood pressure, glucose in the blood and red blood cell production (negative feedback), and childbirth contractions and blood clotting (positive feedback).",
+    "roots": [],
+    "say": ""
+  }
+}

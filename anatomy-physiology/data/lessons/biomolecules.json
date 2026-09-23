@@ -1,0 +1,74 @@
+{
+  "topic": "biomolecules",
+  "hook": "<p>Jordan, 19, skips breakfast and goes for a long run. Forty minutes in she is shaky, sweaty and can't think straight: the glucose level in her blood has dropped. A teammate hands her a packet of glucose gel, and within about ten minutes she feels steady again. A granola bar would have worked more slowly. The difference comes down to how big the molecules are and what your body has to do to split them.</p>",
+  "prereq": [
+    {
+      "q": "What is a covalent bond?",
+      "options": ["A weak attraction between partial charges on neighboring molecules", "The attraction between a cation and an anion", "A pair of electrons shared between two atoms"],
+      "correct": 2,
+      "why": "In a covalent bond two atoms share a pair of electrons. It is the strong bond that holds the atoms of large body molecules together.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "Why does oil separate from water instead of dissolving?",
+      "options": ["Oil is nonpolar, and water molecules hydrogen-bond to each other and squeeze it into clusters", "Oil carries a negative charge that water repels", "Oil molecules are held together by ionic bonds that water cannot break"],
+      "correct": 0,
+      "why": "Oil is hydrophobic. Water molecules attract each other far more strongly than they attract a nonpolar molecule, so the oil is pushed into its own layer.",
+      "review": "water-solutions"
+    },
+    {
+      "q": "What happens to atoms in a chemical reaction?",
+      "options": ["Some are destroyed and new ones are created", "Bonds break and form, and the same atoms end up in new substances", "Their number of protons changes"],
+      "correct": 1,
+      "why": "A chemical reaction rearranges atoms by breaking and forming bonds. No atom is created or destroyed, and no atom changes its element.",
+      "review": "atoms-ions-bonds"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-2-14",
+    "caption": "Dehydration synthesis joins two monomers and releases a molecule of water. Hydrolysis adds a water molecule and splits them apart again."
+  },
+  "chain": [
+    {
+      "cause": "You eat starch, a polysaccharide made of many glucose units.",
+      "effect": "Digestion adds a water molecule across each bond between the units (hydrolysis), freeing glucose monomers."
+    },
+    {
+      "cause": "Free glucose is small and hydrophilic.",
+      "effect": "It is absorbed and dissolves directly in the liquid part of your blood, which carries it to your cells."
+    },
+    {
+      "cause": "After a meal, glucose reaches your liver and muscle cells in large amounts.",
+      "effect": "The cells link thousands of glucose units into branched glycogen by dehydration synthesis, releasing one water molecule per new bond."
+    },
+    {
+      "cause": "Hours pass without food, and the glucose level in your blood starts to fall.",
+      "effect": "Liver cells hydrolyze glycogen at its many branch ends and release the glucose into your blood."
+    },
+    {
+      "cause": "Your cells take up that glucose and break it down.",
+      "effect": "The energy released rebuilds ATP from ADP and phosphate, and splitting ATP again powers muscle shortening, ion pumping and protein building."
+    }
+  ],
+  "misconception": {
+    "wrong": "When a protein is denatured, it is broken down into its amino acids.",
+    "right": "Denaturation changes a protein's shape, not its sequence. Heat or a change in hydrogen ion concentration breaks the weak hydrogen bonds and ionic bonds that hold the fold. The covalent peptide bonds between amino acids survive, so the chain is still whole, just unfolded and no longer able to do its job. Splitting a protein into amino acids takes hydrolysis of its peptide bonds, which is what digestion does."
+  },
+  "check": [
+    "anp-biomolecules-1",
+    "anp-biomolecules-3",
+    "anp-biomolecules-7",
+    "anp-biomolecules-9",
+    "anp-biomolecules-11",
+    "anp-biomolecules-16",
+    "anp-biomolecules-17"
+  ],
+  "summary": "<p>Most large molecules in your body are polymers built from monomers by dehydration synthesis, which releases water, and split by hydrolysis, which uses water. Carbohydrates are built from monosaccharides: glucose is the fuel your blood carries, and glycogen, a branched glucose polymer in liver and muscle, stores it. Lipids are mostly carbon and hydrogen, so they are hydrophobic: triglycerides store energy, amphipathic phospholipids form the two-layer boundary around cells, and steroids such as cholesterol are built on four carbon rings. Proteins are chains of 20 kinds of amino acid joined by peptide bonds; their sequence sets a folded shape, and the shape sets their function, which is lost when heat or a change in hydrogen ion concentration denatures them. Nucleic acids are chains of nucleotides that store and use hereditary instructions, and the nucleotide ATP releases energy for cell work when its outer phosphate is split off.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/carbohydrates.html", "label": "Organic chemistry: carbohydrates" },
+    { "href": "/ochem/lessons/lipids.html", "label": "Organic chemistry: lipids" },
+    { "href": "/ochem/lessons/amino-acids.html", "label": "Organic chemistry: amino acids" },
+    { "href": "/ochem/lessons/peptides-proteins.html", "label": "Organic chemistry: peptides and proteins" },
+    { "href": "/ochem/lessons/nucleic-acids.html", "label": "Organic chemistry: nucleic acids" }
+  ]
+}

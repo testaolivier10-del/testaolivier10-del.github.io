@@ -1,0 +1,1766 @@
+{
+ "about": "Authored A&P flashcards (docs/anp-spec.md 8.8): the comparison tables and key facts of the pilot topics, one card per fact. Glossary cards are made at runtime from assets/glossary.json. Each card: id (stable forever; stored as fc:<id>), topic (map topic id), core (core concept ids), level, compare (the comparison table it comes from, if any), front, back, why (the causal reason). The page shows only cards whose topic is built. Checked by scripts/lib/anp-tool-checks/flashcards.mjs.",
+ "version": 1,
+ "cards": [
+  {
+   "id": "planes-sagittal",
+   "topic": "body-planes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Sagittal vs frontal vs transverse planes",
+   "front": "Which plane divides the body into right and left parts?",
+   "back": "The sagittal plane. A midsagittal plane makes equal halves; a parasagittal plane makes unequal ones.",
+   "why": "A sagittal plane runs vertically from front to back, so it separates the right side from the left."
+  },
+  {
+   "id": "planes-frontal",
+   "topic": "body-planes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Sagittal vs frontal vs transverse planes",
+   "front": "Which plane divides the body into anterior and posterior parts?",
+   "back": "The frontal (coronal) plane.",
+   "why": "It runs vertically from side to side, so everything in front of it is anterior and everything behind it is posterior."
+  },
+  {
+   "id": "planes-transverse",
+   "topic": "body-planes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Sagittal vs frontal vs transverse planes",
+   "front": "Which plane divides the body into superior and inferior parts, and what is the cut surface called?",
+   "back": "The transverse (horizontal) plane; its cut surface is a cross section.",
+   "why": "A horizontal cut separates upper from lower, which is why CT slices, taken this way, show the body as stacked cross sections."
+  },
+  {
+   "id": "imaging-mri-ct",
+   "topic": "body-planes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Imaging methods",
+   "front": "A patient needs soft tissue of the brain shown in any plane, with no ionizing radiation. CT or MRI?",
+   "back": "MRI.",
+   "why": "MRI builds its images from a magnet and radio waves, so it uses no X-rays, and it can reconstruct sections in any plane with strong soft-tissue contrast. CT uses X-rays and is best for bone, bleeding and speed."
+  },
+  {
+   "id": "dir-proximal-distal",
+   "topic": "anatomical-position",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Directional term pairs",
+   "front": "Is the wrist proximal or distal to the elbow?",
+   "back": "Distal.",
+   "why": "Proximal and distal are measured from where the limb attaches to the trunk. The wrist is farther from the shoulder than the elbow is."
+  },
+  {
+   "id": "dir-medial-lateral",
+   "topic": "anatomical-position",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Directional term pairs",
+   "front": "In anatomical position, is the thumb medial or lateral to the little finger?",
+   "back": "Lateral.",
+   "why": "Anatomical position has the palms facing forward, which puts the thumb on the side away from the midline."
+  },
+  {
+   "id": "dir-superficial-deep",
+   "topic": "anatomical-position",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Directional term pairs",
+   "front": "Superficial vs deep: what do they describe?",
+   "back": "Superficial means toward the body surface; deep means away from it.",
+   "why": "They describe depth, not height, so skin is superficial to muscle anywhere on the body."
+  },
+  {
+   "id": "dir-ipsi-contra",
+   "topic": "anatomical-position",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Directional term pairs",
+   "front": "Ipsilateral vs contralateral?",
+   "back": "Ipsilateral: on the same side of the body. Contralateral: on the opposite side.",
+   "why": "Both compare sides relative to the midline, so the right hand and left foot are contralateral."
+  },
+  {
+   "id": "anat-position",
+   "topic": "anatomical-position",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Describe anatomical position.",
+   "back": "Standing upright, facing forward, feet flat and slightly apart, arms at the sides with the palms facing forward.",
+   "why": "Every directional term is defined from this one fixed pose, so a description stays correct whatever position the body is actually in."
+  },
+  {
+   "id": "ectomy-ostomy",
+   "topic": "word-parts",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "-tomy vs -ectomy vs -ostomy",
+   "front": "Nephrectomy vs nephrostomy: which leaves the kidney in place?",
+   "back": "Nephrostomy: it makes an opening from the kidney to the outside.",
+   "why": "-ectomy means cutting out (removal); -ostomy means making an opening. -tomy alone is just cutting into."
+  },
+  {
+   "id": "levels-order",
+   "topic": "body-organization",
+   "core": [
+    "structure-function",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "List the levels of organization from smallest to largest.",
+   "back": "Chemical, cell, tissue, organ, organ system, organism.",
+   "why": "Each level is built from the one below it: molecules make cells, similar cells make tissues, two or more tissues make an organ."
+  },
+  {
+   "id": "cavity-dorsal",
+   "topic": "body-cavities",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "front": "What two cavities make up the dorsal body cavity, and what do they hold?",
+   "back": "The cranial cavity (brain) and the vertebral canal (spinal cord).",
+   "why": "Both are enclosed by bone, which is why the organs of the nervous system that they hold are well protected."
+  },
+  {
+   "id": "cavity-ventral",
+   "topic": "body-cavities",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "front": "What separates the thoracic cavity from the abdominopelvic cavity?",
+   "back": "The diaphragm.",
+   "why": "The diaphragm is a dome of muscle across the trunk, so it forms the floor of the thoracic cavity and the roof of the abdominopelvic cavity."
+  },
+  {
+   "id": "quadrants-vs-regions",
+   "topic": "body-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Abdominal quadrants vs nine regions",
+   "front": "Four quadrants vs nine regions: how is each grid drawn?",
+   "back": "Quadrants: one vertical and one horizontal line through the navel. Regions: two vertical and two horizontal lines, like a tic-tac-toe grid.",
+   "why": "The four quadrants are quick for describing where pain is; the nine regions are finer, so they place organs more precisely."
+  },
+  {
+   "id": "region-epigastric",
+   "topic": "body-regions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Abdominal quadrants vs nine regions",
+   "front": "Name the middle column of the nine abdominal regions, from top to bottom.",
+   "back": "Epigastric, umbilical, hypogastric (pubic).",
+   "why": "Epi- means above and gastr- means stomach; the umbilical region surrounds the navel; hypo- means below."
+  },
+  {
+   "id": "bond-ionic",
+   "topic": "atoms-ions-bonds",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Ionic vs covalent vs hydrogen bonds",
+   "front": "Ionic vs covalent bond: what happens to the electrons?",
+   "back": "Ionic: electrons are transferred, making a cation and an anion. Covalent: electrons are shared in pairs.",
+   "why": "Transfer leaves two full, opposite charges that attract; sharing holds two nuclei around the same electron pair."
+  },
+  {
+   "id": "bond-hydrogen",
+   "topic": "atoms-ions-bonds",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Ionic vs covalent vs hydrogen bonds",
+   "front": "What holds a hydrogen bond together?",
+   "back": "The attraction between a partly positive hydrogen and a partly negative oxygen or nitrogen on another molecule or another part of the same one.",
+   "why": "No electrons are shared or transferred; the partial charges come from unequal sharing inside polar covalent bonds."
+  },
+  {
+   "id": "bond-strength-water",
+   "topic": "atoms-ions-bonds",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Ionic vs covalent vs hydrogen bonds",
+   "front": "In the watery inside of your body, which bond type stays strong: ionic, covalent or hydrogen?",
+   "back": "Covalent.",
+   "why": "Water molecules surround and separate ions, which weakens ionic bonds, and hydrogen bonds break and re-form constantly. A shared electron pair is not pulled apart by water."
+  },
+  {
+   "id": "solution-colloid-suspension",
+   "topic": "water-solutions",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Solutions vs colloids vs suspensions",
+   "front": "Blood left standing in a tube separates. Which part of blood behaves as a suspension?",
+   "back": "The blood cells.",
+   "why": "They are large enough to settle out under gravity. Dissolved ions stay evenly spread as a true solution, and very large molecules stay dispersed without settling."
+  },
+  {
+   "id": "exergonic-endergonic",
+   "topic": "enzymes-energy",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Exergonic vs endergonic reactions",
+   "front": "Exergonic vs endergonic: which needs to be paired with another reaction to proceed?",
+   "back": "Endergonic.",
+   "why": "Its products hold more energy than its reactants, so the energy has to come from an energy-releasing (exergonic) reaction, usually ATP breakdown."
+  },
+  {
+   "id": "catab-anab",
+   "topic": "enzymes-energy",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Catabolism vs anabolism",
+   "front": "Catabolism vs anabolism: which builds large molecules, and which usually releases energy?",
+   "back": "Anabolism builds large molecules (and takes in energy); catabolism breaks them down and usually releases energy.",
+   "why": "Joining small units stores energy in new bonds; breaking large molecules into lower-energy products frees it."
+  },
+  {
+   "id": "oxidation-reduction",
+   "topic": "enzymes-energy",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Oxidation vs reduction",
+   "front": "When NAD+ becomes NADH, is NAD+ oxidized or reduced?",
+   "back": "Reduced.",
+   "why": "Reduction means gaining electrons, and in body chemistry that usually comes with hydrogen. NAD+ picks up both."
+  },
+  {
+   "id": "enzyme-activation",
+   "topic": "enzymes-energy",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does an enzyme change about a reaction, and what does it leave unchanged?",
+   "back": "It lowers the activation energy, so the reaction runs faster. It does not change the energy released or taken in overall, and it is not used up.",
+   "why": "By holding the reactants in the right position at its active site, the enzyme makes the transition state easier to reach."
+  },
+  {
+   "id": "flow-radius",
+   "topic": "gradients-flow",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Raising the pressure gradient vs lowering the resistance",
+   "front": "A vessel's radius doubles and the pressure gradient stays the same. What happens to flow?",
+   "back": "Flow rises about 16-fold.",
+   "why": "Resistance falls with the fourth power of the radius (2 x 2 x 2 x 2 = 16), and flow equals the pressure gradient divided by resistance."
+  },
+  {
+   "id": "flow-pressure",
+   "topic": "gradients-flow",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Raising the pressure gradient vs lowering the resistance",
+   "front": "The pressure difference along a tube doubles and resistance stays the same. What happens to flow?",
+   "back": "Flow doubles.",
+   "why": "Flow is directly proportional to the pressure gradient (flow = pressure gradient / resistance)."
+  },
+  {
+   "id": "flow-law",
+   "topic": "gradients-flow",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "Write the relationship between flow, pressure gradient and resistance.",
+   "back": "Flow = pressure gradient / resistance.",
+   "why": "Fluid moves because pressure is higher at one end; anything that resists the movement (narrow radius, long tube, thick fluid) reduces flow for the same push."
+  },
+  {
+   "id": "ph-log",
+   "topic": "acids-bases-ph",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Acid vs base vs buffer",
+   "front": "pH falls from 7.4 to 6.4. How does the hydrogen ion concentration change?",
+   "back": "It rises 10-fold.",
+   "why": "pH is the negative logarithm of the hydrogen ion concentration, so each whole unit down is ten times more hydrogen ions."
+  },
+  {
+   "id": "ph-buffer",
+   "topic": "acids-bases-ph",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Acid vs base vs buffer",
+   "front": "Acid vs base vs buffer: what does each do?",
+   "back": "An acid releases hydrogen ions; a base takes them up (or releases hydroxide); a buffer takes up or releases hydrogen ions to resist a change in pH.",
+   "why": "A buffer is a pair (a weak acid and its partner base), so it can soak up added acid or added base."
+  },
+  {
+   "id": "ph-blood",
+   "topic": "acids-bases-ph",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What is the normal pH range of arterial blood?",
+   "back": "7.35 to 7.45.",
+   "why": "Hydrogen ions bind to proteins and change their charges, so proteins change shape and stop working outside a narrow pH range. Blood pH is held within these limits."
+  },
+  {
+   "id": "diffusion-vs-osmosis",
+   "topic": "diffusion-osmosis",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Diffusion vs osmosis vs bulk flow",
+   "front": "Diffusion vs osmosis vs bulk flow: what moves, and what drives it?",
+   "back": "Diffusion: solute moves down its own concentration gradient. Osmosis: water moves across a selectively permeable membrane toward the side with more solute. Bulk flow: whole fluid moves down a pressure gradient.",
+   "why": "Diffusion and osmosis come from random molecular motion; bulk flow needs a pressure difference, such as the one the heart creates."
+  },
+  {
+   "id": "osmosis-direction",
+   "topic": "diffusion-osmosis",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Diffusion vs osmosis vs bulk flow",
+   "front": "Solute that cannot cross a membrane is added to one side. Which way does water move?",
+   "back": "Toward the side with the added solute.",
+   "why": "That side now has a lower water concentration, so there is net movement of water into it."
+  },
+  {
+   "id": "volt-current",
+   "topic": "electricity-basics",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "Voltage vs current in the body?",
+   "back": "Voltage is a difference in electrical charge between two places. Current is the flow of charge, carried in the body by ions.",
+   "why": "Separated charge is stored potential energy; it drives a current only where there is a path, such as open ion channels."
+  },
+  {
+   "id": "ecf-icf-na-k",
+   "topic": "plasma-membrane",
+   "core": [
+    "compartments",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Extracellular vs intracellular fluid",
+   "front": "Which ion is high outside cells and which is high inside?",
+   "back": "Sodium is high outside (about 145 mmol/L); potassium is high inside (about 140 mmol/L).",
+   "why": "A membrane pump that spends ATP keeps moving sodium out and potassium in, which maintains these opposite gradients."
+  },
+  {
+   "id": "membrane-bilayer",
+   "topic": "plasma-membrane",
+   "core": [
+    "compartments",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why can oxygen cross the plasma membrane easily but sodium ions cannot?",
+   "back": "Oxygen is small and nonpolar, so it dissolves through the hydrophobic core of the bilayer. Charged ions are repelled by that core and need proteins to cross.",
+   "why": "The phospholipid tails form a water-free middle layer that blocks charged and polar particles."
+  },
+  {
+   "id": "rough-smooth-er",
+   "topic": "organelles",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "compare": "Rough ER vs smooth ER",
+   "front": "Rough ER vs smooth ER: main jobs?",
+   "back": "Rough ER: folds and modifies proteins made on its ribosomes. Smooth ER: makes lipids and steroids, breaks down some drugs and stores calcium.",
+   "why": "Rough ER is studded with ribosomes, so proteins are delivered straight into it; smooth ER has none."
+  },
+  {
+   "id": "cytoskeleton-widths",
+   "topic": "organelles",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "compare": "Microfilaments vs intermediate filaments vs microtubules",
+   "front": "Rank microfilaments, intermediate filaments and microtubules from thinnest to thickest.",
+   "back": "Microfilaments (about 7 nm), intermediate filaments (about 10 nm), microtubules (about 25 nm).",
+   "why": "Microfilaments are twisted actin strands, intermediate filaments are rope-like proteins, and microtubules are hollow tubes of tubulin."
+  },
+  {
+   "id": "intermediate-filaments",
+   "topic": "organelles",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "Microfilaments vs intermediate filaments vs microtubules",
+   "front": "Which cytoskeleton fiber is most permanent and best at resisting pulling forces?",
+   "back": "Intermediate filaments.",
+   "why": "Their rope-like proteins are tough and are not rapidly built and taken apart, so they hold cells in shape under tension."
+  },
+  {
+   "id": "cilia-microvilli",
+   "topic": "organelles",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "Cilia vs flagellum vs microvilli",
+   "front": "Cilia vs microvilli: which moves, and which increases surface area?",
+   "back": "Cilia beat and move fluid across the cell surface. Microvilli do not move; they increase surface area for absorption.",
+   "why": "Cilia have a microtubule core that motor proteins bend; microvilli have an actin core that only holds their shape."
+  },
+  {
+   "id": "mitochondria",
+   "topic": "organelles",
+   "core": [
+    "structure-function",
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What happens in mitochondria?",
+   "back": "Most of the cell's ATP is made there, using oxygen.",
+   "why": "The folded inner membrane holds the proteins that make ATP; its folds give room for many of them."
+  },
+  {
+   "id": "junction-tight",
+   "topic": "cell-junctions",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Tight junction vs desmosome vs gap junction",
+   "front": "Which junction stops fluid leaking between the cells of the intestine or bladder lining?",
+   "back": "The tight junction.",
+   "why": "Claudins and occludin fuse neighboring membranes in a continuous band, so there is no space for fluid to pass between the cells."
+  },
+  {
+   "id": "junction-desmosome",
+   "topic": "cell-junctions",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Tight junction vs desmosome vs gap junction",
+   "front": "Which junction keeps skin cells from pulling apart, and what is it tied to inside the cell?",
+   "back": "The desmosome, tied to intermediate filaments.",
+   "why": "Cadherins bridge the gap between cells, and intermediate filaments spread the pulling force through each cell."
+  },
+  {
+   "id": "junction-gap",
+   "topic": "cell-junctions",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Tight junction vs desmosome vs gap junction",
+   "front": "Which junction lets heart muscle cells act together, and how?",
+   "back": "The gap junction: connexon tunnels let ions pass directly from cell to cell.",
+   "why": "Ions carrying an electrical change flow straight into the neighboring cell, so the change spreads through the tissue."
+  },
+  {
+   "id": "passive-vs-active",
+   "topic": "active-transport",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Passive vs active transport",
+   "front": "Passive vs active transport: direction and energy source?",
+   "back": "Passive: down a gradient, powered by the gradient itself. Active: against a gradient, powered by ATP directly (primary) or by another gradient (secondary).",
+   "why": "Moving a substance from low to high concentration takes energy; moving it downhill releases energy."
+  },
+  {
+   "id": "na-k-pump",
+   "topic": "active-transport",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Passive vs active transport",
+   "front": "For each ATP it uses, what does the sodium-potassium pump move?",
+   "back": "3 sodium ions out and 2 potassium ions in.",
+   "why": "Both move against their gradients, so the pump uses ATP directly: it is primary active transport."
+  },
+  {
+   "id": "secondary-active",
+   "topic": "active-transport",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Passive vs active transport",
+   "front": "Glucose enters intestinal cells together with sodium, against its own gradient. What powers it?",
+   "back": "The sodium gradient: this is secondary active transport.",
+   "why": "Sodium rushing in down its gradient carries glucose with it. The gradient exists only because the sodium-potassium pump spends ATP, so ATP is used indirectly."
+  },
+  {
+   "id": "facilitated-saturation",
+   "topic": "passive-transport",
+   "core": [
+    "gradients",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "Simple vs facilitated diffusion vs channels",
+   "front": "Why does facilitated diffusion level off at high concentrations while simple diffusion does not?",
+   "back": "Facilitated diffusion uses a limited number of carrier proteins, which become saturated.",
+   "why": "Once every carrier is busy, adding more solute cannot speed transport; simple diffusion through the bilayer has no such limit."
+  },
+  {
+   "id": "tonicity-hypotonic",
+   "topic": "passive-transport",
+   "core": [
+    "gradients",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "Isotonic vs hypotonic vs hypertonic",
+   "front": "A red blood cell is placed in a hypotonic solution. What happens?",
+   "back": "Water enters the cell; it swells and can burst (hemolysis).",
+   "why": "The solution has less solute that cannot cross than the cell does, so water moves by osmosis into the cell."
+  },
+  {
+   "id": "tonicity-hypertonic",
+   "topic": "passive-transport",
+   "core": [
+    "gradients",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "Isotonic vs hypotonic vs hypertonic",
+   "front": "A red blood cell is placed in a hypertonic solution. What happens?",
+   "back": "Water leaves the cell; it shrinks and crenates.",
+   "why": "The outside has more solute that cannot cross, so water moves out of the cell by osmosis."
+  },
+  {
+   "id": "dna-vs-rna",
+   "topic": "protein-synthesis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "DNA vs RNA",
+   "front": "DNA vs RNA: sugar, bases and strands?",
+   "back": "DNA: deoxyribose; A, T, G, C; two strands. RNA: ribose; A, U, G, C; usually one strand.",
+   "why": "Uracil replaces thymine in RNA and still pairs with adenine, so RNA can copy a gene's code."
+  },
+  {
+   "id": "transcription-translation",
+   "topic": "protein-synthesis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Transcription vs translation: what is made, and where?",
+   "back": "Transcription: an RNA copy of a gene is made in the nucleus. Translation: ribosomes in the cytoplasm read mRNA to build a protein.",
+   "why": "DNA stays in the nucleus, so a messenger copy has to carry the instructions out to the ribosomes."
+  },
+  {
+   "id": "codon",
+   "topic": "protein-synthesis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a codon?",
+   "back": "A sequence of three mRNA bases that stands for one amino acid (or a stop signal).",
+   "why": "Transfer RNA with the matching three-base anticodon brings the right amino acid to the ribosome."
+  },
+  {
+   "id": "chromatin-chromatid",
+   "topic": "dna-genes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Chromatin vs chromosome vs chromatid",
+   "front": "Chromosome vs chromatid?",
+   "back": "A chromosome is one whole DNA molecule with its proteins. A chromatid is one of the two identical copies of a chromosome after it has been copied, held together until they separate.",
+   "why": "Copying doubles the DNA molecules; the two copies stay joined as sister chromatids until the cell divides."
+  },
+  {
+   "id": "chromosome-count",
+   "topic": "dna-genes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Chromatin vs chromosome vs chromatid",
+   "front": "How many chromosomes are in one of your body cells?",
+   "back": "46 (23 pairs).",
+   "why": "You inherit one set of 23 from each parent."
+  },
+  {
+   "id": "oncogene-suppressor",
+   "topic": "cell-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Oncogene vs tumor suppressor gene",
+   "front": "Why must usually both copies of a tumor suppressor gene be mutated, but only one copy of an oncogene?",
+   "back": "A tumor suppressor is a brake: one working copy still stops division. An oncogene is a stuck accelerator: one overactive copy is enough to push division.",
+   "why": "Loss of function needs both copies gone; a gain of function shows up even with one normal copy present."
+  },
+  {
+   "id": "cell-cycle-phases",
+   "topic": "cell-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "In which phase of the cell cycle is DNA copied?",
+   "back": "The S (synthesis) phase of interphase.",
+   "why": "The cell must copy all 46 DNA molecules before mitosis so each daughter cell gets a full set."
+  },
+  {
+   "id": "aerobic-anaerobic",
+   "topic": "cellular-respiration",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Aerobic vs anaerobic metabolism",
+   "front": "Aerobic vs anaerobic breakdown of one glucose: roughly how much ATP, and what is the end product?",
+   "back": "Aerobic: about 30 to 32 ATP; carbon dioxide and water. Anaerobic: 2 ATP; lactate.",
+   "why": "Without oxygen, the electron transport chain stops, so only glycolysis runs. Turning pyruvate into lactate regenerates NAD+ so glycolysis can continue."
+  },
+  {
+   "id": "respiration-stages",
+   "topic": "cellular-respiration",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Name the stages of aerobic cellular respiration in order.",
+   "back": "Glycolysis (cytosol), the citric acid cycle (mitochondria), then the electron transport chain (inner mitochondrial membrane).",
+   "why": "Glycolysis splits glucose; the citric acid cycle strips its carbons to carbon dioxide and loads NADH; the electron transport chain uses NADH and oxygen to make most of the ATP."
+  },
+  {
+   "id": "epi-simple-squamous",
+   "topic": "epithelium",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "The epithelial types",
+   "front": "Why are the air sacs of the lungs lined with simple squamous epithelium?",
+   "back": "One layer of flat cells gives the shortest path for gases to diffuse.",
+   "why": "Diffusion time rises steeply with distance, so the thinnest possible barrier speeds exchange."
+  },
+  {
+   "id": "epi-strat-squamous",
+   "topic": "epithelium",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "apply",
+   "compare": "The epithelial types",
+   "front": "Keratinized vs nonkeratinized stratified squamous epithelium: where is each?",
+   "back": "Keratinized: the epidermis of the skin. Nonkeratinized: moist surfaces such as the mouth, esophagus and vagina.",
+   "why": "Many layers resist wear; keratin in dead surface cells also resists water loss, which a dry surface needs."
+  },
+  {
+   "id": "epi-transitional",
+   "topic": "epithelium",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "compare": "The epithelial types",
+   "front": "Where is transitional epithelium, and what does it allow?",
+   "back": "In the ureters, bladder and first part of the urethra; it stretches without tearing.",
+   "why": "Its dome-shaped surface cells flatten as the organ fills, so the lining gets thinner and wider instead of splitting."
+  },
+  {
+   "id": "epi-pseudostrat",
+   "topic": "epithelium",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "compare": "The epithelial types",
+   "front": "Pseudostratified ciliated columnar epithelium: how many layers, and where?",
+   "back": "One layer that looks like several; it lines the inside of the nose, the trachea and the larger airways.",
+   "why": "Every cell touches the basement membrane, but nuclei sit at different heights. Goblet cells make mucus and cilia sweep it out."
+  },
+  {
+   "id": "epi-avascular",
+   "topic": "epithelium",
+   "core": [
+    "structure-function",
+    "compartments"
+   ],
+   "level": "recall",
+   "front": "How does epithelium get oxygen and nutrients if it has no blood vessels?",
+   "back": "By diffusion from blood vessels in the tissue beneath the basement membrane.",
+   "why": "Epithelium is avascular, so substances diffuse up from the underlying tissue."
+  },
+  {
+   "id": "loose-dense-ct",
+   "topic": "connective-tissue",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Loose vs dense connective tissue",
+   "front": "Why do tendons heal slowly compared with areolar tissue?",
+   "back": "Dense connective tissue has a poor blood supply and few cells, mostly fibroblasts.",
+   "why": "Repair needs delivered nutrients and cells that make new fibers, and tendons have little of either."
+  },
+  {
+   "id": "dense-regular",
+   "topic": "connective-tissue",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Loose vs dense connective tissue",
+   "front": "Dense regular vs dense irregular connective tissue: fiber arrangement and example?",
+   "back": "Regular: parallel collagen fibers, as in tendons and ligaments. Irregular: fibers in all directions, as in the dermis.",
+   "why": "Parallel fibers resist pulling in one direction; interwoven fibers resist pulling from any direction."
+  },
+  {
+   "id": "cartilage-types",
+   "topic": "connective-tissue",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Hyaline vs fibrocartilage vs elastic cartilage",
+   "front": "Which cartilage is in intervertebral discs, and why that kind?",
+   "back": "Fibrocartilage: its thick collagen bundles resist both compression and pulling.",
+   "why": "Discs are squeezed and pulled as the spine bends, so they need the strongest cartilage."
+  },
+  {
+   "id": "cartilage-elastic",
+   "topic": "connective-tissue",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Hyaline vs fibrocartilage vs elastic cartilage",
+   "front": "Which cartilage shapes the ear flap and epiglottis?",
+   "back": "Elastic cartilage.",
+   "why": "Its dense web of elastic fibers lets it bend and spring back to shape."
+  },
+  {
+   "id": "cartilage-hyaline",
+   "topic": "connective-tissue",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Hyaline vs fibrocartilage vs elastic cartilage",
+   "front": "Which cartilage covers joint surfaces and forms the rings in the trachea wall?",
+   "back": "Hyaline cartilage.",
+   "why": "Its fine collagen fibers make a smooth, glassy, slightly flexible surface that resists compression."
+  },
+  {
+   "id": "muscle-types",
+   "topic": "muscle-tissue-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs cardiac vs smooth muscle",
+   "front": "Which muscle types are striated, and which is voluntary?",
+   "back": "Skeletal and cardiac are striated. Only skeletal is voluntary.",
+   "why": "Striations come from regularly lined-up contractile proteins. Voluntary means you decide when it contracts; cardiac and smooth muscle contract without your choosing."
+  },
+  {
+   "id": "muscle-cardiac-junctions",
+   "topic": "muscle-tissue-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs cardiac vs smooth muscle",
+   "front": "What joins cardiac muscle cells, and what does each part do?",
+   "back": "Intercalated discs: desmosomes hold the cells together; gap junctions pass the electrical signal from cell to cell.",
+   "why": "The heart squeezes hard and must contract as a unit, so it needs both strong mechanical links and electrical links."
+  },
+  {
+   "id": "muscle-repair",
+   "topic": "muscle-tissue-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Skeletal vs cardiac vs smooth muscle",
+   "front": "Which muscle type repairs itself worst, and what fills the gap?",
+   "back": "Cardiac muscle; connective tissue fills the gap left by lost fibers.",
+   "why": "Adult cardiac muscle cells rarely divide and there are few stem cells beside them, so dead cells are replaced by connective tissue."
+  },
+  {
+   "id": "neuron-glia",
+   "topic": "nervous-tissue-overview",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Neurons vs neuroglia: what does each do?",
+   "back": "Neurons carry electrical signals. Neuroglia support, protect and nourish neurons, and some wrap axons in insulating layers.",
+   "why": "Neurons are the signaling cells; glial cells, which greatly outnumber them, keep the environment around them right."
+  },
+  {
+   "id": "rmp-value",
+   "topic": "membrane-potential",
+   "core": [
+    "gradients",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Potassium leak vs the sodium-potassium pump",
+   "front": "What creates most of the resting membrane potential of about -70 mV?",
+   "back": "Potassium leaking out through potassium leak channels.",
+   "why": "As positive potassium ions leave down their gradient, they leave behind large negative molecules that cannot follow, so the inside becomes negative."
+  },
+  {
+   "id": "rmp-pump",
+   "topic": "membrane-potential",
+   "core": [
+    "gradients",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Potassium leak vs the sodium-potassium pump",
+   "front": "If the sodium-potassium pump stopped, would the resting potential vanish at once?",
+   "back": "No. It shifts only a few millivolts at first, then fades slowly as the gradients run down.",
+   "why": "The pump contributes only a few millivolts directly; its main job is keeping the sodium and potassium gradients from running down."
+  },
+  {
+   "id": "graded-vs-ap",
+   "topic": "action-potential-basics",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Graded potential vs action potential",
+   "front": "Graded potential vs action potential: which varies with stimulus size, and which is all-or-none?",
+   "back": "Graded potentials vary with stimulus size and fade with distance. Action potentials are all-or-none and keep full size along the axon.",
+   "why": "An action potential is regenerated at each patch of membrane by voltage-gated channels once threshold is reached."
+  },
+  {
+   "id": "ap-sequence",
+   "topic": "action-potential-basics",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "Which ion movements cause the rising and falling phases of an action potential?",
+   "back": "Rising (depolarization): sodium flows in through voltage-gated sodium channels. Falling (repolarization): potassium flows out through voltage-gated potassium channels.",
+   "why": "At threshold the sodium channels open first; they then inactivate while slower potassium channels open."
+  },
+  {
+   "id": "refractory",
+   "topic": "action-potential-basics",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Graded potential vs action potential",
+   "front": "Why can two action potentials not add together the way graded potentials can?",
+   "back": "The refractory period: inactivated sodium channels cannot reopen until the membrane repolarizes.",
+   "why": "During the refractory period a second stimulus cannot trigger a new action potential, so each one stays separate."
+  },
+  {
+   "id": "messenger-solubility",
+   "topic": "chemical-signaling",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Water-soluble vs lipid-soluble messengers",
+   "front": "Where is the receptor protein for a lipid-soluble messenger such as a steroid, and why?",
+   "back": "Inside the cell (cytosol or nucleus), because the messenger diffuses through the phospholipid bilayer.",
+   "why": "A water-soluble messenger cannot cross the bilayer, so its receptor protein has to be on the cell surface."
+  },
+  {
+   "id": "messenger-speed",
+   "topic": "chemical-signaling",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Water-soluble vs lipid-soluble messengers",
+   "front": "Why do lipid-soluble messengers act slowly (hours) but last long?",
+   "back": "They change which genes are expressed, so the cell has to make new proteins.",
+   "why": "Water-soluble messengers instead change the activity of proteins the cell already has, which takes milliseconds to minutes."
+  },
+  {
+   "id": "nervous-endocrine",
+   "topic": "chemical-signaling",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Nervous vs endocrine signaling",
+   "front": "Nervous vs endocrine signaling: speed, reach and duration?",
+   "back": "Nervous: milliseconds, only the cell across each synapse, brief. Endocrine: seconds to hours, every target cell the blood reaches, minutes to days.",
+   "why": "A neurotransmitter crosses one tiny gap and is cleared fast; a hormone travels in blood to any cell with its receptor protein."
+  },
+  {
+   "id": "glands-endo-exo",
+   "topic": "glands",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Endocrine vs exocrine glands",
+   "front": "Endocrine vs exocrine gland: duct, and where does the product go?",
+   "back": "Exocrine: has a duct; product goes onto a surface. Endocrine: ductless; product goes into interstitial fluid and then blood.",
+   "why": "Endocrine glands grow from epithelium that lost its link to the surface, so blood is their only route out."
+  },
+  {
+   "id": "secretion-modes",
+   "topic": "glands",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Merocrine vs apocrine vs holocrine secretion",
+   "front": "Merocrine, apocrine, holocrine: which destroys the cell?",
+   "back": "Holocrine: the whole cell breaks apart and becomes the product, as in oil glands of the skin.",
+   "why": "Merocrine releases only vesicle contents by exocytosis; apocrine loses the apical part of the cell and repairs it."
+  },
+  {
+   "id": "membranes-four",
+   "topic": "tissue-membranes-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Mucous vs serous vs cutaneous vs synovial membranes",
+   "front": "Which body membrane lines a closed body cavity, and what fluid does it make?",
+   "back": "A serous membrane; it makes serous fluid, which lets organs slide with little friction.",
+   "why": "Mucous membranes line tracts open to the outside, and synovial membranes line movable joints."
+  },
+  {
+   "id": "membrane-synovial",
+   "topic": "tissue-membranes-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mucous vs serous vs cutaneous vs synovial membranes",
+   "front": "Which body membrane has no epithelium?",
+   "back": "The synovial membrane.",
+   "why": "It is a connective tissue membrane: its surface is a layer of connective tissue cells, not an epithelium."
+  },
+  {
+   "id": "necrosis-apoptosis",
+   "topic": "tissue-membranes-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Necrosis vs apoptosis",
+   "front": "Necrosis vs apoptosis: which causes inflammation, and why?",
+   "back": "Necrosis. The cell swells and its membrane ruptures, spilling contents that trigger inflammation.",
+   "why": "In apoptosis the cell shrinks and is packaged into sealed pieces, so nothing leaks out."
+  },
+  {
+   "id": "neg-pos-feedback",
+   "topic": "homeostasis-feedback",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Negative vs positive feedback",
+   "front": "Negative vs positive feedback: how does the response relate to the stimulus?",
+   "back": "Negative feedback opposes the stimulus, returning the variable toward its set point. Positive feedback strengthens the stimulus, driving it further.",
+   "why": "That is why negative loops switch themselves off and positive loops need an outside event to end them."
+  },
+  {
+   "id": "pos-examples",
+   "topic": "homeostasis-feedback",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Negative vs positive feedback",
+   "front": "Give two examples of positive feedback in the body.",
+   "back": "Childbirth contractions and blood clotting.",
+   "why": "Both are events that must finish quickly: each step triggers more of itself until the baby is delivered or the clot is formed."
+  },
+  {
+   "id": "loop-parts",
+   "topic": "homeostasis-feedback",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "front": "List the parts of a feedback loop in order.",
+   "back": "Stimulus, sensory receptor (sensor), afferent pathway, control center, efferent pathway, effector, response.",
+   "why": "The sensor detects the change and reports it inward (afferent); the control center compares it with the set point and sends commands outward (efferent) to the effector."
+  },
+  {
+   "id": "thermo-cold",
+   "topic": "homeostasis-feedback",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Body temperature loop",
+   "front": "Body temperature falls. Name the effectors and what they do.",
+   "back": "Smooth muscle in skin blood vessels constricts them, so less heat is lost; skeletal muscles shiver, releasing heat.",
+   "why": "Both responses oppose the fall, so this is negative feedback."
+  },
+  {
+   "id": "pericardium-layers",
+   "topic": "heart-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Fibrous vs serous pericardium",
+   "front": "Fibrous vs serous pericardium: what does each do?",
+   "back": "Fibrous: tough outer bag that anchors the heart and limits how far it can expand. Serous: two thin layers with serous fluid between them, so the heart slides with little friction.",
+   "why": "Dense collagen resists stretch; mesothelium secretes the lubricating fluid."
+  },
+  {
+   "id": "heart-wall-layers",
+   "topic": "heart-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epicardium vs myocardium vs endocardium",
+   "front": "Name the three layers of the heart wall from outside in.",
+   "back": "Epicardium, myocardium, endocardium.",
+   "why": "The epicardium is the visceral pericardium; the myocardium is the thick cardiac muscle that pumps; the endocardium is the smooth endothelial lining."
+  },
+  {
+   "id": "heart-position",
+   "topic": "heart-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where does the heart sit, and where does its apex point?",
+   "back": "In the mediastinum, between the lungs, just above the diaphragm; the apex points down, forward and to the left.",
+   "why": "That tilt is why the heartbeat is felt most strongly on the left of the chest."
+  },
+  {
+   "id": "av-vs-semilunar",
+   "topic": "heart-chambers-valves",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "AV valves vs semilunar valves",
+   "front": "Which valves have chordae tendineae and papillary muscles?",
+   "back": "The atrioventricular (tricuspid and mitral) valves.",
+   "why": "When the ventricle squeezes, the papillary muscles pull on the cords so the flaps cannot flip back into the atrium. Semilunar cusps need no cords."
+  },
+  {
+   "id": "valve-names",
+   "topic": "heart-chambers-valves",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "AV valves vs semilunar valves",
+   "front": "Name the four heart valves by side.",
+   "back": "Right: tricuspid and pulmonary. Left: mitral (bicuspid) and aortic.",
+   "why": "Each side has one atrioventricular valve and one semilunar valve at the exit to its artery."
+  },
+  {
+   "id": "valve-opening",
+   "topic": "heart-chambers-valves",
+   "core": [
+    "structure-function",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "AV valves vs semilunar valves",
+   "front": "What opens and closes a heart valve?",
+   "back": "The pressure difference across it: a valve opens when pressure behind it is higher and closes when pressure ahead of it is higher.",
+   "why": "Valves are passive flaps; muscle does not push them open."
+  },
+  {
+   "id": "great-vessels",
+   "topic": "heart-chambers-valves",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Vessels at each chamber",
+   "front": "Which vessels enter the left atrium, and what do they carry?",
+   "back": "The pulmonary veins, usually four, carrying blood that has just picked up oxygen in the lungs.",
+   "why": "They are veins because they carry blood toward the heart, even though that blood carries plenty of oxygen."
+  },
+  {
+   "id": "ventricle-walls",
+   "topic": "heart-chambers-valves",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the left ventricle wall much thicker than the right?",
+   "back": "It pumps blood to the whole body, against far more resistance, so it must make about 120 mm Hg, versus about 25 mm Hg for the right, which pumps only through the lungs.",
+   "why": "Both pump the same volume per minute, but the left must generate far more pressure to push it through the whole body."
+  },
+  {
+   "id": "circuits",
+   "topic": "blood-flow-heart",
+   "core": [
+    "gradients",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Pulmonary vs systemic circuit",
+   "front": "Pulmonary vs systemic circuit: which pump, and which kind of blood do their arteries carry?",
+   "back": "Pulmonary: right ventricle; its arteries carry deoxygenated blood. Systemic: left ventricle; its arteries carry oxygenated blood.",
+   "why": "Arteries are named for direction (away from the heart), not for oxygen content."
+  },
+  {
+   "id": "circuits-volume",
+   "topic": "blood-flow-heart",
+   "core": [
+    "gradients",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Pulmonary vs systemic circuit",
+   "front": "Over a minute, does the right ventricle pump more, less or the same volume as the left?",
+   "back": "The same.",
+   "why": "The two circuits are in series, so whatever one side pumps out must come back to the other; a lasting mismatch would pool blood in one circuit."
+  },
+  {
+   "id": "blood-path",
+   "topic": "blood-flow-heart",
+   "core": [
+    "gradients",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Trace blood from the venae cavae to the aorta.",
+   "back": "Right atrium, tricuspid valve, right ventricle, pulmonary valve, pulmonary trunk and arteries, lungs, pulmonary veins, left atrium, mitral valve, left ventricle, aortic valve, aorta.",
+   "why": "Each valve opens only forward, so the pressure the ventricles build moves blood one way through both circuits."
+  },
+  {
+   "id": "angina-mi",
+   "topic": "blood-flow-heart",
+   "core": [
+    "gradients",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Angina vs myocardial infarction",
+   "front": "Angina vs myocardial infarction: which raises troponin in the blood, and why?",
+   "back": "Myocardial infarction: ischemia lasts long enough to kill heart muscle, and dying cells release troponin.",
+   "why": "In angina the ischemia reverses before cells die, so no troponin leaks out."
+  },
+  {
+   "id": "coronary-flow",
+   "topic": "blood-flow-heart",
+   "core": [
+    "gradients",
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "When does most blood flow through the left ventricle's coronary vessels, and why?",
+   "back": "During diastole, when the relaxed muscle stops squeezing the vessels inside the wall.",
+   "why": "Contraction compresses the vessels in the ventricle wall, raising their resistance; relaxation lowers it."
+  },
+  {
+   "id": "skel-vs-cardiac-ap",
+   "topic": "cardiac-muscle-ap",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs cardiac muscle action potential",
+   "front": "Why is a ventricular muscle action potential about 100 times longer than a skeletal muscle one?",
+   "back": "It has a plateau: calcium flows in through slow (L-type) calcium channels while potassium flows out, holding the membrane depolarized.",
+   "why": "The inward calcium roughly balances the outward potassium for about 200 milliseconds before repolarization wins."
+  },
+  {
+   "id": "cardiac-no-tetanus",
+   "topic": "cardiac-muscle-ap",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Skeletal vs cardiac muscle action potential",
+   "front": "Why can the heart not go into a sustained (tetanic) contraction?",
+   "back": "Its refractory period lasts almost as long as the contraction itself.",
+   "why": "A new action potential cannot start until the muscle is relaxing, so contractions cannot fuse and the ventricles always get time to refill."
+  },
+  {
+   "id": "cicr",
+   "topic": "cardiac-muscle-ap",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Skeletal vs cardiac muscle action potential",
+   "front": "How does calcium from outside the cell trigger cardiac muscle contraction?",
+   "back": "Calcium entering during the plateau opens calcium release channels on the sarcoplasmic reticulum, releasing much more calcium (calcium-induced calcium release).",
+   "why": "In skeletal muscle the release channels are opened mechanically by the voltage sensor instead, so outside calcium is not needed."
+  },
+  {
+   "id": "pacemaker-vs-contractile",
+   "topic": "conduction-system",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Contractile cell vs pacemaker cell action potential",
+   "front": "Why does a pacemaker cell fire on its own while a contractile cell does not?",
+   "back": "A pacemaker cell has no stable resting potential: an inward sodium current through HCN channels (the funny current) and then calcium entry slowly depolarize it to threshold.",
+   "why": "A contractile cell rests steadily near -90 mV until a neighbor's current reaches it through gap junctions."
+  },
+  {
+   "id": "pacemaker-upstroke",
+   "topic": "conduction-system",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Contractile cell vs pacemaker cell action potential",
+   "front": "Which ion causes the rapid upstroke of a pacemaker cell action potential, and which causes it in a contractile cell?",
+   "back": "Pacemaker: calcium (through L-type calcium channels). Contractile: sodium (through fast voltage-gated sodium channels).",
+   "why": "Pacemaker cells sit too depolarized for their fast sodium channels to work, so calcium channels carry the upstroke, which is why it is slower."
+  },
+  {
+   "id": "conduction-path",
+   "topic": "conduction-system",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Trace the conduction pathway of the heart.",
+   "back": "SA node, atrial muscle, AV node, AV bundle (bundle of His), right and left bundle branches, Purkinje fibers, ventricular muscle.",
+   "why": "The SA node fires fastest, so it sets the pace; the rest of the path spreads the signal so the atria contract before the ventricles."
+  },
+  {
+   "id": "av-delay",
+   "topic": "conduction-system",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does the AV node delay the signal by about 0.1 second?",
+   "back": "To let the atria finish contracting and top up the ventricles before the ventricles contract.",
+   "why": "AV nodal cells are small, have few gap junctions and a slow calcium-driven upstroke, so conduction through them is slow."
+  },
+  {
+   "id": "intrinsic-rates",
+   "topic": "conduction-system",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Intrinsic firing rates: SA node, AV node, Purkinje fibers?",
+   "back": "SA node about 60 to 100 per minute (faster without nerve input); AV node about 40 to 60; Purkinje fibers about 20 to 40.",
+   "why": "The fastest pacemaker resets the others each beat, so a slower backup takes over only if the faster one fails."
+  },
+  {
+   "id": "ecg-waves",
+   "topic": "ecg",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What does each ECG wave record: P, QRS, T?",
+   "back": "P: atrial depolarization. QRS: ventricular depolarization. T: ventricular repolarization.",
+   "why": "Atrial repolarization happens during the QRS complex, so the larger ventricular signal hides it."
+  },
+  {
+   "id": "ecg-pr",
+   "topic": "ecg",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What does a long PR interval (over 0.20 s) tell you?",
+   "back": "Conduction from the atria to the ventricles is slowed, mostly at the AV node.",
+   "why": "The PR interval runs from the start of atrial depolarization to the start of ventricular depolarization, so it measures the AV delay."
+  },
+  {
+   "id": "ecg-not-contraction",
+   "topic": "ecg",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Does an ECG show the heart contracting?",
+   "back": "No. It shows electrical changes; contraction follows them shortly after.",
+   "why": "Depolarization triggers contraction, but a heart can show electrical activity with no effective pumping."
+  },
+  {
+   "id": "heart-sounds",
+   "topic": "cardiac-cycle",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "What causes the first (S1) and second (S2) heart sounds?",
+   "back": "S1: the AV valves closing as the ventricles start to contract. S2: the semilunar valves closing as the ventricles relax.",
+   "why": "The sound comes from blood vibrating as it is stopped by the closing valve, not from the muscle itself."
+  },
+  {
+   "id": "isovolumetric",
+   "topic": "cardiac-cycle",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "During isovolumetric contraction, why does ventricular volume not change?",
+   "back": "All four valves are closed: ventricular pressure is above atrial pressure but still below arterial pressure.",
+   "why": "Blood can leave only once ventricular pressure passes aortic (or pulmonary) pressure and the semilunar valves open."
+  },
+  {
+   "id": "ef",
+   "topic": "cardiac-cycle",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "End-diastolic volume is 120 mL and end-systolic volume is 50 mL. What are the stroke volume and ejection fraction?",
+   "back": "Stroke volume 70 mL; ejection fraction about 58%.",
+   "why": "Stroke volume = EDV - ESV = 70 mL; ejection fraction = SV / EDV = 70 / 120."
+  },
+  {
+   "id": "filling",
+   "topic": "cardiac-cycle",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "How do the ventricles mostly fill: by atrial contraction or passively?",
+   "back": "Mostly passively (about 70 to 80%) while the AV valves are open; atrial contraction adds the rest.",
+   "why": "Blood returning to the atria flows straight on into the relaxed ventricles down the pressure gradient."
+  },
+  {
+   "id": "vessel-compare",
+   "topic": "vessel-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Arteries vs capillaries vs veins",
+   "front": "Arteries vs capillaries vs veins: wall structure?",
+   "back": "Arteries: thick walls with a thick muscular or elastic middle layer (tunica media). Capillaries: endothelium on a basement membrane only. Veins: thin walls, wide lumen, valves in the limbs.",
+   "why": "Arteries must withstand high pressure; capillaries must be thin for exchange; veins carry low-pressure blood and need valves to stop it flowing back."
+  },
+  {
+   "id": "veins-reservoir",
+   "topic": "vessel-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Arteries vs capillaries vs veins",
+   "front": "Where is most of your blood at rest?",
+   "back": "In the systemic veins and venules, about 60 to 65%.",
+   "why": "Their thin walls stretch easily, so they hold a large volume at low pressure, a reserve that sympathetic venoconstriction can shift toward the heart."
+  },
+  {
+   "id": "arterioles-resistance",
+   "topic": "vessel-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which vessels set how much blood enters a capillary bed?",
+   "back": "The arterioles, by constricting or dilating their smooth muscle.",
+   "why": "Small changes in their radius change resistance by the fourth power. Whether discrete precapillary sphincters do this in humans is unsettled; many exams still name them."
+  },
+  {
+   "id": "elastic-arteries",
+   "topic": "vessel-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How do the elastic arteries keep blood flowing during diastole?",
+   "back": "Their walls stretch during ejection and recoil during diastole, pushing blood onward.",
+   "why": "Elastic fibers store some of the energy of each heartbeat and release it between beats, smoothing flow."
+  },
+  {
+   "id": "aortic-arch",
+   "topic": "systemic-arteries",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three branches of the aortic arch in order.",
+   "back": "Brachiocephalic trunk, left common carotid artery, left subclavian artery.",
+   "why": "On the right, the brachiocephalic trunk splits into the right common carotid and right subclavian, so the right side has one extra step."
+  },
+  {
+   "id": "abdominal-aorta",
+   "topic": "systemic-arteries",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three unpaired branches of the abdominal aorta that supply the gut.",
+   "back": "Celiac trunk, superior mesenteric artery, inferior mesenteric artery.",
+   "why": "They leave the front of the aorta from top to bottom, supplying the upper, middle and lower digestive tract."
+  },
+  {
+   "id": "coronary-origin",
+   "topic": "systemic-arteries",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where do the coronary arteries begin?",
+   "back": "At the base of the ascending aorta, just above the aortic valve.",
+   "why": "They are the first branches of the aorta, so the heart muscle gets freshly oxygenated blood."
+  },
+  {
+   "id": "svc-ivc",
+   "topic": "systemic-veins",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What drains into the superior vena cava vs the inferior vena cava?",
+   "back": "Superior: head, neck, upper limbs and upper chest. Inferior: the body below the diaphragm.",
+   "why": "Both empty into the right atrium, along with the coronary sinus from the heart wall."
+  },
+  {
+   "id": "portal",
+   "topic": "systemic-veins",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does blood from the stomach and intestines go to the liver before the heart?",
+   "back": "The hepatic portal vein carries it through a second capillary bed in the liver.",
+   "why": "The liver can process absorbed nutrients and remove drugs and toxins before the blood reaches the rest of the body."
+  },
+  {
+   "id": "jugular",
+   "topic": "systemic-veins",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which vein drains most blood from the brain?",
+   "back": "The internal jugular vein.",
+   "why": "Blood from the brain collects in dural venous sinuses, which empty into the internal jugular veins."
+  },
+  {
+   "id": "map-formula",
+   "topic": "blood-pressure-flow",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Blood pressure is 120/80 mm Hg. Estimate the mean arterial pressure and the pulse pressure.",
+   "back": "MAP about 93 mm Hg; pulse pressure 40 mm Hg.",
+   "why": "Pulse pressure = systolic - diastolic. At rest the heart spends about two thirds of each cycle in diastole, so MAP is about diastolic + one third of the pulse pressure."
+  },
+  {
+   "id": "pressure-drop",
+   "topic": "blood-pressure-flow",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Where along the systemic circuit does blood pressure fall the most?",
+   "back": "Across the arterioles.",
+   "why": "They are the main resistance vessels, and pressure falls most where resistance is highest."
+  },
+  {
+   "id": "velocity-capillaries",
+   "topic": "blood-pressure-flow",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why does blood move slowest in the capillaries?",
+   "back": "Their total cross-sectional area is the largest of any vessel type.",
+   "why": "The same flow spread over a much larger total area moves more slowly, which gives time for exchange."
+  },
+  {
+   "id": "co-formula",
+   "topic": "cardiac-output",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Heart rate is 70 beats/min and stroke volume is 70 mL. What is cardiac output?",
+   "back": "About 4.9 L/min.",
+   "why": "Cardiac output = heart rate x stroke volume = 70 x 70 mL = 4,900 mL per minute."
+  },
+  {
+   "id": "sv-factors",
+   "topic": "cardiac-output",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Name the three factors that set stroke volume.",
+   "back": "Preload (how much the ventricle is stretched by filling), contractility, and afterload (the pressure it must overcome to eject).",
+   "why": "More stretch or more contractility raises stroke volume; higher afterload lowers it."
+  },
+  {
+   "id": "frank-starling",
+   "topic": "cardiac-output",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Venous return increases. Why does stroke volume rise with no nerve or hormone signal?",
+   "back": "The Frank-Starling mechanism: more filling stretches the muscle fibers toward a better length, so they contract more strongly.",
+   "why": "This matches the output of the heart to what returns to it, beat by beat, and keeps the two ventricles in balance."
+  },
+  {
+   "id": "ans-heart",
+   "topic": "cardiac-output",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Sympathetic vs parasympathetic effects on the heart?",
+   "back": "Sympathetic: raises heart rate and contractility. Parasympathetic (vagus nerves): lowers heart rate, with little effect on ventricular contractility.",
+   "why": "Vagal fibers go mainly to the SA and AV nodes, while sympathetic fibers also reach the ventricular muscle."
+  },
+  {
+   "id": "baro-vs-atrial",
+   "topic": "bp-short-term",
+   "core": [
+    "homeostasis",
+    "communication",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Baroreceptor reflex vs atrial reflex",
+   "front": "Baroreceptor reflex vs atrial reflex: what does more stretch do to heart rate?",
+   "back": "Baroreceptor reflex (arterial stretch): heart rate falls. Atrial reflex (atrial stretch from filling): heart rate rises.",
+   "why": "The first holds arterial pressure at its set point; the second pumps on extra returning blood so it does not back up."
+  },
+  {
+   "id": "baro-drop",
+   "topic": "bp-short-term",
+   "core": [
+    "homeostasis",
+    "communication",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Baroreceptor reflex vs atrial reflex",
+   "front": "You stand up quickly and blood pressure drops. What does the baroreceptor reflex do?",
+   "back": "Less stretch lowers baroreceptor firing, so the brainstem raises sympathetic output and lowers vagal output: heart rate, contractility and arteriolar constriction all rise.",
+   "why": "Each change raises cardiac output or resistance, and mean arterial pressure = cardiac output x resistance."
+  },
+  {
+   "id": "short-vs-long",
+   "topic": "bp-long-term",
+   "core": [
+    "homeostasis",
+    "mass-balance",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Short-term vs long-term blood pressure control",
+   "front": "Short-term vs long-term blood pressure control: what does each adjust, and how fast?",
+   "back": "Short-term (baroreceptor reflex): heart rate, contractility and vessel diameter, within seconds. Long-term (kidneys and hormones): blood volume, over hours to days.",
+   "why": "Baroreceptors reset to a sustained new pressure within days, so lasting control depends on the kidneys changing how much salt and water they keep."
+  },
+  {
+   "id": "raas",
+   "topic": "bp-long-term",
+   "core": [
+    "homeostasis",
+    "mass-balance",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Blood pressure falls. How does the renin-angiotensin-aldosterone system raise it?",
+   "back": "The kidneys release renin; angiotensin II forms, which constricts arterioles and triggers aldosterone release; aldosterone makes the kidneys keep sodium, and water follows.",
+   "why": "Constriction raises resistance quickly; keeping sodium and water raises blood volume over hours to days."
+  },
+  {
+   "id": "anp",
+   "topic": "bp-long-term",
+   "core": [
+    "homeostasis",
+    "mass-balance",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "The atria are overstretched by high blood volume. Which hormone do they release, and what does it do?",
+   "back": "Atrial natriuretic peptide (ANP): the kidneys lose more sodium and water, and vessels dilate.",
+   "why": "Losing sodium and water lowers blood volume, which reduces the stretch that triggered the release."
+  },
+  {
+   "id": "starling-forces",
+   "topic": "capillary-exchange",
+   "core": [
+    "gradients",
+    "mass-balance",
+    "compartments"
+   ],
+   "level": "recall",
+   "front": "Which two forces mainly push fluid out of and pull fluid into a capillary?",
+   "back": "Out: capillary hydrostatic (blood) pressure. In: the colloid osmotic pressure of plasma proteins.",
+   "why": "Blood pressure pushes water through the capillary wall; plasma proteins cannot cross easily, so they hold water in by osmosis."
+  },
+  {
+   "id": "starling-revised",
+   "topic": "capillary-exchange",
+   "core": [
+    "gradients",
+    "mass-balance",
+    "compartments"
+   ],
+   "level": "analyze",
+   "front": "In most capillary beds at steady state, is fluid reabsorbed at the venous end?",
+   "back": "Current evidence says mostly not: filtration exceeds reabsorption along most of the length, and a separate set of thin drainage vessels returns the excess fluid to the blood. Many exams still expect the classic answer: filtration at the arterial end, reabsorption at the venous end.",
+   "why": "The glycocalyx on the endothelium keeps the fluid just under it low in protein, so the effective inward pull is weaker than the old model assumed."
+  },
+  {
+   "id": "edema-causes",
+   "topic": "capillary-exchange",
+   "core": [
+    "gradients",
+    "mass-balance",
+    "compartments"
+   ],
+   "level": "apply",
+   "front": "Name four causes of edema.",
+   "back": "Raised capillary hydrostatic pressure (as when a failing heart backs blood up into the veins), low plasma proteins (as in liver disease), leaky capillaries (inflammation), and blocked drainage of excess tissue fluid.",
+   "why": "Each one either increases filtration out of the capillaries or stops the extra fluid from being drained back to the blood."
+  },
+  {
+   "id": "shock-types",
+   "topic": "circulatory-disorders",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "compare": "Types of shock",
+   "front": "Name the four main types of shock and the problem in each.",
+   "back": "Hypovolemic: too little blood volume. Cardiogenic: the heart fails to pump. Distributive (septic, anaphylactic, neurogenic): widespread vasodilation. Obstructive: something blocks filling or outflow, such as a clot in the lungs.",
+   "why": "Each lowers either cardiac output or resistance, so mean arterial pressure and tissue perfusion fall."
+  },
+  {
+   "id": "shock-neurogenic",
+   "topic": "circulatory-disorders",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "compare": "Types of shock",
+   "front": "Why does neurogenic shock cause a slow heart rate with warm skin, unlike hypovolemic shock?",
+   "back": "Loss of sympathetic output: vessels dilate (warm skin) and nothing speeds the heart, so vagal input slows it.",
+   "why": "In hypovolemic shock the sympathetic system works, so it constricts skin vessels (cool, pale skin) and raises heart rate."
+  },
+  {
+   "id": "hf-left-right",
+   "topic": "circulatory-disorders",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Left-sided vs right-sided heart failure",
+   "front": "Left-sided vs right-sided heart failure: where does blood back up, and what do you see?",
+   "back": "Left: into the lungs, causing shortness of breath and crackles. Right: into the systemic veins, causing swollen neck veins, leg edema and an enlarged liver.",
+   "why": "A failing ventricle cannot move on what flows into it, so pressure rises in the veins that feed it."
+  },
+  {
+   "id": "hf-cause",
+   "topic": "circulatory-disorders",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Left-sided vs right-sided heart failure",
+   "front": "What is the most common cause of right-sided heart failure?",
+   "back": "Left-sided heart failure.",
+   "why": "Blood backing up into the lungs raises pulmonary pressure, and the right ventricle fails against that higher afterload."
+  }
+ ]
+}

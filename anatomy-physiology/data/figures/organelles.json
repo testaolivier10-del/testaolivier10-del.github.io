@@ -4,47 +4,63 @@
     "openstax": {
       "figure": "3.13",
       "section": "3.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ec6b446074b356cfa75ef69a7987a9ee9256b89c"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ec6b446074b356cfa75ef69a7987a9ee9256b89c",
+      "page": "3-2-the-cytoplasm-and-cellular-organelles"
     },
     "alt": "A cutaway drawing of a generalized human cell showing the plasma membrane, the nucleus, and the internal structures of the cytoplasm, including the endoplasmic reticulum, Golgi apparatus, mitochondria, lysosomes, peroxisomes, ribosomes and a pair of centrioles.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.13",
-    "labels": []
+    "labels": [],
+    "w": 813,
+    "h": 645,
+    "ext": "jpg"
   },
   "os-3-15": {
     "source": "openstax",
     "openstax": {
       "figure": "3.15",
       "section": "3.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c41f125bc91a4c8409bd4be3f2f307723bef9b57"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c41f125bc91a4c8409bd4be3f2f307723bef9b57",
+      "page": "3-2-the-cytoplasm-and-cellular-organelles"
     },
     "alt": "The Golgi apparatus drawn as a stack of flattened, curved membrane sacs, with small vesicles arriving on the side facing the endoplasmic reticulum and budding off the far side, beside an electron micrograph of the same stacked sacs.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.15",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 738,
+    "ext": "jpg"
   },
   "os-3-17": {
     "source": "openstax",
     "openstax": {
       "figure": "3.17",
       "section": "3.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ce9c4f85c8b15fdf0a6532e22c17a5d59504a483"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ce9c4f85c8b15fdf0a6532e22c17a5d59504a483",
+      "page": "3-2-the-cytoplasm-and-cellular-organelles"
     },
     "alt": "A peroxisome drawn as a small round sac bounded by a single membrane, with a dense, crystal-like core of enzymes inside.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.17",
-    "labels": []
+    "labels": [],
+    "w": 541,
+    "h": 443,
+    "ext": "jpg"
   },
   "os-3-18": {
     "source": "openstax",
     "openstax": {
       "figure": "3.18",
       "section": "3.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0d6abe4238ff5dfd2c8adc59c9689fbfb87145f6"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0d6abe4238ff5dfd2c8adc59c9689fbfb87145f6",
+      "page": "3-2-the-cytoplasm-and-cellular-organelles"
     },
     "alt": "The three kinds of cytoskeleton fiber side by side: a hollow microtubule built from paired protein subunits, a thin microfilament made of two twisted strands of actin, and a rope-like intermediate filament made of many coiled protein strands.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.18",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 550,
+    "ext": "jpg"
   }
 }

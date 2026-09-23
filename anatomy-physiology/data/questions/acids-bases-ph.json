@@ -1,0 +1,365 @@
+[
+  {
+    "id": "anp-acids-bases-ph-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "What makes a substance an acid?",
+    "options": ["It takes up hydrogen ions from the fluid around it", "It releases hydrogen ions when it dissolves in water", "It separates into ions other than H+ and OH−", "It keeps the pH of a fluid from changing"],
+    "correct": 1,
+    "why": {
+      "correct": "An acid is a hydrogen ion donor: it releases H+ when it dissolves, raising the fluid's H+ concentration and lowering its pH.",
+      "options": [
+        "Taking up hydrogen ions is what a base does. It lowers the H+ concentration.",
+        "Correct. Releasing H+ is the defining property of an acid.",
+        "That describes a salt, such as sodium chloride, which releases neither H+ nor OH−.",
+        "Resisting a change in pH is what a buffer does, using a weak acid and a weak base together."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "misconception": "the pH scale is linear",
+    "q": "A sample of urine has a pH of 5, and a sample of fluid from inside the small bowel has a pH of 7. How does their hydrogen ion concentration compare?",
+    "options": ["The pH 7 fluid has 2 times more hydrogen ions", "The pH 5 fluid has 2 times more hydrogen ions", "The pH 7 fluid has 100 times more hydrogen ions", "The pH 5 fluid has 100 times more hydrogen ions"],
+    "correct": 3,
+    "why": {
+      "correct": "The pH values differ by 2 units, and each unit is a factor of ten: 10 × 10 = 100. The lower pH is the more acidic fluid, so the urine at pH 5 holds 100 times more hydrogen ions.",
+      "options": [
+        "Two errors: the scale is not linear, and a higher pH means fewer hydrogen ions, not more.",
+        "The direction is right, but the pH scale counts in powers of ten. Two units is 100-fold, not 2-fold.",
+        "The size is right, but the direction is reversed. Lower pH means more hydrogen ions.",
+        "Correct. Two units of pH is a hundredfold difference, and the lower pH has more H+."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A solution has a hydrogen ion concentration of 0.00001 mol/L (10⁻⁵ mol/L). What is its pH, and is it acidic or basic?",
+    "options": ["pH 9, basic", "pH 5, basic", "pH 5, acidic", "pH −5, acidic"],
+    "correct": 2,
+    "why": {
+      "correct": "pH is the negative log of [H+]. The log of 10⁻⁵ is −5, and the minus sign makes it 5. A pH below 7 is acidic.",
+      "options": [
+        "A pH of 9 would mean [H+] = 10⁻⁹ mol/L, far fewer hydrogen ions than this solution has. This subtracts 5 from 14, which is not the formula.",
+        "The number is right, but a pH below 7 means more H+ than OH−, which is acidic.",
+        "Correct. −log(10⁻⁵) = 5, and 5 is below neutral 7.",
+        "The minus sign in pH = −log[H+] flips the negative power into a positive number, so pH is 5, not −5."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "misconception": "the pH scale is linear",
+    "q": "Mr. Brennan, 63, is found in severe shock. His blood pH is 7.10; a normal value is 7.40. What has happened to the hydrogen ion concentration of his blood?",
+    "options": ["It has roughly doubled", "It has risen by about 4%", "It has roughly halved", "It has risen about 30-fold"],
+    "correct": 0,
+    "why": {
+      "correct": "pH fell by 0.30 units. Because log 2 is about 0.3, a fall of 0.3 doubles [H+]: from about 40 nmol/L at pH 7.40 to about 80 nmol/L at 7.10.",
+      "options": [
+        "Correct. A 0.3 fall in pH is a doubling of hydrogen ions, from about 40 to about 80 nmol/L.",
+        "About 4% is the change in the pH number itself (0.3 out of 7.4). The pH scale is logarithmic, so the hydrogen ion change is far larger.",
+        "Halving would go with a rise in pH of 0.3. His pH fell, so hydrogen ions went up.",
+        "A 30-fold change reads the 0.30 as if each tenth were tenfold. Only a whole unit is tenfold; 0.3 units is twofold."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-5",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "What is the normal pH range of blood from an artery?",
+    "options": ["6.80 to 7.00", "7.00 exactly", "7.35 to 7.45", "7.80 to 8.00"],
+    "correct": 2,
+    "why": {
+      "correct": "Normal arterial blood pH is 7.35 to 7.45, slightly basic. That is a hydrogen ion concentration of only about 35 to 45 nmol/L.",
+      "options": [
+        "6.80 to 7.00 is far below normal. Blood that acidic is at the edge of what people survive.",
+        "7.00 is neutral, as in pure water. Blood is kept slightly basic.",
+        "Correct. Blood pH sits in the narrow band from 7.35 to 7.45.",
+        "7.80 to 8.00 is far above normal, at or beyond the edge of what people survive."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Ms. Adeyemi, 40, has a blood pH of 7.29. Which term describes the state of her blood?",
+    "options": ["Alkalemia", "Normal blood pH", "Neutral", "Acidemia"],
+    "correct": 3,
+    "why": {
+      "correct": "Acidemia is blood pH below 7.35. At 7.29 her blood holds more hydrogen ions than normal. The process causing it is an acidosis.",
+      "options": [
+        "Alkalemia is blood pH above 7.45. Hers is below the normal range.",
+        "Normal is 7.35 to 7.45. A value of 7.29 is below that band.",
+        "Neutral is pH 7.00. Her blood is still slightly basic in chemical terms, but it is too acidic for blood.",
+        "Correct. Below 7.35 is acidemia."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "Mr. Farouk, 35, has vomited stomach fluid (about pH 2) many times over two days. His tingling fingers and muscle cramps suggest a change in his blood pH. Which change is most likely?",
+    "options": ["His blood pH has risen, because he has lost hydrogen ions", "His blood pH has fallen, because he has lost a strong acid", "His blood pH is unchanged, because stomach fluid never mixes with blood", "His blood pH has fallen, because he has gained hydroxide ions"],
+    "correct": 0,
+    "why": {
+      "correct": "Stomach fluid is rich in hydrogen ions. Losing it repeatedly removes acid from the body, so hydrogen ions in the blood fall and pH rises toward alkalemia. Tingling and cramps are typical of alkalemia, which makes signaling cells and muscles fire too easily.",
+      "options": [
+        "Correct. Losing acid raises blood pH, an alkalosis, and his symptoms fit alkalemia.",
+        "Losing an acid takes hydrogen ions away, which raises pH. It does not lower it.",
+        "The hydrogen ions in stomach fluid are secreted there from the body's own fluids. Losing them changes what is left in the blood.",
+        "More hydroxide would take up hydrogen ions and raise pH, not lower it. His problem is a loss of acid."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "structure-function"],
+    "q": "Why can a blood pH outside 7.35 to 7.45 disturb so many body functions at once?",
+    "options": ["Hydrogen ions break the peptide bonds of every protein", "Extra hydrogen ions dissolve the fats around each cell", "Hydrogen ions change side-chain charges, altering the shape of proteins", "Acidic blood cannot carry water to the cells"],
+    "correct": 2,
+    "why": {
+      "correct": "Many amino acid side chains gain or lose a hydrogen ion as [H+] changes, which changes their charge. That disturbs the ionic bonds holding each protein's fold. Shape sets function, and proteins do almost every job in a cell, so many functions change together.",
+      "options": [
+        "Peptide bonds are covalent and are not broken by these pH changes. The weak bonds that hold the fold are what change.",
+        "Lipids are nonpolar and are not dissolved by hydrogen ions. The effect runs through protein shape.",
+        "Correct. Changed charges disturb protein folding, and changed shape means changed function.",
+        "Water is the solvent of blood at any pH. The pH effect acts on protein shape, not on water."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Two beakers each hold one liter at pH 7.4: one of pure water adjusted to that pH, and one containing bicarbonate and carbonic acid. You add the same small amount of strong acid to each. Predict the change in each variable.",
+    "variables": [
+      { "name": "Free hydrogen ions in the unbuffered water", "answer": "up", "why": "Nothing in plain water takes up the added H+, so every hydrogen ion the strong acid releases stays free." },
+      { "name": "Bicarbonate in the buffered beaker", "answer": "down", "why": "Bicarbonate takes up the added hydrogen ions, and each one it takes up turns one bicarbonate into carbonic acid." },
+      { "name": "Carbonic acid in the buffered beaker", "answer": "up", "why": "Each bicarbonate that takes up a hydrogen ion becomes a carbonic acid molecule, so carbonic acid rises." },
+      { "name": "pH of the unbuffered water", "answer": "down", "why": "Added H+ stays free, so [H+] rises steeply and the pH plunges, in this case by several whole units." }
+    ]
+  },
+  {
+    "id": "anp-acids-bases-ph-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Hydrogen chloride dissolved in water (HCl) is mixed with sodium hydroxide (NaOH) in equal amounts. What are the products?",
+    "options": ["Sodium chloride and water", "Hydrogen gas and sodium", "Carbonic acid and chloride", "A buffer of HCl and NaOH"],
+    "correct": 0,
+    "why": {
+      "correct": "The H+ from the acid and the OH− from the base join into water. The leftover Na+ and Cl− are a salt, sodium chloride. This is neutralization.",
+      "options": [
+        "Correct. Acid plus base gives a salt plus water.",
+        "No electrons are transferred to make neutral hydrogen gas or sodium metal. The ions simply pair up differently.",
+        "No carbon is present in either reactant, so no carbonic acid can form.",
+        "A buffer needs a weak acid and its weak base. HCl and NaOH are strong, and they cancel each other out."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Put these steps in order to show how your blood handles a burst of hydrogen ions from working muscle.",
+    "options": [
+      "Extra hydrogen ions enter the blood",
+      "Bicarbonate takes up the hydrogen ions",
+      "Carbonic acid forms and holds most of those hydrogen ions",
+      "Carbonic acid splits into carbon dioxide and water",
+      "The lungs breathe the carbon dioxide out"
+    ],
+    "why": {
+      "correct": "The weak base bicarbonate takes up added H+ first, forming the weak acid carbonic acid, which keeps free H+ low. Carbonic acid then splits into carbon dioxide and water, and exhaling the carbon dioxide removes the acid from the body."
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-12",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "This pathway describes the carbonic acid–bicarbonate buffer handling a strong acid. Which step is wrong?",
+    "options": [
+      "A strong acid releases hydrogen ions into the blood",
+      "Bicarbonate releases more hydrogen ions to balance them",
+      "Carbonic acid forms and holds on to most of the added hydrogen ions",
+      "The pH falls far less than it would in unbuffered water"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bicarbonate is the weak base of the pair: it takes up hydrogen ions, which is how it forms carbonic acid. Releasing more hydrogen ions would push pH further down, the opposite of buffering.",
+      "options": [
+        "This step is right. A strong acid releases nearly all of its hydrogen ions.",
+        "This is the error. Bicarbonate takes up hydrogen ions; carbonic acid is the partner that releases them when a base is added.",
+        "This step is right. Carbonic acid is weak, so it keeps most of the hydrogen ions it received.",
+        "This step is right. Because most of the added H+ is held, the pH falls only slightly."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Solution A holds 0.01 mol/L of hydrogen chloride. Solution B holds 0.01 mol/L of carbonic acid. Which has the lower pH?",
+    "options": ["Neither; equal concentrations of acid give equal pH", "Solution B, because carbonic acid holds on to its hydrogen ions", "Solution A, because hydrogen chloride releases nearly all its hydrogen ions", "Solution B, because carbonic acid contains more atoms per molecule"],
+    "correct": 2,
+    "why": {
+      "correct": "Hydrogen chloride is a strong acid: nearly every unit releases its H+, so [H+] is close to 0.01 mol/L and pH is about 2. Carbonic acid is weak and releases only a small share, so its [H+] is much lower and its pH higher.",
+      "options": [
+        "pH depends on the free hydrogen ions, not on how much acid was added. Strong and weak acids release very different shares.",
+        "Holding on to hydrogen ions leaves fewer free, which means a higher pH, not a lower one.",
+        "Correct. More free H+ means a lower pH, and the strong acid frees nearly all of its hydrogen ions.",
+        "The number of atoms in a molecule does not set pH. What matters is how many hydrogen ions are released into the water."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "A patient with a long-running illness produces extra acid every day. For a while his blood pH stays near normal, but his blood bicarbonate level falls steadily. Then his pH starts to drop quickly. What best explains this pattern?",
+    "options": ["His buffer was working in reverse and releasing acid", "Each hydrogen ion buffered used up one bicarbonate, and the store ran low", "Bicarbonate turned into a strong acid once its level fell", "The pH scale becomes linear below 7.35"],
+    "correct": 1,
+    "why": {
+      "correct": "A buffer holds acid rather than removing it, and every hydrogen ion bicarbonate takes up converts one bicarbonate into carbonic acid. While bicarbonate is plentiful, pH barely moves. Once the store runs low, new acid has little to take it up, so pH falls sharply.",
+      "options": [
+        "A buffer does not create acid. His falling bicarbonate shows it was taking up hydrogen ions, as a buffer should.",
+        "Correct. Buffers have a limited capacity, set by how much weak base is left.",
+        "Bicarbonate is a weak base and stays one at any level. It becomes carbonic acid, a weak acid, only by taking up H+.",
+        "The pH scale is logarithmic at every value. The sudden drop comes from losing buffer, not from a change in the scale."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-15",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Fill the gap: A strong base adds hydroxide ions (OH−) to buffered blood → OH− takes up free H+, forming water → ______ → pH rises only slightly",
+    "options": ["Bicarbonate releases hydroxide ions of its own", "Carbon dioxide is breathed out faster", "Salt forms and absorbs the extra base", "Carbonic acid releases H+ to replace them and becomes bicarbonate"],
+    "correct": 3,
+    "why": {
+      "correct": "When a base removes hydrogen ions, the weak acid of the buffer pair releases more. Carbonic acid gives up H+, which replaces what was lost, and becomes bicarbonate. Free H+ falls only a little, so pH rises only a little.",
+      "options": [
+        "Bicarbonate is the weak base of the pair; releasing more base would push pH higher. The weak acid does the work here.",
+        "Breathing out carbon dioxide removes carbonic acid, which would raise pH further, not blunt the rise.",
+        "Salts release neither H+ nor OH−, so they do not buffer. The buffer pair is carbonic acid and bicarbonate.",
+        "Correct. The weak acid gives back hydrogen ions, which is the other half of how a buffer works."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-16",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Which of these act as bases in water, taking up hydrogen ions directly or by releasing hydroxide? Select all that apply.",
+    "options": ["Bicarbonate ion (HCO3−)", "Sodium chloride (NaCl)", "Sodium hydroxide (NaOH)", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Bicarbonate takes up H+ directly to become carbonic acid. Sodium hydroxide releases OH−, and OH− joins H+ to form water. Sodium chloride is a salt and hydrogen chloride is an acid.",
+      "options": [
+        "A base. Bicarbonate takes up a hydrogen ion and becomes carbonic acid.",
+        "Not a base. Sodium chloride is a salt: it separates into Na+ and Cl−, neither of which takes up or releases H+.",
+        "A base. It separates into Na+ and OH−, and each OH− takes up a hydrogen ion.",
+        "Not a base. Hydrogen chloride releases H+ in water, which makes it a strong acid.",
+        "A base. Hydroxide joins a hydrogen ion to form water."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "q": "You add 1 mL of a 1 mol/L strong acid to a liter of pure water, and the same amount to a liter of blood in a living person. Which result do you expect?",
+    "options": ["Both fall to about pH 3", "The water falls to about pH 3; the blood falls by only a few hundredths", "The blood falls further than the water, because blood already holds acid", "Neither changes, because 1 mL is too little to matter"],
+    "correct": 1,
+    "why": {
+      "correct": "In pure water, 0.001 mol of freed H+ in a liter gives [H+] = 10⁻³ mol/L, pH 3. In blood, bicarbonate takes up nearly all of it and breathing removes the carbon dioxide formed, so the pH falls by only a few hundredths.",
+      "options": [
+        "Blood is buffered. Bicarbonate takes up most of the added H+, so blood does not approach pH 3.",
+        "Correct. Unbuffered water swings by four whole pH units; buffered blood barely moves.",
+        "The acid already in blood is mostly held as weak carbonic acid alongside plenty of bicarbonate. That pair is what resists the change.",
+        "In pure water, 1 mL of strong acid raises [H+] ten-thousandfold, from 10⁻⁷ to 10⁻³ mol/L."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Normal blood pH is about 7.4. Compared with pure water at pH 7, what does that mean?",
+    "options": ["Blood has slightly more hydrogen ions and is slightly acidic", "Blood and pure water have the same number of hydrogen ions", "Blood has about 4 times as many hydrogen ions as pure water", "Blood has fewer hydrogen ions and is slightly basic"],
+    "correct": 3,
+    "why": {
+      "correct": "A higher pH means fewer hydrogen ions. At 7.4, blood holds about 40 nmol/L of H+, against 100 nmol/L in pure water, so blood is slightly basic.",
+      "options": [
+        "The scale runs backward: a higher pH means fewer hydrogen ions, not more.",
+        "Equal hydrogen ions would mean equal pH. Blood's pH is 0.4 units higher.",
+        "The pH difference, 0.4, is not a count of hydrogen ions. And because blood's pH is higher, it has fewer, not more.",
+        "Correct. pH 7.4 is on the basic side of neutral, about 40 nmol/L of H+ against 100 in pure water."
+      ]
+    }
+  },
+  {
+    "id": "anp-acids-bases-ph-19",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Mrs. Lindgren, 70, has a blood pH of 7.52. Which symptoms would you most expect from this change?",
+    "options": ["Tingling around the mouth and muscle cramps", "Drowsiness sliding toward coma", "Weaker heart contractions with no other signs", "No symptoms, because the value is within the normal range"],
+    "correct": 0,
+    "why": {
+      "correct": "A pH of 7.52 is above 7.45: alkalemia. Alkalemia makes signaling cells and muscles fire too easily, producing tingling around the mouth and in the fingers, cramps and spasms.",
+      "options": [
+        "Correct. Overexcitable signaling cells and muscles are the signature of alkalemia.",
+        "Drowsiness and coma come from acidemia, which depresses the nervous system. Her pH is high.",
+        "Weaker heart contractions go with acidemia. Her pH is on the alkaline side.",
+        "The normal range ends at 7.45. A value of 7.52 is above it."
+      ]
+    }
+  }
+]

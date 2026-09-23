@@ -42,6 +42,6 @@
   "check": ["anp-capillary-exchange-2", "anp-capillary-exchange-4", "anp-capillary-exchange-7", "anp-capillary-exchange-8", "anp-capillary-exchange-13", "anp-capillary-exchange-15", "anp-capillary-exchange-18"],
   "summary": "<p>Capillaries exchange materials in two ways. Diffusion moves each solute down its own gradient: oxygen and carbon dioxide straight through the endothelial cells, and small water-soluble solutes through the clefts between them. Bulk flow moves fluid, and four Starling forces set its direction: capillary hydrostatic pressure pushes fluid out, blood colloid osmotic pressure from plasma proteins pulls it in, and two small interstitial forces act the other way. Net filtration pressure is (CHP + IFCOP) − (BCOP + IFHP). In most tissues fluid filters out along the whole capillary and returns through a separate drainage route; exams still expect reabsorption at the venule end. Edema forms when capillary pressure rises, plasma protein falls, the wall leaks, or drainage is blocked.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Pathophysiology, the blood and blood vessels" }
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology" }
   ]
 }

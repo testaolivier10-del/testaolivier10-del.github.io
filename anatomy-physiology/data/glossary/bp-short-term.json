@@ -1,0 +1,37 @@
+{
+  "map-co-tpr": {
+    "def": "The rule MAP = CO × TPR: mean arterial pressure equals cardiac output times total peripheral resistance. Because CO = heart rate × stroke volume, blood pressure can change only through heart rate, stroke volume or resistance.",
+    "roots": [],
+    "say": ""
+  },
+  "baroreceptors": {
+    "def": "Stretch-sensitive sensory receptors in the walls of the carotid sinuses and the aortic arch (sometimes called the aortic sinuses). They fire faster when arterial pressure stretches the wall more, and they reset to a new pressure within a day or two.",
+    "roots": [["bar/o", "pressure, weight"]],
+    "say": "BAIR-oh-ree-SEP-terz"
+  },
+  "baroreceptor-reflex": {
+    "def": "The negative feedback loop that corrects fast changes in blood pressure: baroreceptor signals reach the cardiovascular center, which adjusts sympathetic and vagal output to the heart, arterioles and veins. Also called the baroreflex; on standing it is the orthostatic reflex.",
+    "roots": [["bar/o", "pressure, weight"], ["re-", "back"], ["flex", "bend"]],
+    "say": ""
+  },
+  "orthostatic": {
+    "def": "A sustained fall in blood pressure on standing: at least 20 mm Hg systolic or 10 mm Hg diastolic within 3 minutes. Also called postural hypotension, it causes lightheadedness or fainting when the baroreceptor reflex cannot keep up.",
+    "roots": [["orth/o", "straight, upright"], ["stat-", "standing"], ["hypo-", "below"], ["tens-", "stretched, pressure"]],
+    "say": "or-thoh-STAT-ik HY-poh-TEN-shun"
+  },
+  "autoregulation-local": {
+    "def": "A tissue's ability to adjust its own blood flow by changing the radius of its arterioles, without nerves or hormones. Metabolic autoregulation dilates arterioles when metabolites build up; the myogenic response constricts them when pressure stretches them.",
+    "roots": [["auto-", "self"], ["my/o", "muscle"], ["-genic", "produced by"]],
+    "say": ""
+  },
+  "atrial-reflex": {
+    "def": "A reflex in which stretch of the atria and nearby large veins, from more venous return, raises heart rate through the cardiovascular center. Also called the Bainbridge reflex.",
+    "roots": [["atri-", "entrance hall"]],
+    "say": "BAYN-bridj"
+  },
+  "exercise-cardiovascular": {
+    "def": "The changes exercise brings: higher heart rate, stroke volume and cardiac output, arteriole dilation in working muscle, less flow to the gut and kidneys, and a modest rise in MAP. Target heart rate is a chosen percentage of maximum heart rate, which is roughly 220 minus age.",
+    "roots": [],
+    "say": ""
+  }
+}

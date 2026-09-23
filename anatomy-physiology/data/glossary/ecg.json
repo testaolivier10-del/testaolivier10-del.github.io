@@ -1,0 +1,22 @@
+{
+  "ecg": {
+    "def": "The electrocardiogram (ECG, also EKG): a graph over time of the summed voltage changes of the heart, recorded from electrodes on the skin. Each lead is one view, the voltage between a positive electrode and a reference; a standard 12-lead ECG uses 10 electrodes.",
+    "roots": [["electro-", "electric"], ["cardio-", "heart"], ["-gram", "record"]],
+    "say": "ee-lek-troh-KAR-dee-oh-gram"
+  },
+  "ecg-waves": {
+    "def": "The three deflections of a normal beat: the P wave (atrial depolarization), the QRS complex (ventricular depolarization, which hides atrial repolarization) and the T wave (ventricular repolarization).",
+    "roots": [],
+    "say": ""
+  },
+  "ecg-intervals": {
+    "def": "Timed stretches of the ECG. The PR interval (start of P to start of QRS, 0.12 to 0.20 second) is mostly AV nodal delay; the ST segment (end of QRS to start of T) is the flat plateau when the ventricles are fully depolarized; the QT interval (start of QRS to end of T) spans the ventricular action potential.",
+    "roots": [["inter-", "between"]],
+    "say": ""
+  },
+  "arrhythmia": {
+    "def": "Any heart rhythm that is abnormal in rate, regularity, starting point or conduction; also called dysrhythmia. Examples are tachycardia (above 100 per minute at rest), bradycardia (below 60), heart block, atrial fibrillation and ventricular fibrillation, which is treated by defibrillation. An artificial pacemaker fires when the heart's own rate is too slow.",
+    "roots": [["a-", "without"], ["dys-", "abnormal"], ["tachy-", "fast"], ["brady-", "slow"], ["fibrill-", "small fiber"], ["de-", "undo"]],
+    "say": "uh-RITH-mee-uh; tak-ih-KAR-dee-uh; bray-dee-KAR-dee-uh"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "os-20-10": {
+    "file": "figures/openstax/os-20-10.jpg",
+    "w": 1100,
+    "h": 766,
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.10",
+      "section": "20.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/56d8f978dd469b8748cd811145ee6fe62bf0e817",
+      "page": "20-2-blood-flow-blood-pressure-and-resistance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/56d8f978dd469b8748cd811145ee6fe62bf0e817",
+    "alt": "A graph of pressure in mm Hg against position along the systemic circulation, from the aorta through the arteries, arterioles, capillaries, venules and veins to the venae cavae. In the aorta and arteries the pressure swings with each beat between about 120 and 80, with a smooth average line near 95. The swings shrink and the pressure falls steeply through the arterioles, to about 35 at the start of the capillaries, then falls slowly to near zero at the venae cavae.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.10",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-20-12": {
+    "file": "figures/openstax/os-20-12.jpg",
+    "w": 1100,
+    "h": 685,
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.12",
+      "section": "20.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/fdcac85ed1a77bc08ac2d0a29a2d68822a732d50",
+      "page": "20-2-blood-flow-blood-pressure-and-resistance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/fdcac85ed1a77bc08ac2d0a29a2d68822a732d50",
+    "alt": "A graph of pressure against time. A wavy line shows the artery's pressure rising to about 120 and falling to about 80 with each beat. A straight line shows a cuff's pressure falling steadily from 130 to below 70. Below the graph, a trace of the sounds heard through a stethoscope shows no sound while cuff pressure is above the wave's peaks, tapping sounds while the cuff pressure is between the peaks and the troughs, and silence again once it drops below the troughs.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.12",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-20-13": {
+    "file": "figures/openstax/os-20-13.jpg",
+    "w": 1100,
+    "h": 757,
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.13",
+      "section": "20.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5c24dc116ab0f02ef6908cb5723a96b72c0d2ae4",
+      "page": "20-2-blood-flow-blood-pressure-and-resistance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5c24dc116ab0f02ef6908cb5723a96b72c0d2ae4",
+    "alt": "Four graphs, each plotted against the sequence of vessels from elastic arteries to venae cavae. The first shows the diameter of a single vessel, largest in the elastic arteries and venae cavae and smallest in the capillaries. The second shows the total cross-sectional area of all vessels of each type, low in the arteries and veins and highest, near 4,500 square centimeters, in the capillaries. The third shows average pressure falling from about 100 to near zero, fastest across the arterioles. The fourth shows flow velocity, highest in the elastic arteries, lowest in the capillaries and rising again toward the venae cavae.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.13",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

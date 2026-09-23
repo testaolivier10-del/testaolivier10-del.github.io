@@ -53,6 +53,6 @@
   "check": ["anp-chemical-signaling-2", "anp-chemical-signaling-5", "anp-chemical-signaling-7", "anp-chemical-signaling-9", "anp-chemical-signaling-12", "anp-chemical-signaling-15", "anp-chemical-signaling-17"],
   "summary": "<p>A chemical messenger is a ligand: it binds a specific receptor protein, and only target cells carrying that receptor protein respond. Messengers are grouped by distance: autocrine (the same cell), paracrine (neighbors, such as nitric oxide, cytokines and eicosanoids), neurotransmitters (across a synapse) and hormones (through the blood). Water-soluble messengers bind receptor proteins in the membrane and often act through a G protein and a second messenger such as cAMP: fast, short-lived and amplified. Lipid-soluble messengers cross the membrane and bind intracellular receptors that change gene expression: slow and lasting. Cells up-regulate or down-regulate their receptor proteins. Nervous signaling is fast and precise; endocrine signaling is slower, widespread and longer-lasting.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT: Anatomy and Physiology" }
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and Physiology" }
   ]
 }

@@ -1,0 +1,586 @@
+[
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "In a ventricular contractile cell, which ion movement carries the rapid upstroke (phase 0) of the action potential?",
+    "options": [
+      "Calcium entering through L-type channels",
+      "Sodium entering through voltage-gated channels",
+      "Potassium leaving through voltage-gated channels",
+      "Calcium leaving the sarcoplasmic reticulum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At threshold, voltage-gated sodium channels open and sodium rushes in down its electrochemical gradient, taking the membrane from about −70 mV to about +20 mV in about a millisecond. This is the same fast upstroke as in neurons and skeletal muscle.",
+      "options": [
+        "L-type calcium channels open too slowly to carry a millisecond-long upstroke. Calcium entry holds the plateau that follows.",
+        "Correct. Fast sodium entry carries phase 0.",
+        "Potassium leaving makes the inside more negative. It carries repolarization in phase 3, not the upstroke.",
+        "Calcium released from the SR goes into the cytosol, not across the plasma membrane, so it does not change the membrane potential's upstroke. It activates contraction."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-1"
+  },
+  {
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-19-21",
+    "q": "On the heart muscle action potential in the top graph, the voltage stays nearly flat near 0 mV for about 200 ms. What holds it there?",
+    "options": [
+      "Sodium channels stay open, so sodium keeps entering",
+      "No ions cross the membrane during this stretch",
+      "The sodium–potassium pump stops until the plateau ends",
+      "Calcium entering balances potassium leaving"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "During the plateau, L-type calcium channels let positive charge in as calcium while potassium channels let positive charge out as potassium. The two currents nearly cancel, so the voltage barely changes.",
+      "options": [
+        "The sodium channels inactivate within a millisecond or two of the upstroke and stay inactivated through the plateau.",
+        "Ions are moving in both directions throughout the plateau. The voltage is flat because the movements balance, not because they stop.",
+        "The sodium–potassium pump runs throughout. Its small current does not create the plateau.",
+        "Correct. Inward calcium current roughly equals outward potassium current."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-2"
+  },
+  {
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication",
+      "gradients"
+    ],
+    "q": "Dana has taken an overdose of a drug that blocks L-type calcium channels in her heart muscle. Predict the change in each variable in a ventricular cell.",
+    "variables": [
+      {
+        "name": "Calcium entering the cell during the plateau",
+        "answer": "down",
+        "why": "The blocked L-type channels are the path calcium takes into the cell during the plateau, so less enters."
+      },
+      {
+        "name": "Calcium released by the sarcoplasmic reticulum each beat",
+        "answer": "down",
+        "why": "Entering calcium is the trigger that opens the SR's release channels, so a smaller trigger opens fewer of them and less calcium is released."
+      },
+      {
+        "name": "Force of each contraction",
+        "answer": "down",
+        "why": "Less calcium in the cytosol binds less troponin, so fewer cross-bridges form and each contraction is weaker."
+      },
+      {
+        "name": "Height of the phase 0 upstroke",
+        "answer": "none",
+        "why": "The upstroke is carried by sodium through voltage-gated sodium channels, which the drug does not block."
+      }
+    ],
+    "why": {
+      "correct": "Blocking L-type channels shrinks the calcium trigger, so calcium-induced calcium release falls and each contraction weakens. The sodium upstroke is unaffected."
+    },
+    "id": "anp-cardiac-muscle-ap-3"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "communication"
+    ],
+    "q": "In the emergency department, Dana's L-type calcium channels are partly blocked, and she receives an infusion that raises the calcium concentration in her blood. Why does this strengthen her heartbeats?",
+    "options": [
+      "A steeper calcium gradient pushes more calcium through the unblocked channels",
+      "Extra calcium makes the sodium channels open faster and wider",
+      "Extra blood calcium flows straight into the sarcoplasmic reticulum through its release channels",
+      "Extra calcium lengthens the refractory period so the heart can rest"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Raising extracellular calcium steepens the gradient for calcium entry, so more calcium flows in through the channels that are still open. The larger trigger opens more SR release channels, more calcium reaches troponin, and more cross-bridges form.",
+      "options": [
+        "Correct. More calcium entering means a larger trigger for calcium-induced calcium release.",
+        "Calcium in the blood does not strengthen the sodium upstroke, and the upstroke does not set the force of contraction.",
+        "The SR's release channels face the cytosol, not the blood. Calcium from the blood has to enter the cell first, through L-type channels.",
+        "A longer refractory period would not strengthen contraction; force depends on how much calcium reaches troponin."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-4"
+  },
+  {
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put these events in a ventricular contractile cell in order, from its neighbor firing to the cell contracting.",
+    "options": [
+      "Charge flows in from a neighboring cell through gap junctions",
+      "The membrane reaches threshold and sodium channels open",
+      "L-type calcium channels open and calcium enters",
+      "Calcium opens release channels on the sarcoplasmic reticulum",
+      "The SR releases a large amount of calcium into the cytosol",
+      "Calcium binds troponin and cross-bridges form"
+    ],
+    "why": {
+      "correct": "Charge from a neighbor brings the cell to threshold; the sodium upstroke depolarizes it; depolarization opens L-type channels; entering calcium opens the SR's release channels; the SR floods the cytosol with calcium; calcium binds troponin and the cell contracts.",
+      "options": [
+        "The action potential reaches the cell as charge from a neighbor that has already fired.",
+        "That charge depolarizes the cell to threshold, and voltage-gated sodium channels open for the upstroke.",
+        "The depolarization slowly opens L-type calcium channels, and calcium enters during the plateau.",
+        "The entering calcium crosses a narrow gap and opens the SR's calcium release channels.",
+        "The SR releases far more calcium than entered: calcium-induced calcium release.",
+        "Calcium binding troponin moves tropomyosin aside, and cross-bridges form."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-5"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A physiologist stimulates a strip of ventricle faster and faster. Unlike skeletal muscle, it never goes into a sustained, fused contraction. What best explains this?",
+    "options": [
+      "Its absolute refractory period lasts almost as long as its contraction",
+      "Its sarcoplasmic reticulum holds too little calcium to sustain contraction",
+      "Gap junctions spread each stimulus so fast that no two ever overlap",
+      "Heart muscle stores too little ATP to hold a contraction for long"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The sodium channels stay inactivated through the whole plateau, so the absolute refractory period lasts about 200 to 250 ms, nearly as long as the contraction. No new action potential can start until the cell is already relaxing, so twitches cannot add up into tetanus.",
+      "options": [
+        "Correct. The long refractory period prevents wave summation and tetanus.",
+        "Even with a smaller SR, cardiac muscle cells get enough calcium for strong contractions. The limit is electrical, not a shortage of calcium.",
+        "Fast spread through gap junctions does not stop a cell from being restimulated. What stops it is that the cell cannot fire again until its refractory period ends.",
+        "Heart muscle makes ATP continuously by aerobic respiration. The lack of tetanus comes from the refractory period, not from an ATP limit."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-6"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-10-22",
+    "pin": "intercalated-disc",
+    "q": "Name the pinned dark, wavy line where two cardiac muscle cells join end to end.",
+    "options": [
+      "Sarcoplasmic reticulum",
+      "Sarcolemma",
+      "T tubule",
+      "Intercalated disc"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Intercalated discs join cardiac muscle cells end to end. Each disc holds desmosomes and gap junctions.",
+      "options": [
+        "The sarcoplasmic reticulum is a network of membrane sacs inside each cell that stores calcium. It does not join two cells.",
+        "The sarcolemma is the plasma membrane of each cell. An intercalated disc is where two cells' membranes meet and are joined.",
+        "A T tubule is an inward fold of the sarcolemma that carries the action potential into the cell, not a junction between cells.",
+        "Correct. This is an intercalated disc."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-7"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-10-22",
+    "pin": "gap-junction",
+    "q": "In the enlarged intercalated disc, name the pinned junction that forms channels connecting the cytoplasm of the two cells.",
+    "options": [
+      "Desmosome",
+      "Tight junction",
+      "Gap junction",
+      "Intercalated disc"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Gap junctions are clusters of channels that link the cytoplasm of two neighboring cells, so ions and charge pass directly from one to the other.",
+      "options": [
+        "Desmosomes anchor the two cells together mechanically. They do not form channels between them.",
+        "Tight junctions seal the spaces between epithelial cells. They are not the channels in cardiac intercalated discs.",
+        "Correct. Gap junctions connect the two cells' cytoplasm.",
+        "The intercalated disc is the whole junction. The pin marks one kind of junction within it."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-8"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "An experimental toxin closes the gap junctions between ventricular muscle cells but leaves their ion channels working. What happens when one cell fires an action potential?",
+    "options": [
+      "The neighbors fire sooner, at a lower threshold voltage than usual",
+      "The neighbors fire, but their plateau is missing",
+      "The neighbors do not fire, because charge cannot pass to them",
+      "The first cell stays depolarized and cannot repolarize"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A contractile cell fires only when charge from a neighbor brings it to threshold. That charge travels through gap junctions. With them closed, the charge cannot pass, so the neighbors stay at rest.",
+      "options": [
+        "Closing gap junctions does not change a cell's threshold. It stops the charge that would reach it.",
+        "If a neighbor did fire, its own L-type channels would still produce a plateau. The problem is that it never reaches threshold.",
+        "Correct. Without gap junctions, the action potential cannot spread from cell to cell.",
+        "The first cell's own channels still work, so it repolarizes normally when its potassium channels open."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-9"
+  },
+  {
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which of these are true in a ventricular cell midway through the plateau? Select all that apply.",
+    "options": [
+      "L-type calcium channels are open",
+      "Potassium is leaving the cell",
+      "Voltage-gated sodium channels are inactivated",
+      "The membrane potential is near −90 mV",
+      "Voltage-gated sodium channels could reopen if stimulated"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Midway through the plateau, calcium enters through open L-type channels while potassium leaves, keeping the membrane near 0 mV. The sodium channels are inactivated, which is why the cell is refractory.",
+      "options": [
+        "Yes. Calcium entering through L-type channels holds the plateau.",
+        "Yes. Potassium leaving roughly balances the calcium entering.",
+        "Yes. The sodium channels inactivated just after the upstroke and stay that way while the membrane is depolarized.",
+        "No. The membrane is near 0 mV during the plateau. It is near −90 mV at rest.",
+        "No. Inactivated sodium channels cannot reopen until the membrane repolarizes, so the cell is in its absolute refractory period."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-10"
+  },
+  {
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "This description of the ventricular action potential has one wrong step. Find it.",
+    "options": [
+      "Phase 4: the cell rests at about −90 mV",
+      "Phase 0: sodium rushes in and the membrane reaches about +20 mV",
+      "Phase 1: brief potassium exit makes a small notch",
+      "Phase 2: calcium entry balances potassium exit near 0 mV",
+      "Phase 3: calcium rushes out and the membrane falls to −90 mV"
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "Phase 3 repolarization is carried by potassium leaving the cell, as the L-type calcium channels close and more potassium channels open. Calcium does not rush out through channels; it is removed slowly by pumps and an exchanger.",
+      "options": [
+        "This step is correct. At rest, potassium leak channels hold the membrane near −90 mV.",
+        "This step is correct. Fast sodium entry carries the upstroke.",
+        "This step is correct. A brief potassium current makes the small notch after the peak.",
+        "This step is correct. Balanced calcium entry and potassium exit hold the plateau.",
+        "This is the wrong step. Potassium leaving, not calcium, repolarizes the membrane in phase 3."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-11"
+  },
+  {
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "Complete the phases of the ventricular action potential: phase 0, fast sodium upstroke → phase 1, small notch → ____ → phase 3, repolarization → phase 4, rest.",
+    "options": [
+      "Phase 2, hyperpolarization below rest",
+      "Phase 2, pause while sodium channels reopen",
+      "Phase 2, plateau held by calcium entry",
+      "Phase 2, second sodium upstroke"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Phase 2 is the plateau. Calcium entering through L-type channels balances potassium leaving, and the membrane stays near 0 mV for about 200 ms.",
+      "options": [
+        "The membrane stays near 0 mV in phase 2. It does not go below the resting potential.",
+        "Sodium channels stay inactivated through the plateau. They recover only as the membrane repolarizes in phase 3.",
+        "Correct. The plateau follows the notch.",
+        "There is only one sodium upstroke. The sodium channels are inactivated during phase 2."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-12"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A ventricular cell has an absolute refractory period of 200 ms. What is the fastest rate at which it could fire action potentials?",
+    "options": [
+      "200 per minute",
+      "300 per minute",
+      "500 per minute",
+      "120 per minute"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The shortest possible time between upstrokes is 0.2 s. That gives 1 ÷ 0.2 s = 5 per second, and 5 × 60 = 300 per minute.",
+      "options": [
+        "200 is the refractory period in milliseconds, not a rate.",
+        "Correct. 5 per second times 60 seconds is 300 per minute.",
+        "500 per second is the ceiling for a skeletal muscle fiber with a 2 ms refractory period, not this cell.",
+        "120 per minute would mean one action potential every 0.5 s, far slower than the refractory period allows."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-13"
+  },
+  {
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients"
+    ],
+    "q": "A drug blocks the voltage-gated potassium channels that repolarize a ventricular cell in phase 3. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Duration of the action potential",
+        "answer": "up",
+        "why": "With less potassium leaving, outward current takes longer to overcome calcium entry, so the plateau lasts longer and repolarization is slower."
+      },
+      {
+        "name": "Length of the absolute refractory period",
+        "answer": "up",
+        "why": "The sodium channels stay inactivated as long as the membrane stays depolarized, so a longer action potential means a longer refractory period."
+      },
+      {
+        "name": "Fastest possible rate of action potentials",
+        "answer": "down",
+        "why": "A new action potential cannot start until the refractory period ends, so a longer refractory period lowers the ceiling on the rate."
+      }
+    ],
+    "why": {
+      "correct": "Blocking the repolarizing potassium channels prolongs the plateau, which keeps the sodium channels inactivated longer, lengthening the refractory period and lowering the maximum firing rate."
+    },
+    "id": "anp-cardiac-muscle-ap-14"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A frog heart and a frog leg muscle are each placed in a salt solution with no calcium. The leg muscle still contracts when stimulated, but the heart stops contracting within a few beats. What best explains the difference?",
+    "options": [
+      "Heart muscle has no sarcoplasmic reticulum, so it depends on calcium from outside",
+      "Heart muscle cells need entering calcium to trigger release from their SR",
+      "The leg muscle stores calcium in its mitochondria for contraction",
+      "Without calcium the heart's sodium channels cannot open for the upstroke"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In cardiac muscle, calcium entering through L-type channels triggers the SR to release its calcium. With no calcium outside, there is no trigger, so the SR does not release and the heart stops contracting. In skeletal muscle, the voltage sensor in the T tubule opens the SR release channel directly, so outside calcium is not needed.",
+      "options": [
+        "Heart muscle does have a sarcoplasmic reticulum, and it supplies most of the calcium for contraction. It just needs a calcium trigger to release it.",
+        "Correct. Cardiac SR release is calcium-induced, so it needs calcium from outside.",
+        "Skeletal muscle uses calcium from its sarcoplasmic reticulum, not from mitochondria.",
+        "The upstroke is carried by sodium, and sodium is still present in the solution. Loss of the calcium trigger, not of the upstroke, stops contraction."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-15"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "When a cardiac muscle cell relaxes, where does most of the calcium in its cytosol go?",
+    "options": [
+      "Out of the cell through L-type channels",
+      "Onto troponin, where it stays bound until the next beat",
+      "Into the mitochondria, where it is broken down",
+      "Back into the sarcoplasmic reticulum, pumped using ATP"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Calcium pumps in the SR membrane use ATP to move most of the calcium back into the SR. A sodium–calcium exchanger in the sarcolemma removes the smaller amount that entered from outside.",
+      "options": [
+        "L-type channels let calcium into the cell, down its gradient. They cannot move it out against that gradient.",
+        "Calcium leaves troponin as cytosolic calcium falls. That is what lets the cell relax.",
+        "Calcium is an ion; it is not broken down. The main destination is the SR.",
+        "Correct. The SR pump returns most of the calcium."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-16"
+  },
+  {
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-19-21",
+    "q": "Compare the two lower graphs, which plot the action potential and the tension for skeletal and cardiac muscle. Which observation explains why only skeletal muscle can sum its twitches?",
+    "options": [
+      "In skeletal muscle the action potential ends before tension peaks",
+      "In cardiac muscle the tension rises before the action potential starts",
+      "In skeletal muscle the action potential lasts longer than the tension",
+      "In cardiac muscle the peak tension is higher than in skeletal muscle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In skeletal muscle the brief action potential and its refractory period are over long before the tension peaks, so a second action potential can arrive while the fiber is still contracting and the twitches add up. In cardiac muscle the action potential lasts almost as long as the tension, so a second one cannot start until the first contraction is nearly over.",
+      "options": [
+        "Correct. A short action potential inside a long twitch leaves room for another stimulus.",
+        "In both muscles the action potential comes first and triggers the rise in tension.",
+        "The graph shows the opposite: the skeletal action potential is a brief spike at the start of a much longer tension curve.",
+        "Peak tension does not decide whether twitches can sum. The timing of the refractory period relative to the contraction does."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-17"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A drug partly blocks the voltage-gated sodium channels of ventricular cells. Which part of their action potential is most directly affected?",
+    "options": [
+      "The plateau near 0 mV",
+      "The fall back to −90 mV",
+      "The resting potential at −90 mV",
+      "The rapid upstroke"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The upstroke is carried by sodium entering through voltage-gated sodium channels. With fewer channels available, sodium enters more slowly and the upstroke becomes slower and smaller.",
+      "options": [
+        "The plateau depends mainly on calcium entering through L-type channels and potassium leaving. It is affected only indirectly.",
+        "Repolarization depends on potassium leaving through potassium channels, not on sodium channels.",
+        "The resting potential is set mainly by potassium leak channels, which the drug does not block.",
+        "Correct. Sodium channels carry phase 0, the upstroke."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-18"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Blood flow to part of a ventricle stops. Within minutes, the contractile cells there weaken. Which feature of these cells best explains why they are so quickly affected?",
+    "options": [
+      "They depend on aerobic respiration by their many mitochondria",
+      "They rely on a large store of glycogen, which runs out within seconds",
+      "Their gap junctions close as soon as blood flow falls",
+      "Their sarcoplasmic reticulum leaks all its calcium at once"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Mitochondria fill about a third of a contractile cell, and the cell makes nearly all its ATP by aerobic respiration. Without oxygen delivered by blood, ATP production falls fast, and contraction, which uses ATP, weakens.",
+      "options": [
+        "Correct. Heavy dependence on aerobic respiration makes these cells vulnerable to loss of oxygen.",
+        "Heart muscle cells do not run mainly on a large glycogen store; they depend on a steady oxygen supply for aerobic respiration.",
+        "Loss of blood flow weakens the cells through lack of oxygen and ATP. Gap junctions are not what fails first.",
+        "A sudden leak of all SR calcium is not what happens when blood flow stops. The first problem is the fall in ATP production."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-19"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A classmate says: \"Cardiac muscle doesn't use its sarcoplasmic reticulum; it just contracts with calcium from the blood.\" Which correction is accurate?",
+    "options": [
+      "Most calcium comes from the SR; entering calcium is the trigger",
+      "All calcium comes from the SR; outside calcium plays no part",
+      "Half comes from the blood and half from the mitochondria",
+      "Most comes from the blood, and the SR adds more only during fast heart rates"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In a human ventricle about three quarters of the calcium that activates contraction comes from the SR. The quarter that enters through L-type channels mainly triggers that release: calcium-induced calcium release.",
+      "options": [
+        "Correct. The SR supplies most of the calcium; entering calcium triggers its release.",
+        "Outside calcium is essential. Without it there is no trigger, and the SR does not release its calcium.",
+        "Mitochondria are not a source of calcium for contraction. The two sources are the SR and the extracellular fluid.",
+        "The SR is the main source at every rate, not an extra added at fast rates. Entering calcium acts as the trigger."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-20"
+  },
+  {
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features describe contractile cardiac muscle cells? Select all that apply.",
+    "options": [
+      "Branched cells joined by intercalated discs",
+      "One or two centrally placed nuclei",
+      "Striated, with sarcomeres",
+      "Many nuclei pushed to the edge of the cell",
+      "Fire on their own, with no signal from neighbors"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Contractile cardiac muscle cells are short, branched and striated, with one or two central nuclei, and they are joined by intercalated discs. They rest at −90 mV until charge from a neighbor brings them to threshold.",
+      "options": [
+        "Yes. The cells branch, and intercalated discs join them end to end.",
+        "Yes. Each cell has one or two nuclei near its center.",
+        "Yes. Their filaments are arranged in sarcomeres, so they look striped.",
+        "No. Many peripheral nuclei describe a skeletal muscle fiber.",
+        "No. Contractile cells hold a steady resting potential and fire only when a neighbor's charge brings them to threshold."
+      ]
+    },
+    "id": "anp-cardiac-muscle-ap-21"
+  }
+]

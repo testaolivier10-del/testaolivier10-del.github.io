@@ -1,10 +1,18 @@
 {
   "os-2-15": {
     "source": "openstax",
-    "openstax": { "figure": "2.15", "section": "2.4", "url": "https://openstax.org/apps/archive/20260604.144757/resources/7cccfec2bc1e80c63da935575b010018e2f71a7a" },
+    "openstax": {
+      "figure": "2.15",
+      "section": "2.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/7cccfec2bc1e80c63da935575b010018e2f71a7a",
+      "page": "2-4-inorganic-compounds-essential-to-human-functioning"
+    },
     "alt": "A crystal of sodium chloride dissolving in water. Water molecules crowd around each ion as it leaves the crystal: the oxygen ends of the water molecules face the sodium ions, and the hydrogen ends face the chloride ions.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.15",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1105,
+    "ext": "jpg"
   }
 }

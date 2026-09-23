@@ -195,6 +195,7 @@ a.gl{cursor:pointer;}
 .anp-chapters,.anp-topic-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
 .anp-chapters li,.anp-topic-list li{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:11px 15px;}
 .anp-chapters a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);flex:1;min-width:0;}
+.anp-unbuilt-ch{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;color:var(--ink-3,#666);}
 .anp-topic-n{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:9px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);}
 .anp-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
 .anp-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
@@ -221,3 +222,5 @@ a.gl{cursor:pointer;}
   .anp-toggle-labels,.anp-q-actions,#site-header,.course-nav{display:none !important;}
   .js .anp-q-key{display:block;}
 }
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.anp-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}

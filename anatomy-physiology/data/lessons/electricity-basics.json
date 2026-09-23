@@ -1,0 +1,57 @@
+{
+  "topic": "electricity-basics",
+  "hook": "<p>Mr. Okoro, 61, has kidney disease and missed two of the treatments that clean his blood. He feels weak, and the monitor shows his heart rhythm becoming irregular. His blood potassium is nearly 8 mmol/L, about twice normal. Nothing is wrong with his heart muscle itself. The extra potassium outside his heart cells has changed the small voltage across their membranes, and his heart cells fire out of order.</p>",
+  "prereq": [
+    {
+      "q": "A sodium atom loses one electron. What does it become?",
+      "options": ["A negative ion, Na−", "A positive ion, Na+", "A neutral atom with a smaller mass number"],
+      "correct": 1,
+      "why": "Electrons carry negative charge. Losing one leaves the atom with one more proton than electrons, so it becomes a positive ion (a cation), Na+. Ions are the charge carriers in your body.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "Two opposite electric charges are near each other. What force acts between them?",
+      "options": ["They repel each other", "No force acts until they touch", "They attract each other"],
+      "correct": 2,
+      "why": "Opposite charges attract and like charges repel. Because opposite charges attract, pulling them apart takes energy, which is the starting point of this page.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "Glucose is more concentrated on one side of a barrier it can cross. Which way does it move overall?",
+      "options": ["From higher to lower concentration, down its gradient", "From lower to higher concentration, up its gradient", "In neither direction without a pump"],
+      "correct": 0,
+      "why": "Dissolved particles move down their concentration gradient with no energy input. On this page, ions feel that same concentration push plus an electrical one.",
+      "review": "gradients-flow"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    {
+      "cause": "Your cells spend energy to keep more potassium inside than outside and more sodium outside than inside.",
+      "effect": "Each ion has a concentration gradient across the membrane."
+    },
+    {
+      "cause": "The membrane lets some potassium leak out down its concentration gradient, but holds back most other ions.",
+      "effect": "Positive charge leaves, and a thin layer of extra negative charge is left on the inside: charge is separated."
+    },
+    {
+      "cause": "Charge is separated across the membrane.",
+      "effect": "A voltage of a few tens of millivolts exists across it, with the inside negative."
+    },
+    {
+      "cause": "A route for sodium opens, and both sodium's concentration gradient and the voltage push it inward.",
+      "effect": "Sodium ions flow in: an inward ion current."
+    },
+    {
+      "cause": "The inflowing sodium carries positive charge into the cell.",
+      "effect": "The charge separation shrinks and the voltage becomes less negative, although sodium concentrations barely change."
+    }
+  ],
+  "misconception": {
+    "wrong": "A cell with a voltage across its membrane has more negative ions than positive ions inside it overall.",
+    "right": "The fluid inside and outside a cell is almost perfectly neutral. Only a tiny layer of ions, far less than one in a thousand, lies separated against the two faces of the membrane. That thin layer is enough to create the voltage, because the membrane is so thin. The voltage comes from where a few charges sit, not from a large overall excess of one charge."
+  },
+  "check": ["anp-electricity-basics-1", "anp-electricity-basics-4", "anp-electricity-basics-5", "anp-electricity-basics-6", "anp-electricity-basics-9", "anp-electricity-basics-14", "anp-electricity-basics-16"],
+  "summary": "<p>Opposite charges attract, so separating them takes energy and stores it as potential energy. Charge separation is positive and negative charge held apart by a barrier; in your cells, a very thin layer of separated ions lines the two faces of the membrane while the fluids stay neutral. Voltage, or potential difference, is the push that separated charge creates, measured between two points in volts or millivolts (mV). Electrical current is the flow of charge; in your body it is an ion current, and I = V / R, just as F = ΔP / R. Current changes voltage: a few ions crossing change the charge separation a lot. Each ion feels an electrochemical gradient, its concentration gradient plus the electrical gradient, and the two can add together, as for sodium, or oppose, as for potassium. Uncharged particles feel only their concentration gradient.</p>",
+  "connections": []
+}

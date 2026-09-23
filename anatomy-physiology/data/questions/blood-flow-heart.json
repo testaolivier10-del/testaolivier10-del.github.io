@@ -1,0 +1,605 @@
+[
+  {
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A red blood cell from your big toe has just arrived at your heart through the inferior vena cava. Put the structures it passes through in order until it leaves the heart again.",
+    "options": [
+      "Right atrium",
+      "Right ventricle",
+      "Pulmonary capillaries",
+      "Left atrium",
+      "Left ventricle",
+      "Aorta"
+    ],
+    "why": {
+      "correct": "Blood from the legs returns through the inferior vena cava to the right atrium. The right ventricle pumps it to the pulmonary capillaries, where it picks up oxygen. It returns through the pulmonary veins to the left atrium, and the left ventricle pumps it into the aorta.",
+      "options": [
+        "The inferior vena cava empties into the right atrium, the receiving chamber for blood from the body, so it comes first.",
+        "The right atrium passes blood through the tricuspid valve into the right ventricle, which pumps it toward the lungs.",
+        "The right ventricle pumps blood through the pulmonary trunk and arteries to the pulmonary capillaries, where it becomes oxygenated.",
+        "The pulmonary veins carry oxygenated blood from the lungs into the left atrium.",
+        "The left atrium passes blood through the mitral valve into the left ventricle.",
+        "The left ventricle pumps blood through the aortic valve into the aorta, so the aorta comes last."
+      ]
+    },
+    "id": "anp-blood-flow-heart-1"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-19-15",
+    "pin": "anterior-interventricular-artery",
+    "q": "Name the pinned artery: it runs down the front of the heart in the groove between the two ventricles, toward the apex.",
+    "options": [
+      "Circumflex artery",
+      "Right coronary artery",
+      "Anterior interventricular artery",
+      "Posterior interventricular artery"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The anterior interventricular artery, usually called the left anterior descending artery, is a branch of the left coronary artery that runs down the anterior interventricular sulcus toward the apex.",
+      "options": [
+        "The circumflex artery curves around the left side of the heart in the coronary sulcus. It does not run down the front toward the apex.",
+        "The right coronary artery runs around the right side of the heart in the coronary sulcus, not down the front groove.",
+        "Correct. This is the anterior interventricular artery (left anterior descending).",
+        "The posterior interventricular artery runs down the groove between the ventricles on the back of the heart, not the front."
+      ]
+    },
+    "id": "anp-blood-flow-heart-2"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Reyes, 58, has a clot completely blocking his left anterior descending artery near its start. Which region of his heart muscle is most at risk?",
+    "options": [
+      "The front of the left ventricle, the apex and most of the septum",
+      "The right atrium and most of the muscular wall of the right ventricle",
+      "The back of both ventricles and the rear third of the septum",
+      "The left atrium and the side wall of the left ventricle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The left anterior descending (anterior interventricular) artery runs down the front of the heart. It supplies the front of the left ventricle, the front two thirds of the interventricular septum and the apex, so those regions lose their blood supply.",
+      "options": [
+        "Correct. This is the territory of the left anterior descending artery.",
+        "The right atrium and most of the right ventricle are fed by the right coronary artery, which is not blocked here.",
+        "The back of both ventricles is fed by the posterior interventricular artery, which in most people comes from the right coronary artery.",
+        "The left atrium and the side wall of the left ventricle are fed by the circumflex artery, the other branch of the left coronary artery."
+      ]
+    },
+    "id": "anp-blood-flow-heart-3"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "A cardiologist takes blood samples from four sites in a resting patient. Which sample has the least oxygen?",
+    "options": [
+      "Blood in a pulmonary vein",
+      "Blood in the aorta",
+      "Blood in the right atrium",
+      "Blood in the coronary sinus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heart muscle removes about 70 to 75 percent of the oxygen from the blood reaching it, far more than most tissues remove. The coronary sinus collects that blood, so it is the most deoxygenated blood in the body at rest.",
+      "options": [
+        "Blood in a pulmonary vein has just left the lungs, so it is fully oxygenated.",
+        "Blood in the aorta is oxygenated blood that the left ventricle has just pumped out.",
+        "Blood in the right atrium is deoxygenated, but it mixes blood from all tissues, and most tissues take only about a quarter of the oxygen. It still holds more oxygen than blood draining heart muscle.",
+        "Correct. Blood leaving heart muscle has given up most of its oxygen."
+      ]
+    },
+    "id": "anp-blood-flow-heart-4"
+  },
+  {
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During a hard run, your heart rate rises from 75 to 150 beats per minute. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Length of each ventricular diastole",
+        "answer": "down",
+        "why": "Each cycle falls from 0.8 to 0.4 seconds, and nearly all of that cut comes out of diastole, which falls from about 0.5 to 0.15 seconds."
+      },
+      {
+        "name": "Time per minute available for blood to flow into the left ventricle's muscle",
+        "answer": "down",
+        "why": "Most flow into the left ventricle's wall happens in diastole, when the relaxed muscle stops squeezing its vessels, and the total time spent in diastole each minute falls."
+      },
+      {
+        "name": "Oxygen used by the heart muscle each minute",
+        "answer": "up",
+        "why": "Twice as many contractions each minute use more ATP, so the muscle's aerobic respiration and oxygen use rise."
+      }
+    ],
+    "why": {
+      "correct": "A faster heart rate shortens diastole the most, which cuts the time for coronary flow into the left ventricle's wall, while the harder-working muscle uses more oxygen."
+    },
+    "id": "anp-blood-flow-heart-5"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Over one minute, a person's right ventricle pumps out 5.0 liters of blood. About how much does the left ventricle pump out in the same minute?",
+    "options": [
+      "About 1.0 liter",
+      "About 5.0 liters",
+      "About 10.0 liters",
+      "About 25 liters"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pulmonary and systemic circuits are connected in series: all the blood the right ventricle sends through the lungs returns to the left side. So over time the two ventricles pump the same volume, even though the left makes about five times the pressure.",
+      "options": [
+        "If the left ventricle pumped only 1 liter while the right pumped 5, about 4 liters a minute would pile up in the lungs.",
+        "Correct. In series circuits, both pumps move the same volume per minute.",
+        "The left ventricle makes more pressure, not more volume. Pumping twice as much as the right would drain the lungs within minutes.",
+        "This multiplies the volume by the pressure ratio. Pressure and volume are different quantities: higher pressure does not mean a larger volume."
+      ]
+    },
+    "id": "anp-blood-flow-heart-6"
+  },
+  {
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which vessels normally carry oxygenated blood? Select all that apply.",
+    "options": [
+      "Pulmonary veins",
+      "Pulmonary trunk",
+      "Aorta",
+      "Superior vena cava",
+      "Coronary arteries"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Oxygenated blood runs from the lungs through the pulmonary veins to the left heart, then out through the aorta and its branches, including the coronary arteries.",
+      "options": [
+        "Yes. The pulmonary veins carry blood that has just picked up oxygen in the lungs back to the left atrium.",
+        "No. The pulmonary trunk carries deoxygenated blood from the right ventricle toward the lungs.",
+        "Yes. The left ventricle pumps oxygenated blood into the aorta.",
+        "No. The superior vena cava returns deoxygenated blood from the upper body to the right atrium.",
+        "Yes. The coronary arteries are the first branches of the aorta, so they carry the same oxygenated blood."
+      ]
+    },
+    "id": "anp-blood-flow-heart-7"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ms. Lee, 64, gets a tight pressure in her chest when she climbs two flights of stairs. It fades after three minutes of rest. Her blood troponin level is normal. What best describes what is happening to her heart muscle?",
+    "options": [
+      "Heart muscle is dying and being replaced by scar",
+      "Ischemia during exertion that reverses at rest",
+      "The pericardial sac is filling with blood",
+      "Deoxygenated blood is mixing into the aorta"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A narrowed coronary artery supplies enough blood at rest but not when exertion raises the muscle's oxygen use. The ischemia causes pain, and it reverses once demand falls. This is angina. Normal troponin fits: no muscle has died.",
+      "options": [
+        "Dying muscle is a myocardial infarction. Pain from an infarction usually lasts longer and does not ease with rest, and dying fibers release troponin, which is normal here.",
+        "Correct. This is angina: ischemia that reverses when oxygen demand falls.",
+        "Blood filling the pericardial sac would squeeze the heart and lower blood pressure, and it would not come and go with stair climbing.",
+        "In a healthy adult heart the right and left sides do not share blood. Nothing in her story suggests a hole between the chambers."
+      ]
+    },
+    "id": "anp-blood-flow-heart-8"
+  },
+  {
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This route of blood through the heart has one wrong step. Find it.",
+    "options": [
+      "Venae cavae to right atrium",
+      "Right atrium to right ventricle through the tricuspid valve",
+      "Right ventricle to aorta through the aortic valve",
+      "Pulmonary veins to left atrium",
+      "Left atrium to left ventricle through the mitral valve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The right ventricle pumps through the pulmonary valve into the pulmonary trunk, toward the lungs. The aortic valve and the aorta belong to the left ventricle.",
+      "options": [
+        "This step is correct. Both venae cavae empty into the right atrium.",
+        "This step is correct. The tricuspid valve lies between the right atrium and the right ventricle.",
+        "This is the wrong step. The right ventricle pumps through the pulmonary valve into the pulmonary trunk; the aortic valve guards the exit from the left ventricle.",
+        "This step is correct. The pulmonary veins bring oxygenated blood into the left atrium.",
+        "This step is correct. The mitral valve lies between the left atrium and the left ventricle."
+      ]
+    },
+    "id": "anp-blood-flow-heart-9"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A tiny amount of dye is injected into the great cardiac vein. Where does the dye enter a chamber of the heart?",
+    "options": [
+      "The left atrium, through the pulmonary veins",
+      "The right ventricle, through the anterior cardiac veins",
+      "The left ventricle, through the aortic valve",
+      "The right atrium, through the coronary sinus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The great cardiac vein drains into the coronary sinus, the wide vein in the coronary sulcus on the back of the heart. The coronary sinus empties into the right atrium.",
+      "options": [
+        "The pulmonary veins carry blood from the lungs. The heart's own veins do not drain into them.",
+        "The anterior cardiac veins are separate small veins on the front of the right ventricle, and they empty into the right atrium, not the right ventricle.",
+        "Blood does not enter the left ventricle through the aortic valve; that valve lets blood out of the ventricle into the aorta.",
+        "Correct. Great cardiac vein, then coronary sinus, then right atrium."
+      ]
+    },
+    "id": "anp-blood-flow-heart-10"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Blood flow into the muscle of the left ventricle is highest during diastole, even though aortic pressure is highest during systole. What explains this?",
+    "options": [
+      "The coronary arteries close their openings in the aorta during systole",
+      "Blood in the left ventricle feeds its own wall directly during diastole",
+      "Contracting muscle squeezes the vessels running through the wall",
+      "Heart muscle uses no oxygen while the ventricle is contracting"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Branches of the coronary arteries dive into the myocardium. In systole the contracting muscle, especially in the thick left ventricle wall, compresses those vessels and slows flow. In diastole the muscle relaxes, the vessels open, and most flow occurs.",
+      "options": [
+        "The coronary artery openings do not close. The limit on flow comes from the vessels inside the wall being squeezed.",
+        "Blood in the chamber reaches only a thin inner layer of muscle next to the endocardium. The rest of the wall depends on the coronary arteries.",
+        "Correct. The muscle compresses its own vessels as it contracts, like squeezing a garden hose.",
+        "Heart muscle uses oxygen all the time, and most of all while it contracts. Its supply, not its use, is what falls in systole."
+      ]
+    },
+    "id": "anp-blood-flow-heart-11"
+  },
+  {
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the left side of the heart: pulmonary veins → left atrium → ____ → left ventricle → aortic valve → aorta.",
+    "options": [
+      "Mitral valve",
+      "Tricuspid valve",
+      "Pulmonary valve",
+      "Coronary sinus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The mitral valve is the left atrioventricular valve, between the left atrium and the left ventricle.",
+      "options": [
+        "Correct. Blood crosses the mitral valve from the left atrium into the left ventricle.",
+        "The tricuspid valve lies on the right side, between the right atrium and the right ventricle.",
+        "The pulmonary valve guards the exit from the right ventricle into the pulmonary trunk.",
+        "The coronary sinus is a vein on the back of the heart that drains the heart wall into the right atrium, not a valve."
+      ]
+    },
+    "id": "anp-blood-flow-heart-12"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "A classmate says: \"The veins in my wrist look blue because the blood in them has run out of oxygen.\" Which correction is accurate?",
+    "options": [
+      "Vein blood is blue, but it still holds about half its oxygen",
+      "Vein blood has no oxygen and is dark red, not blue",
+      "Vein blood is dark red and still about 75 percent loaded at rest",
+      "Vein blood is bright red and fully loaded with oxygen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At rest, tissues take only about a quarter of the oxygen that arrives, so returning blood is still about 75 percent loaded. It is dark red. Veins look blue through the skin because of how skin scatters and absorbs light.",
+      "options": [
+        "No blood in the body is blue, whatever its oxygen content.",
+        "Deoxygenated blood still carries a lot of oxygen; at rest the tissues remove only about a quarter of it.",
+        "Correct. Deoxygenated blood is dark red and still carries most of its oxygen at rest.",
+        "Bright red, fully loaded blood is oxygenated blood leaving the lungs, not blood returning in a vein from the hand."
+      ]
+    },
+    "id": "anp-blood-flow-heart-13"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Two patients each have a sudden, complete block of the same coronary artery at the same point. Patient A's artery had been slowly narrowing for years. Patient B's artery was nearly normal until the block. Patient A loses much less heart muscle. What best explains this?",
+    "options": [
+      "Patient A's slow narrowing let collateral vessels widen",
+      "Patient A's heart muscle had learned to work without oxygen",
+      "Patient A's cardiac veins reversed and carried blood in",
+      "Patient A's septum let blood cross from the right ventricle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The heart has small anastomoses between coronary branches. When an artery narrows slowly, more blood is pushed through these connections and they widen over months, forming collateral circulation. When the artery finally closes, collaterals can still feed much of the region. Patient B had no time to develop them.",
+      "options": [
+        "Correct. Slow narrowing drives collateral circulation to develop through anastomoses.",
+        "Heart muscle depends on aerobic respiration and cannot switch to working without oxygen for long, however slowly a block develops.",
+        "Veins carry blood away from the heart muscle. They do not reverse and supply it.",
+        "In a healthy adult heart the interventricular septum is a solid wall, and even if blood crossed it, it would not reach the blocked artery's territory."
+      ]
+    },
+    "id": "anp-blood-flow-heart-14"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-19-15",
+    "pin": "coronary-sinus",
+    "q": "On this back view of the heart, name the pinned wide vein lying in the groove between the atria and the ventricles, which the other cardiac veins empty into.",
+    "options": [
+      "Great cardiac vein",
+      "Inferior vena cava",
+      "Coronary sinus",
+      "Posterior interventricular artery"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The coronary sinus lies in the coronary sulcus on the back of the heart. The great, middle, small and posterior cardiac veins empty into it, and it empties into the right atrium.",
+      "options": [
+        "The great cardiac vein empties into the coronary sinus. It is one of its tributaries, not the wide collecting vein itself.",
+        "The inferior vena cava enters the right atrium from below and drains the lower body, not the heart wall.",
+        "Correct. This is the coronary sinus.",
+        "The posterior interventricular artery runs down the groove between the ventricles on the back. It is an artery, not a collecting vein in the groove around the heart."
+      ]
+    },
+    "id": "anp-blood-flow-heart-15"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-19-4",
+    "pin": "pulmonary-veins",
+    "q": "Name the pinned vessels, which carry blood from the lungs into the left atrium.",
+    "options": [
+      "Pulmonary arteries",
+      "Aorta",
+      "Venae cavae",
+      "Pulmonary veins"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The pulmonary veins carry oxygenated blood from the lungs into the left atrium. They are veins because they carry blood toward the heart.",
+      "options": [
+        "The pulmonary arteries carry deoxygenated blood away from the right ventricle to the lungs.",
+        "The aorta carries oxygenated blood away from the left ventricle to the body.",
+        "The venae cavae return deoxygenated blood from the body to the right atrium.",
+        "Correct. These are the pulmonary veins."
+      ]
+    },
+    "id": "anp-blood-flow-heart-16"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A trained cyclist has a resting heart rate of 50 beats per minute. Her ventricular systole lasts 0.3 seconds. How long is each ventricular diastole?",
+    "options": [
+      "0.5 seconds",
+      "0.3 seconds",
+      "1.2 seconds",
+      "0.9 seconds"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "One cycle lasts 60 s ÷ 50 beats = 1.2 s. Subtract systole: 1.2 s − 0.3 s = 0.9 s of diastole.",
+      "options": [
+        "0.5 seconds is the diastole for a heart rate of 75 beats per minute, when each cycle lasts 0.8 seconds.",
+        "0.3 seconds is the length of systole, not diastole.",
+        "1.2 seconds is the whole cycle. Systole still has to be subtracted.",
+        "Correct. 1.2 s per cycle minus 0.3 s of systole leaves 0.9 s."
+      ]
+    },
+    "id": "anp-blood-flow-heart-17"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a small share of people, the posterior interventricular artery arises from the circumflex artery instead of the right coronary artery. In such a person, which block would damage the back of both ventricles?",
+    "options": [
+      "A block of the right coronary artery",
+      "A block of the left coronary artery before it branches",
+      "A block of the marginal arteries on the right edge",
+      "A block of the coronary sinus on the back of the heart"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In this pattern, the back of both ventricles is fed by a branch of the circumflex artery, which comes from the left coronary artery. A block of the left coronary artery before it branches cuts off the circumflex, and so the posterior interventricular artery too.",
+      "options": [
+        "In this person the right coronary artery does not give rise to the posterior interventricular artery, so a block there would spare the back of the ventricles.",
+        "Correct. The left coronary artery feeds the circumflex, which here feeds the posterior interventricular artery.",
+        "The marginal arteries feed the right edge of the heart, not the back of both ventricles.",
+        "The coronary sinus is a vein that drains blood away. Blocking it does not stop arterial supply to the back of the ventricles."
+      ]
+    },
+    "id": "anp-blood-flow-heart-18"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "The right ventricle moves the same volume of blood as the left, yet it needs a peak pressure of only about 25 mm Hg. What allows this?",
+    "options": [
+      "The lungs' vessels are short, wide and many, with low resistance",
+      "The right ventricle pumps blood a shorter distance, so pressure is irrelevant",
+      "Deoxygenated blood is thinner than oxygenated blood and flows easily",
+      "The pulmonary valve adds extra pressure as blood passes through it"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Flow depends on the pressure difference and the resistance. The pulmonary circuit's vessels are short, wide and numerous, so they resist flow little, and a small pressure moves the full volume. The systemic vessels resist much more, so the left ventricle needs about 120 mm Hg.",
+      "options": [
+        "Correct. Low resistance in the pulmonary circuit means a small pressure moves the same volume.",
+        "Distance matters only through resistance. Pressure still drives flow in both circuits; the lungs simply resist it less.",
+        "Oxygen content does not noticeably change how thick blood is. The same blood flows through both circuits.",
+        "Valves only let blood through in one direction. They do not add pressure."
+      ]
+    },
+    "id": "anp-blood-flow-heart-19"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "While shoveling snow, Mr. Reyes feels crushing chest pain as a clot blocks one of his coronary arteries. Which chain of events produces the pain?",
+    "options": [
+      "Starved fibers make lactate, and chemicals from them excite pain nerve endings",
+      "Blood backs up in the blocked artery, which stretches and tears the pericardium",
+      "The heart stops beating for several seconds, and the pause itself is felt as pain",
+      "High oxygen in the blocked region makes the fibers contract too hard and cramp"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Starved muscle fibers cannot run aerobic respiration fully, so they make less ATP and shift to anaerobic metabolism, producing lactate. Lactate, other acids and chemicals from the ischemic muscle stimulate pain-sensing nerve endings.",
+      "options": [
+        "Correct. Ischemia leads to lactate and other chemicals, which stimulate pain nerve endings.",
+        "A blocked artery does not stretch or tear the pericardium. The pain comes from the starved muscle itself.",
+        "A coronary block does not simply stop the heartbeat, and the pain comes from chemicals released by ischemic muscle, not from the heart pausing.",
+        "A blocked artery lowers, not raises, the oxygen reaching the muscle downstream."
+      ]
+    },
+    "id": "anp-blood-flow-heart-20"
+  },
+  {
+    "type": "order",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Blood leaves the aorta just above the aortic valve to feed the front of the left ventricle. Order the route it takes from there back into a chamber of the heart.",
+    "options": [
+      "Left coronary artery",
+      "Anterior interventricular artery",
+      "Capillaries in the myocardium",
+      "Great cardiac vein",
+      "Coronary sinus",
+      "Right atrium"
+    ],
+    "why": {
+      "correct": "The coronary arteries are the first branches of the aorta. The left coronary artery gives off the anterior interventricular artery, which feeds capillaries in the front wall of the left ventricle. The great cardiac vein collects that blood and empties into the coronary sinus, which drains into the right atrium.",
+      "options": [
+        "The left coronary artery leaves the aorta just above the aortic valve. It is short and splits almost at once.",
+        "The anterior interventricular artery is one of its two branches and runs down the front of the heart.",
+        "Its branches dive into the myocardium and end in capillaries, where oxygen leaves the blood.",
+        "The great cardiac vein runs up beside the anterior interventricular artery and collects that blood.",
+        "The great cardiac vein empties into the coronary sinus on the back of the heart.",
+        "The coronary sinus empties into the right atrium, which ends the loop."
+      ]
+    },
+    "id": "anp-blood-flow-heart-21"
+  },
+  {
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which of these happen as blood passes through the capillaries of your thigh muscle? Select all that apply.",
+    "options": [
+      "Oxygen diffuses from the blood into the tissue",
+      "Carbon dioxide diffuses from the tissue into the blood",
+      "Oxygen diffuses from the tissue into the blood",
+      "The blood leaves with most of its oxygen still on board at rest",
+      "Carbon dioxide diffuses from the blood into the tissue"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "In systemic capillaries, cells use oxygen and make carbon dioxide, so oxygen moves down its gradient out of the blood and carbon dioxide moves into it. At rest the tissue takes only about a quarter of the oxygen.",
+      "options": [
+        "Yes. Cells use oxygen, so it is lower in the tissue and diffuses out of the blood.",
+        "Yes. Cells make carbon dioxide, so it is higher in the tissue and diffuses into the blood.",
+        "No. Oxygen moves into the blood in the pulmonary capillaries, not in the tissues.",
+        "Yes. At rest, blood leaving the tissues is still about 75 percent loaded with oxygen.",
+        "No. Carbon dioxide moves out of the blood in the lungs, where it is lower in the air of the alveoli than in the blood."
+      ]
+    },
+    "id": "anp-blood-flow-heart-22"
+  }
+]

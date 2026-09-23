@@ -13,7 +13,7 @@
       "q": "Which valve lies between the left atrium and the left ventricle?",
       "options": ["Mitral valve", "Tricuspid valve", "Aortic valve"],
       "correct": 0,
-      "why": "The mitral valve (also called the bicuspid valve) is the left atrioventricular valve. The tricuspid is on the right, and the aortic valve guards the exit from the left ventricle.",
+      "why": "The mitral valve is the left atrioventricular valve. The tricuspid is on the right, and the aortic valve guards the exit from the left ventricle.",
       "review": "heart-chambers-valves"
     },
     {
@@ -39,7 +39,7 @@
     "wrong": "Deoxygenated blood has no oxygen left in it, which is why it is blue.",
     "right": "At rest, blood returning to the heart is still about 75 percent loaded with oxygen; the tissues take only about a quarter of what arrives. No blood is blue. Deoxygenated blood is dark red, and veins only look blue through the skin because of how skin handles light. Diagrams use blue as a code."
   },
-  "check": ["anp-blood-flow-heart-1", "anp-blood-flow-heart-3", "anp-blood-flow-heart-6", "anp-blood-flow-heart-8", "anp-blood-flow-heart-10", "anp-blood-flow-heart-11", "anp-blood-flow-heart-19"],
+  "check": ["anp-blood-flow-heart-1", "anp-blood-flow-heart-3", "anp-blood-flow-heart-6", "anp-blood-flow-heart-8", "anp-blood-flow-heart-10", "anp-blood-flow-heart-11", "anp-blood-flow-heart-7"],
   "summary": "<p>The right ventricle pumps deoxygenated blood through the low-pressure pulmonary circuit, where it picks up oxygen in the pulmonary capillaries; the left ventricle pumps oxygenated blood through the high-pressure systemic circuit. The circuits are in series, so both ventricles pump the same volume each minute. Blood's path runs venae cavae, right atrium, tricuspid valve, right ventricle, pulmonary valve, pulmonary arteries, lungs, pulmonary veins, left atrium, mitral valve, left ventricle, aortic valve, aorta. Systole is contraction and diastole is relaxation; faster heart rates cut diastole most. The coronary arteries feed the heart muscle, mostly during diastole, and the cardiac veins drain through the coronary sinus into the right atrium. Ischemia that reverses causes angina; ischemia that lasts kills muscle in a myocardial infarction. Collateral circulation through anastomoses can limit damage when narrowing develops slowly.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies (chest pain and heart attack)" },

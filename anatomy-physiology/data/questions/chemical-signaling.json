@@ -4,22 +4,24 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "What is a ligand?",
     "options": [
       "A protein channel that is always open",
-      "A molecule that binds specifically to a site on a protein",
-      "An enzyme that breaks down chemical messengers",
-      "A cell that responds to a hormone"
+      "A cell that responds to a hormone",
+      "An enzyme that breaks down chemical messengers after they are released",
+      "A molecule that binds specifically to a site on a protein"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "A ligand (Latin ligare, to bind) is any molecule that binds specifically to a site on a protein. Chemical messengers, and drugs that bind the same proteins, are ligands.",
       "options": [
         "A channel that is always open is a leak channel. A ligand is the molecule that binds, not the protein.",
-        "Correct. Binding specifically to a protein is what makes a molecule a ligand.",
+        "A cell that responds to a messenger is a target cell.",
         "Some enzymes do break down messengers, but a ligand is the molecule that binds, not an enzyme acting on it.",
-        "A cell that responds to a messenger is a target cell."
+        "Correct. Binding specifically to a protein is what makes a molecule a ligand."
       ]
     }
   },
@@ -28,18 +30,20 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "misconception": "a hormone affects every cell it reaches",
-    "q": "A hormone in the blood reaches cells in the liver, skin and bone equally. Only the liver cells respond. What best explains this?",
+    "q": "A hormone in the blood reaches cells in the liver, skin and fat tissue equally. Only the liver cells respond. What best explains this?",
     "options": [
-      "The hormone is broken down before reaching the skin and bone",
-      "Liver cells have more ATP than skin and bone cells",
+      "The hormone is broken down before reaching the skin and fat tissue",
+      "Liver cells have more ATP than skin and fat cells",
       "Only the liver cells carry receptor proteins that bind this hormone",
-      "The hormone enters every cell but acts only in the liver"
+      "The hormone enters every cell equally but produces an effect only in the liver"
     ],
     "correct": 2,
     "why": {
-      "correct": "Only target cells respond to a messenger, and a target cell is one with receptor proteins that fit it. The skin and bone cells meet the hormone but have no receptor proteins for it.",
+      "correct": "Only target cells respond to a messenger, and a target cell is one with receptor proteins that fit it. The skin and fat cells meet the hormone but have no receptor proteins for it.",
       "options": [
         "The question says the hormone reaches all three tissues equally. Reaching a cell is not enough; the cell must have a matching receptor protein.",
         "Energy supply does not decide which cells respond. Receptor proteins do.",
@@ -53,13 +57,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "The same neurotransmitter slows the heart rate but makes smooth muscle in the gut contract harder. How can one messenger have opposite-seeming effects?",
     "options": [
       "It reaches the heart in a smaller amount",
       "Heart cells and gut cells carry different receptor proteins for it",
       "It is converted into a different molecule in the gut",
-      "Heart muscle has no receptor proteins, so it responds indirectly"
+      "Heart muscle has no receptor proteins for it, so it responds only indirectly"
     ],
     "correct": 1,
     "why": {
@@ -77,7 +83,9 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Endothelial cells lining a blood vessel release nitric oxide. It diffuses a few micrometers into the smooth muscle around the vessel, which relaxes. What kind of signaling is this?",
     "options": [
       "Autocrine",
@@ -101,7 +109,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "An activated white blood cell releases an interleukin. The interleukin binds receptor proteins on that same white blood cell and drives it to divide. What kind of signaling is this?",
     "options": [
       "Paracrine",
@@ -125,21 +135,23 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Leo, 30, takes ibuprofen for a sprained ankle for two weeks. The pain and swelling ease, but he develops stomach pain. Which explanation fits both effects?",
     "options": [
-      "Ibuprofen blocks receptor proteins for neurotransmitters in the ankle and stomach",
-      "Ibuprofen reduces the making of prostaglandins, which sensitize pain nerve endings and protect the stomach lining",
+      "Ibuprofen blocks the receptor proteins for neurotransmitters in both the injured ankle and the lining of the stomach",
       "Ibuprofen raises cAMP in every cell",
+      "Less prostaglandin is made, so fewer pain endings are sensitized and the stomach lining is less protected",
       "Ibuprofen kills white blood cells in the ankle and stomach"
     ],
-    "correct": 1,
+    "correct": 2,
     "why": {
       "correct": "Ibuprofen blocks the enzyme that makes prostaglandins from a membrane fatty acid. Less prostaglandin means less sensitized pain nerve endings and less vessel dilation in the ankle, but also less protection for the stomach lining.",
       "options": [
         "Ibuprofen does not act on neurotransmitter receptor proteins. Its effects come from reduced prostaglandin production.",
-        "Correct. One enzyme block explains both the relief and the side effect.",
         "Ibuprofen is not a general cAMP booster. A change in one local messenger, prostaglandins, explains both effects.",
+        "Correct. One enzyme block explains both the relief and the side effect.",
         "Ibuprofen does not kill white blood cells. It reduces a local messenger."
       ]
     }
@@ -149,13 +161,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication", "structure-function"],
+    "core": [
+      "communication",
+      "structure-function"
+    ],
     "q": "A newly discovered messenger is a small, hydrophobic molecule made from cholesterol. Where are its receptor proteins most likely to be?",
     "options": [
       "Inside the target cell, in the cytosol or nucleus",
       "In the plasma membrane, facing out",
       "In the blood plasma",
-      "On the outside of the nuclear envelope only"
+      "On the outer surface of the nuclear envelope, facing the cytosol"
     ],
     "correct": 0,
     "why": {
@@ -173,19 +188,22 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication", "structure-function"],
+    "core": [
+      "communication",
+      "structure-function"
+    ],
     "q": "Priya's reliever inhaler opens her airways within minutes. A steroid tablet she takes for the same problem needs several hours to work, and its effect lasts much longer. What best explains the difference?",
     "options": [
-      "The tablet is absorbed slowly from the gut",
-      "The inhaled drug's receptor protein is on the surface and acts through a second messenger; the steroid acts inside the cell by changing gene expression",
-      "The steroid acts on a different organ",
+      "The tablet is absorbed slowly from the gut, and slow absorption accounts for both its late start and its long effect",
+      "The inhaler acts through a surface receptor protein and cAMP; the steroid changes gene expression",
+      "The steroid acts on a different organ from the one the inhaled drug reaches in the airways",
       "The inhaled drug is more concentrated"
     ],
     "correct": 1,
     "why": {
       "correct": "The inhaled drug binds a membrane receptor protein and raises cAMP, which changes proteins the muscle cell already has: seconds to minutes. The steroid crosses the membrane, binds an intracellular receptor and changes transcription, so the cell must make new proteins: hours to start, and the proteins persist.",
       "options": [
-        "Absorption takes some time, but even a steroid given into a vein takes hours to act. The delay comes from making new proteins.",
+        "Absorption takes some time, but even a steroid given into a vein takes hours to act, and slow absorption cannot explain an effect that outlasts the drug. The delay and the long effect come from making new proteins.",
         "Correct. Changing existing proteins is fast; changing gene expression is slow and lasting.",
         "Both drugs act on the same airways. The speed difference comes from where their receptor proteins are and what they change.",
         "Concentration changes how strong a response is, not whether it takes minutes or hours to start."
@@ -197,7 +215,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the steps of a G-protein-coupled receptor pathway in order.",
     "options": [
       "The first messenger binds a receptor protein in the membrane",
@@ -216,7 +236,9 @@
     "type": "error",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "One step in this account of a water-soluble messenger's action is wrong. Find it.",
     "options": [
       "The messenger travels dissolved in the plasma",
@@ -242,7 +264,9 @@
     "type": "missing",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Fill in the missing step at a synapse. Action potential reaches the axon terminal → voltage-gated calcium channels open and calcium enters → ______ → neurotransmitter binds receptor proteins on the postsynaptic cell.",
     "options": [
       "The action potential jumps across the synaptic cleft",
@@ -257,7 +281,7 @@
         "The electrical signal cannot cross the cleft; that is why a chemical messenger is needed.",
         "The calcium that matters here enters the presynaptic axon terminal. The postsynaptic cell does not release it.",
         "Correct. Calcium triggers exocytosis of neurotransmitter.",
-        "Neurotransmitter is made inside the presynaptic neuron and stored in vesicles, not made in the cleft."
+        "Neurotransmitter is made inside the presynaptic cell and stored in vesicles, not made in the cleft."
       ]
     }
   },
@@ -266,22 +290,44 @@
     "type": "predict",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Level 2. A drug blocks the enzyme that breaks down cAMP in heart muscle cells. A messenger that raises cAMP in these cells then binds its receptor protein as usual. Predict each variable compared with no drug.",
     "variables": [
-      { "name": "Number of receptor proteins occupied by the messenger", "answer": "none", "why": "The drug acts inside the cell, after the receptor protein; it does not change how much messenger binds." },
-      { "name": "cAMP concentration inside the cells", "answer": "up", "why": "cAMP is still made at the usual rate but broken down more slowly, so it builds up." },
-      { "name": "Phosphorylation of the target proteins", "answer": "up", "why": "More cAMP switches on more of the enzymes that phosphorylate target proteins." },
-      { "name": "How long the response lasts after the messenger leaves", "answer": "up", "why": "Breaking down cAMP is what ends the response; slowing that step lets the response continue longer." }
+      {
+        "name": "Number of receptor proteins occupied by the messenger",
+        "answer": "none",
+        "why": "The drug acts inside the cell, after the receptor protein; it does not change how much messenger binds."
+      },
+      {
+        "name": "cAMP concentration inside the cells",
+        "answer": "up",
+        "why": "cAMP is still made at the usual rate but broken down more slowly, so it builds up."
+      },
+      {
+        "name": "Phosphorylation of the target proteins",
+        "answer": "up",
+        "why": "More cAMP switches on more of the enzymes that phosphorylate target proteins."
+      },
+      {
+        "name": "How long the response lasts after the messenger leaves",
+        "answer": "up",
+        "why": "Breaking down cAMP is what ends the response; slowing that step lets the response continue longer."
+      }
     ],
-    "why": { "correct": "Blocking cAMP breakdown leaves the first messenger's binding unchanged but raises cAMP, strengthening and prolonging everything downstream." }
+    "why": {
+      "correct": "Blocking cAMP breakdown leaves the first messenger's binding unchanged but raises cAMP, strengthening and prolonging everything downstream."
+    }
   },
   {
     "id": "anp-chemical-signaling-13",
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A hormone present in the blood at less than a billionth of a mole per liter causes a large response in its target cells. What best explains how so little hormone can do so much?",
     "options": [
       "Each hormone molecule binds thousands of receptor proteins at once",
@@ -305,7 +351,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "During a bad month, Priya uses her reliever inhaler many times a day. Each puff opens her airways less than before, even though the dose is the same. Which change in her airway muscle cells best explains this?",
     "options": [
       "Up-regulation of the drug's receptor proteins",
@@ -329,7 +377,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "The nerve to a skeletal muscle is cut. Weeks later, the muscle fibers respond strongly to even tiny amounts of the nerve's neurotransmitter applied anywhere on their surface. What happened?",
     "options": [
       "The fibers up-regulated receptor proteins for that neurotransmitter",
@@ -353,7 +403,10 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["communication", "structure-function"],
+    "core": [
+      "communication",
+      "structure-function"
+    ],
     "q": "Which statements are true of lipid-soluble messengers such as steroids? Select all that apply.",
     "options": [
       "They diffuse through the phospholipid bilayer",
@@ -362,7 +415,12 @@
       "They usually act within milliseconds",
       "They travel in blood mostly bound to proteins that carry them"
     ],
-    "correct": [0, 1, 2, 4],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
     "why": {
       "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Being hydrophobic, they ride in the blood bound to carrier proteins. Making new proteins takes hours, so they are slow.",
       "options": [
@@ -379,13 +437,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "You touch a hot pan and pull your hand away in a fraction of a second. Why is this response carried by the nervous system rather than by a hormone?",
     "options": [
       "Hormones cannot reach the arm",
       "Hormones only affect organs, not muscles",
-      "Neurotransmitters are carried in the blood faster than hormones",
-      "Nerve signals reach specific muscles in milliseconds; hormones take seconds or longer"
+      "Neurotransmitters travel through the blood to the arm muscles much faster than hormones do",
+      "Nerve signals reach specific muscles in milliseconds; hormones take seconds or more"
     ],
     "correct": 3,
     "why": {
@@ -393,49 +453,53 @@
       "options": [
         "Blood reaches the arm, so hormones can too. The problem is speed and precision.",
         "Many hormones act on muscle. The issue is the time a hormone takes to arrive and act.",
-        "Neurotransmitters are not carried in the blood; they cross the synaptic cleft.",
+        "Neurotransmitters are not carried in the blood to reach muscles; they cross the synaptic cleft at each synapse.",
         "Correct. Fast, precise responses are the strength of nervous signaling."
       ]
     }
   },
   {
     "id": "anp-chemical-signaling-18",
-    "type": "single",
+    "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-17-5",
     "q": "In the pathway shown, a mutation leaves the G protein unable to be switched on. The first messenger still binds its receptor protein normally. What happens?",
     "options": [
       "cAMP rises, and the cell responds",
-      "No cAMP is made, and the cell does not respond",
+      "The receptor protein makes cAMP directly, and the cell responds normally",
       "The messenger enters the cell instead",
-      "The receptor protein makes cAMP directly"
+      "No cAMP is made, and the cell does not respond"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "The G protein links the receptor protein to the enzyme that makes cAMP. With that link broken, binding at the surface produces no second messenger, so the signal stops at the membrane.",
       "options": [
         "cAMP is made only after the G protein switches on the membrane enzyme, which cannot happen here.",
-        "Correct. Without the G protein, the signal cannot pass from the receptor protein to the cAMP-making enzyme.",
+        "The receptor protein does not make cAMP; a separate membrane enzyme does, once a G protein switches it on.",
         "A water-soluble messenger cannot cross the membrane, whatever happens to the G protein.",
-        "The receptor protein does not make cAMP; a separate membrane enzyme does, once a G protein switches it on."
+        "Correct. Without the G protein, the signal cannot pass from the receptor protein to the cAMP-making enzyme."
       ]
     }
   },
   {
     "id": "anp-chemical-signaling-19",
-    "type": "single",
+    "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-12-27",
-    "q": "At the synapse shown, a drug occupies the receptor proteins on the postsynaptic membrane without opening them. The presynaptic neuron fires normally. What is the result?",
+    "q": "At the synapse shown, a drug occupies the receptor proteins on the postsynaptic membrane without opening them. The presynaptic cell fires normally. What is the result?",
     "options": [
-      "Neurotransmitter is released, but the postsynaptic cell shows little or no graded potential",
+      "Neurotransmitter is released, but the postsynaptic cell barely responds",
       "No neurotransmitter is released",
       "The postsynaptic cell fires more often",
-      "The presynaptic neuron's action potential stops before reaching the terminal"
+      "The presynaptic cell's action potential stops before reaching the terminal"
     ],
     "correct": 0,
     "why": {
@@ -453,10 +517,12 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Which phrase describes a receptor protein rather than a sensory receptor?",
     "options": [
-      "A nerve ending in the skin that detects pressure",
+      "A nerve ending in the skin that detects pressure on the surface",
       "A cell in the eye that detects light",
       "A protein that binds a specific chemical messenger",
       "A nerve ending that detects heat"

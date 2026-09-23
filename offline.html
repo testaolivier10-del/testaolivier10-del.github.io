@@ -87,7 +87,9 @@ document.addEventListener('DOMContentLoaded', function(){
     '/nremt/': 'NREMT-EMT home',
     '/nremt/index.html': 'NREMT-EMT home',
     '/ochem/': 'Organic Chemistry home',
-    '/ochem/index.html': 'Organic Chemistry home'
+    '/ochem/index.html': 'Organic Chemistry home',
+    '/anatomy-physiology/': 'Anatomy & Physiology home',
+    '/anatomy-physiology/index.html': 'Anatomy & Physiology home'
   };
 
   function label(pathname){
@@ -95,7 +97,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var file = pathname.split('/').pop().replace(/\.html$/, '');
     var name = file.replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
     var area = pathname.indexOf('/nremt/') === 0 ? 'NREMT'
-             : pathname.indexOf('/ochem/') === 0 ? 'Ochem' : '';
+             : pathname.indexOf('/ochem/') === 0 ? 'Ochem'
+             : pathname.indexOf('/anatomy-physiology/') === 0 ? 'A&P' : '';
     return area ? area + ' · ' + name : name;
   }
 

@@ -1,34 +1,38 @@
 {
   "os-1-12": {
     "file": "figures/openstax/os-1-12.jpg",
-    "w": 2347,
-    "h": 2065,
+    "w": 1100,
+    "h": 968,
     "source": "openstax",
     "openstax": {
       "figure": "1.12",
       "section": "1.6",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/83c2b51d5892328f3e0352519cfc434c867247e8"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/83c2b51d5892328f3e0352519cfc434c867247e8",
+      "page": "1-6-anatomical-terminology"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/83c2b51d5892328f3e0352519cfc434c867247e8",
     "alt": "Front and back views of a person standing in anatomical position, with the surface divided into named regions: head, face, eyes, cheeks, ears, chin, neck, chest, armpit, arm, bend of the elbow, forearm, wrist, palm, fingers, abdomen, navel, hip, groin, pubic area, thigh, front of the knee, leg, ankle and foot on the front; back of the head, shoulder blade, spine, lower back, buttock, back of the knee, calf, heel and sole on the back.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.12",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   },
   "os-1-16": {
     "file": "figures/openstax/os-1-16.jpg",
-    "w": 2431,
-    "h": 1255,
+    "w": 1100,
+    "h": 568,
     "source": "openstax",
     "openstax": {
       "figure": "1.16",
       "section": "1.6",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a47422bfbf5f1dcb46cca86199377b7e98de2e38"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a47422bfbf5f1dcb46cca86199377b7e98de2e38",
+      "page": "1-6-anatomical-terminology"
     },
     "url": "https://openstax.org/apps/archive/20260604.144757/resources/a47422bfbf5f1dcb46cca86199377b7e98de2e38",
     "alt": "Two front views of the abdomen showing the organs behind the wall. On the left, two vertical and two horizontal lines divide it into nine regions: right hypochondriac, epigastric and left hypochondriac across the top; right lumbar, umbilical and left lumbar across the middle; right iliac, hypogastric and left iliac across the bottom. On the right, one vertical and one horizontal line crossing at the navel divide it into four quadrants: right upper, left upper, right lower and left lower. The dome of the diaphragm is outlined at the top.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 1.16",
-    "labels": []
+    "labels": [],
+    "ext": "jpg"
   }
 }

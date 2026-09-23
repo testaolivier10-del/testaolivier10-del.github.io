@@ -1,0 +1,435 @@
+[
+  {
+    "id": "anp-electricity-basics-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "What is voltage?",
+    "options": [
+      "The amount of electric charge that flows past a given point in a wire or fluid each second",
+      "The difference in electrical potential energy per unit of charge between two points",
+      "The opposition a path offers to the flow of charge",
+      "The total number of ions dissolved in a fluid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Voltage, also called potential difference, is always a difference between two points: how much electrical potential energy each unit of charge has at one point compared with the other. It exists only where charge is separated.",
+      "options": [
+        "That describes electrical current, the flow of charge. A voltage can exist with no charge flowing at all.",
+        "Correct. Voltage is the potential difference between two points, measured in volts.",
+        "That describes electrical resistance, which opposes current.",
+        "Counting dissolved particles gives osmolarity, not voltage. A fluid full of ions can be perfectly neutral and have no voltage."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "A voltage across a cell's membrane is measured as 0.065 V. How is that written in millivolts?",
+    "options": [
+      "0.65 mV",
+      "6.5 mV",
+      "650 mV",
+      "65 mV"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "1 V = 1,000 mV, so multiply by 1,000: 0.065 × 1,000 = 65 mV. That is a typical size for the voltage across a cell's membrane.",
+      "options": [
+        "This multiplies by 10 instead of 1,000.",
+        "This multiplies by 100 instead of 1,000.",
+        "This multiplies by 10,000 instead of 1,000.",
+        "Correct. 0.065 V × 1,000 mV per volt = 65 mV."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Two beakers of salt water sit side by side, each with equal amounts of positive and negative ions and no membrane between them. What is the voltage between them?",
+    "options": [
+      "Zero, because no charge is separated between them",
+      "A large voltage, because they hold many ions",
+      "A voltage equal to their osmolarity",
+      "A voltage that depends on how quickly the ions are moving"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Voltage exists only where charge is separated. Each beaker is neutral, with positive and negative charges balanced, so there is no difference in electrical potential between them.",
+      "options": [
+        "Correct. No charge separation means no voltage, however many ions are present.",
+        "The number of ions does not create a voltage. Only an imbalance between two places does, and here both are neutral.",
+        "Osmolarity counts dissolved particles and matters for water movement. It is not a voltage.",
+        "Random motion of ions in a neutral fluid produces no voltage. A voltage needs separated charge, not moving charge."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Chloride ions (Cl−) flow into a cell. What happens to the charge inside the cell, and which way is the current?",
+    "options": [
+      "The inside becomes more positive, and the current is inward",
+      "The inside becomes more negative, and the current is inward",
+      "The inside becomes more negative, and the current is outward",
+      "The inside becomes more positive, and the current is outward"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Chloride carries negative charge, so bringing it in makes the inside more negative. By convention, current points the way positive charge moves, and bringing negative charge in has the same effect as taking positive charge out, so the current is outward.",
+      "options": [
+        "Chloride is negative, so it makes the inside more negative, not more positive.",
+        "The inside does become more negative, but current direction follows positive charge. Negative ions moving in make an outward current.",
+        "Correct. Negative charge entering makes the inside more negative, which counts as an outward current.",
+        "The current is indeed outward, but chloride is negative, so it makes the inside more negative, not more positive."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Sodium is much more concentrated outside a cell than inside, and the inside of the cell is negative. A route for sodium opens. What happens?",
+    "options": [
+      "Sodium moves out, because the voltage pushes it away from the negative inside of the cell",
+      "Sodium moves in strongly: its concentration gradient and the voltage both push inward",
+      "Sodium does not move, because its two gradients cancel each other",
+      "Sodium moves in slowly, because only its concentration gradient acts on it"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Sodium's concentration gradient pushes it inward, and as a positive ion it is attracted to the negative inside. Both parts of its electrochemical gradient point inward, so it rushes in.",
+      "options": [
+        "A negative inside attracts positive ions such as sodium; it does not push them away.",
+        "Correct. The chemical and electrical pushes add together, giving a strong inward electrochemical gradient.",
+        "The two gradients would cancel only if they pointed in opposite directions. For sodium, both point inward.",
+        "Sodium is charged, so the voltage acts on it too. Both pushes act, and they add together."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "Potassium is much more concentrated inside a cell than outside, and the inside of the cell is negative. How do the two parts of potassium's electrochemical gradient compare?",
+    "options": [
+      "Both push potassium outward",
+      "Both push potassium inward",
+      "The concentration gradient pushes it out, and the voltage pulls it in",
+      "The concentration gradient pushes it inward, and the voltage pushes it outward"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Potassium is higher inside, so its concentration gradient pushes it out. It is a positive ion, so the negative inside attracts it, pulling it in. The two pushes oppose each other, and the net push is the difference between them.",
+      "options": [
+        "The voltage does not push potassium out. A negative inside attracts positive ions.",
+        "The concentration gradient does not push potassium in; there is more potassium inside than outside.",
+        "Correct. The chemical push is outward and the electrical pull is inward, so they partly cancel.",
+        "This reverses both directions. Potassium moves from high to low concentration (outward), and the negative inside attracts it (inward)."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "The inside of a cell is negative compared with the outside. Glucose, which carries no net charge, is more concentrated outside. What sets the direction glucose moves when a route opens?",
+    "options": [
+      "The voltage alone, which pulls glucose inward",
+      "The voltage alone, which pushes glucose outward",
+      "Both gradients together, as its electrochemical gradient",
+      "Its concentration gradient alone, so it moves inward"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A voltage pushes only charged particles. Glucose has no net charge, so it follows its concentration gradient alone, from higher (outside) to lower (inside).",
+      "options": [
+        "A voltage acts only on charged particles. Glucose carries no net charge, so the voltage does not pull it.",
+        "A voltage cannot push an uncharged particle in either direction.",
+        "Only ions have an electrochemical gradient. For an uncharged particle, the electrical part is zero.",
+        "Correct. With no charge, glucose feels only its concentration gradient, which points inward here."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "A path through a membrane carries an ion current. The voltage across the membrane stays the same, but the path's electrical resistance doubles because fewer routes for the ion are open. Predict each change.",
+    "variables": [
+      {
+        "name": "Electrical resistance of the path",
+        "answer": "up",
+        "why": "Fewer open routes make it harder for ions to cross, so resistance rises; the question says it doubles."
+      },
+      {
+        "name": "Voltage across the membrane",
+        "answer": "none",
+        "why": "The question holds the voltage constant."
+      },
+      {
+        "name": "Ion current",
+        "answer": "down",
+        "why": "I = V / R. The same voltage divided by twice the resistance gives half the current."
+      }
+    ],
+    "why": {
+      "correct": "Current equals voltage divided by resistance. With the voltage fixed, doubling the resistance halves the current, exactly as doubling the resistance of a tube halves fluid flow."
+    }
+  },
+  {
+    "id": "anp-electricity-basics-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A 6 V battery is connected across a path with an electrical resistance of 2,000 ohms. What current flows?",
+    "options": [
+      "3 mA",
+      "12,000 mA",
+      "0.3 mA",
+      "333 mA"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "I = V / R = 6 V ÷ 2,000 Ω = 0.003 A. Since 1 A = 1,000 mA, that is 3 mA.",
+      "options": [
+        "Correct. 6 ÷ 2,000 = 0.003 A, which is 3 mA.",
+        "This multiplies voltage by resistance instead of dividing. Current is voltage divided by resistance.",
+        "This misplaces the decimal point. 6 ÷ 2,000 = 0.003 A, and 0.003 A is 3 mA, not 0.3 mA.",
+        "This divides resistance by voltage (2,000 ÷ 6 ≈ 333) instead of voltage by resistance."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["gradients"],
+    "misconception": "a cell with a voltage has a large overall excess of negative charge",
+    "q": "Which statements about the charge separation across a cell's membrane are true? Select all that apply.",
+    "options": [
+      "Only a tiny fraction of the cell's ions are part of the separated layer",
+      "The fluid inside the cell holds a large overall excess of negative ions",
+      "Separating the charges takes energy, which is stored as potential energy",
+      "The separated charges sit right against the two faces of the membrane",
+      "The voltage exists only while ions are flowing across the membrane"
+    ],
+    "correct": [0, 2, 3],
+    "why": {
+      "correct": "A very thin layer of separated charge, a tiny fraction of the ions, lines the two faces of the membrane. Setting it up takes energy, which is stored. The rest of the fluid on each side is neutral, and the voltage exists whether or not anything is flowing.",
+      "options": [
+        "Correct. Far less than one ion in a thousand is part of the separated layer.",
+        "Away from the membrane, the fluid inside is almost perfectly neutral. The excess negative charge is only a thin layer at the membrane.",
+        "Correct. Opposite charges attract, so pulling them apart takes energy, which is stored like the energy in a stretched spring.",
+        "Correct. The separated charges line the inner and outer faces of the membrane.",
+        "Voltage is a stored push. Like a battery on a shelf, a membrane has a voltage even when no current flows."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "energy"],
+    "q": "Put these events in order, from setting up a voltage across a cell's membrane to changing it.",
+    "options": [
+      "The cell spends energy to build up ion concentration differences across its membrane",
+      "Some positive ions leak out down their concentration gradient, leaving extra negative charge inside",
+      "Charge is separated across the membrane, so a voltage exists",
+      "A route for sodium opens, and sodium flows in as an ion current",
+      "The charge separation shrinks, and the voltage becomes less negative"
+    ],
+    "why": {
+      "correct": "Energy builds the concentration differences. Leaking positive ions separate charge, which creates a voltage. When a new route opens, an ion current flows, and because the moving ions carry charge, the voltage changes."
+    }
+  },
+  {
+    "id": "anp-electricity-basics-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Fill the gap. The inside of a cell is negative → a route for potassium opens and potassium, pushed mainly by its concentration gradient, flows out → ______ → the inside becomes more negative.",
+    "options": [
+      "More negative ions enter the cell to replace the potassium",
+      "Positive charge leaves the cell, adding to the charge separation",
+      "The potassium concentration inside falls to zero",
+      "The voltage pushes the potassium back into the cell as fast as it leaves"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Potassium ions are positive. As they leave, they carry positive charge out and leave more negative charge behind, so the charge separation grows and the inside becomes more negative.",
+      "options": [
+        "No negative ions need to move. The change comes from positive charge leaving.",
+        "Correct. Each potassium ion that leaves takes positive charge out, increasing the separation.",
+        "A tiny number of ions changes the voltage a lot, so the concentration inside barely changes at all.",
+        "If the pushes balanced exactly, there would be no net movement and no change in voltage. The chain says potassium flows out."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-13",
+    "type": "error",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "A student describes a positive ion near a cell whose inside is negative. The ion is equally concentrated inside and outside. One step is wrong. Find it.",
+    "options": [
+      "The ion has no concentration gradient across the membrane",
+      "The ion is positive, and the inside of the cell is negative",
+      "So the electrical gradient pulls the ion inward",
+      "With no concentration gradient, the ion has no electrochemical gradient and will not move"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The electrochemical gradient is the concentration part plus the electrical part. With no concentration difference, the electrical part still acts, so the ion has an inward electrochemical gradient and moves in when a route opens.",
+      "options": [
+        "This step is right: equal concentrations mean no concentration gradient.",
+        "This step is right: the ion is positive, and the inside is negative.",
+        "This step is right: a negative inside attracts a positive ion.",
+        "This is the error. The electrical gradient alone is enough to move a charged particle, so the ion moves inward."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": ["gradients", "homeostasis"],
+    "q": "Mr. Okoro's kidneys have stopped removing potassium, and his blood potassium has doubled. Potassium is still more concentrated inside his heart cells than outside. What happens to the outward concentration push on potassium in those cells?",
+    "options": [
+      "It becomes stronger, because there is more potassium overall",
+      "It is unchanged, because the potassium inside the cells has not changed",
+      "It reverses, so potassium now flows into the cells",
+      "It becomes weaker, because the inside-outside difference is smaller"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A concentration gradient depends on the difference between the two sides. More potassium outside, with the same amount inside, shrinks that difference, so the outward chemical push weakens. Less positive charge leaves, and the voltage across the membrane becomes smaller.",
+      "options": [
+        "The push depends on the difference between inside and outside, not the total amount. Raising the outside level shrinks the difference.",
+        "The push depends on both sides. Changing the outside changes the difference even though the inside is the same.",
+        "The question says potassium is still more concentrated inside, so the chemical push still points outward, just more weakly.",
+        "Correct. A smaller difference means a gentler gradient and a weaker outward push."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "An electrician touches a live 120 V wire twice: once with dry hands and once just after washing them. Which statement explains why the second contact is more dangerous?",
+    "options": [
+      "Wet skin raises the voltage of the household supply",
+      "Water on the skin stores extra charge and releases it all at once",
+      "Wet skin has a lower resistance, so the same voltage drives a larger current",
+      "Wet skin has a higher resistance, which traps the current inside the body for longer"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "I = V / R. The voltage is fixed at 120 V. Salty water on the skin lowers its resistance, so a larger current flows through the body, and current is what disturbs cells.",
+      "options": [
+        "The supply voltage is set by the wiring, not by the person touching it. It is 120 V both times.",
+        "The thin film of water does not store a meaningful charge. The danger comes from more current flowing from the supply.",
+        "Correct. Same voltage, less resistance, more current.",
+        "Wet skin lowers resistance rather than raising it, and a higher resistance would reduce the current, not trap it."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "When a cell's voltage changes quickly, the concentrations of ions inside and outside the cell barely change. What explains this?",
+    "options": [
+      "The ions that cross are replaced from the other side at the same moment by other ions",
+      "The voltage changes without any ions moving",
+      "The separated layer is so small that a tiny number of ions changes the voltage a lot",
+      "Only uncharged particles cross during the change"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The voltage comes from a very thin layer of separated charge. Moving a tiny number of ions changes that layer a great deal, so the voltage changes a lot while the total amount of each ion inside and outside hardly changes.",
+      "options": [
+        "Nothing replaces the ions instantly. The concentrations stay steady because so few ions are needed to change the voltage.",
+        "A voltage changes only when the charge separation changes, which means charges must move.",
+        "Correct. A few ions make a big change in charge separation but a negligible change in concentration.",
+        "Uncharged particles carry no charge, so their movement cannot change a voltage."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "What carries the electrical current in your body?",
+    "options": [
+      "Ions moving through fluid or across membranes",
+      "Electrons moving along the walls of blood vessels",
+      "Water molecules moving by osmosis",
+      "Heat moving from warm to cool tissue"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In your body, the charge carriers are ions dissolved in water, such as sodium, potassium, calcium and chloride. Their movement is an ion current.",
+      "options": [
+        "Correct. Your body's currents are ion currents.",
+        "Wires carry current as electrons, but your tissues have no wires. Charged ions in the fluids carry the current.",
+        "Water molecules carry no net charge, so their movement is not an electrical current.",
+        "Heat is the kinetic energy of moving particles, not a flow of charge."
+      ]
+    }
+  },
+  {
+    "id": "anp-electricity-basics-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "A positive ion is more concentrated inside a cell than outside, and the inside is positive compared with the outside. Which way does its electrochemical gradient push it?",
+    "options": [
+      "Outward, because both the chemical and the electrical push point out",
+      "Inward, because a positive inside attracts positive ions",
+      "Outward only if the voltage is larger than the concentration difference",
+      "Nowhere, because the two pushes cancel"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "More of the ion is inside, so its concentration gradient pushes it out. It is positive and the inside is positive, so like charges repel and the voltage also pushes it out. Both parts point outward.",
+      "options": [
+        "Correct. The concentration gradient and the electrical repulsion both push the ion out.",
+        "Like charges repel. A positive inside pushes positive ions away, not toward it.",
+        "Both pushes point outward, so no comparison is needed; the ion is pushed out whatever their sizes.",
+        "The pushes would cancel only if they pointed in opposite directions. Here both point out."
+      ]
+    }
+  }
+]

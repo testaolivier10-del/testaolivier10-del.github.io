@@ -4,11 +4,15 @@
     "openstax": {
       "figure": "4.4",
       "section": "4.1",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e67d3a51224247022a53087f47d11efd0c773edc"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e67d3a51224247022a53087f47d11efd0c773edc",
+      "page": "4-1-types-of-tissues"
     },
-    "alt": "Front view of a woman's body with four circled sites, each labeled with a kind of membrane: the lining of the mouth and airway, the linings around the lungs and the abdominal organs, the skin of the hip, and the inside of the knee.",
+    "alt": "Front view of a woman's body with text boxes pointing to four kinds of membrane: the lining of the mouth and airway, the linings around the lungs and the abdominal organs, the skin of the hand, and the inside of the knee joint.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 4.4",
-    "labels": []
+    "labels": [],
+    "w": 548,
+    "h": 800,
+    "ext": "jpg"
   }
 }

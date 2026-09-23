@@ -1,0 +1,494 @@
+[
+  {
+    "id": "anp-systemic-arteries-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-24",
+    "pin": "brachiocephalic-trunk",
+    "q": "Name the pinned artery: the short first branch on the right side of the aortic arch, which splits into the arteries to the right arm and the right side of the neck.",
+    "options": [
+      "Right common carotid artery",
+      "Brachiocephalic trunk",
+      "Right subclavian artery",
+      "Ascending aorta"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The brachiocephalic trunk (brachi- = arm, cephal- = head) is the first and largest branch of the aortic arch. It exists only on the right and splits into the right subclavian and right common carotid arteries.",
+      "options": [
+        "The right common carotid artery is one of the two branches the pinned vessel splits into. It runs up the neck from the end of the trunk.",
+        "Correct. The brachiocephalic trunk serves both the right arm and the right side of the head, which is what its name says.",
+        "The right subclavian artery is the other branch the pinned vessel splits into. It heads out under the clavicle toward the arm.",
+        "The ascending aorta is the part of the aorta below the arch. Its only branches are the coronary arteries."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-24",
+    "pin": "celiac-trunk",
+    "q": "Name the pinned artery: the first single branch from the front of the abdominal aorta, just below the diaphragm.",
+    "options": [
+      "Superior mesenteric artery",
+      "Renal artery",
+      "Celiac trunk",
+      "Inferior mesenteric artery"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The celiac trunk leaves the front of the aorta at about T12, just below the aortic hiatus. It splits at once into the left gastric, splenic and common hepatic arteries.",
+      "options": [
+        "The superior mesenteric artery is the second single gut branch, leaving the aorta at about L1, a little below the pinned vessel.",
+        "The renal arteries are paired and leave the sides of the aorta, not the front. The pinned artery is single.",
+        "Correct. The celiac trunk is the highest of the three single gut arteries.",
+        "The inferior mesenteric artery is the lowest single gut branch, at about L3, not the first one below the diaphragm."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-27",
+    "pin": "basilar",
+    "q": "Name the pinned artery: the single midline artery on the front of the brainstem, formed where two arteries from the neck join.",
+    "options": [
+      "Anterior communicating artery",
+      "Internal carotid artery",
+      "Posterior cerebral artery",
+      "Basilar artery"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The two vertebral arteries join in the midline to form the basilar artery (basi- = base). At its top it splits into the two posterior cerebral arteries.",
+      "options": [
+        "The anterior communicating artery is also a single midline vessel, but it sits at the front of the ring and joins the two anterior cerebral arteries.",
+        "The internal carotid arteries are paired and enter the ring at its sides, not in the midline on the brainstem.",
+        "The posterior cerebral arteries are paired. They are the branches the pinned artery splits into at its top end.",
+        "Correct. The basilar artery is formed by the two vertebral arteries."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-25",
+    "pin": "left-subclavian-artery",
+    "q": "Name the pinned artery: the last branch leaving the top of the aortic arch, heading toward the left arm.",
+    "options": [
+      "Left subclavian artery",
+      "Left common carotid artery",
+      "Brachiocephalic trunk",
+      "Left axillary artery"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The left subclavian artery is the third branch of the aortic arch. Unlike the right subclavian, it comes straight off the arch.",
+      "options": [
+        "Correct. The left subclavian artery arises directly from the arch and runs under the left clavicle.",
+        "The left common carotid artery is the middle branch of the arch, and it runs up the neck, not toward the arm.",
+        "The brachiocephalic trunk is the first branch, on the right. There is no left brachiocephalic trunk.",
+        "The axillary artery is the same vessel further out, after it crosses the first rib into the armpit. It does not leave the arch."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-11",
+    "pin": "dorsalis-pedis-artery",
+    "q": "Name the artery whose pulse is felt at the pinned point on the top of the foot.",
+    "options": [
+      "Posterior tibial artery",
+      "Popliteal artery",
+      "Femoral artery",
+      "Dorsalis pedis artery"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The dorsalis pedis artery (dorsum = top, ped- = foot) is the continuation of the anterior tibial artery onto the top of the foot, where it lies over the tarsal bones.",
+      "options": [
+        "The posterior tibial pulse is felt behind the bump on the inner ankle, not on the top of the foot.",
+        "The popliteal pulse is felt deep behind the knee.",
+        "The femoral pulse is felt in the groin.",
+        "Correct. The dorsalis pedis pulse is on the top of the foot."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-6",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the vessels in order to trace blood from the aortic arch to the pulse at the right wrist.",
+    "options": [
+      "Aortic arch",
+      "Brachiocephalic trunk",
+      "Right subclavian artery",
+      "Right axillary artery",
+      "Right brachial artery",
+      "Right radial artery"
+    ],
+    "why": {
+      "correct": "From the aortic arch, the right arm is served through the brachiocephalic trunk, which gives the right subclavian artery. That one tube is renamed axillary at the outer edge of the first rib and brachial below the armpit, then splits in front of the elbow into the radial and ulnar arteries. The radial artery carries the wrist pulse."
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-7",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the route of blood down the leg: external iliac artery → femoral artery → ____ → posterior tibial artery.",
+    "options": [
+      "Deep femoral artery",
+      "Popliteal artery",
+      "Internal iliac artery",
+      "Dorsalis pedis artery"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The femoral artery passes to the back of the knee and is renamed the popliteal artery. Below the knee, the popliteal artery splits into the anterior and posterior tibial arteries.",
+      "options": [
+        "The deep femoral artery is a side branch of the femoral artery that supplies the thigh muscles. It does not continue to the leg below the knee.",
+        "Correct. The popliteal artery links the femoral artery to the tibial arteries.",
+        "The internal iliac artery branches off before the femoral artery exists, and it supplies the pelvis.",
+        "The dorsalis pedis artery comes after the anterior tibial artery, on the top of the foot. It is not between the femoral and tibial arteries."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-8",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student traced blood from the heart to the top of the left foot. One step is wrong. Which one?",
+    "options": [
+      "Left ventricle into the ascending aorta",
+      "Aortic arch into the thoracic aorta",
+      "Abdominal aorta into the left common iliac artery",
+      "Left common iliac artery into the left internal iliac artery",
+      "Left femoral artery into the left popliteal artery",
+      "Left anterior tibial artery into the left dorsalis pedis artery"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Blood bound for the leg goes from the common iliac into the external iliac artery, which passes under the inguinal ligament to become the femoral artery. The internal iliac artery dives into the pelvis and supplies the pelvic organs and buttocks.",
+      "options": [
+        "This step is right. The left ventricle ejects into the ascending aorta through the aortic valve.",
+        "This step is right. The arch continues as the descending aorta, whose chest part is the thoracic aorta.",
+        "This step is right. The abdominal aorta ends at about L4 by splitting into the right and left common iliac arteries.",
+        "This is the error. The route to the leg uses the external iliac artery, not the internal iliac artery.",
+        "This step is right. The femoral artery is renamed popliteal behind the knee.",
+        "This step is right. The anterior tibial artery becomes the dorsalis pedis artery at the ankle."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-9",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every artery that leaves the abdominal aorta as a single, unpaired branch.",
+    "options": [
+      "Celiac trunk",
+      "Renal artery",
+      "Superior mesenteric artery",
+      "Gonadal artery",
+      "Inferior mesenteric artery",
+      "Common iliac artery"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "The three gut arteries (celiac trunk, superior mesenteric and inferior mesenteric) leave the front of the aorta singly. Arteries to the kidneys, gonads and legs are paired, one on each side.",
+      "options": [
+        "Correct. The celiac trunk is single and supplies the stomach, liver, spleen and part of the pancreas.",
+        "The renal arteries are paired, one to each kidney.",
+        "Correct. The superior mesenteric artery is single and supplies the small bowel and first half of the large bowel.",
+        "The gonadal arteries are paired, one to each testis or ovary.",
+        "Correct. The inferior mesenteric artery is single and supplies the second half of the large bowel.",
+        "The common iliac arteries are paired: the aorta ends by splitting into a right and a left one."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An EMT finds an adult man collapsed and not responding. She needs to know quickly whether his heart is pumping blood. Which pulse should she check?",
+    "options": [
+      "Radial pulse",
+      "Dorsalis pedis pulse",
+      "Carotid pulse",
+      "Brachial pulse"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In an unresponsive adult, check the carotid pulse. The carotid is a large artery close to the heart, so a pulse can often still be felt there when pressure is too low to push a wave out to the wrist or foot.",
+      "options": [
+        "The radial pulse is the routine pulse in a responsive patient. When pressure is low it can disappear while the heart is still pumping, so its absence does not settle the question.",
+        "The dorsalis pedis pulse is the farthest from the heart and the first to fade when pressure falls. It is used to check blood flow to the foot.",
+        "Correct. The carotid pulse is the standard check in an unresponsive adult.",
+        "The brachial pulse is the standard check in an infant, whose short neck makes the carotid hard to find. In an adult the carotid is preferred."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Over ten years, fatty deposits slowly narrowed a woman's left internal carotid artery until it closed completely. A scan shows her left cerebrum is still well supplied. Which structure best explains this?",
+    "options": [
+      "The left vertebral artery",
+      "The cerebral arterial circle",
+      "The left external carotid artery",
+      "The carotid sinus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cerebral arterial circle is an anastomosis. Blood from the right internal carotid can cross through the anterior communicating artery, and blood from the basilar artery can come forward through the left posterior communicating artery, into the left anterior and middle cerebral arteries. Slow narrowing gives these small connections time to enlarge.",
+      "options": [
+        "The vertebral arteries join to form the basilar artery, which serves the back of the brain. They reach the front of the left cerebrum only by way of the circle, so the circle is the real explanation.",
+        "Correct. The circle gives blood a second route around a blocked internal carotid artery.",
+        "The external carotid artery supplies the face and scalp, outside the skull. It does not normally supply the cerebrum.",
+        "The carotid sinus is a pressure sensor at the start of the internal carotid. It does not create a new route for blood past a block."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where does the thoracic aorta end and the abdominal aorta begin?",
+    "options": [
+      "At the top of the aortic arch",
+      "At the aortic hiatus in the diaphragm",
+      "Where the renal arteries leave",
+      "Where the aorta splits in the pelvis"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The aorta passes through the diaphragm at the aortic hiatus, at about T12. Above it, the descending aorta is the thoracic aorta; below it, the abdominal aorta.",
+      "options": [
+        "The top of the arch is where the three large branches to the head and arms leave. The thoracic aorta begins only after the arch ends, at about T4.",
+        "Correct. The diaphragm divides the chest from the abdomen, and the aortic hiatus is where the aorta crosses it.",
+        "The renal arteries leave the abdominal aorta at about L1–L2, well below where it begins.",
+        "The split into the common iliac arteries, at about L4, is where the abdominal aorta ends, not where it begins."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The celiac trunk divides into three arteries. Which artery is not one of them?",
+    "options": [
+      "Left gastric artery",
+      "Splenic artery",
+      "Superior mesenteric artery",
+      "Common hepatic branch"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The superior mesenteric artery is a separate single branch of the aorta, leaving about 1 cm below the celiac trunk. The celiac trunk's three branches go to the stomach, spleen and liver.",
+      "options": [
+        "The left gastric artery is a celiac branch. It supplies the stomach.",
+        "The splenic artery is a celiac branch. It runs to the spleen and gives branches to the pancreas and stomach.",
+        "Correct. The superior mesenteric artery arises from the aorta itself, not from the celiac trunk.",
+        "The common hepatic branch is a celiac branch. It gives an artery to the stomach and bowel and then continues to the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A skier has a badly bent lower leg. After splinting, a paramedic presses just behind the bump on the inside of the ankle and on the top of the foot, and compares both feet. What is she checking?",
+    "options": [
+      "Blood flow to the foot past the injury",
+      "Pressure in the femoral artery at the groin",
+      "How fast the heart is beating right now",
+      "Nerve supply to the skin of the foot"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Behind the medial malleolus is the posterior tibial pulse; on the top of the foot is the dorsalis pedis pulse, the continuation of the anterior tibial artery. A pulse missing on the injured side only points to an artery squeezed or torn by the injury or the splint.",
+      "options": [
+        "Correct. Distal pulses show whether blood is getting past the injury to the foot.",
+        "The femoral pulse is felt in the groin, above the injury. Pressing at the ankle and foot cannot tell you about it, and it could not show whether blood gets past a break lower down.",
+        "Heart rate is counted at the wrist or neck. Comparing the two feet side by side is about flow to each foot, not about the rate.",
+        "Pressing on pulse points tests arteries, not nerves. Sensation is checked separately, by touching the skin and asking what the patient feels."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The vertebral arteries carry a pulse just like the carotid arteries, yet you can never feel it through the skin. Why?",
+    "options": [
+      "They carry blood too slowly to make a wave",
+      "They run through holes in the cervical vertebrae, deep inside bone",
+      "Their walls have no elastic tissue to stretch",
+      "They receive blood only between heartbeats"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "You can feel a pulse only where an artery lies near the skin over something firm. The vertebral arteries climb through the transverse processes of the cervical vertebrae, so bone surrounds them and your fingers cannot press them.",
+      "options": [
+        "The pulse is a pressure wave in the artery wall, not the blood's own speed. The vertebral arteries carry a pulse wave like every systemic artery.",
+        "Correct. Depth and the surrounding bone make them impossible to palpate.",
+        "Arteries of this size have elastic tissue in their walls, and the pulse wave travels along them. The reason is where they run.",
+        "Every systemic artery receives blood through the whole cardiac cycle, and the vertebral arteries are no exception."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the pulse is blood arriving",
+    "q": "Your heart beats, and about a tenth of a second later you feel the pulse at your wrist. What reaches your wrist in that time?",
+    "options": [
+      "The blood ejected by that beat",
+      "A nerve signal from the heart",
+      "A pressure wave running along the artery walls",
+      "Blood pushed back from the capillaries of the hand"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ejected blood stretches the aorta's elastic wall, and that bulge travels down the arteries as a pressure wave. The wave moves several meters per second, far faster than the blood itself, which takes much longer to reach the hand.",
+      "options": [
+        "The blood from that beat moves much more slowly than the wave. It is still in the large arteries near the heart when the pulse is felt at the wrist.",
+        "No nerve runs from the heart to the wrist to make a pulse. The pulse is a mechanical wave.",
+        "Correct. The pulse is a pressure wave in the artery wall.",
+        "Blood does not flow backward from the capillaries. The pulse comes from the heart's side of the circulation."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which artery splits in front of the elbow into the radial and ulnar arteries?",
+    "options": [
+      "Axillary artery",
+      "Subclavian artery",
+      "Brachial artery",
+      "Palmar arch"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The brachial artery runs down the inner side of the arm beside the humerus and splits in front of the elbow into the radial artery (thumb side) and the ulnar artery (little-finger side).",
+      "options": [
+        "The axillary artery is the same tube higher up, in the armpit. It becomes the brachial artery before reaching the elbow.",
+        "The subclavian artery is the same tube where it crosses the first rib, far above the elbow.",
+        "Correct. The brachial artery ends by splitting into the two forearm arteries.",
+        "The palmar arches are in the hand. They are formed where the radial and ulnar arteries join, not where they begin."
+      ]
+    }
+  },
+  {
+    "id": "anp-systemic-arteries-18",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every artery that is part of the cerebral arterial circle or joins it directly.",
+    "options": [
+      "Anterior communicating artery",
+      "External carotid artery",
+      "Posterior communicating artery",
+      "Internal carotid artery",
+      "Facial artery"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "The circle is built from the anterior communicating artery, the two anterior cerebral arteries, the ends of the two internal carotid arteries, the two posterior communicating arteries and the two posterior cerebral arteries from the basilar artery.",
+      "options": [
+        "Correct. It joins the two anterior cerebral arteries at the front of the ring.",
+        "The external carotid artery stays outside the skull and supplies the face and scalp.",
+        "Correct. Each one joins an internal carotid artery to a posterior cerebral artery.",
+        "Correct. Each internal carotid artery feeds the ring and ends there as the anterior and middle cerebral arteries.",
+        "The facial artery is a branch of the external carotid artery on the face, far from the brain."
+      ]
+    }
+  }
+]

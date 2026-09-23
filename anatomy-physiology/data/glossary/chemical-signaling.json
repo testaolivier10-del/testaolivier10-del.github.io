@@ -1,0 +1,77 @@
+{
+  "chemical-messenger": {
+    "def": "A molecule that one cell releases to change the activity of another cell (also called a signaling molecule). It acts only on cells with receptor proteins that bind it.",
+    "roots": [],
+    "say": ""
+  },
+  "ligand": {
+    "def": "Any molecule that binds specifically to a site on a protein. A chemical messenger is a ligand for its receptor protein, and so is a drug that binds the same site.",
+    "roots": [["ligare", "to bind (Latin)"]],
+    "say": "LIG-und"
+  },
+  "receptor-protein": {
+    "def": "A protein that binds a specific chemical messenger and, by changing shape, starts a response in the cell. Binding is specific and reversible, and the receptor protein, not the messenger, decides what the cell does.",
+    "roots": [["recipere", "to receive (Latin)"]],
+    "say": ""
+  },
+  "target-cell": {
+    "def": "Any cell that carries receptor proteins for a particular messenger. Cells without those receptor proteins do not respond, however much messenger reaches them.",
+    "roots": [],
+    "say": ""
+  },
+  "paracrine-autocrine": {
+    "def": "Local signaling. In paracrine signaling a messenger, such as nitric oxide, diffuses to neighboring cells; in autocrine signaling it binds receptor proteins on the same cell that released it. Cytokines, including interleukins, are small proteins used this way.",
+    "roots": [["para-", "beside"], ["auto-", "self"], ["krinein", "to separate or release (Greek)"], ["cyto-", "cell"]],
+    "say": "pair-uh-KRIN, AW-toh-krin"
+  },
+  "eicosanoids": {
+    "def": "Local lipid messengers made on demand from a 20-carbon fatty acid cut out of membrane phospholipids. They include prostaglandins, which sensitize pain-sensing nerve endings and dilate small vessels, and leukotrienes, which constrict airways.",
+    "roots": [["eicosa-", "twenty (Greek)"], ["leuko-", "white"]],
+    "say": "eye-KOH-suh-noyds"
+  },
+  "neurotransmitter": {
+    "def": "A chemical messenger that a neuron releases from its axon terminal at a synapse. It crosses the synaptic cleft and binds receptor proteins on the postsynaptic cell; it is cleared within milliseconds.",
+    "roots": [["neuro-", "nerve"], ["trans-", "across"], ["mittere", "to send (Latin)"]],
+    "say": ""
+  },
+  "synapse-basic": {
+    "def": "The junction where a neuron passes a signal to another cell. The presynaptic (sending) and postsynaptic (receiving) cells are separated by a gap about 20 nanometers wide, the synaptic cleft.",
+    "roots": [["syn-", "together"], ["haptein", "to fasten (Greek)"], ["pre-", "before"], ["post-", "after"]],
+    "say": "SIN-aps"
+  },
+  "hormone": {
+    "def": "A chemical messenger released into the blood that acts on target cells elsewhere in the body. It reaches nearly every cell, but only its target cells respond.",
+    "roots": [["horman", "to set in motion (Greek)"]],
+    "say": ""
+  },
+  "messenger-solubility": {
+    "def": "Water-soluble (hydrophilic) messengers cannot cross the plasma membrane, so they bind receptor proteins on the cell surface and act fast. Lipid-soluble (hydrophobic) messengers, such as steroids, diffuse through the membrane, bind receptor proteins inside the cell and act slowly by changing gene expression.",
+    "roots": [],
+    "say": ""
+  },
+  "second-messenger": {
+    "def": "A small molecule made inside a cell that carries the signal of a first messenger bound outside. In the usual arrangement, a G-protein-coupled receptor switches on a G protein, which switches on a membrane enzyme that turns ATP into cyclic AMP (cAMP).",
+    "roots": [],
+    "say": ""
+  },
+  "intracellular-receptor": {
+    "def": "A receptor protein in the cytosol or nucleus (a nuclear receptor) that binds a lipid-soluble messenger. The pair binds DNA and switches genes on or off, so the response starts in hours and lasts hours to days.",
+    "roots": [["intra-", "within"]],
+    "say": ""
+  },
+  "signal-amplification": {
+    "def": "The growth of a signal at each step of a pathway, so that a few messenger molecules produce a large response. One occupied receptor protein can switch on many G proteins, and each step after that multiplies again.",
+    "roots": [["amplificare", "to enlarge (Latin)"]],
+    "say": ""
+  },
+  "receptor-regulation": {
+    "def": "Changes in how many receptor proteins a target cell carries. Long exposure to high messenger levels causes down-regulation (fewer receptor proteins, weaker response); long exposure to low levels causes up-regulation (more receptor proteins, stronger response).",
+    "roots": [],
+    "say": ""
+  },
+  "nervous-vs-endocrine": {
+    "def": "The two long-distance messaging systems. Nervous signaling sends action potentials along axons and a neurotransmitter across a synapse to one cell, acting in milliseconds; endocrine signaling sends a hormone through the blood to every target cell, acting in seconds to hours and lasting longer.",
+    "roots": [["endo-", "within"], ["krinein", "to separate or release (Greek)"]],
+    "say": ""
+  }
+}

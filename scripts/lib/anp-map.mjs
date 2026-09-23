@@ -45,7 +45,9 @@ export function normalize(s) {
    in "cooperate" is never read as cardiac output. Everything else ignores
    case. */
 function isCaseSensitive(t) {
-  return /[A-Z]/.test(t.slice(1)) || /^[A-Z]{2,}/.test(t) || /[0-9]/.test(t);
+  // A single capital letter as a word ("A band", "Z disc", "T tubule") is part
+  // of the name: "a band of tissue" is not the A band.
+  return /[A-Z]/.test(t.slice(1)) || /^[A-Z]{2,}/.test(t) || /[0-9]/.test(t) || /^[A-Z][\s-]/.test(t);
 }
 
 export function termRegex(t) {
@@ -180,7 +182,7 @@ export function scanPage(map, html, topicId) {
   const { topicIndex } = indexMap(map);
   const here = topicIndex.get(topicId);
   if (here === undefined) return [`declares unknown topic "${topicId}"`];
-  const text = stripForScan(html);
+  const text = maskAllowed(map, stripForScan(html), here, topicIndex);
   const problems = [];
   for (const c of map.concepts) {
     const there = topicIndex.get(c.taughtIn);
@@ -193,6 +195,38 @@ export function scanPage(map, html, topicId) {
   return problems;
 }
 
+/* A term already taught can contain a later one: "amino acid" (biomolecules)
+   holds "acid" (acids and bases). The longer, allowed term is what the page
+   says, so it is blanked out before the later terms are looked for. Only
+   allowed terms that contain some other term's words are worth blanking; the
+   list is worked out once per map. */
+const nestCache = new WeakMap();
+function nestingTerms(map) {
+  if (nestCache.has(map)) return nestCache.get(map);
+  const all = map.concepts.flatMap(c => scanTerms(c).map(t => ({ t, topic: c.taughtIn })));
+  const known = new Set(all.map(x => x.t.toLowerCase()));
+  const out = [];
+  for (const x of all) {
+    const words = x.t.toLowerCase().split(/[\s-]+/);
+    if (words.length < 2) continue;
+    let nests = false;
+    for (let i = 0; i < words.length && !nests; i++)
+      for (let j = i + 1; j <= words.length && !nests; j++)
+        if (j - i < words.length && known.has(words.slice(i, j).join(' '))) nests = true;
+    if (nests) out.push(x);
+  }
+  out.sort((a, b) => b.t.length - a.t.length);
+  nestCache.set(map, out);
+  return out;
+}
+function maskAllowed(map, text, here, topicIndex) {
+  for (const { t, topic } of nestingTerms(map)) {
+    if (topicIndex.get(topic) > here) continue;
+    text = text.replace(termRegex(t), ' ');
+  }
+  return text;
+}
+
 export function stripForScan(html) {
   let s = html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
@@ -202,6 +236,9 @@ export function stripForScan(html) {
   // Navigation that names another topic ("Next: Organelles and the
   // cytoskeleton") points somewhere; it does not teach, so it is not a use.
   s = removeClassBlocks(s, 'anp-nav-ref');
+  // Subscripts and superscripts belong to the word they follow: CO<sub>2</sub>
+  // is carbon dioxide ("CO2"), not "CO" (cardiac output) followed by a 2.
+  s = s.replace(/<\/?(sub|sup)\b[^>]*>/gi, '');
   return normalize(s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&'));
 }
 

@@ -1,0 +1,75 @@
+{
+  "topic": "active-transport",
+  "hook": "<p>Mrs. Lindgren, 81, takes digoxin for her heart. Confused about her pill box, she took several days' doses at once. Now she is nauseated, sees yellow halos around lights, and her heart rhythm is irregular. Her blood potassium is 6.4 mmol/L, well above normal. Digoxin works by blocking some of the sodium–potassium pumps in her cells. At this dose it has blocked so many that potassium is no longer being pumped back into her cells, and it is building up in her plasma.</p>",
+  "prereq": [
+    {
+      "q": "What happens when a cell hydrolyzes ATP?",
+      "options": [
+        "It splits off a phosphate group and releases energy",
+        "It adds a phosphate group and stores energy",
+        "It releases oxygen for the cell to use"
+      ],
+      "correct": 0,
+      "why": "ATP hydrolysis splits off the last phosphate group, making ADP and releasing energy that proteins can use to do work.",
+      "review": "enzymes-energy"
+    },
+    {
+      "q": "In passive transport, what supplies the energy for movement?",
+      "options": [
+        "ATP split by the membrane protein",
+        "The substance's own gradient",
+        "Vesicles fusing with the membrane"
+      ],
+      "correct": 1,
+      "why": "Passive transport moves a substance down its gradient, and the gradient itself supplies the energy. The cell spends no ATP.",
+      "review": "passive-transport"
+    },
+    {
+      "q": "What is a vesicle?",
+      "options": [
+        "A protein tunnel through the membrane",
+        "A fiber of the cytoskeleton",
+        "A small sphere of membrane that carries cargo"
+      ],
+      "correct": 2,
+      "why": "A vesicle is a small sphere of membrane that buds off one membrane, carries cargo, and fuses with another.",
+      "review": "organelles"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-9",
+    "caption": "Sodium–potassium pumps in a plasma membrane: each moves sodium out and potassium in, both against their gradients, using ATP."
+  },
+  "chain": [
+    {
+      "cause": "A toxic dose of digoxin binds to and blocks many sodium–potassium pumps.",
+      "effect": "Fewer sodium ions are pumped out and fewer potassium ions are pumped in each second."
+    },
+    {
+      "cause": "Sodium keeps leaking into cells and potassium keeps leaking out, down their gradients, but the pumps no longer return them.",
+      "effect": "Sodium rises inside the cells, and potassium rises in the plasma."
+    },
+    {
+      "cause": "Sodium inside heart cells rises, so the sodium gradient across their membranes shrinks.",
+      "effect": "The sodium–calcium antiporter, which spends that gradient, pushes calcium out more slowly."
+    },
+    {
+      "cause": "Calcium builds up inside the heart cells.",
+      "effect": "At a therapeutic dose, contractions grow stronger; at a toxic dose, the calcium overload triggers irregular heart rhythms."
+    }
+  ],
+  "misconception": {
+    "wrong": "Secondary active transport does not depend on ATP, because the symporter or antiporter never splits ATP.",
+    "right": "The carrier itself splits no ATP, but the sodium gradient it spends was built by the sodium–potassium pump, which splits ATP with every cycle. Block the pump, or let a cell run out of ATP, and sodium leaks in until the gradient shrinks. Symporters and antiporters then slow down with it. Secondary active transport is powered by ATP one step removed."
+  },
+  "check": [
+    "anp-active-transport-2",
+    "anp-active-transport-3",
+    "anp-active-transport-5",
+    "anp-active-transport-8",
+    "anp-active-transport-10",
+    "anp-active-transport-14"
+  ],
+  "summary": "<p>Active transport requires the cell to supply energy, and it usually moves a substance against its gradient. In primary active transport, a pump splits ATP directly. The sodium–potassium pump moves three sodium ions out and two potassium ions in per ATP, builds the sodium gradient and controls cell volume. In secondary active transport (cotransport), a symporter or antiporter spends the sodium gradient to move glucose, calcium or hydrogen ions uphill, so it fails when the pump fails. Vesicle transport uses ATP too: endocytosis (phagocytosis, pinocytosis, receptor-mediated endocytosis) brings bulk material in, and exocytosis releases products (cellular secretion) and adds membrane to the surface.</p>",
+  "connections": []
+}

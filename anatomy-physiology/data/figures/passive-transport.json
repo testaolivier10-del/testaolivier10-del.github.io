@@ -1,0 +1,50 @@
+{
+  "os-3-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.5",
+      "section": "3.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/572939d1b8f35c2848489f153621f1a22033b9c9",
+      "page": "3-1-the-cell-membrane"
+    },
+    "alt": "A stretch of plasma membrane seen at three moments in time. At first, small nonpolar molecules are crowded in the fluid outside the cell and scarce in the cytoplasm. As time passes, more of them have passed straight through the bilayer, so the numbers on the two sides become closer.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.5",
+    "labels": [],
+    "w": 810,
+    "h": 339,
+    "ext": "jpg"
+  },
+  "os-3-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.6",
+      "section": "3.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/6a6331d2904c511f98cd89a71345ceedf4ea19e8",
+      "page": "3-1-the-cell-membrane"
+    },
+    "alt": "Two ways a solute crosses the plasma membrane with the help of a protein. In one, the solute passes through an open channel protein that spans the bilayer. In the other, the solute binds to a carrier protein, which changes shape and releases it on the other side.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.6",
+    "labels": [],
+    "w": 781,
+    "h": 987,
+    "ext": "jpg"
+  },
+  "os-3-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.8",
+      "section": "3.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/beb8f5eafb7f08dc3a619385dc9e66574dcfbbdf",
+      "page": "3-1-the-cell-membrane"
+    },
+    "alt": "Red blood cells in three solutions. In a hypertonic solution, water leaves the cells and they shrivel into spiky shapes. In an isotonic solution, water movement is balanced and the cells keep their normal disc shape. In a hypotonic solution, water enters the cells, which swell and can burst.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.8",
+    "labels": [],
+    "w": 460,
+    "h": 238,
+    "ext": "jpg"
+  }
+}

@@ -166,6 +166,11 @@ concepts from chapters not built yet, which appear as plain text with a hover.
 `box` is the label's own text box in the image, which gets masked; `at` is the structure the label
 points to. Our own SVG diagrams use `"source": "levlprep"` and carry their labels as SVG text.
 
+The named labels live apart from the figure entry, in `data/labels/<figure id>.json` as
+`{ "figure": "<id>", "labels": [ ... ] }`, and the generator merges them in. That way the people
+naming labels and the people editing captions never write the same file. A label whose `concept`
+is taught after the page's topic is covered for good on that page (decision 30).
+
 ## Visual language
 
 `anatomy-physiology/assets/anp.css` defines one set of tokens for every figure, in light and dark

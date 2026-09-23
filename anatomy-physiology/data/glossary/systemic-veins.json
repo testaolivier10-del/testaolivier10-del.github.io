@@ -1,0 +1,22 @@
+{
+  "venae-cavae-tributaries": {
+    "def": "The veins that drain into the superior and inferior venae cavae. Above the diaphragm, internal jugular and subclavian veins form the two brachiocephalic veins, which form the superior vena cava; the azygos vein joins it from the chest wall. Below, the common iliac veins form the inferior vena cava, which receives lumbar, gonadal, renal and hepatic veins.",
+    "roots": [["tribut-", "paid in"], ["jugul-", "throat"], ["a-", "without"], ["zyg-", "yoke, pair"], ["hemi-", "half"]],
+    "say": "VEE-nee KAY-vee; JUG-yoo-lur; AZ-ih-gus"
+  },
+  "limb-veins": {
+    "def": "Deep limb veins run beside the arteries and share their names (radial, ulnar, brachial, axillary; tibial, fibular, popliteal, femoral). Superficial veins run under the skin: the cephalic, basilic, median cubital and median antebrachial veins of the arm, and the great and small saphenous veins, which start from the dorsal venous arch of the foot.",
+    "roots": [["cephal-", "head"], ["cubit-", "elbow"], ["ante-", "before"], ["brachi-", "arm"], ["saphen-", "clearly visible"]],
+    "say": "seh-FAL-ik; buh-SIL-ik; KYOO-bih-tul; suh-FEE-nus"
+  },
+  "dural-sinuses": {
+    "def": "The brain's veins drain into dural venous sinuses, channels between the layers of the dura mater with no smooth muscle and no valves. The superior sagittal and straight sinuses drain to the transverse sinuses, then the sigmoid sinuses, which leave the skull as the internal jugular veins. The cavernous sinuses lie beside the sphenoid bone.",
+    "roots": [["sagitt-", "arrow"], ["trans-", "across"], ["sigm-", "the letter S"], ["cavern-", "cave"]],
+    "say": "SAJ-ih-tul; SIG-moyd; KAV-er-nus"
+  },
+  "hepatic-portal": {
+    "def": "The route that carries blood from the capillaries of the stomach, intestines, spleen and pancreas through the hepatic portal vein to a second capillary bed, the liver's sinusoids, before it leaves through the hepatic veins to the inferior vena cava.",
+    "roots": [["hepat-", "liver"], ["port-", "gate"]],
+    "say": "heh-PAT-ik POR-tul"
+  }
+}

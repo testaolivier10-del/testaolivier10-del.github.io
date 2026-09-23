@@ -31,7 +31,7 @@
   "check": ["anp-anatomical-position-1", "anp-anatomical-position-4", "anp-anatomical-position-6", "anp-anatomical-position-9", "anp-anatomical-position-11", "anp-anatomical-position-13", "anp-anatomical-position-15"],
   "summary": "<p>The anatomical position is standing upright, facing forward, feet flat and forward, arms at the sides with palms forward. Every directional term describes the body as if it were in this posture, and right and left are the patient's own. Supine is face up and prone is face down. The paired terms compare two structures: superior and inferior (cranial and caudal), anterior and posterior (ventral and dorsal), medial and lateral (with intermediate between), proximal and distal on the limbs, superficial and deep, and ipsilateral and contralateral. In the anatomical position the thumb is lateral.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#ch5", "label": "NREMT study notes: Medical Terminology" },
+    { "href": "/nremt/study-notes.html#chapter-5", "label": "NREMT study notes: Medical Terminology" },
     { "href": "/nremt/body-map.html", "label": "NREMT: interactive patient body map" }
   ]
 }

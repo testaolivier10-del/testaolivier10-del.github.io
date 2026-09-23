@@ -1,0 +1,478 @@
+[
+  {
+    "id": "anp-body-regions-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the leg is the whole lower limb",
+    "q": "In anatomical terms, what does the leg (the crural region) include?",
+    "options": [
+      "The whole lower limb, from hip to toes",
+      "Only the part from the hip to the knee",
+      "Only the part from the knee to the ankle",
+      "Only the foot and ankle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Anatomically, the leg is only the segment between the knee and the ankle, the crural region (crus = leg). The thigh, from hip to knee, is the femoral region.",
+      "options": [
+        "That is the everyday meaning. In anatomy the whole limb is the lower limb, and the leg is one segment of it.",
+        "The part from the hip to the knee is the thigh, the femoral region.",
+        "Correct. Leg means knee to ankle.",
+        "The ankle is the tarsal region and the foot is the pedal region. Neither is the leg."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-2",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which regional term refers to the neck?",
+    "options": [
+      "Cephalic",
+      "Cervical",
+      "Thoracic",
+      "Brachial"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Cervical comes from the Latin word for neck, and the cervical region is the neck.",
+      "options": [
+        "Cephalic (kephale = head) refers to the head.",
+        "Correct. Cervical means the neck.",
+        "Thoracic refers to the chest.",
+        "Brachial refers to the arm, from shoulder to elbow."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A phlebotomist draws blood from a vein at the front of the elbow, in the crease where the elbow bends. Which region is this?",
+    "options": [
+      "Antebrachial",
+      "Popliteal",
+      "Axillary",
+      "Antecubital"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The antecubital region (ante- = in front of, cubitus = elbow) is the front of the elbow. Large veins lie just under the skin there, which is why it is the usual site for drawing blood.",
+      "options": [
+        "Antebrachial is the forearm, from elbow to wrist, not the crease of the elbow itself.",
+        "Popliteal is the hollow behind the knee, the lower limb's match for the front of the elbow.",
+        "Axillary is the armpit.",
+        "Correct. Front of the elbow is antecubital."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-4",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every term that names a region of the upper limb.",
+    "options": [
+      "Brachial",
+      "Femoral",
+      "Antebrachial",
+      "Carpal",
+      "Crural",
+      "Axillary"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "The upper limb regions include axillary (armpit), brachial (arm), antecubital (front of elbow), antebrachial (forearm), carpal (wrist), palmar and digital. Femoral and crural are lower limb regions.",
+      "options": [
+        "Correct. Brachial is the arm, shoulder to elbow.",
+        "Femoral is the thigh, in the lower limb.",
+        "Correct. Antebrachial is the forearm.",
+        "Correct. Carpal is the wrist.",
+        "Crural is the leg, knee to ankle, in the lower limb.",
+        "Correct. The axillary region, the armpit, is where the upper limb meets the trunk."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-5",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which two planes form the lines that divide the abdomen into four quadrants?",
+    "options": [
+      "Two frontal planes",
+      "Midsagittal and transverse, crossing at the navel",
+      "Two parasagittal planes and two transverse planes",
+      "A frontal plane and a transverse plane"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The quadrants come from a vertical line along the midsagittal plane, dividing right from left, and a horizontal line along a transverse plane through the navel, dividing upper from lower.",
+      "options": [
+        "Frontal planes divide front from back. They would not make areas you can see on the front of the abdomen.",
+        "Correct. Midsagittal plus transverse, crossing at the navel.",
+        "Two parasagittal and two transverse planes make the nine abdominopelvic regions, not the four quadrants.",
+        "A frontal plane divides front from back, so it cannot mark right and left on the front of the abdomen."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Jordan, 19, has pain that began around his navel and has moved low on his right side. It is sharp when he coughs. Which quadrant should the nurse record?",
+    "options": [
+      "Left lower quadrant",
+      "Right upper quadrant",
+      "Left upper quadrant",
+      "Right lower quadrant"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Low on the patient's right side, below the transverse line through the navel and to the right of the midline, is the right lower quadrant. It holds the appendix.",
+      "options": [
+        "The left lower quadrant is on the patient's left. The pain is on his right.",
+        "The right upper quadrant is above the navel, over most of the liver and the gallbladder. His pain is low.",
+        "The left upper quadrant is on the left and above the navel, over the stomach and spleen.",
+        "Correct. Low and right: right lower quadrant."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient has tenderness in the left upper quadrant after a fall onto her left side. Which organ is most likely injured?",
+    "options": [
+      "Appendix",
+      "Spleen",
+      "Gallbladder",
+      "Urinary bladder"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The left upper quadrant holds the spleen and most of the stomach. A blow to the lower left side of the chest and upper abdomen often injures the spleen.",
+      "options": [
+        "The appendix is in the right lower quadrant.",
+        "Correct. The spleen lies in the left upper quadrant.",
+        "The gallbladder lies under the liver, in the right upper quadrant.",
+        "The urinary bladder lies low in the middle, in the pelvic cavity, below the quadrants' crossing point."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the three regions of the middle column of the nine-region grid in order, from top to bottom.",
+    "options": [
+      "Epigastric region",
+      "Umbilical region",
+      "Hypogastric region"
+    ],
+    "why": {
+      "correct": "The middle column runs from epigastric (over the stomach), to umbilical (around the navel), to hypogastric (below the stomach, just above the pubic area)."
+    }
+  },
+  {
+    "id": "anp-body-regions-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which abdominopelvic region lies over the stomach, in the upper middle of the abdomen?",
+    "options": [
+      "Hypogastric",
+      "Epigastric",
+      "Umbilical",
+      "Left lumbar"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Epigastric (epi- = upon, over; gastr/o = stomach) means over the stomach. It is the upper middle square of the nine-region grid.",
+      "options": [
+        "Hypogastric (hypo- = below) means below the stomach, the lower middle square.",
+        "Correct. Epi- over, gastr stomach.",
+        "Umbilical is the center square, around the navel.",
+        "The left lumbar region is on the left side of the middle row."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-10",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the top row of the nine-region grid, from the patient's right to left: right hypochondriac, ____, left hypochondriac.",
+    "options": [
+      "umbilical",
+      "hypogastric",
+      "epigastric",
+      "right lumbar"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The top row is right hypochondriac, epigastric and left hypochondriac. The epigastric region sits between the two hypochondriac regions, over the stomach.",
+      "options": [
+        "The umbilical region is the center of the middle row, around the navel.",
+        "The hypogastric region is the center of the bottom row.",
+        "Correct. Epigastric is the top middle square.",
+        "The right lumbar region is the right side of the middle row."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student describes how to draw the four abdominal quadrants. One step is wrong. Find it.",
+    "options": [
+      "Picture the patient in the anatomical position",
+      "Draw a vertical line down the midline",
+      "Draw a horizontal line through the navel",
+      "Name each quadrant by the viewer's right and left"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Quadrants are named by the patient's own right and left, never the viewer's. Facing the patient, their right upper quadrant is on your left.",
+      "options": [
+        "This step is right. All regional terms assume the anatomical position.",
+        "This step is right. The vertical line follows the midsagittal plane.",
+        "This step is right. The horizontal line follows a transverse plane through the navel.",
+        "This is the wrong step. Right and left always mean the patient's sides."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Early in appendicitis, pain is often felt around the navel even though the appendix lies low on the right. What explains this?",
+    "options": [
+      "The appendix lies in the umbilical region at first",
+      "Organ-wall pain is vague and felt near the midline",
+      "The navel is where the four quadrant lines cross",
+      "The appendix moves from the left to the right side"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Early on, the swollen appendix stretches, and pain signals from an organ's wall are poorly placed by the brain. They are felt near the midline, around the navel. Later, when the inflamed appendix irritates the parietal layer of the peritoneum on the abdominal wall, the pain becomes sharp and fixed in the right lower quadrant.",
+      "options": [
+        "The appendix stays in the right lower quadrant (right iliac region). Its position does not change; where the pain is felt does.",
+        "Correct. Organ-wall pain is vague and felt centrally; pain from the lining of the wall is precise.",
+        "The crossing point of the lines is a drawing convention. It has no effect on where pain is felt.",
+        "The appendix does not move from side to side. It is attached on the right."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which regional term refers to the thigh?",
+    "options": [
+      "Crural",
+      "Femoral",
+      "Sural",
+      "Popliteal"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The femoral region is the thigh, from the hip to the knee.",
+      "options": [
+        "Crural is the leg, from knee to ankle, on the front.",
+        "Correct. Femoral means the thigh.",
+        "Sural is the calf, on the back of the leg.",
+        "Popliteal is the hollow behind the knee."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-14",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every pair that correctly matches a region with the part of the body it names.",
+    "options": [
+      "Cephalic: head",
+      "Lumbar: lower back",
+      "Buccal: chin",
+      "Plantar: sole of the foot",
+      "Brachial: forearm"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Cephalic is the head, lumbar is the lower back, and plantar is the sole of the foot. Buccal is the cheek, and brachial is the arm between shoulder and elbow.",
+      "options": [
+        "Correct. Cephalic (kephale = head) is the head.",
+        "Correct. Lumbar (lumbus = loin) is the lower back.",
+        "Buccal (bucca = cheek) is the cheek. The chin is the mental region.",
+        "Correct. Plantar (planta = sole) is the sole of the foot.",
+        "Brachial is the arm, shoulder to elbow. The forearm is antebrachial."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A clinician wants to place a patient's pain more exactly than a quadrant allows. Which system should she use?",
+    "options": [
+      "The four abdominal quadrants",
+      "The dorsal and ventral body cavities",
+      "The nine abdominopelvic regions",
+      "The three main body planes"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The nine abdominopelvic regions divide the abdomen into smaller areas than the four quadrants, so they place a finding more exactly.",
+      "options": [
+        "The quadrants are what she wants to improve on. Each covers a quarter of the abdomen.",
+        "The body cavities name internal spaces, not areas of the abdominal surface.",
+        "Correct. Nine smaller areas give finer location.",
+        "The planes are used to draw the grid lines, but they do not name areas on their own."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In the nine-region grid, which region holds the appendix?",
+    "options": [
+      "Right iliac region",
+      "Left iliac region",
+      "Hypogastric region",
+      "Right hypochondriac region"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The appendix lies low on the right, in the right iliac region (also called the right inguinal region). In the four-quadrant system that area is part of the right lower quadrant.",
+      "options": [
+        "Correct. Low right corner: right iliac.",
+        "The left iliac region is the matching corner on the patient's left.",
+        "The hypogastric region is the lower middle square, holding the full bladder and the uterus.",
+        "The right hypochondriac region is the upper right square, holding much of the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A paramedic reports a deep cut \"in the left popliteal region.\" Where is the wound?",
+    "options": [
+      "Behind the left knee",
+      "In the left armpit",
+      "At the front of the left elbow",
+      "On the sole of the left foot"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The popliteal region is the hollow behind the knee. Left means the patient's left.",
+      "options": [
+        "Correct. Popliteal is behind the knee.",
+        "The armpit is the axillary region.",
+        "The front of the elbow is the antecubital region.",
+        "The sole of the foot is the plantar region."
+      ]
+    }
+  },
+  {
+    "id": "anp-body-regions-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In the nine-region grid, which region lies directly below the right hypochondriac region?",
+    "options": [
+      "Umbilical region",
+      "Right iliac region",
+      "Epigastric region",
+      "Right lumbar region"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The right column runs right hypochondriac, right lumbar, right iliac from top to bottom. Directly below the right hypochondriac is the right lumbar region.",
+      "options": [
+        "The umbilical region is the center square, medial to the right lumbar region.",
+        "The right iliac region is the bottom of the right column, two squares down.",
+        "The epigastric region is medial to the right hypochondriac, not below it.",
+        "Correct. Right lumbar is the middle of the right column."
+      ]
+    }
+  }
+]

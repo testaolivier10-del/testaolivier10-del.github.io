@@ -57,6 +57,6 @@
   "check": ["anp-action-potential-basics-3", "anp-action-potential-basics-5", "anp-action-potential-basics-6", "anp-action-potential-basics-8", "anp-action-potential-basics-11", "anp-action-potential-basics-13", "anp-action-potential-basics-15"],
   "summary": "<p>Excitable cells, mainly neurons and muscle fibers, can produce action potentials because they have voltage-gated sodium and potassium channels. A graded potential is a small, local change sized to the stimulus; it can depolarize or hyperpolarize, and it fades with distance. If a depolarization reaches threshold (about −55 mV), sodium channels open in a self-reinforcing cycle and an all-or-none action potential follows: sodium in (to about +30 mV), then potassium out (repolarization), then a brief hyperpolarization. The refractory period, caused by sodium channels that cannot reopen right away, limits firing rate and keeps propagation one-way. Each patch of membrane regenerates the action potential, so it arrives at full size.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT: Anatomy and Physiology" }
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and Physiology" }
   ]
 }

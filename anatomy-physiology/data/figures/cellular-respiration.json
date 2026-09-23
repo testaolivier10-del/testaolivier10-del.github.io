@@ -1,0 +1,34 @@
+{
+  "os-24-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.4",
+      "section": "24.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/47fb0cb7c154559dfc16c7ba4769704866b2164d",
+      "page": "24-2-carbohydrate-metabolism"
+    },
+    "alt": "Overview of how a cell breaks down glucose for ATP. Glucose is split in the cytosol into two pyruvate molecules. Pyruvate enters a mitochondrion, where a cycle of reactions strips it down to carbon dioxide and loads electron carriers. The carriers deliver electrons to a chain of proteins in the inner membrane, where most of the ATP is made.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.4",
+    "labels": [],
+    "w": 1020,
+    "h": 1139,
+    "ext": "jpg"
+  },
+  "os-24-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.6",
+      "section": "24.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d7f00156507ca8b5489a817cc67c1bdf7abb875b",
+      "page": "24-2-carbohydrate-metabolism"
+    },
+    "alt": "Flowchart in which glucose is split into two pyruvate molecules, and the path then branches. With oxygen, pyruvate goes on into the mitochondrion to be broken down fully. Without oxygen, or in a cell with no mitochondria, each pyruvate is converted to lactate in the cytosol.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.6",
+    "labels": [],
+    "w": 1100,
+    "h": 1605,
+    "ext": "jpg"
+  }
+}

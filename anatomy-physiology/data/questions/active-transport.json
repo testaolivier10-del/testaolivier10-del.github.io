@@ -1,0 +1,529 @@
+[
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "q": "For each ATP it splits, what does the sodium–potassium pump move?",
+    "options": [
+      "2 sodium ions out and 3 potassium ions in",
+      "3 sodium ions in and 2 potassium ions out",
+      "3 sodium ions out and 2 potassium ions in",
+      "1 sodium ion out and 1 potassium ion in"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each cycle moves three sodium ions out of the cell and two potassium ions in, both against their gradients, using one ATP.",
+      "options": [
+        "The numbers are reversed. Three sodium ions go out and two potassium ions come in.",
+        "The directions are reversed. The pump sends sodium out, where sodium is already high, and brings potassium in, where potassium is already high.",
+        "Correct. Three sodium out, two potassium in, per ATP.",
+        "The pump moves three and two, not one and one. That uneven exchange is why each cycle moves one net positive charge out."
+      ]
+    },
+    "id": "anp-active-transport-1"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "gradients",
+      "compartments"
+    ],
+    "q": "Mr. Sato, 76, accidentally takes a large overdose of digoxin, which blocks sodium–potassium pumps. His plasma potassium rises to 6.5 mmol/L. What best explains the rise?",
+    "options": [
+      "Digoxin carries potassium into the blood",
+      "Potassium is no longer pumped back into cells",
+      "His cells are now pumping extra potassium out into the plasma",
+      "Sodium is being converted into potassium"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Potassium leaks out of cells all the time, and the sodium–potassium pump brings it back in. With many pumps blocked, potassium keeps leaking out but is not returned, so it builds up in the plasma.",
+      "options": [
+        "Digoxin contains no potassium. It raises plasma potassium by blocking the pump.",
+        "Correct. Blocked pumps stop returning leaked potassium to the cells.",
+        "The pump moves potassium into cells, not out. Blocking it cannot make cells pump more potassium out.",
+        "Ions are not converted into other ions in the body. The change comes from where potassium sits, not from making new potassium."
+      ]
+    },
+    "id": "anp-active-transport-2"
+  },
+  {
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "gradients",
+      "compartments"
+    ],
+    "q": "A poison completely blocks the sodium–potassium pumps of a cell that takes up glucose on a sodium–glucose symporter. Predict each change over the next hour.",
+    "variables": [
+      {
+        "name": "Sodium concentration inside the cell",
+        "answer": "up",
+        "why": "Sodium keeps leaking in down its gradient, and the blocked pumps no longer send it back out."
+      },
+      {
+        "name": "Potassium concentration inside the cell",
+        "answer": "down",
+        "why": "Potassium keeps leaking out, and the pumps no longer bring it back in."
+      },
+      {
+        "name": "Cell volume",
+        "answer": "up",
+        "why": "Sodium builds up inside and is no longer effectively held outside. Water follows the extra solute into the cell by osmosis, and the cell swells."
+      },
+      {
+        "name": "Glucose uptake by the symporter",
+        "answer": "down",
+        "why": "The symporter spends the sodium gradient. As sodium builds up inside, the gradient shrinks, so there is less energy to drag glucose in."
+      }
+    ],
+    "why": {
+      "correct": "Stopping the pump lets sodium and potassium run down their gradients. The cell swells as sodium and water enter, and secondary active transport slows because the sodium gradient it spends is shrinking."
+    },
+    "id": "anp-active-transport-3"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Which of these is primary active transport?",
+    "options": [
+      "A carrier moving glucose into a cell down its gradient",
+      "A carrier dragging glucose in with sodium",
+      "Water entering a cell through aquaporins",
+      "A calcium pump splitting ATP to push calcium out"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In primary active transport, the carrier itself splits ATP to move a substance against its gradient. A calcium pump does exactly that.",
+      "options": [
+        "Glucose moving down its gradient on a carrier is facilitated diffusion, which is passive.",
+        "A carrier that uses sodium's gradient to move glucose is secondary active transport. It splits no ATP itself.",
+        "Water moving through aquaporins is osmosis, which is passive.",
+        "Correct. The pump splits ATP directly to move calcium uphill."
+      ]
+    },
+    "id": "anp-active-transport-4"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "misconception": "secondary active transport does not depend on ATP",
+    "q": "A symporter in a kidney tubule cell carries glucose into the cell against its gradient but never splits ATP. Where does the energy for this uphill movement come from?",
+    "options": [
+      "Sodium moving into the cell down its gradient",
+      "Glucose moving down its own concentration gradient",
+      "Heat released by the kidney tubule",
+      "The pressure of fluid in the tubule"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Sodium rushes into the cell down its steep electrochemical gradient, and the symporter couples that downhill movement to glucose's uphill movement. The sodium gradient itself was built by the sodium–potassium pump using ATP.",
+      "options": [
+        "Correct. The sodium gradient powers the symporter; the pump built that gradient with ATP.",
+        "Glucose is moving against its gradient here, so its own gradient cannot supply the energy.",
+        "Heat is not a usable energy source for moving a solute across a membrane.",
+        "Fluid pressure drives filtration, not carrier transport of glucose into a cell."
+      ]
+    },
+    "id": "anp-active-transport-5"
+  },
+  {
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A cell runs out of ATP. Which of these processes will stop, either at once or as gradients run down? Select all that apply.",
+    "options": [
+      "The sodium–potassium pump",
+      "Glucose uptake on a sodium–glucose symporter",
+      "Oxygen diffusing across the bilayer",
+      "Endocytosis",
+      "Exocytosis"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "Every form of active transport depends on ATP. The pump uses it directly; symporters depend on the sodium gradient the pump builds; vesicle formation and fusion use ATP. Simple diffusion needs none.",
+      "options": [
+        "Correct. The pump splits ATP with every cycle and stops at once.",
+        "Correct. The symporter slows and stops as the sodium gradient runs down without the pump.",
+        "Oxygen crosses by simple diffusion, powered by its own gradient, so it continues.",
+        "Correct. Forming vesicles from the plasma membrane uses ATP.",
+        "Correct. Moving vesicles and fusing them with the plasma membrane uses ATP."
+      ]
+    },
+    "id": "anp-active-transport-6"
+  },
+  {
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "q": "Put the steps of one sodium–potassium pump cycle in sequence, starting with the pump open toward the cytoplasm.",
+    "options": [
+      "Three sodium ions from the cytoplasm bind to the pump",
+      "The pump splits ATP, and a phosphate stays attached to it",
+      "The pump changes shape and releases sodium outside the cell",
+      "Two potassium ions from outside bind to the pump",
+      "The phosphate is released, and the pump returns to its original shape",
+      "The pump releases potassium into the cytoplasm"
+    ],
+    "why": {
+      "correct": "Sodium binds inside, ATP phosphorylates the pump, the shape change releases sodium outside, potassium binds outside, the phosphate comes off, and the pump returns to release potassium inside."
+    },
+    "id": "anp-active-transport-7"
+  },
+  {
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "q": "This sequence describes the sodium–potassium pump. One step is wrong. Which one?",
+    "options": [
+      "Three sodium ions bind to the pump on the cytoplasm side",
+      "ATP is split and a phosphate attaches to the pump",
+      "The pump changes shape and releases sodium into the cytoplasm",
+      "Two potassium ions bind from the extracellular fluid",
+      "The phosphate comes off, and potassium is released into the cytoplasm"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The shape change opens the pump toward the outside, so the sodium ions are released into the extracellular fluid, not back into the cytoplasm.",
+      "options": [
+        "This step is right. The cycle starts with sodium binding on the inside.",
+        "This step is right. Phosphorylation by ATP powers the shape change.",
+        "This is the error. Sodium is released outside the cell; releasing it back inside would move nothing.",
+        "This step is right. The outward-facing pump picks up potassium from outside.",
+        "This step is right. Losing the phosphate returns the pump to its inward-facing shape, releasing potassium inside."
+      ]
+    },
+    "id": "anp-active-transport-8"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "In a heart cell, a carrier lets three sodium ions in while pushing one calcium ion out. What kind of transport is this?",
+    "options": [
+      "Symport, a form of passive transport",
+      "Primary active transport, using ATP split by the carrier",
+      "Antiport, a form of secondary active transport",
+      "Facilitated diffusion through a channel"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The two ions move in opposite directions on one carrier, so it is antiport. Sodium moving in down its gradient powers calcium moving out against its gradient: secondary active transport.",
+      "options": [
+        "In symport both substances move in the same direction. Here they move in opposite directions, and calcium is moving uphill, so it is not passive.",
+        "The carrier splits no ATP; it spends the sodium gradient, so it is not primary active transport.",
+        "Correct. Opposite directions on one carrier, powered by the sodium gradient.",
+        "A channel lets one ion move down its gradient. This carrier couples two ions and moves calcium against its gradient."
+      ]
+    },
+    "id": "anp-active-transport-9"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "Leo, 12, has a blood cholesterol level several times normal. His cells make normal cholesterol-carrying particles, but the receptor proteins that should bind those particles on the cell surface are defective. Which process has failed?",
+    "options": [
+      "Phagocytosis",
+      "Receptor-mediated endocytosis",
+      "Exocytosis",
+      "Simple diffusion of cholesterol"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Cells take up cholesterol-carrying particles by receptor-mediated endocytosis: receptor proteins bind the particles and gather in coated pits that pinch off as vesicles. With defective receptor proteins, the particles stay in the blood. This is familial hypercholesterolemia.",
+      "options": [
+        "Phagocytosis engulfs large particles such as bacteria and does not depend on these specific receptor proteins.",
+        "Correct. Without working receptor proteins, the specific uptake of cholesterol-carrying particles fails.",
+        "Exocytosis releases material from cells. The problem here is taking material in.",
+        "The particles are far too large to diffuse across the bilayer. They enter by endocytosis."
+      ]
+    },
+    "id": "anp-active-transport-10"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A white blood cell reaches out around a bacterium, encloses it in a vesicle, and delivers it to a lysosome. What is this process?",
+    "options": [
+      "Pinocytosis",
+      "Phagocytosis",
+      "Exocytosis",
+      "Secondary active transport"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Phagocytosis (\"cell eating\") is endocytosis of a large particle: the membrane extends around it and encloses it in a vesicle that fuses with a lysosome.",
+      "options": [
+        "Pinocytosis takes in small droplets of fluid, not whole bacteria.",
+        "Correct. Engulfing a large particle is phagocytosis.",
+        "Exocytosis releases material from the cell; this cell is taking material in.",
+        "Secondary active transport moves single ions and molecules on carriers, not whole particles in vesicles."
+      ]
+    },
+    "id": "anp-active-transport-11"
+  },
+  {
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step: a vesicle carrying digestive enzymes moves to the plasma membrane → ______ → the enzymes are released outside the cell.",
+    "options": [
+      "The vesicle membrane fuses with the plasma membrane",
+      "A pump moves the enzymes across one at a time",
+      "The enzymes diffuse through the bilayer",
+      "The plasma membrane folds around the vesicle and pinches off"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In exocytosis, the vesicle membrane fuses with the plasma membrane, which opens the vesicle to the outside and releases its contents.",
+      "options": [
+        "Correct. Fusion is the step that opens the vesicle to the outside.",
+        "Enzymes are large proteins. They leave in bulk inside vesicles, not one at a time through a pump.",
+        "Proteins are far too large and polar to cross the bilayer.",
+        "Folding the membrane around material and pinching it off is endocytosis, which brings material in."
+      ]
+    },
+    "id": "anp-active-transport-12"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "mass-balance"
+    ],
+    "q": "A pancreas cell releases enzymes by exocytosis thousands of times a minute, yet its surface area stays about the same. What best explains this?",
+    "options": [
+      "The vesicles fuse without adding membrane",
+      "The extra membrane dissolves in the fluid outside",
+      "The cell grows larger with every release",
+      "Endocytosis removes membrane at a matching rate"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each exocytosis adds the vesicle's membrane to the cell surface. Endocytosis pinches membrane back off, and the two balance, so the surface area stays about the same.",
+      "options": [
+        "Fusion makes the vesicle membrane part of the plasma membrane, so it does add membrane.",
+        "A phospholipid bilayer does not dissolve in water; its tails are hydrophobic.",
+        "The cell's surface area stays about the same, so it is not growing with each release.",
+        "Correct. Endocytosis retrieves membrane as fast as exocytosis adds it."
+      ]
+    },
+    "id": "anp-active-transport-13"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "A child with cholera, losing large amounts of water and salt through the gut, is given oral rehydration solution, which contains glucose as well as salt. Why does adding glucose help the child absorb sodium and water?",
+    "options": [
+      "Glucose makes the gut contents hypertonic to the cells",
+      "Glucose blocks the sodium–potassium pump",
+      "Glucose opens aquaporins directly",
+      "Glucose and sodium enter on a shared symporter"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Intestinal lining cells take up glucose on a symporter that carries sodium in with it. Each glucose molecule pulls sodium into the cells, and water follows the absorbed solutes by osmosis.",
+      "options": [
+        "Making the gut contents hypertonic would draw water into the gut, which is the opposite of what helps.",
+        "Blocking the pump would shrink the sodium gradient and slow the symporter, reducing absorption.",
+        "Glucose does not open aquaporins. Water follows the absorbed solutes by osmosis.",
+        "Correct. The sodium–glucose symporter brings sodium in with glucose, and water follows."
+      ]
+    },
+    "id": "anp-active-transport-14"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A patient takes a drug that blocks the hydrogen–potassium pumps of the stomach lining. What happens to stomach acid?",
+    "options": [
+      "It rises, because hydrogen ions build up in the stomach",
+      "It is unchanged, because hydrogen ions diffuse in anyway",
+      "It rises, because potassium replaces the hydrogen ions",
+      "It falls, because hydrogen ions are pumped out less"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "These pumps split ATP to push hydrogen ions into the stomach against their gradient. Blocking them means fewer hydrogen ions reach the stomach, so it becomes less acidic. This is how proton pump inhibitors reduce stomach acid.",
+      "options": [
+        "The pump is what puts hydrogen ions into the stomach. Blocking it lowers them.",
+        "Hydrogen ions are pumped uphill into the stomach. They do not diffuse there down a gradient in useful amounts.",
+        "Potassium ions are not acidic. Acid depends on hydrogen ions, which fall.",
+        "Correct. Fewer hydrogen ions are pumped into the stomach, so acid falls."
+      ]
+    },
+    "id": "anp-active-transport-15"
+  },
+  {
+    "type": "multi",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "q": "Which of these are true of the sodium–potassium pump but not of facilitated diffusion by a glucose carrier? Select all that apply.",
+    "options": [
+      "It moves ions against their gradients",
+      "It splits ATP",
+      "It is an integral membrane protein",
+      "It binds its cargo and changes shape",
+      "It moves net positive charge out of the cell"
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ],
+    "why": {
+      "correct": "Both are integral carrier proteins that bind their cargo and change shape. Only the pump splits ATP, moves its ions uphill, and moves net charge (three positive charges out, two in).",
+      "options": [
+        "Correct. The pump moves both ions uphill; the glucose carrier moves glucose downhill.",
+        "Correct. The pump is an ATPase; facilitated diffusion uses no ATP.",
+        "Both are integral membrane proteins, so this does not distinguish them.",
+        "Both bind their cargo and change shape, so this does not distinguish them.",
+        "Correct. Each pump cycle moves one net positive charge out; glucose carries no charge."
+      ]
+    },
+    "id": "anp-active-transport-16"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is pinocytosis?",
+    "options": [
+      "A cell engulfing a whole bacterium",
+      "A cell taking in a small droplet of fluid",
+      "A vesicle releasing its contents outside the cell",
+      "A pump moving hydrogen ions into a lysosome"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Pinocytosis (\"cell drinking\") is endocytosis in which the membrane dips inward and pinches off a small pocket of extracellular fluid with whatever solutes are in it.",
+      "options": [
+        "Engulfing a large particle such as a bacterium is phagocytosis.",
+        "Correct. Pinocytosis takes in fluid and its dissolved solutes, without selecting them.",
+        "Releasing contents outside the cell is exocytosis.",
+        "Pumping hydrogen ions is primary active transport, not vesicle transport."
+      ]
+    },
+    "id": "anp-active-transport-17"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy",
+      "compartments"
+    ],
+    "q": "A cell's sodium–potassium pumps stop, but the cell is moved into a solution with the same sodium concentration as its own cytoplasm. Compared with a pump-blocked cell in normal extracellular fluid, how much does it swell?",
+    "options": [
+      "Much more, because sodium has no gradient to follow",
+      "Much less, because sodium has no gradient to enter by",
+      "The same, because swelling depends only on ATP",
+      "Not at all, because the pumps are what cause swelling"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A pump-blocked cell swells because sodium leaks in down its gradient and water follows. If the outside sodium matches the inside, there is no gradient to drive sodium in, so little sodium enters and the cell swells much less.",
+      "options": [
+        "With no gradient, sodium has no net push into the cell, so less sodium enters, not more.",
+        "Correct. No sodium gradient means little sodium leak, so little water follows.",
+        "Swelling depends on sodium leaking in, which depends on the sodium gradient, not only on ATP.",
+        "The pumps prevent swelling; stopping them is what allows it. Here the missing gradient limits it."
+      ]
+    },
+    "id": "anp-active-transport-18"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statement describes exocytosis?",
+    "options": [
+      "A vesicle fuses with the plasma membrane and releases its contents outside",
+      "The plasma membrane folds around material outside the cell and pinches it inward",
+      "A carrier uses the sodium gradient to move glucose into the cell",
+      "A pump splits ATP to move ions out of the cell"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Exocytosis (exo- = outside) is the release of a vesicle's contents when its membrane fuses with the plasma membrane. It is how cells secrete products.",
+      "options": [
+        "Correct. Fusion and release outside is exocytosis.",
+        "Folding the membrane around material and pinching it in is endocytosis.",
+        "Using the sodium gradient to move glucose is secondary active transport by a symporter.",
+        "A pump splitting ATP to move ions is primary active transport."
+      ]
+    },
+    "id": "anp-active-transport-19"
+  }
+]

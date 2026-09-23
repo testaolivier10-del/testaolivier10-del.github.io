@@ -1,0 +1,71 @@
+{
+  "topic": "acids-bases-ph",
+  "hook": "<p>Aisha, 22, runs an all-out 400 m race. A blood sample taken a minute after the finish shows a pH of 7.10, down from her usual 7.40. In a resting patient that number would be an emergency: it means twice as many hydrogen ions in every liter of her blood. Yet within about an hour she is back to 7.40 with no treatment at all. A scale that counts in powers of ten, and the buffers that soak up hydrogen ions, explain both halves of that story.</p>",
+  "prereq": [
+    {
+      "q": "What is a hydrogen ion (H+)?",
+      "options": ["A hydrogen atom with an extra electron", "A hydrogen atom that has lost its electron, leaving a lone proton", "A molecule of hydrogen gas"],
+      "correct": 1,
+      "why": "A hydrogen atom is one proton and one electron. Remove the electron and a lone proton with a +1 charge is left: H+.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "A fluid keeps the same amount of solute but loses half its water. What happens to the solute's concentration?",
+      "options": ["It doubles", "It halves", "It stays the same"],
+      "correct": 0,
+      "why": "Concentration is amount divided by volume. The same amount in half the volume is twice as concentrated.",
+      "review": "water-solutions"
+    },
+    {
+      "q": "What happens to a protein when it is denatured?",
+      "options": ["Its peptide bonds break and it falls apart into amino acids", "It gains extra amino acids", "It loses its folded shape and stops working, while its sequence stays the same"],
+      "correct": 2,
+      "why": "Denaturation breaks the weak bonds, such as hydrogen bonds and ionic bonds, that hold a protein's fold. The chain stays whole, but its shape and function are lost.",
+      "review": "biomolecules"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-2-17",
+    "caption": "The pH scale from 0 to 14: acidic below 7, neutral at 7 and basic above 7, with common fluids placed along it."
+  },
+  "chain": [
+    {
+      "cause": "During a sprint, working muscles release extra hydrogen ions into the blood.",
+      "effect": "The hydrogen ion concentration of the blood starts to rise."
+    },
+    {
+      "cause": "Rising hydrogen ions meet the large store of bicarbonate, a weak base, in the blood.",
+      "effect": "Bicarbonate takes up most of them and becomes carbonic acid, a weak acid that holds on to its hydrogen ions."
+    },
+    {
+      "cause": "Most of the added hydrogen ions are now held inside carbonic acid instead of floating free.",
+      "effect": "Free hydrogen ions rise far less than they would in unbuffered water, so the pH falls only part of the way."
+    },
+    {
+      "cause": "Carbonic acid splits into carbon dioxide and water.",
+      "effect": "The lungs breathe the extra carbon dioxide out, and the acid leaves the body for good."
+    },
+    {
+      "cause": "Hydrogen ions stop pouring in once the sprint ends, and the lungs keep clearing carbon dioxide.",
+      "effect": "The hydrogen ion concentration falls back, and blood pH returns to its normal range of 7.35 to 7.45."
+    }
+  ],
+  "misconception": {
+    "wrong": "A fall in blood pH from 7.4 to 7.1 is a small change, because 0.3 is a small number.",
+    "right": "The pH scale is logarithmic: each whole unit is a tenfold change in hydrogen ion concentration, and every 0.3 units is a doubling. A fall from 7.4 to 7.1 takes the hydrogen ion concentration from about 40 to about 80 nmol/L, twice as many hydrogen ions in every liter. That is why blood pH is reported to two decimal places and why a value of 7.10 is serious."
+  },
+  "check": [
+    "anp-acids-bases-ph-2",
+    "anp-acids-bases-ph-4",
+    "anp-acids-bases-ph-6",
+    "anp-acids-bases-ph-8",
+    "anp-acids-bases-ph-11",
+    "anp-acids-bases-ph-14",
+    "anp-acids-bases-ph-17"
+  ],
+  "summary": "<p>An acid releases hydrogen ions in water and a base takes them up; strong ones do so almost completely, weak ones only partly. An acid and a base neutralize each other and leave a salt, an ionic compound that separates into ions other than H+ and OH−. pH is the negative log of the hydrogen ion concentration: lower pH means more H+, each whole unit is a tenfold change and each 0.3 units is twofold. Normal blood pH is 7.35 to 7.45. Small departures matter because hydrogen ions change the charges that hold proteins in shape. Blood below that range is acidemia and above it alkalemia; the processes that push it there are acidosis and alkalosis, covered in full later in the course. A buffer, a weak acid paired with its weak base, blunts pH changes by taking up or releasing hydrogen ions. In blood the carbonic acid–bicarbonate buffer does most of that work, and it hands extra acid off as carbon dioxide that you breathe out.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/bronsted.html", "label": "Organic chemistry: Brønsted acids and bases" },
+    { "href": "/ochem/lessons/pka.html", "label": "Organic chemistry: pKa and acid strength" }
+  ]
+}

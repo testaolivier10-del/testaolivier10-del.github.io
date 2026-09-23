@@ -1,0 +1,60 @@
+{
+  "topic": "diffusion-osmosis",
+  "hook": "<p>Ms. Chen, 29, finishes a hot marathon after drinking plain water at every station, far more than she sweated out. An hour later she is confused and vomiting, and then she has a seizure. Her blood sodium is very low: her blood is too dilute. Nothing is wrong with her heart or lungs. Water has moved into her brain cells by osmosis, and the swelling brain has no room inside her skull.</p>",
+  "prereq": [
+    {
+      "q": "A solution contains 100 mmol/L of sodium chloride, which splits into two ions in water. What is its osmolarity?",
+      "options": ["100 mOsm/L", "200 mOsm/L", "50 mOsm/L"],
+      "correct": 1,
+      "why": "Osmolarity counts every dissolved particle. Each sodium chloride unit releases a sodium ion and a chloride ion, so 100 mmol/L gives 200 mOsm/L. Osmosis depends on exactly this particle count.",
+      "review": "water-solutions"
+    },
+    {
+      "q": "Without any energy input, which way does heat move between a hot mug and your cold hands?",
+      "options": ["From your hands to the mug", "From the mug to your hands", "It does not move until the temperatures are equal"],
+      "correct": 1,
+      "why": "Heat moves down its temperature gradient, from warmer to cooler, with no energy input. Dissolved particles do the same thing with their concentration gradients, and that is diffusion.",
+      "review": "gradients-flow"
+    },
+    {
+      "q": "What makes blood move from your heart through your arteries?",
+      "options": ["A pressure gradient: higher pressure near the heart than farther along", "A concentration gradient of oxygen", "The random motion of the blood's particles"],
+      "correct": 0,
+      "why": "Blood moves by bulk flow, from higher to lower pressure. This page contrasts bulk flow with diffusion, which is driven by random motion down a concentration gradient.",
+      "review": "gradients-flow"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-7",
+    "caption": "Osmosis in a divided beaker: water crosses the membrane toward the side with more dissolved particles, and that side's fluid level rises."
+  },
+  "chain": [
+    {
+      "cause": "A runner drinks far more plain water than she loses in sweat.",
+      "effect": "The water dilutes her blood, and the osmolarity of the fluid around her cells falls."
+    },
+    {
+      "cause": "Her cells keep the same dissolved particles, which their membranes hold back, while the fluid around them has become more dilute.",
+      "effect": "The inside of each cell now has more dissolved particles than the fluid outside."
+    },
+    {
+      "cause": "Water crosses a semipermeable membrane toward the side with more dissolved particles.",
+      "effect": "Water moves into her cells by osmosis, and the cells swell."
+    },
+    {
+      "cause": "Her brain cells swell inside the rigid skull.",
+      "effect": "Pressure inside the skull rises, and she becomes confused and has a seizure."
+    },
+    {
+      "cause": "A small volume of concentrated salt solution raises the osmolarity of her blood.",
+      "effect": "Water moves back out of her brain cells by osmosis, and they shrink toward their normal size."
+    }
+  ],
+  "misconception": {
+    "wrong": "When diffusion reaches equilibrium, the particles stop moving.",
+    "right": "The particles never stop moving: their random motion comes from heat, and it continues at equilibrium. What stops is net diffusion. Once the particles are evenly spread, just as many cross one way each second as cross the other way, so there is no overall change. The same is true of water at the end of osmosis: water keeps crossing the membrane in both directions, in equal amounts."
+  },
+  "check": ["anp-diffusion-osmosis-1", "anp-diffusion-osmosis-4", "anp-diffusion-osmosis-7", "anp-diffusion-osmosis-9", "anp-diffusion-osmosis-12", "anp-diffusion-osmosis-15", "anp-diffusion-osmosis-17"],
+  "summary": "<p>Particles move at random all the time, so more of them cross from a crowded region to a sparse one than the reverse: that is diffusion, down a concentration gradient, with no energy input. Net diffusion stops at equilibrium, but the particles keep moving. Diffusion is faster with a steeper gradient, a higher temperature, smaller particles, a larger surface area and a shorter distance, and its time grows with the square of the distance, so it works only over micrometers; bulk flow carries materials the long way. A semipermeable membrane lets some substances cross and not others. Osmosis is the net movement of water across such a membrane toward the side with more dissolved particles that the membrane holds back: water follows solute, and particle number is what counts. Osmotic pressure is the pressure needed to stop that water movement; it is large, about 19 mm Hg for each mOsm/L.</p>",
+  "connections": []
+}

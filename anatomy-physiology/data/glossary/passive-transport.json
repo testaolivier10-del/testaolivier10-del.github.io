@@ -1,0 +1,47 @@
+{
+  "passive-transport": {
+    "def": "Movement of a substance across a membrane down its gradient, powered by the gradient itself, with no ATP spent by the cell. Simple diffusion, facilitated diffusion, osmosis and filtration are all passive transport.",
+    "roots": [["passivus", "not acting"]],
+    "say": ""
+  },
+  "simple-diffusion": {
+    "def": "Movement of a substance straight through the phospholipid bilayer, down its concentration gradient, with no protein involved. It works for small nonpolar and lipid-soluble molecules such as oxygen, carbon dioxide and steroids, and its rate rises in step with the gradient.",
+    "roots": [["dif-", "apart"], ["fundere", "to pour"]],
+    "say": ""
+  },
+  "ion-channel": {
+    "def": "An integral membrane protein that forms a water-filled tunnel through which one kind of ion passes quickly, down its electrochemical gradient. Leak channels are open most of the time; gated channels open and close in response to a trigger.",
+    "roots": [["ion", "going"]],
+    "say": "EYE-on"
+  },
+  "gated-channel-types": {
+    "def": "The three main kinds of gated ion channel, named for what opens them: voltage-gated channels open when the voltage across the membrane changes, ligand-gated channels open when a specific molecule binds, and mechanically gated channels open when the membrane is stretched or pressed.",
+    "roots": [["ligare", "to bind"]],
+    "say": ""
+  },
+  "aquaporin": {
+    "def": "A membrane protein that forms a water channel, letting water molecules cross in single file far faster than through the bare bilayer. Water still moves in the direction osmosis sets.",
+    "roots": [["aqua", "water"], ["porus", "passage"]],
+    "say": "ak-wuh-POR-in"
+  },
+  "facilitated-diffusion": {
+    "def": "Passive movement of a substance down its gradient through a specific membrane protein: a channel, or a carrier protein that binds the substance, changes shape and releases it on the other side. Glucose enters most cells this way.",
+    "roots": [["facilis", "easy"]],
+    "say": "fuh-SIL-ih-tay-ted"
+  },
+  "carrier-saturation": {
+    "def": "The point at which every carrier protein in a membrane is occupied, so raising the concentration gradient no longer speeds transport. The rate at that point is the transport maximum.",
+    "roots": [["saturare", "to fill"]],
+    "say": ""
+  },
+  "tonicity": {
+    "def": "How a solution changes a cell's volume, set by the solutes that cannot cross the membrane. In an isotonic solution the cell keeps its volume, in a hypotonic one it swells and may burst (osmotic hemolysis), and in a hypertonic one it shrinks (crenation, in red blood cells).",
+    "roots": [["ton-", "tension"], ["iso-", "equal"], ["hypo-", "under"], ["hyper-", "over"], ["crena", "notch"], ["hemo-", "blood"], ["-lysis", "breaking apart"]],
+    "say": "toh-NIS-ih-tee; kreh-NAY-shun"
+  },
+  "filtration": {
+    "def": "Movement of water and small solutes through a membrane or thin barrier, pushed by a hydrostatic pressure gradient. Particles too large for the openings, such as blood cells, stay behind.",
+    "roots": [["filtrum", "felt, used to strain liquids"]],
+    "say": ""
+  }
+}

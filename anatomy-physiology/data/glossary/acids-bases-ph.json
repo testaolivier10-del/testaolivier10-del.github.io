@@ -1,0 +1,42 @@
+{
+  "acid": {
+    "def": "A substance that releases hydrogen ions (H+) when it dissolves in water, raising the H+ concentration. A strong acid releases nearly all of them; a weak acid releases only a small share.",
+    "roots": [["acid-", "sour"]],
+    "say": ""
+  },
+  "base": {
+    "def": "A substance that takes up hydrogen ions, lowering a fluid's H+ concentration, either directly or by releasing hydroxide ions (OH−) that join H+ to form water. Also called alkaline.",
+    "roots": [["alkal-", "ashes of burned plants"]],
+    "say": "AL-kuh-line"
+  },
+  "salt": {
+    "def": "An ionic compound that separates in water into cations and anions other than H+ and OH−, such as sodium chloride. An acid and a base react to form a salt and water.",
+    "roots": [],
+    "say": ""
+  },
+  "ph": {
+    "def": "A number for the hydrogen ion concentration of a fluid: the negative log of [H+] in mol/L. pH 7 is neutral, below 7 is acidic and above 7 is basic; each whole unit is a tenfold change in H+.",
+    "roots": [["p", "power (of ten)"], ["H", "hydrogen"]],
+    "say": "pee-AITCH"
+  },
+  "normal-blood-ph": {
+    "def": "7.35 to 7.45 in blood from an artery, a hydrogen ion concentration of about 35 to 45 nmol/L. Blood is slightly basic.",
+    "roots": [],
+    "say": ""
+  },
+  "acidosis-alkalosis-basic": {
+    "def": "Acidemia is blood pH below 7.35 and alkalemia is blood pH above 7.45. Acidosis and alkalosis are the processes that push pH down or up; in everyday speech the words are often used for the blood state itself.",
+    "roots": [["-osis", "condition, process"], ["-emia", "blood condition"]],
+    "say": "as-ih-DOE-sis; al-kuh-LOE-sis"
+  },
+  "buffer": {
+    "def": "A pair of substances, a weak acid and the weak base it becomes after releasing H+, that resists changes in pH by taking up or releasing hydrogen ions. It holds acid temporarily and can be used up.",
+    "roots": [],
+    "say": ""
+  },
+  "bicarbonate-buffer": {
+    "def": "The main buffer of blood: carbonic acid (H2CO3), a weak acid, paired with bicarbonate (HCO3−), a weak base. Bicarbonate takes up added H+ to form carbonic acid, which splits into water and carbon dioxide that is breathed out.",
+    "roots": [["bi-", "two"], ["carbon-", "carbon"], ["-ate", "salt of an acid"]],
+    "say": "by-KAR-bo-nate"
+  }
+}

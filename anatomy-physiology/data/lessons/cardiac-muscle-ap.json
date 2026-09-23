@@ -1,0 +1,89 @@
+{
+  "topic": "cardiac-muscle-ap",
+  "hook": "<p>Dana, 45, swallowed a whole bottle of her blood pressure pills, a drug that blocks the calcium channels in heart muscle. In the emergency department her heart is still beating, but each beat is feeble and her blood pressure is dangerously low. The treatment starts with an infusion of calcium into her vein. To see why, you need to know what calcium does inside a heart muscle cell.</p>",
+  "prereq": [
+    {
+      "q": "During a neuron's action potential, what carries the rapid upstroke from about −55 mV to about +30 mV?",
+      "options": [
+        "Potassium leaving through voltage-gated potassium channels",
+        "Sodium entering through voltage-gated sodium channels",
+        "Calcium entering through ligand-gated channels"
+      ],
+      "correct": 1,
+      "why": "At threshold, voltage-gated sodium channels open and sodium rushes in down its electrochemical gradient, driving the upstroke. Potassium leaving drives repolarization.",
+      "review": "action-potential-basics"
+    },
+    {
+      "q": "Why can't a second action potential start during the absolute refractory period?",
+      "options": [
+        "The sodium–potassium pump has stopped working",
+        "The voltage-gated sodium channels are inactivated",
+        "The cell has run out of sodium ions"
+      ],
+      "correct": 1,
+      "why": "After opening, voltage-gated sodium channels inactivate. They cannot open again until the membrane repolarizes and their inactivation gates reopen, so no stimulus can start a new action potential.",
+      "review": "action-potential"
+    },
+    {
+      "q": "In a skeletal muscle fiber, what does calcium released from the sarcoplasmic reticulum bind to?",
+      "options": [
+        "Myosin heads",
+        "Tropomyosin",
+        "Troponin"
+      ],
+      "correct": 2,
+      "why": "Calcium binds troponin, which shifts tropomyosin off the binding sites on actin so cross-bridges can form.",
+      "review": "excitation-contraction"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-22",
+    "caption": "Contractile cardiac muscle cells joined by intercalated discs. Hide the labels and name the disc, its desmosomes and its gap junctions."
+  },
+  "chain": [
+    {
+      "cause": "A neighboring cell fires, and positive charge flows in through the gap junctions of the intercalated discs.",
+      "effect": "The cell depolarizes from −90 mV to threshold, about −70 mV."
+    },
+    {
+      "cause": "The membrane reaches threshold.",
+      "effect": "Voltage-gated sodium channels open, sodium rushes in, and the membrane swings to about +20 mV (phase 0)."
+    },
+    {
+      "cause": "The membrane is now depolarized.",
+      "effect": "The sodium channels inactivate, and L-type calcium channels slowly open."
+    },
+    {
+      "cause": "Calcium flows in through the L-type channels while potassium flows out.",
+      "effect": "The two currents nearly balance, and the membrane holds near 0 mV for about 200 ms (the plateau)."
+    },
+    {
+      "cause": "Calcium entering during the plateau opens calcium release channels on the sarcoplasmic reticulum.",
+      "effect": "The SR releases a much larger amount of calcium; calcium binds troponin and the cell contracts."
+    },
+    {
+      "cause": "The sodium channels stay inactivated for the whole plateau.",
+      "effect": "No new action potential can start until the cell is already relaxing, so contractions cannot sum into tetanus."
+    }
+  ],
+  "misconception": {
+    "wrong": "Heart muscle contracts using calcium that comes in from outside the cell, while skeletal muscle uses calcium from the sarcoplasmic reticulum.",
+    "right": "Both use mostly calcium from the sarcoplasmic reticulum. In a human ventricle only about a quarter of the calcium that activates contraction comes in through L-type channels. Its main job is to act as a trigger: it opens the SR's release channels, which supply the rest. That is calcium-induced calcium release. The outside calcium is still essential, because without the trigger the SR does not release."
+  },
+  "check": [
+    "anp-cardiac-muscle-ap-1",
+    "anp-cardiac-muscle-ap-3",
+    "anp-cardiac-muscle-ap-5",
+    "anp-cardiac-muscle-ap-6",
+    "anp-cardiac-muscle-ap-9",
+    "anp-cardiac-muscle-ap-13",
+    "anp-cardiac-muscle-ap-20"
+  ],
+  "summary": "<p>Contractile cardiac muscle cells are short, branched, striated cells full of mitochondria, joined by intercalated discs whose gap junctions pass the action potential from cell to cell. Their action potential starts with a fast sodium upstroke, then holds a plateau near 0 mV for about 200 ms as calcium entering through L-type calcium channels balances potassium leaving, then repolarizes as potassium exit wins. The calcium that enters triggers the sarcoplasmic reticulum to release much more (calcium-induced calcium release), and the size of that trigger sets how strongly the cell contracts. Because the sodium channels stay inactivated through the plateau, the refractory period lasts nearly as long as the contraction, so heart muscle cannot go into tetanus.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-20",
+      "label": "NREMT: Cardiac emergencies"
+    }
+  ]
+}

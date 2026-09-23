@@ -1,0 +1,116 @@
+{
+  "muscle-tissue": {
+    "def": "The primary tissue type made of cells that contract, shortening with force by using myosin to pull on actin filaments. It comes in three kinds: skeletal, cardiac and smooth.",
+    "roots": [
+      [
+        "mus-",
+        "little mouse (the shape of a flexing muscle)"
+      ]
+    ],
+    "say": ""
+  },
+  "muscle-fiber-basic": {
+    "def": "A single muscle cell, also called a myocyte. It is a whole living cell, unlike the nonliving protein fibers of connective tissue.",
+    "roots": [
+      [
+        "my-, myo-",
+        "muscle"
+      ],
+      [
+        "-cyte",
+        "cell"
+      ]
+    ],
+    "say": "MY-oh-site"
+  },
+  "striation": {
+    "def": "The fine light and dark bands across skeletal and cardiac muscle fibers, produced by actin and myosin stacked in lined-up repeating units. Smooth muscle has no bands and is nonstriated.",
+    "roots": [
+      [
+        "stria",
+        "streak"
+      ]
+    ],
+    "say": "stry-AY-shun"
+  },
+  "skeletal-muscle-tissue": {
+    "def": "Muscle tissue of long, cylindrical, striated fibers, each with many nuclei at its edge. It is attached to bones, moves the body and is voluntary.",
+    "roots": [
+      [
+        "skelet-",
+        "dried body"
+      ]
+    ],
+    "say": ""
+  },
+  "cardiac-muscle-tissue": {
+    "def": "Muscle tissue found only in the heart wall: short, branched, striated fibers with one central nucleus, joined by intercalated discs. It is involuntary.",
+    "roots": [
+      [
+        "cardi-",
+        "heart"
+      ],
+      [
+        "-ac",
+        "pertaining to"
+      ]
+    ],
+    "say": "KAR-dee-ak"
+  },
+  "intercalated-disc": {
+    "def": "The zigzag joint where two cardiac muscle fibers meet end to end. Its desmosomes hold the fibers together and its gap junctions let the electrical change pass from fiber to fiber.",
+    "roots": [
+      [
+        "inter-",
+        "between"
+      ],
+      [
+        "calat-",
+        "inserted"
+      ]
+    ],
+    "say": "in-TER-kuh-lay-ted"
+  },
+  "smooth-muscle-tissue": {
+    "def": "Muscle tissue of small, spindle-shaped, nonstriated fibers with one central nucleus. It forms the walls of hollow organs and blood vessels and is involuntary; also called visceral muscle.",
+    "roots": [
+      [
+        "viscer-",
+        "internal organs"
+      ]
+    ],
+    "say": "VIS-er-al"
+  },
+  "vasoconstriction-dilation": {
+    "def": "Vasoconstriction is narrowing of a blood vessel when the smooth muscle in its wall contracts; vasodilation is widening when that muscle relaxes. Because resistance depends on the fourth power of the radius, both change flow sharply.",
+    "roots": [
+      [
+        "vaso-",
+        "vessel"
+      ],
+      [
+        "constrict-",
+        "squeeze"
+      ],
+      [
+        "dilat-",
+        "widen"
+      ]
+    ],
+    "say": "vay-zoh-kun-STRIK-shun"
+  },
+  "muscle-tissue-properties": {
+    "def": "The four properties all muscle shares: responsiveness to signals, the ability to contract, extensibility (being stretched without damage) and elasticity (recoiling to resting length).",
+    "roots": [
+      [
+        "ex-",
+        "out"
+      ],
+      [
+        "tend-",
+        "stretch"
+      ]
+    ],
+    "say": ""
+  }
+}

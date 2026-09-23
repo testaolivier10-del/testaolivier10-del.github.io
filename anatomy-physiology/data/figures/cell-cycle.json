@@ -4,47 +4,63 @@
     "openstax": {
       "figure": "3.30",
       "section": "3.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5d2db326a6b84df174c93b23c16bb6f365ee1502"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5d2db326a6b84df174c93b23c16bb6f365ee1502",
+      "page": "3-5-cell-growth-and-division"
     },
     "alt": "The cell cycle drawn as a circle. Most of the circle is interphase, split into G1, S and G2. A smaller arc is the mitotic phase: mitosis followed by cytokinesis. A side branch off G1 leads to G0, where a cell stops cycling.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.30",
-    "labels": []
+    "labels": [],
+    "w": 531,
+    "h": 433,
+    "ext": "jpg"
   },
   "os-3-32": {
     "source": "openstax",
     "openstax": {
       "figure": "3.32",
       "section": "3.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c5877a35bfa540573d06c5b177794baa9bf8b791"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c5877a35bfa540573d06c5b177794baa9bf8b791",
+      "page": "3-5-cell-growth-and-division"
     },
     "alt": "A row of drawings, each with a short list of events underneath and a fluorescence micrograph below, showing a cell passing through the stages of mitosis and then cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two new nuclei form as the cell pinches in two.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.32",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 847,
+    "ext": "jpg"
   },
   "os-3-33": {
     "source": "openstax",
     "openstax": {
       "figure": "3.33",
       "section": "3.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2ba72c4d367a458ff9ce47243d3c2df4a741a7d9"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2ba72c4d367a458ff9ce47243d3c2df4a741a7d9",
+      "page": "3-5-cell-growth-and-division"
     },
     "alt": "The cell cycle circle with its checkpoints marked: one late in G1, one at the end of G2, and one during mitosis. Next to each, the cyclin and cyclin-dependent kinase pair that drives the cell past it.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.33",
-    "labels": []
+    "labels": [],
+    "w": 666,
+    "h": 583,
+    "ext": "jpg"
   },
   "os-3-36": {
     "source": "openstax",
     "openstax": {
       "figure": "3.36",
       "section": "3.6",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4265cc1cbc1822daa6c8759a1c082fcd01b91d2a"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4265cc1cbc1822daa6c8759a1c082fcd01b91d2a",
+      "page": "3-6-cellular-differentiation"
     },
     "alt": "A branching chart of stem cells. At the top a totipotent cell gives rise to pluripotent cells, which give rise to multipotent cells, each of which produces a few related kinds of specialized cell.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.36",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1254,
+    "ext": "jpg"
   }
 }

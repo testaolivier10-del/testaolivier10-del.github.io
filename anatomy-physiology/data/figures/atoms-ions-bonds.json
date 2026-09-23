@@ -1,58 +1,114 @@
 {
   "os-2-2": {
     "source": "openstax",
-    "openstax": { "figure": "2.2", "section": "2.1", "url": "https://openstax.org/apps/archive/20260604.144757/resources/71fbe675560a7de8fd02da49d7428032a38c1da3" },
+    "openstax": {
+      "figure": "2.2",
+      "section": "2.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/71fbe675560a7de8fd02da49d7428032a38c1da3",
+      "page": "2-1-elements-and-atoms-the-building-blocks-of-matter"
+    },
     "alt": "A human figure beside a table of the elements that make up the body, listed from most to least abundant by mass. Oxygen, carbon, hydrogen and nitrogen lead the list; calcium, phosphorus and a group of elements present in small amounts follow.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.2",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 619,
+    "ext": "jpg"
   },
   "os-2-5": {
     "source": "openstax",
-    "openstax": { "figure": "2.5", "section": "2.1", "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ac86b4e7b4205d94203b165cab49ce250429bc0" },
+    "openstax": {
+      "figure": "2.5",
+      "section": "2.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ac86b4e7b4205d94203b165cab49ce250429bc0",
+      "page": "2-1-elements-and-atoms-the-building-blocks-of-matter"
+    },
     "alt": "Three forms of hydrogen side by side. Each has one proton and one electron. The first has no neutrons, the second has one neutron and the third has two neutrons.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.5",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 384,
+    "ext": "jpg"
   },
   "os-2-7": {
     "source": "openstax",
-    "openstax": { "figure": "2.7", "section": "2.1", "url": "https://openstax.org/apps/archive/20260604.144757/resources/43a4b4e06083f9c5bd54363492280438217c069b" },
+    "openstax": {
+      "figure": "2.7",
+      "section": "2.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/43a4b4e06083f9c5bd54363492280438217c069b",
+      "page": "2-1-elements-and-atoms-the-building-blocks-of-matter"
+    },
     "alt": "Four atoms drawn as a central nucleus ringed by electron shells. Hydrogen has one electron in its only shell and helium has two. Carbon has a full inner shell of two and four electrons in its second shell. Neon has two electrons in the inner shell and eight in the second, so both shells are full.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.7",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1024,
+    "ext": "jpg"
   },
   "os-2-8": {
     "source": "openstax",
-    "openstax": { "figure": "2.8", "section": "2.2", "url": "https://openstax.org/apps/archive/20260604.144757/resources/74f6df0b5eab8c591d9adb24a65613f97249dfef" },
+    "openstax": {
+      "figure": "2.8",
+      "section": "2.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/74f6df0b5eab8c591d9adb24a65613f97249dfef",
+      "page": "2-2-chemical-bonds"
+    },
     "alt": "A sodium atom hands the single electron in its outer shell to a chlorine atom. The result is a positively charged sodium ion and a negatively charged chloride ion, which attract each other. Below, many of these ions pack together in a repeating cube-shaped crystal.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.8",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1685,
+    "ext": "jpg"
   },
   "os-2-9": {
     "source": "openstax",
-    "openstax": { "figure": "2.9", "section": "2.2", "url": "https://openstax.org/apps/archive/20260604.144757/resources/9169020309a8b9e8fd70681969911914960ebf3d" },
+    "openstax": {
+      "figure": "2.9",
+      "section": "2.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9169020309a8b9e8fd70681969911914960ebf3d",
+      "page": "2-2-chemical-bonds"
+    },
     "alt": "Three examples of shared electrons. Two hydrogen atoms share one pair of electrons. Two oxygen atoms share two pairs. A carbon atom shares two pairs with each of two oxygen atoms, forming carbon dioxide.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.9",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 812,
+    "ext": "jpg"
   },
   "os-2-10": {
     "source": "openstax",
-    "openstax": { "figure": "2.10", "section": "2.2", "url": "https://openstax.org/apps/archive/20260604.144757/resources/44cf89a6435161d98b3d72580d2600c3e4072a69" },
+    "openstax": {
+      "figure": "2.10",
+      "section": "2.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/44cf89a6435161d98b3d72580d2600c3e4072a69",
+      "page": "2-2-chemical-bonds"
+    },
     "alt": "A water molecule shown three ways: as an oxygen atom sharing electron pairs with two hydrogen atoms, as a bent three-dimensional model, and as a structural formula. The oxygen end carries a partial negative charge and the hydrogen ends carry partial positive charges.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.10",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1183,
+    "ext": "jpg"
   },
   "os-2-11": {
     "source": "openstax",
-    "openstax": { "figure": "2.11", "section": "2.2", "url": "https://openstax.org/apps/archive/20260604.144757/resources/5eaec64c28d9846bc48ac13d91fef47fc6edf3bf" },
+    "openstax": {
+      "figure": "2.11",
+      "section": "2.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5eaec64c28d9846bc48ac13d91fef47fc6edf3bf",
+      "page": "2-2-chemical-bonds"
+    },
     "alt": "Three water molecules. Dotted lines connect the partially positive hydrogen of one molecule to the partially negative oxygen of a neighboring molecule.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.11",
-    "labels": []
+    "labels": [],
+    "w": 906,
+    "h": 542,
+    "ext": "jpg"
   }
 }

@@ -4,11 +4,15 @@
     "openstax": {
       "figure": "10.22",
       "section": "10.7",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/94465fd28dbec370d974c9f277c3d4d0fb55234c"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/94465fd28dbec370d974c9f277c3d4d0fb55234c",
+      "page": "10-7-cardiac-muscle-tissue"
     },
     "alt": "A small outline of the heart with a box on its wall, enlarged into a drawing of branching, striped cardiac muscle fibers beside a capillary. Each fiber has a central nucleus, and wavy intercalated discs join the fibers end to end. A further enlargement of one disc shows desmosomes holding the two membranes together and gap junctions bridging them.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.22",
-    "labels": []
+    "labels": [],
+    "w": 1018,
+    "h": 476,
+    "ext": "jpg"
   }
 }

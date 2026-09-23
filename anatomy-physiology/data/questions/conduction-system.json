@@ -1,0 +1,489 @@
+[
+  {
+    "id": "anp-conduction-system-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "In a healthy heart at rest, which structure sets the heart rate?",
+    "options": [
+      "The AV node",
+      "The sinoatrial node",
+      "The Purkinje fibers",
+      "The vagus nerve"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The SA node's pacemaker potential climbs fastest, so it reaches threshold first. Its signal then resets every slower pacemaker, so it sets the rate for the whole heart.",
+      "options": [
+        "The AV node can generate a rhythm, but only about 40 to 60 per minute. The faster SA node resets it before it reaches threshold on its own.",
+        "Correct. The SA node is the heart's pacemaker because its intrinsic rate is the fastest.",
+        "Purkinje fibers have the slowest intrinsic rate, about 20 to 40 per minute. They set the rate only when no signal reaches the ventricles.",
+        "The vagus nerve slows the SA node, but it does not start beats. A heart with no nerves at all still beats."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A drug makes the pacemaker potential of SA node cells climb more steeply. The lowest voltage and the threshold do not change. What happens to the heart rate?",
+    "options": [
+      "It does not change",
+      "It falls",
+      "It rises",
+      "It rises briefly, then settles back to its old value"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A steeper climb covers the same voltage distance in less time. Each cycle is shorter, so more cycles, and more beats, fit into a minute.",
+      "options": [
+        "Threshold did not move, but the voltage now gets there faster. Rate depends on how long the climb takes, not only on where threshold sits.",
+        "A steeper climb shortens each cycle. Shorter cycles mean more beats per minute, not fewer.",
+        "Correct. Rate is set by how long the drift takes to reach threshold, and a steeper slope shortens it.",
+        "Nothing resets the slope while the drug is acting. As long as every climb is steeper, every cycle stays shorter."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-19-20",
+    "q": "The graph shows a pacemaker cell's membrane potential over time. If every cycle looks like the ones shown, how many times per minute does this cell fire?",
+    "options": [
+      "About 60",
+      "About 75",
+      "About 120",
+      "About 40"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "One full cycle, from one threshold crossing to the next, takes 0.8 seconds. 60 seconds ÷ 0.8 seconds = 75 cycles per minute.",
+      "options": [
+        "60 per minute would need a cycle of 1.0 second. The graph shows 0.8 second per cycle.",
+        "Correct. 60 ÷ 0.8 = 75.",
+        "120 per minute would need a cycle of 0.5 second. That would fit two full cycles before the 1.0 second point.",
+        "40 per minute would need a cycle of 1.5 seconds. The graph shows two full cycles in 1.6 seconds."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-4",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-19-20",
+    "q": "Look at the graph. Acetylcholine makes this cell start each slow climb from about −65 mV instead of −60 mV, and makes the climb shallower. The threshold stays at −40 mV. Which change do you expect?",
+    "options": [
+      "Each cycle lasts longer than 0.8 second, so the rate falls",
+      "Each cycle still lasts 0.8 second, so the rate is unchanged",
+      "Each cycle lasts less than 0.8 second, so the rate rises",
+      "The cell stops firing and the voltage stays near −65 mV"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The voltage now has farther to climb (25 mV instead of 20 mV) and climbs more slowly, so it takes longer to reach −40 mV. Longer cycles mean fewer beats per minute. This is how parasympathetic input slows the heart.",
+      "options": [
+        "Correct. A lower start and a shallower slope both lengthen the time to threshold.",
+        "The threshold is the same, but the distance to it is larger and the climb is slower. Both lengthen the cycle.",
+        "Both changes make it take longer, not shorter, to reach threshold.",
+        "Every pacemaker potential starts below threshold; that is what the slow climb is for. Starting a little lower delays firing but does not stop it."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the parts of the conduction pathway in the order a normal heartbeat's signal reaches them.",
+    "options": [
+      "Sinoatrial node",
+      "Atrial muscle and the internodal pathways",
+      "Atrioventricular node",
+      "Atrioventricular bundle",
+      "Right and left bundle branches",
+      "Purkinje fibers"
+    ],
+    "why": {
+      "correct": "The SA node fires, and the signal spreads through the atria to the AV node. After the AV nodal delay it crosses the cardiac skeleton in the AV bundle, runs down the septum in the bundle branches, and spreads through the ventricular walls in the Purkinje fibers."
+    }
+  },
+  {
+    "id": "anp-conduction-system-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "misconception": "the SA node is the only cell that can pace the heart",
+    "q": "Mr. Haddad, 74, faints at a grocery store. His atria are contracting regularly at 76 per minute, but his ventricles contract regularly at only 34 per minute, and the two rhythms have no fixed relationship. Tests show his AV node no longer conducts. Which cells are setting his ventricular rate?",
+    "options": [
+      "SA node cells, firing more slowly than usual",
+      "Atrial muscle cells, passing their signal to the ventricles through a second pathway",
+      "Cells of the ventricular conduction system, firing at their own intrinsic rate",
+      "Contractile ventricular cells, whose resting potential drifts upward"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With the AV node not conducting, SA node signals no longer reach the ventricles, so nothing resets the ventricular conducting cells. The fastest of them, in the bundle, bundle branches or Purkinje fibers, reaches threshold on its own at about 20 to 40 per minute.",
+      "options": [
+        "The SA node is still firing at 76 per minute: that is the atrial rate. Its signals cannot reach the ventricles.",
+        "The cardiac skeleton insulates the atria from the ventricles. There is no second path for atrial signals to take.",
+        "Correct. A rate of 34 fits the intrinsic rate of the ventricular conduction system, and it is independent of the atrial rate.",
+        "Contractile cells have a stable resting potential. They do not drift to threshold, so they cannot set a rhythm."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-7",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Which features of AV node cells cause signals to cross the AV node slowly? Select all that apply.",
+    "options": [
+      "The cells are small",
+      "The cells are joined by few gap junctions",
+      "The upstroke depends on Ca²⁺ entering through L-type channels",
+      "The cells are packed with fast sodium channels",
+      "The node is several centimeters long"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Small cells pass on little current, few gap junctions let little current pass between cells, and calcium-driven upstrokes rise slowly. Together they slow conduction to about 0.05 meters per second.",
+      "options": [
+        "Causes slowing. A small cell delivers little current to its neighbor, so the neighbor takes longer to reach threshold.",
+        "Causes slowing. Gap junctions carry the current from cell to cell, and the AV node has few of them.",
+        "Causes slowing. L-type calcium channels open slowly, so each cell's upstroke is slow.",
+        "Does not apply. Fast sodium channels speed conduction; Purkinje fibers have many, and they conduct fastest.",
+        "Does not apply. The AV node is only a few millimeters long. The delay comes from how slowly it conducts, not from its length."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Why is the upstroke of an SA node cell's action potential slower than a ventricular contractile cell's?",
+    "options": [
+      "SA node cells have no voltage-gated channels",
+      "Its fast sodium channels are inactivated at the node's voltage, so Ca²⁺ carries the upstroke",
+      "SA node cells are joined by more gap junctions",
+      "K⁺ enters the SA node cell through voltage-gated potassium channels during the upstroke"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An SA node cell never repolarizes below about −60 mV. At that voltage its fast sodium channels stay inactivated, so the upstroke depends on L-type calcium channels, which open more slowly.",
+      "options": [
+        "SA node cells have several kinds of voltage-gated channels: HCN channels, T-type and L-type calcium channels, and potassium channels.",
+        "Correct. Calcium channels open more slowly than fast sodium channels, so the upstroke is slower.",
+        "More gap junctions would speed conduction between cells; they would not slow the upstroke within a cell.",
+        "K⁺ leaves the cell when potassium channels open, which repolarizes it. It does not enter during the upstroke."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap in this sequence in an SA node cell. The cell repolarizes to about −60 mV → ______ → Na⁺ moves into the cell → the membrane potential climbs slowly → T-type Ca²⁺ channels open → threshold is reached.",
+    "options": [
+      "HCN channels open, starting the funny current",
+      "Fast sodium channels open",
+      "L-type calcium channels open",
+      "The sodium–potassium pump stops"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "HCN channels open when the cell becomes more negative. The inward current they carry, mostly Na⁺, is the funny current that starts the slow climb.",
+      "options": [
+        "Correct. The funny current is carried by HCN channels, which open at the most negative point of the cycle.",
+        "Fast sodium channels are inactivated at SA node voltages, and they would give a sudden spike, not a slow climb.",
+        "L-type calcium channels open at threshold and carry the upstroke. They come after the slow climb, not before it.",
+        "The pump keeps running. Stopping it would slowly run down the gradients, not produce a regular drift each cycle."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-10",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student describes one cycle of an SA node cell. One step is wrong. Find it.",
+    "options": [
+      "After an action potential, the cell repolarizes to about −60 mV.",
+      "HCN channels open, and the funny current carries Na⁺ into the cell.",
+      "T-type calcium channels open late in the climb.",
+      "At threshold, fast sodium channels open and carry the upstroke.",
+      "Potassium channels open, K⁺ leaves, and the cell repolarizes."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The upstroke of an SA node cell is carried by Ca²⁺ entering through L-type calcium channels. Its fast sodium channels are inactivated at its voltage.",
+      "options": [
+        "This step is right. About −60 mV is the most negative point of the cycle.",
+        "This step is right. The funny current starts the pacemaker potential.",
+        "This step is right. Calcium entry through T-type channels steepens the end of the climb.",
+        "This is the error. The fast sodium upstroke belongs to contractile cells and Purkinje fibers, not SA node cells.",
+        "This step is right. Potassium exit repolarizes the cell, and the cycle starts again."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-11",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A drug blocks HCN channels in SA node cells. Nothing else changes. Predict each change.",
+    "variables": [
+      {
+        "name": "Slope of the pacemaker potential",
+        "answer": "down",
+        "why": "HCN channels carry the funny current. With less inward current, the voltage climbs more slowly."
+      },
+      {
+        "name": "Time for the pacemaker potential to reach threshold",
+        "answer": "up",
+        "why": "A shallower climb covers the same distance to threshold more slowly."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "down",
+        "why": "Longer cycles mean fewer action potentials, and so fewer beats, per minute."
+      },
+      {
+        "name": "Threshold voltage of SA node cells",
+        "answer": "none",
+        "why": "Threshold depends on the L-type calcium channels, which the drug does not touch."
+      }
+    ],
+    "why": {
+      "correct": "Blocking the funny current flattens the pacemaker potential, so the SA node takes longer to reach threshold and fires less often. Drugs that do this are used to slow the heart."
+    }
+  },
+  {
+    "id": "anp-conduction-system-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "What is an ectopic pacemaker?",
+    "options": [
+      "A pacemaker site anywhere other than the SA node",
+      "A cluster of nerve cells that starts each heartbeat",
+      "The part of the SA node with the fastest cells",
+      "A contractile cell that has lost its gap junctions"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Ectopic means out of place (ec- = out of, top- = place). Any site other than the SA node that sets the heart's rhythm is an ectopic pacemaker or ectopic focus.",
+      "options": [
+        "Correct. It may take over because the SA node fails, or because it fires faster than the SA node.",
+        "Heartbeats start in autorhythmic muscle cells, not nerve cells.",
+        "Cells inside the SA node are the normal pacemaker, not an out-of-place one.",
+        "A cell without gap junctions could not pass a signal on. It would not become a pacemaker for that reason."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "AV node cells can depolarize on their own at about 50 per minute. In a healthy heart beating at 70 per minute, why don't they set their own rhythm?",
+    "options": [
+      "The vagus nerve switches off their HCN channels whenever the SA node is firing",
+      "The cardiac skeleton blocks their signals",
+      "They have no pacemaker potential while the SA node works",
+      "Each SA node signal depolarizes them before their own drift reaches threshold"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The SA node reaches threshold first. Its signal arrives and fires the AV node cells early, and they then start their drift again from the bottom. They are reset every beat, so they never fire on their own schedule.",
+      "options": [
+        "Vagal input slows the AV node, but it does not switch off its pacemaker ability. The reason is the SA node's faster signal.",
+        "The cardiac skeleton separates atria from ventricles; the AV node is the doorway through it, not something it blocks.",
+        "AV node cells keep their pacemaker potential; each SA node signal simply cuts it short.",
+        "Correct. The fastest pacemaker resets all slower ones, so it sets the rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "misconception": "the brain makes the heart beat",
+    "q": "A year after a heart transplant, Ms. Lindqvist's resting heart rate is a steady 98 per minute. The nerves to her new heart were cut during surgery and have not regrown. What best explains her rate?",
+    "options": [
+      "Her new heart is working harder to pump against scar tissue",
+      "Her brain now sends signals to the heart through the blood",
+      "Her SA node fires at its own intrinsic rate, with no vagal slowing",
+      "Her AV node has taken over as pacemaker"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "An SA node on its own fires at about 100 per minute. In an intact heart, parasympathetic input through the vagus nerves slows it to about 70 at rest. With the nerves cut, that slowing is gone.",
+      "options": [
+        "Nothing in the scenario points to extra workload, and a steady rate near 100 is exactly what an SA node with no nerve input produces.",
+        "Some hormones in blood can change heart rate, but the brain does not start heartbeats. The SA node does that by itself.",
+        "Correct. Her rate is the SA node's intrinsic rate, which vagal input normally holds down.",
+        "The AV node's intrinsic rate is about 40 to 60, well below 98."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Disease blocks conduction in the left bundle branch. The right branch still works. What happens to the left ventricle's depolarization?",
+    "options": [
+      "It stops, so the left ventricle no longer contracts",
+      "It happens before the right ventricle's",
+      "It is unchanged, with the left Purkinje fibers firing on time from the right branch's signal",
+      "It starts late and spreads slowly through muscle from the right side"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The signal still reaches the right ventricle through the right branch. From there it must travel muscle cell to muscle cell, through the septum and into the left ventricle, at about 0.3 to 0.5 meters per second instead of 2 to 4. The left ventricle depolarizes late and out of step.",
+      "options": [
+        "Contractile cells still pass the signal to each other through gap junctions. The left ventricle is activated, only late and slowly.",
+        "The left ventricle's fast route is blocked, so it depolarizes after the right, not before.",
+        "The left Purkinje network is fed by the left branch. With that branch blocked, the signal has to arrive by the slow route through muscle, so it cannot be on time.",
+        "Correct. Losing the fast pathway forces slow muscle-to-muscle spread."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a healthy heart, where does electrical activity normally cross from the atria to the ventricles?",
+    "options": [
+      "Anywhere along the atrioventricular septum",
+      "Through the AV node and AV bundle",
+      "Through the chordae tendineae",
+      "Through Bachmann's bundle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cardiac skeleton is connective tissue, which does not conduct action potentials. The AV bundle, leaving the AV node, is the one muscular path through it.",
+      "options": [
+        "The cardiac skeleton insulates the atria from the ventricles along the whole junction, except at the AV bundle.",
+        "Correct. The AV node and AV bundle are the only normal electrical doorway.",
+        "Chordae tendineae are connective tissue cords; they do not conduct action potentials.",
+        "Bachmann's bundle carries the signal from the right atrium to the left atrium, not to the ventricles."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-17",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Acetylcholine released by the vagus nerves binds muscarinic receptor proteins on SA node cells. Which effects follow? Select all that apply.",
+    "options": [
+      "More potassium channels open",
+      "The cell starts each climb from a more negative voltage",
+      "The funny current is reduced",
+      "The pacemaker potential climbs more steeply",
+      "The heart rate rises"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Acetylcholine opens extra potassium channels, so the cell starts lower, and it reduces the funny current, so the climb is shallower. Both delay threshold and slow the heart.",
+      "options": [
+        "Happens. Extra K⁺ leaving makes the inside more negative.",
+        "Happens. That is the result of the extra potassium channels being open.",
+        "Happens. Less funny current means less inward charge during the climb.",
+        "Does not happen. Norepinephrine steepens the climb; acetylcholine flattens it.",
+        "Does not happen. A lower start and a shallower climb slow the rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-conduction-system-18",
+    "type": "order",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Put these regions of the ventricles in the order they depolarize during a normal beat.",
+    "options": [
+      "Interventricular septum",
+      "Papillary muscles and the apex",
+      "Side walls of both ventricles",
+      "Base of the ventricles, near the valves"
+    ],
+    "why": {
+      "correct": "The bundle branches run down the septum, so it depolarizes first. The network reaches the papillary muscles and apex next, then turns up the side walls, and the base near the valves is last. Contraction therefore moves from apex to base, pushing blood toward the outflow valves."
+    }
+  }
+]

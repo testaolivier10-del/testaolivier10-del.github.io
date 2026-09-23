@@ -1,0 +1,519 @@
+[
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "Which substance crosses the plasma membrane by simple diffusion, with no protein involved?",
+    "options": [
+      "Sodium ions",
+      "Carbon dioxide",
+      "Glucose molecules",
+      "Chloride ions"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Carbon dioxide is small and nonpolar, so it dissolves in the oily core of the bilayer and crosses straight through, down its concentration gradient.",
+      "options": [
+        "Sodium ions carry a charge, so the oily core almost blocks them. They cross through ion channels.",
+        "Correct. Carbon dioxide is small and nonpolar and passes straight through the bilayer.",
+        "Glucose is large and polar. It crosses on carrier proteins by facilitated diffusion.",
+        "Chloride ions are charged, like sodium ions, and need ion channels to cross."
+      ]
+    },
+    "id": "anp-passive-transport-1"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "misconception": "any clear IV fluid is safe for blood cells",
+    "q": "By mistake, a large volume of sterile water is infused into a patient's vein. What happens first to the red blood cells in the plasma it mixes with?",
+    "options": [
+      "They shrink as water leaves them",
+      "They keep their normal size",
+      "They swell as water enters them",
+      "They take in sodium from the water"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Sterile water has almost no solutes, so it makes the plasma around the cells hypotonic. Water moves into the cells by osmosis, toward their trapped solutes, and they swell. Enough swelling tears them open: osmotic hemolysis.",
+      "options": [
+        "Shrinking happens in a hypertonic solution, which has more nonpenetrating solutes than the cell. Water has fewer.",
+        "Cells keep their size in an isotonic solution, such as 0.9% sodium chloride, not in water.",
+        "Correct. The fluid around the cells is now hypotonic, so water enters and the cells swell.",
+        "Sterile water contains essentially no sodium, so there is none for the cells to take in."
+      ]
+    },
+    "id": "anp-passive-transport-2"
+  },
+  {
+    "type": "predict",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "q": "A red blood cell is placed in a hypertonic solution of sodium chloride. Predict each change in the cell.",
+    "variables": [
+      {
+        "name": "Volume of the cell",
+        "answer": "down",
+        "why": "The solution has more nonpenetrating solutes than the cell, so water leaves the cell by osmosis and the cell shrinks."
+      },
+      {
+        "name": "Concentration of solutes inside the cell",
+        "answer": "up",
+        "why": "Water leaves while the cell's solutes stay inside, so the same solutes sit in less water."
+      },
+      {
+        "name": "Number of potassium ions inside the cell",
+        "answer": "none",
+        "why": "Osmosis moves water, not the trapped solutes. The cell keeps the same potassium ions, now in a smaller volume."
+      }
+    ],
+    "why": {
+      "correct": "In a hypertonic solution, water leaves the cell by osmosis. The cell shrinks (crenation, if extreme) and its solutes become more concentrated, but their number does not change."
+    },
+    "id": "anp-passive-transport-3"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "misconception": "transport always speeds up with a bigger gradient",
+    "q": "A cell takes up glucose on carrier proteins. Raising outside glucose from 5 to 10 mmol/L nearly doubles uptake, but raising it from 40 to 80 mmol/L barely changes it. What best explains this?",
+    "options": [
+      "Glucose starts crossing the bilayer directly",
+      "The gradient reverses at high glucose",
+      "Nearly every carrier is already occupied",
+      "The carriers switch to moving other solutes"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At low glucose, most carriers are empty, so more glucose means more carriers loaded and faster uptake. At high glucose, nearly every carrier is already busy. Uptake has reached the transport maximum: carrier saturation.",
+      "options": [
+        "Glucose is too large and polar to cross the bilayer in useful amounts at any concentration.",
+        "Raising outside glucose makes the inward gradient bigger, not reversed.",
+        "Correct. With nearly every carrier occupied, extra glucose cannot speed uptake.",
+        "Carriers are specific. A glucose carrier does not switch to other solutes when glucose is high."
+      ]
+    },
+    "id": "anp-passive-transport-4"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A membrane protein passes about 10 million potassium ions per second and almost no sodium ions. What kind of protein is it?",
+    "options": [
+      "A potassium ion channel",
+      "A glucose carrier",
+      "An aquaporin",
+      "A glycoprotein in the glycocalyx"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Millions of ions per second is channel speed, because ions stream through an open tunnel without binding tightly. The strong preference for potassium over sodium comes from the channel's narrow, selective stretch.",
+      "options": [
+        "Correct. Speed and selectivity for one ion mark an ion channel.",
+        "Carriers bind and change shape each cycle, so they move hundreds to a few thousand molecules per second. A glucose carrier also does not move potassium.",
+        "Aquaporins pass water and are shaped so that ions cannot follow.",
+        "Glycoproteins in the glycocalyx carry sugar chains for identity. They do not form ion tunnels."
+      ]
+    },
+    "id": "anp-passive-transport-5"
+  },
+  {
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "Which of these are forms of passive transport? Select all that apply.",
+    "options": [
+      "Oxygen crossing the bilayer",
+      "Water entering a cell through aquaporins",
+      "Glucose entering a cell on a carrier, down its gradient",
+      "Fluid pushed out of a capillary by blood pressure",
+      "A cell spending ATP to move calcium from low to high concentration"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Passive transport moves a substance down its gradient with no ATP spent by the cell. Simple diffusion, osmosis, facilitated diffusion and filtration all qualify.",
+      "options": [
+        "Correct. This is simple diffusion.",
+        "Correct. This is osmosis through water channels.",
+        "Correct. This is facilitated diffusion by a carrier.",
+        "Correct. This is filtration. The pressure came from the heart, not from ATP spent by the capillary cells.",
+        "Moving a substance from low to high concentration is against its gradient and needs ATP, so it is not passive transport."
+      ]
+    },
+    "id": "anp-passive-transport-6"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "compartments"
+    ],
+    "q": "A drug blocks every aquaporin in a red blood cell. The cell is then placed in a hypotonic solution. What happens?",
+    "options": [
+      "Water cannot enter the cell by any route",
+      "It still swells, but more slowly",
+      "Water leaves the cell, and the cell shrinks",
+      "Ions rush in and replace the water"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Aquaporins speed water movement, but water also crosses the bare bilayer slowly. Osmosis still pulls water in, so the cell still swells, just more slowly.",
+      "options": [
+        "Water crosses the phospholipid bilayer slowly even without aquaporins, so some still enters.",
+        "Correct. Blocking aquaporins slows osmosis but does not change its direction.",
+        "In a hypotonic solution, water moves into the cell. Aquaporins do not decide the direction.",
+        "Ions do not replace water. Their movement depends on ion channels, which this drug does not affect."
+      ]
+    },
+    "id": "anp-passive-transport-7"
+  },
+  {
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "Put the steps of one cycle of a glucose carrier in sequence, starting with the carrier facing outside the cell.",
+    "options": [
+      "Glucose from the interstitial fluid binds to the carrier's binding site",
+      "The carrier shifts shape so the binding site faces the cytoplasm",
+      "Glucose is released into the cytoplasm",
+      "The empty carrier flips back to face the outside"
+    ],
+    "why": {
+      "correct": "A carrier binds glucose on one side, changes shape to expose it to the other side, releases it where glucose is less concentrated, then resets. It is never open all the way through."
+    },
+    "id": "anp-passive-transport-8"
+  },
+  {
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "q": "This sequence explains what happens to a red blood cell placed in a hypotonic solution. One step is wrong. Which one?",
+    "options": [
+      "The solution has fewer nonpenetrating solutes than the cell",
+      "Water is more concentrated outside the cell than inside",
+      "Water moves out of the cell by osmosis",
+      "The cell swells",
+      "If the swelling is severe, the membrane tears"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In a hypotonic solution, water moves into the cell, toward the side with more solute particles. It does not move out.",
+      "options": [
+        "This step is right. That is what makes a solution hypotonic to the cell.",
+        "This step is right. Fewer solute particles outside means water is more concentrated there.",
+        "This is the error. Water moves into the cell, toward its trapped solutes.",
+        "This step is right. Water entering increases the cell's volume.",
+        "This step is right. A tear from severe swelling is osmotic hemolysis."
+      ]
+    },
+    "id": "anp-passive-transport-9"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments"
+    ],
+    "misconception": "isosmotic always means isotonic",
+    "q": "Red blood cells (about 300 mOsm/L) are placed in a 300 mOsm/L solution of glycerol, a small molecule that crosses their membranes. What happens over the next few minutes?",
+    "options": [
+      "They keep their volume",
+      "They shrink and crenate",
+      "They lose potassium but keep their volume",
+      "They swell and may burst"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The solution matches the cells' osmolarity, but glycerol is a penetrating solute. It diffuses into the cells, adding to their solutes, and water follows by osmosis. The solution is isosmotic but hypotonic, so the cells swell and may burst.",
+      "options": [
+        "That would be true if glycerol stayed outside. Because it crosses the membrane, it does not hold water outside the cells.",
+        "Shrinking requires more nonpenetrating solutes outside than inside. Glycerol does not stay outside.",
+        "The cells' potassium stays trapped inside; glycerol entering does not push it out. The volume changes because water follows the glycerol in.",
+        "Correct. Glycerol enters, water follows, and the cells swell: isosmotic but hypotonic."
+      ]
+    },
+    "id": "anp-passive-transport-10"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "You step on a tack. The pressure deforms the membranes of touch-sensing endings in the sole of your foot, and ion channels in them open. Which kind of channel opened?",
+    "options": [
+      "A voltage-gated ion channel",
+      "A ligand-gated ion channel",
+      "A mechanically gated channel",
+      "A leak channel in the membrane"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The trigger was physical pressure on the membrane. Channels that open when the membrane is stretched or pressed are mechanically gated.",
+      "options": [
+        "Voltage-gated channels open when the voltage across the membrane changes. Here the first trigger was pressure.",
+        "Ligand-gated channels open when a specific molecule binds to them. No molecule was involved in the first step.",
+        "Correct. Physical deformation of the membrane opens mechanically gated channels.",
+        "Leak channels are open most of the time; they do not open in response to a trigger."
+      ]
+    },
+    "id": "anp-passive-transport-11"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A channel in a muscle's membrane stays closed until a molecule released by the cell that controls the muscle binds to it. What type of channel is this?",
+    "options": [
+      "A mechanically gated channel",
+      "A ligand-gated channel",
+      "An aquaporin",
+      "A voltage-gated channel"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A channel opened by the binding of a specific molecule is ligand-gated.",
+      "options": [
+        "Mechanically gated channels open to stretch or pressure, not to a molecule binding.",
+        "Correct. Binding of a specific molecule opens it.",
+        "Aquaporins are water channels. They are not opened by a binding molecule and do not pass ions.",
+        "Voltage-gated channels open when the voltage across the membrane changes, not when a molecule binds."
+      ]
+    },
+    "id": "anp-passive-transport-12"
+  },
+  {
+    "type": "missing",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill in the missing step: glucose binds to a carrier on the outside of the membrane → ______ → glucose is released into the cytoplasm.",
+    "options": [
+      "The carrier changes shape",
+      "The carrier opens a tunnel all the way through",
+      "ATP attaches to the carrier and pushes glucose in",
+      "Glucose dissolves in the oily core of the bilayer"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A carrier moves its cargo by changing shape: binding on one side shifts it into a form that exposes the binding site to the other side.",
+      "options": [
+        "Correct. The shape change carries the binding site, with glucose on it, to the inside.",
+        "A continuous open tunnel describes a channel. A carrier is never open all the way through.",
+        "Facilitated diffusion uses no ATP. The glucose gradient supplies the energy.",
+        "Glucose is too large and polar to dissolve in the oily core. That is why it needs a carrier."
+      ]
+    },
+    "id": "anp-passive-transport-13"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "Two cells face the same glucose gradient. Cell A has twice as many glucose carriers as cell B. At very high outside glucose, how do their uptake rates compare?",
+    "options": [
+      "They are equal, because the gradient is the same",
+      "Cell B is faster, because its carriers work harder",
+      "Cell A is about twice as fast",
+      "Neither takes up glucose once carriers saturate"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At very high glucose, every carrier in both cells is busy, so each cell runs at its transport maximum. The maximum depends on how many carriers there are, so cell A, with twice as many, moves about twice as much.",
+      "options": [
+        "At saturation the gradient no longer sets the rate. The number of carriers does.",
+        "Each carrier runs at about the same top speed. Cell B has fewer, so it is slower, not faster.",
+        "Correct. Twice the carriers gives about twice the transport maximum.",
+        "Saturated carriers keep working at their top rate. Uptake stops rising; it does not stop."
+      ]
+    },
+    "id": "anp-passive-transport-14"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "compartments"
+    ],
+    "q": "The pressure inside a patient's leg capillaries rises from 30 to 45 mm Hg because the veins draining them are partly blocked. The capillary walls do not change. What happens to filtration out of those capillaries?",
+    "options": [
+      "It falls by about half",
+      "It stays the same",
+      "It stops, because blood cells block the gaps",
+      "It rises by about half"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Flow equals the pressure gradient divided by resistance. With the wall's resistance unchanged, raising the gradient from 30 to 45 mm Hg multiplies flow by 1.5. More fluid leaves into the tissue, which can show as swelling.",
+      "options": [
+        "A higher pressure inside pushes more fluid out, not less.",
+        "Filtration depends on the pressure gradient, and the gradient has risen.",
+        "Blood cells are too large to enter the gaps, so they stay in the blood; they do not plug the gaps.",
+        "Correct. The pressure gradient rose by half, so filtration rises by about half."
+      ]
+    },
+    "id": "anp-passive-transport-15"
+  },
+  {
+    "type": "multi",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "An ion channel opens. Which of these decide the direction the ions move through it? Select all that apply.",
+    "options": [
+      "The ion's concentration gradient across the membrane",
+      "The charge difference across the membrane",
+      "The trigger that opened the channel",
+      "The amount of ATP in the cell"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "why": {
+      "correct": "Ions move through an open channel down their electrochemical gradient, which combines the concentration gradient and the charge difference across the membrane.",
+      "options": [
+        "Correct. The concentration gradient is one part of the electrochemical gradient.",
+        "Correct. The electrical charge difference is the other part.",
+        "The trigger decides when the channel opens, not which way ions move once it is open.",
+        "Movement through a channel is passive. ATP does not power it or set its direction."
+      ]
+    },
+    "id": "anp-passive-transport-16"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "Glucose enters a cell in your thigh muscle by facilitated diffusion, yet uptake continues for hours without the inside reaching the outside concentration. What keeps the gradient pointing inward?",
+    "options": [
+      "The cell attaches a phosphate to glucose as it enters",
+      "Carriers let glucose in but block it from leaving",
+      "Aquaporins wash glucose into the cell with water",
+      "The cell spends ATP to push glucose through the carrier"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Inside the cell, an enzyme attaches a phosphate group to glucose right away. Phosphorylated glucose no longer fits the carrier, so free glucose inside stays low and the gradient stays inward.",
+      "options": [
+        "Correct. Phosphorylation removes free glucose inside, preserving the gradient.",
+        "Carriers work in both directions. Net movement follows the gradient, so if free glucose built up inside, it would leave again.",
+        "Aquaporins pass water only and do not carry glucose.",
+        "Facilitated diffusion uses no ATP to move glucose across; the gradient powers it."
+      ]
+    },
+    "id": "anp-passive-transport-17"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "What is crenation?",
+    "options": [
+      "Swelling and bursting of a red blood cell in a hypotonic solution",
+      "Shrinking of a red blood cell in a hypertonic solution",
+      "The steady shape of a red blood cell in an isotonic solution",
+      "The opening of a channel when the membrane is stretched"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Crenation (crena = notch) is the spiky, shrunken shape a red blood cell takes when water leaves it in a hypertonic solution.",
+      "options": [
+        "Swelling and bursting in a hypotonic solution is osmotic hemolysis.",
+        "Correct. Water leaves, and the cell shrinks and puckers.",
+        "In an isotonic solution the cell keeps its normal disc shape; that is not crenation.",
+        "A channel opened by stretch is a mechanically gated channel, which has nothing to do with crenation."
+      ]
+    },
+    "id": "anp-passive-transport-18"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "q": "Ms. Patel has dangerous swelling of her brain after a head injury. Her team infuses 3% sodium chloride into a vein. Sodium and chloride stay mostly outside brain cells. What effect does this have on her brain cells?",
+    "options": [
+      "Water enters them and they swell further",
+      "Sodium enters them and they swell",
+      "Nothing changes, because saline is isotonic",
+      "Water leaves them and they shrink"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "3% sodium chloride is hypertonic. It raises the nonpenetrating solutes in the fluid around the brain cells, so water leaves the cells by osmosis and they shrink, easing the swelling.",
+      "options": [
+        "Water enters cells when the fluid around them is hypotonic. This fluid is hypertonic.",
+        "The question states that sodium and chloride stay mostly outside, which is why they hold water outside the cells.",
+        "0.9% sodium chloride is isotonic. 3% is more than three times as concentrated, so it is hypertonic.",
+        "Correct. A hypertonic fluid draws water out of the cells."
+      ]
+    },
+    "id": "anp-passive-transport-19"
+  }
+]

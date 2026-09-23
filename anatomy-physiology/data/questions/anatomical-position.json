@@ -4,9 +4,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In the anatomical position, which way do the palms face?",
-    "options": ["Toward the thighs", "Forward", "Backward", "Toward the midline, thumbs forward"],
+    "options": [
+      "Toward the thighs",
+      "Forward",
+      "Backward",
+      "Toward the midline, thumbs forward"
+    ],
     "correct": 1,
     "why": {
       "correct": "In the anatomical position the arms hang at the sides with the palms facing forward and the thumbs pointing away from the body.",
@@ -23,9 +30,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A patient is lying flat on their back, face up. What is this position called?",
-    "options": ["Prone", "Lateral", "Supine", "Caudal"],
+    "options": [
+      "Prone",
+      "Lateral",
+      "Supine",
+      "Caudal"
+    ],
     "correct": 2,
     "why": {
       "correct": "Supine means lying face up, on the back. A handy link: supine, on your spine.",
@@ -42,9 +56,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which term means closer to the midline of the body?",
-    "options": ["Lateral", "Medial", "Proximal", "Superficial"],
+    "options": [
+      "Lateral",
+      "Medial",
+      "Proximal",
+      "Superficial"
+    ],
     "correct": 1,
     "why": {
       "correct": "Medial (Latin medius = middle) means closer to the midline, the imaginary line dividing the body into equal right and left halves.",
@@ -61,9 +82,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In the anatomical position, how is the thumb described relative to the little finger?",
-    "options": ["Medial", "Proximal", "Deep", "Lateral"],
+    "options": [
+      "Medial",
+      "Proximal",
+      "Deep",
+      "Lateral"
+    ],
     "correct": 3,
     "misconception": "the thumb is medial",
     "why": {
@@ -81,7 +109,9 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which statement uses proximal correctly?",
     "options": [
       "The wrist is proximal to the elbow",
@@ -105,9 +135,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Where does the breastbone lie relative to the heart?",
-    "options": ["Anterior", "Posterior", "Lateral", "Inferior"],
+    "options": [
+      "Anterior",
+      "Posterior",
+      "Lateral",
+      "Inferior"
+    ],
     "correct": 0,
     "why": {
       "correct": "The breastbone sits at the front of the chest, in front of the heart. Toward the front is anterior.",
@@ -124,10 +161,22 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every pair of terms that mean the same direction in a standing human.",
-    "options": ["Superior and cranial", "Anterior and ventral", "Medial and proximal", "Posterior and dorsal", "Lateral and distal"],
-    "correct": [0, 1, 3],
+    "options": [
+      "Superior and cranial",
+      "Anterior and ventral",
+      "Medial and proximal",
+      "Posterior and dorsal",
+      "Lateral and distal"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
     "why": {
       "correct": "In an upright human, cranial matches superior, ventral matches anterior and dorsal matches posterior. Medial and lateral describe the midline, while proximal and distal describe distance along a limb, so those do not match.",
       "options": [
@@ -144,7 +193,9 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which statement uses superficial or deep correctly?",
     "options": [
       "Bone is superficial to muscle in the thigh",
@@ -168,9 +219,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A 71-year-old man has a stroke that damages the right side of his brain. Most pathways between the brain and the body cross the midline. Where would you expect weakness?",
-    "options": ["In the right arm and leg", "In the left arm and leg", "In both legs only", "In the face only, on the right"],
+    "options": [
+      "In the right arm and leg",
+      "In the left arm and leg",
+      "In both legs only",
+      "In the face only, on the right"
+    ],
     "correct": 1,
     "why": {
       "correct": "Because most brain-body pathways cross the midline, damage on one side of the brain affects the opposite side of the body. The weakness is contralateral: the left arm and leg.",
@@ -187,9 +245,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Your right arm and right leg are on the same side of the body. Which term describes them?",
-    "options": ["Contralateral", "Bilateral", "Intermediate", "Ipsilateral"],
+    "options": [
+      "Contralateral",
+      "Bilateral",
+      "Intermediate",
+      "Ipsilateral"
+    ],
     "correct": 3,
     "why": {
       "correct": "Ipsilateral (ipse = same, latus = side) means on the same side of the body.",
@@ -206,7 +271,9 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A patient lies supine on a stretcher. Which statement about her is correct?",
     "options": [
       "Her chest is now superior because it faces the ceiling",
@@ -231,9 +298,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "The nose is medial to the eye, and the ear is lateral to it. How is the eye described relative to the nose and ear?",
-    "options": ["Intermediate", "Proximal", "Superficial", "Contralateral"],
+    "options": [
+      "Intermediate",
+      "Proximal",
+      "Superficial",
+      "Contralateral"
+    ],
     "correct": 0,
     "why": {
       "correct": "Intermediate means lying between a more medial structure and a more lateral one. The eye lies between the nose and the ear.",
@@ -250,10 +324,12 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student raises an arm straight overhead and says, \"Now my hand is superior to my elbow, so it is proximal.\" What is the error?",
     "options": [
-      "The hand is still distal to the elbow, because proximal and distal follow the limb, not the posture",
+      "The hand is still distal to the elbow in every posture",
       "The hand becomes inferior when the arm is raised",
       "Proximal and distal are used only on the trunk",
       "The hand is lateral, not proximal"
@@ -274,7 +350,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Here is a description of the anatomical position. One item is wrong. Find it.",
     "options": [
       "The body stands upright, facing forward.",
@@ -298,7 +376,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "An EMT reports \"a laceration on the lateral left forearm, just proximal to the wrist.\" Where is the wound?",
     "options": [
       "On the thumb side of the left forearm, a little toward the elbow from the wrist",
@@ -322,19 +402,36 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Put these structures of the upper limb in order from most proximal to most distal.",
-    "options": ["Shoulder", "Elbow", "Wrist", "Palm", "Fingertips"],
-    "why": { "correct": "Proximal means nearer the limb's attachment to the trunk, at the shoulder. Moving away from it you pass the elbow, the wrist, the palm and finally the fingertips, the most distal point." }
+    "options": [
+      "Shoulder",
+      "Elbow",
+      "Wrist",
+      "Palm",
+      "Fingertips"
+    ],
+    "why": {
+      "correct": "Proximal means nearer the limb's attachment to the trunk, at the shoulder. Moving away from it you pass the elbow, the wrist, the palm and finally the fingertips, the most distal point."
+    }
   },
   {
     "id": "anp-anatomical-position-17",
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Complete the pairs of opposites: superior ↔ inferior; anterior ↔ posterior; medial ↔ lateral; superficial ↔ ____.",
-    "options": ["Deep", "Distal", "Dorsal", "Caudal"],
+    "options": [
+      "Deep",
+      "Distal",
+      "Dorsal",
+      "Caudal"
+    ],
     "correct": 0,
     "why": {
       "correct": "Superficial means toward the body surface; its opposite is deep, away from the surface.",

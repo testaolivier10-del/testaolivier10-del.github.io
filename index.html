@@ -148,6 +148,12 @@
           "position": 2,
           "name": "Organic Chemistry",
           "url": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Anatomy & Physiology",
+          "url": "https://levlprep.com/anatomy-physiology/"
         }
       ]
     }
@@ -224,6 +230,23 @@
           </div>
           <span class="featured-cta">Start learning &rarr;</span>
         </a>
+        <a class="featured-card" href="anatomy-physiology/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true">&hearts;</div>
+            <span class="status-badge"><span class="dot"></span>Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">Anatomy &amp; Physiology</p>
+            <p class="featured-desc">Foundations and the full cardiovascular system, taught in an order where nothing is used before it is taught, with a virtual lab practical and physiology reasoning drills.</p>
+          </div>
+          <div class="featured-tags">
+            <span>Lab practical</span>
+            <span>Predict the change</span>
+            <span>Feedback loops</span>
+            <span>TEAS A&amp;P practice</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>
         </div>
 
       </div>
@@ -278,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var subjects = Object.keys(info.subjects || {}).filter(function(k){ return info.subjects[k] > 0; });
     if(!info.total && !streak.current) return;   // nothing to show a first-time visitor
 
-    var LABELS = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry' };
+    var LABELS = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
     var pct = Math.round(info.into / info.span * 100);
     box.innerHTML =
       '<div class="hub-progress-card">' +

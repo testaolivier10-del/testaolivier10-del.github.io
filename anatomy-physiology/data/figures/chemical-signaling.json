@@ -4,35 +4,47 @@
     "openstax": {
       "figure": "12.27",
       "section": "12.5",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/75ab19a5b7c2945555083964780a2159caa68856"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/75ab19a5b7c2945555083964780a2159caa68856",
+      "page": "12-5-communication-between-neurons"
     },
     "alt": "The branching axon of one neuron ends in club-shaped swellings on the dendrites of a second neuron. An enlarged view of one contact shows that the axon ending does not touch the dendrite: a narrow gap separates them. Small membrane sacs inside the axon ending fuse with its membrane and release molecules that cross the gap and bind proteins on the dendrite's membrane.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.27",
-    "labels": []
+    "labels": [],
+    "w": 1005,
+    "h": 930,
+    "ext": "jpg"
   },
   "os-17-4": {
     "source": "openstax",
     "openstax": {
       "figure": "17.4",
       "section": "17.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1f800b90fc46e0ee992c36313b278312471395e8"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1f800b90fc46e0ee992c36313b278312471395e8",
+      "page": "17-2-hormones"
     },
     "alt": "A fat-soluble messenger slips straight through the plasma membrane, binds a protein in the cytosol, and the pair moves into the nucleus. There it binds DNA at a gene, the gene is transcribed into messenger RNA, and the RNA is translated into a new protein in the cytoplasm.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.4",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 735,
+    "ext": "jpg"
   },
   "os-17-5": {
     "source": "openstax",
     "openstax": {
       "figure": "17.5",
       "section": "17.2",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/f1cbb3d650243dca17e57977066fee3889f99252"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/f1cbb3d650243dca17e57977066fee3889f99252",
+      "page": "17-2-hormones"
     },
     "alt": "A water-soluble messenger stays outside the cell and binds a protein in the plasma membrane. That protein switches on a G protein on the inner face, which switches on a membrane enzyme that turns ATP into cyclic AMP. Cyclic AMP then switches on enzymes that attach phosphate groups to other proteins in the cytoplasm, changing what the cell does.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 17.5",
-    "labels": []
+    "labels": [],
+    "w": 965,
+    "h": 731,
+    "ext": "jpg"
   }
 }

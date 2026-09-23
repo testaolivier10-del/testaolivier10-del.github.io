@@ -1,0 +1,64 @@
+{
+  "contractile-cardiomyocyte": {
+    "def": "A working muscle cell of the heart wall (a cardiomyocyte): short, branched and striated, with one or two central nuclei, many mitochondria, and intercalated discs whose gap junctions pass action potentials to its neighbors. It rests at about −90 mV and fires only when charge from a neighbor brings it to threshold.",
+    "roots": [
+      [
+        "cardi/o",
+        "heart"
+      ],
+      [
+        "my/o",
+        "muscle"
+      ],
+      [
+        "-cyte",
+        "cell"
+      ]
+    ],
+    "say": "KAR-dee-oh-MY-oh-site"
+  },
+  "l-type-calcium": {
+    "def": "Voltage-gated calcium channels in the sarcolemma and T tubules of cardiac muscle cells that open slowly on depolarization and stay open a long time. The calcium entering through them holds the plateau and triggers calcium release from the sarcoplasmic reticulum.",
+    "roots": [
+      [
+        "L",
+        "long-lasting"
+      ]
+    ],
+    "say": ""
+  },
+  "cardiac-ap": {
+    "def": "The action potential of a contractile ventricular cell, lasting about 250 to 300 ms: a fast sodium upstroke (phase 0), a small notch (phase 1), a plateau near 0 mV where calcium entry balances potassium exit (phase 2), repolarization by potassium exit (phase 3), and rest at about −90 mV (phase 4).",
+    "roots": [
+      [
+        "cardi/o",
+        "heart"
+      ],
+      [
+        "-ac",
+        "pertaining to"
+      ]
+    ],
+    "say": ""
+  },
+  "cicr": {
+    "def": "Calcium-induced calcium release: calcium entering a cardiac muscle cell through L-type channels opens calcium release channels on the sarcoplasmic reticulum, which releases a much larger amount of calcium into the cytosol and starts contraction.",
+    "roots": [
+      [
+        "induc-",
+        "lead in, bring about"
+      ]
+    ],
+    "say": ""
+  },
+  "cardiac-refractory": {
+    "def": "In cardiac muscle the absolute refractory period lasts about 200 to 250 ms, because the sodium channels stay inactivated through the plateau. It lasts nearly as long as the contraction, so a new action potential cannot start until the cell is relaxing, and twitches cannot sum into tetanus.",
+    "roots": [
+      [
+        "refractarius",
+        "stubborn (Latin)"
+      ]
+    ],
+    "say": "ree-FRAK-tuh-ree"
+  }
+}

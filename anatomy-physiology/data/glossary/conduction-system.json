@@ -1,0 +1,32 @@
+{
+  "autorhythmic-cell": {
+    "def": "A specialized cardiac muscle cell, also called a pacemaker cell, that depolarizes to threshold on its own with no outside stimulus. About 1 percent of heart cells are autorhythmic; they start and conduct each heartbeat's signal and contract only weakly.",
+    "roots": [["auto-", "self"], ["rhythm-", "regular beat"], ["-ic", "relating to"]],
+    "say": "aw-toh-RITH-mik"
+  },
+  "pacemaker-potential": {
+    "def": "The slow, spontaneous depolarization of an autorhythmic cell between action potentials, also called the prepotential. It is driven by the funny current (Na⁺ in through HCN channels), falling K⁺ exit, and late T-type Ca²⁺ entry; its slope sets how often the cell fires.",
+    "roots": [["pre-", "before"]],
+    "say": ""
+  },
+  "sa-node": {
+    "def": "The sinoatrial node: a patch of autorhythmic cells in the upper back wall of the right atrium, near the superior vena cava. It reaches threshold first, so it is the heart's pacemaker; a rhythm it sets is called sinus rhythm. Bachmann's bundle and the internodal pathways carry its signal quickly across the atria.",
+    "roots": [["sino-", "sinus (a cavity)"], ["atri-", "atrium"]],
+    "say": "sy-noh-AY-tree-ul"
+  },
+  "av-node": {
+    "def": "The atrioventricular node: autorhythmic tissue in the lower interatrial septum, and the only normal electrical doorway from atria to ventricles. It conducts slowly, causing the AV nodal delay of about 0.1 second, during which the atria finish contracting.",
+    "roots": [["atrio-", "atrium"], ["ventricul-", "ventricle"]],
+    "say": "ay-tree-oh-ven-TRIK-yoo-lur"
+  },
+  "ventricular-conduction": {
+    "def": "The fast conducting path through the ventricles: the AV bundle (bundle of His) crosses the cardiac skeleton, splits into right and left bundle branches down the interventricular septum, and feeds the Purkinje fibers, a subendocardial conducting network. The moderator band carries part of the right branch to the right ventricle's front papillary muscle.",
+    "roots": [["sub-", "beneath"], ["endo-", "within"], ["cardi-", "heart"]],
+    "say": "HISS; pur-KIN-jee"
+  },
+  "intrinsic-rates": {
+    "def": "The rate each part of the conduction system fires at when left on its own: SA node about 60 to 100 per minute (about 100 with no nerve input), AV node about 40 to 60, ventricular conduction system about 20 to 40. Any site other than the SA node that sets the rhythm is an ectopic pacemaker, or ectopic focus.",
+    "roots": [["intrinsic", "from within"], ["ec-", "out of"], ["top-", "place"]],
+    "say": "ek-TOP-ik"
+  }
+}

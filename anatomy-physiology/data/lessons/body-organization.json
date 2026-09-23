@@ -18,7 +18,7 @@
   "check": ["anp-body-organization-1", "anp-body-organization-4", "anp-body-organization-6", "anp-body-organization-9", "anp-body-organization-12", "anp-body-organization-14"],
   "summary": "<p>Anatomy studies structure; physiology studies how structures work, and what a structure can do follows from how it is built. Your body is organized in six levels: chemical, cell, tissue, organ, organ system and organism. Each level is built from the one below and gains abilities its parts lack. Eleven organ systems each have major organs and a main job, and they depend on each other. Arteries carry blood away from the heart, veins carry it back, and capillaries exchange materials with cells. Living things share a set of characteristics, and your body holds many internal conditions within a normal range.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#ch6", "label": "NREMT study notes: Anatomy and Physiology" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT study notes: Anatomy and Physiology" },
     { "href": "/nremt/body-map.html", "label": "NREMT: interactive patient body map" }
   ]
 }

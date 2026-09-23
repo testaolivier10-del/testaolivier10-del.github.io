@@ -1,0 +1,47 @@
+{
+  "topic": "bp-long-term",
+  "hook": "<p>Ana, 34, hikes for six hours in desert heat and runs out of water halfway. By the end she has sweated about 3 liters. Her heart rate is 112, her blood pressure is 104/70, her mouth is dry, and when she finally reaches a restroom she passes only a small amount of dark urine. Her kidneys are already fighting to hold on to every bit of salt and water she has left.</p>",
+  "prereq": [
+    {
+      "q": "Where is antidiuretic hormone (ADH) made, and where is it released into the blood?",
+      "options": ["Made in the adrenal cortex, released from the adrenal medulla", "Made in the hypothalamus, released from the posterior pituitary", "Made in the kidneys, released from the kidneys"],
+      "correct": 1,
+      "why": "Neurons in the hypothalamus make ADH and carry it down their axons to the posterior pituitary, which releases it into the blood.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "What does aldosterone do?",
+      "options": ["Makes the kidneys reabsorb more sodium and secrete more potassium", "Makes the kidneys excrete more sodium and keep more potassium", "Raises blood glucose by breaking down glycogen"],
+      "correct": 0,
+      "why": "Aldosterone, from the adrenal cortex, makes kidney cells reabsorb sodium into the blood and secrete potassium into the urine. Water follows the sodium by osmosis.",
+      "review": "adrenal-glands"
+    },
+    {
+      "q": "By MAP = CO × TPR, what happens to mean arterial pressure if cardiac output falls and TPR does not change?",
+      "options": ["It rises", "It stays the same", "It falls"],
+      "correct": 2,
+      "why": "MAP is the product of cardiac output and total peripheral resistance. If cardiac output falls and TPR is unchanged, MAP falls in proportion.",
+      "review": "bp-short-term"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-14",
+    "caption": "The RAAS spans several organs: angiotensinogen comes from the liver, renin from the kidney, and ACE mostly from the lungs. Hide the labels and name the organ behind each step."
+  },
+  "chain": [
+    { "cause": "Ana sweats out more water than salt, and her blood volume falls.", "effect": "Venous return, stroke volume and MAP fall, and her plasma osmolarity rises." },
+    { "cause": "Lower pressure in the kidney's small arteries and more sympathetic stimulation reach the renin-making cells.", "effect": "The kidneys release more renin, which leads to more angiotensin II." },
+    { "cause": "Angiotensin II acts on arterioles, the adrenal cortex and the hypothalamus.", "effect": "Arterioles constrict, aldosterone rises, and ADH release and thirst increase." },
+    { "cause": "Aldosterone makes the kidneys keep sodium, and ADH makes them keep water.", "effect": "Her urine becomes small in volume and concentrated, and she loses less fluid." },
+    { "cause": "She drinks, and her kidneys keep the salt and water she takes in.", "effect": "Blood volume returns, so venous return, stroke volume and MAP recover, and the hormone signals switch off." }
+  ],
+  "misconception": {
+    "wrong": "Drinking more water is the main way your body raises its blood volume, and water alone restores it.",
+    "right": "Plain water spreads through all your body fluids, inside cells as well as outside, so only a small part of it stays in the blood. What holds fluid in the blood and interstitial fluid is sodium. Your kidneys set blood volume mainly by how much sodium they keep, and water follows the sodium. That is why aldosterone and the RAAS, which act on sodium, have the largest effect on long-term volume, and why oral rehydration drinks contain salt."
+  },
+  "check": ["anp-bp-long-term-2", "anp-bp-long-term-4", "anp-bp-long-term-7", "anp-bp-long-term-9", "anp-bp-long-term-12", "anp-bp-long-term-15", "anp-bp-long-term-17"],
+  "summary": "<p>Over the long run, blood pressure follows blood volume, because more volume means more venous return, stroke volume and cardiac output. The kidneys set blood volume by how much sodium and water they excrete, and water follows sodium. Low pressure or volume makes the kidneys release renin, which leads to angiotensin II: it constricts arterioles, releases aldosterone so the kidneys keep sodium and water, and triggers ADH and thirst. ADH makes the kidneys keep water and, at high levels, constricts arterioles. ANP, released when the atria stretch, makes the kidneys excrete sodium and water and turns the other hormones down. Short-term reflexes act in seconds and reset; long-term control acts over hours to days and sets the level your pressure is held at.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology" }
+  ]
+}

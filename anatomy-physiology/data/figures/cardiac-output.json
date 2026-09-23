@@ -1,0 +1,38 @@
+{
+  "os-19-32": {
+    "file": "figures/openstax/os-19-32.jpg",
+    "w": 1081,
+    "h": 2037,
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.32",
+      "section": "19.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/3b54cee1aadac3a14aeff8b8186e58656b42985d",
+      "page": "19-4-cardiac-physiology"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/3b54cee1aadac3a14aeff8b8186e58656b42985d",
+    "alt": "A drawing of the brain, spinal column and heart. A nerve runs from the lower brainstem down to the upper chambers of the heart and is labeled as parasympathetic, slowing heart rate. Other nerves run from the upper thoracic spinal cord through a relay near the spine to both the upper chambers and the ventricles, labeled as sympathetic, raising heart rate and force of contraction.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.32",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-19-33": {
+    "file": "figures/openstax/os-19-33.jpg",
+    "w": 1100,
+    "h": 1657,
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.33",
+      "section": "19.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b9a57d16dff43945b303ea1ca29853dff1f8b473",
+      "page": "19-4-cardiac-physiology"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b9a57d16dff43945b303ea1ca29853dff1f8b473",
+    "alt": "Three graphs of a pacemaker cell's membrane potential over 2.4 seconds, with a dashed threshold line at about minus 40 millivolts. In the resting graph, the potential drifts up from about minus 60 to threshold and fires about every 0.8 seconds. With parasympathetic stimulation, it starts lower, near minus 70, and drifts up more slowly, so it fires less often. With sympathetic stimulation, it starts higher, near minus 50, and drifts up faster, so it fires more often.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.33",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

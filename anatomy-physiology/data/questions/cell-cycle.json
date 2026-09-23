@@ -4,9 +4,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In which phase of the cell cycle does a cell replicate its DNA?",
-    "options": ["G1 phase", "S phase", "G2 phase", "Metaphase"],
+    "options": [
+      "G1 phase",
+      "S phase",
+      "G2 phase",
+      "Metaphase"
+    ],
     "correct": 1,
     "why": {
       "correct": "S stands for synthesis: DNA synthesis. During S phase each chromosome is copied into two sister chromatids.",
@@ -23,7 +30,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A cell in G1 contains 6 picograms of DNA. How much DNA does it contain in G2, and how much does each daughter cell contain after cytokinesis?",
     "options": [
       "6 pg in G2; 3 pg in each daughter",
@@ -47,10 +56,17 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "misconception": "chromosome number stays at 46 throughout mitosis",
     "q": "How many chromosomes does one of your dividing body cells contain during anaphase, before cytokinesis?",
-    "options": ["23", "46", "92", "184"],
+    "options": [
+      "23",
+      "46",
+      "92",
+      "184"
+    ],
     "correct": 2,
     "why": {
       "correct": "In anaphase the 46 pairs of sister chromatids separate, and each separated chromatid counts as a chromosome. The cell briefly holds 92 chromosomes, 46 moving to each end.",
@@ -67,7 +83,9 @@
     "type": "order",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Put the events of the mitotic phase in order.",
     "options": [
       "Chromatin condenses into chromosomes and the spindle forms",
@@ -85,11 +103,13 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A woman with breast cancer receives paclitaxel, a drug that binds microtubules and stops them from growing or shrinking. At which point are her dividing tumor cells held?",
     "options": [
       "In G1, at the G1 checkpoint",
-      "In S phase, partway through DNA replication",
+      "In S phase, partway through replicating its DNA molecules",
       "In G0, as resting cells",
       "In mitosis, before sister chromatids separate"
     ],
@@ -109,12 +129,14 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Ten days into chemotherapy that kills dividing cells, a patient develops mouth sores and a low white blood cell count, but her heart and brain function are unchanged. What best explains this pattern?",
     "options": [
       "Heart and brain cells lack the genes the drug acts on",
       "The mouth lining and blood-forming cells divide often; most heart and brain cells rest in G0",
-      "The drug cannot reach the heart or brain through the blood",
+      "The drug is carried in the blood but cannot pass out of the vessels into heart tissue or brain tissue at all",
       "Mouth and blood cells are cancer cells too"
     ],
     "correct": 1,
@@ -133,10 +155,12 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A cell has lost both working copies of the gene for p53. Its DNA is then damaged by radiation. What is the most likely outcome?",
     "options": [
-      "It stops at the G1 checkpoint until the damage is repaired",
+      "It stops at the G1 checkpoint and waits until the damage is repaired",
       "It triggers apoptosis at once",
       "It keeps dividing and passes the damage to its descendants",
       "It enters G0 permanently"
@@ -157,9 +181,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A mutation locks a division-promoting signaling protein in its active form, so it signals \"divide\" even with no outside signal. What has the mutated gene become?",
-    "options": ["A tumor suppressor gene", "A cyclin", "A checkpoint", "An oncogene"],
+    "options": [
+      "A tumor suppressor gene",
+      "A cyclin",
+      "A checkpoint",
+      "An oncogene"
+    ],
     "correct": 3,
     "why": {
       "correct": "An oncogene is the mutated, overactive form of a normal gene that promotes division. A protein stuck \"on\" is a stuck accelerator.",
@@ -176,22 +207,24 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Why must both copies of a tumor suppressor gene usually be lost before a cell escapes its control, while one mutated copy of an oncogene is often enough?",
     "options": [
       "One working brake copy still restrains division; one overactive accelerator copy drives it",
-      "Tumor suppressor genes sit on the sex chromosomes",
+      "Tumor suppressor genes sit on the sex chromosomes, where a second working copy is often missing",
       "Oncogenes are copied twice in S phase",
-      "Tumor suppressor genes mutate less often"
+      "Tumor suppressor genes mutate far less often than oncogenes do in dividing cells"
     ],
     "correct": 0,
     "why": {
       "correct": "A tumor suppressor protein acts as a brake. One working copy of the gene usually makes enough brake, so both must be lost. An oncogene's product is an accelerator stuck on; the other, normal copy cannot switch it off, so one copy is enough.",
       "options": [
         "Correct. Losing a brake takes both copies; a stuck accelerator needs only one.",
-        "Tumor suppressor genes such as TP53, RB1 and BRCA1 sit on autosomes.",
+        "Tumor suppressor genes such as TP53, RB1 and BRCA1 sit on autosomes, so a normal cell has two working copies of each.",
         "Every gene is copied once in S phase. This does not distinguish the two groups.",
-        "The explanation lies in what the proteins do, not in mutation rate."
+        "Mutation rate is not the explanation. Any gene can be hit by a copying error; the difference lies in what the two kinds of protein do."
       ]
     }
   },
@@ -200,13 +233,15 @@
     "type": "error",
     "level": "analyze",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student describes mitosis. Which step contains the error?",
     "options": [
       "Prophase: chromatin condenses and the spindle forms from the centrosomes.",
       "Metaphase: sister chromatids separate and move to opposite ends of the cell.",
       "Anaphase: kinetochore microtubules shorten, pulling chromatids apart.",
-      "Telophase: nuclear envelopes re-form and chromosomes loosen into chromatin."
+      "Telophase: nuclear envelopes re-form around each set, and the chromosomes loosen back into chromatin."
     ],
     "correct": 1,
     "why": {
@@ -224,9 +259,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Fill in the missing phase. G1 phase → ______ → G2 phase → mitotic phase.",
-    "options": ["G0 phase", "Prophase", "S phase", "Cytokinesis"],
+    "options": [
+      "G0 phase",
+      "Prophase",
+      "S phase",
+      "Cytokinesis"
+    ],
     "correct": 2,
     "why": {
       "correct": "Interphase runs G1, then S (DNA replication), then G2, followed by the mitotic phase.",
@@ -243,7 +285,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A drug stops myosin from pulling on actin filaments. A cell treated during mitosis completes telophase. What will it look like?",
     "options": [
       "Two normal daughter cells",
@@ -267,9 +311,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Researchers switch on four transcription factors in adult skin cells. The cells can then be grown into heart, liver or nerve-like cells, but not into the supporting tissues of pregnancy. How would you classify these cells?",
-    "options": ["Totipotent", "Pluripotent", "Multipotent", "Unipotent"],
+    "options": [
+      "Totipotent",
+      "Pluripotent",
+      "Multipotent",
+      "Unipotent"
+    ],
     "correct": 1,
     "why": {
       "correct": "Cells that can become any cell type of the body, but not the supporting tissues of pregnancy, are pluripotent. These are induced pluripotent stem cells.",
@@ -286,9 +337,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "The stem cells that produce red blood cells, all kinds of white blood cells and platelets are best described as:",
-    "options": ["totipotent", "unipotent", "multipotent", "pluripotent"],
+    "options": [
+      "totipotent",
+      "unipotent",
+      "multipotent",
+      "pluripotent"
+    ],
     "correct": 2,
     "why": {
       "correct": "They make several related cell types within one family, the blood cells, so they are multipotent.",
@@ -305,13 +363,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "misconception": "cells specialize by losing the genes they do not need",
     "q": "One intestinal stem cell gives rise to an absorptive cell covered with microvilli and to a cell that secretes digestive enzymes. What makes these two cells different?",
     "options": [
       "Each lost the genes the other one uses",
       "They carry different numbers of chromosomes",
-      "One of them gained new genes from a neighboring cell",
+      "One of them took up extra genes from a neighboring cell during its development in the lining",
       "They hold different transcription factors, so they express different genes"
     ],
     "correct": 3,
@@ -330,7 +390,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Under the microscope, a cell shrinks, its DNA is cut into fragments, and it breaks into small membrane-wrapped pieces that neighboring cells engulf. The surrounding tissue is undamaged. What is happening?",
     "options": [
       "Death from injury: the cell swells and bursts",
@@ -354,12 +416,26 @@
     "type": "predict",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A population of cells has lost the ability to carry out apoptosis, but still divides at its normal rate. Predict the change in each variable over the following weeks.",
     "variables": [
-      { "name": "Number of cells in the population", "answer": "up", "why": "Cell number is set by division minus death. Division is unchanged, and death by apoptosis has stopped, so the population grows." },
-      { "name": "Number of cells carrying unrepaired DNA damage", "answer": "up", "why": "Cells with damage too great to repair are normally removed by apoptosis. They now survive and pass the damage to their descendants." },
-      { "name": "Amount of DNA in each cell in G1", "answer": "none", "why": "Each cell still replicates its DNA once in S phase and splits it evenly at division, so a cell in G1 holds the same amount as before." }
+      {
+        "name": "Number of cells in the population",
+        "answer": "up",
+        "why": "Cell number is set by division minus death. Division is unchanged, and death by apoptosis has stopped, so the population grows."
+      },
+      {
+        "name": "Number of cells carrying unrepaired DNA damage",
+        "answer": "up",
+        "why": "Cells with damage too great to repair are normally removed by apoptosis. They now survive and pass the damage to their descendants."
+      },
+      {
+        "name": "Amount of DNA in each cell in G1",
+        "answer": "none",
+        "why": "Each cell still replicates its DNA once in S phase and splits it evenly at division, so a cell in G1 holds the same amount as before."
+      }
     ]
   },
   {
@@ -367,7 +443,9 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every feature typical of cells in a malignant tumor.",
     "options": [
       "They divide without the usual outside signals",
@@ -377,7 +455,12 @@
       "They stop dividing when crowded by neighbors",
       "They have more checkpoints than normal cells"
     ],
-    "correct": [0, 1, 2, 3],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
     "why": {
       "correct": "Cancer cells have gathered several mutations. They divide without the usual signals, escape apoptosis, and in a malignant tumor can invade and spread by metastasis.",
       "options": [
@@ -395,7 +478,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A drug keeps a cell from destroying the cyclin that is active during mitosis. What happens to the matching CDK?",
     "options": [
       "It stays active",
@@ -419,12 +504,14 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which statement defines somatic cells?",
     "options": [
       "Cells that have stopped dividing",
       "All body cells except the line that becomes eggs and sperm",
-      "Unspecialized cells that renew themselves",
+      "Unspecialized cells that divide to renew themselves and supply specialized cells",
       "Cells that have lost their nucleus"
     ],
     "correct": 1,

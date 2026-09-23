@@ -1,0 +1,85 @@
+{
+  "topic": "bp-short-term",
+  "hook": "<p>Mr. Alvarez, 74, started a new tablet last week to make urinating easier. The drug blocks alpha-1 receptors. This morning he got out of bed, his vision grayed over, and he sat down hard on the floor. His nurse measures his blood pressure at 128/76 lying down and 98/62 three minutes after he stands. His heart rate climbs from 70 to 94, but his pressure stays low.</p>",
+  "prereq": [
+    {
+      "q": "Flow through a set of vessels is 5 L/min and their resistance does not change. The pressure difference driving the flow doubles. What happens to the flow?",
+      "options": [
+        "It halves to 2.5 L/min",
+        "It stays at 5 L/min",
+        "It doubles to 10 L/min"
+      ],
+      "correct": 2,
+      "why": "Flow equals the pressure difference divided by resistance (F = ΔP / R). With resistance fixed, doubling the pressure difference doubles the flow.",
+      "review": "blood-pressure-flow"
+    },
+    {
+      "q": "What does norepinephrine released by sympathetic neurons do to the SA node?",
+      "options": [
+        "It speeds the pacemaker potential, so heart rate rises",
+        "It slows the pacemaker potential, so heart rate falls",
+        "It has no effect; only the vagus nerve reaches the SA node"
+      ],
+      "correct": 0,
+      "why": "Norepinephrine binds beta-1 receptors on SA node cells and speeds the pacemaker potential, so heart rate rises. Acetylcholine from the vagus nerve does the opposite. The SA node receives both sympathetic and parasympathetic fibers.",
+      "review": "ans-control"
+    },
+    {
+      "q": "A person's heart rate is 60 beats/min and stroke volume is 80 mL. What is the cardiac output?",
+      "options": [
+        "4.8 L/min",
+        "1.3 L/min",
+        "140 mL/min"
+      ],
+      "correct": 0,
+      "why": "Cardiac output = heart rate × stroke volume = 60 × 80 mL = 4,800 mL/min, which is 4.8 L/min.",
+      "review": "cardiac-output"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    {
+      "cause": "Mr. Alvarez stands up, and gravity pools about half a liter of blood in the veins of his legs and abdomen.",
+      "effect": "Venous return falls, so end-diastolic volume, stroke volume and cardiac output fall."
+    },
+    {
+      "cause": "Lower cardiac output lowers mean arterial pressure (MAP = CO × TPR).",
+      "effect": "The walls of the carotid sinuses and aortic arch stretch less, and the baroreceptors fire fewer action potentials."
+    },
+    {
+      "cause": "Fewer impulses reach the cardiovascular center in the medulla oblongata through the glossopharyngeal and vagus nerves.",
+      "effect": "The center raises sympathetic output and lowers vagal output."
+    },
+    {
+      "cause": "Norepinephrine acts on beta-1 receptors in the heart and alpha-1 receptors in arterioles and veins.",
+      "effect": "Heart rate and contractility rise, arterioles constrict so TPR rises, and veins constrict so venous return recovers."
+    },
+    {
+      "cause": "Cardiac output and TPR rise.",
+      "effect": "MAP returns toward normal within seconds. In Mr. Alvarez, the drug blocks the alpha-1 receptors, so TPR cannot rise and his pressure stays low."
+    }
+  ],
+  "misconception": {
+    "wrong": "The baroreceptor reflex sets your long-term blood pressure.",
+    "right": "The baroreceptor reflex corrects changes that last seconds to minutes. If pressure stays at a new level for a day or two, the baroreceptors reset and treat the new level as normal, so they stop opposing it. The long-term level of your blood pressure is set mainly by blood volume, which the kidneys and hormones control, as the next topic shows."
+  },
+  "check": [
+    "anp-bp-short-term-2",
+    "anp-bp-short-term-3",
+    "anp-bp-short-term-7",
+    "anp-bp-short-term-8",
+    "anp-bp-short-term-12",
+    "anp-bp-short-term-17"
+  ],
+  "summary": "<p>Mean arterial pressure equals cardiac output times total peripheral resistance, so every fast correction works on heart rate, stroke volume or arteriole radius. Baroreceptors in the carotid sinuses and aortic arch fire in proportion to arterial stretch. When pressure falls, the cardiovascular center raises sympathetic output and lowers vagal output: heart rate, contractility, arteriole tone and venous tone rise, and pressure recovers within seconds. The baroreceptors reset within days, so they do not set long-term pressure. Orthostatic hypotension is a failure of this reflex on standing. The atrial reflex speeds the heart when the atria stretch. Local autoregulation, metabolic and myogenic, lets each tissue set its own flow, and in exercise it works with the reflex to raise cardiac output and send most of it to working muscle.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-7",
+      "label": "NREMT: Principles of pathophysiology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-13",
+      "label": "NREMT: Vital signs and monitoring devices"
+    }
+  ]
+}

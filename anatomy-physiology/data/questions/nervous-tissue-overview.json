@@ -1,0 +1,492 @@
+[
+ {
+  "id": "anp-nervous-tissue-overview-1",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which two kinds of cells make up nervous tissue?",
+  "options": [
+   "Neurons and fibroblasts",
+   "Neurons and glial cells",
+   "Glial cells and muscle fibers",
+   "Nerves and axons"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Nervous tissue has neurons, which carry signals, and glial cells, which support and protect them.",
+   "options": [
+    "Fibroblasts are the main cells of connective tissue proper, not nervous tissue.",
+    "Correct. Neurons and glial cells are the two cell types of nervous tissue.",
+    "Muscle fibers belong to muscle tissue, the third primary tissue type.",
+    "A nerve is a bundle of axons, and an axon is part of a neuron. Neither is a separate kind of cell."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-2",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "Which part of a neuron is specialized to receive signals from other cells?",
+  "options": [
+   "The axon",
+   "The axon terminals",
+   "The dendrites",
+   "The nucleus"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Dendrites (dendr- = tree) are short, branched extensions of the cell body. Their branches receive signals from the axon terminals of other neurons.",
+   "options": [
+    "The axon carries the neuron's own signal away from the cell body.",
+    "Axon terminals send signals to the next cell by releasing chemicals.",
+    "Correct. Dendrites receive incoming signals.",
+    "The nucleus holds DNA and directs protein making; it does not receive signals from other cells."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-3",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "Which way does an axon carry a neuron's signal?",
+  "options": [
+   "From the dendrites into the cell body",
+   "Away from the cell body toward the axon terminals",
+   "From the axon terminals back to the cell body",
+   "In either direction, depending on where the signal starts"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Each neuron has one axon, and it carries the signal away from the cell body to the axon terminals at its far end.",
+   "options": [
+    "That path belongs to the dendrites, which bring signals in toward the cell body.",
+    "Correct. The axon carries signals away from the cell body.",
+    "This runs the path backward. Signals leave through the axon terminals; they do not return along the axon.",
+    "A neuron carries signals one way: in through dendrites, out through the axon."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-4",
+  "type": "order",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "Put the path of a signal through one neuron in order.",
+  "options": [
+   "Dendrites receive signals from other cells",
+   "The cell body combines the incoming signals",
+   "The axon carries a signal away from the cell body",
+   "Axon terminals release chemicals onto the next cell"
+  ],
+  "why": {
+   "correct": "Signals come in through the dendrites, are combined in the cell body, leave along the axon, and are passed on by the axon terminals."
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-5",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which part of a neuron holds its nucleus and makes nearly all of its proteins?",
+  "options": [
+   "The axon",
+   "The dendrites",
+   "The axon terminals",
+   "The cell body"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The cell body holds the nucleus and most of the rough ER, Golgi and mitochondria, so it builds nearly all of the neuron's proteins and ships them out along its extensions.",
+   "options": [
+    "The axon has no nucleus; it receives its proteins from the cell body.",
+    "Dendrites are extensions of the cell body and rely on it for their proteins.",
+    "Axon terminals release chemicals, but the proteins they use were made in the cell body.",
+    "Correct. The cell body holds the nucleus and is the neuron's protein factory."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-6",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "After a deep cut at his wrist, Jamal's thumb and first two fingers are numb, and he also cannot move his thumb across his palm. Why did one cut cause both problems?",
+  "options": [
+   "The cut nerve held axons carrying signals in both directions",
+   "The cut destroyed the neurons' cell bodies in his wrist",
+   "Only the muscles were cut, and numbness follows muscle injury",
+   "Glial cells in the wrist stopped making the signals"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "A nerve is a cable of many axons. Some carry feeling in from the skin; others carry commands out to muscles. Cutting the nerve cuts both kinds at once.",
+   "options": [
+    "Correct. One nerve carries axons running both inward and outward.",
+    "The cell bodies of these neurons are not in the wrist; they lie in or near the spinal cord. The cut severed their axons.",
+    "Muscle injury does not remove feeling from the skin. Numbness points to cut axons.",
+    "Glial cells support neurons; the neurons themselves carry the signals."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-7",
+  "type": "single",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "a nerve is a single neuron",
+  "q": "Which description fits a nerve?",
+  "options": [
+   "A single, very long neuron",
+   "The cell body and dendrites of one neuron",
+   "A bundle of many axons wrapped in connective tissue",
+   "A cluster of glial cells packed together inside the brain"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "A nerve is an organ-level cable: the axons of many neurons, bundled together with connective tissue and blood vessels, running outside the brain and spinal cord.",
+   "options": [
+    "A neuron is one cell. A nerve holds the axons of many neurons.",
+    "The cell bodies and dendrites lie elsewhere; a nerve carries axons.",
+    "Correct. A nerve is a bundle of axons wrapped in connective tissue.",
+    "Glial cells are found in nerves too, but a nerve is defined by its bundled axons, and it runs outside the brain."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-8",
+  "type": "multi",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which of these are jobs of glial cells? Select all that apply.",
+  "options": [
+   "Wrapping axons in layers of membrane that insulate them",
+   "Carrying long-distance signals from the spinal cord to the toes",
+   "Controlling the makeup of the fluid around neurons",
+   "Engulfing dead cells and microbes",
+   "Holding neurons in place"
+  ],
+  "correct": [
+   0,
+   2,
+   3,
+   4
+  ],
+  "why": {
+   "correct": "Glial cells support, insulate, feed and protect neurons. Neurons, not glia, carry the long-distance signals.",
+   "options": [
+    "Correct. Some glial cells wrap axons, which speeds signals along them.",
+    "Neurons carry long-distance signals along their axons. Glia support that work.",
+    "Correct. Glia take up excess ions and chemicals from around neurons.",
+    "Correct. Some glial cells engulf debris and microbes.",
+    "Correct. Glia give nervous tissue its structure and hold neurons in place."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-9",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A 45-year-old woman has a cancerous tumor that began in her brain tissue. From which cells did it most likely grow?",
+  "options": [
+   "Neurons",
+   "Fibroblasts",
+   "Nerves",
+   "Glial cells"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "A tumor grows from cells that divide out of control. Mature neurons do not divide, but glial cells keep that ability, so most cancerous tumors that start in brain tissue arise from glia.",
+   "options": [
+    "Mature neurons do not divide, so they are an unlikely source of a tumor.",
+    "Fibroblasts belong to connective tissue. The question asks about a tumor that began in the brain tissue itself.",
+    "A nerve is a bundle of axons that runs outside the brain and spinal cord, not a dividing cell.",
+    "Correct. Glial cells can divide, so they are the usual source."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-10",
+  "type": "error",
+  "level": "analyze",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "This description of how a signal passes through a neuron contains one wrong step. Find it.",
+  "options": [
+   "Dendrites receive signals from other neurons",
+   "The cell body combines the incoming signals",
+   "The axon carries the signal toward the cell body",
+   "Axon terminals release chemicals by exocytosis",
+   "The next cell responds to the chemicals"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The axon carries the signal away from the cell body, out to the axon terminals. Bringing signals toward the cell body is the dendrites' job.",
+   "options": [
+    "This step is right: dendrites receive incoming signals.",
+    "This step is right: the cell body adds up the incoming signals.",
+    "This is the error. The axon carries the signal away from the cell body.",
+    "This step is right: axon terminals release chemicals by exocytosis.",
+    "This step is right: the chemicals act on the next cell."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-11",
+  "type": "missing",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Fill in the missing step. An axon is cut in the forearm → ______ → the part of the axon beyond the cut breaks down within days.",
+  "options": [
+   "That part loses its supply of proteins from the cell body",
+   "That part takes in a new nucleus from the glial cells nearby",
+   "Blood floods into the axon and dissolves it",
+   "The cell body releases chemicals that dissolve it"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The cell body makes nearly all of a neuron's proteins, and they are carried along the axon to where they are needed. A piece of axon cut off from its cell body loses that supply and breaks down.",
+   "options": [
+    "Correct. Cut off from the cell body, the far piece loses its protein supply.",
+    "Glial cells do not donate nuclei to axons. Without its own nucleus, the far piece cannot make new proteins.",
+    "Blood does not enter axons. The far piece breaks down because it has no protein supply.",
+    "The cell body is the supply, not the cause. The far piece breaks down because it is cut off from it."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-12",
+  "type": "vignette",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A man's heart stops for six minutes before it is restarted. His heart muscle and skin recover, but he has lasting brain damage. Which features of neurons best explain why they were hurt most?",
+  "options": [
+   "They are wrapped by glial cells that block oxygen from reaching them",
+   "They have many nuclei that need extra glucose",
+   "They are avascular and depend on diffusion",
+   "They store little fuel, use a lot of oxygen and do not divide"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "Neurons burn oxygen and glucose fast and store almost no fuel, so a few minutes without blood flow starts to kill them. Mature neurons do not divide, so those that die are mostly not replaced.",
+   "options": [
+    "Glial cells help supply neurons with fuel; they do not block oxygen.",
+    "A neuron has one nucleus. The number of nuclei is not the issue.",
+    "Nervous tissue in the brain has a rich blood supply. The problem was that the blood stopped flowing.",
+    "Correct. High demand, no reserve and no division make neurons especially vulnerable."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-13",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "One kind of neuron in the brain has an enormous tree of dendrite branches. What does that structure allow it to do?",
+  "options": [
+   "Carry its signal farther",
+   "Divide more often",
+   "Release chemicals from the tips of its dendrites",
+   "Receive signals from many other neurons"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "Dendrites receive signals, and each branch offers more places for other neurons' axon terminals to make contact. A huge dendrite tree can receive input from many thousands of neurons.",
+   "options": [
+    "Distance depends on the axon's length, not on the dendrites.",
+    "Mature neurons do not divide, however branched they are.",
+    "Chemicals are released from axon terminals, not from dendrites.",
+    "Correct. More dendrite branches mean more incoming contacts."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-14",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "What happens at an axon terminal (synaptic end bulb) when a signal arrives?",
+  "options": [
+   "It releases chemicals by exocytosis onto the next cell",
+   "It sends the signal back toward the cell body",
+   "It divides to form a new neuron",
+   "It holds on to the signal until the neuron is at rest again"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "An axon terminal is a swollen knob at the tip of an axon branch, close to the next cell. An arriving signal makes it release chemicals by exocytosis, and those chemicals act on the next cell.",
+   "options": [
+    "Correct. Axon terminals release chemicals onto the next cell.",
+    "Signals travel one way; they leave through the terminals and do not reverse.",
+    "Neither mature neurons nor their parts divide.",
+    "A signal is passed on at the terminal, not stored there."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-15",
+  "type": "predict",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function",
+   "communication"
+  ],
+  "q": "A disease destroys the glial wrapping around the axons in one region, but leaves the axons themselves intact at first. Predict the effect on each variable for those axons.",
+  "variables": [
+   {
+    "name": "Insulation around the axons",
+    "answer": "down",
+    "why": "The wrapping is layers of glial membrane that insulate the axon; destroying it removes the insulation."
+   },
+   {
+    "name": "Speed of signals along the axons",
+    "answer": "down",
+    "why": "Insulating wrapping makes signals travel much faster, so losing it slows them."
+   },
+   {
+    "name": "Number of axons in the region (at first)",
+    "answer": "none",
+    "why": "The question says the axons are left intact at first, so their number has not changed yet."
+   },
+   {
+    "name": "Time for a signal to reach the axon terminals",
+    "answer": "up",
+    "why": "A slower signal takes longer to cover the same length of axon."
+   }
+  ],
+  "why": {
+   "correct": "Glial wrapping insulates axons and speeds signals. Remove it and the signal slows, so it takes longer to reach the axon terminals, even before any axons are lost."
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-16",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "The name dendrite comes from a root that describes its shape. What does dendr- mean?",
+  "options": [
+   "Tree",
+   "Axis",
+   "Glue",
+   "Nerve"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Dendr- means tree. Dendrites branch again and again from the cell body, like the branches of a tree.",
+   "options": [
+    "Correct. Dendr- = tree, matching their branching shape.",
+    "Axis is the meaning of axon, the single long extension.",
+    "Glue is the meaning of glia, the root that names the support cells.",
+    "Neur- means nerve. It is the root of neuron, not dendrite."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-17",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "glia outnumber neurons ten to one",
+  "q": "What do direct counts of whole human brains show about the numbers of glial cells and neurons?",
+  "options": [
+   "Glial cells outnumber neurons about ten to one",
+   "Neurons outnumber glial cells about ten to one",
+   "The brain has roughly equal numbers of each",
+   "The adult brain has no glial cells left"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Counts that dissolve brain tissue and count the nuclei find about 85 billion of each, a ratio near one to one overall, with big differences between regions. The older ten-to-one figure is still repeated in some textbooks.",
+   "options": [
+    "This is the older, often repeated figure. Direct counts do not support it, though some exams still expect it.",
+    "Neurons do not outnumber glia this heavily in the brain as a whole.",
+    "Correct. Overall, the numbers are roughly equal.",
+    "Glial cells persist and keep dividing throughout life."
+   ]
+  }
+ },
+ {
+  "id": "anp-nervous-tissue-overview-18",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "a nerve is a single neuron",
+  "q": "A small sample of a nerve from the leg is examined under a microscope. What will it contain?",
+  "options": [
+   "The cell bodies of the neurons whose axons it carries",
+   "One very large neuron running the length of the leg",
+   "Axons, connective tissue and small blood vessels",
+   "Cardiac muscle fibers that move signals along"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "A nerve is a bundle of axons with connective tissue that carries blood vessels. The cell bodies of those neurons lie in or near the spinal cord, not in the nerve.",
+   "options": [
+    "The cell bodies sit in or near the brain and spinal cord. A nerve carries only their axons.",
+    "A nerve holds thousands of axons from thousands of neurons, not one cell.",
+    "Correct. Axons, connective tissue and blood vessels make up a nerve.",
+    "Signals move along axons by electrical changes, not by muscle. Cardiac muscle is found only in the heart."
+   ]
+  }
+ }
+]

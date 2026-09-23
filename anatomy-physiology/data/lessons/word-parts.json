@@ -31,7 +31,7 @@
   "check": ["anp-word-parts-1", "anp-word-parts-3", "anp-word-parts-5", "anp-word-parts-8", "anp-word-parts-10", "anp-word-parts-14"],
   "summary": "<p>Medical terms are built from word parts that keep their meaning wherever they appear. The word root carries the core meaning, usually a body part. A combining form is a root plus a linking vowel, usually o, which is kept between roots and before a suffix that starts with a consonant, and dropped before a suffix that starts with a vowel. A prefix sits in front and modifies the meaning. A suffix sits at the end and tells you what kind of word it is. Decode suffix first, then prefix, then root, and check the literal meaning against the definition.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#ch5", "label": "NREMT study notes: Medical Terminology" },
+    { "href": "/nremt/study-notes.html#chapter-5", "label": "NREMT study notes: Medical Terminology" },
     { "href": "/nremt/glossary.html", "label": "NREMT: EMT terminology glossary" }
   ]
 }

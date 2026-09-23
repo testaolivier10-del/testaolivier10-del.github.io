@@ -1,0 +1,486 @@
+[
+  {
+    "id": "anp-cellular-respiration-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "Where in the cell does glycolysis take place?",
+    "options": [
+      "In the inner mitochondrial membrane",
+      "In the fluid inside the mitochondrion",
+      "In the cytosol",
+      "In the nucleus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Glycolysis is a chain of enzyme reactions dissolved in the cytosol. It needs no organelle, which is why cells without mitochondria, such as mature red blood cells, can still run it.",
+      "options": [
+        "The inner mitochondrial membrane holds the electron transport chain, the last stage. Glycolysis happens before pyruvate ever reaches a mitochondrion.",
+        "The fluid inside the mitochondrion is where pyruvate is broken down and the citric acid cycle runs. Glycolysis comes first, outside the mitochondrion.",
+        "Correct. The glycolysis enzymes work in the cytosol.",
+        "The nucleus holds the DNA. No stage of glucose breakdown happens there."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A mature red blood cell carries oxygen all day, yet it turns every glucose it uses into lactate. What explains this?",
+    "options": [
+      "It has no mitochondria, so pyruvate cannot be broken down with oxygen",
+      "Its oxygen-carrying protein holds the oxygen too tightly for the cell to use",
+      "Its glycolysis enzymes work only when oxygen is absent",
+      "It makes lactate so that it can save its oxygen for other tissues"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The citric acid cycle and the electron transport chain are in mitochondria, and a mature red blood cell has none. It can run only glycolysis, and it converts pyruvate to lactate to regenerate NAD+ so glycolysis can continue.",
+      "options": [
+        "Correct. No mitochondria means no aerobic stages, whatever oxygen is present.",
+        "How tightly the red cell's protein binds oxygen is not the limit. Even with free oxygen inside, the cell has no electron transport chain to use it.",
+        "Glycolysis does not use oxygen, so oxygen neither turns it on nor off. It runs in cells with plenty of oxygen as well.",
+        "This gives a purpose, not a mechanism. The cell makes lactate because it lacks the organelle for the aerobic stages."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-3",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "misconception": "lactate builds up only when there is no oxygen",
+    "q": "A 58-year-old man is rescued from a house fire. His blood carries plenty of oxygen, but his blood lactate is very high. Cyanide from burning plastics has blocked the final complex of his electron transport chain. What best explains the high lactate?",
+    "options": [
+      "Cyanide binds the glycolysis enzymes in his cytosol and makes them work much faster than usual",
+      "Smoke has stopped his red blood cells from delivering oxygen to every tissue in his body",
+      "Blocked electron transport leaves NADH unoxidized, so cells make lactate to regenerate NAD+",
+      "Cyanide turns pyruvate into lactate inside the mitochondrion"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With the last complex blocked, electrons cannot pass to oxygen. The chain stops, NADH cannot give up its electrons, and the citric acid cycle stalls. NAD+ runs short, so cells convert pyruvate to lactate to regenerate it, and glycolysis becomes their only ATP source. Lactate pours into the blood even though oxygen is present.",
+      "options": [
+        "Glycolysis does speed up, but because ATP falls, not because cyanide acts on its enzymes. Cyanide's target is the electron transport chain.",
+        "His blood carries plenty of oxygen. The problem is that his cells cannot use it.",
+        "Correct. The block stops NADH oxidation, and lactate production takes over the job of regenerating NAD+.",
+        "Pyruvate becomes lactate in the cytosol, not in the mitochondrion, and cyanide does not catalyze that reaction."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-4",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "Put the stages of aerobic respiration of one glucose in order.",
+    "options": [
+      "Glycolysis splits glucose into two pyruvate in the cytosol",
+      "Each pyruvate enters the mitochondrion and loses a carbon as CO2, leaving an acetyl group",
+      "The citric acid cycle breaks down the acetyl groups, releasing CO2 and loading NADH and reduced FAD",
+      "The electron transport chain passes the carried electrons to oxygen and uses the energy to make most of the ATP"
+    ],
+    "why": {
+      "correct": "Glucose is split first, in the cytosol. The pyruvate then enters the mitochondrion, where it loses a carbon and its acetyl group is broken down by the citric acid cycle. Only then do the loaded electron carriers feed the electron transport chain, which makes most of the ATP."
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "misconception": "the oxygen you breathe in leaves as carbon dioxide",
+    "q": "A volunteer breathes oxygen gas made with a heavy, traceable form of oxygen atom. In which product of her cellular respiration does the traceable oxygen first appear?",
+    "options": [
+      "The carbon dioxide she breathes out",
+      "Lactate in her blood",
+      "Pyruvate in her cells",
+      "Water made in her mitochondria"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "O2 is used only at the end of the electron transport chain. There each O2 accepts four electrons and four H+ and becomes two water molecules. The oxygen atoms in CO2 come from glucose and from water used in the citric acid cycle, not from the O2 you breathe.",
+      "options": [
+        "This is the common mistake. CO2 is made in the citric acid cycle and as pyruvate loses a carbon, steps that take their oxygen atoms from glucose and water, not from O2.",
+        "Lactate is made from pyruvate in the cytosol, a step that uses no oxygen gas.",
+        "Pyruvate comes from splitting glucose. Glycolysis uses no O2, so the label cannot enter it.",
+        "Correct. Oxygen is the final electron acceptor and ends up in water."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-6",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Select every step that releases CO2.",
+    "options": [
+      "Glycolysis",
+      "Removal of one carbon from each pyruvate in the mitochondrion",
+      "The citric acid cycle",
+      "The electron transport chain",
+      "Conversion of pyruvate to lactate"
+    ],
+    "correct": [
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Metabolic CO2 comes from the mitochondrial steps that take carbon atoms off fuel: one CO2 as each pyruvate loses a carbon, and two in each turn of the citric acid cycle. That is 6 CO2 per glucose, one for each of its carbon atoms.",
+      "options": [
+        "Not a CO2 source. Glycolysis splits a six-carbon glucose into two three-carbon pyruvates, keeping all six carbons.",
+        "Releases CO2. The carbon removed from pyruvate leaves as CO2, leaving a two-carbon acetyl group.",
+        "Releases CO2. Each turn removes two carbons as CO2.",
+        "Not a CO2 source. The chain handles electrons and H+, not carbon, and its product is water.",
+        "Not a CO2 source. Pyruvate and lactate both have three carbons; the reaction only moves electrons from NADH onto pyruvate."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "A cell has no oxygen and makes all its ATP by converting glucose to lactate. How many ATP does it gain per glucose?",
+    "options": [
+      "4",
+      "2",
+      "30–32",
+      "0"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Glycolysis spends 2 ATP and makes 4, for a net gain of 2. Converting pyruvate to lactate makes no ATP; it only regenerates NAD+.",
+      "options": [
+        "Glycolysis does make 4 ATP, but it spends 2 in its early steps, so the net gain is 2.",
+        "Correct. A net 2 ATP from glycolysis, and none from the lactate step.",
+        "About 30–32 is the yield with oxygen, when pyruvate is broken down fully in the mitochondrion.",
+        "The lactate step makes no ATP, but glycolysis before it still nets 2."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "Current sources give the ATP yield of one glucose as about 30–32 rather than one exact number. Which statement best explains why it is a range?",
+    "options": [
+      "Glucose molecules differ in size from one meal to the next",
+      "The H+ ratios are not whole numbers, and shuttles and H+ leak vary between cells",
+      "Glycolysis makes a different net number of ATP in each cell type",
+      "Some glucose is converted straight into ATP without passing through any of the stages of breakdown"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Most ATP comes from H+ flowing back across the inner membrane. One NADH pumps about 10 H+, and one ATP uses about 4, giving about 2.5 ATP per NADH. The shuttle that brings electrons from glycolysis's NADH into the mitochondrion differs between cells, and some H+ leaks back without making ATP. So the total varies around 30–32.",
+      "options": [
+        "Every glucose molecule is identical: six carbons, twelve hydrogens and six oxygens.",
+        "Correct. Non-whole-number H+ ratios, different shuttles and variable leak make the yield a range.",
+        "Glycolysis nets 2 ATP per glucose in every cell. The variation lies in the mitochondrial stages.",
+        "Glucose cannot become ATP directly. Its energy is captured step by step through the stages."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-9",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A student outlines aerobic respiration. Which step contains the error?",
+    "options": [
+      "Glycolysis in the cytosol splits glucose into two pyruvate, netting 2 ATP.",
+      "In the mitochondrion, each pyruvate loses a carbon as CO2 and the citric acid cycle breaks down what remains.",
+      "NADH and reduced FAD give their electrons to the electron transport chain.",
+      "Oxygen accepts the electrons at the start of the chain and is converted into CO2."
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Oxygen is the final electron acceptor, at the end of the chain, and it becomes water. CO2 comes from the carbons of glucose, released earlier as pyruvate is broken down.",
+      "options": [
+        "This step is right. Glycolysis runs in the cytosol and nets 2 ATP per glucose.",
+        "This step is right. Pyruvate breakdown and the citric acid cycle release the carbons as CO2.",
+        "This step is right. The electron carriers feed the chain.",
+        "This is the error. Oxygen accepts electrons at the end of the chain and forms water, not CO2."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-10",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Fill in the missing step in a cell with no oxygen. Glycolysis splits glucose into pyruvate and reduces NAD+ to NADH → ______ → NAD+ is available again → glycolysis continues, netting 2 ATP per glucose.",
+    "options": [
+      "NADH hands its electrons to the electron transport chain as usual",
+      "Pyruvate accepts electrons from NADH and becomes lactate",
+      "Pyruvate enters the citric acid cycle and releases CO2",
+      "Lactate gives its electrons to oxygen"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Without oxygen the chain cannot take electrons, so the cell uses pyruvate as the electron acceptor. Pyruvate is reduced to lactate and NADH is oxidized back to NAD+.",
+      "options": [
+        "With no oxygen at the end of the chain, electrons back up and the chain stops. It cannot take NADH's electrons.",
+        "Correct. Reducing pyruvate to lactate regenerates NAD+.",
+        "The citric acid cycle depends on the chain to regenerate its NAD+, so it stops when oxygen is gone.",
+        "There is no oxygen in this cell. Lactate is the end product here."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-11",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "The oxygen supply to a group of cells is cut off. Predict the change in each variable over the next minute.",
+    "variables": [
+      {
+        "name": "ATP made by the electron transport chain",
+        "answer": "down",
+        "why": "Oxygen is the final electron acceptor. Without it, electrons back up, H+ pumping stops, and the H+ flow that makes ATP stops."
+      },
+      {
+        "name": "Lactate production",
+        "answer": "up",
+        "why": "NADH can no longer give its electrons to the chain, so NAD+ runs short. Cells convert pyruvate to lactate to regenerate NAD+."
+      },
+      {
+        "name": "Rate of glycolysis",
+        "answer": "up",
+        "why": "Falling ATP speeds up glycolysis enzymes, and lactate production keeps supplying NAD+, so more glucose is split per second."
+      },
+      {
+        "name": "CO2 production",
+        "answer": "down",
+        "why": "CO2 is released as pyruvate is broken down and in the citric acid cycle. Both stop when NADH cannot be oxidized, so less CO2 is made."
+      }
+    ],
+    "why": {
+      "correct": "Cutting off oxygen stops the electron transport chain first. That stalls the citric acid cycle, so CO2 output and mitochondrial ATP fall. Glycolysis speeds up and pyruvate is diverted to lactate, but at 2 ATP per glucose it cannot replace what was lost for long."
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Converting pyruvate to lactate makes no ATP. Why, then, does it raise a cell's ATP output when oxygen is missing?",
+    "options": [
+      "It regenerates the NAD+ that glycolysis needs to keep running",
+      "Lactate is itself a form of stored ATP",
+      "It moves pyruvate into the mitochondrion faster than it could get there on its own",
+      "It releases CO2, which drives the electron transport chain"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Glycolysis needs NAD+ to accept electrons, and a cell holds only a little. Without oxygen, NADH cannot give its electrons to the chain. Passing them to pyruvate turns NADH back into NAD+, so glycolysis can keep netting 2 ATP per glucose.",
+      "options": [
+        "Correct. The lactate step recycles NAD+.",
+        "Lactate is a three-carbon fuel molecule, not ATP. It can be turned back into pyruvate later.",
+        "The lactate step happens in the cytosol and keeps pyruvate there. It does not move anything into the mitochondrion.",
+        "Pyruvate and lactate both have three carbons; no CO2 is released. And CO2 does not drive the electron transport chain."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A person goes from resting to jogging, and the cells of her leg muscles triple their rate of aerobic respiration. What happens to the amount of CO2 those cells release each minute?",
+    "options": [
+      "It stays the same",
+      "It drops to zero",
+      "It falls",
+      "It rises"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Every glucose broken down aerobically releases 6 CO2 in the mitochondria. More fuel oxidized per minute means more CO2 made per minute, which diffuses into the blood and is breathed out.",
+      "options": [
+        "CO2 output is tied to how much fuel is broken down. Faster aerobic respiration means more CO2.",
+        "CO2 production stops only if pyruvate breakdown and the citric acid cycle stop entirely.",
+        "It would fall only if fuel breakdown slowed, as when oxygen is cut off.",
+        "Correct. CO2 production rises with the rate of fuel breakdown."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "misconception": "lactic acid causes delayed muscle soreness",
+    "q": "Two days after her first hard leg workout in months, a 30-year-old woman has sore thighs. Her friend tells her lactic acid is still trapped in her muscles. Which response is most accurate?",
+    "options": [
+      "Her friend is right: lactate stays in muscle until the soreness passes",
+      "Lactate was cleared within an hour or so; the soreness comes from small injuries inside the muscle and their repair",
+      "The soreness means her muscles made no lactate at all during the workout",
+      "Lactate turned into CO2 that is still held inside the thigh muscles, and this trapped gas is what now causes the pain"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Lactate leaves muscle quickly. Heart muscle and other cells oxidize it, and the liver rebuilds glucose from it, so blood lactate is back to resting within an hour or so. Soreness that peaks one to two days later comes from small injuries inside the muscle and the repair that follows.",
+      "options": [
+        "Lactate does not stay trapped. It returns to resting levels within an hour or so, long before the soreness peaks.",
+        "Correct. The timing rules out lactate; fiber damage and repair explain delayed soreness.",
+        "Hard exercise does raise lactate production. It is simply cleared long before the soreness appears.",
+        "Lactate can be turned back into pyruvate and oxidized, but CO2 diffuses out and is breathed away; it does not cause soreness days later."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "What is the final electron acceptor of the electron transport chain?",
+    "options": [
+      "Oxygen",
+      "NAD+",
+      "Pyruvate",
+      "Carbon dioxide"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "At the last complex of the chain, each O2 accepts four electrons and four H+ and becomes two water molecules. Removing electrons at the end is what keeps the chain moving.",
+      "options": [
+        "Correct. Oxygen takes the electrons and becomes water.",
+        "NAD+ accepts electrons earlier, in glycolysis and the citric acid cycle. As NADH it is a donor to the chain.",
+        "Pyruvate accepts electrons from NADH only when oxygen is missing, in the cytosol, becoming lactate. It is not part of the chain.",
+        "CO2 is fully oxidized carbon released in the citric acid cycle. It accepts no electrons in the chain."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "q": "The cells of your heart wall pack thousands of mitochondria. Which statement best explains why this matters for how they make ATP?",
+    "options": [
+      "Glycolysis happens inside mitochondria, so having more mitochondria means glucose is split faster",
+      "Mitochondria store ready-made ATP that heart cells draw on during each beat",
+      "Mitochondria run the aerobic stages, which yield about 15 times more ATP per glucose",
+      "Mitochondria make glucose for the heart from the oxygen in blood"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The citric acid cycle and electron transport chain run in mitochondria, and together they raise the yield from 2 ATP per glucose to about 30–32. A cell that works nonstop, like a heart cell, has many mitochondria and depends on these aerobic stages.",
+      "options": [
+        "Glycolysis runs in the cytosol, not in mitochondria.",
+        "Cells hold only a small amount of ATP and rebuild it constantly. Mitochondria make ATP; they are not storage tanks.",
+        "Correct. More mitochondria mean more capacity for the high-yield aerobic stages.",
+        "Mitochondria break fuel down; they do not build glucose, and oxygen is not a raw material for glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "q": "A drug makes the inner mitochondrial membrane leaky to H+, so H+ flows back across it without passing through the ATP-making enzyme. Oxygen and glucose supply are normal. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "ATP made per glucose",
+        "answer": "down",
+        "why": "Much of the H+ now returns through the leak, so less of it passes through the enzyme that makes ATP. Each glucose yields fewer ATP."
+      },
+      {
+        "name": "Oxygen used by the cell",
+        "answer": "up",
+        "why": "The H+ gradient keeps draining, so the chain keeps pumping and passing electrons to oxygen as fast as it can. With less ATP made per glucose, the cell also breaks down more fuel."
+      },
+      {
+        "name": "Heat released by the cell",
+        "answer": "up",
+        "why": "Energy released by the chain that is not captured as ATP leaves as heat. H+ flowing back through the leak releases its energy as heat."
+      }
+    ],
+    "why": {
+      "correct": "The chain's energy is stored briefly as an H+ gradient. A leak lets that gradient run down without making ATP. The chain runs faster and uses more oxygen, but the energy leaves as heat instead of ATP."
+    }
+  },
+  {
+    "id": "anp-cellular-respiration-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Using about 2.5 ATP per NADH and 1.5 ATP per reduced FAD, how many ATP come from the 2 reduced FAD made in the citric acid cycle from one glucose?",
+    "options": [
+      "5",
+      "1.5",
+      "3",
+      "4"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each reduced FAD gives about 1.5 ATP through the electron transport chain. 2 × 1.5 = 3 ATP.",
+      "options": [
+        "5 is what 2 NADH would give (2 × 2.5). Reduced FAD gives less, because its electrons enter the chain further along and pump fewer H+.",
+        "1.5 is the yield of one reduced FAD. The question asks for two.",
+        "Correct. 2 × 1.5 = 3.",
+        "4 uses 2 ATP per reduced FAD, the older whole-number value. Current measurements give about 1.5."
+      ]
+    }
+  }
+]

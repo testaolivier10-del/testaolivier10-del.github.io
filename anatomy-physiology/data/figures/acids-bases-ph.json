@@ -1,0 +1,34 @@
+{
+  "os-2-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "2.16",
+      "section": "2.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e3c8ada5420e1a004a0967b9882546ec50125199",
+      "page": "2-4-inorganic-compounds-essential-to-human-functioning"
+    },
+    "alt": "Beakers of water showing what acids and bases do when they dissolve. An acid splits into hydrogen ions and anions, and a strong acid splits almost completely, giving many hydrogen ions. A base splits into hydroxide ions and cations, and a strong base splits almost completely, giving many hydroxide ions.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.16",
+    "labels": [],
+    "w": 1100,
+    "h": 981,
+    "ext": "jpg"
+  },
+  "os-2-17": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "2.17",
+      "section": "2.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/44717acf6bfda46bf5523d1b493cea197a757fb4",
+      "page": "2-4-inorganic-compounds-essential-to-human-functioning"
+    },
+    "alt": "A vertical pH scale from 0 to 14. Neutral, 7, sits in the middle; values below it are acidic and values above it are basic. Common substances are placed along the scale at their pH.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 2.17",
+    "labels": [],
+    "w": 1100,
+    "h": 2231,
+    "ext": "jpg"
+  }
+}

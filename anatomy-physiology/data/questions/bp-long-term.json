@@ -1,0 +1,579 @@
+[
+  {
+    "id": "anp-bp-long-term-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Which enzyme converts angiotensin I into angiotensin II, and where is most of it found?",
+    "options": [
+      "Renin, in the walls of the kidney's small arteries",
+      "ACE, in the capillaries of the lungs",
+      "Angiotensinogen, in the liver's plasma proteins",
+      "Aldosterone, in the outer layer of the adrenal cortex"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Angiotensin-converting enzyme (ACE) sits on the surface of endothelial cells and is most plentiful in the capillaries of the lungs, which all of your cardiac output passes through. It converts angiotensin I into the active hormone, angiotensin II.",
+      "options": [
+        "Renin makes angiotensin I from angiotensinogen. It acts one step earlier and does not make angiotensin II.",
+        "Correct. ACE, mostly in the lungs, makes angiotensin II.",
+        "Angiotensinogen is the inactive protein that renin cuts, not an enzyme that converts angiotensin I.",
+        "Aldosterone is a hormone released because of angiotensin II. It is not an enzyme in the cascade."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance",
+      "compartments"
+    ],
+    "q": "Fluid outside your cells holds about 140 mmol of sodium per liter. A person eats a snack containing 2.9 g of sodium chloride (molar mass 58.5 g/mol). Roughly how much extra fluid will their body hold outside the cells until the kidneys excrete the sodium?",
+    "options": [
+      "About 0.05 L",
+      "About 2.8 L",
+      "About 0.07 L",
+      "About 0.36 L"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "2.9 g ÷ 58.5 g/mol ≈ 0.05 mol, or 50 mmol of sodium. Thirst and ADH add water until that sodium sits at the normal 140 mmol/L. 50 ÷ 140 ≈ 0.36 L of extra fluid outside the cells.",
+      "options": [
+        "This is the amount of salt in moles, 0.05 mol, not a volume of fluid. The next step is to divide 50 mmol by 140 mmol/L.",
+        "This divides 140 by 50 instead of 50 by 140. Holding 50 mmol at 140 mmol/L needs less than half a liter.",
+        "This is about a fifth of 0.36 L, the part that ends up in the plasma, not the whole extra volume outside the cells.",
+        "Correct. 50 mmol ÷ 140 mmol/L ≈ 0.36 L."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A patient receives 2 L of IV saline over one hour. Which hormone change follows, and what does it do?",
+    "options": [
+      "Aldosterone rises, so the kidneys keep the extra sodium",
+      "ANP rises, so the kidneys excrete more sodium and water",
+      "Renin rises, so angiotensin II constricts the arterioles",
+      "ADH rises, so the kidneys keep more of the infused water"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The infusion raises blood volume and venous return, which stretches the atria. Stretched atrial muscle cells release ANP. ANP makes the kidneys excrete more sodium and water and reduces renin, aldosterone and ADH, so the extra volume is gradually removed.",
+      "options": [
+        "Higher volume and pressure reduce renin and so angiotensin II, which lowers aldosterone. The kidneys keep less sodium, not more.",
+        "Correct. Atrial stretch releases ANP, which drives sodium and water into the urine.",
+        "Renin falls when pressure in the kidney's small arteries rises. More volume means less renin.",
+        "Saline has the same concentration as plasma, so osmolarity does not rise, and the rise in volume lowers ADH."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-4",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence",
+      "mass-balance"
+    ],
+    "q": "Ana hikes for six hours in desert heat without water and sweats about 3 L. Sweat has less salt than plasma. Predict each variable at the end of her hike, compared with before it.",
+    "variables": [
+      {
+        "name": "Plasma osmolarity",
+        "answer": "up",
+        "why": "She lost more water than salt, so the solutes left in her plasma are more concentrated."
+      },
+      {
+        "name": "ADH release",
+        "answer": "up",
+        "why": "Hypothalamic osmoreceptors sense the higher osmolarity, and the fall in volume adds to the signal."
+      },
+      {
+        "name": "Renin release",
+        "answer": "up",
+        "why": "Lower pressure in the kidney's small arteries and more sympathetic stimulation both increase renin release."
+      },
+      {
+        "name": "Aldosterone",
+        "answer": "up",
+        "why": "More renin means more angiotensin II, which makes the adrenal cortex release aldosterone."
+      },
+      {
+        "name": "ANP release",
+        "answer": "down",
+        "why": "With less blood volume, venous return falls and the atria are stretched less."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "down",
+        "why": "ADH makes the kidneys keep water, and aldosterone makes them keep sodium, which water follows."
+      }
+    ],
+    "why": {
+      "correct": "Water loss raises osmolarity and lowers volume. The nervous system, the kidneys, the adrenal cortex, the hypothalamus and the heart all respond: ADH, renin and aldosterone rise, ANP falls, and her kidneys make a small volume of concentrated urine while she waits for a drink."
+    }
+  },
+  {
+    "id": "anp-bp-long-term-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Put the steps of the renin–angiotensin–aldosterone system in order, starting with a fall in blood pressure.",
+    "options": [
+      "Pressure falls in the kidney's small arteries",
+      "The kidneys release renin into the blood",
+      "Renin converts angiotensinogen into angiotensin I",
+      "ACE, mostly in the lungs, converts angiotensin I into angiotensin II",
+      "Angiotensin II makes the adrenal cortex release aldosterone",
+      "The kidneys keep more sodium and water, and blood volume rises"
+    ],
+    "why": {
+      "correct": "Low pressure is sensed in the kidney, which releases renin. Renin forms angiotensin I from angiotensinogen, ACE converts it to angiotensin II, angiotensin II releases aldosterone, and aldosterone makes the kidneys keep sodium, which water follows."
+    }
+  },
+  {
+    "id": "anp-bp-long-term-6",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "This pathway describes the body's response to low blood volume, but one step is wrong. Find the wrong step.",
+    "options": [
+      "Sympathetic stimulation of the kidney increases",
+      "The kidneys release more renin",
+      "Angiotensin II levels rise",
+      "The adrenal cortex releases less aldosterone",
+      "The kidneys keep more sodium, and water follows it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Angiotensin II stimulates the adrenal cortex, so aldosterone release rises, not falls. Aldosterone is what makes the kidneys keep sodium in the last step.",
+      "options": [
+        "This step is right. The baroreceptor reflex raises sympathetic output when pressure falls, and that output reaches the renin-making cells.",
+        "This step is right. Norepinephrine on beta-1 receptors and less stretch both increase renin release.",
+        "This step is right. More renin makes more angiotensin I, which ACE converts to angiotensin II.",
+        "This is the wrong step. Angiotensin II increases aldosterone release from the adrenal cortex.",
+        "This step is right. Aldosterone increases sodium reabsorption, and water follows by osmosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A patient starts taking a drug that blocks angiotensin-converting enzyme. Which change is expected over the following days?",
+    "options": [
+      "Renin release from the kidneys falls sharply",
+      "Angiotensin I in the plasma falls to near zero",
+      "Aldosterone falls, and more sodium is excreted",
+      "Plasma potassium falls below its normal range"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With ACE blocked, less angiotensin II is made. Arterioles relax, and the adrenal cortex releases less aldosterone, so the kidneys keep less sodium and water. Blood volume and TPR both fall, which lowers pressure.",
+      "options": [
+        "Angiotensin II normally holds back renin release. With less angiotensin II and lower pressure, renin release rises.",
+        "Angiotensin I is made by renin, which still works. With the conversion step blocked, angiotensin I builds up.",
+        "Correct. Less angiotensin II means less aldosterone, so more sodium and water leave in the urine.",
+        "Aldosterone makes the kidneys secrete potassium. With less aldosterone, they secrete less, so plasma potassium tends to rise."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments",
+      "mass-balance"
+    ],
+    "misconception": "water alone restores blood volume",
+    "q": "Why does keeping 1 L of sodium-containing fluid raise blood volume more than keeping 1 L of pure water?",
+    "options": [
+      "Pure water is breathed out by the lungs faster than salty fluid is",
+      "Sodium makes plasma proteins larger, so they pull in more water",
+      "Pure water cannot cross capillary walls, so it stays in the gut",
+      "Pure water spreads into the cells too, so less stays in the blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Sodium stays mostly outside cells, so fluid kept with sodium stays in the plasma and interstitial fluid. Pure water dilutes every compartment and moves into the cells by osmosis, so only a small fraction of it remains in the blood.",
+      "options": [
+        "The lungs lose water as vapor at a steady rate that does not depend on what you drink, and they do not excrete a drink.",
+        "Sodium does not change the size of plasma proteins or their osmotic pull.",
+        "Water crosses capillary walls freely through the clefts between endothelial cells, and it is absorbed from the gut.",
+        "Correct. Water follows solute. Sodium keeps its water outside the cells; pure water spreads everywhere."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A man loses about 1.5 L of blood in a car crash. His plasma osmolarity is normal, yet his ADH level is many times higher than normal. What explains this?",
+    "options": [
+      "His osmoreceptors are reporting a hidden rise in osmolarity",
+      "The large fall in volume and pressure drives ADH release",
+      "Pain releases ADH, and pain is the main trigger after injury",
+      "His kidneys release ADH when their blood flow falls"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A fall in volume of more than about 5 to 10 percent reduces stretch of the arterial baroreceptors and of the stretch sensors in the atria and large veins. That drives ADH release steeply, to levels far above those osmolarity produces, and the volume signal overrides a normal osmolarity.",
+      "options": [
+        "Losing whole blood removes plasma and its solutes together, so osmolarity stays normal. The osmoreceptors are not the source of this signal.",
+        "Correct. A large volume loss is a powerful ADH trigger in its own right.",
+        "Pain and stress can raise ADH somewhat, but the rise after a large bleed is driven mainly by the loss of volume.",
+        "ADH comes from hypothalamic neurons and is released from the posterior pituitary. The kidneys are its target, not its source."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-10",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Which effects does angiotensin II have? Select all that apply.",
+    "options": [
+      "Constricts arterioles, raising TPR",
+      "Makes the adrenal cortex release aldosterone",
+      "Increases thirst and ADH release",
+      "Makes atrial muscle cells release ANP",
+      "Makes the kidneys excrete more sodium"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Angiotensin II raises pressure on several fronts: it constricts arterioles, releases aldosterone, triggers thirst and ADH release, and makes the kidneys keep sodium directly. ANP is released by atrial stretch, and it works against angiotensin II.",
+      "options": [
+        "Correct. This is the fast arm, acting within minutes.",
+        "Correct. Aldosterone is the slow arm, raising volume over hours to days.",
+        "Correct. Angiotensin II acts on the hypothalamus.",
+        "ANP release is triggered by atrial stretch, not angiotensin II. ANP opposes the RAAS.",
+        "Angiotensin II makes the kidneys keep sodium, both directly and through aldosterone. Excreting sodium is what ANP promotes."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-11",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Complete the sequence: blood volume rises → the atria are stretched more → atrial muscle cells release ANP → ____ → blood volume falls back toward normal.",
+    "options": [
+      "The kidneys excrete more sodium and water",
+      "The adrenal cortex releases more aldosterone",
+      "The posterior pituitary releases more ADH",
+      "Arterioles constrict and TPR rises"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "ANP makes the kidneys excrete more sodium, and water leaves with it. It also lowers renin, aldosterone and ADH. The lost fluid lowers blood volume, which reduces atrial stretch.",
+      "options": [
+        "Correct. Natriuresis, with water following, is the step that lowers volume.",
+        "ANP reduces aldosterone release. More aldosterone would make the kidneys keep sodium and raise volume.",
+        "ANP reduces ADH release. More ADH would make the kidneys keep water.",
+        "ANP relaxes arteriole smooth muscle, lowering TPR. Constriction is the opposite of its effect."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-12",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "A healthy adult receives 2 L of IV saline, which has the same salt concentration as plasma, over two hours. Predict each variable over the following few hours, compared with before the infusion.",
+    "variables": [
+      {
+        "name": "Atrial stretch",
+        "answer": "up",
+        "why": "More blood volume raises venous return, which fills and stretches the atria more."
+      },
+      {
+        "name": "ANP release",
+        "answer": "up",
+        "why": "Stretched atrial muscle cells release ANP."
+      },
+      {
+        "name": "Renin release",
+        "answer": "down",
+        "why": "Higher pressure in the kidney's small arteries, less sympathetic stimulation and ANP all reduce renin release."
+      },
+      {
+        "name": "Aldosterone",
+        "answer": "down",
+        "why": "Less renin means less angiotensin II, and ANP also reduces aldosterone release directly."
+      },
+      {
+        "name": "Plasma osmolarity",
+        "answer": "none",
+        "why": "Saline matches the concentration of plasma, so it adds volume without changing osmolarity."
+      },
+      {
+        "name": "Urine sodium excretion",
+        "answer": "up",
+        "why": "More ANP and less aldosterone make the kidneys keep less sodium, so more leaves in the urine with water."
+      }
+    ],
+    "why": {
+      "correct": "Adding fluid that matches plasma raises volume but not osmolarity. The atria sense the extra volume and release ANP, the RAAS switches down, and the kidneys excrete the extra sodium and water over the next hours."
+    }
+  },
+  {
+    "id": "anp-bp-long-term-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "A 40-year-old has vomited for three days and cannot keep fluids down. Her heart rate is fast and her arterioles are constricted, which holds her pressure near normal. Once she can drink again, which process restores her blood pressure in a lasting way?",
+    "options": [
+      "Her baroreceptors keep her heart rate raised for as long as needed",
+      "Her arterioles stay constricted until her pressure is normal",
+      "Her kidneys keep more of the salt and water she drinks",
+      "Her atria release more ANP, which raises her blood volume"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Her fast heart and constricted arterioles hold pressure up for now, but they do not replace the lost fluid, and the baroreceptors reset over a day or two. Lasting correction comes from blood volume: with RAAS and ADH switched on, her kidneys keep the salt and water she drinks until volume is restored.",
+      "options": [
+        "Baroreceptors reset within a day or two, so the reflex cannot hold heart rate up indefinitely, and a faster heart does not replace lost fluid.",
+        "Constriction raises TPR and holds pressure up in the short term, but it does not restore the missing volume.",
+        "Correct. Under RAAS and ADH, her kidneys keep sodium and water, and long-term control works by restoring blood volume.",
+        "Low volume reduces atrial stretch, so ANP falls. ANP also lowers volume, the opposite of what she needs."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A small adrenal tumor releases large amounts of aldosterone on its own, regardless of angiotensin II. Over months, which pattern would you expect?",
+    "options": [
+      "Blood volume up, plasma potassium down, renin down",
+      "Blood volume down, plasma potassium up, renin up",
+      "Blood volume up, plasma potassium up, renin up",
+      "Blood volume down, plasma potassium down, renin down"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Excess aldosterone makes the kidneys keep sodium, with water following, so volume and pressure rise. It also makes them secrete potassium, so plasma potassium falls. The higher pressure stretches the renin-making cells, so renin release falls.",
+      "options": [
+        "Correct. Volume rises, potassium falls, and negative feedback turns renin down.",
+        "This is the pattern of too little aldosterone. Extra aldosterone keeps sodium and water and removes potassium.",
+        "Potassium falls with extra aldosterone, and the higher pressure turns renin down, not up.",
+        "Extra aldosterone keeps sodium and water, so volume rises rather than falls."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-15",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "interdependence",
+      "mass-balance"
+    ],
+    "q": "A healthy adult loses about 1 L of blood, the bleeding is stopped, and they can drink freely afterward. Predict each variable, first in the minutes after the bleed and then over the next one to two days as the hormones act.",
+    "variables": [
+      {
+        "name": "Mean arterial pressure, first minutes",
+        "answer": "down",
+        "why": "Less volume means less venous return, stroke volume and cardiac output, so MAP falls before the reflexes fully catch up."
+      },
+      {
+        "name": "Renin release, first hour",
+        "answer": "up",
+        "why": "Lower pressure in the kidney's small arteries and sympathetic stimulation of the renin-making cells both increase renin."
+      },
+      {
+        "name": "ADH, first hour",
+        "answer": "up",
+        "why": "A loss of this size lowers stretch of the baroreceptors and the atrial sensors, which drives ADH release steeply."
+      },
+      {
+        "name": "Urine volume, first day",
+        "answer": "down",
+        "why": "Aldosterone keeps sodium and ADH keeps water, so less of both reaches the urine."
+      },
+      {
+        "name": "Plasma volume two days later, compared with just after the bleed",
+        "answer": "up",
+        "why": "Kept salt and water, plus thirst-driven drinking, refill the plasma."
+      },
+      {
+        "name": "Heart rate two days later, compared with the first hour",
+        "answer": "down",
+        "why": "With volume restored, venous return and stroke volume recover, baroreceptor firing returns, and sympathetic drive to the SA node eases."
+      }
+    ],
+    "why": {
+      "correct": "Right after the bleed, pressure falls and the reflex speeds the heart. Over the next hours, renin, angiotensin II, aldosterone and ADH rise, urine output falls and thirst increases. Over one to two days, kept and drunk fluid restores plasma volume, so the fast reflex no longer has to work hard and heart rate settles."
+    }
+  },
+  {
+    "id": "anp-bp-long-term-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which change would reduce renin release from the kidneys?",
+    "options": [
+      "A fall in pressure in the kidney's small arteries",
+      "More sympathetic stimulation of the kidneys",
+      "Less sodium chloride reaching the kidney's sensing cells",
+      "A rise in pressure in the kidney's small arteries"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The renin-making cells are stretch-sensitive. Higher pressure stretches them more, and they release less renin. This is the negative feedback that switches the RAAS off once pressure recovers.",
+      "options": [
+        "Lower pressure means less stretch of the renin-making cells, which increases renin release.",
+        "Norepinephrine on beta-1 receptors of the renin-making cells increases renin release.",
+        "Less salt reaching the sensing cells makes them signal for more renin, not less.",
+        "Correct. More stretch reduces renin release."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Over several weeks, a person's blood volume stays about 10 percent above normal. Which hormone pattern would you expect?",
+    "options": [
+      "ANP high, renin high, aldosterone high",
+      "ANP low, renin high, aldosterone high",
+      "ANP high, renin low, aldosterone low",
+      "ANP low, renin low, aldosterone low"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Extra volume stretches the atria, so ANP rises. It also raises pressure in the kidney's small arteries, and ANP itself inhibits renin, so renin and angiotensin II fall, and aldosterone falls with them. Every signal pushes the kidneys to excrete sodium and water.",
+      "options": [
+        "Renin and aldosterone rise when volume is low. With extra volume and high ANP, both are turned down.",
+        "This is the pattern for low volume. Extra volume raises ANP and lowers renin and aldosterone.",
+        "Correct. High ANP with low renin and aldosterone is the response to too much volume.",
+        "ANP is released by atrial stretch, which extra volume increases, so ANP would be high, not low."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Which cells release atrial natriuretic peptide (ANP), and what triggers them?",
+    "options": [
+      "Kidney cells, when pressure in the kidney falls",
+      "Atrial muscle cells, when the atria stretch",
+      "Adrenal cortex cells, when angiotensin II rises",
+      "Hypothalamic neurons, when osmolarity rises"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "ANP is released by muscle cells in the atrial walls when more venous return stretches them.",
+      "options": [
+        "Low pressure in the kidney releases renin, not ANP.",
+        "Correct. Atrial stretch releases ANP.",
+        "Angiotensin II makes the adrenal cortex release aldosterone, not ANP.",
+        "Hypothalamic neurons make ADH, which is released when osmolarity rises."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-long-term-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "A student drinks 1.5 L of plain water in twenty minutes. An hour later she passes a large volume of very dilute urine. Which change explains this?",
+    "options": [
+      "Plasma osmolarity fell, so ADH release fell",
+      "Blood volume doubled, so ANP release rose",
+      "Plasma osmolarity rose, so ADH release rose",
+      "Renin release rose, so aldosterone rose"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The water dilutes the plasma. Osmoreceptors in the hypothalamus sense even a 1 to 2 percent fall in osmolarity and reduce ADH release. With little ADH, the kidneys keep less water, so a large volume of dilute urine follows.",
+      "options": [
+        "Correct. Less ADH means the kidneys keep less water.",
+        "Most of the water moves into the cells, so blood volume rises only slightly, and nowhere near doubles. The main signal is the fall in osmolarity.",
+        "Plain water lowers osmolarity rather than raising it, and more ADH would make urine smaller and more concentrated.",
+        "Extra fluid does not increase renin, and more aldosterone would make the kidneys keep sodium and water, not excrete them."
+      ]
+    }
+  }
+]

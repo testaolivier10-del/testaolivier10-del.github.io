@@ -1,0 +1,19 @@
+{
+  "os-19-21": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.21",
+      "section": "19.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/89cccd5a4f5efa673853b2d4434d643c9a7ce3ae",
+      "page": "19-2-cardiac-muscle-and-electrical-activity"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/89cccd5a4f5efa673853b2d4434d643c9a7ce3ae",
+    "alt": "Three graphs. The top graph shows a heart muscle action potential in millivolts against time: a steep rise from about minus 90, a small dip, a long flat stretch near zero, a fall back to minus 90, and a bracket marking the long refractory period. The two lower graphs compare skeletal and heart muscle, each plotting the action potential and the muscle's tension on the same time axis: in skeletal muscle the brief spike is over before tension rises, while in heart muscle the long action potential lasts almost as long as the tension curve.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.21",
+    "labels": [],
+    "w": 1100,
+    "h": 1214,
+    "ext": "jpg"
+  }
+}

@@ -1,0 +1,599 @@
+[
+  {
+    "id": "anp-bp-short-term-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Where are the main arterial baroreceptors that drive the baroreceptor reflex?",
+    "options": [
+      "In the walls of the right atrium and the venae cavae",
+      "In the carotid sinuses and the aortic arch",
+      "In the medulla oblongata and the hypothalamus",
+      "In the walls of the arterioles of each organ"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The main arterial baroreceptors are stretch-sensitive nerve endings in the wall of each carotid sinus, at the base of the internal carotid artery, and in the wall of the aortic arch. They report the pressure of blood heading to the brain and leaving the heart.",
+      "options": [
+        "Stretch-sensitive sensory receptors in the right atrium and venae cavae sense filling and drive the atrial reflex. They are not the arterial baroreceptors.",
+        "Correct. The carotid sinuses signal through the glossopharyngeal nerves, and the aortic arch through the vagus nerves.",
+        "The medulla oblongata holds the cardiovascular center, the control center of the reflex. It receives baroreceptor signals; it does not sense arterial stretch itself.",
+        "Arterioles respond to stretch through the myogenic response, a property of their own smooth muscle. That is local control, not a sensor for the baroreceptor reflex."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient has a cardiac output of 4.5 L/min and a total peripheral resistance of 20 mm Hg·min/L. A drug then lowers TPR by 20 percent, and cardiac output does not change. What is the new mean arterial pressure?",
+    "options": [
+      "70 mm Hg",
+      "86 mm Hg",
+      "72 mm Hg",
+      "112 mm Hg"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Start with MAP = CO × TPR = 4.5 × 20 = 90 mm Hg. A 20 percent fall in TPR gives 20 × 0.8 = 16 mm Hg·min/L. New MAP = 4.5 × 16 = 72 mm Hg. With cardiac output fixed, MAP falls by the same 20 percent as TPR.",
+      "options": [
+        "This subtracts 20 mm Hg from the starting MAP of 90. The drop was 20 percent of TPR, not 20 mm Hg of pressure, so the new MAP is 4.5 × 16 = 72 mm Hg.",
+        "This is too small a fall. MAP is proportional to TPR when cardiac output is fixed, so a 20 percent fall in TPR gives a 20 percent fall in MAP, from 90 to 72 mm Hg.",
+        "Correct. MAP = 4.5 × (20 × 0.8) = 4.5 × 16 = 72 mm Hg.",
+        "This divides the starting MAP by 0.8, as if pressure rose when resistance fell. Lower resistance with the same flow means a lower pressure, not a higher one."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A healthy 25-year-old stands up quickly after lying down for an hour. Predict the change in each variable during the first several seconds of standing, before the baroreceptor reflex has had time to act.",
+    "variables": [
+      {
+        "name": "Venous return",
+        "answer": "down",
+        "why": "Gravity pools blood in the stretchy veins of the legs and abdomen, so less blood reaches the right atrium."
+      },
+      {
+        "name": "Stroke volume",
+        "answer": "down",
+        "why": "Less venous return means a smaller end-diastolic volume, so by the Frank–Starling mechanism each beat ejects less blood."
+      },
+      {
+        "name": "Mean arterial pressure",
+        "answer": "down",
+        "why": "Cardiac output falls with stroke volume, and MAP = CO × TPR, so MAP falls."
+      },
+      {
+        "name": "Baroreceptor firing rate",
+        "answer": "down",
+        "why": "Lower arterial pressure stretches the carotid sinus and aortic arch walls less, so the baroreceptors fire fewer action potentials."
+      },
+      {
+        "name": "Plasma protein concentration",
+        "answer": "none",
+        "why": "Pooling moves whole blood into the leg veins within seconds. It does not change what the plasma contains."
+      }
+    ],
+    "why": {
+      "correct": "Standing moves blood into the leg veins. Venous return, end-diastolic volume, stroke volume, cardiac output and MAP fall in a chain, and baroreceptor firing falls with MAP. That fall in firing is the signal that starts the reflex a moment later."
+    }
+  },
+  {
+    "id": "anp-bp-short-term-4",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Put the steps of the baroreceptor reflex in order, starting with a sudden fall in blood pressure.",
+    "options": [
+      "Mean arterial pressure falls",
+      "The carotid sinus and aortic arch walls stretch less, and baroreceptors fire less",
+      "Fewer impulses reach the medulla oblongata in the glossopharyngeal and vagus nerves",
+      "The cardiovascular center raises sympathetic output and lowers vagal output",
+      "Heart rate, contractility and arteriole constriction increase",
+      "Mean arterial pressure rises back toward its set point"
+    ],
+    "why": {
+      "correct": "The loop runs stimulus, sensor, afferent pathway, control center, efferent pathway and effectors, and response. The response, a rise in pressure, restores baroreceptor firing and removes the stimulus, which makes it negative feedback."
+    }
+  },
+  {
+    "id": "anp-bp-short-term-5",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "This pathway describes the baroreceptor reflex after a sudden rise in blood pressure, but one step is wrong. Find the wrong step.",
+    "options": [
+      "The carotid sinus and aortic arch walls stretch more",
+      "Baroreceptors fire more action potentials",
+      "The cardiovascular center receives more afferent impulses",
+      "Vagal output to the SA node falls",
+      "Sympathetic output to the arterioles falls",
+      "Heart rate and TPR fall, and pressure comes back down"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When baroreceptor firing rises, the cardiovascular center increases vagal output and reduces sympathetic output. Vagal output to the SA node rises, which is what slows the heart. The pathway says it falls, which would speed the heart and push pressure up further.",
+      "options": [
+        "This step is right. Higher pressure stretches the walls where the baroreceptors sit.",
+        "This step is right. More stretch opens more mechanically gated channels in the nerve endings, so they fire faster.",
+        "This step is right. Faster firing sends more impulses along the glossopharyngeal and vagus nerves to the medulla oblongata.",
+        "This is the wrong step. More baroreceptor input increases vagal output. More acetylcholine at the SA node slows the pacemaker potential and lowers heart rate.",
+        "This step is right. Less sympathetic output relaxes arteriole smooth muscle, so the arterioles widen and TPR falls.",
+        "This step is right. Lower heart rate and lower TPR reduce MAP = HR × SV × TPR, and the stimulus is removed."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-6",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Complete the sequence: blood pressure falls → baroreceptors fire fewer action potentials → fewer impulses reach the medulla oblongata → ____ → heart rate and TPR rise.",
+    "options": [
+      "The cardiovascular center raises sympathetic output and lowers vagal output",
+      "The cardiovascular center lowers sympathetic output and raises vagal output",
+      "The baroreceptors release norepinephrine directly onto the SA node",
+      "The arterioles relax, and more blood flows back into the veins"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Baroreceptor input normally boosts vagal output and holds back sympathetic output. Less input does the reverse, so sympathetic output rises and vagal output falls. That is what raises heart rate and constricts the arterioles.",
+      "options": [
+        "Correct. This is the control center's response to reduced baroreceptor input.",
+        "This is the response to a rise in pressure. Lower sympathetic and higher vagal output would slow the heart and widen the arterioles, lowering pressure further.",
+        "Baroreceptors are sensory neurons. They send action potentials to the brainstem; they do not release norepinephrine onto the heart. Sympathetic neurons do that.",
+        "Relaxed arterioles would lower TPR, the opposite of the result the sequence ends with."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "misconception": "a rising heart rate means the baroreceptor reflex is working normally",
+    "q": "Mr. Alvarez, 74, takes a new drug that blocks alpha-1 receptors. On standing, his pressure falls from 128/76 to 98/62 and stays there, while his heart rate rises from 70 to 94. Which part of his baroreceptor reflex is failing?",
+    "options": [
+      "His baroreceptors no longer sense the fall in pressure",
+      "His cardiovascular center no longer raises sympathetic output",
+      "His SA node no longer responds to sympathetic signals",
+      "His arterioles cannot constrict in response to norepinephrine"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Norepinephrine constricts arterioles by binding alpha-1 receptors on their smooth muscle. With those blocked, TPR cannot rise when he stands, so MAP = CO × TPR stays low. His heart rate still rises, which shows the sensors, afferent nerves, control center and sympathetic output to the heart all work.",
+      "options": [
+        "If the baroreceptors missed the fall, nothing would drive his heart rate up. The rise from 70 to 94 shows they did sense it.",
+        "His heart rate rose, and much of that rise comes from increased sympathetic output. The control center is responding.",
+        "The SA node responds through beta-1 receptors, which the drug does not block. His heart rate did rise.",
+        "Correct. The effector that fails is arteriole smooth muscle, because its alpha-1 receptors are blocked."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "the baroreceptor reflex sets long-term blood pressure",
+    "q": "A person's mean arterial pressure rises to a new, higher level and stays there for a week. Why does the baroreceptor reflex not bring it back down?",
+    "options": [
+      "The baroreceptors reset and treat the higher pressure as normal",
+      "Baroreceptors respond only to falls in pressure, never to rises",
+      "The vagus nerve cannot slow the heart for more than a few hours",
+      "Higher pressure damages the carotid sinuses within the first day"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Baroreceptors adapt. If pressure stays at a new level for a day or two, their firing settles back toward its usual rate at that level, so they stop signaling a change. This makes the reflex a fast corrector, not a setter of long-term pressure.",
+      "options": [
+        "Correct. Resetting shifts the pressure the baroreceptors report as normal.",
+        "Baroreceptors fire steadily at normal pressure, so they report both rises and falls. A rise increases their firing.",
+        "Vagal output can stay raised for as long as the control center drives it. The reflex fades because its sensors reset, not because the vagus tires.",
+        "Resetting is a normal adaptation of the nerve endings over a day or two, not damage. The sinuses still work, around a new level."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication",
+      "interdependence"
+    ],
+    "q": "Baroreceptor firing falls sharply after a sudden drop in blood pressure. Which responses follow within seconds? Select all that apply.",
+    "options": [
+      "Heart rate rises",
+      "Ventricular contractility rises",
+      "Arterioles in the skin and gut constrict",
+      "Veins constrict and push blood toward the heart",
+      "Arterioles in the brain constrict strongly",
+      "Vagal output to the SA node rises"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Less baroreceptor input raises sympathetic and lowers vagal output. The heart beats faster and more forcefully, arterioles in the skin, gut, kidneys and resting muscle constrict, and veins constrict and raise venous return. The brain's arterioles respond little to sympathetic signals and are controlled mainly by local autoregulation.",
+      "options": [
+        "Correct. More norepinephrine and less acetylcholine at the SA node speed the pacemaker potential.",
+        "Correct. Norepinephrine on beta-1 receptors in ventricular muscle raises contractility.",
+        "Correct. Sympathetic vasoconstriction is strong in these beds, which raises TPR.",
+        "Correct. Venous constriction moves blood out of the venous reservoir, raising end-diastolic volume and stroke volume.",
+        "Brain arterioles barely respond to sympathetic signals. Local autoregulation keeps brain flow steady, and strong constriction would cut it.",
+        "Vagal output falls, not rises, when baroreceptor firing falls. Less vagal output lets heart rate climb."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A physician presses firmly on one side of a patient's neck, just below the angle of the jaw, for a few seconds. The patient's heart rate drops within seconds. What explains the drop?",
+    "options": [
+      "The pressure squeezes the vagus nerve and blocks its impulses",
+      "The pressure cuts off blood flow to the brainstem",
+      "The carotid sinus wall stretches, mimicking a rise in pressure",
+      "The pressure stretches the right atrium through the neck veins"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Pressing on the carotid sinus stretches its wall. The baroreceptors fire as if arterial pressure had risen, so the cardiovascular center increases vagal output, and more acetylcholine at the SA node slows the heart.",
+      "options": [
+        "Blocking vagal impulses would remove the vagal brake and speed the heart, the opposite of what happened.",
+        "Brief pressure on one side leaves flow in the other carotid artery and the vertebral arteries. The heart slows because of a reflex, not because the brainstem loses blood.",
+        "Correct. The reflex reads the extra stretch as high pressure and slows the heart.",
+        "The neck is far from the right atrium, and more atrial stretch would tend to speed the heart through the atrial reflex, not slow it."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A patient receives 1 L of IV fluid over ten minutes. His venous return rises, and his heart rate climbs from 72 to 84 beats/min even though his arterial pressure hardly changes. Which reflex best explains the rise in heart rate?",
+    "options": [
+      "The baroreceptor reflex, sensing the higher arterial pressure",
+      "The atrial reflex, sensing stretch of the atrial walls",
+      "The myogenic response of the arterioles in the atria",
+      "Metabolic autoregulation in the heart muscle itself"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "More venous return stretches the atria and the large veins where they join. Stretch-sensitive sensory receptors there signal through the vagus nerves, the cardiovascular center raises sympathetic output to the SA node, and heart rate rises. This is the atrial (Bainbridge) reflex.",
+      "options": [
+        "Arterial pressure barely changed. A rise in arterial pressure would also slow the heart through the baroreceptor reflex, not speed it.",
+        "Correct. Atrial stretch speeds the heart through the atrial reflex.",
+        "The myogenic response is arteriole smooth muscle contracting when stretched. It changes local resistance and flow, not heart rate.",
+        "Metabolic autoregulation adjusts coronary arteriole diameter to match the heart's own oxygen use. It does not set heart rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "gradients"
+    ],
+    "q": "A blood pressure cuff is inflated tightly around a student's upper arm for two minutes and then released. Her forearm flushes red, and its blood flow is several times normal for about a minute. What causes the extra flow?",
+    "options": [
+      "Sympathetic nerves to the forearm fire faster once the cuff is released",
+      "Baroreceptors in the arm sense the fall in pressure and dilate its arteries",
+      "Metabolites built up during the blockage and dilated the forearm's arterioles",
+      "The cuff stretched the arterioles, which now contract through the myogenic response"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "While the cuff blocked flow, the forearm's cells kept working. Oxygen fell and carbon dioxide, hydrogen ions, potassium ions and adenosine built up in the interstitial fluid. These relax arteriole smooth muscle, so when the cuff came off, the arterioles were wide open and flow surged until the metabolites washed out. This is metabolic autoregulation.",
+      "options": [
+        "Faster sympathetic firing would constrict the arterioles and reduce flow, not raise it. The response is local, with no nerve involved.",
+        "The arm has no baroreceptors that control its arteries. Arterial baroreceptors sit in the carotid sinuses and aortic arch and act through the brainstem.",
+        "Correct. Local metabolites dilated the arterioles, and flow stays high until the extra flow washes them away.",
+        "The myogenic response to stretch is contraction, which would narrow the arterioles and reduce flow. It cannot explain a rise in flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "Mean arterial pressure rises from 90 to 120 mm Hg in a healthy person. Blood flow to the brain changes very little. What happens in the brain's arterioles to keep flow nearly constant?",
+    "options": [
+      "Stretch makes their smooth muscle contract, so they narrow",
+      "Sympathetic nerves relax them, so their resistance falls a lot",
+      "Their smooth muscle relaxes, so their radius increases by a third",
+      "Their walls leak plasma, so less blood reaches the brain"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Higher pressure stretches the arteriole wall. Stretch opens mechanically gated channels, calcium enters, and the smooth muscle contracts. The arterioles narrow and their resistance rises just enough to offset the higher pressure, so flow (ΔP / R) stays nearly the same. This is the myogenic response.",
+      "options": [
+        "Correct. The myogenic response raises resistance as pressure rises.",
+        "Brain arterioles respond little to sympathetic nerves, and lower resistance with higher pressure would raise flow sharply, not hold it steady.",
+        "A wider radius would lower resistance. Combined with higher pressure, it would increase flow a lot.",
+        "Capillaries, not arterioles, are where fluid leaves the blood, and losing plasma is not how flow is held steady. Arterioles control flow by changing their radius."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-14",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A healthy 20-year-old moves from rest to a steady, hard run. Predict each variable during the run, compared with rest.",
+    "variables": [
+      {
+        "name": "Cardiac output",
+        "answer": "up",
+        "why": "Sympathetic stimulation and vagal withdrawal raise heart rate, and higher contractility plus the skeletal muscle pump raise stroke volume."
+      },
+      {
+        "name": "Total peripheral resistance",
+        "answer": "down",
+        "why": "Metabolites in working muscle dilate its many arterioles. That fall outweighs sympathetic vasoconstriction in the gut and kidneys."
+      },
+      {
+        "name": "Mean arterial pressure",
+        "answer": "up",
+        "why": "Cardiac output rises more than TPR falls, so their product rises, but only modestly."
+      },
+      {
+        "name": "Blood flow to the gut",
+        "answer": "down",
+        "why": "Sympathetic vasoconstriction narrows the gut's arterioles, and it has no metabolites strong enough to override it."
+      },
+      {
+        "name": "Blood flow to the brain",
+        "answer": "none",
+        "why": "Local autoregulation holds brain flow nearly constant across the modest rise in pressure."
+      }
+    ],
+    "why": {
+      "correct": "In exercise, the nervous system raises cardiac output while working muscle dilates its own arterioles. Because cardiac output rises several-fold and TPR falls by less, MAP rises a little. Flow is shifted from the gut and kidneys to muscle, and the brain's flow stays about the same."
+    }
+  },
+  {
+    "id": "anp-bp-short-term-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Using the rule maximum heart rate = 220 − age, what is the vigorous target heart rate zone (70 to 85 percent of maximum) for a 50-year-old?",
+    "options": [
+      "85 to 119 beats/min",
+      "119 to 145 beats/min",
+      "126 to 153 beats/min",
+      "140 to 170 beats/min"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Maximum heart rate = 220 − 50 = 170 beats/min. Then 0.70 × 170 = 119 and 0.85 × 170 = 144.5, which rounds to 145. The zone is about 119 to 145 beats/min.",
+      "options": [
+        "This is 50 to 70 percent of 170, the moderate zone, not the vigorous one.",
+        "Correct. 0.70 × 170 = 119 and 0.85 × 170 ≈ 145.",
+        "This is the vigorous zone for a 40-year-old, whose estimated maximum is 180. It uses the wrong age.",
+        "This subtracts 30 and 0 beats from the maximum instead of taking percentages of it."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "At rest, a runner's cardiac output is 5 L/min and TPR is 18 mm Hg·min/L. During a hard run, cardiac output is 15 L/min and TPR is 7 mm Hg·min/L. What is the mean arterial pressure during the run?",
+    "options": [
+      "90 mm Hg",
+      "105 mm Hg",
+      "270 mm Hg",
+      "126 mm Hg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "MAP = CO × TPR = 15 × 7 = 105 mm Hg. Resting MAP was 5 × 18 = 90 mm Hg. Cardiac output tripled, but TPR fell to less than half, so MAP rose by only about 17 percent.",
+      "options": [
+        "This is the resting MAP, 5 × 18. During the run both cardiac output and TPR have changed.",
+        "Correct. 15 × 7 = 105 mm Hg.",
+        "This multiplies the running cardiac output by the resting TPR. It ignores the fall in resistance as muscle arterioles dilate, which is what keeps pressure from soaring.",
+        "This multiplies the resting TPR by 7 instead of multiplying the running cardiac output by the running TPR."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": [
+      "homeostasis",
+      "communication",
+      "interdependence"
+    ],
+    "q": "A healthy adult quickly loses about 700 mL of blood from a cut artery, and the bleeding is stopped. Predict each variable first in the first few seconds, before the reflex acts, and then about one minute later, after the baroreceptor reflex has acted. Compare each with its value before the bleed unless stated otherwise.",
+    "variables": [
+      {
+        "name": "Mean arterial pressure, first few seconds",
+        "answer": "down",
+        "why": "Less blood volume means less venous return, a smaller stroke volume and lower cardiac output, so MAP = CO × TPR falls."
+      },
+      {
+        "name": "Baroreceptor firing, first few seconds",
+        "answer": "down",
+        "why": "Lower arterial pressure stretches the carotid sinus and aortic arch walls less."
+      },
+      {
+        "name": "Heart rate, one minute later",
+        "answer": "up",
+        "why": "The cardiovascular center raises sympathetic output and lowers vagal output to the SA node."
+      },
+      {
+        "name": "Total peripheral resistance, one minute later",
+        "answer": "up",
+        "why": "Norepinephrine on alpha-1 receptors constricts arterioles in the skin, gut, kidneys and resting muscle."
+      },
+      {
+        "name": "Mean arterial pressure one minute later, compared with its lowest point",
+        "answer": "up",
+        "why": "Higher heart rate, contractility, venous tone and TPR push MAP back up toward normal."
+      },
+      {
+        "name": "Blood flow to the skin, one minute later",
+        "answer": "down",
+        "why": "Skin arterioles constrict strongly under sympathetic stimulation, which is why a bleeding person looks pale and feels cool."
+      }
+    ],
+    "why": {
+      "correct": "The immediate change is a fall in venous return, cardiac output and MAP, sensed as reduced baroreceptor firing. Within a minute the reflex raises heart rate, contractility, venous tone and TPR. MAP climbs back toward normal, at the cost of lower flow to the skin and gut, while the brain and heart keep their flow."
+    }
+  },
+  {
+    "id": "anp-bp-short-term-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A 60-year-old with 25 years of diabetes mellitus feels faint every time she stands. Her pressure falls from 134/80 to 104/66 on standing, and her heart rate stays at 76 beats/min. Which part of the reflex loop most likely fails?",
+    "options": [
+      "The baroreceptors, whose channels are blocked by high blood sugar",
+      "The efferent autonomic nerves to her heart and vessels",
+      "Her veins, which no longer hold any pooled blood when she stands",
+      "Her brain arterioles, which fail to autoregulate"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Long-standing diabetes can damage autonomic nerves. Her pressure falls, yet neither heart rate nor resistance rises. That points to the efferent pathway: the sympathetic signals never reach the SA node and the arterioles, so the reflex cannot respond.",
+      "options": [
+        "Nothing points to glucose blocking baroreceptor channels. Autonomic nerve damage is the well-known complication of long-standing diabetes.",
+        "Correct. Damaged sympathetic efferent nerves leave the heart and arterioles unable to respond, so both heart rate and TPR stay flat.",
+        "Her veins still pool blood on standing; that pooling is what lowers her pressure. The problem is the missing reflex response to it.",
+        "Autoregulation protects brain flow, but it cannot raise systemic pressure or heart rate. Her unchanged heart rate points to a problem in the reflex, not in local control."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence",
+      "homeostasis"
+    ],
+    "q": "During a sudden fall in blood pressure, the baroreceptor reflex raises sympathetic output throughout the body. In which organ does blood flow fall the least?",
+    "options": [
+      "The skin",
+      "The gut",
+      "The kidneys",
+      "The brain"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Brain arterioles respond little to sympathetic vasoconstriction and are controlled mainly by local autoregulation, which holds flow steady over a wide range of pressure. The heart is protected in the same way.",
+      "options": [
+        "Skin arterioles constrict strongly under sympathetic stimulation, so skin flow falls early and a lot.",
+        "The gut's arterioles constrict strongly, so gut flow falls, shifting blood toward the brain and heart.",
+        "Kidney arterioles constrict under sympathetic stimulation, so kidney flow falls.",
+        "Correct. Local autoregulation, not sympathetic signals, controls brain flow."
+      ]
+    }
+  },
+  {
+    "id": "anp-bp-short-term-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which blood pressure change, within 3 minutes of standing, meets the definition of orthostatic hypotension?",
+    "options": [
+      "A fall of 5 mm Hg or more in systolic pressure within a minute",
+      "A rise in heart rate of 10 beats/min or more above the lying rate",
+      "A systolic pressure below 120 mm Hg on any reading after standing",
+      "A fall of at least 20 mm Hg systolic or 10 mm Hg diastolic"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Orthostatic hypotension is a sustained fall of at least 20 mm Hg systolic or at least 10 mm Hg diastolic within 3 minutes of standing.",
+      "options": [
+        "A small fall of a few mm Hg is normal in the first seconds of standing and is corrected by the reflex.",
+        "A rise of 10 to 20 beats/min is the normal reflex response to standing, not a failure of it.",
+        "Many healthy people have a systolic pressure below 120. The definition is based on the fall on standing, not on one reading.",
+        "Correct. Either criterion is enough."
+      ]
+    }
+  }
+]

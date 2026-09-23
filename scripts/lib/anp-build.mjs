@@ -46,6 +46,13 @@ export function loadCourse(root) {
   }
   const glossary = mergeDir(join(data, 'glossary'));
   const figures = mergeDir(join(data, 'figures'));
+  // A figure's named labels live in data/labels/<figure id>.json, apart from
+  // the figure entry, so naming labels and editing captions never collide.
+  const labelDir = join(data, 'labels');
+  if (existsSync(labelDir)) for (const f of readdirSync(labelDir).filter(f => f.endsWith('.json'))) {
+    const id = f.slice(0, -5);
+    if (figures[id]) figures[id] = { ...figures[id], labels: readJson(join(labelDir, f)).labels || [] };
+  }
   const built = new Set(map.topics.map(t => t.id).filter(id => lessons[id] && notes[id] && questions[id]));
   const chapterOf = id => map.chapters.find(c => c.id === map.topics[topicIndex.get(id)].chapter);
   return { map, topicIndex, concepts, lessons, notes, questions, glossary, figures, built, chapterOf, data };
@@ -137,7 +144,7 @@ export function crumbNav(items, depth) {
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
   <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a></p>
+  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a></p>
 </footer>`;
 }
 
@@ -214,16 +221,29 @@ export function glossify(C, html, { depth, topic, seen, index }) {
 
 /* ------------------------------------------------------------- figures */
 
-export function figureImg(C, figId, depth, { masks = true } = {}) {
+/* A label printed on a figure names a concept. When that concept is taught
+   after the page's topic, the label is covered for good on that page: a figure
+   must not teach a word early any more than the text may (spec section 7). */
+export function laterLabel(C, l, topicId) {
+  if (!topicId || !l.concept) return false;
+  const c = C.concepts.get(l.concept);
+  return !!c && C.topicIndex.get(c.taughtIn) > C.topicIndex.get(topicId);
+}
+
+export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) {
   const f = C.figures[figId];
   if (!f) return '';
   const src = `${depth}figures/${figId}.${f.ext || 'jpg'}`;
-  const labels = (f.labels || []).filter(l => l.box);
+  const all = (f.labels || []).filter(l => l.box);
+  const covered = all.filter(l => laterLabel(C, l, topic));
+  const labels = all.filter(l => !covered.includes(l));
   const W = f.w || 1000, H = f.h || 1000;
   const pct = (v, of) => (100 * v / of).toFixed(2) + '%';
+  const at = b => `left:${pct(b[0], W)};top:${pct(b[1], H)};width:${pct(b[2], W)};height:${pct(b[3], H)}`;
   const maskHtml = masks && labels.length ? labels.map(l =>
-    `<button type="button" class="anp-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="left:${pct(l.box[0], W)};top:${pct(l.box[1], H)};width:${pct(l.box[2], W)};height:${pct(l.box[3], H)}"><span>${esc(l.name)}</span></button>`).join('') : '';
-  return `<div class="anp-figimg${labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${maskHtml}</div>`;
+    `<button type="button" class="anp-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="${at(l.box)}"><span>${esc(l.name)}</span></button>`).join('') : '';
+  const coverHtml = covered.map(l => `<span class="anp-cover" aria-hidden="true" style="${at(l.box)}"></span>`).join('');
+  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${coverHtml}${maskHtml}</div>`;
 }
 
 export function credit(f) {
@@ -239,7 +259,7 @@ export function credit(f) {
 
 /* Numbers every figure on a page and rewrites <a class="figref"> to match,
    and fills registered figures (<figure data-fig>) with their image. */
-export function renderFigures(C, html, depth) {
+export function renderFigures(C, html, depth, topic = null) {
   let n = 0;
   const numbers = {};
   html = html.replace(/<figure\b([^>]*)>([\s\S]*?)<\/figure>/g, (all, attrs, inner) => {
@@ -249,7 +269,9 @@ export function renderFigures(C, html, depth) {
     const fig = (attrs.match(/\bdata-fig="([^"]+)"/) || [])[1];
     let body = inner;
     let cap = (inner.match(/<figcaption>([\s\S]*?)<\/figcaption>/) || [])[1] || '';
-    if (fig) body = figureImg(C, fig, depth, { masks: false });
+    // The generator numbers figures; an author's own "Figure 3." would repeat it.
+    cap = cap.replace(/^\s*(<b>|<strong>)?\s*Figure\s+\d+[.:]?\s*(<\/b>|<\/strong>)?\s*/i, '');
+    if (fig) body = figureImg(C, fig, depth, { masks: false, topic });
     else body = inner.replace(/<figcaption>[\s\S]*?<\/figcaption>/, '');
     const cr = fig ? ' ' + credit(C.figures[fig]) : '';
     const cls = (attrs.match(/\bclass="([^"]+)"/) || [])[1];
@@ -275,8 +297,15 @@ export function questionForPage(C, q, topicId) {
     figure: q.figure, pin: q.pin, why: q.why, misconception: q.misconception,
     // A figure question carries its image by path from the course root; the
     // runtime prefixes the page's base, so the same data works on any page.
-    fig: q.figure && C.figures[q.figure] ? { src: `figures/${q.figure}.${C.figures[q.figure].ext || 'jpg'}`, alt: C.figures[q.figure].alt, w: C.figures[q.figure].w || 1000, h: C.figures[q.figure].h || 800 } : undefined,
+    fig: q.figure && C.figures[q.figure] ? figForQuestion(C, q.figure, topicId) : undefined,
   };
+}
+
+function figForQuestion(C, id, topicId) {
+  const f = C.figures[id], W = f.w || 1000, H = f.h || 800;
+  const covers = (f.labels || []).filter(l => l.box && laterLabel(C, l, topicId))
+    .map(l => [l.box[0] / W, l.box[1] / H, l.box[2] / W, l.box[3] / H].map(v => +(100 * v).toFixed(2)));
+  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}) };
 }
 
 /* The question as static HTML (readable without JavaScript; anp-questions.js

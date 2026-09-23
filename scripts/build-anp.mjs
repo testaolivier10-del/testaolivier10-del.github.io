@@ -27,13 +27,18 @@ const C = loadCourse(ROOT);
 const { map } = C;
 const INDEX = termIndex(C);
 const outputs = new Map(); // relative path -> content
-const put = (rel, content) => outputs.set(rel, content);
+// Every table on a page sits in a scrolling wrapper, so a wide one scrolls
+// inside itself instead of widening the page on a phone (check-site).
+const wrapTables = html => html.replace(/(<div class="table-wrap">\s*)?<table\b([\s\S]*?)<\/table>(\s*<\/div>)?/g,
+  (m, open, inner, close) => open && close ? m : `<div class="table-wrap"><table${inner}</table></div>`);
+const put = (rel, content) => outputs.set(rel, rel.endsWith('.html') ? wrapTables(content) : content);
 
 const topicById = id => map.topics[C.topicIndex.get(id)];
 const chapterById = id => map.chapters.find(c => c.id === id);
 const topicsOf = chId => map.topics.filter(t => t.chapter === chId);
 const builtTopics = map.topics.filter(t => C.built.has(t.id));
 const coreById = id => map.coreConcepts.find(c => c.id === id);
+const chapterBuilt = ch => topicsOf(ch.id).some(t => C.built.has(t.id));
 const chapterNumber = chId => map.chapters.findIndex(c => c.id === chId) + 1;
 const topicNumber = id => C.topicIndex.get(id) + 1;
 
@@ -75,6 +80,8 @@ function lessonPage(id) {
     `${t.title}: Lesson | ${COURSE_NAME}`,
     `${t.title}: Lesson | A&P`,
     `${t.title} | A&P lesson`,
+    // Truncated last: the kind goes first so the lesson and notes titles differ.
+    `A&P lesson: ${t.title}`,
   ]);
   const desc = clampDesc(`${text(L.summary)}`);
   const url = `${SITE}${BASE}lessons/${id}.html`;
@@ -105,7 +112,7 @@ function lessonPage(id) {
     <section class="anp-part" id="anatomy" aria-labelledby="h-anatomy">
       <h2 id="h-anatomy"><span class="anp-part-n">4</span>Anatomy</h2>
       <figure class="anp-figure anp-anatomy">
-        ${figureImg(C, L.anatomy.figure, depth)}
+        ${figureImg(C, L.anatomy.figure, depth, { topic: id })}
         <figcaption>${g(L.anatomy.caption || '')} ${credit(fig)}</figcaption>
       </figure>
       ${(fig.labels || []).some(l => l.box) ? '<button type="button" class="btn-outline anp-toggle-labels" aria-pressed="false">Hide labels</button><p class="anp-hint">With labels hidden, select a box to reveal its label.</p>' : ''}
@@ -125,7 +132,7 @@ function lessonPage(id) {
   <header class="hero anp-hero">
     <div class="eyebrow">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)} · Topic ${topicNumber(id)}</div>
     <h1>${esc(t.title)}</h1>
-    <p class="anp-tags"><span class="anp-tag">A&amp;P ${t.course}</span><span class="anp-tag">${esc(t.kind)}</span><a class="anp-tag anp-read" href="../notes/${id}.html">Read the notes</a></p>
+    <p class="anp-tags anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span><span class="anp-tag">${esc(t.kind)}</span><a class="anp-tag anp-read" href="../notes/${id}.html">Read the notes</a></p>
   </header>
 
   <section class="anp-part anp-hook" id="hook" aria-labelledby="h-hook">
@@ -150,7 +157,7 @@ ${anatomy}
 
   <section class="anp-part" id="core" aria-labelledby="h-core">
     <h2 id="h-core"><span class="anp-part-n">${partN(6)}</span>Core concepts</h2>
-    <p class="anp-core-tags">${t.coreConcepts.map(c => `<a class="anp-core" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}</p>
+    <p class="anp-core-tags anp-nav-ref">${t.coreConcepts.map(c => `<a class="anp-core" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}</p>
   </section>
 
   <section class="anp-part anp-misconception" id="misconception" aria-labelledby="h-mis">
@@ -193,13 +200,14 @@ function notesPage(id) {
   const t = topicById(id), ch = chapterById(t.chapter);
   const depth = '../';
   const seen = new Set();
-  let html = renderFigures(C, C.notes[id], depth);
+  let html = renderFigures(C, C.notes[id], depth, id);
   html = glossify(C, html, { depth, topic: id, seen, index: INDEX });
   const firstP = (C.notes[id].match(/<p>([\s\S]*?)<\/p>/) || [])[1] || t.title;
   const title = clampTitle([
     `${t.title}: Notes | ${COURSE_NAME}`,
     `${t.title}: Notes | A&P`,
     `${t.title} | A&P notes`,
+    `A&P notes: ${t.title}`,
   ]);
   const desc = clampDesc(firstP);
   const url = `${SITE}${BASE}notes/${id}.html`;
@@ -232,7 +240,7 @@ function notesPage(id) {
   <header class="hero anp-hero">
     <div class="eyebrow">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)} · Topic ${topicNumber(id)}</div>
     <h1>${esc(t.title)}</h1>
-    <p class="anp-tags"><span class="anp-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="anp-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<a class="anp-tag anp-read" href="../lessons/${id}.html">Interactive lesson</a></p>
+    <p class="anp-tags anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="anp-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<a class="anp-tag anp-read" href="../lessons/${id}.html">Interactive lesson</a></p>
   </header>
   <article class="anp-prose">
 ${html}
@@ -366,6 +374,49 @@ ${tail({ depth, section: 'learn', extra: ['anp-chapter.js'] })}
   return head({ title, desc, path: 'concepts/index.html', depth, ogType: 'website', jsonld }) + body;
 }
 
+/* ------------------------------------------------------------ credits */
+
+// Every figure the built pages show, with its source, license and where it is
+// used (spec section 2: record each figure's license and credit).
+function creditsPage() {
+  const depth = '';
+  const rows = [];
+  const figDir = join(C.data, 'figures');
+  for (const t of builtTopics) {
+    const p = join(figDir, `${t.id}.json`);
+    if (!existsSync(p)) continue;
+    for (const [id, f] of Object.entries(JSON.parse(readFileSync(p, 'utf8')))) if (f.source === 'openstax') rows.push({ id, f, t });
+  }
+  const title = `Figure credits | ${COURSE_NAME}`;
+  const desc = clampDesc(`The source and license of every figure in the ${COURSE_NAME} course. OpenStax figures are used under CC BY 4.0.`);
+  const url = `${SITE}${BASE}credits.html`;
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebPage', '@id': `${url}#page`, name: 'Figure credits', url, description: desc, isPartOf: { '@id': COURSE_ID } },
+    crumbs(orgCrumbs([{ name: 'Figure credits', url }])),
+  ] };
+  const body = `
+<body>
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<main id="main" class="xshell anp-credits">
+  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Figure credits' }], depth)}
+  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Figure credits</h1>
+    <p class="lede">Figures marked OpenStax come from <a href="https://openstax.org/details/books/anatomy-and-physiology-2e">OpenStax <i>Anatomy and Physiology 2e</i></a>, &copy; Rice University, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We resize them, and in lessons and the lab practical we cover some printed labels. OpenStax and Rice University do not endorse LevlPrep. Every other diagram in the course is drawn for it.</p></header>
+  <table class="anp-credit-table"><thead><tr><th scope="col">Figure</th><th scope="col">Used in</th><th scope="col">Source</th><th scope="col">License</th></tr></thead><tbody>
+  ${rows.map(({ id, f, t }) => {
+    const page = f.openstax && f.openstax.page ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}` : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
+    return `<tr><td>${esc((f.openstax && f.openstax.figure) ? `OpenStax Figure ${f.openstax.figure}` : id)}</td><td><a href="notes/${t.id}.html">${esc(t.title)}</a></td><td><a href="${page}">openstax.org</a></td><td>${esc(f.license)}</td></tr>`;
+  }).join('\n  ')}
+  </tbody></table>
+</main>
+${footer(depth)}
+${tail({ depth, section: 'credits' })}
+</body>
+</html>
+`;
+  return head({ title, desc, path: 'credits.html', depth, ogType: 'website', jsonld }) + body;
+}
+
 /* ----------------------------------------------------------- glossary */
 
 function glossaryPage() {
@@ -410,7 +461,8 @@ function chapterList(depth, withProgress) {
     const chs = map.chapters.filter(c => c.part === p.id);
     return `<section class="anp-partgroup" aria-labelledby="p-${p.id}"><h2 id="p-${p.id}">${esc(p.title)}</h2><ol class="anp-chapters" start="${chapterNumber(chs[0].id)}">${chs.map(ch => {
       const ts = topicsOf(ch.id), b = ts.filter(t => C.built.has(t.id)).length;
-      return `<li data-chapter="${ch.id}"><a href="${depth}chapters/${ch.id}.html"><b>${esc(ch.title)}</b><span class="anp-small">${ts.length} topics · A&amp;P ${ch.course}${b ? '' : ' · coming in a later part'}</span></a>${withProgress && b ? `<span class="anp-mastery" data-mastery-chapter="${ch.id}"></span>` : ''}</li>`;
+      const label = `<b>${esc(ch.title)}</b><span class="anp-small">${ts.length} topics · A&amp;P ${ch.course}${b ? '' : ' · coming in a later part'}</span>`;
+      return `<li data-chapter="${ch.id}">${b ? `<a href="${depth}chapters/${ch.id}.html">${label}</a>` : `<div class="anp-unbuilt-ch">${label}</div>`}${withProgress && b ? `<span class="anp-mastery" data-mastery-chapter="${ch.id}"></span>` : ''}</li>`;
     }).join('')}</ol></section>`;
   });
   return parts.join('');
@@ -448,7 +500,7 @@ function homePage() {
   const foundations = map.chapters.filter(c => c.part === 'foundations');
   const nb = builtTopics.length;
   const title = 'Anatomy & Physiology course (Beta) | LevlPrep';
-  const desc = 'Free anatomy and physiology course: lessons and notes that build in strict order, mechanism-first physiology, lab practical, prediction tools and TEAS A&P practice.';
+  const desc = 'Free anatomy and physiology course: lessons that build in strict order, mechanism-first physiology, a virtual lab practical and TEAS A&P practice.';
   const url = `${SITE}${BASE}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'Course', '@id': COURSE_ID, name: COURSE_NAME, url, description: desc, inLanguage: 'en', isAccessibleForFree: true,
@@ -489,7 +541,7 @@ function homePage() {
   <section class="anp-part" aria-labelledby="h-start">
     <h2 id="h-start">Start here: Foundations</h2>
     <p>Recommended, not required. Foundations teaches the vocabulary, chemistry, cells, tissues, signals and feedback that every system chapter builds on.</p>
-    <ol class="anp-chapters">${foundations.map(ch => `<li><a href="chapters/${ch.id}.html"><b>${esc(ch.title)}</b><span class="anp-small">${topicsOf(ch.id).length} topics</span></a><span class="anp-mastery" data-mastery-chapter="${ch.id}"></span></li>`).join('')}</ol>
+    <ol class="anp-chapters">${foundations.map(ch => chapterBuilt(ch) ? `<li><a href="chapters/${ch.id}.html"><b>${esc(ch.title)}</b><span class="anp-small">${topicsOf(ch.id).length} topics</span></a><span class="anp-mastery" data-mastery-chapter="${ch.id}"></span></li>` : `<li><div class="anp-unbuilt-ch"><b>${esc(ch.title)}</b><span class="anp-small">${topicsOf(ch.id).length} topics · coming in a later part</span></div></li>`).join('')}</ol>
   </section>
 
   <section class="anp-part" aria-labelledby="h-go">
@@ -614,9 +666,12 @@ C.coreText = existsSync(coreTextPath) ? JSON.parse(readFileSync(coreTextPath, 'u
 put('index.html', homePage());
 put('learn.html', learnPage());
 put('glossary.html', glossaryPage());
+put('credits.html', creditsPage());
 put('concepts/index.html', coreIndexPage());
 for (const c of map.coreConcepts) put(`concepts/${c.id}.html`, corePage(c.id));
-for (const ch of map.chapters) put(`chapters/${ch.id}.html`, chapterPage(ch.id));
+// A chapter page exists once the chapter has a built topic: no "coming soon"
+// pages (spec section 19, decision 1).
+for (const ch of map.chapters.filter(chapterBuilt)) put(`chapters/${ch.id}.html`, chapterPage(ch.id));
 for (const t of builtTopics) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
 put('assets/anp-curriculum.js', curriculumJs().replace('window.AnpCurriculum = ', `window.AnpTools = ${JSON.stringify(PAGES.tools.map(t => ({ slug: t.slug, name: t.name, blurb: t.blurb })))};\nwindow.AnpCurriculum = `));
 put('assets/glossary.json', glossaryJson());

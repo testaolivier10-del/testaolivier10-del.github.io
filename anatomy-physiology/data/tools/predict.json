@@ -1,0 +1,3282 @@
+{
+  "about": "Predict the change (docs/anp-spec.md section 8.2). Each scenario states a perturbation; the learner predicts up, down or none for each variable, then sees its causal chain. Levels: 1 one step in one system, 2 several steps in one system, 3 across systems, 4 a time course answered in two stages (the immediate change, then after compensation). A variable's chain lists keys of its stage's steps, in causal order from the stage's start; shared steps merge into one diagram. Item ids: predict:<scenario>:<variable>, with -<stage> added for level 4. Checked by scripts/lib/anp-tool-checks/predict.mjs.",
+  "levels": {
+    "1": "One step, one system",
+    "2": "Several steps, one system",
+    "3": "Across systems",
+    "4": "Time course: the change, then compensation"
+  },
+  "scenarios": [
+    {
+      "id": "tube-narrows",
+      "title": "A tube narrows",
+      "topic": "gradients-flow",
+      "theme": "narrow a tube, predict flow",
+      "core": [
+        "gradients"
+      ],
+      "level": 1,
+      "misconception": "halving the radius halves the flow",
+      "setup": "Water flows through a rubber tube from a tank. The pressures at the two ends of the tube are held constant. You squeeze the tube until its radius is half what it was.",
+      "start": "Tube radius halves",
+      "steps": {
+        "r": "Resistance rises about 16-fold",
+        "f": "Flow falls to about 1/16",
+        "p": "Pressures at both ends held fixed",
+        "g": "Pressure gradient unchanged"
+      },
+      "variables": [
+        {
+          "id": "resistance",
+          "name": "Resistance of the tube",
+          "answer": "up",
+          "chain": [
+            "r"
+          ],
+          "why": "Resistance depends on the fourth power of the radius. Half the radius gives 2 × 2 × 2 × 2 = 16 times the resistance."
+        },
+        {
+          "id": "flow",
+          "name": "Flow through the tube",
+          "answer": "down",
+          "chain": [
+            "r",
+            "f"
+          ],
+          "why": "Flow equals the pressure gradient divided by resistance. The gradient has not changed and resistance is about 16 times higher, so flow falls to about one sixteenth, far more than half."
+        },
+        {
+          "id": "gradient",
+          "name": "Pressure gradient between the two ends",
+          "answer": "none",
+          "chain": [
+            "p",
+            "g"
+          ],
+          "why": "The gradient is the difference between the pressures at the two ends, and both are held fixed. Squeezing the tube changes resistance, not the pressure difference that drives flow."
+        }
+      ]
+    },
+    {
+      "id": "solute-added",
+      "title": "Solute added to one side",
+      "topic": "diffusion-osmosis",
+      "theme": "add solute to one side of a membrane, predict water movement",
+      "core": [
+        "gradients"
+      ],
+      "level": 1,
+      "misconception": "the solute moves to even out the concentrations",
+      "setup": "Two compartments of equal volume are separated by a membrane that lets water through but not glucose. Both start as pure water. You dissolve glucose in side A.",
+      "start": "Glucose dissolved in side A",
+      "steps": {
+        "wa": "Water less concentrated on side A",
+        "os": "Water diffuses from B into A (osmosis)",
+        "va": "Volume of A rises",
+        "vb": "Volume of B falls",
+        "mb": "Membrane holds the glucose back",
+        "gb": "No glucose reaches B",
+        "sa": "Side A holds solute that cannot cross",
+        "opa": "Osmotic pressure of A rises"
+      },
+      "variables": [
+        {
+          "id": "water-into-a",
+          "name": "Net movement of water from side B into side A",
+          "answer": "up",
+          "chain": [
+            "wa",
+            "os"
+          ],
+          "why": "Glucose takes up room among the water molecules on side A, so water is less concentrated there. Water diffuses down its own gradient from B into A. That net movement of water is osmosis."
+        },
+        {
+          "id": "volume-a",
+          "name": "Volume of side A",
+          "answer": "up",
+          "chain": [
+            "wa",
+            "os",
+            "va"
+          ],
+          "why": "Water arrives on side A and the glucose cannot leave, so the volume of side A grows."
+        },
+        {
+          "id": "volume-b",
+          "name": "Volume of side B",
+          "answer": "down",
+          "chain": [
+            "wa",
+            "os",
+            "vb"
+          ],
+          "why": "The water that moves into A comes from B, so side B loses volume."
+        },
+        {
+          "id": "glucose-b",
+          "name": "Amount of glucose on side B",
+          "answer": "none",
+          "chain": [
+            "mb",
+            "gb"
+          ],
+          "why": "The membrane does not let glucose through, so none reaches side B. Water moves instead, which is why the volumes change."
+        },
+        {
+          "id": "osmotic-a",
+          "name": "Osmotic pressure of the solution on side A",
+          "answer": "up",
+          "chain": [
+            "sa",
+            "opa"
+          ],
+          "why": "Osmotic pressure depends on the concentration of solute that cannot cross the membrane. Side A went from none to some, so its osmotic pressure rose, and that is what pulls water in."
+        }
+      ]
+    },
+    {
+      "id": "acid-buffer",
+      "title": "Acid added with and without a buffer",
+      "topic": "acids-bases-ph",
+      "theme": "add acid to a buffered vs unbuffered solution",
+      "core": [
+        "homeostasis"
+      ],
+      "level": 1,
+      "misconception": "a buffer keeps pH exactly constant",
+      "setup": "Two beakers hold the same salt solution at pH 7.4. Beaker 2 also contains bicarbonate, the base half of the carbonic acid–bicarbonate buffer. You add the same small amount of a strong acid to each beaker.",
+      "start": "Strong acid added to both beakers",
+      "steps": {
+        "rel": "The acid releases H+",
+        "nob": "Beaker 1: nothing takes up the H+",
+        "h1": "Beaker 1: H+ concentration rises sharply",
+        "p1": "Beaker 1: pH falls a lot",
+        "bind": "Beaker 2: bicarbonate binds most of the H+",
+        "used": "Beaker 2: bicarbonate is used up",
+        "ca": "Beaker 2: carbonic acid forms",
+        "few": "Beaker 2: a little H+ stays free",
+        "p2": "Beaker 2: pH falls slightly"
+      },
+      "variables": [
+        {
+          "id": "h-unbuffered",
+          "name": "Hydrogen ion concentration in beaker 1",
+          "answer": "up",
+          "chain": [
+            "rel",
+            "nob",
+            "h1"
+          ],
+          "why": "A strong acid releases all its hydrogen ions in water. With no buffer to take them up, every one of them stays free."
+        },
+        {
+          "id": "ph-unbuffered",
+          "name": "pH of beaker 1",
+          "answer": "down",
+          "chain": [
+            "rel",
+            "nob",
+            "h1",
+            "p1"
+          ],
+          "why": "pH falls as hydrogen ion concentration rises. Without a buffer, even a small amount of strong acid can drop the pH by several units."
+        },
+        {
+          "id": "bicarbonate",
+          "name": "Bicarbonate in beaker 2",
+          "answer": "down",
+          "chain": [
+            "rel",
+            "bind",
+            "used"
+          ],
+          "why": "Bicarbonate combines with the added hydrogen ions, so some of it is used up. That is the buffer doing its job."
+        },
+        {
+          "id": "carbonic",
+          "name": "Carbonic acid in beaker 2",
+          "answer": "up",
+          "chain": [
+            "rel",
+            "bind",
+            "ca"
+          ],
+          "why": "Each hydrogen ion that bicarbonate takes up becomes part of a carbonic acid molecule. Carbonic acid is a weak acid, so it holds on to most of that hydrogen."
+        },
+        {
+          "id": "ph-buffered",
+          "name": "pH of beaker 2",
+          "answer": "down",
+          "chain": [
+            "rel",
+            "bind",
+            "few",
+            "p2"
+          ],
+          "why": "A buffer limits a pH change; it does not prevent one. A small share of the hydrogen ions stays free, so the pH falls a little, far less than in beaker 1."
+        }
+      ]
+    },
+    {
+      "id": "rbc-hypertonic",
+      "title": "A red blood cell in a hypertonic solution",
+      "topic": "passive-transport",
+      "theme": "a red blood cell placed in a hypertonic solution",
+      "core": [
+        "gradients",
+        "compartments"
+      ],
+      "level": 1,
+      "misconception": "salt moves into the cell to balance the concentrations",
+      "setup": "A red blood cell is moved from plasma into a salt solution much more concentrated than the fluid inside the cell. Water crosses the membrane freely; the salt, in effect, does not.",
+      "start": "Cell placed in a hypertonic solution",
+      "steps": {
+        "wi": "Water more concentrated inside the cell",
+        "out": "Water leaves the cell by osmosis",
+        "sh": "Cell shrinks (crenation)",
+        "same": "Same solutes, less water",
+        "stay": "Solutes stay on their own side",
+        "cnt": "Solute count inside unchanged"
+      },
+      "variables": [
+        {
+          "id": "water-out",
+          "name": "Net movement of water out of the cell",
+          "answer": "up",
+          "chain": [
+            "wi",
+            "out"
+          ],
+          "why": "The solution outside has more solute, so water is less concentrated outside than inside. Water diffuses out of the cell down its own gradient."
+        },
+        {
+          "id": "volume",
+          "name": "Cell volume",
+          "answer": "down",
+          "chain": [
+            "wi",
+            "out",
+            "sh"
+          ],
+          "why": "Water leaves and nothing replaces it, so the cell shrinks and its membrane crinkles. That is crenation."
+        },
+        {
+          "id": "conc-inside",
+          "name": "Solute concentration inside the cell",
+          "answer": "up",
+          "chain": [
+            "wi",
+            "out",
+            "same"
+          ],
+          "why": "The solute particles stay inside while water leaves, so the same amount of solute sits in a smaller volume."
+        },
+        {
+          "id": "particles",
+          "name": "Number of solute particles inside the cell",
+          "answer": "none",
+          "chain": [
+            "stay",
+            "cnt"
+          ],
+          "why": "Only water crossed the membrane. The number of particles inside is the same; their concentration rose because the water around them left."
+        }
+      ]
+    },
+    {
+      "id": "glucose-saturation",
+      "title": "More glucose, busy carriers",
+      "topic": "passive-transport",
+      "core": [
+        "gradients"
+      ],
+      "level": 1,
+      "misconception": "a steeper gradient always speeds transport",
+      "setup": "Glucose enters a cell by facilitated diffusion through carrier proteins. The glucose concentration outside is already so high that every carrier is busy all the time. The outside concentration now doubles.",
+      "start": "Outside glucose doubles",
+      "steps": {
+        "steep": "Glucose gradient becomes steeper",
+        "busy": "Every carrier was already busy",
+        "max": "Entry stays at the transport maximum",
+        "none": "Nothing signals the cell to add carriers",
+        "same": "Carrier number unchanged"
+      },
+      "variables": [
+        {
+          "id": "gradient",
+          "name": "Glucose concentration gradient across the membrane",
+          "answer": "up",
+          "chain": [
+            "steep"
+          ],
+          "why": "The inside concentration has not changed and the outside has doubled, so the difference between them is larger."
+        },
+        {
+          "id": "rate",
+          "name": "Rate of glucose entry into the cell",
+          "answer": "none",
+          "chain": [
+            "steep",
+            "busy",
+            "max"
+          ],
+          "why": "Facilitated diffusion depends on a limited number of carriers. Once every carrier is busy (saturation), a steeper gradient cannot speed entry: the rate stays at its maximum."
+        },
+        {
+          "id": "carriers",
+          "name": "Number of glucose carriers in the membrane",
+          "answer": "none",
+          "chain": [
+            "none",
+            "same"
+          ],
+          "why": "The glucose level outside does not change how many carrier proteins the cell has in its membrane in this moment, so the ceiling on the rate stays where it was."
+        }
+      ]
+    },
+    {
+      "id": "pump-blocked",
+      "title": "The sodium–potassium pump is poisoned",
+      "topic": "active-transport",
+      "theme": "the sodium–potassium pump is poisoned",
+      "core": [
+        "energy",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "the gradients vanish instantly when the pump stops",
+      "setup": "A poison binds the sodium–potassium pumps of a cell and stops them. The cell keeps making ATP. Predict the changes over the next hour.",
+      "start": "Sodium–potassium pumps stop",
+      "steps": {
+        "naout": "Pump no longer moves Na+ out",
+        "leakin": "Na+ keeps leaking in",
+        "nain": "Na+ inside rises",
+        "kin": "Pump no longer moves K+ in",
+        "leakout": "K+ keeps leaking out",
+        "kdown": "K+ inside falls",
+        "solute": "Solute builds up inside",
+        "water": "Water follows by osmosis",
+        "swell": "Cell swells",
+        "noatp": "The pump splits no ATP",
+        "atp": "ATP use by the pumps falls",
+        "grad": "Na+ gradient runs down",
+        "co": "Less energy to drive glucose in with Na+",
+        "glu": "Coupled glucose uptake slows"
+      },
+      "variables": [
+        {
+          "id": "na-in",
+          "name": "Sodium concentration inside the cell",
+          "answer": "up",
+          "chain": [
+            "naout",
+            "leakin",
+            "nain"
+          ],
+          "why": "Sodium leaks in down its gradient all the time, and normally the pump throws it back out. With the pump stopped, the leak continues and sodium accumulates inside."
+        },
+        {
+          "id": "k-in",
+          "name": "Potassium concentration inside the cell",
+          "answer": "down",
+          "chain": [
+            "kin",
+            "leakout",
+            "kdown"
+          ],
+          "why": "Potassium leaks out down its gradient. The pump normally brings it back in; now nothing replaces what leaks out."
+        },
+        {
+          "id": "volume",
+          "name": "Cell volume",
+          "answer": "up",
+          "chain": [
+            "naout",
+            "leakin",
+            "nain",
+            "solute",
+            "water",
+            "swell"
+          ],
+          "why": "The pump moves three sodium ions out for every two potassium ions in, so it constantly removes solute from the cell. Without it, sodium and the ions that follow it build up inside, water follows by osmosis, and the cell swells."
+        },
+        {
+          "id": "atp-use",
+          "name": "ATP used by the sodium–potassium pumps",
+          "answer": "down",
+          "chain": [
+            "noatp",
+            "atp"
+          ],
+          "why": "The pump is an enzyme that splits ATP to power each cycle. A blocked pump does not cycle, so it uses no ATP, even though ATP is still available."
+        },
+        {
+          "id": "glucose-uptake",
+          "name": "Glucose uptake that is coupled to sodium entry",
+          "answer": "down",
+          "chain": [
+            "naout",
+            "leakin",
+            "nain",
+            "grad",
+            "co",
+            "glu"
+          ],
+          "why": "This is secondary active transport: sodium moving down its gradient drags glucose in with it. As sodium builds up inside, the gradient shrinks and has less energy to give, so glucose uptake slows."
+        }
+      ]
+    },
+    {
+      "id": "oxygen-cut",
+      "title": "A cell’s oxygen supply is cut off",
+      "topic": "cellular-respiration",
+      "theme": "oxygen supply to a cell is cut off",
+      "core": [
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "without oxygen a cell makes no ATP at all",
+      "setup": "A blood vessel supplying a small patch of tissue is blocked, so its cells receive no oxygen. Predict the changes inside one cell over the next few minutes.",
+      "start": "No oxygen reaches the cell",
+      "steps": {
+        "etc": "Electron transport chain stops",
+        "aer": "Aerobic ATP production stops",
+        "pyr": "Pyruvate cannot be broken down aerobically",
+        "lac": "Pyruvate is converted to lactate",
+        "adp": "ATP falls and ADP rises",
+        "gly": "Glycolysis speeds up",
+        "two": "Glycolysis yields only 2 ATP per glucose",
+        "tot": "Total ATP production falls",
+        "cac": "Citric acid cycle stops",
+        "co2": "CO2 production falls"
+      },
+      "variables": [
+        {
+          "id": "aerobic-atp",
+          "name": "ATP made by aerobic respiration",
+          "answer": "down",
+          "chain": [
+            "etc",
+            "aer"
+          ],
+          "why": "Oxygen is the final electron acceptor of the electron transport chain. Without it the chain stops, and so does the ATP it would have made."
+        },
+        {
+          "id": "lactate",
+          "name": "Lactate production",
+          "answer": "up",
+          "chain": [
+            "etc",
+            "pyr",
+            "lac"
+          ],
+          "why": "Pyruvate from glycolysis can no longer be broken down in the mitochondria. The cell converts it to lactate, which frees up the electron carrier glycolysis needs to keep running."
+        },
+        {
+          "id": "glycolysis",
+          "name": "Rate of glycolysis",
+          "answer": "up",
+          "chain": [
+            "etc",
+            "aer",
+            "adp",
+            "gly"
+          ],
+          "why": "As ATP falls and ADP rises, the enzymes of glycolysis are stimulated. The cell breaks down glucose faster to make up part of the shortfall."
+        },
+        {
+          "id": "total-atp",
+          "name": "Total ATP produced per minute",
+          "answer": "down",
+          "chain": [
+            "etc",
+            "aer",
+            "two",
+            "tot"
+          ],
+          "why": "Glycolysis alone yields 2 ATP per glucose, against roughly 30 when aerobic respiration runs as well. Even with faster glycolysis, total ATP production falls."
+        },
+        {
+          "id": "co2",
+          "name": "Carbon dioxide produced by the cell",
+          "answer": "down",
+          "chain": [
+            "etc",
+            "cac",
+            "co2"
+          ],
+          "why": "Most of the CO2 a cell makes is released in the citric acid cycle, which stops when the electron transport chain stops. Converting pyruvate to lactate releases no CO2."
+        }
+      ]
+    },
+    {
+      "id": "temperature-rises",
+      "title": "Body temperature rises above its set point",
+      "topic": "homeostasis-feedback",
+      "theme": "a regulated variable rises above its set point",
+      "core": [
+        "homeostasis"
+      ],
+      "level": 1,
+      "misconception": "exercise raises the temperature set point",
+      "setup": "You run hard on a warm day, and your body temperature climbs above its set point. Predict how your temperature loop responds.",
+      "start": "Body temperature above the set point",
+      "steps": {
+        "sens": "Warm-sensitive sensory receptors fire more",
+        "cc": "Control center detects the rise",
+        "dil": "Skin blood vessels dilate (vasodilation)",
+        "sw": "Glands in the skin release more sweat",
+        "loss": "More heat leaves the body",
+        "sp": "Target value stays the same"
+      },
+      "variables": [
+        {
+          "id": "warm-signals",
+          "name": "Signals from warm-sensitive sensory receptors",
+          "answer": "up",
+          "chain": [
+            "sens"
+          ],
+          "why": "Warm-sensitive nerve endings in the skin, and temperature-sensitive neurons in the brain, fire faster as they warm."
+        },
+        {
+          "id": "skin-vessels",
+          "name": "Diameter of blood vessels in the skin",
+          "answer": "up",
+          "chain": [
+            "sens",
+            "cc",
+            "dil"
+          ],
+          "why": "The control center relaxes the smooth muscle of skin blood vessels. The vessels widen and carry more warm blood close to the surface."
+        },
+        {
+          "id": "sweat",
+          "name": "Sweat released onto the skin",
+          "answer": "up",
+          "chain": [
+            "sens",
+            "cc",
+            "sw"
+          ],
+          "why": "The control center signals glands in the skin to release sweat. As sweat evaporates, it carries heat away."
+        },
+        {
+          "id": "heat-loss",
+          "name": "Heat lost from the skin",
+          "answer": "up",
+          "chain": [
+            "sens",
+            "cc",
+            "dil",
+            "loss"
+          ],
+          "why": "More warm blood at the surface and more sweat evaporating both move heat out of the body. The response opposes the rise: negative feedback."
+        },
+        {
+          "id": "set-point",
+          "name": "The temperature set point",
+          "answer": "none",
+          "chain": [
+            "sp"
+          ],
+          "why": "Exercise raises your temperature, not your target. The control center compares the higher temperature with an unchanged set point and responds to the difference. (During an infection it is different: there the set point itself moves up.)"
+        }
+      ]
+    },
+    {
+      "id": "pressure-dips",
+      "title": "Blood pressure dips for a moment",
+      "topic": "homeostasis-feedback",
+      "core": [
+        "homeostasis"
+      ],
+      "level": 1,
+      "misconception": "the loop lowers pressure further because negative feedback means lowering",
+      "setup": "You stand up quickly and your blood pressure dips for a moment. Predict how the blood pressure loop responds over the next few seconds.",
+      "start": "Blood pressure dips",
+      "steps": {
+        "str": "Large artery walls stretch less",
+        "fire": "Stretch-sensitive sensory receptors fire less",
+        "cc": "Control center in the brain responds",
+        "hr": "Heart beats faster",
+        "con": "Small arteries constrict",
+        "bp": "Blood pressure rises back toward the set point"
+      },
+      "variables": [
+        {
+          "id": "stretch-signals",
+          "name": "Signals from stretch-sensitive sensory receptors in large arteries",
+          "answer": "down",
+          "chain": [
+            "str",
+            "fire"
+          ],
+          "why": "Lower pressure stretches the artery walls less, so the stretch-sensitive nerve endings in them fire less often. That drop is how the change is detected."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "str",
+            "fire",
+            "cc",
+            "hr"
+          ],
+          "why": "The control center in the brain reads the drop in signals as low pressure and sends commands that speed up the heart."
+        },
+        {
+          "id": "artery-diameter",
+          "name": "Diameter of small arteries",
+          "answer": "down",
+          "chain": [
+            "str",
+            "fire",
+            "cc",
+            "con"
+          ],
+          "why": "The same commands contract the smooth muscle in the walls of small arteries. The narrower vessels raise resistance to flow."
+        },
+        {
+          "id": "pressure-after",
+          "name": "Blood pressure a few seconds later, compared with the dip",
+          "answer": "up",
+          "chain": [
+            "str",
+            "fire",
+            "cc",
+            "hr",
+            "bp"
+          ],
+          "why": "A faster heart and narrower small arteries push pressure back up. The response opposes the original fall, which is what negative feedback means."
+        }
+      ]
+    },
+    {
+      "id": "potassium-rises",
+      "title": "Potassium outside the cell doubles",
+      "topic": "membrane-potential",
+      "theme": "extracellular potassium rises, predict resting potential",
+      "core": [
+        "gradients",
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "a rise in outside potassium makes the inside more negative",
+      "setup": "The potassium concentration in the fluid around a cell rises from 4 to 8 mmol/L (hyperkalemia). The concentration inside the cell stays the same. For voltages, \"increases\" means the number goes up: −70 mV becoming −60 mV is an increase.",
+      "start": "Potassium outside doubles",
+      "steps": {
+        "grad": "K+ concentration gradient shrinks",
+        "eq": "Less voltage needed to balance it",
+        "ek": "K+ equilibrium potential becomes less negative",
+        "out": "Less K+ leaks out",
+        "rmp": "Resting potential becomes less negative (depolarized)"
+      },
+      "variables": [
+        {
+          "id": "k-gradient",
+          "name": "Potassium concentration gradient across the membrane",
+          "answer": "down",
+          "chain": [
+            "grad"
+          ],
+          "why": "Inside is unchanged and outside has risen, so the difference between them is smaller."
+        },
+        {
+          "id": "k-leak",
+          "name": "Net outward leak of potassium, at the moment the outside level rises",
+          "answer": "down",
+          "chain": [
+            "grad",
+            "out"
+          ],
+          "why": "The concentration gradient is what pushes potassium out through leak channels. A smaller gradient pushes less potassium out at the same voltage."
+        },
+        {
+          "id": "k-equilibrium",
+          "name": "Potassium equilibrium potential (as a number in mV)",
+          "answer": "up",
+          "chain": [
+            "grad",
+            "eq",
+            "ek"
+          ],
+          "why": "The equilibrium potential is the voltage that exactly balances the concentration gradient. A smaller gradient is balanced by a smaller voltage, so it moves from about −95 mV to about −77 mV."
+        },
+        {
+          "id": "resting",
+          "name": "Resting membrane potential (as a number in mV)",
+          "answer": "up",
+          "chain": [
+            "grad",
+            "eq",
+            "ek",
+            "rmp"
+          ],
+          "why": "The resting membrane is far more permeable to potassium than to anything else, so the resting potential sits close to the potassium equilibrium potential and moves with it. The cell depolarizes, for example from −70 toward −60 mV."
+        }
+      ]
+    },
+    {
+      "id": "sodium-channels-blocked",
+      "title": "A toxin blocks voltage-gated sodium channels",
+      "topic": "action-potential-basics",
+      "theme": "sodium channels are blocked, predict the action potential",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "blocking sodium channels abolishes the resting potential",
+      "setup": "A toxin blocks the voltage-gated sodium channels of a neuron. Its leak channels and sodium–potassium pumps still work. A stimulus arrives that would normally bring the membrane to threshold.",
+      "start": "Voltage-gated Na+ channels blocked",
+      "steps": {
+        "leak": "Leak channels and pump still work",
+        "rest": "Resting potential unchanged",
+        "stim": "Stimulus still opens its own channels",
+        "grd": "Graded potential forms as usual",
+        "shut": "Channels cannot open at threshold",
+        "noin": "No rapid Na+ inflow",
+        "noap": "No action potential fires",
+        "nosig": "Nothing propagates along the axon"
+      },
+      "variables": [
+        {
+          "id": "resting",
+          "name": "Resting membrane potential",
+          "answer": "none",
+          "chain": [
+            "leak",
+            "rest"
+          ],
+          "why": "The resting potential is set by leak channels and the sodium–potassium pump. Voltage-gated sodium channels are closed at rest anyway, so blocking them does not change it."
+        },
+        {
+          "id": "graded",
+          "name": "Size of the graded potential the stimulus produces",
+          "answer": "none",
+          "chain": [
+            "stim",
+            "grd"
+          ],
+          "why": "A graded potential comes from ligand-gated or mechanically gated channels at the site of the stimulus. Those still open, so the graded potential is normal."
+        },
+        {
+          "id": "action-potentials",
+          "name": "Number of action potentials fired",
+          "answer": "down",
+          "chain": [
+            "shut",
+            "noin",
+            "noap"
+          ],
+          "why": "An action potential needs voltage-gated sodium channels to open at threshold and let sodium rush in. With them blocked, the membrane can reach threshold but nothing follows."
+        },
+        {
+          "id": "propagation",
+          "name": "Signals carried along the axon to its far end",
+          "answer": "down",
+          "chain": [
+            "shut",
+            "noin",
+            "noap",
+            "nosig"
+          ],
+          "why": "Propagation is each patch of membrane firing an action potential that triggers the next. With no action potential at the start, nothing travels along the axon."
+        }
+      ]
+    },
+    {
+      "id": "stronger-stimulus",
+      "title": "A stronger stimulus",
+      "topic": "action-potential-basics",
+      "core": [
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "a stronger stimulus makes bigger action potentials",
+      "setup": "A neuron is stimulated just above threshold and fires action potentials. The stimulus is then made twice as strong.",
+      "start": "Stimulus twice as strong",
+      "steps": {
+        "gp": "Graded potential gets larger",
+        "thr": "Threshold is reached sooner after each refractory period",
+        "freq": "Action potentials fire more often",
+        "aon": "All-or-none: each action potential is full size",
+        "amp": "Height of each action potential unchanged"
+      },
+      "variables": [
+        {
+          "id": "graded",
+          "name": "Size of the graded potential at the stimulus site",
+          "answer": "up",
+          "chain": [
+            "gp"
+          ],
+          "why": "Graded potentials vary with the strength of the stimulus: a stronger stimulus opens more channels and moves the membrane further."
+        },
+        {
+          "id": "amplitude",
+          "name": "Height of each action potential",
+          "answer": "none",
+          "chain": [
+            "aon",
+            "amp"
+          ],
+          "why": "An action potential is all-or-none. Once threshold is reached, the voltage-gated channels produce the same full-size spike whatever the stimulus strength."
+        },
+        {
+          "id": "frequency",
+          "name": "Number of action potentials per second",
+          "answer": "up",
+          "chain": [
+            "gp",
+            "thr",
+            "freq"
+          ],
+          "why": "A stronger stimulus drives the membrane back to threshold sooner after each refractory period, so spikes come closer together. Neurons signal strength by frequency, not by spike size."
+        }
+      ]
+    },
+    {
+      "id": "receptor-blocked",
+      "title": "A drug occupies a hormone’s receptor proteins",
+      "topic": "chemical-signaling",
+      "core": [
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "blocking the receptor protein lowers the hormone level",
+      "setup": "A drug binds the receptor proteins that a hormone acts on. It fits the binding site but does not activate the receptor protein. The hormone level in the blood stays the same.",
+      "start": "Drug occupies the binding sites",
+      "steps": {
+        "rel": "Hormone release is unchanged",
+        "free": "Fewer binding sites free for the hormone",
+        "bound": "Fewer receptor proteins activated",
+        "resp": "Target cells respond less"
+      },
+      "variables": [
+        {
+          "id": "hormone",
+          "name": "Hormone concentration in the blood",
+          "answer": "none",
+          "chain": [
+            "rel"
+          ],
+          "why": "The drug acts on the target cells, not on the cells that release the hormone. The same amount of hormone is released and carried in the blood."
+        },
+        {
+          "id": "activated",
+          "name": "Receptor proteins activated by the hormone",
+          "answer": "down",
+          "chain": [
+            "free",
+            "bound"
+          ],
+          "why": "Each binding site holds one molecule at a time. Sites taken by the drug cannot bind the hormone, so fewer receptor proteins are activated."
+        },
+        {
+          "id": "response",
+          "name": "Response of the target cells",
+          "answer": "down",
+          "chain": [
+            "free",
+            "bound",
+            "resp"
+          ],
+          "why": "A target cell responds in proportion to how many of its receptor proteins are activated. With fewer activated, the response is smaller even though the hormone is all there."
+        }
+      ]
+    },
+    {
+      "id": "down-regulation",
+      "title": "Weeks of a high hormone level",
+      "topic": "chemical-signaling",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "more hormone always means more effect",
+      "setup": "A person’s blood level of a hormone stays abnormally high for several weeks. Then the level suddenly returns to normal.",
+      "start": "Hormone level high for weeks",
+      "steps": {
+        "down": "Target cells remove receptor proteins (down-regulation)",
+        "fewer": "Fewer receptor proteins per cell",
+        "wane": "Response to the high level wanes over the weeks",
+        "norm": "Normal level binds fewer receptor proteins",
+        "under": "Response falls below the old normal"
+      },
+      "variables": [
+        {
+          "id": "receptor-number",
+          "name": "Number of receptor proteins for that hormone on each target cell",
+          "answer": "down",
+          "chain": [
+            "down",
+            "fewer"
+          ],
+          "why": "Constant heavy stimulation leads target cells to take receptor proteins out of the membrane and make fewer. That is down-regulation."
+        },
+        {
+          "id": "response-high",
+          "name": "Target cell response to the still-high level, week 4 compared with week 1",
+          "answer": "down",
+          "chain": [
+            "down",
+            "fewer",
+            "wane"
+          ],
+          "why": "The hormone level has not changed, but each cell has fewer receptor proteins to bind it, so the same level produces a smaller effect."
+        },
+        {
+          "id": "response-normal",
+          "name": "Response right after the level returns to normal, compared with before the weeks of high levels",
+          "answer": "down",
+          "chain": [
+            "down",
+            "fewer",
+            "norm",
+            "under"
+          ],
+          "why": "The cells are still down-regulated. A normal hormone level now activates fewer receptor proteins than it used to, so the response is below the old normal until the cells make more."
+        }
+      ]
+    },
+    {
+      "id": "pacemaker-slowed",
+      "title": "The pacemaker potential slows",
+      "topic": "conduction-system",
+      "core": [
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "a slower heart is a weaker heart",
+      "setup": "A drug reduces the funny current in the SA node’s pacemaker cells, so each pacemaker potential rises toward threshold more slowly. The drug has no other action.",
+      "start": "Less funny current in the SA node",
+      "steps": {
+        "slope": "Pacemaker potential rises more slowly",
+        "time": "Threshold reached later each cycle",
+        "hr": "Heart rate falls",
+        "sel": "Contractile cells are not affected",
+        "con": "Force of each contraction unchanged"
+      },
+      "variables": [
+        {
+          "id": "slope",
+          "name": "Slope of the pacemaker potential",
+          "answer": "down",
+          "chain": [
+            "slope"
+          ],
+          "why": "The funny current is the slow inward current that drives the pacemaker potential upward. Less of it makes the voltage climb more slowly."
+        },
+        {
+          "id": "interval",
+          "name": "Time between one SA node action potential and the next",
+          "answer": "up",
+          "chain": [
+            "slope",
+            "time"
+          ],
+          "why": "The membrane starts from the same low point and rises to the same threshold, just more slowly, so each cycle takes longer."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "down",
+          "chain": [
+            "slope",
+            "time",
+            "hr"
+          ],
+          "why": "The SA node sets the heart rate. Longer cycles mean fewer beats per minute."
+        },
+        {
+          "id": "force",
+          "name": "Force of each ventricular contraction",
+          "answer": "none",
+          "chain": [
+            "sel",
+            "con"
+          ],
+          "why": "The drug acts on the pacemaker current, which contractile cells do not use to contract. The ventricles beat less often, but each contraction is as forceful as before."
+        }
+      ]
+    },
+    {
+      "id": "av-delay",
+      "title": "The AV node conducts more slowly",
+      "topic": "ecg",
+      "core": [
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "slow AV conduction slows the heart rate",
+      "setup": "Conduction through the AV node slows, so each impulse takes longer to cross it. Every impulse still gets through (first-degree heart block).",
+      "start": "Slower conduction through the AV node",
+      "steps": {
+        "delay": "Longer delay between atria and ventricles",
+        "pr": "PR interval lengthens",
+        "fast": "Bundle branches and Purkinje fibers conduct normally",
+        "qrs": "QRS width unchanged",
+        "sa": "SA node still sets the pace",
+        "all": "Every impulse still reaches the ventricles",
+        "hr": "Heart rate unchanged"
+      },
+      "variables": [
+        {
+          "id": "pr",
+          "name": "PR interval",
+          "answer": "up",
+          "chain": [
+            "delay",
+            "pr"
+          ],
+          "why": "The PR interval runs from the start of atrial depolarization to the start of ventricular depolarization, and most of it is the AV nodal delay. A slower AV node lengthens it."
+        },
+        {
+          "id": "qrs",
+          "name": "Width of the QRS complex",
+          "answer": "none",
+          "chain": [
+            "fast",
+            "qrs"
+          ],
+          "why": "The QRS complex shows the ventricles depolarizing. Once an impulse leaves the AV node, it spreads through the bundle branches and Purkinje fibers at normal speed."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "none",
+          "chain": [
+            "sa",
+            "all",
+            "hr"
+          ],
+          "why": "The SA node still fires at its usual rate, and every impulse still reaches the ventricles, only later. Each beat is delayed by the same amount, so the rate does not change."
+        }
+      ]
+    },
+    {
+      "id": "calcium-channels-blocked",
+      "title": "L-type calcium channels are partly blocked",
+      "topic": "cardiac-muscle-ap",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "cardiac contraction uses only calcium from outside the cell",
+      "setup": "A drug partly blocks the L-type calcium channels of ventricular contractile cells.",
+      "start": "Fewer L-type channels open",
+      "steps": {
+        "in": "Less Ca2+ enters during the plateau",
+        "trig": "Weaker trigger for calcium-induced calcium release",
+        "sr": "Less Ca2+ released from the sarcoplasmic reticulum",
+        "force": "Weaker contraction",
+        "leak": "Resting potential set by K+ leak",
+        "rest": "Resting potential unchanged"
+      },
+      "variables": [
+        {
+          "id": "ca-entry",
+          "name": "Calcium entering the cell during the plateau",
+          "answer": "down",
+          "chain": [
+            "in"
+          ],
+          "why": "The plateau is held up by calcium flowing in through L-type channels. With fewer channels open, less calcium enters."
+        },
+        {
+          "id": "sr-release",
+          "name": "Calcium released from the sarcoplasmic reticulum",
+          "answer": "down",
+          "chain": [
+            "in",
+            "trig",
+            "sr"
+          ],
+          "why": "The calcium that enters is mainly a trigger: it opens release channels in the sarcoplasmic reticulum, which supplies most of the calcium for contraction. A smaller trigger releases less."
+        },
+        {
+          "id": "force",
+          "name": "Force of each contraction",
+          "answer": "down",
+          "chain": [
+            "in",
+            "trig",
+            "sr",
+            "force"
+          ],
+          "why": "Less calcium in the cytoplasm means fewer binding sites uncovered on the thin filaments, so fewer cross-bridges form and contraction is weaker."
+        },
+        {
+          "id": "resting",
+          "name": "Resting membrane potential",
+          "answer": "none",
+          "chain": [
+            "leak",
+            "rest"
+          ],
+          "why": "L-type channels are closed at rest. The resting potential depends on potassium leak channels and the pump, which the drug does not touch."
+        }
+      ]
+    },
+    {
+      "id": "aortic-stenosis",
+      "title": "A stiff, narrow aortic valve",
+      "topic": "cardiac-cycle",
+      "theme": "aortic valve stenosis",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the ventricle ejects the same way through any valve opening",
+      "setup": "Over many years, the aortic valve has become stiff and narrow (aortic stenosis). It still opens, but its opening is much smaller than normal. Compare each heartbeat with a heart that has a normal valve.",
+      "start": "Aortic valve opening much smaller",
+      "steps": {
+        "res": "High resistance at the valve",
+        "lvp": "Left ventricle must generate higher pressure to eject",
+        "dp": "Large pressure difference across the valve",
+        "jet": "Blood speeds through the narrow opening",
+        "mur": "Turbulent jet: a murmur in systole",
+        "work": "Heavier pressure load on every beat",
+        "hyp": "Ventricular wall thickens over time (hypertrophy)"
+      },
+      "variables": [
+        {
+          "id": "lv-pressure",
+          "name": "Peak pressure in the left ventricle during ejection",
+          "answer": "up",
+          "chain": [
+            "res",
+            "lvp"
+          ],
+          "why": "The narrow valve resists outflow. To push blood through it, the ventricle has to reach a much higher pressure than the aorta."
+        },
+        {
+          "id": "pressure-difference",
+          "name": "Pressure difference between the left ventricle and the aorta during ejection",
+          "answer": "up",
+          "chain": [
+            "res",
+            "dp"
+          ],
+          "why": "With a normal valve, ventricular and aortic pressures are almost equal during ejection. A narrow valve absorbs a large share of the pressure, so a big difference opens up across it."
+        },
+        {
+          "id": "velocity",
+          "name": "Speed of blood through the valve opening",
+          "answer": "up",
+          "chain": [
+            "res",
+            "dp",
+            "jet",
+            "mur"
+          ],
+          "why": "The same volume has to pass through a smaller opening in the same time, so it moves much faster. The fast, turbulent jet is what you hear as a murmur during systole."
+        },
+        {
+          "id": "wall",
+          "name": "Thickness of the left ventricular wall, over the years",
+          "answer": "up",
+          "chain": [
+            "res",
+            "lvp",
+            "work",
+            "hyp"
+          ],
+          "why": "Generating high pressure on every beat is a sustained load. Cardiac muscle cells respond by adding contractile proteins and growing thicker, and the wall thickens."
+        }
+      ]
+    },
+    {
+      "id": "mitral-leak",
+      "title": "A torn chord: the mitral valve leaks",
+      "topic": "cardiac-cycle",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a leaky valve only matters when the valve is supposed to be open",
+      "setup": "One of the chordae tendineae holding the mitral valve tears. From the next beat on, the valve cannot close fully, and during ventricular systole some blood leaks back into the left atrium.",
+      "start": "Mitral valve cannot close fully",
+      "steps": {
+        "back": "Blood flows back into the left atrium in systole",
+        "lap": "Left atrial pressure rises",
+        "pv": "Pressure backs up into the pulmonary veins",
+        "split": "Part of each ejection goes backward",
+        "fwd": "Less blood ejected into the aorta",
+        "ret": "The leaked blood returns to the ventricle in diastole",
+        "edv": "End-diastolic volume rises"
+      },
+      "variables": [
+        {
+          "id": "la-pressure",
+          "name": "Left atrial pressure during ventricular systole",
+          "answer": "up",
+          "chain": [
+            "back",
+            "lap"
+          ],
+          "why": "Normally the closed mitral valve shields the atrium from ventricular pressure. Now high-pressure blood jets back into the atrium with every contraction."
+        },
+        {
+          "id": "forward",
+          "name": "Volume ejected into the aorta per beat",
+          "answer": "down",
+          "chain": [
+            "back",
+            "split",
+            "fwd"
+          ],
+          "why": "When the ventricle contracts, blood leaves by two routes: forward through the aortic valve and backward through the leak. What goes backward does not reach the body."
+        },
+        {
+          "id": "edv",
+          "name": "Left ventricular end-diastolic volume",
+          "answer": "up",
+          "chain": [
+            "back",
+            "ret",
+            "edv"
+          ],
+          "why": "The blood that leaked into the atrium comes back into the ventricle during filling, on top of the normal return from the lungs."
+        },
+        {
+          "id": "pulmonary-veins",
+          "name": "Pressure in the pulmonary veins",
+          "answer": "up",
+          "chain": [
+            "back",
+            "lap",
+            "pv"
+          ],
+          "why": "The pulmonary veins open into the left atrium with no valves between them. A pressure rise in the atrium passes straight back into them."
+        }
+      ]
+    },
+    {
+      "id": "venous-return-up",
+      "title": "Venous return rises",
+      "topic": "cardiac-output",
+      "theme": "increased venous return, predict EDV, SV, CO",
+      "core": [
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "the Frank–Starling mechanism is a rise in contractility",
+      "setup": "You lie down and raise your legs, and more blood returns to your heart. Assume heart rate and sympathetic activity stay the same.",
+      "start": "Venous return rises",
+      "steps": {
+        "fill": "Ventricles fill with more blood",
+        "edv": "End-diastolic volume (preload) rises",
+        "str": "Muscle fibers stretched closer to their best length",
+        "sv": "Stroke volume rises (Frank–Starling)",
+        "co": "Cardiac output rises",
+        "nos": "No change in sympathetic signals to the heart",
+        "con": "Contractility unchanged"
+      },
+      "variables": [
+        {
+          "id": "edv",
+          "name": "End-diastolic volume",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "edv"
+          ],
+          "why": "More blood arriving during diastole fills the ventricles further before they contract."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "edv",
+            "str",
+            "sv"
+          ],
+          "why": "More filling stretches the muscle fibers toward the length where they generate the most force, so the ventricle contracts harder and ejects more. That is the Frank–Starling mechanism."
+        },
+        {
+          "id": "co",
+          "name": "Cardiac output",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "edv",
+            "str",
+            "sv",
+            "co"
+          ],
+          "why": "Cardiac output equals heart rate times stroke volume. Heart rate is unchanged and stroke volume is up."
+        },
+        {
+          "id": "contractility",
+          "name": "Contractility",
+          "answer": "none",
+          "chain": [
+            "nos",
+            "con"
+          ],
+          "why": "Contractility is how strongly the muscle contracts at a given length, and it changes with sympathetic signals or drugs. Here the extra force comes from extra stretch, not from a change in contractility."
+        }
+      ]
+    },
+    {
+      "id": "beta-blocker",
+      "title": "A beta blocker",
+      "topic": "cardiac-output",
+      "theme": "a beta blocker, predict heart rate, contractility, cardiac output",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a beta blocker stops the heart’s own pacemaker",
+      "setup": "A person at rest takes a beta blocker, a drug that blocks beta-1 receptors on the heart so norepinephrine and epinephrine cannot act there.",
+      "start": "Beta-1 receptors blocked",
+      "steps": {
+        "sa": "Less sympathetic effect on the SA node",
+        "hr": "Heart rate falls",
+        "dia": "Each diastole lasts longer",
+        "ft": "Filling time rises",
+        "ven": "Less sympathetic effect on ventricular muscle",
+        "con": "Contractility falls",
+        "co": "Cardiac output falls"
+      },
+      "variables": [
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "down",
+          "chain": [
+            "sa",
+            "hr"
+          ],
+          "why": "Norepinephrine on beta-1 receptors speeds the pacemaker potential. With those receptor proteins blocked, the SA node fires at a slower rate, set by its own cells and the vagus."
+        },
+        {
+          "id": "filling-time",
+          "name": "Filling time of the ventricles",
+          "answer": "up",
+          "chain": [
+            "sa",
+            "hr",
+            "dia",
+            "ft"
+          ],
+          "why": "A slower heart rate lengthens each cardiac cycle, and most of the extra time is added to diastole, when the ventricles fill."
+        },
+        {
+          "id": "contractility",
+          "name": "Contractility",
+          "answer": "down",
+          "chain": [
+            "ven",
+            "con"
+          ],
+          "why": "Beta-1 stimulation of ventricular muscle raises the calcium available for each contraction. Blocking it lowers contractility."
+        },
+        {
+          "id": "co",
+          "name": "Cardiac output",
+          "answer": "down",
+          "chain": [
+            "sa",
+            "hr",
+            "co"
+          ],
+          "why": "Heart rate falls and contractility falls. Longer filling helps stroke volume a little, but not enough to offset the slower rate, so cardiac output falls."
+        }
+      ]
+    },
+    {
+      "id": "afterload-l4",
+      "title": "Aortic pressure suddenly rises",
+      "topic": "cardiac-output",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 4,
+      "misconception": "a higher afterload permanently lowers stroke volume",
+      "setup": "A drug suddenly constricts the arterioles and aortic pressure jumps. Venous return and contractility stay the same. Follow the left ventricle over the next several beats.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "The first beat",
+          "prompt": "The first beat after the rise, compared with the beat before it.",
+          "start": "Aortic pressure jumps",
+          "steps": {
+            "open": "More pressure needed to open the aortic valve",
+            "aft": "Afterload rises",
+            "less": "Less time and pressure left for ejection",
+            "sv": "Stroke volume falls",
+            "esv": "More blood left behind: ESV rises",
+            "filled": "This beat filled before the change",
+            "edv": "End-diastolic volume unchanged"
+          },
+          "variables": [
+            {
+              "id": "afterload",
+              "name": "Afterload",
+              "answer": "up",
+              "chain": [
+                "open",
+                "aft"
+              ],
+              "why": "Afterload is the pressure the ventricle must overcome to eject. The aortic valve opens only when ventricular pressure exceeds aortic pressure, and aortic pressure is now higher."
+            },
+            {
+              "id": "sv",
+              "name": "Stroke volume",
+              "answer": "down",
+              "chain": [
+                "open",
+                "aft",
+                "less",
+                "sv"
+              ],
+              "why": "More of the contraction is spent building pressure before the valve opens, so the ventricle ejects less before it relaxes."
+            },
+            {
+              "id": "esv",
+              "name": "End-systolic volume",
+              "answer": "up",
+              "chain": [
+                "open",
+                "aft",
+                "less",
+                "esv"
+              ],
+              "why": "The ventricle started with the usual volume and ejected less of it, so more is left at the end of systole."
+            },
+            {
+              "id": "edv",
+              "name": "End-diastolic volume",
+              "answer": "none",
+              "chain": [
+                "filled",
+                "edv"
+              ],
+              "why": "This beat filled before the pressure rose, from the normal venous return, so it starts from the usual volume."
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "A few beats later",
+          "prompt": "A few beats later, compared with that first beat. Venous return and contractility are still unchanged.",
+          "start": "Extra blood left in the ventricle",
+          "steps": {
+            "add": "Normal venous return adds to the leftover blood",
+            "edv": "End-diastolic volume rises",
+            "str": "Fibers stretch more",
+            "force": "Stronger contraction (Frank–Starling)",
+            "sv": "Stroke volume recovers toward normal",
+            "nos": "No change in sympathetic signals",
+            "con": "Contractility unchanged"
+          },
+          "variables": [
+            {
+              "id": "edv",
+              "name": "End-diastolic volume",
+              "answer": "up",
+              "chain": [
+                "add",
+                "edv"
+              ],
+              "why": "The blood left behind after the first beat stays in the ventricle, and the normal venous return is added on top of it."
+            },
+            {
+              "id": "stretch",
+              "name": "Stretch of ventricular muscle fibers before contraction",
+              "answer": "up",
+              "chain": [
+                "add",
+                "edv",
+                "str"
+              ],
+              "why": "A fuller ventricle stretches its muscle fibers further before each contraction."
+            },
+            {
+              "id": "sv",
+              "name": "Stroke volume",
+              "answer": "up",
+              "chain": [
+                "add",
+                "edv",
+                "str",
+                "force",
+                "sv"
+              ],
+              "why": "More stretch gives a stronger contraction, so the ventricle can eject against the higher pressure. Within a few beats, output again matches venous return. That is the Frank–Starling mechanism at work."
+            },
+            {
+              "id": "contractility",
+              "name": "Contractility",
+              "answer": "none",
+              "chain": [
+                "nos",
+                "con"
+              ],
+              "why": "Nothing has changed the sympathetic input or the muscle’s calcium handling. The recovery comes from stretch, not from a change in contractility."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arterioles-dilate",
+      "title": "Arterioles dilate throughout the body",
+      "topic": "blood-pressure-flow",
+      "theme": "arteriole vasodilation",
+      "core": [
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "wider vessels raise blood pressure because more blood fits in them",
+      "setup": "A drug relaxes the smooth muscle of arterioles throughout the body. Consider the first few seconds, before any reflex responds, while the heart keeps pumping the same volume each minute.",
+      "start": "Arteriole smooth muscle relaxes",
+      "steps": {
+        "rad": "Arteriole radius rises",
+        "res": "Resistance falls steeply (fourth power of the radius)",
+        "tpr": "Total peripheral resistance falls",
+        "run": "Blood runs off from the arteries faster",
+        "map": "Mean arterial pressure falls",
+        "dia": "Pressure falls further between beats",
+        "dp": "Diastolic pressure falls"
+      },
+      "variables": [
+        {
+          "id": "radius",
+          "name": "Radius of arterioles",
+          "answer": "up",
+          "chain": [
+            "rad"
+          ],
+          "why": "Relaxed smooth muscle lets the arteriole wall widen under the pressure inside it."
+        },
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "down",
+          "chain": [
+            "rad",
+            "res",
+            "tpr"
+          ],
+          "why": "Resistance depends on the fourth power of the radius, and the arterioles are where most systemic resistance sits. Wider arterioles lower total peripheral resistance sharply."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "down",
+          "chain": [
+            "rad",
+            "res",
+            "tpr",
+            "run",
+            "map"
+          ],
+          "why": "With the same flow from the heart passing through lower resistance, less pressure is needed to drive it. Blood runs off from the arteries faster, so arterial pressure falls."
+        },
+        {
+          "id": "diastolic",
+          "name": "Diastolic pressure",
+          "answer": "down",
+          "chain": [
+            "rad",
+            "res",
+            "tpr",
+            "run",
+            "dia",
+            "dp"
+          ],
+          "why": "Between beats, the arteries empty through the arterioles. With less resistance they empty faster, so pressure sinks lower before the next beat."
+        }
+      ]
+    },
+    {
+      "id": "one-organ-constricts",
+      "title": "The arterioles to one organ constrict",
+      "topic": "blood-pressure-flow",
+      "core": [
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "flow falls only when the pressure gradient falls",
+      "setup": "The arterioles supplying one small organ constrict to half their radius. Mean arterial pressure and the rest of the circulation stay the same.",
+      "start": "That organ’s arterioles halve their radius",
+      "steps": {
+        "res": "Resistance of that organ’s vessels rises steeply",
+        "flow": "Blood flow to the organ falls",
+        "drop": "More pressure lost across the narrowed arterioles",
+        "down": "Pressure downstream of them falls",
+        "same": "Aortic and venous pressures unchanged",
+        "grad": "Pressure gradient across the organ unchanged"
+      },
+      "variables": [
+        {
+          "id": "resistance",
+          "name": "Resistance of that organ’s vessels",
+          "answer": "up",
+          "chain": [
+            "res"
+          ],
+          "why": "Resistance rises with the fourth power of a falling radius, and the arterioles are the main resistance in any organ. Halving their radius raises it roughly 16-fold at that level."
+        },
+        {
+          "id": "flow",
+          "name": "Blood flow to that organ",
+          "answer": "down",
+          "chain": [
+            "res",
+            "flow"
+          ],
+          "why": "Flow equals pressure gradient divided by resistance. The gradient is the same and resistance is much higher, so flow falls."
+        },
+        {
+          "id": "downstream",
+          "name": "Blood pressure in the vessels downstream of the constricted arterioles",
+          "answer": "down",
+          "chain": [
+            "res",
+            "drop",
+            "down"
+          ],
+          "why": "Pressure is used up overcoming resistance. The narrowed arterioles consume more of it, so less is left for the vessels beyond them."
+        },
+        {
+          "id": "gradient",
+          "name": "Pressure gradient from the aorta to the organ’s veins",
+          "answer": "none",
+          "chain": [
+            "same",
+            "grad"
+          ],
+          "why": "Mean arterial pressure and venous pressure are both unchanged, so the overall gradient across the organ is the same. Flow fell because resistance rose."
+        }
+      ]
+    },
+    {
+      "id": "sympathetic-surge",
+      "title": "Sympathetic output to the heart and vessels rises",
+      "topic": "bp-short-term",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "sympathetic stimulation raises pressure only by speeding the heart",
+      "setup": "Sympathetic nerve signals to the heart, arterioles and veins increase sharply, as in a moment of sudden fright.",
+      "start": "Sympathetic output rises",
+      "steps": {
+        "b1sa": "Norepinephrine on beta-1 receptors of the SA node",
+        "hr": "Heart rate rises",
+        "b1v": "Norepinephrine on beta-1 receptors of ventricular muscle",
+        "con": "Contractility rises",
+        "veins": "Veins constrict",
+        "vr": "Venous return rises",
+        "sv": "Stroke volume rises",
+        "a1": "Norepinephrine on alpha-1 receptors of arterioles",
+        "tpr": "TPR rises",
+        "map": "MAP rises (MAP = CO × TPR)"
+      },
+      "variables": [
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "b1sa",
+            "hr"
+          ],
+          "why": "Norepinephrine acting on beta-1 receptors speeds the pacemaker potential, so the SA node reaches threshold sooner."
+        },
+        {
+          "id": "contractility",
+          "name": "Contractility",
+          "answer": "up",
+          "chain": [
+            "b1v",
+            "con"
+          ],
+          "why": "Beta-1 stimulation of ventricular muscle raises the calcium available for each contraction, so each beat is more forceful at the same filling."
+        },
+        {
+          "id": "venous-return",
+          "name": "Venous return",
+          "answer": "up",
+          "chain": [
+            "veins",
+            "vr"
+          ],
+          "why": "Sympathetic signals constrict the veins, squeezing blood out of the venous reservoir toward the heart."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "up",
+          "chain": [
+            "b1v",
+            "con",
+            "sv"
+          ],
+          "why": "Stronger contractions eject more of the blood in the ventricle, and the extra venous return fills it further as well."
+        },
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "up",
+          "chain": [
+            "a1",
+            "tpr"
+          ],
+          "why": "Norepinephrine on alpha-1 receptors contracts arteriole smooth muscle in the skin, gut and kidneys. Narrower arterioles raise resistance."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "up",
+          "chain": [
+            "b1sa",
+            "hr",
+            "map"
+          ],
+          "why": "MAP = heart rate × stroke volume × TPR, and all three have risen."
+        }
+      ]
+    },
+    {
+      "id": "vagal-stimulation",
+      "title": "The vagus nerves are stimulated",
+      "topic": "bp-short-term",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "parasympathetic signals relax the arterioles and weaken the ventricles",
+      "setup": "Parasympathetic output to the heart through the vagus nerves rises. Sympathetic output does not change.",
+      "start": "Vagal output rises",
+      "steps": {
+        "ach": "More acetylcholine at the SA and AV nodes",
+        "slow": "Pacemaker potential slows",
+        "hr": "Heart rate falls",
+        "av": "AV node conducts more slowly",
+        "pr": "PR interval lengthens",
+        "sparse": "Few vagal fibers reach ventricular muscle",
+        "con": "Ventricular contractility barely changes",
+        "noart": "Most arterioles have no parasympathetic nerves",
+        "tpr": "TPR unchanged",
+        "co": "Cardiac output falls",
+        "map": "MAP falls"
+      },
+      "variables": [
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "down",
+          "chain": [
+            "ach",
+            "slow",
+            "hr"
+          ],
+          "why": "Acetylcholine on muscarinic receptors of the SA node makes the pacemaker potential start lower and rise more slowly, so the node fires less often."
+        },
+        {
+          "id": "pr",
+          "name": "PR interval",
+          "answer": "up",
+          "chain": [
+            "ach",
+            "av",
+            "pr"
+          ],
+          "why": "Vagal fibers also supply the AV node. Acetylcholine slows conduction through it, lengthening the delay between atrial and ventricular depolarization."
+        },
+        {
+          "id": "contractility",
+          "name": "Contractility of the ventricles",
+          "answer": "none",
+          "chain": [
+            "sparse",
+            "con"
+          ],
+          "why": "Vagal fibers end mainly on the SA node, the AV node and the atria. Ventricular muscle has little parasympathetic innervation, so its contractility barely changes."
+        },
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "none",
+          "chain": [
+            "noart",
+            "tpr"
+          ],
+          "why": "Most arterioles receive sympathetic fibers only. Raising vagal output does not reach them, so resistance stays the same."
+        },
+        {
+          "id": "co",
+          "name": "Cardiac output",
+          "answer": "down",
+          "chain": [
+            "ach",
+            "slow",
+            "hr",
+            "co"
+          ],
+          "why": "Cardiac output is heart rate times stroke volume, and heart rate has fallen."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "down",
+          "chain": [
+            "ach",
+            "slow",
+            "hr",
+            "co",
+            "map"
+          ],
+          "why": "MAP = CO × TPR. Cardiac output fell and TPR stayed the same, so MAP falls."
+        }
+      ]
+    },
+    {
+      "id": "carotid-pressure",
+      "title": "Pressure on a carotid sinus",
+      "topic": "bp-short-term",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the baroreceptors measure pressure, so pushing on them cannot fool the reflex",
+      "setup": "A clinician presses firmly on one carotid sinus through the skin of the neck.",
+      "start": "Carotid sinus wall stretched from outside",
+      "steps": {
+        "fire": "Baroreceptors fire faster",
+        "read": "Cardiovascular center reads high pressure",
+        "vag": "Vagal output rises",
+        "sym": "Sympathetic output falls",
+        "hr": "Heart rate falls",
+        "dil": "Arterioles relax",
+        "map": "MAP falls"
+      },
+      "variables": [
+        {
+          "id": "firing",
+          "name": "Baroreceptor firing",
+          "answer": "up",
+          "chain": [
+            "fire"
+          ],
+          "why": "Baroreceptors respond to stretch of the artery wall. Pressing on the sinus stretches it, so they fire as if blood pressure had risen."
+        },
+        {
+          "id": "vagal",
+          "name": "Vagal (parasympathetic) output to the heart",
+          "answer": "up",
+          "chain": [
+            "fire",
+            "read",
+            "vag"
+          ],
+          "why": "More baroreceptor input tells the cardiovascular center that pressure is high, and it responds by boosting vagal output."
+        },
+        {
+          "id": "sympathetic",
+          "name": "Sympathetic output to the heart and arterioles",
+          "answer": "down",
+          "chain": [
+            "fire",
+            "read",
+            "sym"
+          ],
+          "why": "The same input holds back the sympathetic side of the cardiovascular center."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "down",
+          "chain": [
+            "fire",
+            "read",
+            "vag",
+            "hr"
+          ],
+          "why": "More vagal and less sympathetic signal at the SA node slow the heart, often within a beat or two."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "down",
+          "chain": [
+            "fire",
+            "read",
+            "sym",
+            "dil",
+            "map"
+          ],
+          "why": "A slower heart and relaxed arterioles lower cardiac output and TPR. The reflex is correcting a pressure rise that never happened, so pressure falls below normal."
+        }
+      ]
+    },
+    {
+      "id": "standing-up",
+      "title": "Standing up quickly",
+      "topic": "bp-short-term",
+      "theme": "standing up quickly",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "blood pressure is corrected by the heart alone",
+      "setup": "You have been lying down and stand up quickly. Gravity pulls about half a liter of blood into the veins of your legs and abdomen. Predict what happens over the next 10 to 20 seconds as your reflexes respond.",
+      "start": "Blood pools in the leg veins",
+      "steps": {
+        "vr": "Venous return falls",
+        "edv": "End-diastolic volume falls",
+        "sv": "Stroke volume falls (Frank–Starling)",
+        "co": "Cardiac output falls",
+        "map": "MAP falls",
+        "baro": "Baroreceptors stretch less and fire less",
+        "cvc": "Cardiovascular center: sympathetic up, vagal down",
+        "hr": "Heart rate rises",
+        "con": "Arterioles constrict",
+        "tpr": "TPR rises"
+      },
+      "variables": [
+        {
+          "id": "venous-return",
+          "name": "Venous return",
+          "answer": "down",
+          "chain": [
+            "vr"
+          ],
+          "why": "Blood held in the stretched leg veins is not returning to the heart, so less arrives each second."
+        },
+        {
+          "id": "edv",
+          "name": "End-diastolic volume",
+          "answer": "down",
+          "chain": [
+            "vr",
+            "edv"
+          ],
+          "why": "Less blood arriving means the ventricles fill less before each contraction."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "down",
+          "chain": [
+            "vr",
+            "edv",
+            "sv"
+          ],
+          "why": "Less filling stretches the ventricular muscle less, so it contracts less forcefully and ejects less."
+        },
+        {
+          "id": "baroreceptor-firing",
+          "name": "Baroreceptor firing",
+          "answer": "down",
+          "chain": [
+            "vr",
+            "edv",
+            "sv",
+            "co",
+            "map",
+            "baro"
+          ],
+          "why": "Lower stroke volume lowers cardiac output and pressure, most of all in the arteries of the head. The carotid sinuses and aortic arch stretch less and their baroreceptors fire less."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "vr",
+            "edv",
+            "sv",
+            "co",
+            "map",
+            "baro",
+            "cvc",
+            "hr"
+          ],
+          "why": "Less baroreceptor input lets the cardiovascular center raise sympathetic and cut vagal output to the SA node. Heart rate typically rises 10 to 20 beats per minute."
+        },
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "up",
+          "chain": [
+            "vr",
+            "edv",
+            "sv",
+            "co",
+            "map",
+            "baro",
+            "cvc",
+            "con",
+            "tpr"
+          ],
+          "why": "The same sympathetic rise constricts arterioles in the skin, gut, kidneys and resting muscle, raising resistance and helping pressure recover."
+        }
+      ]
+    },
+    {
+      "id": "exercise",
+      "title": "Starting a hard run",
+      "topic": "bp-short-term",
+      "theme": "exercise",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "blood pressure rises in exercise because resistance rises",
+      "setup": "A healthy 30-year-old goes from standing still to a steady hard run. Predict the state a few minutes in, compared with rest.",
+      "start": "Hard exercise begins",
+      "steps": {
+        "brain": "Motor areas and muscle sensors signal the cardiovascular center",
+        "sym": "Vagal output falls, sympathetic output rises",
+        "hr": "Heart rate rises",
+        "pump": "Muscle pump and deeper breathing push blood back to the heart",
+        "sv": "Stroke volume rises",
+        "co": "Cardiac output rises several-fold",
+        "met": "Working muscle builds up metabolites",
+        "dil": "Muscle arterioles dilate",
+        "mf": "Blood flow to working muscle rises",
+        "tpr": "TPR falls",
+        "vc": "Arterioles of gut and kidneys constrict",
+        "gut": "Blood flow to gut and kidneys falls",
+        "map": "MAP rises modestly (CO rises more than TPR falls)",
+        "pp": "Systolic rises a lot; pulse pressure widens"
+      },
+      "variables": [
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "brain",
+            "sym",
+            "hr"
+          ],
+          "why": "Signals from the brain’s motor areas and from sensors in working muscle reach the cardiovascular center, which cuts vagal and raises sympathetic output to the SA node."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "up",
+          "chain": [
+            "pump",
+            "sv"
+          ],
+          "why": "The skeletal muscle pump and deeper breathing return more blood, raising end-diastolic volume, and sympathetic signals raise contractility. Both increase stroke volume."
+        },
+        {
+          "id": "co",
+          "name": "Cardiac output",
+          "answer": "up",
+          "chain": [
+            "brain",
+            "sym",
+            "hr",
+            "co"
+          ],
+          "why": "Heart rate and stroke volume both rise, so cardiac output climbs from about 5 to as much as 20 L/min."
+        },
+        {
+          "id": "muscle-flow",
+          "name": "Blood flow to the working muscles",
+          "answer": "up",
+          "chain": [
+            "met",
+            "dil",
+            "mf"
+          ],
+          "why": "Active muscle releases CO2, H+, K+ and adenosine and uses up oxygen. These relax its arterioles (local control), overriding sympathetic constriction there."
+        },
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "down",
+          "chain": [
+            "met",
+            "dil",
+            "tpr"
+          ],
+          "why": "Skeletal muscle is a large share of the body. When its arterioles dilate, the fall in resistance outweighs the constriction elsewhere."
+        },
+        {
+          "id": "gut-flow",
+          "name": "Blood flow to the gut and kidneys",
+          "answer": "down",
+          "chain": [
+            "brain",
+            "sym",
+            "vc",
+            "gut"
+          ],
+          "why": "Sympathetic signals constrict the arterioles of the gut and kidneys, which have no local metabolite build-up to override it. Their share of the output shrinks."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "up",
+          "chain": [
+            "brain",
+            "sym",
+            "hr",
+            "co",
+            "map"
+          ],
+          "why": "MAP = CO × TPR. Cardiac output rises about four-fold while TPR falls to about a third, so their product, and MAP, rises by only about 20 percent."
+        },
+        {
+          "id": "pulse-pressure",
+          "name": "Pulse pressure",
+          "answer": "up",
+          "chain": [
+            "pump",
+            "sv",
+            "pp"
+          ],
+          "why": "A larger, more forceful stroke volume raises systolic pressure a lot, while low resistance keeps diastolic pressure about the same. The gap between them widens."
+        }
+      ]
+    },
+    {
+      "id": "coronary-narrowing",
+      "title": "A narrowed coronary artery on the stairs",
+      "topic": "circulatory-disorders",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a narrowed artery always causes symptoms at rest",
+      "setup": "A plaque narrows one coronary artery to half its normal radius. At rest, the heart muscle it supplies still gets enough blood, because the arterioles downstream have dilated to make up for the narrowing. Then the person climbs several flights of stairs.",
+      "start": "Coronary artery radius halved by plaque",
+      "steps": {
+        "res": "Resistance of the narrowed segment rises steeply",
+        "comp": "Downstream arterioles already dilated at rest",
+        "room": "Little room left for further dilation",
+        "sym": "Climbing raises heart rate and contractility",
+        "dem": "Heart muscle uses more oxygen",
+        "cap": "Flow cannot rise enough to match",
+        "gap": "Oxygen supply falls short of demand (ischemia)"
+      },
+      "variables": [
+        {
+          "id": "resistance",
+          "name": "Resistance of the narrowed segment",
+          "answer": "up",
+          "chain": [
+            "res"
+          ],
+          "why": "Resistance depends on the fourth power of the radius, so a segment at half its radius has about 16 times the resistance of a normal segment of the same length."
+        },
+        {
+          "id": "reserve",
+          "name": "Room left for the downstream arterioles to dilate further",
+          "answer": "down",
+          "chain": [
+            "res",
+            "comp",
+            "room"
+          ],
+          "why": "To keep resting flow normal, the downstream arterioles have already used up much of their ability to widen. When demand rises, there is less dilation left to call on."
+        },
+        {
+          "id": "demand",
+          "name": "Oxygen use by that heart muscle during the climb, compared with rest",
+          "answer": "up",
+          "chain": [
+            "sym",
+            "dem"
+          ],
+          "why": "Climbing raises sympathetic output, so heart rate and contractility rise. The heart muscle does more work and uses more oxygen."
+        },
+        {
+          "id": "mismatch",
+          "name": "Gap between oxygen supply and oxygen demand in that muscle during the climb",
+          "answer": "up",
+          "chain": [
+            "res",
+            "comp",
+            "room",
+            "cap",
+            "gap"
+          ],
+          "why": "Demand rises but flow through the narrowed artery cannot rise enough, so supply falls short. That ischemia is what causes chest pain on exertion (angina), which fades with rest."
+        }
+      ]
+    },
+    {
+      "id": "plasma-protein-loss",
+      "title": "Damaged kidneys leak albumin",
+      "topic": "capillary-exchange",
+      "theme": "plasma protein falls (edema)",
+      "core": [
+        "gradients",
+        "compartments"
+      ],
+      "level": 2,
+      "misconception": "edema always comes from too much pressure in the vessels",
+      "setup": "Damaged kidneys leak large amounts of albumin into the urine for weeks, and the liver cannot make enough to replace it. Predict the Starling forces in a typical capillary in the legs.",
+      "start": "Plasma albumin falls",
+      "steps": {
+        "bcop": "Blood colloid osmotic pressure falls",
+        "pull": "Less inward pull on fluid",
+        "nfp": "Net filtration pressure rises",
+        "filt": "Filtration out of capillaries speeds up",
+        "ed": "Fluid collects between cells (edema)",
+        "same": "Arterial and venous pressures unchanged",
+        "chp": "Capillary hydrostatic pressure unchanged"
+      },
+      "variables": [
+        {
+          "id": "bcop",
+          "name": "Blood colloid osmotic pressure",
+          "answer": "down",
+          "chain": [
+            "bcop"
+          ],
+          "why": "Albumin supplies most of the colloid osmotic pressure of plasma. Less albumin means less inward pull."
+        },
+        {
+          "id": "chp",
+          "name": "Capillary hydrostatic pressure",
+          "answer": "none",
+          "chain": [
+            "same",
+            "chp"
+          ],
+          "why": "Nothing in this change alters arterial pressure, arteriole tone or venous pressure, so the pressure of blood in the capillaries is the same."
+        },
+        {
+          "id": "nfp",
+          "name": "Net filtration pressure",
+          "answer": "up",
+          "chain": [
+            "bcop",
+            "pull",
+            "nfp"
+          ],
+          "why": "NFP = (CHP + IFCOP) − (BCOP + IFHP). BCOP has fallen and the others are about the same, so NFP rises."
+        },
+        {
+          "id": "filtration",
+          "name": "Rate of filtration out of the capillaries",
+          "answer": "up",
+          "chain": [
+            "bcop",
+            "pull",
+            "nfp",
+            "filt"
+          ],
+          "why": "A larger net filtration pressure drives fluid out faster, along the whole length of the capillary."
+        },
+        {
+          "id": "interstitial",
+          "name": "Volume of interstitial fluid in the legs",
+          "answer": "up",
+          "chain": [
+            "bcop",
+            "pull",
+            "nfp",
+            "filt",
+            "ed"
+          ],
+          "why": "When fluid filters out faster than it drains away, it collects between cells. The swelling shows first in the feet and ankles when you are upright."
+        }
+      ]
+    },
+    {
+      "id": "standing-still",
+      "title": "Standing still for hours",
+      "topic": "capillary-exchange",
+      "core": [
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "swollen ankles after standing mean the heart is failing",
+      "setup": "You stand still at a counter for two hours, barely moving your legs.",
+      "start": "Standing still, legs not moving",
+      "steps": {
+        "col": "Weight of the blood column adds to venous pressure",
+        "nopump": "No muscle pump to empty the leg veins",
+        "vp": "Venous pressure at the ankles rises",
+        "chp": "Pressure passes back into the capillaries",
+        "filt": "Filtration speeds up",
+        "swell": "Fluid collects around the ankles",
+        "prot": "Plasma protein level unchanged",
+        "bcop": "Blood colloid osmotic pressure unchanged"
+      },
+      "variables": [
+        {
+          "id": "venous-pressure",
+          "name": "Venous pressure at the ankles",
+          "answer": "up",
+          "chain": [
+            "col",
+            "nopump",
+            "vp"
+          ],
+          "why": "Gravity adds the weight of the column of blood above your ankles, and with your legs still, the skeletal muscle pump is not emptying the veins. Ankle venous pressure can reach about 90 mm Hg."
+        },
+        {
+          "id": "chp",
+          "name": "Capillary hydrostatic pressure in the feet",
+          "answer": "up",
+          "chain": [
+            "col",
+            "nopump",
+            "vp",
+            "chp"
+          ],
+          "why": "No high resistance sits between the capillaries and the veins, so a rise in venous pressure passes back into the capillaries almost fully."
+        },
+        {
+          "id": "filtration",
+          "name": "Filtration out of the capillaries in the feet",
+          "answer": "up",
+          "chain": [
+            "col",
+            "nopump",
+            "vp",
+            "chp",
+            "filt"
+          ],
+          "why": "Higher capillary hydrostatic pressure pushes fluid out faster."
+        },
+        {
+          "id": "ankle-fluid",
+          "name": "Interstitial fluid around the ankles",
+          "answer": "up",
+          "chain": [
+            "col",
+            "nopump",
+            "vp",
+            "chp",
+            "filt",
+            "swell"
+          ],
+          "why": "Fluid filters out faster than it drains away, so it collects in the tissue. Your shoes feel tight. Walking brings it back down."
+        },
+        {
+          "id": "bcop",
+          "name": "Blood colloid osmotic pressure",
+          "answer": "none",
+          "chain": [
+            "prot",
+            "bcop"
+          ],
+          "why": "Standing does not change how much protein is in your plasma, so the inward pull is the same. The swelling comes from the push, not the pull."
+        }
+      ]
+    },
+    {
+      "id": "insect-sting",
+      "title": "An insect sting",
+      "topic": "capillary-exchange",
+      "core": [
+        "gradients",
+        "compartments"
+      ],
+      "level": 2,
+      "misconception": "swelling after an injury is blood leaking from broken vessels",
+      "setup": "An insect sting in the skin releases histamine. Histamine widens the gaps between endothelial cells of nearby capillaries and relaxes the local arterioles.",
+      "start": "Histamine released in the skin",
+      "steps": {
+        "gaps": "Gaps between endothelial cells widen",
+        "prot": "Plasma proteins leak out",
+        "ifp": "Interstitial protein rises locally",
+        "diff": "Oncotic difference across the wall shrinks",
+        "art": "Local arterioles dilate",
+        "chp": "Capillary hydrostatic pressure rises",
+        "filt": "Filtration speeds up",
+        "sw": "Local swelling",
+        "small": "Leak is tiny compared with total plasma",
+        "bcop": "Body-wide plasma protein unchanged"
+      },
+      "variables": [
+        {
+          "id": "interstitial-protein",
+          "name": "Protein in the interstitial fluid at the sting",
+          "answer": "up",
+          "chain": [
+            "gaps",
+            "prot",
+            "ifp"
+          ],
+          "why": "Wider gaps let plasma proteins, normally held back, escape into the tissue."
+        },
+        {
+          "id": "chp",
+          "name": "Capillary hydrostatic pressure at the sting",
+          "answer": "up",
+          "chain": [
+            "art",
+            "chp"
+          ],
+          "why": "Relaxed arterioles lose less pressure, so more of the arterial pressure reaches the capillaries beyond them."
+        },
+        {
+          "id": "filtration",
+          "name": "Filtration out of the local capillaries",
+          "answer": "up",
+          "chain": [
+            "gaps",
+            "prot",
+            "ifp",
+            "diff",
+            "filt"
+          ],
+          "why": "Two changes add up: more protein outside weakens the oncotic pull holding fluid in, and higher capillary pressure pushes more out."
+        },
+        {
+          "id": "swelling",
+          "name": "Swelling at the sting",
+          "answer": "up",
+          "chain": [
+            "gaps",
+            "prot",
+            "ifp",
+            "diff",
+            "filt",
+            "sw"
+          ],
+          "why": "Fluid filters out faster than it drains away, so the area swells within minutes. The fluid is plasma that crossed intact walls, not blood from broken vessels."
+        },
+        {
+          "id": "bcop",
+          "name": "Blood colloid osmotic pressure in the rest of the body",
+          "answer": "none",
+          "chain": [
+            "small",
+            "bcop"
+          ],
+          "why": "The protein lost at one small sting is a tiny fraction of the protein in all your plasma, so the body-wide value does not measurably change."
+        }
+      ]
+    },
+    {
+      "id": "hemorrhage-l4",
+      "title": "Hemorrhage: the loss, then compensation",
+      "topic": "circulatory-disorders",
+      "theme": "hemorrhage, immediate and after compensation",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 4,
+      "misconception": "hematocrit falls the moment you bleed",
+      "setup": "A 25-year-old loses about 1 liter of blood from a deep cut in the thigh over ten minutes. The bleeding is then stopped. No fluid or blood has been given yet.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "The immediate change",
+          "prompt": "The direct effect of the lost volume, before any reflex or hormone has acted. Compare with before the bleed.",
+          "start": "1 liter of whole blood lost",
+          "steps": {
+            "vol": "Blood volume falls",
+            "vr": "Venous return falls",
+            "edv": "End-diastolic volume falls",
+            "sv": "Stroke volume falls (Frank–Starling)",
+            "co": "Cardiac output falls",
+            "map": "MAP falls",
+            "baro": "Baroreceptors stretch less and fire less",
+            "noref": "No reflex has reached the SA node yet",
+            "hr": "Heart rate unchanged (so far)",
+            "whole": "Cells and plasma lost in the same proportion",
+            "hct": "Hematocrit unchanged (so far)"
+          },
+          "variables": [
+            {
+              "id": "blood-volume",
+              "name": "Blood volume",
+              "answer": "down",
+              "chain": [
+                "vol"
+              ],
+              "why": "A liter of blood has left the vessels, about a fifth of an adult’s total."
+            },
+            {
+              "id": "venous-return",
+              "name": "Venous return",
+              "answer": "down",
+              "chain": [
+                "vol",
+                "vr"
+              ],
+              "why": "Most of your blood sits in the veins. Losing volume empties them first, so less blood returns to the heart."
+            },
+            {
+              "id": "sv",
+              "name": "Stroke volume",
+              "answer": "down",
+              "chain": [
+                "vol",
+                "vr",
+                "edv",
+                "sv"
+              ],
+              "why": "Less venous return means less filling, and a less-stretched ventricle ejects less."
+            },
+            {
+              "id": "map",
+              "name": "Mean arterial pressure",
+              "answer": "down",
+              "chain": [
+                "vol",
+                "vr",
+                "edv",
+                "sv",
+                "co",
+                "map"
+              ],
+              "why": "Lower stroke volume lowers cardiac output, and MAP = CO × TPR."
+            },
+            {
+              "id": "baroreceptor-firing",
+              "name": "Baroreceptor firing",
+              "answer": "down",
+              "chain": [
+                "vol",
+                "vr",
+                "edv",
+                "sv",
+                "co",
+                "map",
+                "baro"
+              ],
+              "why": "Lower arterial pressure stretches the carotid sinuses and aortic arch less, so their baroreceptors fire less. This is the signal that starts the compensation."
+            },
+            {
+              "id": "heart-rate",
+              "name": "Heart rate",
+              "answer": "none",
+              "chain": [
+                "noref",
+                "hr"
+              ],
+              "why": "Nothing about losing volume acts directly on the SA node. The fast heart rate of a bleeding patient is the reflex response, which is the next stage, not a direct effect."
+            },
+            {
+              "id": "hematocrit",
+              "name": "Hematocrit",
+              "answer": "none",
+              "chain": [
+                "whole",
+                "hct"
+              ],
+              "why": "Whole blood was lost, red cells and plasma together, so the fraction of blood that is red cells is the same. It falls later, when fluid moves in and dilutes the cells that remain."
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "After compensation",
+          "prompt": "The baroreceptor reflex acts within seconds; hormones and fluid shifts follow over the next few hours. Compare with the moment just after the bleed.",
+          "start": "Baroreceptors firing less",
+          "steps": {
+            "cvc": "Cardiovascular center: sympathetic up, vagal down",
+            "hr": "Heart rate rises",
+            "art": "Arterioles constrict",
+            "tpr": "TPR rises",
+            "map": "MAP rises back toward normal",
+            "cap": "Less pressure reaches the capillaries",
+            "chp": "Capillary hydrostatic pressure falls",
+            "in": "Interstitial fluid moves into the plasma",
+            "pv": "Plasma volume rises",
+            "dil": "Remaining red cells are diluted",
+            "hct": "Hematocrit falls",
+            "adh": "ADH secretion rises",
+            "ren": "Kidneys release renin",
+            "ald": "Angiotensin II and aldosterone rise",
+            "urine": "Kidneys keep water and sodium: less urine"
+          },
+          "variables": [
+            {
+              "id": "heart-rate",
+              "name": "Heart rate",
+              "answer": "up",
+              "chain": [
+                "cvc",
+                "hr"
+              ],
+              "why": "Less baroreceptor input lets the cardiovascular center raise sympathetic and cut vagal output to the SA node."
+            },
+            {
+              "id": "tpr",
+              "name": "Total peripheral resistance",
+              "answer": "up",
+              "chain": [
+                "cvc",
+                "art",
+                "tpr"
+              ],
+              "why": "Sympathetic signals constrict arterioles in the skin, gut, kidneys and resting muscle. Blood flow to the brain and heart is protected."
+            },
+            {
+              "id": "map",
+              "name": "Mean arterial pressure",
+              "answer": "up",
+              "chain": [
+                "cvc",
+                "hr",
+                "map"
+              ],
+              "why": "Faster heart rate, stronger contractions, constricted veins and higher TPR push pressure back toward its set point. After a liter, it usually ends up close to normal, though the volume is still missing."
+            },
+            {
+              "id": "chp",
+              "name": "Capillary hydrostatic pressure in skin and gut",
+              "answer": "down",
+              "chain": [
+                "cvc",
+                "art",
+                "cap",
+                "chp"
+              ],
+              "why": "Constricted arterioles use up more of the pressure, and arterial pressure was already low, so less reaches the capillaries beyond them."
+            },
+            {
+              "id": "plasma-volume",
+              "name": "Plasma volume",
+              "answer": "up",
+              "chain": [
+                "cvc",
+                "art",
+                "cap",
+                "chp",
+                "in",
+                "pv"
+              ],
+              "why": "With capillary pressure below the inward oncotic pull, interstitial fluid is drawn into the plasma for a while. Over hours, ADH and aldosterone help by keeping water and sodium in the body."
+            },
+            {
+              "id": "hematocrit",
+              "name": "Hematocrit",
+              "answer": "down",
+              "chain": [
+                "cvc",
+                "art",
+                "cap",
+                "chp",
+                "in",
+                "dil",
+                "hct"
+              ],
+              "why": "The fluid that moves in has no red cells, so it dilutes those that remain. New red cells take days, so hematocrit falls in the hours after a bleed."
+            },
+            {
+              "id": "adh",
+              "name": "ADH secretion",
+              "answer": "up",
+              "chain": [
+                "adh"
+              ],
+              "why": "Low pressure and low volume, sensed by the baroreceptors and by stretch-sensitive sensory receptors in the atria, make the hypothalamus raise ADH release from the posterior pituitary."
+            },
+            {
+              "id": "aldosterone",
+              "name": "Aldosterone secretion",
+              "answer": "up",
+              "chain": [
+                "ren",
+                "ald"
+              ],
+              "why": "Lower pressure in the kidney’s vessels and sympathetic signals make the kidneys release renin. Renin leads to angiotensin II, which makes the adrenal cortex release aldosterone."
+            },
+            {
+              "id": "urine",
+              "name": "Urine output",
+              "answer": "down",
+              "chain": [
+                "adh",
+                "ren",
+                "ald",
+                "urine"
+              ],
+              "why": "ADH makes the kidney tubules reabsorb more water, and aldosterone more sodium. Less of the remaining fluid is lost as urine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-heart-failure",
+      "title": "Left-sided heart failure",
+      "topic": "circulatory-disorders",
+      "theme": "heart failure",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "the body’s responses to heart failure all help",
+      "setup": "After a large heart attack, the left ventricle’s contractility is permanently reduced. Predict the state weeks later, compared with before the heart attack.",
+      "start": "Left ventricular contractility reduced",
+      "steps": {
+        "ej": "Ventricle ejects a smaller share of its blood",
+        "ef": "Ejection fraction falls",
+        "left": "More blood left behind each beat",
+        "edv": "End-diastolic volume rises",
+        "back": "Pressure backs up into the left atrium and pulmonary veins",
+        "pcap": "Pulmonary capillary pressure rises",
+        "lung": "Fluid filters into the lung tissue",
+        "low": "Cardiac output falls; pressure tends to fall",
+        "sym": "Baroreceptor reflex raises sympathetic output",
+        "hr": "Heart rate rises",
+        "ren": "Kidneys release renin",
+        "ald": "Aldosterone rises",
+        "vol": "Kidneys keep sodium and water: blood volume rises"
+      },
+      "variables": [
+        {
+          "id": "ef",
+          "name": "Ejection fraction",
+          "answer": "down",
+          "chain": [
+            "ej",
+            "ef"
+          ],
+          "why": "Weaker contractions eject a smaller fraction of the blood in the ventricle."
+        },
+        {
+          "id": "edv",
+          "name": "Left ventricular end-diastolic volume",
+          "answer": "up",
+          "chain": [
+            "ej",
+            "left",
+            "edv"
+          ],
+          "why": "Blood left behind each beat adds to what returns from the lungs, and the retained fluid adds more, so the ventricle stays fuller and dilates."
+        },
+        {
+          "id": "pulmonary-chp",
+          "name": "Capillary hydrostatic pressure in the lungs",
+          "answer": "up",
+          "chain": [
+            "ej",
+            "left",
+            "edv",
+            "back",
+            "pcap"
+          ],
+          "why": "A full, weak left ventricle raises pressure in the left atrium. That pressure passes back through the valveless pulmonary veins into the lung capillaries."
+        },
+        {
+          "id": "lung-fluid",
+          "name": "Fluid in the lung tissue",
+          "answer": "up",
+          "chain": [
+            "ej",
+            "left",
+            "edv",
+            "back",
+            "pcap",
+            "lung"
+          ],
+          "why": "Higher capillary pressure speeds filtration, and fluid collects in the lungs faster than it drains. This is why breathlessness is a key symptom."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Resting heart rate",
+          "answer": "up",
+          "chain": [
+            "low",
+            "sym",
+            "hr"
+          ],
+          "why": "Low cardiac output lowers pressure at the baroreceptors, and the reflex raises sympathetic output to the SA node."
+        },
+        {
+          "id": "aldosterone",
+          "name": "Aldosterone secretion",
+          "answer": "up",
+          "chain": [
+            "low",
+            "sym",
+            "ren",
+            "ald"
+          ],
+          "why": "Low flow and pressure in the kidneys’ vessels, plus sympathetic signals, trigger renin release, angiotensin II and aldosterone."
+        },
+        {
+          "id": "blood-volume",
+          "name": "Blood volume",
+          "answer": "up",
+          "chain": [
+            "low",
+            "sym",
+            "ren",
+            "ald",
+            "vol"
+          ],
+          "why": "The kidneys respond as if the body had lost volume and retain sodium and water. That raises filling, but it also worsens the congestion: the loop is correcting the wrong problem."
+        }
+      ]
+    },
+    {
+      "id": "right-heart-failure",
+      "title": "Right-sided heart failure",
+      "topic": "circulatory-disorders",
+      "core": [
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "a failing right ventricle floods the lungs",
+      "setup": "The right ventricle can no longer pump out all the blood returning to it. The left ventricle is healthy.",
+      "start": "Right ventricle pumps out less",
+      "steps": {
+        "ra": "Blood backs up into the right atrium",
+        "sv": "Pressure in the systemic veins rises",
+        "chp": "Capillary pressure in the legs rises",
+        "ed": "Ankle and leg edema",
+        "lung": "Less blood sent through the lungs",
+        "la": "Less blood reaches the left ventricle",
+        "edv": "Left ventricular end-diastolic volume falls"
+      },
+      "variables": [
+        {
+          "id": "venous-pressure",
+          "name": "Pressure in the systemic veins",
+          "answer": "up",
+          "chain": [
+            "ra",
+            "sv"
+          ],
+          "why": "Blood that the right ventricle does not pump on backs up into the right atrium and the venae cavae, raising pressure throughout the systemic veins. The neck veins may bulge."
+        },
+        {
+          "id": "leg-edema",
+          "name": "Interstitial fluid in the legs and ankles",
+          "answer": "up",
+          "chain": [
+            "ra",
+            "sv",
+            "chp",
+            "ed"
+          ],
+          "why": "Higher venous pressure passes back into the capillaries, raising filtration. Fluid collects in the lowest parts of the body."
+        },
+        {
+          "id": "lung-flow",
+          "name": "Blood flow through the pulmonary circuit",
+          "answer": "down",
+          "chain": [
+            "lung"
+          ],
+          "why": "The right ventricle is the pump for the pulmonary circuit. When it ejects less, less blood flows through the lungs."
+        },
+        {
+          "id": "lv-edv",
+          "name": "Left ventricular end-diastolic volume",
+          "answer": "down",
+          "chain": [
+            "lung",
+            "la",
+            "edv"
+          ],
+          "why": "The left heart can only pump what reaches it from the lungs. Less arrives, so it fills less."
+        }
+      ]
+    },
+    {
+      "id": "tamponade",
+      "title": "Fluid fills the pericardial sac",
+      "topic": "circulatory-disorders",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "fluid around the heart weakens its contractions",
+      "setup": "Fluid builds up quickly in the pericardial sac (cardiac tamponade). The fibrous pericardium cannot stretch fast enough to make room.",
+      "start": "Fluid accumulates in the pericardial sac",
+      "steps": {
+        "pp": "Pressure around the heart rises",
+        "squeeze": "Ventricles cannot expand fully in diastole",
+        "edv": "End-diastolic volume falls",
+        "sv": "Stroke volume falls",
+        "map": "Cardiac output and MAP fall",
+        "baro": "Baroreceptor firing falls",
+        "hr": "Heart rate rises",
+        "muscle": "Heart muscle itself is healthy",
+        "con": "Contractility unchanged"
+      },
+      "variables": [
+        {
+          "id": "edv",
+          "name": "End-diastolic volume",
+          "answer": "down",
+          "chain": [
+            "pp",
+            "squeeze",
+            "edv"
+          ],
+          "why": "The fluid presses on the heart from outside. The ventricles cannot expand against it, so they fill less."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "down",
+          "chain": [
+            "pp",
+            "squeeze",
+            "edv",
+            "sv"
+          ],
+          "why": "Less filling means less stretch and less blood to eject."
+        },
+        {
+          "id": "contractility",
+          "name": "Contractility",
+          "answer": "none",
+          "chain": [
+            "muscle",
+            "con"
+          ],
+          "why": "The heart muscle is not damaged. The problem is filling, not the strength of each contraction at a given stretch."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "down",
+          "chain": [
+            "pp",
+            "squeeze",
+            "edv",
+            "sv",
+            "map"
+          ],
+          "why": "Lower stroke volume lowers cardiac output, and pressure falls with it."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "pp",
+            "squeeze",
+            "edv",
+            "sv",
+            "map",
+            "baro",
+            "hr"
+          ],
+          "why": "Falling pressure reduces baroreceptor firing, and the reflex speeds the heart. The fast rate cannot fix a filling problem, which is why the fluid must be drained."
+        }
+      ]
+    },
+    {
+      "id": "dehydration",
+      "title": "Dehydration on a hot hike",
+      "topic": "bp-long-term",
+      "theme": "dehydration",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "dehydration makes the plasma more dilute",
+      "setup": "A hiker loses 3 liters of sweat over a hot day and drinks nothing. Sweat contains less salt than plasma does.",
+      "start": "Water lost in excess of salt",
+      "steps": {
+        "vol": "Plasma volume falls",
+        "osm": "Plasma osmolarity rises",
+        "osmo": "Hypothalamic osmoreceptors fire",
+        "adh": "ADH release rises",
+        "thirst": "Thirst rises",
+        "reab": "Kidney tubules reabsorb more water",
+        "urine": "Less, more concentrated urine",
+        "kid": "Lower volume and sympathetic signals reach the kidneys",
+        "ren": "Renin release rises"
+      },
+      "variables": [
+        {
+          "id": "plasma-volume",
+          "name": "Plasma volume",
+          "answer": "down",
+          "chain": [
+            "vol"
+          ],
+          "why": "Sweat is made from plasma fluid, so losing 3 liters without drinking shrinks the plasma (and, as water shifts, the other body fluids)."
+        },
+        {
+          "id": "osmolarity",
+          "name": "Plasma osmolarity",
+          "answer": "up",
+          "chain": [
+            "osm"
+          ],
+          "why": "Sweat carries away proportionally more water than solute, so the solutes left behind are more concentrated."
+        },
+        {
+          "id": "adh",
+          "name": "ADH release",
+          "answer": "up",
+          "chain": [
+            "osm",
+            "osmo",
+            "adh"
+          ],
+          "why": "Osmoreceptors in the hypothalamus shrink as plasma osmolarity rises and signal the posterior pituitary to release more ADH. Low volume adds to the signal."
+        },
+        {
+          "id": "thirst",
+          "name": "Thirst",
+          "answer": "up",
+          "chain": [
+            "osm",
+            "osmo",
+            "thirst"
+          ],
+          "why": "The same osmoreceptors drive the thirst center. Drinking is the only way to replace the water."
+        },
+        {
+          "id": "urine-volume",
+          "name": "Urine volume",
+          "answer": "down",
+          "chain": [
+            "osm",
+            "osmo",
+            "adh",
+            "reab",
+            "urine"
+          ],
+          "why": "ADH makes the kidney tubules reabsorb more water, so less, more concentrated urine is produced."
+        },
+        {
+          "id": "renin",
+          "name": "Renin release",
+          "answer": "up",
+          "chain": [
+            "vol",
+            "kid",
+            "ren"
+          ],
+          "why": "Lower blood volume and pressure in the kidney’s vessels, and sympathetic signals, make the kidneys release more renin."
+        }
+      ]
+    },
+    {
+      "id": "saline-infusion",
+      "title": "Two liters of IV saline",
+      "topic": "bp-long-term",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "any IV fluid changes plasma osmolarity",
+      "setup": "A patient with a normal blood volume is given 2 liters of isotonic saline by IV over 30 minutes. Predict the next hour.",
+      "start": "2 L of isotonic saline infused",
+      "steps": {
+        "vol": "Blood volume rises",
+        "str": "Atria are stretched",
+        "anp": "ANP release rises",
+        "adh": "ADH release falls",
+        "kid": "Higher pressure and less sympathetic signal at the kidneys",
+        "ren": "Renin release falls",
+        "urine": "Kidneys excrete more sodium and water",
+        "iso": "Saline has the same osmolarity as plasma",
+        "osm": "Plasma osmolarity unchanged",
+        "dil": "Plasma proteins diluted",
+        "bcop": "Blood colloid osmotic pressure falls"
+      },
+      "variables": [
+        {
+          "id": "blood-volume",
+          "name": "Blood volume",
+          "answer": "up",
+          "chain": [
+            "vol"
+          ],
+          "why": "The saline enters the veins and adds to the plasma (and, within minutes, some of it filters out into the interstitial fluid)."
+        },
+        {
+          "id": "anp",
+          "name": "ANP release",
+          "answer": "up",
+          "chain": [
+            "vol",
+            "str",
+            "anp"
+          ],
+          "why": "More venous return stretches the atrial walls, and stretched atrial muscle cells release atrial natriuretic peptide."
+        },
+        {
+          "id": "renin",
+          "name": "Renin release",
+          "answer": "down",
+          "chain": [
+            "vol",
+            "kid",
+            "ren"
+          ],
+          "why": "Higher pressure in the kidney’s vessels and less sympathetic signal reduce renin release, so angiotensin II and aldosterone fall too."
+        },
+        {
+          "id": "adh",
+          "name": "ADH release",
+          "answer": "down",
+          "chain": [
+            "vol",
+            "str",
+            "adh"
+          ],
+          "why": "Stretch-sensitive sensory receptors in the atria and large veins signal the hypothalamus that volume is high, and ADH release falls."
+        },
+        {
+          "id": "urine",
+          "name": "Urine output",
+          "answer": "up",
+          "chain": [
+            "vol",
+            "str",
+            "anp",
+            "urine"
+          ],
+          "why": "More ANP and less aldosterone and ADH make the kidneys excrete more sodium and water, removing the excess."
+        },
+        {
+          "id": "osmolarity",
+          "name": "Plasma osmolarity",
+          "answer": "none",
+          "chain": [
+            "iso",
+            "osm"
+          ],
+          "why": "Isotonic saline has the same osmolarity as plasma, so adding it expands volume without changing concentration. That is why the osmoreceptors stay quiet."
+        },
+        {
+          "id": "bcop",
+          "name": "Blood colloid osmotic pressure",
+          "answer": "down",
+          "chain": [
+            "vol",
+            "dil",
+            "bcop"
+          ],
+          "why": "Saline contains no protein, so it dilutes the plasma proteins, lowering their oncotic pull."
+        }
+      ]
+    },
+    {
+      "id": "ace-inhibitor",
+      "title": "An ACE inhibitor",
+      "topic": "bp-long-term",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "blocking the pathway also lowers renin",
+      "setup": "A person whose blood pressure runs too high starts taking an ACE inhibitor, a drug that blocks angiotensin-converting enzyme. Predict the state after several weeks.",
+      "start": "ACE blocked",
+      "steps": {
+        "ang": "Less angiotensin I converted to angiotensin II",
+        "a2": "Angiotensin II falls",
+        "art": "Less angiotensin II constricting arterioles",
+        "tpr": "TPR falls",
+        "ald": "Aldosterone falls",
+        "na": "Kidneys keep less sodium and water",
+        "vol": "Blood volume falls slightly",
+        "map": "MAP falls",
+        "brake": "Angiotensin II no longer holds back renin release",
+        "ren": "Renin release rises",
+        "k": "Kidneys secrete less potassium",
+        "kup": "Blood potassium rises"
+      },
+      "variables": [
+        {
+          "id": "angiotensin-ii",
+          "name": "Angiotensin II",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "a2"
+          ],
+          "why": "ACE converts angiotensin I into angiotensin II. Blocking it cuts production of angiotensin II."
+        },
+        {
+          "id": "aldosterone",
+          "name": "Aldosterone",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "a2",
+            "ald"
+          ],
+          "why": "Angiotensin II is a main stimulus for aldosterone release by the adrenal cortex. Less of it means less aldosterone."
+        },
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "a2",
+            "art",
+            "tpr"
+          ],
+          "why": "Angiotensin II is a powerful constrictor of arterioles. With less of it, arterioles relax and resistance falls."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "a2",
+            "ald",
+            "na",
+            "vol",
+            "map"
+          ],
+          "why": "Lower TPR and a slightly smaller blood volume both lower MAP. That is why the drug is used."
+        },
+        {
+          "id": "renin",
+          "name": "Renin release",
+          "answer": "up",
+          "chain": [
+            "ang",
+            "a2",
+            "brake",
+            "ren"
+          ],
+          "why": "Angiotensin II normally feeds back to hold renin release down. Without that brake, and with lower pressure at the kidneys, renin release rises, but ACE is blocked so it cannot produce much angiotensin II."
+        },
+        {
+          "id": "potassium",
+          "name": "Blood potassium",
+          "answer": "up",
+          "chain": [
+            "ang",
+            "a2",
+            "ald",
+            "k",
+            "kup"
+          ],
+          "why": "Aldosterone makes the kidneys secrete potassium as they reabsorb sodium. Less aldosterone means less potassium excreted, so blood potassium can rise."
+        }
+      ]
+    }
+  ]
+}

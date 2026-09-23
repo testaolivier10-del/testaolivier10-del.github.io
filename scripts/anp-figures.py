@@ -13,14 +13,15 @@ For every OpenStax figure registered in anatomy-physiology/data/figures/*.json:
      marks sitting on the white margin, one box per line of text. Writes
      <id>.boxes.json and <id>.overlay.png (numbered boxes) next to the cache,
      for a person or agent to name: each label is one or more line boxes.
-     Named labels go into the entry's "labels" as
-     { id, name, accept, lines: [box numbers], concept }; the next run turns
-     lines into the label's box.
+     Named labels go in anatomy-physiology/data/labels/<id>.json as
+     { "figure": id, "labels": [{ id, name, accept, lines: [box numbers],
+     concept }] }; the next run turns lines into the label's box.
 
 Needs Pillow:  pip install pillow
 
     python3 scripts/anp-figures.py            download, resize, update entries
     python3 scripts/anp-figures.py --detect   also propose label boxes
+    ... --only a,b                           only these topics' figure files
 """
 import json, os, sys, glob, urllib.request, io
 from collections import deque
@@ -29,10 +30,12 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'anatomy-physiology', 'data', 'figures')
 OUT = os.path.join(ROOT, 'anatomy-physiology', 'figures')
+LABELS = os.path.join(ROOT, 'anatomy-physiology', 'data', 'labels')
 CACHE = os.environ.get('ANP_FIGURE_CACHE', os.path.join(ROOT, '.cache', 'anp-figures'))
 CATALOG = os.environ.get('ANP_FIGURE_CATALOG')
 MAX_W = 1100
 DETECT = '--detect' in sys.argv
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else None
 
 
 def load_catalog():
@@ -153,6 +156,8 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     refused = []
     for path in sorted(glob.glob(os.path.join(DATA, '*.json'))):
+        if ONLY and os.path.basename(path)[:-5] not in ONLY:
+            continue
         entries = json.load(open(path, encoding='utf8'))
         changed = False
         for fid, f in entries.items():
@@ -182,20 +187,25 @@ def main():
                     f[k] = v; changed = True
             if f.get('openstax') != upd_os:
                 f['openstax'] = upd_os; changed = True
-            # Named labels given as line numbers become one box: the union of
-            # those lines' boxes from the detection run.
+            # Named labels (data/labels/<id>.json) given as line numbers become
+            # one box: the union of those lines' boxes from the detection run.
+            lp = os.path.join(LABELS, fid + '.json')
             bf = os.path.join(CACHE, fid + '.boxes.json')
-            if f.get('labels') and os.path.exists(bf):
+            if os.path.exists(lp) and os.path.exists(bf):
+                ldata = json.load(open(lp, encoding='utf8'))
                 lines = json.load(open(bf))
-                for lab in f['labels']:
+                lchanged = False
+                for lab in ldata.get('labels', []):
                     if lab.get('lines') and not lab.get('box'):
                         bs = [lines[k] for k in lab['lines'] if 0 <= k < len(lines)]
                         if bs:
                             x0 = min(b[0] for b in bs); y0 = min(b[1] for b in bs)
                             x1 = max(b[0] + b[2] for b in bs); y1 = max(b[1] + b[3] for b in bs)
                             lab['box'] = [x0, y0, x1 - x0, y1 - y0]
-                            changed = True
-            if DETECT and not f.get('labels'):
+                            lchanged = True
+                if lchanged:
+                    open(lp, 'w', encoding='utf8').write(json.dumps(ldata, indent=2, ensure_ascii=False) + '\n')
+            if DETECT and not os.path.exists(lp):
                 boxes = detect_labels(im)
                 os.makedirs(CACHE, exist_ok=True)
                 json.dump(boxes, open(os.path.join(CACHE, fid + '.boxes.json'), 'w'))

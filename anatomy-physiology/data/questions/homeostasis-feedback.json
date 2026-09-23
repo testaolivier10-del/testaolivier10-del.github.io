@@ -4,11 +4,13 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "What is a set point?",
     "options": [
       "The highest value a regulated variable can safely reach",
-      "The target value a feedback loop regulates a variable toward",
+      "The target value a loop holds a variable near",
       "The point at which a positive feedback loop ends",
       "The place in the body where a sensory receptor sits"
     ],
@@ -28,10 +30,12 @@
     "type": "order",
     "level": "recall",
     "diff": 1,
-    "core": ["homeostasis", "communication"],
-    "q": "Put the parts of a feedback loop in the order the signal travels.",
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A stimulus has just changed a regulated variable. Put the remaining parts of the feedback loop in the order the signal travels.",
     "options": [
-      "Stimulus",
       "Sensory receptor (sensor)",
       "Afferent pathway",
       "Control center",
@@ -40,7 +44,7 @@
       "Response"
     ],
     "why": {
-      "correct": "A stimulus changes the regulated variable. The sensory receptor detects it and sends information along the afferent pathway (toward) to the control center. The control center compares it with the set point and sends commands along the efferent pathway (away) to the effector, which produces the response."
+      "correct": "After the stimulus changes the regulated variable, the sensory receptor (sensor) detects it and sends information along the afferent pathway (toward) to the control center. The control center compares it with the set point and sends commands along the efferent pathway (away) to the effector, which produces the response."
     }
   },
   {
@@ -48,12 +52,14 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "You walk into a cold room. Nerve signals from your brain make the smooth muscle in the walls of your skin's blood vessels contract, and less warm blood reaches your skin. In this loop, what is the effector?",
     "options": [
       "The cold air of the room",
       "The nerves carrying signals from the brain",
-      "The smooth muscle in the skin's blood vessels",
+      "Smooth muscle in skin blood vessels",
       "The temperature control center in the brain"
     ],
     "correct": 2,
@@ -72,7 +78,10 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "Cold-sensitive nerve endings in your skin fire action potentials that travel along sensory nerves to your brain. In the feedback loop, what are those sensory nerves?",
     "options": [
       "The efferent pathway",
@@ -96,7 +105,9 @@
     "type": "predict",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "During a run, your body temperature rises above its set point. Predict how each variable changes as your temperature control loop responds.",
     "variables": [
       {
@@ -121,7 +132,10 @@
     "type": "predict",
     "level": "analyze",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "In a patient, the nerves that carry commands from the brain to the blood vessels of the skin have been damaged, so those vessels can no longer constrict. The patient sits in a cold room for an hour. Compared with a person whose loop is intact, predict each variable.",
     "variables": [
       {
@@ -146,7 +160,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Platelets stick to a torn blood vessel wall. The stuck platelets release chemicals that make more passing platelets stick, and those release still more of the chemicals. What kind of loop is this?",
     "options": [
       "Positive feedback",
@@ -170,7 +186,10 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "During labor, a woman's contractions grow stronger and more frequent for hours. Within minutes of the baby's delivery, the strong contractions stop. What best explains why they stop?",
     "options": [
       "Negative feedback has lowered the contractions back to their set point",
@@ -194,23 +213,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "misconception": "negative feedback means lowering a variable",
     "q": "A person's blood pH falls to 7.30. Their lungs and kidneys respond in ways that raise the pH back toward 7.40. What kind of feedback is this?",
     "options": [
-      "Positive feedback, because the pH goes up",
-      "Negative feedback, because the response opposes the fall",
-      "Positive feedback, because the change is corrected",
-      "Neither, because the pH is outside the normal range"
+      "Positive feedback",
+      "Negative feedback",
+      "Mass balance",
+      "No feedback at all"
     ],
     "correct": 1,
     "why": {
       "correct": "\"Negative\" means the response opposes the stimulus, not that it lowers the variable. The stimulus was a fall in pH; the response raises it. Opposing the change back toward the set point is negative feedback.",
       "options": [
-        "Positive feedback would push the pH further in the direction it was already moving, lower still. Raising it opposes the change.",
-        "Correct. A fall triggered a rise: the response opposes the change, which is negative feedback.",
-        "Correcting a change back toward the set point is what negative feedback does, not positive feedback.",
-        "Feedback loops are triggered exactly when a variable moves away from its set point; being outside the normal range is the stimulus."
+        "Positive feedback would push the pH further in the direction it was already moving, lower still. Here the response raises it, which opposes the change.",
+        "Correct. A fall triggered a rise: the response opposes the change, which is negative feedback. \"Negative\" means opposing, not lowering.",
+        "Mass balance compares the input and output of a substance. It describes what disturbs a variable, not the loop that corrects it.",
+        "A response that pulls the variable back toward its set point is a feedback loop at work. Moving outside the normal range is the stimulus that starts it."
       ]
     }
   },
@@ -219,7 +240,9 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Select every statement that is true of negative feedback.",
     "options": [
       "The response opposes the stimulus.",
@@ -228,7 +251,11 @@
       "It keeps going until an outside event stops it.",
       "The response makes the original change larger."
     ],
-    "correct": [0, 1, 2],
+    "correct": [
+      0,
+      1,
+      2
+    ],
     "why": {
       "correct": "Negative feedback opposes the change. That pulls the variable back toward the set point, whichever direction it moved, and the loop switches itself off as the stimulus shrinks.",
       "options": [
@@ -245,7 +272,10 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis", "mass-balance"],
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
     "q": "Each day for a week, a person takes in 2.8 liters of water and loses 2.4 liters. What happens to the total water in their body over that week?",
     "options": [
       "It stays the same",
@@ -269,7 +299,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "For four days a person takes in 200 mmol of sodium a day, and their kidneys excrete 170 mmol a day. By how much does total body sodium change over the four days?",
     "options": [
       "It falls by 120 mmol",
@@ -293,7 +325,9 @@
     "type": "error",
     "level": "analyze",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "This description of the loop that corrects a rise in body temperature contains one wrong step. Find it.",
     "options": [
       "Exercise warms the blood above the set point.",
@@ -319,7 +353,10 @@
     "type": "missing",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "Fill the gap in the loop. Stimulus → sensory receptor (sensor) → ______ → control center → efferent pathway → effector → response.",
     "options": [
       "Set point",
@@ -343,7 +380,9 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Mrs. Park, 84, lives alone without air conditioning. During a week-long heat wave her body temperature climbs to 39.5 °C. Tests show her nerves and temperature control center work normally, but her skin blood vessels dilate less and she sweats much less than a younger person. Where is her temperature loop failing?",
     "options": [
       "At the sensory receptors, which no longer detect heat",
@@ -367,7 +406,9 @@
     "type": "predict",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "You step from a warm house into cold air and stay outside for an hour. Predict each variable, compared with just before you stepped out.",
     "variables": [
       {
@@ -397,7 +438,10 @@
     "type": "predict",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "A person loses a large volume of blood quickly, and their blood pressure falls. Stretch-sensitive sensory receptors in the walls of their large arteries detect the fall, and a control center in the brain responds. Predict each variable as the loop responds.",
     "variables": [
       {
@@ -422,12 +466,14 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "What does the control center of a feedback loop do?",
     "options": [
       "It detects the change in the regulated variable",
       "It carries out the response that changes the variable",
-      "It compares the input with the set point and sends commands",
+      "It compares input with the set point",
       "It carries signals from the sensor toward the brain"
     ],
     "correct": 2,
@@ -436,7 +482,7 @@
       "options": [
         "Detecting the change is the job of the sensory receptor (sensor).",
         "Carrying out the response is the job of the effector.",
-        "Correct. Comparing input with the set point and deciding on an output is what the control center does.",
+        "Correct. The control center compares the input with the set point and sends commands along the efferent pathway.",
         "Carrying signals toward the control center is the job of the afferent pathway."
       ]
     }
@@ -446,10 +492,12 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Body temperature normally swings a little above and below 37 °C instead of staying perfectly flat. What best explains this?",
     "options": [
-      "Negative feedback responds after a delay, so each correction overshoots slightly",
+      "Corrections lag behind, so they overshoot",
       "Positive feedback takes over whenever temperature passes 37 °C",
       "The set point changes randomly from minute to minute",
       "The sensory receptors switch off once the set point is reached"
@@ -458,7 +506,7 @@
     "why": {
       "correct": "Detecting a change, sending signals and getting effectors working all take time. By the time the response takes hold, the variable has moved, so the correction carries it slightly past the set point, and the loop then corrects the other way. The result is small swings within the normal range.",
       "options": [
-        "Correct. The time lag in a negative feedback loop produces small oscillations around the set point.",
+        "Correct. The time lag in a negative feedback loop means each correction carries the variable slightly past the set point, producing small oscillations.",
         "Positive feedback would push temperature further away, not back. The small swings come from negative feedback.",
         "The set point shifts slowly over the day, not randomly minute to minute, and that would not explain swings around it.",
         "Sensory receptors keep reporting the variable; that is how the loop detects the next swing. Switching off is not the cause."
@@ -470,11 +518,13 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A patient's body temperature climbs to 42 °C. The heat speeds up chemical reactions in every cell, and faster reactions release more heat. What is the danger in this situation?",
     "options": [
       "Negative feedback will lower the temperature too far",
-      "A positive feedback loop drives temperature still higher",
+      "Positive feedback drives it higher still",
       "The set point will fall to match the new temperature",
       "Mass balance forces heat output to equal heat input"
     ],
@@ -494,7 +544,10 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "When the blood carries too little oxygen, the kidneys release a hormone. The hormone travels in the blood to the blood-forming tissue inside the bones, which makes more red blood cells. In this loop, what is the efferent pathway?",
     "options": [
       "The kidney cells that detect low oxygen",
@@ -518,13 +571,15 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Which of these is regulated by positive feedback?",
     "options": [
       "Body temperature on a cold day",
       "Blood pressure after standing up",
       "Blood pH after exercise",
-      "Contractions of the uterus during labor"
+      "Contractions during labor"
     ],
     "correct": 3,
     "why": {

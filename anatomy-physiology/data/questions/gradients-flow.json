@@ -372,9 +372,9 @@
       "correct": "Blood vessels form a closed, stretchy system. Blood pressure depends partly on how much blood fills it. With a lower blood volume, the walls are stretched less and the pressure falls.",
       "options": [
         "Correct. A smaller blood volume in the same vessels means less stretch and a lower pressure.",
-        "Losing whole blood does not thicken what remains. Higher viscosity would raise resistance, not explain a pressure drop.",
+        "Losing blood, cells and fluid together, does not thicken what remains. Higher viscosity would raise resistance, not explain a pressure drop.",
         "The surrounding air pressure is not changed by bleeding. Blood pressure readings are already relative to it.",
-        "Vessel length does not change with blood loss."
+        "The length of the vessels does not change with blood loss."
       ]
     }
   },
@@ -443,7 +443,7 @@
       "It rises: more cells carry more blood through the vessel",
       "It stays the same: the pressure gradient has not changed",
       "It falls: thicker blood raises the resistance",
-      "It falls: the thick blood narrows the vessel radius"
+      "It falls: the thick blood narrows the vessel"
     ],
     "correct": 2,
     "why": {
@@ -480,7 +480,7 @@
     "why": {
       "correct": "Bulk flow is a whole fluid moving together, pushed by a pressure difference. Blood, inhaled air and IV fluid all qualify. Dye particles spreading through still water and heat passing into metal are driven by concentration and temperature gradients, with no pressure-driven flow of the fluid.",
       "options": [
-        "Bulk flow. The heart creates a pressure difference that moves the whole blood, with everything in it.",
+        "Bulk flow. The heart creates a pressure difference that moves the blood as a whole, with everything in it.",
         "Not bulk flow. The water is still; individual dye particles spread down their own concentration gradient.",
         "Bulk flow. The pressure in your lungs drops below atmospheric, and air moves in as a whole.",
         "Bulk flow. The pressure at the bag end is higher than in the vein, so the fluid moves as a whole.",

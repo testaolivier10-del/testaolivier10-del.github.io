@@ -1,0 +1,7 @@
+{
+  "anatomical-plane-section": { "def": "A plane is an imaginary flat surface passed through the body; a section is the cut surface produced when the body or an organ is divided along a plane. An oblique plane runs at an angle between the three main planes.", "roots": [["planus (Latin)", "flat"], ["sect-", "cut"], ["obliquus (Latin)", "slanted"]], "say": "" },
+  "sagittal-plane": { "def": "A vertical plane that divides the body into right and left parts. The midsagittal plane runs down the midline and makes equal halves; a parasagittal plane runs off the midline and makes unequal parts.", "roots": [["sagitta (Latin)", "arrow"], ["para-", "beside"]], "say": "SAJ-ih-tul" },
+  "frontal-plane": { "def": "A vertical plane that divides the body into anterior (front) and posterior (back) parts. It is also called the coronal plane.", "roots": [["corona (Latin)", "crown"]], "say": "koh-ROH-nul" },
+  "transverse-plane": { "def": "A horizontal plane that divides the body into superior (upper) and inferior (lower) parts. The cut surface it makes is a cross section.", "roots": [["trans-", "across"]], "say": "" },
+  "medical-imaging": { "def": "Ways of making pictures of the inside of a living body without opening it. A radiograph (X-ray) is a flat projection; CT, MRI, PET and ultrasound produce sections.", "roots": [["tom/o", "cut, slice"], ["-graphy", "recording"], ["son/o", "sound"]], "say": "" }
+}

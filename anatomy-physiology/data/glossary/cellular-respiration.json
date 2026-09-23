@@ -1,0 +1,27 @@
+{
+  "cellular-respiration": {
+    "def": "The controlled breakdown of fuel molecules, such as glucose, inside cells, with the energy released captured as ATP. Broken down fully with oxygen, one glucose yields 6 CO2, 6 water and about 30–32 ATP.",
+    "roots": [["re-", "again"], ["spir-", "breathe"]],
+    "say": ""
+  },
+  "glycolysis-basic": {
+    "def": "The first stage of glucose breakdown: ten enzyme reactions in the cytosol that split one glucose into two pyruvate, with a net gain of 2 ATP and 2 NADH. It does not use oxygen.",
+    "roots": [["glyco-", "sugar"], ["-lysis", "splitting"], ["pyr-", "fire"], ["uv-", "grape"]],
+    "say": "gly-KOL-ih-sis; py-ROO-vayt"
+  },
+  "anaerobic-metabolism": {
+    "def": "Making ATP without using oxygen: glycolysis followed by conversion of pyruvate to lactate, which regenerates NAD+ so glycolysis can continue. It yields only 2 ATP per glucose.",
+    "roots": [["an-", "without"], ["aer-", "air"], ["bio-", "life"], ["lact-", "milk"]],
+    "say": "AN-air-OH-bik"
+  },
+  "aerobic-respiration": {
+    "def": "The complete breakdown of fuel using oxygen: glycolysis, then the citric acid cycle in the mitochondrion, then the electron transport chain in the inner mitochondrial membrane, where oxygen accepts electrons and most ATP is made.",
+    "roots": [["aer-", "air"], ["bio-", "life"], ["citr-", "lemon"]],
+    "say": "air-OH-bik"
+  },
+  "metabolic-co2": {
+    "def": "The carbon dioxide cells make as they break down fuel, released when pyruvate loses a carbon and in the citric acid cycle. It diffuses into the blood and is breathed out; one glucose yields 6 CO2.",
+    "roots": [],
+    "say": ""
+  }
+}

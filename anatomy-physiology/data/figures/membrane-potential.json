@@ -4,11 +4,15 @@
     "openstax": {
       "figure": "12.22",
       "section": "12.4",
-      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ebf896983080bd7983bad79d408dddd10bffab1c"
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ebf896983080bd7983bad79d408dddd10bffab1c",
+      "page": "12-4-the-action-potential"
     },
     "alt": "A patch of plasma membrane with positive charges lined up along its outer face and negative charges along its inner face. A fine electrode pokes through the membrane into the cytosol, a second electrode sits in the fluid outside, and the meter joining them reads minus 70 millivolts.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 12.22",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 532,
+    "ext": "jpg"
   }
 }

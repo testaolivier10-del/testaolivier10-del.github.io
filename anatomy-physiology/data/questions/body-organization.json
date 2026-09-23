@@ -4,19 +4,37 @@
     "type": "order",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Put the levels of organization in order, from the smallest and simplest to the largest and most complex.",
-    "options": ["Chemical level (atoms and molecules)", "Cell", "Tissue", "Organ", "Organ system", "Organism"],
-    "why": { "correct": "Atoms bond into molecules; molecules are arranged into cells; similar cells group into tissues; two or more tissues build an organ; organs that share a job form an organ system; and all the organ systems together make the organism. Each level is built from the one below it." }
+    "options": [
+      "Chemical level (atoms and molecules)",
+      "Cell",
+      "Tissue",
+      "Organ",
+      "Organ system",
+      "Organism"
+    ],
+    "why": {
+      "correct": "Atoms bond into molecules; molecules are arranged into cells; similar cells group into tissues; two or more tissues build an organ; organs that share a job form an organ system; and all the organ systems together make the organism. Each level is built from the one below it."
+    }
   },
   {
     "id": "anp-body-organization-2",
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Fill in the missing level: chemical level → cell → ____ → organ → organ system → organism.",
-    "options": ["Molecule", "Tissue", "Organism", "Organ system"],
+    "options": [
+      "Molecule",
+      "Tissue",
+      "Organism",
+      "Organ system"
+    ],
     "correct": 1,
     "why": {
       "correct": "Between the cell and the organ sits the tissue: a group of similar cells, with the material around them, working on one job. Organs are built from two or more kinds of tissue.",
@@ -33,10 +51,12 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which statement best describes the difference between anatomy and physiology?",
     "options": [
-      "Anatomy studies structures; physiology studies how those structures work",
+      "Anatomy studies structures; physiology studies how they work",
       "Anatomy studies organs; physiology studies cells",
       "Anatomy studies healthy bodies; physiology studies disease",
       "Anatomy studies the whole body; physiology studies one system"
@@ -57,9 +77,16 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student measures how fast the heart's chambers fill with blood between beats. Which field is the student working in?",
-    "options": ["Gross anatomy", "Microscopic anatomy", "Physiology", "Regional anatomy"],
+    "options": [
+      "Gross anatomy",
+      "Microscopic anatomy",
+      "Physiology",
+      "Regional anatomy"
+    ],
     "correct": 2,
     "why": {
       "correct": "Measuring how fast chambers fill is studying how the heart works, an event over time. That is physiology.",
@@ -76,9 +103,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A surgeon preparing for a hand operation reviews every bone, muscle, joint and blood vessel in the hand together. Which approach to anatomy is this?",
-    "options": ["Systemic anatomy", "Microscopic anatomy", "Physiology", "Regional anatomy"],
+    "options": [
+      "Systemic anatomy",
+      "Microscopic anatomy",
+      "Physiology",
+      "Regional anatomy"
+    ],
     "correct": 3,
     "why": {
       "correct": "Studying every structure in one part of the body together is regional anatomy. Surgeons work this way because an operation happens in one region, where all the systems overlap.",
@@ -95,9 +129,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "The wall of the urinary bladder contains a lining, layers of muscle, and supporting tissue with blood vessels running through it. At which level of organization is the bladder?",
-    "options": ["Tissue", "Organ", "Organ system", "Cell"],
+    "options": [
+      "Tissue",
+      "Organ",
+      "Organ system",
+      "Cell"
+    ],
     "correct": 1,
     "why": {
       "correct": "The bladder is built from two or more kinds of tissue, has a recognizable shape and does a specific job (storing urine). That is the definition of an organ.",
@@ -114,10 +155,24 @@
     "type": "multi",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select all the organs that belong to the digestive system.",
-    "options": ["Liver", "Spleen", "Gallbladder", "Esophagus", "Kidney", "Appendix"],
-    "correct": [0, 2, 3, 5],
+    "options": [
+      "Liver",
+      "Spleen",
+      "Gallbladder",
+      "Esophagus",
+      "Kidney",
+      "Appendix"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
     "why": {
       "correct": "The digestive system includes the tube food passes through (mouth, esophagus, stomach, intestines, with the appendix attached) and the organs that feed juices into it (liver, gallbladder, pancreas).",
       "options": [
@@ -135,10 +190,23 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function", "interdependence"],
+    "core": [
+      "structure-function",
+      "interdependence"
+    ],
     "q": "Select all the organs that belong to more than one organ system.",
-    "options": ["Pancreas", "Testis", "Heart", "Ovary", "Trachea"],
-    "correct": [0, 1, 3],
+    "options": [
+      "Pancreas",
+      "Testis",
+      "Heart",
+      "Ovary",
+      "Trachea"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
     "why": {
       "correct": "The pancreas and the gonads (testes and ovaries) each belong to two systems. Each releases chemical signals into the blood (endocrine system) and also does a second job.",
       "options": [
@@ -155,7 +223,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What defines a vessel as an artery?",
     "options": [
       "It carries blood high in oxygen",
@@ -180,9 +250,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Oxygen passes from the blood to the cells of your calf muscle. In which vessels does most of this exchange happen?",
-    "options": ["Arteries", "Veins", "Capillaries", "The heart's chambers"],
+    "options": [
+      "Arteries",
+      "Veins",
+      "Capillaries",
+      "The heart's chambers"
+    ],
     "correct": 2,
     "why": {
       "correct": "Capillaries have a wall only one layer of flat cells thick, so oxygen, nutrients and wastes can pass across it. Thicker vessel walls do not allow much exchange.",
@@ -199,9 +276,16 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "You touch a hot pan and pull your hand away before you think about it. Which characteristic of life does this show most directly?",
-    "options": ["Growth", "Reproduction", "Metabolism", "Responsiveness"],
+    "options": [
+      "Growth",
+      "Reproduction",
+      "Metabolism",
+      "Responsiveness"
+    ],
     "correct": 3,
     "why": {
       "correct": "Responsiveness is the ability to detect a change (heat on the skin) and react to it (moving the hand).",
@@ -218,11 +302,13 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "What does the term metabolism mean?",
     "options": [
-      "The sum of all the chemical changes in the body",
-      "The breakdown of food in the stomach",
+      "All the chemical changes in the body",
+      "The breakdown of food inside the stomach",
       "The rate at which the heart beats",
       "The increase in the number of cells"
     ],
@@ -242,7 +328,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "This description of the levels of organization has one wrong step. Find it.",
     "options": [
       "Atoms bond to form molecules.",
@@ -268,13 +356,15 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "On a cold day your skin cools, your muscles start small, rapid contractions that make heat, and your body temperature stays near 37 °C. What does this show?",
     "options": [
       "Body temperature can never change",
       "The body keeps an internal condition within a normal range",
       "Muscles work only in cold weather",
-      "The outside temperature sets body temperature"
+      "The outside temperature sets the temperature inside your body"
     ],
     "correct": 1,
     "why": {
@@ -292,12 +382,26 @@
     "type": "predict",
     "level": "apply",
     "diff": 2,
-    "core": ["interdependence"],
+    "core": [
+      "interdependence"
+    ],
     "q": "You travel from sea level to a town high in the mountains. Predict each change on your first day there.",
     "variables": [
-      { "name": "Pressure of the air around you", "answer": "down", "why": "Higher up, there is less air above you pressing down, so air pressure falls." },
-      { "name": "Oxygen entering your blood with each breath", "answer": "down", "why": "Air pressure pushes oxygen into your blood. Lower air pressure pushes less oxygen in with each breath." },
-      { "name": "Number of organ systems in your body", "answer": "none", "why": "Your organs and systems stay the same. What changes is how well they are supplied with oxygen." }
+      {
+        "name": "Pressure of the air around you",
+        "answer": "down",
+        "why": "Higher up, there is less air above you pressing down, so air pressure falls."
+      },
+      {
+        "name": "Oxygen entering your blood with each breath",
+        "answer": "down",
+        "why": "Air pressure pushes oxygen into your blood. Lower air pressure pushes less oxygen in with each breath."
+      },
+      {
+        "name": "Number of organ systems in your body",
+        "answer": "none",
+        "why": "Your organs and systems stay the same. What changes is how well they are supplied with oxygen."
+      }
     ]
   },
   {
@@ -305,10 +409,12 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["interdependence"],
+    "core": [
+      "interdependence"
+    ],
     "q": "Mr. Okafor's kidneys have almost stopped working. Water builds up in his blood, his ankles swell, and fluid collects in his lungs. Which chain best explains why he is now short of breath?",
     "options": [
-      "Urinary failure causes fluid to build up, the fluid in his lungs reduces oxygen entry, and breathing becomes hard",
+      "Fluid builds up, collects in his lungs and cuts oxygen entry",
       "Urinary failure directly damages the airway, so air cannot reach his lungs",
       "His lungs have failed first, which then caused his kidneys to fail",
       "Swollen ankles press on the lungs from below and stop them expanding"
@@ -329,14 +435,21 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which organ system includes the thymus and the spleen?",
-    "options": ["Endocrine system", "Digestive system", "Cardiovascular system", "Lymphatic system"],
+    "options": [
+      "Endocrine system",
+      "Digestive system",
+      "Cardiovascular system",
+      "Lymphatic system"
+    ],
     "correct": 3,
     "why": {
       "correct": "The thymus and the spleen are lymphatic organs. The lymphatic system returns leaked fluid to the blood and houses immune cells.",
       "options": [
-        "The endocrine system releases chemical signals into the blood; its organs include the pituitary, thyroid and adrenals.",
+        "The thymus does release a few chemical signals into the blood, but both the thymus and the spleen are classed as lymphatic organs. The endocrine system's main organs are the pituitary, thyroid, adrenals, pancreas and gonads.",
         "The spleen sits next to the stomach, but it is not part of the digestive tube and makes no digestive juice.",
         "The spleen filters blood, but it is classed with the lymphatic organs, not with the heart and vessels.",
         "Correct. Thymus and spleen are lymphatic organs."
@@ -348,9 +461,16 @@
     "type": "single",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which structure carries urine from the urinary bladder out of the body?",
-    "options": ["Ureter", "Urethra", "Uterine tube", "Kidney"],
+    "options": [
+      "Ureter",
+      "Urethra",
+      "Uterine tube",
+      "Kidney"
+    ],
     "correct": 1,
     "why": {
       "correct": "The single urethra drains the bladder to the outside. The two ureters bring urine into the bladder from the kidneys.",

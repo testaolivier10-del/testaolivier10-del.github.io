@@ -1,0 +1,62 @@
+{
+  "monomer-polymer": {
+    "def": "A monomer is a small unit that can link to others like it; a polymer is a chain of many monomers joined by covalent bonds, and a macromolecule is any very large molecule. Dehydration synthesis joins monomers and releases water; hydrolysis adds water and splits them apart.",
+    "roots": [["mono-", "one"], ["poly-", "many"], ["-mer", "part"], ["macro-", "large"], ["hydr/o", "water"], ["-lysis", "splitting"]],
+    "say": "MON-o-mer; POL-ih-mer; hy-DROL-ih-sis"
+  },
+  "carbohydrate": {
+    "def": "A molecule of carbon, hydrogen and oxygen, roughly one carbon to two hydrogens to one oxygen. Monosaccharides are single sugar units, disaccharides are two joined, and polysaccharides are long chains; sugars are the small ones.",
+    "roots": [["carbo-", "carbon"], ["hydrate", "water"], ["sacchar/o", "sugar"], ["di-", "two"]],
+    "say": "kar-bo-HY-drate; mon-o-SAK-uh-ride"
+  },
+  "glucose": {
+    "def": "A six-carbon monosaccharide (C6H12O6) that dissolves in the liquid part of your blood and is the main fuel your cells, especially brain cells, break down for energy.",
+    "roots": [["gluc/o, glyc/o", "sweet, sugar"], ["-ose", "sugar"]],
+    "say": "GLOO-kose"
+  },
+  "glycogen": {
+    "def": "A heavily branched polysaccharide of glucose that your liver and muscle cells build after meals. Liver glycogen is split to release glucose into the blood between meals; muscle glycogen fuels only the muscle that stores it.",
+    "roots": [["glyc/o", "sugar"], ["-gen", "producing"]],
+    "say": "GLY-ko-jen"
+  },
+  "lipid": {
+    "def": "A molecule made mostly of carbon and hydrogen with few oxygen atoms, so it is nonpolar and does not dissolve in water. Fats, phospholipids and steroids are lipids; a substance that dissolves in them is lipid soluble.",
+    "roots": [["lip/o", "fat"]],
+    "say": "LIP-id"
+  },
+  "triglyceride": {
+    "def": "A lipid made of one glycerol joined to three fatty acids, the long carbon and hydrogen chains with a carboxyl group at one end; it is the main form of stored fat. Saturated fatty acids have only single bonds and run straight; unsaturated ones have at least one double bond, which bends the chain.",
+    "roots": [["tri-", "three"]],
+    "say": "try-GLISS-er-ide"
+  },
+  "phospholipid": {
+    "def": "A lipid with two fatty acid tails and a charged, phosphate-containing head. It is amphipathic, with a hydrophilic head and hydrophobic tails, so in water it forms a two-layer sheet: the basic structure of the boundary around every cell.",
+    "roots": [["phosph/o", "phosphorus"], ["lip/o", "fat"], ["amphi-", "both"], ["-pathic", "feeling"]],
+    "say": "fos-fo-LIP-id; am-fih-PATH-ik"
+  },
+  "steroid": {
+    "def": "A lipid built on four fused carbon rings. Cholesterol, the main one, sits in the boundary around cells and is the raw material for your other steroids.",
+    "roots": [["ster/o", "solid"], ["-oid", "like"]],
+    "say": "STEER-oyd; ko-LESS-ter-ol"
+  },
+  "protein": {
+    "def": "A polymer of amino acids folded into a working shape. Each amino acid has an amino group, a carboxyl group and a side chain; peptide bonds join them into a chain called a polypeptide.",
+    "roots": [["prote-", "first, primary"], ["pept-", "digested"], ["poly-", "many"]],
+    "say": "PRO-teen; pol-ee-PEP-tide"
+  },
+  "protein-shape": {
+    "def": "A protein's structure: its amino acid sequence, local coils and sheets, overall fold and, in some, several chains fitted together, held by hydrogen bonds, ionic bonds and covalent disulfide bonds. Denaturation is the loss of that shape, and with it the protein's function, without breaking the peptide bonds.",
+    "roots": [["de-", "remove"], ["di-", "two"], ["sulf/o", "sulfur"]],
+    "say": "dee-nay-chur-AY-shun"
+  },
+  "nucleic-acid": {
+    "def": "A polymer of nucleotides, each a phosphate, a five-carbon sugar and a nitrogenous base. Deoxyribonucleic acid stores hereditary instructions and ribonucleic acid carries them out; purines (A, G) have two rings and pyrimidines (C, T, U) have one.",
+    "roots": [["nucle/o", "kernel, nucleus"], ["de-", "without"], ["oxy-", "oxygen"]],
+    "say": "noo-KLAY-ik; PYOOR-een; pih-RIM-ih-deen"
+  },
+  "atp": {
+    "def": "Adenosine triphosphate: a nucleotide of adenine, ribose and three phosphate groups. Splitting off the outer phosphate by hydrolysis leaves ADP (adenosine diphosphate) and releases energy that cells use for work.",
+    "roots": [["tri-", "three"], ["di-", "two"]],
+    "say": "uh-DEN-o-seen try-FOS-fate"
+  }
+}

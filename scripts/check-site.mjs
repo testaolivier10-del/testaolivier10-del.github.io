@@ -733,6 +733,8 @@ if (Array.isArray(bank)) {
     // correct if it matches either bank. Everything else belongs to one course.
     const isReadme = rel === 'README.md';
     const isOchem = rel.split(/[\\/]/)[0] === 'ochem';
+    // A&P question counts come from its own bank, written by build-anp.mjs.
+    if (rel.split(/[\\/]/)[0] === 'anatomy-physiology') continue;
     for (const m of body.matchAll(COUNT_RE)) {
       const n = m[1];
       // Session lengths (a 100-question exam, a 20-question drill) and badge
@@ -826,6 +828,9 @@ if (existsSync(curriculumPath)) {
     // "40 chapters and 80 sections" on the NREMT notes as a claim about the
     // chemistry course is a false failure, not a caught drift.
     if (rel.startsWith('nremt/')) continue;
+    // The A&P course's counts are written by build-anp.mjs from its own map
+    // and data, and `build-anp.mjs --check` keeps them current.
+    if (rel.startsWith('anatomy-physiology/')) continue;
     // The changelog is a dated record, not a claim about now. "audited across
     // all 62 sections" under a September date was true in September, and
     // rewriting it to today's number would make the entry a lie about what

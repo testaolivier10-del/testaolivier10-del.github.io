@@ -1,0 +1,48 @@
+{
+  "topic": "systemic-veins",
+  "hook": "<p>A phlebotomist ties a band around Ms. Reyes's upper arm, taps the inside of her elbow, and slides a needle into the vein that rises there. Later that day, a pill Ms. Reyes swallows is mostly broken down before it ever reaches her heart. Both events depend on how her veins are laid out: which ones lie just under the skin, and where blood from the gut goes first.</p>",
+  "prereq": [
+    {
+      "q": "Which great vessels return systemic blood to the heart, and which chamber do they enter?",
+      "options": ["The pulmonary veins, into the left atrium", "The superior and inferior venae cavae, into the right atrium", "The aorta, into the left ventricle"],
+      "correct": 1,
+      "why": "The superior and inferior venae cavae return deoxygenated blood from the body to the right atrium. The pulmonary veins bring oxygenated blood from the lungs to the left atrium.",
+      "review": "heart-chambers-valves"
+    },
+    {
+      "q": "In the hypophyseal portal system, blood passes through what before returning toward the heart?",
+      "options": ["Two capillary beds in a row, linked by small veins", "One capillary bed and then straight into an artery", "A single capillary bed in the pituitary only"],
+      "correct": 0,
+      "why": "A portal system carries blood through two capillary beds in a row. In the hypophyseal portal system, the first is in the hypothalamus and the second in the anterior pituitary.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "Which layer of the meninges is the tough outer layer?",
+      "options": ["Pia mater", "Arachnoid mater", "Dura mater"],
+      "correct": 2,
+      "why": "The dura mater (dura = tough) is the thick outer layer. The arachnoid mater lies beneath it, and the delicate pia mater clings to the brain.",
+      "review": "brain-protection"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-20-35",
+    "caption": "The major systemic veins, front view. Hide the labels, name each vein, and say which vena cava it drains into."
+  },
+  "chain": [
+    { "cause": "Blood flows through capillaries in the wall of the intestine, and absorbed nutrients and swallowed drugs enter it.", "effect": "The capillaries drain into the superior mesenteric vein, which joins the splenic vein behind the pancreas to form the hepatic portal vein." },
+    { "cause": "The hepatic portal vein enters the liver and branches down to a second capillary bed, the liver's sinusoids.", "effect": "Blood moves slowly past liver cells through the leaky sinusoid walls." },
+    { "cause": "Liver cells take up glucose and other nutrients, and enzymes in them break down drugs and toxins.", "effect": "The blood leaving the sinusoids carries less of each swallowed substance than the blood that arrived." },
+    { "cause": "The sinusoids drain into the hepatic veins, which empty into the inferior vena cava.", "effect": "Only this processed blood reaches the right atrium and the rest of the body, which is why a swallowed drug loses part of its dose on its first pass through the liver." }
+  ],
+  "misconception": {
+    "wrong": "Blood from the stomach and intestines drains straight into the inferior vena cava, like blood from the kidneys.",
+    "right": "No vein from the stomach, intestines, spleen or pancreas joins the inferior vena cava. Their blood collects into the hepatic portal vein and passes through the liver's sinusoids first, then reaches the inferior vena cava through the hepatic veins. The kidneys, gonads and legs do drain straight into the inferior vena cava system."
+  },
+  "check": ["anp-systemic-veins-1", "anp-systemic-veins-5", "anp-systemic-veins-7", "anp-systemic-veins-8", "anp-systemic-veins-10", "anp-systemic-veins-14", "anp-systemic-veins-16"],
+  "summary": "<p>Veins join as they approach the heart. Above the diaphragm, each internal jugular vein meets a subclavian vein to form a brachiocephalic vein, and the two brachiocephalic veins form the superior vena cava, which also receives the azygos vein from the chest wall. The brain drains through dural venous sinuses, channels in the dura with no muscle or valves: superior sagittal, straight, transverse and sigmoid sinuses lead to the internal jugular vein. Below the diaphragm, the common iliac veins form the inferior vena cava, which receives lumbar, gonadal, renal and hepatic veins. Deep limb veins share their arteries' names; the superficial cephalic, basilic, median cubital, great and small saphenous veins run under the skin. Blood from the gut and spleen travels through the hepatic portal vein to the liver's sinusoids before reaching the inferior vena cava.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology (routes of drug administration)" },
+    { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma" }
+  ]
+}

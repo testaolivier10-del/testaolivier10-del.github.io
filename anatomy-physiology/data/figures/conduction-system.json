@@ -1,0 +1,44 @@
+{
+  "os-19-18": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.18",
+      "section": "19.2",
+      "page": "19-2-cardiac-muscle-and-electrical-activity",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab4103111b36720e9c0b2ac83f5ef1b73e8a1686"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab4103111b36720e9c0b2ac83f5ef1b73e8a1686",
+    "alt": "The heart cut open in a frontal plane, seen from the front, with its conduction pathway drawn as yellow lines. A small node sits high in the wall of the right upper chamber near where the large vein from above enters. Three pathways run from it down through the right upper chamber to a second node low in the wall between the upper chambers, and a band crosses to the left upper chamber. From the second node a single bundle runs into the wall between the lower chambers, splits into right and left branches that run down toward the tip, and then fans out as fine fibers up the walls of both lower chambers.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.18",
+    "labels": []
+  },
+  "os-19-19": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.19",
+      "section": "19.2",
+      "page": "19-2-cardiac-muscle-and-electrical-activity",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e0662ca334ea0bec39bbabdcd06bdaf2cd1c1e57"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e0662ca334ea0bec39bbabdcd06bdaf2cd1c1e57",
+    "alt": "Six numbered outline drawings of the heart arranged in a circle, each with purple shading showing which tissue is electrically active. In the first nothing is shaded. In the second only the node in the right upper chamber is active. In the third the shading covers both upper chambers. In the fourth the upper chambers are clear and the shading runs along the bundle and its branches in the wall between the lower chambers. In the fifth the shading fills the lower chambers from the tip upward. In the sixth the shading fades from the lower chambers, starting at the top.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.19",
+    "labels": []
+  },
+  "os-19-20": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.20",
+      "section": "19.2",
+      "page": "19-2-cardiac-muscle-and-electrical-activity",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b92c5cd8bd029d11f7f1620dbf05777d3be0920a"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b92c5cd8bd029d11f7f1620dbf05777d3be0920a",
+    "alt": "A graph of membrane potential in millivolts against time in seconds, from 0 to 1.6 seconds, for a pacemaker cell. A dashed line marks threshold at minus 40 millivolts and a solid line marks minus 60. The trace starts at threshold, rises steeply to about plus 15, falls back to minus 60, then climbs slowly and steadily back to threshold at 0.8 seconds, and repeats. Labels mark the slow climb as sodium entering, the steep rise as calcium entering, and the fall as potassium leaving.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.20",
+    "labels": []
+  }
+}

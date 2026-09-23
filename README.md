@@ -1,10 +1,12 @@
 # levlprep.com
 
-Source for [LevlPrep](https://levlprep.com/), home to two courses:
+Source for [LevlPrep](https://levlprep.com/), home to three courses:
 
 **[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,106-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
 **[Organic Chemistry](https://levlprep.com/ochem/)** — a mastery/learning product, not exam prep: a full 23-chapter, 121-topic organic chemistry curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **All 121 topics are built: 117 interactive lessons, 10 mechanism walkthroughs (SN1, SN2, E1 and E2 are taught through theirs), a textbook section per topic and a 3,630-question practice bank**, from Foundations through spectroscopy, synthesis and polymers; `curriculum.js` is the single source of truth for what exists. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **eight interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator, a spectroscopy lab and a reagent roadmap — see [Tools](#tools). A spaced-repetition flashcard deck (`ochem/flashcards.html`) draws its cards from the course's own notes and concepts.
+
+**[Anatomy & Physiology](https://levlprep.com/anatomy-physiology/)** (Beta) — a two-semester college A&P course built in strict dependency order: `docs/anp-dependency-map.json` lists every concept and the topic that teaches it, and `scripts/check-anp-map.mjs` fails the build if any page uses a term before it is taught. The course is data (`anatomy-physiology/data/`: lessons, notes, questions, glossary, figures, tool content) turned into pages by `scripts/build-anp.mjs`; `scripts/check-anp-content.mjs` checks the data. The plan and every decision live in `docs/anp-spec.md`; open science questions in `docs/anp-needs-author.md`. The Beta has Foundations and the cardiovascular system.
 
 ## Stack
 
