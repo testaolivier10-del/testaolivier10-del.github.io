@@ -121,7 +121,7 @@
     "options": [
       "Vasoconstriction of the small arteries nearby",
       "Fibroblasts laying down collagen at the site",
-      "Leakier small vessels letting fluid out",
+      "Leakier small vessels letting fluid out into the tissue",
       "Mast cells dividing rapidly at the site"
     ],
     "correct": 2,
@@ -219,7 +219,7 @@
     ],
     "q": "After surgery removes a large part of the liver, the liver regrows much of its lost mass. After the same amount of heart muscle dies, the heart forms a scar. What difference between the two tissues best explains this?",
     "options": [
-      "Mature liver cells can divide again",
+      "Mature liver cells can return to the cell cycle and divide",
       "Liver has a richer blood supply than the heart",
       "Heart muscle has no fibroblasts to lay down collagen",
       "Liver damage sets off no inflammation at all"
@@ -273,7 +273,7 @@
     "options": [
       "Apoptotic cells release extra histamine",
       "It occurs in tissues without blood vessels",
-      "Its contents stay sealed until engulfed",
+      "Its contents stay sealed until macrophages engulf them",
       "Necrotic cells shrink and are engulfed whole"
     ],
     "correct": 2,
@@ -309,7 +309,7 @@
       "options": [
         "This step is correct. Mast cells hold histamine in granules and release it when tissue is injured.",
         "This is the wrong step. Vasoconstriction would reduce blood flow and make the area pale and cool, the opposite of what you see.",
-        "This step is correct. That leakiness is what lets fluid and white blood cells out of the vessels.",
+        "This step is correct. That leakiness is what lets fluid and plasma proteins out of the vessels.",
         "This step is correct. Fluid leaking into the interstitial fluid causes the swelling.",
         "This step is correct. That is where the pain of inflammation comes from."
       ]

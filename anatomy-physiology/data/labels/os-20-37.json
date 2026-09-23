@@ -1,0 +1,224 @@
+{
+  "figure": "os-20-37",
+  "labels": [
+    {
+      "id": "superior-sagittal-sinus",
+      "name": "Superior sagittal sinus",
+      "accept": [
+        "superior sagittal sinus",
+        "superior sagittal"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "inferior-sagittal-sinus",
+      "name": "Inferior sagittal sinus",
+      "accept": [
+        "inferior sagittal sinus",
+        "inferior sagittal"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "straight-sinus",
+      "name": "Straight sinus",
+      "accept": [
+        "straight sinus"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "occipital",
+      "name": "Occipital",
+      "accept": [
+        "occipital",
+        "occipital vein"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "temporal",
+      "name": "Temporal",
+      "accept": [
+        "temporal",
+        "temporal vein",
+        "superficial temporal vein"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "cavernous-sinus",
+      "name": "Cavernous sinus",
+      "accept": [
+        "cavernous sinus"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "right-transverse-sinus",
+      "name": "Right transverse sinus",
+      "accept": [
+        "right transverse sinus",
+        "transverse sinus"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "maxillary",
+      "name": "Maxillary",
+      "accept": [
+        "maxillary",
+        "maxillary vein"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "occipital-sinus",
+      "name": "Occipital sinus",
+      "accept": [
+        "occipital sinus"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "facial",
+      "name": "Facial",
+      "accept": [
+        "facial",
+        "facial vein"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "sigmoid-sinus",
+      "name": "Sigmoid sinus",
+      "accept": [
+        "sigmoid sinus"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "petrosal-sinus",
+      "name": "Petrosal sinus",
+      "accept": [
+        "petrosal sinus",
+        "inferior petrosal sinus",
+        "superior petrosal sinus"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "dural-sinuses"
+    },
+    {
+      "id": "external-jugular",
+      "name": "External jugular",
+      "accept": [
+        "external jugular",
+        "external jugular vein"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "internal-jugular",
+      "name": "Internal jugular",
+      "accept": [
+        "internal jugular",
+        "internal jugular vein"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "vertebral",
+      "name": "Vertebral",
+      "accept": [
+        "vertebral",
+        "vertebral vein"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "right-subclavian",
+      "name": "Right subclavian",
+      "accept": [
+        "right subclavian",
+        "subclavian vein",
+        "subclavian",
+        "right subclavian vein"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "axillary",
+      "name": "Axillary",
+      "accept": [
+        "axillary",
+        "axillary vein"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "superior-vena-cava",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "box": [
+        887,
+        932,
+        213,
+        28
+      ],
+      "concept": "great-vessels"
+    }
+  ]
+}

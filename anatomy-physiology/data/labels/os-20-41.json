@@ -1,0 +1,473 @@
+{
+  "figure": "os-20-41",
+  "labels": [
+    {
+      "id": "common-iliac",
+      "name": "Common iliac",
+      "accept": [
+        "common iliac",
+        "common iliac vein"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "internal-iliac",
+      "name": "Internal iliac",
+      "accept": [
+        "internal iliac",
+        "internal iliac vein"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "external-iliac",
+      "name": "External iliac",
+      "accept": [
+        "external iliac",
+        "external iliac vein"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "gluteal",
+      "name": "Gluteal",
+      "accept": [
+        "gluteal",
+        "gluteal vein",
+        "gluteal veins"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "lateral-sacral",
+      "name": "Lateral sacral",
+      "accept": [
+        "lateral sacral",
+        "lateral sacral vein",
+        "lateral sacral veins"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "internal-pudendal",
+      "name": "Internal pudendal",
+      "accept": [
+        "internal pudendal",
+        "internal pudendal vein"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "obturator",
+      "name": "Obturator",
+      "accept": [
+        "obturator",
+        "obturator vein"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "femoral",
+      "name": "Femoral",
+      "accept": [
+        "femoral",
+        "femoral vein"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "deep-femoral",
+      "name": "Deep femoral",
+      "accept": [
+        "deep femoral",
+        "deep femoral vein",
+        "profunda femoris vein"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "femoral-circumflex",
+      "name": "Femoral circumflex",
+      "accept": [
+        "femoral circumflex",
+        "femoral circumflex vein",
+        "circumflex femoral vein",
+        "circumflex femoral veins"
+      ],
+      "lines": [
+        17,
+        20
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "femoral-2",
+      "name": "Femoral",
+      "accept": [
+        "femoral",
+        "femoral vein"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "great-saphenous",
+      "name": "Great saphenous",
+      "accept": [
+        "great saphenous",
+        "great saphenous vein",
+        "long saphenous vein"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "popliteal",
+      "name": "Popliteal",
+      "accept": [
+        "popliteal",
+        "popliteal vein"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "small-saphenous",
+      "name": "Small saphenous",
+      "accept": [
+        "small saphenous",
+        "small saphenous vein",
+        "short saphenous vein"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "anterior-tibial",
+      "name": "Anterior tibial",
+      "accept": [
+        "anterior tibial",
+        "anterior tibial vein",
+        "anterior tibial veins"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "posterior-tibial",
+      "name": "Posterior tibial",
+      "accept": [
+        "posterior tibial",
+        "posterior tibial vein",
+        "posterior tibial veins"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "fibular",
+      "name": "Fibular",
+      "accept": [
+        "fibular",
+        "fibular vein",
+        "fibular veins",
+        "peroneal vein"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "dorsal-venous-arch",
+      "name": "Dorsal venous arch",
+      "accept": [
+        "dorsal venous arch",
+        "dorsal venous arch of the foot"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "digital",
+      "name": "Digital",
+      "accept": [
+        "digital",
+        "digital veins",
+        "digital vein"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "external-iliac-posterior",
+      "name": "External iliac",
+      "accept": [
+        "external iliac",
+        "external iliac vein"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "internal-pudendal-posterior",
+      "name": "Internal pudendal",
+      "accept": [
+        "internal pudendal",
+        "internal pudendal vein"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "gluteal-posterior",
+      "name": "Gluteal",
+      "accept": [
+        "gluteal",
+        "gluteal vein",
+        "gluteal veins"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "obturator-posterior",
+      "name": "Obturator",
+      "accept": [
+        "obturator",
+        "obturator vein"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "femoral-posterior",
+      "name": "Femoral",
+      "accept": [
+        "femoral",
+        "femoral vein"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "deep-femoral-posterior",
+      "name": "Deep femoral",
+      "accept": [
+        "deep femoral",
+        "deep femoral vein",
+        "profunda femoris vein"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "femoral-circumflex-posterior",
+      "name": "Femoral circumflex",
+      "accept": [
+        "femoral circumflex",
+        "femoral circumflex vein",
+        "circumflex femoral vein",
+        "circumflex femoral veins"
+      ],
+      "lines": [
+        16,
+        19
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "femoral-posterior-2",
+      "name": "Femoral",
+      "accept": [
+        "femoral",
+        "femoral vein"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "great-saphenous-posterior",
+      "name": "Great saphenous",
+      "accept": [
+        "great saphenous",
+        "great saphenous vein",
+        "long saphenous vein"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "popliteal-posterior",
+      "name": "Popliteal",
+      "accept": [
+        "popliteal",
+        "popliteal vein"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "small-saphenous-posterior",
+      "name": "Small saphenous",
+      "accept": [
+        "small saphenous",
+        "small saphenous vein",
+        "short saphenous vein"
+      ],
+      "lines": [
+        28,
+        30
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "anterior-tibial-posterior",
+      "name": "Anterior tibial",
+      "accept": [
+        "anterior tibial",
+        "anterior tibial vein",
+        "anterior tibial veins"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "posterior-tibial-posterior",
+      "name": "Posterior tibial",
+      "accept": [
+        "posterior tibial",
+        "posterior tibial vein",
+        "posterior tibial veins"
+      ],
+      "lines": [
+        35,
+        37
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "fibular-posterior",
+      "name": "Fibular",
+      "accept": [
+        "fibular",
+        "fibular vein",
+        "fibular veins",
+        "peroneal vein"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "lateral-plantar",
+      "name": "Lateral plantar",
+      "accept": [
+        "lateral plantar",
+        "lateral plantar vein",
+        "lateral plantar veins"
+      ],
+      "box": [
+        941,
+        774,
+        159,
+        28
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "medial-plantar",
+      "name": "Medial plantar",
+      "accept": [
+        "medial plantar",
+        "medial plantar vein",
+        "medial plantar veins"
+      ],
+      "box": [
+        941,
+        813,
+        159,
+        28
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "plantar-venous-arch",
+      "name": "Plantar venous arch",
+      "accept": [
+        "plantar venous arch"
+      ],
+      "lines": [
+        41,
+        43
+      ],
+      "concept": "limb-veins"
+    }
+  ]
+}

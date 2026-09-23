@@ -1,0 +1,201 @@
+{
+  "figure": "os-3-33",
+  "labels": [
+    {
+      "id": "g2-checkpoint",
+      "name": "G2 checkpoint",
+      "accept": [
+        "g2 checkpoint",
+        "g2"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "cell-cycle-control"
+    },
+    {
+      "id": "cyclin-b-cdk1",
+      "name": "Cyclin B / CDK1",
+      "accept": [
+        "cyclin b / cdk1",
+        "cdk1",
+        "cyclin b",
+        "cyclin b cdk1"
+      ],
+      "box": [
+        394,
+        12,
+        88,
+        46
+      ],
+      "concept": "cell-cycle-control"
+    },
+    {
+      "id": "m-checkpoint",
+      "name": "M checkpoint",
+      "accept": [
+        "m checkpoint",
+        "metaphase checkpoint",
+        "spindle checkpoint"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cell-cycle-control"
+    },
+    {
+      "id": "g2-phase",
+      "name": "G2",
+      "accept": [
+        "g2",
+        "g2 phase",
+        "gap 2"
+      ],
+      "box": [
+        304,
+        88,
+        30,
+        26
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "cyclin-d-cdk4",
+      "name": "Cyclin D / CDK4",
+      "accept": [
+        "cyclin d / cdk4",
+        "cdk4",
+        "cyclin d",
+        "cyclin d cdk4"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "cell-cycle-control"
+    },
+    {
+      "id": "cell-growth-g2",
+      "name": "Cell growth",
+      "accept": [
+        "cell growth",
+        "growth"
+      ],
+      "box": [
+        284,
+        168,
+        64,
+        46
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "s-phase",
+      "name": "S",
+      "accept": [
+        "s",
+        "s phase",
+        "synthesis phase"
+      ],
+      "box": [
+        132,
+        308,
+        22,
+        24
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "dna-synthesis",
+      "name": "DNA synthesis",
+      "accept": [
+        "dna synthesis",
+        "dna replication",
+        "s phase"
+      ],
+      "box": [
+        210,
+        300,
+        86,
+        46
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "g1-phase",
+      "name": "G1",
+      "accept": [
+        "g1",
+        "g1 phase",
+        "gap 1"
+      ],
+      "box": [
+        508,
+        298,
+        30,
+        26
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "cell-growth-g1",
+      "name": "Cell growth",
+      "accept": [
+        "cell growth",
+        "growth"
+      ],
+      "box": [
+        372,
+        310,
+        66,
+        46
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "cyclin-a-cdk2",
+      "name": "Cyclin A / CDK2",
+      "accept": [
+        "cyclin a / cdk2",
+        "cdk2",
+        "cyclin a",
+        "cyclin a cdk2"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "cell-cycle-control"
+    },
+    {
+      "id": "cyclin-e-cdk2",
+      "name": "Cyclin E / CDK2",
+      "accept": [
+        "cyclin e / cdk2",
+        "cdk2",
+        "cyclin e",
+        "cyclin e cdk2"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "cell-cycle-control"
+    },
+    {
+      "id": "g1-checkpoint",
+      "name": "G1 checkpoint (restriction)",
+      "accept": [
+        "g1 checkpoint (restriction)",
+        "g1 checkpoint",
+        "restriction checkpoint",
+        "restriction point"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "cell-cycle-control"
+    }
+  ]
+}

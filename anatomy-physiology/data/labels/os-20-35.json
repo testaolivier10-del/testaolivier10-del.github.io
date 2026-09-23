@@ -1,0 +1,443 @@
+{
+  "figure": "os-20-35",
+  "labels": [
+    {
+      "id": "external-jugular",
+      "name": "External jugular",
+      "accept": [
+        "external jugular",
+        "external jugular vein"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "internal-jugular",
+      "name": "Internal jugular",
+      "accept": [
+        "internal jugular",
+        "internal jugular vein"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "subclavian",
+      "name": "Subclavian",
+      "accept": [
+        "subclavian",
+        "subclavian vein"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "brachiocephalic",
+      "name": "Brachiocephalic",
+      "accept": [
+        "brachiocephalic",
+        "brachiocephalic vein",
+        "brachiocephalic veins",
+        "innominate vein"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "axillary",
+      "name": "Axillary",
+      "accept": [
+        "axillary",
+        "axillary vein"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "cephalic",
+      "name": "Cephalic",
+      "accept": [
+        "cephalic",
+        "cephalic vein"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "superior-vena-cava",
+      "name": "Superior vena cava",
+      "accept": [
+        "superior vena cava",
+        "svc"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "brachial",
+      "name": "Brachial",
+      "accept": [
+        "brachial",
+        "brachial vein",
+        "brachial veins"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "intercostal",
+      "name": "Intercostal",
+      "accept": [
+        "intercostal",
+        "intercostal vein",
+        "intercostal veins",
+        "posterior intercostal veins"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "basilic",
+      "name": "Basilic",
+      "accept": [
+        "basilic",
+        "basilic vein"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "hepatic",
+      "name": "Hepatic",
+      "accept": [
+        "hepatic",
+        "hepatic vein",
+        "hepatic veins"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "great-vessels"
+    },
+    {
+      "id": "renal",
+      "name": "Renal",
+      "accept": [
+        "renal",
+        "renal vein",
+        "renal veins"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "gonadal",
+      "name": "Gonadal",
+      "accept": [
+        "gonadal",
+        "gonadal vein",
+        "ovarian vein",
+        "testicular vein"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "median-cubital",
+      "name": "Median cubital",
+      "accept": [
+        "median cubital",
+        "median cubital vein"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "lumbar",
+      "name": "Lumbar",
+      "accept": [
+        "lumbar",
+        "lumbar vein",
+        "lumbar veins"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "radial",
+      "name": "Radial",
+      "accept": [
+        "radial",
+        "radial vein",
+        "radial veins"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "median-antebrachial",
+      "name": "Median antebrachial",
+      "accept": [
+        "median antebrachial",
+        "median antebrachial vein",
+        "median vein of the forearm"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "common-iliac",
+      "name": "Right and left common iliac",
+      "accept": [
+        "right and left common iliac",
+        "common iliac vein",
+        "common iliac veins",
+        "common iliac",
+        "right common iliac",
+        "left common iliac"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "ulnar",
+      "name": "Ulnar",
+      "accept": [
+        "ulnar",
+        "ulnar vein",
+        "ulnar veins"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "external-iliac",
+      "name": "External iliac",
+      "accept": [
+        "external iliac",
+        "external iliac vein"
+      ],
+      "lines": [
+        31,
+        32
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "palmar-venous-arches",
+      "name": "Palmar venous arches",
+      "accept": [
+        "palmar venous arches",
+        "palmar venous arch",
+        "palmar arches"
+      ],
+      "lines": [
+        33,
+        35
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "internal-iliac",
+      "name": "Internal iliac",
+      "accept": [
+        "internal iliac",
+        "internal iliac vein"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "deep-femoral",
+      "name": "Deep femoral",
+      "accept": [
+        "deep femoral",
+        "deep femoral vein",
+        "profunda femoris vein"
+      ],
+      "lines": [
+        36,
+        38
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "digital",
+      "name": "Digital",
+      "accept": [
+        "digital",
+        "digital veins",
+        "digital vein"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "femoral",
+      "name": "Femoral",
+      "accept": [
+        "femoral",
+        "femoral vein"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "great-saphenous",
+      "name": "Great saphenous",
+      "accept": [
+        "great saphenous",
+        "great saphenous vein",
+        "long saphenous vein"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "popliteal",
+      "name": "Popliteal",
+      "accept": [
+        "popliteal",
+        "popliteal vein"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "posterior-tibial",
+      "name": "Posterior tibial",
+      "accept": [
+        "posterior tibial",
+        "posterior tibial vein",
+        "posterior tibial veins"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "small-saphenous",
+      "name": "Small saphenous",
+      "accept": [
+        "small saphenous",
+        "small saphenous vein",
+        "short saphenous vein"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "anterior-tibial",
+      "name": "Anterior tibial",
+      "accept": [
+        "anterior tibial",
+        "anterior tibial vein",
+        "anterior tibial veins"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "fibular",
+      "name": "Fibular",
+      "accept": [
+        "fibular",
+        "fibular vein",
+        "fibular veins",
+        "peroneal vein"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "plantar-venous-arch",
+      "name": "Plantar venous arch",
+      "accept": [
+        "plantar venous arch"
+      ],
+      "lines": [
+        46
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "dorsal-venous-arch",
+      "name": "Dorsal venous arch",
+      "accept": [
+        "dorsal venous arch",
+        "dorsal venous arch of the foot"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "limb-veins"
+    }
+  ]
+}

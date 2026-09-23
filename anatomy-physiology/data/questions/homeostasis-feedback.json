@@ -59,7 +59,7 @@
     "options": [
       "The cold air of the room",
       "The nerves carrying signals from the brain",
-      "Smooth muscle in skin blood vessels",
+      "Smooth muscle in the walls of the skin's blood vessels",
       "The temperature control center in the brain"
     ],
     "correct": 2,
@@ -388,7 +388,7 @@
       "At the sensory receptors, which no longer detect heat",
       "At the afferent pathway, which no longer carries signals",
       "At the control center, which has lost its set point",
-      "At the effectors, which cannot remove heat fast enough"
+      "At the effectors, which cannot remove heat as fast as it builds up"
     ],
     "correct": 3,
     "why": {
@@ -551,7 +551,7 @@
     "q": "When the blood carries too little oxygen, the kidneys release a hormone. The hormone travels in the blood to the blood-forming tissue inside the bones, which makes more red blood cells. In this loop, what is the efferent pathway?",
     "options": [
       "The kidney cells that detect low oxygen",
-      "The hormone traveling in the blood",
+      "The hormone traveling in the blood to the bones",
       "The new red blood cells",
       "The blood-forming tissue in the bones"
     ],

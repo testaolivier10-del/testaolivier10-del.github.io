@@ -70,7 +70,7 @@
     "why": {
       "correct": "The membrane potential moves toward the equilibrium potential of the ion the membrane passes most easily. At rest, many potassium leak channels are open and few pass sodium, so the voltage sits near potassium's −90 mV, pulled only slightly toward sodium's +60 mV.",
       "options": [
-        "Ion size alone does not set the resting value. What matters is how many open channels each ion has.",
+        "Potassium ions are actually heavier than sodium ions, not lighter, and ion size does not set the resting value anyway. What matters is how many open channels each ion has.",
         "Correct. Permeability decides which ion dominates, and at rest the membrane passes potassium tens of times more easily than sodium.",
         "The pump moves 3 Na+ out for every 2 K+ in, so it moves more sodium, not more potassium. Its direct effect on the voltage is only a few millivolts anyway.",
         "Most of the body's sodium is outside cells and most potassium inside; total amounts do not decide the voltage. The open channels do."
@@ -138,7 +138,7 @@
     "core": [
       "gradients"
     ],
-    "q": "Which of these make the inside of a resting cell more negative? Select all that apply.",
+    "q": "Which of these contribute to the negative charge inside a resting cell? Select all that apply.",
     "options": [
       "Potassium diffusing out through leak channels",
       "Negatively charged proteins that cannot leave the cell",
@@ -200,7 +200,7 @@
     "q": "A neuron at rest opens extra potassium channels, and its membrane potential moves from −70 mV to −78 mV. Which best explains the change?",
     "options": [
       "More potassium enters, neutralizing negative charge inside",
-      "More potassium leaves, moving the voltage toward −90 mV",
+      "More potassium leaves, moving the voltage toward potassium's −90 mV",
       "More sodium leaks in, adding positive charge inside",
       "The pump slows, so fewer positive ions are exported"
     ],
@@ -506,7 +506,7 @@
     "q": "Blood flow to part of a patient's brain stops. Within minutes, neurons in that area lose their resting potential. What is the most direct chain of events?",
     "options": [
       "Low oxygen opens sodium leak channels, which flood the cells with sodium",
-      "Less ATP is made, the pumps slow, and the gradients run down",
+      "Less ATP is made, so the sodium–potassium pumps slow and the ion gradients run down",
       "Low oxygen blocks potassium leak channels, so no charge separates",
       "Low oxygen raises the potassium concentration inside the neurons"
     ],

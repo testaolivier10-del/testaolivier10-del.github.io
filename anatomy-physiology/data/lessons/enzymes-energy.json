@@ -1,6 +1,6 @@
 {
   "topic": "enzymes-energy",
-  "hook": "<p>Mr. Okafor, 45, drank windshield washer fluid from an unlabeled bottle two hours ago. The fluid contains methanol. He feels fine and his blood pH is normal, yet the emergency team gives him a drug called fomepizole right away. Methanol does little harm by itself: an enzyme in his liver turns it into formic acid, which can drive his blood pH down and damage his vision. Fomepizole blocks that enzyme.</p>",
+  "hook": "<p>Mr. Okafor, 45, drank windshield washer fluid from an unlabeled bottle two hours ago. The fluid contains methanol. He feels fine and his blood pH is normal, yet the emergency team gives him a drug called fomepizole right away. Methanol does little harm by itself: enzymes in his liver turn it, in two steps, into formic acid, which can drive his blood pH down and damage his vision. Fomepizole blocks the first of those enzymes.</p>",
   "prereq": [
     {
       "q": "What happens to a protein when it is denatured?",
@@ -26,7 +26,7 @@
   ],
   "anatomy": {
     "figure": "os-2-27",
-    "caption": "The steps of an enzyme reaction: substrates bind the active site, react, and leave as products while the enzyme returns to its original shape."
+    "caption": "The steps of an enzyme reaction: two substrates bind the active site, react, and leave as one product, while the enzyme comes out unchanged."
   },
   "chain": [
     {

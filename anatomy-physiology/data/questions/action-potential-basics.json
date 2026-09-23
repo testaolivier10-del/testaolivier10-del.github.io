@@ -69,7 +69,7 @@
     "options": [
       "A small action potential that peaks below +30 mV",
       "A full action potential, delayed slightly",
-      "The depolarization fades and the membrane returns to rest",
+      "The depolarization fades and the membrane returns to about −70 mV",
       "The membrane stays at −60 mV until another stimulus arrives"
     ],
     "correct": 2,
@@ -96,7 +96,7 @@
     "options": [
       "Each one peaks at about +60 mV",
       "Each one lasts twice as long",
-      "They occur more often",
+      "They fire more times each second",
       "They travel twice as fast"
     ],
     "correct": 2,
@@ -120,7 +120,7 @@
     ],
     "q": "Jamal gets a lidocaine injection before a filling. Lidocaine blocks voltage-gated sodium channels in the nerve fibers of his lip and tooth. Why can he no longer feel the drill?",
     "options": [
-      "His nerve fibers cannot produce action potentials",
+      "His nerve fibers can no longer produce action potentials",
       "His nerve fibers' resting potential drops to −90 mV",
       "His nerve endings no longer produce graded potentials",
       "His nerve fibers become permanently refractory"
@@ -234,7 +234,7 @@
     "q": "Fill in the missing step. Membrane reaches threshold → ______ → membrane rises rapidly to about +30 mV.",
     "options": [
       "Voltage-gated potassium channels open and potassium leaves",
-      "Voltage-gated sodium channels open and sodium rushes in",
+      "Voltage-gated sodium channels open and sodium rushes into the cell",
       "The pump moves 3 Na+ out and 2 K+ in",
       "Leak channels close"
     ],
@@ -280,13 +280,13 @@
   {
     "id": "anp-action-potential-basics-11",
     "type": "graph",
-    "level": "analyze",
+    "level": "apply",
     "diff": 2,
     "core": [
       "communication"
     ],
     "figure": "os-12-25",
-    "q": "This graph shows several depolarizing bumps of different sizes, and several hyperpolarizing dips. Only the largest depolarizing bump triggers an action potential. What does the graph show about graded potentials?",
+    "q": "This graph shows several depolarizing bumps of different sizes, and several hyperpolarizing dips. What does the graph show about graded potentials?",
     "options": [
       "Only those reaching threshold trigger an action potential",
       "They are all-or-none, just like action potentials",
@@ -499,16 +499,16 @@
     ],
     "q": "Which feature belongs to a graded potential but not to an action potential?",
     "options": [
-      "It can hyperpolarize the membrane",
+      "It can hyperpolarize without depolarizing first",
       "It depends on voltage-gated sodium channels",
       "It travels long distances without shrinking",
       "It has a refractory period"
     ],
     "correct": 0,
     "why": {
-      "correct": "Graded potentials can go in either direction, depending on which channels the stimulus opens. An action potential is always a depolarization followed by repolarization.",
+      "correct": "Graded potentials can go in either direction, depending on which channels the stimulus opens. An action potential always starts as a depolarization; the brief hyperpolarization at its end follows the spike.",
       "options": [
-        "Correct. Only graded potentials can hyperpolarize the membrane.",
+        "Correct. A graded potential can be a pure hyperpolarization. An action potential always starts with a depolarization, and its brief dip below rest comes only after the spike.",
         "Action potentials depend on voltage-gated sodium channels. Graded potentials come from whatever channels the stimulus opens.",
         "This describes an action potential. Graded potentials fade within a millimeter or two.",
         "The refractory period follows an action potential. Graded potentials have none and can add together."

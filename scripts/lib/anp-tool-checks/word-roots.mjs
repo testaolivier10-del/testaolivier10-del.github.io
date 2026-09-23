@@ -105,7 +105,9 @@ export function check(data, map) {
   }
   for (const [id, p] of parts) {
     if (!used.has(id)) { err(`part ${id}: not used by any term`); continue; }
-    const later = laterTerms(map, topicIndex, used.get(id), [p.meaning, p.from, p.note].filter(Boolean).join(' \n '));
+    // "from" cites the source word in its own language (Greek osteon, neuron), which
+    // is not a use of the English term, so only meaning and note are scanned.
+    const later = laterTerms(map, topicIndex, used.get(id), [p.meaning, p.note].filter(Boolean).join(' \n '));
     if (later.length) err(`part ${id}: first offered at ${used.get(id)} but uses ${later.join(', ')}`);
   }
   if (!termIds.size) err('no terms');

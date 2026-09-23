@@ -37,6 +37,8 @@
   function chapterOf(id){ var cs = cur().chapters; for(var i = 0; i < cs.length; i++) if(cs[i].id === id) return cs[i]; return { id: id, title: id }; }
   function report(id){ return window.LevlReport ? window.LevlReport.button('anp', id) : ''; }
   function focusEl(el){ if(!el) return; if(!el.hasAttribute('tabindex') && !/^(BUTTON|A|SELECT|INPUT)$/.test(el.tagName)) el.setAttribute('tabindex', '-1'); el.focus(); }
+  // Slot names in running text: lower case, except the fixed label "Receptor (sensor)".
+  function lower(k){ return k === 'sensor' ? LABELS[k] : LABELS[k].toLowerCase(); }
   function itemBase(l){ return 'feedback-loops:' + l.id + ':'; }
 
   /* ------------------------------------------------------------ load */
@@ -210,7 +212,7 @@
         btn.setAttribute('aria-pressed', 'false');
         row.classList.add(ok ? 'is-ok' : 'is-no');
         var fb = row.querySelector('.fl-slot-fb');
-        var wrongWhy = !c ? '' : c.slot ? 'That card is the ' + LABELS[c.slot].toLowerCase().replace('receptor (sensor)', 'Receptor (sensor)') + ' of this loop, not the ' + LABELS[k].replace('Receptor (sensor)', 'Receptor (sensor)').toLowerCase().replace('receptor (sensor)', 'Receptor (sensor)') + '.' : c.why;
+        var wrongWhy = !c ? '' : c.slot ? 'That card is the ' + lower(c.slot) + ' of this loop, not the ' + lower(k) + '.' : c.why;
         fb.innerHTML = (ok
           ? '<p><b class="ok">✓ Right.</b> ' + esc(l.slots[k].why) + '</p>'
           : '<p><b class="no">✗ Not this card.</b> ' + esc(wrongWhy) + '</p><p><b>Belongs here:</b> ' + esc(l.slots[k].text) + '. ' + esc(l.slots[k].why) + '</p>') +
@@ -259,7 +261,7 @@
     function renderFailure(){
       var f = l.failure, sec = app.querySelector('.fl-failure');
       var opts = shuffle(f.options.map(function(o, i){ return { o: o, i: i }; }));
-      sec.innerHTML = '<h3 class="fl-h3" id="' + p + '-f" tabindex="-1">Step 3: when the ' + esc(LABELS[f.part] === 'Receptor (sensor)' ? 'Receptor (sensor)' : LABELS[f.part].toLowerCase()) + ' fails</h3>' +
+      sec.innerHTML = '<h3 class="fl-h3" id="' + p + '-f" tabindex="-1">Step 3: when the ' + esc(lower(f.part)) + ' fails</h3>' +
         '<p class="fl-q">' + esc(f.q) + '</p>' +
         '<div class="fl-opts" role="group" aria-labelledby="' + p + '-f">' + opts.map(function(x){ return '<button type="button" class="fl-opt" data-i="' + x.i + '">' + esc(x.o.text) + '</button>'; }).join('') + '</div>';
       sec.hidden = false;

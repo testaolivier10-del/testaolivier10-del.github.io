@@ -331,7 +331,7 @@
     "q": "A hormone present in the blood at less than a billionth of a mole per liter causes a large response in its target cells. What best explains how so little hormone can do so much?",
     "options": [
       "Each hormone molecule binds thousands of receptor proteins at once",
-      "Each step of the second messenger pathway multiplies the signal",
+      "Each step of the second messenger pathway multiplies the signal many times",
       "The hormone is converted into ATP inside the cell",
       "Target cells concentrate the hormone a millionfold before responding"
     ],
@@ -496,7 +496,7 @@
     "figure": "os-12-27",
     "q": "At the synapse shown, a drug occupies the receptor proteins on the postsynaptic membrane without opening them. The presynaptic cell fires normally. What is the result?",
     "options": [
-      "Neurotransmitter is released, but the postsynaptic cell barely responds",
+      "Neurotransmitter is released normally, but the postsynaptic cell barely responds",
       "No neurotransmitter is released",
       "The postsynaptic cell fires more often",
       "The presynaptic cell's action potential stops before reaching the terminal"

@@ -1,0 +1,6350 @@
+{
+ "about": "Graph reader content (docs/anp-spec.md section 8.5, docs/anp-tools-contract.md). Every graph is drawn by tools/graphs.js from these numbers as SVG. x is shared by all panels; each panel has its own y axis. Series use visual-language classes and carry their label on the line (labelAt, in data units). regions are vertical bands a phase question can highlight (show: true draws one always). Question types: value (read a number: answer, tol, unit), phase (name a phase or region: options, correct, highlight) and shift (predict the change: options, correct, overlay drawn after answering). Item ids graphs:<graph>:<question> are permanent. A question may carry its own topic (never earlier than the graph's). Validator: scripts/lib/anp-tool-checks/graphs.mjs. The numbers are schematic but physiologically typical for a resting adult.",
+ "graphs": [
+  {
+   "id": "ph-scale",
+   "title": "The pH scale is logarithmic",
+   "topic": "acids-bases-ph",
+   "core": [
+    "homeostasis"
+   ],
+   "intro": "Blood pH looks like it barely moves, from 7.35 to 7.45. This graph shows what those small numbers mean for the hydrogen ion concentration.",
+   "alt": "Hydrogen ion concentration in nanomoles per liter plotted against pH from 6.8 to 7.8. The curve falls steeply: about 158 at pH 6.8, 100 at 7.0, 40 at 7.4 and 16 at 7.8. A shaded band marks the normal blood pH range, 7.35 to 7.45.",
+   "x": {
+    "min": 6.8,
+    "max": 7.8,
+    "label": "pH",
+    "unitless": true,
+    "ticks": [
+     6.8,
+     7.0,
+     7.2,
+     7.4,
+     7.6,
+     7.8
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 170,
+      "label": "Hydrogen ion concentration",
+      "unit": "nmol/L",
+      "ticks": [
+       0,
+       40,
+       80,
+       120,
+       160
+      ]
+     },
+     "series": [
+      {
+       "id": "h",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         6.8,
+         158.5
+        ],
+        [
+         6.9,
+         125.9
+        ],
+        [
+         7.0,
+         100.0
+        ],
+        [
+         7.1,
+         79.4
+        ],
+        [
+         7.2,
+         63.1
+        ],
+        [
+         7.3,
+         50.1
+        ],
+        [
+         7.4,
+         39.8
+        ],
+        [
+         7.5,
+         31.6
+        ],
+        [
+         7.6,
+         25.1
+        ],
+        [
+         7.7,
+         20.0
+        ],
+        [
+         7.8,
+         15.8
+        ]
+       ],
+       "label": "[H+]",
+       "labelAt": [
+        6.93,
+        140
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "normal",
+     "x0": 7.35,
+     "x1": 7.45,
+     "label": "normal blood pH",
+     "show": true
+    },
+    {
+     "id": "acidosis",
+     "x0": 6.8,
+     "x1": 7.35,
+     "label": "acidosis"
+    },
+    {
+     "id": "alkalosis",
+     "x0": 7.45,
+     "x1": 7.8,
+     "label": "alkalosis"
+    }
+   ],
+   "questions": [
+    {
+     "id": "h-at-7-4",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the hydrogen ion concentration at pH 7.4, the middle of the normal range.",
+     "answer": 40,
+     "tol": 4,
+     "unit": "nmol/L",
+     "show": {
+      "x": 7.4,
+      "y": 39.8
+     },
+     "why": "Go up from pH 7.4 to the curve, then across: about 40 nmol/L, that is 0.00000004 mol/L. That tiny concentration is the normal hydrogen ion level of your blood."
+    },
+    {
+     "id": "ph-doubled",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At what pH has the hydrogen ion concentration doubled, from 40 to 80 nmol/L?",
+     "answer": 7.1,
+     "tol": 0.04,
+     "unit": "",
+     "show": {
+      "x": 7.1,
+      "y": 79.4
+     },
+     "why": "Go across from 80 nmol/L to the curve, then down: pH 7.1. A fall of only 0.3 pH units doubles the hydrogen ion concentration, because pH is logarithmic: every 0.3 units is a factor of 2, and every 1 unit is a factor of 10."
+    },
+    {
+     "id": "region-7-28",
+     "type": "phase",
+     "level": "apply",
+     "diff": 1,
+     "q": "A blood sample has a pH of 7.28. Which region of the graph is it in?",
+     "options": [
+      "Acidosis",
+      "The normal range",
+      "Alkalosis"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "acidosis"
+     },
+     "marker": {
+      "x": 7.28,
+      "y": 52.5,
+      "label": "pH 7.28"
+     },
+     "why": {
+      "correct": "7.28 is below 7.35, so the blood is too acidic: acidosis. Its hydrogen ion concentration, about 52 nmol/L, is 30 percent above normal.",
+      "options": [
+       "Right: any blood pH below 7.35 is acidosis.",
+       "The normal range is 7.35 to 7.45, the narrow shaded band. 7.28 is below it.",
+       "Alkalosis means a pH above 7.45, with fewer hydrogen ions than normal. 7.28 is on the acid side."
+      ]
+     }
+    },
+    {
+     "id": "fall-to-7-1",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "A patient's blood pH falls from 7.4 to 7.1. How does the hydrogen ion concentration change?",
+     "options": [
+      "It doubles, from about 40 to about 80 nmol/L",
+      "It rises by about 4 percent, because 7.1 is about 4 percent less than 7.4",
+      "It falls, because the pH number fell",
+      "It rises tenfold"
+     ],
+     "correct": 0,
+     "overlay": {
+      "marks": [
+       {
+        "x": 7.4,
+        "y": 39.8,
+        "label": "7.4: 40"
+       },
+       {
+        "x": 7.1,
+        "y": 79.4,
+        "label": "7.1: 80"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Moving 0.3 units left along the curve doubles the hydrogen ion concentration. That is why a pH of 7.1 is a medical emergency even though the number changed so little.",
+      "options": [
+       "Right: each 0.3 fall in pH doubles the hydrogen ion concentration.",
+       "pH is a logarithm, not an ordinary number. A 0.3 fall is not a 4 percent change; it is a doubling.",
+       "pH and hydrogen ion concentration move in opposite directions: a lower pH means more hydrogen ions.",
+       "A tenfold rise takes a fall of a whole pH unit, from 7.4 to 6.4. A 0.3 fall doubles it."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "flow-radius",
+   "title": "Flow vs radius: the fourth-power curve",
+   "topic": "gradients-flow",
+   "core": [
+    "gradients"
+   ],
+   "intro": "Flow through a tube depends on the fourth power of its radius. Keep the pressure gradient fixed and change only the radius.",
+   "alt": "Flow as a percentage of starting flow plotted against radius as a percentage of starting radius. The curve is flat at small radii and rises ever more steeply: 6 percent flow at half radius, 41 percent at 80 percent radius, 100 at 100 and 244 at 125. A straight dashed line shows what flow would be if it were simply proportional to radius.",
+   "x": {
+    "min": 0,
+    "max": 125,
+    "label": "Radius of the tube",
+    "unit": "% of starting radius",
+    "ticks": [
+     0,
+     25,
+     50,
+     75,
+     100,
+     125
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 250,
+      "label": "Flow",
+      "unit": "% of starting flow",
+      "ticks": [
+       0,
+       50,
+       100,
+       150,
+       200,
+       250
+      ]
+     },
+     "series": [
+      {
+       "id": "r4",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0.0
+        ],
+        [
+         10,
+         0.0
+        ],
+        [
+         20,
+         0.2
+        ],
+        [
+         30,
+         0.8
+        ],
+        [
+         40,
+         2.6
+        ],
+        [
+         50,
+         6.2
+        ],
+        [
+         60,
+         13.0
+        ],
+        [
+         70,
+         24.0
+        ],
+        [
+         80,
+         41.0
+        ],
+        [
+         90,
+         65.6
+        ],
+        [
+         100,
+         100.0
+        ],
+        [
+         110,
+         146.4
+        ],
+        [
+         120,
+         207.4
+        ],
+        [
+         125,
+         244.1
+        ]
+       ],
+       "label": "flow ∝ radius⁴",
+       "labelAt": [
+        108,
+        205
+       ],
+       "anchor": "end"
+      },
+      {
+       "id": "linear",
+       "cls": "lo",
+       "dash": true,
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         125,
+         125
+        ]
+       ],
+       "label": "if flow ∝ radius",
+       "labelAt": [
+        124,
+        108
+       ],
+       "anchor": "end"
+      }
+     ],
+     "marks": [
+      {
+       "x": 100,
+       "y": 100,
+       "label": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "small",
+     "x0": 0,
+     "x1": 25,
+     "label": "0–25%"
+    },
+    {
+     "id": "mid",
+     "x0": 25,
+     "x1": 50,
+     "label": "25–50%"
+    },
+    {
+     "id": "wide",
+     "x0": 100,
+     "x1": 125,
+     "label": "100–125%"
+    }
+   ],
+   "questions": [
+    {
+     "id": "flow-at-80",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "A vessel narrows to 80% of its starting radius. Read the new flow, as a percentage of the starting flow.",
+     "answer": 41,
+     "tol": 5,
+     "unit": "%",
+     "show": {
+      "x": 80,
+      "y": 41
+     },
+     "why": "About 41%. 0.8 × 0.8 × 0.8 × 0.8 = 0.41, so narrowing the radius by one fifth cuts flow by more than half."
+    },
+    {
+     "id": "flow-at-50",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the flow when the radius is halved, to 50%.",
+     "answer": 6.25,
+     "tol": 3,
+     "unit": "%",
+     "show": {
+      "x": 50,
+      "y": 6.3
+     },
+     "why": "About 6%, one sixteenth of the start: ½ × ½ × ½ × ½ = 1/16. Halving the radius raises resistance 16-fold, and flow falls to match."
+    },
+    {
+     "id": "steepest",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which range of radius does a 25-point change in radius change flow the most?",
+     "options": [
+      "Between 100% and 125%",
+      "Between 0% and 25%",
+      "Between 25% and 50%"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "wide"
+     },
+     "why": {
+      "correct": "The curve is steepest where the radius is largest: from 100% to 125% radius, flow rises from 100% to about 244%.",
+      "options": [
+       "Right: the fourth-power curve keeps getting steeper, so the same change in radius does most at large radii.",
+       "Here the curve is almost flat: flow only rises from 0 to about 0.4%.",
+       "Flow rises only from about 0.4% to 6% here. The curve steepens as radius grows."
+      ]
+     }
+    },
+    {
+     "id": "gradient-doubles",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The pressure gradient across the vessel doubles, and nothing else changes. How does the curve change?",
+     "options": [
+      "Every point doubles: the curve rises twice as steeply and reaches 200% flow at the starting radius",
+      "The curve shifts right: you need a wider radius for the same flow",
+      "No change: flow depends only on radius",
+      "Flow halves at every radius"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "r4x2",
+        "cls": "accent",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0.0
+         ],
+         [
+          20,
+          0.3
+         ],
+         [
+          40,
+          5.1
+         ],
+         [
+          50,
+          12.5
+         ],
+         [
+          60,
+          25.9
+         ],
+         [
+          70,
+          48.0
+         ],
+         [
+          80,
+          81.9
+         ],
+         [
+          90,
+          131.2
+         ],
+         [
+          100,
+          200.0
+         ],
+         [
+          105,
+          243.1
+         ]
+        ],
+        "label": "gradient doubled",
+        "labelAt": [
+         74,
+         150
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Flow equals pressure gradient divided by resistance. Resistance at each radius is unchanged, so doubling the gradient doubles the flow at every radius.",
+      "options": [
+       "Right: F = ΔP/R, and R is the same at each radius, so every flow doubles.",
+       "Shifting the curve right would mean less flow at each radius. A bigger gradient pushes more flow through the same tube.",
+       "Flow depends on both the gradient and the resistance. The radius sets the resistance; the gradient is the push.",
+       "Halving would follow a smaller gradient, or doubled resistance. A doubled gradient doubles flow."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "enzyme-temperature",
+   "title": "Enzyme activity vs temperature",
+   "topic": "enzymes-energy",
+   "core": [
+    "energy"
+   ],
+   "intro": "A typical human enzyme, tested across a range of temperatures. Activity is shown as a percentage of the fastest rate.",
+   "alt": "Enzyme activity as a percentage of maximum plotted against temperature from 0 to 70 degrees Celsius. Activity rises gradually from about 6 percent at 0 degrees to a peak of 100 percent near 39 degrees, then falls steeply to near zero by 60 degrees.",
+   "x": {
+    "min": 0,
+    "max": 70,
+    "label": "Temperature",
+    "unit": "°C",
+    "ticks": [
+     0,
+     10,
+     20,
+     30,
+     40,
+     50,
+     60,
+     70
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Enzyme activity",
+      "unit": "% of maximum",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "act",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         6
+        ],
+        [
+         10,
+         14
+        ],
+        [
+         20,
+         30
+        ],
+        [
+         30,
+         60
+        ],
+        [
+         35,
+         85
+        ],
+        [
+         39,
+         100
+        ],
+        [
+         42,
+         91
+        ],
+        [
+         45,
+         66
+        ],
+        [
+         48,
+         40
+        ],
+        [
+         51,
+         20
+        ],
+        [
+         55,
+         7
+        ],
+        [
+         60,
+         1
+        ],
+        [
+         70,
+         0
+        ]
+       ],
+       "label": "typical human enzyme",
+       "labelAt": [
+        24,
+        62
+       ],
+       "anchor": "end"
+      }
+     ],
+     "hlines": [],
+     "notes": [
+      {
+       "x": 39,
+       "y": 106,
+       "text": "optimum",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "rising",
+     "x0": 0,
+     "x1": 39,
+     "label": "faster collisions"
+    },
+    {
+     "id": "denature",
+     "x0": 42,
+     "x1": 60,
+     "label": "shape destroyed"
+    }
+   ],
+   "questions": [
+    {
+     "id": "optimum",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the temperature at which this enzyme is most active.",
+     "answer": 39,
+     "tol": 3,
+     "unit": "°C",
+     "show": {
+      "x": 39,
+      "y": 100
+     },
+     "why": "The peak is near 39 °C, close to body temperature. Human enzymes work best near the temperature your body holds them at."
+    },
+    {
+     "id": "at-20",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the enzyme's activity at 20 °C.",
+     "answer": 30,
+     "tol": 5,
+     "unit": "%",
+     "show": {
+      "x": 20,
+      "y": 30
+     },
+     "why": "About 30% of maximum. In the cold, molecules move more slowly, so substrate and enzyme collide less often and fewer collisions have enough energy. The enzyme itself is not damaged."
+    },
+    {
+     "id": "denaturation",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which region does activity fall because the enzyme's shape is being destroyed?",
+     "options": [
+      "Above about 42 °C",
+      "Below about 20 °C",
+      "Between 30 and 39 °C"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "denature"
+     },
+     "why": {
+      "correct": "Above the optimum, heat breaks the weak bonds that hold the enzyme in shape. The active site loses its shape: the enzyme is denatured.",
+      "options": [
+       "Right: the steep fall above about 42 °C is denaturation.",
+       "Activity is low in the cold because molecules move slowly, not because the enzyme's shape is lost. Warm it up and it works again.",
+       "Activity is rising here as collisions get faster. Nothing is being destroyed yet."
+      ]
+     }
+    },
+    {
+     "id": "after-heating",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A sample of the enzyme is held at 60 °C for an hour, then cooled and tested again at every temperature. How does the curve change?",
+     "options": [
+      "It flattens near zero at every temperature: the heat damage does not reverse on cooling",
+      "It is unchanged: once cooled, the enzyme works as before",
+      "Its peak moves to 60 °C, because the enzyme has adapted",
+      "It rises everywhere, because heating activates the enzyme"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "heated",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0.5
+         ],
+         [
+          20,
+          1.5
+         ],
+         [
+          39,
+          4
+         ],
+         [
+          50,
+          2
+         ],
+         [
+          60,
+          0.5
+         ],
+         [
+          70,
+          0
+         ]
+        ],
+        "label": "after an hour at 60 °C",
+        "labelAt": [
+         56,
+         12
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Heat denaturation is usually permanent: the unfolded chains tangle and stick together and cannot refold. Cooling slows a healthy enzyme; it does not repair a denatured one.",
+      "options": [
+       "Right: the enzyme's shape is lost for good, so it stays inactive at every temperature.",
+       "Cooling does not restore a denatured shape. Only the slowing caused by cold is reversible.",
+       "Enzyme molecules do not adapt. The peak stays where it was; the damaged molecules simply stop working.",
+       "Heat past the optimum destroys the active site; it never makes the enzyme better."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "enzyme-ph",
+   "title": "Enzyme activity vs pH",
+   "topic": "enzymes-energy",
+   "core": [
+    "energy"
+   ],
+   "intro": "Two human enzymes tested across a range of pH: one that works in the stomach and one that works in the blood.",
+   "alt": "Enzyme activity as a percentage of maximum plotted against pH from 0 to 10. A stomach enzyme peaks at pH 2 and falls to near zero by pH 5. An enzyme working in the blood peaks at pH 7.4 and falls off on either side, to near zero below pH 5.5 and above pH 9.3.",
+   "x": {
+    "min": 0,
+    "max": 10,
+    "label": "pH",
+    "unitless": true,
+    "ticks": [
+     0,
+     2,
+     4,
+     6,
+     8,
+     10
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Enzyme activity",
+      "unit": "% of maximum",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "stomach",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0.5,
+         20
+        ],
+        [
+         1,
+         55
+        ],
+        [
+         1.5,
+         86
+        ],
+        [
+         2,
+         100
+        ],
+        [
+         2.5,
+         92
+        ],
+        [
+         3,
+         70
+        ],
+        [
+         3.5,
+         45
+        ],
+        [
+         4,
+         24
+        ],
+        [
+         4.5,
+         10
+        ],
+        [
+         5,
+         3
+        ],
+        [
+         6,
+         0
+        ]
+       ],
+       "label": "stomach enzyme",
+       "labelAt": [
+        3.1,
+        82
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "blood",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         5,
+         1
+        ],
+        [
+         5.5,
+         8
+        ],
+        [
+         6,
+         28
+        ],
+        [
+         6.5,
+         60
+        ],
+        [
+         7,
+         90
+        ],
+        [
+         7.4,
+         100
+        ],
+        [
+         7.8,
+         90
+        ],
+        [
+         8.3,
+         60
+        ],
+        [
+         8.8,
+         28
+        ],
+        [
+         9.3,
+         8
+        ],
+        [
+         10,
+         1
+        ]
+       ],
+       "label": "enzyme in the blood",
+       "labelAt": [
+        8.2,
+        90
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "stomach-half",
+     "x0": 1.0,
+     "x1": 3.4,
+     "label": "above half activity"
+    },
+    {
+     "id": "blood-half",
+     "x0": 6.5,
+     "x1": 8.3,
+     "label": "above half activity"
+    }
+   ],
+   "questions": [
+    {
+     "id": "stomach-optimum",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the optimum pH of the stomach enzyme.",
+     "answer": 2,
+     "tol": 0.4,
+     "unit": "",
+     "show": {
+      "x": 2,
+      "y": 100
+     },
+     "why": "Its peak is at about pH 2, matching the strongly acidic fluid it works in."
+    },
+    {
+     "id": "stomach-range",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Over what range of pH does the stomach enzyme work at more than half its maximum?",
+     "options": [
+      "About pH 1 to 3.5",
+      "About pH 6.5 to 8.3",
+      "About pH 0 to 10",
+      "About pH 4 to 6"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "stomach-half"
+     },
+     "why": {
+      "correct": "Its curve is above 50% only between about pH 1 and 3.5. Outside that range the charges on its active site change and substrate binds poorly.",
+      "options": [
+       "Right: read where the stomach enzyme's curve is above 50 on the vertical axis.",
+       "That is the range for the enzyme in the blood, whose peak is at 7.4.",
+       "Each enzyme works only in a narrow band of pH; no enzyme works well across the whole scale.",
+       "The stomach enzyme is almost inactive here, below 25% and falling."
+      ]
+     }
+    },
+    {
+     "id": "acidosis",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "A person's blood pH falls from 7.4 to 7.0 (acidosis). How does the blood enzyme's activity change?",
+     "options": [
+      "It falls a little, to about 90% of maximum",
+      "It stops completely",
+      "It rises, because enzymes work faster in acid",
+      "It does not change"
+     ],
+     "correct": 0,
+     "overlay": {
+      "marks": [
+       {
+        "x": 7.4,
+        "y": 100,
+        "label": "7.4: 100%"
+       },
+       {
+        "x": 7.0,
+        "y": 90,
+        "label": "7.0: 90%"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Moving left from the optimum takes activity down the curve, to about 90%. The same shift happens to many enzymes at once, and bigger shifts cut activity further, which is part of why acidosis disrupts so many body processes.",
+      "options": [
+       "Right: pH 7.0 is on the left slope of the curve, a little below the peak.",
+       "Activity only falls to zero far from the optimum, below about pH 5.5.",
+       "Each enzyme has its own optimum. This one works best at 7.4; more acid moves it away from that.",
+       "pH changes the charges on the enzyme's active site, so moving off the optimum changes activity."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "set-point",
+   "title": "A regulated variable around its set point",
+   "topic": "homeostasis-feedback",
+   "core": [
+    "homeostasis"
+   ],
+   "intro": "Your body temperature over an hour. At 10 minutes you step out into the cold. Watch negative feedback pull the temperature back.",
+   "alt": "Body temperature from 36 to 39 degrees Celsius over 60 minutes. It holds near the 37 degree set point, dips to 36.6 degrees after cold exposure at 10 minutes, overshoots to 37.2 at about 24 minutes, and settles back to 37 with smaller swings, staying inside the normal range band from 36.5 to 37.5.",
+   "x": {
+    "min": 0,
+    "max": 60,
+    "label": "Time",
+    "unit": "minutes",
+    "ticks": [
+     0,
+     10,
+     20,
+     30,
+     40,
+     50,
+     60
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 36,
+      "max": 39,
+      "label": "Body temperature",
+      "unit": "°C",
+      "ticks": [
+       36,
+       36.5,
+       37,
+       37.5,
+       38,
+       38.5,
+       39
+      ]
+     },
+     "bands": [
+      {
+       "y0": 36.5,
+       "y1": 37.5,
+       "label": "normal range",
+       "at": 57
+      }
+     ],
+     "hlines": [
+      {
+       "y": 37,
+       "label": "set point",
+       "at": 2,
+       "dash": true
+      }
+     ],
+     "series": [
+      {
+       "id": "temp",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         37.0
+        ],
+        [
+         3,
+         37.05
+        ],
+        [
+         6,
+         36.97
+        ],
+        [
+         10,
+         37.0
+        ],
+        [
+         13,
+         36.8
+        ],
+        [
+         16,
+         36.62
+        ],
+        [
+         19,
+         36.72
+        ],
+        [
+         22,
+         37.03
+        ],
+        [
+         24,
+         37.18
+        ],
+        [
+         27,
+         37.12
+        ],
+        [
+         30,
+         36.94
+        ],
+        [
+         33,
+         36.9
+        ],
+        [
+         36,
+         36.98
+        ],
+        [
+         39,
+         37.05
+        ],
+        [
+         43,
+         37.01
+        ],
+        [
+         47,
+         36.97
+        ],
+        [
+         52,
+         37.0
+        ],
+        [
+         60,
+         37.0
+        ]
+       ],
+       "label": "body temperature",
+       "labelAt": [
+        44,
+        37.25
+       ],
+       "anchor": "start"
+      }
+     ],
+     "notes": [
+      {
+       "x": 10,
+       "y": 36.25,
+       "text": "cold",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 10,
+     "label": "step outside"
+    }
+   ],
+   "regions": [
+    {
+     "id": "dip",
+     "x0": 10,
+     "x1": 19,
+     "label": "below set point"
+    },
+    {
+     "id": "overshoot",
+     "x0": 21,
+     "x1": 28,
+     "label": "above set point"
+    }
+   ],
+   "questions": [
+    {
+     "id": "lowest",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the lowest temperature reached after you step into the cold.",
+     "answer": 36.6,
+     "tol": 0.08,
+     "unit": "°C",
+     "show": {
+      "x": 16,
+      "y": 36.62
+     },
+     "why": "About 36.6 °C, at around 16 minutes. The loop takes time to detect the fall and get its effectors working, so the temperature keeps falling for a few minutes first."
+    },
+    {
+     "id": "set-point-value",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the set point the temperature swings around.",
+     "answer": 37,
+     "tol": 0.08,
+     "unit": "°C",
+     "why": "37 °C, the dashed line. The set point is the target the control center compares the sensed temperature with."
+    },
+    {
+     "id": "overshoot",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Between about 21 and 28 minutes, the temperature is above the set point. What is the loop doing then?",
+     "options": [
+      "Lowering the temperature: the response now opposes a rise",
+      "Raising the temperature further: this is positive feedback",
+      "Nothing: the loop only acts when the temperature is below the set point"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "overshoot"
+     },
+     "why": {
+      "correct": "The warming response overshot, so the loop reverses: warm blood is sent to the skin, heat loss rises, and the temperature comes back down. Negative feedback opposes a change in either direction.",
+      "options": [
+       "Right: negative feedback opposes any move away from the set point, up or down.",
+       "Positive feedback would push the temperature further up and further away. Instead it turns back toward 37 °C.",
+       "The loop corrects both falls and rises; it is the same loop working in the opposite direction."
+      ]
+     }
+    },
+    {
+     "id": "raised-set-point",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "At 30 minutes, an infection makes the control center raise the set point to 38.5 °C. How does the graph change after that?",
+     "options": [
+      "The temperature climbs, then swings around 38.5 °C, held there by the same negative feedback",
+      "The loop stops working, so the temperature drifts without control",
+      "The temperature keeps rising without limit: positive feedback",
+      "The temperature stays at 37 °C, because the loop resists any change"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "raised",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          30,
+          36.94
+         ],
+         [
+          33,
+          37.3
+         ],
+         [
+          36,
+          37.8
+         ],
+         [
+          39,
+          38.2
+         ],
+         [
+          42,
+          38.5
+         ],
+         [
+          45,
+          38.62
+         ],
+         [
+          48,
+          38.47
+         ],
+         [
+          52,
+          38.52
+         ],
+         [
+          56,
+          38.49
+         ],
+         [
+          60,
+          38.5
+         ]
+        ],
+        "label": "set point raised",
+        "labelAt": [
+         32,
+         38.2
+        ],
+        "anchor": "end"
+       }
+      ],
+      "hlines": [
+       {
+        "y": 38.5,
+        "label": "new set point",
+        "at": 2,
+        "dash": true
+       }
+      ]
+     },
+     "why": {
+      "correct": "The loop still works; only its target has moved. Now 37 °C reads as too cold, so the body conserves and makes heat until the temperature reaches the new set point, then holds it there.",
+      "options": [
+       "Right: the same negative feedback now defends 38.5 °C.",
+       "The loop keeps regulating, just around the new target: the temperature settles instead of drifting.",
+       "It stops rising at the new set point. Positive feedback would have no stopping point inside the loop.",
+       "The loop compares with its set point. Once that is 38.5 °C, a temperature of 37 °C is an error to correct."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "membrane-potential",
+   "title": "The resting potential and the equilibrium potentials",
+   "topic": "membrane-potential",
+   "core": [
+    "gradients",
+    "communication"
+   ],
+   "intro": "A neuron's membrane potential over 10 minutes, with the equilibrium potentials of potassium and sodium drawn in. At 4 minutes the potassium outside the cell starts to rise.",
+   "alt": "Membrane potential from minus 100 to plus 80 millivolts over 10 minutes. The resting potential sits at minus 70, much closer to the potassium equilibrium potential at minus 90 than to the sodium equilibrium potential at plus 60.",
+   "x": {
+    "min": 0,
+    "max": 10,
+    "label": "Time",
+    "unit": "minutes",
+    "ticks": [
+     0,
+     2,
+     4,
+     6,
+     8,
+     10
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -100,
+      "max": 80,
+      "label": "Membrane potential",
+      "unit": "mV",
+      "ticks": [
+       -100,
+       -50,
+       0,
+       50
+      ]
+     },
+     "hlines": [
+      {
+       "y": 60,
+       "label": "sodium equilibrium potential, +60 mV",
+       "at": 0.2,
+       "cls": "hi",
+       "dash": true
+      },
+      {
+       "y": -90,
+       "label": "potassium equilibrium potential, −90 mV",
+       "at": 0.2,
+       "cls": "lo",
+       "dash": true,
+       "below": true
+      },
+      {
+       "y": 0,
+       "label": "0 mV",
+       "at": 9.8,
+       "anchor": "end",
+       "faint": true
+      }
+     ],
+     "series": [
+      {
+       "id": "vm",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         -70
+        ],
+        [
+         10,
+         -70
+        ]
+       ],
+       "label": "resting membrane potential, −70 mV",
+       "labelAt": [
+        0.2,
+        -62
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [],
+   "questions": [
+    {
+     "id": "rmp",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the resting membrane potential.",
+     "answer": -70,
+     "tol": 4,
+     "unit": "mV",
+     "show": {
+      "x": 5,
+      "y": -70
+     },
+     "why": "About −70 mV: the inside of the membrane is 70 millivolts negative compared with the outside."
+    },
+    {
+     "id": "ek",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read potassium's equilibrium potential: the voltage at which potassium's electrical pull exactly balances its concentration gradient.",
+     "answer": -90,
+     "tol": 4,
+     "unit": "mV",
+     "show": {
+      "x": 5,
+      "y": -90
+     },
+     "why": "About −90 mV. At that voltage the negative inside pulls potassium in exactly as hard as its concentration gradient pushes it out, so there is no net flow."
+    },
+    {
+     "id": "closer",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "The resting potential sits much closer to one equilibrium potential than the other. Which, and why?",
+     "options": [
+      "Potassium's, because at rest the membrane is far more permeable to potassium",
+      "Sodium's, because there is more sodium outside the cell",
+      "Halfway between them, because the pump moves both ions",
+      "Potassium's, because the pump moves more potassium than sodium"
+     ],
+     "correct": 0,
+     "highlight": {
+      "y0": -92,
+      "y1": -68,
+      "label": "resting potential near potassium's"
+     },
+     "why": {
+      "correct": "The membrane potential is pulled toward the equilibrium potential of whichever ion can cross most easily. At rest many potassium leak channels are open and few sodium channels are, so the voltage sits near potassium's −90 mV, nudged up to −70 by the small sodium leak.",
+      "options": [
+       "Right: permeability decides which ion's equilibrium potential the membrane approaches.",
+       "Sodium is far from equilibrium at rest, but few channels let it in, so it has only a small effect.",
+       "−70 mV is 20 mV from potassium's value and 130 mV from sodium's: nowhere near halfway.",
+       "The pump moves 3 sodium out for 2 potassium in, and its direct electrical effect is only a few millivolts. Permeability, not the pump, sets where the voltage sits."
+      ]
+     }
+    },
+    {
+     "id": "hyperkalemia",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "From 4 minutes, blood potassium rises (hyperkalemia), so the potassium concentration outside the cell rises. How does the graph change?",
+     "options": [
+      "Potassium's equilibrium potential becomes less negative, and the resting potential depolarizes with it",
+      "The resting potential hyperpolarizes, moving further from zero",
+      "Only sodium's equilibrium potential changes",
+      "Nothing changes: the pump restores the gradient at once"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "vm-hk",
+        "cls": "accent",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          4,
+          -70
+         ],
+         [
+          5,
+          -65
+         ],
+         [
+          6,
+          -61.5
+         ],
+         [
+          7,
+          -60
+         ],
+         [
+          10,
+          -60
+         ]
+        ],
+        "label": "resting potential, about −60 mV",
+        "labelAt": [
+         9.8,
+         -52
+        ],
+        "anchor": "end"
+       },
+       {
+        "id": "ek-hk",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          4,
+          -90
+         ],
+         [
+          5,
+          -84
+         ],
+         [
+          6,
+          -79.5
+         ],
+         [
+          7,
+          -78
+         ],
+         [
+          10,
+          -78
+         ]
+        ],
+        "label": "new potassium equilibrium, about −78 mV",
+        "labelAt": [
+         9.8,
+         -86
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "More potassium outside means a smaller concentration gradient pushing potassium out, so less negative charge is needed to balance it: the equilibrium potential rises toward zero. The resting potential follows it up and the cell is depolarized. That is why high blood potassium can disturb the heartbeat.",
+      "options": [
+       "Right: a smaller potassium gradient moves both lines up.",
+       "Less potassium leaves when there is more outside, so the inside becomes less negative, not more.",
+       "Sodium's equilibrium potential depends on the sodium gradient, which has not changed.",
+       "The pump cannot remove potassium from the blood around the cell; the outside concentration stays high while blood potassium is high."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "neuron-action-potential",
+   "title": "A neuron action potential",
+   "topic": "action-potential-basics",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "intro": "The voltage across a patch of neuron membrane. A weak stimulus arrives at about 0.5 ms, and a stronger one at about 2.5 ms.",
+   "alt": "Membrane potential in millivolts over 8 milliseconds. A small bump from minus 70 to about minus 61 fades away. A second depolarization reaches threshold at minus 55 and becomes an action potential that peaks near plus 30 millivolts, falls back past minus 70 to about minus 80, and returns to minus 70 by about 7 milliseconds.",
+   "x": {
+    "min": 0,
+    "max": 8,
+    "label": "Time",
+    "unit": "ms",
+    "ticks": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -90,
+      "max": 40,
+      "label": "Membrane potential",
+      "unit": "mV",
+      "ticks": [
+       -80,
+       -60,
+       -40,
+       -20,
+       0,
+       20,
+       40
+      ]
+     },
+     "hlines": [
+      {
+       "y": -55,
+       "label": "threshold, −55 mV",
+       "at": 7.9,
+       "anchor": "end",
+       "dash": true,
+       "cls": "lo"
+      },
+      {
+       "y": 0,
+       "label": "0 mV",
+       "at": 7.9,
+       "anchor": "end",
+       "faint": true
+      }
+     ],
+     "series": [
+      {
+       "id": "ap",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         -70
+        ],
+        [
+         0.4,
+         -70
+        ],
+        [
+         0.6,
+         -64
+        ],
+        [
+         0.9,
+         -61
+        ],
+        [
+         1.3,
+         -65.5
+        ],
+        [
+         1.7,
+         -69
+        ],
+        [
+         2.1,
+         -70
+        ],
+        [
+         2.4,
+         -70
+        ],
+        [
+         2.65,
+         -63
+        ],
+        [
+         2.9,
+         -56.5
+        ],
+        [
+         3.0,
+         -52
+        ],
+        [
+         3.1,
+         -35
+        ],
+        [
+         3.2,
+         -8
+        ],
+        [
+         3.3,
+         18
+        ],
+        [
+         3.4,
+         29
+        ],
+        [
+         3.47,
+         30
+        ],
+        [
+         3.55,
+         24
+        ],
+        [
+         3.7,
+         5
+        ],
+        [
+         3.85,
+         -20
+        ],
+        [
+         4.0,
+         -45
+        ],
+        [
+         4.15,
+         -63
+        ],
+        [
+         4.3,
+         -74
+        ],
+        [
+         4.5,
+         -79
+        ],
+        [
+         4.8,
+         -80
+        ],
+        [
+         5.2,
+         -78
+        ],
+        [
+         5.8,
+         -74.5
+        ],
+        [
+         6.5,
+         -71.5
+        ],
+        [
+         7.2,
+         -70.3
+        ],
+        [
+         8,
+         -70
+        ]
+       ],
+       "label": "action potential",
+       "labelAt": [
+        3.6,
+        33
+       ],
+       "anchor": "start"
+      }
+     ],
+     "notes": [
+      {
+       "x": 0.9,
+       "y": -48,
+       "text": "graded",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.9,
+       "y": -41,
+       "text": "potential",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "graded",
+     "x0": 0.4,
+     "x1": 2.1,
+     "label": "graded potential"
+    },
+    {
+     "id": "depol",
+     "x0": 3.0,
+     "x1": 3.47,
+     "label": "depolarization"
+    },
+    {
+     "id": "repol",
+     "x0": 3.47,
+     "x1": 4.2,
+     "label": "repolarization"
+    },
+    {
+     "id": "hyper",
+     "x0": 4.2,
+     "x1": 6.8,
+     "label": "hyperpolarization"
+    }
+   ],
+   "questions": [
+    {
+     "id": "peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the peak voltage of the action potential.",
+     "answer": 30,
+     "tol": 5,
+     "unit": "mV",
+     "show": {
+      "x": 3.47,
+      "y": 30
+     },
+     "why": "About +30 mV: at the peak the inside of the membrane is positive, because so much sodium has rushed in."
+    },
+    {
+     "id": "threshold",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the threshold voltage, where the second depolarization takes off.",
+     "answer": -55,
+     "tol": 3,
+     "unit": "mV",
+     "show": {
+      "x": 2.95,
+      "y": -55
+     },
+     "why": "About −55 mV. At threshold, enough voltage-gated sodium channels open that sodium entry outpaces potassium exit, and the depolarization feeds on itself."
+    },
+    {
+     "id": "hyperpolarization",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Name the phase in which the voltage dips below −70 mV because potassium channels are slow to close.",
+     "options": [
+      "Hyperpolarization",
+      "Depolarization",
+      "Repolarization",
+      "Graded potential"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "hyper"
+     },
+     "why": {
+      "correct": "Extra potassium leaves while the slow voltage-gated potassium channels close, carrying the voltage below rest toward potassium's equilibrium potential.",
+      "options": [
+       "Right: below the resting potential is hyperpolarization.",
+       "Depolarization is the rise toward and above zero, driven by sodium entry.",
+       "Repolarization is the fall from the peak back toward rest. The dip below rest comes after it.",
+       "The graded potential is the small early bump that never reached threshold."
+      ]
+     }
+    },
+    {
+     "id": "first-bump",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Why did the first bump, near 1 ms, not become an action potential?",
+     "options": [
+      "It was a graded potential that never reached threshold",
+      "The membrane was in its refractory period",
+      "It was an action potential, just a small one",
+      "Sodium channels opened, but potassium channels cancelled them out"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "graded"
+     },
+     "why": {
+      "correct": "The weak stimulus made a small graded depolarization, to about −61 mV. It never reached −55 mV, so the voltage-gated sodium channels never opened in large numbers, and the bump faded away.",
+      "options": [
+       "Right: below threshold, a graded potential just fades.",
+       "No action potential had happened yet, so the membrane was not refractory.",
+       "Action potentials are all-or-none: there is no small version. Anything smaller than full size is a graded potential.",
+       "Voltage-gated sodium channels open in large numbers only at threshold, which this bump never reached."
+      ]
+     }
+    },
+    {
+     "id": "stronger-stimulus",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The second stimulus is made twice as strong. How does the action potential change?",
+     "options": [
+      "It reaches threshold a little sooner but peaks at the same voltage: action potentials are all-or-none",
+      "It peaks twice as high, near +60 mV",
+      "It lasts twice as long",
+      "It is smaller, because the channels are overloaded"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "strong",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          2.4,
+          -70
+         ],
+         [
+          2.52,
+          -62
+         ],
+         [
+          2.64,
+          -55
+         ],
+         [
+          2.72,
+          -45
+         ],
+         [
+          2.82,
+          -20
+         ],
+         [
+          2.92,
+          10
+         ],
+         [
+          3.02,
+          27
+         ],
+         [
+          3.1,
+          30
+         ],
+         [
+          3.18,
+          24
+         ],
+         [
+          3.33,
+          5
+         ],
+         [
+          3.48,
+          -20
+         ],
+         [
+          3.63,
+          -45
+         ],
+         [
+          3.78,
+          -63
+         ],
+         [
+          3.93,
+          -74
+         ],
+         [
+          4.13,
+          -79
+         ],
+         [
+          4.43,
+          -80
+         ],
+         [
+          4.83,
+          -78
+         ],
+         [
+          5.43,
+          -74.5
+         ],
+         [
+          6.13,
+          -71.5
+         ],
+         [
+          6.83,
+          -70.3
+         ],
+         [
+          8,
+          -70
+         ]
+        ],
+        "label": "twice the stimulus",
+        "labelAt": [
+         2.85,
+         20
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "A stronger stimulus makes a bigger graded potential, so threshold is reached sooner, but once the sodium channels open the action potential runs its fixed course. Nerve cells signal a stronger stimulus by firing more action potentials each second, not bigger ones.",
+      "options": [
+       "Right: same size, a little earlier.",
+       "The peak is set by the sodium gradient and the channels, not by the stimulus. It stays near +30 mV.",
+       "The duration is set by how the sodium and potassium channels open and close, which does not depend on stimulus strength.",
+       "Once threshold is reached, the full action potential happens every time."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ventricular-action-potential",
+   "title": "Ventricular muscle action potential",
+   "topic": "cardiac-muscle-ap",
+   "core": [
+    "communication",
+    "gradients"
+   ],
+   "intro": "One action potential in a contractile cell of the left ventricle. Compare its shape and length with the neuron's.",
+   "alt": "Membrane potential in millivolts over 400 milliseconds. From rest at minus 90, a rapid upstroke to about plus 20 (phase 0) is followed by a small notch (phase 1), a long plateau near 0 millivolts lasting about 200 milliseconds (phase 2), repolarization back to minus 90 by about 290 milliseconds (phase 3), and rest (phase 4).",
+   "x": {
+    "min": 0,
+    "max": 400,
+    "label": "Time",
+    "unit": "ms",
+    "ticks": [
+     0,
+     100,
+     200,
+     300,
+     400
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -100,
+      "max": 40,
+      "label": "Membrane potential",
+      "unit": "mV",
+      "ticks": [
+       -100,
+       -80,
+       -60,
+       -40,
+       -20,
+       0,
+       20,
+       40
+      ]
+     },
+     "series": [
+      {
+       "id": "vap",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         -90
+        ],
+        [
+         20,
+         -90
+        ],
+        [
+         21,
+         -88
+        ],
+        [
+         23,
+         -40
+        ],
+        [
+         25,
+         20
+        ],
+        [
+         27,
+         22
+        ],
+        [
+         31,
+         10
+        ],
+        [
+         40,
+         4
+        ],
+        [
+         70,
+         2
+        ],
+        [
+         110,
+         0
+        ],
+        [
+         150,
+         -3
+        ],
+        [
+         190,
+         -9
+        ],
+        [
+         215,
+         -18
+        ],
+        [
+         235,
+         -35
+        ],
+        [
+         252,
+         -58
+        ],
+        [
+         266,
+         -78
+        ],
+        [
+         280,
+         -88
+        ],
+        [
+         295,
+         -90
+        ],
+        [
+         400,
+         -90
+        ]
+       ],
+       "label": "contractile cell",
+       "labelAt": [
+        300,
+        -80
+       ],
+       "anchor": "start"
+      }
+     ],
+     "notes": [
+      {
+       "x": 14,
+       "y": -10,
+       "text": "0",
+       "anchor": "middle"
+      },
+      {
+       "x": 34,
+       "y": 26,
+       "text": "1",
+       "anchor": "middle"
+      },
+      {
+       "x": 120,
+       "y": 10,
+       "text": "2 plateau",
+       "anchor": "middle"
+      },
+      {
+       "x": 262,
+       "y": -40,
+       "text": "3",
+       "anchor": "start"
+      },
+      {
+       "x": 350,
+       "y": -82,
+       "text": "4",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "phase0",
+     "x0": 20,
+     "x1": 26,
+     "label": "phase 0"
+    },
+    {
+     "id": "plateau",
+     "x0": 40,
+     "x1": 200,
+     "label": "plateau (phase 2)"
+    },
+    {
+     "id": "phase3",
+     "x0": 200,
+     "x1": 290,
+     "label": "phase 3"
+    },
+    {
+     "id": "refractory",
+     "x0": 21,
+     "x1": 250,
+     "label": "refractory period"
+    }
+   ],
+   "questions": [
+    {
+     "id": "rest",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the resting membrane potential of this contractile cell.",
+     "answer": -90,
+     "tol": 4,
+     "unit": "mV",
+     "show": {
+      "x": 350,
+      "y": -90
+     },
+     "why": "About −90 mV, more negative than a neuron's −70 mV. Contractile cells have very few open sodium channels at rest, so their voltage sits almost at potassium's equilibrium potential."
+    },
+    {
+     "id": "duration",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read how long the action potential lasts, from the upstroke to full repolarization.",
+     "answer": 265,
+     "tol": 40,
+     "unit": "ms",
+     "why": "About 250 to 300 ms, from the upstroke at about 20 ms to rest again near 290 ms. A neuron's action potential lasts about 2 ms: more than a hundred times shorter."
+    },
+    {
+     "id": "plateau-cause",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Which phase depends on calcium entering through L-type calcium channels?",
+     "options": [
+      "The plateau (phase 2)",
+      "The rapid upstroke (phase 0)",
+      "Repolarization (phase 3)",
+      "Rest (phase 4)"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "plateau"
+     },
+     "why": {
+      "correct": "During the plateau, calcium entering through L-type channels balances potassium leaving, so the voltage stays near 0 mV for about 200 ms. That calcium also triggers contraction.",
+      "options": [
+       "Right: calcium in, potassium out, voltage held steady.",
+       "The upstroke is driven by sodium rushing in through fast voltage-gated sodium channels.",
+       "Repolarization happens when the calcium channels close and potassium exit wins.",
+       "At rest, potassium leak channels set the voltage; the L-type channels are closed."
+      ]
+     }
+    },
+    {
+     "id": "no-tetanus",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Why can't a rapid series of stimuli make heart muscle stay contracted, as skeletal muscle does in tetanus?",
+     "options": [
+      "Its refractory period lasts almost as long as the contraction",
+      "It has no voltage-gated sodium channels",
+      "Its calcium is never removed from the cytosol",
+      "Its resting potential is too negative to reach threshold"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "refractory"
+     },
+     "why": {
+      "correct": "The cell cannot fire again until it has nearly repolarized, about 250 ms after the upstroke, by which time the contraction is ending. So each contraction relaxes before the next begins, and the heart can always refill between beats.",
+      "options": [
+       "Right: the long plateau makes the refractory period long.",
+       "The rapid upstroke is made by voltage-gated sodium channels, so the cell has them.",
+       "Calcium is pumped back out of the cytosol at the end of every beat, which is why the cell relaxes.",
+       "Current from neighboring cells brings it to threshold every beat."
+      ]
+     }
+    },
+    {
+     "id": "calcium-block",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A drug partly blocks L-type calcium channels. How does the action potential change, and what happens to contraction?",
+     "options": [
+      "The plateau is shorter and lower, less calcium enters, and contraction weakens",
+      "The upstroke disappears, so the cell cannot fire",
+      "The plateau lengthens and contraction strengthens",
+      "Nothing changes, because the action potential does not depend on calcium"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "blocked",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          -90
+         ],
+         [
+          20,
+          -90
+         ],
+         [
+          21,
+          -88
+         ],
+         [
+          23,
+          -40
+         ],
+         [
+          25,
+          20
+         ],
+         [
+          27,
+          22
+         ],
+         [
+          31,
+          8
+         ],
+         [
+          40,
+          0
+         ],
+         [
+          70,
+          -4
+         ],
+         [
+          100,
+          -9
+         ],
+         [
+          125,
+          -18
+         ],
+         [
+          145,
+          -35
+         ],
+         [
+          162,
+          -58
+         ],
+         [
+          176,
+          -78
+         ],
+         [
+          190,
+          -88
+         ],
+         [
+          205,
+          -90
+         ],
+         [
+          400,
+          -90
+         ]
+        ],
+        "label": "calcium channels partly blocked",
+        "labelAt": [
+         165,
+         -30
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "With less calcium entering, potassium exit wins sooner, so the plateau sags and ends early. Less calcium also means less calcium-induced calcium release from the sarcoplasmic reticulum, so each contraction is weaker. Drugs that block these channels are used to lower blood pressure and heart workload.",
+      "options": [
+       "Right: shorter plateau, less trigger calcium, weaker contraction.",
+       "The upstroke is carried by sodium channels, which the drug does not block.",
+       "Blocking calcium entry removes the current that holds the plateau up, so it shortens.",
+       "The plateau is held up by calcium entry, so blocking it changes the shape."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "pacemaker-potential",
+   "title": "Pacemaker potential of the SA node",
+   "topic": "conduction-system",
+   "core": [
+    "communication"
+   ],
+   "intro": "The voltage of an SA node pacemaker cell over three heartbeats. Unlike a contractile cell, it has no stable resting potential.",
+   "alt": "Membrane potential of an SA node cell over 2.4 seconds. After each action potential, the voltage falls to about minus 60 millivolts, then drifts slowly upward to the threshold at minus 40, fires an action potential peaking near plus 10, and repeats every 0.8 seconds.",
+   "x": {
+    "min": 0,
+    "max": 2.4,
+    "label": "Time",
+    "unit": "s",
+    "ticks": [
+     0,
+     0.4,
+     0.8,
+     1.2,
+     1.6,
+     2.0,
+     2.4
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -70,
+      "max": 20,
+      "label": "Membrane potential",
+      "unit": "mV",
+      "ticks": [
+       -60,
+       -40,
+       -20,
+       0,
+       20
+      ]
+     },
+     "hlines": [
+      {
+       "y": -40,
+       "label": "threshold, −40 mV",
+       "at": 2.38,
+       "anchor": "end",
+       "dash": true,
+       "cls": "lo",
+       "below": true
+      }
+     ],
+     "series": [
+      {
+       "id": "pm",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         -60
+        ],
+        [
+         0.2,
+         -54.5
+        ],
+        [
+         0.4,
+         -48.5
+        ],
+        [
+         0.55,
+         -43.5
+        ],
+        [
+         0.62,
+         -40
+        ],
+        [
+         0.65,
+         -24
+        ],
+        [
+         0.68,
+         8
+        ],
+        [
+         0.705,
+         10
+        ],
+        [
+         0.73,
+         2
+        ],
+        [
+         0.76,
+         -24
+        ],
+        [
+         0.785,
+         -52
+        ],
+        [
+         0.8,
+         -60
+        ],
+        [
+         1.0,
+         -54.5
+        ],
+        [
+         1.2,
+         -48.5
+        ],
+        [
+         1.35,
+         -43.5
+        ],
+        [
+         1.42,
+         -40
+        ],
+        [
+         1.45,
+         -24
+        ],
+        [
+         1.48,
+         8
+        ],
+        [
+         1.505,
+         10
+        ],
+        [
+         1.53,
+         2
+        ],
+        [
+         1.56,
+         -24
+        ],
+        [
+         1.585,
+         -52
+        ],
+        [
+         1.6,
+         -60
+        ],
+        [
+         1.8,
+         -54.5
+        ],
+        [
+         2.0,
+         -48.5
+        ],
+        [
+         2.15,
+         -43.5
+        ],
+        [
+         2.22,
+         -40
+        ],
+        [
+         2.25,
+         -24
+        ],
+        [
+         2.28,
+         8
+        ],
+        [
+         2.305,
+         10
+        ],
+        [
+         2.33,
+         2
+        ],
+        [
+         2.36,
+         -24
+        ],
+        [
+         2.385,
+         -52
+        ],
+        [
+         2.4,
+         -60
+        ]
+       ],
+       "label": "SA node cell",
+       "labelAt": [
+        0.72,
+        15
+       ],
+       "anchor": "start"
+      }
+     ],
+     "notes": [
+      {
+       "x": 0.3,
+       "y": -64,
+       "text": "pacemaker potential",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "ramp",
+     "x0": 0,
+     "x1": 0.62,
+     "label": "slow drift"
+    },
+    {
+     "id": "upstroke",
+     "x0": 0.62,
+     "x1": 0.705,
+     "label": "upstroke"
+    }
+   ],
+   "questions": [
+    {
+     "id": "interval",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the time from one action potential peak to the next.",
+     "answer": 0.8,
+     "tol": 0.05,
+     "unit": "s",
+     "show": {
+      "x": 0.705,
+      "y": 10
+     },
+     "why": "0.8 s. One beat every 0.8 s is 60 ÷ 0.8 = 75 beats per minute, a normal resting heart rate."
+    },
+    {
+     "id": "most-negative",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the most negative voltage these cells reach.",
+     "answer": -60,
+     "tol": 4,
+     "unit": "mV",
+     "show": {
+      "x": 0.8,
+      "y": -60
+     },
+     "why": "About −60 mV, less negative than a contractile cell's −90. The cell never settles there: it starts drifting upward at once."
+    },
+    {
+     "id": "name-drift",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "What is the slow upward drift between action potentials called?",
+     "options": [
+      "The pacemaker potential",
+      "The plateau",
+      "Repolarization",
+      "Hyperpolarization"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "ramp"
+     },
+     "why": {
+      "correct": "The pacemaker potential is a spontaneous depolarization: channels that open as the cell repolarizes let positive ions leak in (the funny current), then calcium channels add more near threshold. It brings the cell to threshold with no outside trigger.",
+      "options": [
+       "Right: the slow drift to threshold is the pacemaker potential.",
+       "The plateau belongs to the contractile cell's action potential; pacemaker cells have none.",
+       "Repolarization is the fall after each peak. The drift rises.",
+       "Hyperpolarization would move the voltage down, away from threshold."
+      ]
+     }
+    },
+    {
+     "id": "sympathetic",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Sympathetic nerves release norepinephrine onto the SA node. How does the graph change?",
+     "options": [
+      "The pacemaker potential rises more steeply, threshold comes sooner, and beats come closer together",
+      "The pacemaker potential flattens, so beats come further apart",
+      "The peaks get taller, but the timing stays the same",
+      "The threshold moves up to 0 mV"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "symp",
+        "cls": "symp",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          -60
+         ],
+         [
+          0.14,
+          -53
+         ],
+         [
+          0.28,
+          -45.5
+         ],
+         [
+          0.34,
+          -41.5
+         ],
+         [
+          0.37,
+          -40
+         ],
+         [
+          0.4,
+          -24
+         ],
+         [
+          0.43,
+          8
+         ],
+         [
+          0.455,
+          10
+         ],
+         [
+          0.48,
+          2
+         ],
+         [
+          0.51,
+          -24
+         ],
+         [
+          0.535,
+          -52
+         ],
+         [
+          0.55,
+          -60
+         ],
+         [
+          0.69,
+          -53
+         ],
+         [
+          0.83,
+          -45.5
+         ],
+         [
+          0.89,
+          -41.5
+         ],
+         [
+          0.92,
+          -40
+         ],
+         [
+          0.95,
+          -24
+         ],
+         [
+          0.98,
+          8
+         ],
+         [
+          1.005,
+          10
+         ],
+         [
+          1.03,
+          2
+         ],
+         [
+          1.06,
+          -24
+         ],
+         [
+          1.085,
+          -52
+         ],
+         [
+          1.1,
+          -60
+         ],
+         [
+          1.24,
+          -53
+         ],
+         [
+          1.38,
+          -45.5
+         ],
+         [
+          1.44,
+          -41.5
+         ],
+         [
+          1.47,
+          -40
+         ],
+         [
+          1.5,
+          -24
+         ],
+         [
+          1.53,
+          8
+         ],
+         [
+          1.555,
+          10
+         ],
+         [
+          1.58,
+          2
+         ],
+         [
+          1.61,
+          -24
+         ],
+         [
+          1.635,
+          -52
+         ],
+         [
+          1.65,
+          -60
+         ],
+         [
+          1.79,
+          -53
+         ],
+         [
+          1.93,
+          -45.5
+         ],
+         [
+          1.99,
+          -41.5
+         ],
+         [
+          2.02,
+          -40
+         ],
+         [
+          2.05,
+          -24
+         ],
+         [
+          2.08,
+          8
+         ],
+         [
+          2.105,
+          10
+         ],
+         [
+          2.13,
+          2
+         ],
+         [
+          2.16,
+          -24
+         ],
+         [
+          2.185,
+          -52
+         ],
+         [
+          2.2,
+          -60
+         ],
+         [
+          2.34,
+          -53
+         ],
+         [
+          2.4,
+          -50
+         ]
+        ],
+        "label": "norepinephrine",
+        "labelAt": [
+         0.46,
+         16
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Norepinephrine opens more of the channels behind the drift, so positive ions leak in faster and threshold arrives sooner. Here each beat takes 0.55 s: about 109 beats per minute.",
+      "options": [
+       "Right: steeper drift, shorter time to threshold, faster heart rate.",
+       "A flatter drift is what acetylcholine from the vagus nerves does.",
+       "Heart rate is set by how fast the cell reaches threshold, not by how tall the peaks are.",
+       "Threshold is set by the voltage-gated channels and stays near −40 mV."
+      ]
+     }
+    },
+    {
+     "id": "vagal",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The vagus nerves release acetylcholine onto the SA node. How does the graph change?",
+     "options": [
+      "The cell starts from a more negative voltage and drifts up more slowly, so beats come further apart",
+      "The drift gets steeper, so beats come closer together",
+      "The cells stop firing completely",
+      "The peaks get taller"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "para",
+        "cls": "para",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          -65
+         ],
+         [
+          0.3,
+          -58.5
+         ],
+         [
+          0.6,
+          -51.5
+         ],
+         [
+          0.82,
+          -44.5
+         ],
+         [
+          0.92,
+          -40
+         ],
+         [
+          0.95,
+          -24
+         ],
+         [
+          0.98,
+          6
+         ],
+         [
+          1.005,
+          8
+         ],
+         [
+          1.03,
+          0
+         ],
+         [
+          1.06,
+          -26
+         ],
+         [
+          1.085,
+          -56
+         ],
+         [
+          1.1,
+          -65
+         ],
+         [
+          1.4,
+          -58.5
+         ],
+         [
+          1.7,
+          -51.5
+         ],
+         [
+          1.92,
+          -44.5
+         ],
+         [
+          2.02,
+          -40
+         ],
+         [
+          2.05,
+          -24
+         ],
+         [
+          2.08,
+          6
+         ],
+         [
+          2.105,
+          8
+         ],
+         [
+          2.13,
+          0
+         ],
+         [
+          2.16,
+          -26
+         ],
+         [
+          2.185,
+          -56
+         ],
+         [
+          2.2,
+          -65
+         ],
+         [
+          2.4,
+          -60.7
+         ]
+        ],
+        "label": "acetylcholine",
+        "labelAt": [
+         1.02,
+         15
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Acetylcholine opens extra potassium channels, which pull the voltage lower, and slows the inward leak, which flattens the drift. Threshold comes later: here one beat each 1.1 s, about 55 per minute.",
+      "options": [
+       "Right: lower start, flatter drift, slower heart rate.",
+       "A steeper drift is the sympathetic effect.",
+       "Normal vagal activity slows the SA node but does not stop it; at rest it holds the rate below the node's own intrinsic rate.",
+       "The timing, not the height, changes."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ecg",
+   "title": "ECG waves and intervals",
+   "topic": "ecg",
+   "core": [
+    "communication"
+   ],
+   "intro": "Two normal beats recorded from one lead, on standard ECG paper: each small square is 0.04 s wide and 0.1 mV tall.",
+   "alt": "Two normal ECG beats over 1.6 seconds on grid paper. Each beat has a small rounded P wave, a flat PR segment, a tall narrow QRS complex peaking at 1.2 millivolts, a flat ST segment and a rounded T wave. R waves are 0.8 seconds apart.",
+   "x": {
+    "min": 0,
+    "max": 1.6,
+    "label": "Time",
+    "unit": "s",
+    "ticks": [
+     0,
+     0.2,
+     0.4,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     1.4,
+     1.6
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -0.5,
+      "max": 1.5,
+      "label": "Voltage",
+      "unit": "mV",
+      "ticks": [
+       -0.5,
+       0,
+       0.5,
+       1.0,
+       1.5
+      ]
+     },
+     "grid": {
+      "x": 0.04,
+      "y": 0.1,
+      "majorX": 0.2,
+      "majorY": 0.5
+     },
+     "series": [
+      {
+       "id": "ecg",
+       "cls": "accent",
+       "curve": "linear",
+       "pts": [
+        [
+         0.0,
+         0
+        ],
+        [
+         0.04,
+         0
+        ],
+        [
+         0.06,
+         0.06
+        ],
+        [
+         0.08,
+         0.13
+        ],
+        [
+         0.1,
+         0.15
+        ],
+        [
+         0.12,
+         0.12
+        ],
+        [
+         0.14,
+         0.0
+        ],
+        [
+         0.2,
+         0
+        ],
+        [
+         0.215,
+         -0.1
+        ],
+        [
+         0.24,
+         1.2
+        ],
+        [
+         0.262,
+         -0.25
+        ],
+        [
+         0.28,
+         0
+        ],
+        [
+         0.38,
+         0
+        ],
+        [
+         0.42,
+         0.08
+        ],
+        [
+         0.46,
+         0.25
+        ],
+        [
+         0.49,
+         0.3
+        ],
+        [
+         0.52,
+         0.25
+        ],
+        [
+         0.555,
+         0.08
+        ],
+        [
+         0.58,
+         0
+        ],
+        [
+         0.8,
+         0
+        ],
+        [
+         0.84,
+         0
+        ],
+        [
+         0.86,
+         0.06
+        ],
+        [
+         0.88,
+         0.13
+        ],
+        [
+         0.9,
+         0.15
+        ],
+        [
+         0.92,
+         0.12
+        ],
+        [
+         0.94,
+         0.0
+        ],
+        [
+         1.0,
+         0
+        ],
+        [
+         1.015,
+         -0.1
+        ],
+        [
+         1.04,
+         1.2
+        ],
+        [
+         1.062,
+         -0.25
+        ],
+        [
+         1.08,
+         0
+        ],
+        [
+         1.18,
+         0
+        ],
+        [
+         1.22,
+         0.08
+        ],
+        [
+         1.26,
+         0.25
+        ],
+        [
+         1.29,
+         0.3
+        ],
+        [
+         1.32,
+         0.25
+        ],
+        [
+         1.355,
+         0.08
+        ],
+        [
+         1.38,
+         0
+        ],
+        [
+         1.6,
+         0
+        ]
+       ],
+       "nolabel": true
+      }
+     ],
+     "notes": [
+      {
+       "x": 0.1,
+       "y": 0.27,
+       "text": "P",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.212,
+       "y": -0.3,
+       "text": "Q",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.24,
+       "y": 1.3,
+       "text": "R",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.268,
+       "y": -0.42,
+       "text": "S",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.49,
+       "y": 0.43,
+       "text": "T",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "p",
+     "x0": 0.04,
+     "x1": 0.14,
+     "label": "P wave"
+    },
+    {
+     "id": "pr",
+     "x0": 0.04,
+     "x1": 0.2,
+     "label": "PR interval"
+    },
+    {
+     "id": "qrs",
+     "x0": 0.2,
+     "x1": 0.28,
+     "label": "QRS complex"
+    },
+    {
+     "id": "st",
+     "x0": 0.28,
+     "x1": 0.38,
+     "label": "ST segment"
+    },
+    {
+     "id": "t",
+     "x0": 0.38,
+     "x1": 0.58,
+     "label": "T wave"
+    },
+    {
+     "id": "qt",
+     "x0": 0.2,
+     "x1": 0.58,
+     "label": "QT interval"
+    }
+   ],
+   "questions": [
+    {
+     "id": "pr-interval",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the PR interval of the first beat, from the start of the P wave to the start of the QRS complex. Each small square is 0.04 s.",
+     "answer": 0.16,
+     "tol": 0.02,
+     "unit": "s",
+     "why": "The P wave starts at 0.04 s and the QRS complex at 0.20 s: 0.16 s, four small squares. A normal PR interval is 0.12 to 0.20 s. Most of it is the AV nodal delay."
+    },
+    {
+     "id": "heart-rate",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the time from one R wave to the next, then work out the heart rate in beats per minute.",
+     "answer": 75,
+     "tol": 4,
+     "unit": "beats/min",
+     "why": "The R waves are at 0.24 s and 1.04 s, 0.8 s apart. 60 s ÷ 0.8 s per beat = 75 beats per minute."
+    },
+    {
+     "id": "ventricular-depol",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Which part of the trace shows the ventricles depolarizing?",
+     "options": [
+      "The QRS complex",
+      "The P wave",
+      "The T wave",
+      "The ST segment"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "qrs"
+     },
+     "why": {
+      "correct": "The QRS complex is large because the ventricles hold the most muscle, and narrow because Purkinje fibers spread the impulse through them in under 0.1 s.",
+      "options": [
+       "Right: QRS is ventricular depolarization.",
+       "The P wave is atrial depolarization, which is why it is small.",
+       "The T wave is ventricular repolarization.",
+       "During the ST segment the whole ventricle is depolarized, in its plateau, so the trace is flat."
+      ]
+     }
+    },
+    {
+     "id": "atrial-repol",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The atria repolarize too, but no wave for it appears. Where is it?",
+     "options": [
+      "Hidden inside the QRS complex, which happens at the same time",
+      "It is the T wave",
+      "The atria never repolarize",
+      "It is the P wave"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "qrs"
+     },
+     "why": {
+      "correct": "Atrial repolarization happens while the ventricles depolarize. Its small signal is swamped by the much larger QRS complex.",
+      "options": [
+       "Right: it coincides with, and is hidden by, the QRS complex.",
+       "The T wave is ventricular repolarization.",
+       "Every cell that fires must repolarize before it can fire again, atrial cells included.",
+       "The P wave is atrial depolarization; repolarization comes later."
+      ]
+     }
+    },
+    {
+     "id": "first-degree-block",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Conduction through the AV node slows (first-degree heart block). How does the trace change?",
+     "options": [
+      "The PR interval lengthens; every P wave is still followed by a QRS complex",
+      "The QRS complex widens",
+      "The P waves disappear",
+      "The T waves turn upside down"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "block",
+        "cls": "hi",
+        "dash": true,
+        "curve": "linear",
+        "pts": [
+         [
+          0.0,
+          0
+         ],
+         [
+          0.04,
+          0
+         ],
+         [
+          0.06,
+          0.06
+         ],
+         [
+          0.08,
+          0.13
+         ],
+         [
+          0.1,
+          0.15
+         ],
+         [
+          0.12,
+          0.12
+         ],
+         [
+          0.14,
+          0.0
+         ],
+         [
+          0.32,
+          0
+         ],
+         [
+          0.335,
+          -0.1
+         ],
+         [
+          0.36,
+          1.2
+         ],
+         [
+          0.382,
+          -0.25
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.5,
+          0
+         ],
+         [
+          0.54,
+          0.08
+         ],
+         [
+          0.58,
+          0.25
+         ],
+         [
+          0.61,
+          0.3
+         ],
+         [
+          0.64,
+          0.25
+         ],
+         [
+          0.675,
+          0.08
+         ],
+         [
+          0.7,
+          0
+         ],
+         [
+          0.8,
+          0
+         ],
+         [
+          0.84,
+          0
+         ],
+         [
+          0.86,
+          0.06
+         ],
+         [
+          0.88,
+          0.13
+         ],
+         [
+          0.9,
+          0.15
+         ],
+         [
+          0.92,
+          0.12
+         ],
+         [
+          0.94,
+          0.0
+         ],
+         [
+          1.12,
+          0
+         ],
+         [
+          1.135,
+          -0.1
+         ],
+         [
+          1.16,
+          1.2
+         ],
+         [
+          1.182,
+          -0.25
+         ],
+         [
+          1.2,
+          0
+         ],
+         [
+          1.3,
+          0
+         ],
+         [
+          1.34,
+          0.08
+         ],
+         [
+          1.38,
+          0.25
+         ],
+         [
+          1.41,
+          0.3
+         ],
+         [
+          1.44,
+          0.25
+         ],
+         [
+          1.475,
+          0.08
+         ],
+         [
+          1.5,
+          0
+         ],
+         [
+          1.6,
+          0
+         ]
+        ],
+        "label": "slow AV node: PR 0.28 s",
+        "labelAt": [
+         0.37,
+         1.3
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The PR interval is mostly AV nodal delay, so slower AV conduction lengthens it, here to 0.28 s. Once through the node the impulse spreads normally, so the QRS complex keeps its shape and every beat still conducts.",
+      "options": [
+       "Right: a longer PR interval is the only change.",
+       "A wide QRS means slow spread through the ventricles, below the AV node.",
+       "The atria still depolarize normally; the delay comes after them.",
+       "Repolarization of the ventricles is not affected by a delay above them."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "wiggers",
+   "title": "The cardiac cycle (Wiggers diagram)",
+   "topic": "cardiac-cycle",
+   "core": [
+    "gradients"
+   ],
+   "intro": "One heartbeat of the left heart at 75 beats per minute, 0.8 s. Pressures, ventricular volume, the ECG and the heart sounds share one time axis, so you can read down to see what happens at the same moment.",
+   "alt": "Four stacked panels over 0.8 seconds. Top: aortic pressure between 80 and 120 millimeters of mercury, left ventricular pressure rising from near 5 to 121 and back, and left atrial pressure between 4 and 12. Second: left ventricular volume from 130 milliliters down to 60 and back. Third: the ECG with P, QRS and T. Bottom: the first heart sound at 0.20 to 0.26 seconds and the second at 0.52 to 0.56 seconds. Dashed lines mark the mitral valve closing at 0.205 seconds, the aortic valve opening at 0.25, the aortic valve closing at 0.52 and the mitral valve opening at 0.60.",
+   "x": {
+    "min": 0,
+    "max": 0.8,
+    "label": "Time",
+    "unit": "s",
+    "ticks": [
+     0,
+     0.1,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.7,
+     0.8
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.6,
+     "y": {
+      "min": 0,
+      "max": 140,
+      "label": "Pressure",
+      "unit": "mm Hg",
+      "ticks": [
+       0,
+       40,
+       80,
+       120
+      ]
+     },
+     "series": [
+      {
+       "id": "aortic",
+       "cls": "o2",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         84
+        ],
+        [
+         0.1,
+         82.5
+        ],
+        [
+         0.2,
+         80.8
+        ],
+        [
+         0.25,
+         80
+        ],
+        [
+         0.28,
+         98
+        ],
+        [
+         0.31,
+         110
+        ],
+        [
+         0.35,
+         117
+        ],
+        [
+         0.38,
+         119
+        ],
+        [
+         0.42,
+         116
+        ],
+        [
+         0.46,
+         107
+        ],
+        [
+         0.5,
+         98
+        ],
+        [
+         0.52,
+         93
+        ],
+        [
+         0.53,
+         90.5
+        ],
+        [
+         0.545,
+         95
+        ],
+        [
+         0.56,
+         96
+        ],
+        [
+         0.6,
+         94
+        ],
+        [
+         0.7,
+         89
+        ],
+        [
+         0.8,
+         84
+        ]
+       ],
+       "label": "aortic",
+       "labelAt": [
+        0.69,
+        97
+       ],
+       "anchor": "middle"
+      },
+      {
+       "id": "lv",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         5
+        ],
+        [
+         0.05,
+         5
+        ],
+        [
+         0.1,
+         7
+        ],
+        [
+         0.14,
+         8.2
+        ],
+        [
+         0.18,
+         7
+        ],
+        [
+         0.2,
+         8
+        ],
+        [
+         0.21,
+         14
+        ],
+        [
+         0.22,
+         28
+        ],
+        [
+         0.235,
+         52
+        ],
+        [
+         0.25,
+         81
+        ],
+        [
+         0.28,
+         100
+        ],
+        [
+         0.31,
+         112
+        ],
+        [
+         0.35,
+         119
+        ],
+        [
+         0.38,
+         121
+        ],
+        [
+         0.42,
+         117
+        ],
+        [
+         0.46,
+         108
+        ],
+        [
+         0.5,
+         99
+        ],
+        [
+         0.52,
+         94
+        ],
+        [
+         0.54,
+         70
+        ],
+        [
+         0.56,
+         40
+        ],
+        [
+         0.58,
+         18
+        ],
+        [
+         0.6,
+         9
+        ],
+        [
+         0.62,
+         4
+        ],
+        [
+         0.65,
+         2
+        ],
+        [
+         0.7,
+         3
+        ],
+        [
+         0.75,
+         4
+        ],
+        [
+         0.8,
+         5
+        ]
+       ],
+       "label": "left ventricle",
+       "labelAt": [
+        0.385,
+        128
+       ],
+       "anchor": "middle"
+      },
+      {
+       "id": "la",
+       "cls": "shape",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         6
+        ],
+        [
+         0.06,
+         7.5
+        ],
+        [
+         0.1,
+         10
+        ],
+        [
+         0.12,
+         10.5
+        ],
+        [
+         0.15,
+         8
+        ],
+        [
+         0.18,
+         7.5
+        ],
+        [
+         0.2,
+         7
+        ],
+        [
+         0.22,
+         8.5
+        ],
+        [
+         0.25,
+         5
+        ],
+        [
+         0.28,
+         4
+        ],
+        [
+         0.35,
+         5.5
+        ],
+        [
+         0.45,
+         8.5
+        ],
+        [
+         0.55,
+         11.5
+        ],
+        [
+         0.6,
+         12
+        ],
+        [
+         0.63,
+         8.5
+        ],
+        [
+         0.67,
+         5.5
+        ],
+        [
+         0.72,
+         5
+        ],
+        [
+         0.8,
+         6
+        ]
+       ],
+       "label": "left atrium",
+       "labelAt": [
+        0.7,
+        18
+       ],
+       "anchor": "middle"
+      }
+     ]
+    },
+    {
+     "h": 0.9,
+     "y": {
+      "min": 40,
+      "max": 140,
+      "label": "Volume",
+      "unit": "mL",
+      "ticks": [
+       60,
+       100,
+       140
+      ]
+     },
+     "series": [
+      {
+       "id": "vol",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         110
+        ],
+        [
+         0.08,
+         111
+        ],
+        [
+         0.12,
+         119
+        ],
+        [
+         0.16,
+         127
+        ],
+        [
+         0.2,
+         130
+        ],
+        [
+         0.25,
+         130
+        ],
+        [
+         0.28,
+         121
+        ],
+        [
+         0.31,
+         108
+        ],
+        [
+         0.35,
+         90
+        ],
+        [
+         0.4,
+         75
+        ],
+        [
+         0.45,
+         66
+        ],
+        [
+         0.5,
+         61
+        ],
+        [
+         0.52,
+         60
+        ],
+        [
+         0.6,
+         60
+        ],
+        [
+         0.63,
+         75
+        ],
+        [
+         0.66,
+         90
+        ],
+        [
+         0.7,
+         101
+        ],
+        [
+         0.75,
+         107
+        ],
+        [
+         0.8,
+         110
+        ]
+       ],
+       "label": "ventricular volume",
+       "labelAt": [
+        0.37,
+        110
+       ],
+       "anchor": "start"
+      }
+     ]
+    },
+    {
+     "h": 0.55,
+     "y": {
+      "min": -0.4,
+      "max": 1.4,
+      "label": "ECG",
+      "unit": "mV",
+      "ticks": [
+       0,
+       1
+      ]
+     },
+     "series": [
+      {
+       "id": "ecg",
+       "cls": "shape",
+       "curve": "linear",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         0.02,
+         0.1
+        ],
+        [
+         0.04,
+         0.15
+        ],
+        [
+         0.06,
+         0.1
+        ],
+        [
+         0.08,
+         0
+        ],
+        [
+         0.16,
+         0
+        ],
+        [
+         0.17,
+         -0.1
+        ],
+        [
+         0.185,
+         1.2
+        ],
+        [
+         0.2,
+         -0.25
+        ],
+        [
+         0.215,
+         0
+        ],
+        [
+         0.36,
+         0
+        ],
+        [
+         0.4,
+         0.12
+        ],
+        [
+         0.45,
+         0.3
+        ],
+        [
+         0.49,
+         0.12
+        ],
+        [
+         0.52,
+         0
+        ],
+        [
+         0.8,
+         0
+        ]
+       ],
+       "nolabel": true
+      }
+     ],
+     "notes": [
+      {
+       "x": 0.04,
+       "y": 0.45,
+       "text": "P",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.21,
+       "y": 1.1,
+       "text": "QRS",
+       "anchor": "start"
+      },
+      {
+       "x": 0.45,
+       "y": 0.6,
+       "text": "T",
+       "anchor": "middle"
+      }
+     ]
+    },
+    {
+     "h": 0.4,
+     "y": {
+      "min": -1,
+      "max": 1,
+      "label": "Sounds",
+      "unitless": true,
+      "ticks": []
+     },
+     "bursts": [
+      {
+       "x0": 0.2,
+       "x1": 0.26,
+       "label": "S1"
+      },
+      {
+       "x0": 0.52,
+       "x1": 0.56,
+       "label": "S2"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 0.205,
+     "label": "mitral closes"
+    },
+    {
+     "x": 0.25,
+     "label": "aortic opens"
+    },
+    {
+     "x": 0.52,
+     "label": "aortic closes"
+    },
+    {
+     "x": 0.6,
+     "label": "mitral opens"
+    }
+   ],
+   "regions": [
+    {
+     "id": "atrial-systole",
+     "x0": 0.06,
+     "x1": 0.205,
+     "label": "atrial systole"
+    },
+    {
+     "id": "ivc",
+     "x0": 0.205,
+     "x1": 0.25,
+     "label": "isovolumetric contraction"
+    },
+    {
+     "id": "ejection",
+     "x0": 0.25,
+     "x1": 0.52,
+     "label": "ejection"
+    },
+    {
+     "id": "ivr",
+     "x0": 0.52,
+     "x1": 0.6,
+     "label": "isovolumetric relaxation"
+    },
+    {
+     "id": "filling",
+     "x0": 0.6,
+     "x1": 0.8,
+     "label": "ventricular filling"
+    },
+    {
+     "id": "s2",
+     "x0": 0.515,
+     "x1": 0.565,
+     "label": "second heart sound"
+    },
+    {
+     "id": "mitral-opens",
+     "x0": 0.59,
+     "x1": 0.61,
+     "label": "mitral valve opens"
+    }
+   ],
+   "questions": [
+    {
+     "id": "edv",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the end-diastolic volume, the most blood the ventricle holds.",
+     "answer": 130,
+     "tol": 5,
+     "unit": "mL",
+     "show": {
+      "x": 0.22,
+      "y": 130,
+      "panel": 1
+     },
+     "why": "About 130 mL, reached just as the mitral valve closes at the start of systole."
+    },
+    {
+     "id": "stroke-volume",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Work out the stroke volume: end-diastolic volume minus end-systolic volume.",
+     "answer": 70,
+     "tol": 6,
+     "unit": "mL",
+     "show": {
+      "x": 0.56,
+      "y": 60,
+      "panel": 1
+     },
+     "why": "130 mL minus the lowest volume, about 60 mL: 70 mL ejected. That is an ejection fraction of 70 ÷ 130, about 54%."
+    },
+    {
+     "id": "aortic-low",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the aortic pressure at the moment the aortic valve opens, the lowest aortic pressure in the cycle.",
+     "answer": 80,
+     "tol": 4,
+     "unit": "mm Hg",
+     "show": {
+      "x": 0.25,
+      "y": 80
+     },
+     "why": "About 80 mm Hg. The ventricle must raise its pressure above this before the aortic valve opens; that is what isovolumetric contraction does."
+    },
+    {
+     "id": "name-ivc",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Between about 0.20 and 0.25 s, pressure in the ventricle climbs steeply but its volume does not change. Name this phase.",
+     "options": [
+      "Isovolumetric contraction",
+      "Ventricular ejection",
+      "Isovolumetric relaxation",
+      "Atrial systole"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "ivc"
+     },
+     "why": {
+      "correct": "Both valves are shut: ventricular pressure is above atrial pressure (mitral closed) but still below aortic pressure (aortic closed). The muscle contracts on a fixed volume of blood.",
+      "options": [
+       "Right: iso- means same, volumetric means volume.",
+       "Ejection begins only when the aortic valve opens, at about 0.25 s, and then volume falls.",
+       "Isovolumetric relaxation is the other flat-volume phase, after ejection, when pressure falls.",
+       "Atrial systole comes before this, while the mitral valve is still open and volume is still rising."
+      ]
+     }
+    },
+    {
+     "id": "second-sound",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "What makes the second heart sound, at about 0.52 s?",
+     "options": [
+      "The aortic and pulmonary valves snapping shut as ventricular pressure falls below arterial pressure",
+      "The ventricular muscle contracting",
+      "The mitral and tricuspid valves closing",
+      "Blood rushing into the relaxed ventricles"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "s2"
+     },
+     "why": {
+      "correct": "As the ventricles relax, their pressure drops below aortic pressure. Blood starts to flow back, fills the valve cusps and snaps them shut; the vibration is the sound. The little notch on the aortic pressure line marks the same moment.",
+      "options": [
+       "Right: S2 is the semilunar valves closing.",
+       "Heart sounds come from valves closing, not from the muscle.",
+       "The AV valves close at the start of systole: that is the first heart sound.",
+       "Rapid filling begins later, when the mitral valve opens at about 0.60 s."
+      ]
+     }
+    },
+    {
+     "id": "mitral-opens",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "At about 0.60 s, left ventricular pressure falls below left atrial pressure. What happens?",
+     "options": [
+      "The mitral valve opens and the ventricle starts to fill",
+      "The aortic valve closes",
+      "The mitral valve closes",
+      "The aortic valve opens"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "mitral-opens"
+     },
+     "why": {
+      "correct": "The mitral valve opens whenever the atrium's pressure is higher than the ventricle's. Blood that has been collecting in the atrium rushes in, and the volume line climbs steeply.",
+      "options": [
+       "Right: the pressure gradient now points from atrium to ventricle.",
+       "The aortic valve closed earlier, at about 0.52 s, when ventricular pressure fell below aortic pressure.",
+       "The mitral valve closes when ventricular pressure rises above atrial pressure, at the start of systole.",
+       "The aortic valve opens only when ventricular pressure exceeds aortic pressure, around 80 mm Hg."
+      ]
+     }
+    },
+    {
+     "id": "fast-rate",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Heart rate rises to 150 beats per minute, so each cycle lasts 0.4 s instead of 0.8 s. How does the volume curve change, and which part of the cycle is cut most?",
+     "options": [
+      "Diastole shrinks most: the flat filling period almost disappears, and end-diastolic volume falls a little",
+      "Ejection shrinks most, while the time for filling stays the same",
+      "Every phase shrinks by exactly half",
+      "Nothing changes except that the ECG waves come closer together"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "vol-fast",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          105
+         ],
+         [
+          0.03,
+          108
+         ],
+         [
+          0.06,
+          116
+         ],
+         [
+          0.1,
+          122
+         ],
+         [
+          0.13,
+          122
+         ],
+         [
+          0.16,
+          110
+         ],
+         [
+          0.2,
+          86
+         ],
+         [
+          0.25,
+          68
+         ],
+         [
+          0.3,
+          58
+         ],
+         [
+          0.34,
+          58
+         ],
+         [
+          0.36,
+          75
+         ],
+         [
+          0.38,
+          90
+         ],
+         [
+          0.4,
+          105
+         ],
+         [
+          0.43,
+          108
+         ],
+         [
+          0.46,
+          116
+         ],
+         [
+          0.5,
+          122
+         ],
+         [
+          0.53,
+          122
+         ],
+         [
+          0.56,
+          110
+         ],
+         [
+          0.6,
+          86
+         ],
+         [
+          0.65,
+          68
+         ],
+         [
+          0.7,
+          58
+         ],
+         [
+          0.74,
+          58
+         ],
+         [
+          0.76,
+          75
+         ],
+         [
+          0.78,
+          90
+         ],
+         [
+          0.8,
+          105
+         ]
+        ],
+        "label": "150 beats/min",
+        "labelAt": [
+         0.745,
+         128
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Systole shortens only a little as the rate rises; most of the time saved comes out of diastole. The slow late-filling period goes first, which costs little, but at very high rates the time for filling becomes too short and stroke volume falls.",
+      "options": [
+       "Right: diastole takes the cut.",
+       "Ejection shortens somewhat, but much less than diastole.",
+       "The phases do not shrink evenly: systole is far less compressible than diastole.",
+       "The mechanical cycle changes along with the electrical one; the time for filling shrinks."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "pv-loop",
+   "title": "Pressure–volume loop",
+   "topic": "cardiac-cycle",
+   "core": [
+    "gradients"
+   ],
+   "intro": "The same heartbeat as the Wiggers diagram, drawn as left ventricular pressure against volume. Time runs counterclockwise around the loop.",
+   "alt": "A counterclockwise loop of left ventricular pressure against volume. The bottom edge is filling, from 60 to 130 milliliters at low pressure. The right edge rises straight up at 130 milliliters from 10 to 81 millimeters of mercury. The top curve is ejection, from 130 down to 60 milliliters, peaking near 121. The left edge falls straight down at 60 milliliters from 94 to 9.",
+   "x": {
+    "min": 0,
+    "max": 160,
+    "label": "Left ventricular volume",
+    "unit": "mL",
+    "ticks": [
+     0,
+     40,
+     80,
+     120,
+     160
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 140,
+      "label": "Left ventricular pressure",
+      "unit": "mm Hg",
+      "ticks": [
+       0,
+       40,
+       80,
+       120
+      ]
+     },
+     "series": [
+      {
+       "id": "loop",
+       "cls": "accent",
+       "curve": "linear",
+       "pts": [
+        [
+         60,
+         9
+        ],
+        [
+         62,
+         4
+        ],
+        [
+         66,
+         3
+        ],
+        [
+         75,
+         3
+        ],
+        [
+         90,
+         4
+        ],
+        [
+         105,
+         5
+        ],
+        [
+         118,
+         7
+        ],
+        [
+         126,
+         9
+        ],
+        [
+         130,
+         10
+        ],
+        [
+         130,
+         40
+        ],
+        [
+         130,
+         81
+        ],
+        [
+         126,
+         95
+        ],
+        [
+         118,
+         108
+        ],
+        [
+         108,
+         117
+        ],
+        [
+         96,
+         121
+        ],
+        [
+         84,
+         120
+        ],
+        [
+         74,
+         114
+        ],
+        [
+         66,
+         105
+        ],
+        [
+         61,
+         97
+        ],
+        [
+         60,
+         94
+        ],
+        [
+         60,
+         50
+        ],
+        [
+         60,
+         9
+        ]
+       ],
+       "label": "normal beat",
+       "labelAt": [
+        95,
+        60
+       ],
+       "anchor": "middle"
+      }
+     ],
+     "notes": [
+      {
+       "x": 132,
+       "y": 5,
+       "text": "mitral closes",
+       "anchor": "start"
+      },
+      {
+       "x": 132,
+       "y": 78,
+       "text": "aortic opens",
+       "anchor": "start"
+      },
+      {
+       "x": 58,
+       "y": 99,
+       "text": "aortic closes",
+       "anchor": "end"
+      },
+      {
+       "x": 58,
+       "y": 14,
+       "text": "mitral opens",
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "regions": [],
+   "questions": [
+    {
+     "id": "sv",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the stroke volume from the width of the loop.",
+     "answer": 70,
+     "tol": 6,
+     "unit": "mL",
+     "why": "The loop runs from 130 mL (end-diastolic volume) to 60 mL (end-systolic volume): 70 mL ejected each beat."
+    },
+    {
+     "id": "aortic-opens",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the ventricular pressure at which the aortic valve opens.",
+     "answer": 80,
+     "tol": 5,
+     "unit": "mm Hg",
+     "show": {
+      "x": 130,
+      "y": 81
+     },
+     "why": "About 80 mm Hg, the top of the right edge. The valve opens when ventricular pressure just exceeds the pressure in the aorta."
+    },
+    {
+     "id": "ivr-side",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Which part of the loop is isovolumetric relaxation?",
+     "options": [
+      "The vertical line at about 60 mL, where pressure falls",
+      "The vertical line at about 130 mL, where pressure rises",
+      "The curved top",
+      "The nearly flat bottom"
+     ],
+     "correct": 0,
+     "highlight": {
+      "path": [
+       [
+        60,
+        94
+       ],
+       [
+        60,
+        50
+       ],
+       [
+        60,
+        9
+       ]
+      ],
+      "label": "isovolumetric relaxation"
+     },
+     "why": {
+      "correct": "After the aortic valve closes, the ventricle relaxes with both valves shut, so pressure falls at a fixed volume, the end-systolic volume.",
+      "options": [
+       "Right: pressure falls while volume stays at about 60 mL.",
+       "That rising vertical line is isovolumetric contraction.",
+       "The curved top is ejection: volume falls as blood leaves.",
+       "The bottom is filling: volume rises at low pressure."
+      ]
+     }
+    },
+    {
+     "id": "more-preload",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "topic": "cardiac-output",
+     "core": [
+      "gradients",
+      "homeostasis"
+     ],
+     "q": "More blood returns to the heart, so preload rises, while contractility and afterload stay the same. How does the loop change?",
+     "options": [
+      "It widens to the right: end-diastolic volume and stroke volume both rise",
+      "It gets taller: the aortic valve opens at a higher pressure",
+      "It narrows from the left: end-systolic volume rises",
+      "It does not change"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "preload",
+        "cls": "hi",
+        "dash": true,
+        "curve": "linear",
+        "pts": [
+         [
+          66,
+          9
+         ],
+         [
+          68,
+          4
+         ],
+         [
+          75,
+          3
+         ],
+         [
+          95,
+          4
+         ],
+         [
+          115,
+          5
+         ],
+         [
+          135,
+          8
+         ],
+         [
+          146,
+          11
+         ],
+         [
+          150,
+          12
+         ],
+         [
+          150,
+          45
+         ],
+         [
+          150,
+          82
+         ],
+         [
+          146,
+          97
+         ],
+         [
+          138,
+          111
+         ],
+         [
+          126,
+          120
+         ],
+         [
+          112,
+          124
+         ],
+         [
+          98,
+          122
+         ],
+         [
+          86,
+          116
+         ],
+         [
+          76,
+          107
+         ],
+         [
+          68,
+          99
+         ],
+         [
+          66,
+          96
+         ],
+         [
+          66,
+          50
+         ],
+         [
+          66,
+          9
+         ]
+        ],
+        "label": "more preload",
+        "labelAt": [
+         150,
+         132
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "More filling moves the bottom-right corner to a larger volume. By the Frank–Starling mechanism the stretched muscle contracts harder and ejects to about the same end-systolic volume, so the loop is wider: here stroke volume rises from 70 to about 84 mL.",
+      "options": [
+       "Right: a wider loop means a bigger stroke volume.",
+       "A taller loop is what a higher afterload does.",
+       "A higher end-systolic volume follows a higher afterload or weaker contraction, not more filling.",
+       "Preload sets end-diastolic volume, which is one side of the loop."
+      ]
+     }
+    },
+    {
+     "id": "more-afterload",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "topic": "cardiac-output",
+     "core": [
+      "gradients",
+      "homeostasis"
+     ],
+     "q": "Aortic pressure is higher, so afterload rises, while preload and contractility stay the same. How does the loop change?",
+     "options": [
+      "It gets taller and narrower: the aortic valve opens later, at a higher pressure, and less blood is ejected",
+      "It widens: stroke volume rises",
+      "It moves left as a whole, keeping its width",
+      "It does not change"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "afterload",
+        "cls": "hi",
+        "dash": true,
+        "curve": "linear",
+        "pts": [
+         [
+          74,
+          9
+         ],
+         [
+          76,
+          5
+         ],
+         [
+          85,
+          4
+         ],
+         [
+          100,
+          4
+         ],
+         [
+          115,
+          6
+         ],
+         [
+          126,
+          9
+         ],
+         [
+          130,
+          10
+         ],
+         [
+          130,
+          50
+         ],
+         [
+          130,
+          100
+         ],
+         [
+          126,
+          112
+         ],
+         [
+          118,
+          124
+         ],
+         [
+          106,
+          132
+         ],
+         [
+          94,
+          133
+         ],
+         [
+          84,
+          128
+         ],
+         [
+          78,
+          120
+         ],
+         [
+          75,
+          114
+         ],
+         [
+          74,
+          112
+         ],
+         [
+          74,
+          60
+         ],
+         [
+          74,
+          9
+         ]
+        ],
+        "label": "more afterload",
+        "labelAt": [
+         102,
+         138
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The ventricle must build more pressure before the aortic valve opens, and with the same contractility it cannot squeeze as far, so ejection stops at a larger end-systolic volume. Here stroke volume falls from 70 to about 56 mL.",
+      "options": [
+       "Right: taller and narrower.",
+       "More resistance to ejection means less blood ejected, not more.",
+       "End-diastolic volume, the right side, has not changed; only end-systolic volume moves.",
+       "Afterload is the pressure the ventricle ejects against, so the ejection phase changes."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "frank-starling",
+   "title": "The Frank–Starling curve",
+   "topic": "cardiac-output",
+   "core": [
+    "homeostasis"
+   ],
+   "intro": "How the stroke volume of a healthy left ventricle depends on how full it is before it contracts, with contractility held constant.",
+   "alt": "Stroke volume in milliliters plotted against left ventricular end-diastolic volume. The curve rises steeply from about 10 milliliters at 40 milliliters of filling, passes 70 at 130, and levels off near 95 above 200. A marked point shows rest at 130 and 70.",
+   "x": {
+    "min": 0,
+    "max": 250,
+    "label": "End-diastolic volume",
+    "unit": "mL",
+    "ticks": [
+     0,
+     50,
+     100,
+     150,
+     200,
+     250
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 140,
+      "label": "Stroke volume",
+      "unit": "mL",
+      "ticks": [
+       0,
+       40,
+       80,
+       120
+      ]
+     },
+     "series": [
+      {
+       "id": "normal",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         40,
+         10
+        ],
+        [
+         60,
+         22
+        ],
+        [
+         80,
+         38
+        ],
+        [
+         100,
+         54
+        ],
+        [
+         120,
+         66
+        ],
+        [
+         130,
+         70
+        ],
+        [
+         150,
+         78
+        ],
+        [
+         175,
+         86
+        ],
+        [
+         200,
+         91
+        ],
+        [
+         225,
+         94
+        ],
+        [
+         250,
+         95
+        ]
+       ],
+       "label": "normal contractility",
+       "labelAt": [
+        248,
+        84
+       ],
+       "anchor": "end"
+      }
+     ],
+     "marks": [
+      {
+       "x": 130,
+       "y": 70,
+       "label": "at rest"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "plateau",
+     "x0": 200,
+     "x1": 250,
+     "label": "curve flattens"
+    },
+    {
+     "id": "steep",
+     "x0": 60,
+     "x1": 120,
+     "label": "steep part"
+    }
+   ],
+   "questions": [
+    {
+     "id": "sv-rest",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the stroke volume at an end-diastolic volume of 130 mL.",
+     "answer": 70,
+     "tol": 5,
+     "unit": "mL",
+     "show": {
+      "x": 130,
+      "y": 70
+     },
+     "why": "About 70 mL, a typical resting stroke volume."
+    },
+    {
+     "id": "sv-175",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Venous return rises, and end-diastolic volume goes from 130 to 175 mL. Read the new stroke volume.",
+     "answer": 86,
+     "tol": 5,
+     "unit": "mL",
+     "show": {
+      "x": 175,
+      "y": 86
+     },
+     "why": "About 86 mL. More stretch gave a stronger contraction, with no change in contractility: that is the Frank–Starling mechanism."
+    },
+    {
+     "id": "flat-part",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Over which range does extra filling add the least stroke volume?",
+     "options": [
+      "Above about 200 mL",
+      "Between 60 and 120 mL",
+      "Below 60 mL"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "plateau"
+     },
+     "why": {
+      "correct": "The curve flattens at high volumes: the muscle fibers are near their best length, and the stiff pericardium limits further stretch, so more filling adds little.",
+      "options": [
+       "Right: the flat part of the curve.",
+       "This is the steep part: each extra milliliter of filling adds the most stroke volume here.",
+       "The curve is rising here too; filling still adds stroke volume."
+      ]
+     }
+    },
+    {
+     "id": "sympathetic",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Sympathetic nerves release norepinephrine onto the ventricles. How does the curve shift?",
+     "options": [
+      "Up: more stroke volume at every end-diastolic volume",
+      "Along the same curve to the right",
+      "Down: less stroke volume at every end-diastolic volume",
+      "No change: only filling sets stroke volume"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "symp",
+        "cls": "symp",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          40,
+          16
+         ],
+         [
+          60,
+          34
+         ],
+         [
+          80,
+          55
+         ],
+         [
+          100,
+          74
+         ],
+         [
+          120,
+          88
+         ],
+         [
+          130,
+          94
+         ],
+         [
+          150,
+          103
+         ],
+         [
+          175,
+          111
+         ],
+         [
+          200,
+          116
+         ],
+         [
+          225,
+          118
+         ],
+         [
+          250,
+          119
+         ]
+        ],
+        "label": "sympathetic stimulation",
+        "labelAt": [
+         248,
+         126
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Norepinephrine raises contractility: more calcium enters each cell and more is released from the sarcoplasmic reticulum, so the muscle contracts harder at any stretch. A change in contractility moves you to a new curve; a change in filling moves you along the same one.",
+      "options": [
+       "Right: higher contractility lifts the whole curve.",
+       "Moving along the curve is what a change in filling does. Norepinephrine changes the curve itself.",
+       "Lower contractility lowers the curve; norepinephrine raises it.",
+       "Filling moves you along a curve, but contractility decides which curve you are on."
+      ]
+     }
+    },
+    {
+     "id": "weak-muscle",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A heart attack scars part of the left ventricle, and its contractility falls. How does the curve shift?",
+     "options": [
+      "Down and flatter: less stroke volume at every end-diastolic volume, and extra filling helps less",
+      "Up, because the remaining muscle is stretched more",
+      "No change: the curve depends only on filling",
+      "Left, so the same stroke volume needs less filling"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "low",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          40,
+          6
+         ],
+         [
+          60,
+          12
+         ],
+         [
+          80,
+          20
+         ],
+         [
+          100,
+          27
+         ],
+         [
+          130,
+          36
+         ],
+         [
+          150,
+          40
+         ],
+         [
+          175,
+          45
+         ],
+         [
+          200,
+          48
+         ],
+         [
+          225,
+          50
+         ],
+         [
+          250,
+          51
+         ]
+        ],
+        "label": "reduced contractility",
+        "labelAt": [
+         248,
+         44
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Scar tissue does not contract, so the ventricle generates less force at every stretch. To eject even a modest stroke volume it must fill to a much larger volume, which raises the pressure in the atrium and in the veins behind it.",
+      "options": [
+       "Right: a lower, flatter curve.",
+       "Stretch cannot make up for lost muscle; the whole curve drops.",
+       "Contractility sets which curve the heart is on; losing muscle lowers it.",
+       "Shifting the curve left would mean a stronger heart. Losing muscle does the opposite."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "pressure-profile",
+   "title": "Pressure along the vascular tree",
+   "topic": "blood-pressure-flow",
+   "core": [
+    "gradients"
+   ],
+   "intro": "Blood pressure at each level of the systemic circuit, from the aorta back to the venae cavae, in a person at rest lying down.",
+   "alt": "Blood pressure from the aorta to the venae cavae. In the aorta and large arteries the pressure swings between 80 and 120 millimeters of mercury with each beat, around a mean of about 93. Across the arterioles it falls steeply to about 35 and the swings die out. It falls to about 15 across the capillaries, then slowly to near 2 in the venae cavae.",
+   "x": {
+    "min": 0,
+    "max": 6,
+    "label": "Vessel",
+    "cats": [
+     "Aorta",
+     "Large arteries",
+     "Arterioles",
+     "Capillaries",
+     "Venules",
+     "Veins",
+     "Venae cavae"
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 130,
+      "label": "Blood pressure",
+      "unit": "mm Hg",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80,
+       100,
+       120
+      ]
+     },
+     "series": [
+      {
+       "id": "pulse",
+       "cls": "o2",
+       "curve": "linear",
+       "pts": [
+        [
+         0,
+         80
+        ],
+        [
+         0.1,
+         80
+        ],
+        [
+         0.2,
+         120
+        ],
+        [
+         0.3,
+         80
+        ],
+        [
+         0.4,
+         120
+        ],
+        [
+         0.5,
+         80
+        ],
+        [
+         0.6,
+         120
+        ],
+        [
+         0.7,
+         80
+        ],
+        [
+         0.8,
+         120
+        ],
+        [
+         0.9,
+         80
+        ],
+        [
+         1.0,
+         120
+        ],
+        [
+         1.1,
+         80
+        ],
+        [
+         1.2,
+         120
+        ],
+        [
+         1.3,
+         80
+        ],
+        [
+         1.4,
+         120
+        ],
+        [
+         1.5,
+         80
+        ],
+        [
+         1.6,
+         120
+        ],
+        [
+         1.7,
+         116
+        ],
+        [
+         1.8,
+         82
+        ],
+        [
+         1.9,
+         104
+        ],
+        [
+         2.0,
+         70
+        ],
+        [
+         2.1,
+         84
+        ],
+        [
+         2.2,
+         56
+        ],
+        [
+         2.3,
+         62
+        ],
+        [
+         2.4,
+         45
+        ],
+        [
+         2.5,
+         46
+        ],
+        [
+         2.6,
+         39
+        ],
+        [
+         2.7,
+         38.5
+        ],
+        [
+         2.8,
+         35.5
+        ],
+        [
+         3.0,
+         35
+        ],
+        [
+         3.3,
+         28
+        ],
+        [
+         3.6,
+         21
+        ],
+        [
+         4.0,
+         15
+        ],
+        [
+         4.5,
+         12
+        ],
+        [
+         5.0,
+         10
+        ],
+        [
+         5.5,
+         6
+        ],
+        [
+         6.0,
+         2
+        ]
+       ],
+       "label": "pressure with each beat",
+       "labelAt": [
+        0.05,
+        127
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "map",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         93
+        ],
+        [
+         1.6,
+         92
+        ],
+        [
+         1.9,
+         85
+        ],
+        [
+         2.2,
+         68
+        ],
+        [
+         2.5,
+         46
+        ],
+        [
+         2.8,
+         36
+        ],
+        [
+         3.0,
+         35
+        ]
+       ],
+       "label": "mean arterial pressure",
+       "labelAt": [
+        2.35,
+        70
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "arterioles",
+     "x0": 1.6,
+     "x1": 2.8,
+     "label": "arterioles"
+    },
+    {
+     "id": "capillaries",
+     "x0": 2.8,
+     "x1": 4.0,
+     "label": "capillaries"
+    },
+    {
+     "id": "big-arteries",
+     "x0": 0,
+     "x1": 1.6,
+     "label": "aorta and large arteries"
+    },
+    {
+     "id": "veins",
+     "x0": 4.5,
+     "x1": 6,
+     "label": "veins"
+    }
+   ],
+   "questions": [
+    {
+     "id": "capillary-start",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the pressure as blood enters the capillaries.",
+     "answer": 35,
+     "tol": 4,
+     "unit": "mm Hg",
+     "show": {
+      "x": 3,
+      "y": 35
+     },
+     "why": "About 35 mm Hg. More than half of the mean arterial pressure has already been used up pushing blood through the arterioles."
+    },
+    {
+     "id": "map-aorta",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the mean arterial pressure in the aorta.",
+     "answer": 93,
+     "tol": 4,
+     "unit": "mm Hg",
+     "show": {
+      "x": 0.8,
+      "y": 93
+     },
+     "why": "About 93 mm Hg. It sits closer to the diastolic 80 than the systolic 120 because diastole lasts longer: 80 + (120 − 80) ÷ 3 ≈ 93."
+    },
+    {
+     "id": "steepest-drop",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Where along the circuit does pressure fall most steeply?",
+     "options": [
+      "Across the arterioles",
+      "Across the capillaries",
+      "Along the aorta and large arteries",
+      "Along the veins"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "arterioles"
+     },
+     "why": {
+      "correct": "Pressure falls most where resistance is greatest. Arterioles are narrow and wrapped in smooth muscle, so they are the main resistance vessels, and they also damp out the beat-to-beat swings.",
+      "options": [
+       "Right: the arterioles are where most of the pressure is spent.",
+       "Capillaries are narrower still, but there are so many in parallel that their total resistance is lower than that of the arterioles.",
+       "Large arteries are wide, so little pressure is lost along them.",
+       "Pressure is already low in the veins, and falls only a little more."
+      ]
+     }
+    },
+    {
+     "id": "arterioles-dilate",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The arterioles supplying one organ dilate. How does the pressure profile through that organ change?",
+     "options": [
+      "Less pressure is lost across the arterioles, so pressure in the capillaries downstream rises",
+      "More pressure is lost across the arterioles, so capillary pressure falls",
+      "Aortic pressure doubles",
+      "Nothing changes: arteriole size does not affect pressure"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "dilated",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          1.6,
+          92
+         ],
+         [
+          1.9,
+          89
+         ],
+         [
+          2.2,
+          80
+         ],
+         [
+          2.5,
+          64
+         ],
+         [
+          2.8,
+          52
+         ],
+         [
+          3.0,
+          49
+         ],
+         [
+          3.3,
+          40
+         ],
+         [
+          3.6,
+          30
+         ],
+         [
+          4.0,
+          20
+         ],
+         [
+          4.5,
+          14
+         ],
+         [
+          5.0,
+          11
+         ],
+         [
+          5.5,
+          6
+         ],
+         [
+          6.0,
+          2
+         ]
+        ],
+        "label": "arterioles dilated",
+        "labelAt": [
+         3.3,
+         52
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Wider arterioles have much lower resistance (it depends on radius to the fourth power), so less pressure is used up crossing them. More pressure reaches the capillaries and more blood flows through the organ.",
+      "options": [
+       "Right: lower resistance, smaller pressure drop, higher pressure downstream.",
+       "That is what constriction does: narrower arterioles use up more pressure.",
+       "One organ's arterioles barely change total resistance; the aorta's pressure stays about the same.",
+       "Radius is the most powerful control on resistance, and resistance sets how much pressure is lost."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "velocity-area",
+   "title": "Flow velocity vs cross-sectional area",
+   "topic": "blood-pressure-flow",
+   "core": [
+    "gradients"
+   ],
+   "intro": "The same volume of blood, about 83 mL each second at rest, passes through every level of the circuit. The top panel shows the total cross-sectional area of all the vessels at each level; the bottom shows how fast the blood moves there.",
+   "alt": "Two panels over the vessel types from aorta to venae cavae. Top: total cross-sectional area, tiny in the aorta (4 square centimeters), rising to a peak of about 2,500 in the capillaries and falling back to about 8 in the venae cavae. Bottom: mean velocity, highest in the aorta at about 21 centimeters per second, near zero in the capillaries, and rising to about 10 in the venae cavae: the mirror image of the area.",
+   "x": {
+    "min": 0,
+    "max": 6,
+    "label": "Vessel",
+    "cats": [
+     "Aorta",
+     "Large arteries",
+     "Arterioles",
+     "Capillaries",
+     "Venules",
+     "Veins",
+     "Venae cavae"
+    ]
+   },
+   "panels": [
+    {
+     "h": 1,
+     "y": {
+      "min": 0,
+      "max": 3000,
+      "label": "Total area",
+      "unit": "cm²",
+      "ticks": [
+       0,
+       1000,
+       2000,
+       3000
+      ]
+     },
+     "series": [
+      {
+       "id": "area",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         4
+        ],
+        [
+         1,
+         20
+        ],
+        [
+         2,
+         400
+        ],
+        [
+         3,
+         2500
+        ],
+        [
+         4,
+         800
+        ],
+        [
+         5,
+         80
+        ],
+        [
+         6,
+         8
+        ]
+       ],
+       "label": "total cross-sectional area",
+       "labelAt": [
+        3.15,
+        2650
+       ],
+       "anchor": "start"
+      }
+     ]
+    },
+    {
+     "h": 1,
+     "y": {
+      "min": 0,
+      "max": 45,
+      "label": "Mean velocity",
+      "unit": "cm/s",
+      "ticks": [
+       0,
+       10,
+       20,
+       30,
+       40
+      ]
+     },
+     "series": [
+      {
+       "id": "vel",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         21
+        ],
+        [
+         1,
+         4.2
+        ],
+        [
+         2,
+         0.21
+        ],
+        [
+         3,
+         0.033
+        ],
+        [
+         4,
+         0.1
+        ],
+        [
+         5,
+         1.0
+        ],
+        [
+         6,
+         10.4
+        ]
+       ],
+       "label": "velocity",
+       "labelAt": [
+        0.15,
+        24
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "caps",
+     "x0": 2.6,
+     "x1": 3.4,
+     "label": "capillaries"
+    },
+    {
+     "id": "aorta",
+     "x0": 0,
+     "x1": 0.4,
+     "label": "aorta"
+    }
+   ],
+   "questions": [
+    {
+     "id": "cap-area",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the total cross-sectional area of all the capillaries.",
+     "answer": 2500,
+     "tol": 300,
+     "unit": "cm²",
+     "show": {
+      "x": 3,
+      "y": 2500
+     },
+     "why": "About 2,500 cm², over 600 times the aorta's 4 cm². Each capillary is tiny, but there are billions of them side by side."
+    },
+    {
+     "id": "aorta-velocity",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the mean velocity of blood in the aorta.",
+     "answer": 21,
+     "tol": 3,
+     "unit": "cm/s",
+     "show": {
+      "x": 0,
+      "y": 21,
+      "panel": 1
+     },
+     "why": "About 21 cm/s. Velocity = flow ÷ area = 83 cm³/s ÷ 4 cm² ≈ 21 cm/s. (With each beat it surges much higher, then slows.)"
+    },
+    {
+     "id": "slowest",
+     "type": "phase",
+     "level": "apply",
+     "diff": 1,
+     "q": "Where does blood move most slowly?",
+     "options": [
+      "In the capillaries",
+      "In the aorta",
+      "In the venae cavae",
+      "In the large arteries"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "caps"
+     },
+     "why": {
+      "correct": "Velocity equals flow divided by total area. The capillaries have the largest total area, so blood crawls through them, at about 0.03 cm/s. That slow passage gives time for exchange.",
+      "options": [
+       "Right: the biggest total area gives the slowest velocity.",
+       "The aorta has the smallest area, so blood moves fastest there.",
+       "The venae cavae have a small total area, so blood speeds up again as it returns.",
+       "Large arteries have little total area compared with the capillaries, so blood moves quickly through them."
+      ]
+     }
+    },
+    {
+     "id": "double-flow",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "During exercise the heart pumps twice as much blood each minute, and the vessel areas stay the same. How does the velocity curve change?",
+     "options": [
+      "Velocity doubles at every level, and it is still lowest in the capillaries",
+      "Velocity rises only in the aorta",
+      "Velocity in the capillaries rises above the aorta's",
+      "It does not change"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "vel2",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          42
+         ],
+         [
+          1,
+          8.4
+         ],
+         [
+          2,
+          0.42
+         ],
+         [
+          3,
+          0.066
+         ],
+         [
+          4,
+          0.2
+         ],
+         [
+          5,
+          2.0
+         ],
+         [
+          6,
+          20.8
+         ]
+        ],
+        "label": "twice the flow",
+        "labelAt": [
+         0.15,
+         43
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The same flow passes every level, so doubling it doubles the velocity everywhere. The shape of the curve is set by the areas, which have not changed.",
+      "options": [
+       "Right: velocity = flow ÷ area, and only flow changed.",
+       "Every level carries the full flow in series, so every velocity rises.",
+       "The capillaries still have by far the largest total area, so they stay slowest.",
+       "More flow through the same area means faster blood."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "capillary-pressures",
+   "title": "Pressures along a capillary",
+   "topic": "capillary-exchange",
+   "core": [
+    "gradients",
+    "mass-balance"
+   ],
+   "intro": "A typical capillary in the skin of your hand. The lines show the pressure pushing fluid out and the oncotic pull holding it in, in both the classic textbook picture and the revised Starling principle.",
+   "alt": "Pressure in millimeters of mercury along a capillary from the arteriole end to the venule end. Capillary hydrostatic pressure falls in a straight line from 35 to 15. A flat dashed line at 25 is the plasma colloid osmotic pressure of the classic picture, crossing the hydrostatic line halfway. A third line, the effective inward pull across the glycocalyx, stays at 23 for the first half, then falls to 13, always just below the hydrostatic pressure.",
+   "x": {
+    "min": 0,
+    "max": 100,
+    "label": "Distance along the capillary",
+    "unit": "% of its length",
+    "ticks": [
+     0,
+     25,
+     50,
+     75,
+     100
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 40,
+      "label": "Pressure",
+      "unit": "mm Hg",
+      "ticks": [
+       0,
+       10,
+       20,
+       30,
+       40
+      ]
+     },
+     "series": [
+      {
+       "id": "chp",
+       "cls": "hi",
+       "pts": [
+        [
+         0,
+         35
+        ],
+        [
+         100,
+         15
+        ]
+       ],
+       "label": "capillary hydrostatic pressure",
+       "labelAt": [
+        3,
+        37.5
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "bcop",
+       "cls": "lo",
+       "dash": true,
+       "pts": [
+        [
+         0,
+         25
+        ],
+        [
+         100,
+         25
+        ]
+       ],
+       "label": "plasma oncotic pressure (classic picture)",
+       "labelAt": [
+        98,
+        27
+       ],
+       "anchor": "end"
+      },
+      {
+       "id": "effective",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         23
+        ],
+        [
+         50,
+         23
+        ],
+        [
+         100,
+         13
+        ]
+       ],
+       "label": "effective inward pull across the glycocalyx",
+       "labelAt": [
+        3,
+        19.5
+       ],
+       "anchor": "start"
+      }
+     ],
+     "notes": [
+      {
+       "x": 0,
+       "y": 2,
+       "text": "arteriole end",
+       "anchor": "start"
+      },
+      {
+       "x": 100,
+       "y": 2,
+       "text": "venule end",
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "first-half",
+     "x0": 0,
+     "x1": 50,
+     "label": "brisk filtration"
+    },
+    {
+     "id": "second-half",
+     "x0": 50,
+     "x1": 100,
+     "label": "slow filtration"
+    }
+   ],
+   "questions": [
+    {
+     "id": "chp-venule",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the capillary hydrostatic pressure at the venule end.",
+     "answer": 15,
+     "tol": 2,
+     "unit": "mm Hg",
+     "show": {
+      "x": 100,
+      "y": 15
+     },
+     "why": "About 15 mm Hg, down from 35 at the arteriole end: blood loses pressure as it flows against the capillary's own resistance."
+    },
+    {
+     "id": "net-arteriole",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At the arteriole end, work out the net pressure pushing fluid out: hydrostatic pressure minus the effective inward pull.",
+     "answer": 12,
+     "tol": 2,
+     "unit": "mm Hg",
+     "why": "35 − 23 = 12 mm Hg outward. The effective pull is nearly the full plasma oncotic pressure, because the fluid just beneath the glycocalyx is kept almost protein-free by the outward flow."
+    },
+    {
+     "id": "venule-half",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "In the revised Starling picture, what happens to fluid in the venule half of the capillary at steady state?",
+     "options": [
+      "It keeps filtering out, slowly",
+      "Most of it is reabsorbed into the blood",
+      "No fluid moves at all",
+      "It filters out faster than at the arteriole end"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "second-half"
+     },
+     "why": {
+      "correct": "The effective inward pull falls to stay just below hydrostatic pressure, so the net push stays slightly outward. If fluid began to flow in, protein would build up beneath the glycocalyx within minutes and stop it. For your exam: many courses still teach net reabsorption at the venule end, where the classic oncotic line lies above hydrostatic pressure.",
+      "options": [
+       "Right: filtration slows but continues to the venule end.",
+       "That is the classic picture, which exams may still expect. Measurements show reabsorption does not last at steady state in most tissues.",
+       "Hydrostatic pressure still exceeds the effective pull, so fluid does move, slowly.",
+       "The gap between the lines is smaller near the venule end, so filtration is slower there."
+      ]
+     }
+    },
+    {
+     "id": "low-albumin",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Liver disease lowers plasma albumin, and plasma oncotic pressure falls to about 15 mm Hg. How do the lines shift, and what happens to filtration?",
+     "options": [
+      "The inward pull drops, the gap below hydrostatic pressure widens, and filtration rises: fluid can collect as edema",
+      "Hydrostatic pressure falls to match, so nothing changes",
+      "The inward pull rises, so fluid is reabsorbed",
+      "No change, because albumin never crosses the wall anyway"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "low",
+        "cls": "accent",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          13
+         ],
+         [
+          100,
+          13
+         ]
+        ],
+        "label": "effective pull, low albumin",
+        "labelAt": [
+         98,
+         10
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Albumin supplies most of plasma's oncotic pressure. With less of it, the pull holding fluid in falls all along the capillary, net filtration rises, and when it outpaces the drainage route, fluid collects between the cells.",
+      "options": [
+       "Right: a lower oncotic line means more filtration.",
+       "Hydrostatic pressure comes from the heart and arterioles, not from albumin, so it does not follow.",
+       "Less albumin means less oncotic pull, not more.",
+       "Albumin matters precisely because it stays in the plasma: that is what creates the pull."
+      ]
+     }
+    },
+    {
+     "id": "after-bleeding",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "After sudden blood loss, the arterioles constrict and capillary hydrostatic pressure drops to 20 mm Hg at the arteriole end. What happens to fluid at first?",
+     "options": [
+      "For a while, fluid moves from the tissues into the blood, then the inflow fades",
+      "Filtration speeds up",
+      "Fluid is reabsorbed steadily for days",
+      "Nothing changes"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "chp-low",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          20
+         ],
+         [
+          100,
+          10
+         ]
+        ],
+        "label": "hydrostatic pressure after bleeding",
+        "labelAt": [
+         98,
+         6.5
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Hydrostatic pressure now lies below the effective inward pull along the whole capillary, so fluid moves into the blood and helps refill it. Within minutes to hours, protein builds up beneath the glycocalyx and the inflow fades. This is one of the reasons blood volume partly recovers after bleeding.",
+      "options": [
+       "Right: a real but temporary reabsorption.",
+       "Lower hydrostatic pressure means less push outward, not more.",
+       "Reabsorption shuts itself off as protein collects beneath the glycocalyx.",
+       "The pressure balance has reversed, so fluid does move."
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

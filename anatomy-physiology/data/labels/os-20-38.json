@@ -1,0 +1,197 @@
+{
+  "figure": "os-20-38",
+  "labels": [
+    {
+      "id": "subclavian",
+      "name": "Subclavian",
+      "accept": [
+        "subclavian",
+        "subclavian vein"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "axillary",
+      "name": "Axillary",
+      "accept": [
+        "axillary",
+        "axillary vein"
+      ],
+      "box": [
+        360,
+        80,
+        106,
+        35
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "cephalic",
+      "name": "Cephalic",
+      "accept": [
+        "cephalic",
+        "cephalic vein"
+      ],
+      "box": [
+        361,
+        144,
+        125,
+        35
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "subscapular",
+      "name": "Subscapular",
+      "accept": [
+        "subscapular",
+        "subscapular vein"
+      ],
+      "box": [
+        361,
+        284,
+        178,
+        34
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "brachial",
+      "name": "Brachial",
+      "accept": [
+        "brachial",
+        "brachial vein",
+        "brachial veins"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "basilic",
+      "name": "Basilic",
+      "accept": [
+        "basilic",
+        "basilic vein"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "median-cubital",
+      "name": "Median cubital",
+      "accept": [
+        "median cubital",
+        "median cubital vein"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "cephalic-forearm",
+      "name": "Cephalic",
+      "accept": [
+        "cephalic",
+        "cephalic vein"
+      ],
+      "box": [
+        361,
+        653,
+        125,
+        35
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "radial",
+      "name": "Radial",
+      "accept": [
+        "radial",
+        "radial vein",
+        "radial veins"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "median-antebrachial",
+      "name": "Median antebrachial",
+      "accept": [
+        "median antebrachial",
+        "median antebrachial vein",
+        "median vein of the forearm"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "basilic-forearm",
+      "name": "Basilic",
+      "accept": [
+        "basilic",
+        "basilic vein"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "ulnar",
+      "name": "Ulnar",
+      "accept": [
+        "ulnar",
+        "ulnar vein",
+        "ulnar veins"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "palmar-venous-arches",
+      "name": "Palmar venous arches",
+      "accept": [
+        "palmar venous arches",
+        "palmar venous arch",
+        "palmar arches"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "limb-veins"
+    },
+    {
+      "id": "digital",
+      "name": "Digital",
+      "accept": [
+        "digital",
+        "digital veins",
+        "digital vein"
+      ],
+      "box": [
+        778,
+        1163,
+        88,
+        35
+      ],
+      "concept": "limb-veins"
+    }
+  ]
+}

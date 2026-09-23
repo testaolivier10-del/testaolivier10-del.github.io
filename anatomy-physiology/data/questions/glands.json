@@ -67,7 +67,7 @@
       "The tumor destroyed the hormone-making cells first",
       "Enzymes and hormones share the same duct",
       "The tumor made hormones that replaced lost ones",
-      "Enzymes need the duct; hormones go into blood"
+      "Enzymes need the duct; hormones go straight into the blood"
     ],
     "correct": 3,
     "why": {
@@ -259,7 +259,7 @@
       "correct": "An endocrine gland has no duct. Its hormone first enters the interstitial fluid around the cell, then diffuses into a nearby capillary.",
       "options": [
         "Correct. Between leaving the cell and entering a capillary, the hormone crosses the interstitial fluid by diffusion.",
-        "The thyroid gland is endocrine, so it has no duct. Ducts belong to exocrine glands.",
+        "The pituitary gland is endocrine, so it has no duct. Ducts belong to exocrine glands.",
         "Release onto a surface is what an exocrine gland does. An endocrine product heads for the blood.",
         "A cell responding to its own product is autocrine signaling. That would not lead on to the hormone entering a capillary and traveling in the blood."
       ]
@@ -307,7 +307,7 @@
     "options": [
       "Whether the product is a protein",
       "Whether the cells store their product in secretory vesicles",
-      "Whether the product leaves by a duct or into the blood",
+      "Whether the product leaves through a duct or passes into the blood",
       "Whether the gland is larger than a single cell"
     ],
     "correct": 2,
@@ -361,7 +361,7 @@
       "A goblet cell releasing mucus",
       "The oil glands of the skin releasing their oily product",
       "The thyroid gland releasing its hormone",
-      "Milk-making cells of the breast releasing fat droplets"
+      "Milk-making cells of the breast releasing droplets of milk fat"
     ],
     "correct": 3,
     "why": {
@@ -384,7 +384,7 @@
     ],
     "q": "What happens to a merocrine gland cell after it releases its product?",
     "options": [
-      "It stays whole and goes on making more product",
+      "It stays whole and goes on making and releasing more product",
       "Its apical part pinches off with the product",
       "It breaks apart and becomes part of the secretion",
       "It divides by mitosis to replace itself"

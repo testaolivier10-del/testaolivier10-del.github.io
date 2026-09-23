@@ -1,0 +1,87 @@
+{
+  "figure": "os-3-30",
+  "labels": [
+    {
+      "id": "g2-phase",
+      "name": "G2",
+      "accept": [
+        "g2",
+        "g2 phase",
+        "gap 2"
+      ],
+      "box": [
+        188,
+        14,
+        32,
+        28
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "m-phase",
+      "name": "M",
+      "accept": [
+        "m",
+        "m phase",
+        "mitosis",
+        "mitotic phase"
+      ],
+      "box": [
+        296,
+        38,
+        24,
+        26
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "g0-phase",
+      "name": "G0 (cells not actively dividing)",
+      "accept": [
+        "g0 (cells not actively dividing)",
+        "g0",
+        "g0 phase",
+        "quiescent"
+      ],
+      "lines": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "g1-phase",
+      "name": "G1",
+      "accept": [
+        "g1",
+        "g1 phase",
+        "gap 1"
+      ],
+      "box": [
+        391,
+        226,
+        28,
+        30
+      ],
+      "concept": "cell-cycle"
+    },
+    {
+      "id": "s-phase",
+      "name": "S",
+      "accept": [
+        "s",
+        "s phase",
+        "synthesis phase"
+      ],
+      "box": [
+        15,
+        230,
+        26,
+        28
+      ],
+      "concept": "cell-cycle"
+    }
+  ]
+}

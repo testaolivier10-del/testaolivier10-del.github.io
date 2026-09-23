@@ -1,0 +1,235 @@
+{
+  "figure": "os-20-43",
+  "labels": [
+    {
+      "id": "hepatic-portal",
+      "name": "Hepatic portal",
+      "accept": [
+        "hepatic portal",
+        "hepatic portal vein",
+        "portal vein"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "cystic",
+      "name": "Cystic",
+      "accept": [
+        "cystic",
+        "cystic vein"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gall bladder",
+      "accept": [
+        "gall bladder",
+        "gallbladder"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "right-gastric",
+      "name": "Right gastric",
+      "accept": [
+        "right gastric",
+        "right gastric vein",
+        "gastric vein"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "splenic",
+      "name": "Splenic",
+      "accept": [
+        "splenic",
+        "splenic vein"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "superior-mesenteric",
+      "name": "Superior mesenteric",
+      "accept": [
+        "superior mesenteric",
+        "superior mesenteric vein",
+        "smv"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "gastroepiploic",
+      "name": "Gastroepiploic",
+      "accept": [
+        "gastroepiploic",
+        "gastroepiploic vein",
+        "gastro-omental vein",
+        "left gastroepiploic vein"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "gastro-omental",
+      "name": "Gastro-omental",
+      "accept": [
+        "gastro-omental",
+        "gastro-omental vein",
+        "gastroomental",
+        "gastroepiploic vein",
+        "right gastro-omental vein"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "pancreatic",
+      "name": "Pancreatic",
+      "accept": [
+        "pancreatic",
+        "pancreatic vein",
+        "pancreatic veins"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "pancreaticoduodenal",
+      "name": "Pancreaticoduodenal",
+      "accept": [
+        "pancreaticoduodenal",
+        "pancreaticoduodenal vein"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "middle-colic",
+      "name": "Middle colic",
+      "accept": [
+        "middle colic",
+        "middle colic vein"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "inferior-mesenteric",
+      "name": "Inferior mesenteric",
+      "accept": [
+        "inferior mesenteric",
+        "inferior mesenteric vein",
+        "imv"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "right-colic",
+      "name": "Right colic",
+      "accept": [
+        "right colic",
+        "right colic vein"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "left-colic",
+      "name": "Left colic",
+      "accept": [
+        "left colic",
+        "left colic vein"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "ileocolic",
+      "name": "Ileocolic",
+      "accept": [
+        "ileocolic",
+        "ileocolic vein"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "sigmoid",
+      "name": "Sigmoid",
+      "accept": [
+        "sigmoid",
+        "sigmoid vein",
+        "sigmoid veins"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "intestinal",
+      "name": "Intestinal",
+      "accept": [
+        "intestinal",
+        "intestinal veins",
+        "intestinal vein",
+        "jejunal and ileal veins"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "hepatic-portal"
+    },
+    {
+      "id": "superior-rectal",
+      "name": "Superior rectal",
+      "accept": [
+        "superior rectal",
+        "superior rectal vein"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "hepatic-portal"
+    }
+  ]
+}

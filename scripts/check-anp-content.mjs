@@ -169,6 +169,10 @@ export function checkTopic(id, glossary, figures) {
     const declared = new Set((topic.previews || []).map(p => p.concept));
     for (const m of notes.matchAll(/class="anp-preview"[^>]*data-concept="([^"]+)"/g))
       if (!declared.has(m[1])) err(`notes: preview box for "${m[1]}" is not a declared preview of this topic`);
+    // Every "Figure N" reference points at a figure that is on the page.
+    const ids = new Set([...notes.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
+    for (const m of notes.matchAll(/<a class="figref" href="#([^"]+)"/g))
+      if (!ids.has(m[1])) err(`notes: figure reference #${m[1]} points at no figure on the page`);
     for (const m of notes.matchAll(/<figure[^>]*data-fig="([^"]+)"/g))
       if (figures && !figures[m[1]]) err(`notes: unknown figure "${m[1]}"`);
   }
