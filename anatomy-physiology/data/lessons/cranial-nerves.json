@@ -1,0 +1,41 @@
+{
+  "topic": "cranial-nerves",
+  "hook": "<p>Ms. Okafor, 35, notices at breakfast that coffee dribbles from the left corner of her mouth. In the mirror, the left side of her face hangs slack: she cannot close her left eye, wrinkle the left half of her forehead or smile on that side. Yet when her husband touches her left cheek, she feels it perfectly. One cranial nerve moves the face and a different one feels it, and knowing which is which tells you exactly what has failed.</p>",
+  "prereq": [
+    {
+      "q": "Which three parts make up the brainstem, from top to bottom?",
+      "options": ["Thalamus, hypothalamus, pons", "Midbrain, pons, medulla oblongata", "Cerebellum, pons, medulla oblongata"],
+      "correct": 1,
+      "why": "The brainstem is the midbrain, pons and medulla oblongata. The thalamus and hypothalamus belong to the diencephalon, and the cerebellum sits behind the brainstem but is not part of it.",
+      "review": "brain-regions"
+    },
+    {
+      "q": "What does the parasympathetic division of the autonomic nervous system generally do?",
+      "options": ["Prepares the body for fight or flight", "Controls skeletal muscles", "Supports rest and digest activities, such as slowing the heart"],
+      "correct": 2,
+      "why": "The parasympathetic division dominates at rest: it slows the heart and promotes digestion. Fight or flight is the sympathetic division, and skeletal muscle is controlled by the somatic nervous system.",
+      "review": "nervous-system-organization"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-13-23",
+    "caption": "The cranial nerves on the underside of the brain. Hide the labels and name each nerve with its number, from I at the front to XII at the back."
+  },
+  "chain": [
+    { "cause": "A wisp of cotton touches the clear surface at the front of your left eye.", "effect": "Sensory endings there fire, and the signal travels along the ophthalmic division (V1) of the left trigeminal nerve." },
+    { "cause": "The trigeminal axons enter the pons and end on neurons in the brainstem's trigeminal nuclei.", "effect": "Those neurons pass the signal to the motor nuclei of the facial nerve on both sides of the brainstem." },
+    { "cause": "Motor neurons in both facial nerve nuclei fire.", "effect": "Their axons carry action potentials out along the left and right facial nerves to the orbicularis oculi muscles." },
+    { "cause": "Both orbicularis oculi muscles contract.", "effect": "Both eyes blink. Touch in on one nerve (V), movement out on another (VII): a missing blink on one side tells you which nerve failed." }
+  ],
+  "misconception": {
+    "wrong": "The facial nerve carries the feeling from the face, so a person with a paralyzed half face will also have a numb half face.",
+    "right": "Feeling from the face travels in the trigeminal nerve (V). The facial nerve (VII) moves the muscles of facial expression and carries taste from the front of the tongue, but it carries almost no skin sensation. In Bell's palsy, a facial nerve problem, half the face cannot move, yet touch on that side feels normal."
+  },
+  "check": ["anp-cranial-nerves-3", "anp-cranial-nerves-7", "anp-cranial-nerves-10", "anp-cranial-nerves-12", "anp-cranial-nerves-15", "anp-cranial-nerves-18", "anp-cranial-nerves-20"],
+  "summary": "<p>Twelve pairs of cranial nerves attach to the brain, numbered from front to back: I olfactory (smell), II optic (vision), III oculomotor (most eye movements, raising the upper lid, narrowing the center of the eye), IV trochlear (one eye muscle, down and in), V trigeminal (feeling from the face; chewing), VI abducens (turning the eye out), VII facial (facial expression, taste from the front of the tongue, tears and saliva), VIII vestibulocochlear (hearing and balance), IX glossopharyngeal (taste and touch from the back of the tongue and throat), X vagus (throat and voice box; parasympathetic to the heart, lungs and gut; sensory from those organs), XI accessory (sternocleidomastoid and trapezius) and XII hypoglossal (tongue). I, II and VIII are sensory; III, IV, VI, XI and XII are motor; V, VII, IX and X are both. III, VII, IX and X carry parasympathetic axons. Each has a quick bedside test, and a pattern of failed tests points to the damaged nerve.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-15", "label": "NREMT: Secondary assessment" },
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

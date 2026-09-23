@@ -248,7 +248,7 @@
       "Withhold oxygen, because it will remove his hypoxic drive and stop his breathing",
       "Give only room air until his PCO2 is measured",
       "Give maximal oxygen and aim for 100% saturation",
-      "Give oxygen, adjusting it to a target saturation of about 88–92% and watching his breathing"
+      "Give oxygen to a target of about 88–92% and watch his breathing"
     ],
     "correct": 3,
     "why": {
@@ -271,7 +271,7 @@
     ],
     "q": "After years of severe COPD, a patient develops swollen ankles and an enlarged right ventricle. What links the lung disease to the heart?",
     "options": [
-      "Widespread hypoxic pulmonary vasoconstriction raises pulmonary artery pressure and the right ventricle's afterload",
+      "Chronic hypoxic vasoconstriction raises the right ventricle's afterload",
       "Low oxygen weakens the left ventricle, which backs blood into the lungs",
       "Mucus from the lungs blocks the coronary arteries",
       "Polycythemia makes the right ventricle fill with too little blood"
@@ -431,7 +431,7 @@
     ],
     "q": "Mr. Osei has pneumonia filling his right lower lobe. On high-flow oxygen, his SpO2 rises only from 86% to 90%. Why does oxygen help so little?",
     "options": [
-      "Blood passing the filled alveoli never meets the extra oxygen, and blood passing healthy alveoli was already nearly saturated",
+      "Blood past the filled alveoli never meets the extra oxygen",
       "Bacteria in the lung consume the extra oxygen",
       "High-flow oxygen blocks the respiratory centers",
       "His hemoglobin has lost its ability to bind oxygen"

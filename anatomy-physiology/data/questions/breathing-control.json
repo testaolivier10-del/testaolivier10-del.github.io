@@ -144,7 +144,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "Mr. Hale has severe anemia: his blood carries 40% less oxygen than normal. His arterial PO2 is 95 mmHg. Why is his breathing rate close to normal at rest?",
+    "q": "Mr. Hale has severe anemia: his blood carries 40% less oxygen than normal. His arterial PO2 is 95 mm Hg. Why is his breathing rate close to normal at rest?",
     "options": [
       "Anemia damages the carotid bodies so they can no longer fire",
       "The carotid bodies sense arterial PO2, which is normal",
@@ -275,7 +275,7 @@
       {
         "name": "Arterial PCO2",
         "answer": "none",
-        "why": "Ventilation rises in step with carbon dioxide production, so arterial PCO2 stays near 40 mmHg in moderate exercise."
+        "why": "Ventilation rises in step with carbon dioxide production, so arterial PCO2 stays near 40 mm Hg in moderate exercise."
       },
       {
         "name": "PCO2 of venous blood leaving the working muscles",
@@ -302,8 +302,8 @@
     ],
     "q": "Select every change that directly stimulates the carotid bodies.",
     "options": [
-      "Arterial PO2 falling to 50 mmHg",
-      "Arterial PCO2 rising to 50 mmHg",
+      "Arterial PO2 falling to 50 mm Hg",
+      "Arterial PCO2 rising to 50 mm Hg",
       "Arterial pH falling to 7.25",
       "Anemia with a normal arterial PO2",
       "A rise in hydrogen ions in the cerebrospinal fluid only",
@@ -317,7 +317,7 @@
     "why": {
       "correct": "The carotid bodies respond to low arterial PO2, high arterial PCO2 and low arterial pH. They sense PO2, not oxygen content, so anemia with a normal PO2 does little. Cerebrospinal fluid is sensed by the central chemoreceptors, and lung inflation by lung stretch receptors.",
       "options": [
-        "Correct. A PO2 below about 60 mmHg stimulates them strongly.",
+        "Correct. A PO2 below about 60 mm Hg stimulates them strongly.",
         "Correct. They respond quickly to a rise in PCO2.",
         "Correct. They respond to acid in arterial blood from any cause.",
         "In anemia, arterial PO2 is normal, so the carotid bodies are not strongly stimulated.",
@@ -334,20 +334,20 @@
     "core": [
       "homeostasis"
     ],
-    "q": "A patient's alveolar ventilation falls to half its normal value, and his carbon dioxide production does not change. His arterial PCO2 was 40 mmHg. What will it settle at?",
+    "q": "A patient's alveolar ventilation falls to half its normal value, and his carbon dioxide production does not change. His arterial PCO2 was 40 mm Hg. What will it settle at?",
     "options": [
-      "20 mmHg",
-      "40 mmHg (unchanged)",
-      "60 mmHg",
-      "80 mmHg"
+      "20 mm Hg",
+      "40 mm Hg (unchanged)",
+      "60 mm Hg",
+      "80 mm Hg"
     ],
     "correct": 3,
     "why": {
-      "correct": "At constant carbon dioxide production, arterial PCO2 is inversely proportional to alveolar ventilation. Half the ventilation doubles the PCO2: 40 × 2 = 80 mmHg.",
+      "correct": "At constant carbon dioxide production, arterial PCO2 is inversely proportional to alveolar ventilation. Half the ventilation doubles the PCO2: 40 × 2 = 80 mm Hg.",
       "options": [
-        "20 mmHg is what happens if alveolar ventilation doubles. Less ventilation raises PCO2.",
+        "20 mm Hg is what happens if alveolar ventilation doubles. Less ventilation raises PCO2.",
         "PCO2 cannot stay the same: the same carbon dioxide production is being cleared by half as much air.",
-        "60 mmHg adds half of 40 instead of doubling it. The relationship is inverse proportion, not a 50% rise.",
+        "60 mm Hg adds half of 40 instead of doubling it. The relationship is inverse proportion, not a 50% rise.",
         "Correct. Halving alveolar ventilation doubles arterial PCO2."
       ]
     }
@@ -361,19 +361,19 @@
       "homeostasis"
     ],
     "misconception": "fast breathing always means hyperventilation",
-    "q": "A patient is breathing 32 times a minute with very shallow breaths. Her arterial PCO2 is 58 mmHg. How is her breathing best described?",
+    "q": "A patient is breathing 32 times a minute with very shallow breaths. Her arterial PCO2 is 58 mm Hg. How is her breathing best described?",
     "options": [
       "Hyperventilation, because her breathing rate is high",
       "Normal ventilation, because the fast rate makes up for the small breaths",
-      "Hypoventilation, because her PCO2 is above 45 mmHg",
+      "Hypoventilation, because her PCO2 is above 45 mm Hg",
       "Hyperpnea, because her ventilation matches her metabolism"
     ],
     "correct": 2,
     "why": {
-      "correct": "Hypoventilation and hyperventilation are defined by arterial PCO2, not by rate. Her PCO2 is above 45 mmHg, so she is hypoventilating. With very shallow breaths, much of each breath only fills the dead space and never reaches the alveoli, so alveolar ventilation is low despite the fast rate.",
+      "correct": "Hypoventilation and hyperventilation are defined by arterial PCO2, not by rate. Her PCO2 is above 45 mm Hg, so she is hypoventilating. With very shallow breaths, much of each breath only fills the dead space and never reaches the alveoli, so alveolar ventilation is low despite the fast rate.",
       "options": [
-        "A fast rate is not the same as hyperventilation. Hyperventilation lowers PCO2 below 35 mmHg; hers is high.",
-        "If the fast rate made up for the small breaths, her PCO2 would be normal. At 58 mmHg it is not.",
+        "A fast rate is not the same as hyperventilation. Hyperventilation lowers PCO2 below 35 mm Hg; hers is high.",
+        "If the fast rate made up for the small breaths, her PCO2 would be normal. At 58 mm Hg it is not.",
         "Correct. A high PCO2 defines hypoventilation.",
         "In hyperpnea, ventilation matches carbon dioxide production and PCO2 stays normal. Hers is high."
       ]
@@ -391,7 +391,7 @@
     "q": "A swimmer breathes hard and fast for a minute, then swims underwater. He blacks out without feeling any urge to breathe. What explains this?",
     "options": [
       "Hyperventilating filled his blood with extra oxygen, which suppressed his breathing",
-      "Hyperventilating lowered his PCO2, so it rose to the level that forces a breath only after his oxygen had fallen too low",
+      "Low PCO2 delayed the urge to breathe until his oxygen ran low",
       "The cold water switched off his carotid bodies",
       "Holding his breath damaged his respiratory centers"
     ],
@@ -447,7 +447,7 @@
     "options": [
       "Oxygen removed her hypoxic drive, so she stopped breathing",
       "Oxygen damaged her central chemoreceptors",
-      "Oxygen reversed hypoxic pulmonary vasoconstriction, worsening V/Q mismatch, and the Haldane effect reduced carbon dioxide carriage",
+      "Worse V/Q mismatch and the Haldane effect raised her PCO2",
       "Oxygen blocked carbonic anhydrase in her red blood cells"
     ],
     "correct": 2,
@@ -473,7 +473,7 @@
     "options": [
       "Inspiration is cut short, limiting inflation",
       "The smooth muscle of the airways contracts",
-      "Expiration is prolonged by the medulla",
+      "The diaphragm contracts harder to deepen the breath",
       "The carotid bodies are inhibited by the vagus"
     ],
     "correct": 0,
@@ -482,7 +482,7 @@
       "options": [
         "Correct. The reflex cuts inspiration short when the lungs are well inflated.",
         "Contraction of airway smooth muscle is a response to irritant receptors, triggered by dust, smoke or fumes, not by stretch.",
-        "The reflex acts on inspiration. It shortens inspiration; it does not lengthen expiration.",
+        "Signals from the lung stretch receptors inhibit inspiration; they do not drive the diaphragm harder.",
         "The stretch reflex acts on the respiratory centers, not on the carotid bodies."
       ]
     }
@@ -503,7 +503,7 @@
       "Central chemoreceptors stimulate the respiratory centers",
       "The phrenic nerves carry more signals to the diaphragm",
       "Alveolar ventilation rises",
-      "Arterial PCO2 falls back toward 40 mmHg"
+      "Arterial PCO2 falls back toward 40 mm Hg"
     ],
     "why": {
       "correct": "Carbon dioxide crosses into the brain's fluid and forms hydrogen ions, which the central chemoreceptors sense. They drive the respiratory centers, which send more signals down the phrenic nerves. Deeper, faster breathing raises alveolar ventilation, and PCO2 falls: negative feedback."
@@ -519,7 +519,7 @@
     ],
     "q": "A student traced the low-oxygen feedback loop. One step is wrong. Which one?",
     "options": [
-      "Arterial PO2 falls to 50 mmHg",
+      "Arterial PO2 falls to 50 mm Hg",
       "The carotid bodies fire faster",
       "Signals travel through the glossopharyngeal nerves to the medulla",
       "The central chemoreceptors also sense the low oxygen",
@@ -530,7 +530,7 @@
     "why": {
       "correct": "The central chemoreceptors do not sense oxygen. They respond to hydrogen ions in the brain's fluid. Low oxygen is sensed only by the peripheral chemoreceptors, mainly the carotid bodies.",
       "options": [
-        "This step is right. A PO2 below about 60 mmHg is a strong stimulus.",
+        "This step is right. A PO2 below about 60 mm Hg is a strong stimulus.",
         "This step is right. The carotid bodies are the main oxygen sensors.",
         "This step is right. The carotid bodies signal through the glossopharyngeal nerves.",
         "This is the error. Central chemoreceptors do not respond to low oxygen.",
@@ -576,7 +576,7 @@
     "q": "At high altitude, a climber's ventilation keeps rising over the first week even though the air's PO2 has not changed. What mainly explains the continued rise?",
     "options": [
       "Rising hematocrit makes the blood thicker and harder to oxygenate",
-      "The kidneys excrete bicarbonate, pH returns toward normal, and the central chemoreceptors stop braking breathing",
+      "The kidneys excrete bicarbonate and the central brake eases",
       "The lungs grow new alveoli",
       "The cortex learns to breathe voluntarily"
     ],

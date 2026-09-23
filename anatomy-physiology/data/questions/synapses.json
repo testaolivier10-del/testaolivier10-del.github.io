@@ -270,7 +270,7 @@
       "The neuron is in its absolute refractory period",
       "The summed depolarization is still below threshold",
       "EPSPs cannot add together; only the latest one counts",
-      "The axon hillock lacks voltage-gated sodium channels"
+      "The trigger zone lacks voltage-gated sodium channels"
     ],
     "correct": 1,
     "why": {
@@ -279,7 +279,7 @@
         "The refractory period follows an action potential, and none has fired yet.",
         "Correct. Summation has moved the membrane toward threshold but not to it.",
         "The stepwise climb to A shows the EPSPs adding; that is summation.",
-        "The axon hillock and initial segment have the densest voltage-gated sodium channels in the neuron; that is why they form the trigger zone."
+        "The trigger zone, the initial segment just beyond the hillock, has the densest voltage-gated sodium channels in the neuron. The problem at A is simply that the sum is below threshold."
       ]
     }
   },
@@ -569,7 +569,7 @@
     "q": "A gardener with an unvaccinated puncture wound develops tetanus, the infection. Its toxin blocks neurotransmitter release from inhibitory interneurons that synapse on his motor neurons. His jaw clenches shut and his back arches in spasms. Why?",
     "options": [
       "The toxin excites the muscle fibers directly",
-      "His motor neurons lose their IPSPs, so their excitatory inputs drive them to fire far more",
+      "His motor neurons lose their IPSPs, so excitation drives them unopposed",
       "His motor neurons cannot release acetylcholine",
       "The toxin blocks acetylcholinesterase at his neuromuscular junctions"
     ],

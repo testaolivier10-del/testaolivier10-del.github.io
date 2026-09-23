@@ -52,8 +52,8 @@
 <text x="172.5" y="194.1" font-size="13" font-weight="800" text-anchor="middle">3</text>
 <circle cx="275.3" cy="189.6" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
 <text x="275.3" y="194.1" font-size="13" font-weight="800" text-anchor="middle">4</text>
-<circle cx="351.3" cy="376.6" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
-<text x="351.3" y="381.1" font-size="13" font-weight="800" text-anchor="middle">5</text>
+<circle cx="318.0" cy="365.0" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="318.0" y="369.5" font-size="13" font-weight="800" text-anchor="middle">5</text>
 <circle cx="603.3" cy="309.2" r="11" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
 <text x="603.3" y="313.7" font-size="13" font-weight="800" text-anchor="middle">6</text>
 <text x="232.7" y="73.4" font-size="12.5" font-weight="700">peak about +30</text>

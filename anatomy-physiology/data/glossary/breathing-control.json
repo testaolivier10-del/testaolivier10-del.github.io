@@ -62,7 +62,7 @@
     "say": "kuh-ROT-id"
   },
   "co2-drive": {
-    "def": "Minute to minute, breathing is set mainly to hold arterial PCO2 near 40 mmHg: a small rise in PCO2 sharply increases ventilation, while low oxygen drives breathing strongly only once arterial PO2 falls below about 60 mmHg.",
+    "def": "Minute to minute, breathing is set mainly to hold arterial PCO2 near 40 mm Hg: a small rise in PCO2 sharply increases ventilation, while low oxygen drives breathing strongly only once arterial PO2 falls below about 60 mm Hg.",
     "roots": [],
     "say": ""
   },
@@ -72,7 +72,7 @@
     "say": "HAIR-ing BROY-er"
   },
   "ventilation-disorders": {
-    "def": "Hyperventilation is breathing more than carbon dioxide production requires, so arterial PCO2 falls below 35 mmHg (hypocapnia). Hypoventilation is breathing less, so PCO2 rises above 45 mmHg (hypercapnia). Both are defined by PCO2, not breathing rate.",
+    "def": "Hyperventilation is breathing more than carbon dioxide production requires, so arterial PCO2 falls below 35 mm Hg (hypocapnia). Hypoventilation is breathing less, so PCO2 rises above 45 mm Hg (hypercapnia). Both are defined by PCO2, not breathing rate.",
     "roots": [
       [
         "hyper-",

@@ -1,6 +1,6 @@
 {
   "topic": "synapses",
-  "hook": "<p>Mr. Ruiz, 45, sprayed an organophosphate insecticide on a hot afternoon without gloves. An hour later he is drenched in sweat and drooling, the muscles of his arms are twitching in small ripples, and his breathing is getting weak. Nothing in the poison excites his nerves directly. It jams the enzyme that clears acetylcholine from his synapses, so every signal his neurons send keeps acting long after it should have stopped.</p>",
+  "hook": "<p>Mr. Ruiz, 45, sprayed an organophosphate insecticide on a hot afternoon without gloves. An hour later he is drenched in sweat and drooling, the muscles of his arms are twitching in small ripples, and his breathing is getting weak. Nothing in the poison excites his nerves directly. It jams the enzyme that clears acetylcholine from his synapses, so every acetylcholine signal his neurons send keeps acting long after it should have stopped.</p>",
   "prereq": [
     {
       "q": "What can pass directly from one cell's cytosol to its neighbor's through a gap junction?",

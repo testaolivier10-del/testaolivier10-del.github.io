@@ -1,0 +1,18 @@
+{
+  "os-13-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "13.23",
+      "section": "13.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0301c86d5b037f2400c0bf1f32466c60cd8d93ee",
+      "page": "13-4-the-peripheral-nervous-system"
+    },
+    "alt": "The underside of the brain, with the frontal lobes at the top and the brainstem and cerebellum at the bottom. Twelve pairs of nerve roots are highlighted. Two slender bulb-tipped nerves lie under the frontal lobes, an X-shaped crossing of two thick nerves sits behind them, and the remaining roots emerge in order down the midbrain, pons and medulla, the last ones as rows of small rootlets along the medulla and a long root running up beside it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 13.23",
+    "labels": [],
+    "w": 784,
+    "h": 491,
+    "ext": "jpg"
+  }
+}

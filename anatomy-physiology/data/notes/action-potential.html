@@ -22,6 +22,7 @@
 <svg viewBox="0 0 680 335" role="img" aria-label="Three drawings of a voltage-gated sodium channel crossing a membrane, outside at the top and cytosol at the bottom. Closed, at rest at minus 70 millivolts: the activation gate across the pore is shut and the inactivation gate hangs open below; no sodium passes; the channel is ready. Open, during the rising phase: both gates are open and sodium flows in. Inactivated, at the peak and during the falling phase: the activation gate is still open but the inactivation gate plugs the inner mouth of the pore; no sodium passes and the channel cannot reopen. Arrows show depolarization moving the channel from closed to open to inactivated, and repolarization returning it from inactivated to closed.">
 <defs>
 <marker id="nas-cause" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="causes" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="nas-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="flows" d="M1,1 L9,5 L1,9"/></marker>
 </defs>
 <line class="memb" x1="10" y1="90" x2="670" y2="90"/>
 <line class="memb" x1="10" y1="160" x2="670" y2="160"/>
@@ -41,7 +42,7 @@
 <rect class="shape" x="300" y="80" width="26" height="90"/>
 <rect class="shape" x="354" y="80" width="26" height="90"/>
 <text class="lbl-sm" x="340" y="44" text-anchor="middle">both gates open</text>
-<line class="causes" x1="340" y1="56" x2="340" y2="182" marker-end="url(#nas-cause)"/>
+<line class="flows" x1="340" y1="56" x2="340" y2="182" marker-end="url(#nas-flow)"/>
 <text class="lbl-sm" x="388" y="152">Na+ in</text>
 <line class="shape" x1="354" y1="170" x2="364" y2="192"/>
 <circle class="shape" cx="368" cy="200" r="9"/>
@@ -86,12 +87,13 @@
 <p><a class="figref" href="#fig-ap-refractory">Figure 2</a> is the graph to know. Follow the numbered phases and match each to the channels.</p>
 <ol>
 <li><strong>Rest, −70 mV.</strong> Sodium channels closed and ready, voltage-gated potassium channels closed. Potassium leak channels hold the resting potential.</li>
-<li><strong>Depolarization to threshold, −70 to −55 mV.</strong> A graded depolarization spreads to the trigger zone, where the axon leaves the cell body (the axon hillock and initial segment). That membrane is packed with sodium channels. As the membrane climbs, a few sodium channels open.</li>
+<li><strong>Depolarization to threshold, −70 to −55 mV.</strong> A graded depolarization spreads to the trigger zone, the initial segment of the axon just beyond the axon hillock. That membrane is packed with sodium channels. As the membrane climbs, a few sodium channels open.</li>
 <li><strong>Rising phase, −55 to about +30 mV, in about half a millisecond.</strong> At threshold, sodium entering outruns potassium leaving. Each bit of depolarization opens more sodium channels, which lets in more sodium, which depolarizes further: a positive feedback loop. The part above 0 mV, where the inside is actually positive, is called the overshoot.</li>
 <li><strong>Falling phase, +30 back to −70 mV.</strong> Two things happen together. Sodium channels inactivate, so sodium stops entering. Delayed potassium channels are now open, so potassium flows out. The membrane repolarizes.</li>
 <li><strong>Afterhyperpolarization, down to about −80 mV.</strong> The potassium channels are slow to close, so for a few milliseconds potassium keeps leaving and the membrane sits below rest, drifting toward potassium's equilibrium potential of about −90 mV. (<em>After-</em> + <em>hyper-</em> = beyond: the dip beyond rest that comes after the spike.)</li>
 <li><strong>Return to rest.</strong> The potassium channels close, and the leak channels bring the membrane back to −70 mV.</li>
 </ol>
+<aside class="for-your-exam"><p>For your exam: many textbooks and exams name the axon hillock as the trigger zone. Recordings show the action potential starts in the initial segment just beyond it, where sodium channels are densest. If a question offers only "axon hillock," choose it.</p></aside>
 <figure id="fig-ap-refractory" data-fig="neuron-ap-refractory"><figcaption>Figure 2. The neuron action potential, phase by phase, with the refractory periods shaded. Rest −70 mV, threshold −55 mV, peak about +30 mV, afterhyperpolarization about −80 mV. The spike itself lasts about 1 to 2 ms.</figcaption></figure>
 <p>Why does the peak stop near +30 mV instead of reaching sodium's equilibrium potential of about +60 mV? Because the rise is cut off from both sides at once: sodium channels inactivate, ending the inward flow, just as the potassium channels open and start the outward flow. A drug that stopped inactivation, or a toxin that blocked the potassium channels, would make the spike taller or longer. (The OpenStax graph in <a class="figref" href="#fig-os-12-23">Figure 3</a> labels the same curve with the older names: depolarization, repolarization and hyperpolarization.)</p>
 <figure id="fig-os-12-23" data-fig="os-12-23"><figcaption>Figure 3. The same action potential with its three broad parts named: the upstroke (depolarization), the downstroke (repolarization) and the dip below rest (hyperpolarization).</figcaption></figure>

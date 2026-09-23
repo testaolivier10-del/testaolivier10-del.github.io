@@ -55,7 +55,7 @@
   {
     "id": "anp-co2-transport-3",
     "type": "graph",
-    "level": "apply",
+    "level": "recall",
     "diff": 1,
     "core": [
       "gradients"
@@ -255,7 +255,7 @@
     "q": "As blood passes through the lungs and hemoglobin binds oxygen, how does that help carbon dioxide leave the blood?",
     "options": [
       "Oxygen reacts with bicarbonate to form carbon dioxide",
-      "Oxyhemoglobin releases hydrogen ions, which combine with bicarbonate to form carbon dioxide",
+      "Oxyhemoglobin releases H+, which turns bicarbonate back into CO2",
       "Oxygen activates carbonic anhydrase, which otherwise stays switched off",
       "Oxygen pushes chloride out of the red blood cell, dragging carbon dioxide with it"
     ],
@@ -341,11 +341,11 @@
       "gradients",
       "interdependence"
     ],
-    "q": "Two samples of blood are exposed to the same PCO2 of 45 mmHg. Sample 1 is fully oxygenated; sample 2 has been stripped of oxygen. Which holds more carbon dioxide?",
+    "q": "Two samples of blood are exposed to the same PCO2 of 45 mm Hg. Sample 1 is fully oxygenated; sample 2 has been stripped of oxygen. Which holds more carbon dioxide?",
     "options": [
       "They hold the same amount, because PCO2 is the same",
       "Sample 1, because oxyhemoglobin binds more carbon dioxide",
-      "Sample 2, because deoxyhemoglobin buffers more hydrogen ions and forms more carbaminohemoglobin",
+      "Sample 2, because deoxyhemoglobin binds more H+ and more CO2",
       "Neither holds any carbon dioxide until carbonic anhydrase is added"
     ],
     "correct": 2,
@@ -482,7 +482,7 @@
     "q": "During exercise, blood leaving a hard-working leg muscle has given up most of its oxygen. Besides the higher PCO2 in the muscle, what lets this blood load extra carbon dioxide?",
     "options": [
       "The low oxygen switches on carbonic anhydrase",
-      "Its hemoglobin, now mostly deoxygenated, binds more hydrogen ions and more carbon dioxide",
+      "Its deoxygenated hemoglobin binds more H+ and more CO2",
       "The muscle secretes bicarbonate directly into the blood",
       "The higher temperature makes carbon dioxide less soluble"
     ],

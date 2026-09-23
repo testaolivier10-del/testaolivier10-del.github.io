@@ -63,7 +63,7 @@
     "figure": "neuron-ap-refractory",
     "q": "At 3 ms on this graph, a stimulus exactly as strong as the one that started the first action potential arrives. It fails to trigger a second one. Why?",
     "options": [
-      "The sodium–potassium pump has not yet restored the ion concentrations",
+      "The sodium–potassium pump has not yet restored the sodium and potassium concentrations after the first spike",
       "Voltage-gated potassium channels have closed and cannot reopen yet",
       "Some sodium channels are still inactivated, and open potassium channels hold the membrane below rest",
       "Every sodium channel is still in the inactivated state"
