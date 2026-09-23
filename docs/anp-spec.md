@@ -24,6 +24,14 @@ Licensing rules:
 * OpenStax figures may be used with attribution. Attribute every OpenStax figure on the page where it appears and on the sources page.
 * Never use images from commercial textbooks or atlases (Marieb, Tortora, Saladin, Netter, etc.).
 
+Commercial-use rules (the course will have premium features, so every source must allow commercial use):
+* Never use non-commercial (NC) material anywhere on the site: no text, figures, data or question content under an NC license.
+* Use only the original OpenStax Anatomy and Physiology 2e (openstax.org). Never use share-alike (SA) adaptations of it, such as the Oregon State version.
+* Check each OpenStax figure's own license, not just the book's. Figures credited to a third party (for example "credit: ... /flickr", "Wikimedia Commons", or "Micrograph provided by ... ©") carry that party's terms. Use a figure only if its license is CC BY or public domain, and record that license and the credit in the figure's data entry. A third-party figure whose license cannot be verified is not used.
+* Figures from other sources follow the same test: CC BY or public domain only, with license and credit recorded.
+* Wherever TEAS is named, add a "not affiliated with ATI" disclaimer matching the existing NREMT disclaimer: LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI), and TEAS and ATI TEAS are trademarks of ATI, used only to say what the material is for.
+* OpenStax attribution must never imply that OpenStax endorses LevlPrep. The sources page says so explicitly.
+
 Originality rules:
 * All prose must be written originally in LevlPrep's own voice and ordering.
 * Use OpenStax to decide what to cover and as a source of figures, not as a source of wording.
@@ -335,4 +343,9 @@ OpenStax coverage recheck (2026-09-23), run without a review stop per decision 1
 19. ECG before systole and diastole: the systole/diastole definition moved one topic earlier, into Blood flow through the heart, so the ECG topic can use it. A one-concept move inside the cardiovascular chapter.
 20. Heart, vessel and lung development (OpenStax 19.5, 20.6, 22.7): placed in Fetal development and fetal circulation, not in the system chapters, because they need the germ layers. No new topic. The Phase 1 pilot therefore teaches heart structure and function; heart development comes with the development chapter.
 21. Plain words kept out of the page check: 16 everyday words proposed as aliases (stimulus, thermoregulation, fracture, vertebra, sensation, hemorrhage, perfusion, embryo, fetus, gestation, sperm, calorie, HCl, diuresis and plurals) were left off, because earlier pages use them in their ordinary sense. They stay in the glossary through their owning concepts' qualified terms.
+
+Commercial-use review (2026-09-23):
+22. Every source must allow commercial use (section 2). Applied to figures as follows: the 696 figures in OpenStax A&P 2e were catalogued with their captions. 588 carry no third-party credit and are OpenStax's own work under the book's CC BY 4.0 license; those are usable, and each use records "CC BY 4.0" and its OpenStax credit. 108 credit a third party (58 are University of Michigan micrographs marked ©, the rest are Flickr or Wikimedia photos). They are excluded unless their individual license is verified as CC BY or public domain. The Flickr and Wikimedia pages cannot be reached from this environment, so none are verified yet and none are used. The content check rejects any figure entry without an allowed license.
+23. Consequence for the lab practical: histology stations use only OpenStax's own uncredited micrographs and our own diagrams until a commercially licensed micrograph source is added (a public-domain image library would need its domain allowed in the environment).
+24. TEAS disclaimer and OpenStax non-endorsement statement: added to the spec (section 2) and applied on every page that names TEAS or credits OpenStax.
 

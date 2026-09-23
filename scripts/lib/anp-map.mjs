@@ -221,7 +221,7 @@ function removeClassBlocks(html, cls) {
   return html;
 }
 
-export function scanPages(map, root, dir = 'anp') {
+export function scanPages(map, root, dir = 'anatomy-physiology') {
   const base = join(root, dir);
   const results = [];
   if (!existsSync(base)) return results;
