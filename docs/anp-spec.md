@@ -1,0 +1,297 @@
+LEVLPREP: ANATOMY & PHYSIOLOGY COURSE SPEC
+
+Build a complete Anatomy & Physiology course for LevlPrep. Work in phases and stop for my review at every checkpoint marked STOP. Reuse the existing ochem course structure, page generators, templates, and shared systems (XP, streaks, daily goals, spaced review queue, flashcards, mastery tracking, account sync, offline support, "Report a problem" link) wherever possible so the site stays consistent. Commit to a branch, not main, and tell me the branch name at each checkpoint.
+
+==================================================
+1. GOAL
+==================================================
+
+The textbook and course should be better than any A&P resource available: complete, easy to read, strictly ordered so everything builds on itself, and no concept used before it is taught. The main differentiators versus existing resources are strict concept ordering, mechanism first physiology, a consistent visual language, and practice built directly into the reading. Research on A&P learning shows physiology is harder for students than anatomy because it requires causal reasoning, graphs and math, and integration across systems, and because students treat memorizing as learning and compartmentalize. Every design choice below is aimed at those problems. Anatomy is trained as a recognition skill (identify, label, locate). Physiology is trained as a reasoning skill (predict, explain, trace).
+
+Audiences: undergraduate A&P I and A&P II students (nursing, allied health, premed), nursing applicants preparing for the TEAS, and EMT students moving toward AEMT, paramedic, or nursing.
+
+==================================================
+2. COVERAGE, SOURCES, AND ORIGINALITY
+==================================================
+
+"Complete" means everything in all three of:
+* The OpenStax Anatomy and Physiology 2e scope (licensed CC BY 4.0).
+* The TEAS 7 A&P blueprint.
+* The HAPS A&P learning outcomes.
+
+Licensing rules:
+* HAPS learning outcomes are CC BY NC SA. Use them privately as a coverage checklist only. Do not republish, quote, or adapt their text anywhere on the site.
+* OpenStax figures may be used with attribution. Attribute every OpenStax figure on the page where it appears and on the sources page.
+* Never use images from commercial textbooks or atlases (Marieb, Tortora, Saladin, Netter, etc.).
+
+Originality rules:
+* All prose must be written originally in LevlPrep's own voice and ordering.
+* Use OpenStax to decide what to cover and as a source of figures, not as a source of wording.
+* Do not copy or closely paraphrase text from any textbook, including OpenStax. Never closely follow the wording or structure of commercial textbooks.
+* If any passage ends up closely following OpenStax, rewrite it, or attribute it if rewriting would lose accuracy.
+* Add a check to the audit that flags passages with unusually close wording to OpenStax so they can be rewritten.
+
+==================================================
+3. COURSE STRUCTURE AND NAVIGATION
+==================================================
+
+Mirror the ochem course:
+
+* A short Foundations section first: orientation and terminology (directional terms, planes, cavities, regions), a chemistry and physics primer (gradients, pressure, pH, diffusion, osmosis, electrical charge), cells and membrane transport, cell signaling basics, tissues. The exact contents come from the Phase 0 dependency map.
+* Chapters organized by body system after Foundations.
+* Every topic is a standalone page with two parts: an interactive lesson and a prose notes page. Each is individually indexable for search.
+* Students can enter at any topic. Nothing is locked. Foundations is recommended, not required.
+* A&P I and A&P II are tags and a filter, not a required sequence, because schools split the course differently.
+* A core concepts view: one page per core concept (homeostasis, flow down gradients, cell to cell communication, structure and function, mass balance, and any others the dependency map identifies). Each page pulls together where that concept shows up in every system, with links. Every lesson section and every question is tagged with its core concept(s).
+
+Navigation pages:
+* Course home: what the course covers, how to use it, a "start here" path through Foundations, chapter list with progress, links to practice, tools, lab practical, exams, flashcards, glossary, and dashboard. Same visual style as the NREMT and ochem home pages.
+* Chapter (system) page: system overview, topic list with mastery status, system quiz, links to that system's lab practical sets, prediction scenarios, and pathways.
+* Glossary: every defined term with definition, word roots, the page where it is taught, and pronunciation where useful.
+* Search across topics, notes, glossary, and tools.
+* A homepage card for the new course on levlprep.com matching the existing course cards.
+
+==================================================
+4. TOPIC PAGE TEMPLATE
+==================================================
+
+Every lesson page follows this exact order:
+
+1. Clinical hook: one short, concrete patient scenario that makes the topic matter.
+2. What this builds on: names the prior topics it depends on, with links.
+3. Prerequisite check: two or three quick questions. A wrong answer links to the relevant foundation or prior topic.
+4. Anatomy panel: labeled figure with a "hide labels" toggle for self testing. Tapping a hidden label reveals it.
+5. Physiology as a causal chain: the mechanism written as numbered cause and effect steps, not a paragraph. Each step names what causes the next.
+6. Core concept tags with links to the core concept pages.
+7. Misconception box: names the common wrong idea directly and explains why it is wrong.
+8. Embedded retrieval check: five to eight questions with full explanations. Missed questions go into the spaced review queue.
+9. Summary: the key points in a few sentences.
+10. What comes next, with a link.
+11. Connections to related NREMT or ochem pages where relevant.
+
+Every notes page: the full prose explanation of the topic, following the same order of ideas as the lesson, with figures, comparison tables, worked examples, and "going further" boxes. The notes page is the one optimized for search.
+
+==================================================
+5. WRITING STANDARDS
+==================================================
+
+* Short sentences, active voice, second person ("your heart," not "the heart of the individual").
+* Define every technical term at first use, with a plain explanation and its word roots.
+* One name per structure. When a synonym matters (for example bicuspid and mitral valve), introduce it once, explicitly.
+* Concrete before abstract: an example or scenario first, then the general principle.
+* Explain mechanisms, not purposes. Write "low oxygen triggers chemoreceptors, which signal the brainstem to increase breathing rate," never "you breathe faster because your body needs oxygen."
+* One idea per section. Keep sections short.
+* Tangents go in a clearly separate "going further" box.
+* Side by side comparison tables with identical rows for commonly confused pairs: sympathetic vs parasympathetic, arteries vs veins, endocrine vs exocrine, muscle fiber types, and any others identified in Phase 0.
+* Fully worked examples, every step shown, before any quantitative question (blood flow and resistance, pressure, cardiac output, mean arterial pressure, filtration, acid base).
+* Same section structure everywhere so the reading is predictable.
+
+==================================================
+6. VISUAL LANGUAGE
+==================================================
+
+Define a single visual system in one shared style file and use it in every figure and diagram:
+* Fixed colors for oxygenated blood, deoxygenated blood, sympathetic, parasympathetic, afferent, efferent, and any other recurring categories.
+* One arrow style for "causes" and a different one for "flows to."
+* Labels on the figure itself, not in a separate legend.
+* Every figure is referenced in the text at the moment it matters. No unreferenced figures.
+* Colorblind safe palette, alt text on every figure, readable on mobile, dark mode support matching the rest of the site.
+
+==================================================
+7. CONCEPT ORDERING RULES
+==================================================
+
+* No concept may be used on a page before the page that teaches it (in front to back order).
+* Default fix for circular dependencies: pull a short, general version forward into Foundations or Cells. Examples: resting membrane potential and basic electrical signaling (so muscle, neurons, and heart all build on it), chemical messengers and receptors (so hormones can appear in the bone chapter already understood at a basic level), feedback loops, gradients. Each pulled forward topic is short, has a concrete example immediately, and tells the student where the idea will reappear.
+* Use a marked preview box only for narrow one off facts that do not deserve a foundation topic (for example the bone chapter needing "parathyroid hormone raises blood calcium"). The preview box gives just enough and links to where it is taught fully.
+* Every defined term links to its definition page with a hover or tap tooltip, so students who enter mid course are never lost.
+* Build check: add a check alongside the existing site checks that fails the build if a page uses a tagged term before the page that defines it, unless the use is inside a preview box. The check reads the dependency map data file.
+
+==================================================
+8. TOOLS: HOW EACH ONE WORKS
+==================================================
+
+For every tool: content lives in data files so it can be generated, audited, and extended without code changes. Every tool awards XP, updates mastery for the tagged topics and core concepts, sends missed items to the spaced review queue, supports "Report a problem," works offline, and fires the analytics events in section 13.
+
+8.1 Virtual lab practical (identify structures)
+Purpose: practice identifying structures the way lab practicals test them, without needing physical models.
+Content: image sets per chapter (OpenStax figures with attribution and our own diagrams), each with pin coordinates, the correct name, accepted synonyms, and optionally a follow up question (function, what attaches here, what passes through it). Includes histology stations using OpenStax micrographs for tissue identification.
+Modes:
+* Explore: labels shown. Tap any structure to see its name, function, and a link to where it is taught.
+* Study: labels hidden. Tap a pin to reveal its label. Self paced.
+* Quiz: a pin is highlighted, the student types the name. Accept listed synonyms and minor spelling errors, but show the correct spelling. Optional multiple choice setting for beginners.
+* Timed practical: simulates a real practical. A fixed number of stations, a fixed time per station (default 60 seconds, adjustable), no going back, some stations include the follow up question. Score and review of every station at the end, with missed structures added to review.
+Students can build a custom practical by choosing systems or image sets to match their class.
+
+8.2 Predict the change engine
+Purpose: train causal reasoning, the core physiology skill.
+Content: scenarios, each with a perturbation (for example "blood pressure suddenly drops," "a person hyperventilates," "ADH secretion is blocked"), a list of variables to predict, the correct direction for each (up, down, or no change), and a causal explanation for each variable.
+How it works:
+* The student sees the scenario and a table of variables and picks up, down, or no change for each.
+* On submit, each variable is marked individually with partial credit.
+* Every variable shows its explanation as a short causal chain.
+* A "show the chain" button reveals a step by step diagram linking the perturbation to every variable, using the shared visual language.
+Difficulty levels:
+* Level 1: single step, one system.
+* Level 2: multistep within one system.
+* Level 3: cross system scenarios.
+* Level 4: time course, predicting the immediate change and then the state after compensation.
+Scenarios are tagged by system, topic, core concept, and the misconception they target.
+
+8.3 Feedback loop builder
+Purpose: make the homeostasis framework automatic by using the same structure every time.
+How it works: the student drags cards into labeled slots (stimulus, receptor, afferent pathway, control center, efferent pathway, effector, response) and classifies the loop as negative or positive feedback. Cards include distractors. Each slot is checked individually with an explanation. After completion, the finished loop is shown as a diagram in the shared visual language.
+Content: loops for thermoregulation, blood glucose, blood pressure, blood calcium, blood oxygen and carbon dioxide, osmolarity, and positive feedback examples (labor, clotting), plus any identified in Phase 0.
+
+8.4 Pathway tracer
+Purpose: sequences students must know in order.
+How it works: uses the existing NREMT sequencing question format. The student drags steps into order. Partial feedback shows which steps are in the right position. After answering, the pathway highlights step by step on a diagram.
+Variants: order the full pathway, fill in the missing step, and find the error in a pathway that contains one wrong step.
+Content: blood through the heart and body, air to the alveoli and back, filtrate through the nephron, action potential steps, muscle contraction steps, synaptic transmission, digestion of each macronutrient, coagulation overview, hormone signaling cascades, and any identified in Phase 0.
+
+8.5 Graph reader
+Purpose: graphs are a named source of difficulty in physiology.
+How it works: interactive SVG graphs with question sets. Question types: read a value off the graph, identify a phase or region, predict how the curve shifts under a condition (the student drags the curve left or right, up or down, then gets feedback with the explanation), and match a graph to a scenario.
+Content: oxygen hemoglobin dissociation curve (with shift factors), Frank Starling curve, action potentials (neuron, ventricular muscle, pacemaker cell), the cardiac cycle and pressure volume relationships, lung volumes and capacities, the length tension relationship, and any identified in Phase 0.
+
+8.6 Worked example calculators
+Purpose: quantitative physiology, shown step by step.
+How it works: the student enters values and the tool shows every step of the calculation with the reasoning, then offers practice problems with the steps hidden until submitted.
+Content: cardiac output, mean arterial pressure, flow and resistance relationships, basic filtration concepts, and a stepwise acid base interpreter (pH, then carbon dioxide, then bicarbonate, then compensation) with practice cases.
+
+8.7 Word root builder
+Purpose: anatomical terminology becomes decodable instead of memorized.
+Content: prefixes, roots, and suffixes with meanings and example terms, linked to the glossary.
+Modes:
+* Decode: given a term, split it into parts and give the meaning of each.
+* Build: given a meaning, assemble the term from part cards.
+Also useful for the NREMT audience; link to it from the NREMT course.
+
+8.8 Flashcards
+Generated from the glossary, comparison tables, and key facts in the notes, using the existing flashcard system and spaced repetition. Decks by topic, system, and core concept, plus a "terms I missed" deck built automatically from missed questions.
+
+8.9 Core concept pages
+Described in section 3. Each includes a short explanation of the concept, every place it appears across systems with links, and a mixed question set that applies the same concept across different systems.
+
+==================================================
+9. QUESTION BANK
+==================================================
+
+Question types:
+* Image identification (pin or label on a figure).
+* Single best answer.
+* Select all that apply.
+* Sequencing (existing format).
+* Prediction tables (from the predict the change engine).
+* Graph reading.
+* Clinical vignettes.
+* Fill in the missing step and find the error.
+
+Every question is tagged with: system, topic, core concept(s), A&P I or II, TEAS content area where applicable, cognitive level (recall, apply, analyze), difficulty, and the misconception targeted if any.
+
+Rules:
+* Physiology topics: at least 60 percent of questions at the apply or analyze level. Anatomy topics may be mostly recall and identification.
+* Every question has a full explanation: why the correct answer is correct and why each wrong option is wrong.
+* Explanations never refer to options by letter or position, because answer order is shuffled.
+* Follow all existing question quality checks (no "only" or "always" giveaways, no length tells, no answer position patterns).
+* Minimum of 15 questions per topic plus that topic's prediction, pathway, and identification items, then expand over time.
+
+==================================================
+10. PRACTICE MODES
+==================================================
+
+* Topic drill: questions from one topic.
+* System drill: questions from one system.
+* Core concept drill: one concept across all systems.
+* Mixed review: interleaved questions across everything the student has studied.
+* Weak spot review: prioritizes the topics and core concepts with the lowest mastery.
+* Spaced review queue: the existing system, now including A&P items.
+* Missed questions: everything the student got wrong, retried until correct.
+* Custom set: the student chooses systems, question types, and difficulty to match their class.
+
+==================================================
+11. EXAM MODES
+==================================================
+
+* Unit quiz: short, per topic or small group of topics.
+* System exam: full exam for one body system.
+* A&P I cumulative final and A&P II cumulative final, weighted by the topic distribution from Phase 0.
+* TEAS A&P mode: 18 questions matching the TEAS 7 A&P blueprint, timed at the TEAS science pace (roughly 1.2 minutes per question), with results broken down by system.
+* Lab practical exam: the timed practical from 8.1, built from a chosen set of systems.
+Every exam ends with a full review of every question and explanation, a breakdown by system and core concept, and missed items added to review.
+
+==================================================
+12. PROGRESS AND DASHBOARD
+==================================================
+
+* Mastery per topic, per system, and per core concept, shown on chapter pages and the dashboard.
+* XP, streaks, and daily goals shared with the rest of the site.
+* A&P section on the existing dashboard: weakest topics, weakest core concepts, lab practical accuracy by system, prediction accuracy by difficulty level, and suggested next steps.
+* Progress syncs through the existing optional account system and works without an account.
+
+==================================================
+13. ANALYTICS (UMAMI)
+==================================================
+
+Add events from day one:
+* A&P session finished
+* Lab practical station finished (with correct or incorrect)
+* Timed practical finished
+* Prediction table answered (with correct count and difficulty level)
+* Feedback loop completed
+* Pathway completed
+* Graph question answered
+* TEAS mode finished
+* System exam finished
+Name them in the same format as existing events (for example ochem-session-finish).
+
+==================================================
+14. FREE VS PREMIUM
+==================================================
+
+Do not build any gating now. Structure the code so these can be gated later: unlimited timed lab practicals, the full cumulative finals and TEAS mode, and weak spot analytics. Everything else stays free: all topic lessons and notes, the core question set, basic identify modes, all other tools, flashcards, and the word root builder.
+
+==================================================
+15. SEO
+==================================================
+
+Every lesson and notes page gets: a unique title and description within the existing length limits, canonical URL, Open Graph tags, JSON LD structured data matching the rest of the site, breadcrumbs, and an entry in the sitemap. Notes pages should target the phrases students actually search (for example "cardiac cycle explained," "nephron function step by step"). All existing SEO and metadata checks must pass.
+
+==================================================
+16. ACCURACY AND REVIEW
+==================================================
+
+* Run all content through the same two stage audit used for the NREMT and ochem review: one agent drafts or checks, a second skeptical agent verifies against current sources before anything is applied.
+* Include the OpenStax wording similarity check from section 2.
+* Flag anything ambiguous or where sources disagree for human review in a needs author file, instead of guessing.
+* Add a changelog entry noting the new course follows current published sources and is pending review by a licensed A&P instructor.
+* Update the sources page with OpenStax attribution and any other sources used.
+
+==================================================
+17. ACCESSIBILITY AND PERFORMANCE
+==================================================
+
+Every page and tool must pass the existing accessibility, console, weight, and browser load checks. All interactive tools must be usable by keyboard and on a phone screen, with no layout shift problems like the ones fixed in the SEO pass.
+
+==================================================
+18. PHASES
+==================================================
+
+Phase 0: Concept dependency map. Do not write any lessons.
+* List every concept required by the coverage standard and, for each, the concepts it directly depends on.
+* Identify every circular dependency and recommend pull forward or preview box per section 7.
+* Produce a chapter and topic order with no concept before its prerequisites, each topic tagged A&P I or A&P II and with its core concepts.
+* List the comparison tables, feedback loops, pathways, graphs, and prediction scenario themes each chapter will need.
+* Save the map as a data file in the repo for the build check.
+* Give me an estimate of how long Phases 1 to 3 will take based on the actual topic count.
+* Summarize for me: the proposed chapter order, the pulled forward foundation topics, every preview box and why, the planned tool content per chapter, and anything that could not be cleanly ordered.
+STOP for my review.
+
+Phase 1: Pilot. Build Foundations plus the full cardiovascular chapter using every standard in this spec: page template, writing standards, visual language, concept ordering and the build check, and working versions of every tool (lab practical, predict the change, feedback loop builder, pathway tracer, graph reader, calculators, word root builder, flashcards) with cardiovascular content. Include the question bank for these topics, the course home page, the cardiovascular chapter page, and the relevant dashboard pieces. Run the audit and all site checks. Show me what you built, anything flagged for human review, and any spec decisions you had to make. Mark the course as Beta on the site.
+STOP for my review.
+
+Phase 2: Respiratory and nervous systems, then the rest of A&P II, then the TEAS mode. Publish each system as it passes the audit.
+STOP for my review after respiratory and nervous, before continuing.
+
+Phase 3: The rest of A&P I and both cumulative finals.
+STOP for my review.
