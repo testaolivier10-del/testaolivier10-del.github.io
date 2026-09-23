@@ -153,6 +153,17 @@ review by a licensed A&P instructor.
   2010), although infection can still spread toward the cavernous sinus.
 - **For your exam:** many texts say facial veins are valveless.
 
+### oxytocin-in-labor: is oxytocin needed for labor to progress?
+- **Status:** pending review.
+- **Where:** `homeostasis-feedback` (childbirth loop), the feedback loop builder's childbirth
+  failure question, later `labor-birth`.
+- **Evidence-based position:** oxytocin strengthens contractions through the positive feedback
+  loop, but labor can still start and progress without it: mice lacking oxytocin or its receptor
+  give birth normally (Nishimori 1996; Takayanagi 2005), and women with little oxytocin have had
+  normal spontaneous labor. The failure question's key is "this loop could no longer drive the
+  contractions harder", with a note that hospitals give oxytocin when contractions are weak.
+- **For your exam:** many textbooks say that without oxytocin, labor stalls or progresses slowly.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
