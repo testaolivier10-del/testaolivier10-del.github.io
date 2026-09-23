@@ -2552,7 +2552,8 @@ function showResults(){
      one of those moments, so it does not ask after a five-question drill. */
   if(window.StudyHubAccount && activeIndices.length >= 20){
     setTimeout(function(){
-      window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + score + '/' + activeIndices.length);
+      window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + score + '/' + activeIndices.length,
+        { kind: 'exam', score: score, total: activeIndices.length, missed: missedSet.size });
     }, 2600);
   }
 

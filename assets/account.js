@@ -1161,7 +1161,9 @@
         }
         rememberEmail(email);
         rememberMethod('password');
-        authEvent('auth-succeeded', { method: authMode === 'signup' ? 'signup' : 'password' });
+        authEvent('auth-succeeded', authMode === 'signup'
+          ? { method: 'signup', variant: takeSignupSource() }
+          : { method: 'password' });
         closeAuthModal();
       }, function(){
         done();
@@ -1322,8 +1324,22 @@
     authListeners.forEach(function(fn){ try{ fn(currentUser); }catch(e){} });
   }
 
+  /* A signup that needs its email confirmed finishes on another page load:
+     the student clicks the link and lands back here with it in the URL hash.
+     Nothing else marks that moment, so without this the last step of the
+     signup funnel was invisible. Read now, before the SDK parses the hash
+     and clears it. */
+  var arrivedFromEmail = (function(){
+    var m = /[#&]type=(signup|magiclink)(&|$)/.exec(location.hash || '');
+    return m ? m[1] : null;
+  })();
+
   function handleAuthChange(event, session){
     var wasSignedOut = !currentUser;
+    if(event === 'SIGNED_IN' && wasSignedOut && arrivedFromEmail){
+      authEvent('auth-confirmed', { type: arrivedFromEmail, variant: takeSignupSource() });
+      arrivedFromEmail = null;
+    }
     currentUser = session ? session.user : null;
     renderAccountUI();
     notify();
@@ -1426,21 +1442,39 @@
      when the progress is real, the student is pleased with it, and "keep
      this" is an obvious yes rather than a toll.
 
-     The rules are deliberately timid: signed-out only, once a week at most,
-     three times ever, and never again once someone has waved it away twice.
-     A prompt that appears a fourth time is not a reminder, it is nagging,
-     and the answer was no. */
+     The rules are deliberately timid: signed-out only, three answered asks
+     ever, never again once someone has waved it away twice, and at least two
+     days between asks. After a "Not now" it only asks again once there is
+     more at stake — a longer streak or a higher level than last time — so the
+     second ask carries a reason the first did not. A prompt nobody answered
+     (it withdraws itself after 15 seconds) is not counted as one of the three:
+     they may simply have been reading. It is still capped, so a browser that
+     never looks does not get asked forever. */
   var PROMPT_KEY = 'levlprep_save_prompt';
-  var PROMPT_MAX_SHOWN = 3;
+  var PROMPT_MAX_ANSWERED = 3;
+  var PROMPT_MAX_IGNORED = 4;
   var PROMPT_MAX_DISMISSED = 2;
-  var PROMPT_COOLDOWN_DAYS = 7;
+  var PROMPT_GAP_DAYS = 2;
+  // Where a signup started, so the account it produces can be credited to the
+  // prompt wording that asked for it. Read back on confirmation, then dropped.
+  var SIGNUP_SOURCE_KEY = 'levlprep_signup_source';
 
   function promptState(){
+    var st = null;
     try {
       var raw = JSON.parse(localStorage.getItem(PROMPT_KEY) || 'null');
-      if(raw && typeof raw === 'object') return raw;
+      if(raw && typeof raw === 'object') st = raw;
     } catch(e){ /* unreadable: treat as never shown */ }
-    return { shown: 0, dismissed: 0, last: null };
+    st = st || {};
+    // Records written before `ignored` existed counted every show as asked,
+    // which is the conservative reading, so they keep it.
+    return {
+      shown: st.shown || 0,
+      dismissed: st.dismissed || 0,
+      ignored: st.ignored || 0,
+      last: st.last || null,
+      stake: st.stake || null,
+    };
   }
 
   function writePromptState(st){
@@ -1462,6 +1496,34 @@
     return Math.round((now - then) / 86400000);
   }
 
+  /* What this browser stands to lose right now, from the shared progress
+     module. Zeros when it is not on the page, which only ever makes the
+     prompt fall back to its plain wording. */
+  function currentStake(){
+    var hp = window.HubProgress, out = { streak: 0, level: 0, xp: 0, freezes: 0, metToday: false };
+    try {
+      if(hp && hp.streak){ var s = hp.streak(); out.streak = s.current || 0; out.freezes = s.freezes || 0; out.metToday = !!s.metToday; }
+      if(hp && hp.levelInfo){ var l = hp.levelInfo(); out.level = l.level || 0; out.xp = l.total || 0; }
+    } catch(e){ /* progress unreadable: plain wording */ }
+    return out;
+  }
+
+  /* The eligibility rules, as a pure function of the stored state, the days
+     since the last ask and what is at stake now — so they can be tested
+     without a browser. */
+  function eligible(st, days, stake){
+    if(st.dismissed >= PROMPT_MAX_DISMISSED) return false;
+    if(st.shown - st.ignored >= PROMPT_MAX_ANSWERED) return false;
+    if(st.ignored >= PROMPT_MAX_IGNORED) return false;
+    if(days < PROMPT_GAP_DAYS) return false;
+    if(st.dismissed > 0){
+      // "Not now" was an answer. Ask again only with a new reason to.
+      var before = st.stake || { streak: 0, level: 0 };
+      if(!(stake.streak > (before.streak || 0) || stake.level > (before.level || 0))) return false;
+    }
+    return true;
+  }
+
   function mayPrompt(){
     if(currentUser) return false;               // already saved; nothing to offer
     if(!getClient()) return false;              // no backend configured on this build
@@ -1469,20 +1531,90 @@
     // prompt up, and two stacked boxes asking for things is a shakedown.
     if(document.querySelector('.levl-prompt')) return false;
     var st = promptState();
-    if(st.shown >= PROMPT_MAX_SHOWN) return false;
-    if(st.dismissed >= PROMPT_MAX_DISMISSED) return false;
-    return daysSinceKey(st.last) >= PROMPT_COOLDOWN_DAYS;
+    return eligible(st, daysSinceKey(st.last), currentStake());
   }
 
-  /* reason is what just went well, in the student's own terms ("Level 7" or
-     "that exam"), so the prompt is about the thing they just did rather than
-     about us wanting an account. */
-  function promptToSave(reason){
+  function plural(n, one, many){ return n + ' ' + (n === 1 ? one : (many || one + 's')); }
+
+  /* The wording: name what this student would actually lose, from the
+     strongest thing they have. Every line has to be literally true for this
+     browser — it is signed out, so the progress really is only here — and
+     none of them invents urgency. A streak is only mentioned from three days,
+     so a one-day run is never made into a big deal.
+
+     ctx is what just happened: { kind: 'exam', score, total, missed },
+     { kind: 'session', answered } or { kind: 'level', level, title }.
+     Returns { id, title, sub, yes }; id tags the analytics events so the
+     wordings can be compared. */
+  function saveCopy(ctx, stake, fallback){
+    ctx = ctx || {};
+    stake = stake || {};
+    var n = stake.streak || 0;
+    if(n >= 3){
+      if(stake.freezes > 0) return {
+        id: 'freeze', yes: 'Save it',
+        title: 'You’ve earned a streak freeze',
+        sub: 'It’s saved on this device only, along with your ' + n + '-day streak. Keep both on every device?'
+      };
+      if(stake.metToday) return {
+        id: 'goal', yes: 'Keep my streak',
+        title: 'Goal done for today · ' + n + '-day streak',
+        sub: 'It’s stored on this device only. Don’t lose it to a cleared browser or a new phone.'
+      };
+      return {
+        id: 'streak', yes: 'Keep my streak',
+        title: n + '-day streak — kept only in this browser',
+        sub: 'A new phone or cleared history and it’s gone. Saving it is free.'
+      };
+    }
+    if(ctx.kind === 'exam' && ctx.total){
+      return {
+        id: 'exam', yes: 'Save my progress',
+        title: ctx.score + '/' + ctx.total + (ctx.missed ? ' — and ' + plural(ctx.missed, 'missed question') + ' queued for review' : ''),
+        sub: 'All of it lives in this browser only. Keep it on every device?'
+      };
+    }
+    var level = ctx.level || stake.level;
+    if(level > 1){
+      return {
+        id: 'level', yes: 'Keep my level',
+        title: 'Level ' + level + (ctx.title ? ' — ' + ctx.title : '') + (stake.xp ? ' · ' + stake.xp.toLocaleString('en-US') + ' XP' : ''),
+        sub: 'Earned here, stored only here. Keep it if you switch devices.'
+      };
+    }
+    return {
+      id: 'generic', yes: 'Save my progress',
+      title: fallback || 'Nice work',
+      sub: 'This is saved in this browser only. Keep it on every device?'
+    };
+  }
+
+  function rememberSignupSource(id){
+    try { localStorage.setItem(SIGNUP_SOURCE_KEY, JSON.stringify({ variant: id, at: Date.now() })); } catch(e){}
+  }
+
+  /* The wording a signup came from, if it started at the prompt within the
+     last two days. Read once: the account is credited to it and it is gone. */
+  function takeSignupSource(){
+    try {
+      var raw = JSON.parse(localStorage.getItem(SIGNUP_SOURCE_KEY) || 'null');
+      localStorage.removeItem(SIGNUP_SOURCE_KEY);
+      if(raw && raw.variant && Date.now() - raw.at < 2 * 86400000) return raw.variant;
+    } catch(e){}
+    return 'none';
+  }
+
+  /* reason is the old one-line summary ("Exam finished — 78/100"), kept as
+     the fallback title; ctx lets the wording name what is at stake. */
+  function promptToSave(reason, ctx){
     if(!mayPrompt()) return false;
 
+    var stake = currentStake();
+    var copy = saveCopy(ctx, stake, reason);
     var st = promptState();
     st.shown += 1;
     st.last = promptDayKey();
+    st.stake = { streak: stake.streak, level: stake.level };
     writePromptState(st);
 
     var el = document.createElement('div');
@@ -1491,43 +1623,50 @@
     el.setAttribute('role', 'status');
     el.innerHTML =
       '<div class="levl-prompt__text">' +
-        '<b>' + escapeHtml(reason || 'Nice work') + '</b>' +
-        '<small>This is saved in this browser only. Keep it on every device?</small>' +
+        '<b>' + escapeHtml(copy.title) + '</b>' +
+        '<small>' + escapeHtml(copy.sub) + '</small>' +
       '</div>' +
       '<div class="levl-prompt__actions">' +
-        '<button type="button" class="levl-prompt__yes" id="savePromptYes">Save my progress</button>' +
+        '<button type="button" class="levl-prompt__yes" id="savePromptYes">' + escapeHtml(copy.yes) + '</button>' +
         '<button type="button" class="levl-prompt__no" id="savePromptNo">Not now</button>' +
       '</div>';
     document.body.appendChild(el);
     // Next frame, so the entry transition has a state to move away from.
     requestAnimationFrame(function(){ el.classList.add('show'); });
 
-    function close(dismissed){
-      if(dismissed){
-        var s2 = promptState();
-        s2.dismissed += 1;
-        writePromptState(s2);
-      }
+    var answered = false;
+    function close(outcome){
+      var s2 = promptState();
+      if(outcome === 'dismissed') s2.dismissed += 1;
+      if(outcome === 'ignored') s2.ignored += 1;
+      writePromptState(s2);
       el.classList.remove('show');
       setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 350);
     }
 
     document.getElementById('savePromptYes').addEventListener('click', function(){
-      if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-accepted');
-      close(false);
+      answered = true;
+      if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-accepted', { variant: copy.id });
+      rememberSignupSource(copy.id);
+      close('accepted');
       // Straight to "create account": someone answering this prompt has no
       // account by definition, and landing them on a sign-in form they cannot
       // complete is one wasted step at exactly the wrong moment.
       openAuthModal('signup');
     });
-    document.getElementById('savePromptNo').addEventListener('click', function(){ close(true); });
+    document.getElementById('savePromptNo').addEventListener('click', function(){
+      answered = true;
+      if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-dismissed', { variant: copy.id });
+      close('dismissed');
+    });
 
     // Not a modal: it must never stand between a student and the next
     // question. Left alone it withdraws on its own, and that is not counted
-    // as a refusal — they may simply have been reading.
-    setTimeout(function(){ if(el.parentNode) close(false); }, 15000);
+    // as a refusal or as one of the three asks — they may simply have been
+    // reading.
+    setTimeout(function(){ if(!answered && el.parentNode) close('ignored'); }, 15000);
 
-    if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-shown');
+    if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-shown', { variant: copy.id });
     return true;
   }
 
@@ -1539,7 +1678,8 @@
   document.addEventListener('levl:levelup', function(e){
     var d = (e && e.detail) || {};
     setTimeout(function(){
-      promptToSave('Level ' + (d.level || '') + (d.title ? ' \u2014 ' + d.title : ''));
+      promptToSave('Level ' + (d.level || '') + (d.title ? ' \u2014 ' + d.title : ''),
+        { kind: 'level', level: d.level, title: d.title });
     }, 5200);
   });
 
@@ -1598,6 +1738,9 @@
        rules above both allow it. Returns whether anything was shown, so a
        caller can tell the difference between "asked" and "held back". */
     promptToSave: promptToSave,
+    // Pure pieces of the prompt, exported for scripts/test/save-prompt.test.mjs.
+    _saveCopy: saveCopy,
+    _promptEligible: eligible,
   };
 
   // Wait for DOMContentLoaded rather than a zero timer: every subject's
