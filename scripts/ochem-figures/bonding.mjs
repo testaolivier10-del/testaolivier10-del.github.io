@@ -311,7 +311,7 @@ FIGURES.push({
     s += text(170, 240, 'in the plane: 3 C + the 3 H on the C=C carbons', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'The two coral hydrogens leave the plane of the page; every other atom lies in it.',
+  caption: 'The two coral hydrogens leave the plane of the page. The CH₃ group spins; in the position drawn, its third hydrogen happens to lie in the plane.',
 });
 
 /* ---------------------------------------------------- propenal-p-row ---
