@@ -363,7 +363,7 @@ FIGURES.push({
   id: 'fc-fill-in',
   section: 'formal-charge',
   anchor: '<span class="k">Worked example — the formula run backwards</span>',
-  viewBox: '0 0 760 250',
+  viewBox: '0 0 760 266',
   alt: 'Four structures drawn with the charges given and the lone pairs supplied, each supplied pair on a tinted disc. Methoxide oxygen, one bond and minus one, gets three lone pairs. Methylamine nitrogen, three bonds and no charge, gets one. The methyl cation carbon, three bonds and plus one, gets none; its empty p orbital stands perpendicular to the page and is named, not drawn. The methyl anion carbon, three bonds and minus one, gets one.',
   build() {
     const cols = [
@@ -372,7 +372,7 @@ FIGURES.push({
       { title: 'C, 3 bonds, +1', draw: (x, y) => methylIon(x, y, '+'), tags: ['=4 − 3 − 1 = 0', '!no lone pair', '=empty p orbital instead'] },
       { title: 'C, 3 bonds, −1', draw: (x, y) => methylIon(x, y, '−'), tags: ['=4 − 3 − (−1) = 2', '1 lone pair'] },
     ];
-    return row(cols, { x0: 10, w: 176, gap: 8, h: 222, mcy: 106, tagY: 184 });
+    return row(cols, { x0: 10, w: 176, gap: 8, h: 238, mcy: 106, tagY: 184 });
   },
   caption: 'Each tinted disc marks a lone pair the formula supplied. The methyl cation gets none; its empty p orbital points straight out of the page, above and below the plane of its three bonds.',
 });
