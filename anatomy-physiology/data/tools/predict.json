@@ -28275,7 +28275,7 @@
       "steps": {
         "tear": "The artery running along the inside of the bone at the pterion tears",
         "bleed": "Arterial blood collects between the skull and the brain’s tough outer covering",
-        "box": "The adult brain case is a rigid box: its sutures let the bones move almost not at all",
+        "box": "After infancy the brain case is a rigid box: its sutures let the bones move almost not at all",
         "press": "The growing pool of blood presses on the brain",
         "wake": "The squeezed brain works less well: headache, vomiting, drowsiness"
       },
@@ -28297,7 +28297,7 @@
           "chain": [
             "box"
           ],
-          "why": "In an adult the sutures lock the cranial bones together, so the brain case cannot expand. That is exactly why the extra blood is dangerous."
+          "why": "Long after infancy the sutures lock the cranial bones together, so the brain case cannot expand. That is exactly why the extra blood is dangerous."
         },
         {
           "id": "pressure",
@@ -28794,7 +28794,7 @@
       "steps": {
         "cut": "Blood vessels enter the scaphoid mainly at its far end, so the near piece is cut off from them",
         "far": "The far piece keeps the vessels that enter it",
-        "die": "Bone cells in the near piece die",
+        "die": "Bone cells in the near piece can die",
         "heal": "Dead bone cannot take part in healing"
       },
       "variables": [
@@ -28824,7 +28824,7 @@
             "cut",
             "die"
           ],
-          "why": "Bone cells need a blood supply. Without it, the near piece dies."
+          "why": "Bone cells need a blood supply. If the break cuts the vessels off from the near piece, its cells can die. The nearer the break is to that end, the higher the chance."
         },
         {
           "id": "heal",
@@ -29002,7 +29002,7 @@
         {
           "id": "later",
           "label": "Weeks later, if left unfixed",
-          "prompt": "Weeks later, if the break is not fixed or the head replaced:",
+          "prompt": "Weeks later, if the break is not fixed or the head replaced, compared with before the fall:",
           "start": "The shifted break has torn the vessels running up along the neck",
           "steps": {
             "supply": "Blood no longer reaches the femoral head",
@@ -29039,7 +29039,7 @@
                 "die",
                 "collapse"
               ],
-              "why": "Dead bone is not remodeled, so tiny cracks from loading are never repaired and the head can flatten."
+              "why": "Dead bone cannot repair the tiny cracks that loading makes. As the dead bone is later cleared away, the head is weakened further, so over the following months it can flatten."
             },
             {
               "id": "troch",
@@ -29062,11 +29062,11 @@
         "structure-function"
       ],
       "level": 2,
-      "setup": "A soccer player twists his ankle badly and breaks the lateral malleolus at the lower end of his fibula. The tibia is intact. Predict the changes.",
+      "setup": "A soccer player twists his ankle badly. He breaks the lateral malleolus at the lower end of his fibula and tears the strong ligament on the inner side of his ankle. The tibia is intact. Predict the changes.",
       "start": "The lateral malleolus breaks",
       "steps": {
         "grip": "One jaw of the wrench-like grip on the sides of the talus is lost",
-        "slide": "The talus can shift sideways",
+        "slide": "With the inner ligament also torn, nothing holds the talus from either side, so it can shift sideways",
         "tibia": "The tibia rests on the talus and carries almost all the body weight"
       },
       "variables": [
@@ -29078,7 +29078,7 @@
             "grip",
             "slide"
           ],
-          "why": "The two malleoli grip the sides of the talus like the jaws of a wrench. With the lateral one broken, the talus is no longer held from the outside."
+          "why": "The two malleoli grip the sides of the talus like the jaws of a wrench, and a strong ligament ties the inner side down. With the lateral malleolus broken and that ligament torn, the talus can slide sideways. A break of the lateral malleolus alone, with the inner side intact, usually stays stable."
         },
         {
           "id": "load",

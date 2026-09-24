@@ -12806,28 +12806,22 @@
       "intro": "Look down into the brain case from above. The floor steps down from front to back. Put the landmarks in order from front to back.",
       "steps": [
         {
-          "id": "crista",
-          "label": "Crista galli",
-          "text": "At the front, the crista galli sticks up from the middle of the cribriform plate.",
-          "why": "The crista galli and cribriform plate belong to the ethmoid bone, in the front of the floor between the eye sockets."
-        },
-        {
           "id": "anterior",
-          "label": "Anterior cranial fossa",
-          "text": "The shallow, highest step, formed mostly by the frontal bone, holds the front of the brain.",
-          "why": "The anterior fossa is the first and highest step. Its back edge is the sphenoid’s lesser wings."
+          "label": "Anterior fossa, crista galli",
+          "text": "The shallow, highest step, formed mostly by the frontal bone, holds the front of the brain. In its midline the crista galli sticks up from the cribriform plate.",
+          "why": "The anterior fossa is the first and highest step. The crista galli and cribriform plate, parts of the ethmoid bone, sit in its midline between the eye sockets."
         },
         {
-          "id": "sella",
-          "label": "Sella turcica",
-          "text": "In the middle of the floor sits the saddle-shaped sella turcica, holding the pituitary gland.",
-          "why": "The sella turcica is part of the sphenoid, which lies across the middle of the skull base behind the anterior fossa."
+          "id": "lesser",
+          "label": "Lesser wings of sphenoid",
+          "text": "The lesser wings of the sphenoid curve out on each side and form the back edge of the highest step.",
+          "why": "The lesser wings mark where the anterior fossa ends and the floor drops to the middle step."
         },
         {
           "id": "middle",
-          "label": "Middle cranial fossa",
-          "text": "The deeper, butterfly-shaped step, formed by the sphenoid and temporal bones, holds the lower sides of the brain.",
-          "why": "The middle fossa spreads out on each side of the sella turcica, one step lower than the anterior fossa."
+          "label": "Middle fossa, sella turcica",
+          "text": "The deeper, butterfly-shaped middle step, formed by the sphenoid and temporal bones, holds the lower sides of the brain. In its center sits the saddle-shaped sella turcica, holding the pituitary gland.",
+          "why": "The middle fossa lies one step lower than the anterior fossa. The sella turcica, part of the sphenoid, sits in its center with the fossa spreading out on each side."
         },
         {
           "id": "petrous",
@@ -12849,7 +12843,7 @@
         }
       ],
       "missing": {
-        "at": 4,
+        "at": 3,
         "distractors": [
           {
             "text": "The lesser wings of the sphenoid, which curve out on each side behind the cribriform plate, mark the back edge of the middle step.",
@@ -12863,10 +12857,10 @@
       },
       "error": {
         "at": 2,
-        "text": "In the middle of the floor sits the cribriform plate, holding the pituitary gland.",
+        "text": "The deeper, butterfly-shaped middle step, formed by the sphenoid and temporal bones, holds the lower sides of the brain. In its center sits the cribriform plate, holding the pituitary gland.",
         "why": "The cribriform plate is in the front of the floor and carries the nerve fibers for smell. The pituitary gland sits in the sella turcica of the sphenoid."
       },
-      "summary": "Crista galli and cribriform plate, anterior fossa (frontal bone), sella turcica of the sphenoid, middle fossa (sphenoid and temporal), petrous ridge, posterior fossa (occipital), foramen magnum."
+      "summary": "Anterior fossa (frontal bone) with the crista galli and cribriform plate in its midline, the lesser wings of the sphenoid at its back edge, middle fossa (sphenoid and temporal) with the sella turcica in its center, petrous ridge, posterior fossa (occipital), foramen magnum."
     },
     {
       "id": "sk-fontanelles",
@@ -13472,7 +13466,7 @@
       "level": "recall",
       "diff": 1,
       "kind": "flow",
-      "intro": "Trace the high arch along the inner side of the foot, from the heel to the big toe.",
+      "intro": "Trace the high arch along the inner side of the foot, from the heel to the ball of the foot.",
       "steps": [
         {
           "id": "calcaneus",
@@ -13502,13 +13496,7 @@
           "id": "metatarsals",
           "label": "First metatarsals",
           "text": "Reach the first three metatarsals, whose heads form the ball of the foot.",
-          "why": "The cuneiforms meet the bases of the first three metatarsals."
-        },
-        {
-          "id": "hallux",
-          "label": "Hallux",
-          "text": "End at the two phalanges of the big toe.",
-          "why": "The first metatarsal leads to the hallux, the big toe."
+          "why": "The cuneiforms meet the bases of the first three metatarsals. Their heads rest on the ground as the front support of the arch."
         }
       ],
       "missing": {
@@ -13529,7 +13517,7 @@
         "text": "Continue to the cuboid, in a row in front of the navicular.",
         "why": "The bones in a row in front of the navicular are the three cuneiforms. The cuboid lies on the outer side, in front of the calcaneus."
       },
-      "summary": "Calcaneus, talus, navicular, cuneiforms, first three metatarsals, then the phalanges of the big toe. The lateral arch runs calcaneus, cuboid, fourth and fifth metatarsals."
+      "summary": "Calcaneus, talus, navicular, cuneiforms, then the first three metatarsals, whose heads are the arch’s front support. The lateral arch runs calcaneus, cuboid, fourth and fifth metatarsals."
     },
     {
       "id": "ig-keratinocyte-maturation",

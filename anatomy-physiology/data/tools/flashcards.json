@@ -21059,7 +21059,7 @@
    "level": "recall",
    "front": "What holds the pituitary gland, and in which bone?",
    "back": "The hypophyseal fossa, the seat of the sella turcica of the sphenoid bone.",
-   "why": "The saddle-shaped bump in the middle of the skull base cradles the gland, right above the sphenoid sinus."
+   "why": "The saddle-shaped seat in the middle of the skull base cradles the gland in its hollow, right above the sphenoid sinus."
   },
   {
    "id": "sk-cribriform",
@@ -21125,7 +21125,7 @@
    "level": "recall",
    "front": "Which two bones form the bony wall that divides the nose, and what completes it in front?",
    "back": "The perpendicular plate of the ethmoid above and the vomer below; the septal cartilage completes it.",
-   "why": "The septal cartilage is hyaline cartilage, which is why the tip of the nose is flexible while the back of the wall is rigid."
+   "why": "The septal cartilage is hyaline cartilage, which is why the front of the dividing wall bends while the bony back of it is rigid."
   },
   {
    "id": "sk-sinuses",
@@ -21422,7 +21422,7 @@
    "level": "apply",
    "front": "Why does a lumbar herniation press on nerves but not on the spinal cord?",
    "back": "In adults the spinal cord ends at about L1 to L2, so below that the canal holds only nerves running down to their exit gaps.",
-   "why": "The vertebral column keeps growing after the cord stops, so the cord ends well above the lower lumbar discs, where most herniations happen."
+   "why": "After early development the vertebral column grows faster and longer than the cord, so the cord ends well above the lower lumbar discs, where most herniations happen."
   },
   {
    "id": "sk-disc-height",
@@ -21578,7 +21578,7 @@
    ],
    "level": "apply",
    "front": "Why does a chest drain go just above the upper edge of the lower rib?",
-   "back": "A nerve, an artery and a vein run in the costal groove under the lower edge of each rib, so staying at the top of the lower rib keeps the needle away from them.",
+   "back": "A nerve, an artery and a vein run in the costal groove under the lower edge of each rib, so staying at the top of the lower rib keeps the needle or tube away from them.",
    "why": "The costal groove is on the inner lower edge of the rib body."
   },
   {
@@ -21828,7 +21828,7 @@
    "level": "recall",
    "front": "How many bones in each part of the lower limb?",
    "back": "Girdle: 1 hip bone. Thigh: femur. Knee: patella. Leg: tibia and fibula. Ankle and foot: 26 (7 tarsals, 5 metatarsals, 14 phalanges).",
-   "why": "The plan matches the upper limb bone for bone, but the parts are thicker and more firmly locked together."
+   "why": "The plan parallels the upper limb: one thigh bone like the humerus, two leg bones like the radius and ulna, then ankle bones, five metatarsals and 14 phalanges. It differs in places: one hip bone instead of two girdle bones, 7 tarsals instead of 8 carpals, and a patella with no match in the arm. The parts are thicker and more firmly locked together."
   },
   {
    "id": "sk-girdles",
