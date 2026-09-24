@@ -569,12 +569,13 @@
       4:['electron-rich-poor','electrophile-recognition'],
       6:['electron-rich-poor','electrophile-recognition'] } },
 
-    'electronegativity': { n:9, steps:{
+    'electronegativity': { n:14, steps:{
       2:['electronegativity-trend'],
       3:['electronegativity-trend'],
       4:['electronegativity-trend','bond-polarity-dipoles'],
-      6:['electronegativity-trend'],
-      8:['electronegativity-trend','bond-polarity-dipoles'] } },
+      7:['electronegativity-trend','bond-polarity-dipoles'],
+      10:['electronegativity-trend'],
+      13:['electronegativity-trend','bond-polarity-dipoles'] } },
 
     'electrophiles': { n:7, steps:{
       1:['electrophile-recognition'],

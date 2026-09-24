@@ -152,8 +152,7 @@ document.addEventListener('DOMContentLoaded', function(){
     function slot(pos, i, filled, key){
       var isFilled = !!filled[i];
       return '<g class="atom' + (isFilled ? ' chosen' : '') + '" data-key="' + key + i + '">' +
-        '<circle cx="' + pos[0] + '" cy="' + pos[1] + '" r="10" fill="' + (isFilled ? 'var(--tint-accent)' : 'var(--white)') + '" stroke="var(--line)" stroke-width="2"/>' +
-        (isFilled ? '<text class="fg-tag" x="' + pos[0] + '" y="' + (pos[1]+4) + '" text-anchor="middle" pointer-events="none">e⁻</text>' : '') +
+        '<circle cx="' + pos[0] + '" cy="' + pos[1] + '" r="10" fill="' + (isFilled ? 'var(--accent)' : 'var(--white)') + '" stroke="' + (isFilled ? 'var(--accent)' : 'var(--line)') + '" stroke-width="2"/>' +
       '</g>';
     }
     /* The notes-figure class on the group gives the labels the theme-aware
@@ -161,12 +160,12 @@ document.addEventListener('DOMContentLoaded', function(){
     return '<div class="scene"><svg viewBox="0 0 300 205"><g class="notes-figure">' +
       '<circle cx="150" cy="95" r="' + kRadius + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
       '<circle cx="150" cy="95" r="' + lRadius + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
-      '<text x="150" y="63" text-anchor="middle" pointer-events="none" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">K</text>' +
-      '<text x="150" y="45" text-anchor="middle" pointer-events="none" font-family="Nunito" font-weight="800" font-size="10" fill="var(--muted)">L</text>' +
+      '<text class="fg-tag-mut" x="150" y="64" text-anchor="middle" pointer-events="none">K</text>' +
+      '<text class="fg-tag-mut" x="150" y="46" text-anchor="middle" pointer-events="none">L</text>' +
       '<circle cx="150" cy="95" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="fg-lbl" x="150" y="100" text-anchor="middle" pointer-events="none">N</text>' +
       kSlots.map(function(p,i){ return slot(p, i, kFilled, 'k'); }).join('') +
       lSlots.map(function(p,i){ return slot(p, i, lFilled, 'l'); }).join('') +
-      '<text x="150" y="197" text-anchor="middle" pointer-events="none" font-family="Nunito" font-weight="800" font-size="11" fill="var(--muted)">click empty slots; fill the inner shell first</text>' +
+      '<text class="fg-tag-mut" x="150" y="197" text-anchor="middle" pointer-events="none">click empty slots; fill the inner shell first</text>' +
     '</g></svg></div>';
   }
 
@@ -205,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function(){
             api.card.innerHTML =
               '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
               '<h2 class="step-title">Build a neutral nitrogen atom (atomic number 7).</h2>' +
-              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click slots to add them. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy. <i>Within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
+              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click empty slots to add them; a filled slot turns solid teal. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy. <i>Within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
               shellSvg(kSlots, lSlots) +
               api.feedbackHtml('fb') +
               api.nextButtonHtml('Continue', done);
