@@ -1,0 +1,90 @@
+{
+  "figure": "os-27-7",
+  "labels": [
+    {
+      "id": "penile-venules",
+      "name": "Penile venules (uncompressed)",
+      "accept": [
+        "penile venules",
+        "venules",
+        "penile veins"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "deep-dorsal-vein",
+      "name": "Deep dorsal vein",
+      "accept": [
+        "deep dorsal vein of the penis",
+        "dorsal vein"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "corpora-cavernosa",
+      "name": "Corpora cavernosa",
+      "accept": [
+        "corpus cavernosum",
+        "cavernous bodies"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "cavernosal-arteries",
+      "name": "Cavernosal arteries",
+      "accept": [
+        "cavernosal artery",
+        "deep arteries of the penis",
+        "deep artery of the penis",
+        "cavernous arteries",
+        "cavernous artery"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "spongy-urethra",
+      "name": "Spongy urethra",
+      "accept": [
+        "penile urethra",
+        "urethra"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "prepuce",
+      "name": "Prepuce",
+      "accept": [
+        "foreskin"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "corpus-spongiosum",
+      "name": "Corpus spongiosum",
+      "accept": [],
+      "lines": [
+        15
+      ],
+      "concept": "penis"
+    }
+  ]
+}
