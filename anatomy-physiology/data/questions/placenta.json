@@ -454,7 +454,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Late in pregnancy, a woman's blood glucose after a meal rises higher and stays up longer than it did before she was pregnant. Which placental hormone is mainly responsible?",
+    "q": "Late in pregnancy, a woman's blood glucose after a meal rises higher and stays up longer than it did before she was pregnant. Which of these placental hormones contributes most directly?",
     "options": [
       "Human placental lactogen",
       "Human chorionic gonadotropin",
@@ -463,7 +463,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Human placental lactogen makes the mother's cells respond less to insulin. Her glucose stays higher after meals, and more of it crosses to the fetus. It rises with the size of the placenta, so the effect is strongest late in pregnancy.",
+      "correct": "Of these hormones, human placental lactogen makes the mother's cells respond less to insulin. A placental growth hormone, progesterone and cortisol add to the effect. Her glucose stays higher after meals, and more of it crosses to the fetus. hPL rises with the size of the placenta, so the effect is strongest late in pregnancy.",
       "options": [
         "Correct. hPL reduces the mother's response to insulin.",
         "hCG peaks near week 10 and then falls, so it does not explain an effect that grows late in pregnancy.",

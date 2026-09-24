@@ -181,7 +181,7 @@
     var nav = document.createElement('nav');
     nav.id = 'levlBottomNav';
     nav.className = 'bottom-nav';
-    nav.setAttribute('aria-label', escapeHtml(cfg.course || 'Sections') + ' sections');
+    nav.setAttribute('aria-label', (cfg.course || 'Sections') + ' sections');
     nav.innerHTML = shown.map(function(it){
       return '<a href="' + it.href + '" class="bottom-nav__item' + (it.active ? ' active' : '') + '"' +
         (it.active ? ' aria-current="page"' : '') + '><span class="i">' + tabIcon(it.label) + '</span><span class="t">' + escapeHtml(it.label) + '</span></a>';

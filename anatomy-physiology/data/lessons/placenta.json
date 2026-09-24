@@ -32,8 +32,8 @@
     { "cause": "Cytotrophoblast cells invade the spiral arteries of the endometrium and replace their smooth muscle.", "effect": "The arteries widen and their resistance falls, so much more maternal blood pours into the intervillous space around the chorionic villi." },
     { "cause": "Maternal blood bathes the villi, whose placental barrier is large (about 12 square meters) and only a few micrometers thick in places.", "effect": "Oxygen, glucose and other nutrients cross quickly into the fetal capillaries, by diffusion, facilitated diffusion and active transport." },
     { "cause": "The villus capillaries drain into the umbilical vein.", "effect": "Oxygen-rich, nutrient-rich blood travels through the umbilical cord to the fetus, while the two umbilical arteries bring oxygen-poor blood and wastes back to the placenta." },
-    { "cause": "The growing syncytiotrophoblast makes more and more progesterone, estrogens and human placental lactogen.", "effect": "By weeks 7 to 9 the placenta supplies enough progesterone on its own, so the corpus luteum is no longer needed and hCG falls after its peak." },
-    { "cause": "Human placental lactogen rises with the mass of the placenta.", "effect": "The mother's cells respond less to insulin, so her blood glucose stays higher after meals and more glucose crosses to the fetus." }
+    { "cause": "The growing syncytiotrophoblast makes more and more progesterone, estrogens and human placental lactogen.", "effect": "By weeks 7 to 9 the placenta supplies enough progesterone on its own, so the pregnancy no longer depends on the corpus luteum." },
+    { "cause": "Human placental lactogen, with a placental growth hormone and progesterone, rises with the mass of the placenta.", "effect": "The mother's cells respond less to insulin, so her blood glucose stays higher after meals and more glucose crosses to the fetus." }
   ],
   "misconception": {
     "wrong": "The placenta filters out harmful substances and protects the fetus from them.",

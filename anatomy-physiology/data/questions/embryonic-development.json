@@ -594,7 +594,7 @@
   {
     "id": "anp-embryonic-development-22",
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"

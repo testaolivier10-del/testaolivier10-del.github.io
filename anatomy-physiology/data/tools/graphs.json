@@ -20167,7 +20167,7 @@
       "homeostasis",
       "gradients"
     ],
-    "intro": "Schematic resting potential of a skeletal or heart muscle cell as plasma potassium changes, with threshold held at about −55 mV. The gap between the line and threshold is how far a cell must be pushed to fire.",
+    "intro": "Schematic resting potential of a skeletal or heart muscle cell as plasma potassium changes, with threshold held at about −55 mV. The gap between the line and threshold is how far a cell must be pushed to fire. At low potassium, real cells fall short of this line, and at very low levels some even depolarize instead; read the line for direction, not exact values.",
     "alt": "Resting membrane potential in millivolts against plasma potassium from 2 to 8 millimoles per liter. The line rises from about −108 millivolts at 2 to −90 at 4 and about −72 at 8. A dashed line marks threshold at −55 millivolts.",
     "x": {
       "min": 2,
@@ -21020,7 +21020,7 @@
         "type": "shift",
         "level": "analyze",
         "diff": 3,
-        "q": "Suppose her kidneys were failing. How would the bicarbonate and pH panels differ?",
+        "q": "Suppose her kidneys could not raise their H+ secretion, but otherwise kept working as before. How would the bicarbonate and pH panels differ?",
         "options": [
           "Both would stay flat near their starting values: bicarbonate about 26, pH about 7.26",
           "Bicarbonate would rise faster and pH would overshoot above 7.45",
@@ -21045,7 +21045,7 @@
                   26
                 ]
               ],
-              "label": "failing kidneys",
+              "label": "no renal response",
               "labelAt": [
                 3,
                 25
@@ -21066,7 +21066,7 @@
                   7.26
                 ]
               ],
-              "label": "failing kidneys",
+              "label": "no renal response",
               "labelAt": [
                 3,
                 7.245
@@ -21075,11 +21075,11 @@
           ]
         },
         "why": {
-          "correct": "Renal compensation needs working kidneys and time. Without it, no new bicarbonate is added, the ratio stays near 14 and pH stays near 7.26.",
+          "correct": "Renal compensation needs the kidneys to secrete more H+, and time. Without that, no new bicarbonate is added, the ratio stays near 14 and pH stays near 7.26. (Kidneys that were failing outright would do worse: they could not excrete even the usual daily acid, so bicarbonate would drift down and pH fall further.)",
           "options": [
             "Right: no renal compensation.",
-            "Compensation seldom overshoots, and failing kidneys add less bicarbonate, not more.",
-            "Failing kidneys add no bicarbonate, and the pH cannot rise without it.",
+            "Compensation seldom overshoots, and kidneys that cannot raise H+ secretion add no extra bicarbonate at all.",
+            "Without a renal response no new bicarbonate is added, and the pH cannot rise without it.",
             "The lungs are the source of the problem here, so they cannot compensate."
           ]
         }

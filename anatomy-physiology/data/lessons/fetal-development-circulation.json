@@ -29,11 +29,11 @@
     "caption": "Fetal circulation and its three shunts. Hide the labels and name the shunt past the liver, the opening between the atria and the channel from the pulmonary trunk to the aorta, then the vessels of the umbilical cord."
   },
   "chain": [
-    { "cause": "The fetal lungs are filled with fluid, and low oxygen keeps their blood vessels narrow.", "effect": "Resistance to flow through the lungs is high, so pressure in the right atrium, right ventricle and pulmonary trunk stays high." },
-    { "cause": "The placenta is a wide, low-resistance bed fed by the aorta.", "effect": "Aortic pressure stays low, so right-sided pressures are higher than left-sided ones." },
+    { "cause": "The fetal lungs are filled with fluid, and low oxygen keeps their blood vessels narrow.", "effect": "Resistance to flow through the lungs is high, so only a small share of the blood passes through them, and pressure in the right ventricle and pulmonary trunk stays high." },
+    { "cause": "Little blood returns from the lungs to the left atrium, while the right atrium receives the venous return from the body and the placenta.", "effect": "The left atrium fills at a lower pressure than the right atrium." },
     { "cause": "Right atrial pressure is higher than left atrial pressure.", "effect": "Blood pushes open the septum primum flap and crosses the foramen ovale, carrying the oxygen-rich stream from the ductus venosus and inferior vena cava to the left atrium and left ventricle." },
     { "cause": "The left ventricle pumps that oxygen-rich blood into the ascending aorta.", "effect": "The coronary arteries and the arteries to the head and arms, the aorta's first branches, receive the best-oxygenated blood." },
-    { "cause": "Pulmonary trunk pressure is slightly above aortic pressure, and low oxygen and prostaglandins keep the ductus arteriosus open.", "effect": "Most of the right ventricle's output passes through the ductus arteriosus into the descending aorta and returns to the placenta through the umbilical arteries." }
+    { "cause": "The lungs resist flow and the low-resistance placenta keeps aortic pressure low, so pulmonary trunk pressure is slightly above aortic pressure; low oxygen and prostaglandins keep the ductus arteriosus open.", "effect": "Most of the right ventricle's output passes through the ductus arteriosus into the descending aorta and returns to the placenta through the umbilical arteries." }
   ],
   "misconception": {
     "wrong": "A fetus gets its oxygen by breathing amniotic fluid into its lungs.",

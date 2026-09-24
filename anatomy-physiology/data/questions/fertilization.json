@@ -334,7 +334,7 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "Without an acrosome, a sperm has no enzymes to digest a path through the zona pellucida, however many try or however well they are capacitated. Injecting a sperm into the cytoplasm skips the zona entirely; the sperm can still activate the oocyte once inside.",
+      "correct": "Without an acrosome, a sperm has no enzymes to digest a path through the zona pellucida, however many try or however well they are capacitated. Injecting a sperm into the cytoplasm skips the zona entirely. Round-headed sperm often carry too little of the enzyme that activates the oocyte, so clinics may also add a treatment that raises calcium in the oocyte after the injection.",
       "options": [
         "Sperm numbers are already normal. More sperm without acrosomes would fail in the same way.",
         "Every one of his sperm lacks an acrosome, so more of them adds no enzymes. Numbers are not the problem.",
@@ -356,7 +356,7 @@
       "Her oocytes can no longer complete meiosis I before they are released",
       "Her ovaries stop releasing oocytes once the tubes are blocked",
       "Scarring prevents capacitation in the uterus",
-      "Sperm cannot reach the ampulla, where fertilization happens"
+      "Sperm cannot get past the blockage to the ampulla, where fertilization happens"
     ],
     "correct": 3,
     "why": {

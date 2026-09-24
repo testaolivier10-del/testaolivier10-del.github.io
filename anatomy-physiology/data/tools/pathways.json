@@ -8460,16 +8460,10 @@
           "why": "Charged NH4+ cannot diffuse back across the membrane, so the acid is excreted instead of recycled."
         },
         {
-          "id": "exit",
-          "label": "HCO3− exits to the blood",
-          "text": "On the basolateral side, the bicarbonate made inside the cell is swapped for Cl− on a band 3 exchanger and enters the blood.",
-          "why": "The base partner of each secreted H+ must go somewhere. The band 3 exchanger, the same kind that runs the chloride shift in red blood cells, trades it for chloride."
-        },
-        {
           "id": "new",
-          "label": "New bicarbonate in plasma",
-          "text": "Each H+ excreted has added one new bicarbonate to the plasma, replacing bicarbonate that a fixed acid used up.",
-          "why": "It is new because it was made in the cell, not reclaimed from the filtrate. This is how plasma bicarbonate stays near 24 mmol/L despite the daily acid load."
+          "label": "New HCO3− enters the plasma",
+          "text": "The bicarbonate partner of each excreted H+ crosses the basolateral side on a band 3 exchanger, swapped for Cl−, and enters the plasma as new bicarbonate, replacing bicarbonate that a fixed acid used up.",
+          "why": "It is new because it was made in the cell, not reclaimed from the filtrate, and it adds to the blood only because its H+ partner left in the urine. Band 3 is the same kind of exchanger that runs the chloride shift in red blood cells. This is how plasma bicarbonate stays near 24 mmol/L despite the daily acid load."
         }
       ],
       "missing": {

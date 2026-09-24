@@ -7654,7 +7654,7 @@
       ],
       "level": "apply",
       "diff": 1,
-      "intro": "Estimate how much water a person carries and how it splits between the compartments. Total body water is a share of body mass (about 60% in a young man, 50 to 55% in a woman, 45 to 50% in an older adult, 75% in an infant). Two thirds of it is ICF and one third ECF; the ECF is three quarters interstitial fluid and one quarter plasma.",
+      "intro": "Estimate how much water a person carries and how it splits between the compartments. Total body water is a share of body mass (about 60% in a young man, 50 to 55% in a woman, 45 to 50% in an older adult, 75% in an infant). In an adult, two thirds of it is ICF and one third ECF; the ECF is three quarters interstitial fluid and one quarter plasma.",
       "formula": "TBW = mass × share; ICF = ⅔ TBW; ECF = ⅓ TBW; interstitial = ¾ ECF; plasma = ¼ ECF",
       "inputs": [
         {
@@ -7769,7 +7769,7 @@
       "meaning": [
         {
           "when": "S >= 70",
-          "text": "A share of {S}% is typical of an infant. More of an infant’s weight is water, and they turn over a larger share of it each day, so a day of vomiting or diarrhea is a bigger loss for them."
+          "text": "A share of {S}% is typical of an infant. More of an infant’s weight is water, and they turn over a larger share of it each day, so a day of vomiting or diarrhea is a bigger loss for them. The two-thirds / one-third split is an adult rule: in a newborn the ECF is close to half of body water or more, so these compartment numbers are only rough."
         },
         {
           "when": "S <= 50",
@@ -8677,11 +8677,15 @@
       ],
       "meaning": [
         {
-          "when": "K1 > 6",
+          "when": "F < 0 && K1 > 5",
+          "text": "Shifting potassium into cells changed plasma potassium by {DK:+} mmol/L, to {K1} mmol/L, which is still high. A shift into cells buys time, but it leaves the body’s total potassium unchanged; the extra potassium must still be removed by the kidneys, binders or dialysis."
+        },
+        {
+          "when": "K1 > 6 && F > 0",
           "text": "A plasma potassium of {K1} mmol/L is dangerous: moving just {F}% of cell potassium did it. The resting potential of heart cells moves toward threshold, with peaked T waves and a risk of ventricular fibrillation. IV calcium protects the heart while insulin shifts potassium back into cells."
         },
         {
-          "when": "K1 > 5",
+          "when": "K1 > 5 && F >= 0",
           "text": "A plasma potassium of {K1} mmol/L is high. Because the ECF holds so little potassium, a small shift out of cells shows up fast."
         },
         {
@@ -9903,7 +9907,7 @@
         },
         {
           "title": "Step 5: compensation",
-          "text": "Other number normal: uncompensated. Other number moved in the same direction as the primary one: partially compensated if pH is still abnormal, fully compensated if it is back in range. The two numbers moved in opposite directions: two disorders at once."
+          "text": "Other number normal and pH abnormal: uncompensated. Other number moved in the same direction as the primary one: partially compensated if pH is still abnormal, fully compensated if it is back in range. The two numbers moved in opposite directions: two disorders at once."
         }
       ],
       "results": [
@@ -9950,7 +9954,11 @@
           "text": "<b>Two primary disorders: respiratory alkalosis and metabolic alkalosis.</b> PaCO2 has fallen and bicarbonate has risen, opposite directions. Both raise the ratio, so the pH rises further than either would alone."
         },
         {
-          "when": "RESP && ASIDE && !COMP",
+          "when": "!ACID && !ALK && !COMP",
+          "text": "<b>pH in range with only one number abnormal.</b> PaCO2 {P} and HCO3− {H} give a pH of {PHR}, within 7.35 to 7.45. The stepwise method names a disorder only when the pH is abnormal or both numbers have moved, so it gives no label here. Recheck the values and interpret them with the patient."
+        },
+        {
+          "when": "RESP && ASIDE && !COMP && ACID",
           "text": "<b>Respiratory acidosis, uncompensated (acute).</b> PaCO2 {P} is high from hypoventilation, and bicarbonate {H} is still normal, so the kidneys have not responded yet: typical of the first hours, as in an opioid overdose."
         },
         {
@@ -9962,7 +9970,7 @@
           "text": "<b>Respiratory acidosis, fully compensated.</b> PaCO2 {P} is high and bicarbonate {H} has risen enough to bring the pH back into range, on the acid side of 7.40."
         },
         {
-          "when": "RESP && KSIDE && !COMP",
+          "when": "RESP && KSIDE && !COMP && ALK",
           "text": "<b>Respiratory alkalosis, uncompensated (acute).</b> PaCO2 {P} is low from hyperventilation, and bicarbonate {H} is still in range, so the kidneys have not acted: typical of a panic attack, pain or fever."
         },
         {
@@ -9974,7 +9982,7 @@
           "text": "<b>Respiratory alkalosis, fully compensated.</b> PaCO2 {P} is low and bicarbonate {H} has fallen enough to bring the pH back into range, on the alkaline side of 7.40: as after weeks at high altitude."
         },
         {
-          "when": "MET && ASIDE && !COMP",
+          "when": "MET && ASIDE && !COMP && ACID",
           "text": "<b>Metabolic acidosis, uncompensated.</b> Bicarbonate {H} is low and PaCO2 is still normal. The lungs usually respond within minutes, so this is seen only very early, or when breathing cannot increase."
         },
         {
@@ -9986,7 +9994,7 @@
           "text": "<b>Metabolic acidosis, fully compensated.</b> Bicarbonate {H} is low and PaCO2 {P} has fallen enough to bring the pH back into range, on the acid side of 7.40."
         },
         {
-          "when": "MET && KSIDE && !COMP",
+          "when": "MET && KSIDE && !COMP && ALK",
           "text": "<b>Metabolic alkalosis, uncompensated.</b> Bicarbonate {H} is high and PaCO2 is still normal."
         },
         {
@@ -10006,7 +10014,7 @@
           "text": "<b>No single number explains this pH.</b> The values sit at the edges of their ranges. Recheck them, or consider two disorders pulling in opposite directions."
         },
         {
-          "when": "MET && ASIDE",
+          "when": "MET && ASIDE && (ACID || COMP)",
           "also": true,
           "text": "Next, calculate the anion gap to tell acid gained from bicarbonate lost, and check the compensation with Winter’s formula: expected PaCO2 about 1.5 × HCO3− + 8 (± 2)."
         }
@@ -10226,6 +10234,10 @@
       ],
       "meaning": [
         {
+          "when": "AG < 8",
+          "text": "A gap of {AG} mmol/L is below the usual range. A truly low gap is uncommon. The most common cause is a low albumin, and a lab error is the next thing to rule out, so recheck the values before you interpret the bicarbonate."
+        },
+        {
           "when": "H < 22 && AG > 12",
           "text": "<b>High anion gap metabolic acidosis: acid gained.</b> An acid’s H+ used up bicarbonate, and its anion, which the panel does not measure, took bicarbonate’s place. Think ketone bodies (DKA), lactic acid, kidney failure or poisons such as methanol or aspirin."
         },
@@ -10290,6 +10302,7 @@
         }
       ],
       "practice": {
+        "require": "AG >= 8 && AG <= 35",
         "asks": [
           {
             "key": "AG",

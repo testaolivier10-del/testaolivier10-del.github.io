@@ -507,7 +507,7 @@
     ],
     "q": "A baby is born at 27 weeks of pregnancy. Within hours, her breathing is fast and labored and her lungs are stiff. Her mother had not received any drug before the birth. What is the most likely reason?",
     "options": [
-      "Her lungs are still in the branching stage, with no respiratory bronchioles",
+      "Her lungs are still in the pseudoglandular (branching) stage, with no respiratory bronchioles",
       "Her type II cells have not yet made enough surfactant",
       "Her ductus venosus is still open",
       "Her foramen ovale closed too early"
@@ -516,7 +516,7 @@
     "why": {
       "correct": "At 27 weeks the lungs are between the canalicular and saccular stages. Type II cells are present, but they usually make enough surfactant only by weeks 34 to 36. Without it, surface tension collapses the alveoli, making the lungs stiff. A glucocorticoid given to the mother before the birth would have sped surfactant production.",
       "options": [
-        "The branching stage ends around week 17. By 27 weeks respiratory bronchioles and early air sacs have formed.",
+        "The pseudoglandular (branching) stage ends around week 17. By 27 weeks respiratory bronchioles and early air sacs have formed.",
         "Correct. Too little surfactant makes preterm lungs stiff.",
         "The ductus venosus carries blood past the liver. It does not affect how stiff the lungs are.",
         "Early closure of the foramen ovale would strain the fetal right heart before birth. It would not make the lungs stiff."

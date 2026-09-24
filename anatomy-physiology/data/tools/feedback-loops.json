@@ -3648,7 +3648,7 @@
         "mass-balance"
       ],
       "kind": "negative",
-      "scenario": "For a week a bodybuilder eats a very high-protein diet. The sulfuric acid from its amino acids keeps using up bicarbonate. His breathing barely changes, yet by the end of the week his plasma bicarbonate is steady again and his urine holds several times its usual ammonium.",
+      "scenario": "For a week a bodybuilder eats a very high-protein diet. The sulfuric acid from its amino acids keeps using up bicarbonate. His breathing barely changes, yet by the end of the week his plasma bicarbonate is steady again and his urine holds about twice its usual ammonium.",
       "slots": {
         "stimulus": {
           "text": "Plasma bicarbonate and pH drift down as fixed acid uses up bicarbonate",
@@ -3683,7 +3683,7 @@
         "response": {
           "text": "More H+ is excreted as titratable acid and ammonium, each one adding a new bicarbonate to the blood, so bicarbonate and pH rise back",
           "short": "New bicarbonate: pH rises",
-          "why": "Each H+ excreted leaves one bicarbonate behind in the tubule cell, which enters the blood. Ammonium excretion can rise five- to tenfold over 3 to 5 days, so the daily acid is matched."
+          "why": "Each H+ excreted leaves one bicarbonate behind in the tubule cell, which enters the blood. Over 3 to 5 days ammonium excretion rises, about twofold on a diet like this and up to five- to tenfold for a much larger acid load, so the daily acid is matched."
         }
       },
       "distractors": [

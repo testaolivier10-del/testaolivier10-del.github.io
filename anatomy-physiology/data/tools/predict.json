@@ -18461,7 +18461,7 @@
           "chain": [
             "dilute"
           ],
-          "why": "Four liters of water spread through her body water with no added solute. Her 12,180 mOsm of solute is now dissolved in about 46 L instead of 42, so osmolality falls from about 290 to about 265 mOsm/kg."
+          "why": "Four liters of water with no added solute enter her body water. If none were excreted, her 12,180 mOsm of solute would be dissolved in 46 L instead of 42, and osmolality would fall from about 290 to 265 mOsm/kg. She does pass some urine in that hour, so the real value is a little higher, near 270, still far below normal."
         },
         {
           "id": "icf",
@@ -18491,7 +18491,7 @@
             "osmo",
             "adh"
           ],
-          "why": "A fall in osmolality of 1 to 2% is enough for the osmoreceptors to swell and cut ADH release. Her fall of about 9% switches ADH almost fully off."
+          "why": "A fall in osmolality of 1 to 2% is enough for the osmoreceptors to swell and cut ADH release. Her fall of 7 to 9% switches ADH almost fully off."
         },
         {
           "id": "thirst",
@@ -18788,7 +18788,7 @@
       ],
       "level": 2,
       "misconception": "a swollen patient cannot be short of blood volume",
-      "setup": "A man has a large burn. Over the next hours, damaged capillaries leak plasma fluid and protein into his tissues. He loses little fluid from his body. Predict his state six hours later, compared with before the burn.",
+      "setup": "A man has a large burn. Over the next hours, damaged capillaries leak plasma fluid and protein into his tissues. Leave aside the water that evaporates from the burned skin and follow only the leak. Predict his state six hours later, compared with before the burn.",
       "start": "Capillary walls let plasma fluid and protein through",
       "steps": {
         "leak": "Plasma fluid and protein pour into the interstitial fluid",
@@ -18821,7 +18821,7 @@
         },
         {
           "id": "tbw",
-          "name": "Total body water",
+          "name": "Total body water, counting only the leak",
           "answer": "none",
           "chain": [
             "leak",
@@ -18877,14 +18877,14 @@
       "variables": [
         {
           "id": "urine-osm",
-          "name": "Urine osmolality",
+          "name": "Urine osmolality, compared with what his dilute plasma should produce",
           "answer": "up",
           "chain": [
             "aqp",
             "keep",
             "uosm"
           ],
-          "why": "With ADH present, water leaves the collecting ducts into the salty medulla, so the urine is concentrated even though his plasma is dilute. The loop would normally switch ADH off; the tumor ignores it."
+          "why": "Plasma this dilute should switch ADH off, and the urine would fall toward 50 to 100 mOsm/kg. With ADH present, water leaves the collecting ducts into the salty medulla, so his urine stays concentrated, often above 300 mOsm/kg, even though his plasma is dilute. The loop would normally switch ADH off; the tumor ignores it."
         },
         {
           "id": "na",
@@ -19128,13 +19128,13 @@
       "variables": [
         {
           "id": "urine-na",
-          "name": "Sodium in her urine",
+          "name": "Sodium in her urine in the hours after a dose",
           "answer": "up",
           "chain": [
             "na",
             "natri"
           ],
-          "why": "The thick ascending limb normally reabsorbs about a quarter of filtered sodium on NKCC2. Blocked, it lets far more through than later segments can catch."
+          "why": "The thick ascending limb normally reabsorbs about a quarter of filtered sodium on NKCC2. Blocked, it lets far more through than later segments can catch. Over days, aldosterone and the distal segments catch more between doses, so her total daily sodium output comes back to match her intake, at a smaller ECF volume."
         },
         {
           "id": "ecf",
@@ -19200,7 +19200,6 @@
         "k": "Plasma potassium rises",
         "pex": "Phosphate, normally excreted by the kidneys, builds up",
         "bind": "High phosphate binds calcium",
-        "cal": "Failing kidneys make little calcitriol, so less calcium is absorbed",
         "ca": "Plasma calcium falls",
         "pth": "The parathyroid glands sense the low calcium",
         "water": "He keeps salt and water, and more water than salt",
@@ -19233,10 +19232,9 @@
           "chain": [
             "pex",
             "bind",
-            "cal",
             "ca"
           ],
-          "why": "Two causes add up: the high phosphate binds calcium, and his failing kidneys make little calcitriol, so he absorbs little calcium from food."
+          "why": "Phosphate that he cannot excrete binds calcium, so ionized calcium falls between sessions. His failing kidneys also make little calcitriol, which keeps his calcium absorption low all the time; that background does not change over two missed sessions."
         },
         {
           "id": "pth",
@@ -19464,7 +19462,7 @@
       ],
       "level": 3,
       "misconception": "the lungs can get rid of any acid",
-      "setup": "A man eats a large steak dinner. Breaking down its sulfur-containing amino acids adds about 40 mmol of sulfuric acid to his blood over the evening. Predict the changes during the evening, compared with before the meal.",
+      "setup": "A man eats a large steak dinner. Breaking down its sulfur-containing amino acids adds about 40 mmol of hydrogen ions, as sulfuric acid, to his blood over the evening. Predict the changes during the evening, compared with before the meal.",
       "start": "Sulfuric acid adds hydrogen ions to the blood",
       "steps": {
         "buffer": "Bicarbonate takes up the H+, forming carbonic acid and then carbon dioxide",
