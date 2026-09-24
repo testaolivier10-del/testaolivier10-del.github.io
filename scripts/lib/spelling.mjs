@@ -94,11 +94,17 @@ export function visibleSpans(path, src) {
       const start = m.index + m[0].length - m[1].length - 1;
       if (PROSE(m[1])) spans.push([start, start + m[1].length]);
     }
-    // Bare strings inside an options/array of prose.
+    // Bare strings inside an options/array of prose. An "accept" list is the
+    // answers a typed-answer tool takes, so it deliberately includes the
+    // British spelling a student might type ("grey ramus"); it is never shown.
+    const accepted = [];
+    const reAcc = /"accept"\s*:\s*\[[^\]]*\]/g;
+    while ((m = reAcc.exec(src))) accepted.push([m.index, m.index + m[0].length]);
     const re2 = /"((?:[^"\\]|\\.)*)"/g;
     while ((m = re2.exec(src))) {
       const body = m[1];
       if (!PROSE(body)) continue;
+      if (accepted.some(([a, b]) => m.index >= a && m.index < b)) continue;
       // Skip anything that is a key (followed by a colon).
       if (/^\s*:/.test(src.slice(m.index + m[0].length))) continue;
       spans.push([m.index + 1, m.index + 1 + body.length]);
