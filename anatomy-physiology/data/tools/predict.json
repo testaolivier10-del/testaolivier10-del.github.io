@@ -22456,6 +22456,1802 @@
           "why": "Maximum heart rate falls by roughly 0.7 to 1 beat per minute each year as the SA node loses pacemaker cells and the heart responds less to sympathetic stimulation. Strength training does not change that."
         }
       ]
+    },
+    {
+      "id": "jt-symphysis-pregnancy-l4",
+      "title": "The pubic symphysis through pregnancy and after",
+      "topic": "joint-classification",
+      "core": [
+        "structure-function"
+      ],
+      "level": 4,
+      "misconception": "a joint that loosens in pregnancy has changed into a different kind of joint",
+      "setup": "Ms. Reyes is 32 weeks pregnant. Her pubic symphysis, a pad of fibrocartilage between the two pubic bones, is normally about 4 to 5 mm wide. Follow the joint through late pregnancy and then through the months after delivery.",
+      "stages": [
+        {
+          "id": "late",
+          "label": "Late pregnancy",
+          "prompt": "In late pregnancy, compared with before she was pregnant.",
+          "start": "Pregnancy hormones loosen the collagen in the fibrocartilage pad and the ligaments over it",
+          "steps": {
+            "stretch": "The pad and its ligaments stretch more under load",
+            "gap": "The gap between the pubic bones widens by a few millimeters",
+            "shift": "The bones shift more each time weight moves from one leg to the other",
+            "canal": "The front of the pelvic ring gives a little, so the birth canal widens slightly"
+          },
+          "variables": [
+            {
+              "id": "gap",
+              "name": "Width of the gap between the pubic bones",
+              "answer": "up",
+              "chain": [
+                "stretch",
+                "gap"
+              ],
+              "why": "Looser collagen stretches farther under the same load, so the pad and ligaments let the two pubic bones drift apart by a few millimeters."
+            },
+            {
+              "id": "move",
+              "name": "Movement at the joint with each step",
+              "answer": "up",
+              "chain": [
+                "stretch",
+                "shift"
+              ],
+              "why": "The tissue that limits movement is now stretchier, and movement at a joint is set by how much its connecting tissue gives. So each shift of weight moves the bones more."
+            },
+            {
+              "id": "stab",
+              "name": "How well the joint resists being pushed out of line",
+              "answer": "down",
+              "chain": [
+                "stretch",
+                "shift"
+              ],
+              "why": "Mobility and stability pull against each other: tissue that gives more also holds the bones less firmly, so shearing forces move the joint surfaces more easily."
+            },
+            {
+              "id": "canal",
+              "name": "Width of the birth canal",
+              "answer": "up",
+              "chain": [
+                "stretch",
+                "gap",
+                "canal"
+              ],
+              "why": "The pubic symphysis is the front of the pelvic ring. A wider, looser joint there lets the ring open slightly, which is the extra give that helps at birth."
+            },
+            {
+              "id": "type",
+              "name": "Amount of fibrocartilage joining the two pubic bones",
+              "answer": "none",
+              "chain": [
+                "stretch"
+              ],
+              "why": "The pad is still there and still fibrocartilage, so the joint is still a symphysis. Only how stretchy its collagen is has changed, and the movement followed."
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "Months after delivery",
+          "prompt": "Some months after delivery, compared with late pregnancy.",
+          "start": "After delivery, the collagen of the pad and its ligaments tightens again",
+          "steps": {
+            "stiff": "The pad and its ligaments stretch less under load",
+            "narrow": "The gap narrows back toward its usual 4 to 5 mm",
+            "less": "The bones shift less each time weight moves from one leg to the other",
+            "ease": "The joint surfaces shear less, so the pain with walking and stairs eases"
+          },
+          "variables": [
+            {
+              "id": "gap",
+              "name": "Width of the gap between the pubic bones",
+              "answer": "down",
+              "chain": [
+                "stiff",
+                "narrow"
+              ],
+              "why": "Tighter collagen pulls the bones back together, and the gap usually returns to near normal within months."
+            },
+            {
+              "id": "move",
+              "name": "Movement at the joint with each step",
+              "answer": "down",
+              "chain": [
+                "stiff",
+                "less"
+              ],
+              "why": "Tissue that stretches less allows the bones to move less, so the joint goes back to being only slightly movable, an amphiarthrosis."
+            },
+            {
+              "id": "stab",
+              "name": "How well the joint resists being pushed out of line",
+              "answer": "up",
+              "chain": [
+                "stiff",
+                "less"
+              ],
+              "why": "The same trade-off in reverse: as the tissue tightens and mobility falls, the joint holds its bones more firmly."
+            },
+            {
+              "id": "pain",
+              "name": "Pain at the front of the pelvis on stairs",
+              "answer": "down",
+              "chain": [
+                "stiff",
+                "less",
+                "ease"
+              ],
+              "why": "The pain came from the joint surfaces shearing as the loose joint shifted. Less shift means less shearing, so the pain fades."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jt-growth-plate-closes",
+      "title": "A growth plate closes",
+      "topic": "joint-classification",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the epiphyseal plate is a movable joint that stiffens when it closes",
+      "setup": "At 13, the epiphyseal plate of a boy’s femur is still open. By 20 he has stopped growing taller. Compare the site of the plate at 20 with the same site at 13.",
+      "start": "Growth in length of the femur stops",
+      "steps": {
+        "replace": "Bone replaces the hyaline cartilage of the epiphyseal plate",
+        "line": "The plate becomes a thin line of dense bone, the epiphyseal line",
+        "fuse": "The epiphysis and diaphysis are now one piece of bone: the synchondrosis has become a synostosis"
+      },
+      "variables": [
+        {
+          "id": "cart",
+          "name": "Hyaline cartilage at the site of the plate",
+          "answer": "down",
+          "chain": [
+            "replace"
+          ],
+          "why": "When growth in length ends, bone replaces the plate’s hyaline cartilage, so almost none is left at that site."
+        },
+        {
+          "id": "grow",
+          "name": "Growth in length at that end of the femur",
+          "answer": "down",
+          "chain": [
+            "replace",
+            "line"
+          ],
+          "why": "Growth in length happens in the plate’s cartilage. Once it is replaced by the bone of the epiphyseal line, that end can no longer lengthen."
+        },
+        {
+          "id": "move",
+          "name": "Movement between the epiphysis and the diaphysis",
+          "answer": "none",
+          "chain": [
+            "replace",
+            "line",
+            "fuse"
+          ],
+          "why": "A synchondrosis is already a synarthrosis: the hyaline cartilage held the two parts almost immobile. Fusing them into one bone does not change that."
+        },
+        {
+          "id": "pieces",
+          "name": "Number of separate bony pieces making up that end of the femur",
+          "answer": "down",
+          "chain": [
+            "replace",
+            "line",
+            "fuse"
+          ],
+          "why": "Before, cartilage joined two pieces, the epiphysis and diaphysis. Once bone fills the gap, the two fuse into one: a synostosis."
+        }
+      ]
+    },
+    {
+      "id": "jt-early-suture-fusion",
+      "title": "A skull suture fuses too early",
+      "topic": "joint-classification",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a baby’s skull grows by expanding evenly in every direction regardless of its sutures",
+      "setup": "In an infant, bone grows across the sagittal suture months after birth, fusing the two parietal bones, while the brain keeps growing fast. Compare the skull over the following months with a baby whose sutures are all open.",
+      "start": "Bone replaces the fibrous tissue of one suture",
+      "steps": {
+        "fuse": "The two bones on either side of that suture fuse into one: a synostosis",
+        "stop": "The skull can no longer grow at that seam",
+        "other": "The growing brain pushes the skull out along the sutures that are still open",
+        "shape": "The head grows long in the direction of the fused seam and narrow across it"
+      },
+      "variables": [
+        {
+          "id": "seam",
+          "name": "Skull growth across the fused seam",
+          "answer": "down",
+          "chain": [
+            "fuse",
+            "stop"
+          ],
+          "why": "A skull grows at its sutures, where the fibrous tissue lets the bone edges move apart and new bone form. Once bone bridges the seam, that growth stops."
+        },
+        {
+          "id": "open",
+          "name": "Skull growth at the sutures that are still open",
+          "answer": "up",
+          "chain": [
+            "fuse",
+            "stop",
+            "other"
+          ],
+          "why": "The brain keeps growing and presses outward. Blocked at one seam, the skull grows more at the open sutures instead."
+        },
+        {
+          "id": "long",
+          "name": "Length of the head from front to back",
+          "answer": "up",
+          "chain": [
+            "fuse",
+            "stop",
+            "other",
+            "shape"
+          ],
+          "why": "With the sagittal seam fused, the skull cannot widen across it, so extra growth goes front to back and the head becomes long and narrow. This is craniosynostosis."
+        },
+        {
+          "id": "wide",
+          "name": "Width of the head from side to side",
+          "answer": "down",
+          "chain": [
+            "fuse",
+            "stop",
+            "shape"
+          ],
+          "why": "Side-to-side growth of the top of the skull happens at the sagittal suture, which runs front to back. With it fused, the head stays narrow compared with a baby whose sutures are open."
+        }
+      ]
+    },
+    {
+      "id": "jt-braced-knee",
+      "title": "A knee held still in a brace",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "articular cartilage is fed by its own blood vessels",
+      "setup": "After an injury, a patient keeps his knee completely still in a brace, bearing no weight on it, for many weeks. Compare the knee’s articular cartilage with its state before the brace.",
+      "start": "The knee is neither loaded nor moved",
+      "steps": {
+        "pump": "The cartilage is no longer squeezed and released",
+        "fluid": "Less synovial fluid is pushed out of the cartilage and drawn back in",
+        "feed": "Less oxygen and fewer nutrients reach the chondrocytes by diffusion",
+        "thin": "Poorly fed chondrocytes cannot maintain the cartilage, and it softens and thins"
+      },
+      "variables": [
+        {
+          "id": "flow",
+          "name": "Movement of fluid in and out of the cartilage",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "fluid"
+          ],
+          "why": "Loading squeezes fluid out of cartilage, and unloading lets it spring back and draw fresh synovial fluid in. With no loading, that pumping stops."
+        },
+        {
+          "id": "feed",
+          "name": "Nutrients reaching the chondrocytes",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "fluid",
+            "feed"
+          ],
+          "why": "Chondrocytes get their oxygen and nutrients from synovial fluid by diffusion. Less fresh fluid drawn in means less delivered."
+        },
+        {
+          "id": "blood",
+          "name": "Blood flow inside the articular cartilage",
+          "answer": "none",
+          "chain": [
+            "pump"
+          ],
+          "why": "Articular cartilage has no blood vessels at all, before or after the brace. That is exactly why it depends on movement to be fed."
+        },
+        {
+          "id": "thick",
+          "name": "Thickness of the articular cartilage",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "fluid",
+            "feed",
+            "thin"
+          ],
+          "why": "Chondrocytes that are poorly fed make less new matrix, so over weeks the cartilage softens and thins. Gentle movement and loading, when allowed, restart the pumping."
+        }
+      ]
+    },
+    {
+      "id": "jt-acl-unrepaired",
+      "title": "A torn ACL left unrepaired",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the knee is held together mainly by the shape of its bones",
+      "setup": "Jada, 19, tore the anterior cruciate ligament (ACL) of her right knee planting her foot to cut past a defender. For months before surgery she keeps playing. Compare her right knee with her healthy left knee.",
+      "start": "The anterior cruciate ligament is torn through",
+      "steps": {
+        "loose": "Nothing restrains the tibia from sliding forward under the femur",
+        "shift": "When she twists, the tibia shifts and turns too far under the femur",
+        "give": "The knee gives way",
+        "grind": "The femoral condyles grind across the menisci and cartilage with each abnormal shift"
+      },
+      "variables": [
+        {
+          "id": "fwd",
+          "name": "How far the tibia can be pulled forward under the femur",
+          "answer": "up",
+          "chain": [
+            "loose"
+          ],
+          "why": "The ACL runs from the front of the tibia up and back to the femur and is the main restraint on forward slide. Torn, it no longer stops the tibia."
+        },
+        {
+          "id": "back",
+          "name": "How far the tibia can be pushed backward under the femur",
+          "answer": "none",
+          "chain": [
+            "loose"
+          ],
+          "why": "Backward slide is stopped by the posterior cruciate ligament, which runs from the back of the tibia and is intact."
+        },
+        {
+          "id": "give",
+          "name": "Episodes of the knee giving way when she pivots",
+          "answer": "up",
+          "chain": [
+            "loose",
+            "shift",
+            "give"
+          ],
+          "why": "The femoral condyles sit on nearly flat tibial condyles, so the knee depends on its ligaments. Without the ACL, a twist lets the tibia shift out from under the femur."
+        },
+        {
+          "id": "men",
+          "name": "Wear on the menisci over the following months",
+          "answer": "up",
+          "chain": [
+            "loose",
+            "shift",
+            "grind"
+          ],
+          "why": "Every abnormal shift drags the femur across the menisci and shears them. This is why meniscus tears, especially of the medial meniscus, become more common in knees that stay unstable."
+        },
+        {
+          "id": "side",
+          "name": "How far the knee can be pushed inward at its inner side",
+          "answer": "none",
+          "chain": [
+            "loose"
+          ],
+          "why": "That movement is limited by the tibial collateral ligament on the inner side, which was not torn."
+        }
+      ]
+    },
+    {
+      "id": "jt-osteoarthritis-knee",
+      "title": "Osteoarthritis develops in a knee",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "osteoarthritis affects only the articular cartilage",
+      "setup": "A 62-year-old who carries extra body weight and had a knee injury in her twenties develops osteoarthritis of that knee over several years. Compare the knee now with the knee before the disease began.",
+      "start": "Abnormal loading damages the articular cartilage faster than its chondrocytes can repair it",
+      "steps": {
+        "thin": "The cartilage softens, frays and thins",
+        "space": "The cartilage-filled space between the bones becomes narrower",
+        "bone": "Where cartilage wears through, bone grinds on bone; the bone beneath thickens and spurs grow at the edges",
+        "syn": "Fragments irritate the synovial membrane, which becomes mildly inflamed and makes extra fluid",
+        "stiff": "The joint hurts with use, is stiff after rest and moves less"
+      },
+      "variables": [
+        {
+          "id": "cart",
+          "name": "Thickness of the articular cartilage",
+          "answer": "down",
+          "chain": [
+            "thin"
+          ],
+          "why": "Cartilage has no blood supply to bring in repair cells, and its chondrocytes cannot keep up, so the damaged cartilage frays and thins."
+        },
+        {
+          "id": "xray",
+          "name": "Space between the bones on an X-ray",
+          "answer": "down",
+          "chain": [
+            "thin",
+            "space"
+          ],
+          "why": "Cartilage does not show on an X-ray; the dark gap between the bones is where it sits. Thinner cartilage fills a narrower gap."
+        },
+        {
+          "id": "spur",
+          "name": "Bony spurs at the edges of the joint",
+          "answer": "up",
+          "chain": [
+            "thin",
+            "bone"
+          ],
+          "why": "Once bone meets bone, the bone reacts to the abnormal load by thickening and growing spurs at the joint margins."
+        },
+        {
+          "id": "fluid",
+          "name": "Volume of synovial fluid in the joint",
+          "answer": "up",
+          "chain": [
+            "thin",
+            "syn"
+          ],
+          "why": "Fragments of cartilage and damaged tissue irritate the synovial membrane. The mildly inflamed membrane makes extra fluid, so the knee may look puffy."
+        },
+        {
+          "id": "range",
+          "name": "Range of movement at the knee",
+          "answer": "down",
+          "chain": [
+            "thin",
+            "bone",
+            "stiff"
+          ],
+          "why": "Rough surfaces, bony spurs and pain all limit how far the knee bends and straightens."
+        }
+      ]
+    },
+    {
+      "id": "jt-rotator-cuff-out",
+      "title": "The rotator cuff stops working",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the shoulder joint is held together mainly by its bony socket",
+      "setup": "Suppose the four short muscles of the rotator cuff could not act at all, while the bones, capsule and labrum of the shoulder stayed normal. Compare the glenohumeral joint with a healthy shoulder.",
+      "start": "The rotator cuff tendons no longer pull across the joint",
+      "steps": {
+        "press": "Nothing presses the humeral head into the glenoid cavity",
+        "hold": "The head sits loosely against a small, shallow socket inside a loose capsule",
+        "slip": "A modest force can push the head out of line or out of the socket"
+      },
+      "variables": [
+        {
+          "id": "press",
+          "name": "Force pressing the humeral head into the glenoid cavity",
+          "answer": "down",
+          "chain": [
+            "press"
+          ],
+          "why": "The cuff tendons blend into the capsule and press the head into the socket whenever their muscles act. With the muscles out, that force is lost."
+        },
+        {
+          "id": "stab",
+          "name": "Stability of the glenohumeral joint",
+          "answer": "down",
+          "chain": [
+            "press",
+            "hold"
+          ],
+          "why": "The glenoid cavity is only about a third the size of the head and the capsule is loose, so the shoulder relies on its muscles for stability. Remove them and little holds it."
+        },
+        {
+          "id": "disloc",
+          "name": "Risk of the shoulder dislocating or partly slipping out",
+          "answer": "up",
+          "chain": [
+            "press",
+            "hold",
+            "slip"
+          ],
+          "why": "With a shallow socket, a loose capsule and no active cuff, the head can be pushed out of the glenoid cavity much more easily."
+        },
+        {
+          "id": "depth",
+          "name": "Depth of the socket formed by the glenoid cavity and labrum",
+          "answer": "none",
+          "chain": [
+            "press"
+          ],
+          "why": "The glenoid cavity and its labrum are bone and fibrocartilage; they do not depend on the muscles, so the socket is no deeper or shallower."
+        }
+      ]
+    },
+    {
+      "id": "jt-pulled-elbow",
+      "title": "A toddler swung by the arms",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a child who will not use an arm after a pull must have a broken bone",
+      "setup": "A 2-year-old is swung by the hands. Afterward he holds one arm still at his side and will not use it. X-rays show no break. Compare that elbow with the other one.",
+      "start": "A sharp pull slides the small radial head partly out of the loose annular ligament",
+      "steps": {
+        "sub": "The joint surfaces still touch but are out of line: a subluxation",
+        "turn": "The radial head cannot turn smoothly inside its ring of ulna and annular ligament"
+      },
+      "variables": [
+        {
+          "id": "turn",
+          "name": "Ease of turning the palm up and down",
+          "answer": "down",
+          "chain": [
+            "sub",
+            "turn"
+          ],
+          "why": "Turning the palm depends on the radial head spinning inside the annular ligament at the proximal radioulnar joint, a pivot joint. With the head caught partly out of the ring, that turning hurts and is blocked."
+        },
+        {
+          "id": "bone",
+          "name": "Number of breaks in the radius",
+          "answer": "none",
+          "chain": [
+            "sub"
+          ],
+          "why": "This is a ligament and joint problem, not a fracture: the bone slipped partly out of place without breaking, which is why the X-ray is normal."
+        },
+        {
+          "id": "contact",
+          "name": "How well the radial head lines up with its ring",
+          "answer": "down",
+          "chain": [
+            "sub"
+          ],
+          "why": "In a subluxation the surfaces still touch but are out of line. A clinician can usually turn the forearm to slip the head back in."
+        }
+      ]
+    },
+    {
+      "id": "jt-rolled-ankle",
+      "title": "A rolled ankle",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a sprained ankle is a small fracture",
+      "setup": "A runner lands on the outer edge of her foot and the sole rolls sharply inward. The outer side of her ankle swells; X-rays show no break. Compare the ligaments with their state before the fall.",
+      "start": "The sole is forced sharply inward",
+      "steps": {
+        "stretch": "The outer side of the ankle is pulled open, stretching the three small ligaments there",
+        "atfl": "The anterior talofibular ligament, the weakest, stretches or tears first",
+        "unstable": "The outer side of the ankle holds the talus less firmly"
+      },
+      "variables": [
+        {
+          "id": "atfl",
+          "name": "Damage to the anterior talofibular ligament",
+          "answer": "up",
+          "chain": [
+            "stretch",
+            "atfl"
+          ],
+          "why": "Forced inward rolling stretches the outer side, and of its three separate, smaller ligaments the anterior talofibular gives way first. A stretch or tear of a ligament is a sprain."
+        },
+        {
+          "id": "deltoid",
+          "name": "Damage to the deltoid ligament",
+          "answer": "none",
+          "chain": [
+            "stretch"
+          ],
+          "why": "The broad, strong deltoid ligament is on the inner side. Rolling the sole inward pulls the outer side open, not the inner side, so it is spared."
+        },
+        {
+          "id": "stab",
+          "name": "Stability of the outer side of the ankle",
+          "answer": "down",
+          "chain": [
+            "stretch",
+            "atfl",
+            "unstable"
+          ],
+          "why": "A stretched or torn ligament no longer limits movement as well, and because ligaments have a poor blood supply, they heal slowly and the ankle can stay loose."
+        }
+      ]
+    },
+    {
+      "id": "jt-ankle-fusion",
+      "title": "The ankle joint is fused",
+      "topic": "body-movements",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "turning the sole inward and outward happens at the ankle joint",
+      "setup": "After years of severe osteoarthritis, a surgeon fuses a patient’s talocrural (ankle) joint so that the talus and tibia become one solid unit. The joints below the talus are left alone. Compare the foot’s movements with a healthy foot.",
+      "start": "The talus can no longer swing on the tibia and fibula",
+      "steps": {
+        "hinge": "The hinge that tips the foot up and down is gone",
+        "up": "The top of the foot cannot be lifted toward the shin",
+        "down": "The foot cannot be pointed down",
+        "sub": "The subtalar joint, between the talus and calcaneus, still moves"
+      },
+      "variables": [
+        {
+          "id": "dorsi",
+          "name": "Range of dorsiflexion",
+          "answer": "down",
+          "chain": [
+            "hinge",
+            "up"
+          ],
+          "why": "Dorsiflexion, lifting the top of the foot toward the shin, happens at the talocrural joint, a hinge. Fused, it cannot swing."
+        },
+        {
+          "id": "plantar",
+          "name": "Range of plantar flexion",
+          "answer": "down",
+          "chain": [
+            "hinge",
+            "down"
+          ],
+          "why": "Plantar flexion is the same hinge swinging the other way, so it is lost too."
+        },
+        {
+          "id": "inv",
+          "name": "Range of inversion and eversion",
+          "answer": "none",
+          "chain": [
+            "sub"
+          ],
+          "why": "Turning the sole inward and outward happens mostly at the subtalar joint and between the other tarsal bones, not at the ankle joint, so fusing the ankle leaves them."
+        },
+        {
+          "id": "heel",
+          "name": "Ability to walk on the heels with the toes lifted",
+          "answer": "down",
+          "chain": [
+            "hinge",
+            "up"
+          ],
+          "why": "Walking on the heels needs dorsiflexion to hold the front of the foot up, and the fused hinge cannot provide it."
+        }
+      ]
+    },
+    {
+      "id": "jt-scapula-stuck",
+      "title": "A scapula that will not turn",
+      "topic": "body-movements",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "raising the arm overhead happens only at the glenohumeral joint",
+      "setup": "Scar tissue binds a patient’s scapula to the back of the rib cage so that it cannot turn. His glenohumeral joint is healthy. He tries to lift his straight arm out to the side and up over his head.",
+      "start": "The scapula cannot rotate superiorly",
+      "steps": {
+        "tip": "The glenoid cavity cannot tip upward as the arm rises",
+        "stop": "The humerus reaches the limit of the glenohumeral joint a little past shoulder height",
+        "gh": "The glenohumeral joint itself still moves normally within its own range"
+      },
+      "variables": [
+        {
+          "id": "abd",
+          "name": "How high he can abduct the arm",
+          "answer": "down",
+          "chain": [
+            "tip",
+            "stop"
+          ],
+          "why": "Raising the arm overhead needs superior rotation of the scapula to tip the glenoid cavity upward. Without it, abduction stops a little past shoulder height."
+        },
+        {
+          "id": "gh",
+          "name": "Movement at the glenohumeral joint when tested alone",
+          "answer": "none",
+          "chain": [
+            "gh"
+          ],
+          "why": "The ball-and-socket joint is healthy; only the scapula’s contribution is missing, so the shoulder joint moves normally within its own range."
+        },
+        {
+          "id": "flex",
+          "name": "How high he can flex the arm forward to point at the ceiling",
+          "answer": "down",
+          "chain": [
+            "tip",
+            "stop"
+          ],
+          "why": "Lifting the arm forward overhead also needs the glenoid cavity to tip upward, so full flexion is limited in the same way."
+        }
+      ]
+    },
+    {
+      "id": "jt-whiplash",
+      "title": "A rear-end car crash",
+      "topic": "body-movements",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "hyperextension is just a large flexion",
+      "setup": "A car is hit from behind. The driver’s body is pushed forward with the seat, and his head is thrown backward past its upright position. Compare his neck at the moment of the crash with anatomical position.",
+      "start": "The head is thrown backward beyond anatomical position",
+      "steps": {
+        "hyper": "The neck is extended past anatomical position: hyperextension",
+        "front": "The ligaments at the front of the neck are stretched",
+        "back": "The back of the neck is folded shorter"
+      },
+      "variables": [
+        {
+          "id": "front",
+          "name": "Stretch on the ligaments at the front of the neck",
+          "answer": "up",
+          "chain": [
+            "hyper",
+            "front"
+          ],
+          "why": "Extension carries the head backward. Going past anatomical position pulls the front of the neck longer, stretching its ligaments beyond what they normally allow."
+        },
+        {
+          "id": "back",
+          "name": "Stretch on the tissues at the back of the neck",
+          "answer": "down",
+          "chain": [
+            "hyper",
+            "back"
+          ],
+          "why": "Tipping the head back folds the back of the neck shorter, so its tissues are slackened, not stretched."
+        },
+        {
+          "id": "chin",
+          "name": "Distance from the chin to the chest",
+          "answer": "up",
+          "chain": [
+            "hyper"
+          ],
+          "why": "Flexion brings the chin toward the chest; extension, and more so hyperextension, carries it away. A head-on crash does the opposite, hyperflexion."
+        }
+      ]
+    },
+    {
+      "id": "ms-insertion-farther",
+      "title": "An insertion farther from the elbow",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a muscle that attaches farther from the joint gains strength with no cost",
+      "setup": "Two people hold the same 40-newton weight in the hand, elbow bent at a right angle, with the hand 32 cm from the elbow. In one, the large muscle on the front of the upper arm inserts 4 cm from the elbow; in the other, 5 cm. Predict how the second person compares with the first.",
+      "start": "The insertion sits 5 cm from the fulcrum instead of 4 cm",
+      "steps": {
+        "arm": "The effort arm is longer, while the load arm stays 32 cm",
+        "ma": "Mechanical advantage (effort arm ÷ load arm) rises from 0.125 to about 0.16",
+        "force": "Balancing the same load takes less pull: 40 × 32 ÷ 5 = 256 N instead of 320 N",
+        "range": "Each centimeter the muscle shortens swings the hand through a smaller arc: 32 ÷ 5 = 6.4 cm instead of 8 cm",
+        "load": "The weight and where the hand holds it are unchanged"
+      },
+      "variables": [
+        {
+          "id": "effort-arm",
+          "name": "Effort arm",
+          "answer": "up",
+          "chain": [
+            "arm"
+          ],
+          "why": "The effort arm is the distance from the fulcrum (the elbow) to where the muscle pulls. Moving the insertion from 4 cm to 5 cm lengthens it by definition."
+        },
+        {
+          "id": "pull",
+          "name": "Pull the muscle needs to hold the weight",
+          "answer": "down",
+          "chain": [
+            "arm",
+            "ma",
+            "force"
+          ],
+          "why": "Effort × effort arm must equal load × load arm. With the load side fixed at 40 N × 32 cm, a longer effort arm lets a smaller effort balance it: 256 N instead of 320 N."
+        },
+        {
+          "id": "hand-travel",
+          "name": "Distance the hand moves for each centimeter the muscle shortens",
+          "answer": "down",
+          "chain": [
+            "arm",
+            "range"
+          ],
+          "why": "The hand and the insertion turn through the same angle, so the hand moves load arm ÷ effort arm times as far. That ratio falls from 8 to 6.4: the lever gains force and gives up range and speed."
+        },
+        {
+          "id": "load-arm",
+          "name": "Load arm",
+          "answer": "none",
+          "chain": [
+            "load"
+          ],
+          "why": "The load arm runs from the elbow to the weight in the hand. Moving the insertion does not move the hand, so it stays 32 cm."
+        }
+      ]
+    },
+    {
+      "id": "ms-pennate-parallel",
+      "title": "A pennate muscle and a parallel muscle of the same size",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "the muscle with the longest fibers is always the strongest",
+      "setup": "Compare a pennate muscle with a parallel (strap) muscle of the same volume and weight. Predict how the pennate muscle compares.",
+      "start": "The fascicles attach at an angle to a central tendon instead of running in line with the pull",
+      "steps": {
+        "short": "Each fiber is short",
+        "pack": "Many more short fibers fit side by side in the same volume",
+        "xb": "More fibers side by side means more cross-bridges pulling at the same moment",
+        "series": "Each fiber has fewer sarcomeres in series",
+        "travel": "The whole muscle shortens a shorter distance, and more slowly"
+      },
+      "variables": [
+        {
+          "id": "fibers",
+          "name": "Number of fibers packed into the muscle",
+          "answer": "up",
+          "chain": [
+            "short",
+            "pack"
+          ],
+          "why": "Short fibers set at an angle to a long tendon pack together like the barbs of a feather, so the same volume holds far more fibers than a strap of long fibers."
+        },
+        {
+          "id": "force",
+          "name": "Maximum force the muscle can produce",
+          "answer": "up",
+          "chain": [
+            "short",
+            "pack",
+            "xb"
+          ],
+          "why": "Force depends on how many cross-bridges pull at once, which depends on how many fibers lie side by side. The pennate muscle has more, so it is stronger for its size."
+        },
+        {
+          "id": "distance",
+          "name": "Distance the muscle can shorten",
+          "answer": "down",
+          "chain": [
+            "short",
+            "series",
+            "travel"
+          ],
+          "why": "Every sarcomere shortens a little at the same time, so a long chain of sarcomeres shortens farther. The pennate muscle’s short fibers have short chains, so it shortens less, and less quickly."
+        }
+      ]
+    },
+    {
+      "id": "ms-pull-up",
+      "title": "A pull-up: the insertion stays still",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a muscle’s origin can never move",
+      "setup": "You hang from a bar and pull yourself up. The muscle on the front of your upper arm that bends your elbow when you lift a cup does the same job here. Predict the changes as you rise, compared with hanging.",
+      "start": "Your hands grip a fixed bar, so the forearm becomes the stable end",
+      "steps": {
+        "swap": "The usual insertion, on the forearm, is held still (a reverse action)",
+        "pull": "The muscle shortens and pulls the upper arm toward the forearm",
+        "angle": "The elbow bends",
+        "trunk": "The upper arm, and the trunk with it, move up toward the hands"
+      },
+      "variables": [
+        {
+          "id": "elbow",
+          "name": "Angle at the elbow",
+          "answer": "down",
+          "chain": [
+            "swap",
+            "pull",
+            "angle"
+          ],
+          "why": "Bending the elbow is flexion, which decreases the angle between upper arm and forearm. That is the same whichever bone moves."
+        },
+        {
+          "id": "trunk",
+          "name": "Height of your trunk",
+          "answer": "up",
+          "chain": [
+            "swap",
+            "pull",
+            "angle",
+            "trunk"
+          ],
+          "why": "With the forearm held by the bar, the muscle pulls its origin’s bone toward its insertion instead of the usual way round, so the upper arm and trunk rise."
+        },
+        {
+          "id": "hands",
+          "name": "Height of your hands",
+          "answer": "none",
+          "chain": [
+            "swap"
+          ],
+          "why": "The hands grip a fixed bar, so the forearm is now the stable end. In a reverse action the attachment that usually moves stays still."
+        }
+      ]
+    },
+    {
+      "id": "ms-biceps-rupture",
+      "title": "A torn distal biceps tendon",
+      "topic": "upper-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "if the main elbow flexor is torn, the elbow cannot bend at all",
+      "setup": "Jordan, 34, tears the tendon of the biceps brachii away from the radial tuberosity while lifting a heavy box. His brachialis, brachioradialis and pronators are unhurt. Predict the changes, compared with his other arm.",
+      "start": "The biceps brachii no longer pulls on the radius",
+      "steps": {
+        "loss": "One of the three elbow flexors is lost",
+        "others": "The brachialis and brachioradialis still pull on the ulna and radius",
+        "sup": "The strongest supinator of the forearm is lost; the supinator muscle is left alone",
+        "recoil": "The belly, attached only at its origins on the scapula, recoils toward the shoulder",
+        "pron": "The pronator teres and pronator quadratus are untouched"
+      },
+      "variables": [
+        {
+          "id": "flex",
+          "name": "Strength of elbow flexion",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "others"
+          ],
+          "why": "The biceps brachii is one of the three elbow flexors, so flexion weakens. It does not disappear: the brachialis and brachioradialis still bend the elbow."
+        },
+        {
+          "id": "sup",
+          "name": "Strength of supination (turning a screwdriver palm-up)",
+          "answer": "down",
+          "chain": [
+            "sup"
+          ],
+          "why": "The biceps brachii is the strongest supinator. With it gone, only the smaller supinator muscle turns the palm up, so twisting against resistance is weak."
+        },
+        {
+          "id": "bulge",
+          "name": "Distance of the muscle’s bulge from the elbow",
+          "answer": "up",
+          "chain": [
+            "recoil"
+          ],
+          "why": "A cut or torn muscle shortens toward its remaining attachment. The biceps is still attached at the shoulder, so its belly bunches up high on the arm."
+        },
+        {
+          "id": "pron",
+          "name": "Strength of pronation",
+          "answer": "none",
+          "chain": [
+            "pron"
+          ],
+          "why": "Pronation is done by the pronator teres and pronator quadratus, which were not injured. The biceps brachii does the opposite movement."
+        }
+      ]
+    },
+    {
+      "id": "ms-supraspinatus-tear",
+      "title": "A torn supraspinatus tendon",
+      "topic": "upper-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the deltoid raises the arm alone, so a rotator cuff tear should not weaken it",
+      "setup": "Mr. Brooks, 58, has a tear limited to the supraspinatus tendon, which runs under the acromion. Predict the changes in his shoulder, compared with a healthy shoulder.",
+      "start": "The supraspinatus can no longer pull on the greater tubercle",
+      "steps": {
+        "abd": "One of the two muscles that abduct the arm together is lost",
+        "seat": "Less pull holds the head of the humerus pressed into the glenoid cavity",
+        "slide": "The deltoid’s upward pull slides the head up toward the acromion instead of only rotating it",
+        "pinch": "Tissues in the tight space under the acromion are squeezed",
+        "others": "The infraspinatus and teres minor, which rotate the arm laterally, are intact"
+      },
+      "variables": [
+        {
+          "id": "abduction",
+          "name": "Strength of raising the arm out to the side",
+          "answer": "down",
+          "chain": [
+            "abd",
+            "seat",
+            "slide"
+          ],
+          "why": "The supraspinatus and deltoid work together from the start of abduction. Losing the supraspinatus removes force, and without it the deltoid’s pull partly slides the head upward instead of swinging the arm out."
+        },
+        {
+          "id": "seated",
+          "name": "How firmly the head of the humerus is held in its socket",
+          "answer": "down",
+          "chain": [
+            "seat"
+          ],
+          "why": "The four rotator cuff tendons press the head of the humerus into the shallow glenoid cavity. With one of them gone, the head is held less firmly."
+        },
+        {
+          "id": "pain",
+          "name": "Pain when he lifts his arm to the side",
+          "answer": "up",
+          "chain": [
+            "seat",
+            "slide",
+            "pinch"
+          ],
+          "why": "As the poorly held head rides up, the torn tendon and the tissue around it are pinched between the head of the humerus and the acromion."
+        },
+        {
+          "id": "lat-rot",
+          "name": "Strength of lateral rotation",
+          "answer": "none",
+          "chain": [
+            "others"
+          ],
+          "why": "Lateral rotation is done by the infraspinatus and teres minor, which insert on the greater tubercle behind the supraspinatus and are not torn here."
+        }
+      ]
+    },
+    {
+      "id": "ms-serratus-loss",
+      "title": "A paralyzed serratus anterior",
+      "topic": "upper-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the scapula is held on the rib cage by a joint",
+      "setup": "The nerve to a woman’s right serratus anterior is injured, and the muscle stops working. Her other shoulder muscles are normal. Predict the changes on the right, compared with the left.",
+      "start": "The serratus anterior no longer pulls the scapula forward around the chest wall",
+      "steps": {
+        "flat": "Nothing holds the medial border of the scapula flat against the ribs",
+        "wing": "Pushing against a wall lifts the medial border away from the ribs: a winged scapula",
+        "prot": "The scapula can no longer be pulled forward strongly",
+        "rot": "The scapula cannot rotate fully so the socket faces upward",
+        "overhead": "The humerus has no upward-facing base to rise from above shoulder height",
+        "rhomb": "The rhomboids, which pull the scapula toward the spine, are intact"
+      },
+      "variables": [
+        {
+          "id": "wing",
+          "name": "How far the scapula’s medial border lifts off the ribs when she pushes on a wall",
+          "answer": "up",
+          "chain": [
+            "flat",
+            "wing"
+          ],
+          "why": "The serratus anterior normally holds the scapula flat against the rib cage. When she pushes, the push drives the scapula backward and, with no serratus to hold it, its medial border lifts away: a winged scapula."
+        },
+        {
+          "id": "punch",
+          "name": "Force of a forward punch or push",
+          "answer": "down",
+          "chain": [
+            "prot"
+          ],
+          "why": "Protraction of the scapula, pulling it forward around the chest, is the serratus anterior’s main job. Without it, a push loses much of its drive."
+        },
+        {
+          "id": "overhead",
+          "name": "How high she can raise her arm",
+          "answer": "down",
+          "chain": [
+            "rot",
+            "overhead"
+          ],
+          "why": "Raising the arm above the head needs the scapula to rotate so the glenoid cavity faces upward. The serratus anterior and trapezius do this together; with the serratus gone, the arm cannot go fully overhead."
+        },
+        {
+          "id": "retract",
+          "name": "Strength of squeezing her shoulder blades together",
+          "answer": "none",
+          "chain": [
+            "rhomb"
+          ],
+          "why": "Retraction is done by the rhomboids and the middle trapezius, which are normal. They are the serratus anterior’s antagonists, not its helpers."
+        }
+      ]
+    },
+    {
+      "id": "ms-carpal-tunnel",
+      "title": "Swollen tendon sheaths in the carpal tunnel",
+      "topic": "upper-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "carpal tunnel symptoms come from the wrist bones rubbing together",
+      "setup": "After months of long hours of repeated gripping, the sheaths around a worker’s finger flexor tendons swell inside the carpal tunnel. Predict the changes, compared with before.",
+      "start": "The tendon sheaths swell in a tunnel bounded by the carpal bones and the flexor retinaculum",
+      "steps": {
+        "room": "The tunnel cannot widen, so the space left for the other contents shrinks",
+        "press": "Pressure in the tunnel rises",
+        "nerve": "The nerve that passes through the tunnel with the tendons is squeezed",
+        "numb": "Numbness and tingling spread over the thumb and first fingers",
+        "thenar": "In severe, long-standing cases the thenar muscles that nerve supplies waste away",
+        "ext": "The wrist extensors run on the back of the forearm and hand, outside the tunnel"
+      },
+      "variables": [
+        {
+          "id": "pressure",
+          "name": "Pressure inside the carpal tunnel",
+          "answer": "up",
+          "chain": [
+            "room",
+            "press"
+          ],
+          "why": "The carpal bones and the tough flexor retinaculum cannot stretch, so swelling inside the tunnel raises the pressure on everything in it."
+        },
+        {
+          "id": "numb",
+          "name": "Numbness and tingling in the thumb and first fingers",
+          "answer": "up",
+          "chain": [
+            "room",
+            "press",
+            "nerve",
+            "numb"
+          ],
+          "why": "The nerve shares the tunnel with the flexor tendons. As the pressure rises it is squeezed, and the skin it supplies, on the thumb side of the hand, tingles and goes numb."
+        },
+        {
+          "id": "thenar",
+          "name": "Bulk of the thenar eminence",
+          "answer": "down",
+          "chain": [
+            "room",
+            "press",
+            "nerve",
+            "thenar"
+          ],
+          "why": "The squeezed nerve also supplies the thenar muscles at the base of the thumb. When compression is severe and lasts, those muscles waste: a late sign."
+        },
+        {
+          "id": "extension",
+          "name": "Strength of wrist extension",
+          "answer": "none",
+          "chain": [
+            "ext"
+          ],
+          "why": "The wrist extensors start on the lateral epicondyle and run down the back of the forearm; their tendons never enter the carpal tunnel on the palm side."
+        }
+      ]
+    },
+    {
+      "id": "ms-facial-weakness",
+      "title": "The facial muscles on one side stop working",
+      "topic": "head-neck-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "drooping of the face means the chewing muscles are weak too",
+      "setup": "Ms. Alvarez, 45, wakes with the nerve that controls the facial muscles on her right side swollen, so those muscles no longer contract. Predict the changes on the right side of her face, compared with the left.",
+      "start": "The muscles of facial expression on the right side no longer contract",
+      "steps": {
+        "front": "The right frontalis cannot pull the forehead skin up",
+        "oculi": "The right orbicularis oculi cannot close the eyelids",
+        "zyg": "The right zygomaticus major cannot pull the corner of the mouth up and back",
+        "oris": "The right half of the orbicularis oris cannot seal the lips",
+        "bucc": "The right buccinator cannot press the cheek against the teeth",
+        "chew": "The masseter, temporalis and pterygoids are controlled separately and still work"
+      },
+      "variables": [
+        {
+          "id": "brow",
+          "name": "How high she can raise her right eyebrow",
+          "answer": "down",
+          "chain": [
+            "front"
+          ],
+          "why": "The frontalis raises the eyebrows by pulling the forehead skin toward its origin on the epicranial aponeurosis. With it silent, the right eyebrow stays down."
+        },
+        {
+          "id": "eye",
+          "name": "How fully her right eye closes",
+          "answer": "down",
+          "chain": [
+            "oculi"
+          ],
+          "why": "The orbicularis oculi is the circular muscle that closes the eyelids. Without it, the right eye cannot close fully, even in a blink."
+        },
+        {
+          "id": "corner",
+          "name": "Height of the right corner of her mouth when she smiles",
+          "answer": "down",
+          "chain": [
+            "zyg"
+          ],
+          "why": "The zygomaticus major pulls the corner of the mouth up and back. The left one still works, so her smile pulls to the left and the right corner droops."
+        },
+        {
+          "id": "cheek",
+          "name": "Food collecting in her right cheek",
+          "answer": "up",
+          "chain": [
+            "bucc"
+          ],
+          "why": "The buccinator normally presses the cheek against the teeth, pushing food back onto them. A slack right cheek lets food pocket there."
+        },
+        {
+          "id": "drip",
+          "name": "Drink leaking from the right corner of her mouth",
+          "answer": "up",
+          "chain": [
+            "oris"
+          ],
+          "why": "The orbicularis oris is the sphincter around the lips. With its right half slack, the lips do not seal on that side and liquid dribbles out."
+        },
+        {
+          "id": "bite",
+          "name": "Biting force on the right",
+          "answer": "none",
+          "chain": [
+            "chew"
+          ],
+          "why": "Biting is done by the muscles of mastication, which insert on the mandible and are controlled by a different nerve. They are spared, so she chews normally."
+        }
+      ]
+    },
+    {
+      "id": "ms-hard-breathing",
+      "title": "From breathing at rest to hard breathing",
+      "topic": "trunk-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "breathing out always takes muscle work",
+      "setup": "A student sitting quietly starts running up several flights of stairs, and her breathing becomes deep and fast. Predict how her breathing muscles change, compared with breathing at rest.",
+      "start": "Each breath in must be deeper, and each breath out faster and more complete",
+      "steps": {
+        "dia": "The diaphragm contracts harder and flattens further",
+        "neck": "The scalenes and sternocleidomastoids lift the top of the rib cage harder",
+        "active": "Breathing out changes from passive recoil to an active squeeze",
+        "int": "The internal intercostals pull the ribs down and in",
+        "abs": "The abdominal wall muscles compress the abdomen and push the diaphragm up"
+      },
+      "variables": [
+        {
+          "id": "diaphragm",
+          "name": "Work done by the diaphragm",
+          "answer": "up",
+          "chain": [
+            "dia"
+          ],
+          "why": "The diaphragm is the main muscle of breathing in at rest and in exercise. It contracts harder, pulling the central tendon farther down to make the chest taller."
+        },
+        {
+          "id": "scalenes",
+          "name": "Activity of the scalenes",
+          "answer": "up",
+          "chain": [
+            "neck"
+          ],
+          "why": "The scalenes lift the first two ribs. Recordings show they are already active in most breaths at rest, and they work hardest in heavy breathing, joined by the sternocleidomastoids."
+        },
+        {
+          "id": "internal",
+          "name": "Activity of the internal intercostals",
+          "answer": "up",
+          "chain": [
+            "active",
+            "int"
+          ],
+          "why": "At rest, breathing out is passive: the stretched lungs and chest wall recoil. In hard breathing, most of the internal intercostals contract to pull the ribs down and in and squeeze air out faster."
+        },
+        {
+          "id": "abdominal",
+          "name": "Pressure inside the abdomen during each breath out",
+          "answer": "up",
+          "chain": [
+            "active",
+            "abs"
+          ],
+          "why": "The abdominal wall muscles squeeze the soft, nearly incompressible abdominal contents, so pressure rises and pushes the relaxed diaphragm up into the chest, driving air out."
+        }
+      ]
+    },
+    {
+      "id": "ms-cough-leak",
+      "title": "A cough with a weak pelvic floor",
+      "topic": "trunk-muscles",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "leaking urine on coughing means the bladder itself is diseased",
+      "setup": "Dana, 32, had her second baby three months ago, and her levator ani was stretched during the birth. She coughs hard. Predict the changes during the cough, compared with a woman whose pelvic floor is strong.",
+      "start": "Her abdominal wall muscles contract hard, but her levator ani tightens late and weakly",
+      "steps": {
+        "squeeze": "The rectus abdominis, obliques and transversus abdominis squeeze the abdomen",
+        "pressure": "Pressure in the abdomen rises sharply",
+        "up": "The pressure pushes the relaxed diaphragm up, driving air out of the lungs",
+        "down": "The same pressure pushes down on the bladder and other pelvic organs",
+        "weak": "Her levator ani does not tighten in time to hold the organs up and squeeze the urethra shut",
+        "leak": "Pressure on the bladder beats the closing force around the urethra, and a little urine leaks"
+      },
+      "variables": [
+        {
+          "id": "pressure",
+          "name": "Pressure inside the abdomen during the cough",
+          "answer": "none",
+          "chain": [
+            "squeeze",
+            "pressure"
+          ],
+          "why": "Her abdominal wall muscles are normal, so they squeeze the abdomen just as hard as in the other woman. Her problem lies below, in the pelvic floor."
+        },
+        {
+          "id": "air",
+          "name": "Force driving air out of her lungs",
+          "answer": "none",
+          "chain": [
+            "squeeze",
+            "pressure",
+            "up"
+          ],
+          "why": "The cough’s force comes from the abdominal pressure pushing the diaphragm up. That part of the chain is unchanged, so her cough is as strong."
+        },
+        {
+          "id": "hold",
+          "name": "Support holding up her bladder during the cough",
+          "answer": "down",
+          "chain": [
+            "weak"
+          ],
+          "why": "Normally the levator ani contracts at the same moment as the abdominal wall. Stretched by the birth, hers lags and pulls weakly, so the bladder is less well held."
+        },
+        {
+          "id": "leak",
+          "name": "Urine leaking during the cough",
+          "answer": "up",
+          "chain": [
+            "squeeze",
+            "pressure",
+            "down",
+            "weak",
+            "leak"
+          ],
+          "why": "The rising pressure pushes the bladder down while the weak pelvic floor fails to squeeze the urethra shut in time, so a little urine escapes. Pelvic floor exercises help by strengthening the levator ani."
+        }
+      ]
+    },
+    {
+      "id": "ms-diaphragm-contracts",
+      "title": "The diaphragm contracts",
+      "topic": "trunk-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "the diaphragm pushes air out when it contracts",
+      "setup": "You take a slow, deep breath in. Predict what the contraction of your diaphragm changes, compared with the moment before.",
+      "start": "The diaphragm’s muscle fibers shorten",
+      "steps": {
+        "tendon": "The fibers pull the central tendon down toward their origins on the lower edge of the rib cage and the lumbar vertebrae",
+        "flat": "The dome flattens",
+        "tall": "The chest cavity gets taller",
+        "belly": "The flattening dome presses down on the abdominal organs"
+      },
+      "variables": [
+        {
+          "id": "dome",
+          "name": "Height of the top of the diaphragm’s dome",
+          "answer": "down",
+          "chain": [
+            "tendon",
+            "flat"
+          ],
+          "why": "The central tendon at the top of the dome is the diaphragm’s insertion. Its fibers pull it down toward their origins, so the dome flattens and drops."
+        },
+        {
+          "id": "chest",
+          "name": "Size of the chest cavity",
+          "answer": "up",
+          "chain": [
+            "tendon",
+            "flat",
+            "tall"
+          ],
+          "why": "As the floor of the thoracic cavity drops, the chest cavity gets taller, and air flows into the lungs."
+        },
+        {
+          "id": "abdomen",
+          "name": "Pressure inside the abdomen",
+          "answer": "up",
+          "chain": [
+            "tendon",
+            "flat",
+            "belly"
+          ],
+          "why": "The descending diaphragm presses on the abdominal organs, which cannot be compressed, so the pressure in the abdomen rises. That is why a held deep breath stiffens the trunk before a heavy lift."
+        }
+      ]
+    },
+    {
+      "id": "ms-weak-gluteus-medius",
+      "title": "Standing on a leg with weak hip abductors",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the gluteus medius matters only for moving the leg out to the side",
+      "setup": "A man’s right gluteus medius and minimus are weak after a hip operation. He stands on his right leg and lifts his left foot. Predict the changes, compared with a person with strong hip abductors.",
+      "start": "His body weight hangs to the left of the right hip joint, and the right hip abductors cannot pull hard enough to hold it",
+      "steps": {
+        "torque": "His weight tends to tip the pelvis down on the left, unsupported side",
+        "weak": "The weak right gluteus medius and minimus cannot pull the ilium toward the greater trochanter hard enough",
+        "drop": "The left side of the pelvis drops (a positive Trendelenburg sign)",
+        "sway": "He leans his trunk over the right leg, moving his weight nearer the hip joint",
+        "knee": "The quadriceps femoris is not affected"
+      },
+      "variables": [
+        {
+          "id": "pelvis",
+          "name": "Height of the left side of his pelvis",
+          "answer": "down",
+          "chain": [
+            "torque",
+            "weak",
+            "drop"
+          ],
+          "why": "On the standing leg, the gluteus medius and minimus pull from the greater trochanter on the ilium to hold the pelvis level. Too weak to balance his weight, they let the unsupported side drop."
+        },
+        {
+          "id": "lean",
+          "name": "Lean of his trunk toward the right",
+          "answer": "up",
+          "chain": [
+            "torque",
+            "weak",
+            "sway"
+          ],
+          "why": "Leaning over the standing leg shortens the lever arm of his body weight about the right hip, so the weak abductors have less to hold."
+        },
+        {
+          "id": "abduct",
+          "name": "Strength of moving his right thigh out to the side",
+          "answer": "down",
+          "chain": [
+            "weak"
+          ],
+          "why": "The gluteus medius and minimus are the main abductors of the thigh, so the same weakness shows when he lifts the leg sideways."
+        },
+        {
+          "id": "knee",
+          "name": "Strength of straightening his right knee",
+          "answer": "none",
+          "chain": [
+            "knee"
+          ],
+          "why": "Knee extension is done by the quadriceps femoris on the front of the thigh, which is not weak here."
+        }
+      ]
+    },
+    {
+      "id": "ms-calcaneal-rupture",
+      "title": "A ruptured calcaneal tendon",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the foot cannot point at all after the Achilles tendon ruptures",
+      "setup": "Lunging for a ball, a tennis player ruptures his right calcaneal (Achilles) tendon. Predict the changes on the right, compared with his left leg.",
+      "start": "The gastrocnemius and soleus are cut off from the calcaneus",
+      "steps": {
+        "cut": "The two main plantar flexors can no longer pull the heel up",
+        "toes": "He cannot rise onto the toes of that foot",
+        "squeeze": "Squeezing the calf no longer points the foot",
+        "deep": "Smaller muscles behind the ankle, such as the tibialis posterior and fibularis longus, can still plantar flex weakly",
+        "front": "The tibialis anterior and other muscles on the front of the leg are untouched"
+      },
+      "variables": [
+        {
+          "id": "tiptoe",
+          "name": "Ability to rise onto his right toes",
+          "answer": "down",
+          "chain": [
+            "cut",
+            "toes"
+          ],
+          "why": "Rising onto the toes needs the calf to pull the calcaneus up through the calcaneal tendon. With the tendon ruptured, that pull cannot reach the heel."
+        },
+        {
+          "id": "squeeze",
+          "name": "Foot movement when the calf is squeezed",
+          "answer": "down",
+          "chain": [
+            "cut",
+            "squeeze"
+          ],
+          "why": "Squeezing the calf normally shortens the muscle–tendon unit enough to point the foot. With the tendon broken, nothing transmits the squeeze to the heel."
+        },
+        {
+          "id": "plantar",
+          "name": "Strength of pointing the foot",
+          "answer": "down",
+          "chain": [
+            "cut",
+            "deep"
+          ],
+          "why": "The gastrocnemius and soleus supply most of the force of plantar flexion. The deep plantar flexors remain, so pointing is weak rather than impossible."
+        },
+        {
+          "id": "dorsi",
+          "name": "Strength of lifting the toes toward the shin",
+          "answer": "none",
+          "chain": [
+            "front"
+          ],
+          "why": "Dorsiflexion is done by the front group of the leg, led by the tibialis anterior, which is not injured."
+        }
+      ]
+    },
+    {
+      "id": "ms-foot-drop",
+      "title": "A weak tibialis anterior",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "the calf muscles lift the front of the foot",
+      "setup": "The muscles in the front compartment of a woman’s left leg are weak. Predict what happens as she walks, compared with her right leg.",
+      "start": "The tibialis anterior and extensor digitorum longus pull weakly",
+      "steps": {
+        "dorsi": "Dorsiflexion is weak",
+        "drag": "The toes are not lifted clear as the leg swings forward, so they catch on the ground",
+        "slap": "After the heel strikes, nothing lowers the front of the foot gently, so it slaps down",
+        "calf": "The gastrocnemius and soleus, in the back compartment, are normal"
+      },
+      "variables": [
+        {
+          "id": "lift",
+          "name": "Strength of lifting her left toes toward the shin",
+          "answer": "down",
+          "chain": [
+            "dorsi"
+          ],
+          "why": "Dorsiflexion is the main job of the front group of the leg, and the tibialis anterior is its prime mover. With it weak, lifting the foot is weak."
+        },
+        {
+          "id": "drag",
+          "name": "Her left toes catching as the leg swings forward",
+          "answer": "up",
+          "chain": [
+            "dorsi",
+            "drag"
+          ],
+          "why": "Each time the leg swings forward, the tibialis anterior lifts the foot clear of the ground. Without that lift, the toes drag."
+        },
+        {
+          "id": "slap",
+          "name": "Slap of the front of her left foot after the heel lands",
+          "answer": "up",
+          "chain": [
+            "dorsi",
+            "slap"
+          ],
+          "why": "After the heel strikes, the tibialis anterior normally lowers the front of the foot slowly, lengthening while it works. Weak, it cannot brake the foot, which slaps down."
+        },
+        {
+          "id": "rise",
+          "name": "Ability to rise onto her left toes",
+          "answer": "none",
+          "chain": [
+            "calf"
+          ],
+          "why": "Rising onto the toes is plantar flexion, done by the gastrocnemius and soleus in the back compartment, which are normal."
+        }
+      ]
+    },
+    {
+      "id": "ms-sprinter-swing",
+      "title": "The end of a sprinter’s forward leg swing",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a muscle’s length depends on only one joint",
+      "setup": "At the end of the forward swing, a sprinter’s hip is flexed and her knee is nearly straight. Predict the changes, compared with standing upright with the knee straight.",
+      "start": "The hip flexes while the knee stays straight",
+      "steps": {
+        "hipH": "Hip flexion moves the hamstrings’ origin on the ischial tuberosity away from the knee",
+        "kneeH": "A straight knee keeps their insertions on the fibula and tibia as far away as they can be",
+        "stretch": "The hamstrings are stretched across both joints at once",
+        "risk": "If they contract hard while stretched this far, as they brake the swinging leg, they can strain",
+        "rf": "Hip flexion and knee extension both bring the ends of the rectus femoris closer together"
+      },
+      "variables": [
+        {
+          "id": "ham",
+          "name": "Length of the hamstrings",
+          "answer": "up",
+          "chain": [
+            "hipH",
+            "kneeH",
+            "stretch"
+          ],
+          "why": "The hamstrings cross the back of both the hip and the knee. Flexing the hip stretches them over the hip, and a straight knee adds no slack, so they are at their longest."
+        },
+        {
+          "id": "strain",
+          "name": "Risk of a hamstring strain",
+          "answer": "up",
+          "chain": [
+            "hipH",
+            "kneeH",
+            "stretch",
+            "risk"
+          ],
+          "why": "At this moment the hamstrings are both stretched and working hard to slow the swinging leg, which is when hamstring strains usually happen."
+        },
+        {
+          "id": "rf",
+          "name": "Length of the rectus femoris",
+          "answer": "down",
+          "chain": [
+            "rf"
+          ],
+          "why": "The rectus femoris crosses the front of both joints: it flexes the hip and extends the knee. Doing both at once brings its origin and insertion together, so it is short."
+        }
+      ]
+    },
+    {
+      "id": "ms-compartment-l4",
+      "title": "Compartment syndrome after a tibia fracture",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": 4,
+      "misconception": "if the pulse in the foot is present, compartment syndrome is ruled out",
+      "setup": "Marcus, 22, breaks his tibia. Bleeding and swelling build inside the anterior compartment of his leg. Follow the compartment before and after the surgeon slits its fascia open.",
+      "stages": [
+        {
+          "id": "swelling",
+          "label": "Six hours after the fracture",
+          "prompt": "Six hours after the fracture, compared with just after the injury.",
+          "start": "Blood and fluid collect inside a compartment wrapped in deep fascia that barely stretches",
+          "steps": {
+            "vol": "The volume inside the compartment grows",
+            "press": "The fascia cannot stretch, so the pressure in the compartment rises",
+            "veins": "The thin-walled veins are squeezed shut, so blood cannot drain out and more fluid is trapped",
+            "caps": "The pressure rises high enough to stop blood flowing through the capillaries",
+            "o2": "The muscles and nerves in the compartment are starved of oxygen",
+            "stretch": "Stretching the starved muscles, by pointing the toes down, causes severe pain",
+            "artery": "The pressure inside the main artery is far higher than the compartment pressure, so it stays open"
+          },
+          "variables": [
+            {
+              "id": "pressure",
+              "name": "Pressure in the anterior compartment",
+              "answer": "up",
+              "chain": [
+                "vol",
+                "press",
+                "veins"
+              ],
+              "why": "The compartment has a nearly fixed volume because the deep fascia and bones do not stretch. Adding fluid raises the pressure, and squeezing the veins shut traps still more fluid, so it keeps climbing."
+            },
+            {
+              "id": "capillary",
+              "name": "Blood flow through the compartment’s capillaries",
+              "answer": "down",
+              "chain": [
+                "vol",
+                "press",
+                "veins",
+                "caps"
+              ],
+              "why": "Blood flows through capillaries only while the pressure inside them exceeds the pressure squeezing them. Once the compartment pressure rises high enough, capillary flow stops."
+            },
+            {
+              "id": "pain",
+              "name": "Pain when the nurse points his toes",
+              "answer": "up",
+              "chain": [
+                "vol",
+                "press",
+                "veins",
+                "caps",
+                "o2",
+                "stretch"
+              ],
+              "why": "Pointing the toes stretches the muscles of the front compartment. Muscles starved of oxygen hurt badly when stretched, which is the early warning sign."
+            },
+            {
+              "id": "pulse",
+              "name": "Pulse felt in his foot",
+              "answer": "none",
+              "chain": [
+                "artery"
+              ],
+              "why": "The main artery carries blood at a far higher pressure than the compartment, so it keeps pulsing while the capillaries around it are shut. A lost pulse is a late sign."
+            }
+          ]
+        },
+        {
+          "id": "release",
+          "label": "Just after the fascia is slit open",
+          "prompt": "Minutes after surgery, compared with just before it.",
+          "start": "The surgeon slits the deep fascia along the whole compartment",
+          "steps": {
+            "room": "The swollen contents can bulge out through the opening",
+            "fall": "The pressure in the compartment falls",
+            "veins": "The veins open and blood drains out again",
+            "caps": "Blood flows through the capillaries again",
+            "o2": "Oxygen reaches the muscles and nerves before they die",
+            "artery": "The main artery was never blocked"
+          },
+          "variables": [
+            {
+              "id": "pressure",
+              "name": "Pressure in the anterior compartment",
+              "answer": "down",
+              "chain": [
+                "room",
+                "fall"
+              ],
+              "why": "The fascia was what fixed the compartment’s volume. Once it is open, the contents have room to swell outward, so the pressure drops."
+            },
+            {
+              "id": "capillary",
+              "name": "Blood flow through the compartment’s capillaries",
+              "answer": "up",
+              "chain": [
+                "room",
+                "fall",
+                "veins",
+                "caps"
+              ],
+              "why": "With the squeezing pressure gone, the veins drain and blood can again flow from the arteries through the capillaries."
+            },
+            {
+              "id": "oxygen",
+              "name": "Oxygen reaching the muscles in the compartment",
+              "answer": "up",
+              "chain": [
+                "room",
+                "fall",
+                "caps",
+                "o2"
+              ],
+              "why": "Capillaries are where oxygen leaves the blood for the tissue. Restored capillary flow feeds the muscle, which is why surgery must come within hours."
+            },
+            {
+              "id": "pulse",
+              "name": "Pulse felt in his foot",
+              "answer": "none",
+              "chain": [
+                "artery"
+              ],
+              "why": "The pulse was present before surgery because the high-pressure artery was never closed, so opening the fascia does not change it."
+            }
+          ]
+        }
+      ]
     }
   ]
 }

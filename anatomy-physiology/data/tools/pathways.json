@@ -10449,6 +10449,1389 @@
         "why": "That is what most cancer cells do. A normal cell with a failed telomere is stopped by its checkpoints: it dies by apoptosis or enters senescence."
       },
       "summary": "Each division leaves the chromosome tip uncopied (the end-replication problem), so telomeres lose 50 to 100 base pairs; after many divisions a telomere is too short to keep its cap; the bare end is read as damaged DNA and p53 is activated; the cell undergoes apoptosis or senescence, and a senescent cell releases inflammatory signals."
+    },
+    {
+      "id": "jt-classify-joint",
+      "title": "Classifying a joint in both schemes",
+      "topic": "joint-classification",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You are asked to classify the joint between the bodies of two lumbar vertebrae. Put the reasoning in the order that always works: tissue first, movement last.",
+      "steps": [
+        {
+          "id": "tissue",
+          "label": "What joins the bones?",
+          "text": "Look at what joins the bones: here, a disc of fibrocartilage.",
+          "why": "Structural class is defined by the connecting tissue, so everything else follows from this observation."
+        },
+        {
+          "id": "space",
+          "label": "Is there a space?",
+          "text": "Check for a fluid-filled space between the bones: there is none.",
+          "why": "A fluid-filled space would make it synovial whatever else is present, so you rule that out before naming a solid class."
+        },
+        {
+          "id": "class",
+          "label": "Structural class",
+          "text": "Name the structural class: cartilage and no space, so a cartilaginous joint.",
+          "why": "Tissue plus the absence of a space is all the structural scheme asks for."
+        },
+        {
+          "id": "sub",
+          "label": "Subtype",
+          "text": "Name the subtype: a fibrocartilage pad, so a symphysis.",
+          "why": "Within cartilaginous joints the subtype is set by the kind of cartilage, which you already know from the first step."
+        },
+        {
+          "id": "move",
+          "label": "How much movement?",
+          "text": "Judge how much the bones move: a little, as each disc squeezes and tilts.",
+          "why": "The functional scheme is a separate question, asked only after the structure is settled."
+        },
+        {
+          "id": "func",
+          "label": "Functional class",
+          "text": "Name the functional class: slightly movable, so an amphiarthrosis.",
+          "why": "The amount of movement maps directly onto the functional name, so this is the last step."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Name the subtype: a pad that moves a little, so a syndesmosis.",
+            "why": "A syndesmosis is a fibrous joint joined by a ligament or interosseous membrane. The subtype comes from the tissue, not from how much the joint moves."
+          },
+          {
+            "text": "Name the subtype: hyaline cartilage joins the bones, so a synchondrosis.",
+            "why": "The disc is fibrocartilage, not hyaline cartilage. A synchondrosis, such as the epiphyseal plate, uses hyaline cartilage."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Name the structural class: it moves a little, so a synovial joint.",
+        "why": "Structural class never comes from movement. With cartilage and no fluid-filled space, the joint is cartilaginous; many synovial joints move freely, and a few barely move."
+      },
+      "summary": "Look at the tissue (fibrocartilage), check for a space (none), name the structural class (cartilaginous), then the subtype (symphysis); only then judge the movement (slight) and name the functional class (amphiarthrosis)."
+    },
+    {
+      "id": "jt-growth-plate-to-synostosis",
+      "title": "From growth plate to synostosis",
+      "topic": "joint-classification",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A long bone’s epiphyseal plate is a temporary joint. Put the steps from childhood to adulthood in order.",
+      "steps": [
+        {
+          "id": "plate",
+          "label": "Hyaline plate joins parts",
+          "text": "In a child, a plate of hyaline cartilage joins the epiphysis to the diaphysis: a synchondrosis.",
+          "why": "This is the starting joint: cartilage, no space, hyaline, so a synchondrosis."
+        },
+        {
+          "id": "grow",
+          "label": "Plate lengthens the bone",
+          "text": "Cartilage in the plate keeps growing and is replaced by bone on its diaphysis side, so the bone lengthens.",
+          "why": "While the plate is active, growth in length happens here."
+        },
+        {
+          "id": "stop",
+          "label": "Growth in length stops",
+          "text": "In late adolescence the cartilage stops growing.",
+          "why": "Replacement can only catch up once the cartilage stops being added."
+        },
+        {
+          "id": "replace",
+          "label": "Bone replaces cartilage",
+          "text": "Bone replaces the remaining cartilage of the plate.",
+          "why": "With no new cartilage made, bone fills the whole plate."
+        },
+        {
+          "id": "line",
+          "label": "Epiphyseal line",
+          "text": "A thin line of dense bone, the epiphyseal line, marks where the plate was.",
+          "why": "This is the visible trace of the plate once bone has replaced it, seen on an adult X-ray."
+        },
+        {
+          "id": "syn",
+          "label": "Synostosis",
+          "text": "The epiphysis and diaphysis are one bone: the joint has become a synostosis.",
+          "why": "When bone replaces the tissue of a joint, the two bones fuse; that end state is a synostosis."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "A fluid-filled space opens in the plate and it becomes a synovial joint.",
+            "why": "No space opens. The plate closes by being filled with bone, which removes the joint rather than making it movable."
+          },
+          {
+            "text": "Fibrocartilage replaces the hyaline cartilage, turning it into a symphysis.",
+            "why": "A closing plate is replaced by bone, not by fibrocartilage. Symphyses such as the pubic symphysis are fibrocartilage from the start."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The epiphysis and diaphysis are now joined by a suture.",
+        "why": "A suture is a fibrous joint between skull bones. Once bone has replaced the plate, there is no joint left at all: the two parts are fused, a synostosis."
+      },
+      "summary": "A hyaline cartilage plate (a synchondrosis) lengthens the bone; when growth stops, bone replaces the cartilage, leaving the epiphyseal line, and the epiphysis and diaphysis fuse into one bone, a synostosis."
+    },
+    {
+      "id": "jt-synovial-layers",
+      "title": "Into a synovial joint, layer by layer",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "A needle is passed into a knee joint from the side to draw off fluid, then on until it touches bone. Put the layers it passes through in order, from outside in.",
+      "steps": [
+        {
+          "id": "skin",
+          "label": "Skin",
+          "text": "The skin over the joint.",
+          "why": "Everything in the joint lies under the skin, so it is the first layer crossed."
+        },
+        {
+          "id": "fib",
+          "label": "Fibrous membrane",
+          "text": "The fibrous membrane, the tough outer layer of the articular capsule.",
+          "why": "The capsule’s outer layer is dense connective tissue that attaches to both bones and wraps the whole joint."
+        },
+        {
+          "id": "syn",
+          "label": "Synovial membrane",
+          "text": "The synovial membrane, the thin inner layer of the capsule.",
+          "why": "It lines the inside of the fibrous membrane and every surface in the cavity not covered by cartilage."
+        },
+        {
+          "id": "cav",
+          "label": "Joint cavity and fluid",
+          "text": "The joint cavity, holding a film of synovial fluid.",
+          "why": "The cavity lies inside the synovial membrane that makes its fluid; this is where the fluid is drawn off."
+        },
+        {
+          "id": "cart",
+          "label": "Articular cartilage",
+          "text": "The articular cartilage capping the bone end.",
+          "why": "Across the cavity, the bone end is covered by hyaline cartilage, not by synovial membrane."
+        },
+        {
+          "id": "bone",
+          "label": "Bone",
+          "text": "The bone of the epiphysis under the cartilage.",
+          "why": "The cartilage caps the bone, so bone is the deepest layer reached."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The periosteum lining the inside of the joint cavity.",
+            "why": "The periosteum covers the outside of the bone and is where the fibrous membrane attaches; it does not line the cavity. The synovial membrane does."
+          },
+          {
+            "text": "A bursa between the capsule and the cavity.",
+            "why": "A bursa is a separate sac that cushions skin, tendons or muscles where they slide over bone; it is not a layer of the capsule."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "A layer of synovial membrane covering the articular cartilage.",
+        "why": "The synovial membrane lines every surface in the cavity except the articular cartilage. The cartilage surfaces face the cavity bare so they can slide on each other."
+      },
+      "summary": "From outside in: skin, the fibrous membrane and then the synovial membrane of the articular capsule, the joint cavity with its synovial fluid, the articular cartilage, and the bone."
+    },
+    {
+      "id": "jt-cartilage-pump",
+      "title": "How movement feeds articular cartilage",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Articular cartilage has no blood vessels. Follow one step of walking and put the steps that feed it in order. The last step leads back to the first.",
+      "steps": [
+        {
+          "id": "load",
+          "label": "Weight comes on",
+          "text": "Your weight comes onto the joint as your foot lands.",
+          "why": "Loading starts the cycle; without it nothing is squeezed."
+        },
+        {
+          "id": "squeeze",
+          "label": "Cartilage squeezed",
+          "text": "The articular cartilage is squeezed.",
+          "why": "Cartilage is slightly compressible, so load deforms it."
+        },
+        {
+          "id": "out",
+          "label": "Fluid pushed out",
+          "text": "Fluid is pushed out of the cartilage and forms a thin pressurized film that shares the load.",
+          "why": "Squeezing a wet, spongy tissue drives its fluid out, the way pressing a sponge does."
+        },
+        {
+          "id": "off",
+          "label": "Weight comes off",
+          "text": "The load comes off as the leg swings forward.",
+          "why": "Each step alternates loading and unloading."
+        },
+        {
+          "id": "spring",
+          "label": "Cartilage springs back",
+          "text": "The cartilage springs back to its shape and draws fresh synovial fluid in.",
+          "why": "As it re-expands, it sucks fluid back in, like a released sponge."
+        },
+        {
+          "id": "diff",
+          "label": "Nutrients diffuse in",
+          "text": "Oxygen and nutrients diffuse from the fresh fluid to the chondrocytes.",
+          "why": "With no blood vessels, diffusion from synovial fluid is the only supply, and the fresh fluid restores the concentration gradient into the cartilage."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Blood vessels in the cartilage refill with fresh blood.",
+            "why": "Articular cartilage has no blood vessels; that is why it depends on this pumping."
+          },
+          {
+            "text": "The synovial membrane stops making fluid until the next step.",
+            "why": "The membrane keeps making fluid all the time. What refreshes the cartilage is the cartilage itself springing back and drawing fluid in."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Fluid is drawn into the cartilage from the joint cavity.",
+        "why": "Squeezing pushes fluid out of the cartilage, not in. Fluid is drawn in when the load comes off and the cartilage springs back."
+      },
+      "summary": "Load squeezes the cartilage and pushes fluid out, where it helps carry the load; unloading lets the cartilage spring back and draw fresh synovial fluid in, and nutrients diffuse to the chondrocytes. Each step of movement repeats the pump."
+    },
+    {
+      "id": "jt-osteoarthritis",
+      "title": "How osteoarthritis develops",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Osteoarthritis is a disease of the whole synovial joint that starts in the cartilage. Put the steps in order.",
+      "steps": [
+        {
+          "id": "damage",
+          "label": "Cartilage damaged",
+          "text": "Repeated or abnormal loading, aging, a past injury or excess body weight damages the articular cartilage.",
+          "why": "The disease begins with damage to the cartilage, which has no blood supply to bring in repair cells."
+        },
+        {
+          "id": "thin",
+          "label": "Cartilage thins",
+          "text": "The cartilage softens, frays and thins faster than its chondrocytes can repair it.",
+          "why": "Damage outpaces the slow repair of avascular cartilage, so the tissue is lost."
+        },
+        {
+          "id": "space",
+          "label": "Joint space narrows",
+          "text": "On an X-ray, the space between the bones narrows.",
+          "why": "The gap on an X-ray is filled by cartilage, so it narrows as the cartilage thins."
+        },
+        {
+          "id": "bone",
+          "label": "Bone reacts",
+          "text": "Where cartilage wears through, bone grinds on bone, thickens and grows spurs.",
+          "why": "Bare bone now takes the load directly and responds by remodeling."
+        },
+        {
+          "id": "syn",
+          "label": "Membrane irritated",
+          "text": "Fragments irritate the synovial membrane, which becomes mildly inflamed and makes extra fluid.",
+          "why": "Worn cartilage and bone shed fragments into the fluid, and the membrane that lines the cavity reacts to them."
+        },
+        {
+          "id": "sympt",
+          "label": "Pain and stiffness",
+          "text": "The joint hurts with use, is stiff after rest, grates on movement and moves less.",
+          "why": "Rough surfaces, spurs and an irritated membrane together produce the symptoms."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The body’s own defenses attack the synovial membrane, which thickens and destroys the cartilage.",
+            "why": "That describes the kinds of arthritis in which the body attacks its own joints. In osteoarthritis the membrane inflammation is mild and follows the cartilage damage."
+          },
+          {
+            "text": "The ligaments of the joint tear through, and the bones dislocate.",
+            "why": "Osteoarthritis does not tear the ligaments through; forcing the bones out of contact is a dislocation, an injury."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "On an X-ray, the space between the bones widens.",
+        "why": "Cartilage fills the space seen on an X-ray, so as it thins the space narrows. Joint space narrowing is a classic sign of osteoarthritis."
+      },
+      "summary": "Loading, aging, injury or excess weight damages the cartilage, which thins because it repairs poorly; the joint space narrows; bone meets bone, thickens and grows spurs; fragments mildly inflame the synovial membrane; and the joint becomes painful and stiff. For your exam, \"wear-and-tear, degenerative joint disease\" is the expected label."
+    },
+    {
+      "id": "jt-acl-tear",
+      "title": "How an ACL tears",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Most anterior cruciate ligament (ACL) tears happen without contact. Put the events in order.",
+      "steps": [
+        {
+          "id": "plant",
+          "label": "Foot planted",
+          "text": "The athlete plants her foot on the ground.",
+          "why": "A planted foot fixes the tibia, so the rest of the body can turn or stop over it."
+        },
+        {
+          "id": "twist",
+          "label": "Twist or sudden stop",
+          "text": "She twists or stops suddenly with the knee nearly straight.",
+          "why": "The body’s momentum keeps going while the tibia is held in place."
+        },
+        {
+          "id": "shoot",
+          "label": "Tibia shoots forward",
+          "text": "The tibia shoots forward or twists under the femur.",
+          "why": "The femoral condyles sit on nearly flat tibial condyles, so the bones can slide on each other."
+        },
+        {
+          "id": "tear",
+          "label": "ACL tears",
+          "text": "The ACL, which stops the tibia sliding forward, is stretched past its limit and tears.",
+          "why": "It runs from the front of the tibia up and back to the femur, so forward slide of the tibia pulls it tight."
+        },
+        {
+          "id": "loose",
+          "label": "Forward slide unchecked",
+          "text": "Afterward, the tibia slides forward under the femur farther than normal.",
+          "why": "With its main restraint gone, forward slide is limited only by weaker structures."
+        },
+        {
+          "id": "give",
+          "label": "Knee gives way",
+          "text": "The knee gives way when she twists, and the menisci take abnormal shearing.",
+          "why": "An unstable knee shifts under load, grinding the femur across the menisci."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The tibia is pushed backward under the femur.",
+            "why": "A backward push on the tibia strains the posterior cruciate ligament, not the ACL."
+          },
+          {
+            "text": "A blow to the inner side of the knee pushes it outward.",
+            "why": "This injury happens without contact, and a blow pushing the knee outward stretches the fibular collateral ligament, not the ACL."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The posterior cruciate ligament is stretched past its limit and tears.",
+        "why": "The PCL stops the tibia sliding backward. When the tibia shoots forward, it is the ACL that is pulled tight and tears."
+      },
+      "summary": "A planted foot fixes the tibia; a twist or sudden stop with the knee nearly straight drives the tibia forward under the femur; the ACL is overstretched and tears; afterward the tibia slides forward too far and the knee gives way, shearing the menisci."
+    },
+    {
+      "id": "jt-ankle-sprain",
+      "title": "Rolling an ankle",
+      "topic": "synovial-joints",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A runner lands on the outer edge of her foot. Put the events of the most common ankle sprain in order.",
+      "steps": [
+        {
+          "id": "land",
+          "label": "Lands on outer edge",
+          "text": "She lands on the outer edge of her foot.",
+          "why": "Landing off-center tips the foot over its outer edge."
+        },
+        {
+          "id": "roll",
+          "label": "Sole rolls inward",
+          "text": "The sole rolls sharply inward.",
+          "why": "Body weight falling on the outer edge turns the sole in, forcing it past its normal range."
+        },
+        {
+          "id": "open",
+          "label": "Outer side pulled open",
+          "text": "The outer side of the ankle is pulled open.",
+          "why": "Turning the sole inward stretches the outer side and squeezes the inner side."
+        },
+        {
+          "id": "atfl",
+          "label": "ATFL tears first",
+          "text": "The anterior talofibular ligament stretches or tears first.",
+          "why": "The outer side has three smaller, separate ligaments, and the anterior talofibular is the weakest."
+        },
+        {
+          "id": "swell",
+          "label": "Outer ankle swells",
+          "text": "The outer side of the ankle swells and hurts, and the ankle may feel loose.",
+          "why": "The injured ligament bleeds and swells, and a stretched ligament limits movement less."
+        },
+        {
+          "id": "heal",
+          "label": "Slow healing",
+          "text": "The ligament heals slowly over weeks.",
+          "why": "Ligaments are dense regular connective tissue with a poor blood supply, so repair is slow."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The broad, fan-shaped ligament on the inner side of the ankle stretches or tears first.",
+            "why": "That inner ligament is very strong, and rolling the sole inward squeezes the inner side rather than pulling it open."
+          },
+          {
+            "text": "The talus breaks off the lower end of the tibia.",
+            "why": "The X-ray in a sprain shows no break. A sprain is a stretch or tear of a ligament, not a fracture."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The sole rolls sharply outward.",
+        "why": "Landing on the outer edge rolls the sole inward. That forced inward roll is what stretches the outer ligaments."
+      },
+      "summary": "Landing on the outer edge rolls the sole sharply inward, pulling the outer side of the ankle open; the weakest outer ligament, the anterior talofibular, stretches or tears first; the outer ankle swells, and with its poor blood supply the ligament heals slowly."
+    },
+    {
+      "id": "jt-circumduction",
+      "title": "Circumduction of the arm",
+      "topic": "body-movements",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Draw a big circle with your straight arm. Start with the arm hanging at your side, move it forward first, then out to the side. Put the movements at the shoulder in order; the last leads back to the first.",
+      "steps": [
+        {
+          "id": "flex",
+          "label": "Flexion",
+          "text": "The arm swings forward and up.",
+          "why": "Forward in the sagittal plane at the shoulder is flexion, the first leg of the circle."
+        },
+        {
+          "id": "abd",
+          "label": "Abduction",
+          "text": "The arm sweeps out to the side, away from the midline.",
+          "why": "Moving away from the midline in the frontal plane is abduction, the next quarter of the circle."
+        },
+        {
+          "id": "ext",
+          "label": "Extension",
+          "text": "The arm swings back down and behind the body.",
+          "why": "Moving backward in the sagittal plane is extension; carrying the arm behind you continues it past anatomical position."
+        },
+        {
+          "id": "add",
+          "label": "Adduction",
+          "text": "The arm comes back in toward the body, to the midline.",
+          "why": "Moving toward the midline in the frontal plane is adduction, which closes the circle."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The humerus turns around its own long axis.",
+            "why": "That is rotation, which turns the bone without moving its far end around a circle. Circumduction does not include it."
+          },
+          {
+            "text": "The scapula moves forward around the rib cage.",
+            "why": "That is protraction of the scapula, a different movement. The circle is traced by the arm moving at the shoulder joint."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "The forearm turns so the palm faces backward.",
+        "why": "That is pronation of the forearm, which happens at the radioulnar joints. The circle continues at the shoulder with extension, swinging the arm back."
+      },
+      "summary": "Circumduction is flexion, abduction, extension and adduction done in a smooth sequence, so the hand traces a circle while the arm sweeps out a cone. It needs a joint that moves in at least two planes."
+    },
+    {
+      "id": "jt-name-a-movement",
+      "title": "Naming a movement",
+      "topic": "body-movements",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A patient in anatomical position lifts her straight arm forward until it points at the ceiling. Put the steps for naming the movement in order.",
+      "steps": [
+        {
+          "id": "start",
+          "label": "Anatomical position",
+          "text": "Picture the starting point: anatomical position, the zero for every movement.",
+          "why": "Every movement word is defined as a change from anatomical position, so you fix that first."
+        },
+        {
+          "id": "joint",
+          "label": "Which joint?",
+          "text": "Find the joint that moves: the shoulder.",
+          "why": "A movement belongs to a joint; the same direction can have different names at different joints."
+        },
+        {
+          "id": "plane",
+          "label": "Which plane?",
+          "text": "Find the plane: forward and up is the sagittal plane.",
+          "why": "The plane narrows the choice to one pair of words: sagittal for flexion and extension."
+        },
+        {
+          "id": "dir",
+          "label": "Which direction?",
+          "text": "Find the direction: away from anatomical position, forward.",
+          "why": "Each pair has one word for moving away from the start and one for returning."
+        },
+        {
+          "id": "name",
+          "label": "Name it",
+          "text": "Name it: shoulder flexion.",
+          "why": "Forward in the sagittal plane at the shoulder is flexion; the name follows from the three answers."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Find the plane: forward and up is the frontal plane.",
+            "why": "The frontal plane carries a part out to the side. Forward and backward movements are in the sagittal plane."
+          },
+          {
+            "text": "Find the plane: forward and up is the transverse plane.",
+            "why": "Movements in the transverse plane turn a part around its own long axis, such as rotation."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Name it: shoulder abduction.",
+        "why": "Abduction moves the arm out to the side in the frontal plane. Forward in the sagittal plane is flexion."
+      },
+      "summary": "Start from anatomical position, then ask which joint moves, in which plane and in which direction; the three answers give the name, here shoulder flexion."
+    },
+    {
+      "id": "jt-pronation",
+      "title": "Pronating the forearm",
+      "topic": "body-movements",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Stand in anatomical position and turn your palm to face backward. Put the events in order.",
+      "steps": [
+        {
+          "id": "sup",
+          "label": "Supinated, bones parallel",
+          "text": "The forearm starts supinated: palm forward, radius and ulna parallel.",
+          "why": "Anatomical position is the starting point, and in it the forearm is supinated."
+        },
+        {
+          "id": "head",
+          "label": "Radial head turns",
+          "text": "The head of the radius turns inside the annular ligament at the proximal radioulnar joint.",
+          "why": "This pivot joint lets the radius spin around its long axis at the elbow end."
+        },
+        {
+          "id": "swing",
+          "label": "Lower radius swings",
+          "text": "The lower end of the radius swings around the ulna at the distal radioulnar joint.",
+          "why": "As the upper end spins, the lower end must travel around the fixed ulna."
+        },
+        {
+          "id": "cross",
+          "label": "Radius crosses ulna",
+          "text": "The radius crosses over the ulna.",
+          "why": "The swing carries the lower radius from the thumb side across the ulna."
+        },
+        {
+          "id": "palm",
+          "label": "Palm faces backward",
+          "text": "The hand, carried by the radius, turns palm backward: the forearm is pronated.",
+          "why": "The wrist does not move; the hand simply goes along with the radius."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The wrist rotates the hand around the forearm.",
+            "why": "The wrist takes no part in pronation. The turn happens between the radius and ulna."
+          },
+          {
+            "text": "The ulna crosses over the radius.",
+            "why": "The ulna stays in place, hinged at the elbow; it is the radius that swings across it."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The head of the ulna turns inside the annular ligament.",
+        "why": "The annular ligament wraps the head of the radius, not the ulna. The radius is the bone that turns."
+      },
+      "summary": "From the supinated start, the radial head spins in the annular ligament while the lower radius swings around the ulna, so the radius crosses the ulna and the hand, riding on the radius, turns palm backward."
+    },
+    {
+      "id": "ms-fiber-to-bone",
+      "title": "From a shortening fiber to a moving bone",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "A muscle fiber cannot touch the bone it moves. Its pull passes through a chain of connective tissue first. Follow the force from the cross-bridges to the bone.",
+      "steps": [
+        {
+          "id": "xb",
+          "label": "Cross-bridges",
+          "text": "Cross-bridges pull the thin filaments toward the center of each sarcomere.",
+          "why": "All muscle force starts here, inside the sarcomere, so the chain begins with the cross-bridges."
+        },
+        {
+          "id": "fiber",
+          "label": "Muscle fiber shortens",
+          "text": "Every sarcomere along the fiber shortens, so the whole fiber shortens.",
+          "why": "The sarcomeres lie end to end in each myofibril, so their shortening adds up along the fiber."
+        },
+        {
+          "id": "endo",
+          "label": "Endomysium",
+          "text": "The fiber pulls on the endomysium wrapped around it.",
+          "why": "The endomysium is the innermost wrapping, around each single fiber, so it is the first connective tissue the fiber pulls on."
+        },
+        {
+          "id": "peri",
+          "label": "Perimysium",
+          "text": "The endomysium of many fibers pulls on the perimysium around their fascicle.",
+          "why": "The fibers are bundled into fascicles, each wrapped in perimysium, the next layer out."
+        },
+        {
+          "id": "epi",
+          "label": "Epimysium",
+          "text": "The perimysium of all the fascicles pulls on the epimysium around the whole muscle.",
+          "why": "The epimysium wraps the entire muscle, the outermost layer of the three."
+        },
+        {
+          "id": "tendon",
+          "label": "Tendon",
+          "text": "The three wrappings merge into the tendon, which carries the pull beyond the belly.",
+          "why": "A tendon is the continuation of the muscle’s own connective tissue wrappings past the end of the fibers."
+        },
+        {
+          "id": "bone",
+          "label": "Periosteum and bone",
+          "text": "The tendon’s collagen merges into the periosteum and pulls the insertion’s bone toward the origin.",
+          "why": "The tendon is anchored into the bone’s covering, so the pull finally reaches the bone that moves."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The endomysium pulls directly on the tendon, with no layer in between.",
+            "why": "The fibers are grouped into fascicles, and each fascicle’s perimysium lies between the endomysium and the outer wrapping."
+          },
+          {
+            "text": "The fiber pulls on the sarcolemma of the next fiber along, which passes the pull on.",
+            "why": "Fibers do not pull on each other end to end. Their pull is gathered by the connective tissue wrappings around them."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The tendon’s collagen merges into the articular cartilage and pulls the joint surfaces apart.",
+        "why": "Tendons anchor into the periosteum and bone, not into the cartilage that covers the joint surfaces, and they pull the insertion toward the origin."
+      },
+      "summary": "Cross-bridges shorten each sarcomere and so the fiber; the fiber pulls its endomysium, then the perimysium of its fascicle, then the epimysium of the whole muscle; the three merge into the tendon, whose collagen merges into the periosteum and moves the bone."
+    },
+    {
+      "id": "ms-lever-elbow",
+      "title": "Bending the elbow as a third-class lever",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You lift a glass by bending your elbow. Put the causes in order, from the muscle’s pull to the fast sweep of your hand and back down again.",
+      "steps": [
+        {
+          "id": "fix",
+          "label": "Fixators steady the scapula",
+          "text": "Muscles around the shoulder blade hold the scapula still, giving the upper-arm bone a stable base.",
+          "why": "The prime mover needs a still origin to pull from; otherwise its pull would drag its own base forward."
+        },
+        {
+          "id": "pull",
+          "label": "Prime mover pulls",
+          "text": "The large muscle on the front of the upper arm contracts and pulls on its insertion near the elbow.",
+          "why": "With the origin held, the contraction can move only the insertion’s bone."
+        },
+        {
+          "id": "turn",
+          "label": "Forearm turns at the elbow",
+          "text": "The forearm turns about the elbow joint, the fulcrum, with the effort between the fulcrum and the load.",
+          "why": "The insertion lies between the elbow and the hand, which makes the forearm a third-class lever."
+        },
+        {
+          "id": "sweep",
+          "label": "Hand sweeps up fast",
+          "text": "Because the load arm is several times the effort arm, the hand moves several times farther and faster than the insertion.",
+          "why": "A short, slow pull close to the fulcrum becomes a long, fast movement at the far end: the lever’s trade of force for range."
+        },
+        {
+          "id": "brake",
+          "label": "Antagonist brakes the end",
+          "text": "The muscle on the back of the upper arm tightens at the end of a fast lift, slowing the forearm.",
+          "why": "Antagonists brake fast movements at their end so the joint is not jammed."
+        },
+        {
+          "id": "return",
+          "label": "Antagonist straightens it",
+          "text": "To put the glass down against resistance, the back-of-arm muscle pulls on the olecranon and straightens the elbow.",
+          "why": "The front muscle cannot push, so reversing the movement takes the muscle on the other side of the joint (or gravity)."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The forearm turns about the shoulder joint, the fulcrum, with the load sitting between the fulcrum and the effort.",
+            "why": "Bending the elbow turns the forearm at the elbow, and in this lever the effort, not the load, sits in the middle."
+          },
+          {
+            "text": "The front muscle pushes on the forearm, driving it away from the upper arm and straightening the elbow.",
+            "why": "Muscles only pull. Bending the elbow brings the insertion toward the origin."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "To put the glass down against resistance, the front upper-arm muscle pushes the forearm back down.",
+        "why": "A muscle cannot push. Straightening the elbow against resistance is the job of its antagonist, the muscle on the back of the upper arm."
+      },
+      "summary": "Fixators hold the scapula; the prime mover pulls its insertion; the forearm turns at the elbow as a third-class lever; the hand sweeps far and fast; the antagonist brakes the end of a fast lift and then straightens the elbow to reverse it."
+    },
+    {
+      "id": "ms-chewing-cycle",
+      "title": "One chewing stroke",
+      "topic": "head-neck-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Chewing repeats the same stroke over and over while the lips stay sealed. Put one stroke in order, starting with the mouth closed on a bite of food.",
+      "steps": [
+        {
+          "id": "open",
+          "label": "Jaw opens",
+          "text": "The lateral pterygoids pull the condyles forward and the suprahyoid muscles pull the mandible down, helped by gravity.",
+          "why": "The stroke starts by opening, and only the lateral pterygoids and suprahyoids (with gravity) open the jaw."
+        },
+        {
+          "id": "bucc",
+          "label": "Buccinator returns food",
+          "text": "The buccinator presses the cheek against the teeth, pushing food that fell into the cheek back between them.",
+          "why": "While the jaw is open, food that slipped off the teeth is pushed back so the next bite lands on it."
+        },
+        {
+          "id": "close",
+          "label": "Jaw closes hard",
+          "text": "The masseter, temporalis and medial pterygoids elevate the mandible, and the teeth bite down.",
+          "why": "Three of the four chewing muscles close the jaw, which is why the bite is so much stronger than the opening."
+        },
+        {
+          "id": "grind",
+          "label": "Side-to-side grinding",
+          "text": "The pterygoids of one side then the other shift the mandible sideways, grinding the food between the molars.",
+          "why": "Grinding happens with the teeth together, after the bite; working one side at a time, the pterygoids swing the jaw across."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The buccinator contracts and pulls the mandible up toward the skull, closing the jaw firmly on the food.",
+            "why": "The buccinator inserts into the orbicularis oris, not the mandible, so it cannot move the jaw. It is a muscle of facial expression."
+          },
+          {
+            "text": "The infrahyoid muscles contract and pull the mandible up toward the skull, so the teeth bite down hard.",
+            "why": "The infrahyoids run from the hyoid down to the sternum and voice box. They never reach the mandible, and they pull downward."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "The masseter and temporalis relax, and the mandible is pulled open mainly by the masseter’s back fibers.",
+        "why": "The masseter only closes the jaw. Opening is done by the lateral pterygoids and suprahyoids, with gravity."
+      },
+      "summary": "The lateral pterygoids and suprahyoids open the jaw; the buccinator pushes food from the cheek back onto the teeth; the masseter, temporalis and medial pterygoids close the jaw hard; the pterygoids grind side to side; then the stroke repeats."
+    },
+    {
+      "id": "ms-swallow-hyoid",
+      "title": "The hyoid in a swallow",
+      "topic": "head-neck-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "Put a finger just above the bump of your voice box and swallow: it jumps up and drops back. Put the muscle actions in order.",
+      "steps": [
+        {
+          "id": "seal",
+          "label": "Lips and jaw closed",
+          "text": "The orbicularis oris seals the lips and the jaw-closing muscles hold the teeth together.",
+          "why": "A swallow starts with the mouth closed, giving the suprahyoids a steady mandible to pull from."
+        },
+        {
+          "id": "supra",
+          "label": "Suprahyoids contract",
+          "text": "With the mandible held still, the suprahyoid muscles contract.",
+          "why": "The suprahyoids run from the hyoid up to the mandible and skull, so with those ends fixed they can lift the hyoid."
+        },
+        {
+          "id": "rise",
+          "label": "Hyoid and voice box rise",
+          "text": "The hyoid bone rises, carrying the voice box up with it.",
+          "why": "The hyoid forms no joint with any bone; it hangs in muscles, so the suprahyoids’ pull lifts it directly, and the voice box hangs from it."
+        },
+        {
+          "id": "infra",
+          "label": "Infrahyoids contract",
+          "text": "The suprahyoids relax and the infrahyoid strap muscles contract.",
+          "why": "The infrahyoids are the suprahyoids’ antagonists; they take over once the swallow has passed."
+        },
+        {
+          "id": "down",
+          "label": "Hyoid returns down",
+          "text": "The hyoid and voice box are pulled back down to their resting place.",
+          "why": "The infrahyoids run from the hyoid down to the sternum, voice box and scapula, so they pull it down."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The hyoid pivots at its joint with the mandible, tipping the voice box forward.",
+            "why": "The hyoid forms no joint with any other bone. It hangs in muscles and ligaments."
+          },
+          {
+            "text": "The sternocleidomastoids lift the sternum, raising the voice box.",
+            "why": "The sternocleidomastoids turn and flex the neck. The voice box rises because the suprahyoids lift the hyoid."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The suprahyoids relax and the scalenes contract to pull the hyoid down.",
+        "why": "The scalenes run from the cervical vertebrae to the first two ribs and do not attach to the hyoid. The infrahyoid strap muscles pull it down."
+      },
+      "summary": "The lips and jaw are closed; the suprahyoids contract; the hyoid and voice box rise; the suprahyoids relax as the infrahyoids contract; the hyoid and voice box return down."
+    },
+    {
+      "id": "ms-cough-pressure",
+      "title": "A cough and the pelvic floor",
+      "topic": "trunk-muscles",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A cough is driven by the abdominal wall, and the pelvic floor has to answer at the same moment. Put the causes in order.",
+      "steps": [
+        {
+          "id": "breath",
+          "label": "Deep breath in",
+          "text": "The diaphragm contracts and flattens, filling the lungs.",
+          "why": "A cough needs air to push out, so it starts with a breath in."
+        },
+        {
+          "id": "wall",
+          "label": "Abdominal wall squeezes",
+          "text": "The rectus abdominis, obliques and transversus abdominis contract together.",
+          "why": "These are the muscles that compress the abdomen; they fire once the lungs are full."
+        },
+        {
+          "id": "pressure",
+          "label": "Abdominal pressure rises",
+          "text": "The abdominal contents, soft and nearly incompressible, are squeezed and the pressure inside the abdomen rises.",
+          "why": "Squeezing contents that cannot be compressed can only raise their pressure."
+        },
+        {
+          "id": "diaphragm",
+          "label": "Diaphragm driven up",
+          "text": "The pressure pushes the relaxed diaphragm up into the chest and air is forced out of the lungs.",
+          "why": "The diaphragm is the flexible roof of the abdomen, so the pressure pushes it up, shrinking the chest."
+        },
+        {
+          "id": "pelvic",
+          "label": "Levator ani tightens",
+          "text": "At the same moment, the levator ani contracts, holding the pelvic organs up and squeezing the urethra and rectum shut.",
+          "why": "The rising pressure also pushes downward, so the pelvic floor must answer it or the organs and their contents are pushed down."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The abdominal organs are squeezed into a much smaller volume, so the pressure inside the abdomen falls instead of rising.",
+            "why": "The organs are nearly incompressible; squeezing them raises the pressure instead of shrinking them."
+          },
+          {
+            "text": "The external intercostals contract and lift the ribs up and out, widening the chest to draw in more air.",
+            "why": "The external intercostals enlarge the chest for a breath in. A cough shrinks the chest."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "At the same moment, the levator ani relaxes, letting the pressure escape downward through the pelvic floor.",
+        "why": "The levator ani contracts, not relaxes, during a cough. Relaxing it is what lets a little urine leak when the pelvic floor is weak."
+      },
+      "summary": "The diaphragm fills the lungs; the abdominal wall muscles squeeze; abdominal pressure rises; the pressure drives the diaphragm up and air out; the levator ani tightens at the same moment to hold the pelvic organs up and the openings shut."
+    },
+    {
+      "id": "ms-breath-rest",
+      "title": "The muscles of one breath at rest",
+      "topic": "trunk-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "Sitting still, you breathe in about a dozen times a minute. Put the muscle events of one breath in order.",
+      "steps": [
+        {
+          "id": "dia",
+          "label": "Diaphragm contracts",
+          "text": "The diaphragm’s fibers shorten and pull the central tendon down.",
+          "why": "Breathing in at rest is active, and the diaphragm does most of the work, so it leads."
+        },
+        {
+          "id": "ribs",
+          "label": "Ribs lifted",
+          "text": "The external intercostals, helped by the scalenes, lift the ribs up and out.",
+          "why": "The rib muscles work at the same time as the diaphragm, widening the chest while the diaphragm makes it taller."
+        },
+        {
+          "id": "in",
+          "label": "Chest enlarges, air flows in",
+          "text": "The chest cavity grows taller and wider, and air flows into the lungs.",
+          "why": "The enlarged chest is the result of the muscle work, and air follows it."
+        },
+        {
+          "id": "relax",
+          "label": "Muscles relax",
+          "text": "The diaphragm and rib muscles relax, and the dome of the diaphragm rises again.",
+          "why": "At rest, breathing out starts with the muscles simply stopping."
+        },
+        {
+          "id": "recoil",
+          "label": "Passive recoil, air out",
+          "text": "The stretched lungs and chest wall recoil on their own, like a released balloon, and air flows out.",
+          "why": "Breathing out at rest needs no muscle: the recoil of stretched tissue does it."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The internal intercostals and abdominal wall muscles contract hard to squeeze the air out of the lungs quickly.",
+            "why": "That happens in forceful breathing out, as in blowing out candles. At rest, breathing out is passive."
+          },
+          {
+            "text": "The diaphragm contracts a second time, pushing its dome up into the chest to drive the air out.",
+            "why": "A contracting diaphragm flattens and moves down. Its dome rises when it relaxes."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "The diaphragm’s fibers shorten and push the central tendon up into the chest.",
+        "why": "When its fibers shorten they pull the central tendon down toward their origins on the lower rib cage and lumbar vertebrae, flattening the dome."
+      },
+      "summary": "The diaphragm pulls its central tendon down; the external intercostals and scalenes lift the ribs; the chest enlarges and air flows in; the muscles relax; the lungs and chest wall recoil and air flows out."
+    },
+    {
+      "id": "ms-cuff-tear",
+      "title": "How a supraspinatus tear weakens the shoulder",
+      "topic": "upper-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Mr. Brooks has painted ceilings for 30 years, and his shoulder now hurts and feels weak when he lifts his arm to the side. Put the chain in order.",
+      "steps": [
+        {
+          "id": "wear",
+          "label": "Age-related tendon wear",
+          "text": "With age, the supraspinatus tendon itself wears and weakens.",
+          "why": "Most rotator cuff tears begin with age-related wear of the tendon, so this is the starting cause."
+        },
+        {
+          "id": "strain",
+          "label": "Overhead work adds strain",
+          "text": "Years of repeated overhead work load the tendon where it runs through the tight space under the acromion.",
+          "why": "Repeated overhead work adds strain to a tendon already weakened by wear."
+        },
+        {
+          "id": "tear",
+          "label": "Tendon tears",
+          "text": "The worn tendon tears away from the greater tubercle.",
+          "why": "A weakened, repeatedly loaded tendon eventually fails."
+        },
+        {
+          "id": "seat",
+          "label": "Head held less firmly",
+          "text": "The head of the humerus is held less firmly in the shallow glenoid cavity.",
+          "why": "The supraspinatus is one of the four cuff muscles that press the head into its socket; losing it loosens that hold."
+        },
+        {
+          "id": "slide",
+          "label": "Head rides up",
+          "text": "When the deltoid pulls to abduct the arm, part of its pull slides the head up toward the acromion instead of swinging the arm out.",
+          "why": "With the head no longer seated, the deltoid’s upward pull turns partly into sliding rather than rotation."
+        },
+        {
+          "id": "weak",
+          "label": "Weak, painful abduction",
+          "text": "Raising the arm to the side becomes weak and painful.",
+          "why": "Abduction has lost a working muscle and pinches tissue under the acromion: the symptom he notices last in the chain."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The subscapularis takes over abduction, pulling upward on the lesser tubercle instead.",
+            "why": "The subscapularis rotates the arm medially. The deltoid is left as the main abductor."
+          },
+          {
+            "text": "The humerus dislocates forward out of the glenoid cavity.",
+            "why": "The other cuff muscles still hold the joint together. The problem is a looser hold that lets the head ride up."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "A sudden fall onto the outstretched hand tears a young, healthy supraspinatus tendon.",
+        "why": "That can happen, but most supraspinatus tears come from age-related wear of the tendon itself, with repeated overhead work adding strain, as in his case."
+      },
+      "summary": "Age-related wear weakens the tendon; overhead work strains it under the acromion; it tears; the head of the humerus is held less firmly; the deltoid’s pull slides the head up; abduction becomes weak and painful."
+    },
+    {
+      "id": "ms-carpal-tunnel-chain",
+      "title": "Carpal tunnel syndrome",
+      "topic": "upper-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A worker grips tools for long hours every day. Put the chain that leads to a numb thumb in order.",
+      "steps": [
+        {
+          "id": "grip",
+          "label": "Repeated gripping",
+          "text": "Long hours of repeated gripping work the finger flexors over and over.",
+          "why": "Overuse is the starting cause in this worker."
+        },
+        {
+          "id": "swell",
+          "label": "Tendon sheaths swell",
+          "text": "The sheaths around the flexor tendons in the carpal tunnel swell.",
+          "why": "The flexor tendons run through the tunnel, so that is where their irritated sheaths swell."
+        },
+        {
+          "id": "pressure",
+          "label": "Tunnel pressure rises",
+          "text": "The carpal bones and flexor retinaculum cannot stretch, so the pressure in the tunnel rises.",
+          "why": "A fixed space with more contents must have a higher pressure."
+        },
+        {
+          "id": "nerve",
+          "label": "Nerve squeezed",
+          "text": "The nerve that passes through the tunnel with the tendons is squeezed.",
+          "why": "The nerve is the softest thing in the tunnel, so it suffers first from the pressure."
+        },
+        {
+          "id": "numb",
+          "label": "Numb, tingling fingers",
+          "text": "Numbness and tingling spread over the thumb and first fingers.",
+          "why": "A squeezed nerve first disturbs feeling in the skin it supplies."
+        },
+        {
+          "id": "waste",
+          "label": "Thenar wasting (late)",
+          "text": "In severe, long-standing cases, the thenar muscles at the base of the thumb waste away.",
+          "why": "The same nerve supplies the thenar muscles; losing them comes late, after long compression."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The flexor retinaculum stretches to make room for the swelling, so the pressure in the tunnel falls.",
+            "why": "The flexor retinaculum is a tough band that barely stretches; that is why swelling raises the pressure."
+          },
+          {
+            "text": "The wrist extensor tendons swell on the back of the hand and press into the tunnel.",
+            "why": "The extensor tendons run on the back of the wrist, outside the carpal tunnel."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "In severe, long-standing cases, the hypothenar muscles at the base of the little finger waste away.",
+        "why": "The nerve squeezed in the carpal tunnel supplies the thenar muscles at the base of the thumb, so those are the ones that waste."
+      },
+      "summary": "Repeated gripping; the flexor tendon sheaths swell; the pressure in the unstretchable tunnel rises; the nerve is squeezed; the thumb and first fingers go numb and tingle; late, the thenar muscles waste."
+    },
+    {
+      "id": "ms-compartment-chain",
+      "title": "Compartment syndrome",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A tibia fracture bleeds into the anterior compartment of the leg. Put the chain in order, through to the surgery that stops it.",
+      "steps": [
+        {
+          "id": "bleed",
+          "label": "Bleeding and swelling",
+          "text": "Blood and swelling fill the anterior compartment of the leg.",
+          "why": "The injury adds volume inside the compartment: the starting cause."
+        },
+        {
+          "id": "press",
+          "label": "Pressure rises",
+          "text": "The deep fascia barely stretches, so the pressure in the compartment rises.",
+          "why": "Fascia is dense collagen, so the compartment’s volume is nearly fixed and extra contents raise its pressure."
+        },
+        {
+          "id": "veins",
+          "label": "Veins squeezed shut",
+          "text": "The thin-walled veins are squeezed shut, so blood cannot drain out and the pressure climbs further.",
+          "why": "Veins have the lowest pressure and thinnest walls, so they close first, which makes the rise feed on itself."
+        },
+        {
+          "id": "caps",
+          "label": "Capillary flow stops",
+          "text": "The pressure rises high enough to stop blood flow through the capillaries.",
+          "why": "Capillaries close only after the compartment pressure passes the pressure inside them."
+        },
+        {
+          "id": "pain",
+          "label": "Starved muscle, severe pain",
+          "text": "Muscles and nerves starved of oxygen cause pain out of proportion to the injury, worse on passive stretch.",
+          "why": "No capillary flow means no oxygen for the tissue, and the pain is the early warning."
+        },
+        {
+          "id": "fasc",
+          "label": "Fascia slit, pressure falls",
+          "text": "A surgeon slits the fascia along the compartment, the pressure falls and blood flows again.",
+          "why": "Opening the fascia removes what fixed the volume, so it has to come before the muscle dies, within hours."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The main artery is squeezed shut first, so the pulse in the foot disappears within minutes of the injury.",
+            "why": "The artery has by far the highest pressure; it stays open while the veins and capillaries close. A lost pulse is a late sign."
+          },
+          {
+            "text": "The fascia stretches to take up the swelling, so the pressure falls back.",
+            "why": "Deep fascia barely stretches; that is what makes compartment syndrome possible."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Muscles and nerves starved of oxygen go numb first, so severe pain is a late sign.",
+        "why": "Pain out of proportion to the injury, and pain on passive stretch, come first. Numbness and weakness come later."
+      },
+      "summary": "Bleeding fills the compartment; the unstretchable fascia lets the pressure rise; the veins close and trap more fluid; capillary flow stops; starved muscle causes severe pain on stretch; slitting the fascia relieves the pressure."
+    },
+    {
+      "id": "ms-ventrogluteal",
+      "title": "Finding the ventrogluteal injection site",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "The ventrogluteal site is found from three bony landmarks with one hand. Put the steps in order.",
+      "steps": [
+        {
+          "id": "troch",
+          "label": "Heel on greater trochanter",
+          "text": "Place the heel of your hand on the patient’s greater trochanter.",
+          "why": "The greater trochanter anchors the hand: every other landmark is found by spreading the fingers from it."
+        },
+        {
+          "id": "asis",
+          "label": "Index finger on ASIS",
+          "text": "Place your index finger on the anterior superior iliac spine.",
+          "why": "With the heel fixed, the index finger reaches forward to the front landmark."
+        },
+        {
+          "id": "crest",
+          "label": "Middle finger along crest",
+          "text": "Spread your middle finger back along the iliac crest, making a V with the index finger.",
+          "why": "The V can only be formed once the index finger is placed."
+        },
+        {
+          "id": "inject",
+          "label": "Inject in center of V",
+          "text": "Insert the needle into the center of the V, into the gluteus medius and minimus.",
+          "why": "The center of the V lies over thick muscle with no large nerves or vessels, so the needle goes in last, there."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Place your index finger on the ischial tuberosity, the bone you sit on.",
+            "why": "The ischial tuberosity is the bone you sit on, behind and below. The front landmark is the anterior superior iliac spine."
+          },
+          {
+            "text": "Place your index finger in the middle of the buttock.",
+            "why": "The middle of the buttock is where the large nerve below the piriformis runs; the site is found from the anterior superior iliac spine instead."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Insert the needle into the center of the V, into the gluteus maximus.",
+        "why": "The ventrogluteal site lies over the gluteus medius and minimus on the side of the hip. The gluteus maximus lies behind, over the buttock."
+      },
+      "summary": "Heel of the hand on the greater trochanter; index finger on the anterior superior iliac spine; middle finger spread back along the iliac crest; inject into the center of the V, into the gluteus medius and minimus."
+    },
+    {
+      "id": "ms-tiptoe-lever",
+      "title": "Rising onto your toes",
+      "topic": "lower-limb-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Rising onto your toes is the textbook second-class lever. Put the chain in order, from the calf muscles to your body going up.",
+      "steps": [
+        {
+          "id": "calf",
+          "label": "Calf muscles contract",
+          "text": "The gastrocnemius and soleus contract.",
+          "why": "The movement is plantar flexion, and these are its main muscles, so they start the chain."
+        },
+        {
+          "id": "tendon",
+          "label": "Calcaneal tendon pulls",
+          "text": "Their shared calcaneal tendon pulls up on the calcaneus at the back of the foot.",
+          "why": "Both muscles pull through one tendon, which inserts on the calcaneus."
+        },
+        {
+          "id": "pivot",
+          "label": "Foot pivots at the ball",
+          "text": "The foot turns about the ball of the foot (the metatarsophalangeal joints), the fulcrum.",
+          "why": "With the toes on the floor, the heel can only rise if the foot turns about its front end."
+        },
+        {
+          "id": "load",
+          "label": "Body raised",
+          "text": "Body weight, coming down through the tibia onto the talus between the fulcrum and the heel, is lifted.",
+          "why": "The load sits between the fulcrum and the effort, which is what makes this a second-class lever in the textbook model."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The foot turns about the heel, which stays pressed on the floor while the ball of the foot and the toes lift.",
+            "why": "The heel is where the effort pulls, and it rises. The ball of the foot stays on the floor and is the fulcrum."
+          },
+          {
+            "text": "The tibialis anterior pulls the front of the foot and the toes up off the floor.",
+            "why": "The tibialis anterior dorsiflexes the foot, the opposite movement."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "Their shared calcaneal tendon pulls up on the navicular bone on the inner side of the foot.",
+        "why": "The calcaneal tendon inserts on the calcaneus, the heel bone, at the back of the foot."
+      },
+      "summary": "The gastrocnemius and soleus contract; the calcaneal tendon pulls up on the calcaneus; the foot turns about the ball of the foot; the body weight between them is lifted. For your exam, this is a second-class lever."
     }
   ]
 }

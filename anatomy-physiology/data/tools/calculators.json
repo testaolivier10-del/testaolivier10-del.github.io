@@ -34,7 +34,8 @@
       "id": "reproductive",
       "title": "Reproductive system"
     },
-    { "id": "development", "title": "Development and inheritance" }
+    { "id": "development", "title": "Development and inheritance" },
+    { "id": "muscular", "title": "Muscular system" }
   ],
   "calculators": [
     {
@@ -12310,6 +12311,369 @@
               "abs": 1
             },
             "prompt": "Using 208 − (0.7 × age), estimate the maximum heart rate of a {age}-year-old."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ms-lever-effort",
+      "group": "muscular",
+      "title": "Muscle pull on a lever",
+      "short": "Effort × effort arm = load × load arm",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "A bone is a lever turning at a joint. Enter the load, how far it sits from the joint (load arm) and how far from the joint the muscle inserts (effort arm), to find how hard the muscle must pull to hold the load still and the lever’s mechanical advantage. The weight of the body part itself is ignored.",
+      "formula": "Effort = load × load arm ÷ effort arm; mechanical advantage = effort arm ÷ load arm",
+      "inputs": [
+        {
+          "key": "L",
+          "label": "Load",
+          "sym": "load",
+          "unit": "N",
+          "default": 40,
+          "min": 1,
+          "max": 2000,
+          "step": 1,
+          "gen": {
+            "choices": [
+              20,
+              30,
+              40,
+              50,
+              60,
+              80,
+              100
+            ]
+          },
+          "hint": "A 4 kg weight is about 40 N."
+        },
+        {
+          "key": "dL",
+          "label": "Load arm (joint to load)",
+          "sym": "load arm",
+          "unit": "cm",
+          "default": 32,
+          "min": 1,
+          "max": 200,
+          "step": 0.5,
+          "gen": [
+            24,
+            36,
+            2
+          ],
+          "hint": "Elbow to hand is about 30 to 35 cm in an adult."
+        },
+        {
+          "key": "dE",
+          "label": "Effort arm (joint to insertion)",
+          "sym": "effort arm",
+          "unit": "cm",
+          "default": 4,
+          "min": 0.5,
+          "max": 200,
+          "step": 0.5,
+          "gen": [
+            2,
+            6,
+            0.5
+          ],
+          "hint": "The elbow flexors insert a few centimeters from the elbow."
+        }
+      ],
+      "derived": [
+        {
+          "key": "torque",
+          "expr": "L * dL",
+          "dp": 0
+        },
+        {
+          "key": "E",
+          "expr": "L * dL / dE",
+          "dp": 0
+        },
+        {
+          "key": "MA",
+          "expr": "dE / dL",
+          "dp": 3
+        },
+        {
+          "key": "times",
+          "expr": "dL / dE",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Identify the parts",
+          "text": "Fulcrum: the joint. Effort: the muscle’s pull at its insertion, {dE} cm from the joint. Load: {L} N, {dL} cm from the joint."
+        },
+        {
+          "title": "Write the balance rule",
+          "text": "To hold the load still, effort × effort arm = load × load arm."
+        },
+        {
+          "title": "Fill in the load side",
+          "text": "Load × load arm = {L} N × {dL} cm = <b>{torque} N·cm</b>."
+        },
+        {
+          "title": "Solve for the effort",
+          "text": "Effort = {torque} ÷ {dE} = <b>{E} N</b>."
+        },
+        {
+          "title": "Mechanical advantage",
+          "text": "Effort arm ÷ load arm = {dE} ÷ {dL} = <b>{MA}</b>. The muscle pulls {times} times the load when this is below 1, and less than the load when it is above 1."
+        }
+      ],
+      "results": [
+        {
+          "key": "E",
+          "label": "Pull the muscle must produce",
+          "unit": "N",
+          "normal": "Worked example: 320 N to hold 40 N in the hand.",
+          "bands": [
+            {
+              "when": "MA < 1",
+              "label": "larger than the load",
+              "tone": "hi"
+            },
+            {
+              "when": "MA > 1",
+              "label": "smaller than the load",
+              "tone": "lo"
+            },
+            {
+              "label": "equal to the load",
+              "tone": "ok"
+            }
+          ]
+        },
+        {
+          "key": "MA",
+          "label": "Mechanical advantage",
+          "unit": "",
+          "normal": "Most body levers are third-class, well below 1."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "MA < 1",
+          "text": "The effort arm is shorter than the load arm, as in a third-class lever such as bending the elbow. The muscle must pull {times} times the load, but in return the load moves {times} times farther and faster than the insertion: the lever trades force for speed and range."
+        },
+        {
+          "when": "MA > 1",
+          "text": "The effort arm is longer than the load arm, as in a second-class lever such as a wheelbarrow. The pull is smaller than the load, but the load moves less far than the point where the effort is applied: the lever trades range for force."
+        },
+        {
+          "when": "1",
+          "text": "The two arms are equal, so the pull equals the load, like a seesaw with the fulcrum in the middle."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 40 N in the hand, elbow bent",
+          "values": {
+            "L": 40,
+            "dL": 32,
+            "dE": 4
+          }
+        },
+        {
+          "label": "Same weight held on the forearm, 16 cm out",
+          "values": {
+            "L": 40,
+            "dL": 16,
+            "dE": 4
+          }
+        },
+        {
+          "label": "A wheelbarrow: handles 150 cm, load 50 cm out",
+          "values": {
+            "L": 600,
+            "dL": 50,
+            "dE": 150
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "E",
+            "unit": "N",
+            "tol": {
+              "abs": 1,
+              "rel": 0.01
+            },
+            "prompt": "A {L} N load is held {dL} cm from a joint. The muscle inserts {dE} cm from the joint, between the joint and the load. How hard must it pull to hold the load still?"
+          },
+          {
+            "key": "MA",
+            "unit": "",
+            "tol": {
+              "abs": 0.002
+            },
+            "prompt": "What is the mechanical advantage of this lever?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ms-lever-range",
+      "group": "muscular",
+      "title": "How far the load moves",
+      "short": "Load movement = insertion movement × load arm ÷ effort arm",
+      "topic": "muscle-mechanics",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "The other side of the lever trade-off. When a muscle shortens, its insertion and the load turn through the same angle about the joint, so each moves in proportion to its distance from the joint. Enter how far the insertion moves to find how far, and how many times faster, the load moves in the same moment.",
+      "formula": "Load movement = insertion movement × (load arm ÷ effort arm)",
+      "inputs": [
+        {
+          "key": "s",
+          "label": "Distance the insertion moves",
+          "sym": "insertion movement",
+          "unit": "cm",
+          "default": 1,
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "gen": [
+            0.5,
+            3,
+            0.5
+          ],
+          "hint": "A muscle fiber can shorten by only about a third of its length."
+        },
+        {
+          "key": "dE",
+          "label": "Effort arm (joint to insertion)",
+          "sym": "effort arm",
+          "unit": "cm",
+          "default": 4,
+          "min": 0.5,
+          "max": 200,
+          "step": 0.5,
+          "gen": [
+            2,
+            6,
+            0.5
+          ]
+        },
+        {
+          "key": "dL",
+          "label": "Load arm (joint to load)",
+          "sym": "load arm",
+          "unit": "cm",
+          "default": 32,
+          "min": 1,
+          "max": 200,
+          "step": 0.5,
+          "gen": [
+            24,
+            36,
+            2
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "k",
+          "expr": "dL / dE",
+          "dp": 1
+        },
+        {
+          "key": "h",
+          "expr": "s * dL / dE",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Same angle, different distances",
+          "text": "The insertion ({dE} cm out) and the load ({dL} cm out) turn through the same angle about the joint, so each travels a distance proportional to how far it is from the joint."
+        },
+        {
+          "title": "Find the ratio",
+          "text": "Load arm ÷ effort arm = {dL} ÷ {dE} = <b>{k}</b>."
+        },
+        {
+          "title": "Scale the movement",
+          "text": "Load movement = {s} cm × {k} = <b>{h} cm</b>."
+        },
+        {
+          "title": "Speed",
+          "text": "Both movements take the same moment, so the load also moves {k} times faster than the insertion."
+        }
+      ],
+      "results": [
+        {
+          "key": "h",
+          "label": "Distance the load moves",
+          "unit": "cm",
+          "normal": "Worked example: 1 cm at the insertion moves the hand 8 cm."
+        },
+        {
+          "key": "k",
+          "label": "Times farther and faster than the insertion",
+          "unit": "×"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "k > 1",
+          "text": "The load moves {k} times as far and as fast as the insertion, the gain of a third-class lever. The price is paid in force: to hold a load, the muscle must pull {k} times as hard as it."
+        },
+        {
+          "when": "k < 1",
+          "text": "The load moves less far than the insertion. The lever gains force instead: the pull needed is smaller than the load."
+        },
+        {
+          "when": "1",
+          "text": "The load and the insertion move the same distance, and the pull equals the load."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: elbow, 1 cm of shortening",
+          "values": {
+            "s": 1,
+            "dE": 4,
+            "dL": 32
+          }
+        },
+        {
+          "label": "Insertion 5 cm from the elbow",
+          "values": {
+            "s": 1,
+            "dE": 5,
+            "dL": 32
+          }
+        },
+        {
+          "label": "Short, quick pull of 2.5 cm",
+          "values": {
+            "s": 2.5,
+            "dE": 4,
+            "dL": 32
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "h",
+            "unit": "cm",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.01
+            },
+            "prompt": "A muscle inserts {dE} cm from a joint and moves a load {dL} cm from the joint. Its insertion moves {s} cm. How far does the load move?"
           }
         ]
       }

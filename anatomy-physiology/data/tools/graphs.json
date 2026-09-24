@@ -25010,6 +25010,687 @@
      }
     }
    ]
+  },
+  {
+   "id": "ms-lever-effort",
+   "title": "How far the insertion sits from the elbow sets the pull",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "You hold a 40-newton weight (about 4 kg) in your hand, 32 cm from the elbow, with the elbow bent at a right angle. The curve shows how hard the elbow-bending muscle must pull to hold it, depending on how far from the elbow its insertion sits. Each point comes from the balance rule: effort × effort arm = load × load arm. The weight of the forearm itself is ignored.",
+   "alt": "A falling curve of the muscle pull needed, from 0 to 900 newtons, against the insertion’s distance from the elbow, from 3 to 12 cm. The pull is about 427 N at 3 cm, 320 N at 4 cm, 256 N at 5 cm, 160 N at 8 cm and 107 N at 12 cm. A dashed line at 40 N marks the weight itself; the curve stays far above it everywhere.",
+   "x": {
+    "min": 3,
+    "max": 12,
+    "label": "Insertion distance from the elbow (effort arm)",
+    "unit": "cm",
+    "ticks": [
+     3,
+     4,
+     6,
+     8,
+     10,
+     12
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 900,
+      "label": "Pull the muscle must produce",
+      "unit": "N",
+      "ticks": [
+       0,
+       200,
+       400,
+       600,
+       800
+      ]
+     },
+     "hlines": [
+      {
+       "y": 40,
+       "label": "the weight itself: 40 N",
+       "at": 9,
+       "dash": true
+      }
+     ],
+     "series": [
+      {
+       "id": "pull40",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         3,
+         426.7
+        ],
+        [
+         3.5,
+         365.7
+        ],
+        [
+         4,
+         320
+        ],
+        [
+         4.5,
+         284.4
+        ],
+        [
+         5,
+         256
+        ],
+        [
+         6,
+         213.3
+        ],
+        [
+         7,
+         182.9
+        ],
+        [
+         8,
+         160
+        ],
+        [
+         9,
+         142.2
+        ],
+        [
+         10,
+         128
+        ],
+        [
+         11,
+         116.4
+        ],
+        [
+         12,
+         106.7
+        ]
+       ],
+       "label": "40 N held 32 cm out",
+       "labelAt": [
+        6.2,
+        300
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "close",
+     "x0": 3,
+     "x1": 4,
+     "label": "pull over 8 × the weight"
+    },
+    {
+     "id": "far",
+     "x0": 8,
+     "x1": 12,
+     "label": "pull under 4 × the weight"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at-4cm",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the pull needed when the insertion is 4 cm from the elbow.",
+     "answer": 320,
+     "tol": 15,
+     "unit": "N",
+     "show": {
+      "x": 4,
+      "y": 320
+     },
+     "why": "About 320 N. Balance: effort × 4 cm = 40 N × 32 cm = 1,280 N·cm, so effort = 320 N, eight times the weight. That is the worked example in the notes."
+    },
+    {
+     "id": "at-8cm",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the pull needed when the insertion is 8 cm from the elbow.",
+     "answer": 160,
+     "tol": 10,
+     "unit": "N",
+     "show": {
+      "x": 8,
+      "y": 160
+     },
+     "why": "About 160 N. Doubling the effort arm from 4 to 8 cm halves the pull, because effort × effort arm must still equal the same 1,280 N·cm."
+    },
+    {
+     "id": "region-close",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Over which stretch of insertion distances must the muscle pull more than eight times the weight?",
+     "options": [
+      "From 3 to 4 cm",
+      "From 8 to 12 cm",
+      "Nowhere on this graph",
+      "Everywhere on this graph"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "close"
+     },
+     "why": {
+      "correct": "Mechanical advantage is effort arm ÷ load arm. At 4 cm it is 4 ÷ 32 = 0.125, so the pull is exactly 8 times the weight; any closer and the ratio is smaller, so the pull is even larger.",
+      "options": [
+       "Right: the closer the insertion, the smaller the mechanical advantage and the harder the pull.",
+       "Out at 8 to 12 cm the effort arm is longer, so the pull falls to 4 times the weight or less.",
+       "At 3 cm the pull is about 427 N, more than ten times the 40 N weight.",
+       "At 12 cm the pull is about 107 N, under three times the weight."
+      ]
+     }
+    },
+    {
+     "id": "lever-class",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Everywhere on this curve the pull is larger than the weight. Why, and what lever class is this?",
+     "options": [
+      "Third-class: the effort arm is shorter than the load arm",
+      "Second-class: the load sits between the fulcrum and the effort",
+      "First-class: the elbow sits between the effort and the load",
+      "The muscle is weak, whatever the lever arrangement"
+     ],
+     "correct": 0,
+     "highlight": {
+      "x0": 3,
+      "x1": 12
+     },
+     "why": {
+      "correct": "The insertion lies between the elbow (fulcrum) and the hand (load), so the effort is in the middle. Every insertion shown is closer than 32 cm, so the effort arm is shorter than the load arm and the muscle must out-pull the load.",
+      "options": [
+       "Right: in a third-class lever the effort arm is always the shorter one, trading force for speed and range.",
+       "In a second-class lever the effort arm is always longer, so the pull would be smaller than the load.",
+       "Straightening the elbow is the first-class example; bending it puts the effort between fulcrum and load.",
+       "The large pull comes from the lever geometry, not from weakness. The same muscle moves the hand fast and far in return."
+      ]
+     }
+    },
+    {
+     "id": "double-load",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "You now hold an 80-newton weight in the same hand position. How does the curve change?",
+     "options": [
+      "Every point doubles, so the curve moves up",
+      "Every point halves, so the curve moves down",
+      "The curve does not change, since the lever is the same",
+      "The curve moves right but keeps the same height"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "pull80",
+        "panel": 0,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          3,
+          853.3
+         ],
+         [
+          3.5,
+          731.4
+         ],
+         [
+          4,
+          640
+         ],
+         [
+          4.5,
+          568.9
+         ],
+         [
+          5,
+          512
+         ],
+         [
+          6,
+          426.7
+         ],
+         [
+          7,
+          365.7
+         ],
+         [
+          8,
+          320
+         ],
+         [
+          9,
+          284.4
+         ],
+         [
+          10,
+          256
+         ],
+         [
+          11,
+          232.7
+         ],
+         [
+          12,
+          213.3
+         ]
+        ],
+        "label": "80 N held 32 cm out",
+        "labelAt": [
+         5.2,
+         600
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Effort = load × load arm ÷ effort arm. Doubling the load doubles the right side of the balance at every insertion distance, so the whole curve doubles: 640 N at 4 cm.",
+      "options": [
+       "Right: the pull is proportional to the load.",
+       "Halving would follow from a lighter load or a shorter load arm, not a heavier weight.",
+       "The lever sets the ratio between pull and load; a heavier load at the same ratio needs a proportionally larger pull.",
+       "The insertion distances have not changed, so the curve cannot slide sideways; it stretches upward."
+      ]
+     }
+    },
+    {
+     "id": "closer-hand",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "You keep the 40-newton weight but hold it 16 cm from the elbow, by resting it on your forearm. How does the curve change?",
+     "options": [
+      "Every point halves, so the curve moves down",
+      "Every point doubles, so the curve moves up",
+      "Only the dashed weight line moves, down to 20 N",
+      "The curve does not change"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "pull40-16",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          3,
+          213.3
+         ],
+         [
+          3.5,
+          182.9
+         ],
+         [
+          4,
+          160
+         ],
+         [
+          4.5,
+          142.2
+         ],
+         [
+          5,
+          128
+         ],
+         [
+          6,
+          106.7
+         ],
+         [
+          7,
+          91.4
+         ],
+         [
+          8,
+          80
+         ],
+         [
+          9,
+          71.1
+         ],
+         [
+          10,
+          64
+         ],
+         [
+          11,
+          58.2
+         ],
+         [
+          12,
+          53.3
+         ]
+        ],
+        "label": "40 N held 16 cm out",
+        "labelAt": [
+         8.5,
+         120
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The load arm has halved, so load × load arm halves (640 N·cm instead of 1,280), and so does the pull at every insertion distance: 160 N at 4 cm. That is why you carry heavy things close to your elbow or body.",
+      "options": [
+       "Right: a shorter load arm means a smaller pull for the same weight.",
+       "Doubling would need a heavier load or a longer load arm.",
+       "The weight is still 40 N, so its line stays; what changes is how much turning effect it has about the elbow.",
+       "Moving the load changes the load arm, and the pull depends on it directly."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ms-compartment-pressure",
+   "title": "Pressure in a leg compartment after a fracture",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function",
+    "gradients"
+   ],
+   "intro": "An illustrative case: the pressure inside the anterior compartment of the leg in the hours after a tibia fracture, until a surgeon slits the fascia open at 6.5 hours. The numbers are typical, not from one patient, and the pressure treated as dangerous differs between guidelines; around 30 mmHg is a common working figure.",
+   "alt": "Compartment pressure in mmHg, from 0 to 100, over 10 hours. It starts at about 8 mmHg, climbs steadily to about 30 mmHg at 4 hours and about 44 mmHg at 6 hours, peaks at about 46 mmHg at 6.5 hours when the fascia is slit, then drops to about 12 mmHg by 7 hours and settles near 8 mmHg. A dashed line at 30 mmHg marks the danger level, and a line at 90 mmHg marks the average pressure in the main artery, which the compartment never approaches.",
+   "x": {
+    "min": 0,
+    "max": 10,
+    "label": "Time after the fracture",
+    "unit": "hours",
+    "ticks": [
+     0,
+     2,
+     4,
+     6,
+     8,
+     10
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 100,
+      "label": "Pressure",
+      "unit": "mmHg",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80,
+       100
+      ]
+     },
+     "hlines": [
+      {
+       "y": 30,
+       "label": "danger level, about 30 mmHg",
+       "at": 0.2,
+       "dash": true
+      },
+      {
+       "y": 90,
+       "label": "average pressure in the main artery",
+       "at": 0.2
+      }
+     ],
+     "series": [
+      {
+       "id": "comp",
+       "cls": "hi",
+       "pts": [
+        [
+         0,
+         8
+        ],
+        [
+         1,
+         12
+        ],
+        [
+         2,
+         17
+        ],
+        [
+         3,
+         23
+        ],
+        [
+         4,
+         30
+        ],
+        [
+         5,
+         37
+        ],
+        [
+         6,
+         44
+        ],
+        [
+         6.5,
+         46
+        ],
+        [
+         6.75,
+         20
+        ],
+        [
+         7,
+         12
+        ],
+        [
+         8,
+         9
+        ],
+        [
+         10,
+         8
+        ]
+       ],
+       "label": "compartment pressure",
+       "labelAt": [
+        1.2,
+        42
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 6.5,
+     "label": "fascia slit open"
+    }
+   ],
+   "regions": [
+    {
+     "id": "early",
+     "x0": 0,
+     "x1": 4,
+     "label": "rising, below the danger level"
+    },
+    {
+     "id": "danger",
+     "x0": 4,
+     "x1": 6.5,
+     "label": "above the danger level"
+    },
+    {
+     "id": "after",
+     "x0": 6.5,
+     "x1": 10,
+     "label": "after the fascia is slit"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at-6h",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the compartment pressure 6 hours after the fracture.",
+     "answer": 44,
+     "tol": 4,
+     "unit": "mmHg",
+     "show": {
+      "x": 6,
+      "y": 44
+     },
+     "why": "About 44 mmHg, several times the normal resting level of under 10 mmHg. The deep fascia cannot stretch, so the bleeding and swelling keep pushing it up."
+    },
+    {
+     "id": "cross",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "About how many hours after the fracture does the pressure reach the 30 mmHg danger level?",
+     "answer": 4,
+     "tol": 0.5,
+     "unit": "hours",
+     "show": {
+      "x": 4,
+      "y": 30
+     },
+     "why": "About 4 hours. From there on, capillary flow in the compartment is at risk; muscle and nerve can start to die within hours unless the pressure is relieved."
+    },
+    {
+     "id": "starved",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which stretch are the muscles in the compartment most at risk of being starved of oxygen?",
+     "options": [
+      "From 4 to 6.5 hours",
+      "From 0 to 4 hours, while the pressure first rises",
+      "After 6.5 hours, once the fascia is slit",
+      "At no time, because the artery stays open"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "danger"
+     },
+     "why": {
+      "correct": "Once the compartment pressure is high enough, the veins are squeezed shut and capillary flow fails, so oxygen cannot reach the muscle even though blood still arrives in the artery.",
+      "options": [
+       "Right: high compartment pressure stops capillary flow.",
+       "The pressure is rising here, but it is still low enough for capillary flow to continue.",
+       "Slitting the fascia lets the pressure fall and blood flow return.",
+       "The artery staying open is exactly the trap: blood reaches the compartment in the artery, but cannot pass through the squeezed capillaries."
+      ]
+     }
+    },
+    {
+     "id": "pulse",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "At 6 hours, a foot pulse can still be felt. What does the graph show that explains this?",
+     "options": [
+      "The artery’s pressure stays far above it",
+      "The pressure has already fallen by 6 hours",
+      "The artery lies outside every compartment",
+      "The pulse is felt before the fracture reaches the artery"
+     ],
+     "correct": 0,
+     "highlight": {
+      "y0": 44,
+      "y1": 90
+     },
+     "why": {
+      "correct": "The main artery’s average pressure, about 90 mmHg, stays far above the 44 mmHg in the compartment, so the artery stays open and pulses while the low-pressure veins and capillaries are shut. A present pulse does not rule out compartment syndrome.",
+      "options": [
+       "Right: arterial pressure is far higher than compartment pressure.",
+       "At 6 hours the pressure is near its peak; it falls only after the fascia is slit.",
+       "The leg’s main vessels run through the compartments; they are exposed to the same pressure.",
+       "The pulse has nothing to do with where the break is; it depends on the pressure inside the artery."
+      ]
+     }
+    },
+    {
+     "id": "no-surgery",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "Suppose the warning signs were missed and no surgery was done. How would the curve after 6.5 hours differ?",
+     "options": [
+      "It keeps climbing above the danger level",
+      "It falls back by itself as the fascia stretches",
+      "It levels off just below 30 mmHg",
+      "It drops to 0 mmHg"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "untreated",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "pts": [
+         [
+          6.5,
+          46
+         ],
+         [
+          7,
+          49
+         ],
+         [
+          8,
+          54
+         ],
+         [
+          9,
+          58
+         ],
+         [
+          10,
+          61
+         ]
+        ],
+        "label": "without surgery",
+        "labelAt": [
+         7.4,
+         66
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Nothing has changed the fixed volume: the fascia still cannot stretch, the veins stay shut, and starved, swelling tissue adds more fluid. The pressure stays high or climbs, and muscle and nerve die.",
+      "options": [
+       "Right: only opening the fascia relieves the pressure.",
+       "Deep fascia is dense collagen that barely stretches; that is why the pressure rose in the first place.",
+       "With the veins squeezed shut, trapped fluid keeps the pressure rising rather than settling below the danger level.",
+       "Tissue pressure cannot fall below its normal level of a few mmHg, and nothing here would lower it."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

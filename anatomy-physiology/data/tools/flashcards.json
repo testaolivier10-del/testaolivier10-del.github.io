@@ -15919,6 +15919,1145 @@
    "front": "What slows much of the decline once blamed on age?",
    "back": "Regular exercise: aerobic training for oxygen uptake, resistance training for muscle and bone, and balance training against falls.",
    "why": "Much of the decline comes from inactivity, so activity preserves reserve at any age."
+  },
+  {
+   "id": "ms-only-pull",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Can a skeletal muscle push?",
+   "back": "No. A muscle can only shorten and pull; when it stops, it simply stops pulling.",
+   "why": "Cross-bridges pull thin filaments inward and cannot drive them apart, so reversing a movement takes a muscle on the other side of the joint, or gravity."
+  },
+  {
+   "id": "ms-origin-insertion",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Origin vs insertion: which one moves?",
+   "back": "The insertion, on the bone that moves. The origin stays still, usually the proximal attachment.",
+   "why": "A contracting muscle pulls its insertion toward its origin, because fixators and body weight hold the origin’s bone steady."
+  },
+  {
+   "id": "ms-reverse-action",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "In a pull-up, which attachment of the elbow-bending muscle moves?",
+   "back": "The origin: the upper arm and trunk rise toward the fixed forearm, a reverse action.",
+   "why": "When the usual insertion is held still (hands on a bar), the pull moves the other end. The names still follow the usual case."
+  },
+  {
+   "id": "ms-prime-mover",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Agonist and antagonist pairs",
+   "front": "What is a prime mover (agonist)?",
+   "back": "The muscle most responsible for a movement.",
+   "why": "Other muscles may help, but the agonist supplies most of the force for that particular movement."
+  },
+  {
+   "id": "ms-antagonist-role",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Agonist and antagonist pairs",
+   "front": "What does the antagonist of a movement do?",
+   "back": "It produces the opposite movement, and relaxes or brakes while the prime mover works.",
+   "why": "It lies on the other side of the joint. It often contracts eccentrically at the end of a fast movement so the joint is not jammed."
+  },
+  {
+   "id": "ms-synergist-role",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Synergist vs fixator?",
+   "back": "A synergist helps the prime mover make the movement. A fixator is a synergist that holds a bone still as a stable base.",
+   "why": "In lifting a glass, the muscles beside the main elbow flexor are synergists; the muscles steadying the scapula are fixators."
+  },
+  {
+   "id": "ms-role-relative",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Is the muscle on the back of the upper arm an agonist or an antagonist?",
+   "back": "Both: antagonist when you bend the elbow, prime mover when you straighten it.",
+   "why": "A role belongs to a movement, not to a muscle. Learn “antagonist for elbow flexion”, never just “antagonist”."
+  },
+  {
+   "id": "ms-eccentric-lower",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "You lower a heavy glass slowly. Which muscle controls it?",
+   "back": "The elbow-bending muscle on the front of the arm, lengthening while it works (an eccentric contraction).",
+   "why": "Gravity supplies the movement; the flexor pays out slowly to brake it. Its antagonist does not push the arm down."
+  },
+  {
+   "id": "ms-lever-parts",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "First vs second vs third class levers",
+   "front": "In a body lever, what are the bar, fulcrum, effort and load?",
+   "back": "Bar: a bone. Fulcrum: the joint. Effort: the muscle’s pull at its insertion. Load: the body part plus anything it holds.",
+   "why": "Mapping each part is the first step before naming the class or doing the arithmetic."
+  },
+  {
+   "id": "ms-lever-mnemonic",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "First vs second vs third class levers",
+   "front": "What sits in the middle of a first-, second- and third-class lever?",
+   "back": "First: fulcrum. Second: load. Third: effort (“1-2-3, F-L-E”).",
+   "why": "The class is set only by which of the three lies between the other two."
+  },
+  {
+   "id": "ms-first-class",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "First vs second vs third class levers",
+   "front": "Give two body examples of a first-class lever.",
+   "back": "Tipping the head back at the atlanto-occipital joint; straightening the elbow.",
+   "why": "In both the joint lies between the muscle’s pull (behind it) and the load (in front of it), like a seesaw."
+  },
+  {
+   "id": "ms-second-class",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "First vs second vs third class levers",
+   "front": "What is the textbook body example of a second-class lever?",
+   "back": "Rising onto your toes: fulcrum at the ball of the foot, load through the ankle, effort from the calf at the heel.",
+   "why": "Some biomechanists treat the ankle as the pivot and call it first-class. For your exam, give second-class."
+  },
+  {
+   "id": "ms-third-class",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "First vs second vs third class levers",
+   "front": "Give two body examples of a third-class lever.",
+   "back": "Bending the elbow; closing the jaw.",
+   "why": "In both the muscle attaches between the joint and the load, so the effort is in the middle. Most body levers are this kind."
+  },
+  {
+   "id": "ms-lever-favor",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "First vs second vs third class levers",
+   "front": "What does a third-class lever favor, and what does a second-class lever favor?",
+   "back": "Third: speed and range (the muscle pulls harder than the load). Second: force (a smaller pull moves a bigger load).",
+   "why": "In a third-class lever the effort arm is always shorter than the load arm; in a second-class lever it is always longer."
+  },
+  {
+   "id": "ms-ma-definition",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is mechanical advantage?",
+   "back": "Effort arm ÷ load arm.",
+   "why": "Above 1, the muscle can move more than it pulls; below 1, it must pull harder than the load but moves the load farther and faster."
+  },
+  {
+   "id": "ms-elbow-worked",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "You hold 40 N in the hand, 32 cm from the elbow; the flexor inserts 4 cm from it. How hard must it pull?",
+   "back": "320 N (mechanical advantage 0.125).",
+   "why": "Effort × 4 cm = 40 N × 32 cm = 1,280 N·cm, so effort = 320 N: eight times the weight. In return, the hand moves 8 cm for every 1 cm the insertion moves."
+  },
+  {
+   "id": "ms-why-third",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why are most body levers third-class, if they make muscles pull so hard?",
+   "back": "A fiber shortens only about a third of its length, and slowly; inserting near the joint turns that short pull into a long, fast sweep of the hand or foot.",
+   "why": "The cost is huge forces in muscles and tendons, one reason tendons tear under heavy lifting."
+  },
+  {
+   "id": "ms-pp-direction",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Parallel vs pennate muscles",
+   "front": "Parallel vs pennate: which way do the fascicles run?",
+   "back": "Parallel: in line with the pull. Pennate: at an angle to a central tendon, like the barbs of a feather.",
+   "why": "That one difference in direction sets fiber length, how many fibers fit and the force–range trade-off."
+  },
+  {
+   "id": "ms-pp-force",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Parallel vs pennate muscles",
+   "front": "Parallel vs pennate: which is stronger for its size, and which shortens farther?",
+   "back": "Pennate is stronger for its size. Parallel shortens farther and faster.",
+   "why": "Short, angled fibers pack more fibers (more cross-bridges) into the same volume; long fibers have more sarcomeres in series, so they shorten farther."
+  },
+  {
+   "id": "ms-pennate-kinds",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Unipennate vs bipennate vs multipennate?",
+   "back": "Fascicles on one side of the tendon; on both sides; converging on several tendons from many angles.",
+   "why": "The thick muscle that caps the shoulder is the notes’ multipennate example."
+  },
+  {
+   "id": "ms-fusiform-strap",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Strap vs fusiform muscle?",
+   "back": "Both are parallel. A strap muscle is the same width all along; a fusiform muscle has a thick belly that tapers at each end.",
+   "why": "Fusus means spindle, the shape of a fusiform muscle."
+  },
+  {
+   "id": "ms-convergent-circular",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Convergent vs circular muscle?",
+   "back": "Convergent: fans out from one tendon over a broad origin. Circular: fascicles run in rings around an opening (a sphincter).",
+   "why": "A convergent muscle can pull in several directions depending on which fascicles fire; a circular one closes the opening it surrounds."
+  },
+  {
+   "id": "ms-naming-clues",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the seven kinds of clue used in muscle names.",
+   "back": "Location, shape, size, direction of fascicles, number of origins (heads), attachments and action.",
+   "why": "Most names combine two or three clues; decode them as what it does, where, and any size or shape word."
+  },
+  {
+   "id": "ms-decode-adm",
+   "topic": "muscle-mechanics",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Decode “abductor digiti minimi”.",
+   "back": "The muscle that abducts the smallest digit: the little finger.",
+   "why": "Abductor = moves away from the midline; digiti = of the digit; minimi = of the smallest."
+  },
+  {
+   "id": "ms-fm-insertion",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Facial expression vs mastication muscles",
+   "front": "Facial expression vs mastication muscles: where do they insert?",
+   "back": "Facial muscles: into the skin (or another muscle). Chewing muscles: on the mandible.",
+   "why": "That is why facial muscles move the skin of the face while chewing muscles move the jaw at the temporomandibular joint."
+  },
+  {
+   "id": "ms-fm-examples",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Facial expression vs mastication muscles",
+   "front": "Name the four muscles of mastication.",
+   "back": "Masseter, temporalis, medial pterygoid and lateral pterygoid.",
+   "why": "All start on the skull and insert on the mandible; the buccinator is not one of them."
+  },
+  {
+   "id": "ms-buccinator",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Facial expression vs mastication muscles",
+   "front": "Is the buccinator a chewing muscle?",
+   "back": "No. It is a muscle of facial expression that presses the cheek against the teeth.",
+   "why": "It inserts into the orbicularis oris, not the mandible, so it cannot move the jaw; it keeps food on the teeth while the chewing muscles work."
+  },
+  {
+   "id": "ms-jaw-close-open",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which chewing muscles close the jaw, and which help open it?",
+   "back": "Close: masseter, temporalis and medial pterygoid. Open: the lateral pterygoids, helped by the suprahyoids and gravity.",
+   "why": "Three of four chewing muscles close the jaw, which is why biting is far stronger than opening."
+  },
+  {
+   "id": "ms-masseter",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Masseter: origin, insertion, action?",
+   "back": "Zygomatic arch → outer surface of the angle of the mandible. Elevates the mandible (prime mover of jaw closing).",
+   "why": "Clench your teeth and you feel it bulge at the angle of the jaw."
+  },
+  {
+   "id": "ms-temporalis",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Temporalis: origin, insertion, action?",
+   "back": "Temporal fossa → coronoid process of the mandible. Elevates the mandible; its back fibers retract it.",
+   "why": "It is convergent: a broad fan on the side of the skull narrowing to a tendon under the zygomatic arch."
+  },
+  {
+   "id": "ms-lateral-pterygoid",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the lateral pterygoid do?",
+   "back": "Protracts the mandible, helps open the mouth, and moves the jaw side to side for grinding.",
+   "why": "It runs almost horizontally from the sphenoid to the condyle and the joint’s disc, so it pulls the condyle forward."
+  },
+  {
+   "id": "ms-frontalis",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Frontalis: what does it do, and what does it pull against?",
+   "back": "Raises the eyebrows and wrinkles the forehead, pulling against the epicranial aponeurosis.",
+   "why": "The occipitalis anchors the aponeurosis from behind so the frontalis has something to pull on."
+  },
+  {
+   "id": "ms-orbicularis",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Orbicularis oculi vs orbicularis oris?",
+   "back": "Oculi: ring around the eye that closes the eyelids. Oris: ring around the lips that closes and protrudes them.",
+   "why": "Both are circular muscles acting as sphincters around an opening."
+  },
+  {
+   "id": "ms-zygomaticus",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which muscle pulls the corner of the mouth up and back in a smile?",
+   "back": "Zygomaticus major.",
+   "why": "It runs from the zygomatic bone (the cheekbone) to the corner of the mouth, so its pull lifts that corner."
+  },
+  {
+   "id": "ms-scm-one",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "The right sternocleidomastoid contracts alone. Which way does your face turn?",
+   "back": "To the left (the opposite side), while the head tilts toward the right shoulder.",
+   "why": "It pulls the mastoid process behind the right ear down and forward toward the sternum, which swings the face to the left."
+  },
+  {
+   "id": "ms-scm-both",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do both sternocleidomastoids do together?",
+   "back": "Flex the neck, bringing the chin toward the chest.",
+   "why": "As when you lift your head off a pillow."
+  },
+  {
+   "id": "ms-scalenes",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Scalenes: attachments and main action?",
+   "back": "Transverse processes of the cervical vertebrae → first two ribs. Elevate the upper ribs; with the ribs fixed, flex the neck.",
+   "why": "Recordings show they work in most breaths at rest and hardest in heavy breathing. For your exam, they are listed as accessory breathing muscles."
+  },
+  {
+   "id": "ms-si-action",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Suprahyoid vs infrahyoid muscles",
+   "front": "Suprahyoid vs infrahyoid muscles: what do they do to the hyoid?",
+   "back": "Suprahyoids elevate it (in swallowing). Infrahyoids depress it (after swallowing) and hold it still.",
+   "why": "The hyoid forms no joint with another bone, so these opposing sets are what position it."
+  },
+  {
+   "id": "ms-si-second",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Suprahyoid vs infrahyoid muscles",
+   "front": "How do the suprahyoid and infrahyoid muscles work together to open the mouth?",
+   "back": "The infrahyoids hold the hyoid still as fixators; the suprahyoids then pull the mandible down.",
+   "why": "With its lower end fixed, a suprahyoid muscle moves its upper attachment instead."
+  },
+  {
+   "id": "ms-si-examples",
+   "topic": "head-neck-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Suprahyoid vs infrahyoid muscles",
+   "front": "Name two suprahyoid and two infrahyoid muscles.",
+   "back": "Suprahyoid: digastric, mylohyoid, geniohyoid, stylohyoid. Infrahyoid: sternohyoid, sternothyroid, thyrohyoid, omohyoid.",
+   "why": "Their names give their attachments: each includes the hyoid plus where it runs to."
+  },
+  {
+   "id": "ms-erector-columns",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three columns of the erector spinae, lateral to medial.",
+   "back": "Iliocostalis, longissimus, spinalis (“I Love Spaghetti”).",
+   "why": "Together they are the prime mover for extending the vertebral column."
+  },
+  {
+   "id": "ms-erector-eccentric",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What do the erector spinae do as you bend forward to touch your toes?",
+   "back": "They contract eccentrically, lengthening while they brake the forward bend.",
+   "why": "Gravity pulls you forward; the back extensors pay out slowly, then pull you back upright."
+  },
+  {
+   "id": "ms-splenius-scm",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Which two muscles turn your head to the right?",
+   "back": "The right splenius and the left sternocleidomastoid.",
+   "why": "One splenius turns the face to its own side; one sternocleidomastoid turns it to the opposite side."
+  },
+  {
+   "id": "ms-rectus-abdominis",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Rectus abdominis: origin, insertion, action?",
+   "back": "Pubic crest and pubic symphysis → xiphoid process and costal cartilages of ribs 5–7. Flexes the spine and compresses the abdomen.",
+   "why": "Its tendinous intersections make the “six-pack”; each strap lies in a rectus sheath meeting at the linea alba."
+  },
+  {
+   "id": "ms-ob-direction",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three flat abdominal muscles",
+   "front": "External oblique vs internal oblique vs transversus abdominis: fascicle direction?",
+   "back": "External: down and toward the midline (“hands in pockets”). Internal: up and toward the midline. Transversus: horizontal, like a belt.",
+   "why": "Three layers in three directions make the wall strong in every direction, like plywood."
+  },
+  {
+   "id": "ms-ob-rotation",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "The three flat abdominal muscles",
+   "front": "Which obliques turn your trunk to the right?",
+   "back": "The left external oblique and the right internal oblique.",
+   "why": "One external oblique turns the trunk to the opposite side and one internal oblique to its own side; these two line up in one diagonal."
+  },
+  {
+   "id": "ms-ob-compress",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "The three flat abdominal muscles",
+   "front": "Which abdominal muscle mainly compresses the abdomen without turning the trunk?",
+   "back": "Transversus abdominis.",
+   "why": "Its horizontal fibers squeeze the belly like a belt; they have no diagonal line of pull to rotate the trunk."
+  },
+  {
+   "id": "ms-quadratus",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the quadratus lumborum do?",
+   "back": "One side bends the trunk sideways or hikes the pelvis; both extend the lower spine; it anchors the twelfth rib for the diaphragm.",
+   "why": "It runs from the iliac crest to the twelfth rib and the lumbar transverse processes, in the back wall of the abdomen."
+  },
+  {
+   "id": "ms-diaphragm",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Diaphragm: origin, insertion, and what contraction does.",
+   "back": "Lower rim of the rib cage, xiphoid and upper lumbar vertebrae → its own central tendon. Contracting flattens the dome and makes the chest taller.",
+   "why": "It has no bony insertion: its fibers pull their own tendon down."
+  },
+  {
+   "id": "ms-ic-direction",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "External vs internal intercostals",
+   "front": "External vs internal intercostals: fiber direction and effect on the ribs?",
+   "back": "External: down and forward; lift the ribs up and out. Internal: down and back; pull them down and in (except beside the sternum).",
+   "why": "The externals run the same way as the external oblique, the internals at right angles to them."
+  },
+  {
+   "id": "ms-ic-when",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "External vs internal intercostals",
+   "front": "External vs internal intercostals: when do they work?",
+   "back": "External: breathing in. Internal: forceful breathing out.",
+   "why": "At rest, breathing out is passive recoil, so the internal intercostals join in only when you breathe out hard."
+  },
+  {
+   "id": "ms-rest-inspiration",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which muscles work in a breath in at rest?",
+   "back": "The diaphragm does most of the work; for your exam, the diaphragm and the external intercostals.",
+   "why": "Recordings show the scalenes and the internal intercostals beside the sternum are also active in most resting breaths."
+  },
+  {
+   "id": "ms-hard-breathing",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which extra muscles join in hard breathing?",
+   "back": "In: the scalenes and sternocleidomastoids lift the top of the rib cage harder. Out: the internal intercostals and abdominal muscles squeeze air out.",
+   "why": "At rest breathing out is passive; hard breathing makes it active."
+  },
+  {
+   "id": "ms-pelvic-floor",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the two muscles of the pelvic diaphragm, and what do they do?",
+   "back": "Levator ani and coccygeus. They support the pelvic organs, resist abdominal pressure and help keep the openings closed.",
+   "why": "The levator ani contracts at the same moment as the abdominal wall in a cough, sneeze or lift."
+  },
+  {
+   "id": "ms-perineum",
+   "topic": "trunk-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How is the perineum divided?",
+   "back": "A line between the ischial tuberosities splits it into the urogenital triangle in front and the anal triangle behind.",
+   "why": "Its corners are the pubic symphysis, the coccyx and the two ischial tuberosities."
+  },
+  {
+   "id": "ms-chain-rule",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the chain rule for limb muscles?",
+   "back": "A muscle moves the bone beyond the one it sits on.",
+   "why": "Trunk muscles position the scapula, trunk and scapular muscles move the humerus, arm muscles move the forearm, forearm muscles move the wrist and fingers."
+  },
+  {
+   "id": "ms-trapezius",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do the three parts of the trapezius do?",
+   "back": "Upper fibers elevate the scapula, middle fibers retract it, lower fibers depress it; upper and lower together rotate it upward.",
+   "why": "Its fibers run in three directions from the skull and spine to the clavicle and scapula."
+  },
+  {
+   "id": "ms-serratus-rhomboid",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Serratus anterior vs rhomboids: what is their relationship?",
+   "back": "Antagonists: the serratus anterior protracts the scapula; the rhomboids retract it.",
+   "why": "Paralysis of the serratus anterior gives a winged scapula when the person pushes on a wall."
+  },
+  {
+   "id": "ms-pec-lat",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Pectoralis major vs latissimus dorsi at the shoulder?",
+   "back": "Pectoralis major flexes the arm; latissimus dorsi extends it. Both adduct and medially rotate it.",
+   "why": "They are antagonists for flexion and extension but synergists for adduction and medial rotation."
+  },
+  {
+   "id": "ms-deltoid",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Deltoid: prime mover of what, and where does it insert?",
+   "back": "Abduction of the arm; it inserts on the deltoid tuberosity.",
+   "why": "Its front fibers also flex and medially rotate the arm, and its back fibers extend and laterally rotate it."
+  },
+  {
+   "id": "ms-sits",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the rotator cuff muscles (SITS).",
+   "back": "Supraspinatus, infraspinatus, teres minor, subscapularis.",
+   "why": "Their tendons blend with the joint capsule and hold the head of the humerus in the shallow glenoid cavity."
+  },
+  {
+   "id": "ms-sits-insertion",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which rotator cuff muscle inserts on the lesser tubercle?",
+   "back": "The subscapularis. The other three insert on the greater tubercle.",
+   "why": "The subscapularis lies on the front (rib side) of the scapula, so it reaches the front of the humerus."
+  },
+  {
+   "id": "ms-sits-rotation",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Which rotator cuff muscles rotate the arm laterally, and which medially?",
+   "back": "Laterally: infraspinatus and teres minor. Medially: subscapularis.",
+   "why": "The cuff rotates in both directions; its main job is holding the head of the humerus in place."
+  },
+  {
+   "id": "ms-abduction-start",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which muscle initiates abduction of the arm?",
+   "back": "For your exam: the supraspinatus. Recordings show the supraspinatus and deltoid are both active from the start and throughout.",
+   "why": "The supraspinatus also keeps the head of the humerus seated so the deltoid’s upward pull turns into rotation rather than sliding."
+  },
+  {
+   "id": "ms-cuff-tear",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which rotator cuff tendon tears most often, and why?",
+   "back": "The supraspinatus. Most tears come from age-related wear of the tendon itself; repeated overhead work adds strain.",
+   "why": "Its tendon runs through the tight space between the head of the humerus and the acromion."
+  },
+  {
+   "id": "ms-fe-prime",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Elbow flexors vs extensor",
+   "front": "What is the prime mover of elbow flexion, and what are its synergists?",
+   "back": "For your exam: the biceps brachii, with the brachialis and brachioradialis as synergists.",
+   "why": "Many anatomists call the brachialis the main flexor, since it inserts on the ulna and works in every forearm position."
+  },
+  {
+   "id": "ms-fe-insertion",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Elbow flexors vs extensor",
+   "front": "Elbow flexors vs extensor: where do they insert?",
+   "back": "Biceps brachii: radial tuberosity. Brachialis: coronoid process of the ulna. Triceps brachii: olecranon of the ulna.",
+   "why": "Flexors insert in front of the elbow, the extensor behind it."
+  },
+  {
+   "id": "ms-fe-lever",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Elbow flexors vs extensor",
+   "front": "Elbow flexion vs extension: which lever classes?",
+   "back": "Flexion: third class. Extension by the triceps brachii: first class.",
+   "why": "The flexors insert between the elbow and the hand; the triceps pulls on the olecranon behind the joint, with the load in front."
+  },
+  {
+   "id": "ms-brachialis",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Elbow flexors vs extensor",
+   "front": "Why does the brachialis flex the elbow in every forearm position, but the biceps brachii does not?",
+   "back": "The brachialis inserts on the ulna, which does not rotate; the biceps inserts on the radius, which rolls.",
+   "why": "The biceps pulls hardest with the palm up; the brachioradialis is strongest with the thumb up."
+  },
+  {
+   "id": "ms-supination",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which muscles supinate the forearm, and which pronate it?",
+   "back": "Supinate: supinator and biceps brachii (the strongest). Pronate: pronator quadratus (the main one) and pronator teres.",
+   "why": "Think of driving a screw in with your right hand: that is supination."
+  },
+  {
+   "id": "ms-wf-origin",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Wrist and finger flexors vs extensors",
+   "front": "Wrist and finger flexors vs extensors: common origin?",
+   "back": "Flexors: medial epicondyle. Extensors: lateral epicondyle.",
+   "why": "Each group starts from a shared tendon on one epicondyle of the humerus."
+  },
+  {
+   "id": "ms-wf-injury",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Wrist and finger flexors vs extensors",
+   "front": "Tennis elbow vs golfer’s elbow?",
+   "back": "Tennis elbow: strain of the extensors’ origin on the lateral epicondyle. Golfer’s elbow: strain of the flexors’ origin on the medial epicondyle.",
+   "why": "Repeated gripping and twisting strains the common tendon where it attaches."
+  },
+  {
+   "id": "ms-fds-fdp",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Wrist and finger flexors vs extensors",
+   "front": "Flexor digitorum superficialis vs profundus: where do they insert?",
+   "back": "Superficialis: middle phalanges. Profundus: distal phalanges.",
+   "why": "The profundus tendons pass through splits in the superficialis tendons, so it is the only muscle that bends the fingertips."
+  },
+  {
+   "id": "ms-wrist-radial",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Wrist and finger flexors vs extensors",
+   "front": "Which two muscles bend the wrist toward the thumb?",
+   "back": "Flexor carpi radialis and extensor carpi radialis (longus and brevis) together.",
+   "why": "The flexor and extensor on the same edge cancel each other’s flexion and extension and add their sideways pull."
+  },
+  {
+   "id": "ms-carpal-tunnel",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What passes through the carpal tunnel, and why do its symptoms appear in the thumb?",
+   "back": "The finger flexor tendons and a nerve. Swollen tendon sheaths squeeze the nerve, which supplies the thumb side of the hand and the thenar muscles.",
+   "why": "Late, severe cases show wasting of the thenar eminence."
+  },
+  {
+   "id": "ms-extrinsic-intrinsic",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Extrinsic vs intrinsic muscles of the hand?",
+   "back": "Extrinsic: in the forearm, sending tendons to the hand; give grip strength. Intrinsic: start and end in the hand; make fine movements.",
+   "why": "Keeping the big muscles in the forearm keeps the hand slim."
+  },
+  {
+   "id": "ms-compartments-arm",
+   "topic": "upper-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which muscles fill the anterior and posterior compartments of the arm?",
+   "back": "Anterior: biceps brachii, brachialis, coracobrachialis (flex the elbow). Posterior: triceps brachii (extends it).",
+   "why": "Muscles in one compartment usually share a main action."
+  },
+  {
+   "id": "ms-hip-flex-ext",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Prime mover of hip flexion vs hip extension?",
+   "back": "Flexion: iliopsoas. Extension: gluteus maximus.",
+   "why": "The iliopsoas crosses in front of the hip to the lesser trochanter; the gluteus maximus lies behind it."
+  },
+  {
+   "id": "ms-glute-max-use",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "When does the gluteus maximus work hardest?",
+   "back": "Climbing stairs, running or rising from a squat; it does little in easy level walking.",
+   "why": "Those movements need powerful hip extension against body weight."
+  },
+  {
+   "id": "ms-glute-medius",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What does the gluteus medius do in every step?",
+   "back": "It holds the pelvis level over the standing leg.",
+   "why": "Weak, it lets the pelvis drop toward the lifted leg: a positive Trendelenburg sign."
+  },
+  {
+   "id": "ms-it-tract",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which two muscles pull on the iliotibial tract?",
+   "back": "Gluteus maximus and tensor fasciae latae.",
+   "why": "The tract is thickened deep fascia from the iliac crest to the lateral tibia; tightening it steadies the knee."
+  },
+  {
+   "id": "ms-qh-action",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Quadriceps femoris vs hamstrings",
+   "front": "Quadriceps femoris vs hamstrings: action at the knee and hip?",
+   "back": "Quadriceps: extend the knee; the rectus femoris also flexes the hip. Hamstrings: flex the knee and extend the hip.",
+   "why": "They are the antagonist pair of the knee."
+  },
+  {
+   "id": "ms-qh-members",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Quadriceps femoris vs hamstrings",
+   "front": "Name the four quadriceps and the three hamstrings.",
+   "back": "Quadriceps: rectus femoris, vastus lateralis, vastus medialis, vastus intermedius. Hamstrings: biceps femoris, semitendinosus, semimembranosus.",
+   "why": "The quadriceps share one tendon to the tibial tuberosity; the hamstrings share an origin on the ischial tuberosity."
+  },
+  {
+   "id": "ms-qh-origin",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Quadriceps femoris vs hamstrings",
+   "front": "Quadriceps femoris vs hamstrings: origin and insertion?",
+   "back": "Quadriceps: ilium (rectus femoris) and femur (vasti) → tibial tuberosity via the patella and patellar ligament. Hamstrings: ischial tuberosity → head of the fibula and medial tibia.",
+   "why": "Only the rectus femoris and the hamstrings (except the short head of the biceps femoris) cross the hip."
+  },
+  {
+   "id": "ms-hamstring-strain",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Quadriceps femoris vs hamstrings",
+   "front": "When are the hamstrings most at risk of a strain?",
+   "back": "When the hip is flexed and the knee straight at once, as at the end of a sprinter’s forward swing.",
+   "why": "They cross both joints, so that position stretches them most while they work to brake the leg."
+  },
+  {
+   "id": "ms-sartorius",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the sartorius do?",
+   "back": "Flexes, abducts and laterally rotates the thigh and flexes the knee.",
+   "why": "The longest muscle in the body, it crosses the thigh diagonally from the anterior superior iliac spine to the medial tibia."
+  },
+  {
+   "id": "ms-femoral-triangle",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What borders the femoral triangle?",
+   "back": "The inguinal ligament above, the sartorius laterally and the adductor longus medially.",
+   "why": "The thigh’s main artery, vein and a large nerve lie just under the skin there."
+  },
+  {
+   "id": "ms-adductors",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Which muscles are the antagonists of the hip abductors?",
+   "back": "The medial thigh muscles: adductor longus, brevis and magnus, gracilis and pectineus.",
+   "why": "They start on the pubis and pull the thigh toward the midline; the gluteus medius and minimus pull it away."
+  },
+  {
+   "id": "ms-lg-action",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three muscle groups of the leg",
+   "front": "Front vs side vs back of the leg: main action at the ankle?",
+   "back": "Front: dorsiflexion. Side: eversion. Back: plantar flexion.",
+   "why": "Each group sits in its own fascial compartment and shares one main job."
+  },
+  {
+   "id": "ms-lg-weakness",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "The three muscle groups of the leg",
+   "front": "What does weakness of each leg group cause?",
+   "back": "Front: toes drag when the leg swings forward. Side: the ankle rolls inward easily. Back: cannot rise onto the toes.",
+   "why": "Each sign is the loss of that group’s main action."
+  },
+  {
+   "id": "ms-gastroc-soleus",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "The three muscle groups of the leg",
+   "front": "Gastrocnemius vs soleus?",
+   "back": "Both plantar flex through the calcaneal tendon. The gastrocnemius also crosses the knee and helps flex it; the soleus crosses only the ankle and works almost constantly when you stand.",
+   "why": "The gastrocnemius starts on the femoral condyles; the soleus on the fibula and tibia."
+  },
+  {
+   "id": "ms-tibialis",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Agonist and antagonist pairs",
+   "front": "Tibialis anterior vs tibialis posterior?",
+   "back": "Anterior: dorsiflexes and inverts the foot. Posterior: plantar flexes and inverts it and holds up the medial arch.",
+   "why": "Antagonists for up-and-down movement, synergists for inversion."
+  },
+  {
+   "id": "ms-achilles",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What are the signs of a ruptured calcaneal (Achilles) tendon?",
+   "back": "The person cannot rise onto the toes of that foot, and squeezing the calf no longer points the foot.",
+   "why": "The tendon is the only link from the gastrocnemius and soleus to the calcaneus."
+  },
+  {
+   "id": "ms-compartment",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "What are the early signs of compartment syndrome?",
+   "back": "Pain far worse than the injury explains, and pain on passive stretch of the compartment’s muscles.",
+   "why": "Numbness and weakness come later, and a pulse can still be present, because the artery’s pressure is far higher than the compartment’s."
+  },
+  {
+   "id": "ms-compartment-why",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function",
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Why does swelling inside a limb compartment become dangerous so fast?",
+   "back": "Deep fascia barely stretches, so added fluid raises the pressure, closes the veins, traps more fluid and stops capillary flow.",
+   "why": "The treatment is surgery to slit the fascia open along the compartment."
+  },
+  {
+   "id": "ms-im-deltoid",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramuscular injection sites",
+   "front": "Deltoid site: where, and what is it used for?",
+   "back": "About 2–3 finger widths below the acromion, on the side of the arm. The usual site for vaccines in adults; small volumes only.",
+   "why": "The muscle is small. Too low or far back risks a nerve winding around the humerus; too high, the subacromial bursa."
+  },
+  {
+   "id": "ms-im-ventrogluteal",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramuscular injection sites",
+   "front": "Ventrogluteal site: landmarks and use?",
+   "back": "Heel of the hand on the greater trochanter, index finger on the anterior superior iliac spine, middle finger along the iliac crest; inject in the center of the V. Preferred for larger volumes in adults and children.",
+   "why": "The gluteus medius and minimus there are thick, with no large nerves or vessels."
+  },
+  {
+   "id": "ms-im-vastus",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramuscular injection sites",
+   "front": "Vastus lateralis site: where, and who is it preferred for?",
+   "back": "The middle third of the outer front thigh. Preferred for infants.",
+   "why": "Infants’ gluteal muscles are still small, while the vastus lateralis is already thick."
+  },
+  {
+   "id": "ms-im-dorsogluteal",
+   "topic": "lower-limb-muscles",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Intramuscular injection sites",
+   "front": "Why is the dorsogluteal site (upper outer buttock) avoided?",
+   "back": "A large nerve leaving the pelvis below the piriformis lies close by, and thick fat means the needle often misses the muscle.",
+   "why": "Vaccines go into the deltoid or, in infants, the vastus lateralis, not the buttock."
   }
  ]
 }
