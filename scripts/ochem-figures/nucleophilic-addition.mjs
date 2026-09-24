@@ -125,7 +125,7 @@ FIGURES.push({
     s += tg(250, 628, 'cyanide is given back', 'mut');
     return s;
   },
-  caption: 'Acetone and cyanide. Step 1 has two arrows: the new bond to carbon, and the pi bond moving onto oxygen. Step 2 has two more: the proton moving to oxygen, and the H–C bond staying behind on carbon. Compare the flat carbon in panel 1 with the tetrahedral one in panel 2.',
+  caption: 'Acetone and cyanide ion, with the HCN that supplies the proton. Compare the flat carbon in panel 1 with the tetrahedral carbon in panel 2.',
 });
 
 /* ------------------------------------------------------------------ 2 ---
@@ -187,7 +187,7 @@ FIGURES.push({
     s += tg(276, 530, '(acid derivatives)', 'mut');
     return s;
   },
-  caption: 'Top: the intermediate every addition reaches. Middle: nothing can leave, so the O⁻ takes a proton. Bottom: Y can leave, so the O⁻ pushes back down and Y⁻ goes.',
+  caption: 'Y is the group the carbonyl carbon carried from the start. Follow the O⁻ lone pair in each branch: out to a proton in the middle panel, back down toward carbon in the bottom one.',
 });
 
 /* ------------------------------------------------------------------ 3 ---
@@ -283,7 +283,7 @@ FIGURES.push({
     s += tg(236, 826, 'and H₃O⁺ is back', 'good');
     return s;
   },
-  caption: 'Water adding to acetone in dilute acid. The proton goes on first (step 1), the nucleophile adds (step 3), and a proton comes off last (step 4). Count the H₃O⁺: one is used in step 1 and one is made in step 4.',
+  caption: 'Water adding to acetone in dilute acid, one panel per step. The coral carbon is the one that changes from flat to tetrahedral.',
 });
 
 /* ------------------------------------------------------------------ 4 ---
@@ -337,14 +337,14 @@ FIGURES.push({
     // ---- 3. product ----
     s += box(464, 168, 'PRODUCT · PROPAN-1-OL');
     const c3 = P(110, 560), p3 = propanal(c3, true);
-    s += p3.g.replace('', '');
+    s += p3.g;
     s += arm(c3, 'C', 270, 46, 'H', 'wedge', 'hi').s;
     s += A(p3.o, 'OH') + A(c3, 'C', 'warn');
     s += lbl(254, 540, '+  CH₃O⁻');
     s += tg(254, 574, 'primary (1°) alcohol', 'good');
     return s;
   },
-  caption: 'Sodium borohydride reducing propanal. The first arrow starts on a B–H bond, because that bond holds the electron pair the hydrogen carries to carbon. LiAlH₄ does the same thing with an Al–H bond.',
+  caption: 'Propanal and sodium borohydride in methanol. Follow the first arrow from the B–H bond to carbon, and the last one from the H–O bond of methanol to its oxygen.',
 });
 
 /* ------------------------------------------------------------------ 5 ---
@@ -410,7 +410,7 @@ FIGURES.push({
     s += tg(254, 594, 'new C–C bond', 'mut');
     return s;
   },
-  caption: 'Methylmagnesium bromide adding to propanal. The first arrow starts on the C–Mg bond, and the bond it makes is a new C–C bond. The H₃O⁺ in step 2 is added only after the Grignard reagent has been used up.',
+  caption: 'Propanal and methylmagnesium bromide. Set it beside the borohydride figure: the arrows match, and only the group that moves to carbon differs.',
 });
 
 /* ------------------------------------------------------------------ 6 ---
@@ -464,7 +464,7 @@ FIGURES.push({
     s += tg(262, 558, 'two new CH₃', 'good');
     return s;
   },
-  caption: 'Methyl propanoate with two CH₃MgBr. Panel 1 is the substitution branch: the C=O comes back and CH₃O⁻ leaves. The ketone it leaves behind is then attacked like any ketone.',
+  caption: 'Methyl propanoate with two CH₃MgBr. Both highlighted CH₃ groups in the product came from the Grignard reagent.',
 });
 
 /* ------------------------------------------------------------------ 7 ---
@@ -515,7 +515,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Each cut breaks one highlighted bond. The piece that leaves becomes the Grignard reagent; the rest, with C–OH turned back into C=O, becomes the ketone. Ph is short for phenyl, a benzene ring used as a group.',
+  caption: 'The letters on the target match the three cuts below it.',
 });
 
 /* ------------------------------------------------------------------ 8 ---
@@ -552,7 +552,7 @@ FIGURES.push({
     s += tg(170, 362, 'ENAMINE: the double bond goes to C', 'good');
     return s;
   },
-  caption: 'The same ketone with two amines. The coral carbon was the C=O carbon. With CH₃NH₂ its new double bond goes to nitrogen; with (CH₃)₂NH it goes to the carbon next door.',
+  caption: 'The coral carbon was the carbonyl carbon in both. Find its new double bond in each panel.',
 });
 
 export default FIGURES;
