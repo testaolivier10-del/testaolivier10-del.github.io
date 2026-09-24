@@ -20274,6 +20274,2188 @@
           "why": "PaCO2 up and bicarbonate down have moved in opposite directions, which compensation never does. Each lowers the ratio, so together they drive pH far lower than either alone, to about 7.11."
         }
       ]
+    },
+    {
+      "id": "dv-capacitation-blocked",
+      "title": "Sperm that cannot capacitate",
+      "topic": "fertilization",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "sperm that swim well are ready to fertilize as soon as they are ejaculated",
+      "setup": "In an IVF lab, washed sperm are kept for several hours in a medium with no albumin, no bicarbonate and no calcium, then placed next to an oocyte. Compare them with sperm kept in a medium that copies the fluids of the female tract.",
+      "start": "The medium lacks albumin, bicarbonate and calcium",
+      "steps": {
+        "chol": "Nothing pulls cholesterol out of the sperm’s plasma membrane",
+        "ions": "Bicarbonate and calcium cannot flow into the sperm",
+        "hyper": "The tail keeps its gentle, even beat instead of switching to hyperactivated motility",
+        "acro": "Without capacitation, the sperm cannot undergo the acrosomal reaction",
+        "zona": "No sperm digests a path through the zona pellucida",
+        "swim": "The tail’s basic machinery and ATP supply are unchanged"
+      },
+      "variables": [
+        {
+          "id": "chol",
+          "name": "Cholesterol left in the sperm’s plasma membrane",
+          "answer": "up",
+          "chain": [
+            "chol"
+          ],
+          "why": "In the female tract, albumin pulls cholesterol out of the sperm membrane, making it more fluid. With no albumin, the cholesterol stays, so the membrane keeps more of it than a capacitated sperm’s."
+        },
+        {
+          "id": "hyper",
+          "name": "Share of sperm with hyperactivated, whip-like beating",
+          "answer": "down",
+          "chain": [
+            "ions",
+            "hyper"
+          ],
+          "why": "The switch to a strong, asymmetric beat is triggered by calcium entering the sperm. With no calcium or bicarbonate to enter, the tail stays in its gentle beat."
+        },
+        {
+          "id": "acro",
+          "name": "Sperm able to release their acrosome’s enzymes",
+          "answer": "down",
+          "chain": [
+            "chol",
+            "acro"
+          ],
+          "why": "Only a capacitated sperm can undergo the acrosomal reaction. Its membrane must first be stripped and destabilized, and that step never happened here."
+        },
+        {
+          "id": "fert",
+          "name": "Chance the oocyte is fertilized",
+          "answer": "down",
+          "chain": [
+            "chol",
+            "acro",
+            "zona"
+          ],
+          "why": "A sperm that cannot release acrosin cannot cut a tunnel through the zona pellucida, so none reaches the oocyte’s plasma membrane to fuse with it."
+        },
+        {
+          "id": "swim",
+          "name": "Ability of the sperm to swim forward",
+          "answer": "none",
+          "chain": [
+            "swim"
+          ],
+          "why": "Freshly ejaculated sperm already swim well; capacitation changes the kind of beat, not the ability to move. That is why good swimming alone does not mean a sperm can fertilize."
+        }
+      ]
+    },
+    {
+      "id": "dv-cortical-block",
+      "title": "An oocyte whose cortical granules cannot release",
+      "topic": "fertilization",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the first sperm to fuse physically plugs the way in for the others",
+      "setup": "In a lab study, an oocyte’s cortical granules cannot fuse with its plasma membrane, although calcium waves still sweep through it after the first sperm fuses. Many capacitated sperm surround it. Compare it with a normal oocyte after sperm entry.",
+      "start": "The calcium waves cannot make the cortical granules release their contents",
+      "steps": {
+        "enzyme": "The enzyme that cuts ZP2 is not released under the zona pellucida",
+        "bind": "ZP2 stays intact, so new sperm can still bind the zona and push through",
+        "poly": "A second sperm can reach and fuse with the oocyte",
+        "three": "Two sperm plus the oocyte give three sets of chromosomes",
+        "meiosis": "The calcium waves still release the pause in metaphase II"
+      },
+      "variables": [
+        {
+          "id": "zp2",
+          "name": "Intact ZP2 left in the zona pellucida after the first sperm fuses",
+          "answer": "up",
+          "chain": [
+            "enzyme"
+          ],
+          "why": "In the cortical reaction, an enzyme released from the granules cuts ZP2. With no release, ZP2 stays intact, so the zona keeps more of it than a normal fertilized oocyte’s."
+        },
+        {
+          "id": "bind",
+          "name": "Sperm binding to the zona after the first sperm has entered",
+          "answer": "up",
+          "chain": [
+            "enzyme",
+            "bind"
+          ],
+          "why": "Sperm bind the zona through ZP2. Because it was never cut, the zona stays sticky for sperm instead of shutting them out."
+        },
+        {
+          "id": "poly",
+          "name": "Chance of polyspermy",
+          "answer": "up",
+          "chain": [
+            "enzyme",
+            "bind",
+            "poly"
+          ],
+          "why": "The zona block is missing, so more sperm reach the membrane. Only the slower membrane block, the loss of the sperm-binding protein, is left to stop them."
+        },
+        {
+          "id": "chrom",
+          "name": "Chromosome number if two sperm enter",
+          "answer": "up",
+          "chain": [
+            "enzyme",
+            "bind",
+            "poly",
+            "three"
+          ],
+          "why": "Each sperm adds 23 chromosomes to the oocyte’s 23, giving 69 instead of 46. An embryo with three sets cannot develop normally."
+        },
+        {
+          "id": "m2",
+          "name": "Completion of meiosis II in the oocyte",
+          "answer": "none",
+          "chain": [
+            "meiosis"
+          ],
+          "why": "The same calcium waves that normally trigger the cortical reaction also restart meiosis II. The calcium still rises here, so meiosis II still finishes and a second polar body forms."
+        }
+      ]
+    },
+    {
+      "id": "dv-corpus-luteum-removed",
+      "title": "The corpus luteum is removed early",
+      "topic": "embryonic-development",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "once an embryo has implanted, it no longer depends on the ovary",
+      "setup": "About four weeks after fertilization (six weeks on the clinical count), a pregnant woman needs surgery that removes the ovary holding her corpus luteum. She is not given progesterone. Predict the changes over the next days.",
+      "start": "The corpus luteum, her main source of progesterone at this stage, is removed",
+      "steps": {
+        "prog": "Progesterone in her blood falls",
+        "lining": "The endometrium loses the hormone that keeps it intact",
+        "shed": "The lining breaks down and is shed, carrying the implanted embryo with it",
+        "hcg": "The syncytiotrophoblast keeps secreting hCG for now, but its target is gone"
+      },
+      "variables": [
+        {
+          "id": "prog",
+          "name": "Progesterone in her blood",
+          "answer": "down",
+          "chain": [
+            "prog"
+          ],
+          "why": "At this stage the corpus luteum, kept alive by hCG, makes most of the progesterone. The trophoblast’s own output is not yet large enough to replace it."
+        },
+        {
+          "id": "lining",
+          "name": "Stability of the endometrium",
+          "answer": "down",
+          "chain": [
+            "prog",
+            "lining"
+          ],
+          "why": "Progesterone holds the endometrium in place. When it falls, the lining starts to break down, as it does at the end of a cycle without pregnancy."
+        },
+        {
+          "id": "loss",
+          "name": "Chance of losing the pregnancy",
+          "answer": "up",
+          "chain": [
+            "prog",
+            "lining",
+            "shed"
+          ],
+          "why": "The embryo is buried in the endometrium, so shedding the lining sheds the embryo. Removing the corpus luteum before about week 7 on the clinical count ends the pregnancy unless progesterone is given; from about week 9, it does no harm."
+        },
+        {
+          "id": "hcg",
+          "name": "hCG secretion in the first hours after surgery",
+          "answer": "none",
+          "chain": [
+            "hcg"
+          ],
+          "why": "hCG comes from the syncytiotrophoblast, not from the ovary, so removing the ovary does not stop it at once. What is lost is the gland hCG acts on."
+        }
+      ]
+    },
+    {
+      "id": "dv-placental-insufficiency",
+      "title": "A placenta that does not keep up",
+      "topic": "placenta",
+      "theme": "placental insufficiency",
+      "core": [
+        "gradients",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "a fetus takes what it needs from the mother whatever the state of the placenta",
+      "setup": "Early in a pregnancy, the cytotrophoblast invades the spiral arteries only shallowly. They keep their smooth muscle and stay narrow. Predict the fetus’s state in the last months, compared with a pregnancy with a healthy placenta.",
+      "start": "The spiral arteries stay narrow and muscular",
+      "steps": {
+        "flow": "Less maternal blood flows into the intervillous space",
+        "o2": "Less oxygen and glucose diffuse across the villi to the fetus",
+        "grow": "The fetus grows more slowly",
+        "hypox": "The fetus’s blood oxygen falls",
+        "redirect": "The fetus redirects blood toward its brain and heart and away from its kidneys, gut and limbs",
+        "kidney": "Less blood reaches the fetal kidneys, so they make less urine",
+        "fluid": "Less urine enters the amniotic cavity"
+      },
+      "variables": [
+        {
+          "id": "flow",
+          "name": "Maternal blood flow through the intervillous space",
+          "answer": "down",
+          "chain": [
+            "flow"
+          ],
+          "why": "Remodeled spiral arteries are wide tubes that cannot constrict. Narrow, muscular ones keep a high resistance, so less of the mother’s blood reaches the villi."
+        },
+        {
+          "id": "o2",
+          "name": "Oxygen crossing to the fetus each minute",
+          "answer": "down",
+          "chain": [
+            "flow",
+            "o2"
+          ],
+          "why": "Oxygen diffuses from maternal blood into the villi. With less maternal blood flowing past, the gradient across the barrier is kept up less well, so less oxygen crosses each minute."
+        },
+        {
+          "id": "growth",
+          "name": "Fetal growth rate",
+          "answer": "down",
+          "chain": [
+            "flow",
+            "o2",
+            "grow"
+          ],
+          "why": "Everything the fetus builds with comes across the placenta. Less oxygen and glucose means slower growth: a small baby is the classic result."
+        },
+        {
+          "id": "brain",
+          "name": "Share of the fetus’s blood flow going to its brain",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "o2",
+            "hypox",
+            "redirect"
+          ],
+          "why": "Low blood oxygen makes the fetus narrow the vessels to its kidneys, gut and limbs, so a larger share of its output goes to the brain and heart."
+        },
+        {
+          "id": "fluid",
+          "name": "Amniotic fluid volume",
+          "answer": "down",
+          "chain": [
+            "flow",
+            "o2",
+            "hypox",
+            "redirect",
+            "kidney",
+            "fluid"
+          ],
+          "why": "From about week 9 after fertilization, fetal urine is the main source of amniotic fluid. Less kidney blood flow means less urine, so the fluid volume falls."
+        }
+      ]
+    },
+    {
+      "id": "dv-smoking-placenta",
+      "title": "A mother who smokes",
+      "topic": "placenta",
+      "core": [
+        "gradients",
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "the placenta filters out harmful chemicals before they reach the fetus",
+      "setup": "A pregnant woman smokes a pack of cigarettes a day. Compare her fetus with the fetus of a woman who does not smoke.",
+      "start": "Carbon monoxide and nicotine enter her blood",
+      "steps": {
+        "co": "Carbon monoxide diffuses across the placental barrier and builds up in fetal blood",
+        "hb": "Carbon monoxide takes up hemoglobin’s oxygen-binding sites",
+        "nic": "Nicotine constricts the uterine blood vessels",
+        "flow": "Less maternal blood reaches the intervillous space",
+        "grow": "Less oxygen reaches the fetal tissues, so the fetus grows more slowly"
+      },
+      "variables": [
+        {
+          "id": "co",
+          "name": "Carbon monoxide in fetal blood",
+          "answer": "up",
+          "chain": [
+            "co"
+          ],
+          "why": "Carbon monoxide is a small gas and crosses by simple diffusion. It reaches a higher level in fetal blood than in the mother’s and leaves more slowly."
+        },
+        {
+          "id": "carry",
+          "name": "Oxygen the fetal blood can carry",
+          "answer": "down",
+          "chain": [
+            "co",
+            "hb"
+          ],
+          "why": "Hemoglobin that holds carbon monoxide cannot hold oxygen, so each liter of fetal blood carries less oxygen."
+        },
+        {
+          "id": "flow",
+          "name": "Maternal blood flow to the intervillous space",
+          "answer": "down",
+          "chain": [
+            "nic",
+            "flow"
+          ],
+          "why": "Nicotine constricts the uterine blood vessels, raising their resistance, so less blood reaches the villi."
+        },
+        {
+          "id": "weight",
+          "name": "Birth weight",
+          "answer": "down",
+          "chain": [
+            "co",
+            "hb",
+            "nic",
+            "flow",
+            "grow"
+          ],
+          "why": "Less blood flow to the placenta and less oxygen carried per liter both starve the fetus of oxygen, so it grows more slowly and is born smaller."
+        }
+      ]
+    },
+    {
+      "id": "dv-maternal-glucose",
+      "title": "The mother’s glucose runs high",
+      "topic": "placenta",
+      "core": [
+        "gradients",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the mother’s insulin crosses the placenta and controls the fetus’s glucose",
+      "setup": "For several weeks in the second half of pregnancy, a mother’s blood glucose runs well above normal. Compare her fetus with the fetus of a mother whose glucose is normal.",
+      "start": "Maternal blood glucose is high",
+      "steps": {
+        "cross": "More glucose crosses the placenta by facilitated diffusion, down a steeper gradient",
+        "fglu": "The fetus’s blood glucose rises",
+        "ins": "Maternal insulin is a large protein and does not cross the placenta",
+        "fins": "The fetal pancreas secretes more insulin",
+        "grow": "Fetal insulin drives the fetus to store fuel and grow"
+      },
+      "variables": [
+        {
+          "id": "fglu",
+          "name": "Fetal blood glucose",
+          "answer": "up",
+          "chain": [
+            "cross",
+            "fglu"
+          ],
+          "why": "Glucose crosses on carrier proteins down its gradient, from higher maternal glucose to lower fetal glucose. A higher maternal level pushes more across, so fetal glucose follows the mother’s up."
+        },
+        {
+          "id": "mins",
+          "name": "Maternal insulin reaching the fetus",
+          "answer": "none",
+          "chain": [
+            "ins"
+          ],
+          "why": "Insulin is a protein, too large to cross the placental barrier in useful amounts. The fetus has to make its own."
+        },
+        {
+          "id": "fins",
+          "name": "Insulin secreted by the fetal pancreas",
+          "answer": "up",
+          "chain": [
+            "cross",
+            "fglu",
+            "fins"
+          ],
+          "why": "The fetus’s beta cells answer its high glucose the way any pancreas does, by secreting more insulin."
+        },
+        {
+          "id": "size",
+          "name": "Fetal growth",
+          "answer": "up",
+          "chain": [
+            "cross",
+            "fglu",
+            "fins",
+            "grow"
+          ],
+          "why": "Insulin is a growth-promoting hormone in the fetus: with extra glucose and extra insulin, the fetus stores more fat and grows larger."
+        }
+      ]
+    },
+    {
+      "id": "dv-ibuprofen-ductus",
+      "title": "Ibuprofen late in pregnancy",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "drugs taken for the mother’s pain have no effect on the fetal heart and vessels",
+      "setup": "At 32 weeks, a pregnant woman takes high doses of ibuprofen for several days. Ibuprofen blocks prostaglandin synthesis and crosses the placenta. Predict the changes in the fetus.",
+      "start": "Prostaglandin synthesis is blocked in the fetus and placenta",
+      "steps": {
+        "pg": "Less prostaglandin reaches the smooth muscle of the ductus arteriosus",
+        "narrow": "The ductus arteriosus constricts before birth",
+        "less": "Less of the right ventricle’s output can pass into the aorta",
+        "lungs": "More of that output is forced into the high-resistance fetal lungs",
+        "pressure": "Pressure in the pulmonary trunk and the right ventricle rises"
+      },
+      "variables": [
+        {
+          "id": "diam",
+          "name": "Diameter of the ductus arteriosus",
+          "answer": "down",
+          "chain": [
+            "pg",
+            "narrow"
+          ],
+          "why": "Before birth, prostaglandins and low oxygen keep the ductus’s smooth muscle relaxed. Blocking prostaglandin synthesis removes one of those signals, so the ductus narrows."
+        },
+        {
+          "id": "shunt",
+          "name": "Blood flow from the pulmonary trunk into the aorta",
+          "answer": "down",
+          "chain": [
+            "pg",
+            "narrow",
+            "less"
+          ],
+          "why": "A narrower channel carries less blood for the same pressure difference, so less of the right ventricle’s output bypasses the lungs."
+        },
+        {
+          "id": "lung",
+          "name": "Blood flow into the fetal lungs",
+          "answer": "up",
+          "chain": [
+            "pg",
+            "narrow",
+            "less",
+            "lungs"
+          ],
+          "why": "The right ventricle’s output has to go somewhere. With its bypass narrowed, more of it enters the pulmonary arteries."
+        },
+        {
+          "id": "pa",
+          "name": "Pressure in the pulmonary trunk",
+          "answer": "up",
+          "chain": [
+            "pg",
+            "narrow",
+            "less",
+            "lungs",
+            "pressure"
+          ],
+          "why": "The fetal lungs resist flow strongly. Pushing more blood into them raises pressure in the pulmonary trunk and the work of the right ventricle, which is why such drugs are avoided late in pregnancy."
+        }
+      ]
+    },
+    {
+      "id": "dv-androgen-insensitivity",
+      "title": "XY with androgen insensitivity",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a Y chromosome alone decides that every structure develops as male",
+      "setup": "An XY embryo has working testes, but its receptor protein for testosterone and DHT does not work. Compare its development with a typical XY embryo’s.",
+      "start": "No tissue can respond to androgens",
+      "steps": {
+        "sry": "SRY still makes the gonads testes",
+        "amh": "Sertoli cells still secrete anti-Müllerian hormone",
+        "muller": "The paramesonephric ducts break down",
+        "wolff": "Without a response to testosterone, the mesonephric ducts break down",
+        "ext": "Without a response to DHT, the external structures develop as female"
+      },
+      "variables": [
+        {
+          "id": "amh",
+          "name": "Anti-Müllerian hormone secretion",
+          "answer": "none",
+          "chain": [
+            "sry",
+            "amh"
+          ],
+          "why": "Anti-Müllerian hormone comes from the Sertoli cells, and its action does not use the androgen receptor protein, so it is secreted and works as in any XY embryo."
+        },
+        {
+          "id": "uterus",
+          "name": "Development of a uterus and uterine tubes",
+          "answer": "none",
+          "chain": [
+            "sry",
+            "amh",
+            "muller"
+          ],
+          "why": "Anti-Müllerian hormone still removes the paramesonephric ducts, so, as in a typical XY embryo, no uterus or uterine tubes form."
+        },
+        {
+          "id": "wolff",
+          "name": "Development of the epididymis and ductus deferens",
+          "answer": "down",
+          "chain": [
+            "wolff"
+          ],
+          "why": "Testosterone keeps the mesonephric ducts. Here the testes make it, but the ducts cannot respond, so they break down as in a female."
+        },
+        {
+          "id": "penis",
+          "name": "Growth of the external bump into a penis",
+          "answer": "down",
+          "chain": [
+            "ext"
+          ],
+          "why": "DHT makes the bump grow into a penis and the swellings fuse into a scrotum. With no working receptor protein, the external genitalia develop as female."
+        }
+      ]
+    },
+    {
+      "id": "dv-antenatal-steroid",
+      "title": "A glucocorticoid before a preterm birth",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the steroid given before a preterm birth is for the mother",
+      "setup": "At 30 weeks, a woman is in early preterm labor. She is given a glucocorticoid, which crosses to the fetus, and the baby is born two days later. Compare the baby with one born at 30 weeks without it.",
+      "start": "The glucocorticoid reaches the fetal lungs",
+      "steps": {
+        "type2": "Type II alveolar cells mature faster",
+        "surf": "They make more surfactant",
+        "tension": "Surface tension in the alveoli is lower after birth",
+        "open": "Fewer alveoli collapse at the end of each breath",
+        "work": "Each breath takes less effort"
+      },
+      "variables": [
+        {
+          "id": "surf",
+          "name": "Surfactant in the lungs at birth",
+          "answer": "up",
+          "chain": [
+            "type2",
+            "surf"
+          ],
+          "why": "Surfactant is usually enough only by about weeks 34 to 36. The glucocorticoid speeds the type II cells toward making it, so more is present at 30 weeks."
+        },
+        {
+          "id": "collapse",
+          "name": "Alveoli collapsing at the end of each breath",
+          "answer": "down",
+          "chain": [
+            "type2",
+            "surf",
+            "tension",
+            "open"
+          ],
+          "why": "Surfactant lowers the surface tension that pulls the wet alveolar walls together, so fewer alveoli collapse when the baby breathes out."
+        },
+        {
+          "id": "compliance",
+          "name": "Lung compliance after birth",
+          "answer": "up",
+          "chain": [
+            "type2",
+            "surf",
+            "tension"
+          ],
+          "why": "Surface tension is a major part of what makes lungs stiff. Lowering it makes the lungs easier to stretch."
+        },
+        {
+          "id": "work",
+          "name": "Work of breathing",
+          "answer": "down",
+          "chain": [
+            "type2",
+            "surf",
+            "tension",
+            "open",
+            "work"
+          ],
+          "why": "With alveoli staying partly open and the lungs more compliant, each breath does not have to reopen collapsed alveoli from scratch."
+        }
+      ]
+    },
+    {
+      "id": "dv-vsd",
+      "title": "A large ventricular septal defect after birth",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a hole between the ventricles lets oxygen-poor blood reach the body",
+      "setup": "A baby is born with a large hole in the membranous part of the interventricular septum. Predict the changes a few weeks after birth, once pressures on the left are well above those on the right, compared with a baby with an intact septum.",
+      "start": "Left ventricular pressure is higher than right ventricular pressure, and a hole joins them",
+      "steps": {
+        "shunt": "In systole, blood flows through the hole from the left ventricle to the right",
+        "lungs": "That blood is pumped into the pulmonary trunk along with the normal right-sided flow",
+        "back": "The extra lung blood returns to the left atrium and left ventricle",
+        "mix": "Oxygen-rich blood enters the right side; no oxygen-poor blood enters the left"
+      },
+      "variables": [
+        {
+          "id": "lungflow",
+          "name": "Blood flow through the lungs",
+          "answer": "up",
+          "chain": [
+            "shunt",
+            "lungs"
+          ],
+          "why": "Blood flows down the pressure gradient from the left ventricle into the right, which pumps it to the lungs on top of its own share: the extra blood recirculates through the lungs."
+        },
+        {
+          "id": "lv",
+          "name": "Volume load on the left atrium and left ventricle",
+          "answer": "up",
+          "chain": [
+            "shunt",
+            "lungs",
+            "back"
+          ],
+          "why": "The extra blood sent to the lungs comes back through the pulmonary veins to the left atrium and left ventricle, so they handle more volume each beat."
+        },
+        {
+          "id": "sat",
+          "name": "Oxygen saturation of blood in the aorta",
+          "answer": "none",
+          "chain": [
+            "mix"
+          ],
+          "why": "Flow is left to right: oxygen-rich blood leaks into the right side, but no oxygen-poor blood crosses to the left. The aorta still receives fully oxygenated blood, so the baby is not blue."
+        }
+      ]
+    },
+    {
+      "id": "dv-supine-hypotension",
+      "title": "Lying flat on the back at 34 weeks",
+      "topic": "pregnancy",
+      "core": [
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "lying down always raises venous return",
+      "setup": "At 34 weeks, a pregnant woman lies flat on her back on an examination table. Within minutes she feels dizzy and sweaty. Predict the changes, compared with lying on her left side.",
+      "start": "The heavy uterus presses on the inferior vena cava",
+      "steps": {
+        "vr": "Less blood returns from the lower body to the right atrium",
+        "sv": "Preload falls, so stroke volume falls",
+        "co": "Cardiac output falls",
+        "bp": "Blood pressure falls",
+        "baro": "Baroreceptors fire less, and the baroreceptor reflex speeds the heart",
+        "plac": "Less blood flows to the uterus and placenta"
+      },
+      "variables": [
+        {
+          "id": "vr",
+          "name": "Venous return from the lower body",
+          "answer": "down",
+          "chain": [
+            "vr"
+          ],
+          "why": "The inferior vena cava runs just behind the uterus. When she lies on her back, the uterus squeezes it, so less blood gets back to the heart."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "down",
+          "chain": [
+            "vr",
+            "sv"
+          ],
+          "why": "Less venous return means less filling of the ventricles. By the Frank–Starling mechanism, a less stretched ventricle ejects less."
+        },
+        {
+          "id": "bp",
+          "name": "Blood pressure",
+          "answer": "down",
+          "chain": [
+            "vr",
+            "sv",
+            "co",
+            "bp"
+          ],
+          "why": "Cardiac output falls with stroke volume. With resistance already low in pregnancy, blood pressure drops, which is why she feels dizzy."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "vr",
+            "sv",
+            "co",
+            "bp",
+            "baro"
+          ],
+          "why": "The fall in pressure unloads the baroreceptors, and the reflex raises sympathetic drive to the heart, which speeds it."
+        },
+        {
+          "id": "plac",
+          "name": "Blood flow to the placenta",
+          "answer": "down",
+          "chain": [
+            "vr",
+            "sv",
+            "co",
+            "bp",
+            "plac"
+          ],
+          "why": "The uterine vessels cannot constrict to protect their flow, so placental flow falls with the mother’s pressure and output. Turning her onto her left side lifts the uterus off the vein."
+        }
+      ]
+    },
+    {
+      "id": "dv-blood-volume",
+      "title": "Blood at 32 weeks of pregnancy",
+      "topic": "pregnancy",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "a lower hemoglobin in pregnancy means fewer red cells",
+      "setup": "Compare a healthy woman’s blood and circulation at 32 weeks of pregnancy with her values before pregnancy.",
+      "start": "Progesterone and other signals relax arterioles, and the placenta adds a low-resistance bed",
+      "steps": {
+        "tpr": "Total peripheral resistance falls",
+        "raas": "The circulation is sensed as underfilled, and the renin–angiotensin–aldosterone system switches on",
+        "na": "The kidneys keep more sodium, and water follows",
+        "plasma": "Plasma volume rises by about 40 to 50%",
+        "epo": "Erythropoietin drives the marrow to make more red cells, a rise of about 20 to 30%",
+        "dilute": "Plasma rises more than red cells, so the blood is diluted"
+      },
+      "variables": [
+        {
+          "id": "aldo",
+          "name": "Aldosterone",
+          "answer": "up",
+          "chain": [
+            "tpr",
+            "raas"
+          ],
+          "why": "With resistance low, the kidneys sense the circulation as underfilled and release renin, which switches on angiotensin II and aldosterone."
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "up",
+          "chain": [
+            "tpr",
+            "raas",
+            "na",
+            "plasma"
+          ],
+          "why": "Aldosterone makes the kidneys keep sodium, and water follows the solute, so plasma volume climbs, peaking around weeks 32 to 34."
+        },
+        {
+          "id": "rcm",
+          "name": "Total red cell mass",
+          "answer": "up",
+          "chain": [
+            "epo"
+          ],
+          "why": "Erythropoietin rises in pregnancy, so the marrow makes more red cells. The body ends up with more red cells than before."
+        },
+        {
+          "id": "hct",
+          "name": "Hematocrit",
+          "answer": "down",
+          "chain": [
+            "tpr",
+            "raas",
+            "na",
+            "plasma",
+            "epo",
+            "dilute"
+          ],
+          "why": "Plasma rises by 40 to 50% but red cells by only 20 to 30%, so each liter of blood holds a smaller share of cells: dilutional anemia of pregnancy."
+        },
+        {
+          "id": "hb",
+          "name": "Hemoglobin concentration",
+          "answer": "down",
+          "chain": [
+            "tpr",
+            "raas",
+            "na",
+            "plasma",
+            "epo",
+            "dilute"
+          ],
+          "why": "Hemoglobin is measured per deciliter, so the same dilution lowers it, to about 11 g/dL in a healthy pregnancy, even though total hemoglobin has risen."
+        }
+      ]
+    },
+    {
+      "id": "dv-pregnancy-breathing-l4",
+      "title": "Progesterone and breathing in pregnancy",
+      "topic": "pregnancy",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 4,
+      "misconception": "breathlessness in early pregnancy means the lungs are squeezed by the uterus",
+      "setup": "In early pregnancy, a woman’s progesterone climbs. Her oxygen use rises only a little, yet she often feels short of breath. Follow her blood gases.",
+      "stages": [
+        {
+          "id": "first",
+          "label": "As progesterone rises",
+          "prompt": "In the first days of the change, before her kidneys have responded, compared with before pregnancy.",
+          "start": "Progesterone makes the brainstem’s chemoreceptors more sensitive to carbon dioxide",
+          "steps": {
+            "vent": "The same carbon dioxide level drives more breathing, so minute ventilation rises",
+            "co2": "She breathes off carbon dioxide faster than she makes it, so PaCO2 falls",
+            "ph": "Less carbon dioxide means less carbonic acid, so pH rises: a respiratory alkalosis",
+            "grad": "The carbon dioxide gradient from fetal to maternal blood is steeper"
+          },
+          "variables": [
+            {
+              "id": "vent",
+              "name": "Minute ventilation",
+              "answer": "up",
+              "chain": [
+                "vent"
+              ],
+              "why": "More sensitive chemoreceptors respond to her normal carbon dioxide as if it were high, so tidal volume, and with it minute ventilation, rises."
+            },
+            {
+              "id": "paco2",
+              "name": "PaCO2",
+              "answer": "down",
+              "chain": [
+                "vent",
+                "co2"
+              ],
+              "why": "Ventilation rises by 40 to 50% while her oxygen use rises only 20 to 30%, so she clears carbon dioxide faster than she makes it, and PaCO2 falls toward 30 mm Hg."
+            },
+            {
+              "id": "ph",
+              "name": "Blood pH",
+              "answer": "up",
+              "chain": [
+                "vent",
+                "co2",
+                "ph"
+              ],
+              "why": "Lower carbon dioxide shifts the carbonic acid equilibrium toward less acid, so H+ falls and pH rises: a respiratory alkalosis."
+            },
+            {
+              "id": "fetal",
+              "name": "Ease with which the fetus unloads carbon dioxide across the placenta",
+              "answer": "up",
+              "chain": [
+                "vent",
+                "co2",
+                "grad"
+              ],
+              "why": "Carbon dioxide diffuses from fetal to maternal blood down its gradient. A lower maternal PaCO2 makes that gradient steeper."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "After the kidneys respond",
+          "prompt": "Weeks later, once her kidneys have compensated, compared with the first stage.",
+          "start": "Her kidneys respond to the alkalosis",
+          "steps": {
+            "excrete": "The kidneys excrete more bicarbonate and secrete less H+",
+            "hco3": "Plasma bicarbonate falls, to about 18 to 22 mEq/L",
+            "ph": "pH returns toward normal, near 7.40 to 7.45",
+            "drive": "Progesterone keeps her breathing drive high"
+          },
+          "variables": [
+            {
+              "id": "hco3",
+              "name": "Plasma bicarbonate",
+              "answer": "down",
+              "chain": [
+                "excrete",
+                "hco3"
+              ],
+              "why": "Renal compensation for a respiratory alkalosis is to excrete bicarbonate, so the plasma bicarbonate falls."
+            },
+            {
+              "id": "ph",
+              "name": "Blood pH",
+              "answer": "down",
+              "chain": [
+                "excrete",
+                "hco3",
+                "ph"
+              ],
+              "why": "With both carbon dioxide and bicarbonate lower, their ratio moves back toward normal, so pH falls back toward the normal range, ending near 7.40 to 7.45."
+            },
+            {
+              "id": "paco2",
+              "name": "PaCO2",
+              "answer": "none",
+              "chain": [
+                "drive"
+              ],
+              "why": "The cause, progesterone’s effect on the chemoreceptors, is still there, so she keeps breathing more and PaCO2 stays near 30 mm Hg. The kidneys correct the pH, not the carbon dioxide."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dv-preeclampsia",
+      "title": "Preeclampsia",
+      "topic": "pregnancy",
+      "core": [
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": 3,
+      "misconception": "preeclampsia is just high blood pressure caused by the extra blood volume",
+      "setup": "Early in a woman’s first pregnancy, the spiral arteries are remodeled only shallowly. At 34 weeks she develops preeclampsia. Predict her state compared with a healthy pregnancy at 34 weeks.",
+      "start": "The spiral arteries stay narrow, so the placenta is short of blood",
+      "steps": {
+        "factors": "The stressed placenta releases factors that block blood vessel growth into her blood",
+        "endo": "Her endothelium is damaged throughout her body",
+        "constrict": "Her arterioles constrict",
+        "leak": "Her capillaries leak, so fluid moves into the tissues",
+        "glom": "The glomerular endothelium swells and leaks protein",
+        "plt": "Platelets are used up on the damaged endothelium",
+        "fetus": "Less blood reaches the villi, so the fetus gets less oxygen and glucose"
+      },
+      "variables": [
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "up",
+          "chain": [
+            "factors",
+            "endo",
+            "constrict"
+          ],
+          "why": "Healthy endothelium keeps arterioles relaxed. Damaged endothelium lets them constrict, so resistance climbs, reversing the usual fall of pregnancy."
+        },
+        {
+          "id": "bp",
+          "name": "Blood pressure",
+          "answer": "up",
+          "chain": [
+            "factors",
+            "endo",
+            "constrict"
+          ],
+          "why": "Mean arterial pressure is cardiac output times total peripheral resistance. With resistance up, pressure rises to 140/90 mm Hg or more."
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "down",
+          "chain": [
+            "factors",
+            "endo",
+            "leak"
+          ],
+          "why": "Leaky capillaries let fluid move out of the plasma into the tissues, which is why she has edema while her plasma volume falls."
+        },
+        {
+          "id": "prot",
+          "name": "Protein in her urine",
+          "answer": "up",
+          "chain": [
+            "factors",
+            "endo",
+            "glom"
+          ],
+          "why": "The damaged glomerular endothelium lets protein through the filter, and GFR falls."
+        },
+        {
+          "id": "plt",
+          "name": "Platelet count",
+          "answer": "down",
+          "chain": [
+            "factors",
+            "endo",
+            "plt"
+          ],
+          "why": "Platelets stick to damaged endothelium and are used up faster than the marrow replaces them."
+        },
+        {
+          "id": "growth",
+          "name": "Fetal growth",
+          "answer": "down",
+          "chain": [
+            "fetus"
+          ],
+          "why": "The same shallow remodeling that starts the disease limits blood flow to the placenta, so the fetus often grows too slowly."
+        }
+      ]
+    },
+    {
+      "id": "dv-gestational-diabetes",
+      "title": "Gestational diabetes",
+      "topic": "pregnancy",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 3,
+      "misconception": "the mother’s insulin protects the fetus from her high glucose",
+      "setup": "At 28 weeks, a woman’s beta cells cannot secrete enough extra insulin to overcome the insulin resistance of late pregnancy. Compare her and her baby with a pregnancy in which glucose stays normal.",
+      "start": "Placental hormones reduce her cells’ response to insulin, and her beta cells cannot keep up",
+      "steps": {
+        "mglu": "Her glucose rises higher and stays up longer after meals",
+        "cross": "More glucose crosses the placenta, down a steeper gradient",
+        "fins": "The fetal pancreas secretes more insulin",
+        "big": "Fetal insulin drives growth, so the baby grows large",
+        "cut": "After birth, cutting the cord stops the supply of the mother’s glucose",
+        "low": "The baby’s pancreas is still secreting extra insulin, so its glucose falls"
+      },
+      "variables": [
+        {
+          "id": "mglu",
+          "name": "Her blood glucose after a meal",
+          "answer": "up",
+          "chain": [
+            "mglu"
+          ],
+          "why": "Human placental lactogen, progesterone, cortisol and a placental growth hormone make her cells respond less to insulin. When her beta cells cannot make up for it, glucose climbs after meals."
+        },
+        {
+          "id": "fins",
+          "name": "Fetal insulin secretion",
+          "answer": "up",
+          "chain": [
+            "mglu",
+            "cross",
+            "fins"
+          ],
+          "why": "Glucose crosses the placenta but her insulin does not, so fetal glucose rises and the fetal pancreas answers with more insulin of its own."
+        },
+        {
+          "id": "weight",
+          "name": "Birth weight",
+          "answer": "up",
+          "chain": [
+            "mglu",
+            "cross",
+            "fins",
+            "big"
+          ],
+          "why": "Extra glucose plus extra fetal insulin means more fuel stored as fat and more growth, which also makes the shoulders more likely to get stuck at delivery."
+        },
+        {
+          "id": "newborn",
+          "name": "The baby’s blood glucose in the first hours after birth",
+          "answer": "down",
+          "chain": [
+            "mglu",
+            "cross",
+            "fins",
+            "cut",
+            "low"
+          ],
+          "why": "The mother’s glucose supply ends when the cord is cut, but the baby’s pancreas has been secreting extra insulin and does not stop at once, so its glucose can fall dangerously low. It is checked soon after birth."
+        }
+      ]
+    },
+    {
+      "id": "dv-mifepristone",
+      "title": "A progesterone blocker in late pregnancy",
+      "topic": "labor-birth",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "labor can begin only once progesterone in the blood has fallen",
+      "setup": "Mifepristone, a drug that blocks progesterone receptor proteins, is given to a woman late in pregnancy. Predict the changes over the next day, compared with before the drug.",
+      "start": "Progesterone can no longer act on the myometrium and cervix",
+      "steps": {
+        "blood": "Progesterone keeps circulating; only its effect is blocked",
+        "quiet": "The brake that keeps the myometrium quiet is lifted",
+        "contract": "The myometrium contracts more",
+        "ripen": "The cervix softens and ripens"
+      },
+      "variables": [
+        {
+          "id": "p4",
+          "name": "Progesterone in her blood",
+          "answer": "none",
+          "chain": [
+            "blood"
+          ],
+          "why": "The drug blocks the receptor proteins, not the placenta’s production, so the hormone level stays high. This copies the functional progesterone withdrawal of natural labor."
+        },
+        {
+          "id": "contract",
+          "name": "Uterine contractions",
+          "answer": "up",
+          "chain": [
+            "quiet",
+            "contract"
+          ],
+          "why": "Progesterone acting on its receptor proteins keeps the myometrium quiet. Blocking that action frees the muscle to contract."
+        },
+        {
+          "id": "cervix",
+          "name": "Softening of the cervix",
+          "answer": "up",
+          "chain": [
+            "quiet",
+            "ripen"
+          ],
+          "why": "Losing progesterone’s effect lets the cervix’s collagen be broken down and rearranged, so it ripens, at any stage of pregnancy."
+        }
+      ]
+    },
+    {
+      "id": "dv-oxytocin-drip",
+      "title": "An oxytocin drip for weak contractions",
+      "topic": "labor-birth",
+      "core": [
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "giving oxytocin is what starts the positive feedback loop from nothing",
+      "setup": "A woman in the dilation stage has weak, infrequent contractions and her cervix is opening slowly. Synthetic oxytocin is started through a drip. Predict the immediate effects.",
+      "start": "More oxytocin reaches the myometrium",
+      "steps": {
+        "bind": "Oxytocin binds its receptor proteins on myometrial cells, which are very numerous at term",
+        "ca": "Calcium is released inside the cells, so each contraction is stronger",
+        "pg": "The uterine lining releases more prostaglandins"
+      },
+      "variables": [
+        {
+          "id": "force",
+          "name": "Strength of each contraction",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "ca"
+          ],
+          "why": "Through a G protein and IP3, oxytocin releases calcium inside the smooth muscle cells, and more calcium means a stronger contraction."
+        },
+        {
+          "id": "pg",
+          "name": "Prostaglandin release in the uterus",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "pg"
+          ],
+          "why": "Oxytocin also makes the uterine lining release prostaglandins, which add to the contraction."
+        }
+      ]
+    },
+    {
+      "id": "dv-uterine-atony",
+      "title": "A soft uterus after the placenta is out",
+      "topic": "labor-birth",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 3,
+      "misconception": "clotting is the main brake on bleeding after birth",
+      "setup": "Minutes after delivering the placenta, a woman’s uterus feels soft and relaxed instead of firm. Predict the changes over the next half hour if nothing is done, compared with a firmly contracted uterus.",
+      "start": "The myometrium stays relaxed (uterine atony)",
+      "steps": {
+        "pinch": "The crisscrossing muscle fibers do not pinch the placental-bed arteries shut",
+        "bleed": "Blood pours out of the open vessels",
+        "vol": "Her blood volume falls",
+        "bp": "Venous return and cardiac output fall, so blood pressure falls",
+        "baro": "The baroreceptor reflex speeds her heart"
+      },
+      "variables": [
+        {
+          "id": "pinch",
+          "name": "Compression of the vessels at the placental site",
+          "answer": "down",
+          "chain": [
+            "pinch"
+          ],
+          "why": "The fibers of the upper uterus wrap around the vessels that fed the placenta. They clamp them shut only when they contract firmly; a relaxed uterus leaves them open."
+        },
+        {
+          "id": "loss",
+          "name": "Blood loss",
+          "answer": "up",
+          "chain": [
+            "pinch",
+            "bleed"
+          ],
+          "why": "About half a liter a minute reached the placental bed. With the vessels left open, bleeding is heavy: atony causes most postpartum hemorrhage."
+        },
+        {
+          "id": "bp",
+          "name": "Blood pressure",
+          "answer": "down",
+          "chain": [
+            "pinch",
+            "bleed",
+            "vol",
+            "bp"
+          ],
+          "why": "Losing blood volume lowers venous return, so stroke volume and cardiac output fall, and pressure drops once the reflexes cannot make up for it."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "pinch",
+            "bleed",
+            "vol",
+            "bp",
+            "baro"
+          ],
+          "why": "The falling pressure unloads the baroreceptors, and sympathetic drive speeds the heart to prop up cardiac output."
+        }
+      ]
+    },
+    {
+      "id": "dv-first-breath",
+      "title": "The first breath and the cord clamp",
+      "topic": "postnatal-lactation",
+      "theme": "the first breath",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "the shunts close because the baby no longer needs them",
+      "setup": "A term baby is born, takes its first breaths and cries, and the umbilical cord is clamped. Predict the changes over the first minutes to hours, compared with just before birth.",
+      "start": "Air fills the lungs and the cord is clamped",
+      "steps": {
+        "expand": "Air stretches the lungs open and oxygen in the alveoli rises",
+        "relax": "Rising oxygen and nitric oxide relax the pulmonary arterioles",
+        "pvr": "Pulmonary vascular resistance drops sharply",
+        "lungflow": "Blood flow through the lungs rises about eightfold",
+        "la": "Much more blood returns to the left atrium, raising its pressure",
+        "clamp": "Clamping removes the low-resistance placenta from the circuit",
+        "svr": "Systemic resistance and aortic pressure rise",
+        "ra": "No blood arrives from the umbilical vein, so right atrial pressure falls",
+        "fo": "The flap of the foramen ovale is pressed shut",
+        "o2": "Blood oxygen rises",
+        "da": "Oxygen-rich blood reverses through the ductus arteriosus, and falling prostaglandin lets it constrict"
+      },
+      "variables": [
+        {
+          "id": "pvr",
+          "name": "Pulmonary vascular resistance",
+          "answer": "down",
+          "chain": [
+            "expand",
+            "relax",
+            "pvr"
+          ],
+          "why": "Before birth, low oxygen kept the pulmonary arterioles constricted. Air brings oxygen, which, with nitric oxide, relaxes them, and inflating the lungs opens their vessels."
+        },
+        {
+          "id": "lungflow",
+          "name": "Blood flow through the lungs",
+          "answer": "up",
+          "chain": [
+            "expand",
+            "relax",
+            "pvr",
+            "lungflow"
+          ],
+          "why": "With resistance in the lungs far lower, the right ventricle’s output flows into them instead of past them."
+        },
+        {
+          "id": "svr",
+          "name": "Systemic vascular resistance",
+          "answer": "up",
+          "chain": [
+            "clamp",
+            "svr"
+          ],
+          "why": "The placenta was a wide, low-resistance bed taking a large share of the output. Clamping the cord removes it, so resistance in the systemic circuit rises."
+        },
+        {
+          "id": "la",
+          "name": "Left atrial pressure",
+          "answer": "up",
+          "chain": [
+            "expand",
+            "relax",
+            "pvr",
+            "lungflow",
+            "la"
+          ],
+          "why": "All that extra lung blood returns through the pulmonary veins to the left atrium, so its pressure climbs."
+        },
+        {
+          "id": "ra",
+          "name": "Right atrial pressure",
+          "answer": "down",
+          "chain": [
+            "clamp",
+            "ra"
+          ],
+          "why": "Blood from the placenta no longer arrives through the umbilical vein and inferior vena cava, so less returns to the right atrium."
+        },
+        {
+          "id": "fo",
+          "name": "Flow through the foramen ovale",
+          "answer": "down",
+          "chain": [
+            "expand",
+            "relax",
+            "pvr",
+            "lungflow",
+            "la",
+            "clamp",
+            "ra",
+            "fo"
+          ],
+          "why": "With left atrial pressure now above right, the septum primum is pushed against the rim of the opening like a door shut from the far side, and flow stops within minutes to hours."
+        },
+        {
+          "id": "sao2",
+          "name": "Oxygen saturation of the baby’s arterial blood",
+          "answer": "up",
+          "chain": [
+            "expand",
+            "o2"
+          ],
+          "why": "The lungs, not the placenta, now load oxygen, and they deliver it at far higher partial pressures than the umbilical vein did."
+        },
+        {
+          "id": "da",
+          "name": "Diameter of the ductus arteriosus",
+          "answer": "down",
+          "chain": [
+            "clamp",
+            "svr",
+            "expand",
+            "o2",
+            "da"
+          ],
+          "why": "With aortic pressure above pulmonary pressure, flow through the ductus reverses, bringing oxygen-rich blood to its wall. Rising oxygen and falling prostaglandin E2 make its smooth muscle contract over one to three days."
+        }
+      ]
+    },
+    {
+      "id": "dv-patent-ductus",
+      "title": "The ductus arteriosus stays open",
+      "topic": "postnatal-lactation",
+      "theme": "the ductus arteriosus stays open",
+      "core": [
+        "gradients",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "a patent ductus arteriosus makes a baby blue",
+      "setup": "A baby born at 27 weeks has a ductus arteriosus that is still open a week after birth. Compare the baby with one whose ductus has closed.",
+      "start": "The ductus stays open while aortic pressure is now higher than pulmonary pressure",
+      "steps": {
+        "flow": "Blood flows from the aorta back into the pulmonary trunk, in systole and diastole",
+        "lungs": "The lungs receive extra blood",
+        "left": "The extra blood returns to the left atrium and left ventricle",
+        "run": "Blood draining out of the aorta during diastole lowers diastolic pressure",
+        "pp": "Systolic minus diastolic pressure widens",
+        "sat": "No oxygen-poor blood enters the aorta"
+      },
+      "variables": [
+        {
+          "id": "lung",
+          "name": "Blood flow through the lungs",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "lungs"
+          ],
+          "why": "After birth the pressure difference runs the other way from before: aorta higher than pulmonary trunk. So blood crosses left to right and adds to the flow the right ventricle sends to the lungs."
+        },
+        {
+          "id": "lv",
+          "name": "Volume handled by the left ventricle each beat",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "lungs",
+            "left"
+          ],
+          "why": "The blood that leaked into the lungs comes back through the pulmonary veins, so the left heart pumps that extra volume on every beat."
+        },
+        {
+          "id": "dia",
+          "name": "Diastolic blood pressure",
+          "answer": "down",
+          "chain": [
+            "flow",
+            "run"
+          ],
+          "why": "Normally the aorta holds its pressure during diastole. With an open ductus, blood keeps running off into the low-pressure pulmonary circuit, so diastolic pressure sags."
+        },
+        {
+          "id": "pp",
+          "name": "Pulse pressure",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "run",
+            "pp"
+          ],
+          "why": "With diastolic pressure lower and systolic held up by the larger stroke volume, the gap between them widens, and the pulses feel bounding."
+        },
+        {
+          "id": "sat",
+          "name": "Oxygen saturation of blood reaching the body",
+          "answer": "none",
+          "chain": [
+            "sat"
+          ],
+          "why": "The shunt runs from the aorta to the lungs. Blood already oxygenated recirculates through the lungs, but no oxygen-poor blood reaches the body, so the baby is not blue."
+        }
+      ]
+    },
+    {
+      "id": "dv-newborn-cold-l4",
+      "title": "A wet newborn in a cool room",
+      "topic": "postnatal-lactation",
+      "core": [
+        "homeostasis"
+      ],
+      "level": 4,
+      "misconception": "newborns warm themselves mainly by shivering",
+      "setup": "A term baby is born into a delivery room about 10 °C cooler than the uterus and is left wet and uncovered for a few minutes. Follow its temperature and its brown fat.",
+      "stages": [
+        {
+          "id": "first",
+          "label": "The first minutes",
+          "prompt": "In the first minutes, before its defenses have caught up, compared with just before birth.",
+          "start": "Wet skin meets cool air",
+          "steps": {
+            "evap": "Amniotic fluid evaporates from the skin, carrying heat away",
+            "surface": "The large surface for its size loses heat fast by radiation and convection",
+            "skin": "Skin temperature falls",
+            "core": "Heat loss outruns heat production, so core temperature falls"
+          },
+          "variables": [
+            {
+              "id": "loss",
+              "name": "Rate of heat loss",
+              "answer": "up",
+              "chain": [
+                "evap",
+                "surface"
+              ],
+              "why": "Evaporating fluid takes heat with it, and a newborn has about three times as much skin per kilogram as an adult, so it loses heat far faster than in the uterus."
+            },
+            {
+              "id": "skin",
+              "name": "Skin temperature",
+              "answer": "down",
+              "chain": [
+                "evap",
+                "surface",
+                "skin"
+              ],
+              "why": "The skin is where the heat leaves, so it cools first, which is also what the cold-sensing sensory receptors detect."
+            },
+            {
+              "id": "core",
+              "name": "Core temperature",
+              "answer": "down",
+              "chain": [
+                "evap",
+                "surface",
+                "skin",
+                "core"
+              ],
+              "why": "With thin insulation and weak shivering, heat production cannot match the loss at first, so the baby can lose a degree or more within minutes."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "Once brown fat is running",
+          "prompt": "Some minutes later, once the brown fat response is under way, compared with the first stage.",
+          "start": "Cold skin sends signals to the hypothalamus",
+          "steps": {
+            "symp": "Sympathetic nerves release norepinephrine onto brown fat",
+            "burn": "Brown fat cells break down their fat and let H+ leak back across their mitochondria’s inner membrane",
+            "heat": "The energy leaves as heat instead of ATP",
+            "cost": "Burning fat uses oxygen and glucose fast"
+          },
+          "variables": [
+            {
+              "id": "heat",
+              "name": "Heat production",
+              "answer": "up",
+              "chain": [
+                "symp",
+                "burn",
+                "heat"
+              ],
+              "why": "Nonshivering thermogenesis in brown fat is the newborn’s main defense: the channel protein lets H+ flow back without making ATP, so the energy becomes heat."
+            },
+            {
+              "id": "o2",
+              "name": "Oxygen use",
+              "answer": "up",
+              "chain": [
+                "symp",
+                "burn",
+                "cost"
+              ],
+              "why": "Running the mitochondria flat out to make heat consumes oxygen fast, so a cold baby can run short of oxygen."
+            },
+            {
+              "id": "glu",
+              "name": "Blood glucose",
+              "answer": "down",
+              "chain": [
+                "symp",
+                "burn",
+                "cost"
+              ],
+              "why": "The heat-making work draws on glucose as well as fat, so a baby kept cold can become low in blood glucose. Drying it and placing it skin to skin avoids that cost."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dv-newborn-rds",
+      "title": "Born at 28 weeks without surfactant",
+      "topic": "postnatal-lactation",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "a preterm baby breathes badly mainly because its muscles are weak",
+      "setup": "A baby is born at 28 weeks, before its type II alveolar cells make enough surfactant, and its mother did not receive a glucocorticoid. Compare it with a term baby over the first hours.",
+      "start": "Too little surfactant lines the alveoli",
+      "steps": {
+        "tension": "Surface tension in the wet alveoli stays high",
+        "collapse": "Many alveoli collapse at the end of every breath",
+        "stiff": "The lungs are stiff, so each breath is like the first",
+        "tire": "The baby tires and breathes less effectively",
+        "gas": "Less of the lung exchanges gas"
+      },
+      "variables": [
+        {
+          "id": "collapse",
+          "name": "Alveoli collapsing at the end of each breath",
+          "answer": "up",
+          "chain": [
+            "tension",
+            "collapse"
+          ],
+          "why": "Surfactant is what lowers surface tension once the alveoli have opened. Without it, the tension pulls the walls together each time the baby breathes out."
+        },
+        {
+          "id": "compliance",
+          "name": "Lung compliance",
+          "answer": "down",
+          "chain": [
+            "tension",
+            "collapse",
+            "stiff"
+          ],
+          "why": "High surface tension and collapsed alveoli make the lungs hard to stretch, so each breath needs a larger pressure."
+        },
+        {
+          "id": "rate",
+          "name": "Breathing rate",
+          "answer": "up",
+          "chain": [
+            "tension",
+            "collapse",
+            "stiff"
+          ],
+          "why": "Stiff lungs take in only small breaths, so the baby breathes fast, over 60 a minute, often with grunting to hold some pressure in its airways."
+        },
+        {
+          "id": "o2",
+          "name": "Arterial oxygen",
+          "answer": "down",
+          "chain": [
+            "tension",
+            "collapse",
+            "gas"
+          ],
+          "why": "Collapsed alveoli take no part in gas exchange, so less oxygen is loaded into the blood."
+        },
+        {
+          "id": "co2",
+          "name": "Arterial carbon dioxide",
+          "answer": "up",
+          "chain": [
+            "tension",
+            "collapse",
+            "stiff",
+            "tire",
+            "gas"
+          ],
+          "why": "As the baby tires, its breaths move too little air, and carbon dioxide builds up in the blood."
+        }
+      ]
+    },
+    {
+      "id": "dv-letdown-stress",
+      "title": "Pain and fear during a feed",
+      "topic": "postnatal-lactation",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a mother whose milk will not flow must not be making any",
+      "setup": "A week after birth, a mother tries to feed her baby while in pain from a sore wound and anxious. Her breasts are full, but the baby gets little milk. Compare this feed with a calm, painless one.",
+      "start": "Pain, fear and stress act on the hypothalamus",
+      "steps": {
+        "oxy": "Oxytocin release from the posterior pituitary is inhibited",
+        "myo": "The myoepithelial cells around the alveoli contract less",
+        "flow": "Less milk is squeezed into the ducts toward the nipple",
+        "made": "The milk already made by the alveolar cells is still there"
+      },
+      "variables": [
+        {
+          "id": "oxy",
+          "name": "Oxytocin released during the feed",
+          "answer": "down",
+          "chain": [
+            "oxy"
+          ],
+          "why": "The hypothalamus sits in the milk ejection reflex, so the brain can stop it: pain, fear and stress inhibit the oxytocin neurons."
+        },
+        {
+          "id": "myo",
+          "name": "Contraction of the myoepithelial cells",
+          "answer": "down",
+          "chain": [
+            "oxy",
+            "myo"
+          ],
+          "why": "Oxytocin is the signal that makes the myoepithelial cells around each alveolus contract. Less oxytocin, weaker squeeze."
+        },
+        {
+          "id": "flow",
+          "name": "Milk reaching the baby",
+          "answer": "down",
+          "chain": [
+            "oxy",
+            "myo",
+            "flow"
+          ],
+          "why": "A baby cannot suck milk out of the alveoli; it must be squeezed toward the nipple. Without let-down, little reaches the baby."
+        },
+        {
+          "id": "stored",
+          "name": "Milk already stored in the alveoli",
+          "answer": "none",
+          "chain": [
+            "made"
+          ],
+          "why": "Making milk is prolactin’s job and happened between feeds. The milk is there; it is simply not ejected. That is why the breasts can feel full while the baby gets little."
+        }
+      ]
+    },
+    {
+      "id": "dv-retained-placenta",
+      "title": "A piece of placenta left behind",
+      "topic": "postnatal-lactation",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "milk comes in as soon as the baby is born because prolactin rises at birth",
+      "setup": "After a birth, a small piece of placenta stays attached inside the uterus. Compare the mother’s first week with that of a mother whose placenta was delivered whole.",
+      "start": "Placental tissue keeps secreting progesterone",
+      "steps": {
+        "p4": "Progesterone stays high instead of falling within days",
+        "block": "Progesterone keeps blocking prolactin’s action on the alveolar cells",
+        "delay": "Full milk production is delayed",
+        "prl": "Prolactin from the anterior pituitary stays high"
+      },
+      "variables": [
+        {
+          "id": "p4",
+          "name": "Progesterone in her blood in the first days",
+          "answer": "up",
+          "chain": [
+            "p4"
+          ],
+          "why": "Delivering the placenta normally removes the main source of progesterone. Tissue left behind keeps making it."
+        },
+        {
+          "id": "milk",
+          "name": "Milk production on day 3",
+          "answer": "down",
+          "chain": [
+            "p4",
+            "block",
+            "delay"
+          ],
+          "why": "High progesterone is the brake that held back full production in pregnancy. While it stays up, the alveolar cells do not switch on, so the milk is late to come in."
+        },
+        {
+          "id": "prl",
+          "name": "Prolactin",
+          "answer": "none",
+          "chain": [
+            "prl"
+          ],
+          "why": "Prolactin is high in late pregnancy and after birth either way. The problem is not a lack of prolactin but progesterone blocking its effect."
+        }
+      ]
+    },
+    {
+      "id": "dv-maternal-age-trisomy",
+      "title": "A mother of 40 instead of 25",
+      "topic": "inheritance",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "every kind of Down syndrome is more likely with an older mother",
+      "setup": "Compare a pregnancy in a woman of 40 with a pregnancy in the same woman at 25. Her chromosomes are normal.",
+      "start": "Her oocyte has been paused in meiosis I for 40 years instead of 25",
+      "steps": {
+        "glue": "The proteins holding its paired chromosomes together have weakened",
+        "nd": "Nondisjunction in meiosis I is more likely",
+        "t21": "An oocyte with two copies of chromosome 21 is more likely to be fertilized",
+        "trans": "A translocation form arises from a rearrangement, not from the pause"
+      },
+      "variables": [
+        {
+          "id": "nd",
+          "name": "Chance of nondisjunction in her oocyte",
+          "answer": "up",
+          "chain": [
+            "glue",
+            "nd"
+          ],
+          "why": "The protein links laid down before her birth are never replaced, so after four decades homologs are more likely to separate wrongly in meiosis I."
+        },
+        {
+          "id": "t21",
+          "name": "Chance of trisomy 21 in the pregnancy",
+          "answer": "up",
+          "chain": [
+            "glue",
+            "nd",
+            "t21"
+          ],
+          "why": "About 95% of trisomy 21 comes from nondisjunction, mostly in the mother’s meiosis I. The risk climbs from about 1 in 1,200 births at 25 to about 1 in 100 at 40."
+        },
+        {
+          "id": "trans",
+          "name": "Chance of the translocation form of Down syndrome",
+          "answer": "none",
+          "chain": [
+            "trans"
+          ],
+          "why": "In about 4% of cases, the extra chromosome 21 is attached to another chromosome. That form comes from a rearrangement, often carried by a parent, and does not depend on the mother’s age."
+        }
+      ]
+    },
+    {
+      "id": "dv-pku-diet",
+      "title": "PKU found by newborn screening",
+      "topic": "inheritance",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a genotype fixes the phenotype whatever the environment",
+      "setup": "Newborn screening shows a baby has phenylketonuria: two nonworking alleles for the enzyme that breaks down phenylalanine. The baby is fed a low-phenylalanine diet. Compare the child with an untreated child who has the same genotype.",
+      "start": "Little phenylalanine is eaten",
+      "steps": {
+        "phe": "Phenylalanine does not build up in the blood",
+        "brain": "The developing brain is not damaged",
+        "genes": "The enzyme’s alleles are unchanged"
+      },
+      "variables": [
+        {
+          "id": "phe",
+          "name": "Blood phenylalanine",
+          "answer": "down",
+          "chain": [
+            "phe"
+          ],
+          "why": "The enzyme still does not work, but the diet supplies little phenylalanine, so there is little to build up."
+        },
+        {
+          "id": "iq",
+          "name": "Brain damage by school age",
+          "answer": "down",
+          "chain": [
+            "phe",
+            "brain"
+          ],
+          "why": "It is the buildup of phenylalanine that damages the developing brain. Kept low, the child grows up with normal intelligence: same genotype, different phenotype."
+        },
+        {
+          "id": "geno",
+          "name": "Number of nonworking alleles the child carries",
+          "answer": "none",
+          "chain": [
+            "genes"
+          ],
+          "why": "Diet changes the phenotype, not the genotype. The child still has two nonworking alleles and can pass one to each of its children."
+        }
+      ]
+    },
+    {
+      "id": "dv-telomere-culture",
+      "title": "Human cells dividing in a dish",
+      "topic": "aging",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "normal body cells can divide without limit if they are well fed",
+      "setup": "Normal human fibroblasts, which make almost no telomerase, are grown in a dish and allowed to divide 40 times. Compare them with the same cells at the start.",
+      "start": "Each division leaves a little of each chromosome’s end uncopied",
+      "steps": {
+        "short": "Telomeres lose about 50 to 100 base pairs per division",
+        "cap": "Some telomeres become too short for their protective cap",
+        "damage": "The cell reads the bare end as damaged DNA, and checkpoint proteins such as p53 stop the cycle",
+        "sen": "Those cells enter senescence"
+      },
+      "variables": [
+        {
+          "id": "length",
+          "name": "Average telomere length",
+          "answer": "down",
+          "chain": [
+            "short"
+          ],
+          "why": "DNA polymerase cannot copy the very tip of one new strand, the end-replication problem, and without telomerase nothing adds the lost repeats back."
+        },
+        {
+          "id": "sen",
+          "name": "Share of cells that have stopped dividing for good",
+          "answer": "up",
+          "chain": [
+            "short",
+            "cap",
+            "damage",
+            "sen"
+          ],
+          "why": "When a telomere gets too short, its cap fails, checkpoint proteins read the end as broken DNA, and the cell enters senescence. This is the Hayflick limit."
+        },
+        {
+          "id": "left",
+          "name": "Divisions the culture has left",
+          "answer": "down",
+          "chain": [
+            "short",
+            "cap"
+          ],
+          "why": "Normal human cells manage only about 40 to 60 divisions. After 40, most of that allowance is used up."
+        }
+      ]
+    },
+    {
+      "id": "dv-aging-aorta",
+      "title": "A stiff aorta at 75",
+      "topic": "aging",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "blood pressure rises with age mainly because the heart pumps harder",
+      "setup": "Compare the aorta and heart of a healthy 75-year-old with those of the same person at 30.",
+      "start": "Elastic fibers in the aorta fragment and are replaced by stiff, cross-linked collagen",
+      "steps": {
+        "stretch": "The aorta cannot stretch to absorb each stroke volume",
+        "sys": "Pressure spikes higher in systole",
+        "recoil": "Less energy is stored for recoil in diastole",
+        "pp": "The gap between systolic and diastolic pressure widens",
+        "after": "The left ventricle pumps against a higher afterload",
+        "lvh": "The left ventricle thickens and stiffens",
+        "fill": "It fills more slowly early in diastole"
+      },
+      "variables": [
+        {
+          "id": "sys",
+          "name": "Systolic pressure",
+          "answer": "up",
+          "chain": [
+            "stretch",
+            "sys"
+          ],
+          "why": "A compliant aorta balloons out to take each stroke volume, blunting the peak. A stiff one cannot, so the same ejection gives a higher systolic pressure."
+        },
+        {
+          "id": "pp",
+          "name": "Pulse pressure",
+          "answer": "up",
+          "chain": [
+            "stretch",
+            "sys",
+            "recoil",
+            "pp"
+          ],
+          "why": "Systolic pressure rises while diastolic stays level or falls, because a stiff aorta stores less energy to recoil on. The gap widens: isolated systolic hypertension."
+        },
+        {
+          "id": "lv",
+          "name": "Thickness of the left ventricular wall",
+          "answer": "up",
+          "chain": [
+            "stretch",
+            "sys",
+            "after",
+            "lvh"
+          ],
+          "why": "Pumping against a higher pressure every beat is a higher afterload, and the muscle thickens in response."
+        },
+        {
+          "id": "fill",
+          "name": "Filling of the left ventricle early in diastole",
+          "answer": "down",
+          "chain": [
+            "stretch",
+            "sys",
+            "after",
+            "lvh",
+            "fill"
+          ],
+          "why": "A thicker, stiffer ventricle relaxes and stretches more slowly, so it relies more on the atrium’s contraction to finish filling."
+        }
+      ]
+    },
+    {
+      "id": "dv-aging-standing",
+      "title": "Standing up quickly at 80",
+      "topic": "aging",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "dizziness on standing in older adults is just part of normal resting blood pressure",
+      "setup": "A healthy 80-year-old and a healthy 25-year-old each stand up quickly from lying down. Compare the 80-year-old with the 25-year-old in the first half minute.",
+      "start": "Standing pools blood in the legs, and the stiffer arteries of the older person stretch less",
+      "steps": {
+        "signal": "The baroreceptors in stiff arterial walls signal the fall in pressure more weakly",
+        "slow": "The baroreceptor reflex responds more slowly",
+        "hr": "The heart responds less to sympathetic stimulation",
+        "drop": "Blood pressure falls further before it is corrected",
+        "brain": "Less blood reaches the brain for a few seconds"
+      },
+      "variables": [
+        {
+          "id": "hr",
+          "name": "Rise in heart rate on standing",
+          "answer": "down",
+          "chain": [
+            "signal",
+            "slow",
+            "hr"
+          ],
+          "why": "A weaker, slower baroreceptor signal and a heart less responsive to sympathetic stimulation give a smaller heart rate response."
+        },
+        {
+          "id": "drop",
+          "name": "Size of the fall in blood pressure",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "slow",
+            "drop"
+          ],
+          "why": "The reflex that should restore pressure within seconds acts late and weakly, so pressure falls further: orthostatic hypotension."
+        },
+        {
+          "id": "fall",
+          "name": "Risk of a fall",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "slow",
+            "drop",
+            "brain"
+          ],
+          "why": "Briefly low blood flow to the brain causes dizziness, and together with weaker muscles and poorer balance it makes a fall likely."
+        }
+      ]
+    },
+    {
+      "id": "dv-aging-drug",
+      "title": "A usual adult dose at 85",
+      "topic": "aging",
+      "core": [
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "a normal plasma creatinine means an older person’s kidneys clear drugs normally",
+      "setup": "An 85-year-old with a normal plasma creatinine is given the usual adult dose of a water-soluble drug that the kidneys clear. Compare her with a 35-year-old given the same dose.",
+      "start": "Her kidneys have lost nephrons over the decades",
+      "steps": {
+        "gfr": "Her GFR is lower",
+        "muscle": "She has less muscle, so she makes less creatinine",
+        "clear": "She clears the drug more slowly",
+        "water": "Her total body water is lower, so the drug is less diluted",
+        "level": "The drug’s level in her blood climbs higher and stays up longer"
+      },
+      "variables": [
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "down",
+          "chain": [
+            "gfr"
+          ],
+          "why": "GFR falls on average by about 1 mL/min a year after about 40, as nephrons are lost."
+        },
+        {
+          "id": "creat",
+          "name": "Plasma creatinine",
+          "answer": "none",
+          "chain": [
+            "gfr",
+            "muscle"
+          ],
+          "why": "Lower GFR would raise creatinine, but she makes less of it from less muscle, so it can stay in the normal range, which is why eGFR, corrected for age, is used."
+        },
+        {
+          "id": "level",
+          "name": "Drug level in her blood",
+          "answer": "up",
+          "chain": [
+            "gfr",
+            "clear",
+            "water",
+            "level"
+          ],
+          "why": "A lower GFR clears the drug more slowly, and less body water leaves it more concentrated, so the same dose gives a higher level: “start low and go slow”."
+        }
+      ]
+    },
+    {
+      "id": "dv-aging-influenza",
+      "title": "Influenza at 82",
+      "topic": "aging",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "an older person with normal values at rest will handle an illness like a younger one",
+      "setup": "Mrs. Castillo, 82, had normal heart rate, blood pressure, sodium and oxygen saturation at her checkup. Two months later she catches influenza. Compare her first days with those of a 30-year-old with the same infection.",
+      "start": "The infection loads systems whose reserve has narrowed",
+      "steps": {
+        "rest": "At rest, before the infection, her values were in range",
+        "immune": "An aging immune system and blunted fever response",
+        "fever": "Her temperature rises less",
+        "thirst": "Blunted thirst and kidneys that conserve water less well",
+        "na": "She loses water faster than she replaces it, so her blood sodium climbs",
+        "brain": "Less brain reserve, plus infection and dehydration",
+        "confused": "She becomes confused"
+      },
+      "variables": [
+        {
+          "id": "resting",
+          "name": "Her resting values before the infection",
+          "answer": "none",
+          "chain": [
+            "rest"
+          ],
+          "why": "Normal aging usually keeps resting values in range. What shrinks is reserve, the extra capacity called on under stress."
+        },
+        {
+          "id": "fever",
+          "name": "Height of her fever",
+          "answer": "down",
+          "chain": [
+            "immune",
+            "fever"
+          ],
+          "why": "Fever is often blunted in older adults, so a serious infection can show little or no fever."
+        },
+        {
+          "id": "na",
+          "name": "Blood sodium",
+          "answer": "up",
+          "chain": [
+            "thirst",
+            "na"
+          ],
+          "why": "Her thirst is blunted and her kidneys concentrate urine less well, so water lost to fever and fast breathing is not replaced and sodium rises."
+        },
+        {
+          "id": "confusion",
+          "name": "Chance of confusion",
+          "answer": "up",
+          "chain": [
+            "brain",
+            "thirst",
+            "na",
+            "confused"
+          ],
+          "why": "An infection in an older person often shows first as confusion: the brain has less reserve, and dehydration and abnormal sodium add to the strain."
+        }
+      ]
+    },
+    {
+      "id": "dv-aging-resistance-training",
+      "title": "Resistance training at 70",
+      "topic": "aging",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "the loss of muscle with age cannot be reversed",
+      "setup": "A healthy but inactive 70-year-old starts supervised resistance training three times a week. Compare her after three months with before.",
+      "start": "Repeated heavy loads stimulate her skeletal muscle",
+      "steps": {
+        "fibers": "Her muscle fibers enlarge and her motor units are recruited more effectively",
+        "strength": "Her muscles become stronger",
+        "falls": "Stronger legs and better balance make a fall less likely",
+        "hr": "Maximum heart rate is set by age, not by strength training"
+      },
+      "variables": [
+        {
+          "id": "strength",
+          "name": "Leg strength",
+          "answer": "up",
+          "chain": [
+            "fibers",
+            "strength"
+          ],
+          "why": "Resistance training reverses much of sarcopenia at any age: nervous system changes come first, then larger fibers. People in their nineties have more than doubled their leg strength in eight weeks."
+        },
+        {
+          "id": "falls",
+          "name": "Risk of a fall",
+          "answer": "down",
+          "chain": [
+            "fibers",
+            "strength",
+            "falls"
+          ],
+          "why": "Weak muscles are a major cause of falls. Stronger legs catch a stumble and steady a turn."
+        },
+        {
+          "id": "maxhr",
+          "name": "Maximum heart rate",
+          "answer": "none",
+          "chain": [
+            "hr"
+          ],
+          "why": "Maximum heart rate falls by roughly 0.7 to 1 beat per minute each year as the SA node loses pacemaker cells and the heart responds less to sympathetic stimulation. Strength training does not change that."
+        }
+      ]
     }
   ]
 }

@@ -13682,6 +13682,2243 @@
    "front": "Why do periods stop in endurance athletes who eat too little, and in breastfeeding?",
    "back": "Low energy and high prolactin both slow the GnRH pulse generator.",
    "why": "Low GnRH means low FSH, LH and estrogen; months of low estrogen thin the bones."
+  },
+  {
+   "id": "dv-fert-where",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where does fertilization normally happen?",
+   "back": "In the ampulla, the wide outer part of the uterine tube.",
+   "why": "The fimbriae sweep the oocyte into the tube and it moves inward, while sperm swim up from the uterus; the two meet in the ampulla."
+  },
+  {
+   "id": "dv-fert-window",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How long is the fertile window, and why?",
+   "back": "About six days: the five days before ovulation plus the day of ovulation.",
+   "why": "Sperm can survive in the female tract for up to about five days, but an oocyte can be fertilized for only 12 to 24 hours after release."
+  },
+  {
+   "id": "dv-ca-what",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Capacitation vs acrosomal reaction",
+   "front": "Capacitation vs acrosomal reaction: what is each?",
+   "back": "Capacitation: slow changes that make a sperm able to fertilize. Acrosomal reaction: exocytosis of the acrosome’s enzymes.",
+   "why": "Capacitation readies the membrane and the tail; the acrosomal reaction is the fast release event that it makes possible."
+  },
+  {
+   "id": "dv-ca-where",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Capacitation vs acrosomal reaction",
+   "front": "Capacitation vs acrosomal reaction: where and how long?",
+   "back": "Capacitation: in the uterus and tube, over several hours. Acrosomal reaction: near or at the zona pellucida, in seconds to minutes.",
+   "why": "Capacitation depends on hours in the fluids of the female tract; the acrosomal reaction is triggered by a sharp calcium rise near the oocyte."
+  },
+  {
+   "id": "dv-ca-events",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Capacitation vs acrosomal reaction",
+   "front": "Capacitation vs acrosomal reaction: main events?",
+   "back": "Capacitation: cholesterol removed, calcium and bicarbonate enter, hyperactivated motility. Acrosomal reaction: acrosome membrane fuses with the plasma membrane and acrosin is released.",
+   "why": "Albumin strips cholesterol and the entering calcium changes the beat; later, a calcium rise in the head fuses the acrosome with the plasma membrane."
+  },
+  {
+   "id": "dv-ca-order",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Capacitation vs acrosomal reaction",
+   "front": "Which comes first, capacitation or the acrosomal reaction, and why must it?",
+   "back": "Capacitation first; only a capacitated sperm can undergo the acrosomal reaction.",
+   "why": "Capacitation destabilizes the membrane so the acrosome can later fuse with it and release its enzymes."
+  },
+  {
+   "id": "dv-hyaluronidase",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does a sperm pass the corona radiata?",
+   "back": "Its hyperactivated beat forces it between the cells, and hyaluronidase on its head digests the hyaluronic acid gluing them.",
+   "why": "The corona radiata is granulosa cells held together by hyaluronic acid, so an enzyme that cuts that glue opens a way through."
+  },
+  {
+   "id": "dv-acro-exam",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "For your exam: what is often said to trigger the acrosomal reaction, and what does newer evidence show?",
+   "back": "Exam answer: binding a zona pellucida glycoprotein (often named ZP3). Newer evidence: in mice most sperm have already reacted before reaching the zona; where it starts in humans is debated.",
+   "why": "Filming of fertilization in mice showed early reactions among the cells around the oocyte; either way, a sperm that cannot release its enzymes cannot cross the zona."
+  },
+  {
+   "id": "dv-cortical",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the cortical reaction, and how does it block polyspermy?",
+   "back": "Exocytosis of cortical granules under the zona; an enzyme they release cuts ZP2 and the zona stiffens.",
+   "why": "Sperm bind the zona through ZP2, so cutting it stops new sperm attaching, and a stiffer zona stops those already inside."
+  },
+  {
+   "id": "dv-fast-block",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Do human oocytes use a fast electrical block to polyspermy?",
+   "back": "No, they do not appear to. The zona block (cortical reaction) and the membrane shedding its sperm-binding protein keep extra sperm out.",
+   "why": "The fast depolarizing block is real in sea urchins and frogs; exams may still ask for it as the “fast block”."
+  },
+  {
+   "id": "dv-calcium-waves",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What starts the calcium waves in the oocyte, and what two things do they trigger?",
+   "back": "An enzyme (a phospholipase) delivered by the sperm; the waves trigger the cortical reaction and the completion of meiosis II.",
+   "why": "The enzyme releases calcium from the oocyte’s endoplasmic reticulum, and calcium is the signal that activates the oocyte."
+  },
+  {
+   "id": "dv-mito-mother",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do your mitochondria come from your mother?",
+   "back": "The sperm’s midpiece mitochondria enter the oocyte but are marked and destroyed within days.",
+   "why": "Only the oocyte’s own mitochondria survive, so their DNA is inherited from the mother."
+  },
+  {
+   "id": "dv-sex-set",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "When and by what is genetic sex set?",
+   "back": "At fertilization, by whether the sperm carries an X or a Y.",
+   "why": "Every oocyte carries an X, and half of sperm carry X and half Y."
+  },
+  {
+   "id": "dv-zygote-chroms",
+   "topic": "fertilization",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Do the male and female pronuclei fuse into one nucleus?",
+   "back": "No. Each copies its DNA, their envelopes break down, and the two chromosome sets line up together on the first mitotic spindle.",
+   "why": "This happens about a day after sperm entry; the combined set is the diploid zygote."
+  },
+  {
+   "id": "dv-count-weeks",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "An embryo is 3 weeks old counted from fertilization. What week of pregnancy is that on the clinical count?",
+   "back": "About week 5.",
+   "why": "Clinicians count from the first day of the last menstrual period, about two weeks before fertilization."
+  },
+  {
+   "id": "dv-cleavage",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why does the embryo not grow during cleavage?",
+   "back": "The cells skip most of the growth phase and divide again, cutting the same cytoplasm into smaller blastomeres inside the zona pellucida.",
+   "why": "Early divisions run largely on the proteins and RNA stored in the oocyte, so the embryo stays about the oocyte’s size."
+  },
+  {
+   "id": "dv-timeline",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Morula, blastocyst, hatching, implantation: roughly which days after fertilization?",
+   "back": "Morula reaches the uterus about day 4; blastocyst about day 5; hatching day 5 to 6; implantation begins day 6 to 7.",
+   "why": "The embryo divides while drifting down the tube, becomes hollow once it is in the uterus, and must hatch before it can attach."
+  },
+  {
+   "id": "dv-blastocoel",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does the blastocoel fill with fluid?",
+   "back": "Outer cells pump sodium into the center, and water follows the solute in.",
+   "why": "Sodium–potassium pumps on the inner surfaces of the sealed outer layer build up solute inside."
+  },
+  {
+   "id": "dv-ti-becomes",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Trophoblast vs inner cell mass",
+   "front": "Trophoblast vs inner cell mass: what does each become?",
+   "back": "Trophoblast: the chorion and the embryo’s side of the exchange organ. Inner cell mass: the embryo, amnion and yolk sac.",
+   "why": "The trophoblast forms none of the embryo’s body; everything of the body comes from the inner cell mass."
+  },
+  {
+   "id": "dv-ti-potency",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Trophoblast vs inner cell mass",
+   "front": "Trophoblast vs inner cell mass: position and potency?",
+   "back": "Trophoblast: the outer layer, committed to supporting tissues. Inner cell mass: a cluster inside at one end, pluripotent.",
+   "why": "Cells on the outside, facing the fluid, switch on trophoblast genes; cells enclosed by others become the inner cell mass."
+  },
+  {
+   "id": "dv-ti-hormone",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Trophoblast vs inner cell mass",
+   "front": "Trophoblast vs inner cell mass: which makes hCG?",
+   "back": "The trophoblast, as syncytiotrophoblast, once it is implanting. The inner cell mass makes none of note.",
+   "why": "The invading syncytiotrophoblast secretes hCG into the mother’s blood."
+  },
+  {
+   "id": "dv-syncytio",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Cytotrophoblast vs syncytiotrophoblast?",
+   "back": "Cytotrophoblast: separate, dividing cells on the inside. Syncytiotrophoblast: fused cells with many nuclei and no boundaries, which invades.",
+   "why": "The syncytiotrophoblast forms as cytotrophoblast cells fuse; it digests the endometrium and reaches maternal blood."
+  },
+  {
+   "id": "dv-hcg-job",
+   "topic": "embryonic-development",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What does hCG do in early pregnancy?",
+   "back": "It binds LH receptor proteins on the corpus luteum and keeps it alive, so it keeps secreting progesterone.",
+   "why": "Without hCG the corpus luteum dies at 12 to 14 days, progesterone falls and the endometrium, with the embryo, is shed."
+  },
+  {
+   "id": "dv-hcg-test",
+   "topic": "embryonic-development",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why do pregnancy tests not react with LH?",
+   "back": "They use antibodies against the part of hCG that is unique to hCG.",
+   "why": "hCG is built so much like LH that it binds the same receptor proteins, so a test must target the part that differs."
+  },
+  {
+   "id": "dv-hcg-course",
+   "topic": "embryonic-development",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "How does hCG change in a healthy early pregnancy?",
+   "back": "It roughly doubles every two to three days, peaks about 7 to 8 weeks after fertilization, then falls to a lower level for the rest of pregnancy.",
+   "why": "By the time it falls, the tissues grown from the trophoblast make enough progesterone, so the corpus luteum is no longer needed."
+  },
+  {
+   "id": "dv-gastrulation",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is gastrulation, and when does it happen?",
+   "back": "Week 3: epiblast cells move through the primitive streak to form endoderm, mesoderm and ectoderm.",
+   "why": "All three germ layers come from the epiblast; the first cells through replace the hypoblast as endoderm."
+  },
+  {
+   "id": "dv-gl-ecto",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three germ layers",
+   "front": "Germ layers: what does ectoderm form?",
+   "back": "The epidermis, hair, nails, skin glands, the nervous system (neural tube and neural crest), tooth enamel, the lens and the adrenal medulla.",
+   "why": "Rule of thumb: ectoderm makes the outer covering and the nervous system."
+  },
+  {
+   "id": "dv-gl-meso",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three germ layers",
+   "front": "Germ layers: what does mesoderm form?",
+   "back": "Muscle of all three kinds, bone, cartilage, blood, the dermis, most connective tissue, the heart, kidneys, gonads and adrenal cortex, and vessel endothelium.",
+   "why": "Rule of thumb: mesoderm makes almost everything between the outer covering and the gut lining."
+  },
+  {
+   "id": "dv-gl-endo",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three germ layers",
+   "front": "Germ layers: what does endoderm form?",
+   "back": "The lining of the digestive tract, airways and urinary bladder, and the liver, pancreas, thyroid, parathyroids and thymus lining.",
+   "why": "Rule of thumb: endoderm lines the gut and airways and forms the glands that bud from them."
+  },
+  {
+   "id": "dv-gl-epithelium",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "The three germ layers",
+   "front": "Which germ layer does epithelium come from?",
+   "back": "All three: epidermis from ectoderm, gut lining from endoderm, vessel endothelium from mesoderm.",
+   "why": "Epithelium is a tissue type, not a germ layer; most organs are also built from more than one layer."
+  },
+  {
+   "id": "dv-somite-parts",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do the three parts of a somite form?",
+   "back": "Sclerotome: vertebrae and ribs. Myotome: skeletal muscle of the back and body wall (and limb muscle cells). Dermatome: dermis of the back.",
+   "why": "Each somite is supplied by its own spinal nerve, which is why skin and muscles are supplied in segments."
+  },
+  {
+   "id": "dv-notochord-fate",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the notochord do, and what is left of it in an adult?",
+   "back": "It signals the ectoderm above it to form the neural plate; its remnant is the nucleus pulposus of each intervertebral disc.",
+   "why": "The notochord is the embryo’s first body axis and patterns the tissues around it, but it does not become the vertebrae."
+  },
+  {
+   "id": "dv-neural-tube",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "When does the neural tube close, and why does folic acid timing matter?",
+   "back": "From about day 22 to day 28 after fertilization, often before a pregnancy is known.",
+   "why": "A lack of folic acid while the tube closes can leave it open, so folic acid must be taken before pregnancy is recognized."
+  },
+  {
+   "id": "dv-ac-origin",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Amnion vs chorion",
+   "front": "Amnion vs chorion: what does each form from?",
+   "back": "Amnion: epiblast. Chorion: trophoblast lined with mesoderm.",
+   "why": "The amnion comes from the embryo’s own disc; the chorion is the outer layer of the blastocyst."
+  },
+  {
+   "id": "dv-ac-position",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Amnion vs chorion",
+   "front": "Amnion vs chorion: position and later role?",
+   "back": "Amnion: inner, around the fluid, next to the embryo. Chorion: outermost, next to the endometrium, and forms the embryo’s side of the exchange organ.",
+   "why": "By about the third month the growing amnion presses against the chorion and they fuse into the sac that breaks when the waters break."
+  },
+  {
+   "id": "dv-yolk-sac",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does a human yolk sac do, since it holds no yolk?",
+   "back": "Makes the first blood cells and vessels, gives rise to the cells that become gametes, and forms part of the gut lining.",
+   "why": "Its wall is the first site of blood formation in week 3, and part of it is pinched into the body when the embryo folds."
+  },
+  {
+   "id": "dv-amniotic-fluid",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where does amniotic fluid come from late in pregnancy?",
+   "back": "Mostly fetal urine, from about week 9 after fertilization; the fetus also swallows it.",
+   "why": "Early on it is water from maternal plasma; once the kidneys work, their urine becomes the main source."
+  },
+  {
+   "id": "dv-weeks-3-8",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "When is an embryo most easily harmed, and why?",
+   "back": "Weeks 3 to 8 after fertilization, while the organs are forming.",
+   "why": "An exposure can disrupt an organ as it forms and leave a major structural defect."
+  },
+  {
+   "id": "dv-limb-aer",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What does the apical ectodermal ridge do?",
+   "back": "Releases growth factors that keep the mesoderm under it dividing, so the limb grows from its tip, body end first.",
+   "why": "Removing the ridge early leaves only the upper limb; removing it later leaves out only the fingers."
+  },
+  {
+   "id": "dv-digits",
+   "topic": "embryonic-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How are fingers and toes freed from the paddle-shaped limb?",
+   "back": "The tissue between them dies by apoptosis in weeks 6 to 8.",
+   "why": "If those cells do not die, the digits stay joined."
+  },
+  {
+   "id": "dv-plac-parts",
+   "topic": "placenta",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What two tissues make the placenta?",
+   "back": "The chorion with its villi (fetal part) and the remodeled endometrium (maternal part).",
+   "why": "The villi grow into the endometrium at the implantation site; the two tissues grow together into one organ."
+  },
+  {
+   "id": "dv-spiral",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why does blood flow to the placenta rise so much during pregnancy?",
+   "back": "Cytotrophoblast cells replace the smooth muscle of the spiral arteries, turning them into wide tubes that cannot constrict.",
+   "why": "Wider, floppy arteries have far lower resistance, so flow into the intervillous space can rise many times over."
+  },
+  {
+   "id": "dv-no-mix",
+   "topic": "placenta",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Do fetal and maternal blood mix in the placenta?",
+   "back": "Normally no: fetal blood stays in villus capillaries, and maternal blood bathes the villi from outside.",
+   "why": "The placental barrier separates them, although small numbers of fetal red cells leak across, especially at delivery."
+  },
+  {
+   "id": "dv-barrier-layers",
+   "topic": "placenta",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the layers of the placental barrier?",
+   "back": "Syncytiotrophoblast, cytotrophoblast (patchy later), villus connective tissue, and fetal capillary endothelium.",
+   "why": "These layers lie between maternal blood in the intervillous space and fetal blood in the villus capillary."
+  },
+  {
+   "id": "dv-barrier-thin",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why does the placental barrier get better at diffusion as pregnancy goes on?",
+   "back": "It gets thinner (down to 2 to 4 micrometers) and larger (about 12 square meters).",
+   "why": "Diffusion rate rises with area and falls with distance, so a larger, thinner barrier moves gases faster."
+  },
+  {
+   "id": "dv-px-diffusion",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "How substances cross the placenta",
+   "front": "Crossing the placenta by simple diffusion: examples?",
+   "back": "Oxygen, carbon dioxide, carbon monoxide, alcohol, nicotine, steroid hormones and many drugs.",
+   "why": "Small or fat-soluble molecules pass through the lipid of the membranes, down their own gradients."
+  },
+  {
+   "id": "dv-px-glucose",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "How substances cross the placenta",
+   "front": "How does glucose cross the placenta?",
+   "back": "By facilitated diffusion on carrier proteins, down its gradient from mother to fetus.",
+   "why": "No ATP is used, so fetal glucose follows maternal glucose."
+  },
+  {
+   "id": "dv-px-active",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "How substances cross the placenta",
+   "front": "Which substances are actively transported to the fetus?",
+   "back": "Amino acids, calcium and iron.",
+   "why": "They are pumped to the fetus against their gradients by carrier proteins driven by ATP or the sodium gradient."
+  },
+  {
+   "id": "dv-px-igg",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "How substances cross the placenta",
+   "front": "How does IgG reach the fetus, and why does IgM not?",
+   "back": "IgG is carried across in vesicles by receptor proteins on the syncytiotrophoblast; IgM is too large and has no such carrier.",
+   "why": "Receptor-mediated endocytosis moves IgG, mostly in the last three months, giving the newborn passive immunity."
+  },
+  {
+   "id": "dv-px-blocked",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "How substances cross the placenta",
+   "front": "Name substances that do not cross the placenta in useful amounts.",
+   "back": "Most proteins, including insulin and IgM; heparin; blood cells.",
+   "why": "They are too large or too charged to pass the barrier, and they have no carrier."
+  },
+  {
+   "id": "dv-heparin",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why is heparin, not warfarin, used as a blood thinner in pregnancy?",
+   "back": "Heparin is large and highly charged and does not cross the placenta; warfarin is small and does.",
+   "why": "The barrier sorts by size, charge and lipid solubility, not by safety."
+  },
+  {
+   "id": "dv-fetal-o2",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Fetal blood leaves the placenta with a PO2 of only about 30 mm Hg. How does it still carry plenty of oxygen?",
+   "back": "Fetal hemoglobin binds oxygen more tightly (about 80% saturated at 30 mm Hg), the double Bohr effect, and a high hemoglobin concentration.",
+   "why": "Each feature raises the oxygen fetal blood holds at a low partial pressure."
+  },
+  {
+   "id": "dv-double-bohr",
+   "topic": "placenta",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "What is the double Bohr effect?",
+   "back": "As fetal blood loses carbon dioxide its curve shifts left and it loads more oxygen; as maternal blood gains it, its curve shifts right and it unloads more.",
+   "why": "Carbon dioxide moving from fetus to mother helps oxygen move the other way."
+  },
+  {
+   "id": "dv-cord-vessels",
+   "topic": "placenta",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Umbilical arteries vs umbilical vein: how many, and what does each carry?",
+   "back": "Two arteries carry oxygen-poor blood from the fetus to the placenta; one vein carries oxygen-rich blood to the fetus.",
+   "why": "Arteries and veins are named for direction relative to the heart, not for oxygen content."
+  },
+  {
+   "id": "dv-hcg-peak-clin",
+   "topic": "placenta",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "When does hCG peak on the clinical count, and why does its fall do no harm?",
+   "back": "Around week 10; by then the placenta makes enough progesterone itself.",
+   "why": "The placenta takes over progesterone production from about weeks 7 to 9, so the corpus luteum is no longer needed."
+  },
+  {
+   "id": "dv-estriol",
+   "topic": "placenta",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why can the placenta not make estrogens on its own?",
+   "back": "It lacks enzymes to build them from cholesterol, so it converts an androgen made by the fetal adrenal cortex.",
+   "why": "The fetus and placenta make estrogens together; the main one is the weak estrogen estriol."
+  },
+  {
+   "id": "dv-hpl",
+   "topic": "placenta",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What does hPL do in the mother?",
+   "back": "Together with placental growth hormone, progesterone and cortisol, it makes her cells less responsive to insulin, leaving more glucose for the fetus.",
+   "why": "hPL is made in proportion to the syncytiotrophoblast’s mass, so it climbs as the placenta grows."
+  },
+  {
+   "id": "dv-relaxin",
+   "topic": "placenta",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Where does relaxin come from in human pregnancy, and what does it mainly do?",
+   "back": "Mostly the corpus luteum, peaking in the first 12 weeks; it relaxes blood vessels and helps raise kidney blood flow.",
+   "why": "The pelvic-loosening role comes mainly from other mammals. For your exam: “relaxin from the placenta loosens the pelvic ligaments and softens the cervix.”"
+  },
+  {
+   "id": "dv-insufficiency",
+   "topic": "placenta",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "What is the classic result of placental insufficiency?",
+   "back": "A small baby with too little amniotic fluid.",
+   "why": "Less oxygen and glucose slow growth, and blood redirected away from the fetal kidneys means less urine."
+  },
+  {
+   "id": "dv-ef-when",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Embryonic vs fetal period",
+   "front": "Embryonic vs fetal period: when?",
+   "back": "Embryonic: weeks 1 to 8 after fertilization (to about week 10 on the clinical count). Fetal: week 9 after fertilization to birth.",
+   "why": "The two counts differ by about two weeks, because clinicians start at the last menstrual period."
+  },
+  {
+   "id": "dv-ef-process",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Embryonic vs fetal period",
+   "front": "Embryonic vs fetal period: main process?",
+   "back": "Embryonic: forming the organs from the germ layers. Fetal: growth and maturation of organs already formed.",
+   "why": "Every organ system is present by the end of week 8 after fertilization; the fetus then gains about a thousandfold in weight."
+  },
+  {
+   "id": "dv-ef-size",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Embryonic vs fetal period",
+   "front": "Embryonic vs fetal period: size at the end of each?",
+   "back": "Embryonic: about 3 cm and a few grams. Fetal: about 50 cm and about 3.4 kg at term.",
+   "why": "The fetal period is mostly growth, so the change in size is huge."
+  },
+  {
+   "id": "dv-ef-harm",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Embryonic vs fetal period",
+   "front": "Embryonic vs fetal period: effect of a harmful exposure?",
+   "back": "Embryonic: major structural defects most likely. Fetal: poor growth, loss of function or smaller defects; the brain stays vulnerable.",
+   "why": "Organs are formed in the embryonic period; later exposures act on organs that already exist."
+  },
+  {
+   "id": "dv-trimesters",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where are the trimester boundaries?",
+   "back": "First: to the end of week 13. Second: weeks 14 to 27. Third: week 28 to birth.",
+   "why": "Clinicians divide the roughly 40 weeks into three parts of about three months each."
+  },
+  {
+   "id": "dv-quickening",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is quickening, and when does it happen?",
+   "back": "The mother first feeling the fetus move, around weeks 16 to 20.",
+   "why": "The fetus moves from weeks 10 to 13, but the mother cannot feel it until it is larger; later pregnancies notice it a little earlier."
+  },
+  {
+   "id": "dv-viability",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What sets the edge of viability at about weeks 22 to 24?",
+   "back": "The lungs reach the stage where gas exchange first becomes possible.",
+   "why": "Respiratory bronchioles and close capillaries form in the canalicular stage; before that, no gas exchange is possible."
+  },
+  {
+   "id": "dv-term",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What counts as term?",
+   "back": "Week 37 to just under week 42 of pregnancy.",
+   "why": "A full-term pregnancy is about 40 weeks on the clinical count; birth before 37 weeks is preterm."
+  },
+  {
+   "id": "dv-ht-truncus",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Regions of the embryonic heart tube",
+   "front": "Heart tube: what do the truncus arteriosus and bulbus cordis become?",
+   "back": "Truncus arteriosus: the ascending aorta and pulmonary trunk. Bulbus cordis: most of the right ventricle and the outflow parts of both ventricles.",
+   "why": "They are the outflow end of the tube, at the head end, so they form the exits of the heart."
+  },
+  {
+   "id": "dv-ht-ventricle",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Regions of the embryonic heart tube",
+   "front": "Heart tube: what do the primitive ventricle and primitive atrium become?",
+   "back": "Primitive ventricle: most of the left ventricle. Primitive atrium: the front parts of both atria, including the auricles.",
+   "why": "They lie in the middle of the tube, between the outflow and inflow ends."
+  },
+  {
+   "id": "dv-ht-sinus",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Regions of the embryonic heart tube",
+   "front": "Heart tube: what does the sinus venosus become?",
+   "back": "The smooth back wall of the right atrium, the coronary sinus and the region of the SA node.",
+   "why": "The sinus venosus is the inflow end, where the veins drain, so it forms the receiving parts of the right atrium."
+  },
+  {
+   "id": "dv-fo-flap",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the foramen ovale a one-way valve?",
+   "back": "The thin septum primum lies against the opening in the stiff septum secundum from the left side, so it can swing only toward the left atrium.",
+   "why": "Higher right pressure pushes it open; higher left pressure presses it shut against the septum secundum."
+  },
+  {
+   "id": "dv-fo-why-open",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Why does blood cross the foramen ovale from right to left before birth?",
+   "back": "Little blood returns from the lungs, so the left atrium fills at low pressure, while the right atrium receives venous return from the body and placenta.",
+   "why": "Blood flows down the pressure gradient, from the higher-pressure right atrium to the left."
+  },
+  {
+   "id": "dv-shunts",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three fetal shunts and what each bypasses.",
+   "back": "Ductus venosus: the liver. Foramen ovale: the right ventricle and lungs. Ductus arteriosus: the lungs.",
+   "why": "Before birth the placenta, not the lungs, exchanges gases, so blood is routed around organs not yet working."
+  },
+  {
+   "id": "dv-ductus-open",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What keeps the ductus arteriosus open before birth?",
+   "back": "Low oxygen in fetal blood and prostaglandins from the placenta and the ductus wall.",
+   "why": "Both keep its smooth muscle relaxed; this is why prostaglandin blockers are avoided late in pregnancy."
+  },
+  {
+   "id": "dv-best-o2",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Which fetal organs get the best-oxygenated blood, and why?",
+   "back": "The heart and brain: the oxygen-rich stream crosses to the left heart and enters the first branches of the aorta.",
+   "why": "The ductus arteriosus joins the aorta after the arteries to the head and arms, so oxygen-poor blood enters downstream."
+  },
+  {
+   "id": "dv-vasculogenesis",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Vasculogenesis vs angiogenesis?",
+   "back": "Vasculogenesis: new vessels from scratch, from mesoderm in blood islands. Angiogenesis: new vessels sprouting from existing ones.",
+   "why": "The first network forms by vasculogenesis; after that, most new vessels form by angiogenesis."
+  },
+  {
+   "id": "dv-blood-sites",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where are blood cells made before birth, in order?",
+   "back": "Yolk sac, then liver (with the spleen) from about week 6 after fertilization, then bone marrow from about the fifth month.",
+   "why": "Blood formation follows the growing body; by birth the marrow is the main site."
+  },
+  {
+   "id": "dv-ls-pseudo",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Stages of lung development",
+   "front": "Lung stages: pseudoglandular and canalicular?",
+   "back": "Pseudoglandular (to about week 17): all conducting airways form. Canalicular (weeks 16 to 26): respiratory bronchioles, close capillaries, type II cells.",
+   "why": "Conducting airways branch first; gas-exchange parts grow at their ends later."
+  },
+  {
+   "id": "dv-ls-sacc",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Stages of lung development",
+   "front": "Lung stages: saccular and alveolar?",
+   "back": "Saccular (weeks 24 to 36): thin air sacs and rising surfactant. Alveolar (week 36 into childhood): true alveoli, mostly after birth.",
+   "why": "Surfactant is usually enough only by weeks 34 to 36, and most alveoli are made in the first years of life."
+  },
+  {
+   "id": "dv-lobes",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does the right lung have three lobes and the left two?",
+   "back": "The right lung bud divides into three and the left into two.",
+   "why": "The lobes are set by how the two lung buds first divide at the end of week 4."
+  },
+  {
+   "id": "dv-fbm",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do the fetal lungs need fluid and breathing movements?",
+   "back": "The stretch they give is needed for the lungs to grow.",
+   "why": "With too little amniotic fluid, or pressure on the chest, the lungs stay small."
+  },
+  {
+   "id": "dv-sry-amh",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Anti-Müllerian hormone vs testosterone in the male embryo?",
+   "back": "Anti-Müllerian hormone (Sertoli cells) removes the paramesonephric ducts. Testosterone (Leydig cells) keeps the mesonephric ducts.",
+   "why": "Two hormones from the testis decide the two pairs of ducts separately."
+  },
+  {
+   "id": "dv-female-ducts",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What happens to the ducts in an embryo with ovaries?",
+   "back": "The paramesonephric ducts survive as uterine tubes, uterus and upper vagina; the mesonephric ducts break down.",
+   "why": "There is no anti-Müllerian hormone to remove the first pair and almost no testosterone to keep the second."
+  },
+  {
+   "id": "dv-default",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Is the ovary simply the “default” when there is no Y chromosome?",
+   "back": "No. The ducts and external genitalia develop as female without gonadal hormones, but forming and keeping an ovary needs its own active genes.",
+   "why": "Switching some of those genes off in adult female mice turns ovary cells toward testis cells. For your exam, “female is the default” may still be expected."
+  },
+  {
+   "id": "dv-homologs",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the male and female structures that grow from the same starting tissue.",
+   "back": "Penis and clitoris; scrotum and labia majora; testes and ovaries.",
+   "why": "With DHT the bump grows into a penis and the swellings fuse into a scrotum; without it they become the clitoris and labia majora."
+  },
+  {
+   "id": "dv-asd-vsd",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Atrial vs ventricular septal defect: which chambers are overloaded?",
+   "back": "Atrial: the right atrium, right ventricle and lungs. Ventricular: the lungs and, as that blood returns, the left atrium and left ventricle.",
+   "why": "After birth left pressures are higher, so blood crosses left to right and recirculates through the lungs."
+  },
+  {
+   "id": "dv-pfo",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why is a patent foramen ovale usually harmless, and when is it not?",
+   "back": "Higher left atrial pressure keeps the flap shut; but when right pressure briefly rises, as in straining, a clot from a vein can cross and cause a stroke.",
+   "why": "The flap never sealed but is still pressed closed by the usual pressure difference."
+  },
+  {
+   "id": "dv-teratogen-rules",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What three things decide whether an exposure harms development?",
+   "back": "Timing, dose and genes.",
+   "why": "Weeks 3 to 8 after fertilization are the most sensitive, more exposure usually harms more, and pregnancies differ in how they handle an agent."
+  },
+  {
+   "id": "dv-teratogen-ex",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Rubella, alcohol and folic acid lack: main effects on development?",
+   "back": "Rubella: cataracts, deafness, heart defects. Alcohol: fetal alcohol spectrum disorders. Folic acid lack: neural tube defects.",
+   "why": "Each acts on the tissues forming at the time of exposure."
+  },
+  {
+   "id": "dv-drivers",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "What three drivers explain most maternal changes in pregnancy?",
+   "back": "Placental hormones, the growing uterus, and the demands of the fetus and placenta.",
+   "why": "Hormones relax smooth muscle and change metabolism; the uterus presses on nearby organs; the fetus draws on her blood."
+  },
+  {
+   "id": "dv-fundus",
+   "topic": "pregnancy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where is the fundus at 12, 20 and 36 weeks?",
+   "back": "Just above the pubic symphysis at 12, near the navel at 20, near the bottom of the sternum at 36.",
+   "why": "Between weeks 20 and 36, the distance from the pubic symphysis to the fundus in centimeters roughly equals the weeks."
+  },
+  {
+   "id": "dv-dilutional",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why does hemoglobin concentration fall in a healthy pregnancy?",
+   "back": "Plasma rises 40 to 50% but red cell mass only 20 to 30%: dilutional anemia.",
+   "why": "The body has more red cells than before, but each liter holds fewer of them."
+  },
+  {
+   "id": "dv-co-preg",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "How much does cardiac output rise in pregnancy, and what rises first?",
+   "back": "About 30 to 50%, mostly by weeks 20 to 24; heart rate rises first, stroke volume a few weeks later.",
+   "why": "Stroke volume waits for the growing blood volume to raise venous return and preload."
+  },
+  {
+   "id": "dv-bp-preg",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why does blood pressure dip in mid-pregnancy despite a higher cardiac output?",
+   "back": "Total peripheral resistance falls by about a quarter to a third, slightly more than output rises.",
+   "why": "Mean arterial pressure is cardiac output times resistance, so the two changes nearly cancel."
+  },
+  {
+   "id": "dv-supine",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why is a pregnant patient tilted to the left?",
+   "back": "From about week 20 the uterus can press on the inferior vena cava when she lies on her back.",
+   "why": "Less venous return lowers stroke volume, cardiac output and blood pressure; tilting left lifts the uterus off the vein."
+  },
+  {
+   "id": "dv-breathing",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why does PaCO2 fall to about 30 mm Hg in pregnancy?",
+   "back": "Progesterone makes the brainstem’s chemoreceptors more sensitive to carbon dioxide, so ventilation rises more than metabolism needs.",
+   "why": "Minute ventilation rises 40 to 50% while oxygen use rises only 20 to 30%; the kidneys compensate by excreting bicarbonate."
+  },
+  {
+   "id": "dv-frc",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What happens to functional residual capacity in pregnancy, and why does it matter?",
+   "back": "It falls by about 20%, so she has less oxygen in reserve.",
+   "why": "The raised diaphragm lowers expiratory reserve and residual volume; her blood oxygen falls faster if she stops breathing."
+  },
+  {
+   "id": "dv-gfr-preg",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why can a “normal” serum creatinine be worrying in pregnancy?",
+   "back": "GFR rises about 50%, so creatinine normally falls; a value normal outside pregnancy may mean kidney trouble.",
+   "why": "Faster filtration clears creatinine faster, lowering the expected level."
+  },
+  {
+   "id": "dv-ureters",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why are urinary infections treated promptly in pregnancy?",
+   "back": "Progesterone relaxes the ureters and the uterus presses on them, so urine flows slowly and bacteria climb to the kidney more easily.",
+   "why": "Slower flow gives bacteria in the bladder more chance to ascend."
+  },
+  {
+   "id": "dv-gut-preg",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Why are heartburn and constipation common in pregnancy?",
+   "back": "Progesterone relaxes the lower esophageal sphincter and slows movement through the gut.",
+   "why": "The uterus also pushes up on the stomach, and slower gut contents lose more water."
+  },
+  {
+   "id": "dv-insulin-res",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why is the mother insulin resistant in the second half of pregnancy?",
+   "back": "hPL, placental growth hormone, progesterone and cortisol make her cells less responsive to insulin.",
+   "why": "Her glucose stays higher after meals, leaving more to cross to the fetus; her beta cells secrete two to three times more insulin."
+  },
+  {
+   "id": "dv-fasting-preg",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "Why is fasting glucose lower in pregnancy even though after-meal glucose is higher?",
+   "back": "The fetus draws glucose from her blood constantly, between meals as well.",
+   "why": "After an overnight fast she also starts making ketone bodies sooner."
+  },
+  {
+   "id": "dv-pa-pain",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "compare": "Placenta previa vs placental abruption",
+   "front": "Placenta previa vs placental abruption: pain and bleeding?",
+   "back": "Previa: usually painless, bright red bleeding seen outside. Abruption: usually painful with a tender, hard uterus; dark bleeding that may be hidden.",
+   "why": "In previa the low placenta tears as the lower uterus stretches; in abruption a normally placed placenta separates, and blood can collect behind it."
+  },
+  {
+   "id": "dv-pa-cause",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "compare": "Placenta previa vs placental abruption",
+   "front": "Placenta previa vs placental abruption: what is each, and common links?",
+   "back": "Previa: a placenta over or near the cervix; linked to earlier cesarean delivery and several pregnancies. Abruption: early separation; linked to high blood pressure, trauma, cocaine and smoking.",
+   "why": "Previa is about where the placenta implanted; abruption is about a normally placed placenta coming away."
+  },
+  {
+   "id": "dv-previa-exam",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why is a digital examination of the cervix avoided until the placenta’s position is known?",
+   "back": "If the placenta lies over the cervix, the examination can set off heavy bleeding.",
+   "why": "An ultrasound first shows where the placenta is."
+  },
+  {
+   "id": "dv-ectopic",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why is an ectopic pregnancy in a uterine tube dangerous?",
+   "back": "The thin tube wall cannot stretch, so as the trophoblast invades and the embryo grows, the tube can rupture and bleed into the abdomen.",
+   "why": "Scarring from earlier infection is the most common cause, by slowing the embryo so it implants in the tube."
+  },
+  {
+   "id": "dv-preeclampsia",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "Where does preeclampsia begin, and what is its only cure?",
+   "back": "In the placenta, with shallow spiral artery remodeling early in pregnancy; delivering the placenta.",
+   "why": "The stressed placenta releases factors that damage the mother’s endothelium everywhere, raising pressure and letting protein leak into the urine."
+  },
+  {
+   "id": "dv-gdm-newborn",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "Why can the newborn of a mother with gestational diabetes become hypoglycemic?",
+   "back": "Cutting the cord ends the mother’s glucose supply, but the baby’s pancreas is still secreting extra insulin.",
+   "why": "High glucose crossing the placenta, without the mother’s insulin, made the fetal pancreas secrete more insulin."
+  },
+  {
+   "id": "dv-ft-timing",
+   "topic": "labor-birth",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "False vs true labor",
+   "front": "False vs true labor: timing and strength?",
+   "back": "False: irregular, no steady pattern, stays the same or fades. True: regular, gaps shorten, grows stronger and longer.",
+   "why": "True labor contractions build on each other as the uterus contracts as one unit."
+  },
+  {
+   "id": "dv-ft-cervix",
+   "topic": "labor-birth",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "False vs true labor",
+   "front": "False vs true labor: the deciding difference?",
+   "back": "Its effect on the cervix: true labor progressively thins and opens it; false labor does not.",
+   "why": "Pain is not the test; a clinician checks the cervix to decide."
+  },
+  {
+   "id": "dv-ft-walk",
+   "topic": "labor-birth",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "False vs true labor",
+   "front": "False vs true labor: effect of walking or rest, and where it is felt?",
+   "back": "False: often eases or stops, felt mostly at the front. True: continues whatever she does, often starts in the back and wraps around.",
+   "why": "Braxton Hicks contractions are irregular tightenings; true labor has its own momentum."
+  },
+  {
+   "id": "dv-uterus-ready",
+   "topic": "labor-birth",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Name three changes that ready the myometrium in the last weeks.",
+   "back": "More gap junctions, about a hundredfold more oxytocin receptor proteins, and more prostaglandins.",
+   "why": "Gap junctions spread each action potential so the uterus contracts as one unit, and more receptor proteins magnify the response to oxytocin."
+  },
+  {
+   "id": "dv-labor-trigger",
+   "topic": "labor-birth",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "What is thought to set labor off in humans, and what is the exam answer?",
+   "back": "Functional progesterone withdrawal (the uterus stops responding to progesterone) and rising placental CRH. For your exam: a rising estrogen-to-progesterone ratio.",
+   "why": "In women, blood progesterone does not fall before labor; the falling-progesterone story comes from sheep and some other mammals."
+  },
+  {
+   "id": "dv-ferguson",
+   "topic": "labor-birth",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What is the Ferguson reflex?",
+   "back": "Stretch of the cervix triggers oxytocin release from the posterior pituitary through a nerve-to-pituitary reflex.",
+   "why": "It is the afferent half of the labor positive feedback loop; oxytocin then strengthens the contractions that stretch the cervix more."
+  },
+  {
+   "id": "dv-loop-ends",
+   "topic": "labor-birth",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What ends the labor positive feedback loop?",
+   "back": "Birth: the stretch on the cervix stops, so the afferent signals stop.",
+   "why": "A positive feedback loop does not settle at a set point; only an outside event can break it."
+  },
+  {
+   "id": "dv-oxytocin-role",
+   "topic": "labor-birth",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Is oxytocin needed for labor to start?",
+   "back": "No. It strengthens contractions through positive feedback, but labor can start and progress without it.",
+   "why": "Mice lacking oxytocin give birth normally, and women with very little oxytocin have had normal labors."
+  },
+  {
+   "id": "dv-effacement",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Effacement vs dilation?",
+   "back": "Effacement: thinning and shortening of the cervix, in percent. Dilation: how wide the opening is, in centimeters (10 cm is full).",
+   "why": "In a first labor the cervix usually thins before it opens; in later labors the two often happen together."
+  },
+  {
+   "id": "dv-retraction",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does each contraction make lasting progress?",
+   "back": "Retraction: the upper uterine muscle relaxes without returning to full length, so the wall shortens and pulls the cervix up around the head.",
+   "why": "Contractions are strongest in the fundus, so the net push is downward, and the shortened wall keeps the fetus low."
+  },
+  {
+   "id": "dv-stage1",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three stages of labor",
+   "front": "Stage 1 of labor: what defines it?",
+   "back": "The dilation stage: from the start of true labor to full dilation (10 cm), with a latent and an active phase.",
+   "why": "It is the longest stage, often 12 hours or more in a first labor."
+  },
+  {
+   "id": "dv-active-6",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "The three stages of labor",
+   "front": "When does the active phase begin, and why did the number change?",
+   "back": "At about 6 cm; older texts used 3 to 4 cm.",
+   "why": "Studies of modern labors showed many women open slowly until about 6 cm."
+  },
+  {
+   "id": "dv-stage2",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three stages of labor",
+   "front": "Stage 2 of labor: what defines it?",
+   "back": "The expulsion stage: from full dilation to the birth of the baby.",
+   "why": "Pushing adds voluntary force: she closes her glottis and contracts her abdominal muscles."
+  },
+  {
+   "id": "dv-stage3",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The three stages of labor",
+   "front": "Stage 3 of labor: what defines it?",
+   "back": "The placental stage: from the birth of the baby to delivery of the placenta and membranes, usually 5 to 30 minutes.",
+   "why": "The shrinking uterus shears the placenta off its wall, and further contractions push it out."
+  },
+  {
+   "id": "dv-living-ligatures",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What stops the bleeding from the placental site?",
+   "back": "Firm contraction of the crisscrossing myometrial fibers pinches the vessels shut; clotting then seals them.",
+   "why": "This is why a soft, relaxed uterus (atony) causes most postpartum hemorrhage."
+  },
+  {
+   "id": "dv-atony-tx",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is oxytocin given at birth and the fundus rubbed if the uterus feels soft?",
+   "back": "Both make the myometrium contract and clamp the placental-bed vessels.",
+   "why": "Uterine atony leaves the vessels open; contraction is the main brake on bleeding."
+  },
+  {
+   "id": "dv-episiotomy",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why is episiotomy no longer routine?",
+   "back": "Trials showed routine cutting does not prevent severe tears or heal better than a natural tear.",
+   "why": "It is now used only for a specific reason, such as speeding the birth of a baby in distress."
+  },
+  {
+   "id": "dv-cord-delay",
+   "topic": "labor-birth",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why wait 30 to 60 seconds before clamping the cord?",
+   "back": "More blood moves from the placenta into the baby, improving its iron stores.",
+   "why": "The extra red cells are later broken down and their iron kept."
+  },
+  {
+   "id": "dv-involution",
+   "topic": "labor-birth",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "How fast does the uterus involute?",
+   "back": "From about 1 kg after birth to under 100 g by six weeks; the fundus drops about 1 cm a day.",
+   "why": "Muscle cells shrink rather than disappear, breaking down their own proteins as estrogen and progesterone fall."
+  },
+  {
+   "id": "dv-lochia",
+   "topic": "labor-birth",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "How does lochia change after birth?",
+   "back": "Red for 3 or 4 days, pinkish-brown to about day 10, then yellowish-white, ending by four to six weeks.",
+   "why": "It is blood, mucus and shed lining as the placental site heals; heavy bright red bleeding after the first days is not normal."
+  },
+  {
+   "id": "dv-fn-oxygen",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Fetal vs newborn circulation",
+   "front": "Fetal vs newborn circulation: where does blood pick up oxygen?",
+   "back": "Fetal: the placenta. Newborn: the lungs.",
+   "why": "Before birth the lungs are fluid-filled; after the first breaths they take over gas exchange."
+  },
+  {
+   "id": "dv-fn-pvr",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Fetal vs newborn circulation",
+   "front": "Fetal vs newborn circulation: pulmonary and systemic resistance?",
+   "back": "Fetal: pulmonary high, systemic low. Newborn: pulmonary low, systemic higher.",
+   "why": "Expanded, oxygenated lungs relax their vessels, and clamping the cord removes the low-resistance placenta."
+  },
+  {
+   "id": "dv-fn-atria",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Fetal vs newborn circulation",
+   "front": "Fetal vs newborn circulation: which atrium has the higher pressure, and what happens to the foramen ovale?",
+   "back": "Fetal: right; the foramen ovale is open, right to left. Newborn: left; it is pressed shut and later becomes the fossa ovalis.",
+   "why": "More blood returns from the lungs to the left atrium after birth, and none arrives from the umbilical vein."
+  },
+  {
+   "id": "dv-fn-da",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Fetal vs newborn circulation",
+   "front": "Fetal vs newborn circulation: the ductus arteriosus?",
+   "back": "Fetal: open, pulmonary trunk to aorta. Newborn: constricts in 1 to 3 days and becomes the ligamentum arteriosum.",
+   "why": "Rising oxygen and falling prostaglandin E2 make its smooth muscle contract."
+  },
+  {
+   "id": "dv-fn-dv",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Fetal vs newborn circulation",
+   "front": "Fetal vs newborn circulation: the ductus venosus?",
+   "back": "Fetal: open, umbilical vein to inferior vena cava. Newborn: closes in 1 to 2 weeks and becomes the ligamentum venosum.",
+   "why": "Once the cord is clamped, no blood flows in the umbilical vein to keep it open."
+  },
+  {
+   "id": "dv-fn-series",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Fetal vs newborn circulation",
+   "front": "Fetal vs newborn circulation: how are the two circuits arranged?",
+   "back": "Fetal: partly side by side, sharing blood through the shunts. Newborn: in series, right heart to lungs, left heart to body.",
+   "why": "Closing the shunts forces all blood through both ventricles in turn."
+  },
+  {
+   "id": "dv-lung-drain",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "How do the lungs start to drain before birth, and why do babies born by planned cesarean breathe fast more often?",
+   "back": "Rising epinephrine and cortisol in labor switch the airway cells from secreting chloride to absorbing sodium, and water follows out of the airspaces.",
+   "why": "Without labor, much of this switch is missed and fluid is left in the lungs."
+  },
+  {
+   "id": "dv-first-breath",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why is the first breath the hardest, and what makes later ones easier?",
+   "back": "Surface tension holds the collapsed, liquid-lined alveoli shut; once open, surfactant keeps them from collapsing completely.",
+   "why": "Some air stays after each breath, so the lungs’ resting volume builds and later breaths take far less work."
+  },
+  {
+   "id": "dv-pda-signs",
+   "topic": "postnatal-lactation",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "Patent ductus arteriosus after birth: which way does blood flow, and what are the signs?",
+   "back": "Aorta to pulmonary trunk (left to right); bounding pulses, wide pulse pressure and a continuous “machinery” murmur.",
+   "why": "Blood running off into the lungs during diastole lowers diastolic pressure."
+  },
+  {
+   "id": "dv-pda-drugs",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Indomethacin vs a prostaglandin infusion for the ductus arteriosus?",
+   "back": "Indomethacin or ibuprofen closes it; a prostaglandin infusion keeps it open.",
+   "why": "Prostaglandin keeps the ductus relaxed, so blocking its synthesis closes it, and giving it holds the ductus open in babies who depend on it."
+  },
+  {
+   "id": "dv-rds",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What causes respiratory distress syndrome, and what are its three treatments?",
+   "back": "A shortage of surfactant; a glucocorticoid to the mother before birth, continuous positive airway pressure, and surfactant given into the trachea.",
+   "why": "Each treatment follows from the mechanism: speed surfactant production, hold alveoli open, or replace surfactant."
+  },
+  {
+   "id": "dv-grunting",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why does a baby with respiratory distress grunt?",
+   "back": "Breathing out against a partly closed glottis keeps some pressure in the airways at the end of each breath, holding alveoli open.",
+   "why": "Continuous positive airway pressure does the same thing, better."
+  },
+  {
+   "id": "dv-apgar-signs",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What are the five Apgar signs?",
+   "back": "Appearance (color), pulse, grimace (response), activity (tone) and respiration.",
+   "why": "Each is scored 0 to 2 at 1 and 5 minutes; 7 to 10 is reassuring."
+  },
+  {
+   "id": "dv-apgar-limits",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why do most healthy babies score 8 or 9 at 1 minute, and what are the score’s limits?",
+   "back": "Their hands and feet are still blue. Resuscitation never waits for the score, and a low score alone does not prove oxygen starvation.",
+   "why": "Prematurity and drugs given to the mother can also lower the score."
+  },
+  {
+   "id": "dv-meconium",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What is meconium, and when is it passed?",
+   "back": "A sticky, dark green-black paste of swallowed fluid, shed cells, mucus, bile and fine hair; nearly all term babies pass it within 48 hours.",
+   "why": "Failure to pass it can signal a blocked or poorly working intestine."
+  },
+  {
+   "id": "dv-vitk",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why are newborns given vitamin K at birth?",
+   "back": "Little vitamin K crosses the placenta and breast milk contains little, so stores are low and bleeding is a risk.",
+   "why": "Vitamin K is needed to make several clotting factors."
+  },
+  {
+   "id": "dv-brown-fat",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "How does a newborn make heat, and at what cost?",
+   "back": "Nonshivering thermogenesis in brown fat, driven by norepinephrine from sympathetic nerves; it uses oxygen and glucose fast.",
+   "why": "A cold baby can become short of oxygen, low in glucose and acidotic, so newborns are dried and kept warm at once."
+  },
+  {
+   "id": "dv-heat-loss",
+   "topic": "postnatal-lactation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Why do newborns lose heat so easily?",
+   "back": "A large surface for their size, wet skin, little insulating fat and weak shivering.",
+   "why": "They have about three times as much skin per kilogram as an adult."
+  },
+  {
+   "id": "dv-po-job",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Prolactin vs oxytocin in lactation",
+   "front": "Prolactin vs oxytocin in lactation: what does each do?",
+   "back": "Prolactin makes milk for the next feed. Oxytocin ejects the milk already made, now.",
+   "why": "Prolactin acts on the alveolar cells; oxytocin on the myoepithelial cells around them."
+  },
+  {
+   "id": "dv-po-source",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Prolactin vs oxytocin in lactation",
+   "front": "Prolactin vs oxytocin: where does each come from, and what controls its release?",
+   "back": "Prolactin: anterior pituitary, held back mainly by dopamine. Oxytocin: posterior pituitary, released by hypothalamic neurons.",
+   "why": "Suckling lowers dopamine, so prolactin surges, and activates the oxytocin neurons, so milk is ejected."
+  },
+  {
+   "id": "dv-po-mind",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Prolactin vs oxytocin in lactation",
+   "front": "How can a mother’s mind affect let-down?",
+   "back": "Hearing her baby cry can trigger it (conditioned); pain, fear and stress inhibit oxytocin release.",
+   "why": "The hypothalamus is part of the reflex, so the brain can start or stop it."
+  },
+  {
+   "id": "dv-letdown-class",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "How does this course classify the milk ejection reflex, and what may an exam say?",
+   "back": "A neuroendocrine reflex (nerve signal in, hormone out). For your exam: it is often called positive feedback.",
+   "why": "The response does not make the stimulus itself grow the way contractions grow cervical stretch; it ends when the baby stops feeding."
+  },
+  {
+   "id": "dv-milk-in",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does milk come in only 30 to 72 hours after birth?",
+   "back": "High progesterone blocks prolactin’s action until the placenta is delivered and progesterone falls.",
+   "why": "A piece of placenta left behind keeps progesterone up and delays the milk."
+  },
+  {
+   "id": "dv-supply",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What is the main way to raise milk supply?",
+   "back": "Frequent, effective feeding.",
+   "why": "Milk left in a full breast slows production locally, while emptying the breast often speeds it, breast by breast."
+  },
+  {
+   "id": "dv-cm-content",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Colostrum vs mature milk",
+   "front": "Colostrum vs mature milk: protein, fat and lactose?",
+   "back": "Colostrum: high protein, much of it antibodies; lower fat and lactose. Mature milk: about 1% protein, 4% fat and 7% lactose.",
+   "why": "Colostrum is thick and yellowish; mature milk thin and bluish-white."
+  },
+  {
+   "id": "dv-cm-timing",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Colostrum vs mature milk",
+   "front": "Colostrum vs mature milk: when and how much?",
+   "back": "Colostrum: first 2 to 4 days, a few teaspoons per feed. Mature milk: from about 2 weeks, about 750 to 800 mL a day.",
+   "why": "Colostrum changes gradually into mature milk over about two weeks."
+  },
+  {
+   "id": "dv-cm-iga",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "Colostrum vs mature milk",
+   "front": "Colostrum vs mature milk: secretory IgA, and what does it do?",
+   "back": "Very high in colostrum, lower but present throughout in mature milk; it coats the baby’s gut lining and blocks microbes from attaching.",
+   "why": "Plasma cells switched on in the mother’s gut and airways travel to the breast, so her milk’s IgA targets the family’s microbes."
+  },
+  {
+   "id": "dv-hindmilk",
+   "topic": "postnatal-lactation",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Foremilk vs hindmilk: why does milk get fattier through a feed?",
+   "back": "Fat droplets stick to the walls of the alveoli and small ducts and are carried out only as the breast empties.",
+   "why": "Foremilk and hindmilk are not two different milks; the fat content climbs through the feed."
+  },
+  {
+   "id": "dv-geno-pheno",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Genotype vs phenotype?",
+   "back": "Genotype: the alleles a person carries. Phenotype: what is expressed and can be observed or measured.",
+   "why": "The environment acts on phenotype too: a baby with the PKU genotype fed a low-phenylalanine diet develops normally."
+  },
+  {
+   "id": "dv-homo-hetero",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Homozygous vs heterozygous?",
+   "back": "Homozygous: two copies of the same allele (AA or aa). Heterozygous: two different alleles (Aa).",
+   "why": "You carry two copies of every autosomal gene, one from each parent."
+  },
+  {
+   "id": "dv-why-recessive",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is the cystic fibrosis allele recessive?",
+   "back": "It makes no working chloride channel, and one working copy makes enough channel for normal function.",
+   "why": "Dominance is usually about protein amounts, not one allele overpowering another."
+  },
+  {
+   "id": "dv-why-dominant",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is the Huntington disease allele dominant?",
+   "back": "Its abnormal protein slowly damages neurons, and one copy is enough to cause harm.",
+   "why": "A dominant allele shows its effect in the heterozygote as well as the homozygote."
+  },
+  {
+   "id": "dv-in-copies",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Dominant vs recessive vs codominant vs X-linked",
+   "front": "Autosomal dominant, autosomal recessive, codominant, X-linked recessive: copies needed to show the phenotype?",
+   "back": "Dominant: one. Recessive: two. Codominant: each allele shows whenever present. X-linked recessive: one in males, two in females.",
+   "why": "A male has only one X, so nothing masks an X-linked allele in him."
+  },
+  {
+   "id": "dv-in-hetero",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Dominant vs recessive vs codominant vs X-linked",
+   "front": "Dominant vs recessive vs codominant vs X-linked recessive: what is the heterozygote like?",
+   "back": "Dominant: affected. Recessive: healthy carrier. Codominant: shows both alleles. X-linked recessive: a female is usually a healthy carrier.",
+   "why": "Each pattern is defined by what happens when two different alleles meet."
+  },
+  {
+   "id": "dv-in-parents",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Dominant vs recessive vs codominant vs X-linked",
+   "front": "Typical parents of an affected child: dominant, recessive, X-linked recessive?",
+   "back": "Dominant: one affected parent. Recessive: two unaffected carriers. X-linked recessive: a carrier mother and an unaffected father.",
+   "why": "The parents’ phenotypes follow from how many copies each needs to show the trait."
+  },
+  {
+   "id": "dv-in-risk",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Dominant vs recessive vs codominant vs X-linked",
+   "front": "Risk for each child in the typical family: dominant, recessive, X-linked recessive?",
+   "back": "Dominant: 1 in 2. Recessive: 1 in 4. X-linked recessive: 1 in 2 sons affected, 1 in 2 daughters carriers.",
+   "why": "Each comes straight from the Punnett square for the typical cross."
+  },
+  {
+   "id": "dv-in-father-son",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Dominant vs recessive vs codominant vs X-linked",
+   "front": "Which pattern never passes from father to son, and why?",
+   "back": "X-linked: a father gives his sons his Y, not his X.",
+   "why": "Every daughter of an affected father gets his X, so all are carriers of an X-linked recessive allele."
+  },
+  {
+   "id": "dv-in-example",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Dominant vs recessive vs codominant vs X-linked",
+   "front": "One example each: autosomal dominant, autosomal recessive, codominant, X-linked recessive?",
+   "back": "Huntington disease; cystic fibrosis; ABO type AB; hemophilia A.",
+   "why": "The examples show one copy causing disease, two copies needed, both alleles showing, and a male-affected pattern."
+  },
+  {
+   "id": "dv-segregation",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the law of segregation, and what explains it?",
+   "back": "Each gamete carries only one allele of each gene, each with a 1 in 2 chance; homologs separate in anaphase I of meiosis.",
+   "why": "Mendel inferred it from counting pea plants; meiosis supplies the mechanism."
+  },
+  {
+   "id": "dv-carrier-23",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Two carriers have a healthy child. What is the chance that child is a carrier?",
+   "back": "2 in 3.",
+   "why": "Of the three healthy boxes (CC, Cc, Cc), two are carriers; the affected box is already ruled out."
+  },
+  {
+   "id": "dv-fresh",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Two carriers already have one child with cystic fibrosis. What is the chance for the next child?",
+   "back": "Still 1 in 4.",
+   "why": "Gametes are drawn fresh for every pregnancy; one outcome does not change the next."
+  },
+  {
+   "id": "dv-incomplete",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Incomplete dominance vs codominance?",
+   "back": "Incomplete: the heterozygote is in between (familial hypercholesterolemia). Codominance: both alleles fully shown (ABO type AB).",
+   "why": "Which pattern you see can depend on the phenotype measured, as sickle cell shows."
+  },
+  {
+   "id": "dv-sickle-levels",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Sickle cell: codominant, incomplete or recessive?",
+   "back": "All three, depending on level: molecule (both hemoglobins, codominant), red cell (sickles only in severe oxygen shortage, in between), disease (recessive).",
+   "why": "Dominance describes a relationship for one phenotype, not a fixed property of an allele."
+  },
+  {
+   "id": "dv-abo-surprise",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How can two parents have a child with a blood type neither has?",
+   "back": "An AO parent and a BO parent can have an AB or an OO child.",
+   "why": "A and B are codominant with each other and both dominant over O, so hidden O alleles can pair up."
+  },
+  {
+   "id": "dv-hemophilia-sons",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "A carrier mother and an unaffected father: risk for sons and daughters for hemophilia A?",
+   "back": "Half the sons affected; half the daughters carriers; no daughters affected.",
+   "why": "A son’s X comes from his mother; a daughter also gets her father’s normal X."
+  },
+  {
+   "id": "dv-polygenic",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why does height form a bell curve instead of neat groups?",
+   "back": "It is polygenic: thousands of variants each add or subtract a little, plus the environment.",
+   "why": "Most people get a mix of “up” and “down” variants that roughly cancel; few get mostly one kind."
+  },
+  {
+   "id": "dv-t21-cause",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What causes most trisomy 21, and why does it rise with the mother’s age?",
+   "back": "Nondisjunction, mostly in the mother’s meiosis I; the proteins holding her oocyte’s paired chromosomes weaken over decades.",
+   "why": "About 4% of cases are translocations, which do not depend on the mother’s age."
+  },
+  {
+   "id": "dv-t21-numbers",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Rough trisomy 21 risk at maternal ages 25, 35, 40 and 45?",
+   "back": "About 1 in 1,200, 1 in 350, 1 in 100 and 1 in 30.",
+   "why": "The risk climbs steeply after about 35 as the oocyte’s chromosome links fail."
+  },
+  {
+   "id": "dv-sex-chrom",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why are extra or missing sex chromosomes tolerated better than extra autosomes?",
+   "back": "Every X beyond the first is mostly silenced, and the Y carries few genes.",
+   "why": "A few X genes escape silencing, so their dose still matters, as in the short stature of Turner syndrome."
+  },
+  {
+   "id": "dv-klinefelter-turner",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Klinefelter vs Turner syndrome: karyotype and main features?",
+   "back": "Klinefelter: 47,XXY; small testes, low testosterone, usually infertile. Turner: 45,X; short stature, ovaries that fail early.",
+   "why": "Turner syndrome is the only survivable monosomy, and even so nearly all 45,X pregnancies miscarry."
+  },
+  {
+   "id": "dv-reserve",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "What is the one idea behind most aging physiology?",
+   "back": "Resting values are usually kept in range, but reserve, the extra capacity for stress, shrinks (homeostenosis).",
+   "why": "A stress a young body absorbs can overwhelm an old one even though its resting values were normal."
+  },
+  {
+   "id": "dv-disease-vs-aging",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Are dementia, anemia and incontinence normal aging?",
+   "back": "No: they become common with age but are diseases with their own causes.",
+   "why": "Normal aging lowers reserve; a disease is a separate process that needs its own explanation and often its own treatment."
+  },
+  {
+   "id": "dv-theories",
+   "topic": "aging",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "What causes aging, and which “theories” do exams expect?",
+   "back": "Many interacting damage processes that outpace repair; for your exam, the free radical theory and telomere shortening.",
+   "why": "Oxidative damage contributes, but antioxidant supplements have not slowed aging, and beta-carotene raised lung cancer in smokers."
+  },
+  {
+   "id": "dv-telomere-why",
+   "topic": "aging",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do telomeres shorten with each division?",
+   "back": "The end-replication problem: DNA polymerase cannot copy the very tip of one new strand beyond its last primer.",
+   "why": "Each division loses about 50 to 100 base pairs; most body cells make almost no telomerase to replace them."
+  },
+  {
+   "id": "dv-hayflick",
+   "topic": "aging",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the Hayflick limit, and what sets it?",
+   "back": "Normal human cells divide only about 40 to 60 times in a dish; it is set largely by telomeres.",
+   "why": "When a telomere becomes too short, its cap fails and the cell reads the end as damaged DNA."
+  },
+  {
+   "id": "dv-telomerase",
+   "topic": "aging",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which cells use telomerase?",
+   "back": "Germ cells, stem cells a little, and most cancer cells.",
+   "why": "Telomerase carries its own RNA template and adds repeats back, which is one reason cancer cells can divide without limit."
+  },
+  {
+   "id": "dv-senescence",
+   "topic": "aging",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Senescence: protective or harmful?",
+   "back": "Both: it stops damaged cells from dividing into tumors, but senescent cells release inflammatory cytokines and enzymes that harm the tissue around them.",
+   "why": "Senescent cells build up with age and feed “inflammaging”; removing them in mice delays many age-related problems."
+  },
+  {
+   "id": "dv-bone-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "How does bone change with age, and why is loss faster after menopause?",
+   "back": "Bone mass peaks around 30 and then falls about 0.5 to 1% a year; estrogen normally restrains osteoclasts.",
+   "why": "Spongy bone, with its large surface, is lost first, so vertebrae and the ends of long bones weaken most."
+  },
+  {
+   "id": "dv-sarcopenia",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why does strength fall faster than muscle mass with age?",
+   "back": "Motor neurons die and motor units become fewer and larger, and fast glycolytic fibers shrink most.",
+   "why": "Resistance training reverses much of the loss at any age."
+  },
+  {
+   "id": "dv-aorta-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why does systolic pressure rise with age while diastolic does not?",
+   "back": "The aorta stiffens and cannot stretch to absorb each stroke volume, and it stores less energy for recoil in diastole.",
+   "why": "Pulse pressure widens: isolated systolic hypertension, common in older adults."
+  },
+  {
+   "id": "dv-maxhr-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "How does maximum heart rate change with age?",
+   "back": "It falls by roughly 0.7 to 1 beat per minute each year; one estimate is 208 − (0.7 × age).",
+   "why": "The SA node loses pacemaker cells and the heart responds less to sympathetic stimulation; resting cardiac output changes little."
+  },
+  {
+   "id": "dv-thymus-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why do vaccines work less well in older adults?",
+   "back": "The thymus shrinks, few new naive T cells are made, and B cell responses weaken.",
+   "why": "That is why high-dose or boosted influenza vaccines are given after 65."
+  },
+  {
+   "id": "dv-fever-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "How can pneumonia show up in an older adult without a fever?",
+   "back": "Fever is often blunted, and the infection may show first as confusion, a fall or loss of appetite.",
+   "why": "A weaker immune response and less brain reserve change how infections present."
+  },
+  {
+   "id": "dv-gfr-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why can plasma creatinine stay normal while GFR falls with age?",
+   "back": "Less muscle makes less creatinine.",
+   "why": "GFR falls on average about 1 mL/min a year after 40, which is why eGFR, corrected for age and sex, is used."
+  },
+  {
+   "id": "dv-thirst-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why do older adults become dehydrated and hypernatremic quickly?",
+   "back": "Blunted thirst, less total body water, and kidneys that concentrate urine and conserve sodium less well.",
+   "why": "A small water loss moves sodium further in a smaller body water pool."
+  },
+  {
+   "id": "dv-drugs-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "Why do doctors “start low and go slow” with drugs in older adults?",
+   "back": "Lower GFR and liver blood flow clear drugs more slowly, less body water concentrates water-soluble drugs, and more fat stores fat-soluble ones.",
+   "why": "Many older adults also take several drugs at once."
+  },
+  {
+   "id": "dv-lungs-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "How do the lungs change with age?",
+   "back": "They lose elastic recoil and the chest wall stiffens; residual volume rises and vital capacity and FEV1 fall.",
+   "why": "Small airways close earlier in expiration, trapping more air."
+  },
+  {
+   "id": "dv-exercise-age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "What slows much of the decline once blamed on age?",
+   "back": "Regular exercise: aerobic training for oxygen uptake, resistance training for muscle and bone, and balance training against falls.",
+   "why": "Much of the decline comes from inactivity, so activity preserves reserve at any age."
   }
  ]
 }

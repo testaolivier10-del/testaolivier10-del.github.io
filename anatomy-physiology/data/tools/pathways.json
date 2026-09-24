@@ -9033,6 +9033,1422 @@
         "why": "That is where a liter of 0.9% saline goes, because its sodium stays outside cells. D5W becomes free water, which spreads through total body water, two thirds into cells."
       },
       "summary": "D5W enters the plasma; cells take up and use the glucose; a liter of free water is left; the ECF becomes slightly dilute; water enters cells; about 667 mL ends in cells and 333 mL in the ECF, of which only about 83 mL stays in the plasma."
+    },
+    {
+      "id": "dv-fertilization-steps",
+      "title": "Fertilization, step by step",
+      "topic": "fertilization",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "From sperm deposited in the vagina to the first cell of a new person. Each step makes the next one possible. Put them in order.",
+      "steps": [
+        {
+          "id": "deposit",
+          "label": "Sperm travel to the tubes",
+          "text": "Sperm deposited in the vagina pass through the cervical mucus and the uterus into the uterine tubes.",
+          "why": "Everything else happens in the uterine tube, so the sperm must first get there; most are lost on the way."
+        },
+        {
+          "id": "capac",
+          "label": "Capacitation",
+          "text": "Over several hours, sperm capacitate: cholesterol leaves their membranes, calcium and bicarbonate enter, and their tails switch to hyperactivated beating.",
+          "why": "Capacitation takes hours in the fluids of the female tract, and only a capacitated sperm can go on to release its acrosome."
+        },
+        {
+          "id": "corona",
+          "label": "Through the corona radiata",
+          "text": "Capacitated sperm reach the oocyte in the ampulla and push between the cells of the corona radiata, helped by hyaluronidase.",
+          "why": "The corona radiata is the outer layer around the oocyte, so it is crossed first, using the hyperactivated beat that capacitation made possible."
+        },
+        {
+          "id": "acro",
+          "label": "Acrosomal reaction",
+          "text": "The acrosome releases acrosin and other enzymes, which cut a narrow tunnel through the zona pellucida.",
+          "why": "The zona pellucida lies inside the corona radiata. A sperm can cross it only after releasing its acrosome’s enzymes."
+        },
+        {
+          "id": "fuse",
+          "label": "Membranes fuse",
+          "text": "One sperm reaches the oocyte’s plasma membrane, binds it and fuses with it, and its nucleus enters.",
+          "why": "Only after crossing the zona does a sperm reach the narrow space next to the oocyte’s membrane, where fusion can happen."
+        },
+        {
+          "id": "calcium",
+          "label": "Calcium waves",
+          "text": "An enzyme delivered by the sperm sets off repeated waves of calcium release inside the oocyte.",
+          "why": "The enzyme enters with the sperm, so the calcium waves can begin only after fusion. They activate the oocyte."
+        },
+        {
+          "id": "cortical",
+          "label": "Cortical reaction",
+          "text": "The cortical granules release their contents, which cut ZP2 and harden the zona pellucida, blocking polyspermy.",
+          "why": "The calcium waves trigger this exocytosis, so it follows them; it keeps every later sperm out."
+        },
+        {
+          "id": "meiosis2",
+          "label": "Meiosis II finishes",
+          "text": "The oocyte completes meiosis II and pinches off the second polar body.",
+          "why": "The same calcium waves release the oocyte from its pause in metaphase II; its set of chromosomes must be halved before the nuclei form."
+        },
+        {
+          "id": "pronuclei",
+          "label": "Pronuclei form",
+          "text": "Male and female pronuclei form, each copies its DNA, and they move toward the center of the cell.",
+          "why": "The female pronucleus can form only once meiosis II has left the oocyte with a single set of chromosomes."
+        },
+        {
+          "id": "zygote",
+          "label": "The zygote",
+          "text": "The two nuclear envelopes break down and both sets of chromosomes line up together on the first mitotic spindle: the zygote.",
+          "why": "The chromosomes combine last, about a day after sperm entry, directly on the first spindle; they never share one nucleus first."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The cortical granules release their enzymes, which cut a tunnel through the zona pellucida for the sperm.",
+            "why": "The cortical granules belong to the oocyte and are released after fusion, to keep sperm out. The tunnel is cut by the sperm’s own acrosomal enzymes."
+          },
+          {
+            "text": "The sperm undergoes capacitation at the surface of the zona pellucida, which takes a few seconds.",
+            "why": "Capacitation takes hours and happens during the journey through the uterus and tube. The fast event at the zona is the acrosomal reaction."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The oocyte’s membrane depolarizes within seconds and repels other sperm, the only block to polyspermy in humans.",
+        "why": "A fast electrical block is real in sea urchins and frogs, but human eggs do not appear to use one. In humans, the cortical reaction alters the zona, and the membrane later sheds its sperm-binding protein."
+      },
+      "summary": "Sperm reach the uterine tubes, capacitate over hours, pass the corona radiata, release their acrosomes to cross the zona pellucida, and one fuses with the oocyte. Its enzyme sets off calcium waves, which trigger the cortical reaction (the block to polyspermy) and the end of meiosis II. The pronuclei form and copy their DNA, and the chromosomes combine on the first spindle: the zygote."
+    },
+    {
+      "id": "dv-zygote-implantation",
+      "title": "From zygote to implantation",
+      "topic": "embryonic-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "In its first two weeks the embryo divides, travels down the uterine tube, hollows out and buries itself in the wall of the uterus. Put the events in order.",
+      "steps": [
+        {
+          "id": "cleave",
+          "label": "Cleavage begins",
+          "text": "About a day after fertilization, the zygote divides by mitosis into two blastomeres, then four, without growing.",
+          "why": "Cleavage is the first thing a zygote does. Each division cuts the same cytoplasm into smaller cells."
+        },
+        {
+          "id": "compact",
+          "label": "Compaction at 8 cells",
+          "text": "Around day 3, at about eight cells, the blastomeres flatten against each other and the outer cells form tight junctions.",
+          "why": "Compaction needs several cells to press together, so it comes after the first divisions, and it sets up the sealed outer layer the next steps depend on."
+        },
+        {
+          "id": "morula",
+          "label": "Morula enters the uterus",
+          "text": "A solid ball of about 16 to 32 cells, the morula, reaches the uterus around day 4.",
+          "why": "The embryo drifts down the tube while it divides, so it arrives as a morula, still solid."
+        },
+        {
+          "id": "blasto",
+          "label": "Blastocyst forms",
+          "text": "Around day 5, the outer cells pump sodium into the center, water follows, and a fluid-filled blastocoel forms: the blastocyst, with trophoblast and inner cell mass.",
+          "why": "The sealed outer layer made at compaction is what lets the pumped sodium and the water that follows collect inside."
+        },
+        {
+          "id": "hatch",
+          "label": "Hatching",
+          "text": "Around day 5 to 6, the blastocyst expands, the zona pellucida thins, and the blastocyst squeezes out.",
+          "why": "While the zona pellucida surrounds it, the embryo cannot stick to anything; it must hatch before it can attach."
+        },
+        {
+          "id": "attach",
+          "label": "Attachment",
+          "text": "Around day 6 to 7, the blastocyst sticks to the secretory-phase endometrium, inner cell mass side first.",
+          "why": "Attachment needs a hatched blastocyst and a receptive endometrium, which progesterone has prepared."
+        },
+        {
+          "id": "invade",
+          "label": "Trophoblast invades",
+          "text": "Where it touches the endometrium, the trophoblast splits into cytotrophoblast and syncytiotrophoblast, which digests its way into the wall.",
+          "why": "The trophoblast can only split and invade where it has made contact, so invasion follows attachment."
+        },
+        {
+          "id": "blood",
+          "label": "First maternal blood",
+          "text": "Around days 9 to 12, the syncytiotrophoblast erodes endometrial capillaries, and spaces inside it fill with maternal blood.",
+          "why": "The syncytiotrophoblast has to be embedded in the wall before it can reach the mother’s capillaries."
+        },
+        {
+          "id": "closed",
+          "label": "Buried and covered",
+          "text": "By about day 12 the blastocyst is completely buried, and the endometrial epithelium grows back over the site.",
+          "why": "Closure is the last step: the embryo is fully inside the wall, and the surface heals over it."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Around day 5, the morula implants in the uterine tube, and a cavity forms inside the implanted cells.",
+            "why": "An embryo that implants in the tube has implanted in the wrong place; that is not the normal path. Normally the embryo becomes a hollow blastocyst while still free, before any implantation."
+          },
+          {
+            "text": "Around day 5, the embryo grows to many times the size of the oocyte, filling the zona pellucida with new cytoplasm.",
+            "why": "The embryo does not grow during these days: each division splits the same cytoplasm. What changes is that fluid collects inside it."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The inner cell mass splits into two layers and digests its way into the endometrium.",
+        "why": "Invasion is the trophoblast’s job: it splits into cytotrophoblast and syncytiotrophoblast, and the syncytiotrophoblast digests the endometrium. The inner cell mass forms the embryo itself."
+      },
+      "summary": "Cleavage makes blastomeres without growth; compaction seals the outer cells at about eight cells; the solid morula reaches the uterus around day 4; fluid collects to form the blastocyst around day 5; it hatches from the zona pellucida, attaches to the secretory endometrium around day 6 to 7, and the syncytiotrophoblast invades, reaches maternal blood around days 9 to 12, and is buried by about day 12."
+    },
+    {
+      "id": "dv-hcg-rescue",
+      "title": "How hCG keeps the pregnancy going",
+      "topic": "embryonic-development",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Without a pregnancy, the corpus luteum dies after about two weeks and the endometrium is shed. An implanting embryo prevents that. Put the chain in causal order.",
+      "steps": [
+        {
+          "id": "invade",
+          "label": "Syncytiotrophoblast invades",
+          "text": "The syncytiotrophoblast invades the endometrium.",
+          "why": "hCG is made by the syncytiotrophoblast, so the chain starts once implantation has formed it."
+        },
+        {
+          "id": "secrete",
+          "label": "hCG secreted",
+          "text": "The syncytiotrophoblast secretes human chorionic gonadotropin (hCG) into the mother’s blood.",
+          "why": "The invading cells release the hormone into maternal blood, where it is carried to the ovary."
+        },
+        {
+          "id": "bind",
+          "label": "hCG binds LH receptors",
+          "text": "hCG, built much like LH, binds the LH receptor proteins on corpus luteum cells.",
+          "why": "The hormone has to reach its target and bind before anything in the ovary can change."
+        },
+        {
+          "id": "survive",
+          "label": "Corpus luteum survives",
+          "text": "The corpus luteum survives past its usual 12 to 14 days.",
+          "why": "Binding keeps the corpus luteum’s cells working, the way LH did earlier in the cycle."
+        },
+        {
+          "id": "prog",
+          "label": "Progesterone continues",
+          "text": "The corpus luteum keeps secreting progesterone and estradiol.",
+          "why": "Only a living corpus luteum can keep making the hormones."
+        },
+        {
+          "id": "lining",
+          "label": "Endometrium kept",
+          "text": "Progesterone keeps the endometrium intact, so there is no menstrual period and the embryo is not shed.",
+          "why": "The endometrium depends on progesterone; this is the result the whole chain protects."
+        },
+        {
+          "id": "test",
+          "label": "hCG in the urine",
+          "text": "hCG spills into the mother’s urine, where a home pregnancy test can detect it around the day her period is due.",
+          "why": "hCG appears in the blood about 8 to 10 days after fertilization and in the urine after that; by the day the period is due, there is usually enough to detect."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "hCG binds progesterone receptor proteins in the endometrium and holds the lining in place directly.",
+            "why": "hCG acts on the ovary, not the endometrium. It keeps the corpus luteum alive, and the corpus luteum’s progesterone holds the lining."
+          },
+          {
+            "text": "hCG travels to the anterior pituitary and makes it release much more LH.",
+            "why": "hCG does not work through the pituitary. It is so like LH that it binds the LH receptor proteins on the corpus luteum itself."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The corpus luteum shrinks into a scar, because hCG replaces its hormones.",
+        "why": "hCG is not a replacement for progesterone. It rescues the corpus luteum, which survives and keeps making progesterone until the trophoblast’s tissues take over."
+      },
+      "summary": "The invading syncytiotrophoblast secretes hCG, which binds LH receptor proteins on the corpus luteum, so it survives past its usual two weeks and keeps secreting progesterone. Progesterone keeps the endometrium, and the embryo in it, in place. hCG spills into the urine, which is what pregnancy tests detect."
+    },
+    {
+      "id": "dv-gastrulation",
+      "title": "Two layers to neural tube and somites",
+      "topic": "embryonic-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "In weeks 3 and 4 after fertilization, a flat two-layered disc becomes three layers and lays down the start of the nervous system and the vertebrae. Put the events in order.",
+      "steps": [
+        {
+          "id": "disc",
+          "label": "Two-layered disc",
+          "text": "In week 2, the inner cell mass forms a flat disc of epiblast above and hypoblast below.",
+          "why": "Everything that follows is built from this disc, so it has to form first."
+        },
+        {
+          "id": "streak",
+          "label": "Primitive streak",
+          "text": "Around day 15, a groove, the primitive streak, appears along the midline of the epiblast, fixing head, tail, left and right.",
+          "why": "Cells can only move through the streak once it exists, so it appears before any new layer forms."
+        },
+        {
+          "id": "endo",
+          "label": "Endoderm forms",
+          "text": "The first epiblast cells to slip through the streak push the hypoblast aside and replace it as the endoderm.",
+          "why": "The first cells through reach the bottom of the disc, where the hypoblast was."
+        },
+        {
+          "id": "meso",
+          "label": "Mesoderm forms",
+          "text": "The next cells through spread out between the epiblast and the new endoderm as the mesoderm.",
+          "why": "The middle layer can only fill in once there is a lower layer to spread above."
+        },
+        {
+          "id": "ecto",
+          "label": "Ectoderm remains",
+          "text": "The epiblast cells that stay on top become the ectoderm: three germ layers in all.",
+          "why": "The ectoderm is simply what is left of the epiblast after the other two layers have moved through."
+        },
+        {
+          "id": "noto",
+          "label": "Notochord",
+          "text": "Mesoderm cells moving forward from the head end of the streak form a solid rod along the midline, the notochord.",
+          "why": "The notochord is made of mesoderm, so it forms after the mesoderm; its signals pattern what comes next."
+        },
+        {
+          "id": "plate",
+          "label": "Neural plate",
+          "text": "Signals from the notochord make the ectoderm above it thicken into the neural plate.",
+          "why": "The neural plate is induced by the notochord, so it cannot form before the rod beneath it."
+        },
+        {
+          "id": "tube",
+          "label": "Neural tube closes",
+          "text": "The neural folds rise and meet over the midline, closing the neural tube from about day 22 to day 28, while neural crest cells break away.",
+          "why": "The plate must first fold up before its edges can meet and close into a tube."
+        },
+        {
+          "id": "somites",
+          "label": "Somites split",
+          "text": "The mesoderm beside the tube breaks into paired somites, which split into sclerotome, myotome and dermatome.",
+          "why": "Somites form in the mesoderm alongside the neural tube, from about day 20, and then divide into the parts that make vertebrae, muscle and dermis."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The hypoblast thickens and becomes the endoderm, while the epiblast stays as one layer.",
+            "why": "The hypoblast forms the lining of the yolk sac, not the embryo. All three germ layers come from epiblast cells; the first ones through the streak replace the hypoblast."
+          },
+          {
+            "text": "The first cells through the streak form the ectoderm on the underside of the disc, and the hypoblast stays in place above it.",
+            "why": "The ectoderm is the top layer, the epiblast left behind. The first cells through the streak form the endoderm on the underside."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Signals from the yolk sac make the endoderm thicken into the neural plate.",
+        "why": "The nervous system comes from ectoderm, and the signal comes from the notochord beneath it. Endoderm forms the linings of the gut and airways."
+      },
+      "summary": "The two-layered disc of epiblast and hypoblast gains a primitive streak around day 15. Epiblast cells move through it: the first replace the hypoblast as endoderm, the next form mesoderm, and those left on top become ectoderm. Mesoderm forms the notochord, which makes the ectoderm above it into the neural plate; the plate folds and closes into the neural tube by about day 28, and the mesoderm beside it forms somites, which split into sclerotome, myotome and dermatome."
+    },
+    {
+      "id": "dv-fetal-shunts",
+      "title": "Fetal blood through the three shunts",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 3,
+      "kind": "flow",
+      "cycle": true,
+      "intro": "Follow one red blood cell around the fetal circulation, starting as it leaves the placenta loaded with oxygen. It passes through all three fetal shunts on the way.",
+      "steps": [
+        {
+          "id": "uv",
+          "label": "Umbilical vein",
+          "blood": "o2",
+          "text": "Oxygen-rich blood, about 80% saturated, leaves the placenta in the umbilical vein and enters the fetus at the navel.",
+          "why": "The placenta, not the lungs, loads the blood with oxygen, so the route starts in the vein that leaves it."
+        },
+        {
+          "id": "dv",
+          "label": "Ductus venosus",
+          "blood": "o2",
+          "text": "At the liver, the blood takes the ductus venosus straight into the inferior vena cava, bypassing the liver.",
+          "why": "The umbilical vein reaches the liver first; the ductus venosus is the short cut that carries part of its blood past the liver."
+        },
+        {
+          "id": "ivc",
+          "label": "Inferior vena cava",
+          "blood": "o2",
+          "text": "In the inferior vena cava, this fast, oxygen-rich stream stays partly separate from the oxygen-poor blood of the lower body.",
+          "why": "The ductus venosus empties into the inferior vena cava, which carries the blood up to the heart."
+        },
+        {
+          "id": "ra1",
+          "label": "Right atrium",
+          "text": "Entering the right atrium, the stream is aimed by the edge of the septum secundum at the foramen ovale.",
+          "why": "The inferior vena cava opens into the right atrium, and the edge of the septum secundum directs its stream."
+        },
+        {
+          "id": "fo",
+          "label": "Foramen ovale",
+          "blood": "o2",
+          "text": "The blood pushes the flap of the septum primum open and crosses into the left atrium.",
+          "why": "Right atrial pressure is higher than left before birth, because little blood returns from the lungs, so the one-way flap opens right to left."
+        },
+        {
+          "id": "la",
+          "label": "Left atrium → left ventricle",
+          "blood": "o2",
+          "text": "It joins the small amount of blood returning from the lungs and flows into the left ventricle.",
+          "why": "From the left atrium, blood takes the normal route through the mitral valve."
+        },
+        {
+          "id": "aorta",
+          "label": "Ascending aorta",
+          "blood": "o2",
+          "text": "The left ventricle pumps it into the ascending aorta, whose first branches supply the heart, head and arms.",
+          "why": "The coronary arteries and the arteries to the head and arms leave the aorta first, so the heart and brain get the best-oxygenated blood."
+        },
+        {
+          "id": "head",
+          "label": "Head and arm capillaries",
+          "blood": "exchange",
+          "text": "In the capillaries of the head and arms, the blood gives up oxygen to the tissues.",
+          "why": "The arteries to the head and arms end in capillaries, where exchange with the tissues takes place."
+        },
+        {
+          "id": "svc",
+          "label": "Superior vena cava",
+          "blood": "deo2",
+          "text": "Now oxygen-poor, it returns in the superior vena cava to the right atrium.",
+          "why": "Blood from the head and arms drains back through the superior vena cava."
+        },
+        {
+          "id": "rv",
+          "label": "Right ventricle",
+          "blood": "deo2",
+          "text": "This stream flows down from the right atrium into the right ventricle instead of crossing the foramen ovale.",
+          "why": "The superior vena cava’s stream is directed toward the tricuspid valve, so it passes to the right ventricle."
+        },
+        {
+          "id": "pt",
+          "label": "Pulmonary trunk",
+          "blood": "deo2",
+          "text": "The right ventricle pumps it into the pulmonary trunk.",
+          "why": "The right ventricle always empties into the pulmonary trunk."
+        },
+        {
+          "id": "da",
+          "label": "Ductus arteriosus",
+          "blood": "deo2",
+          "text": "Most of it bypasses the high-resistance lungs through the ductus arteriosus into the aorta.",
+          "why": "The fluid-filled lungs resist flow strongly, so pulmonary trunk pressure is slightly above aortic, and most blood takes the easier path through the ductus."
+        },
+        {
+          "id": "desc",
+          "label": "Descending aorta",
+          "blood": "deo2",
+          "text": "It joins the aorta beyond the arteries to the head and arms and flows down the descending aorta.",
+          "why": "The ductus arteriosus enters the aorta after the branches to the head and arms, so this blood goes to the lower body."
+        },
+        {
+          "id": "ua",
+          "label": "Umbilical arteries",
+          "blood": "deo2",
+          "text": "Two umbilical arteries, branches of the arteries in the pelvis, carry it out through the cord.",
+          "why": "The umbilical arteries branch from the arteries of the pelvis and return blood to the placenta."
+        },
+        {
+          "id": "plac",
+          "label": "Placenta",
+          "blood": "exchange",
+          "text": "In the villi of the placenta, it unloads carbon dioxide and loads oxygen from the mother’s blood.",
+          "why": "The placenta is the gas-exchange organ before birth, so the loop closes here and starts again."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The blood crosses the ductus arteriosus from the right atrium into the aorta.",
+            "why": "The ductus arteriosus joins the pulmonary trunk to the aorta, not the right atrium. The opening between the atria is the foramen ovale."
+          },
+          {
+            "text": "The blood flows down into the right ventricle, which pumps it through the lungs to pick up oxygen.",
+            "why": "The fetal lungs do not exchange gases, and this stream is already oxygen-rich. It crosses the foramen ovale to the left side instead."
+          }
+        ]
+      },
+      "error": {
+        "at": 11,
+        "text": "Most of it flows into the lungs, where it picks up oxygen before returning to the left atrium.",
+        "why": "Before birth the lungs are fluid-filled and their vessels are squeezed narrow, so they resist flow and exchange no gas. Most of the right ventricle’s output bypasses them through the ductus arteriosus."
+      },
+      "summary": "Umbilical vein, ductus venosus (past the liver), inferior vena cava, right atrium, foramen ovale, left atrium and ventricle, ascending aorta to the heart, head and arms; back in the superior vena cava to the right atrium, right ventricle, pulmonary trunk, ductus arteriosus (past the lungs), descending aorta, umbilical arteries and the placenta."
+    },
+    {
+      "id": "dv-heart-development",
+      "title": "How the heart forms",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "The heart is the first organ to work. It starts as mesoderm and ends as four chambers. Put the steps in order.",
+      "steps": [
+        {
+          "id": "area",
+          "label": "Cardiogenic area",
+          "text": "Around day 18 after fertilization, a horseshoe-shaped region of mesoderm at the head end of the disc is committed to forming the heart.",
+          "why": "The heart comes from mesoderm, so the first step is marking the patch that will make it."
+        },
+        {
+          "id": "cords",
+          "label": "Cardiogenic cords",
+          "text": "Cells there gather into two strands, the cardiogenic cords.",
+          "why": "The committed cells have to gather before they can form any structure."
+        },
+        {
+          "id": "tubes",
+          "label": "Endocardial tubes",
+          "text": "Each cord hollows out into a thin-walled endocardial tube, one on each side.",
+          "why": "A solid cord has to hollow out before it can carry blood."
+        },
+        {
+          "id": "fuse",
+          "label": "Tubes fuse",
+          "text": "Side-to-side folding in week 4 brings the two tubes together, and they fuse into one primitive heart tube around day 21 to 22.",
+          "why": "The tubes lie on either side until folding swings them under the front of the body, where they meet."
+        },
+        {
+          "id": "beat",
+          "label": "First beats",
+          "text": "By about day 22, the tube’s muscle cells contract rhythmically and blood begins to circulate.",
+          "why": "Once there is one tube wrapped in myocardium, its contractions can move blood."
+        },
+        {
+          "id": "loop",
+          "label": "Looping",
+          "text": "From day 23 to about day 28, the tube grows faster than the space around it and bends into an S shape, bringing the atrium up behind the ventricle.",
+          "why": "Looping acts on the already formed, beating tube, putting its regions into their adult positions."
+        },
+        {
+          "id": "cushions",
+          "label": "Endocardial cushions",
+          "text": "Endocardial cushions grow into the canal between atrium and ventricle and divide it into right and left openings.",
+          "why": "Inner walls grow from week 4 on, once looping has set the chambers in place."
+        },
+        {
+          "id": "septa",
+          "label": "Septa divide the heart",
+          "text": "The interventricular septum divides the ventricles, a spiral wall splits the truncus arteriosus into aorta and pulmonary trunk, and the atrial septa leave the foramen ovale.",
+          "why": "The walls between the chambers finish by about the end of week 7, completing four chambers with a door left between the atria."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The two tubes stay apart, one becoming the right heart and the other the left heart.",
+            "why": "The two endocardial tubes fuse into a single tube. The right and left sides are made later by walls growing inside it."
+          },
+          {
+            "text": "The tubes fuse only around day 45, weeks after each of the two separate tubes has begun to beat on its own.",
+            "why": "The tubes fuse around day 21 to 22, and the fused tube is what begins to beat by about day 22."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "From day 23 to about day 28, the tube straightens out, leaving the atrium below the ventricle.",
+        "why": "The tube bends into an S shape (looping), which brings the atrium and sinus venosus up behind the ventricle, as in the adult heart."
+      },
+      "summary": "Cardiogenic area (day 18), cardiogenic cords, paired endocardial tubes, fusion into the primitive heart tube (day 21 to 22), first beats (day 22), looping (days 23 to 28), endocardial cushions dividing the atrioventricular canal, then septa dividing the ventricles, the outflow and the atria, leaving the foramen ovale."
+    },
+    {
+      "id": "dv-lung-development",
+      "title": "How the lungs form",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "The lower airway grows as a branching tree from the gut tube and then matures through four stages. Put the steps in order.",
+      "steps": [
+        {
+          "id": "bud",
+          "label": "Laryngotracheal bud",
+          "text": "In week 4 after fertilization, an outpouching, the laryngotracheal bud, grows from the front wall of the foregut.",
+          "why": "The airway lining comes from endoderm, so it begins as a bud from the foregut."
+        },
+        {
+          "id": "split",
+          "label": "Separated from foregut",
+          "text": "A wall of tissue separates the bud from the foregut behind it, so the trachea ends up in front of the esophagus.",
+          "why": "The bud must be separated from the gut tube it grew from; if this fails, the trachea and esophagus stay connected."
+        },
+        {
+          "id": "lungbuds",
+          "label": "Two lung buds",
+          "text": "At the end of week 4, the bud’s tip splits into two lung buds, which divide into three on the right and two on the left.",
+          "why": "The tip divides once the bud has grown down; the 3 and 2 divisions set the lobes of each lung."
+        },
+        {
+          "id": "pseudo",
+          "label": "Pseudoglandular stage",
+          "text": "To about week 17 of pregnancy, the buds keep branching until every conducting airway, down to the terminal bronchioles, has formed.",
+          "why": "Conducting airways come first; the gas-exchange parts can only grow at their ends."
+        },
+        {
+          "id": "canal",
+          "label": "Canalicular stage",
+          "text": "From about weeks 16 to 26, respiratory bronchioles form, capillaries grow close to the lining, and type II alveolar cells appear.",
+          "why": "Respiratory bronchioles bud from the terminal bronchioles, so they follow the branching stage; gas exchange becomes barely possible by about week 22 to 24."
+        },
+        {
+          "id": "sacc",
+          "label": "Saccular stage",
+          "text": "From about weeks 24 to 36, thin-walled air sacs form at the ends of the airways and surfactant production rises.",
+          "why": "Sacs form at the ends of the respiratory bronchioles; enough surfactant usually comes only by weeks 34 to 36."
+        },
+        {
+          "id": "alv",
+          "label": "Alveolar stage",
+          "text": "From about week 36 into childhood, true alveoli form, most of them after birth.",
+          "why": "True alveoli are the last refinement of the sacs, and most of the adult number are made in the first years of life."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "From about weeks 16 to 26, true alveoli form in their full adult number.",
+            "why": "Most alveoli form after birth, in the alveolar stage. In weeks 16 to 26, respiratory bronchioles and close capillaries appear."
+          },
+          {
+            "text": "From about weeks 16 to 26, the lung buds first appear from the foregut and begin to divide into the lobes of each lung.",
+            "why": "The lung buds appear at the end of week 4 after fertilization, long before this stage."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "From about weeks 24 to 36, the air sacs fill with air as the fetus breathes air in through its nose.",
+        "why": "Before birth the lungs are filled with fluid that they secrete; fetal breathing movements move amniotic fluid in and out. The first air enters at birth."
+      },
+      "summary": "Laryngotracheal bud from the foregut (week 4), separated from the esophagus; two lung buds that divide into three lobes on the right and two on the left; then the pseudoglandular (conducting airways), canalicular (respiratory bronchioles, type II cells), saccular (air sacs, surfactant) and alveolar (true alveoli, mostly after birth) stages."
+    },
+    {
+      "id": "dv-male-differentiation",
+      "title": "An XY embryo becomes male",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "For six weeks, XY and XX embryos look the same. In an XY embryo, one gene sets off a chain of hormones. Put the chain in order.",
+      "steps": [
+        {
+          "id": "sry",
+          "label": "SRY switches on",
+          "text": "In week 7 after fertilization, SRY on the Y chromosome switches on in the gonad’s supporting cells.",
+          "why": "SRY is the first step: it is what makes the shared gonad take the testis path."
+        },
+        {
+          "id": "sertoli",
+          "label": "Sertoli cells, testis",
+          "text": "The supporting cells become Sertoli cells, and the gonad becomes a testis.",
+          "why": "SRY acts in the supporting cells, so they change first, and they organize the testis."
+        },
+        {
+          "id": "amh",
+          "label": "Anti-Müllerian hormone",
+          "text": "Sertoli cells secrete anti-Müllerian hormone, and the paramesonephric ducts break down.",
+          "why": "Only once Sertoli cells exist can they make this hormone, which removes the ducts that would form a uterus."
+        },
+        {
+          "id": "testo",
+          "label": "Testosterone",
+          "text": "Leydig cells, driven at first by hCG, secrete testosterone, which keeps the mesonephric ducts.",
+          "why": "The testis’s Leydig cells respond to hCG in early pregnancy; their testosterone saves the mesonephric ducts, which become the epididymis and ductus deferens."
+        },
+        {
+          "id": "dht",
+          "label": "DHT",
+          "text": "In the external structures, an enzyme converts testosterone to DHT, which grows the bump into a penis and fuses the swellings into a scrotum.",
+          "why": "DHT is made from testosterone, so it can act only after testosterone is being secreted."
+        },
+        {
+          "id": "descend",
+          "label": "Testes descend",
+          "text": "Mostly in the last three months, the testes descend through the inguinal canals into the scrotum.",
+          "why": "The testes can only move into the scrotum once the scrotum has formed, late in pregnancy."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Sertoli cells secrete testosterone, which makes the paramesonephric ducts break down.",
+            "why": "Testosterone comes from Leydig cells and keeps the mesonephric ducts. The paramesonephric ducts are removed by anti-Müllerian hormone from the Sertoli cells."
+          },
+          {
+            "text": "Leydig cells secrete estrogen, which keeps the paramesonephric ducts so that they can grow into a uterus and uterine tubes.",
+            "why": "In an XY embryo, the paramesonephric ducts are removed, not kept. They survive only when there is no anti-Müllerian hormone."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Leydig cells, driven by anti-Müllerian hormone, secrete testosterone, which makes the mesonephric ducts break down.",
+        "why": "Early on, Leydig cells are driven mainly by hCG, and later by the fetus’s own LH. Their testosterone keeps the mesonephric ducts; it is lack of testosterone that lets them break down."
+      },
+      "summary": "SRY makes the supporting cells Sertoli cells and the gonad a testis. Sertoli cells’ anti-Müllerian hormone removes the paramesonephric ducts; Leydig cells’ testosterone, driven first by hCG, keeps the mesonephric ducts; DHT made from testosterone builds the external genitalia; and the testes descend late in pregnancy."
+    },
+    {
+      "id": "dv-blood-volume-pregnancy",
+      "title": "Why blood volume rises in pregnancy",
+      "topic": "pregnancy",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A pregnant woman’s blood volume rises by about 40 to 50%, and her hematocrit falls. Put the causal chain in order.",
+      "steps": [
+        {
+          "id": "relax",
+          "label": "Arterioles relax",
+          "text": "Progesterone, nitric oxide and other signals relax the arterioles, and the placenta adds a low-resistance bed.",
+          "why": "The chain starts with the vessels: the circulation widens before any fluid is added."
+        },
+        {
+          "id": "tpr",
+          "label": "Resistance falls",
+          "text": "Total peripheral resistance falls.",
+          "why": "Relaxed arterioles and a new low-resistance bed are what lower resistance."
+        },
+        {
+          "id": "raas",
+          "label": "RAAS switches on",
+          "text": "The circulation is sensed as underfilled, and the renin–angiotensin–aldosterone system switches on.",
+          "why": "A wider circulation holding the same volume looks underfilled to the kidneys, which release renin."
+        },
+        {
+          "id": "na",
+          "label": "Sodium and water kept",
+          "text": "Aldosterone makes the kidneys keep more sodium, and water follows it.",
+          "why": "Aldosterone is the end of the renin–angiotensin–aldosterone chain; its target is sodium reabsorption."
+        },
+        {
+          "id": "plasma",
+          "label": "Plasma volume rises",
+          "text": "Plasma volume rises by about 40 to 50%, peaking around weeks 32 to 34.",
+          "why": "The retained sodium and water add to the plasma."
+        },
+        {
+          "id": "rbc",
+          "label": "Red cells rise less",
+          "text": "Erythropoietin drives the marrow to raise red cell mass, but only by about 20 to 30%.",
+          "why": "Red cells rise too, but more slowly and by less than the plasma, which sets up the next step."
+        },
+        {
+          "id": "hct",
+          "label": "Hematocrit falls",
+          "text": "Plasma outpaces red cells, so hematocrit and hemoglobin concentration fall: dilutional anemia of pregnancy.",
+          "why": "The fall is the result of the mismatch: more cells in total, but a smaller share of each liter."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The extra volume stretches the atria, so ANP rises and the kidneys keep more sodium.",
+            "why": "ANP makes the kidneys excrete sodium, not keep it. The system that is switched on is the renin–angiotensin–aldosterone system, because the widened circulation seems underfilled."
+          },
+          {
+            "text": "The fall in resistance raises blood pressure, which makes the kidneys keep more water.",
+            "why": "A fall in resistance lowers pressure, if anything. The kidneys respond to an apparently underfilled circulation by releasing renin."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Red cells outpace plasma, so hematocrit rises and the blood thickens.",
+        "why": "Plasma rises by 40 to 50% and red cells by only 20 to 30%, so the blood is diluted and the hematocrit falls, even though the total red cell mass is larger than before."
+      },
+      "summary": "Relaxed arterioles and the low-resistance placenta lower total peripheral resistance; the circulation seems underfilled, so the renin–angiotensin–aldosterone system switches on; aldosterone keeps sodium and water; plasma volume rises 40 to 50%; red cells rise only 20 to 30%; so hematocrit falls: dilutional anemia."
+    },
+    {
+      "id": "dv-preeclampsia-chain",
+      "title": "How preeclampsia develops",
+      "topic": "pregnancy",
+      "core": [
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Preeclampsia starts in the placenta early in pregnancy and shows in the mother months later. Put the chain in order.",
+      "steps": [
+        {
+          "id": "shallow",
+          "label": "Shallow remodeling",
+          "text": "Early in pregnancy, the cytotrophoblast fails to widen the spiral arteries fully.",
+          "why": "The disease begins where the placenta meets the mother’s arteries, long before any symptom."
+        },
+        {
+          "id": "short",
+          "label": "Placenta short of blood",
+          "text": "The spiral arteries stay narrow, so the placenta gets too little blood.",
+          "why": "Unremodeled arteries keep their muscle and resistance, so flow into the intervillous space is low."
+        },
+        {
+          "id": "factors",
+          "label": "Factors released",
+          "text": "The stressed placenta releases factors, such as a soluble decoy receptor protein, that block blood vessel growth factors in the mother’s blood.",
+          "why": "The underperfused placenta is what makes these factors; they are the link between the placenta and the mother’s body."
+        },
+        {
+          "id": "endo",
+          "label": "Endothelium damaged",
+          "text": "The mother’s endothelium is damaged throughout her body.",
+          "why": "The mopped-up growth factors are what keep the endothelium healthy, so the damage follows the factors."
+        },
+        {
+          "id": "signs",
+          "label": "Hypertension, protein, edema",
+          "text": "Arterioles constrict and blood pressure rises above 140/90 mm Hg after week 20; capillaries leak; protein spills into the urine; platelets fall.",
+          "why": "Every sign comes from damaged endothelium in a different organ, so they follow the damage."
+        },
+        {
+          "id": "worst",
+          "label": "Seizures or HELLP",
+          "text": "Without delivery, it can progress to seizures (eclampsia), stroke or the HELLP syndrome.",
+          "why": "The worst outcomes are the endpoint of untreated, widespread endothelial damage."
+        },
+        {
+          "id": "cure",
+          "label": "Delivering the placenta",
+          "text": "Delivering the placenta removes the source of the factors and cures the disease.",
+          "why": "The placenta drives the disease, so only removing it ends it; magnesium sulfate and blood pressure drugs buy time until then."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The mother’s heart pumps harder, raising cardiac output and so blood pressure.",
+            "why": "Preeclampsia’s high pressure comes from constricted arterioles after endothelial damage, raising resistance, not from a stronger heart."
+          },
+          {
+            "text": "The fetus releases factors that raise the mother’s blood volume.",
+            "why": "The factors come from the stressed placenta, and they damage endothelium. Leaky capillaries actually lower the mother’s plasma volume."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "Late in pregnancy, the mother’s blood volume rises too much for her arteries.",
+        "why": "Preeclampsia begins early, in the placenta, with shallow remodeling of the spiral arteries. The normal rise in blood volume is not its cause."
+      },
+      "summary": "Shallow spiral artery remodeling leaves the placenta short of blood; the stressed placenta releases factors that block vessel growth factors; the mother’s endothelium is damaged everywhere; arterioles constrict, capillaries leak, protein appears in the urine and platelets fall; untreated, eclampsia or HELLP can follow; delivering the placenta cures it."
+    },
+    {
+      "id": "dv-labor-stages",
+      "title": "The stages of labor",
+      "topic": "labor-birth",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "From the first true contractions to the uterus shrinking back. Each stage of labor is defined by the event that ends it. Put the events in order.",
+      "steps": [
+        {
+          "id": "ready",
+          "label": "Uterus and cervix ready",
+          "text": "In the last weeks, the myometrium gains gap junctions and oxytocin receptor proteins, and the cervix ripens.",
+          "why": "The uterus must be able to contract as one unit, and the cervix must be soft, before contractions can open it."
+        },
+        {
+          "id": "true",
+          "label": "True labor begins",
+          "text": "Regular contractions begin that grow stronger and closer together and start to thin and open the cervix.",
+          "why": "True labor is defined by its effect on the cervix, so it can start only once the cervix is ripe."
+        },
+        {
+          "id": "latent",
+          "label": "Latent phase",
+          "text": "In the latent phase, the cervix softens, thins and opens slowly over many hours.",
+          "why": "The first stage starts slowly: the cervix must thin and open a few centimeters before it can open quickly."
+        },
+        {
+          "id": "active",
+          "label": "Active phase",
+          "text": "From about 6 cm, the cervix opens faster, often 1 cm an hour or more, with contractions every 2 to 3 minutes.",
+          "why": "The active phase follows the latent phase within stage 1, once the cervix reaches about 6 cm."
+        },
+        {
+          "id": "full",
+          "label": "Full dilation: 10 cm",
+          "text": "The cervix reaches full dilation at 10 cm, ending the dilation stage.",
+          "why": "Full dilation is the event that ends stage 1."
+        },
+        {
+          "id": "push",
+          "label": "Pushing and crowning",
+          "text": "The head presses on the pelvic floor, she pushes with each contraction, and the head appears at the vaginal opening.",
+          "why": "The head can leave the uterus only once the cervix is fully open, so pushing and crowning belong to stage 2."
+        },
+        {
+          "id": "born",
+          "label": "Baby born",
+          "text": "The head is born and turns, the shoulders follow one at a time, and the body slips out, ending the expulsion stage.",
+          "why": "The birth of the baby is the event that ends stage 2."
+        },
+        {
+          "id": "separate",
+          "label": "Placenta separates",
+          "text": "The uterus keeps contracting and shrinks, and the placenta, which cannot shrink, shears away from the wall.",
+          "why": "Stage 3 begins with the baby out; the shrinking uterus is what shears the placenta off."
+        },
+        {
+          "id": "afterbirth",
+          "label": "Afterbirth delivered",
+          "text": "Further contractions push the placenta and membranes out, ending the placental stage.",
+          "why": "Delivery of the afterbirth is the event that ends stage 3."
+        },
+        {
+          "id": "clamp",
+          "label": "Vessels clamped",
+          "text": "The firmly contracted myometrium pinches the vessels of the placental site shut, and clotting seals them.",
+          "why": "Once the placenta is off, the open vessels must be closed; the crisscrossing muscle fibers, the “living ligatures”, do this."
+        },
+        {
+          "id": "involution",
+          "label": "Involution and lochia",
+          "text": "Over about six weeks, the uterus shrinks back and lochia clears as the placental site heals.",
+          "why": "The postpartum period follows birth, once the placental hormones are gone."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The waters break, which always ends the dilation stage.",
+            "why": "The membranes usually tear during the first stage but can tear before labor or not until the second. The event that ends stage 1 is full dilation."
+          },
+          {
+            "text": "The cervix reaches full dilation at about 4 cm, wide enough for the head, ending the dilation stage.",
+            "why": "Full dilation is about 10 cm, wide enough for the head. About 6 cm is where the active phase usually begins."
+          }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "The placenta shrinks along with the uterus and stays firmly attached until it is pulled out.",
+        "why": "The placenta cannot shrink. As the uterus contracts and its wall shrinks, the placenta shears away, and blood collecting behind it helps peel it off."
+      },
+      "summary": "The myometrium gains gap junctions and oxytocin receptor proteins and the cervix ripens; true labor opens the cervix, slowly in the latent phase and faster from about 6 cm; full dilation at 10 cm ends stage 1; pushing and crowning lead to birth, ending stage 2; the placenta separates and is delivered, ending stage 3; the contracted uterus clamps its vessels, then involutes over about six weeks as lochia clears."
+    },
+    {
+      "id": "dv-birth-circulation",
+      "title": "The circulation switches over at birth",
+      "topic": "postnatal-lactation",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "In the minutes to days after birth, the fetal shunts close because the pressures that held them open reverse. Put the chain in causal order.",
+      "steps": [
+        {
+          "id": "air",
+          "label": "First breaths",
+          "text": "The first breaths fill the alveoli with air, stretching the lungs open and raising alveolar oxygen.",
+          "why": "Everything starts with air in the lungs; before it, the lungs were fluid-filled and low in oxygen."
+        },
+        {
+          "id": "pvr",
+          "label": "Lung resistance falls",
+          "text": "Rising oxygen and nitric oxide relax the pulmonary arterioles, and pulmonary vascular resistance drops sharply.",
+          "why": "The arterioles were held narrow by low oxygen, so they relax only once oxygen arrives."
+        },
+        {
+          "id": "flow",
+          "label": "Lung blood flow rises",
+          "text": "Blood flow through the lungs rises about eightfold within minutes.",
+          "why": "With resistance far lower, the right ventricle’s output flows into the lungs."
+        },
+        {
+          "id": "la",
+          "label": "Left atrial pressure rises",
+          "text": "Much more blood returns to the left atrium, and with no umbilical flow reaching the right atrium, left pressure rises above right.",
+          "why": "The extra lung blood has to come back through the pulmonary veins to the left atrium."
+        },
+        {
+          "id": "fo",
+          "label": "Foramen ovale shut",
+          "text": "The higher left pressure presses the septum primum against the rim of the foramen ovale, closing it.",
+          "why": "The flap can only be pressed shut once left atrial pressure exceeds right."
+        },
+        {
+          "id": "reverse",
+          "label": "Ductus flow reverses",
+          "text": "Aortic pressure is now above pulmonary pressure, so flow through the ductus arteriosus reverses and oxygen-rich blood reaches its wall.",
+          "why": "The same pressure reversal, low lung resistance plus higher systemic resistance after the cord is clamped, turns the ductus flow around."
+        },
+        {
+          "id": "constrict",
+          "label": "Ductus constricts",
+          "text": "Rising oxygen and falling prostaglandin E2 make the ductus’s smooth muscle contract, closing it in one to three days.",
+          "why": "The ductus closes only after oxygen-rich blood reaches it and the placenta’s prostaglandin supply is gone."
+        },
+        {
+          "id": "ligament",
+          "label": "Ligamentum arteriosum",
+          "text": "Over the next weeks, the closed ductus fills with fibrous tissue and becomes the ligamentum arteriosum.",
+          "why": "Fibrous closure is the permanent seal that follows the functional closure."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The pulmonary arterioles constrict further, so resistance in the lungs rises.",
+            "why": "Oxygen relaxes pulmonary arterioles. Low oxygen is what kept them narrow before birth."
+          },
+          {
+            "text": "The ductus arteriosus closes first, forcing blood into the lungs.",
+            "why": "The ductus closes over one to three days, after the pressures have reversed. The first change is the fall in lung resistance."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The higher right atrial pressure pushes the flap of the foramen ovale wide open.",
+        "why": "After birth, left atrial pressure rises above right, because more blood returns from the lungs and none arrives from the umbilical vein. The flap is pressed shut, not open."
+      },
+      "summary": "Air in the lungs raises oxygen, relaxing the pulmonary arterioles; lung resistance falls and lung flow rises; more blood returns to the left atrium, so left pressure exceeds right and the foramen ovale is pressed shut; aortic pressure exceeds pulmonary, so ductus flow reverses; oxygen and falling prostaglandin E2 constrict the ductus, which becomes the ligamentum arteriosum."
+    },
+    {
+      "id": "dv-milk-ejection",
+      "title": "The milk ejection reflex",
+      "topic": "postnatal-lactation",
+      "core": [
+        "communication"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "Milk made in the alveoli has to be squeezed toward the nipple. The let-down is a neuroendocrine reflex: a nerve signal in, a hormone out. Put its steps in order.",
+      "steps": [
+        {
+          "id": "suckle",
+          "label": "Baby suckles",
+          "text": "The baby latches on and suckles.",
+          "why": "Suckling is the stimulus that starts the reflex."
+        },
+        {
+          "id": "mech",
+          "label": "Nipple mechanoreceptors",
+          "text": "Suckling stimulates mechanoreceptors in the nipple and areola.",
+          "why": "The touch and pull of suckling have to be sensed before any signal can travel."
+        },
+        {
+          "id": "aff",
+          "label": "Afferent nerves",
+          "text": "Afferent nerve signals travel to the hypothalamus.",
+          "why": "The sensory signal travels along nerves to the brain."
+        },
+        {
+          "id": "hypo",
+          "label": "Hypothalamus",
+          "text": "Oxytocin-making neurons in the hypothalamus fire.",
+          "why": "The hypothalamus receives the signal and activates the neurons that make oxytocin."
+        },
+        {
+          "id": "oxy",
+          "label": "Oxytocin into the blood",
+          "text": "Their axon endings release oxytocin from the posterior pituitary into the blood.",
+          "why": "Oxytocin is stored in the axon endings in the posterior pituitary, so it is released there, into the blood."
+        },
+        {
+          "id": "myo",
+          "label": "Myoepithelial cells contract",
+          "text": "Oxytocin makes the myoepithelial cells around each alveolus contract.",
+          "why": "The hormone has to reach the breast in the blood before it can act on these cells."
+        },
+        {
+          "id": "eject",
+          "label": "Milk ejected",
+          "text": "Milk is squeezed into the ducts and flows toward the nipple, often within a minute of latching and several times in a feed.",
+          "why": "The squeeze is what moves the milk; this is the response, and it ends when the baby stops feeding."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The anterior pituitary releases prolactin, which squeezes milk out of the alveoli.",
+            "why": "Prolactin makes milk for the next feed; it does not eject it. Ejection needs oxytocin from the posterior pituitary."
+          },
+          {
+            "text": "The posterior pituitary releases oxytocin straight into the milk ducts.",
+            "why": "Oxytocin is a hormone released into the blood, which carries it to the breast."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Oxytocin makes the alveolar cells make more milk for this feed.",
+        "why": "Making milk is prolactin’s job, for the next feed. Oxytocin makes the myoepithelial cells contract and push out the milk already made."
+      },
+      "summary": "Suckling stimulates mechanoreceptors in the nipple and areola; afferent nerves carry the signal to the hypothalamus; its neurons release oxytocin from the posterior pituitary into the blood; oxytocin makes the myoepithelial cells contract; milk is ejected. It is a neuroendocrine reflex that stops when suckling stops (many exams call it positive feedback)."
+    },
+    {
+      "id": "dv-milk-production",
+      "title": "Milk comes in and is made",
+      "topic": "postnatal-lactation",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Full milk production starts days after birth, and each feed sets up the next. Put the chain in order.",
+      "steps": [
+        {
+          "id": "placenta",
+          "label": "Placenta delivered",
+          "text": "The placenta is delivered, removing the main source of progesterone.",
+          "why": "The brake on milk production is placental progesterone, so the chain starts with its source leaving."
+        },
+        {
+          "id": "p4",
+          "label": "Progesterone falls",
+          "text": "Progesterone falls within days, while prolactin stays high.",
+          "why": "With its source gone, progesterone clears from the blood over a few days."
+        },
+        {
+          "id": "in",
+          "label": "Milk comes in",
+          "text": "About 30 to 72 hours after birth, the alveolar cells switch on full production and the breasts become full.",
+          "why": "Once progesterone no longer blocks prolactin’s action, the alveolar cells respond to it fully."
+        },
+        {
+          "id": "suckle",
+          "label": "Suckling signals",
+          "text": "At each feed, suckling sends nerve signals from the nipple to the hypothalamus.",
+          "why": "After milk has come in, each feed is what keeps production going."
+        },
+        {
+          "id": "dopa",
+          "label": "Less dopamine",
+          "text": "The hypothalamus releases less dopamine.",
+          "why": "Dopamine is the main brake on prolactin; suckling signals lower it."
+        },
+        {
+          "id": "prl",
+          "label": "Prolactin surges",
+          "text": "Prolactin from the anterior pituitary surges, peaking about half an hour into the feed.",
+          "why": "With less dopamine holding it back, the anterior pituitary releases more prolactin."
+        },
+        {
+          "id": "next",
+          "label": "Milk for the next feed",
+          "text": "Prolactin acts on the alveolar cells, which make milk for the next feed.",
+          "why": "Prolactin’s target is the alveolar cells, and what they make now is removed at the following feed."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The hypothalamus releases more dopamine, which stimulates prolactin.",
+            "why": "Dopamine inhibits prolactin. Suckling lowers dopamine, releasing the brake."
+          },
+          {
+            "text": "The posterior pituitary releases prolactin into the blood.",
+            "why": "Prolactin comes from the anterior pituitary. The posterior pituitary releases oxytocin."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "Prolactin falls within days, while progesterone stays high.",
+        "why": "It is the other way round: progesterone falls once the placenta is gone, while prolactin stays high. That switch is what lets milk come in."
+      },
+      "summary": "Delivering the placenta removes progesterone, the brake on prolactin’s action; milk comes in 30 to 72 hours after birth. At each feed, suckling lowers hypothalamic dopamine, prolactin surges, and the alveolar cells make milk for the next feed. Removing milk often keeps supply up."
+    },
+    {
+      "id": "dv-punnett-method",
+      "title": "Solving a Punnett square",
+      "topic": "inheritance",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "Two parents are both heterozygous carriers of a recessive disease allele. Put the steps for finding each child’s risk in order.",
+      "steps": [
+        {
+          "id": "geno",
+          "label": "Write the genotypes",
+          "text": "Write each parent’s genotype: Cc and Cc.",
+          "why": "Everything else is worked out from what each parent carries, so start there."
+        },
+        {
+          "id": "gametes",
+          "label": "List the gametes",
+          "text": "List each parent’s possible gametes: C or c, 1 in 2 each, by the law of segregation.",
+          "why": "Segregation in meiosis puts one allele in each gamete, so the gametes come from the genotypes."
+        },
+        {
+          "id": "grid",
+          "label": "Set up the grid",
+          "text": "Write one parent’s gametes across the top and the other’s down the side.",
+          "why": "The grid pairs every gamete of one parent with every gamete of the other."
+        },
+        {
+          "id": "fill",
+          "label": "Fill the boxes",
+          "text": "Fill each box with the allele from its column plus the allele from its row: CC, Cc, Cc, cc.",
+          "why": "Each box is one equally likely combination of two gametes, so it is filled from the headings."
+        },
+        {
+          "id": "count",
+          "label": "Count genotypes",
+          "text": "Count the genotypes: 1 CC : 2 Cc : 1 cc.",
+          "why": "Counting comes after the boxes are filled."
+        },
+        {
+          "id": "pheno",
+          "label": "Translate to phenotypes",
+          "text": "Translate to phenotypes: CC and Cc are healthy, cc is affected.",
+          "why": "Which genotypes show the disease depends on dominance, applied to the counted genotypes."
+        },
+        {
+          "id": "risk",
+          "label": "State each child’s risk",
+          "text": "State the risk for each child: 1 in 4 affected, and each pregnancy starts fresh.",
+          "why": "Each box is a probability for each child, drawn anew every pregnancy, not a forecast for a family of four."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "List each parent’s gametes: every gamete carries both C and c.",
+            "why": "Gametes are haploid: the two alleles separate in meiosis, so each gamete carries only one."
+          },
+          {
+            "text": "Decide which parent’s allele is dominant, because the allele passed on by the father is always the dominant one.",
+            "why": "Dominance is a relationship between alleles, not parents. It does not depend on which parent passes the allele on."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "State the risk: in a family of four children, exactly one will be affected.",
+        "why": "The 1 in 4 is a chance for each child. Gametes are drawn fresh for every pregnancy, so a family could have none, one or several affected children."
+      },
+      "summary": "Write the genotypes, list each parent’s gametes (one allele each, by segregation), set up the grid, fill each box from its row and column, count the genotypes, translate them into phenotypes using dominance, and state the chance for each child."
+    },
+    {
+      "id": "dv-karyotype",
+      "title": "Making a karyotype",
+      "topic": "inheritance",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A laboratory checks a person’s chromosomes for an extra or missing one. Put the steps in order.",
+      "steps": [
+        {
+          "id": "collect",
+          "label": "Collect cells",
+          "text": "Collect cells that can divide, from blood or, before birth, from amniotic fluid or the placenta.",
+          "why": "Chromosomes are only visible in dividing cells, so the sample must contain cells that can be made to divide."
+        },
+        {
+          "id": "grow",
+          "label": "Grow the cells",
+          "text": "Grow the cells in culture so that many of them divide.",
+          "why": "Growing the cells gives many cells in mitosis to look at."
+        },
+        {
+          "id": "stop",
+          "label": "Stop in metaphase",
+          "text": "Stop the dividing cells in metaphase, when the chromosomes are most condensed.",
+          "why": "Chromosomes are shortest and thickest in metaphase, so they are easiest to see and count."
+        },
+        {
+          "id": "stain",
+          "label": "Stain bands",
+          "text": "Stain the chromosomes to show their bands.",
+          "why": "Bands tell apart chromosomes of similar size, so staining comes before sorting."
+        },
+        {
+          "id": "photo",
+          "label": "Photograph",
+          "text": "Photograph the chromosomes of a single cell.",
+          "why": "An image of one cell lets every chromosome be counted and arranged."
+        },
+        {
+          "id": "arrange",
+          "label": "Arrange in pairs",
+          "text": "Arrange the chromosomes in pairs by size, centromere position and banding.",
+          "why": "Pairing needs the stained, photographed chromosomes; it reveals any extra or missing one."
+        },
+        {
+          "id": "write",
+          "label": "Write the result",
+          "text": "Write the karyotype as a count and the sex chromosomes, such as 46,XX or 47,XY,+21.",
+          "why": "The written result sums up the count and sex chromosomes found in the arranged pairs."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Stop the cells in interphase, when the chromosomes are most spread out.",
+            "why": "In interphase the chromatin is loose and individual chromosomes cannot be seen. Metaphase is when they are most condensed."
+          },
+          {
+            "text": "Break the cells open and read the sequence of every gene before looking at the chromosomes under the microscope.",
+            "why": "A karyotype looks at whole chromosomes under a microscope; it does not read gene sequences."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Arrange the chromosomes in order of when each was copied.",
+        "why": "Chromosomes are paired by size, centromere position and banding, which is what lets an extra chromosome, such as a third chromosome 21, stand out."
+      },
+      "summary": "Collect cells that can divide, grow them, stop them in metaphase, stain the bands, photograph one cell’s chromosomes, arrange them in pairs by size, centromere and banding, and write the result, such as 46,XY or 47,XX,+21."
+    },
+    {
+      "id": "dv-telomere-senescence",
+      "title": "From telomere shortening to senescence",
+      "topic": "aging",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Most body cells make almost no telomerase. Follow what happens to one as it keeps dividing. Put the chain in order.",
+      "steps": [
+        {
+          "id": "divide",
+          "label": "The cell divides",
+          "text": "The cell copies its DNA and divides.",
+          "why": "Telomere loss happens during DNA copying, so the chain starts with a division."
+        },
+        {
+          "id": "endrep",
+          "label": "End-replication problem",
+          "text": "DNA polymerase cannot copy the very tip of one new strand, because nothing lies beyond the last primer.",
+          "why": "The polymerase needs a primer and adds nucleotides to one end only, so each copy leaves a small gap at the tip."
+        },
+        {
+          "id": "shorter",
+          "label": "Telomeres shorten",
+          "text": "Each telomere loses about 50 to 100 base pairs.",
+          "why": "The uncopied tip is lost from the chromosome end, and with no telomerase nothing adds it back."
+        },
+        {
+          "id": "short",
+          "label": "Critically short",
+          "text": "After many divisions, a telomere becomes too short to hold its protective cap.",
+          "why": "Telomeres start about 10,000 base pairs long, so it takes many rounds of loss to reach this point."
+        },
+        {
+          "id": "damage",
+          "label": "Read as damaged DNA",
+          "text": "The bare end is read as damaged DNA, and checkpoint proteins such as p53 are activated.",
+          "why": "The cap is what stops the cell from mistaking the end for a break; once it fails, the damage response starts."
+        },
+        {
+          "id": "stop",
+          "label": "Apoptosis or senescence",
+          "text": "The cell either dies by apoptosis or enters senescence, stopping division for good.",
+          "why": "These are the two outcomes of the checkpoint; this is the Hayflick limit at work."
+        },
+        {
+          "id": "sasp",
+          "label": "Inflammatory signals",
+          "text": "The senescent cell releases inflammatory cytokines and protein-digesting enzymes that harm the tissue around it.",
+          "why": "Senescent cells are alive and active, and their secretions add to the low-grade inflammation of aging."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Telomerase removes a repeat from each end every time the cell divides.",
+            "why": "Telomerase adds repeats; it does not remove them. The loss comes from the end-replication problem in cells that make almost no telomerase."
+          },
+          {
+            "text": "Reactive oxygen species leaking from the mitochondria cut exactly one repeat off each telomere every time the cell divides.",
+            "why": "Oxidative damage can harm telomeres, but the steady loss with each division comes from how DNA polymerase copies the ends."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The cell switches on telomerase and divides without limit.",
+        "why": "That is what most cancer cells do. A normal cell with a failed telomere is stopped by its checkpoints: it dies by apoptosis or enters senescence."
+      },
+      "summary": "Each division leaves the chromosome tip uncopied (the end-replication problem), so telomeres lose 50 to 100 base pairs; after many divisions a telomere is too short to keep its cap; the bare end is read as damaged DNA and p53 is activated; the cell undergoes apoptosis or senescence, and a senescent cell releases inflammatory signals."
     }
   ]
 }

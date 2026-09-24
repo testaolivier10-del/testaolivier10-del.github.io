@@ -22849,6 +22849,2167 @@
         }
       }
     ]
+  },
+  {
+   "id": "dv-pregnancy-hormones",
+   "title": "hCG, progesterone, estrogens and hPL across pregnancy",
+   "topic": "placenta",
+   "core": [
+    "communication"
+   ],
+   "intro": "Four hormones of pregnancy, each drawn as a percent of its own highest level in a typical pregnancy, since their actual amounts differ a thousandfold. Weeks are counted from the first day of the last menstrual period. The numbers are typical, not from one woman.",
+   "alt": "A line graph of four hormones against weeks of pregnancy from 0 to 40, each as a percent of its own peak. hCG rises from about week 4, peaks at 100% at week 10, falls to about 20% by week 18 and stays near 15 to 18% to the end. Progesterone starts near 10%, stays nearly flat until week 10, then climbs steadily to 100% at week 40. Estrogens start near zero and climb, more and more steeply, to 100% at week 40. hPL starts near zero at week 4 and rises steadily to a peak near week 38. A shaded band from week 7 to 9 marks where the main source of progesterone shifts from the corpus luteum to the placenta.",
+   "x": {
+    "min": 0,
+    "max": 40,
+    "label": "Week of pregnancy",
+    "unit": "from last period",
+    "ticks": [
+     0,
+     8,
+     16,
+     24,
+     32,
+     40
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.3,
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Level, share of its own peak",
+      "unit": "%",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "hcg",
+       "cls": "para",
+       "curve": "smooth",
+       "pts": [
+        [
+         3,
+         0
+        ],
+        [
+         4,
+         1
+        ],
+        [
+         5,
+         5
+        ],
+        [
+         6,
+         12
+        ],
+        [
+         7,
+         30
+        ],
+        [
+         8,
+         60
+        ],
+        [
+         9,
+         88
+        ],
+        [
+         10,
+         100
+        ],
+        [
+         11,
+         95
+        ],
+        [
+         12,
+         80
+        ],
+        [
+         14,
+         50
+        ],
+        [
+         16,
+         28
+        ],
+        [
+         18,
+         20
+        ],
+        [
+         20,
+         17
+        ],
+        [
+         24,
+         15
+        ],
+        [
+         28,
+         15
+        ],
+        [
+         32,
+         16
+        ],
+        [
+         36,
+         18
+        ],
+        [
+         40,
+         18
+        ]
+       ],
+       "label": "hCG",
+       "labelAt": [
+        11.5,
+        102
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "p4",
+       "cls": "eff",
+       "curve": "smooth",
+       "pts": [
+        [
+         3,
+         8
+        ],
+        [
+         4,
+         12
+        ],
+        [
+         6,
+         13
+        ],
+        [
+         8,
+         13
+        ],
+        [
+         10,
+         15
+        ],
+        [
+         12,
+         18
+        ],
+        [
+         16,
+         25
+        ],
+        [
+         20,
+         33
+        ],
+        [
+         24,
+         43
+        ],
+        [
+         28,
+         55
+        ],
+        [
+         32,
+         68
+        ],
+        [
+         36,
+         85
+        ],
+        [
+         40,
+         100
+        ]
+       ],
+       "label": "progesterone",
+       "labelAt": [
+        29,
+        40
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "est",
+       "cls": "accent",
+       "dash": true,
+       "curve": "smooth",
+       "pts": [
+        [
+         4,
+         1
+        ],
+        [
+         8,
+         3
+        ],
+        [
+         12,
+         7
+        ],
+        [
+         16,
+         13
+        ],
+        [
+         20,
+         22
+        ],
+        [
+         24,
+         32
+        ],
+        [
+         28,
+         45
+        ],
+        [
+         32,
+         60
+        ],
+        [
+         36,
+         80
+        ],
+        [
+         40,
+         100
+        ]
+       ],
+       "label": "estrogens",
+       "labelAt": [
+        33,
+        50
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "hpl",
+       "cls": "lo",
+       "dash": true,
+       "curve": "smooth",
+       "pts": [
+        [
+         4,
+         0
+        ],
+        [
+         8,
+         3
+        ],
+        [
+         12,
+         10
+        ],
+        [
+         16,
+         22
+        ],
+        [
+         20,
+         38
+        ],
+        [
+         24,
+         52
+        ],
+        [
+         28,
+         66
+        ],
+        [
+         32,
+         80
+        ],
+        [
+         36,
+         95
+        ],
+        [
+         38,
+         100
+        ],
+        [
+         40,
+         98
+        ]
+       ],
+       "label": "hPL",
+       "labelAt": [
+        26,
+        72
+       ],
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "shift",
+     "x0": 7,
+     "x1": 9,
+     "label": "progesterone source shifts",
+     "show": true
+    },
+    {
+     "id": "due",
+     "x0": 3.5,
+     "x1": 4.5,
+     "label": "period due"
+    },
+    {
+     "id": "nausea",
+     "x0": 9,
+     "x1": 12,
+     "label": "hCG at its highest"
+    },
+    {
+     "id": "late",
+     "x0": 16,
+     "x1": 40,
+     "label": "hCG low and steady"
+    }
+   ],
+   "questions": [
+    {
+     "id": "hcg-peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "At about which week of pregnancy does hCG peak?",
+     "answer": 10,
+     "tol": 1,
+     "unit": "week",
+     "show": {
+      "x": 10,
+      "y": 100
+     },
+     "why": "About week 10 on the clinical count, which is about 7 to 8 weeks after fertilization. Until then hCG roughly doubles every two to three days."
+    },
+    {
+     "id": "hcg-late",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read hCG at week 24, as a percent of its peak.",
+     "answer": 15,
+     "tol": 4,
+     "unit": "%",
+     "show": {
+      "x": 24,
+      "y": 15
+     },
+     "why": "About 15%. After its peak hCG falls to a low plateau for the rest of pregnancy. Why it falls is not fully known, but the fall does no harm: by then the placenta makes enough progesterone itself."
+    },
+    {
+     "id": "source-shift",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which weeks does the main source of progesterone shift from the corpus luteum to the placenta?",
+     "options": [
+      "Weeks 7 to 9",
+      "Weeks 3 to 5",
+      "Weeks 16 to 20",
+      "Weeks 36 to 40"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "shift"
+     },
+     "why": {
+      "correct": "From about weeks 7 to 9 the placenta takes over progesterone production. Removing the corpus luteum before about week 7 ends the pregnancy unless progesterone is given; from about week 9, it does no harm.",
+      "options": [
+       "Right: the shaded band.",
+       "In weeks 3 to 5 the embryo is only just implanting, and the corpus luteum, rescued by hCG, is the only real source.",
+       "By weeks 16 to 20 the takeover is long finished; progesterone is already climbing on the placenta’s output.",
+       "At the end of pregnancy the placenta has been the source for months; progesterone stays high right up to delivery."
+      ]
+     }
+    },
+    {
+     "id": "test",
+     "type": "phase",
+     "level": "apply",
+     "diff": 1,
+     "q": "Around when does a home urine pregnancy test usually first turn positive?",
+     "options": [
+      "About week 4, around the day the period is due",
+      "About week 10, when hCG reaches its highest level of the pregnancy",
+      "About week 1, the first day of the last period",
+      "About week 20, when hPL is halfway to its peak"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "due"
+     },
+     "why": {
+      "correct": "hCG enters the mother’s blood 8 to 10 days after fertilization and spills into her urine. By the day her period is due, week 4 on the clinical count, there is usually enough to detect, although it is still a tiny share of its later peak.",
+      "options": [
+       "Right: the test turns positive long before the peak.",
+       "The test does not wait for the peak; it detects hCG while it is still low and doubling.",
+       "Week 1 is before ovulation, so there is no embryo and no hCG yet.",
+       "hPL is not what the test detects; the test uses antibodies against the part unique to hCG."
+      ]
+     }
+    },
+    {
+     "id": "nausea",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "topic": "pregnancy",
+     "q": "Nausea and vomiting of pregnancy are usually worst in weeks 9 to 12. Which hormone curve peaks in that stretch?",
+     "options": [
+      "hCG",
+      "Progesterone",
+      "Estrogens",
+      "hPL"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "nausea"
+     },
+     "why": {
+      "correct": "Nausea peaks with hCG around weeks 9 to 12. A placental hormone that acts on the brainstem’s vomiting area, GDF15, is now thought to be a main driver, and it rises over the same weeks.",
+      "options": [
+       "Right: hCG peaks at week 10.",
+       "Progesterone is still low and climbing slowly at weeks 9 to 12; it keeps rising long after nausea fades.",
+       "Estrogens are near their lowest in these weeks and highest at term, when nausea has usually gone.",
+       "hPL is only about a tenth of its peak at week 12 and rises steadily after that."
+      ]
+     }
+    },
+    {
+     "id": "small-placenta",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "In a pregnancy with placental insufficiency, the placenta, and its syncytiotrophoblast, is much smaller than usual. How does the hPL curve change?",
+     "options": [
+      "It rises less and ends well below the usual peak",
+      "It rises higher, to make up for the small placenta",
+      "It peaks earlier, at week 10, like hCG",
+      "It does not change, because the pituitary makes hPL"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "hpl-small",
+        "panel": 0,
+        "cls": "lo",
+        "curve": "smooth",
+        "pts": [
+         [
+          4,
+          0
+         ],
+         [
+          8,
+          2
+         ],
+         [
+          12,
+          7
+         ],
+         [
+          16,
+          15
+         ],
+         [
+          20,
+          25
+         ],
+         [
+          24,
+          34
+         ],
+         [
+          28,
+          42
+         ],
+         [
+          32,
+          50
+         ],
+         [
+          36,
+          57
+         ],
+         [
+          40,
+          60
+         ]
+        ],
+        "label": "small placenta",
+        "labelAt": [
+         30,
+         36
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The syncytiotrophoblast makes hPL in proportion to its own mass, which is why hPL climbs as the placenta grows. A small placenta makes less, so hPL runs lower, one reason a low hPL can signal a failing placenta.",
+      "options": [
+       "Right: less syncytiotrophoblast, less hPL.",
+       "hPL is not regulated upward to match the fetus’s needs; its output follows the amount of placental tissue.",
+       "The shape follows placental growth, which continues to late pregnancy; only hCG peaks early.",
+       "hPL is made by the placenta, not the pituitary."
+      ]
+     }
+    },
+    {
+     "id": "no-fetal-adrenal",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A fetus’s adrenal cortex barely works, while the placenta is healthy. How does the estrogen curve change?",
+     "options": [
+      "It stays far lower, because the placenta lacks the fetal androgen it converts",
+      "It rises higher, because the placenta makes estrogens from cholesterol by itself",
+      "It is unchanged, because the mother’s ovaries make these estrogens",
+      "It falls to zero only after birth"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "est-low",
+        "panel": 0,
+        "cls": "accent",
+        "curve": "smooth",
+        "pts": [
+         [
+          4,
+          1
+         ],
+         [
+          8,
+          2
+         ],
+         [
+          12,
+          3
+         ],
+         [
+          16,
+          4
+         ],
+         [
+          20,
+          6
+         ],
+         [
+          24,
+          8
+         ],
+         [
+          28,
+          10
+         ],
+         [
+          32,
+          12
+         ],
+         [
+          36,
+          15
+         ],
+         [
+          40,
+          18
+         ]
+        ],
+        "label": "little fetal androgen",
+        "labelAt": [
+         21,
+         16
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The placenta lacks the enzymes to build estrogens from cholesterol, so it converts an androgen made by the fetal adrenal cortex. Without that supply, estrogen output, mostly estriol, stays low: the placenta and fetus make estrogens together.",
+      "options": [
+       "Right: no fetal androgen, little estrogen.",
+       "The placenta cannot build estrogens from cholesterol alone; that is exactly why it depends on the fetal androgen.",
+       "In pregnancy nearly all the estrogen comes from the placenta, not the mother’s ovaries.",
+       "The fall at birth follows delivery of the placenta; this change is present all through pregnancy."
+      ]
+     }
+    },
+    {
+     "id": "ectopic",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "topic": "pregnancy",
+     "q": "In an ectopic pregnancy implanted in a uterine tube, how does the early hCG curve usually differ from a healthy pregnancy’s?",
+     "options": [
+      "It rises more slowly than the usual doubling every two to three days",
+      "It rises faster and peaks earlier",
+      "It is exactly the same as a healthy pregnancy’s until the tube ruptures",
+      "hCG is absent, so a urine pregnancy test stays negative throughout"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "hcg-ectopic",
+        "panel": 0,
+        "cls": "para",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          3,
+          0
+         ],
+         [
+          4,
+          1
+         ],
+         [
+          5,
+          2.5
+         ],
+         [
+          6,
+          5
+         ],
+         [
+          7,
+          8
+         ],
+         [
+          8,
+          12
+         ]
+        ],
+        "label": "slow rise",
+        "labelAt": [
+         8.5,
+         16
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The trophoblast in a thin tube wall cannot grow and secrete as it would in the endometrium, so hCG often rises more slowly than the usual doubling. A positive test with a slow rise, one-sided pain and no pregnancy seen in the uterus points to an ectopic pregnancy.",
+      "options": [
+       "Right: a slow rise is a warning sign.",
+       "A faster rise is not the typical pattern of an ectopic pregnancy.",
+       "The rise usually differs well before rupture, which is why serial hCG levels help find it early.",
+       "The trophoblast still makes hCG, so the test is positive."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "dv-fetal-growth",
+   "title": "Fetal weight from week 20 to birth",
+   "topic": "fetal-development-circulation",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "Typical (median) fetal weight in the second half of pregnancy, from ultrasound-based growth charts, in weeks from the last menstrual period. Real babies vary widely around these values.",
+   "alt": "A line graph of fetal weight in grams against weeks of pregnancy from 20 to 40. Weight rises slowly at first and then faster: about 330 g at week 20, 670 g at week 24, about 1,200 g at week 28, about 1,950 g at week 32, about 2,800 g at week 36 and about 3,600 g at week 40. Shaded bands mark the edge of viability at weeks 22 to 24 and term from week 37.",
+   "x": {
+    "min": 20,
+    "max": 40,
+    "label": "Week of pregnancy",
+    "unit": "from last period",
+    "ticks": [
+     20,
+     24,
+     28,
+     32,
+     36,
+     40
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 4600,
+      "label": "Fetal weight",
+      "unit": "g",
+      "ticks": [
+       0,
+       1000,
+       2000,
+       3000,
+       4000
+      ]
+     },
+     "series": [
+      {
+       "id": "fw",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         20,
+         331
+        ],
+        [
+         22,
+         478
+        ],
+        [
+         24,
+         670
+        ],
+        [
+         26,
+         913
+        ],
+        [
+         28,
+         1210
+        ],
+        [
+         30,
+         1559
+        ],
+        [
+         32,
+         1953
+        ],
+        [
+         34,
+         2377
+        ],
+        [
+         36,
+         2813
+        ],
+        [
+         38,
+         3236
+        ],
+        [
+         40,
+         3619
+        ]
+       ],
+       "label": "typical fetus",
+       "labelAt": [
+        33.5,
+        1750
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "viability",
+     "x0": 22,
+     "x1": 24,
+     "label": "edge of viability"
+    },
+    {
+     "id": "term",
+     "x0": 37,
+     "x1": 40,
+     "label": "term",
+     "show": true
+    },
+    {
+     "id": "fat",
+     "x0": 32,
+     "x1": 40,
+     "label": "fat builds up"
+    },
+    {
+     "id": "early",
+     "x0": 20,
+     "x1": 24,
+     "label": "small and lean"
+    }
+   ],
+   "questions": [
+    {
+     "id": "w28",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the typical fetal weight at 28 weeks.",
+     "answer": 1210,
+     "tol": 150,
+     "unit": "g",
+     "show": {
+      "x": 28,
+      "y": 1210
+     },
+     "why": "About 1.2 kg. The notes put the fetus at about 1 kg around weeks 26 to 28, when the eyes open."
+    },
+    {
+     "id": "rate",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the weights at 34 and 36 weeks. About how many grams a week is the fetus gaining between them?",
+     "answer": 220,
+     "tol": 50,
+     "unit": "g/week",
+     "show": {
+      "x": 36,
+      "y": 2813
+     },
+     "why": "About 2,380 g at 34 weeks and 2,810 g at 36: roughly 430 g in two weeks, about 220 g a week. At week 20 the whole fetus weighs little more than that."
+    },
+    {
+     "id": "viable",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "In which stretch can a baby born early first sometimes survive with intensive care?",
+     "options": [
+      "Weeks 22 to 24",
+      "Weeks 20 to 21",
+      "Weeks 30 to 32",
+      "Weeks 37 to 40, at term"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "viability"
+     },
+     "why": {
+      "correct": "Around weeks 22 to 24 the lungs reach the stage where gas exchange first becomes barely possible: the edge of viability. The baby weighs only about 500 to 700 g.",
+      "options": [
+       "Right: the lungs set the limit.",
+       "Before about week 22 the capillaries have not yet grown close enough to the airway lining, so the lungs cannot exchange gas.",
+       "Most babies born at 30 to 32 weeks survive; viability begins much earlier.",
+       "Weeks 37 to 40 are term, not the edge of viability."
+      ]
+     }
+    },
+    {
+     "id": "steepest",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which stretch does the fetus gain the most grams per week, and what is it mostly adding?",
+     "options": [
+      "The last 8 weeks: fat, including brown fat, under the skin",
+      "Weeks 20 to 24: new organs still being formed from the germ layers",
+      "Weeks 20 to 24: bone",
+      "It gains the same number of grams every week"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "fat"
+     },
+     "why": {
+      "correct": "The curve is steepest from about week 32 on. In the last weeks fat builds up under the skin and fills out the wrinkled skin, and brown fat is laid down for keeping warm after birth.",
+      "options": [
+       "Right: fat fills the last weeks.",
+       "Every organ system is present by about week 10; the fetal period is growth and maturation, not new organs.",
+       "Bones ossify and grow throughout, but the steepest gain in grams is late, and it is mostly fat.",
+       "The curve gets steeper with time: the fetus adds far more grams a week near term than at 20 weeks."
+      ]
+     }
+    },
+    {
+     "id": "insufficiency",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "topic": "fetal-development-circulation",
+     "q": "From about week 28, the placenta can no longer keep up. How does the growth curve change?",
+     "options": [
+      "It flattens after week 28 and ends well below the typical weight",
+      "It rises more steeply, because the fetus takes more from the mother",
+      "It drops below 1,000 g as the fetus loses weight",
+      "It is unchanged until birth"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "fw-small",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          20,
+          331
+         ],
+         [
+          24,
+          670
+         ],
+         [
+          28,
+          1180
+         ],
+         [
+          32,
+          1650
+         ],
+         [
+          36,
+          2050
+         ],
+         [
+          40,
+          2450
+         ]
+        ],
+        "label": "placenta failing",
+        "labelAt": [
+         37,
+         1700
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Everything the fetus builds with crosses the placenta. With less oxygen and glucose crossing, growth slows but continues: the curve bends away from the typical one and the baby is born small, often with too little amniotic fluid.",
+      "options": [
+       "Right: growth slows and the baby is small.",
+       "The fetus cannot take more than the placenta delivers; less supply means slower growth.",
+       "The fetus keeps growing, just more slowly; it does not usually lose weight.",
+       "The fall in supply shows in the growth curve within weeks."
+      ]
+     }
+    },
+    {
+     "id": "diabetes",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "topic": "pregnancy",
+     "q": "A mother has poorly controlled gestational diabetes in the second half of pregnancy. How does the growth curve change?",
+     "options": [
+      "It rises more steeply and ends above the typical weight",
+      "It flattens, because the mother’s insulin blocks fetal growth",
+      "It is unchanged, because the placenta blocks the extra glucose",
+      "It peaks at 30 weeks and then falls"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "fw-big",
+        "panel": 0,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          20,
+          331
+         ],
+         [
+          24,
+          690
+         ],
+         [
+          28,
+          1290
+         ],
+         [
+          32,
+          2120
+         ],
+         [
+          36,
+          3120
+         ],
+         [
+          40,
+          4250
+         ]
+        ],
+        "label": "mother’s glucose high",
+        "labelAt": [
+         33,
+         3500
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Glucose crosses the placenta but the mother’s insulin does not, so the fetus secretes more insulin of its own, and fetal insulin drives growth. The baby grows large, which makes the shoulders more likely to get stuck.",
+      "options": [
+       "Right: extra glucose plus fetal insulin means faster growth.",
+       "The mother’s insulin does not cross the placenta at all.",
+       "Glucose crosses the placenta freely by facilitated diffusion, down its gradient.",
+       "The extra growth continues to term; the curve does not turn down."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "dv-maternal-circulation",
+   "title": "The mother’s circulation across pregnancy",
+   "topic": "pregnancy",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "intro": "Top: heart rate, stroke volume, cardiac output and total peripheral resistance, each as a percent change from the woman’s own value before pregnancy. Bottom: her mean arterial pressure, starting from 90 mm Hg. Weeks are counted from the last menstrual period. The curves are schematic but within the ranges measured in healthy pregnancies.",
+   "alt": "Two stacked graphs over weeks 0 to 40 of pregnancy. Top, percent change from before pregnancy: heart rate rises first, from week 4, reaching about +15% at week 20 and +22% at term. Stroke volume starts rising around week 8, reaches about +24% by weeks 24 to 28, and eases to about +18% at term. Cardiac output rises to about +40% by week 20 and +45 to 48% by weeks 24 to 32, easing slightly to +44% at term. Total peripheral resistance falls to about −30% by week 16 and about −35% at week 24, then eases to about −31% at term. Bottom: mean arterial pressure dips from 90 to about 83 mm Hg at week 20 and returns to about 90 by week 36.",
+   "x": {
+    "min": 0,
+    "max": 40,
+    "label": "Week of pregnancy",
+    "unit": "from last period",
+    "ticks": [
+     0,
+     8,
+     16,
+     24,
+     32,
+     40
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.3,
+     "y": {
+      "min": -40,
+      "max": 60,
+      "label": "Change from before pregnancy",
+      "unit": "%",
+      "ticks": [
+       -40,
+       -20,
+       0,
+       20,
+       40,
+       60
+      ]
+     },
+     "series": [
+      {
+       "id": "co",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         4,
+         3
+        ],
+        [
+         8,
+         13
+        ],
+        [
+         12,
+         24
+        ],
+        [
+         16,
+         33
+        ],
+        [
+         20,
+         40
+        ],
+        [
+         24,
+         45
+        ],
+        [
+         28,
+         48
+        ],
+        [
+         32,
+         48
+        ],
+        [
+         36,
+         46
+        ],
+        [
+         40,
+         44
+        ]
+       ],
+       "label": "cardiac output",
+       "labelAt": [
+        30,
+        53
+       ],
+       "anchor": "middle"
+      },
+      {
+       "id": "hr",
+       "cls": "symp",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         4,
+         3
+        ],
+        [
+         8,
+         8
+        ],
+        [
+         12,
+         11
+        ],
+        [
+         16,
+         13
+        ],
+        [
+         20,
+         15
+        ],
+        [
+         24,
+         17
+        ],
+        [
+         28,
+         19
+        ],
+        [
+         32,
+         21
+        ],
+        [
+         36,
+         22
+        ],
+        [
+         40,
+         22
+        ]
+       ],
+       "label": "heart rate",
+       "labelAt": [
+        36,
+        27
+       ],
+       "anchor": "middle"
+      },
+      {
+       "id": "sv",
+       "cls": "eff",
+       "dash": true,
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         4,
+         0
+        ],
+        [
+         8,
+         5
+        ],
+        [
+         12,
+         12
+        ],
+        [
+         16,
+         18
+        ],
+        [
+         20,
+         22
+        ],
+        [
+         24,
+         24
+        ],
+        [
+         28,
+         24
+        ],
+        [
+         32,
+         22
+        ],
+        [
+         36,
+         20
+        ],
+        [
+         40,
+         18
+        ]
+       ],
+       "label": "stroke volume",
+       "labelAt": [
+        21,
+        12
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "tpr",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         4,
+         -4
+        ],
+        [
+         8,
+         -15
+        ],
+        [
+         12,
+         -24
+        ],
+        [
+         16,
+         -30
+        ],
+        [
+         20,
+         -34
+        ],
+        [
+         24,
+         -35
+        ],
+        [
+         28,
+         -34
+        ],
+        [
+         32,
+         -33
+        ],
+        [
+         36,
+         -32
+        ],
+        [
+         40,
+         -31
+        ]
+       ],
+       "label": "peripheral resistance",
+       "labelAt": [
+        22,
+        -28
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0,
+       "label": "before pregnancy",
+       "faint": true,
+       "at": 27,
+       "below": true
+      }
+     ]
+    },
+    {
+     "h": 0.8,
+     "y": {
+      "min": 70,
+      "max": 120,
+      "label": "Mean arterial pressure",
+      "unit": "mm Hg",
+      "ticks": [
+       70,
+       80,
+       90,
+       100,
+       110,
+       120
+      ]
+     },
+     "series": [
+      {
+       "id": "map",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         90
+        ],
+        [
+         4,
+         89
+        ],
+        [
+         8,
+         87
+        ],
+        [
+         12,
+         85
+        ],
+        [
+         16,
+         84
+        ],
+        [
+         20,
+         83
+        ],
+        [
+         24,
+         85
+        ],
+        [
+         28,
+         88
+        ],
+        [
+         32,
+         89
+        ],
+        [
+         36,
+         90
+        ],
+        [
+         40,
+         90
+        ]
+       ],
+       "label": "MAP",
+       "labelAt": [
+        30,
+        93
+       ],
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "hrfirst",
+     "x0": 3,
+     "x1": 7,
+     "label": "heart rate rising alone"
+    },
+    {
+     "id": "dip",
+     "x0": 14,
+     "x1": 24,
+     "label": "pressure lowest"
+    },
+    {
+     "id": "plateau",
+     "x0": 24,
+     "x1": 40,
+     "label": "output near its plateau"
+    },
+    {
+     "id": "first",
+     "x0": 0,
+     "x1": 3,
+     "label": "no change yet"
+    }
+   ],
+   "questions": [
+    {
+     "id": "co24",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the rise in cardiac output at 24 weeks, as a percent of her value before pregnancy.",
+     "answer": 45,
+     "tol": 5,
+     "unit": "%",
+     "show": {
+      "x": 24,
+      "y": 45
+     },
+     "why": "About +45%: from about 5 L/min to about 7 L/min. Most of the rise in cardiac output has happened by weeks 20 to 24."
+    },
+    {
+     "id": "map-low",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read her lowest mean arterial pressure.",
+     "answer": 83,
+     "tol": 2,
+     "unit": "mm Hg",
+     "show": {
+      "x": 20,
+      "y": 83,
+      "panel": 1
+     },
+     "why": "About 83 mm Hg, around week 20, some 7 mm Hg below her usual 90. Resistance has fallen by a third while cardiac output has risen by about 40%, and the fall in resistance wins slightly."
+    },
+    {
+     "id": "first-rise",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Which rises first in early pregnancy, and in which weeks does it rise alone?",
+     "options": [
+      "Heart rate, in about weeks 4 to 7",
+      "Stroke volume, in about weeks 4 to 7",
+      "Mean arterial pressure, in weeks 0 to 3",
+      "Peripheral resistance, in weeks 14 to 24"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "hrfirst"
+     },
+     "why": {
+      "correct": "Heart rate rises within the first weeks. Stroke volume follows a few weeks later, as the growing blood volume raises venous return and preload.",
+      "options": [
+       "Right: the rate leads, the stroke volume follows.",
+       "Stroke volume waits for the blood volume to grow, so it lags heart rate by a few weeks.",
+       "Mean arterial pressure does not rise early; it dips in mid-pregnancy.",
+       "Resistance falls; it never rises in a healthy pregnancy."
+      ]
+     }
+    },
+    {
+     "id": "dip",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "When is her blood pressure lowest, and why does it not rise with the cardiac output?",
+     "options": [
+      "Weeks 14 to 24: resistance falls slightly more than output rises",
+      "Weeks 32 to 40: the heart has tired",
+      "Weeks 0 to 3: she has lost blood volume",
+      "Weeks 24 to 40: resistance rises above its value before pregnancy"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "dip"
+     },
+     "why": {
+      "correct": "Mean arterial pressure is cardiac output times total peripheral resistance. Progesterone and nitric oxide relax the arterioles, and the placenta adds a low-resistance bed, so resistance falls as fast as output rises; the product dips, most in mid-pregnancy.",
+      "options": [
+       "Right: the fall in resistance slightly outweighs the rise in output.",
+       "Late in pregnancy the pressure returns toward her usual level; it is not at its lowest then.",
+       "Blood volume rises, not falls, from the first weeks.",
+       "Resistance stays below her value before pregnancy to the end, only easing a little."
+      ]
+     }
+    },
+    {
+     "id": "preeclampsia",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "She develops preeclampsia at 34 weeks. How does the mean arterial pressure curve change?",
+     "options": [
+      "It climbs well above her value before pregnancy",
+      "It falls further, because her plasma volume falls",
+      "It is unchanged, because her cardiac output does not change",
+      "It dips to 70 mm Hg, because her capillaries leak"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "map-pe",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          32,
+          89
+         ],
+         [
+          34,
+          96
+         ],
+         [
+          36,
+          104
+         ],
+         [
+          38,
+          109
+         ],
+         [
+          40,
+          112
+         ]
+        ],
+        "label": "preeclampsia",
+        "labelAt": [
+         33,
+         108
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Damaged endothelium lets her arterioles constrict, so total peripheral resistance rises instead of staying low, and pressure climbs to 140/90 mm Hg or more (a mean above about 105).",
+      "options": [
+       "Right: resistance rises, so pressure rises.",
+       "Her plasma volume does fall as capillaries leak, but the rise in resistance dominates, so pressure goes up.",
+       "Pressure depends on resistance too, and resistance rises sharply.",
+       "Leaky capillaries cause edema, but constricted arterioles raise the pressure."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "dv-trisomy-maternal-age",
+   "title": "Trisomy 21 and the mother’s age",
+   "topic": "inheritance",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "Births with trisomy 21 (Down syndrome) per 1,000 births, by the mother’s age at delivery. Values are approximate population figures.",
+   "alt": "A line graph of trisomy 21 births per 1,000 against the mother’s age from 20 to 45. The risk stays below about 1 per 1,000 from 20 to 25, rises slowly to about 1.1 at 30, then climbs faster: about 2.9 at 35, 5.7 at 38, 10 at 40, 18 at 42 and 33 at 45.",
+   "x": {
+    "min": 20,
+    "max": 45,
+    "label": "Mother’s age at delivery",
+    "unit": "years",
+    "ticks": [
+     20,
+     25,
+     30,
+     35,
+     40,
+     45
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.1,
+     "y": {
+      "min": 0,
+      "max": 36,
+      "label": "Trisomy 21 births",
+      "unit": "per 1,000 births",
+      "ticks": [
+       0,
+       10,
+       20,
+       30
+      ]
+     },
+     "series": [
+      {
+       "id": "t21",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         20,
+         0.67
+        ],
+        [
+         25,
+         0.83
+        ],
+        [
+         30,
+         1.1
+        ],
+        [
+         35,
+         2.9
+        ],
+        [
+         38,
+         5.7
+        ],
+        [
+         40,
+         10
+        ],
+        [
+         42,
+         18
+        ],
+        [
+         45,
+         33
+        ]
+       ],
+       "label": "all trisomy 21",
+       "labelAt": [
+        40.5,
+        20
+       ],
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "flat",
+     "x0": 20,
+     "x1": 30,
+     "label": "low and nearly flat"
+    },
+    {
+     "id": "steep",
+     "x0": 35,
+     "x1": 45,
+     "label": "climbing steeply"
+    },
+    {
+     "id": "mid",
+     "x0": 30,
+     "x1": 35,
+     "label": "starting to rise"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at40",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the rate at a maternal age of 40, per 1,000 births.",
+     "answer": 10,
+     "tol": 1.5,
+     "unit": "per 1,000",
+     "show": {
+      "x": 40,
+      "y": 10
+     },
+     "why": "About 10 per 1,000, or 1 in 100, compared with about 1 in 1,200 at 25."
+    },
+    {
+     "id": "at45",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the rate at 45. About how many times the rate at 25 (0.83 per 1,000) is it?",
+     "answer": 33,
+     "tol": 3,
+     "unit": "per 1,000",
+     "show": {
+      "x": 45,
+      "y": 33
+     },
+     "why": "About 33 per 1,000, or 1 in 30: about 40 times the rate at 25."
+    },
+    {
+     "id": "steep",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Over which ages does the rate climb most steeply, and what causes the rise?",
+     "options": [
+      "From about 35 on: the oocyte’s chromosome links, never replaced, have weakened",
+      "From 20 to 30: the oocytes are too young to divide properly",
+      "From 30 to 35 only: then it levels off",
+      "It climbs evenly at every age, because every cell in the body ages at the same steady rate"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "steep"
+     },
+     "why": {
+      "correct": "An oocyte pauses in meiosis I from before the mother’s birth until ovulation. The proteins holding its paired chromosomes together are not replaced, so after about 35 years they fail more and more often, and nondisjunction climbs.",
+      "options": [
+       "Right: long pause, weak links.",
+       "The rate is lowest in the twenties; the oocytes’ links are still strong.",
+       "The rise keeps accelerating past 35; it does not level off.",
+       "The curve is flat early and steep late, because the damage builds up with the length of the pause."
+      ]
+     }
+    },
+    {
+     "id": "translocation",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "About 4% of Down syndrome comes from a translocation. How would a curve for the translocation form alone look?",
+     "options": [
+      "Low and flat: its rate does not depend on the mother’s age",
+      "The same shape, just lower, still rising steeply once the mother passes 35",
+      "Falling with age",
+      "Rising steeply from age 20"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "t21-trans",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          20,
+          0.06
+         ],
+         [
+          30,
+          0.06
+         ],
+         [
+          40,
+          0.06
+         ],
+         [
+          45,
+          0.06
+         ]
+        ],
+        "label": "translocation form only",
+        "labelAt": [
+         22,
+         3
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "In the translocation form, most of an extra chromosome 21 is attached to another chromosome, often inherited from a parent who carries the rearrangement. It does not come from nondisjunction during the long pause in meiosis I, so it does not depend on the mother’s age.",
+      "options": [
+       "Right: flat, because it has nothing to do with the pause.",
+       "Only nondisjunction rises with age; the translocation form has a different cause.",
+       "Nothing about a rearrangement makes it less likely with age.",
+       "A carrier parent can pass it on at any age, so the rate does not climb."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "dv-aging-reserve",
+   "title": "Reserve with age",
+   "topic": "aging",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "intro": "A schematic of an organ system’s maximal capacity, as a percent of its peak, across adult life. The lower dashed line is the capacity needed at rest; the upper one is what a major stress, such as pneumonia, needs. The shape is typical of many systems; real rates vary widely and are slower with regular exercise.",
+   "alt": "A line graph of maximal capacity, as a percent of peak, against age from 20 to 90. Capacity stays at 100% until 30, then falls slowly and then faster: about 93% at 40, 84% at 50, 75% at 60, 66% at 70, 60% at 75, 55% at 80 and 44% at 90. A dashed line at 25% is the capacity needed at rest; capacity stays above it throughout. A dashed line at 60% is the capacity a major stress needs; capacity falls below it at about 75.",
+   "x": {
+    "min": 20,
+    "max": 90,
+    "label": "Age",
+    "unit": "years",
+    "ticks": [
+     20,
+     30,
+     40,
+     50,
+     60,
+     70,
+     80,
+     90
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Maximal capacity, share of peak",
+      "unit": "%",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "cap",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         20,
+         100
+        ],
+        [
+         30,
+         100
+        ],
+        [
+         35,
+         96.4
+        ],
+        [
+         40,
+         92.6
+        ],
+        [
+         45,
+         88.6
+        ],
+        [
+         50,
+         84.4
+        ],
+        [
+         55,
+         80
+        ],
+        [
+         60,
+         75.4
+        ],
+        [
+         65,
+         70.6
+        ],
+        [
+         70,
+         65.6
+        ],
+        [
+         75,
+         60.4
+        ],
+        [
+         80,
+         55
+        ],
+        [
+         85,
+         49.4
+        ],
+        [
+         90,
+         43.6
+        ]
+       ],
+       "label": "maximal capacity",
+       "labelAt": [
+        50,
+        92
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 60,
+       "label": "needed in a major stress",
+       "dash": true
+      },
+      {
+       "y": 25,
+       "label": "needed at rest",
+       "dash": true
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "peak",
+     "x0": 20,
+     "x1": 30,
+     "label": "at peak"
+    },
+    {
+     "id": "narrow",
+     "x0": 75,
+     "x1": 90,
+     "label": "rest met, stress not"
+    },
+    {
+     "id": "decline",
+     "x0": 30,
+     "x1": 75,
+     "label": "reserve shrinking"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at80",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the maximal capacity at 80.",
+     "answer": 55,
+     "tol": 4,
+     "unit": "%",
+     "show": {
+      "x": 80,
+      "y": 55
+     },
+     "why": "About 55% of peak. That is still more than twice what rest needs, so resting values are normal, but it is below what a major stress needs."
+    },
+    {
+     "id": "cross",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At about what age does capacity fall below what a major stress needs?",
+     "answer": 75,
+     "tol": 3,
+     "unit": "years",
+     "show": {
+      "x": 75,
+      "y": 60
+     },
+     "why": "At about 75, where the curve crosses the 60% line. After that, a stress a younger body would absorb, such as influenza or pneumonia, can overwhelm the system even though everything looks normal at rest."
+    },
+    {
+     "id": "stenosis",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which stretch are resting values normal, yet a major stress cannot be met? What is that narrowing called?",
+     "options": [
+      "From about 75 on: homeostenosis, the loss of reserve",
+      "From 20 to 30: homeostasis at its peak",
+      "From 30 to 75: disease replacing normal aging",
+      "Only after 90, when resting needs can no longer be met"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "narrow"
+     },
+     "why": {
+      "correct": "Capacity is above the resting line but below the stress line. Resting homeostasis is kept; the range over which a variable can be held steady has narrowed. That is homeostenosis, the story of Mrs. Castillo’s influenza.",
+      "options": [
+       "Right: rest is met, stress is not.",
+       "At 20 to 30 capacity is at its peak and meets both needs easily.",
+       "The slow decline is normal aging, not disease; diseases are separate processes.",
+       "On this graph capacity stays above the resting line to 90; the loss of reserve shows well before resting needs fail."
+      ]
+     }
+    },
+    {
+     "id": "peak-years",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Over which ages is capacity at its peak on this graph?",
+     "options": [
+      "From 20 to about 30",
+      "From 30 to 50",
+      "From 60 to 75",
+      "Capacity is highest at 90"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "peak"
+     },
+     "why": {
+      "correct": "Many capacities, such as bone mass and muscle strength, peak around age 30 and decline after that.",
+      "options": [
+       "Right: the plateau before the decline.",
+       "By 30 to 50 capacity is already falling, slowly at first.",
+       "By 60 to 75 capacity has fallen by a quarter to a third.",
+       "Capacity is lowest at 90 on this graph."
+      ]
+     }
+    },
+    {
+     "id": "exercise",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "She exercises regularly from middle age, aerobic and resistance training. How does her capacity curve change?",
+     "options": [
+      "It stays higher and crosses the stress line much later",
+      "It rises above 100% of her youthful peak and stays there",
+      "It is unchanged, because aging sets the rate",
+      "It falls faster, because exercise wears the body out"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "cap-fit",
+        "panel": 0,
+        "cls": "eff",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          20,
+          100
+         ],
+         [
+          30,
+          100
+         ],
+         [
+          40,
+          96
+         ],
+         [
+          50,
+          92
+         ],
+         [
+          60,
+          87
+         ],
+         [
+          70,
+          80
+         ],
+         [
+          80,
+          72
+         ],
+         [
+          90,
+          62
+         ]
+        ],
+        "label": "active",
+        "labelAt": [
+         82,
+         80
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Much of the decline once blamed on age comes from inactivity. Exercise keeps the highest oxygen uptake, muscle and bone well above those of inactive peers at any age, so reserve lasts longer.",
+      "options": [
+       "Right: the same shape, higher and later.",
+       "Exercise slows the decline; it does not stop aging or push capacity above its peak for decades.",
+       "Rates of decline vary widely, and inactivity speeds them; exercise changes the curve.",
+       "Regular exercise preserves capacity; resistance training even reverses much muscle loss."
+      ]
+     }
+    },
+    {
+     "id": "inactive",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "He smokes and is inactive from middle age. How does his curve change?",
+     "options": [
+      "It falls faster and crosses the stress line years earlier",
+      "It is unchanged until he is ill",
+      "It rises, because the body adapts to smoking",
+      "It falls faster, but it never crosses the stress line because smoking spares reserve"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "cap-inactive",
+        "panel": 0,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          20,
+          100
+         ],
+         [
+          30,
+          100
+         ],
+         [
+          40,
+          90
+         ],
+         [
+          50,
+          80
+         ],
+         [
+          60,
+          69
+         ],
+         [
+          70,
+          58
+         ],
+         [
+          80,
+          47
+         ],
+         [
+          90,
+          36
+         ]
+        ],
+        "label": "inactive smoker",
+        "labelAt": [
+         60,
+         50
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Inactivity lets muscle, bone and cardiac reserve fall faster, and smoking damages lungs and vessels on top of that. The curve drops below the stress line about a decade sooner, so ordinary illnesses become dangerous earlier.",
+      "options": [
+       "Right: faster decline, earlier crossing.",
+       "The loss of reserve shows long before illness, as a shrinking gap between rest and maximum.",
+       "Smoking harms tissues; it does not build reserve.",
+       "A faster fall reaches the stress line earlier, not never."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

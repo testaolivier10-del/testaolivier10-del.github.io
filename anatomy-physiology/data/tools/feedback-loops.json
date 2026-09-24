@@ -3724,6 +3724,182 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "dv-labor-oxytocin",
+      "title": "Labor: cervical stretch and oxytocin",
+      "topic": "labor-birth",
+      "map": "Labor: oxytocin and uterine stretch (positive feedback)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "positive",
+      "scenario": "A woman is in the active phase of labor. Each contraction pushes the fetal head down onto her cervix, and over the next hours the contractions come harder and closer together until the baby is born.",
+      "slots": {
+        "stimulus": {
+          "text": "The fetal head presses down and stretches the cervix",
+          "short": "Head stretches the cervix",
+          "why": "The variable that grows in this loop is stretch of the cervix and upper vagina, pushed by the head at each contraction."
+        },
+        "sensor": {
+          "text": "Stretch-sensitive sensory receptors in the cervix and upper vagina",
+          "short": "Cervical stretch sensors",
+          "why": "These mechanically gated endings fire faster the more the cervix is stretched."
+        },
+        "afferent": {
+          "text": "Afferent nerve fibers up the spinal cord to the hypothalamus",
+          "short": "Afferent nerves to the brain",
+          "why": "The stretch signal travels as nerve impulses. This nerve-to-pituitary step is the Ferguson reflex."
+        },
+        "control": {
+          "text": "Hypothalamic neurons whose axons end in the posterior pituitary",
+          "short": "Hypothalamus",
+          "why": "These neurons make oxytocin and decide when to release it; more stretch signals mean more frequent pulses."
+        },
+        "efferent": {
+          "text": "Oxytocin released from the posterior pituitary into the blood in pulses",
+          "short": "Oxytocin in the blood",
+          "why": "The command travels as a hormone. The hypothalamic axons release it straight into the blood in the posterior pituitary."
+        },
+        "effector": {
+          "text": "Myometrium, rich in oxytocin receptor proteins and gap junctions at term",
+          "short": "Myometrium",
+          "why": "Oxytocin binds its receptor proteins on the smooth muscle cells, releases calcium inside them through a G protein and IP3, and also makes the lining release prostaglandins. Gap junctions spread each contraction across the wall."
+        },
+        "response": {
+          "text": "Stronger contractions push the head down harder, stretching the cervix further",
+          "short": "Stronger contractions, more stretch",
+          "why": "The response adds to the stimulus: a harder contraction means more stretch, which means more oxytocin and a harder contraction still."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Oxytocin released from the anterior pituitary",
+          "why": "Oxytocin is made by hypothalamic neurons and released from their axon endings in the posterior pituitary. The anterior pituitary releases hormones such as prolactin and LH."
+        },
+        {
+          "text": "Progesterone from the placenta keeps the myometrium quiet",
+          "why": "Progesterone opposes contraction; losing its effect near term lets labor happen. It is not part of the loop that strengthens contractions."
+        },
+        {
+          "text": "Contractions weaken as the cervix stretches, so labor settles at a set point",
+          "why": "That would be negative feedback. In this loop stretch makes contractions stronger, so there is no set point to settle at."
+        },
+        {
+          "text": "Prolactin released into the blood",
+          "why": "Prolactin drives milk production after birth. It does not make the myometrium contract."
+        }
+      ],
+      "classify": "The response (stronger contractions) increases the stimulus (stretch of the cervix), so this is positive feedback. It does not settle at a set point; it ends only when an outside event breaks it: the baby is born, the stretch stops, and the afferent signals stop.",
+      "failure": {
+        "part": "efferent",
+        "q": "A woman whose posterior pituitary was damaged years ago releases very little oxytocin. She goes into labor at term. What is the most likely course?",
+        "options": [
+          {
+            "text": "Labor can start and progress, but contractions cannot build up through this loop",
+            "why": "Right. The loop strengthens contractions; it is not what starts labor, and a synthetic oxytocin drip can strengthen them if needed. Women with very little oxytocin have had normal spontaneous labors, because prostaglandins, gap junctions and the loss of progesterone’s effect also drive contractions."
+          },
+          {
+            "text": "Labor can never start, because a rise in blood oxytocin is what begins every labor",
+            "why": "Blood oxytocin barely rises before labor. The start of labor depends on changes in the uterus, cervix and placenta, such as functional progesterone withdrawal and placental CRH."
+          },
+          {
+            "text": "Contractions grow stronger than usual, because nothing limits the loop",
+            "why": "Oxytocin is the loop’s command. Without it the loop cannot strengthen the contractions at all, let alone more than usual."
+          },
+          {
+            "text": "The cervix stops sensing stretch",
+            "why": "The sensory receptors and afferent nerves are untouched. Stretch is still sensed; the hormone that carries the command is missing."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "dv-newborn-brown-fat",
+      "title": "A cold newborn: brown fat",
+      "topic": "postnatal-lactation",
+      "core": [
+        "homeostasis"
+      ],
+      "kind": "negative",
+      "scenario": "A term baby is born wet into a room about 10 °C cooler than the uterus. Its temperature starts to fall, and within minutes its brown fat is making heat.",
+      "slots": {
+        "stimulus": {
+          "text": "Skin and body temperature fall as the wet newborn loses heat",
+          "short": "Newborn’s temperature falls",
+          "why": "The regulated variable is body temperature. Evaporation from wet skin and a large surface for its size make a newborn lose heat fast."
+        },
+        "sensor": {
+          "text": "Cold-sensing thermoreceptors in the skin",
+          "short": "Skin thermoreceptors",
+          "why": "Cold-sensing endings in the skin fire more as the skin cools, the first place the heat loss shows."
+        },
+        "afferent": {
+          "text": "Sensory nerves carrying cold signals to the hypothalamus",
+          "short": "Sensory nerves to the brain",
+          "why": "The temperature information reaches the brain as nerve impulses along sensory pathways."
+        },
+        "control": {
+          "text": "The hypothalamus, comparing temperature with its set point",
+          "short": "Hypothalamus",
+          "why": "The hypothalamus is the body’s thermostat; when temperature is below its set point it raises heat production."
+        },
+        "efferent": {
+          "text": "Sympathetic nerves releasing norepinephrine onto brown fat",
+          "short": "Sympathetic nerves (norepinephrine)",
+          "why": "The command to make heat reaches brown fat through sympathetic nerves; norepinephrine binds beta receptor proteins on the fat cells."
+        },
+        "effector": {
+          "text": "Brown adipose tissue between the shoulder blades and around the neck, kidneys and great vessels",
+          "short": "Brown adipose tissue",
+          "why": "Brown fat cells break down their fat and run their mitochondria with a channel protein that lets H+ leak back, so the energy leaves as heat instead of ATP."
+        },
+        "response": {
+          "text": "Nonshivering thermogenesis adds heat, and body temperature rises back toward the set point",
+          "short": "Heat made, temperature restored",
+          "why": "The heat opposes the fall that set the loop off. As temperature is restored, the cold signals fade and heat production eases."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Vigorous shivering of the skeletal muscles",
+          "why": "A newborn’s shivering is weak and adds little heat. Brown fat, not shivering, is its main defense."
+        },
+        {
+          "text": "Parasympathetic nerves releasing acetylcholine onto brown fat",
+          "why": "Brown fat is driven by the sympathetic division and norepinephrine, not by parasympathetic nerves."
+        },
+        {
+          "text": "Sweat glands release more sweat",
+          "why": "Sweating sheds heat. In the cold the body cuts heat loss and makes heat; it does not sweat."
+        }
+      ],
+      "classify": "The response (heat from brown fat) opposes the stimulus (falling temperature), bringing it back toward the set point, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "A baby born at 30 weeks has much less brown fat and a thinner layer of fat under the skin than a term baby. In the same cool room, what happens to its temperature?",
+        "options": [
+          {
+            "text": "It falls faster and further, because the effector makes too little heat",
+            "why": "Right. The sensor, nerves and hypothalamus work, but the effector is small, and less insulation lets heat escape faster. That is why preterm babies are dried, covered and kept warm at once."
+          },
+          {
+            "text": "It stays steady, because the hypothalamus makes the skeletal muscles shiver hard enough instead",
+            "why": "A newborn’s shivering is weak, and a preterm baby’s even weaker. It cannot make up for the missing brown fat."
+          },
+          {
+            "text": "It rises, because a smaller baby loses less heat",
+            "why": "A smaller baby has even more surface for its size, so it loses heat faster, not slower."
+          },
+          {
+            "text": "It falls only if the thermoreceptors fail",
+            "why": "The thermoreceptors work. The loop fails at the effector, which cannot make enough heat to answer them."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

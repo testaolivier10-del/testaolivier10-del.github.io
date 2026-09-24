@@ -96,6 +96,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/reproductive.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/respiratory.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -122,7 +127,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/compartments.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -466,6 +471,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/female-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/female-hormones-cycle.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/fluid-compartments-water.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -581,6 +596,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/male-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/male-physiology.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/meiosis.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/membrane-potential.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -637,6 +667,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/other-endocrine.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/ovarian-cycle.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1056,6 +1091,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/female-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/female-hormones-cycle.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/fluid-compartments-water.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -1171,6 +1216,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/male-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/male-physiology.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/meiosis.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/membrane-potential.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -1227,6 +1287,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/other-endocrine.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/ovarian-cycle.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -2517,7 +2582,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/leaving-groups.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.7</priority>
   </url>
   <url>

@@ -33,7 +33,8 @@
     {
       "id": "reproductive",
       "title": "Reproductive system"
-    }
+    },
+    { "id": "development", "title": "Development and inheritance" }
   ],
   "calculators": [
     {
@@ -10895,6 +10896,1378 @@
               "abs": 0.5
             },
             "prompt": "Her cycles are regularly {L} days long, and her luteal phase lasts {lut} days. On about which day of her cycle does she ovulate?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-placental-transfer",
+      "group": "development",
+      "title": "Oxygen transfer across the placenta",
+      "short": "Rate ∝ area × difference ÷ thickness",
+      "topic": "placenta",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Oxygen crosses the placental barrier by simple diffusion, so its rate follows the diffusion rule: proportional to the exchange area and the partial pressure difference, and inversely proportional to the barrier’s thickness. Enter each as a share of a healthy placenta’s value to find the new rate.",
+      "formula": "New rate ÷ normal rate = (area ratio × difference ratio) ÷ thickness ratio",
+      "inputs": [
+        {
+          "key": "A",
+          "label": "Working exchange area",
+          "sym": "area",
+          "unit": "% of normal",
+          "default": 67,
+          "min": 10,
+          "max": 150,
+          "step": 1,
+          "gen": {
+            "choices": [
+              50,
+              60,
+              67,
+              75,
+              80,
+              90,
+              100
+            ]
+          },
+          "hint": "Villi that get no maternal blood do not count. Worked example: a third lost leaves 67%."
+        },
+        {
+          "key": "G",
+          "label": "Partial pressure difference across the barrier",
+          "sym": "ΔP",
+          "unit": "% of normal",
+          "default": 100,
+          "min": 10,
+          "max": 150,
+          "step": 1,
+          "gen": {
+            "choices": [
+              60,
+              75,
+              80,
+              90,
+              100,
+              100,
+              100
+            ]
+          },
+          "hint": "Lower if less oxygen-rich maternal blood flows past the villi."
+        },
+        {
+          "key": "T",
+          "label": "Barrier thickness",
+          "sym": "thickness",
+          "unit": "× normal",
+          "default": 1,
+          "min": 0.5,
+          "max": 3,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              1,
+              1,
+              1.2,
+              1.5,
+              2
+            ]
+          },
+          "hint": "Scarring or swollen villi make the barrier thicker."
+        }
+      ],
+      "derived": [
+        {
+          "key": "a",
+          "expr": "A / 100",
+          "dp": 2
+        },
+        {
+          "key": "g",
+          "expr": "G / 100",
+          "dp": 2
+        },
+        {
+          "key": "top",
+          "expr": "A / 100 * G / 100",
+          "dp": 2
+        },
+        {
+          "key": "ratio",
+          "expr": "A / 100 * G / 100 / T",
+          "dp": 2
+        },
+        {
+          "key": "rate",
+          "expr": "A * G / 100 / T",
+          "dp": 0
+        },
+        {
+          "key": "drop",
+          "expr": "100 - A * G / 100 / T",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the rule",
+          "text": "Rate of diffusion ∝ area × partial pressure difference ÷ distance (thickness)."
+        },
+        {
+          "title": "Turn each change into a ratio",
+          "text": "Area: {A}% → {a:2}. Difference: {G}% → {g:2}. Thickness: {T} times normal."
+        },
+        {
+          "title": "Multiply the top",
+          "text": "Area × difference = {a:2} × {g:2} = {top:2}."
+        },
+        {
+          "title": "Divide by the thickness",
+          "text": "{top:2} ÷ {T} = <b>{ratio:2}</b> of the normal rate, that is <b>{rate}%</b> of normal."
+        }
+      ],
+      "results": [
+        {
+          "key": "rate",
+          "label": "Oxygen transfer",
+          "unit": "% of normal",
+          "normal": "100% in a healthy placenta.",
+          "bands": [
+            {
+              "when": "rate < 70",
+              "label": "well below normal",
+              "tone": "lo"
+            },
+            {
+              "when": "rate <= 110",
+              "label": "near normal",
+              "tone": "ok"
+            },
+            {
+              "label": "above normal",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "rate < 70",
+          "text": "Oxygen transfer falls to about {rate}% of normal, a drop of about {drop}%. A fetus supplied like this grows more slowly, redirects blood toward its brain and heart, and makes less urine: the picture of placental insufficiency."
+        },
+        {
+          "when": "rate < 95",
+          "text": "Oxygen transfer falls to about {rate}% of normal. The fetus’s tightly binding hemoglobin and high hemoglobin level give it some margin, but a larger loss would slow its growth."
+        },
+        {
+          "when": "1",
+          "text": "Oxygen transfer is about {rate}% of normal. As pregnancy goes on, the real barrier gets thinner and larger, reaching about 12 square meters, which is what keeps transfer up as the fetus grows."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: a third of the villi lost",
+          "values": {
+            "A": 67,
+            "G": 100,
+            "T": 1
+          }
+        },
+        {
+          "label": "Worked example: villi lost and a thicker barrier",
+          "values": {
+            "A": 67,
+            "G": 100,
+            "T": 1.5
+          }
+        },
+        {
+          "label": "Healthy placenta",
+          "values": {
+            "A": 100,
+            "G": 100,
+            "T": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "rate",
+            "unit": "% of normal",
+            "tol": {
+              "abs": 1.5
+            },
+            "prompt": "In a damaged placenta, the working exchange area is {A}% of normal, the partial pressure difference is {G}% of normal, and the barrier is {T} times its normal thickness. What is the oxygen transfer rate, as a percent of normal?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-gestational-age",
+      "group": "development",
+      "title": "Weeks of pregnancy from the last period",
+      "short": "Weeks = days since last period ÷ 7; due at 280 days",
+      "topic": "fetal-development-circulation",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Clinicians count pregnancy from the first day of the last menstrual period, about two weeks before fertilization, and put the due date at 40 weeks (280 days). Enter the number of days since the first day of her last period.",
+      "formula": "Completed weeks = days ÷ 7 (whole weeks); age since fertilization ≈ days − 14; days to the due date = 280 − days",
+      "inputs": [
+        {
+          "key": "D",
+          "label": "Days since the first day of the last period",
+          "sym": "days",
+          "unit": "days",
+          "default": 200,
+          "min": 14,
+          "max": 300,
+          "step": 1,
+          "gen": [
+            30,
+            294,
+            1
+          ],
+          "hint": "Fertilization is at about day 14 on this count."
+        }
+      ],
+      "derived": [
+        {
+          "key": "wk",
+          "expr": "round((D - 3) / 7)",
+          "dp": 0
+        },
+        {
+          "key": "dd",
+          "expr": "D - 7 * round((D - 3) / 7)",
+          "dp": 0
+        },
+        {
+          "key": "F",
+          "expr": "D - 14",
+          "dp": 0
+        },
+        {
+          "key": "fwk",
+          "expr": "round((D - 17) / 7)",
+          "dp": 0
+        },
+        {
+          "key": "fdd",
+          "expr": "D - 14 - 7 * round((D - 17) / 7)",
+          "dp": 0
+        },
+        {
+          "key": "tri",
+          "expr": "1 + (D >= 98) + (D >= 196)",
+          "dp": 0
+        },
+        {
+          "key": "due",
+          "expr": "280 - D",
+          "dp": 0
+        },
+        {
+          "key": "late",
+          "expr": "D - 280",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Split the days into weeks",
+          "text": "{D} days ÷ 7 = <b>{wk} weeks and {dd} days</b> of pregnancy on the clinical count."
+        },
+        {
+          "title": "Convert to age since fertilization",
+          "text": "Fertilization was about 14 days after the period began: {D} − 14 = {F} days, about <b>{fwk} weeks and {fdd} days</b> after fertilization."
+        },
+        {
+          "title": "Find the trimester",
+          "text": "The first trimester runs to the end of week 13 (day 97), the second to the end of week 27 (day 195), and the third from week 28 to birth: this is <b>trimester {tri}</b>."
+        },
+        {
+          "title": "Count to the due date",
+          "text": "The due date is day 280 (40 weeks): 280 − {D} = <b>{due}</b> days to go (a negative number means days past it)."
+        }
+      ],
+      "results": [
+        {
+          "key": "wk",
+          "label": "Completed weeks of pregnancy",
+          "unit": "weeks",
+          "normal": "A full-term pregnancy is about 40 weeks on this count.",
+          "bands": [
+            {
+              "when": "D < 70",
+              "label": "embryonic period",
+              "tone": "ok"
+            },
+            {
+              "when": "D < 259",
+              "label": "preterm if born now (before 37 weeks)",
+              "tone": "lo"
+            },
+            {
+              "when": "D < 294",
+              "label": "term (37 to just under 42 weeks)",
+              "tone": "ok"
+            },
+            {
+              "label": "past term (42 weeks or more)",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "fwk",
+          "label": "Weeks since fertilization",
+          "unit": "weeks",
+          "normal": "About two weeks less than the clinical count."
+        },
+        {
+          "key": "due",
+          "label": "Days to the due date",
+          "unit": "days",
+          "normal": "The due date is day 280, 40 weeks."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "D < 70",
+          "text": "At {wk} weeks on the clinical count, about {fwk} weeks after fertilization, this is still the embryonic period: organs are forming, and an embryo is most easily harmed by a harmful exposure now."
+        },
+        {
+          "when": "D < 259",
+          "text": "At {wk} weeks and {dd} days, a baby born now would be preterm, before 37 weeks. The fetal period is mostly growth and maturation; the lungs are among the last organs to be ready."
+        },
+        {
+          "when": "D < 294",
+          "text": "At {wk} weeks and {dd} days she is at term (37 to just under 42 weeks). Only a small minority of babies arrive on the due date itself, {due} days from now."
+        },
+        {
+          "when": "1",
+          "text": "At {wk} weeks and {dd} days she is {late} days past her due date and past term, which clinicians watch closely."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Positive test on the day her period is due",
+          "values": {
+            "D": 28
+          }
+        },
+        {
+          "label": "20 weeks",
+          "values": {
+            "D": 140
+          }
+        },
+        {
+          "label": "Due date",
+          "values": {
+            "D": 280
+          }
+        },
+        {
+          "label": "Preterm: 33 weeks and 2 days",
+          "values": {
+            "D": 233
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "wk",
+            "unit": "weeks",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "Her last period began {D} days ago. How many completed weeks pregnant is she on the clinical count?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-pregnancy-map",
+      "group": "development",
+      "title": "Cardiac output and blood pressure in pregnancy",
+      "short": "New MAP = old MAP × CO ratio × resistance ratio",
+      "topic": "pregnancy",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "intro": "In pregnancy, cardiac output rises while total peripheral resistance falls. Mean arterial pressure is cardiac output times resistance, so the two changes nearly cancel. Enter her values before and during pregnancy.",
+      "formula": "CO = HR × SV; new MAP = old MAP × (new CO ÷ old CO) × (1 − fall in resistance)",
+      "inputs": [
+        {
+          "key": "HR0",
+          "label": "Heart rate before pregnancy",
+          "sym": "HR₀",
+          "unit": "beats/min",
+          "default": 70,
+          "min": 40,
+          "max": 110,
+          "step": 1,
+          "gen": [
+            60,
+            80,
+            1
+          ]
+        },
+        {
+          "key": "SV0",
+          "label": "Stroke volume before pregnancy",
+          "sym": "SV₀",
+          "unit": "mL",
+          "default": 70,
+          "min": 40,
+          "max": 110,
+          "step": 1,
+          "gen": [
+            60,
+            80,
+            1
+          ]
+        },
+        {
+          "key": "M0",
+          "label": "Mean arterial pressure before pregnancy",
+          "sym": "MAP₀",
+          "unit": "mm Hg",
+          "default": 90,
+          "min": 60,
+          "max": 120,
+          "step": 1,
+          "gen": [
+            82,
+            96,
+            1
+          ]
+        },
+        {
+          "key": "HR1",
+          "label": "Heart rate in pregnancy",
+          "sym": "HR₁",
+          "unit": "beats/min",
+          "default": 85,
+          "min": 40,
+          "max": 130,
+          "step": 1,
+          "gen": [
+            75,
+            95,
+            1
+          ]
+        },
+        {
+          "key": "SV1",
+          "label": "Stroke volume in pregnancy",
+          "sym": "SV₁",
+          "unit": "mL",
+          "default": 80,
+          "min": 40,
+          "max": 130,
+          "step": 1,
+          "gen": [
+            70,
+            90,
+            1
+          ]
+        },
+        {
+          "key": "drop",
+          "label": "Fall in total peripheral resistance",
+          "sym": "fall",
+          "unit": "%",
+          "default": 30,
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "gen": [
+            20,
+            35,
+            1
+          ],
+          "hint": "Usually about a quarter to a third."
+        }
+      ],
+      "derived": [
+        {
+          "key": "CO0",
+          "expr": "HR0 * SV0 / 1000",
+          "dp": 2
+        },
+        {
+          "key": "CO1",
+          "expr": "HR1 * SV1 / 1000",
+          "dp": 2
+        },
+        {
+          "key": "r",
+          "expr": "HR1 * SV1 / (HR0 * SV0)",
+          "dp": 2
+        },
+        {
+          "key": "rise",
+          "expr": "(HR1 * SV1 / (HR0 * SV0) - 1) * 100",
+          "dp": 0
+        },
+        {
+          "key": "tr",
+          "expr": "1 - drop / 100",
+          "dp": 2
+        },
+        {
+          "key": "both",
+          "expr": "HR1 * SV1 / (HR0 * SV0) * (1 - drop / 100)",
+          "dp": 2
+        },
+        {
+          "key": "M1",
+          "expr": "M0 * HR1 * SV1 / (HR0 * SV0) * (1 - drop / 100)",
+          "dp": 1
+        },
+        {
+          "key": "dM",
+          "expr": "M0 * HR1 * SV1 / (HR0 * SV0) * (1 - drop / 100) - M0",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cardiac output before",
+          "text": "CO = {HR0} × {SV0} mL = <b>{CO0:2} L/min</b>."
+        },
+        {
+          "title": "Cardiac output in pregnancy",
+          "text": "CO = {HR1} × {SV1} mL = <b>{CO1:2} L/min</b>."
+        },
+        {
+          "title": "Size of the rise",
+          "text": "{CO1:2} ÷ {CO0:2} = {r:2}, a rise of {rise}%."
+        },
+        {
+          "title": "Resistance ratio",
+          "text": "A {drop}% fall leaves 1 − {drop}/100 = {tr:2} of the old resistance."
+        },
+        {
+          "title": "Combine",
+          "text": "New MAP = {M0} × {r:2} × {tr:2} = {M0} × {both:2} = <b>{M1:1} mm Hg</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "M1",
+          "label": "Mean arterial pressure in pregnancy",
+          "unit": "mm Hg",
+          "normal": "Dips a little in mid-pregnancy and returns toward the usual value near term."
+        },
+        {
+          "key": "CO1",
+          "label": "Cardiac output in pregnancy",
+          "unit": "L/min",
+          "normal": "About 30 to 50% above the value before pregnancy."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "both < 0.99",
+          "text": "Cardiac output rose {rise}%, but resistance fell {drop}%, so pressure falls slightly, by {dM:1} mm Hg: the mid-pregnancy dip. The fall in resistance slightly outweighs the rise in output."
+        },
+        {
+          "when": "both <= 1.01",
+          "text": "The {rise}% rise in cardiac output and the {drop}% fall in resistance almost exactly cancel, so pressure barely changes."
+        },
+        {
+          "when": "1",
+          "text": "Cardiac output rose {rise}% while resistance fell only {drop}%, so pressure rises by {dM:1} mm Hg. A rise in pressure is not the usual pattern of pregnancy; new high blood pressure after week 20 needs checking for preeclampsia."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 28 weeks",
+          "values": {
+            "HR0": 70,
+            "SV0": 70,
+            "M0": 90,
+            "HR1": 85,
+            "SV1": 80,
+            "drop": 30
+          }
+        },
+        {
+          "label": "Resistance falls only 10%",
+          "values": {
+            "HR0": 70,
+            "SV0": 70,
+            "M0": 90,
+            "HR1": 85,
+            "SV1": 80,
+            "drop": 10
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "M1",
+            "unit": "mm Hg",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "Before pregnancy: heart rate {HR0} beats/min, stroke volume {SV0} mL, mean arterial pressure {M0} mm Hg. In pregnancy: heart rate {HR1} beats/min, stroke volume {SV1} mL, and total peripheral resistance has fallen by {drop}%. Estimate her mean arterial pressure now."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-apgar",
+      "group": "development",
+      "title": "Apgar score",
+      "short": "Five signs, 0 to 2 each, total 0 to 10",
+      "topic": "postnatal-lactation",
+      "core": [
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "The Apgar score rates five signs from 0 to 2 at 1 minute and again at 5 minutes after birth. Enter the score for each sign.",
+      "formula": "Apgar = appearance + pulse + grimace + activity + respiration",
+      "inputs": [
+        {
+          "key": "ap",
+          "label": "Appearance (color): 0 blue or pale all over, 1 body pink with blue hands and feet, 2 pink all over",
+          "sym": "A",
+          "unit": "",
+          "default": 1,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "key": "pu",
+          "label": "Pulse: 0 absent, 1 below 100 a minute, 2 100 a minute or more",
+          "sym": "P",
+          "unit": "",
+          "default": 2,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              2,
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "key": "gr",
+          "label": "Grimace (response to stimulation): 0 none, 1 grimace, 2 cry, cough or sneeze",
+          "sym": "G",
+          "unit": "",
+          "default": 2,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "key": "ac",
+          "label": "Activity (muscle tone): 0 limp, 1 some bending of the limbs, 2 active movement",
+          "sym": "A",
+          "unit": "",
+          "default": 2,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "key": "re",
+          "label": "Respiration: 0 absent, 1 slow, irregular or weak cry, 2 good, strong cry",
+          "sym": "R",
+          "unit": "",
+          "default": 2,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              2,
+              2
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "total",
+          "expr": "ap + pu + gr + ac + re",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Score each sign",
+          "text": "Appearance {ap}, pulse {pu}, grimace {gr}, activity {ac}, respiration {re}."
+        },
+        {
+          "title": "Add",
+          "text": "{ap} + {pu} + {gr} + {ac} + {re} = <b>{total}</b> out of 10."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "Apgar score",
+          "unit": "of 10",
+          "normal": "7 to 10 is reassuring; most healthy babies score 8 or 9 at 1 minute.",
+          "bands": [
+            {
+              "when": "total <= 3",
+              "label": "low",
+              "tone": "lo"
+            },
+            {
+              "when": "total <= 6",
+              "label": "moderately abnormal",
+              "tone": "lo"
+            },
+            {
+              "label": "reassuring",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "total <= 3",
+          "text": "A score of {total} is low. The baby needs help at once; in practice resuscitation starts as soon as a baby is not breathing, without waiting for the score. A low score alone does not prove the baby was short of oxygen: prematurity and drugs given to the mother also lower it."
+        },
+        {
+          "when": "total <= 6",
+          "text": "A score of {total} is moderately abnormal. If this is the 5-minute score, it is repeated every 5 minutes up to 20 minutes while the baby is helped."
+        },
+        {
+          "when": "ap < 2",
+          "text": "A score of {total} is reassuring. Blue hands and feet are common in the first minutes, which is why most healthy babies score 8 or 9 at 1 minute."
+        },
+        {
+          "when": "1",
+          "text": "A score of {total} is reassuring: the baby is pink, has a good heart rate, responds, moves and breathes well."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: at 5 minutes",
+          "values": {
+            "ap": 1,
+            "pu": 2,
+            "gr": 2,
+            "ac": 2,
+            "re": 2
+          }
+        },
+        {
+          "label": "A limp baby with a slow pulse",
+          "values": {
+            "ap": 0,
+            "pu": 1,
+            "gr": 0,
+            "ac": 0,
+            "re": 1
+          }
+        },
+        {
+          "label": "Some bending, weak cry",
+          "values": {
+            "ap": 1,
+            "pu": 2,
+            "gr": 1,
+            "ac": 1,
+            "re": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "total",
+            "unit": "of 10",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "Scores at 5 minutes: appearance {ap}, pulse {pu}, grimace {gr}, activity {ac}, respiration {re}. What is the Apgar score?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-punnett",
+      "group": "development",
+      "title": "Punnett square probabilities",
+      "short": "Each box = 1 in 4 for each child",
+      "topic": "inheritance",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "For one autosomal gene with a dominant allele A and a recessive allele a, enter how many copies of A each parent carries: 2 for AA, 1 for Aa, 0 for aa. The calculator fills the Punnett square as probabilities for each child.",
+      "formula": "Chance a gamete carries A: p = copies of A ÷ 2. AA = p₁ × p₂; aa = (1 − p₁) × (1 − p₂); Aa = the rest",
+      "inputs": [
+        {
+          "key": "a1",
+          "label": "Parent 1: copies of the dominant allele A (2 = AA, 1 = Aa, 0 = aa)",
+          "sym": "parent 1",
+          "unit": "copies",
+          "default": 1,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "a2",
+          "label": "Parent 2: copies of the dominant allele A (2 = AA, 1 = Aa, 0 = aa)",
+          "sym": "parent 2",
+          "unit": "copies",
+          "default": 1,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "p1",
+          "expr": "a1 / 2 * 100",
+          "dp": 0
+        },
+        {
+          "key": "p2",
+          "expr": "a2 / 2 * 100",
+          "dp": 0
+        },
+        {
+          "key": "AA",
+          "expr": "a1 / 2 * (a2 / 2) * 100",
+          "dp": 0
+        },
+        {
+          "key": "aa",
+          "expr": "(1 - a1 / 2) * (1 - a2 / 2) * 100",
+          "dp": 0
+        },
+        {
+          "key": "Aa",
+          "expr": "100 - a1 / 2 * (a2 / 2) * 100 - (1 - a1 / 2) * (1 - a2 / 2) * 100",
+          "dp": 0
+        },
+        {
+          "key": "dom",
+          "expr": "100 - (1 - a1 / 2) * (1 - a2 / 2) * 100",
+          "dp": 0
+        },
+        {
+          "key": "carrier",
+          "expr": "round((100 - a1 / 2 * (a2 / 2) * 100 - (1 - a1 / 2) * (1 - a2 / 2) * 100) / max(100 - (1 - a1 / 2) * (1 - a2 / 2) * 100, 0.000001) * 100)",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "List each parent’s gametes",
+          "text": "By segregation, each gamete gets one allele. Parent 1 passes A in {p1}% of gametes; parent 2 in {p2}%."
+        },
+        {
+          "title": "Fill the square: AA",
+          "text": "Both gametes carry A: {p1}% × {p2}% = <b>{AA}%</b>."
+        },
+        {
+          "title": "Fill the square: aa",
+          "text": "Both carry a: (100 − {p1})% × (100 − {p2})% = <b>{aa}%</b>."
+        },
+        {
+          "title": "The rest: Aa",
+          "text": "100 − {AA} − {aa} = <b>{Aa}%</b> heterozygous."
+        },
+        {
+          "title": "Translate to phenotypes",
+          "text": "A is dominant, so AA and Aa show the dominant phenotype: {AA} + {Aa} = <b>{dom}%</b>. Only aa shows the recessive phenotype: <b>{aa}%</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "aa",
+          "label": "Chance each child shows the recessive phenotype (aa)",
+          "unit": "%",
+          "normal": "25% when both parents are carriers (Aa × Aa)."
+        },
+        {
+          "key": "dom",
+          "label": "Chance each child shows the dominant phenotype (AA or Aa)",
+          "unit": "%",
+          "normal": ""
+        },
+        {
+          "key": "carrier",
+          "label": "Chance a child with the dominant phenotype is a carrier (Aa)",
+          "unit": "%",
+          "normal": "Two in three (67%) from two carriers."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "a1 == 1 && a2 == 1",
+          "text": "Two carriers: each child has a 1 in 4 (25%) chance of aa. If a is a recessive disease allele, as in cystic fibrosis, each child has a 25% chance of the disease, fresh with every pregnancy, and a healthy child has a 2 in 3 chance of being a carrier."
+        },
+        {
+          "when": "aa == 50",
+          "text": "One parent is Aa and the other aa: each child has a 1 in 2 chance of each phenotype. If A were a dominant disease allele, as in Huntington disease, each child would have a 50% chance of inheriting it."
+        },
+        {
+          "when": "aa == 0 && Aa > 0",
+          "text": "No child can be aa, because at least one parent passes only A. Recessive disease cannot appear, but {Aa}% of children will be carriers."
+        },
+        {
+          "when": "1",
+          "text": "Each child: {AA}% AA, {Aa}% Aa and {aa}% aa. These are chances for each child, drawn fresh for every pregnancy, not a forecast for a family."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: two carriers of cystic fibrosis (Cc × Cc)",
+          "values": {
+            "a1": 1,
+            "a2": 1
+          }
+        },
+        {
+          "label": "Worked example 2: Hh × hh",
+          "values": {
+            "a1": 1,
+            "a2": 0
+          }
+        },
+        {
+          "label": "AA × aa",
+          "values": {
+            "a1": 2,
+            "a2": 0
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "aa",
+            "unit": "%",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "One parent carries {a1} copies of the dominant allele A (2 = AA, 1 = Aa, 0 = aa), and the other carries {a2}. What is the percent chance that a child is aa?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-x-linked",
+      "group": "development",
+      "title": "X-linked recessive risks",
+      "short": "Sons get their X from their mother",
+      "topic": "inheritance",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "For an X-linked recessive allele, such as the one for hemophilia A, enter how many copies the mother carries (0, 1 = carrier, 2 = affected) and whether the father is affected. A son gets his X from his mother; a daughter gets one X from each parent.",
+      "formula": "Son affected = chance mother passes the allele; daughter affected = mother passes it × father has it",
+      "inputs": [
+        {
+          "key": "m",
+          "label": "Mother: copies of the recessive allele on her two X chromosomes",
+          "sym": "mother",
+          "unit": "copies",
+          "default": 1,
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              1,
+              1,
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "f",
+          "label": "Father: 1 if affected (his X carries the allele), 0 if not",
+          "sym": "father",
+          "unit": "",
+          "default": 0,
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "pm",
+          "expr": "m / 2 * 100",
+          "dp": 0
+        },
+        {
+          "key": "son",
+          "expr": "m / 2 * 100",
+          "dp": 0
+        },
+        {
+          "key": "dAff",
+          "expr": "m / 2 * f * 100",
+          "dp": 0
+        },
+        {
+          "key": "dCar",
+          "expr": "(m / 2 * (1 - f) + (1 - m / 2) * f) * 100",
+          "dp": 0
+        },
+        {
+          "key": "dFree",
+          "expr": "(1 - m / 2) * (1 - f) * 100",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "The mother’s X",
+          "text": "She passes the allele on in {pm}% of her eggs."
+        },
+        {
+          "title": "Sons",
+          "text": "A son gets his only X from his mother and his Y from his father, so <b>{son}%</b> of sons are affected. The father’s status does not matter for sons."
+        },
+        {
+          "title": "Daughters affected",
+          "text": "A daughter needs the allele from both: {pm}% × {f} (father) = <b>{dAff}%</b>."
+        },
+        {
+          "title": "Daughters who are carriers",
+          "text": "Exactly one copy, from either parent: <b>{dCar}%</b>. Neither copy: {dFree}%."
+        }
+      ],
+      "results": [
+        {
+          "key": "son",
+          "label": "Chance a son is affected",
+          "unit": "%",
+          "normal": "50% from a carrier mother."
+        },
+        {
+          "key": "dAff",
+          "label": "Chance a daughter is affected",
+          "unit": "%",
+          "normal": "0% unless the father is affected."
+        },
+        {
+          "key": "dCar",
+          "label": "Chance a daughter is a carrier",
+          "unit": "%",
+          "normal": ""
+        }
+      ],
+      "meaning": [
+        {
+          "when": "m == 1 && f == 0",
+          "text": "The usual family: a carrier mother and an unaffected father. Half the sons are affected and half the daughters are carriers; no daughter is affected."
+        },
+        {
+          "when": "m == 0 && f == 1",
+          "text": "An affected father passes his X to every daughter and his Y to every son: all daughters are carriers and no son is affected. X-linked alleles never pass from father to son."
+        },
+        {
+          "when": "dAff > 0",
+          "text": "Daughters can be affected only when the father is affected and the mother passes the allele too: here {dAff}% of daughters. Sons: {son}%."
+        },
+        {
+          "when": "1",
+          "text": "Sons: {son}% affected. Daughters: {dAff}% affected, {dCar}% carriers. Affected males outnumber affected females because a male has no second X to mask the allele."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Carrier mother, unaffected father",
+          "values": {
+            "m": 1,
+            "f": 0
+          }
+        },
+        {
+          "label": "Unaffected mother, affected father",
+          "values": {
+            "m": 0,
+            "f": 1
+          }
+        },
+        {
+          "label": "Carrier mother, affected father",
+          "values": {
+            "m": 1,
+            "f": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "son",
+            "unit": "%",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "For an X-linked recessive allele, the mother carries {m} copies (0, 1 = carrier, 2 = affected) and the father is {f} (1 = affected, 0 = not). What percent of their sons are expected to be affected?"
+          },
+          {
+            "key": "dCar",
+            "unit": "%",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "Same family: what percent of their daughters are expected to be carriers?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv-max-heart-rate",
+      "group": "development",
+      "title": "Maximum heart rate with age",
+      "short": "Max HR ≈ 208 − 0.7 × age",
+      "topic": "aging",
+      "core": [
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Maximum heart rate falls by roughly 0.7 to 1 beat per minute each year, which shrinks cardiac reserve. Two common estimates are 220 minus age and 208 − (0.7 × age), which fits measured values better, especially in older adults. Enter an age.",
+      "formula": "Max HR ≈ 208 − 0.7 × age (or 220 − age)",
+      "inputs": [
+        {
+          "key": "age",
+          "label": "Age",
+          "sym": "age",
+          "unit": "years",
+          "default": 70,
+          "min": 20,
+          "max": 95,
+          "step": 1,
+          "gen": [
+            25,
+            90,
+            1
+          ]
+        },
+        {
+          "key": "rest",
+          "label": "Resting heart rate",
+          "sym": "HRrest",
+          "unit": "beats/min",
+          "default": 70,
+          "min": 40,
+          "max": 100,
+          "step": 1,
+          "gen": [
+            55,
+            80,
+            1
+          ],
+          "hint": "Resting heart rate changes little with healthy aging."
+        }
+      ],
+      "derived": [
+        {
+          "key": "seven",
+          "expr": "0.7 * age",
+          "dp": 1
+        },
+        {
+          "key": "tan",
+          "expr": "208 - 0.7 * age",
+          "dp": 0
+        },
+        {
+          "key": "old",
+          "expr": "220 - age",
+          "dp": 0
+        },
+        {
+          "key": "tan25",
+          "expr": "208 - 0.7 * 25",
+          "dp": 0
+        },
+        {
+          "key": "fall",
+          "expr": "0.7 * (age - 25)",
+          "dp": 0
+        },
+        {
+          "key": "room",
+          "expr": "208 - 0.7 * age - rest",
+          "dp": 0
+        },
+        {
+          "key": "room25",
+          "expr": "208 - 0.7 * 25 - rest",
+          "dp": 0
+        }
+      ],
+      "invalid": [
+        {
+          "when": "208 - 0.7 * age <= rest",
+          "text": "The estimated maximum is at or below the resting rate; check the values."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Multiply the age",
+          "text": "0.7 × {age} = {seven:1}."
+        },
+        {
+          "title": "Subtract from 208",
+          "text": "208 − {seven:1} = <b>{tan} beats/min</b>. The older rule gives 220 − {age} = {old}."
+        },
+        {
+          "title": "Compare with age 25",
+          "text": "At 25 the estimate is {tan25}, so the maximum has fallen by about {fall} beats/min since then."
+        },
+        {
+          "title": "Room above rest",
+          "text": "With a resting rate of {rest}, the heart can speed up by about {tan} − {rest} = <b>{room} beats/min</b>, compared with {room25} at 25."
+        }
+      ],
+      "results": [
+        {
+          "key": "tan",
+          "label": "Estimated maximum heart rate",
+          "unit": "beats/min",
+          "normal": "About 190 at 25; real values vary by 10 beats/min or more either side."
+        },
+        {
+          "key": "room",
+          "label": "Heart rate range above rest",
+          "unit": "beats/min",
+          "normal": ""
+        }
+      ],
+      "meaning": [
+        {
+          "when": "age >= 65",
+          "text": "At {age}, the estimated maximum is about {tan}, some {fall} beats/min below a 25-year-old’s. Resting heart rate barely changes, so the loss is all in reserve: an older heart meets rest easily but has less room to speed up under stress. Regular exercise keeps the highest oxygen uptake well above that of inactive peers."
+        },
+        {
+          "when": "1",
+          "text": "At {age}, the estimated maximum is about {tan} beats/min. The SA node slowly loses pacemaker cells and the heart responds less to sympathetic stimulation, so the maximum keeps falling with age."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Age 70",
+          "values": {
+            "age": 70,
+            "rest": 70
+          }
+        },
+        {
+          "label": "Age 25",
+          "values": {
+            "age": 25,
+            "rest": 70
+          }
+        },
+        {
+          "label": "Age 90",
+          "values": {
+            "age": 90,
+            "rest": 70
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "tan",
+            "unit": "beats/min",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "Using 208 − (0.7 × age), estimate the maximum heart rate of a {age}-year-old."
           }
         ]
       }

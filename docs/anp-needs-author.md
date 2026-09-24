@@ -496,6 +496,60 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** compensation seldom brings pH all the way back to normal; the main exception is respiratory alkalosis lasting days to weeks. A normal pH with both PaCO2 and bicarbonate well outside their ranges suggests two disorders at once, checked against expected-compensation rules (Winter's formula and similar, in a going-further box).
 - **For your exam:** nursing and paramedic exams call any gas with both numbers abnormal and a pH of 7.35 to 7.45 "fully compensated", naming the primary disorder from the side of 7.40 the pH sits on. Use that label when asked.
 
+### lactiferous-sinuses: do breast ducts have milk-storing sinuses?
+- **Status:** pending review.
+- **Where:** `female-anatomy` (notes Mammary glands and For your exam note; glossary mammary glands; question 14's explanations; Figure 27.17 caption).
+- **Evidence-based position:** ultrasound of lactating breasts (Ramsay et al., J Anat 2005) found about 9 duct openings per nipple rather than 15 to 20, ducts that are small, easily compressed and branch close to the nipple, and no sinuses; the ducts widen only briefly during milk ejection, so milk is not stored in the ducts near the nipple. The page describes the sinus as the older textbook description; the figure's printed label is kept and the caption calls it the textbook name.
+- **For your exam:** many textbooks say each breast has 15 to 20 lobes, each drained by a lactiferous duct that widens into a lactiferous sinus under the areola, where milk is stored. If asked where milk collects before leaving the nipple, the expected answer is the lactiferous sinuses.
+
+### menstruation-mechanism: what causes the functional layer to be shed?
+- **Status:** pending review.
+- **Where:** `female-hormones-cycle` (notes Menstrual phase and For your exam note; question 10; glossary uterine cycle; lesson chain).
+- **Evidence-based position:** progesterone withdrawal when the corpus luteum dies sets off a local inflammatory response: prostaglandins, chemokines and invading white blood cells, and matrix metalloproteinases that digest the functional layer (Critchley et al., Physiol Rev 2020). Spasm of the coiled (spiral) arteries contributes but is not the main driver; the classic ischemia account goes back to Markee (1940).
+- **For your exam:** many textbooks explain menstruation mainly as spasm of the coiled arteries starving the functional layer until it dies. If asked what causes menstruation, answer that falling progesterone, when the corpus luteum dies, causes the functional layer to break down and be shed.
+
+### puberty-onset: gonadostat or central restraint?
+- **Status:** pending review.
+- **Where:** `female-hormones-cycle` (notes Puberty and For your exam note; glossary puberty).
+- **Evidence-based position:** puberty starts mainly because a central restraint on the GnRH pulse generator is lifted, with kisspeptin-releasing neurons central to the reawakening and leptin acting as a permissive signal (Plant, Front Neuroendocrinol 2015). Children without working gonads still show the pubertal rise in FSH and LH at the usual age (Conte, Grumbach et al. 1975). Reduced sensitivity to sex-steroid negative feedback happens too, but is not the main cause.
+- **For your exam:** many textbooks explain puberty as the hypothalamus and pituitary becoming less sensitive to negative feedback from the sex hormones (the gonadostat model). If asked why hormone levels rise at puberty, "decreased sensitivity of the hypothalamus to negative feedback" is the expected answer.
+
+### testosterone-sex-drive-women: does testosterone drive women's sex drive?
+- **Status:** pending review.
+- **Where:** `male-physiology` (notes Throughout adult life, Sex drive, and For your exam note). Related: adrenal-androgens-sex-drive (`adrenal-glands`), which still teaches the textbook role; an author should decide the two together.
+- **Evidence-based position:** in men, desire depends partly on testosterone and partly on the estradiol made from it (Finkelstein et al., NEJM 2013). In women, her own testosterone level does not predict desire well and no blood level separates women with and without low desire; testosterone given to postmenopausal women with low desire, at doses near premenopausal levels, raises it modestly (Global Consensus Position Statement, Davis et al. 2019). The page says "older women" because menopause is taught later.
+- **For your exam:** many textbooks say androgens, including testosterone, help drive sex drive in both sexes. Give that answer if asked; the evidence in women is weaker than in men.
+
+### epididymal-transit: how long sperm take to pass through the epididymis
+- **Status:** pending review.
+- **Where:** `male-anatomy` (notes; lesson chain step 1), `male-physiology` (notes).
+- **Evidence-based position:** human epididymal transit is a few days: about 2 to 6 days by testicular-output and reserve estimates (Amann and Howards 1980), shorter in high producers, and up to about 12 days by older labeling studies (Rowley et al. 1970). The pages say "several days", with a range of about 2 days to 2 weeks in the male-anatomy notes. The 2 to 3 month lag after an insult to sperm production still holds.
+- **For your exam:** many textbooks (OpenStax among them) say about 12 days, some older texts up to 20; give the textbook figure if a question asks for a number. The page has no For your exam note, because 12 days falls inside the range it teaches.
+
+### ovary-default: is the ovary the "default" gonad?
+- **Status:** pending review.
+- **Where:** `meiosis` (notes For your exam note).
+- **Evidence-based position:** ovary development is actively switched on by its own genes (RSPO1/WNT4/beta-catenin, FOXL2), which also hold off the testis program throughout life; loss of FOXL2 in adult mouse ovaries turns granulosa cells toward Sertoli-like cells. SRY tips the balance toward a testis; without it the ovary program wins, but it is not a passive default.
+- **For your exam:** older texts say the ovary is the "default" that forms whenever SRY is absent. The exam answer to "what makes the gonad a testis?" is SRY on the Y chromosome.
+
+### erection-mediator: acetylcholine or nitric oxide?
+- **Status:** pending review.
+- **Where:** `male-anatomy` (notes For your exam note; comparison table).
+- **Evidence-based position:** erection is driven by nitric oxide from nitrergic parasympathetic nerves and the endothelium, acting through cGMP to relax arterial and cavernous smooth muscle; acetylcholine acts mainly indirectly, by releasing endothelial nitric oxide.
+- **For your exam:** autonomic tables list erection as a parasympathetic effect, and that is the answer to give. The chemical that relaxes the smooth muscle is nitric oxide rather than acetylcholine acting directly on the muscle.
+
+### maternal-age-cohesion: why oocyte nondisjunction rises with the mother's age
+- **Status:** pending review.
+- **Where:** `meiosis` (notes, "the likely reason"); `ovarian-cycle` (going-further box, "thought to be the main reason").
+- **Evidence-based position:** loss of cohesin that is laid down before birth and not replaced is the leading, well-supported explanation for the maternal-age rise in oocyte aneuploidy (mouse and human oocyte data), with contributions from spindle and checkpoint changes. The pages teach it in plain words ("the proteins that hold chromosomes together") without naming cohesin.
+- **For your exam:** texts may give "older eggs" or "the long arrest in prophase I" without a mechanism; either matches what the page teaches. The page has no For your exam note.
+
+### alpha-blocker-ejaculation: reduced emission or retrograde ejaculation?
+- **Status:** pending review.
+- **Where:** `male-anatomy` (notes Point and Shoot paragraph; question 15).
+- **Evidence-based position:** selective alpha-1A blockers (tamsulosin, silodosin) mainly cause reduced or absent emission; true retrograde ejaculation is more typical after prostate surgery or nerve damage from diabetes. The notes say this. Question 15 keeps retrograde ejaculation in an unnamed alpha-1 blocker but proves it with sperm in the urine, and its explanation notes that these drugs can also weaken emission itself.
+- **For your exam:** many texts and pharmacology lists say alpha-blockers cause retrograde ejaculation. The page has no For your exam note; question 15 matches that answer.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -988,6 +1042,102 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   Winter's formula, mixed disorder, lactic acidosis, paradoxical aciduria, pK.
 - **Etymology to confirm:** natrium, kalium, magnesium, insensible, volatile, titratable,
   compensation, metabolic.
+
+## Phase 2: reproductive chapter, judgment calls for instructor review
+
+- **Positions taught:** emergency contraception works mainly by delaying or preventing
+  ovulation, not by ending an established pregnancy, split by drug (levonorgestrel fails once
+  the LH surge begins; ulipristal can still delay rupture early in the surge but not after the
+  LH peak; Brache 2010, 2013); the hymen is a thin mucosal fold of widely varying shape whose
+  appearance cannot show sexual history; the side of ovulation is close to random between the
+  ovaries from cycle to cycle; high doses of prostaglandin blockers can delay or prevent follicle
+  rupture without changing the LH surge or oocyte maturation; no follicle can ovulate during the
+  luteal phase (rather than "none can be selected", since luteal follicle waves with an
+  anovulatory dominant follicle occur; Baerwald 2003); high estradiol excites the kisspeptin
+  neurons that drive the GnRH neurons, with the separate positive-feedback group noted in rodents
+  and the human site called debated; the LH surge sets up its own ending (luteinization lowers
+  estradiol), so an author may want Foundations' "positive feedback needs an outside event to end
+  it" softened to "something must end it"; testosterone is taught as more essential to sperm
+  production than FSH; PSA is described as a test to use "with care"; the ovarian-cycle
+  going-further box on the maternal-age risk now says "thought to be the main reason", matching
+  the meiosis page; ovary-default, erection-mediator, maternal-age-cohesion,
+  testosterone-sex-drive-women, epididymal-transit, alpha-blocker-ejaculation,
+  lactiferous-sinuses, menstruation-mechanism and puberty-onset are logged above.
+- **Follicle naming:** tertiary = antral follicle; vesicular (Graafian) = the mature
+  preovulatory follicle, treated as the last tertiary stage. OpenStax equates tertiary with
+  vesicular (Graafian); textbooks vary.
+- **Normal values chosen (male side):** spermatogenesis 64–74 days (Heller and Clermont 74;
+  newer estimates nearer 64 or shorter), kept as a range; about 100 million sperm a day for both
+  testes ("on the order of"; published ranges about 45–200 million); epididymis about 6 m
+  uncoiled (some sources 4–6 m); ductus deferens about 45 cm (sources 30–45 cm); scrotal testes
+  2–3 °C below core temperature; about 250 lobules per testis (range 200–300); ejaculate 2–5 mL
+  (WHO 2021 lower reference limit 1.4 mL); semen pH about 7.2–8.0; seminal vesicles 60–70% of
+  the volume and prostate 20–30%; testosterone in the tubules about 50–100 times the blood
+  level; adult serum testosterone about 300–1,000 ng/dL (harmonized range 264–916, Travison
+  2017), falling about 1% a year from middle age; GnRH pulses about every 1–3 hours in men;
+  emission from sympathetic outflow about T10–L2 (texts vary: T10–L2 or T11–L2), expulsion by
+  the pudendal nerve S2–S4, contractions about 0.8 s apart; cryptorchidism about 3% of full-term
+  boys; torsion salvage window about 6 hours; oocyte about 0.1 mm, sperm about 60 µm; BPH in
+  about half of men by 60 and most by 85 (autopsy prevalence); Y chromosome "a few dozen
+  distinct protein-coding genes, several in many copies", X about 800; trisomy 21 arises in the
+  egg "about 9 times in 10".
+- **Normal values chosen (female side):** oocytes about 6–7 million before birth, 1–2 million at
+  birth, 300,000–400,000 at puberty, about 1,000 at menopause, about 400 ovulated in a lifetime;
+  cycle 24–38 days normal; luteal phase 12–14 days (range 11–17); estradiol about 200 pg/mL or
+  more for about 2 days before the surge; ovulation 34–36 hours after LH onset; surge about 2
+  days; oocyte viable 12–24 hours; menses 3–7 days, blood loss 30–40 mL on average and more than
+  80 mL heavy; menarche 12–13 years; breast budding about 10; GnRH reawakening 8–13 years in
+  girls; menopause about 51 (45–55); uterus about 7.5 cm, uterine tube about 10 cm, vagina
+  7–10 cm; mature follicle about 2 cm; vaginal pH 3.8–4.5; progesterone temperature rise
+  0.3–0.5 °C; pill failure under 1% with perfect use and about 7% typical; hormone therapy
+  benefit judged favorable under 60 or within 10 years of menopause (NAMS 2022).
+- **Simplifications:** spermatogonia types are not named; the meiosis page avoids
+  fertilization, zygote, polar body, trisomy and Down syndrome (taught later) and the
+  male-physiology page avoids capacitation and the acrosome reaction; "infundibulum" is avoided
+  for the uterine tube (the pituitary owns the term), which gets a plain "funnel end"; the
+  male-physiology sperm-motility question keys the midpiece as the best of the listed parts,
+  with axonemal defects noted in the explanation.
+- **Tool calls (tool writer and tool audit):** the 28-day hormone graph uses typical textbook
+  values, not one woman's data, with estradiol peaking on day 12.5, LH on day 13.5 and
+  ovulation on day 14; the endometrium on that graph is ultrasound thickness across both walls
+  of the cavity (about 3–13 mm; the axis is labeled "Endometrium (ultrasound)"), and it now
+  thins in the last days before bleeding and runs on continuously into day 1 instead of jumping
+  from 11.5 to 7 mm; the ovulation-day calculator takes cycle length and a luteal phase of
+  10–17 days (default 14), computes ovulation as cycle length minus luteal length, reports the
+  follicular phase as cycle length minus luteal length against the model's 14 days, and gives
+  a range from real luteal phases of 11–17 days; the word-root builder keeps separate part ids
+  metr/o-uterus (Greek mētra, womb; distinct from metr/o, measure) and stat/o-stand (prostate,
+  "one standing before"; distinct from stat/o, holding still); oocyte transport through the
+  uterine tube is kept at about 3–4 days after the oocyte is caught, because unfertilized human
+  ova have been recovered from the uterine cavity about 80 hours after ovulation (Croxatto
+  1978); the testosterone-axis loop has inhibin braking FSH release by the pituitary, not the
+  GnRH pulses; "ovary" is glossed through Latin ovarium (-arium, a place for) and
+  "contraception" as "against conceiving" (coined in the 1880s).
+- **Figures:** Figure 27.9 prints "Posterior fornix of uterus" (it is the vagina's fornix;
+  covered for good and never asked, decision 48) and "Labium minora/majora" (named correctly,
+  printed forms accepted); 27.4 prints "Septa (tunica albuginea)" (septa are extensions of the
+  tunica albuginea; kept, "septa" is the answer); 27.8 draws an arrow from androgen-binding
+  protein to testosterone release (label note and caption explain that ABP binds testosterone
+  and does not cause its release); 27.11 draws the first polar body always dividing (label note:
+  it often breaks down undivided); 27.17's widened ducts keep their "lactiferous sinuses" label,
+  called the textbook name in the caption; 27.15 has errors and 27.18 teaches the gonadostat
+  model (neither used); 27.5, 27.12, 27.14 and 28.24 credit third parties and need license
+  verification, so there are no testis or ovary histology stations (the lab practical has male
+  and female reproductive anatomy and a sperm and testis set instead).
+- **Map gaps:** chiasma, synapsis, Klinefelter and Turner syndromes, dartos, cremaster,
+  pampiniform plexus, tunica vaginalis and albuginea, rete testis, efferent ductules, the parts
+  of the male urethra, PSA, BPH, vasectomy, cryptorchidism, torsion, inguinal hernia, emission
+  and expulsion, PDE5, cGMP, ABP, the tubule compartments, DHT, 5-alpha reductase, aromatase,
+  androgen insensitivity; ovarian and round ligaments, the tube's funnel end, vestibule and
+  bulbs, areolar glands, Cooper's ligaments, atresia, the two-cell model, cumulus, kisspeptin,
+  AMH, pulse coding, progestin, withdrawal bleed, perimenopause, thelarche, hypothalamic
+  amenorrhea, PCOS.
+- **Map change at publish:** "ovarian cycle" is now its own concept, taught in `ovarian-cycle`
+  (spec decision 61), with a new glossary definition written at publish and not yet audited: the
+  monthly sequence of follicle growth, ovulation and the corpus luteum's life and breakdown.
+- **Etymology to confirm:** clitoris (no root given, because the origin of Greek kleitoris is
+  uncertain), pubertas, prolifer-, theca, Graafian.
+- **Names:** the androgen insensitivity vignette uses "she" (raised as a girl).
 
 ## Decided at the Phase 0 reviews
 
