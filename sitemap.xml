@@ -86,6 +86,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/muscular-system.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/nervous-tissue.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -531,6 +536,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/head-neck-muscles.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/hearing-balance.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -621,6 +631,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/lower-limb-muscles.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/lung-volumes.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -657,6 +672,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/mouth-esophagus.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/muscle-mechanics.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -816,12 +836,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/trunk-muscles.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/tubular-transport.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/upper-airway.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/upper-limb-muscles.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1196,6 +1226,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/head-neck-muscles.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/hearing-balance.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -1286,6 +1321,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/lower-limb-muscles.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/lung-volumes.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -1322,6 +1362,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/mouth-esophagus.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/muscle-mechanics.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1481,12 +1526,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/trunk-muscles.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/tubular-transport.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/upper-airway.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/upper-limb-muscles.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>

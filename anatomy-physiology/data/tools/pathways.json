@@ -10749,8 +10749,8 @@
         {
           "id": "thin",
           "label": "Cartilage thins",
-          "text": "The cartilage softens, frays and thins faster than its chondrocytes can repair it.",
-          "why": "Damage outpaces the slow repair of avascular cartilage, so the tissue is lost."
+          "text": "The cartilage softens, frays and thins faster than its chondrocytes can repair it. Worn fragments mildly inflame the synovial membrane, which makes extra fluid.",
+          "why": "Damage outpaces the slow repair of avascular cartilage, so the tissue is lost. The membrane lining the cavity reacts to the fragments shed into the fluid, often early in the disease."
         },
         {
           "id": "space",
@@ -10763,12 +10763,6 @@
           "label": "Bone reacts",
           "text": "Where cartilage wears through, bone grinds on bone, thickens and grows spurs.",
           "why": "Bare bone now takes the load directly and responds by remodeling."
-        },
-        {
-          "id": "syn",
-          "label": "Membrane irritated",
-          "text": "Fragments irritate the synovial membrane, which becomes mildly inflamed and makes extra fluid.",
-          "why": "Worn cartilage and bone shed fragments into the fluid, and the membrane that lines the cavity reacts to them."
         },
         {
           "id": "sympt",
@@ -10795,7 +10789,7 @@
         "text": "On an X-ray, the space between the bones widens.",
         "why": "Cartilage fills the space seen on an X-ray, so as it thins the space narrows. Joint space narrowing is a classic sign of osteoarthritis."
       },
-      "summary": "Loading, aging, injury or excess weight damages the cartilage, which thins because it repairs poorly; the joint space narrows; bone meets bone, thickens and grows spurs; fragments mildly inflame the synovial membrane; and the joint becomes painful and stiff. For your exam, \"wear-and-tear, degenerative joint disease\" is the expected label."
+      "summary": "Loading, aging, injury or excess weight damages the cartilage, which thins because it repairs poorly and sheds fragments that mildly inflame the synovial membrane; the joint space narrows; bone meets bone, thickens and grows spurs; and the joint becomes painful and stiff. For your exam, \"wear-and-tear, degenerative joint disease\" is the expected label."
     },
     {
       "id": "jt-acl-tear",
@@ -11075,22 +11069,16 @@
           "why": "Anatomical position is the starting point, and in it the forearm is supinated."
         },
         {
-          "id": "head",
-          "label": "Radial head turns",
-          "text": "The head of the radius turns inside the annular ligament at the proximal radioulnar joint.",
-          "why": "This pivot joint lets the radius spin around its long axis at the elbow end."
-        },
-        {
-          "id": "swing",
-          "label": "Lower radius swings",
-          "text": "The lower end of the radius swings around the ulna at the distal radioulnar joint.",
-          "why": "As the upper end spins, the lower end must travel around the fixed ulna."
+          "id": "turn",
+          "label": "Radius turns",
+          "text": "The radius turns: its head spins inside the annular ligament at the proximal radioulnar joint while its lower end swings around the ulna at the distal radioulnar joint.",
+          "why": "Both ends belong to one rigid bone, so they move together: the pivot joint at the elbow lets the radius spin, and its lower end has to travel around the fixed ulna."
         },
         {
           "id": "cross",
           "label": "Radius crosses ulna",
           "text": "The radius crosses over the ulna.",
-          "why": "The swing carries the lower radius from the thumb side across the ulna."
+          "why": "The turn carries the lower radius from the thumb side across the ulna."
         },
         {
           "id": "palm",
@@ -11100,7 +11088,7 @@
         }
       ],
       "missing": {
-        "at": 3,
+        "at": 2,
         "distractors": [
           {
             "text": "The wrist rotates the hand around the forearm.",
@@ -11114,8 +11102,8 @@
       },
       "error": {
         "at": 1,
-        "text": "The head of the ulna turns inside the annular ligament.",
-        "why": "The annular ligament wraps the head of the radius, not the ulna. The radius is the bone that turns."
+        "text": "The ulna turns: its upper end spins inside the annular ligament at the proximal radioulnar joint.",
+        "why": "The annular ligament wraps the head of the radius, not the ulna. The radius is the bone that turns; the ulna stays in place."
       },
       "summary": "From the supinated start, the radial head spins in the annular ligament while the lower radius swings around the ulna, so the radius crosses the ulna and the hand, riding on the radius, turns palm backward."
     },
@@ -14276,16 +14264,16 @@
           "why": "Osteoblasts build bone by first laying down its organic matrix."
         },
         {
-          "id": "mineral",
-          "label": "Osteoid mineralizes",
-          "text": "Calcium phosphate crystals are deposited in the osteoid over days to weeks, and it hardens.",
-          "why": "Mineral can only be laid along collagen that is already there, so mineralizing follows secretion."
+          "id": "trapped",
+          "label": "Surrounded by osteoid",
+          "text": "Neighboring osteoblasts keep secreting, and the cell is surrounded by osteoid in a small cavity, keeping thin arms in channels to its neighbors.",
+          "why": "As layers of osteoid build up around it, the cell ends up inside the matrix before that matrix has hardened."
         },
         {
-          "id": "trapped",
-          "label": "Walled in",
-          "text": "The osteoblast is surrounded by the matrix it made, in a small cavity, keeping thin arms in channels to its neighbors.",
-          "why": "As layers build up around it, the cell ends up inside its own matrix, in a lacuna."
+          "id": "mineral",
+          "label": "Walled in by mineral",
+          "text": "Calcium phosphate crystals are deposited in the osteoid over days to weeks, walling the cell into hardened matrix in a lacuna.",
+          "why": "Mineral can only be laid along collagen that is already there, so the osteoid around the cell hardens after it is secreted."
         },
         {
           "id": "osteocyte",
@@ -14312,7 +14300,7 @@
         "text": "The trapped cell becomes an osteoclast that resorbs the bone around it.",
         "why": "A walled-in osteoblast becomes an osteocyte. Osteoclasts come from a different line: fused precursors from the red marrow, related to macrophages."
       },
-      "summary": "Osteogenic cell divides, a daughter becomes an osteoblast, it secretes osteoid, the osteoid mineralizes, the cell is walled in, and it becomes an osteocyte. Osteoclasts are a separate line."
+      "summary": "Osteogenic cell divides, a daughter becomes an osteoblast, it secretes osteoid, it is surrounded by osteoid, the osteoid mineralizes and walls it in a lacuna, and it becomes an osteocyte. Osteoclasts are a separate line."
     },
     {
       "id": "bt-intramembranous",
@@ -14719,8 +14707,8 @@
         {
           "id": "kidney",
           "label": "Kidneys dump phosphate",
-          "text": "The hormone makes the kidneys keep calcium and excrete more of the phosphate.",
-          "why": "The phosphate released from bone would combine with calcium and lower free calcium again, so it has to be removed."
+          "text": "The extra phosphate released from bone leaves in the urine, because the hormone makes the kidney tubules keep less phosphate.",
+          "why": "Phosphate freed from bone would combine with calcium and lower the free calcium again. Excreting it lets the released calcium stay free."
         },
         {
           "id": "off",
@@ -14744,10 +14732,10 @@
       },
       "error": {
         "at": 5,
-        "text": "The hormone makes the kidneys excrete more calcium and keep the phosphate.",
-        "why": "Both are backwards. The hormone makes the kidneys return calcium to the blood and excrete phosphate, so the calcium freed from bone stays free."
+        "text": "The extra phosphate released from bone is kept by the kidneys and returned to the blood.",
+        "why": "Backwards. The hormone makes the kidney tubules keep less phosphate, so the phosphate freed from bone is excreted and the calcium freed with it stays free."
       },
-      "summary": "Calcium falls, fewer ions bind the gland cells’ receptor protein, more calcium-raising hormone, the hormone acts on osteoblasts, which signal osteoclasts to resorb bone, the kidneys keep calcium and dump phosphate, and the rise in calcium shuts hormone release back down."
+      "summary": "Calcium falls, fewer ions bind the gland cells’ receptor protein, more calcium-raising hormone, the hormone acts on osteoblasts, which signal osteoclasts to resorb bone, the kidneys excrete the phosphate freed from bone, and the rise in calcium shuts hormone release back down."
     }
   ]
 }

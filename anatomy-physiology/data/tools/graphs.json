@@ -26163,7 +26163,7 @@
      "type": "phase",
      "level": "apply",
      "diff": 2,
-     "q": "In which stretch does the ankle plant flex sharply, pushing the toes against the ground just before they leave it?",
+     "q": "In which stretch does the ankle plantar flex sharply, pushing the toes against the ground just before they leave it?",
      "options": [
       "From about 46% to 63% of the stride",
       "From heel contact to about 8%, as the foot lowers",
@@ -26193,12 +26193,12 @@
      "options": [
       "At heel contact: the thigh is flexed farthest forward",
       "While the foot is in the air: the thigh is swinging back",
-      "From about 45% to 63%: extended past anatomical position, behind the body",
+      "From about 42% to 63%: extended past anatomical position, behind the body",
       "At 100%: the hip has returned to anatomical position"
      ],
      "correct": 2,
      "highlight": {
-      "x0": 45,
+      "x0": 42,
       "x1": 63,
       "label": "thigh behind body"
      },
@@ -35059,7 +35059,7 @@
       "x": 37,
       "y": 1510
      },
-     "why": "About 1,500 g, reached in the thirties. That is roughly the \"kilogram or so\" of calcium stored in an adult skeleton, the bank the blood draws on."
+     "why": "About 1,500 g, reached in the thirties. Women peak lower, near 1,200 g. Either way, an adult skeleton holds a kilogram or more of calcium, the bank the blood draws on."
     },
     {
      "id": "gap",
@@ -35281,35 +35281,35 @@
          ],
          [
           40.5,
-          1450
+          1480
          ],
          [
           41,
-          1440
+          1475
          ],
          [
           43,
-          1465
+          1485
          ],
          [
           45,
-          1470
+          1480
          ],
          [
           50,
-          1445
+          1452
          ],
          [
           60,
-          1385
+          1392
          ],
          [
           70,
-          1305
+          1312
          ],
          [
           80,
-          1205
+          1212
          ]
         ],
         "label": "after bed rest",
@@ -35646,7 +35646,7 @@
      "type": "phase",
      "level": "analyze",
      "diff": 2,
-     "q": "Between 10 and 13, girls are growing faster than boys. Which statement explains the region highlighted?",
+     "q": "Between about 10 and 12.5, girls are growing faster than boys. Which statement explains the region highlighted?",
      "options": [
       "Boys’ epiphyseal plates have already closed by this age",
       "Boys are still in childhood growth; their spurt comes later",
@@ -35656,7 +35656,7 @@
      "correct": 1,
      "highlight": {
       "x0": 10,
-      "x1": 13,
+      "x1": 12.5,
       "label": "girls ahead"
      },
      "why": {
@@ -35679,7 +35679,7 @@
       "The spurt comes earlier, but growth goes on to the usual age",
       "The spurt is taller, but it still comes at the usual age",
       "It is unchanged, because the plates close at a fixed age",
-      "Spurt and end of growth both move about four years earlier"
+      "Spurt and end of growth both move about three years earlier"
      ],
      "correct": 3,
      "overlay": {
@@ -35708,42 +35708,46 @@
          ],
          [
           6,
-          6.2
+          6
          ],
          [
           7,
-          7.4
+          6.2
          ],
          [
           8,
-          8
-         ],
-         [
-          8.5,
           7.4
          ],
          [
           9,
-          6
+          8
+         ],
+         [
+          9.5,
+          7.4
          ],
          [
           10,
-          3.5
+          6
          ],
          [
           11,
-          1.5
+          3.5
          ],
          [
           12,
-          0.6
+          1.5
          ],
          [
           13,
-          0.2
+          0.6
          ],
          [
           14,
+          0.2
+         ],
+         [
+          15,
           0
          ],
          [
@@ -35781,7 +35785,7 @@
     "communication"
    ],
    "intro": "The cells of the four tiny glands behind the thyroid release more calcium-raising hormone when blood calcium is low and less when it is high. The curve shows the typical shape of that response in people: hormone release as a percentage of its maximum at each level of total blood calcium. Exact values vary between people.",
-   "alt": "Hormone release in percent of maximum against total blood calcium from 7 to 12 mg/dL. Release is near 100% at 7 to 8 mg/dL, falls slowly to about 80% at 9, drops steeply through about 50% at 9.5 to about 25% at 10, and levels off near 10 to 12% above 10.5. The normal range, 8.5 to 10.5 mg/dL, is marked.",
+   "alt": "Hormone release in percent of maximum against total blood calcium from 7 to 12 mg/dL. Release is near 100% at 7 to 8 mg/dL, falls to about 85% at 8.5, drops steeply through 50% at about 9.1 to about 33% at 9.5 and 19% at 10, and levels off near 10 to 12% above 10.5. The normal range, 8.5 to 10.5 mg/dL, is marked.",
    "x": {
     "min": 7,
     "max": 12,
@@ -35827,35 +35831,39 @@
         ],
         [
          8,
-         97
+         95
         ],
         [
          8.5,
-         92
+         85
+        ],
+        [
+         8.75,
+         74
         ],
         [
          9,
-         80
+         59
         ],
         [
          9.25,
-         67
+         45
         ],
         [
          9.5,
-         52
+         33
         ],
         [
          9.75,
-         37
+         24
         ],
         [
          10,
-         25
+         19
         ],
         [
          10.5,
-         15
+         14
         ],
         [
          11,
@@ -35886,8 +35894,8 @@
     },
     {
      "id": "steep",
-     "x0": 9,
-     "x1": 10,
+     "x0": 8.75,
+     "x1": 9.75,
      "label": "steepest part"
     },
     {
@@ -35904,14 +35912,14 @@
      "level": "recall",
      "diff": 1,
      "q": "Read the hormone release at a total blood calcium of 8.5 mg/dL.",
-     "answer": 92,
+     "answer": 85,
      "tol": 5,
      "unit": "% of maximum",
      "show": {
       "x": 8.5,
-      "y": 92
+      "y": 85
      },
-     "why": "About 92% of maximum. At the low edge of the normal range, the gland cells are already releasing nearly all the hormone they can, pulling calcium from bone and holding it in the kidneys."
+     "why": "About 85% of maximum. At the low edge of the normal range, the gland cells are already releasing most of the hormone they can, pulling calcium from bone and holding it in the kidneys."
     },
     {
      "id": "half",
@@ -35919,14 +35927,14 @@
      "level": "apply",
      "diff": 2,
      "q": "At what total blood calcium is hormone release half of its maximum?",
-     "answer": 9.5,
-     "tol": 0.2,
+     "answer": 9.1,
+     "tol": 0.25,
      "unit": "mg/dL",
      "show": {
-      "x": 9.5,
+      "x": 9.1,
       "y": 50
      },
-     "why": "About 9.5 mg/dL, the middle of the normal range. The midpoint of the steep part sits at the set point, which is where the loop holds calcium."
+     "why": "About 9.1 mg/dL, just below the middle of the normal range. A resting calcium of about 9.5 sits a little to the right of this point, still on the steep part of the curve. There, release is about a third of maximum, and any small change swings it up or down."
     },
     {
      "id": "steep-part",
@@ -36007,39 +36015,43 @@
          ],
          [
           7.5,
-          97
+          96
          ],
          [
-          8,
-          91
+          7.9,
+          85
          ],
          [
-          8.25,
-          80
+          8.15,
+          74
          ],
          [
-          8.5,
-          66
+          8.4,
+          59
          ],
          [
-          8.75,
-          50
+          8.65,
+          45
          ],
          [
-          9,
-          36
+          8.9,
+          33
          ],
          [
-          9.25,
-          26
+          9.15,
+          24
          ],
          [
-          9.5,
+          9.4,
           19
          ],
          [
-          10,
-          13
+          9.9,
+          14
+         ],
+         [
+          10.4,
+          12
          ],
          [
           11,
@@ -36052,8 +36064,8 @@
         ],
         "label": "with the medicine",
         "labelAt": [
-         9.1,
-         45
+         8.75,
+         52
         ],
         "anchor": "start"
        }

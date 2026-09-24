@@ -23016,7 +23016,7 @@
    "level": "apply",
    "front": "Give two natural examples of Wolff’s law.",
    "back": "Tennis players’ racket arms have thicker bone walls than their other arms; astronauts lose about 1 to 2% of hip and spine bone a month.",
-   "why": "Both show bone following load, in opposite directions, with genes and diet held constant."
+   "why": "Both show bone following load, in opposite directions. A player’s two arms share genes, hormones and diet, so load is the only difference between them."
   },
   {
    "id": "bt-open-closed",
@@ -23325,7 +23325,7 @@
    "compare": "Hypocalcemia vs hypercalcemia",
    "front": "Hypocalcemia vs hypercalcemia: common causes?",
    "back": "Hypocalcemia: too little of the calcium-raising hormone (often after neck surgery), severe vitamin D deficiency. Hypercalcemia: too much of the calcium-raising hormone, cancer in bone.",
-   "why": "The calcium-raising hormone from the small glands behind the thyroid sets the level, so too much or too little of it moves calcium the same way."
+   "why": "The calcium-raising hormone from the small glands behind the thyroid sets the level, so too much of it raises blood calcium and too little lowers it."
   },
   {
    "id": "bt-cuff-sign",
@@ -23337,7 +23337,7 @@
    "level": "apply",
    "front": "A blood pressure cuff inflated on the arm makes the hand cramp into a claw. What does this suggest?",
    "back": "Hypocalcemia.",
-   "why": "With too little calcium outside the cells, nerves are overexcitable, and the pressure of the cuff is enough to set off a spasm."
+   "why": "With too little calcium outside the cells, nerves are overexcitable. A cuff pumped up tight enough to stop the arm’s blood flow and held for a few minutes starves the nerves of blood, which is enough to make them fire and the hand spasm."
   },
   {
    "id": "bt-loop-parts",

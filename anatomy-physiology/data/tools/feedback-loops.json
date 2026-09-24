@@ -4281,7 +4281,7 @@
         "afferent": {
           "text": "No separate pathway: the osteocytes that sense the strain also set the response",
           "short": "None: same cells",
-          "why": "The osteocytes do not report to another center. They sense strain and change their own signals, as the gland cells do in the calcium loop."
+          "why": "The osteocytes do not report to another center. The same cells sense the strain and change their own signals."
         },
         "control": {
           "text": "Osteocytes release less of the signal that holds osteoblasts back and less of the signal that makes osteoclasts form",

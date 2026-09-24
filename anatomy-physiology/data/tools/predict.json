@@ -22466,7 +22466,7 @@
       ],
       "level": 4,
       "misconception": "a joint that loosens in pregnancy has changed into a different kind of joint",
-      "setup": "Ms. Reyes is 32 weeks pregnant. Her pubic symphysis, a pad of fibrocartilage between the two pubic bones, is normally about 4 to 5 mm wide. Follow the joint through late pregnancy and then through the months after delivery.",
+      "setup": "Ms. Reyes is 32 weeks pregnant. Her pubic symphysis, a pad of fibrocartilage between the two pubic bones, is normally about 4 to 5 mm wide. In late pregnancy she has sharp pain at the front of her pelvis when she climbs stairs. Follow the joint through late pregnancy and then through the months after delivery.",
       "stages": [
         {
           "id": "late",
@@ -26138,7 +26138,7 @@
             "convert",
             "make"
           ],
-          "why": "Hematopoiesis happens in red marrow. With more red marrow at work, more red blood cells, white blood cells and platelets are made each day."
+          "why": "Hematopoiesis happens in red marrow. With more red marrow at work, more blood cells, above all red blood cells, are made each day."
         },
         {
           "id": "length",
@@ -26213,7 +26213,7 @@
     {
       "id": "bt-osteoclast-acid-defect",
       "title": "Osteoclasts that cannot make acid",
-      "topic": "bone-histology",
+      "topic": "bone-remodeling-repair",
       "core": [
         "structure-function"
       ],
@@ -26479,8 +26479,7 @@
         "form": "Bone formation falls",
         "resorb": "Resorption rises",
         "loss": "Each remodeling cycle removes more bone than it replaces",
-        "spongy": "Spongy bone, with its large surface, loses bone fastest",
-        "out": "The released calcium is excreted, so the calcium level in his blood stays in range"
+        "spongy": "Spongy bone, with its large surface, loses bone fastest"
       },
       "variables": [
         {
@@ -26530,32 +26529,6 @@
             "spongy"
           ],
           "why": "With formation down and resorption up, each remodeling cycle ends with a net loss. Most of it comes from spongy bone, which has the most surface for osteoclasts to work on."
-        },
-        {
-          "id": "urine",
-          "name": "Calcium lost in his urine",
-          "answer": "up",
-          "chain": [
-            "strain",
-            "sense",
-            "ocl",
-            "resorb",
-            "out"
-          ],
-          "why": "Resorption releases calcium from bone into the blood. The body holds the calcium level in the blood steady by excreting the extra in the urine."
-        },
-        {
-          "id": "blood",
-          "name": "The calcium level in his blood",
-          "answer": "none",
-          "chain": [
-            "strain",
-            "sense",
-            "ocl",
-            "resorb",
-            "out"
-          ],
-          "why": "The calcium level in the blood is held in a narrow range. The calcium freed from bone is excreted rather than left in the blood, so the level stays normal while the skeleton thins."
         }
       ]
     },
@@ -27091,12 +27064,12 @@
         },
         {
           "id": "urine",
-          "name": "Calcium lost in the urine",
-          "answer": "up",
+          "name": "Share of the calcium in the forming urine that the kidney tubules return to the blood",
+          "answer": "down",
           "chain": [
             "kidney"
           ],
-          "why": "The hormone normally makes the kidney tubules return calcium to the blood. Without it, more calcium stays in the forming urine and is lost."
+          "why": "The hormone normally makes the kidney tubules return calcium to the blood. Without it, they return a smaller share of the calcium in the forming urine, so the kidneys stop helping to hold calcium up."
         },
         {
           "id": "blood",
@@ -27108,7 +27081,7 @@
             "vitD",
             "low"
           ],
-          "why": "All three effectors now move calcium the wrong way: less from bone, more lost by the kidneys and, over days, less absorbed by the intestine. Hypocalcemia follows."
+          "why": "All three effectors now move calcium the wrong way: less from bone, less returned by the kidney tubules and, over days, less absorbed by the intestine. Hypocalcemia follows."
         },
         {
           "id": "excite",
@@ -27156,7 +27129,7 @@
         "coupling": "Fewer growth factors are released from resorbed matrix, so fewer osteoblasts are called up",
         "form": "Formation falls too, but less than resorption at first",
         "net": "Each remodeling cycle loses less bone, and open pits fill in",
-        "fracture": "Stronger, better-connected trabeculae"
+        "fracture": "Fewer trabeculae are thinned or cut through, so the spongy bone keeps more of its strength"
       },
       "variables": [
         {
