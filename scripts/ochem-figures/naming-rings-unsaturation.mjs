@@ -175,8 +175,8 @@ function stacked(def, panels, foot) {
     caption: 'Follow the numbers round each ring. Both numberings of the ethyl–methyl ring start on a substituted carbon and take the short way to the other one, and both land on 1 and 3.',
   }, [
     { tag: 'one substituent', dh: 100, draw: ring(null, false), name: 'methylcyclohexane', notes: ['no number: every ring carbon is equivalent'] },
-    { kind: 'hi', tag: 'start at the ethyl', dh: 128, draw: ring([5, 4, 3, 2, 1, 6], true), name: '1-ethyl-3-methylcyclohexane', notes: ['set {1,3}, and ethyl is first in the alphabet'] },
-    { kind: 'warn', tag: 'start at the methyl', dh: 128, draw: ring([5, 6, 1, 2, 3, 4], true), name: '3-ethyl-1-methylcyclohexane', bad: true, notes: ['also {1,3}: a tie, lost on the alphabet'] },
+    { kind: 'hi', tag: 'start at the ethyl', dh: 140, draw: ring([5, 4, 3, 2, 1, 6], true), name: '1-ethyl-3-methylcyclohexane', notes: ['set {1,3}, and ethyl is first in the alphabet'] },
+    { kind: 'warn', tag: 'start at the methyl', dh: 140, draw: ring([5, 6, 1, 2, 3, 4], true), name: '3-ethyl-1-methylcyclohexane', bad: true, notes: ['also {1,3}: a tie, lost on the alphabet'] },
   ]);
 }
 
@@ -196,8 +196,8 @@ function stacked(def, panels, foot) {
     alt: 'The same trisubstituted cyclohexane numbered two ways, stacked. Top: numbered from the ethyl carbon, giving the set 1,2,5 and the rejected name 1-ethyl-2,5-dimethylcyclohexane. Bottom: numbered from the neighboring methyl carbon, giving the set 1,2,4 and the correct name 2-ethyl-1,4-dimethylcyclohexane.',
     caption: 'One molecule, two numberings. Read the three ring numbers that carry a substituent in each panel; the second set is lower at its third term, so it wins even though it hands the ethyl a 2.',
   }, [
-    { kind: 'warn', tag: 'ethyl takes C1', dh: 132, draw: ring([3, 4, 5, 6, 1, 2]), name: '1-ethyl-2,5-dimethylcyclohexane', bad: true, notes: ['substituents on {1, 2, 5}'] },
-    { kind: 'hi', tag: 'lowest set of locants', dh: 132, draw: ring([6, 5, 4, 3, 2, 1]), name: '2-ethyl-1,4-dimethylcyclohexane', notes: ['substituents on {1, 2, 4}'] },
+    { kind: 'warn', tag: 'ethyl takes C1', dh: 146, draw: ring([3, 4, 5, 6, 1, 2]), name: '1-ethyl-2,5-dimethylcyclohexane', bad: true, notes: ['substituents on {1, 2, 5}'] },
+    { kind: 'hi', tag: 'lowest set of locants', dh: 146, draw: ring([6, 5, 4, 3, 2, 1]), name: '2-ethyl-1,4-dimethylcyclohexane', notes: ['substituents on {1, 2, 4}'] },
   ], ['Term by term: 1 = 1, then 2 = 2, then 4 beats 5.']);
 }
 
@@ -290,9 +290,9 @@ function stacked(def, panels, foot) {
     alt: 'Three numbered chains, stacked. But-2-ene: the double bond joins C2 and C3, so its locant is 2. But-1-ene: the double bond joins C1 and C2, so its locant is 1. Penta-1,3-diene: double bonds join C1 to C2 and C3 to C4, so the locants are 1 and 3.',
     caption: 'Each double bond joins two numbered carbons. The name cites only the lower of the two.',
   }, [
-    { kind: 'hi', dh: 70, draw: drawChain(4, [1]), name: 'but-2-ene', notes: ['C2=C3, written as 2'] },
-    { kind: 'hi', dh: 70, draw: drawChain(4, [0]), name: 'but-1-ene', notes: ['C1=C2, written as 1'] },
-    { kind: 'hi', dh: 70, draw: drawChain(5, [0, 2]), name: 'penta-1,3-diene', notes: ['C1=C2 and C3=C4, written as 1,3'] },
+    { kind: 'hi', dh: 80, draw: drawChain(4, [1]), name: 'but-2-ene', notes: ['C2=C3, written as 2'] },
+    { kind: 'hi', dh: 80, draw: drawChain(4, [0]), name: 'but-1-ene', notes: ['C1=C2, written as 1'] },
+    { kind: 'hi', dh: 80, draw: drawChain(5, [0, 2]), name: 'penta-1,3-diene', notes: ['C1=C2 and C3=C4, written as 1,3'] },
   ]);
 }
 
@@ -336,7 +336,7 @@ function stacked(def, panels, foot) {
    carbon, hanging below vertex 2. */
 {
   const skel = (plain, nums, note) => (cx, top) => {
-    const a = zig(cx - 90, top + 44, 6, 36, 22);
+    const a = zig(cx - 90, top + 62, 6, 36, 22);
     const pts = [...a, P(a[2].x, a[2].y + 42)];
     const bonds = [[0, 1, 1, plain.includes(0)], [1, 2, 1, plain.includes(1)], [2, 3, 1, plain.includes(2)],
       [3, 4, 1, plain.includes(3)], [4, 5, 1, plain.includes(4)], [2, 6, 2, plain.includes(6)]];
@@ -350,10 +350,10 @@ function stacked(def, panels, foot) {
     alt: 'One alkene traced twice, stacked. First: the six-carbon chain, the longest in the molecule, numbered 1 to 6, with the C=CH2 hanging off its third carbon; named 3-methylidenehexane and marked as not the textbook answer. Second: the five-carbon chain that starts at the CH2 of the double bond, numbered so the double bond is C1 to C2 and the ethyl is on C2; named 2-ethylpent-1-ene.',
     caption: 'One alkene, two candidate parents. Compare the highlighted chains: the first is longer but misses the double bond; the second runs through it, so the double bond gets C1 and the two carbons left over are an ethyl.',
   }, [
-    { kind: 'warn', tag: 'the longest chain in the molecule', dh: 108, name: '3-methylidenehexane', bad: true,
+    { kind: 'warn', tag: 'the longest chain in the molecule', dh: 128, name: '3-methylidenehexane', bad: true,
       notes: ['six carbons, but the C=C hangs off it', 'not what a textbook or exam expects'],
       draw: skel([6], { 0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6 }, (p) => text(p[6].x + 8, p[6].y + 4, 'the C=C is off the chain', { cls: 'fg-sm', anchor: 'start' })) },
-    { kind: 'hi', tag: 'the longest chain through the C=C', dh: 108, name: '2-ethylpent-1-ene',
+    { kind: 'hi', tag: 'the longest chain through the C=C', dh: 132, name: '2-ethylpent-1-ene',
       notes: ['five carbons, and the C=C is on the chain', 'the double bond takes the suffix and C1'],
       draw: skel([0, 1], { 6: 1, 2: 2, 3: 3, 4: 4, 5: 5 }, (p) => text(p[0].x - 6, p[0].y + 4, 'ethyl', { cls: 'fg-sm', anchor: 'end' })) },
   ]);
@@ -399,10 +399,10 @@ function stacked(def, panels, foot) {
     alt: 'Two five-carbon chains that each contain one double bond and one triple bond, each numbered from both ends, four panels stacked. CH3-CH=CH-C≡CH: from the CH3 end the bonds sit at 2 and 4; from the other end at 1 and 3, which is lower, so the name is pent-3-en-1-yne. CH2=CH-CH2-C≡CH: both directions give 1 and 4, a tie, so the double bond takes the 1: pent-1-en-4-yne, not pent-4-en-1-yne.',
     caption: 'Two molecules, each numbered from both ends. The straight run of three carbons at the right-hand end is the triple bond and its neighbor: a triple bond holds its carbons in a line.',
   }, [
-    { kind: 'warn', tag: 'first molecule, one way', dh: 84, draw: draw(1, [1, 2, 3, 4, 5]), name: 'pent-2-en-4-yne', bad: true, notes: ['double bond 2, triple bond 4: {2, 4}'] },
-    { kind: 'hi', tag: 'first molecule, the other way', dh: 84, draw: draw(1, [5, 4, 3, 2, 1]), name: 'pent-3-en-1-yne', notes: ['triple bond 1, double bond 3: {1, 3}'] },
-    { kind: 'warn', tag: 'second molecule, one way', dh: 84, draw: draw(0, [5, 4, 3, 2, 1]), name: 'pent-4-en-1-yne', bad: true, notes: ['triple bond 1, double bond 4: {1, 4}'] },
-    { kind: 'hi', tag: 'second molecule, the other way', dh: 84, draw: draw(0, [1, 2, 3, 4, 5]), name: 'pent-1-en-4-yne', notes: ['double bond 1, triple bond 4: {1, 4}', 'a tie, so the double bond gets the 1'] },
+    { kind: 'warn', tag: 'first molecule, one way', dh: 94, draw: draw(1, [1, 2, 3, 4, 5]), name: 'pent-2-en-4-yne', bad: true, notes: ['double bond 2, triple bond 4: {2, 4}'] },
+    { kind: 'hi', tag: 'first molecule, the other way', dh: 94, draw: draw(1, [5, 4, 3, 2, 1]), name: 'pent-3-en-1-yne', notes: ['triple bond 1, double bond 3: {1, 3}'] },
+    { kind: 'warn', tag: 'second molecule, one way', dh: 94, draw: draw(0, [5, 4, 3, 2, 1]), name: 'pent-4-en-1-yne', bad: true, notes: ['triple bond 1, double bond 4: {1, 4}'] },
+    { kind: 'hi', tag: 'second molecule, the other way', dh: 94, draw: draw(0, [1, 2, 3, 4, 5]), name: 'pent-1-en-4-yne', notes: ['double bond 1, triple bond 4: {1, 4}', 'a tie, so the double bond gets the 1'] },
   ], ['First molecule: {1, 3} beats {2, 4}.']);
 }
 

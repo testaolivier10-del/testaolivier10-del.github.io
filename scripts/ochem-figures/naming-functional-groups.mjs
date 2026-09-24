@@ -277,7 +277,7 @@ FIGURES.push({
       const pts = polyPts(cx, 176, 6, 30);
       s += polyRing(pts);
       const c1 = pts[0];
-      s += num(c1.x + 13, c1.y + 12, '1');
+      s += num(c1.x + 15, c1.y - 3, '1');
       if (i < 2) {
         const cx2 = P(cx, c1.y - 38);
         s += sk(c1, cx2, true);
@@ -429,7 +429,7 @@ FIGURES.push({
     ['A', 'B', 'C'].forEach((L, i) => {
       const py = 10 + i * 150, cx = 196;
       s += panel(10, py, 320, 140);
-      s += tag(24, py + 24, 'Molecule ' + L, { anchor: 'start' });
+      s += text(24, py + 26, 'Molecule ' + L, { cls: 'fg-lbl', anchor: 'start' });
       if (i === 0) {
         const p = zig(cx - 68, py + 100, 5, 34, 22);
         s += chain(p) + hang(p[1], P(p[1].x, p[1].y - 38), 'O', { order: 2 }) + hang(p[3], P(p[3].x, p[3].y - 38), 'OH');
@@ -493,16 +493,16 @@ FIGURES.push({
   id: 'oxo-worked',
   lessons: ['naming-functional-groups'],
   alt: '3-oxobutanoic acid: a four-carbon chain numbered 1 to 4 from the acid carbon, with a double-bonded O and an OH on C1 and a double-bonded O on C3.',
-  viewBox: '0 0 420 230',
+  viewBox: '0 0 340 230',
   build() {
-    let s = panel(10, 10, 400, 210);
-    const r = zig(110, 120, 4, 40, 24);
+    let s = panel(10, 10, 320, 210);
+    const r = zig(90, 120, 4, 40, 24);
     s += chain(r);
     s += hang(r[0], P(r[0].x, r[0].y + 40), 'O', { order: 2, kind: 'hi' }) + hang(r[0], P(r[0].x - 34, r[0].y - 20), 'HO', { kind: 'hi' });
     s += hang(r[2], P(r[2].x, r[2].y + 40), 'O', { order: 2 });
     s += num(r[0].x + 17, r[0].y + 18, '1') + at(r[1], '2', 'above') + num(r[2].x, r[2].y - 8, '3') + at(r[3], '4', 'above');
     s += sm(r[2].x + 22, r[2].y + 44, 'oxo- on C3', 'start');
-    s += good(210, 204, '3-oxobutanoic acid');
+    s += good(170, 204, '3-oxobutanoic acid');
     return s;
   },
   caption: 'The acid (highlighted) takes the suffix and C1. The ketone oxygen on C3 is named <b>oxo-</b>.',
@@ -512,32 +512,254 @@ FIGURES.push({
   id: 'q-decode',
   lessons: ['naming-functional-groups'],
   alt: 'Four candidate structures. A: an aldehyde on a five-carbon chain with an OH on the carbon next to the CHO. B: a five-carbon chain with a C=O on its second carbon and an OH on the far end carbon. C: an aldehyde on a five-carbon chain with an OH on the fourth carbon counting from the CHO carbon. D: an aldehyde on a four-carbon chain with an OH on the far end carbon.',
-  viewBox: '0 0 352 364',
+  viewBox: '0 0 340 364',
   build() {
     let s = '';
     const cho = (p0) => hang(p0, P(p0.x, p0.y + 34), 'O', { order: 2 }) + hang(p0, P(p0.x - 26, p0.y - 18), 'H');
     ['A', 'B', 'C', 'D'].forEach((L, i) => {
-      const px = 8 + (i % 2) * 176, py = 10 + Math.floor(i / 2) * 176;
-      s += panel(px, py, 168, 166);
-      s += tag(px + 84, py + 20, 'Structure ' + L);
+      const px = 6 + (i % 2) * 166, py = 10 + Math.floor(i / 2) * 176;
+      s += panel(px, py, 162, 166);
+      s += tag(px + 81, py + 20, 'Structure ' + L);
       const y = py + 112;
       if (i === 0) {            // 2-hydroxypentanal
-        const p = zig(px + 44, y, 5, 28, 18);
+        const p = zig(px + 44, y, 5, 26, 18);
         s += chain(p) + cho(p[0]) + hang(p[1], P(p[1].x, p[1].y - 36), 'OH');
       } else if (i === 1) {     // 5-hydroxypentan-2-one
-        const p = zig(px + 22, y, 5, 26, 18);
+        const p = zig(px + 20, y, 5, 24, 18);
         s += chain(p) + hang(p[1], P(p[1].x, p[1].y - 36), 'O', { order: 2 }) + hang(p[4], P(p[4].x + 24, p[4].y - 18), 'OH');
       } else if (i === 2) {     // 4-hydroxypentanal
-        const p = zig(px + 44, y, 5, 28, 18);
+        const p = zig(px + 44, y, 5, 26, 18);
         s += chain(p) + cho(p[0]) + hang(p[3], P(p[3].x, p[3].y - 36), 'OH');
       } else {                  // 4-hydroxybutanal
-        const p = zig(px + 44, y, 4, 28, 18);
+        const p = zig(px + 44, y, 4, 26, 18);
         s += chain(p) + cho(p[0]) + hang(p[3], P(p[3].x, p[3].y - 36), 'OH');
       }
     });
     return s;
   },
   caption: 'Four drawings, one of them right. Decode the name from its suffix before you look for a match.',
+});
+
+/* ------------------------------------------ lesson copies, phone width ---
+   The notes figures are drawn 720 wide for the reading column. A lesson card
+   on a phone has about 316 px for a drawing, so the lesson gets its own
+   stacked versions, 340 wide, of the same molecules. */
+
+FIGURES.push({
+  id: 'l-suffix-or-prefix',
+  lessons: ['naming-functional-groups'],
+  alt: 'Top: butan-2-ol, a four-carbon chain numbered 1 to 4 with an OH on C2. Bottom: 4-hydroxybutan-2-one, a four-carbon chain with a C=O on C2 and an OH on C4, named hydroxy-.',
+  viewBox: '0 0 340 420',
+  build() {
+    let s = '';
+    let py = 10;
+    s += panel(10, py, 320, 196, { kind: 'hi' });
+    s += tag(170, py + 22, 'one group: it takes the suffix');
+    {
+      const p = zig(110, py + 118, 4, 40, 24);
+      s += chain(p) + hang(p[1], P(p[1].x, p[1].y - 40), 'OH', { kind: 'hi' });
+      s += at(p[0], '1', 'below') + at(p[1], '2', 'below') + at(p[2], '3', 'below') + at(p[3], '4', 'above');
+      s += good(170, py + 168, 'butan-2-ol');
+      s += sm(170, py + 186, 'the OH is the suffix -ol');
+    }
+    py = 216;
+    s += panel(10, py, 320, 196, { kind: 'hi' });
+    s += tag(170, py + 22, 'two groups: the ketone wins');
+    {
+      const p = zig(90, py + 118, 4, 40, 24);
+      s += chain(p) + hang(p[1], P(p[1].x, p[1].y - 40), 'O', { order: 2, kind: 'hi' });
+      s += hang(p[3], P(p[3].x + 40, p[3].y + 24), 'OH');
+      s += sm(272, py + 122, 'hydroxy-', 'start');
+      s += at(p[0], '1', 'below') + at(p[1], '2', 'below') + at(p[2], '3', 'below') + at(p[3], '4', 'above');
+      s += good(170, py + 168, '4-hydroxybutan-2-one');
+      s += sm(170, py + 186, 'suffix -one; the OH is a prefix');
+    }
+    return s;
+  },
+  caption: 'Find the OH in each drawing, then read its name below.',
+});
+
+FIGURES.push({
+  id: 'l-fragments',
+  lessons: ['naming-functional-groups'],
+  alt: 'Twelve skeletal fragments in priority order, three per row: carboxylic acid, anhydride, ester; acyl chloride, amide, nitrile; aldehyde, ketone, alcohol; amine, then alkene and alkyne, which are not on the list. Each shows the suffix it takes.',
+  viewBox: '0 0 340 680',
+  build() {
+    let s = '';
+    const acyl = (cx, cy, X) => {
+      const C = P(cx - 8, cy + 6), O = P(cx - 8, cy - 30), Xp = P(cx + 26, cy + 24), R = P(cx - 40, cy + 24);
+      return sk(R, C) + hang(C, O, 'O', { order: 2 }) + hang(C, Xp, X, { kind: 'hi', r: X.length > 2 ? 16 : 15 });
+    };
+    const groups = [
+      [['carboxylic', 'acid'], '-oic acid', (cx, cy) => acyl(cx, cy, 'OH')],
+      [['anhydride'], '-oic anhydride', (cx, cy) => {
+        const C1 = P(cx - 22, cy + 4), C2 = P(cx + 22, cy + 4), Ob = P(cx, cy + 22);
+        return sk(P(cx - 44, cy + 22), C1) + sk(C2, P(cx + 44, cy + 22)) +
+          hang(C1, P(C1.x, cy - 30), 'O', { order: 2 }) + hang(C2, P(C2.x, cy - 30), 'O', { order: 2 }) +
+          bond(C1, Ob, { rFrom: 0, rTo: 15 }) + bond(Ob, C2, { rFrom: 15, rTo: 0 }) + atom(Ob.x, Ob.y, 'O', { kind: 'hi' });
+      }],
+      [['ester'], 'alkyl …-oate', (cx, cy) => acyl(cx, cy, 'OR′')],
+      [['acyl', 'chloride'], '-oyl chloride', (cx, cy) => acyl(cx, cy, 'Cl')],
+      [['amide'], '-amide', (cx, cy) => acyl(cx, cy, 'NH₂')],
+      [['nitrile'], '-nitrile', (cx, cy) => sk(P(cx - 42, cy + 4), P(cx - 10, cy + 4)) + hang(P(cx - 10, cy + 4), P(cx + 28, cy + 4), 'N', { order: 3, kind: 'hi' })],
+      [['aldehyde'], '-al', (cx, cy) => acyl(cx, cy, 'H')],
+      [['ketone'], '-one', (cx, cy) => { const C = P(cx, cy + 6); return sk(P(cx - 32, cy + 24), C) + sk(C, P(cx + 32, cy + 24)) + hang(C, P(cx, cy - 30), 'O', { order: 2, kind: 'hi' }); }],
+      [['alcohol'], '-ol', (cx, cy) => { const C = P(cx - 10, cy + 2); return sk(P(cx - 40, cy + 20), C) + hang(C, P(cx + 26, cy + 20), 'OH', { kind: 'hi' }); }],
+      [['amine'], '-amine', (cx, cy) => { const C = P(cx - 10, cy + 2); return sk(P(cx - 40, cy + 20), C) + hang(C, P(cx + 26, cy + 20), 'NH₂', { kind: 'hi', r: 16 }); }],
+      [['alkene'], 'not on list', (cx, cy) => sk(P(cx - 40, cy + 16), P(cx - 13, cy - 2)) + bond(P(cx - 13, cy - 2), P(cx + 13, cy + 16), { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.5 }) + sk(P(cx + 13, cy + 16), P(cx + 40, cy - 2)), true],
+      [['alkyne'], 'not on list', (cx, cy) => sk(P(cx - 42, cy + 6), P(cx - 15, cy + 6)) + bond(P(cx - 15, cy + 6), P(cx + 15, cy + 6), { order: 3, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.2 }) + sk(P(cx + 15, cy + 6), P(cx + 42, cy + 6)), true],
+    ];
+    groups.forEach(([name, suffix, draw, mut], i) => {
+      const px = 8 + (i % 3) * 110, py = 8 + Math.floor(i / 3) * 168, cx = px + 52;
+      s += panel(px, py, 104, 162, { kind: i < 6 ? 'hi' : undefined });
+      s += text(cx, py + 20, name[0], { cls: 'fg-lbl' });
+      if (name[1]) s += text(cx, py + 36, name[1], { cls: 'fg-lbl' });
+      s += draw(cx, py + 92);
+      s += text(cx, py + 154, suffix, { cls: mut ? 'fg-tag-mut' : 'fg-tag-good' });
+    });
+    return s;
+  },
+  caption: 'Priority falls left to right, row by row, as far as the amine. The shaded panels are the acid and its derivatives. The alkene and alkyne are not on the list.',
+});
+
+FIGURES.push({
+  id: 'l-locant',
+  lessons: ['naming-functional-groups'],
+  alt: 'The same six-carbon chain numbered from each end. Top, from the OH end: OH on C2, methyl on C5, 5-methylhexan-2-ol, correct. Bottom, from the methyl end: 2-methylhexan-5-ol, wrong.',
+  viewBox: '0 0 340 430',
+  build() {
+    let s = '';
+    const draw = (py, nums) => {
+      const p = zig(70, py + 110, 6, 40, 24);
+      let t = chain(p) + hang(p[1], P(p[1].x, p[1].y - 40), 'OH', { kind: 'hi' });
+      t += sk(p[4], P(p[4].x, p[4].y + 40)) + sm(p[4].x + 8, p[4].y + 38, 'methyl', 'start');
+      const where = ['below', 'below', 'below', 'above', 'above', 'above'];
+      p.forEach((q, i) => { t += at(q, nums[i], where[i]); });
+      return t;
+    };
+    s += panel(10, 10, 320, 200, { kind: 'good' });
+    s += tag(170, 32, 'numbered from the OH end');
+    s += draw(10, ['1', '2', '3', '4', '5', '6']);
+    s += good(170, 184, '5-methylhexan-2-ol');
+    s += sm(170, 202, 'the OH gets the low number');
+    s += panel(10, 220, 320, 200, { kind: 'warn' });
+    s += tag(170, 242, 'numbered from the methyl end');
+    s += draw(220, ['6', '5', '4', '3', '2', '1']);
+    s += warn(170, 394, '2-methylhexan-5-ol  ✗');
+    s += sm(170, 412, 'the methyl took the OH’s 2');
+    return s;
+  },
+  caption: 'One molecule, numbered from each end. Follow the OH.',
+});
+
+FIGURES.push({
+  id: 'l-parent',
+  lessons: ['naming-functional-groups'],
+  alt: 'One alcohol traced twice. Top: the six-carbon chain, numbered 1 to 6, misses the CH2OH branch on C3: 3-(hydroxymethyl)hexane, wrong. Bottom: the five-carbon chain through the CH2OH carbon, numbered 1 to 5 from it, with an ethyl on C2: 2-ethylpentan-1-ol, correct.',
+  viewBox: '0 0 340 442',
+  build() {
+    let s = '';
+    const skel = (py) => {
+      const a = zig(70, py + 80, 6, 40, 24);
+      return { a, b1: P(a[2].x, a[2].y + 40), oh: P(a[2].x + 34, a[2].y + 60) };
+    };
+    {
+      const py = 10; const { a, b1, oh } = skel(py);
+      s += panel(10, py, 320, 206, { kind: 'warn' });
+      s += tag(170, py + 22, 'the longest chain: six carbons');
+      s += chain(a, true) + sk(a[2], b1) + hang(b1, oh, 'OH');
+      s += at(a[0], '1', 'below') + at(a[1], '2', 'above') + at(a[2], '3', 'above') + at(a[3], '4', 'above') + at(a[4], '5', 'below') + at(a[5], '6', 'above');
+      s += sm(oh.x + 20, oh.y + 4, 'off the chain', 'start');
+      s += warn(170, py + 180, '3-(hydroxymethyl)hexane  ✗');
+      s += sm(170, py + 198, 'the alcohol became a prefix');
+    }
+    {
+      const py = 226; const { a, b1, oh } = skel(py);
+      s += panel(10, py, 320, 206, { kind: 'good' });
+      s += tag(170, py + 22, 'the longest chain through the OH');
+      s += sk(a[0], a[1]) + sk(a[1], a[2]) + sk(b1, a[2], true) + chain(a.slice(2), true);
+      s += bond(b1, oh, { rFrom: 0, rTo: 16, cls: 'fg-bond-hi' }) + atom(oh.x, oh.y, 'OH', { kind: 'hi' });
+      s += num(b1.x - 12, b1.y + 5, '1') + at(a[2], '2', 'above') + at(a[3], '3', 'above') + at(a[4], '4', 'below') + at(a[5], '5', 'above');
+      s += sm(a[0].x + 14, a[1].y - 12, 'ethyl');
+      s += good(170, py + 180, '2-ethylpentan-1-ol');
+      s += sm(170, py + 198, 'the alcohol takes the suffix, and C1');
+    }
+    return s;
+  },
+  caption: 'One molecule, traced two ways. Only the bottom chain contains the carbon that carries the OH.',
+});
+
+FIGURES.push({
+  id: 'l-decode',
+  lessons: ['naming-functional-groups'],
+  alt: 'Three stages of drawing 3-hydroxybutanal: a CHO drawn as C1; a four-carbon chain numbered 1 to 4 from it; an OH added on C3.',
+  viewBox: '0 0 340 486',
+  build() {
+    let s = '';
+    const stages = ['1. suffix -al: C1 is a CHO', '2. root butan: four carbons', '3. 3-hydroxy: OH on C3'];
+    stages.forEach((st, i) => {
+      const py = 10 + i * 150;
+      s += panel(10, py, 320, 140, { kind: i === 2 ? 'good' : 'hi' });
+      s += tag(170, py + 22, st);
+      const p = zig(110, py + 80, 4, 40, 24);
+      s += hang(p[0], P(p[0].x, p[0].y + 40), 'O', { order: 2 }) + hang(p[0], P(p[0].x - 32, p[0].y - 18), 'H');
+      s += num(p[0].x + 16, p[0].y + 18, '1');
+      if (i === 0) {
+        s += bond(p[0], p[1], { rFrom: 0, rTo: 0, cls: 'fg-dash' }) + sm(p[1].x + 6, p[1].y - 6, 'chain goes here', 'start');
+      } else {
+        s += chain(p) + at(p[1], '2', 'above') + num(p[2].x, p[2].y - 8, '3') + at(p[3], '4', 'above');
+      }
+      if (i === 2) s += hang(p[2], P(p[2].x, p[2].y + 40), 'OH', { kind: 'hi' });
+    });
+    s += good(170, 474, '3-hydroxybutanal');
+    return s;
+  },
+  caption: 'Read the name from the end: suffix, then root, then prefix.',
+});
+
+FIGURES.push({
+  id: 'l-retained',
+  lessons: ['naming-functional-groups'],
+  alt: 'Ten structures with their retained names: formic acid, acetic acid, formaldehyde, acetaldehyde, acetone, benzoic acid, phenol, aniline, toluene and styrene, each with its systematic name beneath.',
+  viewBox: '0 0 340 888',
+  build() {
+    let s = '';
+    const acyl = (cx, cy, left, X) => {
+      const C = P(cx, cy + 6);
+      let t = hang(C, P(cx, cy - 30), 'O', { order: 2 });
+      t += left === 'CH3' ? sk(P(cx - 32, cy + 24), C) : hang(C, P(cx - 32, cy + 24), 'H');
+      t += X === 'CH3' ? sk(C, P(cx + 32, cy + 24)) : hang(C, P(cx + 32, cy + 24), X);
+      return t;
+    };
+    const ring = (cx, cy) => benzene(cx, cy + 36, 24);
+    const items = [
+      ['formic acid', 'methanoic acid', (cx, cy) => acyl(cx, cy, 'H', 'OH')],
+      ['acetic acid', 'ethanoic acid', (cx, cy) => acyl(cx, cy, 'CH3', 'OH')],
+      ['formaldehyde', 'methanal', (cx, cy) => acyl(cx, cy, 'H', 'H')],
+      ['acetaldehyde', 'ethanal', (cx, cy) => acyl(cx, cy, 'CH3', 'H')],
+      ['acetone', 'propan-2-one', (cx, cy) => acyl(cx, cy, 'CH3', 'CH3')],
+      ['benzoic acid', 'no other name used', (cx, cy) => {
+        const b = ring(cx, cy); const C = P(cx, b.pts[0].y - 30);
+        return b.svg + sk(b.pts[0], C) + hang(C, P(cx - 28, C.y - 18), 'O', { order: 2 }) + hang(C, P(cx + 28, C.y - 18), 'OH');
+      }],
+      ['phenol', 'no other name used', (cx, cy) => { const b = ring(cx, cy); return b.svg + hang(b.pts[0], P(cx, b.pts[0].y - 36), 'OH'); }],
+      ['aniline', 'benzenamine (rare)', (cx, cy) => { const b = ring(cx, cy); return b.svg + hang(b.pts[0], P(cx, b.pts[0].y - 36), 'NH₂', { r: 16 }); }],
+      ['toluene', 'methylbenzene', (cx, cy) => { const b = ring(cx, cy); return b.svg + sk(b.pts[0], P(cx, b.pts[0].y - 32)); }],
+      ['styrene', 'ethenylbenzene', (cx, cy) => {
+        const b = ring(cx, cy); const v = P(cx, b.pts[0].y - 30), e = P(cx + 28, v.y - 16);
+        return b.svg + sk(b.pts[0], v) + bond(v, e, { order: 2, rFrom: 0, rTo: 0, gap: 3.5 });
+      }],
+    ];
+    items.forEach(([common, sys, draw], i) => {
+      const px = 8 + (i % 2) * 164, py = 8 + Math.floor(i / 2) * 176, cx = px + 79;
+      s += panel(px, py, 158, 168);
+      s += draw(cx, py + 66);
+      s += text(cx, py + 144, common, { cls: 'fg-lbl' });
+      s += sm(cx, py + 161, sys);
+    });
+    return s;
+  },
+  caption: 'The common name is in bold. The systematic name, where one is in use, is under it.',
 });
 
 export default FIGURES;
