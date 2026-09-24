@@ -470,12 +470,13 @@
       9:['carbonyl-family-distinction','functional-group-recognition'],
       10:['functional-group-recognition','carbonyl-family-distinction'] } },
 
-    'bond-polarity': { n:9, steps:{
-      1:['bond-polarity-dipoles'],
-      2:['bond-polarity-dipoles','molecular-geometry-vsepr'],
+    'bond-polarity': { n:14, steps:{
+      1:['bond-polarity-dipoles','electronegativity-trend'],
       3:['bond-polarity-dipoles','molecular-geometry-vsepr'],
-      6:['bond-polarity-dipoles'],
-      8:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
+      6:['bond-polarity-dipoles','molecular-geometry-vsepr'],
+      10:['bond-polarity-dipoles'],
+      12:['bond-polarity-dipoles'],
+      13:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
 
     'bonding': { n:12, steps:{
       4:['sigma-pi-bonding'],

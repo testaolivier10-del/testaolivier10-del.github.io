@@ -232,7 +232,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-click-bond',
   lessons: ['bonding'],
-  viewBox: '0 0 340 230',
+  viewBox: '0 0 340 236',
   alt: 'Ethene in perspective, every atom labeled, with a dashed parallelogram for the plane of its six atoms. The three parts of the bonding between the carbons are drawn separately so each can be tapped: a gray head-on overlap on the axis between the carbons, a cloud above the plane touching both carbons, and a cloud below it.',
   build() {
     const cy = 112;
@@ -241,17 +241,21 @@ FIGURES.push({
     const q = (u, v) => { const p = pv(u, v, cy); return `${r2(p.x)} ${r2(p.y)}`; };
     let s = `<path class="fg-dash" d="M${q(-115, -85)} L${q(115, -85)} L${q(115, 85)} L${q(-115, 85)} Z"></path>`;
     hs.forEach(([c, h]) => { s += sb(c, h); });
-    s += `<g class="hit" data-key="sigma" style="cursor:pointer">${hybrid(C1, 0, 80, 12)}${hybrid(C2, 180, 80, 12)}` +
-         `<rect x="136" y="${cy - 10}" width="68" height="20" fill="transparent"></rect></g>`;
-    s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy - 26, 70, 20, 0, 'fg-orb')}</g>`;
-    s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy + 26, 70, 20, 0, 'fg-orb-alt')}</g>`;
+    /* The two pi clouds sit above and below a 32-unit band around the axis,
+       so each of the three tap targets is at least 32 tall and none overlaps
+       another. The sigma group is drawn last, with its own opaque-to-clicks
+       band, and carries its label inside it. */
+    s += `<g class="hit" data-key="pi" style="cursor:pointer"><rect class="fg-orb" x="104" y="${cy - 52}" width="132" height="34" rx="16"></rect></g>`;
+    s += `<g class="hit" data-key="pi" style="cursor:pointer"><rect class="fg-orb-alt" x="104" y="${cy + 18}" width="132" height="34" rx="16"></rect></g>`;
     hs.forEach(([, h]) => { s += H(h); });
+    s += `<g class="hit" data-key="sigma" style="cursor:pointer">${hybrid(C1, 0, 80, 12)}${hybrid(C2, 180, 80, 12)}` +
+         `<rect x="134" y="${cy - 16}" width="72" height="32" fill="transparent"></rect>` +
+         text(170, cy + 4, 'on axis', { cls: 'fg-tag' }) + '</g>';
     s += C(C1) + C(C2);
-    s += text(170, cy - 52, 'above', { cls: 'fg-tag' });
-    s += text(292, cy + 4, 'on axis', { cls: 'fg-tag', anchor: 'start' });
-    s += text(170, cy + 64, 'below', { cls: 'fg-tag' });
-    s += text(170, 196, 'dashed: the plane of the six atoms', { cls: 'fg-tag-mut' });
-    s += text(170, 220, 'tap one part', { cls: 'fg-tag-mut' });
+    s += text(170, cy - 60, 'above', { cls: 'fg-tag' });
+    s += text(170, cy + 68, 'below', { cls: 'fg-tag' });
+    s += text(170, 204, 'dashed: the plane of the six atoms', { cls: 'fg-tag-mut' });
+    s += text(170, 226, 'tap one part', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Three regions of electron density hold the two carbons together.',
