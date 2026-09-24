@@ -137,10 +137,10 @@
     ],
     "q": "Where is the body's master circadian clock?",
     "options": [
-      "The pineal gland",
-      "The anterior pituitary",
-      "The retina",
-      "The suprachiasmatic nucleus of the hypothalamus"
+      "The pineal gland in the epithalamus",
+      "The anterior pituitary gland",
+      "The retina of each eye",
+      "The suprachiasmatic nucleus"
     ],
     "correct": 3,
     "why": {
@@ -264,8 +264,8 @@
     "q": "Mr. Castillo has had kidney disease for many years. He is pale, tired and short of breath on stairs, and his red blood cell count is low. His iron and vitamin levels are normal. What most likely explains the low count?",
     "options": [
       "Red blood cells lost in his urine",
-      "His damaged kidneys release too little erythropoietin",
-      "Bone marrow replaced by fat",
+      "Too little erythropoietin from his kidneys",
+      "Bone marrow replaced by fat tissue over time",
       "Too much ANP from his heart"
     ],
     "correct": 1,

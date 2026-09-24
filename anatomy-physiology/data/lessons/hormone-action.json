@@ -64,7 +64,7 @@
   ],
   "misconception": {
     "wrong": "Hormones enter their target cells to act.",
-    "right": "Only lipid-soluble hormones (steroids and the thyroid gland's amines) enter cells to act; steroids diffuse through the bilayer, and thyroid hormones cross on transporter proteins. Water-soluble hormones, which include all peptide and protein hormones and epinephrine, do not need to enter: they bind a receptor protein in the plasma membrane, and second messengers carry the signal inside. That difference is why water-soluble hormones act in seconds to minutes and lipid-soluble ones in hours."
+    "right": "Only lipid-soluble hormones (steroids and the thyroid gland's amines) enter cells to act; steroids diffuse through the bilayer, and the thyroid gland's amines cross on transporter proteins. Water-soluble hormones, which include all peptide and protein hormones and epinephrine, do not need to enter: they bind a receptor protein in the plasma membrane, and second messengers carry the signal inside. That difference is why water-soluble hormones act in seconds to minutes and lipid-soluble ones in hours."
   },
   "check": [
     "anp-hormone-action-2",

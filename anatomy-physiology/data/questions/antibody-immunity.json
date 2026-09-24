@@ -1,0 +1,495 @@
+[
+  {
+    "id": "anp-antibody-immunity-1",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "figure": "os-21-24",
+    "q": "The second peak on the graph rises sooner and climbs far higher than the first. What best explains the difference?",
+    "options": [
+      "The antigen was given in a larger dose the second time",
+      "Memory B cells left by the first exposure responded",
+      "Antibodies from the first response were still binding the antigen",
+      "A different antigen was given the second time"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The first exposure left memory B cells that outnumber the original naïve cells, respond with less stimulation, and already make switched, better-fitting antibody. When the same antigen returns, they produce plasma cells within days.",
+      "options": [
+        "The graph gives no reason to think the dose changed, and the same pattern appears with identical vaccine doses. Memory, not dose, explains it.",
+        "Correct. Memory B cells make the secondary response faster and larger.",
+        "Leftover antibody would, if anything, clear some antigen and blunt the response. The rise comes from new plasma cells.",
+        "A different antigen would bring a new primary response, with the same lag and low peak as the first. Memory is specific."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-2",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "figure": "os-21-24",
+    "q": "Just after the initial exposure, the curve stays flat for several days. What is happening in the lymph nodes during this flat stretch?",
+    "options": [
+      "Memory B cells are releasing IgG",
+      "Antigen is being broken down so none reaches the B cells",
+      "The few matching naïve B cells are being activated and are dividing",
+      "Plasma cells are releasing IgM that is not yet detectable because it is bound to red cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "On a first exposure, only a few naïve B cells fit the antigen. They must be activated, receive helper T cell help, and divide into a clone before plasma cells release enough antibody to measure. That takes about 5–10 days.",
+      "options": [
+        "There are no memory B cells before the first exposure; they are one of its products.",
+        "Antigen does reach the B cells. The delay comes from how few matching cells there are and how long expansion takes.",
+        "Correct. Clonal selection and expansion cause the lag.",
+        "Newly made IgM circulates freely in the plasma and is measurable as soon as enough is made. The lag is real, not hidden antibody."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-3",
+    "type": "graph",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "antibody-y",
+    "q": "In the diagram, which part of the antibody determines which antigen it binds?",
+    "options": [
+      "The variable regions at the tips of the arms",
+      "The Fc region of the stem",
+      "The hinge",
+      "The disulfide bonds"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The variable regions of one heavy and one light chain fold together at each arm tip to form the antigen-binding site. They differ from one B cell's antibody to the next, which is what makes each antibody specific.",
+      "options": [
+        "Correct. The variable regions form the binding sites.",
+        "The Fc region is made of constant heavy chain regions. It decides what happens after binding, not what is bound.",
+        "The hinge gives the arms flexibility, so they can reach antigens at different distances apart. It does not set specificity.",
+        "Disulfide bonds hold the chains together. They are the same in every antibody of a class."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function", "communication"],
+    "figure": "antibody-y",
+    "q": "IgG coats a bacterium, and a macrophage then engulfs it. Which part of the antibody does the macrophage's receptor protein bind?",
+    "options": [
+      "The light chains",
+      "The antigen-binding sites",
+      "The variable region of the heavy chains",
+      "The Fc region"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When IgG binds a microbe with its arm tips, its Fc region points outward. Phagocytes carry Fc receptor proteins that bind that stem, so coated microbes are engulfed far more readily. This is opsonization.",
+      "options": [
+        "Light chains form part of the arms, which are busy gripping the bacterium. They do not bind Fc receptor proteins.",
+        "The antigen-binding sites are attached to the bacterium, so they are not free to bind the macrophage.",
+        "The variable regions sit at the arm tips, on the bacterium. Receptor proteins on phagocytes bind the constant stem.",
+        "Correct. Fc receptor proteins bind the Fc region."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["communication"],
+    "q": "A woman who had a tetanus vaccine series as a child gets a booster dose twenty years later. Predict each variable after the booster, compared with her very first dose.",
+    "variables": [
+      { "name": "Days until antibody rises in the blood", "answer": "down", "why": "Memory B cells need less stimulation and are more numerous than the naïve cells were, so plasma cells appear within 1–3 days instead of 5–10." },
+      { "name": "Peak antibody level", "answer": "up", "why": "Many memory B cells each form a clone of plasma cells, so far more antibody is made, often 10 to 100 times more." },
+      { "name": "Share of the antibody that is IgG", "answer": "up", "why": "Memory B cells have already switched class, so the response is mostly IgG, with little of the IgM that starts a primary response." },
+      { "name": "How tightly the antibody binds the toxin", "answer": "up", "why": "Memory cells come from B cells selected for better-fitting antibody during the first responses (affinity maturation)." },
+      { "name": "Number of memory B cells afterward", "answer": "up", "why": "Each secondary response makes new memory cells as well as plasma cells, so the pool grows." }
+    ],
+    "why": {
+      "correct": "A second exposure to the same antigen recalls memory B cells. The response starts sooner, goes higher, is mainly IgG, fits better and leaves more memory cells. That is why boosters work."
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-6",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Put the steps in order, from a protein antigen reaching a lymph node to antibody in the blood.",
+    "options": [
+      "The antigen binds the receptors of a matching naïve B cell",
+      "The B cell takes the antigen in and displays its peptides on MHC class II",
+      "A helper T cell recognizes the peptide and gives the B cell contact and cytokines",
+      "The B cell divides into a clone, and many daughters switch class",
+      "Daughter cells become plasma cells and memory B cells",
+      "Plasma cells release antibody that reaches the blood"
+    ],
+    "why": {
+      "correct": "For a T cell-dependent antigen, the B cell binds antigen, presents its peptides, receives helper T cell help, expands and switches class, and then differentiates into plasma cells, which release antibody, and memory B cells."
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-7",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Select every example of passive immunity.",
+    "options": [
+      "Antivenom given after a snakebite",
+      "A measles vaccine",
+      "IgG crossing from a mother into her fetus",
+      "Recovering from chickenpox",
+      "IgA a baby swallows in breast milk",
+      "Anti-D injected into an Rh-negative mother"
+    ],
+    "correct": [0, 2, 4, 5],
+    "why": {
+      "correct": "Passive immunity is protection by antibody someone else made. Antivenom, maternal IgG, IgA in breast milk and injected anti-D are all borrowed antibody. A vaccine and recovery from infection make your own immune system respond: active immunity.",
+      "options": [
+        "Correct. Antivenom is antibody made in another animal: artificial passive immunity.",
+        "A vaccine makes your own B and T cells respond and leave memory: artificial active immunity.",
+        "Correct. Maternal IgG is natural passive immunity.",
+        "Recovering from an infection is natural active immunity; your own cells made the antibodies and memory cells.",
+        "Correct. IgA in milk is natural passive immunity for the baby's gut.",
+        "Correct. Injected anti-D is borrowed antibody: artificial passive immunity."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A healthy baby had almost no infections in her first four months, then several colds between six and nine months of age. What best explains the change?",
+    "options": [
+      "Her thymus stopped making T cells at six months",
+      "IgG from her mother was broken down and left no memory cells",
+      "She began making her own IgE",
+      "Her own IgM switched irreversibly to IgD"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "IgG carried across from her mother in late pregnancy protected her passively. Borrowed antibody lasts only weeks to months and leaves no memory cells, so as it falls she depends on her own, still inexperienced, immune system.",
+      "options": [
+        "The thymus is large and active throughout infancy and childhood. It does not stop at six months.",
+        "Correct. Passive maternal IgG fades over the first months of life.",
+        "IgE arms mast cells against worms. Making it would not explain more colds.",
+        "Class switching goes from IgM to IgG, IgA or IgE, not to IgD, and it would not remove protection."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A man has a fever and a rash. His blood contains IgM against a particular virus but no IgG against it. What does this suggest?",
+    "options": [
+      "A current or very recent infection",
+      "An infection many years ago",
+      "Protection from a vaccine given in childhood",
+      "Antibody passed to him from his mother"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "IgM is the first antibody of a primary response. Finding IgM without IgG means the response has only just begun, so the infection is current or very recent.",
+      "options": [
+        "Correct. IgM comes first, so IgM alone means early in a first response.",
+        "An old infection would have left IgG, made after class switching, and little or no IgM.",
+        "Vaccine protection years later shows as IgG from memory, not IgM alone.",
+        "Only IgG crosses from mother to fetus, and it fades within months of birth. An adult's antibody is his own."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "An 18-month-old responds poorly to a vaccine made of a bacterium's capsule sugar alone, but well to one in which the sugar is attached to a protein. Why does the protein help?",
+    "options": [
+      "The protein makes the sugar a larger target for IgM",
+      "Protein antigens do not need B cells at all",
+      "Helper T cells that recognize the protein can help B cells that recognize the sugar",
+      "The protein stops the sugar from being broken down"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Capsule sugars are T cell-independent antigens: they give weak, mostly IgM responses with little memory, and poor ones in young children. A B cell that binds the sugar takes in the whole conjugate and displays peptides from the attached protein on MHC class II. Helper T cells that recognize those peptides then help it expand, switch class and form memory. This is a conjugate vaccine.",
+      "options": [
+        "Size alone does not help. The gain comes from helper T cells, which can then drive class switching and memory.",
+        "Protein antigens do need B cells to make antibody. What they add is peptides for helper T cells.",
+        "Correct. Linking the sugar to a protein turns the response into a T cell-dependent one.",
+        "The sugar's lifetime is not the problem. Without T cell help, B cells make a weak response however long the antigen lasts."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A B cell switches from making IgM to making IgG. What stays the same?",
+    "options": [
+      "The heavy chain constant region",
+      "The number of antigen-binding sites on each released molecule",
+      "The antigen the antibody binds",
+      "Its ability to activate complement most strongly"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Class switching joins the same variable region gene to a different heavy chain constant region gene. The binding site, and so the antigen bound, is unchanged; the stem and its jobs change.",
+      "options": [
+        "The heavy chain constant region is exactly what changes. It defines the class.",
+        "Released IgM is a pentamer with ten binding sites; IgG is a monomer with two.",
+        "Correct. The variable region is kept, so specificity stays the same.",
+        "IgM, not IgG, is the strongest complement activator, so this property changes."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Complete the sequence: IgG binds antigens on a bacterium → ____ → the phagocyte engulfs the bacterium readily.",
+    "options": [
+      "The IgG molecules punch holes in the bacterium",
+      "Fc receptor proteins on a phagocyte bind the IgG stems",
+      "The bacterium displays its peptides on MHC class I",
+      "IgG enters the bacterium and blocks its enzymes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is opsonization. Bound IgG leaves its Fc regions facing out, and phagocytes grab them with Fc receptor proteins, which strongly speeds engulfment.",
+      "options": [
+        "Antibodies do not make holes. The membrane attack complex of complement does.",
+        "Correct. Fc receptor proteins link the phagocyte to the coated bacterium.",
+        "Bacteria do not have MHC proteins; MHC is found on your own cells.",
+        "Antibodies act from outside, on surface antigens. They do not enter bacteria."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A student described how a B cell responds to a protein antigen. One step is wrong. Which one?",
+    "options": [
+      "The antigen binds B cell receptors in its natural folded shape",
+      "The B cell takes the antigen in and cuts it into peptides",
+      "The B cell displays the peptides on MHC class I to a cytotoxic T cell",
+      "A helper T cell gives the B cell contact and cytokines",
+      "The B cell expands and becomes plasma cells and memory cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "B cells present engulfed antigen on MHC class II, which is recognized by helper T cells carrying CD4. MHC class I and cytotoxic T cells are for peptides made inside a cell, and a cytotoxic T cell would kill the B cell rather than help it.",
+      "options": [
+        "This step is right. Unlike T cells, B cells bind whole, folded antigens.",
+        "This step is right. The B cell processes the antigen it has taken in.",
+        "This is the error. B cells present to helper T cells on MHC class II.",
+        "This step is right. Helper T cell contact and cytokines activate the B cell.",
+        "This step is right. The clone gives both antibody-releasing and memory cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A breastfed baby is exposed to a gut virus that her mother had last year. Which antibody in the milk is best placed to protect the lining of her gut?",
+    "options": [
+      "IgE",
+      "IgA",
+      "IgM",
+      "IgD"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "IgA is the antibody of secretions, including breast milk. Swallowed IgA stays on the gut lining and neutralizes the virus before it can enter cells.",
+      "options": [
+        "IgE sits on mast cells and acts against worms. It is not the protective antibody in milk.",
+        "Correct. Secretory IgA guards mucous membranes, including a baby's gut.",
+        "IgM is mainly a blood antibody, made early in a first response.",
+        "IgD sits on the surface of naïve B cells and is barely released."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why is IgM better than IgG at clumping bacteria together?",
+    "options": [
+      "It binds antigens more tightly at each site",
+      "It is the only class that crosses into tissue fluid",
+      "It carries more light chains than heavy chains",
+      "As a pentamer it has ten binding sites to link many cells"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Released IgM is five Ys joined at their stems, giving ten binding sites. One molecule can bridge several bacteria, so it agglutinates them easily even though each site fits only loosely.",
+      "options": [
+        "Early IgM sites usually fit less tightly than later IgG, because affinity maturation has not happened yet. Its strength is the number of sites.",
+        "IgG moves into tissue fluid more easily than bulky IgM.",
+        "Every antibody unit has two heavy and two light chains.",
+        "Correct. Ten binding sites make IgM the best agglutinator."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A hiker bitten by a rattlesnake recovers after antivenom. A year later he is bitten again. Will the first antivenom still protect him?",
+    "options": [
+      "Yes, because the antivenom left memory B cells",
+      "Yes, because antivenom antibodies last for decades",
+      "No, because antivenom is broken down and leaves no memory",
+      "No, because the first dose made him immune to the snake"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Antivenom is passive immunity: antibodies made in another animal. They work at once but are broken down over weeks, and because his own B cells did not make them, no memory cells formed.",
+      "options": [
+        "Memory B cells come only from your own immune response. Borrowed antibodies do not create them.",
+        "Borrowed antibodies last weeks to a few months, not decades.",
+        "Correct. Passive immunity is immediate but temporary.",
+        "The answer contradicts itself: if he were immune, he would be protected. Antivenom does not make you immune."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A bacterium survives and multiplies inside macrophages after being engulfed. Which defense is most important for clearing it?",
+    "options": [
+      "IgA on mucous membranes",
+      "Complement punching holes in the bacterium in the blood",
+      "Th1 helper T cells releasing interferon gamma onto the macrophages",
+      "Eosinophils releasing their granules"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Antibodies and complement cannot reach a bacterium inside a macrophage. Th1 helper T cells recognize its peptides on the macrophage's MHC class II and release interferon gamma, which switches the macrophage into a more powerful killer.",
+      "options": [
+        "IgA stops microbes at body surfaces, before they enter. It cannot reach a bacterium inside a cell.",
+        "Complement acts on microbes in fluids. Inside a macrophage, the bacterium is out of its reach.",
+        "Correct. Th1 cells arm macrophages against bacteria living inside them.",
+        "Eosinophils are aimed at worms, which are far too big to live inside a macrophage."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Why is a new influenza vaccine made every year, while one measles vaccine series protects for life?",
+    "options": [
+      "Influenza gradually changes its surface proteins, so last year's antibodies fit less well",
+      "Influenza vaccines leave no memory cells",
+      "Measles hides inside nerve cells where antibodies cannot reach it",
+      "The body cannot make IgG against influenza"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Influenza evades immunity by small, steady changes in its surface proteins. Memory cells and antibodies from earlier years fit the new version less well, so the vaccine is updated each season. Measles surface proteins barely change, so memory keeps working.",
+      "options": [
+        "Correct. Changing antigens is a form of immune evasion.",
+        "Influenza vaccines do produce memory cells. The problem is that the virus changes.",
+        "It is chickenpox virus that hides in nerve cells. And if measles hid, a vaccine would work worse, not better.",
+        "People make plenty of IgG against influenza; that IgG targets last year's version."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which antibody class crosses from a pregnant mother into her fetus?",
+    "options": ["IgM", "IgA", "IgE", "IgG"],
+    "correct": 3,
+    "why": {
+      "correct": "IgG is the only class actively carried across to the fetus, mostly in late pregnancy. It protects the newborn for months, and it is why maternal anti-D can harm an Rh-positive fetus.",
+      "options": [
+        "IgM is a large pentamer and does not cross.",
+        "IgA reaches the baby after birth, in breast milk, but does not cross in pregnancy.",
+        "IgE does not cross.",
+        "Correct. IgG is the only class that crosses."
+      ]
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-20",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": ["communication", "structure-function"],
+    "q": "A drug blocks the Fc receptor proteins on phagocytes, but antibody production is normal. A bacterium that releases a toxin infects the person. Predict each variable, compared with someone not taking the drug.",
+    "variables": [
+      { "name": "Binding of IgG to the bacterium", "answer": "none", "why": "IgG binds with its variable regions, which the drug does not touch." },
+      { "name": "Phagocytes engulfing IgG-coated bacteria", "answer": "down", "why": "Phagocytes grab coated bacteria by binding the IgG Fc regions, and those receptor proteins are blocked." },
+      { "name": "Neutralization of the toxin by antibody", "answer": "none", "why": "Neutralization only needs antibody covering the toxin's binding site, which uses the variable regions." },
+      { "name": "Agglutination of the bacteria", "answer": "none", "why": "Clumping depends on antibodies bridging bacteria with their binding sites, not on phagocytes." }
+    ],
+    "why": {
+      "correct": "Antibody actions split by the part of the antibody they use. Neutralization and agglutination depend on the variable regions and still work. Opsonization depends on phagocytes binding the Fc region, so it fails."
+    }
+  },
+  {
+    "id": "anp-antibody-immunity-21",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which cell releases large amounts of antibody and has cytoplasm packed with rough endoplasmic reticulum?",
+    "options": [
+      "Memory B cell",
+      "Helper T cell",
+      "Plasma cell",
+      "Naïve B cell"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Plasma cells are fully differentiated B cells built for export: their rough endoplasmic reticulum makes antibody, about 2,000 molecules per second.",
+      "options": [
+        "Memory B cells are resting cells that wait for a later exposure. They release little antibody until they become plasma cells.",
+        "Helper T cells release cytokines, not antibody.",
+        "Correct. Plasma cells are the antibody factories.",
+        "A naïve B cell carries antibody on its surface as a receptor but does not release it in bulk."
+      ]
+    }
+  }
+]
