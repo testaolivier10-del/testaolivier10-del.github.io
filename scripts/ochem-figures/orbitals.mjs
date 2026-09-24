@@ -26,10 +26,10 @@ function lobe(c, deg, len, w, cls, extra = '') {
   const d = dir(deg);
   const p = { x: -d.y, y: d.x };
   const tip = add(c, d, len);
-  const a1 = P(c.x + d.x * len * 0.18 + p.x * w * 0.95, c.y + d.y * len * 0.18 + p.y * w * 0.95);
-  const a2 = add(tip, p, w * 0.62);
-  const b2 = add(tip, p, -w * 0.62);
-  const b1 = P(c.x + d.x * len * 0.18 - p.x * w * 0.95, c.y + d.y * len * 0.18 - p.y * w * 0.95);
+  const a1 = P(c.x + d.x * len * 0.32 + p.x * w * 0.62, c.y + d.y * len * 0.32 + p.y * w * 0.62);
+  const a2 = add(tip, p, w * 0.95);
+  const b2 = add(tip, p, -w * 0.95);
+  const b1 = P(c.x + d.x * len * 0.32 - p.x * w * 0.62, c.y + d.y * len * 0.32 - p.y * w * 0.62);
   return `<path class="${cls}" d="M${pt(c)} C${pt(a1)} ${pt(a2)} ${pt(tip)} C${pt(b2)} ${pt(b1)} ${pt(c)} Z"${extra}></path>`;
 }
 /* A whole p orbital: the + lobe along `deg`, the − lobe opposite. */
@@ -63,11 +63,11 @@ FIGURES.push({
   section: 'orbitals',
   lessons: ['orbitals'],
   anchor: '<h3>What an orbital is</h3>',
-  viewBox: '0 0 340 222',
+  viewBox: '0 0 340 236',
   alt: 'Two panels about hydrogen’s one electron. Left: a nucleus labeled H nucleus, one proton, surrounded by hundreds of dots, each a place the electron was found in one snapshot. The dots are densest near the nucleus and thin out with distance. Right: the same nucleus inside a shaded circle labeled 1s orbital, the boundary that holds the electron 90 percent of the time.',
   build() {
     let s = '';
-    s += panel(6, 6, 160, 210) + panel(174, 6, 160, 210);
+    s += panel(6, 6, 160, 224) + panel(174, 6, 160, 224);
     s += tag(86, 26, 'many snapshots');
     s += tag(254, 26, 'the 1s orbital');
     // Dots: positions drawn from the 1s distribution (radius ~ r² e^-2r in
@@ -85,17 +85,17 @@ FIGURES.push({
       if (Math.hypot(x - L.x, y - L.y) > 74) continue;
       s += `<circle class="fg-fill-hi" cx="${r2(x)}" cy="${r2(y)}" r="1.2" opacity="0.7"></circle>`;
     }
-    s += circ(L, 5, 'fg-atom');
-    s += label(L.x, L.y + 26, 'H', { size: 13 });
+    s += circ(L, 10, 'fg-atom');
+    s += label(L.x, L.y + 5, 'H', { size: 13 });
     s += circ(R, 69, 'fg-orb');
-    s += circ(R, 5, 'fg-atom');
-    s += label(R.x, R.y + 26, 'H', { size: 13 });
-    s += tag(86, 206, 'one dot per sighting');
-    s += tag(254, 196, 'electron inside this');
-    s += tag(254, 210, 'boundary 90% of the time');
+    s += circ(R, 10, 'fg-atom');
+    s += label(R.x, R.y + 5, 'H', { size: 13 });
+    s += tag(86, 212, 'one dot per sighting');
+    s += tag(254, 204, 'electron inside this');
+    s += tag(254, 218, 'boundary 90% of the time');
     return s;
   },
-  caption: 'Hydrogen’s single electron. Left: where it was found, snapshot by snapshot. Right: the orbital, the boundary drawn around most of those dots. The small circle in each panel is the nucleus, one proton.',
+  caption: 'Hydrogen’s single electron. Left: where it was found, snapshot by snapshot. Right: the orbital, the boundary drawn around most of those dots. The H at the center is the nucleus, one proton.',
 });
 
 /* ============================================ 2. s orbitals: 1s and 2s === */
@@ -118,12 +118,11 @@ FIGURES.push({
     s += label(b.x, 16, '2s', { size: 13 });
     s += tag(a.x, 150, 'a sphere');
     s += tag(a.x, 164, 'around the nucleus');
-    s += lead(P(b.x + 18, b.y - 18), P(b.x + 44, b.y - 44));
-    s += tag(b.x + 46, b.y - 48, 'node', { anchor: 'start' });
+    s += tag(b.x, b.y - 32, 'node');
     s += tag(b.x, 186, 'bigger sphere, node inside');
     return s;
   },
-  caption: 'The dot at each center is the nucleus. The dashed circle inside 2s is its node; the two shades are the two phases.',
+  caption: 'The dot at each center is the nucleus. The dashed circle inside 2s is its node. The region inside the node has the other shade, for a reason the section on phase explains.',
 });
 
 /* ===================================== 3. one p orbital, labeled parts === */
@@ -147,8 +146,8 @@ FIGURES.push({
     s += tag(90, 58, 'lobe');
     s += lead(P(c.x + 18, c.y - 70), P(c.x + 40, c.y - 84));
     s += tag(c.x + 42, c.y - 86, 'nodal plane', { anchor: 'start' });
-    s += lead(P(c.x - 4, c.y + 6), P(c.x - 30, c.y + 78));
-    s += tag(c.x - 32, c.y + 92, 'nucleus', { anchor: 'end' });
+    s += lead(P(c.x - 4, c.y + 5), P(c.x - 50, c.y + 62));
+    s += tag(c.x - 52, c.y + 76, 'nucleus', { anchor: 'end' });
     s += tag(170, 200, 'one orbital, two lobes');
     return s;
   },
@@ -335,16 +334,14 @@ FIGURES.push({
     s += arrow(P(x0, yb), P(xr + 6, yb), { size: 6 });
     s += tag(x0 + 4, 32, 'chance of finding the electron', { anchor: 'start' });
     s += tag(xr, yb + 20, 'distance from nucleus →', { anchor: 'end' });
-    s += label(x0, yb + 20, 'N', { size: 12 });
-    s += tag(x0 + 4, yb + 34, 'nucleus', { anchor: 'start' });
+    s += tag(x0, yb + 20, 'nucleus', { anchor: 'start' });
     // Labels.
-    s += lead(P(X(1), yb - 72), P(X(1.6), 96));
-    s += tag(X(1.2), 90, '1s core', { anchor: 'start' });
+    s += tag(X(1), yb - 78, '1s core');
     const bump = P(X(0.76), yb - P2s(0.76) * k2);
     s += lead(P(bump.x, bump.y - 2), P(X(2.4), 140));
     s += tag(X(2.5), 140, '2s bump inside the core', { anchor: 'start' });
-    s += tag(X(6.7), yb - P2s(5.24) * k2 - 8, '2s', { anchor: 'start' });
-    s += tag(X(3.2), yb - P2p(4) * k2 - 8, '2p', { anchor: 'end' });
+    s += tag(X(7.6), yb - P2s(7.5) * k2 - 10, '2s', { anchor: 'start' });
+    s += tag(X(3.2) - 4, yb - P2p(3.2) * k2 - 6, '2p', { anchor: 'end' });
     return s;
   },
   caption: 'Hydrogen-like curves, 2s and 2p on one scale. Only 2s has a bump inside the core.',

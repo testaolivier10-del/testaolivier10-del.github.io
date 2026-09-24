@@ -54,7 +54,7 @@ FIGURES.push({
   section: 'electronegativity',
   anchor: '<h3>What it is</h3>',
   lessons: ['electronegativity'],
-  viewBox: '0 0 340 262',
+  viewBox: '0 0 340 284',
   alt: 'Two bonds, each drawn as two labeled atoms joined by a line with a shaded cloud around the shared pair. Top: H–H. The cloud is the same size at both ends, and a label says the pair is shared evenly, with no partial charges. Bottom: H–F, with fluorine’s three lone pairs drawn. The cloud is small around hydrogen and bulges around fluorine. Hydrogen is marked δ+ and fluorine δ−. A label says fluorine pulls harder, so the pair spends more time near it.',
   build() {
     let s = '';
@@ -68,16 +68,16 @@ FIGURES.push({
     s += rule(10, 156, 330, 156);
     // bottom: H–F
     s += tgMut(10, 176, 'H–F: fluorine pulls harder', { anchor: 'start' });
-    const a2 = P(110, 214), b2 = P(200, 214);
+    const a2 = P(110, 236), b2 = P(200, 236);
     s += cloud(a2.x, b2.x, a2.y, 17, 34);
     s += bond(a2, b2, { rFrom: Hr, rTo: Xr });
     s += lp(b2, 90) + lp(b2, 0) + lp(b2, -90);
     s += H(a2) + X(b2, 'F', 'hi');
-    s += dPlus(a2.x, a2.y - 24);
-    s += dMinus(b2.x - 30, b2.y - 34);
-    s += tg(290, 206, 'pair spends', { anchor: 'middle' });
-    s += tg(290, 220, 'more time', { anchor: 'middle' });
-    s += tg(290, 234, 'near F', { anchor: 'middle' });
+    s += dPlus(a2.x, a2.y - 26);
+    s += dMinus(b2.x + 34, b2.y - 30);
+    s += tg(290, 234, 'pair spends', { anchor: 'middle' });
+    s += tg(290, 248, 'more time', { anchor: 'middle' });
+    s += tg(290, 262, 'near F', { anchor: 'middle' });
     return s;
   },
   caption: 'The shaded cloud marks where the shared pair spends its time. Compare its two ends in each bond.',
@@ -99,7 +99,7 @@ FIGURES.push({
   section: 'electronegativity',
   anchor: 'the pull is felt more strongly.</p>',
   lessons: ['electronegativity'],
-  viewBox: '0 0 340 316',
+  viewBox: '0 0 340 296',
   alt: 'A cut-down periodic table with each cell showing an element symbol and its Pauling electronegativity, shaded darker for larger values. Columns are groups 1, 2 and 13 to 17. Row 1: H 2.20. Row 2: Li 0.98, Be 1.57, B 2.04, C 2.55, N 3.04, O 3.44, F 3.98. Row 3: Na 0.93, Mg 1.31, Al 1.61, Si 1.90, P 2.19, S 2.58, Cl 3.16. Under chlorine: Br 2.96 in row 4 and I 2.66 in row 5. An arrow along the bottom points right, labeled increases across a row. An arrow up the left side points up, labeled increases up a group. Fluorine, top right, is the darkest cell.',
   build() {
     let s = '';
@@ -119,7 +119,7 @@ FIGURES.push({
     s += tgMut(x0, y0 + 3 * (h + gx) + 16, 'rows 4 and 5: only', { anchor: 'start' });
     s += tgMut(x0, y0 + 3 * (h + gx) + 31, 'the halogens shown', { anchor: 'start' });
     s += tgMut(x0, y0 + 4 * (h + gx) + 16, 'group 18 (noble gases)', { anchor: 'start' });
-    s += tgMut(x0, y0 + 4 * (h + gx) + 31, 'left out: no bonds', { anchor: 'start' });
+    s += tgMut(x0, y0 + 4 * (h + gx) + 31, 'left out: rarely bond', { anchor: 'start' });
     // arrows
     const yb = y0 + 5 * (h + gx) + 14;
     s += arrow(P(x0, yb), P(x0 + 7 * (w + gx) - gx, yb));

@@ -7,7 +7,7 @@
    orbital is drawn in the two phase colors, so the reader can count the
    leftover p orbitals at a glance. Lesson copies (id prefix l-) are 340 wide
    or less, stacked, and use only fg-lbl and fg-tag text. */
-import { atom, bond, wedge, hash, arrow, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { atom as atom0, bond, wedge, hash, arrow, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
 
 const FIGURES = [];
 
@@ -18,19 +18,66 @@ const dir = (deg) => ({ x: Math.cos(rad(deg)), y: -Math.sin(rad(deg)) });
 const at = (c, deg, len) => { const d = dir(deg); return P(c.x + d.x * len, c.y + d.y * len); };
 const r2 = (v) => Math.round(v * 100) / 100;
 
+/* An atom disc that stays opaque in both themes: the highlighted disc's
+   fill is translucent in the dark theme, so an opaque plain disc goes under
+   it and hides any orbital or bond drawn behind the atom. */
+function atom(x, y, l, o = {}) {
+  const kind = o.kind || 'plain';
+  const back = kind === 'plain' || kind === 'point' ? '' :
+    `<circle class="fg-atom" cx="${r2(x)}" cy="${r2(y)}" r="${r2(o.r ?? 16)}"></circle>`;
+  return back + atom0(x, y, l, o);
+}
+
+/* A tetrahedral center in the site's wedge-and-dash convention: two plain
+   bonds in the page pointing down, one wedge (toward the reader) and one
+   hash (away) pointing up, side by side. Each slot holds 'H' or 'lp'. */
+function tetCenter(c, el, slots, L = 50, rc = 16) {
+  const dirs = [
+    { deg: 215, kind: 'plain' }, { deg: 325, kind: 'plain' },
+    { deg: 118, kind: 'wedge' }, { deg: 62, kind: 'hash' },
+  ];
+  let g = '';
+  dirs.forEach((d, i) => {
+    if (slots[i] === 'lp') { g += lonePair(c.x, c.y, -d.deg, { dist: rc + 12, spread: 5, r: 2.6 }); return; }
+    const e = at(c, d.deg, d.kind === 'plain' ? L : L * 0.92);
+    const o = { rFrom: rc, rTo: 12 };
+    g += d.kind === 'wedge' ? wedge(c, e, { ...o, width: 10 }) : d.kind === 'hash' ? hash(c, e, { ...o, width: 11, rungs: 5 }) : bond(c, e, o);
+    g += atom(e.x, e.y, slots[i], { r: 12 });
+  });
+  g += atom(c.x, c.y, el, { kind: 'hi', r: rc });
+  return g;
+}
+
+/* A CH3 carbon whose fourth bond (to the rest of the molecule) leaves at
+   math angle `toward`: one H in the page, one wedged, one hashed. */
+function methyl(c, toward = 0) {
+  const arms = [
+    { deg: toward + 125, kind: 'plain' },
+    { deg: toward + 210, kind: 'wedge' },
+    { deg: toward + 248, kind: 'hash' },
+  ];
+  let g = '';
+  for (const a of arms) {
+    const e = at(c, a.deg, a.kind === 'plain' ? 54 : 50);
+    const o = { rFrom: 15, rTo: 12 };
+    g += a.kind === 'wedge' ? wedge(c, e, { ...o, width: 10 }) : a.kind === 'hash' ? hash(c, e, { ...o, width: 11, rungs: 5 }) : bond(c, e, o);
+    g += atom(e.x, e.y, 'H', { r: 12 });
+  }
+  return g;
+}
+
 function ell(cx, cy, rx, ry, deg, cls, extra = '') {
   return `<ellipse class="${cls}" cx="${r2(cx)}" cy="${r2(cy)}" rx="${r2(rx)}" ry="${r2(ry)}" transform="rotate(${r2(-deg)} ${r2(cx)} ${r2(cy)})"${extra}></ellipse>`;
 }
 
-/* A hybrid orbital: one big gray lobe pointing along `deg`, plus the small
-   back lobe every hybrid has. `len` is how far the big lobe reaches. */
+/* A hybrid orbital, drawn as the big gray lobe it bonds with. Every hybrid
+   also has a small back lobe; it is left off (the captions say so), or the
+   back lobes would pile up at the nucleus. `len` is how far the lobe reaches. */
 function hybrid(c, deg, len = 56, w = 16, opts = {}) {
   const d = dir(deg);
   const big = P(c.x + d.x * len * 0.54, c.y + d.y * len * 0.54);
-  const small = P(c.x - d.x * len * 0.1, c.y - d.y * len * 0.1);
   const op = opts.faint ? 0.1 : 0.24;
-  return ell(small.x, small.y, len * 0.13, w * 0.5, deg, 'fg-fill-mut fg-bond-soft', ` fill-opacity="${op}"`) +
-         ell(big.x, big.y, len * 0.5, w, deg, 'fg-fill-mut fg-bond-soft', ` fill-opacity="${op}"`);
+  return ell(big.x, big.y, len * 0.5, w, deg, 'fg-fill-mut fg-bond-soft', ` fill-opacity="${op}"`);
 }
 
 /* A p orbital: two lobes on opposite sides of the nucleus, one in each phase
@@ -196,8 +243,8 @@ FIGURES.push({
     s += pOrb(a, 225, 60, 13);
     s += pOrb(a, 0, 84, 15);
     s += pOrb(a, 90, 84, 15);
-    s += `<circle class="fg-fill-mut fg-bond-soft" cx="${a.x}" cy="${a.y}" r="15" fill-opacity="0.3"></circle>`;
-    s += text(a.x, a.y + 4, 's', { cls: 'fg-lbl', size: 12 });
+    s += `<circle class="fg-fill-mut fg-bond-soft" cx="${a.x}" cy="${a.y}" r="23" fill-opacity="0.55"></circle>`;
+    s += text(a.x, a.y + 5, 's', { cls: 'fg-lbl', size: 13 });
     s += text(a.x + 76, a.y - 22, 'p', { cls: 'fg-lbl', size: 12 });
     s += text(a.x + 20, a.y - 76, 'p', { cls: 'fg-lbl', size: 12 });
     s += text(a.x - 52, a.y + 26, 'p', { cls: 'fg-lbl', size: 12 });
@@ -222,7 +269,7 @@ FIGURES.push({
     s += text(c.x - 40, c.y - 30, '109.5°', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
     return s;
   },
-  caption: 'Left, the four orbitals before mixing; middle, the four hybrids they become; right, methane built on those hybrids. In methane the wedge points toward you and the hashed bond points away.',
+  caption: 'Left, the four orbitals before mixing: the round s in the middle and three p dumbbells. Middle, the four hybrids they become. Right, methane built on those hybrids; the wedge points toward you and the hashed bond points away.',
 });
 
 /* =============================================== sp3 from mixing (lesson) === */
@@ -302,11 +349,12 @@ FIGURES.push({
     s += text(c.x + 22, c.y - 62, 'leftover p', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(c.x - 36, c.y + 56, 'leftover p,', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
     s += text(c.x - 36, c.y + 70, 'toward you', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
-    s += text(c.x + 46, c.y + 30, '180°', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += `<line class="fg-dash-hi" x1="${c.x - 74}" y1="${c.y}" x2="${c.x + 74}" y2="${c.y}"></line>`;
+    s += text(c.x + 78, c.y + 4, '180°', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(c.x, 248, 'linear', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'Gray lobes are hybrids; two-color dumbbells are leftover p orbitals, the two colors marking the two halves (phases) of one p orbital. The dashed ellipse in the middle panel is the plane the three sp² hybrids lie in.',
+  caption: 'Gray lobes are hybrids; two-color dumbbells are leftover p orbitals, the two colors marking the two halves (phases) of one p orbital. The dashed ellipse in the middle panel is the plane the three sp² hybrids lie in. Each hybrid also has a small back lobe, left off here so the back lobes do not pile up at the nucleus.',
 });
 
 /* ========================================= sp2 and sp stacked (lesson) === */
