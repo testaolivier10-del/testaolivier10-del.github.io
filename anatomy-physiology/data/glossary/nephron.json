@@ -1,0 +1,32 @@
+{
+  "nephron-def": {
+    "def": "The microscopic unit of the kidney that makes urine: a renal corpuscle, which filters blood plasma, and a renal tubule, which takes back most of the filtered fluid and adds some substances to it. Each kidney has about a million, and lost nephrons are not replaced.",
+    "roots": [["nephr-", "kidney"]],
+    "say": "NEF-ron"
+  },
+  "renal-corpuscle": {
+    "def": "The filtering end of a nephron, in the cortex: a glomerulus (a tuft of fenestrated capillaries) inside the glomerular (Bowman's) capsule, whose visceral layer of podocytes wraps the capillaries and whose capsular space collects the filtered fluid.",
+    "roots": [["corpus", "body"], ["-cle", "small"], ["glomus", "ball of yarn"], ["pod-", "foot"], ["-cyte", "cell"]],
+    "say": "KOR-pus-ul; gloh-MER-yoo-lus; POD-oh-site"
+  },
+  "renal-tubule": {
+    "def": "The tube of a nephron that carries fluid from the glomerular capsule: the proximal convoluted tubule, the nephron loop (loop of Henle) with its descending and ascending limbs, the distal convoluted tubule, and the collecting duct that many nephrons share.",
+    "roots": [["proxim-", "nearest"], ["dist-", "farther away"], ["convolut-", "coiled"]],
+    "say": ""
+  },
+  "nephron-types": {
+    "def": "Cortical nephrons (about 85%) have their renal corpuscles in the outer cortex and short loops. Juxtamedullary nephrons (about 15%) have their corpuscles next to the medulla and long loops reaching deep into it, which let the kidney make concentrated urine.",
+    "roots": [["juxta-", "next to"], ["medull-", "inner part"]],
+    "say": "juks-tuh-MED-yoo-lar-ee"
+  },
+  "nephron-vessels": {
+    "def": "The two capillary beds of a nephron in series: the afferent arteriole carries blood into the glomerulus, the efferent arteriole carries it out, and it then flows through the peritubular capillaries around the tubules, and in juxtamedullary nephrons also the vasa recta in the medulla.",
+    "roots": [["af-", "toward"], ["ef-", "away"], ["fer-", "carry"], ["peri-", "around"], ["vasa recta", "straight vessels"]],
+    "say": "VAY-suh REK-tuh"
+  },
+  "jga": {
+    "def": "The juxtaglomerular apparatus is where a nephron's tubule touches its own afferent and efferent arterioles: the macula densa in the tubule wall senses sodium chloride, the juxtaglomerular (granular) cells in the afferent arteriole release renin, and mesangial cells lie between them and inside the glomerulus.",
+    "roots": [["juxta-", "next to"], ["macula", "spot"], ["densa", "dense"], ["mes-", "middle"], ["angi-", "vessel"]],
+    "say": "MAK-yoo-luh DEN-suh; mez-AN-jee-ul"
+  }
+}

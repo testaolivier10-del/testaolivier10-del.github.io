@@ -1,0 +1,506 @@
+[
+  {
+    "id": "anp-renal-function-urine-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A patient's urine creatinine is 90 mg/dL, her urine flow is 1.5 mL/min and her plasma creatinine is 1.0 mg/dL. What is her creatinine clearance?",
+    "options": ["60 mL/min", "135 mL/min", "1.35 mL/min", "91.5 mL/min"],
+    "correct": 1,
+    "why": {
+      "correct": "C = (U × V) ÷ P = (90 × 1.5) ÷ 1.0 = 135 mL/min. U and P are both in mg/dL, so their units cancel and the answer is in mL/min.",
+      "options": [
+        "60 comes from dividing U by V (90 ÷ 1.5). U must be multiplied by V to get the amount excreted.",
+        "Correct. 90 × 1.5 = 135, divided by 1.0.",
+        "1.35 is 100 times too small; mg/dL cancels with mg/dL, so no conversion is needed.",
+        "91.5 comes from adding U and V. Clearance multiplies them."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A man collects 2,880 mL of urine in 24 hours. His urine creatinine is 60 mg/dL and his plasma creatinine is 1.5 mg/dL. What is his creatinine clearance?",
+    "options": ["80 mL/min", "115,200 mL/min", "45 mL/min", "120 mL/min"],
+    "correct": 0,
+    "why": {
+      "correct": "First turn the volume into a flow: 2,880 mL ÷ 1,440 min = 2.0 mL/min. Then C = (60 × 2.0) ÷ 1.5 = 80 mL/min, below normal.",
+      "options": [
+        "Correct. V = 2 mL/min, and 120 ÷ 1.5 = 80.",
+        "115,200 uses the whole day's volume as if it were a per-minute flow. Divide by 1,440 minutes first.",
+        "45 uses 1.5 mL/min for V and 2.0 for P, swapping them. V is 2.0 and P is 1.5.",
+        "120 is U × V without dividing by the plasma concentration."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "In a healthy person, the renal clearance of a nutrient is 0 mL/min even though it is freely filtered. What does that mean?",
+    "options": [
+      "It is secreted and reabsorbed equally",
+      "It is filtered, then all of it is reabsorbed",
+      "It is not filtered",
+      "It is broken down in the urine"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A clearance of zero means none reaches the urine. A freely filtered substance with zero clearance must be completely reabsorbed, as glucose and amino acids are at normal plasma levels.",
+      "options": [
+        "Balanced secretion and reabsorption would leave the filtered amount in the urine, so clearance would equal GFR, not zero.",
+        "Correct. All of the filtered load returns to the blood.",
+        "The question says it is freely filtered.",
+        "Urine does not digest nutrients; the zero reflects reabsorption in the tubule."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "q": "A person's GFR is 120 mL/min. A drug that is freely filtered has a renal clearance of 40 mL/min. What does the tubule do with it overall?",
+    "options": [
+      "Net secretion",
+      "Neither reabsorption nor secretion",
+      "Net reabsorption",
+      "It can't be judged without the urine volume"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Filtration alone would give a clearance equal to GFR, 120 mL/min. A clearance of only 40 means two thirds of what was filtered came back to the blood: net reabsorption.",
+      "options": [
+        "Net secretion would push clearance above GFR.",
+        "Filtration alone, like inulin, gives a clearance equal to GFR.",
+        "Correct. Clearance below GFR means net reabsorption.",
+        "The urine volume is already built into the clearance value; comparing clearance with GFR is enough."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-5",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "q": "Mr. Haas, 66, had a plasma creatinine of 1.0 mg/dL a year ago. It is now steady at 2.0 mg/dL. His muscle mass hasn't changed. About how has his GFR changed?",
+    "options": [
+      "It has doubled",
+      "It has fallen by about 10%",
+      "It hasn't changed",
+      "It has fallen by about half"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "He makes creatinine at the same rate, and at steady state excretes it at that rate: excretion ≈ GFR × plasma creatinine. For the product to stay the same while plasma creatinine doubles, GFR must have halved.",
+      "options": [
+        "A higher GFR would clear creatinine faster and lower its plasma level.",
+        "A one-unit rise looks small, but creatinine and GFR move in inverse proportion; doubling the level means halving the GFR.",
+        "With steady production, a lasting rise in plasma creatinine means excretion per unit of plasma fell.",
+        "Correct. Double the creatinine, half the GFR."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "Why does creatinine clearance run about 10 to 20% higher than the true GFR?",
+    "options": [
+      "The proximal tubule secretes a little creatinine",
+      "Some creatinine is reabsorbed",
+      "Creatinine is made inside the kidney tubule",
+      "Plasma proteins carry creatinine into the filtrate"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Creatinine is filtered freely and not reabsorbed, but a little is also secreted. The extra secreted creatinine in the urine makes its clearance a bit higher than the plasma actually filtered.",
+      "options": [
+        "Correct. Secretion adds to filtration.",
+        "Reabsorption would make clearance lower than GFR, not higher.",
+        "Creatinine comes from creatine phosphate in muscle, not from the tubule.",
+        "Creatinine is small and filtered freely; proteins are held back by the filter."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-7",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "A man loses 1.5 L of blood in a car crash. Predict the change in each variable across the cardiovascular, nervous, endocrine and urinary systems over the first hour.",
+    "variables": [
+      { "name": "Sympathetic activity to the kidneys", "answer": "up", "why": "Lower arterial pressure reduces baroreceptor firing, and the cardiovascular center raises sympathetic output." },
+      { "name": "GFR", "answer": "down", "why": "Low arterial pressure falls below the range autoregulation can cover, and sympathetic nerves constrict the afferent arterioles." },
+      { "name": "Renin release", "answer": "up", "why": "Less stretch of the juxtaglomerular cells and more sympathetic stimulation both raise renin." },
+      { "name": "ADH release", "answer": "up", "why": "A volume loss of this size, about a quarter of blood volume, is far above the 5 to 10% that triggers ADH." },
+      { "name": "Urine volume", "answer": "down", "why": "Less is filtered, and ADH and aldosterone make the tubule reabsorb more of what is filtered." },
+      { "name": "Sodium in the urine", "answer": "down", "why": "Angiotensin II and aldosterone raise sodium reabsorption, and pressure natriuresis works in reverse at low pressure." }
+    ],
+    "why": { "correct": "Hemorrhage lowers pressure. The baroreceptor reflex raises sympathetic drive, which constricts the afferent arterioles and releases renin; ADH rises steeply. GFR falls, and the tubule keeps sodium and water, so the man passes a small volume of concentrated, low-sodium urine while his kidneys conserve volume." }
+  },
+  {
+    "id": "anp-renal-function-urine-8",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Select every hormone the kidney itself makes.",
+    "options": ["Renin", "ADH", "Erythropoietin (EPO)", "Aldosterone", "Calcitriol", "ANP"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Juxtaglomerular cells release renin, cells between the tubules release EPO, and tubule cells make calcitriol by activating vitamin D. ADH, aldosterone and ANP are made elsewhere and act on the kidney.",
+      "options": [
+        "Correct. Renin comes from the juxtaglomerular cells.",
+        "ADH is made by the hypothalamus and released from the posterior pituitary.",
+        "Correct. The kidney releases EPO when its oxygen supply falls.",
+        "Aldosterone comes from the zona glomerulosa of the adrenal cortex.",
+        "Correct. Kidney tubule cells complete the activation of vitamin D.",
+        "ANP comes from stretched atrial muscle cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Which hormone makes the kidney excrete more potassium while keeping more sodium?",
+    "options": ["ANP", "PTH", "ADH", "Aldosterone"],
+    "correct": 3,
+    "why": {
+      "correct": "Aldosterone adds sodium channels, potassium channels and pumps to principal cells. They reabsorb more sodium and secrete more potassium.",
+      "options": [
+        "ANP does the reverse for sodium: more sodium and water in the urine.",
+        "PTH controls calcium and phosphate, not sodium and potassium.",
+        "ADH controls water, through aquaporins; it does not directly swap sodium for potassium.",
+        "Correct. Aldosterone keeps sodium and loses potassium."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A tumor makes a person's parathyroid glands release too much PTH. How does their urine change?",
+    "options": [
+      "More phosphate and less calcium, at first",
+      "Less phosphate and more calcium",
+      "More sodium and less potassium",
+      "More water and lower specific gravity"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "PTH removes sodium–phosphate symporters from the proximal tubule, so phosphate is lost, and increases calcium reabsorption in the distal tubule, so less calcium is lost per unit filtered. (Over time, blood calcium rises so much that more calcium is filtered, and urine calcium can rise despite PTH.)",
+      "options": [
+        "Correct. PTH keeps calcium and loses phosphate.",
+        "This reverses both of PTH's kidney effects.",
+        "That pattern belongs to ANP-like or anti-aldosterone effects, not PTH.",
+        "PTH does not act on the collecting duct's water permeability; that is ADH's role."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Ms. Bell, 27, has had burning on urination and a frequent urge to void for two days. She has no fever or flank pain. Her dipstick is positive for nitrite and leukocyte esterase. What is the most likely diagnosis?",
+    "options": [
+      "Kidney stone blocking the ureter",
+      "Urinary tract infection of the bladder",
+      "Acute kidney injury",
+      "Stress incontinence"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Nitrite comes from bacteria converting nitrate, and leukocyte esterase comes from white blood cells. With burning and urgency but no fever or flank pain, the infection is most likely in the bladder (cystitis), not yet the kidney.",
+      "options": [
+        "A stone typically causes severe wave-like flank pain and blood in the urine, not positive nitrite and leukocyte esterase.",
+        "Correct. Bacteria plus white cells, with bladder symptoms.",
+        "AKI is recognized by rising creatinine and falling urine output, not by burning and urgency.",
+        "Stress incontinence is leakage with coughing or lifting. It does not cause burning or positive nitrite."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "After a hot marathon, a runner passes a small amount of dark yellow urine with a specific gravity of 1.030. What does this show?",
+    "options": [
+      "Her collecting ducts are blocked",
+      "Her kidneys are making concentrated urine, with high ADH",
+      "Her glomeruli are leaking protein",
+      "She has too little ADH"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Sweat loss raised her plasma osmolarity and lowered her volume, so ADH rose. Water left her collecting ducts into the medulla, and the urine became small in volume and concentrated, with the urochrome packed into less water.",
+      "options": [
+        "A blocked duct would stop urine flow; she is making urine, just concentrated.",
+        "Correct. A specific gravity of 1.030 is the concentrated end of the normal range.",
+        "Protein would show on the dipstick; specific gravity alone points to concentration.",
+        "Too little ADH makes large volumes of dilute urine with a low specific gravity."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "An adult patient's urine output over 24 hours is 250 mL. What is this called?",
+    "options": ["Polyuria", "Oliguria", "Anuria", "Normal output"],
+    "correct": 1,
+    "why": {
+      "correct": "Oliguria (olig- = little) is less than about 400 mL a day in an adult. 250 mL is below that but above the 50 to 100 mL cutoff for anuria.",
+      "options": [
+        "Polyuria is more than about 3 L a day.",
+        "Correct. 250 mL is between the anuria cutoff and 400 mL.",
+        "Anuria is almost no urine, less than 50 to 100 mL a day.",
+        "Normal output is about 1 to 2 L a day."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-14",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Put the steps of pressure natriuresis in order.",
+    "options": [
+      "Arterial pressure rises",
+      "Pressure in the peritubular capillaries and kidney interstitial fluid rises",
+      "The proximal tubule reabsorbs less sodium",
+      "More sodium and water leave in the urine",
+      "Blood volume falls, and arterial pressure comes back down"
+    ],
+    "why": { "correct": "A rise in arterial pressure raises pressure around the tubules, the proximal tubule pulls its sodium–hydrogen exchangers from the membrane and reabsorbs less, sodium and water are excreted, and the lower volume brings pressure back down: negative feedback without any hormone." }
+  },
+  {
+    "id": "anp-renal-function-urine-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["interdependence"],
+    "q": "Mrs. Tran, 70, has stage 4 chronic kidney disease. She is pale and tired, and her hemoglobin is 9 g/dL. Her iron and vitamin B12 levels are normal. What most likely explains her anemia?",
+    "options": [
+      "Her kidneys filter red blood cells into the urine",
+      "Her kidneys make too little erythropoietin",
+      "Uremia destroys her bone marrow",
+      "Her kidneys make too much renin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Cells between the kidney tubules make EPO. As CKD destroys kidney tissue, EPO falls, and the bone marrow makes fewer red cells. EPO injections treat it.",
+      "options": [
+        "Red cells are too large to pass a healthy or diseased filter in large numbers; that is not the cause of her anemia.",
+        "Correct. Low EPO leads to low red cell production.",
+        "Retained wastes can shorten red cell life a little, but the main cause is low EPO, not destroyed marrow.",
+        "Renin affects blood pressure through the RAAS; it doesn't control red cell production."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Mr. Diallo, 59, on hemodialysis, misses two sessions and comes in weak, with a plasma potassium of 7.2 mmol/L. Which consequence is the most immediate danger?",
+    "options": [
+      "Anemia from low EPO",
+      "Weak bones from low calcitriol",
+      "An arrhythmia from hyperkalemia",
+      "Itching from retained wastes"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Without dialysis, his kidneys can't excrete potassium. Hyperkalemia depolarizes cardiac cells and disturbs conduction, which can cause a fatal arrhythmia within hours. It needs emergency treatment and dialysis.",
+      "options": [
+        "Anemia develops over weeks and is not what makes two missed sessions an emergency.",
+        "Bone disease develops over months to years.",
+        "Correct. Potassium at 7.2 threatens the heart now.",
+        "Itching is unpleasant but not life-threatening in the short term."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-17",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A student described hemodialysis. One step is wrong. Which one?",
+    "options": [
+      "Blood is pumped through a filter beside a semipermeable membrane",
+      "Dialysate flows on the other side of the membrane",
+      "Urea diffuses from the dialysate into the blood",
+      "Potassium diffuses from the blood into the dialysate",
+      "Excess water is removed by pressure across the membrane"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Dialysate contains no urea, so urea diffuses down its gradient from the blood into the dialysate, not the other way.",
+      "options": [
+        "This step is right. The membrane separates blood from dialysate.",
+        "This step is right. Dialysate flows past the other side.",
+        "This is the error. Urea moves from blood, where it is high, into dialysate, where it is absent.",
+        "This step is right. Dialysate has little potassium, so potassium leaves the blood.",
+        "This step is right. Pressure pulls extra water out of the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A man has passed two calcium oxalate stones. What single change most lowers his risk of another?",
+    "options": [
+      "Drinking enough to pass more than about 2.5 L of urine a day",
+      "Cutting all calcium from his diet",
+      "Taking a loop diuretic",
+      "Drinking less so his urine is more concentrated"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Stones form when solutes become concentrated enough to crystallize. A larger urine volume keeps calcium and oxalate diluted below that point.",
+      "options": [
+        "Correct. Dilute urine is the main prevention.",
+        "Cutting dietary calcium lets more oxalate be absorbed from the gut and can raise the risk; normal calcium intake is advised.",
+        "Loop diuretics raise calcium in the urine. A thiazide, which lowers it, is the diuretic used.",
+        "More concentrated urine raises the risk of crystals forming."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-19",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Mrs. Okafor, 45, has had three children. She leaks small spurts of urine when she coughs or lifts her toddler, but never feels a sudden urge. Which type of incontinence is this, and what is the first treatment?",
+    "options": [
+      "Urge incontinence; drugs that relax the detrusor",
+      "Overflow incontinence; a catheter to drain the bladder",
+      "Stress incontinence; pelvic floor muscle training",
+      "Functional incontinence; help reaching the toilet"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Leakage with a jump in abdominal pressure, without urgency, is stress incontinence: the pelvic floor and external urethral sphincter, often weakened by childbirth, can't hold. Pelvic floor training strengthens them.",
+      "options": [
+        "Urge incontinence comes with a sudden strong urge from an overactive detrusor. She has none.",
+        "Overflow incontinence is constant dribbling from a bladder that can't empty.",
+        "Correct. Pressure-triggered leakage with a weak pelvic floor.",
+        "Functional incontinence happens when the urinary tract works but the person can't reach a toilet."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["interdependence"],
+    "q": "After three days of vomiting, Mr. Lind, 80, takes high doses of ibuprofen for a painful knee. His urine output falls and his creatinine rises. How did the ibuprofen contribute?",
+    "options": [
+      "It blocked prostaglandins that were widening his afferent arterioles",
+      "It blocked NKCC2 and caused a large water loss",
+      "It raised his ADH, stopping urine flow",
+      "It crystallized in his ureters and blocked them"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Vomiting lowered his blood volume, and his kidneys were relying on prostaglandins to widen the afferent arterioles and protect GFR. Ibuprofen blocks prostaglandin synthesis, the afferent arterioles narrow, and GFR falls: acute kidney injury.",
+      "options": [
+        "Correct. Removing the prostaglandin protection lowered GFR.",
+        "Blocking NKCC2 is what loop diuretics do, not ibuprofen.",
+        "Ibuprofen does not work by raising ADH, and ADH alone lowers urine volume without raising creatinine.",
+        "Ibuprofen doesn't form stones in the ureters."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-21",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["mass-balance"],
+    "q": "Complete the renal clearance formula: C = (U × V) ÷ ____.",
+    "options": ["P, the plasma concentration", "GFR", "Urine specific gravity", "Time"],
+    "correct": 0,
+    "why": {
+      "correct": "U × V is the amount excreted per minute. Dividing it by the plasma concentration gives the volume of plasma that contained that amount: the clearance.",
+      "options": [
+        "Correct. P, in the same units as U.",
+        "GFR is not in the formula. For inulin, the clearance you calculate equals GFR.",
+        "Specific gravity measures how concentrated urine is, not how much plasma is cleared.",
+        "V is already a rate per minute, so time is built in."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-22",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A woman who bled heavily after an injury has a low urine output and a rising creatinine. Her kidney tissue is healthy, and her output recovers once blood is transfused. How is her acute kidney injury classified?",
+    "options": ["Postrenal", "Chronic", "Intrinsic", "Prerenal"],
+    "correct": 3,
+    "why": {
+      "correct": "The problem was too little blood reaching healthy kidneys. That is prerenal AKI, which reverses when perfusion is restored.",
+      "options": [
+        "Postrenal AKI comes from blocked urine outflow, such as a stone or blocked bladder outlet.",
+        "Chronic kidney disease lasts more than 3 months; hers came on suddenly and recovered.",
+        "Intrinsic AKI means the kidney tissue itself is damaged; hers was healthy.",
+        "Correct. Low perfusion of healthy kidneys."
+      ]
+    }
+  },
+  {
+    "id": "anp-renal-function-urine-23",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["mass-balance"],
+    "figure": "os-25-22",
+    "pin": "urea",
+    "q": "Name the pinned molecule.",
+    "options": ["Urea", "Ammonia", "Uric acid", "Creatinine"],
+    "correct": 0,
+    "why": {
+      "correct": "Urea is a single carbon double-bonded to an oxygen, with two nitrogen groups. The liver makes it from ammonia, and it is the largest solute in urine.",
+      "options": [
+        "Correct. One carbon, one oxygen, two nitrogen groups.",
+        "Ammonia is the smallest molecule on the figure: one nitrogen with three hydrogens.",
+        "Uric acid is the large molecule with two fused rings.",
+        "Creatinine is not shown on this figure."
+      ]
+    }
+  }
+]

@@ -4,9 +4,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Disease has damaged a woman's renal medulla, so the interstitial fluid at the papilla now reaches only 600 mOsm/L. Her ADH is very high. About what is the most concentrated urine she can make?",
-    "options": ["1,200 mOsm/L", "About 600 mOsm/L", "300 mOsm/L", "50 mOsm/L"],
+    "options": [
+      "1,200 mOsm/L",
+      "About 600 mOsm/L",
+      "300 mOsm/L",
+      "50 mOsm/L"
+    ],
     "correct": 1,
     "why": {
       "correct": "Water leaves the collecting duct only by osmosis, so urine can at most reach the osmolarity of the medulla around the duct. With the papilla at 600, her urine tops out near 600 mOsm/L, however much ADH she has.",
@@ -23,9 +30,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A man eats a high-protein, high-salt diet and must excrete 900 mOsm of solute a day. His kidneys can concentrate urine to 1,200 mOsm/L. What is the smallest daily urine volume that can carry this solute?",
-    "options": ["0.5 L", "1.33 L", "0.75 L", "1.08 L"],
+    "options": [
+      "0.5 L",
+      "1.33 L",
+      "0.75 L",
+      "1.5 L"
+    ],
     "correct": 2,
     "why": {
       "correct": "Volume = solute ÷ concentration = 900 mOsm ÷ 1,200 mOsm/L = 0.75 L. He can't pass less without waste solute building up in his blood.",
@@ -33,7 +47,7 @@
         "0.5 L is the minimum for a 600 mOsm load. His load is larger, so his minimum is larger.",
         "1.33 L comes from dividing 1,200 by 900, the wrong way round.",
         "Correct. 900 ÷ 1,200 = 0.75 L.",
-        "1.08 L comes from multiplying 900 by 1,200 and misplacing the decimal; volume is solute divided by concentration."
+        "1.5 L is 900 ÷ 600: it assumes his urine can reach only twice plasma's osmolarity, but his kidneys reach 1,200 mOsm/L."
       ]
     }
   },
@@ -43,16 +57,40 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A drug blocks ADH's receptor protein on principal cells. Predict the change in each variable in the hours after the first dose, before thirst makes the person drink more.",
     "variables": [
-      { "name": "Aquaporins in the apical membranes of principal cells", "answer": "down", "why": "Without the ADH signal, cAMP falls and the cells pull their apical aquaporins back into vesicles." },
-      { "name": "Water reabsorbed from the collecting duct", "answer": "down", "why": "With few apical aquaporins, the duct is nearly waterproof, so little water leaves it for the salty medulla." },
-      { "name": "Urine volume", "answer": "up", "why": "Water that is not reabsorbed stays in the duct and leaves as urine." },
-      { "name": "Urine osmolarity", "answer": "down", "why": "Dilute fluid from the thick ascending limb passes through the collecting duct without losing water, and gets more dilute still as sodium is reabsorbed." },
-      { "name": "Osmolarity of the plasma", "answer": "up", "why": "The body loses more water than solute, so the solute left in the plasma is more concentrated." }
+      {
+        "name": "Aquaporins in the apical membranes of principal cells",
+        "answer": "down",
+        "why": "Without the ADH signal, cAMP falls and the cells pull their apical aquaporins back into vesicles."
+      },
+      {
+        "name": "Water reabsorbed from the collecting duct",
+        "answer": "down",
+        "why": "With few apical aquaporins, the duct is nearly waterproof, so little water leaves it for the salty medulla."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "up",
+        "why": "Water that is not reabsorbed stays in the duct and leaves as urine."
+      },
+      {
+        "name": "Urine osmolarity",
+        "answer": "down",
+        "why": "Dilute fluid from the thick ascending limb passes through the collecting duct without losing water, and gets more dilute still as sodium is reabsorbed."
+      },
+      {
+        "name": "Osmolarity of the plasma",
+        "answer": "up",
+        "why": "The body loses more water than solute, so the solute left in the plasma is more concentrated."
+      }
     ],
-    "why": { "correct": "Blocking ADH's receptor protein removes the collecting duct's aquaporins. The medullary gradient is still there, but water can't use it. A large volume of dilute urine follows, and the plasma becomes more concentrated until thirst makes the person drink." }
+    "why": {
+      "correct": "Blocking ADH's receptor protein removes the collecting duct's aquaporins. The medullary gradient is still there, but water can't use it. A large volume of dilute urine follows, and the plasma becomes more concentrated until thirst makes the person drink."
+    }
   },
   {
     "id": "anp-urine-concentration-4",
@@ -60,16 +98,41 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 2,
-    "core": ["gradients", "homeostasis"],
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
     "q": "A patient with fluid overload is given a loop diuretic. Predict the change in each variable over the next few hours.",
     "variables": [
-      { "name": "NaCl reabsorbed by the thick ascending limb", "answer": "down", "why": "The drug blocks NKCC2, the main carrier that moves salt out of that segment." },
-      { "name": "Osmolarity of the inner medulla", "answer": "down", "why": "Salt is no longer pumped into the medulla, so the countercurrent multiplier stops and the vasa recta slowly carry the gradient away." },
-      { "name": "Urine volume", "answer": "up", "why": "Sodium left in the tubule holds water with it, and a weaker gradient draws less water out of the collecting duct." },
-      { "name": "Potassium in the urine", "answer": "up", "why": "More sodium and faster flow reach the principal cells, which reabsorb more sodium and secrete more potassium." },
-      { "name": "Blood volume", "answer": "down", "why": "The extra salt and water lost in urine come out of the extracellular fluid, including the plasma." }
+      {
+        "name": "NaCl reabsorbed by the thick ascending limb",
+        "answer": "down",
+        "why": "The drug blocks NKCC2, the main carrier that moves salt out of that segment."
+      },
+      {
+        "name": "Osmolarity of the inner medulla",
+        "answer": "down",
+        "why": "Salt is no longer pumped into the medulla, so the countercurrent multiplier stops and the vasa recta slowly carry the gradient away."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "up",
+        "why": "Sodium left in the tubule holds water with it, and a weaker gradient draws less water out of the collecting duct."
+      },
+      {
+        "name": "Potassium in the urine",
+        "answer": "up",
+        "why": "More sodium and faster flow reach the principal cells, which reabsorb more sodium and secrete more potassium."
+      },
+      {
+        "name": "Blood volume",
+        "answer": "down",
+        "why": "The extra salt and water lost in urine come out of the extracellular fluid, including the plasma."
+      }
     ],
-    "why": { "correct": "Blocking NKCC2 cuts reabsorption of about a quarter of filtered sodium and stops the multiplier, so the kidney can't concentrate urine. Urine volume rises, blood volume falls, and potassium is lost because more sodium reaches the principal cells." }
+    "why": {
+      "correct": "Blocking NKCC2 cuts reabsorption of about a quarter of filtered sodium and stops the multiplier, so the kidney can't concentrate urine. Urine volume rises, blood volume falls, and potassium is lost because more sodium reaches the principal cells."
+    }
   },
   {
     "id": "anp-urine-concentration-5",
@@ -77,24 +140,54 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A roofer sweats heavily all afternoon without drinking. Sweat has less salt than plasma. Predict the change in each variable across the nervous, endocrine and urinary systems by the end of the afternoon.",
     "variables": [
-      { "name": "Osmolarity of the plasma", "answer": "up", "why": "He loses more water than salt, so the solute left behind is more concentrated." },
-      { "name": "ADH release", "answer": "up", "why": "Hypothalamic osmoreceptors sense the rise in osmolarity, and the fall in blood volume adds to the signal." },
-      { "name": "Aquaporins in collecting duct principal cells", "answer": "up", "why": "ADH acts through cAMP to insert stored aquaporins into the apical membrane." },
-      { "name": "Urine volume", "answer": "down", "why": "Water leaves the collecting duct into the salty medulla and returns to the blood." },
-      { "name": "Urine osmolarity", "answer": "up", "why": "The fluid in the collecting duct comes close to the medulla's 1,200 mOsm/L." },
-      { "name": "Aldosterone release", "answer": "up", "why": "The fall in blood volume lowers pressure in the kidney's small arteries, so renin, angiotensin II and aldosterone rise." }
+      {
+        "name": "Osmolarity of the plasma",
+        "answer": "up",
+        "why": "He loses more water than salt, so the solute left behind is more concentrated."
+      },
+      {
+        "name": "ADH release",
+        "answer": "up",
+        "why": "Hypothalamic osmoreceptors sense the rise in osmolarity, and the fall in blood volume adds to the signal."
+      },
+      {
+        "name": "Aquaporins in collecting duct principal cells",
+        "answer": "up",
+        "why": "ADH acts through cAMP to insert stored aquaporins into the apical membrane."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "down",
+        "why": "Water leaves the collecting duct into the salty medulla and returns to the blood."
+      },
+      {
+        "name": "Urine osmolarity",
+        "answer": "up",
+        "why": "The fluid in the collecting duct comes close to the medulla's 1,200 mOsm/L."
+      },
+      {
+        "name": "Aldosterone release",
+        "answer": "up",
+        "why": "The fall in blood volume lowers pressure in the kidney's small arteries, so renin, angiotensin II and aldosterone rise."
+      }
     ],
-    "why": { "correct": "Losing water raises plasma osmolarity and lowers blood volume. The hypothalamus raises ADH, which opens the collecting duct to water, and the RAAS raises aldosterone, which keeps sodium. He passes a small volume of concentrated urine, but only drinking replaces what he lost." }
+    "why": {
+      "correct": "Losing water raises plasma osmolarity and lowers blood volume. The hypothalamus raises ADH, which opens the collecting duct to water, and the RAAS raises aldosterone, which keeps sodium. He passes a small volume of concentrated urine, but only drinking replaces what he lost."
+    }
   },
   {
     "id": "anp-urine-concentration-6",
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the steps in order, from a rise in plasma osmolarity to concentrated urine.",
     "options": [
       "Hypothalamic osmoreceptors sense the rise in osmolarity",
@@ -104,14 +197,18 @@
       "Vesicles carrying aquaporins fuse with the apical membrane",
       "Water leaves the collecting duct into the salty medulla"
     ],
-    "why": { "correct": "Osmoreceptors trigger ADH release; ADH binds its receptor protein on principal cells; cAMP and protein kinase A move aquaporins into the apical membrane; and water leaves the duct by osmosis into the concentrated medulla." }
+    "why": {
+      "correct": "Osmoreceptors trigger ADH release; ADH binds its receptor protein on principal cells; cAMP and protein kinase A move aquaporins into the apical membrane; and water leaves the duct by osmosis into the concentrated medulla."
+    }
   },
   {
     "id": "anp-urine-concentration-7",
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Imagine the vasa recta were replaced by capillaries that ran straight from the cortex to the papilla and drained there, with the same blood flow. What would happen to the medullary osmotic gradient?",
     "options": [
       "It would steepen, since fresh blood would bring in more salt",
@@ -135,9 +232,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "What is the osmolarity of the interstitial fluid near the tip of a renal papilla in a person making concentrated urine?",
-    "options": ["About 300 mOsm/L", "About 1,200 mOsm/L", "About 100 mOsm/L", "About 5,000 mOsm/L"],
+    "options": [
+      "About 300 mOsm/L",
+      "About 1,200 mOsm/L",
+      "About 100 mOsm/L",
+      "About 5,000 mOsm/L"
+    ],
     "correct": 1,
     "why": {
       "correct": "The medullary osmotic gradient climbs from about 300 mOsm/L at the cortex to about 1,200 mOsm/L at the papilla in humans.",
@@ -154,7 +258,9 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Select everything that helps build or maintain the medullary osmotic gradient.",
     "options": [
       "NKCC2 pumping salt out of the thick ascending limb",
@@ -164,7 +270,12 @@
       "Aquaporins in the thick ascending limb",
       "The hairpin shape of the vasa recta"
     ],
-    "correct": [0, 1, 3, 5],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
     "why": {
       "correct": "Salt pumped out of the thick ascending limb and urea from the inner medullary collecting duct supply the solute. Countercurrent flow in the loop multiplies it into a gradient, and the vasa recta's hairpin keeps blood flow from washing it out.",
       "options": [
@@ -182,7 +293,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A student described the countercurrent multiplier. One step is wrong. Which one?",
     "options": [
       "The thick ascending limb pumps NaCl into the interstitial fluid",
@@ -208,9 +321,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Fill the gap. Fluid in the descending limb becomes more concentrated as it moves deeper into the medulla, because it loses ____ to the salty interstitial fluid.",
-    "options": ["Water", "Sodium chloride", "Urea", "Potassium"],
+    "options": [
+      "Water",
+      "Sodium chloride",
+      "Urea",
+      "Potassium"
+    ],
     "correct": 0,
     "why": {
       "correct": "The descending limb is permeable to water but not much to salt, so water leaves by osmosis and the solute left inside becomes more concentrated.",
@@ -227,10 +347,17 @@
     "type": "graph",
     "level": "apply",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "figure": "nephron-osmolarity",
     "q": "Use the graph. With no ADH, where along the nephron is the tubular fluid most dilute?",
-    "options": ["At the tip of the nephron loop", "At the end of the proximal tubule", "At the start of the distal tubule", "At the end of the collecting duct"],
+    "options": [
+      "At the tip of the nephron loop",
+      "At the end of the proximal tubule",
+      "At the start of the distal tubule",
+      "At the end of the collecting duct"
+    ],
     "correct": 3,
     "why": {
       "correct": "With no ADH, the dashed line keeps falling through the collecting duct, to about 50 mOsm/L at its end. The duct keeps reabsorbing sodium but lets almost no water out.",
@@ -247,7 +374,9 @@
     "type": "graph",
     "level": "analyze",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "figure": "nephron-osmolarity",
     "q": "On the graph, the fluid is 300 mOsm/L at both the start and the end of the proximal tubule, even though two thirds of the filtrate is reabsorbed there. Why doesn't its osmolarity change?",
     "options": [
@@ -272,7 +401,10 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication", "homeostasis"],
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
     "q": "Leo, 6, passes about 5 L of pale urine a day and is always thirsty. His blood glucose is normal. His ADH level is high, and an injection of synthetic ADH does not reduce his urine volume. Where is the fault most likely to be?",
     "options": [
       "His posterior pituitary releases too little ADH",
@@ -296,9 +428,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
-    "q": "Mrs. Park, 64, has high blood pressure and has formed kidney stones made of calcium. Her doctor chooses a diuretic that lowers blood pressure and also reduces the calcium in her urine. Which kind?",
-    "options": ["A loop diuretic", "An osmotic diuretic", "A thiazide diuretic", "A drug that blocks ADH's receptor protein"],
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Mrs. Park, 64, has high blood pressure, and calcium stones have formed in her kidneys twice. Her doctor chooses a diuretic that lowers blood pressure and also reduces the calcium in her urine. Which kind?",
+    "options": [
+      "A loop diuretic",
+      "An osmotic diuretic",
+      "A thiazide diuretic",
+      "A drug that blocks ADH's receptor protein"
+    ],
     "correct": 2,
     "why": {
       "correct": "Thiazides block the sodium–chloride symporter in the distal convoluted tubule, and they make the distal tubule reabsorb more calcium. They lower blood pressure steadily and reduce calcium in the urine.",
@@ -315,7 +454,9 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "Mr. Adeyemi, 71, has heart failure and takes furosemide, a loop diuretic. His plasma potassium has fallen to 3.1 mmol/L. How does the drug cause this?",
     "options": [
       "It blocks potassium reabsorption in the proximal tubule",
@@ -339,7 +480,9 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "People who eat very little protein for months can't concentrate their urine as fully as others. Why?",
     "options": [
       "They make less urea, so the inner medulla has less urea to build its gradient",
@@ -363,11 +506,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-26-12",
     "pin": "aquaporin-storage-vesicle",
     "q": "Name the pinned structure.",
-    "options": ["Aquaporin storage vesicle", "Aquaporin", "Interstitial fluid", "Lumen of the collecting duct"],
+    "options": [
+      "Aquaporin storage vesicle",
+      "Aquaporin",
+      "Interstitial fluid",
+      "Lumen of the collecting duct"
+    ],
     "correct": 0,
     "why": {
       "correct": "These vesicles hold aquaporins inside the principal cell. When ADH raises cAMP, they fuse with the apical membrane and put the water channels in place.",
@@ -384,7 +534,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A patient with a swollen brain after a head injury is given mannitol, which is filtered but not reabsorbed. Why does her urine output rise?",
     "options": [
       "Mannitol blocks NKCC2 in the thick ascending limb",
@@ -408,7 +560,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Which statement correctly compares the countercurrent multiplier and the countercurrent exchanger?",
     "options": [
       "The multiplier uses energy to build the gradient; the exchanger is passive and preserves it",

@@ -1,0 +1,48 @@
+{
+  "topic": "urine-concentration",
+  "hook": "<p>Mr. Ruiz, 78, has heart failure and swollen ankles. His doctor starts furosemide, and within an hour he is passing large volumes of pale urine; by the next week his ankles are thinner, but his blood potassium has dropped. A single drug that blocks one carrier in one segment of the nephron has changed how much urine he makes, how concentrated it can be and how much potassium he loses. To see why, you need to know how your kidneys concentrate urine.</p>",
+  "prereq": [
+    {
+      "q": "What carrier moves salt out of the thick ascending limb?",
+      "options": ["The sodium–glucose symporter", "The Na–K–2Cl cotransporter (NKCC2)", "Aquaporins"],
+      "correct": 1,
+      "why": "NKCC2 on the apical membrane carries 1 Na+, 1 K+ and 2 Cl− into the cell, and the salt leaves on the basolateral side. The segment lets almost no water follow.",
+      "review": "tubular-transport"
+    },
+    {
+      "q": "Which nephrons have long loops that dip deep into the renal medulla?",
+      "options": ["Cortical nephrons", "Juxtamedullary nephrons", "Both equally"],
+      "correct": 1,
+      "why": "Juxtamedullary nephrons sit near the corticomedullary border and send long loops deep into the medulla, with vasa recta beside them.",
+      "review": "nephron"
+    },
+    {
+      "q": "What does ADH do to the cells at the end of the renal tubule?",
+      "options": ["Makes them reabsorb more sodium", "Makes them insert aquaporins, so more water returns to the blood", "Makes them secrete more potassium"],
+      "correct": 1,
+      "why": "ADH works through cAMP to move aquaporins into the membranes of those cells, so water can leave the tubule by osmosis. That is aldosterone's job for sodium and potassium.",
+      "review": "hypothalamus-pituitary"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-20",
+    "caption": "The countercurrent multiplier in a nephron loop. Water leaves the descending limb; salt is pumped out of the ascending limb; the interstitial fluid between them climbs from 300 to about 1,200 mOsm/kg."
+  },
+  "chain": [
+    { "cause": "The thick ascending limb pumps NaCl into the medulla on NKCC2 but keeps its water.", "effect": "The interstitial fluid next to it becomes saltier than the fluid inside it, by about 200 mOsm/L at each level." },
+    { "cause": "The saltier interstitial fluid surrounds the descending limb, which is permeable to water.", "effect": "Water leaves the descending limb by osmosis, and its fluid becomes more concentrated." },
+    { "cause": "Flow carries that more concentrated fluid around the bend into the ascending limb, where it is pumped again.", "effect": "The effect is multiplied, and the medulla climbs from 300 mOsm/L at the cortex to about 1,200 at the papilla; urea from the inner medullary collecting duct supplies about half the inner part." },
+    { "cause": "The hairpin vasa recta gain solute on the way down and give it back on the way up.", "effect": "Blood flow carries off reabsorbed water without washing the gradient away." },
+    { "cause": "When ADH is high, principal cells insert aquaporins into their apical membranes.", "effect": "Water leaves the collecting duct into the salty medulla, and the urine becomes as concentrated as the medulla, up to about 1,200 mOsm/L." }
+  ],
+  "misconception": {
+    "wrong": "The kidneys concentrate urine by pumping water out of it.",
+    "right": "No part of the kidney pumps water. Water only ever moves by osmosis. What the kidney pumps is salt: the thick ascending limb builds a salty medulla, and ADH then opens the collecting duct so water can flow out into it passively. That is why urine can never be more concentrated than the deepest medulla, and why a loop diuretic, which stops the salt pumping, leaves the kidney unable to concentrate urine at all."
+  },
+  "check": ["anp-urine-concentration-1", "anp-urine-concentration-3", "anp-urine-concentration-4", "anp-urine-concentration-7", "anp-urine-concentration-10", "anp-urine-concentration-14", "anp-urine-concentration-16"],
+  "summary": "<p>Urine can range from about 50 to 1,200 mOsm/L, so the same daily solute leaves in anywhere from 0.5 L to many liters. Because water moves only by osmosis, concentrated urine needs the medullary osmotic gradient: interstitial fluid rising from 300 mOsm/L at the cortex to about 1,200 at the papilla. The countercurrent multiplier builds it. The thick ascending limb pumps salt out and keeps its water, the descending limb loses water to the salty medulla, and flow in opposite directions multiplies the small difference at each level. The vasa recta preserve the gradient by countercurrent exchange, passively. Urea recycling from the inner medullary collecting duct supplies about half the inner medulla's osmolarity. ADH binds its receptor protein on principal cells, raises cAMP and inserts aquaporins, so water leaves the collecting duct and urine becomes concentrated; without ADH the duct stays waterproof and urine is dilute. Diuretics increase urine output: loop diuretics block NKCC2 and are strongest, thiazides block the distal tubule's sodium–chloride symporter and keep calcium, and osmotic diuretics hold water in the tubule. Loop and thiazide diuretics cause potassium loss.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/nremt/study-notes.html#chapter-35", "label": "NREMT: Environmental emergencies (heat and dehydration)" }
+  ]
+}

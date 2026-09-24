@@ -1,0 +1,47 @@
+{
+  "topic": "nephron",
+  "hook": "<p>Ana, 34, donates a kidney to her brother. Her surgeon tells her that her remaining kidney will grow a little and filter more, but it will not make a single new nephron: she was born with all she will ever have. Within a year, her one kidney does about 70 percent of the work her two used to do, because each of its million or so nephrons works harder.</p>",
+  "prereq": [
+    {
+      "q": "Which type of capillary has pores through its endothelial cells and is found where large amounts of fluid are filtered?",
+      "options": ["Continuous capillary", "Fenestrated capillary", "Sinusoid"],
+      "correct": 1,
+      "why": "Fenestrated capillaries (fenestra = window) have pores through their endothelial cells on an intact basement membrane. They are found in the kidneys, the intestinal lining and endocrine glands.",
+      "review": "vessel-structure"
+    },
+    {
+      "q": "In the kidney, which artery arches along the boundary between the cortex and the medulla?",
+      "options": ["Arcuate artery", "Segmental artery", "Interlobar artery"],
+      "correct": 0,
+      "why": "Arcuate arteries (arcu- = bow) arch over the bases of the pyramids, where cortex meets medulla, and give off the cortical radiate arteries.",
+      "review": "kidney-anatomy"
+    },
+    {
+      "q": "What does renin do?",
+      "options": ["It converts angiotensin I into angiotensin II", "It makes the adrenal cortex release aldosterone", "It cuts angiotensinogen into angiotensin I"],
+      "correct": 2,
+      "why": "Renin is an enzyme released by the kidney. It cuts angiotensinogen, made by the liver, into angiotensin I. ACE then converts angiotensin I into angiotensin II, which releases aldosterone.",
+      "review": "adrenal-glands"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-10",
+    "caption": "One nephron and its blood vessels. Hide the labels and name the afferent and efferent arterioles, the glomerular capsule, the proximal convoluted tubule, the nephron loop and the peritubular capillaries."
+  },
+  "chain": [
+    { "cause": "Blood enters the glomerulus through the wider afferent arteriole and can leave only through the narrower efferent arteriole.", "effect": "Pressure inside the glomerular capillaries stays unusually high." },
+    { "cause": "High pressure pushes on leaky, fenestrated capillary walls wrapped in podocytes.", "effect": "Plasma fluid, without blood cells and most proteins, is pushed into the capsular space." },
+    { "cause": "The fluid flows into the proximal convoluted tubule, whose cells have a brush border of microvilli and many mitochondria.", "effect": "Most of the water and nearly all the useful solutes are taken back into the peritubular capillaries." },
+    { "cause": "The remaining fluid runs down and up the nephron loop and passes the macula densa, which senses its sodium chloride.", "effect": "The macula densa signals the juxtaglomerular cells and the afferent arteriole of its own nephron." },
+    { "cause": "The fluid continues through the distal convoluted tubule into a collecting duct shared with other nephrons.", "effect": "The collecting duct carries it through the medulla to the renal papilla, where it drips into a minor calyx as urine." }
+  ],
+  "misconception": {
+    "wrong": "Blood leaving the glomerulus flows into a venule, as it does after any other capillary bed.",
+    "right": "Blood leaves the glomerulus through the efferent arteriole, an arteriole, and then flows through a second capillary bed, the peritubular capillaries (and in juxtamedullary nephrons, the vasa recta), before reaching a venule. Having an arteriole on both sides is what lets the kidney keep glomerular pressure high and adjust it from either side."
+  },
+  "check": ["anp-nephron-1", "anp-nephron-5", "anp-nephron-7", "anp-nephron-9", "anp-nephron-11", "anp-nephron-15", "anp-nephron-19"],
+  "summary": "<p>A nephron is the unit that makes urine; each kidney has about a million, and none are replaced once lost. Its renal corpuscle, in the cortex, is a glomerulus of fenestrated capillaries inside the glomerular (Bowman's) capsule, whose visceral layer is made of podocytes and whose capsular space collects the filtered fluid. The renal tubule runs from the capsule: the proximal convoluted tubule, with its brush border and many mitochondria, takes back most of the fluid; the nephron loop, with descending and ascending limbs, dips into the medulla; the distal convoluted tubule returns to touch its own corpuscle; and a collecting duct, shared by many nephrons, carries the fluid to the papilla. Cortical nephrons (about 85%) have short loops; juxtamedullary nephrons (about 15%) have long loops and the vasa recta. Blood flows through an afferent arteriole, the glomerulus, an efferent arteriole and then the peritubular capillaries or vasa recta. The juxtaglomerular apparatus, where the tubule meets its arterioles, joins the macula densa, the renin-releasing juxtaglomerular cells and mesangial cells.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "topic": "energy-balance-thermoregulation",
+  "hook": "<p>On a humid 33 °C August afternoon, a 17-year-old lineman collapses on the second day of football practice in full pads. He is confused and combative, his skin is hot and still wet with sweat, and a rectal thermometer reads 41.6 °C. His trainer does not wait for the ambulance: she lowers him into a tub of ice water. Within 15 minutes his temperature is under 39 °C and he is answering questions. The minutes his core spent above 40 °C are what decide how well he recovers.</p>",
+  "prereq": [
+    {
+      "q": "Which fibers make the sweat glands secrete?",
+      "options": ["Parasympathetic fibers releasing acetylcholine", "Sympathetic cholinergic fibers releasing acetylcholine", "Sympathetic fibers releasing norepinephrine"],
+      "correct": 1,
+      "why": "Sweat glands receive sympathetic fibers that release acetylcholine onto muscarinic receptor proteins: the sympathetic cholinergic exception.",
+      "review": "ans-control"
+    },
+    {
+      "q": "What does leptin tell the hypothalamus?",
+      "options": ["That the stomach is empty", "That blood glucose is falling", "How large the body's fat stores are"],
+      "correct": 2,
+      "why": "Fat cells release leptin roughly in proportion to how much fat they hold, so leptin signals the size of energy stores.",
+      "review": "other-endocrine"
+    },
+    {
+      "q": "How much energy does 10 g of fat supply?",
+      "options": ["About 40 kcal", "About 90 kcal", "About 10 kcal"],
+      "correct": 1,
+      "why": "Fat supplies about 9 kcal per gram, so 10 g supplies about 90 kcal.",
+      "review": "nutrition"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-24-23",
+    "caption": "The hypothalamic temperature loop. Hide the labels and name the responses to low and to high body temperature."
+  },
+  "chain": [
+    { "cause": "Hard exercise raises heat production, and core and skin temperature begin to rise.", "effect": "Warm thermoreceptors in the skin and temperature-sensitive neurons in the hypothalamus increase their signals to the preoptic area." },
+    { "cause": "The preoptic area compares the input with its set point and finds the temperature too high.", "effect": "It drives sympathetic cholinergic nerves to the skin, which activate the sweat glands and actively widen skin blood vessels." },
+    { "cause": "More warm blood reaches the skin and sweat spreads over it.", "effect": "Heat is lost by radiation, convection and, above all, evaporation of sweat." },
+    { "cause": "Heat loss rises to match heat production.", "effect": "Core temperature levels off at a slightly raised value: negative feedback. If humid air stops sweat evaporating, heat loss falls short and core temperature keeps climbing toward heat stroke." }
+  ],
+  "misconception": {
+    "wrong": "Sweating cools you.",
+    "right": "Sweat cools you only when it evaporates. Turning each liter of sweat into vapor takes about 580 kcal from your skin; sweat that drips off removes almost no heat. In humid air, evaporation slows, so you can sweat heavily, lose a lot of water, and still overheat. That is why a hot, humid day is far more dangerous for exercise than a hot, dry one."
+  },
+  "check": ["anp-energy-balance-thermoregulation-1", "anp-energy-balance-thermoregulation-4", "anp-energy-balance-thermoregulation-6", "anp-energy-balance-thermoregulation-9", "anp-energy-balance-thermoregulation-12", "anp-energy-balance-thermoregulation-14", "anp-energy-balance-thermoregulation-17"],
+  "summary": "<p>Metabolic rate is the rate of energy use, and so of heat production. The basal metabolic rate, measured at rest after a 12-hour fast in a warm room, is about 60 to 70% of the total metabolic rate and depends mostly on lean mass, thyroid hormones and sympathetic activity. Energy balance compares intake with spending; a surplus is stored as fat, but spending adjusts as weight changes. BMI (kg/m²) screens weight: 18.5 to 24.9 is the healthy range. The hypothalamus regulates appetite: ghrelin from the empty stomach raises hunger; stomach stretch and gut hormones bring satiety; leptin reports fat stores. Core temperature is held near 36.6 to 37 °C while the shell varies. Heat is lost by radiation, conduction, convection and evaporation; in hot air, only evaporation works. The preoptic area of the hypothalamus drives skin vasodilation and sweating when warm, and skin vasoconstriction, shivering and nonshivering thermogenesis in brown fat when cold. Heat exhaustion is water and salt loss with a normal brain; heat stroke is a core above about 40 °C with brain dysfunction and needs rapid cooling. Hypothermia is a core below 35 °C; frostbite is frozen tissue.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-35", "label": "NREMT: Environmental emergencies" }
+  ]
+}

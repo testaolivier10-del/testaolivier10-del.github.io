@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" role="img" aria-label="Graph of glomerular filtration rate in mL/min, from 0 to 150, against mean arterial pressure in mm Hg, from 0 to 200. A solid curve, labeled with autoregulation, is zero below about 40 mm Hg, rises steeply to about 117 at 80 mm Hg, then stays almost flat, near 125, from 80 to about 180 mm Hg, and rises again above 180. A dashed straight line, labeled without autoregulation, rises steadily from zero at 40 mm Hg and reaches 150 at about 112 mm Hg. Point A marks the solid curve at 60 mm Hg, point B at 100 mm Hg on the plateau, and point C at 190 mm Hg.">
+<rect x="0" y="0" width="760" height="420" fill="#FFFFFF"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<line x1="90" y1="340.0" x2="720" y2="340.0" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="345.0" font-size="13" font-weight="700" text-anchor="end">0</text>
+<line x1="90" y1="293.3" x2="720" y2="293.3" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="298.3" font-size="13" font-weight="700" text-anchor="end">25</text>
+<line x1="90" y1="246.7" x2="720" y2="246.7" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="251.7" font-size="13" font-weight="700" text-anchor="end">50</text>
+<line x1="90" y1="200.0" x2="720" y2="200.0" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="205.0" font-size="13" font-weight="700" text-anchor="end">75</text>
+<line x1="90" y1="153.3" x2="720" y2="153.3" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="158.3" font-size="13" font-weight="700" text-anchor="end">100</text>
+<line x1="90" y1="106.7" x2="720" y2="106.7" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="111.7" font-size="13" font-weight="700" text-anchor="end">125</text>
+<line x1="90" y1="60.0" x2="720" y2="60.0" stroke="#E4E9E8" stroke-width="1"/>
+<text x="80" y="65.0" font-size="13" font-weight="700" text-anchor="end">150</text>
+<text x="90.0" y="360" font-size="13" font-weight="700" text-anchor="middle">0</text>
+<text x="153.0" y="360" font-size="13" font-weight="700" text-anchor="middle">20</text>
+<text x="216.0" y="360" font-size="13" font-weight="700" text-anchor="middle">40</text>
+<text x="279.0" y="360" font-size="13" font-weight="700" text-anchor="middle">60</text>
+<text x="342.0" y="360" font-size="13" font-weight="700" text-anchor="middle">80</text>
+<text x="405.0" y="360" font-size="13" font-weight="700" text-anchor="middle">100</text>
+<text x="468.0" y="360" font-size="13" font-weight="700" text-anchor="middle">120</text>
+<text x="531.0" y="360" font-size="13" font-weight="700" text-anchor="middle">140</text>
+<text x="594.0" y="360" font-size="13" font-weight="700" text-anchor="middle">160</text>
+<text x="657.0" y="360" font-size="13" font-weight="700" text-anchor="middle">180</text>
+<text x="720.0" y="360" font-size="13" font-weight="700" text-anchor="middle">200</text>
+<line x1="90" y1="340" x2="720" y2="340" stroke="#5D6B69" stroke-width="2"/>
+<line x1="90" y1="340" x2="90" y2="60" stroke="#5D6B69" stroke-width="2"/>
+<rect x="342.0" y="60" width="315.0" height="280" fill="#E1E6F0" opacity="0.6"/>
+<text x="499.5" y="326" font-size="13" font-weight="700" text-anchor="middle" fill="#5B6B8C">autoregulatory range, about 80 to 180 mm Hg</text>
+<polyline fill="none" stroke="#5B6B8C" stroke-width="2.5" stroke-dasharray="8 6" points="216.0,340.0 442.8,60.0"/>
+<polyline fill="none" stroke="#D55E00" stroke-width="3.5" points="216.0,340.0 247.5,302.7 279.0,237.3 310.5,162.7 342.0,121.6 373.5,114.1 405.0,110.4 468.0,106.7 531.0,102.9 594.0,99.2 657.0,93.6 688.5,76.8 710.5,60.0"/>
+<text x="440" y="84" font-size="13" font-weight="700" fill="#5B6B8C">without autoregulation</text>
+<text x="468.0" y="130.7" font-size="13" font-weight="700" fill="#D55E00">with autoregulation</text>
+<circle cx="279.0" cy="237.3" r="6" fill="#1F2A28"/>
+<text x="289.0" y="229.3" font-size="15" font-weight="800">A</text>
+<circle cx="405.0" cy="110.4" r="6" fill="#1F2A28"/>
+<text x="415.0" y="102.4" font-size="15" font-weight="800">B</text>
+<circle cx="688.5" cy="76.8" r="6" fill="#1F2A28"/>
+<text x="698.5" y="68.8" font-size="15" font-weight="800">C</text>
+<text x="405" y="386" font-size="13.5" font-weight="700" text-anchor="middle">Mean arterial pressure (mm Hg)</text>
+<text x="28" y="200" font-size="13.5" font-weight="700" text-anchor="middle" transform="rotate(-90 28 200)">GFR (mL/min)</text>
+</g></svg>

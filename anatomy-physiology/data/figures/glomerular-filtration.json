@@ -1,0 +1,54 @@
+{
+  "os-25-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.16",
+      "section": "25.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/6cf8d111e51f220202111eb8555736eea44a87f0",
+      "page": "25-5-physiology-of-urine-formation"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/6cf8d111e51f220202111eb8555736eea44a87f0",
+    "alt": "A close-up of a renal corpuscle: looping capillaries inside a cup-shaped capsule, with the tubule leaving at the lower right. Three arrows cross the capillary wall. Blood hydrostatic pressure, 55 mm Hg, points out of the capillary into the capsule. Blood colloid osmotic pressure, 30 mm Hg, and capsular hydrostatic pressure, 15 mm Hg, point back into the capillary. They sum to a net outward pressure of 10 mm Hg, shown by an arrow pointing into the tubule.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.16",
+    "labels": []
+  },
+  "os-25-11": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.11",
+      "section": "25.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1c093fadb62536b2a70e180aa6639b4c9d04ad1a",
+      "page": "25-4-microscopic-anatomy-of-the-kidney"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/1c093fadb62536b2a70e180aa6639b4c9d04ad1a",
+    "alt": "(a) A drawing of glomerular capillaries seen from the capsular space. Large cell bodies send out branches that split into many fine, finger-like processes, and the processes from neighboring cells interlock like the teeth of a zipper, leaving thin slits between them. (b) One capillary with three of these cells wrapped around it; the cell bodies, the capillary and the slits between the interlocking processes are labeled.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.11",
+    "labels": []
+  },
+  "os-25-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.12",
+      "section": "25.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/dce633c8201980abb222cce08ce600a0a32f237c",
+      "page": "25-4-microscopic-anatomy-of-the-kidney"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/dce633c8201980abb222cce08ce600a0a32f237c",
+    "alt": "A capillary cut open and drawn in three dimensions. Its wall is a single layer of endothelial cells joined edge to edge, and every cell is dotted with small round pores that pass right through it. A continuous basement membrane wraps the outside of the tube.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.12",
+    "labels": []
+  },
+  "gfr-autoregulation": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 760,
+    "h": 420,
+    "alt": "Graph of glomerular filtration rate (0 to 150 mL/min) against mean arterial pressure (0 to 200 mm Hg). A solid curve, with autoregulation, is zero below about 40 mm Hg, climbs steeply to about 117 at 80 mm Hg, stays almost flat near 125 from 80 to about 180 mm Hg (a shaded band), and rises again above 180. A dashed line, without autoregulation, rises steadily from zero at 40 mm Hg through the same normal point. Point A is on the curve at 60 mm Hg, point B on the plateau at 100 mm Hg, and point C at 190 mm Hg.",
+    "labels": []
+  }
+}

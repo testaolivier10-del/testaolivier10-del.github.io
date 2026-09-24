@@ -1,0 +1,45 @@
+{
+  "topic": "renal-function-urine",
+  "hook": "<p>Mr. Novak, 63, has type 2 diabetes and high blood pressure, and feels perfectly well. His routine blood test shows a plasma creatinine of 1.6 mg/dL, up from 1.0 three years ago, and his urine shows a trace of albumin. It looks like a small change. It means he has lost roughly a third of his filtering capacity. To read numbers like these, you need renal clearance, what normal urine contains and what the kidneys do when they start to fail.</p>",
+  "prereq": [
+    {
+      "q": "A healthy adult's glomerular filtration rate is about:",
+      "options": ["12.5 mL/min", "125 mL/min", "1,250 mL/min"],
+      "correct": 1,
+      "why": "GFR is about 125 mL/min, which adds up to about 180 L of filtrate a day.",
+      "review": "glomerular-filtration"
+    },
+    {
+      "q": "For any substance, the amount excreted equals:",
+      "options": ["Filtered + reabsorbed − secreted", "Filtered − reabsorbed + secreted", "Filtered only"],
+      "correct": 1,
+      "why": "Reabsorption returns some of the filtered load to the blood; secretion adds more to the tubular fluid.",
+      "review": "tubular-transport"
+    },
+    {
+      "q": "What does ADH do in the collecting duct?",
+      "options": ["Inserts aquaporins so water can leave the duct", "Adds sodium channels to principal cells", "Pumps salt into the medulla"],
+      "correct": 0,
+      "why": "ADH acts through cAMP to put aquaporins into the apical membranes of principal cells. Aldosterone adds sodium channels; the thick ascending limb pumps salt.",
+      "review": "urine-concentration"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Muscle breaks down a small share of its creatine phosphate into creatinine at a steady rate.", "effect": "Creatinine enters the plasma at a constant rate, set mainly by muscle mass." },
+    { "cause": "The glomeruli filter creatinine freely, and the tubule reabsorbs none of it.", "effect": "Its excretion rate is roughly GFR × plasma creatinine." },
+    { "cause": "Chronic kidney disease destroys nephrons and lowers GFR.", "effect": "Less creatinine is filtered each minute, so it builds up in the plasma." },
+    { "cause": "Plasma creatinine keeps rising until GFR × plasma creatinine again equals production.", "effect": "At the new steady state, half the GFR gives double the plasma creatinine, which is how labs estimate GFR." },
+    { "cause": "As GFR falls further, the kidneys also fail to excrete potassium, acid and water and to make EPO and calcitriol.", "effect": "Hyperkalemia, acidosis, fluid overload, anemia, bone disease and uremia follow, until dialysis or a transplant takes over." }
+  ],
+  "misconception": {
+    "wrong": "A creatinine that is only a little above normal means the kidneys are only a little damaged.",
+    "right": "Plasma creatinine and GFR are inversely related: halving GFR doubles creatinine. Going from 1.0 to 1.5 mg/dL means GFR has fallen by about a third, and going from 1.0 to 2.0 means half the filtering capacity is gone. Early kidney disease often hides behind a creatinine that still looks nearly normal, which is why labs report an estimated GFR and why doctors check urine for albumin."
+  },
+  "check": ["anp-renal-function-urine-2", "anp-renal-function-urine-4", "anp-renal-function-urine-5", "anp-renal-function-urine-7", "anp-renal-function-urine-10", "anp-renal-function-urine-16", "anp-renal-function-urine-20"],
+  "summary": "<p>Urine is about 95% water, with urea, creatinine, uric acid, ions and the pigment urochrome; normal urine has no glucose, blood or bacteria and almost no protein. Specific gravity (about 1.005 to 1.030) tracks concentration, and a urinalysis adds a dipstick and a microscope. Oliguria is under about 400 mL a day; anuria is almost none. Renal clearance, C = (U × V) ÷ P, is the volume of plasma cleared of a substance per minute. Inulin clearance equals GFR; creatinine clearance estimates it, running a little high because creatinine is also secreted. Clearance below GFR means net reabsorption, above it net secretion. Plasma creatinine rises as GFR falls: half the GFR, double the creatinine. Pressure natriuresis links higher arterial pressure to more sodium and water in urine. ADH keeps water, aldosterone keeps sodium and loses potassium, ANP loses sodium and water, and PTH keeps calcium and loses phosphate; endothelin and sympathetic nerves constrict renal arterioles, and prostaglandins widen them. The kidney itself makes renin, EPO and calcitriol. Acute kidney injury develops over hours to days, chronic kidney disease over more than 3 months; failure brings fluid overload, hyperkalemia, acidosis, anemia, bone disease and uremia, treated by dialysis or transplant. Common disorders are urinary tract infections, kidney stones and incontinence.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" }
+  ]
+}

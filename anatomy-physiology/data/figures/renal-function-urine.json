@@ -1,0 +1,20 @@
+{
+  "os-25-22": {
+    "file": "figures/openstax/os-25-22.jpg",
+    "w": 2281,
+    "h": 950,
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.22",
+      "section": "25.9",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/030cfb97f9d194e1b2cbc04ae734944cbe73a1f1",
+      "page": "25-9-regulation-of-fluid-volume-and-composition"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/030cfb97f9d194e1b2cbc04ae734944cbe73a1f1",
+    "alt": "Ball-and-stick models of three molecules, with nitrogen atoms in blue, carbon in black, oxygen in red and hydrogen in white. Left, labeled ammonia: one nitrogen bonded to three hydrogens. Middle, labeled urea: a central carbon double-bonded to an oxygen and bonded to two nitrogens, each carrying two hydrogens. Right, labeled uric acid, much larger: two fused rings of carbon and nitrogen atoms, a six-membered ring and a five-membered ring, with three oxygens and four hydrogens attached around the edge.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.22",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "medullary-gradient": {
+    "def": "The steady rise in osmolarity of the interstitial fluid of the renal medulla, from about 300 mOsm/L at the cortex to about 1,200 mOsm/L at the papilla. NaCl builds most of it in the outer medulla, and urea about half of it in the inner medulla.",
+    "roots": [["medull-", "marrow, inner part"]],
+    "say": ""
+  },
+  "countercurrent-multiplier": {
+    "def": "The nephron loop's way of building the medullary gradient. Fluid flows in opposite directions in its two limbs; the thick ascending limb pumps salt out without water and the descending limb loses water, so a small difference at each level is multiplied into a large one from top to bottom.",
+    "roots": [["counter-", "against"], ["current", "flow"]],
+    "say": ""
+  },
+  "countercurrent-exchanger": {
+    "def": "The passive exchange of solute and water in the hairpin vasa recta. Blood gains salt and urea and loses water on the way down, then reverses on the way up, so it carries off reabsorbed water without washing out the medullary gradient.",
+    "roots": [["vasa", "vessels"], ["recta", "straight"]],
+    "say": "VAY-suh REK-tuh"
+  },
+  "urea-recycling": {
+    "def": "The passage of urea out of the inner medullary collecting duct, where ADH adds urea carriers, into the interstitial fluid of the inner medulla, where it supplies about half the osmolarity. Some re-enters the nephron loop and circulates again.",
+    "roots": [["ur-", "urine"]],
+    "say": ""
+  },
+  "adh-collecting-duct": {
+    "def": "ADH binds its receptor protein on principal cells, raises cAMP and activates protein kinase A, which moves stored aquaporins into the apical membrane. Water then leaves the collecting duct by osmosis into the salty medulla; without ADH the duct is nearly waterproof.",
+    "roots": [["anti-", "against"], ["diuresis", "passing urine"], ["aqua-", "water"], ["por-", "pore, passage"]],
+    "say": ""
+  },
+  "diuretics": {
+    "def": "Substances that increase urine output, most by blocking sodium reabsorption. A loop diuretic blocks NKCC2 in the thick ascending limb and is the strongest; a thiazide diuretic blocks the sodium–chloride symporter of the distal tubule; an osmotic diuretic such as mannitol is filtered but not reabsorbed and holds water in the tubule.",
+    "roots": [["dia-", "through"], ["ur-", "urine"], ["-etic", "pertaining to"]],
+    "say": "dy-yoo-RET-iks"
+  }
+}

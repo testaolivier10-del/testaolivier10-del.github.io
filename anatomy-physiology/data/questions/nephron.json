@@ -1,0 +1,579 @@
+[
+  {
+    "id": "anp-nephron-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-10",
+    "pin": "glomerular-capsule",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Glomerulus",
+      "Glomerular capsule",
+      "Proximal convoluted tubule",
+      "Afferent arteriole"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The glomerular capsule (Bowman's capsule) is the hollow cup around the glomerulus, the swollen start of the tubule. Filtered fluid collects in the space inside it.",
+      "options": [
+        "The glomerulus is the tuft of capillaries inside the cup, not the cup itself.",
+        "Correct. The cup wrapped around the capillary tuft is the glomerular capsule.",
+        "The proximal convoluted tubule is the coiled tube that leaves the capsule at the tubular pole.",
+        "The afferent arteriole is the blood vessel that carries blood into the capillary tuft."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-10",
+    "pin": "efferent-arteriole",
+    "q": "Name the pinned vessel.",
+    "options": [
+      "Afferent arteriole",
+      "Venule",
+      "Efferent arteriole",
+      "Cortical radiate artery"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The efferent arteriole carries blood out of the glomerulus and on into the peritubular capillaries. It is an arteriole, not a venule.",
+      "options": [
+        "The afferent arteriole carries blood into the glomerulus from the cortical radiate artery.",
+        "A venule drains the peritubular capillaries later. The vessel leaving the glomerulus is still an arteriole.",
+        "Correct. The vessel leaving the glomerulus and feeding the peritubular capillaries is the efferent arteriole.",
+        "The cortical radiate artery is the larger vessel that the afferent arteriole branches from."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-10",
+    "pin": "loop-of-the-nephron",
+    "q": "Name the pinned part of the tubule.",
+    "options": [
+      "Nephron loop",
+      "Collecting duct",
+      "Distal convoluted tubule",
+      "Vasa recta"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The nephron loop (loop of Henle) is the hairpin part of the tubule that dips toward the medulla and climbs back, with a descending and an ascending limb.",
+      "options": [
+        "Correct. The hairpin segment of the tubule is the nephron loop.",
+        "The collecting duct is the wide, straight duct that many nephrons drain into, not a hairpin.",
+        "The distal convoluted tubule is the coiled segment back in the cortex, after the loop.",
+        "The vasa recta are blood vessels that run beside long loops. The pin marks the tubule itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-9",
+    "pin": "peritubular-capillaries",
+    "q": "Name the pinned vessels.",
+    "options": [
+      "Glomerulus",
+      "Arcuate veins",
+      "Vasa recta of the medulla",
+      "Peritubular capillaries"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Peritubular capillaries (peri- = around) are the mesh of low-pressure capillaries wrapped around the tubules in the cortex. They are fed by the efferent arteriole and take up what the tubule returns.",
+      "options": [
+        "The glomerulus is the first capillary bed, a compact tuft inside the capsule, not a mesh around the tubule.",
+        "Arcuate veins run along the boundary between cortex and medulla, far larger than these capillaries.",
+        "The vasa recta are long, straight hairpin capillaries in the medulla. This mesh wraps the coiled tubules.",
+        "Correct. The capillary mesh around the tubules is the peritubular capillaries."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "figure": "os-25-14",
+    "pin": "macula-densa",
+    "q": "In the inset, name the pinned group of crowded cells in the tubule wall.",
+    "options": [
+      "Juxtaglomerular cells",
+      "Podocytes",
+      "Macula densa",
+      "Mesangial cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The macula densa (dense spot) is a patch of tall, crowded cells in the wall of the tubule where it touches its own arterioles. They sense how much sodium chloride is in the fluid flowing past.",
+      "options": [
+        "Juxtaglomerular cells sit in the wall of the afferent arteriole, not the tubule, and release renin.",
+        "Podocytes wrap the glomerular capillaries inside the capsule.",
+        "Correct. These tubule cells are the macula densa.",
+        "Mesangial cells lie between the arterioles and inside the glomerulus, not in the tubule wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "figure": "os-25-14",
+    "pin": "juxtaglomerular-cells",
+    "q": "In the inset, name the pinned cells, which release renin.",
+    "options": [
+      "Juxtaglomerular cells",
+      "Macula densa cells of the tubule",
+      "Hepatocytes",
+      "Chromaffin cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Juxtaglomerular (granular) cells are modified smooth muscle cells in the wall of the afferent arteriole. Their granules store renin, which they release into the blood.",
+      "options": [
+        "Correct. The renin-releasing cells in the arteriole wall are the juxtaglomerular cells.",
+        "The macula densa is in the tubule wall. It signals to these cells but does not release renin itself.",
+        "Hepatocytes are liver cells. They release angiotensinogen, the protein renin acts on.",
+        "Chromaffin cells are in the adrenal medulla and release epinephrine."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the parts of the nephron that filtered fluid flows through, starting where it is first collected.",
+    "options": [
+      "Glomerular capsule",
+      "Proximal convoluted tubule",
+      "Descending limb of the nephron loop",
+      "Ascending limb of the nephron loop",
+      "Distal convoluted tubule",
+      "Collecting duct"
+    ],
+    "why": {
+      "correct": "Fluid filtered from the glomerulus collects in the capsular space of the glomerular capsule, flows into the proximal convoluted tubule, down the descending limb and up the ascending limb of the nephron loop, through the distal convoluted tubule, and into a collecting duct."
+    }
+  },
+  {
+    "id": "anp-nephron-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the vessels blood passes through, from a cortical radiate artery to a cortical radiate vein, in a cortical nephron.",
+    "options": [
+      "Cortical radiate artery",
+      "Afferent arteriole",
+      "Glomerulus",
+      "Efferent arteriole",
+      "Peritubular capillaries",
+      "Cortical radiate vein"
+    ],
+    "why": {
+      "correct": "The afferent arteriole branches off the cortical radiate artery and feeds the glomerulus. The efferent arteriole carries blood out to the peritubular capillaries, which drain through venules into the cortical radiate vein."
+    }
+  },
+  {
+    "id": "anp-nephron-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "blood leaving the glomerulus enters a venule",
+    "q": "Fill the gap: afferent arteriole → glomerulus → ____ → peritubular capillaries.",
+    "options": [
+      "Venule",
+      "Efferent arteriole",
+      "Vasa recta",
+      "Cortical radiate vein"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Blood leaves the glomerulus through the efferent arteriole, which then feeds the second capillary bed, the peritubular capillaries.",
+      "options": [
+        "A venule would drain a capillary bed toward the veins. Here blood still has a second capillary bed to cross, so the vessel between them is an arteriole.",
+        "Correct. The efferent arteriole links the two capillary beds.",
+        "The vasa recta are a second capillary bed like the peritubular capillaries, fed by the efferent arteriole; they do not come between the glomerulus and the peritubular capillaries.",
+        "Cortical radiate veins are much larger vessels that collect blood after both capillary beds."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-10",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student listed the path of filtered fluid through a nephron. One step is wrong. Which one?",
+    "options": [
+      "Capsular space",
+      "Proximal convoluted tubule",
+      "Vasa recta",
+      "Ascending limb of the nephron loop",
+      "Distal convoluted tubule",
+      "Collecting duct"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The vasa recta are blood vessels running beside long loops, not part of the tubule. After the proximal convoluted tubule, fluid enters the descending limb of the nephron loop.",
+      "options": [
+        "Correct step. Filtered fluid first collects in the capsular space.",
+        "Correct step. It then flows into the proximal convoluted tubule.",
+        "This is the wrong step. The vasa recta carry blood; the descending limb of the nephron loop belongs here.",
+        "Correct step. Fluid climbs back toward the cortex in the ascending limb.",
+        "Correct step. The distal convoluted tubule follows the loop, back in the cortex.",
+        "Correct step. The distal tubule drains into a collecting duct."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Under the microscope, one part of the tubule has cuboidal cells with a dense brush border of microvilli and very many mitochondria. What does this structure suggest about its job?",
+    "options": [
+      "It stores urine between emptyings",
+      "It lets water through passively, without spending any ATP at all",
+      "It releases renin into the blood",
+      "It moves large amounts of material back into the blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "This is the proximal convoluted tubule. Microvilli multiply the surface area for transport, and mitochondria supply the ATP that its pumps use. It takes back most of the filtered water and solutes.",
+      "options": [
+        "Urine is stored in the bladder, lined by transitional epithelium. No tubule segment stores urine.",
+        "Many mitochondria mean heavy ATP use. A segment built only to let water through would not need them.",
+        "Renin comes from juxtaglomerular cells in the afferent arteriole wall, not from tubule cells.",
+        "Correct. A large surface and plenty of ATP point to heavy transport, which is the proximal tubule's job."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-12",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which are parts of the renal corpuscle? Select all that apply.",
+    "options": [
+      "Glomerulus",
+      "Podocytes",
+      "Capsular space",
+      "Macula densa",
+      "Proximal convoluted tubule",
+      "Parietal layer of the glomerular capsule"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "why": {
+      "correct": "The renal corpuscle is the glomerulus plus the glomerular capsule. The capsule has a parietal layer, a visceral layer of podocytes and the capsular space between them.",
+      "options": [
+        "Correct. The glomerulus is the capillary tuft of the corpuscle.",
+        "Correct. Podocytes form the capsule's visceral layer on the capillaries.",
+        "Correct. The capsular space collects the filtered fluid.",
+        "The macula densa is in the wall of the tubule where it returns to the corpuscle. It is part of the juxtaglomerular apparatus, not the corpuscle.",
+        "The proximal convoluted tubule starts where the corpuscle ends, at the tubular pole.",
+        "Correct. The parietal layer is the outer wall of the capsule."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which feature sets a juxtamedullary nephron apart from a cortical nephron?",
+    "options": [
+      "It has no proximal convoluted tubule at all, only a loop",
+      "Its renal corpuscle lies in the medulla",
+      "It drains straight into the renal pelvis",
+      "A long loop reaching deep into the medulla"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Juxtamedullary nephrons have their corpuscles in the inner cortex, next to the medulla, and long loops that plunge deep into the medulla, served by the vasa recta.",
+      "options": [
+        "Every nephron has a proximal convoluted tubule.",
+        "All renal corpuscles are in the cortex. Juxtamedullary ones sit in the inner cortex, next to the medulla.",
+        "Both kinds drain into collecting ducts, which carry urine to the papilla.",
+        "Correct. The long loop is what defines a juxtamedullary nephron."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The kangaroo rat lives in the desert without drinking water and makes urine several times more concentrated than human urine. Which feature would you expect its kidneys to have?",
+    "options": [
+      "No renal pyramids",
+      "Mostly cortical nephrons with short loops and a thin medulla",
+      "Glomeruli with no efferent arterioles",
+      "Very long nephron loops reaching deep into the medulla"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Long loops, like those of juxtamedullary nephrons, are what let a kidney make urine more concentrated than blood. Desert animals that must save water have very long loops.",
+      "options": [
+        "The pyramids hold the loops and collecting ducts that concentrate urine. Losing them would make concentrating harder, not easier.",
+        "Short loops contribute little to concentrating urine. An animal that saves water this well needs long ones.",
+        "Every glomerulus drains through an efferent arteriole; without one, blood could not leave the glomerulus.",
+        "Correct. Very long loops go with very concentrated urine."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "Why is blood pressure in the glomerular capillaries much higher than in capillaries elsewhere, such as in your skin?",
+    "options": [
+      "The glomerulus is close to the heart",
+      "The glomerular capillaries have thicker walls than other capillaries",
+      "An arteriole on the way out holds pressure back in the glomerulus",
+      "The podocytes pump blood through the capillaries"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Most capillary beds drain into venules, which offer little resistance. The glomerulus drains into the efferent arteriole, a resistance vessel, so pressure backs up in the glomerular capillaries.",
+      "options": [
+        "The kidneys are no closer to the heart than many other organs. The layout of their vessels, not distance, sets the pressure.",
+        "Glomerular capillaries are thin, leaky fenestrated capillaries. Wall thickness does not raise the pressure inside.",
+        "Correct. Resistance downstream, in the efferent arteriole, keeps glomerular pressure high.",
+        "Podocytes wrap the capillaries; they do not pump. The heart supplies the pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A patient bleeds heavily, and pressure in her afferent arterioles falls. Which cells respond directly to this fall by releasing renin?",
+    "options": [
+      "Macula densa cells in the tubule wall",
+      "Podocytes on the glomerular capillaries",
+      "Cells of the proximal convoluted tubule next to the capsule",
+      "Juxtaglomerular cells in the afferent arteriole wall"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Juxtaglomerular cells are modified smooth muscle cells in the afferent arteriole wall. They are stretch-sensitive: when less pressure stretches the arteriole, they release more renin. Sympathetic stimulation after the bleed adds to this.",
+      "options": [
+        "The macula densa senses sodium chloride in the tubule fluid, not arteriole pressure, and it signals the renin-releasing cells rather than releasing renin itself.",
+        "Podocytes form part of the filter around the capillaries. They do not release renin.",
+        "Proximal tubule cells take back filtered fluid. They do not release renin.",
+        "Correct. The juxtaglomerular cells sense the lower stretch and release renin."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which structure receives fluid from many nephrons?",
+    "options": [
+      "Distal convoluted tubule",
+      "Collecting duct",
+      "Proximal convoluted tubule",
+      "Glomerular capsule"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each collecting duct receives fluid from the distal tubules of many nephrons and carries it through the medulla to the papilla.",
+      "options": [
+        "Each distal convoluted tubule belongs to one nephron.",
+        "Correct. Collecting ducts are shared by many nephrons.",
+        "Each proximal convoluted tubule belongs to one nephron and leads from its own capsule.",
+        "Each glomerular capsule surrounds one glomerulus and belongs to one nephron."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is a podocyte?",
+    "options": [
+      "A cell of the capsule's visceral layer that wraps the glomerular capillaries",
+      "A smooth muscle cell in the afferent arteriole wall that stores and releases renin",
+      "A cell of the macula densa that senses sodium chloride",
+      "A flat cell of the capsule's outer wall"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Podocytes (pod- = foot) form the visceral layer of the glomerular capsule. Their branches wrap each glomerular capillary and interlock, leaving narrow gaps that are part of the filter.",
+      "options": [
+        "Correct. Podocytes wrap the capillaries as the capsule's visceral layer.",
+        "That describes a juxtaglomerular cell.",
+        "That describes a macula densa cell.",
+        "The outer wall is the parietal layer, a simple squamous epithelium. Podocytes line the inner, visceral layer."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-19",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 1,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "A tiny clot completely blocks the afferent arteriole of one nephron. Predict the change in each variable for that nephron, compared with before the clot.",
+    "variables": [
+      {
+        "name": "Blood flow into its glomerulus",
+        "answer": "down",
+        "why": "The afferent arteriole is the only way blood enters the glomerulus, so blocking it stops the flow."
+      },
+      {
+        "name": "Fluid entering its capsular space",
+        "answer": "down",
+        "why": "With no blood and no pressure in the glomerulus, nothing is pushed into the capsule."
+      },
+      {
+        "name": "Blood flow in the peritubular capillaries fed by its efferent arteriole",
+        "answer": "down",
+        "why": "The efferent arteriole receives its blood from the glomerulus, so the second capillary bed downstream loses its supply too."
+      },
+      {
+        "name": "Blood flow into the glomerulus of a neighboring nephron",
+        "answer": "none",
+        "why": "Each nephron has its own afferent arteriole from the cortical radiate artery, so a clot in one does not block the others."
+      }
+    ],
+    "why": {
+      "correct": "The two capillary beds of a nephron are in series: afferent arteriole, glomerulus, efferent arteriole, peritubular capillaries. Blocking the first vessel starves everything downstream in that nephron but leaves its neighbors untouched."
+    }
+  },
+  {
+    "id": "anp-nephron-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What do mesangial cells inside the glomerulus do?",
+    "options": [
+      "They support the capillary loops, can contract, and engulf trapped debris",
+      "They release renin into the blood",
+      "They sense sodium chloride in the tubule fluid",
+      "They line the capsular space"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Mesangial cells sit between the glomerular capillary loops. They hold the loops in place, can contract to change the filtering surface, and engulf debris trapped by the filter. A few more lie outside the glomerulus in the juxtaglomerular apparatus.",
+      "options": [
+        "Correct. Support, contraction and clean-up are their jobs.",
+        "Renin comes from juxtaglomerular cells in the afferent arteriole wall.",
+        "Sensing sodium chloride is the job of the macula densa in the tubule wall.",
+        "The capsular space is lined by the parietal layer and the podocytes of the capsule."
+      ]
+    }
+  },
+  {
+    "id": "anp-nephron-21",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A person loses half of their nephrons over several years. Blood tests stay nearly normal for a long time. Which explanation fits what you know about nephrons?",
+    "options": [
+      "New nephrons grow to replace the lost ones",
+      "The surviving nephrons each filter and process more fluid",
+      "The collecting ducts take over filtering blood",
+      "The bladder begins to take back water and salt"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Nephrons are not replaced after birth. The remaining ones enlarge and each handles more fluid, so total kidney work falls less than the number of nephrons, until too few are left.",
+      "options": [
+        "You are born with all the nephrons you will have; lost ones are not replaced.",
+        "Correct. Surviving nephrons take on extra work, which hides the loss for a time.",
+        "Collecting ducts have no glomeruli, so they cannot filter blood.",
+        "The bladder's transitional epithelium seals urine in; it does not take back water and salt."
+      ]
+    }
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "os-24-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.23",
+      "section": "24.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e6fe01f77f06b97bfca8f51c40a890cd3049c5d0",
+      "page": "24-6-energy-and-heat-balance"
+    },
+    "alt": "A loop diagram of temperature control around a central label reading temperature homeostasis, 36.5 to 37.5 degrees Celsius. Upper half: body temperature is low (a snowflake picture); temperature-sensing neurons in the hypothalamus (drawn as a section of the brain) stimulate heat-producing mechanisms; a box shows narrowed surface arteries in the skin reducing heat loss, a shivering muscle, and the thyroid gland stimulating cells to make more heat; body temperature then rises. Lower half: body temperature is high (a sun picture); the hypothalamus starts heat-releasing mechanisms; a box shows widened surface arteries flushing the skin, a sweat gland in the skin starting to sweat, and the thyroid gland reducing heat production; body temperature then falls.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.23",
+    "labels": [],
+    "w": 1100,
+    "h": 1853,
+    "ext": "jpg"
+  },
+  "os-24-24": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.24",
+      "section": "24.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e155a2fa9fe2cd07f00e7fffd869fe9a5dc86394",
+      "page": "24-7-nutrition-and-diet"
+    },
+    "alt": "A dinner plate divided into four sections with a fork to its left and a small circle, like a cup, to its upper right. Vegetables fill the largest section at the lower left, fruits the upper left, grains the upper right and protein the lower right. The cup is labeled dairy. Below the plate is the web address ChooseMyPlate.gov.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.24",
+    "labels": [],
+    "w": 1092,
+    "h": 871,
+    "ext": "jpg"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "urine-composition": {
+    "def": "Urine is about 95% water plus urea, creatinine, uric acid, ions and the yellow pigment urochrome; its specific gravity (density compared with water) is usually 1.005 to 1.030. A urinalysis examines its appearance, a dipstick and a microscope sample; oliguria is under about 400 mL a day and anuria almost none.",
+    "roots": [["olig-", "few, little"], ["an-", "without"], ["-uria", "condition of the urine"], ["chrom-", "color"]],
+    "say": "yoor-in-AL-ih-sis"
+  },
+  "renal-clearance": {
+    "def": "The volume of plasma the kidneys completely clear of a substance each minute: C = (U × V) ÷ P. Inulin clearance equals GFR; creatinine, made steadily from creatine phosphate in muscle, gives a creatinine clearance slightly above GFR and is used to estimate it.",
+    "roots": [["ren-", "kidney"]],
+    "say": "kree-AT-ih-neen"
+  },
+  "pressure-natriuresis": {
+    "def": "The kidney's direct response to arterial pressure: a rise in pressure makes the proximal tubule reabsorb less sodium, so more sodium and water (pressure diuresis) are excreted and blood volume and pressure fall, without any hormone.",
+    "roots": [["natri-", "sodium"], ["-uresis", "passing in urine"]],
+    "say": "nay-tree-yoo-REE-sis"
+  },
+  "kidney-hormones-summary": {
+    "def": "The signals that direct the kidney: ADH keeps water, aldosterone keeps sodium and loses potassium, ANP loses sodium and water, and PTH keeps calcium and loses phosphate. Angiotensin II, sympathetic nerves and endothelin, a vasoconstrictor peptide from endothelial cells, narrow renal arterioles; the kidney itself makes renin, EPO and calcitriol.",
+    "roots": [["endo-", "within"], ["thel-", "lining"]],
+    "say": "en-doh-THEE-lin"
+  },
+  "kidney-failure": {
+    "def": "Loss of the kidneys' ability to keep the blood steady. Acute kidney injury develops over hours to days; chronic kidney disease lasts more than 3 months, with stage 5 (GFR below 15) being kidney failure. Retained wastes cause uremia, and dialysis replaces filtration by diffusion across a semipermeable membrane.",
+    "roots": [["ur-", "urine"], ["-emia", "blood condition"], ["dia-", "through"], ["lysis", "loosening"]],
+    "say": "dy-AL-ih-sis"
+  },
+  "urinary-disorders": {
+    "def": "The most common urinary problems: urinary tract infection (UTI), usually gut bacteria climbing the urethra; kidney stones (renal calculi), crystals of concentrated solute, mostly calcium oxalate; and incontinence, involuntary leakage of urine, sorted into stress, urge, overflow and functional types.",
+    "roots": [["calculus", "pebble"], ["in-", "not"], ["contin-", "to hold together"], ["cyst-", "bladder"], ["-itis", "inflammation"]],
+    "say": ""
+  }
+}
