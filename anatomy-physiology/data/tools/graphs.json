@@ -26827,8 +26827,8 @@
        ],
        "label": "calcium",
        "labelAt": [
-        16,
-        95
+        22,
+        72
        ],
        "anchor": "start"
       }
@@ -28199,7 +28199,7 @@
      "type": "shift",
      "level": "apply",
      "diff": 2,
-     "q": "How would the twitch of a fast fiber, such as one in a muscle that moves the eye, differ?",
+     "q": "How would the twitch of a fast fiber differ from this slow fiber’s twitch?",
      "options": [
       "Shorter: it peaks sooner and is over far sooner",
       "Longer: it rises more slowly but lasts longer",
@@ -28830,7 +28830,7 @@
       ]
      },
      "why": {
-      "correct": "Fast fibers make myosin that splits ATP faster, so their cross-bridges cycle faster, and they pump calcium back into the SR faster. An eye muscle’s twitch can be over in about 10 to 30 ms.",
+      "correct": "Fast fibers make myosin that splits ATP faster, so their cross-bridges cycle faster, and they pump calcium back into the SR faster. A fast fiber’s twitch can be over in about a third of the time.",
       "options": [
        "Right: faster myosin and faster pumps.",
        "That describes a slower fiber, not a fast one.",
@@ -30893,8 +30893,8 @@
        ],
        "label": "tension",
        "labelAt": [
-        560,
-        72
+        110,
+        45
        ],
        "anchor": "middle"
       }
@@ -32536,8 +32536,8 @@
        ],
        "label": "creatine phosphate and stored ATP",
        "labelAt": [
-        8,
-        90
+        30,
+        8
        ],
        "anchor": "start"
       },
@@ -33606,8 +33606,8 @@
         ],
         "label": "second stretch",
         "labelAt": [
-         78,
-         90
+         90,
+         62
         ],
         "anchor": "start"
        }
@@ -34926,7 +34926,8 @@
       },
       {
        "id": "female",
-       "cls": "hi",
+       "cls": "shape",
+       "dash": true,
        "curve": "smooth",
        "pts": [
         [
@@ -35375,7 +35376,8 @@
      "series": [
       {
        "id": "girls",
-       "cls": "hi",
+       "cls": "shape",
+       "dash": true,
        "curve": "smooth",
        "pts": [
         [
