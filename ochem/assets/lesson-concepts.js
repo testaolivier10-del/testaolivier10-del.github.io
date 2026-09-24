@@ -337,12 +337,14 @@
       6:['group-priority','alphabetization'],
       7:['group-priority'] } },
 
-    'naming-rings-unsaturation': { n:8, steps:{
-      2:['locant-rules','parent-chain'],
-      3:['locant-rules'],
-      4:['group-priority','locant-rules'],
-      6:['locant-rules'],
-      7:['parent-chain','group-priority'] } },
+    'naming-rings-unsaturation': { n:19, steps:{
+      1:['locant-rules'],
+      3:['locant-rules','alphabetization'],
+      7:['locant-rules'],
+      11:['locant-rules'],
+      13:['group-priority','locant-rules'],
+      17:['locant-rules'],
+      18:['parent-chain','group-priority'] } },
 
     'radical-halogenation': { n:8, steps:{
       2:['radical-chain'],
