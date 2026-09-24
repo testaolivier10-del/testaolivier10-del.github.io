@@ -82,14 +82,24 @@ function note(nodes, bonds, k, words, opts = {}) {
   return text(p.x + u.x * d, p.y + u.y * d + dy, words, { cls: 'fg-sm', size: 10.5, anchor });
 }
 
-const L = 40;                                   // bond length
+/* Bond length. Wide notes-only figures use 40; the figures the lesson also
+   shows use LN, and set it at the top of build(). */
+let L = 40;
+const LN = 36;
+const DX = () => L * 0.865;                     // horizontal step of a zigzag bond
+const DY = () => L * 0.5;                       // vertical step of a zigzag bond
 const up = (p, f = 1) => P(p.x, p.y - L * f);
 const down = (p, f = 1) => P(p.x, p.y + L * f);
 const off = (p, dx, dy) => P(p.x + dx, p.y + dy);
+const diag = (p, sx, sy) => P(p.x + sx * DX(), p.y + sy * DY());
+
+/* Layout for figures the lesson shows: 340 wide, one full-width panel per
+   row, so a 420px phone never scrolls them sideways. */
+const W = 340, CX = 170, PX = 10, PW = 320;
 
 /* A straight chain as nodes c1..cn plus its bonds. */
 function chain(x0, y0, n, prefix = 'c') {
-  const pts = zig(x0, y0, n, 34.6, 20);
+  const pts = zig(x0, y0, n, DX(), DY());
   const nodes = {};
   const bonds = [];
   pts.forEach((p, i) => { nodes[prefix + (i + 1)] = p; if (i) bonds.push([prefix + i, prefix + (i + 1)]); });
@@ -105,9 +115,8 @@ function verdict(cx, y, sub, name, good, why) {
   return s;
 }
 
-/* The figures that also appear in the lesson are drawn narrow (380 wide)
-   with their panels stacked, so a phone shows the whole comparison without
-   scrolling sideways. The notes-only figures keep the wide layout. */
+/* Figures the lesson also shows are drawn 340 wide with their panels
+   stacked (see W above). The notes-only figures keep the wide layout. */
 
 /* ------------------------------------------------------------ anatomy ---
    The opening paragraph splits 2-methylbutan-1-ol into prefix, root and
@@ -118,22 +127,23 @@ FIGURES.push({
   lessons: ['naming-parent-chain'],
   anchor: '<h3>The roots: ten words that do most of the work</h3>',
   alt: 'Skeletal structure of 2-methylbutan-1-ol with its four-carbon parent chain highlighted and numbered 1 to 4 from the carbon bearing OH, a methyl on carbon 2. Below it the name is split into four boxes: 2-methyl, the prefix, a methyl on C2; but, the root, four carbons; an, the bond type, all single; -1-ol, the suffix, OH on C1.',
-  viewBox: '0 0 380 385',
+  viewBox: `0 0 ${W} 385`,
   build() {
+    L = LN;
     let s = '';
-    s += tag(190, 24, 'the molecule');
-    s += panel(12, 34, 356, 150, { kind: 'hi' });
-    const m = chain(142, 130, 4);
+    s += tag(CX, 24, 'the molecule');
+    s += panel(PX, 34, PW, 150, { kind: 'hi' });
+    const m = chain(CX - DX(), 130, 4);
     const n = m.nodes;
-    n.o = { ...off(n.c1, -34.6, -20), lbl: 'HO' };
+    n.o = { ...diag(n.c1, -1, -1), lbl: 'HO' };
     n.me = up(n.c2);
     const bonds = [...m.bonds, ['c1', 'o'], ['c2', 'me']];
     s += skel(n, bonds, m.keys);
     s += nums(n, bonds, { c1: '1', c2: '2', c3: '3', c4: '4' });
     s += note(n, bonds, 'me', 'methyl', { dir: { x: 1, y: 0 }, d: 8 });
-    s += text(190, 172, 'parent chain: four carbons', { cls: 'fg-sm', size: 10.5 });
+    s += text(CX, 172, 'parent chain: four carbons', { cls: 'fg-sm', size: 10.5 });
 
-    s += tag(190, 214, 'the name, piece by piece');
+    s += tag(CX, 214, 'the name, piece by piece');
     const boxes = [
       { t: '2-methyl', a: 'prefix', b: 'methyl', c: 'on C2' },
       { t: 'but', a: 'root', b: 'four', c: 'carbons' },
@@ -141,16 +151,16 @@ FIGURES.push({
       { t: '-1-ol', a: 'suffix', b: 'OH', c: 'on C1' },
     ];
     boxes.forEach((bx, i) => {
-      const x = 12 + i * 91.33;
-      s += panel(x, 224, 82, 104, { kind: i === 1 ? 'good' : undefined });
-      s += text(x + 41, 250, bx.t, { cls: 'fg-lbl', size: 13 });
-      s += rule(x + 10, 262, x + 72, 262);
-      s += text(x + 41, 280, bx.a, { cls: 'fg-tag', size: 11 });
-      s += text(x + 41, 298, bx.b, { cls: 'fg-sm', size: 10.5 });
-      s += text(x + 41, 314, bx.c, { cls: 'fg-sm', size: 10.5 });
+      const x = PX + i * 82;
+      s += panel(x, 224, 74, 104, { kind: i === 1 ? 'good' : undefined });
+      s += text(x + 37, 250, bx.t, { cls: 'fg-lbl', size: 13 });
+      s += rule(x + 8, 262, x + 66, 262);
+      s += text(x + 37, 280, bx.a, { cls: 'fg-tag', size: 11 });
+      s += text(x + 37, 298, bx.b, { cls: 'fg-sm', size: 10.5 });
+      s += text(x + 37, 314, bx.c, { cls: 'fg-sm', size: 10.5 });
     });
-    s += text(190, 354, '2-methylbutan-1-ol', { cls: 'fg-tag-good', size: 11 });
-    s += text(190, 374, 'branch, chain length, bonds, group', { cls: 'fg-sm', size: 10.5 });
+    s += text(CX, 354, '2-methylbutan-1-ol', { cls: 'fg-tag-good', size: 11 });
+    s += text(CX, 374, 'branch, chain length, bonds, group', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Match each number in the name to a carbon in the drawing. The 2 in <i>2-methyl</i> points at C2, where the methyl hangs. The 1 in <i>-1-ol</i> points at C1, which carries the OH.',
@@ -164,7 +174,7 @@ function heptaneSkeleton(x0, y0) {
   const m = chain(x0, y0, 5, 'r');
   const n = m.nodes;
   n.b1 = up(n.r2);
-  n.b2 = off(n.b1, -34.6, -20);
+  n.b2 = diag(n.b1, -1, -1);
   n.b3 = up(n.b2);
   const bonds = [...m.bonds, ['r2', 'b1'], ['b1', 'b2'], ['b2', 'b3']];
   return { n, bonds };
@@ -175,30 +185,32 @@ FIGURES.push({
   lessons: ['naming-parent-chain'],
   anchor: 'That is Rule 1.',
   alt: 'One eight-carbon skeleton traced twice. Top: the five-carbon row across the page is highlighted and numbered 1 to 5, leaving a three-carbon branch on carbon 2; this gives the wrong name 2-propylpentane. Bottom: the seven-carbon path that runs down the branch and along the row is highlighted and numbered 1 to 7, leaving one methyl on carbon 4; this gives the correct name 4-methylheptane.',
-  viewBox: '0 0 380 600',
+  viewBox: `0 0 ${W} 580`,
   build() {
+    L = LN;
     let s = '';
-    s += tag(190, 24, 'the row across the page');
-    s += panel(12, 34, 356, 190, { kind: 'warn' });
+    const x0 = CX - 2 * DX();
+    s += tag(CX, 24, 'the row across the page');
+    s += panel(PX, 34, PW, 180, { kind: 'warn' });
     {
-      const { n, bonds } = heptaneSkeleton(120, 196);
+      const { n, bonds } = heptaneSkeleton(x0, 188);
       s += skel(n, bonds, ['r1', 'r2', 'r3', 'r4', 'r5']);
       s += nums(n, bonds, { r1: '1', r2: '2', r3: '3', r4: '4', r5: '5' });
-      s += note(n, bonds, 'b2', 'three-carbon branch', { dir: { x: 1, y: 0 }, d: 44 });
-      s += verdict(190, 246, 'five in the row, three left over', '2-propylpentane', false, 'wrong: a longer chain exists');
+      s += note(n, bonds, 'b2', 'three-carbon branch', { dir: { x: 1, y: 0 }, d: 40 });
+      s += verdict(CX, 236, 'five in the row, three left over', '2-propylpentane', false, 'wrong: a longer chain exists');
     }
-    s += tag(190, 320, 'the path that turns a corner');
-    s += panel(12, 330, 356, 190, { kind: 'hi' });
+    s += tag(CX, 310, 'the path that turns a corner');
+    s += panel(PX, 320, PW, 180, { kind: 'hi' });
     {
-      const { n, bonds } = heptaneSkeleton(120, 492);
+      const { n, bonds } = heptaneSkeleton(x0, 474);
       s += skel(n, bonds, ['b3', 'b2', 'b1', 'r2', 'r3', 'r4', 'r5']);
       s += nums(n, bonds, { b3: '1', b2: '2', b1: '3', r2: '4', r3: '5', r4: '6', r5: '7' });
       s += note(n, bonds, 'r1', 'methyl', { dir: { x: -1, y: 0.2 }, d: 10 });
-      s += verdict(190, 542, 'seven on the path, one left over', '4-methylheptane', true, 'right: nothing longer runs through it');
+      s += verdict(CX, 522, 'seven on the path, one left over', '4-methylheptane', true, 'right: nothing longer runs through it');
     }
     return s;
   },
-  caption: 'The same eight carbons in both panels. Follow the highlighted bonds: in the top panel they stop at five; in the bottom one they climb the branch and run along the row for seven. The carbon left over at the bottom is the methyl on C4.',
+  caption: 'The same eight carbons in both panels. Both traces are legal chains; the question is which is longer. In the top panel the highlighted bonds stop at five; in the bottom one they climb the branch and run along the row for seven. The carbon left over at the bottom is the methyl on C4.',
 });
 
 /* ---------------------------------------------------------------- N1 ---
@@ -212,6 +224,7 @@ FIGURES.push({
   alt: 'Three branched alkanes side by side. A six-carbon row with a methyl on the third carbon, where the row is the parent and the name is 3-methylhexane. A four-carbon row with an ethyl on the second carbon, where the longest path turns into the ethyl and the name is 3-methylpentane. A five-carbon row with an ethyl on the middle carbon, where every route is five carbons and the name is 3-ethylpentane.',
   viewBox: '0 0 720 330',
   build() {
+    L = 40;
     let s = '';
     const head = (x, kind, heading) => { s += panel(x, 34, 224, 200, { kind }); s += tag(x + 112, 24, heading); };
 
@@ -233,7 +246,7 @@ FIGURES.push({
       const m = chain(x + 60, 190, 4, 'r');
       const n = m.nodes;
       n.e1 = up(n.r2);
-      n.e2 = off(n.e1, 34.6, -20);
+      n.e2 = diag(n.e1, 1, -1);
       const bonds = [...m.bonds, ['r2', 'e1'], ['e1', 'e2']];
       s += skel(n, bonds, ['e2', 'e1', 'r2', 'r3', 'r4']);
       s += nums(n, bonds, { e2: '1', e1: '2', r2: '3', r3: '4', r4: '5' });
@@ -246,7 +259,7 @@ FIGURES.push({
       const m = chain(x + 43, 130, 5);
       const n = m.nodes;
       n.e1 = down(n.c3);
-      n.e2 = off(n.e1, 34.6, 20);
+      n.e2 = diag(n.e1, 1, 1);
       const bonds = [...m.bonds, ['c3', 'e1'], ['e1', 'e2']];
       s += skel(n, bonds, m.keys);
       s += nums(n, bonds, { c1: '1', c2: '2', c3: '3', c4: '4', c5: '5' });
@@ -266,8 +279,8 @@ function tieSkeleton(x0, y0) {
   const m = chain(x0, y0, 7, 'a');
   const n = m.nodes;
   n.i1 = down(n.a3);
-  n.m1 = off(n.i1, -34.6, 20);
-  n.m2 = off(n.i1, 34.6, 20);
+  n.m1 = diag(n.i1, -1, 1);
+  n.m2 = diag(n.i1, 1, 1);
   const bonds = [...m.bonds, ['a3', 'i1'], ['i1', 'm1'], ['i1', 'm2']];
   return { n, bonds };
 }
@@ -277,27 +290,29 @@ FIGURES.push({
   lessons: ['naming-parent-chain'],
   anchor: 'The second path is the parent',
   alt: 'One ten-carbon skeleton traced two ways, both seven carbons long. Top: the seven-carbon row, numbered 1 to 7, carries one three-carbon branch attached by its middle carbon at carbon 3; the name would be 3-isopropylheptane, marked as not chosen. Bottom: a seven-carbon path that starts at one end of that branch, numbered 1 to 7, carries a methyl on carbon 2 and an ethyl on carbon 3; the name is 3-ethyl-2-methylheptane, marked as the parent.',
-  viewBox: '0 0 380 555',
+  viewBox: `0 0 ${W} 545`,
   build() {
+    L = LN;
     let s = '';
-    s += tag(190, 24, 'seven carbons, one substituent');
-    s += panel(12, 34, 356, 170, { kind: 'warn' });
+    const x0 = CX - 3 * DX();
+    s += tag(CX, 24, 'seven carbons, one substituent');
+    s += panel(PX, 34, PW, 164, { kind: 'warn' });
     {
-      const { n, bonds } = tieSkeleton(86, 104);
+      const { n, bonds } = tieSkeleton(x0, 100);
       s += skel(n, bonds, ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7']);
       s += nums(n, bonds, { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5', a6: '6', a7: '7' });
-      s += text(190, 190, 'one branch, attached by its middle carbon', { cls: 'fg-sm', size: 10.5 });
-      s += verdict(190, 226, 'one substituent (isopropyl)', '3-isopropylheptane', false, 'not chosen');
+      s += text(CX, 186, 'one branch, attached by its middle carbon', { cls: 'fg-sm', size: 10.5 });
+      s += verdict(CX, 220, 'one substituent (isopropyl)', '3-isopropylheptane', false, 'not chosen');
     }
-    s += tag(190, 300, 'seven carbons, two substituents');
-    s += panel(12, 310, 356, 170, { kind: 'hi' });
+    s += tag(CX, 294, 'seven carbons, two substituents');
+    s += panel(PX, 304, PW, 164, { kind: 'hi' });
     {
-      const { n, bonds } = tieSkeleton(86, 380);
+      const { n, bonds } = tieSkeleton(x0, 370);
       s += skel(n, bonds, ['m1', 'i1', 'a3', 'a4', 'a5', 'a6', 'a7']);
       s += nums(n, bonds, { m1: '1', i1: '2', a3: '3', a4: '4', a5: '5', a6: '6', a7: '7' });
       s += note(n, bonds, 'm2', 'methyl', { dir: { x: 1, y: 0 }, d: 8 });
       s += note(n, bonds, 'a1', 'ethyl', { dir: { x: 0, y: -1 }, d: 12 });
-      s += verdict(190, 502, 'two substituents: ethyl and methyl', '3-ethyl-2-methylheptane', true, 'the parent');
+      s += verdict(CX, 490, 'two substituents: ethyl and methyl', '3-ethyl-2-methylheptane', true, 'the parent');
     }
     return s;
   },
@@ -312,13 +327,14 @@ FIGURES.push({
   lessons: ['naming-parent-chain'],
   anchor: 'That is Rule 2.',
   alt: 'The same 3-methylhexane skeleton numbered twice. Top, numbered from the left end: the methyl sits on carbon 3. Bottom, numbered from the right end: the methyl sits on carbon 4. The left numbering wins because 3 is lower than 4.',
-  viewBox: '0 0 380 495',
+  viewBox: `0 0 ${W} 485`,
   build() {
+    L = LN;
     let s = '';
     const one = (py, fromLeft) => {
-      s += tag(190, py - 10, fromLeft ? 'numbered from the left end' : 'numbered from the right end');
-      s += panel(12, py, 356, 140, { kind: fromLeft ? 'hi' : 'warn' });
-      const m = chain(104, py + 66, 6);
+      s += tag(CX, py - 10, fromLeft ? 'numbered from the left end' : 'numbered from the right end');
+      s += panel(PX, py, PW, 134, { kind: fromLeft ? 'hi' : 'warn' });
+      const m = chain(CX - 2.5 * DX(), py + 62, 6);
       const n = m.nodes;
       n.me = down(n.c3);
       const bonds = [...m.bonds, ['c3', 'me']];
@@ -327,10 +343,10 @@ FIGURES.push({
       m.keys.forEach((k, i) => { map[k] = String(fromLeft ? i + 1 : 6 - i); });
       s += nums(n, bonds, map);
       s += note(n, bonds, 'me', 'methyl', { dir: { x: 1, y: 0 }, d: 8 });
-      s += verdict(190, py + 160, fromLeft ? 'methyl on C3' : 'methyl on C4', fromLeft ? '3-methylhexane' : '4-methylhexane', fromLeft, fromLeft ? '3 is lower: use this' : '4 is higher: reject');
+      s += verdict(CX, py + 156, fromLeft ? 'methyl on C3' : 'methyl on C4', fromLeft ? '3-methylhexane' : '4-methylhexane', fromLeft, fromLeft ? '3 is lower: use this' : '4 is higher: reject');
     };
     one(34, true);
-    one(280, false);
+    one(274, false);
     return s;
   },
   caption: 'One molecule, two directions. The methyl is the only thing that needs a number, so compare its two locants: 3 from the left, 4 from the right.',
@@ -364,23 +380,24 @@ FIGURES.push({
   lessons: ['naming-parent-chain'],
   anchor: 'The sets agree at the first term',
   alt: 'The same 2,3,6-trimethylheptane skeleton numbered twice. From the left the three methyls sit on carbons 2, 3 and 6. From the right they sit on carbons 2, 5 and 6. The two sets agree at the first term, 2, and differ at the second, 3 against 5, so the left numbering wins.',
-  viewBox: '0 0 380 520',
+  viewBox: `0 0 ${W} 505`,
   build() {
+    L = LN;
     let s = '';
     const one = (py, fromLeft) => {
-      s += tag(190, py - 10, fromLeft ? 'numbered from the left' : 'numbered from the right');
-      s += panel(12, py, 356, 150, { kind: fromLeft ? 'hi' : 'warn' });
-      const { m, n, bonds } = methylChain(86, py + 85, 7, [2, 3, 6]);
+      s += tag(CX, py - 10, fromLeft ? 'numbered from the left' : 'numbered from the right');
+      s += panel(PX, py, PW, 144, { kind: fromLeft ? 'hi' : 'warn' });
+      const { m, n, bonds } = methylChain(CX - 3 * DX(), py + 82, 7, [2, 3, 6]);
       s += skel(n, bonds, m.keys);
       const map = {};
       m.keys.forEach((k, i) => { map[k] = String(fromLeft ? i + 1 : 7 - i); });
       s += nums(n, bonds, map);
-      s += setLine(190, py + 176, fromLeft ? [2, 3, 6] : [2, 5, 6], 1, fromLeft ? 'fg-hi' : 'fg-warn');
-      s += text(190, py + 198, fromLeft ? '2,3,6-trimethylheptane' : 'not 2,5,6-trimethylheptane', { cls: fromLeft ? 'fg-tag-good' : 'fg-tag-warn', size: 11 });
+      s += setLine(CX, py + 170, fromLeft ? [2, 3, 6] : [2, 5, 6], 1, fromLeft ? 'fg-hi' : 'fg-warn');
+      s += text(CX, py + 192, fromLeft ? '2,3,6-trimethylheptane' : 'not 2,5,6-trimethylheptane', { cls: fromLeft ? 'fg-tag-good' : 'fg-tag-warn', size: 11 });
     };
     one(34, true);
-    one(284, false);
-    s += text(190, 508, 'first terms tie; at the second, 3 beats 5', { cls: 'fg-sm', size: 10.5 });
+    one(276, false);
+    s += text(CX, 496, 'first terms tie; at the second, 3 beats 5', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Read the two sets one term at a time, left to right. Stop at the first place they differ. That term decides the numbering; the terms after it do not matter.',
@@ -388,32 +405,35 @@ FIGURES.push({
 
 /* ------------------------------------------------------ sum trap (new) ---
    2,7,8-trimethyldecane: the first point of difference and the sum pick
-   opposite directions. */
+   opposite directions. A ten-carbon chain is the widest drawing here, so
+   its bonds are drawn a little shorter to fit the phone width. */
 FIGURES.push({
   id: 'sum-is-not-the-rule',
   section: 'naming-parent-chain',
   lessons: ['naming-parent-chain'],
   anchor: 'Counted from the left, the decane',
   alt: 'A 2,7,8-trimethyldecane skeleton numbered twice. From the left the methyls sit on carbons 2, 7 and 8, which add up to 17. From the right they sit on 3, 4 and 9, which add up to 16. The lower sum points to the right-hand numbering, but the first point of difference, 2 against 3, picks the left, and the left is correct.',
-  viewBox: '0 0 400 525',
+  viewBox: `0 0 ${W} 505`,
   build() {
+    L = 32;
     let s = '';
     const one = (py, fromLeft) => {
-      s += tag(200, py - 10, fromLeft ? 'numbered from the left' : 'numbered from the right');
-      s += panel(12, py, 376, 135, { kind: fromLeft ? 'hi' : 'warn' });
-      const { m, n, bonds } = methylChain(44.3, py + 80, 10, [2, 7, 8]);
+      s += tag(CX, py - 10, fromLeft ? 'numbered from the left' : 'numbered from the right');
+      s += panel(PX, py, PW, 128, { kind: fromLeft ? 'hi' : 'warn' });
+      const { m, n, bonds } = methylChain(CX - 4.5 * DX(), py + 74, 10, [2, 7, 8]);
       s += skel(n, bonds, m.keys);
       const map = {};
       m.keys.forEach((k, i) => { map[k] = String(fromLeft ? i + 1 : 10 - i); });
       s += nums(n, bonds, map);
-      s += setLine(200, py + 158, fromLeft ? [2, 7, 8] : [3, 4, 9], 0, fromLeft ? 'fg-hi' : 'fg-warn');
-      s += text(200, py + 178, fromLeft ? 'adds to 17' : 'adds to 16', { cls: 'fg-sm', size: 10.5 });
+      s += setLine(CX, py + 152, fromLeft ? [2, 7, 8] : [3, 4, 9], 0, fromLeft ? 'fg-hi' : 'fg-warn');
+      s += text(CX, py + 172, fromLeft ? 'adds to 17' : 'adds to 16', { cls: 'fg-sm', size: 10.5 });
     };
     one(34, true);
-    one(256, false);
-    s += text(200, 466, 'lower sum points right; first term points left', { cls: 'fg-sm', size: 10.5 });
-    s += text(200, 490, '2,7,8-trimethyldecane', { cls: 'fg-tag-good', size: 11 });
-    s += text(200, 510, 'the first term decides', { cls: 'fg-sm', size: 10.5 });
+    one(250, false);
+    s += text(CX, 450, 'lower sum points right; first term points left', { cls: 'fg-sm', size: 10.5 });
+    s += text(CX, 474, '2,7,8-trimethyldecane', { cls: 'fg-tag-good', size: 11 });
+    s += text(CX, 494, 'the first term decides', { cls: 'fg-sm', size: 10.5 });
+    L = LN;
     return s;
   },
   caption: 'Compare the first terms: 2 against 3. The left numbering wins there, even though its locants add up to more.',
@@ -427,33 +447,34 @@ FIGURES.push({
   lessons: ['naming-parent-chain'],
   anchor: 'Older books write the same two compounds',
   alt: 'Two four-carbon chains, each numbered 1 to 4. Butan-1-ol carries OH on carbon 1; the 1 sits just before -ol in the name, and the older name is 1-butanol. But-2-ene has a double bond from carbon 2 to carbon 3; the 2 sits just before -ene, and the older name is 2-butene.',
-  viewBox: '0 0 380 410',
+  viewBox: `0 0 ${W} 410`,
   build() {
+    L = LN;
     let s = '';
-    s += tag(190, 24, 'an OH on C1');
-    s += panel(12, 34, 356, 100, { kind: 'hi' });
+    s += tag(CX, 24, 'an OH on C1');
+    s += panel(PX, 34, PW, 100, { kind: 'hi' });
     {
-      const m = chain(150, 96, 4);
+      const m = chain(CX - DX(), 96, 4);
       const n = m.nodes;
-      n.o = { ...off(n.c1, -34.6, -20), lbl: 'HO' };
+      n.o = { ...diag(n.c1, -1, -1), lbl: 'HO' };
       const bonds = [...m.bonds, ['c1', 'o']];
       s += skel(n, bonds, m.keys);
       s += nums(n, bonds, { c1: '1', c2: '2', c3: '3', c4: '4' });
-      s += text(190, 156, 'butan-1-ol', { cls: 'fg-tag-good', size: 11 });
-      s += text(190, 176, 'the 1 sits right before -ol', { cls: 'fg-sm', size: 10.5 });
-      s += text(190, 194, 'older style: 1-butanol', { cls: 'fg-sm', size: 10.5 });
+      s += text(CX, 156, 'butan-1-ol', { cls: 'fg-tag-good', size: 11 });
+      s += text(CX, 176, 'the 1 sits right before -ol', { cls: 'fg-sm', size: 10.5 });
+      s += text(CX, 194, 'older style: 1-butanol', { cls: 'fg-sm', size: 10.5 });
     }
-    s += tag(190, 228, 'a C=C from C2 to C3');
-    s += panel(12, 238, 356, 100, { kind: 'hi' });
+    s += tag(CX, 228, 'a C=C from C2 to C3');
+    s += panel(PX, 238, PW, 100, { kind: 'hi' });
     {
-      const m = chain(138, 300, 4);
+      const m = chain(CX - 1.5 * DX(), 300, 4);
       const n = m.nodes;
       const bonds = [['c1', 'c2'], ['c2', 'c3', { order: 2, inward: P((n.c2.x + n.c3.x) / 2 - 8, 330) }], ['c3', 'c4']];
       s += skel(n, bonds, m.keys);
       s += nums(n, bonds, { c1: '1', c2: '2', c3: '3', c4: '4' });
-      s += text(190, 360, 'but-2-ene', { cls: 'fg-tag-good', size: 11 });
-      s += text(190, 380, 'the 2 sits right before -ene', { cls: 'fg-sm', size: 10.5 });
-      s += text(190, 398, 'older style: 2-butene', { cls: 'fg-sm', size: 10.5 });
+      s += text(CX, 360, 'but-2-ene', { cls: 'fg-tag-good', size: 11 });
+      s += text(CX, 380, 'the 2 sits right before -ene', { cls: 'fg-sm', size: 10.5 });
+      s += text(CX, 398, 'older style: 2-butene', { cls: 'fg-sm', size: 10.5 });
     }
     return s;
   },
@@ -470,12 +491,13 @@ FIGURES.push({
   alt: 'One alcohol traced two ways. Left: the six-carbon chain, the longest in the molecule, is highlighted and numbered 1 to 6, but the CH2OH hangs off carbon 3 and is not on the chain; this is marked as not the parent. Right: a five-carbon chain that starts at the carbon bearing OH is highlighted and numbered 1 to 5, with an ethyl on carbon 2; the name is 2-ethylpentan-1-ol.',
   viewBox: '0 0 720 255',
   build() {
+    L = 40;
     let s = '';
     const sk6 = (x0) => {
       const m = chain(x0, 100, 6, 'a');
       const n = m.nodes;
       n.c = down(n.a3);
-      n.o = { ...off(n.c, 34.6, 20), lbl: 'OH' };
+      n.o = { ...diag(n.c, 1, 1), lbl: 'OH' };
       return { n, bonds: [...m.bonds, ['a3', 'c'], ['c', 'o']] };
     };
     s += panel(12, 34, 336, 150, { kind: 'warn' });
@@ -501,9 +523,9 @@ FIGURES.push({
 });
 
 /* ===================================================== lesson-only =====
-   These sit in lesson questions, so they are drawn narrow (380 wide) and
-   stacked: a lesson card on a phone is about 350px, and a question figure
-   that has to be scrolled sideways hides half the question. */
+   Lesson question figures. Like every figure the lesson shows, they are
+   drawn 340 wide with stacked panels so nothing scrolls sideways on a
+   phone. */
 
 /* Step 5 question: two eight-carbon paths through one skeleton (octane
    with a sec-butyl on C4). Path B, 3-methyl-4-propyloctane, carries two
@@ -512,8 +534,8 @@ function octSkeleton(x0, y0) {
   const m = chain(x0, y0, 8, 'a');
   const n = m.nodes;
   n.s1 = up(n.a4);
-  n.sm = off(n.s1, -34.6, -20);
-  n.e1 = off(n.s1, 34.6, -20);
+  n.sm = diag(n.s1, -1, -1);
+  n.e1 = diag(n.s1, 1, -1);
   n.e2 = up(n.e1);
   const bonds = [...m.bonds, ['a4', 's1'], ['s1', 'sm'], ['s1', 'e1'], ['e1', 'e2']];
   return { n, bonds };
@@ -522,19 +544,20 @@ FIGURES.push({
   id: 'tie-question',
   lessons: ['naming-parent-chain'],
   alt: 'One skeleton traced two ways. Path A is the eight-carbon row across the page, numbered 1 to 8, with one four-carbon branch on carbon 4. Path B is also eight carbons, numbered 1 to 8: it starts at the top of the branch, comes down through the branch to the row and runs to the right-hand end, leaving a methyl and a three-carbon piece of the row as branches.',
-  viewBox: '0 0 380 470',
+  viewBox: `0 0 ${W} 450`,
   build() {
+    L = LN;
     let s = '';
     const one = (y, label, path, map) => {
-      s += panel(12, y, 356, 190);
-      s += tag(190, y - 10, label);
-      const { n, bonds } = octSkeleton(69, y + 150);
+      s += panel(PX, y, PW, 180);
+      s += tag(CX, y - 10, label);
+      const { n, bonds } = octSkeleton(CX - 3.5 * DX(), y + 140);
       s += skel(n, bonds, path);
       s += nums(n, bonds, map);
     };
     one(34, 'path A: eight carbons', ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
       { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5', a6: '6', a7: '7', a8: '8' });
-    one(268, 'path B: eight carbons', ['e2', 'e1', 's1', 'a4', 'a5', 'a6', 'a7', 'a8'],
+    one(258, 'path B: eight carbons', ['e2', 'e1', 's1', 'a4', 'a5', 'a6', 'a7', 'a8'],
       { e2: '1', e1: '2', s1: '3', a4: '4', a5: '5', a6: '6', a7: '7', a8: '8' });
     return s;
   },
@@ -547,26 +570,27 @@ FIGURES.push({
   id: 'locant-set-question',
   lessons: ['naming-parent-chain'],
   alt: 'An eight-carbon chain with methyls, numbered twice. Numbering A, from the left: methyls on carbons 2, 6 and 6. Numbering B, from the right: methyls on carbons 3, 3 and 7.',
-  viewBox: '0 0 380 390',
+  viewBox: `0 0 ${W} 380`,
   build() {
+    L = LN;
     let s = '';
     const row = (y, fromLeft) => {
-      s += panel(12, y, 356, 150);
-      s += tag(190, y - 10, fromLeft ? 'numbering A: from the left' : 'numbering B: from the right');
-      const m = chain(69, y + 86, 8);
+      s += panel(PX, y, PW, 146);
+      s += tag(CX, y - 10, fromLeft ? 'numbering A: from the left' : 'numbering B: from the right');
+      const m = chain(CX - 3.5 * DX(), y + 84, 8);
       const n = m.nodes;
       n.s2 = up(n.c2);
-      n.s6a = off(n.c6, -24, -34);
-      n.s6b = off(n.c6, 24, -34);
+      n.s6a = off(n.c6, -0.55 * L, -0.8 * L);
+      n.s6b = off(n.c6, 0.55 * L, -0.8 * L);
       const bonds = [...m.bonds, ['c2', 's2'], ['c6', 's6a'], ['c6', 's6b']];
       s += skel(n, bonds, m.keys);
       const map = {};
       m.keys.forEach((k, i) => { map[k] = String(fromLeft ? i + 1 : 8 - i); });
       s += nums(n, bonds, map, { force: { c6: { x: 0, y: 1.35 } } });
-      s += text(190, y + 136, fromLeft ? 'methyls on {2, 6, 6}' : 'methyls on {3, 3, 7}', { cls: 'fg-lbl', size: 13 });
+      s += text(CX, y + 134, fromLeft ? 'methyls on {2, 6, 6}' : 'methyls on {3, 3, 7}', { cls: 'fg-lbl', size: 13 });
     };
     row(34, true);
-    row(224, false);
+    row(220, false);
     return s;
   },
   caption: 'The same molecule both times. Write each set in order and compare.',
@@ -578,11 +602,12 @@ FIGURES.push({
   id: 'name-question',
   lessons: ['naming-parent-chain'],
   alt: 'A seven-carbon zigzag chain with a single methyl branch hanging down from the fifth carbon counting from the left, which is the third counting from the right.',
-  viewBox: '0 0 380 150',
+  viewBox: `0 0 ${W} 150`,
   build() {
+    L = LN;
     let s = '';
-    s += panel(12, 14, 356, 126);
-    const m = chain(86, 70, 7);
+    s += panel(PX, 14, PW, 126);
+    const m = chain(CX - 3 * DX() - 14, 70, 7);
     const n = m.nodes;
     n.me = down(n.c5);
     const bonds = [...m.bonds, ['c5', 'me']];
@@ -599,23 +624,25 @@ FIGURES.push({
   id: 'challenge-drawing',
   lessons: ['naming-parent-chain'],
   alt: 'A four-carbon zigzag row numbered 1 to 4 from the left, with a two-carbon ethyl branch rising from carbon 2. A student has named it 2-ethylbutane.',
-  viewBox: '0 0 380 210',
+  viewBox: `0 0 ${W} 210`,
   build() {
+    L = LN;
     let s = '';
-    s += panel(12, 34, 356, 150);
-    s += tag(190, 24, 'the student’s numbering');
-    const m = chain(132, 150, 4, 'r');
+    s += panel(PX, 34, PW, 150);
+    s += tag(CX, 24, 'the student’s numbering');
+    const m = chain(CX - 1.5 * DX() - 10, 150, 4, 'r');
     const n = m.nodes;
     n.e1 = up(n.r2);
-    n.e2 = off(n.e1, 34.6, -20);
+    n.e2 = diag(n.e1, 1, -1);
     const bonds = [...m.bonds, ['r2', 'e1'], ['e1', 'e2']];
     s += skel(n, bonds, ['r1', 'r2', 'r3', 'r4']);
     s += nums(n, bonds, { r1: '1', r2: '2', r3: '3', r4: '4' });
     s += note(n, bonds, 'e2', 'ethyl', { dir: { x: 1, y: 0 }, d: 8 });
-    s += text(190, 202, 'student’s name: 2-ethylbutane', { cls: 'fg-tag-warn', size: 11 });
+    s += text(CX, 202, 'student’s name: 2-ethylbutane', { cls: 'fg-tag-warn', size: 11 });
     return s;
   },
   caption: 'The highlighted row is the chain the student chose.',
 });
 
 export default FIGURES;
+
