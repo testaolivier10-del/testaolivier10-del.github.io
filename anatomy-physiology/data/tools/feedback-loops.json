@@ -1166,7 +1166,7 @@
         "communication"
       ],
       "kind": "negative",
-      "scenario": "You are standing on a bus when it brakes hard. Your body tips forward, which stretches your calf muscles. A split second later, before you have decided anything, they contract and pull you back upright.",
+      "scenario": "You are standing on a bus when it brakes hard. Your body tips forward, which stretches your calf muscles. A split second later, before you have decided anything, they contract and help pull you back upright.",
       "slots": {
         "stimulus": {
           "text": "The calf muscles are stretched as you tip forward",
@@ -1215,7 +1215,7 @@
         },
         {
           "text": "The primary motor cortex decides to tighten the calf",
-          "why": "The loop closes in the spinal cord in a few tens of milliseconds, before any decision. A cut high in the cord would not stop it."
+          "why": "The stretch reflex closes in the spinal cord within a few tens of milliseconds, before any decision. The larger correction that follows runs through the brainstem motor tracts, not a decision in the motor cortex."
         },
         {
           "text": "The tibialis anterior contracts and lifts the toes",

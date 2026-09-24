@@ -1728,15 +1728,15 @@
       "steps": [
         {
           "title": "Time in the sensory axon",
-          "text": "Time = distance ÷ speed = {ls} m ÷ {vs} m/s = <b>{ts} ms</b>."
+          "text": "Time = distance ÷ speed = {ls} m ÷ {vs} m/s, then × 1000 to convert seconds to milliseconds = <b>{ts} ms</b>."
         },
         {
           "title": "Time in the motor axon",
-          "text": "{lm} m ÷ {vm} m/s = <b>{tm} ms</b>."
+          "text": "{lm} m ÷ {vm} m/s, × 1000 = <b>{tm} ms</b>."
         },
         {
           "title": "Add the central synapses",
-          "text": "{n} synapse(s) × about 1 ms = <b>{n} ms</b>."
+          "text": "{n} synapse(s) × about 1 ms = <b>{n} ms</b> (about 0.5 ms of synaptic delay, plus the time the next neuron takes to reach threshold)."
         },
         {
           "title": "Add the junction and the muscle",
@@ -1774,7 +1774,7 @@
       "meaning": [
         {
           "when": "vs < 30 || vm < 30",
-          "text": "A velocity under 30 m/s is far below the 50 to 80 m/s of healthy large myelinated axons, as when a disease strips myelin from peripheral nerves. The delay grows, and because the burst of signals arrives spread out in time, the reflex also weakens."
+          "text": "A velocity under 30 m/s is far below the 50 to 80 m/s of healthy large myelinated axons. In a stretch reflex that points to disease, as when myelin is stripped from peripheral nerves: the delay grows, and because the burst of signals arrives spread out in time, the reflex also weakens. (Healthy thin pain axons are this slow, which is one reason a withdrawal reflex takes longer.)"
         },
         {
           "when": "n >= 2",

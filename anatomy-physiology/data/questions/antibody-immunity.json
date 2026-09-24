@@ -64,7 +64,7 @@
     "figure": "antibody-y",
     "q": "In the diagram, which part of the antibody determines which antigen it binds?",
     "options": [
-      "The variable regions at the tips of the arms",
+      "The variable regions at the arm tips",
       "The Fc region of the stem",
       "The hinge where the arms meet the stem",
       "The disulfide bonds"
@@ -159,7 +159,7 @@
     ],
     "q": "Put the steps in order, from a protein antigen reaching a lymph node to antibody in the blood.",
     "options": [
-      "The antigen binds the receptors of a matching naïve B cell",
+      "The antigen binds the B cell receptors of a matching naïve B cell",
       "The B cell takes the antigen in and displays its peptides on MHC class II",
       "A helper T cell recognizes the peptide and gives the B cell contact and cytokines",
       "The B cell divides into a clone, and many daughters switch class",

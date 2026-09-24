@@ -6702,7 +6702,7 @@
        ],
        "concept": "nerve-plexuses",
        "taught": "spinal-nerves",
-       "fn": "The network formed by the ventral rami of L4 to S4. It supplies the buttock, the back of the thigh and the whole leg and foot below the knee, mainly through the sciatic nerve."
+       "fn": "The network formed by the ventral rami of L4 to S4. It supplies the buttock, the back of the thigh, all the muscles below the knee and most of the skin there, mainly through the sciatic nerve."
       },
       {
        "id": "common-fibular-nerve",
@@ -6747,7 +6747,7 @@
          "Phrenic nerve"
         ],
         "correct": 1,
-        "why": "The sciatic nerve passes through the lower inner part of the buttock and supplies the back of the thigh and all of the leg below the knee, so injections go in the upper outer part. The femoral and obturator nerves supply the front and inner thigh, and the phrenic nerve supplies the diaphragm.",
+        "why": "The sciatic nerve passes through the lower inner part of the buttock and supplies the hamstrings and all the muscles below the knee. Injections avoid the buttock and use the ventrogluteal site on the side of the hip instead. The femoral and obturator nerves supply the front and inner thigh, and the phrenic nerve supplies the diaphragm.",
         "level": "apply"
        }
       },
@@ -7127,7 +7127,7 @@
        ],
        "concept": "cranial-nerve-list",
        "taught": "cranial-nerves",
-       "fn": "Cranial nerve IV, the smallest cranial nerve and the only one leaving the back of the brainstem (the midbrain). It moves the one eye muscle that turns the eye down and in."
+       "fn": "Cranial nerve IV, the smallest cranial nerve and the only one leaving the back of the brainstem (the midbrain). It moves the one eye muscle that turns the eye down and slightly out. Its downward pull is strongest when the eye points toward the nose, so you test it by looking down and in."
       },
       {
        "id": "trigeminal-nerve",
@@ -7343,7 +7343,7 @@
        ],
        "concept": "cranial-nerve-list",
        "taught": "cranial-nerves",
-       "fn": "Cranial nerve XI, a motor nerve whose roots come mostly from the upper spinal cord and rise into the skull before leaving it. It moves the sternocleidomastoid and trapezius, which turn the head and shrug the shoulders."
+       "fn": "Cranial nerve XI, a motor nerve whose rootlets come from the upper cervical spinal cord and rise through the foramen magnum into the skull before leaving it again. It moves the sternocleidomastoid and trapezius, which turn the head and shrug the shoulders."
       }
      ]
     }

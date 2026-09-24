@@ -4133,7 +4133,7 @@
     "compare": "Tetraplegia vs paraplegia",
     "front": "Tetraplegia vs paraplegia: level of injury and limbs affected?",
     "back": "Tetraplegia: cervical cord, all four limbs and the trunk. Paraplegia: thoracic, lumbar or sacral cord, both legs and the trunk below the level; hands normal.",
-    "why": "The arms’ motor neurons sit in the cervical enlargement, so only a cervical injury weakens the hands."
+    "why": "The arms’ motor neurons sit in the cervical enlargement, which runs down to T1; the hand’s small muscles come from C8 and T1. An injury below T1 leaves the hands normal, while a cervical injury weakens them."
   },
   {
     "id": "pons-crossed",

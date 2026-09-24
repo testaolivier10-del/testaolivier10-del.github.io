@@ -6506,23 +6506,23 @@
         },
         {
           "id": "finger-flexion",
-          "name": "Strength of curling the right fingers (flexion)",
+          "name": "Strength of curling the right fingers, with the examiner holding the wrist straight",
           "answer": "none",
           "chain": [
             "median",
             "grip"
           ],
-          "why": "Most wrist and finger flexors, on the front of the forearm, are supplied by the median nerve, which the fracture did not touch."
+          "why": "Most wrist and finger flexors, on the front of the forearm, are supplied by the median nerve, which the fracture did not touch. (Without that support the drooping wrist makes the grip look weak, although its nerves are intact.)"
         },
         {
           "id": "finger-spread",
-          "name": "Strength of spreading the right fingers apart",
+          "name": "Strength of spreading the right fingers, with the hand resting flat on a table",
           "answer": "none",
           "chain": [
             "ulnar",
             "spread"
           ],
-          "why": "Spreading the fingers uses the small muscles inside the hand, supplied by the ulnar nerve, which runs behind the medial epicondyle, away from the break."
+          "why": "Spreading the fingers uses the small muscles inside the hand, supplied by the ulnar nerve, which runs behind the medial epicondyle, away from the break. (Without that support the drooping wrist makes spreading look weak, although its nerves are intact.)"
         }
       ]
     },
@@ -6536,7 +6536,7 @@
       ],
       "level": 2,
       "misconception": "the nerve that moves the face also feels it",
-      "setup": "The right facial nerve (VII) swells inside its narrow bony canal in the temporal bone and stops conducting. The trigeminal nerve and the brain are unharmed. Compare the right side of her face with before.",
+      "setup": "In a woman with Bell’s palsy, the right facial nerve (VII) swells inside its narrow bony canal in the temporal bone, above the point where its taste axons leave it, and stops conducting. The trigeminal nerve and the brain are unharmed. Compare the right side of her face with before.",
       "start": "Right facial nerve stops conducting",
       "steps": {
         "motor": "No commands reach the right muscles of facial expression",
@@ -6574,7 +6574,7 @@
           "chain": [
             "taste"
           ],
-          "why": "Taste from the front two-thirds of the tongue travels in the facial nerve, so swelling in its canal can block those axons too."
+          "why": "Taste from the front two-thirds of the tongue travels in the facial nerve and leaves it inside the canal, below the swelling here, so those axons are blocked too."
         },
         {
           "id": "cheek-touch",
@@ -7063,7 +7063,7 @@
         "fewer": "Fewer motor neurons reach threshold together",
         "weak": "A weaker kick",
         "synapse": "The central synapse is unchanged",
-        "ms": "Synaptic delay stays about 1 ms"
+        "ms": "The central synapse still adds about 1 ms"
       },
       "variables": [
         {
@@ -7084,7 +7084,7 @@
             "longer",
             "latency"
           ],
-          "why": "Almost all of the knee jerk’s roughly 23 ms is spent in the axons (time = distance ÷ speed), so slower axons lengthen the delay."
+          "why": "About four-fifths of the knee jerk’s roughly 23 ms is spent in the axons (time = distance ÷ speed), so slower axons lengthen the delay."
         },
         {
           "id": "kick",
@@ -7100,7 +7100,7 @@
         },
         {
           "id": "synaptic-delay",
-          "name": "Delay at the central synapse",
+          "name": "Time added at the central synapse",
           "answer": "none",
           "chain": [
             "synapse",

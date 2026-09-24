@@ -4,9 +4,16 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A toddler meets a bacterium for the very first time when it enters a scraped knee. Which defense can act against it within the first few hours?",
-    "options": ["Antibodies made specifically against that bacterium", "Lymphocytes that remember it from before", "Neutrophils and complement", "None: every defense needs days to start"],
+    "options": [
+      "Antibodies made specifically against that bacterium",
+      "Lymphocytes that remember it from before",
+      "Neutrophils and complement",
+      "None: every defense needs days to start"
+    ],
     "correct": 2,
     "why": {
       "correct": "Innate defenses, such as neutrophils, macrophages and complement, are ready before any exposure and recognize features shared by whole groups of microbes, so they act within minutes to hours of a first encounter.",
@@ -23,7 +30,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the steps in order to show how a neutrophil gets from the blood to bacteria in a wound.",
     "options": [
       "Cytokines from the wound make the endothelium of nearby venules sticky",
@@ -42,16 +51,23 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "figure": "fever-set-point",
     "q": "At the time marked A, what is the patient most likely doing?",
-    "options": ["Sweating, with flushed, warm skin", "Shivering, with pale, cool skin", "Neither, because temperature and set point match", "Panting to lose heat from the lungs"],
-    "correct": 1,
+    "options": [
+      "Shivering, with pale, cool skin",
+      "Sweating, with flushed, warm skin",
+      "Neither, because temperature and set point match",
+      "Panting to lose heat from the lungs"
+    ],
+    "correct": 0,
     "why": {
       "correct": "At A the set point has jumped to 39 °C but body temperature is still lower. The hypothalamus treats that gap exactly like cold: sympathetic signals constrict skin vessels, so the skin is pale and cool, and skeletal muscles shiver. The patient feels chilled.",
       "options": [
-        "Sweating and flushing are heat-loss responses. They happen at C, when body temperature is above a set point that has dropped.",
         "Correct. Body temperature is below the raised set point, so heat-gain responses run.",
+        "Sweating and flushing are heat-loss responses. They happen at C, when body temperature is above a set point that has dropped.",
         "The two lines match at B, not at A. At A the solid line is still below the dashed one.",
         "Panting is a heat-loss response, and at A the body is gaining heat, not losing it."
       ]
@@ -62,10 +78,17 @@
     "type": "graph",
     "level": "analyze",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "figure": "fever-set-point",
     "q": "At the time marked C, body temperature is falling. What is the best explanation?",
-    "options": ["The hypothalamus has lost control of temperature", "The set point has dropped below body temperature, so heat-loss responses run", "Shivering has stopped, and heat drains away with no active response", "Pyrogens have raised the set point further"],
+    "options": [
+      "The hypothalamus has lost control of temperature",
+      "The set point has dropped below body temperature, so heat-loss responses run",
+      "Shivering has stopped, and heat simply drains away with no active response from the body",
+      "Pyrogens have raised the set point further"
+    ],
     "correct": 1,
     "why": {
       "correct": "Once pyrogens are cleared, prostaglandin E2 falls and the set point returns to about 36.6 °C. Body temperature is now above the set point, so the hypothalamus dilates skin vessels and triggers sweating, and temperature falls until the two match again.",
@@ -83,25 +106,57 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "A woman with a fever of 39 °C from a bacterial infection takes ibuprofen, a drug that blocks prostaglandin synthesis. Predict the change in each variable over the next hour.",
     "variables": [
-      { "name": "Hypothalamic set point", "answer": "down", "why": "Pyrogens raise the set point through prostaglandin E2 in the hypothalamus. Blocking its synthesis lets the set point fall back toward normal." },
-      { "name": "Blood flow to the skin", "answer": "up", "why": "Body temperature is now above the lowered set point, so sympathetic constriction of skin vessels eases and they dilate." },
-      { "name": "Sweating", "answer": "up", "why": "With body temperature above the set point, the hypothalamus triggers heat loss, including sweating." },
-      { "name": "Core body temperature", "answer": "down", "why": "Heat loss now exceeds heat production, so temperature falls toward the new set point." },
-      { "name": "Number of bacteria at the infection site", "answer": "none", "why": "The drug acts on the set point, not on the bacteria. Lowering a fever does not by itself kill them." }
+      {
+        "name": "Hypothalamic set point",
+        "answer": "down",
+        "why": "Pyrogens raise the set point through prostaglandin E2 in the hypothalamus. Blocking its synthesis lets the set point fall back toward normal."
+      },
+      {
+        "name": "Blood flow to the skin",
+        "answer": "up",
+        "why": "Body temperature is now above the lowered set point, so sympathetic constriction of skin vessels eases and they dilate."
+      },
+      {
+        "name": "Sweating",
+        "answer": "up",
+        "why": "With body temperature above the set point, the hypothalamus triggers heat loss, including sweating."
+      },
+      {
+        "name": "Core body temperature",
+        "answer": "down",
+        "why": "Heat loss now exceeds heat production, so temperature falls toward the new set point."
+      },
+      {
+        "name": "Number of bacteria at the infection site",
+        "answer": "none",
+        "why": "The drug acts on the set point, not on the bacteria. Lowering a fever does not by itself kill them."
+      }
     ],
-    "why": { "correct": "Ibuprofen blocks prostaglandin E2 in the hypothalamus, so the set point drops below body temperature. Skin vessels dilate and sweating starts, and temperature falls. The infection itself is unchanged." }
+    "why": {
+      "correct": "Ibuprofen blocks prostaglandin E2 in the hypothalamus, so the set point drops below body temperature. Skin vessels dilate and sweating starts, and temperature falls. The infection itself is unchanged."
+    }
   },
   {
     "id": "anp-innate-immunity-6",
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A 19-year-old has had meningococcal meningitis twice and a Neisseria joint infection once. Blood tests show she makes no C7. Which complement function has she lost?",
-    "options": ["Coating bacteria with C3b for phagocytes", "Releasing C3a and C5a to attract neutrophils", "Forming pores that burst the bacteria", "Starting the classical pathway on antibodies"],
+    "options": [
+      "Coating bacteria with C3b for phagocytes",
+      "Releasing C3a and C5a to attract neutrophils",
+      "Forming pores that burst the bacteria",
+      "Starting the classical pathway on antibodies"
+    ],
     "correct": 2,
     "why": {
       "correct": "C5b gathers C6, C7, C8 and C9 into the membrane attack complex. Without C7 the pore cannot form. Neisseria bacteria depend on it most, which is why people lacking C5 to C9 suffer repeated Neisseria infections while coping with most other bacteria.",
@@ -118,9 +173,16 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Missing which single complement protein would cause the most severe, widest-ranging infections?",
-    "options": ["C3", "C9", "The protein that starts the lectin pathway", "C5"],
+    "options": [
+      "C3",
+      "C9",
+      "The protein that starts the lectin pathway",
+      "C5"
+    ],
     "correct": 0,
     "why": {
       "correct": "All three pathways converge on splitting C3. Without it there is no C3b to opsonize bacteria, no C3a, and no way to go on to C5 and the attack complex. People who lack C3 have severe infections with many kinds of bacteria from early childhood.",
@@ -137,10 +199,24 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Select every effect of complement activation.",
-    "options": ["Coating microbes so phagocytes engulf them more easily", "Making mast cells release histamine", "Attracting neutrophils to the site", "Punching pores in microbial membranes", "Raising the hypothalamic set point directly", "Blocking viral protein synthesis inside neighboring cells"],
-    "correct": [0, 1, 2, 3],
+    "options": [
+      "Coating microbes so phagocytes engulf them more easily",
+      "Making mast cells release histamine",
+      "Attracting neutrophils to the site",
+      "Punching pores in microbial membranes",
+      "Raising the hypothalamic set point directly",
+      "Blocking viral protein synthesis inside neighboring cells"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
     "why": {
       "correct": "Complement opsonizes microbes (C3b), promotes inflammation and attracts neutrophils (C3a and C5a), and bursts microbes with the membrane attack complex. Fever and antiviral protection come from cytokines and interferons.",
       "options": [
@@ -158,17 +234,24 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A virus-infected cell stops displaying the self-identity protein that nearly all healthy nucleated cells carry. What happens when a natural killer cell touches it?",
-    "options": ["The NK cell ignores it, because it no longer looks foreign", "The NK cell engulfs it whole by phagocytosis", "The NK cell releases granules that trigger its apoptosis", "The NK cell releases antibodies against the virus"],
-    "correct": 2,
+    "options": [
+      "The NK cell ignores it, because it no longer looks foreign",
+      "The NK cell engulfs it whole by phagocytosis",
+      "The NK cell releases antibodies against the virus",
+      "The NK cell releases granules that trigger its apoptosis"
+    ],
+    "correct": 3,
     "why": {
       "correct": "The self-identity protein is an NK cell's \"leave me alone\" signal. A cell that has lost it, especially one also showing stress proteins, tips the balance toward killing. The NK cell releases granules: one protein forms pores, and enzymes enter and trigger apoptosis.",
       "options": [
         "NK cells work the other way round: they kill cells that lack the normal self signal. Losing it hides a cell from some lymphocytes, but exposes it to NK cells.",
         "NK cells kill by releasing granules onto the target, not by engulfing it.",
-        "Correct. Missing the self signal makes the cell a target, and it dies by apoptosis.",
-        "NK cells do not make antibodies. Antibodies come from cells descended from a different line of lymphocytes."
+        "NK cells do not make antibodies. Antibodies come from cells descended from a different line of lymphocytes.",
+        "Correct. Missing the self signal makes the cell a target, and it dies by apoptosis."
       ]
     }
   },
@@ -177,9 +260,16 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A 6-year-old has had repeated abscesses and lung infections with bacteria and fungi. His neutrophils move to infections and engulf microbes normally, but the microbes survive inside them. His neutrophils use almost no extra oxygen after engulfing. What has failed?",
-    "options": ["Chemotaxis toward the infection", "Fusion of vesicles with the plasma membrane", "Diapedesis through the venule wall", "The oxidative burst that makes hydrogen peroxide"],
+    "options": [
+      "Chemotaxis toward the infection",
+      "Fusion of vesicles with the plasma membrane",
+      "Diapedesis through the venule wall",
+      "The oxidative burst that makes hydrogen peroxide"
+    ],
     "correct": 3,
     "why": {
       "correct": "After engulfing, a phagocyte normally consumes a burst of oxygen to make superoxide and then hydrogen peroxide and bleach. No extra oxygen use and microbes that survive inside point to a failed oxidative burst. This is chronic granulomatous disease.",
@@ -196,17 +286,25 @@
     "type": "missing",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "Complete the pathway: bacteria enter a wound → macrophages release interleukin-1 into the blood → ____ → the hypothalamic set point rises → shivering and skin vasoconstriction.",
-    "options": ["Mast cells release histamine in the hypothalamus", "Cells in the hypothalamus make prostaglandin E2", "Complement forms pores in hypothalamic neurons", "Interferon blocks protein synthesis in the hypothalamus"],
-    "correct": 1,
+    "options": [
+      "Mast cells release histamine in the hypothalamus",
+      "Complement forms pores in hypothalamic neurons",
+      "Interferon blocks protein synthesis in the hypothalamus",
+      "Cells in the hypothalamus make prostaglandin E2"
+    ],
+    "correct": 3,
     "why": {
       "correct": "Interleukin-1 is a pyrogen. At leaky spots in the blood–brain barrier, it makes cells in the hypothalamus produce prostaglandin E2, which raises the set point.",
       "options": [
         "Histamine acts locally at the site of inflammation. It is not the step that raises the set point.",
-        "Correct. Prostaglandin E2 is the messenger that raises the set point, which is why drugs that block its synthesis lower a fever.",
         "Complement pores are aimed at microbes; your own cells carry regulator proteins that block them. They play no part in fever.",
-        "Interferon makes cells resist viruses. It is not the link between pyrogens and the set point."
+        "Interferon makes cells resist viruses. It is not the link between pyrogens and the set point.",
+        "Correct. Prostaglandin E2 is the messenger that raises the set point, which is why drugs that block its synthesis lower a fever."
       ]
     }
   },
@@ -215,7 +313,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "misconception": "fever means the body has lost control of temperature",
     "q": "A student described how a fever develops. One step is wrong. Which one?",
     "options": [
@@ -242,15 +342,22 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A cell infected with a virus releases interferon alpha, then dies. What does the interferon do?",
-    "options": ["It kills the virus particles in the interstitial fluid", "It makes neighboring cells ready to block virus replication", "It coats the virus so neutrophils engulf it", "It raises the set point to slow the virus with heat"],
-    "correct": 1,
+    "options": [
+      "It makes neighboring cells ready to block virus replication",
+      "It kills the virus particles in the interstitial fluid",
+      "It coats the virus so that neutrophils can grip and engulf it",
+      "It raises the set point to slow the virus with heat"
+    ],
+    "correct": 0,
     "why": {
       "correct": "Type I interferons are paracrine signals. They bind receptor proteins on nearby cells and switch on genes for antiviral proteins, which block viral protein synthesis and break down viral RNA if a virus later gets in. The infected cell itself is usually lost; its neighbors are protected.",
       "options": [
-        "Interferon does not attack virus particles directly. It acts on cells.",
         "Correct. Interferon warns neighboring cells, which then resist the virus.",
+        "Interferon does not attack virus particles directly. It acts on cells.",
         "Coating a microbe for phagocytes is opsonization, done by C3b, not by interferon.",
         "Fever is raised by pyrogens acting through prostaglandin E2. Interferon's main job is making cells resist viruses."
       ]
@@ -261,9 +368,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "An enzyme in tears breaks the rigid cell wall of many bacteria, and they swell and burst. Which antimicrobial protein is this?",
-    "options": ["Defensin", "Interferon", "Complement C9", "Lysozyme"],
+    "options": [
+      "Defensin",
+      "Interferon",
+      "Complement C9",
+      "Lysozyme"
+    ],
     "correct": 3,
     "why": {
       "correct": "Lysozyme is an enzyme in tears, saliva, mucus and neutrophil granules that breaks bonds in the bacterial cell wall. Without the wall, water rushes in and the bacterium bursts.",
@@ -280,9 +394,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Mr. Ortiz has deep burns over a third of his body. Four days later, bacteria from his skin surface are growing in his blood. Which defense failure most directly let them in?",
-    "options": ["Loss of the surface barrier of intact skin", "Loss of lysozyme from his tears", "Loss of the cilia in his airways", "Loss of his hypothalamic set point"],
+    "options": [
+      "Loss of the surface barrier of intact skin",
+      "Loss of lysozyme from his tears",
+      "Loss of the cilia in his airways",
+      "Loss of his hypothalamic set point after the stress of the burn"
+    ],
     "correct": 0,
     "why": {
       "correct": "Intact skin is a dry, acidic, constantly shed layer of keratin-filled cells that bacteria cannot cross. A deep burn destroys that surface barrier, so bacteria living on the skin reach the tissues and blood.",
@@ -299,16 +420,23 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "An insect sting on the forearm swells within minutes. Which change in the tissue most directly causes the swelling?",
-    "options": ["Neutrophils crowding into the tissue", "Plasma proteins leaking from venules, so fluid follows", "Pus collecting under the skin", "Complement bursting the cells of the forearm"],
-    "correct": 1,
+    "options": [
+      "Neutrophils crowding into the tissue",
+      "Pus collecting under the skin",
+      "Plasma proteins leaking from venules, so fluid follows",
+      "Complement bursting the cells of the forearm"
+    ],
+    "correct": 2,
     "why": {
       "correct": "Histamine makes the endothelial cells of capillaries and venules pull apart. Plasma proteins leak out, the oncotic difference that holds fluid in the blood shrinks, and fluid filters out faster. Dilated arterioles raise capillary pressure too.",
       "options": [
         "Neutrophils take hours to arrive, and the number of cells is small compared with the volume of leaked fluid.",
-        "Correct. Leaky vessel walls let protein and fluid pour into the tissue within minutes.",
         "Pus forms over a day or more, as neutrophils die. The swelling here appears within minutes.",
+        "Correct. Leaky vessel walls let protein and fluid pour into the tissue within minutes.",
         "Your own cells carry regulator proteins that stop the attack complex forming on them."
       ]
     }
@@ -318,9 +446,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "What is pus mainly made of?",
-    "options": ["Clotted blood and platelets", "Dead neutrophils, microbes, debris and leaked fluid", "Mucus from the nearby mucous membrane", "Fat released from damaged adipose tissue"],
+    "options": [
+      "Clotted blood and platelets",
+      "Dead neutrophils, microbes, debris and leaked fluid",
+      "Mucus from the nearby mucous membrane",
+      "Fat released from damaged adipose tissue"
+    ],
     "correct": 1,
     "why": {
       "correct": "Neutrophils die at the site within a day or two. Their bodies, dead and living microbes, tissue debris and leaked plasma make the thick yellow-white fluid called pus.",
@@ -338,24 +473,52 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 3,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "Bacteria infect a deep cut on a man's thigh. Macrophages there bind them and release cytokines into the blood. Predict the change in each variable over the next day.",
     "variables": [
-      { "name": "Permeability of venules at the wound", "answer": "up", "why": "Histamine, prostaglandins, complement fragments and cytokines make the endothelial cells pull apart, so plasma and protein leak into the tissue." },
-      { "name": "Neutrophil count in the blood", "answer": "up", "why": "Cytokines reaching the bone marrow make it release stored neutrophils, including young band cells, so the count rises." },
-      { "name": "Core body temperature", "answer": "up", "why": "Interleukin-1 and other pyrogens make the hypothalamus produce prostaglandin E2, raising the set point; heat-gain responses then raise body temperature." },
-      { "name": "C-reactive protein in the blood", "answer": "up", "why": "Cytokines reaching the liver make it release C-reactive protein and other proteins of inflammation into the blood." }
+      {
+        "name": "Permeability of venules at the wound",
+        "answer": "up",
+        "why": "Histamine, prostaglandins, complement fragments and cytokines make the endothelial cells pull apart, so plasma and protein leak into the tissue."
+      },
+      {
+        "name": "Neutrophil count in the blood",
+        "answer": "up",
+        "why": "Cytokines reaching the bone marrow make it release stored neutrophils, including young band cells, so the count rises."
+      },
+      {
+        "name": "Core body temperature",
+        "answer": "up",
+        "why": "Interleukin-1 and other pyrogens make the hypothalamus produce prostaglandin E2, raising the set point; heat-gain responses then raise body temperature."
+      },
+      {
+        "name": "C-reactive protein in the blood",
+        "answer": "up",
+        "why": "Cytokines reaching the liver make it release C-reactive protein and other proteins of inflammation into the blood."
+      }
     ],
-    "why": { "correct": "Cytokines from macrophages at the wound act locally on the vessels and travel in the blood to the bone marrow, the hypothalamus and the liver. The result is a leaky, swollen wound, more circulating neutrophils, a fever and a rise in liver-made inflammatory proteins." }
+    "why": {
+      "correct": "Cytokines from macrophages at the wound act locally on the vessels and travel in the blood to the bone marrow, the hypothalamus and the liver. The result is a leaky, swollen wound, more circulating neutrophils, a fever and a rise in liver-made inflammatory proteins."
+    }
   },
   {
     "id": "anp-innate-immunity-19",
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A biopsy from a lung that has been exposed to silica dust for years shows many macrophages and lymphocytes, new small vessels and a lot of collagen, with few neutrophils. What does this show?",
-    "options": ["Acute inflammation", "Chronic inflammation", "An abscess full of pus", "Normal lung tissue"],
+    "options": [
+      "Acute inflammation",
+      "Chronic inflammation",
+      "An abscess full of pus",
+      "Normal lung tissue"
+    ],
     "correct": 1,
     "why": {
       "correct": "Chronic inflammation lasts weeks to years because the trigger, here silica that macrophages cannot digest, keeps going. Macrophages and lymphocytes dominate, new vessels grow, and fibroblasts lay down collagen, scarring the tissue.",
@@ -372,9 +535,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A pattern recognition receptor in the cytosol of a lung cell detects double-stranded RNA. What is this most likely to mean, and what does the cell do?",
-    "options": ["A virus is copying itself inside; the cell releases interferons", "A bacterium is on its surface; the cell makes lysozyme", "The cell is dividing normally; it does nothing", "A worm is nearby; the cell attracts eosinophils"],
+    "options": [
+      "A virus is copying itself inside; the cell releases interferons",
+      "A bacterium is on its surface; the cell makes lysozyme",
+      "The cell is dividing normally; it does nothing",
+      "A worm is nearby; the cell attracts eosinophils"
+    ],
     "correct": 0,
     "why": {
       "correct": "Double-stranded RNA inside a cell is a pattern made when many viruses copy themselves; your own cells do not normally make it in the cytosol. Detecting it switches on type I interferon release, which protects neighboring cells.",
@@ -391,10 +561,17 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "misconception": "fever-reducing drugs lower any high body temperature",
-    "q": "A marathon runner collapses on a hot day with a core temperature of 40.5 °C. He has no infection. Why would acetaminophen, a fever-reducing drug, not help?",
-    "options": ["His set point is normal; heat gain has outrun heat loss", "His pyrogens are too high for the drug to block", "Acetaminophen works only on shivering, not sweating", "His hypothalamus has raised the set point too far"],
+    "q": "A marathon runner collapses on a hot day with a body temperature of 40.5 °C. He has no infection. Why would acetaminophen, a fever-reducing drug, not help?",
+    "options": [
+      "His set point is normal; heat gain has outrun heat loss",
+      "His pyrogens are too high for the drug to block",
+      "Acetaminophen acts only on shivering, and he is sweating rather than shivering",
+      "His hypothalamus has raised the set point too far"
+    ],
     "correct": 0,
     "why": {
       "correct": "Fever-reducing drugs work by blocking prostaglandin synthesis, which lowers a set point raised by pyrogens. In overheating from exercise, the set point is already normal; the body is losing heat as hard as it can and still falling behind. He needs active cooling.",
