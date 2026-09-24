@@ -28,7 +28,7 @@
     "core": ["structure-function"],
     "figure": "os-11-3",
     "pin": "bipennate",
-    "q": "Name the fascicle arrangement at the pin: short fascicles slant into both sides of a central tendon.",
+    "q": "Name the fascicle arrangement at the pin.",
     "options": ["Unipennate", "Multipennate", "Bipennate", "Convergent"],
     "correct": 2,
     "why": {
@@ -91,17 +91,17 @@
     "core": ["structure-function"],
     "q": "You bend your elbow to lift a cup. The large muscle on the front of your upper arm attaches to the scapula above and to the radius below. Which statement is correct?",
     "options": [
-      "The scapula attachment is the insertion, because it is higher",
-      "The radius attachment is the origin, because it is distal",
-      "Both attachments are origins, because the muscle has two ends",
-      "The radius attachment is the insertion, because the radius moves"
+      "The scapula attachment is the insertion",
+      "The radius attachment is the origin",
+      "Both attachments are origins",
+      "The radius attachment is the insertion"
     ],
     "correct": 3,
     "why": {
       "correct": "The insertion is the attachment on the bone that moves. When you lift the cup, the forearm (with the radius) swings up while the scapula stays put, so the radius attachment is the insertion and the scapula attachment is the origin.",
       "options": [
-        "Height does not decide it. The scapula stays still, which makes its attachment the origin.",
-        "The origin is usually the proximal, stable attachment. The distal radius attachment moves, so it is the insertion.",
+        "The scapula stays still while the forearm moves, which makes the scapula attachment the origin. Being higher does not decide it.",
+        "The origin is the stable attachment. The radius moves when you lift the cup, so its attachment is the insertion.",
         "A muscle has an origin at the stable end and an insertion at the moving end, not two origins. (Some muscles have several heads at their origin, but they still have an insertion.)",
         "Correct. The radius moves, so that attachment is the insertion."
       ]
@@ -261,7 +261,7 @@
     "q": "Most levers in the body are third-class, with the muscle inserting close to the joint. What does this arrangement gain, and at what cost?",
     "options": [
       "It gains force; the cost is a smaller range of movement",
-      "It gains speed and range at the hand or foot; the cost is that the muscle must pull much harder than the load",
+      "It gains speed and range; the cost is that the muscle must pull harder than the load",
       "It gains stability; the cost is that joints can only move in one plane",
       "It gains nothing mechanically; muscles are placed near joints only because of space"
     ],
@@ -407,7 +407,7 @@
     "q": "You slowly lower a heavy grocery bag by straightening your elbow. What is the muscle on the front of your upper arm doing?",
     "options": [
       "Contracting while it lengthens, braking the fall of the bag",
-      "Completely relaxed, since straightening is done by its antagonist",
+      "Completely relaxed while its antagonist straightens the elbow",
       "Pushing the forearm down",
       "Shortening to straighten the elbow"
     ],
@@ -416,7 +416,7 @@
       "correct": "Gravity would drop the bag. The front upper-arm muscle keeps its cross-bridges working while it is pulled longer, an eccentric contraction, so it controls the speed of the fall.",
       "options": [
         "Correct. This is an eccentric contraction that brakes the movement.",
-        "If it relaxed completely, the bag would drop. In slow lowering, gravity straightens the elbow and the flexor controls the rate.",
+        "If it relaxed completely, the bag would drop. In slow lowering, gravity straightens the elbow, not the antagonist, and the flexor controls the rate.",
         "Muscles cannot push; they can only pull.",
         "The front muscle bends the elbow when it shortens. Here the elbow is straightening, so it is lengthening."
       ]

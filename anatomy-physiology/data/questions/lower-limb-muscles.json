@@ -199,7 +199,7 @@
       "Compartment syndrome of the anterior compartment of the leg",
       "Rupture of the calcaneal tendon",
       "A hamstring strain",
-      "Normal healing pain, since his pulse is present"
+      "Normal pain after a fracture is set"
     ],
     "correct": 0,
     "why": {
@@ -208,7 +208,7 @@
         "Correct. This is compartment syndrome of the front of the leg.",
         "A calcaneal tendon rupture causes weakness rising onto the toes and pain at the back of the ankle, not severe pain in the front of the leg.",
         "The hamstrings are on the back of the thigh, not the front of the leg.",
-        "A present pulse does not rule it out: the pressure in the large artery is far higher than the pressure in the compartment, so the pulse is often felt until late."
+        "Pain far worse than expected, and worse when the compartment's muscles are stretched, is not normal. A present pulse does not rule compartment syndrome out: the pressure in the large artery is far higher than the pressure in the compartment, so the pulse is often felt until late."
       ]
     }
   },
@@ -466,10 +466,10 @@
     "core": ["structure-function"],
     "q": "Why is the dorsogluteal site, in the upper outer buttock, avoided for intramuscular injections?",
     "options": [
-      "The gluteus maximus there is too thin to hold an injection",
+      "The gluteus maximus there is too thin to hold an injection of any useful volume",
       "The site has no bony landmarks at all",
       "Muscle there absorbs drugs faster than any other site",
-      "A large nerve leaving the pelvis below the piriformis runs nearby, and the thick fat layer often keeps the needle from reaching muscle"
+      "A large nerve runs nearby, and thick fat often keeps the needle out of muscle"
     ],
     "correct": 3,
     "why": {

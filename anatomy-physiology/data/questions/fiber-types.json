@@ -37,7 +37,7 @@
     "q": "A sports scientist takes thigh muscle biopsies from an elite marathon runner. Which result would you expect?",
     "options": [
       "Mostly fast glycolytic fibers with large glycogen stores",
-      "Mostly slow oxidative fibers with many capillaries",
+      "Mostly slow oxidative fibers with many capillaries and mitochondria",
       "Equal numbers of the three types, all pale in color",
       "Fibers much thicker than in untrained people"
     ],
@@ -341,7 +341,7 @@
       "Milder atrophy than in the cast",
       "About the same atrophy as in the cast",
       "Hypertrophy as the fibers contract on their own",
-      "Worse atrophy, ending in fat and scar"
+      "Worse atrophy, ending in replacement by fat and scar"
     ],
     "correct": 3,
     "why": {
@@ -489,7 +489,7 @@
     "q": "You walk slowly across a room, then jump as high as you can. Which fibers in your calf muscles are active in each task?",
     "options": [
       "Walking: fast glycolytic. Jumping: slow oxidative",
-      "Walking: all three types equally. Jumping: all three equally",
+      "Walking and jumping: all three types equally",
       "Walking: mainly slow oxidative. Jumping: all three types",
       "Walking: none. Jumping: fast glycolytic"
     ],
@@ -538,7 +538,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Twins are separated at birth. One becomes a sprinter and the other an office worker. What would you predict about their thigh muscles as adults?",
+    "q": "Identical twins are separated at birth. One becomes a sprinter and the other an office worker. What would you predict about their thigh muscles as adults?",
     "options": [
       "Very different proportions of slow and fast fibers, set by training",
       "Similar slow-to-fast proportions, but different fiber size and aerobic capacity",

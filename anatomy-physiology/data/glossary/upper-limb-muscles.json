@@ -15,7 +15,7 @@
     "say": "BY-seps BRAY-kee-eye; bray-kee-AL-iss; bray-kee-oh-ray-dee-AL-iss"
   },
   "forearm-muscles": {
-    "def": "Forearm muscles that move the wrist and fingers: flexors on the palm side from the medial epicondyle (flexor carpi radialis and ulnaris, palmaris longus, flexor digitorum superficialis and profundus) and extensors on the back from the lateral epicondyle (extensor carpi radialis longus and brevis, extensor carpi ulnaris, extensor digitorum). These are the extrinsic hand muscles; the intrinsic hand muscles, including the thenar and hypothenar eminences, lie in the hand.",
+    "def": "Forearm muscles that move the wrist and fingers: flexors on the palm side, most from the medial epicondyle (flexor carpi radialis and ulnaris, palmaris longus, flexor digitorum superficialis), plus the deeper flexor digitorum profundus from the ulna and extensors on the back from the lateral epicondyle (extensor carpi radialis longus and brevis, extensor carpi ulnaris, extensor digitorum). These are the extrinsic hand muscles; the intrinsic hand muscles, including the thenar and hypothenar eminences, lie in the hand.",
     "roots": [["carp-", "wrist"], ["digit-", "finger"], ["profundus", "deep"], ["thenar", "palm"], ["hypo-", "below"]],
     "say": "THEE-nar; HY-poh-thee-nar"
   }

@@ -37,7 +37,7 @@
     "options": [
       "Contract with far greater total force than the calf",
       "Keep contracting without ever relaxing",
-      "Make very small, precise adjustments in force",
+      "Make very small, precise adjustments in the force they produce",
       "Contract without needing motor neurons"
     ],
     "correct": 2,
@@ -264,7 +264,7 @@
       "Largest units first, then smaller ones",
       "All units at once, each firing at a low rate",
       "In random order each time",
-      "Smallest first, then larger"
+      "Smallest units first, then progressively larger ones"
     ],
     "correct": 3,
     "why": {

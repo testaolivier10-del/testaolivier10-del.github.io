@@ -26,7 +26,7 @@
   ],
   "anatomy": {
     "figure": "os-11-29",
-    "caption": "Muscles of the hip and thigh. Hide the labels and name the hip flexors, the four parts of the quadriceps femoris and the sartorius on the front, the adductors on the inner thigh, and the gluteal muscles and hamstrings behind."
+    "caption": "Muscles of the hip and thigh. Hide the labels and name the hip flexors, the three visible parts of the quadriceps femoris (the fourth, the vastus intermedius, lies hidden beneath) and the sartorius on the front, the adductors on the inner thigh, and the gluteal muscles and hamstrings behind."
   },
   "chain": [
     { "cause": "A tibia fracture bleeds and the injured muscles swell inside the anterior compartment of the leg.", "effect": "The volume inside the compartment grows." },

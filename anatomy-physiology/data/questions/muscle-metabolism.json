@@ -136,12 +136,12 @@
       },
       {
         "name": "ATP concentration in the fibers",
-        "answer": "none",
-        "why": "ATP stays close to its resting level because the energy systems remake it almost as fast as it is spent; it falls only modestly even in hard work."
+        "answer": "down",
+        "why": "It falls only modestly, to roughly three quarters of its resting level, far less than creatine phosphate, because the energy systems remake ATP almost as fast as it is spent."
       }
     ],
     "why": {
-      "correct": "A one-minute all-out run spends creatine phosphate early and relies heavily on fast glycolysis, which burns glycogen and produces lactate. Aerobic respiration is climbing too. Through it all, ATP itself stays nearly constant, because it is remade as fast as it is used."
+      "correct": "A one-minute all-out run spends creatine phosphate early and relies heavily on fast glycolysis, which burns glycogen and produces lactate. Aerobic respiration is climbing too. Through it all, ATP itself falls only modestly, because it is remade almost as fast as it is used."
     }
   },
   {
@@ -165,7 +165,7 @@
       "correct": "Lactate forms when pyruvate is produced faster than the mitochondria can use it, which happens at high work rates even when some oxygen is present. Turning pyruvate into lactate regenerates the NAD+ that keeps glycolysis running.",
       "options": [
         "Correct. Lactate forms when glycolysis outpaces the mitochondria.",
-        "ATP in a working fiber stays near its resting level. If it truly ran out, the fiber would lock in rigor.",
+        "ATP in a working fiber falls only modestly. If it truly ran out, the fiber would lock in rigor.",
         "Creatine kinase handles creatine phosphate and ADP. A different enzyme converts pyruvate to lactate.",
         "Glycolysis in muscle runs mainly on stored glycogen, and making lactate requires glycolysis to be running fast, not starved of glucose."
       ]
@@ -288,7 +288,7 @@
     "q": "At about mile 20 of a marathon, a runner who has eaten nothing during the race suddenly slows sharply and says her legs feel empty. What is the most likely cause?",
     "options": [
       "Her creatine phosphate stores have just run out",
-      "Her muscle glycogen is nearly used up",
+      "Her leg muscles' glycogen stores are nearly used up",
       "Lactic acid has poisoned her muscles",
       "Her muscle fibers have run completely out of ATP"
     ],
@@ -299,7 +299,7 @@
         "Creatine phosphate matters in the first seconds of hard effort. It was spent and rebuilt many times over the race; it does not suddenly run out at mile 20.",
         "Correct. Glycogen depletion limits long endurance events.",
         "Lactate is a fuel, not a poison, and in a steady marathon it stays fairly low.",
-        "ATP stays near its resting level even in severe fatigue. If it truly ran out, her muscles would lock rigid."
+        "ATP stays near three quarters of its resting level even in severe fatigue. If it truly ran out, her muscles would lock rigid."
       ]
     }
   },
@@ -471,7 +471,7 @@
     ],
     "q": "Twenty minutes into a steady, comfortable bike ride, how are the rider's leg muscles mainly making ATP?",
     "options": [
-      "Aerobic respiration of fatty acids and glucose",
+      "Aerobic respiration of fatty acids and glucose in mitochondria",
       "Anaerobic glycolysis of muscle glycogen",
       "Creatine phosphate rebuilt between pedal strokes",
       "Stored ATP from before the ride"
@@ -541,9 +541,9 @@
         "why": "Oxygen delivered by the blood reloads the myoglobin that gave up its oxygen during the sprint."
       },
       {
-        "name": "Blood lactate",
+        "name": "Lactate in her leg muscles",
         "answer": "down",
-        "why": "Heart and resting muscle burn lactate and the liver turns it into glucose, clearing it within about an hour."
+        "why": "Lactate leaves the fibers into the blood, and heart, resting muscle and liver burn it or turn it into glucose; it is gone within about an hour."
       }
     ],
     "why": {

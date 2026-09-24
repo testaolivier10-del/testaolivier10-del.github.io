@@ -4560,6 +4560,3837 @@
    ]
   },
   {
+   "id": "skin-layers",
+   "title": "Skin layers diagram",
+   "chapter": "integumentary",
+   "topic": "skin-layers",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-5-2",
+     "topic": "skin-layers",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "epidermis",
+       "name": "Epidermis",
+       "accept": [],
+       "box": [
+        987,
+        210,
+        97,
+        23
+       ],
+       "concept": "epidermis",
+       "taught": "skin-layers",
+       "fn": "The thin surface layer of the skin: keratinized stratified squamous epithelium with no blood vessels of its own. It is fed by diffusion from the dermis below and renews itself from its deepest layer.",
+       "follow": {
+        "q": "The epidermis has no blood vessels. How do its living cells get oxygen and nutrients?",
+        "options": [
+         "By diffusion from capillaries in the dermis beneath it",
+         "From the outside air, absorbed through the dead surface cells",
+         "From a network of capillaries inside the stratum corneum",
+         "From the fat of the hypodermis directly"
+        ],
+        "correct": 0,
+        "why": "Epithelium has no blood vessels, so the living deep cells of the epidermis are supplied by diffusion from capillaries in the dermis just under them. The dead surface cells need no supply, and the fat of the hypodermis lies too deep to feed the epidermis directly.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "dermis",
+       "name": "Dermis",
+       "accept": [],
+       "box": [
+        987,
+        402,
+        72,
+        20
+       ],
+       "concept": "dermis",
+       "taught": "skin-layers",
+       "fn": "The thick connective tissue layer under the epidermis. It holds blood vessels, nerves and lymphatic vessels, and its collagen and elastic fibers give skin its strength and stretch.",
+       "follow": {
+        "q": "Which layer of the skin gives it most of its strength and elasticity?",
+        "options": [
+         "The epidermis, through its tightly joined cells",
+         "The dermis, through its fibers",
+         "The hypodermis, through its fat cushion",
+         "The stratum corneum, through its keratin"
+        ],
+        "correct": 1,
+        "why": "The dermis is connective tissue packed with collagen fibers (strength) and elastic fibers (recoil). The epidermis is a sheet of cells with little fiber, and the hypodermis is mostly loose tissue and fat.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "hypodermis",
+       "name": "Hypodermis",
+       "accept": [
+        "subcutaneous layer",
+        "subcutaneous tissue",
+        "subcutis"
+       ],
+       "box": [
+        987,
+        618,
+        114,
+        24
+       ],
+       "concept": "hypodermis",
+       "taught": "skin-layers",
+       "fn": "The layer beneath the dermis, also called the subcutaneous layer: areolar and adipose tissue that anchors the skin to the muscles below, stores fat, cushions and insulates. Strictly it is not part of the skin."
+      },
+      {
+       "id": "cutaneous-vascular-plexus",
+       "name": "Cutaneous vascular plexus",
+       "accept": [
+        "cutaneous plexus",
+        "vascular plexus",
+        "dermal plexus"
+       ],
+       "box": [
+        922,
+        785,
+        180,
+        48
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "A network of arteries and veins running along the border of the dermis and hypodermis. Its branches rise into the dermis and end in capillaries that feed the dermis and, by diffusion, the epidermis."
+      },
+      {
+       "id": "adipose-tissue",
+       "name": "Adipose tissue",
+       "accept": [
+        "adipose",
+        "fat",
+        "fat tissue"
+       ],
+       "box": [
+        0,
+        791,
+        133,
+        24
+       ],
+       "concept": "loose-ct",
+       "taught": "connective-tissue",
+       "fn": "Fat tissue: cells filled with a single lipid droplet. In the hypodermis it stores energy, insulates against heat loss and cushions the structures beneath."
+      }
+     ],
+     "covered": [
+      {
+       "id": "hair-shaft",
+       "box": [
+        189,
+        116,
+        94,
+        20
+       ]
+      },
+      {
+       "id": "pore-of-sweat-gland-duct",
+       "box": [
+        808,
+        141,
+        223,
+        24
+       ]
+      },
+      {
+       "id": "arrector-pili-muscle",
+       "box": [
+        0,
+        350,
+        105,
+        43
+       ]
+      },
+      {
+       "id": "hair-follicle",
+       "box": [
+        0,
+        428,
+        102,
+        21
+       ]
+      },
+      {
+       "id": "sebaceous-gland",
+       "box": [
+        0,
+        484,
+        141,
+        48
+       ]
+      },
+      {
+       "id": "hair-root-plexus",
+       "box": [
+        0,
+        576,
+        143,
+        24
+       ]
+      },
+      {
+       "id": "sensory-nerve-fiber",
+       "box": [
+        0,
+        618,
+        175,
+        24
+       ]
+      },
+      {
+       "id": "hair-root",
+       "box": [
+        0,
+        659,
+        82,
+        20
+       ]
+      },
+      {
+       "id": "hair-follicle-receptor",
+       "box": [
+        0,
+        695,
+        102,
+        47
+       ]
+      },
+      {
+       "id": "eccrine-sweat-gland",
+       "box": [
+        923,
+        708,
+        179,
+        24
+       ]
+      },
+      {
+       "id": "pacinian-corpuscle",
+       "box": [
+        923,
+        749,
+        173,
+        23
+       ]
+      },
+      {
+       "id": "motor-nerve-fiber",
+       "box": [
+        0,
+        826,
+        154,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-5-8",
+     "topic": "skin-layers",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "upper-keratinocytes",
+       "name": "Upper keratinocytes",
+       "accept": [
+        "upper keratinocyte",
+        "keratinocytes",
+        "keratinocyte"
+       ],
+       "box": [
+        487,
+        340,
+        131,
+        49
+       ],
+       "concept": "keratinocyte",
+       "taught": "skin-layers",
+       "fn": "Keratinocytes pushed up from the stratum basale as new cells form below. They carry the melanin they received with them, so in dark skin the pigment reaches almost to the surface."
+      },
+      {
+       "id": "melanosomes",
+       "name": "Melanosomes",
+       "accept": [
+        "melanosome"
+       ],
+       "box": [
+        484,
+        491,
+        137,
+        21
+       ],
+       "concept": "melanocyte",
+       "taught": "skin-layers",
+       "fn": "Membrane-bound packets of melanin made by melanocytes and handed on to keratinocytes. Inside a keratinocyte they gather over the nucleus like a cap, shielding its DNA from ultraviolet light.",
+       "follow": {
+        "q": "Where do melanosomes collect inside a keratinocyte, and why?",
+        "options": [
+         "Over the nucleus, shading its DNA",
+         "At the cell membrane, to glue neighboring cells together",
+         "Around the mitochondria, to store energy for the cell",
+         "At the base of the cell, to anchor it to the dermis"
+        ],
+        "correct": 0,
+        "why": "Melanin absorbs ultraviolet light. Melanosomes cluster on the sun-facing side of the nucleus, so they shade the DNA. Joining cells is the job of desmosomes, not pigment.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "basal-keratinocytes",
+       "name": "Basal keratinocytes",
+       "accept": [
+        "basal keratinocyte",
+        "basal cells",
+        "basal cell"
+       ],
+       "box": [
+        487,
+        664,
+        131,
+        49
+       ],
+       "concept": "keratinocyte",
+       "taught": "skin-layers",
+       "fn": "Keratinocytes of the deepest layer, the stratum basale. They divide to replace the epidermis and are the first cells to receive melanosomes from the melanocytes beside them."
+      },
+      {
+       "id": "melanocytes",
+       "name": "Melanocytes",
+       "accept": [
+        "melanocyte"
+       ],
+       "box": [
+        490,
+        804,
+        125,
+        25
+       ],
+       "concept": "melanocyte",
+       "taught": "skin-layers",
+       "fn": "Pigment cells sitting among the basal cells of the stratum basale. Their long branches pass packets of melanin to the keratinocytes around them. Dark and light skin have about the same number of melanocytes.",
+       "follow": {
+        "q": "Compared with light skin, what mainly makes dark skin darker?",
+        "options": [
+         "Many more melanocytes packed into the stratum basale",
+         "More and darker melanin, spread higher",
+         "A much thicker stratum corneum over the whole body",
+         "Carotene stored in the fat of the hypodermis"
+        ],
+        "correct": 1,
+        "why": "People of all skin colors have roughly the same number of melanocytes. Skin color depends on how much melanin they make, what kind, and how the melanosomes are packaged and spread among keratinocytes. The stratum corneum and carotene are not what differs.",
+        "level": "apply"
+       }
+      }
+     ],
+     "shown": [
+      {
+       "id": "surface",
+       "why": "Marks the skin surface for orientation; not a structure to name."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "thick-skin-strata",
+   "title": "Histology station: strata of thick skin",
+   "chapter": "integumentary",
+   "topic": "skin-layers",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-5-5",
+     "topic": "skin-layers",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "dead-cells-filled-with-keratin",
+       "name": "Dead cells filled with keratin",
+       "accept": [
+        "dead keratinized cells",
+        "dead keratinocytes",
+        "corneocytes"
+       ],
+       "box": [
+        908,
+        18,
+        158,
+        46
+       ],
+       "concept": "keratinocyte",
+       "taught": "skin-layers",
+       "fn": "The flat, dead keratinocytes of the stratum corneum: envelopes of cross-linked keratin with no nucleus. They flake off at the surface and are replaced from below."
+      },
+      {
+       "id": "stratum-corneum",
+       "name": "Stratum corneum",
+       "accept": [
+        "corneum"
+       ],
+       "box": [
+        0,
+        86,
+        168,
+        21
+       ],
+       "concept": "epidermal-strata",
+       "taught": "skin-layers",
+       "fn": "The surface layer: 15 to 30 rows of dead, flat keratinocytes packed with keratin and sealed by lipids. It resists wear and water loss and is shed and replaced continuously.",
+       "follow": {
+        "q": "Why does the stratum corneum resist both scraping and water loss?",
+        "options": [
+         "Its living cells repair any damage within minutes",
+         "Its cells are packed full of melanin granules",
+         "Keratin-filled dead cells sealed by lipid",
+         "It has its own capillaries that refill any lost water"
+        ],
+        "correct": 2,
+        "why": "The corneum is dead cells filled with tough keratin, laid like bricks in the lipid mortar released by lamellar granules. Keratin resists abrasion and the lipid blocks water. The cells are not alive, melanin is for ultraviolet protection, and the epidermis has no capillaries.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "stratum-lucidum",
+       "name": "Stratum lucidum",
+       "accept": [
+        "lucidum"
+       ],
+       "box": [
+        0,
+        179,
+        158,
+        22
+       ],
+       "concept": "epidermal-strata",
+       "taught": "skin-layers",
+       "fn": "A thin, clear band of flat dead cells filled with eleiden, just below the stratum corneum. It is found only in thick skin, on the palms, the fingertips and the soles.",
+       "follow": {
+        "q": "A slide shows an epidermis with a clear band between the stratum granulosum and the stratum corneum. Where was the skin most likely taken from?",
+        "options": [
+         "The back of the hand",
+         "The sole of the foot",
+         "The upper eyelid",
+         "The skin of the scalp"
+        ],
+        "correct": 1,
+        "why": "The stratum lucidum, the clear band, is present only in thick skin: palms, fingertips and soles. The back of the hand, the eyelid and the scalp are covered by thin skin, which has four strata.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "stratum-granulosum",
+       "name": "Stratum granulosum",
+       "accept": [
+        "granulosum"
+       ],
+       "box": [
+        0,
+        274,
+        195,
+        26
+       ],
+       "concept": "epidermal-strata",
+       "taught": "skin-layers",
+       "fn": "A layer of flattening keratinocytes filled with granules: keratohyalin bundles the keratin filaments, and lamellar granules release lipids between the cells. Here the nuclei break down and the cells begin to die."
+      },
+      {
+       "id": "lamellar-granules",
+       "name": "Lamellar granules",
+       "accept": [
+        "lamellar granule",
+        "lamellated granules"
+       ],
+       "box": [
+        909,
+        294,
+        173,
+        26
+       ],
+       "concept": "epidermal-strata",
+       "taught": "skin-layers",
+       "fn": "Granules in the cells of the stratum granulosum that hold lipids. They release their lipids into the spaces between cells, making the water barrier of the upper epidermis."
+      },
+      {
+       "id": "keratinocyte",
+       "name": "Keratinocyte",
+       "accept": [
+        "keratinocytes"
+       ],
+       "box": [
+        909,
+        461,
+        126,
+        25
+       ],
+       "concept": "keratinocyte",
+       "taught": "skin-layers",
+       "fn": "The main cell of the epidermis. Keratinocytes are made in the stratum basale, fill with keratin as they are pushed upward, and die and flatten to form the stratum corneum."
+      },
+      {
+       "id": "stratum-spinosum",
+       "name": "Stratum spinosum",
+       "accept": [
+        "spinosum"
+       ],
+       "box": [
+        0,
+        468,
+        175,
+        25
+       ],
+       "concept": "epidermal-strata",
+       "taught": "skin-layers",
+       "fn": "The layer above the stratum basale, 8 to 10 cells thick. Its keratinocytes are joined by many desmosomes and begin to make keratin; epidermal dendritic cells, which catch invaders, are scattered here."
+      },
+      {
+       "id": "stratum-basale",
+       "name": "Stratum basale",
+       "accept": [
+        "basale",
+        "stratum germinativum",
+        "basal layer"
+       ],
+       "box": [
+        0,
+        661,
+        148,
+        22
+       ],
+       "concept": "epidermal-strata",
+       "taught": "skin-layers",
+       "fn": "The deepest layer of the epidermis: a single row of cube-shaped basal cells on the basement membrane. They divide throughout life to make new keratinocytes; melanocytes and Merkel cells sit among them.",
+       "follow": {
+        "q": "A wound removes the epidermis down to, but not including, the stratum basale. Why can the epidermis regrow?",
+        "options": [
+         "Its basal cells still divide",
+         "The dead stratum corneum cells come back to life and divide",
+         "Fibroblasts of the dermis turn into new keratinocytes",
+         "Melanocytes divide and change into keratinocytes"
+        ],
+        "correct": 0,
+        "why": "Only the stratum basale has cells that divide to make new keratinocytes. As long as it survives, the layers above can be rebuilt. The dead surface cells cannot divide, fibroblasts make connective tissue, and melanocytes make pigment.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "merkel-cell",
+       "name": "Merkel cell",
+       "accept": [
+        "tactile cell",
+        "tactile epithelial cell",
+        "merkel"
+       ],
+       "box": [
+        909,
+        693,
+        111,
+        21
+       ],
+       "concept": "epidermal-other-cells",
+       "taught": "skin-layers",
+       "fn": "A tactile (Merkel) cell: a touch-sensing cell in the stratum basale, pressed against the flat end of a nerve fiber. It signals light touch, and there are many on the fingertips."
+      },
+      {
+       "id": "melanocyte",
+       "name": "Melanocyte",
+       "accept": [
+        "melanocytes"
+       ],
+       "box": [
+        0,
+        743,
+        115,
+        26
+       ],
+       "concept": "melanocyte",
+       "taught": "skin-layers",
+       "fn": "A branching pigment cell in the stratum basale. It makes melanin and passes it in melanosomes to nearby keratinocytes, where the pigment shields their DNA from ultraviolet light."
+      },
+      {
+       "id": "dermis",
+       "name": "Dermis",
+       "accept": [],
+       "box": [
+        0,
+        806,
+        74,
+        21
+       ],
+       "concept": "dermis",
+       "taught": "skin-layers",
+       "fn": "The connective tissue under the epidermis. Its dermal papillae bulge up into the stratum basale, which increases the area of contact and locks the two layers together."
+      }
+     ],
+     "covered": [
+      {
+       "id": "sensory-neuron",
+       "box": [
+        909,
+        787,
+        159,
+        25
+       ]
+      }
+     ]
+    }
+   ],
+   "blurb": "The five strata of the epidermis in thick skin, drawn from a section of a palm or sole. The thin-skin comparison waits for a cleared micrograph."
+  },
+  {
+   "id": "hair-follicle-glands",
+   "title": "Hair follicle, glands and nail",
+   "chapter": "integumentary",
+   "topic": "skin-accessory",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-5-11",
+     "topic": "skin-accessory",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "medulla",
+       "name": "Medulla",
+       "accept": [
+        "hair medulla",
+        "medulla of hair"
+       ],
+       "box": [
+        505,
+        223,
+        84,
+        21
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The central core of a hair: loosely packed cells and air spaces. It is missing from fine hairs."
+      },
+      {
+       "id": "cortex",
+       "name": "Cortex",
+       "accept": [
+        "hair cortex",
+        "cortex of hair"
+       ],
+       "box": [
+        504,
+        261,
+        73,
+        22
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The thick middle layer of a hair: tightly packed keratin-filled cells that hold most of its pigment and give it strength."
+      },
+      {
+       "id": "cuticle",
+       "name": "Cuticle",
+       "accept": [
+        "hair cuticle",
+        "cuticle of hair"
+       ],
+       "box": [
+        504,
+        301,
+        76,
+        21
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The outer layer of a hair: a single layer of flat, overlapping cells like roof shingles. When it wears away at the tip, the cortex frays into split ends.",
+       "follow": {
+        "q": "A hair has split ends. Which layer of the hair has worn away first?",
+        "options": [
+         "The medulla",
+         "The cortex",
+         "The cuticle",
+         "The hair matrix"
+        ],
+        "correct": 2,
+        "why": "The cuticle is the protective outer layer of shingle-like cells. Once it wears off at the tip, the exposed cortex frays apart. The medulla is the core, and the matrix is in the bulb deep in the skin, not in the shaft.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "hair-shaft",
+       "name": "Hair shaft",
+       "accept": [
+        "shaft"
+       ],
+       "box": [
+        327,
+        261,
+        95,
+        22
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The part of a hair above the skin surface: dead keratinized cells in three layers (medulla, cortex, cuticle)."
+      },
+      {
+       "id": "sebaceous-gland",
+       "name": "Sebaceous gland",
+       "accept": [
+        "oil gland",
+        "sebaceous"
+       ],
+       "box": [
+        504,
+        369,
+        112,
+        51
+       ],
+       "concept": "sebaceous-gland",
+       "taught": "skin-accessory",
+       "fn": "An oil gland that empties into the hair follicle. Its cells fill with lipid and burst (holocrine secretion), releasing sebum that coats the hair and skin, keeps them supple and slows water loss.",
+       "follow": {
+        "q": "Why is a sebaceous gland called a holocrine gland?",
+        "options": [
+         "Whole cells fill with lipid and burst",
+         "It releases a watery secretion by exocytosis",
+         "It pinches off only the top of each cell",
+         "It secretes its product directly into the blood"
+        ],
+        "correct": 0,
+        "why": "In holocrine secretion the whole cell becomes the product: sebaceous cells fill with lipid and rupture, and the burst cells form sebum. Release by exocytosis is merocrine, pinching off the cell top is the apocrine mode, and secretion into the blood is endocrine.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "inner-root-sheath",
+       "name": "Inner root sheath",
+       "accept": [
+        "inner epithelial root sheath"
+       ],
+       "box": [
+        504,
+        457,
+        102,
+        46
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The inner epithelial layer of the follicle wall, made by the hair matrix. It hugs the growing hair and ends partway up the follicle."
+      },
+      {
+       "id": "arrector-pili-muscle",
+       "name": "Arrector pili muscle",
+       "accept": [
+        "arrector pili",
+        "arrector pilli"
+       ],
+       "box": [
+        64,
+        511,
+        80,
+        72
+       ],
+       "concept": "arrector-pili",
+       "taught": "skin-accessory",
+       "fn": "A small bundle of smooth muscle from the side of the follicle to the papillary dermis. Cold or fear makes it contract involuntarily, pulling the slanted hair upright and raising a goose bump.",
+       "follow": {
+        "q": "What kind of tissue is the arrector pili, and what controls it?",
+        "options": [
+         "Skeletal muscle under voluntary control",
+         "Smooth muscle under involuntary control",
+         "Dense connective tissue that does not contract",
+         "Epithelium that secretes oil"
+        ],
+        "correct": 1,
+        "why": "The arrector pili is smooth muscle, so it contracts without conscious control, for example in cold or fear. You cannot raise goose bumps at will the way you move skeletal muscle.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "outer-root-sheath",
+       "name": "Outer root sheath",
+       "accept": [
+        "outer epithelial root sheath"
+       ],
+       "box": [
+        504,
+        545,
+        106,
+        46
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The outer epithelial layer of the follicle wall, continuous with the epidermis at the surface. It surrounds the inner root sheath and the hair."
+      },
+      {
+       "id": "hair-matrix",
+       "name": "Hair matrix",
+       "accept": [
+        "matrix"
+       ],
+       "box": [
+        505,
+        633,
+        111,
+        21
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The layer of rapidly dividing cells in the hair bulb, just above the hair papilla. Its new cells are pushed upward, fill with hard keratin and die, forming the hair.",
+       "follow": {
+        "q": "Chemotherapy kills rapidly dividing cells. Which part of the hair follicle explains why hair often falls out during treatment?",
+        "options": [
+         "The hair papilla",
+         "The hair matrix",
+         "The outer root sheath",
+         "The hair shaft"
+        ],
+        "correct": 1,
+        "why": "The hair matrix is among the fastest-dividing tissues in the body, so drugs aimed at dividing cells stop hair production there. The papilla is connective tissue that feeds the matrix, the root sheath lines the follicle, and the shaft is already dead.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "hair-bulb",
+       "name": "Hair bulb",
+       "accept": [
+        "bulb"
+       ],
+       "box": [
+        80,
+        644,
+        72,
+        22
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The swollen base of the hair root, deep in the dermis or hypodermis. It holds the hair matrix and surrounds the hair papilla."
+      },
+      {
+       "id": "hair-papilla",
+       "name": "Hair papilla",
+       "accept": [
+        "dermal papilla of hair",
+        "papilla"
+       ],
+       "box": [
+        504,
+        696,
+        73,
+        50
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "A knob of dermal connective tissue with capillaries that pushes up into the base of the hair bulb. It feeds the dividing matrix cells above it."
+      }
+     ]
+    },
+    {
+     "figure": "os-5-2",
+     "topic": "skin-accessory",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "hair-shaft",
+       "name": "Hair shaft",
+       "accept": [
+        "shaft"
+       ],
+       "box": [
+        189,
+        116,
+        94,
+        20
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The part of a hair that projects above the skin surface: dead cells filled with hard keratin. It has no living cells, which is why cutting it does not hurt."
+      },
+      {
+       "id": "pore-of-sweat-gland-duct",
+       "name": "Pore of sweat gland duct",
+       "accept": [
+        "sweat pore",
+        "pore",
+        "sweat gland pore",
+        "pore of sweat gland"
+       ],
+       "box": [
+        808,
+        141,
+        223,
+        24
+       ],
+       "concept": "sweat-glands",
+       "taught": "skin-accessory",
+       "fn": "The opening on the skin surface where the duct of an eccrine sweat gland releases its watery sweat."
+      },
+      {
+       "id": "epidermis",
+       "name": "Epidermis",
+       "accept": [],
+       "box": [
+        987,
+        210,
+        97,
+        23
+       ],
+       "concept": "epidermis",
+       "taught": "skin-layers",
+       "fn": "The thin surface layer of the skin: keratinized stratified squamous epithelium with no blood vessels of its own. It is fed by diffusion from the dermis below and renews itself from its deepest layer."
+      },
+      {
+       "id": "arrector-pili-muscle",
+       "name": "Arrector pili muscle",
+       "accept": [
+        "arrector pili",
+        "arrector pilli"
+       ],
+       "box": [
+        0,
+        350,
+        105,
+        43
+       ],
+       "concept": "arrector-pili",
+       "taught": "skin-accessory",
+       "fn": "A small band of smooth muscle running from the side of a hair follicle up to the upper dermis. When it contracts, in cold or fear, it pulls the hair upright and raises a goose bump."
+      },
+      {
+       "id": "dermis",
+       "name": "Dermis",
+       "accept": [],
+       "box": [
+        987,
+        402,
+        72,
+        20
+       ],
+       "concept": "dermis",
+       "taught": "skin-layers",
+       "fn": "The thick connective tissue layer under the epidermis. It holds blood vessels, nerves and lymphatic vessels, and its collagen and elastic fibers give skin its strength and stretch."
+      },
+      {
+       "id": "hair-follicle",
+       "name": "Hair follicle",
+       "accept": [
+        "follicle"
+       ],
+       "box": [
+        0,
+        428,
+        102,
+        21
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The tube-shaped pocket of epidermis that dips into the dermis and holds the root of a hair. Dividing cells at its base make the hair."
+      },
+      {
+       "id": "sebaceous-gland",
+       "name": "Sebaceous (oil) gland",
+       "accept": [
+        "oil gland",
+        "sebaceous"
+       ],
+       "box": [
+        0,
+        484,
+        141,
+        48
+       ],
+       "concept": "sebaceous-gland",
+       "taught": "skin-accessory",
+       "fn": "An oil gland that empties into a hair follicle. Its cells fill with lipid and burst (holocrine secretion), releasing sebum that coats the hair and skin and slows water loss."
+      },
+      {
+       "id": "hypodermis",
+       "name": "Hypodermis",
+       "accept": [
+        "subcutaneous layer",
+        "subcutaneous tissue",
+        "subcutis"
+       ],
+       "box": [
+        987,
+        618,
+        114,
+        24
+       ],
+       "concept": "hypodermis",
+       "taught": "skin-layers",
+       "fn": "The layer beneath the dermis, also called the subcutaneous layer: areolar and adipose tissue that anchors the skin to the muscles below, stores fat, cushions and insulates. Strictly it is not part of the skin."
+      },
+      {
+       "id": "hair-root",
+       "name": "Hair root",
+       "accept": [
+        "root"
+       ],
+       "box": [
+        0,
+        659,
+        82,
+        20
+       ],
+       "concept": "hair-follicle",
+       "taught": "skin-accessory",
+       "fn": "The part of a hair below the skin surface, inside the follicle. It ends in the hair bulb, where the hair is made."
+      },
+      {
+       "id": "eccrine-sweat-gland",
+       "name": "Eccrine sweat gland",
+       "accept": [
+        "eccrine gland",
+        "sweat gland",
+        "merocrine sweat gland"
+       ],
+       "box": [
+        923,
+        708,
+        179,
+        24
+       ],
+       "concept": "sweat-glands",
+       "taught": "skin-accessory",
+       "fn": "A coiled tubular gland deep in the dermis with its own duct to a pore on the surface. It secretes watery sweat, mostly water and salts, that cools the body as it evaporates."
+      },
+      {
+       "id": "cutaneous-vascular-plexus",
+       "name": "Cutaneous vascular plexus",
+       "accept": [
+        "cutaneous plexus",
+        "vascular plexus",
+        "dermal plexus"
+       ],
+       "box": [
+        922,
+        785,
+        180,
+        48
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "A network of arteries and veins running along the border of the dermis and hypodermis. Its branches rise into the dermis and end in capillaries that feed the dermis and, by diffusion, the epidermis."
+      },
+      {
+       "id": "adipose-tissue",
+       "name": "Adipose tissue",
+       "accept": [
+        "adipose",
+        "fat",
+        "fat tissue"
+       ],
+       "box": [
+        0,
+        791,
+        133,
+        24
+       ],
+       "concept": "loose-ct",
+       "taught": "connective-tissue",
+       "fn": "Fat tissue: cells filled with a single lipid droplet. In the hypodermis it stores energy, insulates against heat loss and cushions the structures beneath."
+      }
+     ],
+     "covered": [
+      {
+       "id": "hair-root-plexus",
+       "box": [
+        0,
+        576,
+        143,
+        24
+       ]
+      },
+      {
+       "id": "sensory-nerve-fiber",
+       "box": [
+        0,
+        618,
+        175,
+        24
+       ]
+      },
+      {
+       "id": "hair-follicle-receptor",
+       "box": [
+        0,
+        695,
+        102,
+        47
+       ]
+      },
+      {
+       "id": "pacinian-corpuscle",
+       "box": [
+        923,
+        749,
+        173,
+        23
+       ]
+      },
+      {
+       "id": "motor-nerve-fiber",
+       "box": [
+        0,
+        826,
+        154,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-5-14",
+     "topic": "skin-accessory",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "pores",
+       "name": "Pores",
+       "accept": [
+        "pore",
+        "sweat pore",
+        "sweat pores"
+       ],
+       "box": [
+        539,
+        27,
+        65,
+        21
+       ],
+       "concept": "sweat-glands",
+       "taught": "skin-accessory",
+       "fn": "The openings on the skin surface where eccrine sweat gland ducts release sweat."
+      },
+      {
+       "id": "eccrine-sweat-gland",
+       "name": "Eccrine sweat gland",
+       "accept": [
+        "eccrine gland",
+        "sweat gland",
+        "merocrine sweat gland"
+       ],
+       "box": [
+        538,
+        393,
+        137,
+        50
+       ],
+       "concept": "sweat-glands",
+       "taught": "skin-accessory",
+       "fn": "A coiled tubular gland deep in the dermis with its own duct that winds up to a pore on the surface. Found over almost all the skin, densest on the palms, soles and forehead, it secretes watery sweat that cools the body as it evaporates.",
+       "follow": {
+        "q": "How does an eccrine sweat gland differ from an apocrine sweat gland?",
+        "options": [
+         "An eccrine gland opens into a hair follicle; an apocrine gland opens at a surface pore",
+         "An eccrine gland opens at a pore; an apocrine gland opens into a follicle",
+         "Only eccrine glands are found in the armpits and the groin",
+         "Only apocrine glands are already working from birth onward"
+        ],
+        "correct": 1,
+        "why": "Eccrine glands are the widespread glands whose ducts open at pores on the surface. Apocrine glands, mainly in the armpits and groin, empty into hair follicles and begin working at puberty. The first statement reverses the two.",
+        "level": "apply"
+       }
+      }
+     ],
+     "shown": [
+      {
+       "id": "skin-surface",
+       "why": "Marks the skin surface for orientation; not a structure to name."
+      }
+     ]
+    },
+    {
+     "figure": "os-5-13",
+     "topic": "skin-accessory",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "free-edge",
+       "name": "Free edge",
+       "accept": [
+        "free edge of nail"
+       ],
+       "box": [
+        0,
+        66,
+        95,
+        24
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The end of the nail that grows past the fingertip. With no nail bed beneath it, it looks white."
+      },
+      {
+       "id": "nail",
+       "name": "Nail",
+       "accept": [
+        "nail plate",
+        "nail body"
+       ],
+       "box": [
+        0,
+        124,
+        41,
+        20
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The nail plate: a hard plate of tightly packed dead keratinocytes on the back of the fingertip. It protects the tip and helps with picking things up."
+      },
+      {
+       "id": "lateral-nail-fold",
+       "name": "Lateral nail fold",
+       "accept": [
+        "nail fold"
+       ],
+       "box": [
+        0,
+        180,
+        137,
+        21
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The fold of skin along each side of the nail that frames the nail body."
+      },
+      {
+       "id": "lunula",
+       "name": "Lunula",
+       "accept": [
+        "lunule"
+       ],
+       "box": [
+        0,
+        238,
+        66,
+        20
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The pale crescent at the base of the nail body. It is the visible edge of the thick nail matrix, which hides the pink capillaries of the nail bed beneath.",
+       "follow": {
+        "q": "Why does the lunula look white while the rest of the nail looks pink?",
+        "options": [
+         "Thick matrix beneath it hides the capillaries",
+         "The nail plate is thicker there and contains bone",
+         "A pocket of air is trapped under the nail plate there",
+         "The nail plate there contains no keratin at all"
+        ],
+        "correct": 0,
+        "why": "The lunula lies over the nail matrix, a thick layer of dividing cells. That layer blocks the view of the capillaries below, so the crescent looks white. Elsewhere the thin nail bed lets the blood show through. Nails contain no bone.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "eponychium",
+       "name": "Eponychium",
+       "accept": [
+        "cuticle",
+        "nail cuticle"
+       ],
+       "box": [
+        0,
+        295,
+        113,
+        24
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The nail cuticle: a thin band of stratum corneum that grows from the proximal nail fold onto the base of the nail body and seals the gap between them."
+      },
+      {
+       "id": "proximal-nail-fold",
+       "name": "Proximal nail fold",
+       "accept": [
+        "nail fold"
+       ],
+       "box": [
+        0,
+        352,
+        153,
+        20
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The fold of skin that overlaps the base of the nail and hides the nail root beneath it."
+      },
+      {
+       "id": "eponychium-side",
+       "name": "Eponychium",
+       "accept": [
+        "cuticle",
+        "nail cuticle"
+       ],
+       "box": [
+        855,
+        63,
+        115,
+        24
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The nail cuticle: a thin band of stratum corneum that grows from the proximal nail fold onto the base of the nail body and seals the gap between them."
+      },
+      {
+       "id": "proximal-nail-fold-side",
+       "name": "Proximal nail fold",
+       "accept": [
+        "nail fold"
+       ],
+       "box": [
+        713,
+        102,
+        156,
+        21
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The fold of skin that overlaps the base of the nail and hides the nail root beneath it."
+      },
+      {
+       "id": "lunula-side",
+       "name": "Lunula",
+       "accept": [
+        "lunule"
+       ],
+       "box": [
+        963,
+        102,
+        69,
+        21
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The pale crescent at the base of the nail body. It is the visible edge of the thick nail matrix, which hides the pink capillaries of the nail bed beneath.",
+       "follow": {
+        "q": "Why does the lunula look white while the rest of the nail looks pink?",
+        "options": [
+         "Thick matrix beneath it hides the capillaries",
+         "The nail plate is thicker there and contains bone",
+         "A pocket of air is trapped under the nail plate there",
+         "The nail plate there contains no keratin at all"
+        ],
+        "correct": 0,
+        "why": "The lunula lies over the nail matrix, a thick layer of dividing cells. That layer blocks the view of the capillaries below, so the crescent looks white. Elsewhere the thin nail bed lets the blood show through. Nails contain no bone.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "nail-root",
+       "name": "Nail root",
+       "accept": [],
+       "box": [
+        691,
+        144,
+        83,
+        20
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The part of the nail plate hidden under the proximal nail fold. The nail matrix beneath it makes new nail.",
+       "follow": {
+        "q": "A nail is torn off but the nail root and matrix are intact. What happens next?",
+        "options": [
+         "A new nail grows from the matrix",
+         "No nail can ever grow back on that finger",
+         "The hyponychium thickens and turns into a new nail",
+         "The lunula slides forward to replace the lost plate"
+        ],
+        "correct": 0,
+        "why": "New nail is made by the nail matrix under the nail root. If the matrix survives, it keeps adding cells and a new nail grows out. The hyponychium only seals the free edge, and the lunula is just the visible part of the matrix.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "nail-body",
+       "name": "Nail body",
+       "accept": [
+        "nail plate",
+        "nail"
+       ],
+       "box": [
+        1012,
+        144,
+        90,
+        24
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "The visible part of the nail plate, resting on the nail bed. It is made of dead keratinized cells pushed forward from the nail matrix."
+      },
+      {
+       "id": "epidermis",
+       "name": "Epidermis",
+       "accept": [],
+       "box": [
+        645,
+        374,
+        96,
+        24
+       ],
+       "concept": "epidermis",
+       "taught": "skin-layers",
+       "fn": "The surface epithelium of the fingertip. The nail itself is a specialized product of the epidermis."
+      },
+      {
+       "id": "dermis",
+       "name": "Dermis",
+       "accept": [],
+       "box": [
+        780,
+        374,
+        72,
+        21
+       ],
+       "concept": "dermis",
+       "taught": "skin-layers",
+       "fn": "The connective tissue layer under the epidermis of the fingertip, carrying the blood vessels and nerves of the tip."
+      },
+      {
+       "id": "hyponychium",
+       "name": "Hyponychium",
+       "accept": [],
+       "box": [
+        979,
+        374,
+        123,
+        24
+       ],
+       "concept": "nail",
+       "taught": "skin-accessory",
+       "fn": "A thickened layer of stratum corneum under the free edge of the nail. It seals the space under the nail tip against dirt and microbes."
+      }
+     ],
+     "covered": [
+      {
+       "id": "phalanx",
+       "box": [
+        882,
+        374,
+        80,
+        21
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "long-bone",
+   "title": "Long bone anatomy",
+   "chapter": "bone-tissue",
+   "topic": "bone-structure",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-6-7",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        861,
+        17,
+        241,
+        34
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
+      },
+      {
+       "id": "proximal-epiphysis",
+       "name": "Proximal epiphysis",
+       "accept": [],
+       "box": [
+        0,
+        87,
+        134,
+        67
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded end of a long bone nearest the trunk. It is filled with a lattice of bone holding red bone marrow, and its surface meets the next bone at a joint."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [],
+       "box": [
+        0,
+        251,
+        160,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
+      },
+      {
+       "id": "red-bone-marrow",
+       "name": "Red bone marrow",
+       "accept": [
+        "red marrow"
+       ],
+       "box": [
+        696,
+        409,
+        250,
+        28
+       ],
+       "concept": "bone-marrow",
+       "taught": "bone-structure",
+       "fn": "Soft tissue in the spaces of the bone ends (and in flat bones such as the hip bone) that makes new blood cells, the process called hematopoiesis.",
+       "follow": {
+        "q": "Which job of the skeleton does red bone marrow carry out?",
+        "options": [
+         "Making blood cells",
+         "Storing fat for energy",
+         "Anchoring tendons to bone",
+         "Reducing friction at joints"
+        ],
+        "correct": 0,
+        "why": "Red bone marrow is where hematopoiesis happens: it makes red blood cells, white blood cells and platelets. Fat storage belongs to yellow bone marrow, tendons anchor in the periosteum, and articular cartilage reduces friction at joints.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "medullary-cavity",
+       "name": "Medullary cavity",
+       "accept": [
+        "marrow cavity"
+       ],
+       "box": [
+        696,
+        481,
+        227,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The hollow space running down the inside of the diaphysis. In an adult it holds yellow bone marrow; hollowing the shaft keeps the bone light without losing much strength."
+      },
+      {
+       "id": "endosteum",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        696,
+        856,
+        162,
+        28
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
+      },
+      {
+       "id": "yellow-bone-marrow",
+       "name": "Yellow bone marrow",
+       "accept": [
+        "yellow marrow"
+       ],
+       "box": [
+        695,
+        920,
+        282,
+        28
+       ],
+       "concept": "bone-marrow",
+       "taught": "bone-structure",
+       "fn": "Fatty marrow that fills the medullary cavity of an adult long bone. It stores fat as an energy reserve and can turn back into red bone marrow after severe blood loss.",
+       "follow": {
+        "q": "Yellow bone marrow is mostly made of which tissue?",
+        "options": [
+         "Hyaline cartilage from the bone ends",
+         "Adipose tissue",
+         "Blood-forming tissue",
+         "Dense connective tissue"
+        ],
+        "correct": 1,
+        "why": "Yellow marrow is mainly fat cells, an energy store. Blood-forming tissue is red marrow, hyaline cartilage caps the joint surfaces, and dense connective tissue forms the outer periosteum.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "diaphysis",
+       "name": "Diaphysis",
+       "accept": [
+        "shaft"
+       ],
+       "box": [
+        0,
+        932,
+        139,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The long, tubular shaft of a long bone, between the two ends. Its thick wall of dense bone surrounds the medullary cavity and bears most of the load along the bone.",
+       "follow": {
+        "q": "Which pair of structures lies inside the diaphysis of an adult long bone?",
+        "options": [
+         "Articular cartilage and red marrow",
+         "Epiphyses and periosteum",
+         "Medullary cavity and yellow marrow",
+         "Nutrient artery and articular cartilage"
+        ],
+        "correct": 2,
+        "why": "The shaft is a tube: its hollow medullary cavity holds yellow marrow in an adult. Articular cartilage sits on the ends, red marrow mostly fills the ends, and the periosteum wraps the outside.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        696,
+        1006,
+        162,
+        28
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
+      },
+      {
+       "id": "nutrient-artery",
+       "name": "Nutrient artery",
+       "accept": [],
+       "box": [
+        696,
+        1176,
+        202,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The main artery of a long bone. It enters the diaphysis through a nutrient foramen near the middle of the shaft and branches toward both ends, supplying the marrow and the inner part of the shaft wall.",
+       "follow": {
+        "q": "Through which opening does the nutrient artery reach the medullary cavity?",
+        "options": [
+         "The articular cartilage at each end",
+         "A gap in the endosteum at the metaphysis",
+         "The medullary cavity opening at the epiphysis",
+         "The nutrient foramen in the shaft"
+        ],
+        "correct": 3,
+        "why": "The nutrient artery passes through a nutrient foramen, a slanted hole through the wall of the diaphysis. Articular cartilage has no vessels, and the medullary cavity is closed off from the outside by bone.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "metaphysis-distal",
+       "name": "Metaphysis",
+       "accept": [
+        "distal metaphysis"
+       ],
+       "box": [
+        0,
+        1465,
+        160,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
+      },
+      {
+       "id": "distal-epiphysis",
+       "name": "Distal epiphysis",
+       "accept": [],
+       "box": [
+        0,
+        1690,
+        134,
+        68
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded end of a long bone farthest from the trunk. Like the proximal end, it is filled with a lattice of bone and red bone marrow and is capped with articular cartilage where it meets the next bone."
+      },
+      {
+       "id": "articular-cartilage-distal",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        694,
+        1778,
+        245,
+        34
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
+      }
+     ],
+     "covered": [
+      {
+       "id": "spongy-bone",
+       "box": [
+        697,
+        262,
+        190,
+        36
+       ]
+      },
+      {
+       "id": "epiphyseal-line",
+       "box": [
+        696,
+        338,
+        213,
+        34
+       ]
+      },
+      {
+       "id": "compact-bone",
+       "box": [
+        697,
+        545,
+        202,
+        38
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-15",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        922,
+        64,
+        166,
+        94
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
+      },
+      {
+       "id": "epiphyseal-artery-and-vein",
+       "name": "Epiphyseal artery and vein",
+       "accept": [
+        "epiphyseal artery",
+        "epiphyseal vein",
+        "epiphyseal vessels"
+       ],
+       "box": [
+        80,
+        106,
+        212,
+        144
+       ],
+       "concept": null,
+       "fn": "Vessels that enter and leave the epiphysis directly through small holes in the bone end. They supply the red bone marrow and bone tissue of the end, separate from the nutrient artery of the shaft."
+      },
+      {
+       "id": "metaphyseal-artery-and-vein",
+       "name": "Metaphyseal artery and vein",
+       "accept": [
+        "metaphyseal artery",
+        "metaphyseal vein",
+        "metaphyseal vessels"
+       ],
+       "box": [
+        80,
+        306,
+        242,
+        144
+       ],
+       "concept": null,
+       "fn": "Vessels that pass through the wall of the metaphysis to supply the flared region between shaft and end. Together with the epiphyseal and nutrient vessels they give a long bone several routes for blood."
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        762,
+        570,
+        212,
+        46
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
+      },
+      {
+       "id": "nutrient-artery-and-vein",
+       "name": "Nutrient artery and vein",
+       "accept": [
+        "nutrient artery",
+        "nutrient vein",
+        "nutrient vessels"
+       ],
+       "box": [
+        74,
+        832,
+        172,
+        144
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The main vessels of a long bone. The nutrient artery enters the shaft near its middle and branches up and down the medullary cavity; the nutrient vein leaves by the same hole."
+      },
+      {
+       "id": "nutrient-foramen",
+       "name": "Nutrient foramen",
+       "accept": [],
+       "box": [
+        76,
+        1032,
+        166,
+        94
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "A small hole that runs slantwise through the wall of the diaphysis. The nutrient artery and vein pass through it into and out of the medullary cavity.",
+       "follow": {
+        "q": "What passes through a nutrient foramen?",
+        "options": [
+         "The nutrient artery and vein",
+         "The tendon of a muscle",
+         "Yellow bone marrow leaving the bone",
+         "Articular cartilage cells"
+        ],
+        "correct": 0,
+        "why": "This hole carries the bone’s main artery in and its vein out. Tendons attach to the surface, marrow stays inside, and cartilage cells stay in the cartilage cap.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "medullary-cavity",
+       "name": "Medullary cavity",
+       "accept": [
+        "marrow cavity"
+       ],
+       "box": [
+        762,
+        1086,
+        300,
+        46
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The hollow space running down the inside of the diaphysis. In an adult it holds yellow bone marrow; hollowing the shaft keeps the bone light without losing much strength."
+      },
+      {
+       "id": "metaphyseal-artery-and-vein-distal",
+       "name": "Metaphyseal artery and vein",
+       "accept": [
+        "metaphyseal artery",
+        "metaphyseal vein",
+        "metaphyseal vessels"
+       ],
+       "box": [
+        0,
+        1290,
+        290,
+        94
+       ],
+       "concept": null,
+       "fn": "Vessels that pass through the wall of the metaphysis at the far end of the bone to supply the flared region between shaft and end."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [],
+       "box": [
+        0,
+        1458,
+        220,
+        44
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
+      }
+     ],
+     "covered": [
+      {
+       "id": "compact-bone",
+       "box": [
+        762,
+        704,
+        170,
+        94
+       ]
+      },
+      {
+       "id": "epiphyseal-line",
+       "box": [
+        812,
+        1482,
+        206,
+        96
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-8",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "endosteum-inset",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        787,
+        144,
+        116,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
+      },
+      {
+       "id": "periosteum-inset",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        185,
+        196,
+        116,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
+      },
+      {
+       "id": "endosteum",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        581,
+        299,
+        116,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
+      },
+      {
+       "id": "periosteum-fibrous-layer",
+       "name": "Periosteum (fibrous layer)",
+       "accept": [
+        "fibrous layer",
+        "fibrous layer of periosteum",
+        "periosteum fibrous layer",
+        "outer fibrous layer",
+        "fibrous periosteum"
+       ],
+       "box": [
+        0,
+        341,
+        137,
+        50
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The outer layer of the periosteum, made of dense connective tissue. Tendons and ligaments anchor into it, and it carries the vessels and nerves that enter the bone."
+      },
+      {
+       "id": "periosteum-cellular-layer",
+       "name": "Periosteum (cellular layer)",
+       "accept": [
+        "cellular layer",
+        "cellular layer of periosteum",
+        "periosteum cellular layer",
+        "inner cellular layer",
+        "osteogenic layer"
+       ],
+       "box": [
+        0,
+        439,
+        140,
+        51
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The inner layer of the periosteum, pressed against the bone. It holds cells that can lay down new bone and cells that break it down, so the bone can thicken or be repaired from the outside.",
+       "follow": {
+        "q": "A bone must be thickened from its outer surface. Which layer holds the cells that do this?",
+        "options": [
+         "The fibrous outer layer of the periosteum",
+         "The cellular layer of the periosteum",
+         "The articular cartilage",
+         "The yellow bone marrow"
+        ],
+        "correct": 1,
+        "why": "Bone-building and bone-removing cells sit in the inner cellular layer, against the bone. The fibrous layer is anchoring tissue, articular cartilage only caps joint surfaces, and yellow marrow is a fat store inside the shaft.",
+        "level": "apply"
+       }
+      }
+     ],
+     "covered": [
+      {
+       "id": "osteoclast",
+       "box": [
+        580,
+        334,
+        111,
+        21
+       ]
+      },
+      {
+       "id": "osteocyte-in-lacuna",
+       "box": [
+        398,
+        355,
+        106,
+        46
+       ]
+      },
+      {
+       "id": "bone-matrix",
+       "box": [
+        581,
+        369,
+        123,
+        21
+       ]
+      },
+      {
+       "id": "osteocyte",
+       "box": [
+        580,
+        402,
+        106,
+        25
+       ]
+      },
+      {
+       "id": "osteogenic-cell",
+       "box": [
+        580,
+        434,
+        154,
+        26
+       ]
+      },
+      {
+       "id": "osteoblast",
+       "box": [
+        580,
+        477,
+        112,
+        21
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-6",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "flat-bone",
+       "name": "Flat bone",
+       "accept": [
+        "flat"
+       ],
+       "box": [
+        134,
+        4,
+        90,
+        20
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A thin, flat, often curved bone made of two plates of dense bone with a layer of lattice bone between. Flat bones such as the breastbone, ribs and skull roof protect organs and give muscles broad surfaces."
+      },
+      {
+       "id": "irregular-bone",
+       "name": "Irregular bone",
+       "accept": [
+        "irregular"
+       ],
+       "box": [
+        772,
+        4,
+        128,
+        24
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A bone with a complex shape that fits none of the other groups, such as a vertebra or a bone of the face."
+      },
+      {
+       "id": "vertebra",
+       "name": "Vertebra",
+       "accept": [
+        "vertebrae"
+       ],
+       "box": [
+        888,
+        101,
+        84,
+        19
+       ],
+       "concept": null,
+       "fn": "One of the stacked bones of the backbone. Its complex shape makes it an irregular bone."
+      },
+      {
+       "id": "long-bone",
+       "name": "Long bone",
+       "accept": [
+        "long"
+       ],
+       "box": [
+        0,
+        364,
+        97,
+        24
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A bone longer than it is wide, with a shaft and two ends. Long bones such as the thigh bone and the finger bones act as rigid bars that muscles pull on to move the body.",
+       "follow": {
+        "q": "Which feature makes a bone a long bone?",
+        "options": [
+         "It is longer than 20 cm",
+         "It is found in a limb",
+         "It is longer than it is wide",
+         "It contains red bone marrow in its ends"
+        ],
+        "correct": 2,
+        "why": "Shape, not size, defines the group: a long bone has a shaft longer than it is wide, so even a tiny finger bone is a long bone. Other bone shapes also hold red marrow.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "short-bones",
+       "name": "Short bones",
+       "accept": [
+        "short bone",
+        "short"
+       ],
+       "box": [
+        784,
+        572,
+        114,
+        19
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "Bones about as wide as they are long, roughly cube-shaped, such as the bones of the wrist and ankle. They give stability with a little gliding movement."
+      },
+      {
+       "id": "sesamoid-bone",
+       "name": "Sesamoid bone",
+       "accept": [
+        "sesamoid"
+       ],
+       "box": [
+        111,
+        836,
+        142,
+        19
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A small, round bone that forms inside a tendon where it passes over a joint, like the bone at the front of the knee. It protects the tendon and improves its pull."
+      }
+     ],
+     "covered": [
+      {
+       "id": "sternum",
+       "box": [
+        36,
+        184,
+        83,
+        20
+       ]
+      },
+      {
+       "id": "femur",
+       "box": [
+        0,
+        650,
+        65,
+        20
+       ]
+      },
+      {
+       "id": "lateral-cuneiform",
+       "box": [
+        604,
+        788,
+        94,
+        41
+       ]
+      },
+      {
+       "id": "intermediate-cuneiform",
+       "box": [
+        604,
+        876,
+        117,
+        41
+       ]
+      },
+      {
+       "id": "medial-cuneiform",
+       "box": [
+        604,
+        959,
+        94,
+        40
+       ]
+      },
+      {
+       "id": "patella",
+       "box": [
+        45,
+        999,
+        68,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-10",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "crest",
+       "name": "Crest",
+       "accept": [
+        "iliac crest"
+       ],
+       "box": [
+        587,
+        62,
+        57,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A long, prominent ridge of bone, like the curved top edge of the hip bone. Muscles attach along its length."
+      },
+      {
+       "id": "fossa",
+       "name": "Fossa",
+       "accept": [],
+       "box": [
+        789,
+        62,
+        62,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A shallow basin or depression in a bone. It may hold part of another bone when a joint moves, or give a muscle a broad surface to attach to."
+      },
+      {
+       "id": "head",
+       "name": "Head",
+       "accept": [],
+       "box": [
+        218,
+        92,
+        56,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A large, rounded end of a bone that sits on a narrower neck and meets another bone at a joint, as at the top of the upper arm bone and the thigh bone."
+      },
+      {
+       "id": "tubercle",
+       "name": "Tubercle",
+       "accept": [
+        "greater tubercle"
+       ],
+       "box": [
+        184,
+        151,
+        83,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A small, rounded bump on a bone where a tendon or ligament attaches, like the bumps at the upper end of the upper arm bone."
+      },
+      {
+       "id": "tuberosity",
+       "name": "Tuberosity",
+       "accept": [
+        "deltoid tuberosity"
+       ],
+       "box": [
+        155,
+        360,
+        98,
+        24
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A large, rough, raised area on a bone where a strong muscle attaches through its tendon, like the rough patch partway down the upper arm bone where the shoulder muscle pulls.",
+       "follow": {
+        "q": "A marking is large and rough, and a tendon attaches there. Which kind of marking is it?",
+        "options": [
+         "A facet",
+         "A condyle",
+         "A crest",
+         "A tuberosity"
+        ],
+        "correct": 3,
+        "why": "Rough projections are built for pulling tendons: a large, rough one is a tuberosity. A facet and a condyle are smooth joint surfaces, and a fossa is a depression, not a projection.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "fossa-humerus",
+       "name": "Fossa",
+       "accept": [],
+       "box": [
+        149,
+        481,
+        62,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A shallow basin in a bone surface. This one, at the lower end of the upper arm bone, receives part of a forearm bone when the elbow bends."
+      },
+      {
+       "id": "condyle",
+       "name": "Condyle",
+       "accept": [],
+       "box": [
+        277,
+        610,
+        81,
+        24
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A smooth, rounded knob at the end of a bone that meets another bone at a joint, like the knobs at the lower end of the upper arm bone."
+      },
+      {
+       "id": "tubercle-femur",
+       "name": "Tubercle",
+       "accept": [
+        "adductor tubercle"
+       ],
+       "box": [
+        158,
+        611,
+        83,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A small, rounded bump on a bone where a tendon or ligament attaches; this one sits just above the lower end of the thigh bone."
+      },
+      {
+       "id": "facet",
+       "name": "Facet",
+       "accept": [],
+       "box": [
+        197,
+        643,
+        58,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A small, flat, smooth surface where a bone meets another bone at a joint, like the surfaces where each vertebra meets the next."
+      },
+      {
+       "id": "condyles",
+       "name": "Condyles",
+       "accept": [
+        "condyle"
+       ],
+       "box": [
+        51,
+        726,
+        91,
+        23
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "The two smooth, rounded knobs at the lower end of the thigh bone. They rest on the leg bone below and form the knee."
+      },
+      {
+       "id": "canal",
+       "name": "Canal",
+       "accept": [],
+       "box": [
+        535,
+        765,
+        61,
+        19
+       ],
+       "concept": null,
+       "fn": "A tunnel through bone that carries vessels or nerves along its length. This one, in the skull, leads from the eye socket toward the brain."
+      },
+      {
+       "id": "fissure",
+       "name": "Fissure",
+       "accept": [
+        "superior orbital fissure"
+       ],
+       "box": [
+        911,
+        765,
+        73,
+        20
+       ],
+       "concept": null,
+       "fn": "A narrow slit through a bone, or between two bones, that lets vessels and nerves pass. This one lies at the back of the eye socket."
+      },
+      {
+       "id": "protuberance",
+       "name": "Protuberance",
+       "accept": [
+        "mental protuberance"
+       ],
+       "box": [
+        536,
+        1015,
+        124,
+        19
+       ],
+       "concept": null,
+       "fn": "A bump that sticks out from a bone surface, like the point of the chin on the lower jaw."
+      }
+     ],
+     "covered": [
+      {
+       "id": "fovea-capitis",
+       "box": [
+        69,
+        69,
+        120,
+        23
+       ]
+      },
+      {
+       "id": "sulcus",
+       "box": [
+        396,
+        170,
+        68,
+        19
+       ]
+      },
+      {
+       "id": "pelvis",
+       "box": [
+        712,
+        442,
+        65,
+        19
+       ]
+      },
+      {
+       "id": "humerus",
+       "box": [
+        355,
+        560,
+        93,
+        19
+       ]
+      },
+      {
+       "id": "sinus",
+       "box": [
+        681,
+        612,
+        59,
+        20
+       ]
+      },
+      {
+       "id": "femur",
+       "box": [
+        0,
+        684,
+        67,
+        20
+       ]
+      },
+      {
+       "id": "foramen",
+       "box": [
+        911,
+        710,
+        83,
+        20
+       ]
+      }
+     ],
+     "shown": [
+      {
+       "id": "skull",
+       "why": "The name of the whole drawing, not a marking on it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bone-tissue-histology",
+   "title": "Histology station: bone cells and bone tissue",
+   "chapter": "bone-tissue",
+   "topic": "bone-histology",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-6-11",
+     "topic": "bone-histology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "osteocyte",
+       "name": "Osteocyte",
+       "accept": [
+        "osteocytes"
+       ],
+       "box": [
+        0,
+        494,
+        123,
+        75
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A mature bone cell trapped in a lacuna inside the matrix. Its long arms run through canaliculi to touch its neighbors; it maintains the bone tissue around it and senses strain.",
+       "follow": {
+        "q": "How does an osteocyte form?",
+        "options": [
+         "An osteoblast is walled in by its own matrix",
+         "An osteoclast fuses with neighboring cells",
+         "An osteogenic cell divides inside a lacuna",
+         "Two osteoclasts fuse inside the calcified matrix"
+        ],
+        "correct": 0,
+        "why": "Osteoblasts lay down matrix around themselves until they are trapped in a lacuna; they then become osteocytes. Osteoclasts form by fusion of blood-forming cells and do not become osteocytes, and osteogenic cells divide on bone surfaces, not in lacunae.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "osteoblast",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        159,
+        494,
+        193,
+        50
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A bone-building cell on the bone surface. It secretes the organic part of the matrix (osteoid) and helps it mineralize; when it is walled in by its own matrix it becomes an osteocyte."
+      },
+      {
+       "id": "osteogenic-cell",
+       "name": "Osteogenic cell",
+       "accept": [
+        "osteogenic cells",
+        "osteoprogenitor cell",
+        "osteoprogenitor"
+       ],
+       "box": [
+        411,
+        494,
+        166,
+        50
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A flat stem cell in the inner periosteum and the endosteum. It is the only bone cell that divides; its daughters become osteoblasts."
+      },
+      {
+       "id": "osteoclast",
+       "name": "Osteoclast",
+       "accept": [
+        "osteoclasts"
+       ],
+       "box": [
+        641,
+        494,
+        147,
+        50
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A very large cell with many nuclei on the bone surface. It dissolves the mineral and digests the collagen of bone, breaking bone down (resorption).",
+       "follow": {
+        "q": "An osteoclast is large and has many nuclei. Why?",
+        "options": [
+         "It divides its nucleus without dividing",
+         "It forms by fusion of several cells",
+         "It engulfs whole osteocytes",
+         "It grows from an osteogenic cell over years"
+        ],
+        "correct": 1,
+        "why": "Osteoclasts form when several precursor cells from the blood-forming lineage fuse, so one cell carries many nuclei. It does not arise from the osteogenic cell line, which makes osteoblasts, and it does not engulf cells.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-6-13",
+     "topic": "bone-histology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone",
+        "trabecular bone"
+       ],
+       "box": [
+        251,
+        34,
+        133,
+        25
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "Bone built as a lattice of thin struts (trabeculae) instead of solid layers. It fills the ends of long bones, where it is light but strong along the lines of stress."
+      },
+      {
+       "id": "compact-bone",
+       "name": "Compact bone",
+       "accept": [
+        "cortical bone"
+       ],
+       "box": [
+        138,
+        224,
+        145,
+        26
+       ],
+       "concept": "compact-bone",
+       "taught": "bone-histology",
+       "fn": "The dense, solid bone that forms the wall of the shaft and the outer shell of every bone. It is made of tightly packed osteons."
+      },
+      {
+       "id": "trabeculae",
+       "name": "Trabeculae",
+       "accept": [
+        "trabecula",
+        "trabeculas"
+       ],
+       "box": [
+        402,
+        225,
+        113,
+        21
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The thin struts and plates of bone that make up spongy bone. They line up along the lines of stress, and the spaces between them hold red marrow.",
+       "follow": {
+        "q": "Why does spongy bone have no osteons or central canals?",
+        "options": [
+         "Its cells need no oxygen to survive",
+         "It has no living cells in its matrix",
+         "Its trabeculae are thin, near marrow spaces",
+         "Its trabeculae are made of hyaline cartilage"
+        ],
+        "correct": 2,
+        "why": "Each trabecula is thin enough that osteocytes are supplied by diffusion through canaliculi from the marrow spaces around it, so no central canal is needed. Spongy bone is living bone tissue with osteocytes, not cartilage.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lacuna",
+       "name": "Lacuna",
+       "accept": [
+        "lacunae"
+       ],
+       "box": [
+        913,
+        339,
+        79,
+        22
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "A small cavity in the bone matrix that holds one osteocyte. Lacunae sit between the lamellae."
+      },
+      {
+       "id": "osteocyte",
+       "name": "Osteocyte",
+       "accept": [
+        "osteocytes"
+       ],
+       "box": [
+        912,
+        425,
+        105,
+        25
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A mature bone cell in its lacuna. It maintains the matrix around it and passes signals and nutrients to its neighbors through canaliculi."
+      },
+      {
+       "id": "osteoclast",
+       "name": "Osteoclast",
+       "accept": [
+        "osteoclasts"
+       ],
+       "box": [
+        912,
+        485,
+        110,
+        21
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A large cell with many nuclei on the surface of a trabecula. It breaks down (resorbs) bone, working with osteoblasts to reshape the struts."
+      },
+      {
+       "id": "osteoblasts",
+       "name": "Osteoblasts aligned along trabeculae of new bone",
+       "accept": [],
+       "box": [
+        912,
+        555,
+        190,
+        70
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "Bone-building cells lined up along the surface of a trabecula. They lay down new matrix, which thickens the strut."
+      },
+      {
+       "id": "canaliculi-openings",
+       "name": "Canaliculi openings on surface",
+       "accept": [
+        "canaliculi openings",
+        "canaliculi",
+        "canaliculus"
+       ],
+       "box": [
+        148,
+        628,
+        108,
+        70
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "The tiny openings of canaliculi on the surface of a trabecula. Through them, osteocytes inside the strut exchange nutrients and wastes with the marrow space."
+      },
+      {
+       "id": "endosteum",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        305,
+        628,
+        115,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin cell layer covering the surfaces of the trabeculae. It holds osteogenic cells, osteoblasts and osteoclasts."
+      },
+      {
+       "id": "lamellae-trabecula",
+       "name": "Lamellae",
+       "accept": [
+        "lamella"
+       ],
+       "box": [
+        443,
+        628,
+        95,
+        21
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "The thin layers of matrix that build up a trabecula, laid down one on top of another."
+      },
+      {
+       "id": "canaliculi",
+       "name": "Canaliculi",
+       "accept": [
+        "canaliculus"
+       ],
+       "box": [
+        912,
+        655,
+        101,
+        22
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "Tiny channels in the matrix that link lacunae with each other and with the bone surface. The arms of osteocytes run through them, carrying nutrients, wastes and signals.",
+       "follow": {
+        "q": "An osteocyte is walled in by hard matrix. How does it get nutrients?",
+        "options": [
+         "Through blood vessels inside its lacuna",
+         "By dissolving the matrix around it",
+         "By diffusion straight through the hard mineral",
+         "Through canaliculi linking it to other cells"
+        ],
+        "correct": 3,
+        "why": "Osteocyte arms run through canaliculi and join at gap junctions, so nutrients and signals pass from cell to cell out to the nearest vessel or marrow space. There is no vessel in a lacuna, the mineral blocks diffusion, and osteocytes do not dissolve their own walls to feed.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lamellae",
+       "name": "Lamellae",
+       "accept": [
+        "lamella"
+       ],
+       "box": [
+        913,
+        707,
+        95,
+        21
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "Thin layers of mineralized matrix. Their collagen fibers run in a different direction in each layer, which helps bone resist twisting."
+      }
+     ]
+    },
+    {
+     "figure": "os-6-9",
+     "topic": "bone-histology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "compact-bone",
+       "name": "Compact bone",
+       "accept": [
+        "cortical bone"
+       ],
+       "box": [
+        717,
+        113,
+        96,
+        46
+       ],
+       "concept": "compact-bone",
+       "taught": "bone-histology",
+       "fn": "The dense, solid bone that forms the outer plates of this flat bone. Its tightly packed osteons resist bending and twisting."
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        0,
+        287,
+        112,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The two-layer membrane covering the outer surfaces of the bone, anchoring tendons and carrying vessels and nerves into the bone."
+      },
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone (diploë)",
+       "accept": [
+        "diploe",
+        "diploë",
+        "spongy bone diploe",
+        "cancellous bone"
+       ],
+       "box": [
+        684,
+        355,
+        130,
+        50
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The layer of spongy bone sandwiched between the two plates of compact bone in a flat skull bone, called the diploë. Its lattice of trabeculae makes the bone light, and its spaces hold red marrow.",
+       "follow": {
+        "q": "What fills the spaces between the trabeculae of the diploë?",
+        "options": [
+         "Red bone marrow",
+         "Yellow bone marrow",
+         "Osteons",
+         "Articular cartilage"
+        ],
+        "correct": 0,
+        "why": "The spaces in spongy bone of flat bones hold red marrow, which makes blood cells. Yellow marrow fills the shaft of adult long bones, osteons are the units of compact bone, and articular cartilage only caps joint surfaces.",
+        "level": "recall"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "epiphyseal-plate",
+   "title": "Epiphyseal plate zones and bone formation",
+   "chapter": "bone-tissue",
+   "topic": "bone-development",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-6-18",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "reserve-zone",
+       "name": "Reserve zone",
+       "accept": [
+        "zone of reserve cartilage",
+        "resting zone"
+       ],
+       "box": [
+        79,
+        221,
+        139,
+        21
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone of the epiphyseal plate nearest the epiphysis: small, scattered chondrocytes that rarely divide. It anchors the plate to the epiphysis, whose vessels feed the plate.",
+       "follow": {
+        "q": "A growth-plate injury kills the cells nearest the epiphysis. Why can this stop growth at that plate?",
+        "options": [
+         "It removes the zone where bone replaces cartilage",
+         "It removes the cells that supply the dividing zone",
+         "It blocks the nutrient artery of the shaft",
+         "It destroys the calcified matrix that is later turned into bone"
+        ],
+        "correct": 1,
+        "why": "The reserve and proliferative zones supply the new chondrocytes that lengthen the plate; lose them and the plate stops adding cartilage. Bone forms on the diaphysis side, which is not where the injury is, and the nutrient artery supplies the shaft, not the plate.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "proliferative-zone",
+       "name": "Proliferative zone",
+       "accept": [
+        "zone of proliferation",
+        "proliferation zone"
+       ],
+       "box": [
+        79,
+        373,
+        170,
+        21
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone where chondrocytes divide rapidly and stack in columns like piles of coins. The new cells push the epiphysis away from the diaphysis; this is where most length comes from.",
+       "follow": {
+        "q": "In which zone do chondrocytes divide to add length?",
+        "options": [
+         "Reserve zone",
+         "Zone of calcified matrix",
+         "Proliferative zone",
+         "Zone of ossification"
+        ],
+        "correct": 2,
+        "why": "Rapid division in stacks happens in the proliferative zone. Reserve-zone cells rarely divide, calcified-matrix cells are dying, and the zone of ossification is where bone replaces the cartilage.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "calcified-matrix",
+       "name": "Calcified matrix",
+       "accept": [
+        "zone of calcified matrix",
+        "calcification zone"
+       ],
+       "box": [
+        78,
+        894,
+        155,
+        21
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone where the matrix around the enlarged chondrocytes calcifies. Cut off from diffusion, the chondrocytes die, leaving columns of calcified cartilage."
+      },
+      {
+       "id": "primary-spongiosa",
+       "name": "Primary spongiosa",
+       "accept": [],
+       "box": [
+        667,
+        1029,
+        107,
+        51
+       ],
+       "concept": null,
+       "fn": "The first spongy bone laid down on the calcified cartilage columns just below the plate; it still has cartilage at its core."
+      },
+      {
+       "id": "zone-of-ossification",
+       "name": "Zone of ossification",
+       "accept": [
+        "ossification zone",
+        "osseous tissue zone"
+       ],
+       "box": [
+        141,
+        1099,
+        115,
+        47
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The region below the plate, on the diaphysis side, where capillaries and osteogenic cells invade the empty spaces and osteoblasts lay bone on the calcified cartilage columns."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [],
+       "box": [
+        78,
+        1058,
+        32,
+        116
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region between the diaphysis and the epiphysis. In a growing bone it holds the epiphyseal plate and the new bone forming below it."
+      },
+      {
+       "id": "secondary-spongiosa",
+       "name": "Secondary spongiosa",
+       "accept": [],
+       "box": [
+        667,
+        1167,
+        113,
+        50
+       ],
+       "concept": null,
+       "fn": "Deeper, older spongy bone below the primary spongiosa, where osteoclasts have cleared the cartilage cores and the trabeculae have been rebuilt."
+      }
+     ],
+     "covered": [
+      {
+       "id": "maturation-hypertrophy",
+       "box": [
+        78,
+        625,
+        150,
+        50
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-19",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "epiphysis",
+       "name": "Epiphysis",
+       "accept": [
+        "proximal epiphysis"
+       ],
+       "box": [
+        347,
+        48,
+        100,
+        26
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded end of the long bone, filled with spongy bone and red marrow. In a child it is separated from the metaphysis by the epiphyseal plate."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [
+        "proximal metaphysis"
+       ],
+       "box": [
+        339,
+        88,
+        116,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the shaft widens toward the epiphysis. The epiphyseal plate lies in it in a growing bone."
+      },
+      {
+       "id": "epiphyseal-line",
+       "name": "Epiphyseal line",
+       "accept": [],
+       "box": [
+        680,
+        222,
+        112,
+        46
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "A thin line of bone where the epiphyseal plate used to be. It forms when growth in length ends and bone replaces the last of the plate’s cartilage."
+      },
+      {
+       "id": "diaphysis",
+       "name": "Diaphysis",
+       "accept": [
+        "shaft"
+       ],
+       "box": [
+        346,
+        235,
+        101,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The shaft of the long bone, between the two metaphyses. It grows in width by appositional growth under the periosteum."
+      },
+      {
+       "id": "epiphyseal-plate",
+       "name": "Epiphyseal plate (growth plate)",
+       "accept": [
+        "growth plate"
+       ],
+       "box": [
+        0,
+        242,
+        112,
+        100
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The disc of hyaline cartilage between the epiphysis and the diaphysis of a growing long bone. Its chondrocytes keep dividing while bone replaces cartilage on the diaphysis side, so the bone gets longer.",
+       "follow": {
+        "q": "Why can a bone no longer grow in length once the epiphyseal plate has become an epiphyseal line?",
+        "options": [
+         "The periosteum has stopped making cells",
+         "The medullary cavity has filled with red marrow",
+         "The osteoclasts in the shaft have died",
+         "Bone has replaced all the plate’s cartilage"
+        ],
+        "correct": 3,
+        "why": "Growth in length needs dividing cartilage in the plate. When the chondrocytes stop dividing and bone replaces the last of the cartilage, only a bony line remains. The periosteum still adds width, and marrow and osteoclasts do not set length.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "metaphysis-distal",
+       "name": "Metaphysis",
+       "accept": [
+        "distal metaphysis"
+       ],
+       "box": [
+        339,
+        437,
+        116,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the shaft widens toward the lower epiphysis; it holds the lower epiphyseal plate in a growing bone."
+      },
+      {
+       "id": "epiphysis-distal",
+       "name": "Epiphysis",
+       "accept": [
+        "distal epiphysis"
+       ],
+       "box": [
+        347,
+        485,
+        100,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded lower end of the long bone, filled with spongy bone and red marrow and separated from the metaphysis by an epiphyseal plate while the bone grows."
+      }
+     ],
+     "covered": [
+      {
+       "id": "femur",
+       "box": [
+        334,
+        540,
+        124,
+        49
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-17",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "perichondrium",
+       "name": "Perichondrium",
+       "accept": [],
+       "box": [
+        99,
+        6,
+        128,
+        19
+       ],
+       "concept": "cartilage",
+       "taught": "connective-tissue",
+       "fn": "The dense connective tissue sheath around the cartilage model. When blood vessels invade it, its cells become osteoblasts and it becomes the periosteum."
+      },
+      {
+       "id": "primary-ossification-center",
+       "name": "Primary ossification center",
+       "accept": [
+        "primary center of ossification"
+       ],
+       "box": [
+        644,
+        69,
+        102,
+        60
+       ],
+       "concept": "endochondral-ossification",
+       "taught": "bone-development",
+       "fn": "The first site of bone formation in the cartilage model, in the middle of the diaphysis. A nutrient artery brings in osteogenic cells, and osteoblasts lay spongy bone on the remains of calcified cartilage.",
+       "follow": {
+        "q": "What arrives with the nutrient artery to start the primary ossification center?",
+        "options": [
+         "Osteogenic cells and osteoclast precursors",
+         "Chondrocytes from the surrounding perichondrium",
+         "Mesenchymal cells from the overlying skin",
+         "Red marrow from the epiphyses"
+        ],
+        "correct": 0,
+        "why": "The invading artery carries osteogenic cells, which become osteoblasts, and the precursors of osteoclasts. Chondrocytes are what is being replaced, and marrow and mesenchyme do not come from those places.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "hyaline-cartilage",
+       "name": "Hyaline cartilage",
+       "accept": [
+        "cartilage"
+       ],
+       "box": [
+        113,
+        81,
+        82,
+        43
+       ],
+       "concept": "cartilage",
+       "taught": "connective-tissue",
+       "fn": "The cartilage that forms the model of the future long bone. Bone later replaces it everywhere except the articular cartilage and the epiphyseal plate."
+      },
+      {
+       "id": "calcified-matrix",
+       "name": "Calcified matrix",
+       "accept": [
+        "calcified cartilage"
+       ],
+       "box": [
+        164,
+        174,
+        82,
+        40
+       ],
+       "concept": null,
+       "fn": "Cartilage matrix in the middle of the model that has taken up calcium salts. It blocks diffusion, so the chondrocytes in it die and leave cavities."
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        395,
+        181,
+        103,
+        19
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The former perichondrium, now with blood vessels. Its osteoblasts lay a collar of compact bone around the middle of the shaft."
+      },
+      {
+       "id": "uncalcified-matrix",
+       "name": "Uncalcified matrix",
+       "accept": [
+        "uncalcified cartilage"
+       ],
+       "box": [
+        164,
+        253,
+        101,
+        40
+       ],
+       "concept": null,
+       "fn": "Cartilage matrix that has not yet calcified, at the ends of the model. Nutrients still diffuse through it, so its chondrocytes stay alive."
+      },
+      {
+       "id": "uncalcified-matrix-d",
+       "name": "Uncalcified matrix",
+       "accept": [
+        "uncalcified cartilage"
+       ],
+       "box": [
+        930,
+        271,
+        101,
+        40
+       ],
+       "concept": null,
+       "fn": "Living hyaline cartilage still filling the bone end before a secondary ossification center forms in it."
+      },
+      {
+       "id": "nutrient-artery",
+       "name": "Nutrient artery",
+       "accept": [],
+       "box": [
+        639,
+        283,
+        77,
+        44
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The artery that grows into the middle of the cartilage model through the bone collar, bringing the cells that form the primary ossification center."
+      },
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone"
+       ],
+       "box": [
+        412,
+        289,
+        74,
+        40
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The first bone laid down at the primary ossification center, on the remains of calcified cartilage."
+      },
+      {
+       "id": "calcified-matrix-d",
+       "name": "Calcified matrix",
+       "accept": [
+        "calcified cartilage"
+       ],
+       "box": [
+        697,
+        378,
+        82,
+        39
+       ],
+       "concept": null,
+       "fn": "Calcified cartilage matrix at the edge of the growing bone end, where chondrocytes die and bone will replace the cartilage."
+      },
+      {
+       "id": "periosteum-d",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        674,
+        462,
+        146,
+        63
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The membrane covering the shaft. Osteoblasts in it keep adding compact bone to the outside of the shaft, widening it."
+      },
+      {
+       "id": "medullary-cavity",
+       "name": "Medullary cavity",
+       "accept": [
+        "marrow cavity"
+       ],
+       "box": [
+        981,
+        472,
+        92,
+        44
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The space in the middle of the shaft, opened as osteoclasts break down the first spongy bone there."
+      },
+      {
+       "id": "artery-and-vein-d",
+       "name": "Artery and vein",
+       "accept": [
+        "blood vessels",
+        "artery",
+        "vein"
+       ],
+       "box": [
+        946,
+        640,
+        154,
+        63
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Vessels entering the shaft; they carry nutrients, osteogenic cells and osteoclast precursors to the forming bone."
+      },
+      {
+       "id": "secondary-ossification-center",
+       "name": "Secondary ossification center",
+       "accept": [
+        "secondary center of ossification"
+       ],
+       "box": [
+        917,
+        822,
+        103,
+        60
+       ],
+       "concept": "endochondral-ossification",
+       "taught": "bone-development",
+       "fn": "A site of bone formation in an epiphysis, forming around birth or after. Vessels enter the bone end and spongy bone replaces the cartilage there, leaving cartilage only on the joint surface and at the epiphyseal plate."
+      },
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        438,
+        918,
+        155,
+        24
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "Hyaline cartilage left on the joint surface of the bone end after ossification. It stays cartilage for life."
+      },
+      {
+       "id": "artery-and-vein-e",
+       "name": "Artery and vein",
+       "accept": [
+        "blood vessels",
+        "artery",
+        "vein"
+       ],
+       "box": [
+        674,
+        940,
+        81,
+        39
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Vessels growing into the cartilage of the bone end; they bring the cells that start the secondary ossification center."
+      },
+      {
+       "id": "uncalcified-matrix-e",
+       "name": "Uncalcified matrix",
+       "accept": [
+        "uncalcified cartilage"
+       ],
+       "box": [
+        939,
+        994,
+        101,
+        40
+       ],
+       "concept": null,
+       "fn": "Cartilage in the bone end that has not calcified; part of it will remain as the epiphyseal plate."
+      },
+      {
+       "id": "spongy-bone-f",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone"
+       ],
+       "box": [
+        316,
+        1000,
+        74,
+        40
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "Spongy bone filling the epiphysis after the secondary ossification center has replaced the cartilage there. Its spaces hold red marrow."
+      },
+      {
+       "id": "epiphyseal-plate",
+       "name": "Epiphyseal plate",
+       "accept": [
+        "growth plate"
+       ],
+       "box": [
+        316,
+        1162,
+        100,
+        43
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The disc of cartilage left between the epiphysis and the diaphysis. It keeps lengthening the bone until growth ends."
+      },
+      {
+       "id": "artery-and-vein-e-shaft",
+       "name": "Artery and vein",
+       "accept": [
+        "blood vessels",
+        "artery",
+        "vein"
+       ],
+       "box": [
+        947,
+        1230,
+        153,
+        63
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Vessels supplying the shaft of the developing bone with nutrients and bone-forming cells."
+      }
+     ]
+    },
+    {
+     "figure": "os-6-16",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "mesenchymal-cells",
+       "name": "Mesenchymal cells",
+       "accept": [
+        "mesenchymal cell",
+        "mesenchyme"
+       ],
+       "box": [
+        404,
+        16,
+        128,
+        43
+       ],
+       "concept": "mesenchyme",
+       "taught": "connective-tissue",
+       "fn": "Unspecialized embryonic connective tissue cells. In intramembranous ossification they cluster and turn directly into osteogenic cells and osteoblasts."
+      },
+      {
+       "id": "osteoid-b",
+       "name": "Osteoid",
+       "accept": [],
+       "box": [
+        957,
+        94,
+        77,
+        20
+       ],
+       "concept": "bone-matrix",
+       "taught": "bone-histology",
+       "fn": "Freshly secreted, not yet mineralized matrix around the trapped cells."
+      },
+      {
+       "id": "collagen-fibers",
+       "name": "Collagen fibers",
+       "accept": [
+        "collagen fiber",
+        "collagen"
+       ],
+       "box": [
+        404,
+        115,
+        138,
+        24
+       ],
+       "concept": "ct-fibers",
+       "taught": "connective-tissue",
+       "fn": "Protein fibers of the surrounding embryonic connective tissue, in which the bone begins to form."
+      },
+      {
+       "id": "osteoblast-b",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        957,
+        133,
+        102,
+        20
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A bone-building cell lining the edge of the new bone, adding more matrix."
+      },
+      {
+       "id": "ossification-center",
+       "name": "Ossification center",
+       "accept": [
+        "center of ossification"
+       ],
+       "box": [
+        404,
+        167,
+        110,
+        42
+       ],
+       "concept": "ossification",
+       "taught": "bone-development",
+       "fn": "The cluster of cells where bone first forms. Here mesenchymal cells become osteoblasts, which begin laying down matrix.",
+       "follow": {
+        "q": "In intramembranous ossification, what does bone form in?",
+        "options": [
+         "A hyaline cartilage model",
+         "A sheet of mesenchyme",
+         "A blood clot at the site",
+         "Yellow bone marrow"
+        ],
+        "correct": 1,
+        "why": "Intramembranous bone forms directly in mesenchyme with no cartilage stage, as in the flat bones of the skull. A cartilage model belongs to endochondral ossification, and clots and marrow are not where bone first forms.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "osteocyte",
+       "name": "Osteocyte",
+       "accept": [
+        "osteocytes"
+       ],
+       "box": [
+        957,
+        169,
+        97,
+        24
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "An osteoblast that has walled itself in with matrix and now sits in a lacuna, maintaining the new bone."
+      },
+      {
+       "id": "new-bone-matrix",
+       "name": "New bone matrix",
+       "accept": [],
+       "box": [
+        957,
+        226,
+        97,
+        43
+       ],
+       "concept": "bone-matrix",
+       "taught": "bone-histology",
+       "fn": "Osteoid that has mineralized with calcium salts, forming hard new bone."
+      },
+      {
+       "id": "osteoid",
+       "name": "Osteoid",
+       "accept": [],
+       "box": [
+        404,
+        272,
+        77,
+        21
+       ],
+       "concept": "bone-matrix",
+       "taught": "bone-histology",
+       "fn": "The unmineralized organic matrix, mostly collagen, that osteoblasts secrete. Calcium salts later deposit in it to harden it."
+      },
+      {
+       "id": "osteoblast",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        404,
+        305,
+        103,
+        20
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A bone-building cell. In the ossification center it secretes osteoid around itself."
+      },
+      {
+       "id": "mesenchyme-periosteum",
+       "name": "Mesenchyme forms the periosteum",
+       "accept": [
+        "mesenchyme",
+        "periosteum"
+       ],
+       "box": [
+        404,
+        403,
+        124,
+        69
+       ],
+       "concept": "mesenchyme",
+       "taught": "connective-tissue",
+       "fn": "Mesenchyme that condenses on the surface of the new bone and becomes the periosteum."
+      },
+      {
+       "id": "fibrous-periosteum",
+       "name": "Fibrous periosteum",
+       "accept": [],
+       "box": [
+        957,
+        412,
+        106,
+        46
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The outer fibrous layer of the periosteum that has formed from the surface mesenchyme."
+      },
+      {
+       "id": "osteoblast-d",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        957,
+        482,
+        102,
+        20
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "Bone-building cells under the periosteum, laying down compact bone on the surface."
+      },
+      {
+       "id": "compact-bone",
+       "name": "Compact bone",
+       "accept": [
+        "cortical bone"
+       ],
+       "box": [
+        957,
+        527,
+        135,
+        24
+       ],
+       "concept": "compact-bone",
+       "taught": "bone-histology",
+       "fn": "The layer of compact bone laid down on the surface, under the periosteum, replacing the outer spongy bone."
+      },
+      {
+       "id": "trabeculae",
+       "name": "Trabeculae",
+       "accept": [
+        "trabecula"
+       ],
+       "box": [
+        404,
+        583,
+        105,
+        19
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "Struts of new bone that grow and join into a network, forming spongy bone around blood vessels."
+      },
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone",
+        "diploe",
+        "diploë"
+       ],
+       "box": [
+        957,
+        659,
+        145,
+        69
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The spongy bone left in the middle of a flat bone, between the compact plates; its spaces hold red marrow."
+      },
+      {
+       "id": "blood-vessel",
+       "name": "Blood vessel",
+       "accept": [
+        "blood vessels",
+        "vessel"
+       ],
+       "box": [
+        405,
+        688,
+        118,
+        20
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "A blood vessel trapped between the growing trabeculae; its tissue later becomes red marrow."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "synovial-joint-structure",
    "title": "Synovial joint structure",
    "chapter": "joints",
@@ -6901,7 +10732,7 @@
        ],
        "concept": "knee-shoulder",
        "taught": "synovial-joints",
-       "fn": "A band of connective tissue from the inner edge of the patella to the femur and tibia. With the lateral retinaculum it holds the patella in its groove on the femur."
+       "fn": "A strip of connective tissue from the inner edge of the patella to the femur and tibia. With the lateral retinaculum it holds the patella in its groove on the femur."
       },
       {
        "id": "lateral-patellar-retinaculum",
@@ -6917,7 +10748,7 @@
        ],
        "concept": "knee-shoulder",
        "taught": "synovial-joints",
-       "fn": "A band of connective tissue from the outer edge of the patella to the femur and tibia. With the medial retinaculum it holds the patella in its groove on the femur."
+       "fn": "A strip of connective tissue from the outer edge of the patella to the femur and tibia. With the medial retinaculum it holds the patella in its groove on the femur."
       },
       {
        "id": "tibial-collateral-ligament",
@@ -7101,7 +10932,7 @@
        ],
        "concept": "knee-shoulder",
        "taught": "synovial-joints",
-       "fn": "The same blow can also tear the anterior cruciate ligament, which normally stops the tibia sliding forward under the femur. The torn ACL, torn tibial collateral ligament and torn medial meniscus together are called the unhappy triad."
+       "fn": "The same blow can also tear the anterior cruciate ligament, which normally stops the tibia sliding forward under the femur. The torn ACL, torn tibial collateral ligament and torn medial meniscus together are a classic combined knee injury."
       }
      ]
     }
@@ -35608,6 +39439,168 @@
    "alt": "Six drawings of more movements. Two forearms: one with the palm facing forward and the two forearm bones parallel, one with the palm facing back and the bones crossed. A foot with the toes pulled up toward the shin and pointed down. Two feet with the soles turned inward and outward. A head with the jaw pushed forward and pulled back, then with the jaw raised and lowered. A hand with the thumb tip touching the tip of a finger.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.13",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-5-types-of-body-movements",
+   "license": "CC BY 4.0"
+  },
+  "os-5-2": {
+   "src": "figures/os-5-2.jpg",
+   "w": 1100,
+   "h": 862,
+   "alt": "A cut-away block of skin. A thin pale top layer, the epidermis, covers a thick pink middle layer, the dermis, which holds hairs and their roots, small oil glands beside them, a slanting strip of muscle attached to one hair, a coiled sweat gland with a duct rising to a pore, an onion-like nerve ending, nerve fibers, and red and blue blood vessels. The bottom layer, the hypodermis, is made of rounded yellow fat lobules with larger blood vessels running through it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin",
+   "license": "CC BY 4.0"
+  },
+  "os-5-8": {
+   "src": "figures/os-5-8.jpg",
+   "w": 1100,
+   "h": 868,
+   "alt": "Two columns of epidermis side by side, labeled dark and light. In each, a branching pigment cell sits at the base and passes small packets of pigment up into the surrounding cells. On the dark side the packets are dark brown, numerous and spread through the cells up toward the surface. On the light side the packets are pale and fewer, and the upper cells carry little pigment.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin",
+   "license": "CC BY 4.0"
+  },
+  "os-5-5": {
+   "src": "figures/os-5-5.jpg",
+   "w": 1080,
+   "h": 854,
+   "alt": "A drawing of the epidermis of thick skin in five bands. At the bottom, a single row of tall cells rests on the pink dermis, which bulges up into it; a branching pigment cell and a blue touch-sensitive cell touching a nerve fiber sit in this row. Above it are many rows of rounded cells with nuclei, then a few rows of flatter cells speckled with small granules, then a thin clear band of flat cells with no nuclei, and on top many layers of flat dead cells, some flaking off the surface.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin",
+   "license": "CC BY 4.0"
+  },
+  "os-5-11": {
+   "src": "figures/os-5-11.jpg",
+   "w": 614,
+   "h": 749,
+   "alt": "A block of skin cut through one hair. The hair rises from a teardrop-shaped pocket that dips down through the dermis to the fat below. At its base, a swollen bulb wraps around a small knot of blood vessels, and a layer of dividing cells sits just above that knot. Colored sheaths line the pocket around the hair. A lobed gland opens into the pocket partway up, and a slanting strip of muscle runs from the pocket's side up toward the surface. A boxed inset marks the part of the hair above the skin, which has an inner core, a middle layer and an outer coat.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-2-accessory-structures-of-the-skin",
+   "license": "CC BY 4.0"
+  },
+  "os-5-14": {
+   "src": "figures/os-5-14.jpg",
+   "w": 673,
+   "h": 648,
+   "alt": "A block of skin showing a sweat gland: a tight coil of tubing deep in the dermis, with a single duct that winds up through the dermis and epidermis and opens at a tiny pore on the surface. Several pores dot the skin surface, and hairs, fat lobules, blood vessels and nerve fibers fill the rest of the block.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.14",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-2-accessory-structures-of-the-skin",
+   "license": "CC BY 4.0"
+  },
+  "os-5-13": {
+   "src": "figures/os-5-13.jpg",
+   "w": 1100,
+   "h": 398,
+   "alt": "Two drawings of a fingertip. On the left, the top of the finger shows the nail plate, its white free edge at the tip, a pale crescent near its base, a thin band of skin lying over the base of the plate, and the folds of skin along its base and sides. On the right, a side view cut lengthwise shows the nail plate lying on the skin, its hidden base tucked under a fold of skin, the thickened skin under the tip, and the layers of skin and the bone inside the finger.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-2-accessory-structures-of-the-skin",
+   "license": "CC BY 4.0"
+  },
+  "os-6-7": {
+   "src": "figures/os-6-7.jpg",
+   "w": 1100,
+   "h": 1858,
+   "alt": "A long thigh bone seen from the front, with its upper half cut open lengthwise. Brackets down the left side mark the upper end, a flared zone, the long shaft, another flared zone and the lower end. Inside the upper end, a red lattice of bone holds red marrow, crossed by a thin pale line. The shaft is a hollow tube of solid bone whose cavity holds a plug of yellow marrow, lined inside by a thin layer and wrapped outside by a thin membrane that is peeled back. A red artery enters the middle of the shaft, and pale blue cartilage caps both ends.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-15": {
+   "src": "figures/os-6-15.jpg",
+   "w": 1087,
+   "h": 1620,
+   "alt": "A long bone cut open lengthwise to show its blood supply. A red artery and blue vein pass through a small hole in the middle of the shaft and branch up and down the central cavity. Other arteries and veins enter the flared zones and the ends of the bone directly. Labels mark the outer membrane, the dense bone wall, the central cavity, the cartilage on the joint surface and a thin line near each end.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-8": {
+   "src": "figures/os-6-8.jpg",
+   "w": 1071,
+   "h": 535,
+   "alt": "The upper end of a thigh bone with two magnified boxes. Left: the outer surface of the shaft, showing a membrane with an outer fibrous layer and an inner cellular layer lying on bone that contains a cell in a small cavity. Right: the inner surface of the bone, with rings of matrix containing branching cells, lined by a single layer of flat cells; along this lining sit a large cell with several nuclei, a stem cell and a small group of bone-building cells.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-6": {
+   "src": "figures/os-6-6.jpg",
+   "w": 1012,
+   "h": 1173,
+   "alt": "A front view of a whole skeleton in the center, with five bones drawn out around it by arrows, each labeled with its shape class: a flat breastbone at top left, an irregular vertebra seen from above at top right, a long thigh bone at left, a group of small cube-like foot bones at bottom right, and the small round bone at the front of the knee at bottom left.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-2-bone-classification",
+   "license": "CC BY 4.0"
+  },
+  "os-6-10": {
+   "src": "figures/os-6-10.jpg",
+   "w": 992,
+   "h": 1065,
+   "alt": "Three groups of drawings of bone surface features. Left: a thigh bone and an upper arm bone seen from the front, with labels on a rounded head and the small pit on it, small bumps, a groove, a long rough raised area on the shaft, a shallow hollow and rounded knobs at the lower ends, and a smooth joint surface. Top right: the hip bones from the front, with a curved ridge along the top edge and a broad hollow below it. Bottom right: a skull from the front, with green air spaces around the nose, a small hole above the eye socket, a channel and a crack in the eye socket, and a bump on the chin.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-11": {
+   "src": "figures/os-6-11.jpg",
+   "w": 807,
+   "h": 567,
+   "alt": "A cylinder of bone at the top, with four arrows leading down to four cell types. From left: a small cell with long branching arms, labeled as maintaining bone tissue; a row of cube-shaped cells on a bone surface, labeled as forming bone matrix; a flat cell lying on the surface, labeled as a stem cell; and a very large rounded cell with several nuclei and a frilled lower edge pressed against the bone, labeled as resorbing bone.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-13": {
+   "src": "figures/os-6-13.jpg",
+   "w": 1100,
+   "h": 730,
+   "alt": "The upper end of a thigh bone, with a box in its lattice-filled interior magnified in two steps. The first enlargement shows pale struts of bone crossing each other, with red marrow in the spaces and tiny dots on their surfaces. The second enlargement shows one strut cut across: rings of matrix with small cavities holding cells whose fine channels run across the rings, two large many-nucleated cells on its surface, and a row of small bone-building cells along one side.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-9": {
+   "src": "figures/os-6-9.jpg",
+   "w": 812,
+   "h": 411,
+   "alt": "A skull with a small box on its upper side, and an arrow leading to a magnified slab of that flat bone. The slab is a sandwich: a thin covering membrane on each face, a thin solid layer of dense bone under each covering, and a thick middle layer of lattice-like bone full of small spaces.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure",
+   "license": "CC BY 4.0"
+  },
+  "os-6-18": {
+   "src": "figures/os-6-18.jpg",
+   "w": 800,
+   "h": 1246,
+   "alt": "A tall column magnified from the upper end of a thigh bone, showing the layers of the growth cartilage from top to bottom. At top, a few scattered cells in blue cartilage, with blood vessels. Below, flattened cells piled in columns like coins. Below that, rows of much larger, swollen cells. Below that, cells breaking down inside hardened matrix. At the bottom, in the flared zone of the shaft, red blood vessels run up among new struts of bone. Labels on the left name each layer and labels on the right describe what its cells are doing.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.18",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-4-bone-formation-and-development",
+   "license": "CC BY 4.0"
+  },
+  "os-6-19": {
+   "src": "figures/os-6-19.jpg",
+   "w": 790,
+   "h": 625,
+   "alt": "Two thigh bones seen from the front, with brackets marking the ends, the flared zones and the shaft. The bone on the left, still growing, has bright pink plates of growth cartilage near both ends, including two under the upper end. The bone on the right, fully grown, has only faint gray lines where those plates used to be.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.19",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-4-bone-formation-and-development",
+   "license": "CC BY 4.0"
+  },
+  "os-6-17": {
+   "src": "figures/os-6-17.jpg",
+   "w": 1100,
+   "h": 1468,
+   "alt": "Six stages of a long bone forming from cartilage. (a) A small pale blue cartilage model in its covering. (b) The model grows and dark specks of calcified matrix appear in the middle of the shaft. (c) A red artery enters the middle, where red lattice bone has formed, and a covering now wraps the shaft. (d) The upper end of the bone: the shaft has a hollow central cavity with an artery and vein, and a band of calcified cartilage lies below the still-blue end. (e) An artery and vein enter the end itself and a second center of bone forms there. (f) The end is filled with lattice bone; cartilage remains only as a cap on the joint surface and as a thin plate between the end and the shaft.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-4-bone-formation-and-development",
+   "license": "CC BY 4.0"
+  },
+  "os-6-16": {
+   "src": "figures/os-6-16.jpg",
+   "w": 1100,
+   "h": 768,
+   "alt": "Four panels showing bone forming directly in embryonic tissue. (a) Bone-forming cells cluster in a round center surrounded by loose embryonic cells and fibers, with specks of new matrix. (b) The center fills with new bone matrix holding cells with branching arms, and a ring of bone-forming cells lines its edge. (c) A band of bone struts with red blood vessels running through the spaces, bordered above and below by rows of bone-forming cells and a covering layer. (d) The same band with solid layers of bone formed under each covering, and lattice-like bone in between with red marrow in its spaces.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.16",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-4-bone-formation-and-development",
    "license": "CC BY 4.0"
   }
  }

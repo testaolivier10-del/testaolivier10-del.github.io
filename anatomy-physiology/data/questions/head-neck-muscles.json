@@ -233,7 +233,7 @@
     ],
     "figure": "os-11-13",
     "pin": "digastric",
-    "q": "Name the pinned suprahyoid muscle, which has two bellies joined by a tendon that runs through a loop on the hyoid.",
+    "q": "Name the pinned suprahyoid muscle.",
     "options": [
       "Mylohyoid",
       "Sternohyoid",
@@ -559,14 +559,14 @@
     "options": [
       "The jaw closes by a first-class lever and opens by a second-class lever",
       "Opening muscles are smooth muscle and contract weakly",
-      "Three large chewing muscles close the jaw, while opening relies on the lateral pterygoids, the smaller suprahyoid muscles and gravity",
+      "Three large muscles close the jaw; opening uses smaller muscles and gravity",
       "The temporomandibular joint locks when the mouth is open"
     ],
     "correct": 2,
     "why": {
       "correct": "The masseter, temporalis and medial pterygoid are large muscles that all elevate the mandible. Opening uses only the lateral pterygoids and the thin suprahyoid muscles, with gravity helping, so it is far weaker.",
       "options": [
-        "Opening and closing both move the mandible about the same joint, with the muscles pulling between the joint and the teeth; the difference is the muscle mass on each side.",
+        "Lever class does not explain it: opening and closing both turn the mandible about the same jaw joint. The difference is how much muscle pulls each way.",
         "All chewing and neck muscles here are skeletal muscle.",
         "Correct. Much more muscle closes the jaw than opens it.",
         "The joint does not lock open; it slides and hinges freely through both movements."
