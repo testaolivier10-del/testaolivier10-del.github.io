@@ -11834,6 +11834,909 @@
       "summary": "The gastrocnemius and soleus contract; the calcaneal tendon pulls up on the calcaneus; the foot turns about the ball of the foot; the body weight between them is lifted. For your exam, this is a second-class lever."
     },
     {
+      "id": "mt-pull-to-bone",
+      "title": "How a fiber’s pull reaches the bone",
+      "topic": "skeletal-muscle-structure",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "A single muscle fiber is attached to nothing directly. Follow its pull outward, layer by layer, until it moves a bone.",
+      "steps": [
+        {
+          "id": "fiber",
+          "label": "Muscle fiber",
+          "text": "Myosin heads pull the thin filaments, and the muscle fiber shortens.",
+          "why": "The pull starts inside each fiber, where the filaments slide."
+        },
+        {
+          "id": "endo",
+          "label": "Endomysium",
+          "text": "The fiber pulls on the endomysium, the thin layer of loose connective tissue around it.",
+          "why": "The endomysium wraps each individual fiber, so it is the first layer the fiber pulls on."
+        },
+        {
+          "id": "peri",
+          "label": "Perimysium",
+          "text": "The endomysium passes the pull to the perimysium around the fascicle.",
+          "why": "Fibers are bundled into fascicles, and the layers are continuous, so the pull moves out to the next level of bundling."
+        },
+        {
+          "id": "epi",
+          "label": "Epimysium",
+          "text": "The perimysium passes the pull to the epimysium around the whole muscle.",
+          "why": "The epimysium wraps the whole muscle, collecting the pull of every fascicle."
+        },
+        {
+          "id": "tendon",
+          "label": "Tendon",
+          "text": "All three layers merge at the end of the muscle into the dense regular connective tissue of the tendon.",
+          "why": "The wrappings are not separate bags: they run together into the tendon, which is why strains often happen where fibers meet it."
+        },
+        {
+          "id": "bone",
+          "label": "Bone",
+          "text": "The tendon’s collagen fibers run into the periosteum and bone matrix, and the bone moves.",
+          "why": "The tendon is anchored in the bone, so the collected pull of thousands of fibers finally moves it."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The endomysium passes the pull straight to the sarcolemma of the neighboring fiber, which contracts in turn.",
+            "why": "Skeletal fibers do not pass pulls or signals to each other; each one is wrapped separately and passes its pull only outward, through the wrappings."
+          },
+          {
+            "text": "The endomysium passes the pull inward to the myofibrils, which carry it along the fiber to the tendon.",
+            "why": "The myofibrils are inside the fiber and are the source of the pull. The pull travels outward through the wrappings."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The three layers end at the edge of the muscle, and the tendon is glued on beside them as a separate sheet.",
+        "why": "The epimysium, perimysium and endomysium are continuous with each other and merge into the tendon itself. That continuity is what lets the pull pass to the bone."
+      },
+      "summary": "Fiber → endomysium → perimysium → epimysium → tendon → bone. Each connective tissue layer is continuous with the next, so the pull of thousands of fibers is collected and passed to the bone."
+    },
+    {
+      "id": "mt-nmj-transmission",
+      "title": "Neuromuscular junction transmission",
+      "topic": "neuromuscular-junction",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "An action potential reaches the end of a motor neuron’s axon. Trace the signal across the neuromuscular junction until the muscle fiber fires and the junction resets.",
+      "steps": [
+        {
+          "id": "arrive",
+          "label": "Impulse reaches terminal",
+          "text": "An action potential arrives at the axon terminal and depolarizes its membrane.",
+          "why": "Everything at the junction starts with the motor neuron’s command arriving at its terminal."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium enters terminal",
+          "text": "Voltage-gated calcium channels open, and calcium rushes into the terminal down its electrochemical gradient.",
+          "why": "Depolarization is what opens these channels, and calcium is far more concentrated outside the terminal."
+        },
+        {
+          "id": "exo",
+          "label": "Vesicles release ACh",
+          "text": "Calcium binds sensor proteins on docked vesicles, and they fuse with the membrane and empty ACh into the cleft.",
+          "why": "The action potential releases nothing by itself: calcium entry is the trigger for exocytosis."
+        },
+        {
+          "id": "diffuse",
+          "label": "ACh crosses the cleft",
+          "text": "ACh diffuses across the 50 nm synaptic cleft in microseconds.",
+          "why": "The ACh must reach the end plate on the other side of the gap before it can act."
+        },
+        {
+          "id": "bind",
+          "label": "ACh opens channels",
+          "text": "Two ACh molecules bind each nicotinic receptor protein, and its channel opens to sodium and potassium.",
+          "why": "The receptor proteins sit on the crests of the end plate’s folds, facing the terminal, and open only once both binding sites are filled."
+        },
+        {
+          "id": "epp",
+          "label": "End plate potential",
+          "text": "More sodium enters than potassium leaves, and the end plate depolarizes: the end plate potential.",
+          "why": "At about −90 mV, sodium’s inward push is far stronger, so opening the channels depolarizes the end plate."
+        },
+        {
+          "id": "ap",
+          "label": "Fiber action potential",
+          "text": "The end plate potential brings the neighboring sarcolemma to threshold, and an action potential sweeps toward both ends of the fiber.",
+          "why": "Only the membrane around the end plate has the voltage-gated sodium channels needed to fire, and the end plate potential is several times bigger than needed."
+        },
+        {
+          "id": "ache",
+          "label": "AChE ends the signal",
+          "text": "Acetylcholinesterase splits ACh into acetate and choline, and the channels close.",
+          "why": "The enzyme clears the cleft within a millisecond or two, so each nerve impulse gives exactly one action potential in the fiber."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The action potential itself travels across the cleft onto the end plate, carried by sodium ions in the extracellular fluid.",
+            "why": "The 50 nm cleft stops the electrical signal. It is carried across chemically, by ACh released when calcium enters the terminal."
+          },
+          {
+            "text": "Calcium diffuses across the synaptic cleft and binds the end plate, opening its channels.",
+            "why": "Calcium acts inside the terminal, making the vesicles fuse. It is ACh, not calcium, that crosses the cleft and opens the end plate’s channels."
+          }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "The axon terminal takes the ACh back up intact, and the channels close.",
+        "why": "At the neuromuscular junction, acetylcholinesterase in the cleft splits ACh into acetate and choline. Only the choline is taken back into the terminal to make new ACh."
+      },
+      "summary": "Impulse arrives → calcium enters the terminal → vesicles release ACh → ACh crosses the cleft → ACh opens nicotinic receptor channels → end plate potential → action potential in the fiber → acetylcholinesterase ends the signal."
+    },
+    {
+      "id": "mt-ec-coupling",
+      "title": "Excitation–contraction coupling",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "The end plate potential has brought the sarcolemma to threshold. Trace how that electrical event switches on the filaments deep inside the fiber.",
+      "steps": [
+        {
+          "id": "ap",
+          "label": "Action potential spreads",
+          "text": "An action potential spreads along the sarcolemma from the end plate toward both ends of the fiber.",
+          "why": "The end plate potential brought the neighboring membrane to threshold, so the fiber’s own action potential starts there."
+        },
+        {
+          "id": "tt",
+          "label": "Down the T tubules",
+          "text": "The action potential travels down every T tubule, deep into the fiber.",
+          "why": "T tubule membrane is sarcolemma folded inward, so the action potential continues into it and reaches every triad within a millisecond or two."
+        },
+        {
+          "id": "sensor",
+          "label": "Voltage sensor moves",
+          "text": "At each triad, the DHP receptor protein in the T tubule senses the depolarization and changes shape.",
+          "why": "The voltage sensor sits in the T tubule membrane, right where the action potential arrives."
+        },
+        {
+          "id": "open",
+          "label": "Release channel opens",
+          "text": "The voltage sensor pulls open the ryanodine receptor protein, the SR’s calcium release channel, that it touches.",
+          "why": "In skeletal muscle the two proteins are physically linked, so voltage alone opens the channel, with no messenger crossing the gap."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium leaves the SR",
+          "text": "Calcium flows out of the terminal cisternae into the sarcoplasm, down its steep gradient.",
+          "why": "The pumps have kept calcium in the SR thousands of times more concentrated than in the sarcoplasm, so it floods out once the channels open."
+        },
+        {
+          "id": "tn",
+          "label": "Calcium binds troponin",
+          "text": "Calcium binds troponin on the thin filaments, and troponin changes shape.",
+          "why": "Troponin is the calcium sensor of the thin filament; its binding sites are empty at resting calcium and fill after release."
+        },
+        {
+          "id": "tm",
+          "label": "Tropomyosin moves",
+          "text": "Tropomyosin rolls deeper into the groove and uncovers the myosin-binding sites on actin.",
+          "why": "Troponin was holding tropomyosin over the sites. Once it loosens its hold, the rod shifts and seven sites open at once."
+        },
+        {
+          "id": "pull",
+          "label": "Myosin binds actin",
+          "text": "The energized myosin heads bind the uncovered sites and pull the thin filaments toward the M line.",
+          "why": "The heads were loaded with energy all along; only the covered binding sites were stopping them."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The voltage sensor releases a chemical messenger that diffuses across the gap and binds the SR membrane, opening its channels.",
+            "why": "No chemical messenger crosses the gap in skeletal muscle. The voltage sensor is physically linked to the release channel and pulls it open."
+          },
+          {
+            "text": "Calcium enters the fiber from the extracellular fluid through the T tubules and flows straight to the thin filaments.",
+            "why": "A skeletal fiber’s contraction calcium comes from its SR. Stimulated directly, it keeps contracting in a bath with no calcium."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Calcium binds tropomyosin, and tropomyosin changes shape.",
+        "why": "Calcium binds troponin, not tropomyosin. Troponin then changes shape and loosens its hold, which lets tropomyosin roll off the binding sites."
+      },
+      "summary": "Action potential along the sarcolemma → down the T tubules → voltage sensor changes shape → release channel pulled open → calcium leaves the SR → calcium binds troponin → tropomyosin uncovers actin → myosin binds and pulls."
+    },
+    {
+      "id": "mt-relaxation",
+      "title": "Muscle relaxation",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication",
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Relaxation is an active process: the chain of contraction is reversed at every link. Start when the motor neuron stops firing.",
+      "steps": [
+        {
+          "id": "silent",
+          "label": "Motor neuron stops",
+          "text": "The motor neuron stops firing, so no more ACh is released.",
+          "why": "A skeletal fiber relaxes only when its motor neuron stops sending commands; there are no inhibitory synapses on it."
+        },
+        {
+          "id": "clear",
+          "label": "AChE clears the cleft",
+          "text": "Acetylcholinesterase splits the remaining ACh, and the end plate returns to rest.",
+          "why": "With no new ACh arriving, the enzyme clears what is left, and no new action potentials start."
+        },
+        {
+          "id": "close",
+          "label": "Release channels close",
+          "text": "With the T tubules at rest, the voltage sensors return to their resting shape and the release channels close.",
+          "why": "The release channels stay open only while the voltage sensors are pulled by a depolarized T tubule."
+        },
+        {
+          "id": "pump",
+          "label": "Pumps return calcium",
+          "text": "Calcium pumps in the SR membrane split ATP to move calcium back into the SR.",
+          "why": "The pumps work all the time; once release stops, they win, lowering calcium in the sarcoplasm by primary active transport."
+        },
+        {
+          "id": "off",
+          "label": "Calcium leaves troponin",
+          "text": "As calcium in the sarcoplasm falls to resting levels, calcium comes off troponin.",
+          "why": "Troponin gives up its calcium only when the calcium around it has been pumped away."
+        },
+        {
+          "id": "cover",
+          "label": "Tropomyosin covers actin",
+          "text": "Tropomyosin slides back over the myosin-binding sites, and the heads can no longer bind.",
+          "why": "Without calcium, troponin holds tropomyosin in its blocking position again."
+        },
+        {
+          "id": "length",
+          "label": "Fiber is pulled longer",
+          "text": "Elastic proteins, opposing muscles and gravity return the fiber to its resting length.",
+          "why": "Once the filaments stop pulling, something else must lengthen the fiber: a muscle fiber cannot push itself longer."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Calcium flows back into the SR on its own, down its concentration gradient, without using energy.",
+            "why": "Calcium is far more concentrated inside the SR, so returning it is uphill. The pumps must split ATP to do it."
+          },
+          {
+            "text": "Calcium leaves the fiber through the T tubules into the extracellular fluid.",
+            "why": "In skeletal muscle, the calcium that triggered contraction came from the SR, and it is pumped back into the SR."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The myofibrils push the sarcomeres apart, lengthening the fiber to its resting length.",
+        "why": "Filaments can only pull. The fiber is returned to its resting length by its own elastic proteins, the pull of opposing muscles and gravity."
+      },
+      "summary": "Motor neuron stops → AChE clears the cleft → release channels close → ATP-driven pumps return calcium to the SR → calcium leaves troponin → tropomyosin covers actin → the fiber is pulled back to resting length."
+    },
+    {
+      "id": "mt-cross-bridge-cycle",
+      "title": "The cross-bridge cycle",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Calcium is bound to troponin and ATP is available. Start with a cocked myosin head that has already split its ATP and still holds ADP and phosphate, and put one turn of the cycle in order.",
+      "steps": [
+        {
+          "id": "cocked",
+          "label": "Cocked head, ADP + Pi",
+          "text": "A myosin head holding ADP and phosphate sits in its cocked, high-energy position.",
+          "why": "The energy from the last ATP split is stored in the bent head, like a set mousetrap, before it binds actin."
+        },
+        {
+          "id": "attach",
+          "label": "Cross-bridge forms",
+          "text": "The cocked head binds an uncovered site on actin, forming a cross-bridge.",
+          "why": "With calcium on troponin, tropomyosin has moved, so the head can reach the binding site."
+        },
+        {
+          "id": "stroke",
+          "label": "Pi released, power stroke",
+          "text": "Binding makes the head release its phosphate, and it pivots toward the M line, dragging the thin filament 5 to 10 nm.",
+          "why": "Releasing phosphate lets the head spring back from its cocked shape: the stored energy becomes movement."
+        },
+        {
+          "id": "adp",
+          "label": "ADP released",
+          "text": "At the end of the stroke the head releases its ADP and stays tightly bound to actin.",
+          "why": "ADP leaves after the stroke, not before, leaving the head in a low-energy shape still gripping actin."
+        },
+        {
+          "id": "detach",
+          "label": "ATP binds, head lets go",
+          "text": "A new ATP binds the head, which changes shape and lets go of actin.",
+          "why": "It is the binding of ATP, not its splitting, that releases the head. Without ATP the cycle stops here, locked, as in rigor."
+        },
+        {
+          "id": "recock",
+          "label": "ATP split, head recocks",
+          "text": "The head’s ATPase splits the ATP into ADP and phosphate, and the energy swings the head back to its cocked position.",
+          "why": "Splitting comes after detachment and resets the head, ready to bind a site farther along the thin filament."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Calcium leaves troponin, and tropomyosin pushes the head off actin.",
+            "why": "Tropomyosin covers binding sites but does not detach heads. Only a new ATP binding makes an attached head let go."
+          },
+          {
+            "text": "The head splits a new ATP while still bound, and the energy released pries it off actin.",
+            "why": "Detachment needs only the binding of ATP. Splitting happens after the head has let go and recocks it."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Binding makes the head take up a new ATP, and the energy of that ATP drives the power stroke.",
+        "why": "The power stroke is powered by energy already stored in the cocked head from an earlier split. Binding to actin releases phosphate, which lets the head spring back; a new ATP arrives only after the stroke."
+      },
+      "summary": "Cocked head (ADP + Pi) → binds actin → phosphate released, power stroke → ADP released, head still bound → ATP binds, head lets go → ATP split, head recocks, and around again while calcium and ATP last."
+    },
+    {
+      "id": "mt-rigor-mortis",
+      "title": "How rigor mortis sets in",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "After death, muscles stiffen over a few hours and loosen again days later. Trace the chain from the moment circulation stops.",
+      "steps": [
+        {
+          "id": "o2",
+          "label": "Circulation stops",
+          "text": "Circulation stops, no oxygen reaches the muscles, and aerobic respiration ends.",
+          "why": "Aerobic respiration makes most of a fiber’s ATP, and it needs oxygen delivered by the blood."
+        },
+        {
+          "id": "atp",
+          "label": "ATP runs down",
+          "text": "Anaerobic breakdown of glycogen makes a little more ATP, then ATP runs down.",
+          "why": "The fiber’s stored fuel buys only a short delay without oxygen."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium leaks out",
+          "text": "The SR pumps stop and membranes grow leaky, so calcium rises, binds troponin and uncovers actin.",
+          "why": "The pumps are ATPases; without ATP they cannot hold calcium in the SR."
+        },
+        {
+          "id": "bind",
+          "label": "Heads bind and stroke",
+          "text": "Myosin heads bind actin and complete their power stroke.",
+          "why": "The uncovered binding sites let the cocked heads attach, as they would in a contraction."
+        },
+        {
+          "id": "lock",
+          "label": "Heads cannot let go",
+          "text": "No ATP is left to bind the heads, so every cross-bridge stays locked.",
+          "why": "A head lets go of actin only when a new ATP binds it."
+        },
+        {
+          "id": "stiff",
+          "label": "Muscles stiffen",
+          "text": "Filaments bolted together cannot slide, so the muscles resist stretching and the joints are fixed.",
+          "why": "Locked cross-bridges make the muscle stiff rather than pulling hard. Rigor is usually noticeable 2 to 6 hours after death."
+        },
+        {
+          "id": "pass",
+          "label": "Rigor passes off",
+          "text": "Over one to three days, enzymes released inside the dead cells break down the proteins holding the filaments together.",
+          "why": "No ATP returns; the stiffness ends because the structure itself comes apart."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The heads keep splitting ATP made from lactate, so they cycle faster and faster until the muscle shortens.",
+            "why": "After death there is no ATP to split. The heads stop after the power stroke because none can bind the ATP it needs to let go."
+          },
+          {
+            "text": "Calcium binds the myosin heads directly and glues them to actin until the calcium is pumped away.",
+            "why": "Calcium acts through troponin to uncover actin. Heads stay attached because there is no ATP to release them, not because calcium holds them."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Rigor passes off as ATP is made again by anaerobic breakdown of glycogen, letting the heads go.",
+        "why": "Once ATP has run out after death it does not return. Rigor ends because enzymes from the dead cells break down the proteins that hold the filaments together."
+      },
+      "summary": "Circulation stops → ATP runs down → pumps fail and calcium uncovers actin → heads bind and stroke → no ATP to release them → muscles stiff (rigor mortis) → days later, the filament proteins break down and rigor passes."
+    },
+    {
+      "id": "mt-twitch-events",
+      "title": "One muscle twitch",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A single stimulus produces one twitch: a latent period, a contraction phase and a relaxation phase. Put the events in order, starting with the stimulus.",
+      "steps": [
+        {
+          "id": "nmj",
+          "label": "Signal at the junction",
+          "text": "An action potential in the motor neuron reaches the neuromuscular junction and ACh is released.",
+          "why": "Every fiber in the motor unit is triggered by its motor neuron’s action potential."
+        },
+        {
+          "id": "ap",
+          "label": "Fiber action potential",
+          "text": "The fiber fires an action potential that spreads along the sarcolemma and down the T tubules.",
+          "why": "The end plate potential brings the sarcolemma to threshold, and the T tubules carry the signal inward."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium binds troponin",
+          "text": "The SR releases calcium, which binds troponin, and cross-bridges start to form.",
+          "why": "These first steps fill the latent period: the chemistry is under way, but the elastic parts must be taken up before tension shows."
+        },
+        {
+          "id": "rise",
+          "label": "Tension rises",
+          "text": "Cross-bridges cycle and tension climbs to its peak: the contraction phase.",
+          "why": "Once the slack is taken up, the pull of cycling cross-bridges appears as rising tension on the myogram."
+        },
+        {
+          "id": "fall",
+          "label": "Tension falls",
+          "text": "The SR pumps calcium back in, tropomyosin covers actin, and tension falls: the relaxation phase.",
+          "why": "Pumping calcium back takes longer than releasing it, so this is usually the longest phase."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Tension rises at once to its peak, because the action potential itself makes the filaments slide.",
+            "why": "The action potential only triggers calcium release; tension waits through the latent period until cross-bridges have taken up the slack."
+          },
+          {
+            "text": "More motor units are recruited, one after another, until tension reaches its peak.",
+            "why": "Recruitment grades the force of a whole muscle. A single twitch is one fiber or unit responding to one action potential."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Calcium diffuses out of the fiber through the sarcolemma, and tension falls: the relaxation phase.",
+        "why": "Calcium is pumped back into the SR by ATP-driven pumps, not lost from the fiber. That pumping is slower than release, which is why relaxation takes longest."
+      },
+      "summary": "Motor neuron signal → fiber action potential down the T tubules → calcium binds troponin (latent period) → cross-bridges cycle and tension rises (contraction phase) → calcium pumped back and tension falls (relaxation phase)."
+    },
+    {
+      "id": "mt-lift-and-lower",
+      "title": "Lifting and lowering a dumbbell",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You lift a dumbbell by bending your elbow, hold it still, then lower it slowly. Follow the muscle that bends your elbow through the movement.",
+      "steps": [
+        {
+          "id": "recruit",
+          "label": "Motor units recruited",
+          "text": "Motor neurons fire and recruit motor units, smallest first.",
+          "why": "Force starts with the nervous system activating motor units; by the size principle the small ones come first."
+        },
+        {
+          "id": "iso1",
+          "label": "Tension builds, no motion",
+          "text": "Tension rises while the muscle keeps its length, because it is still less than the load.",
+          "why": "Every lift begins isometrically: nothing moves until tension matches the weight."
+        },
+        {
+          "id": "conc",
+          "label": "Concentric: it shortens",
+          "text": "Tension exceeds the load, the muscle shortens and the dumbbell rises.",
+          "why": "Once tension is greater than the load, the thin filaments slide inward and the joint moves."
+        },
+        {
+          "id": "hold",
+          "label": "Isometric hold",
+          "text": "You hold the dumbbell still: tension equals the load and the muscle length does not change.",
+          "why": "Cross-bridges keep cycling and spending ATP, but the filaments do not slide overall, so no external work is done."
+        },
+        {
+          "id": "ecc",
+          "label": "Eccentric: it lengthens",
+          "text": "You lower the dumbbell slowly: the load exceeds the tension and the muscle lengthens while its cross-bridges keep braking.",
+          "why": "The cross-bridges resist being pulled back, so the muscle controls the descent while getting longer."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Tension exceeds the load, the muscle lengthens and the dumbbell rises.",
+            "why": "When tension is greater than the load, the muscle shortens: a concentric contraction. It lengthens only while a load is lowered."
+          },
+          {
+            "text": "The muscle relaxes completely, and the tendon’s recoil lifts the dumbbell.",
+            "why": "A tendon only transmits the muscle’s pull. The dumbbell rises because the muscle keeps working and shortens."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "You lower the dumbbell slowly: the muscle relaxes completely and the weight falls under gravity.",
+        "why": "A slow lowering is an eccentric contraction. The muscle keeps working as it lengthens, its cross-bridges braking the fall; a relaxed muscle would let the weight drop."
+      },
+      "summary": "Motor units recruited → tension builds isometrically → concentric contraction lifts the load → isometric hold → eccentric contraction lowers it under control."
+    },
+    {
+      "id": "mt-lactate-route",
+      "title": "From glycogen to lactate and back",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A fiber works so hard that it makes lactate. Trace the fuel from the fiber’s glycogen to the lactate and on to where the lactate goes.",
+      "steps": [
+        {
+          "id": "glycogen",
+          "label": "Glycogen broken down",
+          "text": "Glycogen stored in the fiber is broken down to glucose units.",
+          "why": "Muscle glycogen is the main fuel for fast glycolysis, and it serves only the fiber that stores it."
+        },
+        {
+          "id": "gly",
+          "label": "Glycolysis",
+          "text": "Glycolysis splits each glucose into two pyruvate, making ATP and NADH.",
+          "why": "Glycolysis is the fast, oxygen-free first stage, making ATP about twice as fast as aerobic respiration."
+        },
+        {
+          "id": "outrun",
+          "label": "Pyruvate piles up",
+          "text": "Pyruvate is made faster than the mitochondria can take it in.",
+          "why": "At high work rates glycolysis outpaces the mitochondria even when the fiber has oxygen."
+        },
+        {
+          "id": "lactate",
+          "label": "Pyruvate to lactate",
+          "text": "Pyruvate is converted to lactate, regenerating NAD+.",
+          "why": "Glycolysis needs NAD+ to keep running, and making lactate supplies it."
+        },
+        {
+          "id": "leave",
+          "label": "Lactate used as fuel",
+          "text": "Lactate leaves the fiber; other fibers and the heart burn it, and the liver makes glucose from it.",
+          "why": "Lactate is a fuel, not a waste, and blood lactate is back to resting within about an hour."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The fiber runs completely out of oxygen, so the mitochondria stop working altogether.",
+            "why": "Lactate forms whenever glycolysis outruns the mitochondria, even with oxygen present; the mitochondria keep working."
+          },
+          {
+            "text": "Creatine kinase turns the pyruvate into creatine phosphate for later use.",
+            "why": "Creatine kinase moves a phosphate between creatine and ADP; it does not act on pyruvate."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Lactate stays in the fiber as a waste, causing next-day soreness until it is slowly excreted.",
+        "why": "Lactate leaves the fiber and is used as fuel within about an hour. Next-day soreness comes from small injuries in the fibers, not lactate."
+      },
+      "summary": "Glycogen → glucose → glycolysis to pyruvate (ATP and NADH) → pyruvate outruns the mitochondria → lactate, regenerating NAD+ → lactate leaves and is burned or made into glucose."
+    },
+    {
+      "id": "mt-angiogenesis",
+      "title": "New capillaries in trained muscle",
+      "topic": "fiber-types",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Endurance training adds capillaries around each muscle fiber. Trace how a training session leads to a new capillary.",
+      "steps": [
+        {
+          "id": "signal",
+          "label": "Low oxygen and shear",
+          "text": "During a session, working fibers are low in oxygen and fast blood flow stretches and shears the capillaries.",
+          "why": "These are the signals that working muscle is short of supply."
+        },
+        {
+          "id": "vegf",
+          "label": "VEGF released",
+          "text": "Muscle fibers and capillary lining cells release growth factors, above all VEGF.",
+          "why": "Low oxygen and shear make the cells release VEGF, the main signal for new vessels."
+        },
+        {
+          "id": "divide",
+          "label": "Endothelial cells divide",
+          "text": "VEGF binds receptor proteins on the endothelium of nearby capillaries, and those cells divide and migrate outward.",
+          "why": "The endothelial cells are the target: VEGF makes them grow a sprout from an existing capillary."
+        },
+        {
+          "id": "join",
+          "label": "Sprout joins up",
+          "text": "The sprout hollows out and joins another capillary, and blood starts to flow through it.",
+          "why": "A sprout carries blood only once it is hollow and connected at both ends."
+        },
+        {
+          "id": "closer",
+          "label": "Shorter oxygen path",
+          "text": "Each fiber’s mitochondria are now closer to a blood supply, so more oxygen reaches each fiber per minute.",
+          "why": "More capillaries shorten the diffusion distance, the payoff of angiogenesis."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "VEGF makes the muscle fibers divide, and the new fibers grow capillaries of their own.",
+            "why": "VEGF acts on the endothelial cells of existing capillaries. Adult skeletal fibers do not divide."
+          },
+          {
+            "text": "VEGF makes the existing capillaries widen to several times their diameter, so each one carries far more blood past the fibers.",
+            "why": "Angiogenesis adds new capillaries by sprouting; it does not simply widen the old ones."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "During a session, working fibers have extra oxygen, and slow blood flow lets the capillaries relax.",
+        "why": "The trigger is the opposite: working fibers are low in oxygen, and fast blood flow stretches and shears the capillaries."
+      },
+      "summary": "Low oxygen and shear during training → VEGF released → endothelial cells of nearby capillaries divide and sprout → sprout joins another capillary → shorter diffusion distance for oxygen."
+    },
+    {
+      "id": "mt-fiber-formation",
+      "title": "Forming and repairing a muscle fiber",
+      "topic": "fiber-types",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A skeletal muscle fiber has hundreds of nuclei because it was built by fusion. Put the stages of fiber formation in order.",
+      "steps": [
+        {
+          "id": "stem",
+          "label": "Stem cells commit",
+          "text": "Muscle stem cells in the embryo commit to becoming muscle as myoblasts.",
+          "why": "Every fiber starts from stem cells that become myoblasts, dividing cells committed to muscle."
+        },
+        {
+          "id": "line",
+          "label": "Myoblasts line up",
+          "text": "Myoblasts divide and line up end to end.",
+          "why": "The cells must multiply and align before they can join into one long cell."
+        },
+        {
+          "id": "fuse",
+          "label": "Fusion into a myotube",
+          "text": "The myoblasts fuse into a myotube, a long young fiber with many nuclei.",
+          "why": "Fusion is why an adult fiber has many nuclei: each came from a separate myoblast."
+        },
+        {
+          "id": "fill",
+          "label": "Myofibrils fill it",
+          "text": "The myotube makes actin and myosin and fills with myofibrils.",
+          "why": "Once formed, the long cell builds the contractile machinery that fills most of its volume."
+        },
+        {
+          "id": "edge",
+          "label": "Nuclei move to the edge",
+          "text": "Its nuclei move to the edge under the sarcolemma, and it becomes a mature fiber.",
+          "why": "The packed myofibrils push the nuclei aside, giving the mature fiber its peripheral nuclei."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "One myoblast copies its nucleus many times without dividing and grows into a long fiber.",
+            "why": "A fiber gets its many nuclei by fusion of many myoblasts, not by one cell copying its nucleus."
+          },
+          {
+            "text": "The myoblasts link into a sheet through gap junctions but stay separate cells.",
+            "why": "Gap junctions link cells that stay separate, as in cardiac muscle. A skeletal fiber is one cell formed by the fusion of many myoblasts."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The mature fiber keeps dividing to add new fibers as the muscle grows.",
+        "why": "Mature skeletal fibers never divide. Growth adds myofibrils to existing fibers, and repair uses muscle stem cells whose myoblasts fuse with damaged fibers."
+      },
+      "summary": "Stem cells become myoblasts → myoblasts divide and line up → fuse into a multinucleated myotube → myotube fills with myofibrils → nuclei move to the edge of a mature fiber."
+    },
+    {
+      "id": "mt-smooth-contraction",
+      "title": "Switching on smooth muscle",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Smooth muscle has no troponin; its switch is on myosin. Trace a contraction from depolarization to the fiber puckering.",
+      "steps": [
+        {
+          "id": "dep",
+          "label": "Membrane depolarizes",
+          "text": "The sarcolemma depolarizes and voltage-gated calcium channels open.",
+          "why": "A signal such as a pacesetter wave, stretch or a transmitter depolarizes the fiber first."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium enters",
+          "text": "Calcium flows in from the extracellular fluid, with some released from the small SR.",
+          "why": "In smooth muscle, much of the calcium comes from outside the cell; the fiber is thin enough for it to reach the filaments quickly."
+        },
+        {
+          "id": "cam",
+          "label": "Calcium binds calmodulin",
+          "text": "Calcium binds calmodulin, smooth muscle’s calcium sensor in the cytosol.",
+          "why": "Calmodulin does the job troponin does in skeletal muscle."
+        },
+        {
+          "id": "mlck",
+          "label": "MLCK switched on",
+          "text": "Calcium–calmodulin activates myosin light-chain kinase (MLCK).",
+          "why": "MLCK is inactive until calcium–calmodulin binds it."
+        },
+        {
+          "id": "phos",
+          "label": "Myosin phosphorylated",
+          "text": "MLCK moves a phosphate from ATP onto a small regulatory protein on each myosin head.",
+          "why": "Phosphorylation is the on switch: it lets the heads bind actin."
+        },
+        {
+          "id": "cycle",
+          "label": "Cross-bridges cycle",
+          "text": "Phosphorylated heads bind actin and cycle, pulling the dense bodies together, and the fiber shortens and puckers.",
+          "why": "The filaments run at angles and are anchored to dense bodies, so pulling them together shortens the whole cell and twists it slightly."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Calcium binds troponin, and tropomyosin rolls off the binding sites on actin.",
+            "why": "That is the skeletal muscle switch. Smooth muscle has no troponin; calcium binds calmodulin instead."
+          },
+          {
+            "text": "Calcium binds the myosin heads directly, and they bind actin at once.",
+            "why": "Calcium does not act on myosin directly. It binds calmodulin, which switches on the kinase that phosphorylates the heads."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Myosin phosphatase moves a phosphate onto each myosin head, letting it bind actin.",
+        "why": "MLCK adds the phosphate. Myosin phosphatase does the opposite: it removes the phosphate, which stops the heads cycling and relaxes the fiber."
+      },
+      "summary": "Depolarization → calcium enters (mostly from outside) → calcium binds calmodulin → MLCK activated → myosin heads phosphorylated → cross-bridges cycle and pull the dense bodies together."
+    },
+    {
+      "id": "mt-smooth-relaxation",
+      "title": "Relaxing smooth muscle",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A smooth muscle fiber relaxes when the switch on myosin is turned off. Put the steps in order, starting as calcium is removed.",
+      "steps": [
+        {
+          "id": "pump",
+          "label": "Calcium removed",
+          "text": "Calcium is pumped out of the cell and back into the SR.",
+          "why": "Relaxation starts with lowering the calcium that switched the fiber on."
+        },
+        {
+          "id": "cam",
+          "label": "Calmodulin lets go",
+          "text": "Calcium leaves calmodulin.",
+          "why": "With less calcium in the cytosol, calmodulin gives up its calcium."
+        },
+        {
+          "id": "mlck",
+          "label": "MLCK switches off",
+          "text": "Without calcium–calmodulin, MLCK switches off.",
+          "why": "MLCK is active only while calcium–calmodulin is bound to it."
+        },
+        {
+          "id": "phosph",
+          "label": "Phosphate removed",
+          "text": "Myosin phosphatase removes the phosphate from the myosin heads.",
+          "why": "The phosphatase works all the time; with MLCK off, it now wins."
+        },
+        {
+          "id": "stop",
+          "label": "Heads stop cycling",
+          "text": "Unphosphorylated heads stop cycling, and the fiber relaxes.",
+          "why": "Without phosphate the heads no longer bind and pull, so tension fades over seconds to minutes."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Troponin takes up the calcium, and tropomyosin covers actin again.",
+            "why": "Smooth muscle has no troponin. Its heads stop cycling when myosin phosphatase removes their phosphate."
+          },
+          {
+            "text": "MLCK removes its own phosphate from the myosin heads.",
+            "why": "MLCK adds phosphate; a separate enzyme, myosin phosphatase, removes it."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Unphosphorylated heads stay attached permanently, locking the fiber in rigor.",
+        "why": "Heads that lose their phosphate stop cycling and the fiber relaxes. If the phosphate comes off while a head is still attached, it detaches slowly as a latch-bridge, holding tension cheaply, but that is not rigor."
+      },
+      "summary": "Calcium pumped out → calcium leaves calmodulin → MLCK switches off → myosin phosphatase removes phosphate → heads stop cycling and the fiber relaxes."
+    },
+    {
       "id": "sk-skull-midline",
       "title": "Over the top of the skull, front to back",
       "topic": "skull",
@@ -12639,6 +13542,632 @@
         "why": "The bones in a row in front of the navicular are the three cuneiforms. The cuboid lies on the outer side, in front of the calcaneus."
       },
       "summary": "Calcaneus, talus, navicular, cuneiforms, first three metatarsals, then the phalanges of the big toe. The lateral arch runs calcaneus, cuboid, fourth and fifth metatarsals."
+    },
+    {
+      "id": "ig-keratinocyte-maturation",
+      "title": "A keratinocyte’s journey through the strata",
+      "topic": "skin-layers",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Every keratinocyte in the thick skin of your palm starts at the bottom of the epidermis and ends at the top, dead and ready to be shed. Put its journey in order.",
+      "steps": [
+        {
+          "id": "basale",
+          "label": "Stratum basale",
+          "text": "A basal cell resting on the basement membrane divides by mitosis; one daughter stays as a stem cell.",
+          "why": "The only dividing cells of the epidermis sit in its deepest layer, closest to the capillaries of the dermis."
+        },
+        {
+          "id": "spinosum",
+          "label": "Stratum spinosum",
+          "text": "The other daughter is pushed up by the cells made beneath it and makes keratin filaments and many desmosomes.",
+          "why": "New cells below push each cell upward, and in this layer it is still alive and busy building keratin and anchoring itself to its neighbors."
+        },
+        {
+          "id": "granulosum",
+          "label": "Stratum granulosum",
+          "text": "Keratohyalin binds the filaments into bundles, lamellar granules release lipids between the cells, and the nucleus breaks down.",
+          "why": "The cell can only bundle keratin it has already made, and it releases its lipid seal and dismantles its nucleus as it dies."
+        },
+        {
+          "id": "lucidum",
+          "label": "Stratum lucidum",
+          "text": "In thick skin, the flat, dead cell, packed with clear eleiden, passes through a thin glassy band.",
+          "why": "This band lies just above the stratum granulosum and exists only in thick skin, such as the palm."
+        },
+        {
+          "id": "corneum",
+          "label": "Stratum corneum",
+          "text": "The flat envelope of cross-linked keratin lies in the lipid sheets, like a brick in mortar.",
+          "why": "The dead, keratin-filled cells pile up at the surface, where they form the barrier."
+        },
+        {
+          "id": "shed",
+          "label": "Shed",
+          "text": "At the surface the cell loosens from its neighbors and is shed as a tiny flake, about four to eight weeks after it was made.",
+          "why": "Shedding ends the journey: enzymes cut the desmosomes between the topmost cells, and they are replaced from below."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The cell divides again by mitosis, doubling the number of cells in the layer.",
+            "why": "Keratinocytes above the stratum basale do not divide. All new cells come from the basal cells at the bottom."
+          },
+          {
+            "text": "Capillaries of the dermis grow up between the cells to feed them.",
+            "why": "The epidermis has no blood vessels. Its living cells are fed by diffusion from the capillary loops of the dermal papillae."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "A melanocyte resting on the basement membrane divides by mitosis to make a new keratinocyte.",
+        "why": "Melanocytes make pigment and pass it to keratinocytes; they do not become keratinocytes. New keratinocytes come from basal cells, the stem cells of the stratum basale."
+      },
+      "summary": "Stratum basale (a basal cell divides), stratum spinosum (keratin filaments and desmosomes), stratum granulosum (keratohyalin, lamellar granule lipids, the nucleus breaks down), stratum lucidum (thick skin only), stratum corneum (dead keratin envelopes in lipid sheets), then shed. The process is keratinization."
+    },
+    {
+      "id": "ig-tanning",
+      "title": "How a tan forms",
+      "topic": "skin-layers",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Strong sun on untanned skin darkens it over several days. Trace the chain from the light to the tan fading.",
+      "steps": [
+        {
+          "id": "damage",
+          "label": "UV damages DNA",
+          "text": "UV light reaches the living keratinocytes and damages their DNA.",
+          "why": "The chain starts with the damage itself: a tan is evidence that UV has already harmed DNA."
+        },
+        {
+          "id": "signal",
+          "label": "Paracrine signals",
+          "text": "The damaged keratinocytes release paracrine signals that act on nearby melanocytes.",
+          "why": "Melanocytes respond to signals from the keratinocytes around them, which come after the damage."
+        },
+        {
+          "id": "make",
+          "label": "More melanin made",
+          "text": "Melanocytes make more melanin from tyrosine, using the enzyme tyrosinase, and pack it into melanosomes.",
+          "why": "The signals switch up melanin production, which has to happen before any can be passed on."
+        },
+        {
+          "id": "pass",
+          "label": "Melanosomes passed on",
+          "text": "Melanosomes travel out along the melanocytes’ branches and are taken in by the keratinocytes.",
+          "why": "The pigment is made in melanocytes but used in keratinocytes, so it must be transferred."
+        },
+        {
+          "id": "cap",
+          "label": "Caps over nuclei",
+          "text": "Inside each keratinocyte, melanin gathers over the side of the nucleus that faces the surface, and the skin looks darker.",
+          "why": "Once inside, melanin forms a cap that absorbs UV before it reaches the DNA: the visible tan."
+        },
+        {
+          "id": "fade",
+          "label": "Tan fades",
+          "text": "Over weeks, the tanned keratinocytes are pushed up and shed, and the tan fades.",
+          "why": "The pigment is carried in keratinocytes, which are shed from the surface in their four- to eight-week journey."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "UV light makes new melanocytes divide and crowd the stratum basale.",
+            "why": "A tan comes from existing melanocytes making more melanin; the number of melanocytes is about the same in darker and lighter skin."
+          },
+          {
+            "text": "The melanin already in the skin absorbs the UV and turns darker, like a photograph.",
+            "why": "Melanin turns UV energy into harmless heat; it does not darken on the spot. The skin darkens over days as new melanin is made and passed on."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Melanosomes travel down into the dermis, where fibroblasts store them.",
+        "why": "Melanosomes are passed to the keratinocytes around the melanocyte, in the epidermis, where they shade each nucleus."
+      },
+      "summary": "UV damages keratinocyte DNA, the keratinocytes send paracrine signals, melanocytes make more melanin in melanosomes, the melanosomes are passed to keratinocytes, melanin caps their nuclei and the skin darkens, and the tan fades as those keratinocytes are shed."
+    },
+    {
+      "id": "ig-hair-cycle",
+      "title": "The hair growth cycle",
+      "topic": "skin-accessory",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Each hair follicle cycles between growing and resting, out of step with its neighbors. Start with a follicle that is growing a hair and follow it around.",
+      "steps": [
+        {
+          "id": "anagen",
+          "label": "Anagen",
+          "text": "Matrix cells in the hair bulb divide rapidly and the hair lengthens by about 1 cm a month, for 2 to 7 years on the scalp.",
+          "why": "The cycle starts in the growth phase, the longest one; its length sets how long a hair can grow."
+        },
+        {
+          "id": "catagen",
+          "label": "Catagen",
+          "text": "The matrix stops dividing, the lower follicle shrinks by apoptosis, and the base of the hair becomes a hard club.",
+          "why": "Growth has to stop before the follicle can shrink; this short transition lasts about 2 to 3 weeks."
+        },
+        {
+          "id": "telogen",
+          "label": "Telogen",
+          "text": "The follicle rests for about 3 months, holding the club hair.",
+          "why": "After shrinking, the follicle rests; the club hair stays anchored until something pushes it out."
+        },
+        {
+          "id": "push",
+          "label": "New anagen; old hair shed",
+          "text": "A new anagen phase begins; a new hair grows up beneath the club hair and pushes it out.",
+          "why": "Shedding happens at the start of the next growth phase, which is why the follicle is never empty for long."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The follicle is destroyed and a new one forms in the dermis nearby.",
+            "why": "Follicles are not replaced; the same follicle rests and then grows a new hair."
+          },
+          {
+            "text": "Matrix cells divide faster, and the hair lengthens by about 1 cm a week.",
+            "why": "After catagen the matrix is resting, not dividing. Hair grows about 1 cm a month, and only during anagen."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The matrix divides faster than ever and the hair thickens into a club.",
+        "why": "In catagen the matrix stops dividing and the lower follicle shrinks by apoptosis. The club forms because growth has stopped."
+      },
+      "summary": "Anagen (the matrix divides and the hair grows), catagen (growth stops, the follicle shrinks, a club hair forms), telogen (the follicle rests with its club hair), then a new anagen, in which the new hair pushes the old one out."
+    },
+    {
+      "id": "ig-vitamin-d",
+      "title": "Vitamin D: sunlight to active hormone",
+      "topic": "skin-functions",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Sunlight on your skin starts a pathway that ends with your intestine absorbing more calcium from food. Put the steps in order.",
+      "steps": [
+        {
+          "id": "dhc",
+          "label": "7-dehydrocholesterol",
+          "text": "Keratinocytes in the stratum basale and stratum spinosum hold 7-dehydrocholesterol in their plasma membranes.",
+          "why": "The raw material is already in the skin, waiting for light. Cells normally turn it into cholesterol, so it is a close relative of cholesterol."
+        },
+        {
+          "id": "uvb",
+          "label": "UVB opens a ring",
+          "text": "UVB light reaches those layers and breaks one ring of 7-dehydrocholesterol open, making previtamin D3.",
+          "why": "UVB is the trigger; it can only act on the molecule that is already there."
+        },
+        {
+          "id": "warm",
+          "label": "Warmth: vitamin D3",
+          "text": "Over hours to days, body warmth rearranges previtamin D3 into vitamin D3 (cholecalciferol).",
+          "why": "This step needs no enzyme, only time and body heat, and it comes after the ring is opened."
+        },
+        {
+          "id": "blood",
+          "label": "Into the blood",
+          "text": "Vitamin D3 moves into the dermal capillaries and travels in the blood bound to a carrier protein.",
+          "why": "Vitamin D3 is made in the epidermis but activated in other organs, so it must travel."
+        },
+        {
+          "id": "liver",
+          "label": "Liver: first –OH",
+          "text": "The liver adds the first hydroxyl group, making 25-hydroxyvitamin D, the main form in the blood.",
+          "why": "The liver acts first; its product is the form a vitamin D blood test measures."
+        },
+        {
+          "id": "kidney",
+          "label": "Kidneys: second –OH",
+          "text": "The kidneys add a second hydroxyl group, making the active hormone.",
+          "why": "The kidneys can only work on 25-hydroxyvitamin D, so their step comes after the liver’s."
+        },
+        {
+          "id": "gut",
+          "label": "More calcium absorbed",
+          "text": "The active hormone makes the intestine absorb more calcium and phosphate from food.",
+          "why": "Only the active hormone acts on the intestine, so this is the last step."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The skin adds a hydroxyl group to vitamin D3 and releases the active hormone straight into the blood.",
+            "why": "Vitamin D from the skin is inactive. The two –OH groups are added in the liver and then the kidneys."
+          },
+          {
+            "text": "The liver turns vitamin D3 back into cholesterol for storage.",
+            "why": "The liver adds the first –OH to vitamin D3, making 25-hydroxyvitamin D. Cholesterol is made from 7-dehydrocholesterol, not from vitamin D3."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "Keratinocytes take up cholesterol from the blood and convert it into 7-dehydrocholesterol.",
+        "why": "It runs the other way: 7-dehydrocholesterol is the molecule cells convert into cholesterol in the last step of making it. The skin’s keratinocytes hold it in their membranes."
+      },
+      "summary": "7-dehydrocholesterol in keratinocyte membranes, UVB opens a ring (previtamin D3), body warmth rearranges it into vitamin D3, vitamin D3 travels in the blood on a carrier protein, the liver adds the first –OH (25-hydroxyvitamin D), the kidneys add the second (the active hormone), and the intestine absorbs more calcium and phosphate."
+    },
+    {
+      "id": "ig-wound-healing",
+      "title": "Healing of an open wound",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A deep scrape on your forearm has lost a patch of skin and is left open to heal from the bottom up. The stages overlap, but each starts in turn. Put them in order.",
+      "steps": [
+        {
+          "id": "narrow",
+          "label": "Vessels narrow",
+          "text": "Cut vessels narrow and platelets stick to the damaged vessel walls.",
+          "why": "Within seconds to minutes, bleeding has to be slowed before anything else can happen."
+        },
+        {
+          "id": "clot",
+          "label": "Clot and scab",
+          "text": "A blood clot fills the gap, and its surface dries into a scab.",
+          "why": "The clot builds on the platelets already stuck to the walls, and it seals the wound."
+        },
+        {
+          "id": "inflame",
+          "label": "Vessels widen",
+          "text": "Chemical messengers from damaged cells and mast cells widen and loosen the nearby vessels.",
+          "why": "Inflammation follows in the first few days, set off by messengers from the damaged tissue."
+        },
+        {
+          "id": "clean",
+          "label": "Cleanup",
+          "text": "White blood cells and macrophages move in and clear dead cells, debris and microbes by phagocytosis.",
+          "why": "The loosened vessels let these cells out of the blood into the wound, so they arrive after the vessels change."
+        },
+        {
+          "id": "granulation",
+          "label": "Granulation tissue",
+          "text": "New capillaries sprout into the wound, and fibroblasts follow them and lay down collagen, filling the gap from the bottom up.",
+          "why": "Rebuilding starts from about day 3, once the wound has been cleaned. It gives the new epidermis a surface to cover."
+        },
+        {
+          "id": "cover",
+          "label": "Epidermis covers",
+          "text": "Epithelial cells at the edges divide and crawl across the granulation tissue beneath the scab until they meet.",
+          "why": "In an open wound the cells need the granulation tissue to crawl over; contact with cells from the other side stops them."
+        },
+        {
+          "id": "remodel",
+          "label": "Remodeling",
+          "text": "Over months, the collagen is reorganized and cross-linked, most new capillaries disappear, and the scar pales and flattens.",
+          "why": "Remodeling is the last and longest stage, lasting weeks to a year or more."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Epithelial cells rebuild a new set of hair follicles, sweat glands and sebaceous glands across the whole wound bed.",
+            "why": "A scar has no hair, sweat glands or sebaceous glands. The new epidermis covers the wound without rebuilding them."
+          },
+          {
+            "text": "The scab dissolves into the blood and the wound reopens.",
+            "why": "The scab stays until the new epidermis has formed beneath it. Cells clearing the debris are what follow inflammation."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Over months, the scar gains more strength than the skin around it, and hair regrows in it.",
+        "why": "A healed scar reaches at most about 80% of the strength of unwounded skin, and it has no hair follicles, sweat glands or sebaceous glands."
+      },
+      "summary": "Vessels narrow and platelets stick; a clot fills the gap and dries into a scab; inflammation widens the vessels; white blood cells and macrophages clean up; granulation tissue fills the wound; epidermis crawls across it; and the collagen is remodeled into a pale, flat scar."
+    },
+    {
+      "id": "ig-burn-depth",
+      "title": "Burn depth, from shallow to deep",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Burns are classified by the deepest layer they destroy. Put the classes in order from the shallowest to the deepest.",
+      "steps": [
+        {
+          "id": "superficial",
+          "label": "Superficial",
+          "text": "Superficial (first-degree): epidermis only; red, dry and painful, no blisters.",
+          "why": "The shallowest class kills only epidermal cells; basal cells regrow the epidermis in about a week."
+        },
+        {
+          "id": "spt",
+          "label": "Superficial partial",
+          "text": "Superficial partial-thickness (second-degree): epidermis and papillary layer; red, moist, blistered, very painful.",
+          "why": "The next class reaches into the upper dermis, where leaking capillaries fill blisters."
+        },
+        {
+          "id": "dpt",
+          "label": "Deep partial",
+          "text": "Deep partial-thickness (second-degree): epidermis and much of the reticular layer; blotchy, drier, less painful.",
+          "why": "Deeper into the dermis, fewer follicles and nerve endings survive, so it hurts less and heals slowly with a scar."
+        },
+        {
+          "id": "full",
+          "label": "Full-thickness",
+          "text": "Full-thickness (third-degree): all of the dermis, into the hypodermis; white or charred, leathery, painless in its center.",
+          "why": "Once the whole dermis is gone, nothing is left to regrow epidermis, and the nerve endings are dead."
+        },
+        {
+          "id": "fourth",
+          "label": "Fourth-degree",
+          "text": "Fourth-degree: through the hypodermis into muscle, tendon or bone.",
+          "why": "The deepest class goes beyond the skin altogether."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Epidermis only, but blistered, weeping and very painful: the deepest of the partial-thickness burns, healing within weeks.",
+            "why": "A burn of the epidermis only is superficial and does not blister. Blisters mean the dermis is damaged."
+          },
+          {
+            "text": "Hypodermis only, with the epidermis and dermis above it left intact.",
+            "why": "Heat reaches the deep layers through the surface, so a burn always destroys the layers above its deepest one."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Full-thickness (third-degree): all of the dermis, into the hypodermis; the most painful burn, with large blisters.",
+        "why": "A full-thickness burn destroys the nerve endings and the capillaries of the dermis, so its center is painless and it does not blister. The partial-thickness burn around it hurts."
+      },
+      "summary": "Superficial (epidermis), superficial partial-thickness (into the papillary layer), deep partial-thickness (into the reticular layer), full-thickness (all of the dermis, into the hypodermis), fourth-degree (into muscle, tendon or bone). The deeper the burn, the less survives to regrow epidermis."
+    },
+    {
+      "id": "ig-burn-fluid",
+      "title": "How a large burn lowers blood pressure",
+      "topic": "skin-injury",
+      "core": [
+        "homeostasis",
+        "compartments",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A burn over a fifth or more of the body can drop blood pressure within hours, with no bleeding at all. Trace the chain.",
+      "steps": [
+        {
+          "id": "burn",
+          "label": "Heat damage",
+          "text": "Heat destroys the stratum corneum and its lipid sheets and damages cells and capillary walls.",
+          "why": "Everything starts with the burn itself: the barrier is gone and the tissue beneath is injured."
+        },
+        {
+          "id": "messengers",
+          "label": "Messengers released",
+          "text": "Damaged cells and mast cells release histamine, prostaglandins and other chemical messengers.",
+          "why": "Heat damages cells directly, and their messengers are what make the vessels leak."
+        },
+        {
+          "id": "leak",
+          "label": "Capillaries leak",
+          "text": "The capillaries widen and open gaps between their endothelial cells, so water, salts and proteins leak into the interstitial fluid.",
+          "why": "The messengers act on the capillary walls; the leak follows."
+        },
+        {
+          "id": "spread",
+          "label": "Leak spreads",
+          "text": "In a burn of about 20% or more of the body, messengers reach the blood and capillaries all over the body leak.",
+          "why": "A large burn releases so many messengers that the leak is no longer local."
+        },
+        {
+          "id": "volume",
+          "label": "Blood volume falls",
+          "text": "Fluid leaks out of the vessels, and water evaporates from the open wounds, faster than it can be replaced, so blood volume falls, most in the first 8 to 12 hours.",
+          "why": "Blood volume falls only once the losses outrun what can be replaced."
+        },
+        {
+          "id": "pressure",
+          "label": "Pressure falls",
+          "text": "Less blood returns to the heart, blood pressure falls, and the heart rate rises to compensate.",
+          "why": "A smaller blood volume fills the heart less, so pressure falls next."
+        },
+        {
+          "id": "urine",
+          "label": "Urine output falls",
+          "text": "Blood flow to the kidneys falls, and so does urine output.",
+          "why": "Low pressure cuts kidney blood flow; that is why burn teams adjust fluids to keep urine output steady."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The damaged dermal vessels bleed heavily through the burned skin, so blood, with all its water, salts and proteins, is lost from the body.",
+            "why": "Burns do not usually bleed: heat seals and damages vessels. The fluid is lost as leaking plasma and evaporating water."
+          },
+          {
+            "text": "The kidneys make extra urine to wash out the damaged cells.",
+            "why": "Urine output falls after a large burn, because blood flow to the kidneys falls."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "More blood returns to the heart, blood pressure rises, and the heart rate falls.",
+        "why": "With less blood in the vessels, less returns to the heart, so pressure falls and the heart rate rises to make up for it."
+      },
+      "summary": "Heat destroys the barrier and damages tissue; damaged cells and mast cells release messengers; capillaries leak water, salt and protein; in a large burn the leak spreads to the whole body; with water also evaporating from the wounds, blood volume falls; blood pressure falls and the heart rate rises; kidney blood flow and urine output fall."
+    },
+    {
+      "id": "ig-acne",
+      "title": "How acne develops",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Acne is inflammation of hair follicles plugged with sebum and shed cells. Trace a lesion from puberty to a scar.",
+      "steps": [
+        {
+          "id": "hormones",
+          "label": "Hormones rise",
+          "text": "At puberty, rising hormone levels increase sebum output, and the cells lining the follicle are shed faster and stick together.",
+          "why": "The trigger is the hormonal change of puberty, which acts on the sebaceous glands and the follicle lining."
+        },
+        {
+          "id": "plug",
+          "label": "Follicle plugs",
+          "text": "Sebum and shed cells plug the follicle: a blackhead if the plug is open to the air, a whitehead if it is closed over.",
+          "why": "The plug forms from the extra sebum and sticky cells made in the step before."
+        },
+        {
+          "id": "bacteria",
+          "label": "Bacteria multiply",
+          "text": "A bacterium that normally lives in follicles feeds on the trapped sebum and multiplies.",
+          "why": "The trapped sebum is the food supply; the bacteria can only multiply once it builds up."
+        },
+        {
+          "id": "inflame",
+          "label": "Inflammation",
+          "text": "Bacterial products trigger inflammation, and the follicle swells.",
+          "why": "The immune response follows the growing number of bacteria."
+        },
+        {
+          "id": "burst",
+          "label": "Follicle bursts",
+          "text": "The follicle wall bursts, spilling sebum and bacteria into the dermis as a red, painful lump.",
+          "why": "The swollen, inflamed follicle wall gives way, and the inflammation spreads into the dermis."
+        },
+        {
+          "id": "scar",
+          "label": "Scar",
+          "text": "Deep, burst lesions heal with collagen in the dermis, leaving a scar.",
+          "why": "Damage deep in the dermis heals partly by fibrosis, so a scar is the last step."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Dirt from the skin surface collects in the open follicle, darkens it into a blackhead, and blocks the sebum flowing up behind it.",
+            "why": "A blackhead is not dirt. Its color comes from the lipids and melanin in the plug reacting with air."
+          },
+          {
+            "text": "Eccrine sweat glands block with salt and swell.",
+            "why": "Acne involves hair follicles and their sebaceous glands. Eccrine glands open at their own pores and are not part of it."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "A virus infects the keratinocytes lining the follicle and makes them divide.",
+        "why": "The microbe in acne is a bacterium that normally lives in follicles; it multiplies on the trapped sebum."
+      },
+      "summary": "Hormones at puberty raise sebum and make follicle cells shed and stick; the follicle plugs (blackhead or whitehead); resident bacteria feed on the sebum and multiply; inflammation swells the follicle; the wall bursts into the dermis; deep lesions heal with a scar."
+    },
+    {
+      "id": "ig-skin-cancer",
+      "title": "From UV light to skin cancer",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Almost all skin cancer traces to ultraviolet light damaging DNA. Put the chain in order.",
+      "steps": [
+        {
+          "id": "absorb",
+          "label": "UVB absorbed by DNA",
+          "text": "UVB reaches a skin cell and is absorbed directly by its DNA.",
+          "why": "The chain begins when UV energy reaches DNA not shaded by melanin."
+        },
+        {
+          "id": "fuse",
+          "label": "Bases fused",
+          "text": "The energy fuses neighboring pyrimidine bases together.",
+          "why": "This chemical damage is what the absorbed energy does to the DNA."
+        },
+        {
+          "id": "copy",
+          "label": "Copied before repair",
+          "text": "The cell copies its DNA before it has repaired the damage.",
+          "why": "Damage becomes permanent only if the cell replicates before its repair enzymes fix it."
+        },
+        {
+          "id": "mutation",
+          "label": "Mutation",
+          "text": "The error is copied into the new DNA as a mutation.",
+          "why": "A copied error is inherited by both daughter cells."
+        },
+        {
+          "id": "control",
+          "label": "Control lost",
+          "text": "Mutations that disable tumor suppressor genes or switch on oncogenes free the cell from control of the cell cycle.",
+          "why": "Many such mutations build up over years of UV exposure, and only the ones in these genes release the brakes."
+        },
+        {
+          "id": "divide",
+          "label": "Divides without stopping",
+          "text": "The cell divides without stopping, forming a basal cell carcinoma, squamous cell carcinoma or melanoma.",
+          "why": "Uncontrolled division makes the tumor, named for the cell it started in."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The damaged cell always dies at once, so the damage cannot be passed on.",
+            "why": "Badly damaged cells may die, but a cell that copies its DNA before repairing it passes the error on, which is how cancer starts."
+          },
+          {
+            "text": "Melanin in the cell turns the damaged bases back to normal.",
+            "why": "Melanin absorbs UV before it reaches the DNA; it cannot repair damage already done."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The cell divides without stopping, but only ever as a melanoma, because only melanocytes absorb UVB.",
+        "why": "Any exposed skin cell can be damaged. Basal cells and keratinocytes give the two most common cancers; melanocytes give melanoma."
+      },
+      "summary": "UVB is absorbed by DNA, fuses neighboring pyrimidines, the cell copies its DNA before repair, the error becomes a mutation, mutations in tumor suppressor genes or oncogenes release the cell cycle, and the cell divides without stopping."
     }
   ]
 }

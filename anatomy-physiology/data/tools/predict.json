@@ -26083,6 +26083,1126 @@
           "why": "Gap junctions link the fibers into a sheet, so each wave still spreads and the sheet contracts together."
         }
       ]
+    },
+    {
+      "id": "bt-marrow-after-bleeding",
+      "title": "Weeks of blood loss and the marrow",
+      "topic": "bone-structure",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "yellow marrow is only stored fat and can never make blood cells again",
+      "setup": "A 40-year-old loses blood slowly for several weeks from a bleeding sore in her gut. Her red marrow cannot keep up with the losses. Predict the changes in the marrow of her long bones over the following weeks, compared with before.",
+      "start": "Blood cells are lost faster than the red marrow replaces them",
+      "steps": {
+        "demand": "More new blood cells are needed than the usual red marrow can make",
+        "seed": "Stem cells move into the yellow marrow of the long bones",
+        "convert": "Yellow marrow turns back into red marrow",
+        "fat": "Fat cells in those marrow spaces are replaced by blood-forming tissue",
+        "make": "More marrow is making blood cells, so more new cells enter the blood",
+        "shape": "Marrow changes happen inside the bone; the bone itself is not rebuilt"
+      },
+      "variables": [
+        {
+          "id": "red",
+          "name": "Amount of red marrow in the long bones",
+          "answer": "up",
+          "chain": [
+            "demand",
+            "seed",
+            "convert"
+          ],
+          "why": "Yellow marrow keeps some of its old ability. When blood loss over weeks demands more blood cells, stem cells repopulate it and it turns red again."
+        },
+        {
+          "id": "fat",
+          "name": "Fat stored in the medullary cavities",
+          "answer": "down",
+          "chain": [
+            "demand",
+            "seed",
+            "convert",
+            "fat"
+          ],
+          "why": "Yellow marrow is mostly adipose tissue. As it turns into blood-forming red marrow, blood-forming cells take the place of fat cells, so less triglyceride is stored there."
+        },
+        {
+          "id": "rate",
+          "name": "Rate of hematopoiesis in her body",
+          "answer": "up",
+          "chain": [
+            "demand",
+            "seed",
+            "convert",
+            "make"
+          ],
+          "why": "Hematopoiesis happens in red marrow. With more red marrow at work, more red blood cells, white blood cells and platelets are made each day."
+        },
+        {
+          "id": "length",
+          "name": "Length of her thigh bone",
+          "answer": "none",
+          "chain": [
+            "shape"
+          ],
+          "why": "The change is in the soft tissue filling the medullary cavity. The shaft wall and ends of an adult bone are not lengthened by it."
+        }
+      ]
+    },
+    {
+      "id": "bt-vinegar-bone",
+      "title": "A bone soaked in vinegar",
+      "topic": "bone-histology",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "bone is hard because of collagen",
+      "setup": "A chicken leg bone is left in vinegar, a weak acid, for a week. Predict how it compares with a fresh bone of the same size.",
+      "start": "The acid dissolves the calcium phosphate crystals of the bone matrix",
+      "steps": {
+        "mineral": "Hydroxyapatite crystals dissolve and wash out",
+        "collagen": "Acid this weak leaves the collagen fibers in place",
+        "hard": "Nothing is left to resist squeezing",
+        "bend": "Collagen alone bends and twists like rope"
+      },
+      "variables": [
+        {
+          "id": "mineral",
+          "name": "Calcium in the bone",
+          "answer": "down",
+          "chain": [
+            "mineral"
+          ],
+          "why": "About two thirds of bone’s dry weight is hydroxyapatite, a calcium phosphate. Acid dissolves it, the same way an osteoclast’s acid does."
+        },
+        {
+          "id": "collagen",
+          "name": "Collagen in the bone",
+          "answer": "none",
+          "chain": [
+            "collagen"
+          ],
+          "why": "Vinegar dissolves mineral but does not digest protein, so the collagen fibers of the organic matrix stay. That is why the bone keeps its shape."
+        },
+        {
+          "id": "hard",
+          "name": "Resistance to being squeezed",
+          "answer": "down",
+          "chain": [
+            "mineral",
+            "hard"
+          ],
+          "why": "The mineral crystals are what make bone hard and let it resist compression. Without them, the bone dents under a finger."
+        },
+        {
+          "id": "flex",
+          "name": "How far it bends before breaking",
+          "answer": "up",
+          "chain": [
+            "mineral",
+            "collagen",
+            "bend"
+          ],
+          "why": "Collagen resists pulling but not pushing. With the mineral gone, the bone is so flexible it can be tied in a knot."
+        }
+      ]
+    },
+    {
+      "id": "bt-osteoclast-acid-defect",
+      "title": "Osteoclasts that cannot make acid",
+      "topic": "bone-histology",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "denser bone is always stronger bone",
+      "setup": "A child is born with an inherited defect: her osteoclasts seal onto bone normally but cannot pump out hydrogen ions. Predict the changes in her bones as she grows, compared with a healthy child.",
+      "start": "Osteoclasts cannot acidify the space under their frilled membrane",
+      "steps": {
+        "dissolve": "The mineral under the osteoclast does not dissolve",
+        "resorb": "Resorption of bone fails",
+        "keep": "Old bone is not removed while osteoblasts keep adding new bone",
+        "dense": "Bone piles up and fills the marrow spaces",
+        "marrow": "Less room is left for red marrow",
+        "old": "Old bone with microscopic cracks is not replaced"
+      },
+      "variables": [
+        {
+          "id": "resorb",
+          "name": "Resorption of bone",
+          "answer": "down",
+          "chain": [
+            "dissolve",
+            "resorb"
+          ],
+          "why": "An osteoclast dissolves mineral with the hydrogen ions it pumps out. Without that acid, it cannot dig its pit, so resorption fails."
+        },
+        {
+          "id": "density",
+          "name": "Density of her bones",
+          "answer": "up",
+          "chain": [
+            "dissolve",
+            "resorb",
+            "keep",
+            "dense"
+          ],
+          "why": "Osteoblasts still build bone, but little is ever removed. Bone mass keeps climbing, and on an X-ray her bones look unusually white and solid."
+        },
+        {
+          "id": "marrow",
+          "name": "Space for red marrow inside her bones",
+          "answer": "down",
+          "chain": [
+            "dissolve",
+            "resorb",
+            "keep",
+            "dense",
+            "marrow"
+          ],
+          "why": "Osteoclasts normally hollow out the medullary cavity and the spaces between trabeculae. Without them, bone fills those spaces, crowding out blood-forming marrow."
+        },
+        {
+          "id": "fragile",
+          "name": "How easily her bones break",
+          "answer": "up",
+          "chain": [
+            "dissolve",
+            "resorb",
+            "old"
+          ],
+          "why": "Dense is not the same as strong. Without resorption, old cracked bone is never swapped for new, so the bone is brittle and breaks easily."
+        }
+      ]
+    },
+    {
+      "id": "bt-no-vessels-model",
+      "title": "Blood vessels fail to invade the cartilage model",
+      "topic": "bone-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "cartilage hardens and turns into bone by itself",
+      "setup": "Imagine a fetal limb bone in which the cartilage model forms and its middle calcifies, but the nutrient artery never grows into the shaft. Predict the changes at the middle of the shaft, compared with a normal bone at the same age.",
+      "start": "No blood vessels grow into the calcified middle of the cartilage model",
+      "steps": {
+        "noCells": "No osteogenic cells or osteoclast precursors arrive in the shaft",
+        "noBone": "No osteoblasts lay spongy bone on the calcified cartilage",
+        "noCavity": "No osteoclasts break down the middle to open a cavity",
+        "stay": "Calcified cartilage stays in the middle of the shaft",
+        "collar": "The perichondrium around the middle still becomes vascular and lays a bone collar"
+      },
+      "variables": [
+        {
+          "id": "spongy",
+          "name": "Spongy bone formed inside the shaft",
+          "answer": "down",
+          "chain": [
+            "noCells",
+            "noBone"
+          ],
+          "why": "Bone is always laid down by osteoblasts, and in endochondral ossification they arrive with the invading vessels. With no vessels, no primary ossification center forms in the shaft."
+        },
+        {
+          "id": "cartilage",
+          "name": "Calcified cartilage left in the middle of the shaft",
+          "answer": "up",
+          "chain": [
+            "noCells",
+            "noBone",
+            "stay"
+          ],
+          "why": "Calcified cartilage does not turn into bone by itself. It is only replaced when osteoblasts build on it and osteoclasts clear it, and neither has arrived."
+        },
+        {
+          "id": "cavity",
+          "name": "Size of the medullary cavity",
+          "answer": "down",
+          "chain": [
+            "noCells",
+            "noCavity"
+          ],
+          "why": "Osteoclasts, whose precursors come in with the blood vessels, break down the spongy bone in the middle to open the medullary cavity. None arrive, so no cavity opens."
+        },
+        {
+          "id": "collar",
+          "name": "Bone collar around the outside of the shaft",
+          "answer": "none",
+          "chain": [
+            "collar"
+          ],
+          "why": "The collar comes from the perichondrium, which gets its own vessels and becomes periosteum; its osteoblasts lay bone on the outside. That step does not depend on the artery reaching the inside."
+        }
+      ]
+    },
+    {
+      "id": "bt-growth-plate-injury",
+      "title": "A fracture through one side of a growth plate",
+      "topic": "bone-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a healed childhood fracture has no lasting effect on growth",
+      "setup": "An 11-year-old breaks the lower end of his thigh bone through the inner half of the epiphyseal plate. It heals with a small bridge of bone across that half of the plate. Predict the changes in that bone over the next three years, compared with his other thigh bone.",
+      "start": "Bone bridges the inner half of the epiphyseal plate",
+      "steps": {
+        "stop": "Chondrocytes in the bridged half no longer divide and add cartilage",
+        "other": "The outer half of the plate keeps growing normally",
+        "short": "The bone adds less length overall",
+        "tilt": "One side grows and the other does not, so the end of the bone tilts",
+        "width": "The periosteum keeps adding bone to the outside of the shaft"
+      },
+      "variables": [
+        {
+          "id": "cart",
+          "name": "New cartilage made in the bridged half of the plate",
+          "answer": "down",
+          "chain": [
+            "stop"
+          ],
+          "why": "Length comes from chondrocytes dividing and enlarging in the plate. Where bone has replaced the plate, there is no cartilage left to grow."
+        },
+        {
+          "id": "length",
+          "name": "Length gained by the injured thigh bone",
+          "answer": "down",
+          "chain": [
+            "stop",
+            "short"
+          ],
+          "why": "Part of the plate has stopped making cartilage, so the bone adds less length than the other side. Over years, the leg can end up shorter."
+        },
+        {
+          "id": "angle",
+          "name": "Tilt of the knee end of the injured bone",
+          "answer": "up",
+          "chain": [
+            "stop",
+            "other",
+            "tilt"
+          ],
+          "why": "The outer half of the plate keeps pushing its epiphysis away from the shaft, while the inner half is tethered by the bone bridge. Uneven growth angles the end of the bone."
+        },
+        {
+          "id": "width",
+          "name": "Growth in width of the injured bone’s shaft",
+          "answer": "none",
+          "chain": [
+            "width"
+          ],
+          "why": "Width comes from appositional growth: osteoblasts under the periosteum add bone to the outside of the shaft. That does not depend on the epiphyseal plate."
+        }
+      ]
+    },
+    {
+      "id": "bt-early-puberty",
+      "title": "Puberty starting at age 7",
+      "topic": "bone-development",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a child who is tall early will be a tall adult",
+      "setup": "A girl starts puberty at 7, several years earlier than usual. The hormones of puberty first speed growth at her epiphyseal plates and then make the plates close. Predict her height at 9, compared with girls her age who have not started puberty, and her adult height, compared with what was expected for her.",
+      "start": "Puberty’s hormones reach her epiphyseal plates years early",
+      "steps": {
+        "spurt": "The chondrocytes of her plates divide faster: an early growth spurt",
+        "tall": "Her bones lengthen faster than her classmates’ bones",
+        "close": "Her plates are replaced by bone and close years early",
+        "stop": "Growth in length stops with fewer years of growth behind it"
+      },
+      "variables": [
+        {
+          "id": "rate",
+          "name": "Her rate of growth in height at age 8",
+          "answer": "up",
+          "chain": [
+            "spurt"
+          ],
+          "why": "The rising hormones of puberty speed chondrocyte division at the plates. That is the growth spurt, and hers comes early."
+        },
+        {
+          "id": "child",
+          "name": "Her height at 9, compared with classmates",
+          "answer": "up",
+          "chain": [
+            "spurt",
+            "tall"
+          ],
+          "why": "Her spurt has already added length that her classmates will not gain for years, so she is tall for her age."
+        },
+        {
+          "id": "plates",
+          "name": "Age at which her epiphyseal plates close",
+          "answer": "down",
+          "chain": [
+            "close"
+          ],
+          "why": "The same hormones then make the plates close. Starting earlier, she reaches that point years before her classmates."
+        },
+        {
+          "id": "adult",
+          "name": "Her adult height, compared with what was expected",
+          "answer": "down",
+          "chain": [
+            "close",
+            "stop"
+          ],
+          "why": "Once the plates close, the bones cannot grow any longer. She loses the years of ordinary childhood growth that would have come before a normal-age spurt, so she ends up shorter than expected."
+        }
+      ]
+    },
+    {
+      "id": "bt-bed-rest",
+      "title": "Three months of bed rest",
+      "topic": "bone-remodeling-repair",
+      "theme": "months of bed rest",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "an adult skeleton stays the same when it is not used",
+      "setup": "A healthy 35-year-old spends three months in bed after a spinal injury, and his legs carry almost no weight. Predict the changes in the bones of his legs, compared with before.",
+      "start": "Everyday loads on the leg bones almost disappear",
+      "steps": {
+        "strain": "The bones bend less, so less fluid is squeezed through the canaliculi",
+        "sense": "Osteocytes sense little strain",
+        "brake": "Osteocytes release more of the signal that holds osteoblasts back",
+        "ocl": "Osteocytes release more of the signal that makes osteoclasts form",
+        "form": "Bone formation falls",
+        "resorb": "Resorption rises",
+        "loss": "Each remodeling cycle removes more bone than it replaces",
+        "spongy": "Spongy bone, with its large surface, loses bone fastest",
+        "out": "The released calcium is excreted, so the calcium level in his blood stays in range"
+      },
+      "variables": [
+        {
+          "id": "strain",
+          "name": "Strain sensed by osteocytes in his leg bones",
+          "answer": "down",
+          "chain": [
+            "strain",
+            "sense"
+          ],
+          "why": "Osteocytes sense load through fluid flowing past their arms when bone bends. With no weight on the legs, the bones hardly bend, and the flow falls."
+        },
+        {
+          "id": "form",
+          "name": "Osteoblast activity in his leg bones",
+          "answer": "down",
+          "chain": [
+            "strain",
+            "sense",
+            "brake",
+            "form"
+          ],
+          "why": "Unloaded osteocytes release more of the signal that holds osteoblasts back, so less new bone is laid down."
+        },
+        {
+          "id": "resorb",
+          "name": "Osteoclast activity in his leg bones",
+          "answer": "up",
+          "chain": [
+            "strain",
+            "sense",
+            "ocl",
+            "resorb"
+          ],
+          "why": "Without load, osteocytes release more of the signal that makes osteoclasts form, so resorption rises. That is Wolff’s law running in reverse."
+        },
+        {
+          "id": "mass",
+          "name": "Bone mass of his leg bones",
+          "answer": "down",
+          "chain": [
+            "strain",
+            "sense",
+            "brake",
+            "form",
+            "loss",
+            "spongy"
+          ],
+          "why": "With formation down and resorption up, each remodeling cycle ends with a net loss. Most of it comes from spongy bone, which has the most surface for osteoclasts to work on."
+        },
+        {
+          "id": "urine",
+          "name": "Calcium lost in his urine",
+          "answer": "up",
+          "chain": [
+            "strain",
+            "sense",
+            "ocl",
+            "resorb",
+            "out"
+          ],
+          "why": "Resorption releases calcium from bone into the blood. The body holds the calcium level in the blood steady by excreting the extra in the urine."
+        },
+        {
+          "id": "blood",
+          "name": "The calcium level in his blood",
+          "answer": "none",
+          "chain": [
+            "strain",
+            "sense",
+            "ocl",
+            "resorb",
+            "out"
+          ],
+          "why": "The calcium level in the blood is held in a narrow range. The calcium freed from bone is excreted rather than left in the blood, so the level stays normal while the skeleton thins."
+        }
+      ]
+    },
+    {
+      "id": "bt-tennis-arm",
+      "title": "Years of tennis and the racket arm",
+      "topic": "bone-remodeling-repair",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "exercise builds muscle but not bone",
+      "setup": "A 14-year-old trains at tennis for ten years, hitting hundreds of shots a day with her right arm. Predict the bones of her arms at 24.",
+      "start": "The racket arm’s bones bend more, more often",
+      "steps": {
+        "flow": "More fluid is squeezed through the lacunae and canaliculi",
+        "sense": "Osteocytes sense more strain",
+        "signal": "Osteocytes release less of the signal that holds osteoblasts back, and less of the signal that makes osteoclasts form",
+        "add": "Formation outpaces resorption where strain is highest",
+        "thick": "The shaft wall thickens",
+        "back": "The thicker bone bends less, so strain falls back toward its usual level",
+        "genes": "Her other arm is loaded no more than usual"
+      },
+      "variables": [
+        {
+          "id": "wall",
+          "name": "Thickness of the shaft wall in the racket arm, compared with her other arm",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "sense",
+            "signal",
+            "add",
+            "thick"
+          ],
+          "why": "Wolff’s law: repeated heavy loading makes osteocytes signal for more building and less breaking, so bone is added where it is strained. Players’ racket arms often have walls a quarter or more thicker."
+        },
+        {
+          "id": "strain",
+          "name": "Strain in the racket arm per shot, compared with her first months of training",
+          "answer": "down",
+          "chain": [
+            "flow",
+            "sense",
+            "signal",
+            "add",
+            "thick",
+            "back"
+          ],
+          "why": "Thicker bone bends less under the same load. That reduced strain is the negative feedback that stops the bone from thickening forever."
+        },
+        {
+          "id": "other",
+          "name": "Shaft wall thickness in her other arm, compared with a woman her age who never played",
+          "answer": "none",
+          "chain": [
+            "genes"
+          ],
+          "why": "Her other arm carries about the same loads as a non-player’s arm. Wolff’s law acts locally, where the strain is, not on the whole skeleton, which is why comparing her two arms isolates the effect of load."
+        }
+      ]
+    },
+    {
+      "id": "bt-fracture-not-held",
+      "title": "A fracture that is not kept still",
+      "topic": "bone-remodeling-repair",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "moving a broken bone early makes it heal faster",
+      "setup": "A man breaks a bone in his lower leg but takes off his splint and walks on it from the second day. The broken ends keep moving against each other. Predict the healing, compared with the same break held still in a cast.",
+      "start": "The broken ends keep shifting against each other",
+      "steps": {
+        "tear": "Movement keeps tearing the new capillaries growing into the fracture hematoma",
+        "soft": "The fibrocartilaginous callus is repeatedly disrupted",
+        "slow": "Osteoblasts are slow to replace the callus with spongy bone",
+        "late": "The bony callus takes longer to join the ends",
+        "non": "In some breaks the ends never join",
+        "clot": "Torn vessels at the moment of the break already bled into the site"
+      },
+      "variables": [
+        {
+          "id": "vessels",
+          "name": "New blood vessels growing into the break",
+          "answer": "down",
+          "chain": [
+            "tear"
+          ],
+          "why": "In the callus stage, capillaries grow into the hematoma and bring in cells. Constant movement tears them, so the break stays poorly supplied."
+        },
+        {
+          "id": "time",
+          "name": "Time until a bony callus joins the ends",
+          "answer": "up",
+          "chain": [
+            "tear",
+            "soft",
+            "slow",
+            "late"
+          ],
+          "why": "Bone can only replace a callus that stays in place with a good blood supply. With the soft callus broken up again and again, the bony stage comes late: delayed union."
+        },
+        {
+          "id": "nonunion",
+          "name": "Chance that the break never joins",
+          "answer": "up",
+          "chain": [
+            "tear",
+            "soft",
+            "non"
+          ],
+          "why": "Too much movement can keep the callus from ever turning into bone, leaving the break unjoined: a nonunion. That is why breaks are reduced and immobilized."
+        },
+        {
+          "id": "hematoma",
+          "name": "Formation of a fracture hematoma in the first hours",
+          "answer": "none",
+          "chain": [
+            "clot"
+          ],
+          "why": "The hematoma forms from blood released when the break tore the vessels, before any walking. What he does afterward does not change that first stage."
+        }
+      ]
+    },
+    {
+      "id": "bt-calcium-falls",
+      "title": "Blood calcium falls",
+      "topic": "bone-calcium",
+      "theme": "blood calcium falls",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "bone gives up calcium to the blood without any signal",
+      "setup": "After a day of eating almost no calcium, a healthy woman’s blood calcium dips slightly below its set point. Predict the responses of her calcium feedback loop over the following hours and days, compared with before the dip.",
+      "start": "Blood calcium dips below its set point",
+      "steps": {
+        "bind": "Fewer calcium ions bind the receptor protein on the cells of the four tiny glands behind the thyroid",
+        "hormone": "The gland cells release more of their calcium-raising hormone",
+        "obl": "The hormone acts on osteoblasts, which signal more osteoclasts to form and work",
+        "ocl": "Osteoclasts resorb bone, releasing calcium and phosphate into the blood",
+        "kidCa": "Kidney tubules return more calcium from the forming urine to the blood",
+        "kidP": "Kidney tubules keep less phosphate",
+        "vitD": "The kidneys complete the activation of more vitamin D",
+        "gut": "Activated vitamin D makes the intestine absorb more calcium"
+      },
+      "variables": [
+        {
+          "id": "hormone",
+          "name": "Release of the calcium-raising hormone",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "hormone"
+          ],
+          "why": "The gland cells sense calcium through a receptor protein. With fewer calcium ions bound, they release more calcium-raising hormone within seconds."
+        },
+        {
+          "id": "ocl",
+          "name": "Osteoclast activity",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "hormone",
+            "obl",
+            "ocl"
+          ],
+          "why": "The hormone does not act on osteoclasts directly. It acts on osteoblasts, which signal more osteoclasts to form and work harder, so more bone is resorbed."
+        },
+        {
+          "id": "urine-ca",
+          "name": "Calcium lost in the urine",
+          "answer": "down",
+          "chain": [
+            "bind",
+            "hormone",
+            "kidCa"
+          ],
+          "why": "The hormone makes the kidney tubules return more calcium from the forming urine to the blood, so less is lost."
+        },
+        {
+          "id": "urine-p",
+          "name": "Phosphate lost in the urine",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "hormone",
+            "kidP"
+          ],
+          "why": "The hormone makes the kidneys keep less phosphate. Dumping the phosphate released from bone stops it from combining with calcium and lowering the free calcium again."
+        },
+        {
+          "id": "gut",
+          "name": "Calcium absorbed from food by the intestine",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "hormone",
+            "vitD",
+            "gut"
+          ],
+          "why": "The hormone switches on the kidney step that completes the activation of vitamin D, and activated vitamin D makes the intestinal lining absorb more calcium. This arm takes a day or more."
+        }
+      ]
+    },
+    {
+      "id": "bt-calcium-time-course-l4",
+      "title": "A week of very little calcium: hours, then days",
+      "topic": "bone-calcium",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 4,
+      "misconception": "a normal blood calcium means calcium intake is adequate",
+      "setup": "A man switches to a diet with almost no calcium for a week. His blood calcium dips a little on the first day. Follow his calcium loop through the first hours of the dip and then after several days.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "The first hours",
+          "prompt": "In the first hours after the dip, compared with before it.",
+          "start": "Blood calcium dips below its set point",
+          "steps": {
+            "hormone": "Gland cells behind the thyroid release more calcium-raising hormone within seconds",
+            "bone": "Existing osteoclasts speed up within hours, releasing calcium from bone",
+            "kidney": "Kidney tubules return more calcium to the blood within minutes to hours",
+            "gutSlow": "The intestine’s response needs new transport proteins, which take a day or more to make"
+          },
+          "variables": [
+            {
+              "id": "hormone",
+              "name": "Release of the calcium-raising hormone",
+              "answer": "up",
+              "chain": [
+                "hormone"
+              ],
+              "why": "The gland cells sense the fall directly and respond within seconds by releasing more hormone."
+            },
+            {
+              "id": "bone",
+              "name": "Calcium released from bone",
+              "answer": "up",
+              "chain": [
+                "hormone",
+                "bone"
+              ],
+              "why": "Bone is one of the fast effectors. The hormone acts through osteoblasts, and osteoclasts that already exist speed up within hours."
+            },
+            {
+              "id": "urine",
+              "name": "Calcium lost in the urine",
+              "answer": "down",
+              "chain": [
+                "hormone",
+                "kidney"
+              ],
+              "why": "The kidneys are the other fast effector: within minutes to hours they return more calcium to the blood."
+            },
+            {
+              "id": "gut",
+              "name": "Fraction of the calcium he eats that is absorbed",
+              "answer": "none",
+              "chain": [
+                "gutSlow"
+              ],
+              "why": "The intestine works by making new transport proteins in response to activated vitamin D, which takes a day or more. In the first hours, absorption has not changed yet."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "After several days",
+          "prompt": "After several days on the diet, compared with before it started.",
+          "start": "The calcium-raising hormone stays high while intake stays low",
+          "steps": {
+            "vitD": "The kidneys activate more vitamin D",
+            "gut": "The intestinal lining makes more transport proteins and absorbs a larger fraction of the calcium eaten",
+            "held": "Bone, kidneys and intestine together hold blood calcium near its set point",
+            "short": "So little is eaten that even a larger fraction absorbed cannot match the losses",
+            "pay": "Bone makes up the difference, day after day"
+          },
+          "variables": [
+            {
+              "id": "gut",
+              "name": "Fraction of the calcium he eats that is absorbed",
+              "answer": "up",
+              "chain": [
+                "vitD",
+                "gut"
+              ],
+              "why": "By now activated vitamin D has had time to act, and the intestine absorbs a larger share of whatever calcium he eats. That is the slow, long-run arm of the loop."
+            },
+            {
+              "id": "blood",
+              "name": "His blood calcium",
+              "answer": "none",
+              "chain": [
+                "vitD",
+                "gut",
+                "held"
+              ],
+              "why": "The loop protects blood calcium first, because nerves and the heart cannot wait. Within the normal range, a blood test looks normal."
+            },
+            {
+              "id": "skeleton",
+              "name": "Calcium stored in his skeleton",
+              "answer": "down",
+              "chain": [
+                "short",
+                "pay"
+              ],
+              "why": "Mass balance: calcium can only enter by absorption from the gut. When absorption cannot match the losses in urine and feces, the difference comes out of bone. A normal blood calcium hides a thinning skeleton."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bt-vitamin-d-deficiency",
+      "title": "Months without vitamin D",
+      "topic": "bone-calcium",
+      "theme": "vitamin D deficiency",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "drinking plenty of milk is enough for bone even without vitamin D",
+      "setup": "A woman who works nights, rarely goes outside and eats no fortified foods or oily fish becomes deficient in vitamin D over a winter. She still eats about 1,000 mg of calcium a day. Predict the changes by the end of the winter, compared with the autumn.",
+      "start": "Too little vitamin D is available for the kidneys to activate",
+      "steps": {
+        "active": "Less activated vitamin D reaches the intestine",
+        "absorb": "The intestine absorbs only a small fraction of the calcium she eats",
+        "dip": "Blood calcium starts to dip",
+        "hormone": "The gland cells behind the thyroid release more calcium-raising hormone",
+        "ocl": "Through osteoblasts, the hormone makes osteoclasts resorb more bone",
+        "phos": "The hormone makes the kidneys excrete more phosphate",
+        "held": "Blood calcium is held near normal at the expense of bone",
+        "thin": "More bone is resorbed than replaced, and new matrix mineralizes poorly"
+      },
+      "variables": [
+        {
+          "id": "absorb",
+          "name": "Fraction of her dietary calcium that is absorbed",
+          "answer": "down",
+          "chain": [
+            "active",
+            "absorb"
+          ],
+          "why": "Without activated vitamin D, the intestinal lining makes few calcium transport proteins, so most of the calcium she eats passes out in the feces."
+        },
+        {
+          "id": "hormone",
+          "name": "Release of the calcium-raising hormone",
+          "answer": "up",
+          "chain": [
+            "active",
+            "absorb",
+            "dip",
+            "hormone"
+          ],
+          "why": "Less calcium coming in makes blood calcium start to fall. The gland cells sense this and release more hormone, and keep it high for as long as absorption stays low."
+        },
+        {
+          "id": "resorb",
+          "name": "Resorption of bone",
+          "answer": "up",
+          "chain": [
+            "active",
+            "absorb",
+            "dip",
+            "hormone",
+            "ocl"
+          ],
+          "why": "The hormone acts on osteoblasts, which signal more osteoclasts to form and work. Bone is resorbed to supply the calcium the gut is no longer providing."
+        },
+        {
+          "id": "blood",
+          "name": "Her blood calcium",
+          "answer": "none",
+          "chain": [
+            "active",
+            "absorb",
+            "dip",
+            "hormone",
+            "held"
+          ],
+          "why": "In a moderate deficiency, the extra hormone pulls enough calcium from bone and kidneys to keep blood calcium in range. Only a severe, long deficiency lets it fall."
+        },
+        {
+          "id": "bone",
+          "name": "Mineral content of her bones",
+          "answer": "down",
+          "chain": [
+            "active",
+            "absorb",
+            "dip",
+            "hormone",
+            "ocl",
+            "thin"
+          ],
+          "why": "Bone is spent to protect the blood. With calcium and phosphate short, new osteoid also mineralizes poorly; in a child, severe deficiency gives the soft, bowed bones of rickets."
+        },
+        {
+          "id": "phos",
+          "name": "Phosphate lost in her urine",
+          "answer": "up",
+          "chain": [
+            "active",
+            "absorb",
+            "dip",
+            "hormone",
+            "phos"
+          ],
+          "why": "The calcium-raising hormone makes the kidney tubules keep less phosphate, so more leaves in the urine. Low phosphate is one reason new matrix mineralizes poorly."
+        }
+      ]
+    },
+    {
+      "id": "bt-cancer-in-bone",
+      "title": "Cancer cells switching on osteoclasts",
+      "topic": "bone-calcium",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "high blood calcium makes muscles contract harder",
+      "setup": "Breast cancer has spread to a woman’s bones. The tumor cells release signals that switch on her osteoclasts, bypassing the calcium feedback loop. Predict the changes over two weeks, compared with before the cancer spread.",
+      "start": "Tumor cells drive osteoclasts to resorb bone",
+      "steps": {
+        "resorb": "Calcium is released from bone faster than the kidneys can excrete it",
+        "high": "Blood calcium rises above the normal range",
+        "glands": "More calcium binds the gland cells behind the thyroid",
+        "less": "They shut off their calcium-raising hormone",
+        "brake": "More calcium outside cells makes voltage-gated sodium channels harder to open",
+        "nerve": "Nerves and muscle fibers become less excitable",
+        "kidney": "High calcium stops the kidneys from concentrating urine"
+      },
+      "variables": [
+        {
+          "id": "calcium",
+          "name": "Her blood calcium",
+          "answer": "up",
+          "chain": [
+            "resorb",
+            "high"
+          ],
+          "why": "The tumor drives osteoclasts regardless of the loop, so calcium pours out of bone faster than it can be excreted. That is hypercalcemia."
+        },
+        {
+          "id": "hormone",
+          "name": "Release of the calcium-raising hormone",
+          "answer": "down",
+          "chain": [
+            "resorb",
+            "high",
+            "glands",
+            "less"
+          ],
+          "why": "Her gland cells work normally. Sensing high calcium, they cut their hormone release, the right response, but it cannot stop osteoclasts driven by the tumor."
+        },
+        {
+          "id": "excite",
+          "name": "Excitability of her nerves and muscles",
+          "answer": "down",
+          "chain": [
+            "resorb",
+            "high",
+            "brake",
+            "nerve"
+          ],
+          "why": "Calcium outside the cell acts like a brake on voltage-gated sodium channels. Too much brake means nerves and muscle fibers fire less readily."
+        },
+        {
+          "id": "strength",
+          "name": "Her muscle strength",
+          "answer": "down",
+          "chain": [
+            "resorb",
+            "high",
+            "brake",
+            "nerve"
+          ],
+          "why": "Less excitable nerves and muscle fibers give weakness and tiredness, and the same effect slows her gut and dulls her thinking."
+        },
+        {
+          "id": "urine",
+          "name": "Volume of urine she passes",
+          "answer": "up",
+          "chain": [
+            "resorb",
+            "high",
+            "kidney"
+          ],
+          "why": "High calcium stops the kidneys from concentrating urine, so she passes large volumes and becomes thirsty. The water loss makes it even harder to excrete the calcium."
+        }
+      ]
+    },
+    {
+      "id": "bt-gland-removal",
+      "title": "The calcium-sensing glands are removed by mistake",
+      "topic": "bone-calcium",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 3,
+      "misconception": "low blood calcium makes muscles weak",
+      "setup": "During neck surgery, all four tiny glands behind the thyroid are removed by mistake. Predict the changes over the next two days, compared with before surgery.",
+      "start": "No calcium-raising hormone is released",
+      "steps": {
+        "ocl": "Osteoblasts are no longer prompted to signal osteoclasts, so resorption falls",
+        "kidney": "Kidney tubules return less calcium to the blood",
+        "vitD": "The kidneys activate less vitamin D",
+        "low": "Blood calcium falls below the normal range",
+        "brake": "Fewer calcium ions outside cells: voltage-gated sodium channels open more easily",
+        "fire": "Nerves and muscle fibers fire with little or no stimulus",
+        "tetany": "Tingling, cramps and tetany"
+      },
+      "variables": [
+        {
+          "id": "resorb",
+          "name": "Resorption of bone",
+          "answer": "down",
+          "chain": [
+            "ocl"
+          ],
+          "why": "Without the hormone acting on osteoblasts, they no longer signal osteoclasts to form and work harder, so less calcium is released from bone."
+        },
+        {
+          "id": "urine",
+          "name": "Calcium lost in the urine",
+          "answer": "up",
+          "chain": [
+            "kidney"
+          ],
+          "why": "The hormone normally makes the kidney tubules return calcium to the blood. Without it, more calcium stays in the forming urine and is lost."
+        },
+        {
+          "id": "blood",
+          "name": "Blood calcium",
+          "answer": "down",
+          "chain": [
+            "ocl",
+            "kidney",
+            "vitD",
+            "low"
+          ],
+          "why": "All three effectors now move calcium the wrong way: less from bone, more lost by the kidneys and, over days, less absorbed by the intestine. Hypocalcemia follows."
+        },
+        {
+          "id": "excite",
+          "name": "Excitability of nerves and muscles",
+          "answer": "up",
+          "chain": [
+            "ocl",
+            "kidney",
+            "low",
+            "brake",
+            "fire"
+          ],
+          "why": "Calcium outside the cell is a brake on voltage-gated sodium channels. Too little brake, and the channels open easily, so neurons and muscle fibers fire on their own."
+        },
+        {
+          "id": "cramp",
+          "name": "Muscle cramps and spasms",
+          "answer": "up",
+          "chain": [
+            "ocl",
+            "kidney",
+            "low",
+            "brake",
+            "fire",
+            "tetany"
+          ],
+          "why": "Overexcitable nerves fire muscles without a command: tingling around the mouth and fingers, cramps and tetany. Severe cases can spasm the voice box and cause seizures."
+        }
+      ]
+    },
+    {
+      "id": "bt-osteoclast-medicine",
+      "title": "A medicine that slows osteoclasts",
+      "topic": "bone-remodeling-repair",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a medicine that stops bone breakdown makes bone keep growing indefinitely",
+      "setup": "A 68-year-old woman with osteoporosis starts a medicine that slows her osteoclasts. Predict the changes in her spine over the next two years, compared with before treatment.",
+      "start": "Osteoclasts resorb less bone",
+      "steps": {
+        "pits": "Fewer and shallower resorption pits are dug",
+        "coupling": "Fewer growth factors are released from resorbed matrix, so fewer osteoblasts are called up",
+        "form": "Formation falls too, but less than resorption at first",
+        "net": "Each remodeling cycle loses less bone, and open pits fill in",
+        "fracture": "Stronger, better-connected trabeculae"
+      },
+      "variables": [
+        {
+          "id": "resorb",
+          "name": "Resorption of bone",
+          "answer": "down",
+          "chain": [
+            "pits"
+          ],
+          "why": "The medicine acts on osteoclasts, so less bone is dissolved and digested at each remodeling site."
+        },
+        {
+          "id": "form",
+          "name": "Osteoblast activity, after a few months",
+          "answer": "down",
+          "chain": [
+            "pits",
+            "coupling",
+            "form"
+          ],
+          "why": "Building and breaking are coupled. Resorbed matrix releases growth factors that call up osteoblasts, so when resorption falls, formation eventually falls with it."
+        },
+        {
+          "id": "mass",
+          "name": "Bone mass of her spine",
+          "answer": "up",
+          "chain": [
+            "pits",
+            "coupling",
+            "form",
+            "net"
+          ],
+          "why": "Resorption falls first and more, so the balance tips back toward formation and pits already dug are filled. Bone mass rises a few percent, then levels off because formation slows too."
+        },
+        {
+          "id": "fracture",
+          "name": "Her risk of a vertebral fracture",
+          "answer": "down",
+          "chain": [
+            "pits",
+            "net",
+            "fracture"
+          ],
+          "why": "Less resorption means fewer trabeculae are thinned or cut through, so the spongy bone of her vertebrae keeps more of its strength."
+        }
+      ]
     }
   ]
 }

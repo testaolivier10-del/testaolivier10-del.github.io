@@ -3900,6 +3900,448 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "ig-thermo-hot",
+      "title": "Too warm: the skin sheds heat",
+      "topic": "skin-functions",
+      "map": "Body temperature: too hot and too cold",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "kind": "negative",
+      "scenario": "You hike uphill for an hour on a warm, dry day. Your skin flushes, sweat beads on your forehead and dries in the breeze, and your body temperature rises a little and then holds steady.",
+      "slots": {
+        "stimulus": {
+          "text": "Heat from working muscles and warm air raises body temperature above its set point",
+          "short": "Body temperature rises",
+          "why": "The regulated variable is body temperature. Your muscles are releasing heat faster than you are losing it."
+        },
+        "sensor": {
+          "text": "Warm-sensitive nerve endings in the skin and temperature-sensitive neurons in the brain",
+          "short": "Warm-sensitive endings; brain neurons",
+          "why": "Free nerve endings in the skin that respond to warmth fire faster as the skin warms, and neurons in the brain sense the temperature of the blood around them."
+        },
+        "afferent": {
+          "text": "Sensory nerves carrying signals from the skin to the brain",
+          "short": "Sensory nerves to the brain",
+          "why": "The afferent pathway carries the information from the skin toward the control center."
+        },
+        "control": {
+          "text": "The brain’s temperature control center",
+          "short": "Brain’s temperature center",
+          "why": "The control center compares the incoming temperature signals with the set point and, finding the body too warm, sends out heat-loss commands."
+        },
+        "efferent": {
+          "text": "Nerve signals to the dermal blood vessels and the eccrine sweat glands",
+          "short": "Nerves to dermal vessels, sweat glands",
+          "why": "The commands travel as nerve signals. In most (hairy) skin they actively relax the vessel walls; in the palms, soles and lips the vessels widen mainly as the steady signal that keeps them narrowed eases."
+        },
+        "effector": {
+          "text": "Smooth muscle of the dermal vessels, and the eccrine sweat glands",
+          "short": "Dermal vessel muscle; eccrine glands",
+          "why": "The smooth muscle relaxes so the vessels widen, and the eccrine sweat glands secrete watery sweat onto the skin surface."
+        },
+        "response": {
+          "text": "Dermal blood flow rises and sweat evaporates, so more heat leaves and body temperature falls back toward the set point",
+          "short": "More heat lost: temperature falls",
+          "why": "Warm blood near the surface loses heat by radiation and convection, and each liter of sweat that evaporates removes about 580 kcal. Both oppose the rise."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Arrector pili muscles contract to raise goose bumps",
+          "why": "Goose bumps are part of the response to cold, and in humans they hold almost no extra heat in anyway."
+        },
+        {
+          "text": "Apocrine sweat glands in the armpits release more secretion",
+          "why": "Apocrine glands respond to emotional stress, pain and sexual arousal, not to heat. Heat loss by sweating is the eccrine glands’ job."
+        },
+        {
+          "text": "Skeletal muscles shiver",
+          "why": "Shivering releases heat. It belongs to the loop for a falling temperature and would make this rise worse."
+        },
+        {
+          "text": "Nerve signals narrow the vessels feeding the dermis",
+          "why": "Narrowing keeps warm blood away from the skin and holds heat in. That is the response to cold."
+        }
+      ],
+      "classify": "The response (more heat lost) opposes the stimulus (a rise in body temperature), and as the temperature returns toward the set point the signals ease off, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "A man was born without most of his eccrine sweat glands. He works outdoors on a day when the air is hotter than his skin. What happens to his body temperature?",
+        "options": [
+          {
+            "text": "It climbs, because he has no way left to lose heat",
+            "why": "Right. With the air hotter than his skin, radiation and convection add heat, so evaporation is the only route left, and he cannot make the sweat it needs. Wetting his skin and clothes with water does the glands’ job for him."
+          },
+          {
+            "text": "It stays normal, because his dermal vessels widen even more",
+            "why": "Wider vessels bring warm blood to the skin, but once the air is hotter than the skin that blood cannot shed heat to it. They cannot replace sweating here."
+          },
+          {
+            "text": "It stays normal, because his brain lowers the set point",
+            "why": "The control center and set point are normal. The loop fails at the effector, not the control center."
+          },
+          {
+            "text": "It falls, because without sweat his skin stays dry and cool",
+            "why": "Dry skin in hot air gains heat and cannot lose it. Cool skin comes from evaporation, which needs sweat."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "ig-thermo-cold",
+      "title": "Too cold: the skin holds heat in",
+      "topic": "skin-functions",
+      "map": "Body temperature: too hot and too cold",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "kind": "negative",
+      "scenario": "You step out of a warm house into freezing wind without a coat. Within minutes your hands go pale and cold, you get goose bumps and you start to shiver, while the temperature deep in your body barely changes.",
+      "slots": {
+        "stimulus": {
+          "text": "Cold air carries heat away, cooling the skin and the blood",
+          "short": "Skin and blood cool",
+          "why": "Heat is leaving faster than it is made, pulling the regulated variable, body temperature, below its set point."
+        },
+        "sensor": {
+          "text": "Cold-sensitive nerve endings in the skin and temperature-sensitive neurons in the brain",
+          "short": "Cold-sensitive endings; brain neurons",
+          "why": "Free nerve endings that respond to cold fire faster as the skin cools, giving early warning before the deep temperature falls."
+        },
+        "afferent": {
+          "text": "Sensory nerves carrying cold signals to the brain",
+          "short": "Sensory nerves to the brain",
+          "why": "The afferent pathway carries the information from the skin to the control center."
+        },
+        "control": {
+          "text": "The brain’s temperature control center, comparing the signals with the set point",
+          "short": "Brain’s temperature center",
+          "why": "Finding the body too cold, the control center sends out commands to hold heat in and make more of it."
+        },
+        "efferent": {
+          "text": "Nerve signals to the dermal vessels, the skeletal muscles and the arrector pili muscles",
+          "short": "Nerves to vessels and muscles",
+          "why": "The commands travel as nerve signals to every effector of the cold response."
+        },
+        "effector": {
+          "text": "Smooth muscle of the dermal vessels, skeletal muscles, and the arrector pili",
+          "short": "Vessel muscle; skeletal muscle",
+          "why": "Vessel smooth muscle contracts to narrow the vessels, skeletal muscles shiver, and the arrector pili pull the hairs upright."
+        },
+        "response": {
+          "text": "Dermal blood flow falls so less heat is lost, and shivering makes more heat, so body temperature returns toward the set point",
+          "short": "Less heat lost, more made",
+          "why": "Cooler skin shrinks the gradient to the air and the skin and hypodermis act as insulation, while shivering raises heat production three- to fivefold. Both oppose the fall."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Eccrine sweat glands secrete sweat",
+          "why": "Evaporating sweat removes heat. It is a response to warmth and would deepen the chill."
+        },
+        {
+          "text": "Dermal vessels widen to warm the skin",
+          "why": "Wider vessels would bring warm blood to the surface, where the cold air would take its heat. Narrowing is what holds heat in."
+        },
+        {
+          "text": "Warm-sensitive nerve endings fire faster",
+          "why": "Cooling makes warm-sensitive endings fire less. The cold-sensitive endings detect this change."
+        }
+      ],
+      "classify": "The response (less heat lost and more heat made) opposes the stimulus (cooling), and the signals ease as temperature returns toward the set point, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "After several drinks, a man walks home through a freezing night. Alcohol widens the vessels of his dermis. What happens?",
+        "options": [
+          {
+            "text": "He loses heat faster, though his skin feels warm",
+            "why": "Right. Alcohol overrides the narrowing, so warm blood keeps flowing through the dermis. The skin feels warm, but that heat is lost to the cold air, and body temperature drops faster than normal."
+          },
+          {
+            "text": "He stays warmer, because the alcohol warms his blood",
+            "why": "The warm feeling comes from blood near the skin, not from extra heat. Moving warm blood to the surface speeds heat loss."
+          },
+          {
+            "text": "Nothing changes, because shivering alone controls temperature",
+            "why": "Shivering makes heat, but narrowing the dermal vessels is the first defense. With it gone, heat is lost faster than shivering can replace."
+          },
+          {
+            "text": "His body temperature rises, because the control center raises the set point",
+            "why": "Alcohol acts on the vessels here; it does not raise the set point, and the loop is still trying to warm him."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "bt-calcium-low",
+      "title": "Blood calcium falls",
+      "topic": "bone-calcium",
+      "map": "Blood calcium: calcium low and calcium high",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "For a day, a man eats almost no calcium. His blood calcium dips slightly below its set point, then climbs back and holds steady near 9.5 mg/dL.",
+      "slots": {
+        "stimulus": {
+          "text": "Free calcium ions in the blood fall below the set point",
+          "short": "Blood calcium falls",
+          "why": "The regulated variable is the free calcium ion concentration in the blood, about half of the total 8.5 to 10.5 mg/dL. It is the form cells sense and use."
+        },
+        "sensor": {
+          "text": "A receptor protein that binds calcium, on the cells of the four tiny glands behind the thyroid",
+          "short": "Gland cells’ calcium sensors",
+          "why": "When calcium falls, fewer calcium ions bind the receptor protein on these gland cells. That is how the fall is detected."
+        },
+        "afferent": {
+          "text": "No separate pathway: the same gland cells sense the change and respond",
+          "short": "None: same cells",
+          "why": "No nerve carries the news anywhere. The cells that sense calcium are the cells that release the hormone, so sensing and deciding happen in one place."
+        },
+        "control": {
+          "text": "The gland cells set how much calcium-raising hormone to release",
+          "short": "Gland cells set hormone output",
+          "why": "The fewer calcium ions bound, the more calcium-raising hormone the gland cells release, within seconds. That comparison with the set point is the control center’s job."
+        },
+        "efferent": {
+          "text": "The calcium-raising hormone in the blood, and the vitamin D whose activation it switches on in the kidneys",
+          "short": "The hormone, then activated vitamin D",
+          "why": "The hormone carries the command to bone and the kidneys. It also switches on the kidney step that completes the activation of vitamin D, which carries the command on to the intestine."
+        },
+        "effector": {
+          "text": "Bone (through osteoblasts that signal osteoclasts), the kidneys and the intestine",
+          "short": "Bone, kidneys, intestine",
+          "why": "These are the three organs that can move calcium into the blood. In bone, the hormone acts on osteoblasts, which signal more osteoclasts to form and work."
+        },
+        "response": {
+          "text": "Bone releases calcium, the kidneys keep it, the intestine absorbs more, and blood calcium rises back",
+          "short": "Calcium rises back",
+          "why": "All three routes add calcium to the blood, opposing the fall. As calcium returns, more binds the gland cells, and hormone release falls."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The hormone binds osteoclasts directly and makes them dissolve bone",
+          "why": "Osteoclasts are not the hormone’s target. It acts on osteoblasts, which then signal osteoclasts to form and work harder."
+        },
+        {
+          "text": "The kidneys excrete more calcium in the urine",
+          "why": "That would lower calcium further. The hormone makes the kidney tubules return more calcium to the blood."
+        },
+        {
+          "text": "Sensory nerves carry the fall in calcium to the brain",
+          "why": "No nerves are involved. The gland cells sense calcium themselves through their receptor protein."
+        },
+        {
+          "text": "Osteoblasts lay down more mineral in new bone",
+          "why": "Mineralizing new bone takes calcium out of the blood, the opposite of what a fall needs."
+        }
+      ],
+      "classify": "The response (calcium rises) opposes the stimulus (calcium falls), and the rise then reduces hormone release, so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "A woman has had severe vitamin D deficiency for a year, but her glands and bones work normally. Which change do you expect?",
+        "options": [
+          {
+            "text": "Hormone release falls, because the glands need vitamin D in order to release it",
+            "why": "The hormone switches on vitamin D activation, not the other way round. Low calcium drives hormone release up."
+          },
+          {
+            "text": "Blood calcium climbs above normal, because bone releases calcium with nothing to stop it",
+            "why": "Bone gives up calcium only as far as the loop asks. With little calcium absorbed from food, the pull is toward low calcium, not high."
+          },
+          {
+            "text": "Hormone stays high; bone thins while blood calcium stays near normal",
+            "why": "Right. One arm of the efferent pathway is broken: without activated vitamin D the intestine absorbs little calcium. The gland cells keep releasing extra hormone to pull calcium from bone, so the blood is protected and bone pays."
+          },
+          {
+            "text": "Nothing changes, because the kidneys can replace the calcium the gut no longer absorbs",
+            "why": "The kidneys can only reduce losses. Calcium enters the body only by absorption from the gut, so they cannot make up a shortfall in intake."
+          }
+        ],
+        "correct": 2
+      }
+    },
+    {
+      "id": "bt-calcium-high",
+      "title": "Blood calcium rises",
+      "topic": "bone-calcium",
+      "map": "Blood calcium: calcium low and calcium high",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "A man takes a large calcium supplement on an empty stomach. His blood calcium rises a little above its set point, then settles back over the next hours.",
+      "slots": {
+        "stimulus": {
+          "text": "Free calcium ions in the blood rise above the set point",
+          "short": "Blood calcium rises",
+          "why": "The same regulated variable as when calcium falls: the free calcium ion concentration in the blood, now moving the other way."
+        },
+        "sensor": {
+          "text": "More calcium ions bound to the receptor protein on the gland cells behind the thyroid",
+          "short": "Same calcium sensors on gland cells",
+          "why": "The same sensor works in both directions. When calcium rises, more calcium ions bind the receptor protein on these cells."
+        },
+        "afferent": {
+          "text": "No separate pathway: the gland cells sense and respond themselves",
+          "short": "None: same cells",
+          "why": "As in the low-calcium loop, the cells that sense the change are the cells that respond, so there is no nerve or messenger in between."
+        },
+        "control": {
+          "text": "The gland cells release less calcium-raising hormone",
+          "short": "Gland cells cut hormone output",
+          "why": "The loop lowers calcium mainly by taking its foot off the accelerator: with more calcium bound, the cells release less hormone."
+        },
+        "efferent": {
+          "text": "A lower level of the hormone in the blood, and less vitamin D activated by the kidneys",
+          "short": "Less hormone, less vitamin D activated",
+          "why": "Here the signal is a fall in the hormone. Less hormone also means the kidneys complete the activation of less vitamin D."
+        },
+        "effector": {
+          "text": "Bone, the kidneys and the intestine, each doing less of what the hormone drives",
+          "short": "Bone, kidneys, intestine",
+          "why": "The same three organs. With less hormone, osteoclasts slow, the kidney tubules return less calcium, and the intestine absorbs less."
+        },
+        "response": {
+          "text": "Bone takes up more calcium than it releases, more leaves in the urine, less is absorbed, and blood calcium falls back",
+          "short": "Calcium falls back",
+          "why": "Each route now moves calcium out of the blood or stops adding it, opposing the rise, until calcium returns to its set point."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The kidney tubules return more calcium to the blood",
+          "why": "That is the response to low calcium. With less hormone, the tubules return less, and more calcium is lost in the urine."
+        },
+        {
+          "text": "A second hormone from the thyroid takes over and does most of the lowering",
+          "why": "A second hormone from the thyroid adds only a small extra brake in adults; people without a thyroid keep normal calcium. The main change is simply less calcium-raising hormone."
+        },
+        {
+          "text": "Osteoclasts are signaled to resorb more bone",
+          "why": "Resorption releases calcium into the blood, which would raise it further. With less hormone, osteoclast activity falls."
+        }
+      ],
+      "classify": "The response (calcium falls) opposes the stimulus (calcium rises), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "Cancer has spread to a woman’s bones, and tumor cells switch on her osteoclasts directly. Her gland cells work normally. What happens?",
+        "options": [
+          {
+            "text": "The gland cells release more hormone, which drives calcium even higher",
+            "why": "The gland cells sense the high calcium and correctly shut their hormone off. The problem is that bone is no longer listening."
+          },
+          {
+            "text": "Calcium stays high although the gland cells cut their hormone",
+            "why": "Right. The effector no longer obeys the loop: osteoclasts driven by the tumor keep releasing calcium whatever the hormone level, so cutting the hormone cannot bring calcium down."
+          },
+          {
+            "text": "Calcium stays normal, because the kidneys excrete whatever calcium the bone releases",
+            "why": "The kidneys excrete more, but calcium pours out of bone faster than they can clear it, so calcium rises."
+          },
+          {
+            "text": "Calcium falls, because the growing tumor uses up the calcium in the blood",
+            "why": "The tumor drives calcium out of bone into the blood; it does not consume it. That is why hypercalcemia is common when cancer spreads to bone."
+          }
+        ],
+        "correct": 1
+      }
+    },
+    {
+      "id": "bt-wolff-law",
+      "title": "Wolff’s law: bone follows load",
+      "topic": "bone-remodeling-repair",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "kind": "negative",
+      "scenario": "A 20-year-old starts carrying heavy packs on long hikes every weekend. Over the following months, the bones of her legs and spine thicken where they bend most, and then stop thickening.",
+      "slots": {
+        "stimulus": {
+          "text": "Heavier loads raise the strain in the bone",
+          "short": "Strain in bone rises",
+          "why": "The regulated variable is strain: how much the bone bends under its usual loads. A heavier load bends it more."
+        },
+        "sensor": {
+          "text": "Osteocytes, whose arms are stretched by fluid squeezed through the lacunae and canaliculi",
+          "short": "Osteocytes sense fluid flow",
+          "why": "When bone bends, fluid moves through the lacunae and canaliculi and deforms the osteocytes’ arms. The osteocytes act as sensory receptors for load."
+        },
+        "afferent": {
+          "text": "No separate pathway: the osteocytes that sense the strain also set the response",
+          "short": "None: same cells",
+          "why": "The osteocytes do not report to another center. They sense strain and change their own signals, as the gland cells do in the calcium loop."
+        },
+        "control": {
+          "text": "Osteocytes release less of the signal that holds osteoblasts back and less of the signal that makes osteoclasts form",
+          "short": "Osteocytes adjust their signals",
+          "why": "Comparing the strain with its usual level, loaded osteocytes shift their signals toward building. This is the decision step."
+        },
+        "efferent": {
+          "text": "Chemical messengers reaching cells on the nearby bone surface through the canaliculi",
+          "short": "Messengers to the bone surface",
+          "why": "The canaliculi connect every osteocyte to the surfaces where osteoblasts and osteoclasts work, carrying the osteocytes’ messengers to them."
+        },
+        "effector": {
+          "text": "Osteoblasts and osteoclasts on the surfaces of the strained bone",
+          "short": "Osteoblasts and osteoclasts",
+          "why": "Osteoblasts, released from their brake, build more; fewer osteoclasts form, so less is resorbed."
+        },
+        "response": {
+          "text": "Bone is added where strain is greatest, and the thicker bone bends less, so strain falls back",
+          "short": "Bone added; strain falls back",
+          "why": "Thicker bone bends less under the same load, so strain returns toward its usual level and the signals for building ease off."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Osteoclasts dig more resorption pits where the load is heaviest",
+          "why": "Heavier loading makes osteocytes release less of the signal that makes osteoclasts form, so resorption falls where strain is high."
+        },
+        {
+          "text": "The epiphyseal plates grow faster and the bones get longer",
+          "why": "Wolff’s law changes a bone’s mass and inner structure, not its length; in an adult the plates have closed."
+        },
+        {
+          "text": "Sensory nerves in the periosteum carry the strain to the spinal cord",
+          "why": "The periosteum’s nerves sense pain. The strain signal that steers remodeling comes from osteocytes inside the bone."
+        }
+      ],
+      "classify": "The added bone lowers the strain that triggered it, so the response opposes the stimulus: negative feedback. Unloading runs the same loop the other way.",
+      "failure": {
+        "part": "stimulus",
+        "q": "An astronaut spends six months in weightlessness. What does this loop do?",
+        "options": [
+          {
+            "text": "Strain falls, osteocytes signal for more resorption and less building, and she loses bone",
+            "why": "Right. The stimulus has reversed: with no weight to carry, strain falls, so the loop removes bone. Astronauts lose about 1 to 2% of the bone in their hips and spine each month."
+          },
+          {
+            "text": "Nothing, because bone needs heavier loads to change, not lighter ones",
+            "why": "The loop works both ways. Falling strain is as much a signal as rising strain."
+          },
+          {
+            "text": "Her bones thicken, because the osteocytes no longer hold osteoblasts back",
+            "why": "Unloaded osteocytes release more of the osteoblast brake, not less, so formation falls."
+          },
+          {
+            "text": "She loses bone evenly all over her skeleton, including her arms, which she uses as much as on Earth",
+            "why": "The loop is local. Bone is lost most where everyday loads disappeared, in the weight-bearing hips, legs and spine."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

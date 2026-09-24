@@ -33624,6 +33624,1181 @@
      }
     }
    ]
+  },
+  {
+   "id": "ig-heat-routes",
+   "title": "Heat loss at rest as the air warms",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "gradients",
+    "energy"
+   ],
+   "intro": "A resting person makes about 100 W of heat, and to hold body temperature steady must lose exactly that much. The graph shows how the loss is shared between the dry routes (radiation, conduction and convection together) and evaporation as the air warms. It is a simplified model of a lightly clothed person in still, dry air; the numbers are rounded to show the pattern. Below zero, a route adds heat instead of removing it.",
+   "alt": "Two lines plotted against air temperature from 20 to 40 degrees Celsius, on a heat axis from minus 60 to 160 watts. The dry-routes line stays near 80 watts from 20 to 26 degrees, falls steeply from about 74 watts at 28 degrees to zero at 35 degrees, and keeps falling below zero to minus 50 watts at 40 degrees. The evaporation line is the mirror image: about 20 watts from 20 to 26 degrees, rising steeply to 100 watts at 35 degrees and 150 watts at 40 degrees. A horizontal line marks the 100 watts of heat made at rest.",
+   "x": {
+    "min": 20,
+    "max": 40,
+    "label": "Air temperature",
+    "unit": "°C",
+    "ticks": [
+     20,
+     25,
+     30,
+     35,
+     40
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": -60,
+      "max": 160,
+      "label": "Heat removed from the body",
+      "unit": "W",
+      "ticks": [
+       -50,
+       0,
+       50,
+       100,
+       150
+      ]
+     },
+     "series": [
+      {
+       "id": "dry",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         20,
+         80
+        ],
+        [
+         22,
+         80
+        ],
+        [
+         24,
+         79
+        ],
+        [
+         26,
+         77
+        ],
+        [
+         28,
+         74
+        ],
+        [
+         30,
+         64
+        ],
+        [
+         32,
+         44
+        ],
+        [
+         33,
+         31
+        ],
+        [
+         34,
+         16
+        ],
+        [
+         35,
+         0
+        ],
+        [
+         36,
+         -10
+        ],
+        [
+         38,
+         -30
+        ],
+        [
+         40,
+         -50
+        ]
+       ],
+       "label": "radiation, conduction, convection",
+       "labelAt": [
+        21,
+        68
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "evap",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         20,
+         20
+        ],
+        [
+         22,
+         20
+        ],
+        [
+         24,
+         21
+        ],
+        [
+         26,
+         23
+        ],
+        [
+         28,
+         26
+        ],
+        [
+         30,
+         36
+        ],
+        [
+         32,
+         56
+        ],
+        [
+         33,
+         69
+        ],
+        [
+         34,
+         84
+        ],
+        [
+         35,
+         100
+        ],
+        [
+         36,
+         110
+        ],
+        [
+         38,
+         130
+        ],
+        [
+         40,
+         150
+        ]
+       ],
+       "label": "evaporation",
+       "labelAt": [
+        21,
+        32
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 100,
+       "label": "heat made at rest, about 100 W"
+      },
+      {
+       "y": 0,
+       "label": "no heat exchange"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 35,
+     "label": "skin temperature"
+    }
+   ],
+   "regions": [
+    {
+     "id": "vessels",
+     "x0": 20,
+     "x1": 28,
+     "label": "dermal blood flow adjusts"
+    },
+    {
+     "id": "sweat",
+     "x0": 28,
+     "x1": 35,
+     "label": "sweating takes over"
+    },
+    {
+     "id": "hot",
+     "x0": 35,
+     "x1": 40,
+     "label": "air hotter than skin"
+    }
+   ],
+   "questions": [
+    {
+     "id": "evap-cool",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "In air at 20 °C, how much heat does evaporation remove?",
+     "answer": 20,
+     "tol": 4,
+     "unit": "W",
+     "show": {
+      "x": 20,
+      "y": 20
+     },
+     "why": "About 20 W, a fifth of the total. In a cool room most heat leaves by radiation, conduction and convection, and evaporation is mainly water lost from the airways and through the skin without visible sweat."
+    },
+    {
+     "id": "crossover",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At what air temperature do the dry routes stop removing heat?",
+     "answer": 35,
+     "tol": 1,
+     "unit": "°C",
+     "show": {
+      "x": 35,
+      "y": 0
+     },
+     "why": "About 35 °C, the temperature of the skin. Heat always moves down a temperature gradient, so once the air is as warm as the skin there is no gradient for radiation, conduction or convection to use."
+    },
+    {
+     "id": "evap-hot",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "In air at 38 °C, how much heat must evaporation remove to keep body temperature steady?",
+     "answer": 130,
+     "tol": 8,
+     "unit": "W",
+     "show": {
+      "x": 38,
+      "y": 130
+     },
+     "why": "About 130 W: the 100 W the body makes plus the 30 W the hot air now adds by radiation and convection. Evaporation has to remove more heat than the body makes."
+    },
+    {
+     "id": "only-evap",
+     "type": "phase",
+     "level": "apply",
+     "diff": 1,
+     "q": "In which range is evaporation the only way left to lose heat?",
+     "options": [
+      "Above about 35 °C, where the air is hotter than the skin",
+      "Between 20 and 28 °C, where evaporation is lowest",
+      "Between 28 and 35 °C, where sweating rises steeply",
+      "At every temperature, since sweat is always the main route"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "hot"
+     },
+     "why": {
+      "correct": "Once the air is hotter than the skin, radiation, conduction and convection run backward and add heat. Evaporation is the only route that can only remove heat, so it must carry the whole load and more.",
+      "options": [
+       "Right: above skin temperature only evaporation removes heat.",
+       "In cool air the dry routes remove most of the heat; evaporation is small.",
+       "Here sweating rises, but the dry routes still remove some heat until the air reaches skin temperature.",
+       "In a cool room evaporation removes only about a fifth of the heat; the dry routes do most of the work."
+      ]
+     }
+    },
+    {
+     "id": "vessel-range",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "In which range does the body hold heat loss steady mainly by adjusting dermal blood flow, with little sweating?",
+     "options": [
+      "From about 20 to 28 °C",
+      "From about 28 to 35 °C",
+      "From about 35 to 40 °C"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "vessels"
+     },
+     "why": {
+      "correct": "Across this range the dry routes stay near 80 W even though the air warms. Narrowing or widening the dermal vessels sets how warm the skin is, and so the size of the gradient to the air, without needing sweat.",
+      "options": [
+       "Right: dermal blood flow does the work in cool to mild air.",
+       "Here the dry routes fall steeply and sweating has to make up the difference.",
+       "Here the dry routes add heat, so sweating has to remove it all."
+      ]
+     }
+    },
+    {
+     "id": "humid",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "In humid air, the sweat on the skin can evaporate only slowly. How does the evaporation line change?",
+     "options": [
+      "It levels off at a lower height, so above about 33 °C heat builds up",
+      "It rises more steeply, because humid air makes you sweat more",
+      "It does not change, because the sweat glands still secrete",
+      "It moves to the left, so sweating starts at a lower temperature"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "evap-humid",
+        "panel": 0,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          20,
+          20
+         ],
+         [
+          26,
+          23
+         ],
+         [
+          28,
+          26
+         ],
+         [
+          30,
+          36
+         ],
+         [
+          32,
+          50
+         ],
+         [
+          34,
+          55
+         ],
+         [
+          36,
+          56
+         ],
+         [
+          38,
+          56
+         ],
+         [
+          40,
+          56
+         ]
+        ],
+        "label": "humid air",
+        "labelAt": [
+         38,
+         70
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Evaporation needs air that can take up more water vapor. Humid air cannot, so however hard the glands work, evaporation stops rising. Once the heat to be removed passes what evaporation can manage, the body stores heat and its temperature climbs.",
+      "options": [
+       "Right: evaporation hits a ceiling.",
+       "The glands may secrete more, but sweat that cannot evaporate drips off and removes almost no heat.",
+       "Secreting sweat is not the same as removing heat; only evaporating sweat cools.",
+       "Humidity does not change when sweating starts; it limits how much of the sweat evaporates."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ig-wound-strength",
+   "title": "Strength of a healing wound",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "The strength of a healing skin wound, as a percentage of the strength of unwounded skin, over the six months after the injury. The values are approximate: they come from classic measurements, and studies differ, especially in the first week.",
+   "alt": "Wound strength as a percentage of unwounded skin plotted against weeks after injury, from 0 to 24 weeks. Strength is near zero at first, about 8 percent at week 1 and 22 percent at week 3, rises steeply to about 60 percent by week 8 and 72 percent by week 12, then levels off near 79 percent at week 24. Horizontal lines mark unwounded skin at 100 percent and a ceiling of about 80 percent.",
+   "x": {
+    "min": 0,
+    "max": 24,
+    "label": "Time after the injury",
+    "unit": "weeks",
+    "ticks": [
+     0,
+     4,
+     8,
+     12,
+     16,
+     20,
+     24
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Wound strength",
+      "unit": "% of unwounded skin",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "strength",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         8
+        ],
+        [
+         2,
+         14
+        ],
+        [
+         3,
+         22
+        ],
+        [
+         4,
+         32
+        ],
+        [
+         5,
+         41
+        ],
+        [
+         6,
+         49
+        ],
+        [
+         8,
+         60
+        ],
+        [
+         10,
+         67
+        ],
+        [
+         12,
+         72
+        ],
+        [
+         16,
+         76
+        ],
+        [
+         20,
+         78
+        ],
+        [
+         24,
+         79
+        ]
+       ],
+       "label": "healing wound",
+       "labelAt": [
+        13,
+        62
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 100,
+       "label": "unwounded skin"
+      },
+      {
+       "y": 80,
+       "label": "about the most a scar reaches"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "early",
+     "x0": 0,
+     "x1": 1,
+     "label": "clot and inflammation"
+    },
+    {
+     "id": "rapid",
+     "x0": 1,
+     "x1": 8,
+     "label": "collagen laid down fast"
+    },
+    {
+     "id": "remodel",
+     "x0": 8,
+     "x1": 24,
+     "label": "remodeling"
+    }
+   ],
+   "questions": [
+    {
+     "id": "three-weeks",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the wound’s strength 3 weeks after the injury.",
+     "answer": 22,
+     "tol": 6,
+     "unit": "%",
+     "show": {
+      "x": 3,
+      "y": 22
+     },
+     "why": "About a fifth of normal. The wound is closed and covered by new epidermis, but its collagen is still young and loosely arranged, which is why a healing wound must be protected from strain for weeks."
+    },
+    {
+     "id": "twelve-weeks",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the wound’s strength 12 weeks after the injury.",
+     "answer": 72,
+     "tol": 6,
+     "unit": "%",
+     "show": {
+      "x": 12,
+      "y": 72
+     },
+     "why": "About 70%. Collagen laid down in the first weeks is being reorganized and cross-linked, so strength keeps rising even though little new tissue is added."
+    },
+    {
+     "id": "weakest",
+     "type": "phase",
+     "level": "apply",
+     "diff": 1,
+     "q": "During which stretch is the wound weakest, held together mainly by the clot, or by stitches if it was closed?",
+     "options": [
+      "The first week",
+      "Weeks 1 to 8",
+      "Weeks 8 to 24"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "early"
+     },
+     "why": {
+      "correct": "In the first days, bleeding stops and inflammation clears the wound. Almost no collagen has been laid down yet, so the clot, and any stitches, hold the edges.",
+      "options": [
+       "Right: little collagen yet.",
+       "In these weeks fibroblasts lay down collagen, and strength climbs fastest.",
+       "By now the wound has much of its final strength and is being remodeled."
+      ]
+     }
+    },
+    {
+     "id": "slow-rise",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Strength keeps creeping up for months after the wound has closed. In which stretch, and why?",
+     "options": [
+      "Weeks 8 to 24: the collagen is reorganized and cross-linked",
+      "Weeks 8 to 24: new hair follicles and glands grow into the scar",
+      "Weeks 1 to 8: the scab hardens",
+      "The first week: the clot contracts"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "remodel"
+     },
+     "why": {
+      "correct": "In remodeling the collagen fibers are rearranged along the lines of stress and cross-linked, which strengthens the scar without adding much tissue. Most new capillaries disappear, and the scar pales.",
+      "options": [
+       "Right: remodeling strengthens the collagen already there.",
+       "A scar never regrows hair follicles, sweat glands or sebaceous glands.",
+       "The scab falls off once new epidermis has formed; it adds no strength to the dermis.",
+       "The clot holds the wound only in the first days; the months-long rise comes from collagen."
+      ]
+     }
+    },
+    {
+     "id": "ceiling",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "If you followed the wound for another year, where would the curve end up?",
+     "options": [
+      "It levels off near 80%, never reaching unwounded skin",
+      "It keeps rising until it reaches 100%",
+      "It rises above 100%, because scar tissue is tougher",
+      "It falls back toward zero as the collagen is removed"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "later",
+        "panel": 0,
+        "cls": "accent",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          16,
+          76
+         ],
+         [
+          20,
+          78
+         ],
+         [
+          24,
+          80
+         ]
+        ],
+        "label": "a year on: about 80%",
+        "labelAt": [
+         18,
+         90
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Even after a year or more of remodeling, a scar reaches at most about 80% of the strength of unwounded skin: its collagen is never arranged quite like the original dermis.",
+      "options": [
+       "Right: a scar tops out at about 80%.",
+       "The collagen of a scar never matches the original arrangement, so it stays weaker.",
+       "Scar tissue is weaker than unwounded skin, not stronger.",
+       "Remodeling reorganizes collagen; it does not remove the scar."
+      ]
+     }
+    },
+    {
+     "id": "infection",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "An infection prolongs the inflammation stage by about a week. How does the curve shift?",
+     "options": [
+      "To the right: strength starts rising about a week later",
+      "Upward: the extra inflammation makes the scar stronger",
+      "To the left: the wound heals faster",
+      "It does not change, because infection affects only the surface"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "infected",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          2
+         ],
+         [
+          2,
+          8
+         ],
+         [
+          3,
+          14
+         ],
+         [
+          4,
+          22
+         ],
+         [
+          5,
+          32
+         ],
+         [
+          6,
+          41
+         ],
+         [
+          8,
+          55
+         ],
+         [
+          10,
+          63
+         ],
+         [
+          12,
+          69
+         ],
+         [
+          16,
+          75
+         ],
+         [
+          20,
+          77
+         ],
+         [
+          24,
+          78
+         ]
+        ],
+        "label": "infected",
+        "labelAt": [
+         7,
+         36
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Rebuilding cannot start in earnest until the wound is cleared of microbes and debris. Longer inflammation delays the laying down of collagen, so the whole rise comes later.",
+      "options": [
+       "Right: the rise is delayed.",
+       "Inflammation clears the wound; it does not add strength, and prolonged inflammation can leave a worse scar.",
+       "Infection slows healing; it never speeds it up.",
+       "An infected wound is inflamed through its depth, which holds up every later stage."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ig-hair-length",
+   "title": "Hair length through the growth cycle",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "The length of one scalp hair and one eyelash, followed for four years from the start of a growth phase. In this example the scalp follicle stays in anagen for 3 years (it can be 2 to 7) and grows about 1 cm a month; the eyelash grows about 0.4 cm a month for 2.5 months, then rests about 4 months. Each drop is an old hair pushed out by a new one. Values are typical, not from one person.",
+   "alt": "Two stacked graphs over 48 months. Top, scalp hair: length rises steadily from 0 to 36 centimeters over 36 months, stays at 36 centimeters from month 36 to about month 39.5, then the old hair is shed and a new hair grows from 0 to about 9 centimeters by month 48. Bottom, eyelash: a sawtooth in which the lash grows from 0 to 1 centimeter over 2.5 months, stays at 1 centimeter for 4 months, then drops to 0 as it is shed, repeating about every 6.5 months.",
+   "x": {
+    "min": 0,
+    "max": 48,
+    "label": "Time",
+    "unit": "months",
+    "ticks": [
+     0,
+     12,
+     24,
+     36,
+     48
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.1,
+     "y": {
+      "min": 0,
+      "max": 40,
+      "label": "Scalp hair length",
+      "unit": "cm",
+      "ticks": [
+       0,
+       10,
+       20,
+       30,
+       40
+      ]
+     },
+     "series": [
+      {
+       "id": "scalp",
+       "cls": "accent",
+       "curve": "linear",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         36,
+         36
+        ],
+        [
+         39.5,
+         36
+        ]
+       ],
+       "label": "scalp hair",
+       "labelAt": [
+        14,
+        22
+       ],
+       "anchor": "end"
+      },
+      {
+       "id": "next",
+       "cls": "accent",
+       "dash": true,
+       "curve": "linear",
+       "pts": [
+        [
+         39.5,
+         0
+        ],
+        [
+         48,
+         8.5
+        ]
+       ],
+       "label": "next hair",
+       "labelAt": [
+        44,
+        14
+       ],
+       "anchor": "middle"
+      }
+     ]
+    },
+    {
+     "h": 0.7,
+     "y": {
+      "min": 0,
+      "max": 1.4,
+      "label": "Eyelash length",
+      "unit": "cm",
+      "ticks": [
+       0,
+       0.5,
+       1
+      ]
+     },
+     "series": [
+      {
+       "id": "lash",
+       "cls": "memb",
+       "curve": "linear",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         2.5,
+         1
+        ],
+        [
+         6.45,
+         1
+        ],
+        [
+         6.5,
+         0
+        ],
+        [
+         9,
+         1
+        ],
+        [
+         12.95,
+         1
+        ],
+        [
+         13,
+         0
+        ],
+        [
+         15.5,
+         1
+        ],
+        [
+         19.45,
+         1
+        ],
+        [
+         19.5,
+         0
+        ],
+        [
+         22,
+         1
+        ],
+        [
+         25.95,
+         1
+        ],
+        [
+         26,
+         0
+        ],
+        [
+         28.5,
+         1
+        ],
+        [
+         32.45,
+         1
+        ],
+        [
+         32.5,
+         0
+        ],
+        [
+         35,
+         1
+        ],
+        [
+         38.95,
+         1
+        ],
+        [
+         39,
+         0
+        ],
+        [
+         41.5,
+         1
+        ],
+        [
+         45.45,
+         1
+        ],
+        [
+         45.5,
+         0
+        ],
+        [
+         48,
+         1
+        ]
+       ],
+       "label": "eyelash",
+       "labelAt": [
+        3.2,
+        1.2
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "anagen",
+     "x0": 0,
+     "x1": 36,
+     "label": "anagen"
+    },
+    {
+     "id": "rest",
+     "x0": 36,
+     "x1": 39.5,
+     "label": "catagen, telogen"
+    },
+    {
+     "id": "next",
+     "x0": 39.5,
+     "x1": 48,
+     "label": "next anagen"
+    }
+   ],
+   "questions": [
+    {
+     "id": "one-year",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "How long is the scalp hair after 12 months?",
+     "answer": 12,
+     "tol": 1.5,
+     "unit": "cm",
+     "show": {
+      "x": 12,
+      "y": 12
+     },
+     "why": "About 12 cm. During anagen the matrix makes hair at about 1 cm a month, 0.3 to 0.4 mm a day, so a year of growth gives about 12 cm."
+    },
+    {
+     "id": "lash-max",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "What is the longest the eyelash gets?",
+     "answer": 1,
+     "tol": 0.15,
+     "unit": "cm",
+     "show": {
+      "x": 2.5,
+      "y": 1,
+      "panel": 1
+     },
+     "why": "About 1 cm. The lash grows only two to three times more slowly than a scalp hair; it stays short mainly because its anagen phase ends after a couple of months."
+    },
+    {
+     "id": "growing",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "During which stretch are the matrix cells of the scalp follicle dividing?",
+     "options": [
+      "Months 0 to 36",
+      "Months 36 to 39.5",
+      "Only in the last month before the hair is shed"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "anagen"
+     },
+     "why": {
+      "correct": "The hair lengthens only while its matrix divides, in anagen. The steady climb of the line is that growth.",
+      "options": [
+       "Right: anagen is the growth phase.",
+       "Here the line is flat: the matrix has stopped (catagen) and the follicle is resting with its club hair (telogen).",
+       "Just before shedding the follicle is resting; the new hair that pushes the old one out grows in the next anagen."
+      ]
+     }
+    },
+    {
+     "id": "club",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which stretch does the scalp follicle hold a club hair that is no longer growing?",
+     "options": [
+      "Months 36 to 39.5",
+      "Months 0 to 36",
+      "Months 39.5 to 48"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "rest"
+     },
+     "why": {
+      "correct": "After anagen, the short catagen phase forms a hard club at the base of the hair, and the follicle then rests in telogen for about 3 months. The hair keeps its length but does not grow.",
+      "options": [
+       "Right: catagen and telogen.",
+       "Here the matrix is dividing and the hair is growing.",
+       "Here a new hair is growing; the old club hair has been pushed out."
+      ]
+     }
+    },
+    {
+     "id": "chemo",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "At month 12, she starts a cancer drug that kills rapidly dividing cells. How does the scalp hair line change?",
+     "options": [
+      "It stops rising and drops to zero within weeks",
+      "It keeps rising at the same rate",
+      "It levels off and the hair is held for 3 months, as in telogen",
+      "It rises faster as the follicle repairs itself"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "chemo",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "curve": "linear",
+        "pts": [
+         [
+          12,
+          12
+         ],
+         [
+          12.7,
+          12.3
+         ],
+         [
+          13,
+          0
+         ]
+        ],
+        "label": "on the drug",
+        "labelAt": [
+         14,
+         5
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The drug stops the matrix cells of anagen follicles. The weakened hair breaks or falls out within a few weeks, instead of passing through catagen and telogen. The follicle survives, so hair regrows after treatment.",
+      "options": [
+       "Right: growth stops and the hair is lost within weeks.",
+       "Matrix cells are among the fastest-dividing cells in the body, so they are among the first hit.",
+       "The hair is lost quickly, without the resting phase of a normal cycle.",
+       "The drug stops division; nothing makes the hair grow faster."
+      ]
+     }
+    },
+    {
+     "id": "short-anagen",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "In another person, scalp anagen lasts 2 years instead of 3, with the same growth rate. How does the scalp line change?",
+     "options": [
+      "It levels off at about 24 cm, a year earlier",
+      "It rises more slowly and reaches 36 cm later",
+      "It reaches 36 cm sooner by growing faster",
+      "It is the same, because hair length depends only on growth rate"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "two-year",
+        "panel": 0,
+        "cls": "lo",
+        "dash": true,
+        "curve": "linear",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          24,
+          24
+         ],
+         [
+          27.5,
+          24
+         ]
+        ],
+        "label": "2-year anagen",
+        "labelAt": [
+         26,
+         28
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Maximum length = growth rate × time in anagen. At 1 cm a month for 24 months the hair reaches about 24 cm and then stops. That is why some people cannot grow their hair very long.",
+      "options": [
+       "Right: a shorter anagen means a shorter maximum length.",
+       "The growth rate is the same; only the time spent growing changes.",
+       "Nothing changes the growth rate here; the hair stops a year sooner.",
+       "Length depends on both the rate and how long anagen lasts; the eyelash shows the same thing."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

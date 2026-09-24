@@ -8842,7 +8842,7 @@
        "fn": "The lower jaw, the only skull bone that moves freely. It holds the lower teeth and hinges on the temporal bones for chewing and speaking."
       }
      ],
-     "covered": [
+     "hints": [
       {
        "id": "nasal-septum",
        "box": [
@@ -8850,7 +8850,8 @@
         541,
         140,
         24
-       ]
+       ],
+       "why": "A heading (\"Nasal septum:\") over the perpendicular plate and vomer labels, with no leader line of its own; it gives away what they form."
       }
      ]
     },
@@ -9438,6 +9439,20 @@
        "fn": "A single butterfly-shaped cranial bone that runs across the middle of the skull base and joins with every other cranial bone. Its center holds the sella turcica and the sphenoid sinus."
       },
       {
+       "id": "foramen-ovale",
+       "name": "Foramen ovale",
+       "accept": [],
+       "box": [
+        848,
+        355,
+        131,
+        20
+       ],
+       "concept": "skull-foramina",
+       "taught": "skull",
+       "fn": "An oval hole in the greater wing of the sphenoid bone, in the floor of the brain case. It carries a nerve branch that serves the lower jaw and the chewing muscles. (Not to be confused with the opening of the same name in the fetal heart.)"
+      },
+      {
        "id": "foramen-spinosum",
        "name": "Foramen spinosum",
        "accept": [],
@@ -9824,6 +9839,20 @@
        "fn": "A round hole in the sphenoid bone just below the superior orbital fissure. It carries a nerve branch that gives sensation to the upper jaw and cheek."
       },
       {
+       "id": "foramen-ovale-superior",
+       "name": "Foramen ovale",
+       "accept": [],
+       "box": [
+        76,
+        1113,
+        132,
+        20
+       ],
+       "concept": "skull-foramina",
+       "taught": "skull",
+       "fn": "An oval hole in the greater wing of the sphenoid bone, in the floor of the brain case. It carries a nerve branch that serves the lower jaw and the chewing muscles. (Not to be confused with the opening of the same name in the fetal heart.)"
+      },
+      {
        "id": "foramen-lacerum-superior",
        "name": "Foramen lacerum and exit of carotid canal",
        "accept": [
@@ -9989,24 +10018,6 @@
         259,
         154,
         45
-       ]
-      },
-      {
-       "id": "foramen-ovale",
-       "box": [
-        848,
-        355,
-        131,
-        20
-       ]
-      },
-      {
-       "id": "foramen-ovale-superior",
-       "box": [
-        76,
-        1113,
-        132,
-        20
        ]
       }
      ],
@@ -13175,7 +13186,7 @@
          "The spinous process of the vertebra above"
         ],
         "correct": 1,
-        "why": "The head of a typical rib fits into a socket formed by the inferior costal facet of the vertebra above and the superior costal facet of the one below. The tubercle, not the head, meets the transverse process; the front end reaches the sternum through costal cartilage; and no rib meets a spinous process.",
+        "why": "The head of a typical rib fits into a socket formed by the inferior costal facet of the vertebra above and the superior costal facet of the vertebra beneath it. The tubercle, not the head, meets the transverse process; the front end reaches the sternum through costal cartilage; and no rib meets a spinous process.",
         "level": "recall"
        }
       },
