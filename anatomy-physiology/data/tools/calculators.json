@@ -24,7 +24,8 @@
     {
       "id": "metabolism",
       "title": "Metabolism and nutrition"
-    }
+    },
+    { "id": "urinary", "title": "Urinary system" }
   ],
   "calculators": [
     {
@@ -5982,6 +5983,1646 @@
               "rel": 0.01
             },
             "prompt": "A cyclist must shed {heat} kcal of heat an hour by sweating, and {share}% of her sweat evaporates. Using 580 kcal per liter evaporated, how many liters of sweat must she secrete each hour?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-glomerular-nfp",
+      "group": "urinary",
+      "title": "Net filtration pressure at the glomerulus",
+      "short": "NFP = GBHP − (CHP + BCOP)",
+      "topic": "glomerular-filtration",
+      "core": [
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Three pressures decide how hard fluid is pushed out of the glomerular capillaries into the capsule. Enter them to find the net filtration pressure (NFP). The capsular colloid osmotic pressure is left out because the filtrate holds almost no protein.",
+      "formula": "NFP = GBHP − (CHP + BCOP)",
+      "inputs": [
+        {
+          "key": "GBHP",
+          "label": "Glomerular hydrostatic pressure (pushes out)",
+          "sym": "GBHP",
+          "unit": "mm Hg",
+          "default": 55,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "gen": [
+            40,
+            70,
+            1
+          ],
+          "hint": "About 55, held high by the efferent arteriole."
+        },
+        {
+          "key": "CHP",
+          "label": "Capsular hydrostatic pressure (pushes back)",
+          "sym": "CHP",
+          "unit": "mm Hg",
+          "default": 15,
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "gen": [
+            10,
+            25,
+            1
+          ],
+          "hint": "About 15; rises when outflow is blocked."
+        },
+        {
+          "key": "BCOP",
+          "label": "Blood colloid osmotic pressure, average (pulls back)",
+          "sym": "BCOP",
+          "unit": "mm Hg",
+          "default": 30,
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "gen": [
+            20,
+            36,
+            1
+          ],
+          "hint": "About 30 on average: 25 entering, 35 leaving."
+        }
+      ],
+      "derived": [
+        {
+          "key": "back",
+          "expr": "CHP + BCOP",
+          "dp": 0
+        },
+        {
+          "key": "NFP",
+          "expr": "GBHP - back",
+          "dp": 0
+        },
+        {
+          "key": "change",
+          "expr": "(GBHP - back - 10) / 10 * 100",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "The pressure pushing fluid out",
+          "text": "Only GBHP pushes fluid out of the glomerulus: <b>{GBHP} mm Hg</b>."
+        },
+        {
+          "title": "The pressures pushing fluid back",
+          "text": "CHP pushes back from the capsule and BCOP pulls back into the blood: {CHP} + {BCOP} = <b>{back} mm Hg</b>."
+        },
+        {
+          "title": "Subtract",
+          "text": "NFP = {GBHP} − {back} = <b>{NFP:+} mm Hg</b>."
+        },
+        {
+          "title": "Read the sign and size",
+          "text": "A positive NFP means fluid is filtered into the capsule; zero or below means no filtration. Compared with a normal NFP of about 10 mm Hg, this is a change of {change:+}%. Because the pushing and pulling pressures nearly balance, a small change in any one of them changes NFP, and so filtration, a lot."
+        }
+      ],
+      "results": [
+        {
+          "key": "NFP",
+          "label": "Net filtration pressure",
+          "unit": "mm Hg",
+          "signed": true,
+          "normal": "About +10 mm Hg.",
+          "bands": [
+            {
+              "when": "NFP <= 0",
+              "label": "no filtration",
+              "tone": "lo"
+            },
+            {
+              "when": "NFP < 7",
+              "label": "below normal: less filtration",
+              "tone": "lo"
+            },
+            {
+              "when": "NFP <= 13",
+              "label": "about normal",
+              "tone": "ok"
+            },
+            {
+              "label": "above normal: more filtration",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "NFP <= 0",
+          "text": "With an NFP of {NFP:+} mm Hg, the pressures pushing back match or beat GBHP, so filtration stops. The glomerulus does not take fluid back in; it simply stops filtering."
+        },
+        {
+          "when": "NFP < 7",
+          "text": "An NFP of {NFP:+} mm Hg is below the normal 10, so with the same filtration coefficient, GFR falls by about the same share."
+        },
+        {
+          "when": "NFP > 13",
+          "text": "An NFP of {NFP:+} mm Hg is above normal, so filtration rises. In a real kidney, autoregulation pushes back, so GFR rises less than this suggests."
+        },
+        {
+          "when": "1",
+          "text": "An NFP of {NFP:+} mm Hg is about normal. That small push drives about 180 liters of filtrate a day."
+        },
+        {
+          "when": "CHP > 18",
+          "also": true,
+          "text": "CHP is raised, as when a ureter or the urethra is blocked and filtrate backs up into the capsule."
+        },
+        {
+          "when": "BCOP < 26",
+          "also": true,
+          "text": "BCOP is low, as when plasma albumin is low, so less pull holds fluid in the capillaries."
+        },
+        {
+          "when": "GBHP < 52",
+          "also": true,
+          "text": "GBHP is low, as when the afferent arterioles constrict or arterial pressure falls below the autoregulatory range."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: healthy kidney",
+          "values": {
+            "GBHP": 55,
+            "CHP": 15,
+            "BCOP": 30
+          }
+        },
+        {
+          "label": "Worked example 2: GBHP falls after a bleed",
+          "values": {
+            "GBHP": 50,
+            "CHP": 15,
+            "BCOP": 30
+          }
+        },
+        {
+          "label": "Worked example 3: blocked ureter",
+          "values": {
+            "GBHP": 55,
+            "CHP": 22,
+            "BCOP": 30
+          }
+        },
+        {
+          "label": "Worked example 4: low plasma protein",
+          "values": {
+            "GBHP": 55,
+            "CHP": 15,
+            "BCOP": 22
+          }
+        }
+      ],
+      "practice": {
+        "require": "NFP > 0",
+        "asks": [
+          {
+            "key": "NFP",
+            "unit": "mm Hg",
+            "signed": true,
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "At the glomerulus, GBHP = {GBHP} mm Hg, CHP = {CHP} mm Hg and the average BCOP = {BCOP} mm Hg. What is the net filtration pressure?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-gfr-kf",
+      "group": "urinary",
+      "title": "GFR from Kf and net filtration pressure",
+      "short": "GFR = Kf × NFP",
+      "topic": "glomerular-filtration",
+      "core": [
+        "gradients",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "GFR depends on how hard fluid is pushed (the net filtration pressure) and how easily it crosses the filter (the filtration coefficient, Kf, set by the filtering area and its permeability). Enter both for the two kidneys together.",
+      "formula": "GFR = Kf × NFP",
+      "inputs": [
+        {
+          "key": "Kf",
+          "label": "Filtration coefficient, both kidneys",
+          "sym": "Kf",
+          "unit": "mL/min per mm Hg",
+          "default": 12.5,
+          "min": 0.5,
+          "max": 25,
+          "step": 0.5,
+          "gen": [
+            6,
+            15,
+            0.5
+          ],
+          "hint": "About 12.5; lower when glomeruli are scarred or mesangial cells contract."
+        },
+        {
+          "key": "NFP",
+          "label": "Net filtration pressure",
+          "sym": "NFP",
+          "unit": "mm Hg",
+          "default": 10,
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "gen": [
+            3,
+            18,
+            1
+          ],
+          "hint": "About 10 mm Hg."
+        }
+      ],
+      "derived": [
+        {
+          "key": "GFR",
+          "expr": "Kf * NFP",
+          "dp": 1
+        },
+        {
+          "key": "perDay",
+          "expr": "Kf * NFP * 1440 / 1000",
+          "dp": 0
+        },
+        {
+          "key": "pct",
+          "expr": "Kf * NFP / 125 * 100",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Write the equation",
+          "text": "GFR = Kf × NFP."
+        },
+        {
+          "title": "Substitute",
+          "text": "GFR = {Kf} mL/min per mm Hg × {NFP} mm Hg. The mm Hg units cancel."
+        },
+        {
+          "title": "Calculate",
+          "text": "GFR = <b>{GFR} mL/min</b>, {pct}% of a normal 125 mL/min."
+        },
+        {
+          "title": "Per day",
+          "text": "A day has 60 × 24 = 1,440 minutes: {GFR} mL/min × 1,440 min ÷ 1,000 = about <b>{perDay} L of filtrate a day</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "GFR",
+          "label": "Glomerular filtration rate",
+          "unit": "mL/min",
+          "normal": "About 125 mL/min in a healthy young adult, about 10% lower in women.",
+          "bands": [
+            {
+              "when": "GFR < 90",
+              "label": "below the normal range",
+              "tone": "lo"
+            },
+            {
+              "when": "GFR <= 140",
+              "label": "about normal",
+              "tone": "ok"
+            },
+            {
+              "label": "above normal",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "perDay",
+          "label": "Filtrate per day",
+          "unit": "L",
+          "normal": "About 180 L a day."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "GFR < 90",
+          "text": "A GFR of {GFR} mL/min means less plasma is cleared of wastes each minute, so urea and other wastes start to build up in the blood if it lasts."
+        },
+        {
+          "when": "GFR > 140",
+          "text": "A GFR of {GFR} mL/min pushes fluid through the tubules faster than normal, so they have less time to reabsorb salt, water and nutrients."
+        },
+        {
+          "when": "1",
+          "text": "A GFR of {GFR} mL/min, about {perDay} L a day. The tubules must return more than 99% of it."
+        },
+        {
+          "when": "Kf < 10",
+          "also": true,
+          "text": "Kf is low, as when glomeruli are scarred or lost with age. GFR can fall even when every pressure is normal."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 5: healthy kidneys",
+          "values": {
+            "Kf": 12.5,
+            "NFP": 10
+          }
+        },
+        {
+          "label": "NFP halved (worked example 2)",
+          "values": {
+            "Kf": 12.5,
+            "NFP": 5
+          }
+        },
+        {
+          "label": "Scarred glomeruli, normal pressures",
+          "values": {
+            "Kf": 8,
+            "NFP": 10
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "GFR",
+            "unit": "mL/min",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "Both kidneys have a filtration coefficient of {Kf} mL/min per mm Hg, and the net filtration pressure is {NFP} mm Hg. What is the GFR?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-filtration-fraction",
+      "group": "urinary",
+      "title": "Filtration fraction",
+      "short": "FF = GFR ÷ renal plasma flow",
+      "topic": "glomerular-filtration",
+      "core": [
+        "mass-balance",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Only part of the plasma reaching the glomeruli is filtered; the rest leaves in the efferent arterioles. Enter renal blood flow, hematocrit and GFR to find what share is filtered.",
+      "formula": "Renal plasma flow = renal blood flow × (1 − hematocrit); FF = GFR ÷ renal plasma flow",
+      "inputs": [
+        {
+          "key": "RBF",
+          "label": "Renal blood flow",
+          "sym": "RBF",
+          "unit": "mL/min",
+          "default": 1150,
+          "min": 200,
+          "max": 2000,
+          "step": 10,
+          "gen": [
+            900,
+            1400,
+            10
+          ],
+          "hint": "About 1,100 to 1,200 mL/min at rest."
+        },
+        {
+          "key": "Hct",
+          "label": "Hematocrit",
+          "sym": "Hct",
+          "unit": "%",
+          "default": 45,
+          "min": 15,
+          "max": 65,
+          "step": 1,
+          "gen": [
+            38,
+            50,
+            1
+          ],
+          "hint": "About 45%."
+        },
+        {
+          "key": "GFR",
+          "label": "GFR",
+          "sym": "GFR",
+          "unit": "mL/min",
+          "default": 125,
+          "min": 5,
+          "max": 250,
+          "step": 1,
+          "gen": [
+            80,
+            140,
+            1
+          ],
+          "hint": "About 125 mL/min."
+        }
+      ],
+      "derived": [
+        {
+          "key": "plasmaPct",
+          "expr": "100 - Hct",
+          "dp": 0
+        },
+        {
+          "key": "RPF",
+          "expr": "RBF * (100 - Hct) / 100",
+          "dp": 0
+        },
+        {
+          "key": "FF",
+          "expr": "GFR / (RBF * (100 - Hct) / 100) * 100",
+          "dp": 1
+        },
+        {
+          "key": "left",
+          "expr": "RBF * (100 - Hct) / 100 - GFR",
+          "dp": 0
+        }
+      ],
+      "invalid": [
+        {
+          "when": "GFR >= RBF * (100 - Hct) / 100",
+          "text": "GFR cannot be as large as the plasma flow reaching the glomeruli."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the plasma share of blood",
+          "text": "Plasma is the part that is not cells: 100 − {Hct} = {plasmaPct}%."
+        },
+        {
+          "title": "Renal plasma flow",
+          "text": "{RBF} mL/min × {plasmaPct}% = <b>{RPF} mL/min</b> of plasma reaches the glomeruli."
+        },
+        {
+          "title": "Divide GFR by plasma flow",
+          "text": "FF = {GFR} ÷ {RPF} = <b>{FF}%</b>."
+        },
+        {
+          "title": "What leaves",
+          "text": "{RPF} − {GFR} = {left} mL/min of plasma leaves in the efferent arterioles, richer in protein, and flows on to the peritubular capillaries."
+        }
+      ],
+      "results": [
+        {
+          "key": "FF",
+          "label": "Filtration fraction",
+          "unit": "%",
+          "normal": "About 20%.",
+          "bands": [
+            {
+              "when": "FF < 16",
+              "label": "below the usual",
+              "tone": "lo"
+            },
+            {
+              "when": "FF <= 24",
+              "label": "about normal",
+              "tone": "ok"
+            },
+            {
+              "label": "above the usual",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "FF > 24",
+          "text": "A filtration fraction of {FF}% means more of each milliliter of plasma is filtered, as when the efferent arterioles constrict. The blood leaving the glomerulus is especially rich in protein, which pulls reabsorbed fluid into the peritubular capillaries."
+        },
+        {
+          "when": "FF < 16",
+          "text": "A filtration fraction of {FF}% means relatively little of the plasma is filtered, as when blood flow is high but glomerular pressure is not."
+        },
+        {
+          "when": "1",
+          "text": "About {FF}% of the plasma reaching the glomeruli becomes filtrate: roughly one fifth. The other four fifths leave in the efferent arterioles."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 6",
+          "values": {
+            "RBF": 1150,
+            "Hct": 45,
+            "GFR": 125
+          }
+        },
+        {
+          "label": "Efferent arterioles constricted",
+          "values": {
+            "RBF": 950,
+            "Hct": 45,
+            "GFR": 135
+          }
+        },
+        {
+          "label": "Afferent arterioles constricted",
+          "values": {
+            "RBF": 800,
+            "Hct": 45,
+            "GFR": 88
+          }
+        }
+      ],
+      "practice": {
+        "require": "FF >= 10 && FF <= 35",
+        "asks": [
+          {
+            "key": "FF",
+            "unit": "%",
+            "tol": {
+              "abs": 0.3
+            },
+            "prompt": "Renal blood flow is {RBF} mL/min, hematocrit is {Hct}% and GFR is {GFR} mL/min. What percentage of the plasma reaching the glomeruli is filtered?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-filtered-load-tm",
+      "group": "urinary",
+      "title": "Filtered load and the transport maximum",
+      "short": "excreted = filtered load − reabsorbed (capped at Tm)",
+      "topic": "tubular-transport",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "How much glucose reaches the tubules each minute, how much the carriers can take back, and how much spills into the urine. Enter GFR, plasma glucose and the transport maximum (Tm).",
+      "formula": "Filtered load = GFR × plasma concentration; reabsorbed = the smaller of the load and Tm; excreted = load − reabsorbed",
+      "inputs": [
+        {
+          "key": "GFR",
+          "label": "GFR",
+          "sym": "GFR",
+          "unit": "mL/min",
+          "default": 125,
+          "min": 10,
+          "max": 200,
+          "step": 1,
+          "gen": [
+            90,
+            140,
+            5
+          ],
+          "hint": "About 125 mL/min."
+        },
+        {
+          "key": "Pg",
+          "label": "Plasma glucose",
+          "sym": "P",
+          "unit": "mg/dL",
+          "default": 100,
+          "min": 0,
+          "max": 1200,
+          "step": 10,
+          "gen": [
+            70,
+            800,
+            10
+          ],
+          "hint": "About 70 to 100 mg/dL fasting."
+        },
+        {
+          "key": "Tm",
+          "label": "Transport maximum for glucose",
+          "sym": "Tm",
+          "unit": "mg/min",
+          "default": 375,
+          "min": 50,
+          "max": 600,
+          "step": 5,
+          "gen": {
+            "choices": [
+              375
+            ]
+          },
+          "hint": "About 375 mg/min for both kidneys."
+        }
+      ],
+      "derived": [
+        {
+          "key": "conc",
+          "expr": "Pg / 100",
+          "dp": 2
+        },
+        {
+          "key": "load",
+          "expr": "GFR * Pg / 100",
+          "dp": 0
+        },
+        {
+          "key": "reab",
+          "expr": "min(GFR * Pg / 100, Tm)",
+          "dp": 0
+        },
+        {
+          "key": "excr",
+          "expr": "GFR * Pg / 100 - min(GFR * Pg / 100, Tm)",
+          "dp": 0
+        },
+        {
+          "key": "perDay",
+          "expr": "(GFR * Pg / 100 - min(GFR * Pg / 100, Tm)) * 1440 / 1000",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Convert the concentration",
+          "text": "{Pg} mg/dL = {Pg} mg per 100 mL = <b>{conc} mg/mL</b>."
+        },
+        {
+          "title": "Filtered load",
+          "text": "GFR × concentration = {GFR} mL/min × {conc} mg/mL = <b>{load} mg/min</b>."
+        },
+        {
+          "title": "Compare with Tm",
+          "text": "The carriers can take back at most {Tm} mg/min, so reabsorbed = <b>{reab} mg/min</b>."
+        },
+        {
+          "title": "Excreted",
+          "text": "Excreted = filtered − reabsorbed = {load} − {reab} = <b>{excr} mg/min</b>, about {perDay} g a day if it lasted."
+        }
+      ],
+      "results": [
+        {
+          "key": "excr",
+          "label": "Glucose excreted",
+          "unit": "mg/min",
+          "normal": "Zero at a normal plasma glucose.",
+          "bands": [
+            {
+              "when": "excr == 0",
+              "label": "none: all reabsorbed",
+              "tone": "ok"
+            },
+            {
+              "label": "glucose in the urine (glucosuria)",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "load",
+          "label": "Filtered load",
+          "unit": "mg/min",
+          "normal": "About 125 mg/min at 100 mg/dL."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "excr > 0",
+          "text": "The filtered load of {load} mg/min exceeds the carriers’ ceiling, so {excr} mg/min spills into the urine. The glucose left in the tubule holds water with it, which is why untreated diabetes mellitus causes polyuria and thirst."
+        },
+        {
+          "when": "1",
+          "text": "The filtered load of {load} mg/min is within what the carriers can handle, so all of it is reabsorbed and none is excreted."
+        }
+      ],
+      "note": "This calculation treats every nephron alike, so glucose spills only once the whole load passes Tm (about 300 mg/dL at a GFR of 125). Real kidneys start to spill at about 180 mg/dL, the renal threshold, because some nephrons saturate early (the splay).",
+      "presets": [
+        {
+          "label": "Worked example 3: normal glucose",
+          "values": {
+            "GFR": 125,
+            "Pg": 100,
+            "Tm": 375
+          }
+        },
+        {
+          "label": "Worked example 4: glucose 500 mg/dL",
+          "values": {
+            "GFR": 125,
+            "Pg": 500,
+            "Tm": 375
+          }
+        },
+        {
+          "label": "Glucose 400 mg/dL",
+          "values": {
+            "GFR": 125,
+            "Pg": 400,
+            "Tm": 375
+          }
+        }
+      ],
+      "practice": {
+        "require": "excr > 0",
+        "asks": [
+          {
+            "key": "excr",
+            "unit": "mg/min",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "GFR is {GFR} mL/min, plasma glucose is {Pg} mg/dL and the transport maximum is {Tm} mg/min. Treating every nephron alike, how much glucose is excreted each minute?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-reabsorbed-percent",
+      "group": "urinary",
+      "title": "Filtered load and percentage reabsorbed",
+      "short": "reabsorbed = filtered − excreted",
+      "topic": "tubular-transport",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "For a substance that is filtered freely and then reabsorbed, find how much is filtered each day, how much comes back and what percentage that is. The defaults are sodium.",
+      "formula": "Filtered load = GFR × plasma concentration; reabsorbed = filtered − excreted",
+      "inputs": [
+        {
+          "key": "GFR",
+          "label": "GFR",
+          "sym": "GFR",
+          "unit": "L/day",
+          "default": 180,
+          "min": 20,
+          "max": 250,
+          "step": 1,
+          "gen": [
+            150,
+            190,
+            5
+          ],
+          "hint": "About 180 L a day."
+        },
+        {
+          "key": "P",
+          "label": "Plasma concentration",
+          "sym": "P",
+          "unit": "mmol/L",
+          "default": 140,
+          "min": 1,
+          "max": 200,
+          "step": 1,
+          "gen": [
+            135,
+            145,
+            1
+          ],
+          "hint": "Sodium about 140 mmol/L."
+        },
+        {
+          "key": "E",
+          "label": "Amount excreted in the urine",
+          "sym": "excreted",
+          "unit": "mmol/day",
+          "default": 150,
+          "min": 0,
+          "max": 3000,
+          "step": 1,
+          "gen": [
+            50,
+            300,
+            10
+          ],
+          "hint": "Sodium about 100 to 250 mmol a day, matching intake."
+        }
+      ],
+      "derived": [
+        {
+          "key": "load",
+          "expr": "GFR * P",
+          "dp": 0
+        },
+        {
+          "key": "reab",
+          "expr": "GFR * P - E",
+          "dp": 0
+        },
+        {
+          "key": "pct",
+          "expr": "(GFR * P - E) / (GFR * P) * 100",
+          "dp": 1
+        },
+        {
+          "key": "onePct",
+          "expr": "GFR * P / 100",
+          "dp": 0
+        }
+      ],
+      "invalid": [
+        {
+          "when": "E > GFR * P",
+          "text": "More is excreted than is filtered, so the tubule must be secreting it; this calculator is for substances with net reabsorption."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Filtered load",
+          "text": "GFR × plasma concentration = {GFR} L/day × {P} mmol/L = <b>{load} mmol/day</b>."
+        },
+        {
+          "title": "Reabsorbed",
+          "text": "Filtered − excreted = {load} − {E} = <b>{reab} mmol/day</b>."
+        },
+        {
+          "title": "Percentage",
+          "text": "{reab} ÷ {load} × 100 = <b>{pct}%</b>."
+        },
+        {
+          "title": "Why small changes matter",
+          "text": "A change of just 1% in reabsorption changes excretion by {onePct} mmol a day."
+        }
+      ],
+      "results": [
+        {
+          "key": "pct",
+          "label": "Percentage reabsorbed",
+          "unit": "%",
+          "normal": "About 99.4% for sodium."
+        },
+        {
+          "key": "load",
+          "label": "Filtered load",
+          "unit": "mmol/day",
+          "normal": "About 25,000 mmol of sodium a day."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "pct >= 99",
+          "text": "The tubule returns {pct}% of what is filtered. A shift of 1% in reabsorption would move {onePct} mmol a day, which is why the tubule, not the glomerulus, fine-tunes what you excrete."
+        },
+        {
+          "when": "1",
+          "text": "The tubule returns {pct}% of what is filtered, and the rest, {E} mmol a day, leaves in the urine. Amount excreted = filtered − reabsorbed + secreted."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 2: sodium",
+          "values": {
+            "GFR": 180,
+            "P": 140,
+            "E": 150
+          }
+        },
+        {
+          "label": "Sodium, reabsorption 1% lower",
+          "values": {
+            "GFR": 180,
+            "P": 140,
+            "E": 402
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "pct",
+            "unit": "%",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "GFR is {GFR} L a day and plasma sodium is {P} mmol/L. The urine contains {E} mmol of sodium a day. What percentage of the filtered sodium is reabsorbed?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-water-reabsorption",
+      "group": "urinary",
+      "title": "Obligatory and facultative water reabsorption",
+      "short": "water to the collecting duct = filtered × (1 − obligatory share)",
+      "topic": "tubular-transport",
+      "core": [
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Most filtered water comes back whatever you drink. Enter the water filtered, the share reabsorbed obligatorily, and the urine volume, to see how much water ADH had to work with and how much of it was kept.",
+      "formula": "Water reaching the distal parts = filtered − obligatory; facultative = that water − urine",
+      "inputs": [
+        {
+          "key": "F",
+          "label": "Water filtered",
+          "sym": "filtered",
+          "unit": "L/day",
+          "default": 180,
+          "min": 20,
+          "max": 250,
+          "step": 1,
+          "gen": [
+            160,
+            190,
+            5
+          ],
+          "hint": "About 180 L a day."
+        },
+        {
+          "key": "ob",
+          "label": "Share reabsorbed obligatorily",
+          "sym": "obligatory",
+          "unit": "%",
+          "default": 82,
+          "min": 60,
+          "max": 95,
+          "step": 1,
+          "gen": [
+            80,
+            85,
+            1
+          ],
+          "hint": "About 80 to 85%; some textbooks round to 90%."
+        },
+        {
+          "key": "V",
+          "label": "Urine volume",
+          "sym": "urine",
+          "unit": "L/day",
+          "default": 1.5,
+          "min": 0.1,
+          "max": 30,
+          "step": 0.1,
+          "gen": [
+            0.5,
+            3,
+            0.1
+          ],
+          "hint": "About 1 to 2 L a day."
+        }
+      ],
+      "derived": [
+        {
+          "key": "obL",
+          "expr": "F * ob / 100",
+          "dp": 1
+        },
+        {
+          "key": "distal",
+          "expr": "F - F * ob / 100",
+          "dp": 1
+        },
+        {
+          "key": "fac",
+          "expr": "F - F * ob / 100 - V",
+          "dp": 1
+        },
+        {
+          "key": "facPct",
+          "expr": "(F - F * ob / 100 - V) / (F - F * ob / 100) * 100",
+          "dp": 1
+        },
+        {
+          "key": "total",
+          "expr": "(F - V) / F * 100",
+          "dp": 1
+        }
+      ],
+      "invalid": [
+        {
+          "when": "V > F - F * ob / 100",
+          "text": "The urine cannot hold more water than reaches the distal tubule and collecting duct."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Obligatory reabsorption",
+          "text": "{ob}% × {F} L = <b>{obL} L</b> comes back in the proximal tubule and descending limb, whatever ADH does."
+        },
+        {
+          "title": "Water left for ADH to work on",
+          "text": "{F} − {obL} = <b>{distal} L</b> a day reaches the distal tubule and collecting duct."
+        },
+        {
+          "title": "Facultative reabsorption",
+          "text": "{distal} − {V} = <b>{fac} L</b> was reabsorbed there under ADH: {facPct}% of what reached it."
+        },
+        {
+          "title": "Overall",
+          "text": "({F} − {V}) ÷ {F} = <b>{total}%</b> of the filtered water returned to the blood."
+        }
+      ],
+      "results": [
+        {
+          "key": "fac",
+          "label": "Facultative water reabsorbed",
+          "unit": "L/day",
+          "normal": "About 30 L a day with normal ADH."
+        },
+        {
+          "key": "total",
+          "label": "Share of filtered water reabsorbed",
+          "unit": "%",
+          "normal": "About 99%."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "V > 10",
+          "text": "A urine volume of {V} L a day means the collecting ducts are reabsorbing little of the water that reaches them, as when ADH is missing or the principal cells cannot respond to it (diabetes insipidus)."
+        },
+        {
+          "when": "V < 0.8",
+          "text": "Only {V} L of urine means ADH is high and the collecting ducts are keeping almost all of the {distal} L that reaches them."
+        },
+        {
+          "when": "1",
+          "text": "Of {distal} L reaching the collecting ducts, {fac} L was kept. ADH sets this facultative share, and with it the volume of your urine."
+        }
+      ],
+      "exam": "Some textbooks round the split to about 90% obligatory and 10% facultative. The exact figure matters less than the idea: most water returns whatever you drink, and a smaller, adjustable share sets your urine volume.",
+      "presets": [
+        {
+          "label": "Worked example 1: 1.5 L of urine",
+          "values": {
+            "F": 180,
+            "ob": 82,
+            "V": 1.5
+          }
+        },
+        {
+          "label": "Worked example 5: high ADH",
+          "values": {
+            "F": 180,
+            "ob": 82,
+            "V": 0.5
+          }
+        },
+        {
+          "label": "No ADH",
+          "values": {
+            "F": 180,
+            "ob": 82,
+            "V": 15
+          }
+        },
+        {
+          "label": "Textbook 90/10 split",
+          "values": {
+            "F": 180,
+            "ob": 90,
+            "V": 1.5
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "fac",
+            "unit": "L/day",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "A person filters {F} L of water a day, {ob}% of it is reabsorbed obligatorily, and they pass {V} L of urine. How many liters a day are reabsorbed facultatively?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-urine-volume",
+      "group": "urinary",
+      "title": "Urine volume from solute load and concentration",
+      "short": "volume = solute ÷ urine osmolarity",
+      "topic": "urine-concentration",
+      "core": [
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Every day you must excrete about 600 mOsm of waste solute. Enter the solute load and the urine osmolarity to find the volume of urine that carries it, and the least volume possible at the kidney’s maximum of 1,200 mOsm/L.",
+      "formula": "Volume = solute ÷ concentration",
+      "inputs": [
+        {
+          "key": "S",
+          "label": "Solute to excrete",
+          "sym": "solute",
+          "unit": "mOsm/day",
+          "default": 600,
+          "min": 100,
+          "max": 2000,
+          "step": 10,
+          "gen": [
+            400,
+            1000,
+            50
+          ],
+          "hint": "About 600 mOsm a day."
+        },
+        {
+          "key": "U",
+          "label": "Urine osmolarity",
+          "sym": "U",
+          "unit": "mOsm/L",
+          "default": 1200,
+          "min": 50,
+          "max": 1200,
+          "step": 10,
+          "gen": [
+            50,
+            1200,
+            50
+          ],
+          "hint": "From about 50 (no ADH) to 1,200 (high ADH)."
+        }
+      ],
+      "derived": [
+        {
+          "key": "Vol",
+          "expr": "S / U",
+          "dp": 2
+        },
+        {
+          "key": "Vmin",
+          "expr": "S / 1200",
+          "dp": 2
+        },
+        {
+          "key": "Vmax",
+          "expr": "S / 50",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Write the relationship",
+          "text": "Volume = amount of solute ÷ concentration."
+        },
+        {
+          "title": "This urine",
+          "text": "{S} mOsm ÷ {U} mOsm/L = <b>{Vol} L a day</b>."
+        },
+        {
+          "title": "The least possible",
+          "text": "At the maximum of 1,200 mOsm/L: {S} ÷ 1,200 = <b>{Vmin} L a day</b>. Less than that, and waste solute builds up in the blood whatever ADH does."
+        },
+        {
+          "title": "The most dilute",
+          "text": "At about 50 mOsm/L: {S} ÷ 50 = {Vmax} L a day."
+        }
+      ],
+      "results": [
+        {
+          "key": "Vol",
+          "label": "Urine volume",
+          "unit": "L/day",
+          "normal": "Usually 1 to 2 L a day.",
+          "bands": [
+            {
+              "when": "Vol > 3",
+              "label": "large: polyuria range",
+              "tone": "hi"
+            },
+            {
+              "when": "Vol >= 1",
+              "label": "usual range",
+              "tone": "ok"
+            },
+            {
+              "label": "small, concentrated",
+              "tone": "lo"
+            }
+          ]
+        },
+        {
+          "key": "Vmin",
+          "label": "Least possible volume",
+          "unit": "L/day",
+          "normal": "About 0.5 L for 600 mOsm."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "U >= 1200",
+          "text": "This is the most concentrated urine the kidney can make, so {Vol} L is the least urine that can carry {S} mOsm. On a day without water, the kidneys cannot go below it; only drinking restores the water lost."
+        },
+        {
+          "when": "U < 300",
+          "text": "Urine at {U} mOsm/L is more dilute than plasma: ADH is low, and the kidney is getting rid of extra water."
+        },
+        {
+          "when": "1",
+          "text": "At {U} mOsm/L, {S} mOsm needs {Vol} L of urine a day."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: most concentrated",
+          "values": {
+            "S": 600,
+            "U": 1200
+          }
+        },
+        {
+          "label": "Worked example 1: most dilute",
+          "values": {
+            "S": 600,
+            "U": 50
+          }
+        },
+        {
+          "label": "Urine at plasma osmolarity",
+          "values": {
+            "S": 600,
+            "U": 300
+          }
+        },
+        {
+          "label": "High-protein diet, 900 mOsm",
+          "values": {
+            "S": 900,
+            "U": 1200
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "Vol",
+            "unit": "L/day",
+            "tol": {
+              "abs": 0.01,
+              "rel": 0.005
+            },
+            "prompt": "A person must excrete {S} mOsm of solute a day, and their urine is at {U} mOsm/L. What daily urine volume carries it?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-renal-clearance",
+      "group": "urinary",
+      "title": "Renal clearance",
+      "short": "C = (U × V) ÷ P",
+      "topic": "renal-function-urine",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Renal clearance is the volume of plasma the kidneys completely clear of a substance each minute. Enter its urine and plasma concentrations (in the same units) and the urine flow, then compare the clearance with GFR to see what the tubule does with it.",
+      "formula": "C = (U × V) ÷ P",
+      "inputs": [
+        {
+          "key": "U",
+          "label": "Urine concentration",
+          "sym": "U",
+          "unit": "mg/mL",
+          "default": 30,
+          "min": 0,
+          "max": 200,
+          "step": 0.1,
+          "gen": [
+            2,
+            60,
+            1
+          ],
+          "hint": "Same units as P."
+        },
+        {
+          "key": "V",
+          "label": "Urine flow",
+          "sym": "V",
+          "unit": "mL/min",
+          "default": 2,
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "gen": [
+            0.5,
+            3,
+            0.5
+          ],
+          "hint": "About 1 mL/min; a 24-hour volume in mL ÷ 1,440."
+        },
+        {
+          "key": "P",
+          "label": "Plasma concentration",
+          "sym": "P",
+          "unit": "mg/mL",
+          "default": 0.5,
+          "min": 0.001,
+          "max": 20,
+          "step": 0.001,
+          "gen": {
+            "choices": [
+              0.025,
+              0.05,
+              0.1,
+              0.2,
+              0.25,
+              0.5,
+              1
+            ]
+          },
+          "hint": "Same units as U."
+        },
+        {
+          "key": "GFR",
+          "label": "GFR, for comparison",
+          "sym": "GFR",
+          "unit": "mL/min",
+          "default": 120,
+          "min": 10,
+          "max": 200,
+          "step": 1,
+          "gen": [
+            100,
+            130,
+            5
+          ],
+          "hint": "About 120 to 125 mL/min."
+        }
+      ],
+      "derived": [
+        {
+          "key": "excr",
+          "expr": "U * V",
+          "dp": 2
+        },
+        {
+          "key": "C",
+          "expr": "U * V / P",
+          "dp": 1
+        },
+        {
+          "key": "ratio",
+          "expr": "U * V / P / GFR",
+          "dp": 2
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Amount excreted each minute",
+          "text": "U × V = {U} mg/mL × {V} mL/min = <b>{excr} mg/min</b>."
+        },
+        {
+          "title": "Turn that amount into a volume of plasma",
+          "text": "Divide by the plasma concentration: {excr} mg/min ÷ {P} mg/mL = <b>{C} mL/min</b>. The mg cancel, leaving mL/min."
+        },
+        {
+          "title": "Compare with GFR",
+          "text": "Clearance ÷ GFR = {C} ÷ {GFR} = <b>{ratio}</b>."
+        },
+        {
+          "title": "Read the comparison",
+          "text": "Equal to GFR: filtered only. Below GFR: net reabsorption. Above GFR: net secretion, because the tubule removes the substance from plasma that was never filtered."
+        }
+      ],
+      "results": [
+        {
+          "key": "C",
+          "label": "Renal clearance",
+          "unit": "mL/min",
+          "normal": "Inulin: equal to GFR. Creatinine: 10 to 20% above GFR. Urea: about 60 to 70 mL/min. Glucose: 0.",
+          "bands": [
+            {
+              "when": "C < GFR * 0.9",
+              "label": "below GFR: net reabsorption",
+              "tone": "lo"
+            },
+            {
+              "when": "C <= GFR * 1.25",
+              "label": "about GFR: filtered, little else",
+              "tone": "ok"
+            },
+            {
+              "label": "above GFR: net secretion",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "C < GFR * 0.9",
+          "text": "A clearance of {C} mL/min is below the GFR of {GFR}, so some of the filtered substance must have been reabsorbed, as with urea (about half reabsorbed) or glucose (all of it)."
+        },
+        {
+          "when": "C <= GFR * 1.25",
+          "text": "A clearance of {C} mL/min is close to the GFR of {GFR}. A substance that is filtered freely and neither reabsorbed nor secreted, like inulin, has a clearance equal to GFR, which is how GFR is measured. Creatinine runs 10 to 20% higher because a little is secreted."
+        },
+        {
+          "when": "1",
+          "text": "A clearance of {C} mL/min is {ratio} times the GFR, more than filtration alone can remove, so the tubule secretes it, like penicillin. Such drugs must be given often to keep blood levels up."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: inulin",
+          "values": {
+            "U": 30,
+            "V": 2,
+            "P": 0.5,
+            "GFR": 120
+          }
+        },
+        {
+          "label": "Worked example 2: creatinine, 24-hour urine",
+          "values": {
+            "U": 1.5,
+            "V": 1,
+            "P": 0.012,
+            "GFR": 120
+          }
+        },
+        {
+          "label": "Worked example 3: a secreted drug",
+          "values": {
+            "U": 10,
+            "V": 1.5,
+            "P": 0.025,
+            "GFR": 120
+          }
+        },
+        {
+          "label": "Urea, about half reabsorbed",
+          "values": {
+            "U": 9,
+            "V": 1,
+            "P": 0.15,
+            "GFR": 120
+          }
+        }
+      ],
+      "practice": {
+        "require": "C >= 20 && C <= 800",
+        "asks": [
+          {
+            "key": "C",
+            "unit": "mL/min",
+            "tol": {
+              "rel": 0.01,
+              "abs": 0.1
+            },
+            "prompt": "A substance’s urine concentration is {U} mg/mL, its plasma concentration is {P} mg/mL and urine flow is {V} mL/min. What is its renal clearance?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ur-creatinine-gfr",
+      "group": "urinary",
+      "title": "Plasma creatinine and GFR at steady state",
+      "short": "plasma creatinine = production ÷ GFR",
+      "topic": "renal-function-urine",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "intro": "Muscle makes creatinine at a steady rate, and once things settle, the kidneys excrete it at the same rate, mainly by filtration. Enter the production rate and GFR to find the plasma creatinine they settle at.",
+      "formula": "At steady state: production = GFR × plasma creatinine, so plasma creatinine = production ÷ GFR",
+      "inputs": [
+        {
+          "key": "prod",
+          "label": "Creatinine made by muscle",
+          "sym": "production",
+          "unit": "mg/min",
+          "default": 1.2,
+          "min": 0.2,
+          "max": 3,
+          "step": 0.1,
+          "gen": [
+            0.8,
+            1.6,
+            0.1
+          ],
+          "hint": "About 1 to 1.5 mg/min; more with more muscle."
+        },
+        {
+          "key": "GFR",
+          "label": "GFR",
+          "sym": "GFR",
+          "unit": "mL/min",
+          "default": 120,
+          "min": 5,
+          "max": 200,
+          "step": 1,
+          "gen": [
+            15,
+            130,
+            5
+          ],
+          "hint": "About 120 mL/min."
+        }
+      ],
+      "derived": [
+        {
+          "key": "PmL",
+          "expr": "prod / GFR",
+          "dp": 4
+        },
+        {
+          "key": "Pdl",
+          "expr": "prod / GFR * 100",
+          "dp": 2
+        },
+        {
+          "key": "ratio",
+          "expr": "120 / GFR",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Set excretion equal to production",
+          "text": "At steady state, excretion = production, and excretion ≈ GFR × P. So P = production ÷ GFR."
+        },
+        {
+          "title": "Divide",
+          "text": "P = {prod} mg/min ÷ {GFR} mL/min = {PmL} mg/mL."
+        },
+        {
+          "title": "Convert to mg/dL",
+          "text": "1 dL = 100 mL, so P = {PmL} × 100 = <b>{Pdl} mg/dL</b>."
+        },
+        {
+          "title": "Compare",
+          "text": "At a GFR of {GFR} mL/min, plasma creatinine settles at {ratio} times the value the same muscle mass gives at a GFR of 120 mL/min: the two move in opposite directions."
+        }
+      ],
+      "results": [
+        {
+          "key": "Pdl",
+          "label": "Plasma creatinine",
+          "unit": "mg/dL",
+          "normal": "About 0.6 to 1.2 mg/dL, depending on muscle mass.",
+          "bands": [
+            {
+              "when": "Pdl <= 1.3",
+              "label": "about normal",
+              "tone": "ok"
+            },
+            {
+              "label": "raised",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "Pdl > 1.3",
+          "text": "A plasma creatinine of {Pdl} mg/dL means GFR has fallen. Because the link is inverse, halving GFR only doubles creatinine, so early losses can hide behind a value that still looks small. Labs report an estimated GFR from creatinine, age and sex for that reason."
+        },
+        {
+          "when": "1",
+          "text": "A plasma creatinine of {Pdl} mg/dL is in the usual range for this muscle mass. Note that a GFR loss of up to half can still leave creatinine near the top of that range."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 4: before illness",
+          "values": {
+            "prod": 1.2,
+            "GFR": 120
+          }
+        },
+        {
+          "label": "Worked example 4: GFR halved",
+          "values": {
+            "prod": 1.2,
+            "GFR": 60
+          }
+        },
+        {
+          "label": "Severe kidney failure",
+          "values": {
+            "prod": 1.2,
+            "GFR": 12
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "Pdl",
+            "unit": "mg/dL",
+            "tol": {
+              "abs": 0.02
+            },
+            "prompt": "A man makes {prod} mg of creatinine a minute, and his GFR is steady at {GFR} mL/min. What is his plasma creatinine in mg/dL once it has settled?"
           }
         ]
       }

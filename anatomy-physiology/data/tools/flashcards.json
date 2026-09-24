@@ -9960,6 +9960,1227 @@
    "front": "Do you lose most of your body heat through your head?",
    "back": "No. You lose heat from any uncovered surface roughly in proportion to its area, and the head is about a tenth of the body surface.",
    "why": "The face and scalp narrow their vessels less than the limbs in the cold, so an uncovered head matters more when the rest of you is well wrapped."
+  },
+  {
+   "id": "ur-kidney-level",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Between which vertebrae do the kidneys lie, and which one sits lower?",
+   "back": "About T12 to L3; the right kidney sits 1 to 2 cm lower.",
+   "why": "The liver takes up the space above the right kidney. The 11th and 12th ribs cover the upper parts, so a blow to the lower ribs from behind can injure a kidney."
+  },
+  {
+   "id": "ur-kidney-coverings",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the kidney’s three coverings from the outside in.",
+   "back": "Renal fascia, adipose capsule (renal fat pad), renal capsule.",
+   "why": "No bone protects the kidney. The fascia anchors it, the fat cushions it and holds it in place, and the tough capsule keeps its soft tissue in shape."
+  },
+  {
+   "id": "ur-retroperitoneal",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can a surgeon reach a kidney from the back without opening the peritoneal cavity?",
+   "back": "The kidneys are retroperitoneal: peritoneum covers only their front surfaces.",
+   "why": "They lie against the muscles of the back wall of the abdomen, behind the peritoneum."
+  },
+  {
+   "id": "ur-cortex-medulla-look",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Renal cortex vs renal medulla",
+   "front": "Renal cortex vs renal medulla: shape and appearance?",
+   "back": "Cortex: a continuous grainy shell about 1 cm thick, plus the renal columns. Medulla: 8 to 18 striped, cone-shaped pyramids.",
+   "why": "The pyramids look striped because they are packed with parallel tubes and vessels running toward the papillae."
+  },
+  {
+   "id": "ur-cortex-medulla-flow",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Renal cortex vs renal medulla",
+   "front": "Which gets most of the kidney’s blood flow, cortex or medulla?",
+   "back": "The cortex, about 90%; the medulla gets about 10%, slowly.",
+   "why": "The filtering units start in the cortex, where the blood is processed; slow medullary flow matters later for concentrating urine."
+  },
+  {
+   "id": "ur-calyces-order",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Put in order: major calyx, renal papilla, renal pelvis, minor calyx, ureter.",
+   "back": "Renal papilla, minor calyx, major calyx, renal pelvis, ureter.",
+   "why": "Each papilla drips into its own minor calyx; minor calyces join into major calyces, which join into the funnel-shaped pelvis that narrows into the ureter."
+  },
+  {
+   "id": "ur-hilum-order",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "From front to back, what passes through the renal hilum?",
+   "back": "Renal vein in front, renal artery in the middle, renal pelvis behind.",
+   "why": "The pelvis lies deepest because it leaves from inside the renal sinus, behind the vessels."
+  },
+  {
+   "id": "ur-renal-flow",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What share of resting cardiac output goes to the kidneys?",
+   "back": "About 20 to 25%, roughly 1.1 to 1.2 L of blood a minute.",
+   "why": "The kidneys are under half a percent of body weight. The flow is far more than their cells need; it is the raw material for urine."
+  },
+  {
+   "id": "ur-end-arteries",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a clot in one segmental artery kill a wedge of kidney?",
+   "back": "Segmental arteries are end arteries: they do not connect with each other, so no neighbor can take over.",
+   "why": "The segment it supplies loses its blood, leaving a wedge of dead tissue with its broad side at the surface."
+  },
+  {
+   "id": "ur-no-segmental-veins",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which named arteries of the kidney have no matching veins?",
+   "back": "The segmental arteries: interlobar veins join the renal vein directly.",
+   "why": "Otherwise the veins run back along the arteries’ paths with the same names."
+  },
+  {
+   "id": "ur-ureter-valve",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What stops urine being forced back up the ureters when the bladder contracts?",
+   "back": "Each ureter crosses the bladder wall at a slant for about 2 cm; bladder pressure squeezes that tunnel flat.",
+   "why": "The slanted tunnel acts as a one-way valve: peristalsis pushes urine in, but pressure in the bladder closes it."
+  },
+  {
+   "id": "ur-ureter-narrow",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "At which three points is a ureter narrowest?",
+   "back": "Where it leaves the renal pelvis, where it crosses the edge of the pelvis, and where it passes through the bladder wall.",
+   "why": "A small solid object in the urine is most likely to lodge at one of these points."
+  },
+  {
+   "id": "ur-bladder-wall",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What lets the bladder stretch as it fills?",
+   "back": "Transitional epithelium folded into rugae, and a detrusor whose bundles run in several directions.",
+   "why": "The folds flatten and the surface cells stretch thin; the interwoven detrusor squeezes from all sides when it contracts."
+  },
+  {
+   "id": "ur-trigone",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the three corners of the trigone?",
+   "back": "The two ureter openings at the back and the urethral opening at the front.",
+   "why": "The trigone has no rugae and is very sensitive to stretch and irritation, which causes a strong urge."
+  },
+  {
+   "id": "ur-sphincter-tissue",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Internal vs external urethral sphincter",
+   "front": "Internal vs external urethral sphincter: tissue and control?",
+   "back": "Internal: smooth muscle, involuntary. External: skeletal muscle, voluntary.",
+   "why": "The internal sphincter sits at the bladder neck; the external one where the urethra crosses the pelvic floor."
+  },
+  {
+   "id": "ur-sphincter-nerves",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Internal vs external urethral sphincter",
+   "front": "Which nerves keep each urethral sphincter closed?",
+   "back": "Internal: sympathetic fibers acting on alpha-1 receptor proteins. External: the pudendal nerve (somatic, acetylcholine).",
+   "why": "Emptying needs both signals withdrawn: sympathetic output falls, and pudendal firing falls."
+  },
+  {
+   "id": "ur-female-internal",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Internal vs external urethral sphincter",
+   "front": "Is there a distinct internal urethral sphincter in females?",
+   "back": "No distinct ring: smooth muscle of the bladder neck and upper urethra acts as a functional sphincter.",
+   "why": "In females the external sphincter and the pelvic floor do more of the holding."
+  },
+  {
+   "id": "ur-urethra-length",
+   "topic": "kidney-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Female vs male urethra",
+   "front": "Female vs male urethra: length, and one consequence?",
+   "back": "Female about 3 to 4 cm; male about 18 to 20 cm. Bacteria reach a woman’s bladder far more easily.",
+   "why": "Skin bacteria near the opening have only a few centimeters to travel in women. The male urethra’s length and bends make a catheter harder to pass."
+  },
+  {
+   "id": "ur-bladder-nerves",
+   "topic": "kidney-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Which nerve fibers make the detrusor contract, and from which segments?",
+   "back": "Parasympathetic fibers in the pelvic splanchnic nerves, from S2 to S4, acting on muscarinic receptor proteins.",
+   "why": "Sympathetic fibers from T11 to L2 do the opposite: they relax the detrusor during storage."
+  },
+  {
+   "id": "ur-voiding-order",
+   "topic": "kidney-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "When you start to void, what happens first: the external sphincter relaxes or the detrusor contracts?",
+   "back": "The external sphincter relaxes first; the detrusor contracts a few seconds later.",
+   "why": "Pudendal output falls and urethral pressure drops, then sacral parasympathetic fibers fire. Contracting against a closed outlet would only raise pressure."
+  },
+  {
+   "id": "ur-pons-sacral",
+   "topic": "kidney-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Which center throws the switch from storing to emptying, and which carries it out?",
+   "back": "The pontine micturition center throws the switch; the sacral micturition center (S2 to S4) carries it out.",
+   "why": "For your exam: if asked where the micturition reflex is integrated, the expected answer is the sacral spinal cord, S2 to S4. In healthy adults the loop runs up to the pons and back."
+  },
+  {
+   "id": "ur-first-urge",
+   "topic": "kidney-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "At about what bladder volume do you first notice it, and what does it comfortably hold?",
+   "back": "First awareness at about 150 to 250 mL; a strong urge at about 300 to 500 mL.",
+   "why": "Stretch signals grow as the bladder fills, and the urge becomes harder to ignore."
+  },
+  {
+   "id": "ur-nephron-count",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "About how many nephrons does each kidney have, and can lost ones be replaced?",
+   "back": "About a million, varying from about 200,000 to over 2 million; lost nephrons are not replaced.",
+   "why": "You are born with all you will ever have, and after about age 40 you lose some every year."
+  },
+  {
+   "id": "ur-three-processes",
+   "topic": "nephron",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What three things does every nephron do to plasma, in order?",
+   "back": "Filters it, takes back most of it (reabsorption), and adds substances to it (secretion).",
+   "why": "What is left at the end is urine."
+  },
+  {
+   "id": "ur-corpuscle-parts",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What two parts make a renal corpuscle?",
+   "back": "The glomerulus (a tuft of fenestrated capillaries) and the glomerular capsule around it.",
+   "why": "Filtered fluid collects in the capsular space between the capsule’s parietal and visceral layers."
+  },
+  {
+   "id": "ur-podocytes",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are podocytes?",
+   "back": "The cells of the capsule’s visceral layer, whose interlocking branches wrap the glomerular capillaries.",
+   "why": "The narrow gaps between their smallest branches are part of the filter."
+  },
+  {
+   "id": "ur-pct-structure",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Structure of the tubule segments",
+   "front": "How is the proximal convoluted tubule built for reabsorbing the most?",
+   "back": "Cuboidal cells with a dense brush border of microvilli and many mitochondria.",
+   "why": "Microvilli multiply the surface for transport; mitochondria make the ATP the pumps use."
+  },
+  {
+   "id": "ur-loop-limbs",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structure of the tubule segments",
+   "front": "How do the cells of the thin limbs and the thick ascending limb differ?",
+   "back": "Thin parts: simple squamous cells. Thick ascending limb: cuboidal cells full of mitochondria that pump salt.",
+   "why": "Thin cells suit passive movement; salt pumping needs ATP."
+  },
+  {
+   "id": "ur-cd-shared",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the collecting duct strictly not part of one nephron?",
+   "back": "Many nephrons drain into each collecting duct, and it grows from a different part of the embryo.",
+   "why": "Most courses still count it as the last part of the renal tubule, because the fluid in it is still being changed."
+  },
+  {
+   "id": "ur-nephron-types-share",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cortical vs juxtamedullary nephrons",
+   "front": "Cortical vs juxtamedullary nephrons: share and loop length?",
+   "back": "Cortical: about 85%, short loops. Juxtamedullary: about 15%, long loops deep into the medulla.",
+   "why": "Where the corpuscle sits decides how long the loop is."
+  },
+  {
+   "id": "ur-nephron-types-job",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Cortical vs juxtamedullary nephrons",
+   "front": "Which nephrons let you make urine more concentrated than blood, and which vessels do only they have?",
+   "back": "Juxtamedullary nephrons, whose long loops are served by the vasa recta as well as peritubular capillaries.",
+   "why": "Their long loops build the salty medulla; desert rodents with very long loops concentrate urine far more than you."
+  },
+  {
+   "id": "ur-two-beds",
+   "topic": "nephron",
+   "core": [
+    "structure-function",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "What is unusual about a nephron’s blood supply?",
+   "back": "Two capillary beds in a row, the glomerulus and the peritubular capillaries, with an arteriole between them.",
+   "why": "An arteriole on each side lets the kidney set glomerular pressure; after two resistances, pressure in the second bed is low, so it takes fluid in."
+  },
+  {
+   "id": "ur-aff-eff-width",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Afferent vs efferent arteriole",
+   "front": "Afferent vs efferent arteriole: which is narrower in most nephrons?",
+   "back": "The efferent arteriole.",
+   "why": "The narrow efferent arteriole resists outflow and backs pressure up into the glomerulus, which drives filtration. In juxtamedullary nephrons it is about as wide or wider, but still resists flow."
+  },
+  {
+   "id": "ur-aff-eff-cells",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Afferent vs efferent arteriole",
+   "front": "Which glomerular arteriole contains the juxtaglomerular cells?",
+   "back": "The afferent arteriole.",
+   "why": "These modified smooth muscle cells store and release renin."
+  },
+  {
+   "id": "ur-jga-parts",
+   "topic": "nephron",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three parts of the juxtaglomerular apparatus.",
+   "back": "Macula densa, juxtaglomerular (granular) cells, and extraglomerular mesangial cells.",
+   "why": "It forms where the tubule, at the end of the thick ascending limb, touches its own afferent and efferent arterioles."
+  },
+  {
+   "id": "ur-renin-triggers",
+   "topic": "nephron",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Name three triggers for renin release by juxtaglomerular cells.",
+   "back": "Less stretch of the afferent arteriole, sympathetic stimulation through beta-1 receptor proteins, and a macula densa signal of low NaCl.",
+   "why": "All three mean blood pressure or volume may be low."
+  },
+  {
+   "id": "ur-macula-densa",
+   "topic": "nephron",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What does the macula densa sense?",
+   "back": "How much sodium chloride is in the tubular fluid flowing past it.",
+   "why": "That lets each nephron signal its own arterioles and its renin-releasing cells."
+  },
+  {
+   "id": "ur-180-liters",
+   "topic": "glomerular-filtration",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "How much do the kidneys filter a day, and how much urine results?",
+   "back": "About 180 L of filtrate; 1 to 2 L of urine. More than 99% is reabsorbed.",
+   "why": "Your whole plasma volume is filtered about 60 times a day, so anything not specifically taken back is cleared quickly."
+  },
+  {
+   "id": "ur-filter-layers",
+   "topic": "glomerular-filtration",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three layers of the filtration membrane from the blood side, and what each mainly holds back.",
+   "back": "Fenestrated endothelium (blood cells), glomerular basement membrane (large proteins), filtration slits with slit diaphragms (the finest sieve).",
+   "why": "The fenestrations are far too large to hold back any dissolved molecule."
+  },
+  {
+   "id": "ur-passes-held",
+   "topic": "glomerular-filtration",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "What passes vs what is held back",
+   "front": "What passes the filter freely, and what is held back?",
+   "back": "Water, ions, glucose, amino acids, urea and many drugs pass; blood cells, platelets, albumin and larger proteins are held back.",
+   "why": "The filter sorts mainly by size; albumin sits at the edge of the size limit, and its negative charge adds a little resistance."
+  },
+  {
+   "id": "ur-filtrate-conc",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "What passes vs what is held back",
+   "front": "How does the concentration of glucose in the filtrate compare with plasma?",
+   "back": "About the same.",
+   "why": "Small solutes pass freely, so the filtrate carries them at plasma concentration; only proteins are held back."
+  },
+  {
+   "id": "ur-gbhp-why-high",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Glomerular vs systemic capillaries",
+   "front": "Why is glomerular capillary pressure (about 55 mm Hg) so much higher than in other capillaries?",
+   "back": "The glomerulus drains into a resistance vessel, the efferent arteriole, and the afferent arteriole is short and wide.",
+   "why": "A downstream arteriole instead of a venule backs pressure up along the whole capillary."
+  },
+  {
+   "id": "ur-bcop-rise",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Glomerular vs systemic capillaries",
+   "front": "Why does BCOP rise from about 25 to 35 mm Hg along a glomerular capillary?",
+   "back": "Protein-free fluid leaves, so the proteins left behind become more concentrated.",
+   "why": "In a typical systemic capillary so little fluid leaves that the oncotic pull stays near 25 mm Hg."
+  },
+  {
+   "id": "ur-nfp-values",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Using GBHP 55, CHP 15 and BCOP 30 mm Hg, what is the glomerular NFP?",
+   "back": "55 − (15 + 30) = +10 mm Hg.",
+   "why": "The small net push drives all 180 L a day; because the pressures nearly balance, a small change in one changes filtration a lot."
+  },
+  {
+   "id": "ur-gfr-equation",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "What two factors set GFR?",
+   "back": "GFR = Kf × NFP: the filtration coefficient (filtering area and permeability) times the net filtration pressure.",
+   "why": "Kf falls when glomeruli are scarred or lost, so GFR can fall with normal pressures."
+  },
+  {
+   "id": "ur-ff",
+   "topic": "glomerular-filtration",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What is the normal filtration fraction?",
+   "back": "About 20%: GFR ÷ renal plasma flow ≈ 125 ÷ 630.",
+   "why": "The other four fifths of the plasma leave in the efferent arteriole, richer in protein."
+  },
+  {
+   "id": "ur-plateau",
+   "topic": "glomerular-filtration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Over what range of mean arterial pressure does autoregulation hold GFR nearly steady?",
+   "back": "About 80 to 180 mm Hg.",
+   "why": "Some courses quote 60 to 150 mm Hg, a round figure for organs in general; the kidney’s own plateau starts a little higher and extends further."
+  },
+  {
+   "id": "ur-two-mechanisms",
+   "topic": "glomerular-filtration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Name the two mechanisms of GFR autoregulation and the vessel both act on.",
+   "back": "The myogenic mechanism and tubuloglomerular feedback; both act on the afferent arteriole.",
+   "why": "The myogenic mechanism acts within seconds; tubuloglomerular feedback takes a few seconds more."
+  },
+  {
+   "id": "ur-tgf-messenger",
+   "topic": "glomerular-filtration",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "In tubuloglomerular feedback, what signal constricts the afferent arteriole when more NaCl reaches the macula densa?",
+   "back": "ATP released by the macula densa, broken down to adenosine outside the cells.",
+   "why": "When less NaCl arrives, less adenosine and more nitric oxide widen the arteriole, and renin release rises."
+  },
+  {
+   "id": "ur-constrict-aff",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Afferent vs efferent constriction",
+   "front": "Afferent vs efferent constriction: effect on glomerular pressure?",
+   "back": "Afferent constriction lowers GBHP; moderate efferent constriction raises it.",
+   "why": "Narrowing before the glomerulus loses pressure on the way in; narrowing after it backs pressure up."
+  },
+  {
+   "id": "ur-constrict-ff",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Afferent vs efferent constriction",
+   "front": "Which arteriole’s constriction raises the filtration fraction?",
+   "back": "The efferent arteriole’s.",
+   "why": "GFR rises (or holds) while renal plasma flow falls. Afferent constriction lowers both by about the same share."
+  },
+  {
+   "id": "ur-severe-efferent",
+   "topic": "glomerular-filtration",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Afferent vs efferent constriction",
+   "front": "Why can severe efferent constriction lower GFR?",
+   "back": "Flow slows so much that BCOP climbs steeply along the capillary until NFP reaches zero before the efferent end.",
+   "why": "The last part of the capillary stops filtering, so total filtration falls."
+  },
+  {
+   "id": "ur-ang2-gfr",
+   "topic": "glomerular-filtration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "How does moderate angiotensin II protect GFR when pressure falls?",
+   "back": "It constricts the efferent arteriole more than the afferent, backing pressure up in the glomerulus.",
+   "why": "That is why an ACE inhibitor can drop GFR sharply in someone with narrowed renal arteries."
+  },
+  {
+   "id": "ur-nsaid-kidney",
+   "topic": "glomerular-filtration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why can ibuprofen lower GFR in someone who is low on fluid?",
+   "back": "It blocks prostaglandin synthesis, and prostaglandins keep the afferent arterioles open when sympathetic activity and angiotensin II are high.",
+   "why": "In a healthy person the effect is small; when the afferent arterioles depend on those dilators, GFR falls."
+  },
+  {
+   "id": "ur-proteinuria",
+   "topic": "glomerular-filtration",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is proteinuria, and what does heavy protein loss do?",
+   "back": "Protein in urine above the normal trace (under about 150 mg a day). Heavy loss lowers plasma albumin, so BCOP falls and edema appears.",
+   "why": "With less oncotic pull, fluid filters out of systemic capillaries faster than it drains."
+  },
+  {
+   "id": "ur-hematuria-source",
+   "topic": "glomerular-filtration",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "How can you tell glomerular hematuria from bleeding lower in the urinary tract?",
+   "back": "Glomerular red cells are misshapen, may be packed into casts, and usually come with proteinuria; lower-tract red cells look normal, usually without protein.",
+   "why": "Red cells squeezing through an inflamed filter are deformed and molded by the tubules."
+  },
+  {
+   "id": "ur-mass-balance-line",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Write the bookkeeping for any substance the kidney handles.",
+   "back": "Excreted = filtered − reabsorbed + secreted.",
+   "why": "Glucose: filtered, fully reabsorbed. Potassium: mostly reabsorbed, then partly secreted. Some drugs: filtered and heavily secreted."
+  },
+  {
+   "id": "ur-na-filtered",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why does a 1% change in sodium reabsorption matter so much?",
+   "back": "About 25,200 mmol of sodium is filtered a day, so 1% is about 252 mmol, more than a day’s intake.",
+   "why": "Small changes in how much the tubule reabsorbs make large changes in what you excrete."
+  },
+  {
+   "id": "ur-routes",
+   "topic": "tubular-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Transcellular vs paracellular route",
+   "front": "Transcellular vs paracellular route: path and energy?",
+   "back": "Transcellular: through the cell, across two membranes, can be active. Paracellular: between cells through tight junctions, passive only.",
+   "why": "Only the transcellular route has carriers that hormones can add or remove."
+  },
+  {
+   "id": "ur-pump-engine",
+   "topic": "tubular-transport",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why does stopping the basolateral sodium–potassium pump stop glucose reabsorption?",
+   "back": "The glucose symporter runs on the sodium gradient the pump builds; without the pump the gradient runs down.",
+   "why": "Secondary active transport: the pump spends ATP, the carriers spend the gradient."
+  },
+  {
+   "id": "ur-pct-shares",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Proximal tubule vs nephron loop vs distal tubule vs collecting duct",
+   "front": "What share of filtered sodium and water does the proximal tubule reabsorb, and what nutrients?",
+   "back": "About 65% of sodium and water, and nearly all glucose and amino acids.",
+   "why": "It also returns about 80% of bicarbonate and phosphate and about half the urea."
+  },
+  {
+   "id": "ur-pct-300",
+   "topic": "tubular-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Proximal tubule vs nephron loop vs distal tubule vs collecting duct",
+   "front": "Why does fluid leave the proximal tubule at 300 mOsm/L though two thirds of it has gone?",
+   "back": "Water follows solute through aquaporins and leaky tight junctions, so solute and water leave in proportion.",
+   "why": "Removing solute leaves the lumen slightly dilute, and water follows by osmosis."
+  },
+  {
+   "id": "ur-tm-glucose",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What are the glucose transport maximum and renal threshold?",
+   "back": "Tm about 375 mg/min for both kidneys; renal threshold about 180 mg/dL of plasma glucose.",
+   "why": "The threshold is below Tm ÷ GFR (300 mg/dL) because some nephrons saturate early: the splay."
+  },
+  {
+   "id": "ur-glucosuria-polyuria",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why does untreated diabetes mellitus cause polyuria?",
+   "back": "Glucose above the renal threshold stays in the tubule and holds water with it by osmosis.",
+   "why": "The carriers are saturated, so the extra filtered glucose is excreted along with water."
+  },
+  {
+   "id": "ur-limb-water",
+   "topic": "tubular-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Descending limb vs thick ascending limb",
+   "front": "Descending limb vs thick ascending limb: water and salt?",
+   "back": "Descending: permeable to water, little salt transport. Thick ascending: nearly waterproof, pumps salt out on NKCC2.",
+   "why": "So the descending fluid grows more concentrated and the ascending fluid more dilute."
+  },
+  {
+   "id": "ur-nkcc2",
+   "topic": "tubular-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Descending limb vs thick ascending limb",
+   "front": "What does NKCC2 carry, and where is it?",
+   "back": "1 Na+, 1 K+ and 2 Cl− into the cell together, on the apical membrane of the thick ascending limb.",
+   "why": "Potassium leaks back into the lumen, making it positive and driving calcium and magnesium out between the cells."
+  },
+  {
+   "id": "ur-diluting",
+   "topic": "tubular-transport",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Proximal tubule vs nephron loop vs distal tubule vs collecting duct",
+   "front": "Why is the thick ascending limb called the diluting segment?",
+   "back": "It removes salt but not water, so its fluid falls to about 100 mOsm/L.",
+   "why": "It reabsorbs about 25% of filtered sodium with almost no aquaporins."
+  },
+  {
+   "id": "ur-dct",
+   "topic": "tubular-transport",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Proximal tubule vs nephron loop vs distal tubule vs collecting duct",
+   "front": "What does the distal convoluted tubule reabsorb, and which hormone acts there?",
+   "back": "About 5% of filtered sodium on a sodium–chloride symporter, and calcium, which PTH increases.",
+   "why": "It has little water permeability, so its fluid gets more dilute still."
+  },
+  {
+   "id": "ur-principal-intercalated",
+   "topic": "tubular-transport",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Principal vs intercalated cells",
+   "front": "Principal vs intercalated cells: main job?",
+   "back": "Principal: sodium, potassium and water balance under aldosterone, ADH and ANP. Intercalated: acid–base balance, secreting H+ or bicarbonate.",
+   "why": "Intercalated cells can also reabsorb potassium when the body is short of it."
+  },
+  {
+   "id": "ur-na-k-link",
+   "topic": "tubular-transport",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Principal vs intercalated cells",
+   "front": "Why do principal cells secrete more potassium when they reabsorb more sodium?",
+   "back": "Sodium entering through apical channels makes the lumen more negative and the pump brings more K+ into the cell, so more K+ leaves through apical potassium channels.",
+   "why": "Aldosterone raises both, by adding sodium channels, potassium channels and pumps."
+  },
+  {
+   "id": "ur-secretion",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why can tubular secretion clear a drug faster than filtration alone?",
+   "back": "Secretion reaches the four fifths of plasma that was not filtered, and protein-bound drug that filtration misses.",
+   "why": "Broad carriers in the proximal tubule secrete penicillin, uric acid and toxins."
+  },
+  {
+   "id": "ur-obligatory",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Obligatory vs facultative water reabsorption: where and how much?",
+   "back": "Obligatory: proximal tubule and descending limb, about 80 to 85%, whatever you need. Facultative: late distal tubule and collecting duct, the remaining 15 to 20%, only with ADH.",
+   "why": "For your exam: some textbooks round the split to 90% and 10%. Facultative reabsorption sets your urine volume."
+  },
+  {
+   "id": "ur-no-water-pump",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why must the collecting duct pass through salty tissue for urine to reach 1,200 mOsm/L?",
+   "back": "No part of the tubule pumps water; water leaves only by osmosis, so fluid can never be more concentrated than the tissue around it.",
+   "why": "The inner medulla, at about 1,200 mOsm/L, sets the ceiling."
+  },
+  {
+   "id": "ur-gradient-solutes",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "Which two solutes build the medullary gradient?",
+   "back": "NaCl, mostly in the outer medulla, and urea, about half of it in the inner medulla.",
+   "why": "NaCl is pumped out by the thick ascending limbs; urea diffuses out of the inner medullary collecting ducts."
+  },
+  {
+   "id": "ur-multiplier-exchanger",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients",
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Countercurrent multiplier vs exchanger",
+   "front": "Countercurrent multiplier vs exchanger: structure and job?",
+   "back": "Multiplier: the nephron loop, uses energy, builds the gradient. Exchanger: the vasa recta, passive, keeps blood flow from washing it out.",
+   "why": "The vasa recta also carry away the water reabsorbed from the loops and collecting ducts."
+  },
+  {
+   "id": "ur-single-effect",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "analyze",
+   "compare": "Countercurrent multiplier vs exchanger",
+   "front": "How does a 200 mOsm/L single-level difference become a 900 mOsm/L gradient?",
+   "back": "Countercurrent flow: each round, fluid arriving at the bend is more concentrated, and pumping adds another step on top.",
+   "why": "The longer the loop, the more multiplication, which is why desert rodents concentrate urine above 5,000 mOsm/L."
+  },
+  {
+   "id": "ur-vasa-recta",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Countercurrent multiplier vs exchanger",
+   "front": "Why would ordinary straight capillaries destroy the medullary gradient?",
+   "back": "Blood entering at 300 mOsm/L would soak up salt and urea and carry them away.",
+   "why": "Hairpin vasa recta give solutes back on the way up, and their slow flow lets blood equilibrate at each level."
+  },
+  {
+   "id": "ur-urea-recycling",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Where does urea leave the collecting duct, and what increases it?",
+   "back": "In the inner medullary collecting duct, through urea carriers that ADH increases.",
+   "why": "Upstream segments keep urea in while water leaves, so it arrives concentrated. A very low-protein diet weakens concentrating."
+  },
+  {
+   "id": "ur-adh-steps",
+   "topic": "urine-concentration",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "How does ADH put aquaporins into principal cells?",
+   "back": "It binds a receptor protein on the basolateral membrane, a G protein raises cAMP, protein kinase A makes aquaporin vesicles fuse with the apical membrane.",
+   "why": "When ADH falls, the aquaporins are pulled back in by endocytosis."
+  },
+  {
+   "id": "ur-high-no-adh",
+   "topic": "urine-concentration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "High ADH vs no ADH",
+   "front": "High ADH vs no ADH: urine osmolarity and volume?",
+   "back": "High ADH: up to about 1,200 mOsm/L, as little as 0.5 L a day. No ADH: down to about 50 mOsm/L, many liters a day.",
+   "why": "Everything up to the end of the distal tubule is the same either way; the paths split in the collecting duct."
+  },
+  {
+   "id": "ur-min-volume",
+   "topic": "urine-concentration",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "What is the least urine that can carry 600 mOsm of daily waste?",
+   "back": "600 mOsm ÷ 1,200 mOsm/L = 0.5 L a day.",
+   "why": "Pass less and waste solute builds up, however high ADH is."
+  },
+  {
+   "id": "ur-di",
+   "topic": "urine-concentration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "High ADH vs no ADH",
+   "front": "In diabetes insipidus, what is wrong and what is intact?",
+   "back": "ADH is lacking, or principal cells cannot respond to it; the medullary gradient is intact but unused.",
+   "why": "The person passes large volumes of dilute urine."
+  },
+  {
+   "id": "ur-diuretic-sites",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Loop vs thiazide vs osmotic diuretics",
+   "front": "Loop vs thiazide vs osmotic diuretic: where does each act?",
+   "back": "Loop (furosemide): NKCC2 in the thick ascending limb. Thiazide: sodium–chloride symporter in the DCT. Osmotic (mannitol): mainly proximal tubule and descending limb.",
+   "why": "Most diuretics block sodium reabsorption at one segment, and water stays with the sodium."
+  },
+  {
+   "id": "ur-loop-strongest",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Loop vs thiazide vs osmotic diuretics",
+   "front": "Why are loop diuretics the strongest, and what do they do to concentrating ability?",
+   "back": "The thick ascending limb reabsorbs about 25% of filtered sodium; blocking NKCC2 also stops the multiplier, so the gradient fades.",
+   "why": "Thiazides act on only about 5% and leave the gradient intact."
+  },
+  {
+   "id": "ur-diuretic-calcium",
+   "topic": "urine-concentration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Loop vs thiazide vs osmotic diuretics",
+   "front": "Loop vs thiazide diuretic: effect on urine calcium?",
+   "back": "Loop: urine calcium rises. Thiazide: urine calcium falls.",
+   "why": "Loop diuretics remove the positive lumen that drives calcium out between cells; thiazides make the distal tubule reabsorb more calcium."
+  },
+  {
+   "id": "ur-diuretic-potassium",
+   "topic": "urine-concentration",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Loop vs thiazide vs osmotic diuretics",
+   "front": "Why do loop and thiazide diuretics cause potassium loss?",
+   "back": "They send more sodium and faster flow to the principal cells, so potassium secretion rises.",
+   "why": "Potassium-sparing diuretics block aldosterone’s receptor protein or the sodium channels instead, so potassium secretion falls."
+  },
+  {
+   "id": "ur-urine-contents",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Name the three main nitrogen wastes in urine and where each comes from.",
+   "back": "Urea (liver, from amino acids), creatinine (muscle creatine phosphate), uric acid (purine breakdown).",
+   "why": "Urea is the largest single solute, about 20 to 30 g a day."
+  },
+  {
+   "id": "ur-normal-urine",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What should normal urine not contain?",
+   "back": "Glucose, more than a trace of protein, blood, or bacteria.",
+   "why": "Its pH ranges from about 4.5 to 8, usually near 6, and its osmolarity from about 50 to 1,200 mOsm/L."
+  },
+  {
+   "id": "ur-specific-gravity",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What is urine specific gravity, and its usual range?",
+   "back": "Its density relative to water (1.000); usually about 1.005 to 1.030.",
+   "why": "Every solute adds weight, so it is a quick index of concentration; heavy solutes like glucose raise it more than osmolarity shows."
+  },
+  {
+   "id": "ur-oliguria",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Why is 400 mL of urine a day (oliguria) too little?",
+   "back": "Even at the maximum 1,200 mOsm/L, 0.4 L carries only about 480 mOsm, less than the usual 600 mOsm of daily waste.",
+   "why": "The rest of the solute stays in the blood, so wastes build up."
+  },
+  {
+   "id": "ur-clearance-def",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What is renal clearance, and its formula?",
+   "back": "The volume of plasma the kidneys completely clear of a substance per minute: C = (U × V) ÷ P.",
+   "why": "U × V is the amount excreted each minute; dividing by P turns it into the plasma volume that held it."
+  },
+  {
+   "id": "ur-inulin",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why does inulin clearance equal GFR?",
+   "back": "Inulin is filtered freely and neither reabsorbed nor secreted, so all of it in urine got there by filtration.",
+   "why": "The plasma cleared of inulin each minute is exactly the plasma filtered each minute."
+  },
+  {
+   "id": "ur-creatinine-high",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why does creatinine clearance run 10 to 20% above true GFR?",
+   "back": "The proximal tubule secretes a little creatinine as well as filtering it.",
+   "why": "It is still used to estimate GFR because creatinine is made steadily and is not reabsorbed."
+  },
+  {
+   "id": "ur-clearance-compare",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "A drug’s clearance is 600 mL/min with a GFR of 120. What does the tubule do with it?",
+   "back": "Secretes it heavily: filtration alone could clear at most about 120 mL/min.",
+   "why": "Clearance above GFR means net secretion; below GFR means net reabsorption, as with urea or glucose."
+  },
+  {
+   "id": "ur-creatinine-trap",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "If GFR halves and stays low, what happens to plasma creatinine, and why can that mislead?",
+   "back": "It doubles, for example from 1.0 to 2.0 mg/dL.",
+   "why": "Half the filtering capacity still gives a small-looking number, so labs report an estimated GFR from creatinine, age and sex."
+  },
+  {
+   "id": "ur-pressure-natriuresis",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What happens to sodium excretion when the arterial pressure reaching a kidney rises, with hormones held constant?",
+   "back": "It rises, steeply: pressure natriuresis, with pressure diuresis.",
+   "why": "GFR barely changes, but higher pressure around the tubules makes the proximal tubule reabsorb less sodium."
+  },
+  {
+   "id": "ur-hormones-trigger",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "compare": "ADH vs aldosterone vs ANP vs PTH at the kidney",
+   "front": "ADH vs aldosterone vs ANP vs PTH: main trigger?",
+   "back": "ADH: rising plasma osmolarity or a large fall in volume. Aldosterone: angiotensin II or rising potassium. ANP: stretched atria. PTH: falling blood calcium.",
+   "why": "Each is released by a change the kidney can correct."
+  },
+  {
+   "id": "ur-hormones-urine",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "compare": "ADH vs aldosterone vs ANP vs PTH at the kidney",
+   "front": "ADH vs aldosterone vs ANP vs PTH: effect on urine?",
+   "back": "ADH: smaller, more concentrated. Aldosterone: less sodium, more potassium. ANP: more sodium and water. PTH: less calcium at first, more phosphate.",
+   "why": "PTH makes the distal tubule keep calcium and removes phosphate carriers from the proximal tubule."
+  },
+  {
+   "id": "ur-hormones-target",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "compare": "ADH vs aldosterone vs ANP vs PTH at the kidney",
+   "front": "ADH vs aldosterone vs ANP vs PTH: main target in the kidney?",
+   "back": "ADH: principal cells of the collecting duct. Aldosterone: principal cells of the late distal tubule and collecting duct. ANP: collecting duct and glomerulus. PTH: proximal and distal tubules and the cells that make calcitriol.",
+   "why": "Each acts where its transport proteins are."
+  },
+  {
+   "id": "ur-kidney-hormones",
+   "topic": "renal-function-urine",
+   "core": [
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "Which three hormones does the kidney itself make?",
+   "back": "Renin (juxtaglomerular cells), erythropoietin (cells between the tubules), calcitriol (tubule cells, switched on by PTH).",
+   "why": "Dialysis replaces filtration but not these, so people on dialysis also need EPO and active vitamin D."
+  },
+  {
+   "id": "ur-aki-ckd",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Acute kidney injury vs chronic kidney disease",
+   "front": "Acute kidney injury vs chronic kidney disease: speed and reversibility?",
+   "back": "AKI: hours to days, often reversible if the cause is fixed quickly. CKD: over 3 months, usually not reversible.",
+   "why": "CKD’s leading causes are diabetes mellitus and high blood pressure."
+  },
+  {
+   "id": "ur-aki-types",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Acute kidney injury vs chronic kidney disease",
+   "front": "Sort the causes of AKI by where the problem is.",
+   "back": "Prerenal: too little blood reaches the kidney. Intrinsic: tubule cells or glomeruli damaged. Postrenal: urine cannot drain.",
+   "why": "Prerenal AKI after a hemorrhage reverses when perfusion is restored."
+  },
+  {
+   "id": "ur-failure-k",
+   "topic": "renal-function-urine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why is potassium often what makes kidney failure an emergency?",
+   "back": "Failing kidneys cannot secrete potassium, so plasma potassium rises (hyperkalemia), which can cause dangerous arrhythmias.",
+   "why": "Water, salt, acid and phosphate are retained too, and EPO and calcitriol fall."
+  },
+  {
+   "id": "ur-stones",
+   "topic": "renal-function-urine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "What is the biggest risk factor for kidney stones, and the main prevention?",
+   "back": "A small volume of concentrated urine; drinking enough to pass more than about 2.5 L a day.",
+   "why": "Solutes crystallize when they become too concentrated; a thiazide lowers urine calcium."
+  },
+  {
+   "id": "ur-uti-women",
+   "topic": "renal-function-urine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are urinary tract infections far more common in women?",
+   "back": "The female urethra is 3 to 4 cm long and opens near the anus.",
+   "why": "Gut bacteria, most often E. coli, have a short path to the bladder."
+  },
+  {
+   "id": "ur-stress-urge",
+   "topic": "renal-function-urine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Stress vs urge incontinence",
+   "front": "Stress vs urge incontinence: what fails?",
+   "back": "Stress: the pelvic floor and external sphincter cannot resist a jump in abdominal pressure. Urge: the detrusor contracts when it should not.",
+   "why": "Stress incontinence is treated first with pelvic floor training; urge incontinence with bladder training and drugs that relax the detrusor."
   }
  ]
 }

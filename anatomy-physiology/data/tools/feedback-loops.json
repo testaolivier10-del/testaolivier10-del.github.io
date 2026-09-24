@@ -2757,6 +2757,355 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "ur-tubuloglomerular-feedback",
+      "title": "Tubuloglomerular feedback: one nephron’s GFR rises",
+      "topic": "glomerular-filtration",
+      "map": "Tubuloglomerular feedback",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "kind": "negative",
+      "scenario": "During a brisk walk, blood pressure rises for a few seconds, and filtration in one nephron starts to climb. Within seconds its own filtering settles back toward normal, with no signal from the brain.",
+      "slots": {
+        "stimulus": {
+          "text": "GFR in one nephron rises, so fluid rushes through its tubule",
+          "short": "GFR rises in one nephron",
+          "why": "Faster flow gives the tubule less time to reabsorb NaCl, so the stimulus is really a rise in NaCl delivered along the tubule."
+        },
+        "sensor": {
+          "text": "Macula densa cells at the end of the thick ascending limb",
+          "short": "Macula densa",
+          "why": "These crowded cells in the tubule wall sense how much sodium chloride flows past them."
+        },
+        "afferent": {
+          "text": "No nerve: the macula densa sits right against its own arterioles",
+          "short": "None: cells side by side",
+          "why": "The sensor and the effector belong to the same nephron and touch at the juxtaglomerular apparatus, so no nerve or hormone carries the signal a distance."
+        },
+        "control": {
+          "text": "The macula densa cells set how much ATP to release",
+          "short": "Macula densa sets ATP release",
+          "why": "The more NaCl they take up, the more ATP they release. The same cells act as sensor and control center."
+        },
+        "efferent": {
+          "text": "ATP, broken down to adenosine outside the cells",
+          "short": "ATP → adenosine",
+          "why": "Adenosine is the local chemical messenger that reaches the smooth muscle next door."
+        },
+        "effector": {
+          "text": "Smooth muscle of the afferent arteriole",
+          "short": "Afferent arteriole muscle",
+          "why": "Adenosine acts on receptor proteins on this muscle, which contracts."
+        },
+        "response": {
+          "text": "The afferent arteriole narrows, so GBHP and GFR fall back toward normal",
+          "short": "GBHP and GFR fall back",
+          "why": "Less pressure reaches the glomerulus, so filtration returns toward its set level. The juxtaglomerular cells also release less renin."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Baroreceptors in the carotid sinuses",
+          "why": "Baroreceptors report arterial pressure to the brainstem. Tubuloglomerular feedback is local and needs no brain."
+        },
+        {
+          "text": "The efferent arteriole dilates",
+          "why": "The response acts on the afferent arteriole. Widening the efferent arteriole would lower GBHP, but that is not what adenosine does here."
+        },
+        {
+          "text": "Juxtaglomerular cells release more renin",
+          "why": "More NaCl at the macula densa lowers renin release. Renin rises when the macula densa senses too little NaCl."
+        },
+        {
+          "text": "Sympathetic fibers from the renal plexus",
+          "why": "Sympathetic nerves can override autoregulation, but this loop works in a transplanted kidney that has lost its nerves."
+        }
+      ],
+      "classify": "The response (GFR falls back) opposes the stimulus (GFR rose), so this is negative feedback.",
+      "failure": {
+        "part": "sensor",
+        "q": "A drug blocks the carrier the macula densa cells use to take up NaCl, so they sense almost none. What does this loop do?",
+        "options": [
+          {
+            "text": "It acts as if GFR were low: the afferent arteriole widens and renin release rises",
+            "why": "Right. A sensor that reads \"no NaCl\" sends the signal for low GFR, so adenosine falls, the arteriole dilates and the juxtaglomerular cells release more renin."
+          },
+          {
+            "text": "It keeps GFR perfectly steady, because the myogenic mechanism takes over the loop",
+            "why": "The myogenic mechanism is a separate loop in the same arteriole. It cannot read the tubular fluid for the macula densa."
+          },
+          {
+            "text": "It constricts the afferent arteriole hard, as if GFR were very high",
+            "why": "Constriction needs the adenosine signal, which comes from NaCl uptake. With no uptake, the signal falls."
+          },
+          {
+            "text": "Nothing changes, because the macula densa is not part of the kidney’s control of GFR",
+            "why": "The macula densa is the sensor of tubuloglomerular feedback, one of the two mechanisms of autoregulation."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "ur-myogenic-afferent",
+      "title": "The myogenic mechanism: blood pressure rises",
+      "topic": "glomerular-filtration",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "kind": "negative",
+      "scenario": "You jump up from a chair and your mean arterial pressure rises from 95 to 115 mm Hg for a minute. Within seconds, your GFR has barely changed.",
+      "slots": {
+        "stimulus": {
+          "text": "Arterial pressure rises and stretches the afferent arteriole wall",
+          "short": "Pressure stretches the arteriole",
+          "why": "The stimulus is the stretch of the vessel wall by higher pressure."
+        },
+        "sensor": {
+          "text": "Mechanically gated channels in the arteriole’s smooth muscle",
+          "short": "Stretch-gated channels",
+          "why": "Stretch opens these channels in the membrane of the smooth muscle cells themselves."
+        },
+        "afferent": {
+          "text": "No separate pathway: the channels are in the muscle cells themselves",
+          "short": "None: same cells",
+          "why": "The cells that sense the stretch are the cells that respond, so nothing has to carry the signal."
+        },
+        "control": {
+          "text": "The smooth muscle cells, as calcium entering them sets their tension",
+          "short": "Muscle cells (calcium in)",
+          "why": "Open channels let calcium in, and the calcium level inside decides how hard each cell contracts."
+        },
+        "efferent": {
+          "text": "Calcium rising inside the same muscle cells",
+          "short": "Calcium inside the cells",
+          "why": "The command is chemical and stays inside the cell: calcium triggers contraction."
+        },
+        "effector": {
+          "text": "Smooth muscle of the afferent arteriole",
+          "short": "Afferent arteriole muscle",
+          "why": "The same muscle contracts and narrows the arteriole."
+        },
+        "response": {
+          "text": "The afferent arteriole narrows, so GBHP and GFR stay near normal",
+          "short": "GBHP and GFR held steady",
+          "why": "More pressure is lost in the narrowed arteriole before blood reaches the glomerulus, cancelling the rise."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The efferent arteriole constricts",
+          "why": "Efferent constriction would raise GBHP, adding to the rise instead of opposing it."
+        },
+        {
+          "text": "The cardiovascular center in the medulla oblongata",
+          "why": "The myogenic mechanism is local to the vessel. It works without any brain signal."
+        },
+        {
+          "text": "The macula densa senses more NaCl",
+          "why": "That is tubuloglomerular feedback, the second, slightly slower mechanism of autoregulation."
+        }
+      ],
+      "classify": "The response (less pressure reaches the glomerulus) opposes the stimulus (more pressure arrived), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "Long-standing disease stiffens the afferent arterioles so their muscle can barely change their width. Blood pressure then rises from 100 to 140 mm Hg. What happens?",
+        "options": [
+          {
+            "text": "More of the higher pressure reaches the glomerulus, so GBHP and GFR rise",
+            "why": "Right. The sensor still detects stretch, but the arteriole cannot narrow, so the rise passes straight through to the glomerulus."
+          },
+          {
+            "text": "GFR stays steady, because the stretch is still sensed",
+            "why": "Sensing is not enough; the effector has to act. Here it cannot narrow the arteriole."
+          },
+          {
+            "text": "GFR falls, because a stiff arteriole blocks flow",
+            "why": "A stiff arteriole that cannot constrict lets pressure through; it does not suddenly narrow."
+          },
+          {
+            "text": "The efferent arteriole takes over and narrows instead",
+            "why": "Narrowing the efferent arteriole would raise GBHP further, not protect the glomerulus."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "ur-micturition-flow",
+      "title": "Micturition: urine flow strengthens the contraction",
+      "topic": "kidney-anatomy",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "kind": "positive",
+      "scenario": "Once you start to urinate, the stream keeps going until the bladder is nearly empty, even though the bladder gets less stretched as it empties.",
+      "slots": {
+        "stimulus": {
+          "text": "Urine starts to flow through the urethra",
+          "short": "Urine flows in the urethra",
+          "why": "The stimulus for this loop is flow in the urethra, not stretch of the bladder wall."
+        },
+        "sensor": {
+          "text": "Sensory receptors in the urethral wall",
+          "short": "Urethral sensory receptors",
+          "why": "Sensory endings in the urethra fire as urine moves past them."
+        },
+        "afferent": {
+          "text": "Sensory fibers to the sacral cord and on to the pons",
+          "short": "Sensory fibers to cord",
+          "why": "Their signals travel into the spinal cord and up to the micturition centers."
+        },
+        "control": {
+          "text": "The pontine and sacral micturition centers",
+          "short": "Pontine and sacral centers",
+          "why": "The pons holds the switch in the voiding state, and the sacral center carries it out."
+        },
+        "efferent": {
+          "text": "Parasympathetic fibers in the pelvic splanchnic nerves (S2 to S4)",
+          "short": "Pelvic splanchnic nerves",
+          "why": "These fibers release acetylcholine onto the detrusor’s muscarinic receptor proteins."
+        },
+        "effector": {
+          "text": "The detrusor muscle",
+          "short": "Detrusor",
+          "why": "The bladder wall’s smooth muscle squeezes the bladder from all sides."
+        },
+        "response": {
+          "text": "The detrusor contracts harder, pushing more urine through the urethra",
+          "short": "Stronger contraction, more flow",
+          "why": "More flow means more signal from the urethra, which drives a still stronger contraction until the bladder is nearly empty."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The external urethral sphincter contracts",
+          "why": "Contracting the external sphincter stops flow and quiets the detrusor; it is how you hold on, not how emptying continues."
+        },
+        {
+          "text": "Sympathetic fibers from T11 to L2",
+          "why": "Sympathetic output relaxes the detrusor and closes the internal sphincter: it serves storage, not emptying."
+        },
+        {
+          "text": "The pudendal nerve fires faster",
+          "why": "The pudendal nerve keeps the external sphincter closed. Its firing falls during emptying."
+        }
+      ],
+      "classify": "The response (more flow) amplifies the stimulus (flow in the urethra), so this is positive feedback. It ends when the bladder is empty and flow stops.",
+      "failure": {
+        "part": "efferent",
+        "q": "Injury to the sacral cord destroys the parasympathetic neurons to the bladder. What happens when the bladder fills?",
+        "options": [
+          {
+            "text": "The detrusor barely contracts, so the bladder overfills and dribbles",
+            "why": "Right. With no parasympathetic drive the detrusor cannot squeeze, so urine builds up until pressure forces small amounts past the sphincters, and it dribbles."
+          },
+          {
+            "text": "The bladder empties at once whenever it fills, like an infant’s",
+            "why": "Automatic emptying needs an intact sacral center to drive the detrusor; here its output neurons are lost."
+          },
+          {
+            "text": "The bladder empties normally, because the pons takes over the detrusor",
+            "why": "The pons sends its commands through the sacral center. Without those neurons the command has no route to the detrusor."
+          },
+          {
+            "text": "The external sphincter opens, so urine leaks continuously while the bladder stays empty",
+            "why": "The external sphincter depends on the pudendal nerve; losing the parasympathetic neurons leaves the detrusor too weak to empty the bladder."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "ur-pressure-natriuresis",
+      "title": "Pressure natriuresis: arterial pressure rises",
+      "topic": "renal-function-urine",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "After a salty weekend, a man’s blood volume and arterial pressure creep up. Over the next day or two his kidneys excrete the extra salt and water, and his pressure settles back, even though his GFR has hardly changed.",
+      "slots": {
+        "stimulus": {
+          "text": "Arterial pressure reaching the kidney rises",
+          "short": "Arterial pressure rises",
+          "why": "A higher pressure reaches the peritubular capillaries and vasa recta even when autoregulation protects the glomerulus."
+        },
+        "sensor": {
+          "text": "Proximal tubule cells exposed to higher pressure in the kidney’s interstitial fluid",
+          "short": "Tubule cells sense interstitial pressure",
+          "why": "The pressure in the fluid around the tubules rises, and the proximal tubule cells respond to it."
+        },
+        "afferent": {
+          "text": "No nerve or hormone: the tubule cells respond where they sit",
+          "short": "None: local",
+          "why": "The mechanism works in an isolated kidney with every hormone and nerve held constant, so no pathway carries the signal elsewhere."
+        },
+        "control": {
+          "text": "The proximal tubule cells, which set how many exchangers to keep in their apical membrane",
+          "short": "Tubule cells set exchanger number",
+          "why": "The cells pull sodium–hydrogen exchangers out of the apical membrane when pressure rises."
+        },
+        "efferent": {
+          "text": "Fewer sodium–hydrogen exchangers, and fluid leaking back between cells",
+          "short": "Fewer exchangers; back-leak",
+          "why": "Less sodium enters the cells, and some reabsorbed fluid leaks back into the tubule through the leaky tight junctions."
+        },
+        "effector": {
+          "text": "The proximal tubule",
+          "short": "Proximal tubule",
+          "why": "The segment that normally returns about two thirds of filtered sodium reabsorbs less."
+        },
+        "response": {
+          "text": "More sodium and water are excreted, so blood volume and pressure fall",
+          "short": "More Na+ and water out; pressure falls",
+          "why": "Removing volume lowers arterial pressure back toward normal. Lower renin release adds to the effect in a whole person."
+        }
+      },
+      "distractors": [
+        {
+          "text": "GFR rises steeply with the pressure",
+          "why": "Within about 80 to 180 mm Hg, autoregulation holds GFR nearly steady. The extra excretion comes from reduced reabsorption, not more filtration."
+        },
+        {
+          "text": "Aldosterone release rises",
+          "why": "Higher pressure lowers renin and so aldosterone. More aldosterone would keep sodium, the opposite response."
+        },
+        {
+          "text": "The collecting duct inserts more aquaporins",
+          "why": "That is ADH’s action and would keep water, not excrete it."
+        }
+      ],
+      "classify": "The response (volume and pressure fall) opposes the stimulus (pressure rose), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "In long-standing high blood pressure, most researchers hold that this relationship has been reset. What does that mean for the loop?",
+        "options": [
+          {
+            "text": "It balances salt only at a higher pressure, so pressure stays high",
+            "why": "Right. The loop still works, but around a higher set point: salt balance is reached only at a raised pressure."
+          },
+          {
+            "text": "The kidneys stop excreting sodium at any pressure",
+            "why": "Then sodium would build up without limit. The loop still excretes the day’s salt, just at a higher pressure."
+          },
+          {
+            "text": "GFR rises with every rise in pressure instead",
+            "why": "Resetting refers to the pressure needed for sodium excretion, not to the loss of GFR autoregulation."
+          },
+          {
+            "text": "The kidneys excrete more salt than normal at every pressure, so pressure falls",
+            "why": "That would lower pressure, the opposite of what is seen in long-standing hypertension."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

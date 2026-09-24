@@ -6664,6 +6664,907 @@
         "why": "Vitamin A travels with fat: it is packed into chylomicrons, which are too large for blood capillaries and enter the lacteals and lymph instead."
       },
       "summary": "A fat-soluble vitamin follows fat: it dissolves in fat, rides in micelles, is packed into chylomicrons and enters the lymph, is stored in the liver, and reaches its target tissue on a carrier protein."
+    },
+    {
+      "id": "ur-blood-kidney",
+      "title": "Blood through the kidney",
+      "topic": "kidney-anatomy",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "About a fifth of your cardiac output passes through your kidneys every minute. Trace one red blood cell from the aorta, through a kidney and back to the vena cava.",
+      "steps": [
+        {
+          "id": "renal-artery",
+          "label": "Renal artery",
+          "blood": "o2",
+          "text": "Blood leaves the abdominal aorta at about L1 to L2 in a renal artery, which enters the kidney at the hilum.",
+          "why": "The renal arteries are the kidney’s only supply, branching straight off the aorta."
+        },
+        {
+          "id": "segmental",
+          "label": "Segmental arteries",
+          "blood": "o2",
+          "text": "In the renal sinus, the renal artery divides into about five segmental arteries.",
+          "why": "Each segmental artery supplies one segment of the kidney, so the division comes first, in the sinus."
+        },
+        {
+          "id": "interlobar",
+          "label": "Interlobar arteries",
+          "blood": "o2",
+          "text": "Interlobar arteries run outward through the renal columns, between the pyramids.",
+          "why": "They carry blood from the sinus out toward the cortex, between the lobes, as their name says."
+        },
+        {
+          "id": "arcuate",
+          "label": "Arcuate arteries",
+          "blood": "o2",
+          "text": "At the base of each pyramid, arcuate arteries bend and arch along the border of cortex and medulla.",
+          "why": "They turn to follow the boundary before branching into the cortex above."
+        },
+        {
+          "id": "cortical-radiate",
+          "label": "Cortical radiate arteries",
+          "blood": "o2",
+          "text": "Cortical radiate arteries run straight out into the cortex toward the surface.",
+          "why": "The cortex, where the filtering units start, is served from these last named arteries."
+        },
+        {
+          "id": "units",
+          "label": "Filtering units’ vessels",
+          "blood": "exchange",
+          "text": "Tiny arterioles lead into the capillaries of the kidney’s microscopic filtering units, where fluid is filtered and taken back.",
+          "why": "Here, and only here, blood exchanges fluid and solutes with the tubules; everything before was delivery."
+        },
+        {
+          "id": "cortical-radiate-v",
+          "label": "Cortical radiate veins",
+          "blood": "deo2",
+          "text": "Blood drains into cortical radiate veins.",
+          "why": "The veins run back along the same paths as the arteries and carry the same names."
+        },
+        {
+          "id": "arcuate-v",
+          "label": "Arcuate veins",
+          "blood": "deo2",
+          "text": "Cortical radiate veins drain into arcuate veins at the base of the pyramids.",
+          "why": "They lie beside the arcuate arteries along the cortex–medulla boundary."
+        },
+        {
+          "id": "interlobar-v",
+          "label": "Interlobar veins",
+          "blood": "deo2",
+          "text": "Arcuate veins drain into interlobar veins in the renal columns.",
+          "why": "Blood heads back toward the sinus, between the pyramids."
+        },
+        {
+          "id": "renal-vein",
+          "label": "Renal vein",
+          "blood": "deo2",
+          "text": "Interlobar veins join directly into the renal vein, which leaves at the hilum in front of the renal artery.",
+          "why": "There are no segmental veins, so the interlobar veins meet the renal vein directly."
+        },
+        {
+          "id": "ivc",
+          "label": "Inferior vena cava",
+          "blood": "deo2",
+          "text": "The renal vein empties into the inferior vena cava; the left one crosses in front of the aorta to get there.",
+          "why": "The vena cava lies right of the midline, which is why the left renal vein is the longer."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "At the base of each pyramid, blood enters the renal pelvis and collects there before moving on toward the cortex.",
+            "why": "The renal pelvis collects urine, not blood. Blood stays in vessels the whole way."
+          },
+          {
+            "text": "Interlobar arteries drain into interlobar veins at the papilla.",
+            "why": "Arteries do not connect straight to veins here; blood has to pass the capillaries of the cortex first."
+          }
+        ]
+      },
+      "error": {
+        "at": 9,
+        "text": "Interlobar veins drain into segmental veins, which join into the renal vein.",
+        "why": "The veins mirror the arteries except at this point: there are no segmental veins. Interlobar veins join the renal vein directly."
+      },
+      "summary": "Renal artery, segmental, interlobar, arcuate and cortical radiate arteries, the filtering units’ arterioles and capillaries, then cortical radiate, arcuate and interlobar veins, the renal vein and the inferior vena cava. Segmental arteries are end arteries: block one and its segment dies."
+    },
+    {
+      "id": "ur-urine-route",
+      "title": "Urine from the kidney to the outside",
+      "topic": "kidney-anatomy",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Urine is finished by the time it drips from a renal papilla. Follow it through the plumbing that stores it and carries it out.",
+      "steps": [
+        {
+          "id": "papilla",
+          "label": "Renal papilla",
+          "text": "Urine drips from tiny openings on the renal papilla, the tip of a pyramid.",
+          "why": "Urine is made in the pyramids and cortex and leaves them at their points."
+        },
+        {
+          "id": "minor",
+          "label": "Minor calyx",
+          "text": "A minor calyx cups each papilla and catches the urine.",
+          "why": "Each papilla has its own minor calyx, the first cup of the collecting system."
+        },
+        {
+          "id": "major",
+          "label": "Major calyx",
+          "text": "Several minor calyces join into a major calyx.",
+          "why": "The cups merge step by step: two or three major calyces per kidney."
+        },
+        {
+          "id": "pelvis",
+          "label": "Renal pelvis",
+          "text": "The major calyces join into the renal pelvis, a funnel.",
+          "why": "The pelvis gathers all the major calyces before narrowing into one tube."
+        },
+        {
+          "id": "ureter",
+          "label": "Ureter",
+          "text": "The ureter carries urine down behind the peritoneum by waves of peristalsis.",
+          "why": "The ureter starts where the pelvis narrows at the hilum; its smooth muscle moves urine whatever your position."
+        },
+        {
+          "id": "wall",
+          "label": "Slanted path through the wall",
+          "text": "The ureter passes at a slant through the bladder wall and opens at a back corner of the trigone.",
+          "why": "The slanted tunnel is squeezed flat as the bladder fills, a one-way valve against backflow."
+        },
+        {
+          "id": "bladder",
+          "label": "Urinary bladder",
+          "text": "Urine is stored in the bladder, whose detrusor relaxes as it fills.",
+          "why": "Storage comes between the ureters and the urethra, so you empty at a time you choose."
+        },
+        {
+          "id": "internal",
+          "label": "Internal sphincter",
+          "text": "Urine leaves at the bladder neck, through the internal urethral sphincter, when you void.",
+          "why": "The bladder neck is the bladder’s lowest point, at the front corner of the trigone. In females the internal sphincter is a functional zone of smooth muscle rather than a distinct ring."
+        },
+        {
+          "id": "external",
+          "label": "External sphincter",
+          "text": "It passes the external urethral sphincter, where the urethra crosses the pelvic floor.",
+          "why": "The voluntary sphincter lies below the involuntary one."
+        },
+        {
+          "id": "outside",
+          "label": "Out of the body",
+          "text": "The urethra carries urine out of the body: about 3 to 4 cm in females, 18 to 20 cm in males.",
+          "why": "The urethra is the last part of the tract."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The major calyces join into the renal sinus, a funnel.",
+            "why": "The renal sinus is the fat-filled space that holds the calyces and pelvis; urine does not flow through it."
+          },
+          {
+            "text": "The major calyces join into a renal column.",
+            "why": "Renal columns are bands of cortex-like tissue between the pyramids; they carry blood vessels, not urine."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "A major calyx cups each papilla and catches the urine.",
+        "why": "The cup around each papilla is a minor calyx. Several minor calyces then join into a major calyx."
+      },
+      "summary": "Papilla, minor calyx, major calyx, renal pelvis, ureter, a slanted path through the bladder wall, bladder, internal urethral sphincter, external urethral sphincter, urethra. Only the kidney changes urine; everything after the papilla stores or carries it."
+    },
+    {
+      "id": "ur-micturition",
+      "title": "The micturition reflex",
+      "topic": "kidney-anatomy",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Your bladder has been filling all morning. Trace what happens from the first stretch to an empty bladder, in a healthy adult.",
+      "steps": [
+        {
+          "id": "fill",
+          "label": "Bladder fills at low pressure",
+          "text": "While the bladder fills, sympathetic output relaxes the detrusor and keeps the internal sphincter closed, and the pudendal nerve holds the external sphincter shut.",
+          "why": "Storage is the starting state: the switch for emptying is off."
+        },
+        {
+          "id": "stretch",
+          "label": "Stretch signals rise",
+          "text": "Stretch-sensitive sensory receptors in the bladder wall fire more as it fills; at about 150 to 250 mL you first notice it.",
+          "why": "The bladder has to fill before stretch can build the signal."
+        },
+        {
+          "id": "decide",
+          "label": "You decide to go",
+          "text": "The signals reach the brain, and when you decide to go, the cerebral cortex releases its hold on the pontine micturition center.",
+          "why": "The cortex can only allow emptying once the stretch signal has reached it."
+        },
+        {
+          "id": "pons",
+          "label": "Pons throws the switch",
+          "text": "The pontine micturition center switches from storing to emptying and signals the sacral micturition center (S2 to S4).",
+          "why": "The pons decides; the sacral center carries out the command."
+        },
+        {
+          "id": "external",
+          "label": "External sphincter relaxes",
+          "text": "Pudendal output falls, and the external urethral sphincter relaxes. Pressure in the urethra drops.",
+          "why": "The outlet opens first, a few seconds before the squeeze."
+        },
+        {
+          "id": "detrusor",
+          "label": "Detrusor contracts",
+          "text": "A few seconds later, parasympathetic fibers from the sacral center fire, and the detrusor contracts.",
+          "why": "Once the outlet is relaxing, contraction pushes urine out instead of against a closed gate."
+        },
+        {
+          "id": "internal",
+          "label": "Bladder neck opens",
+          "text": "Sympathetic output falls, and the internal urethral sphincter opens as the bladder neck is pulled open.",
+          "why": "The contracting detrusor pulls the bladder neck open as sympathetic tone is withdrawn."
+        },
+        {
+          "id": "flow",
+          "label": "Flow keeps it going",
+          "text": "Urine flows, and flow in the urethra sends signals that strengthen the detrusor contraction until the bladder is nearly empty.",
+          "why": "This positive feedback needs flow to have started."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The sympathetic neurons at T11 to L2 switch from storing to emptying and signal the detrusor and the bladder neck to contract.",
+            "why": "Sympathetic output serves storage: it relaxes the detrusor. Emptying is switched on in the pons and carried out by the sacral parasympathetic neurons."
+          },
+          {
+            "text": "The pudendal nerve fires harder, and the external urethral sphincter tightens.",
+            "why": "That is how you hold on. Emptying needs pudendal output to fall."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "A few seconds later, sympathetic fibers from T11 to L2 fire, and the detrusor contracts.",
+        "why": "Sympathetic fibers relax the detrusor (beta-3) during storage. The detrusor contracts when parasympathetic fibers from S2 to S4 release acetylcholine onto muscarinic receptor proteins."
+      },
+      "summary": "Filling with sympathetic and pudendal tone, stretch signals, the cortex allows it, the pons throws the switch, the external sphincter relaxes, then the detrusor contracts, the bladder neck opens, and flow feeds back to keep the contraction going. For your exam: if asked where the reflex is integrated, the expected answer is the sacral spinal cord, S2 to S4."
+    },
+    {
+      "id": "ur-filtrate-nephron",
+      "title": "Filtrate through the nephron",
+      "topic": "nephron",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Follow one drop of plasma fluid from the blood in a glomerulus until it drips from a renal papilla as urine.",
+      "steps": [
+        {
+          "id": "glomerulus",
+          "label": "Glomerulus",
+          "blood": "o2",
+          "text": "Blood arriving in the afferent arteriole enters the glomerulus, and pressure pushes plasma fluid out of its capillaries.",
+          "why": "Filtration is the first step: nothing enters the tubule any other way at its start."
+        },
+        {
+          "id": "capsule",
+          "label": "Capsular space",
+          "text": "The fluid passes the podocytes and collects in the capsular space of the glomerular capsule.",
+          "why": "The capsule surrounds the glomerulus, so the capsular space is where filtered fluid lands."
+        },
+        {
+          "id": "pct",
+          "label": "Proximal convoluted tubule",
+          "text": "At the tubular pole the fluid flows into the proximal convoluted tubule, which takes back most of it.",
+          "why": "The proximal tubule is the first and longest part of the tubule, next to its own corpuscle in the cortex."
+        },
+        {
+          "id": "descending",
+          "label": "Descending limb",
+          "text": "What remains runs down the descending limb of the nephron loop into the medulla.",
+          "why": "The tubule straightens and dives toward the medulla after the proximal tubule."
+        },
+        {
+          "id": "ascending",
+          "label": "Ascending limb",
+          "text": "It turns at the hairpin and climbs the ascending limb, ending in the thick ascending limb.",
+          "why": "The loop comes back up to the cortex after its bend."
+        },
+        {
+          "id": "macula",
+          "label": "Macula densa",
+          "text": "At the top it passes the macula densa, where the tubule touches its own arterioles.",
+          "why": "The thick ascending limb returns to its own renal corpuscle before becoming the distal tubule."
+        },
+        {
+          "id": "dct",
+          "label": "Distal convoluted tubule",
+          "text": "It flows through the distal convoluted tubule, where hormones fine-tune salt reabsorption.",
+          "why": "The DCT follows the macula densa in the cortex."
+        },
+        {
+          "id": "cd",
+          "label": "Collecting duct",
+          "text": "A connecting segment carries it into a collecting duct, shared with many nephrons, which runs down through the medulla.",
+          "why": "Collecting ducts gather from many nephrons after the DCT; ADH acts here."
+        },
+        {
+          "id": "calyx",
+          "label": "Papilla to minor calyx",
+          "text": "Collecting ducts open on the tip of a renal papilla, and the fluid, now urine, drips into a minor calyx.",
+          "why": "The papilla is where the renal tubule system ends and the collecting cups begin."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The fluid enters the peritubular capillaries around the tubule.",
+            "why": "The peritubular capillaries carry blood, not filtrate; they receive what the tubule takes back."
+          },
+          {
+            "text": "The fluid flows into the efferent arteriole.",
+            "why": "The efferent arteriole carries away the blood that was not filtered. Filtrate goes into the capsule."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "It flows through the proximal convoluted tubule, where hormones fine-tune salt reabsorption.",
+        "why": "The proximal tubule comes right after the capsule. After the macula densa, the fluid enters the distal convoluted tubule."
+      },
+      "summary": "Glomerulus, capsular space, proximal convoluted tubule, descending limb, ascending limb, macula densa, distal convoluted tubule, collecting duct, papilla and minor calyx. The blood that was not filtered leaves by the efferent arteriole and collects what the tubule returns."
+    },
+    {
+      "id": "ur-nephron-blood",
+      "title": "Blood through a nephron",
+      "topic": "nephron",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "A nephron has two capillary beds in a row, with an arteriole between them. Trace the blood that serves one juxtamedullary nephron.",
+      "steps": [
+        {
+          "id": "crad",
+          "label": "Cortical radiate artery",
+          "blood": "o2",
+          "text": "Blood runs out through the cortex in a cortical radiate artery.",
+          "why": "These are the last named arteries of the kidney; the nephron’s own vessels branch from them."
+        },
+        {
+          "id": "aff",
+          "label": "Afferent arteriole",
+          "blood": "o2",
+          "text": "An afferent arteriole branches off and carries blood toward the glomerulus, past its renin-releasing juxtaglomerular cells.",
+          "why": "Af- means toward: this arteriole leads into the capillary tuft."
+        },
+        {
+          "id": "glom",
+          "label": "Glomerular capillaries",
+          "blood": "exchange",
+          "text": "Blood runs through the glomerular capillaries, the first bed, where high pressure filters fluid out.",
+          "why": "Filtration needs high pressure, so it happens in the first bed, before any more resistance."
+        },
+        {
+          "id": "eff",
+          "label": "Efferent arteriole",
+          "blood": "o2",
+          "text": "An efferent arteriole, not a venule, carries the unfiltered blood away, now richer in protein.",
+          "why": "A resistance vessel downstream keeps glomerular pressure high."
+        },
+        {
+          "id": "ptc",
+          "label": "Peritubular capillaries",
+          "blood": "exchange",
+          "text": "Blood enters the second bed, the peritubular capillaries and, for this nephron, the vasa recta beside the long loop.",
+          "why": "After two resistances, pressure here is low and oncotic pull high, so fluid the tubule returns moves in."
+        },
+        {
+          "id": "venule",
+          "label": "Venules",
+          "blood": "deo2",
+          "text": "The capillaries drain into venules.",
+          "why": "Blood leaves the second bed as it would any capillary bed."
+        },
+        {
+          "id": "crv",
+          "label": "Cortical radiate vein",
+          "blood": "deo2",
+          "text": "Venules drain into a cortical radiate vein and back toward the renal vein.",
+          "why": "The veins then follow the arteries back out of the kidney."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "A venule, not an arteriole, carries the unfiltered blood away from the glomerulus, now richer in protein.",
+            "why": "The vessel leaving the glomerulus is an arteriole; a low-resistance venule could not hold glomerular pressure up."
+          },
+          {
+            "text": "The blood drains straight into the renal pelvis.",
+            "why": "The renal pelvis carries urine. Blood leaving the glomerulus goes on to a second capillary bed."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Blood runs through the peritubular capillaries, the first bed, where high pressure filters fluid out.",
+        "why": "The first bed is the glomerulus. The peritubular capillaries come second, after the efferent arteriole, and they take fluid in rather than filtering it out."
+      },
+      "summary": "Cortical radiate artery, afferent arteriole, glomerular capillaries, efferent arteriole, peritubular capillaries or vasa recta, venules, cortical radiate vein. An arteriole on each side of the glomerulus lets the kidney set glomerular pressure by narrowing either one."
+    },
+    {
+      "id": "ur-filtration-barrier",
+      "title": "Across the filtration membrane",
+      "topic": "glomerular-filtration",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "A water molecule and a sodium ion leave the blood in a glomerular capillary. Trace their path through the three layers into the tubule.",
+      "steps": [
+        {
+          "id": "push",
+          "label": "Pushed by GBHP",
+          "blood": "exchange",
+          "text": "Glomerular hydrostatic pressure, about 55 mm Hg, pushes plasma against the capillary wall.",
+          "why": "Pressure is what drives filtration, so it comes first."
+        },
+        {
+          "id": "fen",
+          "label": "Fenestrated endothelium",
+          "text": "The fluid passes through fenestrations in the endothelial cells; blood cells are too big to follow.",
+          "why": "The endothelium lines the capillary, so it is the first layer from the blood side."
+        },
+        {
+          "id": "gbm",
+          "label": "Basement membrane",
+          "text": "It crosses the thick, negatively charged glomerular basement membrane, which holds back large proteins.",
+          "why": "The fused basement membrane lies between the endothelium and the podocytes."
+        },
+        {
+          "id": "slit",
+          "label": "Filtration slits",
+          "text": "It squeezes through a filtration slit between two pedicels, across the slit diaphragm, the finest sieve.",
+          "why": "The podocytes wrap the outside of the capillary, so their slits are the last layer."
+        },
+        {
+          "id": "space",
+          "label": "Capsular space",
+          "text": "It enters the capsular space as glomerular filtrate, with about the same small-solute concentrations as plasma.",
+          "why": "Past all three layers, the fluid is in the capsule."
+        },
+        {
+          "id": "pct",
+          "label": "Proximal tubule",
+          "text": "It flows out of the capsule at the tubular pole into the proximal convoluted tubule.",
+          "why": "The capsular space opens into the tubule on the opposite side from the vessels."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "It crosses a thin layer of smooth muscle around the capillary, which contracts to hold back large proteins.",
+            "why": "Capillaries have no smooth muscle; the filter is endothelium, basement membrane and podocytes."
+          },
+          {
+            "text": "It passes through the macula densa, which holds back large proteins.",
+            "why": "The macula densa is a patch of tubule wall at the end of the thick ascending limb, not part of the filter."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The fluid passes through fenestrations in the endothelial cells, which hold back albumin and other large proteins.",
+        "why": "Fenestrations, 70 to 100 nm across, are far too large to hold back any dissolved molecule; they stop blood cells. Large proteins are held back mostly by the basement membrane and the slit diaphragms."
+      },
+      "summary": "Pushed by GBHP through fenestrated endothelium (stops cells), the basement membrane (stops large proteins), the filtration slits and slit diaphragms, into the capsular space and on to the proximal tubule. Size is the main sort, with charge adding to it."
+    },
+    {
+      "id": "ur-pct-glucose",
+      "title": "Taking glucose back in the proximal tubule",
+      "topic": "tubular-transport",
+      "core": [
+        "gradients",
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Every minute your glomeruli filter about 125 mg of glucose, and the proximal tubule returns all of it. Trace how, starting with the protein that powers it.",
+      "steps": [
+        {
+          "id": "pump",
+          "label": "Na–K pump spends ATP",
+          "text": "On the basolateral membrane, the sodium–potassium pump uses ATP to move 3 Na+ out of the cell and 2 K+ in.",
+          "why": "The pump builds the gradient everything else spends, so it comes first."
+        },
+        {
+          "id": "grad",
+          "label": "Low Na+, negative cell",
+          "text": "Sodium inside the cell stays low and the inside is negative, so sodium in the lumen has a steep path into the cell.",
+          "why": "This gradient exists only because the pump keeps running."
+        },
+        {
+          "id": "sglt",
+          "label": "Na+ and glucose enter",
+          "text": "A sodium–glucose symporter in the apical membrane lets sodium flow in down its gradient and drags glucose in with it.",
+          "why": "Secondary active transport: the carrier spends the sodium gradient, not ATP."
+        },
+        {
+          "id": "build",
+          "label": "Glucose builds up in the cell",
+          "text": "Glucose becomes more concentrated inside the cell than in the interstitial fluid.",
+          "why": "The symporter keeps loading glucose in, uphill."
+        },
+        {
+          "id": "out",
+          "label": "Out by facilitated diffusion",
+          "text": "Glucose leaves across the basolateral membrane on carriers, by facilitated diffusion, down its gradient.",
+          "why": "Once concentrated inside, glucose can flow out passively."
+        },
+        {
+          "id": "ptc",
+          "label": "Into peritubular capillaries",
+          "text": "From the interstitial fluid it moves into the peritubular capillaries, where hydrostatic pressure is low and oncotic pressure high.",
+          "why": "Everything reabsorbed lands in the interstitial fluid first, then enters the blood."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Glucose is split for ATP inside the cell, and that ATP powers the carriers that bring more glucose in from the lumen.",
+            "why": "Filtered glucose is returned to the blood whole; the energy comes from the pump’s sodium gradient."
+          },
+          {
+            "text": "Sodium inside the cell rises until it matches the filtrate.",
+            "why": "If cell sodium matched the filtrate, there would be no gradient to drive the symporter."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "A glucose pump in the apical membrane uses ATP directly to carry glucose into the cell.",
+        "why": "No apical carrier here splits ATP. The symporter uses the sodium gradient set up by the basolateral pump: secondary active transport. Stop the pump and glucose uptake stops too."
+      },
+      "summary": "Pump builds a sodium gradient, sodium flows in through the symporter and drags glucose, glucose builds up in the cell, leaves by facilitated diffusion, and enters the peritubular capillaries. The number of symporters caps the rate: the transport maximum."
+    },
+    {
+      "id": "ur-tal-nkcc2",
+      "title": "Salt out of the thick ascending limb",
+      "topic": "tubular-transport",
+      "core": [
+        "gradients",
+        "energy"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "The thick ascending limb removes about a quarter of the filtered sodium without letting any water follow. Trace the steps in one of its cells.",
+      "steps": [
+        {
+          "id": "pump",
+          "label": "Basolateral pump",
+          "text": "The basolateral sodium–potassium pump keeps sodium low inside the cell.",
+          "why": "The pump supplies the gradient the apical carrier runs on."
+        },
+        {
+          "id": "nkcc",
+          "label": "NKCC2 loads salt",
+          "text": "NKCC2 in the apical membrane moves 1 Na+, 1 K+ and 2 Cl− from the lumen into the cell together.",
+          "why": "Sodium flowing downhill into the cell drags the other three ions with it."
+        },
+        {
+          "id": "exit",
+          "label": "Na+ and Cl− exit",
+          "text": "Sodium leaves on the pump and chloride through chloride channels, into the interstitial fluid.",
+          "why": "Salt taken in at the apical side must leave at the basolateral side to be reabsorbed."
+        },
+        {
+          "id": "recycle",
+          "label": "K+ leaks back",
+          "text": "Most of the potassium leaks back into the lumen through apical potassium channels.",
+          "why": "Recycling keeps NKCC2 supplied with potassium, which is scarce in the lumen."
+        },
+        {
+          "id": "positive",
+          "label": "Lumen turns positive",
+          "text": "The returning potassium leaves the lumen positively charged.",
+          "why": "The charge is a result of potassium leaking back while chloride leaves."
+        },
+        {
+          "id": "para",
+          "label": "Ca2+ and Mg2+ between cells",
+          "text": "The positive lumen pushes calcium, magnesium and more sodium out between the cells.",
+          "why": "The paracellular route is passive, so it needs the charge to drive it."
+        },
+        {
+          "id": "nowater",
+          "label": "No water follows",
+          "text": "Water cannot follow, because this segment has almost no aquaporins; the fluid falls to about 100 mOsm/L.",
+          "why": "Salt leaving without water is what makes this the diluting segment."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Potassium is pumped into the interstitial fluid by NKCC2.",
+            "why": "NKCC2 sits on the apical membrane and moves ions into the cell, not out the far side."
+          },
+          {
+            "text": "Water follows the salt out through aquaporins.",
+            "why": "The thick ascending limb has almost no aquaporins; that is why its fluid becomes dilute."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Water follows the salt out by osmosis, so the fluid stays at about 300 mOsm/L.",
+        "why": "This segment is nearly waterproof. Salt leaves without water, so the fluid leaving it is dilute, about 100 mOsm/L, and the salt it pumps out builds up in the medulla."
+      },
+      "summary": "Pump, NKCC2 loads Na+, K+ and 2 Cl−, Na+ and Cl− exit the base, K+ recycles into the lumen, the lumen turns positive, Ca2+ and Mg2+ leave between cells, and no water follows. Block NKCC2 and every later step stops."
+    },
+    {
+      "id": "ur-countercurrent-build",
+      "title": "Building the medullary gradient",
+      "topic": "urine-concentration",
+      "core": [
+        "gradients",
+        "energy"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Imagine a nephron loop filled with 300 mOsm/L fluid everywhere. Trace the rounds of pumping and flowing that turn a 200 mOsm/L single step into a 900 mOsm/L gradient.",
+      "steps": [
+        {
+          "id": "start",
+          "label": "All 300 mOsm/L",
+          "text": "Fluid in both limbs and the interstitial fluid around them is 300 mOsm/L, the same as plasma.",
+          "why": "This is the starting state, before any pumping."
+        },
+        {
+          "id": "pump1",
+          "label": "Pump: 200 inside, 400 outside",
+          "text": "The thick ascending limb pumps NaCl out until, at each level, its fluid is 200 and the interstitial fluid beside it is 400.",
+          "why": "The pump can make a 200 mOsm/L difference at any single level; that is the effect to be multiplied."
+        },
+        {
+          "id": "equil",
+          "label": "Descending limb loses water",
+          "text": "The descending limb loses water to the 400 mOsm/L interstitial fluid until its own fluid is 400.",
+          "why": "The descending limb is permeable to water, not salt, so it can only match the fluid around it by losing water."
+        },
+        {
+          "id": "flow",
+          "label": "Flow pushes fluid round",
+          "text": "New 300 fluid enters the top of the descending limb and pushes the 400 fluid around the bend into the bottom of the ascending limb.",
+          "why": "Flow moves the more concentrated fluid to where the pump will act on it next."
+        },
+        {
+          "id": "pump2",
+          "label": "Pump again from a higher start",
+          "text": "At the bottom, the pump lowers the 400 fluid to 300 and raises the interstitial fluid there to 500.",
+          "why": "The same 200 difference now starts from a higher level at the bottom."
+        },
+        {
+          "id": "repeat",
+          "label": "Bottom climbs to 1,200",
+          "text": "Round after round, the bottom of the loop climbs toward 1,200 mOsm/L while the top stays near 300.",
+          "why": "Each round builds on the last, so a single-step difference is multiplied along the loop."
+        },
+        {
+          "id": "vasa",
+          "label": "Vasa recta keep it",
+          "text": "The hairpin vasa recta exchange salt and water passively and carry off reabsorbed water without washing the gradient away.",
+          "why": "The gradient must be built before blood flow can threaten it."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The descending limb pumps salt in from the 400 mOsm/L interstitial fluid until its own fluid is 400.",
+            "why": "The descending limb has few salt carriers. Its fluid concentrates because water leaves it."
+          },
+          {
+            "text": "The collecting duct pumps water out until the medulla is 400.",
+            "why": "No part of the tubule pumps water; water only follows solute by osmosis."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "At the bottom, the descending limb pumps NaCl out, raising the interstitial fluid there to 500.",
+        "why": "Only the thick ascending limb pumps salt, on NKCC2. The descending limb is passive: it loses water."
+      },
+      "summary": "Start at 300, pump to a 200 difference, the descending limb loses water, flow carries concentrated fluid round the bend, the pump acts again from a higher start, and the bottom climbs to 1,200. The vasa recta keep the gradient; they do not build it."
+    },
+    {
+      "id": "ur-adh-collecting-duct",
+      "title": "How ADH opens the collecting duct",
+      "topic": "urine-concentration",
+      "core": [
+        "communication",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "ADH has just been released from the posterior pituitary on a hot day. Trace how it makes the collecting duct let water out, from the blood to concentrated urine.",
+      "steps": [
+        {
+          "id": "blood",
+          "label": "ADH reaches the duct",
+          "text": "ADH reaches the collecting duct in the blood.",
+          "why": "A hormone must first be carried to its target."
+        },
+        {
+          "id": "bind",
+          "label": "Binds on the basolateral side",
+          "text": "ADH binds its receptor protein on the basolateral membrane of principal cells.",
+          "why": "ADH is a peptide and cannot cross the membrane, so it binds on the blood side of the cell."
+        },
+        {
+          "id": "camp",
+          "label": "G protein raises cAMP",
+          "text": "The receptor protein is coupled to a G protein, which raises cAMP inside the cell.",
+          "why": "cAMP is the second messenger that carries the signal inside."
+        },
+        {
+          "id": "pka",
+          "label": "Protein kinase A",
+          "text": "cAMP activates protein kinase A.",
+          "why": "The kinase is what acts on the stored water channels."
+        },
+        {
+          "id": "fuse",
+          "label": "Aquaporins fuse in",
+          "text": "Vesicles carrying aquaporins fuse with the apical membrane within minutes.",
+          "why": "The water channels are already made and stored just under the apical membrane."
+        },
+        {
+          "id": "water",
+          "label": "Water crosses the cell",
+          "text": "Water enters the cell through the new apical aquaporins and leaves through basolateral aquaporins that are always present.",
+          "why": "The apical membrane was the only barrier; the basolateral side already lets water through."
+        },
+        {
+          "id": "medulla",
+          "label": "Medulla draws water out",
+          "text": "The salty medulla draws the water out, the vasa recta carry it away, and urine nears 1,200 mOsm/L.",
+          "why": "Water moves only by osmosis, so the medullary gradient decides how far the urine concentrates."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "ADH moves on into the nucleus and switches on the gene for a new salt pump in the apical membrane.",
+            "why": "ADH is a peptide that acts through a receptor protein on the membrane; its fast effect needs no new genes."
+          },
+          {
+            "text": "The receptor protein opens a channel that lets sodium into the cell.",
+            "why": "ADH’s receptor protein is coupled to a G protein; it is aldosterone that adds sodium channels."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "ADH enters the principal cell and binds a receptor protein in its cytoplasm.",
+        "why": "ADH is a water-soluble peptide. It cannot cross the membrane, so it binds a receptor protein on the basolateral surface and works through cAMP."
+      },
+      "summary": "ADH in the blood, receptor protein on the basolateral membrane, G protein and cAMP, protein kinase A, aquaporin vesicles fuse with the apical membrane, water crosses the cell, and the medulla draws it out. When ADH falls, the aquaporins are pulled back in by endocytosis."
+    },
+    {
+      "id": "ur-urea-recycling",
+      "title": "Urea recycling",
+      "topic": "urine-concentration",
+      "core": [
+        "gradients",
+        "mass-balance"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "flow",
+      "intro": "Urea is waste, yet the kidney uses it to build half the inner medulla’s osmolarity. Follow urea from the glomerulus to the inner medulla on a day with high ADH.",
+      "steps": [
+        {
+          "id": "filter",
+          "label": "Filtered freely",
+          "text": "Urea is filtered freely at the glomerulus.",
+          "why": "Everything small in plasma enters the tubule first."
+        },
+        {
+          "id": "pct",
+          "label": "Half back in the PCT",
+          "text": "About half is reabsorbed passively in the proximal tubule, as water leaves and concentrates it.",
+          "why": "The proximal tubule is the first segment and its leaky walls let urea follow its gradient."
+        },
+        {
+          "id": "closed",
+          "label": "Kept in the distal parts",
+          "text": "The distal tubule and the collecting duct in the cortex and outer medulla are nearly impermeable to urea.",
+          "why": "These segments keep urea in while they reabsorb other things."
+        },
+        {
+          "id": "concentrate",
+          "label": "Urea concentrates",
+          "text": "As ADH lets water out of the collecting duct, the urea left inside becomes more and more concentrated.",
+          "why": "Concentration builds because water leaves but urea cannot."
+        },
+        {
+          "id": "carriers",
+          "label": "Out through urea carriers",
+          "text": "In the inner medullary collecting duct, urea carriers, increased by ADH, let concentrated urea diffuse into the interstitial fluid.",
+          "why": "Only the deepest part of the duct has the carriers, so urea is released where the gradient is highest."
+        },
+        {
+          "id": "medulla",
+          "label": "Half the inner medulla",
+          "text": "That urea supplies about half the osmolarity of the inner medulla.",
+          "why": "Urea released there adds directly to the gradient."
+        },
+        {
+          "id": "round",
+          "label": "Round again",
+          "text": "Some urea diffuses into the thin limbs of the loop and travels round again; some is carried off by the vasa recta.",
+          "why": "The loop takes urea back into the tubule, so it can reach the collecting duct again."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The distal tubule and the collecting duct in the cortex pump all of the remaining urea straight back into the blood.",
+            "why": "No segment pumps urea; it moves only by diffusion and carriers down its gradient."
+          },
+          {
+            "text": "The distal tubule secretes extra urea into the fluid, using ATP.",
+            "why": "Urea is not pumped anywhere; it becomes concentrated because water leaves while urea stays."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "In the cortical collecting duct, urea carriers let concentrated urea diffuse into the interstitial fluid of the cortex.",
+        "why": "The collecting duct in the cortex keeps urea in. Urea leaves only in the inner medullary collecting duct, so it builds the gradient deep in the medulla."
+      },
+      "summary": "Filtered, half reabsorbed in the proximal tubule, kept in the distal parts while water leaves, released in the inner medulla through ADH-increased carriers, supplies half the inner medulla’s osmolarity, and partly cycles back through the loop. A low-protein diet makes less urea and weakens concentrating."
     }
   ]
 }

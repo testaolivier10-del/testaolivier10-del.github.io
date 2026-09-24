@@ -1,0 +1,157 @@
+{
+  "figure": "os-27-3",
+  "labels": [
+    {
+      "id": "raphe",
+      "name": "Raphe",
+      "accept": [
+        "scrotal raphe",
+        "median raphe"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "scrotal-septum",
+      "name": "Scrotal septum",
+      "accept": [
+        "septum of scrotum",
+        "septum"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "cremaster-muscles",
+      "name": "Cremaster muscles",
+      "accept": [
+        "cremaster muscle",
+        "cremaster",
+        "cremasteric muscle"
+      ],
+      "lines": [
+        20,
+        23
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "dartos-muscles",
+      "name": "Dartos muscles",
+      "accept": [
+        "dartos muscle",
+        "dartos",
+        "tunica dartos"
+      ],
+      "lines": [
+        21,
+        24
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "plexus-of-testicular-veins",
+      "name": "Plexus of testicular veins",
+      "accept": [
+        "pampiniform plexus",
+        "testicular veins",
+        "testicular vein plexus"
+      ],
+      "lines": [
+        3,
+        6,
+        12
+      ],
+      "concept": "venae-cavae-tributaries"
+    },
+    {
+      "id": "ductus-deferens",
+      "name": "Ductus deferens",
+      "accept": [
+        "vas deferens",
+        "vas",
+        "deferent duct"
+      ],
+      "lines": [
+        4,
+        7
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "spermatic-cord",
+      "name": "Spermatic cord",
+      "accept": [],
+      "lines": [
+        5,
+        8
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "testicular-artery",
+      "name": "Testicular artery",
+      "accept": [
+        "gonadal artery"
+      ],
+      "lines": [
+        10,
+        13
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "autonomic-nerve",
+      "name": "Autonomic nerve",
+      "accept": [
+        "autonomic nerves",
+        "nerve"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "autonomic-ns-basic"
+    },
+    {
+      "id": "lymphatic-vessel",
+      "name": "Lymphatic vessel",
+      "accept": [
+        "lymphatic vessels",
+        "lymphatic",
+        "lymph vessel"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "lymphatic-vessels"
+    },
+    {
+      "id": "testis",
+      "name": "Testis",
+      "accept": [
+        "testes",
+        "testicle"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "epididymis",
+      "name": "Epididymis",
+      "accept": [],
+      "lines": [
+        22
+      ],
+      "concept": "male-ducts"
+    }
+  ]
+}

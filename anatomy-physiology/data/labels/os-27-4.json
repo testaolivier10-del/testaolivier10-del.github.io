@@ -1,0 +1,169 @@
+{
+  "figure": "os-27-4",
+  "labels": [
+    {
+      "id": "spermatic-cord",
+      "name": "Spermatic cord",
+      "accept": [],
+      "lines": [
+        1
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "cremaster-muscle",
+      "name": "Cremaster muscle",
+      "accept": [
+        "cremaster",
+        "cremaster muscles"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "tunica-vaginalis",
+      "name": "Tunica vaginalis",
+      "accept": [],
+      "lines": [
+        5
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "efferent-ductule",
+      "name": "Efferent ductule",
+      "accept": [
+        "efferent ductules",
+        "efferent ducts",
+        "efferent duct"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "head-of-epididymis",
+      "name": "Head of epididymis",
+      "accept": [
+        "epididymis head",
+        "head of the epididymis"
+      ],
+      "lines": [
+        7,
+        9
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "body-of-epididymis",
+      "name": "Body of epididymis",
+      "accept": [
+        "epididymis body",
+        "body of the epididymis"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "seminiferous-tubule-lobules",
+      "name": "Seminiferous tubule lobules",
+      "accept": [
+        "lobules",
+        "testicular lobules",
+        "lobule",
+        "seminiferous tubules",
+        "seminiferous tubule"
+      ],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "ductus-deferens",
+      "name": "Ductus deferens",
+      "accept": [
+        "vas deferens",
+        "vas",
+        "deferent duct"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "septa-tunica-albuginea",
+      "name": "Septa (tunica albuginea)",
+      "accept": [
+        "septa",
+        "septum",
+        "testicular septa",
+        "septa of the testis"
+      ],
+      "lines": [
+        15,
+        16
+      ],
+      "concept": "scrotum-testes",
+      "note": "OpenStax prints 'Septa (tunica albuginea)': the septa are inward extensions of the tunica albuginea that divide the testis into lobules, not the tunica albuginea itself (that is the capsule, labeled separately). The name is kept as printed; 'septa' is the answer."
+    },
+    {
+      "id": "rete-testis",
+      "name": "Rete testis",
+      "accept": [
+        "rete"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "tunica-albuginea",
+      "name": "Tunica albuginea",
+      "accept": [],
+      "lines": [
+        19
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "straight-tubule",
+      "name": "Straight tubule",
+      "accept": [
+        "straight tubules",
+        "tubulus rectus",
+        "tubuli recti"
+      ],
+      "lines": [
+        20,
+        21
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "tail-of-epididymis",
+      "name": "Tail of epididymis",
+      "accept": [
+        "epididymis tail",
+        "tail of the epididymis"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "male-ducts"
+    }
+  ]
+}

@@ -15775,6 +15775,1509 @@
           "why": "Vitamins are not fuel: vitamin C adds no kilocalories, so losing it does not change the energy his food supplies."
         }
       ]
+    },
+    {
+      "id": "ur-afferent-constricts",
+      "title": "The afferent arterioles constrict",
+      "topic": "glomerular-filtration",
+      "theme": "afferent arteriole constricts",
+      "core": [
+        "gradients",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "narrowing any kidney arteriole lowers filtration in the same way",
+      "setup": "A drug makes the smooth muscle of the afferent arterioles in both kidneys contract hard. Blood pressure in the aorta does not change. Predict the kidneys a few minutes later, compared with before the drug.",
+      "start": "The afferent arterioles narrow",
+      "steps": {
+        "res": "Resistance upstream of the glomerulus rises",
+        "rbf": "Less blood flows through the kidney",
+        "gbhp": "More pressure is lost before the glomerulus: GBHP falls",
+        "nfp": "Net filtration pressure falls",
+        "gfr": "GFR falls",
+        "ff": "Plasma flow and GFR fall by about the same share",
+        "ptc": "Less pressure is left for the peritubular capillaries",
+        "md": "Less NaCl reaches the macula densa",
+        "renin": "Juxtaglomerular cells release more renin",
+        "urine": "Less filtrate means less urine"
+      },
+      "variables": [
+        {
+          "id": "rbf",
+          "name": "Renal blood flow",
+          "answer": "down",
+          "chain": [
+            "res",
+            "rbf"
+          ],
+          "why": "Flow = pressure gradient ÷ resistance. The aortic pressure is unchanged, but the narrowed arterioles add resistance, so less blood gets through the kidney."
+        },
+        {
+          "id": "gbhp",
+          "name": "Glomerular hydrostatic pressure (GBHP)",
+          "answer": "down",
+          "chain": [
+            "res",
+            "gbhp"
+          ],
+          "why": "The narrowing sits upstream of the glomerulus, so more of the pressure is used up in the afferent arteriole and less of it reaches the glomerular capillaries."
+        },
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "down",
+          "chain": [
+            "res",
+            "gbhp",
+            "nfp",
+            "gfr"
+          ],
+          "why": "GBHP is the only pressure pushing fluid out. With CHP and BCOP unchanged, a lower GBHP shrinks the net filtration pressure, and GFR = Kf × NFP falls with it."
+        },
+        {
+          "id": "ff",
+          "name": "Filtration fraction",
+          "answer": "none",
+          "chain": [
+            "rbf",
+            "gfr",
+            "ff"
+          ],
+          "why": "Afferent constriction lowers both the plasma reaching the glomerulus and the fluid filtered from it, by roughly the same share, so the fraction filtered stays about the same. Efferent constriction is the one that raises it."
+        },
+        {
+          "id": "ptc",
+          "name": "Hydrostatic pressure in the peritubular capillaries",
+          "answer": "down",
+          "chain": [
+            "res",
+            "ptc"
+          ],
+          "why": "The peritubular capillaries lie downstream of both arterioles. More pressure lost in the afferent arteriole leaves less for them."
+        },
+        {
+          "id": "renin",
+          "name": "Renin release",
+          "answer": "up",
+          "chain": [
+            "res",
+            "gbhp",
+            "nfp",
+            "gfr",
+            "md",
+            "renin"
+          ],
+          "why": "With less filtrate flowing through the tubule, less NaCl reaches the macula densa, which signals the juxtaglomerular cells to release more renin. Lower pressure at those cells adds to the same signal."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "down",
+          "chain": [
+            "res",
+            "gbhp",
+            "nfp",
+            "gfr",
+            "urine"
+          ],
+          "why": "Every drop of urine starts as filtrate. With GFR lower, less fluid enters the tubules, and less comes out the end."
+        }
+      ]
+    },
+    {
+      "id": "ur-efferent-constricts",
+      "title": "The efferent arterioles constrict",
+      "topic": "glomerular-filtration",
+      "theme": "efferent arteriole constricts",
+      "core": [
+        "gradients",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "constricting a kidney arteriole always lowers GFR",
+      "setup": "A drug moderately narrows the efferent arterioles of both kidneys and has no other effect. Aortic pressure does not change. Predict the kidneys a few minutes later, compared with before the drug.",
+      "start": "The efferent arterioles narrow moderately",
+      "steps": {
+        "res": "Resistance downstream of the glomerulus rises",
+        "rbf": "Less blood flows through the kidney",
+        "back": "Pressure backs up behind the narrowing",
+        "gbhp": "GBHP rises",
+        "gfr": "Net filtration pressure and GFR rise",
+        "ff": "A larger share of the plasma reaching the glomerulus is filtered",
+        "prot": "Proteins left behind become more concentrated",
+        "ptc": "Less pressure is left for the peritubular capillaries",
+        "cop": "Protein-rich blood enters the peritubular capillaries"
+      },
+      "variables": [
+        {
+          "id": "rbf",
+          "name": "Renal blood flow",
+          "answer": "down",
+          "chain": [
+            "res",
+            "rbf"
+          ],
+          "why": "Any added resistance in series with the kidney’s vessels lowers flow through them, wherever the narrowing sits."
+        },
+        {
+          "id": "gbhp",
+          "name": "Glomerular hydrostatic pressure (GBHP)",
+          "answer": "up",
+          "chain": [
+            "res",
+            "back",
+            "gbhp"
+          ],
+          "why": "The narrowing is downstream of the glomerulus, like pinching a garden hose past the nozzle: pressure builds up in the capillaries before it."
+        },
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "up",
+          "chain": [
+            "res",
+            "back",
+            "gbhp",
+            "gfr"
+          ],
+          "why": "Higher GBHP raises the net filtration pressure. With moderate constriction this outweighs the fall in blood flow, so GFR rises. Severe constriction slows flow so much that BCOP climbs along the capillary and GFR falls instead."
+        },
+        {
+          "id": "ff",
+          "name": "Filtration fraction",
+          "answer": "up",
+          "chain": [
+            "res",
+            "rbf",
+            "back",
+            "gbhp",
+            "gfr",
+            "ff"
+          ],
+          "why": "GFR rises while renal plasma flow falls, so GFR ÷ plasma flow rises."
+        },
+        {
+          "id": "bcop",
+          "name": "Blood colloid osmotic pressure at the efferent end of the glomerulus",
+          "answer": "up",
+          "chain": [
+            "ff",
+            "prot"
+          ],
+          "why": "More protein-free fluid leaves each milliliter of plasma, so the proteins left in the capillary are more concentrated by the time blood leaves it."
+        },
+        {
+          "id": "ptc-p",
+          "name": "Hydrostatic pressure in the peritubular capillaries",
+          "answer": "down",
+          "chain": [
+            "res",
+            "ptc"
+          ],
+          "why": "Blood has passed an even higher resistance before reaching the peritubular capillaries, so less pressure is left there."
+        },
+        {
+          "id": "ptc-cop",
+          "name": "Colloid osmotic pressure in the peritubular capillaries",
+          "answer": "up",
+          "chain": [
+            "ff",
+            "prot",
+            "cop"
+          ],
+          "why": "The protein-rich blood leaving the glomerulus flows straight into the peritubular capillaries, and its stronger oncotic pull draws reabsorbed fluid into them."
+        }
+      ]
+    },
+    {
+      "id": "ur-ureter-blocked",
+      "title": "A stone blocks one ureter",
+      "topic": "glomerular-filtration",
+      "core": [
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "a blockage below the kidney cannot change how much the kidney filters",
+      "setup": "A small stone lodges where the left ureter enters the bladder and blocks it completely. The right ureter is open. Predict the left kidney an hour later, compared with before.",
+      "start": "Urine cannot leave the left ureter",
+      "steps": {
+        "back": "Urine backs up into the left renal pelvis and tubules",
+        "chp": "Capsular hydrostatic pressure (CHP) rises in the left kidney",
+        "nfp": "Net filtration pressure falls in the left kidney",
+        "gfr": "GFR of the left kidney falls",
+        "same": "Nothing has changed upstream of the left glomeruli",
+        "right": "The right kidney’s pressures are unchanged"
+      },
+      "variables": [
+        {
+          "id": "chp",
+          "name": "Capsular hydrostatic pressure in the left kidney",
+          "answer": "up",
+          "chain": [
+            "back",
+            "chp"
+          ],
+          "why": "Fluid still enters the capsules but cannot drain, so it builds pressure all the way back from the ureter to the capsular space."
+        },
+        {
+          "id": "gbhp",
+          "name": "Glomerular hydrostatic pressure in the left kidney",
+          "answer": "none",
+          "chain": [
+            "same"
+          ],
+          "why": "The blockage is on the urine side, not the blood side. The arterioles and blood pressure feeding the glomeruli are the same."
+        },
+        {
+          "id": "nfp",
+          "name": "Net filtration pressure in the left kidney",
+          "answer": "down",
+          "chain": [
+            "back",
+            "chp",
+            "nfp"
+          ],
+          "why": "NFP = GBHP − (CHP + BCOP). CHP pushes back against filtration, so when it rises NFP falls: from 15 to 22 mm Hg drops NFP from about 10 to 3."
+        },
+        {
+          "id": "gfr-left",
+          "name": "GFR of the left kidney",
+          "answer": "down",
+          "chain": [
+            "back",
+            "chp",
+            "nfp",
+            "gfr"
+          ],
+          "why": "GFR = Kf × NFP, so a lower net filtration pressure means less filtrate."
+        },
+        {
+          "id": "gfr-right",
+          "name": "GFR of the right kidney",
+          "answer": "none",
+          "chain": [
+            "right"
+          ],
+          "why": "The right ureter drains normally, so its capsular pressure and filtration are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "ur-ace-inhibitor-stenosis",
+      "title": "An ACE inhibitor with narrowed renal arteries",
+      "topic": "glomerular-filtration",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "a drug that lowers blood pressure always protects the kidney",
+      "setup": "Both of a man’s renal arteries are narrowed by plaque, so less pressure reaches his kidneys, and his GFR is being held up by angiotensin II. He starts taking an ACE inhibitor. Predict his kidneys a few days later, compared with before the drug.",
+      "start": "Less angiotensin II is made",
+      "steps": {
+        "ang": "Angiotensin II in the blood falls",
+        "eff": "The efferent arterioles relax",
+        "gbhp": "Pressure no longer backs up in the glomerulus: GBHP falls",
+        "gfr": "GFR falls",
+        "urine": "Less filtrate enters the tubules",
+        "md": "Less NaCl reaches the macula densa",
+        "renin": "Juxtaglomerular cells release more renin"
+      },
+      "variables": [
+        {
+          "id": "ang2",
+          "name": "Angiotensin II",
+          "answer": "down",
+          "chain": [
+            "ang"
+          ],
+          "why": "An ACE inhibitor blocks the enzyme that converts angiotensin I into angiotensin II."
+        },
+        {
+          "id": "eff",
+          "name": "Diameter of the efferent arterioles",
+          "answer": "up",
+          "chain": [
+            "ang",
+            "eff"
+          ],
+          "why": "At moderate levels angiotensin II constricts the efferent arteriole more than the afferent. Take it away and the efferent arteriole widens."
+        },
+        {
+          "id": "gbhp",
+          "name": "Glomerular hydrostatic pressure (GBHP)",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "eff",
+            "gbhp"
+          ],
+          "why": "With low inflow pressure from the narrowed renal arteries, the tight efferent arterioles were what kept pressure up in the glomerulus. Once they relax, it drains away."
+        },
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "eff",
+            "gbhp",
+            "gfr"
+          ],
+          "why": "Lower GBHP means lower net filtration pressure, so GFR falls, sometimes sharply. This is why the drug is used with care in narrowed renal arteries."
+        },
+        {
+          "id": "renin",
+          "name": "Renin release",
+          "answer": "up",
+          "chain": [
+            "ang",
+            "eff",
+            "gbhp",
+            "gfr",
+            "md",
+            "renin"
+          ],
+          "why": "The drug acts after renin. With less filtrate, less NaCl reaches the macula densa, and the juxtaglomerular cells release more renin, though little of it can become angiotensin II."
+        },
+        {
+          "id": "urine",
+          "name": "Urine output",
+          "answer": "down",
+          "chain": [
+            "ang",
+            "eff",
+            "gbhp",
+            "gfr",
+            "urine"
+          ],
+          "why": "Every drop of urine starts as filtrate, so a sharp fall in GFR means less fluid enters the tubules and less urine is made."
+        }
+      ]
+    },
+    {
+      "id": "ur-albumin-leak",
+      "title": "Damaged podocytes leak albumin",
+      "topic": "glomerular-filtration",
+      "core": [
+        "gradients",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "losing protein in urine only affects the kidney",
+      "setup": "Disease damages a woman’s podocytes, and for several weeks large amounts of albumin pass her filtration membrane. Predict her state compared with before the disease.",
+      "start": "The slit diaphragms and podocytes are damaged",
+      "steps": {
+        "leak": "Albumin crosses the filtration membrane",
+        "urine": "Albumin passes into the urine: proteinuria",
+        "foam": "Protein-laden urine foams",
+        "alb": "Plasma albumin falls",
+        "bcop": "Blood colloid osmotic pressure falls",
+        "filt": "Fluid filters out of systemic capillaries faster",
+        "edema": "Fluid collects in the tissues: edema"
+      },
+      "variables": [
+        {
+          "id": "urine-protein",
+          "name": "Protein in the urine",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "urine"
+          ],
+          "why": "The damaged slit diaphragms no longer hold albumin back, and more reaches the tubule than the proximal tubule can take up, so it spills into the urine."
+        },
+        {
+          "id": "albumin",
+          "name": "Plasma albumin",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "urine",
+            "alb"
+          ],
+          "why": "The liver cannot make albumin as fast as it is lost in the urine, so plasma albumin falls."
+        },
+        {
+          "id": "bcop",
+          "name": "Blood colloid osmotic pressure",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "urine",
+            "alb",
+            "bcop"
+          ],
+          "why": "Albumin supplies most of the oncotic pull of plasma, so less albumin means a weaker pull."
+        },
+        {
+          "id": "edema",
+          "name": "Swelling around the eyes and ankles",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "urine",
+            "alb",
+            "bcop",
+            "filt",
+            "edema"
+          ],
+          "why": "With less oncotic pull holding fluid in, the Starling balance in every systemic capillary tips toward filtration. When filtration outpaces drainage, fluid collects as edema."
+        },
+        {
+          "id": "foam",
+          "name": "Foaminess of the urine",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "urine",
+            "foam"
+          ],
+          "why": "Protein in a liquid stabilizes bubbles, so heavily protein-laden urine looks foamy."
+        }
+      ]
+    },
+    {
+      "id": "ur-diabetes-glucose",
+      "title": "Blood glucose at 400 mg/dL",
+      "topic": "tubular-transport",
+      "core": [
+        "mass-balance",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "glucose appears in urine because the tubule stops reabsorbing it",
+      "setup": "A man with uncontrolled diabetes mellitus has a plasma glucose of 400 mg/dL instead of his usual 100. His GFR is normal. Predict his kidneys’ glucose handling, compared with a normal glucose.",
+      "start": "Plasma glucose rises to 400 mg/dL",
+      "steps": {
+        "load": "Filtered load = GFR × plasma glucose rises",
+        "sat": "Every glucose carrier in the proximal tubule is busy",
+        "tm": "Reabsorption reaches its ceiling, the transport maximum",
+        "same": "The number of carriers has not changed",
+        "spill": "Glucose beyond the carriers’ reach stays in the tubule",
+        "water": "Glucose left in the tubule holds water by osmosis",
+        "urine": "More urine is passed"
+      },
+      "variables": [
+        {
+          "id": "load",
+          "name": "Filtered load of glucose",
+          "answer": "up",
+          "chain": [
+            "load"
+          ],
+          "why": "Glucose is filtered freely, so four times the plasma concentration puts four times as much glucose into the tubules each minute: about 500 mg/min instead of 125."
+        },
+        {
+          "id": "reab",
+          "name": "Glucose reabsorbed per minute",
+          "answer": "up",
+          "chain": [
+            "load",
+            "sat",
+            "tm"
+          ],
+          "why": "Reabsorption does not stop; it rises from 125 mg/min to its ceiling of about 375 mg/min, because more carriers are now in use. It simply cannot rise any further."
+        },
+        {
+          "id": "tm",
+          "name": "Transport maximum for glucose",
+          "answer": "none",
+          "chain": [
+            "same"
+          ],
+          "why": "Tm is set by how many carriers the proximal tubule has. High glucose fills them but does not add any."
+        },
+        {
+          "id": "excr",
+          "name": "Glucose excreted in the urine",
+          "answer": "up",
+          "chain": [
+            "load",
+            "sat",
+            "tm",
+            "spill"
+          ],
+          "why": "Excreted = filtered − reabsorbed = about 500 − 375 = 125 mg/min. At a normal glucose none is excreted."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "load",
+            "sat",
+            "tm",
+            "spill",
+            "water",
+            "urine"
+          ],
+          "why": "Unreabsorbed glucose keeps water in the tubule by osmosis, so he passes more urine (polyuria) and grows thirsty."
+        }
+      ]
+    },
+    {
+      "id": "ur-sglt2-blocker",
+      "title": "A drug blocks SGLT2",
+      "topic": "tubular-transport",
+      "core": [
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "blocking a proximal tubule carrier cannot change how much the glomerulus filters",
+      "setup": "A woman with type 2 diabetes starts a drug that blocks SGLT2, the main sodium–glucose symporter of the proximal tubule. Predict her state a week later, compared with before the drug.",
+      "start": "SGLT2 in the proximal tubule is blocked",
+      "steps": {
+        "glu": "Less glucose is reabsorbed in the proximal tubule",
+        "excr": "Glucose spills into the urine at normal blood levels",
+        "pg": "Plasma glucose falls",
+        "na": "Less sodium is reabsorbed with the glucose",
+        "md": "More NaCl reaches the macula densa",
+        "aff": "The macula densa signals the afferent arteriole to constrict",
+        "gfr": "GBHP and GFR fall",
+        "water": "Extra glucose and sodium hold water in the tubule"
+      },
+      "variables": [
+        {
+          "id": "excr",
+          "name": "Glucose in the urine",
+          "answer": "up",
+          "chain": [
+            "glu",
+            "excr"
+          ],
+          "why": "Without SGLT2, the tubule reaches its limit at a far lower glucose, so glucose appears in urine even at normal plasma levels."
+        },
+        {
+          "id": "pg",
+          "name": "Plasma glucose",
+          "answer": "down",
+          "chain": [
+            "glu",
+            "excr",
+            "pg"
+          ],
+          "why": "Glucose leaving in the urine is glucose removed from the blood: that is how the drug treats diabetes."
+        },
+        {
+          "id": "md",
+          "name": "NaCl reaching the macula densa",
+          "answer": "up",
+          "chain": [
+            "na",
+            "md"
+          ],
+          "why": "SGLT2 carries sodium with every glucose. Block it and that sodium stays in the tubular fluid and flows on toward the macula densa."
+        },
+        {
+          "id": "aff",
+          "name": "Diameter of the afferent arterioles",
+          "answer": "down",
+          "chain": [
+            "na",
+            "md",
+            "aff"
+          ],
+          "why": "More NaCl at the macula densa triggers tubuloglomerular feedback: its cells release ATP, which becomes adenosine and constricts the neighboring afferent arteriole."
+        },
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "down",
+          "chain": [
+            "na",
+            "md",
+            "aff",
+            "gfr"
+          ],
+          "why": "A narrower afferent arteriole lets less pressure reach the glomerulus, so GFR falls a little. Lowering the pressure in overworked glomeruli is thought to be part of how these drugs protect the kidneys."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "glu",
+            "na",
+            "water"
+          ],
+          "why": "Glucose and sodium that stay in the tubule hold water with them by osmosis, so a little more urine is passed."
+        }
+      ]
+    },
+    {
+      "id": "ur-adh-blocked",
+      "title": "ADH is blocked",
+      "topic": "urine-concentration",
+      "theme": "ADH is blocked",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "without ADH the whole nephron stops reabsorbing water",
+      "setup": "A drug blocks the ADH receptor proteins on the principal cells of the collecting duct. The man taking it has normal ADH release and drinks when thirsty. Predict the changes over the next day, compared with before the drug.",
+      "start": "ADH can no longer act on principal cells",
+      "steps": {
+        "camp": "No rise in cAMP inside principal cells",
+        "aqp": "Aquaporins are pulled back out of the apical membrane",
+        "perm": "The collecting duct becomes nearly waterproof",
+        "urine": "Dilute fluid passes through the collecting duct and out",
+        "loss": "The body loses water faster than salt",
+        "posm": "Plasma osmolarity rises",
+        "hyp": "Hypothalamic osmoreceptors fire more",
+        "adh": "More ADH is released, but it has no effect",
+        "thirst": "Thirst rises",
+        "early": "Segments before the collecting duct work without ADH"
+      },
+      "variables": [
+        {
+          "id": "aqp",
+          "name": "Aquaporins in the apical membrane of principal cells",
+          "answer": "down",
+          "chain": [
+            "camp",
+            "aqp"
+          ],
+          "why": "ADH normally raises cAMP, which makes vesicles carrying aquaporins fuse with the apical membrane. Without that signal the cell pulls them back in by endocytosis."
+        },
+        {
+          "id": "urine-vol",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "camp",
+            "aqp",
+            "perm",
+            "urine"
+          ],
+          "why": "Facultative water reabsorption stops, so the 15 to 20 percent of filtered water that reaches the collecting duct mostly stays in it and leaves as urine."
+        },
+        {
+          "id": "urine-osm",
+          "name": "Urine osmolarity",
+          "answer": "down",
+          "chain": [
+            "camp",
+            "aqp",
+            "perm",
+            "urine"
+          ],
+          "why": "Fluid enters the collecting duct at about 100 mOsm/L. With no water leaving it, salt reabsorption there makes it more dilute still, down to about 50 mOsm/L."
+        },
+        {
+          "id": "tal",
+          "name": "Osmolarity of fluid leaving the thick ascending limb",
+          "answer": "none",
+          "chain": [
+            "early"
+          ],
+          "why": "ADH acts on the collecting duct. The proximal tubule and nephron loop do their work without it, so fluid still leaves the loop at about 100 mOsm/L."
+        },
+        {
+          "id": "posm",
+          "name": "Plasma osmolarity",
+          "answer": "up",
+          "chain": [
+            "camp",
+            "aqp",
+            "perm",
+            "urine",
+            "loss",
+            "posm"
+          ],
+          "why": "Large volumes of dilute urine carry away more water than solute, so the solutes left in the plasma become more concentrated."
+        },
+        {
+          "id": "adh",
+          "name": "ADH in the blood",
+          "answer": "up",
+          "chain": [
+            "loss",
+            "posm",
+            "hyp",
+            "adh"
+          ],
+          "why": "The osmoreceptors and posterior pituitary are unaffected. Rising plasma osmolarity makes them release more ADH, but the blocked receptor proteins cannot respond to it."
+        },
+        {
+          "id": "thirst",
+          "name": "Thirst",
+          "answer": "up",
+          "chain": [
+            "loss",
+            "posm",
+            "hyp",
+            "thirst"
+          ],
+          "why": "The same rise in osmolarity drives thirst, and drinking is what keeps his plasma from climbing further."
+        }
+      ]
+    },
+    {
+      "id": "ur-loop-diuretic",
+      "title": "A loop diuretic",
+      "topic": "urine-concentration",
+      "theme": "a loop diuretic",
+      "core": [
+        "gradients",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "a diuretic only makes you lose water",
+      "setup": "A patient with fluid overload from heart failure is given furosemide, which blocks NKCC2 in the thick ascending limb. Predict the changes over the next few hours, compared with before the dose.",
+      "start": "NKCC2 in the thick ascending limb is blocked",
+      "steps": {
+        "nacl": "NaCl stays in the tubular fluid",
+        "grad": "Less salt is added to the medulla; the gradient fades",
+        "conc": "The collecting duct has no salty medulla to lose water to",
+        "water": "The extra sodium holds water in the tubule",
+        "urine": "Urine volume rises",
+        "vol": "Blood volume falls",
+        "kflow": "More sodium and faster flow reach the principal cells",
+        "k": "Potassium secretion rises",
+        "pos": "The lumen of the thick ascending limb loses its positive charge",
+        "ca": "Less calcium is reabsorbed between the cells"
+      },
+      "variables": [
+        {
+          "id": "tal-na",
+          "name": "Sodium reabsorbed by the thick ascending limb",
+          "answer": "down",
+          "chain": [
+            "nacl"
+          ],
+          "why": "NKCC2 is the entry step for sodium in this segment. Blocked, it lets about a quarter of the filtered sodium flow on."
+        },
+        {
+          "id": "medulla",
+          "name": "Osmolarity of the inner medulla",
+          "answer": "down",
+          "chain": [
+            "nacl",
+            "grad"
+          ],
+          "why": "The countercurrent multiplier runs on NKCC2. Without its pumping, the vasa recta slowly carry away the salt already there, and the gradient runs down."
+        },
+        {
+          "id": "max-osm",
+          "name": "Highest urine osmolarity the kidney can reach",
+          "answer": "down",
+          "chain": [
+            "nacl",
+            "grad",
+            "conc"
+          ],
+          "why": "Water leaves the collecting duct only by osmosis into the medulla, so urine can never be more concentrated than the medulla around it."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "nacl",
+            "water",
+            "urine"
+          ],
+          "why": "Sodium left in the tubule holds water with it, and so much sodium is left that no later segment can catch it all. Loop diuretics are the most powerful kind."
+        },
+        {
+          "id": "vol",
+          "name": "Blood volume",
+          "answer": "down",
+          "chain": [
+            "nacl",
+            "water",
+            "urine",
+            "vol"
+          ],
+          "why": "Sodium and water leaving in the urine come from the extracellular fluid, which is how the drug relieves fluid overload."
+        },
+        {
+          "id": "k",
+          "name": "Potassium in the urine",
+          "answer": "up",
+          "chain": [
+            "nacl",
+            "kflow",
+            "k"
+          ],
+          "why": "More sodium enters the principal cells, and faster flow sweeps secreted potassium away, so potassium secretion rises. Some patients develop low plasma potassium."
+        },
+        {
+          "id": "ca",
+          "name": "Calcium in the urine",
+          "answer": "up",
+          "chain": [
+            "nacl",
+            "pos",
+            "ca"
+          ],
+          "why": "Potassium recycling through NKCC2 normally makes the lumen positive, which pushes calcium and magnesium out between the cells. With that charge gone, more calcium stays in the urine."
+        }
+      ]
+    },
+    {
+      "id": "ur-thiazide",
+      "title": "A thiazide diuretic",
+      "topic": "urine-concentration",
+      "core": [
+        "gradients",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "all diuretics make you lose calcium",
+      "setup": "A woman with high blood pressure starts hydrochlorothiazide, which blocks the sodium–chloride symporter in the distal convoluted tubule. Predict the changes after a week, compared with before the drug.",
+      "start": "The DCT’s sodium–chloride symporter is blocked",
+      "steps": {
+        "na": "About 5% of filtered sodium is no longer reabsorbed",
+        "water": "The extra sodium holds water in the tubule",
+        "urine": "Urine volume rises a little",
+        "kflow": "More sodium and fluid reach the principal cells",
+        "k": "Potassium secretion rises",
+        "ca": "The DCT reabsorbs more calcium",
+        "loop": "The thick ascending limb still pumps salt into the medulla"
+      },
+      "variables": [
+        {
+          "id": "na",
+          "name": "Sodium in the urine",
+          "answer": "up",
+          "chain": [
+            "na"
+          ],
+          "why": "The symporter normally reabsorbs about 5% of filtered sodium. Blocked, most of that sodium is lost in the urine."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "na",
+            "water",
+            "urine"
+          ],
+          "why": "Sodium holds water with it, but the effect is moderate because only a small share of filtered sodium is involved, which suits long-term treatment."
+        },
+        {
+          "id": "k",
+          "name": "Potassium in the urine",
+          "answer": "up",
+          "chain": [
+            "na",
+            "kflow",
+            "k"
+          ],
+          "why": "More sodium and faster flow reaching the principal cells drive more potassium secretion, just as with a loop diuretic."
+        },
+        {
+          "id": "ca",
+          "name": "Calcium in the urine",
+          "answer": "down",
+          "chain": [
+            "ca"
+          ],
+          "why": "Unlike a loop diuretic, a thiazide makes the distal tubule reabsorb more calcium, so less is lost. That is why thiazides are used to prevent calcium stones."
+        },
+        {
+          "id": "conc",
+          "name": "Ability to make concentrated urine",
+          "answer": "none",
+          "chain": [
+            "loop"
+          ],
+          "why": "The thick ascending limb is untouched, so the medullary gradient remains and ADH can still concentrate the urine."
+        }
+      ]
+    },
+    {
+      "id": "ur-dehydration",
+      "title": "A day without water: inside the kidney",
+      "topic": "urine-concentration",
+      "theme": "dehydration",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "the kidneys can make up for any water loss by making less urine",
+      "setup": "A roofer works 10 hours in the heat, sweats about 3 liters, and drinks almost nothing. Sweat has less salt than plasma. Predict his state at the end of the shift, compared with the morning.",
+      "start": "He loses more water than salt",
+      "steps": {
+        "posm": "Plasma osmolarity rises",
+        "vol": "Blood volume falls",
+        "osmo": "Hypothalamic osmoreceptors fire",
+        "adh": "The posterior pituitary releases more ADH",
+        "aqp": "Principal cells insert more aquaporins",
+        "urea": "More urea carriers open in the inner medullary collecting duct",
+        "out": "Water leaves the collecting duct into the salty medulla",
+        "urine": "A small volume of urine near 1,200 mOsm/L",
+        "renin": "Lower volume raises renin release",
+        "ald": "Angiotensin II makes the adrenal cortex release aldosterone",
+        "pct": "The proximal tubule still returns fluid at plasma osmolarity",
+        "floor": "Waste solute still needs at least about 0.5 L of urine"
+      },
+      "variables": [
+        {
+          "id": "adh",
+          "name": "ADH in the blood",
+          "answer": "up",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh"
+          ],
+          "why": "A rise in plasma osmolarity of just 1 to 2 percent is enough to make hypothalamic neurons release more ADH, and the fall in volume adds to it later."
+        },
+        {
+          "id": "aqp",
+          "name": "Aquaporins in principal cells’ apical membranes",
+          "answer": "up",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh",
+            "aqp"
+          ],
+          "why": "ADH raises cAMP in principal cells, and vesicles carrying aquaporins fuse with the apical membrane."
+        },
+        {
+          "id": "urea",
+          "name": "Urea moving from the collecting duct into the inner medulla",
+          "answer": "up",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh",
+            "urea"
+          ],
+          "why": "ADH also adds urea carriers in the inner medullary collecting duct. Urea concentrated by water loss upstream diffuses out and keeps the inner medulla very salty."
+        },
+        {
+          "id": "urine-osm",
+          "name": "Urine osmolarity",
+          "answer": "up",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh",
+            "aqp",
+            "out",
+            "urine"
+          ],
+          "why": "With aquaporins in place, the collecting duct loses water until its fluid nearly matches the medulla, up to about 1,200 mOsm/L."
+        },
+        {
+          "id": "urine-vol",
+          "name": "Urine volume",
+          "answer": "down",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh",
+            "aqp",
+            "out",
+            "urine",
+            "floor"
+          ],
+          "why": "More water is reabsorbed, so less leaves. But it cannot fall below about 0.5 L a day: the day’s 600 mOsm of waste needs that much water even at 1,200 mOsm/L."
+        },
+        {
+          "id": "ald",
+          "name": "Aldosterone",
+          "answer": "up",
+          "chain": [
+            "vol",
+            "renin",
+            "ald"
+          ],
+          "why": "The fall in blood volume raises renin release, and the angiotensin II that follows makes the adrenal cortex release aldosterone, so he keeps sodium as well as water."
+        },
+        {
+          "id": "pct",
+          "name": "Osmolarity of fluid leaving the proximal tubule",
+          "answer": "none",
+          "chain": [
+            "pct"
+          ],
+          "why": "The proximal tubule reabsorbs solute and water together whatever ADH does, so its fluid leaves at plasma osmolarity. That is obligatory reabsorption."
+        }
+      ]
+    },
+    {
+      "id": "ur-water-load-l4",
+      "title": "A liter of water, then the kidneys catch up",
+      "topic": "urine-concentration",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 4,
+      "misconception": "drinking extra water dilutes the blood for hours",
+      "setup": "A student drinks a liter of water in five minutes on an empty stomach. First predict the state half an hour later; then predict three hours later, once most of the extra water has been passed.",
+      "stages": [
+        {
+          "id": "half-hour",
+          "label": "Half an hour after drinking",
+          "prompt": "Thirty minutes after the liter, compared with before drinking.",
+          "start": "Water is absorbed from the gut into the blood",
+          "steps": {
+            "posm": "Plasma osmolarity falls slightly",
+            "osmo": "Hypothalamic osmoreceptors fire less",
+            "adh": "Less ADH is released",
+            "aqp": "Principal cells pull aquaporins back into vesicles",
+            "urine": "The collecting duct lets dilute fluid through",
+            "early": "The loop still delivers fluid at about 100 mOsm/L"
+          },
+          "variables": [
+            {
+              "id": "adh",
+              "name": "ADH in the blood",
+              "answer": "down",
+              "chain": [
+                "posm",
+                "osmo",
+                "adh"
+              ],
+              "why": "Absorbed water dilutes the plasma. A fall of 1 to 2 percent in osmolarity is enough for the osmoreceptors to cut ADH release."
+            },
+            {
+              "id": "urine-vol",
+              "name": "Urine flow",
+              "answer": "up",
+              "chain": [
+                "posm",
+                "osmo",
+                "adh",
+                "aqp",
+                "urine"
+              ],
+              "why": "Without ADH, the collecting duct becomes nearly waterproof, so the water reaching it flows out as urine instead of being reabsorbed."
+            },
+            {
+              "id": "urine-osm",
+              "name": "Urine osmolarity",
+              "answer": "down",
+              "chain": [
+                "posm",
+                "osmo",
+                "adh",
+                "aqp",
+                "urine"
+              ],
+              "why": "Fluid leaves the thick ascending limb at about 100 mOsm/L and loses no water on the way out, so urine can fall toward 50 mOsm/L: pale and dilute."
+            },
+            {
+              "id": "tal",
+              "name": "Osmolarity of fluid leaving the thick ascending limb",
+              "answer": "none",
+              "chain": [
+                "early"
+              ],
+              "why": "The loop pumps salt out without ADH’s help, so it keeps diluting the fluid to about 100 mOsm/L either way."
+            }
+          ]
+        },
+        {
+          "id": "three-hours",
+          "label": "Three hours later",
+          "prompt": "Three hours after the liter, once most of it has been passed, compared with the half-hour point.",
+          "start": "The extra water has been excreted",
+          "steps": {
+            "posm": "Plasma osmolarity returns to normal",
+            "osmo": "Osmoreceptors fire at their usual rate again",
+            "adh": "ADH release returns to its usual level",
+            "aqp": "Aquaporins return to the apical membrane",
+            "urine": "Water is reabsorbed again in the collecting duct"
+          },
+          "variables": [
+            {
+              "id": "posm",
+              "name": "Plasma osmolarity",
+              "answer": "up",
+              "chain": [
+                "posm"
+              ],
+              "why": "Passing more water than solute undid the dilution, so osmolarity has risen back to its set point. The negative feedback removed its own stimulus."
+            },
+            {
+              "id": "adh",
+              "name": "ADH in the blood",
+              "answer": "up",
+              "chain": [
+                "posm",
+                "osmo",
+                "adh"
+              ],
+              "why": "Back at normal osmolarity, the osmoreceptors restore the usual level of ADH release."
+            },
+            {
+              "id": "urine-vol",
+              "name": "Urine flow",
+              "answer": "down",
+              "chain": [
+                "posm",
+                "osmo",
+                "adh",
+                "aqp",
+                "urine"
+              ],
+              "why": "ADH puts aquaporins back into principal cells, facultative water reabsorption resumes, and urine flow drops back to normal."
+            },
+            {
+              "id": "urine-osm",
+              "name": "Urine osmolarity",
+              "answer": "up",
+              "chain": [
+                "posm",
+                "osmo",
+                "adh",
+                "aqp",
+                "urine"
+              ],
+              "why": "Water leaving the collecting duct into the salty medulla concentrates the urine again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ur-hemorrhage-kidney",
+      "title": "Hemorrhage and the kidney",
+      "topic": "renal-function-urine",
+      "theme": "hemorrhage and the kidney",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "autoregulation protects GFR whatever happens to blood pressure",
+      "setup": "After a car crash, a man loses about 1.5 liters of blood, and his mean arterial pressure falls to about 65 mm Hg, below the range where the kidney can hold GFR steady. Predict his kidneys over the next hour, compared with before the crash.",
+      "start": "Blood volume and arterial pressure fall",
+      "steps": {
+        "baro": "The baroreflex raises sympathetic output",
+        "aff": "Sympathetic fibers constrict the afferent arterioles strongly",
+        "low": "Pressure is below the autoregulatory range",
+        "gbhp": "GBHP falls",
+        "gfr": "GFR falls",
+        "renin": "Juxtaglomerular cells release more renin (beta-1 and low pressure)",
+        "ang": "Angiotensin II rises",
+        "ald": "Aldosterone rises",
+        "adh": "Low volume raises ADH release",
+        "na": "Tubules reabsorb more sodium",
+        "water": "Collecting ducts reabsorb more water",
+        "urine": "Very little urine is made"
+      },
+      "variables": [
+        {
+          "id": "rbf",
+          "name": "Renal blood flow",
+          "answer": "down",
+          "chain": [
+            "baro",
+            "aff"
+          ],
+          "why": "Strong sympathetic constriction of the kidney’s arterioles cuts flow to the kidney and shifts blood toward the brain and heart."
+        },
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "down",
+          "chain": [
+            "baro",
+            "aff",
+            "low",
+            "gbhp",
+            "gfr"
+          ],
+          "why": "Below a MAP of about 80 mm Hg autoregulation can no longer hold GBHP up, and sympathetic constriction of the afferent arterioles lowers it further, so GFR falls."
+        },
+        {
+          "id": "renin",
+          "name": "Renin release",
+          "answer": "up",
+          "chain": [
+            "baro",
+            "renin"
+          ],
+          "why": "All three triggers act together: low pressure in the afferent arteriole, sympathetic stimulation through beta-1 receptor proteins, and less NaCl reaching the macula densa."
+        },
+        {
+          "id": "ald",
+          "name": "Aldosterone",
+          "answer": "up",
+          "chain": [
+            "baro",
+            "renin",
+            "ang",
+            "ald"
+          ],
+          "why": "Renin leads to angiotensin II, which makes the adrenal cortex release aldosterone."
+        },
+        {
+          "id": "adh",
+          "name": "ADH",
+          "answer": "up",
+          "chain": [
+            "adh"
+          ],
+          "why": "A fall in blood volume of roughly 5 to 10 percent or more makes the posterior pituitary release ADH even when osmolarity is normal."
+        },
+        {
+          "id": "urine-na",
+          "name": "Sodium in the urine",
+          "answer": "down",
+          "chain": [
+            "baro",
+            "renin",
+            "ang",
+            "ald",
+            "na"
+          ],
+          "why": "Angiotensin II raises sodium reabsorption in the proximal tubule and aldosterone adds sodium channels in principal cells, so almost no sodium escapes."
+        },
+        {
+          "id": "urine-vol",
+          "name": "Urine output",
+          "answer": "down",
+          "chain": [
+            "baro",
+            "aff",
+            "low",
+            "gbhp",
+            "gfr",
+            "adh",
+            "water",
+            "urine"
+          ],
+          "why": "Less filtrate enters the tubules and more of it is reabsorbed, so output can fall below 0.5 mL per kg per hour: the kidney is saving volume."
+        },
+        {
+          "id": "urine-osm",
+          "name": "Urine osmolarity",
+          "answer": "up",
+          "chain": [
+            "adh",
+            "water",
+            "urine"
+          ],
+          "why": "ADH lets water leave the collecting duct into the salty medulla, so the little urine that is made is concentrated."
+        }
+      ]
+    },
+    {
+      "id": "ur-pressure-natriuresis",
+      "title": "Raising the pressure to one kidney",
+      "topic": "renal-function-urine",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "because autoregulation holds GFR steady, the kidney ignores blood pressure",
+      "setup": "In an experiment, the arterial pressure reaching an animal’s kidney is raised from 100 to 140 mm Hg, while its hormones and kidney nerves are held constant. Predict the kidney’s output an hour later, compared with before.",
+      "start": "Arterial pressure to the kidney rises",
+      "steps": {
+        "auto": "Autoregulation constricts the afferent arterioles",
+        "gfr": "GFR stays nearly the same",
+        "ptc": "More pressure still reaches the peritubular capillaries and vasa recta",
+        "int": "Pressure in the kidney’s interstitial fluid rises",
+        "nhe": "Proximal tubule cells pull sodium–hydrogen exchangers out of their apical membrane",
+        "back": "Some reabsorbed fluid leaks back through leaky tight junctions",
+        "na": "Less sodium is reabsorbed in the proximal tubule",
+        "out": "More sodium and water flow on and leave in the urine"
+      },
+      "variables": [
+        {
+          "id": "gfr",
+          "name": "GFR",
+          "answer": "none",
+          "chain": [
+            "auto",
+            "gfr"
+          ],
+          "why": "140 mm Hg is inside the autoregulatory range of about 80 to 180 mm Hg, so the myogenic mechanism and tubuloglomerular feedback hold GFR nearly steady."
+        },
+        {
+          "id": "int",
+          "name": "Pressure in the kidney’s interstitial fluid",
+          "answer": "up",
+          "chain": [
+            "ptc",
+            "int"
+          ],
+          "why": "Autoregulation acts on the afferent arteriole and protects the glomerulus, but the higher pressure still reaches the capillaries around the tubules."
+        },
+        {
+          "id": "pct",
+          "name": "Sodium reabsorbed by the proximal tubule",
+          "answer": "down",
+          "chain": [
+            "ptc",
+            "int",
+            "nhe",
+            "back",
+            "na"
+          ],
+          "why": "Fewer exchangers bring sodium into the cells, and some fluid that was reabsorbed leaks back into the tubule between the cells."
+        },
+        {
+          "id": "na-out",
+          "name": "Sodium excreted in the urine",
+          "answer": "up",
+          "chain": [
+            "ptc",
+            "int",
+            "nhe",
+            "back",
+            "na",
+            "out"
+          ],
+          "why": "This is pressure natriuresis: even with every hormone held constant, a higher pressure makes the kidney excrete more sodium, steeply."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "ptc",
+            "int",
+            "nhe",
+            "back",
+            "na",
+            "out"
+          ],
+          "why": "Water leaves with the extra sodium (pressure diuresis). In a whole person, the lost volume lowers pressure back toward normal."
+        }
+      ]
+    },
+    {
+      "id": "ur-gfr-halved",
+      "title": "GFR falls by half and stays there",
+      "topic": "renal-function-urine",
+      "core": [
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "a plasma creatinine that is still a small number means the kidneys are fine",
+      "setup": "Kidney disease lowers a man’s GFR from 120 to 60 mL/min, and it stays there. His muscle mass does not change. Predict his state two weeks later, once things have settled, compared with before the disease.",
+      "start": "GFR halves",
+      "steps": {
+        "make": "Muscle keeps making creatinine at the same rate",
+        "first": "At first, less creatinine is filtered than is made",
+        "rise": "Plasma creatinine rises",
+        "load": "Each milliliter filtered now carries more creatinine",
+        "steady": "Excretion climbs back until it equals production",
+        "egfr": "The lab’s estimate of GFR falls"
+      },
+      "variables": [
+        {
+          "id": "pcr",
+          "name": "Plasma creatinine",
+          "answer": "up",
+          "chain": [
+            "first",
+            "rise"
+          ],
+          "why": "Creatinine is removed mainly by filtration. With half the filtering, creatinine accumulates until the plasma level has doubled, from about 1.0 to about 2.0 mg/dL."
+        },
+        {
+          "id": "make",
+          "name": "Creatinine made by muscle each day",
+          "answer": "none",
+          "chain": [
+            "make"
+          ],
+          "why": "Production is set by muscle mass, not by the kidneys, so it stays the same."
+        },
+        {
+          "id": "excr",
+          "name": "Creatinine excreted each day, once steady",
+          "answer": "none",
+          "chain": [
+            "first",
+            "rise",
+            "load",
+            "steady"
+          ],
+          "why": "At steady state, excretion equals production. Half the GFR times twice the plasma level gives the same amount excreted as before."
+        },
+        {
+          "id": "egfr",
+          "name": "Estimated GFR (eGFR)",
+          "answer": "down",
+          "chain": [
+            "first",
+            "rise",
+            "egfr"
+          ],
+          "why": "eGFR is calculated from plasma creatinine, age and sex. A higher plasma creatinine gives a lower estimate, which is how the loss is caught."
+        }
+      ]
+    },
+    {
+      "id": "ur-bladder-muscarinic-block",
+      "title": "A drug for an overactive bladder",
+      "topic": "kidney-anatomy",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "relaxing the bladder muscle makes it empty more easily",
+      "setup": "An older woman with a sudden, frequent urge to urinate starts a drug that blocks muscarinic receptor proteins. Predict her bladder a week later, compared with before the drug.",
+      "start": "Muscarinic receptor proteins on the detrusor are blocked",
+      "steps": {
+        "ach": "Parasympathetic acetylcholine has less effect on the detrusor",
+        "weak": "Detrusor contractions are weaker",
+        "urge": "Fewer unwanted contractions while the bladder fills",
+        "empty": "The bladder empties less completely",
+        "pud": "The pudendal nerve uses nicotinic signaling at skeletal muscle"
+      },
+      "variables": [
+        {
+          "id": "detrusor",
+          "name": "Strength of detrusor contractions",
+          "answer": "down",
+          "chain": [
+            "ach",
+            "weak"
+          ],
+          "why": "Parasympathetic fibers from S2 to S4 make the detrusor contract by releasing acetylcholine onto muscarinic receptor proteins. Blocking them weakens the contraction."
+        },
+        {
+          "id": "urge",
+          "name": "Episodes of sudden urge",
+          "answer": "down",
+          "chain": [
+            "ach",
+            "weak",
+            "urge"
+          ],
+          "why": "The urge in an overactive bladder comes from the detrusor contracting while it should be relaxed. Weaker contractions mean fewer episodes, which is why the drug is used."
+        },
+        {
+          "id": "residual",
+          "name": "Urine left in the bladder after voiding",
+          "answer": "up",
+          "chain": [
+            "ach",
+            "weak",
+            "empty"
+          ],
+          "why": "Emptying needs a strong, sustained detrusor contraction. Weakened, it can leave urine behind, and some people have trouble emptying fully."
+        },
+        {
+          "id": "ext",
+          "name": "Strength of the external urethral sphincter",
+          "answer": "none",
+          "chain": [
+            "pud"
+          ],
+          "why": "The external sphincter is skeletal muscle driven by the pudendal nerve, whose acetylcholine acts on nicotinic receptor proteins, not muscarinic ones."
+        }
+      ]
     }
   ]
 }
