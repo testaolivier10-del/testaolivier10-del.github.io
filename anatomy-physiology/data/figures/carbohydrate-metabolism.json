@@ -1,0 +1,60 @@
+{
+  "os-24-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.5",
+      "section": "24.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/364357dcdfb48592130ea9a86bdaadd12da46480",
+      "page": "24-2-carbohydrate-metabolism"
+    },
+    "alt": "Glycolysis drawn in three stacked panels, starting from one six-carbon glucose at the top. Panel 1, the energy-consuming phase: two ATP each give a phosphate to the glucose, becoming ADP, and the doubly phosphorylated six-carbon sugar splits into two three-carbon pieces, each carrying one phosphate. Panel 2: each three-carbon piece gives up two electrons to NAD+, making NADH, and the energy released adds a free phosphate, so each piece now carries two phosphates; two NADH are made in all. Panel 3, the energy-releasing phase: each three-carbon piece hands its two phosphates to ADP, one at a time, making four ATP in all. The end products at the bottom are two pyruvate molecules.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.5",
+    "labels": [],
+    "w": 1100,
+    "h": 1587,
+    "ext": "jpg"
+  },
+  "os-24-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.7",
+      "section": "24.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/96895777af67e3af93416163e0c9b1447b5cd126",
+      "page": "24-2-carbohydrate-metabolism"
+    },
+    "alt": "Two panels. The top panel shows pyruvate losing one carbon as carbon dioxide to leave a two-carbon fragment; coenzyme A is then added and NAD+ is reduced to NADH, giving acetyl CoA. The bottom panel is the citric acid cycle drawn as a ring of named molecules with their structures and carbon counts. Acetyl CoA (two carbons) joins oxaloacetate (four carbons) to form citrate (six carbons), then isocitrate. Isocitrate loses a carbon dioxide and makes NADH to become alpha-ketoglutarate (five carbons), which loses another carbon dioxide and makes NADH to become succinyl CoA (four carbons). Succinyl CoA becomes succinate, making GTP, which passes its phosphate to ADP to make ATP. Succinate becomes fumarate, reducing FAD to FADH2. Fumarate takes up water to become malate, and malate becomes oxaloacetate, making a third NADH, ready to accept the next acetyl CoA.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.7",
+    "labels": [],
+    "w": 1100,
+    "h": 1408,
+    "ext": "jpg"
+  },
+  "os-24-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.8",
+      "section": "24.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/3589e07e861aa242cdd9739089cfca02ffea566d",
+      "page": "24-2-carbohydrate-metabolism"
+    },
+    "alt": "A strip of the inner mitochondrial membrane, with the intermembrane space above and the mitochondrial matrix below. Four red protein complexes, numbered I to IV, sit in the membrane, with a small carrier labeled cytochrome c between III and IV. NADH gives electrons to complex I, and FADH2 gives electrons to complex II. Yellow arrows show the electrons passing from complex to complex to complex IV, where two hydrogen ions, two electrons and half an oxygen molecule form water. Green arrows show complexes I, III and IV pumping hydrogen ions up into the intermembrane space, where many hydrogen ions gather. On the right, a large blue ATP synthase spans the membrane; hydrogen ions flow down through it into the matrix, and it joins ADP and phosphate into ATP.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.8",
+    "labels": [],
+    "w": 1100,
+    "h": 756,
+    "ext": "jpg"
+  },
+  "atp-yield-stages": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 640,
+    "h": 400,
+    "alt": "A horizontal bar graph of ATP made per glucose at each stage of aerobic respiration, crediting the ATP made from each NADH and FADH2 to the stage that produced the carrier. Glycolysis: 2 ATP made directly plus 3 to 5 ATP from its 2 NADH, depending on the shuttle, for 5 to 7 in all. Pyruvate to acetyl CoA: no ATP directly, 5 ATP from 2 NADH. Citric acid cycle: 2 ATP directly, 15 ATP from 6 NADH and 3 ATP from 2 FADH2, for 20 in all. The total is 30 to 32 ATP per glucose, only 4 of them made directly.",
+    "labels": []
+  }
+}
