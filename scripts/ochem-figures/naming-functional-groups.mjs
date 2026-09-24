@@ -583,7 +583,7 @@ FIGURES.push({
   id: 'l-fragments',
   lessons: ['naming-functional-groups'],
   alt: 'Twelve skeletal fragments in priority order, three per row: carboxylic acid, anhydride, ester; acyl chloride, amide, nitrile; aldehyde, ketone, alcohol; amine, then alkene and alkyne, which are not on the list. Each shows the suffix it takes.',
-  viewBox: '0 0 340 680',
+  viewBox: '0 0 340 744',
   build() {
     let s = '';
     const acyl = (cx, cy, X) => {
@@ -591,35 +591,36 @@ FIGURES.push({
       return sk(R, C) + hang(C, O, 'O', { order: 2 }) + hang(C, Xp, X, { kind: 'hi', r: X.length > 2 ? 16 : 15 });
     };
     const groups = [
-      [['carboxylic', 'acid'], '-oic acid', (cx, cy) => acyl(cx, cy, 'OH')],
-      [['anhydride'], '-oic anhydride', (cx, cy) => {
+      [['carboxylic', 'acid'], ['-oic acid'], (cx, cy) => acyl(cx, cy, 'OH')],
+      [['anhydride'], ['-oic', 'anhydride'], (cx, cy) => {
         const C1 = P(cx - 22, cy + 4), C2 = P(cx + 22, cy + 4), Ob = P(cx, cy + 22);
         return sk(P(cx - 44, cy + 22), C1) + sk(C2, P(cx + 44, cy + 22)) +
           hang(C1, P(C1.x, cy - 30), 'O', { order: 2 }) + hang(C2, P(C2.x, cy - 30), 'O', { order: 2 }) +
           bond(C1, Ob, { rFrom: 0, rTo: 15 }) + bond(Ob, C2, { rFrom: 15, rTo: 0 }) + atom(Ob.x, Ob.y, 'O', { kind: 'hi' });
       }],
-      [['ester'], 'alkyl …-oate', (cx, cy) => acyl(cx, cy, 'OR′')],
-      [['acyl', 'chloride'], '-oyl chloride', (cx, cy) => acyl(cx, cy, 'Cl')],
-      [['amide'], '-amide', (cx, cy) => acyl(cx, cy, 'NH₂')],
-      [['nitrile'], '-nitrile', (cx, cy) => sk(P(cx - 42, cy + 4), P(cx - 10, cy + 4)) + hang(P(cx - 10, cy + 4), P(cx + 28, cy + 4), 'N', { order: 3, kind: 'hi' })],
-      [['aldehyde'], '-al', (cx, cy) => acyl(cx, cy, 'H')],
-      [['ketone'], '-one', (cx, cy) => { const C = P(cx, cy + 6); return sk(P(cx - 32, cy + 24), C) + sk(C, P(cx + 32, cy + 24)) + hang(C, P(cx, cy - 30), 'O', { order: 2, kind: 'hi' }); }],
-      [['alcohol'], '-ol', (cx, cy) => { const C = P(cx - 10, cy + 2); return sk(P(cx - 40, cy + 20), C) + hang(C, P(cx + 26, cy + 20), 'OH', { kind: 'hi' }); }],
-      [['amine'], '-amine', (cx, cy) => { const C = P(cx - 10, cy + 2); return sk(P(cx - 40, cy + 20), C) + hang(C, P(cx + 26, cy + 20), 'NH₂', { kind: 'hi', r: 16 }); }],
-      [['alkene'], 'not on list', (cx, cy) => sk(P(cx - 40, cy + 16), P(cx - 13, cy - 2)) + bond(P(cx - 13, cy - 2), P(cx + 13, cy + 16), { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.5 }) + sk(P(cx + 13, cy + 16), P(cx + 40, cy - 2)), true],
-      [['alkyne'], 'not on list', (cx, cy) => sk(P(cx - 42, cy + 6), P(cx - 15, cy + 6)) + bond(P(cx - 15, cy + 6), P(cx + 15, cy + 6), { order: 3, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.2 }) + sk(P(cx + 15, cy + 6), P(cx + 42, cy + 6)), true],
+      [['ester'], ['alkyl …-oate'], (cx, cy) => acyl(cx, cy, 'OR′')],
+      [['acyl', 'chloride'], ['-oyl', 'chloride'], (cx, cy) => acyl(cx, cy, 'Cl')],
+      [['amide'], ['-amide'], (cx, cy) => acyl(cx, cy, 'NH₂')],
+      [['nitrile'], ['-nitrile'], (cx, cy) => sk(P(cx - 42, cy + 4), P(cx - 10, cy + 4)) + hang(P(cx - 10, cy + 4), P(cx + 28, cy + 4), 'N', { order: 3, kind: 'hi' })],
+      [['aldehyde'], ['-al'], (cx, cy) => acyl(cx, cy, 'H')],
+      [['ketone'], ['-one'], (cx, cy) => { const C = P(cx, cy + 6); return sk(P(cx - 32, cy + 24), C) + sk(C, P(cx + 32, cy + 24)) + hang(C, P(cx, cy - 30), 'O', { order: 2, kind: 'hi' }); }],
+      [['alcohol'], ['-ol'], (cx, cy) => { const C = P(cx - 10, cy + 2); return sk(P(cx - 40, cy + 20), C) + hang(C, P(cx + 26, cy + 20), 'OH', { kind: 'hi' }); }],
+      [['amine'], ['-amine'], (cx, cy) => { const C = P(cx - 10, cy + 2); return sk(P(cx - 40, cy + 20), C) + hang(C, P(cx + 26, cy + 20), 'NH₂', { kind: 'hi', r: 16 }); }],
+      [['alkene'], ['not on', 'the list'], (cx, cy) => sk(P(cx - 40, cy + 16), P(cx - 13, cy - 2)) + bond(P(cx - 13, cy - 2), P(cx + 13, cy + 16), { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.5 }) + sk(P(cx + 13, cy + 16), P(cx + 40, cy - 2)), true],
+      [['alkyne'], ['not on', 'the list'], (cx, cy) => sk(P(cx - 42, cy + 6), P(cx - 15, cy + 6)) + bond(P(cx - 15, cy + 6), P(cx + 15, cy + 6), { order: 3, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.2 }) + sk(P(cx + 15, cy + 6), P(cx + 42, cy + 6)), true],
     ];
     groups.forEach(([name, suffix, draw, mut], i) => {
-      const px = 8 + (i % 3) * 110, py = 8 + Math.floor(i / 3) * 168, cx = px + 52;
-      s += panel(px, py, 104, 162, { kind: i < 6 ? 'hi' : undefined });
+      const px = 5 + (i % 3) * 111, py = 8 + Math.floor(i / 3) * 184, cx = px + 54;
+      s += panel(px, py, 108, 176, { kind: i < 6 ? 'hi' : undefined });
       s += text(cx, py + 20, name[0], { cls: 'fg-lbl' });
       if (name[1]) s += text(cx, py + 36, name[1], { cls: 'fg-lbl' });
       s += draw(cx, py + 92);
-      s += text(cx, py + 154, suffix, { cls: mut ? 'fg-tag-mut' : 'fg-tag-good' });
+      const sy = suffix.length > 1 ? [py + 150, py + 166] : [py + 158];
+      suffix.forEach((line, k) => { s += text(cx, sy[k], line, { cls: mut ? 'fg-tag-mut' : 'fg-lbl' }); });
     });
     return s;
   },
-  caption: 'Priority falls left to right, row by row, as far as the amine. The shaded panels are the acid and its derivatives. The alkene and alkyne are not on the list.',
+  caption: 'Priority falls left to right, row by row, as far as the amine. The shaded panels are the acid and its derivatives. Under each drawing is the suffix that group takes.',
 });
 
 FIGURES.push({
@@ -760,6 +761,44 @@ FIGURES.push({
     return s;
   },
   caption: 'The common name is in bold. The systematic name, where one is in use, is under it.',
+});
+
+/* ----------------------------------------------------------------- 10 ---
+   oxo- or formyl-: is the CHO carbon counted in the parent chain? */
+FIGURES.push({
+  id: 'oxo-or-formyl',
+  section: 'naming-functional-groups',
+  anchor: 'Formyl means a',
+  alt: 'Top: 4-oxobutanoic acid, a four-carbon chain numbered 1 to 4 from the acid carbon; C4 is the CHO carbon, counted in the chain, and its =O is named oxo-. Bottom: 2-formylbutanoic acid, a four-carbon chain numbered 1 to 4 from the acid carbon, with a CHO group on C2; the CHO carbon is not in the chain and is named formyl-.',
+  viewBox: '0 0 340 424',
+  build() {
+    let s = '';
+    const acid = (r0) => hang(r0, P(r0.x, r0.y + 40), 'O', { order: 2 }) + hang(r0, P(r0.x - 34, r0.y - 20), 'HO');
+    {
+      const py = 10;
+      s += panel(10, py, 320, 192, { kind: 'hi' });
+      s += tag(170, py + 22, 'CHO carbon is in the chain: oxo-');
+      const r = zig(90, py + 112, 4, 40, 24);
+      s += chain(r) + acid(r[0]);
+      s += hang(r[3], P(r[3].x, r[3].y - 40), 'O', { order: 2, kind: 'hi' }) + hang(r[3], P(r[3].x + 34, r[3].y + 20), 'H');
+      s += num(r[0].x + 17, r[0].y + 18, '1') + at(r[1], '2', 'above') + at(r[2], '3', 'below') + at(r[3], '4', 'below');
+      s += good(170, py + 184, '4-oxobutanoic acid');
+    }
+    {
+      const py = 212;
+      s += panel(10, py, 320, 204, { kind: 'good' });
+      s += tag(170, py + 22, 'CHO carbon hangs off: formyl-');
+      const r = zig(90, py + 128, 4, 40, 24);
+      s += chain(r, true) + acid(r[0]);
+      const cf = P(r[1].x, r[1].y - 36);
+      s += sk(r[1], cf) + hang(cf, P(cf.x + 32, cf.y - 16), 'O', { order: 2, kind: 'hi' }) + hang(cf, P(cf.x - 32, cf.y - 16), 'H');
+      s += sm(cf.x - 12, cf.y + 20, 'formyl C', 'end');
+      s += num(r[0].x + 17, r[0].y + 18, '1') + at(r[1], '2', 'below') + at(r[2], '3', 'below') + at(r[3], '4', 'above');
+      s += good(170, py + 196, '2-formylbutanoic acid');
+    }
+    return s;
+  },
+  caption: 'Find the CHO carbon in each drawing. In the top molecule it is chain carbon 4. In the bottom one the highlighted chain runs through the ethyl end instead, so the CHO carbon is outside it.',
 });
 
 export default FIGURES;
