@@ -13524,6 +13524,5177 @@
    ]
   },
   {
+   "id": "head-neck-muscles",
+   "title": "Muscles of the head and neck",
+   "chapter": "muscular-system",
+   "topic": "head-neck-muscles",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-11-7",
+     "topic": "head-neck-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "epicranial-aponeurosis",
+       "name": "Epicranial aponeurosis",
+       "accept": [
+        "galea aponeurotica"
+       ],
+       "box": [
+        442,
+        8,
+        185,
+        22
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The flat sheet of tendon across the top of the skull that joins the frontal and occipital bellies of occipitofrontalis. The two bellies pull on it from either end."
+      },
+      {
+       "id": "occipitofrontalis-frontal-belly",
+       "name": "Occipitofrontalis (frontal belly)",
+       "accept": [
+        "frontalis",
+        "frontal belly"
+       ],
+       "box": [
+        452,
+        170,
+        134,
+        42
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The front belly of occipitofrontalis, over the forehead. Pulling from the epicranial aponeurosis, it raises the eyebrows and wrinkles the forehead."
+      },
+      {
+       "id": "corrugator-supercilii",
+       "name": "Corrugator supercilii",
+       "accept": [
+        "corrugator"
+       ],
+       "box": [
+        440,
+        234,
+        165,
+        23
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A small muscle deep to the eyebrow, running from the frontal bone to the skin of the eyebrow. It draws the eyebrows down and together, the frown."
+      },
+      {
+       "id": "orbicularis-oculi",
+       "name": "Orbicularis oculi",
+       "accept": [],
+       "box": [
+        453,
+        282,
+        134,
+        18
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The ring of muscle around each eye. Its circular fibers close the eyelid, gently in a blink or tightly in a squint.",
+       "follow": {
+        "q": "The fibers of orbicularis oculi run in a ring around the eye. What does that arrangement let the muscle do?",
+        "options": [
+         "Raise the eyebrow",
+         "Close the eyelid",
+         "Turn the eyeball outward",
+         "Wrinkle the forehead"
+        ],
+        "correct": 1,
+        "why": "A circular muscle narrows the opening it surrounds, so orbicularis oculi closes the eyelid. Raising the eyebrows and wrinkling the forehead are the frontal belly of occipitofrontalis, and the eyeball is turned by separate muscles inside the orbit.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "occipitofrontalis-occipital-belly",
+       "name": "Occipitofrontalis (occipital belly)",
+       "accept": [
+        "occipitalis",
+        "occipital belly"
+       ],
+       "box": [
+        452,
+        355,
+        134,
+        41
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The back belly of occipitofrontalis, over the back of the skull. It pulls the scalp and the epicranial aponeurosis backward."
+      },
+      {
+       "id": "orbicularis-oris",
+       "name": "Orbicularis oris",
+       "accept": [],
+       "box": [
+        455,
+        452,
+        128,
+        19
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The ring of muscle around the mouth, inserting on the skin of the lips. It closes and purses the lips, as in whistling or kissing."
+      },
+      {
+       "id": "buccinator",
+       "name": "Buccinator",
+       "accept": [],
+       "box": [
+        475,
+        564,
+        93,
+        19
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The flat muscle forming the wall of the cheek. It presses the cheek against the teeth, which keeps food between the teeth when you chew and lets you blow out air.",
+       "follow": {
+        "q": "A trumpet player blows hard with the cheeks held flat against the teeth. Which muscle holds the cheeks in?",
+        "options": [
+         "Masseter",
+         "Orbicularis oris",
+         "Buccinator",
+         "Temporalis"
+        ],
+        "correct": 2,
+        "why": "Buccinator forms the wall of the cheek and presses it against the teeth, which is also how it keeps food between the teeth. Masseter and temporalis close the jaw, and orbicularis oris purses the lips.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-11-10",
+     "topic": "head-neck-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "lateral-pterygoid",
+       "name": "Lateral pterygoid",
+       "accept": [],
+       "box": [
+        1004,
+        11,
+        91,
+        45
+       ],
+       "concept": "mastication-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A chewing muscle deep to the back part of the mandible, running roughly horizontally from the sphenoid bone to the neck of the mandible and the jaw joint. It pulls the mandible forward, opening the jaw, and moves it side to side for grinding."
+      },
+      {
+       "id": "temporalis",
+       "name": "Temporalis",
+       "accept": [
+        "temporal muscle"
+       ],
+       "box": [
+        2,
+        32,
+        95,
+        25
+       ],
+       "concept": "mastication-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The fan-shaped chewing muscle over the temple. It runs from the temporal fossa, under the zygomatic arch, to the coronoid process of the mandible, and it closes the jaw and pulls it back."
+      },
+      {
+       "id": "medial-pterygoid",
+       "name": "Medial pterygoid",
+       "accept": [],
+       "box": [
+        1004,
+        339,
+        91,
+        45
+       ],
+       "concept": "mastication-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A chewing muscle on the inner face of the back part of the mandible, from the sphenoid bone to the angle of the mandible. It closes the jaw with masseter and helps move it side to side."
+      },
+      {
+       "id": "masseter",
+       "name": "Masseter",
+       "accept": [],
+       "box": [
+        3,
+        417,
+        84,
+        20
+       ],
+       "concept": "mastication-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The thick, strong chewing muscle over the angle of the jaw, from the zygomatic arch to the angle of the mandible. It is the prime mover for closing the jaw; you can feel it bulge when you clench your teeth.",
+       "follow": {
+        "q": "Which movement do masseter, temporalis and medial pterygoid share?",
+        "options": [
+         "Opening the jaw",
+         "Pulling the jaw forward",
+         "Closing the jaw",
+         "Lowering the hyoid bone"
+        ],
+        "correct": 2,
+        "why": "All three pull the mandible up toward the skull, closing the jaw for biting. The lateral pterygoid pulls the jaw forward and helps open it, and the infrahyoid muscles lower the hyoid bone.",
+        "level": "recall"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-11-13",
+     "topic": "head-neck-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "geniohyoid",
+       "name": "Geniohyoid",
+       "accept": [],
+       "box": [
+        936,
+        144,
+        134,
+        30
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A suprahyoid muscle running from the inside of the chin (mandible) to the hyoid bone, just above mylohyoid. It pulls the hyoid bone up and forward."
+      },
+      {
+       "id": "digastric",
+       "name": "Digastric",
+       "accept": [
+        "digastric muscle"
+       ],
+       "box": [
+        937,
+        193,
+        106,
+        30
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A suprahyoid muscle with two bellies joined by a tendon that loops through a sling on the hyoid bone. It raises the hyoid bone and, with the hyoid held still, pulls the mandible down to open the mouth.",
+       "follow": {
+        "q": "When the infrahyoid muscles hold the hyoid bone still, what does contraction of digastric do?",
+        "options": [
+         "Pulls the mandible down, opening the mouth",
+         "Pulls the mandible up, closing the jaw tightly",
+         "Raises the clavicle",
+         "Turns the head to the opposite side"
+        ],
+        "correct": 0,
+        "why": "With its lower attachment fixed, digastric pulls on the mandible, lowering it to open the mouth. Closing the jaw is the work of masseter and temporalis, and turning the head is sternocleidomastoid.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "inferior-edge-of-mandible",
+       "name": "Inferior edge of mandible",
+       "accept": [
+        "mandible",
+        "inferior border of mandible",
+        "lower edge of mandible"
+       ],
+       "box": [
+        5,
+        222,
+        149,
+        52
+       ],
+       "concept": "facial-bones",
+       "taught": "skull",
+       "fn": "The lower border of the mandible, the jawbone. Several suprahyoid muscles attach along its inner surface."
+      },
+      {
+       "id": "mylohyoid",
+       "name": "Mylohyoid",
+       "accept": [],
+       "box": [
+        936,
+        242,
+        121,
+        30
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A flat suprahyoid muscle stretched between the two sides of the mandible, forming the muscular floor of the mouth. It raises the floor of the mouth and the hyoid bone."
+      },
+      {
+       "id": "styloglossus",
+       "name": "Styloglossus",
+       "accept": [],
+       "box": [
+        5,
+        287,
+        150,
+        29
+       ],
+       "concept": null,
+       "fn": "A small muscle running from the styloid process of the temporal bone forward into the side of the tongue. It pulls the tongue up and back."
+      },
+      {
+       "id": "stylohyoid",
+       "name": "Stylohyoid",
+       "accept": [],
+       "box": [
+        936,
+        291,
+        123,
+        30
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A slender suprahyoid muscle from the styloid process of the temporal bone to the hyoid bone. It pulls the hyoid bone up and back."
+      },
+      {
+       "id": "hyoid-bone",
+       "name": "Hyoid bone",
+       "accept": [
+        "hyoid"
+       ],
+       "box": [
+        6,
+        329,
+        134,
+        30
+       ],
+       "concept": "hyoid",
+       "taught": "skull",
+       "fn": "The U-shaped bone in the front of the neck, below the mandible, that touches no other bone. The suprahyoid muscles attach to it from above and the infrahyoid muscles from below."
+      },
+      {
+       "id": "thyrohyoid",
+       "name": "Thyrohyoid",
+       "accept": [],
+       "box": [
+        936,
+        439,
+        132,
+        29
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A short infrahyoid muscle from the large cartilage at the front of the throat (the Adam's apple) up to the hyoid bone. It pulls the hyoid bone down, or pulls that cartilage up toward the hyoid."
+      },
+      {
+       "id": "omohyoid",
+       "name": "Omohyoid",
+       "accept": [],
+       "box": [
+        936,
+        488,
+        123,
+        29
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "A long, thin infrahyoid muscle with two bellies that runs from the scapula to the hyoid bone. It pulls the hyoid bone down."
+      },
+      {
+       "id": "sternohyoid",
+       "name": "Sternohyoid",
+       "accept": [],
+       "box": [
+        937,
+        537,
+        142,
+        29
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "An infrahyoid strap muscle from the sternum and clavicle up to the hyoid bone. It pulls the hyoid bone down."
+      },
+      {
+       "id": "sternothyroid",
+       "name": "Sternothyroid",
+       "accept": [],
+       "box": [
+        937,
+        586,
+        157,
+        29
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "An infrahyoid strap muscle deep to sternohyoid, from the sternum to the large cartilage at the front of the throat (the Adam's apple). It pulls that cartilage down."
+      },
+      {
+       "id": "clavicles",
+       "name": "Right and left clavicles",
+       "accept": [
+        "clavicle",
+        "clavicles",
+        "collarbone",
+        "collarbones"
+       ],
+       "box": [
+        937,
+        660,
+        157,
+        52
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The collarbones, the S-shaped bones running from the sternum to the scapula. The sternocleidomastoid and the infrahyoid strap muscles attach near their inner ends."
+      },
+      {
+       "id": "sternum",
+       "name": "Sternum",
+       "accept": [
+        "breastbone"
+       ],
+       "box": [
+        983,
+        734,
+        104,
+        24
+       ],
+       "concept": "sternum",
+       "taught": "thoracic-cage",
+       "fn": "The breastbone, the flat bone in the front of the chest to which the ribs attach through cartilage. Neck and chest muscles anchor to it."
+      },
+      {
+       "id": "scapula",
+       "name": "Scapula",
+       "accept": [
+        "shoulder blade"
+       ],
+       "box": [
+        5,
+        815,
+        101,
+        29
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The shoulder blade, a flat triangular bone on the back of the rib cage. Many muscles of the neck, back and arm attach to it."
+      }
+     ],
+     "covered": [
+      {
+       "id": "thyroid-cartilage",
+       "box": [
+        4,
+        417,
+        195,
+        57
+       ]
+      },
+      {
+       "id": "thyroid-gland",
+       "box": [
+        4,
+        528,
+        161,
+        29
+       ]
+      },
+      {
+       "id": "trachea",
+       "box": [
+        4,
+        623,
+        100,
+        24
+       ]
+      }
+     ],
+     "hints": [
+      {
+       "id": "suprahyoid-muscles",
+       "box": [
+        916,
+        71,
+        145,
+        48
+       ],
+       "why": "A group heading printed over the list of suprahyoid muscles; it names the group the muscles below it belong to, so it is masked in the quiz."
+      },
+      {
+       "id": "infrahyoid-muscles",
+       "box": [
+        916,
+        362,
+        129,
+        52
+       ],
+       "why": "A group heading printed over the list of infrahyoid muscles; it names the group the muscles below it belong to, so it is masked in the quiz."
+      }
+     ]
+    },
+    {
+     "figure": "os-11-14",
+     "topic": "head-neck-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "suboccipital-muscles",
+       "name": "Suboccipital muscles",
+       "accept": [
+        "suboccipitals",
+        "suboccipital"
+       ],
+       "box": [
+        658,
+        13,
+        167,
+        22
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "Small, deep muscles between the base of the skull and the first two cervical vertebrae. They tilt and turn the head in fine adjustments."
+      },
+      {
+       "id": "sternocleidomastoid",
+       "name": "Sternocleidomastoid",
+       "accept": [
+        "scm"
+       ],
+       "box": [
+        246,
+        84,
+        164,
+        19
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The long diagonal neck muscle from the sternum and clavicle to the mastoid process behind the ear. One side turns the head to the opposite side; both together flex the neck.",
+       "follow": {
+        "q": "The right sternocleidomastoid contracts on its own. Which way does the face turn?",
+        "options": [
+         "To the right",
+         "Straight down",
+         "Straight up",
+         "To the left"
+        ],
+        "correct": 3,
+        "why": "The muscle runs from the sternum and clavicle in front to the mastoid process behind the ear. Pulling the right mastoid down and forward turns the face to the left, the opposite side.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "acromion-process",
+       "name": "Acromion process of scapula",
+       "accept": [
+        "acromion",
+        "acromion process",
+        "acromial process"
+       ],
+       "box": [
+        242,
+        182,
+        90,
+        59
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The flat bony tip of the shoulder, where the scapula meets the clavicle. It is an attachment point for muscles that cross the top of the shoulder."
+      },
+      {
+       "id": "first-thoracic-vertebra",
+       "name": "1st thoracic vertebrae",
+       "accept": [
+        "first thoracic vertebra",
+        "t1",
+        "thoracic vertebra",
+        "1st thoracic vertebra"
+       ],
+       "box": [
+        692,
+        218,
+        98,
+        37
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "T1, the first thoracic vertebra, just below the seventh cervical vertebra at the base of the neck. Deep neck and back muscles attach to its processes."
+      },
+      {
+       "id": "scalenes",
+       "name": "Scalenes",
+       "accept": [
+        "scalene",
+        "scalene muscles"
+       ],
+       "box": [
+        268,
+        266,
+        81,
+        19
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "Three muscles (anterior, middle and posterior) on the side of the neck, from the cervical vertebrae to the first two ribs. They bend the neck to the side and raise the upper ribs in a deep breath."
+      }
+     ],
+     "covered": [
+      {
+       "id": "splenius-capitis",
+       "box": [
+        273,
+        23,
+        128,
+        22
+       ]
+      },
+      {
+       "id": "splenius-capitis-cut",
+       "box": [
+        995,
+        51,
+        98,
+        41
+       ]
+      },
+      {
+       "id": "levator-scapulae-posterior",
+       "box": [
+        645,
+        84,
+        79,
+        40
+       ]
+      },
+      {
+       "id": "levator-scapulae",
+       "box": [
+        247,
+        114,
+        138,
+        22
+       ]
+      },
+      {
+       "id": "longissimus-capitis",
+       "box": [
+        995,
+        138,
+        105,
+        41
+       ]
+      },
+      {
+       "id": "trapezius",
+       "box": [
+        246,
+        147,
+        84,
+        22
+       ]
+      },
+      {
+       "id": "multifidus-muscles",
+       "box": [
+        693,
+        155,
+        83,
+        37
+       ]
+      },
+      {
+       "id": "semispinalis-capitis",
+       "box": [
+        995,
+        199,
+        106,
+        41
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "trunk-muscles",
+   "title": "Muscles of the trunk",
+   "chapter": "muscular-system",
+   "topic": "trunk-muscles",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-11-15",
+     "topic": "trunk-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sternocleidomastoid",
+       "name": "Sternocleidomastoid",
+       "accept": [
+        "scm"
+       ],
+       "box": [
+        369,
+        60,
+        179,
+        20
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The long diagonal neck muscle from the sternum and clavicle to the mastoid process behind the ear. One side turns the head to the opposite side; both together flex the neck."
+      },
+      {
+       "id": "splenius-capitis",
+       "name": "Splenius capitis",
+       "accept": [],
+       "box": [
+        941,
+        104,
+        139,
+        24
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "A deep back muscle of the neck, from the lower cervical and upper thoracic spinous processes to the mastoid process and skull. Both sides extend the head; one side turns the head to the same side."
+      },
+      {
+       "id": "splenius",
+       "name": "Splenius",
+       "accept": [
+        "splenius capitis"
+       ],
+       "box": [
+        369,
+        141,
+        83,
+        24
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The splenius muscles, a bandage-like sheet in the back of the neck (splenius capitis and splenius cervicis). They extend and turn the head and neck."
+      },
+      {
+       "id": "splenius-cervicis",
+       "name": "Splenius cervicis",
+       "accept": [],
+       "box": [
+        941,
+        154,
+        148,
+        24
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The lower part of the splenius group, from the upper thoracic spinous processes to the upper cervical transverse processes. It extends and turns the neck."
+      },
+      {
+       "id": "medial-scalene",
+       "name": "Medial scalene",
+       "accept": [
+        "middle scalene",
+        "scalenus medius"
+       ],
+       "box": [
+        6,
+        236,
+        76,
+        40
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The middle scalene, the largest of the three scalenes, from the cervical transverse processes to the first rib. It bends the neck to the side and raises the first rib when you breathe hard."
+      },
+      {
+       "id": "anterior-scalene",
+       "name": "Anterior scalene",
+       "accept": [
+        "scalenus anterior"
+       ],
+       "box": [
+        6,
+        300,
+        78,
+        39
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The front scalene, from the cervical transverse processes to the first rib. It bends the neck forward and to the side and raises the first rib in a deep breath."
+      },
+      {
+       "id": "clavicle",
+       "name": "Clavicle",
+       "accept": [
+        "collarbone"
+       ],
+       "box": [
+        370,
+        302,
+        76,
+        19
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The collarbone, the S-shaped bone from the sternum to the acromion of the scapula. Neck, chest and shoulder muscles attach to it."
+      },
+      {
+       "id": "longissimus-capitis",
+       "name": "Longissimus capitis",
+       "accept": [],
+       "box": [
+        563,
+        525,
+        170,
+        24
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The top part of the longissimus column of erector spinae, reaching the mastoid process. It extends the head and turns it to the same side."
+      },
+      {
+       "id": "semispinalis-capitis",
+       "name": "Semispinalis capitis (joined with deep spinalis capitis)",
+       "accept": [],
+       "box": [
+        180,
+        530,
+        173,
+        64
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "A deep (transversospinales) back muscle running from the transverse processes up to the back of the skull. It extends the head and neck."
+      },
+      {
+       "id": "iliocostalis-cervicis",
+       "name": "Iliocostalis cervicis",
+       "accept": [],
+       "box": [
+        563,
+        577,
+        163,
+        20
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The top part of the iliocostalis column, the outer column of erector spinae, from the upper ribs to the cervical vertebrae. It extends the neck and bends it to the side."
+      },
+      {
+       "id": "semispinalis-cervicis",
+       "name": "Semispinalis cervicis",
+       "accept": [],
+       "box": [
+        180,
+        622,
+        116,
+        39
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The neck part of semispinalis, spanning several vertebrae from transverse processes to spinous processes. It extends the neck and turns it to the opposite side."
+      },
+      {
+       "id": "iliocostalis-thoracis",
+       "name": "Iliocostalis thoracis",
+       "accept": [],
+       "box": [
+        563,
+        628,
+        165,
+        20
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The middle part of the iliocostalis column, running between the ribs. It extends the back and bends it to the side."
+      },
+      {
+       "id": "longissimus-thoracis",
+       "name": "Longissimus thoracis",
+       "accept": [],
+       "box": [
+        563,
+        680,
+        182,
+        23
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The main part of longissimus, the middle column of erector spinae, from the sacrum and lumbar vertebrae to the thoracic vertebrae and ribs. It extends the back and bends it to the side."
+      },
+      {
+       "id": "longissimus-cervicis",
+       "name": "Longissimus cervicis",
+       "accept": [],
+       "box": [
+        180,
+        690,
+        115,
+        41
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The neck part of longissimus, from the upper thoracic to the cervical transverse processes. It extends the neck and bends it to the side."
+      },
+      {
+       "id": "iliocostalis-lumborum",
+       "name": "Iliocostalis lumborum",
+       "accept": [],
+       "box": [
+        562,
+        731,
+        182,
+        20
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The lowest part of the iliocostalis column (the outer column of erector spinae), from the iliac crest and sacrum to the lower ribs. It extends the lower back and bends it to the side.",
+       "follow": {
+        "q": "Iliocostalis, longissimus and spinalis together form which group?",
+        "options": [
+         "The rotatores",
+         "The scalenes",
+         "The erector spinae",
+         "The suboccipital muscles"
+        ],
+        "correct": 2,
+        "why": "The three columns running up either side of the spine are the erector spinae, which extend the back. The rotatores are small deep muscles, the scalenes are in the neck, and the suboccipital muscles lie under the skull.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "spinalis-thoracis",
+       "name": "Spinalis thoracis",
+       "accept": [],
+       "box": [
+        180,
+        764,
+        77,
+        39
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The chest part of spinalis, the column of erector spinae closest to the midline, joining spinous processes. It extends the back."
+      },
+      {
+       "id": "transverse-processes",
+       "name": "Transverse processes of vertebrae",
+       "accept": [
+        "transverse process",
+        "transverse processes"
+       ],
+       "box": [
+        822,
+        790,
+        111,
+        60
+       ],
+       "concept": "vertebra-parts",
+       "taught": "vertebral-column",
+       "fn": "The bony projections sticking out sideways from each vertebra. Deep back muscles such as the rotatores and intertransversarii attach to them and use them as levers."
+      },
+      {
+       "id": "semispinalis-thoracis",
+       "name": "Semispinalis thoracis",
+       "accept": [],
+       "box": [
+        160,
+        835,
+        115,
+        40
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The chest part of semispinalis, from thoracic transverse processes to spinous processes several levels higher. It extends the back and turns it to the opposite side."
+      },
+      {
+       "id": "rotator-brevis",
+       "name": "Rotator brevis",
+       "accept": [
+        "rotatores brevis",
+        "short rotator"
+       ],
+       "box": [
+        615,
+        836,
+        74,
+        40
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "One of the rotatores, tiny deep back muscles; this short one runs from a transverse process to the spinous process of the vertebra just above. They steady and turn the spine."
+      },
+      {
+       "id": "rotator-longus",
+       "name": "Rotator longus",
+       "accept": [
+        "rotatores longus",
+        "long rotator"
+       ],
+       "box": [
+        616,
+        904,
+        73,
+        44
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "One of the rotatores; the long rotator skips one vertebra, from a transverse process to the spinous process two levels up. It helps steady and turn the spine."
+      },
+      {
+       "id": "multifidus",
+       "name": "Multifidus",
+       "accept": [],
+       "box": [
+        161,
+        906,
+        89,
+        19
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "A deep back muscle made of many short bundles, each spanning a few vertebrae from transverse to spinous processes, thickest in the lower back. It stabilizes the vertebrae as the spine moves."
+      },
+      {
+       "id": "interspinales",
+       "name": "Interspinales",
+       "accept": [
+        "interspinalis"
+       ],
+       "box": [
+        575,
+        963,
+        116,
+        24
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "Short muscles joining the spinous processes of neighboring vertebrae. They help extend the spine."
+      },
+      {
+       "id": "short-rotator",
+       "name": "Short rotator",
+       "accept": [
+        "rotator brevis",
+        "rotatores brevis"
+       ],
+       "box": [
+        615,
+        1011,
+        66,
+        40
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "A short rotator muscle (one of the rotatores), running from a transverse process to the vertebra just above. It steadies the spine and helps it turn."
+      },
+      {
+       "id": "intertransversarii",
+       "name": "Intertransversarii",
+       "accept": [
+        "intertransversarius"
+       ],
+       "box": [
+        730,
+        1192,
+        148,
+        20
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "Short muscles between the transverse processes of neighboring vertebrae. They bend the spine to the side and steady it."
+      }
+     ],
+     "covered": [
+      {
+       "id": "trapezius-posterior",
+       "box": [
+        572,
+        79,
+        91,
+        23
+       ]
+      },
+      {
+       "id": "levator-scapulae",
+       "box": [
+        6,
+        171,
+        86,
+        44
+       ]
+      },
+      {
+       "id": "rhomboides-minor",
+       "box": [
+        987,
+        207,
+        115,
+        40
+       ]
+      },
+      {
+       "id": "trapezius",
+       "box": [
+        367,
+        221,
+        91,
+        24
+       ]
+      },
+      {
+       "id": "rhomboides-major",
+       "box": [
+        987,
+        259,
+        115,
+        44
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-11-16",
+     "topic": "trunk-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "external-oblique-inset",
+       "name": "External oblique",
+       "accept": [],
+       "box": [
+        897,
+        64,
+        146,
+        24
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The outermost flat abdominal muscle, with fibers running down and forward from the lower ribs to the iliac crest and the linea alba. It compresses the abdomen, flexes the trunk and turns it to the opposite side."
+      },
+      {
+       "id": "rectus-sheath",
+       "name": "Rectus sheath",
+       "accept": [
+        "rectus sheaths"
+       ],
+       "box": [
+        713,
+        121,
+        71,
+        41
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The sleeve of tendon (the aponeuroses of the three flat abdominal muscles) that wraps around rectus abdominis. The sheaths of the two sides meet at the linea alba."
+      },
+      {
+       "id": "transversus-abdominis",
+       "name": "Transversus abdominis",
+       "accept": [
+        "transverse abdominis",
+        "transversus"
+       ],
+       "box": [
+        827,
+        121,
+        116,
+        41
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The deepest flat abdominal muscle, with fibers running horizontally around the abdomen like a belt. It compresses the abdomen and steadies the trunk.",
+       "follow": {
+        "q": "Which abdominal muscle has fibers running horizontally around the waist like a belt?",
+        "options": [
+         "Rectus abdominis",
+         "External oblique",
+         "Internal oblique",
+         "Transversus abdominis",
+         "Quadratus lumborum in the back wall"
+        ],
+        "correct": 3,
+        "why": "Transversus abdominis, the deepest layer, runs horizontally and compresses the abdomen. Rectus abdominis runs vertically, and the obliques run diagonally at right angles to each other.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "external-oblique",
+       "name": "External oblique",
+       "accept": [
+        "abdominal external oblique"
+       ],
+       "box": [
+        0,
+        218,
+        146,
+        24
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The outermost flat abdominal muscle, with fibers running down and forward from the lower ribs to the iliac crest and the linea alba. It compresses the abdomen, flexes the trunk and turns it to the opposite side.",
+       "follow": {
+        "q": "Why do the external and internal obliques have fibers at right angles to each other?",
+        "options": [
+         "So that each one can move only a single rib at a time",
+         "Crossed layers make a stronger wall and turn the trunk both ways",
+         "So that neither of them can compress the abdomen at all",
+         "Because one is smooth muscle and the other one is skeletal"
+        ],
+        "correct": 1,
+        "why": "Layers crossing at angles, like plywood, make a strong wall, and each oblique turns the trunk a different way, so working together they twist and flex it. Both are skeletal muscle and both compress the abdomen.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "linea-alba",
+       "name": "Linea alba (of the rectus sheath)",
+       "accept": [],
+       "box": [
+        0,
+        264,
+        156,
+        45
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The \"white line\", a band of tendon down the midline of the abdomen from the sternum to the pubis, where the aponeuroses of the flat abdominal muscles on each side meet."
+      },
+      {
+       "id": "rectus-abdominis",
+       "name": "Rectus abdominis (enclosed within rectus sheath)",
+       "accept": [],
+       "box": [
+        0,
+        345,
+        160,
+        66
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The vertical strap muscle on each side of the midline, from the pubis up to the lower ribs and sternum, divided by tendinous intersections into segments. It flexes the trunk and compresses the abdomen."
+      },
+      {
+       "id": "tendinous-intersections",
+       "name": "Tendinous intersections (between the anterior segments of the rectus abdominis)",
+       "accept": [
+        "tendinous intersection"
+       ],
+       "box": [
+        0,
+        437,
+        208,
+        86
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "Bands of tendon that cross rectus abdominis and divide it into segments, giving the \"six-pack\" look in a lean person."
+      },
+      {
+       "id": "rectus-abdominis-inset",
+       "name": "Rectus abdominis",
+       "accept": [],
+       "box": [
+        660,
+        468,
+        161,
+        20
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The vertical strap muscle on each side of the midline, from the pubis up to the lower ribs and sternum, divided by tendinous intersections into segments. It flexes the trunk and compresses the abdomen."
+      },
+      {
+       "id": "aponeurosis-of-internal-oblique",
+       "name": "Aponeurosis of internal oblique",
+       "accept": [
+        "internal oblique aponeurosis",
+        "aponeurosis"
+       ],
+       "box": [
+        792,
+        496,
+        140,
+        45
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The flat sheet of tendon that ends internal oblique toward the midline. It splits around rectus abdominis to help form the rectus sheath."
+      },
+      {
+       "id": "internal-oblique",
+       "name": "Internal oblique",
+       "accept": [
+        "abdominal internal oblique"
+       ],
+       "box": [
+        910,
+        555,
+        138,
+        24
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The middle flat abdominal muscle, fibers running up and forward, at right angles to external oblique. It compresses the abdomen, flexes the trunk and turns it to the same side."
+      },
+      {
+       "id": "quadratus-lumborum",
+       "name": "Quadratus lumborum",
+       "accept": [],
+       "box": [
+        0,
+        755,
+        188,
+        20
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "A square muscle of the back wall of the abdomen, from the iliac crest to the 12th rib and the lumbar vertebrae. It bends the trunk to the side and holds the 12th rib down."
+      },
+      {
+       "id": "ilia-of-hip-bones",
+       "name": "Ilia of hip bones",
+       "accept": [
+        "ilium",
+        "ilia",
+        "hip bone",
+        "hip bones"
+       ],
+       "box": [
+        904,
+        791,
+        142,
+        24
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The ilia, the broad upper parts of the two hip bones that form the flared sides of the pelvis. Their crests anchor the abdominal muscles."
+      },
+      {
+       "id": "sacrum",
+       "name": "Sacrum",
+       "accept": [],
+       "box": [
+        0,
+        1053,
+        77,
+        20
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The triangular bone at the base of the spine, made of five fused vertebrae, that joins the two hip bones. Deep back muscles anchor to it."
+      }
+     ],
+     "covered": [
+      {
+       "id": "pectoralis-major",
+       "box": [
+        0,
+        60,
+        146,
+        24
+       ]
+      },
+      {
+       "id": "latissimus-dorsi",
+       "box": [
+        0,
+        111,
+        145,
+        20
+       ]
+      },
+      {
+       "id": "anterior-serratus-muscles",
+       "box": [
+        0,
+        169,
+        225,
+        20
+       ]
+      },
+      {
+       "id": "iliacus",
+       "box": [
+        904,
+        913,
+        64,
+        20
+       ]
+      },
+      {
+       "id": "psoas-major",
+       "box": [
+        903,
+        1119,
+        117,
+        24
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-11-17",
+     "topic": "trunk-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "central-tendon-of-diaphragm",
+       "name": "Central tendon of diaphragm",
+       "accept": [
+        "central tendon"
+       ],
+       "box": [
+        118,
+        14,
+        156,
+        51
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The flat, leaf-shaped sheet of tendon in the middle of the dome of the diaphragm, where all its muscle fibers insert. When the fibers contract they pull the central tendon down, flattening the dome."
+      },
+      {
+       "id": "sternum",
+       "name": "Sternum",
+       "accept": [
+        "breastbone"
+       ],
+       "box": [
+        903,
+        43,
+        95,
+        22
+       ],
+       "concept": "sternum",
+       "taught": "thoracic-cage",
+       "fn": "The breastbone, the flat bone in the front of the chest to which the ribs attach through cartilage. Neck and chest muscles anchor to it."
+      },
+      {
+       "id": "diaphragm",
+       "name": "Diaphragm",
+       "accept": [],
+       "box": [
+        5,
+        325,
+        119,
+        28
+       ],
+       "concept": "diaphragm",
+       "taught": "body-cavities",
+       "fn": "The dome-shaped sheet of skeletal muscle between the thoracic and abdominal cavities, from the lower ribs, sternum and lumbar vertebrae to the central tendon. It is the main muscle for breathing in at rest: contracting flattens the dome and enlarges the thoracic cavity.",
+       "follow": {
+        "q": "When the diaphragm contracts, what happens to the thoracic cavity?",
+        "options": [
+         "It enlarges as the dome flattens",
+         "It shrinks as the dome rises into the chest",
+         "Its size does not change at all",
+         "It shrinks as the ribs are pulled down"
+        ],
+        "correct": 0,
+        "why": "Contracting fibers pull the central tendon down, flattening the dome and making the thoracic cavity taller, which draws air in. Relaxing lets the dome rise again for a quiet breath out.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "floating-ribs",
+       "name": "12th (floating) ribs",
+       "accept": [
+        "floating ribs",
+        "floating rib",
+        "12th rib",
+        "twelfth rib",
+        "twelfth ribs"
+       ],
+       "box": [
+        904,
+        413,
+        188,
+        28
+       ],
+       "concept": "ribs",
+       "taught": "thoracic-cage",
+       "fn": "The 12th ribs, the lowest pair, called floating ribs because their front ends do not reach the sternum. Quadratus lumborum and the diaphragm attach near them."
+      },
+      {
+       "id": "left-quadratus-lumborum",
+       "name": "Left quadratus lumborum",
+       "accept": [
+        "quadratus lumborum"
+       ],
+       "box": [
+        903,
+        529,
+        153,
+        47
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The square muscle of the back wall of the abdomen, from the iliac crest to the 12th rib and lumbar vertebrae. It bends the trunk to the side and holds the 12th rib down in a breath."
+      },
+      {
+       "id": "vertebrae",
+       "name": "Vertebrae",
+       "accept": [
+        "vertebra",
+        "lumbar vertebrae",
+        "lumbar vertebra"
+       ],
+       "box": [
+        186,
+        713,
+        108,
+        22
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The bones of the spine. The diaphragm anchors to the lumbar vertebrae through two tendinous legs."
+      }
+     ],
+     "covered": [
+      {
+       "id": "vena-cava",
+       "box": [
+        902,
+        117,
+        170,
+        77
+       ]
+      },
+      {
+       "id": "esophagus",
+       "box": [
+        903,
+        216,
+        191,
+        76
+       ]
+      },
+      {
+       "id": "aorta",
+       "box": [
+        902,
+        317,
+        149,
+        72
+       ]
+      },
+      {
+       "id": "left-psoas-major",
+       "box": [
+        903,
+        481,
+        176,
+        28
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-11-18",
+     "topic": "trunk-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "clavicle",
+       "name": "Clavicle",
+       "accept": [
+        "collarbone"
+       ],
+       "box": [
+        4,
+        27,
+        75,
+        19
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The collarbone, the S-shaped bone from the sternum to the acromion of the scapula. Neck, chest and shoulder muscles attach to it."
+      },
+      {
+       "id": "ribs",
+       "name": "Ribs",
+       "accept": [
+        "rib"
+       ],
+       "box": [
+        4,
+        96,
+        48,
+        19
+       ],
+       "concept": "ribs",
+       "taught": "thoracic-cage",
+       "fn": "The curved bones of the rib cage. The intercostal muscles fill the spaces between neighboring ribs and move them in breathing."
+      },
+      {
+       "id": "innermost-intercostal",
+       "name": "Innermost intercostal",
+       "accept": [
+        "innermost intercostals"
+       ],
+       "box": [
+        669,
+        126,
+        94,
+        39
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The deepest layer of intercostal muscle, lying just inside the internal intercostals with fibers in the same direction. It helps the internal intercostals pull the ribs down in a forced breath out."
+      },
+      {
+       "id": "internal-intercostal",
+       "name": "Internal intercostal",
+       "accept": [
+        "internal intercostals"
+       ],
+       "box": [
+        4,
+        250,
+        95,
+        39
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The middle layer of intercostal muscle, fibers running down and back from one rib to the rib below, at right angles to the external intercostals. They pull the ribs down in a forced breath out."
+      },
+      {
+       "id": "sternum",
+       "name": "Sternum",
+       "accept": [
+        "breastbone"
+       ],
+       "box": [
+        3,
+        331,
+        81,
+        19
+       ],
+       "concept": "sternum",
+       "taught": "thoracic-cage",
+       "fn": "The breastbone, the flat bone in the front of the chest to which the ribs attach through cartilage. Neck and chest muscles anchor to it."
+      },
+      {
+       "id": "external-intercostals",
+       "name": "External intercostals",
+       "accept": [
+        "external intercostal"
+       ],
+       "box": [
+        4,
+        414,
+        104,
+        40
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The outer layer of muscle between the ribs, fibers running down and forward from each rib to the one below. They raise the ribs to enlarge the chest when you breathe in."
+      },
+      {
+       "id": "external-intercostal",
+       "name": "External intercostal",
+       "accept": [
+        "external intercostals"
+       ],
+       "box": [
+        966,
+        493,
+        94,
+        39
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The outer intercostal layer, with fibers running down and forward from one rib to the next. It lifts the ribs to widen the chest when you breathe in.",
+       "follow": {
+        "q": "Which muscles lift the ribs when you breathe in?",
+        "options": [
+         "Internal intercostals",
+         "Innermost intercostals",
+         "External intercostals",
+         "Rectus abdominis"
+        ],
+        "correct": 2,
+        "why": "The external intercostals raise the ribs and widen the chest during a breath in. The internal and innermost intercostals, and the abdominal muscles, pull the ribs down in a forced breath out.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "internal-intercostal-inset",
+       "name": "Internal intercostal",
+       "accept": [
+        "internal intercostals"
+       ],
+       "box": [
+        783,
+        541,
+        94,
+        40
+       ],
+       "concept": "breathing-muscles",
+       "taught": "trunk-muscles",
+       "fn": "The middle layer of intercostal muscle, fibers running down and back from one rib to the rib below, at right angles to the external intercostals. They pull the ribs down in a forced breath out."
+      }
+     ],
+     "covered": [
+      {
+       "id": "pectoralis-minor",
+       "box": [
+        523,
+        89,
+        141,
+        20
+       ]
+      },
+      {
+       "id": "pectoralis-major",
+       "box": [
+        3,
+        178,
+        142,
+        43
+       ]
+      },
+      {
+       "id": "serratus-anterior",
+       "box": [
+        583,
+        384,
+        80,
+        40
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-11-19",
+     "topic": "trunk-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "pubic-crest",
+       "name": "Pubic crest",
+       "accept": [],
+       "box": [
+        389,
+        74,
+        118,
+        23
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The rough upper edge of the pubis at the front of the pelvis, where rectus abdominis attaches and the pelvic floor begins."
+      },
+      {
+       "id": "pubococcygeus",
+       "name": "Pubococcygeus",
+       "accept": [],
+       "box": [
+        769,
+        303,
+        163,
+        26
+       ],
+       "concept": "pelvic-floor",
+       "taught": "trunk-muscles",
+       "fn": "The front part of levator ani, running from the pubis back to the coccyx around the openings in the pelvic floor. It supports the pelvic organs and helps close those openings."
+      },
+      {
+       "id": "levator-ani",
+       "name": "Levator ani",
+       "accept": [
+        "pelvic diaphragm"
+       ],
+       "box": [
+        978,
+        371,
+        116,
+        22
+       ],
+       "concept": "pelvic-floor",
+       "taught": "trunk-muscles",
+       "fn": "The broad funnel of muscle that makes up most of the pelvic floor, formed by pubococcygeus and iliococcygeus. It supports the pelvic organs and resists the pressure pushed down on them when you cough or strain.",
+       "follow": {
+        "q": "A person coughs hard. Which muscle keeps the pressure from pushing the pelvic organs down?",
+        "options": [
+         "Diaphragm",
+         "Levator ani",
+         "Quadratus lumborum",
+         "Transversus abdominis"
+        ],
+        "correct": 1,
+        "why": "Levator ani forms most of the pelvic floor and tightens against the rise in abdominal pressure. Transversus abdominis and the diaphragm raise that pressure from above and around, and quadratus lumborum lies in the back wall.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "sacrum",
+       "name": "Sacrum",
+       "accept": [],
+       "box": [
+        5,
+        396,
+        86,
+        22
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The triangular bone at the base of the spine, made of five fused vertebrae, that joins the two hip bones. Deep back muscles anchor to it."
+      },
+      {
+       "id": "iliococcygeus",
+       "name": "Iliococcygeus",
+       "accept": [],
+       "box": [
+        771,
+        438,
+        140,
+        27
+       ],
+       "concept": "pelvic-floor",
+       "taught": "trunk-muscles",
+       "fn": "The back part of levator ani, running from the side wall of the pelvis to the coccyx. It supports the pelvic organs."
+      },
+      {
+       "id": "iliac-crests",
+       "name": "Iliac crests",
+       "accept": [
+        "iliac crest",
+        "crest of ilium"
+       ],
+       "box": [
+        391,
+        705,
+        114,
+        22
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The curved upper rims of the ilia, which you feel as the top of your hips. Abdominal and back muscles attach along them."
+      }
+     ],
+     "covered": [
+      {
+       "id": "urethral-canal",
+       "box": [
+        4,
+        163,
+        89,
+        47
+       ]
+      },
+      {
+       "id": "vaginal-canal",
+       "box": [
+        5,
+        241,
+        146,
+        50
+       ]
+      },
+      {
+       "id": "rectal-canal",
+       "box": [
+        6,
+        322,
+        129,
+        22
+       ]
+      },
+      {
+       "id": "iliacus",
+       "box": [
+        413,
+        625,
+        72,
+        22
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "upper-limb-muscles",
+   "title": "Muscles of the shoulder and upper limb",
+   "chapter": "muscular-system",
+   "topic": "upper-limb-muscles",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-11-22",
+     "topic": "upper-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "deltoid-cut",
+       "name": "Deltoid (cut)",
+       "accept": [],
+       "box": [
+        445,
+        10,
+        112,
+        24
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The deltoid, cut and folded back here to show the muscles beneath. It caps the shoulder and is the prime mover for abducting the arm."
+      },
+      {
+       "id": "coracoid-process",
+       "name": "Coracoid process of scapula",
+       "accept": [
+        "coracoid process",
+        "coracoid"
+       ],
+       "box": [
+        444,
+        40,
+        159,
+        45
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The hook-like projection on the front of the scapula, below the clavicle. Pectoralis minor, coracobrachialis and the short head of biceps brachii attach to it."
+      },
+      {
+       "id": "subclavius",
+       "name": "Subclavius",
+       "accept": [],
+       "box": [
+        77,
+        50,
+        103,
+        20
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A small muscle under the clavicle, from the first rib to the clavicle. It pulls the clavicle down and forward and steadies it."
+      },
+      {
+       "id": "pectoralis-major-cut",
+       "name": "Pectoralis major (cut)",
+       "accept": [
+        "pec major"
+       ],
+       "box": [
+        444,
+        91,
+        147,
+        44
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "Pectoralis major, cut here to show the deeper chest muscles. It flexes, adducts and medially rotates the arm."
+      },
+      {
+       "id": "acromion-process",
+       "name": "Acromion process of scapula",
+       "accept": [
+        "acromion",
+        "acromion process",
+        "acromial process"
+       ],
+       "box": [
+        622,
+        116,
+        162,
+        45
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The flat bony tip of the shoulder, where the scapula meets the clavicle. It is an attachment point for muscles that cross the top of the shoulder."
+      },
+      {
+       "id": "rhomboid-minor",
+       "name": "Rhomboid minor",
+       "accept": [
+        "rhomboideus minor"
+       ],
+       "box": [
+        998,
+        116,
+        97,
+        42
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The upper of the two rhomboids, from the lower cervical spinous processes to the medial border of the scapula. It retracts the scapula toward the spine and rotates it downward."
+      },
+      {
+       "id": "scapula",
+       "name": "Scapula",
+       "accept": [
+        "shoulder blade"
+       ],
+       "box": [
+        444,
+        140,
+        81,
+        24
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The shoulder blade, a flat triangular bone on the back of the rib cage. Many muscles of the neck, back and arm attach to it."
+      },
+      {
+       "id": "pectoralis-minor",
+       "name": "Pectoralis minor",
+       "accept": [
+        "pec minor"
+       ],
+       "box": [
+        445,
+        170,
+        146,
+        20
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thin chest muscle beneath pectoralis major, from the 3rd to 5th ribs to the coracoid process. It pulls the scapula forward and down."
+      },
+      {
+       "id": "rhomboid-major",
+       "name": "Rhomboid major",
+       "accept": [
+        "rhomboideus major"
+       ],
+       "box": [
+        998,
+        181,
+        98,
+        44
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The larger, lower rhomboid, from the upper thoracic spinous processes to the medial border of the scapula. It retracts the scapula and rotates it downward."
+      },
+      {
+       "id": "sternum",
+       "name": "Sternum",
+       "accept": [
+        "breastbone"
+       ],
+       "box": [
+        6,
+        208,
+        83,
+        20
+       ],
+       "concept": "sternum",
+       "taught": "thoracic-cage",
+       "fn": "The breastbone, the flat bone in the front of the chest to which the ribs attach through cartilage. Neck and chest muscles anchor to it."
+      },
+      {
+       "id": "serratus-anterior",
+       "name": "Serratus anterior",
+       "accept": [],
+       "box": [
+        445,
+        216,
+        83,
+        41
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The saw-toothed muscle on the side of the chest, from the upper eight or nine ribs to the medial border of the scapula. It pulls the scapula forward around the rib cage, as in a punch, and rotates it upward.",
+       "follow": {
+        "q": "A boxer throws a punch and the scapula slides forward around the rib cage. Which muscle is the prime mover?",
+        "options": [
+         "Serratus anterior",
+         "Rhomboid major",
+         "Trapezius",
+         "Latissimus dorsi",
+         "Rhomboid minor"
+        ],
+        "correct": 0,
+        "why": "Serratus anterior pulls the scapula forward (protraction) around the ribs. The rhomboids and trapezius pull it back toward the spine, and latissimus dorsi moves the humerus.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "deltoid",
+       "name": "Deltoid",
+       "accept": [],
+       "box": [
+        491,
+        294,
+        71,
+        20
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The thick, triangular muscle that caps the shoulder, from the clavicle, acromion and spine of the scapula to the deltoid tuberosity of the humerus. It is the prime mover for abducting the arm."
+      },
+      {
+       "id": "trapezius",
+       "name": "Trapezius",
+       "accept": [],
+       "box": [
+        490,
+        414,
+        93,
+        24
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The large diamond-shaped muscle of the upper back and neck, from the skull and the cervical and thoracic spinous processes to the clavicle, acromion and spine of the scapula. It elevates, retracts and rotates the scapula."
+      }
+     ]
+    },
+    {
+     "figure": "os-11-23",
+     "topic": "upper-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "pectoralis-major",
+       "name": "Pectoralis major",
+       "accept": [
+        "pec major"
+       ],
+       "box": [
+        3,
+        67,
+        92,
+        45
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The large fan-shaped chest muscle, from the clavicle, sternum and rib cartilages to the humerus. It flexes, adducts and medially rotates the arm."
+      },
+      {
+       "id": "deltoid",
+       "name": "Deltoid",
+       "accept": [],
+       "box": [
+        468,
+        130,
+        69,
+        20
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The thick, triangular muscle that caps the shoulder, from the clavicle, acromion and spine of the scapula to the deltoid tuberosity of the humerus. It is the prime mover for abducting the arm."
+      },
+      {
+       "id": "latissimus-dorsi",
+       "name": "Latissimus dorsi",
+       "accept": [
+        "lats",
+        "latissimus"
+       ],
+       "box": [
+        467,
+        244,
+        144,
+        20
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The broad, flat muscle of the lower back, from the lower thoracic and lumbar spinous processes and the iliac crest to the humerus. It extends, adducts and medially rotates the arm."
+      },
+      {
+       "id": "teres-minor",
+       "name": "Teres minor",
+       "accept": [],
+       "box": [
+        670,
+        581,
+        110,
+        20
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "A rotator cuff muscle along the lower border of the scapula, from the lateral border to the greater tubercle of the humerus. It laterally rotates the arm and holds the humeral head in its socket."
+      },
+      {
+       "id": "supraspinatus",
+       "name": "Supraspinatus",
+       "accept": [],
+       "box": [
+        950,
+        582,
+        130,
+        24
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "The rotator cuff muscle above the spine of the scapula, in the supraspinous fossa, inserting on the greater tubercle. It starts abduction of the arm and helps hold the humeral head in the glenoid cavity."
+      },
+      {
+       "id": "deltoid-cut",
+       "name": "Deltoid (cut)",
+       "accept": [],
+       "box": [
+        467,
+        598,
+        69,
+        44
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The deltoid, cut and folded back here to show the muscles beneath. It caps the shoulder and is the prime mover for abducting the arm."
+      },
+      {
+       "id": "spine-of-scapula",
+       "name": "Spine of scapula",
+       "accept": [
+        "scapular spine",
+        "spine of the scapula"
+       ],
+       "box": [
+        950,
+        612,
+        80,
+        45
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The raised ridge across the back of the scapula, ending in the acromion. It divides the supraspinous from the infraspinous fossa and anchors trapezius and the deltoid."
+      },
+      {
+       "id": "coracoid-process",
+       "name": "Coracoid process of scapula",
+       "accept": [
+        "coracoid process",
+        "coracoid"
+       ],
+       "box": [
+        466,
+        659,
+        156,
+        45
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The hook-like projection on the front of the scapula, below the clavicle. Pectoralis minor, coracobrachialis and the short head of biceps brachii attach to it."
+      },
+      {
+       "id": "deltoid-cut-posterior",
+       "name": "Deltoid (cut)",
+       "accept": [],
+       "box": [
+        950,
+        672,
+        112,
+        23
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The thick, triangular muscle that caps the shoulder, from the clavicle, acromion and spine of the scapula to the deltoid tuberosity of the humerus. It is the prime mover for abducting the arm."
+      },
+      {
+       "id": "infraspinatus",
+       "name": "Infraspinatus",
+       "accept": [],
+       "box": [
+        950,
+        715,
+        118,
+        23
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "The rotator cuff muscle below the spine of the scapula, in the infraspinous fossa, inserting on the greater tubercle. It laterally rotates the arm and holds the humeral head in its socket."
+      },
+      {
+       "id": "pectoralis-major-cut",
+       "name": "Pectoralis major (cut)",
+       "accept": [
+        "pec major"
+       ],
+       "box": [
+        3,
+        723,
+        100,
+        44
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "Pectoralis major, cut here to show the deeper chest muscles. It flexes, adducts and medially rotates the arm."
+      },
+      {
+       "id": "humerus",
+       "name": "Humerus",
+       "accept": [],
+       "box": [
+        570,
+        730,
+        87,
+        20
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bone of the arm, from the shoulder to the elbow. Shoulder muscles insert on it and muscles that move the forearm arise from it."
+      },
+      {
+       "id": "subscapularis",
+       "name": "Subscapularis",
+       "accept": [],
+       "box": [
+        466,
+        772,
+        129,
+        23
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "The rotator cuff muscle on the front surface of the scapula (the subscapular fossa), inserting on the lesser tubercle of the humerus. It medially rotates the arm and holds the humeral head in its socket.",
+       "follow": {
+        "q": "Which of these muscles is NOT part of the rotator cuff?",
+        "options": [
+         "Subscapularis",
+         "Supraspinatus",
+         "Teres major",
+         "Infraspinatus"
+        ],
+        "correct": 2,
+        "why": "The rotator cuff is supraspinatus, infraspinatus, teres minor and subscapularis, whose tendons wrap the humeral head. Teres major also runs from the scapula to the humerus but inserts on the front of the shaft and does not hold the joint together.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "teres-major-posterior",
+       "name": "Teres major",
+       "accept": [],
+       "box": [
+        949,
+        798,
+        110,
+        24
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thick muscle from the lower angle of the scapula to the front of the humerus, next to latissimus dorsi. It extends, adducts and medially rotates the arm. It is not part of the rotator cuff."
+      },
+      {
+       "id": "latissimus-dorsi-near-origin",
+       "name": "Latissimus dorsi (near its origin)",
+       "accept": [
+        "latissimus",
+        "lats"
+       ],
+       "box": [
+        861,
+        828,
+        144,
+        44
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The broad, flat muscle of the lower back, from the lower thoracic and lumbar spinous processes and the iliac crest to the humerus. It extends, adducts and medially rotates the arm."
+      },
+      {
+       "id": "teres-major",
+       "name": "Teres major",
+       "accept": [],
+       "box": [
+        465,
+        836,
+        111,
+        24
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thick muscle from the lower angle of the scapula to the front of the humerus, next to latissimus dorsi. It extends, adducts and medially rotates the arm. It is not part of the rotator cuff."
+      },
+      {
+       "id": "triceps-brachii-long-head",
+       "name": "Triceps brachii: long head",
+       "accept": [
+        "long head of triceps",
+        "long head of triceps brachii",
+        "triceps long head"
+       ],
+       "box": [
+        860,
+        888,
+        221,
+        23
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The long head of triceps brachii, arising from the scapula just below the glenoid cavity. It extends the elbow and, because it crosses the shoulder, also helps extend the arm."
+      },
+      {
+       "id": "serratus-anterior",
+       "name": "Serratus anterior",
+       "accept": [],
+       "box": [
+        466,
+        891,
+        82,
+        40
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The saw-toothed muscle on the side of the chest, from the upper eight or nine ribs to the medial border of the scapula. It pulls the scapula forward around the rib cage, as in a punch, and rotates it upward."
+      },
+      {
+       "id": "triceps-brachii-lateral-head",
+       "name": "Triceps brachii: lateral head",
+       "accept": [
+        "lateral head of triceps",
+        "lateral head of triceps brachii",
+        "triceps lateral head"
+       ],
+       "box": [
+        860,
+        949,
+        237,
+        24
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The lateral head of triceps brachii, arising from the back of the humerus. It extends the elbow."
+      }
+     ]
+    },
+    {
+     "figure": "os-11-25",
+     "topic": "upper-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "biceps-brachii-short-head",
+       "name": "Biceps brachii (short head)",
+       "accept": [
+        "short head of biceps",
+        "short head of biceps brachii",
+        "biceps short head"
+       ],
+       "box": [
+        370,
+        87,
+        119,
+        41
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The short head of biceps brachii, arising from the coracoid process. The biceps flexes the elbow and supinates the forearm."
+      },
+      {
+       "id": "triceps-brachii-lateral-head",
+       "name": "Triceps brachii (lateral head)",
+       "accept": [
+        "lateral head of triceps",
+        "lateral head of triceps brachii",
+        "triceps lateral head"
+       ],
+       "box": [
+        695,
+        106,
+        124,
+        42
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The lateral head of triceps brachii, arising from the back of the humerus. It extends the elbow."
+      },
+      {
+       "id": "biceps-brachii-long-head",
+       "name": "Biceps brachii (long head)",
+       "accept": [
+        "long head of biceps",
+        "long head of biceps brachii",
+        "biceps long head"
+       ],
+       "box": [
+        370,
+        140,
+        119,
+        42
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The long head of biceps brachii, whose tendon arises above the glenoid cavity and runs through the groove on the humerus. The biceps flexes the elbow and supinates the forearm."
+      },
+      {
+       "id": "triceps-brachii-long-head",
+       "name": "Triceps brachii (long head)",
+       "accept": [
+        "long head of triceps",
+        "long head of triceps brachii",
+        "triceps long head"
+       ],
+       "box": [
+        966,
+        260,
+        123,
+        42
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The long head of triceps brachii, arising from the scapula just below the glenoid cavity. It extends the elbow and, because it crosses the shoulder, also helps extend the arm."
+      },
+      {
+       "id": "brachialis",
+       "name": "Brachialis",
+       "accept": [],
+       "box": [
+        121,
+        354,
+        87,
+        19
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The muscle beneath biceps brachii on the front of the arm, from the humerus to the ulna. It is the prime mover for flexing the elbow, whatever the forearm's position."
+      },
+      {
+       "id": "triceps-brachii",
+       "name": "Triceps brachii",
+       "accept": [
+        "triceps"
+       ],
+       "box": [
+        697,
+        459,
+        123,
+        23
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The three-headed muscle on the back of the arm, from the scapula and humerus to the olecranon of the ulna. It is the prime mover for extending the elbow."
+      },
+      {
+       "id": "biceps-brachii",
+       "name": "Biceps brachii",
+       "accept": [
+        "biceps"
+       ],
+       "box": [
+        288,
+        469,
+        120,
+        22
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The two-headed muscle on the front of the arm, from the scapula to the radius. It flexes the elbow and supinates the forearm, turning the palm up."
+      },
+      {
+       "id": "brachioradialis",
+       "name": "Brachioradialis",
+       "accept": [],
+       "box": [
+        501,
+        480,
+        125,
+        19
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The forearm muscle on the thumb side, from the lower humerus to the lower end of the radius. It flexes the elbow, working best with the forearm halfway between palm up and palm down.",
+       "follow": {
+        "q": "Biceps brachii, brachialis and brachioradialis all do which movement?",
+        "options": [
+         "Extend the elbow",
+         "Pronate the forearm",
+         "Flex the elbow",
+         "Extend the wrist"
+        ],
+        "correct": 2,
+        "why": "All three cross the front of the elbow and flex it. Triceps brachii extends the elbow, pronator teres and pronator quadratus pronate, and the extensors on the back of the forearm extend the wrist.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "extensor-carpi-radialis-longus",
+       "name": "Extensor carpi radialis longus",
+       "accept": [
+        "ecrl"
+       ],
+       "box": [
+        581,
+        509,
+        238,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A muscle on the thumb side of the back of the forearm, from the lateral humerus to the second metacarpal. It extends the wrist and abducts the hand."
+      },
+      {
+       "id": "extensor-carpi-radialis-brevis",
+       "name": "Extensor carpi radialis brevis",
+       "accept": [
+        "ecrb"
+       ],
+       "box": [
+        581,
+        558,
+        233,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The shorter partner of extensor carpi radialis longus, from the lateral epicondyle to the third metacarpal. It extends the wrist and abducts the hand."
+      },
+      {
+       "id": "lateral-epicondyle",
+       "name": "Lateral epicondyle of humerus",
+       "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the humerus"
+       ],
+       "box": [
+        993,
+        581,
+        99,
+        57
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bony bump on the outer side of the lower humerus. Most muscles that extend the wrist and fingers arise from it, through a shared tendon."
+      },
+      {
+       "id": "pronator-teres",
+       "name": "Pronator teres",
+       "accept": [],
+       "box": [
+        346,
+        583,
+        122,
+        19
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A short muscle across the front of the upper forearm, from the medial epicondyle to the radius. It pronates the forearm (turns the palm down) and helps flex the elbow."
+      },
+      {
+       "id": "abductor-pollicis-longus",
+       "name": "Abductor pollicis longus",
+       "accept": [],
+       "box": [
+        580,
+        609,
+        195,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep muscle of the back of the forearm, from the radius and ulna to the base of the thumb's metacarpal. It abducts the thumb and helps abduct the hand."
+      },
+      {
+       "id": "flexor-carpi-radialis",
+       "name": "Flexor carpi radialis",
+       "accept": [
+        "fcr"
+       ],
+       "box": [
+        56,
+        622,
+        102,
+        38
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A superficial muscle on the front of the forearm, from the medial epicondyle to the second and third metacarpals. It flexes the wrist and abducts the hand."
+      },
+      {
+       "id": "extensor-pollicis-brevis",
+       "name": "Extensor pollicis brevis",
+       "accept": [],
+       "box": [
+        581,
+        633,
+        187,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep forearm muscle on the back of the forearm, from the radius to the thumb's first phalanx. It extends the thumb."
+      },
+      {
+       "id": "anconeus",
+       "name": "Anconeus",
+       "accept": [],
+       "box": [
+        934,
+        656,
+        90,
+        19
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A small triangular muscle behind the elbow, from the lateral epicondyle to the ulna. It helps triceps brachii extend the elbow."
+      },
+      {
+       "id": "extensor-pollicis-longus",
+       "name": "Extensor pollicis longus",
+       "accept": [],
+       "box": [
+        581,
+        657,
+        137,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep muscle of the back of the forearm, from the ulna to the tip of the thumb. It extends the thumb."
+      },
+      {
+       "id": "palmaris-longus",
+       "name": "Palmaris longus",
+       "accept": [],
+       "box": [
+        56,
+        672,
+        135,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A slender muscle on the front of the forearm with a long tendon to the palm; it is missing in some people. It helps flex the wrist."
+      },
+      {
+       "id": "extensor-carpi-ulnaris",
+       "name": "Extensor carpi ulnaris",
+       "accept": [
+        "ecu"
+       ],
+       "box": [
+        935,
+        686,
+        123,
+        38
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A muscle on the little-finger side of the back of the forearm, from the lateral epicondyle and ulna to the fifth metacarpal. It extends the wrist and adducts the hand."
+      },
+      {
+       "id": "flexor-carpi-ulnaris",
+       "name": "Flexor carpi ulnaris",
+       "accept": [
+        "fcu"
+       ],
+       "box": [
+        56,
+        708,
+        159,
+        22
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A superficial muscle on the little-finger side of the front of the forearm, from the medial epicondyle and ulna to the pisiform and fifth metacarpal. It flexes the wrist and adducts the hand."
+      },
+      {
+       "id": "extensor-digitorum",
+       "name": "Extensor digitorum",
+       "accept": [
+        "extensor digitorum communis"
+       ],
+       "box": [
+        935,
+        736,
+        156,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The main extensor of the fingers, in the middle of the back of the forearm, from the lateral epicondyle to the four fingers. It extends the fingers and helps extend the wrist."
+      },
+      {
+       "id": "flexor-digitorum-superficialis",
+       "name": "Flexor digitorum superficialis",
+       "accept": [
+        "fds"
+       ],
+       "box": [
+        56,
+        762,
+        231,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The middle-layer flexor of the front of the forearm, sending tendons to the middle phalanges of the four fingers. It flexes the fingers and the wrist."
+      },
+      {
+       "id": "extensor-digiti-minimi",
+       "name": "Extensor digiti minimi",
+       "accept": [],
+       "box": [
+        935,
+        768,
+        120,
+        39
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A slender muscle beside extensor digitorum that extends the little finger."
+      },
+      {
+       "id": "lateral-epicondyle-deep",
+       "name": "Lateral epicondyle of humerus",
+       "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the humerus"
+       ],
+       "box": [
+        446,
+        908,
+        244,
+        23
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bony bump on the outer side of the lower humerus. Most muscles that extend the wrist and fingers arise from it, through a shared tendon."
+      },
+      {
+       "id": "medial-epicondyle",
+       "name": "Medial epicondyle of humerus",
+       "accept": [
+        "medial epicondyle",
+        "medial epicondyle of the humerus"
+       ],
+       "box": [
+        250,
+        932,
+        242,
+        23
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bony bump on the inner side of the lower humerus. Most muscles that flex the wrist and fingers, and pronator teres, arise from it."
+      },
+      {
+       "id": "supinator",
+       "name": "Supinator",
+       "accept": [],
+       "box": [
+        525,
+        955,
+        87,
+        23
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep muscle wrapped around the upper radius, from the lateral epicondyle and ulna. It supinates the forearm (turns the palm up)."
+      },
+      {
+       "id": "flexor-pollicis-longus",
+       "name": "Flexor pollicis longus",
+       "accept": [],
+       "box": [
+        288,
+        1000,
+        173,
+        22
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep flexor of the front of the forearm, from the radius to the tip of the thumb. It flexes the thumb."
+      },
+      {
+       "id": "abductor-pollicis-longus-deep",
+       "name": "Abductor pollicis longus",
+       "accept": [],
+       "box": [
+        563,
+        1043,
+        194,
+        22
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep muscle of the back of the forearm, from the radius and ulna to the base of the thumb's metacarpal. It abducts the thumb and helps abduct the hand."
+      },
+      {
+       "id": "brachialis-cut",
+       "name": "Brachialis (cut)",
+       "accept": [],
+       "box": [
+        56,
+        1044,
+        87,
+        41
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "Brachialis, cut here to show the deep forearm. It runs from the humerus to the ulna and flexes the elbow."
+      },
+      {
+       "id": "medial-epicondyle-dorsal",
+       "name": "Medial epicondyle of humerus",
+       "accept": [
+        "medial epicondyle",
+        "medial epicondyle of the humerus"
+       ],
+       "box": [
+        992,
+        1057,
+        100,
+        58
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bony bump on the inner side of the lower humerus. Most muscles that flex the wrist and fingers, and pronator teres, arise from it."
+      },
+      {
+       "id": "pronator-quadratus",
+       "name": "Pronator quadratus",
+       "accept": [],
+       "box": [
+        376,
+        1086,
+        160,
+        22
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A square muscle across the front of the lower forearm, from the ulna to the radius. It is the main pronator, turning the palm down.",
+       "follow": {
+        "q": "You turn a key to the left with your right hand, palm turning down. Which muscles do the turning?",
+        "options": [
+         "Supinator and biceps brachii",
+         "Pronator teres and pronator quadratus",
+         "Flexor carpi ulnaris and extensor carpi ulnaris",
+         "Brachialis and anconeus"
+        ],
+        "correct": 1,
+        "why": "Turning the palm down is pronation, done by pronator quadratus and pronator teres. Supinator and biceps brachii turn the palm up, the carpi ulnaris muscles move the wrist, and brachialis and anconeus move the elbow.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "extensor-pollicis-longus-deep",
+       "name": "Extensor pollicis longus",
+       "accept": [],
+       "box": [
+        564,
+        1097,
+        192,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep muscle of the back of the forearm, from the ulna to the tip of the thumb. It extends the thumb."
+      },
+      {
+       "id": "flexor-digitorum-profundus",
+       "name": "Flexor digitorum profundus",
+       "accept": [
+        "fdp"
+       ],
+       "box": [
+        55,
+        1100,
+        136,
+        42
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The deepest finger flexor, from the ulna to the tips (distal phalanges) of the four fingers. It flexes the fingers, including the fingertip joints."
+      },
+      {
+       "id": "flexor-digitorum-profundus-dorsal",
+       "name": "Flexor digitorum profundus",
+       "accept": [
+        "fdp"
+       ],
+       "box": [
+        970,
+        1134,
+        90,
+        61
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The deepest finger flexor, from the ulna to the tips (distal phalanges) of the four fingers. It flexes the fingers, including the fingertip joints."
+      },
+      {
+       "id": "extensor-pollicis-brevis-deep",
+       "name": "Extensor pollicis brevis",
+       "accept": [],
+       "box": [
+        509,
+        1147,
+        137,
+        38
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep forearm muscle on the back of the forearm, from the radius to the thumb's first phalanx. It extends the thumb."
+      },
+      {
+       "id": "flexor-retinaculum",
+       "name": "Flexor retinaculum (cut)",
+       "accept": [
+        "transverse carpal ligament"
+       ],
+       "box": [
+        57,
+        1152,
+        153,
+        42
+       ],
+       "concept": "hand-bones",
+       "taught": "upper-limb",
+       "fn": "A strong band across the front of the wrist, cut here, that holds the flexor tendons in place. It forms the roof of the carpal tunnel."
+      },
+      {
+       "id": "flexor-carpi-ulnaris-deep",
+       "name": "Flexor carpi ulnaris",
+       "accept": [
+        "fcu"
+       ],
+       "box": [
+        910,
+        1203,
+        158,
+        23
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A superficial muscle on the little-finger side of the front of the forearm, from the medial epicondyle and ulna to the pisiform and fifth metacarpal. It flexes the wrist and adducts the hand."
+      },
+      {
+       "id": "extensor-indicis",
+       "name": "Extensor indicis",
+       "accept": [],
+       "box": [
+        933,
+        1236,
+        133,
+        19
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A deep muscle on the back of the forearm, from the ulna to the index finger. It extends the index finger, as in pointing."
+      },
+      {
+       "id": "extensor-retinaculum",
+       "name": "Extensor retinaculum",
+       "accept": [],
+       "box": [
+        782,
+        1249,
+        101,
+        38
+       ],
+       "concept": null,
+       "fn": "A band across the back of the wrist that holds the extensor tendons against the bones so they do not bowstring when the wrist bends back."
+      }
+     ]
+    },
+    {
+     "figure": "os-11-28",
+     "topic": "upper-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "opponens-pollicis",
+       "name": "Opponens pollicis",
+       "accept": [],
+       "box": [
+        479,
+        126,
+        169,
+        25
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thenar muscle in the base of the thumb, from the carpals to the thumb's metacarpal. It pulls the thumb across the palm to touch the fingertips (opposition).",
+       "follow": {
+        "q": "Touching the tip of the thumb to the little fingertip uses which movement of the thumb?",
+        "options": [
+         "Abduction",
+         "Opposition",
+         "Extension",
+         "Adduction",
+         "Circumduction"
+        ],
+        "correct": 1,
+        "why": "Bringing the thumb across the palm to meet a fingertip is opposition, done by opponens pollicis. Abduction and adduction move the thumb away from or toward the palm, and extension straightens it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "abductor-digiti-minimi",
+       "name": "Abductor digiti minimi",
+       "accept": [],
+       "box": [
+        5,
+        165,
+        137,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A hypothenar muscle along the little-finger edge of the palm. It abducts the little finger."
+      },
+      {
+       "id": "abductor-pollicis-brevis",
+       "name": "Abductor pollicis brevis",
+       "accept": [],
+       "box": [
+        479,
+        191,
+        157,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thenar muscle in the ball of the thumb, from the carpals to the thumb's first phalanx. It abducts the thumb, moving it away from the palm."
+      },
+      {
+       "id": "flexor-digiti-minimi-brevis",
+       "name": "Flexor digiti minimi brevis",
+       "accept": [],
+       "box": [
+        6,
+        228,
+        127,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A hypothenar muscle along the little-finger edge of the palm. It flexes the little finger."
+      },
+      {
+       "id": "pisometacarpal-ligament",
+       "name": "Pisometacarpal ligament",
+       "accept": [],
+       "box": [
+        948,
+        236,
+        147,
+        48
+       ],
+       "concept": null,
+       "fn": "A ligament from the pisiform to the fifth metacarpal. It carries the pull of flexor carpi ulnaris on to the metacarpal."
+      },
+      {
+       "id": "flexor-pollicis-brevis",
+       "name": "Flexor pollicis brevis",
+       "accept": [],
+       "box": [
+        479,
+        266,
+        132,
+        42
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thenar muscle in the ball of the thumb. It flexes the thumb."
+      },
+      {
+       "id": "opponens-digiti-minimi",
+       "name": "Opponens digiti minimi",
+       "accept": [],
+       "box": [
+        947,
+        304,
+        149,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A hypothenar muscle from the hamate to the fifth metacarpal. It draws the little finger toward the thumb, cupping the palm."
+      },
+      {
+       "id": "adductor-pollicis",
+       "name": "Adductor pollicis",
+       "accept": [],
+       "box": [
+        479,
+        356,
+        157,
+        25
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A fan-shaped muscle deep in the palm, from the metacarpals to the thumb. It adducts the thumb, pulling it toward the palm, as in gripping."
+      },
+      {
+       "id": "lumbricalis-muscles",
+       "name": "Lumbricalis muscles",
+       "accept": [
+        "lumbricals",
+        "lumbrical",
+        "lumbricales",
+        "lumbrical muscles"
+       ],
+       "box": [
+        65,
+        496,
+        112,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The lumbricals, four small worm-like muscles attached to the tendons of flexor digitorum profundus. They flex the knuckles while extending the finger joints beyond them."
+      },
+      {
+       "id": "palmar-interossei",
+       "name": "Palmar interossei muscles",
+       "accept": [
+        "palmar interossei",
+        "palmar interosseous"
+       ],
+       "box": [
+        65,
+        923,
+        164,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "Muscles between the metacarpals, on the palm side. They adduct the fingers, pulling them together toward the middle finger."
+      },
+      {
+       "id": "dorsal-interossei",
+       "name": "Dorsal interossei muscles",
+       "accept": [
+        "dorsal interossei",
+        "dorsal interosseous"
+       ],
+       "box": [
+        621,
+        923,
+        159,
+        43
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "Muscles between the metacarpals, on the back of the hand. They abduct the fingers, spreading them apart."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lower-limb-muscles",
+   "title": "Muscles of the hip and lower limb",
+   "chapter": "muscular-system",
+   "topic": "lower-limb-muscles",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-11-29",
+     "topic": "lower-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "quadratus-lumborum",
+       "name": "Quadratus lumborum",
+       "accept": [],
+       "box": [
+        5,
+        13,
+        124,
+        51
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "A square muscle of the back wall of the abdomen, from the iliac crest to the 12th rib and the lumbar vertebrae. It bends the trunk to the side and holds the 12th rib down."
+      },
+      {
+       "id": "psoas-major",
+       "name": "Psoas major",
+       "accept": [
+        "psoas"
+       ],
+       "box": [
+        338,
+        23,
+        146,
+        29
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A long muscle from the lumbar vertebrae, across the front of the hip, to the lesser trochanter of the femur; with iliacus it forms iliopsoas. It is the main flexor of the hip."
+      },
+      {
+       "id": "iliacus",
+       "name": "Iliacus",
+       "accept": [],
+       "box": [
+        6,
+        91,
+        78,
+        24
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The muscle that fills the bowl of the ilium and joins psoas major to insert on the lesser trochanter of the femur. Together, as iliopsoas, they flex the hip."
+      },
+      {
+       "id": "pectineus",
+       "name": "Pectineus",
+       "accept": [],
+       "box": [
+        338,
+        113,
+        115,
+        24
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A short, flat muscle in the upper medial thigh, from the pubis to the femur. It adducts and flexes the hip."
+      },
+      {
+       "id": "crest-of-ilium",
+       "name": "Crest of ilium",
+       "accept": [
+        "iliac crest"
+       ],
+       "box": [
+        5,
+        179,
+        97,
+        51
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The iliac crest, the curved upper rim of the ilium. Abdominal, back and gluteal muscles attach along it."
+      },
+      {
+       "id": "sacrum",
+       "name": "Sacrum",
+       "accept": [],
+       "box": [
+        337,
+        219,
+        95,
+        24
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The triangular bone at the base of the spine, made of five fused vertebrae, that joins the two hip bones. Deep back muscles anchor to it."
+      },
+      {
+       "id": "adductor-longus",
+       "name": "Adductor longus",
+       "accept": [],
+       "box": [
+        337,
+        263,
+        186,
+        29
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A medial thigh muscle from the pubis to the middle of the femur. It adducts the thigh and helps flex it."
+      },
+      {
+       "id": "tensor-fascia-latae",
+       "name": "Tensor fascia latae",
+       "accept": [
+        "tensor fasciae latae",
+        "tfl"
+       ],
+       "box": [
+        4,
+        268,
+        134,
+        51
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small muscle on the side of the hip, from the iliac crest into the iliotibial tract. It flexes and abducts the thigh and tightens the iliotibial tract to steady the knee."
+      },
+      {
+       "id": "gracilis",
+       "name": "Gracilis",
+       "accept": [],
+       "box": [
+        337,
+        294,
+        92,
+        24
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A long, thin strap muscle on the inner thigh, from the pubis to the medial tibia. It adducts the thigh and helps flex the knee."
+      },
+      {
+       "id": "adductor-magnus",
+       "name": "Adductor magnus",
+       "accept": [],
+       "box": [
+        337,
+        327,
+        110,
+        56
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The largest adductor, a big triangular muscle of the medial thigh from the pubis and ischium to the femur. It adducts the thigh; its back part helps extend the hip."
+      },
+      {
+       "id": "rectus-femoris",
+       "name": "Rectus femoris",
+       "accept": [],
+       "box": [
+        4,
+        362,
+        92,
+        51
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The part of quadriceps femoris that runs straight down the front of the thigh from the ilium to the patella. It extends the knee and, because it crosses the hip, also flexes the hip.",
+       "follow": {
+        "q": "Why can rectus femoris flex the hip when the three vastus muscles cannot?",
+        "options": [
+         "It is the largest part of quadriceps femoris",
+         "It crosses the hip as well as the knee",
+         "It inserts on the fibula below the knee",
+         "It arises from the shaft of the femur"
+        ],
+        "correct": 1,
+        "why": "Rectus femoris arises from the ilium, so it crosses the hip joint as well as the knee, and it flexes the hip as well as extending the knee. The vasti arise from the femur and cross only the knee. Vastus lateralis, not rectus femoris, is the largest part.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "sartorius",
+       "name": "Sartorius",
+       "accept": [],
+       "box": [
+        337,
+        391,
+        110,
+        24
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The longest muscle in the body, a strap crossing the thigh diagonally from the anterior superior iliac spine to the medial tibia. It flexes, abducts and laterally rotates the thigh and flexes the knee, as in sitting cross-legged."
+      },
+      {
+       "id": "vastus-medialis",
+       "name": "Vastus medialis",
+       "accept": [],
+       "box": [
+        337,
+        432,
+        179,
+        24
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The part of quadriceps femoris on the inner front of the thigh, from the femur to the quadriceps tendon. It extends the knee."
+      },
+      {
+       "id": "vastus-lateralis",
+       "name": "Vastus lateralis",
+       "accept": [],
+       "box": [
+        5,
+        437,
+        95,
+        51
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The largest part of quadriceps femoris, on the outer front of the thigh. It extends the knee."
+      },
+      {
+       "id": "quadriceps-tendon",
+       "name": "Quadriceps tendon (or patellar tendon)",
+       "accept": [
+        "patellar tendon"
+       ],
+       "box": [
+        337,
+        465,
+        215,
+        56
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The tendon of quadriceps femoris, which holds the patella; below the patella it continues as the patellar ligament to the tibial tuberosity. It carries the pull that extends the knee."
+      },
+      {
+       "id": "patellar-ligament",
+       "name": "Patellar ligament",
+       "accept": [
+        "patellar tendon"
+       ],
+       "box": [
+        338,
+        542,
+        190,
+        29
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The band from the patella to the tibial tuberosity, the continuation of the quadriceps tendon. It carries quadriceps pull to the tibia, and tapping it tests the knee jerk."
+      },
+      {
+       "id": "gluteus-medius-cut",
+       "name": "Gluteus medius (cut)",
+       "accept": [],
+       "box": [
+        950,
+        732,
+        143,
+        57
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A thick, fan-shaped muscle on the side of the hip, partly under gluteus maximus, from the ilium to the greater trochanter. It abducts the thigh and holds the pelvis level when you stand on one leg."
+      },
+      {
+       "id": "crest-of-ilium-posterior",
+       "name": "Crest of ilium",
+       "accept": [
+        "iliac crest"
+       ],
+       "box": [
+        539,
+        736,
+        152,
+        24
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The iliac crest, the curved upper rim of the ilium. Abdominal, back and gluteal muscles attach along it."
+      },
+      {
+       "id": "sacrum-posterior",
+       "name": "Sacrum",
+       "accept": [],
+       "box": [
+        539,
+        775,
+        95,
+        24
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The triangular bone at the base of the spine, made of five fused vertebrae, that joins the two hip bones. Deep back muscles anchor to it."
+      },
+      {
+       "id": "iliac-crest",
+       "name": "Iliac crest",
+       "accept": [
+        "crest of ilium"
+       ],
+       "box": [
+        88,
+        791,
+        64,
+        51
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The curved upper rim of the ilium, the top of your hip. Abdominal, back and gluteal muscles attach along it."
+      },
+      {
+       "id": "gluteus-minimus",
+       "name": "Gluteus minimus",
+       "accept": [],
+       "box": [
+        950,
+        799,
+        101,
+        51
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The smallest and deepest gluteal muscle, beneath gluteus medius, from the ilium to the greater trochanter. It abducts and medially rotates the thigh."
+      },
+      {
+       "id": "pectineus-deep",
+       "name": "Pectineus",
+       "accept": [],
+       "box": [
+        371,
+        816,
+        116,
+        24
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A short, flat muscle in the upper medial thigh, from the pubis to the femur. It adducts and flexes the hip."
+      },
+      {
+       "id": "obturator-internus",
+       "name": "Obturator internus",
+       "accept": [],
+       "box": [
+        538,
+        846,
+        115,
+        50
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A deep lateral rotator of the hip, from the inner surface around the obturator foramen out to the greater trochanter. It laterally rotates the thigh."
+      },
+      {
+       "id": "pubis",
+       "name": "Pubis",
+       "accept": [
+        "pubic bone"
+       ],
+       "box": [
+        371,
+        861,
+        71,
+        24
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The front part of the hip bone. The adductor muscles and pectineus arise from it."
+      },
+      {
+       "id": "piriformis",
+       "name": "Piriformis",
+       "accept": [],
+       "box": [
+        951,
+        865,
+        111,
+        24
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A pear-shaped deep hip muscle from the front of the sacrum to the greater trochanter. It laterally rotates the thigh.",
+       "follow": {
+        "q": "Piriformis, the gemelli, obturator internus and quadratus femoris share which action?",
+        "options": [
+         "Adducting the thigh toward the midline",
+         "Flexing the knee",
+         "Extending the knee",
+         "Laterally rotating the thigh"
+        ],
+        "correct": 3,
+        "why": "These deep hip muscles all pass behind the hip to the greater trochanter and turn the thigh outward. The adductor group adducts, the hamstrings flex the knee, and quadriceps extends it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "obturator-externus",
+       "name": "Obturator externus",
+       "accept": [],
+       "box": [
+        368,
+        904,
+        115,
+        51
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A deep lateral rotator on the outer surface of the obturator foramen, reaching the femur. It laterally rotates the thigh."
+      },
+      {
+       "id": "superior-gemellus",
+       "name": "Superior gemellus",
+       "accept": [
+        "gemellus superior"
+       ],
+       "box": [
+        950,
+        908,
+        108,
+        56
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small deep lateral rotator of the hip, from the ischial spine to the greater trochanter, just above obturator internus. It laterally rotates the thigh."
+      },
+      {
+       "id": "gluteus-maximus-cut",
+       "name": "Gluteus maximus (cut)",
+       "accept": [],
+       "box": [
+        539,
+        917,
+        108,
+        82
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The largest and most superficial gluteal muscle, from the ilium, sacrum and coccyx to the femur and iliotibial tract. It is the main extensor of the hip, used in climbing stairs and rising from a chair."
+      },
+      {
+       "id": "inferior-gemellus",
+       "name": "Inferior gemellus",
+       "accept": [
+        "gemellus inferior"
+       ],
+       "box": [
+        950,
+        976,
+        108,
+        55
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small deep lateral rotator from the ischial tuberosity to the greater trochanter, just below obturator internus. It laterally rotates the thigh."
+      },
+      {
+       "id": "adductor-brevis",
+       "name": "Adductor brevis",
+       "accept": [],
+       "box": [
+        368,
+        977,
+        110,
+        50
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A short medial thigh muscle from the pubis to the upper femur, beneath adductor longus. It adducts the thigh."
+      },
+      {
+       "id": "adductor-longus-deep",
+       "name": "Adductor longus",
+       "accept": [],
+       "box": [
+        368,
+        1037,
+        110,
+        56
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A medial thigh muscle from the pubis to the middle of the femur. It adducts the thigh and helps flex it."
+      },
+      {
+       "id": "adductor-group",
+       "name": "Adductor group",
+       "accept": [
+        "adductors",
+        "adductor muscles",
+        "hip adductors"
+       ],
+       "box": [
+        538,
+        1037,
+        110,
+        56
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The medial thigh muscles (adductor longus, brevis and magnus, with gracilis and pectineus). They pull the thigh toward the midline."
+      },
+      {
+       "id": "obturator-externus-posterior",
+       "name": "Obturator externus",
+       "accept": [],
+       "box": [
+        950,
+        1047,
+        114,
+        51
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A deep lateral rotator on the outer surface of the obturator foramen, reaching the femur. It laterally rotates the thigh."
+      },
+      {
+       "id": "femur",
+       "name": "Femur",
+       "accept": [
+        "thigh bone"
+       ],
+       "box": [
+        89,
+        1070,
+        81,
+        24
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The thigh bone, the longest bone in the body. Hip and thigh muscles attach along it."
+      },
+      {
+       "id": "adductor-magnus-deep",
+       "name": "Adductor magnus",
+       "accept": [],
+       "box": [
+        363,
+        1103,
+        110,
+        55
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The largest adductor, a big triangular muscle of the medial thigh from the pubis and ischium to the femur. It adducts the thigh; its back part helps extend the hip."
+      },
+      {
+       "id": "gracilis-posterior",
+       "name": "Gracilis",
+       "accept": [],
+       "box": [
+        539,
+        1107,
+        92,
+        24
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A long, thin strap muscle on the inner thigh, from the pubis to the medial tibia. It adducts the thigh and helps flex the knee."
+      },
+      {
+       "id": "quadratus-femoris",
+       "name": "Quadratus femoris",
+       "accept": [],
+       "box": [
+        949,
+        1118,
+        125,
+        51
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A short, square deep hip muscle from the ischial tuberosity to the femur. It laterally rotates the thigh."
+      },
+      {
+       "id": "semimembranosus",
+       "name": "Semimembranosus",
+       "accept": [],
+       "box": [
+        520,
+        1165,
+        219,
+        24
+       ],
+       "concept": "posterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The deepest hamstring on the back of the thigh, from the ischial tuberosity to the medial tibia. It extends the hip and flexes the knee."
+      },
+      {
+       "id": "biceps-femoris",
+       "name": "Biceps femoris",
+       "accept": [],
+       "box": [
+        949,
+        1191,
+        91,
+        51
+       ],
+       "concept": "posterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The lateral hamstring, with a long head from the ischial tuberosity and a short head from the femur, inserting on the fibula. It extends the hip and flexes the knee.",
+       "follow": {
+        "q": "Which muscles make up the hamstrings?",
+        "options": [
+         "Gracilis, sartorius and semitendinosus",
+         "Biceps femoris, semitendinosus and semimembranosus",
+         "Vastus lateralis, vastus medialis and rectus femoris",
+         "Gluteus maximus, medius and minimus"
+        ],
+        "correct": 1,
+        "why": "The hamstrings are biceps femoris, semitendinosus and semimembranosus on the back of the thigh; they extend the hip and flex the knee. The vasti and rectus femoris are the quadriceps, and the gluteal group moves the hip.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "semitendinosus",
+       "name": "Semitendinosus",
+       "accept": [],
+       "box": [
+        520,
+        1211,
+        183,
+        24
+       ],
+       "concept": "posterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The medial hamstring with a long, cord-like tendon, from the ischial tuberosity to the medial tibia. It extends the hip and flexes the knee."
+      }
+     ]
+    },
+    {
+     "figure": "os-11-32",
+     "topic": "lower-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "gastrocnemius-lateral-head",
+       "name": "Gastrocnemius (lateral head)",
+       "accept": [
+        "lateral head of gastrocnemius",
+        "gastrocnemius lateral head"
+       ],
+       "box": [
+        411,
+        86,
+        134,
+        44
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The two-headed calf muscle, arising from the femur above the knee and inserting on the calcaneus through the calcaneal tendon. It plantar flexes the foot and helps flex the knee."
+      },
+      {
+       "id": "tibialis-anterior",
+       "name": "Tibialis anterior",
+       "accept": [],
+       "box": [
+        5,
+        131,
+        137,
+        20
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The muscle along the front of the shin, from the tibia to the medial foot. It dorsiflexes and inverts the foot; weakness causes foot drop.",
+       "follow": {
+        "q": "A patient cannot lift the front of the foot and scuffs the toes when walking. Which muscle is most likely weak?",
+        "options": [
+         "Soleus",
+         "Tibialis anterior",
+         "Gastrocnemius",
+         "Fibularis longus",
+         "Flexor digitorum longus"
+        ],
+        "correct": 1,
+        "why": "Tibialis anterior dorsiflexes the foot; when it is weak the foot drops. Soleus and gastrocnemius plantar flex the foot, and fibularis longus mainly everts it.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "popliteus",
+       "name": "Popliteus",
+       "accept": [],
+       "box": [
+        779,
+        143,
+        86,
+        23
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small muscle behind the knee, from the lateral femur to the tibia. It unlocks the fully extended knee by rotating the femur on the tibia."
+      },
+      {
+       "id": "gastrocnemius-medial-head",
+       "name": "Gastrocnemius (medial head)",
+       "accept": [
+        "medial head of gastrocnemius",
+        "gastrocnemius medial head"
+       ],
+       "box": [
+        411,
+        166,
+        134,
+        43
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The two-headed calf muscle, arising from the femur above the knee and inserting on the calcaneus through the calcaneal tendon. It plantar flexes the foot and helps flex the knee."
+      },
+      {
+       "id": "fibularis-longus",
+       "name": "Fibularis longus",
+       "accept": [
+        "peroneus longus"
+       ],
+       "box": [
+        7,
+        171,
+        138,
+        24
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A muscle of the lateral leg, from the fibula; its tendon runs behind the lateral malleolus and under the foot. It everts and plantar flexes the foot and supports the arch."
+      },
+      {
+       "id": "soleus-cut",
+       "name": "Soleus (cut)",
+       "accept": [],
+       "box": [
+        779,
+        186,
+        108,
+        23
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The broad, flat calf muscle beneath gastrocnemius, from the tibia and fibula to the calcaneus through the calcaneal tendon. It plantar flexes the foot and keeps you from falling forward when you stand."
+      },
+      {
+       "id": "extensor-digitorum-longus",
+       "name": "Extensor digitorum longus",
+       "accept": [],
+       "box": [
+        6,
+        211,
+        163,
+        44
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A muscle of the front of the leg, lateral to tibialis anterior, sending tendons to the four lateral toes. It extends the toes and dorsiflexes the foot."
+      },
+      {
+       "id": "fibularis-longus-deep",
+       "name": "Fibularis longus",
+       "accept": [
+        "peroneus longus"
+       ],
+       "box": [
+        779,
+        229,
+        139,
+        23
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A muscle of the lateral leg, from the fibula; its tendon runs behind the lateral malleolus and under the foot. It everts and plantar flexes the foot and supports the arch."
+      },
+      {
+       "id": "plantaris",
+       "name": "Plantaris",
+       "accept": [],
+       "box": [
+        412,
+        249,
+        82,
+        20
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small muscle behind the knee with a very long, thin tendon to the calcaneus. It weakly helps gastrocnemius."
+      },
+      {
+       "id": "fibularis-brevis",
+       "name": "Fibularis brevis",
+       "accept": [
+        "peroneus brevis"
+       ],
+       "box": [
+        7,
+        263,
+        132,
+        19
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The shorter lateral leg muscle, beneath fibularis longus, from the fibula to the fifth metatarsal. It everts the foot."
+      },
+      {
+       "id": "tibialis-posterior",
+       "name": "Tibialis posterior",
+       "accept": [],
+       "box": [
+        778,
+        271,
+        146,
+        24
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The deepest muscle of the back of the leg, from the tibia and fibula to the bones of the medial foot. It inverts and plantar flexes the foot and supports the arch."
+      },
+      {
+       "id": "extensor-hallucis-longus",
+       "name": "Extensor hallucis longus",
+       "accept": [],
+       "box": [
+        6,
+        297,
+        149,
+        44
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A muscle of the front of the leg with a tendon to the big toe. It extends the big toe and dorsiflexes the foot."
+      },
+      {
+       "id": "soleus",
+       "name": "Soleus",
+       "accept": [],
+       "box": [
+        411,
+        313,
+        68,
+        19
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The broad, flat calf muscle beneath gastrocnemius, from the tibia and fibula to the calcaneus through the calcaneal tendon. It plantar flexes the foot and keeps you from falling forward when you stand.",
+       "follow": {
+        "q": "Why does gastrocnemius plantar flex the foot best with the knee straight, while soleus works equally well with the knee bent?",
+        "options": [
+         "Gastrocnemius crosses the knee; soleus does not",
+         "Soleus is one of the hamstring muscles",
+         "Gastrocnemius inserts on the tibia instead",
+         "Soleus has no tendon joining it to bone"
+        ],
+        "correct": 0,
+        "why": "Gastrocnemius arises from the femur, so bending the knee slackens it; soleus arises below the knee from the tibia and fibula, so its length is not changed by the knee. Both insert on the calcaneus through the calcaneal tendon.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "flexor-digitorum-longus",
+       "name": "Flexor digitorum longus",
+       "accept": [],
+       "box": [
+        779,
+        314,
+        141,
+        44
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A deep muscle of the back of the leg sending tendons under the foot to the four lateral toes. It flexes the toes."
+      },
+      {
+       "id": "fibularis-tertius",
+       "name": "Fibularis tertius",
+       "accept": [
+        "peroneus tertius"
+       ],
+       "box": [
+        7,
+        354,
+        135,
+        19
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small muscle at the lower front of the leg, from the fibula to the fifth metatarsal. It dorsiflexes and everts the foot."
+      },
+      {
+       "id": "flexor-hallucis-longus",
+       "name": "Flexor hallucis longus",
+       "accept": [],
+       "box": [
+        779,
+        379,
+        127,
+        44
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A deep muscle of the back of the leg with a tendon to the big toe. It flexes the big toe, giving the push-off in walking."
+      },
+      {
+       "id": "superior-extensor-retinaculum",
+       "name": "Superior extensor retinaculum",
+       "accept": [],
+       "box": [
+        6,
+        393,
+        156,
+        39
+       ],
+       "concept": null,
+       "fn": "A band across the front of the lower leg, just above the ankle, that holds the extensor tendons against the bones."
+      },
+      {
+       "id": "calcaneal-tendon",
+       "name": "Calcaneal (Achilles) tendon",
+       "accept": [
+        "achilles tendon",
+        "achilles"
+       ],
+       "box": [
+        410,
+        441,
+        173,
+        40
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The calcaneal (Achilles) tendon, the thickest tendon in the body, joining gastrocnemius and soleus to the calcaneus. It carries the calf pull that plantar flexes the foot."
+      },
+      {
+       "id": "fibularis-brevis-deep",
+       "name": "Fibularis brevis",
+       "accept": [
+        "peroneus brevis"
+       ],
+       "box": [
+        779,
+        444,
+        133,
+        19
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The shorter lateral leg muscle, beneath fibularis longus, from the fibula to the fifth metatarsal. It everts the foot."
+      },
+      {
+       "id": "inferior-extensor-retinaculum",
+       "name": "Inferior extensor retinaculum",
+       "accept": [],
+       "box": [
+        6,
+        459,
+        143,
+        39
+       ],
+       "concept": null,
+       "fn": "A Y-shaped band across the top of the ankle that holds the extensor tendons down as they turn onto the foot."
+      },
+      {
+       "id": "calcaneus",
+       "name": "Calcaneus (heel)",
+       "accept": [
+        "heel bone",
+        "heel"
+       ],
+       "box": [
+        411,
+        534,
+        149,
+        24
+       ],
+       "concept": "foot-bones",
+       "taught": "lower-limb",
+       "fn": "The heel bone, the largest tarsal. The calcaneal tendon inserts on it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "injection-sites",
+   "title": "Intramuscular injection sites",
+   "chapter": "muscular-system",
+   "topic": "lower-limb-muscles",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-11-5",
+     "topic": "lower-limb-muscles",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "occipitofrontalis-frontal-belly",
+       "name": "Occipitofrontalis (frontal belly)",
+       "accept": [
+        "frontalis",
+        "frontal belly"
+       ],
+       "box": [
+        801,
+        1,
+        219,
+        66
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The front belly of occipitofrontalis, over the forehead. It raises the eyebrows and wrinkles the forehead by pulling on the epicranial aponeurosis."
+      },
+      {
+       "id": "sternocleidomastoid",
+       "name": "Sternocleidomastoid",
+       "accept": [
+        "scm"
+       ],
+       "box": [
+        0,
+        33,
+        271,
+        28
+       ],
+       "concept": "neck-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The long diagonal neck muscle from the sternum and clavicle to the mastoid process behind the ear. One side turns the head to the opposite side; both together flex the neck."
+      },
+      {
+       "id": "deltoid",
+       "name": "Deltoid",
+       "accept": [],
+       "box": [
+        201,
+        109,
+        100,
+        27
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The thick muscle that caps the shoulder and abducts the arm. It is the deltoid intramuscular injection site, used for small volumes such as most vaccines, placed in the thick middle part a few finger-widths below the acromion.",
+       "follow": {
+        "q": "Why is the deltoid site used for small volumes only, such as most vaccines?",
+        "options": [
+         "The muscle is small, so only about 1 mL fits",
+         "The deltoid has almost no blood supply",
+         "The deltoid is made of smooth muscle",
+         "It is the thickest muscle in the whole body"
+        ],
+        "correct": 0,
+        "why": "The deltoid is a fairly small muscle, so only small volumes (about 1 mL in adults) are given there. Larger volumes go into the ventrogluteal site (gluteus medius) or vastus lateralis. It is well supplied with blood, which is why drugs are absorbed from it.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "trapezius",
+       "name": "Trapezius",
+       "accept": [],
+       "box": [
+        801,
+        153,
+        136,
+        33
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The large diamond-shaped muscle of the upper back and neck, from the skull and the cervical and thoracic spinous processes to the clavicle, acromion and spine of the scapula. It elevates, retracts and rotates the scapula."
+      },
+      {
+       "id": "pectoralis-major",
+       "name": "Pectoralis major",
+       "accept": [
+        "pec major"
+       ],
+       "box": [
+        0,
+        185,
+        213,
+        33
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The large fan-shaped chest muscle, from the clavicle, sternum and rib cartilages to the humerus. It flexes, adducts and medially rotates the arm."
+      },
+      {
+       "id": "pectoralis-minor",
+       "name": "Pectoralis minor",
+       "accept": [
+        "pec minor"
+       ],
+       "box": [
+        803,
+        198,
+        217,
+        28
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thin chest muscle beneath pectoralis major, from the 3rd to 5th ribs to the coracoid process. It pulls the scapula forward and down."
+      },
+      {
+       "id": "serratus-anterior",
+       "name": "Serratus anterior",
+       "accept": [],
+       "box": [
+        802,
+        243,
+        228,
+        28
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The saw-toothed muscle on the side of the chest, from the upper eight or nine ribs to the medial border of the scapula. It pulls the scapula forward around the rib cage, as in a punch, and rotates it upward."
+      },
+      {
+       "id": "rectus-abdominis",
+       "name": "Rectus abdominis",
+       "accept": [],
+       "box": [
+        0,
+        260,
+        239,
+        27
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The vertical strap muscle on each side of the midline, from the pubis up to the lower ribs and sternum, divided by tendinous intersections into segments. It flexes the trunk and compresses the abdomen."
+      },
+      {
+       "id": "biceps-brachii",
+       "name": "Biceps brachii",
+       "accept": [
+        "biceps"
+       ],
+       "box": [
+        802,
+        289,
+        191,
+        33
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The two-headed muscle on the front of the arm, from the scapula to the radius. It flexes the elbow and supinates the forearm, turning the palm up."
+      },
+      {
+       "id": "brachialis",
+       "name": "Brachialis",
+       "accept": [],
+       "box": [
+        802,
+        334,
+        137,
+        28
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The muscle beneath biceps brachii on the front of the arm, from the humerus to the ulna. It is the prime mover for flexing the elbow, whatever the forearm's position."
+      },
+      {
+       "id": "abdominal-external-oblique",
+       "name": "Abdominal external oblique",
+       "accept": [
+        "external oblique"
+       ],
+       "box": [
+        0,
+        336,
+        210,
+        65
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The outermost flat abdominal muscle, fibers running down and forward from the lower ribs toward the midline. It compresses the abdomen, flexes the trunk and turns it to the opposite side."
+      },
+      {
+       "id": "brachioradialis",
+       "name": "Brachioradialis",
+       "accept": [],
+       "box": [
+        802,
+        380,
+        201,
+        27
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The forearm muscle on the thumb side, from the lower humerus to the lower end of the radius. It flexes the elbow, working best with the forearm halfway between palm up and palm down."
+      },
+      {
+       "id": "pronator-teres",
+       "name": "Pronator teres",
+       "accept": [],
+       "box": [
+        802,
+        425,
+        195,
+        28
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A short muscle across the front of the upper forearm, from the medial epicondyle to the radius. It pronates the forearm (turns the palm down) and helps flex the elbow."
+      },
+      {
+       "id": "pectineus",
+       "name": "Pectineus",
+       "accept": [],
+       "box": [
+        0,
+        444,
+        134,
+        27
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A short, flat muscle in the upper medial thigh, from the pubis to the femur. It adducts and flexes the hip."
+      },
+      {
+       "id": "flexor-carpi-radialis",
+       "name": "Flexor carpi radialis",
+       "accept": [],
+       "box": [
+        802,
+        470,
+        262,
+        33
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A superficial muscle on the front of the forearm, from the medial epicondyle to the second and third metacarpals. It flexes the wrist and abducts the hand."
+      },
+      {
+       "id": "adductor-longus",
+       "name": "Adductor longus",
+       "accept": [],
+       "box": [
+        0,
+        519,
+        125,
+        66
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A medial thigh muscle from the pubis to the middle of the femur. It adducts the thigh and helps flex it."
+      },
+      {
+       "id": "tensor-fasciae-latae",
+       "name": "Tensor fasciae latae",
+       "accept": [
+        "tensor fascia latae",
+        "tfl"
+       ],
+       "box": [
+        801,
+        534,
+        269,
+        28
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A small muscle on the side of the hip that pulls on the iliotibial tract. It flexes and abducts the thigh and steadies the knee."
+      },
+      {
+       "id": "sartorius",
+       "name": "Sartorius",
+       "accept": [],
+       "box": [
+        0,
+        627,
+        126,
+        28
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The longest muscle in the body, a strap crossing the thigh diagonally from the anterior superior iliac spine to the medial tibia. It flexes, abducts and laterally rotates the thigh and flexes the knee, as in sitting cross-legged."
+      },
+      {
+       "id": "iliopsoas",
+       "name": "Iliopsoas",
+       "accept": [],
+       "box": [
+        726,
+        692,
+        125,
+        33
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "Psoas major and iliacus together, from the lumbar vertebrae and the ilium to the lesser trochanter of the femur. It is the prime mover for flexing the hip."
+      },
+      {
+       "id": "rectus-femoris",
+       "name": "Rectus femoris",
+       "accept": [],
+       "box": [
+        0,
+        727,
+        201,
+        28
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The part of quadriceps femoris that runs straight down the front of the thigh from the ilium to the patella. It extends the knee and, because it crosses the hip, also flexes the hip."
+      },
+      {
+       "id": "gracilis",
+       "name": "Gracilis",
+       "accept": [],
+       "box": [
+        725,
+        750,
+        108,
+        28
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A long, thin strap muscle on the inner thigh, from the pubis to the medial tibia. It adducts the thigh and helps flex the knee."
+      },
+      {
+       "id": "vastus-lateralis",
+       "name": "Vastus lateralis",
+       "accept": [],
+       "box": [
+        0,
+        804,
+        200,
+        27
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The largest part of quadriceps femoris, on the outer front of the thigh; it extends the knee. It is the vastus lateralis injection site, the preferred site in infants because it is thick and has no large vessels or nerves nearby.",
+       "follow": {
+        "q": "Which intramuscular site is preferred in infants?",
+        "options": [
+         "Deltoid",
+         "Dorsogluteal",
+         "Vastus lateralis",
+         "Ventrogluteal",
+         "Gluteus maximus and medius together"
+        ],
+        "correct": 2,
+        "why": "In infants vastus lateralis is the best-developed of these muscles and lies away from large nerves and vessels. The deltoid is too small in infants, and the gluteal muscles develop only after the child starts walking.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "vastus-medialis",
+       "name": "Vastus medialis",
+       "accept": [],
+       "box": [
+        724,
+        820,
+        213,
+        27
+       ],
+       "concept": "anterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The part of quadriceps femoris on the inner front of the thigh, from the femur to the quadriceps tendon. It extends the knee."
+      },
+      {
+       "id": "soleus-and-gastrocnemius",
+       "name": "Soleus and gastrocnemius",
+       "accept": [
+        "gastrocnemius",
+        "soleus",
+        "gastrocnemius and soleus",
+        "calf muscles",
+        "triceps surae"
+       ],
+       "box": [
+        724,
+        875,
+        201,
+        66
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The two calf muscles that share the calcaneal tendon. Both plantar flex the foot, as in standing on tiptoe; gastrocnemius also flexes the knee."
+      },
+      {
+       "id": "fibularis-longus",
+       "name": "Fibularis longus",
+       "accept": [
+        "peroneus longus"
+       ],
+       "box": [
+        0,
+        880,
+        209,
+        33
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "A muscle of the lateral leg, from the fibula; its tendon runs behind the lateral malleolus and under the foot. It everts and plantar flexes the foot and supports the arch."
+      },
+      {
+       "id": "tibialis-anterior",
+       "name": "Tibialis anterior",
+       "accept": [],
+       "box": [
+        0,
+        956,
+        206,
+        28
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The muscle along the front of the shin, from the tibia to the medial foot. It dorsiflexes and inverts the foot; weakness causes foot drop."
+      },
+      {
+       "id": "occipitofrontalis-occipital-belly",
+       "name": "Occipitofrontalis (occipital belly)",
+       "accept": [
+        "occipitalis",
+        "occipital belly"
+       ],
+       "box": [
+        0,
+        1247,
+        215,
+        67
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The back belly of occipitofrontalis, over the back of the skull. It pulls the scalp backward through the epicranial aponeurosis."
+      },
+      {
+       "id": "epicranial-aponeurosis",
+       "name": "Epicranial aponeurosis",
+       "accept": [
+        "galea aponeurotica"
+       ],
+       "box": [
+        803,
+        1285,
+        299,
+        33
+       ],
+       "concept": "facial-expression-muscles",
+       "taught": "head-neck-muscles",
+       "fn": "The flat sheet of tendon across the top of the skull that joins the frontal and occipital bellies of occipitofrontalis. The two bellies pull on it from either end."
+      },
+      {
+       "id": "splenius-capitis",
+       "name": "Splenius capitis",
+       "accept": [
+        "splenius"
+       ],
+       "box": [
+        0,
+        1328,
+        210,
+        34
+       ],
+       "concept": "back-muscles",
+       "taught": "trunk-muscles",
+       "fn": "A deep back muscle of the neck, from the lower cervical and upper thoracic spinous processes to the mastoid process and skull. Both sides extend the head; one side turns the head to the same side."
+      },
+      {
+       "id": "levator-scapulae",
+       "name": "Levator scapulae",
+       "accept": [],
+       "box": [
+        0,
+        1377,
+        228,
+        33
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A muscle from the upper cervical vertebrae down to the upper corner of the scapula. It elevates the scapula, as in a shrug, and bends the neck to the side."
+      },
+      {
+       "id": "rhomboids",
+       "name": "Rhomboids",
+       "accept": [
+        "rhomboid",
+        "rhomboid major",
+        "rhomboid minor",
+        "rhomboideus"
+       ],
+       "box": [
+        803,
+        1411,
+        157,
+        27
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "Rhomboid major and minor, from the spinous processes to the medial border of the scapula. They retract the scapula toward the spine."
+      },
+      {
+       "id": "supraspinatus",
+       "name": "Supraspinatus",
+       "accept": [],
+       "box": [
+        0,
+        1426,
+        194,
+        33
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "The rotator cuff muscle above the spine of the scapula, in the supraspinous fossa, inserting on the greater tubercle. It starts abduction of the arm and helps hold the humeral head in the glenoid cavity."
+      },
+      {
+       "id": "trapezius-posterior",
+       "name": "Trapezius",
+       "accept": [],
+       "box": [
+        801,
+        1458,
+        136,
+        33
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The large diamond-shaped muscle of the upper back and neck, from the skull and the cervical and thoracic spinous processes to the clavicle, acromion and spine of the scapula. It elevates, retracts and rotates the scapula."
+      },
+      {
+       "id": "teres-minor",
+       "name": "Teres minor",
+       "accept": [],
+       "box": [
+        0,
+        1475,
+        159,
+        28
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "A rotator cuff muscle along the lower border of the scapula, from the lateral border to the greater tubercle of the humerus. It laterally rotates the arm and holds the humeral head in its socket."
+      },
+      {
+       "id": "deltoid-posterior",
+       "name": "Deltoid",
+       "accept": [],
+       "box": [
+        803,
+        1506,
+        100,
+        27
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The thick, triangular muscle that caps the shoulder, from the clavicle, acromion and spine of the scapula to the deltoid tuberosity of the humerus. It is the prime mover for abducting the arm."
+      },
+      {
+       "id": "infraspinatus",
+       "name": "Infraspinatus",
+       "accept": [],
+       "box": [
+        0,
+        1524,
+        175,
+        34
+       ],
+       "concept": "rotator-cuff",
+       "taught": "upper-limb-muscles",
+       "fn": "The rotator cuff muscle below the spine of the scapula, in the infraspinous fossa, inserting on the greater tubercle. It laterally rotates the arm and holds the humeral head in its socket."
+      },
+      {
+       "id": "latissimus-dorsi",
+       "name": "Latissimus dorsi",
+       "accept": [
+        "lats",
+        "latissimus"
+       ],
+       "box": [
+        802,
+        1553,
+        218,
+        28
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The broad, flat muscle of the lower back, from the lower thoracic and lumbar spinous processes and the iliac crest to the humerus. It extends, adducts and medially rotates the arm."
+      },
+      {
+       "id": "teres-major",
+       "name": "Teres major",
+       "accept": [],
+       "box": [
+        0,
+        1574,
+        159,
+        32
+       ],
+       "concept": "shoulder-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A thick muscle from the lower angle of the scapula to the front of the humerus, next to latissimus dorsi. It extends, adducts and medially rotates the arm. It is not part of the rotator cuff."
+      },
+      {
+       "id": "brachioradialis-posterior",
+       "name": "Brachioradialis",
+       "accept": [],
+       "box": [
+        802,
+        1601,
+        201,
+        27
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The forearm muscle on the thumb side, from the lower humerus to the lower end of the radius. It flexes the elbow, working best with the forearm halfway between palm up and palm down."
+      },
+      {
+       "id": "triceps-brachii",
+       "name": "Triceps brachii",
+       "accept": [
+        "triceps"
+       ],
+       "box": [
+        0,
+        1622,
+        191,
+        33
+       ],
+       "concept": "arm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The three-headed muscle on the back of the arm, from the scapula and humerus to the olecranon of the ulna. It is the prime mover for extending the elbow."
+      },
+      {
+       "id": "extensor-carpi-radialis",
+       "name": "Extensor carpi radialis",
+       "accept": [
+        "extensor carpi radialis longus",
+        "extensor carpi radialis brevis"
+       ],
+       "box": [
+        803,
+        1648,
+        296,
+        33
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The extensor carpi radialis muscles (longus and brevis) on the thumb side of the back of the forearm. They extend the wrist and abduct the hand."
+      },
+      {
+       "id": "serratus-posterior-inferior",
+       "name": "Serratus posterior inferior",
+       "accept": [],
+       "box": [
+        0,
+        1670,
+        238,
+        60
+       ],
+       "concept": null,
+       "fn": "A thin muscle from the lower thoracic and upper lumbar spinous processes to the lower four ribs. It pulls those ribs down and back."
+      },
+      {
+       "id": "extensor-digitorum",
+       "name": "Extensor digitorum",
+       "accept": [],
+       "box": [
+        802,
+        1696,
+        253,
+        33
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "The main extensor of the fingers, in the middle of the back of the forearm, from the lateral epicondyle to the four fingers. It extends the fingers and helps extend the wrist."
+      },
+      {
+       "id": "extensor-carpi-ulnaris",
+       "name": "Extensor carpi ulnaris",
+       "accept": [],
+       "box": [
+        802,
+        1744,
+        291,
+        32
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A muscle on the little-finger side of the back of the forearm, from the lateral epicondyle and ulna to the fifth metacarpal. It extends the wrist and adducts the hand."
+      },
+      {
+       "id": "external-oblique",
+       "name": "External oblique",
+       "accept": [
+        "abdominal external oblique"
+       ],
+       "box": [
+        0,
+        1752,
+        215,
+        32
+       ],
+       "concept": "abdominal-wall",
+       "taught": "trunk-muscles",
+       "fn": "The outermost flat abdominal muscle, with fibers running down and forward from the lower ribs to the iliac crest and the linea alba. It compresses the abdomen, flexes the trunk and turns it to the opposite side."
+      },
+      {
+       "id": "flexor-carpi-ulnaris",
+       "name": "Flexor carpi ulnaris",
+       "accept": [],
+       "box": [
+        802,
+        1791,
+        257,
+        33
+       ],
+       "concept": "forearm-muscles",
+       "taught": "upper-limb-muscles",
+       "fn": "A superficial muscle on the little-finger side of the front of the forearm, from the medial epicondyle and ulna to the pisiform and fifth metacarpal. It flexes the wrist and adducts the hand."
+      },
+      {
+       "id": "gluteus-medius",
+       "name": "Gluteus medius (dissected)",
+       "accept": [],
+       "box": [
+        0,
+        1800,
+        209,
+        61
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The fan-shaped muscle on the side of the hip that abducts the thigh and levels the pelvis. It is the target of the ventrogluteal injection site, located with the hand on the greater trochanter and the fingers toward the iliac crest.",
+       "follow": {
+        "q": "The ventrogluteal site is preferred over the dorsogluteal site. Why?",
+        "options": [
+         "It is the only site that can take a vaccine",
+         "The dorsogluteal site lies over a large nerve and vessels",
+         "Gluteus maximus absorbs every drug far too fast to be safe",
+         "The ventrogluteal site is really part of the deltoid"
+        ],
+        "correct": 1,
+        "why": "The dorsogluteal site on gluteus maximus lies close to a large nerve and major vessels, so an injection there risks injury. The ventrogluteal site targets gluteus medius, away from them.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "gluteus-minimus",
+       "name": "Gluteus minimus",
+       "accept": [],
+       "box": [
+        802,
+        1836,
+        227,
+        27
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The smallest and deepest gluteal muscle, beneath gluteus medius, from the ilium to the greater trochanter. It abducts and medially rotates the thigh."
+      },
+      {
+       "id": "gemellus-muscles",
+       "name": "Gemellus muscles",
+       "accept": [
+        "gemellus",
+        "gemelli",
+        "superior gemellus",
+        "inferior gemellus"
+       ],
+       "box": [
+        802,
+        1880,
+        248,
+        28
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The superior and inferior gemellus, small deep hip muscles on either side of obturator internus. They laterally rotate the thigh."
+      },
+      {
+       "id": "gluteus-maximus",
+       "name": "Gluteus maximus (dissected)",
+       "accept": [],
+       "box": [
+        0,
+        1882,
+        231,
+        61
+       ],
+       "concept": "gluteal-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The largest gluteal muscle, the main hip extensor. The old dorsogluteal injection site in its upper outer part is avoided now because a large nerve and vessels run beneath it; the ventrogluteal site into gluteus medius is used instead."
+      },
+      {
+       "id": "biceps-femoris",
+       "name": "Biceps femoris",
+       "accept": [],
+       "box": [
+        726,
+        1955,
+        200,
+        33
+       ],
+       "concept": "posterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The lateral hamstring, with a long head from the ischial tuberosity and a short head from the femur, inserting on the fibula. It extends the hip and flexes the knee."
+      },
+      {
+       "id": "semimembranosus",
+       "name": "Semimembranosus",
+       "accept": [],
+       "box": [
+        0,
+        1964,
+        259,
+        28
+       ],
+       "concept": "posterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The deepest hamstring on the back of the thigh, from the ischial tuberosity to the medial tibia. It extends the hip and flexes the knee."
+      },
+      {
+       "id": "semitendinosus",
+       "name": "Semitendinosus",
+       "accept": [],
+       "box": [
+        725,
+        1998,
+        218,
+        28
+       ],
+       "concept": "posterior-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "The medial hamstring with a long, cord-like tendon, from the ischial tuberosity to the medial tibia. It extends the hip and flexes the knee."
+      },
+      {
+       "id": "gracilis-posterior",
+       "name": "Gracilis",
+       "accept": [],
+       "box": [
+        725,
+        2041,
+        108,
+        28
+       ],
+       "concept": "medial-thigh",
+       "taught": "lower-limb-muscles",
+       "fn": "A long, thin strap muscle on the inner thigh, from the pubis to the medial tibia. It adducts the thigh and helps flex the knee."
+      },
+      {
+       "id": "peroneus-longus",
+       "name": "Peroneus longus",
+       "accept": [
+        "fibularis longus"
+       ],
+       "box": [
+        0,
+        2054,
+        223,
+        34
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The older name for fibularis longus, a lateral leg muscle whose tendon passes under the foot. It everts and plantar flexes the foot."
+      },
+      {
+       "id": "gastrocnemius",
+       "name": "Gastrocnemius (dissected)",
+       "accept": [],
+       "box": [
+        725,
+        2085,
+        351,
+        28
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The two-headed calf muscle, arising from the femur above the knee and inserting on the calcaneus through the calcaneal tendon. It plantar flexes the foot and helps flex the knee."
+      },
+      {
+       "id": "tibialis-posterior",
+       "name": "Tibialis posterior",
+       "accept": [],
+       "box": [
+        0,
+        2128,
+        219,
+        34
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The deepest muscle of the back of the leg, from the tibia and fibula to the bones of the medial foot. It inverts and plantar flexes the foot and supports the arch."
+      },
+      {
+       "id": "soleus",
+       "name": "Soleus",
+       "accept": [],
+       "box": [
+        725,
+        2133,
+        100,
+        28
+       ],
+       "concept": "leg-muscles",
+       "taught": "lower-limb-muscles",
+       "fn": "The broad, flat calf muscle beneath gastrocnemius, from the tibia and fibula to the calcaneus through the calcaneal tendon. It plantar flexes the foot and keeps you from falling forward when you stand."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "neuron-structure",
    "title": "Neuron structure",
    "chapter": "nervous-tissue",
@@ -41671,6 +46842,150 @@
    "alt": "Two drawings of smooth muscle fibers. On the left, a relaxed fiber is long and spindle-shaped, crossed by a diagonal network of lines, the intermediate filaments, that join small dark dots, the dense bodies, spread through the cell and along its edge. On the right, a contracted fiber is shorter and wider, with a bulging, puckered outline, and arrows at both ends pointing inward; its dense bodies have been pulled closer together.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.24",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-8-smooth-muscle",
+   "license": "CC BY 4.0"
+  },
+  "os-11-7": {
+   "src": "figures/os-11-7.jpg",
+   "w": 1100,
+   "h": 667,
+   "alt": "The muscles of the face and scalp from the front and from the left side. Rings of muscle surround each eye and the mouth, a flat muscle forms the wall of each cheek, and a scalp muscle with a front belly over the forehead and a back belly over the back of the skull is joined by a broad sheet of tendon over the crown.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back",
+   "license": "CC BY 4.0"
+  },
+  "os-11-10": {
+   "src": "figures/os-11-10.jpg",
+   "w": 1100,
+   "h": 540,
+   "alt": "The chewing muscles. On the left, a side view of the head shows a fan-shaped muscle over the temple and a thick muscle over the angle of the jaw. On the right, a skull with part of the lower jaw cut away shows two deeper muscles: one running horizontally back to the jaw joint and one running down to the inside of the jaw's angle.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back",
+   "license": "CC BY 4.0"
+  },
+  "os-11-13": {
+   "src": "figures/os-11-13.jpg",
+   "w": 1100,
+   "h": 919,
+   "alt": "The front of the neck from below the chin to the collarbones. Small muscles run from the hyoid bone up to the underside of the jaw, and flat strap-like muscles run from the hyoid down past the cartilage of the voice box and the thyroid gland to the sternum and the scapula.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back",
+   "license": "CC BY 4.0"
+  },
+  "os-11-14": {
+   "src": "figures/os-11-14.jpg",
+   "w": 1100,
+   "h": 378,
+   "alt": "Three views of the neck. The left-side view shows a long diagonal muscle from the sternum and clavicle to behind the ear, with deeper muscles running from the neck vertebrae down to the upper ribs. The two back views show the muscles of the back of the neck, superficial and then deep.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.14",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back",
+   "license": "CC BY 4.0"
+  },
+  "os-11-15": {
+   "src": "figures/os-11-15.jpg",
+   "w": 1100,
+   "h": 1278,
+   "alt": "Muscles of the neck and back. At the top, a side view of the neck and a back view of the neck and upper back show diagonal muscles wrapping the back of the neck and diamond-shaped muscles between the spine and the shoulder blade. Below, the deep back muscles run in three long columns on each side of the spine from the pelvis up to the ribs, neck and skull, with an inset of short muscles joining neighboring vertebrae.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back",
+   "license": "CC BY 4.0"
+  },
+  "os-11-16": {
+   "src": "figures/os-11-16.jpg",
+   "w": 1046,
+   "h": 1351,
+   "alt": "Muscles of the abdomen. At the top, a front-side view of the trunk shows a vertical strap on each side of the midline divided by bands of tendon, and a flat muscle wrapping the side, with a window cut through to show two deeper flat layers whose fibers run in different directions. At the bottom, the back wall of the abdomen seen from the front shows a four-sided muscle between the lowest rib and the iliac crest and two muscles running from the lumbar spine and the ilium down toward the thigh.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.16",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax",
+   "license": "CC BY 4.0"
+  },
+  "os-11-17": {
+   "src": "figures/os-11-17.jpg",
+   "w": 1100,
+   "h": 805,
+   "alt": "The diaphragm seen from below. Muscle fibers run inward from the lower rim of the rib cage and from the lumbar vertebrae to a large, flat, leaf-shaped sheet of white tendon at the center. Openings in it let the esophagus and the largest artery and vein pass through.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax",
+   "license": "CC BY 4.0"
+  },
+  "os-11-18": {
+   "src": "figures/os-11-18.jpg",
+   "w": 1100,
+   "h": 616,
+   "alt": "The muscles between the ribs. On the left, the front of the chest with the large chest muscles cut away shows muscle filling each space between neighboring ribs. On the right, a close-up of a single space shows three layers: an outer layer with fibers running down and forward, a middle layer with fibers crossing it at right angles, and a thin deepest layer.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.18",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax",
+   "license": "CC BY 4.0"
+  },
+  "os-11-19": {
+   "src": "figures/os-11-19.jpg",
+   "w": 1100,
+   "h": 801,
+   "alt": "The floor of the pelvis seen from above. A broad funnel of muscle runs from the pubis and the side walls of the pelvis back to the coccyx, with three openings in the midline for the urethra, the vagina in females and the rectum.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.19",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-4-axial-muscles-of-the-abdominal-wall-and-thorax",
+   "license": "CC BY 4.0"
+  },
+  "os-11-22": {
+   "src": "figures/os-11-22.jpg",
+   "w": 1100,
+   "h": 504,
+   "alt": "Muscles around the shoulder blade. On the left, the front of the chest with the large chest muscle cut away shows a small muscle from the ribs to the coracoid process and a row of saw-toothed slips from the ribs wrapping back toward the scapula. On the right, the upper back from behind shows a large diamond-shaped sheet from the skull and spine to the shoulder, and, on the other side where it is removed, two diamond-shaped muscles between the spine and the scapula.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.22",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs",
+   "license": "CC BY 4.0"
+  },
+  "os-11-23": {
+   "src": "figures/os-11-23.jpg",
+   "w": 1100,
+   "h": 1170,
+   "alt": "Four views of the muscles that move the humerus. The top views show the large fan-shaped chest muscle, the broad sheet of the lower back and the thick triangular muscle capping the shoulder. The bottom views show the deeper shoulder muscles from the front and from behind, including the four small muscles that run from the scapula to the top of the humerus.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.23",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs",
+   "license": "CC BY 4.0"
+  },
+  "os-11-25": {
+   "src": "figures/os-11-25.jpg",
+   "w": 1100,
+   "h": 1357,
+   "alt": "Six views of the left arm and forearm. The top pair shows the two-headed muscle on the front of the upper arm with a deeper muscle beneath it, and the three-headed muscle on the back. The middle pair shows the superficial forearm muscles on the palm side and on the back, with long tendons running into the hand. The bottom pair shows the deep forearm muscles, including a small square muscle across the lower ends of the two forearm bones.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.25",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs",
+   "license": "CC BY 4.0"
+  },
+  "os-11-28": {
+   "src": "figures/os-11-28.jpg",
+   "w": 1100,
+   "h": 1074,
+   "alt": "Four views of the small muscles inside the left hand. The palm view shows fleshy mounds at the base of the thumb and along the little-finger side, with thin muscles running beside the finger tendons. A second view shows the deeper muscles that move the thumb and little finger, and two views show the muscles lying between the long bones of the hand, on the palm side and on the back.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.28",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs",
+   "license": "CC BY 4.0"
+  },
+  "os-11-29": {
+   "src": "figures/os-11-29.jpg",
+   "w": 1100,
+   "h": 1397,
+   "alt": "Muscles of the right hip and thigh in three views. The front view shows muscles from the lumbar spine and the bowl of the ilium passing in front of the hip, a four-part muscle mass over the front of the thigh joining one tendon around the kneecap, a long strap crossing the thigh diagonally, and muscles of the inner thigh. A deep front view shows the inner-thigh muscles fanning from the pubis to the back of the femur. The back view shows the cut buttock muscles, small muscles running from the sacrum to the top of the femur, and three muscles on the back of the thigh.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.29",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs",
+   "license": "CC BY 4.0"
+  },
+  "os-11-32": {
+   "src": "figures/os-11-32.jpg",
+   "w": 1100,
+   "h": 655,
+   "alt": "Muscles of the right lower leg in three views. The front view shows a muscle along the shin and muscles over the fibula with tendons running to the foot. The back view shows the two-headed calf muscle, a broad flat muscle beneath it and the thick tendon joining them to the heel. The deep back view shows the muscles under the calf muscles.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.32",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs",
+   "license": "CC BY 4.0"
+  },
+  "os-11-5": {
+   "src": "figures/os-11-5.jpg",
+   "w": 1100,
+   "h": 2476,
+   "alt": "Two full-body drawings of the muscular system, from the front and from the back. Each figure shows the superficial muscles on one side of the body and the deeper muscles on the other, with lines pointing to the major muscles of the head, neck, trunk, arms and legs.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-2-naming-skeletal-muscles",
    "license": "CC BY 4.0"
   }
  }
