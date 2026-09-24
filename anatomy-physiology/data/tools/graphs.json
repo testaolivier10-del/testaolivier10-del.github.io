@@ -25691,6 +25691,956 @@
      }
     }
    ]
+  },
+  {
+   "id": "jt-walking-angles",
+   "title": "Hip, knee and ankle angles in one stride",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "Joint angles at the hip, knee and ankle, measured from the side through one stride of normal walking, starting as the heel touches the ground. Zero is anatomical position. For the hip and knee, positive values are flexion; for the ankle, positive is dorsiflexion and negative is plantar flexion. The foot is on the ground for the first 60% of the stride and in the air for the rest. Values are typical for a healthy adult walking at a comfortable speed.",
+   "alt": "Three stacked line graphs sharing an x axis of 0 to 100% of one stride; the foot is on the ground from 0 to 60% and in the air from 60 to 100%. Hip: 30 degrees of flexion at heel contact, falling steadily to about 10 degrees behind anatomical position at 55%, then rising to about 32 degrees of flexion at 85 to 90% and ending at 30. Knee: 4 degrees at heel contact, a small bend to about 19 degrees at 15%, nearly straight at about 3 degrees at 40%, then bending to a peak of about 62 degrees at 73% while the foot is in the air, and straightening to 4 degrees by the next heel contact. Ankle: 0 at heel contact, about 7 degrees of plantar flexion at 8%, then dorsiflexion to about 10 degrees at 46%, then plantar flexion to about 17 degrees at 63% as the toes push off, returning to about 0 through the air phase.",
+   "x": {
+    "min": 0,
+    "max": 100,
+    "label": "Point in one stride",
+    "unit": "% of stride",
+    "ticks": [
+     0,
+     20,
+     40,
+     60,
+     80,
+     100
+    ]
+   },
+   "panels": [
+    {
+     "h": 0.8,
+     "y": {
+      "min": -20,
+      "max": 40,
+      "label": "Hip, + flexion",
+      "unit": "°",
+      "ticks": [
+       -20,
+       0,
+       20,
+       40
+      ]
+     },
+     "series": [
+      {
+       "id": "hip",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         30
+        ],
+        [
+         5,
+         29
+        ],
+        [
+         10,
+         26
+        ],
+        [
+         20,
+         18
+        ],
+        [
+         30,
+         9
+        ],
+        [
+         40,
+         1
+        ],
+        [
+         50,
+         -7
+        ],
+        [
+         55,
+         -10
+        ],
+        [
+         60,
+         -6
+        ],
+        [
+         65,
+         3
+        ],
+        [
+         70,
+         14
+        ],
+        [
+         75,
+         22
+        ],
+        [
+         80,
+         28
+        ],
+        [
+         85,
+         32
+        ],
+        [
+         90,
+         32
+        ],
+        [
+         95,
+         31
+        ],
+        [
+         100,
+         30
+        ]
+       ],
+       "label": "hip",
+       "labelAt": [
+        18,
+        30
+       ]
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0,
+       "label": "anatomical position",
+       "faint": true,
+       "at": 100,
+       "anchor": "end"
+      }
+     ]
+    },
+    {
+     "h": 0.9,
+     "y": {
+      "min": -10,
+      "max": 70,
+      "label": "Knee, + flexion",
+      "unit": "°",
+      "ticks": [
+       0,
+       20,
+       40,
+       60
+      ]
+     },
+     "series": [
+      {
+       "id": "knee",
+       "cls": "eff",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         4
+        ],
+        [
+         5,
+         12
+        ],
+        [
+         10,
+         17
+        ],
+        [
+         15,
+         19
+        ],
+        [
+         20,
+         16
+        ],
+        [
+         25,
+         11
+        ],
+        [
+         30,
+         7
+        ],
+        [
+         35,
+         4
+        ],
+        [
+         40,
+         3
+        ],
+        [
+         45,
+         5
+        ],
+        [
+         50,
+         10
+        ],
+        [
+         55,
+         22
+        ],
+        [
+         60,
+         38
+        ],
+        [
+         65,
+         52
+        ],
+        [
+         70,
+         60
+        ],
+        [
+         73,
+         62
+        ],
+        [
+         77,
+         59
+        ],
+        [
+         80,
+         52
+        ],
+        [
+         85,
+         38
+        ],
+        [
+         90,
+         20
+        ],
+        [
+         95,
+         7
+        ],
+        [
+         100,
+         4
+        ]
+       ],
+       "label": "knee",
+       "labelAt": [
+        20,
+        40
+       ]
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0,
+       "label": "straight",
+       "faint": true,
+       "at": 100,
+       "anchor": "end"
+      }
+     ]
+    },
+    {
+     "h": 0.8,
+     "y": {
+      "min": -30,
+      "max": 20,
+      "label": "Ankle, + dorsiflexion",
+      "unit": "°",
+      "ticks": [
+       -20,
+       -10,
+       0,
+       10,
+       20
+      ]
+     },
+     "series": [
+      {
+       "id": "ankle",
+       "cls": "aff",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         4,
+         -5
+        ],
+        [
+         8,
+         -7
+        ],
+        [
+         12,
+         -3
+        ],
+        [
+         20,
+         2
+        ],
+        [
+         30,
+         5
+        ],
+        [
+         40,
+         8
+        ],
+        [
+         46,
+         10
+        ],
+        [
+         50,
+         7
+        ],
+        [
+         55,
+         0
+        ],
+        [
+         60,
+         -12
+        ],
+        [
+         63,
+         -17
+        ],
+        [
+         66,
+         -15
+        ],
+        [
+         70,
+         -10
+        ],
+        [
+         75,
+         -4
+        ],
+        [
+         80,
+         0
+        ],
+        [
+         90,
+         2
+        ],
+        [
+         100,
+         0
+        ]
+       ],
+       "label": "ankle",
+       "labelAt": [
+        22,
+        13
+       ]
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0,
+       "label": "neutral",
+       "faint": true,
+       "at": 100,
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 60,
+     "label": "toes leave the ground"
+    }
+   ],
+   "regions": [
+    {
+     "id": "land",
+     "x0": 0,
+     "x1": 15,
+     "label": "weight lands"
+    },
+    {
+     "id": "push",
+     "x0": 46,
+     "x1": 63,
+     "label": "push-off"
+    },
+    {
+     "id": "kneestraighten",
+     "x0": 73,
+     "x1": 97,
+     "label": "knee straightening"
+    }
+   ],
+   "questions": [
+    {
+     "id": "knee-peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the largest knee angle in the stride. How far is the knee flexed at that moment?",
+     "answer": 62,
+     "tol": 5,
+     "unit": "°",
+     "show": {
+      "x": 73,
+      "y": 62
+     },
+     "why": "About 62 degrees, reached while the foot is in the air. Bending the knee shortens the leg so the foot clears the ground as it swings forward."
+    },
+    {
+     "id": "hip-contact",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "How far is the hip flexed at the moment the heel touches the ground?",
+     "answer": 30,
+     "tol": 4,
+     "unit": "°",
+     "show": {
+      "x": 0,
+      "y": 30
+     },
+     "why": "About 30 degrees of flexion: the thigh has been carried forward, in the sagittal plane, ahead of the body to reach for the next step."
+    },
+    {
+     "id": "ankle-dorsi",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "What is the greatest dorsiflexion at the ankle while the foot is on the ground?",
+     "answer": 10,
+     "tol": 3,
+     "unit": "°",
+     "show": {
+      "x": 46,
+      "y": 10
+     },
+     "why": "About 10 degrees, near 46% of the stride. With the foot flat, the body rolls forward over it, so the shin tips toward the top of the foot: dorsiflexion at the talocrural joint."
+    },
+    {
+     "id": "knee-straightening",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "From about 73% to 97% of the stride, the knee line falls toward zero. Which movement is the knee making, and why then?",
+     "options": [
+      "Flexion, bending the knee to lift the foot clear of the ground",
+      "Extension, straightening for heel contact",
+      "Hyperextension, locking the knee back past straight",
+      "Medial rotation of the tibia on the femur, turning the foot in"
+     ],
+     "correct": 1,
+     "highlight": {
+      "region": "kneestraighten"
+     },
+     "why": {
+      "correct": "A falling knee angle means the angle between thigh and leg is getting larger: extension. The leg straightens as it swings forward so the heel can land with the knee nearly straight.",
+      "options": [
+       "Flexion makes the angle smaller; here it is getting larger. The flexion that clears the foot comes earlier, up to about 73%.",
+       "Right: the angle is opening, which is extension, in time for heel contact.",
+       "The line stops at about 4 degrees of flexion and never goes below zero, so the knee does not pass straight.",
+       "This graph shows only sagittal-plane angles, and the knee rotates only a little, and only when bent. The change seen here is extension."
+      ]
+     }
+    },
+    {
+     "id": "push-off",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which stretch does the ankle plant flex sharply, pushing the toes against the ground just before they leave it?",
+     "options": [
+      "From about 46% to 63% of the stride",
+      "From heel contact to about 8%, as the foot lowers",
+      "From about 20% to 46%, while the foot is flat",
+      "From about 80% to 100%"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "push"
+     },
+     "why": {
+      "correct": "The ankle line drops from about 10 degrees of dorsiflexion to about 17 degrees of plantar flexion as the heel lifts and the toes press down, then the toes leave the ground at 60%.",
+      "options": [
+       "Right: the steep fall of the ankle line is plantar flexion at push-off.",
+       "There is a small plantar flexion as the foot lowers to the ground after heel contact, but it is only about 7 degrees and does not push off.",
+       "Here the line rises: the ankle dorsiflexes as the body rolls forward over the flat foot.",
+       "In the air the ankle returns to about neutral so the toes clear the ground."
+      ]
+     }
+    },
+    {
+     "id": "hip-behind",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "In which stretch is the hip line below zero, and what does that mean for the thigh?",
+     "options": [
+      "At heel contact: the thigh is flexed farthest forward",
+      "While the foot is in the air: the thigh is swinging back",
+      "From about 45% to 63%: extended past anatomical position, behind the body",
+      "At 100%: the hip has returned to anatomical position"
+     ],
+     "correct": 2,
+     "highlight": {
+      "x0": 45,
+      "x1": 63,
+      "label": "thigh behind body"
+     },
+     "why": {
+      "correct": "Zero is anatomical position, so negative values mean extension carried past it: the thigh trails behind the body as the other leg steps forward. It peaks at about 10 degrees near 55%.",
+      "options": [
+       "At heel contact the hip is at about 30 degrees of flexion, the most forward point, not below zero.",
+       "In the air phase the hip line rises: the thigh swings forward, which is flexion.",
+       "Right: extension past anatomical position, with the thigh behind the body.",
+       "At 100% the hip is back at about 30 degrees of flexion, ready for the next heel contact."
+      ]
+     }
+    },
+    {
+     "id": "knee-brace",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "A patient walks with a brace that locks his knee straight. How does his knee line change?",
+     "options": [
+      "It keeps its shape but shifts up by about 10 degrees",
+      "It becomes a flat line near zero",
+      "Its peak moves later, but reaches the same height",
+      "It is unchanged, because the brace acts only on the hip"
+     ],
+     "correct": 1,
+     "overlay": {
+      "series": [
+       {
+        "id": "knee-locked",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          1
+         ],
+         [
+          100,
+          1
+         ]
+        ],
+        "label": "knee locked straight",
+        "labelAt": [
+         42,
+         8
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "A locked knee cannot flex, so its angle stays near zero all stride. With no knee bend in the air, the leg stays long, and he must swing it out to the side or hitch the hip up so the foot clears the ground.",
+      "options": [
+       "Shifting up would mean more flexion throughout; a locked brace allows none.",
+       "Right: no flexion at all, so the line is flat near zero.",
+       "Any peak means the knee is flexing, which a locked brace prevents.",
+       "The brace blocks the knee joint itself, the hinge between femur and tibia."
+      ]
+     }
+    },
+    {
+     "id": "ankle-fused",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A patient’s talocrural (ankle) joint has been fused in neutral. How does the ankle line change?",
+     "options": [
+      "It flattens near zero all stride",
+      "Only the push-off dip disappears; the rise before it stays",
+      "It is unchanged, because the subtalar joint takes over tipping the foot up and down",
+      "It shifts down, so the ankle stays plantar flexed all stride"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "ankle-fused",
+        "panel": 2,
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          100,
+          0
+         ]
+        ],
+        "label": "ankle fused",
+        "labelAt": [
+         24,
+         -6
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "Dorsiflexion and plantar flexion both happen at the talocrural joint, a hinge. Fused in neutral, it holds the angle near zero; the patient rolls over the foot with a stiffer, shorter push-off.",
+      "options": [
+       "Right: the hinge that makes both movements is fused, so both are lost.",
+       "Both the rise and the dip are the same hinge moving, so fusion removes both.",
+       "The subtalar joint turns the sole inward and outward; it cannot tip the foot up and down.",
+       "Fused in neutral means held at zero, not plantar flexed."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "jt-cartilage-load",
+   "title": "Cartilage under load and after",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function",
+    "gradients"
+   ],
+   "intro": "A schematic of how thick knee cartilage is, compared with its rested thickness, while a person carries a steady load for 30 minutes and then lies down for 90 minutes. The scale, a few percent thinner under load and a recovery lasting an hour or more, matches what imaging studies of loaded knee cartilage report; exact values vary with the joint, the load and the person.",
+   "alt": "A line graph of change in cartilage thickness, in percent, against time from 0 to 120 minutes. Under load, from 0 to 30 minutes, thickness falls quickly at first and then more slowly: about minus 2.6% at 5 minutes, minus 3.5% at 10, minus 4.5% at 20 and minus 4.9% at 30. After the load is removed at 30 minutes, it recovers, quickly at first and then slowly: about minus 3.1% at 40 minutes, minus 1.4% at 60, minus 0.6% at 80 and back to 0 by 120.",
+   "x": {
+    "min": 0,
+    "max": 120,
+    "label": "Time",
+    "unit": "min",
+    "ticks": [
+     0,
+     30,
+     60,
+     90,
+     120
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.1,
+     "y": {
+      "min": -8,
+      "max": 1,
+      "label": "Change in cartilage thickness",
+      "unit": "%",
+      "ticks": [
+       -8,
+       -6,
+       -4,
+       -2,
+       0
+      ]
+     },
+     "series": [
+      {
+       "id": "loaded",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         2,
+         -1.5
+        ],
+        [
+         5,
+         -2.6
+        ],
+        [
+         10,
+         -3.5
+        ],
+        [
+         15,
+         -4.1
+        ],
+        [
+         20,
+         -4.5
+        ],
+        [
+         25,
+         -4.7
+        ],
+        [
+         30,
+         -4.9
+        ]
+       ],
+       "label": "under load",
+       "labelAt": [
+        6,
+        -5.2
+       ]
+      },
+      {
+       "id": "unloaded",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         30,
+         -4.9
+        ],
+        [
+         35,
+         -3.9
+        ],
+        [
+         40,
+         -3.1
+        ],
+        [
+         50,
+         -2.1
+        ],
+        [
+         60,
+         -1.4
+        ],
+        [
+         70,
+         -0.9
+        ],
+        [
+         80,
+         -0.6
+        ],
+        [
+         90,
+         -0.35
+        ],
+        [
+         100,
+         -0.2
+        ],
+        [
+         120,
+         0
+        ]
+       ],
+       "label": "load removed",
+       "labelAt": [
+        58,
+        -2.6
+       ]
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0,
+       "label": "rested thickness",
+       "faint": true,
+       "at": 120,
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 30,
+     "label": "load removed"
+    }
+   ],
+   "regions": [
+    {
+     "id": "early",
+     "x0": 0,
+     "x1": 5,
+     "label": "fast loss"
+    },
+    {
+     "id": "squeeze",
+     "x0": 0,
+     "x1": 30,
+     "label": "loaded"
+    },
+    {
+     "id": "refill",
+     "x0": 30,
+     "x1": 120,
+     "label": "unloaded"
+    }
+   ],
+   "questions": [
+    {
+     "id": "end-load",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the change in cartilage thickness at the end of the 30 minutes of load.",
+     "answer": -4.9,
+     "tol": 0.8,
+     "unit": "%",
+     "show": {
+      "x": 30,
+      "y": -4.9
+     },
+     "why": "About 5% thinner (a change of about minus 5%). The thickness lost is fluid squeezed out of the cartilage by the load."
+    },
+    {
+     "id": "at-60",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Half an hour after the load comes off, at 60 minutes, what is the change in thickness?",
+     "answer": -1.4,
+     "tol": 0.6,
+     "unit": "%",
+     "show": {
+      "x": 60,
+      "y": -1.4
+     },
+     "why": "About minus 1.4%: most of the loss has been made up, but not all. Fluid returns more slowly as the cartilage nears its rested thickness."
+    },
+    {
+     "id": "refilling",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which stretch is synovial fluid being drawn back into the cartilage?",
+     "options": [
+      "While the load is on, from 0 to 30 minutes",
+      "After the load is removed, from 30 minutes on",
+      "Only in the first 5 minutes",
+      "At no point; cartilage is refilled from its blood vessels"
+     ],
+     "correct": 1,
+     "highlight": {
+      "region": "refill"
+     },
+     "why": {
+      "correct": "When the load comes off, the cartilage springs back toward its shape and draws fresh synovial fluid in, so thickness rises. That fresh fluid carries oxygen and nutrients to the chondrocytes.",
+      "options": [
+       "Under load, thickness falls: fluid is being pushed out, not drawn in.",
+       "Right: the rising line after unloading is fluid returning.",
+       "The first 5 minutes are the fastest loss, when fluid is squeezed out most quickly.",
+       "Articular cartilage has no blood vessels; all its fluid exchange is with synovial fluid."
+      ]
+     }
+    },
+    {
+     "id": "fastest",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "When is fluid leaving the cartilage fastest?",
+     "options": [
+      "In the first few minutes of loading",
+      "Just before the load is removed, at 25 to 30 minutes",
+      "Right after the load is removed, as the line turns up",
+      "At the end of the rest period"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "early"
+     },
+     "why": {
+      "correct": "The line is steepest at the start: loading first squeezes fluid out quickly, and the outflow slows as the cartilage gets denser and the remaining fluid is harder to push out.",
+      "options": [
+       "Right: the steepest downward slope is at the start of the load.",
+       "By 25 to 30 minutes the line is nearly flat, so little fluid is still leaving.",
+       "After unloading, the line rises: fluid is coming back in, not leaving.",
+       "By the end of rest the line is flat at zero; no fluid is leaving."
+      ]
+     }
+    },
+    {
+     "id": "heavier",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "The same person carries a much heavier load for the same 30 minutes. How does the loaded part of the curve change?",
+     "options": [
+      "It is unchanged, because cartilage does not compress",
+      "It falls less, because a heavier load seals the fluid in",
+      "It falls faster and deeper",
+      "It rises above zero, because load draws fluid in"
+     ],
+     "correct": 2,
+     "overlay": {
+      "series": [
+       {
+        "id": "heavy",
+        "panel": 0,
+        "cls": "accent",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          2,
+          -2.3
+         ],
+         [
+          5,
+          -3.9
+         ],
+         [
+          10,
+          -5.2
+         ],
+         [
+          15,
+          -6
+         ],
+         [
+          20,
+          -6.5
+         ],
+         [
+          25,
+          -6.8
+         ],
+         [
+          30,
+          -7
+         ]
+        ],
+        "label": "heavier load",
+        "labelAt": [
+         12,
+         -7.4
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "A heavier load presses harder on the cartilage, squeezing more fluid out and faster, so it thins more. Removing the load then lets it recover in the same way.",
+      "options": [
+       "Cartilage is slightly compressible; that is what the loaded curve shows.",
+       "More pressure pushes more fluid out, not less.",
+       "Right: more load, more fluid pushed out, a deeper curve.",
+       "Load squeezes fluid out; fluid is drawn in only when the load comes off."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

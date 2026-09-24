@@ -10629,7 +10629,7 @@
         24
        ],
        "concept": null,
-       "fn": ""
+       "fn": "The bony bar below the obturator foramen formed where the ischial ramus and the inferior ramus of the pubis join. The two sides frame the subpubic angle."
       }
      ],
      "covered": [
@@ -10892,7 +10892,7 @@
        ],
        "concept": "pelvic-girdle",
        "taught": "lower-limb",
-       "fn": ""
+       "fn": "The upper bar of the pubis, running from the pubic body out to the acetabulum. It forms the upper edge of the obturator foramen."
       },
       {
        "id": "ischial-body",
@@ -11099,7 +11099,7 @@
        ],
        "concept": "pelvic-girdle",
        "taught": "lower-limb",
-       "fn": ""
+       "fn": "The bar of the ischium running forward and up from the ischial tuberosity to join the inferior ramus of the pubis below the obturator foramen."
       },
       {
        "id": "ischial-ramus-2",
@@ -11115,7 +11115,7 @@
        ],
        "concept": "pelvic-girdle",
        "taught": "lower-limb",
-       "fn": ""
+       "fn": "The bar of the ischium running forward and up from the ischial tuberosity to join the inferior ramus of the pubis below the obturator foramen."
       },
       {
        "id": "inferior-ramus-of-pubis",
@@ -11132,7 +11132,7 @@
        ],
        "concept": "pelvic-girdle",
        "taught": "lower-limb",
-       "fn": ""
+       "fn": "The lower bar of the pubis, running down and back from the pubic body to join the ischial ramus. It forms part of the lower edge of the obturator foramen."
       },
       {
        "id": "ischial-tuberosity",
@@ -11163,7 +11163,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "The bony bar below the obturator foramen formed where the ischial ramus and the inferior ramus of the pubis join. The two sides frame the subpubic angle."
       },
       {
        "id": "ischiopubic-ramus-2",
@@ -11178,7 +11178,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "The bony bar below the obturator foramen formed where the ischial ramus and the inferior ramus of the pubis join. The two sides frame the subpubic angle."
       }
      ]
     },
@@ -11445,7 +11445,7 @@
         23
        ],
        "concept": null,
-       "fn": ""
+       "fn": "The bony bar below the obturator foramen formed where the ischial ramus and the inferior ramus of the pubis join. The two sides frame the subpubic angle."
       }
      ]
     },
@@ -18707,17 +18707,24 @@
        "concept": "synovial-joint-structure",
        "taught": "synovial-joints",
        "fn": "The loose connective tissue capsule that encloses the temporomandibular joint, attaching to the temporal bone above and the neck of the mandible below."
-      }
-     ],
-     "covered": [
+      },
       {
        "id": "ramus-of-mandible",
+       "name": "Ramus of mandible",
+       "accept": [
+        "ramus of the mandible",
+        "mandibular ramus",
+        "ramus"
+       ],
        "box": [
         943,
         964,
         152,
         74
-       ]
+       ],
+       "concept": "skull-landmarks",
+       "taught": "skull",
+       "fn": "The flat, upright part of the mandible at the back of the jaw. The mandibular condyle sits on top of it, so it carries the lower jaw's share of the temporomandibular joint."
       }
      ]
     },
