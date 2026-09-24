@@ -4,11 +4,18 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-10-10",
     "misconception": "filaments shorten during contraction",
     "q": "Compare the relaxed sarcomere with the contracted one. Which part keeps the same width?",
-    "options": ["The I band", "The H zone", "The A band", "The distance between Z discs"],
+    "options": [
+      "The I band",
+      "The H zone",
+      "The A band",
+      "The distance between Z discs"
+    ],
     "correct": 2,
     "why": {
       "correct": "The A band is the length of the thick filaments, and the thick filaments do not change length. The thin filaments slide in over them, so the A band keeps its width while everything defined by a gap narrows.",
@@ -25,7 +32,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "Starting with a cocked myosin head holding ADP and phosphate, put one turn of the cross-bridge cycle in order.",
     "options": [
       "The head binds an uncovered site on actin",
@@ -44,14 +53,32 @@
     "level": "apply",
     "diff": 1,
     "predictLevel": 1,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "misconception": "rigor mortis is a contraction",
     "q": "A few hours after death, ATP in the muscle fibers has run out. Predict the change in each variable, compared with a living, relaxed muscle.",
     "variables": [
-      { "name": "Myosin heads detaching from actin", "answer": "down", "why": "A head lets go of actin only when a new ATP binds it; with no ATP, attached heads stay attached." },
-      { "name": "Number of cross-bridges attached", "answer": "up", "why": "Calcium leaking into the sarcoplasm uncovers actin, heads bind and complete their stroke, and none can detach." },
-      { "name": "Stiffness of the muscle", "answer": "up", "why": "Locked cross-bridges bolt the thick and thin filaments together, so the muscle cannot be stretched." },
-      { "name": "Calcium pumped into the SR", "answer": "down", "why": "The SR calcium pumps are ATPases; without ATP they stop." }
+      {
+        "name": "Myosin heads detaching from actin",
+        "answer": "down",
+        "why": "A head lets go of actin only when a new ATP binds it; with no ATP, attached heads stay attached."
+      },
+      {
+        "name": "Number of cross-bridges attached",
+        "answer": "up",
+        "why": "Calcium leaking into the sarcoplasm uncovers actin, heads bind and complete their stroke, and none can detach."
+      },
+      {
+        "name": "Stiffness of the muscle",
+        "answer": "up",
+        "why": "Locked cross-bridges bolt the thick and thin filaments together, so the muscle cannot be stretched."
+      },
+      {
+        "name": "Calcium pumped into the SR",
+        "answer": "down",
+        "why": "The SR calcium pumps are ATPases; without ATP they stop."
+      }
     ],
     "why": {
       "correct": "Without ATP, the cross-bridge cycle stops after the power stroke. Heads that bind actin cannot let go, the calcium pumps fail so the binding sites stay uncovered, and the locked filaments make the muscles stiff: rigor mortis."
@@ -62,13 +89,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "An experimental drug lets ATP bind to myosin heads but stops them from splitting it. A fiber treated with the drug is then stimulated. What happens?",
     "options": [
-      "The fiber stays relaxed and easily stretched, because the heads let go but cannot recock",
-      "The fiber goes into rigor, because the heads cannot let go of actin",
-      "The fiber contracts normally, because ATP binding powers the stroke",
-      "The fiber contracts and cannot relax, because calcium stays on troponin"
+      "It stays slack and stretchable",
+      "It goes stiff, locked in rigor",
+      "It contracts with normal force",
+      "It contracts and then cannot relax"
     ],
     "correct": 0,
     "why": {
@@ -86,9 +115,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A sarcomere is 2.2 µm long, and its thick filaments are 1.6 µm long. What is the total width of its I band (both halves added together)?",
-    "options": ["1.6 µm", "0.6 µm", "3.8 µm", "0.2 µm"],
+    "options": [
+      "1.6 µm",
+      "0.6 µm",
+      "3.8 µm",
+      "0.2 µm"
+    ],
     "correct": 1,
     "why": {
       "correct": "The I band is the part of the sarcomere not covered by thick filaments: 2.2 − 1.6 = 0.6 µm, split as 0.3 µm on each side of the sarcomere.",
@@ -105,9 +141,16 @@
     "type": "single",
     "level": "apply",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In a muscle whose thin filaments each reach 1.0 µm in from their Z disc, a sarcomere shortens from 2.4 µm to 2.1 µm. What happens to the width of its H zone?",
-    "options": ["It stays at 0.4 µm", "It widens from 0.1 µm to 0.4 µm", "It narrows from 1.4 µm to 1.1 µm", "It narrows from 0.4 µm to 0.1 µm"],
+    "options": [
+      "It stays at 0.4 µm",
+      "It widens from 0.1 µm to 0.4 µm",
+      "It narrows from 1.4 µm to 1.1 µm",
+      "It narrows from 0.4 µm to 0.1 µm"
+    ],
     "correct": 3,
     "why": {
       "correct": "The H zone is the part of the sarcomere the thin filaments from the two ends do not reach: sarcomere length − 2 × 1.0 µm. Before: 2.4 − 2.0 = 0.4 µm. After: 2.1 − 2.0 = 0.1 µm.",
@@ -124,11 +167,13 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "Paramedics find a man who died about eight hours ago. His jaw and elbows cannot be moved. What is holding his muscles stiff?",
     "options": [
       "Continuous action potentials in his muscle fibers",
-      "Myosin heads bound to actin that cannot detach without ATP",
+      "Myosin heads locked onto actin",
       "Acetylcholine left bound to the end plates",
       "Tropomyosin locked over the binding sites on actin"
     ],
@@ -148,7 +193,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "In the cross-bridge cycle, what makes a myosin head let go of actin?",
     "options": [
       "Release of phosphate from the head",
@@ -172,7 +219,9 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every change that happens when a sarcomere contracts.",
     "options": [
       "The Z discs move closer together",
@@ -182,7 +231,12 @@
       "The thin filaments get shorter",
       "The overlap of thick and thin filaments increases"
     ],
-    "correct": [0, 1, 3, 5],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
     "why": {
       "correct": "Thin filaments slide toward the M line, so overlap increases, the Z discs are pulled closer, and the I bands and H zone, which are gaps between filaments, narrow. The A band and the filaments themselves keep their lengths.",
       "options": [
@@ -200,7 +254,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "A student wrote out the cross-bridge cycle. One step is wrong. Which one?",
     "options": [
       "A cocked head holding ADP and phosphate binds actin",
@@ -226,9 +282,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Fill the gap: a myosin head attached to actin, linking a thick filament to a thin one, is called a ____.",
-    "options": ["Z disc", "Cross-bridge", "Triad", "Power stroke"],
+    "options": [
+      "Z disc",
+      "Cross-bridge",
+      "Triad",
+      "Power stroke"
+    ],
     "correct": 1,
     "why": {
       "correct": "A cross-bridge is a myosin head bound to actin. It exists only while the head is attached.",
@@ -245,13 +308,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "misconception": "filaments shorten during contraction",
     "q": "Early researchers found that during contraction the A band keeps its width while the I band narrows. Why did this rule out the idea that the filaments themselves shorten?",
     "options": [
       "The A band is made of thin filaments, which would have to lengthen",
-      "The I band contains the thick filaments, so its narrowing shows they slide",
-      "The A band is the length of the thick filaments, so a constant A band means the thick filaments did not shorten",
+      "The I band contains the thick filaments, and its narrowing shows they slide",
+      "The A band spans the thick filaments, and it did not narrow",
       "Filaments made of protein cannot change length"
     ],
     "correct": 2,
@@ -270,12 +335,14 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Why do the thin filaments on both sides of a sarcomere move toward its center, rather than all in the same direction?",
     "options": [
       "The myosin heads on the two halves of each thick filament point in opposite directions",
       "The Z discs pull the thin filaments inward",
-      "Calcium is released only at the center of the sarcomere",
+      "Calcium is released at the center of the sarcomere",
       "The thin filaments on one side are made of a different protein"
     ],
     "correct": 0,
@@ -294,13 +361,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "Where is the energy from splitting ATP held just before the power stroke?",
     "options": [
       "In the bond between the myosin head and actin",
       "In the calcium bound to troponin",
       "In a new ATP molecule waiting to bind the head",
-      "In the cocked, high-energy shape of the myosin head"
+      "In the cocked shape of the myosin head"
     ],
     "correct": 3,
     "why": {
@@ -319,13 +388,32 @@
     "level": "analyze",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["energy", "communication"],
+    "core": [
+      "energy",
+      "communication"
+    ],
     "q": "In a living muscle fiber with plenty of ATP, calcium in the sarcoplasm stays high because the SR calcium pumps have been blocked. Predict the change in each variable, compared with a fiber whose pumps work.",
     "variables": [
-      { "name": "Binding sites on actin left uncovered", "answer": "up", "why": "With calcium staying on troponin, tropomyosin stays off the binding sites." },
-      { "name": "Cross-bridge cycling", "answer": "up", "why": "ATP is available, so heads keep binding, pulling, detaching and recocking for as long as the sites are uncovered." },
-      { "name": "Time the fiber stays contracted", "answer": "up", "why": "Relaxation needs calcium to leave troponin, and the pumps that would lower it are blocked." },
-      { "name": "Number of heads locked on actin as in rigor", "answer": "none", "why": "Rigor needs a lack of ATP. Here ATP binds and releases each head, so the heads keep cycling rather than locking." }
+      {
+        "name": "Binding sites on actin left uncovered",
+        "answer": "up",
+        "why": "With calcium staying on troponin, tropomyosin stays off the binding sites."
+      },
+      {
+        "name": "Cross-bridge cycling",
+        "answer": "up",
+        "why": "ATP is available, so heads keep binding, pulling, detaching and recocking for as long as the sites are uncovered."
+      },
+      {
+        "name": "Time the fiber stays contracted",
+        "answer": "up",
+        "why": "Relaxation needs calcium to leave troponin, and the pumps that would lower it are blocked."
+      },
+      {
+        "name": "Number of heads locked on actin as in rigor",
+        "answer": "none",
+        "why": "Rigor needs a lack of ATP. Here ATP binds and releases each head, so the heads keep cycling rather than locking."
+      }
     ],
     "why": {
       "correct": "Two conditions keep the cycle running: calcium on troponin and ATP. With calcium kept high and ATP present, the heads keep cycling and the fiber stays contracted. That is a sustained contraction, not rigor, because every head can still let go."
@@ -336,7 +424,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "Two days after a death, the body's muscles are limp again, although no ATP has returned. What ends rigor mortis?",
     "options": [
       "Calcium is pumped back into the SR",
@@ -360,9 +450,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A myofibril has 20,000 sarcomeres in series. Each one shortens by 0.4 µm. How much does the myofibril shorten?",
-    "options": ["0.8 cm", "8 cm", "0.4 µm", "0.08 cm"],
+    "options": [
+      "0.8 cm",
+      "8 cm",
+      "0.4 µm",
+      "0.08 cm"
+    ],
     "correct": 0,
     "why": {
       "correct": "Sarcomeres in series add their shortening: 20,000 × 0.4 µm = 8,000 µm. Since 1 cm = 10,000 µm, that is 0.8 cm.",
@@ -379,7 +476,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "What is the power stroke?",
     "options": [
       "The binding of ATP that frees the myosin head",

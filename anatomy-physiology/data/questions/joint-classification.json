@@ -358,19 +358,19 @@
   "diff": 3,
   "q": "Which statement about the two classification schemes is accurate?",
   "options": [
-   "Every synovial joint is a diarthrosis",
-   "Every cartilaginous joint is an amphiarthrosis",
+   "The joint between the sacrum and hip bone moves freely",
+   "Synchondroses are slightly movable amphiarthroses",
    "Fibrous joints include immobile and slightly movable ones",
-   "Structural and functional classes are two names for one grouping"
+   "The two schemes are two names for one grouping"
   ],
   "correct": 2,
   "why": {
    "correct": "Sutures and gomphoses are immobile fibrous joints, while syndesmoses are slightly movable fibrous joints. One structural class spans two functional classes.",
    "options": [
-    "Almost all synovial joints are diarthroses, but a few, such as the joint between the sacrum and hip bone, are held so tightly that they barely move.",
-    "Synchondroses such as the epiphyseal plate are cartilaginous but nearly immobile, so they are synarthroses.",
+    "The joint between the sacrum and hip bone is synovial but held so tightly by ligaments that it barely moves, so it is close to an amphiarthrosis.",
+    "Synchondroses such as the epiphyseal plate are nearly immobile, so they are synarthroses, not amphiarthroses.",
     "Correct. Fibrous joints span synarthroses and amphiarthroses.",
-    "The two schemes are separate. Structure predicts function most of the time, but the exceptions above show the groupings differ."
+    "The two schemes are separate. Structure predicts function most of the time, but that joint and the synchondroses show the groupings differ."
    ]
   },
   "core": [
@@ -385,7 +385,7 @@
   "q": "A newborn's skull bones can shift and overlap slightly during birth. What property of the newborn's skull joints explains this?",
   "options": [
    "The sutures are synovial joints at birth",
-   "Wide fibrous tissue lies between the bones",
+   "Wide bands of fibrous tissue lie between the bones",
    "The skull bones are joined by fibrocartilage",
    "The sutures have already become synostoses"
   ],

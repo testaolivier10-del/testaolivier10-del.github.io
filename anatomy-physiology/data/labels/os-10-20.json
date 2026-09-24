@@ -1,0 +1,37 @@
+{
+  "figure": "os-10-20",
+  "labels": [
+    {
+      "id": "normal-muscle",
+      "name": "Normal muscle",
+      "accept": [
+        "normal muscle",
+        "normal"
+      ],
+      "concept": null,
+      "box": [
+        274,
+        232,
+        119,
+        73
+      ]
+    },
+    {
+      "id": "atrophied-muscle",
+      "name": "Atrophied muscle",
+      "accept": [
+        "atrophied muscle",
+        "atrophy",
+        "muscle atrophy",
+        "atrophic muscle"
+      ],
+      "concept": "hypertrophy-atrophy",
+      "box": [
+        911,
+        232,
+        159,
+        73
+      ]
+    }
+  ]
+}

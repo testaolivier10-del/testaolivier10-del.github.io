@@ -1,0 +1,87 @@
+{
+  "figure": "os-10-9",
+  "labels": [
+    {
+      "id": "calcium",
+      "name": "Calcium",
+      "accept": [
+        "calcium",
+        "calcium ions",
+        "ca2+",
+        "ca"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "muscle-relaxation",
+      "box": [
+        29,
+        292,
+        87,
+        21
+      ]
+    },
+    {
+      "id": "calcium-resorbed",
+      "name": "Calcium is resorbed, beginning relaxation cycle; ATP is required",
+      "accept": [
+        "calcium is resorbed, beginning relaxation cycle; atp is required",
+        "calcium is resorbed",
+        "calcium reuptake",
+        "calcium pumped back into the sr"
+      ],
+      "lines": [
+        1,
+        7,
+        11
+      ],
+      "concept": "muscle-relaxation",
+      "box": [
+        542,
+        333,
+        210,
+        75
+      ]
+    },
+    {
+      "id": "filament-interaction-relaxes",
+      "name": "Thick and thin filament interaction relaxes",
+      "accept": [
+        "thick and thin filament interaction relaxes",
+        "filament interaction relaxes",
+        "relaxation"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "muscle-relaxation",
+      "box": [
+        210,
+        622,
+        221,
+        46
+      ]
+    },
+    {
+      "id": "muscle-lengthens",
+      "name": "Muscle lengthens and relaxes",
+      "accept": [
+        "muscle lengthens and relaxes",
+        "muscle relaxes",
+        "relaxation"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "muscle-relaxation",
+      "box": [
+        552,
+        803,
+        175,
+        46
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "figure": "os-5-11",
+  "labels": [
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "medulla",
+        "hair medulla",
+        "medulla of hair"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        505,
+        223,
+        84,
+        21
+      ]
+    },
+    {
+      "id": "cortex",
+      "name": "Cortex",
+      "accept": [
+        "cortex",
+        "hair cortex",
+        "cortex of hair"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        504,
+        261,
+        73,
+        22
+      ]
+    },
+    {
+      "id": "cuticle",
+      "name": "Cuticle",
+      "accept": [
+        "cuticle",
+        "hair cuticle",
+        "cuticle of hair"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        504,
+        301,
+        76,
+        21
+      ]
+    },
+    {
+      "id": "hair-shaft",
+      "name": "Hair shaft",
+      "accept": [
+        "hair shaft",
+        "shaft"
+      ],
+      "box": [
+        327,
+        261,
+        95,
+        22
+      ],
+      "concept": "hair-follicle"
+    },
+    {
+      "id": "sebaceous-gland",
+      "name": "Sebaceous gland",
+      "accept": [
+        "sebaceous gland",
+        "oil gland",
+        "sebaceous"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "sebaceous-gland",
+      "box": [
+        504,
+        369,
+        112,
+        51
+      ]
+    },
+    {
+      "id": "inner-root-sheath",
+      "name": "Inner root sheath",
+      "accept": [
+        "inner root sheath",
+        "inner epithelial root sheath"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        504,
+        457,
+        102,
+        46
+      ]
+    },
+    {
+      "id": "arrector-pili-muscle",
+      "name": "Arrector pili muscle",
+      "accept": [
+        "arrector pili",
+        "arrector pili muscle",
+        "arrector pilli"
+      ],
+      "box": [
+        64,
+        511,
+        80,
+        72
+      ],
+      "concept": "arrector-pili"
+    },
+    {
+      "id": "outer-root-sheath",
+      "name": "Outer root sheath",
+      "accept": [
+        "outer root sheath",
+        "outer epithelial root sheath"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        504,
+        545,
+        106,
+        46
+      ]
+    },
+    {
+      "id": "hair-matrix",
+      "name": "Hair matrix",
+      "accept": [
+        "hair matrix",
+        "matrix"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        505,
+        633,
+        111,
+        21
+      ]
+    },
+    {
+      "id": "hair-bulb",
+      "name": "Hair bulb",
+      "accept": [
+        "hair bulb",
+        "bulb"
+      ],
+      "box": [
+        80,
+        644,
+        72,
+        22
+      ],
+      "concept": "hair-follicle"
+    },
+    {
+      "id": "hair-papilla",
+      "name": "Hair papilla",
+      "accept": [
+        "hair papilla",
+        "dermal papilla of hair",
+        "papilla"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        504,
+        696,
+        73,
+        50
+      ]
+    }
+  ]
+}

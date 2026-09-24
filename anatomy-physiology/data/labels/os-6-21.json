@@ -1,0 +1,138 @@
+{
+  "figure": "os-6-21",
+  "labels": [
+    {
+      "id": "hematoma",
+      "name": "Hematoma",
+      "accept": [
+        "hematoma",
+        "fracture hematoma"
+      ],
+      "concept": "fracture-repair",
+      "lines": [
+        0
+      ],
+      "box": [
+        182,
+        17,
+        120,
+        22
+      ]
+    },
+    {
+      "id": "new-blood-vessels",
+      "name": "New blood vessels",
+      "accept": [
+        "new blood vessels",
+        "blood vessels",
+        "blood vessel"
+      ],
+      "concept": "blood-vessel-basics",
+      "lines": [
+        1
+      ],
+      "box": [
+        336,
+        17,
+        193,
+        22
+      ]
+    },
+    {
+      "id": "external-callus",
+      "name": "External callus",
+      "accept": [
+        "external callus"
+      ],
+      "concept": "fracture-repair",
+      "lines": [
+        2,
+        4
+      ],
+      "box": [
+        478,
+        67,
+        93,
+        49
+      ]
+    },
+    {
+      "id": "healed-fracture",
+      "name": "Healed fracture",
+      "accept": [
+        "healed fracture"
+      ],
+      "concept": "fracture-repair",
+      "lines": [
+        3,
+        5
+      ],
+      "box": [
+        722,
+        67,
+        87,
+        49
+      ]
+    },
+    {
+      "id": "internal-callus",
+      "name": "Internal callus",
+      "accept": [
+        "internal callus"
+      ],
+      "concept": "fracture-repair",
+      "lines": [
+        6,
+        7
+      ],
+      "box": [
+        241,
+        254,
+        86,
+        48
+      ]
+    },
+    {
+      "id": "spongy-bone-trabecula",
+      "name": "Spongy bone trabecula",
+      "accept": [
+        "spongy bone trabecula",
+        "trabecula",
+        "trabeculae",
+        "spongy bone"
+      ],
+      "concept": "spongy-bone",
+      "lines": [
+        8,
+        10
+      ],
+      "box": [
+        380,
+        314,
+        143,
+        49
+      ]
+    },
+    {
+      "id": "bony-callus",
+      "name": "Bony callus of spongy bone",
+      "accept": [
+        "bony callus",
+        "bony callus of spongy bone",
+        "hard callus",
+        "bone callus"
+      ],
+      "concept": "fracture-repair",
+      "lines": [
+        9,
+        11
+      ],
+      "box": [
+        610,
+        314,
+        163,
+        53
+      ]
+    }
+  ]
+}

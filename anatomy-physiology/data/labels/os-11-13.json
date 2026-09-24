@@ -1,0 +1,326 @@
+{
+  "figure": "os-11-13",
+  "labels": [
+    {
+      "id": "suprahyoid-muscles",
+      "name": "Suprahyoid muscles",
+      "accept": [
+        "suprahyoids",
+        "suprahyoid"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        1,
+        2
+      ],
+      "box": [
+        916,
+        71,
+        145,
+        48
+      ]
+    },
+    {
+      "id": "geniohyoid",
+      "name": "Geniohyoid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        3
+      ],
+      "box": [
+        936,
+        144,
+        134,
+        30
+      ]
+    },
+    {
+      "id": "digastric",
+      "name": "Digastric",
+      "accept": [
+        "digastric muscle"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        4
+      ],
+      "box": [
+        937,
+        193,
+        106,
+        30
+      ]
+    },
+    {
+      "id": "inferior-edge-of-mandible",
+      "name": "Inferior edge of mandible",
+      "accept": [
+        "mandible",
+        "inferior border of mandible",
+        "lower edge of mandible"
+      ],
+      "concept": "facial-bones",
+      "lines": [
+        5,
+        7
+      ],
+      "box": [
+        5,
+        222,
+        149,
+        52
+      ]
+    },
+    {
+      "id": "mylohyoid",
+      "name": "Mylohyoid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        6
+      ],
+      "box": [
+        936,
+        242,
+        121,
+        30
+      ]
+    },
+    {
+      "id": "styloglossus",
+      "name": "Styloglossus",
+      "accept": [],
+      "concept": null,
+      "lines": [
+        8
+      ],
+      "box": [
+        5,
+        287,
+        150,
+        29
+      ]
+    },
+    {
+      "id": "stylohyoid",
+      "name": "Stylohyoid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        9
+      ],
+      "box": [
+        936,
+        291,
+        123,
+        30
+      ]
+    },
+    {
+      "id": "hyoid-bone",
+      "name": "Hyoid bone",
+      "accept": [
+        "hyoid"
+      ],
+      "concept": "hyoid",
+      "lines": [
+        10
+      ],
+      "box": [
+        6,
+        329,
+        134,
+        30
+      ]
+    },
+    {
+      "id": "infrahyoid-muscles",
+      "name": "Infrahyoid muscles",
+      "accept": [
+        "infrahyoids",
+        "infrahyoid",
+        "strap muscles"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        11,
+        12
+      ],
+      "box": [
+        916,
+        362,
+        129,
+        52
+      ]
+    },
+    {
+      "id": "thyroid-cartilage",
+      "name": "Thyroid cartilage of larynx",
+      "accept": [
+        "thyroid cartilage"
+      ],
+      "concept": "larynx",
+      "lines": [
+        13,
+        15
+      ],
+      "box": [
+        4,
+        417,
+        195,
+        57
+      ]
+    },
+    {
+      "id": "thyrohyoid",
+      "name": "Thyrohyoid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        14
+      ],
+      "box": [
+        936,
+        439,
+        132,
+        29
+      ]
+    },
+    {
+      "id": "omohyoid",
+      "name": "Omohyoid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        16
+      ],
+      "box": [
+        936,
+        488,
+        123,
+        29
+      ]
+    },
+    {
+      "id": "thyroid-gland",
+      "name": "Thyroid gland",
+      "accept": [
+        "thyroid"
+      ],
+      "concept": "thyroid-gland",
+      "lines": [
+        17
+      ],
+      "box": [
+        4,
+        528,
+        161,
+        29
+      ]
+    },
+    {
+      "id": "sternohyoid",
+      "name": "Sternohyoid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        18
+      ],
+      "box": [
+        937,
+        537,
+        142,
+        29
+      ]
+    },
+    {
+      "id": "sternothyroid",
+      "name": "Sternothyroid",
+      "accept": [],
+      "concept": "neck-muscles",
+      "lines": [
+        19
+      ],
+      "box": [
+        937,
+        586,
+        157,
+        29
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "windpipe"
+      ],
+      "concept": "trachea",
+      "lines": [
+        20
+      ],
+      "box": [
+        4,
+        623,
+        100,
+        24
+      ]
+    },
+    {
+      "id": "clavicles",
+      "name": "Right and left clavicles",
+      "accept": [
+        "clavicle",
+        "clavicles",
+        "collarbone",
+        "collarbones"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        21,
+        22,
+        23
+      ],
+      "box": [
+        937,
+        660,
+        157,
+        52
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "breastbone"
+      ],
+      "concept": "sternum",
+      "lines": [
+        24
+      ],
+      "box": [
+        983,
+        734,
+        104,
+        24
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "shoulder blade"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        25
+      ],
+      "box": [
+        5,
+        815,
+        101,
+        29
+      ]
+    }
+  ]
+}

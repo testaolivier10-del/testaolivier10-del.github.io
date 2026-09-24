@@ -1,0 +1,597 @@
+{
+  "figure": "os-9-19",
+  "labels": [
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "lines": [
+        0
+      ],
+      "box": [
+        0,
+        3,
+        64,
+        20
+      ]
+    },
+    {
+      "id": "articular-capsule",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "lines": [
+        7,
+        10
+      ],
+      "box": [
+        0,
+        70,
+        81,
+        43
+      ]
+    },
+    {
+      "id": "posterior-cruciate-ligament",
+      "name": "Posterior cruciate ligament",
+      "accept": [
+        "pcl",
+        "posterior cruciate ligament",
+        "posterior cruciate"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        16,
+        20,
+        21
+      ],
+      "box": [
+        0,
+        122,
+        85,
+        64
+      ]
+    },
+    {
+      "id": "lateral-meniscus",
+      "name": "Lateral meniscus",
+      "accept": [
+        "lateral meniscus",
+        "lateral menisci"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        23,
+        25
+      ],
+      "box": [
+        0,
+        194,
+        90,
+        40
+      ]
+    },
+    {
+      "id": "anterior-cruciate-ligament",
+      "name": "Anterior cruciate ligament",
+      "accept": [
+        "acl",
+        "anterior cruciate ligament",
+        "anterior cruciate"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        28,
+        31,
+        34
+      ],
+      "box": [
+        0,
+        250,
+        82,
+        64
+      ]
+    },
+    {
+      "id": "tibia",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shin bone"
+      ],
+      "concept": "tibia-fibula",
+      "lines": [
+        38
+      ],
+      "box": [
+        0,
+        325,
+        52,
+        19
+      ]
+    },
+    {
+      "id": "tendon-of-quadriceps-femoris",
+      "name": "Tendon of quadriceps femoris",
+      "accept": [
+        "quadriceps tendon",
+        "quadriceps femoris tendon",
+        "tendon of quadriceps"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        1,
+        4
+      ],
+      "box": [
+        384,
+        13,
+        168,
+        44
+      ]
+    },
+    {
+      "id": "suprapatellar-bursa",
+      "name": "Suprapatellar bursa",
+      "accept": [
+        "suprapatellar bursa"
+      ],
+      "concept": "bursa",
+      "lines": [
+        9
+      ],
+      "box": [
+        385,
+        74,
+        172,
+        24
+      ]
+    },
+    {
+      "id": "patella",
+      "name": "Patella",
+      "accept": [
+        "patella",
+        "kneecap",
+        "knee cap"
+      ],
+      "concept": "patella",
+      "lines": [
+        14
+      ],
+      "box": [
+        385,
+        112,
+        68,
+        19
+      ]
+    },
+    {
+      "id": "prepatellar-bursa",
+      "name": "Prepatellar bursa",
+      "accept": [
+        "prepatellar bursa"
+      ],
+      "concept": "bursa",
+      "lines": [
+        19
+      ],
+      "box": [
+        385,
+        139,
+        151,
+        23
+      ]
+    },
+    {
+      "id": "synovial-cavity",
+      "name": "Synovial cavity",
+      "accept": [
+        "synovial cavity",
+        "joint cavity"
+      ],
+      "concept": "synovial-joint-structure",
+      "lines": [
+        22
+      ],
+      "box": [
+        385,
+        169,
+        133,
+        24
+      ]
+    },
+    {
+      "id": "lateral-meniscus-2",
+      "name": "Lateral meniscus",
+      "accept": [
+        "lateral meniscus",
+        "lateral menisci"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        24
+      ],
+      "box": [
+        385,
+        201,
+        150,
+        19
+      ]
+    },
+    {
+      "id": "infrapatellar-fat-pad",
+      "name": "Infrapatellar fat pad",
+      "accept": [
+        "infrapatellar fat pad",
+        "fat pad"
+      ],
+      "concept": null,
+      "lines": [
+        27,
+        30
+      ],
+      "box": [
+        384,
+        232,
+        110,
+        44
+      ]
+    },
+    {
+      "id": "infrapatellar-bursa",
+      "name": "Infrapatellar bursa",
+      "accept": [
+        "infrapatellar bursa"
+      ],
+      "concept": "bursa",
+      "lines": [
+        33,
+        36
+      ],
+      "box": [
+        385,
+        282,
+        109,
+        40
+      ]
+    },
+    {
+      "id": "patellar-ligament",
+      "name": "Patellar ligament",
+      "accept": [
+        "patellar ligament",
+        "patellar tendon"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        39
+      ],
+      "box": [
+        385,
+        332,
+        148,
+        24
+      ]
+    },
+    {
+      "id": "anterior-cruciate-ligament-superior-view",
+      "name": "Anterior cruciate ligament",
+      "accept": [
+        "acl",
+        "anterior cruciate ligament",
+        "anterior cruciate"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        2,
+        5
+      ],
+      "box": [
+        567,
+        13,
+        147,
+        44
+      ]
+    },
+    {
+      "id": "articular-cartilage-on-lateral-tibial-condyle",
+      "name": "Articular cartilage on lateral tibial condyle",
+      "accept": [
+        "articular cartilage",
+        "hyaline cartilage",
+        "articular cartilage of lateral tibial condyle"
+      ],
+      "concept": "cartilage-example-sites",
+      "lines": [
+        6,
+        8,
+        11,
+        13
+      ],
+      "box": [
+        994,
+        50,
+        108,
+        84
+      ]
+    },
+    {
+      "id": "articular-cartilage-on-medial-tibial-condyle",
+      "name": "Articular cartilage on medial tibial condyle",
+      "accept": [
+        "articular cartilage",
+        "hyaline cartilage",
+        "articular cartilage of medial tibial condyle"
+      ],
+      "concept": "cartilage-example-sites",
+      "lines": [
+        12,
+        15,
+        18
+      ],
+      "box": [
+        567,
+        96,
+        156,
+        64
+      ]
+    },
+    {
+      "id": "medial-meniscus",
+      "name": "Medial meniscus",
+      "accept": [
+        "medial meniscus",
+        "medial menisci"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        26
+      ],
+      "box": [
+        568,
+        231,
+        148,
+        20
+      ]
+    },
+    {
+      "id": "lateral-meniscus-superior-view",
+      "name": "Lateral meniscus",
+      "accept": [
+        "lateral meniscus",
+        "lateral menisci"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        29,
+        32
+      ],
+      "box": [
+        995,
+        250,
+        89,
+        40
+      ]
+    },
+    {
+      "id": "posterior-cruciate-ligament-superior-view",
+      "name": "Posterior cruciate ligament",
+      "accept": [
+        "pcl",
+        "posterior cruciate ligament",
+        "posterior cruciate"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        37,
+        40
+      ],
+      "box": [
+        902,
+        312,
+        155,
+        44
+      ]
+    },
+    {
+      "id": "quadriceps-femoris-muscle",
+      "name": "Quadriceps femoris muscle",
+      "accept": [
+        "quadriceps",
+        "quadriceps femoris",
+        "quads"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        44,
+        45
+      ],
+      "box": [
+        0,
+        454,
+        135,
+        40
+      ]
+    },
+    {
+      "id": "tendon-of-quadriceps-femoris-muscle",
+      "name": "Tendon of quadriceps femoris muscle",
+      "accept": [
+        "quadriceps tendon",
+        "quadriceps femoris tendon",
+        "tendon of quadriceps"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        46,
+        48,
+        49
+      ],
+      "box": [
+        0,
+        515,
+        135,
+        60
+      ]
+    },
+    {
+      "id": "patella-anterior-view",
+      "name": "Patella",
+      "accept": [
+        "patella",
+        "kneecap",
+        "knee cap"
+      ],
+      "concept": "patella",
+      "lines": [
+        47
+      ],
+      "box": [
+        385,
+        528,
+        68,
+        19
+      ]
+    },
+    {
+      "id": "medial-patellar-retinaculum",
+      "name": "Medial patellar retinaculum",
+      "accept": [
+        "medial patellar retinaculum",
+        "medial retinaculum"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        50,
+        52
+      ],
+      "box": [
+        385,
+        581,
+        132,
+        40
+      ]
+    },
+    {
+      "id": "lateral-patellar-retinaculum",
+      "name": "Lateral patellar retinaculum",
+      "accept": [
+        "lateral patellar retinaculum",
+        "lateral retinaculum"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        51,
+        53
+      ],
+      "box": [
+        0,
+        601,
+        134,
+        40
+      ]
+    },
+    {
+      "id": "tibial-collateral-ligament",
+      "name": "Tibial collateral ligament",
+      "accept": [
+        "tibial collateral ligament",
+        "medial collateral ligament",
+        "mcl"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        54,
+        56
+      ],
+      "box": [
+        384,
+        648,
+        135,
+        43
+      ]
+    },
+    {
+      "id": "fibular-collateral-ligament",
+      "name": "Fibular collateral ligament",
+      "accept": [
+        "fibular collateral ligament",
+        "lateral collateral ligament",
+        "lcl"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        55,
+        57
+      ],
+      "box": [
+        0,
+        660,
+        145,
+        44
+      ]
+    },
+    {
+      "id": "patellar-ligament-anterior-view",
+      "name": "Patellar ligament",
+      "accept": [
+        "patellar ligament",
+        "patellar tendon"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        58
+      ],
+      "box": [
+        385,
+        713,
+        148,
+        23
+      ]
+    },
+    {
+      "id": "fibula",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "concept": "tibia-fibula",
+      "lines": [
+        59
+      ],
+      "box": [
+        0,
+        759,
+        61,
+        19
+      ]
+    },
+    {
+      "id": "tibia-anterior-view",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shin bone"
+      ],
+      "concept": "tibia-fibula",
+      "lines": [
+        60
+      ],
+      "box": [
+        384,
+        759,
+        53,
+        19
+      ]
+    }
+  ]
+}

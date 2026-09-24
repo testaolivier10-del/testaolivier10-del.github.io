@@ -1,0 +1,331 @@
+{
+  "figure": "os-11-23",
+  "labels": [
+    {
+      "id": "pectoralis-major",
+      "name": "Pectoralis major",
+      "accept": [
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        3,
+        67,
+        92,
+        45
+      ]
+    },
+    {
+      "id": "deltoid",
+      "name": "Deltoid",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        2
+      ],
+      "box": [
+        468,
+        130,
+        69,
+        20
+      ]
+    },
+    {
+      "id": "latissimus-dorsi",
+      "name": "Latissimus dorsi",
+      "accept": [
+        "lats",
+        "latissimus"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        3
+      ],
+      "box": [
+        467,
+        244,
+        144,
+        20
+      ]
+    },
+    {
+      "id": "teres-minor",
+      "name": "Teres minor",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        8
+      ],
+      "box": [
+        670,
+        581,
+        110,
+        20
+      ]
+    },
+    {
+      "id": "supraspinatus",
+      "name": "Supraspinatus",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        9
+      ],
+      "box": [
+        950,
+        582,
+        130,
+        24
+      ]
+    },
+    {
+      "id": "deltoid-cut",
+      "name": "Deltoid (cut)",
+      "accept": [
+        "deltoid"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        10,
+        12
+      ],
+      "box": [
+        467,
+        598,
+        69,
+        44
+      ]
+    },
+    {
+      "id": "spine-of-scapula",
+      "name": "Spine of scapula",
+      "accept": [
+        "scapular spine",
+        "spine of the scapula"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        11,
+        13
+      ],
+      "box": [
+        950,
+        612,
+        80,
+        45
+      ]
+    },
+    {
+      "id": "coracoid-process",
+      "name": "Coracoid process of scapula",
+      "accept": [
+        "coracoid process",
+        "coracoid"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        14,
+        16
+      ],
+      "box": [
+        466,
+        659,
+        156,
+        45
+      ]
+    },
+    {
+      "id": "deltoid-cut-posterior",
+      "name": "Deltoid (cut)",
+      "accept": [
+        "deltoid"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        15
+      ],
+      "box": [
+        950,
+        672,
+        112,
+        23
+      ]
+    },
+    {
+      "id": "infraspinatus",
+      "name": "Infraspinatus",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        17
+      ],
+      "box": [
+        950,
+        715,
+        118,
+        23
+      ]
+    },
+    {
+      "id": "pectoralis-major-cut",
+      "name": "Pectoralis major (cut)",
+      "accept": [
+        "pectoralis major",
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        18,
+        20
+      ],
+      "box": [
+        3,
+        723,
+        100,
+        44
+      ]
+    },
+    {
+      "id": "humerus",
+      "name": "Humerus",
+      "accept": [],
+      "concept": "humerus",
+      "lines": [
+        19
+      ],
+      "box": [
+        570,
+        730,
+        87,
+        20
+      ]
+    },
+    {
+      "id": "subscapularis",
+      "name": "Subscapularis",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        21
+      ],
+      "box": [
+        466,
+        772,
+        129,
+        23
+      ]
+    },
+    {
+      "id": "teres-major-posterior",
+      "name": "Teres major",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        22
+      ],
+      "box": [
+        949,
+        798,
+        110,
+        24
+      ]
+    },
+    {
+      "id": "latissimus-dorsi-near-origin",
+      "name": "Latissimus dorsi (near its origin)",
+      "accept": [
+        "latissimus dorsi",
+        "latissimus",
+        "lats"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        23,
+        25
+      ],
+      "box": [
+        861,
+        828,
+        144,
+        44
+      ]
+    },
+    {
+      "id": "teres-major",
+      "name": "Teres major",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        24
+      ],
+      "box": [
+        465,
+        836,
+        111,
+        24
+      ]
+    },
+    {
+      "id": "triceps-brachii-long-head",
+      "name": "Triceps brachii: long head",
+      "accept": [
+        "triceps brachii long head",
+        "long head of triceps",
+        "long head of triceps brachii",
+        "triceps long head"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        26,
+        27
+      ],
+      "box": [
+        860,
+        888,
+        221,
+        23
+      ]
+    },
+    {
+      "id": "serratus-anterior",
+      "name": "Serratus anterior",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        28,
+        29
+      ],
+      "box": [
+        466,
+        891,
+        82,
+        40
+      ]
+    },
+    {
+      "id": "triceps-brachii-lateral-head",
+      "name": "Triceps brachii: lateral head",
+      "accept": [
+        "triceps brachii lateral head",
+        "lateral head of triceps",
+        "lateral head of triceps brachii",
+        "triceps lateral head"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        30,
+        31
+      ],
+      "box": [
+        860,
+        949,
+        237,
+        24
+      ]
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "figure": "os-9-18",
+  "labels": [
+    {
+      "id": "articular-cartilage",
+      "name": "Articular cartilage",
+      "accept": [
+        "articular cartilage",
+        "hyaline cartilage"
+      ],
+      "concept": "cartilage-example-sites",
+      "box": [
+        12,
+        2,
+        295,
+        41
+      ]
+    },
+    {
+      "id": "acetabular-labrum",
+      "name": "Acetabular labrum",
+      "accept": [
+        "acetabular labrum",
+        "labrum"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        12,
+        91,
+        306,
+        33
+      ]
+    },
+    {
+      "id": "coxal-hip-bone",
+      "name": "Coxal (hip) bone",
+      "accept": [
+        "coxal bone",
+        "hip bone",
+        "os coxae",
+        "coxal"
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        765,
+        8,
+        275,
+        41
+      ]
+    },
+    {
+      "id": "ligament-of-the-head-of-the-femur",
+      "name": "Ligament of the head of the femur",
+      "accept": [
+        "ligament of the head of the femur",
+        "ligament of head of femur",
+        "ligamentum teres",
+        "round ligament of the femur",
+        "ligamentum capitis femoris"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        801,
+        169,
+        294,
+        75
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "box": [
+        15,
+        329,
+        109,
+        33
+      ]
+    },
+    {
+      "id": "synovial-cavity",
+      "name": "Synovial cavity",
+      "accept": [
+        "synovial cavity",
+        "joint cavity"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        14,
+        432,
+        249,
+        41
+      ]
+    },
+    {
+      "id": "articular-capsule",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        764,
+        497,
+        281,
+        41
+      ]
+    },
+    {
+      "id": "anterior-inferior-iliac-spine",
+      "name": "Anterior inferior iliac spine",
+      "accept": [
+        "anterior inferior iliac spine",
+        "aiis"
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        13,
+        768,
+        260,
+        81
+      ]
+    },
+    {
+      "id": "iliofemoral-ligament",
+      "name": "Iliofemoral ligament",
+      "accept": [
+        "iliofemoral ligament",
+        "y ligament",
+        "ligament of bigelow"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        891,
+        789,
+        172,
+        83
+      ]
+    },
+    {
+      "id": "greater-trochanter",
+      "name": "Greater trochanter",
+      "accept": [
+        "greater tronchanter",
+        "greater trochanter",
+        "greater trochanter of femur"
+      ],
+      "concept": "femur",
+      "box": [
+        12,
+        981,
+        194,
+        75
+      ]
+    },
+    {
+      "id": "pubofemoral-ligament",
+      "name": "Pubofemoral ligament",
+      "accept": [
+        "pubofemoral ligament"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        14,
+        1133,
+        211,
+        82
+      ]
+    },
+    {
+      "id": "ischium",
+      "name": "Ischium",
+      "accept": [
+        "ischium"
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        63,
+        1462,
+        129,
+        33
+      ]
+    },
+    {
+      "id": "iliofemoral-ligament-posterior-view",
+      "name": "Iliofemoral ligament",
+      "accept": [
+        "iliofemoral ligament",
+        "y ligament"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        849,
+        1499,
+        171,
+        80
+      ]
+    },
+    {
+      "id": "greater-trochanter-of-femur",
+      "name": "Greater trochanter of femur",
+      "accept": [
+        "greater trochanter",
+        "greater trochanter of the femur"
+      ],
+      "concept": "femur",
+      "box": [
+        847,
+        1620,
+        173,
+        117
+      ]
+    },
+    {
+      "id": "ischiofemoral-ligament",
+      "name": "Ischiofemoral ligament",
+      "accept": [
+        "ischiofemoral ligament"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        849,
+        1777,
+        221,
+        83
+      ]
+    }
+  ]
+}

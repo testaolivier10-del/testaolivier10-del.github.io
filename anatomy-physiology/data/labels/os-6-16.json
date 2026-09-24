@@ -1,0 +1,306 @@
+{
+  "figure": "os-6-16",
+  "labels": [
+    {
+      "id": "mesenchymal-cells",
+      "name": "Mesenchymal cells",
+      "accept": [
+        "mesenchymal cells",
+        "mesenchymal cell",
+        "mesenchyme"
+      ],
+      "concept": "mesenchyme",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        404,
+        16,
+        128,
+        43
+      ]
+    },
+    {
+      "id": "osteoid-b",
+      "name": "Osteoid",
+      "accept": [
+        "osteoid"
+      ],
+      "concept": "bone-matrix",
+      "lines": [
+        2
+      ],
+      "box": [
+        957,
+        94,
+        77,
+        20
+      ]
+    },
+    {
+      "id": "collagen-fibers",
+      "name": "Collagen fibers",
+      "accept": [
+        "collagen fibers",
+        "collagen fiber",
+        "collagen"
+      ],
+      "concept": "ct-fibers",
+      "lines": [
+        3
+      ],
+      "box": [
+        404,
+        115,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "osteoblast-b",
+      "name": "Osteoblast",
+      "accept": [
+        "osteoblast",
+        "osteoblasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        4
+      ],
+      "box": [
+        957,
+        133,
+        102,
+        20
+      ]
+    },
+    {
+      "id": "ossification-center",
+      "name": "Ossification center",
+      "accept": [
+        "ossification center",
+        "center of ossification"
+      ],
+      "concept": "ossification",
+      "lines": [
+        5,
+        7
+      ],
+      "box": [
+        404,
+        167,
+        110,
+        42
+      ]
+    },
+    {
+      "id": "osteocyte",
+      "name": "Osteocyte",
+      "accept": [
+        "osteocyte",
+        "osteocytes"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        6
+      ],
+      "box": [
+        957,
+        169,
+        97,
+        24
+      ]
+    },
+    {
+      "id": "new-bone-matrix",
+      "name": "New bone matrix",
+      "accept": [
+        "new bone matrix",
+        "bone matrix",
+        "matrix"
+      ],
+      "concept": "bone-matrix",
+      "lines": [
+        8,
+        9
+      ],
+      "box": [
+        957,
+        226,
+        97,
+        43
+      ]
+    },
+    {
+      "id": "osteoid",
+      "name": "Osteoid",
+      "accept": [
+        "osteoid"
+      ],
+      "concept": "bone-matrix",
+      "lines": [
+        10
+      ],
+      "box": [
+        404,
+        272,
+        77,
+        21
+      ]
+    },
+    {
+      "id": "osteoblast",
+      "name": "Osteoblast",
+      "accept": [
+        "osteoblast",
+        "osteoblasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        11
+      ],
+      "box": [
+        404,
+        305,
+        103,
+        20
+      ]
+    },
+    {
+      "id": "mesenchyme-periosteum",
+      "name": "Mesenchyme forms the periosteum",
+      "accept": [
+        "mesenchyme",
+        "mesenchyme forms the periosteum",
+        "periosteum"
+      ],
+      "concept": "mesenchyme",
+      "lines": [
+        14,
+        16,
+        18
+      ],
+      "box": [
+        404,
+        403,
+        124,
+        69
+      ]
+    },
+    {
+      "id": "fibrous-periosteum",
+      "name": "Fibrous periosteum",
+      "accept": [
+        "fibrous periosteum",
+        "periosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        15,
+        17
+      ],
+      "box": [
+        957,
+        412,
+        106,
+        46
+      ]
+    },
+    {
+      "id": "osteoblast-d",
+      "name": "Osteoblast",
+      "accept": [
+        "osteoblast",
+        "osteoblasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        19
+      ],
+      "box": [
+        957,
+        482,
+        102,
+        20
+      ]
+    },
+    {
+      "id": "compact-bone",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "cortical bone"
+      ],
+      "concept": "compact-bone",
+      "lines": [
+        20
+      ],
+      "box": [
+        957,
+        527,
+        135,
+        24
+      ]
+    },
+    {
+      "id": "trabeculae",
+      "name": "Trabeculae",
+      "accept": [
+        "trabeculae",
+        "trabecula"
+      ],
+      "concept": "spongy-bone",
+      "lines": [
+        21
+      ],
+      "box": [
+        404,
+        583,
+        105,
+        19
+      ]
+    },
+    {
+      "id": "spongy-bone",
+      "name": "Spongy bone",
+      "accept": [
+        "spongy bone",
+        "cancellous bone",
+        "diploe",
+        "diploë"
+      ],
+      "concept": "spongy-bone",
+      "lines": [
+        22,
+        23,
+        25
+      ],
+      "box": [
+        957,
+        659,
+        145,
+        69
+      ]
+    },
+    {
+      "id": "blood-vessel",
+      "name": "Blood vessel",
+      "accept": [
+        "blood vessel",
+        "blood vessels",
+        "vessel"
+      ],
+      "concept": "blood-vessel-basics",
+      "lines": [
+        24
+      ],
+      "box": [
+        405,
+        688,
+        118,
+        20
+      ]
+    }
+  ]
+}

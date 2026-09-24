@@ -1,0 +1,68 @@
+{
+  "figure": "os-10-14",
+  "labels": [
+    {
+      "id": "decreased-length",
+      "name": "Decreased length",
+      "accept": [
+        "decreased length",
+        "short sarcomere",
+        "shortened sarcomere",
+        "too short",
+        "overlapping filaments"
+      ],
+      "lines": [
+        18,
+        21
+      ],
+      "concept": "length-tension",
+      "box": [
+        127,
+        353,
+        102,
+        44
+      ]
+    },
+    {
+      "id": "increased-length",
+      "name": "Increased length",
+      "accept": [
+        "increased length",
+        "stretched sarcomere",
+        "optimal length",
+        "optimal overlap"
+      ],
+      "lines": [
+        19,
+        22
+      ],
+      "concept": "length-tension",
+      "box": [
+        297,
+        353,
+        93,
+        44
+      ]
+    },
+    {
+      "id": "no-cross-bridges",
+      "name": "No cross bridges",
+      "accept": [
+        "no cross bridges",
+        "no cross-bridges",
+        "no overlap",
+        "overstretched"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "length-tension",
+      "box": [
+        444,
+        353,
+        152,
+        23
+      ]
+    }
+  ]
+}

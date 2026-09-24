@@ -1,0 +1,353 @@
+{
+  "figure": "os-10-4",
+  "labels": [
+    {
+      "id": "muscle-fiber",
+      "name": "Muscle fiber",
+      "accept": [
+        "muscle fiber",
+        "muscle fibre",
+        "muscle cell",
+        "myocyte",
+        "myofiber"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "muscle-fiber-basic",
+      "box": [
+        177,
+        0,
+        114,
+        20
+      ]
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [
+        "nucleus",
+        "nuclei"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nucleus",
+      "box": [
+        0,
+        0,
+        79,
+        19
+      ]
+    },
+    {
+      "id": "mitochondrion",
+      "name": "Mitochondrion",
+      "accept": [
+        "mitochondrion",
+        "mitochondria"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "mitochondrion",
+      "box": [
+        629,
+        47,
+        129,
+        20
+      ]
+    },
+    {
+      "id": "sarcolemma",
+      "name": "Sarcolemma",
+      "accept": [
+        "sarcolemma",
+        "muscle cell membrane"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        628,
+        82,
+        118,
+        20
+      ]
+    },
+    {
+      "id": "light-i-band",
+      "name": "Light I band",
+      "accept": [
+        "light i band",
+        "i band",
+        "isotropic band"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "sarcomere",
+      "box": [
+        2,
+        116,
+        62,
+        42
+      ]
+    },
+    {
+      "id": "myofibril",
+      "name": "Myofibril",
+      "accept": [
+        "myofibril",
+        "myofibrils"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "myofibril",
+      "box": [
+        531,
+        205,
+        81,
+        24
+      ]
+    },
+    {
+      "id": "dark-a-band",
+      "name": "Dark A band",
+      "accept": [
+        "dark a band",
+        "a band",
+        "anisotropic band"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "sarcomere",
+      "box": [
+        184,
+        262,
+        116,
+        19
+      ]
+    },
+    {
+      "id": "sarcoplasmic-reticulum",
+      "name": "Sarcoplasmic reticulum",
+      "accept": [
+        "sarcoplasmic reticulum",
+        "sr"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "sarcoplasmic-reticulum",
+      "box": [
+        0,
+        302,
+        124,
+        43
+      ]
+    },
+    {
+      "id": "sarcomere",
+      "name": "Sarcomere",
+      "accept": [
+        "sarcomere",
+        "sarcomeres"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "sarcomere",
+      "box": [
+        354,
+        309,
+        104,
+        19
+      ]
+    },
+    {
+      "id": "thin-filament",
+      "name": "Thin (actin) filament",
+      "accept": [
+        "thin (actin) filament",
+        "thin filament",
+        "actin filament",
+        "actin",
+        "thin filaments"
+      ],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "thin-filament",
+      "box": [
+        110,
+        349,
+        106,
+        42
+      ]
+    },
+    {
+      "id": "thick-filament",
+      "name": "Thick (myosin) filament",
+      "accept": [
+        "thick (myosin) filament",
+        "thick filament",
+        "myosin filament",
+        "myosin",
+        "thick filaments"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "thick-filament",
+      "box": [
+        667,
+        349,
+        133,
+        42
+      ]
+    },
+    {
+      "id": "h-zone",
+      "name": "H zone",
+      "accept": [
+        "h zone",
+        "h band",
+        "h-zone"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "sarcomere",
+      "box": [
+        361,
+        373,
+        71,
+        20
+      ]
+    },
+    {
+      "id": "z-disc",
+      "name": "Z disc",
+      "accept": [
+        "z disc",
+        "z disk",
+        "z line",
+        "z-disc"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "sarcomere",
+      "box": [
+        217,
+        374,
+        63,
+        20
+      ]
+    },
+    {
+      "id": "z-disc-2",
+      "name": "Z disc",
+      "accept": [
+        "z disc",
+        "z disk",
+        "z line",
+        "z-disc"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "sarcomere",
+      "box": [
+        509,
+        374,
+        63,
+        20
+      ]
+    },
+    {
+      "id": "i-band",
+      "name": "I band",
+      "accept": [
+        "i band",
+        "light i band",
+        "isotropic band"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "sarcomere",
+      "box": [
+        224,
+        622,
+        64,
+        19
+      ]
+    },
+    {
+      "id": "a-band",
+      "name": "A band",
+      "accept": [
+        "a band",
+        "dark a band",
+        "anisotropic band"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "sarcomere",
+      "box": [
+        364,
+        622,
+        72,
+        19
+      ]
+    },
+    {
+      "id": "i-band-2",
+      "name": "I band",
+      "accept": [
+        "i band",
+        "light i band",
+        "isotropic band"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "sarcomere",
+      "box": [
+        514,
+        622,
+        63,
+        19
+      ]
+    },
+    {
+      "id": "m-line",
+      "name": "M line",
+      "accept": [
+        "m line",
+        "m-line",
+        "m disc"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "sarcomere",
+      "box": [
+        653,
+        622,
+        62,
+        19
+      ]
+    }
+  ]
+}

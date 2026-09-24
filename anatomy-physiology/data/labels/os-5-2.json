@@ -1,0 +1,331 @@
+{
+  "figure": "os-5-2",
+  "labels": [
+    {
+      "id": "hair-shaft",
+      "name": "Hair shaft",
+      "accept": [
+        "hair shaft",
+        "shaft"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        189,
+        116,
+        94,
+        20
+      ]
+    },
+    {
+      "id": "pore-of-sweat-gland-duct",
+      "name": "Pore of sweat gland duct",
+      "accept": [
+        "sweat pore",
+        "pore",
+        "sweat gland pore",
+        "pore of sweat gland"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "sweat-glands",
+      "box": [
+        808,
+        141,
+        223,
+        24
+      ]
+    },
+    {
+      "id": "epidermis",
+      "name": "Epidermis",
+      "accept": [
+        "epidermis"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "epidermis",
+      "box": [
+        987,
+        210,
+        97,
+        23
+      ]
+    },
+    {
+      "id": "arrector-pili-muscle",
+      "name": "Arrector pili muscle",
+      "accept": [
+        "arrector pili",
+        "arrector pili muscle",
+        "arrector pilli"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "arrector-pili",
+      "box": [
+        0,
+        350,
+        105,
+        43
+      ]
+    },
+    {
+      "id": "dermis",
+      "name": "Dermis",
+      "accept": [
+        "dermis"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "dermis",
+      "box": [
+        987,
+        402,
+        72,
+        20
+      ]
+    },
+    {
+      "id": "hair-follicle",
+      "name": "Hair follicle",
+      "accept": [
+        "hair follicle",
+        "follicle"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        0,
+        428,
+        102,
+        21
+      ]
+    },
+    {
+      "id": "sebaceous-gland",
+      "name": "Sebaceous (oil) gland",
+      "accept": [
+        "sebaceous gland",
+        "oil gland",
+        "sebaceous"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "sebaceous-gland",
+      "box": [
+        0,
+        484,
+        141,
+        48
+      ]
+    },
+    {
+      "id": "hair-root-plexus",
+      "name": "Hair root plexus",
+      "accept": [
+        "hair root plexus",
+        "root hair plexus"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "skin-sensation",
+      "box": [
+        0,
+        576,
+        143,
+        24
+      ]
+    },
+    {
+      "id": "sensory-nerve-fiber",
+      "name": "Sensory nerve fiber",
+      "accept": [
+        "sensory nerve fiber",
+        "sensory nerve fibre",
+        "sensory fiber",
+        "sensory axon"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "neuron-classes",
+      "box": [
+        0,
+        618,
+        175,
+        24
+      ]
+    },
+    {
+      "id": "hypodermis",
+      "name": "Hypodermis",
+      "accept": [
+        "hypodermis",
+        "subcutaneous layer",
+        "subcutaneous tissue",
+        "subcutis"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "hypodermis",
+      "box": [
+        987,
+        618,
+        114,
+        24
+      ]
+    },
+    {
+      "id": "hair-root",
+      "name": "Hair root",
+      "accept": [
+        "hair root",
+        "root"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        0,
+        659,
+        82,
+        20
+      ]
+    },
+    {
+      "id": "hair-follicle-receptor",
+      "name": "Hair follicle receptor",
+      "accept": [
+        "hair follicle receptor",
+        "hair receptor"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "skin-sensation",
+      "box": [
+        0,
+        695,
+        102,
+        47
+      ]
+    },
+    {
+      "id": "eccrine-sweat-gland",
+      "name": "Eccrine sweat gland",
+      "accept": [
+        "eccrine sweat gland",
+        "eccrine gland",
+        "sweat gland",
+        "merocrine sweat gland"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "sweat-glands",
+      "box": [
+        923,
+        708,
+        179,
+        24
+      ]
+    },
+    {
+      "id": "pacinian-corpuscle",
+      "name": "Pacinian corpuscle",
+      "accept": [
+        "pacinian corpuscle",
+        "lamellated corpuscle",
+        "pacinian",
+        "lamellated"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "skin-sensation",
+      "box": [
+        923,
+        749,
+        173,
+        23
+      ]
+    },
+    {
+      "id": "cutaneous-vascular-plexus",
+      "name": "Cutaneous vascular plexus",
+      "accept": [
+        "cutaneous vascular plexus",
+        "cutaneous plexus",
+        "vascular plexus",
+        "dermal plexus"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "blood-vessel-basics",
+      "box": [
+        922,
+        785,
+        180,
+        48
+      ]
+    },
+    {
+      "id": "adipose-tissue",
+      "name": "Adipose tissue",
+      "accept": [
+        "adipose tissue",
+        "adipose",
+        "fat",
+        "fat tissue"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "loose-ct",
+      "box": [
+        0,
+        791,
+        133,
+        24
+      ]
+    },
+    {
+      "id": "motor-nerve-fiber",
+      "name": "Motor nerve fiber",
+      "accept": [
+        "motor nerve fiber",
+        "motor nerve fibre",
+        "motor fiber",
+        "motor axon"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "motor-neuron",
+      "box": [
+        0,
+        826,
+        154,
+        20
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "figure": "os-9-10",
+  "labels": [
+    {
+      "id": "ball-and-socket-joint",
+      "name": "Ball-and-socket joint (hip joint)",
+      "accept": [
+        "ball-and-socket joint",
+        "ball and socket joint",
+        "ball and socket",
+        "ball-and-socket",
+        "spheroidal joint",
+        "multiaxial joint"
+      ],
+      "concept": "synovial-joint-types",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        631,
+        67,
+        211,
+        48
+      ]
+    },
+    {
+      "id": "pivot-joint",
+      "name": "Pivot joint (between C1 and C2 vertebrae)",
+      "accept": [
+        "pivot joint",
+        "pivot",
+        "trochoid joint",
+        "atlantoaxial joint"
+      ],
+      "concept": "synovial-joint-types",
+      "lines": [
+        4,
+        5,
+        6
+      ],
+      "box": [
+        115,
+        279,
+        190,
+        71
+      ]
+    },
+    {
+      "id": "hinge-joint",
+      "name": "Hinge joint (elbow)",
+      "accept": [
+        "hinge joint",
+        "hinge",
+        "ginglymus"
+      ],
+      "concept": "synovial-joint-types",
+      "lines": [
+        10,
+        11
+      ],
+      "box": [
+        14,
+        692,
+        133,
+        48
+      ]
+    },
+    {
+      "id": "condyloid-joint",
+      "name": "Condyloid joint (between radius and carpal bones of wrist)",
+      "accept": [
+        "condyloid joint",
+        "condyloid",
+        "ellipsoid joint",
+        "ellipsoidal joint",
+        "condylar joint"
+      ],
+      "concept": "synovial-joint-types",
+      "lines": [
+        12,
+        13,
+        14
+      ],
+      "box": [
+        875,
+        750,
+        227,
+        71
+      ]
+    },
+    {
+      "id": "plane-joint",
+      "name": "Plane joint (between tarsal bones)",
+      "accept": [
+        "plane joint",
+        "plane",
+        "gliding joint",
+        "planar joint",
+        "arthrodial joint"
+      ],
+      "concept": "synovial-joint-types",
+      "lines": [
+        15,
+        16
+      ],
+      "box": [
+        801,
+        1056,
+        241,
+        48
+      ]
+    },
+    {
+      "id": "saddle-joint",
+      "name": "Saddle joint (between trapezium carpal bone and 1st metacarpal bone)",
+      "accept": [
+        "saddle joint",
+        "saddle",
+        "sellar joint"
+      ],
+      "concept": "synovial-joint-types",
+      "lines": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "box": [
+        159,
+        1140,
+        212,
+        94
+      ]
+    }
+  ]
+}

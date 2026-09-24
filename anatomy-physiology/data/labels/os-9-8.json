@@ -1,0 +1,120 @@
+{
+  "figure": "os-9-8",
+  "labels": [
+    {
+      "id": "bone-upper",
+      "name": "Bone",
+      "accept": [
+        "bone",
+        "bone tissue",
+        "osseous tissue"
+      ],
+      "concept": "bone-tissue-basic",
+      "box": [
+        0,
+        333,
+        78,
+        30
+      ]
+    },
+    {
+      "id": "articular-capsule",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        912,
+        436,
+        124,
+        75
+      ]
+    },
+    {
+      "id": "synovial-membrane-inner",
+      "name": "Synovial membrane (inner)",
+      "accept": [
+        "synovial membrane",
+        "synovium",
+        "synovial layer"
+      ],
+      "concept": "synovial-membrane",
+      "box": [
+        913,
+        547,
+        158,
+        114
+      ]
+    },
+    {
+      "id": "fibrous-membrane-outer",
+      "name": "Fibrous membrane (outer)",
+      "accept": [
+        "fibrous membrane",
+        "fibrous layer",
+        "fibrous capsule",
+        "fibrous layer of the articular capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        913,
+        690,
+        158,
+        114
+      ]
+    },
+    {
+      "id": "joint-cavity-containing-synovial-fluid",
+      "name": "Joint cavity containing synovial fluid",
+      "accept": [
+        "joint cavity",
+        "synovial cavity",
+        "articular cavity",
+        "synovial fluid",
+        "joint space"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        912,
+        848,
+        188,
+        115
+      ]
+    },
+    {
+      "id": "articular-cartilage",
+      "name": "Articular cartilage",
+      "accept": [
+        "articular cartilage",
+        "hyaline cartilage",
+        "joint cartilage"
+      ],
+      "concept": "cartilage-example-sites",
+      "box": [
+        0,
+        683,
+        124,
+        75
+      ]
+    },
+    {
+      "id": "bone-lower",
+      "name": "Bone",
+      "accept": [
+        "bone",
+        "bone tissue",
+        "osseous tissue"
+      ],
+      "concept": "bone-tissue-basic",
+      "box": [
+        0,
+        912,
+        78,
+        30
+      ]
+    }
+  ]
+}

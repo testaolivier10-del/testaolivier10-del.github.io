@@ -11,7 +11,10 @@
     "alt": "Two full-body drawings of the muscular system, from the front and from the back. Each figure shows the superficial muscles on one side of the body and the deeper muscles on the other, with lines pointing to the major muscles of the head, neck, trunk, arms and legs.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.5",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 2476,
+    "ext": "jpg"
   },
   "os-11-29": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "Muscles of the right hip and thigh in three views. The front view shows muscles from the lumbar spine and the bowl of the ilium passing in front of the hip, a four-part muscle mass over the front of the thigh joining one tendon around the kneecap, a long strap crossing the thigh diagonally, and muscles of the inner thigh. A deep front view shows the inner-thigh muscles fanning from the pubis to the back of the femur. The back view shows the cut buttock muscles, small muscles running from the sacrum to the top of the femur, and three muscles on the back of the thigh.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.29",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1397,
+    "ext": "jpg"
   },
   "os-11-32": {
     "source": "openstax",
@@ -39,6 +45,9 @@
     "alt": "Muscles of the right lower leg in three views. The front view shows a muscle along the shin and muscles over the fibula with tendons running to the foot. The back view shows the two-headed calf muscle, a broad flat muscle beneath it and the thick tendon joining them to the heel. The deep back view shows the muscles under the calf muscles.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.32",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 655,
+    "ext": "jpg"
   }
 }

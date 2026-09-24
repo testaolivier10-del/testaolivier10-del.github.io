@@ -1,0 +1,229 @@
+{
+  "figure": "os-5-5",
+  "labels": [
+    {
+      "id": "dead-cells-filled-with-keratin",
+      "name": "Dead cells filled with keratin",
+      "accept": [
+        "dead cells filled with keratin",
+        "dead keratinized cells",
+        "dead keratinocytes",
+        "corneocytes"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "keratinocyte",
+      "box": [
+        908,
+        18,
+        158,
+        46
+      ]
+    },
+    {
+      "id": "stratum-corneum",
+      "name": "Stratum corneum",
+      "accept": [
+        "stratum corneum",
+        "corneum"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "epidermal-strata",
+      "box": [
+        0,
+        86,
+        168,
+        21
+      ]
+    },
+    {
+      "id": "stratum-lucidum",
+      "name": "Stratum lucidum",
+      "accept": [
+        "stratum lucidum",
+        "lucidum"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "epidermal-strata",
+      "box": [
+        0,
+        179,
+        158,
+        22
+      ]
+    },
+    {
+      "id": "stratum-granulosum",
+      "name": "Stratum granulosum",
+      "accept": [
+        "stratum granulosum",
+        "granulosum"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "epidermal-strata",
+      "box": [
+        0,
+        274,
+        195,
+        26
+      ]
+    },
+    {
+      "id": "lamellar-granules",
+      "name": "Lamellar granules",
+      "accept": [
+        "lamellar granules",
+        "lamellar granule",
+        "lamellated granules"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "epidermal-strata",
+      "box": [
+        909,
+        294,
+        173,
+        26
+      ]
+    },
+    {
+      "id": "keratinocyte",
+      "name": "Keratinocyte",
+      "accept": [
+        "keratinocyte",
+        "keratinocytes"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "keratinocyte",
+      "box": [
+        909,
+        461,
+        126,
+        25
+      ]
+    },
+    {
+      "id": "stratum-spinosum",
+      "name": "Stratum spinosum",
+      "accept": [
+        "stratum spinosum",
+        "spinosum"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "epidermal-strata",
+      "box": [
+        0,
+        468,
+        175,
+        25
+      ]
+    },
+    {
+      "id": "stratum-basale",
+      "name": "Stratum basale",
+      "accept": [
+        "stratum basale",
+        "basale",
+        "stratum germinativum",
+        "basal layer"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "epidermal-strata",
+      "box": [
+        0,
+        661,
+        148,
+        22
+      ]
+    },
+    {
+      "id": "merkel-cell",
+      "name": "Merkel cell",
+      "accept": [
+        "merkel cell",
+        "tactile cell",
+        "tactile epithelial cell",
+        "merkel"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "epidermal-other-cells",
+      "box": [
+        909,
+        693,
+        111,
+        21
+      ]
+    },
+    {
+      "id": "melanocyte",
+      "name": "Melanocyte",
+      "accept": [
+        "melanocyte",
+        "melanocytes"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "melanocyte",
+      "box": [
+        0,
+        743,
+        115,
+        26
+      ]
+    },
+    {
+      "id": "sensory-neuron",
+      "name": "Sensory neuron",
+      "accept": [
+        "sensory neuron",
+        "sensory nerve fiber",
+        "afferent neuron"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "neuron-classes",
+      "box": [
+        909,
+        787,
+        159,
+        25
+      ]
+    },
+    {
+      "id": "dermis",
+      "name": "Dermis",
+      "accept": [
+        "dermis"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "dermis",
+      "box": [
+        0,
+        806,
+        74,
+        21
+      ]
+    }
+  ]
+}

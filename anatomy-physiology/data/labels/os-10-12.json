@@ -1,0 +1,454 @@
+{
+  "figure": "os-10-12",
+  "labels": [
+    {
+      "id": "creatine-phosphate",
+      "name": "Creatine phosphate",
+      "accept": [
+        "creatine phosphate",
+        "phosphocreatine",
+        "cp",
+        "crp"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "creatine-phosphate",
+      "box": [
+        342,
+        65,
+        100,
+        46
+      ]
+    },
+    {
+      "id": "creatine",
+      "name": "Creatine",
+      "accept": [
+        "creatine"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "creatine-phosphate",
+      "box": [
+        162,
+        148,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "atp-resting",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "concept": "atp",
+      "box": [
+        28,
+        150,
+        50,
+        19
+      ]
+    },
+    {
+      "id": "adp",
+      "name": "ADP",
+      "accept": [
+        "adp",
+        "adenosine diphosphate"
+      ],
+      "concept": "atp",
+      "box": [
+        363,
+        189,
+        44,
+        20
+      ]
+    },
+    {
+      "id": "creatine-kinase",
+      "name": "Creatine kinase",
+      "accept": [
+        "creatine kinase",
+        "ck",
+        "creatine phosphokinase",
+        "cpk"
+      ],
+      "concept": "creatine-phosphate",
+      "box": [
+        558,
+        144,
+        134,
+        19
+      ]
+    },
+    {
+      "id": "creatine-2",
+      "name": "Creatine",
+      "accept": [
+        "creatine"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "creatine-phosphate",
+      "box": [
+        786,
+        75,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "atp-active",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "concept": "atp",
+      "box": [
+        805,
+        198,
+        40,
+        19
+      ]
+    },
+    {
+      "id": "energy-for-contraction",
+      "name": "Energy for muscle contraction",
+      "accept": [
+        "energy for muscle contraction",
+        "energy for contraction",
+        "energy"
+      ],
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "concept": null,
+      "box": [
+        773,
+        238,
+        104,
+        61
+      ]
+    },
+    {
+      "id": "blood-glucose",
+      "name": "Blood glucose",
+      "accept": [
+        "blood glucose",
+        "glucose"
+      ],
+      "concept": "glucose",
+      "box": [
+        16,
+        438,
+        69,
+        45
+      ]
+    },
+    {
+      "id": "muscle-glycogen",
+      "name": "Muscle glycogen",
+      "accept": [
+        "muscle glycogen",
+        "glycogen"
+      ],
+      "concept": "glycogen",
+      "box": [
+        16,
+        545,
+        79,
+        45
+      ]
+    },
+    {
+      "id": "glucose",
+      "name": "Glucose",
+      "accept": [
+        "glucose"
+      ],
+      "concept": "glucose",
+      "box": [
+        203,
+        505,
+        76,
+        28
+      ]
+    },
+    {
+      "id": "glycolysis",
+      "name": "Glycolysis",
+      "accept": [
+        "glycolysis",
+        "anaerobic glycolysis"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "glycolysis-basic",
+      "box": [
+        373,
+        402,
+        105,
+        24
+      ]
+    },
+    {
+      "id": "atp-glycolysis-1",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "concept": "atp",
+      "box": [
+        400,
+        455,
+        45,
+        25
+      ]
+    },
+    {
+      "id": "atp-glycolysis-2",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "concept": "atp",
+      "box": [
+        397,
+        513,
+        48,
+        25
+      ]
+    },
+    {
+      "id": "pyruvate-1",
+      "name": "Pyruvate",
+      "accept": [
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "concept": "glycolysis-basic",
+      "box": [
+        385,
+        565,
+        84,
+        26
+      ]
+    },
+    {
+      "id": "pyruvate-2",
+      "name": "Pyruvate",
+      "accept": [
+        "pyruvate",
+        "pyruvic acid"
+      ],
+      "concept": "glycolysis-basic",
+      "box": [
+        385,
+        611,
+        84,
+        26
+      ]
+    },
+    {
+      "id": "aerobic-respiration",
+      "name": "Aerobic respiration",
+      "accept": [
+        "aerobic respiration",
+        "aerobic metabolism",
+        "cellular respiration"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "aerobic-respiration",
+      "box": [
+        599,
+        438,
+        99,
+        44
+      ]
+    },
+    {
+      "id": "lactic-acid",
+      "name": "Lactic acid to blood",
+      "accept": [
+        "lactic acid to blood",
+        "lactic acid",
+        "lactate"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "anaerobic-metabolism",
+      "box": [
+        599,
+        574,
+        101,
+        41
+      ]
+    },
+    {
+      "id": "blood-glucose-2",
+      "name": "Blood glucose",
+      "accept": [
+        "blood glucose",
+        "glucose"
+      ],
+      "concept": "glucose",
+      "box": [
+        16,
+        773,
+        69,
+        45
+      ]
+    },
+    {
+      "id": "pyruvic-acid",
+      "name": "Pyruvic acid",
+      "accept": [
+        "pyruvic acid",
+        "pyruvate"
+      ],
+      "concept": "glycolysis-basic",
+      "box": [
+        16,
+        845,
+        66,
+        41
+      ]
+    },
+    {
+      "id": "fatty-acids",
+      "name": "Fatty acids",
+      "accept": [
+        "fatty acids",
+        "fatty acid"
+      ],
+      "concept": "triglyceride",
+      "box": [
+        15,
+        918,
+        54,
+        41
+      ]
+    },
+    {
+      "id": "oxygen",
+      "name": "O₂",
+      "accept": [
+        "o2",
+        "oxygen"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": null,
+      "box": [
+        310,
+        760,
+        34,
+        24
+      ]
+    },
+    {
+      "id": "cellular-respiration",
+      "name": "Cellular respiration in mitochondria",
+      "accept": [
+        "cellular respiration in mitochondria",
+        "cellular respiration",
+        "aerobic respiration",
+        "mitochondria",
+        "mitochondrion"
+      ],
+      "concept": "cellular-respiration",
+      "box": [
+        250,
+        856,
+        160,
+        41
+      ]
+    },
+    {
+      "id": "atp-aerobic",
+      "name": "ATP",
+      "accept": [
+        "atp",
+        "adenosine triphosphate"
+      ],
+      "concept": "atp",
+      "box": [
+        532,
+        802,
+        63,
+        33
+      ]
+    },
+    {
+      "id": "heat",
+      "name": "Heat",
+      "accept": [
+        "heat"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": null,
+      "box": [
+        551,
+        863,
+        52,
+        19
+      ]
+    },
+    {
+      "id": "co2",
+      "name": "CO₂",
+      "accept": [
+        "co2",
+        "carbon dioxide"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "metabolic-co2",
+      "box": [
+        551,
+        900,
+        48,
+        24
+      ]
+    },
+    {
+      "id": "h2o",
+      "name": "H₂O",
+      "accept": [
+        "h2o",
+        "water"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "water-properties",
+      "box": [
+        548,
+        938,
+        47,
+        23
+      ]
+    }
+  ]
+}

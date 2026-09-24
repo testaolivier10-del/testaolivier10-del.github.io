@@ -117,7 +117,7 @@
   "misconception": "articular cartilage has its own blood supply",
   "q": "A patient keeps an injured knee completely still in a brace for many weeks. Why can this harm the knee's articular cartilage?",
   "options": [
-   "Cartilage cells need nerve signals set off by movement in order to survive",
+   "Cartilage cells need nerve signals from movement to survive",
    "Without loading and release, less fluid is pumped through the cartilage",
    "The synovial membrane stops making fluid when the joint is still",
    "Blood vessels in the cartilage narrow when the joint does not move"
@@ -392,7 +392,7 @@
    "Its capsule is thicker and stiffer than the hip's",
    "It has an articular disc that slips out of place",
    "Its socket is shallow and it relies mainly on muscles",
-   "It is a hinge joint, while the hip is ball-and-socket"
+   "It is a hinge joint; the hip is ball-and-socket"
   ],
   "correct": 2,
   "why": {
@@ -584,12 +584,12 @@
    {
     "name": "Shear forces on the menisci during pivoting",
     "answer": "up",
-    "why": "When the tibia shifts and twists abnormally, the femur grinds across the menisci, loading them in ways they are not built for."
+    "why": "When the tibia shifts and twists abnormally, the femur grinds across the menisci and shears them."
    },
    {
-    "name": "How far the knee can be pushed inward at the inner side",
+    "name": "How far the tibia can slide backward under the femur",
     "answer": "none",
-    "why": "Inward bending is restrained by the tibial collateral ligament, which is intact, so this does not change."
+    "why": "Backward slide of the tibia is restrained mainly by the posterior cruciate ligament, which is intact, so this does not change."
    }
   ],
   "why": {

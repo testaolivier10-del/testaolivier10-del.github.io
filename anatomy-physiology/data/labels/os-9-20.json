@@ -1,0 +1,56 @@
+{
+  "figure": "os-9-20",
+  "labels": [
+    {
+      "id": "torn-tibial-collateral-ligament",
+      "name": "Torn tibial (medial) collateral ligament",
+      "accept": [
+        "tibial collateral ligament",
+        "medial collateral ligament",
+        "mcl",
+        "torn mcl",
+        "torn medial collateral ligament",
+        "torn tibial collateral ligament"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        845,
+        226,
+        250,
+        71
+      ]
+    },
+    {
+      "id": "medial-meniscus",
+      "name": "Medial meniscus",
+      "accept": [
+        "medial meniscus",
+        "torn medial meniscus"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        847,
+        418,
+        227,
+        28
+      ]
+    },
+    {
+      "id": "torn-anterior-cruciate-ligament",
+      "name": "Torn anterior cruciate ligament",
+      "accept": [
+        "anterior cruciate ligament",
+        "acl",
+        "torn acl",
+        "torn anterior cruciate ligament"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        125,
+        431,
+        233,
+        70
+      ]
+    }
+  ]
+}

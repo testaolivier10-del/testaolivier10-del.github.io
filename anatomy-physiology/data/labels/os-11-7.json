@@ -1,0 +1,124 @@
+{
+  "figure": "os-11-7",
+  "labels": [
+    {
+      "id": "epicranial-aponeurosis",
+      "name": "Epicranial aponeurosis",
+      "accept": [
+        "galea aponeurotica"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        442,
+        8,
+        185,
+        22
+      ]
+    },
+    {
+      "id": "occipitofrontalis-frontal-belly",
+      "name": "Occipitofrontalis (frontal belly)",
+      "accept": [
+        "frontalis",
+        "occipitofrontalis",
+        "frontal belly"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        1,
+        2
+      ],
+      "box": [
+        452,
+        170,
+        134,
+        42
+      ]
+    },
+    {
+      "id": "corrugator-supercilii",
+      "name": "Corrugator supercilii",
+      "accept": [
+        "corrugator"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        3
+      ],
+      "box": [
+        440,
+        234,
+        165,
+        23
+      ]
+    },
+    {
+      "id": "orbicularis-oculi",
+      "name": "Orbicularis oculi",
+      "accept": [],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        4
+      ],
+      "box": [
+        453,
+        282,
+        134,
+        18
+      ]
+    },
+    {
+      "id": "occipitofrontalis-occipital-belly",
+      "name": "Occipitofrontalis (occipital belly)",
+      "accept": [
+        "occipitalis",
+        "occipitofrontalis",
+        "occipital belly"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        452,
+        355,
+        134,
+        41
+      ]
+    },
+    {
+      "id": "orbicularis-oris",
+      "name": "Orbicularis oris",
+      "accept": [],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        7
+      ],
+      "box": [
+        455,
+        452,
+        128,
+        19
+      ]
+    },
+    {
+      "id": "buccinator",
+      "name": "Buccinator",
+      "accept": [],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        8
+      ],
+      "box": [
+        475,
+        564,
+        93,
+        19
+      ]
+    }
+  ]
+}

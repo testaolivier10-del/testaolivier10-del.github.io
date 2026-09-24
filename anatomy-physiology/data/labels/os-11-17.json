@@ -1,0 +1,193 @@
+{
+  "figure": "os-11-17",
+  "labels": [
+    {
+      "id": "central-tendon-of-diaphragm",
+      "name": "Central tendon of diaphragm",
+      "accept": [
+        "central tendon"
+      ],
+      "concept": "diaphragm",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        118,
+        14,
+        156,
+        51
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "breastbone"
+      ],
+      "concept": "sternum",
+      "lines": [
+        2
+      ],
+      "box": [
+        903,
+        43,
+        95,
+        22
+      ]
+    },
+    {
+      "id": "vena-cava",
+      "name": "Vena cava passing through caval opening",
+      "accept": [
+        "vena cava",
+        "inferior vena cava",
+        "caval opening"
+      ],
+      "concept": "great-vessels",
+      "lines": [
+        3,
+        4,
+        5
+      ],
+      "box": [
+        902,
+        117,
+        170,
+        77
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus passing through esophageal hiatus",
+      "accept": [
+        "esophagus",
+        "esophageal hiatus"
+      ],
+      "concept": "esophagus",
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "box": [
+        903,
+        216,
+        191,
+        76
+      ]
+    },
+    {
+      "id": "aorta",
+      "name": "Aorta passing through aortic hiatus",
+      "accept": [
+        "aorta",
+        "aortic hiatus"
+      ],
+      "concept": "great-vessels",
+      "lines": [
+        9,
+        11,
+        12
+      ],
+      "box": [
+        902,
+        317,
+        149,
+        72
+      ]
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "accept": [],
+      "concept": "diaphragm",
+      "lines": [
+        10
+      ],
+      "box": [
+        5,
+        325,
+        119,
+        28
+      ]
+    },
+    {
+      "id": "floating-ribs",
+      "name": "12th (floating) ribs",
+      "accept": [
+        "floating ribs",
+        "floating rib",
+        "12th ribs",
+        "12th rib",
+        "twelfth rib",
+        "twelfth ribs"
+      ],
+      "concept": "ribs",
+      "lines": [
+        13
+      ],
+      "box": [
+        904,
+        413,
+        188,
+        28
+      ]
+    },
+    {
+      "id": "left-psoas-major",
+      "name": "Left psoas major",
+      "accept": [
+        "psoas major",
+        "psoas"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        14
+      ],
+      "box": [
+        903,
+        481,
+        176,
+        28
+      ]
+    },
+    {
+      "id": "left-quadratus-lumborum",
+      "name": "Left quadratus lumborum",
+      "accept": [
+        "quadratus lumborum"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        15,
+        16
+      ],
+      "box": [
+        903,
+        529,
+        153,
+        47
+      ]
+    },
+    {
+      "id": "vertebrae",
+      "name": "Vertebrae",
+      "accept": [
+        "vertebra",
+        "lumbar vertebrae",
+        "lumbar vertebra"
+      ],
+      "concept": "vertebral-regions",
+      "lines": [
+        17
+      ],
+      "box": [
+        186,
+        713,
+        108,
+        22
+      ]
+    }
+  ]
+}

@@ -93,7 +93,7 @@
    "Lateral rotation",
    "Medial rotation",
    "Circumduction",
-   "Abduction of the thigh"
+   "Abduction"
   ],
   "correct": 0,
   "why": {
@@ -275,14 +275,14 @@
  {
   "id": "anp-body-movements-11",
   "type": "single",
-  "level": "apply",
+  "level": "recall",
   "diff": 2,
   "q": "At which joints does pronation of the forearm happen?",
   "options": [
    "The radiocarpal joint of the wrist",
    "The humeroulnar joint",
    "The proximal and distal radioulnar joints",
-   "The midcarpal joint between the carpal rows"
+   "The midcarpal joint of the wrist"
   ],
   "correct": 2,
   "why": {
@@ -413,7 +413,7 @@
   "type": "order",
   "level": "apply",
   "diff": 2,
-  "q": "You draw a large circle with your straight arm, starting with it hanging at your side and moving it forward first. Order the movements at the shoulder.",
+  "q": "You draw a large circle with your straight arm, starting with it hanging at your side, moving it forward first and then out to the side. Order the movements at the shoulder.",
   "options": [
    "Flexion",
    "Abduction",
@@ -469,7 +469,7 @@
    "Opposition, at the thumb's carpometacarpal joint",
    "Adduction, at the thumb's interphalangeal joint",
    "Flexion, at the radiocarpal joint",
-   "Reposition, at the metacarpophalangeal joint of the little finger"
+   "Reposition, at the little finger's knuckle"
   ],
   "correct": 0,
   "why": {
@@ -548,7 +548,7 @@
   "type": "single",
   "level": "analyze",
   "diff": 3,
-  "q": "A patient can lift his arm out to the side only to about shoulder height; above that it stops. His glenohumeral joint moves normally when tested alone. Which movement is most likely missing?",
+  "q": "A patient can lift his arm out to the side only a little past shoulder height; above that it stops. His glenohumeral joint moves normally when tested alone. Which movement is most likely missing?",
   "options": [
    "Superior rotation of the scapula",
    "Medial rotation of the humerus",

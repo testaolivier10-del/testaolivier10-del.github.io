@@ -1,0 +1,151 @@
+{
+  "figure": "os-6-20",
+  "labels": [
+    {
+      "id": "closed",
+      "name": "Closed",
+      "accept": [
+        "closed",
+        "closed fracture",
+        "simple fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        0
+      ],
+      "box": [
+        26,
+        0,
+        70,
+        20
+      ]
+    },
+    {
+      "id": "open",
+      "name": "Open",
+      "accept": [
+        "open",
+        "open fracture",
+        "compound fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        1
+      ],
+      "box": [
+        220,
+        0,
+        58,
+        24
+      ]
+    },
+    {
+      "id": "spiral",
+      "name": "Spiral",
+      "accept": [
+        "spiral",
+        "spiral fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        2
+      ],
+      "box": [
+        593,
+        0,
+        59,
+        24
+      ]
+    },
+    {
+      "id": "transverse",
+      "name": "Transverse",
+      "accept": [
+        "transverse",
+        "transverse fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        3
+      ],
+      "box": [
+        392,
+        0,
+        104,
+        19
+      ]
+    },
+    {
+      "id": "comminuted",
+      "name": "Comminuted",
+      "accept": [
+        "comminuted",
+        "comminuted fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        9
+      ],
+      "box": [
+        1,
+        670,
+        118,
+        20
+      ]
+    },
+    {
+      "id": "greenstick",
+      "name": "Greenstick",
+      "accept": [
+        "greenstick",
+        "greenstick fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        10
+      ],
+      "box": [
+        390,
+        670,
+        102,
+        20
+      ]
+    },
+    {
+      "id": "oblique",
+      "name": "Oblique",
+      "accept": [
+        "oblique",
+        "oblique fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        11
+      ],
+      "box": [
+        588,
+        670,
+        77,
+        24
+      ]
+    },
+    {
+      "id": "impacted",
+      "name": "Impacted",
+      "accept": [
+        "impacted",
+        "impacted fracture"
+      ],
+      "concept": "fracture-types",
+      "lines": [
+        12
+      ],
+      "box": [
+        212,
+        671,
+        88,
+        23
+      ]
+    }
+  ]
+}

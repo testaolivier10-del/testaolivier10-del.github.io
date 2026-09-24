@@ -11,7 +11,10 @@
     "alt": "Muscles around the shoulder blade. On the left, the front of the chest with the large chest muscle cut away shows a small muscle from the ribs to the coracoid process and a row of saw-toothed slips from the ribs wrapping back toward the scapula. On the right, the upper back from behind shows a large diamond-shaped sheet from the skull and spine to the shoulder, and, on the other side where it is removed, two diamond-shaped muscles between the spine and the scapula.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.22",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 504,
+    "ext": "jpg"
   },
   "os-11-23": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "Four views of the muscles that move the humerus. The top views show the large fan-shaped chest muscle, the broad sheet of the lower back and the thick triangular muscle capping the shoulder. The bottom views show the deeper shoulder muscles from the front and from behind, including the four small muscles that run from the scapula to the top of the humerus.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.23",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1170,
+    "ext": "jpg"
   },
   "os-11-25": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "Six views of the left arm and forearm. The top pair shows the two-headed muscle on the front of the upper arm with a deeper muscle beneath it, and the three-headed muscle on the back. The middle pair shows the superficial forearm muscles on the palm side and on the back, with long tendons running into the hand. The bottom pair shows the deep forearm muscles, including a small square muscle across the lower ends of the two forearm bones.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.25",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1357,
+    "ext": "jpg"
   },
   "os-11-28": {
     "source": "openstax",
@@ -53,6 +62,9 @@
     "alt": "Four views of the small muscles inside the left hand. The palm view shows fleshy mounds at the base of the thumb and along the little-finger side, with thin muscles running beside the finger tendons. The other views show muscles lying between the long bones of the hand, on the palm side and on the back.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.28",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1074,
+    "ext": "jpg"
   }
 }

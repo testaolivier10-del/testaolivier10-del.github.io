@@ -1,0 +1,81 @@
+{
+  "figure": "os-10-15",
+  "labels": [
+    {
+      "id": "latent-period",
+      "name": "Latent period",
+      "accept": [
+        "latent period",
+        "latent phase",
+        "lag period"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "twitch",
+      "box": [
+        31,
+        0,
+        64,
+        44
+      ]
+    },
+    {
+      "id": "contraction-period",
+      "name": "Contraction period",
+      "accept": [
+        "contraction period",
+        "contraction phase"
+      ],
+      "lines": [
+        0,
+        4
+      ],
+      "concept": "twitch",
+      "box": [
+        110,
+        0,
+        108,
+        44
+      ]
+    },
+    {
+      "id": "relaxation-period",
+      "name": "Relaxation period",
+      "accept": [
+        "relaxation period",
+        "relaxation phase"
+      ],
+      "lines": [
+        2,
+        5
+      ],
+      "concept": "twitch",
+      "box": [
+        307,
+        0,
+        100,
+        44
+      ]
+    },
+    {
+      "id": "single-stimulus",
+      "name": "Single stimulus",
+      "accept": [
+        "single stimulus",
+        "stimulus"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "twitch",
+      "box": [
+        13,
+        485,
+        151,
+        23
+      ]
+    }
+  ]
+}

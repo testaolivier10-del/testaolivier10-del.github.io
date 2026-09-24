@@ -1,0 +1,260 @@
+{
+  "figure": "os-9-13",
+  "labels": [
+    {
+      "id": "supination",
+      "name": "Supination (radius and ulna are parallel)",
+      "accept": [
+        "supination",
+        "supinate",
+        "supinated"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "box": [
+        244,
+        24,
+        105,
+        91
+      ]
+    },
+    {
+      "id": "pronation",
+      "name": "Pronation (Radius rotates over ulna)",
+      "accept": [
+        "pronation",
+        "pronate",
+        "pronated"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "box": [
+        3,
+        31,
+        94,
+        90
+      ]
+    },
+    {
+      "id": "pronation-arrow",
+      "name": "P",
+      "accept": [
+        "p",
+        "pronation"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        11
+      ],
+      "box": [
+        168,
+        343,
+        24,
+        19
+      ]
+    },
+    {
+      "id": "supination-arrow",
+      "name": "S",
+      "accept": [
+        "s",
+        "supination"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        16
+      ],
+      "box": [
+        134,
+        394,
+        24,
+        20
+      ]
+    },
+    {
+      "id": "dorsiflexion",
+      "name": "Dorsiflexion",
+      "accept": [
+        "dorsiflexion",
+        "dorsal flexion",
+        "dorsiflex"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        8
+      ],
+      "box": [
+        392,
+        147,
+        108,
+        19
+      ]
+    },
+    {
+      "id": "plantar-flexion",
+      "name": "Plantar flexion",
+      "accept": [
+        "plantar flexion",
+        "plantarflexion",
+        "plantar flex"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        18
+      ],
+      "box": [
+        354,
+        413,
+        129,
+        20
+      ]
+    },
+    {
+      "id": "inversion",
+      "name": "Inversion",
+      "accept": [
+        "inversion",
+        "invert",
+        "supination of the foot"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        27
+      ],
+      "box": [
+        738,
+        469,
+        86,
+        20
+      ]
+    },
+    {
+      "id": "eversion",
+      "name": "Eversion",
+      "accept": [
+        "eversion",
+        "evert",
+        "pronation of the foot"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        28
+      ],
+      "box": [
+        998,
+        469,
+        84,
+        20
+      ]
+    },
+    {
+      "id": "retraction-of-mandible",
+      "name": "Retraction of mandible",
+      "accept": [
+        "retraction",
+        "retraction of the mandible",
+        "jaw retraction"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        42,
+        45
+      ],
+      "box": [
+        85,
+        922,
+        109,
+        42
+      ]
+    },
+    {
+      "id": "protraction-of-mandible",
+      "name": "Protraction of mandible",
+      "accept": [
+        "protraction",
+        "protraction of the mandible",
+        "jaw protraction"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        43,
+        46
+      ],
+      "box": [
+        262,
+        922,
+        109,
+        42
+      ]
+    },
+    {
+      "id": "elevation-of-mandible",
+      "name": "Elevation of mandible",
+      "accept": [
+        "elevation",
+        "elevation of the mandible",
+        "jaw elevation"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        44,
+        48
+      ],
+      "box": [
+        630,
+        926,
+        109,
+        42
+      ]
+    },
+    {
+      "id": "depression-of-mandible",
+      "name": "Depression of mandible",
+      "accept": [
+        "depression",
+        "depression of the mandible",
+        "jaw depression"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        51,
+        54
+      ],
+      "box": [
+        588,
+        994,
+        109,
+        42
+      ]
+    },
+    {
+      "id": "opposition",
+      "name": "Opposition",
+      "accept": [
+        "opposition",
+        "opposition of the thumb",
+        "thumb opposition"
+      ],
+      "concept": "special-movements",
+      "lines": [
+        34
+      ],
+      "box": [
+        730,
+        781,
+        101,
+        23
+      ]
+    }
+  ]
+}

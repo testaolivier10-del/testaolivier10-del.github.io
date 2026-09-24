@@ -1,0 +1,634 @@
+[
+  {
+    "id": "anp-upper-limb-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-4",
+    "pin": "acromion",
+    "q": "Name the pinned part of the scapula.",
+    "options": [
+      "Coracoid process",
+      "Acromion",
+      "Glenoid cavity",
+      "Spine of the scapula"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The acromion is the flat end of the scapula's spine. It forms the bony tip of the shoulder and meets the clavicle.",
+      "options": [
+        "The coracoid process is the hook that points forward under the clavicle.",
+        "Correct. The flat projection at the tip of the shoulder is the acromion.",
+        "The glenoid cavity is the shallow socket on the outer corner, where the humerus fits.",
+        "The spine is the ridge across the back of the scapula; the acromion is its end."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-4",
+    "pin": "coracoid-process",
+    "q": "Name the pinned hook of the scapula.",
+    "options": [
+      "Acromion",
+      "Glenoid cavity",
+      "Coracoid process",
+      "Superior angle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The coracoid process is the beak-like hook that points forward under the clavicle. Muscles of the chest and arm anchor to it.",
+      "options": [
+        "The acromion is the flat tip of the shoulder at the end of the spine.",
+        "The glenoid cavity is the socket for the humerus, below and lateral to the hook.",
+        "Correct. The forward-pointing hook is the coracoid process.",
+        "The superior angle is the upper corner of the triangle, on the medial side."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-4",
+    "pin": "glenoid-cavity",
+    "q": "Name the pinned structure where the humerus meets the scapula.",
+    "options": [
+      "Glenoid cavity",
+      "Subscapular fossa",
+      "Acromion",
+      "Infraspinous fossa"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The glenoid cavity is the shallow oval socket on the lateral corner of the scapula. The head of the humerus fits into it.",
+      "options": [
+        "Correct. The socket for the head of the humerus is the glenoid cavity.",
+        "The subscapular fossa is the broad hollow on the front surface facing the ribs.",
+        "The acromion is the flat tip of the shoulder above the socket.",
+        "The infraspinous fossa is the hollow below the spine on the back."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-4",
+    "pin": "supraspinous-fossa",
+    "q": "Name the pinned hollow on the back of the scapula.",
+    "options": [
+      "Infraspinous fossa",
+      "Subscapular fossa",
+      "Supraspinous fossa",
+      "Olecranon fossa"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The supraspinous fossa is the hollow on the back of the scapula above the spine (supra- = above).",
+      "options": [
+        "The infraspinous fossa is the larger hollow below the spine.",
+        "The subscapular fossa is on the front surface, facing the ribs.",
+        "Correct. The hollow above the spine is the supraspinous fossa.",
+        "The olecranon fossa is on the back of the lower humerus, not the scapula."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-5",
+    "pin": "greater-tubercle",
+    "q": "Name the pinned bump on the humerus.",
+    "options": [
+      "Lesser tubercle",
+      "Greater tubercle",
+      "Deltoid tuberosity",
+      "Head of the humerus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The greater tubercle is the large bump on the lateral side of the top of the humerus. Muscles that steady the shoulder anchor to it.",
+      "options": [
+        "The lesser tubercle is the smaller bump on the front, across the groove.",
+        "Correct. The large lateral bump is the greater tubercle.",
+        "The deltoid tuberosity is a rough patch halfway down the shaft.",
+        "The head is the smooth half-ball that fits into the glenoid cavity."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-5",
+    "pin": "surgical-neck",
+    "q": "Name the pinned narrowing of the humerus.",
+    "options": [
+      "Anatomical neck",
+      "Intertubercular groove",
+      "Deltoid tuberosity",
+      "Surgical neck"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The surgical neck is the narrowing of the shaft just below the tubercles. It is a common fracture site, especially in older adults.",
+      "options": [
+        "The anatomical neck is the groove right at the edge of the head, above the tubercles.",
+        "The intertubercular groove is the channel between the tubercles, running up and down.",
+        "The deltoid tuberosity is farther down, halfway along the lateral shaft.",
+        "Correct. The narrowing below the tubercles is the surgical neck."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-5",
+    "pin": "capitulum",
+    "q": "Name the pinned knob at the lower end of the humerus.",
+    "options": [
+      "Trochlea",
+      "Medial epicondyle",
+      "Capitulum",
+      "Head of the radius"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The capitulum is the rounded knob on the lateral side of the lower humerus. The head of the radius meets it.",
+      "options": [
+        "The trochlea is the spool on the medial side, which the ulna wraps around.",
+        "The medial epicondyle is the knob that sticks out on the inner side of the elbow, not the rounded surface in front.",
+        "Correct. The rounded lateral knob is the capitulum.",
+        "The head of the radius is on the forearm bone below, not part of the humerus."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-5",
+    "pin": "olecranon-fossa",
+    "q": "Name the pinned hollow on the back of the humerus.",
+    "options": [
+      "Olecranon fossa",
+      "Coronoid fossa",
+      "Radial fossa",
+      "Trochlear notch"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The olecranon fossa is the deep hollow on the back of the lower humerus. The olecranon of the ulna slots into it when the elbow straightens.",
+      "options": [
+        "Correct. The deep hollow on the back is the olecranon fossa.",
+        "The coronoid fossa is the smaller hollow on the front of the humerus.",
+        "The radial fossa is a small hollow on the front, above the capitulum.",
+        "The trochlear notch is on the ulna, not the humerus."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-9",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-6",
+    "pin": "radial-tuberosity",
+    "q": "Name the pinned bump on the forearm bone.",
+    "options": [
+      "Head of the radius",
+      "Radial tuberosity",
+      "Coronoid process",
+      "Styloid process of the radius"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The radial tuberosity is the rough bump just below the head of the radius, where the tendon of the main muscle on the front of the arm anchors.",
+      "options": [
+        "The head of the radius is the disc at the very top, above this bump.",
+        "Correct. The bump below the head of the radius is the radial tuberosity.",
+        "The coronoid process belongs to the ulna and juts forward from its notch.",
+        "The styloid process of the radius is at the wrist end."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-10",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-6",
+    "pin": "trochlear-notch",
+    "q": "Name the pinned C-shaped notch of the ulna.",
+    "options": [
+      "Olecranon",
+      "Coronoid process",
+      "Radial tuberosity",
+      "Trochlear notch"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The trochlear notch is the large C-shaped notch at the top of the ulna. It wraps around the trochlea of the humerus.",
+      "options": [
+        "The olecranon is the hooked point above and behind the notch.",
+        "The coronoid process is the lower lip of the notch, not the notch itself.",
+        "The radial tuberosity is on the radius.",
+        "Correct. The C-shaped notch is the trochlear notch."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-11",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-7",
+    "pin": "scaphoid",
+    "q": "Name the pinned carpal bone on the thumb side of the proximal row.",
+    "options": [
+      "Trapezium",
+      "Lunate",
+      "Scaphoid",
+      "Capitate"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The scaphoid (scaph- = boat) is the lateral bone of the proximal row, on the thumb side. It meets the radius.",
+      "options": [
+        "The trapezium is in the distal row, at the base of the thumb.",
+        "The lunate is next to the scaphoid, toward the little finger.",
+        "Correct. The boat-shaped bone on the thumb side of the proximal row is the scaphoid.",
+        "The capitate is the large central bone of the distal row."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-12",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-7",
+    "pin": "hamate",
+    "q": "Name the pinned carpal bone on the little-finger side of the distal row.",
+    "options": [
+      "Pisiform",
+      "Hamate",
+      "Triquetrum",
+      "Trapezoid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The hamate is the medial bone of the distal row, on the little-finger side. It has a hook on its palm side (ham- = hook).",
+      "options": [
+        "The pisiform is the small pea-shaped bone in the proximal row.",
+        "Correct. The medial bone of the distal row is the hamate.",
+        "The triquetrum is in the proximal row, under the pisiform.",
+        "The trapezoid is in the distal row on the thumb side, next to the trapezium."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-13",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-9",
+    "pin": "flexor-retinaculum",
+    "q": "Name the pinned band that forms the roof of the tunnel.",
+    "options": [
+      "Flexor retinaculum",
+      "Hamate",
+      "Carpal tunnel",
+      "Tendons"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The flexor retinaculum is the tough band of dense connective tissue stretched across the palm side of the carpals. It turns their U-shaped trough into the carpal tunnel.",
+      "options": [
+        "Correct. The band across the top is the flexor retinaculum.",
+        "The hamate is one of the carpals forming the wall of the tunnel.",
+        "The carpal tunnel is the passage itself, not the band that roofs it.",
+        "The tendons pass through the tunnel under the band."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the scapula is attached to the ribs by bone",
+    "q": "Which bone is the only bony link between the upper limb and the axial skeleton?",
+    "options": [
+      "Scapula",
+      "Humerus",
+      "Clavicle",
+      "First rib"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The clavicle meets the manubrium of the sternum at one end and the acromion of the scapula at the other. The scapula itself is held to the trunk only by muscles.",
+      "options": [
+        "The scapula does not meet the vertebral column or the ribs; muscles hold it against the back of the rib cage.",
+        "The humerus meets the scapula, not the axial skeleton.",
+        "Correct. The clavicle is the only bony link.",
+        "The first rib is part of the axial skeleton itself, not a link to the limb."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 78-year-old woman with osteoporosis falls onto her outstretched arm. An X-ray shows a break across the humerus just below the two bumps at its upper end. Where is the break?",
+    "options": [
+      "The anatomical neck",
+      "The deltoid tuberosity",
+      "The surgical neck",
+      "The lateral epicondyle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The surgical neck is the narrowing of the shaft just below the greater and lesser tubercles, and it is where the upper humerus most often breaks in older adults.",
+      "options": [
+        "The anatomical neck is above the tubercles, at the edge of the head, and it rarely breaks.",
+        "The deltoid tuberosity is halfway down the shaft.",
+        "Correct. A break below the tubercles is at the surgical neck.",
+        "The lateral epicondyle is at the lower end of the humerus, at the elbow."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 20-year-old falls onto his outstretched hand. He is tender in the hollow at the base of his thumb, but the first X-ray looks normal. His wrist is splinted anyway. Why?",
+    "options": [
+      "The scaphoid may be broken, and its blood supply can fail",
+      "The pisiform may be broken, and it will slip out of its tendon",
+      "The lunate is the carpal most often broken, and it heals slowly",
+      "The fifth metacarpal may be broken, and it often shows late"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The tender hollow at the base of the thumb lies over the scaphoid, the carpal broken most often in this kind of fall. A scaphoid crack may not show on the first X-ray. Blood vessels enter the scaphoid mainly at its far end, so a break can starve the near piece, which may die and fail to heal. Splinting protects it until a later image settles the question.",
+      "options": [
+        "Correct. A missed scaphoid fracture risks losing the blood supply to part of the bone.",
+        "The pisiform is on the little-finger side of the palm, not the thumb side, and it does not slip out of its tendon.",
+        "The scaphoid, not the lunate, is the carpal broken most often.",
+        "The fifth metacarpal is at the little-finger side, usually broken by punching, not tender at the base of the thumb."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 45-year-old who types all day has numbness and tingling in her thumb, index and middle fingers that wakes her at night. What forms the roof of the passage where her nerve is being squeezed?",
+    "options": [
+      "The flexor retinaculum",
+      "The hamate",
+      "The trochlear notch",
+      "The head of the ulna"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is carpal tunnel syndrome. The carpals form the floor and walls of the carpal tunnel, and the flexor retinaculum stretches across the top as its roof. When the tendons in the tunnel swell, the tight band cannot give, so the nerve is squeezed.",
+      "options": [
+        "Correct. The flexor retinaculum is the roof of the carpal tunnel.",
+        "The hamate is one of the carpals in the wall of the tunnel, not its roof.",
+        "The trochlear notch is on the ulna at the elbow.",
+        "The head of the ulna is at the wrist but on the little-finger side, outside the tunnel."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-18",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which landmarks belong to the ulna? Select all that apply.",
+    "options": [
+      "Olecranon",
+      "Radial tuberosity",
+      "Trochlear notch",
+      "Capitulum",
+      "Coronoid process"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "The ulna carries the olecranon, the trochlear notch and the coronoid process at its upper end, and a small head and styloid process at the wrist.",
+      "options": [
+        "Yes. The olecranon is the point of the elbow, on the ulna.",
+        "No. The radial tuberosity is on the radius, below its head.",
+        "Yes. The trochlear notch of the ulna wraps around the trochlea.",
+        "No. The capitulum is on the lower humerus.",
+        "Yes. The coronoid process of the ulna is the lower lip of its notch."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-19",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the bones of the proximal row of carpals from lateral (thumb side) to medial, in anatomical position.",
+    "options": [
+      "Scaphoid",
+      "Lunate",
+      "Triquetrum",
+      "Pisiform"
+    ],
+    "why": {
+      "correct": "From the thumb side: scaphoid, lunate, triquetrum, pisiform, the first four words of \"Some Lovers Try Positions\".",
+      "options": [
+        "The scaphoid is on the thumb side and meets the radius.",
+        "The lunate sits beside the scaphoid and also meets the radius.",
+        "The triquetrum is next, toward the little finger.",
+        "The pisiform sits on the palm side of the triquetrum, farthest medial."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-20",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: at the elbow, the ulna wraps around the trochlea, and the head of the radius meets the ____ of the humerus.",
+    "options": [
+      "olecranon fossa",
+      "capitulum",
+      "medial epicondyle",
+      "greater tubercle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The capitulum is the rounded knob on the lateral side of the lower humerus, and the disc-shaped head of the radius meets it.",
+      "options": [
+        "The olecranon fossa receives the olecranon of the ulna when the elbow straightens.",
+        "Correct. The head of the radius meets the capitulum.",
+        "The medial epicondyle is a knob on the inner side for muscle attachment; no forearm bone meets it.",
+        "The greater tubercle is at the top of the humerus, at the shoulder."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-21",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the ulna is on the thumb side",
+    "q": "A student wrote these statements about the forearm in anatomical position. One is wrong. Which one?",
+    "options": [
+      "The ulna is on the thumb side of the forearm",
+      "The ulna is larger at the elbow than at the wrist",
+      "The radius is larger at the wrist than at the elbow",
+      "The radius crosses the ulna when the palm turns down"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In anatomical position, with the palm forward, the ulna is on the medial, little-finger side, and the radius is on the lateral, thumb side.",
+      "options": [
+        "This is the error. The radius is on the thumb side; the ulna is on the little-finger side.",
+        "This statement is right. The ulna's big end, with the olecranon and trochlear notch, is at the elbow.",
+        "This statement is right. The radius's wide end carries the wrist.",
+        "This statement is right. The radius swings across the front of the ulna when the palm turns down."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How many phalanges are in one hand?",
+    "options": [
+      "10",
+      "15",
+      "14",
+      "5"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The thumb has 2 phalanges and each of the four fingers has 3, for 2 + 12 = 14.",
+      "options": [
+        "Ten would be two per digit, but only the thumb has two.",
+        "Fifteen would be three per digit, but the thumb has only two.",
+        "Correct. There are 14 phalanges in each hand.",
+        "Five is the number of metacarpals, not phalanges."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-23",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the funny bone is a bone",
+    "q": "A man bangs the inner back of his elbow on a door frame and feels a jolt of tingling down to his little finger. What did he hit?",
+    "options": [
+      "A nerve lying on the back of the medial epicondyle",
+      "The olecranon of the ulna",
+      "The radial tuberosity",
+      "The capitulum, where the radius meets the humerus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The \"funny bone\" is not a bone. A nerve runs in a groove on the back of the medial epicondyle of the humerus with only skin over it, and a knock squeezes it against the bone, sending tingling along its path to the little finger.",
+      "options": [
+        "Correct. He hit a nerve lying against the medial epicondyle.",
+        "The olecranon is the point of the elbow; bruising it hurts locally but does not send tingling to the little finger.",
+        "The radial tuberosity is on the front of the forearm below the elbow, deep under muscle.",
+        "The capitulum is on the lateral side at the front of the elbow, covered by other structures."
+      ]
+    }
+  }
+]

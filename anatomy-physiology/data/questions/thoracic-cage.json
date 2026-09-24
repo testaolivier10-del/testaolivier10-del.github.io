@@ -263,7 +263,7 @@
       "They have no attachment to the vertebrae",
       "They have no costal cartilage at all",
       "They have no attachment at the front",
-      "They attach only to the xiphoid process"
+      "They attach to the xiphoid process"
     ],
     "correct": 2,
     "why": {
@@ -286,19 +286,19 @@
     ],
     "q": "A nurse needs to find a patient's third rib. She cannot feel the first rib under the collarbone. Where should she start counting?",
     "options": [
-      "At the jugular notch, which is level with the second rib",
-      "At the sternal angle, level with the second rib's cartilage",
-      "At the xiphoid process, which is level with the seventh rib",
-      "At the costal margin, counting upward from the twelfth rib"
+      "At the jugular notch",
+      "At the sternal angle",
+      "At the xiphoid process",
+      "At the costal margin"
     ],
     "correct": 1,
     "why": {
       "correct": "The sternal angle, the ridge where the manubrium meets the body, is level with the cartilage of the second rib. From there she slides sideways onto rib 2 and counts down one rib to rib 3.",
       "options": [
-        "The jugular notch is at the top of the manubrium, above the first rib, and no rib attaches there.",
+        "The jugular notch is the dip at the top of the manubrium, above the level of the first rib, and no rib attaches there.",
         "Correct. The sternal angle marks the second rib.",
-        "The seventh rib's cartilage reaches the lower body of the sternum, but counting up from there is less reliable than starting at the sternal angle.",
-        "The costal margin is formed by the cartilages of ribs 7 to 10; the twelfth rib is a floating rib at the back and is hard to feel."
+        "The xiphoid process has no rib attached, and the seventh rib's cartilage beside it is hard to pick out, so counting from there is unreliable.",
+        "The costal margin is formed by the joined cartilages of ribs 7 to 10, so it does not mark a single rib to count from."
       ]
     }
   },
@@ -338,7 +338,7 @@
     ],
     "q": "Fluid must be drained from a patient's pleural cavity with a needle passed between two ribs. Why is the needle placed just above the upper edge of the lower rib?",
     "options": [
-      "The costal cartilage is thinnest at the upper edge of each rib",
+      "Costal cartilage is thinnest at the upper edge of each rib",
       "A nerve, artery and vein run along the lower edge of each rib",
       "The tubercle of each rib points upward into the space",
       "The upper edge of each rib has the most sensory nerve endings"

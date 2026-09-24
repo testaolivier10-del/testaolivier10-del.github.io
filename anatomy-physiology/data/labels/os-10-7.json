@@ -1,0 +1,101 @@
+{
+  "figure": "os-10-7",
+  "labels": [
+    {
+      "id": "sarcolemma",
+      "name": "Sarcolemma",
+      "accept": [
+        "sarcolemma",
+        "muscle cell membrane"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        415,
+        56,
+        118,
+        19
+      ]
+    },
+    {
+      "id": "sarcoplasmic-reticulum",
+      "name": "Sarcoplasmic reticulum",
+      "accept": [
+        "sarcoplasmic reticulum",
+        "sr"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "sarcoplasmic-reticulum",
+      "box": [
+        415,
+        171,
+        125,
+        40
+      ]
+    },
+    {
+      "id": "terminal-cisternae",
+      "name": "Terminal cisternae",
+      "accept": [
+        "terminal cisternae",
+        "terminal cisterna",
+        "terminal cistern",
+        "lateral sacs"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "sarcoplasmic-reticulum",
+      "box": [
+        414,
+        241,
+        165,
+        19
+      ]
+    },
+    {
+      "id": "t-tubule",
+      "name": "T-tubule",
+      "accept": [
+        "t-tubule",
+        "t tubule",
+        "t tubules",
+        "transverse tubule",
+        "transverse tubules"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "t-tubule",
+      "box": [
+        414,
+        296,
+        82,
+        19
+      ]
+    },
+    {
+      "id": "triad",
+      "name": "Triad",
+      "accept": [
+        "triad",
+        "triads"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "t-tubule",
+      "box": [
+        414,
+        348,
+        56,
+        19
+      ]
+    }
+  ]
+}

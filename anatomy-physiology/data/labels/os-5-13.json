@@ -1,0 +1,277 @@
+{
+  "figure": "os-5-13",
+  "labels": [
+    {
+      "id": "free-edge",
+      "name": "Free edge",
+      "accept": [
+        "free edge",
+        "free edge of nail"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "nail",
+      "box": [
+        0,
+        66,
+        95,
+        24
+      ]
+    },
+    {
+      "id": "nail",
+      "name": "Nail",
+      "accept": [
+        "nail",
+        "nail plate",
+        "nail body"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "nail",
+      "box": [
+        0,
+        124,
+        41,
+        20
+      ]
+    },
+    {
+      "id": "lateral-nail-fold",
+      "name": "Lateral nail fold",
+      "accept": [
+        "lateral nail fold",
+        "nail fold"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "nail",
+      "box": [
+        0,
+        180,
+        137,
+        21
+      ]
+    },
+    {
+      "id": "lunula",
+      "name": "Lunula",
+      "accept": [
+        "lunula",
+        "lunule"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "nail",
+      "box": [
+        0,
+        238,
+        66,
+        20
+      ]
+    },
+    {
+      "id": "eponychium",
+      "name": "Eponychium",
+      "accept": [
+        "eponychium",
+        "cuticle",
+        "nail cuticle"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "nail",
+      "box": [
+        0,
+        295,
+        113,
+        24
+      ]
+    },
+    {
+      "id": "proximal-nail-fold",
+      "name": "Proximal nail fold",
+      "accept": [
+        "proximal nail fold",
+        "nail fold"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "nail",
+      "box": [
+        0,
+        352,
+        153,
+        20
+      ]
+    },
+    {
+      "id": "eponychium-side",
+      "name": "Eponychium",
+      "accept": [
+        "eponychium",
+        "cuticle",
+        "nail cuticle"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "nail",
+      "box": [
+        855,
+        63,
+        115,
+        24
+      ]
+    },
+    {
+      "id": "proximal-nail-fold-side",
+      "name": "Proximal nail fold",
+      "accept": [
+        "proximal nail fold",
+        "nail fold"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "nail",
+      "box": [
+        713,
+        102,
+        156,
+        21
+      ]
+    },
+    {
+      "id": "lunula-side",
+      "name": "Lunula",
+      "accept": [
+        "lunula",
+        "lunule"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "nail",
+      "box": [
+        963,
+        102,
+        69,
+        21
+      ]
+    },
+    {
+      "id": "nail-root",
+      "name": "Nail root",
+      "accept": [
+        "nail root"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "nail",
+      "box": [
+        691,
+        144,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "nail-body",
+      "name": "Nail body",
+      "accept": [
+        "nail body",
+        "nail plate",
+        "nail"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "nail",
+      "box": [
+        1012,
+        144,
+        90,
+        24
+      ]
+    },
+    {
+      "id": "epidermis",
+      "name": "Epidermis",
+      "accept": [
+        "epidermis"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "epidermis",
+      "box": [
+        645,
+        374,
+        96,
+        24
+      ]
+    },
+    {
+      "id": "dermis",
+      "name": "Dermis",
+      "accept": [
+        "dermis"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "dermis",
+      "box": [
+        780,
+        374,
+        72,
+        21
+      ]
+    },
+    {
+      "id": "phalanx",
+      "name": "Phalanx",
+      "accept": [
+        "phalanx",
+        "distal phalanx",
+        "phalange",
+        "finger bone"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "hand-bones",
+      "box": [
+        882,
+        374,
+        80,
+        21
+      ]
+    },
+    {
+      "id": "hyponychium",
+      "name": "Hyponychium",
+      "accept": [
+        "hyponychium"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "nail",
+      "box": [
+        979,
+        374,
+        123,
+        24
+      ]
+    }
+  ]
+}

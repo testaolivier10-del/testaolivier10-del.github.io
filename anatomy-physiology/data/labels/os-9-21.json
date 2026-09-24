@@ -1,0 +1,189 @@
+{
+  "figure": "os-9-21",
+  "labels": [
+    {
+      "id": "tibia",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shin bone"
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        87,
+        30,
+        72,
+        28
+      ]
+    },
+    {
+      "id": "fibula",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        903,
+        30,
+        86,
+        28
+      ]
+    },
+    {
+      "id": "medial-malleolus",
+      "name": "Medial malleolus",
+      "accept": [
+        "medial malleolus",
+        "medial malleolus of tibia"
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        89,
+        88,
+        233,
+        28
+      ]
+    },
+    {
+      "id": "deltoid-ligament",
+      "name": "Deltoid ligament",
+      "accept": [
+        "deltoid ligament",
+        "medial ligament of the ankle",
+        "medial collateral ligament of the ankle"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        89,
+        163,
+        225,
+        35
+      ]
+    },
+    {
+      "id": "subtalar-joint",
+      "name": "Subtalar joint",
+      "accept": [
+        "subtalar joint",
+        "talocalcaneal joint"
+      ],
+      "concept": "named-small-joints",
+      "box": [
+        902,
+        208,
+        184,
+        35
+      ]
+    },
+    {
+      "id": "fibula-lateral-view",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        6,
+        642,
+        86,
+        29
+      ]
+    },
+    {
+      "id": "tibia-lateral-view",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shin bone"
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        552,
+        647,
+        72,
+        28
+      ]
+    },
+    {
+      "id": "posterior-and-anterior-inferior-tibiofibular-ligaments",
+      "name": "Posterior and anterior inferior tibiofibular ligaments",
+      "accept": [
+        "tibiofibular ligaments",
+        "inferior tibiofibular ligaments",
+        "anterior inferior tibiofibular ligament",
+        "posterior inferior tibiofibular ligament",
+        "tibiofibular ligament"
+      ],
+      "concept": "named-small-joints",
+      "box": [
+        552,
+        711,
+        405,
+        72
+      ]
+    },
+    {
+      "id": "interosseous-membrane",
+      "name": "Interosseous membrane",
+      "accept": [
+        "interosseous membrane",
+        "crural interosseous membrane",
+        "interosseous membrane of leg"
+      ],
+      "concept": "joint-subtypes",
+      "box": [
+        5,
+        768,
+        180,
+        65
+      ]
+    },
+    {
+      "id": "anterior-talofibular-ligament",
+      "name": "Anterior talofibular ligament",
+      "accept": [
+        "anterior talofibular ligament",
+        "atfl",
+        "atfl ligament"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        552,
+        811,
+        381,
+        35
+      ]
+    },
+    {
+      "id": "calcaneofibular-ligament",
+      "name": "Calcaneofibular ligament",
+      "accept": [
+        "calcaneofibular ligament",
+        "cfl"
+      ],
+      "concept": "other-named-joints",
+      "box": [
+        4,
+        1122,
+        344,
+        42
+      ]
+    },
+    {
+      "id": "subtalar-joint-lateral-view",
+      "name": "Subtalar joint",
+      "accept": [
+        "subtalar joint",
+        "talocalcaneal joint"
+      ],
+      "concept": "named-small-joints",
+      "box": [
+        423,
+        1122,
+        185,
+        42
+      ]
+    }
+  ]
+}

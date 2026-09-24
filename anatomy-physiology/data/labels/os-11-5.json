@@ -1,0 +1,972 @@
+{
+  "figure": "os-11-5",
+  "labels": [
+    {
+      "id": "occipitofrontalis-frontal-belly",
+      "name": "Occipitofrontalis (frontal belly)",
+      "accept": [
+        "frontalis",
+        "occipitofrontalis",
+        "frontal belly"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        0,
+        2,
+        3
+      ],
+      "box": [
+        801,
+        1,
+        219,
+        66
+      ]
+    },
+    {
+      "id": "sternocleidomastoid",
+      "name": "Sternocleidomastoid",
+      "accept": [
+        "scm"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        1
+      ],
+      "box": [
+        0,
+        33,
+        271,
+        28
+      ]
+    },
+    {
+      "id": "deltoid",
+      "name": "Deltoid",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        4
+      ],
+      "box": [
+        201,
+        109,
+        100,
+        27
+      ]
+    },
+    {
+      "id": "trapezius",
+      "name": "Trapezius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        5
+      ],
+      "box": [
+        801,
+        153,
+        136,
+        33
+      ]
+    },
+    {
+      "id": "pectoralis-major",
+      "name": "Pectoralis major",
+      "accept": [
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        6,
+        7
+      ],
+      "box": [
+        0,
+        185,
+        213,
+        33
+      ]
+    },
+    {
+      "id": "pectoralis-minor",
+      "name": "Pectoralis minor",
+      "accept": [
+        "pec minor"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        8,
+        9
+      ],
+      "box": [
+        803,
+        198,
+        217,
+        28
+      ]
+    },
+    {
+      "id": "serratus-anterior",
+      "name": "Serratus anterior",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        10,
+        11
+      ],
+      "box": [
+        802,
+        243,
+        228,
+        28
+      ]
+    },
+    {
+      "id": "rectus-abdominis",
+      "name": "Rectus abdominis",
+      "accept": [],
+      "concept": "abdominal-wall",
+      "lines": [
+        12
+      ],
+      "box": [
+        0,
+        260,
+        239,
+        27
+      ]
+    },
+    {
+      "id": "biceps-brachii",
+      "name": "Biceps brachii",
+      "accept": [
+        "biceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        13,
+        14
+      ],
+      "box": [
+        802,
+        289,
+        191,
+        33
+      ]
+    },
+    {
+      "id": "brachialis",
+      "name": "Brachialis",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        15
+      ],
+      "box": [
+        802,
+        334,
+        137,
+        28
+      ]
+    },
+    {
+      "id": "abdominal-external-oblique",
+      "name": "Abdominal external oblique",
+      "accept": [
+        "external oblique"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        16,
+        17,
+        18
+      ],
+      "box": [
+        0,
+        336,
+        210,
+        65
+      ]
+    },
+    {
+      "id": "brachioradialis",
+      "name": "Brachioradialis",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        19
+      ],
+      "box": [
+        802,
+        380,
+        201,
+        27
+      ]
+    },
+    {
+      "id": "pronator-teres",
+      "name": "Pronator teres",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        20
+      ],
+      "box": [
+        802,
+        425,
+        195,
+        28
+      ]
+    },
+    {
+      "id": "pectineus",
+      "name": "Pectineus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        21
+      ],
+      "box": [
+        0,
+        444,
+        134,
+        27
+      ]
+    },
+    {
+      "id": "flexor-carpi-radialis",
+      "name": "Flexor carpi radialis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        22,
+        23
+      ],
+      "box": [
+        802,
+        470,
+        262,
+        33
+      ]
+    },
+    {
+      "id": "adductor-longus",
+      "name": "Adductor longus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        24,
+        27
+      ],
+      "box": [
+        0,
+        519,
+        125,
+        66
+      ]
+    },
+    {
+      "id": "tensor-fasciae-latae",
+      "name": "Tensor fasciae latae",
+      "accept": [
+        "tensor fascia latae",
+        "tfl"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        25,
+        26
+      ],
+      "box": [
+        801,
+        534,
+        269,
+        28
+      ]
+    },
+    {
+      "id": "sartorius",
+      "name": "Sartorius",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        28
+      ],
+      "box": [
+        0,
+        627,
+        126,
+        28
+      ]
+    },
+    {
+      "id": "iliopsoas",
+      "name": "Iliopsoas",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        29
+      ],
+      "box": [
+        726,
+        692,
+        125,
+        33
+      ]
+    },
+    {
+      "id": "rectus-femoris",
+      "name": "Rectus femoris",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        30
+      ],
+      "box": [
+        0,
+        727,
+        201,
+        28
+      ]
+    },
+    {
+      "id": "gracilis",
+      "name": "Gracilis",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        31
+      ],
+      "box": [
+        725,
+        750,
+        108,
+        28
+      ]
+    },
+    {
+      "id": "vastus-lateralis",
+      "name": "Vastus lateralis",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        32,
+        33
+      ],
+      "box": [
+        0,
+        804,
+        200,
+        27
+      ]
+    },
+    {
+      "id": "vastus-medialis",
+      "name": "Vastus medialis",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        34,
+        35
+      ],
+      "box": [
+        724,
+        820,
+        213,
+        27
+      ]
+    },
+    {
+      "id": "soleus-and-gastrocnemius",
+      "name": "Soleus and gastrocnemius",
+      "accept": [
+        "gastrocnemius",
+        "soleus",
+        "gastrocnemius and soleus",
+        "calf muscles",
+        "triceps surae"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        36,
+        39
+      ],
+      "box": [
+        724,
+        875,
+        201,
+        66
+      ]
+    },
+    {
+      "id": "fibularis-longus",
+      "name": "Fibularis longus",
+      "accept": [
+        "peroneus longus"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        37,
+        38
+      ],
+      "box": [
+        0,
+        880,
+        209,
+        33
+      ]
+    },
+    {
+      "id": "tibialis-anterior",
+      "name": "Tibialis anterior",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        40
+      ],
+      "box": [
+        0,
+        956,
+        206,
+        28
+      ]
+    },
+    {
+      "id": "occipitofrontalis-occipital-belly",
+      "name": "Occipitofrontalis (occipital belly)",
+      "accept": [
+        "occipitalis",
+        "occipitofrontalis",
+        "occipital belly"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        48,
+        49,
+        50
+      ],
+      "box": [
+        0,
+        1247,
+        215,
+        67
+      ]
+    },
+    {
+      "id": "epicranial-aponeurosis",
+      "name": "Epicranial aponeurosis",
+      "accept": [
+        "galea aponeurotica"
+      ],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        51,
+        52
+      ],
+      "box": [
+        803,
+        1285,
+        299,
+        33
+      ]
+    },
+    {
+      "id": "splenius-capitis",
+      "name": "Splenius capitis",
+      "accept": [
+        "splenius"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        53
+      ],
+      "box": [
+        0,
+        1328,
+        210,
+        34
+      ]
+    },
+    {
+      "id": "levator-scapulae",
+      "name": "Levator scapulae",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        54
+      ],
+      "box": [
+        0,
+        1377,
+        228,
+        33
+      ]
+    },
+    {
+      "id": "rhomboids",
+      "name": "Rhomboids",
+      "accept": [
+        "rhomboid",
+        "rhomboid major",
+        "rhomboid minor",
+        "rhomboideus"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        55
+      ],
+      "box": [
+        803,
+        1411,
+        157,
+        27
+      ]
+    },
+    {
+      "id": "supraspinatus",
+      "name": "Supraspinatus",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        56
+      ],
+      "box": [
+        0,
+        1426,
+        194,
+        33
+      ]
+    },
+    {
+      "id": "trapezius-posterior",
+      "name": "Trapezius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        57
+      ],
+      "box": [
+        801,
+        1458,
+        136,
+        33
+      ]
+    },
+    {
+      "id": "teres-minor",
+      "name": "Teres minor",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        58,
+        59
+      ],
+      "box": [
+        0,
+        1475,
+        159,
+        28
+      ]
+    },
+    {
+      "id": "deltoid-posterior",
+      "name": "Deltoid",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        60
+      ],
+      "box": [
+        803,
+        1506,
+        100,
+        27
+      ]
+    },
+    {
+      "id": "infraspinatus",
+      "name": "Infraspinatus",
+      "accept": [],
+      "concept": "rotator-cuff",
+      "lines": [
+        61
+      ],
+      "box": [
+        0,
+        1524,
+        175,
+        34
+      ]
+    },
+    {
+      "id": "latissimus-dorsi",
+      "name": "Latissimus dorsi",
+      "accept": [
+        "lats",
+        "latissimus"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        62
+      ],
+      "box": [
+        802,
+        1553,
+        218,
+        28
+      ]
+    },
+    {
+      "id": "teres-major",
+      "name": "Teres major",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        63,
+        64
+      ],
+      "box": [
+        0,
+        1574,
+        159,
+        32
+      ]
+    },
+    {
+      "id": "brachioradialis-posterior",
+      "name": "Brachioradialis",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        65
+      ],
+      "box": [
+        802,
+        1601,
+        201,
+        27
+      ]
+    },
+    {
+      "id": "triceps-brachii",
+      "name": "Triceps brachii",
+      "accept": [
+        "triceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        66,
+        67
+      ],
+      "box": [
+        0,
+        1622,
+        191,
+        33
+      ]
+    },
+    {
+      "id": "extensor-carpi-radialis",
+      "name": "Extensor carpi radialis",
+      "accept": [
+        "extensor carpi radialis longus",
+        "extensor carpi radialis brevis"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        68,
+        69
+      ],
+      "box": [
+        803,
+        1648,
+        296,
+        33
+      ]
+    },
+    {
+      "id": "serratus-posterior-inferior",
+      "name": "Serratus posterior inferior",
+      "accept": [],
+      "concept": null,
+      "lines": [
+        70,
+        71,
+        74
+      ],
+      "box": [
+        0,
+        1670,
+        238,
+        60
+      ]
+    },
+    {
+      "id": "extensor-digitorum",
+      "name": "Extensor digitorum",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        73
+      ],
+      "box": [
+        802,
+        1696,
+        253,
+        33
+      ]
+    },
+    {
+      "id": "extensor-carpi-ulnaris",
+      "name": "Extensor carpi ulnaris",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        75,
+        76
+      ],
+      "box": [
+        802,
+        1744,
+        291,
+        32
+      ]
+    },
+    {
+      "id": "external-oblique",
+      "name": "External oblique",
+      "accept": [
+        "abdominal external oblique"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        77,
+        78
+      ],
+      "box": [
+        0,
+        1752,
+        215,
+        32
+      ]
+    },
+    {
+      "id": "flexor-carpi-ulnaris",
+      "name": "Flexor carpi ulnaris",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        79,
+        80
+      ],
+      "box": [
+        802,
+        1791,
+        257,
+        33
+      ]
+    },
+    {
+      "id": "gluteus-medius",
+      "name": "Gluteus medius (dissected)",
+      "accept": [
+        "gluteus medius"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        81,
+        82,
+        83
+      ],
+      "box": [
+        0,
+        1800,
+        209,
+        61
+      ]
+    },
+    {
+      "id": "gluteus-minimus",
+      "name": "Gluteus minimus",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        84,
+        85
+      ],
+      "box": [
+        802,
+        1836,
+        227,
+        27
+      ]
+    },
+    {
+      "id": "gemellus-muscles",
+      "name": "Gemellus muscles",
+      "accept": [
+        "gemellus",
+        "gemelli",
+        "superior gemellus",
+        "inferior gemellus"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        86,
+        87
+      ],
+      "box": [
+        802,
+        1880,
+        248,
+        28
+      ]
+    },
+    {
+      "id": "gluteus-maximus",
+      "name": "Gluteus maximus (dissected)",
+      "accept": [
+        "gluteus maximus"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        88,
+        89,
+        90
+      ],
+      "box": [
+        0,
+        1882,
+        231,
+        61
+      ]
+    },
+    {
+      "id": "biceps-femoris",
+      "name": "Biceps femoris",
+      "accept": [],
+      "concept": "posterior-thigh",
+      "lines": [
+        91
+      ],
+      "box": [
+        726,
+        1955,
+        200,
+        33
+      ]
+    },
+    {
+      "id": "semimembranosus",
+      "name": "Semimembranosus",
+      "accept": [],
+      "concept": "posterior-thigh",
+      "lines": [
+        92
+      ],
+      "box": [
+        0,
+        1964,
+        259,
+        28
+      ]
+    },
+    {
+      "id": "semitendinosus",
+      "name": "Semitendinosus",
+      "accept": [],
+      "concept": "posterior-thigh",
+      "lines": [
+        93
+      ],
+      "box": [
+        725,
+        1998,
+        218,
+        28
+      ]
+    },
+    {
+      "id": "gracilis-posterior",
+      "name": "Gracilis",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        94
+      ],
+      "box": [
+        725,
+        2041,
+        108,
+        28
+      ]
+    },
+    {
+      "id": "peroneus-longus",
+      "name": "Peroneus longus",
+      "accept": [
+        "fibularis longus"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        95,
+        96
+      ],
+      "box": [
+        0,
+        2054,
+        223,
+        34
+      ]
+    },
+    {
+      "id": "gastrocnemius",
+      "name": "Gastrocnemius (dissected)",
+      "accept": [
+        "gastrocnemius"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        97,
+        98
+      ],
+      "box": [
+        725,
+        2085,
+        351,
+        28
+      ]
+    },
+    {
+      "id": "tibialis-posterior",
+      "name": "Tibialis posterior",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        99,
+        100
+      ],
+      "box": [
+        0,
+        2128,
+        219,
+        34
+      ]
+    },
+    {
+      "id": "soleus",
+      "name": "Soleus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        101
+      ],
+      "box": [
+        725,
+        2133,
+        100,
+        28
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "figure": "os-11-2",
+  "labels": [
+    {
+      "id": "biceps-brachii-prime-mover",
+      "name": "Biceps brachii (prime mover)",
+      "accept": [
+        "biceps brachii",
+        "biceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        0,
+        1,
+        2
+      ],
+      "box": [
+        136,
+        108,
+        172,
+        60
+      ]
+    },
+    {
+      "id": "brachioradialis-synergist",
+      "name": "Brachioradialis (synergist)",
+      "accept": [
+        "brachioradialis"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        4,
+        5
+      ],
+      "box": [
+        140,
+        265,
+        181,
+        59
+      ]
+    },
+    {
+      "id": "biceps-brachii-dissected",
+      "name": "Biceps brachii (dissected)",
+      "accept": [
+        "biceps brachii",
+        "biceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "box": [
+        611,
+        339,
+        172,
+        55
+      ]
+    },
+    {
+      "id": "brachialis-synergist",
+      "name": "Brachialis (synergist)",
+      "accept": [
+        "brachialis"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        9,
+        10
+      ],
+      "box": [
+        615,
+        447,
+        124,
+        59
+      ]
+    },
+    {
+      "id": "brachioradialis",
+      "name": "Brachioradialis",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        13
+      ],
+      "box": [
+        615,
+        554,
+        181,
+        25
+      ]
+    }
+  ]
+}

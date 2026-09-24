@@ -1,0 +1,24 @@
+{
+  "figure": "os-10-17",
+  "labels": [
+    {
+      "id": "treppe",
+      "name": "Treppe",
+      "accept": [
+        "treppe",
+        "staircase effect",
+        "staircase phenomenon"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "summation-tetanus",
+      "box": [
+        24,
+        292,
+        81,
+        24
+      ]
+    }
+  ]
+}

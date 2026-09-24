@@ -1,6 +1,6 @@
 {
   "topic": "joint-classification",
-  "hook": "<p>Ms. Reyes is 32 weeks pregnant and has sharp pain at the front of her pelvis every time she climbs stairs or stands on one leg. An ultrasound shows that the gap between her two pubic bones, usually 4 to 5 mm, has widened to 12 mm. Nothing is broken. The joint is doing what its tissue allows, and in pregnancy that tissue has loosened.</p>",
+  "hook": "<p>Ms. Reyes is 32 weeks pregnant and has sharp pain at the front of her pelvis every time she climbs stairs or stands on one leg. An ultrasound shows that the gap between her two pubic bones, usually 4 to 5 mm, has widened to 12 mm. Nothing is broken. In pregnancy the tissue of this joint loosens and the gap normally widens by a few millimeters, but in Ms. Reyes it has widened more than usual.</p>",
   "prereq": [
     {
       "q": "Which kind of cartilage forms the intervertebral discs and the menisci of the knee?",

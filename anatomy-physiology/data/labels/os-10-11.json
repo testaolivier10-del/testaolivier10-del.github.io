@@ -1,0 +1,287 @@
+{
+  "figure": "os-10-11",
+  "labels": [
+    {
+      "id": "calcium",
+      "name": "Calcium",
+      "accept": [
+        "calcium",
+        "calcium ions",
+        "ca2+",
+        "ca"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "troponin-regulation",
+      "box": [
+        213,
+        1,
+        79,
+        19
+      ]
+    },
+    {
+      "id": "actin",
+      "name": "Actin",
+      "accept": [
+        "actin"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "thin-filament",
+      "box": [
+        493,
+        37,
+        54,
+        20
+      ]
+    },
+    {
+      "id": "thin-filament",
+      "name": "Thin filament",
+      "accept": [
+        "thin filament",
+        "actin filament"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "thin-filament",
+      "box": [
+        25,
+        89,
+        118,
+        23
+      ]
+    },
+    {
+      "id": "myosin-head",
+      "name": "Myosin head",
+      "accept": [
+        "myosin head",
+        "head",
+        "myosin"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "thick-filament",
+      "box": [
+        277,
+        147,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "crossbridge",
+      "name": "Crossbridge",
+      "accept": [
+        "crossbridge",
+        "cross-bridge",
+        "cross bridge",
+        "crossbridges"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "cross-bridge",
+      "box": [
+        26,
+        167,
+        112,
+        24
+      ]
+    },
+    {
+      "id": "thick-filament",
+      "name": "Thick filament",
+      "accept": [
+        "thick filament",
+        "myosin filament"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "thick-filament",
+      "box": [
+        20,
+        254,
+        129,
+        19
+      ]
+    },
+    {
+      "id": "power-stroke",
+      "name": "Power stroke",
+      "accept": [
+        "power stroke",
+        "powerstroke"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "cross-bridge-cycle",
+      "box": [
+        26,
+        433,
+        117,
+        23
+      ]
+    },
+    {
+      "id": "adp-pi-released",
+      "name": "ADP and Pi released",
+      "accept": [
+        "adp and pi released",
+        "adp and phosphate released"
+      ],
+      "lines": [
+        22,
+        23
+      ],
+      "concept": "cross-bridge-cycle",
+      "box": [
+        674,
+        492,
+        108,
+        42
+      ]
+    },
+    {
+      "id": "atp-detaches",
+      "name": "ATP attaches to myosin and myosin head detaches",
+      "accept": [
+        "atp attaches to myosin and myosin head detaches",
+        "detachment",
+        "atp binding"
+      ],
+      "lines": [
+        34,
+        35,
+        36,
+        37
+      ],
+      "concept": "cross-bridge-cycle",
+      "box": [
+        673,
+        806,
+        140,
+        87
+      ]
+    },
+    {
+      "id": "actin-2",
+      "name": "Actin",
+      "accept": [
+        "actin"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "thin-filament",
+      "box": [
+        251,
+        981,
+        54,
+        20
+      ]
+    },
+    {
+      "id": "thin-filament-2",
+      "name": "Thin filament",
+      "accept": [
+        "thin filament",
+        "actin filament"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "thin-filament",
+      "box": [
+        21,
+        1041,
+        120,
+        20
+      ]
+    },
+    {
+      "id": "calcium-binding",
+      "name": "Calcium binding",
+      "accept": [
+        "calcium binding",
+        "calcium binds troponin"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "troponin-regulation",
+      "box": [
+        148,
+        1103,
+        145,
+        24
+      ]
+    },
+    {
+      "id": "cocking",
+      "name": "Cocking of myosin head",
+      "accept": [
+        "cocking of myosin head",
+        "cocking",
+        "recocking"
+      ],
+      "lines": [
+        51,
+        53
+      ],
+      "concept": "cross-bridge-cycle",
+      "box": [
+        674,
+        1132,
+        118,
+        46
+      ]
+    },
+    {
+      "id": "myosin-head-2",
+      "name": "Myosin head",
+      "accept": [
+        "myosin head",
+        "head",
+        "myosin"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "thick-filament",
+      "box": [
+        232,
+        1141,
+        117,
+        23
+      ]
+    },
+    {
+      "id": "thick-filament-2",
+      "name": "Thick filament",
+      "accept": [
+        "thick filament",
+        "myosin filament"
+      ],
+      "lines": [
+        54
+      ],
+      "concept": "thick-filament",
+      "box": [
+        20,
+        1206,
+        128,
+        20
+      ]
+    }
+  ]
+}

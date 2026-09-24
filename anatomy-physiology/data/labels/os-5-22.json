@@ -1,0 +1,139 @@
+{
+  "figure": "os-5-22",
+  "labels": [
+    {
+      "id": "epidermis",
+      "name": "Epidermis",
+      "accept": [
+        "epidermis"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "epidermis",
+      "box": [
+        0,
+        0,
+        102,
+        25
+      ]
+    },
+    {
+      "id": "plugged-follicle",
+      "name": "Plugged follicle",
+      "accept": [
+        "plugged follicle",
+        "plugged hair follicle",
+        "blocked follicle",
+        "comedo"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "skin-disorders",
+      "box": [
+        141,
+        0,
+        151,
+        25
+      ]
+    },
+    {
+      "id": "mild-inflammation",
+      "name": "Mild inflammation",
+      "accept": [
+        "mild inflammation",
+        "inflammation"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "inflammation-basic",
+      "box": [
+        323,
+        0,
+        173,
+        21
+      ]
+    },
+    {
+      "id": "marked-inflammation",
+      "name": "Marked inflammation",
+      "accept": [
+        "marked inflammation",
+        "severe inflammation",
+        "inflammation"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "inflammation-basic",
+      "box": [
+        621,
+        0,
+        201,
+        21
+      ]
+    },
+    {
+      "id": "sebaceous-gland",
+      "name": "Sebaceous gland",
+      "accept": [
+        "sebaceous gland",
+        "oil gland",
+        "sebaceous"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "sebaceous-gland",
+      "box": [
+        465,
+        40,
+        117,
+        46
+      ]
+    },
+    {
+      "id": "accumulation-of-shed-keratin-and-sebum",
+      "name": "Accumulation of shed keratin and sebum",
+      "accept": [
+        "accumulation of shed keratin and sebum",
+        "keratin and sebum",
+        "keratin plug",
+        "sebum plug"
+      ],
+      "lines": [
+        6,
+        8
+      ],
+      "concept": "sebaceous-gland",
+      "box": [
+        40,
+        402,
+        212,
+        42
+      ]
+    },
+    {
+      "id": "bacteria-proliferate",
+      "name": "Bacteria proliferate",
+      "accept": [
+        "bacteria proliferate",
+        "bacteria",
+        "bacterial growth"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null,
+      "box": [
+        335,
+        402,
+        186,
+        25
+      ]
+    }
+  ]
+}

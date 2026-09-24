@@ -1,0 +1,317 @@
+{
+  "figure": "os-11-16",
+  "labels": [
+    {
+      "id": "pectoralis-major",
+      "name": "Pectoralis major",
+      "accept": [
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        0,
+        60,
+        146,
+        24
+      ]
+    },
+    {
+      "id": "external-oblique-inset",
+      "name": "External oblique",
+      "accept": [],
+      "concept": "abdominal-wall",
+      "lines": [
+        1
+      ],
+      "box": [
+        897,
+        64,
+        146,
+        24
+      ]
+    },
+    {
+      "id": "latissimus-dorsi",
+      "name": "Latissimus dorsi",
+      "accept": [
+        "lats",
+        "latissimus"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        2
+      ],
+      "box": [
+        0,
+        111,
+        145,
+        20
+      ]
+    },
+    {
+      "id": "rectus-sheath",
+      "name": "Rectus sheath",
+      "accept": [
+        "rectus sheaths"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        3,
+        5
+      ],
+      "box": [
+        713,
+        121,
+        71,
+        41
+      ]
+    },
+    {
+      "id": "transversus-abdominis",
+      "name": "Transversus abdominis",
+      "accept": [
+        "transverse abdominis",
+        "transversus"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        4,
+        6
+      ],
+      "box": [
+        827,
+        121,
+        116,
+        41
+      ]
+    },
+    {
+      "id": "anterior-serratus-muscles",
+      "name": "Anterior serratus muscles",
+      "accept": [
+        "serratus anterior"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        7
+      ],
+      "box": [
+        0,
+        169,
+        225,
+        20
+      ]
+    },
+    {
+      "id": "external-oblique",
+      "name": "External oblique",
+      "accept": [
+        "abdominal external oblique"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        8
+      ],
+      "box": [
+        0,
+        218,
+        146,
+        24
+      ]
+    },
+    {
+      "id": "linea-alba",
+      "name": "Linea alba (of the rectus sheath)",
+      "accept": [
+        "linea alba"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        9,
+        10
+      ],
+      "box": [
+        0,
+        264,
+        156,
+        45
+      ]
+    },
+    {
+      "id": "rectus-abdominis",
+      "name": "Rectus abdominis (enclosed within rectus sheath)",
+      "accept": [
+        "rectus abdominis"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        11,
+        12,
+        13
+      ],
+      "box": [
+        0,
+        345,
+        160,
+        66
+      ]
+    },
+    {
+      "id": "tendinous-intersections",
+      "name": "Tendinous intersections (between the anterior segments of the rectus abdominis)",
+      "accept": [
+        "tendinous intersections",
+        "tendinous intersection"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        14,
+        15,
+        17,
+        19
+      ],
+      "box": [
+        0,
+        437,
+        208,
+        86
+      ]
+    },
+    {
+      "id": "rectus-abdominis-inset",
+      "name": "Rectus abdominis",
+      "accept": [],
+      "concept": "abdominal-wall",
+      "lines": [
+        16
+      ],
+      "box": [
+        660,
+        468,
+        161,
+        20
+      ]
+    },
+    {
+      "id": "aponeurosis-of-internal-oblique",
+      "name": "Aponeurosis of internal oblique",
+      "accept": [
+        "internal oblique aponeurosis",
+        "aponeurosis"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        18,
+        20
+      ],
+      "box": [
+        792,
+        496,
+        140,
+        45
+      ]
+    },
+    {
+      "id": "internal-oblique",
+      "name": "Internal oblique",
+      "accept": [
+        "abdominal internal oblique"
+      ],
+      "concept": "abdominal-wall",
+      "lines": [
+        21
+      ],
+      "box": [
+        910,
+        555,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "quadratus-lumborum",
+      "name": "Quadratus lumborum",
+      "accept": [],
+      "concept": "abdominal-wall",
+      "lines": [
+        23
+      ],
+      "box": [
+        0,
+        755,
+        188,
+        20
+      ]
+    },
+    {
+      "id": "ilia-of-hip-bones",
+      "name": "Ilia of hip bones",
+      "accept": [
+        "ilium",
+        "ilia",
+        "hip bone",
+        "hip bones"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        24
+      ],
+      "box": [
+        904,
+        791,
+        142,
+        24
+      ]
+    },
+    {
+      "id": "iliacus",
+      "name": "Iliacus",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        25
+      ],
+      "box": [
+        904,
+        913,
+        64,
+        20
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [],
+      "concept": "vertebral-regions",
+      "lines": [
+        26
+      ],
+      "box": [
+        0,
+        1053,
+        77,
+        20
+      ]
+    },
+    {
+      "id": "psoas-major",
+      "name": "Psoas major",
+      "accept": [
+        "psoas"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        27
+      ],
+      "box": [
+        903,
+        1119,
+        117,
+        24
+      ]
+    }
+  ]
+}

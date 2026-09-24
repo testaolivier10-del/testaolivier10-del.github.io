@@ -1,0 +1,283 @@
+{
+  "figure": "os-10-10",
+  "labels": [
+    {
+      "id": "m-line",
+      "name": "M",
+      "accept": [
+        "m",
+        "m line",
+        "m-line"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "sarcomere",
+      "box": [
+        528,
+        5,
+        33,
+        26
+      ]
+    },
+    {
+      "id": "z-disc",
+      "name": "Z",
+      "accept": [
+        "z",
+        "z disc",
+        "z line",
+        "z disk"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "sarcomere",
+      "box": [
+        154,
+        395,
+        29,
+        26
+      ]
+    },
+    {
+      "id": "h-zone",
+      "name": "H",
+      "accept": [
+        "h",
+        "h zone",
+        "h-zone",
+        "h band"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "sarcomere",
+      "box": [
+        530,
+        394,
+        29,
+        27
+      ]
+    },
+    {
+      "id": "z-disc-2",
+      "name": "Z",
+      "accept": [
+        "z",
+        "z disc",
+        "z line",
+        "z disk"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "sarcomere",
+      "box": [
+        906,
+        395,
+        30,
+        26
+      ]
+    },
+    {
+      "id": "i-band",
+      "name": "Lighter I band",
+      "accept": [
+        "lighter i band",
+        "i band",
+        "light i band"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "sarcomere",
+      "box": [
+        62,
+        464,
+        180,
+        32
+      ]
+    },
+    {
+      "id": "a-band",
+      "name": "Darker A band",
+      "accept": [
+        "darker a band",
+        "a band",
+        "dark a band"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "sarcomere",
+      "box": [
+        452,
+        464,
+        186,
+        26
+      ]
+    },
+    {
+      "id": "i-band-2",
+      "name": "Lighter I band",
+      "accept": [
+        "lighter i band",
+        "i band",
+        "light i band"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "sarcomere",
+      "box": [
+        853,
+        464,
+        180,
+        32
+      ]
+    },
+    {
+      "id": "m-line-2",
+      "name": "M",
+      "accept": [
+        "m",
+        "m line",
+        "m-line"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "sarcomere",
+      "box": [
+        528,
+        503,
+        33,
+        25
+      ]
+    },
+    {
+      "id": "z-disc-3",
+      "name": "Z",
+      "accept": [
+        "z",
+        "z disc",
+        "z line",
+        "z disk"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "sarcomere",
+      "box": [
+        203,
+        902,
+        29,
+        26
+      ]
+    },
+    {
+      "id": "h-zone-2",
+      "name": "H",
+      "accept": [
+        "h",
+        "h zone",
+        "h-zone",
+        "h band"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "sarcomere",
+      "box": [
+        530,
+        902,
+        30,
+        26
+      ]
+    },
+    {
+      "id": "z-disc-4",
+      "name": "Z",
+      "accept": [
+        "z",
+        "z disc",
+        "z line",
+        "z disk"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "sarcomere",
+      "box": [
+        856,
+        902,
+        30,
+        26
+      ]
+    },
+    {
+      "id": "i-band-3",
+      "name": "Lighter I band",
+      "accept": [
+        "lighter i band",
+        "i band",
+        "light i band"
+      ],
+      "lines": [
+        26,
+        27
+      ],
+      "concept": "sarcomere",
+      "box": [
+        126,
+        971,
+        180,
+        32
+      ]
+    },
+    {
+      "id": "a-band-2",
+      "name": "Darker A band",
+      "accept": [
+        "darker a band",
+        "a band",
+        "dark a band"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "sarcomere",
+      "box": [
+        452,
+        971,
+        186,
+        26
+      ]
+    },
+    {
+      "id": "i-band-4",
+      "name": "Lighter I band",
+      "accept": [
+        "lighter i band",
+        "i band",
+        "light i band"
+      ],
+      "lines": [
+        30,
+        31
+      ],
+      "concept": "sarcomere",
+      "box": [
+        786,
+        971,
+        180,
+        32
+      ]
+    }
+  ]
+}

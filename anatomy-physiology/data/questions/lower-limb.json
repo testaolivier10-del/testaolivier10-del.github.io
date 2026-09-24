@@ -1,0 +1,688 @@
+[
+  {
+    "id": "anp-lower-limb-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-13",
+    "pin": "acetabulum",
+    "q": "Name the pinned socket on the hip bone.",
+    "options": [
+      "Obturator foramen",
+      "Iliac fossa",
+      "Greater sciatic notch",
+      "Acetabulum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The acetabulum is the deep cup-shaped socket on the outer side of the hip bone, where the ilium, ischium and pubis meet. The head of the femur fits into it.",
+      "options": [
+        "The obturator foramen is the large hole below the socket, not the socket itself.",
+        "The iliac fossa is the broad shallow hollow on the inner surface of the ilium.",
+        "The greater sciatic notch is a deep notch on the back edge of the hip bone.",
+        "Correct. The deep socket is the acetabulum."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-13",
+    "pin": "iliac-crest",
+    "q": "Name the pinned edge of the hip bone.",
+    "options": [
+      "Iliac crest",
+      "Pelvic brim",
+      "Ischial spine",
+      "Anterior superior iliac spine"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The iliac crest is the curved upper edge of the ilium, the part you feel when you put your hands on your hips.",
+      "options": [
+        "Correct. The long curved upper edge is the iliac crest.",
+        "The pelvic brim is the rim around the inside of the pelvis, lower down, not the upper edge.",
+        "The ischial spine is a pointed projection on the back of the ischium.",
+        "The anterior superior iliac spine is only the front end point of the crest, not the whole edge."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-13",
+    "pin": "anterior-superior-iliac-spine",
+    "q": "Name the pinned bony point at the front end of the iliac crest.",
+    "options": [
+      "Posterior superior iliac spine",
+      "Ischial spine",
+      "Anterior superior iliac spine",
+      "Greater trochanter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The anterior superior iliac spine is the front end of the iliac crest, a bony point you can feel at the front of your hip.",
+      "options": [
+        "The posterior superior iliac spine is at the back end of the crest.",
+        "The ischial spine is on the ischium, low on the back of the hip bone.",
+        "Correct. The front end of the crest is the anterior superior iliac spine.",
+        "The greater trochanter is on the femur, below the hip bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-13",
+    "pin": "ischial-tuberosity",
+    "q": "Name the pinned thick part of the ischium.",
+    "options": [
+      "Ischial spine",
+      "Pubic symphysis",
+      "Obturator foramen",
+      "Ischial tuberosity"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The ischial tuberosity is the thick, rough base of the ischium. You sit on your two ischial tuberosities.",
+      "options": [
+        "The ischial spine is the pointed projection higher up on the back of the ischium.",
+        "The pubic symphysis is at the front midline, where the two pubic bones meet.",
+        "The obturator foramen is the large hole above and in front of this area.",
+        "Correct. The thick base of the ischium is the ischial tuberosity."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-13",
+    "pin": "obturator-foramen",
+    "q": "Name the pinned opening in the hip bone.",
+    "options": [
+      "Acetabulum",
+      "Greater sciatic notch",
+      "Obturator foramen",
+      "Pelvic inlet"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The obturator foramen is the large hole surrounded by the pubis and ischium, below the acetabulum. A membrane closes almost all of it.",
+      "options": [
+        "The acetabulum is the socket above the hole.",
+        "The greater sciatic notch is on the back edge of the hip bone, not a closed hole.",
+        "Correct. The large hole below the socket is the obturator foramen.",
+        "The pelvic inlet is the upper opening of the whole lesser pelvis, not a hole in one hip bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-12",
+    "pin": "pubic-symphysis",
+    "q": "Name the pinned structure at the front midline of the pelvis.",
+    "options": [
+      "Pubic symphysis",
+      "Sacral promontory",
+      "Coccyx",
+      "Pelvic brim"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The pubic symphysis is where the two pubic bones meet at the front midline, joined by a pad of fibrocartilage.",
+      "options": [
+        "Correct. The front midline meeting point is the pubic symphysis.",
+        "The sacral promontory is at the back, the upper front edge of the sacrum.",
+        "The coccyx is at the back, below the sacrum.",
+        "The pelvic brim is the rim around the inside of the pelvis, which passes the top of this point but is not the point itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-16",
+    "pin": "greater-trochanter",
+    "q": "Name the pinned bump on the femur.",
+    "options": [
+      "Lesser trochanter",
+      "Head of the femur",
+      "Greater trochanter",
+      "Lateral epicondyle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The greater trochanter is the large bump on the lateral side where the neck of the femur meets the shaft. It is the bony point you feel on the side of your hip.",
+      "options": [
+        "The lesser trochanter is the smaller bump lower down on the back and inner side.",
+        "The head is the smooth ball that fits into the acetabulum.",
+        "Correct. The large lateral bump at the top of the shaft is the greater trochanter.",
+        "The lateral epicondyle is at the knee end of the femur."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-16",
+    "pin": "linea-aspera",
+    "q": "Name the pinned ridge on the back of the femur.",
+    "options": [
+      "Linea aspera",
+      "Intertrochanteric crest",
+      "Neck of the femur",
+      "Anterior border"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The linea aspera is the rough line running down the back of the femur's shaft, where many thigh muscles anchor.",
+      "options": [
+        "Correct. The rough line down the back of the shaft is the linea aspera.",
+        "The intertrochanteric crest runs between the trochanters at the top, not down the shaft.",
+        "The neck joins the head to the shaft at the top of the bone.",
+        "The anterior border is the sharp front edge of the tibia, the shin."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-9",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-18",
+    "pin": "tibial-tuberosity",
+    "q": "Name the pinned bump on the front of the tibia.",
+    "options": [
+      "Medial condyle",
+      "Head of the fibula",
+      "Tibial tuberosity",
+      "Medial malleolus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The tibial tuberosity is the bump on the front of the tibia just below the knee, where the tendon running down from the patella anchors.",
+      "options": [
+        "The medial condyle is the broad upper surface on the inner side, above this bump.",
+        "The head of the fibula is on the outer side, below the lateral condyle of the tibia.",
+        "Correct. The bump below the knee is the tibial tuberosity.",
+        "The medial malleolus is at the ankle end of the tibia."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-10",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-18",
+    "pin": "lateral-malleolus",
+    "q": "Name the pinned bump at the outer ankle.",
+    "options": [
+      "Lateral malleolus",
+      "Medial malleolus",
+      "Calcaneus",
+      "Head of the fibula"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The lateral malleolus is the lower end of the fibula, the bump on the outer side of the ankle. It sits lower than the medial malleolus.",
+      "options": [
+        "Correct. The outer ankle bump is the lateral malleolus.",
+        "The medial malleolus is on the tibia, at the inner ankle.",
+        "The calcaneus is the heel bone, below and behind the ankle.",
+        "The head of the fibula is at the top of the fibula, below the knee."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-11",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-19",
+    "pin": "calcaneus",
+    "q": "Name the pinned bone of the foot.",
+    "options": [
+      "Talus",
+      "Cuboid",
+      "Navicular",
+      "Calcaneus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The calcaneus is the heel bone, the largest tarsal, lying below the talus. The thick tendon of the calf muscles anchors to its back.",
+      "options": [
+        "The talus sits on top of the calcaneus and meets the tibia.",
+        "The cuboid is in front of the calcaneus, on the outer side of the foot.",
+        "The navicular is in front of the talus, on the inner side of the foot.",
+        "Correct. The heel bone is the calcaneus."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-12",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-19",
+    "pin": "navicular",
+    "q": "Name the pinned tarsal bone.",
+    "options": [
+      "Navicular",
+      "Cuboid",
+      "Medial cuneiform",
+      "Talus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The navicular (little boat) sits in front of the talus on the inner side of the foot, behind the three cuneiforms.",
+      "options": [
+        "Correct. The bone in front of the talus on the inner side is the navicular.",
+        "The cuboid is on the outer side of the foot, in front of the calcaneus.",
+        "The medial cuneiform is one step farther forward, in front of the navicular.",
+        "The talus is behind the navicular, on top of the calcaneus."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-13",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-15",
+    "pin": "subpubic-angle",
+    "q": "Name the pinned angle.",
+    "options": [
+      "Subpubic angle",
+      "Pelvic inlet",
+      "Pelvic brim",
+      "Sacral promontory"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The subpubic angle is the angle at the top of the pubic arch, below the pubic symphysis. It is wide in the female pelvis and narrow in the male pelvis.",
+      "options": [
+        "Correct. The angle below the pubic symphysis is the subpubic angle.",
+        "The pelvic inlet is the upper opening outlined by the pelvic brim.",
+        "The pelvic brim is the outlined rim of the inlet.",
+        "The sacral promontory is at the back of the inlet."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-14",
+    "type": "image",
+    "level": "recall",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-8-14",
+    "pin": "sacrotuberous-ligament",
+    "q": "Name the pinned ligament running from the sacrum to the ischial tuberosity.",
+    "options": [
+      "Sacrospinous ligament",
+      "Posterior longitudinal ligament",
+      "Supraspinous ligament",
+      "Sacrotuberous ligament"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The sacrotuberous ligament runs from the side of the sacrum to the ischial tuberosity. The shorter sacrospinous ligament runs to the ischial spine.",
+      "options": [
+        "The sacrospinous ligament runs to the ischial spine, higher and shorter.",
+        "The posterior longitudinal ligament runs inside the vertebral canal, along the back of the vertebral bodies.",
+        "The supraspinous ligament joins the tips of the spinous processes of the vertebrae.",
+        "Correct. The ligament to the ischial tuberosity is the sacrotuberous ligament."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where do the ilium, ischium and pubis all meet?",
+    "options": [
+      "At the pubic symphysis",
+      "At the obturator foramen",
+      "At the acetabulum, the hip socket",
+      "At the greater sciatic notch"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The three parts of the hip bone meet and fuse in the acetabulum, the socket for the femoral head.",
+      "options": [
+        "At the pubic symphysis, the right and left pubic bones meet each other; the ilium does not reach it.",
+        "The obturator foramen is surrounded by the pubis and ischium only.",
+        "Correct. All three meet in the acetabulum.",
+        "The greater sciatic notch is formed mostly by the ilium."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A forensic team examines an adult pelvis. It is light, the lesser pelvis is shallow, the pelvic inlet is wide and round, and the subpubic angle is about 95 degrees. What is the most likely sex?",
+    "options": [
+      "Male",
+      "Female",
+      "It cannot be judged from the pelvis"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A light build, a shallow lesser pelvis, a round inlet and a subpubic angle near 90 degrees or more are all features of the average female pelvis. The male pelvis is heavier and deeper, with a heart-shaped inlet and a subpubic angle of about 50 to 60 degrees.",
+      "options": [
+        "A male pelvis is usually heavier and deeper, with a heart-shaped inlet and a narrow subpubic angle of about 50 to 60 degrees.",
+        "Correct. These features together point to a female pelvis.",
+        "Individual pelves overlap, but the pelvis is one of the most reliable parts of the skeleton for judging sex, especially when several features agree, as they do here."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a broken hip is a break in the hip bone",
+    "q": "An 84-year-old man slips and lands on the side of his hip. He cannot stand, and his injured leg looks shorter and turned outward. An X-ray shows a break between the head of the femur and the greater trochanter. What part of the femur is broken?",
+    "options": [
+      "The linea aspera",
+      "The femoral neck",
+      "The lateral condyle",
+      "The lesser trochanter alone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The femoral neck joins the head to the shaft at an angle, and it is the femur's weak point. In older adults a fall on the side of the hip often breaks it; this is what most people call a broken hip.",
+      "options": [
+        "The linea aspera runs down the back of the shaft, below the trochanters.",
+        "Correct. The break is through the femoral neck.",
+        "The lateral condyle is at the knee end of the femur.",
+        "The lesser trochanter is below the neck, and a break of it alone would not fit a break between the head and the greater trochanter."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-18",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features are typical of the female pelvis compared with the male pelvis? Select all that apply.",
+    "options": [
+      "A wider subpubic angle",
+      "A heart-shaped pelvic inlet",
+      "A shallower lesser pelvis",
+      "Ischial spines closer together",
+      "A shorter, wider, less curved sacrum"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "On average the female pelvis has a wider subpubic angle, a shallower lesser pelvis, a round inlet, ischial spines farther apart and a shorter, wider, less curved sacrum.",
+      "options": [
+        "Yes. The female subpubic angle is about 80 to 90 degrees or more.",
+        "No. A heart-shaped inlet is typical of the male pelvis; the female inlet is round or oval.",
+        "Yes. The female lesser pelvis is shallower.",
+        "No. In the female pelvis the ischial spines are farther apart.",
+        "Yes. The female sacrum is shorter, wider and less curved."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-19",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the bones that carry the weight of the trunk down to the foot when you stand on one leg.",
+    "options": [
+      "Sacrum",
+      "Ilium",
+      "Acetabulum",
+      "Head of the femur",
+      "Tibia",
+      "Talus"
+    ],
+    "why": {
+      "correct": "The trunk's weight passes from the sacrum into the ilium, around to the acetabulum, into the head of the femur, down the femur to the tibia, and from the tibia to the talus, which spreads it to the rest of the foot.",
+      "options": [
+        "The sacrum receives the weight of the trunk from the vertebral column.",
+        "The ilium takes the load from the sacrum.",
+        "The acetabulum is the socket where the load leaves the hip bone.",
+        "The head of the femur sits in the acetabulum.",
+        "The femur rests on the tibia, which carries almost all the weight in the leg.",
+        "The talus is the only foot bone the tibia rests on."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-20",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: the medial malleolus is part of the ____, and the lateral malleolus is part of the fibula.",
+    "options": [
+      "tibia",
+      "talus",
+      "femur",
+      "calcaneus"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The medial malleolus is the lower end of the tibia, the bump on the inner ankle. The lateral malleolus is the lower end of the fibula.",
+      "options": [
+        "Correct. The medial malleolus belongs to the tibia.",
+        "The talus is the foot bone gripped between the two malleoli.",
+        "The femur ends at the knee, far above the ankle.",
+        "The calcaneus is the heel bone, below the talus."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-21",
+    "type": "error",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described the tarsal bones. One statement is wrong. Which one?",
+    "options": [
+      "The talus is the tarsal that meets the tibia",
+      "The calcaneus is the heel bone",
+      "The cuboid lies on the inner side of the foot",
+      "The cuneiforms lie in front of the navicular"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The cuboid lies on the outer (lateral) side of the foot, in front of the calcaneus. The navicular is the tarsal on the inner side, in front of the talus.",
+      "options": [
+        "This statement is right. The tibia rests only on the talus.",
+        "This statement is right. The calcaneus is the heel bone.",
+        "This is the error. The cuboid is on the outer side of the foot.",
+        "This statement is right. The three cuneiforms sit in a row in front of the navicular."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which bone is the largest sesamoid bone in the body?",
+    "options": [
+      "Pisiform",
+      "Patella (kneecap)",
+      "Calcaneus",
+      "Talus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The patella forms inside the tendon of the large muscle group on the front of the thigh, which makes it a sesamoid bone, and it is the largest one.",
+      "options": [
+        "The pisiform is a sesamoid bone in the wrist, but it is pea-sized.",
+        "Correct. The patella is the largest sesamoid bone.",
+        "The calcaneus is the largest tarsal, but it is not a sesamoid bone.",
+        "The talus is a tarsal bone, not a sesamoid bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-23",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 30-year-old who is training for her first marathon has had aching pain on the top of her foot, over the middle of the second toe's long bone, for three weeks. It gets worse the farther she runs. Which bone is most likely cracked?",
+    "options": [
+      "The talus",
+      "The second metatarsal",
+      "The navicular",
+      "The proximal phalanx of the second toe"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The second and third metatarsals are long and thin and take repeated load in running. Mounting mileage can crack them without a single injury: a stress fracture. Pain over the middle of the long bone of the second toe points to the second metatarsal.",
+      "options": [
+        "The talus is at the ankle, under the tibia, not in the middle of the foot.",
+        "Correct. The second metatarsal is the classic site of a runner's stress fracture.",
+        "The navicular is on the inner side of the foot, behind the cuneiforms.",
+        "The proximal phalanx is in the toe itself, beyond the ball of the foot."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-24",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 50-year-old has stabbing pain under the front of his heel with his first steps each morning. It eases as he walks around. Which structure is most likely strained where it anchors?",
+    "options": [
+      "The plantar aponeurosis",
+      "The lateral malleolus",
+      "The head of the fibula",
+      "The pubic symphysis"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The plantar aponeurosis is a thick sheet of dense connective tissue on the sole, running from the calcaneus to the toes. When it is strained where it anchors to the calcaneus, heel pain is worst with the first steps after rest: plantar fasciitis.",
+      "options": [
+        "Correct. The plantar aponeurosis anchors to the calcaneus under the heel.",
+        "The lateral malleolus is at the outer ankle, not under the heel.",
+        "The head of the fibula is below the knee.",
+        "The pubic symphysis is at the front of the pelvis."
+      ]
+    }
+  },
+  {
+    "id": "anp-lower-limb-25",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which bone of the leg is not part of the knee?",
+    "options": [
+      "Femur",
+      "Tibia",
+      "Patella",
+      "Fibula"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The fibula does not reach the femur. Its head sits below the lateral condyle of the tibia, on the outer side, below the knee.",
+      "options": [
+        "The femur's condyles form the top of the knee.",
+        "The tibia's condyles carry the femur at the knee.",
+        "The patella glides on the front of the femur at the knee.",
+        "Correct. The fibula is not part of the knee."
+      ]
+    }
+  }
+]

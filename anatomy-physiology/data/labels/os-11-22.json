@@ -1,0 +1,228 @@
+{
+  "figure": "os-11-22",
+  "labels": [
+    {
+      "id": "deltoid-cut",
+      "name": "Deltoid (cut)",
+      "accept": [
+        "deltoid"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        445,
+        10,
+        112,
+        24
+      ]
+    },
+    {
+      "id": "coracoid-process",
+      "name": "Coracoid process of scapula",
+      "accept": [
+        "coracoid process",
+        "coracoid"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        1,
+        3
+      ],
+      "box": [
+        444,
+        40,
+        159,
+        45
+      ]
+    },
+    {
+      "id": "subclavius",
+      "name": "Subclavius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        2
+      ],
+      "box": [
+        77,
+        50,
+        103,
+        20
+      ]
+    },
+    {
+      "id": "pectoralis-major-cut",
+      "name": "Pectoralis major (cut)",
+      "accept": [
+        "pectoralis major",
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        4,
+        5
+      ],
+      "box": [
+        444,
+        91,
+        147,
+        44
+      ]
+    },
+    {
+      "id": "acromion-process",
+      "name": "Acromion process of scapula",
+      "accept": [
+        "acromion",
+        "acromion process",
+        "acromial process"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        6,
+        8
+      ],
+      "box": [
+        622,
+        116,
+        162,
+        45
+      ]
+    },
+    {
+      "id": "rhomboid-minor",
+      "name": "Rhomboid minor",
+      "accept": [
+        "rhomboideus minor"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        7,
+        10
+      ],
+      "box": [
+        998,
+        116,
+        97,
+        42
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "shoulder blade"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        9
+      ],
+      "box": [
+        444,
+        140,
+        81,
+        24
+      ]
+    },
+    {
+      "id": "pectoralis-minor",
+      "name": "Pectoralis minor",
+      "accept": [
+        "pec minor"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        11
+      ],
+      "box": [
+        445,
+        170,
+        146,
+        20
+      ]
+    },
+    {
+      "id": "rhomboid-major",
+      "name": "Rhomboid major",
+      "accept": [
+        "rhomboideus major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        12,
+        13
+      ],
+      "box": [
+        998,
+        181,
+        98,
+        44
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "breastbone"
+      ],
+      "concept": "sternum",
+      "lines": [
+        14
+      ],
+      "box": [
+        6,
+        208,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "serratus-anterior",
+      "name": "Serratus anterior",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        15,
+        16
+      ],
+      "box": [
+        445,
+        216,
+        83,
+        41
+      ]
+    },
+    {
+      "id": "deltoid",
+      "name": "Deltoid",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        17
+      ],
+      "box": [
+        491,
+        294,
+        71,
+        20
+      ]
+    },
+    {
+      "id": "trapezius",
+      "name": "Trapezius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        18
+      ],
+      "box": [
+        490,
+        414,
+        93,
+        24
+      ]
+    }
+  ]
+}

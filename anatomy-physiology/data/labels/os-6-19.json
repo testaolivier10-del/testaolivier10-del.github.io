@@ -1,0 +1,154 @@
+{
+  "figure": "os-6-19",
+  "labels": [
+    {
+      "id": "epiphysis",
+      "name": "Epiphysis",
+      "accept": [
+        "epiphysis",
+        "proximal epiphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        2
+      ],
+      "box": [
+        347,
+        48,
+        100,
+        26
+      ]
+    },
+    {
+      "id": "metaphysis",
+      "name": "Metaphysis",
+      "accept": [
+        "metaphysis",
+        "proximal metaphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        4
+      ],
+      "box": [
+        339,
+        88,
+        116,
+        25
+      ]
+    },
+    {
+      "id": "epiphyseal-line",
+      "name": "Epiphyseal line",
+      "accept": [
+        "epiphyseal line"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        5,
+        8
+      ],
+      "box": [
+        680,
+        222,
+        112,
+        46
+      ]
+    },
+    {
+      "id": "diaphysis",
+      "name": "Diaphysis",
+      "accept": [
+        "diaphysis",
+        "shaft"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        6
+      ],
+      "box": [
+        346,
+        235,
+        101,
+        25
+      ]
+    },
+    {
+      "id": "epiphyseal-plate",
+      "name": "Epiphyseal plate (growth plate)",
+      "accept": [
+        "epiphyseal plate",
+        "growth plate"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        7,
+        9,
+        10,
+        11
+      ],
+      "box": [
+        0,
+        242,
+        112,
+        100
+      ]
+    },
+    {
+      "id": "metaphysis-distal",
+      "name": "Metaphysis",
+      "accept": [
+        "metaphysis",
+        "distal metaphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        14
+      ],
+      "box": [
+        339,
+        437,
+        116,
+        25
+      ]
+    },
+    {
+      "id": "epiphysis-distal",
+      "name": "Epiphysis",
+      "accept": [
+        "epiphysis",
+        "distal epiphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        16
+      ],
+      "box": [
+        347,
+        485,
+        100,
+        25
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur (thighbone)",
+      "accept": [
+        "femur",
+        "thighbone",
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "lines": [
+        17,
+        18
+      ],
+      "box": [
+        334,
+        540,
+        124,
+        49
+      ]
+    }
+  ]
+}

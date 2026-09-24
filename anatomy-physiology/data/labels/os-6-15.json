@@ -1,0 +1,173 @@
+{
+  "figure": "os-6-15",
+  "labels": [
+    {
+      "id": "articular-cartilage",
+      "name": "Articular cartilage",
+      "accept": [
+        "articular cartilage"
+      ],
+      "concept": "cartilage-example-sites",
+      "box": [
+        922,
+        64,
+        166,
+        94
+      ]
+    },
+    {
+      "id": "epiphyseal-artery-and-vein",
+      "name": "Epiphyseal artery and vein",
+      "accept": [
+        "epiphyseal artery and vein",
+        "epiphyseal artery",
+        "epiphyseal vein",
+        "epiphyseal vessels"
+      ],
+      "concept": null,
+      "box": [
+        80,
+        106,
+        212,
+        144
+      ]
+    },
+    {
+      "id": "metaphyseal-artery-and-vein",
+      "name": "Metaphyseal artery and vein",
+      "accept": [
+        "metaphyseal artery and vein",
+        "metaphyseal artery",
+        "metaphyseal vein",
+        "metaphyseal vessels"
+      ],
+      "concept": null,
+      "box": [
+        80,
+        306,
+        242,
+        144
+      ]
+    },
+    {
+      "id": "periosteum",
+      "name": "Periosteum",
+      "accept": [
+        "periosteum"
+      ],
+      "concept": "bone-membranes",
+      "box": [
+        762,
+        570,
+        212,
+        46
+      ]
+    },
+    {
+      "id": "compact-bone",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "cortical bone"
+      ],
+      "concept": "compact-bone",
+      "box": [
+        762,
+        704,
+        170,
+        94
+      ]
+    },
+    {
+      "id": "nutrient-artery-and-vein",
+      "name": "Nutrient artery and vein",
+      "accept": [
+        "nutrient artery and vein",
+        "nutrient artery",
+        "nutrient vein",
+        "nutrient vessels"
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        74,
+        832,
+        172,
+        144
+      ]
+    },
+    {
+      "id": "nutrient-foramen",
+      "name": "Nutrient foramen",
+      "accept": [
+        "nutrient foramen"
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        76,
+        1032,
+        166,
+        94
+      ]
+    },
+    {
+      "id": "medullary-cavity",
+      "name": "Medullary cavity",
+      "accept": [
+        "medullary cavity",
+        "marrow cavity"
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        762,
+        1086,
+        300,
+        46
+      ]
+    },
+    {
+      "id": "metaphyseal-artery-and-vein-distal",
+      "name": "Metaphyseal artery and vein",
+      "accept": [
+        "metaphyseal artery and vein",
+        "metaphyseal artery",
+        "metaphyseal vein",
+        "metaphyseal vessels"
+      ],
+      "concept": null,
+      "box": [
+        0,
+        1290,
+        290,
+        94
+      ]
+    },
+    {
+      "id": "metaphysis",
+      "name": "Metaphysis",
+      "accept": [
+        "metaphysis"
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        0,
+        1458,
+        220,
+        44
+      ]
+    },
+    {
+      "id": "epiphyseal-line",
+      "name": "Epiphyseal line",
+      "accept": [
+        "epiphyseal line"
+      ],
+      "concept": "epiphyseal-plate",
+      "box": [
+        812,
+        1482,
+        206,
+        96
+      ]
+    }
+  ]
+}

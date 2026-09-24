@@ -1,0 +1,236 @@
+{
+  "figure": "os-11-14",
+  "labels": [
+    {
+      "id": "suboccipital-muscles",
+      "name": "Suboccipital muscles",
+      "accept": [
+        "suboccipitals",
+        "suboccipital"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        658,
+        13,
+        167,
+        22
+      ]
+    },
+    {
+      "id": "splenius-capitis",
+      "name": "Splenius capitis",
+      "accept": [
+        "splenius"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        1
+      ],
+      "box": [
+        273,
+        23,
+        128,
+        22
+      ]
+    },
+    {
+      "id": "splenius-capitis-cut",
+      "name": "Splenius capitis (cut)",
+      "accept": [
+        "splenius capitis",
+        "splenius"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        2,
+        3
+      ],
+      "box": [
+        995,
+        51,
+        98,
+        41
+      ]
+    },
+    {
+      "id": "sternocleidomastoid",
+      "name": "Sternocleidomastoid",
+      "accept": [
+        "scm"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        4
+      ],
+      "box": [
+        246,
+        84,
+        164,
+        19
+      ]
+    },
+    {
+      "id": "levator-scapulae-posterior",
+      "name": "Levator scapulae",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        645,
+        84,
+        79,
+        40
+      ]
+    },
+    {
+      "id": "levator-scapulae",
+      "name": "Levator scapulae",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        7
+      ],
+      "box": [
+        247,
+        114,
+        138,
+        22
+      ]
+    },
+    {
+      "id": "longissimus-capitis",
+      "name": "Longissimus capitis",
+      "accept": [
+        "longissimus"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        8,
+        11
+      ],
+      "box": [
+        995,
+        138,
+        105,
+        41
+      ]
+    },
+    {
+      "id": "trapezius",
+      "name": "Trapezius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        9
+      ],
+      "box": [
+        246,
+        147,
+        84,
+        22
+      ]
+    },
+    {
+      "id": "multifidus-muscles",
+      "name": "Multifidus muscles",
+      "accept": [
+        "multifidus"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        10,
+        12
+      ],
+      "box": [
+        693,
+        155,
+        83,
+        37
+      ]
+    },
+    {
+      "id": "acromion-process",
+      "name": "Acromion process of scapula",
+      "accept": [
+        "acromion",
+        "acromion process",
+        "acromial process"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        13,
+        15,
+        17
+      ],
+      "box": [
+        242,
+        182,
+        90,
+        59
+      ]
+    },
+    {
+      "id": "semispinalis-capitis",
+      "name": "Semispinalis capitis",
+      "accept": [
+        "semispinalis"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        14,
+        18
+      ],
+      "box": [
+        995,
+        199,
+        106,
+        41
+      ]
+    },
+    {
+      "id": "first-thoracic-vertebra",
+      "name": "1st thoracic vertebrae",
+      "accept": [
+        "first thoracic vertebra",
+        "t1",
+        "thoracic vertebra",
+        "1st thoracic vertebra"
+      ],
+      "concept": "vertebral-regions",
+      "lines": [
+        16,
+        19
+      ],
+      "box": [
+        692,
+        218,
+        98,
+        37
+      ]
+    },
+    {
+      "id": "scalenes",
+      "name": "Scalenes",
+      "accept": [
+        "scalene",
+        "scalene muscles"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        20
+      ],
+      "box": [
+        268,
+        266,
+        81,
+        19
+      ]
+    }
+  ]
+}

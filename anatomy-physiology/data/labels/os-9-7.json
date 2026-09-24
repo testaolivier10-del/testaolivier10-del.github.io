@@ -1,0 +1,48 @@
+{
+  "figure": "os-9-7",
+  "labels": [
+    {
+      "id": "epiphyseal-plate",
+      "name": "Epiphyseal plate (temporary hyaline cartilage joint)",
+      "accept": [
+        "epiphyseal plate",
+        "growth plate",
+        "synchondrosis",
+        "epiphyseal cartilage"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "box": [
+        0,
+        225,
+        125,
+        110
+      ]
+    },
+    {
+      "id": "pubic-symphysis",
+      "name": "Pubic symphysis",
+      "accept": [
+        "pubic symphysis",
+        "symphysis",
+        "symphysis pubis"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        5
+      ],
+      "box": [
+        956,
+        383,
+        146,
+        23
+      ]
+    }
+  ]
+}

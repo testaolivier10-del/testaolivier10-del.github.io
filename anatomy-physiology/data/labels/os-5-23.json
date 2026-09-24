@@ -1,0 +1,112 @@
+{
+  "figure": "os-5-23",
+  "labels": [
+    {
+      "id": "head-and-neck",
+      "name": "Head and neck 9%",
+      "accept": [
+        "head and neck",
+        "head and neck 9%",
+        "head",
+        "9%"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "rule-of-nines",
+      "box": [
+        295,
+        35,
+        101,
+        46
+      ]
+    },
+    {
+      "id": "upper-limbs",
+      "name": "Upper limbs 9% each",
+      "accept": [
+        "upper limbs",
+        "upper limb",
+        "upper limbs 9% each",
+        "arm",
+        "arms",
+        "9% each"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "rule-of-nines",
+      "box": [
+        285,
+        205,
+        122,
+        46
+      ]
+    },
+    {
+      "id": "trunk",
+      "name": "Trunk 36%",
+      "accept": [
+        "trunk",
+        "trunk 36%",
+        "36%"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "rule-of-nines",
+      "box": [
+        299,
+        277,
+        111,
+        21
+      ]
+    },
+    {
+      "id": "genitalia",
+      "name": "Genitalia 1%",
+      "accept": [
+        "genitalia",
+        "genitalia 1%",
+        "genital area",
+        "perineum",
+        "1%"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "rule-of-nines",
+      "box": [
+        290,
+        458,
+        130,
+        21
+      ]
+    },
+    {
+      "id": "lower-limbs",
+      "name": "Lower limbs 18% each",
+      "accept": [
+        "lower limbs",
+        "lower limb",
+        "lower limbs 18% each",
+        "legs",
+        "leg",
+        "18% each"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "rule-of-nines",
+      "box": [
+        294,
+        538,
+        122,
+        46
+      ]
+    }
+  ]
+}

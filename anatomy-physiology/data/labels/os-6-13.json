@@ -1,0 +1,228 @@
+{
+  "figure": "os-6-13",
+  "labels": [
+    {
+      "id": "spongy-bone",
+      "name": "Spongy bone",
+      "accept": [
+        "spongy bone",
+        "cancellous bone",
+        "trabecular bone"
+      ],
+      "concept": "spongy-bone",
+      "lines": [
+        0
+      ],
+      "box": [
+        251,
+        34,
+        133,
+        25
+      ]
+    },
+    {
+      "id": "compact-bone",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "cortical bone"
+      ],
+      "concept": "compact-bone",
+      "lines": [
+        1
+      ],
+      "box": [
+        138,
+        224,
+        145,
+        26
+      ]
+    },
+    {
+      "id": "trabeculae",
+      "name": "Trabeculae",
+      "accept": [
+        "trabeculae",
+        "trabecula",
+        "trabeculas"
+      ],
+      "concept": "spongy-bone",
+      "lines": [
+        2
+      ],
+      "box": [
+        402,
+        225,
+        113,
+        21
+      ]
+    },
+    {
+      "id": "lacuna",
+      "name": "Lacuna",
+      "accept": [
+        "lacuna",
+        "lacunae"
+      ],
+      "concept": "osteon",
+      "lines": [
+        3
+      ],
+      "box": [
+        913,
+        339,
+        79,
+        22
+      ]
+    },
+    {
+      "id": "osteocyte",
+      "name": "Osteocyte",
+      "accept": [
+        "osteocyte",
+        "osteocytes"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        4
+      ],
+      "box": [
+        912,
+        425,
+        105,
+        25
+      ]
+    },
+    {
+      "id": "osteoclast",
+      "name": "Osteoclast",
+      "accept": [
+        "osteoclast",
+        "osteoclasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        5
+      ],
+      "box": [
+        912,
+        485,
+        110,
+        21
+      ]
+    },
+    {
+      "id": "osteoblasts",
+      "name": "Osteoblasts aligned along trabeculae of new bone",
+      "accept": [
+        "osteoblasts",
+        "osteoblast"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "box": [
+        912,
+        555,
+        190,
+        70
+      ]
+    },
+    {
+      "id": "canaliculi-openings",
+      "name": "Canaliculi openings on surface",
+      "accept": [
+        "canaliculi openings",
+        "canaliculi",
+        "canaliculus",
+        "canaliculi openings on surface"
+      ],
+      "concept": "osteon",
+      "lines": [
+        9,
+        13,
+        14
+      ],
+      "box": [
+        148,
+        628,
+        108,
+        70
+      ]
+    },
+    {
+      "id": "endosteum",
+      "name": "Endosteum",
+      "accept": [
+        "endosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        10
+      ],
+      "box": [
+        305,
+        628,
+        115,
+        21
+      ]
+    },
+    {
+      "id": "lamellae-trabecula",
+      "name": "Lamellae",
+      "accept": [
+        "lamellae",
+        "lamella"
+      ],
+      "concept": "osteon",
+      "lines": [
+        11
+      ],
+      "box": [
+        443,
+        628,
+        95,
+        21
+      ]
+    },
+    {
+      "id": "canaliculi",
+      "name": "Canaliculi",
+      "accept": [
+        "canaliculi",
+        "canaliculus"
+      ],
+      "concept": "osteon",
+      "lines": [
+        12
+      ],
+      "box": [
+        912,
+        655,
+        101,
+        22
+      ]
+    },
+    {
+      "id": "lamellae",
+      "name": "Lamellae",
+      "accept": [
+        "lamellae",
+        "lamella"
+      ],
+      "concept": "osteon",
+      "lines": [
+        15
+      ],
+      "box": [
+        913,
+        707,
+        95,
+        21
+      ]
+    }
+  ]
+}

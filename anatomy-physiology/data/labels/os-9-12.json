@@ -1,0 +1,308 @@
+{
+  "figure": "os-9-12",
+  "labels": [
+    {
+      "id": "flexion-shoulder",
+      "name": "Flexion",
+      "accept": [
+        "flexion",
+        "flexion of the shoulder",
+        "shoulder flexion"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        3
+      ],
+      "box": [
+        226,
+        78,
+        66,
+        19
+      ]
+    },
+    {
+      "id": "extension-shoulder",
+      "name": "Extension",
+      "accept": [
+        "extension",
+        "extension of the shoulder",
+        "shoulder extension"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        4
+      ],
+      "box": [
+        401,
+        78,
+        86,
+        19
+      ]
+    },
+    {
+      "id": "flexion-knee",
+      "name": "Flexion",
+      "accept": [
+        "flexion",
+        "flexion of the knee",
+        "knee flexion"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        11
+      ],
+      "box": [
+        31,
+        323,
+        65,
+        19
+      ]
+    },
+    {
+      "id": "extension-knee",
+      "name": "Extension",
+      "accept": [
+        "extension",
+        "extension of the knee",
+        "knee extension"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        14
+      ],
+      "box": [
+        620,
+        435,
+        86,
+        19
+      ]
+    },
+    {
+      "id": "extension-neck",
+      "name": "Extension",
+      "accept": [
+        "extension",
+        "extension of the neck",
+        "neck extension"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        0
+      ],
+      "box": [
+        901,
+        52,
+        86,
+        19
+      ]
+    },
+    {
+      "id": "hyperextension-neck",
+      "name": "Extension",
+      "accept": [
+        "extension",
+        "hyperextension",
+        "hyperextension of the neck"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        1
+      ],
+      "box": [
+        715,
+        74,
+        86,
+        19
+      ]
+    },
+    {
+      "id": "flexion-neck",
+      "name": "Flexion",
+      "accept": [
+        "flexion",
+        "flexion of the neck",
+        "neck flexion"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        5
+      ],
+      "box": [
+        1026,
+        78,
+        65,
+        19
+      ]
+    },
+    {
+      "id": "extension-vertebral-column",
+      "name": "Extension",
+      "accept": [
+        "extension",
+        "extension of the vertebral column",
+        "trunk extension"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        18
+      ],
+      "box": [
+        206,
+        638,
+        86,
+        18
+      ]
+    },
+    {
+      "id": "hyperextension-vertebral-column",
+      "name": "Extension",
+      "accept": [
+        "extension",
+        "hyperextension",
+        "hyperextension of the vertebral column"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        37
+      ],
+      "box": [
+        0,
+        912,
+        86,
+        19
+      ]
+    },
+    {
+      "id": "flexion-vertebral-column",
+      "name": "Flexion",
+      "accept": [
+        "flexion",
+        "flexion of the vertebral column",
+        "trunk flexion"
+      ],
+      "concept": "flexion-extension",
+      "lines": [
+        38
+      ],
+      "box": [
+        197,
+        912,
+        66,
+        19
+      ]
+    },
+    {
+      "id": "abduction",
+      "name": "Abduction",
+      "accept": [
+        "abduction",
+        "abduct"
+      ],
+      "concept": "abduction-adduction",
+      "lines": [
+        30
+      ],
+      "box": [
+        309,
+        844,
+        88,
+        18
+      ]
+    },
+    {
+      "id": "adduction",
+      "name": "Adduction",
+      "accept": [
+        "adduction",
+        "adduct"
+      ],
+      "concept": "abduction-adduction",
+      "lines": [
+        43
+      ],
+      "box": [
+        335,
+        989,
+        88,
+        18
+      ]
+    },
+    {
+      "id": "circumduction",
+      "name": "Circumduction",
+      "accept": [
+        "circumduction",
+        "circumduct"
+      ],
+      "concept": "rotation-circumduction",
+      "lines": [
+        42
+      ],
+      "box": [
+        598,
+        988,
+        121,
+        19
+      ]
+    },
+    {
+      "id": "rotation",
+      "name": "Rotation",
+      "accept": [
+        "rotation",
+        "rotation of the head",
+        "rotation of the neck"
+      ],
+      "concept": "rotation-circumduction",
+      "lines": [
+        19
+      ],
+      "box": [
+        736,
+        688,
+        74,
+        19
+      ]
+    },
+    {
+      "id": "lateral-rotation",
+      "name": "Lateral rotation",
+      "accept": [
+        "lateral rotation",
+        "external rotation",
+        "outward rotation"
+      ],
+      "concept": "rotation-circumduction",
+      "lines": [
+        40,
+        41
+      ],
+      "box": [
+        1014,
+        939,
+        68,
+        37
+      ]
+    },
+    {
+      "id": "medial-rotation",
+      "name": "Medial rotation",
+      "accept": [
+        "medial rotation",
+        "internal rotation",
+        "inward rotation"
+      ],
+      "concept": "rotation-circumduction",
+      "lines": [
+        46,
+        47
+      ],
+      "box": [
+        1014,
+        1042,
+        68,
+        37
+      ]
+    }
+  ]
+}

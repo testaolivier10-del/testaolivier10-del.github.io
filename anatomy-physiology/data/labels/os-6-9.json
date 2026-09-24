@@ -1,0 +1,63 @@
+{
+  "figure": "os-6-9",
+  "labels": [
+    {
+      "id": "compact-bone",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "cortical bone"
+      ],
+      "concept": "compact-bone",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        717,
+        113,
+        96,
+        46
+      ]
+    },
+    {
+      "id": "periosteum",
+      "name": "Periosteum",
+      "accept": [
+        "periosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        2
+      ],
+      "box": [
+        0,
+        287,
+        112,
+        21
+      ]
+    },
+    {
+      "id": "spongy-bone",
+      "name": "Spongy bone (diploë)",
+      "accept": [
+        "spongy bone",
+        "diploe",
+        "diploë",
+        "spongy bone diploe",
+        "cancellous bone"
+      ],
+      "concept": "spongy-bone",
+      "lines": [
+        3,
+        4
+      ],
+      "box": [
+        684,
+        355,
+        130,
+        50
+      ]
+    }
+  ]
+}

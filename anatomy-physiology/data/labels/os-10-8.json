@@ -1,0 +1,147 @@
+{
+  "figure": "os-10-8",
+  "labels": [
+    {
+      "id": "ap-arrives-nmj",
+      "name": "An action potential arrives at neuromuscular junction",
+      "accept": [
+        "an action potential arrives at neuromuscular junction",
+        "action potential arrives",
+        "action potential"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "nmj",
+      "box": [
+        548,
+        9,
+        276,
+        50
+      ]
+    },
+    {
+      "id": "ach-released",
+      "name": "ACh is released, binds to receptors, and opens sodium ion channels, leading to an action potential in sarcolemma",
+      "accept": [
+        "ach is released",
+        "ach release",
+        "acetylcholine release",
+        "end plate potential"
+      ],
+      "lines": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "concept": "acetylcholine",
+      "box": [
+        548,
+        182,
+        292,
+        100
+      ]
+    },
+    {
+      "id": "ap-t-tubules",
+      "name": "Action potential travels along the T-tubules",
+      "accept": [
+        "action potential travels along the t-tubules",
+        "action potential in the t-tubules",
+        "t-tubules",
+        "t tubules"
+      ],
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "concept": "t-tubule",
+      "box": [
+        548,
+        331,
+        278,
+        46
+      ]
+    },
+    {
+      "id": "calcium",
+      "name": "Calcium",
+      "accept": [
+        "calcium",
+        "calcium ions",
+        "ca2+",
+        "ca"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "calcium-release",
+      "box": [
+        29,
+        461,
+        87,
+        22
+      ]
+    },
+    {
+      "id": "troponin",
+      "name": "Troponin",
+      "accept": [
+        "troponin"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "thin-filament",
+      "box": [
+        58,
+        583,
+        94,
+        25
+      ]
+    },
+    {
+      "id": "filament-interaction",
+      "name": "Thick and thin filament interaction leads to muscle contraction",
+      "accept": [
+        "thick and thin filament interaction leads to muscle contraction",
+        "filament interaction",
+        "contraction"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "excitation-contraction-coupling",
+      "box": [
+        161,
+        789,
+        322,
+        46
+      ]
+    },
+    {
+      "id": "muscle-shortens",
+      "name": "Muscle shortens and produces tension",
+      "accept": [
+        "muscle shortens and produces tension",
+        "muscle shortens",
+        "contraction"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "excitation-contraction-coupling",
+      "box": [
+        542,
+        994,
+        203,
+        50
+      ]
+    }
+  ]
+}

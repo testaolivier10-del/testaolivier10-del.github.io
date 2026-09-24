@@ -1,0 +1,660 @@
+{
+  "figure": "os-11-29",
+  "labels": [
+    {
+      "id": "quadratus-lumborum",
+      "name": "Quadratus lumborum",
+      "accept": [],
+      "concept": "abdominal-wall",
+      "lines": [
+        0,
+        2
+      ],
+      "box": [
+        5,
+        13,
+        124,
+        51
+      ]
+    },
+    {
+      "id": "psoas-major",
+      "name": "Psoas major",
+      "accept": [
+        "psoas"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        1
+      ],
+      "box": [
+        338,
+        23,
+        146,
+        29
+      ]
+    },
+    {
+      "id": "iliacus",
+      "name": "Iliacus",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        3
+      ],
+      "box": [
+        6,
+        91,
+        78,
+        24
+      ]
+    },
+    {
+      "id": "pectineus",
+      "name": "Pectineus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        4
+      ],
+      "box": [
+        338,
+        113,
+        115,
+        24
+      ]
+    },
+    {
+      "id": "crest-of-ilium",
+      "name": "Crest of ilium",
+      "accept": [
+        "iliac crest"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        5,
+        179,
+        97,
+        51
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [],
+      "concept": "vertebral-regions",
+      "lines": [
+        7
+      ],
+      "box": [
+        337,
+        219,
+        95,
+        24
+      ]
+    },
+    {
+      "id": "adductor-longus",
+      "name": "Adductor longus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        8
+      ],
+      "box": [
+        337,
+        263,
+        186,
+        29
+      ]
+    },
+    {
+      "id": "tensor-fascia-latae",
+      "name": "Tensor fascia latae",
+      "accept": [
+        "tensor fasciae latae",
+        "tfl"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        9,
+        11
+      ],
+      "box": [
+        4,
+        268,
+        134,
+        51
+      ]
+    },
+    {
+      "id": "gracilis",
+      "name": "Gracilis",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        10
+      ],
+      "box": [
+        337,
+        294,
+        92,
+        24
+      ]
+    },
+    {
+      "id": "adductor-magnus",
+      "name": "Adductor magnus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        12,
+        13
+      ],
+      "box": [
+        337,
+        327,
+        110,
+        56
+      ]
+    },
+    {
+      "id": "rectus-femoris",
+      "name": "Rectus femoris",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        14,
+        15
+      ],
+      "box": [
+        4,
+        362,
+        92,
+        51
+      ]
+    },
+    {
+      "id": "sartorius",
+      "name": "Sartorius",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        16
+      ],
+      "box": [
+        337,
+        391,
+        110,
+        24
+      ]
+    },
+    {
+      "id": "vastus-medialis",
+      "name": "Vastus medialis",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        17
+      ],
+      "box": [
+        337,
+        432,
+        179,
+        24
+      ]
+    },
+    {
+      "id": "vastus-lateralis",
+      "name": "Vastus lateralis",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        18,
+        19
+      ],
+      "box": [
+        5,
+        437,
+        95,
+        51
+      ]
+    },
+    {
+      "id": "quadriceps-tendon",
+      "name": "Quadriceps tendon (or patellar tendon)",
+      "accept": [
+        "quadriceps tendon",
+        "patellar tendon"
+      ],
+      "concept": "anterior-thigh",
+      "lines": [
+        20,
+        21
+      ],
+      "box": [
+        337,
+        465,
+        215,
+        56
+      ]
+    },
+    {
+      "id": "patellar-ligament",
+      "name": "Patellar ligament",
+      "accept": [
+        "patellar tendon"
+      ],
+      "concept": "knee-shoulder",
+      "lines": [
+        22
+      ],
+      "box": [
+        338,
+        542,
+        190,
+        29
+      ]
+    },
+    {
+      "id": "gluteus-medius-cut",
+      "name": "Gluteus medius (cut)",
+      "accept": [
+        "gluteus medius"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        25,
+        27
+      ],
+      "box": [
+        950,
+        732,
+        143,
+        57
+      ]
+    },
+    {
+      "id": "crest-of-ilium-posterior",
+      "name": "Crest of ilium",
+      "accept": [
+        "iliac crest"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        26
+      ],
+      "box": [
+        539,
+        736,
+        152,
+        24
+      ]
+    },
+    {
+      "id": "sacrum-posterior",
+      "name": "Sacrum",
+      "accept": [],
+      "concept": "vertebral-regions",
+      "lines": [
+        29
+      ],
+      "box": [
+        539,
+        775,
+        95,
+        24
+      ]
+    },
+    {
+      "id": "iliac-crest",
+      "name": "Iliac crest",
+      "accept": [
+        "crest of ilium"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        30,
+        33
+      ],
+      "box": [
+        88,
+        791,
+        64,
+        51
+      ]
+    },
+    {
+      "id": "gluteus-minimus",
+      "name": "Gluteus minimus",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        31,
+        34
+      ],
+      "box": [
+        950,
+        799,
+        101,
+        51
+      ]
+    },
+    {
+      "id": "pectineus-deep",
+      "name": "Pectineus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        32
+      ],
+      "box": [
+        371,
+        816,
+        116,
+        24
+      ]
+    },
+    {
+      "id": "obturator-internus",
+      "name": "Obturator internus",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        35,
+        38
+      ],
+      "box": [
+        538,
+        846,
+        115,
+        50
+      ]
+    },
+    {
+      "id": "pubis",
+      "name": "Pubis",
+      "accept": [
+        "pubic bone"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        36
+      ],
+      "box": [
+        371,
+        861,
+        71,
+        24
+      ]
+    },
+    {
+      "id": "piriformis",
+      "name": "Piriformis",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        37
+      ],
+      "box": [
+        951,
+        865,
+        111,
+        24
+      ]
+    },
+    {
+      "id": "obturator-externus",
+      "name": "Obturator externus",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        39,
+        42
+      ],
+      "box": [
+        368,
+        904,
+        115,
+        51
+      ]
+    },
+    {
+      "id": "superior-gemellus",
+      "name": "Superior gemellus",
+      "accept": [
+        "gemellus superior"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        40,
+        43
+      ],
+      "box": [
+        950,
+        908,
+        108,
+        56
+      ]
+    },
+    {
+      "id": "gluteus-maximus-cut",
+      "name": "Gluteus maximus (cut)",
+      "accept": [
+        "gluteus maximus"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        41,
+        44,
+        45
+      ],
+      "box": [
+        539,
+        917,
+        108,
+        82
+      ]
+    },
+    {
+      "id": "inferior-gemellus",
+      "name": "Inferior gemellus",
+      "accept": [
+        "gemellus inferior"
+      ],
+      "concept": "gluteal-muscles",
+      "lines": [
+        46,
+        48
+      ],
+      "box": [
+        950,
+        976,
+        108,
+        55
+      ]
+    },
+    {
+      "id": "adductor-brevis",
+      "name": "Adductor brevis",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        47,
+        49
+      ],
+      "box": [
+        368,
+        977,
+        110,
+        50
+      ]
+    },
+    {
+      "id": "adductor-longus-deep",
+      "name": "Adductor longus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        50,
+        53
+      ],
+      "box": [
+        368,
+        1037,
+        110,
+        56
+      ]
+    },
+    {
+      "id": "adductor-group",
+      "name": "Adductor group",
+      "accept": [
+        "adductors",
+        "adductor muscles",
+        "hip adductors"
+      ],
+      "concept": "medial-thigh",
+      "lines": [
+        51,
+        54
+      ],
+      "box": [
+        538,
+        1037,
+        110,
+        56
+      ]
+    },
+    {
+      "id": "obturator-externus-posterior",
+      "name": "Obturator externus",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        52,
+        56
+      ],
+      "box": [
+        950,
+        1047,
+        114,
+        51
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "lines": [
+        55
+      ],
+      "box": [
+        89,
+        1070,
+        81,
+        24
+      ]
+    },
+    {
+      "id": "adductor-magnus-deep",
+      "name": "Adductor magnus",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        57,
+        60
+      ],
+      "box": [
+        363,
+        1103,
+        110,
+        55
+      ]
+    },
+    {
+      "id": "gracilis-posterior",
+      "name": "Gracilis",
+      "accept": [],
+      "concept": "medial-thigh",
+      "lines": [
+        58
+      ],
+      "box": [
+        539,
+        1107,
+        92,
+        24
+      ]
+    },
+    {
+      "id": "quadratus-femoris",
+      "name": "Quadratus femoris",
+      "accept": [],
+      "concept": "gluteal-muscles",
+      "lines": [
+        59,
+        61
+      ],
+      "box": [
+        949,
+        1118,
+        125,
+        51
+      ]
+    },
+    {
+      "id": "semimembranosus",
+      "name": "Semimembranosus",
+      "accept": [],
+      "concept": "posterior-thigh",
+      "lines": [
+        62
+      ],
+      "box": [
+        520,
+        1165,
+        219,
+        24
+      ]
+    },
+    {
+      "id": "biceps-femoris",
+      "name": "Biceps femoris",
+      "accept": [],
+      "concept": "posterior-thigh",
+      "lines": [
+        63,
+        65
+      ],
+      "box": [
+        949,
+        1191,
+        91,
+        51
+      ]
+    },
+    {
+      "id": "semitendinosus",
+      "name": "Semitendinosus",
+      "accept": [],
+      "concept": "posterior-thigh",
+      "lines": [
+        64
+      ],
+      "box": [
+        520,
+        1211,
+        183,
+        24
+      ]
+    }
+  ]
+}

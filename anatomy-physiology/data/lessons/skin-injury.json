@@ -1,0 +1,47 @@
+{
+  "topic": "skin-injury",
+  "hook": "<p>Mr. Okafor, 45, is pulled from a kitchen fire with burns over the front of his chest and abdomen and both arms. He has not lost a drop of blood, yet four hours later his blood pressure is falling, his heart is racing and he has made almost no urine. The paramedic estimated the burned area in seconds and started fluids through a vein on scene. To see why a burn drains the blood, and how that estimate was made, you need to know how deep burns go and what burned skin can no longer do.</p>",
+  "prereq": [
+    {
+      "q": "Which layer of the skin has no blood vessels?",
+      "options": ["Epidermis", "Papillary layer of the dermis", "Reticular layer of the dermis"],
+      "correct": 0,
+      "why": "The epidermis is avascular and is fed by diffusion from the dermis. An injury that stays in it does not bleed.",
+      "review": "skin-layers"
+    },
+    {
+      "q": "What happens to the walls of the smallest vessels during inflammation?",
+      "options": ["They become less permeable", "They become leakier, so fluid and proteins move into the tissue", "They close completely"],
+      "correct": 1,
+      "why": "Histamine and other chemical messengers open gaps between endothelial cells, so water and proteins leak from plasma into the interstitial fluid and the tissue swells.",
+      "review": "tissue-membranes-repair"
+    },
+    {
+      "q": "What keeps water from leaking out through intact skin?",
+      "options": ["The dermal blood vessels", "The lipid sheets between the dead cells of the stratum corneum", "The fat of the hypodermis"],
+      "correct": 1,
+      "why": "The lipid sheets from lamellar granules seal the gaps between the keratin-filled cells of the stratum corneum, so water stays in.",
+      "review": "skin-functions"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-5-23",
+    "caption": "The rule of nines in an adult. Hide the labels and give the share of body surface for each region."
+  },
+  "chain": [
+    { "cause": "A large partial- and full-thickness burn destroys the stratum corneum and damages the capillaries of the dermis.", "effect": "Water evaporates freely from the wound, and damaged cells and mast cells release histamine and other chemical messengers." },
+    { "cause": "The chemical messengers reach capillaries under the burn and, in a large burn, throughout the body.", "effect": "The capillaries become leaky, and water, salts and proteins move from the plasma into the interstitial fluid." },
+    { "cause": "Fluid leaves the vessels by evaporation and leakage faster than it is replaced.", "effect": "Blood volume falls, so less blood returns to the heart." },
+    { "cause": "Less blood returns to the heart and less is pumped into the arteries.", "effect": "Blood pressure falls, the heart rate rises to compensate, and blood flow to the kidneys and urine output fall." }
+  ],
+  "misconception": {
+    "wrong": "A burn that does not hurt must be a mild burn.",
+    "right": "A full-thickness burn destroys the whole dermis, including its nerve endings, so its center is painless, dry and leathery. It is the most serious kind of burn and cannot regrow epidermis on its own. The burns that hurt most are partial-thickness burns, whose nerve endings are irritated but still alive."
+  },
+  "check": ["anp-skin-injury-1", "anp-skin-injury-2", "anp-skin-injury-6", "anp-skin-injury-9", "anp-skin-injury-10", "anp-skin-injury-12", "anp-skin-injury-17", "anp-skin-injury-18"],
+  "summary": "<p>Whether skin heals without a scar depends on what survives: basal cells for epidermal wounds, follicle and duct epithelium for partial-thickness burns, nothing for full-thickness burns. Wounds heal through a clot, inflammation, granulation tissue with new epidermis and wound contraction, then remodeling; closed edges heal by primary union, open wounds by secondary union, and a keloid is a scar that overgrows the wound. Burns are superficial (epidermis), partial-thickness (into the dermis, blistered, painful), full-thickness (through the dermis, leathery, painless) or fourth-degree (into muscle or bone). The rule of nines estimates the burned area in adults (head 9, each arm 9, trunk 18 front and 18 back, each leg 18, genital area 1), counting only partial- and full-thickness burns. Large burns lose fluid by evaporation and leaky capillaries, lowering blood volume and pressure. UV-driven mutations cause basal cell carcinoma, squamous cell carcinoma and melanoma, which spreads earliest. Pressure injuries, acne, stretch marks, calluses and corns, albinism, vitiligo and eczema each trace to one structure of the skin.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-30", "label": "NREMT: Soft-tissue trauma and burns" },
+    { "href": "/nremt/study-notes.html#chapter-29", "label": "NREMT: Bleeding control" }
+  ]
+}

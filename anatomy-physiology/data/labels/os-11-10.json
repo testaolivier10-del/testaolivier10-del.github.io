@@ -1,0 +1,69 @@
+{
+  "figure": "os-11-10",
+  "labels": [
+    {
+      "id": "lateral-pterygoid",
+      "name": "Lateral pterygoid",
+      "accept": [],
+      "concept": "mastication-muscles",
+      "lines": [
+        0,
+        2
+      ],
+      "box": [
+        1004,
+        11,
+        91,
+        45
+      ]
+    },
+    {
+      "id": "temporalis",
+      "name": "Temporalis",
+      "accept": [
+        "temporal muscle"
+      ],
+      "concept": "mastication-muscles",
+      "lines": [
+        1
+      ],
+      "box": [
+        2,
+        32,
+        95,
+        25
+      ]
+    },
+    {
+      "id": "medial-pterygoid",
+      "name": "Medial pterygoid",
+      "accept": [],
+      "concept": "mastication-muscles",
+      "lines": [
+        12,
+        14
+      ],
+      "box": [
+        1004,
+        339,
+        91,
+        45
+      ]
+    },
+    {
+      "id": "masseter",
+      "name": "Masseter",
+      "accept": [],
+      "concept": "mastication-muscles",
+      "lines": [
+        19
+      ],
+      "box": [
+        3,
+        417,
+        84,
+        20
+      ]
+    }
+  ]
+}

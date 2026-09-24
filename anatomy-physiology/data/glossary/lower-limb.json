@@ -1,0 +1,32 @@
+{
+  "pelvic-girdle": {
+    "def": "The two hip bones (coxal bones), which attach the lower limbs to the trunk. Each forms from the ilium, ischium and pubis, fused at the acetabulum. The hip bones meet the sacrum at the back and each other at the pubic symphysis; with the sacrum and coccyx they make the bony pelvis.",
+    "roots": [["cox-", "hip"], ["pelvis", "basin"], ["ilium", "flank"], ["acetabulum", "vinegar cup"], ["obturare", "to stop up"]],
+    "say": "IL-ee-um; IS-kee-um; PYOO-bis; as-eh-TAB-yoo-lum"
+  },
+  "pelvis-sex-differences": {
+    "def": "On average, the female pelvis is lighter, wider and shallower than the male pelvis, with a round pelvic inlet, a wide subpubic angle (about 80 to 90 degrees or more) and a shorter, wider sacrum. The pelvic brim divides the greater pelvis above from the lesser pelvis below.",
+    "roots": [["sub-", "below"], ["pubic", "of the pubis"]],
+    "say": ""
+  },
+  "femur": {
+    "def": "The thigh bone, the longest and strongest bone in the body. Its head fits the acetabulum on an angled neck; the greater and lesser trochanters anchor hip muscles, the linea aspera runs down its back, and its medial and lateral condyles rest on the tibia.",
+    "roots": [["femur", "thigh"], ["trochanter", "runner"], ["linea aspera", "rough line"]],
+    "say": "FEE-mur; troh-KAN-ter; LIN-ee-uh AS-per-uh"
+  },
+  "patella": {
+    "def": "The kneecap: a triangular sesamoid bone, the largest in the body, inside the tendon of the large muscle group on the front of the thigh. It glides on the front of the femur and gives that muscle more leverage.",
+    "roots": [["patella", "small dish"]],
+    "say": "puh-TEL-uh"
+  },
+  "tibia-fibula": {
+    "def": "The two leg bones. The tibia is medial and carries almost all the weight; it has two condyles at the knee, the tibial tuberosity and the medial malleolus. The thin fibula is lateral, is not part of the knee, and ends in the lateral malleolus.",
+    "roots": [["tibia", "shinbone, flute"], ["fibula", "clasp, pin"], ["malleolus", "little hammer"]],
+    "say": "TIB-ee-uh; FIB-yoo-luh; muh-LEE-oh-lus"
+  },
+  "foot-bones": {
+    "def": "The 26 bones of the ankle and foot: 7 tarsals (talus, calcaneus, navicular, cuboid and three cuneiforms), 5 metatarsals and 14 phalanges (two in the big toe, the hallux). They form longitudinal and transverse arches held up in part by the plantar aponeurosis.",
+    "roots": [["tars-", "ankle"], ["calc-", "heel"], ["navicul-", "little boat"], ["cune-", "wedge"], ["hallux", "big toe"], ["plant-", "sole"]],
+    "say": "TAY-lus; kal-KAY-nee-us; nuh-VIK-yoo-lur; kyoo-NEE-ih-form"
+  }
+}

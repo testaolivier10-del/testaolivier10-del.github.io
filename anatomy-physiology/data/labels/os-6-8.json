@@ -1,0 +1,211 @@
+{
+  "figure": "os-6-8",
+  "labels": [
+    {
+      "id": "endosteum-inset",
+      "name": "Endosteum",
+      "accept": [
+        "endosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        0
+      ],
+      "box": [
+        787,
+        144,
+        116,
+        21
+      ]
+    },
+    {
+      "id": "periosteum-inset",
+      "name": "Periosteum",
+      "accept": [
+        "periosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        1
+      ],
+      "box": [
+        185,
+        196,
+        116,
+        21
+      ]
+    },
+    {
+      "id": "endosteum",
+      "name": "Endosteum",
+      "accept": [
+        "endosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        2
+      ],
+      "box": [
+        581,
+        299,
+        116,
+        21
+      ]
+    },
+    {
+      "id": "osteoclast",
+      "name": "Osteoclast",
+      "accept": [
+        "osteoclast",
+        "osteoclasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        3
+      ],
+      "box": [
+        580,
+        334,
+        111,
+        21
+      ]
+    },
+    {
+      "id": "periosteum-fibrous-layer",
+      "name": "Periosteum (fibrous layer)",
+      "accept": [
+        "fibrous layer",
+        "fibrous layer of periosteum",
+        "periosteum fibrous layer",
+        "outer fibrous layer",
+        "fibrous periosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        4,
+        6
+      ],
+      "box": [
+        0,
+        341,
+        137,
+        50
+      ]
+    },
+    {
+      "id": "osteocyte-in-lacuna",
+      "name": "Osteocyte in lacuna",
+      "accept": [
+        "osteocyte in lacuna",
+        "osteocyte",
+        "osteocyte in a lacuna"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        5,
+        8
+      ],
+      "box": [
+        398,
+        355,
+        106,
+        46
+      ]
+    },
+    {
+      "id": "bone-matrix",
+      "name": "Bone matrix",
+      "accept": [
+        "bone matrix",
+        "matrix"
+      ],
+      "concept": "bone-matrix",
+      "lines": [
+        7
+      ],
+      "box": [
+        581,
+        369,
+        123,
+        21
+      ]
+    },
+    {
+      "id": "osteocyte",
+      "name": "Osteocyte",
+      "accept": [
+        "osteocyte",
+        "osteocytes"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        9
+      ],
+      "box": [
+        580,
+        402,
+        106,
+        25
+      ]
+    },
+    {
+      "id": "osteogenic-cell",
+      "name": "Osteogenic cell",
+      "accept": [
+        "osteogenic cell",
+        "osteoprogenitor cell",
+        "osteogenic cells"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        10
+      ],
+      "box": [
+        580,
+        434,
+        154,
+        26
+      ]
+    },
+    {
+      "id": "periosteum-cellular-layer",
+      "name": "Periosteum (cellular layer)",
+      "accept": [
+        "cellular layer",
+        "cellular layer of periosteum",
+        "periosteum cellular layer",
+        "inner cellular layer",
+        "osteogenic layer"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        11,
+        12
+      ],
+      "box": [
+        0,
+        439,
+        140,
+        51
+      ]
+    },
+    {
+      "id": "osteoblast",
+      "name": "Osteoblast",
+      "accept": [
+        "osteoblast",
+        "osteoblasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        13
+      ],
+      "box": [
+        580,
+        477,
+        112,
+        21
+      ]
+    }
+  ]
+}

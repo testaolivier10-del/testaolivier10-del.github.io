@@ -1,0 +1,77 @@
+{
+  "figure": "os-10-13",
+  "labels": [
+    {
+      "id": "concentric-contraction",
+      "name": "Muscle contracts (concentric contraction)",
+      "accept": [
+        "muscle contracts (concentric contraction)",
+        "concentric contraction",
+        "concentric",
+        "isotonic concentric contraction",
+        "concentric isotonic contraction",
+        "shortening contraction"
+      ],
+      "lines": [
+        1,
+        3,
+        5,
+        6
+      ],
+      "concept": "contraction-types",
+      "box": [
+        143,
+        77,
+        109,
+        85
+      ]
+    },
+    {
+      "id": "eccentric-contraction",
+      "name": "Muscle elongates (eccentric contraction)",
+      "accept": [
+        "muscle elongates (eccentric contraction)",
+        "eccentric contraction",
+        "eccentric",
+        "isotonic eccentric contraction",
+        "eccentric isotonic contraction",
+        "lengthening contraction"
+      ],
+      "lines": [
+        16,
+        18,
+        19,
+        20
+      ],
+      "concept": "contraction-types",
+      "box": [
+        149,
+        462,
+        110,
+        85
+      ]
+    },
+    {
+      "id": "isometric-contraction",
+      "name": "Muscle contracts (isometric contraction)",
+      "accept": [
+        "muscle contracts (isometric contraction)",
+        "isometric contraction",
+        "isometric"
+      ],
+      "lines": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "concept": "contraction-types",
+      "box": [
+        145,
+        852,
+        110,
+        86
+      ]
+    }
+  ]
+}

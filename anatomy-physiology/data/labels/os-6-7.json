@@ -1,0 +1,290 @@
+{
+  "figure": "os-6-7",
+  "labels": [
+    {
+      "id": "articular-cartilage",
+      "name": "Articular cartilage",
+      "accept": [
+        "articular cartilage"
+      ],
+      "concept": "cartilage-example-sites",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        861,
+        17,
+        241,
+        34
+      ]
+    },
+    {
+      "id": "proximal-epiphysis",
+      "name": "Proximal epiphysis",
+      "accept": [
+        "proximal epiphysis",
+        "epiphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        2,
+        3
+      ],
+      "box": [
+        0,
+        87,
+        134,
+        67
+      ]
+    },
+    {
+      "id": "metaphysis",
+      "name": "Metaphysis",
+      "accept": [
+        "metaphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        4
+      ],
+      "box": [
+        0,
+        251,
+        160,
+        34
+      ]
+    },
+    {
+      "id": "spongy-bone",
+      "name": "Spongy bone",
+      "accept": [
+        "spongy bone",
+        "cancellous bone",
+        "trabecular bone"
+      ],
+      "concept": "spongy-bone",
+      "box": [
+        697,
+        262,
+        190,
+        36
+      ]
+    },
+    {
+      "id": "epiphyseal-line",
+      "name": "Epiphyseal line",
+      "accept": [
+        "epiphyseal line"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        6,
+        7
+      ],
+      "box": [
+        696,
+        338,
+        213,
+        34
+      ]
+    },
+    {
+      "id": "red-bone-marrow",
+      "name": "Red bone marrow",
+      "accept": [
+        "red bone marrow",
+        "red marrow"
+      ],
+      "concept": "bone-marrow",
+      "lines": [
+        8,
+        9,
+        10
+      ],
+      "box": [
+        696,
+        409,
+        250,
+        28
+      ]
+    },
+    {
+      "id": "medullary-cavity",
+      "name": "Medullary cavity",
+      "accept": [
+        "medullary cavity",
+        "marrow cavity"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        11,
+        12
+      ],
+      "box": [
+        696,
+        481,
+        227,
+        34
+      ]
+    },
+    {
+      "id": "compact-bone",
+      "name": "Compact bone",
+      "accept": [
+        "compact bone",
+        "cortical bone"
+      ],
+      "concept": "compact-bone",
+      "box": [
+        697,
+        545,
+        202,
+        38
+      ]
+    },
+    {
+      "id": "endosteum",
+      "name": "Endosteum",
+      "accept": [
+        "endosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        13
+      ],
+      "box": [
+        696,
+        856,
+        162,
+        28
+      ]
+    },
+    {
+      "id": "yellow-bone-marrow",
+      "name": "Yellow bone marrow",
+      "accept": [
+        "yellow bone marrow",
+        "yellow marrow"
+      ],
+      "concept": "bone-marrow",
+      "lines": [
+        14,
+        15,
+        16
+      ],
+      "box": [
+        695,
+        920,
+        282,
+        28
+      ]
+    },
+    {
+      "id": "diaphysis",
+      "name": "Diaphysis",
+      "accept": [
+        "diaphysis",
+        "shaft"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        17
+      ],
+      "box": [
+        0,
+        932,
+        139,
+        34
+      ]
+    },
+    {
+      "id": "periosteum",
+      "name": "Periosteum",
+      "accept": [
+        "periosteum"
+      ],
+      "concept": "bone-membranes",
+      "lines": [
+        18
+      ],
+      "box": [
+        696,
+        1006,
+        162,
+        28
+      ]
+    },
+    {
+      "id": "nutrient-artery",
+      "name": "Nutrient artery",
+      "accept": [
+        "nutrient artery"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        19
+      ],
+      "box": [
+        696,
+        1176,
+        202,
+        34
+      ]
+    },
+    {
+      "id": "metaphysis-distal",
+      "name": "Metaphysis",
+      "accept": [
+        "metaphysis",
+        "distal metaphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        20
+      ],
+      "box": [
+        0,
+        1465,
+        160,
+        34
+      ]
+    },
+    {
+      "id": "distal-epiphysis",
+      "name": "Distal epiphysis",
+      "accept": [
+        "distal epiphysis",
+        "epiphysis"
+      ],
+      "concept": "long-bone-parts",
+      "lines": [
+        21,
+        22
+      ],
+      "box": [
+        0,
+        1690,
+        134,
+        68
+      ]
+    },
+    {
+      "id": "articular-cartilage-distal",
+      "name": "Articular cartilage",
+      "accept": [
+        "articular cartilage"
+      ],
+      "concept": "cartilage-example-sites",
+      "lines": [
+        23
+      ],
+      "box": [
+        694,
+        1778,
+        245,
+        34
+      ]
+    }
+  ]
+}

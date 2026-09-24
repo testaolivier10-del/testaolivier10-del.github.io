@@ -1,0 +1,84 @@
+{
+  "figure": "os-6-11",
+  "labels": [
+    {
+      "id": "osteocyte",
+      "name": "Osteocyte",
+      "accept": [
+        "osteocyte",
+        "osteocytes"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        0,
+        4,
+        8
+      ],
+      "box": [
+        0,
+        494,
+        123,
+        75
+      ]
+    },
+    {
+      "id": "osteoblast",
+      "name": "Osteoblast",
+      "accept": [
+        "osteoblast",
+        "osteoblasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        1,
+        5
+      ],
+      "box": [
+        159,
+        494,
+        193,
+        50
+      ]
+    },
+    {
+      "id": "osteogenic-cell",
+      "name": "Osteogenic cell",
+      "accept": [
+        "osteogenic cell",
+        "osteogenic cells",
+        "osteoprogenitor cell",
+        "osteoprogenitor"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        2,
+        6
+      ],
+      "box": [
+        411,
+        494,
+        166,
+        50
+      ]
+    },
+    {
+      "id": "osteoclast",
+      "name": "Osteoclast",
+      "accept": [
+        "osteoclast",
+        "osteoclasts"
+      ],
+      "concept": "bone-cells",
+      "lines": [
+        3,
+        7
+      ],
+      "box": [
+        641,
+        494,
+        147,
+        50
+      ]
+    }
+  ]
+}

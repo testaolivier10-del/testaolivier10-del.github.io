@@ -1,0 +1,193 @@
+{
+  "figure": "os-9-9",
+  "labels": [
+    {
+      "id": "tendon-of-quadriceps-femoris",
+      "name": "Tendon of quadriceps femoris",
+      "accept": [
+        "quadriceps tendon",
+        "quadriceps femoris tendon",
+        "tendon of quadriceps"
+      ],
+      "concept": "anterior-thigh",
+      "box": [
+        872,
+        15,
+        153,
+        112
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "box": [
+        9,
+        174,
+        100,
+        31
+      ]
+    },
+    {
+      "id": "suprapatellar-bursa",
+      "name": "Suprapatellar bursa",
+      "accept": [
+        "suprapatellar bursa",
+        "suprapatellar bursae"
+      ],
+      "concept": "bursa",
+      "box": [
+        873,
+        171,
+        205,
+        71
+      ]
+    },
+    {
+      "id": "posterior-cruciate-ligament",
+      "name": "Posterior cruciate ligament",
+      "accept": [
+        "pcl",
+        "posterior cruciate ligament",
+        "posterior cruciate"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        8,
+        284,
+        135,
+        119
+      ]
+    },
+    {
+      "id": "patella",
+      "name": "Patella",
+      "accept": [
+        "patella",
+        "kneecap",
+        "knee cap"
+      ],
+      "concept": "patella",
+      "box": [
+        875,
+        286,
+        104,
+        31
+      ]
+    },
+    {
+      "id": "prepatellar-bursa",
+      "name": "Prepatellar bursa",
+      "accept": [
+        "prepatellar bursa",
+        "prepatellar bursae"
+      ],
+      "concept": "bursa",
+      "box": [
+        874,
+        361,
+        167,
+        71
+      ]
+    },
+    {
+      "id": "synovial-cavity",
+      "name": "Synovial cavity",
+      "accept": [
+        "synovial cavity",
+        "joint cavity",
+        "articular cavity"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        873,
+        476,
+        226,
+        37
+      ]
+    },
+    {
+      "id": "anterior-cruciate-ligament",
+      "name": "Anterior cruciate ligament",
+      "accept": [
+        "acl",
+        "anterior cruciate ligament",
+        "anterior cruciate"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        7,
+        487,
+        132,
+        118
+      ]
+    },
+    {
+      "id": "infrapatellar-fat-pad",
+      "name": "Infrapatellar fat pad",
+      "accept": [
+        "infrapatellar fat pad",
+        "fat pad",
+        "hoffa fat pad",
+        "hoffa's fat pad"
+      ],
+      "concept": null,
+      "box": [
+        872,
+        550,
+        183,
+        79
+      ]
+    },
+    {
+      "id": "infrapatellar-bursa",
+      "name": "Infrapatellar bursa",
+      "accept": [
+        "infrapatellar bursa",
+        "deep infrapatellar bursa"
+      ],
+      "concept": "bursa",
+      "box": [
+        874,
+        665,
+        181,
+        72
+      ]
+    },
+    {
+      "id": "tibia",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shin bone",
+        "shinbone"
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        7,
+        716,
+        78,
+        30
+      ]
+    },
+    {
+      "id": "patellar-ligament",
+      "name": "Patellar ligament",
+      "accept": [
+        "patellar ligament",
+        "patellar tendon"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        874,
+        781,
+        130,
+        78
+      ]
+    }
+  ]
+}

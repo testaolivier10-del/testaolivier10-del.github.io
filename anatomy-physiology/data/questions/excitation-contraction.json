@@ -4,7 +4,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the steps of excitation–contraction coupling in a skeletal muscle fiber in order.",
     "options": [
       "An action potential spreads along the sarcolemma",
@@ -23,7 +25,10 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication", "energy"],
+    "core": [
+      "communication",
+      "energy"
+    ],
     "q": "Put the steps of skeletal muscle relaxation in order, starting when the motor neuron stops firing.",
     "options": [
       "No more acetylcholine is released",
@@ -42,7 +47,9 @@
     "type": "graph",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "ec-coupling-timing",
     "q": "The action potential is over within about 5 ms, yet force keeps rising until about 35 ms. What keeps the filaments pulling after the action potential has ended?",
     "options": [
@@ -67,13 +74,16 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["communication", "energy"],
+    "core": [
+      "communication",
+      "energy"
+    ],
     "figure": "ec-coupling-timing",
     "q": "Between about 10 ms and 60 ms, the calcium trace falls back toward rest. What is happening to the calcium?",
     "options": [
       "It is diffusing out of the cell into the extracellular fluid",
       "It is being broken down by an enzyme",
-      "It is being pumped back into the sarcoplasmic reticulum using ATP",
+      "It is being pumped back into the SR",
       "It is binding permanently to the thick filaments"
     ],
     "correct": 2,
@@ -92,13 +102,15 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "In skeletal muscle, what is the job of the DHP receptor in the T tubule membrane?",
     "options": [
       "It pumps calcium back into the sarcoplasmic reticulum",
       "It senses the voltage change and pulls open the SR release channel",
       "It binds acetylcholine released by the motor neuron",
-      "It lets in the calcium that binds troponin"
+      "It lets in the calcium from outside the cell that then binds troponin"
     ],
     "correct": 1,
     "why": {
@@ -107,7 +119,7 @@
         "Pumping calcium back is the job of the SR calcium ATPase.",
         "Correct. It is the voltage sensor linked to the release channel.",
         "Acetylcholine binds nicotinic receptor proteins on the motor end plate, not in the T tubules.",
-        "In skeletal muscle, the calcium that binds troponin comes from the SR, released through the ryanodine receptor."
+        "In skeletal muscle, the calcium that binds troponin comes from the SR, not from outside; the DHP receptor's job is to sense voltage."
       ]
     }
   },
@@ -117,13 +129,31 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A muscle fiber is treated with dantrolene, a drug that blocks ryanodine receptors. Its motor neuron is then stimulated. Predict the change in each variable, compared with before the drug.",
     "variables": [
-      { "name": "End plate potential", "answer": "none", "why": "Acetylcholine release and its receptor proteins are unaffected, so the end plate depolarizes as before." },
-      { "name": "Action potentials in the sarcolemma and T tubules", "answer": "none", "why": "The drug acts on the SR, not on the voltage-gated channels of the sarcolemma, so the fiber still fires." },
-      { "name": "Calcium in the sarcoplasm after each action potential", "answer": "down", "why": "With the release channels blocked, the DHP receptors cannot open them, so little calcium leaves the SR." },
-      { "name": "Force of contraction", "answer": "down", "why": "Less calcium binds troponin, so fewer binding sites on actin are uncovered and fewer myosin heads can pull." }
+      {
+        "name": "End plate potential",
+        "answer": "none",
+        "why": "Acetylcholine release and its receptor proteins are unaffected, so the end plate depolarizes as before."
+      },
+      {
+        "name": "Action potentials in the sarcolemma and T tubules",
+        "answer": "none",
+        "why": "The drug acts on the SR, not on the voltage-gated channels of the sarcolemma, so the fiber still fires."
+      },
+      {
+        "name": "Calcium in the sarcoplasm after each action potential",
+        "answer": "down",
+        "why": "With the release channels blocked, the DHP receptors cannot open them, so little calcium leaves the SR."
+      },
+      {
+        "name": "Force of contraction",
+        "answer": "down",
+        "why": "Less calcium binds troponin, so fewer binding sites on actin are uncovered and fewer myosin heads can pull."
+      }
     ],
     "why": {
       "correct": "Dantrolene cuts the chain after the electrical steps. The fiber is excited normally, but the SR does not release its calcium, so the troponin switch stays mostly off and force falls. This is how it stops the runaway calcium leak of a faulty release channel."
@@ -135,13 +165,32 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["communication", "energy"],
+    "core": [
+      "communication",
+      "energy"
+    ],
     "q": "An experimental drug blocks the calcium pumps of the sarcoplasmic reticulum. A single action potential is then triggered. Predict the change in each variable, compared with a normal fiber.",
     "variables": [
-      { "name": "Calcium released from the SR by this action potential", "answer": "none", "why": "Release through the ryanodine receptors does not depend on the pumps, so this first release is normal." },
-      { "name": "Time calcium stays high in the sarcoplasm", "answer": "up", "why": "The pumps are what remove calcium from the sarcoplasm; without them it lingers." },
-      { "name": "Time until the fiber relaxes", "answer": "up", "why": "Calcium stays bound to troponin, so tropomyosin keeps the binding sites uncovered and the filaments keep pulling." },
-      { "name": "Calcium stored in the SR afterward", "answer": "down", "why": "Released calcium is not pumped back, so the store is not refilled for the next action potential." }
+      {
+        "name": "Calcium released from the SR by this action potential",
+        "answer": "none",
+        "why": "Release through the ryanodine receptors does not depend on the pumps, so this first release is normal."
+      },
+      {
+        "name": "Time calcium stays high in the sarcoplasm",
+        "answer": "up",
+        "why": "The pumps are what remove calcium from the sarcoplasm; without them it lingers."
+      },
+      {
+        "name": "Time until the fiber relaxes",
+        "answer": "up",
+        "why": "Calcium stays bound to troponin, so tropomyosin keeps the binding sites uncovered and the filaments keep pulling."
+      },
+      {
+        "name": "Calcium stored in the SR afterward",
+        "answer": "down",
+        "why": "Released calcium is not pumped back, so the store is not refilled for the next action potential."
+      }
     ],
     "why": {
       "correct": "The SR calcium pumps end contraction by clearing calcium. Blocking them leaves release unchanged but makes calcium, and therefore contraction, last much longer, and it empties the store."
@@ -152,13 +201,16 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication", "homeostasis"],
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
     "q": "After thyroid surgery, a patient's blood calcium falls well below normal. She develops tingling and painful spasms that lock her hands. Why does low blood calcium cause spasms rather than weakness?",
     "options": [
       "Skeletal muscle needs less calcium when blood calcium is low",
-      "Low calcium blocks the calcium pumps, so fibers cannot relax",
+      "Low calcium blocks the SR calcium pumps and prevents relaxation",
       "Low calcium opens the ryanodine receptors directly",
-      "Low extracellular calcium makes sodium channels open more easily, so nerves and muscle fibers fire on their own"
+      "Low calcium makes sodium channels open more easily and fibers fire on their own"
     ],
     "correct": 3,
     "why": {
@@ -176,11 +228,13 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A skeletal muscle fiber is placed in a bath with no calcium and stimulated directly with an electrode. It keeps contracting normally for a while. What does this show?",
     "options": [
-      "The calcium for contraction comes from the sarcoplasmic reticulum, released by voltage",
-      "Skeletal muscle does not use calcium to contract",
+      "Its calcium comes from the SR, released by voltage",
+      "Skeletal muscle contracts without any calcium",
       "The electrode supplies the calcium",
       "Troponin does not need calcium in skeletal muscle"
     ],
@@ -200,13 +254,15 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A student described excitation–contraction coupling. One step is wrong. Which one?",
     "options": [
       "The action potential travels down the T tubules",
       "DHP receptors sense the depolarization",
       "Ryanodine receptors open and calcium leaves the SR",
-      "Calcium binds tropomyosin, which then moves off actin",
+      "Calcium binds tropomyosin and moves it",
       "Myosin heads bind the uncovered sites on actin"
     ],
     "correct": 3,
@@ -226,9 +282,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Fill the gap: in the sarcoplasm, calcium binds ____, which then shifts tropomyosin away from the myosin-binding sites on actin.",
-    "options": ["Troponin", "Myosin", "Titin", "The Z disc"],
+    "options": [
+      "Troponin",
+      "Myosin",
+      "Titin",
+      "The Z disc"
+    ],
     "correct": 0,
     "why": {
       "correct": "Troponin is the calcium-binding complex on the thin filament. Calcium binding changes its shape, and it releases tropomyosin from its blocking position.",
@@ -245,12 +308,15 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication", "energy"],
+    "core": [
+      "communication",
+      "energy"
+    ],
     "q": "Daniel has an inherited defect that makes his ryanodine receptors leak calcium when he breathes certain anesthetic gases. During surgery his muscles go rigid and his temperature climbs fast. What best explains both signs?",
     "options": [
-      "The gas blocks acetylcholinesterase, so the muscles fire nonstop",
+      "The gas blocks acetylcholinesterase and the muscles fire nonstop",
       "Continuous calcium release keeps the filaments pulling, while pumps and myosin burn ATP and release heat",
-      "The gas stops the SR calcium pumps, so no ATP is used",
+      "The gas stops the SR calcium pumps and no ATP is used",
       "The defect blocks action potentials in the T tubules"
     ],
     "correct": 1,
@@ -269,7 +335,9 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "Select every step in a contraction-and-relaxation cycle of a skeletal muscle fiber that uses ATP directly.",
     "options": [
       "Pumping calcium back into the sarcoplasmic reticulum",
@@ -278,7 +346,11 @@
       "Acetylcholine diffusing across the synaptic cleft",
       "Restoring sodium and potassium gradients after action potentials"
     ],
-    "correct": [0, 2, 4],
+    "correct": [
+      0,
+      2,
+      4
+    ],
     "why": {
       "correct": "The SR calcium ATPase, the myosin heads and the sodium–potassium pump all split ATP. Calcium flowing out of the SR and acetylcholine diffusing across the cleft both move down their gradients and need no ATP.",
       "options": [
@@ -295,13 +367,16 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function", "communication"],
+    "core": [
+      "structure-function",
+      "communication"
+    ],
     "q": "In an experiment, a chemical treatment pinches the T tubules off from the sarcolemma, leaving the rest of the fiber intact. The surface membrane still fires action potentials when stimulated. What happens to contraction?",
     "options": [
-      "It is normal, because the action potential still spreads along the surface",
-      "It becomes stronger, because more calcium enters across the surface",
-      "It lasts much longer, because the calcium pumps no longer work",
-      "It largely fails, because the signal no longer reaches the triads deep in the fiber"
+      "It is normal",
+      "It becomes stronger",
+      "It lasts much longer",
+      "It largely fails"
     ],
     "correct": 3,
     "why": {
@@ -319,13 +394,15 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["energy"],
+    "core": [
+      "energy"
+    ],
     "q": "Why is muscle relaxation described as an active process?",
     "options": [
       "The muscle fiber pushes itself back to its resting length",
       "The motor neuron sends a separate signal that makes the fiber relax",
-      "ATP-driven pumps must move calcium back into the SR against its gradient",
-      "Acetylcholine must be pumped back into the axon terminal"
+      "ATP-driven pumps return calcium to the SR",
+      "Acetylcholine is pumped back into the axon terminal"
     ],
     "correct": 2,
     "why": {
@@ -343,7 +420,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "What is excitation–contraction coupling?",
     "options": [
       "The release of acetylcholine by a motor neuron",
@@ -367,13 +446,15 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A second action potential arrives 15 ms after the first, while calcium from the first is still high in the sarcoplasm. What happens to the calcium level?",
     "options": [
-      "It rises further, because more calcium is released on top of what remains",
-      "It falls, because the second action potential switches the pumps on",
-      "It stays the same, because the SR is empty after one release",
-      "It falls to zero, because the release channels are refractory"
+      "It rises higher",
+      "It falls",
+      "It stays the same",
+      "It falls to zero"
     ],
     "correct": 0,
     "why": {
@@ -391,9 +472,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "About how long does a single action potential last in a skeletal muscle fiber?",
-    "options": ["About 250 to 300 ms", "About 2 to 5 ms", "About 1 second", "About 50 to 100 ms"],
+    "options": [
+      "About 250 to 300 ms",
+      "About 2 to 5 ms",
+      "About 1 second",
+      "About 50 to 100 ms"
+    ],
     "correct": 1,
     "why": {
       "correct": "A skeletal muscle fiber's action potential is brief, about 2 to 5 ms, much shorter than the contraction it triggers.",

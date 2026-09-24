@@ -1,0 +1,170 @@
+{
+  "figure": "os-11-19",
+  "labels": [
+    {
+      "id": "pubic-crest",
+      "name": "Pubic crest",
+      "accept": [],
+      "concept": "pelvic-girdle",
+      "lines": [
+        0
+      ],
+      "box": [
+        389,
+        74,
+        118,
+        23
+      ]
+    },
+    {
+      "id": "urethral-canal",
+      "name": "Urethral canal",
+      "accept": [
+        "urethra"
+      ],
+      "concept": "urethra",
+      "lines": [
+        3,
+        4
+      ],
+      "box": [
+        4,
+        163,
+        89,
+        47
+      ]
+    },
+    {
+      "id": "vaginal-canal",
+      "name": "Vaginal canal (females only)",
+      "accept": [
+        "vaginal canal",
+        "vagina"
+      ],
+      "concept": "vagina-vulva",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        5,
+        241,
+        146,
+        50
+      ]
+    },
+    {
+      "id": "pubococcygeus",
+      "name": "Pubococcygeus",
+      "accept": [],
+      "concept": "pelvic-floor",
+      "lines": [
+        7
+      ],
+      "box": [
+        769,
+        303,
+        163,
+        26
+      ]
+    },
+    {
+      "id": "rectal-canal",
+      "name": "Rectal canal",
+      "accept": [
+        "rectum",
+        "anal canal"
+      ],
+      "concept": "large-intestine-regions",
+      "lines": [
+        8
+      ],
+      "box": [
+        6,
+        322,
+        129,
+        22
+      ]
+    },
+    {
+      "id": "levator-ani",
+      "name": "Levator ani",
+      "accept": [
+        "pelvic diaphragm"
+      ],
+      "concept": "pelvic-floor",
+      "lines": [
+        9
+      ],
+      "box": [
+        978,
+        371,
+        116,
+        22
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [],
+      "concept": "vertebral-regions",
+      "lines": [
+        10
+      ],
+      "box": [
+        5,
+        396,
+        86,
+        22
+      ]
+    },
+    {
+      "id": "iliococcygeus",
+      "name": "Iliococcygeus",
+      "accept": [],
+      "concept": "pelvic-floor",
+      "lines": [
+        11
+      ],
+      "box": [
+        771,
+        438,
+        140,
+        27
+      ]
+    },
+    {
+      "id": "iliacus",
+      "name": "Iliacus",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        15
+      ],
+      "box": [
+        413,
+        625,
+        72,
+        22
+      ]
+    },
+    {
+      "id": "iliac-crests",
+      "name": "Iliac crests",
+      "accept": [
+        "iliac crest",
+        "crest of ilium"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        16
+      ],
+      "box": [
+        391,
+        705,
+        114,
+        22
+      ]
+    }
+  ]
+}

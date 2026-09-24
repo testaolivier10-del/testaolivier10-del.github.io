@@ -11,7 +11,10 @@
     "alt": "Muscles of the neck and back. At the top, a side view of the neck and a back view of the neck and upper back show diagonal muscles wrapping the back of the neck and diamond-shaped muscles between the spine and the shoulder blade. Below, the deep back muscles run in three long columns on each side of the spine from the pelvis up to the ribs, neck and skull, with an inset of short muscles joining neighboring vertebrae.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.15",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1278,
+    "ext": "jpg"
   },
   "os-11-16": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "Muscles of the abdomen. At the top, a front-side view of the trunk shows a vertical strap on each side of the midline divided by bands of tendon, and a flat muscle wrapping the side, with a window cut through to show two deeper flat layers whose fibers run in different directions. At the bottom, the back wall of the abdomen seen from the front shows a four-sided muscle between the lowest rib and the iliac crest and two muscles running from the lumbar spine and the ilium down toward the thigh.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.16",
-    "labels": []
+    "labels": [],
+    "w": 1046,
+    "h": 1351,
+    "ext": "jpg"
   },
   "os-11-17": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "The diaphragm seen from below. Muscle fibers run inward from the lower rim of the rib cage and from the lumbar vertebrae to a large, flat, leaf-shaped sheet of white tendon at the center. Openings in it let the esophagus and the largest artery and vein pass through.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.17",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 805,
+    "ext": "jpg"
   },
   "os-11-18": {
     "source": "openstax",
@@ -53,7 +62,10 @@
     "alt": "The muscles between the ribs. On the left, the front of the chest with the large chest muscles cut away shows muscle filling each space between neighboring ribs. On the right, a close-up of a single space shows three layers: an outer layer with fibers running down and forward, a middle layer with fibers crossing it at right angles, and a thin deepest layer.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.18",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 616,
+    "ext": "jpg"
   },
   "os-11-19": {
     "source": "openstax",
@@ -67,6 +79,9 @@
     "alt": "The floor of the pelvis seen from above. A broad funnel of muscle runs from the pubis and the side walls of the pelvis back to the coccyx, with three openings in the midline for the urethra, the vagina in females and the rectum.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.19",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 801,
+    "ext": "jpg"
   }
 }

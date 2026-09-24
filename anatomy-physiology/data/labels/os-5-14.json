@@ -1,0 +1,65 @@
+{
+  "figure": "os-5-14",
+  "labels": [
+    {
+      "id": "pores",
+      "name": "Pores",
+      "accept": [
+        "pores",
+        "pore",
+        "sweat pore",
+        "sweat pores"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "sweat-glands",
+      "box": [
+        539,
+        27,
+        65,
+        21
+      ]
+    },
+    {
+      "id": "skin-surface",
+      "name": "Skin surface",
+      "accept": [
+        "skin surface",
+        "surface",
+        "epidermis"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "epidermis",
+      "box": [
+        538,
+        137,
+        126,
+        21
+      ]
+    },
+    {
+      "id": "eccrine-sweat-gland",
+      "name": "Eccrine sweat gland",
+      "accept": [
+        "eccrine sweat gland",
+        "eccrine gland",
+        "sweat gland",
+        "merocrine sweat gland"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "sweat-glands",
+      "box": [
+        538,
+        393,
+        137,
+        50
+      ]
+    }
+  ]
+}

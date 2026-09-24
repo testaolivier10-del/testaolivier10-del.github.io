@@ -1,0 +1,83 @@
+{
+  "figure": "os-10-24",
+  "labels": [
+    {
+      "id": "relaxed-muscle-cell",
+      "name": "Relaxed muscle cell",
+      "accept": [
+        "relaxed muscle cell",
+        "relaxed smooth muscle cell",
+        "relaxed smooth muscle fiber",
+        "relaxed fiber",
+        "relaxed cell"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "smooth-muscle-contraction",
+      "box": [
+        0,
+        32,
+        170,
+        19
+      ]
+    },
+    {
+      "id": "contracted-muscle-cell",
+      "name": "Contracted muscle cell",
+      "accept": [
+        "contracted muscle cell",
+        "contracted smooth muscle cell",
+        "contracted smooth muscle fiber",
+        "contracted fiber",
+        "contracted cell"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "smooth-muscle-contraction",
+      "box": [
+        601,
+        32,
+        197,
+        20
+      ]
+    },
+    {
+      "id": "intermediate-filaments",
+      "name": "Intermediate filaments",
+      "accept": [
+        "intermediate filaments",
+        "intermediate filament"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cytoskeleton",
+      "box": [
+        22,
+        207,
+        192,
+        20
+      ]
+    },
+    {
+      "id": "dense-bodies",
+      "name": "Dense bodies",
+      "accept": [
+        "dense bodies",
+        "dense body"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "smooth-muscle-contraction",
+      "box": [
+        304,
+        207,
+        124,
+        20
+      ]
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "figure": "os-11-28",
+  "labels": [
+    {
+      "id": "opponens-pollicis",
+      "name": "Opponens pollicis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        479,
+        126,
+        169,
+        25
+      ]
+    },
+    {
+      "id": "abductor-digiti-minimi",
+      "name": "Abductor digiti minimi",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        1,
+        3
+      ],
+      "box": [
+        5,
+        165,
+        137,
+        43
+      ]
+    },
+    {
+      "id": "abductor-pollicis-brevis",
+      "name": "Abductor pollicis brevis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        4,
+        5
+      ],
+      "box": [
+        479,
+        191,
+        157,
+        43
+      ]
+    },
+    {
+      "id": "flexor-digiti-minimi-brevis",
+      "name": "Flexor digiti minimi brevis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        6,
+        8
+      ],
+      "box": [
+        6,
+        228,
+        127,
+        43
+      ]
+    },
+    {
+      "id": "pisometacarpal-ligament",
+      "name": "Pisometacarpal ligament",
+      "accept": [],
+      "concept": null,
+      "lines": [
+        7,
+        9
+      ],
+      "box": [
+        948,
+        236,
+        147,
+        48
+      ]
+    },
+    {
+      "id": "flexor-pollicis-brevis",
+      "name": "Flexor pollicis brevis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        10,
+        11
+      ],
+      "box": [
+        479,
+        266,
+        132,
+        42
+      ]
+    },
+    {
+      "id": "opponens-digiti-minimi",
+      "name": "Opponens digiti minimi",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        12,
+        13
+      ],
+      "box": [
+        947,
+        304,
+        149,
+        43
+      ]
+    },
+    {
+      "id": "adductor-pollicis",
+      "name": "Adductor pollicis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        14
+      ],
+      "box": [
+        479,
+        356,
+        157,
+        25
+      ]
+    },
+    {
+      "id": "lumbricalis-muscles",
+      "name": "Lumbricalis muscles",
+      "accept": [
+        "lumbricals",
+        "lumbrical",
+        "lumbricales",
+        "lumbrical muscles"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        15,
+        16
+      ],
+      "box": [
+        65,
+        496,
+        112,
+        43
+      ]
+    },
+    {
+      "id": "palmar-interossei",
+      "name": "Palmar interossei muscles",
+      "accept": [
+        "palmar interossei",
+        "palmar interosseous"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        20,
+        22
+      ],
+      "box": [
+        65,
+        923,
+        164,
+        43
+      ]
+    },
+    {
+      "id": "dorsal-interossei",
+      "name": "Dorsal interossei muscles",
+      "accept": [
+        "dorsal interossei",
+        "dorsal interosseous"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        21,
+        23
+      ],
+      "box": [
+        621,
+        923,
+        159,
+        43
+      ]
+    }
+  ]
+}

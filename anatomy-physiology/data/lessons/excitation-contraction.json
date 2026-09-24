@@ -1,6 +1,6 @@
 {
   "topic": "excitation-contraction",
-  "hook": "<p>Twenty minutes into a routine knee operation, 24-year-old Daniel's jaw muscles lock tight, his heart races and his temperature starts climbing a degree every few minutes. The anesthetist stops the anesthetic gas and gives dantrolene. Daniel was born with a faulty calcium release channel in his muscle fibers, harmless until the gas made it leak. To see why one leaky channel can lock every muscle in the body, you need the chain that links a muscle fiber's action potential to its contraction.</p>",
+  "hook": "<p>Twenty minutes into a routine knee operation, 24-year-old Daniel's jaw muscles lock tight, his heart races and his temperature starts to climb fast. The anesthetist stops the anesthetic gas and gives dantrolene. Daniel was born with a faulty calcium release channel in his muscle fibers, harmless until the gas made it leak. To see why one leaky channel can lock every muscle in the body, you need the chain that links a muscle fiber's action potential to its contraction.</p>",
   "prereq": [
     {
       "q": "What does the end plate potential do at a healthy neuromuscular junction?",

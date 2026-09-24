@@ -1,0 +1,489 @@
+{
+  "figure": "os-11-15",
+  "labels": [
+    {
+      "id": "sternocleidomastoid",
+      "name": "Sternocleidomastoid",
+      "accept": [
+        "scm"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        369,
+        60,
+        179,
+        20
+      ]
+    },
+    {
+      "id": "trapezius-posterior",
+      "name": "Trapezius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        1
+      ],
+      "box": [
+        572,
+        79,
+        91,
+        23
+      ]
+    },
+    {
+      "id": "splenius-capitis",
+      "name": "Splenius capitis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        2
+      ],
+      "box": [
+        941,
+        104,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "splenius",
+      "name": "Splenius",
+      "accept": [
+        "splenius capitis"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        3
+      ],
+      "box": [
+        369,
+        141,
+        83,
+        24
+      ]
+    },
+    {
+      "id": "splenius-cervicis",
+      "name": "Splenius cervicis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        4
+      ],
+      "box": [
+        941,
+        154,
+        148,
+        24
+      ]
+    },
+    {
+      "id": "levator-scapulae",
+      "name": "Levator scapulae",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        6,
+        171,
+        86,
+        44
+      ]
+    },
+    {
+      "id": "rhomboides-minor",
+      "name": "Rhomboides minor",
+      "accept": [
+        "rhomboid minor"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        7,
+        9
+      ],
+      "box": [
+        987,
+        207,
+        115,
+        40
+      ]
+    },
+    {
+      "id": "trapezius",
+      "name": "Trapezius",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        8
+      ],
+      "box": [
+        367,
+        221,
+        91,
+        24
+      ]
+    },
+    {
+      "id": "medial-scalene",
+      "name": "Medial scalene",
+      "accept": [
+        "middle scalene",
+        "scalenus medius"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        10,
+        11
+      ],
+      "box": [
+        6,
+        236,
+        76,
+        40
+      ]
+    },
+    {
+      "id": "rhomboides-major",
+      "name": "Rhomboides major",
+      "accept": [
+        "rhomboid major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        12,
+        13
+      ],
+      "box": [
+        987,
+        259,
+        115,
+        44
+      ]
+    },
+    {
+      "id": "anterior-scalene",
+      "name": "Anterior scalene",
+      "accept": [
+        "scalenus anterior"
+      ],
+      "concept": "neck-muscles",
+      "lines": [
+        14,
+        16
+      ],
+      "box": [
+        6,
+        300,
+        78,
+        39
+      ]
+    },
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "collarbone"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        15
+      ],
+      "box": [
+        370,
+        302,
+        76,
+        19
+      ]
+    },
+    {
+      "id": "longissimus-capitis",
+      "name": "Longissimus capitis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        21
+      ],
+      "box": [
+        563,
+        525,
+        170,
+        24
+      ]
+    },
+    {
+      "id": "semispinalis-capitis",
+      "name": "Semispinalis capitis (joined with deep spinalis capitis)",
+      "accept": [
+        "semispinalis capitis"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        22,
+        23,
+        24
+      ],
+      "box": [
+        180,
+        530,
+        173,
+        64
+      ]
+    },
+    {
+      "id": "iliocostalis-cervicis",
+      "name": "Iliocostalis cervicis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        25
+      ],
+      "box": [
+        563,
+        577,
+        163,
+        20
+      ]
+    },
+    {
+      "id": "semispinalis-cervicis",
+      "name": "Semispinalis cervicis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        26,
+        28
+      ],
+      "box": [
+        180,
+        622,
+        116,
+        39
+      ]
+    },
+    {
+      "id": "iliocostalis-thoracis",
+      "name": "Iliocostalis thoracis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        27
+      ],
+      "box": [
+        563,
+        628,
+        165,
+        20
+      ]
+    },
+    {
+      "id": "longissimus-thoracis",
+      "name": "Longissimus thoracis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        29
+      ],
+      "box": [
+        563,
+        680,
+        182,
+        23
+      ]
+    },
+    {
+      "id": "longissimus-cervicis",
+      "name": "Longissimus cervicis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        30,
+        31
+      ],
+      "box": [
+        180,
+        690,
+        115,
+        41
+      ]
+    },
+    {
+      "id": "iliocostalis-lumborum",
+      "name": "Iliocostalis lumborum",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        32
+      ],
+      "box": [
+        562,
+        731,
+        182,
+        20
+      ]
+    },
+    {
+      "id": "spinalis-thoracis",
+      "name": "Spinalis thoracis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        33,
+        34
+      ],
+      "box": [
+        180,
+        764,
+        77,
+        39
+      ]
+    },
+    {
+      "id": "transverse-processes",
+      "name": "Transverse processes of vertebrae",
+      "accept": [
+        "transverse process",
+        "transverse processes"
+      ],
+      "concept": "vertebra-parts",
+      "lines": [
+        35,
+        36,
+        37
+      ],
+      "box": [
+        822,
+        790,
+        111,
+        60
+      ]
+    },
+    {
+      "id": "semispinalis-thoracis",
+      "name": "Semispinalis thoracis",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        38,
+        40
+      ],
+      "box": [
+        160,
+        835,
+        115,
+        40
+      ]
+    },
+    {
+      "id": "rotator-brevis",
+      "name": "Rotator brevis",
+      "accept": [
+        "rotatores brevis",
+        "short rotator"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        39,
+        41
+      ],
+      "box": [
+        615,
+        836,
+        74,
+        40
+      ]
+    },
+    {
+      "id": "rotator-longus",
+      "name": "Rotator longus",
+      "accept": [
+        "rotatores longus",
+        "long rotator"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        45,
+        47
+      ],
+      "box": [
+        616,
+        904,
+        73,
+        44
+      ]
+    },
+    {
+      "id": "multifidus",
+      "name": "Multifidus",
+      "accept": [],
+      "concept": "back-muscles",
+      "lines": [
+        46
+      ],
+      "box": [
+        161,
+        906,
+        89,
+        19
+      ]
+    },
+    {
+      "id": "interspinales",
+      "name": "Interspinales",
+      "accept": [
+        "interspinalis"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        48
+      ],
+      "box": [
+        575,
+        963,
+        116,
+        24
+      ]
+    },
+    {
+      "id": "short-rotator",
+      "name": "Short rotator",
+      "accept": [
+        "rotator brevis",
+        "rotatores brevis"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        49,
+        50
+      ],
+      "box": [
+        615,
+        1011,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "intertransversarii",
+      "name": "Intertransversarii",
+      "accept": [
+        "intertransversarius"
+      ],
+      "concept": "back-muscles",
+      "lines": [
+        51
+      ],
+      "box": [
+        730,
+        1192,
+        148,
+        20
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "figure": "os-10-16",
+  "labels": [
+    {
+      "id": "wave-summation",
+      "name": "Wave summation",
+      "accept": [
+        "wave summation",
+        "summation",
+        "temporal summation"
+      ],
+      "concept": "summation-tetanus",
+      "box": [
+        58,
+        291,
+        174,
+        22
+      ]
+    },
+    {
+      "id": "tetanus",
+      "name": "Tetanus",
+      "accept": [
+        "tetanus",
+        "complete tetanus",
+        "fused tetanus"
+      ],
+      "concept": "summation-tetanus",
+      "box": [
+        450,
+        292,
+        83,
+        21
+      ]
+    }
+  ]
+}

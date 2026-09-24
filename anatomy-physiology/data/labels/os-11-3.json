@@ -1,0 +1,292 @@
+{
+  "figure": "os-11-3",
+  "labels": [
+    {
+      "id": "orbicularis-oris",
+      "name": "Orbicularis oris",
+      "accept": [],
+      "concept": "facial-expression-muscles",
+      "lines": [
+        0
+      ],
+      "box": [
+        456,
+        7,
+        152,
+        20
+      ]
+    },
+    {
+      "id": "circular",
+      "name": "Circular",
+      "accept": [
+        "circular muscle",
+        "sphincter"
+      ],
+      "concept": "fascicle-arrangement",
+      "lines": [
+        2
+      ],
+      "box": [
+        317,
+        58,
+        78,
+        20
+      ]
+    },
+    {
+      "id": "pectoralis-major",
+      "name": "Pectoralis major",
+      "accept": [
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        5
+      ],
+      "box": [
+        729,
+        175,
+        158,
+        24
+      ]
+    },
+    {
+      "id": "deltoid",
+      "name": "Deltoid",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        6
+      ],
+      "box": [
+        244,
+        184,
+        75,
+        20
+      ]
+    },
+    {
+      "id": "multipennate",
+      "name": "Multipennate",
+      "accept": [
+        "multipennate muscle"
+      ],
+      "concept": "fascicle-arrangement",
+      "lines": [
+        11
+      ],
+      "box": [
+        43,
+        245,
+        120,
+        24
+      ]
+    },
+    {
+      "id": "convergent",
+      "name": "Convergent",
+      "accept": [
+        "convergent muscle"
+      ],
+      "concept": "fascicle-arrangement",
+      "lines": [
+        12
+      ],
+      "box": [
+        967,
+        277,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "extensor-digitorum",
+      "name": "Extensor digitorum (posterior view)",
+      "accept": [
+        "extensor digitorum"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        16,
+        18
+      ],
+      "box": [
+        818,
+        417,
+        185,
+        45
+      ]
+    },
+    {
+      "id": "biceps-brachii",
+      "name": "Biceps brachii",
+      "accept": [
+        "biceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        17
+      ],
+      "box": [
+        219,
+        436,
+        140,
+        24
+      ]
+    },
+    {
+      "id": "to-origin",
+      "name": "To origin",
+      "accept": [
+        "origin"
+      ],
+      "concept": "origin-insertion",
+      "lines": [
+        20
+      ],
+      "box": [
+        134,
+        472,
+        84,
+        24
+      ]
+    },
+    {
+      "id": "parallel-fusiform",
+      "name": "Parallel-fusiform",
+      "accept": [
+        "fusiform",
+        "parallel fusiform",
+        "fusiform muscle"
+      ],
+      "concept": "fascicle-arrangement",
+      "lines": [
+        22,
+        24
+      ],
+      "box": [
+        2,
+        547,
+        79,
+        41
+      ]
+    },
+    {
+      "id": "belly",
+      "name": "Belly",
+      "accept": [
+        "muscle belly",
+        "belly of the muscle"
+      ],
+      "concept": "origin-insertion",
+      "lines": [
+        23
+      ],
+      "box": [
+        136,
+        548,
+        53,
+        24
+      ]
+    },
+    {
+      "id": "unipennate",
+      "name": "Unipennate",
+      "accept": [
+        "unipennate muscle"
+      ],
+      "concept": "fascicle-arrangement",
+      "box": [
+        996,
+        569,
+        98,
+        22
+      ]
+    },
+    {
+      "id": "to-insertion",
+      "name": "To insertion",
+      "accept": [
+        "insertion"
+      ],
+      "concept": "origin-insertion",
+      "lines": [
+        26
+      ],
+      "box": [
+        134,
+        629,
+        110,
+        20
+      ]
+    },
+    {
+      "id": "rectus-femoris",
+      "name": "Rectus femoris",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        29
+      ],
+      "box": [
+        205,
+        718,
+        148,
+        20
+      ]
+    },
+    {
+      "id": "sartorius",
+      "name": "Sartorius",
+      "accept": [],
+      "concept": "anterior-thigh",
+      "lines": [
+        30
+      ],
+      "box": [
+        724,
+        731,
+        96,
+        20
+      ]
+    },
+    {
+      "id": "bipennate",
+      "name": "Bipennate",
+      "accept": [
+        "bipennate muscle"
+      ],
+      "concept": "fascicle-arrangement",
+      "lines": [
+        32
+      ],
+      "box": [
+        86,
+        771,
+        96,
+        24
+      ]
+    },
+    {
+      "id": "parallel-non-fusiform",
+      "name": "Parallel (non-fusiform)",
+      "accept": [
+        "parallel",
+        "parallel muscle",
+        "non-fusiform"
+      ],
+      "concept": "fascicle-arrangement",
+      "lines": [
+        34,
+        36
+      ],
+      "box": [
+        862,
+        871,
+        129,
+        45
+      ]
+    }
+  ]
+}

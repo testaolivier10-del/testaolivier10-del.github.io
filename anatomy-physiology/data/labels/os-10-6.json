@@ -1,0 +1,402 @@
+{
+  "figure": "os-10-6",
+  "labels": [
+    {
+      "id": "myelin-sheath",
+      "name": "Myelin sheath surrounding axon of motor neuron",
+      "accept": [
+        "myelin sheath surrounding axon of motor neuron",
+        "myelin sheath",
+        "myelin"
+      ],
+      "lines": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "concept": "myelin",
+      "box": [
+        568,
+        1,
+        341,
+        58
+      ]
+    },
+    {
+      "id": "axon-terminal",
+      "name": "Axon terminal",
+      "accept": [
+        "axon terminal",
+        "axon terminals",
+        "terminal branch of the axon"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "neuron-parts-basic",
+      "box": [
+        684,
+        115,
+        185,
+        27
+      ]
+    },
+    {
+      "id": "synaptic-end-bulb",
+      "name": "Synaptic end bulb at the neuromuscular junction",
+      "accept": [
+        "synaptic end bulb at the neuromuscular junction",
+        "synaptic end bulb",
+        "synaptic knob",
+        "synaptic terminal",
+        "axon terminal",
+        "end bulb"
+      ],
+      "lines": [
+        6,
+        7,
+        8,
+        10
+      ],
+      "concept": "nmj",
+      "box": [
+        692,
+        177,
+        314,
+        64
+      ]
+    },
+    {
+      "id": "sarcolemma",
+      "name": "Sarcolemma",
+      "accept": [
+        "sarcolemma",
+        "muscle cell membrane"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        124,
+        200,
+        170,
+        27
+      ]
+    },
+    {
+      "id": "myofibril",
+      "name": "Myofibril of muscle fiber",
+      "accept": [
+        "myofibril of muscle fiber",
+        "myofibril",
+        "myofibrils"
+      ],
+      "lines": [
+        11,
+        12,
+        13
+      ],
+      "concept": "myofibril",
+      "box": [
+        943,
+        291,
+        159,
+        59
+      ]
+    },
+    {
+      "id": "sarcoplasm",
+      "name": "Sarcoplasm",
+      "accept": [
+        "sarcoplasm",
+        "cytoplasm of the muscle fiber",
+        "muscle cytoplasm"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        942,
+        516,
+        160,
+        33
+      ]
+    },
+    {
+      "id": "synaptic-end-bulb-2",
+      "name": "Synaptic end bulb",
+      "accept": [
+        "synaptic end bulb",
+        "synaptic knob",
+        "synaptic terminal",
+        "axon terminal",
+        "end bulb"
+      ],
+      "lines": [
+        15,
+        16
+      ],
+      "concept": "nmj",
+      "box": [
+        673,
+        626,
+        235,
+        32
+      ]
+    },
+    {
+      "id": "synaptic-vesicle",
+      "name": "Synaptic vesicle containing ACh",
+      "accept": [
+        "synaptic vesicle containing ach",
+        "synaptic vesicle",
+        "synaptic vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        17,
+        20
+      ],
+      "concept": "synaptic-vesicle-release",
+      "box": [
+        124,
+        679,
+        213,
+        64
+      ]
+    },
+    {
+      "id": "nerve-impulse",
+      "name": "Nerve impulse (action potential)",
+      "accept": [
+        "nerve impulse (action potential)",
+        "nerve impulse",
+        "action potential"
+      ],
+      "lines": [
+        18,
+        19,
+        21,
+        22
+      ],
+      "concept": "action-potential-basic",
+      "box": [
+        882,
+        692,
+        209,
+        63
+      ]
+    },
+    {
+      "id": "sarcolemma-2",
+      "name": "Sarcolemma",
+      "accept": [
+        "sarcolemma",
+        "muscle cell membrane"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        124,
+        798,
+        170,
+        27
+      ]
+    },
+    {
+      "id": "synaptic-cleft",
+      "name": "Synaptic cleft",
+      "accept": [
+        "synaptic cleft",
+        "cleft"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "nmj",
+      "box": [
+        124,
+        893,
+        120,
+        59
+      ]
+    },
+    {
+      "id": "motor-end-plate",
+      "name": "Motor end-plate",
+      "accept": [
+        "motor end-plate",
+        "motor end plate",
+        "end plate",
+        "end-plate"
+      ],
+      "lines": [
+        26,
+        27
+      ],
+      "concept": "nmj",
+      "box": [
+        124,
+        1032,
+        138,
+        64
+      ]
+    },
+    {
+      "id": "acetylcholine",
+      "name": "ACh",
+      "accept": [
+        "ach",
+        "acetylcholine"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "acetylcholine",
+      "box": [
+        917,
+        1337,
+        66,
+        28
+      ]
+    },
+    {
+      "id": "synaptic-vesicle-2",
+      "name": "Synaptic vesicle",
+      "accept": [
+        "synaptic vesicle",
+        "synaptic vesicles",
+        "vesicle"
+      ],
+      "lines": [
+        29,
+        30
+      ],
+      "concept": "synaptic-vesicle-release",
+      "box": [
+        917,
+        1426,
+        121,
+        59
+      ]
+    },
+    {
+      "id": "ach-exocytosis",
+      "name": "Synaptic vesicle releases ACh by exocytosis",
+      "accept": [
+        "synaptic vesicle releases ach by exocytosis",
+        "exocytosis",
+        "ach release"
+      ],
+      "lines": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        37
+      ],
+      "concept": "synaptic-vesicle-release",
+      "box": [
+        123,
+        1499,
+        143,
+        158
+      ]
+    },
+    {
+      "id": "synaptic-cleft-2",
+      "name": "Synaptic cleft",
+      "accept": [
+        "synaptic cleft",
+        "cleft"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "nmj",
+      "box": [
+        918,
+        1607,
+        180,
+        33
+      ]
+    },
+    {
+      "id": "ach-receptor",
+      "name": "ACh receptor",
+      "accept": [
+        "ach receptor",
+        "acetylcholine receptor",
+        "ach receptors",
+        "nicotinic receptor",
+        "nicotinic acetylcholine receptor",
+        "nicotinic ach receptor"
+      ],
+      "lines": [
+        38,
+        39
+      ],
+      "concept": "nicotinic-nmj",
+      "box": [
+        917,
+        1665,
+        179,
+        33
+      ]
+    },
+    {
+      "id": "motor-end-plate-2",
+      "name": "Motor end-plate",
+      "accept": [
+        "motor end-plate",
+        "motor end plate",
+        "end plate",
+        "end-plate"
+      ],
+      "lines": [
+        40,
+        43,
+        44
+      ],
+      "concept": "nmj",
+      "box": [
+        918,
+        1743,
+        129,
+        64
+      ]
+    },
+    {
+      "id": "ach-binding-opens-channel",
+      "name": "Binding of ACh to its receptor opens the channel",
+      "accept": [
+        "binding of ach to its receptor opens the channel",
+        "ach binding",
+        "ligand-gated channel opening"
+      ],
+      "lines": [
+        41,
+        42,
+        45,
+        46,
+        47,
+        48
+      ],
+      "concept": "nicotinic-nmj",
+      "box": [
+        123,
+        1759,
+        201,
+        121
+      ]
+    }
+  ]
+}

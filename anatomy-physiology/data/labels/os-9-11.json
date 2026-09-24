@@ -1,0 +1,83 @@
+{
+  "figure": "os-9-11",
+  "labels": [
+    {
+      "id": "normal-hip-joint",
+      "name": "Normal hip joint",
+      "accept": [
+        "hip joint",
+        "normal hip joint",
+        "healthy hip joint"
+      ],
+      "concept": "other-named-joints",
+      "lines": [
+        1
+      ],
+      "box": [
+        0,
+        74,
+        167,
+        27
+      ]
+    },
+    {
+      "id": "decreased-joint-space",
+      "name": "Decreased joint space",
+      "accept": [
+        "decreased joint space",
+        "narrowed joint space",
+        "joint space narrowing",
+        "narrowing of the joint space"
+      ],
+      "concept": "osteoarthritis",
+      "lines": [
+        0,
+        2
+      ],
+      "box": [
+        669,
+        52,
+        131,
+        56
+      ]
+    },
+    {
+      "id": "exposed-bone",
+      "name": "Exposed bone",
+      "accept": [
+        "exposed bone",
+        "bare bone"
+      ],
+      "concept": "osteoarthritis",
+      "lines": [
+        3
+      ],
+      "box": [
+        519,
+        171,
+        165,
+        29
+      ]
+    },
+    {
+      "id": "worn-cartilage",
+      "name": "Worn cartilage",
+      "accept": [
+        "worn cartilage",
+        "worn articular cartilage",
+        "eroded cartilage"
+      ],
+      "concept": "osteoarthritis",
+      "lines": [
+        4,
+        5
+      ],
+      "box": [
+        517,
+        266,
+        105,
+        56
+      ]
+    }
+  ]
+}

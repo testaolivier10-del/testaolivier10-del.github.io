@@ -1,0 +1,218 @@
+{
+  "figure": "os-9-5",
+  "labels": [
+    {
+      "id": "suture-line",
+      "name": "Suture line",
+      "accept": [
+        "suture line",
+        "suture",
+        "sutural line"
+      ],
+      "concept": "sutures",
+      "lines": [
+        0
+      ],
+      "box": [
+        183,
+        131,
+        90,
+        19
+      ]
+    },
+    {
+      "id": "suture",
+      "name": "Suture",
+      "accept": [
+        "suture",
+        "sutural joint",
+        "sutures"
+      ],
+      "concept": "joint-subtypes",
+      "lines": [
+        1
+      ],
+      "box": [
+        310,
+        206,
+        61,
+        19
+      ]
+    },
+    {
+      "id": "ulna",
+      "name": "Ulna",
+      "accept": [
+        "ulna"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        2
+      ],
+      "box": [
+        466,
+        235,
+        49,
+        19
+      ]
+    },
+    {
+      "id": "radius",
+      "name": "Radius",
+      "accept": [
+        "radius"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        3
+      ],
+      "box": [
+        668,
+        249,
+        68,
+        19
+      ]
+    },
+    {
+      "id": "syndesmosis",
+      "name": "Syndesmosis",
+      "accept": [
+        "syndesmosis",
+        "syndesmoses"
+      ],
+      "concept": "joint-subtypes",
+      "lines": [
+        4
+      ],
+      "box": [
+        382,
+        290,
+        120,
+        23
+      ]
+    },
+    {
+      "id": "dense-fibrous-connective-tissue",
+      "name": "Dense fibrous connective tissue",
+      "accept": [
+        "dense connective tissue",
+        "dense fibrous tissue",
+        "fibrous connective tissue",
+        "dense regular connective tissue"
+      ],
+      "concept": "dense-ct",
+      "lines": [
+        6,
+        8,
+        11,
+        14
+      ],
+      "box": [
+        282,
+        309,
+        90,
+        77
+      ]
+    },
+    {
+      "id": "antebrachial-interosseous-membrane",
+      "name": "Antebrachial interosseous membrane",
+      "accept": [
+        "interosseous membrane",
+        "interosseous membrane of forearm",
+        "antebrachial interosseous membrane"
+      ],
+      "concept": "joint-subtypes",
+      "lines": [
+        10,
+        13,
+        15
+      ],
+      "box": [
+        383,
+        339,
+        116,
+        63
+      ]
+    },
+    {
+      "id": "socket",
+      "name": "Socket",
+      "accept": [
+        "socket",
+        "tooth socket",
+        "dental alveolus",
+        "alveolus"
+      ],
+      "concept": null,
+      "lines": [
+        7
+      ],
+      "box": [
+        745,
+        315,
+        67,
+        20
+      ]
+    },
+    {
+      "id": "root-of-tooth",
+      "name": "Root of tooth",
+      "accept": [
+        "tooth root",
+        "root",
+        "root of the tooth"
+      ],
+      "concept": "teeth",
+      "lines": [
+        5,
+        9
+      ],
+      "box": [
+        1018,
+        306,
+        72,
+        41
+      ]
+    },
+    {
+      "id": "gomphosis",
+      "name": "Gomphosis",
+      "accept": [
+        "gomphosis",
+        "gomphoses",
+        "peg-and-socket joint"
+      ],
+      "concept": "joint-subtypes",
+      "lines": [
+        12
+      ],
+      "box": [
+        714,
+        349,
+        104,
+        23
+      ]
+    },
+    {
+      "id": "periodontal-ligament",
+      "name": "Periodontal ligament",
+      "accept": [
+        "periodontal ligament",
+        "pdl",
+        "periodontal membrane"
+      ],
+      "concept": "joint-subtypes",
+      "lines": [
+        16,
+        17
+      ],
+      "box": [
+        1001,
+        418,
+        101,
+        44
+      ]
+    }
+  ]
+}

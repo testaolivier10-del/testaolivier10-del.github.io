@@ -1,0 +1,378 @@
+{
+  "figure": "os-6-10",
+  "labels": [
+    {
+      "id": "crest",
+      "name": "Crest",
+      "accept": [
+        "crest",
+        "iliac crest"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        3
+      ],
+      "box": [
+        587,
+        62,
+        57,
+        20
+      ]
+    },
+    {
+      "id": "fossa",
+      "name": "Fossa",
+      "accept": [
+        "fossa"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        4
+      ],
+      "box": [
+        789,
+        62,
+        62,
+        20
+      ]
+    },
+    {
+      "id": "fovea-capitis",
+      "name": "Fovea capitis",
+      "accept": [
+        "fovea capitis",
+        "fovea"
+      ],
+      "concept": null,
+      "lines": [
+        5
+      ],
+      "box": [
+        69,
+        69,
+        120,
+        23
+      ]
+    },
+    {
+      "id": "head",
+      "name": "Head",
+      "accept": [
+        "head"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        6
+      ],
+      "box": [
+        218,
+        92,
+        56,
+        20
+      ]
+    },
+    {
+      "id": "tubercle",
+      "name": "Tubercle",
+      "accept": [
+        "tubercle",
+        "greater tubercle"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        8
+      ],
+      "box": [
+        184,
+        151,
+        83,
+        19
+      ]
+    },
+    {
+      "id": "sulcus",
+      "name": "Sulcus",
+      "accept": [
+        "sulcus",
+        "groove"
+      ],
+      "concept": null,
+      "lines": [
+        12
+      ],
+      "box": [
+        396,
+        170,
+        68,
+        19
+      ]
+    },
+    {
+      "id": "tuberosity",
+      "name": "Tuberosity",
+      "accept": [
+        "tuberosity",
+        "deltoid tuberosity"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        31
+      ],
+      "box": [
+        155,
+        360,
+        98,
+        24
+      ]
+    },
+    {
+      "id": "pelvis",
+      "name": "Pelvis",
+      "accept": [
+        "pelvis",
+        "bony pelvis"
+      ],
+      "concept": "pelvic-girdle",
+      "lines": [
+        33
+      ],
+      "box": [
+        712,
+        442,
+        65,
+        19
+      ]
+    },
+    {
+      "id": "fossa-humerus",
+      "name": "Fossa",
+      "accept": [
+        "fossa"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        34
+      ],
+      "box": [
+        149,
+        481,
+        62,
+        19
+      ]
+    },
+    {
+      "id": "humerus",
+      "name": "Humerus",
+      "accept": [
+        "humerus",
+        "upper arm bone"
+      ],
+      "concept": "humerus",
+      "lines": [
+        38
+      ],
+      "box": [
+        355,
+        560,
+        93,
+        19
+      ]
+    },
+    {
+      "id": "condyle",
+      "name": "Condyle",
+      "accept": [
+        "condyle"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        40
+      ],
+      "box": [
+        277,
+        610,
+        81,
+        24
+      ]
+    },
+    {
+      "id": "tubercle-femur",
+      "name": "Tubercle",
+      "accept": [
+        "tubercle",
+        "adductor tubercle"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        41
+      ],
+      "box": [
+        158,
+        611,
+        83,
+        19
+      ]
+    },
+    {
+      "id": "sinus",
+      "name": "Sinus",
+      "accept": [
+        "sinus",
+        "paranasal sinus",
+        "frontal sinus"
+      ],
+      "concept": "paranasal-sinuses",
+      "lines": [
+        42
+      ],
+      "box": [
+        681,
+        612,
+        59,
+        20
+      ]
+    },
+    {
+      "id": "facet",
+      "name": "Facet",
+      "accept": [
+        "facet"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        43
+      ],
+      "box": [
+        197,
+        643,
+        58,
+        19
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "thighbone",
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "lines": [
+        45
+      ],
+      "box": [
+        0,
+        684,
+        67,
+        20
+      ]
+    },
+    {
+      "id": "foramen",
+      "name": "Foramen",
+      "accept": [
+        "foramen",
+        "supraorbital foramen"
+      ],
+      "concept": "skull-foramina",
+      "lines": [
+        48
+      ],
+      "box": [
+        911,
+        710,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "condyles",
+      "name": "Condyles",
+      "accept": [
+        "condyles",
+        "condyle"
+      ],
+      "concept": "bone-markings",
+      "lines": [
+        49
+      ],
+      "box": [
+        51,
+        726,
+        91,
+        23
+      ]
+    },
+    {
+      "id": "canal",
+      "name": "Canal",
+      "accept": [
+        "canal"
+      ],
+      "concept": null,
+      "lines": [
+        53
+      ],
+      "box": [
+        535,
+        765,
+        61,
+        19
+      ]
+    },
+    {
+      "id": "fissure",
+      "name": "Fissure",
+      "accept": [
+        "fissure",
+        "superior orbital fissure"
+      ],
+      "concept": null,
+      "lines": [
+        54
+      ],
+      "box": [
+        911,
+        765,
+        73,
+        20
+      ]
+    },
+    {
+      "id": "protuberance",
+      "name": "Protuberance",
+      "accept": [
+        "protuberance",
+        "mental protuberance"
+      ],
+      "concept": null,
+      "lines": [
+        63
+      ],
+      "box": [
+        536,
+        1015,
+        124,
+        19
+      ]
+    },
+    {
+      "id": "skull",
+      "name": "Skull",
+      "accept": [
+        "skull"
+      ],
+      "concept": null,
+      "lines": [
+        64
+      ],
+      "box": [
+        714,
+        1043,
+        56,
+        19
+      ]
+    }
+  ]
+}

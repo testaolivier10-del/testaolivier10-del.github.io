@@ -1,0 +1,47 @@
+{
+  "topic": "upper-limb",
+  "hook": "<p>Diego, 20, slips on ice and lands on his outstretched hand. His wrist aches, and pressing the small hollow at the base of his thumb makes him wince. The X-ray looks normal, but the doctor splints his wrist anyway and orders another image in two weeks. The reason is a small boat-shaped wrist bone with an unusual blood supply.</p>",
+  "prereq": [
+    {
+      "q": "In anatomical position, which way do the palms face?",
+      "options": ["Forward", "Toward the body", "Backward"],
+      "correct": 0,
+      "why": "In anatomical position you stand upright with your arms at your sides and your palms facing forward. That is the position that medial and lateral in the forearm and hand refer to.",
+      "review": "anatomical-position"
+    },
+    {
+      "q": "What is a small, rounded bump on a bone called?",
+      "options": ["A fossa", "A tubercle", "A foramen"],
+      "correct": 1,
+      "why": "A tubercle is a small rounded bump, usually where a tendon or ligament anchors. A fossa is a shallow hollow, and a foramen is a hole.",
+      "review": "bone-structure"
+    },
+    {
+      "q": "Which division of the skeleton do the arm bones and shoulder bones belong to?",
+      "options": ["Axial", "Appendicular", "Neither"],
+      "correct": 1,
+      "why": "The appendicular skeleton is the limbs plus the bones that attach them to the trunk, so it includes the arm bones and the shoulder bones.",
+      "review": "skull"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-8-5",
+    "caption": "The right humerus from the front and the back. Hide the labels and name the landmarks at the shoulder end, then at the elbow end."
+  },
+  "chain": [
+    { "cause": "A person falls onto an outstretched hand with the wrist bent back.", "effect": "The force travels from the palm through the carpals into the radius." },
+    { "cause": "The scaphoid sits against the radius and bridges the two rows of carpals.", "effect": "It takes much of the load and can snap across its narrow middle." },
+    { "cause": "Blood vessels enter the scaphoid mainly at its far end.", "effect": "A break across its middle can cut the near piece off from its blood supply." },
+    { "cause": "Without blood, the bone cells of the near piece die.", "effect": "The break may fail to heal, so a suspected scaphoid fracture is splinted even when the first X-ray looks normal." }
+  ],
+  "misconception": {
+    "wrong": "Hitting your \"funny bone\" hurts because you bruised a bone.",
+    "right": "The funny bone is not a bone. A nerve runs in a groove on the back of the medial epicondyle of the humerus, at the inner back of your elbow, with only skin over it. A knock squeezes the nerve against the bone, and the tingling runs along the nerve's path to your little finger."
+  },
+  "check": ["anp-upper-limb-1", "anp-upper-limb-6", "anp-upper-limb-11", "anp-upper-limb-14", "anp-upper-limb-16", "anp-upper-limb-17", "anp-upper-limb-21"],
+  "summary": "<p>The pectoral girdle is the clavicle, the only bony link between the arm and the trunk, and the scapula, with its spine, acromion, coracoid process, glenoid cavity and supraspinous, infraspinous and subscapular fossae. The humerus has a head, anatomical and surgical necks, greater and lesser tubercles around the intertubercular groove, a deltoid tuberosity, and at the elbow the epicondyles, capitulum, trochlea and olecranon fossa. The ulna is medial and large at the elbow; the radius is lateral, large at the wrist, and crosses the ulna when the palm turns down. The hand has 8 carpals, 5 metacarpals and 14 phalanges, and the flexor retinaculum roofs the carpal tunnel.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

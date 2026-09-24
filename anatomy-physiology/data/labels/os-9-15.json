@@ -1,0 +1,135 @@
+{
+  "figure": "os-9-15",
+  "labels": [
+    {
+      "id": "articular-disc",
+      "name": "Articular disc",
+      "accept": [
+        "articular disc",
+        "articular disk",
+        "disc",
+        "meniscus"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        553,
+        351,
+        205,
+        32
+      ]
+    },
+    {
+      "id": "mandibular-fossa",
+      "name": "Mandibular fossa",
+      "accept": [
+        "mandibular fossa",
+        "glenoid fossa"
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        22,
+        413,
+        178,
+        73
+      ]
+    },
+    {
+      "id": "superior-joint-cavity",
+      "name": "Superior joint cavity",
+      "accept": [
+        "superior joint cavity",
+        "upper joint cavity",
+        "superior synovial cavity"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        22,
+        552,
+        168,
+        81
+      ]
+    },
+    {
+      "id": "inferior-joint-cavity",
+      "name": "Inferior joint cavity",
+      "accept": [
+        "inferior joint cavity",
+        "lower joint cavity",
+        "inferior synovial cavity"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        22,
+        696,
+        168,
+        80
+      ]
+    },
+    {
+      "id": "mandibular-condyle",
+      "name": "Mandibular condyle",
+      "accept": [
+        "mandibular condyle",
+        "condyle of the mandible",
+        "condylar process",
+        "condylar process of the mandible",
+        "head of the mandible"
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        23,
+        846,
+        177,
+        80
+      ]
+    },
+    {
+      "id": "articular-tubercle",
+      "name": "Articular tubercle",
+      "accept": [
+        "articular tubercle",
+        "articular eminence"
+      ],
+      "concept": null,
+      "box": [
+        941,
+        556,
+        135,
+        74
+      ]
+    },
+    {
+      "id": "articular-capsule",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        941,
+        746,
+        135,
+        79
+      ]
+    },
+    {
+      "id": "ramus-of-mandible",
+      "name": "Ramus of mandible",
+      "accept": [
+        "ramus of mandible",
+        "ramus of the mandible",
+        "mandibular ramus",
+        "ramus"
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        943,
+        964,
+        152,
+        74
+      ]
+    }
+  ]
+}

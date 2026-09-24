@@ -1,0 +1,153 @@
+{
+  "figure": "os-6-18",
+  "labels": [
+    {
+      "id": "reserve-zone",
+      "name": "Reserve zone",
+      "accept": [
+        "reserve zone",
+        "zone of reserve cartilage",
+        "resting zone"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        6
+      ],
+      "box": [
+        79,
+        221,
+        139,
+        21
+      ]
+    },
+    {
+      "id": "proliferative-zone",
+      "name": "Proliferative zone",
+      "accept": [
+        "proliferative zone",
+        "zone of proliferation",
+        "proliferation zone"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        8
+      ],
+      "box": [
+        79,
+        373,
+        170,
+        21
+      ]
+    },
+    {
+      "id": "maturation-hypertrophy",
+      "name": "Maturation and hypertrophy",
+      "accept": [
+        "maturation and hypertrophy",
+        "zone of maturation and hypertrophy",
+        "hypertrophic zone",
+        "zone of hypertrophy"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        12,
+        14
+      ],
+      "box": [
+        78,
+        625,
+        150,
+        50
+      ]
+    },
+    {
+      "id": "calcified-matrix",
+      "name": "Calcified matrix",
+      "accept": [
+        "calcified matrix",
+        "zone of calcified matrix",
+        "calcification zone"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        17
+      ],
+      "box": [
+        78,
+        894,
+        155,
+        21
+      ]
+    },
+    {
+      "id": "primary-spongiosa",
+      "name": "Primary spongiosa",
+      "accept": [
+        "primary spongiosa"
+      ],
+      "concept": null,
+      "lines": [
+        19,
+        20
+      ],
+      "box": [
+        667,
+        1029,
+        107,
+        51
+      ]
+    },
+    {
+      "id": "zone-of-ossification",
+      "name": "Zone of ossification",
+      "accept": [
+        "zone of ossification",
+        "ossification zone",
+        "osseous tissue zone"
+      ],
+      "concept": "epiphyseal-plate",
+      "lines": [
+        22,
+        23
+      ],
+      "box": [
+        141,
+        1099,
+        115,
+        47
+      ]
+    },
+    {
+      "id": "metaphysis",
+      "name": "Metaphysis",
+      "accept": [
+        "metaphysis"
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        78,
+        1058,
+        32,
+        116
+      ]
+    },
+    {
+      "id": "secondary-spongiosa",
+      "name": "Secondary spongiosa",
+      "accept": [
+        "secondary spongiosa"
+      ],
+      "concept": null,
+      "lines": [
+        25,
+        26
+      ],
+      "box": [
+        667,
+        1167,
+        113,
+        50
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "figure": "os-10-3",
+  "labels": [
+    {
+      "id": "skeletal-muscle",
+      "name": "Skeletal muscle",
+      "accept": [
+        "skeletal muscle",
+        "muscle",
+        "whole muscle"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "skeletal-muscle-tissue",
+      "box": [
+        99,
+        0,
+        213,
+        28
+      ]
+    },
+    {
+      "id": "epimysium",
+      "name": "Epimysium",
+      "accept": [
+        "epimysium"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "muscle-wrappings",
+      "box": [
+        433,
+        1,
+        150,
+        33
+      ]
+    },
+    {
+      "id": "perimysium",
+      "name": "Perimysium",
+      "accept": [
+        "perimysium"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "muscle-wrappings",
+      "box": [
+        930,
+        371,
+        159,
+        33
+      ]
+    },
+    {
+      "id": "muscle-fascicle",
+      "name": "Muscle fascicle",
+      "accept": [
+        "muscle fascicle",
+        "fascicle",
+        "fasciculus",
+        "muscle fascicles"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "muscle-wrappings",
+      "box": [
+        100,
+        387,
+        205,
+        28
+      ]
+    },
+    {
+      "id": "endomysium",
+      "name": "Endomysium",
+      "accept": [
+        "endomysium"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "muscle-wrappings",
+      "box": [
+        930,
+        410,
+        172,
+        33
+      ]
+    },
+    {
+      "id": "satellite-cell",
+      "name": "Satellite cell",
+      "accept": [
+        "satellite cell",
+        "satellite cells",
+        "muscle satellite cell"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "muscle-regeneration-disorders",
+      "box": [
+        848,
+        535,
+        164,
+        28
+      ]
+    },
+    {
+      "id": "muscle-fiber",
+      "name": "Muscle fiber",
+      "accept": [
+        "muscle fiber",
+        "muscle fibre",
+        "muscle cell",
+        "myocyte",
+        "myofiber"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "muscle-fiber-basic",
+      "box": [
+        100,
+        774,
+        166,
+        28
+      ]
+    },
+    {
+      "id": "sarcolemma",
+      "name": "Sarcolemma",
+      "accept": [
+        "sarcolemma",
+        "plasma membrane of the muscle fiber",
+        "muscle cell membrane"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "sarcolemma",
+      "box": [
+        848,
+        868,
+        173,
+        28
+      ]
+    },
+    {
+      "id": "myofibril",
+      "name": "Myofibril",
+      "accept": [
+        "myofibril",
+        "myofibrils"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "myofibril",
+      "box": [
+        663,
+        1031,
+        116,
+        33
+      ]
+    }
+  ]
+}

@@ -1,0 +1,537 @@
+{
+  "figure": "os-9-17",
+  "labels": [
+    {
+      "id": "humerus",
+      "name": "Humerus",
+      "accept": [
+        "humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        0
+      ],
+      "box": [
+        0,
+        52,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "fat-pad",
+      "name": "Fat pad",
+      "accept": [
+        "fat pad",
+        "fat pads"
+      ],
+      "concept": null,
+      "lines": [
+        3
+      ],
+      "box": [
+        0,
+        100,
+        70,
+        23
+      ]
+    },
+    {
+      "id": "tendon-of-triceps-muscle",
+      "name": "Tendon of triceps muscle",
+      "accept": [
+        "triceps tendon",
+        "tendon of triceps",
+        "triceps brachii tendon"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        8,
+        11,
+        13
+      ],
+      "box": [
+        0,
+        168,
+        83,
+        61
+      ]
+    },
+    {
+      "id": "bursa",
+      "name": "Bursa",
+      "accept": [
+        "bursa",
+        "bursae",
+        "subtendinous bursa"
+      ],
+      "concept": "bursa",
+      "lines": [
+        20
+      ],
+      "box": [
+        0,
+        256,
+        56,
+        20
+      ]
+    },
+    {
+      "id": "trochlea",
+      "name": "Trochlea",
+      "accept": [
+        "trochlea",
+        "trochlea of humerus",
+        "trochlea of the humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        26
+      ],
+      "box": [
+        0,
+        307,
+        79,
+        20
+      ]
+    },
+    {
+      "id": "articular-cartilage-of-the-trochlear-notch",
+      "name": "Articular cartilage of the trochlear notch",
+      "accept": [
+        "articular cartilage",
+        "articular cartilage of trochlear notch",
+        "cartilage of the trochlear notch"
+      ],
+      "concept": "cartilage-example-sites",
+      "lines": [
+        29,
+        31,
+        33
+      ],
+      "box": [
+        0,
+        348,
+        129,
+        60
+      ]
+    },
+    {
+      "id": "olecranon-bursa",
+      "name": "Olecranon bursa",
+      "accept": [
+        "olecranon bursa"
+      ],
+      "concept": "bursa",
+      "lines": [
+        36
+      ],
+      "box": [
+        0,
+        418,
+        147,
+        20
+      ]
+    },
+    {
+      "id": "articular-capsule",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "lines": [
+        1,
+        2
+      ],
+      "box": [
+        436,
+        54,
+        80,
+        43
+      ]
+    },
+    {
+      "id": "synovial-membrane",
+      "name": "Synovial membrane",
+      "accept": [
+        "synovial membrane",
+        "synovium"
+      ],
+      "concept": "synovial-membrane",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        436,
+        110,
+        100,
+        40
+      ]
+    },
+    {
+      "id": "synovial-cavity",
+      "name": "Synovial cavity",
+      "accept": [
+        "synovial cavity",
+        "joint cavity"
+      ],
+      "concept": "synovial-joint-structure",
+      "lines": [
+        9,
+        12
+      ],
+      "box": [
+        436,
+        168,
+        81,
+        44
+      ]
+    },
+    {
+      "id": "articular-cartilage-of-trochlea",
+      "name": "Articular cartilage of trochlea",
+      "accept": [
+        "articular cartilage",
+        "articular cartilage of the trochlea",
+        "cartilage of trochlea"
+      ],
+      "concept": "cartilage-example-sites",
+      "lines": [
+        14,
+        16,
+        19
+      ],
+      "box": [
+        436,
+        213,
+        98,
+        61
+      ]
+    },
+    {
+      "id": "tendon-of-brachialis-muscle",
+      "name": "Tendon of brachialis muscle",
+      "accept": [
+        "tendon of branchialis muscle",
+        "brachialis tendon",
+        "tendon of brachialis",
+        "branchialis tendon"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        23,
+        25,
+        28
+      ],
+      "box": [
+        435,
+        283,
+        101,
+        60
+      ]
+    },
+    {
+      "id": "ulna",
+      "name": "Ulna",
+      "accept": [
+        "ulna"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        30
+      ],
+      "box": [
+        437,
+        361,
+        49,
+        19
+      ]
+    },
+    {
+      "id": "coronoid-process",
+      "name": "Coronoid process",
+      "accept": [
+        "coronoid process",
+        "coronoid process of ulna",
+        "coronoid process of the ulna"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        34,
+        37
+      ],
+      "box": [
+        436,
+        398,
+        86,
+        43
+      ]
+    },
+    {
+      "id": "humerus-lateral-view",
+      "name": "Humerus",
+      "accept": [
+        "humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        4
+      ],
+      "box": [
+        569,
+        104,
+        87,
+        19
+      ]
+    },
+    {
+      "id": "lateral-epicondyle",
+      "name": "Lateral epicondyle",
+      "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of humerus",
+        "lateral epicondyle of the humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        7
+      ],
+      "box": [
+        859,
+        152,
+        160,
+        23
+      ]
+    },
+    {
+      "id": "radius-lateral-view",
+      "name": "Radius",
+      "accept": [
+        "radius"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        10
+      ],
+      "box": [
+        1021,
+        188,
+        69,
+        20
+      ]
+    },
+    {
+      "id": "annular-ligament-lateral-view",
+      "name": "Annular ligament",
+      "accept": [
+        "annular ligament",
+        "annular ligament of radius",
+        "orbicular ligament"
+      ],
+      "concept": "other-named-joints",
+      "lines": [
+        15,
+        18
+      ],
+      "box": [
+        1020,
+        231,
+        82,
+        44
+      ]
+    },
+    {
+      "id": "articular-capsule-lateral-view",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "lines": [
+        17,
+        21
+      ],
+      "box": [
+        568,
+        244,
+        81,
+        43
+      ]
+    },
+    {
+      "id": "radial-collateral-ligament",
+      "name": "Radial collateral ligament",
+      "accept": [
+        "radial collateral ligament",
+        "lateral collateral ligament",
+        "lateral collateral ligament of elbow"
+      ],
+      "concept": "other-named-joints",
+      "lines": [
+        22,
+        24,
+        27
+      ],
+      "box": [
+        1020,
+        279,
+        82,
+        64
+      ]
+    },
+    {
+      "id": "ulna-lateral-view",
+      "name": "Ulna",
+      "accept": [
+        "ulna"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        32
+      ],
+      "box": [
+        1021,
+        376,
+        49,
+        19
+      ]
+    },
+    {
+      "id": "olecranon-process",
+      "name": "Olecranon process",
+      "accept": [
+        "olecranon process",
+        "olecranon"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        35,
+        38
+      ],
+      "box": [
+        570,
+        398,
+        97,
+        43
+      ]
+    },
+    {
+      "id": "articular-capsule-medial-view",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "lines": [
+        41
+      ],
+      "box": [
+        336,
+        574,
+        149,
+        23
+      ]
+    },
+    {
+      "id": "annular-ligament-medial-view",
+      "name": "Annular ligament",
+      "accept": [
+        "annular ligament",
+        "annular ligament of radius",
+        "orbicular ligament"
+      ],
+      "concept": "other-named-joints",
+      "lines": [
+        42
+      ],
+      "box": [
+        336,
+        613,
+        151,
+        23
+      ]
+    },
+    {
+      "id": "radius-medial-view",
+      "name": "Radius",
+      "accept": [
+        "radius"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        43
+      ],
+      "box": [
+        468,
+        699,
+        69,
+        19
+      ]
+    },
+    {
+      "id": "ulnar-collateral-ligament",
+      "name": "Ulnar collateral ligament",
+      "accept": [
+        "ulnar collateral ligament",
+        "ucl",
+        "medial collateral ligament of elbow"
+      ],
+      "concept": "other-named-joints",
+      "lines": [
+        44,
+        45,
+        46
+      ],
+      "box": [
+        0,
+        716,
+        82,
+        64
+      ]
+    },
+    {
+      "id": "ulna-medial-view",
+      "name": "Ulna",
+      "accept": [
+        "ulna"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        47
+      ],
+      "box": [
+        468,
+        783,
+        50,
+        19
+      ]
+    },
+    {
+      "id": "coronoid-process-medial-view",
+      "name": "Coronoid process",
+      "accept": [
+        "coronoid process",
+        "coronoid process of ulna",
+        "coronoid process of the ulna"
+      ],
+      "concept": "radius-ulna",
+      "lines": [
+        48
+      ],
+      "box": [
+        344,
+        852,
+        156,
+        23
+      ]
+    }
+  ]
+}

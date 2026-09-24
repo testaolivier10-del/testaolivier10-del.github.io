@@ -1,0 +1,666 @@
+{
+  "figure": "os-11-25",
+  "labels": [
+    {
+      "id": "biceps-brachii-short-head",
+      "name": "Biceps brachii (short head)",
+      "accept": [
+        "short head of biceps",
+        "short head of biceps brachii",
+        "biceps short head"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        370,
+        87,
+        119,
+        41
+      ]
+    },
+    {
+      "id": "triceps-brachii-lateral-head",
+      "name": "Triceps brachii (lateral head)",
+      "accept": [
+        "lateral head of triceps",
+        "lateral head of triceps brachii",
+        "triceps lateral head"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        2,
+        3
+      ],
+      "box": [
+        695,
+        106,
+        124,
+        42
+      ]
+    },
+    {
+      "id": "biceps-brachii-long-head",
+      "name": "Biceps brachii (long head)",
+      "accept": [
+        "long head of biceps",
+        "long head of biceps brachii",
+        "biceps long head"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        4,
+        5
+      ],
+      "box": [
+        370,
+        140,
+        119,
+        42
+      ]
+    },
+    {
+      "id": "triceps-brachii-long-head",
+      "name": "Triceps brachii (long head)",
+      "accept": [
+        "long head of triceps",
+        "long head of triceps brachii",
+        "triceps long head"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        6,
+        7
+      ],
+      "box": [
+        966,
+        260,
+        123,
+        42
+      ]
+    },
+    {
+      "id": "brachialis",
+      "name": "Brachialis",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        8
+      ],
+      "box": [
+        121,
+        354,
+        87,
+        19
+      ]
+    },
+    {
+      "id": "triceps-brachii",
+      "name": "Triceps brachii",
+      "accept": [
+        "triceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        11
+      ],
+      "box": [
+        697,
+        459,
+        123,
+        23
+      ]
+    },
+    {
+      "id": "biceps-brachii",
+      "name": "Biceps brachii",
+      "accept": [
+        "biceps"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        12
+      ],
+      "box": [
+        288,
+        469,
+        120,
+        22
+      ]
+    },
+    {
+      "id": "brachioradialis",
+      "name": "Brachioradialis",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        13
+      ],
+      "box": [
+        501,
+        480,
+        125,
+        19
+      ]
+    },
+    {
+      "id": "extensor-carpi-radialis-longus",
+      "name": "Extensor carpi radialis longus",
+      "accept": [
+        "ecrl"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        14
+      ],
+      "box": [
+        581,
+        509,
+        238,
+        23
+      ]
+    },
+    {
+      "id": "extensor-carpi-radialis-brevis",
+      "name": "Extensor carpi radialis brevis",
+      "accept": [
+        "ecrb"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        15
+      ],
+      "box": [
+        581,
+        558,
+        233,
+        23
+      ]
+    },
+    {
+      "id": "lateral-epicondyle",
+      "name": "Lateral epicondyle of humerus",
+      "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        16,
+        18,
+        20
+      ],
+      "box": [
+        993,
+        581,
+        99,
+        57
+      ]
+    },
+    {
+      "id": "pronator-teres",
+      "name": "Pronator teres",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        17
+      ],
+      "box": [
+        346,
+        583,
+        122,
+        19
+      ]
+    },
+    {
+      "id": "abductor-pollicis-longus",
+      "name": "Abductor pollicis longus",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        19
+      ],
+      "box": [
+        580,
+        609,
+        195,
+        23
+      ]
+    },
+    {
+      "id": "flexor-carpi-radialis",
+      "name": "Flexor carpi radialis",
+      "accept": [
+        "fcr"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        21,
+        23
+      ],
+      "box": [
+        56,
+        622,
+        102,
+        38
+      ]
+    },
+    {
+      "id": "extensor-pollicis-brevis",
+      "name": "Extensor pollicis brevis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        22
+      ],
+      "box": [
+        581,
+        633,
+        187,
+        23
+      ]
+    },
+    {
+      "id": "anconeus",
+      "name": "Anconeus",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        24
+      ],
+      "box": [
+        934,
+        656,
+        90,
+        19
+      ]
+    },
+    {
+      "id": "extensor-pollicis-longus",
+      "name": "Extensor pollicis longus",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        25,
+        27
+      ],
+      "box": [
+        581,
+        657,
+        137,
+        43
+      ]
+    },
+    {
+      "id": "palmaris-longus",
+      "name": "Palmaris longus",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        26
+      ],
+      "box": [
+        56,
+        672,
+        135,
+        23
+      ]
+    },
+    {
+      "id": "extensor-carpi-ulnaris",
+      "name": "Extensor carpi ulnaris",
+      "accept": [
+        "ecu"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        28,
+        29
+      ],
+      "box": [
+        935,
+        686,
+        123,
+        38
+      ]
+    },
+    {
+      "id": "flexor-carpi-ulnaris",
+      "name": "Flexor carpi ulnaris",
+      "accept": [
+        "fcu"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        30
+      ],
+      "box": [
+        56,
+        708,
+        159,
+        22
+      ]
+    },
+    {
+      "id": "extensor-digitorum",
+      "name": "Extensor digitorum",
+      "accept": [
+        "extensor digitorum communis"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        32
+      ],
+      "box": [
+        935,
+        736,
+        156,
+        23
+      ]
+    },
+    {
+      "id": "flexor-digitorum-superficialis",
+      "name": "Flexor digitorum superficialis",
+      "accept": [
+        "fds"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        33
+      ],
+      "box": [
+        56,
+        762,
+        231,
+        23
+      ]
+    },
+    {
+      "id": "extensor-digiti-minimi",
+      "name": "Extensor digiti minimi",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        34,
+        35
+      ],
+      "box": [
+        935,
+        768,
+        120,
+        39
+      ]
+    },
+    {
+      "id": "lateral-epicondyle-deep",
+      "name": "Lateral epicondyle of humerus",
+      "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        38
+      ],
+      "box": [
+        446,
+        908,
+        244,
+        23
+      ]
+    },
+    {
+      "id": "medial-epicondyle",
+      "name": "Medial epicondyle of humerus",
+      "accept": [
+        "medial epicondyle",
+        "medial epicondyle of the humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        39
+      ],
+      "box": [
+        250,
+        932,
+        242,
+        23
+      ]
+    },
+    {
+      "id": "supinator",
+      "name": "Supinator",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        40
+      ],
+      "box": [
+        525,
+        955,
+        87,
+        23
+      ]
+    },
+    {
+      "id": "flexor-pollicis-longus",
+      "name": "Flexor pollicis longus",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        41
+      ],
+      "box": [
+        288,
+        1000,
+        173,
+        22
+      ]
+    },
+    {
+      "id": "abductor-pollicis-longus-deep",
+      "name": "Abductor pollicis longus",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        42
+      ],
+      "box": [
+        563,
+        1043,
+        194,
+        22
+      ]
+    },
+    {
+      "id": "brachialis-cut",
+      "name": "Brachialis (cut)",
+      "accept": [
+        "brachialis"
+      ],
+      "concept": "arm-muscles",
+      "lines": [
+        43,
+        45
+      ],
+      "box": [
+        56,
+        1044,
+        87,
+        41
+      ]
+    },
+    {
+      "id": "medial-epicondyle-dorsal",
+      "name": "Medial epicondyle of humerus",
+      "accept": [
+        "medial epicondyle",
+        "medial epicondyle of the humerus"
+      ],
+      "concept": "humerus",
+      "lines": [
+        44,
+        46,
+        48
+      ],
+      "box": [
+        992,
+        1057,
+        100,
+        58
+      ]
+    },
+    {
+      "id": "pronator-quadratus",
+      "name": "Pronator quadratus",
+      "accept": [],
+      "concept": "arm-muscles",
+      "lines": [
+        47
+      ],
+      "box": [
+        376,
+        1086,
+        160,
+        22
+      ]
+    },
+    {
+      "id": "extensor-pollicis-longus-deep",
+      "name": "Extensor pollicis longus",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        49
+      ],
+      "box": [
+        564,
+        1097,
+        192,
+        23
+      ]
+    },
+    {
+      "id": "flexor-digitorum-profundus",
+      "name": "Flexor digitorum profundus",
+      "accept": [
+        "fdp"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        50,
+        51
+      ],
+      "box": [
+        55,
+        1100,
+        136,
+        42
+      ]
+    },
+    {
+      "id": "flexor-digitorum-profundus-dorsal",
+      "name": "Flexor digitorum profundus",
+      "accept": [
+        "fdp"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        52,
+        55,
+        58
+      ],
+      "box": [
+        970,
+        1134,
+        90,
+        61
+      ]
+    },
+    {
+      "id": "extensor-pollicis-brevis-deep",
+      "name": "Extensor pollicis brevis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        53,
+        56
+      ],
+      "box": [
+        509,
+        1147,
+        137,
+        38
+      ]
+    },
+    {
+      "id": "flexor-retinaculum",
+      "name": "Flexor retinaculum (cut)",
+      "accept": [
+        "flexor retinaculum",
+        "transverse carpal ligament"
+      ],
+      "concept": "hand-bones",
+      "lines": [
+        54,
+        57
+      ],
+      "box": [
+        57,
+        1152,
+        153,
+        42
+      ]
+    },
+    {
+      "id": "flexor-carpi-ulnaris-deep",
+      "name": "Flexor carpi ulnaris",
+      "accept": [
+        "fcu"
+      ],
+      "concept": "forearm-muscles",
+      "lines": [
+        59
+      ],
+      "box": [
+        910,
+        1203,
+        158,
+        23
+      ]
+    },
+    {
+      "id": "extensor-indicis",
+      "name": "Extensor indicis",
+      "accept": [],
+      "concept": "forearm-muscles",
+      "lines": [
+        60
+      ],
+      "box": [
+        933,
+        1236,
+        133,
+        19
+      ]
+    },
+    {
+      "id": "extensor-retinaculum",
+      "name": "Extensor retinaculum",
+      "accept": [],
+      "concept": null,
+      "lines": [
+        61,
+        62
+      ],
+      "box": [
+        782,
+        1249,
+        101,
+        38
+      ]
+    }
+  ]
+}

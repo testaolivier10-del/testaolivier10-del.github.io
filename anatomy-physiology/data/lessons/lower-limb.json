@@ -1,0 +1,48 @@
+{
+  "topic": "lower-limb",
+  "hook": "<p>Mrs. Alvarez, 82, trips on a rug and lands on her left side. She cannot stand, and her left foot is turned outward, the leg a little shorter than the right. Her family says she has \"broken her hip\", but the X-ray shows her pelvis is intact. The break is in the narrow neck of her thigh bone, the weakest point on the path her body weight takes to the ground.</p>",
+  "prereq": [
+    {
+      "q": "What is a trochanter?",
+      "options": ["A large, blunt bump found only on the femur", "A small hole for a nerve", "A smooth hollow that holds another bone"],
+      "correct": 0,
+      "why": "A trochanter is a very large, blunt bump; the femur is the only bone that has them. A small hole is a foramen, and a smooth hollow is a fossa.",
+      "review": "bone-structure"
+    },
+    {
+      "q": "Which bone forms the back of the bony pelvis between the two hip bones?",
+      "options": ["The fifth lumbar vertebra", "The sacrum", "The coccyx alone"],
+      "correct": 1,
+      "why": "The sacrum, five fused vertebrae, is wedged between the two hip bones at the back. The coccyx hangs below it, and L5 sits above it.",
+      "review": "vertebral-column"
+    },
+    {
+      "q": "How many phalanges are in one hand?",
+      "options": ["10", "14", "15"],
+      "correct": 1,
+      "why": "The thumb has 2 phalanges and each finger has 3, for 14. The foot follows the same pattern.",
+      "review": "upper-limb"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-8-13",
+    "caption": "The right hip bone from the outside and the inside. Hide the labels, name the ilium, ischium and pubis, then find the acetabulum, the crest, the spines, the notches and the obturator foramen."
+  },
+  "chain": [
+    { "cause": "The weight of the trunk presses down on the wedge-shaped sacrum.", "effect": "The sacrum is driven down between the two hip bones, and the strong ligaments behind it tighten and lock it in place." },
+    { "cause": "The hip bones take the load from the sacrum.", "effect": "Thick bone of each ilium carries it around to the acetabulum." },
+    { "cause": "The acetabulum presses down on the head of the femur.", "effect": "The load travels through the angled femoral neck into the shaft, bending the neck, which is the femur's weak point." },
+    { "cause": "The femoral condyles rest on the condyles of the tibia.", "effect": "The tibia carries almost all of the load down the leg to the talus." },
+    { "cause": "The talus passes the load to the calcaneus behind and along the arches in front.", "effect": "Body weight is spread between the heel and the ball of the foot." }
+  ],
+  "misconception": {
+    "wrong": "A \"broken hip\" is a break in the hip bone of the pelvis.",
+    "right": "In older adults, a \"broken hip\" almost always means a break at the top of the femur: through the femoral neck or between the greater and lesser trochanters. The hip bone itself can break too, but that injury is usually called a pelvic fracture. The femoral neck breaks so often because it is narrow, it carries body weight at an angle, and in osteoporosis its spongy bone thins."
+  },
+  "check": ["anp-lower-limb-1", "anp-lower-limb-7", "anp-lower-limb-11", "anp-lower-limb-16", "anp-lower-limb-17", "anp-lower-limb-19", "anp-lower-limb-21"],
+  "summary": "<p>The pelvic girdle is two hip bones, each made of the ilium, ischium and pubis fused at the acetabulum. With the sacrum and coccyx they form the bony pelvis; the pelvic brim divides the greater pelvis from the lesser pelvis, and the average female pelvis is wider and shallower, with a round inlet and a wide subpubic angle. The femur has a head, neck, two trochanters, the linea aspera and two condyles; the patella is a sesamoid bone at the knee. The tibia is medial and bears the weight, and the fibula is lateral and thin; their malleoli grip the talus. The foot has 7 tarsals, 5 metatarsals and 14 phalanges arranged in arches held in part by the plantar aponeurosis.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" }
+  ]
+}

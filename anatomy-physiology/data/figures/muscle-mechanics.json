@@ -11,7 +11,10 @@
     "alt": "Two drawings of a bent arm holding a glass. In the first, the long muscle on the front of the upper arm runs from the shoulder to the forearm, with arrows showing it pulling upward, and a second muscle runs along the thumb side of the forearm. In the second, the front muscle is cut away to show a deeper muscle beneath it that crosses the elbow.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.2",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 867,
+    "ext": "jpg"
   },
   "os-11-3": {
     "source": "openstax",
@@ -25,6 +28,9 @@
     "alt": "A front view of the whole muscular system with boxes drawn around seven muscles, each enlarged around the edge: a ring of muscle around the mouth, a fan-shaped chest muscle, a thick feathered muscle capping the shoulder, a spindle-shaped arm muscle with its belly and tendons marked, a forearm muscle with fibers slanting into one side of a tendon, a front-of-thigh muscle with fibers slanting into both sides of a central tendon, and a long strap-like muscle crossing the thigh.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.3",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1082,
+    "ext": "jpg"
   }
 }

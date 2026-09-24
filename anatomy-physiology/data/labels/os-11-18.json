@@ -1,0 +1,198 @@
+{
+  "figure": "os-11-18",
+  "labels": [
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "collarbone"
+      ],
+      "concept": "pectoral-girdle",
+      "lines": [
+        0
+      ],
+      "box": [
+        4,
+        27,
+        75,
+        19
+      ]
+    },
+    {
+      "id": "pectoralis-minor",
+      "name": "Pectoralis minor",
+      "accept": [
+        "pec minor"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        1
+      ],
+      "box": [
+        523,
+        89,
+        141,
+        20
+      ]
+    },
+    {
+      "id": "ribs",
+      "name": "Ribs",
+      "accept": [
+        "rib"
+      ],
+      "concept": "ribs",
+      "lines": [
+        2
+      ],
+      "box": [
+        4,
+        96,
+        48,
+        19
+      ]
+    },
+    {
+      "id": "innermost-intercostal",
+      "name": "Innermost intercostal",
+      "accept": [
+        "innermost intercostals"
+      ],
+      "concept": "breathing-muscles",
+      "lines": [
+        3,
+        4
+      ],
+      "box": [
+        669,
+        126,
+        94,
+        39
+      ]
+    },
+    {
+      "id": "pectoralis-major",
+      "name": "Pectoralis major (dissected)",
+      "accept": [
+        "pectoralis major",
+        "pec major"
+      ],
+      "concept": "shoulder-muscles",
+      "lines": [
+        5,
+        6
+      ],
+      "box": [
+        3,
+        178,
+        142,
+        43
+      ]
+    },
+    {
+      "id": "internal-intercostal",
+      "name": "Internal intercostal",
+      "accept": [
+        "internal intercostals"
+      ],
+      "concept": "breathing-muscles",
+      "lines": [
+        7,
+        8
+      ],
+      "box": [
+        4,
+        250,
+        95,
+        39
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "breastbone"
+      ],
+      "concept": "sternum",
+      "lines": [
+        9
+      ],
+      "box": [
+        3,
+        331,
+        81,
+        19
+      ]
+    },
+    {
+      "id": "serratus-anterior",
+      "name": "Serratus anterior",
+      "accept": [],
+      "concept": "shoulder-muscles",
+      "lines": [
+        10,
+        11
+      ],
+      "box": [
+        583,
+        384,
+        80,
+        40
+      ]
+    },
+    {
+      "id": "external-intercostals",
+      "name": "External intercostals",
+      "accept": [
+        "external intercostal"
+      ],
+      "concept": "breathing-muscles",
+      "lines": [
+        12,
+        13
+      ],
+      "box": [
+        4,
+        414,
+        104,
+        40
+      ]
+    },
+    {
+      "id": "external-intercostal",
+      "name": "External intercostal",
+      "accept": [
+        "external intercostals"
+      ],
+      "concept": "breathing-muscles",
+      "lines": [
+        14,
+        15
+      ],
+      "box": [
+        966,
+        493,
+        94,
+        39
+      ]
+    },
+    {
+      "id": "internal-intercostal-inset",
+      "name": "Internal intercostal",
+      "accept": [
+        "internal intercostals"
+      ],
+      "concept": "breathing-muscles",
+      "lines": [
+        16,
+        17
+      ],
+      "box": [
+        783,
+        541,
+        94,
+        40
+      ]
+    }
+  ]
+}

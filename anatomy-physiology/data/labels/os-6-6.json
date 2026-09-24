@@ -1,0 +1,224 @@
+{
+  "figure": "os-6-6",
+  "labels": [
+    {
+      "id": "flat-bone",
+      "name": "Flat bone",
+      "accept": [
+        "flat bone",
+        "flat"
+      ],
+      "concept": "bone-shapes",
+      "lines": [
+        0
+      ],
+      "box": [
+        134,
+        4,
+        90,
+        20
+      ]
+    },
+    {
+      "id": "irregular-bone",
+      "name": "Irregular bone",
+      "accept": [
+        "irregular bone",
+        "irregular"
+      ],
+      "concept": "bone-shapes",
+      "lines": [
+        1
+      ],
+      "box": [
+        772,
+        4,
+        128,
+        24
+      ]
+    },
+    {
+      "id": "vertebra",
+      "name": "Vertebra",
+      "accept": [
+        "vertebra",
+        "vertebrae"
+      ],
+      "concept": null,
+      "lines": [
+        2
+      ],
+      "box": [
+        888,
+        101,
+        84,
+        19
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "sternum",
+        "breastbone"
+      ],
+      "concept": "sternum",
+      "lines": [
+        3
+      ],
+      "box": [
+        36,
+        184,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "long-bone",
+      "name": "Long bone",
+      "accept": [
+        "long bone",
+        "long"
+      ],
+      "concept": "bone-shapes",
+      "lines": [
+        4
+      ],
+      "box": [
+        0,
+        364,
+        97,
+        24
+      ]
+    },
+    {
+      "id": "short-bones",
+      "name": "Short bones",
+      "accept": [
+        "short bones",
+        "short bone",
+        "short"
+      ],
+      "concept": "bone-shapes",
+      "lines": [
+        5
+      ],
+      "box": [
+        784,
+        572,
+        114,
+        19
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "thighbone",
+        "thigh bone"
+      ],
+      "concept": "femur",
+      "lines": [
+        6
+      ],
+      "box": [
+        0,
+        650,
+        65,
+        20
+      ]
+    },
+    {
+      "id": "lateral-cuneiform",
+      "name": "Lateral cuneiform",
+      "accept": [
+        "lateral cuneiform"
+      ],
+      "concept": "foot-bones",
+      "lines": [
+        7,
+        8
+      ],
+      "box": [
+        604,
+        788,
+        94,
+        41
+      ]
+    },
+    {
+      "id": "sesamoid-bone",
+      "name": "Sesamoid bone",
+      "accept": [
+        "sesamoid bone",
+        "sesamoid"
+      ],
+      "concept": "bone-shapes",
+      "lines": [
+        9
+      ],
+      "box": [
+        111,
+        836,
+        142,
+        19
+      ]
+    },
+    {
+      "id": "intermediate-cuneiform",
+      "name": "Intermediate cuneiform",
+      "accept": [
+        "intermediate cuneiform",
+        "middle cuneiform"
+      ],
+      "concept": "foot-bones",
+      "lines": [
+        10,
+        11
+      ],
+      "box": [
+        604,
+        876,
+        117,
+        41
+      ]
+    },
+    {
+      "id": "medial-cuneiform",
+      "name": "Medial cuneiform",
+      "accept": [
+        "medial cuneiform"
+      ],
+      "concept": "foot-bones",
+      "lines": [
+        12,
+        13
+      ],
+      "box": [
+        604,
+        959,
+        94,
+        40
+      ]
+    },
+    {
+      "id": "patella",
+      "name": "Patella",
+      "accept": [
+        "patella",
+        "kneecap"
+      ],
+      "concept": "patella",
+      "lines": [
+        14
+      ],
+      "box": [
+        45,
+        999,
+        68,
+        20
+      ]
+    }
+  ]
+}

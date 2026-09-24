@@ -1,0 +1,32 @@
+{
+  "wound-healing": {
+    "def": "The overlapping stages that close a break in the skin: a clot and scab, inflammation, rebuilding with granulation tissue (new capillaries and fibroblasts), new epidermis and wound contraction, then months of remodeling into a scar. Closed edges heal by primary union; open wounds by secondary union. A keloid is a scar that grows beyond the wound.",
+    "roots": [["granul-", "little grain"], ["kel-", "claw-like"], ["-oid", "resembling"]],
+    "say": "KEE-loyd"
+  },
+  "burn-depth": {
+    "def": "Naming a burn by the deepest layer destroyed: superficial (first-degree, epidermis only), partial-thickness (second-degree, into the dermis, blistered and painful), full-thickness (third-degree, through the dermis, leathery and painless), and fourth-degree (into muscle, tendon or bone).",
+    "roots": [],
+    "say": ""
+  },
+  "rule-of-nines": {
+    "def": "A quick estimate of the burned share of body surface in an adult: head and neck 9%, each upper limb 9%, front and back of the trunk 18% each, each lower limb 18%, genital area 1%. Only partial- and full-thickness burns are counted; infants have a larger head share.",
+    "roots": [],
+    "say": ""
+  },
+  "burn-fluid-loss": {
+    "def": "The loss of water, salts and proteins from the blood after a large burn: water evaporates through the lost barrier and plasma leaks through damaged, leaky capillaries into the tissues, so blood volume and blood pressure fall, most in the first day.",
+    "roots": [],
+    "say": ""
+  },
+  "skin-cancer": {
+    "def": "Cancers of skin cells, mostly caused by UV damage to DNA. Basal cell carcinoma (from basal cells, most common, rarely spreads), squamous cell carcinoma (from keratinocytes) and melanoma (from melanocytes, rarest but deadliest because it spreads early).",
+    "roots": [["carcin-", "cancer"], ["-oma", "tumor"], ["melan-", "black"]],
+    "say": "mel-uh-NOH-muh"
+  },
+  "skin-disorders": {
+    "def": "Common skin conditions: pressure injury (bedsore) from compressed capillaries over bone; acne from plugged, inflamed follicles; stretch marks from torn dermal fibers; callus and corn from thickened stratum corneum; albinism (melanocytes make no melanin); vitiligo (melanocytes destroyed in patches); eczema (weak barrier with inflammation).",
+    "roots": [["albin-", "white"]],
+    "say": "vit-ih-LY-go"
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "figure": "os-9-16",
+  "labels": [
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "clavicle",
+        "collarbone",
+        "collar bone"
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        3,
+        27,
+        108,
+        29
+      ]
+    },
+    {
+      "id": "acromioclavicular-ligament",
+      "name": "Acromioclavicular ligament",
+      "accept": [
+        "acromioclavicular ligament",
+        "ac ligament"
+      ],
+      "concept": "named-small-joints",
+      "box": [
+        675,
+        24,
+        368,
+        34
+      ]
+    },
+    {
+      "id": "tendon-of-supraspinatus-muscle",
+      "name": "Tendon of supraspinatus muscle",
+      "accept": [
+        "supraspinatus tendon",
+        "tendon of supraspinatus",
+        "supraspinatus"
+      ],
+      "concept": "rotator-cuff",
+      "box": [
+        2,
+        99,
+        191,
+        100
+      ]
+    },
+    {
+      "id": "acromion-of-scapula",
+      "name": "Acromion of scapula",
+      "accept": [
+        "acromion",
+        "acromion process",
+        "acromion of the scapula"
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        769,
+        93,
+        276,
+        34
+      ]
+    },
+    {
+      "id": "coracoacromial-ligament",
+      "name": "Coracoacromial ligament",
+      "accept": [
+        "coracoacromial ligament",
+        "coraco-acromial ligament"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        844,
+        186,
+        212,
+        70
+      ]
+    },
+    {
+      "id": "glenoid-labrum",
+      "name": "Glenoid labrum",
+      "accept": [
+        "glenoid labrum",
+        "labrum",
+        "glenoidal labrum"
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        3,
+        224,
+        207,
+        29
+      ]
+    },
+    {
+      "id": "subacromial-bursa",
+      "name": "Subacromial bursa",
+      "accept": [
+        "subacromial bursa",
+        "subdeltoid bursa"
+      ],
+      "concept": "bursa",
+      "box": [
+        844,
+        268,
+        253,
+        28
+      ]
+    },
+    {
+      "id": "glenoid-cavity",
+      "name": "Glenoid cavity",
+      "accept": [
+        "glenoid cavity",
+        "glenoid fossa",
+        "glenoid"
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        3,
+        292,
+        192,
+        34
+      ]
+    },
+    {
+      "id": "articular-capsule",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        843,
+        325,
+        227,
+        34
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "scapula",
+        "shoulder blade"
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        4,
+        371,
+        112,
+        34
+      ]
+    },
+    {
+      "id": "tendon-sheath",
+      "name": "Tendon sheath",
+      "accept": [
+        "tendon sheath",
+        "synovial sheath",
+        "synovial tendon sheath"
+      ],
+      "concept": "bursa",
+      "box": [
+        843,
+        380,
+        200,
+        28
+      ]
+    },
+    {
+      "id": "articular-cartilage",
+      "name": "Articular cartilage",
+      "accept": [
+        "articular cartilage",
+        "hyaline cartilage"
+      ],
+      "concept": "cartilage-example-sites",
+      "box": [
+        3,
+        448,
+        245,
+        34
+      ]
+    },
+    {
+      "id": "tendon-of-biceps-brachii-long-head",
+      "name": "Tendon of biceps brachii muscle (long head)",
+      "accept": [
+        "tendon of biceps brachii muscles (long heed)",
+        "biceps tendon",
+        "long head of biceps tendon",
+        "tendon of biceps brachii",
+        "biceps brachii tendon",
+        "tendon of biceps brachii muscles (long head)"
+      ],
+      "concept": "arm-muscles",
+      "box": [
+        843,
+        437,
+        230,
+        106
+      ]
+    },
+    {
+      "id": "articular-capsule-heading",
+      "name": "Articular capsule",
+      "accept": [
+        "articular capsule",
+        "joint capsule",
+        "capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        3,
+        521,
+        256,
+        34
+      ]
+    },
+    {
+      "id": "synovial-membrane",
+      "name": "Synovial membrane",
+      "accept": [
+        "synovial membrane",
+        "synovium"
+      ],
+      "concept": "synovial-membrane",
+      "box": [
+        23,
+        557,
+        267,
+        34
+      ]
+    },
+    {
+      "id": "fibrous-membrane",
+      "name": "Fibrous membrane",
+      "accept": [
+        "fibrous membrane",
+        "fibrous layer",
+        "fibrous capsule"
+      ],
+      "concept": "synovial-joint-structure",
+      "box": [
+        24,
+        593,
+        253,
+        28
+      ]
+    },
+    {
+      "id": "head-of-humerus",
+      "name": "Head of humerus",
+      "accept": [
+        "head of humerus",
+        "head of the humerus",
+        "humeral head"
+      ],
+      "concept": "humerus",
+      "box": [
+        845,
+        572,
+        233,
+        28
+      ]
+    },
+    {
+      "id": "humerus",
+      "name": "Humerus",
+      "accept": [
+        "humerus",
+        "upper arm bone"
+      ],
+      "concept": "humerus",
+      "box": [
+        845,
+        627,
+        124,
+        27
+      ]
+    }
+  ]
+}

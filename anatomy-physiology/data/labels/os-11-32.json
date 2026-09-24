@@ -1,0 +1,355 @@
+{
+  "figure": "os-11-32",
+  "labels": [
+    {
+      "id": "gastrocnemius-lateral-head",
+      "name": "Gastrocnemius (lateral head)",
+      "accept": [
+        "lateral head of gastrocnemius",
+        "gastrocnemius lateral head"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        0,
+        1
+      ],
+      "box": [
+        411,
+        86,
+        134,
+        44
+      ]
+    },
+    {
+      "id": "tibialis-anterior",
+      "name": "Tibialis anterior",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        2
+      ],
+      "box": [
+        5,
+        131,
+        137,
+        20
+      ]
+    },
+    {
+      "id": "popliteus",
+      "name": "Popliteus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        3
+      ],
+      "box": [
+        779,
+        143,
+        86,
+        23
+      ]
+    },
+    {
+      "id": "gastrocnemius-medial-head",
+      "name": "Gastrocnemius (medial head)",
+      "accept": [
+        "medial head of gastrocnemius",
+        "gastrocnemius medial head"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        4,
+        6
+      ],
+      "box": [
+        411,
+        166,
+        134,
+        43
+      ]
+    },
+    {
+      "id": "fibularis-longus",
+      "name": "Fibularis longus",
+      "accept": [
+        "peroneus longus"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        5
+      ],
+      "box": [
+        7,
+        171,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "soleus-cut",
+      "name": "Soleus (cut)",
+      "accept": [
+        "soleus"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        7
+      ],
+      "box": [
+        779,
+        186,
+        108,
+        23
+      ]
+    },
+    {
+      "id": "extensor-digitorum-longus",
+      "name": "Extensor digitorum longus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        8,
+        10
+      ],
+      "box": [
+        6,
+        211,
+        163,
+        44
+      ]
+    },
+    {
+      "id": "fibularis-longus-deep",
+      "name": "Fibularis longus",
+      "accept": [
+        "peroneus longus"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        9
+      ],
+      "box": [
+        779,
+        229,
+        139,
+        23
+      ]
+    },
+    {
+      "id": "plantaris",
+      "name": "Plantaris",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        11
+      ],
+      "box": [
+        412,
+        249,
+        82,
+        20
+      ]
+    },
+    {
+      "id": "fibularis-brevis",
+      "name": "Fibularis brevis",
+      "accept": [
+        "peroneus brevis"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        12
+      ],
+      "box": [
+        7,
+        263,
+        132,
+        19
+      ]
+    },
+    {
+      "id": "tibialis-posterior",
+      "name": "Tibialis posterior",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        13
+      ],
+      "box": [
+        778,
+        271,
+        146,
+        24
+      ]
+    },
+    {
+      "id": "extensor-hallucis-longus",
+      "name": "Extensor hallucis longus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        14,
+        17
+      ],
+      "box": [
+        6,
+        297,
+        149,
+        44
+      ]
+    },
+    {
+      "id": "soleus",
+      "name": "Soleus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        15
+      ],
+      "box": [
+        411,
+        313,
+        68,
+        19
+      ]
+    },
+    {
+      "id": "flexor-digitorum-longus",
+      "name": "Flexor digitorum longus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        16,
+        18
+      ],
+      "box": [
+        779,
+        314,
+        141,
+        44
+      ]
+    },
+    {
+      "id": "fibularis-tertius",
+      "name": "Fibularis tertius",
+      "accept": [
+        "peroneus tertius"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        19
+      ],
+      "box": [
+        7,
+        354,
+        135,
+        19
+      ]
+    },
+    {
+      "id": "flexor-hallucis-longus",
+      "name": "Flexor hallucis longus",
+      "accept": [],
+      "concept": "leg-muscles",
+      "lines": [
+        20,
+        22
+      ],
+      "box": [
+        779,
+        379,
+        127,
+        44
+      ]
+    },
+    {
+      "id": "superior-extensor-retinaculum",
+      "name": "Superior extensor retinaculum",
+      "accept": [],
+      "concept": null,
+      "lines": [
+        21,
+        23
+      ],
+      "box": [
+        6,
+        393,
+        156,
+        39
+      ]
+    },
+    {
+      "id": "calcaneal-tendon",
+      "name": "Calcaneal (Achilles) tendon",
+      "accept": [
+        "calcaneal tendon",
+        "achilles tendon",
+        "achilles"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        24,
+        27
+      ],
+      "box": [
+        410,
+        441,
+        173,
+        40
+      ]
+    },
+    {
+      "id": "fibularis-brevis-deep",
+      "name": "Fibularis brevis",
+      "accept": [
+        "peroneus brevis"
+      ],
+      "concept": "leg-muscles",
+      "lines": [
+        25
+      ],
+      "box": [
+        779,
+        444,
+        133,
+        19
+      ]
+    },
+    {
+      "id": "inferior-extensor-retinaculum",
+      "name": "Inferior extensor retinaculum",
+      "accept": [],
+      "concept": null,
+      "lines": [
+        26,
+        28
+      ],
+      "box": [
+        6,
+        459,
+        143,
+        39
+      ]
+    },
+    {
+      "id": "calcaneus",
+      "name": "Calcaneus (heel)",
+      "accept": [
+        "calcaneus",
+        "heel bone",
+        "heel"
+      ],
+      "concept": "foot-bones",
+      "lines": [
+        29
+      ],
+      "box": [
+        411,
+        534,
+        149,
+        24
+      ]
+    }
+  ]
+}

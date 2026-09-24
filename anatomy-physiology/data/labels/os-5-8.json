@@ -1,0 +1,102 @@
+{
+  "figure": "os-5-8",
+  "labels": [
+    {
+      "id": "surface",
+      "name": "Surface",
+      "accept": [
+        "surface",
+        "skin surface",
+        "stratum corneum"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "epidermis",
+      "box": [
+        512,
+        128,
+        81,
+        21
+      ]
+    },
+    {
+      "id": "upper-keratinocytes",
+      "name": "Upper keratinocytes",
+      "accept": [
+        "upper keratinocytes",
+        "upper keratinocyte",
+        "keratinocytes",
+        "keratinocyte"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "keratinocyte",
+      "box": [
+        487,
+        340,
+        131,
+        49
+      ]
+    },
+    {
+      "id": "melanosomes",
+      "name": "Melanosomes",
+      "accept": [
+        "melanosomes",
+        "melanosome"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "melanocyte",
+      "box": [
+        484,
+        491,
+        137,
+        21
+      ]
+    },
+    {
+      "id": "basal-keratinocytes",
+      "name": "Basal keratinocytes",
+      "accept": [
+        "basal keratinocytes",
+        "basal keratinocyte",
+        "basal cells",
+        "basal cell"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "keratinocyte",
+      "box": [
+        487,
+        664,
+        131,
+        49
+      ]
+    },
+    {
+      "id": "melanocytes",
+      "name": "Melanocytes",
+      "accept": [
+        "melanocytes",
+        "melanocyte"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "melanocyte",
+      "box": [
+        490,
+        804,
+        125,
+        25
+      ]
+    }
+  ]
+}

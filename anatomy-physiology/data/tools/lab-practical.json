@@ -4560,6 +4560,3123 @@
    ]
   },
   {
+   "id": "synovial-joint-structure",
+   "title": "Synovial joint structure",
+   "chapter": "joints",
+   "topic": "synovial-joints",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-9-8",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "bone-upper",
+       "name": "Bone",
+       "accept": [
+        "bone tissue",
+        "osseous tissue"
+       ],
+       "box": [
+        0,
+        333,
+        78,
+        30
+       ],
+       "concept": "bone-tissue-basic",
+       "taught": "connective-tissue",
+       "fn": "The rigid bone on one side of the joint. At a synovial joint the two bone ends do not touch directly: each is capped with articular cartilage and separated by the joint cavity."
+      },
+      {
+       "id": "articular-capsule",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        912,
+        436,
+        124,
+        75
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The sleeve of connective tissue that encloses a synovial joint and joins its bones. Its outer fibrous membrane holds the bones together, and its inner synovial membrane lines the joint cavity and makes synovial fluid."
+      },
+      {
+       "id": "synovial-membrane-inner",
+       "name": "Synovial membrane (inner)",
+       "accept": [
+        "synovium",
+        "synovial layer"
+       ],
+       "box": [
+        913,
+        547,
+        158,
+        114
+       ],
+       "concept": "synovial-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "The thin inner layer of the articular capsule. It lines the joint cavity (but not the articular cartilage) and makes synovial fluid, which lubricates the joint and feeds the cartilage."
+      },
+      {
+       "id": "fibrous-membrane-outer",
+       "name": "Fibrous membrane (outer)",
+       "accept": [
+        "fibrous layer",
+        "fibrous capsule",
+        "fibrous layer of the articular capsule"
+       ],
+       "box": [
+        913,
+        690,
+        158,
+        114
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The tough outer layer of the articular capsule, made of dense connective tissue. It attaches to both bones and holds them together; thickened bands of it form ligaments."
+      },
+      {
+       "id": "joint-cavity-containing-synovial-fluid",
+       "name": "Joint cavity containing synovial fluid",
+       "accept": [
+        "joint cavity",
+        "synovial cavity",
+        "articular cavity",
+        "synovial fluid",
+        "joint space"
+       ],
+       "box": [
+        912,
+        848,
+        188,
+        115
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The narrow space between the bones of a synovial joint, the feature that defines a synovial joint. It holds a thin film of slippery synovial fluid that cuts friction and feeds the articular cartilage.",
+       "follow": {
+        "q": "Which feature is found in every synovial joint but in no fibrous or cartilaginous joint?",
+        "options": [
+         "A joint cavity between the bones",
+         "Hyaline cartilage joining the bones end to end",
+         "Dense connective tissue binding the bones together",
+         "A fibrocartilage pad joining the two bones"
+        ],
+        "correct": 0,
+        "why": "A synovial joint is defined by the fluid-filled joint cavity that separates its bones. Fibrous joints bind bones with dense connective tissue, and cartilaginous joints join them with hyaline cartilage or a fibrocartilage pad, with no space between.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [
+        "hyaline cartilage",
+        "joint cartilage"
+       ],
+       "box": [
+        0,
+        683,
+        124,
+        75
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The smooth layer of hyaline cartilage that caps the bone ends inside a synovial joint. It has no blood vessels; it lowers friction and absorbs compression as the bones move.",
+       "follow": {
+        "q": "Articular cartilage has no blood vessels. Where do its cells get their nutrients?",
+        "options": [
+         "From synovial fluid in the joint cavity",
+         "From blood vessels running through it",
+         "From yellow bone marrow in the shaft",
+         "From the dense fibrous membrane"
+        ],
+        "correct": 0,
+        "why": "Nutrients diffuse into articular cartilage from the synovial fluid that bathes it, helped by the squeezing and release of the cartilage as the joint moves. The cartilage has no vessels of its own, the fibrous membrane lies outside the cavity, and marrow in the shaft is sealed off by bone.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "bone-lower",
+       "name": "Bone",
+       "accept": [
+        "bone tissue",
+        "osseous tissue"
+       ],
+       "box": [
+        0,
+        912,
+        78,
+        30
+       ],
+       "concept": "bone-tissue-basic",
+       "taught": "connective-tissue",
+       "fn": "The bone on the other side of the joint. Its end is also capped with articular cartilage, and the articular capsule attaches around it, sealing the joint cavity."
+      }
+     ]
+    },
+    {
+     "figure": "os-9-10",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "ball-and-socket-joint",
+       "name": "Ball-and-socket joint (hip joint)",
+       "accept": [
+        "ball and socket",
+        "spheroidal joint",
+        "multiaxial joint"
+       ],
+       "box": [
+        631,
+        67,
+        211,
+        48
+       ],
+       "concept": "synovial-joint-types",
+       "taught": "synovial-joints",
+       "fn": "A rounded head fits into a cup-shaped socket, as at the hip and the shoulder. It moves around all three axes (multiaxial), so it is the most freely movable joint type."
+      },
+      {
+       "id": "pivot-joint",
+       "name": "Pivot joint (between C1 and C2 vertebrae)",
+       "accept": [
+        "pivot",
+        "trochoid joint",
+        "atlantoaxial joint"
+       ],
+       "box": [
+        115,
+        279,
+        190,
+        71
+       ],
+       "concept": "synovial-joint-types",
+       "taught": "synovial-joints",
+       "fn": "A rounded bone surface or peg turns inside a ring made of bone and ligament, allowing turning around one axis (uniaxial). Between C1 and C2 the dens of the axis turns inside the ring of the atlas as you shake your head."
+      },
+      {
+       "id": "hinge-joint",
+       "name": "Hinge joint (elbow)",
+       "accept": [
+        "hinge",
+        "ginglymus"
+       ],
+       "box": [
+        14,
+        692,
+        133,
+        48
+       ],
+       "concept": "synovial-joint-types",
+       "taught": "synovial-joints",
+       "fn": "A rounded surface fits into a trough-shaped one, so the joint only bends and straightens in one plane (uniaxial), like a door hinge. The elbow, the knee and the joints between finger bones are hinges.",
+       "follow": {
+        "q": "A joint lets its bones bend and straighten in only one plane, like a door. Which type of synovial joint is it?",
+        "options": [
+         "Hinge joint",
+         "Saddle joint",
+         "Ball-and-socket joint",
+         "Plane joint"
+        ],
+        "correct": 0,
+        "why": "A hinge joint fits a rounded surface into a trough, which allows movement in one plane only (uniaxial). A saddle joint moves in two planes, a ball-and-socket joint in all three, and a plane joint only glides a little.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "condyloid-joint",
+       "name": "Condyloid joint (between radius and carpal bones of wrist)",
+       "accept": [
+        "condyloid",
+        "ellipsoid joint",
+        "ellipsoidal joint",
+        "condylar joint"
+       ],
+       "box": [
+        875,
+        750,
+        227,
+        71
+       ],
+       "concept": "synovial-joint-types",
+       "taught": "synovial-joints",
+       "fn": "An oval, shallow knob fits into an oval depression, allowing movement in two planes (biaxial) but no turning. The joint between the radius and the carpal bones at the wrist is condyloid."
+      },
+      {
+       "id": "plane-joint",
+       "name": "Plane joint (between tarsal bones)",
+       "accept": [
+        "plane",
+        "gliding joint",
+        "planar joint",
+        "arthrodial joint"
+       ],
+       "box": [
+        801,
+        1056,
+        241,
+        48
+       ],
+       "concept": "synovial-joint-types",
+       "taught": "synovial-joints",
+       "fn": "Two flat or slightly curved surfaces slide over each other, allowing small gliding movements. The joints between the tarsal bones, and between the carpal bones, are plane joints."
+      },
+      {
+       "id": "saddle-joint",
+       "name": "Saddle joint (between trapezium carpal bone and 1st metacarpal bone)",
+       "accept": [
+        "saddle",
+        "sellar joint"
+       ],
+       "box": [
+        159,
+        1140,
+        212,
+        94
+       ],
+       "concept": "synovial-joint-types",
+       "taught": "synovial-joints",
+       "fn": "Each surface is saddle-shaped, curving up one way and down the other, so the two bones interlock and move in two planes (biaxial). The joint between the trapezium and the first metacarpal lets the thumb swing across the palm."
+      }
+     ]
+    },
+    {
+     "figure": "os-9-11",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "normal-hip-joint",
+       "name": "Normal hip joint",
+       "accept": [
+        "hip joint",
+        "healthy hip joint"
+       ],
+       "box": [
+        0,
+        74,
+        167,
+        27
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A healthy hip joint: smooth articular cartilage of even thickness covers the head of the femur and the socket, and a clear joint space separates the two bones."
+      },
+      {
+       "id": "decreased-joint-space",
+       "name": "Decreased joint space",
+       "accept": [
+        "narrowed joint space",
+        "joint space narrowing",
+        "narrowing of the joint space"
+       ],
+       "box": [
+        669,
+        52,
+        131,
+        56
+       ],
+       "concept": "osteoarthritis",
+       "taught": "synovial-joints",
+       "fn": "In osteoarthritis the articular cartilage wears thin, so the gap between the bone ends narrows. On an X-ray this narrowed joint space is a key sign of cartilage loss."
+      },
+      {
+       "id": "exposed-bone",
+       "name": "Exposed bone",
+       "accept": [
+        "bare bone"
+       ],
+       "box": [
+        519,
+        171,
+        165,
+        29
+       ],
+       "concept": "osteoarthritis",
+       "taught": "synovial-joints",
+       "fn": "Where the articular cartilage has worn through, bone grinds on bone. The exposed bone surfaces thicken and can grow spurs, causing pain and stiffness."
+      },
+      {
+       "id": "worn-cartilage",
+       "name": "Worn cartilage",
+       "accept": [
+        "worn articular cartilage",
+        "eroded cartilage"
+       ],
+       "box": [
+        517,
+        266,
+        105,
+        56
+       ],
+       "concept": "osteoarthritis",
+       "taught": "synovial-joints",
+       "fn": "In osteoarthritis the articular cartilage breaks down with years of load, becoming rough, cracked and thin. It has no blood vessels, so it repairs poorly.",
+       "follow": {
+        "q": "Why does worn articular cartilage in osteoarthritis heal so poorly?",
+        "options": [
+         "It has no blood vessels",
+         "It is replaced every few days",
+         "It is made of bone tissue",
+         "Synovial fluid dissolves new cartilage"
+        ],
+        "correct": 0,
+        "why": "Articular cartilage has no blood supply, so few repair cells and nutrients reach damaged areas, and lost cartilage is not rebuilt. It is not bone, it is not quickly replaced, and synovial fluid feeds cartilage rather than dissolving it.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-9-15",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "articular-disc",
+       "name": "Articular disc",
+       "accept": [
+        "articular disk",
+        "disc",
+        "meniscus"
+       ],
+       "box": [
+        553,
+        351,
+        205,
+        32
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "A pad of fibrocartilage inside the temporomandibular joint that splits the joint cavity into upper and lower spaces. It helps the bone surfaces fit and cushions the joint as you chew."
+      },
+      {
+       "id": "mandibular-fossa",
+       "name": "Mandibular fossa",
+       "accept": [
+        "glenoid fossa"
+       ],
+       "box": [
+        22,
+        413,
+        178,
+        73
+       ],
+       "concept": "skull-landmarks",
+       "taught": "skull",
+       "fn": "The depression in the temporal bone that holds the mandibular condyle, forming the upper surface of the temporomandibular joint."
+      },
+      {
+       "id": "superior-joint-cavity",
+       "name": "Superior joint cavity",
+       "accept": [
+        "upper joint cavity",
+        "superior synovial cavity"
+       ],
+       "box": [
+        22,
+        552,
+        168,
+        81
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The fluid-filled space above the articular disc, between the disc and the temporal bone. Gliding of the disc and condyle forward, as when you open wide or jut the jaw, happens mainly here."
+      },
+      {
+       "id": "inferior-joint-cavity",
+       "name": "Inferior joint cavity",
+       "accept": [
+        "lower joint cavity",
+        "inferior synovial cavity"
+       ],
+       "box": [
+        22,
+        696,
+        168,
+        80
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The fluid-filled space below the articular disc, between the disc and the mandibular condyle. The hinge-like swing of opening and closing the mouth happens mainly here."
+      },
+      {
+       "id": "mandibular-condyle",
+       "name": "Mandibular condyle",
+       "accept": [
+        "condyle of the mandible",
+        "condylar process",
+        "condylar process of the mandible",
+        "head of the mandible"
+       ],
+       "box": [
+        23,
+        846,
+        177,
+        80
+       ],
+       "concept": "skull-landmarks",
+       "taught": "skull",
+       "fn": "The rounded knob at the back of the upper end of the mandible. It sits in the mandibular fossa, with the articular disc between them, forming the temporomandibular joint."
+      },
+      {
+       "id": "articular-tubercle",
+       "name": "Articular tubercle",
+       "accept": [
+        "articular eminence"
+       ],
+       "box": [
+        941,
+        556,
+        135,
+        74
+       ],
+       "concept": null,
+       "fn": "The rounded ridge of the temporal bone just in front of the mandibular fossa. When you open your mouth wide, the condyle and disc glide forward onto it."
+      },
+      {
+       "id": "articular-capsule",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        941,
+        746,
+        135,
+        79
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The loose connective tissue capsule that encloses the temporomandibular joint, attaching to the temporal bone above and the neck of the mandible below."
+      }
+     ],
+     "covered": [
+      {
+       "id": "ramus-of-mandible",
+       "box": [
+        943,
+        964,
+        152,
+        74
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-9-16",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "clavicle",
+       "name": "Clavicle",
+       "accept": [
+        "collarbone",
+        "collar bone"
+       ],
+       "box": [
+        3,
+        27,
+        108,
+        29
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The collarbone. Its outer end meets the acromion of the scapula at the acromioclavicular joint, holding the shoulder out to the side."
+      },
+      {
+       "id": "acromioclavicular-ligament",
+       "name": "Acromioclavicular ligament",
+       "accept": [
+        "ac ligament"
+       ],
+       "box": [
+        675,
+        24,
+        368,
+        34
+       ],
+       "concept": "named-small-joints",
+       "taught": "synovial-joints",
+       "fn": "The band of connective tissue across the top of the acromioclavicular joint, binding the clavicle to the acromion of the scapula."
+      },
+      {
+       "id": "acromion-of-scapula",
+       "name": "Acromion of scapula",
+       "accept": [
+        "acromion",
+        "acromion process",
+        "acromion of the scapula"
+       ],
+       "box": [
+        769,
+        93,
+        276,
+        34
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The flat bony tip of the scapula at the top of the shoulder. It forms a roof over the glenohumeral joint and meets the clavicle."
+      },
+      {
+       "id": "coracoacromial-ligament",
+       "name": "Coracoacromial ligament",
+       "accept": [
+        "coraco-acromial ligament"
+       ],
+       "box": [
+        844,
+        186,
+        212,
+        70
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A ligament from the coracoid process to the acromion of the scapula. Together they form an arch over the head of the humerus that blocks it from dislocating upward."
+      },
+      {
+       "id": "glenoid-labrum",
+       "name": "Glenoid labrum",
+       "accept": [
+        "labrum",
+        "glenoidal labrum"
+       ],
+       "box": [
+        3,
+        224,
+        207,
+        29
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A ring of fibrocartilage around the rim of the glenoid cavity. It deepens the shallow socket so the head of the humerus sits more securely.",
+       "follow": {
+        "q": "Why does the shoulder dislocate more often than the hip?",
+        "options": [
+         "A shallow socket and a loose capsule",
+         "It has no articular capsule at all",
+         "It is a hinge joint rather than a ball-and-socket joint",
+         "Its bone ends carry no articular cartilage"
+        ],
+        "correct": 0,
+        "why": "The glenoid cavity is small and shallow even with its labrum, and the shoulder's capsule is loose, so the head of the humerus is held mostly by surrounding tendons and muscles. That buys a wide range of motion at the cost of stability. The shoulder is a ball-and-socket joint with a capsule and articular cartilage, like the hip; the hip is simply deeper and more tightly bound.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "subacromial-bursa",
+       "name": "Subacromial bursa",
+       "accept": [
+        "subdeltoid bursa"
+       ],
+       "box": [
+        844,
+        268,
+        253,
+        28
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A fluid-filled sac between the acromion and the tendons that cross the top of the shoulder joint. It lets those tendons slide under the bony roof with little friction."
+      },
+      {
+       "id": "glenoid-cavity",
+       "name": "Glenoid cavity",
+       "accept": [
+        "glenoid fossa",
+        "glenoid"
+       ],
+       "box": [
+        3,
+        292,
+        192,
+        34
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The shallow socket on the side of the scapula that receives the head of the humerus. It is much smaller than the head, which lets the shoulder move freely but makes it less stable."
+      },
+      {
+       "id": "articular-capsule",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        843,
+        325,
+        227,
+        34
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The loose capsule surrounding the glenohumeral joint. Its slack allows the shoulder's wide range of motion, so the joint relies on the surrounding tendons and muscles for stability."
+      },
+      {
+       "id": "scapula",
+       "name": "Scapula",
+       "accept": [
+        "shoulder blade"
+       ],
+       "box": [
+        4,
+        371,
+        112,
+        34
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The shoulder blade. Its glenoid cavity forms the socket of the shoulder (glenohumeral) joint, and its acromion forms the roof above it."
+      },
+      {
+       "id": "tendon-sheath",
+       "name": "Tendon sheath",
+       "accept": [
+        "synovial sheath",
+        "synovial tendon sheath"
+       ],
+       "box": [
+        843,
+        380,
+        200,
+        28
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A tube of synovial membrane wrapped around a tendon where it rubs on bone. Fluid inside lets the tendon glide; here it surrounds the tendon running in the groove on the front of the humerus."
+      },
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [
+        "hyaline cartilage"
+       ],
+       "box": [
+        3,
+        448,
+        245,
+        34
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The smooth layer of hyaline cartilage that caps the bone ends inside a synovial joint. It has no blood vessels; it lowers friction and absorbs compression as the bones move."
+      },
+      {
+       "id": "synovial-membrane",
+       "name": "Synovial membrane",
+       "accept": [
+        "synovium"
+       ],
+       "box": [
+        23,
+        557,
+        267,
+        34
+       ],
+       "concept": "synovial-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "The thin inner layer of the articular capsule. It lines the joint cavity (but not the articular cartilage) and makes synovial fluid, which lubricates the joint and feeds the cartilage."
+      },
+      {
+       "id": "fibrous-membrane",
+       "name": "Fibrous membrane",
+       "accept": [
+        "fibrous layer",
+        "fibrous capsule"
+       ],
+       "box": [
+        24,
+        593,
+        253,
+        28
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The tough outer layer of the articular capsule, made of dense connective tissue. It attaches to both bones and holds them together; thickened bands of it form ligaments."
+      },
+      {
+       "id": "head-of-humerus",
+       "name": "Head of humerus",
+       "accept": [
+        "head of the humerus",
+        "humeral head"
+       ],
+       "box": [
+        845,
+        572,
+        233,
+        28
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The smooth, rounded upper end of the humerus. It is the ball of the shoulder's ball-and-socket joint, resting against the glenoid cavity."
+      },
+      {
+       "id": "humerus",
+       "name": "Humerus",
+       "accept": [
+        "upper arm bone"
+       ],
+       "box": [
+        845,
+        627,
+        124,
+        27
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bone of the arm. Its rounded head forms the shoulder joint above, and its lower end (trochlea and capitulum) forms the elbow joint below."
+      }
+     ],
+     "covered": [
+      {
+       "id": "tendon-of-supraspinatus-muscle",
+       "box": [
+        2,
+        99,
+        191,
+        100
+       ]
+      },
+      {
+       "id": "tendon-of-biceps-brachii-long-head",
+       "box": [
+        843,
+        437,
+        230,
+        106
+       ]
+      }
+     ],
+     "hints": [
+      {
+       "id": "articular-capsule-heading",
+       "box": [
+        3,
+        521,
+        256,
+        34
+       ],
+       "why": "A heading over the two capsule layers listed under it, not a pointer to one structure; it would give those layers away."
+      }
+     ]
+    },
+    {
+     "figure": "os-9-17",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "humerus",
+       "name": "Humerus",
+       "accept": [],
+       "box": [
+        0,
+        52,
+        83,
+        20
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bone of the arm. Its rounded head forms the shoulder joint above, and its lower end (trochlea and capitulum) forms the elbow joint below."
+      },
+      {
+       "id": "fat-pad",
+       "name": "Fat pad",
+       "accept": [
+        "fat pads"
+       ],
+       "box": [
+        0,
+        100,
+        70,
+        23
+       ],
+       "concept": null,
+       "fn": "A pad of fat inside the elbow's articular capsule but outside its synovial membrane. It fills space and cushions the joint as the bones move."
+      },
+      {
+       "id": "bursa",
+       "name": "Bursa",
+       "accept": [
+        "bursae",
+        "subtendinous bursa"
+       ],
+       "box": [
+        0,
+        256,
+        56,
+        20
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A small flattened sac of synovial membrane holding a little fluid. It sits where a tendon or skin rubs over bone and reduces the friction between them."
+      },
+      {
+       "id": "trochlea",
+       "name": "Trochlea",
+       "accept": [
+        "trochlea of humerus",
+        "trochlea of the humerus"
+       ],
+       "box": [
+        0,
+        307,
+        79,
+        20
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The spool-shaped part of the lower humerus that fits into the trochlear notch of the ulna, forming the hinge of the elbow (the humeroulnar joint)."
+      },
+      {
+       "id": "articular-cartilage-of-the-trochlear-notch",
+       "name": "Articular cartilage of the trochlear notch",
+       "accept": [
+        "articular cartilage",
+        "articular cartilage of trochlear notch",
+        "cartilage of the trochlear notch"
+       ],
+       "box": [
+        0,
+        348,
+        129,
+        60
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "Hyaline cartilage lining the trochlear notch of the ulna, where it glides against the trochlea of the humerus."
+      },
+      {
+       "id": "olecranon-bursa",
+       "name": "Olecranon bursa",
+       "accept": [],
+       "box": [
+        0,
+        418,
+        147,
+        20
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A subcutaneous bursa between the skin and the olecranon at the point of the elbow. It lets the skin slide over the bone; leaning on the elbow for long periods can inflame it."
+      },
+      {
+       "id": "articular-capsule",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        436,
+        54,
+        80,
+        43
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The sleeve of connective tissue that encloses a synovial joint and joins its bones. Its outer fibrous membrane holds the bones together, and its inner synovial membrane lines the joint cavity and makes synovial fluid."
+      },
+      {
+       "id": "synovial-membrane",
+       "name": "Synovial membrane",
+       "accept": [
+        "synovium"
+       ],
+       "box": [
+        436,
+        110,
+        100,
+        40
+       ],
+       "concept": "synovial-membrane",
+       "taught": "tissue-membranes-repair",
+       "fn": "The thin inner layer of the articular capsule. It lines the joint cavity (but not the articular cartilage) and makes synovial fluid, which lubricates the joint and feeds the cartilage."
+      },
+      {
+       "id": "synovial-cavity",
+       "name": "Synovial cavity",
+       "accept": [
+        "joint cavity"
+       ],
+       "box": [
+        436,
+        168,
+        81,
+        44
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The narrow space between the bones of a synovial joint, the feature that defines a synovial joint. It holds a thin film of slippery synovial fluid that cuts friction and feeds the articular cartilage."
+      },
+      {
+       "id": "articular-cartilage-of-trochlea",
+       "name": "Articular cartilage of trochlea",
+       "accept": [
+        "articular cartilage",
+        "articular cartilage of the trochlea",
+        "cartilage of trochlea"
+       ],
+       "box": [
+        436,
+        213,
+        98,
+        61
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "Hyaline cartilage covering the trochlea of the humerus, where it glides in the trochlear notch of the ulna."
+      },
+      {
+       "id": "ulna",
+       "name": "Ulna",
+       "accept": [],
+       "box": [
+        437,
+        361,
+        49,
+        19
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The medial forearm bone. Its trochlear notch grips the trochlea of the humerus, forming the hinge of the elbow (the humeroulnar joint)."
+      },
+      {
+       "id": "coronoid-process",
+       "name": "Coronoid process",
+       "accept": [
+        "coronoid process of ulna",
+        "coronoid process of the ulna"
+       ],
+       "box": [
+        436,
+        398,
+        86,
+        43
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The projection on the front of the ulna at the lower lip of the trochlear notch. It helps keep the trochlea of the humerus seated in the notch."
+      },
+      {
+       "id": "humerus-lateral-view",
+       "name": "Humerus",
+       "accept": [],
+       "box": [
+        569,
+        104,
+        87,
+        19
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bone of the arm. Its rounded head forms the shoulder joint above, and its lower end (trochlea and capitulum) forms the elbow joint below."
+      },
+      {
+       "id": "lateral-epicondyle",
+       "name": "Lateral epicondyle",
+       "accept": [
+        "lateral epicondyle of humerus",
+        "lateral epicondyle of the humerus"
+       ],
+       "box": [
+        859,
+        152,
+        160,
+        23
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The bony bump on the outer side of the lower humerus. The radial collateral ligament attaches here."
+      },
+      {
+       "id": "radius-lateral-view",
+       "name": "Radius",
+       "accept": [],
+       "box": [
+        1021,
+        188,
+        69,
+        20
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The lateral forearm bone. Its disc-shaped head is held against the ulna by the annular ligament and turns inside that ring."
+      },
+      {
+       "id": "annular-ligament-lateral-view",
+       "name": "Annular ligament",
+       "accept": [
+        "annular ligament of radius",
+        "orbicular ligament"
+       ],
+       "box": [
+        1020,
+        231,
+        82,
+        44
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A ring-shaped ligament that wraps around the head of the radius and holds it against the ulna at the proximal radioulnar joint, while letting the head turn."
+      },
+      {
+       "id": "articular-capsule-lateral-view",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        568,
+        244,
+        81,
+        43
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The articular capsule of the elbow, which encloses the humeroulnar, humeroradial and proximal radioulnar joints in one joint cavity."
+      },
+      {
+       "id": "radial-collateral-ligament",
+       "name": "Radial collateral ligament",
+       "accept": [
+        "lateral collateral ligament",
+        "lateral collateral ligament of elbow"
+       ],
+       "box": [
+        1020,
+        279,
+        82,
+        64
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "The ligament on the outer side of the elbow, from the lateral epicondyle of the humerus to the annular ligament. It keeps the elbow from bending sideways toward the inside."
+      },
+      {
+       "id": "ulna-lateral-view",
+       "name": "Ulna",
+       "accept": [],
+       "box": [
+        1021,
+        376,
+        49,
+        19
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The medial forearm bone. Its trochlear notch grips the trochlea of the humerus, forming the hinge of the elbow (the humeroulnar joint)."
+      },
+      {
+       "id": "olecranon-process",
+       "name": "Olecranon process",
+       "accept": [
+        "olecranon"
+       ],
+       "box": [
+        570,
+        398,
+        97,
+        43
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The large hook at the upper end of the ulna that forms the point of the elbow. It fits into the olecranon fossa of the humerus when the arm is straight, stopping it there."
+      },
+      {
+       "id": "articular-capsule-medial-view",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        336,
+        574,
+        149,
+        23
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The articular capsule of the elbow, which encloses the humeroulnar, humeroradial and proximal radioulnar joints in one joint cavity."
+      },
+      {
+       "id": "annular-ligament-medial-view",
+       "name": "Annular ligament",
+       "accept": [
+        "annular ligament of radius",
+        "orbicular ligament"
+       ],
+       "box": [
+        336,
+        613,
+        151,
+        23
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A ring-shaped ligament that wraps around the head of the radius and holds it against the ulna at the proximal radioulnar joint, while letting the head turn."
+      },
+      {
+       "id": "radius-medial-view",
+       "name": "Radius",
+       "accept": [],
+       "box": [
+        468,
+        699,
+        69,
+        19
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The lateral forearm bone. Its disc-shaped head is held against the ulna by the annular ligament and turns inside that ring."
+      },
+      {
+       "id": "ulnar-collateral-ligament",
+       "name": "Ulnar collateral ligament",
+       "accept": [
+        "ucl",
+        "medial collateral ligament of elbow"
+       ],
+       "box": [
+        0,
+        716,
+        82,
+        64
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "The strong triangular ligament on the inner side of the elbow, from the medial epicondyle of the humerus to the ulna. It resists forces that would bend the elbow open on the inner side, as in throwing."
+      },
+      {
+       "id": "ulna-medial-view",
+       "name": "Ulna",
+       "accept": [],
+       "box": [
+        468,
+        783,
+        50,
+        19
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The medial forearm bone. Its trochlear notch grips the trochlea of the humerus, forming the hinge of the elbow (the humeroulnar joint)."
+      },
+      {
+       "id": "coronoid-process-medial-view",
+       "name": "Coronoid process",
+       "accept": [
+        "coronoid process of ulna",
+        "coronoid process of the ulna"
+       ],
+       "box": [
+        344,
+        852,
+        156,
+        23
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The projection on the front of the ulna at the lower lip of the trochlear notch. It helps keep the trochlea of the humerus seated in the notch."
+      }
+     ],
+     "covered": [
+      {
+       "id": "tendon-of-triceps-muscle",
+       "box": [
+        0,
+        168,
+        83,
+        61
+       ]
+      },
+      {
+       "id": "tendon-of-brachialis-muscle",
+       "box": [
+        435,
+        283,
+        101,
+        60
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-9-18",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [
+        "hyaline cartilage"
+       ],
+       "box": [
+        12,
+        2,
+        295,
+        41
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The smooth layer of hyaline cartilage that caps the bone ends inside a synovial joint. It has no blood vessels; it lowers friction and absorbs compression as the bones move."
+      },
+      {
+       "id": "acetabular-labrum",
+       "name": "Acetabular labrum",
+       "accept": [
+        "labrum"
+       ],
+       "box": [
+        12,
+        91,
+        306,
+        33
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A lip of fibrocartilage on the rim of the acetabulum. It deepens the socket and grips the head of the femur, adding to the hip's stability."
+      },
+      {
+       "id": "coxal-hip-bone",
+       "name": "Coxal (hip) bone",
+       "accept": [
+        "hip bone",
+        "os coxae",
+        "coxal"
+       ],
+       "box": [
+        765,
+        8,
+        275,
+        41
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The hip bone, formed by the fused ilium, ischium and pubis. Its acetabulum forms the deep socket of the hip joint."
+      },
+      {
+       "id": "ligament-of-the-head-of-the-femur",
+       "name": "Ligament of the head of the femur",
+       "accept": [
+        "ligament of head of femur",
+        "ligamentum teres",
+        "round ligament of the femur",
+        "ligamentum capitis femoris"
+       ],
+       "box": [
+        801,
+        169,
+        294,
+        75
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A small ligament inside the hip joint, from the acetabulum to the head of the femur. It adds little strength, but it carries a small blood vessel to the head of the femur."
+      },
+      {
+       "id": "femur",
+       "name": "Femur",
+       "accept": [
+        "thigh bone"
+       ],
+       "box": [
+        15,
+        329,
+        109,
+        33
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The thigh bone. Its rounded head fits deep in the acetabulum at the hip, and its two condyles rest on the tibia at the knee."
+      },
+      {
+       "id": "synovial-cavity",
+       "name": "Synovial cavity",
+       "accept": [
+        "joint cavity"
+       ],
+       "box": [
+        14,
+        432,
+        249,
+        41
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The narrow space between the bones of a synovial joint, the feature that defines a synovial joint. It holds a thin film of slippery synovial fluid that cuts friction and feeds the articular cartilage."
+      },
+      {
+       "id": "articular-capsule",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        764,
+        497,
+        281,
+        41
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The thick, strong capsule of the hip joint, reinforced by the iliofemoral, pubofemoral and ischiofemoral ligaments. It is much tighter than the shoulder's capsule, trading range of motion for stability."
+      },
+      {
+       "id": "anterior-inferior-iliac-spine",
+       "name": "Anterior inferior iliac spine",
+       "accept": [
+        "aiis"
+       ],
+       "box": [
+        13,
+        768,
+        260,
+        81
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "A bony knob on the front of the ilium, just above the acetabulum. The iliofemoral ligament attaches just below it."
+      },
+      {
+       "id": "iliofemoral-ligament",
+       "name": "Iliofemoral ligament",
+       "accept": [
+        "y ligament",
+        "ligament of bigelow"
+       ],
+       "box": [
+        891,
+        789,
+        172,
+        83
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A strong Y-shaped ligament on the front of the hip, from the ilium to the femur, and the strongest ligament of the hip. It tightens when you stand upright, stopping the thigh from swinging too far back."
+      },
+      {
+       "id": "greater-trochanter",
+       "name": "Greater trochanter",
+       "accept": [
+        "greater tronchanter",
+        "greater trochanter of femur"
+       ],
+       "box": [
+        12,
+        981,
+        194,
+        75
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The large bony projection on the upper, outer femur, below the neck. Parts of the hip's capsule ligaments and several thigh muscles attach here."
+      },
+      {
+       "id": "pubofemoral-ligament",
+       "name": "Pubofemoral ligament",
+       "accept": [],
+       "box": [
+        14,
+        1133,
+        211,
+        82
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "The ligament on the front and lower side of the hip joint, from the pubis to the femur. It keeps the thigh from swinging too far out to the side."
+      },
+      {
+       "id": "ischium",
+       "name": "Ischium",
+       "accept": [],
+       "box": [
+        63,
+        1462,
+        129,
+        33
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The lower, back part of the hip bone, the part you sit on. The ischiofemoral ligament runs from it to the femur."
+      },
+      {
+       "id": "iliofemoral-ligament-posterior-view",
+       "name": "Iliofemoral ligament",
+       "accept": [
+        "y ligament"
+       ],
+       "box": [
+        849,
+        1499,
+        171,
+        80
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A strong Y-shaped ligament on the front of the hip, from the ilium to the femur, and the strongest ligament of the hip. It tightens when you stand upright, stopping the thigh from swinging too far back."
+      },
+      {
+       "id": "greater-trochanter-of-femur",
+       "name": "Greater trochanter of femur",
+       "accept": [
+        "greater trochanter",
+        "greater trochanter of the femur"
+       ],
+       "box": [
+        847,
+        1620,
+        173,
+        117
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The large bony projection on the upper, outer femur, below the neck. Parts of the hip's capsule ligaments and several thigh muscles attach here."
+      },
+      {
+       "id": "ischiofemoral-ligament",
+       "name": "Ischiofemoral ligament",
+       "accept": [],
+       "box": [
+        849,
+        1777,
+        221,
+        83
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "The ligament on the back of the hip joint, spiraling from the ischium to the femur. It tightens to stop the thigh turning too far inward."
+      }
+     ]
+    },
+    {
+     "figure": "os-9-21",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "tibia",
+       "name": "Tibia",
+       "accept": [
+        "shin bone"
+       ],
+       "box": [
+        87,
+        30,
+        72,
+        28
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The shin bone. Its lower end, including the medial malleolus, forms the roof and inner wall of the ankle (talocrural) joint over the talus."
+      },
+      {
+       "id": "fibula",
+       "name": "Fibula",
+       "accept": [],
+       "box": [
+        903,
+        30,
+        86,
+        28
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The slender lateral bone of the leg. Its lower end, the lateral malleolus, forms the outer wall of the ankle joint."
+      },
+      {
+       "id": "medial-malleolus",
+       "name": "Medial malleolus",
+       "accept": [
+        "medial malleolus of tibia"
+       ],
+       "box": [
+        89,
+        88,
+        233,
+        28
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The bony bump on the inner side of the ankle, at the lower end of the tibia. It forms the inner wall of the ankle joint and anchors the deltoid ligament."
+      },
+      {
+       "id": "deltoid-ligament",
+       "name": "Deltoid ligament",
+       "accept": [
+        "medial ligament of the ankle",
+        "medial collateral ligament of the ankle"
+       ],
+       "box": [
+        89,
+        163,
+        225,
+        35
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "The strong fan-shaped ligament on the inner side of the ankle, from the medial malleolus to the talus, calcaneus and navicular. It resists the foot rolling outward."
+      },
+      {
+       "id": "subtalar-joint",
+       "name": "Subtalar joint",
+       "accept": [
+        "talocalcaneal joint"
+       ],
+       "box": [
+        902,
+        208,
+        184,
+        35
+       ],
+       "concept": "named-small-joints",
+       "taught": "synovial-joints",
+       "fn": "The joint between the talus and the calcaneus, just below the ankle joint. Its gliding lets the sole of the foot tilt inward and outward."
+      },
+      {
+       "id": "fibula-lateral-view",
+       "name": "Fibula",
+       "accept": [],
+       "box": [
+        6,
+        642,
+        86,
+        29
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The slender lateral bone of the leg. Its lower end, the lateral malleolus, forms the outer wall of the ankle joint and anchors the ligaments on the outer side of the ankle."
+      },
+      {
+       "id": "tibia-lateral-view",
+       "name": "Tibia",
+       "accept": [
+        "shin bone"
+       ],
+       "box": [
+        552,
+        647,
+        72,
+        28
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The shin bone. Its lower end forms the roof of the ankle (talocrural) joint and is bound to the fibula by the inferior tibiofibular ligaments."
+      },
+      {
+       "id": "posterior-and-anterior-inferior-tibiofibular-ligaments",
+       "name": "Posterior and anterior inferior tibiofibular ligaments",
+       "accept": [
+        "tibiofibular ligaments",
+        "inferior tibiofibular ligaments",
+        "anterior inferior tibiofibular ligament",
+        "posterior inferior tibiofibular ligament",
+        "tibiofibular ligament"
+       ],
+       "box": [
+        552,
+        711,
+        405,
+        72
+       ],
+       "concept": "named-small-joints",
+       "taught": "synovial-joints",
+       "fn": "Ligaments that bind the lower ends of the tibia and fibula together at the distal tibiofibular joint, keeping the ankle's bony socket snug around the talus."
+      },
+      {
+       "id": "interosseous-membrane",
+       "name": "Interosseous membrane",
+       "accept": [
+        "crural interosseous membrane",
+        "interosseous membrane of leg"
+       ],
+       "box": [
+        5,
+        768,
+        180,
+        65
+       ],
+       "concept": "joint-subtypes",
+       "taught": "joint-classification",
+       "fn": "The sheet of dense connective tissue joining the shafts of the tibia and fibula along their length, a syndesmosis. It holds the two bones together."
+      },
+      {
+       "id": "anterior-talofibular-ligament",
+       "name": "Anterior talofibular ligament",
+       "accept": [
+        "atfl",
+        "atfl ligament"
+       ],
+       "box": [
+        552,
+        811,
+        381,
+        35
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A ligament on the outer side of the ankle, from the lateral malleolus of the fibula forward to the talus. It is the ligament most often torn in an ankle sprain when the foot rolls inward.",
+       "follow": {
+        "q": "A runner lands on the edge of the foot and the sole rolls inward. Which ligament is most likely torn?",
+        "options": [
+         "Anterior talofibular ligament",
+         "Deltoid ligament",
+         "Interosseous membrane",
+         "Ligament of the head of the femur"
+        ],
+        "correct": 0,
+        "why": "Rolling the sole inward stretches the outer side of the ankle, and the anterior talofibular ligament there is the weakest and first to tear. The deltoid ligament is on the inner side and is very strong, the interosseous membrane joins the tibia and fibula higher up, and the ligament of the head of the femur is inside the hip.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "calcaneofibular-ligament",
+       "name": "Calcaneofibular ligament",
+       "accept": [
+        "cfl"
+       ],
+       "box": [
+        4,
+        1122,
+        344,
+        42
+       ],
+       "concept": "other-named-joints",
+       "taught": "synovial-joints",
+       "fn": "A ligament on the outer side of the ankle, from the lateral malleolus down and back to the calcaneus. It is the second ligament torn in a severe rolled ankle."
+      },
+      {
+       "id": "subtalar-joint-lateral-view",
+       "name": "Subtalar joint",
+       "accept": [
+        "talocalcaneal joint"
+       ],
+       "box": [
+        423,
+        1122,
+        185,
+        42
+       ],
+       "concept": "named-small-joints",
+       "taught": "synovial-joints",
+       "fn": "The joint between the talus and the calcaneus, just below the ankle joint. Its gliding lets the sole of the foot tilt inward and outward."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "knee-joint",
+   "title": "The knee joint",
+   "chapter": "joints",
+   "topic": "synovial-joints",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-9-9",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "femur",
+       "name": "Femur",
+       "accept": [
+        "thigh bone"
+       ],
+       "box": [
+        9,
+        174,
+        100,
+        31
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The thigh bone. Its rounded head fits deep in the acetabulum at the hip, and its two condyles rest on the tibia at the knee."
+      },
+      {
+       "id": "suprapatellar-bursa",
+       "name": "Suprapatellar bursa",
+       "accept": [
+        "suprapatellar bursae"
+       ],
+       "box": [
+        873,
+        171,
+        205,
+        71
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "The bursa above the patella, between the femur and the large tendon on the front of the thigh. It opens into the knee's joint cavity and lets the tendon glide over the femur."
+      },
+      {
+       "id": "posterior-cruciate-ligament",
+       "name": "Posterior cruciate ligament",
+       "accept": [
+        "pcl",
+        "posterior cruciate"
+       ],
+       "box": [
+        8,
+        284,
+        135,
+        119
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "An intracapsular ligament that runs from the back of the tibia up and forward to the femur, crossing the anterior cruciate ligament. It stops the tibia from sliding backward under the femur."
+      },
+      {
+       "id": "patella",
+       "name": "Patella",
+       "accept": [
+        "kneecap",
+        "knee cap"
+       ],
+       "box": [
+        875,
+        286,
+        104,
+        31
+       ],
+       "concept": "patella",
+       "taught": "lower-limb",
+       "fn": "The kneecap, a sesamoid bone inside the tendon on the front of the knee. It protects the front of the joint and gives that tendon a better angle to pull on the tibia."
+      },
+      {
+       "id": "prepatellar-bursa",
+       "name": "Prepatellar bursa",
+       "accept": [
+        "prepatellar bursae"
+       ],
+       "box": [
+        874,
+        361,
+        167,
+        71
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A subcutaneous bursa between the skin and the patella. It lets the skin slide over the kneecap; kneeling a lot can inflame it.",
+       "follow": {
+        "q": "What does a bursa such as the prepatellar bursa do?",
+        "options": [
+         "Cuts friction where parts rub",
+         "Holds the patella to the tibia",
+         "Makes the articular cartilage",
+         "Stops the tibia sliding forward"
+        ],
+        "correct": 0,
+        "why": "A bursa is a small fluid-filled sac of synovial membrane placed where skin, tendon or ligament rubs over bone, so the surfaces slide with little friction. The patellar ligament holds the patella to the tibia, cartilage cells make articular cartilage, and the anterior cruciate ligament stops the tibia sliding forward.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "synovial-cavity",
+       "name": "Synovial cavity",
+       "accept": [
+        "joint cavity",
+        "articular cavity"
+       ],
+       "box": [
+        873,
+        476,
+        226,
+        37
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The knee's joint cavity, filled with synovial fluid, between the femur, tibia and patella. The fluid lubricates the joint and feeds its articular cartilage."
+      },
+      {
+       "id": "anterior-cruciate-ligament",
+       "name": "Anterior cruciate ligament",
+       "accept": [
+        "acl",
+        "anterior cruciate"
+       ],
+       "box": [
+        7,
+        487,
+        132,
+        118
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "An intracapsular ligament that runs from the front of the tibia up and back to the femur. It stops the tibia from sliding forward under the femur and is the knee ligament most often torn in sports."
+      },
+      {
+       "id": "infrapatellar-fat-pad",
+       "name": "Infrapatellar fat pad",
+       "accept": [
+        "fat pad",
+        "hoffa fat pad",
+        "hoffa's fat pad"
+       ],
+       "box": [
+        872,
+        550,
+        183,
+        79
+       ],
+       "concept": null,
+       "fn": "A pad of fat below the patella, behind the patellar ligament. It fills space inside the capsule and cushions the front of the knee as it moves."
+      },
+      {
+       "id": "infrapatellar-bursa",
+       "name": "Infrapatellar bursa",
+       "accept": [
+        "deep infrapatellar bursa"
+       ],
+       "box": [
+        874,
+        665,
+        181,
+        72
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A bursa below the patella, between the patellar ligament and the tibia. It reduces friction where the ligament passes over bone."
+      },
+      {
+       "id": "tibia",
+       "name": "Tibia",
+       "accept": [
+        "shin bone",
+        "shinbone"
+       ],
+       "box": [
+        7,
+        716,
+        78,
+        30
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The shin bone. Its broad, flat condyles form the lower surface of the knee joint, topped by the menisci."
+      },
+      {
+       "id": "patellar-ligament",
+       "name": "Patellar ligament",
+       "accept": [
+        "patellar tendon"
+       ],
+       "box": [
+        874,
+        781,
+        130,
+        78
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The strong band from the lower edge of the patella to the tibial tuberosity. It carries on the pull of the thigh's large front tendon to the tibia."
+      }
+     ],
+     "covered": [
+      {
+       "id": "tendon-of-quadriceps-femoris",
+       "box": [
+        872,
+        15,
+        153,
+        112
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-9-19",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "femur",
+       "name": "Femur",
+       "accept": [
+        "thigh bone"
+       ],
+       "box": [
+        0,
+        3,
+        64,
+        20
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The thigh bone. Its rounded head fits deep in the acetabulum at the hip, and its two condyles rest on the tibia at the knee."
+      },
+      {
+       "id": "articular-capsule",
+       "name": "Articular capsule",
+       "accept": [
+        "joint capsule",
+        "capsule"
+       ],
+       "box": [
+        0,
+        70,
+        81,
+        43
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The knee's articular capsule, which encloses the joint between femur, tibia and patella. It is thin at the front, where the patella and its tendon and ligament take its place."
+      },
+      {
+       "id": "posterior-cruciate-ligament",
+       "name": "Posterior cruciate ligament",
+       "accept": [
+        "pcl",
+        "posterior cruciate"
+       ],
+       "box": [
+        0,
+        122,
+        85,
+        64
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "An intracapsular ligament that runs from the back of the tibia up and forward to the femur, crossing the anterior cruciate ligament. It stops the tibia from sliding backward under the femur."
+      },
+      {
+       "id": "lateral-meniscus",
+       "name": "Lateral meniscus",
+       "accept": [
+        "lateral menisci"
+       ],
+       "box": [
+        0,
+        194,
+        90,
+        40
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A C-shaped pad of fibrocartilage on the lateral condyle of the tibia. It deepens the flat tibial surface to fit the rounded femur and absorbs shock."
+      },
+      {
+       "id": "anterior-cruciate-ligament",
+       "name": "Anterior cruciate ligament",
+       "accept": [
+        "acl",
+        "anterior cruciate"
+       ],
+       "box": [
+        0,
+        250,
+        82,
+        64
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "An intracapsular ligament that runs from the front of the tibia up and back to the femur. It stops the tibia from sliding forward under the femur and is the knee ligament most often torn in sports.",
+       "follow": {
+        "q": "The anterior cruciate ligament stops which movement of the tibia relative to the femur?",
+        "options": [
+         "Sliding forward",
+         "Sliding backward",
+         "Tilting inward",
+         "Tilting outward"
+        ],
+        "correct": 0,
+        "why": "The ACL runs from the front of the tibia up and back to the femur, so it goes tight when the tibia slides forward under the femur. The posterior cruciate ligament stops backward sliding, and the collateral ligaments on the sides resist tilting.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "tibia",
+       "name": "Tibia",
+       "accept": [
+        "shin bone"
+       ],
+       "box": [
+        0,
+        325,
+        52,
+        19
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The shin bone. Its broad, flat condyles form the lower surface of the knee joint, topped by the menisci."
+      },
+      {
+       "id": "suprapatellar-bursa",
+       "name": "Suprapatellar bursa",
+       "accept": [],
+       "box": [
+        385,
+        74,
+        172,
+        24
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "The bursa above the patella, between the femur and the large tendon on the front of the thigh. It opens into the knee's joint cavity and lets the tendon glide over the femur."
+      },
+      {
+       "id": "patella",
+       "name": "Patella",
+       "accept": [
+        "kneecap",
+        "knee cap"
+       ],
+       "box": [
+        385,
+        112,
+        68,
+        19
+       ],
+       "concept": "patella",
+       "taught": "lower-limb",
+       "fn": "The kneecap, a sesamoid bone inside the tendon on the front of the knee. It protects the front of the joint and gives that tendon a better angle to pull on the tibia."
+      },
+      {
+       "id": "prepatellar-bursa",
+       "name": "Prepatellar bursa",
+       "accept": [],
+       "box": [
+        385,
+        139,
+        151,
+        23
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A subcutaneous bursa between the skin and the patella. It lets the skin slide over the kneecap; kneeling a lot can inflame it."
+      },
+      {
+       "id": "synovial-cavity",
+       "name": "Synovial cavity",
+       "accept": [
+        "joint cavity"
+       ],
+       "box": [
+        385,
+        169,
+        133,
+        24
+       ],
+       "concept": "synovial-joint-structure",
+       "taught": "synovial-joints",
+       "fn": "The knee's joint cavity, filled with synovial fluid, between the femur, tibia and patella. The fluid lubricates the joint and feeds its articular cartilage."
+      },
+      {
+       "id": "lateral-meniscus-2",
+       "name": "Lateral meniscus",
+       "accept": [
+        "lateral menisci"
+       ],
+       "box": [
+        385,
+        201,
+        150,
+        19
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A C-shaped pad of fibrocartilage on the lateral condyle of the tibia. It deepens the flat tibial surface to fit the rounded femur and absorbs shock."
+      },
+      {
+       "id": "infrapatellar-fat-pad",
+       "name": "Infrapatellar fat pad",
+       "accept": [
+        "fat pad"
+       ],
+       "box": [
+        384,
+        232,
+        110,
+        44
+       ],
+       "concept": null,
+       "fn": "A pad of fat below the patella, behind the patellar ligament. It fills space inside the capsule and cushions the front of the knee as it moves."
+      },
+      {
+       "id": "infrapatellar-bursa",
+       "name": "Infrapatellar bursa",
+       "accept": [],
+       "box": [
+        385,
+        282,
+        109,
+        40
+       ],
+       "concept": "bursa",
+       "taught": "synovial-joints",
+       "fn": "A bursa below the patella, between the patellar ligament and the tibia. It reduces friction where the ligament passes over bone."
+      },
+      {
+       "id": "patellar-ligament",
+       "name": "Patellar ligament",
+       "accept": [
+        "patellar tendon"
+       ],
+       "box": [
+        385,
+        332,
+        148,
+        24
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The strong band from the lower edge of the patella to the tibial tuberosity. It carries on the pull of the thigh's large front tendon to the tibia."
+      },
+      {
+       "id": "anterior-cruciate-ligament-superior-view",
+       "name": "Anterior cruciate ligament",
+       "accept": [
+        "acl",
+        "anterior cruciate"
+       ],
+       "box": [
+        567,
+        13,
+        147,
+        44
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "An intracapsular ligament that runs from the front of the tibia up and back to the femur. It stops the tibia from sliding forward under the femur and is the knee ligament most often torn in sports."
+      },
+      {
+       "id": "articular-cartilage-on-lateral-tibial-condyle",
+       "name": "Articular cartilage on lateral tibial condyle",
+       "accept": [
+        "articular cartilage",
+        "hyaline cartilage",
+        "articular cartilage of lateral tibial condyle"
+       ],
+       "box": [
+        994,
+        50,
+        108,
+        84
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "Hyaline cartilage covering the lateral condyle of the tibia, where the femur bears on it, partly under the lateral meniscus."
+      },
+      {
+       "id": "articular-cartilage-on-medial-tibial-condyle",
+       "name": "Articular cartilage on medial tibial condyle",
+       "accept": [
+        "articular cartilage",
+        "hyaline cartilage",
+        "articular cartilage of medial tibial condyle"
+       ],
+       "box": [
+        567,
+        96,
+        156,
+        64
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "Hyaline cartilage covering the medial condyle of the tibia, where the femur bears on it, partly under the medial meniscus."
+      },
+      {
+       "id": "medial-meniscus",
+       "name": "Medial meniscus",
+       "accept": [
+        "medial menisci"
+       ],
+       "box": [
+        568,
+        231,
+        148,
+        20
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A C-shaped pad of fibrocartilage on the medial condyle of the tibia. It deepens the tibial surface and absorbs shock, and because it is attached to the tibial collateral ligament it is often torn along with it.",
+       "follow": {
+        "q": "Why is the medial meniscus torn more often than the lateral meniscus?",
+        "options": [
+         "It is attached to the tibial collateral ligament",
+         "It is made of hyaline cartilage, which is brittle",
+         "It lies outside the joint, unprotected by the capsule",
+         "It carries no weight at all"
+        ],
+        "correct": 0,
+        "why": "The medial meniscus is anchored to the tibial collateral ligament, so it cannot shift out of the way and is pulled on when that ligament is stressed. Both menisci are fibrocartilage inside the capsule, and both carry weight between femur and tibia.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lateral-meniscus-superior-view",
+       "name": "Lateral meniscus",
+       "accept": [
+        "lateral menisci"
+       ],
+       "box": [
+        995,
+        250,
+        89,
+        40
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A C-shaped pad of fibrocartilage on the lateral condyle of the tibia. It deepens the flat tibial surface to fit the rounded femur and absorbs shock."
+      },
+      {
+       "id": "posterior-cruciate-ligament-superior-view",
+       "name": "Posterior cruciate ligament",
+       "accept": [
+        "pcl",
+        "posterior cruciate"
+       ],
+       "box": [
+        902,
+        312,
+        155,
+        44
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "An intracapsular ligament that runs from the back of the tibia up and forward to the femur, crossing the anterior cruciate ligament. It stops the tibia from sliding backward under the femur."
+      },
+      {
+       "id": "patella-anterior-view",
+       "name": "Patella",
+       "accept": [
+        "kneecap",
+        "knee cap"
+       ],
+       "box": [
+        385,
+        528,
+        68,
+        19
+       ],
+       "concept": "patella",
+       "taught": "lower-limb",
+       "fn": "The kneecap, a sesamoid bone inside the tendon on the front of the knee. It protects the front of the joint and gives that tendon a better angle to pull on the tibia."
+      },
+      {
+       "id": "medial-patellar-retinaculum",
+       "name": "Medial patellar retinaculum",
+       "accept": [
+        "medial retinaculum"
+       ],
+       "box": [
+        385,
+        581,
+        132,
+        40
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A band of connective tissue from the inner edge of the patella to the femur and tibia. With the lateral retinaculum it holds the patella in its groove on the femur."
+      },
+      {
+       "id": "lateral-patellar-retinaculum",
+       "name": "Lateral patellar retinaculum",
+       "accept": [
+        "lateral retinaculum"
+       ],
+       "box": [
+        0,
+        601,
+        134,
+        40
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A band of connective tissue from the outer edge of the patella to the femur and tibia. With the medial retinaculum it holds the patella in its groove on the femur."
+      },
+      {
+       "id": "tibial-collateral-ligament",
+       "name": "Tibial collateral ligament",
+       "accept": [
+        "medial collateral ligament",
+        "mcl"
+       ],
+       "box": [
+        384,
+        648,
+        135,
+        43
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The broad extrinsic ligament on the inner side of the knee, from the femur to the tibia. It resists a blow to the outer knee that would bend the joint inward, and it is attached to the medial meniscus."
+      },
+      {
+       "id": "fibular-collateral-ligament",
+       "name": "Fibular collateral ligament",
+       "accept": [
+        "lateral collateral ligament",
+        "lcl"
+       ],
+       "box": [
+        0,
+        660,
+        145,
+        44
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The cord-like extrinsic ligament on the outer side of the knee, from the femur to the head of the fibula. It resists forces that would bend the knee outward."
+      },
+      {
+       "id": "patellar-ligament-anterior-view",
+       "name": "Patellar ligament",
+       "accept": [
+        "patellar tendon"
+       ],
+       "box": [
+        385,
+        713,
+        148,
+        23
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The strong band from the lower edge of the patella to the tibial tuberosity. It carries on the pull of the thigh's large front tendon to the tibia."
+      },
+      {
+       "id": "fibula",
+       "name": "Fibula",
+       "accept": [],
+       "box": [
+        0,
+        759,
+        61,
+        19
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The slender lateral bone of the leg. It is not part of the knee joint itself, but its head anchors the fibular collateral ligament."
+      },
+      {
+       "id": "tibia-anterior-view",
+       "name": "Tibia",
+       "accept": [
+        "shin bone"
+       ],
+       "box": [
+        384,
+        759,
+        53,
+        19
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The shin bone. Its broad, flat condyles form the lower surface of the knee joint, topped by the menisci."
+      }
+     ],
+     "covered": [
+      {
+       "id": "tendon-of-quadriceps-femoris",
+       "box": [
+        384,
+        13,
+        168,
+        44
+       ]
+      },
+      {
+       "id": "quadriceps-femoris-muscle",
+       "box": [
+        0,
+        454,
+        135,
+        40
+       ]
+      },
+      {
+       "id": "tendon-of-quadriceps-femoris-muscle",
+       "box": [
+        0,
+        515,
+        135,
+        60
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-9-20",
+     "topic": "synovial-joints",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "torn-tibial-collateral-ligament",
+       "name": "Torn tibial (medial) collateral ligament",
+       "accept": [
+        "tibial collateral ligament",
+        "medial collateral ligament",
+        "mcl",
+        "torn mcl",
+        "torn medial collateral ligament"
+       ],
+       "box": [
+        845,
+        226,
+        250,
+        71
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "A blow to the outer side of the knee bends the joint inward and stretches the tibial collateral ligament on the inner side until it tears. This ligament normally holds the inner side of the knee together.",
+       "follow": {
+        "q": "A blow strikes the outer side of the knee. Why is the tibial collateral ligament, on the inner side, the one that tears?",
+        "options": [
+         "The inner side is stretched as the knee bends inward",
+         "The blow crushes the inner side against the other knee",
+         "The inner ligament is much thinner than the outer one",
+         "Only the inner side of the knee has a ligament"
+        ],
+        "correct": 0,
+        "why": "Pushing the knee inward from the outside opens the inner side of the joint, putting the tibial collateral ligament under tension until it tears. The outer side is compressed, not stretched. The knee has a collateral ligament on each side, and the tibial one is broad, not thin.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "medial-meniscus",
+       "name": "Medial meniscus",
+       "accept": [
+        "torn medial meniscus"
+       ],
+       "box": [
+        847,
+        418,
+        227,
+        28
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "Because the medial meniscus is attached to the tibial collateral ligament, the same blow to the outer knee often tears it along with that ligament."
+      },
+      {
+       "id": "torn-anterior-cruciate-ligament",
+       "name": "Torn anterior cruciate ligament",
+       "accept": [
+        "anterior cruciate ligament",
+        "acl",
+        "torn acl"
+       ],
+       "box": [
+        125,
+        431,
+        233,
+        70
+       ],
+       "concept": "knee-shoulder",
+       "taught": "synovial-joints",
+       "fn": "The same blow can also tear the anterior cruciate ligament, which normally stops the tibia sliding forward under the femur. The torn ACL, torn tibial collateral ligament and torn medial meniscus together are called the unhappy triad."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "body-movements",
+   "title": "Movements at synovial joints",
+   "chapter": "joints",
+   "topic": "body-movements",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-9-12",
+     "topic": "body-movements",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "flexion-shoulder",
+       "name": "Flexion",
+       "accept": [
+        "flexion of the shoulder",
+        "shoulder flexion"
+       ],
+       "box": [
+        226,
+        78,
+        66,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Flexion is a movement in the sagittal plane that decreases the angle between bones. At the shoulder it swings the arm forward and up."
+      },
+      {
+       "id": "extension-shoulder",
+       "name": "Extension",
+       "accept": [
+        "extension of the shoulder",
+        "shoulder extension"
+       ],
+       "box": [
+        401,
+        78,
+        86,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Extension is the sagittal-plane movement that increases the angle between bones, the reverse of flexion. At the shoulder it swings the arm back down and behind the body."
+      },
+      {
+       "id": "flexion-knee",
+       "name": "Flexion",
+       "accept": [
+        "flexion of the knee",
+        "knee flexion"
+       ],
+       "box": [
+        31,
+        323,
+        65,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Flexion at the knee bends the leg, bringing the heel toward the buttock and closing the angle between the leg and the thigh."
+      },
+      {
+       "id": "extension-knee",
+       "name": "Extension",
+       "accept": [
+        "extension of the knee",
+        "knee extension"
+       ],
+       "box": [
+        620,
+        435,
+        86,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Extension is the movement in the sagittal plane that increases the angle between bones, straightening a joint; it is the reverse of flexion and returns a part toward anatomical position."
+      },
+      {
+       "id": "extension-neck",
+       "name": "Extension",
+       "accept": [
+        "extension of the neck",
+        "neck extension"
+       ],
+       "box": [
+        901,
+        52,
+        86,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Extension of the neck lifts the head back up from a forward bend, returning it toward anatomical position."
+      },
+      {
+       "id": "hyperextension-neck",
+       "name": "Extension",
+       "accept": [
+        "hyperextension",
+        "hyperextension of the neck"
+       ],
+       "box": [
+        715,
+        74,
+        86,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Tilting the head back past anatomical position is extension carried beyond the anatomical position, called hyperextension."
+      },
+      {
+       "id": "flexion-neck",
+       "name": "Flexion",
+       "accept": [
+        "flexion of the neck",
+        "neck flexion"
+       ],
+       "box": [
+        1026,
+        78,
+        65,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Flexion of the neck bends the head forward, bringing the chin toward the chest."
+      },
+      {
+       "id": "extension-vertebral-column",
+       "name": "Extension",
+       "accept": [
+        "extension of the vertebral column",
+        "trunk extension"
+       ],
+       "box": [
+        206,
+        638,
+        86,
+        18
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Extension of the vertebral column straightens the trunk back up from a forward bend."
+      },
+      {
+       "id": "hyperextension-vertebral-column",
+       "name": "Extension",
+       "accept": [
+        "hyperextension",
+        "hyperextension of the vertebral column"
+       ],
+       "box": [
+        0,
+        912,
+        86,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Bending the trunk backward past upright is extension carried beyond anatomical position, called hyperextension."
+      },
+      {
+       "id": "flexion-vertebral-column",
+       "name": "Flexion",
+       "accept": [
+        "flexion of the vertebral column",
+        "trunk flexion"
+       ],
+       "box": [
+        197,
+        912,
+        66,
+        19
+       ],
+       "concept": "flexion-extension",
+       "taught": "body-movements",
+       "fn": "Flexion of the vertebral column bends the trunk forward, as in touching your toes."
+      },
+      {
+       "id": "abduction",
+       "name": "Abduction",
+       "accept": [
+        "abduct"
+       ],
+       "box": [
+        309,
+        844,
+        88,
+        18
+       ],
+       "concept": "abduction-adduction",
+       "taught": "body-movements",
+       "fn": "Abduction moves a limb away from the midline of the body in the frontal plane, like raising the arm out to the side.",
+       "follow": {
+        "q": "Raising your arm straight out to the side from anatomical position happens in which plane?",
+        "options": [
+         "Frontal plane",
+         "Sagittal plane",
+         "Transverse plane",
+         "Midsagittal plane"
+        ],
+        "correct": 0,
+        "why": "Abduction and adduction swing a limb away from or toward the midline, which is movement in the frontal (coronal) plane. Flexion and extension happen in the sagittal plane, and rotation turns a part in the transverse plane.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "adduction",
+       "name": "Adduction",
+       "accept": [
+        "adduct"
+       ],
+       "box": [
+        335,
+        989,
+        88,
+        18
+       ],
+       "concept": "abduction-adduction",
+       "taught": "body-movements",
+       "fn": "Adduction moves a limb toward the midline of the body, like bringing the raised arm back down to your side."
+      },
+      {
+       "id": "circumduction",
+       "name": "Circumduction",
+       "accept": [
+        "circumduct"
+       ],
+       "box": [
+        598,
+        988,
+        121,
+        19
+       ],
+       "concept": "rotation-circumduction",
+       "taught": "body-movements",
+       "fn": "Circumduction moves the end of a limb in a circle so the whole limb traces a cone: flexion, abduction, extension and adduction in sequence. It needs a biaxial or multiaxial joint such as the shoulder.",
+       "follow": {
+        "q": "Which of these joints can perform circumduction?",
+        "options": [
+         "Ball-and-socket",
+         "Pivot joint between C1 and C2",
+         "The elbow's hinge joint",
+         "Plane joint between tarsal bones"
+        ],
+        "correct": 0,
+        "why": "Circumduction strings together movement in two planes, so it needs a joint that moves around at least two axes, such as the ball-and-socket shoulder or hip. A pivot joint only turns around one axis, a hinge only bends and straightens, and a plane joint only glides a little.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "rotation",
+       "name": "Rotation",
+       "accept": [
+        "rotation of the head",
+        "rotation of the neck"
+       ],
+       "box": [
+        736,
+        688,
+        74,
+        19
+       ],
+       "concept": "rotation-circumduction",
+       "taught": "body-movements",
+       "fn": "Rotation turns a bone around its own long axis. Shaking your head no turns the atlas around the dens of the axis at the pivot joint between C1 and C2."
+      },
+      {
+       "id": "lateral-rotation",
+       "name": "Lateral rotation",
+       "accept": [
+        "external rotation",
+        "outward rotation"
+       ],
+       "box": [
+        1014,
+        939,
+        68,
+        37
+       ],
+       "concept": "rotation-circumduction",
+       "taught": "body-movements",
+       "fn": "Lateral (external) rotation turns the front of a limb away from the midline, around the limb's own long axis.",
+       "follow": {
+        "q": "Standing in anatomical position, you turn your right thigh so the kneecap points outward. What is this movement?",
+        "options": [
+         "Lateral rotation",
+         "Medial rotation",
+         "Abduction",
+         "Eversion"
+        ],
+        "correct": 0,
+        "why": "Turning the thigh around its own long axis so its front faces away from the midline is lateral rotation. Medial rotation turns it inward, abduction swings the whole limb out to the side without turning it, and eversion tilts the sole of the foot.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "medial-rotation",
+       "name": "Medial rotation",
+       "accept": [
+        "internal rotation",
+        "inward rotation"
+       ],
+       "box": [
+        1014,
+        1042,
+        68,
+        37
+       ],
+       "concept": "rotation-circumduction",
+       "taught": "body-movements",
+       "fn": "Medial (internal) rotation turns the front of a limb toward the midline, around the limb's own long axis."
+      }
+     ]
+    },
+    {
+     "figure": "os-9-13",
+     "topic": "body-movements",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "supination",
+       "name": "Supination (radius and ulna are parallel)",
+       "accept": [
+        "supinate",
+        "supinated"
+       ],
+       "box": [
+        244,
+        24,
+        105,
+        91
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Supination turns the forearm so the palm faces forward (as in anatomical position) or up. The radius and ulna lie parallel.",
+       "follow": {
+        "q": "In which forearm position do the radius and ulna lie parallel?",
+        "options": [
+         "Supination",
+         "Pronation",
+         "Opposition",
+         "Circumduction"
+        ],
+        "correct": 0,
+        "why": "In supination the palm faces forward and the radius lies beside the ulna. Pronation crosses the radius over the ulna, opposition is a thumb movement, and circumduction is a circling movement of a whole limb.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pronation",
+       "name": "Pronation (Radius rotates over ulna)",
+       "accept": [
+        "pronate",
+        "pronated"
+       ],
+       "box": [
+        3,
+        31,
+        94,
+        90
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Pronation turns the forearm so the palm faces back or down. The head of the radius turns in the annular ligament, and the radius crosses over the ulna."
+      },
+      {
+       "id": "dorsiflexion",
+       "name": "Dorsiflexion",
+       "accept": [
+        "dorsal flexion",
+        "dorsiflex"
+       ],
+       "box": [
+        392,
+        147,
+        108,
+        19
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Dorsiflexion at the ankle lifts the top of the foot toward the shin, as when you walk on your heels.",
+       "follow": {
+        "q": "You walk on your heels with your toes lifted off the floor. Which ankle movement holds the front of your feet up?",
+        "options": [
+         "Dorsiflexion",
+         "Plantar flexion",
+         "Inversion",
+         "Eversion"
+        ],
+        "correct": 0,
+        "why": "Lifting the top of the foot toward the shin is dorsiflexion. Plantar flexion points the toes down (standing on tiptoe), and inversion and eversion tilt the sole inward and outward.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "plantar-flexion",
+       "name": "Plantar flexion",
+       "accept": [
+        "plantarflexion",
+        "plantar flex"
+       ],
+       "box": [
+        354,
+        413,
+        129,
+        20
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Plantar flexion at the ankle points the toes down and lifts the heel, as when you stand on tiptoe."
+      },
+      {
+       "id": "inversion",
+       "name": "Inversion",
+       "accept": [
+        "invert",
+        "supination of the foot"
+       ],
+       "box": [
+        738,
+        469,
+        86,
+        20
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Inversion tilts the sole of the foot inward, toward the midline, mostly at the subtalar and other tarsal joints."
+      },
+      {
+       "id": "eversion",
+       "name": "Eversion",
+       "accept": [
+        "evert",
+        "pronation of the foot"
+       ],
+       "box": [
+        998,
+        469,
+        84,
+        20
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Eversion tilts the sole of the foot outward, away from the midline, mostly at the subtalar and other tarsal joints."
+      },
+      {
+       "id": "retraction-of-mandible",
+       "name": "Retraction of mandible",
+       "accept": [
+        "retraction",
+        "retraction of the mandible",
+        "jaw retraction"
+       ],
+       "box": [
+        85,
+        922,
+        109,
+        42
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Retraction pulls the mandible straight back, the reverse of protraction, gliding at the temporomandibular joints."
+      },
+      {
+       "id": "protraction-of-mandible",
+       "name": "Protraction of mandible",
+       "accept": [
+        "protraction",
+        "protraction of the mandible",
+        "jaw protraction"
+       ],
+       "box": [
+        262,
+        922,
+        109,
+        42
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Protraction moves the mandible straight forward, jutting the chin out, a gliding movement at the temporomandibular joints."
+      },
+      {
+       "id": "elevation-of-mandible",
+       "name": "Elevation of mandible",
+       "accept": [
+        "elevation",
+        "elevation of the mandible",
+        "jaw elevation"
+       ],
+       "box": [
+        630,
+        926,
+        109,
+        42
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Elevation lifts the mandible, closing the mouth, as when you bite."
+      },
+      {
+       "id": "depression-of-mandible",
+       "name": "Depression of mandible",
+       "accept": [
+        "depression",
+        "depression of the mandible",
+        "jaw depression"
+       ],
+       "box": [
+        588,
+        994,
+        109,
+        42
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Depression lowers the mandible, opening the mouth."
+      },
+      {
+       "id": "opposition",
+       "name": "Opposition",
+       "accept": [
+        "opposition of the thumb",
+        "thumb opposition"
+       ],
+       "box": [
+        730,
+        781,
+        101,
+        23
+       ],
+       "concept": "special-movements",
+       "taught": "body-movements",
+       "fn": "Opposition brings the thumb across the palm to touch the fingertips, using the saddle joint at the base of the thumb. It lets you pinch and grip."
+      }
+     ],
+     "hints": [
+      {
+       "id": "pronation-arrow",
+       "box": [
+        168,
+        343,
+        24,
+        19
+       ],
+       "why": "A letter on the arrow standing for pronation; it would give the movement away."
+      },
+      {
+       "id": "supination-arrow",
+       "box": [
+        134,
+        394,
+        24,
+        20
+       ],
+       "why": "A letter on the arrow standing for supination; it would give the movement away."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "neuron-structure",
    "title": "Neuron structure",
    "chapter": "nervous-tissue",
@@ -32374,6 +35491,123 @@
    "alt": "An outline drawing of a fetus curled up, with its circulation drawn in color. A red vein runs from the placenta at the right through the cord to the liver, where a short red channel carries it past the liver into a large vein rising to the heart. The heart and the vessels leaving it are purple, showing mixed blood; an opening between the two upper chambers and a short channel between the two great arteries above the heart are marked. Blue vessels branch from the lower body's arteries and run back out through the cord to the placenta. Labels mark the three short cuts, the aorta, the pulmonary trunk, the large vein, the vessels of the cord, the placenta and the bladder.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.44",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-6-development-of-blood-vessels-and-fetal-circulation",
+   "license": "CC BY 4.0"
+  },
+  "os-9-8": {
+   "src": "figures/os-9-8.jpg",
+   "w": 1100,
+   "h": 1244,
+   "alt": "A section through a joint between two bone ends. Each bone end is capped with a smooth blue layer of cartilage. A space filled with pale fluid separates the two caps. A two-layer sleeve encloses the space: a thin red inner lining and a tougher grey outer layer that blends into the covering of each bone.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-4-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-10": {
+   "src": "figures/os-9-10.jpg",
+   "w": 1100,
+   "h": 1311,
+   "alt": "A front view of a whole skeleton with six boxes pulled out to simple models of joint shapes: a peg turning in a ring at the top of the neck; a cylinder rolling in a trough at the elbow; two saddle shapes at the base of the thumb; flat plates sliding on each other in the foot; an oval fitting into an oval hollow at the wrist; and a ball in a cup at the hip. Curved arrows on each model show the directions it can move.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-4-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-11": {
+   "src": "figures/os-9-11.jpg",
+   "w": 1100,
+   "h": 519,
+   "alt": "Two drawings of the hip joint side by side. On the left, the ball of the thigh bone is covered with smooth, even cartilage and sits in its socket with a clear gap. On the right, the cartilage is thin and cracked, patches of bare bone show through, and the gap between the bones is narrower.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-4-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-15": {
+   "src": "figures/os-9-15.jpg",
+   "w": 1100,
+   "h": 1039,
+   "alt": "The jaw joint. A small skull in the corner marks the joint just in front of the ear. The enlarged view shows the rounded top of the lower jaw sitting under a hollow in the skull bone, with a thin plate of cartilage between them dividing the joint into an upper and a lower fluid space, all enclosed by a sleeve of tissue. Arrows show the jaw's top gliding forward.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.15",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-16": {
+   "src": "figures/os-9-16.jpg",
+   "w": 1100,
+   "h": 804,
+   "alt": "A front section through the right shoulder. The large rounded head of the upper arm bone rests against a small shallow socket on the shoulder blade, deepened by a rim of cartilage. A loose sleeve surrounds the joint. Above it, a bony shelf of the shoulder blade and a ligament form a roof, with a flattened fluid sac underneath. Two tendons pass near the joint, one running over the top and one running down the front of the arm in its own sheath.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.16",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-17": {
+   "src": "figures/os-9-17.jpg",
+   "w": 1100,
+   "h": 939,
+   "alt": "Three views of the elbow. A lengthwise section shows the lower end of the upper arm bone fitting into a deep notch of the ulna, with cartilage on both surfaces, a fluid space, fat pads, and a fluid sac behind the point of the elbow. The outer view shows a ring of ligament around the head of the radius and a fan-shaped ligament on the outer side. The inner view shows a triangular ligament on the inner side joining the upper arm bone to the ulna.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-18": {
+   "src": "figures/os-9-18.jpg",
+   "w": 1100,
+   "h": 2021,
+   "alt": "Three views of the right hip joint. A front section shows the head of the femur deep in the socket of the hip bone, a rim of cartilage deepening the socket, a small ligament from the socket to the femoral head, and a thick sleeve around the joint. Front and back views show strong bands of ligament spiraling around the sleeve from the hip bone to the femur.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.18",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-21": {
+   "src": "figures/os-9-21.jpg",
+   "w": 1100,
+   "h": 1246,
+   "alt": "Inner and outer views of the right ankle and foot. The inner view shows a broad fan-shaped ligament spreading down from the inner bump of the tibia to the ankle bones, and the joint below the talus. The outer view shows the fibula joined to the tibia by ligaments and a membrane, and short ligaments running from the outer bump of the fibula forward to the talus and down to the heel bone.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.21",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-9": {
+   "src": "figures/os-9-9.jpg",
+   "w": 1100,
+   "h": 882,
+   "alt": "A section through the knee from the side. The thigh bone sits on the shin bone, with the kneecap in front. Several flattened fluid-filled sacs lie between the kneecap, its tendon and ligament, the skin, and the bones, and a yellow pad of fat sits behind the ligament below the kneecap. Two crossing ligaments run inside the joint between the bones.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-4-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-19": {
+   "src": "figures/os-9-19.jpg",
+   "w": 1100,
+   "h": 843,
+   "alt": "Three views of the right knee. A side section shows the thigh bone on the shin bone, the kneecap in front, two crossing ligaments inside the joint, C-shaped cartilage pads between the bones, and several fluid sacs. A view from above the shin bone shows the two C-shaped pads and where the crossing ligaments attach. A front view shows the kneecap in the tendon from the thigh, the ligament below it, and a ligament on each side of the knee.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.19",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-20": {
+   "src": "figures/os-9-20.jpg",
+   "w": 1100,
+   "h": 658,
+   "alt": "A front view of a right knee struck from the outer side, shown by a large red arrow. Three injuries are shown: the ligament on the inner side of the knee is torn, the inner C-shaped cartilage pad is damaged, and one of the crossing ligaments inside the knee is torn.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.20",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints",
+   "license": "CC BY 4.0"
+  },
+  "os-9-12": {
+   "src": "figures/os-9-12.jpg",
+   "w": 1100,
+   "h": 1303,
+   "alt": "Six drawings of a man showing movements. From the side: the arm swinging forward and the leg bending back at the knee, then the arm swinging back and the leg swinging back; the head bending forward and tipping back; the trunk bending forward and arching back. From the front: one arm raised out to the side and brought back down, the other hand tracing a circle; and the head turning side to side while the thigh turns inward and outward.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.12",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-5-types-of-body-movements",
+   "license": "CC BY 4.0"
+  },
+  "os-9-13": {
+   "src": "figures/os-9-13.jpg",
+   "w": 1100,
+   "h": 1188,
+   "alt": "Six drawings of more movements. Two forearms: one with the palm facing forward and the two forearm bones parallel, one with the palm facing back and the bones crossed. A foot with the toes pulled up toward the shin and pointed down. Two feet with the soles turned inward and outward. A head with the jaw pushed forward and pulled back, then with the jaw raised and lowered. A hand with the thumb tip touching the tip of a finger.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.13",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-5-types-of-body-movements",
    "license": "CC BY 4.0"
   }
  }

@@ -1,0 +1,22 @@
+{
+  "pectoral-girdle": {
+    "def": "The shoulder girdle: the clavicle and scapula on each side, which attach the upper limb to the trunk. The clavicle meets the sternum; the scapula is held to the back of the rib cage by muscles and carries the spine, acromion, coracoid process, glenoid cavity and three fossae.",
+    "roots": [["pector-", "chest"], ["clavicula", "little key"], ["acr-", "tip"], ["omos", "shoulder"], ["corac-", "crow"], ["glen-", "socket"]],
+    "say": "KLAV-ih-kul; SKAP-yoo-luh; uh-KROH-mee-on; KOR-uh-koyd; GLEN-oyd"
+  },
+  "humerus": {
+    "def": "The long bone of the arm, from shoulder to elbow. Its head fits the glenoid cavity; below it are the anatomical neck, the greater and lesser tubercles with the intertubercular groove between them, and the surgical neck. Its lower end has the medial and lateral epicondyles, the capitulum, the trochlea and the olecranon fossa.",
+    "roots": [["humerus", "upper arm"], ["capit-", "head"], ["-ulum", "little"], ["trochlea", "pulley"]],
+    "say": "HYOO-mer-us; kuh-PICH-uh-lum; TROK-lee-uh"
+  },
+  "radius-ulna": {
+    "def": "The two forearm bones. The ulna, on the little-finger side, is large at the elbow, where its olecranon and trochlear notch wrap the humerus. The radius, on the thumb side, is large at the wrist; its disc-shaped head spins against the capitulum, and it crosses the ulna when the palm turns down.",
+    "roots": [["radius", "spoke of a wheel"], ["ulna", "elbow"], ["olen-", "elbow"], ["cran-", "head"]],
+    "say": "RAY-dee-us; UL-nuh; oh-LEK-ruh-non"
+  },
+  "hand-bones": {
+    "def": "The 27 bones of the wrist and hand: 8 carpals in two rows (scaphoid, lunate, triquetrum and pisiform; trapezium, trapezoid, capitate and hamate), 5 metacarpals in the palm and 14 phalanges in the fingers and thumb (pollex). The carpals and the flexor retinaculum form the carpal tunnel.",
+    "roots": [["carp-", "wrist"], ["meta-", "beyond"], ["phalanx", "row of soldiers"], ["scaph-", "boat"], ["lun-", "moon"], ["pis-", "pea"], ["ham-", "hook"], ["pollex", "thumb"]],
+    "say": "KAR-pulz; met-uh-KAR-pulz; fuh-LAN-jeez; SKAF-oyd; PY-sih-form"
+  }
+}

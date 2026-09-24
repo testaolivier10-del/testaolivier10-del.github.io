@@ -1,0 +1,429 @@
+{
+  "figure": "os-10-5",
+  "labels": [
+    {
+      "id": "sarcomere",
+      "name": "Sarcomere",
+      "accept": [
+        "sarcomere"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "sarcomere",
+      "box": [
+        356,
+        1,
+        120,
+        21
+      ]
+    },
+    {
+      "id": "h-zone",
+      "name": "H zone",
+      "accept": [
+        "h zone",
+        "h band",
+        "h-zone"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "sarcomere",
+      "box": [
+        378,
+        39,
+        78,
+        21
+      ]
+    },
+    {
+      "id": "m-line",
+      "name": "M line",
+      "accept": [
+        "m line",
+        "m-line",
+        "m disc"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "sarcomere",
+      "box": [
+        384,
+        79,
+        67,
+        21
+      ]
+    },
+    {
+      "id": "z-line",
+      "name": "Z line",
+      "accept": [
+        "z line",
+        "z disc",
+        "z disk",
+        "z-line"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "sarcomere",
+      "box": [
+        177,
+        83,
+        64,
+        21
+      ]
+    },
+    {
+      "id": "z-line-2",
+      "name": "Z line",
+      "accept": [
+        "z line",
+        "z disc",
+        "z disk",
+        "z-line"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "sarcomere",
+      "box": [
+        593,
+        83,
+        63,
+        21
+      ]
+    },
+    {
+      "id": "lighter-i-band",
+      "name": "Lighter I band",
+      "accept": [
+        "lighter i band",
+        "i band",
+        "light i band",
+        "isotropic band"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "sarcomere",
+      "box": [
+        198,
+        221,
+        139,
+        25
+      ]
+    },
+    {
+      "id": "darker-a-band",
+      "name": "Darker A band",
+      "accept": [
+        "darker a band",
+        "a band",
+        "dark a band",
+        "anisotropic band"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "sarcomere",
+      "box": [
+        345,
+        221,
+        145,
+        21
+      ]
+    },
+    {
+      "id": "lighter-i-band-2",
+      "name": "Lighter I band",
+      "accept": [
+        "lighter i band",
+        "i band",
+        "light i band",
+        "isotropic band"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "sarcomere",
+      "box": [
+        498,
+        221,
+        139,
+        25
+      ]
+    },
+    {
+      "id": "thick-filament",
+      "name": "Portion of a thick filament",
+      "accept": [
+        "portion of a thick filament",
+        "thick filament",
+        "myosin filament"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "thick-filament",
+      "box": [
+        128,
+        268,
+        134,
+        46
+      ]
+    },
+    {
+      "id": "thin-filament",
+      "name": "Portion of a thin filament",
+      "accept": [
+        "portion of a thin filament",
+        "thin filament",
+        "actin filament"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "thin-filament",
+      "box": [
+        572,
+        268,
+        125,
+        46
+      ]
+    },
+    {
+      "id": "troponin",
+      "name": "Troponin",
+      "accept": [
+        "troponin"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "thin-filament",
+      "box": [
+        444,
+        343,
+        91,
+        25
+      ]
+    },
+    {
+      "id": "actin",
+      "name": "Actin",
+      "accept": [
+        "actin",
+        "f-actin"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "thin-filament",
+      "box": [
+        605,
+        343,
+        58,
+        21
+      ]
+    },
+    {
+      "id": "tropomyosin",
+      "name": "Tropomyosin",
+      "accept": [
+        "tropomyosin"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "thin-filament",
+      "box": [
+        688,
+        343,
+        129,
+        25
+      ]
+    },
+    {
+      "id": "myosin-head",
+      "name": "Head",
+      "accept": [
+        "head",
+        "myosin head",
+        "myosin heads",
+        "heads"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "thick-filament",
+      "box": [
+        331,
+        457,
+        61,
+        21
+      ]
+    },
+    {
+      "id": "actin-binding-sites",
+      "name": "Actin-binding sites",
+      "accept": [
+        "actin-binding sites",
+        "actin binding sites",
+        "actin-binding site",
+        "actin binding site"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "thick-filament",
+      "box": [
+        71,
+        525,
+        182,
+        25
+      ]
+    },
+    {
+      "id": "myosin-binding-site",
+      "name": "Binding site for myosin",
+      "accept": [
+        "binding site for myosin",
+        "myosin-binding site",
+        "myosin binding site",
+        "myosin-binding sites"
+      ],
+      "lines": [
+        17,
+        19
+      ],
+      "concept": "thin-filament",
+      "box": [
+        447,
+        533,
+        120,
+        50
+      ]
+    },
+    {
+      "id": "actin-subunits",
+      "name": "Actin subunits",
+      "accept": [
+        "actin subunits",
+        "actin subunit",
+        "g-actin",
+        "globular actin",
+        "actin"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "thin-filament",
+      "box": [
+        678,
+        533,
+        142,
+        21
+      ]
+    },
+    {
+      "id": "atp-binding-site",
+      "name": "ATP-binding site",
+      "accept": [
+        "atp-binding site",
+        "atp binding site",
+        "atpase site"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "thick-filament",
+      "box": [
+        77,
+        605,
+        163,
+        25
+      ]
+    },
+    {
+      "id": "myosin-tail",
+      "name": "Tail",
+      "accept": [
+        "tail",
+        "myosin tail"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "thick-filament",
+      "box": [
+        21,
+        631,
+        43,
+        21
+      ]
+    },
+    {
+      "id": "myosin-heads",
+      "name": "Heads",
+      "accept": [
+        "heads",
+        "myosin heads",
+        "head",
+        "myosin head"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "thick-filament",
+      "box": [
+        331,
+        631,
+        72,
+        21
+      ]
+    },
+    {
+      "id": "myosin-molecule",
+      "name": "Myosin molecule",
+      "accept": [
+        "myosin molecule",
+        "myosin"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "thick-filament",
+      "box": [
+        0,
+        741,
+        165,
+        25
+      ]
+    },
+    {
+      "id": "hinge-region",
+      "name": "Flexible hinge region",
+      "accept": [
+        "flexible hinge region",
+        "hinge region",
+        "hinge",
+        "neck"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "thick-filament",
+      "box": [
+        205,
+        741,
+        202,
+        25
+      ]
+    }
+  ]
+}
