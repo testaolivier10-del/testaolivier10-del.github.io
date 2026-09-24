@@ -4387,7 +4387,7 @@
     "level": "apply",
     "compare": "Cochlea vs vestibular apparatus",
     "front": "Cochlea vs vestibular apparatus: what do the stereocilia touch, and what bends them?",
-    "back": "Cochlea: the tectorial membrane, bent by basilar membrane vibration. Maculae: the otolithic membrane, bent by gravity and lagging gel. Canals: the cupula, bent by lagging endolymph.",
+    "back": "Cochlea: the tectorial membrane (only the outer hair cells' tallest stereocilia are embedded; the inner hair cells' are bent by fluid), bent by basilar membrane vibration. Maculae: the otolithic membrane, bent by gravity and lagging gel. Canals: the cupula, bent by lagging endolymph.",
     "why": "The otoliths make the maculae’s gel heavy, so gravity pulls it; the cupula has no crystals, so it senses only turning."
   },
   {

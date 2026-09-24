@@ -7731,13 +7731,13 @@
         },
         {
           "id": "bone-hearing",
-          "name": "Hearing of a tuning fork pressed on the left mastoid process",
+          "name": "Response of the left cochlea to vibration carried through the skull bone",
           "answer": "none",
           "chain": [
             "bonefork",
             "bypass"
           ],
-          "why": "A fork on the bone shakes the whole skull and the cochlea directly, skipping the middle ear. The cochlea is healthy, so bone conduction is normal."
+          "why": "A fork on the bone shakes the whole skull and the cochlea directly, skipping the middle ear. The cochlea is healthy, so it responds normally. The fork may even sound louder on the left, for the same reason as in the Weber test."
         },
         {
           "id": "weber",
@@ -8080,7 +8080,7 @@
             "vagus",
             "rate"
           ],
-          "why": "At rest, vagal ACh on muscarinic receptor proteins holds the heart well below its own rate. Atropine removes that brake, often raising the rate by 30 beats a minute or more."
+          "why": "At rest, vagal ACh on muscarinic receptor proteins holds the heart well below its own rate. Atropine removes that brake. A dose large enough to block it fully can raise a young adult’s resting rate by 30 beats a minute or more."
         },
         {
           "id": "pupils",
@@ -8203,7 +8203,7 @@
             "heart",
             "faster"
           ],
-          "why": "Albuterol is selective, not perfectly so. Some absorbed drug stimulates the heart, and the rate rises a little."
+          "why": "Absorbed drug reaches the heart. Its pacemaker tissue carries some beta-2 receptor proteins as well as beta-1, and albuterol is not perfectly selective, so the drug itself nudges the rate up a little. In a severe attack, easing the struggle to breathe can let the rate settle, so the change you see may be small."
         },
         {
           "id": "pupils",

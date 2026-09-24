@@ -1,0 +1,32 @@
+{
+  "hypersensitivity": {
+    "def": "An immune response that damages your own tissues, usually against a harmless antigen (an allergen), after a symptom-free first exposure (sensitization). Type I is IgE on mast cells (immediate; allergy), type II antibody against cell-surface antigens, type III immune complexes, and type IV T cells (delayed).",
+    "roots": [["hyper-", "over, excessive"], ["all/o", "other"], ["-gen", "producing"]],
+    "say": ""
+  },
+  "anaphylaxis": {
+    "def": "A severe, rapid, whole-body type I reaction in which mast cells and basophils everywhere release histamine and leukotrienes: vasodilation and leaky capillaries drop MAP (anaphylactic shock, a distributive shock) and the airways narrow. Intramuscular epinephrine is the first treatment.",
+    "roots": [["ana-", "against"], ["phylaxis", "protection"]],
+    "say": "an-uh-fuh-LAK-sis"
+  },
+  "autoimmunity": {
+    "def": "An adaptive immune response against self antigens after self-tolerance fails; autoimmune disease is the damage it causes. It can be organ-specific, as in type 1 diabetes, or systemic, as in rheumatoid arthritis (inflamed synovial membranes) and systemic lupus erythematosus (antibodies against nuclear contents forming immune complexes).",
+    "roots": [["auto-", "self"], ["arthr-", "joint"], ["-itis", "inflammation"], ["lupus", "wolf"], ["erythemat-", "red"]],
+    "say": "LOO-pus air-ih-thee-muh-TOH-sus"
+  },
+  "myasthenia-gravis": {
+    "def": "An autoimmune disease in which antibodies reduce the acetylcholine receptor proteins at the motor end plate, so end plate potentials shrink and fall below threshold with repeated firing. Weakness worsens with use, often starting in the eye muscles; acetylcholinesterase inhibitors help.",
+    "roots": [["my-", "muscle"], ["-asthenia", "weakness"], ["gravis", "serious"]],
+    "say": "my-us-THEE-nee-uh GRAV-is"
+  },
+  "immunodeficiency": {
+    "def": "A weakened or absent immune response, leading to frequent, severe or opportunistic infections. Primary forms are inherited, such as SCID (no working T cells, so both arms fail); secondary forms are acquired, such as HIV infection, which destroys helper T cells and progresses to AIDS (CD4 count below 200 per microliter or a defining illness).",
+    "roots": [["immun/o", "immune"], ["de-", "down, lacking"], ["HIV", "human immunodeficiency virus"], ["AIDS", "acquired immunodeficiency syndrome"]],
+    "say": ""
+  },
+  "cancer-immunity": {
+    "def": "The attack on tumor cells by cytotoxic T cells, natural killer cells and other immune cells, which recognize mutated, viral or overabundant proteins. Cancers escape by losing MHC class I, using brake proteins such as PD-L1 and recruiting regulatory T cells; checkpoint inhibitors and CAR T cells turn the attack back on.",
+    "roots": [],
+    "say": ""
+  }
+}

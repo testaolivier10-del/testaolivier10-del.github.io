@@ -1,0 +1,48 @@
+{
+  "topic": "adaptive-immunity",
+  "hook": "<p>Baby Amara, 4 months old, has had thrush in her mouth for weeks and now a viral chest infection that will not clear. Her neutrophil count and complement are normal. A chest X-ray shows no thymus shadow, and her blood holds almost no T cells. Without a thymus, one whole line of lymphocytes has had nowhere to mature, and the defenses that depend on recognizing a specific antigen are failing.</p>",
+  "prereq": [
+    {
+      "q": "What is an antigen?",
+      "options": ["Any molecule a lymphocyte receptor protein or antibody binds specifically", "A protein released by lymphocytes to kill microbes", "A white blood cell that engulfs microbes"],
+      "correct": 0,
+      "why": "An antigen is the molecule recognized, often a protein or glycoprotein on a microbe or cell. Antibodies are the proteins that bind antigens.",
+      "review": "leukocytes-platelets"
+    },
+    {
+      "q": "Which organ is a primary lymphoid organ where one line of lymphocytes matures?",
+      "options": ["Spleen", "Thymus", "Palatine tonsil"],
+      "correct": 1,
+      "why": "The thymus and red bone marrow are the primary lymphoid organs. The spleen and tonsils are secondary organs, where mature lymphocytes meet antigens.",
+      "review": "lymphatic-system"
+    },
+    {
+      "q": "How does a macrophage take in a bacterium?",
+      "options": ["By exocytosis", "By phagocytosis into a vesicle that fuses with lysosomes", "By diffusion through its membrane"],
+      "correct": 1,
+      "why": "The membrane flows around the bacterium and closes it into a vesicle, which fuses with lysosomes that digest it.",
+      "review": "innate-immunity"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-21-16",
+    "caption": "One protein antigen bound by three different lymphocyte receptors. Hide the labels and name the patch each antigen receptor binds."
+  },
+  "chain": [
+    { "cause": "A dendritic cell in the skin detects bacteria with its pattern recognition receptors and engulfs them.", "effect": "Lysosomes digest the bacteria into peptides, which are loaded onto MHC class II and shown on the cell surface." },
+    { "cause": "The loaded dendritic cell travels through afferent lymph to a lymph node's paracortex.", "effect": "Among the naive T cells passing through, the rare few whose receptors fit a displayed peptide bind it." },
+    { "cause": "Binding peptide on MHC plus the dendritic cell's second, confirming signal selects those T cells.", "effect": "They divide every 6 to 8 hours for several days, each forming a clone of identical cells (clonal expansion)." },
+    { "cause": "The expanded clones differentiate.", "effect": "Most become short-lived fighting cells that act against the infection; a few become long-lived memory cells." },
+    { "cause": "The same bacteria enter the body again years later.", "effect": "The more numerous, quicker memory cells respond within a day or two, and the infection is cleared before illness develops." }
+  ],
+  "misconception": {
+    "wrong": "When a new microbe arrives, lymphocytes shape their antigen receptors to fit it.",
+    "right": "Each lymphocyte builds its antigen receptor at random, by joining gene pieces, while it matures and before it ever meets an antigen. Millions of different receptors exist in advance. The antigen does not instruct anything: it selects the rare cells whose receptors already fit, and those cells multiply. That is clonal selection, and it is why the first response to a new antigen takes days."
+  },
+  "check": ["anp-adaptive-immunity-2", "anp-adaptive-immunity-3", "anp-adaptive-immunity-6", "anp-adaptive-immunity-9", "anp-adaptive-immunity-10", "anp-adaptive-immunity-12", "anp-adaptive-immunity-13", "anp-adaptive-immunity-15"],
+  "summary": "<p>An antigen is any molecule a lymphocyte receptor or antibody binds specifically; each antigen receptor binds one small part, an epitope, and one antigen's many epitopes select many clones (a polyclonal response). B cells mature in the red bone marrow and bind intact antigen with a membrane-bound antibody. T cells mature in the thymus from thymocytes and see only short peptides held on MHC proteins. MHC class I, on nearly all nucleated cells, shows peptides made inside the cell; MHC class II, on antigen-presenting cells (dendritic cells, macrophages, B cells), shows peptides from material taken in. MHC genes vary enormously between people. Dendritic cells process antigen and carry it to the lymph node paracortex to present it to naive T cells. Positive selection keeps thymocytes that can use self MHC; negative selection deletes those that bind self strongly (central tolerance); anergy and suppression keep escaped self-reactive cells quiet (peripheral tolerance). Antigen selects the few matching naive lymphocytes, which expand into clones of fighting cells and memory cells; memory cells make the next response faster and stronger.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

@@ -44,9 +44,11 @@ For whoever builds a tool or an app page. Read `docs/anp-spec.md` sections 8, 10
   - `pct(v)`: formats a value as a percentage.
 - **`window.AnpQuestions`:** `render(q, host, { n, record, onAnswer, exam })` renders and grades
   any bank question. `shuffle(arr)`.
-- **Question bank:** `fetch(ANP_BASE + 'assets/bank-core.json')` (a question without
-  explanations) plus `fetch(ANP_BASE + 'assets/bank-why.json')` (`{ id: { why, variables } }`).
-  Merge `why` and `variables` into each question before `AnpQuestions.render`.
+- **Question bank:** `AnpCore.loadBank(ANP_BASE, { chapters, why })` resolves to an array of
+  questions with `why` and `variables` merged in, ready for `AnpQuestions.render`. The bank is
+  split by chapter: `assets/bank/<chapter>.json` (questions without explanations) and
+  `assets/bank/<chapter>-why.json` (`{ id: { why, variables } }`). `chapters` defaults to every
+  chapter with a built topic; `why: false` skips the explanation files.
 - **`window.LevlReport.button('anp', itemId)`:** "Report a problem" HTML. Every scored item
   gets one.
 

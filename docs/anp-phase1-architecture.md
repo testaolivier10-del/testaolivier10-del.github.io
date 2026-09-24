@@ -70,7 +70,7 @@ This is logged in the spec's decisions log.
 | `anp-nav.js` | the course's tabs, handed to `LevlChrome.render` |
 | `anp.css` | course styles and the visual language (figures, arrows, colors) |
 | `tools/*.js` | one module per tool |
-| `bank-core.json`, `bank-why.json` | generated: the question bank without and with explanations (the split keeps the first question fast, as in ochem) |
+| `bank/<chapter>.json`, `bank/<chapter>-why.json` | generated: the question bank by chapter, without and with explanations (the split keeps the first question fast, as in ochem; the chapter split keeps each file small, spec decision 59). Load with `AnpCore.loadBank` |
 | `glossary.json`, `flashcards.json`, `tools-data.json` | generated from `data/` |
 
 ## Content formats

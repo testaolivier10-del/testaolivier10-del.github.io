@@ -641,16 +641,26 @@ function glossaryJson() {
   return JSON.stringify(out);
 }
 
+/* The question bank, one pair of files per published chapter
+   (assets/bank/<chapter>.json for stems, options and keys; <chapter>-why.json
+   for explanations, fetched after). One file for the whole course would pass
+   400 KB gzipped by the time every chapter is written, and every edit to one
+   chapter would invalidate all of it in the cache. AnpCore.loadBank fetches the
+   chapters a page needs. */
 function bankJson() {
-  const core = [], why = {};
-  for (const t of builtTopics) for (const q of C.questions[t.id]) {
-    const p = questionForPage(C, q, t.id);
-    why[p.id] = { why: p.why, variables: p.variables };
-    const { why: _w, ...rest } = p;
-    if (rest.variables) rest.variables = rest.variables.map(v => ({ name: v.name, answer: v.answer }));
-    core.push(rest);
+  const out = {};
+  for (const t of builtTopics) {
+    const ch = t.chapter;
+    const b = out[ch] || (out[ch] = { core: [], why: {} });
+    for (const q of C.questions[t.id]) {
+      const p = questionForPage(C, q, t.id);
+      b.why[p.id] = { why: p.why, variables: p.variables };
+      const { why: _w, ...rest } = p;
+      if (rest.variables) rest.variables = rest.variables.map(v => ({ name: v.name, answer: v.answer }));
+      b.core.push(rest);
+    }
   }
-  return { core: JSON.stringify(core), why: JSON.stringify(why) };
+  return out;
 }
 
 function notesIndexJson() {
@@ -676,9 +686,10 @@ for (const t of builtTopics) { put(`lessons/${t.id}.html`, lessonPage(t.id)); pu
 put('assets/anp-curriculum.js', curriculumJs().replace('window.AnpCurriculum = ', `window.AnpTools = ${JSON.stringify(PAGES.tools.map(t => ({ slug: t.slug, name: t.name, blurb: t.blurb })))};\nwindow.AnpCurriculum = `));
 put('assets/glossary.json', glossaryJson());
 put('assets/notes-index.json', notesIndexJson());
-const bank = bankJson();
-put('assets/bank-core.json', bank.core);
-put('assets/bank-why.json', bank.why);
+for (const [ch, b] of Object.entries(bankJson())) {
+  put(`assets/bank/${ch}.json`, JSON.stringify(b.core));
+  put(`assets/bank/${ch}-why.json`, JSON.stringify(b.why));
+}
 
 /* Tool data as served: only items whose topic is built, so a chapter's tool
    items go live with its pages and not before (spec decision 53). The source
@@ -705,7 +716,7 @@ for (const f of readdirSync(join(C.data, 'tools')).filter(f => f.endsWith('.json
 
 // Generated folders hold nothing else: a page for a topic that lost its data
 // would otherwise live on, unlinked and stale.
-const OWNED_DIRS = ['lessons', 'notes', 'chapters', 'concepts', 'tools', 'assets/tool-data'];
+const OWNED_DIRS = ['lessons', 'notes', 'chapters', 'concepts', 'tools', 'assets/tool-data', 'assets/bank'];
 const stale = [];
 for (const d of OWNED_DIRS) {
   const dir = join(OUT, d);

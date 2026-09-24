@@ -1,0 +1,49 @@
+{
+  "topic": "immune-disorders",
+  "hook": "<p>Maya, 16, bites into a cookie at a party without knowing it contains peanut. Within ten minutes her lips swell, hives spread across her chest, she is wheezing, and she feels faint. Her blood pressure is 74/40 and her heart rate 132. A friend pushes her epinephrine auto-injector into her outer thigh, and within minutes she can breathe more easily and her color returns. A protein that is harmless to almost everyone has triggered her immune system to drop her blood pressure and narrow her airways. How, and why does one drug fix both?</p>",
+  "prereq": [
+    {
+      "q": "Which antibody class binds mast cells by its Fc region?",
+      "options": ["IgG", "IgE", "IgM"],
+      "correct": 1,
+      "why": "IgE sits on mast cells and basophils through their Fc receptor proteins. When an antigen cross-links two IgE molecules, the mast cell releases histamine.",
+      "review": "antibody-immunity"
+    },
+    {
+      "q": "In distributive shock, which term of MAP = CO × TPR falls first?",
+      "options": ["TPR", "Heart rate", "Blood viscosity"],
+      "correct": 0,
+      "why": "Distributive shock is widespread vasodilation, so total peripheral resistance falls, and blood pools in widened vessels.",
+      "review": "circulatory-disorders"
+    },
+    {
+      "q": "What does epinephrine do to smooth muscle through beta-2 receptor proteins?",
+      "options": ["Makes it contract", "Makes it relax", "Has no effect"],
+      "correct": 1,
+      "why": "Beta-2 receptor proteins raise cyclic AMP in smooth muscle, and the muscle relaxes: the small airways widen.",
+      "review": "ans-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-21-29",
+    "caption": "Rheumatoid arthritis and lupus. Hide the labels and name the organs lupus can inflame."
+  },
+  "chain": [
+    { "cause": "On a first exposure to peanut protein, Th2 cells drive B cells to switch to IgE, which binds mast cells and basophils all over the body.", "effect": "The person is sensitized but has no symptoms." },
+    { "cause": "Peanut protein reaches the blood on a later exposure and cross-links IgE on mast cells and basophils everywhere.", "effect": "They degranulate at once, releasing histamine, tryptase and then leukotrienes." },
+    { "cause": "Histamine and leukotrienes dilate arterioles and veins and make capillaries leak.", "effect": "TPR falls, plasma leaves the vessels, and venous return falls." },
+    { "cause": "Low TPR and low venous return lower both terms of MAP = CO × TPR.", "effect": "MAP falls into distributive shock, while airway smooth muscle contracts and throat tissues swell." },
+    { "cause": "Epinephrine is injected into the thigh muscle.", "effect": "Alpha-1 constricts vessels and cuts leak, beta-1 strengthens the heart, and beta-2 widens the airways, so MAP and breathing recover." }
+  ],
+  "misconception": {
+    "wrong": "An antihistamine such as diphenhydramine is the treatment for anaphylaxis.",
+    "right": "Antihistamines block only histamine, act slowly and do not raise blood pressure or open narrowed airways; they relieve itching and hives. Leukotrienes and other mediators keep acting. Epinephrine is the first and essential drug, because through alpha-1, beta-1 and beta-2 receptor proteins it reverses vasodilation, leak, weak cardiac output and airway narrowing all at once."
+  },
+  "check": ["anp-immune-disorders-1", "anp-immune-disorders-3", "anp-immune-disorders-6", "anp-immune-disorders-8", "anp-immune-disorders-11", "anp-immune-disorders-12", "anp-immune-disorders-18"],
+  "summary": "<p>Hypersensitivity is a harmful immune response, usually to a harmless allergen, after a symptom-free sensitization. Type I (immediate) is IgE on mast cells; type II is antibody against cell-surface antigens or receptor proteins; type III is immune complexes lodging in vessels, joints and kidneys; type IV (delayed) is T cells. Anaphylaxis is body-wide mast cell degranulation: vasodilation lowers TPR, capillary leak lowers plasma volume and venous return, MAP falls into distributive shock, and the airways narrow. Intramuscular epinephrine reverses it through alpha-1, beta-1 and beta-2 receptor proteins. Autoimmune disease is lost self-tolerance: organ-specific (type 1 diabetes, Hashimoto, Graves, myasthenia gravis) or systemic (rheumatoid arthritis, lupus). In myasthenia gravis, antibodies remove acetylcholine receptor proteins, so weakness grows with use. Immunodeficiency is primary (SCID) or secondary; HIV destroys helper T cells, and AIDS is a CD4 count below 200 per microliter or a defining illness. Cytotoxic T cells and NK cells attack cancers, which escape by losing MHC class I and using brake proteins that checkpoint inhibitors block.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-23", "label": "NREMT: Allergic reactions" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology (epinephrine)" },
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" }
+  ]
+}

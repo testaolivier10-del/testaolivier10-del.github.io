@@ -1,0 +1,544 @@
+[
+  {
+    "id": "anp-adaptive-immunity-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-21-16",
+    "pin": "antigenic-determinant",
+    "q": "Name the pinned part of the antigen.",
+    "options": [
+      "Antigenic determinant (epitope)",
+      "MHC protein",
+      "Antigen receptor",
+      "Hapten"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The small patch of the antigen that one receptor protein binds is an antigenic determinant, also called an epitope. The protein in the figure has several, each bound by a different lymphocyte's receptor.",
+      "options": [
+        "Correct. The patch an antigen receptor binds is an epitope (antigenic determinant).",
+        "An MHC protein is a membrane glycoprotein on your own cells that holds a peptide. It is not part of the antigen.",
+        "The antigen receptor is on the lymphocyte, drawn as the paired arms. The pinned patch is on the antigen they bind.",
+        "A hapten is a small molecule that becomes antigenic only when attached to one of your proteins. The pinned patch is part of a large protein antigen."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A single bacterial protein is injected into a rabbit. Weeks later, the rabbit's blood holds antibodies from many different clones, all against that one protein. What explains this?",
+    "options": [
+      "The protein changed shape to fit each clone",
+      "One clone switched its antigen receptor to a new shape many times over",
+      "The protein was contaminated with other proteins",
+      "Each clone recognizes a different epitope on the protein"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A large protein has many epitopes on its surface. Each is recognized by different lymphocytes, so the one protein selects many clones at once: a polyclonal response.",
+      "options": [
+        "The antigen does not reshape itself or the antigen receptors. Receptors are made at random in advance, and the antigen selects those that already fit.",
+        "Each lymphocyte and its clone carry one receptor specificity. Many clones, not one changing clone, explain the variety.",
+        "Nothing suggests contamination. Even a pure protein carries many epitopes.",
+        "Correct. Many epitopes on one antigen select many clones."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A virus infects liver cells and makes its proteins in their cytosol. How do T cells find out that a particular liver cell is infected?",
+    "options": [
+      "The liver cell releases free viral proteins that T cells bind",
+      "The liver cell displays viral peptides on MHC class II",
+      "The liver cell displays viral peptides on MHC class I",
+      "Complement coats the liver cell so T cells can grip it"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Proteins made inside a cell, including viral ones, are chopped into peptides in the cytosol, loaded onto MHC class I in the endoplasmic reticulum and shown on the surface. Nearly every nucleated cell, liver cells included, does this, so T cells of the killing kind can spot the infected cell.",
+      "options": [
+        "T cell receptors do not bind free antigen. They bind only peptides held on MHC proteins.",
+        "MHC class II is found on antigen-presenting cells and displays material taken in from outside, not proteins made in an ordinary liver cell's cytosol.",
+        "Correct. Class I shows what a cell makes inside itself.",
+        "T cells do not recognize complement. Their antigen receptors bind peptide on MHC."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Mature red blood cells carry no MHC class I. Why can they not display it, and what follows if a parasite lives inside them?",
+    "options": [
+      "They have no nucleus or endoplasmic reticulum, so T cells cannot detect the parasite",
+      "Their membrane is too thin to hold MHC, so the parasite is detected by complement alone",
+      "They display MHC class II instead, so coordinating T cells detect the parasite",
+      "They hide class I until infected, so killing T cells find the parasite quickly"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Mature red blood cells have lost their nucleus and organelles, so they cannot make new MHC class I or load peptides onto it. A parasite inside them, such as the one that causes malaria, is hidden from T cells that read class I; other defenses, such as the spleen's red pulp, must catch the infected cells.",
+      "options": [
+        "Correct. With no nucleus and no endoplasmic reticulum, a red cell cannot make or load class I, so infected red cells escape T cell detection.",
+        "Membrane thickness is not the reason, and complement does not replace T cell recognition of what is inside a cell.",
+        "Red blood cells are not antigen-presenting cells and do not carry MHC class II.",
+        "Red blood cells cannot make class I at all, infected or not."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-5",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every cell that carries MHC class II and can act as an antigen-presenting cell.",
+    "options": [
+      "Dendritic cell",
+      "Macrophage",
+      "B cell",
+      "Red blood cell",
+      "Neutrophil",
+      "Skeletal muscle fiber"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The antigen-presenting cells are dendritic cells, macrophages and B cells. They take in material from outside and display its peptides on MHC class II.",
+      "options": [
+        "Correct. Dendritic cells are the most important antigen-presenting cells, and the only ones that switch on naive T cells.",
+        "Correct. Macrophages show what they have swallowed on class II.",
+        "Correct. B cells take in the antigen their antigen receptors bind and show its peptides on class II.",
+        "Red blood cells carry neither class I nor class II.",
+        "Neutrophils engulf microbes but are not antigen-presenting cells; they do not normally carry class II.",
+        "Muscle fibers carry class I, like other nucleated cells, but not class II."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-6",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps in order to show how bacteria in a cut on the hand come to be presented to a naive T cell.",
+    "options": [
+      "A dendritic cell in the skin engulfs the bacteria after its pattern recognition receptors detect them",
+      "The vesicle holding the bacteria fuses with lysosomes, and bacterial proteins are cut into peptides",
+      "The peptides are loaded onto MHC class II and carried to the cell surface",
+      "The dendritic cell travels through afferent lymphatic vessels to a lymph node in the armpit",
+      "In the paracortex, a naive T cell whose receptor fits a displayed peptide binds it"
+    ],
+    "why": {
+      "correct": "The dendritic cell captures the bacteria, processes them into peptides in lysosome-fused vesicles, loads the peptides onto class II, and carries them through the lymph to the node's paracortex, where the rare naive T cell with a matching antigen receptor finds them."
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the stages of T cell development in order.",
+    "options": [
+      "Lymphoid stem cells in the red bone marrow produce immature cells",
+      "Thymocytes enter the cortex of the thymus",
+      "Positive selection: thymocytes that cannot bind self MHC die",
+      "Negative selection: thymocytes that bind self peptide on self MHC too strongly die",
+      "Survivors leave as mature, naive T cells and circulate between blood and lymph nodes"
+    ],
+    "why": {
+      "correct": "T cells are made in the marrow, travel as thymocytes to the thymus cortex, pass positive selection there, pass negative selection mostly in the medulla, and leave as naive T cells."
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A baby is born without a thymus. Compared with a healthy baby, predict each variable.",
+    "variables": [
+      {
+        "name": "Number of mature T cells in the blood",
+        "answer": "down",
+        "why": "T cells mature in the thymus. Without it, thymocytes from the marrow have nowhere to go through positive and negative selection, so few mature T cells appear."
+      },
+      {
+        "name": "Lymphocytes in the paracortex of the lymph nodes",
+        "answer": "down",
+        "why": "The paracortex is where T cells gather. With few T cells, it is nearly empty."
+      },
+      {
+        "name": "Production of B cells in the bone marrow",
+        "answer": "none",
+        "why": "B cells are made and mature in the red bone marrow, which is normal."
+      },
+      {
+        "name": "Neutrophil killing of bacteria by phagocytosis",
+        "answer": "none",
+        "why": "Neutrophils are innate cells made in the marrow and do not depend on the thymus."
+      }
+    ],
+    "why": {
+      "correct": "The thymus is where T cells mature, so without it T cells and the paracortex they fill are depleted. B cells, made in the marrow, and innate cells such as neutrophils are produced normally, though B cells get less T cell help."
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In the thymus cortex, a thymocyte's new receptor cannot bind any of the person's own MHC proteins. What happens to it, and why?",
+    "options": [
+      "It is kept, because it cannot attack self",
+      "It leaves as a naive T cell and waits for a matching microbe",
+      "It becomes a memory cell without further testing",
+      "It dies, because it could never recognize any antigen"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "T cells recognize peptides only when held on self MHC. An antigen receptor that cannot bind self MHC at all could never recognize anything, so the thymocyte gets no survival signal and dies of neglect. This is positive selection.",
+      "options": [
+        "Being unable to attack self is not enough; the cell must also be able to use self MHC. Without that, it is useless and is not kept.",
+        "It never leaves. Only thymocytes that pass both positive and negative selection are released.",
+        "Memory cells form only after a mature lymphocyte meets its antigen and expands. A thymocyte has not.",
+        "Correct. Failing positive selection means death by apoptosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-10",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "the antigen shapes a lymphocyte's receptor to fit it",
+    "q": "A student described a first immune response to a new virus. One step is wrong. Which one?",
+    "options": [
+      "Each maturing lymphocyte builds its antigen receptor genes from randomly chosen pieces of DNA",
+      "When the virus arrives, lymphocytes reshape their antigen receptors to fit its epitopes",
+      "Dendritic cells carry viral peptides to the lymph nodes",
+      "The rare naive lymphocytes whose receptors already fit are selected",
+      "Selected lymphocytes divide into clones of identical cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Receptors are made at random before any antigen is met, and they do not change to fit a new antigen. The antigen selects the cells that already fit. That is the core idea of clonal selection.",
+      "options": [
+        "This step is right. Random joining of gene pieces makes each lymphocyte's receptor unique.",
+        "This is the error. The antigen selects existing receptors; it does not reshape them.",
+        "This step is right. Dendritic cells present viral peptides in the lymph node paracortex.",
+        "This step is right. This is clonal selection.",
+        "This step is right. This is clonal expansion."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-11",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the sequence: a naive lymphocyte's receptor binds its antigen → ____ → most cells fight the infection and a few become memory cells → most fighting cells die once the antigen is gone.",
+    "options": [
+      "The lymphocyte divides repeatedly into a clone (clonal expansion)",
+      "The lymphocyte is deleted in the thymus",
+      "The lymphocyte becomes anergic and stops responding",
+      "The lymphocyte changes its antigen receptor to a new specificity"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "After selection, the lymphocyte divides every 6 to 8 hours for several days, producing a clone of identical cells. That clone supplies both the fighting cells and the memory cells.",
+      "options": [
+        "Correct. Clonal expansion follows selection.",
+        "Deletion happens to self-reactive thymocytes during maturation, not to mature lymphocytes that meet a foreign antigen.",
+        "Anergy follows binding without the second, confirming signal, as with self antigen on ordinary tissue cells. It would stop the response, not continue it.",
+        "Each cell keeps its antigen receptor specificity; its clone carries the same antigen receptor."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A mature T cell whose receptor fits a thyroid protein escaped negative selection. It meets that protein, on MHC, on an ordinary thyroid cell that gives no second, confirming signal. What is most likely to happen?",
+    "options": [
+      "The T cell switches on and attacks the thyroid",
+      "The thyroid cell is killed by NK cells",
+      "The T cell travels back to the thymus to be tested a second time",
+      "The T cell becomes permanently unresponsive (clonal anergy)"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A naive T cell needs two signals: its antigen receptor binding peptide on MHC, and a confirming signal from a dendritic cell that has detected danger. Binding without the second signal makes it permanently unresponsive. This clonal anergy is part of peripheral tolerance.",
+      "options": [
+        "Switching on needs the second signal, which an ordinary tissue cell does not give. Attack would require tolerance to fail.",
+        "The thyroid cell still displays normal MHC class I and shows no stress proteins, so NK cells leave it alone.",
+        "Mature T cells do not return to the thymus to be retested. Tolerance out in the body is peripheral tolerance.",
+        "Correct. Binding without a confirming signal causes anergy."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Priya had chickenpox at age 5. At 30 she nurses her nephew through chickenpox and never becomes ill. What best explains this?",
+    "options": [
+      "Her innate immunity has become specific to the virus",
+      "Antibodies from age 5 are still circulating unchanged",
+      "Her MHC proteins no longer bind the virus",
+      "Memory cells respond before the virus can spread"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Her first infection left memory B and T cells: far more numerous than the original naive cells, long-lived, and quick to switch on. When the virus returned, they responded within a day or two and cleared it before she felt ill.",
+      "options": [
+        "Innate immunity recognizes patterns shared by groups of microbes and does not become specific to one virus.",
+        "Individual antibody molecules last weeks, not decades. Protection this long depends on long-lived memory cells.",
+        "Her MHC proteins are inherited and do not change. Losing the ability to present the virus would make her more vulnerable, not less.",
+        "Correct. Immunological memory rests on memory cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A two-child family needs a bone marrow donor for one child. Why is the brother the first person tested, and what is the chance he matches?",
+    "options": [
+      "Siblings share one set of MHC genes from each parent; the chance is 1 in 4",
+      "Siblings always have identical MHC; the chance is 1 in 1",
+      "Siblings share MHC only if they are the same sex; the chance is 1 in 2",
+      "MHC is the same in every family member; the chance is 1 in 1"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each child inherits one of each parent's two sets of MHC genes. The chance that a brother inherited the same set from the mother (1 in 2) and the same set from the father (1 in 2) is 1 in 4. An unrelated donor, drawn from thousands of MHC versions, is far less likely to match.",
+      "options": [
+        "Correct. Two independent 1-in-2 chances give 1 in 4.",
+        "Only identical twins always match. Other siblings inherit sets independently.",
+        "MHC genes are not on the sex chromosomes, so sex does not decide a match.",
+        "Parents and children share only one set, so they are half matches, and MHC varies between family members."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A snake venom protein circulates free in the plasma. Which lymphocytes can bind it directly, without any other cell presenting it?",
+    "options": [
+      "T cells",
+      "Thymocytes",
+      "B cells",
+      "NK cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "B cell receptors, membrane-bound antibodies, bind epitopes on intact antigens free in fluid. T cells can recognize the venom only after an antigen-presenting cell has processed it and displayed its peptides on MHC.",
+      "options": [
+        "T cell receptors bind only peptides held on MHC proteins, not free proteins in plasma.",
+        "Thymocytes are immature T cells in the thymus; they do not respond to antigens in the plasma.",
+        "Correct. B cells bind intact, free antigen directly.",
+        "NK cells carry no antigen receptor. They check other cells for stress proteins and missing MHC class I."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "An epitope lies deep inside a folded viral protein, hidden from the surface. Which recognition can target it?",
+    "options": [
+      "A B cell receptor binding the intact protein",
+      "An antibody binding the virus while it circulates in the blood",
+      "A T cell receptor binding the peptide on MHC",
+      "Complement binding the protein surface"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "T cells recognize short, linear peptides cut from proteins and displayed on MHC. Processing breaks the protein apart, so a stretch buried inside the folded protein can end up in an MHC groove.",
+      "options": [
+        "B cell receptors bind epitopes on the surface of intact antigens, so a buried stretch is out of reach.",
+        "Antibodies, like B cell receptors, bind the surface of intact antigens.",
+        "Correct. Processing exposes buried stretches as peptides on MHC.",
+        "Complement binds surfaces, antibodies or microbial sugars, not buried parts of a protein, and it recognizes no specific epitope."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "Where in a lymph node does a naive T cell most likely meet a dendritic cell presenting its antigen?",
+    "options": [
+      "A germinal center",
+      "The subcapsular sinus",
+      "The efferent lymphatic vessel",
+      "The paracortex"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Dendritic cells arriving through afferent lymph settle in the paracortex, the T cell zone, and naive T cells enter the node there through high endothelial venules. The two meet in the paracortex.",
+      "options": [
+        "Germinal centers form in the nodules of the cortex, where activated B cells multiply.",
+        "The subcapsular sinus is where lymph first enters; dendritic cells pass through it on their way to the paracortex.",
+        "The efferent vessel carries lymph out of the node, after it has passed the lymphocytes.",
+        "Correct. The paracortex is the T cell zone where dendritic cells present."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-18",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every way memory cells differ from the naive cells they came from.",
+    "options": [
+      "They are far more numerous for a given antigen",
+      "They switch on faster and with less stimulation",
+      "They can live for years or decades",
+      "They recognize a different epitope from the original clone",
+      "They carry no antigen receptor"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Memory cells are a larger, longer-lived and quicker-to-respond version of the clone that met the antigen. They keep the same specificity.",
+      "options": [
+        "Correct. Clonal expansion leaves 100 to 1,000 times more matching cells.",
+        "Correct. They respond within a day or two instead of about a week.",
+        "Correct. Some last for decades.",
+        "They belong to the same clone, so they carry the same antigen receptor and recognize the same epitope.",
+        "They carry the clone's antigen receptor; that is how they recognize the antigen again."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A child is born without working AIRE, so the epithelial cells of her thymic medulla cannot show proteins normally made only in other organs, such as the insulin-making cells of the pancreas. Years later her T cells attack those pancreatic cells. Which step of tolerance failed?",
+    "options": [
+      "Positive selection in the cortex",
+      "Negative selection in the medulla",
+      "Clonal expansion in the lymph nodes",
+      "Antigen processing by dendritic cells in the skin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Negative selection removes thymocytes that bind self peptides strongly, but only for self peptides the thymus displays. Without AIRE, organ-specific proteins are missing from the medulla, so T cells that react to them are never deleted and later attack those organs.",
+      "options": [
+        "Positive selection checks only whether a thymocyte can bind self MHC. It does not remove self-reactive cells.",
+        "Correct. Central tolerance failed because the self proteins were never shown in the medulla.",
+        "Clonal expansion happens after a mature cell is selected by antigen. The problem is that the self-reactive cells survived maturation.",
+        "Processing in the skin concerns antigens met out in the body. The failure here is in the thymus, where tolerance to the pancreas is normally built."
+      ]
+    }
+  },
+  {
+    "id": "anp-adaptive-immunity-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Where do B cells finish maturing?",
+    "options": [
+      "Thymus",
+      "Spleen",
+      "Red bone marrow",
+      "Lymph nodes"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "B cells are made and finish maturing in the red bone marrow, where self-reactive ones are removed or change their antigen receptor.",
+      "options": [
+        "The thymus is where T cells mature.",
+        "The spleen is a secondary lymphoid organ where mature B cells meet blood-borne antigens.",
+        "Correct. B cells mature in the red bone marrow.",
+        "Lymph nodes are secondary lymphoid organs where mature B cells gather in the nodules of the cortex."
+      ]
+    }
+  }
+]

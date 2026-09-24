@@ -1,8 +1,8 @@
 /* A&P Practice (docs/anp-spec.md section 10).
 
    One question at a time with immediate feedback and the full explanation,
-   drawn from the course question bank (assets/bank-core.json, with the
-   explanations merged in from assets/bank-why.json). Every answer records
+   drawn from the course question bank (assets/bank/<chapter>.json, with the
+   explanations merged in from <chapter>-why.json, via AnpCore.loadBank). Every answer records
    through AnpQuestions -> AnpCore, so XP, mastery and the review queue move
    the same way they do inside a lesson.
 
@@ -48,14 +48,8 @@
   /* ------------------------------------------------------------ data */
 
   function loadBank(){
-    function get(u){ return fetch(BASE + u).then(function(r){ if(!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); }
-    return Promise.all([get('assets/bank-core.json'), get('assets/bank-why.json').catch(function(){ return {}; })]).then(function(res){
-      var why = res[1] || {};
-      return res[0].filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; }).map(function(q){
-        var w = why[q.id];
-        if(w){ if(w.why) q.why = w.why; if(w.variables) q.variables = w.variables; }
-        return q;
-      });
+    return window.AnpCore.loadBank(BASE).then(function(all){
+      return all.filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; });
     });
   }
 

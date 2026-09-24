@@ -2748,8 +2748,8 @@
         {
           "id": "bend",
           "label": "Stereocilia bend",
-          "text": "The stereocilia of the hair cells, touching the tectorial membrane above them, are bent back and forth.",
-          "why": "The hair cells ride on the basilar membrane, so its movement bends their stereocilia against the tectorial membrane."
+          "text": "The tectorial membrane slides across the hair cells, bending their stereocilia back and forth.",
+          "why": "The hair cells ride on the basilar membrane under the tectorial membrane. The outer hair cells' tallest stereocilia are embedded in it; the inner hair cells' are bent by the fluid it drags."
         },
         {
           "id": "release",

@@ -126,10 +126,10 @@
       "The stapes rocks in the oval window",
       "Pressure waves travel through the perilymph of the scala vestibuli",
       "The basilar membrane vibrates",
-      "Stereocilia bend against the tectorial membrane"
+      "The hair cells' stereocilia bend"
     ],
     "why": {
-      "correct": "The eardrum vibrates, the ossicles pass the vibration to the oval window, the stapes sets up waves in the perilymph, the basilar membrane vibrates, and the stereocilia of the hair cells, whose tips touch the tectorial membrane, are bent."
+      "correct": "The eardrum vibrates, the ossicles pass the vibration to the oval window, the stapes sets up waves in the perilymph, the basilar membrane vibrates, and the tectorial membrane slides across the hair cells and bends their stereocilia."
     }
   },
   {
@@ -320,7 +320,7 @@
       "options": [
         "Correct. Opening mechanically gated channels is the transduction step.",
         "Hair cells do not fire action potentials; their sensory neurons do.",
-        "The tectorial membrane is a gel with no cells that release transmitter; it only holds the stereocilia tips.",
+        "The tectorial membrane is a gel with no cells that release transmitter; it bends the stereocilia as it slides across the hair cells.",
         "Otoliths belong to the maculae of the vestibule, not the cochlea."
       ]
     }
@@ -335,7 +335,7 @@
     ],
     "q": "A student traced how a sound reaches the brain from a cochlear hair cell. Which step is wrong?",
     "options": [
-      "The basilar membrane moves and the stereocilia bend against the tectorial membrane",
+      "The basilar membrane moves under the tectorial membrane and the stereocilia bend",
       "Mechanically gated channels open and the hair cell depolarizes",
       "The hair cell fires action potentials along its own axon in the cochlear nerve",
       "Sensory neurons of the spiral ganglion fire faster",

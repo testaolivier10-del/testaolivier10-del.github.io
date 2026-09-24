@@ -9,6 +9,9 @@
              shifted curve drawn after answering)
    Every graph carries all three types.
 
+   A panel's y axis may set reverse: true to draw min at the top and max at
+   the bottom (a clinical audiogram); points and labels stay in data units.
+
    Checks: required fields; unique ids; topic and core ids exist; levels and
    difficulty valid; axes have labels and units (or say they are unitless);
    series points sit inside the axes; every question explains itself, with one
@@ -29,6 +32,7 @@ function checkAxis(ax, where, err) {
   if (!ax || typeof ax !== 'object') { err(where, 'missing axis'); return; }
   if (!str(ax.label)) err(where, 'axis has no label');
   if (!ax.unitless && !str(ax.unit) && !Array.isArray(ax.cats)) err(where, `axis "${ax.label}" has no unit (set unitless: true if it truly has none)`);
+  if (ax.reverse !== undefined && typeof ax.reverse !== 'boolean') err(where, `axis "${ax.label}" reverse must be true or false`);
   if (Array.isArray(ax.cats)) { if (ax.cats.length < 2) err(where, 'categorical axis needs 2+ categories'); return; }
   if (!num(ax.min) || !num(ax.max) || ax.min >= ax.max) err(where, `axis "${ax.label}" needs numeric min < max`);
   if (ax.ticks && !ax.ticks.every(t => num(t) && t >= ax.min - 1e-9 && t <= ax.max + 1e-9)) err(where, `axis "${ax.label}" has a tick outside its range`);

@@ -30,14 +30,9 @@
   var refreshTimer = null;
 
   function loadBank(){
-    function get(u){ return fetch(BASE + u).then(function(r){ if(!r.ok) throw new Error(u); return r.json(); }); }
-    return Promise.all([get('assets/bank-core.json'), get('assets/bank-why.json').catch(function(){ return {}; })]).then(function(res){
-      var why = res[1] || {}, out = {};
-      res[0].forEach(function(q){
-        var w = why[q.id];
-        if(w){ if(w.why) q.why = w.why; if(w.variables) q.variables = w.variables; }
-        out[q.id] = q;
-      });
+    return window.AnpCore.loadBank(BASE).then(function(all){
+      var out = {};
+      all.forEach(function(q){ out[q.id] = q; });
       return out;
     });
   }

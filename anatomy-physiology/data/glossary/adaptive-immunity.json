@@ -1,0 +1,42 @@
+{
+  "antigen": {
+    "def": "Any molecule that a lymphocyte's antigen receptor or an antibody binds specifically. Each antigen receptor binds one small part of it, an epitope (antigenic determinant), and a large antigen carries many epitopes.",
+    "roots": [["anti(body)", "antibody"], ["-gen", "producing"], ["epi-", "upon"], ["-tope", "place"]],
+    "say": "EP-ih-tope"
+  },
+  "t-cell": {
+    "def": "A lymphocyte that matures in the thymus (as a thymocyte, passing positive and negative selection) and recognizes, with its T cell receptor, only short peptides held on MHC proteins. Some kill infected cells; others coordinate responses.",
+    "roots": [["thym/o", "thymus"], ["-cyte", "cell"]],
+    "say": "THY-moh-site"
+  },
+  "b-cell": {
+    "def": "A lymphocyte that matures in the red bone marrow and binds intact antigen with a membrane-bound antibody as its antigen receptor; when activated, its descendants release antibodies.",
+    "roots": [],
+    "say": ""
+  },
+  "mhc": {
+    "def": "Membrane glycoproteins coded by the major histocompatibility complex that hold peptides for T cells to inspect. Class I, on nearly all nucleated cells, shows peptides made inside the cell; class II, on antigen-presenting cells, shows peptides from material taken in. Their genes vary enormously between people (MHC polymorphism).",
+    "roots": [["hist/o", "tissue"], ["poly-", "many"], ["morph/o", "form"]],
+    "say": ""
+  },
+  "apc": {
+    "def": "A cell that takes in antigen, breaks it into peptides and loads them onto MHC class II (antigen processing), then displays them for T cells (antigen presentation): dendritic cells, which start naive T cell responses, macrophages and B cells.",
+    "roots": [["dendr/o", "tree"]],
+    "say": ""
+  },
+  "self-tolerance": {
+    "def": "The state in which lymphocytes do not attack your own tissues. Central tolerance removes self-reactive lymphocytes as they mature (negative selection and clonal deletion in the thymus, a similar test in the marrow); peripheral tolerance silences those that escape, for example by clonal anergy when a T cell binds self antigen without a second, confirming signal.",
+    "roots": [["an-", "without"], ["erg/o", "work"]],
+    "say": "AN-er-jee"
+  },
+  "clonal-selection": {
+    "def": "Activation of only the rare naive lymphocytes whose ready-made antigen receptors fit an antigen, followed by clonal expansion into a clone of identical cells; many clones responding to one microbe's many epitopes make a polyclonal response.",
+    "roots": [["klon", "twig (Greek)"]],
+    "say": ""
+  },
+  "immune-memory": {
+    "def": "The ability to respond faster and more strongly to an antigen met before, carried by long-lived memory B cells and memory T cells left after clonal expansion, which are more numerous and quicker to switch on than the naive cells they came from.",
+    "roots": [],
+    "say": ""
+  }
+}

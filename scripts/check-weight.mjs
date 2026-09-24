@@ -50,7 +50,7 @@
      node scripts/check-weight.mjs            report everything, pass or fail
      node scripts/check-weight.mjs --check    exit non-zero if over (CI)
 */
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { join, dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -408,16 +408,12 @@ const DATA_BUDGETS = [
      chapter's worth of tables pushes it over, factoring those per-table
      strings out of each card is the saving, not a bigger number. */
   ['ochem/assets/flashcards.json', 28],
-  /* The A&P question bank, split like ochem's (core waited on, explanations
-     fetched after) and the glossary behind the hover definitions. Measured at
-     the Phase 1 pilot (49 topics): 105.3, 159.7 and 40.8 KB. They grow with
-     every chapter, so each new chapter raises these with its measured size.
-     120/180 -> 140/200: respiratory published (58 topics), 133.1 and 193.9 KB.
-     140/200 -> 165/235: nervous tissue and CNS published (66 topics), 157.4 and
-     224.2 KB. At this rate the whole course is about 2.5 times this, so the
-     bank is due to be split by chapter before it passes 250 KB. */
-  ['anatomy-physiology/assets/bank-core.json', 165],
-  ['anatomy-physiology/assets/bank-why.json', 235],
+  /* The A&P question bank used to be two files for the whole course (core
+     and explanations). They grew with every chapter (105/160 KB at the pilot,
+     174/247 KB with 72 topics) and were heading past 400 KB, so the bank is
+     now split by chapter under assets/bank/ and each chapter file has its own
+     budget (see ANP_BANK_BUDGETS below). The glossary behind the hover
+     definitions stays one file. */
   /* 46 -> 52: the glossary carries every written definition, published or
      not, so an early page can show a hover for a later term (spec section 7).
      It grows as each chapter is written; measured 47.3 KB with respiratory
@@ -543,6 +539,19 @@ for (const [pageRel, budgetKb] of BUDGETS) {
       shellSizes[name] = size;
       shellParts[name] = res.parts.filter((p) => p.bucket === name);
     }
+  }
+}
+
+/* Per-chapter A&P bank files (scripts/build-anp.mjs). The largest chapter,
+   cardiovascular with 16 topics, measured 42.8 KB core and 59.2 KB
+   explanations; the budgets leave room for a chapter that size plus a little.
+   A bigger chapter should be split, not given a bigger number: a student
+   practicing one chapter waits on its core file. */
+const ANP_BANK_BUDGETS = { core: 48, why: 66 };
+const ANP_BANK_DIR = join(ROOT, 'anatomy-physiology', 'assets', 'bank');
+if (existsSync(ANP_BANK_DIR)) {
+  for (const f of readdirSync(ANP_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`anatomy-physiology/assets/bank/${f}`, f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
   }
 }
 

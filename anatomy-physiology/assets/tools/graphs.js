@@ -155,7 +155,8 @@
     var MB = cats ? 78 : 44;
     var H = plotBottom + MB;
     function sx(x){ return ML + (x - xmin) / (xmax - xmin) * PW; }
-    function sy(k, v){ var p = g.panels[k].y; return tops[k] + hs[k] - (v - p.min) / (p.max - p.min) * hs[k]; }
+    // y.reverse draws the axis top-down (min at the top), as on a clinical audiogram.
+    function sy(k, v){ var p = g.panels[k].y; return p.reverse ? tops[k] + (v - p.min) / (p.max - p.min) * hs[k] : tops[k] + hs[k] - (v - p.min) / (p.max - p.min) * hs[k]; }
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': g.alt, 'class': 'gr-svg' });
     var L = {};
     ['bg', 'regions', 'hl', 'axes', 'series', 'overlay', 'labels', 'marks'].forEach(function(n){ L[n] = el('g', { 'class': 'gr-' + n }); svg.appendChild(L[n]); });
@@ -185,7 +186,7 @@
         (ya.ticks || []).forEach(function(t){ L.bg.appendChild(el('line', { x1: ML, x2: ML + PW, y1: sy(k, t), y2: sy(k, t), 'class': 'gr-grid' })); });
       }
       (p.bands || []).forEach(function(b){
-        L.bg.appendChild(el('rect', { x: ML, width: PW, y: sy(k, b.y1), height: sy(k, b.y0) - sy(k, b.y1), 'class': 'gr-band' }));
+        L.bg.appendChild(el('rect', { x: ML, width: PW, y: Math.min(sy(k, b.y1), sy(k, b.y0)), height: Math.abs(sy(k, b.y0) - sy(k, b.y1)), 'class': 'gr-band' }));
         L.labels.appendChild(el('text', { x: sx(b.at != null ? b.at : X.max), y: sy(k, b.y1) + 13, 'text-anchor': 'end', 'class': 'gr-note' }, b.label));
       });
       // axes
@@ -384,7 +385,7 @@
       else if(h.x0 != null) c.region(c.L.hl, c.L.hl, { x0: h.x0, x1: h.x1, label: h.label }, 'gr-region-hl');
       else if(h.y0 != null){
         var k = h.panel || 0, y1 = c.sy(k, h.y1), y0 = c.sy(k, h.y0);
-        c.L.hl.appendChild(el('rect', { x: ML, y: y1, width: W - ML - MR, height: y0 - y1, 'class': 'gr-region-hl' }));
+        c.L.hl.appendChild(el('rect', { x: ML, y: Math.min(y1, y0), width: W - ML - MR, height: Math.abs(y0 - y1), 'class': 'gr-region-hl' }));
         if(h.label) c.L.hl.appendChild(el('text', { x: W - MR - 4, y: y0 - 5, 'text-anchor': 'end', 'class': 'gr-rlabel' }, h.label));
       } else if(h.path){
         var k2 = h.panel || 0;

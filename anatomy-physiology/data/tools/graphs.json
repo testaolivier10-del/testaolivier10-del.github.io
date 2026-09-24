@@ -1,5 +1,5 @@
 {
- "about": "Graph reader content (docs/anp-spec.md section 8.5, docs/anp-tools-contract.md). Every graph is drawn by tools/graphs.js from these numbers as SVG. x is shared by all panels; each panel has its own y axis. Series use visual-language classes and carry their label on the line (labelAt, in data units). regions are vertical bands a phase question can highlight (show: true draws one always). Question types: value (read a number: answer, tol, unit), phase (name a phase or region: options, correct, highlight) and shift (predict the change: options, correct, overlay drawn after answering). Item ids graphs:<graph>:<question> are permanent. A question may carry its own topic (never earlier than the graph's). Validator: scripts/lib/anp-tool-checks/graphs.mjs. The numbers are schematic but physiologically typical for a resting adult.",
+ "about": "Graph reader content (docs/anp-spec.md section 8.5, docs/anp-tools-contract.md). Every graph is drawn by tools/graphs.js from these numbers as SVG. x is shared by all panels; each panel has its own y axis (y.reverse: true draws it top-down, min at the top, as on a clinical audiogram). Series use visual-language classes and carry their label on the line (labelAt, in data units). regions are vertical bands a phase question can highlight (show: true draws one always). Question types: value (read a number: answer, tol, unit), phase (name a phase or region: options, correct, highlight) and shift (predict the change: options, correct, overlay drawn after answering). Item ids graphs:<graph>:<question> are permanent. A question may carry its own topic (never earlier than the graph's). Validator: scripts/lib/anp-tool-checks/graphs.mjs. The numbers are schematic but physiologically typical for a resting adult.",
  "graphs": [
   {
    "id": "ph-scale",
@@ -12122,139 +12122,139 @@
               "curve": "smooth",
               "pts": [
                 [
-                  380,
+                  381,
                   0
                 ],
                 [
-                  390,
+                  391,
+                  0.01
+                ],
+                [
+                  401,
+                  0.01
+                ],
+                [
+                  411,
+                  0.02
+                ],
+                [
+                  421,
+                  0.04
+                ],
+                [
+                  431,
+                  0.07
+                ],
+                [
+                  441,
+                  0.11
+                ],
+                [
+                  451,
+                  0.17
+                ],
+                [
+                  461,
+                  0.25
+                ],
+                [
+                  471,
+                  0.35
+                ],
+                [
+                  481,
+                  0.47
+                ],
+                [
+                  491,
+                  0.61
+                ],
+                [
+                  501,
+                  0.74
+                ],
+                [
+                  511,
+                  0.86
+                ],
+                [
+                  521,
+                  0.95
+                ],
+                [
+                  531,
+                  0.99
+                ],
+                [
+                  541,
+                  0.99
+                ],
+                [
+                  551,
+                  0.95
+                ],
+                [
+                  561,
+                  0.86
+                ],
+                [
+                  571,
+                  0.74
+                ],
+                [
+                  581,
+                  0.61
+                ],
+                [
+                  591,
+                  0.47
+                ],
+                [
+                  601,
+                  0.35
+                ],
+                [
+                  611,
+                  0.25
+                ],
+                [
+                  621,
+                  0.17
+                ],
+                [
+                  631,
+                  0.11
+                ],
+                [
+                  641,
+                  0.07
+                ],
+                [
+                  651,
+                  0.04
+                ],
+                [
+                  661,
+                  0.02
+                ],
+                [
+                  671,
+                  0.01
+                ],
+                [
+                  681,
+                  0.01
+                ],
+                [
+                  691,
                   0
-                ],
-                [
-                  400,
-                  0.01
-                ],
-                [
-                  410,
-                  0.01
-                ],
-                [
-                  420,
-                  0.02
-                ],
-                [
-                  430,
-                  0.04
-                ],
-                [
-                  440,
-                  0.07
-                ],
-                [
-                  450,
-                  0.11
-                ],
-                [
-                  460,
-                  0.17
-                ],
-                [
-                  470,
-                  0.25
-                ],
-                [
-                  480,
-                  0.35
-                ],
-                [
-                  490,
-                  0.47
-                ],
-                [
-                  500,
-                  0.61
-                ],
-                [
-                  510,
-                  0.74
-                ],
-                [
-                  520,
-                  0.86
-                ],
-                [
-                  530,
-                  0.95
-                ],
-                [
-                  540,
-                  0.99
-                ],
-                [
-                  550,
-                  0.99
-                ],
-                [
-                  560,
-                  0.95
-                ],
-                [
-                  570,
-                  0.86
-                ],
-                [
-                  580,
-                  0.74
-                ],
-                [
-                  590,
-                  0.61
-                ],
-                [
-                  600,
-                  0.47
-                ],
-                [
-                  610,
-                  0.35
-                ],
-                [
-                  620,
-                  0.25
-                ],
-                [
-                  630,
-                  0.17
-                ],
-                [
-                  640,
-                  0.11
-                ],
-                [
-                  650,
-                  0.07
-                ],
-                [
-                  660,
-                  0.04
-                ],
-                [
-                  670,
-                  0.02
-                ],
-                [
-                  680,
-                  0.01
-                ],
-                [
-                  690,
-                  0.01
                 ],
                 [
                   700,
                   0
                 ]
               ],
-              "label": "altered L 545",
+              "label": "altered L 536",
               "labelAt": [
                 600,
                 0.88
@@ -12263,7 +12263,7 @@
           ]
         },
         "why": {
-          "correct": "With the L curve sitting almost on top of the M curve, reds, oranges and greens excite the two cone types in nearly the same ratio, so they look alike.",
+          "correct": "With the L curve sitting almost on top of the M curve, reds, oranges and greens excite the two cone types in nearly the same ratio, so they look alike. In this form, called protanomaly, the altered pigment peaks within a few nanometers of M, at about 530 to 536 nm.",
           "options": [
             "Right: it slides toward M.",
             "Moving right would separate L from M further, which would sharpen red–green discrimination, not blunt it.",
@@ -12573,7 +12573,7 @@
     "core": [
       "structure-function"
     ],
-    "intro": "The near point is the closest distance at which you can bring small print into focus. These are classic average values for eyes with normal distance vision.",
+    "intro": "The near point is the closest distance at which you can bring small print into focus. These are classic average values for eyes with normal distance vision. The near point is about 7 cm at age 10 and 10 cm at 20.",
     "alt": "Near point in centimeters against age from 10 to 60 years. The curve rises slowly from about 7 cm at 10 years to about 22 cm at 40, then steeply: about 29 cm at 45, 40 cm at 50, 57 cm at 55 and 100 cm at 60. A horizontal line marks a typical reading distance of 35 cm.",
     "x": {
       "min": 10,
@@ -12802,8 +12802,8 @@
     "core": [
       "structure-function"
     ],
-    "intro": "Each line shows the quietest tone one ear can hear at each frequency, in decibels hearing level (dB HL), where 0 is what an average healthy young ear can just hear. Higher on this graph means a louder tone was needed: worse hearing. Clinical audiograms are usually drawn upside down, with worse hearing lower.",
-    "alt": "Hearing threshold in dB HL against frequency, at 250, 500, 1,000, 2,000, 4,000 and 8,000 Hz. A healthy young ear stays between 5 and 10 dB HL. A noise-damaged ear is near normal at low frequencies but dips to about 55 dB HL at 4,000 Hz and recovers to 30 at 8,000 Hz. A typical 70-year-old ear worsens steadily from 15 dB HL at 250 Hz to 60 at 8,000 Hz. A line at 25 dB HL marks the upper limit of normal.",
+    "intro": "Each line shows the quietest tone one ear can hear at each frequency, in decibels hearing level (dB HL), where 0 is what an average healthy young ear can just hear. As on a clinical audiogram, lower on the graph means a louder tone was needed: worse hearing.",
+    "alt": "Hearing threshold in dB HL against frequency, at 250, 500, 1,000, 2,000, 4,000 and 8,000 Hz, drawn as on a clinical audiogram: 0 dB HL near the top, and lines sit lower where hearing is worse. A healthy young ear stays near the top, between 5 and 10 dB HL. A noise-damaged ear is near normal at low frequencies but dips down to about 55 dB HL at 4,000 Hz and comes back up to 30 at 8,000 Hz. A typical 70-year-old ear slopes steadily down from 15 dB HL at 250 Hz to 60 at 8,000 Hz. A line at 25 dB HL marks the limit of normal hearing.",
     "x": {
       "label": "Frequency (Hz)",
       "cats": [
@@ -12820,6 +12820,7 @@
         "y": {
           "min": -10,
           "max": 80,
+          "reverse": true,
           "label": "Quietest tone heard",
           "unit": "dB HL",
           "ticks": [
@@ -12833,7 +12834,7 @@
         "hlines": [
           {
             "y": 25,
-            "label": "upper limit of normal",
+            "label": "limit of normal",
             "dash": true,
             "faint": true,
             "at": -0.4
@@ -12962,7 +12963,7 @@
           "x": 4,
           "y": 55
         },
-        "why": "About 55 dB HL: a 4,000 Hz tone must be about 55 dB louder than a healthy young ear needs. On the logarithmic decibel scale that is several hundred thousand times the sound intensity."
+        "why": "About 55 dB HL: a 4,000 Hz tone must be about 55 dB louder than the average healthy young ear needs (0 dB HL). On the logarithmic decibel scale that is several hundred thousand times the sound intensity."
       },
       {
         "id": "noise-notch",
@@ -12987,7 +12988,7 @@
           "options": [
             "Right: a notch near 4,000 Hz.",
             "Low frequencies are tuned near the apex, and they are close to normal in this ear.",
-            "An even loss across all frequencies is the pattern of a conductive block, such as fluid in the middle ear.",
+            "An even loss across frequencies is not the noise pattern. It can come from a conductive block such as fluid in the middle ear, but only bone-conduction testing tells conductive from sensorineural loss.",
             "The line is worst at 4,000 Hz and partly recovers at 8,000 Hz. A steady fall toward 8,000 Hz is the pattern of aging."
           ]
         }
@@ -13016,7 +13017,7 @@
             "Right: high frequencies first.",
             "The low tones are the best-preserved part of this line.",
             "The middle tones are affected, but less than the high ones.",
-            "The line rises steadily toward the high frequencies; it is not flat."
+            "The line slopes steadily down toward the high frequencies; it is not flat."
           ]
         }
       },
@@ -13027,9 +13028,9 @@
         "diff": 2,
         "q": "Fluid fills the middle ear of the healthy young ear, blocking about 30 dB of sound at every frequency. How does its line change?",
         "options": [
-          "It moves up evenly at every frequency",
+          "It moves down evenly at every frequency",
           "It dips only at 4,000 Hz",
-          "It moves down, below 0",
+          "It moves up, above the 0 dB HL line",
           "It does not change, because the cochlea is healthy"
         ],
         "correct": 0,
@@ -13074,11 +13075,11 @@
           ]
         },
         "why": {
-          "correct": "Fluid damps the eardrum and ossicles, so less sound of any pitch reaches the oval window. The whole air-conduction line moves up: a conductive loss. Tested by bone conduction, the same ear would still be normal.",
+          "correct": "Fluid damps the eardrum and ossicles, so less sound of any pitch reaches the oval window. The whole air-conduction line moves down: a conductive loss. Tested by bone conduction, the same ear would still be normal.",
           "options": [
             "Right: an even, conductive loss.",
             "A notch at 4,000 Hz comes from damaged hair cells in one part of the cochlea, not from a middle ear block.",
-            "Below 0 would mean better than average hearing; fluid makes hearing worse.",
+            "Above the 0 line would mean better than average hearing; fluid makes hearing worse.",
             "Air conduction depends on the middle ear too. The healthy cochlea shows up only when sound bypasses the middle ear through the bone."
           ]
         }
@@ -13386,7 +13387,7 @@
             "Right: already at its own rate.",
             "Atropine can only raise the rate by removing vagal tone, and a transplanted heart has none.",
             "A resting rate of 70 depends on vagal tone, which needs the cut vagus nerve.",
-            "The beta blocker can only remove the small effect of circulating epinephrine; nothing pulls the rate below the intrinsic rate."
+            "The beta blocker can only remove the small push from circulating epinephrine, a few beats a minute. With no vagal tone, nothing can pull the rate far down."
           ]
         }
       }

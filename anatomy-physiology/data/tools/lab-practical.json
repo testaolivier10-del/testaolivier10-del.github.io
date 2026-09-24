@@ -7416,7 +7416,7 @@
          "Orbicularis oculi, the ring muscle around the eye",
          "Levator palpebrae superioris",
          "Superior rectus, which turns the eye upward",
-         "Inferior oblique, which turns the eye up and out"
+         "Inferior oblique, which turns the eye up"
         ],
         "correct": 1,
         "why": "The levator palpebrae superioris lifts the upper eyelid, so its weakness leaves the lid drooping. The orbicularis oculi closes the eye, and it still works because the eyes squeeze shut. The superior rectus and inferior oblique move the eyeball, not the lid.",
@@ -7519,7 +7519,7 @@
        ],
        "concept": "eye-accessory",
        "taught": "vision",
-       "fn": "An extrinsic eye muscle whose tendon loops through the trochlea before attaching to the top of the eyeball. It rotates the eye so it looks down and out."
+       "fn": "An extrinsic eye muscle whose tendon loops through the trochlea before attaching to the top of the eyeball. It turns the eye down, most strongly when the eye is turned in, and rotates its top inward."
       },
       {
        "id": "trochlea",
@@ -7560,7 +7560,7 @@
          "It only works together with the inferior rectus muscle"
         ],
         "correct": 2,
-        "why": "The tendon runs forward to the trochlea, turns back through it and attaches to the top of the eyeball behind its center. The pull therefore comes from the front inner corner of the orbit, which rotates the eye to look down and out. The muscle attaches to the top of the eyeball and starts at the back of the orbit, not the floor.",
+        "why": "The tendon runs forward to the trochlea, turns back through it and attaches to the top of the eyeball behind its center. The pull therefore comes from the front inner corner of the orbit, which pulls the front of the eye down. The muscle attaches to the top of the eyeball and starts at the back of the orbit, not the floor.",
         "level": "apply"
        }
       },
@@ -7604,7 +7604,7 @@
          "Inferior rectus, oculomotor nerve (III)"
         ],
         "correct": 1,
-        "why": "The lateral rectus is the only muscle that turns the eye outward, and the abducens nerve supplies it alone. The medial rectus turns the eye inward, the superior oblique turns it down and out with help from others, and the inferior rectus turns it down.",
+        "why": "The lateral rectus is the only muscle that turns the eye outward, and the abducens nerve supplies it alone. The medial rectus turns the eye inward, the superior oblique turns it down, most strongly when it is turned in, and the inferior rectus turns it down.",
         "level": "apply"
        }
       },
@@ -7651,7 +7651,7 @@
        ],
        "concept": "eye-accessory",
        "taught": "vision",
-       "fn": "An extrinsic eye muscle that runs from the floor of the orbit under the eyeball to its outer side. It rotates the eye so it looks up and out."
+       "fn": "An extrinsic eye muscle that runs from the floor of the orbit under the eyeball to its outer side. It turns the eye up, most strongly when the eye is turned in, and rotates its top outward."
       },
       {
        "id": "superior-rectus-anterior",
@@ -7698,7 +7698,7 @@
        ],
        "concept": "eye-accessory",
        "taught": "vision",
-       "fn": "An extrinsic eye muscle whose tendon loops through the trochlea before attaching to the top of the eyeball. It rotates the eye so it looks down and out."
+       "fn": "An extrinsic eye muscle whose tendon loops through the trochlea before attaching to the top of the eyeball. It turns the eye down, most strongly when the eye is turned in, and rotates its top inward."
       },
       {
        "id": "lateral-rectus-anterior",
@@ -7746,7 +7746,7 @@
        ],
        "concept": "eye-accessory",
        "taught": "vision",
-       "fn": "An extrinsic eye muscle that runs from the floor of the orbit under the eyeball to its outer side. It rotates the eye so it looks up and out."
+       "fn": "An extrinsic eye muscle that runs from the floor of the orbit under the eyeball to its outer side. It turns the eye up, most strongly when the eye is turned in, and rotates its top outward."
       },
       {
        "id": "inferior-rectus-anterior",
@@ -8341,7 +8341,7 @@
          "Loss of only the central part both eyes share"
         ],
         "correct": 2,
-        "why": "The fibers crossing in the middle of the chiasm come from the nasal half of each retina, which sees the outer half of that eye's field. Pressing on them removes the outer field on both sides (tunnel vision). Blindness in one eye needs damage to one optic nerve, and losing one whole side of the field in both eyes needs damage behind the chiasm, in an optic tract or the cortex.",
+        "why": "The fibers crossing in the middle of the chiasm come from the nasal half of each retina, which sees the outer half of that eye's field. Pressing on them removes the outer field on both sides (bitemporal hemianopia). Blindness in one eye needs damage to one optic nerve, and losing one whole side of the field in both eyes needs damage behind the chiasm, in an optic tract or the cortex.",
         "level": "analyze"
        }
       },
@@ -8712,7 +8712,7 @@
        ],
        "concept": "ear-regions",
        "taught": "hearing-balance",
-       "fn": "The air-filled tympanic cavity with the three ossicles. It passes vibrations from the tympanic membrane to the oval window and boosts their force."
+       "fn": "The air-filled tympanic cavity with the three ossicles. It passes vibrations from the tympanic membrane to the oval window and raises their pressure about 20-fold."
       },
       {
        "id": "inner-ear",
@@ -8816,7 +8816,7 @@
        ],
        "concept": "cochlea",
        "taught": "hearing-balance",
-       "fn": "A gel-like flap lying over the hair cells. The tips of their stereocilia touch it, so when the basilar membrane moves, the stereocilia bend against it."
+       "fn": "A gel-like flap lying over the hair cells. The tallest stereocilia of the outer hair cells are embedded in it. When the basilar membrane moves, the flap slides across the hair cells and bends their stereocilia: the outer hair cells' directly, the inner hair cells' through the fluid it drags."
       },
       {
        "id": "basilar-membrane",
@@ -8915,7 +8915,7 @@
        ],
        "concept": "cochlea",
        "taught": "hearing-balance",
-       "fn": "A gel-like flap lying over the hair cells. The tips of their stereocilia touch it, so when the basilar membrane moves, the stereocilia bend against it."
+       "fn": "A gel-like flap lying over the hair cells. The tallest stereocilia of the outer hair cells are embedded in it. When the basilar membrane moves, the flap slides across the hair cells and bends their stereocilia: the outer hair cells' directly, the inner hair cells' through the fluid it drags."
       },
       {
        "id": "tether",

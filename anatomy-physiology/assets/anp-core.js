@@ -246,7 +246,33 @@
   document.documentElement.classList.add('js');
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountDefs); else mountDefs();
 
+  /* The question bank is split by chapter (scripts/build-anp.mjs). loadBank
+     fetches the chapters asked for (default: every chapter with a built topic)
+     and resolves to one array of questions, explanations merged in unless
+     opts.why is false. A missing explanation file never blocks the questions. */
+  function loadBank(base, opts){
+    opts = opts || {};
+    var cur = curriculum();
+    var chs = opts.chapters || cur.chapters.filter(function(c){ return cur.topics.some(function(t){ return t.chapter === c.id && t.built; }); }).map(function(c){ return c.id; });
+    function get(u){ return fetch(base + u).then(function(r){ if(!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); }
+    return Promise.all(chs.map(function(ch){
+      return Promise.all([get('assets/bank/' + ch + '.json'), opts.why === false ? Promise.resolve({}) : get('assets/bank/' + ch + '-why.json').catch(function(){ return {}; })]);
+    })).then(function(parts){
+      var out = [];
+      parts.forEach(function(p){
+        var why = p[1] || {};
+        p[0].forEach(function(q){
+          var w = why[q.id];
+          if(w){ if(w.why) q.why = w.why; if(w.variables) q.variables = w.variables; }
+          out.push(q);
+        });
+      });
+      return out;
+    });
+  }
+
   window.AnpCore = {
+    loadBank: loadBank,
     KEY: KEY, record: record, topicMastery: topicMastery, chapterMastery: chapterMastery,
     coreMastery: coreMastery, overallMastery: overallMastery, reviewQueue: reviewQueue,
     reviewCount: reviewCount, missed: missed, weakest: weakest, weakestCore: weakestCore,

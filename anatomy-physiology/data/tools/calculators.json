@@ -2265,8 +2265,8 @@
           "normal": "Roughly 20-fold in a healthy middle ear.",
           "bands": [
             {
-              "when": "gain < 10",
-              "label": "small boost",
+              "when": "gain < 15",
+              "label": "reduced boost",
               "tone": "lo"
             },
             {
@@ -2278,7 +2278,7 @@
       ],
       "meaning": [
         {
-          "when": "gain < 10",
+          "when": "gain < 15",
           "text": "A gain of only {gain} would deliver much less pressure to the cochlea’s fluid, and more sound would be reflected, as it is at the surface of a swimming pool."
         },
         {
@@ -2399,7 +2399,7 @@
         {
           "key": "ratio",
           "expr": "10 ^ ((l2 - l1) / 10)",
-          "dp": 0
+          "dp": 1
         }
       ],
       "steps": [
@@ -2438,7 +2438,7 @@
       "meaning": [
         {
           "when": "l2 > 85",
-          "text": "At {l2} dB the louder sound is {ratio} times as intense as the quieter one. Hours of exposure above about 85 dB can destroy hair cells, starting with outer hair cells near the base of the cochlea, and humans cannot replace them."
+          "text": "At {l2} dB the louder sound is {ratio} times as intense as the quieter one. Hours at about 85 dB can destroy hair cells, and the safe time shrinks fast as the level rises: at 100 to 110 dB, minutes are enough. Outer hair cells near the base of the cochlea go first, and humans cannot replace them."
         },
         {
           "when": "1",

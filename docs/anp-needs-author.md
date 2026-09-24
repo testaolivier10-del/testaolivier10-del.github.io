@@ -242,6 +242,36 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** neighboring dorsal roots overlap in the skin they supply, and most muscles get motor axons from two or more ventral roots. Cutting one dorsal root dulls sensation in its band; the band goes fully numb only when the roots above and below are cut too. Cutting one ventral root weakens its muscles rather than paralyzing them.
 - **For your exam:** dorsal root cut = sensory loss in its dermatome, ventral root cut = paralysis. Pick the sensory-only or motor-only answer; the direction is what they test.
 
+### accessory-nerve-roots: does the accessory nerve have a cranial root?
+- **Status:** pending review.
+- **Where:** `cranial-nerves`, lab practical (cranial nerves set).
+- **Evidence-based position:** the accessory nerve is the spinal root alone, from about C1 to C5 or C6, rising through the foramen magnum; the so-called cranial root is part of the vagus.
+- **For your exam:** many texts give it a cranial root (medulla, to throat and palate) and a spinal root. Give both if asked.
+
+### referred-pain-mechanism: why organ pain is felt in the skin
+- **Status:** pending review.
+- **Where:** `sensory-pathways`.
+- **Evidence-based position:** convergence of organ and skin sensory axons on shared dorsal horn neurons is taught as the best-supported main mechanism; branching sensory axons and central sensitization are noted as other proposed mechanisms.
+- **For your exam:** convergence (convergence-projection theory); no conflict expected.
+
+### tendon-reflex-role: what the Golgi tendon organ reflex is for
+- **Status:** pending review.
+- **Where:** `reflexes`.
+- **Evidence-based position:** it acts at ordinary forces as part of moment-to-moment force control, and its sign can reverse to excitation during walking.
+- **For your exam:** many textbooks say it protects the muscle and tendon from tearing under too much tension.
+
+### tia-definition: what counts as a transient ischemic attack
+- **Status:** pending review.
+- **Where:** `neuro-exam`.
+- **Evidence-based position:** a brief episode of neurological dysfunction from ischemia with no acute infarction on imaging, and no time limit (AHA/ASA 2009).
+- **For your exam:** many texts still say symptoms resolve within 24 hours.
+
+### gcs-wording: Glasgow Coma Scale terms
+- **Status:** pending review.
+- **Where:** `neuro-exam`, calculators (GCS).
+- **Evidence-based position:** current terms are used: "to sound", "to pressure", "normal flexion" and "abnormal flexion" (Teasdale 2014). "GCS 8, intubate" is taught as a prompt, not a rule.
+- **For your exam:** older terms ("to speech", "to pain", "withdrawal", "decorticate/decerebrate") and "GCS 8, intubate".
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -356,6 +386,26 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
 - **Etymology to confirm:** "parasympathetic" (para- = beside); "rhombencephalon"; "metabotropic"
   (bol/o); "diencephalon" (through, or between).
 - **Not built:** a nervous-tissue histology station. No micrograph is cleared for commercial use.
+
+## Phase 2: peripheral nervous system, judgment calls for instructor review
+
+- **Positions and ranges chosen:** plexus ranges C1–C4 (some sources C1–C5), L1–L4 and L4–S4
+  (Figure 13.24 brackets L5–S5); dermatome landmarks from C5 on the upper arm to S1 on the
+  lateral foot (published maps disagree; the course uses its own SVG, since OpenStax 16.13 needs
+  license verification); knee jerk L2–L4 for the arc and L3–L4 in the table; triceps C7; ankle S1.
+- **Normal values chosen:** the vagus carries about three quarters of parasympathetic output and
+  its axons are about 80% sensory; a transplanted heart beats about 90–110 a minute; knee-jerk
+  delay about 20–23 ms; 85–87% of strokes ischemic; about 1.9 million neurons lost per minute in
+  a large stroke (Saver 2006); Babinski sign normal to 1–2 years; 85–90% of corticospinal axons
+  cross.
+- **Simplifications:** the pronator drift mechanism; the basal nuclei direct and indirect paths
+  with a caveat; "extrapyramidal" called a dated term; one dorsal root cut dulls rather than
+  removes feeling (see root-overlap); the stretch reflex only helps restore posture, with the
+  brainstem doing most of it.
+- **Mnemonics:** folk mnemonics were replaced with landmark statements and "Really Tired? Drink
+  Cold Beverages"; "C3, 4 and 5 keep the diaphragm alive" and "LR6, SO4" are kept.
+- **Figures:** Figure 15.6 prints presynaptic and postsynaptic for preganglionic and
+  postganglionic axons (named correctly, printed form accepted).
 
 ## Decided at the Phase 0 reviews
 

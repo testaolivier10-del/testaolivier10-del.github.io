@@ -1,0 +1,15 @@
+{
+  "os-21-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "21.16",
+      "section": "21.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/15d568c82095207be4f530f699dbc96a64afa1c7",
+      "page": "21-3-the-adaptive-immune-response-t-lymphocytes-and-their-functional-types"
+    },
+    "alt": "A folded protein drawn as a tangle of colored ribbon in the center. Three green cells surround it, labeled Antibody 1, 2 and 3, each reaching toward the protein with a pair of receptor arms. Each pair touches a different small patch on the protein's surface, and each patch is labeled antigenic determinant.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.16",
+    "labels": []
+  }
+}

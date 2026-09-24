@@ -1,0 +1,648 @@
+[
+  {
+    "id": "anp-immune-disorders-1",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "misconception": "anaphylaxis is only a skin and airway reaction",
+    "q": "A man stung by a wasp develops anaphylaxis. Before any treatment, predict each variable across the immune, cardiovascular, nervous and respiratory systems.",
+    "variables": [
+      {
+        "name": "Histamine and leukotrienes in the blood",
+        "answer": "up",
+        "why": "Venom cross-links IgE on mast cells and basophils throughout the body, and they degranulate at once."
+      },
+      {
+        "name": "Total peripheral resistance (TPR)",
+        "answer": "down",
+        "why": "Histamine and leukotrienes relax the smooth muscle of arterioles, which widen."
+      },
+      {
+        "name": "Plasma volume",
+        "answer": "down",
+        "why": "The mediators make capillaries and venules leak, and plasma moves into the tissues."
+      },
+      {
+        "name": "Venous return",
+        "answer": "down",
+        "why": "Plasma is lost from the vessels and blood pools in widened veins, so less returns to the heart."
+      },
+      {
+        "name": "Mean arterial pressure",
+        "answer": "down",
+        "why": "MAP = CO × TPR, and TPR falls while cardiac output falls with venous return."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "Lower MAP reduces baroreceptor firing, so the cardiovascular center raises sympathetic output to the SA node."
+      },
+      {
+        "name": "Airway diameter",
+        "answer": "down",
+        "why": "Mediators contract airway smooth muscle and swell the airway lining."
+      }
+    ],
+    "why": {
+      "correct": "Body-wide mast cell degranulation lowers TPR and plasma volume, so venous return and MAP fall into distributive shock. The baroreceptor reflex speeds the heart, and airway smooth muscle contracts. The immune trigger reaches the circulation, the nervous system's reflexes and breathing."
+    }
+  },
+  {
+    "id": "anp-immune-disorders-2",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "The same man is given intramuscular epinephrine. Predict each variable over the next few minutes, compared with just before the injection.",
+    "variables": [
+      {
+        "name": "TPR",
+        "answer": "up",
+        "why": "Epinephrine on alpha-1 receptor proteins contracts arteriolar smooth muscle."
+      },
+      {
+        "name": "Leak of plasma from capillaries",
+        "answer": "down",
+        "why": "Alpha-1 constriction lowers the pressure and flow into leaky vessels, and less mediator is released, so less plasma escapes."
+      },
+      {
+        "name": "Contractility of the ventricles",
+        "answer": "up",
+        "why": "Epinephrine on beta-1 receptor proteins raises calcium entry in heart muscle cells."
+      },
+      {
+        "name": "Airway diameter",
+        "answer": "up",
+        "why": "Epinephrine on beta-2 receptor proteins relaxes airway smooth muscle."
+      },
+      {
+        "name": "Further mediator release from mast cells",
+        "answer": "down",
+        "why": "Beta-2 stimulation raises cyclic AMP in mast cells, which damps degranulation."
+      },
+      {
+        "name": "Mean arterial pressure",
+        "answer": "up",
+        "why": "TPR, venous return and cardiac output all rise, so MAP rises."
+      }
+    ],
+    "why": {
+      "correct": "Epinephrine reverses each part of anaphylaxis through a different adrenergic receptor protein: alpha-1 constricts vessels and cuts leak, beta-1 strengthens the heart, and beta-2 relaxes the airways and damps mast cells. MAP and breathing recover."
+    }
+  },
+  {
+    "id": "anp-immune-disorders-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Over years of untreated infection, HIV destroys a person's helper T cells. Predict each variable in the late stage, compared with before infection.",
+    "variables": [
+      {
+        "name": "CD4 count in the blood",
+        "answer": "down",
+        "why": "HIV enters cells through CD4, and infected and bystander helper T cells die faster than they are replaced."
+      },
+      {
+        "name": "Cytotoxic T cell response to a new virus",
+        "answer": "down",
+        "why": "Cytotoxic T cells need helper T cell IL-2 and licensed dendritic cells to expand strongly."
+      },
+      {
+        "name": "Class-switched antibody made against a new protein antigen",
+        "answer": "down",
+        "why": "B cells need helper T cell contact and cytokines to respond to protein antigens and to switch class."
+      },
+      {
+        "name": "Infections by microbes that rarely trouble healthy people",
+        "answer": "up",
+        "why": "With both arms of adaptive immunity weakened, opportunistic fungi, viruses and bacteria can grow."
+      },
+      {
+        "name": "Amount of HIV in the blood",
+        "answer": "up",
+        "why": "As helper T cells collapse, cytotoxic T cells and antibodies no longer hold the virus down."
+      }
+    ],
+    "why": {
+      "correct": "Helper T cells coordinate almost every adaptive response. As HIV destroys them, cytotoxic and antibody responses fail, the virus climbs again, and opportunistic infections define AIDS."
+    }
+  },
+  {
+    "id": "anp-immune-disorders-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "figure": "hiv-course",
+    "q": "During the long middle stretch of the graph, the person feels well. What is happening?",
+    "options": [
+      "The virus has been cleared from the blood and CD4 cells are slowly recovering",
+      "Virus stays at a steady level while the CD4 count slowly falls",
+      "The CD4 count is steady while the virus slowly disappears",
+      "Both the virus and the CD4 count are rising"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the chronic phase, cytotoxic T cells and antibodies hold the virus at a steady level, but never clear it, and the CD4 count declines year after year. Symptoms are few until the count gets low.",
+      "options": [
+        "The virus line never reaches zero, and the CD4 line slopes down, not up.",
+        "Correct. A steady virus level and a slowly falling CD4 count mark the chronic phase.",
+        "The pattern is the reverse: the CD4 count falls and the virus stays roughly level.",
+        "Only the virus rises, and only late. The CD4 count falls throughout this stretch."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-5",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "figure": "hiv-course",
+    "q": "In the first weeks, the virus curve spikes very high and then drops steeply. What mainly brings it down?",
+    "options": [
+      "The virus runs out of CD4 cells to infect in the blood and lymph nodes",
+      "Antiretroviral drugs taken at diagnosis",
+      "Cytotoxic T cells and antibodies against HIV appear",
+      "The CD4 count rises above 1,000"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Within a few weeks, the adaptive response catches up: cytotoxic T cells kill infected cells and antibodies appear (seroconversion). Together they pull the virus down to a steady level, although they cannot clear it.",
+      "options": [
+        "The CD4 count dips but then partly recovers to hundreds per microliter, so there are plenty of cells left to infect.",
+        "The graph shows untreated infection. The drop happens without drugs.",
+        "Correct. The adaptive immune response lowers the virus to its steady level.",
+        "The CD4 count only partly recovers, to about 750, and does not return to its starting level."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Two days after clearing brush, a gardener develops an itchy, blistering rash in streaks on her forearms, where poison ivy touched her. She has had this rash before. Which type of hypersensitivity is it?",
+    "options": [
+      "Type I, IgE on mast cells",
+      "Type II, antibody against skin cells",
+      "Type III, immune complexes",
+      "Type IV, delayed, T cells"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A rash that takes one to three days to appear, at the site of contact, in someone sensitized before, is delayed hypersensitivity. Memory Th1 cells gather at the site, release cytokines and call in macrophages, and cytotoxic T cells kill skin cells displaying the altered proteins.",
+      "options": [
+        "Type I reactions begin within minutes, not days.",
+        "Type II needs antibody against a fixed cell-surface antigen; this rash is caused by T cells.",
+        "Type III involves soluble immune complexes lodging in vessels, joints and kidneys, not a rash exactly where a plant touched.",
+        "Correct. The two-day delay points to T cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In a person with hay fever, what happens when pollen lands on the lining of the nose?",
+    "options": [
+      "Pollen cross-links IgE already bound to mast cells, which release histamine",
+      "Cytotoxic T cells kill the cells lining the nose",
+      "IgG and pollen form complexes that lodge in the kidneys",
+      "B cells meet the pollen for the first time and begin making IgM"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Hay fever is type I hypersensitivity. Sensitization has already armed mast cells in the nasal lining with pollen-specific IgE. Pollen links two IgE molecules, and within seconds the mast cells release histamine and other mediators: sneezing, itching, a running nose.",
+      "options": [
+        "Correct. Cross-linking IgE on sensitized mast cells triggers degranulation.",
+        "Killing by cytotoxic T cells is part of type IV, which takes days. Hay fever starts within minutes.",
+        "Immune complexes in the kidneys are type III, not an allergy of the nose.",
+        "A first meeting would cause sensitization without symptoms. Symptoms come from later exposures."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every condition caused mainly by antibodies bound to a cell-surface antigen or receptor protein (type II).",
+    "options": [
+      "An ABO-mismatched transfusion reaction",
+      "Poison ivy rash",
+      "Myasthenia gravis",
+      "Hay fever",
+      "Graves disease",
+      "Hemolytic disease of the newborn"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
+    "why": {
+      "correct": "In type II hypersensitivity, IgG or IgM binds an antigen fixed on a cell. Recipient antibodies destroy donor red cells, maternal anti-D destroys fetal red cells, and antibodies against the acetylcholine receptor protein and the TSH receptor protein change how those receptor proteins work.",
+      "options": [
+        "Correct. Recipient anti-A or anti-B bind the donor red cells.",
+        "Poison ivy rash is type IV, caused by T cells over days.",
+        "Correct. Antibodies against acetylcholine receptor proteins reduce their number.",
+        "Hay fever is type I, IgE on mast cells.",
+        "Correct. An antibody switches on the TSH receptor protein.",
+        "Correct. Maternal anti-D binds the fetus's red cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A boy was stung by a bee last summer and had only a small, sore bump. This summer a single sting causes hives all over and wheezing within minutes. Why was the first sting harmless?",
+    "options": [
+      "The first bee injected less venom",
+      "The first sting made IgM, which blocked the venom this time",
+      "His mast cells were still too immature last summer to release any histamine",
+      "The first sting sensitized him: it made IgE that armed his mast cells"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Hypersensitivity needs a first, symptom-free exposure. The first sting triggered Th2 help and class switching to venom-specific IgE, which coated his mast cells. The second sting cross-linked that IgE and triggered widespread degranulation.",
+      "options": [
+        "The dose of a single sting varies little. The change is in his immune system, not the bee.",
+        "IgM does not arm mast cells, and blocking the venom would prevent a reaction, not cause one.",
+        "Mast cells release histamine from birth. What was missing was venom-specific IgE on them.",
+        "Correct. Sensitization on the first exposure sets up the reaction on the next."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "antihistamines treat anaphylaxis",
+    "q": "Why is an antihistamine alone not enough to treat anaphylaxis?",
+    "options": [
+      "It blocks only histamine and cannot raise blood pressure or open airways",
+      "It makes mast cells release even more histamine and leukotrienes into the blood",
+      "It blocks the adrenergic receptor proteins that epinephrine needs",
+      "It works only on hives in the skin of the arms"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Anaphylaxis is driven by several mediators, including leukotrienes, that antihistamines do not block. Antihistamines take time to act and cannot constrict vessels, strengthen the heart or relax airway smooth muscle. Epinephrine does all three.",
+      "options": [
+        "Correct. Its action is narrow and slow; epinephrine is essential.",
+        "Antihistamines block histamine's receptor proteins; they do not increase its release.",
+        "Antihistamines do not block adrenergic receptor proteins, so they do not interfere with epinephrine.",
+        "Antihistamines relieve itching and hives anywhere on the body. Their limit is that they do not treat shock or airway narrowing."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Minutes after an antibiotic injection, a woman has hives, wheezing and a blood pressure of 70/40. What should be given first?",
+    "options": [
+      "An oral antihistamine",
+      "A corticosteroid tablet",
+      "Intramuscular epinephrine",
+      "A beta blocker to slow her heart"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is anaphylaxis with shock. Intramuscular epinephrine into the outer thigh raises TPR and cuts leak (alpha-1), supports the heart (beta-1) and widens the airways (beta-2). Fluids, oxygen and lying flat support it.",
+      "options": [
+        "An antihistamine is slow, blocks only histamine and does not treat shock or airway narrowing.",
+        "Corticosteroids take hours to act and do not reverse the immediate problem.",
+        "Correct. Epinephrine is the first-line treatment.",
+        "Her fast heart rate is the baroreceptor reflex holding up cardiac output. A beta blocker would worsen shock and block epinephrine's effects."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A woman with myasthenia gravis can hold her eyes open normally in the morning, but by evening her eyelids droop. What explains weakness that grows with use?",
+    "options": [
+      "Her motor neurons stop making acetylcholine after a few hours",
+      "Her acetylcholinesterase is missing, so acetylcholine builds up",
+      "Her muscle fibers run out of ATP faster than normal",
+      "With fewer receptor proteins, end plate potentials fall below threshold as release declines"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Antibodies have reduced her acetylcholine receptor proteins, so each end plate potential is smaller and the normal safety margin is gone. With repeated firing, each impulse releases a little less acetylcholine, and more and more fibers fail to reach threshold.",
+      "options": [
+        "Her motor neurons release acetylcholine normally. The fault is at the receptor proteins on the muscle side.",
+        "Her acetylcholinesterase is normal. Drugs that inhibit it actually help her.",
+        "Her muscle fibers are normal when they are excited. The failure is in transmission at the end plate.",
+        "Correct. Fewer receptor proteins leave no safety margin as acetylcholine release falls with use."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Pyridostigmine improves strength in myasthenia gravis. How?",
+    "options": [
+      "It inhibits acetylcholinesterase, so acetylcholine stays in the cleft longer",
+      "It makes the thymus stop producing T cells",
+      "It binds and destroys the antibodies against acetylcholine receptor proteins at the end plate",
+      "It replaces the missing acetylcholine receptor proteins"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Pyridostigmine blocks acetylcholinesterase, so each release of acetylcholine lingers and binds more of the remaining receptor proteins. The end plate potential gets larger and more often reaches threshold.",
+      "options": [
+        "Correct. It slows acetylcholine breakdown.",
+        "Removing the thymus can help some patients, but pyridostigmine acts at the end plate, not on the thymus.",
+        "It does not touch the antibodies; immunosuppressant drugs lower their production.",
+        "It cannot make new receptor proteins. It makes better use of those that remain."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-14",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Put the steps of a type I (IgE-mediated) reaction in order, from first exposure to symptoms.",
+    "options": [
+      "On first exposure, Th2 cells help allergen-specific B cells",
+      "The B cells switch class to IgE",
+      "IgE binds mast cells by its Fc region",
+      "On re-exposure, the allergen cross-links IgE on the mast cells",
+      "Mast cells degranulate, releasing histamine",
+      "Vessels dilate and leak, and smooth muscle contracts"
+    ],
+    "why": {
+      "correct": "Sensitization comes first: Th2 help and IL-4 switch B cells to IgE, which arms mast cells. A later exposure cross-links that IgE, the mast cells degranulate, and histamine and other mediators cause the symptoms."
+    }
+  },
+  {
+    "id": "anp-immune-disorders-15",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described how anaphylaxis causes shock. One step is wrong. Which one?",
+    "options": [
+      "Mast cells throughout the body release histamine and leukotrienes",
+      "Arterioles constrict, and TPR rises",
+      "Capillaries leak, and plasma volume falls",
+      "Venous return and cardiac output fall",
+      "MAP falls, and the tissues receive too little oxygen"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Histamine and leukotrienes dilate arterioles, so TPR falls. That is why anaphylactic shock is a distributive shock, and why epinephrine's alpha-1 constriction helps.",
+      "options": [
+        "This step is right. Body-wide degranulation starts anaphylaxis.",
+        "This is the error. The mediators dilate arterioles, lowering TPR.",
+        "This step is right. Leaky vessels lose plasma into the tissues.",
+        "This step is right. Less volume and pooled blood reduce venous return and output.",
+        "This step is right. Low MAP means too little oxygen delivery: shock."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-16",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Complete the sequence: epinephrine is injected → it binds beta-2 receptor proteins on airway smooth muscle → ____ → wheezing eases.",
+    "options": [
+      "The smooth muscle contracts",
+      "Cyclic AMP rises and the smooth muscle relaxes",
+      "Airway mast cells release more histamine",
+      "Vessels in the airway lining dilate"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Beta-2 receptor proteins raise cyclic AMP in smooth muscle, which relaxes it. The airways widen and wheezing eases.",
+      "options": [
+        "Contraction would narrow the airways. Beta-2 means smooth muscle relaxes; alpha-1 is the receptor protein that contracts it.",
+        "Correct. Beta-2 stimulation relaxes airway smooth muscle.",
+        "Beta-2 stimulation damps mast cell release rather than increasing it.",
+        "Epinephrine constricts vessels in the airway lining through alpha-1, which reduces swelling."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-17",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "figure": "os-21-29",
+    "q": "The drawing on the right shows lupus affecting the skin, joints, pleura and pericardium. What mechanism damages so many different organs?",
+    "options": [
+      "IgE on mast cells in each organ",
+      "Antibody–nuclear antigen complexes lodging in small vessels and tissues",
+      "Cytotoxic T cells that each recognize a protein found only in one of those organs",
+      "A virus that infects every organ"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In lupus, antibodies bind nuclear antigens, including DNA, released from dying cells. The immune complexes circulate and lodge in small vessels, joints, serous membranes, skin and the kidneys' filters, where complement and neutrophils inflame them: type III hypersensitivity.",
+      "options": [
+        "IgE on mast cells causes type I allergy, which comes and goes in minutes, not lasting inflammation in many organs.",
+        "Correct. Circulating immune complexes can lodge almost anywhere.",
+        "A T cell attack on one organ's protein would damage that organ only, as in type 1 diabetes.",
+        "Lupus is autoimmune, not an infection. The antibodies target the body's own nuclear contents."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A baby boy with SCID was well until 4 months of age, then had one severe infection after another. Why did the infections start then?",
+    "options": [
+      "His mother's borrowed IgG was being broken down",
+      "His thymus only began making T cells at 4 months",
+      "He had just received his first vaccines",
+      "His B cells stopped working at 4 months"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "IgG carried across from his mother protected him for the first months. It fades over weeks to months and leaves no memory. Because he has no working T cells, he cannot make his own adaptive response, so infections begin as the borrowed IgG runs out.",
+      "options": [
+        "Correct. Fading maternal IgG unmasks the missing T cells.",
+        "In healthy babies the thymus makes T cells well before birth. In SCID the T cells never develop at all.",
+        "Most vaccines are inactivated and cannot cause infection. The timing matches the loss of maternal antibody.",
+        "His B cells were never able to make useful antibody without helper T cells; that did not change at 4 months."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient with advanced melanoma is treated with an antibody that blocks PD-1 on T cells. His tumor shrinks, but he develops inflammation of his thyroid and gut. Why?",
+    "options": [
+      "The drug is toxic to thyroid and gut cells",
+      "The antibody triggers IgE-mediated allergy",
+      "The tumor has spread to the thyroid and gut and is inflaming them",
+      "Freed T cells also attack healthy tissue they react to"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "PD-1 is a brake that keeps some T cells, including some self-reactive ones, switched off. Blocking it lets T cells attack the tumor, but self-reactive T cells are freed as well, so healthy organs such as the thyroid and gut can be attacked.",
+      "options": [
+        "The damage is done by T cells, not by the drug acting on those cells directly.",
+        "This is a T cell attack on self tissue, not a type I reaction.",
+        "Spread of the tumor would not explain inflammation of these organs right after the drug started.",
+        "Correct. Checkpoint inhibitors can break self-tolerance."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "In a person with HIV, which finding defines AIDS?",
+    "options": [
+      "A positive HIV antibody test",
+      "A CD4 count below 1,000 per microliter",
+      "Any fever lasting more than a week, with swollen lymph nodes",
+      "A CD4 count below 200 per microliter, or a defining illness"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "AIDS is the late stage of HIV infection, diagnosed when the CD4 count falls below 200 per microliter or when an AIDS-defining illness, such as Pneumocystis lung infection or Kaposi sarcoma, appears.",
+      "options": [
+        "A positive antibody test shows HIV infection, which can be years from AIDS.",
+        "A normal CD4 count is about 500 to 1,500 per microliter, so values below 1,000 are often normal.",
+        "Fever and swollen lymph nodes have many causes, including the acute phase of HIV itself, and do not define AIDS.",
+        "Correct. CD4 below 200, or a defining illness."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-21",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Three weeks after an untreated strep throat, a 10-year-old develops fever, painful joints and a new heart murmur from an inflamed valve. What best explains the link?",
+    "options": [
+      "The strep bacteria spread through the blood and settled directly on the heart valve",
+      "The child is allergic to strep, and mast cells in the heart degranulated",
+      "Antibodies against a strep protein also bind a similar protein on heart tissue",
+      "The infection destroyed his regulatory T cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is rheumatic fever, an example of molecular mimicry. A strep surface protein resembles proteins in heart valves and joints, so antibodies and T cells made against the bacterium cross-react with the child's own tissue.",
+      "options": [
+        "In rheumatic fever the valve is inflamed without bacteria in it. The delay of weeks points to an immune response, not spread of the infection.",
+        "An allergic reaction would begin in minutes. A delay of weeks fits the time needed to make antibodies.",
+        "Correct. Cross-reacting antibodies attack self tissue that resembles the microbe.",
+        "Strep does not destroy regulatory T cells. The attack is aimed at a specific look-alike protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-immune-disorders-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statement about rheumatoid arthritis is correct?",
+    "options": [
+      "It is wear and tear of joint cartilage that builds up with age and years of heavy use",
+      "An autoimmune inflammation of synovial membranes in small joints on both sides",
+      "It is caused by IgE binding pollen in the joints",
+      "It affects one large joint after an injury"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Rheumatoid arthritis is a systemic autoimmune disease. T cells, B cells and cytokines such as TNF inflame the synovial membranes, which erode cartilage and bone, typically in the small joints of both hands and feet.",
+      "options": [
+        "Wear and tear with age describes a different, non-autoimmune joint disease. Rheumatoid arthritis is immune-driven and can start young.",
+        "Correct. Autoimmune, synovial, usually symmetric small joints.",
+        "IgE and pollen cause hay fever, not joint disease.",
+        "A single joint after injury is not the pattern of rheumatoid arthritis, which is symmetric and has no injury behind it."
+      ]
+    }
+  }
+]

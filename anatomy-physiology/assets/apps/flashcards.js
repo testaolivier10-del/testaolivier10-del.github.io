@@ -213,7 +213,7 @@
   function loadMissed(){
     var ids = window.AnpCore ? window.AnpCore.missed().filter(function(id){ return /^anp-/.test(id); }) : [];
     if(!ids.length){ missedConcepts = {}; return Promise.resolve(); }
-    return fetch(BASE + 'assets/bank-core.json').then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(bank){
+    return window.AnpCore.loadBank(BASE, { why: false }).then(function(bank){
       var want = {}; ids.forEach(function(id){ want[id] = 1; });
       var text = bank.filter(function(q){ return want[q.id]; }).map(function(q){ return [q.q].concat(q.options || []).concat((q.variables || []).map(function(v){ return v.name; })).join(' '); }).join(' \n ').replace(/<[^>]+>/g, ' ');
       var found = {};

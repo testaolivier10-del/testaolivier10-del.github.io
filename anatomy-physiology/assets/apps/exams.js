@@ -89,14 +89,8 @@
   var run = null;
 
   function loadBank(){
-    function get(u){ return fetch(BASE + u).then(function(r){ if(!r.ok) throw new Error(u); return r.json(); }); }
-    return Promise.all([get('assets/bank-core.json'), get('assets/bank-why.json').catch(function(){ return {}; })]).then(function(res){
-      var why = res[1] || {};
-      return res[0].filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; }).map(function(q){
-        var w = why[q.id];
-        if(w){ if(w.why) q.why = w.why; if(w.variables) q.variables = w.variables; }
-        return q;
-      });
+    return window.AnpCore.loadBank(BASE).then(function(all){
+      return all.filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; });
     });
   }
 
