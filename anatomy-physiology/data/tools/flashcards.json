@@ -20934,6 +20934,2566 @@
    "front": "What two faults feed each other in eczema?",
    "back": "A weak barrier (often a faulty keratohyalin protein gene) and an overactive immune response in the skin.",
    "why": "Irritants get in through the weak barrier and set off inflammation; scratching damages the barrier more: the itch–scratch cycle."
+  },
+  {
+   "id": "sk-axial-appendicular",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Axial vs appendicular skeleton: what belongs to each, and how many bones?",
+   "back": "Axial (80): skull, hyoid, ear bones, backbone and rib cage. Appendicular (126): the limbs plus the bony rings that attach them.",
+   "why": "The split is by position and job: the axial skeleton is the upright core around the brain, spinal cord and chest organs; the appendicular skeleton hangs off it and is built for movement."
+  },
+  {
+   "id": "sk-hip-bone-division",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "The hip bones sit low on the trunk. Axial or appendicular?",
+   "back": "Appendicular.",
+   "why": "A bone that links a limb to the trunk belongs to the appendicular skeleton. The hip bones anchor the legs, just as the collarbones and shoulder blades anchor the arms."
+  },
+  {
+   "id": "sk-cf-number",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cranial vs facial bones",
+   "front": "Cranial vs facial bones: how many of each?",
+   "back": "Cranial: 8. Facial: 14.",
+   "why": "Eight bones make the box around the brain; fourteen build the jaws, cheeks, nose and front of the eye sockets. Together that is the 22 bones of the skull."
+  },
+  {
+   "id": "sk-cf-paired",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cranial vs facial bones",
+   "front": "Cranial vs facial bones: which are paired?",
+   "back": "Cranial: parietal and temporal. Facial: maxilla, zygomatic, nasal, lacrimal, palatine and inferior nasal concha.",
+   "why": "Paired bones sit one on each side of the midline; the brain case has only two such pairs, the face six."
+  },
+  {
+   "id": "sk-cf-single",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cranial vs facial bones",
+   "front": "Cranial vs facial bones: which are single?",
+   "back": "Cranial: frontal, occipital, sphenoid and ethmoid. Facial: vomer and mandible.",
+   "why": "Single bones cross or sit on the midline, so there is only one of each: the sphenoid spans the whole skull base, the vomer sits in the wall that divides the nose."
+  },
+  {
+   "id": "sk-cf-surround",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cranial vs facial bones",
+   "front": "Cranial vs facial bones: what does each group surround?",
+   "back": "Cranial: the brain. Facial: the mouth, the nose and the front of the eye sockets.",
+   "why": "The cranial bones form the cranial cavity; the facial bones frame the openings where food and air enter and the eyes sit."
+  },
+  {
+   "id": "sk-cf-movable",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cranial vs facial bones",
+   "front": "Cranial vs facial bones: which skull bone moves freely?",
+   "back": "Only the mandible, a facial bone. No cranial bone does.",
+   "why": "Every other skull bone is locked to its neighbors by sutures; the mandible hinges at the mandibular fossa of the temporal bone so you can chew and speak."
+  },
+  {
+   "id": "sk-sutures",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four large sutures and the bones each joins.",
+   "back": "Coronal: frontal to parietals. Sagittal: parietal to parietal. Lambdoid: parietals to occipital. Squamous: parietal to temporal.",
+   "why": "Each suture is named for its shape or plane: the crown band across the top, the midline sagittal plane, the Greek letter lambda at the back, the thin scale-like temporal bone below."
+  },
+  {
+   "id": "sk-pterion",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is a hard blow at the pterion dangerous?",
+   "back": "The bone there is thin, and a large artery runs just inside it; a crack can tear the artery and blood collects between the skull and the brain’s outer covering.",
+   "why": "Four bones (frontal, parietal, temporal, sphenoid) meet at the pterion, one of the thinnest spots of the skull. The trapped blood presses on the brain, so symptoms can appear an hour or more after the blow."
+  },
+  {
+   "id": "sk-fossae",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Anterior, middle and posterior cranial fossae: which bones form each and what sits in it?",
+   "back": "Anterior: mostly frontal; front of the brain. Middle: sphenoid and temporal; lower sides of the brain. Posterior: mostly occipital; the lowest back part of the brain.",
+   "why": "The floor of the brain case steps down from front to back like stadium seats, the posterior step deepest, ending at the foramen magnum."
+  },
+  {
+   "id": "sk-sella",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What holds the pituitary gland, and in which bone?",
+   "back": "The hypophyseal fossa, the seat of the sella turcica of the sphenoid bone.",
+   "why": "The saddle-shaped bump in the middle of the skull base cradles the gland, right above the sphenoid sinus."
+  },
+  {
+   "id": "sk-cribriform",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What passes through the cribriform plate, and what can leak through it when it breaks?",
+   "back": "The nerve fibers for smell pass up through its tiny holes. After a fracture, clear fluid from around the brain can leak out of the nose.",
+   "why": "The cribriform plate is the thin, sieve-like roof of the nose, part of the ethmoid bone, so it separates the nose from the brain case by only a thin layer of bone."
+  },
+  {
+   "id": "sk-foramen-magnum",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What passes through the foramen magnum?",
+   "back": "The lower end of the brain, where it becomes the spinal cord.",
+   "why": "The foramen magnum is the large hole in the base of the occipital bone, the exit from the posterior cranial fossa."
+  },
+  {
+   "id": "sk-spinosum",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What passes through the foramen spinosum, and what is it named for?",
+   "back": "The artery to the brain’s outer covering (the one at risk at the pterion). Spinosum means spiny, for the small spine of the sphenoid beside it.",
+   "why": "The name describes a neighbor, not the hole’s size: the foramen sits next to the spine of the sphenoid."
+  },
+  {
+   "id": "sk-mandibular-foramen",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where does a dentist inject to numb the lower teeth, and why there?",
+   "back": "Near the mandibular foramen, on the inner face of each ramus of the mandible.",
+   "why": "The nerve to the lower teeth enters the bone through that foramen, so anesthetic placed there blocks it before it reaches the teeth."
+  },
+  {
+   "id": "sk-orbit-walls",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "A ball strikes the eye. Which wall of the orbit breaks most often, and why?",
+   "back": "The floor.",
+   "why": "The floor is thin bone lying over the large maxillary sinus. The sudden push on the eye socket cracks the thin floor (and sometimes the thin inner wall) rather than the thick rim."
+  },
+  {
+   "id": "sk-bony-septum",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which two bones form the bony wall that divides the nose, and what completes it in front?",
+   "back": "The perpendicular plate of the ethmoid above and the vomer below; the septal cartilage completes it.",
+   "why": "The septal cartilage is hyaline cartilage, which is why the tip of the nose is flexible while the back of the wall is rigid."
+  },
+  {
+   "id": "sk-sinuses",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four paranasal sinuses. Which is largest?",
+   "back": "Frontal, maxillary, sphenoid and ethmoid (air cells). The maxillary sinus is largest.",
+   "why": "Each sinus is named for the bone that holds it. All are lined by mucous membrane continuous with the nose."
+  },
+  {
+   "id": "sk-sinusitis",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a cold cause pain over the cheek in sinusitis?",
+   "back": "The swollen lining closes the small opening the maxillary sinus drains through, so mucus builds up and the pressure rises.",
+   "why": "Each sinus drains into the nose through a narrow opening. Blocked drainage traps mucus inside a rigid bony space, and the pressure causes the pain."
+  },
+  {
+   "id": "sk-fontanelle-order",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "In what order do the fontanelles close?",
+   "back": "Posterior by about 2 to 3 months, then the sphenoidal and mastoid fontanelles by about 6 to 18 months, then the anterior at about 1 to 2 years.",
+   "why": "The small posterior gap has the least distance for bone to cover; the large diamond-shaped anterior one takes longest."
+  },
+  {
+   "id": "sk-fontanelle-why",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a newborn have fontanelles at all?",
+   "back": "The flat bones of the brain case form by intramembranous ossification and have not yet grown far enough to meet; fibrous membrane fills the gaps.",
+   "why": "Each bone spreads outward from its ossification center. At birth the edges are still apart, which lets the plates overlap during birth and the skull grow with the brain."
+  },
+  {
+   "id": "sk-fontanelle-signs",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What can a sunken or a bulging anterior fontanelle mean?",
+   "back": "Sunken: the infant may be dehydrated. Bulging and tense in a calm, upright infant: the pressure inside the skull may be too high.",
+   "why": "The fontanelle is only membrane, so it moves with the volume inside the skull: less fluid lets it sink, extra pressure pushes it out."
+  },
+  {
+   "id": "sk-hyoid",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What makes the hyoid bone unusual, and when does it break?",
+   "back": "It touches no other bone; it hangs from the styloid processes by ligaments. It breaks mainly when the neck is squeezed hard, as in strangulation.",
+   "why": "Sheltered under the mandible and slung in soft tissue, the hyoid rarely breaks from an ordinary blow, so a hyoid fracture points to strong squeezing of the neck."
+  },
+  {
+   "id": "sk-mastoid-styloid",
+   "topic": "skull",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Mastoid vs styloid process: what and where?",
+   "back": "Mastoid: the rounded knob behind the ear, full of air cells. Styloid: a thin spike pointing down below the ear. Both are on the temporal bone.",
+   "why": "The names describe the shapes: mastoid is breast-like, styloid is like a pointed stick."
+  },
+  {
+   "id": "sk-vertebra-counts",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How many vertebrae are in each region?",
+   "back": "7 cervical, 12 thoracic, 5 lumbar, the sacrum (5 fused) and the coccyx (usually 4 fused).",
+   "why": "A child has 33 vertebrae; fusion of the sacral and coccygeal ones leaves 26 bones in the adult. Breakfast at 7, lunch at 12, dinner at 5."
+  },
+  {
+   "id": "sk-vr-body",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "Cervical vs thoracic vs lumbar: size and shape of the body?",
+   "back": "Cervical: small, wider side to side. Thoracic: medium, heart-shaped. Lumbar: largest, thick and kidney-shaped.",
+   "why": "Each body carries the weight of everything above it, so the bodies grow larger toward the lower back."
+  },
+  {
+   "id": "sk-vr-foramen",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "Cervical vs thoracic vs lumbar: shape of the vertebral foramen?",
+   "back": "Cervical: large and triangular. Thoracic: small and round. Lumbar: medium and triangular.",
+   "why": "The spinal cord is thickest in the neck, where the foramen is largest."
+  },
+  {
+   "id": "sk-vr-spinous",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "Cervical vs thoracic vs lumbar: the spinous process?",
+   "back": "Cervical: short, split at the tip (bifid) on C2 to C6. Thoracic: long, sloping steeply down. Lumbar: short, broad and blunt, pointing straight back.",
+   "why": "The overlapping thoracic spines limit bending backward; the blunt lumbar spines anchor large back muscles."
+  },
+  {
+   "id": "sk-vr-transverse",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "Cervical vs thoracic vs lumbar: the transverse processes?",
+   "back": "Cervical: each has a transverse foramen. Thoracic: T1 to T10 each have a costal facet for a rib. Lumbar: long and thin, no foramen or facet.",
+   "why": "Transverse foramina carry the artery that runs up the neck; costal facets are where the ribs’ tubercles meet the thoracic vertebrae."
+  },
+  {
+   "id": "sk-vr-rib-facets",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "Cervical vs thoracic vs lumbar: which have facets on the body for ribs?",
+   "back": "Only thoracic vertebrae (costal facets on each side).",
+   "why": "Only thoracic vertebrae carry ribs, so only they have costal facets on the body, where the rib’s head meets it."
+  },
+  {
+   "id": "sk-vr-movement",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "Cervical vs thoracic vs lumbar: main movement allowed?",
+   "back": "Cervical: nodding, turning and tilting the head. Thoracic: some turning; the ribs limit bending. Lumbar: bending forward and back, little turning.",
+   "why": "Light cervical vertebrae let the head move freely; the rib cage stiffens the chest region; lumbar facets face each other from the sides, which blocks twisting."
+  },
+  {
+   "id": "sk-vr-identify",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Cervical vs thoracic vs lumbar vertebrae",
+   "front": "You find a single vertebra with a small hole in each transverse process. Which region is it from?",
+   "back": "Cervical.",
+   "why": "Only cervical vertebrae have transverse foramina, so they are the quickest way to spot a neck vertebra."
+  },
+  {
+   "id": "sk-transverse-foramen",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What runs up through the transverse foramina?",
+   "back": "An artery on its way up to the back of the brain, with small veins beside it. No other artery uses this channel.",
+   "why": "Stacked, the transverse foramina form a bony channel on each side of the neck that shelters the artery."
+  },
+  {
+   "id": "sk-atlas-axis",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Atlas vs axis: which movement does each allow?",
+   "back": "Atlas (C1): the skull rocks on it to nod “yes”. Axis (C2): the atlas and skull turn around its dens to shake “no”.",
+   "why": "The occipital condyles sit in the atlas’s cupped facets, allowing rocking; the dens is a pivot held against the atlas’s front arch."
+  },
+  {
+   "id": "sk-atlas-parts",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the atlas lack that other vertebrae have?",
+   "back": "A body and a spinous process.",
+   "why": "The atlas is a ring of front and back arches with thick side masses; the part that would be its body is the dens of the axis."
+  },
+  {
+   "id": "sk-ps-which",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Primary vs secondary curves",
+   "front": "Primary vs secondary curves: which curves are which?",
+   "back": "Primary: thoracic and sacrococcygeal. Secondary: cervical and lumbar.",
+   "why": "The primary curves are kept from the fetal C shape; the secondary curves form after birth."
+  },
+  {
+   "id": "sk-ps-direction",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Primary vs secondary curves",
+   "front": "Primary vs secondary curves: which way does each bow?",
+   "back": "Primary: backward (kyphotic). Secondary: forward (lordotic).",
+   "why": "The fetal C bows backward along its whole length; the new curves bend the neck and lower back the other way."
+  },
+  {
+   "id": "sk-ps-when",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Primary vs secondary curves",
+   "front": "Primary vs secondary curves: when does each appear?",
+   "back": "Primary: before birth. Secondary: cervical at about 3 to 4 months, lumbar at about 1 year.",
+   "why": "Each secondary curve appears when the baby starts a new use of the column: lifting the head, then sitting, standing and walking."
+  },
+  {
+   "id": "sk-ps-cause",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Primary vs secondary curves",
+   "front": "Primary vs secondary curves: what produces each?",
+   "back": "Primary: the curled position of the fetus. Secondary: holding the head up, then sitting, standing and walking.",
+   "why": "Pulls on the column reshape it, and the discs and bodies then grow slightly wedge-shaped, thicker in front, which makes the curves permanent."
+  },
+  {
+   "id": "sk-abnormal-curves",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Scoliosis vs kyphosis vs lordosis as abnormal curves?",
+   "back": "Scoliosis: a sideways bend. Kyphosis: an exaggerated thoracic curve, a hunched upper back. Lordosis: an exaggerated lumbar curve, a swayback.",
+   "why": "For your exam, name the abnormal curves this way; clinicians also use kyphosis and lordosis for the direction of the normal curves."
+  },
+  {
+   "id": "sk-disc-parts",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Anulus fibrosus vs nucleus pulposus?",
+   "back": "Anulus: the tough outer rings of fibrocartilage. Nucleus: the soft, gel-like, water-rich core.",
+   "why": "Weight squeezes the nucleus, which cannot be compressed, so it pushes outward on the anulus, whose tight fibers push back: that spreads the load."
+  },
+  {
+   "id": "sk-herniation-root",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "A disc between L4 and L5 herniates backward and to one side. Which nerve is usually squeezed?",
+   "back": "The L5 nerve, the one heading down to exit one level lower.",
+   "why": "The bulge lies in the canal just inside the foramen, where the nerve that exits below L5 runs down past it; the L4 nerve has already left above the bulge."
+  },
+  {
+   "id": "sk-cord-end",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a lumbar herniation press on nerves but not on the spinal cord?",
+   "back": "In adults the spinal cord ends at about L1 to L2, so below that the canal holds only nerves running down to their exit gaps.",
+   "why": "The vertebral column keeps growing after the cord stops, so the cord ends well above the lower lumbar discs, where most herniations happen."
+  },
+  {
+   "id": "sk-disc-height",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are you about 1 to 2 cm shorter at night than in the morning?",
+   "back": "The discs slowly lose water under your weight during the day and regain it lying down.",
+   "why": "The discs make up about a quarter of the column’s length, so small losses in each add up."
+  },
+  {
+   "id": "sk-vertebral-ligaments",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Anterior vs posterior longitudinal ligament: where, and what does each resist?",
+   "back": "Anterior: down the front of the bodies, broad; resists bending backward. Posterior: inside the canal on the back of the bodies, narrow; resists bending forward.",
+   "why": "Each ligament is stretched by bending away from it. The narrow posterior ligament covers only the midline, which is why disc bulges go to one side."
+  },
+  {
+   "id": "sk-flavum",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why is the ligamentum flavum yellow, and what does that let it do?",
+   "back": "It is made mostly of elastic fibers, so it stretches when you bend forward and helps pull you back upright.",
+   "why": "It joins the laminae of neighboring vertebrae, behind the canal."
+  },
+  {
+   "id": "sk-sacral-hiatus",
+   "topic": "vertebral-column",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the sacral hiatus, and why do clinicians use it?",
+   "back": "The opening at the lower end of the sacral canal, where the laminae of the last sacral vertebrae never fused. Anesthetic can be injected into the canal through it.",
+   "why": "Because the laminae are missing there, the canal can be reached without going through bone."
+  },
+  {
+   "id": "sk-rb-numbers",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "True vs false vs floating ribs",
+   "front": "True vs false vs floating ribs: which rib numbers?",
+   "back": "True: 1 to 7. False: 8 to 12, of which 11 and 12 are the floating ribs.",
+   "why": "For your exam, most courses count all of 8 to 12 as false ribs (five on each side), with the floating ribs as part of that group."
+  },
+  {
+   "id": "sk-rb-front",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "True vs false vs floating ribs",
+   "front": "True vs false vs floating ribs: how does each attach at the front?",
+   "back": "True: own costal cartilage straight to the sternum. Ribs 8 to 10: cartilage joins the cartilage of the rib above. Floating: no front attachment; the tip ends in muscle.",
+   "why": "Ribs are sorted by what happens at the front; ribs 8 to 10 reach the sternum only indirectly, through the seventh rib’s cartilage."
+  },
+  {
+   "id": "sk-rb-back",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "True vs false vs floating ribs",
+   "front": "True vs false vs floating ribs: how does each attach at the back?",
+   "back": "True and ribs 8 to 10: head and tubercle meet the vertebrae. Floating: head only, no tubercle contact.",
+   "why": "Every rib is attached at the back. “Floating” describes only the missing front attachment."
+  },
+  {
+   "id": "sk-costal-margin",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What forms the costal margin?",
+   "back": "The joined costal cartilages of ribs 7 to 10.",
+   "why": "The cartilages of ribs 8, 9 and 10 each join the one above, forming the curved lower edge of the front of the cage."
+  },
+  {
+   "id": "sk-sternum-parts",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three parts of the sternum and what attaches to each.",
+   "back": "Manubrium: collarbones and first ribs. Body: cartilages of ribs 2 to 7. Xiphoid process: no ribs.",
+   "why": "The second rib attaches at the sternal angle, where the manubrium meets the body, so it touches both."
+  },
+  {
+   "id": "sk-sternal-angle",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How do you use the sternal angle to count ribs?",
+   "back": "Find the ridge about 5 cm below the jugular notch, slide sideways onto the second rib’s cartilage, and count down from there.",
+   "why": "The first rib is hidden behind the collarbone, but the second rib attaches right at the sternal angle, which you can feel. It also lines up with the disc between T4 and T5."
+  },
+  {
+   "id": "sk-cpr-hands",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where do your hands go for chest compressions, and why not lower?",
+   "back": "On the lower half of the sternum, in the center of the chest; not on the xiphoid process.",
+   "why": "That puts the push over the heart. A hard push on the xiphoid can break it and drive its tip into the liver just below."
+  },
+  {
+   "id": "sk-rib-parts",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "List the parts of a typical rib from back to front.",
+   "back": "Head, neck, tubercle, angle, body (with the costal groove), then the costal cartilage.",
+   "why": "The head meets two vertebral bodies, the tubercle meets its own transverse process, and the angle is where the rib turns forward."
+  },
+  {
+   "id": "sk-rib-head",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which vertebrae does the fifth rib meet, and with which parts?",
+   "back": "Its head meets the bodies of T4 and T5 (and the disc between); its tubercle meets the transverse process of T5.",
+   "why": "A typical rib’s head straddles two neighboring bodies, while its tubercle meets its own vertebra."
+  },
+  {
+   "id": "sk-costal-groove",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a chest drain go just above the upper edge of the lower rib?",
+   "back": "A nerve, an artery and a vein run in the costal groove under the lower edge of each rib, so staying at the top of the lower rib keeps the needle away from them.",
+   "why": "The costal groove is on the inner lower edge of the rib body."
+  },
+  {
+   "id": "sk-first-rib",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a first-rib fracture warn of a severe injury?",
+   "back": "The first rib is short, flat and tucked under the collarbone, so breaking it takes great force.",
+   "why": "By contrast the middle ribs, about 4 to 9, are long and exposed at the sides, so they break most often."
+  },
+  {
+   "id": "sk-flail-chest",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is a flail chest, and how does the loose section move?",
+   "back": "Two or more neighboring ribs each broken in two or more places. The loose section is sucked inward when the rest of the chest widens to breathe in.",
+   "why": "The section is no longer connected to the rest of the cage, so it follows the pressure inside the chest instead of the ribs around it."
+  },
+  {
+   "id": "sk-cage-flex",
+   "topic": "thoracic-cage",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can the chest spring back after each CPR compression?",
+   "back": "The front ends of the ribs are costal cartilage, which bends and recoils.",
+   "why": "In older adults the costal cartilages partly calcify, which makes the chest stiffer."
+  },
+  {
+   "id": "sk-ul-counts",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How many bones in each part of the upper limb?",
+   "back": "Girdle 2 (clavicle, scapula), arm 1 (humerus), forearm 2 (radius, ulna), wrist and hand 27 (8 carpals, 5 metacarpals, 14 phalanges).",
+   "why": "In anatomy the arm is only between shoulder and elbow; below the elbow is the forearm."
+  },
+  {
+   "id": "sk-pectoral-loose",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does the shoulder move freely but dislocate easily?",
+   "back": "The pectoral girdle is not a full ring: the scapula meets no bone of the trunk and is held on by muscles, and the glenoid cavity is very shallow.",
+   "why": "The only bony link to the trunk is the clavicle at the manubrium, so the shoulder trades stability for movement."
+  },
+  {
+   "id": "sk-clavicle-strut",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the clavicle one of the most commonly broken bones?",
+   "back": "It is the only bony strut between the arm and the trunk, so every push up the arm passes through it; it breaks in its thin middle, where its two curves meet.",
+   "why": "A fall onto the shoulder or an outstretched hand loads the strut end to end."
+  },
+  {
+   "id": "sk-scapula-landmarks",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Acromion vs coracoid process vs glenoid cavity?",
+   "back": "Acromion: the flat end of the spine, the tip of the shoulder, meets the clavicle. Coracoid: a hook pointing forward under the clavicle. Glenoid cavity: the shallow socket for the head of the humerus.",
+   "why": "The names describe them: tip of the shoulder, crow’s beak, and socket."
+  },
+  {
+   "id": "sk-nk-where",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Anatomical vs surgical neck",
+   "front": "Anatomical vs surgical neck of the humerus: where is each?",
+   "back": "Anatomical: the groove right at the edge of the head, above the tubercles. Surgical: the narrowing of the shaft just below both tubercles.",
+   "why": "The anatomical neck rings the wide head; the surgical neck is where the narrower shaft begins."
+  },
+  {
+   "id": "sk-nk-breaks",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Anatomical vs surgical neck",
+   "front": "Anatomical vs surgical neck: which breaks often, and why?",
+   "back": "The surgical neck, especially in older adults who fall. The anatomical neck rarely breaks.",
+   "why": "The surgical neck is narrow bone, while the anatomical neck rings the wide head. The surgical neck is named for how often it needs treatment."
+  },
+  {
+   "id": "sk-humerus-lower",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Capitulum vs trochlea: which forearm bone meets each?",
+   "back": "Capitulum (lateral, a rounded knob): the head of the radius. Trochlea (medial, a spool): the trochlear notch of the ulna.",
+   "why": "Capitulum means little head; trochlea means pulley, which is the shape the ulna wraps around."
+  },
+  {
+   "id": "sk-funny-bone",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What do you hit when you hit your “funny bone”?",
+   "back": "A nerve in a groove on the back of the medial epicondyle of the humerus.",
+   "why": "Only skin covers it there, so a knock squeezes it against the bone and the tingling runs to the little finger."
+  },
+  {
+   "id": "sk-ru-side",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Ulna vs radius",
+   "front": "Ulna vs radius: which side of the forearm?",
+   "back": "Ulna: medial, the little-finger side. Radius: lateral, the thumb side.",
+   "why": "In anatomical position the palm faces forward, so the thumb, and the radius with it, is on the outside."
+  },
+  {
+   "id": "sk-ru-large-end",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Ulna vs radius",
+   "front": "Ulna vs radius: which end is larger?",
+   "back": "Ulna: the upper end, at the elbow. Radius: the lower end, at the wrist.",
+   "why": "The ulna forms most of the elbow with the humerus, while the radius carries most of the wrist."
+  },
+  {
+   "id": "sk-ru-landmarks",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Ulna vs radius",
+   "front": "Ulna vs radius: main landmark at the elbow and at the wrist?",
+   "back": "Ulna: olecranon and trochlear notch at the elbow; small head and styloid process at the wrist. Radius: disc-shaped head and radial tuberosity at the elbow; wide end and styloid process at the wrist.",
+   "why": "The radius’s styloid process reaches farther down than the ulna’s."
+  },
+  {
+   "id": "sk-ru-humerus",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Ulna vs radius",
+   "front": "Ulna vs radius: which part of the humerus does each meet?",
+   "back": "Ulna: the trochlea. Radius: the capitulum.",
+   "why": "The trochlear notch wraps the spool-shaped trochlea; the hollow head of the radius sits on the rounded capitulum."
+  },
+  {
+   "id": "sk-ru-turning",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Ulna vs radius",
+   "front": "Ulna vs radius: what does each do when you turn your palm down?",
+   "back": "Ulna: stays still. Radius: its head spins at the elbow and its lower end crosses over the front of the ulna.",
+   "why": "The ulna is locked around the trochlea, so it cannot turn. That is why the radius, not the ulna, carries the wrist and hand."
+  },
+  {
+   "id": "sk-colles",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is a Colles fracture, and how does it happen?",
+   "back": "A break of the lower end of the radius with the broken end pushed back, giving an upside-down dinner-fork wrist; from a fall onto an outstretched hand.",
+   "why": "The radius carries most of the wrist, so the force of the fall passes up through it."
+  },
+  {
+   "id": "sk-carpal-rows",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the carpals, lateral to medial, in each row.",
+   "back": "Proximal: scaphoid, lunate, triquetrum, pisiform. Distal: trapezium, trapezoid, capitate, hamate.",
+   "why": "“Some Lovers Try Positions That They Can’t Handle.” The trapezium sits under the thumb."
+  },
+  {
+   "id": "sk-scaphoid",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is a suspected scaphoid fracture splinted even when the first X-ray is normal?",
+   "back": "A break across its narrow middle can cut the near piece off from its blood supply, which enters mainly at the far end; the piece may die and the break may never heal.",
+   "why": "The scaphoid takes the load between the radius and the hand in a fall on an outstretched hand, and the break often does not show on the first image."
+  },
+  {
+   "id": "sk-carpal-tunnel",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What forms the carpal tunnel, and why does swelling inside it cause numbness?",
+   "back": "The carpals form its floor and walls, the flexor retinaculum its roof. It cannot widen, so swollen tendon linings raise the pressure and squeeze the nerve to the thumb side of the hand.",
+   "why": "Numbness and tingling follow that nerve: the thumb, index and middle fingers."
+  },
+  {
+   "id": "sk-phalanges",
+   "topic": "upper-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How many phalanges in the thumb and in each finger?",
+   "back": "Thumb (pollex): 2, proximal and distal. Each finger: 3, proximal, middle and distal.",
+   "why": "2 + 4 × 3 = 14 phalanges in each hand."
+  },
+  {
+   "id": "sk-ll-counts",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How many bones in each part of the lower limb?",
+   "back": "Girdle: 1 hip bone. Thigh: femur. Knee: patella. Leg: tibia and fibula. Ankle and foot: 26 (7 tarsals, 5 metatarsals, 14 phalanges).",
+   "why": "The plan matches the upper limb bone for bone, but the parts are thicker and more firmly locked together."
+  },
+  {
+   "id": "sk-girdles",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Pectoral vs pelvic girdle: how do they differ?",
+   "back": "Pectoral: an incomplete ring, held on by muscles; built for movement. Pelvic: a complete ring locked to the sacrum and joined at the pubic symphysis; built to carry weight.",
+   "why": "Each girdle trades one property for the other: the shoulder gives up stability for movement, the pelvis gives up movement for stability."
+  },
+  {
+   "id": "sk-hip-parts",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which three parts make each hip bone, and where do they meet?",
+   "back": "Ilium (upper, fan-shaped), ischium (lower back), pubis (lower front). All three meet in the acetabulum.",
+   "why": "They start as three separate bones joined by cartilage and fuse in the teen years."
+  },
+  {
+   "id": "sk-ischial-tuberosity",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do you sit on?",
+   "back": "Your two ischial tuberosities.",
+   "why": "The ischial tuberosity is the thick, rough base of the ischium."
+  },
+  {
+   "id": "sk-marrow-site",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where are red bone marrow samples usually taken, and why?",
+   "back": "From the iliac crest near the posterior superior iliac spine.",
+   "why": "The bone there is thick, rich in marrow and lies just under the skin."
+  },
+  {
+   "id": "sk-pelvis-brim",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Greater vs lesser pelvis?",
+   "back": "Greater (false): above the pelvic brim, between the flared iliac wings, part of the abdominal cavity. Lesser (true): below the brim; holds the bladder and rectum and forms the bony birth canal.",
+   "why": "The pelvic brim runs from the sacral promontory along each hip bone to the top of the pubic symphysis."
+  },
+  {
+   "id": "sk-pv-build",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Female vs male pelvis",
+   "front": "Female vs male pelvis: overall build and depth?",
+   "back": "Female: lighter, thinner bones; shallow lesser pelvis. Male: heavier, thicker bones with rougher markings; deep lesser pelvis.",
+   "why": "The pelves diverge at puberty; rougher male markings reflect larger muscles anchoring there."
+  },
+  {
+   "id": "sk-pv-inlet",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Female vs male pelvis",
+   "front": "Female vs male pelvis: shape of the pelvic inlet?",
+   "back": "Female: wide, round or oval. Male: narrower, heart-shaped.",
+   "why": "A wider, rounder inlet gives a wider birth canal."
+  },
+  {
+   "id": "sk-pv-angle",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Female vs male pelvis",
+   "front": "Female vs male pelvis: subpubic angle?",
+   "back": "Female: wide, about 80 to 90 degrees or more (thumb and index finger). Male: narrow, about 50 to 60 degrees (index and middle finger).",
+   "why": "The subpubic angle is among the most reliable features for judging sex from a skeleton."
+  },
+  {
+   "id": "sk-pv-spines",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Female vs male pelvis",
+   "front": "Female vs male pelvis: ischial spines and tuberosities, and the sacrum?",
+   "back": "Female: spines and tuberosities farther apart; sacrum shorter, wider and less curved. Male: closer together; sacrum longer, narrower and more curved.",
+   "why": "Each of these widens the pelvic outlet in the female, which the baby passes through last."
+  },
+  {
+   "id": "sk-pv-wings",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Female vs male pelvis",
+   "front": "Female vs male pelvis: iliac wings and obturator foramen?",
+   "back": "Female: wings flare out more; obturator foramen oval to triangular. Male: wings more upright; obturator foramen round.",
+   "why": "These are averages: individual pelves overlap, so several features are judged together."
+  },
+  {
+   "id": "sk-femoral-neck",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is the femoral neck the femur’s weak point?",
+   "back": "It joins head to shaft at about 125 degrees, so body weight bends it instead of pressing straight down it; in older adults with osteoporosis, it is also thinner.",
+   "why": "That angle sets the shaft out from the pelvis, at the cost of loading the narrow neck like a bent beam."
+  },
+  {
+   "id": "sk-broken-hip",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is broken in a typical “broken hip” of an older adult, and why can the femoral head die?",
+   "back": "The femoral neck or the bone between the two trochanters. The vessels to the head run up along the neck, so a displaced neck fracture can cut them.",
+   "why": "A break of the hip bone itself is usually called a pelvic fracture."
+  },
+  {
+   "id": "sk-patella",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does the patella help the thigh muscles straighten the knee?",
+   "back": "It holds the tendon away from the knee’s center of turning, so the muscle pulls with more leverage.",
+   "why": "The patella is the largest sesamoid bone, formed inside the tendon of the large muscle group on the front of the thigh."
+  },
+  {
+   "id": "sk-tf-side",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Tibia vs fibula",
+   "front": "Tibia vs fibula: which side, and which is larger?",
+   "back": "Tibia: medial, large and thick. Fibula: lateral and thin.",
+   "why": "The tibia sits under the femur and carries its load; the fibula runs alongside."
+  },
+  {
+   "id": "sk-tf-knee",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Tibia vs fibula",
+   "front": "Tibia vs fibula: which is part of the knee?",
+   "back": "Tibia: yes, its condyles carry the femur. Fibula: no, its head sits below the knee on the outer side.",
+   "why": "The fibula does not reach the femur at all."
+  },
+  {
+   "id": "sk-tf-weight",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Tibia vs fibula",
+   "front": "Tibia vs fibula: share of body weight?",
+   "back": "Tibia: almost all. Fibula: a small share, about 6 to 17 percent.",
+   "why": "For your exam, if asked which leg bone bears the weight, answer the tibia; many courses call the fibula non-weight-bearing."
+  },
+  {
+   "id": "sk-tf-ankle",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Tibia vs fibula",
+   "front": "Tibia vs fibula: which ankle bump belongs to each?",
+   "back": "Tibia: medial malleolus. Fibula: lateral malleolus, which sits lower.",
+   "why": "The two malleoli grip the sides of the talus like the jaws of a wrench, which keeps the ankle from sliding sideways."
+  },
+  {
+   "id": "sk-tarsals",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the seven tarsals.",
+   "back": "Talus, calcaneus, navicular, medial, intermediate and lateral cuneiforms, and cuboid.",
+   "why": "“Tiger Cubs Need MILC.” The talus is the only foot bone that meets the leg; the calcaneus is the heel."
+  },
+  {
+   "id": "sk-talus",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which is the only foot bone that meets the leg, and where does it send the weight?",
+   "back": "The talus. It passes the weight down and back to the calcaneus and forward to the rest of the foot.",
+   "why": "The tibia rests on top of the talus and the two malleoli grip its sides."
+  },
+  {
+   "id": "sk-arches",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three arches of the foot.",
+   "back": "Medial longitudinal (high, inner side), lateral longitudinal (low, outer side) and transverse (across the foot).",
+   "why": "The medial arch runs from the calcaneus through talus, navicular and cuneiforms to the first three metatarsals; that is why a wet footprint shows no inner edge."
+  },
+  {
+   "id": "sk-plantar",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does the plantar aponeurosis give each step some spring?",
+   "back": "Weight flattens the arches and stretches it like a bowstring; when the weight comes off, it recoils.",
+   "why": "It runs from the calcaneus to the toes. Strain where it anchors to the calcaneus is plantar fasciitis, heel pain worst with the first steps in the morning."
+  },
+  {
+   "id": "sk-stress-fracture",
+   "topic": "lower-limb",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which foot bones get stress fractures from running, and why?",
+   "back": "The second and third metatarsals.",
+   "why": "They are thin and long, and repeated loading of the ball of the foot cracks them."
+  },
+  {
+   "id": "bt-functions",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the six functions of the skeletal system?",
+   "back": "Support, protection, movement, mineral storage, blood cell formation and fat storage.",
+   "why": "Bone is a rigid, living tissue: its hardness gives support, protection and rigid bars for muscles to pull on, its matrix stores minerals, and its marrow makes blood cells and stores fat."
+  },
+  {
+   "id": "bt-mineral-store",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What share of the body’s calcium and phosphate is stored in bone?",
+   "back": "About 99% of the calcium and about 85% of the phosphate.",
+   "why": "Bone gives these minerals up to the blood and takes them back, so it works as the body’s mineral bank."
+  },
+  {
+   "id": "bt-hematopoiesis",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is hematopoiesis, and where does it happen in an adult?",
+   "back": "Blood cell formation; in red bone marrow.",
+   "why": "Stem cells in the red marrow divide, and some daughters differentiate into red blood cells, white blood cells and platelets, which enter the blood through thin-walled marrow vessels."
+  },
+  {
+   "id": "bt-shapes",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the five groups of bones by shape, with one example each.",
+   "back": "Long (thigh bone), short (wrist bones), flat (breastbone), irregular (vertebrae), sesamoid (the bone at the front of the knee).",
+   "why": "Bones are sorted by shape, not size, because shape reflects how each bone is built and loaded."
+  },
+  {
+   "id": "bt-finger-long",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "A finger bone is tiny. Why is it classed as a long bone?",
+   "back": "It is longer than it is wide, with a shaft and two ends.",
+   "why": "The classification is by shape, not size, so any bone built as a shaft with two ends is a long bone."
+  },
+  {
+   "id": "bt-sesamoid",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a sesamoid bone, and what does it do?",
+   "back": "A small, round bone that forms inside a tendon where it crosses a joint; it keeps the tendon off the joint and changes the angle of its pull.",
+   "why": "Its number varies between people, which is one reason the adult bone count is \"about\" 206."
+  },
+  {
+   "id": "bt-long-parts",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the parts of a long bone from the shaft outward to the joint surface.",
+   "back": "Diaphysis (shaft), metaphysis (flared region), epiphysis (widened end), articular cartilage (joint surface).",
+   "why": "The shaft widens through the metaphysis into each epiphysis, which is capped with hyaline cartilage where it meets another bone."
+  },
+  {
+   "id": "bt-hollow-shaft",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the diaphysis a hollow tube rather than a solid rod?",
+   "back": "A hollow tube resists bending almost as well as a solid rod of the same width, for much less weight.",
+   "why": "Most of the resistance to bending comes from material far from the center, so the middle can be left for the medullary cavity."
+  },
+  {
+   "id": "bt-metaphysis",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What sits in the metaphysis of a child’s long bone, and what marks it in an adult?",
+   "back": "A disc of cartilage where the bone grows longer; in an adult, a thin line of bone.",
+   "why": "Growth in length happens at that disc, and when it is replaced by bone at the end of growth, only a line remains."
+  },
+  {
+   "id": "bt-articular",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What covers the ends of a long bone at a joint, and what is unusual about it?",
+   "back": "Articular cartilage, a layer of hyaline cartilage with no blood vessels and no perichondrium.",
+   "why": "Its smooth surface cuts friction as the bones move against each other."
+  },
+  {
+   "id": "bt-ry-tissue",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Red vs yellow bone marrow",
+   "front": "Red vs yellow bone marrow: what is each made of?",
+   "back": "Red: reticular tissue with stem cells and developing blood cells. Yellow: mostly adipose tissue.",
+   "why": "Red marrow is red from the red blood cells it is making; yellow marrow is yellow from its fat cells."
+  },
+  {
+   "id": "bt-ry-job",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Red vs yellow bone marrow",
+   "front": "Red vs yellow bone marrow: what is each one’s job?",
+   "back": "Red: hematopoiesis (makes red blood cells, white blood cells and platelets). Yellow: stores triglycerides as an energy reserve.",
+   "why": "Yellow marrow makes no blood cells under normal conditions."
+  },
+  {
+   "id": "bt-ry-where",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Red vs yellow bone marrow",
+   "front": "Where is red marrow found in an adult, and where yellow?",
+   "back": "Red: breastbone, ribs, skull bones, vertebrae, hip bones and the upper ends of the thigh and upper arm bones. Yellow: the medullary cavities of long bones.",
+   "why": "Fat cells fill the limb bones’ marrow through childhood, starting in the shafts, so red marrow is left mainly in the trunk."
+  },
+  {
+   "id": "bt-ry-change",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Red vs yellow bone marrow",
+   "front": "Can yellow marrow become red again?",
+   "back": "Yes, when blood loss or disease demands more blood cells.",
+   "why": "Stem cells repopulate the yellow marrow, and it turns back into blood-forming red marrow."
+  },
+  {
+   "id": "bt-marrow-sample",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is an adult’s red marrow usually sampled from the back of the hip bone, not the middle of a limb?",
+   "back": "In an adult, red marrow remains in the hip bone and other trunk bones, while the limb shafts hold yellow marrow.",
+   "why": "Through childhood, fat replaces the red marrow of the limb shafts, so a sample there would be mostly fat."
+  },
+  {
+   "id": "bt-pe-where",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Periosteum vs endosteum",
+   "front": "Periosteum vs endosteum: where is each?",
+   "back": "Periosteum: the outer surface of a bone, except the joint surfaces. Endosteum: all inner surfaces (medullary cavity, lattice struts, canals).",
+   "why": "Articular cartilage covers the joint surfaces, so the periosteum stops at its edge."
+  },
+  {
+   "id": "bt-pe-layers",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Periosteum vs endosteum",
+   "front": "Periosteum vs endosteum: how many layers does each have?",
+   "back": "Periosteum: two (outer fibrous, inner cellular). Endosteum: one thin cellular layer.",
+   "why": "Only the periosteum needs a tough fibrous layer, because tendons and ligaments pull on it."
+  },
+  {
+   "id": "bt-pe-anchor",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Periosteum vs endosteum",
+   "front": "How does a muscle’s pull pass into a bone?",
+   "back": "Through the tendon, which blends into the fibrous layer of the periosteum, whose collagen bundles run deep into the bone.",
+   "why": "The endosteum has no fibrous layer and anchors nothing."
+  },
+  {
+   "id": "bt-pe-pain",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Periosteum vs endosteum",
+   "front": "Why does a kick to the shin hurt so much?",
+   "back": "The periosteum is rich in sensory nerve endings, and at the shin the bone lies just under the skin.",
+   "why": "The blow compresses those nerve endings against the bone. The endosteum has far fewer nerves."
+  },
+  {
+   "id": "bt-pe-growth",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Periosteum vs endosteum",
+   "front": "Periosteum vs endosteum: what role does each play in growth and repair?",
+   "back": "Periosteum: adds bone to the outside (thickening, outer repair). Endosteum: reshapes bone from the inside, including the medullary cavity.",
+   "why": "Both hold bone-building cells, but on opposite surfaces of the bone."
+  },
+  {
+   "id": "bt-nutrient-artery",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the main artery of a long bone, and how does it enter?",
+   "back": "The nutrient artery, through a nutrient foramen in the middle of the shaft.",
+   "why": "Inside, it branches toward both ends and supplies the marrow and the inner part of the shaft wall; a nutrient vein leaves by the same hole."
+  },
+  {
+   "id": "bt-markings-rule",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What two rules make bone markings easier to learn?",
+   "back": "The name describes the shape, and the shape follows the job: rough projections for tendons and ligaments, smooth rounded ones for joints, holes and channels for what passes through.",
+   "why": "A marking forms where something pulls on, presses on or passes through the bone."
+  },
+  {
+   "id": "bt-markings-attach",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which bone markings are sites where tendons and ligaments attach?",
+   "back": "Tuberosity, tubercle, trochanter, crest, spine and epicondyle.",
+   "why": "Where a muscle pulls hard and often, the bone under its tendon grows a raised area, larger in people who train heavily."
+  },
+  {
+   "id": "bt-markings-joint",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which bone markings form joints?",
+   "back": "Head, condyle and facet.",
+   "why": "They are smooth and rounded or flat, shapes that let one bone move against another."
+  },
+  {
+   "id": "bt-fossa-meatus",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Fossa vs meatus: what is each?",
+   "back": "Fossa: a shallow basin or depression. Meatus: a tube-like canal through bone.",
+   "why": "A fossa receives part of another bone or gives a muscle a surface; a meatus carries something through, like the ear canal."
+  },
+  {
+   "id": "bt-trochanter",
+   "topic": "bone-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a trochanter, and where is it found?",
+   "back": "A very large, blunt process, found only on the thigh bone.",
+   "why": "The big knob at the side of your upper thigh is one; powerful hip muscles pull on it."
+  },
+  {
+   "id": "bt-matrix-parts",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the two parts of bone matrix, and what does each give bone?",
+   "back": "Organic (about a third): collagen, which resists pulling and gives slight flexibility. Inorganic (about two thirds): hydroxyapatite crystals, which make bone hard and resist squeezing.",
+   "why": "Together they act like steel bars in concrete, resisting both pulling and pushing."
+  },
+  {
+   "id": "bt-vinegar",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "A bone soaked in vinegar bends like rubber; a baked bone crumbles. What did each lose?",
+   "back": "Vinegar dissolved the mineral; baking burned off the collagen.",
+   "why": "Collagen without mineral is flexible like rope; mineral without collagen is hard but shatters like chalk."
+  },
+  {
+   "id": "bt-osteoid",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is osteoid?",
+   "back": "New organic bone matrix, collagen and ground substance, before mineral is added.",
+   "why": "Osteoblasts lay it down first; calcium phosphate crystals are deposited in it over days to weeks."
+  },
+  {
+   "id": "bt-four-cells",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four bone cells and what each ending means.",
+   "back": "Osteogenic cell (-genic, producing), osteoblast (-blast, builder), osteocyte (-cyte, mature cell), osteoclast (-clast, breaking).",
+   "why": "The shared root oste- means bone, so the ending tells you the job."
+  },
+  {
+   "id": "bt-osteogenic",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are osteogenic cells, and what is special about them?",
+   "back": "The stem cells of bone, in the periosteum, endosteum and bone canals; the only bone cells that divide.",
+   "why": "Their daughters differentiate into osteoblasts, which do not divide."
+  },
+  {
+   "id": "bt-ob-job",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Osteoblast vs osteocyte vs osteoclast",
+   "front": "Osteoblast vs osteocyte vs osteoclast: what is each one’s job?",
+   "back": "Osteoblast: builds bone. Osteocyte: maintains the matrix and senses load. Osteoclast: resorbs bone.",
+   "why": "Memory hook: osteoblasts build, osteoclasts chew; osteocytes keep watch from inside."
+  },
+  {
+   "id": "bt-ob-origin",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Osteoblast vs osteocyte vs osteoclast",
+   "front": "Osteoblast vs osteocyte vs osteoclast: where does each come from?",
+   "back": "Osteoblast: osteogenic cells. Osteocyte: an osteoblast walled in by its own matrix. Osteoclast: fused precursors of the macrophage line from red marrow.",
+   "why": "Osteoclasts are the odd one out: they come from the blood-forming line, not from osteogenic cells."
+  },
+  {
+   "id": "bt-ob-where",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Osteoblast vs osteocyte vs osteoclast",
+   "front": "Osteoblast vs osteocyte vs osteoclast: where is each found?",
+   "back": "Osteoblast: on bone surfaces, under periosteum and endosteum. Osteocyte: inside the matrix, each in a lacuna. Osteoclast: on bone surfaces, in the pits it digs.",
+   "why": "Building and breaking happen at surfaces; the osteocyte is the only one buried in bone."
+  },
+  {
+   "id": "bt-ob-size",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Osteoblast vs osteocyte vs osteoclast",
+   "front": "Osteoblast vs osteocyte vs osteoclast: size and nuclei?",
+   "back": "Osteoblast: medium, one nucleus. Osteocyte: small body with long arms, one nucleus. Osteoclast: very large, several nuclei.",
+   "why": "An osteoclast has several nuclei because it forms when many precursor cells fuse."
+  },
+  {
+   "id": "bt-ob-divide",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Osteoblast vs osteocyte vs osteoclast",
+   "front": "Osteoblast vs osteocyte vs osteoclast: which of them divide?",
+   "back": "None of them.",
+   "why": "New bone cells come from osteogenic cells (for osteoblasts) or from precursors in the red marrow (for osteoclasts)."
+  },
+  {
+   "id": "bt-ob-calcium",
+   "topic": "bone-histology",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Osteoblast vs osteocyte vs osteoclast",
+   "front": "Osteoblast vs osteocyte vs osteoclast: effect on calcium in the blood?",
+   "back": "Osteoblast: takes calcium out into new bone. Osteocyte: little direct effect. Osteoclast: releases calcium from bone into the blood.",
+   "why": "Mineralizing osteoid uses calcium; resorption returns it."
+  },
+  {
+   "id": "bt-osteoclast-how",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does an osteoclast dissolve bone?",
+   "back": "It seals onto the surface, pumps hydrogen ions from its frilled membrane to dissolve the mineral, and releases lysosomal enzymes that digest the collagen.",
+   "why": "The acid removes the hydroxyapatite and the enzymes remove the protein, leaving a shallow pit and releasing calcium and phosphate."
+  },
+  {
+   "id": "bt-osteocyte-most",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which bone cell is the most numerous, and what share?",
+   "back": "The osteocyte, over 90% of bone cells.",
+   "why": "Every osteoblast that gets walled in becomes one, and they live for years in the matrix."
+  },
+  {
+   "id": "bt-osteon-parts",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the parts of an osteon from the center out.",
+   "back": "Central canal, lamellae with lacunae between them, and canaliculi linking the lacunae; perforating canals join neighboring osteons.",
+   "why": "The osteon is built like a tree trunk: a central channel with rings of matrix around it."
+  },
+  {
+   "id": "bt-lamellae-twist",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do the collagen fibers in neighboring lamellae run in opposite spirals?",
+   "back": "The crisscross, like plywood, helps the osteon resist twisting.",
+   "why": "Fibers running in one direction would resist a twist one way only."
+  },
+  {
+   "id": "bt-perforating",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Central canal vs perforating canal: which way does each run?",
+   "back": "Central canal: along the length of the bone. Perforating canal: across the bone, at right angles.",
+   "why": "Perforating canals join the central canals to each other and to the vessels of the periosteum and medullary cavity."
+  },
+  {
+   "id": "bt-canaliculi-why",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "What limits how wide an osteon can be?",
+   "back": "No osteocyte can sit more than about a tenth of a millimeter from its central canal.",
+   "why": "Mineralized matrix is almost impermeable, so oxygen and nutrients reach osteocytes only through the canaliculi and gap junctions, and diffusion works only over short distances."
+  },
+  {
+   "id": "bt-cs-name",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: what is each also called?",
+   "back": "Compact: cortical bone. Spongy: cancellous bone (the diploë in flat skull bones).",
+   "why": "Cortex means bark, the outer layer; cancell- means lattice."
+  },
+  {
+   "id": "bt-cs-unit",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: what is the unit of structure?",
+   "back": "Compact: the osteon, lamellae around a central canal. Spongy: the trabecula, a few layers of lamellae with no central canal.",
+   "why": "A trabecula is thin enough for its osteocytes to be supplied from the marrow spaces around it."
+  },
+  {
+   "id": "bt-cs-supply",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: how do osteocytes get nutrients?",
+   "back": "Compact: from vessels in the central canal, through canaliculi. Spongy: from vessels in the marrow spaces, through canaliculi opening on the surface.",
+   "why": "Either way, canaliculi are the only route through mineralized matrix."
+  },
+  {
+   "id": "bt-cs-where",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: where is each found?",
+   "back": "Compact: the shaft wall of long bones and the outer shell of every bone. Spongy: the ends of long bones and the inside of short, flat and irregular bones.",
+   "why": "Spongy bone is always covered by a shell of compact bone."
+  },
+  {
+   "id": "bt-cs-share",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: what share of the skeleton’s mass is each?",
+   "back": "Compact about 80%, spongy about 20%.",
+   "why": "Compact bone is dense; spongy bone is mostly open space filled with marrow."
+  },
+  {
+   "id": "bt-cs-best",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: what load is each best at?",
+   "back": "Compact: loads along its length. Spongy: loads from many directions while staying light.",
+   "why": "The trabeculae line up along the directions of everyday stress, like the struts of a bridge."
+  },
+  {
+   "id": "bt-cs-turnover",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Compact vs spongy bone",
+   "front": "Compact vs spongy bone: which changes faster, and why?",
+   "back": "Spongy bone, because it has far more surface for its mass where osteoblasts and osteoclasts can work.",
+   "why": "That is why spongy bone is gained and lost faster, and why bone lost with age is lost first from spongy bone."
+  },
+  {
+   "id": "bt-diploe",
+   "topic": "bone-histology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the diploë?",
+   "back": "The layer of spongy bone sandwiched between two plates of compact bone in a flat bone of the skull.",
+   "why": "It is spongy bone with its own name; its spaces hold red marrow."
+  },
+  {
+   "id": "bt-ossification",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is ossification, and what does bone always form on?",
+   "back": "The formation of bone tissue by osteoblasts; bone is always laid down on something already there.",
+   "why": "The two routes differ in what that something is: a sheet of mesenchyme or a model of hyaline cartilage."
+  },
+  {
+   "id": "bt-ie-start",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: what is the starting tissue?",
+   "back": "Intramembranous: a sheet of mesenchyme. Endochondral: a hyaline cartilage model.",
+   "why": "Endo- (within) chondr- (cartilage): bone forms within cartilage and replaces it."
+  },
+  {
+   "id": "bt-ie-bones",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: which bones does each form?",
+   "back": "Intramembranous: flat bones of the skull roof, most bones of the face, the collarbones. Endochondral: nearly all the rest (limbs, vertebrae, ribs, hip bones, skull base).",
+   "why": "Most of the skeleton forms by endochondral ossification."
+  },
+  {
+   "id": "bt-ie-cartilage",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: is cartilage involved?",
+   "back": "Intramembranous: no. Endochondral: yes, but it is broken down and replaced, not turned into bone.",
+   "why": "Cartilage does not harden into bone; osteoblasts arriving with blood vessels lay bone on its calcified remains."
+  },
+  {
+   "id": "bt-ie-centers",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: where are the ossification centers?",
+   "back": "Intramembranous: one or more within the sheet. Endochondral: primary in the diaphysis, secondary in the epiphyses.",
+   "why": "A long bone’s shaft ossifies before birth; its ends ossify around birth and through childhood."
+  },
+  {
+   "id": "bt-ie-first",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: what bone is made first?",
+   "back": "Intramembranous: spongy bone around vessels, then compact plates. Endochondral: a compact bone collar, then spongy bone inside.",
+   "why": "In endochondral ossification the collar forms from the old perichondrium before vessels bring osteoblasts inside."
+  },
+  {
+   "id": "bt-ie-periosteum",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: where does the periosteum come from?",
+   "back": "Intramembranous: mesenchyme condensing on the surface. Endochondral: the perichondrium, once vessels invade it.",
+   "why": "Once its cells become osteoblasts, the perichondrium is periosteum."
+  },
+  {
+   "id": "bt-ie-length",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Intramembranous vs endochondral ossification",
+   "front": "Intramembranous vs endochondral ossification: how does each bone grow in length afterward?",
+   "back": "Intramembranous: no epiphyseal plates. Endochondral: at the epiphyseal plates, until they close.",
+   "why": "Only bones that formed from cartilage keep cartilage plates in which to lengthen."
+  },
+  {
+   "id": "bt-chondrocytes-die",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do chondrocytes in the middle of the cartilage model die?",
+   "back": "The matrix around them calcifies, blocking the diffusion of nutrients they live on.",
+   "why": "Cartilage has no blood vessels. For your exam, the enlarged chondrocytes die; studies that follow labeled cells in mice show some survive as bone cells."
+  },
+  {
+   "id": "bt-collar",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the bone collar, and what makes it?",
+   "back": "A ring of compact bone around the middle of the shaft, laid by osteoblasts of the perichondrium once it becomes periosteum.",
+   "why": "It supports the middle of the model while the calcified cartilage inside weakens."
+  },
+  {
+   "id": "bt-primary-center",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does the primary ossification center form?",
+   "back": "A nutrient artery grows in through the collar, bringing osteogenic cells and osteoclast precursors; osteoblasts lay spongy bone on the calcified cartilage.",
+   "why": "Osteoclasts then clear the middle to open the medullary cavity."
+  },
+  {
+   "id": "bt-plate-zones",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four zones of the epiphyseal plate, from the epiphysis side.",
+   "back": "Reserve, proliferative, maturation and enlargement (hypertrophic), calcified matrix.",
+   "why": "Cells are made at the top, swell, then die as their matrix calcifies, and bone replaces them at the bottom."
+  },
+  {
+   "id": "bt-length-source",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Where does the added length at a growth plate come from?",
+   "back": "From chondrocytes dividing in the proliferative zone and swelling in the zone of maturation; the swelling adds much of it.",
+   "why": "Both push the epiphysis away from the diaphysis before bone replaces the cartilage."
+  },
+  {
+   "id": "bt-plate-treadmill",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does the epiphyseal plate stay the same thickness while the bone lengthens?",
+   "back": "Cartilage is added on the epiphysis side as fast as bone replaces it on the diaphysis side.",
+   "why": "Like a treadmill, the plate moves away from the middle of the bone and bone fills in behind it."
+  },
+  {
+   "id": "bt-plate-close",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "When do epiphyseal plates close, and what is left?",
+   "back": "Mostly between about 15 and 21, earlier in girls; an epiphyseal line of dense bone.",
+   "why": "Chondrocytes stop dividing, bone replaces the last cartilage, and the bone can no longer lengthen."
+  },
+  {
+   "id": "bt-ia-how",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Interstitial vs appositional growth",
+   "front": "Interstitial vs appositional growth: how does each work?",
+   "back": "Interstitial: cells divide and add matrix inside the tissue. Appositional: cells add new layers onto a surface.",
+   "why": "Inter- means between (from within); ad- plus posit- means placed toward (onto a surface)."
+  },
+  {
+   "id": "bt-ia-tissue",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Interstitial vs appositional growth",
+   "front": "Interstitial vs appositional growth: which tissues can do each?",
+   "back": "Interstitial: cartilage only. Appositional: bone and cartilage.",
+   "why": "Cartilage matrix is soft enough to stretch around new cells; mineralized bone is rigid, so it can only add to surfaces."
+  },
+  {
+   "id": "bt-ia-makes",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Interstitial vs appositional growth",
+   "front": "Interstitial vs appositional growth: what does each do to a long bone?",
+   "back": "Interstitial: makes it longer, at the epiphyseal plate. Appositional: makes it wider, at the periosteum.",
+   "why": "A long bone uses two methods because it grows in two directions."
+  },
+  {
+   "id": "bt-ia-stop",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Interstitial vs appositional growth",
+   "front": "Interstitial vs appositional growth: when does each stop?",
+   "back": "Interstitial: when the plates close, in the late teens. Appositional: continues slowly through life.",
+   "why": "That is why adult bones can still thicken but never lengthen."
+  },
+  {
+   "id": "bt-cavity-widens",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why doesn’t a growing shaft get heavier and heavier as it widens?",
+   "back": "Osteoclasts on the endosteum remove bone from the inside while osteoblasts under the periosteum add it outside.",
+   "why": "The medullary cavity widens as the shaft widens, so the wall stays in proportion."
+  },
+  {
+   "id": "bt-plate-fracture",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can a child’s fracture through an epiphyseal plate make one leg shorter?",
+   "back": "If it kills cells of the reserve or proliferative zones, or bone bridges the plate as it heals, that part stops making cartilage.",
+   "why": "The rest of the plate keeps growing, so the bone can end up shorter, or angled if only one side is damaged."
+  },
+  {
+   "id": "bt-remodeling",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is bone remodeling, and how much of the skeleton does it replace?",
+   "back": "The continual replacement of old bone by new at the same site; roughly a tenth of the skeleton a year.",
+   "why": "Over about a decade most of the skeleton is replaced, spongy bone faster than compact."
+  },
+  {
+   "id": "bt-remodel-times",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "In a remodeling cycle, how long do resorption and formation take?",
+   "back": "Resorption about two to four weeks; formation about three to four months.",
+   "why": "Building is much slower than breaking, so a patch is briefly weaker while it is being replaced."
+  },
+  {
+   "id": "bt-coupling",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is coupling in bone remodeling?",
+   "back": "The linking of building to breaking: osteoblasts and osteocytes make osteoclasts form, and resorbed matrix releases growth factors that call up osteoblasts.",
+   "why": "In healthy adult bone, each patch ends up with about as much bone as it started with."
+  },
+  {
+   "id": "bt-remodel-effects",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What two effects does remodeling have on the whole body?",
+   "back": "It repairs microscopic damage, and it moves calcium and phosphate into and out of the blood.",
+   "why": "Old cracked bone is swapped for new before cracks join up, and resorption and formation are the mineral bank’s withdrawals and deposits."
+  },
+  {
+   "id": "bt-rm-what",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Bone remodeling vs bone modeling",
+   "front": "Bone remodeling vs bone modeling: what happens in each?",
+   "back": "Remodeling: resorption then formation at the same site. Modeling: resorption and formation on different surfaces.",
+   "why": "Working at the same site swaps bone; working on different surfaces moves or reshapes it."
+  },
+  {
+   "id": "bt-rm-shape",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Bone remodeling vs bone modeling",
+   "front": "Bone remodeling vs bone modeling: effect on shape and mass when balanced?",
+   "back": "Remodeling: little change in shape, no net change in mass. Modeling: changes shape, size or thickness, usually with a net gain.",
+   "why": "A new osteon replacing an old one is remodeling; a shaft widening while its cavity enlarges is modeling."
+  },
+  {
+   "id": "bt-rm-when",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Bone remodeling vs bone modeling",
+   "front": "Bone remodeling vs bone modeling: when in life does each dominate?",
+   "back": "Modeling: during growth (and when loads change a lot in adults). Remodeling: throughout adult life.",
+   "why": "Growth needs bones to change shape; adults mostly need old bone renewed."
+  },
+  {
+   "id": "bt-wolff",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "State Wolff’s law.",
+   "back": "Bone adapts its mass and internal structure to the loads placed on it: heavy, repeated loads add bone, and falling loads remove it.",
+   "why": "Osteocytes sense strain through fluid flow in the canaliculi and signal osteoblasts and osteoclasts, a negative feedback loop on strain."
+  },
+  {
+   "id": "bt-wolff-examples",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Give two natural examples of Wolff’s law.",
+   "back": "Tennis players’ racket arms have thicker bone walls than their other arms; astronauts lose about 1 to 2% of hip and spine bone a month.",
+   "why": "Both show bone following load, in opposite directions, with genes and diet held constant."
+  },
+  {
+   "id": "bt-open-closed",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Open vs closed fracture: what is the difference, and why does it matter?",
+   "back": "Open: the skin is broken (a bone end through it, or a wound reaching the bone). Closed: the skin is intact.",
+   "why": "An open fracture lets bacteria into the bone, so it carries a high risk of bone infection and is an emergency."
+  },
+  {
+   "id": "bt-greenstick",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is a greenstick fracture, and why is it mostly seen in children?",
+   "back": "An incomplete break: the bone breaks on one side and bends on the other.",
+   "why": "Children’s bones hold more collagen relative to mineral, so they bend more before they break."
+  },
+  {
+   "id": "bt-spiral",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What causes a spiral fracture, and why can one in a baby who is not yet walking be a warning sign?",
+   "back": "A twisting force; a child who cannot yet walk cannot produce one by themselves.",
+   "why": "A spiral break winds around the shaft, as when a planted foot twists, so in a non-walking child it can be a sign of abuse."
+  },
+  {
+   "id": "bt-fracture-kinds",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Comminuted, impacted, compression and stress fracture: what is each?",
+   "back": "Comminuted: three or more pieces. Impacted: one end driven into the other. Compression: a spongy bone crushed, often a vertebra. Stress: a hairline crack from repeated loading.",
+   "why": "Fractures are named by several features at once: skin, alignment, completeness, line of break and number of pieces."
+  },
+  {
+   "id": "bt-pathologic",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a pathologic fracture?",
+   "back": "A break in bone already weakened by disease, from a force that would not break healthy bone.",
+   "why": "Osteoporosis and cancer in bone are common causes."
+  },
+  {
+   "id": "bt-repair-stages",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four stages of fracture repair in order.",
+   "back": "Fracture hematoma, fibrocartilaginous callus, bony callus, remodeling.",
+   "why": "Healing reruns bone development: a soft callus is calcified and replaced by spongy bone, then remodeled into compact bone."
+  },
+  {
+   "id": "bt-hematoma",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What happens in the fracture hematoma stage?",
+   "back": "Torn vessels bleed and the blood clots around the break; osteocytes at the broken ends die, and inflammation begins.",
+   "why": "Cut off from their blood supply, the broken ends die back a little, and macrophages and osteoclasts start clearing debris."
+  },
+  {
+   "id": "bt-soft-callus",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the fibrocartilaginous callus, and can it bear weight?",
+   "back": "A soft callus of collagen and cartilage, internal and external, that bridges the break over about three weeks; no.",
+   "why": "It holds the ends together but is not yet bone."
+  },
+  {
+   "id": "bt-bony-callus",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the bony callus, and how long does it take?",
+   "back": "A bulge of spongy bone that firmly joins the pieces, formed over about three weeks to three months.",
+   "why": "As in endochondral ossification, the callus cartilage calcifies and osteoblasts replace it with spongy bone."
+  },
+  {
+   "id": "bt-reduction",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Closed vs open reduction?",
+   "back": "Closed: the ends are manipulated into line from outside. Open: a surgeon opens the skin and aligns them directly, usually fixing them with metal.",
+   "why": "Healing works best when the ends touch, line up and are held still."
+  },
+  {
+   "id": "bt-immobilize",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is a broken bone immobilized after it is reduced?",
+   "back": "Too much movement keeps disrupting the new vessels and the callus.",
+   "why": "The break then joins late (delayed union) or not at all (nonunion)."
+  },
+  {
+   "id": "bt-peak-mass",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "By about what age is peak bone mass reached, and why does it matter?",
+   "back": "By about 30; the higher the peak, the more bone can be lost later before it becomes fragile.",
+   "why": "Exercise and diet in youth set the peak, so they matter decades later."
+  },
+  {
+   "id": "bt-ho-balance",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Healthy vs osteoporotic bone",
+   "front": "Healthy vs osteoporotic bone: balance of remodeling?",
+   "back": "Healthy: resorption and formation about equal. Osteoporotic: resorption outpaces formation, for years.",
+   "why": "Each cycle that removes more than it replaces leaves a little less bone."
+  },
+  {
+   "id": "bt-ho-mineral",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Healthy vs osteoporotic bone",
+   "front": "Healthy vs osteoporotic bone: mineral content of the bone that remains?",
+   "back": "Normal in both: in osteoporosis there is simply too little bone.",
+   "why": "Osteoporosis is a loss of bone, not a failure to mineralize it."
+  },
+  {
+   "id": "bt-ho-spongy",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Healthy vs osteoporotic bone",
+   "front": "Healthy vs osteoporotic bone: what happens to spongy bone?",
+   "back": "Healthy: thick, well-connected trabeculae. Osteoporotic: thin, broken, disconnected trabeculae.",
+   "why": "Spongy bone has the most surface to remodel, and once struts disconnect, the lattice loses far more strength than the lost mass suggests."
+  },
+  {
+   "id": "bt-ho-fractures",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Healthy vs osteoporotic bone",
+   "front": "Healthy vs osteoporotic bone: what breaks it, and where?",
+   "back": "Healthy: high-energy injuries. Osteoporotic: minor falls or ordinary loads, typically vertebrae, hip and wrist.",
+   "why": "Osteoporosis causes no symptoms until something breaks."
+  },
+  {
+   "id": "bt-osteoporosis-risk",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "List the main risk factors for osteoporosis.",
+   "back": "Older age, female sex, low peak bone mass, little weight-bearing activity, smoking and heavy drinking, long-term steroid medicines, too little calcium and vitamin D.",
+   "why": "Each one lowers the peak or tips remodeling toward resorption."
+  },
+  {
+   "id": "bt-range",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What is the normal range of total blood calcium?",
+   "back": "About 8.5 to 10.5 mg/dL (about 2.1 to 2.6 mmol/L).",
+   "why": "Each person’s level is held much more tightly, often within a few percent of its set point."
+  },
+  {
+   "id": "bt-forms",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "In what three forms is plasma calcium carried, and which one is controlled?",
+   "back": "Free ions (about half), bound to proteins (about 40%), bound to small ions like phosphate and citrate (about 10%). The free ions are controlled.",
+   "why": "Free calcium ions are the form cells sense and use."
+  },
+  {
+   "id": "bt-where-calcium",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Where is the body’s calcium?",
+   "back": "About 99% in bone and teeth, about 1% inside cells, and only about 0.1% in the extracellular fluid.",
+   "why": "The blood is a tiny pool beside a huge store, and flow between them keeps the blood level steady."
+  },
+  {
+   "id": "bt-calcium-jobs",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Name the main jobs of calcium ions in the body.",
+   "back": "Setting nerve and muscle excitability, triggering muscle contraction and neurotransmitter release, blood clotting, signaling inside cells, and mineralizing bone.",
+   "why": "Because so many jobs depend on its concentration, both low and high levels cause trouble."
+  },
+  {
+   "id": "bt-brake",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "How does calcium outside cells affect nerve and muscle excitability?",
+   "back": "It sits near voltage-gated sodium channels and makes them harder to open, acting as a brake.",
+   "why": "Too little brake and everything fires; too much and everything slows."
+  },
+  {
+   "id": "bt-hh-channels",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Hypocalcemia vs hypercalcemia",
+   "front": "Hypocalcemia vs hypercalcemia: effect on sodium channels and nerves?",
+   "back": "Hypocalcemia: channels open more easily, nerves and muscles overexcitable. Hypercalcemia: channels harder to open, less excitable.",
+   "why": "The two conditions have opposite effects because calcium acts as a brake on the channels."
+  },
+  {
+   "id": "bt-hh-signs",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Hypocalcemia vs hypercalcemia",
+   "front": "Hypocalcemia vs hypercalcemia: typical signs?",
+   "back": "Hypocalcemia: tingling, cramps, tetany, seizures. Hypercalcemia: weakness, tiredness, confusion, a slow gut.",
+   "why": "Overexcitable nerves fire muscles without a command; underexcitable ones leave muscles and gut sluggish."
+  },
+  {
+   "id": "bt-hh-kidney",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Hypocalcemia vs hypercalcemia",
+   "front": "Hypocalcemia vs hypercalcemia: effects on the kidneys?",
+   "back": "Hypocalcemia: usually no direct problem. Hypercalcemia: large volumes of urine, thirst, and stones of calcium salts.",
+   "why": "High calcium stops the kidneys from concentrating urine."
+  },
+  {
+   "id": "bt-hh-causes",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Hypocalcemia vs hypercalcemia",
+   "front": "Hypocalcemia vs hypercalcemia: common causes?",
+   "back": "Hypocalcemia: too little of the calcium-raising hormone (often after neck surgery), severe vitamin D deficiency. Hypercalcemia: too much of the calcium-raising hormone, cancer in bone.",
+   "why": "The calcium-raising hormone from the small glands behind the thyroid sets the level, so too much or too little of it moves calcium the same way."
+  },
+  {
+   "id": "bt-cuff-sign",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "A blood pressure cuff inflated on the arm makes the hand cramp into a claw. What does this suggest?",
+   "back": "Hypocalcemia.",
+   "why": "With too little calcium outside the cells, nerves are overexcitable, and the pressure of the cuff is enough to set off a spasm."
+  },
+  {
+   "id": "bt-loop-parts",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "In the blood calcium loop, what is the sensor and control center, and what are the effectors?",
+   "back": "Sensor and control center: the cells of the four tiny glands behind the thyroid. Effectors: bone, the kidneys and the intestine.",
+   "why": "The gland cells sense calcium through a receptor protein and set their release of calcium-raising hormone themselves."
+  },
+  {
+   "id": "bt-loop-bone",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "When calcium falls, which bone cell does the calcium-raising hormone act on?",
+   "back": "The osteoblast, which then signals more osteoclasts to form and work harder.",
+   "why": "Osteoclasts are reached only through osteoblasts; existing ones speed up within hours, new ones take days."
+  },
+  {
+   "id": "bt-loop-kidney",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "What does the calcium-raising hormone make the kidneys do?",
+   "back": "Return more calcium to the blood, excrete more phosphate, and complete the activation of vitamin D.",
+   "why": "Dumping phosphate stops the phosphate freed from bone from combining with calcium and lowering the free calcium again."
+  },
+  {
+   "id": "bt-loop-gut",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "How does the intestine help when calcium falls, and how quickly?",
+   "back": "Activated vitamin D makes the lining absorb more calcium from food, over a day or more.",
+   "why": "It works by making new transport proteins, so it is the slow, long-run effector."
+  },
+  {
+   "id": "bt-two-speeds",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Which calcium effectors act fast, and which slowly?",
+   "back": "Fast (minutes to hours): bone and the kidneys. Slow (a day or more): the intestine.",
+   "why": "Bone and kidneys handle quick changes; over weeks, calcium absorbed must match calcium lost, or bone makes up the difference."
+  },
+  {
+   "id": "bt-high-calcium",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "How does the loop mainly lower a high blood calcium?",
+   "back": "The gland cells release less calcium-raising hormone, so osteoclasts slow, the kidneys lose more calcium and the intestine absorbs less.",
+   "why": "A second hormone from the thyroid adds a small extra brake, but in adults its effect is minor. For your exam, it is the hormone that lowers blood calcium."
+  },
+  {
+   "id": "bt-mass-balance",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "What is the only way calcium enters the body, and the ways it leaves?",
+   "back": "In: absorption from the gut. Out: urine and feces.",
+   "why": "Bone can lend calcium to the blood or take it back, but it cannot create any."
+  },
+  {
+   "id": "bt-normal-test",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Why can a person with a long-term shortfall of calcium have a normal blood calcium?",
+   "back": "The loop protects blood calcium first by drawing on bone.",
+   "why": "Nerves and the heart cannot wait, so bone is spent: a normal blood test can hide a thinning skeleton."
+  },
+  {
+   "id": "bt-intake",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "How much calcium do adults, teenagers and older adults need a day?",
+   "back": "Adults about 1,000 mg; teenagers about 1,300 mg; women over 50 and everyone over 70 about 1,200 mg.",
+   "why": "Teenagers are building bone fastest; older adults absorb less and lose more."
+  },
+  {
+   "id": "bt-spinach",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Spinach contains calcium. Why is it a poor source?",
+   "back": "It also contains compounds that bind the calcium, so little is absorbed.",
+   "why": "Only absorbed calcium enters the body; kale, dairy and calcium-set tofu are better sources."
+  },
+  {
+   "id": "bt-vitd-need",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Where does vitamin D come from, and how much do adults need?",
+   "back": "Made in the skin in sunlight, and from oily fish, egg yolks and fortified foods; about 600 IU (15 micrograms) a day, 800 IU over 70.",
+   "why": "Without it, the intestine absorbs only a small fraction of the calcium eaten."
+  },
+  {
+   "id": "bt-protein-bone",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why does bone need protein in the diet?",
+   "back": "Collagen, a protein, makes up most of the organic matrix.",
+   "why": "Too little protein weakens bone and slows fracture healing."
+  },
+  {
+   "id": "bt-load-and-diet",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does calcium without exercise build less bone than calcium with it?",
+   "back": "Through Wolff’s law, load tells osteocytes to keep and add bone; calcium only supplies the material.",
+   "why": "Nutrients and load work together, and smoking and heavy drinking work against both."
   }
  ]
 }
