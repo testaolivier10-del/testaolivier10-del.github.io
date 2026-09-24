@@ -541,7 +541,7 @@ FIGURES.push({
   alt: 'Nitromethane drawn with every atom. Carbon carries three hydrogens and bonds to nitrogen. Nitrogen has a double bond to the upper oxygen and a single bond to the lower oxygen, which has three lone pairs and a minus one. Nitrogen has no lone pair, and a question mark sits beside it.',
   build() {
     return stack([
-      { title: 'nitromethane, CH₃NO₂', draw: (x, y) => nitromethane(x, y, { ask: true }), tags: ['=the molecule as a whole is neutral'] },
+      { title: 'nitromethane, CH₃NO₂', draw: (x, y) => nitromethane(x, y, { ask: true }), tags: ['=count the lines and dots at N'] },
     ], { h: 200, mcy: 104, tagY: 190 });
   },
   caption: 'Every lone pair is drawn; the nitrogen has none.',

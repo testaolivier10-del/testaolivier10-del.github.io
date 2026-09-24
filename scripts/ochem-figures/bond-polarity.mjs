@@ -122,8 +122,14 @@ function water(c, opts = {}) {
   let s = bnd(c, h1, 'O', 'H') + bnd(c, h2, 'O', 'H');
   s += lonePair(c.x, c.y, -128, { dist: 24 }) + lonePair(c.x, c.y, -52, { dist: 24 });
   if (opts.arrows !== false) {
-    s += dip(h1, c, normal(h1, c, h2, true), 14, 6, 10);
-    s += dip(h2, c, normal(h2, c, h1, true), 14, 6, 10);
+    const n1 = normal(h1, c, h2, true), n2 = normal(h2, c, h1, true);
+    s += dip(h1, c, n1, 14, 6, 10);
+    s += dip(h2, c, n2, 14, 6, 10);
+    if (opts.num) {
+      const m1 = P((h1.x + c.x) / 2 + n1.x * 30, (h1.y + c.y) / 2 + n1.y * 30);
+      const m2 = P((h2.x + c.x) / 2 + n2.x * 30, (h2.y + c.y) / 2 + n2.y * 30);
+      s += T(m1.x, m1.y + 4, '1', 'fg-tag') + T(m2.x, m2.y + 4, '2', 'fg-tag');
+    }
   }
   s += A(c, 'O', 'hi') + A(h1, 'H') + A(h2, 'H');
   s += dMinus(at(c, 90, 44));
@@ -135,10 +141,13 @@ function waterSum(s0, len = 58, labels = true) {
   const half = 52.25;
   const v1 = at(P(0, 0), 90 - half, len), v2 = at(P(0, 0), 90 + half, len);
   const p1 = P(s0.x + v1.x, s0.y + v1.y), p2 = P(p1.x + v2.x, p1.y + v2.y);
-  let s = vec(s0, p1, { cross: false }) + vec(p1, p2, { cross: false }) + vec(s0, p2, { thick: true, cross: false });
+  // Arrow 2 stops short of the sum's arrowhead so both heads stay visible.
+  const u2 = unit(P(0, 0), v2);
+  const p2s = P(p2.x - u2.x * 10, p2.y - u2.y * 10);
+  let s = vec(s0, p1, { cross: false }) + vec(p1, p2s, { cross: false }) + vec(s0, p2, { thick: true, cross: false });
   if (labels) {
-    s += T(s0.x + v1.x / 2 + 12, s0.y + v1.y / 2 + 14, 'O–H 1', 'fg-tag', { anchor: 'start' });
-    s += T(p1.x + v2.x / 2 + 14, p1.y + v2.y / 2 - 4, 'O–H 2', 'fg-tag', { anchor: 'start' });
+    s += T(s0.x + v1.x / 2 + 12, s0.y + v1.y / 2 + 14, 'arrow 1', 'fg-tag', { anchor: 'start' });
+    s += T(p1.x + v2.x / 2 + 14, p1.y + v2.y / 2 - 4, 'arrow 2', 'fg-tag', { anchor: 'start' });
     s += T(s0.x - 12, (s0.y + p2.y) / 2 + 4, 'sum', 'fg-tag', { anchor: 'end' });
   }
   return s;
@@ -184,8 +193,10 @@ function acetone(c, opts = {}) {
   s += dPlus(P(c.x, c.y + 30)) + dMinus(opts.dmBelow ? P(o.x, o.y + 34) : P(o.x + 30, o.y));
   return { s, o, c };
 }
+/* Butane as a zigzag of labeled groups, about 112° at each CH₂. */
 function butane(x, y, gap = 52) {
-  const pts = [0, 1, 2, 3].map((i) => P(x + i * gap, y));
+  const dx = gap * Math.cos(rad(34)), dy = gap * Math.sin(rad(34)) / 2;
+  const pts = [0, 1, 2, 3].map((i) => P(x + i * dx, y + (i % 2 ? -dy : dy)));
   const ls = ['CH₃', 'CH₂', 'CH₂', 'CH₃'];
   let s = '';
   for (let i = 0; i < 3; i++) s += bnd(pts[i], pts[i + 1], ls[i], ls[i + 1]);
@@ -197,28 +208,29 @@ function butane(x, y, gap = 52) {
 /* Ethanol 1 on top; its O–H hydrogen points down-right at a lone pair on
    the oxygen of ethanol 2. Returns the drawing. */
 function ethanolPair(o1, opts = {}) {
-  const c1 = at(o1, 180, 50), m1 = at(c1, 180, 50);
-  const h1 = at(o1, 300, 40);
-  const o2 = at(h1, 300, 60);
-  const c2 = at(o2, 195, 50), m2 = at(c2, 180, 50);
-  const h2 = at(o2, 285, 40);
+  // C–C–O about 112°, C–O–H about 110°: the chain is drawn as a zigzag.
+  const c1 = at(o1, 180, 50), m1 = at(c1, 248, 50);
+  const h1 = at(o1, 290, 40);
+  const o2 = at(h1, 290, 58);
+  const c2 = at(o2, 180, 50), m2 = at(c2, 248, 50);
+  const h2 = at(o2, 290, 40);
   let s = '';
   s += bnd(m1, c1, 'CH₃', 'CH₂') + bnd(c1, o1, 'CH₂', 'O') + bnd(o1, h1, 'O', 'H');
   s += bnd(m2, c2, 'CH₃', 'CH₂') + bnd(c2, o2, 'CH₂', 'O') + bnd(o2, h2, 'O', 'H');
-  s += lonePair(o1.x, o1.y, -110, { dist: 22 }) + lonePair(o1.x, o1.y, -35, { dist: 22 });
-  s += lonePair(o2.x, o2.y, -120, { dist: 22 }) + lonePair(o2.x, o2.y, -20, { dist: 22 });
+  s += lonePair(o1.x, o1.y, -115, { dist: 22 }) + lonePair(o1.x, o1.y, -40, { dist: 22 });
+  s += lonePair(o2.x, o2.y, -110, { dist: 22 }) + lonePair(o2.x, o2.y, -25, { dist: 22 });
   // The hydrogen bond: from the H to the lone pair it points at.
-  const lpC = at(o2, 120, 22);
+  const lpC = at(o2, 110, 22);
   const u = unit(h1, lpC);
   s += `<line class="fg-dash-hi" x1="${f1(h1.x + u.x * 14)}" y1="${f1(h1.y + u.y * 14)}" x2="${f1(lpC.x - u.x * 6)}" y2="${f1(lpC.y - u.y * 6)}" style="stroke-width:2.6"></line>`;
   s += A(m1, 'CH₃') + A(c1, 'CH₂') + A(o1, 'O', 'hi') + A(h1, 'H', 'hi');
   s += A(m2, 'CH₃') + A(c2, 'CH₂') + A(o2, 'O', 'hi') + A(h2, 'H');
   s += dPlus(at(h1, 190, 26)) + dMinus(at(o2, 70, 31));
-  return { s, h1, o2, lpC };
+  return { s, h1, o2, lpC, mid: P((h1.x + lpC.x) / 2, (h1.y + lpC.y) / 2) };
 }
 
 function ether(o) {
-  const m1 = at(o, 205, 54), m2 = at(o, 335, 54);
+  const m1 = at(o, 214, 54), m2 = at(o, 326, 54);
   let s = bnd(o, m1, 'O', 'CH₃') + bnd(o, m2, 'O', 'CH₃');
   s += lonePair(o.x, o.y, -125, { dist: 22 }) + lonePair(o.x, o.y, -55, { dist: 22 });
   s += A(o, 'O', 'hi') + A(m1, 'CH₃') + A(m2, 'CH₃');
@@ -309,7 +321,7 @@ FIGURES.push({
     s += T(292, 168, 'ends where it began', 'fg-sm');
     s += T(195, 232, 'sum = 0, so μ = 0', 'fg-tag-mut');
     s += T(567, 32, 'H₂O: bent', 'fg-lbl');
-    s += water(P(480, 104), { len: 58 }).s;
+    s += water(P(480, 104), { len: 58, num: true }).s;
     s += T(652, 124, 'tip to tail', 'fg-tag-mut');
     s += waterSum(P(652, 196), 56);
     s += T(567, 232, 'sum points to the O side: μ = 1.85 D');
@@ -358,12 +370,12 @@ FIGURES.push({
     s += T(254, 32, 'acetone, μ = 2.88 D', 'fg-lbl');
     const a1 = acetone(P(96, 110)), a2 = acetone(P(290, 110));
     const u = unit(a1.o, a2.c);
-    s += `<line class="fg-dash-hi" x1="${f1(a1.o.x + 40)}" y1="${f1(a1.o.y)}" x2="${f1(a2.c.x - 60)}" y2="${f1(a2.c.y)}" style="stroke-width:2.4"></line>`;
+    s += `<line class="fg-dash-hi" x1="${f1(a1.o.x + 40)}" y1="${f1(a1.o.y)}" x2="${f1(a2.c.x - 18)}" y2="${f1(a2.c.y)}" style="stroke-width:2.4"></line>`;
     s += a1.s + a2.s;
     s += T(254, 176, 'δ− oxygen of one next to the δ+ carbon of the next', 'fg-sm');
     s += T(254, 198, 'dipole–dipole: boils at 56 °C', 'fg-tag');
     s += T(626, 32, 'butane, μ ≈ 0', 'fg-lbl');
-    s += butane(548, 110, 52);
+    s += butane(562, 110, 52);
     s += T(626, 176, 'C–C and C–H only: no dipole', 'fg-sm');
     s += T(626, 198, 'dispersion only: boils at −1 °C', 'fg-tag-mut');
     return s;
@@ -375,23 +387,23 @@ FIGURES.push({
   id: 'hydrogen-bond',
   section: 'bond-polarity',
   anchor: 'is worth a hundred degrees.</p>',
-  viewBox: '0 0 760 262',
+  viewBox: '0 0 760 282',
   alt: 'Left: two ethanol molecules, CH3–CH2–O–H. The O–H hydrogen of the upper one, delta plus, points at a lone pair on the oxygen of the lower one, delta minus, joined by a thick dashed line labeled hydrogen bond. The hydrogen is labeled donor and the lone pair acceptor. Right: dimethyl ether, CH3–O–CH3, with two lone pairs on the oxygen and every hydrogen on a carbon, labeled acceptor only, no donor.',
   build() {
-    let s = panel(14, 8, 440, 246) + panel(464, 8, 284, 246);
+    let s = panel(14, 8, 440, 266) + panel(464, 8, 284, 266);
     s += T(234, 32, 'ethanol, CH₃CH₂OH', 'fg-lbl');
-    const e = ethanolPair(P(170, 78));
+    const e = ethanolPair(P(200, 76));
     s += e.s;
-    s += T(212, 118, 'donor: H on O', 'fg-tag', { anchor: 'start' });
-    s += T(186, 152, 'hydrogen bond', 'fg-tag', { anchor: 'end' });
-    s += T(262, 176, 'acceptor: lone', 'fg-tag', { anchor: 'start' }) + T(262, 191, 'pair on O', 'fg-tag', { anchor: 'start' });
-    s += T(234, 236, 'MW 46 · boils at 78 °C', 'fg-tag-good');
+    s += T(e.h1.x + 22, e.h1.y + 4, 'donor: H on O', 'fg-tag', { anchor: 'start' });
+    s += T(e.mid.x - 14, e.mid.y + 4, 'hydrogen bond', 'fg-tag', { anchor: 'end' });
+    s += T(e.o2.x + 40, e.o2.y + 8, 'acceptor: lone', 'fg-tag', { anchor: 'start' }) + T(e.o2.x + 40, e.o2.y + 23, 'pair on O', 'fg-tag', { anchor: 'start' });
+    s += T(234, 262, 'MW 46 · boils at 78 °C', 'fg-tag-good');
     s += T(606, 32, 'dimethyl ether, CH₃OCH₃', 'fg-lbl');
     s += ether(P(606, 120));
     s += T(606, 76, 'lone pairs: can accept', 'fg-sm');
     s += T(606, 178, 'every H is on a carbon:', 'fg-sm');
     s += T(606, 194, 'nothing to donate', 'fg-sm');
-    s += T(606, 236, 'MW 46 · boils at −24 °C', 'fg-tag-warn');
+    s += T(606, 262, 'MW 46 · boils at −24 °C', 'fg-tag-warn');
     return s;
   },
   caption: 'Same formula, C₂H₆O. Follow the dashed line in ethanol from the hydrogen to the lone pair it points at, then look for a hydrogen in dimethyl ether that could do the same.',
@@ -462,10 +474,10 @@ FIGURES.push({
   build() {
     let s = panel(4, 4, 332, 178);
     s += T(170, 28, 'H₂O: bent, 104.5°', 'fg-lbl');
-    s += water(P(170, 92), { len: 58 }).s;
+    s += water(P(170, 92), { len: 58, num: true }).s;
     return s;
   },
-  caption: 'Both arrows point up toward the oxygen, from two different sides.',
+  caption: 'Arrow 1 sits on the left O–H bond, arrow 2 on the right.',
 });
 
 FIGURES.push({
@@ -479,7 +491,7 @@ FIGURES.push({
     s += waterSum(P(146, 150), 64);
     return s;
   },
-  caption: 'The sideways parts cancel; the upward parts add.',
+  caption: 'Arrows 1 and 2 are the two O–H arrows from the last step, placed tip to tail.',
 });
 
 FIGURES.push({
@@ -512,7 +524,7 @@ FIGURES.push({
     s += umbrella(P(160, 124), 'H', { len: 66 });
     return s;
   },
-  caption: 'The C–H bond carries no arrow.',
+  caption: 'Same frame as CCl₄, with H in the top corner.',
 });
 
 FIGURES.push({
@@ -540,11 +552,11 @@ FIGURES.push({
   build() {
     let s = panel(4, 4, 332, 242);
     s += T(170, 28, 'ethanol + ethanol', 'fg-lbl');
-    const e = ethanolPair(P(150, 72));
+    const e = ethanolPair(P(150, 70));
     s += e.s;
-    s += T(192, 110, 'donor: H on O', 'fg-tag', { anchor: 'start' });
-    s += T(164, 146, 'H bond', 'fg-tag', { anchor: 'end' });
-    s += T(240, 168, 'acceptor:', 'fg-tag', { anchor: 'start' }) + T(240, 183, 'lone pair', 'fg-tag', { anchor: 'start' });
+    s += T(e.h1.x + 20, e.h1.y + 4, 'donor: H on O', 'fg-tag', { anchor: 'start' });
+    s += T(e.mid.x - 12, e.mid.y + 4, 'H bond', 'fg-tag', { anchor: 'end' });
+    s += T(e.o2.x + 36, e.o2.y + 10, 'acceptor:', 'fg-tag', { anchor: 'start' }) + T(e.o2.x + 36, e.o2.y + 25, 'lone pair', 'fg-tag', { anchor: 'start' });
     return s;
   },
   caption: 'The dashed line runs from a hydrogen on oxygen to a lone pair on the next oxygen.',
