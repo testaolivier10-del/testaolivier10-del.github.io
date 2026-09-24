@@ -35,7 +35,9 @@
       "title": "Reproductive system"
     },
     { "id": "development", "title": "Development and inheritance" },
-    { "id": "muscular", "title": "Muscular system" }
+    { "id": "muscular", "title": "Muscular system" },
+    { "id": "integumentary", "title": "Integumentary system" },
+    { "id": "skeletal", "title": "Skeletal system" }
   ],
   "calculators": [
     {
@@ -13531,6 +13533,888 @@
               "rel": 0.02
             },
             "prompt": "The same fiber uses aerobic respiration instead, at {aer} ATP per glucose. How many glucose molecules does it need?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ig-sweat-heat",
+      "group": "integumentary",
+      "title": "Heat removed by sweating",
+      "short": "Heat = liters evaporated × 580 kcal/L",
+      "topic": "skin-functions",
+      "core": [
+        "energy",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Turning water into vapor takes energy, and when sweat evaporates that energy comes from your skin. Each liter that evaporates removes about 580 kcal; sweat that drips off removes almost none. Enter how much sweat was secreted and what share of it evaporated.",
+      "formula": "Heat removed (kcal) = sweat evaporated (L) × 580 kcal/L; sweat evaporated = sweat secreted × share that evaporates",
+      "inputs": [
+        {
+          "key": "V",
+          "label": "Sweat secreted",
+          "sym": "sweat",
+          "unit": "L",
+          "default": 0.6,
+          "min": 0.1,
+          "max": 4,
+          "step": 0.1,
+          "gen": [
+            0.3,
+            2,
+            0.1
+          ],
+          "hint": "Hard exercise in the heat can reach 1 to 2 L an hour."
+        },
+        {
+          "key": "share",
+          "label": "Share of the sweat that evaporates",
+          "sym": "share",
+          "unit": "%",
+          "default": 100,
+          "min": 10,
+          "max": 100,
+          "step": 5,
+          "gen": {
+            "choices": [
+              100,
+              100,
+              90,
+              80,
+              75,
+              60,
+              50
+            ]
+          },
+          "hint": "Nearly all in dry, moving air; much less in humid air, where sweat drips off."
+        }
+      ],
+      "derived": [
+        {
+          "key": "ev",
+          "expr": "V * share / 100",
+          "dp": 2
+        },
+        {
+          "key": "heat",
+          "expr": "V * share / 100 * 580",
+          "dp": 0
+        },
+        {
+          "key": "drip",
+          "expr": "V - V * share / 100",
+          "dp": 2
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the rule",
+          "text": "Heat removed = volume evaporated × about 580 kcal per liter. Only sweat that turns to vapor counts."
+        },
+        {
+          "title": "Find the sweat that evaporates",
+          "text": "{V} L × {share}% = <b>{ev} L</b> evaporated; the other {drip} L drips off and removes almost no heat."
+        },
+        {
+          "title": "Multiply",
+          "text": "{ev} L × 580 kcal/L = <b>{heat} kcal</b> removed."
+        }
+      ],
+      "results": [
+        {
+          "key": "heat",
+          "label": "Heat removed",
+          "unit": "kcal",
+          "normal": "A resting adult makes roughly 70 to 100 kcal of heat an hour; hard exercise can make 600 to 900."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "share < 100",
+          "text": "Only {share}% of the sweat evaporated, so {V} L of sweat removed just {heat} kcal. All {V} L was still lost as water from the body. That is why humid heat is so dangerous: you can be soaked with sweat and still overheat."
+        },
+        {
+          "when": "1",
+          "text": "{V} L of sweat evaporating removes about {heat} kcal of heat. That water, with some salt, came from the body’s fluid and has to be replaced by drinking."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: Carlos, 0.6 L in an hour of yard work",
+          "values": {
+            "V": 0.6,
+            "share": 100
+          }
+        },
+        {
+          "label": "Worked example 2: a cyclist evaporating 1.5 L",
+          "values": {
+            "V": 1.5,
+            "share": 100
+          }
+        },
+        {
+          "label": "Humid day: 1.5 L secreted, half evaporates",
+          "values": {
+            "V": 1.5,
+            "share": 50
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "heat",
+            "unit": "kcal",
+            "tol": {
+              "abs": 5,
+              "rel": 0.02
+            },
+            "prompt": "A runner secretes {V} L of sweat, and {share}% of it evaporates. Using 580 kcal per liter evaporated, how much heat does the sweat remove?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ig-rule-of-nines",
+      "group": "integumentary",
+      "title": "Burn area by the rule of nines",
+      "short": "%TBSA = sum of the burned share of each region",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "The rule of nines estimates the share of the total body surface area (TBSA) that is burned. Count only partial-thickness and full-thickness burns, not superficial ones. For each region, enter how much of it is burned: 100% for the whole region, 50% for one side (front or back), 0% for none. Set the patient to 1 for an infant, whose large head counts for more and whose short legs count for less.",
+      "formula": "Adult: head and neck 9, each arm 9, front of trunk 18, back of trunk 18, each leg 18, genital area 1. Infant: head and neck 18, each leg 13.5, the rest the same. %TBSA = Σ region value × share burned",
+      "inputs": [
+        {
+          "key": "inf",
+          "label": "Patient: 0 = adult, 1 = infant",
+          "sym": "infant",
+          "unit": "",
+          "default": 0,
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "key": "head",
+          "label": "Head and neck burned",
+          "sym": "head",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 0,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "ra",
+          "label": "Right arm burned",
+          "sym": "R arm",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 100,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "la",
+          "label": "Left arm burned",
+          "sym": "L arm",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 0,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "ft",
+          "label": "Front of the trunk burned",
+          "sym": "front",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 100,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "bt",
+          "label": "Back of the trunk burned",
+          "sym": "back",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 0,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "rl",
+          "label": "Right leg burned",
+          "sym": "R leg",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 0,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "ll",
+          "label": "Left leg burned",
+          "sym": "L leg",
+          "min": 0,
+          "max": 100,
+          "step": 50,
+          "unit": "% of region",
+          "default": 0,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              50,
+              100
+            ]
+          }
+        },
+        {
+          "key": "gen",
+          "label": "Genital area burned",
+          "sym": "genital",
+          "unit": "% of region",
+          "min": 0,
+          "max": 100,
+          "step": 100,
+          "default": 0,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              0,
+              100
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "hv",
+          "expr": "9 + 9 * inf",
+          "dp": 0
+        },
+        {
+          "key": "lv",
+          "expr": "18 - 4.5 * inf",
+          "dp": 1
+        },
+        {
+          "key": "pHead",
+          "expr": "(9 + 9 * inf) * head / 100",
+          "dp": 1
+        },
+        {
+          "key": "pArms",
+          "expr": "9 * (ra + la) / 100",
+          "dp": 1
+        },
+        {
+          "key": "pTrunk",
+          "expr": "18 * (ft + bt) / 100",
+          "dp": 1
+        },
+        {
+          "key": "pLegs",
+          "expr": "(18 - 4.5 * inf) * (rl + ll) / 100",
+          "dp": 1
+        },
+        {
+          "key": "pGen",
+          "expr": "gen / 100",
+          "dp": 0
+        },
+        {
+          "key": "tbsa",
+          "expr": "(9 + 9 * inf) * head / 100 + 9 * (ra + la) / 100 + 18 * (ft + bt) / 100 + (18 - 4.5 * inf) * (rl + ll) / 100 + gen / 100",
+          "dp": 1
+        },
+        {
+          "key": "adultEq",
+          "expr": "9 * head / 100 + 9 * (ra + la) / 100 + 18 * (ft + bt) / 100 + 18 * (rl + ll) / 100 + gen / 100",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Choose the chart",
+          "text": "For this patient the head and neck count <b>{hv}%</b> and each leg <b>{lv}%</b>; each arm is 9%, the front and the back of the trunk 18% each, the genital area 1%."
+        },
+        {
+          "title": "Head and neck",
+          "text": "{hv}% × {head}% burned = {pHead}%."
+        },
+        {
+          "title": "Arms",
+          "text": "9% × ({ra}% + {la}%) burned = {pArms}%."
+        },
+        {
+          "title": "Trunk",
+          "text": "18% × ({ft}% front + {bt}% back) burned = {pTrunk}%."
+        },
+        {
+          "title": "Legs",
+          "text": "{lv}% × ({rl}% + {ll}%) burned = {pLegs}%."
+        },
+        {
+          "title": "Genital area",
+          "text": "1% × {gen}% burned = {pGen}%."
+        },
+        {
+          "title": "Add the regions",
+          "text": "{pHead} + {pArms} + {pTrunk} + {pLegs} + {pGen} = <b>{tbsa}% TBSA</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "tbsa",
+          "label": "Burned share of the body surface",
+          "unit": "% TBSA",
+          "normal": "Count only partial-thickness and full-thickness burns.",
+          "bands": [
+            {
+              "when": "tbsa >= 20",
+              "label": "large enough for the capillary leak to spread through the whole body",
+              "tone": "hi"
+            },
+            {
+              "when": "tbsa >= 10",
+              "label": "a significant burn",
+              "tone": "hi"
+            },
+            {
+              "label": "a smaller burn",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "inf == 1 && head > 0",
+          "text": "About {tbsa}% TBSA. The adult rule would have given {adultEq}%: an infant’s head is a larger share of the body and each leg a smaller one, so the adult chart misjudges a baby’s burn."
+        },
+        {
+          "when": "tbsa >= 20",
+          "text": "About {tbsa}% TBSA. In a burn this large, messengers from the damaged tissue make capillaries all over the body leak, so blood volume and blood pressure can fall within hours without any bleeding."
+        },
+        {
+          "when": "1",
+          "text": "About {tbsa}% of the body surface is burned. The larger the share, the more water, salt and protein leak out of the blood once the barrier and capillaries are damaged."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: cook, front of trunk and right arm",
+          "values": {
+            "inf": 0,
+            "head": 0,
+            "ra": 100,
+            "la": 0,
+            "ft": 100,
+            "bt": 0,
+            "rl": 0,
+            "ll": 0,
+            "gen": 0
+          }
+        },
+        {
+          "label": "Worked example 2: infant, head and neck and front of trunk",
+          "values": {
+            "inf": 1,
+            "head": 100,
+            "ra": 0,
+            "la": 0,
+            "ft": 100,
+            "bt": 0,
+            "rl": 0,
+            "ll": 0,
+            "gen": 0
+          }
+        },
+        {
+          "label": "Worked example 3: adult, front of both legs",
+          "values": {
+            "inf": 0,
+            "head": 0,
+            "ra": 0,
+            "la": 0,
+            "ft": 0,
+            "bt": 0,
+            "rl": 50,
+            "ll": 50,
+            "gen": 0
+          }
+        },
+        {
+          "label": "Infant: both whole legs",
+          "values": {
+            "inf": 1,
+            "head": 0,
+            "ra": 0,
+            "la": 0,
+            "ft": 0,
+            "bt": 0,
+            "rl": 100,
+            "ll": 100,
+            "gen": 0
+          }
+        }
+      ],
+      "practice": {
+        "require": "tbsa >= 9",
+        "asks": [
+          {
+            "key": "tbsa",
+            "unit": "% TBSA",
+            "tol": {
+              "abs": 0.6
+            },
+            "prompt": "Patient type {inf} (0 = adult, 1 = infant). Partial-thickness burns cover: head and neck {head}%, right arm {ra}%, left arm {la}%, front of trunk {ft}%, back of trunk {bt}%, right leg {rl}%, left leg {ll}%, genital area {gen}% (100% = the whole region, 50% = one side). By the rule of nines, what percentage of the body surface is burned?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ig-palm-method",
+      "group": "integumentary",
+      "title": "Scattered burns by the palm method",
+      "short": "%TBSA ≈ number of the patient’s palms",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "For small or scattered burns, the patient’s own palm, with the fingers, covers about 1% of their body surface. Count how many of the patient’s palms it would take to cover each burned patch, and add them up.",
+      "formula": "%TBSA ≈ total palm-areas of burn × 1%",
+      "inputs": [
+        {
+          "key": "p1",
+          "label": "Patch 1, in the patient’s palms",
+          "sym": "patch 1",
+          "unit": "palms",
+          "default": 2,
+          "min": 0,
+          "max": 20,
+          "step": 0.5,
+          "gen": [
+            0.5,
+            6,
+            0.5
+          ]
+        },
+        {
+          "key": "p2",
+          "label": "Patch 2, in the patient’s palms",
+          "sym": "patch 2",
+          "unit": "palms",
+          "default": 1.5,
+          "min": 0,
+          "max": 20,
+          "step": 0.5,
+          "gen": [
+            0,
+            5,
+            0.5
+          ]
+        },
+        {
+          "key": "p3",
+          "label": "Patch 3, in the patient’s palms",
+          "sym": "patch 3",
+          "unit": "palms",
+          "default": 0.5,
+          "min": 0,
+          "max": 20,
+          "step": 0.5,
+          "gen": [
+            0,
+            4,
+            0.5
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "palms",
+          "expr": "p1 + p2 + p3",
+          "dp": 1
+        },
+        {
+          "key": "tbsa",
+          "expr": "(p1 + p2 + p3) * 1",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Use the patient’s own hand",
+          "text": "The patient’s palm with the fingers is about 1% of their body surface, whatever their size, because hand and body scale together."
+        },
+        {
+          "title": "Add the patches",
+          "text": "{p1} + {p2} + {p3} = {palms} palms."
+        },
+        {
+          "title": "Convert",
+          "text": "{palms} palms × 1% = <b>about {tbsa}% TBSA</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "tbsa",
+          "label": "Burned share of the body surface",
+          "unit": "% TBSA",
+          "normal": "An estimate; count only partial-thickness and full-thickness burns."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "tbsa > 15",
+          "text": "About {tbsa}%. For a burn this large, the rule of nines is quicker and more reliable than counting palms."
+        },
+        {
+          "when": "1",
+          "text": "About {tbsa}% of the body surface. The palm method suits small or scattered burns that do not fill whole regions of the rule of nines."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Three scattered splash burns",
+          "values": {
+            "p1": 2,
+            "p2": 1.5,
+            "p3": 0.5
+          }
+        },
+        {
+          "label": "One patch the size of 4 palms",
+          "values": {
+            "p1": 4,
+            "p2": 0,
+            "p3": 0
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "tbsa",
+            "unit": "% TBSA",
+            "tol": {
+              "abs": 0.3
+            },
+            "prompt": "A child has three partial-thickness scald patches. Using her own palm, they measure {p1}, {p2} and {p3} palms. About what percentage of her body surface is burned?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bt-calcium-balance",
+      "group": "skeletal",
+      "title": "A day of calcium: mass balance",
+      "short": "Balance = absorbed − released back into the gut − urine",
+      "topic": "bone-calcium",
+      "core": [
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Calcium enters the body only by absorption from the gut and leaves in the feces and urine. Bone is a store in between: it can lend calcium to the blood or take it back, but it cannot create any. Enter a day’s intake and losses to see whether the skeleton gains, keeps or loses calcium.",
+      "formula": "Absorbed = intake × fraction absorbed; balance = absorbed − calcium released back into the gut − calcium in the urine",
+      "inputs": [
+        {
+          "key": "I",
+          "label": "Calcium eaten",
+          "sym": "intake",
+          "unit": "mg/day",
+          "default": 1000,
+          "min": 100,
+          "max": 2500,
+          "step": 50,
+          "gen": [
+            400,
+            1600,
+            100
+          ],
+          "hint": "Adults are advised about 1,000 mg a day; teenagers about 1,300."
+        },
+        {
+          "key": "A",
+          "label": "Share of it absorbed",
+          "sym": "absorbed",
+          "unit": "%",
+          "default": 30,
+          "min": 5,
+          "max": 60,
+          "step": 1,
+          "gen": {
+            "choices": [
+              10,
+              15,
+              20,
+              25,
+              30,
+              35,
+              40
+            ]
+          },
+          "hint": "About 10 to 15% with little vitamin D; 30 to 40% or more when it is plentiful."
+        },
+        {
+          "key": "S",
+          "label": "Calcium released back into the gut in its secretions",
+          "sym": "secreted",
+          "unit": "mg/day",
+          "default": 150,
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "gen": [
+            100,
+            200,
+            10
+          ],
+          "hint": "About 150 mg a day in the worked example."
+        },
+        {
+          "key": "U",
+          "label": "Calcium excreted in the urine",
+          "sym": "urine",
+          "unit": "mg/day",
+          "default": 150,
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "gen": [
+            100,
+            250,
+            10
+          ],
+          "hint": "About 150 mg a day in the worked example."
+        }
+      ],
+      "derived": [
+        {
+          "key": "abs",
+          "expr": "I * A / 100",
+          "dp": 0
+        },
+        {
+          "key": "net",
+          "expr": "I * A / 100 - S",
+          "dp": 0
+        },
+        {
+          "key": "fec",
+          "expr": "I - I * A / 100 + S",
+          "dp": 0
+        },
+        {
+          "key": "out",
+          "expr": "I - I * A / 100 + S + U",
+          "dp": 0
+        },
+        {
+          "key": "bal",
+          "expr": "I * A / 100 - S - U",
+          "dp": 0
+        },
+        {
+          "key": "loss",
+          "expr": "S + U - I * A / 100",
+          "dp": 0
+        },
+        {
+          "key": "yr",
+          "expr": "abs(I * A / 100 - S - U) * 365 / 1000",
+          "dp": 0
+        },
+        {
+          "key": "pct",
+          "expr": "abs(I * A / 100 - S - U) * 365 / 1000 / 1000 * 100",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Calcium absorbed",
+          "text": "{A}% of {I} mg = {A} ÷ 100 × {I} = <b>{abs} mg</b> into the blood."
+        },
+        {
+          "title": "Net absorption",
+          "text": "{abs} mg absorbed − {S} mg released back into the gut = <b>{net} mg</b> net from the gut."
+        },
+        {
+          "title": "Calcium in the feces",
+          "text": "{I} mg eaten − {abs} mg absorbed + {S} mg released back = <b>{fec} mg</b> lost in the feces."
+        },
+        {
+          "title": "Total output",
+          "text": "{fec} mg in feces + {U} mg in urine = <b>{out} mg</b> out."
+        },
+        {
+          "title": "Compare input and output",
+          "text": "Input {I} mg − output {out} mg = <b>{bal} mg</b> a day. Put another way: net absorption {net} mg − urine {U} mg = {bal} mg."
+        }
+      ],
+      "results": [
+        {
+          "key": "bal",
+          "label": "Calcium balance",
+          "unit": "mg/day",
+          "normal": "About zero in a healthy adult; positive while the skeleton is growing.",
+          "bands": [
+            {
+              "when": "bal < -0.5",
+              "label": "negative: bone makes up the difference",
+              "tone": "lo"
+            },
+            {
+              "when": "bal > 0.5",
+              "label": "positive: bone can store the extra",
+              "tone": "hi"
+            },
+            {
+              "label": "in balance",
+              "tone": "ok"
+            }
+          ]
+        },
+        {
+          "key": "abs",
+          "label": "Calcium absorbed",
+          "unit": "mg/day"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "bal < -0.5",
+          "text": "Output exceeds input by {loss} mg a day. The feedback loop keeps the calcium in the blood normal by drawing on bone, so the skeleton pays: about {yr} g a year, roughly {pct}% of an adult’s kilogram of skeletal calcium. The blood test stays normal while the bone thins."
+        },
+        {
+          "when": "bal > 0.5",
+          "text": "Input exceeds output by {bal} mg a day, about {yr} g a year, which bone can store. A growing teenager needs a positive balance like this to build peak bone mass."
+        },
+        {
+          "when": "1",
+          "text": "Input equals output: net absorption from the gut ({net} mg) exactly replaces the urine loss ({U} mg), so bone neither gains nor loses calcium overall."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 1,000 mg eaten",
+          "values": {
+            "I": 1000,
+            "A": 30,
+            "S": 150,
+            "U": 150
+          }
+        },
+        {
+          "label": "Same woman eating only 600 mg",
+          "values": {
+            "I": 600,
+            "A": 30,
+            "S": 150,
+            "U": 150
+          }
+        },
+        {
+          "label": "Vitamin D deficient: 12% absorbed",
+          "values": {
+            "I": 1000,
+            "A": 12,
+            "S": 150,
+            "U": 150
+          }
+        },
+        {
+          "label": "Teenager eating 1,300 mg",
+          "values": {
+            "I": 1300,
+            "A": 35,
+            "S": 150,
+            "U": 150
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "bal",
+            "unit": "mg/day",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "An adult eats {I} mg of calcium a day and absorbs {A}% of it. Her intestine releases {S} mg back into the gut, and her kidneys excrete {U} mg in the urine. What is her daily calcium balance, in mg (negative if she is losing calcium)?"
           }
         ]
       }

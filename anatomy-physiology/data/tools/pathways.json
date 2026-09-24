@@ -14168,6 +14168,586 @@
         "why": "Any exposed skin cell can be damaged. Basal cells and keratinocytes give the two most common cancers; melanocytes give melanoma."
       },
       "summary": "UVB is absorbed by DNA, fuses neighboring pyrimidines, the cell copies its DNA before repair, the error becomes a mutation, mutations in tumor suppressor genes or oncogenes release the cell cycle, and the cell divides without stopping."
+    },
+    {
+      "id": "bt-osteocyte-supply",
+      "title": "Oxygen from the nutrient artery to an osteocyte",
+      "topic": "bone-histology",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "Mineralized matrix is almost impermeable, yet every osteocyte in compact bone stays alive. Trace the route oxygen takes from the main artery of a long bone to an osteocyte in the outer ring of an osteon.",
+      "steps": [
+        {
+          "id": "artery",
+          "label": "Nutrient artery",
+          "text": "Blood carrying oxygen enters the shaft in the nutrient artery, through a slanting hole in the shaft wall.",
+          "why": "The nutrient artery is the main artery of a long bone, so the route starts where it pierces the shaft wall."
+        },
+        {
+          "id": "cavity",
+          "label": "Branches in the marrow",
+          "text": "The artery branches up and down the medullary cavity.",
+          "why": "Once inside, it branches toward both ends and supplies the marrow and the inner part of the shaft wall."
+        },
+        {
+          "id": "perf",
+          "label": "Perforating canal",
+          "text": "Small vessels run across the bone in perforating canals, at right angles to the osteons.",
+          "why": "Perforating canals join the vessels of the medullary cavity to the central canals, so blood must pass through them to reach an osteon."
+        },
+        {
+          "id": "central",
+          "label": "Central canal",
+          "text": "A vessel runs along the length of the osteon in its central canal.",
+          "why": "The central canal is the only vessel inside an osteon; everything its osteocytes receive starts here."
+        },
+        {
+          "id": "inner",
+          "label": "Innermost osteocyte",
+          "text": "Oxygen leaves the vessel into the fluid of the canaliculi and reaches the osteocyte in the innermost lacuna.",
+          "why": "The canaliculi open onto the central canal, so the osteocytes of the first ring are the first to be supplied."
+        },
+        {
+          "id": "relay",
+          "label": "Osteocyte to osteocyte",
+          "text": "Ring by ring, oxygen passes outward through the canaliculi and the gap junctions linking the osteocytes’ arms.",
+          "why": "Canaliculi link each lacuna to the next ring out, so supply spreads outward across the lamellae one ring at a time."
+        },
+        {
+          "id": "outer",
+          "label": "Outermost osteocyte",
+          "text": "The osteocyte in the outermost ring, about a tenth of a millimeter from the central canal, receives what is left.",
+          "why": "It is last in the relay. Diffusion works only over short distances, which is why an osteon is no wider than this."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Oxygen diffuses straight through the mineralized lamellae from the marrow to the osteon.",
+            "why": "Mineralized matrix is almost impermeable to oxygen and nutrients. Blood has to be carried to each osteon in vessels."
+          },
+          {
+            "text": "Blood runs along the lacunae, which are joined end to end like a pipe running through the bone.",
+            "why": "Lacunae are small separate cavities, each holding one osteocyte. They are linked only by the hair-thin canaliculi, which carry fluid, not blood."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Ring by ring, oxygen passes outward through small blood vessels running in the lamellae.",
+        "why": "The lamellae have no vessels. Beyond the central canal, oxygen travels only through the fluid of the canaliculi and from cell to cell through gap junctions."
+      },
+      "summary": "Nutrient artery through the shaft wall, branches in the medullary cavity, perforating canals, the central canal of each osteon, then through the canaliculi from the innermost osteocyte outward, ring by ring, to the outermost one."
+    },
+    {
+      "id": "bt-osteoblast-to-osteocyte",
+      "title": "From osteogenic cell to osteocyte",
+      "topic": "bone-histology",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "Three of the four bone cells are one line at different stages. Put the life of a bone-building cell in order.",
+      "steps": [
+        {
+          "id": "divide",
+          "label": "Osteogenic cell divides",
+          "text": "An osteogenic cell in the periosteum or endosteum divides.",
+          "why": "Osteogenic cells are the stem cells of bone and the only bone cells that divide, so the line has to start here."
+        },
+        {
+          "id": "diff",
+          "label": "Becomes an osteoblast",
+          "text": "One daughter cell differentiates into an osteoblast on the bone surface.",
+          "why": "The daughters of osteogenic cells differentiate into osteoblasts, which do not divide."
+        },
+        {
+          "id": "osteoid",
+          "label": "Secretes osteoid",
+          "text": "The osteoblast secretes osteoid: collagen and ground substance with no mineral yet.",
+          "why": "Osteoblasts build bone by first laying down its organic matrix."
+        },
+        {
+          "id": "mineral",
+          "label": "Osteoid mineralizes",
+          "text": "Calcium phosphate crystals are deposited in the osteoid over days to weeks, and it hardens.",
+          "why": "Mineral can only be laid along collagen that is already there, so mineralizing follows secretion."
+        },
+        {
+          "id": "trapped",
+          "label": "Walled in",
+          "text": "The osteoblast is surrounded by the matrix it made, in a small cavity, keeping thin arms in channels to its neighbors.",
+          "why": "As layers build up around it, the cell ends up inside its own matrix, in a lacuna."
+        },
+        {
+          "id": "osteocyte",
+          "label": "Osteocyte",
+          "text": "The trapped cell becomes an osteocyte that maintains the matrix and senses load.",
+          "why": "An osteocyte is simply a former osteoblast walled in by bone, the final stage of the line."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Several daughter cells fuse into one large cell with many nuclei.",
+            "why": "Fusion makes an osteoclast, and osteoclasts come from the macrophage line in the red marrow, not from osteogenic cells."
+          },
+          {
+            "text": "One daughter cell becomes a chondrocyte in the lacuna next to it.",
+            "why": "Chondrocytes are cartilage cells. In bone, the daughters of osteogenic cells become osteoblasts."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The trapped cell becomes an osteoclast that resorbs the bone around it.",
+        "why": "A walled-in osteoblast becomes an osteocyte. Osteoclasts come from a different line: fused precursors from the red marrow, related to macrophages."
+      },
+      "summary": "Osteogenic cell divides, a daughter becomes an osteoblast, it secretes osteoid, the osteoid mineralizes, the cell is walled in, and it becomes an osteocyte. Osteoclasts are a separate line."
+    },
+    {
+      "id": "bt-intramembranous",
+      "title": "Intramembranous ossification",
+      "topic": "bone-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "The flat bones of the skull roof, most bones of the face and the collarbones form directly in a sheet of mesenchyme. Put the steps in order.",
+      "steps": [
+        {
+          "id": "center",
+          "label": "Ossification center",
+          "text": "Mesenchymal cells in the sheet cluster and differentiate into osteogenic cells and then osteoblasts.",
+          "why": "Bone is always laid down by osteoblasts, so they must appear first; the cluster is the ossification center."
+        },
+        {
+          "id": "osteoid",
+          "label": "Osteoid mineralizes",
+          "text": "The osteoblasts secrete osteoid, which mineralizes within days; osteoblasts that become enclosed turn into osteocytes.",
+          "why": "Once osteoblasts exist, they make matrix, and the ones that wall themselves in become osteocytes."
+        },
+        {
+          "id": "trab",
+          "label": "Trabeculae form",
+          "text": "Osteoid laid around the sheet’s blood vessels forms a network of trabeculae: spongy bone.",
+          "why": "The new bone spreads out along the vessels, so the first bone made is a lattice, not solid plates."
+        },
+        {
+          "id": "peri",
+          "label": "Periosteum forms",
+          "text": "The mesenchyme on the outer surface condenses into the periosteum.",
+          "why": "With a spongy core in place, the surrounding mesenchyme becomes the membrane that will supply bone-building cells to the surface."
+        },
+        {
+          "id": "compact",
+          "label": "Compact plates",
+          "text": "Osteoblasts under the periosteum lay down plates of compact bone over the spongy bone.",
+          "why": "These osteoblasts come from the new periosteum, so the plates can only form after it."
+        },
+        {
+          "id": "marrow",
+          "label": "Diploë and red marrow",
+          "text": "The spongy layer between the plates becomes the diploë, and blood-forming stem cells settle in its spaces as red marrow.",
+          "why": "The last step fills the finished sandwich: stem cells carried in by the blood vessels colonize the spaces of the spongy layer."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Chondrocytes build a small model of the future bone in hyaline cartilage, wrapped in perichondrium.",
+            "why": "A cartilage model is the start of endochondral ossification. Intramembranous ossification involves no cartilage at all."
+          },
+          {
+            "text": "Osteoclasts hollow out the middle of the bone to make a medullary cavity.",
+            "why": "That happens in a long bone formed by endochondral ossification. A flat skull bone keeps its spongy layer, with no medullary cavity."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The compact plates are laid down first, and spongy bone then forms beneath them.",
+        "why": "In intramembranous ossification, spongy bone forms first around the vessels, and osteoblasts under the new periosteum add compact plates over it."
+      },
+      "summary": "Ossification center of osteoblasts, osteoid and trapped osteocytes, trabeculae around vessels (spongy bone), periosteum from the surface mesenchyme, compact plates under it, and the spongy diploë with red marrow between them."
+    },
+    {
+      "id": "bt-endochondral",
+      "title": "Endochondral ossification of a long bone",
+      "topic": "bone-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Most of your bones started as small models made of hyaline cartilage. Put the steps that replace the model with bone in order, from the embryo to the end of the teens.",
+      "steps": [
+        {
+          "id": "model",
+          "label": "Cartilage model",
+          "text": "Mesenchymal cells become chondrocytes and build a hyaline cartilage model of the bone, wrapped in perichondrium.",
+          "why": "Endochondral ossification replaces cartilage, so the cartilage model has to exist first."
+        },
+        {
+          "id": "calcify",
+          "label": "Middle calcifies; collar",
+          "text": "In the middle of the shaft, chondrocytes enlarge, the matrix calcifies and many cells die; around it, the perichondrium becomes periosteum and lays a bone collar.",
+          "why": "Calcified matrix blocks diffusion, so chondrocytes in the middle die, and the collar supports the weakening middle. Both happen before vessels invade."
+        },
+        {
+          "id": "artery",
+          "label": "Artery invades",
+          "text": "A nutrient artery grows in through the collar, bringing osteogenic cells and the precursors of osteoclasts.",
+          "why": "The artery can only enter once the collar and the cavities left by dead chondrocytes are there; it brings the cells that make bone."
+        },
+        {
+          "id": "primary",
+          "label": "Primary center",
+          "text": "Osteoblasts lay spongy bone on the remnants of calcified cartilage: the primary ossification center in the diaphysis.",
+          "why": "The osteoblasts arrive with the artery, so bone inside the shaft can only start after it invades."
+        },
+        {
+          "id": "cavity",
+          "label": "Medullary cavity opens",
+          "text": "Osteoclasts break down the spongy bone in the middle, opening the medullary cavity.",
+          "why": "Osteoclasts can only clear bone that has been made, so the cavity opens after the primary center forms."
+        },
+        {
+          "id": "secondary",
+          "label": "Secondary centers",
+          "text": "Around birth and through childhood, vessels invade the epiphyses and secondary ossification centers form there.",
+          "why": "The ends ossify later than the shaft, by the same sequence, once vessels reach them."
+        },
+        {
+          "id": "remain",
+          "label": "Two cartilages remain",
+          "text": "Cartilage is left only as articular cartilage on the joint surfaces and as the epiphyseal plate between each epiphysis and the shaft.",
+          "why": "Once both centers have spread, the only cartilage not replaced is where the joint needs a smooth surface and where length is still being added."
+        },
+        {
+          "id": "close",
+          "label": "Plates close",
+          "text": "In the late teens, bone replaces the last of the plate, leaving an epiphyseal line.",
+          "why": "The plate is the last cartilage to go; when its chondrocytes stop dividing, growth in length ends."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The calcified cartilage in the middle hardens further and turns directly into bone, cell by cell, from the center outward.",
+            "why": "Cartilage never turns into bone. It is broken down and replaced by bone laid down by osteoblasts, which arrive with invading blood vessels."
+          },
+          {
+            "text": "Mesenchyme on the surface condenses into periosteum and lays compact plates over a spongy core.",
+            "why": "That describes intramembranous ossification of a flat bone, not the long bone’s replacement of a cartilage model."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Before birth, the epiphyses fill with spongy bone at the same time as the shaft does, from the primary center.",
+        "why": "The epiphyses ossify later, around birth and through childhood, from their own secondary ossification centers when vessels invade them."
+      },
+      "summary": "Cartilage model, calcified middle with a bone collar, artery invades, primary ossification center, medullary cavity, secondary centers in the epiphyses, cartilage left only as articular cartilage and epiphyseal plates, then the plates close to epiphyseal lines."
+    },
+    {
+      "id": "bt-growth-plate",
+      "title": "Through the epiphyseal plate",
+      "topic": "bone-development",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Follow one column of chondrocytes through the epiphyseal plate of a growing long bone, from the epiphysis side to the diaphysis side, until bone takes its place.",
+      "steps": [
+        {
+          "id": "reserve",
+          "label": "Reserve zone",
+          "text": "Small, scattered chondrocytes that rarely divide anchor the plate to the epiphysis.",
+          "why": "The reserve zone lies against the epiphysis, whose blood vessels feed the whole plate, so the column starts here."
+        },
+        {
+          "id": "prolif",
+          "label": "Proliferative zone",
+          "text": "Chondrocytes divide rapidly and line up in stacks like piles of coins.",
+          "why": "Division supplies the new cells for the column; each division pushes the epiphysis farther from the diaphysis."
+        },
+        {
+          "id": "hyper",
+          "label": "Maturation and enlargement",
+          "text": "Older chondrocytes pushed down the stack stop dividing and swell to several times their size.",
+          "why": "Cells leave the dividing zone as new ones form above them; their enlargement adds much of the length."
+        },
+        {
+          "id": "calc",
+          "label": "Calcified matrix",
+          "text": "The matrix around the enlarged cells calcifies, and many of the cells die, leaving empty spaces.",
+          "why": "Calcified matrix blocks the diffusion the chondrocytes live on, so death follows calcification."
+        },
+        {
+          "id": "invade",
+          "label": "Vessels invade",
+          "text": "Capillaries and osteogenic cells from the diaphysis grow up into the empty spaces.",
+          "why": "The spaces left by dead chondrocytes are the openings the vessels grow into."
+        },
+        {
+          "id": "bone",
+          "label": "Bone on the columns",
+          "text": "Osteoblasts lay bone on the calcified cartilage columns, and osteoclasts later clear the old cartilage and bone.",
+          "why": "Osteoblasts need a scaffold to build on; the calcified columns are it. This is where the diaphysis gets longer."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Osteoblasts lay bone directly on the resting chondrocytes.",
+            "why": "Bone is laid only on calcified cartilage on the diaphysis side, after the cells have divided, enlarged and died."
+          },
+          {
+            "text": "The chondrocytes calcify their matrix and die straight away.",
+            "why": "Before calcifying, the column needs new cells and bigger cells, which is where the length comes from."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The enlarged chondrocytes turn into osteoblasts, and their cartilage matrix hardens into bone.",
+        "why": "Cartilage matrix does not turn into bone; it calcifies and is replaced. Many of the enlarged chondrocytes die (some turn out to survive as bone cells, but for your exam, they die), and the osteoblasts come in with the invading vessels."
+      },
+      "summary": "Reserve zone, proliferative zone (divide and stack), zone of maturation and enlargement (swell), zone of calcified matrix (many cells die), then vessels and osteogenic cells invade and osteoblasts lay bone on the calcified columns. New cartilage is added at the top as fast as bone replaces it at the bottom, so the plate keeps its thickness while the shaft lengthens."
+    },
+    {
+      "id": "bt-remodeling-cycle",
+      "title": "One remodeling cycle",
+      "topic": "bone-remodeling-repair",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Every day, millions of tiny patches of your skeleton are replaced. Put one patch of compact bone through its remodeling cycle in order.",
+      "steps": [
+        {
+          "id": "signal",
+          "label": "Osteocytes signal",
+          "text": "Osteocytes near a patch of old or cracked bone signal to the surface.",
+          "why": "Remodeling starts where it is needed: dying osteocytes near a microscopic crack are one of the signals."
+        },
+        {
+          "id": "fuse",
+          "label": "Osteoclasts form",
+          "text": "Osteoclast precursors arrive from the blood and fuse into osteoclasts.",
+          "why": "The signal calls the precursors in; they must fuse into large cells with several nuclei before they can resorb."
+        },
+        {
+          "id": "tunnel",
+          "label": "Resorption",
+          "text": "Osteoclasts tunnel along the bone for two to four weeks, with a blood vessel following behind.",
+          "why": "Resorption comes first: old bone has to be removed before new bone can fill its place."
+        },
+        {
+          "id": "factors",
+          "label": "Osteoblasts called up",
+          "text": "Growth factors released from the resorbed matrix call up osteoblasts.",
+          "why": "This is coupling: the breaking down itself releases the signal for building."
+        },
+        {
+          "id": "fill",
+          "label": "Formation",
+          "text": "Osteoblasts lay lamellae of osteoid inward from the tunnel wall over three to four months, and it mineralizes.",
+          "why": "Formation follows the osteoclasts into the space they made, and takes much longer than resorption."
+        },
+        {
+          "id": "osteon",
+          "label": "New osteon",
+          "text": "The vessel left in the middle becomes the central canal of a brand-new osteon.",
+          "why": "Filling stops short of the vessel, which is left as the central canal: the end product of the cycle."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Chondrocytes fill the tunnel with cartilage, which is later replaced by bone.",
+            "why": "Remodeling does not pass through cartilage. Osteoblasts fill the tunnel directly with osteoid."
+          },
+          {
+            "text": "The osteoclasts lay new lamellae behind them as they tunnel.",
+            "why": "Osteoclasts only resorb. Building is done by osteoblasts, which follow once they have been called up."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Osteoclasts tunnel along the bone for three to four months, and osteoblasts then fill the tunnel in two to four weeks.",
+        "why": "The times are the other way round: resorption takes about two to four weeks, and formation much longer, about three to four months."
+      },
+      "summary": "Osteocytes signal, osteoclast precursors fuse, osteoclasts resorb (two to four weeks), growth factors from the resorbed matrix call up osteoblasts, osteoblasts fill the tunnel (three to four months), and the leftover vessel becomes the central canal of a new osteon."
+    },
+    {
+      "id": "bt-fracture-repair",
+      "title": "Fracture repair",
+      "topic": "bone-remodeling-repair",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A broken bone heals with bone, not a scar, by rerunning the steps of bone development. Put the stages of healing a simple break in order.",
+      "steps": [
+        {
+          "id": "tear",
+          "label": "Vessels torn",
+          "text": "The break tears blood vessels in the periosteum, the bone and the marrow.",
+          "why": "The injury itself comes first; everything after it is the response."
+        },
+        {
+          "id": "hematoma",
+          "label": "Fracture hematoma",
+          "text": "Blood pools and clots around the break, osteocytes at the broken ends die, and inflammation begins.",
+          "why": "Released blood clots within hours, and bone cut off from its blood supply dies back a little."
+        },
+        {
+          "id": "capillaries",
+          "label": "Capillaries grow in",
+          "text": "Capillaries grow into the hematoma, turning it into granulation tissue, as in a healing skin wound.",
+          "why": "New vessels bring in the cells that will build the callus, so they have to come first."
+        },
+        {
+          "id": "soft",
+          "label": "Fibrocartilaginous callus",
+          "text": "Fibroblasts and chondrocytes build a soft callus of collagen and cartilage across the break over about three weeks.",
+          "why": "The cells brought in by the vessels first bridge the gap with soft tissue that can form without much blood supply."
+        },
+        {
+          "id": "bony",
+          "label": "Bony callus",
+          "text": "Osteoblasts from the periosteum and endosteum replace the calcified callus with spongy bone, over about three weeks to three months.",
+          "why": "As in endochondral ossification, cartilage is calcified and replaced by bone, so the soft callus must exist first."
+        },
+        {
+          "id": "remodel",
+          "label": "Remodeling",
+          "text": "Osteoclasts remove extra bone, the medullary cavity reopens, and compact bone replaces spongy bone in the wall.",
+          "why": "Remodeling is the slowest stage, months to years, and reshapes the bone along its lines of load."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Fibroblasts lay down a permanent scar of dense connective tissue across the break, which holds the ends together for life.",
+            "why": "Bone heals with bone. The soft callus is temporary and is replaced by spongy bone, then compact bone."
+          },
+          {
+            "text": "Osteocytes at the broken ends divide and fill the gap with new bone.",
+            "why": "Osteocytes do not divide, and those at the broken ends die. New bone comes from osteogenic cells of the periosteum and endosteum."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Osteoblasts lay compact bone with new osteons directly across the gap, which can bear full weight within days.",
+        "why": "The bony callus is spongy bone, and it takes weeks to months to form. Compact bone with new osteons comes only in the remodeling stage."
+      },
+      "summary": "Torn vessels, fracture hematoma, capillaries grow in (granulation tissue), fibrocartilaginous callus, bony callus of spongy bone, then remodeling back to compact bone along the lines of load."
+    },
+    {
+      "id": "bt-calcium-bone-route",
+      "title": "How a fall in calcium draws calcium out of bone",
+      "topic": "bone-calcium",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "When blood calcium falls, bone is one of the first places the body draws on. Put the steps in order, from the fall to the end of the response.",
+      "steps": [
+        {
+          "id": "fall",
+          "label": "Calcium falls",
+          "text": "Free calcium ions in the blood fall below the set point.",
+          "why": "The fall in the regulated variable is the stimulus that starts the loop."
+        },
+        {
+          "id": "bind",
+          "label": "Fewer ions bound",
+          "text": "Fewer calcium ions bind the receptor protein on the cells of the four tiny glands behind the thyroid.",
+          "why": "The gland cells detect the fall through their receptor protein, so binding changes before anything else."
+        },
+        {
+          "id": "hormone",
+          "label": "Hormone released",
+          "text": "The gland cells release more calcium-raising hormone within seconds.",
+          "why": "The same cells that sense the fall respond to it, with no separate pathway."
+        },
+        {
+          "id": "obl",
+          "label": "Acts on osteoblasts",
+          "text": "The hormone binds osteoblasts, which signal more osteoclasts to form and work harder.",
+          "why": "The hormone’s target in bone is the osteoblast; osteoclasts are reached only through it."
+        },
+        {
+          "id": "resorb",
+          "label": "Osteoclasts resorb",
+          "text": "Osteoclasts dissolve mineral with acid and digest collagen, releasing calcium and phosphate into the blood.",
+          "why": "Resorption follows the osteoblasts’ signal: existing osteoclasts speed up within hours, new ones take days."
+        },
+        {
+          "id": "kidney",
+          "label": "Kidneys dump phosphate",
+          "text": "The hormone makes the kidneys keep calcium and excrete more of the phosphate.",
+          "why": "The phosphate released from bone would combine with calcium and lower free calcium again, so it has to be removed."
+        },
+        {
+          "id": "off",
+          "label": "Calcium back; hormone falls",
+          "text": "Free calcium rises back to the set point, more calcium binds the gland cells, and hormone release falls.",
+          "why": "The rise feeds back on the sensor: negative feedback ends the response."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The hormone binds osteoclasts directly, which then dissolve more bone and release its calcium.",
+            "why": "Osteoclasts are not the hormone’s direct target. It binds osteoblasts, which then signal osteoclasts to form and work."
+          },
+          {
+            "text": "The hormone makes osteoblasts lay down more new bone.",
+            "why": "Laying down bone takes calcium out of the blood. Here the osteoblasts’ job is to signal osteoclasts, which release calcium."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The hormone makes the kidneys excrete more calcium and keep the phosphate.",
+        "why": "Both are backwards. The hormone makes the kidneys return calcium to the blood and excrete phosphate, so the calcium freed from bone stays free."
+      },
+      "summary": "Calcium falls, fewer ions bind the gland cells’ receptor protein, more calcium-raising hormone, the hormone acts on osteoblasts, which signal osteoclasts to resorb bone, the kidneys keep calcium and dump phosphate, and the rise in calcium shuts hormone release back down."
     }
   ]
 }

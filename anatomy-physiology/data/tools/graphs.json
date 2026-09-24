@@ -34799,6 +34799,1271 @@
      }
     }
    ]
+  },
+  {
+   "id": "bt-bone-mass-lifespan",
+   "title": "Bone mass across the lifespan",
+   "topic": "bone-remodeling-repair",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "intro": "Bone mass here is the mass of calcium in the whole skeleton, which tracks the amount of bone. The curves show typical values for men and women from birth to 100, following OpenStax Figure 6.23. Whether bone is gained, kept or lost depends on the balance between osteoblasts and osteoclasts at each age.",
+   "alt": "Two curves of skeletal calcium in grams against age from 0 to 100 years. Both rise steeply through childhood and the teens. The male curve peaks at about 1,510 grams between 35 and 40 and falls slowly to about 1,020 grams at 100. The female curve peaks at about 1,220 grams at 35, falls slowly to about 1,100 grams at 50, then drops steeply to about 800 grams at 60, and falls slowly to about 545 grams at 100.",
+   "x": {
+    "min": 0,
+    "max": 100,
+    "label": "Age",
+    "unit": "years",
+    "ticks": [
+     0,
+     10,
+     20,
+     30,
+     40,
+     50,
+     60,
+     70,
+     80,
+     90,
+     100
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 1600,
+      "label": "Calcium in the skeleton",
+      "unit": "g",
+      "ticks": [
+       0,
+       250,
+       500,
+       750,
+       1000,
+       1250,
+       1500
+      ]
+     },
+     "series": [
+      {
+       "id": "male",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         5,
+         280
+        ],
+        [
+         10,
+         560
+        ],
+        [
+         15,
+         900
+        ],
+        [
+         20,
+         1240
+        ],
+        [
+         25,
+         1420
+        ],
+        [
+         30,
+         1490
+        ],
+        [
+         35,
+         1510
+        ],
+        [
+         40,
+         1510
+        ],
+        [
+         45,
+         1490
+        ],
+        [
+         50,
+         1460
+        ],
+        [
+         60,
+         1400
+        ],
+        [
+         70,
+         1320
+        ],
+        [
+         80,
+         1220
+        ],
+        [
+         90,
+         1120
+        ],
+        [
+         100,
+         1020
+        ]
+       ],
+       "label": "men",
+       "labelAt": [
+        72,
+        1380
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "female",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         5,
+         230
+        ],
+        [
+         10,
+         470
+        ],
+        [
+         15,
+         760
+        ],
+        [
+         20,
+         1020
+        ],
+        [
+         25,
+         1160
+        ],
+        [
+         30,
+         1210
+        ],
+        [
+         35,
+         1220
+        ],
+        [
+         40,
+         1210
+        ],
+        [
+         45,
+         1170
+        ],
+        [
+         50,
+         1100
+        ],
+        [
+         53,
+         1060
+        ],
+        [
+         55,
+         1010
+        ],
+        [
+         57,
+         930
+        ],
+        [
+         60,
+         800
+        ],
+        [
+         63,
+         745
+        ],
+        [
+         70,
+         705
+        ],
+        [
+         80,
+         650
+        ],
+        [
+         90,
+         600
+        ],
+        [
+         100,
+         545
+        ]
+       ],
+       "label": "women",
+       "labelAt": [
+        72,
+        620
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "gain",
+     "x0": 0,
+     "x1": 30,
+     "label": "formation outpaces resorption"
+    },
+    {
+     "id": "peak",
+     "x0": 30,
+     "x1": 40,
+     "label": "peak bone mass"
+    },
+    {
+     "id": "loss",
+     "x0": 40,
+     "x1": 100,
+     "label": "resorption outpaces formation"
+    }
+   ],
+   "questions": [
+    {
+     "id": "male-peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the peak calcium content of the male skeleton.",
+     "answer": 1500,
+     "tol": 60,
+     "unit": "g",
+     "show": {
+      "x": 37,
+      "y": 1510
+     },
+     "why": "About 1,500 g, reached in the thirties. That is roughly the \"kilogram or so\" of calcium stored in an adult skeleton, the bank the blood draws on."
+    },
+    {
+     "id": "gap",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At their peaks, how many more grams of calcium does the typical male skeleton hold than the female skeleton?",
+     "answer": 290,
+     "tol": 60,
+     "unit": "g",
+     "show": {
+      "x": 35,
+      "y": 1220
+     },
+     "why": "About 1,510 − 1,220 = about 290 g. Men usually reach a higher peak, so women start their later losses from a lower level, one reason osteoporosis is more common in women."
+    },
+    {
+     "id": "female-100",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the calcium content of the female skeleton at 100.",
+     "answer": 545,
+     "tol": 50,
+     "unit": "g",
+     "show": {
+      "x": 100,
+      "y": 545
+     },
+     "why": "About 545 g, less than half her peak. Decades of remodeling cycles that each remove slightly more than they replace, plus the fast loss in her fifties, add up."
+    },
+    {
+     "id": "gain-phase",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "During which ages does bone mass climb steeply, and why?",
+     "options": [
+      "30 to 40, when bone is added fastest because growth in length has stopped",
+      "40 to 60, when remodeling adds bone in preparation for old age",
+      "Birth to about 30, while formation outpaces resorption",
+      "At the same rate at every age, from birth to 100"
+     ],
+     "correct": 2,
+     "highlight": {
+      "region": "gain"
+     },
+     "why": {
+      "correct": "In childhood and the teens, osteoblasts build more than osteoclasts remove, and the growing skeleton adds bone quickly. Peak bone mass is reached by about 30.",
+      "options": [
+       "The curves are flat from 30 to 40: formation and resorption are about equal at the peak.",
+       "From 40 on, each remodeling cycle removes slightly more than it replaces, so the curves fall.",
+       "Right: formation outpaces resorption through growth.",
+       "The curves rise, flatten and then fall, because the balance between osteoblasts and osteoclasts shifts with age."
+      ]
+     }
+    },
+    {
+     "id": "steep-drop",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Where does the women’s curve suddenly fall faster, and what causes it?",
+     "options": [
+      "Around 20 to 30, as the bones stop growing in length at the plates",
+      "Around 50 to 60, at the end of the reproductive years",
+      "Around 30 to 40, as the peak is passed and remodeling starts to lose bone",
+      "Around 80 to 100, as remodeling finally stops"
+     ],
+     "correct": 1,
+     "highlight": {
+      "x0": 50,
+      "x1": 60,
+      "label": "fast loss"
+     },
+     "why": {
+      "correct": "At the end of the reproductive years, the ovaries’ hormone that slows the formation and activity of osteoclasts falls. Resorption rises, and bone is lost fast for five to ten years.",
+      "options": [
+       "Between 20 and 30 both curves are still rising toward their peaks.",
+       "Right: the end of the reproductive years.",
+       "Past the peak, loss is slow in both sexes; the sudden drop comes later, only in women.",
+       "Remodeling never stops, and late in life the curves fall slowly, not steeply."
+      ]
+     }
+    },
+    {
+     "id": "low-peak",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "A girl eats little calcium and does little weight-bearing exercise through her teens. How does her curve change?",
+     "options": [
+      "It rises less and peaks lower, and every later age starts from less bone",
+      "It rises the same way, because peak bone mass is set by her genes alone",
+      "It peaks at the same height, but later, at about 45 instead of 35",
+      "It peaks lower, but she then loses bone more slowly and catches up"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "female-low",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          5,
+          220
+         ],
+         [
+          10,
+          440
+         ],
+         [
+          15,
+          690
+         ],
+         [
+          20,
+          900
+         ],
+         [
+          25,
+          1010
+         ],
+         [
+          30,
+          1050
+         ],
+         [
+          35,
+          1060
+         ],
+         [
+          40,
+          1050
+         ],
+         [
+          45,
+          1015
+         ],
+         [
+          50,
+          950
+         ],
+         [
+          55,
+          870
+         ],
+         [
+          60,
+          670
+         ],
+         [
+          70,
+          580
+         ],
+         [
+          80,
+          530
+         ],
+         [
+          90,
+          485
+         ],
+         [
+          100,
+          440
+         ]
+        ],
+        "label": "low calcium, little exercise",
+        "labelAt": [
+         3,
+         1120
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Bone is built in youth from the calcium you eat and from load. Less of each means a lower peak, and a lower peak leaves less bone to lose before it becomes fragile, which is why youth habits matter decades later.",
+      "options": [
+       "Right: a lower peak, and a lower curve from then on.",
+       "Genes matter, but calcium and load through Wolff’s law also set how much bone is built.",
+       "The timing of the peak is about the same; it is the height of the peak that falls.",
+       "Losses after the peak follow the same balance of osteoblasts and osteoclasts, so she does not catch up."
+      ]
+     }
+    },
+    {
+     "id": "bed-rest-dip",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A 40-year-old man spends six months in bed. How does his curve change?",
+     "options": [
+      "It stays on the usual line, because adult bone no longer changes",
+      "It rises, because bone at rest has time to rebuild without strain",
+      "It drops for those months, then partly recovers once he walks",
+      "It drops for good to the level of a typical 80-year-old"
+     ],
+     "correct": 2,
+     "overlay": {
+      "series": [
+       {
+        "id": "male-bed",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          40,
+          1510
+         ],
+         [
+          40.5,
+          1450
+         ],
+         [
+          41,
+          1440
+         ],
+         [
+          43,
+          1465
+         ],
+         [
+          45,
+          1470
+         ],
+         [
+          50,
+          1445
+         ],
+         [
+          60,
+          1385
+         ],
+         [
+          70,
+          1305
+         ],
+         [
+          80,
+          1205
+         ]
+        ],
+        "label": "after bed rest",
+        "labelAt": [
+         45,
+         1300
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Without load, osteocytes signal for less building and more resorption, and bone is lost quickly. When he walks again, load rebuilds some of it, but recovery is slower than the loss and often incomplete.",
+      "options": [
+       "Adult bone is remodeled all the time, and load steers the balance, so unloading shows up within weeks.",
+       "Unloaded bone is resorbed faster, not rebuilt: Wolff’s law in reverse.",
+       "Right: a fast drop, then partial recovery.",
+       "The loss is a few percent, not decades’ worth, and some returns with walking."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "bt-growth-rate",
+   "title": "Growth rate in height through childhood",
+   "topic": "bone-development",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "Height grows mostly by the lengthening of long bones at their epiphyseal plates. The curves show the typical growth rate, in centimeters of height gained per year, for girls and boys from 2 to 20. Values are typical averages; individual children vary by a year or two.",
+   "alt": "Growth rate in centimeters per year against age from 2 to 20. Both curves start at about 10 at age 2 and fall to about 5.5 by age 8. The girls’ curve rises to a peak of about 8 at age 12, then falls to near 0 by about 17. The boys’ curve keeps falling to about 5 at 10 and 11, rises to a peak of about 9.5 at 14, and falls to near 0 by about 19.",
+   "x": {
+    "min": 2,
+    "max": 20,
+    "label": "Age",
+    "unit": "years",
+    "ticks": [
+     2,
+     4,
+     6,
+     8,
+     10,
+     12,
+     14,
+     16,
+     18,
+     20
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 12,
+      "label": "Growth in height",
+      "unit": "cm per year",
+      "ticks": [
+       0,
+       2,
+       4,
+       6,
+       8,
+       10,
+       12
+      ]
+     },
+     "series": [
+      {
+       "id": "girls",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         2,
+         10
+        ],
+        [
+         3,
+         8
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         5,
+         6.5
+        ],
+        [
+         6,
+         6
+        ],
+        [
+         7,
+         5.8
+        ],
+        [
+         8,
+         5.5
+        ],
+        [
+         9,
+         5.5
+        ],
+        [
+         10,
+         6.2
+        ],
+        [
+         11,
+         7.4
+        ],
+        [
+         12,
+         8
+        ],
+        [
+         12.5,
+         7.4
+        ],
+        [
+         13,
+         6
+        ],
+        [
+         14,
+         3.5
+        ],
+        [
+         15,
+         1.5
+        ],
+        [
+         16,
+         0.6
+        ],
+        [
+         17,
+         0.2
+        ],
+        [
+         18,
+         0
+        ],
+        [
+         20,
+         0
+        ]
+       ],
+       "label": "girls",
+       "labelAt": [
+        9.2,
+        8.6
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "boys",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         2,
+         10
+        ],
+        [
+         3,
+         8
+        ],
+        [
+         4,
+         7
+        ],
+        [
+         5,
+         6.5
+        ],
+        [
+         6,
+         6
+        ],
+        [
+         7,
+         5.8
+        ],
+        [
+         8,
+         5.5
+        ],
+        [
+         9,
+         5.2
+        ],
+        [
+         10,
+         5
+        ],
+        [
+         11,
+         5
+        ],
+        [
+         12,
+         5.6
+        ],
+        [
+         13,
+         7.5
+        ],
+        [
+         14,
+         9.5
+        ],
+        [
+         14.5,
+         9
+        ],
+        [
+         15,
+         7.5
+        ],
+        [
+         16,
+         4.5
+        ],
+        [
+         17,
+         2
+        ],
+        [
+         18,
+         0.8
+        ],
+        [
+         19,
+         0.3
+        ],
+        [
+         20,
+         0
+        ]
+       ],
+       "label": "boys",
+       "labelAt": [
+        15,
+        10.2
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "child",
+     "x0": 4,
+     "x1": 9,
+     "label": "steady childhood growth"
+    },
+    {
+     "id": "spurt",
+     "x0": 10,
+     "x1": 15,
+     "label": "growth spurts"
+    },
+    {
+     "id": "close",
+     "x0": 15,
+     "x1": 20,
+     "label": "plates closing"
+    }
+   ],
+   "questions": [
+    {
+     "id": "boy-peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the boys’ highest growth rate during the growth spurt.",
+     "answer": 9.5,
+     "tol": 0.8,
+     "unit": "cm per year",
+     "show": {
+      "x": 14,
+      "y": 9.5
+     },
+     "why": "About 9.5 cm a year, at about 14. The hormones of puberty speed chondrocyte division at the plates, nearly doubling the childhood rate for a year or two."
+    },
+    {
+     "id": "girl-peak-age",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "At about what age do girls grow fastest?",
+     "answer": 12,
+     "tol": 0.8,
+     "unit": "years",
+     "show": {
+      "x": 12,
+      "y": 8
+     },
+     "why": "At about 12, roughly two years before boys. Girls start puberty earlier, so their spurt, and the closing of their plates, come earlier too."
+    },
+    {
+     "id": "closing",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In the late teens both curves fall to zero. What is happening in the long bones?",
+     "options": [
+      "The plates are closing: bone replaces their cartilage, leaving epiphyseal lines",
+      "The plates are still growing, but appositional growth has stopped",
+      "Osteoclasts are removing bone from the ends as fast as the plates add it",
+      "The diaphysis has run out of room to grow into the epiphysis"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "close"
+     },
+     "why": {
+      "correct": "Chondrocytes in the plates slow and stop dividing, bone replaces the last of the cartilage, and the epiphysis fuses with the diaphysis. With no plate left, the bone cannot grow longer. This happens mostly between 15 and 21, earlier in girls.",
+      "options": [
+       "Right: the plates close.",
+       "Appositional growth makes bones wider and continues slowly for life; height stops because the plates close.",
+       "Osteoclasts clear old cartilage and bone below the plate, but length stops because the plate itself is gone.",
+       "The plate moves away from the middle of the bone like a treadmill; growth stops only when its cartilage is used up and replaced."
+      ]
+     }
+    },
+    {
+     "id": "why-later",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Between 10 and 13, girls are growing faster than boys. Which statement explains the region highlighted?",
+     "options": [
+      "Boys’ epiphyseal plates have already closed by this age",
+      "Boys are still in childhood growth; their spurt comes later",
+      "Boys’ bones grow only by appositional growth at this age",
+      "Girls’ chondrocytes enlarge at this age, but boys’ only divide"
+     ],
+     "correct": 1,
+     "highlight": {
+      "x0": 10,
+      "x1": 13,
+      "label": "girls ahead"
+     },
+     "why": {
+      "correct": "Puberty, and with it the spurt, starts about two years earlier in girls. Boys keep growing at the slower childhood rate until their own spurt, which is taller and later, and they keep growing for longer.",
+      "options": [
+       "Boys’ plates close later than girls’, not earlier; their curve reaches zero around 19.",
+       "Right: the boys’ spurt is later.",
+       "Boys are still lengthening at their plates; appositional growth only adds width.",
+       "In the spurt, chondrocytes both divide faster and enlarge, in girls and boys alike."
+      ]
+     }
+    },
+    {
+     "id": "early-puberty",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A girl starts puberty at 7 instead of about 10. How does her curve change?",
+     "options": [
+      "The spurt comes earlier, but growth goes on to the usual age",
+      "The spurt is taller, but it still comes at the usual age",
+      "It is unchanged, because the plates close at a fixed age",
+      "Spurt and end of growth both move about four years earlier"
+     ],
+     "correct": 3,
+     "overlay": {
+      "series": [
+       {
+        "id": "girls-early",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          2,
+          10
+         ],
+         [
+          3,
+          8
+         ],
+         [
+          4,
+          7
+         ],
+         [
+          5,
+          6.5
+         ],
+         [
+          6,
+          6.2
+         ],
+         [
+          7,
+          7.4
+         ],
+         [
+          8,
+          8
+         ],
+         [
+          8.5,
+          7.4
+         ],
+         [
+          9,
+          6
+         ],
+         [
+          10,
+          3.5
+         ],
+         [
+          11,
+          1.5
+         ],
+         [
+          12,
+          0.6
+         ],
+         [
+          13,
+          0.2
+         ],
+         [
+          14,
+          0
+         ],
+         [
+          20,
+          0
+         ]
+        ],
+        "label": "puberty at 7",
+        "labelAt": [
+         3.6,
+         9.2
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The hormones of puberty first speed the plates, then close them. Starting early moves both events earlier, so she is tall at 9 but loses years of childhood growth and ends up shorter than expected.",
+      "options": [
+       "The same hormones that cause the spurt later close the plates, so an early spurt means early closure.",
+       "Timing is what changes: the spurt starts with puberty.",
+       "Plates close when puberty’s hormones act on them, not at a fixed age.",
+       "Right: both the spurt and the end of growth move earlier."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "bt-calcium-hormone-curve",
+   "title": "Calcium and the calcium-raising hormone",
+   "topic": "bone-calcium",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "intro": "The cells of the four tiny glands behind the thyroid release more calcium-raising hormone when blood calcium is low and less when it is high. The curve shows the typical shape of that response in people: hormone release as a percentage of its maximum at each level of total blood calcium. Exact values vary between people.",
+   "alt": "Hormone release in percent of maximum against total blood calcium from 7 to 12 mg/dL. Release is near 100% at 7 to 8 mg/dL, falls slowly to about 80% at 9, drops steeply through about 50% at 9.5 to about 25% at 10, and levels off near 10 to 12% above 10.5. The normal range, 8.5 to 10.5 mg/dL, is marked.",
+   "x": {
+    "min": 7,
+    "max": 12,
+    "label": "Total blood calcium",
+    "unit": "mg/dL",
+    "ticks": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 100,
+      "label": "Hormone release",
+      "unit": "% of maximum",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "release",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         7,
+         100
+        ],
+        [
+         7.5,
+         99
+        ],
+        [
+         8,
+         97
+        ],
+        [
+         8.5,
+         92
+        ],
+        [
+         9,
+         80
+        ],
+        [
+         9.25,
+         67
+        ],
+        [
+         9.5,
+         52
+        ],
+        [
+         9.75,
+         37
+        ],
+        [
+         10,
+         25
+        ],
+        [
+         10.5,
+         15
+        ],
+        [
+         11,
+         12
+        ],
+        [
+         12,
+         10
+        ]
+       ],
+       "label": "hormone release",
+       "labelAt": [
+        7.2,
+        88
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "normal",
+     "x0": 8.5,
+     "x1": 10.5,
+     "label": "normal range",
+     "show": true
+    },
+    {
+     "id": "steep",
+     "x0": 9,
+     "x1": 10,
+     "label": "steepest part"
+    },
+    {
+     "id": "floor",
+     "x0": 10.5,
+     "x1": 12,
+     "label": "release near its floor"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at-85",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the hormone release at a total blood calcium of 8.5 mg/dL.",
+     "answer": 92,
+     "tol": 5,
+     "unit": "% of maximum",
+     "show": {
+      "x": 8.5,
+      "y": 92
+     },
+     "why": "About 92% of maximum. At the low edge of the normal range, the gland cells are already releasing nearly all the hormone they can, pulling calcium from bone and holding it in the kidneys."
+    },
+    {
+     "id": "half",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At what total blood calcium is hormone release half of its maximum?",
+     "answer": 9.5,
+     "tol": 0.2,
+     "unit": "mg/dL",
+     "show": {
+      "x": 9.5,
+      "y": 50
+     },
+     "why": "About 9.5 mg/dL, the middle of the normal range. The midpoint of the steep part sits at the set point, which is where the loop holds calcium."
+    },
+    {
+     "id": "steep-part",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Why does it matter that the steepest part of the curve lies in the middle of the normal range?",
+     "options": [
+      "The hormone has no effect while calcium stays within the normal range",
+      "Small changes near the set point cause large swings in release",
+      "Release changes most where calcium is dangerously low",
+      "It shows that high calcium makes the gland cells release more hormone"
+     ],
+     "correct": 1,
+     "highlight": {
+      "region": "steep"
+     },
+     "why": {
+      "correct": "Where the curve is steep, a change of a few tenths of a mg/dL swings hormone release by tens of percent. That strong response to small errors is why blood calcium is held within a few percent of its set point.",
+      "options": [
+       "Within the range the hormone is working all the time; its level rises and falls with every small change.",
+       "Right: small errors, big responses.",
+       "At dangerously low calcium the curve is flat, because release is already near its maximum.",
+       "The curve slopes down: higher calcium means less hormone, the negative feedback."
+      ]
+     }
+    },
+    {
+     "id": "floor-phase",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Cancer in a woman’s bones drives her calcium to 12 mg/dL. Which part of the curve is she on?",
+     "options": [
+      "The flat right-hand part: her gland cells have cut release to near its floor",
+      "The steep middle: her hormone release is still falling fast",
+      "The flat left-hand part: her gland cells are releasing as much hormone as they can",
+      "Off the curve: high calcium stops the gland cells from sensing calcium"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "floor"
+     },
+     "why": {
+      "correct": "Above about 10.5 mg/dL, release has fallen to a small floor that it cannot go below. The loop has done all it can; the calcium keeps rising because the tumor drives osteoclasts directly.",
+      "options": [
+       "Right: release near its floor.",
+       "The steep part is inside the normal range; by 12 mg/dL release has almost bottomed out.",
+       "Maximum release happens when calcium is low, not high.",
+       "The gland cells still sense calcium perfectly; that is why they have cut their hormone release."
+      ]
+     }
+    },
+    {
+     "id": "sensitizer",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A medicine makes the gland cells’ receptor protein bind calcium more easily. How does the curve shift?",
+     "options": [
+      "Right: release falls only once calcium reaches higher levels",
+      "Up: release rises at every calcium level, raising calcium",
+      "Left: release falls at lower calcium, so calcium settles lower",
+      "Not at all, because the receptor protein is not part of the loop"
+     ],
+     "correct": 2,
+     "overlay": {
+      "series": [
+       {
+        "id": "release-left",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          7,
+          99
+         ],
+         [
+          7.5,
+          97
+         ],
+         [
+          8,
+          91
+         ],
+         [
+          8.25,
+          80
+         ],
+         [
+          8.5,
+          66
+         ],
+         [
+          8.75,
+          50
+         ],
+         [
+          9,
+          36
+         ],
+         [
+          9.25,
+          26
+         ],
+         [
+          9.5,
+          19
+         ],
+         [
+          10,
+          13
+         ],
+         [
+          11,
+          11
+         ],
+         [
+          12,
+          10
+         ]
+        ],
+        "label": "with the medicine",
+        "labelAt": [
+         9.1,
+         45
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "With calcium binding more easily, the gland cells read a normal calcium as high and cut their release sooner. The whole curve moves to lower calcium values, and the loop then holds calcium at a lower set point. Such a medicine is used when the glands release too much hormone.",
+      "options": [
+       "A shift to the right would come from a receptor protein that binds calcium less easily.",
+       "Better calcium binding means less hormone at a given calcium, not more.",
+       "Correct: the curve moves left.",
+       "The receptor protein is the sensor of the loop, so changing it changes the whole response."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

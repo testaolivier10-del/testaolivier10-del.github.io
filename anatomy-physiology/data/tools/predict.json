@@ -27203,6 +27203,1919 @@
           "why": "Less resorption means fewer trabeculae are thinned or cut through, so the spongy bone of her vertebrae keeps more of its strength."
         }
       ]
+    },
+    {
+      "id": "ig-tanning",
+      "title": "A week at the beach",
+      "topic": "skin-layers",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a tan means your skin has more pigment cells",
+      "setup": "After a week of spending several hours a day in strong sun, the skin on your shoulders has darkened. Predict the changes in that skin compared with before the week began.",
+      "start": "UV light damages DNA in the keratinocytes",
+      "steps": {
+        "signal": "Damaged keratinocytes release paracrine signals that act on nearby melanocytes",
+        "make": "Melanocytes make more melanin and pass more melanosomes to the keratinocytes",
+        "cap": "More melanin caps the keratinocyte nuclei, and the skin looks darker",
+        "count": "No new melanocytes are made; the same cells simply work harder"
+      },
+      "variables": [
+        {
+          "id": "melanin",
+          "name": "Melanin made by each melanocyte",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "make"
+          ],
+          "why": "UV damage makes keratinocytes release paracrine signals, and nearby melanocytes respond by making more melanin from tyrosine."
+        },
+        {
+          "id": "transfer",
+          "name": "Melanin inside the keratinocytes",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "make",
+            "cap"
+          ],
+          "why": "The extra melanin is packed into melanosomes and passed out along the melanocytes’ branches into the keratinocytes, where it gathers over each nucleus. That is what you see as a tan."
+        },
+        {
+          "id": "number",
+          "name": "Number of melanocytes in the stratum basale",
+          "answer": "none",
+          "chain": [
+            "count"
+          ],
+          "why": "A week of tanning comes from each melanocyte making and passing on more melanin. Skin color differences, including a tan, come mainly from melanin output, not from the number of melanocytes."
+        }
+      ]
+    },
+    {
+      "id": "ig-cyanosis",
+      "title": "Choking: blue lips",
+      "topic": "skin-layers",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "cyanosis means the blood has turned blue",
+      "setup": "A child chokes on a piece of food and cannot breathe for about a minute before it is cleared. Her lips and the skin under her nails turn bluish. Predict the changes during that minute, compared with before she choked.",
+      "start": "No fresh air reaches her lungs",
+      "steps": {
+        "o2": "Blood leaving the lungs picks up less oxygen",
+        "given": "Much more of the blood in the capillaries of the dermis has given up its oxygen",
+        "dark": "Blood that has given up its oxygen is darker, bluish red",
+        "blue": "Seen through the skin, most clearly in the lips and under the nails, the darker blood looks bluish: cyanosis",
+        "melanin": "Melanin in the keratinocytes is untouched"
+      },
+      "variables": [
+        {
+          "id": "share",
+          "name": "Share of the blood in her skin that has given up its oxygen",
+          "answer": "up",
+          "chain": [
+            "o2",
+            "given"
+          ],
+          "why": "With no fresh air, blood leaves the lungs carrying less oxygen, and the tissues keep taking oxygen out. So much more of the blood in the dermis has given up its oxygen."
+        },
+        {
+          "id": "blue",
+          "name": "Blueness of her lips",
+          "answer": "up",
+          "chain": [
+            "o2",
+            "given",
+            "dark",
+            "blue"
+          ],
+          "why": "Blood that has given up its oxygen is darker and bluish red. Where the covering is thin and holds little melanin, as in the lips and under the clear nail plates, that darker blood shows through as cyanosis."
+        },
+        {
+          "id": "melanin",
+          "name": "Melanin in her skin",
+          "answer": "none",
+          "chain": [
+            "melanin"
+          ],
+          "why": "Cyanosis is a change in the blood seen through the skin. The pigment made by melanocytes does not change in a minute."
+        }
+      ]
+    },
+    {
+      "id": "ig-blister",
+      "title": "New shoes, a friction blister",
+      "topic": "skin-layers",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a friction blister is a split between the epidermis and the dermis",
+      "setup": "A long walk in stiff new shoes rubs the back of your heel until a fluid-filled blister forms. Predict what has happened in that skin, compared with the skin before the walk.",
+      "start": "Rubbing shears the epidermis back and forth",
+      "steps": {
+        "grip": "The dermal papillae lock the epidermis tightly to the dermis, so the shear does not pull the two apart",
+        "split": "The upper living layers of the epidermis, in the upper stratum spinosum, tear apart from each other",
+        "fluid": "Fluid from the tissue below seeps into the split and lifts the roof",
+        "vessels": "The split lies in the epidermis, which has no blood vessels",
+        "basal": "The stratum basale below the split is untouched"
+      },
+      "variables": [
+        {
+          "id": "fluid",
+          "name": "Fluid inside the epidermis at the blister",
+          "answer": "up",
+          "chain": [
+            "grip",
+            "split",
+            "fluid"
+          ],
+          "why": "The dermal papillae grip the epidermis so firmly that the epidermis tears inside itself first, in its upper living layers. Fluid then seeps into that split and puffs it up."
+        },
+        {
+          "id": "blood",
+          "name": "Blood in the blister fluid",
+          "answer": "none",
+          "chain": [
+            "split",
+            "vessels"
+          ],
+          "why": "The split is inside the epidermis, which has no blood vessels, so the fluid is clear. A blood blister means the damage reached vessels in the dermis."
+        },
+        {
+          "id": "basal",
+          "name": "Living basal cells beneath the blister",
+          "answer": "none",
+          "chain": [
+            "grip",
+            "basal"
+          ],
+          "why": "The tear is above the stratum basale, which stays attached to the dermis. Its cells go on dividing and rebuild the epidermis, so a friction blister heals without a scar."
+        }
+      ]
+    },
+    {
+      "id": "ig-chemo-hair",
+      "title": "Chemotherapy and hair",
+      "topic": "skin-accessory",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "chemotherapy destroys the hair follicles, so the hair loss is permanent",
+      "setup": "A woman starts a cancer drug that kills rapidly dividing cells. Predict the changes on her scalp after three weeks of treatment, compared with before.",
+      "start": "The drug stops rapidly dividing cells",
+      "steps": {
+        "matrix": "Matrix cells in the bulbs of anagen follicles stop dividing",
+        "break": "The hairs growing from those follicles weaken, break or fall out",
+        "follicle": "The follicles themselves survive and restart when treatment ends"
+      },
+      "variables": [
+        {
+          "id": "matrix",
+          "name": "Cell division in the hair matrix",
+          "answer": "down",
+          "chain": [
+            "matrix"
+          ],
+          "why": "Hair grows only from the matrix, one of the fastest-dividing tissues in the body, so a drug that kills dividing cells stops it."
+        },
+        {
+          "id": "shed",
+          "name": "Scalp hairs lost per day",
+          "answer": "up",
+          "chain": [
+            "matrix",
+            "break"
+          ],
+          "why": "About 85 to 90% of scalp follicles are in anagen, so most hairs lose their growing base at once and break or fall out within a few weeks."
+        },
+        {
+          "id": "follicles",
+          "name": "Number of hair follicles in her scalp",
+          "answer": "none",
+          "chain": [
+            "follicle"
+          ],
+          "why": "The drug stops the matrix cells but leaves the follicles in place. That is why hair regrows after the treatment ends."
+        }
+      ]
+    },
+    {
+      "id": "ig-fever-shedding",
+      "title": "Hair shedding months after a high fever",
+      "topic": "skin-accessory",
+      "core": [
+        "structure-function"
+      ],
+      "level": 4,
+      "misconception": "hair that falls out months after an illness is being lost for good",
+      "setup": "A man has a severe illness with several days of high fever. Follow his scalp hair over the next few months.",
+      "stages": [
+        {
+          "id": "weeks",
+          "label": "The first weeks after the fever",
+          "prompt": "Two to three weeks after the fever, compared with before the illness.",
+          "start": "The fever acts as a major shock to his body",
+          "steps": {
+            "push": "Many anagen follicles are pushed into catagen and then telogen together",
+            "anagen": "Fewer follicles are growing hair",
+            "club": "Each resting follicle still holds its club hair"
+          },
+          "variables": [
+            {
+              "id": "anagen",
+              "name": "Share of scalp follicles in anagen",
+              "answer": "down",
+              "chain": [
+                "push",
+                "anagen"
+              ],
+              "why": "The shock pushes many growing follicles into catagen and then telogen at the same time, so the share in anagen falls from its usual 85 to 90%."
+            },
+            {
+              "id": "telogen",
+              "name": "Share of scalp follicles in telogen",
+              "answer": "up",
+              "chain": [
+                "push"
+              ],
+              "why": "The follicles pushed out of anagen pass through the short catagen phase and come to rest in telogen together."
+            },
+            {
+              "id": "shed",
+              "name": "Scalp hairs lost per day",
+              "answer": "none",
+              "chain": [
+                "push",
+                "club"
+              ],
+              "why": "Not yet. A telogen follicle holds its club hair for about 3 months until a new hair grows beneath it and pushes it out."
+            }
+          ]
+        },
+        {
+          "id": "months",
+          "label": "Two to three months later",
+          "prompt": "About three months after the fever, compared with before the illness.",
+          "start": "The resting follicles restart anagen at about the same time",
+          "steps": {
+            "regrow": "A new hair grows up beneath each old club hair",
+            "pushout": "Many club hairs are pushed out within a few weeks",
+            "intact": "The follicles are intact, so each one goes on making hair"
+          },
+          "variables": [
+            {
+              "id": "shed",
+              "name": "Scalp hairs lost per day",
+              "answer": "up",
+              "chain": [
+                "regrow",
+                "pushout"
+              ],
+              "why": "The follicles that rested together restart anagen together, so their club hairs are pushed out in large numbers, far above the usual 50 to 100 a day."
+            },
+            {
+              "id": "follicles",
+              "name": "Number of hair follicles in his scalp",
+              "answer": "none",
+              "chain": [
+                "intact"
+              ],
+              "why": "The shed hairs are being replaced from intact follicles. The hair thins for a while and then regrows."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ig-puberty-glands",
+      "title": "Puberty and the skin’s glands",
+      "topic": "skin-accessory",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "body odor comes straight from sweat",
+      "setup": "Over two years of puberty, a boy’s hormone levels rise. Predict the changes in his skin’s glands, compared with before puberty.",
+      "start": "Hormone levels rise at puberty",
+      "steps": {
+        "seb": "Sebaceous glands grow and make much more sebum",
+        "oil": "More sebum flows up the follicles onto the hair and skin",
+        "apo": "Apocrine sweat glands in the armpits and groin start working",
+        "bact": "Bacteria on the skin break down the proteins and lipids of the apocrine secretion",
+        "odor": "Their products cause body odor",
+        "ecc": "Eccrine sweat glands have worked since birth and respond to heat as before"
+      },
+      "variables": [
+        {
+          "id": "sebum",
+          "name": "Sebum output",
+          "answer": "up",
+          "chain": [
+            "seb",
+            "oil"
+          ],
+          "why": "Sebum output tracks hormone levels: low through childhood, rising sharply at puberty. The skin and hair become oilier."
+        },
+        {
+          "id": "apocrine",
+          "name": "Secretion by apocrine sweat glands",
+          "answer": "up",
+          "chain": [
+            "apo"
+          ],
+          "why": "Apocrine sweat glands start working only at puberty, releasing a thicker secretion into the hair follicles of the armpits and groin."
+        },
+        {
+          "id": "odor",
+          "name": "Body odor from the armpits",
+          "answer": "up",
+          "chain": [
+            "apo",
+            "bact",
+            "odor"
+          ],
+          "why": "Apocrine secretion has almost no smell when it is released. Bacteria on the skin break down its proteins and lipids, and their products are what smell."
+        },
+        {
+          "id": "eccrine",
+          "name": "Eccrine sweat produced in a warm room",
+          "answer": "none",
+          "chain": [
+            "ecc"
+          ],
+          "why": "Eccrine glands work from birth, and their main trigger is heat. Puberty does not switch them on."
+        }
+      ]
+    },
+    {
+      "id": "ig-hot-day",
+      "theme": "exercising on a hot day",
+      "title": "Running on a hot, dry afternoon",
+      "topic": "skin-functions",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "flushed skin sheds heat whatever the air temperature",
+      "setup": "You run for 40 minutes on a dry afternoon when the air is 38 °C, hotter than your skin. Predict the changes during the run, compared with resting in the same air.",
+      "start": "Your working muscles release much more heat",
+      "steps": {
+        "sense": "Warm-sensitive nerve endings in the skin and temperature-sensitive neurons in the brain signal the brain’s temperature control center",
+        "dilate": "Nerve signals widen the vessels of the dermis, so dermal blood flow rises",
+        "sweat": "Nerve signals make the eccrine sweat glands secrete much more sweat",
+        "evap": "Sweat evaporating from the skin, the only route left, removes heat",
+        "water": "The sweat comes out of the body’s water"
+      },
+      "variables": [
+        {
+          "id": "flow",
+          "name": "Dermal blood flow",
+          "answer": "up",
+          "chain": [
+            "sense",
+            "dilate"
+          ],
+          "why": "The control center sends nerve signals that widen the dermal vessels. In most skin the nerve signals actively relax the vessel walls; in the palms, soles and lips the steady narrowing signal eases."
+        },
+        {
+          "id": "sweat",
+          "name": "Sweat produced per minute",
+          "answer": "up",
+          "chain": [
+            "sense",
+            "sweat"
+          ],
+          "why": "The same rise in temperature drives the eccrine sweat glands, which can reach 1 to 2 L an hour in hard exercise in the heat."
+        },
+        {
+          "id": "evap",
+          "name": "Heat removed by evaporation",
+          "answer": "up",
+          "chain": [
+            "sense",
+            "sweat",
+            "evap"
+          ],
+          "why": "More sweat spreads on the skin, and in dry air it evaporates readily. Each liter that turns to vapor removes about 580 kcal. It is the only route left: with the air hotter than the skin, radiation and convection add heat instead of removing it, however flushed the skin is."
+        },
+        {
+          "id": "water",
+          "name": "Water in your body",
+          "answer": "down",
+          "chain": [
+            "sense",
+            "sweat",
+            "water"
+          ],
+          "why": "Every liter of sweat is water and salt taken from the body’s fluid, so the run drains your body water unless you drink to match."
+        }
+      ]
+    },
+    {
+      "id": "ig-cold-exposure",
+      "theme": "cold exposure",
+      "title": "Waiting for a bus in a cold wind",
+      "topic": "skin-functions",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "goose bumps keep a human warm",
+      "setup": "You stand in a thin jacket at a bus stop for 20 minutes in a 2 °C wind. Predict the changes, compared with standing in a warm room.",
+      "start": "Wind and cold air carry heat away from your skin quickly",
+      "steps": {
+        "sense": "Cold-sensitive nerve endings in the skin signal the brain’s temperature control center",
+        "narrow": "Nerve signals narrow the small arteries feeding the dermis",
+        "flow": "Less warm blood reaches the skin, so the skin surface cools and looks pale",
+        "less": "Cooler skin narrows the gradient to the cold air, which limits the extra heat loss but cannot stop it",
+        "shiver": "Skeletal muscles shiver in small, rapid bursts",
+        "heat": "Shivering releases heat because the contractions do no outside work",
+        "pili": "Arrector pili muscles contract, raising goose bumps",
+        "tiny": "With so little body hair, raised hairs trap almost no extra still air",
+        "held": "Less heat lost and more heat made hold body temperature close to its set point"
+      },
+      "variables": [
+        {
+          "id": "flow",
+          "name": "Dermal blood flow",
+          "answer": "down",
+          "chain": [
+            "sense",
+            "narrow",
+            "flow"
+          ],
+          "why": "The control center sends nerve signals that narrow the vessels feeding the dermis, keeping warm blood deeper in the body."
+        },
+        {
+          "id": "skin-t",
+          "name": "Temperature of the skin surface",
+          "answer": "down",
+          "chain": [
+            "sense",
+            "narrow",
+            "flow"
+          ],
+          "why": "With less warm blood flowing through it, the skin cools toward the air temperature. That is why your fingers and ears feel cold first."
+        },
+        {
+          "id": "loss",
+          "name": "Heat lost through the skin",
+          "answer": "up",
+          "chain": [
+            "sense",
+            "narrow",
+            "flow",
+            "less"
+          ],
+          "why": "The gradient from skin to 2 °C wind is far steeper than to warm room air, so convection and radiation carry off more heat. Narrowing the dermal vessels cools the skin and limits that loss, but it cannot bring it back to the warm-room level, which is why heat production must rise too."
+        },
+        {
+          "id": "made",
+          "name": "Heat made by skeletal muscles",
+          "answer": "up",
+          "chain": [
+            "sense",
+            "shiver",
+            "heat"
+          ],
+          "why": "Shivering is rapid, involuntary contraction that moves nothing outside the body, so almost all its energy becomes heat, three to five times resting heat production for a time."
+        },
+        {
+          "id": "hair",
+          "name": "Insulation added by raised hairs",
+          "answer": "none",
+          "chain": [
+            "sense",
+            "pili",
+            "tiny"
+          ],
+          "why": "The arrector pili contract and raise goose bumps, but human body hair is so sparse that the trapped air adds almost nothing. In a furry animal the same response adds real insulation."
+        },
+        {
+          "id": "body-t",
+          "name": "Body temperature deep inside",
+          "answer": "none",
+          "chain": [
+            "sense",
+            "narrow",
+            "flow",
+            "less",
+            "shiver",
+            "heat",
+            "held"
+          ],
+          "why": "Negative feedback: less heat lost and more heat made hold the deep temperature close to its set point, as long as the loop keeps up with the cold."
+        }
+      ]
+    },
+    {
+      "id": "ig-overheated-player",
+      "title": "An overheated football player, and ice water",
+      "topic": "skin-functions",
+      "core": [
+        "homeostasis",
+        "gradients"
+      ],
+      "level": 4,
+      "misconception": "the more you sweat, the more you cool down",
+      "setup": "Marcus, 17, trains in full football gear on a muggy afternoon when the air is almost full of water vapor. He is soaked with sweat when he collapses with a body temperature of 40 °C. The trainer lowers him into a tub of ice water.",
+      "stages": [
+        {
+          "id": "practice",
+          "label": "During practice",
+          "prompt": "At the moment he collapses, compared with the start of practice.",
+          "start": "Hard exercise makes heat, and the air is humid and warm",
+          "steps": {
+            "drive": "The brain’s temperature control center drives sweating and dermal blood flow hard",
+            "sweat": "His eccrine sweat glands pour out sweat",
+            "humid": "In humid air, and under his gear, little sweat evaporates; most soaks in or drips off",
+            "store": "Heat is made faster than it is lost, so heat builds up in his body",
+            "water": "The dripping sweat drains his body water and salt"
+          },
+          "variables": [
+            {
+              "id": "sweat",
+              "name": "Sweat produced",
+              "answer": "up",
+              "chain": [
+                "drive",
+                "sweat"
+              ],
+              "why": "The temperature loop is working: rising temperature drives his eccrine glands to secrete as fast as they can."
+            },
+            {
+              "id": "temp",
+              "name": "Body temperature",
+              "answer": "up",
+              "chain": [
+                "drive",
+                "sweat",
+                "humid",
+                "store"
+              ],
+              "why": "Sweat cools only when it evaporates. In humid air under heavy gear little of it does, so the response removes far less heat than he makes, and his temperature climbs."
+            },
+            {
+              "id": "water",
+              "name": "Water in his body",
+              "answer": "down",
+              "chain": [
+                "drive",
+                "sweat",
+                "water"
+              ],
+              "why": "Sweat that drips off takes water and salt from his body fluid while removing almost no heat."
+            }
+          ]
+        },
+        {
+          "id": "tub",
+          "label": "In the ice-water tub",
+          "prompt": "During his first 10 minutes in the ice water, compared with the moment he collapsed.",
+          "start": "His skin is surrounded by water near 0 °C",
+          "steps": {
+            "grad": "A steep temperature gradient now runs from his skin to the water",
+            "cond": "Water conducts heat about 25 times faster than air, so heat pours out of his skin by conduction",
+            "cool": "Heat now leaves far faster than it is made",
+            "wet": "Under water, sweat on his skin cannot evaporate"
+          },
+          "variables": [
+            {
+              "id": "cond",
+              "name": "Heat lost by conduction",
+              "answer": "up",
+              "chain": [
+                "grad",
+                "cond"
+              ],
+              "why": "Conduction depends on contact and the gradient. Water near 0 °C touching all his skin, and conducting heat about 25 times better than air, makes conduction his main route of heat loss."
+            },
+            {
+              "id": "temp",
+              "name": "Body temperature",
+              "answer": "down",
+              "chain": [
+                "grad",
+                "cond",
+                "cool"
+              ],
+              "why": "Heat now leaves much faster than his muscles make it, so his temperature falls quickly. The trainer takes him out once it nears normal so it does not overshoot."
+            },
+            {
+              "id": "evap",
+              "name": "Heat removed by evaporating sweat",
+              "answer": "down",
+              "chain": [
+                "wet"
+              ],
+              "why": "Evaporation needs air that can take up vapor. Skin under water cannot lose heat that way, and it no longer matters: conduction removes far more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ig-vitamin-d-winter",
+      "title": "A winter far from the equator",
+      "topic": "skin-functions",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "any daylight on the skin makes vitamin D",
+      "setup": "A student moves from Singapore, near the equator, to Edinburgh, about 56 degrees north. She eats little oily fish and takes no supplement. Predict the changes by the end of her first winter, compared with her time in Singapore.",
+      "start": "The winter sun is low, so UVB travels a long path through the air and is absorbed before reaching the ground",
+      "steps": {
+        "uvb": "Little UVB reaches the 7-dehydrocholesterol in her keratinocytes",
+        "pre": "Little previtamin D3, and so little vitamin D3, is made in her skin",
+        "liver": "The liver has less vitamin D3 to turn into 25-hydroxyvitamin D",
+        "melanin": "Her melanocytes are not changed by moving"
+      },
+      "variables": [
+        {
+          "id": "d3",
+          "name": "Vitamin D3 made in her skin",
+          "answer": "down",
+          "chain": [
+            "uvb",
+            "pre"
+          ],
+          "why": "UVB is what breaks open a ring of 7-dehydrocholesterol. More than about 40 degrees from the equator, winter sun delivers little or no UVB, so her skin makes little vitamin D3."
+        },
+        {
+          "id": "blood",
+          "name": "25-hydroxyvitamin D in her blood",
+          "answer": "down",
+          "chain": [
+            "uvb",
+            "pre",
+            "liver"
+          ],
+          "why": "The liver adds the first –OH to whatever vitamin D3 arrives. With little coming from her skin or food, the level a blood test measures falls."
+        },
+        {
+          "id": "melanin",
+          "name": "Melanin in her skin",
+          "answer": "none",
+          "chain": [
+            "melanin"
+          ],
+          "why": "Moving does not change her melanocytes. Her skin may lighten slightly as a tan fades, but the cause of her low vitamin D is the missing UVB, not her pigment."
+        }
+      ]
+    },
+    {
+      "id": "ig-kidney-vitamin-d",
+      "title": "Failing kidneys and vitamin D",
+      "topic": "skin-functions",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "more sunshine fixes every kind of vitamin D shortage",
+      "setup": "A man with badly damaged kidneys spends plenty of time outdoors in summer and eats a normal diet. Predict his vitamin D and calcium, compared with a healthy man with the same sun and diet.",
+      "start": "His damaged kidneys cannot add the second –OH group",
+      "steps": {
+        "skin": "UVB on his skin still turns 7-dehydrocholesterol into vitamin D3",
+        "liver": "His liver still adds the first –OH, making 25-hydroxyvitamin D",
+        "kidney": "Little of the active hormone is made from it",
+        "gut": "His intestine absorbs a smaller share of the calcium and phosphate in food",
+        "bone": "Bone gets less calcium and phosphate to harden its tissue"
+      },
+      "variables": [
+        {
+          "id": "d3",
+          "name": "Vitamin D3 made in his skin",
+          "answer": "none",
+          "chain": [
+            "skin"
+          ],
+          "why": "The first step happens in keratinocytes, and it needs only UVB and 7-dehydrocholesterol. His kidneys play no part in it."
+        },
+        {
+          "id": "d25",
+          "name": "25-hydroxyvitamin D in his blood",
+          "answer": "none",
+          "chain": [
+            "skin",
+            "liver"
+          ],
+          "why": "The liver step works normally, so the main blood form can be at a healthy level even though the last step fails."
+        },
+        {
+          "id": "active",
+          "name": "The active hormone the kidneys make from vitamin D",
+          "answer": "down",
+          "chain": [
+            "kidney"
+          ],
+          "why": "Only the kidneys add the second –OH that makes the active hormone. Damaged kidneys make too little, whatever the supply."
+        },
+        {
+          "id": "calcium",
+          "name": "Calcium absorbed from his food",
+          "answer": "down",
+          "chain": [
+            "kidney",
+            "gut"
+          ],
+          "why": "Without enough active hormone the intestine absorbs only a small share of the calcium in food. More sun cannot fix this; the active hormone itself must be given as a drug."
+        },
+        {
+          "id": "bone",
+          "name": "Mineral hardening his bone",
+          "answer": "down",
+          "chain": [
+            "kidney",
+            "gut",
+            "bone"
+          ],
+          "why": "Bone needs a steady supply of calcium and phosphate to harden. With less absorbed from food, bone is softened and poorly mineralized."
+        }
+      ]
+    },
+    {
+      "id": "ig-sunburn",
+      "title": "A mild sunburn",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a sunburn is a burn of the dermis",
+      "setup": "After an afternoon at the pool without sunscreen, the skin of your back is red, dry and sore by evening, with no blisters. Predict the next few days, compared with the day before.",
+      "start": "UV light kills cells in the epidermis only",
+      "steps": {
+        "inflame": "The irritated dermis beneath becomes inflamed",
+        "red": "Its vessels widen and fill with blood, so the skin is red and sore",
+        "basal": "Surviving basal cells divide and regrow the epidermis",
+        "peel": "The dead surface cells peel off"
+      },
+      "variables": [
+        {
+          "id": "red",
+          "name": "Redness of the skin",
+          "answer": "up",
+          "chain": [
+            "inflame",
+            "red"
+          ],
+          "why": "Chemical messengers from damaged cells widen the dermal vessels. More blood in the dermis shows through the epidermis as erythema."
+        },
+        {
+          "id": "division",
+          "name": "Cell division in the stratum basale",
+          "answer": "up",
+          "chain": [
+            "basal"
+          ],
+          "why": "A superficial burn leaves the basal cells alive, and they divide to replace the dead layers. That is why it heals in about a week without a scar."
+        },
+        {
+          "id": "shed",
+          "name": "Shedding of surface cells",
+          "answer": "up",
+          "chain": [
+            "basal",
+            "peel"
+          ],
+          "why": "The dead layer is pushed up and lifts off as the new epidermis forms beneath it: the peeling of a sunburn."
+        }
+      ]
+    },
+    {
+      "id": "ig-burn-depth",
+      "title": "The center of a flame burn",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the most painful burn is the deepest",
+      "setup": "A flame burn has destroyed the whole dermis at its center, leaving white, leathery skin. Predict that center, compared with a scald from hot water that destroyed only the epidermis and the papillary layer.",
+      "start": "Every layer of the dermis at the center is dead",
+      "steps": {
+        "nerves": "The free nerve endings of the dermis are destroyed",
+        "appendages": "Every hair follicle and sweat gland duct in the dermis is destroyed",
+        "regrow": "No cells are left in the wound bed to regrow epidermis",
+        "blisters": "The dermal capillaries are destroyed, so no fluid collects under the dead epidermis",
+        "scar": "The gap can close only from its edges or with a skin graft, leaving a scar"
+      },
+      "variables": [
+        {
+          "id": "pain",
+          "name": "Pain felt at the center",
+          "answer": "down",
+          "chain": [
+            "nerves"
+          ],
+          "why": "Pain is detected by free nerve endings in the dermis. A full-thickness burn kills them, so its center is painless, while the partial-thickness edge hurts."
+        },
+        {
+          "id": "blisters",
+          "name": "Blisters",
+          "answer": "down",
+          "chain": [
+            "blisters"
+          ],
+          "why": "Blisters form when fluid leaks from injured, living dermal capillaries under dead epidermis. In a full-thickness burn those capillaries are dead too, so no blisters form."
+        },
+        {
+          "id": "regrow",
+          "name": "Epidermis regrown from within the wound",
+          "answer": "down",
+          "chain": [
+            "appendages",
+            "regrow"
+          ],
+          "why": "A partial-thickness burn regrows epidermis from the cells lining surviving follicles and sweat gland ducts. A full-thickness burn has none left."
+        },
+        {
+          "id": "scar",
+          "name": "Scarring",
+          "answer": "up",
+          "chain": [
+            "appendages",
+            "regrow",
+            "scar"
+          ],
+          "why": "With nothing to regrow epidermis from inside, the burn needs a skin graft, and the lost dermis is replaced by scar tissue."
+        }
+      ]
+    },
+    {
+      "id": "ig-large-burn",
+      "theme": "a large burn, predict fluid volume and blood pressure",
+      "title": "A large burn in the first hours",
+      "topic": "skin-injury",
+      "core": [
+        "homeostasis",
+        "compartments",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "blood pressure falls after a burn only if there is bleeding",
+      "setup": "A 70 kg man has partial-thickness and full-thickness burns over 40% of his body surface in a house fire. There is no bleeding. Predict the changes over the first 8 hours before fluids are given, compared with before the burn.",
+      "start": "The stratum corneum and its lipid sheets are destroyed over 40% of his skin, and the heat damages the capillaries",
+      "steps": {
+        "evap": "Water evaporates from the burned surface many times faster than through intact skin",
+        "leak": "Damaged cells and mast cells release histamine and other messengers; capillaries widen and open gaps",
+        "spread": "In a burn this large, the messengers reach the blood and capillaries all over the body leak",
+        "out": "Water, salts and proteins move from the plasma into the interstitial fluid, and the tissues swell",
+        "volume": "Blood volume falls",
+        "pressure": "Less blood returns to the heart, and blood pressure falls",
+        "rate": "The heart rate rises to compensate",
+        "kidney": "Blood flow to the kidneys falls",
+        "urine": "Urine output falls",
+        "heat": "Evaporating water carries heat away with it"
+      },
+      "variables": [
+        {
+          "id": "interstitial",
+          "name": "Interstitial fluid volume (swelling)",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "spread",
+            "out"
+          ],
+          "why": "Leaky capillaries let water, salt and protein pour out of the plasma into the tissue spaces, under the burn and, in a burn this size, all over the body."
+        },
+        {
+          "id": "volume",
+          "name": "Blood volume",
+          "answer": "down",
+          "chain": [
+            "evap",
+            "leak",
+            "spread",
+            "out",
+            "volume"
+          ],
+          "why": "Fluid leaves the vessels through the leaky capillaries and evaporates from the open wound faster than it can be replaced. The loss is greatest in the first 8 to 12 hours."
+        },
+        {
+          "id": "bp",
+          "name": "Blood pressure",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "spread",
+            "out",
+            "volume",
+            "pressure"
+          ],
+          "why": "With less blood in the vessels, less returns to the heart each minute, so less is pumped out and pressure falls, with no bleeding at all."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "spread",
+            "out",
+            "volume",
+            "pressure",
+            "rate"
+          ],
+          "why": "The fall in pressure is detected and the heart speeds up, which partly makes up for the smaller volume of blood returning to it."
+        },
+        {
+          "id": "urine",
+          "name": "Urine output",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "spread",
+            "out",
+            "volume",
+            "pressure",
+            "kidney",
+            "urine"
+          ],
+          "why": "Low pressure and low blood volume cut blood flow to the kidneys, so they make less urine. Burn teams give fluid into a vein and adjust it to keep urine output steady."
+        },
+        {
+          "id": "heat",
+          "name": "Heat lost from his body",
+          "answer": "up",
+          "chain": [
+            "evap",
+            "heat"
+          ],
+          "why": "Each liter of water evaporating from the wounds takes about 580 kcal of heat with it, so a patient with a large burn cools quickly and must be kept warm."
+        }
+      ]
+    },
+    {
+      "id": "ig-open-wound",
+      "title": "A wound left open",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "every wound heals the same way; stitches only stop bleeding",
+      "setup": "A deep scrape removes a patch of skin 3 cm across, and it is left open to heal. Predict its healing, compared with a clean cut of the same length closed with stitches.",
+      "start": "The wound edges are far apart and tissue is missing",
+      "steps": {
+        "fill": "The gap must fill from the bottom up with granulation tissue",
+        "contract": "Fibroblasts with contractile filaments pull the edges toward each other",
+        "cover": "Epithelial cells must crawl a long way across the granulation tissue",
+        "time": "Closing takes weeks to months instead of days",
+        "open": "The wound stays open to microbes for longer",
+        "scar": "More collagen is laid down, leaving a wide scar"
+      },
+      "variables": [
+        {
+          "id": "gran",
+          "name": "Granulation tissue formed",
+          "answer": "up",
+          "chain": [
+            "fill"
+          ],
+          "why": "In secondary union the missing tissue is replaced from the wound bed up by capillaries and fibroblasts laying down collagen. A stitched cut needs very little."
+        },
+        {
+          "id": "contract",
+          "name": "Wound contraction",
+          "answer": "up",
+          "chain": [
+            "contract"
+          ],
+          "why": "Specialized fibroblasts pull the edges of an open wound together, shrinking the gap that has to be filled. In a stitched cut, the stitches already hold the edges together."
+        },
+        {
+          "id": "time",
+          "name": "Time to close",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "cover",
+            "time"
+          ],
+          "why": "A deep, wide gap has to be filled and then covered from its edges, which takes weeks to months rather than days."
+        },
+        {
+          "id": "infection",
+          "name": "Risk of infection",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "cover",
+            "time",
+            "open"
+          ],
+          "why": "Until epidermis covers it, the wound has no barrier, and it stays open far longer than a stitched cut."
+        },
+        {
+          "id": "scar",
+          "name": "Width of the final scar",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "scar"
+          ],
+          "why": "The more of the gap that is filled with collagen, the wider the scar. A stitched cut leaves a thin line."
+        }
+      ]
+    },
+    {
+      "id": "ig-pressure-injury",
+      "title": "Lying still for hours",
+      "topic": "skin-injury",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "bedsores start as an infection of the skin surface",
+      "setup": "A frail man lies on his back for six hours after a fall, unable to turn. Predict the skin over his tailbone, compared with when he could move.",
+      "start": "His body weight squeezes the skin between the tailbone and the floor",
+      "steps": {
+        "squeeze": "Pressure above the pressure inside the capillaries flattens them",
+        "flow": "Blood stops flowing through the squeezed skin",
+        "o2": "The cells run short of oxygen and nutrients",
+        "die": "After a few hours, cells begin to die by necrosis",
+        "fade": "The damaged area shows redness that does not fade when pressed"
+      },
+      "variables": [
+        {
+          "id": "flow",
+          "name": "Blood flow in the skin over his tailbone",
+          "answer": "down",
+          "chain": [
+            "squeeze",
+            "flow"
+          ],
+          "why": "Blood flows only while the pressure inside a capillary is higher than the pressure squeezing it. His weight on a bony point presses the capillaries flat."
+        },
+        {
+          "id": "o2",
+          "name": "Oxygen delivered to those skin cells",
+          "answer": "down",
+          "chain": [
+            "squeeze",
+            "flow",
+            "o2"
+          ],
+          "why": "Oxygen and nutrients arrive only with flowing blood, so the squeezed cells are soon starved."
+        },
+        {
+          "id": "death",
+          "name": "Cell death in that skin and the tissue beneath",
+          "answer": "up",
+          "chain": [
+            "squeeze",
+            "flow",
+            "o2",
+            "die",
+            "fade"
+          ],
+          "why": "Cells deprived of oxygen for hours die by necrosis, starting as redness that does not fade when pressed. Turning every 2 hours lets blood return before this happens."
+        }
+      ]
+    },
+    {
+      "id": "sk-pterion-blow",
+      "title": "A baseball to the temple",
+      "topic": "skull",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a person who seems fine right after a head blow cannot have a serious skull injury",
+      "setup": "A 17-year-old is hit on the side of the head, just above the cheek arch, by a baseball. The blow cracks the thin bone at the pterion. Predict the changes over the next hour.",
+      "start": "The thin bone at the pterion cracks",
+      "steps": {
+        "tear": "The artery running along the inside of the bone at the pterion tears",
+        "bleed": "Arterial blood collects between the skull and the brain’s tough outer covering",
+        "box": "The adult brain case is a rigid box: its sutures let the bones move almost not at all",
+        "press": "The growing pool of blood presses on the brain",
+        "wake": "The squeezed brain works less well: headache, vomiting, drowsiness"
+      },
+      "variables": [
+        {
+          "id": "blood",
+          "name": "Blood between the skull and the brain’s outer covering",
+          "answer": "up",
+          "chain": [
+            "tear",
+            "bleed"
+          ],
+          "why": "A large artery runs along the inside of the bone right at the pterion, so a crack there can tear it. Blood under arterial pressure then pools between the bone and the covering."
+        },
+        {
+          "id": "volume",
+          "name": "Size of the cranial cavity",
+          "answer": "none",
+          "chain": [
+            "box"
+          ],
+          "why": "In an adult the sutures lock the cranial bones together, so the brain case cannot expand. That is exactly why the extra blood is dangerous."
+        },
+        {
+          "id": "pressure",
+          "name": "Pressure on the brain",
+          "answer": "up",
+          "chain": [
+            "tear",
+            "bleed",
+            "box",
+            "press"
+          ],
+          "why": "Blood keeps entering a box that cannot grow, so the pressure inside it rises and the brain is squeezed."
+        },
+        {
+          "id": "alert",
+          "name": "How alert he is an hour later",
+          "answer": "down",
+          "chain": [
+            "tear",
+            "bleed",
+            "box",
+            "press",
+            "wake"
+          ],
+          "why": "The pool takes time to grow, so he can seem fine at first. As the pressure rises, the brain works less well and he becomes drowsy and hard to wake, which is why a blow to the temple needs urgent care."
+        }
+      ]
+    },
+    {
+      "id": "sk-infant-dehydration",
+      "title": "A dehydrated 9-month-old",
+      "topic": "skull",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a fontanelle is an open hole with nothing over the brain",
+      "setup": "A 9-month-old has had two days of vomiting and loose stools and has lost a lot of body water. Predict what the clinician finds on the top and back of the baby’s head, compared with a well baby of the same age.",
+      "start": "The baby has lost body water, so there is less fluid inside the skull",
+      "steps": {
+        "sink": "The flexible membrane of the anterior fontanelle, with less volume behind it, sinks below the bone around it",
+        "closed": "At 9 months the posterior fontanelle has already closed",
+        "bone": "The skull bones themselves keep their shape and size"
+      },
+      "variables": [
+        {
+          "id": "anterior",
+          "name": "Height of the anterior fontanelle compared with the bone around it",
+          "answer": "down",
+          "chain": [
+            "sink"
+          ],
+          "why": "The anterior fontanelle is covered only by fibrous membrane, not bone, so it moves with the volume inside the skull. With less fluid, it sinks: a sunken fontanelle is a sign of dehydration."
+        },
+        {
+          "id": "posterior",
+          "name": "Size of the soft area at the back of the head",
+          "answer": "none",
+          "chain": [
+            "closed"
+          ],
+          "why": "The posterior fontanelle usually closes within the first 2 to 3 months, so at 9 months there is no membrane left there to sink. The anterior one stays open until about 1 to 2 years."
+        },
+        {
+          "id": "size",
+          "name": "Size of the skull bones",
+          "answer": "none",
+          "chain": [
+            "bone"
+          ],
+          "why": "Two days of water loss does not change bone. Only the membrane-covered gap moves; the bones around it stay as they were."
+        }
+      ]
+    },
+    {
+      "id": "sk-infant-pressure",
+      "title": "Rising pressure in a 4-month-old’s skull",
+      "topic": "skull",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "setup": "In a calm, upright 4-month-old, fluid slowly builds up inside the skull over several weeks. Predict the changes, compared with a healthy baby of the same age.",
+      "start": "Fluid builds up inside the skull",
+      "steps": {
+        "pressure": "The pressure inside the skull rises",
+        "bulge": "The membrane of the anterior fontanelle is pushed outward and becomes tense",
+        "seams": "The skull bones are still separate plates joined by membrane, so they are pushed apart",
+        "grow": "The whole skull enlarges",
+        "closed": "By 4 months the posterior fontanelle has already closed"
+      },
+      "variables": [
+        {
+          "id": "anterior",
+          "name": "Bulging of the anterior fontanelle",
+          "answer": "up",
+          "chain": [
+            "pressure",
+            "bulge"
+          ],
+          "why": "The fontanelle is membrane, not bone, so raised pressure pushes it out. A bulging, tense fontanelle in a calm, upright infant is a warning sign."
+        },
+        {
+          "id": "gap",
+          "name": "Width of the seams between the parietal bones",
+          "answer": "up",
+          "chain": [
+            "pressure",
+            "seams"
+          ],
+          "why": "The seams in an infant are still strips of membrane, not interlocked sutures, so the pressure spreads the bones apart."
+        },
+        {
+          "id": "head",
+          "name": "Size of the head",
+          "answer": "up",
+          "chain": [
+            "pressure",
+            "seams",
+            "grow"
+          ],
+          "why": "Because the plates can separate, the infant skull expands under pressure. An adult brain case, with locked sutures, could not."
+        },
+        {
+          "id": "posterior",
+          "name": "Bulging at the back of the head where the parietal and occipital bones meet",
+          "answer": "none",
+          "chain": [
+            "closed"
+          ],
+          "why": "The posterior fontanelle closes in the first 2 to 3 months, so at 4 months there is no membrane there left to bulge."
+        }
+      ]
+    },
+    {
+      "id": "sk-disc-herniation",
+      "title": "Lifting a box, bent over",
+      "topic": "vertebral-column",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a herniated disc presses on the nerve that exits at the same level, or on the spinal cord",
+      "setup": "A 42-year-old lifts a heavy box while bent forward. The disc between L4 and L5 herniates backward and to one side. Predict the changes.",
+      "start": "Lifting while bent forward squeezes the front edges of the L4 and L5 bodies together",
+      "steps": {
+        "push": "The gel of the nucleus pulposus is pushed backward",
+        "tear": "The weakened back of the anulus fibrosus tears and the nucleus pushes out through it",
+        "side": "The posterior longitudinal ligament covers only the midline, so the bulge goes backward and to one side",
+        "l5": "The bulge sits just inside the foramen, on the nerve running down to exit below L5",
+        "l4": "The L4 nerve leaves high in its own foramen, above the level of the bulge",
+        "cord": "In an adult the spinal cord ends at about L1 to L2, well above this disc",
+        "leg": "The squeezed nerve causes pain, tingling or weakness in the area it serves"
+      },
+      "variables": [
+        {
+          "id": "height",
+          "name": "Height of the L4-L5 disc",
+          "answer": "down",
+          "chain": [
+            "push",
+            "tear"
+          ],
+          "why": "Part of the nucleus has left the disc through the torn anulus, so less material is left between the two bodies to hold them apart."
+        },
+        {
+          "id": "l5",
+          "name": "Pressure on the L5 nerve",
+          "answer": "up",
+          "chain": [
+            "push",
+            "tear",
+            "side",
+            "l5"
+          ],
+          "why": "A typical lower-back herniation lies in the canal just inside the intervertebral foramen, where the nerve that exits one level lower runs past it on its way down. At L4-L5 that is the L5 nerve."
+        },
+        {
+          "id": "l4",
+          "name": "Pressure on the L4 nerve",
+          "answer": "none",
+          "chain": [
+            "l4"
+          ],
+          "why": "The L4 nerve leaves through the upper part of the L4-L5 foramen, above the disc, so a bulge lying inside the canal misses it. Only a less common bulge far out to the side, inside the foramen itself, would catch it."
+        },
+        {
+          "id": "cord",
+          "name": "Pressure on the spinal cord",
+          "answer": "none",
+          "chain": [
+            "cord"
+          ],
+          "why": "The spinal cord ends at about L1 to L2 in adults. At L4-L5 the canal holds only nerves heading down to their exits, so there is no cord to squeeze."
+        },
+        {
+          "id": "leg",
+          "name": "Pain and tingling down one leg",
+          "answer": "up",
+          "chain": [
+            "push",
+            "tear",
+            "side",
+            "l5",
+            "leg"
+          ],
+          "why": "The squeezed nerve carries signals from part of the leg and foot, so the pain and tingling are felt along the area it serves, on the side of the bulge."
+        }
+      ]
+    },
+    {
+      "id": "sk-disc-day-night",
+      "title": "Shorter at night",
+      "topic": "vertebral-column",
+      "core": [
+        "structure-function",
+        "mass-balance"
+      ],
+      "level": 4,
+      "misconception": "the discs are solid pads that never change",
+      "setup": "A student measures her height first thing in the morning, again after a long day on her feet, and again the next morning after a night lying down.",
+      "stages": [
+        {
+          "id": "day",
+          "label": "Evening",
+          "prompt": "After a long day upright, compared with that morning:",
+          "start": "The weight of the head and trunk squeezes every disc all day",
+          "steps": {
+            "squeeze": "The squeezed nucleus pulposus slowly loses water",
+            "thin": "Each disc gets a little thinner",
+            "sum": "Small losses in about two dozen discs add up along the column",
+            "bone": "The vertebral bodies are bone and do not compress"
+          },
+          "variables": [
+            {
+              "id": "water",
+              "name": "Water in the nucleus pulposus",
+              "answer": "down",
+              "chain": [
+                "squeeze"
+              ],
+              "why": "The nucleus is mostly water held by large water-binding molecules. Steady pressure from the weight above slowly pushes some of that water out."
+            },
+            {
+              "id": "height",
+              "name": "Her standing height",
+              "answer": "down",
+              "chain": [
+                "squeeze",
+                "thin",
+                "sum"
+              ],
+              "why": "The discs make up about a quarter of the column’s length, so a little thinning in each adds up to about 1 to 2 cm by evening."
+            },
+            {
+              "id": "bodies",
+              "name": "Height of each vertebral body",
+              "answer": "none",
+              "chain": [
+                "bone"
+              ],
+              "why": "The change is in the discs. The vertebral bodies are bone and keep their height through the day."
+            }
+          ]
+        },
+        {
+          "id": "night",
+          "label": "Next morning",
+          "prompt": "After a night lying down, compared with the evening before:",
+          "start": "Lying down takes the weight of the trunk off the discs",
+          "steps": {
+            "unload": "With the squeeze gone, the water-binding molecules draw water back into the nucleus",
+            "swell": "Each disc regains its thickness",
+            "sum": "The column lengthens back to its morning length"
+          },
+          "variables": [
+            {
+              "id": "water",
+              "name": "Water in the nucleus pulposus",
+              "answer": "up",
+              "chain": [
+                "unload"
+              ],
+              "why": "The large molecules in the nucleus hold water. Once the load is off, they pull water back in from the tissue around the disc."
+            },
+            {
+              "id": "height",
+              "name": "Her standing height",
+              "answer": "up",
+              "chain": [
+                "unload",
+                "swell",
+                "sum"
+              ],
+              "why": "Each disc thickens again overnight, so she is back to her morning height. With age the discs lose water for good, which is part of why older adults lose height."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sk-osteoporosis-kyphosis",
+      "title": "Weak thoracic vertebrae",
+      "topic": "vertebral-column",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "setup": "A 78-year-old woman with osteoporosis has weakened spongy bone in her thoracic vertebral bodies. Over several years, the fronts of several bodies collapse. Predict the changes.",
+      "start": "The fronts of weakened thoracic vertebral bodies collapse",
+      "steps": {
+        "wedge": "Each collapsed body becomes a wedge, thinner in front than behind",
+        "bend": "The stacked wedges tilt the upper back forward",
+        "short": "The column loses height at each collapsed level",
+        "lumbar": "The lumbar vertebrae are not the ones that collapsed"
+      },
+      "variables": [
+        {
+          "id": "thoracic",
+          "name": "The thoracic curve",
+          "answer": "up",
+          "chain": [
+            "wedge",
+            "bend"
+          ],
+          "why": "The thoracic curve already bows backward. Wedges that are thinner in front bend it further, giving a hunched upper back: kyphosis."
+        },
+        {
+          "id": "height",
+          "name": "Her height",
+          "answer": "down",
+          "chain": [
+            "wedge",
+            "short"
+          ],
+          "why": "Each collapsed body is shorter than before, and the forward bend lowers the head further, so she loses height."
+        },
+        {
+          "id": "lumbar-size",
+          "name": "Size of her lumbar vertebral bodies",
+          "answer": "none",
+          "chain": [
+            "lumbar"
+          ],
+          "why": "The collapse happened in the thoracic bodies. The lumbar bodies keep their size, even though her posture above them has changed."
+        }
+      ]
+    },
+    {
+      "id": "sk-pregnancy-swayback",
+      "title": "Late pregnancy and the lower back",
+      "topic": "vertebral-column",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "setup": "In the last weeks of pregnancy, a woman carries a large extra weight at the front of her abdomen. Predict the changes in her standing posture.",
+      "start": "Extra weight at the front of the abdomen",
+      "steps": {
+        "forward": "Her center of weight moves forward, in front of her feet",
+        "lean": "To keep from tipping forward, she leans her upper body back",
+        "deepen": "Leaning back bends the lower back further forward",
+        "count": "No vertebrae are added or lost"
+      },
+      "variables": [
+        {
+          "id": "lumbar",
+          "name": "Depth of the lumbar curve",
+          "answer": "up",
+          "chain": [
+            "forward",
+            "lean",
+            "deepen"
+          ],
+          "why": "The lumbar curve bows forward. Leaning back over the added front weight deepens it, an exaggerated lumbar curve: a swayback, or lordosis."
+        },
+        {
+          "id": "number",
+          "name": "Number of lumbar vertebrae",
+          "answer": "none",
+          "chain": [
+            "count"
+          ],
+          "why": "Posture changes the curve, not the bones. She still has five lumbar vertebrae."
+        }
+      ]
+    },
+    {
+      "id": "sk-flail-chest",
+      "title": "A flail chest",
+      "topic": "thoracic-cage",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a broken section of ribs moves out with the chest when you breathe in",
+      "setup": "In a car crash, ribs 4, 5 and 6 on the right each break in two places, at the front and near the back. Predict what happens as she breathes in, compared with an intact chest.",
+      "start": "Three neighboring ribs each break in two places",
+      "steps": {
+        "loose": "A section of chest wall is cut off from the rest of the cage",
+        "widen": "The intact ribs swing up and out, widening the cage",
+        "suck": "The loose section is no longer pulled out by the ribs around it, so it is sucked inward",
+        "groove": "The broken ends can tear the vessels running in the costal groove under each rib"
+      },
+      "variables": [
+        {
+          "id": "rest",
+          "name": "Widening of the rest of the cage as she breathes in",
+          "answer": "none",
+          "chain": [
+            "widen"
+          ],
+          "why": "The intact ribs are still hinged at the back and joined in front, so they swing up and out as usual."
+        },
+        {
+          "id": "segment",
+          "name": "Outward movement of the loose section as she breathes in",
+          "answer": "down",
+          "chain": [
+            "loose",
+            "suck"
+          ],
+          "why": "Two breaks in each rib leave a free piece of wall. Instead of moving out with the cage, it is sucked in while the rest of the chest widens."
+        },
+        {
+          "id": "bleed",
+          "name": "Risk of bleeding inside the chest wall",
+          "answer": "up",
+          "chain": [
+            "loose",
+            "groove"
+          ],
+          "why": "A nerve, an artery and a vein run in the costal groove along the lower edge of each rib, so sharp broken ends can tear the vessels."
+        }
+      ]
+    },
+    {
+      "id": "sk-cpr-xiphoid",
+      "title": "CPR hands placed too low",
+      "topic": "thoracic-cage",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "setup": "A bystander giving chest compressions puts the heel of his hand on the xiphoid process instead of the lower half of the sternum. Predict the effects, compared with correct hand position.",
+      "start": "Compressions land on the xiphoid process",
+      "steps": {
+        "snap": "The small tip of the sternum takes the full force",
+        "liver": "A broken xiphoid tip can be driven into the liver just below",
+        "heart": "The push lands below the heart rather than over it"
+      },
+      "variables": [
+        {
+          "id": "xiphoid",
+          "name": "Risk of breaking the xiphoid process",
+          "answer": "up",
+          "chain": [
+            "snap"
+          ],
+          "why": "The xiphoid is a small tip with no ribs attached to steady it, so a hard push can snap it."
+        },
+        {
+          "id": "liver",
+          "name": "Risk of injury to the liver",
+          "answer": "up",
+          "chain": [
+            "snap",
+            "liver"
+          ],
+          "why": "The liver lies just under the xiphoid process, below the dome of the diaphragm, so a broken tip can be pushed into it."
+        },
+        {
+          "id": "heart",
+          "name": "How directly each push squeezes the heart",
+          "answer": "down",
+          "chain": [
+            "heart"
+          ],
+          "why": "The heart sits behind the lower half of the body of the sternum. Pushing on the xiphoid lands the force below it."
+        }
+      ]
+    },
+    {
+      "id": "sk-scaphoid-fracture",
+      "title": "A fall on an outstretched hand",
+      "topic": "upper-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a wrist injury with a normal first X-ray cannot be a fracture",
+      "setup": "A 20-year-old slips on ice and lands on his outstretched hand. His scaphoid breaks across its narrow middle. Predict the changes over the next months if the break is not held still.",
+      "start": "The scaphoid breaks across its middle",
+      "steps": {
+        "cut": "Blood vessels enter the scaphoid mainly at its far end, so the near piece is cut off from them",
+        "far": "The far piece keeps the vessels that enter it",
+        "die": "Bone cells in the near piece die",
+        "heal": "Dead bone cannot take part in healing"
+      },
+      "variables": [
+        {
+          "id": "near",
+          "name": "Blood supply to the near piece of the scaphoid",
+          "answer": "down",
+          "chain": [
+            "cut"
+          ],
+          "why": "The vessels come in at the far end and run back through the bone, so a break across the middle leaves the near piece without them."
+        },
+        {
+          "id": "far",
+          "name": "Blood supply to the far piece",
+          "answer": "none",
+          "chain": [
+            "far"
+          ],
+          "why": "The vessels enter at the far end, so that piece keeps its blood supply."
+        },
+        {
+          "id": "death",
+          "name": "Chance that bone cells in the near piece die",
+          "answer": "up",
+          "chain": [
+            "cut",
+            "die"
+          ],
+          "why": "Bone cells need a blood supply. Without it, the near piece dies."
+        },
+        {
+          "id": "heal",
+          "name": "Chance the break heals on its own",
+          "answer": "down",
+          "chain": [
+            "cut",
+            "die",
+            "heal"
+          ],
+          "why": "Healing needs living bone on both sides. That is why a suspected scaphoid fracture is splinted even when the first X-ray looks normal."
+        }
+      ]
+    },
+    {
+      "id": "sk-carpal-tunnel",
+      "title": "Swelling in the carpal tunnel",
+      "topic": "upper-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "setup": "After months of repeated forceful wrist movements, the linings of the tendons in a worker’s carpal tunnel swell. Predict the changes.",
+      "start": "The tendon linings inside the carpal tunnel swell",
+      "steps": {
+        "fill": "The contents of the tunnel take up more space",
+        "rigid": "Bone walls and the tight flexor retinaculum stop the tunnel from widening",
+        "pressure": "The pressure inside the tunnel rises",
+        "nerve": "The nerve to the thumb side of the hand is squeezed",
+        "other": "The little finger’s feeling comes from a different nerve that does not pass through the tunnel"
+      },
+      "variables": [
+        {
+          "id": "pressure",
+          "name": "Pressure inside the carpal tunnel",
+          "answer": "up",
+          "chain": [
+            "fill",
+            "rigid",
+            "pressure"
+          ],
+          "why": "Swollen tissue needs more room, but the carpals form the floor and walls and the flexor retinaculum is a tight roof, so the tunnel cannot widen and the pressure climbs."
+        },
+        {
+          "id": "size",
+          "name": "Size of the carpal tunnel",
+          "answer": "none",
+          "chain": [
+            "rigid"
+          ],
+          "why": "The tunnel is bone on three sides and a tough band on top, so it cannot stretch to make room."
+        },
+        {
+          "id": "feeling",
+          "name": "Feeling in the thumb, index and middle fingers",
+          "answer": "down",
+          "chain": [
+            "fill",
+            "rigid",
+            "pressure",
+            "nerve"
+          ],
+          "why": "The raised pressure squeezes the nerve that passes through the tunnel to the thumb side of the hand, giving numbness and tingling there."
+        },
+        {
+          "id": "little",
+          "name": "Feeling in the little finger",
+          "answer": "none",
+          "chain": [
+            "other"
+          ],
+          "why": "The little finger gets its feeling from another nerve that runs outside the carpal tunnel, so it is spared."
+        }
+      ]
+    },
+    {
+      "id": "sk-clavicle-fracture",
+      "title": "A broken collarbone",
+      "topic": "upper-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "setup": "A cyclist falls onto his shoulder and breaks his clavicle through its middle. Predict the changes on that side.",
+      "start": "The clavicle breaks through its middle",
+      "steps": {
+        "strut": "The strut that holds the shoulder out to the side is broken",
+        "droop": "The weight of the arm pulls the shoulder down and forward",
+        "link": "The clavicle is the only bony link between the arm and the trunk",
+        "arm": "The humerus, radius and ulna are not broken"
+      },
+      "variables": [
+        {
+          "id": "width",
+          "name": "How far the shoulder is held out from the sternum",
+          "answer": "down",
+          "chain": [
+            "strut",
+            "droop"
+          ],
+          "why": "The clavicle is the rod that props the shoulder away from the trunk. Broken, it can no longer hold, and the shoulder drops down and in."
+        },
+        {
+          "id": "push",
+          "name": "Ability to pass a push from the arm to the trunk through bone",
+          "answer": "down",
+          "chain": [
+            "link"
+          ],
+          "why": "The scapula does not meet the ribs or the vertebral column, so the clavicle is the arm’s only bony connection to the trunk."
+        },
+        {
+          "id": "elbow",
+          "name": "Ability to bend the elbow",
+          "answer": "none",
+          "chain": [
+            "arm"
+          ],
+          "why": "The elbow is formed by the humerus, ulna and radius, which are intact, so it still bends."
+        }
+      ]
+    },
+    {
+      "id": "sk-hip-fracture",
+      "title": "A “broken hip”",
+      "topic": "lower-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": 4,
+      "misconception": "a broken hip is a break in the hip bone of the pelvis",
+      "setup": "An 82-year-old with osteoporosis falls onto the side of her hip. The neck of her femur breaks, and the broken ends shift apart.",
+      "stages": [
+        {
+          "id": "fall",
+          "label": "Right after the fall",
+          "prompt": "Just after the fall, compared with before it:",
+          "start": "The femoral neck breaks and the pieces shift",
+          "steps": {
+            "path": "The load path from the acetabulum to the shaft is broken at the neck",
+            "pull": "The pull of muscles crossing the hip draws the shaft up past the break and turns it outward",
+            "pelvis": "The acetabulum and the rest of the hip bone are intact"
+          },
+          "variables": [
+            {
+              "id": "weight",
+              "name": "Ability to stand on that leg",
+              "answer": "down",
+              "chain": [
+                "path"
+              ],
+              "why": "Weight passes from the acetabulum through the head and neck into the shaft. With the neck broken, the path is cut, so the leg cannot carry her."
+            },
+            {
+              "id": "length",
+              "name": "Length of that leg",
+              "answer": "down",
+              "chain": [
+                "path",
+                "pull"
+              ],
+              "why": "With the neck no longer holding it, the shaft is pulled up past the break, so the leg looks shorter and the foot turns outward."
+            },
+            {
+              "id": "pelvis",
+              "name": "Damage to the acetabulum",
+              "answer": "none",
+              "chain": [
+                "pelvis"
+              ],
+              "why": "The break is in the femur. The pelvis is intact, which is why a “broken hip” in an older adult is not a pelvic fracture."
+            }
+          ]
+        },
+        {
+          "id": "later",
+          "label": "Weeks later, if left unfixed",
+          "prompt": "Weeks later, if the break is not fixed or the head replaced:",
+          "start": "The shifted break has torn the vessels running up along the neck",
+          "steps": {
+            "supply": "Blood no longer reaches the femoral head",
+            "die": "Bone cells in the head die",
+            "collapse": "Dead bone cannot repair itself and the head can collapse",
+            "trochanter": "The greater trochanter lies below the break, on the shaft side"
+          },
+          "variables": [
+            {
+              "id": "blood",
+              "name": "Blood flow to the femoral head",
+              "answer": "down",
+              "chain": [
+                "supply"
+              ],
+              "why": "The vessels to the femoral head run up along the neck, so a displaced neck fracture cuts them."
+            },
+            {
+              "id": "head",
+              "name": "Living bone cells in the femoral head",
+              "answer": "down",
+              "chain": [
+                "supply",
+                "die"
+              ],
+              "why": "Without blood, the bone cells in the head die. That is why a displaced neck fracture is fixed or the head replaced quickly."
+            },
+            {
+              "id": "shape",
+              "name": "Chance the femoral head loses its shape",
+              "answer": "up",
+              "chain": [
+                "supply",
+                "die",
+                "collapse"
+              ],
+              "why": "Dead bone is not remodeled, so tiny cracks from loading are never repaired and the head can flatten."
+            },
+            {
+              "id": "troch",
+              "name": "Blood supply to the greater trochanter",
+              "answer": "none",
+              "chain": [
+                "trochanter"
+              ],
+              "why": "The greater trochanter is on the shaft side of the break and keeps its vessels. Only the head, beyond the break, is cut off."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sk-ankle-twist",
+      "title": "A broken lateral malleolus",
+      "topic": "lower-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "setup": "A soccer player twists his ankle badly and breaks the lateral malleolus at the lower end of his fibula. The tibia is intact. Predict the changes.",
+      "start": "The lateral malleolus breaks",
+      "steps": {
+        "grip": "One jaw of the wrench-like grip on the sides of the talus is lost",
+        "slide": "The talus can shift sideways",
+        "tibia": "The tibia rests on the talus and carries almost all the body weight"
+      },
+      "variables": [
+        {
+          "id": "stable",
+          "name": "Sideways stability of the ankle",
+          "answer": "down",
+          "chain": [
+            "grip",
+            "slide"
+          ],
+          "why": "The two malleoli grip the sides of the talus like the jaws of a wrench. With the lateral one broken, the talus is no longer held from the outside."
+        },
+        {
+          "id": "load",
+          "name": "Share of body weight the tibia carries",
+          "answer": "none",
+          "chain": [
+            "tibia"
+          ],
+          "why": "The tibia already carries almost all the weight from the femur to the talus, and it is intact."
+        }
+      ]
     }
   ]
 }

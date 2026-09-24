@@ -19672,6 +19672,1268 @@
    "front": "What three questions name any movement?",
    "back": "Which joint? Which plane? Which direction from anatomical position?",
    "why": "Every movement word is defined by a joint, a plane and a direction from the anatomical-position zero."
+  },
+  {
+   "id": "ig-edh-tissue",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epidermis vs dermis vs hypodermis",
+   "front": "Epidermis vs dermis vs hypodermis: what tissue is each made of?",
+   "back": "Epidermis: keratinized stratified squamous epithelium. Dermis: connective tissue, areolar on top and dense irregular below. Hypodermis: areolar and adipose tissue.",
+   "why": "The skin is built from all four tissue types, but each layer is dominated by one: epithelium on the surface, connective tissue beneath, fat below that."
+  },
+  {
+   "id": "ig-edh-vessels",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epidermis vs dermis vs hypodermis",
+   "front": "Epidermis vs dermis vs hypodermis: which has blood vessels?",
+   "back": "Epidermis: none (avascular). Dermis: many capillary networks. Hypodermis: larger vessels that supply the dermis.",
+   "why": "The epidermis is fed by diffusion from the dermis, which is why a shallow paper cut stings but does not bleed."
+  },
+  {
+   "id": "ig-edh-cells",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epidermis vs dermis vs hypodermis",
+   "front": "Epidermis vs dermis vs hypodermis: what is the main cell of each?",
+   "back": "Epidermis: keratinocytes. Dermis: fibroblasts. Hypodermis: adipocytes.",
+   "why": "Keratinocytes make keratin, fibroblasts make the collagen and elastic fibers of the dermis, and adipocytes store fat."
+  },
+  {
+   "id": "ig-edh-regrow",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Epidermis vs dermis vs hypodermis",
+   "front": "Epidermis vs dermis vs hypodermis: which can fully regrow after injury?",
+   "back": "Epidermis: yes, its basal cells divide throughout life. Dermis: only partly; deep damage heals with scar tissue. Hypodermis: partly, slowly.",
+   "why": "Regrowth needs cells that can divide and a framework to rebuild on; the epidermis has stem cells in its stratum basale."
+  },
+  {
+   "id": "ig-edh-hypodermis",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Epidermis vs dermis vs hypodermis",
+   "front": "Is the hypodermis part of the skin?",
+   "back": "No. It lies beneath the dermis and is studied with the skin because it anchors the skin to the body.",
+   "why": "The skin proper is the epidermis and dermis; the hypodermis (subcutaneous layer) ties them loosely to the deep fascia over the muscles."
+  },
+  {
+   "id": "ig-strata-order",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the five strata of thick skin, deep to superficial.",
+   "back": "Stratum basale, stratum spinosum, stratum granulosum, stratum lucidum, stratum corneum.",
+   "why": "Each stratum is a snapshot of a keratinocyte’s journey from the dividing basal layer to the dead, shed surface."
+  },
+  {
+   "id": "ig-basale",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What happens in the stratum basale, and which cells live there?",
+   "back": "Basal (stem) cells divide by mitosis; melanocytes and tactile cells also sit here.",
+   "why": "It is the only layer of the epidermis whose cells divide, and it rests on the basement membrane nearest the dermal capillaries."
+  },
+  {
+   "id": "ig-spinosum",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do cells of the stratum spinosum look spiny on a slide?",
+   "back": "The cells shrink during slide preparation, but their desmosomes hold, so each cell stays tethered to its neighbors at many points.",
+   "why": "The spines are an artifact that shows how many desmosomes join the keratinocytes. Langerhans cells sit mainly in this layer."
+  },
+  {
+   "id": "ig-granulosum",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What two kinds of granule appear in the stratum granulosum, and what does each do?",
+   "back": "Keratohyalin granules bind keratin filaments into bundles; lamellar granules release lipids that seal the spaces between cells.",
+   "why": "In the same layer the nucleus and organelles break down, so by its top the cells are dying."
+  },
+  {
+   "id": "ig-corneum",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the stratum corneum made of?",
+   "back": "Flat, dead cells of cross-linked keratin set in lipid sheets, like bricks in mortar.",
+   "why": "The dead keratin envelopes resist wear and the lipid sheets block water, which together make the barrier."
+  },
+  {
+   "id": "ig-transit",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How long does a keratinocyte take to travel from the stratum basale to being shed?",
+   "back": "Roughly four to eight weeks.",
+   "why": "Estimates vary with body site and age; the tan that rides in these cells fades on about the same timescale."
+  },
+  {
+   "id": "ig-tt-where",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Thin skin vs thick skin",
+   "front": "Thin skin vs thick skin: where is each found?",
+   "back": "Thick skin: palms, soles, and the palm side of the fingers and toes. Thin skin: everywhere else.",
+   "why": "Thick skin covers the surfaces that take the most friction."
+  },
+  {
+   "id": "ig-tt-strata",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Thin skin vs thick skin",
+   "front": "Thin skin vs thick skin: how many strata, and which one is missing in thin skin?",
+   "back": "Thin skin: four strata. Thick skin: five. Thin skin lacks the stratum lucidum.",
+   "why": "The stratum lucidum is a thin, clear band of dead cells found only in thick skin."
+  },
+  {
+   "id": "ig-tt-features",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Thin skin vs thick skin",
+   "front": "Thin skin vs thick skin: which has hair, and which has friction ridges?",
+   "back": "Thin skin has hair almost everywhere; thick skin has no hair but has friction ridges (fingerprints).",
+   "why": "In thick skin the dermal papillae sit in rows and push the epidermis up into ridges."
+  },
+  {
+   "id": "ig-tt-meaning",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Thin skin vs thick skin",
+   "front": "The skin of the upper back is the thickest on the body. Is it thick skin?",
+   "back": "No. It is thin skin with a very deep dermis.",
+   "why": "“Thick” and “thin” describe the epidermis only. The upper back’s epidermis has only four strata."
+  },
+  {
+   "id": "ig-pr-tissue",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Papillary vs reticular layer",
+   "front": "Papillary vs reticular layer: what tissue, and what share of the dermis?",
+   "back": "Papillary: areolar (loose) connective tissue, about 20%. Reticular: dense irregular connective tissue, about 80%.",
+   "why": "The loose upper layer carries capillary loops up to the epidermis; the dense lower layer gives the skin its toughness."
+  },
+  {
+   "id": "ig-pr-contents",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Papillary vs reticular layer",
+   "front": "Papillary vs reticular layer: what does each contain?",
+   "back": "Papillary: capillary loops and touch-sensitive nerve endings in the dermal papillae. Reticular: larger vessels and nerves, glands, and the deep parts of hairs.",
+   "why": "The papillae bring blood and sensation close to the epidermis; the reticular layer holds the bigger structures."
+  },
+  {
+   "id": "ig-pr-fibers",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Papillary vs reticular layer",
+   "front": "Why does the reticular layer resist pulling from any direction?",
+   "back": "Its thick collagen bundles run in many directions, with elastic fibers among them.",
+   "why": "Dense irregular connective tissue resists stretch in all directions and springs back; that is also what makes leather tough."
+  },
+  {
+   "id": "ig-papillae",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What two jobs do the dermal papillae do through their shape?",
+   "back": "They enlarge the surface for nutrients to diffuse up to the stratum basale, and they lock the epidermis to the dermis against shearing.",
+   "why": "A wavy border has more contact area than a flat one, both for diffusion and for grip."
+  },
+  {
+   "id": "ig-blister",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where does a friction blister split?",
+   "back": "Inside the epidermis, in its upper living layers (the upper stratum spinosum).",
+   "why": "The dermal papillae grip the epidermis so firmly that rubbing tears the epidermis itself first; fluid seeps into the split."
+  },
+  {
+   "id": "ig-tension-lines",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a surgical cut along tension lines heal with a thinner scar?",
+   "back": "Along those lines, the cut runs parallel to most collagen bundles of the reticular layer, so it gapes less.",
+   "why": "Collagen bundles in any one area run mostly one way; a cut across them is pulled open."
+  },
+  {
+   "id": "ig-hypodermis-jobs",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What three things does the hypodermis do?",
+   "back": "It anchors the skin loosely, stores fat, and insulates and cushions.",
+   "why": "Loose fibers let the skin slide over the muscles, adipocytes store triglycerides, and fat conducts heat poorly."
+  },
+  {
+   "id": "ig-injection",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is a drug injected into the hypodermis absorbed slowly and steadily?",
+   "back": "The hypodermis has a moderate blood supply, less than muscle.",
+   "why": "Fewer vessels carry the drug away more slowly, over minutes to hours; few nerve endings make the injection hurt little."
+  },
+  {
+   "id": "ig-melanin",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which cells make melanin, and which cells hold it?",
+   "back": "Melanocytes in the stratum basale make it; keratinocytes take it in as melanosomes.",
+   "why": "Melanosomes travel along the melanocytes’ branches to the keratinocytes around them."
+  },
+  {
+   "id": "ig-melanin-job",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does melanin protect a keratinocyte?",
+   "back": "It gathers as a cap over the side of the nucleus facing the surface and absorbs UV, turning its energy into harmless heat.",
+   "why": "The cap shades the DNA from UV damage that can cause mutations and, over years, cancer."
+  },
+  {
+   "id": "ig-skin-tone",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Does darker skin have more melanocytes than lighter skin?",
+   "back": "No. The number is about the same; darker skin has larger, darker, more numerous melanosomes that last longer.",
+   "why": "Differences in skin color come from how much melanin is made and kept, not from the number of melanocytes."
+  },
+  {
+   "id": "ig-eu-pheo",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Eumelanin vs pheomelanin: what color is each?",
+   "back": "Eumelanin: brown to black. Pheomelanin: red to yellow.",
+   "why": "Each person’s skin and hair hold a mix of the two."
+  },
+  {
+   "id": "ig-tan",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What does a tan show about the skin?",
+   "back": "That UV has already damaged the DNA of keratinocytes.",
+   "why": "Damaged keratinocytes send paracrine signals that make melanocytes produce more melanin; the darkening is a response to damage."
+  },
+  {
+   "id": "ig-tactile-cell",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does a tactile (Merkel) cell do, and where is it most common?",
+   "back": "It presses on a sensory nerve ending in the stratum basale and signals touch; it is most common in the fingertips and lips.",
+   "why": "Where touch is finest, these cells are most numerous."
+  },
+  {
+   "id": "ig-langerhans",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What do Langerhans cells do, and where do they come from?",
+   "back": "They take up foreign material, such as microbes, in the epidermis. They settle in the skin before birth and renew themselves there for life.",
+   "why": "For your exam: many textbooks say they come from the bone marrow; bone marrow cells replace them mainly after severe skin inflammation. “Bone marrow” may be the expected answer."
+  },
+  {
+   "id": "ig-carotene",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where does carotene collect in the skin, and why there?",
+   "back": "In the stratum corneum and the fat of the hypodermis, because it is lipid soluble.",
+   "why": "Carotene is a yellow-orange plant pigment; eating a lot of it can turn the palms and soles harmlessly orange."
+  },
+  {
+   "id": "ig-erythema-pallor",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Erythema vs pallor: what causes each?",
+   "back": "Erythema: redness from vasodilation, more blood in the dermis. Pallor: paleness from less blood in the dermis, from vasoconstriction or too few red blood cells.",
+   "why": "Skin color changes with how much blood fills the dermal capillaries, seen through the epidermis."
+  },
+  {
+   "id": "ig-cyanosis",
+   "topic": "skin-layers",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is cyanosis?",
+   "back": "A bluish color when much of the blood in the skin has given up its oxygen, as when breathing fails.",
+   "why": "Blood that has given up its oxygen is darker and bluish red; it shows best in the lips and under the nails. In darker skin, check the lips, gums and inside of the lower eyelid."
+  },
+  {
+   "id": "ig-hair-parts",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Hair shaft vs hair root vs hair bulb: where is each?",
+   "back": "Shaft: above the skin surface. Root: inside the follicle. Bulb: the swollen base of the follicle around the hair papilla.",
+   "why": "The hair matrix just above the papilla is the only place hair is made; everything above it is dead."
+  },
+  {
+   "id": "ig-hair-layers",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name a hair’s three layers from the center out.",
+   "back": "Medulla, cortex, cuticle.",
+   "why": "The cortex holds most of the pigment and strength; the shingle-like cuticle keeps hairs from matting."
+  },
+  {
+   "id": "ig-hard-keratin",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is hair tougher than the stratum corneum?",
+   "back": "Hard keratin: its keratin molecules are tied together by many disulfide bonds.",
+   "why": "A chemical perm breaks those bonds, reshapes the hair and lets them re-form in new places."
+  },
+  {
+   "id": "ig-gray",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why does hair turn gray?",
+   "back": "The melanocytes of the hair matrix run out with age.",
+   "why": "The matrix melanocytes pass melanin to the new cells of the hair, just as skin melanocytes supply keratinocytes."
+  },
+  {
+   "id": "ig-hc-what",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Anagen vs catagen vs telogen",
+   "front": "Anagen vs catagen vs telogen: what happens in each?",
+   "back": "Anagen: the matrix divides and the hair grows. Catagen: the matrix stops, the follicle shrinks, a club hair forms. Telogen: the follicle rests holding the club hair.",
+   "why": "A new anagen grows a hair beneath the club hair and pushes it out."
+  },
+  {
+   "id": "ig-hc-length",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Anagen vs catagen vs telogen",
+   "front": "Anagen vs catagen vs telogen: how long does each last on the scalp?",
+   "back": "Anagen: about 2 to 7 years. Catagen: about 2 to 3 weeks. Telogen: about 3 months.",
+   "why": "About 85 to 90% of scalp follicles are in anagen at any time, and you shed about 50 to 100 scalp hairs a day."
+  },
+  {
+   "id": "ig-hc-lash",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Anagen vs catagen vs telogen",
+   "front": "Why does an eyelash stop at about a centimeter while a scalp hair can reach a meter?",
+   "back": "Its anagen lasts only a few months; a scalp follicle grows for years.",
+   "why": "Eyelashes grow only two to three times more slowly; the bigger difference is how long each follicle keeps growing."
+  },
+  {
+   "id": "ig-hc-chemo",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Anagen vs catagen vs telogen",
+   "front": "Anagen vs catagen vs telogen: which follicles does a drug that kills dividing cells hit?",
+   "back": "Anagen follicles, whose matrix cells are dividing; catagen follicles little, telogen follicles not at all.",
+   "why": "The hairs break or fall out within weeks, and regrow after treatment because the follicles survive."
+  },
+  {
+   "id": "ig-shock-shedding",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Anagen vs catagen vs telogen",
+   "front": "Why does heavy hair shedding start 2 to 3 months after a high fever or childbirth?",
+   "back": "The shock pushes many anagen follicles into catagen and telogen together; when they restart anagen months later, their club hairs are pushed out at once.",
+   "why": "Telogen lasts about 3 months, so the shedding is delayed. The follicles are intact, so the hair regrows."
+  },
+  {
+   "id": "ig-arrector",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the arrector pili, and what does it do?",
+   "back": "A small bundle of smooth muscle from the follicle to the papillary layer; it contracts to pull the hair upright into a goose bump.",
+   "why": "It is involuntary: nerve signals triggered by cold or fear make it contract."
+  },
+  {
+   "id": "ig-sebaceous",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How do sebaceous glands secrete, and where do most empty?",
+   "back": "By holocrine secretion, releasing whole burst cells as sebum; most empty into a hair follicle.",
+   "why": "Cells fill with lipid and burst; there are none on the palms and soles, which have no hair."
+  },
+  {
+   "id": "ig-sebum",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What three things does sebum do?",
+   "back": "Keeps hair supple, slows water loss from the skin, and slows the growth of some bacteria and fungi.",
+   "why": "Its oily film holds water in and carries fatty acids that act against microbes."
+  },
+  {
+   "id": "ig-ea-where",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Eccrine vs apocrine sweat glands",
+   "front": "Eccrine vs apocrine sweat glands: where is each found?",
+   "back": "Eccrine: almost all skin, densest on palms, soles and forehead. Apocrine: armpits, groin and around the nipples.",
+   "why": "Eccrine glands cover the body for heat loss; apocrine glands cluster where there is terminal hair."
+  },
+  {
+   "id": "ig-ea-duct",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Eccrine vs apocrine sweat glands",
+   "front": "Eccrine vs apocrine sweat glands: where does each duct open?",
+   "back": "Eccrine: at a pore on the skin surface. Apocrine: into a hair follicle.",
+   "why": "Apocrine ducts join the follicle above the sebaceous gland."
+  },
+  {
+   "id": "ig-ea-product",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Eccrine vs apocrine sweat glands",
+   "front": "Eccrine vs apocrine sweat glands: what does each secrete?",
+   "back": "Eccrine: watery sweat, about 99% water with some salt, potassium and lactate. Apocrine: thicker sweat with added proteins and lipids.",
+   "why": "The duct of an eccrine gland takes back much of the sodium and chloride before the sweat reaches the surface."
+  },
+  {
+   "id": "ig-ea-trigger",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Eccrine vs apocrine sweat glands",
+   "front": "Eccrine vs apocrine sweat glands: what triggers each, and when do they start working?",
+   "back": "Eccrine: heat (and emotion on palms and soles), from birth. Apocrine: emotional stress, pain and sexual arousal, from puberty.",
+   "why": "Only eccrine glands serve heat loss; apocrine glands switch on with the hormones of puberty."
+  },
+  {
+   "id": "ig-ea-mode",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Eccrine vs apocrine sweat glands",
+   "front": "Eccrine vs apocrine sweat glands: how does each release its product?",
+   "back": "Both mainly by exocytosis (merocrine), despite the apocrine gland’s name.",
+   "why": "For your exam: many exams give apocrine sweat glands as the example of apocrine secretion, where the top of the cell pinches off. The name is historical."
+  },
+  {
+   "id": "ig-ea-odor",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Eccrine vs apocrine sweat glands",
+   "front": "Eccrine vs apocrine sweat glands: which causes body odor, and how?",
+   "back": "Apocrine. Bacteria on the skin break down its proteins and lipids, and their products smell.",
+   "why": "Fresh apocrine sweat has almost no smell; eccrine sweat has none."
+  },
+  {
+   "id": "ig-salty-sweat",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is sweat made fast during hard work saltier than a light sweat?",
+   "back": "Fast flow gives the duct less time to take back sodium and chloride.",
+   "why": "Heavy sweating therefore loses both water and salt."
+  },
+  {
+   "id": "ig-nail-matrix",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which part of a nail makes the nail plate?",
+   "back": "The nail matrix, under the nail root.",
+   "why": "Damage to the matrix can leave a nail permanently ridged or split; damage to the nail bed alone usually heals."
+  },
+  {
+   "id": "ig-lunula",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the lunula white while the rest of the nail looks pink?",
+   "back": "It is the visible part of the matrix, whose thick layer of cells hides the capillaries beneath.",
+   "why": "The pink of the nail is blood in the dermis under the clear nail plate."
+  },
+  {
+   "id": "ig-epony-hypony",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Eponychium vs hyponychium: where is each?",
+   "back": "Eponychium (nail cuticle): stratum corneum over the base of the nail. Hyponychium: thickened stratum corneum under the free edge.",
+   "why": "Both seal a gap against microbes: one at the proximal nail fold, one under the fingertip."
+  },
+  {
+   "id": "ig-nail-growth",
+   "topic": "skin-accessory",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How fast do fingernails and toenails grow?",
+   "back": "Fingernails about 3 mm a month, taking about 6 months to regrow; toenails about a third as fast, 12 to 18 months.",
+   "why": "The matrix pushes the plate forward over the nail bed."
+  },
+  {
+   "id": "ig-barrier",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can lipid-soluble drugs cross intact skin while water-soluble ones barely do?",
+   "back": "The skin’s barrier is lipid sheets between dead cells, which hydrophobic substances can dissolve through slowly.",
+   "why": "That is how skin patches deliver some drugs, and why solvents and some pesticides are absorbed through the skin."
+  },
+  {
+   "id": "ig-acid-mantle",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the pH of the skin surface, and why does it matter?",
+   "back": "Slightly acidic, about pH 5.",
+   "why": "Many harmful microbes grow poorly at that pH, and the enzymes that build the lipid sheets work best there."
+  },
+  {
+   "id": "ig-tr-free",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Touch receptors of the skin",
+   "front": "What do free nerve endings respond to, and where are they?",
+   "back": "Pain, heat, cold, itch and some touch; in the lower epidermis and throughout the dermis.",
+   "why": "They are bare, branching nerve tips with no capsule, and they keep signaling during a steady stimulus."
+  },
+  {
+   "id": "ig-tr-meissner",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Touch receptors of the skin",
+   "front": "Tactile (Meissner) corpuscle vs lamellated (Pacinian) corpuscle: where is each and what does it sense?",
+   "back": "Tactile: dermal papillae of hairless skin; light touch and slow vibration. Lamellated: deep dermis and hypodermis; deep pressure and fast vibration.",
+   "why": "Both are encapsulated and signal when pressure changes, then fall quiet."
+  },
+  {
+   "id": "ig-tr-adapt",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Touch receptors of the skin",
+   "front": "Why do you stop feeling your socks soon after putting them on?",
+   "back": "Endings such as the tactile and lamellated corpuscles signal when pressure changes, then fall quiet.",
+   "why": "Endings that keep signaling, like tactile cells, let you feel how hard you grip a cup for as long as you hold it."
+  },
+  {
+   "id": "ig-hr-routes",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Radiation vs conduction vs convection vs evaporation: how does each move heat?",
+   "back": "Radiation: infrared rays to cooler surfaces. Conduction: directly into an object you touch. Convection: carried off by moving air or water. Evaporation: used up turning sweat into vapor.",
+   "why": "All four depend on a gradient or on vapor leaving the skin; heat always moves from warmer to cooler."
+  },
+  {
+   "id": "ig-hr-share",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "At rest in a cool room, roughly what share of heat leaves by each route?",
+   "back": "Radiation about 60%, evaporation about 20%, convection about 15%, conduction about 3%.",
+   "why": "Radiation dominates because your skin is warmer than the walls and objects around you."
+  },
+  {
+   "id": "ig-hr-hot",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "When the air is hotter than your skin, which heat-loss route still works?",
+   "back": "Only evaporation. Radiation, conduction and convection run backward and add heat.",
+   "why": "Evaporation needs no gradient; it only needs air that can take up water vapor."
+  },
+  {
+   "id": "ig-hr-580",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "How much heat does a liter of evaporated sweat remove, and what about sweat that drips off?",
+   "back": "About 580 kcal per liter evaporated; dripping sweat removes almost none.",
+   "why": "The energy is taken up when water changes to vapor. In humid air, sweat evaporates slowly and more of it drips."
+  },
+  {
+   "id": "ig-hr-water",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Why does cold water chill you faster than air at the same temperature?",
+   "back": "Water conducts heat about 25 times faster than air.",
+   "why": "Conduction and convection in water pull heat from the skin far faster, which is why ice-water immersion cools an overheated person quickly."
+  },
+  {
+   "id": "ig-tl-effectors",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Body temperature: too warm vs too cold",
+   "front": "Body too warm vs too cold: what are the effectors?",
+   "back": "Too warm: smooth muscle of the dermal vessels and the eccrine sweat glands. Too cold: smooth muscle of the dermal vessels, skeletal muscles (shivering) and the arrector pili.",
+   "why": "Both loops share one sensor set and control center, the brain’s temperature control center, and both are negative feedback."
+  },
+  {
+   "id": "ig-tl-response",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Body temperature: too warm vs too cold",
+   "front": "Body too warm vs too cold: what is the response?",
+   "back": "Too warm: vasodilation raises dermal blood flow and sweating adds evaporation. Too cold: vasoconstriction lowers dermal blood flow and shivering makes heat.",
+   "why": "Each response opposes the change that started it."
+  },
+  {
+   "id": "ig-tl-flow",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Body temperature: too warm vs too cold",
+   "front": "How much can skin blood flow change?",
+   "back": "From about 0.3 L/min at rest in comfortable air to 6 to 8 L/min in severe heat.",
+   "why": "How much warm blood passes through the dermis decides how much heat reaches the surface to be lost."
+  },
+  {
+   "id": "ig-active-dilation",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Body temperature: too warm vs too cold",
+   "front": "In heat, how do the dermal vessels of most skin widen, compared with those of the palms, soles and lips?",
+   "back": "Most (hairy) skin: nerve signals actively relax the vessel walls. Palms, soles and lips: mainly the steady narrowing signal eases.",
+   "why": "For your exam: many texts say the vessels widen only because the narrowing signal weakens; human studies show that fits only the hairless skin. Know the answer your course expects."
+  },
+  {
+   "id": "ig-shiver",
+   "topic": "skin-functions",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Body temperature: too warm vs too cold",
+   "front": "Why does shivering warm you?",
+   "back": "The muscle contractions move nothing outside the body, so nearly all their energy is released as heat.",
+   "why": "Shivering can raise heat production three- to fivefold for a time."
+  },
+  {
+   "id": "ig-vitd-steps",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "List the steps from sunlight to the active hormone made from vitamin D.",
+   "back": "UVB opens a ring of 7-dehydrocholesterol in keratinocytes (previtamin D3); warmth makes vitamin D3; the liver adds one –OH (25-hydroxyvitamin D); the kidneys add a second (the active hormone).",
+   "why": "Each step needs the product of the one before, in a different place."
+  },
+  {
+   "id": "ig-7dhc",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How is 7-dehydrocholesterol related to cholesterol?",
+   "back": "Cells convert 7-dehydrocholesterol into cholesterol in the last step of making it.",
+   "why": "So the vitamin D precursor in the skin is a close relative of cholesterol, and UVB diverts some of it to previtamin D3 instead."
+  },
+  {
+   "id": "ig-vitd-limits",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What reduces the vitamin D your skin makes?",
+   "back": "More melanin, sunscreen and clothing, winter sun far from the equator, window glass, and older age.",
+   "why": "Each works through the same step: less UVB reaching 7-dehydrocholesterol (or, with age, less 7-dehydrocholesterol)."
+  },
+  {
+   "id": "ig-vitd-overdose",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Can too much sun give you too much vitamin D?",
+   "back": "No. Extra UV converts previtamin D3 and vitamin D3 into inactive products.",
+   "why": "Toxic vitamin D levels come only from supplements."
+  },
+  {
+   "id": "ig-vitd-test",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which form of vitamin D does a blood test measure?",
+   "back": "25-hydroxyvitamin D, made by the liver.",
+   "why": "It is the main form in the blood and reflects supply from both skin and food."
+  },
+  {
+   "id": "ig-rickets",
+   "topic": "skin-functions",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is rickets, and how does too little vitamin D cause it?",
+   "back": "Soft, poorly mineralized bone in a child, with bowed legs; without enough active hormone the intestine absorbs too little calcium to harden new bone.",
+   "why": "Growing bone needs a steady supply of calcium and phosphate; sunless cities once caused it widely."
+  },
+  {
+   "id": "ig-depth-heals",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a scrape heal without a mark while a deep cut scars?",
+   "back": "A scrape stays in the epidermis, whose basal cells regenerate it; a deep cut into the dermis heals partly by fibrosis.",
+   "why": "The deeper the injury, the more of the gap is filled with collagen as scar tissue."
+  },
+  {
+   "id": "ig-wh-stages",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four stages of wound healing in order.",
+   "back": "Bleeding stops, inflammation, rebuilding, remodeling.",
+   "why": "Minutes, the first few days, about day 3 to week 3, then weeks to a year or more; the stages overlap."
+  },
+  {
+   "id": "ig-granulation",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is granulation tissue?",
+   "back": "Moist, pink, grainy tissue of new capillary loops and fibroblasts laying down collagen.",
+   "why": "The tiny bumps are capillary loops, which is why it bleeds easily."
+  },
+  {
+   "id": "ig-scar-strength",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How strong can a healed scar become, and what does it lack?",
+   "back": "At most about 80% of the strength of unwounded skin; it has no hair, sweat glands or sebaceous glands.",
+   "why": "Remodeling reorganizes the collagen but never restores the original dermis."
+  },
+  {
+   "id": "ig-ps-what",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Primary vs secondary union",
+   "front": "Primary vs secondary union: what kind of wound heals each way?",
+   "back": "Primary: edges held together, as a stitched surgical cut. Secondary: an open wound with tissue lost, such as a deep scrape or an ulcer.",
+   "why": "How far apart the edges are decides how much filling is needed."
+  },
+  {
+   "id": "ig-ps-compare",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Primary vs secondary union",
+   "front": "Primary vs secondary union: granulation tissue, contraction, time and scar?",
+   "back": "Primary: little granulation and contraction, days, a thin line. Secondary: a lot of both, weeks to months, a wide scar.",
+   "why": "An open wound fills from the bottom up and is pulled in by wound contraction; it also has a higher infection risk."
+  },
+  {
+   "id": "ig-keloid",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Keloid vs hypertrophic scar: what is the difference?",
+   "back": "A keloid keeps growing beyond the wound’s edges; a hypertrophic scar stays within them and often flattens.",
+   "why": "In a keloid, fibroblasts go on making excess collagen for months or years; it is more common in darker skin and on the earlobes, chest and shoulders."
+  },
+  {
+   "id": "ig-bd-layers",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Burn depth classification",
+   "front": "Burn depth: which layers does each class destroy?",
+   "back": "Superficial: epidermis only. Superficial partial-thickness: plus the papillary layer. Deep partial-thickness: plus much of the reticular layer. Full-thickness: all of the dermis, into the hypodermis.",
+   "why": "A burn is named for the deepest layer it destroys, because that decides whether it can heal on its own."
+  },
+  {
+   "id": "ig-bd-degrees",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Burn depth classification",
+   "front": "Burn depth: match the older degree names to the current names.",
+   "back": "First-degree = superficial. Second-degree = partial-thickness (superficial or deep). Third-degree = full-thickness. Fourth-degree reaches muscle, tendon or bone.",
+   "why": "Both sets of names appear on exams."
+  },
+  {
+   "id": "ig-bd-look",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Burn depth classification",
+   "front": "Burn depth: which burn blisters, and which does not?",
+   "back": "Partial-thickness burns blister; superficial and full-thickness burns do not.",
+   "why": "Blisters need fluid leaking from living, injured dermal capillaries under dead epidermis. A superficial burn has no dead epidermis to lift; a full-thickness burn has no living capillaries."
+  },
+  {
+   "id": "ig-bd-pain",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Burn depth classification",
+   "front": "Burn depth: why is a full-thickness burn painless in its center?",
+   "back": "Its nerve endings, in the dermis, are destroyed.",
+   "why": "The partial-thickness burn around it still has living nerve endings and hurts."
+  },
+  {
+   "id": "ig-bd-heal",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Burn depth classification",
+   "front": "Burn depth: why does a full-thickness burn need a skin graft?",
+   "back": "It destroys every follicle and sweat gland duct in the dermis, so nothing is left to regrow epidermis except at the edges.",
+   "why": "Partial-thickness burns regrow epidermis from the cells lining surviving follicles and ducts."
+  },
+  {
+   "id": "ig-bd-time",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Burn depth classification",
+   "front": "Burn depth: how long does each class take to heal on its own?",
+   "back": "Superficial: about a week. Superficial partial-thickness: 2 to 3 weeks. Deep partial-thickness: more than 3 weeks, with a scar. Full-thickness: cannot heal from within.",
+   "why": "The deeper the burn, the fewer cells survive to regrow epidermis."
+  },
+  {
+   "id": "ig-nines-adult",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Rule of nines in an adult: what is each region worth?",
+   "back": "Head and neck 9%, each arm 9%, front of trunk 18%, back of trunk 18%, each leg 18%, genital area 1%.",
+   "why": "The regions add to 100%. Count only partial-thickness and full-thickness burns."
+  },
+  {
+   "id": "ig-nines-infant",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Rule of nines in an infant: which values change?",
+   "back": "Head and neck 18%; each leg 13.5% (often rounded to 14%). The arms and trunk stay the same.",
+   "why": "A baby’s head is large and its legs short, so the adult chart would underestimate a burn to the head."
+  },
+  {
+   "id": "ig-palm",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the palm method for burn size?",
+   "back": "The patient’s own palm, with the fingers, covers about 1% of their body surface.",
+   "why": "It is quicker than the rule of nines for small or scattered burns."
+  },
+  {
+   "id": "ig-burn-bp",
+   "topic": "skin-injury",
+   "core": [
+    "homeostasis",
+    "compartments"
+   ],
+   "level": "analyze",
+   "front": "How can a large burn drop blood pressure with no bleeding?",
+   "back": "Leaky capillaries move water, salt and protein out of the plasma, and water evaporates from the wounds, so blood volume falls.",
+   "why": "In a burn of about 20% or more, messengers make capillaries leak all over the body; the loss is greatest in the first 8 to 12 hours."
+  },
+  {
+   "id": "ig-burn-other",
+   "topic": "skin-injury",
+   "core": [
+    "homeostasis",
+    "compartments"
+   ],
+   "level": "apply",
+   "front": "Besides fluid loss, what two dangers follow from losing the skin barrier in a large burn?",
+   "back": "Heat loss from evaporating water, and infection as bacteria reach living tissue.",
+   "why": "Patients are kept warm and the wounds covered; infection is a leading cause of death after the first days."
+  },
+  {
+   "id": "ig-sc-cell",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Basal cell vs squamous cell carcinoma vs melanoma",
+   "front": "Basal cell vs squamous cell carcinoma vs melanoma: which cell does each start in?",
+   "back": "Basal cell carcinoma: basal cells of the stratum basale. Squamous cell carcinoma: keratinocytes above the basal layer. Melanoma: melanocytes.",
+   "why": "Skin cancers are named for the cell that goes wrong."
+  },
+  {
+   "id": "ig-sc-common",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Basal cell vs squamous cell carcinoma vs melanoma",
+   "front": "Basal cell vs squamous cell carcinoma vs melanoma: how common is each?",
+   "back": "Basal cell: about 8 in 10 skin cancers. Squamous cell: about 2 in 10. Melanoma: about 1 in 100.",
+   "why": "The rarest type causes most skin cancer deaths."
+  },
+  {
+   "id": "ig-sc-look",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Basal cell vs squamous cell carcinoma vs melanoma",
+   "front": "Basal cell vs squamous cell carcinoma vs melanoma: what does each typically look like?",
+   "back": "Basal cell: pearly, shiny bump with tiny vessels. Squamous cell: scaly red patch, crusted sore or firm bump. Melanoma: dark, uneven patch or changing mole.",
+   "why": "The ABCDE rule describes a spot to check for melanoma."
+  },
+  {
+   "id": "ig-sc-spread",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Basal cell vs squamous cell carcinoma vs melanoma",
+   "front": "Basal cell vs squamous cell carcinoma vs melanoma: which spreads early, and why?",
+   "back": "Melanoma: melanocytes can break loose early and travel through the dermis into vessels.",
+   "why": "Basal cell carcinoma rarely spreads; squamous cell carcinoma uncommonly reaches lymph nodes."
+  },
+  {
+   "id": "ig-sc-uv",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Basal cell vs squamous cell carcinoma vs melanoma",
+   "front": "Basal cell vs squamous cell carcinoma vs melanoma: what UV pattern is linked to each?",
+   "back": "Basal and squamous cell: years of sun exposure. Melanoma: intense, blistering sunburns, especially in childhood.",
+   "why": "All three trace mainly to UV damage to the DNA of skin cells."
+  },
+  {
+   "id": "ig-abcde",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the ABCDE rule for melanoma stand for?",
+   "back": "Asymmetry, Border irregular, Color varied, Diameter over about 6 mm, Evolving.",
+   "why": "Each letter describes a way a melanoma differs from an ordinary mole."
+  },
+  {
+   "id": "ig-uv-mutation",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "How does UVB cause a mutation?",
+   "back": "DNA absorbs UVB, which fuses neighboring pyrimidine bases; if the cell copies its DNA before repair, the error becomes a mutation.",
+   "why": "Mutations that disable tumor suppressor genes or switch on oncogenes release the cell from control of the cell cycle."
+  },
+  {
+   "id": "ig-pressure",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do pressure injuries form over bony points, and how are they prevented?",
+   "back": "Pressure above capillary pressure flattens the capillaries, blood stops, and cells die of lack of oxygen after a few hours. Turning patients often, about every 2 hours, prevents them.",
+   "why": "Shear and moisture make the damage worse; the first sign is redness that does not fade when pressed."
+  },
+  {
+   "id": "ig-acne",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Blackhead vs whitehead: what is the difference?",
+   "back": "Both are follicles plugged with sebum and shed cells. A blackhead is open, and its plug darkens in air; a whitehead is closed over.",
+   "why": "A blackhead is not dirt: its lipids and melanin react with air."
+  },
+  {
+   "id": "ig-stretch",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are stretch marks?",
+   "back": "Lines where the dermis was stretched faster than it could grow, tearing and thinning collagen and elastic fibers in the reticular layer.",
+   "why": "They start red or purple and fade to silvery white, but the damaged dermis does not return to normal."
+  },
+  {
+   "id": "ig-callus-corn",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Callus vs corn: what is the difference?",
+   "back": "Both are thickened stratum corneum from repeated rubbing. A callus is broad and flat; a corn is small, with a hard cone-shaped core that presses inward and hurts.",
+   "why": "Rubbing makes the basal cells divide faster; a corn’s core presses on nerve endings in the dermis."
+  },
+  {
+   "id": "ig-av-what",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Albinism vs vitiligo",
+   "front": "Albinism vs vitiligo: what is wrong in each?",
+   "back": "Albinism: melanocytes make little or no melanin. Vitiligo: melanocytes are destroyed in patches.",
+   "why": "In albinism the melanocytes are present in normal numbers; in vitiligo they are gone from the white patches."
+  },
+  {
+   "id": "ig-av-cause",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Albinism vs vitiligo",
+   "front": "Albinism vs vitiligo: what causes each, and when does it start?",
+   "back": "Albinism: inherited faulty genes for melanin-making proteins such as tyrosinase, from birth. Vitiligo: the immune system attacks the person’s own melanocytes, at any age.",
+   "why": "Albinism affects the whole body; vitiligo leaves white patches that can spread. Neither is contagious."
+  },
+  {
+   "id": "ig-eczema",
+   "topic": "skin-injury",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "What two faults feed each other in eczema?",
+   "back": "A weak barrier (often a faulty keratohyalin protein gene) and an overactive immune response in the skin.",
+   "why": "Irritants get in through the weak barrier and set off inflammation; scratching damages the barrier more: the itch–scratch cycle."
   }
  ]
 }
