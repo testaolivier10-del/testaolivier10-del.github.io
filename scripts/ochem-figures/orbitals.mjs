@@ -111,7 +111,7 @@ FIGURES.push({
     const a = P(72, 96), b = P(236, 96);
     s += circ(a, 34, 'fg-orb');
     s += circ(b, 70, 'fg-orb');
-    s += circ(b, 19, 'fg-orb-alt');
+    s += circ(b, 25, 'fg-orb-alt', ' stroke="none"');
     s += circ(b, 25, 'fg-orb-node');
     s += nucleus(a) + nucleus(b);
     s += label(a.x, 30, '1s', { size: 13 });
@@ -122,7 +122,7 @@ FIGURES.push({
     s += tag(b.x, 186, 'bigger sphere, node inside');
     return s;
   },
-  caption: 'The dot at each center is the nucleus. The dashed circle inside 2s is its node. The region inside the node has the other shade, for a reason explained later, under phase.',
+  caption: 'The dot at each center is the nucleus. The dashed circle inside 2s is its node, and the shade changes there.',
 });
 
 /* ===================================== 3. one p orbital, labeled parts === */
@@ -173,6 +173,11 @@ function pAxes(c, show, opts = {}) {
   if (show.y) s += pOrb(c, 90, L, W);
   if (show.z) s += lobe(c, ZDEG, L * ZK, W, 'fg-orb');
   s += nucleus(c);
+  if (opts.zLabel) {
+    const tip = add(c, zd, L * ZK * 0.8);
+    s += lead(P(tip.x - 6, tip.y + 2), P(tip.x - 24, tip.y + 10));
+    s += tag(tip.x - 26, tip.y + 16, '2pz', { anchor: 'end' });
+  }
   return s;
 }
 
@@ -190,13 +195,12 @@ FIGURES.push({
       s += panel(x0, 8, 240, 254);
       s += tag(x0 + 120, 28, ['1. 2px alone', '2. add 2py', '3. add 2pz'][i]);
       const c = P(x0 + 120, 146);
-      s += pAxes(c, shows[i], { L: 74, W: 22, A: 96 });
+      s += pAxes(c, shows[i], { L: 74, W: 22, A: 96, zLabel: i === 2 });
       void titles;
     });
     // Labels on the lobes of the last panel.
     s += tag(726, 132, '2px');
     s += tag(662, 64, '2py');
-    s += tag(560, 226, '2pz');
     s += tag(420, 236, '90° to 2px');
     return s;
   },
@@ -211,10 +215,9 @@ FIGURES.push({
   build() {
     let s = '';
     const c = P(170, 150);
-    s += pAxes(c, { x: 1, y: 1, z: 1 }, { L: 92, W: 26, A: 112 });
+    s += pAxes(c, { x: 1, y: 1, z: 1 }, { L: 92, W: 26, A: 112, zLabel: true });
     s += tag(270, 128, '2px');
     s += tag(196, 40, '2py');
-    s += tag(96, 232, '2pz');
     s += tag(170, 284, 'each at 90° to the other two');
     return s;
   },
@@ -290,7 +293,7 @@ FIGURES.push({
     s += tag(250, 202, '→ a bond', { cls: 'fg-tag-good' });
     s += tag(118, 238, 'shared pair between the nuclei');
     // Row 3: opposite phase, cancel, node.
-    s += panel(6, 256, 328, 118, { kind: 'warn' });
+    s += panel(6, 256, 328, 118);
     const h3 = P(88, 308), h4 = P(148, 308);
     s += circ(h3, 40, 'fg-orb') + circ(h4, 40, 'fg-orb-alt');
     s += dashLine(P(118, 262), P(118, 354), 'fg-orb-node');
@@ -354,7 +357,7 @@ FIGURES.push({
   lessons: ['orbitals'],
   anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 330',
-  alt: 'An energy ladder of subshells from 1s at the bottom to 3d at the top, each drawn as its boxes: one box for each s, three for each p, five for 3d. The 4s rung sits below the 3d rung. The 2s and 2p rungs are bracketed together as n = 2: four orbitals, eight electrons.',
+  alt: 'An energy ladder of subshells from 1s at the bottom to 3d at the top, each drawn as its boxes: one box for each s, three for each p, five for 3d. The 4s rung sits below the 3d rung. The 2s and 2p rungs are bracketed together as the n = 2 shell.',
   build() {
     let s = '';
     const rungs = [
@@ -378,8 +381,7 @@ FIGURES.push({
       s += label(62, r.y + 5, r.name, { size: 13, anchor: 'end' });
       s += tag(bx + r.boxes * (w + gap) + 6, r.y + 4, `holds ${r.boxes * 2}`, { anchor: 'start', cls: 'fg-tag-mut' });
     }
-    s += tag(170, 250, 'n = 2: 4 orbitals,', { anchor: 'start', cls: 'fg-tag-good' });
-    s += tag(170, 266, '8 electrons', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(170, 250, 'the n = 2 shell', { anchor: 'start', cls: 'fg-tag-good' });
     s += tag(164, 82, '4s sits below 3d,', { anchor: 'start' });
     s += tag(164, 98, 'so it fills first', { anchor: 'start' });
     return s;
@@ -403,10 +405,10 @@ function atomBoxes(x0, y0, el, n, fill, cfgText, sub1, sub2) {
   return s;
 }
 const ATOMS = [
-  ['C', 6, [1, 1, 0], '1s² 2s² 2p²', '2 unpaired', 'paired: 2s'],
-  ['N', 7, [1, 1, 1], '1s² 2s² 2p³', '3 unpaired', 'paired: 2s'],
-  ['O', 8, [2, 1, 1], '1s² 2s² 2p⁴', '2 unpaired', 'paired: 2s, one 2p'],
-  ['F', 9, [2, 2, 1], '1s² 2s² 2p⁵', '1 unpaired', 'paired: 2s, two 2p'],
+  ['C', 6, [1, 1, 0], '1s² 2s² 2p²', '2 unpaired', 'pairs: 1s, 2s'],
+  ['N', 7, [1, 1, 1], '1s² 2s² 2p³', '3 unpaired', 'pairs: 1s, 2s'],
+  ['O', 8, [2, 1, 1], '1s² 2s² 2p⁴', '2 unpaired', 'pairs: 1s, 2s, one 2p'],
+  ['F', 9, [2, 2, 1], '1s² 2s² 2p⁵', '1 unpaired', 'pairs: 1s, 2s, two 2p'],
 ];
 
 FIGURES.push({
@@ -461,8 +463,10 @@ const blockOf = (row, col) => {
   return 'p';
 };
 function blockCell(x, y, w, h, b, hi) {
-  const cls = b === 's' ? 'fg-panel-hi' : b === 'p' ? 'fg-panel-good' : b === 'd' ? 'fg-panel-warn' : 'fg-panel';
-  let s = `<rect class="${cls}" x="${r2(x)}" y="${r2(y)}" width="${r2(w)}" height="${r2(h)}" rx="3"></rect>`;
+  // s teal, p lilac, d coral, f white: four fills that stay distinct in both themes.
+  const cls = b === 's' ? 'fg-fill-hi' : b === 'p' ? 'fg-orb-alt' : b === 'd' ? 'fg-panel-warn' : 'fg-panel';
+  const extra = b === 's' ? ' opacity="0.3"' : b === 'p' ? ' stroke="none" fill-opacity="0.4"' : '';
+  let s = `<rect class="${cls}" x="${r2(x)}" y="${r2(y)}" width="${r2(w)}" height="${r2(h)}" rx="3"${extra}></rect>`;
   if (hi) s += `<rect class="fg-orb-node" x="${r2(x)}" y="${r2(y)}" width="${r2(w)}" height="${r2(h)}" rx="3" style="stroke-dasharray:none;stroke-width:2"></rect>`;
   return s;
 }
@@ -496,8 +500,8 @@ FIGURES.push({
     // Block names under row 4.
     const ly = y0 + 4 * ch + 14;
     s += text(x0 + cw, ly, 's-block', { cls: 'fg-tag', size: 11 });
-    s += text(x0 + 7 * cw, ly, 'd-block (transition metals)', { cls: 'fg-tag', size: 11 });
-    s += text(x0 + 15 * cw, ly, 'p-block', { cls: 'fg-tag-good', size: 11 });
+    s += text(x0 + 7 * cw, ly, 'd-block (groups 3–12)', { cls: 'fg-tag', size: 11 });
+    s += text(x0 + 15 * cw, ly, 'p-block', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'Rows 1 to 4. The outlined cells are C, N, O and F. Helium is shaded with the s-block: its electrons are 1s², though it sits at the top of group 18.',
@@ -506,7 +510,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-periodic-blocks',
   lessons: ['orbitals'],
-  viewBox: '0 0 340 250',
+  viewBox: '0 0 340 222',
   alt: 'The periodic table’s first four rows and the f-block row as colored blocks. Groups 1 and 2 are the s-block, the ten middle columns the d-block, groups 13 to 18 the p-block, and a separate row of 14 cells below is the f-block. Hydrogen, carbon, nitrogen, oxygen and fluorine are labeled.',
   build() {
     let s = '';
@@ -519,20 +523,13 @@ FIGURES.push({
         if (sym === 'H' || ORGANIC.has(sym)) s += label(x + cw / 2, y + ch / 2 + 5, sym, { size: 13 });
       });
     });
-    s += tag(x0 + cw, y0 - 10, 's');
-    s += tag(x0 + 7 * cw, y0 + ch - 10, 'd');
-    s += tag(x0 + 15 * cw, y0 - 10, 'p');
+    s += tag(x0 + cw, y0 - 10, 's-block');
+    s += tag(x0 + 7 * cw, y0 + 2 * ch - 4, 'd-block');
+    s += tag(x0 + 15 * cw, y0 - 10, 'p-block');
     const fy = y0 + 4 * ch + 18;
     for (let c = 0; c < 14; c++) s += blockCell(x0 + (2 + c) * cw + 0.5, fy + 0.5, cw - 1, ch - 1, 'f', false);
-    s += tag(x0 + 2 * cw - 4, fy + 16, 'f', { anchor: 'end' });
-    // Key.
-    const ky = 196;
-    const key = [['s-block', 's', 20], ['p-block', 'p', 100], ['d-block', 'd', 180], ['f-block', 'f', 260]];
-    for (const [t, b, x] of key) {
-      s += blockCell(x, ky - 11, 14, 14, b, false);
-      s += tag(x + 20, ky, t, { anchor: 'start' });
-    }
-    s += tag(170, 232, 'organic chemistry lives in the p-block');
+    s += tag(x0 + 2 * cw - 4, fy + 16, 'f-block', { anchor: 'end' });
+    s += tag(170, 212, 'organic chemistry lives in the p-block');
     return s;
   },
   caption: 'Rows 1 to 4, with the f-block row below. C, N, O and F are outlined.',
