@@ -427,7 +427,13 @@ const DATA_BUDGETS = [
      about 130 of 162 topics written). 130 covers the whole course at the
      current rate of about 0.75 KB a topic; past that, split it by chapter
      like the bank. */
-  ['anatomy-physiology/assets/glossary.json', 130],
+  /* 130 -> 150: muscular system published (118.4 KB); the five remaining
+     A&P I chapters add about 0.75 KB a topic, about 138 KB for the whole
+     course. It still loads after paint, only when a hover or a glossary-based
+     tool needs it, and three tools (word roots, search, flashcards) read the
+     whole file, so splitting it would cost more requests than it saves
+     (decision 65). */
+  ['anatomy-physiology/assets/glossary.json', 150],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
