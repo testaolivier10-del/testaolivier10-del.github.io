@@ -571,7 +571,7 @@ function threeFormulas(cell) {
   return s;
 }
 const THREE_ALT = 'Three structures. Acetone, CH3COCH3: a C=O carbon with a CH3 on each side, labeled ketone. Methyl acetate, CH3COOCH3: a C=O carbon with a CH3 on one side and an oxygen on the other that leads to a second CH3; that extra oxygen is marked, labeled ester. Dimethyl ether, CH3OCH3: an oxygen with a CH3 on each side and no C=O, labeled ether.';
-const THREE_CAPTION = 'Put the three side by side and the ester is the ketone with one oxygen slipped in beside the C=O, while the ether keeps that oxygen and loses the C=O.';
+const THREE_CAPTION = 'Compare the three: the ester is the ketone with one oxygen slipped in beside the C=O, while the ether keeps that oxygen and loses the C=O.';
 FIGURES.push({
   id: 'three-formulas-one-atom',
   section: 'functional-groups',
@@ -670,8 +670,8 @@ function degreeAmines(cell) {
       B.push(['n', 's' + j]);
     });
     s += mol({ atoms: A, bonds: B, lp: [['n', 270]] });
-    s += good(x + w / 2, y + 184, `${r.n} carbon${r.n > 1 ? 's' : ''} on the N`);
-    s += small(x + w / 2, y + 202, r.d);
+    s += good(x + w / 2, y + 188, `${r.n} carbon${r.n > 1 ? 's' : ''} on the N`);
+    s += small(x + w / 2, y + 205, r.d);
   });
   return s;
 }

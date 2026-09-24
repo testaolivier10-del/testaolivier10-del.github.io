@@ -391,7 +391,7 @@ FIGURES.push(sized({
   lessons: ['naming-substituents'],
   anchor: 'fig-complex-substituent',
   alt: 'Three nonanes, each with a four-carbon branch on C5, the branch carbons numbered in green. Top: the branch attaches through the end of a three-carbon chain whose middle carbon carries a methyl; numbered 1, 2, 3 from the attached carbon, it is 2-methylpropyl in both styles, giving 5-(2-methylpropyl)nonane. Middle: a branch attached through a carbon that carries a methyl and an ethyl, numbered in the classic style with the attached carbon as 1 and the chain running along the ethyl: 5-(1-methylpropyl)nonane. Bottom: the same molecule numbered in the IUPAC 2013 style, along the whole four-carbon chain with the attached carbon as 2: 5-(butan-2-yl)nonane.',
-  caption: 'Black numbers count the parent chain. Green numbers count the branch, and they are the ones written inside the parentheses. The lower two drawings are one molecule, named in the two styles.',
+  caption: 'The numbers along the highlighted chain count the parent. Green numbers count the branch, and they are the ones written inside the parentheses. The lower two drawings are one molecule, named in the two styles.',
 }, () => {
   const part = (kind, head, name, note) => {
     const sub = [{ i: 4, kind }];
