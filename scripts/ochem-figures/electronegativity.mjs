@@ -128,7 +128,7 @@ FIGURES.push({
     s += `<text class="fg-tag" x="14" y="${y0 + 2.5 * (h + gx)}" text-anchor="middle" transform="rotate(-90 14 ${y0 + 2.5 * (h + gx)})">increases up a group</text>`;
     return s;
   },
-  caption: 'Darker cells pull harder. Follow row 2 from left to right, then the group 17 column from bottom to top.',
+  caption: 'The stronger a cell’s shading, the harder that atom pulls. Follow row 2 from left to right, then the group 17 column from bottom to top.',
 });
 
 /* ------------------------------------------------------- en-chloromethane ---

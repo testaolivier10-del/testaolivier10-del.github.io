@@ -211,11 +211,11 @@ FIGURES.push({
   build() {
     let s = '';
     const c = P(170, 150);
-    s += pAxes(c, { x: 1, y: 1, z: 1 }, { L: 92, W: 26, A: 122 });
+    s += pAxes(c, { x: 1, y: 1, z: 1 }, { L: 92, W: 26, A: 112 });
     s += tag(270, 128, '2px');
     s += tag(196, 40, '2py');
     s += tag(96, 232, '2pz');
-    s += tag(170, 282, 'each at 90° to the other two');
+    s += tag(170, 284, 'each at 90° to the other two');
     return s;
   },
   caption: 'z points out of the page toward you, so its lobes look shorter.',

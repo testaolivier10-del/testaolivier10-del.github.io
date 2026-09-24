@@ -110,9 +110,9 @@ function co2(c, opts = {}) {
 /* The tip-to-tail sum for CO2: arrow 1 to the right, arrow 2 back from its tip. */
 function co2Sum(s0, len = 70) {
   const a1 = P(s0.x + len, s0.y);
-  let s = vec(s0, a1);
+  let s = vec(s0, a1, { cross: false });
   s += `<line class="fg-dash" x1="${f1(a1.x)}" y1="${f1(a1.y)}" x2="${f1(a1.x)}" y2="${f1(a1.y + 16)}"></line>`;
-  s += vec(P(a1.x, a1.y + 16), P(s0.x, s0.y + 16));
+  s += vec(P(a1.x, a1.y + 16), P(s0.x, s0.y + 16), { cross: false });
   s += `<circle class="fg-lp" cx="${f1(s0.x - 8)}" cy="${f1(s0.y + 16)}" r="3"></circle>`;
   return s;
 }
@@ -126,7 +126,7 @@ function water(c, opts = {}) {
     s += dip(h2, c, normal(h2, c, h1, true), 14, 6, 10);
   }
   s += A(c, 'O', 'hi') + A(h1, 'H') + A(h2, 'H');
-  s += dMinus(at(c, 180, 34));
+  s += dMinus(at(c, 90, 44));
   s += dPlus(P(h1.x, h1.y + 28)) + dPlus(P(h2.x, h2.y + 28));
   return { s, h1, h2 };
 }
@@ -135,7 +135,7 @@ function waterSum(s0, len = 58) {
   const half = 52.25;
   const v1 = at(P(0, 0), 90 - half, len), v2 = at(P(0, 0), 90 + half, len);
   const p1 = P(s0.x + v1.x, s0.y + v1.y), p2 = P(p1.x + v2.x, p1.y + v2.y);
-  return vec(s0, p1) + vec(p1, p2) + vec(s0, p2, { thick: true });
+  return vec(s0, p1, { cross: false }) + vec(p1, p2, { cross: false }) + vec(s0, p2, { thick: true, cross: false });
 }
 
 /* ------------------------------------------------ tetrahedral umbrella --- */
@@ -144,8 +144,8 @@ function waterSum(s0, len = 58) {
    atom on the upper bond ('Cl' or 'H'). Arrows on every C–Cl. */
 const UMB = [{ deg: 90, k: 1 }, { deg: 200, k: 1 }, { deg: 302, k: 'w' }, { deg: 342, k: 'h' }];
 function umbrella(c, top, opts = {}) {
-  const L = opts.len ?? 62;
-  const ends = UMB.map((a) => at(c, a.deg, a.deg === 90 ? L : L));
+  const L = opts.len ?? 74;
+  const ends = UMB.map((a) => at(c, a.deg, L));
   const labels = [top, 'Cl', 'Cl', 'Cl'];
   let s = '';
   UMB.forEach((a, i) => { s += bnd(c, ends[i], 'C', labels[i], a.k); });
@@ -156,13 +156,13 @@ function umbrella(c, top, opts = {}) {
   side[3] = normal(c, ends[3], ends[0]);                 // toward the top
   UMB.forEach((a, i) => {
     if (labels[i] !== 'Cl') return;
-    s += dip(c, ends[i], side[i], 15, 14, 8);
+    s += dip(c, ends[i], side[i], 15, 24, 10);
   });
   s += A(c, 'C');
   UMB.forEach((a, i) => { s += A(ends[i], labels[i], labels[i] === 'Cl' ? 'hi' : undefined); });
   // Partial charges.
   s += dPlus(at(c, 142, 30));
-  const dm = [at(ends[0], 180, 28), at(ends[1], 250, 28), at(ends[2], 215, 28), at(ends[3], 20, 29)];
+  const dm = [at(ends[0], 180, 28), at(ends[1], 140, 28), at(ends[2], 215, 28), at(ends[3], 20, 29)];
   UMB.forEach((a, i) => { if (labels[i] === 'Cl') s += dMinus(dm[i]); });
   return s;
 }
@@ -220,7 +220,7 @@ function ether(o) {
 
 /* ------------------------------------------------------ water network --- */
 function waterNet(c) {
-  const half = 52.25, Lb = 38;
+  const half = 52.25, Lb = 48;
   const hA = at(c, 270 - half, Lb), hB = at(c, 270 + half, Lb);
   let s = '', atoms = '';
   s += bnd(c, hA, 'O', 'H') + bnd(c, hB, 'O', 'H');
@@ -250,7 +250,7 @@ function waterNet(c) {
     const a2 = dir + 180 + (dir > 90 ? -104.5 : 104.5);
     const h2 = at(o, a2, Lb);
     s += bnd(o, h, 'O', 'H') + bnd(o, h2, 'O', 'H');
-    atoms += A(o, 'O') + A(h, 'H', 'hi') + A(h2, 'H');
+    atoms += A(o, 'O') + A(h, 'H') + A(h2, 'H');
   }
   return s + atoms;
 }
@@ -290,7 +290,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'adding-arrows',
   section: 'bond-polarity',
-  anchor: 'The arrow from the first tail to the last tip is the sum.</p>',
+  anchor: 'and water is polar: μ = 1.85 D.</p>',
   viewBox: '0 0 760 262',
   alt: 'Left, carbon dioxide: O=C=O in a straight line, carbon delta plus, both oxygens delta minus, and two bond dipole arrows pointing outward, one to each oxygen. Beside it the two arrows are placed tip to tail: the second ends where the first began, so the sum is zero. Right, water: a bent oxygen with two hydrogens below it and two lone pairs above it; oxygen delta minus, each hydrogen delta plus, and an arrow along each O–H bond pointing at the oxygen. Beside it the two arrows placed tip to tail give a thick sum arrow pointing straight up, toward the oxygen side.',
   build() {
@@ -368,7 +368,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'hydrogen-bond',
   section: 'bond-polarity',
-  anchor: 'A hundred degrees from one hydrogen being on oxygen instead of on carbon.</p>',
+  anchor: 'is worth a hundred degrees.</p>',
   viewBox: '0 0 760 300',
   alt: 'Left: two ethanol molecules, CH3–CH2–O–H. The O–H hydrogen of the upper one, delta plus, points at a lone pair on the oxygen of the lower one, delta minus, joined by a thick dashed line labeled hydrogen bond. The hydrogen is labeled donor and the lone pair acceptor. Right: dimethyl ether, CH3–O–CH3, with two lone pairs on the oxygen and every hydrogen on a carbon, labeled acceptor only, no donor.',
   build() {

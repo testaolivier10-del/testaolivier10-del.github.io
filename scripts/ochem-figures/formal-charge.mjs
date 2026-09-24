@@ -115,7 +115,7 @@ function owned(cx, cy, centre, hAngles, lpAngles, charge) {
   if (charge) { const p = at(C, 315, 46); s += text(p.x, p.y + 5, charge, { cls: 'fg-tag', size: 15 }); }
   return s;
 }
-const water = (cx, cy) => owned(cx, cy, 'O', [150, 30], [240, 300]);
+const water = (cx, cy) => owned(cx, cy, 'O', [150, 30], [225, 315]);
 const ammonium = (cx, cy) => owned(cx, cy, 'N', [270, 0, 90, 180], [], '+');
 
 /* The three small ions, every atom drawn. */
@@ -127,7 +127,7 @@ function nh4(cx, cy) {
 function oh(cx, cy) {
   const A = { O: { x: cx - 14, y: cy, l: 'O', k: 'hi' } }, B = [];
   hs(A, B, 'O', [0]);
-  return mol({ atoms: A, bonds: B, lp: [['O', 180], ['O', 270], ['O', 90]], charges: [['O', '−', 225, 32]] });
+  return mol({ atoms: A, bonds: B, lp: [['O', 180], ['O', 270], ['O', 90]], charges: [['O', '−', 225, 36]] });
 }
 function h3o(cx, cy) {
   const A = { O: { x: cx, y: cy, l: 'O', k: 'warn' } }, B = [];
@@ -254,7 +254,7 @@ function species(cx, cy, centre, hAng, lpAng, sign, kind, empty) {
     s += `<circle class="fg-orb-node" cx="${f2(e.x)}" cy="${f2(e.y)}" r="9"></circle>`;
   }
   const m = { atoms: A, bonds: B, lp: lpAng.map((a) => ['X', a]) };
-  if (sign) m.charges = [['X', sign, sign === '+' && hAng.length === 4 ? 315 : 330, 30]];
+  if (sign) m.charges = [['X', sign, hAng.length === 2 ? 0 : 315, 31]];
   return s + mol(m);
 }
 
@@ -279,7 +279,7 @@ FIGURES.push({
       },
     ], { w: 360, h: 252, mcy: 112, tagY: 202 });
   },
-  caption: 'Read the dashed loop. It takes in the atom’s lone pairs whole, and one dot from each bond. The dot on the far side of each bond belongs to the hydrogen.',
+  caption: 'Compare what sits inside each dashed loop with the number the atom brought.',
 });
 
 /* The bond term: a double bond counts 2. */
@@ -307,7 +307,7 @@ FIGURES.push({
     s += text(346, 214, 'O: 6 − 4 − 1 = +1, a charge acetone does not have ✗', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
     return s;
   },
-  caption: 'The oxygen’s double bond is two lines, so it adds 2 to the bond term. The middle carbon’s double bond counts 2 for it as well.',
+  caption: 'Check each count against the lines and dots in the drawing. The middle carbon counts its double bond as 2 as well.',
 });
 
 /* Worked examples: the three small ions. */
@@ -340,7 +340,7 @@ FIGURES.push({
       { title: 'methylammonium, CH₃NH₃⁺', draw: methylammonium, tags: ['=N: 5 − 0 − 4 = +1', '=C: 4 − 0 − 4 = 0 · each H: 0', 'sum +1 ✓'] },
     ], { w: 360, h: 222, mcy: 104, tagY: 174 });
   },
-  caption: 'Swap an H for a CH₃ group and the charged atom’s count does not change.',
+  caption: 'Compare each charged atom with its match in OH⁻ and NH₄⁺ above.',
 });
 
 /* Nitromethane: the tempting structure and the one that works. */
@@ -348,21 +348,21 @@ FIGURES.push({
   id: 'nitro-group-charges',
   section: 'formal-charge',
   anchor: '<span class="k">Worked example — nitromethane, a neutral molecule with charges</span>',
-  viewBox: '0 0 760 300',
+  viewBox: '0 0 760 310',
   alt: 'Nitromethane drawn twice with every atom. On the left, the tempting structure with nitrogen double-bonded to both oxygens, marked impossible because nitrogen would have five bonds. On the right, the correct structure with one double bond and one single bond, a plus one on nitrogen and a minus one on the singly bonded oxygen, with the count for every atom and a sum of zero.',
   build() {
     return row([
       {
         title: 'the tempting structure', kind: 'warn', draw: (x, y) => nitromethane(x, y, { wrong: true }),
-        tags: ['!N has 5 bonds = 10 electrons around it', '!a period-2 atom holds at most 8', '!impossible, whatever the charges say'],
+        tags: ['!N has 5 bonds = 10 electrons around it', '!a period-2 atom holds at most 8', '!so this structure cannot exist'],
       },
       {
         title: 'the structure that works', kind: 'good', draw: nitromethane,
         tags: ['=N: 5 − 0 − 4 = +1', '=top O: 6 − 4 − 2 = 0', '=lower O: 6 − 6 − 1 = −1', '=C: 4 − 0 − 4 = 0 · each H: 0', 'sum: +1 − 1 = 0, a neutral molecule ✓'],
       },
-    ], { w: 360, h: 272, mcy: 110, tagY: 186 });
+    ], { w: 360, h: 282, mcy: 110, tagY: 198 });
   },
-  caption: 'The right-hand structure gives nitrogen four bonds. The + on nitrogen and the − on the lower oxygen cancel.',
+  caption: 'Left: count the lines at nitrogen. Right: the count for every atom, then the sum.',
 });
 
 /* Running the formula backwards: supply the lone pairs. */
@@ -425,7 +425,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Read across a row. One more bond than the neutral atom makes gives +1; one fewer, with a lone pair in its place, gives −1. Carbon’s two three-bond forms differ only in the lone pair.',
+  caption: 'Each row runs from +1 on the left, through the neutral species in the middle, to −1 on the right.',
 });
 
 /* The sum check across a reaction step. */
@@ -443,7 +443,7 @@ FIGURES.push({
     const Hp = P(272, 72);
     s += atom(Hp.x, Hp.y, 'H', { r: 11 });
     s += text(Hp.x + 16, Hp.y - 6, '+', { cls: 'fg-tag', size: 15 });
-    s += curve(P(158, 86), P(259, 70), { bow: -30 });
+    s += curve(P(154, 88), P(259, 70), { bow: -30 });
     s += text(216, 36, 'the lone pair becomes the new N–H bond', { cls: 'fg-tag', size: 11 });
     s += arrow(P(340, 118), P(420, 118));
     const C = { N: { x: 540, y: 118, l: 'N', k: 'warn' } }, D = [];
@@ -456,7 +456,7 @@ FIGURES.push({
     s += text(560, 218, 'sum: +1 ✓ the charge is conserved', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'The + moves from the hydrogen ion to the nitrogen, but the total on each side stays +1.',
+  caption: 'The + moves from H⁺ to the nitrogen. The total on each side stays +1.',
 });
 
 /* Diazomethane: the tiebreaker at work. */
@@ -479,7 +479,7 @@ FIGURES.push({
   build() {
     return row(diazoPanels, { w: 360, h: 222, mcy: 96, tagY: 150 });
   },
-  caption: 'Both structures give every atom an octet and carry one + and one −. Only the atom holding the − differs.',
+  caption: 'The green panel is the better structure. Compare where each one puts the −.',
 });
 
 /* ========================================================== lessons === */
@@ -494,13 +494,13 @@ FIGURES.push({
       { title: 'water, H₂O', draw: water, tags: ['=O brings 6 valence electrons', '=owns 4 (lone pairs) + 2 (bonds) = 6', 'owns 6, brought 6: charge 0'] },
     ], { h: 230, mcy: 104, tagY: 180 });
   },
-  caption: 'The dashed loop takes in both lone pairs and one dot from each bond.',
+  caption: 'Everything inside the dashed loop belongs to the oxygen.',
 });
 
 FIGURES.push({
   id: 'l-fc-bond-term',
   lessons: ['formal-charge'],
-  viewBox: '0 0 340 290',
+  viewBox: '0 0 340 310',
   alt: 'Acetone drawn with every atom. The oxygen has two lone pairs and a double bond to the central carbon. Its count is 6 minus 4 minus 2 equals 0. Counting the double bond as one would wrongly give plus one.',
   build() {
     return stack([
@@ -508,9 +508,9 @@ FIGURES.push({
         title: 'acetone, (CH₃)₂C=O', draw: acetone,
         tags: ['O: 6 − 4 − 2 = 0 (double bond = 2)', '=every C: 4 − 0 − 4 = 0 · each H: 0', '!double bond as 1: 6 − 4 − 1 = +1 ✗'],
       },
-    ], { h: 270, mcy: 146, tagY: 216 });
+    ], { h: 290, mcy: 138, tagY: 234 });
   },
-  caption: 'Two lines between C and O mean 2 in the bond term.',
+  caption: 'Check each count against the lines and dots in the drawing.',
 });
 
 FIGURES.push({
@@ -538,7 +538,7 @@ FIGURES.push({
     ];
     return stack(panels, { h: 190, mcy: 88, tagY: 138 });
   },
-  caption: 'Same octets, same number of charges. The − moves from nitrogen to carbon.',
+  caption: 'The green panel is the better structure.',
 });
 
 FIGURES.push({

@@ -239,7 +239,7 @@ FIGURES.push({
     const C1 = pv(-50, 0, cy), C2 = pv(50, 0, cy);
     const hs = [[C1, pv(-94, 60, cy)], [C1, pv(-94, -60, cy)], [C2, pv(94, 60, cy)], [C2, pv(94, -60, cy)]];
     const q = (u, v) => { const p = pv(u, v, cy); return `${r2(p.x)} ${r2(p.y)}`; };
-    let s = `<path class="fg-dash" d="M${q(-140, -85)} L${q(140, -85)} L${q(140, 85)} L${q(-140, 85)} Z"></path>`;
+    let s = `<path class="fg-dash" d="M${q(-115, -85)} L${q(115, -85)} L${q(115, 85)} L${q(-115, 85)} Z"></path>`;
     hs.forEach(([c, h]) => { s += sb(c, h); });
     s += `<g class="hit" data-key="sigma" style="cursor:pointer">${hybrid(C1, 0, 80, 12)}${hybrid(C2, 180, 80, 12)}` +
          `<rect x="136" y="${cy - 10}" width="68" height="20" fill="transparent"></rect></g>`;
@@ -247,9 +247,9 @@ FIGURES.push({
     s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy + 26, 70, 20, 0, 'fg-orb-alt')}</g>`;
     hs.forEach(([, h]) => { s += H(h); });
     s += C(C1) + C(C2);
-    s += text(292, cy - 52, 'above', { cls: 'fg-tag' });
-    s += text(292, cy + 4, 'on the axis', { cls: 'fg-tag' });
-    s += text(292, cy + 60, 'below', { cls: 'fg-tag' });
+    s += text(170, cy - 52, 'above', { cls: 'fg-tag' });
+    s += text(292, cy + 4, 'on axis', { cls: 'fg-tag', anchor: 'start' });
+    s += text(170, cy + 64, 'below', { cls: 'fg-tag' });
     s += text(170, 196, 'dashed: the plane of the six atoms', { cls: 'fg-tag-mut' });
     s += text(170, 220, 'tap one part', { cls: 'fg-tag-mut' });
     return s;

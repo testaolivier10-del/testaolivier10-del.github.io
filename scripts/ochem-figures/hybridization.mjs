@@ -38,7 +38,7 @@ function tetCenter(c, el, slots, L = 50, rc = 16) {
   ];
   let g = '';
   dirs.forEach((d, i) => {
-    if (slots[i] === 'lp') { g += lonePair(c.x, c.y, -d.deg, { dist: rc + 12, spread: 5, r: 2.6 }); return; }
+    if (slots[i] === 'lp') { const a = d.deg > 90 ? d.deg + 12 : d.deg - 12; g += lonePair(c.x, c.y, -a, { dist: rc + 16, spread: 5, r: 2.6 }); return; }
     const e = at(c, d.deg, d.kind === 'plain' ? L : L * 0.92);
     const o = { rFrom: rc, rTo: 12 };
     g += d.kind === 'wedge' ? wedge(c, e, { ...o, width: 10 }) : d.kind === 'hash' ? hash(c, e, { ...o, width: 11, rungs: 5 }) : bond(c, e, o);
@@ -344,12 +344,12 @@ FIGURES.push({
     s += text(b.x, 248, 'trigonal planar, 120° apart', { cls: 'fg-sm', size: 10.5 });
     // sp
     const c = P(628, 150);
+    s += `<line class="fg-dash-hi" x1="${c.x - 74}" y1="${c.y}" x2="${c.x + 74}" y2="${c.y}"></line>`;
     s += spSet(c, 66);
     s += atom(c.x, c.y, 'C', { kind: 'hi', r: 12 });
     s += text(c.x + 22, c.y - 62, 'leftover p', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(c.x - 36, c.y + 56, 'leftover p,', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
     s += text(c.x - 36, c.y + 70, 'toward you', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
-    s += `<line class="fg-dash-hi" x1="${c.x - 74}" y1="${c.y}" x2="${c.x + 74}" y2="${c.y}"></line>`;
     s += text(c.x + 78, c.y + 4, '180°', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(c.x, 248, 'linear', { cls: 'fg-sm', size: 10.5 });
     return s;
@@ -597,8 +597,9 @@ FIGURES.push({
     s += hybTag(c2, 240, 'sp²', 32);
     s += hybTag(o1, 0, 'sp²', 34);
     s += hybTag(o2, 62, 'sp² *', 36);
-    s += text(520, 112, '* the plain count gives sp³; the rule', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(520, 128, 'for a lone pair beside a π bond gives sp²', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(490, 104, '* the plain count gives sp³;', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(490, 120, 'the rule for a lone pair beside', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(490, 136, 'a π bond gives sp²', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
   caption: 'Acetic acid, CH₃COOH, written out as CH₃–C(=O)–O–H, with each green tag next to its own atom.',
@@ -864,7 +865,7 @@ FIGURES.push({
     s += atom(h.x, h.y, 'H', { r: 12 });
     s += atom(c.x, c.y, 'C');
     s += atom(o.x, o.y, 'O', { kind: 'warn' });
-    s += lonePair(o.x, o.y, -50) + lonePair(o.x, o.y, -115);
+    s += lonePair(o.x, o.y, -20) + lonePair(o.x, o.y, -125);
     s += tag(270, 60, 'methanol');
     return s;
   },

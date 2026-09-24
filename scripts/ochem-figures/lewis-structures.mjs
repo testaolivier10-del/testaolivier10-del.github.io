@@ -708,7 +708,7 @@ FIGURES.push({
 /* Dimethyl sulfoxide drawn with S=O (10 electrons on S) or S⁺–O⁻ (octet). */
 function dmso(cx, cy, separated) {
   const S0 = { x: cx - 10, y: cy, l: 'S', k: 'hi' };
-  const A = { S: S0, M1: { ...at(S0, 180, 54), l: 'CH₃' }, M2: { ...at(S0, 90, 50), l: 'CH₃' }, O: { ...at(S0, 0, 54), l: 'O', k: separated ? 'warn' : undefined } };
+  const A = { S: S0, M1: { ...at(S0, 180, 54), l: 'CH₃' }, M2: { ...at(S0, 90, 48), l: 'CH₃' }, O: { ...at(S0, 0, 54), l: 'O', k: separated ? 'warn' : undefined } };
   const m = { atoms: A, bonds: [['S', 'M1'], ['S', 'M2']], lp: [['S', 270]] };
   if (separated) {
     m.bonds.push(['S', 'O']);
@@ -725,13 +725,13 @@ FIGURES.push({
   id: 'dmso-two-ways',
   section: 'lewis-structures',
   anchor: 'Drawn with S⁺–O⁻ bonds instead, sulfur keeps an octet.</p>',
-  viewBox: '0 0 560 214',
+  viewBox: '0 0 560 228',
   alt: 'Dimethyl sulfoxide drawn two ways. Left: sulfur bonded to two CH3 groups, double-bonded to oxygen, with one lone pair on sulfur and two on oxygen; every formal charge zero, ten electrons on sulfur. Right: sulfur single-bonded to oxygen with a plus charge and one lone pair; oxygen has three lone pairs and a minus charge; every atom has an octet.',
   build() {
     return row([
       { title: 'S=O', draw: (x, y) => dmso(x, y, false), tags: ['S: 4 bonds + 1 pair = 10 e⁻', '=every formal charge 0'] },
       { title: 'S⁺–O⁻', draw: (x, y) => dmso(x, y, true), tags: ['S: 3 bonds + 1 pair = 8 e⁻', '!S +1, O −1'] },
-    ], { w: 260, h: 186, gap: 12, mcy: 88, tagY: 156 });
+    ], { w: 260, h: 200, gap: 12, mcy: 84, tagY: 170 });
   },
   caption: 'Dimethyl sulfoxide, (CH₃)₂SO, a sulfoxide, drawn both ways. A sulfone adds a second oxygen to the same sulfur.',
 });
