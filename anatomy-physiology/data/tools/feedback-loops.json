@@ -1426,6 +1426,188 @@
         ],
         "correct": 3
       }
+    },
+    {
+      "id": "epo-oxygen-delivery",
+      "title": "Erythropoietin restores oxygen delivery",
+      "topic": "erythrocytes",
+      "map": "Erythropoietin and oxygen delivery",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You donate a unit of blood. Your plasma volume is back within a day or two, but your red cells take weeks to catch up. Build the loop that brings them back.",
+      "slots": {
+        "stimulus": {
+          "text": "Diluted blood delivers less oxygen to the kidney tissue",
+          "short": "Less oxygen reaches the kidneys",
+          "why": "The regulated variable is oxygen delivery, not the number of red cells. After a donation, refilled plasma dilutes the remaining red cells, so each liter of blood carries less oxygen to the kidneys."
+        },
+        "sensor": {
+          "text": "Oxygen-sensing cells in the kidney tissue, between the tiny tubes",
+          "short": "Oxygen-sensing kidney cells",
+          "why": "These cells are the sensory receptors of the loop. In low oxygen, a transcription factor that is normally destroyed within minutes survives inside them."
+        },
+        "afferent": {
+          "text": "No separate pathway: the surviving factor switches on the EPO gene in the same cells",
+          "short": "None: same cells respond",
+          "why": "The information never leaves the cell that sensed it. No nerve or messenger carries it; the transcription factor acts on the gene directly."
+        },
+        "control": {
+          "text": "The same kidney cells set how much EPO to release",
+          "short": "Kidney cells set EPO output",
+          "why": "The lower the oxygen they sense, the more EPO they make. They compare the oxygen reaching them with what is normal for them."
+        },
+        "efferent": {
+          "text": "EPO, a hormone, carried in the blood to the red bone marrow",
+          "short": "EPO in the blood",
+          "why": "The command travels as a hormone to a distant target, the marrow. A little EPO also comes from the liver."
+        },
+        "effector": {
+          "text": "Erythroid precursors in the red bone marrow",
+          "short": "Erythroid precursors in marrow",
+          "why": "EPO binds receptor proteins on these cells, so more of them survive, divide and mature into red cells."
+        },
+        "response": {
+          "text": "Reticulocytes pour out within 3–5 days, and over weeks the red cell count and oxygen delivery recover",
+          "short": "More red cells: oxygen delivery recovers",
+          "why": "More red cells carry more oxygen to the kidneys, which removes the stimulus, and EPO release falls back to its resting rate."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Bone marrow cells sense the low oxygen and speed up on their own",
+          "why": "The marrow is the effector. It responds to EPO; without EPO, as in kidney failure, it does not speed up even when oxygen delivery is low."
+        },
+        {
+          "text": "Oxygen sensors in the neck signal the brain, which sends nerve signals to the marrow",
+          "why": "No nerve controls red cell production. The sensor, control center and signal are all in the kidney cells and their hormone."
+        },
+        {
+          "text": "The kidney cells release more EPO as the red cell count rises",
+          "why": "That would push the count ever higher. EPO release falls as oxygen delivery recovers, which is what makes this loop negative."
+        },
+        {
+          "text": "Macrophages destroy old red cells more slowly",
+          "why": "Red cell lifespan stays about 120 days. The loop acts on production, not destruction."
+        }
+      ],
+      "classify": "The response (more red cells, more oxygen delivered) removes the stimulus (too little oxygen reaching the kidneys), so this is negative feedback. As oxygen delivery recovers, the kidney cells release less EPO and production slows to its resting rate.",
+      "failure": {
+        "part": "effector",
+        "q": "The same donor has no iron left in her stores. Her kidneys sense the low oxygen and release plenty of EPO. What happens over the next few weeks?",
+        "options": [
+          {
+            "text": "EPO stays high while few, small, pale red cells are made",
+            "why": "Right. The sensor, control center and hormone all work, but the effector lacks iron for heme. Erythroblasts keep dividing without filling with hemoglobin, so the count recovers slowly and the cells are small and pale. Because oxygen delivery stays low, the stimulus persists and EPO stays high."
+          },
+          {
+            "text": "EPO falls, because the kidneys sense that iron is missing",
+            "why": "The kidney cells sense oxygen, not iron. Oxygen delivery is still low, so they keep releasing EPO."
+          },
+          {
+            "text": "The red cell count recovers normally, because EPO is high and the marrow is healthy",
+            "why": "EPO tells precursors to survive and divide, but each red cell needs iron for the heme in its hemoglobin. Without iron the marrow cannot build normal cells, however much EPO arrives."
+          },
+          {
+            "text": "The marrow makes large red cells to make up for the missing iron",
+            "why": "Large cells come from missing B12 or folate, which stalls DNA synthesis. Missing iron gives small, pale cells."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "clotting-thrombin",
+      "title": "Thrombin makes more thrombin",
+      "topic": "hemostasis",
+      "map": "Clotting (positive feedback)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "positive",
+      "scenario": "You cut your finger on a kitchen knife. Within a couple of minutes the bleeding slows and a firm clot seals the cut. The clotting runs as a local loop at the injury, with no nerve or brain involved.",
+      "slots": {
+        "stimulus": {
+          "text": "A first trickle of thrombin forms at the tear",
+          "short": "First trickle of thrombin",
+          "why": "The tear brings plasma into contact with tissue factor at the same moment platelets start to stick. Tissue factor with VIIa makes a little thrombin: too little to clot, but enough to set off the loop."
+        },
+        "sensor": {
+          "text": "Receptor proteins for thrombin on platelets stuck at the tear",
+          "short": "Platelet receptor proteins bind it",
+          "why": "Thrombin is a strong platelet activator. The platelets already stuck in the plug detect it by binding it to receptor proteins on their surface."
+        },
+        "afferent": {
+          "text": "Signals inside each platelet relay the binding",
+          "short": "Signals inside the platelet",
+          "why": "In this local loop, no nerve or hormone carries the information. Binding sets off signals inside the platelet itself."
+        },
+        "control": {
+          "text": "The platelet switches into its activated state",
+          "short": "Platelet switches to activated state",
+          "why": "Activation is the switch point: the platelet swells, grows spiky projections and changes what it releases and displays."
+        },
+        "efferent": {
+          "text": "Released ADP and thromboxane A2, and negatively charged phospholipid flipped to the platelet’s outer face",
+          "short": "ADP, thromboxane A2; phospholipid out",
+          "why": "These are the outputs. ADP and thromboxane A2 reach passing platelets; the exposed phospholipid, with calcium, gives clotting factors a surface to work on."
+        },
+        "effector": {
+          "text": "More platelets, and clotting factors gathered on the activated platelet surface",
+          "short": "Platelets and factors on their surface",
+          "why": "Passing platelets are activated in turn, and on the platelet surface IXa pairs with VIIIa and Xa pairs with Va. Thrombin has already activated V, VIII and XI."
+        },
+        "response": {
+          "text": "A burst of thrombin, which activates still more platelets and factors",
+          "short": "Burst of thrombin: more activation",
+          "why": "The burst converts fibrinogen to fibrin, and the new thrombin binds more platelets and activates more V, VIII and XI. More thrombin makes more thrombin."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Antithrombin inactivates thrombin and factor Xa",
+          "why": "Antithrombin is a brake that keeps the clot from spreading beyond the injury. It limits the loop; it is not one of its parts."
+        },
+        {
+          "text": "Plasmin cuts fibrin into fragments",
+          "why": "Plasmin removes the clot days later, after the wall is repaired. That is fibrinolysis, not clot building."
+        },
+        {
+          "text": "The brain sends nerve signals that tell platelets to stick",
+          "why": "Clotting is a local loop. Local nerve reflexes help the vessel constrict, but no brain command controls platelets or clotting factors."
+        },
+        {
+          "text": "Healthy lining cells release nitric oxide and prostacyclin",
+          "why": "These keep platelets quiet next to the injury. They confine the loop to the tear rather than driving it."
+        }
+      ],
+      "classify": "The response (more thrombin, more activated platelets) strengthens the stimulus that produced it, so this is positive feedback. It stops when the hole is sealed, and it stays local because flow dilutes activated factors, the healthy lining on either side keeps platelets quiet and binds thrombin, and antithrombin inactivates thrombin and Xa.",
+      "failure": {
+        "part": "effector",
+        "q": "In hemophilia A, factor VIII is missing, so IXa has no partner on the platelet surface. What happens when a boy with hemophilia A cuts his hand?",
+        "options": [
+          {
+            "text": "A plug and a trickle of thrombin form, but no burst: bleeding restarts",
+            "why": "Right. Adhesion and the start of clotting on tissue factor do not need VIII. The effector step that makes the burst does, so too little fibrin forms and the soft plug gives way."
+          },
+          {
+            "text": "Platelets cannot stick to the cut, so no plug forms",
+            "why": "Platelet adhesion uses von Willebrand factor and collagen, not factor VIII. Platelet problems cause skin bleeding; hemophilia causes deep, repeated bleeding."
+          },
+          {
+            "text": "Clotting spreads through the whole circulation, because nothing limits the loop",
+            "why": "Missing a factor weakens the loop. The brakes (flow, healthy lining, antithrombin) are all still working."
+          },
+          {
+            "text": "Nothing changes, because the tissue factor–VIIa pair keeps making thrombin on its own",
+            "why": "That pair is switched off by an inhibitor within seconds. After that, X is activated mainly by IXa with VIIIa on platelets, which is why people with hemophilia bleed."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

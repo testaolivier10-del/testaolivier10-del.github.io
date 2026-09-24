@@ -3135,6 +3135,564 @@
         "why": "Parasympathetic postganglionic neurons are cholinergic and act on muscarinic receptor proteins. Norepinephrine on alpha-1 contracts the dilator, which widens the pupil."
       },
       "summary": "Retina, optic nerve, pretectal nuclei, Edinger–Westphal nuclei, oculomotor nerves, ciliary ganglia, circular muscle. Because the midbrain sends the signal to both sides, one lit eye narrows both pupils, and one test checks the optic nerve, the midbrain and the oculomotor nerve."
+    },
+    {
+      "id": "erythropoiesis-stages",
+      "title": "Erythropoiesis: stem cell to erythrocyte",
+      "topic": "erythrocytes",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A blood donor’s marrow replaces the red cells she gave. Trace one new red cell from the stem cell to a mature erythrocyte in her blood.",
+      "steps": [
+        {
+          "id": "stem",
+          "label": "Myeloid stem cell",
+          "text": "A myeloid stem cell in the red bone marrow commits to the red cell line.",
+          "why": "Every formed element descends from the hematopoietic stem cell; red cells come from its myeloid branch."
+        },
+        {
+          "id": "pro",
+          "label": "Proerythroblast",
+          "text": "Driven by EPO, it becomes a proerythroblast.",
+          "why": "EPO binds receptor proteins on these early precursors, letting them survive and start maturing. Without EPO they die."
+        },
+        {
+          "id": "blasts",
+          "label": "Erythroblasts fill up",
+          "text": "Over several divisions, erythroblasts make hemoglobin until it fills their cytoplasm, while the nucleus shrinks.",
+          "why": "The divisions multiply the cells, and hemoglobin must be made while the cell still has its nucleus and ribosomes to make protein."
+        },
+        {
+          "id": "eject",
+          "label": "Nucleus pushed out",
+          "text": "The cell pushes out its nucleus.",
+          "why": "Only once the cell is full of hemoglobin does it discard the nucleus, making room for more hemoglobin. From now on it cannot divide."
+        },
+        {
+          "id": "retic",
+          "label": "Reticulocyte leaves marrow",
+          "text": "The cell, now a reticulocyte with a net of leftover ribosomes, leaves the marrow for the blood.",
+          "why": "The ribosomes remain for a day or two after the nucleus is gone, which is what stains as the fine net. Proerythroblast to reticulocyte takes about a week."
+        },
+        {
+          "id": "mature",
+          "label": "Mature erythrocyte",
+          "text": "Within a day or two in the blood it loses its ribosomes and becomes a mature erythrocyte.",
+          "why": "Losing the ribosomes is the last step. That is why about 1% of red cells in a sample are reticulocytes: each spends about a day in the blood as one."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The cell divides once more into two mature erythrocytes.",
+            "why": "Mature erythrocytes cannot divide. The step that turns an erythroblast into a reticulocyte is losing the nucleus."
+          },
+          {
+            "text": "The cell picks up a nucleus from a neighboring macrophage.",
+            "why": "The cell loses its nucleus; it never gains one. The nucleus is thrown out to make room for hemoglobin."
+          },
+          {
+            "text": "The cell loses its ribosomes and becomes a mature erythrocyte inside the marrow.",
+            "why": "Ribosomes are lost last, in the blood. A cell that still has them is a reticulocyte."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Erythroblasts push out their nucleus first, and only then start making hemoglobin.",
+        "why": "Making hemoglobin needs the nucleus and ribosomes. Erythroblasts fill with hemoglobin first, and the nucleus is pushed out afterward."
+      },
+      "summary": "Myeloid stem cell, proerythroblast, erythroblasts filling with hemoglobin, nucleus pushed out, reticulocyte, mature erythrocyte. EPO drives the early stages; the whole trip takes about a week, plus a day or two as a reticulocyte in the blood."
+    },
+    {
+      "id": "rbc-life-cycle",
+      "title": "Red blood cell life cycle and bilirubin",
+      "topic": "erythrocytes",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "A red cell has circulated for about 120 days. Follow it, and then its heme, until the pigment leaves your body.",
+      "steps": [
+        {
+          "id": "age",
+          "label": "Cell ages",
+          "text": "The old red cell, unable to make new proteins, stiffens and collects marks of age on its surface.",
+          "why": "With no nucleus or ribosomes, a red cell cannot repair itself, so its membrane and enzymes wear out over about 120 days."
+        },
+        {
+          "id": "eaten",
+          "label": "Macrophage engulfs it",
+          "text": "A macrophage recognizes the old cell and engulfs it, mainly in blood-filtering organs and the liver.",
+          "why": "The marks of age are what the macrophage recognizes. Stiff cells are caught where blood filters slowly past macrophages."
+        },
+        {
+          "id": "split",
+          "label": "Globin, iron, heme split",
+          "text": "Inside the macrophage, hemoglobin is split into globin, iron and heme.",
+          "why": "Each part follows its own route: globin becomes amino acids for reuse, and iron goes to transferrin for the marrow or storage."
+        },
+        {
+          "id": "bili",
+          "label": "Heme → bilirubin",
+          "text": "The heme ring is opened into green biliverdin, which is converted to yellow-orange bilirubin.",
+          "why": "The ring cannot be reused once its iron is gone, so it is opened and turned into a pigment for disposal."
+        },
+        {
+          "id": "albumin",
+          "label": "Carried on albumin",
+          "text": "Bilirubin leaves the macrophage and travels in the plasma bound to albumin.",
+          "why": "Unconjugated bilirubin dissolves poorly in water, so it rides on albumin, the plasma’s main carrier."
+        },
+        {
+          "id": "conj",
+          "label": "Conjugated in the liver",
+          "text": "Liver cells take it up and conjugate it, making it water-soluble.",
+          "why": "Only a water-soluble form can be secreted in bile, and conjugation is what the liver adds."
+        },
+        {
+          "id": "bile",
+          "label": "Out in bile",
+          "text": "The liver secretes conjugated bilirubin in bile, which drains into the intestine.",
+          "why": "Bile is the liver’s route out of the body for wastes it has made water-soluble."
+        },
+        {
+          "id": "gut",
+          "label": "Stercobilin in feces",
+          "text": "Intestinal bacteria convert it to urobilinogen, and most becomes brown stercobilin in the feces.",
+          "why": "That is why feces are brown. A little urobilinogen is absorbed and leaves in urine as yellow urobilin."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "The kidneys filter the bilirubin straight into urine.",
+            "why": "Unconjugated bilirubin is bound to albumin and insoluble in water, so it cannot pass into urine. It must be conjugated by the liver first."
+          },
+          {
+            "text": "Liver cells rebuild the bilirubin into heme for new hemoglobin.",
+            "why": "Heme without its iron cannot be reused. Liver cells conjugate bilirubin so it can be excreted."
+          },
+          {
+            "text": "The bone marrow stores the bilirubin until the next red cell is made.",
+            "why": "Bilirubin is not stored for reuse; it is a waste pigment on its way out of the body."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Inside the macrophage, hemoglobin is split into globin, iron and heme, and the iron is excreted in urine.",
+        "why": "Iron is recycled, not excreted: transferrin carries it back to the marrow or to storage. Each day macrophages recover about 20–25 mg, nearly all of what the marrow needs."
+      },
+      "summary": "Old red cells are engulfed by macrophages. Globin becomes amino acids, iron is recycled by transferrin, and heme becomes biliverdin, then bilirubin, which rides albumin to the liver, is conjugated, leaves in bile, and becomes stercobilin in feces (with a little urobilin in urine). A block at any point causes jaundice."
+    },
+    {
+      "id": "hemostasis-steps",
+      "title": "Hemostasis: spasm to fibrin",
+      "topic": "hemostasis",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You nick a small artery in your forearm on a sharp edge. Trace how the bleeding is stopped, from the tear to a firm clot. The steps start within seconds of each other and overlap.",
+      "steps": [
+        {
+          "id": "tear",
+          "label": "Wall tears",
+          "text": "The vessel wall tears, exposing collagen and tissue factor beneath the lining.",
+          "why": "Everything that follows is set off by what the tear exposes: collagen for platelets and tissue factor for clotting proteins."
+        },
+        {
+          "id": "spasm",
+          "label": "Vascular spasm",
+          "text": "Smooth muscle in the wall contracts: vascular spasm narrows the vessel.",
+          "why": "Direct injury, chemicals at the site and local nerve reflexes make the muscle contract at once. Slower flow lets platelets and clotting proteins build up instead of washing away."
+        },
+        {
+          "id": "stick",
+          "label": "Platelets stick; TF starts",
+          "text": "Platelets stick to von Willebrand factor on exposed collagen. At the same time, plasma meets tissue factor, and tissue factor with VIIa makes a first trickle of thrombin.",
+          "why": "Both start from the tear itself. Tissue factor does not wait for platelets; initiation on tissue factor cells runs alongside platelet adhesion."
+        },
+        {
+          "id": "activate",
+          "label": "Platelets activate",
+          "text": "Stuck platelets activate: they change shape, release ADP, serotonin and calcium, and make thromboxane A2.",
+          "why": "Binding to von Willebrand factor and collagen, and the trickle of thrombin, set off signals inside each platelet."
+        },
+        {
+          "id": "plug",
+          "label": "Soft platelet plug",
+          "text": "ADP and thromboxane A2 activate passing platelets, which are bridged by fibrinogen into a soft plug.",
+          "why": "Activated platelets activate more platelets: positive feedback that builds the plug quickly, kept local by the healthy lining around it."
+        },
+        {
+          "id": "burst",
+          "label": "Thrombin burst",
+          "text": "On the activated platelet surface, clotting factors make a burst of thrombin.",
+          "why": "The activated platelet surface is where IXa–VIIIa and Xa–Va work fastest, so the big burst needs the plug first."
+        },
+        {
+          "id": "fibrin",
+          "label": "Fibrin mesh",
+          "text": "Thrombin cuts fibrinogen into fibrin, and XIIIa cross-links the threads through and around the plug: a firm clot.",
+          "why": "Fibrin is the end point of coagulation. Only the fibrin mesh holds against blood pressure in anything bigger than a small cut."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Platelets release their granules first, and only then is tissue factor exposed to start clotting.",
+            "why": "Tissue factor sits in the vessel wall and is exposed by the tear itself. Clotting starts on it at the same time platelets stick, not after they release their granules."
+          },
+          {
+            "text": "Red blood cells stick to the collagen and form the plug.",
+            "why": "Red cells do not stick to collagen; platelets do, through von Willebrand factor. Red cells are only trapped later in the fibrin mesh."
+          },
+          {
+            "text": "Fibrin threads form first, and platelets then stick to them.",
+            "why": "Fibrin comes last, from the burst of thrombin on activated platelets. The platelets must stick and activate before that burst."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "On the activated platelet surface, antithrombin makes a burst of thrombin.",
+        "why": "Antithrombin does the opposite: it inactivates thrombin and Xa. The burst comes from IXa–VIIIa activating X and Xa–Va converting prothrombin to thrombin."
+      },
+      "summary": "A tear exposes collagen and tissue factor. The vessel constricts; platelets stick while tissue factor starts clotting; activated platelets recruit more into a soft plug; their surface hosts a burst of thrombin; and thrombin turns fibrinogen into a cross-linked fibrin mesh. The steps overlap, and the plug alone seals only the smallest breaks."
+    },
+    {
+      "id": "coagulation-cell-based",
+      "title": "Coagulation cascade overview",
+      "topic": "hemostasis",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Clotting in your body happens on cell surfaces: the cell-based model. Trace the clotting factors from the moment a vessel tears to a cross-linked fibrin mesh.",
+      "steps": [
+        {
+          "id": "tf",
+          "label": "Plasma meets tissue factor",
+          "text": "A tear brings plasma into contact with tissue factor on fibroblasts and smooth muscle cells in the wall, as platelets begin to stick.",
+          "why": "Blood never touches tissue factor while the lining is intact, so the tear itself is the trigger."
+        },
+        {
+          "id": "viia",
+          "label": "TF–VIIa activates X, IX",
+          "text": "Factor VIIa, which circulates already active, binds tissue factor, and the pair activates factors X and IX.",
+          "why": "VIIa can do little until it binds tissue factor, so this step can only follow the exposure."
+        },
+        {
+          "id": "trickle",
+          "label": "A trickle of thrombin",
+          "text": "Xa, with its cofactor Va, turns a little prothrombin into a little thrombin.",
+          "why": "This first thrombin is too little to make a clot. Within seconds, an inhibitor switches the tissue factor–VIIa pair off."
+        },
+        {
+          "id": "amplify",
+          "label": "Platelets, V, VIII, XI primed",
+          "text": "The trickle of thrombin activates the platelets in the plug and activates factors V, VIII and XI.",
+          "why": "Thrombin is a strong platelet activator. Priming the cofactors prepares the platelet surface for the burst."
+        },
+        {
+          "id": "surface",
+          "label": "Platelet surface ready",
+          "text": "Activated platelets flip negatively charged phospholipid to their outer face, where calcium ions anchor clotting factors.",
+          "why": "The factors work fast only when held on a membrane surface, and calcium is what holds them."
+        },
+        {
+          "id": "tenase",
+          "label": "IXa–VIIIa activates X",
+          "text": "On the platelet surface, IXa pairs with VIIIa and activates X at a high rate.",
+          "why": "With tissue factor–VIIa switched off, this pair takes over. It is the step missing in hemophilia A (VIII) and B (IX)."
+        },
+        {
+          "id": "burst",
+          "label": "Thrombin burst",
+          "text": "Xa pairs with Va and converts prothrombin to thrombin in a large burst.",
+          "why": "Now the enzymes sit together on one surface in large numbers, and each activated enzyme activates many molecules of the next: amplification."
+        },
+        {
+          "id": "fibrin",
+          "label": "Fibrinogen → fibrin",
+          "text": "Thrombin cuts soluble fibrinogen into fibrin, which links up into insoluble threads.",
+          "why": "This is the end point that everything before it was building toward: a large amount of thrombin in the right place."
+        },
+        {
+          "id": "xiii",
+          "label": "XIIIa cross-links",
+          "text": "Factor XIIIa, activated by thrombin, cross-links the fibrin threads into a strong mesh that traps red cells.",
+          "why": "Fibrin threads must exist before they can be cross-linked, so this comes last."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "On the platelet surface, factor XIIa activates XI, which starts the whole cascade.",
+            "why": "That is the start of the lab model’s intrinsic pathway in a glass tube. In your body, factor XII is not needed: people who lack it do not bleed."
+          },
+          {
+            "text": "Tissue factor with VIIa keeps activating X at a high rate on the platelet surface.",
+            "why": "The tissue factor–VIIa pair is switched off within seconds by an inhibitor protein. The burst depends on IXa with VIIIa."
+          },
+          {
+            "text": "Plasmin activates X on the platelet surface.",
+            "why": "Plasmin breaks fibrin down during fibrinolysis. It plays no part in building the clot."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Xa, with its cofactor Va, turns prothrombin into enough thrombin to clot the blood at once.",
+        "why": "The first thrombin made on tissue factor cells is only a trickle, too little to clot. Its job is to activate platelets and cofactors so that the burst can happen on the platelet surface."
+      },
+      "summary": "Initiation on tissue factor cells makes a trickle of thrombin; amplification uses it to activate platelets and factors V, VIII and XI; propagation on the platelet surface (IXa–VIIIa, then Xa–Va) makes a burst of thrombin, which makes cross-linked fibrin. For your exam, the same factors are also taught as the extrinsic (tissue factor and VIIa), intrinsic (XII, XI, IX, VIII) and common (X, V, II, I, XIII) pathways."
+    },
+    {
+      "id": "coagulation-lab-model",
+      "title": "The lab model: intrinsic and common pathways",
+      "topic": "hemostasis",
+      "core": [
+        "communication"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Exams and the aPTT test still use the lab model. Plasma is added to a tube with a negatively charged contact surface, phospholipid and calcium. Trace the intrinsic and common pathways to a clot in the tube.",
+      "steps": [
+        {
+          "id": "xii",
+          "label": "Contact activates XII",
+          "text": "Contact with the negatively charged surface activates factor XII.",
+          "why": "Everything the intrinsic pathway needs is in the blood; contact with a surface like glass is its trigger."
+        },
+        {
+          "id": "xi",
+          "label": "XIIa activates XI",
+          "text": "XIIa activates XI.",
+          "why": "Each activated factor is an enzyme that cuts and activates the next in line."
+        },
+        {
+          "id": "ix",
+          "label": "XIa activates IX",
+          "text": "XIa activates IX.",
+          "why": "The cascade passes the signal on, amplifying it at each step."
+        },
+        {
+          "id": "x",
+          "label": "IXa + VIIIa activate X",
+          "text": "IXa, with its cofactor VIIIa, activates X.",
+          "why": "This is where the intrinsic pathway joins the common pathway. The extrinsic pathway (tissue factor with VIIa) activates X too, which is why both meet here."
+        },
+        {
+          "id": "thrombin",
+          "label": "Prothrombin → thrombin",
+          "text": "Xa, with Va and calcium, converts prothrombin to thrombin.",
+          "why": "Activating X starts the common pathway, shared by both routes."
+        },
+        {
+          "id": "fibrin",
+          "label": "Fibrinogen → fibrin",
+          "text": "Thrombin cuts fibrinogen into fibrin.",
+          "why": "Thrombin is the enzyme that makes fibrin, so fibrin comes after it."
+        },
+        {
+          "id": "xiii",
+          "label": "XIIIa cross-links",
+          "text": "XIIIa cross-links the fibrin, and the sample clots.",
+          "why": "Cross-linking needs fibrin to exist first. The time to reach a clot is the aPTT, normally about 25–35 seconds."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Tissue factor with VIIa activates IX.",
+            "why": "Tissue factor and VIIa belong to the extrinsic pathway, and the aPTT tube has no tissue factor added. In the intrinsic pathway, IXa with VIIIa activates X."
+          },
+          {
+            "text": "IXa activates VIII, which cuts prothrombin directly.",
+            "why": "VIII is a cofactor, not the enzyme that makes thrombin. IXa with VIIIa activates X, and Xa converts prothrombin."
+          },
+          {
+            "text": "Calcium is removed with citrate so that X can be activated.",
+            "why": "Citrate is used to stop the sample clotting before the test. Calcium is added back, because the factors need it."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Thrombin cuts fibrin into fibrinogen.",
+        "why": "It is the other way round. Fibrinogen is the soluble plasma protein; thrombin cuts it into fibrin, the insoluble threads."
+      },
+      "summary": "Intrinsic: XII, XI, IX (with VIII), meeting the extrinsic pathway (tissue factor with VII) at X. Common: X (with V), prothrombin to thrombin, fibrinogen to fibrin, XIII cross-links. The aPTT tests the intrinsic and common pathways; the PT tests the extrinsic and common. In your body factor XII is not needed; this is the model for reading tests and for exams."
+    },
+    {
+      "id": "abo-transfusion-reaction",
+      "title": "An ABO transfusion reaction",
+      "topic": "blood-typing",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A type O patient is given a unit of type A red cells by mistake. Trace what happens in her blood.",
+      "steps": [
+        {
+          "id": "enter",
+          "label": "A cells enter O plasma",
+          "text": "Red cells carrying A antigen enter plasma that holds anti-A.",
+          "why": "Everyone with type O blood has anti-A and anti-B in their plasma from infancy, without any earlier transfusion."
+        },
+        {
+          "id": "bind",
+          "label": "Anti-A binds",
+          "text": "Her anti-A binds the A antigens on the donor cells within seconds.",
+          "why": "The antibodies are already there, so no time is needed to make them; binding is immediate."
+        },
+        {
+          "id": "clump",
+          "label": "Agglutination",
+          "text": "Each antibody bridges A antigens on two cells, clumping the donor cells.",
+          "why": "Each antibody has several binding sites, so it can link antigens on neighboring cells into visible clumps."
+        },
+        {
+          "id": "burst",
+          "label": "Donor cells burst",
+          "text": "Antibodies bound to the cells switch on plasma proteins that punch holes, and the donor cells burst.",
+          "why": "Hemolysis follows binding, because it is the bound antibodies that switch on the hole-punching proteins."
+        },
+        {
+          "id": "free",
+          "label": "Free hemoglobin",
+          "text": "Hemoglobin released into the plasma spills into the urine, and its heme is turned into bilirubin.",
+          "why": "The hemoglobin could only escape once the cells burst."
+        },
+        {
+          "id": "signal",
+          "label": "Fever, falling pressure",
+          "text": "Signals released by the antibody attack cause fever, chills, pain and a fall in blood pressure.",
+          "why": "These signals come from the attack, so they follow binding; the fall in pressure can lead to shock."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Fibrin threads trap the donor cells in a clot.",
+            "why": "That is coagulation. The clumping in a transfusion reaction is agglutination: antibodies linking cells by their surface antigens."
+          },
+          {
+            "text": "Her immune system spends two weeks making new anti-A.",
+            "why": "Anti-A is already present in type O plasma. That delay is the pattern for a first exposure to the Rh antigen, not ABO."
+          },
+          {
+            "text": "The donor’s anti-B clumps her red cells.",
+            "why": "Type A plasma has anti-B, but type O red cells carry no B antigen, and packed cells carry little plasma anyway. The danger is her antibodies against the donor cells."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "Red cells carrying A antigen enter her plasma, which has no antibodies until she is exposed.",
+        "why": "Unlike Rh, ABO antibodies are present from a few months of age without any exposure to donor blood, probably because bacteria in the intestine carry look-alike sugar chains. That is why an ABO mismatch reacts at once."
+      },
+      "summary": "Donor antigen meets antibodies already in the plasma, which bind at once, agglutinate the cells and switch on hemolysis. Free hemoglobin reaches the urine and becomes bilirubin, and the attack causes fever and falling blood pressure. Stop the transfusion at once."
+    },
+    {
+      "id": "rh-hdn",
+      "title": "How Rh antibodies harm a later pregnancy",
+      "topic": "blood-typing",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "An Rh-negative mother is not given anti-D immune globulin. Trace how her first Rh-positive baby leads to hemolytic disease in the next.",
+      "steps": [
+        {
+          "id": "setup",
+          "label": "Rh+ fetus, Rh− mother",
+          "text": "An Rh-negative mother carries an Rh-positive fetus, which inherited a D gene from its father.",
+          "why": "The disease needs a mother without the D antigen and a fetus with it."
+        },
+        {
+          "id": "birth",
+          "label": "Fetal cells enter at birth",
+          "text": "At delivery, some fetal red cells enter the mother’s blood.",
+          "why": "The two bloods normally stay apart during pregnancy; mixing happens mostly at birth."
+        },
+        {
+          "id": "sensitize",
+          "label": "Mother makes anti-D",
+          "text": "Over the following weeks her immune system makes anti-D. The first baby, already born, is unharmed.",
+          "why": "Anti-D forms only after exposure, and slowly, so it arrives too late to harm the first baby."
+        },
+        {
+          "id": "cross",
+          "label": "Anti-D crosses",
+          "text": "In a later Rh-positive pregnancy, her anti-D crosses from her blood to the fetus.",
+          "why": "Her anti-D is of the kind that crosses to the fetus, and once she is sensitized it is always there."
+        },
+        {
+          "id": "destroy",
+          "label": "Fetal red cells destroyed",
+          "text": "Anti-D binds the fetus’s red cells, which are destroyed, causing anemia and a flood of erythroblasts.",
+          "why": "The fetal marrow and liver respond to the anemia by releasing immature, still-nucleated cells."
+        },
+        {
+          "id": "jaundice",
+          "label": "Jaundice after birth",
+          "text": "After birth, the baby’s immature liver cannot keep up, and bilirubin climbs fast.",
+          "why": "Before birth the mother’s liver cleared the bilirubin; after birth the baby must do it alone."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The first baby is destroyed by anti-D that the mother had from infancy.",
+            "why": "Rh-negative people have no anti-D until they are exposed. The first baby is usually unharmed."
+          },
+          {
+            "text": "She is given anti-D immune globulin, which clears the fetal cells.",
+            "why": "That is the prevention, and it would stop the disease. In this pathway she was not given it, so she made her own anti-D."
+          },
+          {
+            "text": "The fetus makes anti-D against its mother’s red cells.",
+            "why": "The mother’s cells lack the D antigen, so there is nothing for anti-D to bind; the harm runs from mother to fetus."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "In a later Rh-positive pregnancy, her anti-A and anti-B cross to the fetus and destroy its cells.",
+        "why": "Most anti-A and anti-B are too large to cross to the fetus. The severe disease comes from anti-D, which does cross."
+      },
+      "summary": "Rh-positive fetal cells enter an Rh-negative mother at the first birth; she makes anti-D over weeks; in the next Rh-positive pregnancy her anti-D crosses and destroys fetal red cells, causing anemia, erythroblasts in the blood and severe jaundice after birth. Anti-D immune globulin at about 28 weeks and within 72 hours of delivery clears fetal cells before she can make her own anti-D."
     }
   ]
 }

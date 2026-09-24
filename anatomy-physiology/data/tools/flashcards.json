@@ -4842,6 +4842,1140 @@
     "front": "You stand up quickly and arterial pressure dips. What does the medulla oblongata change?",
     "back": "It reduces vagal output and increases sympathetic output: the heart speeds up and strengthens, and vessels constrict.",
     "why": "Stretch-sensitive sensory receptors in the large arteries fire less when the pressure falls, and the reflex restores it by negative feedback."
+  },
+  {
+   "id": "blood-spun-tube",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "A tube of blood is spun in a centrifuge. What are the three layers, from bottom to top?",
+   "back": "Packed red blood cells (about 45%), a thin buffy coat of white blood cells and platelets (under 1%), and plasma (about 55%).",
+   "why": "Spinning presses the densest material to the bottom, and red cells are the densest part of blood."
+  },
+  {
+   "id": "blood-formed-elements",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Why are the cells of blood called formed elements rather than blood cells?",
+   "back": "Because platelets are not whole cells: they are fragments of megakaryocytes. Formed elements are red cells, white cells and platelets.",
+   "why": "The word covers everything in blood that is a cell or a piece of one."
+  },
+  {
+   "id": "blood-hematocrit-def",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the hematocrit, and what are its usual ranges?",
+   "back": "The percentage of blood volume made up of red cells (packed cell volume): about 37–47% in women and 42–52% in men.",
+   "why": "It is read from the packed red column after spinning, so it is a ratio of heights."
+  },
+  {
+   "id": "blood-hematocrit-ratio",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Two things can raise a hematocrit. What are they?",
+   "back": "More red cells, or less plasma (for example dehydration).",
+   "why": "The hematocrit is red cell volume divided by blood volume, so either the top or the bottom of the fraction can move."
+  },
+  {
+   "id": "blood-hct-bleed",
+   "topic": "blood-composition",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why is the hematocrit unchanged right after a sudden bleed?",
+   "back": "Cells and plasma are lost together, in their usual proportion. It falls over the following hours as fluid from the tissues dilutes the remaining cells.",
+   "why": "A ratio cannot show the loss of whole blood until one part of it changes."
+  },
+  {
+   "id": "blood-properties",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Give blood’s volume, pH and viscosity in an adult.",
+   "back": "About 5 L (70 mL/kg, 7–8% of body weight); arterial pH 7.35–7.45; four to five times as viscous as water.",
+   "why": "Buffers in plasma and red cells hold the pH; red cells supply most of the viscosity."
+  },
+  {
+   "id": "blood-plasma-water",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is plasma made of?",
+   "back": "About 92% water and 7% proteins, with under 1% each of electrolytes, nutrients, wastes, gases and hormones.",
+   "why": "The water is the solvent that carries everything else, and heat."
+  },
+  {
+   "id": "blood-albumin",
+   "topic": "blood-composition",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Albumin vs globulins vs fibrinogen",
+   "front": "What makes albumin, and what are its two main jobs?",
+   "back": "The liver. It holds water in the blood with its osmotic pull, and it carries poorly soluble substances such as fatty acids, some hormones, calcium and drugs.",
+   "why": "Albumin cannot cross capillary walls, so it is a solute the barrier holds back, and water follows it."
+  },
+  {
+   "id": "blood-globulins",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Albumin vs globulins vs fibrinogen",
+   "front": "Where do alpha, beta and gamma globulins come from, and what do they do?",
+   "back": "Alpha and beta: mostly the liver; transport proteins. Gamma: white blood cells; immune proteins that bind specific foreign molecules.",
+   "why": "Gamma globulins are the one plasma protein group not made by the liver."
+  },
+  {
+   "id": "blood-fibrinogen",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Albumin vs globulins vs fibrinogen",
+   "front": "What is fibrinogen, and is it in serum?",
+   "back": "A clotting protein made by the liver (4–7% of plasma protein), converted to the threads of a clot. It is not in serum.",
+   "why": "Fibrinogen is used up when blood clots, so the fluid squeezed from a clot lacks it."
+  },
+  {
+   "id": "blood-low-albumin",
+   "topic": "blood-composition",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "A failing liver makes too little albumin. What happens to the tissues?",
+   "back": "They swell with extra fluid.",
+   "why": "Less albumin means less osmotic pull holding water in the blood, so more water stays in the tissues."
+  },
+  {
+   "id": "blood-serum-plasma",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Plasma vs serum",
+   "front": "How is serum different from plasma?",
+   "back": "Serum is plasma without its clotting proteins. Plasma comes from blood kept from clotting; serum is squeezed from blood allowed to clot.",
+   "why": "Fibrinogen and the other clotting proteins are consumed in building the clot."
+  },
+  {
+   "id": "blood-serum-uses",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Plasma vs serum",
+   "front": "Which sample is used for clotting tests, and which for many chemistry tests?",
+   "back": "Plasma for clotting tests; serum for many chemistry and immune tests.",
+   "why": "Serum has already clotted and lost its clotting proteins, so it cannot be used to measure clotting."
+  },
+  {
+   "id": "blood-counts",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Red cells vs white cells vs platelets",
+   "front": "How many red cells, white cells and platelets are in each µL of blood?",
+   "back": "Red cells about 4–6 million; white cells about 4,500–11,000; platelets about 150,000–450,000.",
+   "why": "There are roughly 500 to 1,000 red cells for every white cell, which is why the buffy coat is so thin."
+  },
+  {
+   "id": "blood-lifespans",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Red cells vs white cells vs platelets",
+   "front": "How long do red cells, white cells and platelets usually last in circulation?",
+   "back": "Red cells about 120 days; white cells hours to years depending on type; platelets about 7–10 days.",
+   "why": "None of them divides in the blood, so the marrow must replace them all the time."
+  },
+  {
+   "id": "blood-red-marrow",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where does hematopoiesis happen in an adult?",
+   "back": "In the red bone marrow of flat bones and the ends of some long bones: skull, vertebrae, ribs, sternum, hip bones, and upper femur and humerus.",
+   "why": "Much of the marrow of the long bones turns to fatty yellow marrow with age."
+  },
+  {
+   "id": "blood-two-branches",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do myeloid and lymphoid stem cells give rise to?",
+   "back": "Myeloid: red cells, megakaryocytes (platelets) and most white cells. Lymphoid: one family of white cells, the ones at the heart of the immune system.",
+   "why": "Both descend from the hematopoietic stem cell, which divides so that one daughter stays a stem cell."
+  },
+  {
+   "id": "blood-growth-factors",
+   "topic": "blood-composition",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Which growth factor drives each line: red cells, platelets, white cells?",
+   "back": "Erythropoietin (kidneys) for red cells; thrombopoietin (mainly liver) for platelets; colony-stimulating factors and interleukins for white cells.",
+   "why": "Each binds receptor proteins on particular stem and blast cells and makes them divide and mature."
+  },
+  {
+   "id": "rbc-structure",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does a red cell’s shape and content suit it to carrying oxygen?",
+   "back": "A thin biconcave disc with no nucleus or organelles, packed with hemoglobin, with a flexible spectrin skeleton.",
+   "why": "No point is far from the membrane, so oxygen diffuses fast; no organelles leaves room for hemoglobin; flexibility lets it squeeze through capillaries."
+  },
+  {
+   "id": "rbc-glycolysis",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a red cell not use up the oxygen it carries?",
+   "back": "It has no mitochondria, so it makes its ATP by glycolysis, which does not use oxygen.",
+   "why": "The mitochondria are broken down as the cell matures, to make room for hemoglobin."
+  },
+  {
+   "id": "rbc-hemoglobin",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How many oxygen molecules can one hemoglobin carry, and why?",
+   "back": "Four: one on the iron ion at the center of each of its four heme groups.",
+   "why": "Adult hemoglobin has two alpha and two beta globin chains, each holding one heme."
+  },
+  {
+   "id": "rbc-reticulocyte",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What does the reticulocyte count tell you?",
+   "back": "How fast the marrow is working. Normally about 1%; it rises when the marrow speeds up and stays low when it cannot respond.",
+   "why": "Each new red cell spends about a day in the blood as a reticulocyte."
+  },
+  {
+   "id": "rbc-needs",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does the marrow need to make red cells?",
+   "back": "Iron for heme, vitamin B12 and folate for DNA, amino acids for globin, and energy.",
+   "why": "Erythroblasts divide fast, so they are among the first cells to suffer when B12 or folate runs short."
+  },
+  {
+   "id": "rbc-epo-sensor",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What does the erythropoietin loop actually sense?",
+   "back": "The oxygen reaching the kidney tissue, not the number of red cells.",
+   "why": "So anything that lowers oxygen delivery (anemia, altitude, lung disease) raises EPO, and failing kidneys lower it."
+  },
+  {
+   "id": "rbc-epo-timing",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "At high altitude, when does EPO peak and when do red cells rise?",
+   "back": "EPO peaks within one to two days and then eases back; reticulocytes rise after 3–5 days and the red cell count climbs over weeks.",
+   "why": "As more red cells restore oxygen delivery to the kidneys, EPO release falls: negative feedback."
+  },
+  {
+   "id": "rbc-heme-fate",
+   "topic": "erythrocytes",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "When a macrophage breaks down hemoglobin, what happens to globin, iron and heme?",
+   "back": "Globin becomes amino acids for reuse; iron is carried by transferrin to the marrow or storage; heme becomes biliverdin, then bilirubin.",
+   "why": "The heme ring cannot be reused once its iron is removed, so it is turned into a waste pigment."
+  },
+  {
+   "id": "rbc-iron-proteins",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Transferrin vs ferritin vs hemosiderin",
+   "front": "Transferrin, ferritin, hemosiderin: what does each do?",
+   "back": "Transferrin carries iron in plasma; ferritin stores it in a quickly released form inside cells; hemosiderin is a long-term store of clumped ferritin.",
+   "why": "Free iron is toxic, so iron is almost always bound to a protein."
+  },
+  {
+   "id": "rbc-ferritin-test",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Transferrin vs ferritin vs hemosiderin",
+   "front": "What does a low plasma ferritin mean?",
+   "back": "Empty iron stores.",
+   "why": "A little ferritin leaks into plasma in proportion to the store inside cells."
+  },
+  {
+   "id": "rbc-iron-recycled",
+   "topic": "erythrocytes",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Where does most of the iron for new red cells come from each day?",
+   "back": "Recycled from old red cells: about 20–25 mg a day, against only 1–2 mg absorbed from food.",
+   "why": "Iron is recycled far more than it is replaced, and the body has no way to excrete extra iron."
+  },
+  {
+   "id": "rbc-jaundice-types",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Jaundice before, in and after the liver",
+   "front": "In which kind of jaundice are the urine dark and the feces pale?",
+   "back": "After the liver: bile cannot drain, so conjugated bilirubin backs up into blood and urine, and none reaches the intestine.",
+   "why": "Only conjugated bilirubin dissolves in water and can enter urine; stercobilin forms only from bilirubin that reaches the gut."
+  },
+  {
+   "id": "rbc-jaundice-prehepatic",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Jaundice before, in and after the liver",
+   "front": "Why is the urine normally colored in jaundice from red cell destruction?",
+   "back": "The extra bilirubin is unconjugated, rides on albumin and does not dissolve in water, so it cannot enter urine.",
+   "why": "Destruction overwhelms the liver before conjugation, so the unconjugated form builds up."
+  },
+  {
+   "id": "rbc-newborn-jaundice",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is jaundice common in newborns?",
+   "back": "A newborn breaks down its short-lived fetal red cells while its liver’s conjugating enzyme is still immature.",
+   "why": "Bilirubin peaks around days 3–5; blue-light phototherapy turns it into forms excreted without conjugation."
+  },
+  {
+   "id": "an-reticulocytes",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Types of anemia",
+   "front": "Which anemias have a high reticulocyte count, and which a low one?",
+   "back": "High: blood loss (after 3–5 days) and hemolytic anemias. Low: iron deficiency, pernicious anemia, aplastic anemia and kidney failure.",
+   "why": "A healthy marrow facing loss or destruction speeds up; a marrow short of iron, B12 or EPO, or one that has failed, cannot."
+  },
+  {
+   "id": "an-cell-size",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Types of anemia",
+   "front": "Why are red cells small in iron deficiency but large in B12 deficiency?",
+   "back": "Without iron, erythroblasts keep dividing but cannot fill with hemoglobin. Without B12 or folate, DNA synthesis stalls, so cells grow but divide too few times.",
+   "why": "Cell size points to the missing ingredient."
+  },
+  {
+   "id": "an-pernicious",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Types of anemia",
+   "front": "What causes pernicious anemia, and how is it treated?",
+   "back": "Too little B12 is absorbed because the stomach lining no longer makes the protein needed to absorb it. B12 injections, or very high oral doses.",
+   "why": "Injections bypass absorption; a small fraction of a large swallowed dose is absorbed without the carrier protein."
+  },
+  {
+   "id": "an-aplastic",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Types of anemia",
+   "front": "What is aplastic anemia, and what else falls with the red cells?",
+   "back": "The marrow stops making blood cells (drugs, toxins, radiation, immune attack). White cells and platelets fall too.",
+   "why": "All three lines come from the same marrow stem cells."
+  },
+  {
+   "id": "an-kidney",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Types of anemia",
+   "front": "Why do failing kidneys cause anemia, and what do the red cells look like?",
+   "back": "The kidneys make too little EPO. The cells are normal in size, and reticulocytes are low.",
+   "why": "The marrow has what it needs to build each cell but too little signal to make enough."
+  },
+  {
+   "id": "an-hemorrhagic",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Types of anemia",
+   "front": "In hemorrhagic anemia from slow bleeding, why do the cells eventually become small and pale?",
+   "back": "Each lost red cell takes its iron with it, so slow bleeding eventually empties the iron stores.",
+   "why": "Once iron runs out, it becomes an iron-deficiency anemia."
+  },
+  {
+   "id": "an-thalassemia",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Types of anemia",
+   "front": "What is thalassemia?",
+   "back": "An inherited anemia in which too little alpha or beta globin chain is made; cells are small and pale, and many are destroyed early.",
+   "why": "Without enough of one chain, the cell cannot fill with working hemoglobin."
+  },
+  {
+   "id": "an-breathing",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why does anemia speed breathing mainly on exertion, not at rest?",
+   "back": "On exertion, muscles short of oxygen lean on glycolysis and release acid, which drives breathing. The blood’s oxygen sensors respond to dissolved oxygen, which stays normal in anemia.",
+   "why": "Anemia lowers the oxygen carried on hemoglobin, not the pressure of dissolved oxygen."
+  },
+  {
+   "id": "rbc-sickle",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What single change causes sickle cell disease, and what does it do?",
+   "back": "Valine replaces glutamic acid at position 6 of the beta chain. Deoxygenated HbS sticks into stiff fibers that bend red cells into sickles, which jam small vessels and are destroyed early.",
+   "why": "One amino acid changes the protein’s surface, and shape sets function."
+  },
+  {
+   "id": "rbc-sickle-trait",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the sickle gene common where malaria was widespread?",
+   "back": "One copy (sickle cell trait) usually causes no symptoms and gives partial protection against severe malaria.",
+   "why": "Carriers survived malaria more often and passed the gene on."
+  },
+  {
+   "id": "rbc-polycythemia",
+   "topic": "erythrocytes",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Primary vs secondary vs relative polycythemia",
+   "front": "Primary, secondary and relative polycythemia: what raises the hematocrit in each?",
+   "back": "Primary: marrow stem cells make red cells without EPO (EPO low). Secondary: raised EPO, as at altitude. Relative: plasma loss, with normal red cell mass.",
+   "why": "The EPO level and the plasma volume tell them apart."
+  },
+  {
+   "id": "wbc-order",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Rank the five leukocytes from most to least common in blood.",
+   "back": "Neutrophils (50–70%), lymphocytes (20–40%), monocytes (2–8%), eosinophils (1–4%), basophils (0.5–1%).",
+   "why": "A memory aid: Never Let Monkeys Eat Bananas."
+  },
+  {
+   "id": "wbc-neutrophil",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Neutrophil: nucleus, granules, job, and when it rises?",
+   "back": "3–5 lobes; small, faint lilac granules; engulfs and kills bacteria; rises in bacterial infections.",
+   "why": "Its granules are lysosomes full of enzymes, and it makes toxic oxygen compounds to kill what it swallows."
+  },
+  {
+   "id": "wbc-eosinophil",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Eosinophil: nucleus, granules, job, and when it rises?",
+   "back": "2 lobes; large red-orange granules; attacks parasitic worms and modulates allergic reactions; rises in worm infections and allergies.",
+   "why": "Worms are too big to engulf, so eosinophils release toxic granule proteins onto them."
+  },
+  {
+   "id": "wbc-basophil",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Basophil: nucleus, granules, job?",
+   "back": "2 lobes hidden by large dark blue-purple granules; releases histamine in allergic and inflammatory reactions.",
+   "why": "Histamine widens vessels and makes them leaky, so fluid and leukocytes move into the tissue."
+  },
+  {
+   "id": "wbc-lymphocyte",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Lymphocyte: appearance, job, and when it rises?",
+   "back": "Round cell almost filled by a large dark nucleus with a thin rim of pale blue cytoplasm; specific immune defense; rises in viral infections.",
+   "why": "Most lymphocytes live in lymphoid tissue and pass back and forth through the blood."
+  },
+  {
+   "id": "wbc-monocyte",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Monocyte: appearance, job, and when it rises?",
+   "back": "The largest leukocyte, with a kidney- or horseshoe-shaped nucleus; leaves the blood to become a macrophage; rises in long-lasting infections.",
+   "why": "Macrophages arrive after neutrophils and survive for months, so they dominate once an infection lasts."
+  },
+  {
+   "id": "wbc-granular",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The five leukocytes",
+   "front": "Which leukocytes are granulocytes and which are agranulocytes?",
+   "back": "Granulocytes: neutrophils, eosinophils, basophils. Agranulocytes: lymphocytes, monocytes.",
+   "why": "The groups are sorted by granules visible on a stained smear; agranulocytes have only tiny lysosomes too small to see."
+  },
+  {
+   "id": "wbc-pus",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is pus made of?",
+   "back": "Mostly dead neutrophils, dead bacteria and debris.",
+   "why": "Neutrophils are the first to arrive at a bacterial infection and survive only a day or two in the tissues."
+  },
+  {
+   "id": "wbc-bands",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What are band cells, and why do they rise?",
+   "back": "Young neutrophils with a curved, unsegmented nucleus, released early from the marrow in a serious bacterial infection.",
+   "why": "The marrow empties its reserve before the nucleus has finished lobing."
+  },
+  {
+   "id": "wbc-antigen",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the difference between an antigen and an antibody?",
+   "back": "An antigen is a molecule the immune system recognizes as a target. An antibody is a Y-shaped gamma globulin whose arm tips fit one antigen’s shape.",
+   "why": "Each antibody has two or more binding sites, so it can coat a microbe or link neighboring cells into clumps."
+  },
+  {
+   "id": "wbc-absolute",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "A differential shows lymphocytes 10% of a white count of 16,000/µL. Are lymphocytes low?",
+   "back": "No: 16,000 × 0.10 = 1,600/µL, within the normal range. The percentage fell because neutrophils rose.",
+   "why": "Always check absolute counts before calling a type high or low."
+  },
+  {
+   "id": "wbc-counts",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Define leukocytosis and leukopenia.",
+   "back": "Leukocytosis: a white count above about 11,000/µL. Leukopenia: below about 4,500/µL.",
+   "why": "The dangerous part of leukopenia is a low neutrophil count, the first defense against bacteria."
+  },
+  {
+   "id": "wbc-leukemia-lymphoma",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Leukemia vs lymphoma",
+   "front": "Leukemia vs lymphoma: where does each grow, and how does it first show?",
+   "back": "Leukemia: blood-forming cells in the marrow and blood; fatigue, bruising, infections, abnormal count. Lymphoma: lymphocytes in lymph nodes; painless swollen nodes.",
+   "why": "Leukemic cells crowd out normal marrow, so red cells and platelets fall even as the white count rises."
+  },
+  {
+   "id": "plt-make",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How are platelets made?",
+   "back": "Thrombopoietin drives megakaryocytes, which push arms of cytoplasm into marrow vessels; the flowing blood breaks them into thousands of platelets.",
+   "why": "A megakaryocyte copies its DNA many times without dividing, so it grows huge."
+  },
+  {
+   "id": "plt-contents",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "A platelet has no nucleus. What can and cannot it do?",
+   "back": "It cannot divide or make new RNA, but it can make a few proteins from RNA left by its megakaryocyte. It cannot renew itself and lasts about 7–10 days.",
+   "why": "That leftover RNA runs out, so a platelet is replaced rather than repaired."
+  },
+  {
+   "id": "plt-granules",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do a platelet’s granules release when it is activated?",
+   "back": "ADP, serotonin and calcium (to recruit platelets and help clotting), clotting proteins including fibrinogen, and growth factors for repair.",
+   "why": "Granule release is how one activated platelet recruits the next."
+  },
+  {
+   "id": "plt-low",
+   "topic": "leukocytes-platelets",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What are petechiae, and what causes them?",
+   "back": "Tiny red-purple pinpoint spots in the skin where single capillaries have bled: a sign of too few platelets.",
+   "why": "Platelets seal the small breaks that happen every day in small vessels."
+  },
+  {
+   "id": "hemo-three-steps",
+   "topic": "hemostasis",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What are the three overlapping steps of hemostasis?",
+   "back": "Vascular spasm, platelet plug formation and coagulation.",
+   "why": "All three are set off by the same injury within seconds; clotting is only the third."
+  },
+  {
+   "id": "hemo-spasm",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What causes vascular spasm?",
+   "back": "Direct injury to the smooth muscle, chemicals such as thromboxane A2 and serotonin, and local nerve reflexes from pain fibers.",
+   "why": "A narrower vessel leaks less, and slower flow lets platelets and clotting proteins build up."
+  },
+  {
+   "id": "hemo-vwf",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does von Willebrand factor do?",
+   "back": "It sticks to exposed collagen and catches platelets, even in fast arterial flow; it also carries and protects factor VIII.",
+   "why": "That is why von Willebrand disease causes both poor adhesion and low factor VIII."
+  },
+  {
+   "id": "hemo-plug-feedback",
+   "topic": "hemostasis",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why is platelet plug formation positive feedback, and what keeps it local?",
+   "back": "Activated platelets release ADP and thromboxane A2, which activate more platelets. The healthy lining nearby releases nitric oxide and prostacyclin and destroys ADP.",
+   "why": "The response strengthens the stimulus, so something outside the loop must confine it."
+  },
+  {
+   "id": "hemo-end-point",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the end point of coagulation?",
+   "back": "Thrombin cuts soluble fibrinogen into fibrin threads, which factor XIIIa cross-links into a mesh.",
+   "why": "Everything else in coagulation is about making a large burst of thrombin in the right place."
+  },
+  {
+   "id": "hemo-factors",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name factors I, II, III and IV.",
+   "back": "I fibrinogen, II prothrombin, III tissue factor, IV calcium ions.",
+   "why": "Factors are numbered in the order they were discovered, not the order they act."
+  },
+  {
+   "id": "coag-cell-phases",
+   "topic": "hemostasis",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "What are the three phases of the cell-based model, and where does each happen?",
+   "back": "Initiation on tissue factor cells, amplification on platelets, propagation on the activated platelet surface.",
+   "why": "A trickle of thrombin made on tissue factor cells primes platelets, whose surface then makes the burst."
+  },
+  {
+   "id": "coag-starts",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "In your body, what starts clotting, and when?",
+   "back": "Tissue factor with factor VIIa, exposed by the tear itself, at the same time platelets start to stick.",
+   "why": "Tissue factor sits on cells in the vessel wall that blood never touches while the lining is intact."
+  },
+  {
+   "id": "coag-tests",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "Which pathways do the PT and the aPTT test?",
+   "back": "PT (reported as INR): extrinsic and common. aPTT: intrinsic and common.",
+   "why": "The PT adds tissue factor; the aPTT adds a contact activator. Both add phospholipid and calcium."
+  },
+  {
+   "id": "coag-intrinsic",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "List the lab model’s intrinsic, extrinsic and common pathways.",
+   "back": "Intrinsic: XII → XI → IX (+VIII) → X. Extrinsic: tissue factor + VIIa → X. Common: Xa (+Va) turns prothrombin to thrombin, thrombin turns fibrinogen to fibrin, XIIIa cross-links.",
+   "why": "For your exam, this is the picture most courses expect, and it is how clotting tests are read."
+  },
+  {
+   "id": "coag-factor-xii",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "People without factor XII have a very long aPTT but do not bleed. What does that show?",
+   "back": "Factor XII is not needed to stop bleeding in the body; tissue factor starts clotting there.",
+   "why": "The lab model cannot explain this; the cell-based model can."
+  },
+  {
+   "id": "coag-hemophilia",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "Why does the lab model fail to explain bleeding in hemophilia?",
+   "back": "It says the extrinsic pathway alone should be enough. In the body, tissue factor–VIIa is switched off within seconds, and the burst on platelets needs IXa with VIIIa.",
+   "why": "The cell-based model explains why missing VIII or IX leaves a trickle but no burst."
+  },
+  {
+   "id": "coag-platelets-role",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Intrinsic vs extrinsic pathway (the lab model) vs the cell-based model",
+   "front": "What role do platelets play in the lab model and in the cell-based model?",
+   "back": "Lab model: none (phospholipid is added instead). Cell-based model: central; their surface hosts the thrombin burst.",
+   "why": "Clotting factors work fast only when held on a membrane surface by calcium."
+  },
+  {
+   "id": "coag-limits",
+   "topic": "hemostasis",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What stops a clot from spreading beyond the injury?",
+   "back": "Flow dilutes activated factors; the healthy lining releases nitric oxide and prostacyclin and carries thrombomodulin (thrombin then activates protein C); antithrombin inactivates thrombin and Xa.",
+   "why": "Clotting is fast where tissue factor and activated platelets are and stopped where there is healthy lining."
+  },
+  {
+   "id": "hemo-vitamin-k",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which factors need vitamin K, and what does it do for them?",
+   "back": "II, VII, IX and X (and protein C). The liver uses it to add acid groups that bind calcium, letting the factors attach to phospholipid surfaces.",
+   "why": "Without it the proteins are made but do not work."
+  },
+  {
+   "id": "hemo-newborn-k",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are newborns given a vitamin K injection?",
+   "back": "Little vitamin K reaches the fetus, breast milk holds little, and the newborn gut is only beginning to gain bacteria, so stores are very low.",
+   "why": "One injection prevents a rare but serious bleeding disease of newborns."
+  },
+  {
+   "id": "hemo-retraction",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is clot retraction?",
+   "back": "Within 30–60 minutes, platelets use actin and myosin to pull on fibrin, tightening the clot, squeezing out serum and drawing the vessel edges together.",
+   "why": "The fluid squeezed out is serum, because the clotting proteins stay in the clot."
+  },
+  {
+   "id": "hemo-fibrinolysis",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is plasmin made on the clot and not throughout the blood?",
+   "back": "Both plasminogen and tPA bind fibrin, so tPA converts plasminogen to plasmin right on the clot.",
+   "why": "That confines the breakdown of fibrin to where fibrin is."
+  },
+  {
+   "id": "hemo-heparin-warfarin",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Heparin vs warfarin",
+   "front": "Heparin vs warfarin: how each works and how each is monitored.",
+   "back": "Heparin speeds antithrombin, acts in minutes, is monitored by aPTT and reversed by protamine. Warfarin blocks vitamin K recycling, acts over 3–5 days, is monitored by PT/INR and reversed by vitamin K.",
+   "why": "Warfarin is slow because working factors already in the blood must be used up first."
+  },
+  {
+   "id": "hemo-no-dissolve",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Heparin vs warfarin",
+   "front": "Does heparin or warfarin dissolve a clot?",
+   "back": "Neither. They stop a clot growing and new ones forming, while fibrinolysis clears the old one.",
+   "why": "They act on making thrombin, not on breaking down fibrin."
+  },
+  {
+   "id": "hemo-natural-heparin",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Is heparin one of the plasma’s natural anticoagulants?",
+   "back": "Not normally: heparin is stored in mast cell and basophil granules. Heparin-like molecules on the vessel lining speed antithrombin. (Many exams list heparin from mast cells and basophils as a natural anticoagulant.)",
+   "why": "Heparin is not normally found in plasma; its natural role is packing granule contents."
+  },
+  {
+   "id": "hemo-aspirin",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is aspirin often stopped a week before surgery?",
+   "back": "It permanently blocks the platelet enzyme that makes thromboxane A2, and a platelet cannot make new enzyme, so the effect lasts for the platelet’s 7–10 day life.",
+   "why": "Only new platelets, made after the last dose, work normally."
+  },
+  {
+   "id": "hemo-bleeding-pattern",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Platelet vs clotting factor bleeding",
+   "front": "How does the bleeding pattern tell a platelet problem from a clotting factor problem?",
+   "back": "Platelet problems: petechiae, bruising, nosebleeds, gum bleeding. Factor problems: deep bleeding into joints and muscles, and bleeding that restarts hours later.",
+   "why": "With a factor problem the plug forms but no fibrin reinforces it."
+  },
+  {
+   "id": "hemo-hemophilia",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which factors are missing in hemophilia A and B, and why are most patients male?",
+   "back": "A: factor VIII. B: factor IX. Both genes lie on the X chromosome; males have one X, so one faulty copy causes disease.",
+   "why": "Females have two X chromosomes and are usually carriers without symptoms."
+  },
+  {
+   "id": "hemo-thrombus-embolus",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Thrombus vs embolus",
+   "front": "Thrombus vs embolus?",
+   "back": "A thrombus is a clot attached to the wall of an unbroken vessel. An embolus is a mass carried in the blood until it lodges and blocks a vessel.",
+   "why": "A piece of a deep leg vein thrombus can break off and lodge in the lungs as an embolus."
+  },
+  {
+   "id": "hemo-virchow",
+   "topic": "hemostasis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What three conditions make a thrombus likely?",
+   "back": "Slow or stagnant flow, damage to the vessel lining, and blood that clots more readily than normal (Virchow’s triad).",
+   "why": "Slow flow lets activated factors build up; damaged lining loses its anticlotting defenses."
+  },
+  {
+   "id": "abo-antigens",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "ABO and Rh blood types",
+   "front": "What antigens and plasma antibodies go with types A, B, AB and O?",
+   "back": "A: A antigen, anti-B. B: B antigen, anti-A. AB: both antigens, no anti-A or anti-B. O: neither antigen, both antibodies.",
+   "why": "The plasma has antibodies against the ABO antigens its own red cells lack."
+  },
+  {
+   "id": "abo-why-antibodies",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "ABO and Rh blood types",
+   "front": "Why does everyone have anti-A or anti-B without ever receiving blood?",
+   "back": "Bacteria in the gut and food carry sugar chains that look like A and B antigens, and the immune system makes antibodies against those its own cells lack.",
+   "why": "That is why a first ABO-mismatched transfusion reacts at once."
+  },
+  {
+   "id": "abo-vs-rh",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "ABO and Rh blood types",
+   "front": "How does the Rh group differ from ABO in its antibodies?",
+   "back": "Anti-D forms only after exposure to Rh-positive cells, over weeks; anti-A and anti-B are present from infancy without exposure.",
+   "why": "So a first Rh mismatch usually causes no reaction but sensitizes the person."
+  },
+  {
+   "id": "abo-universal",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "ABO and Rh blood types",
+   "front": "Which type is the universal red cell donor, and which the universal recipient?",
+   "back": "O negative is the universal donor; AB positive the universal recipient.",
+   "why": "O-negative cells carry no A, B or D antigen; AB-positive plasma has no anti-A, anti-B or anti-D. When there is time, hospitals still give type-specific, crossmatched blood."
+  },
+  {
+   "id": "abo-plasma-donor",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "ABO and Rh blood types",
+   "front": "For plasma transfusions, which ABO type can be given to anyone?",
+   "back": "AB plasma, because it holds no anti-A or anti-B.",
+   "why": "For plasma the logic reverses: it is the donor’s antibodies that matter, not the donor’s red cell antigens."
+  },
+  {
+   "id": "abo-inherit",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "ABO and Rh blood types",
+   "front": "Can two type A parents have a type O child? Can two type O parents have a type A child?",
+   "back": "Yes, if each parent carries one O copy. No: an O copy makes no working enzyme, so two O parents can only pass on O.",
+   "why": "A and B copies make their antigen whenever present; O shows only when both copies are O."
+  },
+  {
+   "id": "abo-typing-test",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "ABO and Rh blood types",
+   "front": "Blood clumps with anti-A and anti-D but not anti-B. What is the type?",
+   "back": "A positive.",
+   "why": "Clumping in a well means the red cells carry the antigen that well’s antibody binds."
+  },
+  {
+   "id": "abo-agglutination",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Agglutination vs coagulation?",
+   "back": "Agglutination: antibodies clump cells by their surface antigens. Coagulation: fibrin threads form a clot.",
+   "why": "Both can happen in a transfusion reaction, but they are different processes."
+  },
+  {
+   "id": "abo-crossmatch",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a crossmatch?",
+   "back": "Mixing the patient’s plasma with red cells from the actual donor unit and checking for agglutination before the unit is issued.",
+   "why": "ABO and Rh are only two of many blood groups, so a crossmatch catches other antibodies."
+  },
+  {
+   "id": "abo-reaction-first-step",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is the first thing to do when a transfusion reaction is suspected, and why?",
+   "back": "Stop the transfusion at once.",
+   "why": "Every extra milliliter of incompatible cells adds to the agglutination, hemolysis and falling blood pressure."
+  },
+  {
+   "id": "hdn-first-baby",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the first Rh-positive baby of an Rh-negative mother usually unharmed?",
+   "back": "Fetal cells enter her blood mostly at delivery, and she makes anti-D over the following weeks, after that baby is born.",
+   "why": "The harm comes in later Rh-positive pregnancies, when her anti-D crosses to the fetus."
+  },
+  {
+   "id": "hdn-prevention",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How is Rh hemolytic disease of the newborn prevented?",
+   "back": "Anti-D immune globulin for the Rh-negative mother at about 28 weeks, within 72 hours of delivering an Rh-positive baby, and after any event that may mix the bloods.",
+   "why": "The injected anti-D clears fetal Rh-positive cells before her own immune system responds, so she never makes her own."
+  },
+  {
+   "id": "hdn-abo-mild",
+   "topic": "blood-typing",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why do ABO differences between mother and fetus usually cause only mild disease?",
+   "back": "Most anti-A and anti-B cannot reach the fetus, and fetal red cells carry A and B antigens only weakly.",
+   "why": "A type O mother has some anti-A and anti-B of the crossing kind, so her type A or B baby can be mildly affected even in a first pregnancy."
   }
  ]
 }

@@ -272,6 +272,36 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** current terms are used: "to sound", "to pressure", "normal flexion" and "abnormal flexion" (Teasdale 2014). "GCS 8, intubate" is taught as a prompt, not a rule.
 - **For your exam:** older terms ("to speech", "to pain", "withdrawal", "decorticate/decerebrate") and "GCS 8, intubate".
 
+### active-cutaneous-vasodilation: why skin vessels widen in heat
+- **Status:** pending review.
+- **Where:** `ans-control` (going-further box), later thermoregulation.
+- **Evidence-based position:** in hairy skin about 80–90% of the heat-induced rise in skin blood flow comes from active widening by sympathetic cholinergic nerves (cotransmitters and nitric oxide, not ACh itself). In the hairless skin of the palms, soles and lips it comes from withdrawal of sympathetic constrictor tone.
+- **For your exam:** many texts say skin vessels widen in heat only because sympathetic tone falls.
+
+### parasympathetic-sphincter-relaxation: how gut and bladder sphincters relax
+- **Status:** pending review.
+- **Where:** `ans-signaling` (organ table), `ans-control`.
+- **Evidence-based position:** parasympathetic relaxation of gut and bladder-outlet sphincters comes mainly from nitric oxide (with VIP and ATP) released by parasympathetic and enteric inhibitory neurons, not from ACh on muscarinic receptor proteins, which contracts smooth muscle.
+- **For your exam:** pharmacology tables list sphincter relaxation as a muscarinic (M3) effect, so exams may expect "muscarinic".
+
+### tongue-map: are tastes zoned on the tongue?
+- **Status:** pending review.
+- **Where:** `chemical-senses`.
+- **Evidence-based position:** all five taste qualities are detected wherever there are taste buds; regional differences in sensitivity are small.
+- **For your exam:** older worksheets and exams place bitter at the back of the tongue.
+
+### glaucoma-definition: pressure or optic nerve damage?
+- **Status:** pending review.
+- **Where:** `vision`.
+- **Evidence-based position:** glaucoma is damage to the optic nerve. Raised eye pressure from poor drainage of aqueous humor is the main treatable risk factor, not the definition: normal-pressure glaucoma exists, and many people with raised pressure never develop it.
+- **For your exam:** increased pressure inside the eye, from poor drainage of aqueous humor, that damages the optic nerve.
+
+### rinne-labels: what a "positive" Rinne test means
+- **Status:** pending review.
+- **Where:** `hearing-balance`.
+- **Evidence-based position:** the notes explain the test by what is heard (air conduction louder than bone conduction is normal) and flag that "positive" means normal.
+- **For your exam:** "Rinne positive" = normal or sensorineural loss; "Rinne negative" = conductive loss.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -406,6 +436,48 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   Cold Beverages"; "C3, 4 and 5 keep the diaphragm alive" and "LR6, SO4" are kept.
 - **Figures:** Figure 15.6 prints presynaptic and postsynaptic for preganglionic and
   postganglionic axons (named correctly, printed form accepted).
+
+## Phase 2: special senses and autonomic nervous system, judgment calls for instructor review
+
+- **Special senses, positions:** many taste cells fire action potentials but the signals never
+  leave the taste bud (taught as an exception in sensory-pathways); a possible sixth taste (fat)
+  is mentioned as debated; rods and cones are called specialized neurons; rods drop out in
+  daylight because they are saturated, not bleached; only the outer hair cells' tallest
+  stereocilia are embedded in the tectorial membrane; high-frequency hearing loss is explained
+  with a hedge.
+- **Special senses, normal values chosen:** about 90 million rods and 4.5 million cones per
+  retina (Curcio 1990; older texts say 120 and 6 million); pigment peaks 420, 498, 534 and 564
+  nm; the cornea does about two thirds of the focusing; eye pressure 10–21 mm Hg with aqueous
+  replaced about every 2 hours; a rod at −40 mV in the dark, toward −70 mV in light; dark
+  adaptation about 10 minutes for cones and 20–30 for rods; red–green color blindness in about 1
+  in 12 males of northern European ancestry and 1 in 200 females; about 3,500 inner and 12,000
+  outer hair cells, with about 95% of cochlear nerve fibers from inner hair cells; middle-ear
+  gain about 20-fold (22 in the calculator); cochlea 3.5 cm; endolymph about +80 mV; hearing
+  damage risk from about 85 dB over hours and minutes at 100–110 dB; near point 7–10 cm in
+  childhood and early adulthood.
+- **Special senses, simplifications:** the superior oblique as "down, most strongly when turned
+  in", plus rotation; "lacrimal ducts" as the gland's ducts; no word roots for mydriasis; the
+  audiogram and pigment curves are schematic.
+- **Special senses, figures:** Figure 14.15 prints "Lateral" and "Medial" on a view where they
+  mean superior and inferior (covered) and "Suspensory ligaments" twice; 14.17 not used (prints
+  "11-trans-retinal" and draws an ATP-driven step); 14.18's "red" cones peak at 564 nm, which is
+  yellow-green (noted); 14.22 draws the pituitary in front of the optic chiasm (it sits below,
+  behind its stalk); a caption note on 14.12 printed the cupula answer (covered).
+- **Special senses, not built:** a retina histology station (Figure 14.16 needs license
+  verification). The vision notes run about 5,000 words (nine concepts).
+- **Autonomic, normal values chosen:** sympathetic divergence of 10 or more; the adrenal medulla
+  about 80% epinephrine; 22–23 chain ganglia a side; splanchnic nerves from T5–T9 and T10–T11;
+  a denervated heart at about 100 a minute; vagal tone 20–40 beats below that; a full atropine
+  dose raises the rate 30 or more.
+- **Autonomic, simplifications:** parasympathetic nerves have little direct effect on
+  ventricular force; thick sympathetic saliva mainly through beta-1; bladder wall relaxation
+  mainly beta-3; vasovagal fainting; the autonomic blockade heart-rate graph is schematic.
+- **Autonomic, figures:** Figure 15.3 panel (b) sends one "Gray ramus" leader to the white
+  ramus (the pin question uses the white ramus instead) and panel (c) prints "spinal ganglion"
+  for the chain ganglion; 15.4 prints "Super salivatory nucleus" and puts the "Otic ganglion"
+  label beside the submandibular ganglion (covered); 15.6 prints presynaptic and postsynaptic
+  for preganglionic and postganglionic; 15.9 and 15.11 not used (wrong claims, misspelled
+  Edinger–Westphal).
 
 ## Decided at the Phase 0 reviews
 

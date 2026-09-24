@@ -8524,6 +8524,1581 @@
           ]
         }
       ]
+    },
+    {
+      "id": "blood-dehydration",
+      "title": "Losing plasma water on a hot day",
+      "topic": "blood-composition",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a higher hematocrit always means more red blood cells",
+      "setup": "A runner sweats out 2 L of water on a hot afternoon and drinks nothing. She loses no blood. Predict her blood at the end of the run, compared with before it.",
+      "start": "Water leaves the plasma as sweat",
+      "steps": {
+        "plasma": "Plasma volume falls",
+        "same": "No red cells are lost",
+        "hct": "Red cells make up a larger share of each sample: hematocrit rises",
+        "visc": "More cells in each milliliter: blood is more viscous"
+      },
+      "variables": [
+        {
+          "id": "plasma-volume",
+          "name": "Plasma volume",
+          "answer": "down",
+          "chain": [
+            "plasma"
+          ],
+          "why": "Sweat is drawn from the interstitial fluid, which is refilled from the plasma, so the plasma loses water."
+        },
+        {
+          "id": "red-cell-volume",
+          "name": "Total volume of red cells in her body",
+          "answer": "none",
+          "chain": [
+            "same"
+          ],
+          "why": "No blood left her body and the red cells do not leave the vessels in sweat, so she has the same red cells as before."
+        },
+        {
+          "id": "hematocrit",
+          "name": "Hematocrit",
+          "answer": "up",
+          "chain": [
+            "plasma",
+            "same",
+            "hct"
+          ],
+          "why": "The hematocrit is a ratio: red cell volume divided by blood volume. The same red cells now sit in less plasma, so they make up a larger share of each sample. This is a relative rise, not a gain in cells."
+        },
+        {
+          "id": "viscosity",
+          "name": "Blood viscosity",
+          "answer": "up",
+          "chain": [
+            "plasma",
+            "hct",
+            "visc"
+          ],
+          "why": "Most of blood’s viscosity comes from its red cells. More cells per milliliter make the blood thicker, so it meets more resistance to flow."
+        }
+      ]
+    },
+    {
+      "id": "blood-low-albumin",
+      "title": "The liver makes too little albumin",
+      "topic": "blood-composition",
+      "core": [
+        "gradients",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "plasma proteins leak out of the blood with the water",
+      "setup": "Years of liver damage have cut the liver’s albumin output in half. Predict the state of her blood and tissues, compared with when her liver was healthy.",
+      "start": "The liver makes less albumin",
+      "steps": {
+        "alb": "Plasma albumin falls",
+        "pull": "Less solute held back in the plasma: its osmotic pull falls",
+        "out": "Less water is held in the blood; more leaves for the tissues",
+        "swell": "Tissues swell with extra fluid",
+        "wbc": "Gamma globulins come from white blood cells, not the liver"
+      },
+      "variables": [
+        {
+          "id": "albumin",
+          "name": "Plasma albumin concentration",
+          "answer": "down",
+          "chain": [
+            "alb"
+          ],
+          "why": "The liver makes albumin. With half the output, the plasma concentration falls."
+        },
+        {
+          "id": "osmotic-pull",
+          "name": "Osmotic pull of the plasma on water",
+          "answer": "down",
+          "chain": [
+            "alb",
+            "pull"
+          ],
+          "why": "Albumin cannot cross the capillary wall, so it is a solute the barrier holds back. It supplies most of the plasma’s osmotic pull because it is the most abundant plasma protein. Less albumin, less pull."
+        },
+        {
+          "id": "water-out",
+          "name": "Water moving from the blood into the tissues",
+          "answer": "up",
+          "chain": [
+            "alb",
+            "pull",
+            "out"
+          ],
+          "why": "Water follows solute. With less albumin holding water in the blood, more of it stays out in the tissues."
+        },
+        {
+          "id": "swelling",
+          "name": "Swelling of her tissues",
+          "answer": "up",
+          "chain": [
+            "alb",
+            "pull",
+            "out",
+            "swell"
+          ],
+          "why": "Extra water collects between the cells of the tissues, which swell, most visibly in the legs and abdomen."
+        },
+        {
+          "id": "gamma",
+          "name": "Gamma globulins in her plasma",
+          "answer": "none",
+          "chain": [
+            "wbc"
+          ],
+          "why": "Gamma globulins are made by white blood cells, not the liver, so liver damage does not directly cut their supply."
+        }
+      ]
+    },
+    {
+      "id": "blood-altitude-weeks",
+      "title": "Six weeks in a mountain town",
+      "topic": "erythrocytes",
+      "theme": "living at high altitude, red cell count over weeks",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the bone marrow senses low oxygen and speeds up on its own",
+      "setup": "A student moves from sea level to a town at 3,800 m and stays. Predict her blood after six weeks, compared with her first day in the town.",
+      "start": "Each breath brings in less oxygen",
+      "steps": {
+        "load": "Blood leaves the lungs carrying less oxygen",
+        "kidney": "Less oxygen reaches the kidney tissue",
+        "epo": "Kidney cells release more EPO, peaking in the first one to two days",
+        "marrow": "More erythroid precursors survive, divide and mature",
+        "retic": "Reticulocytes pour out from day 3–5",
+        "rbc": "Red cell count and hemoglobin climb over the weeks",
+        "hct": "Hematocrit rises",
+        "carry": "Each liter of blood carries more oxygen",
+        "visc": "Blood grows more viscous",
+        "air": "The thin air at 3,800 m has not changed"
+      },
+      "variables": [
+        {
+          "id": "red-cell-count",
+          "name": "Red blood cell count",
+          "answer": "up",
+          "chain": [
+            "load",
+            "kidney",
+            "epo",
+            "marrow",
+            "retic",
+            "rbc"
+          ],
+          "why": "The sensors are kidney cells, not the marrow. Less oxygen reaching them raises EPO within hours. EPO lets more erythroid precursors survive and mature, and new red cells keep arriving for weeks."
+        },
+        {
+          "id": "hemoglobin",
+          "name": "Hemoglobin concentration (g/dL)",
+          "answer": "up",
+          "chain": [
+            "load",
+            "kidney",
+            "epo",
+            "marrow",
+            "rbc"
+          ],
+          "why": "Every new red cell is filled with hemoglobin, so more red cells in each deciliter means more hemoglobin in each deciliter."
+        },
+        {
+          "id": "hematocrit",
+          "name": "Hematocrit",
+          "answer": "up",
+          "chain": [
+            "load",
+            "kidney",
+            "epo",
+            "marrow",
+            "rbc",
+            "hct"
+          ],
+          "why": "More red cells make up a larger share of each spun sample, so the red column in the tube is taller."
+        },
+        {
+          "id": "oxygen-carried",
+          "name": "Oxygen carried by each liter of arterial blood",
+          "answer": "up",
+          "chain": [
+            "load",
+            "kidney",
+            "epo",
+            "marrow",
+            "rbc",
+            "carry"
+          ],
+          "why": "Each hemoglobin carries up to four oxygen molecules. More hemoglobin per liter carries more oxygen, even though each breath still brings in thin air. That is the response that eases the stimulus: negative feedback."
+        },
+        {
+          "id": "viscosity",
+          "name": "Blood viscosity",
+          "answer": "up",
+          "chain": [
+            "load",
+            "kidney",
+            "epo",
+            "marrow",
+            "rbc",
+            "hct",
+            "visc"
+          ],
+          "why": "Red cells supply most of blood’s viscosity, so a higher hematocrit makes the blood thicker. This is the cost of the adjustment."
+        },
+        {
+          "id": "oxygen-in-air",
+          "name": "Oxygen in each breath of air",
+          "answer": "none",
+          "chain": [
+            "air"
+          ],
+          "why": "She is still at 3,800 m. The adjustment happens in her blood, not in the air, which holds as little oxygen as on her first day."
+        }
+      ]
+    },
+    {
+      "id": "blood-altitude-l4",
+      "title": "Arriving at altitude: EPO first, red cells later",
+      "topic": "erythrocytes",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "EPO stays at its peak for as long as you stay at altitude",
+      "setup": "A climber flies from sea level to a research station at 4,300 m and stays for six weeks. Follow her EPO and red cells.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "After two days",
+          "prompt": "Two days after arrival, compared with sea level.",
+          "start": "Each breath brings in less oxygen",
+          "steps": {
+            "load": "Blood leaves the lungs carrying less oxygen",
+            "kidney": "Less oxygen reaches the kidney tissue",
+            "gene": "In the kidney cells, the factor that switches on the EPO gene survives",
+            "epo": "EPO in the blood climbs to its peak",
+            "lag": "Precursors need 3–5 days to release reticulocytes",
+            "mass": "No new red cells have reached the blood yet"
+          },
+          "variables": [
+            {
+              "id": "kidney-oxygen",
+              "name": "Oxygen reaching the kidney tissue",
+              "answer": "down",
+              "chain": [
+                "load",
+                "kidney"
+              ],
+              "why": "Thinner air loads less oxygen into the blood in the lungs, so less of it is delivered to every tissue, the kidneys included."
+            },
+            {
+              "id": "epo",
+              "name": "EPO in the blood",
+              "answer": "up",
+              "chain": [
+                "load",
+                "kidney",
+                "gene",
+                "epo"
+              ],
+              "why": "In low oxygen, a transcription factor that is normally destroyed within minutes survives and switches on the EPO gene. EPO rises within hours and peaks at about one to two days."
+            },
+            {
+              "id": "red-cells",
+              "name": "Total number of red cells in her body",
+              "answer": "none",
+              "chain": [
+                "lag",
+                "mass"
+              ],
+              "why": "EPO acts on precursors in the marrow, and it takes 3–5 days before extra reticulocytes pour out. Two days in, the red cells in her blood are still the ones she arrived with."
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "Six weeks later",
+          "prompt": "Six weeks after arrival, compared with day two. She is still at 4,300 m.",
+          "start": "Weeks of faster red cell production",
+          "steps": {
+            "retic": "Reticulocytes keep pouring out and maturing",
+            "more": "Total red cells and hemoglobin rise",
+            "carry": "Each liter of blood carries more oxygen",
+            "kidney": "More oxygen reaches the kidney tissue again",
+            "fall": "Kidney cells release less EPO",
+            "visc": "Blood grows more viscous"
+          },
+          "variables": [
+            {
+              "id": "red-cells",
+              "name": "Total number of red cells in her body",
+              "answer": "up",
+              "chain": [
+                "retic",
+                "more"
+              ],
+              "why": "Each day since day three or so, the marrow has released more new red cells than old ones were destroyed, so the total has climbed."
+            },
+            {
+              "id": "oxygen-carried",
+              "name": "Oxygen carried by each liter of arterial blood",
+              "answer": "up",
+              "chain": [
+                "retic",
+                "more",
+                "carry"
+              ],
+              "why": "More hemoglobin in each liter means more iron sites to bind oxygen, so each liter carries more even though the air is just as thin."
+            },
+            {
+              "id": "kidney-oxygen",
+              "name": "Oxygen reaching the kidney tissue",
+              "answer": "up",
+              "chain": [
+                "retic",
+                "more",
+                "carry",
+                "kidney"
+              ],
+              "why": "Blood that carries more oxygen delivers more of it to the kidneys. The stimulus that started the loop has shrunk."
+            },
+            {
+              "id": "epo",
+              "name": "EPO in the blood",
+              "answer": "down",
+              "chain": [
+                "retic",
+                "more",
+                "carry",
+                "kidney",
+                "fall"
+              ],
+              "why": "As oxygen delivery to the kidney cells recovers, they release less EPO, so it eases back from its early peak toward its sea-level value. The response has reduced the stimulus: negative feedback."
+            },
+            {
+              "id": "viscosity",
+              "name": "Blood viscosity",
+              "answer": "up",
+              "chain": [
+                "retic",
+                "more",
+                "visc"
+              ],
+              "why": "More red cells in each milliliter make the blood thicker."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blood-bleed-l4",
+      "title": "A sudden bleed: the hematocrit over days",
+      "topic": "erythrocytes",
+      "core": [
+        "homeostasis",
+        "compartments"
+      ],
+      "level": 4,
+      "misconception": "the hematocrit falls the moment blood is lost",
+      "setup": "A cyclist loses about 1 L of blood from a deep cut in her thigh before the bleeding is stopped. She gets no transfusion and no fluid through a drip.",
+      "stages": [
+        {
+          "id": "now",
+          "label": "Right after the bleed",
+          "prompt": "Just after the bleeding stops, compared with before the injury.",
+          "start": "About 1 L of whole blood is lost",
+          "steps": {
+            "whole": "Cells and plasma leave together, in their usual proportion",
+            "vol": "Blood volume falls",
+            "ratio": "The share of red cells in what is left is unchanged",
+            "total": "Fewer red cells in her body in total"
+          },
+          "variables": [
+            {
+              "id": "blood-volume",
+              "name": "Blood volume",
+              "answer": "down",
+              "chain": [
+                "whole",
+                "vol"
+              ],
+              "why": "A liter of whole blood has left the vessels, about a fifth of her blood."
+            },
+            {
+              "id": "hematocrit",
+              "name": "Hematocrit",
+              "answer": "none",
+              "chain": [
+                "whole",
+                "ratio"
+              ],
+              "why": "The hematocrit is a ratio. Whole blood carries cells and plasma out in their usual proportion, so the blood left behind has the same share of red cells."
+            },
+            {
+              "id": "hemoglobin",
+              "name": "Hemoglobin concentration (g/dL)",
+              "answer": "none",
+              "chain": [
+                "whole",
+                "ratio"
+              ],
+              "why": "Each deciliter of the blood that remains holds the same number of red cells as before, so it holds the same hemoglobin."
+            },
+            {
+              "id": "total-red-cells",
+              "name": "Total number of red cells in her body",
+              "answer": "down",
+              "chain": [
+                "whole",
+                "total"
+              ],
+              "why": "The red cells in the lost liter are gone. The ratio hides this loss for now."
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "Four days later",
+          "prompt": "Four days later, compared with just after the bleed.",
+          "start": "Fluid moves in and the marrow responds",
+          "steps": {
+            "fluid": "Fluid moves into the blood from the tissues",
+            "vol": "Blood volume recovers toward normal",
+            "dilute": "The remaining red cells are spread through more plasma",
+            "hct": "Hematocrit and hemoglobin concentration fall",
+            "kidney": "Less oxygen reaches the kidney tissue",
+            "epo": "Kidney cells release more EPO",
+            "retic": "The marrow releases reticulocytes from day 3–5"
+          },
+          "variables": [
+            {
+              "id": "blood-volume",
+              "name": "Blood volume",
+              "answer": "up",
+              "chain": [
+                "fluid",
+                "vol"
+              ],
+              "why": "Over the hours after a bleed, fluid moves from the tissues into the blood, refilling the vessels."
+            },
+            {
+              "id": "hematocrit",
+              "name": "Hematocrit",
+              "answer": "down",
+              "chain": [
+                "fluid",
+                "dilute",
+                "hct"
+              ],
+              "why": "The new fluid is plasma without cells. The same reduced number of red cells now sits in a refilled volume, so their share falls: about 36% if 1 L of 5 L was lost at a starting value of 45%."
+            },
+            {
+              "id": "epo",
+              "name": "EPO in the blood",
+              "answer": "up",
+              "chain": [
+                "fluid",
+                "dilute",
+                "hct",
+                "kidney",
+                "epo"
+              ],
+              "why": "Diluted blood carries less oxygen per liter, so less reaches the kidney cells, and they release more EPO."
+            },
+            {
+              "id": "reticulocytes",
+              "name": "Reticulocyte count",
+              "answer": "up",
+              "chain": [
+                "fluid",
+                "dilute",
+                "hct",
+                "kidney",
+                "epo",
+                "retic"
+              ],
+              "why": "EPO speeds the maturation of erythroid precursors, and after 3–5 days extra reticulocytes appear. A healthy marrow facing blood loss speeds up, which is why the count rises in hemorrhagic anemia."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blood-kidney-failure",
+      "title": "Failing kidneys and the red cell count",
+      "topic": "erythrocytes",
+      "theme": "chronic kidney disease and red cell count",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "anemia makes you breathe faster at rest because your blood oxygen sensors fire",
+      "setup": "A 60-year-old’s kidneys have been failing slowly for years. Her marrow is healthy and her iron, vitamin B12 and folate are normal. Predict her state compared with before her kidneys failed.",
+      "start": "Kidney tissue is scarred and lost",
+      "steps": {
+        "cells": "Fewer EPO-making cells in the kidney tissue",
+        "epo": "EPO stays low even when oxygen delivery falls",
+        "marrow": "Erythroid precursors get too little EPO signal",
+        "retic": "Fewer reticulocytes are released",
+        "rbc": "Red cell count and hemoglobin fall: anemia",
+        "build": "Iron, B12 and folate are available, so each cell is built normally",
+        "deliver": "Less oxygen delivered to working muscles",
+        "acid": "On exertion, muscles lean on glycolysis sooner and release acid",
+        "breathe": "The acid drives faster breathing on exertion",
+        "dissolved": "Dissolved oxygen in arterial blood stays normal, so the oxygen sensors are not triggered",
+        "pale": "Less red pigment in the skin’s vessels"
+      },
+      "variables": [
+        {
+          "id": "epo",
+          "name": "EPO in the blood",
+          "answer": "down",
+          "chain": [
+            "cells",
+            "epo"
+          ],
+          "why": "The cells that sense oxygen and release EPO sit in the kidney tissue. When that tissue is lost, EPO stays low even though oxygen delivery has fallen: the loop cannot respond."
+        },
+        {
+          "id": "reticulocytes",
+          "name": "Reticulocyte count",
+          "answer": "down",
+          "chain": [
+            "cells",
+            "epo",
+            "marrow",
+            "retic"
+          ],
+          "why": "Without enough EPO, fewer erythroid precursors survive and mature, so the marrow releases fewer reticulocytes. The low count shows the problem is making cells, not losing them."
+        },
+        {
+          "id": "hemoglobin",
+          "name": "Hemoglobin concentration",
+          "answer": "down",
+          "chain": [
+            "cells",
+            "epo",
+            "marrow",
+            "retic",
+            "rbc"
+          ],
+          "why": "Red cells still wear out after about 120 days, but fewer replace them, so red cells and hemoglobin fall. This is the anemia of kidney failure, treated with injected EPO."
+        },
+        {
+          "id": "cell-size",
+          "name": "Size of each red cell",
+          "answer": "none",
+          "chain": [
+            "build"
+          ],
+          "why": "The marrow has what it needs to build each cell: iron for heme and B12 and folate for DNA. It simply gets too little signal to make enough of them, so the cells are normal in size."
+        },
+        {
+          "id": "breathing-exertion",
+          "name": "Breathing rate during a brisk walk",
+          "answer": "up",
+          "chain": [
+            "cells",
+            "epo",
+            "marrow",
+            "rbc",
+            "deliver",
+            "acid",
+            "breathe"
+          ],
+          "why": "Less hemoglobin delivers less oxygen to working muscle. The muscle leans on glycolysis sooner and releases acid, and the acid drives faster breathing."
+        },
+        {
+          "id": "breathing-rest",
+          "name": "Breathing rate at rest",
+          "answer": "none",
+          "chain": [
+            "dissolved"
+          ],
+          "why": "Your blood’s oxygen sensors respond to the pressure of dissolved oxygen, which stays normal in anemia because the lungs load the blood normally. At rest there is little acid from muscle, so breathing does not speed up."
+        },
+        {
+          "id": "pallor",
+          "name": "Paleness of her skin and nail beds",
+          "answer": "up",
+          "chain": [
+            "cells",
+            "epo",
+            "marrow",
+            "rbc",
+            "pale"
+          ],
+          "why": "Hemoglobin is the red pigment of blood. With less of it in the skin’s vessels, skin, lips and nail beds look pale."
+        }
+      ]
+    },
+    {
+      "id": "blood-iron-deficiency",
+      "title": "Two years of heavy periods",
+      "topic": "erythrocytes",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "iron-deficiency anemia is a marrow that has stopped making cells",
+      "setup": "A 30-year-old has had heavy periods for two years, losing a little more iron each month than she absorbs from food. Her iron stores are now empty. Predict her blood, compared with two years ago.",
+      "start": "Iron lost each month exceeds iron absorbed",
+      "steps": {
+        "stores": "Ferritin stores are used up",
+        "leak": "Less ferritin leaks into the plasma",
+        "heme": "Too little iron to make heme",
+        "small": "Erythroblasts keep dividing but cannot fill with hemoglobin: small, pale cells",
+        "hb": "Hemoglobin concentration falls",
+        "retic": "Without iron the marrow cannot speed up: reticulocytes stay low"
+      },
+      "variables": [
+        {
+          "id": "ferritin",
+          "name": "Plasma ferritin",
+          "answer": "down",
+          "chain": [
+            "stores",
+            "leak"
+          ],
+          "why": "Ferritin is the iron store inside cells, and a little leaks into plasma in proportion to the store. A low plasma ferritin is the sign that the stores are empty."
+        },
+        {
+          "id": "cell-size",
+          "name": "Size of each new red cell",
+          "answer": "down",
+          "chain": [
+            "stores",
+            "heme",
+            "small"
+          ],
+          "why": "Without enough iron, erythroblasts keep dividing but cannot fill their cytoplasm with hemoglobin, so the cells come out small and pale."
+        },
+        {
+          "id": "hemoglobin",
+          "name": "Hemoglobin concentration",
+          "answer": "down",
+          "chain": [
+            "stores",
+            "heme",
+            "small",
+            "hb"
+          ],
+          "why": "Each new cell holds less hemoglobin, so each deciliter of blood holds less."
+        },
+        {
+          "id": "reticulocytes",
+          "name": "Reticulocyte count, compared with a healthy marrow facing the same blood loss",
+          "answer": "down",
+          "chain": [
+            "stores",
+            "heme",
+            "retic"
+          ],
+          "why": "A marrow with plenty of iron would speed up after blood loss. Without iron, it cannot build extra cells, so the reticulocyte count stays low."
+        }
+      ]
+    },
+    {
+      "id": "blood-hemolysis",
+      "title": "Red cells destroyed early",
+      "topic": "erythrocytes",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "all jaundice turns the urine dark",
+      "setup": "An inherited defect makes a man’s red cells fragile, and macrophages destroy them after about 30 days instead of 120. His marrow and liver are healthy. Predict his blood and urine, compared with a healthy person.",
+      "start": "Red cells are destroyed four times faster",
+      "steps": {
+        "heme": "Much more heme is broken down each day",
+        "bili": "More unconjugated bilirubin enters the plasma than the liver can handle",
+        "yellow": "Bilirubin stains the tissues: jaundice",
+        "insol": "Unconjugated bilirubin rides on albumin and cannot enter urine",
+        "fewer": "Red cells are lost faster than they are made",
+        "hb": "Hemoglobin concentration falls",
+        "epo": "Less oxygen reaches the kidneys: EPO rises",
+        "retic": "The healthy marrow speeds up: reticulocytes rise"
+      },
+      "variables": [
+        {
+          "id": "unconjugated",
+          "name": "Unconjugated bilirubin in the plasma",
+          "answer": "up",
+          "chain": [
+            "heme",
+            "bili"
+          ],
+          "why": "Every destroyed red cell’s heme becomes bilirubin. When cells are destroyed faster than the liver can conjugate their bilirubin, unconjugated bilirubin builds up: jaundice from before the liver."
+        },
+        {
+          "id": "sclera",
+          "name": "Yellowness of the whites of his eyes",
+          "answer": "up",
+          "chain": [
+            "heme",
+            "bili",
+            "yellow"
+          ],
+          "why": "Bilirubin building up in the blood stains the tissues yellow, and it shows first in the sclera."
+        },
+        {
+          "id": "urine-bilirubin",
+          "name": "Bilirubin in his urine",
+          "answer": "none",
+          "chain": [
+            "heme",
+            "bili",
+            "insol"
+          ],
+          "why": "Only conjugated bilirubin dissolves in water and can spill into urine. The extra bilirubin here is unconjugated and travels bound to albumin, so the urine is normally colored."
+        },
+        {
+          "id": "hemoglobin",
+          "name": "Hemoglobin concentration",
+          "answer": "down",
+          "chain": [
+            "fewer",
+            "hb"
+          ],
+          "why": "The marrow speeds up but cannot fully match a fourfold faster loss, so red cells and hemoglobin settle lower: a hemolytic anemia."
+        },
+        {
+          "id": "reticulocytes",
+          "name": "Reticulocyte count",
+          "answer": "up",
+          "chain": [
+            "fewer",
+            "hb",
+            "epo",
+            "retic"
+          ],
+          "why": "A healthy marrow facing early destruction gets more EPO and responds, so reticulocytes rise. That is what separates losing or destroying cells from failing to make them."
+        }
+      ]
+    },
+    {
+      "id": "blood-bile-blocked",
+      "title": "A gallstone blocks the flow of bile",
+      "topic": "erythrocytes",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "jaundice always means red cells are being destroyed",
+      "setup": "A gallstone lodges in the duct that carries bile to the intestine and blocks it completely. Her red cells and liver cells are healthy. Predict the state after a week, compared with before.",
+      "start": "Bile cannot drain into the intestine",
+      "steps": {
+        "back": "Conjugated bilirubin backs up into the blood",
+        "yellow": "Bilirubin stains the tissues: jaundice",
+        "urine": "Water-soluble conjugated bilirubin spills into urine",
+        "none": "No bilirubin reaches the intestine",
+        "sterco": "No stercobilin forms: pale, clay-colored feces",
+        "rbc": "Red cells still last about 120 days"
+      },
+      "variables": [
+        {
+          "id": "conjugated",
+          "name": "Conjugated bilirubin in the plasma",
+          "answer": "up",
+          "chain": [
+            "back"
+          ],
+          "why": "The liver still takes up and conjugates bilirubin, but cannot get it out in bile. The conjugated form backs up into the blood: jaundice from after the liver."
+        },
+        {
+          "id": "sclera",
+          "name": "Yellowness of the whites of her eyes",
+          "answer": "up",
+          "chain": [
+            "back",
+            "yellow"
+          ],
+          "why": "Bilirubin building up in the blood stains the tissues yellow, first in the sclera."
+        },
+        {
+          "id": "urine-color",
+          "name": "Darkness of her urine",
+          "answer": "up",
+          "chain": [
+            "back",
+            "urine"
+          ],
+          "why": "Conjugated bilirubin dissolves in water, so the kidneys can excrete it, and it darkens the urine."
+        },
+        {
+          "id": "stool-color",
+          "name": "Brown color of her feces",
+          "answer": "down",
+          "chain": [
+            "none",
+            "sterco"
+          ],
+          "why": "Intestinal bacteria make brown stercobilin from bilirubin that arrives in bile. With none arriving, no stercobilin forms and the feces are pale."
+        },
+        {
+          "id": "breakdown",
+          "name": "Rate at which her red cells are destroyed",
+          "answer": "none",
+          "chain": [
+            "rbc"
+          ],
+          "why": "The block is in the drainage of bile, after the liver. Nothing has changed the lifespan of her red cells."
+        }
+      ]
+    },
+    {
+      "id": "blood-sickle-crisis",
+      "title": "A sickle cell crisis",
+      "topic": "erythrocytes",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "sickled cells cause harm only by being too few",
+      "setup": "A teenager with sickle cell disease has a stomach bug, becomes dehydrated and spends a cold night outdoors. Predict the next day, compared with his usual state.",
+      "start": "Dehydration and cold crowd HbS and make it give up oxygen",
+      "steps": {
+        "patch": "Deoxygenated HbS shows a sticky patch on its surface",
+        "fibers": "HbS molecules line up into long, stiff fibers",
+        "sickle": "Red cells bend into rigid sickles",
+        "jam": "Sickled cells jam small vessels",
+        "flow": "Tissue downstream is starved of oxygen",
+        "pain": "Attacks of severe pain",
+        "destroy": "Sickled cells are destroyed early",
+        "bili": "More heme broken down: bilirubin rises"
+      },
+      "variables": [
+        {
+          "id": "sickled",
+          "name": "Share of his red cells that are sickled",
+          "answer": "up",
+          "chain": [
+            "patch",
+            "fibers",
+            "sickle"
+          ],
+          "why": "When HbS gives up oxygen, the valine in place of glutamic acid forms a sticky patch. The molecules stick together into stiff fibers that bend the cell into a sickle. Crowding the HbS, as dehydration does, speeds this up."
+        },
+        {
+          "id": "small-vessel-flow",
+          "name": "Blood flow through his small vessels",
+          "answer": "down",
+          "chain": [
+            "patch",
+            "fibers",
+            "sickle",
+            "jam"
+          ],
+          "why": "A rigid sickle cannot fold to pass single file through a capillary, so sickled cells jam the small vessels."
+        },
+        {
+          "id": "pain",
+          "name": "Pain",
+          "answer": "up",
+          "chain": [
+            "patch",
+            "fibers",
+            "sickle",
+            "jam",
+            "flow",
+            "pain"
+          ],
+          "why": "Tissue beyond the jammed vessels is starved of oxygen, which causes the severe pain of a crisis."
+        },
+        {
+          "id": "bilirubin",
+          "name": "Bilirubin in his plasma",
+          "answer": "up",
+          "chain": [
+            "patch",
+            "fibers",
+            "sickle",
+            "destroy",
+            "bili"
+          ],
+          "why": "Sickled cells are destroyed early. Every destroyed cell’s heme becomes bilirubin, so bilirubin rises and jaundice can follow."
+        }
+      ]
+    },
+    {
+      "id": "blood-infection",
+      "title": "A bacterial infection",
+      "topic": "leukocytes-platelets",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "a lower lymphocyte percentage always means fewer lymphocytes",
+      "setup": "A man develops a bacterial infection in a cut on his leg and a fever. Predict his blood count, compared with a week ago when he was well.",
+      "start": "Bacteria multiply in the tissue",
+      "steps": {
+        "signal": "Chemical signals from the infected tissue reach the marrow",
+        "release": "The marrow releases more neutrophils, some before their nucleus has lobed",
+        "neut": "Absolute neutrophil count rises",
+        "total": "Total white count rises",
+        "band": "More band cells appear",
+        "share": "Neutrophils take a larger share of the count",
+        "lymph": "Lymphocytes are not driven up by a bacterial infection"
+      },
+      "variables": [
+        {
+          "id": "total",
+          "name": "Total white blood cell count",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "release",
+            "neut",
+            "total"
+          ],
+          "why": "Neutrophils are the largest share of white cells, so a big rise in them raises the total above 11,000 per µL: leukocytosis."
+        },
+        {
+          "id": "neutrophils",
+          "name": "Absolute neutrophil count",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "release",
+            "neut"
+          ],
+          "why": "Neutrophils are the first white cells to arrive at a bacterial infection. The marrow releases its reserve and speeds production."
+        },
+        {
+          "id": "bands",
+          "name": "Band cells in the blood",
+          "answer": "up",
+          "chain": [
+            "signal",
+            "release",
+            "band"
+          ],
+          "why": "In a serious bacterial infection the marrow releases neutrophils early, before the nucleus has finished lobing. These young band cells rise on the count."
+        },
+        {
+          "id": "lymph-percent",
+          "name": "Lymphocytes as a percentage of white cells",
+          "answer": "down",
+          "chain": [
+            "signal",
+            "release",
+            "neut",
+            "share"
+          ],
+          "why": "A percentage is a share. When neutrophils rise a lot, every other type becomes a smaller share, even if its own number is unchanged."
+        },
+        {
+          "id": "lymph-absolute",
+          "name": "Absolute lymphocyte count",
+          "answer": "none",
+          "chain": [
+            "lymph"
+          ],
+          "why": "Lymphocytes rise mainly in viral infections. Multiply the lower percentage by the higher total and the absolute count comes out about the same, which is why you always check absolute counts."
+        }
+      ]
+    },
+    {
+      "id": "blood-chemotherapy",
+      "title": "Ten days after chemotherapy",
+      "topic": "leukocytes-platelets",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "chemotherapy lowers every blood cell at the same rate",
+      "setup": "A woman receives chemotherapy that kills dividing cells, including those in her marrow. Predict her blood ten days later, compared with before treatment.",
+      "start": "Dividing marrow cells are killed",
+      "steps": {
+        "stop": "Few new blood cells are made for a while",
+        "short": "Neutrophils circulate for less than a day and are not replaced",
+        "anc": "Absolute neutrophil count falls",
+        "risk": "Few cells to engulf bacteria",
+        "plt": "Platelets live 7–10 days and are not replaced",
+        "pltc": "Platelet count falls",
+        "bleed": "Small vessels leak: bruises and petechiae",
+        "retic": "Reticulocytes last about a day in the blood and are not replaced"
+      },
+      "variables": [
+        {
+          "id": "neutrophils",
+          "name": "Absolute neutrophil count",
+          "answer": "down",
+          "chain": [
+            "stop",
+            "short",
+            "anc"
+          ],
+          "why": "Neutrophils survive only a day or two, so without new production their count falls within days, often below 500 per µL."
+        },
+        {
+          "id": "infection-risk",
+          "name": "Risk of a serious bacterial infection",
+          "answer": "up",
+          "chain": [
+            "stop",
+            "short",
+            "anc",
+            "risk"
+          ],
+          "why": "Neutrophils are the first defense against bacteria. With too few, bacteria that would normally be engulfed can spread."
+        },
+        {
+          "id": "platelets",
+          "name": "Platelet count",
+          "answer": "down",
+          "chain": [
+            "stop",
+            "plt",
+            "pltc"
+          ],
+          "why": "Platelets are removed after 7–10 days. By day ten most of those in the blood before treatment are gone, and few new ones replace them."
+        },
+        {
+          "id": "bruising",
+          "name": "Easy bruising and pinpoint skin bleeds",
+          "answer": "up",
+          "chain": [
+            "stop",
+            "plt",
+            "pltc",
+            "bleed"
+          ],
+          "why": "Too few platelets cannot seal the tiny breaks that happen every day in small vessels, so single capillaries bleed into the skin as petechiae."
+        },
+        {
+          "id": "reticulocytes",
+          "name": "Reticulocyte count",
+          "answer": "down",
+          "chain": [
+            "stop",
+            "retic"
+          ],
+          "why": "Each reticulocyte matures within a day or two in the blood. With few new ones released, the count falls quickly, even though the red cells themselves last much longer."
+        }
+      ]
+    },
+    {
+      "id": "blood-vitamin-k-newborn",
+      "title": "A newborn without vitamin K",
+      "topic": "hemostasis",
+      "theme": "vitamin K deficiency",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "vitamin K deficiency stops platelets from working",
+      "setup": "A baby is born at home, is breastfed only, and is not given the vitamin K injection at birth. At three weeks she oozes blood from a heel-prick site and bruises easily. Compare her blood with that of a baby who had the injection.",
+      "start": "Very little vitamin K in the baby",
+      "steps": {
+        "low": "Little vitamin K reached her before birth, and breast milk holds little",
+        "liver": "Her liver makes II, VII, IX and X without their extra acid groups",
+        "calcium": "These factors cannot bind calcium or attach to phospholipid surfaces",
+        "work": "Too little working II, VII, IX and X",
+        "thrombin": "Less thrombin made at an injury",
+        "pt": "The extrinsic and common pathways run slowly: PT is long",
+        "aptt": "The intrinsic pathway needs IX and X too: aPTT is long",
+        "plt": "Making platelets does not need vitamin K",
+        "fib": "Fibrinogen does not need vitamin K"
+      },
+      "variables": [
+        {
+          "id": "factor-vii",
+          "name": "Working factor VII in her plasma",
+          "answer": "down",
+          "chain": [
+            "low",
+            "liver",
+            "calcium",
+            "work"
+          ],
+          "why": "The liver needs vitamin K to add the extra acid groups that let II, VII, IX and X bind calcium. Without them, the proteins are made but do not work."
+        },
+        {
+          "id": "thrombin",
+          "name": "Thrombin made at a small cut",
+          "answer": "down",
+          "chain": [
+            "low",
+            "liver",
+            "calcium",
+            "work",
+            "thrombin"
+          ],
+          "why": "Factors that cannot attach to cell and platelet surfaces cannot build the burst of thrombin, so less fibrin forms."
+        },
+        {
+          "id": "pt",
+          "name": "Prothrombin time (PT)",
+          "answer": "up",
+          "chain": [
+            "low",
+            "liver",
+            "calcium",
+            "work",
+            "pt"
+          ],
+          "why": "The PT tests the extrinsic and common pathways, which use VII, X and II. With those factors not working, the sample takes longer to clot."
+        },
+        {
+          "id": "aptt",
+          "name": "aPTT",
+          "answer": "up",
+          "chain": [
+            "low",
+            "liver",
+            "calcium",
+            "work",
+            "aptt"
+          ],
+          "why": "The aPTT tests the intrinsic and common pathways, which use IX, X and II. It lengthens too, though usually less than the PT."
+        },
+        {
+          "id": "platelets",
+          "name": "Platelet count",
+          "answer": "none",
+          "chain": [
+            "plt"
+          ],
+          "why": "Vitamin K is needed to finish clotting factors in the liver, not to make platelets. Her platelet plugs form normally; the fibrin that should reinforce them is what is missing."
+        },
+        {
+          "id": "fibrinogen",
+          "name": "Fibrinogen level",
+          "answer": "none",
+          "chain": [
+            "fib"
+          ],
+          "why": "Fibrinogen (factor I) is not one of the vitamin K–dependent factors, so its level is normal."
+        }
+      ]
+    },
+    {
+      "id": "blood-warfarin",
+      "title": "A week on warfarin",
+      "topic": "hemostasis",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "anticoagulants dissolve clots that have already formed",
+      "setup": "A 70-year-old with a clot in a deep leg vein starts warfarin tablets. Predict his state after a week on a steady dose, compared with before the first tablet.",
+      "start": "Warfarin blocks the liver enzyme that recycles vitamin K",
+      "steps": {
+        "k": "Too little active vitamin K in the liver",
+        "made": "II, VII, IX and X are made in a non-working form",
+        "used": "Working factors already in the blood are used up over 3–5 days",
+        "pt": "PT lengthens: INR rises",
+        "thr": "Less thrombin is made, so the clot stops growing",
+        "plt": "Platelet production is unaffected",
+        "lysis": "Fibrinolysis runs at its usual pace"
+      },
+      "variables": [
+        {
+          "id": "inr",
+          "name": "INR",
+          "answer": "up",
+          "chain": [
+            "k",
+            "made",
+            "used",
+            "pt"
+          ],
+          "why": "Warfarin is monitored with the PT, reported as the INR, because the PT tests VII, X and II. A usual target is 2–3."
+        },
+        {
+          "id": "working-factors",
+          "name": "Working factors II, VII, IX and X",
+          "answer": "down",
+          "chain": [
+            "k",
+            "made",
+            "used"
+          ],
+          "why": "The liver keeps making the proteins, but without recycled vitamin K they lack the calcium-binding groups. Working factors fall over 3–5 days as the old ones are used up, which is why warfarin is slow to act."
+        },
+        {
+          "id": "clot-growth",
+          "name": "Growth of the clot in his leg vein",
+          "answer": "down",
+          "chain": [
+            "k",
+            "made",
+            "used",
+            "thr"
+          ],
+          "why": "Less thrombin means less new fibrin, so the clot stops growing and new clots are less likely."
+        },
+        {
+          "id": "platelets",
+          "name": "Platelet count",
+          "answer": "none",
+          "chain": [
+            "plt"
+          ],
+          "why": "Warfarin acts on clotting factors made in the liver. It does not touch the marrow’s megakaryocytes."
+        },
+        {
+          "id": "lysis",
+          "name": "Rate at which the existing clot is broken down",
+          "answer": "none",
+          "chain": [
+            "lysis"
+          ],
+          "why": "Warfarin does not dissolve a clot. Plasmin made on the clot breaks it down at its usual pace while warfarin stops it from growing."
+        }
+      ]
+    },
+    {
+      "id": "blood-aspirin",
+      "title": "Daily low-dose aspirin",
+      "topic": "hemostasis",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "aspirin works by lowering the platelet count",
+      "setup": "A man takes a low-dose aspirin tablet every day for two weeks. Predict his hemostasis, compared with before he started.",
+      "start": "Aspirin permanently blocks cyclooxygenase in platelets",
+      "steps": {
+        "txa": "Platelets make less thromboxane A2",
+        "recruit": "Fewer passing platelets are activated",
+        "plug": "Platelet plugs form more slowly",
+        "time": "A small cut bleeds for longer",
+        "count": "Platelet number is unaffected",
+        "factors": "Clotting factors are unaffected"
+      },
+      "variables": [
+        {
+          "id": "thromboxane",
+          "name": "Thromboxane A2 made by his platelets",
+          "answer": "down",
+          "chain": [
+            "txa"
+          ],
+          "why": "Cyclooxygenase is the platelet enzyme that makes thromboxane A2. A platelet has no nucleus and can make almost no new enzyme, so the block lasts for the platelet’s life."
+        },
+        {
+          "id": "aggregation",
+          "name": "Platelet aggregation at a cut",
+          "answer": "down",
+          "chain": [
+            "txa",
+            "recruit",
+            "plug"
+          ],
+          "why": "Thromboxane A2 is one of the chemicals by which activated platelets activate passing ones. With less of it, the positive feedback that builds the plug is weaker."
+        },
+        {
+          "id": "bleeding",
+          "name": "Time a small cut takes to stop bleeding",
+          "answer": "up",
+          "chain": [
+            "txa",
+            "recruit",
+            "plug",
+            "time"
+          ],
+          "why": "A weaker, slower plug seals small breaks less quickly, so small cuts ooze longer."
+        },
+        {
+          "id": "count",
+          "name": "Platelet count",
+          "answer": "none",
+          "chain": [
+            "count"
+          ],
+          "why": "Aspirin changes what platelets do, not how many there are."
+        },
+        {
+          "id": "pt",
+          "name": "Prothrombin time (PT)",
+          "answer": "none",
+          "chain": [
+            "factors"
+          ],
+          "why": "The PT adds tissue factor and phospholipid to plasma. It does not depend on platelets, and aspirin does not change the clotting factors."
+        }
+      ]
+    },
+    {
+      "id": "blood-hemophilia",
+      "title": "A knock to the knee in hemophilia A",
+      "topic": "hemostasis",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "in hemophilia the platelet plug cannot form",
+      "setup": "A 9-year-old boy with hemophilia A (no working factor VIII) bumps his knee hard on a table. Compare what happens in the injured knee with what would happen in a boy with normal clotting.",
+      "start": "Small vessels inside the knee joint tear",
+      "steps": {
+        "plug": "Platelets stick to exposed collagen and form a plug as usual",
+        "tf": "Tissue factor with VIIa makes a first trickle of thrombin as usual",
+        "stop": "The tissue factor–VIIa pair is switched off within seconds",
+        "noviii": "Without VIIIa, IXa cannot activate X fast on the platelet surface",
+        "burst": "Little thrombin burst: too little fibrin",
+        "bleed": "The soft plug gives way: bleeding into the joint",
+        "aptt": "aPTT is long",
+        "pt": "PT is normal"
+      },
+      "variables": [
+        {
+          "id": "plug",
+          "name": "Platelet plug formation",
+          "answer": "none",
+          "chain": [
+            "plug"
+          ],
+          "why": "Platelet adhesion and aggregation do not need factor VIII, so the plug forms. Platelet problems cause skin and mucous membrane bleeding; his problem comes later."
+        },
+        {
+          "id": "trickle",
+          "name": "The first trickle of thrombin on tissue factor cells",
+          "answer": "none",
+          "chain": [
+            "tf"
+          ],
+          "why": "Initiation uses tissue factor, VIIa, X and V, none of which he lacks, so clotting starts normally."
+        },
+        {
+          "id": "burst",
+          "name": "The burst of thrombin on the platelet surface",
+          "answer": "down",
+          "chain": [
+            "tf",
+            "stop",
+            "noviii",
+            "burst"
+          ],
+          "why": "Once the tissue factor–VIIa pair is switched off, X is activated mainly by IXa with VIIIa on the platelet surface. Without VIII there is no burst, which is exactly what the cell-based model explains."
+        },
+        {
+          "id": "joint",
+          "name": "Bleeding into the knee joint over the next hours",
+          "answer": "up",
+          "chain": [
+            "tf",
+            "stop",
+            "noviii",
+            "burst",
+            "bleed"
+          ],
+          "why": "Without enough fibrin to reinforce it, the soft plug gives way. Deep bleeding into joints and muscles, often starting again hours later, is the pattern of a clotting factor problem."
+        },
+        {
+          "id": "aptt",
+          "name": "aPTT",
+          "answer": "up",
+          "chain": [
+            "aptt"
+          ],
+          "why": "In the lab model, VIII is part of the intrinsic pathway, which the aPTT tests."
+        },
+        {
+          "id": "pt",
+          "name": "PT",
+          "answer": "none",
+          "chain": [
+            "pt"
+          ],
+          "why": "The PT tests the extrinsic and common pathways (VII, X, V, II, I), which do not use VIII."
+        }
+      ]
+    },
+    {
+      "id": "blood-abo-mismatch",
+      "title": "A type A patient receives type B blood",
+      "topic": "blood-typing",
+      "theme": "a type A patient receives type B blood",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a transfusion reaction is the donor blood clotting",
+      "setup": "Because of a labeling error, a type A positive patient is given a unit of type B positive red cells. Predict the next few hours, compared with just before the transfusion.",
+      "start": "Red cells carrying B antigen enter plasma that holds anti-B",
+      "steps": {
+        "bind": "Her anti-B binds the B antigens on the donor cells within seconds",
+        "agg": "Antibodies bridge donor cells into clumps",
+        "lyse": "Bound antibodies switch on plasma proteins that punch holes: donor cells burst",
+        "free": "Hemoglobin is released into the plasma",
+        "urine": "Free hemoglobin spills into the urine",
+        "bili": "Its heme is converted to bilirubin",
+        "signal": "The antibody attack releases chemical signals",
+        "fever": "Fever and chills",
+        "bp": "Blood pressure falls"
+      },
+      "variables": [
+        {
+          "id": "agglutination",
+          "name": "Agglutination of the donor red cells",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "agg"
+          ],
+          "why": "Everyone with type A blood has anti-B in their plasma from infancy, without any earlier transfusion. Each antibody has several binding sites and links B antigens on neighboring cells."
+        },
+        {
+          "id": "donor-cells",
+          "name": "Donor red cells surviving in her blood",
+          "answer": "down",
+          "chain": [
+            "bind",
+            "agg",
+            "lyse"
+          ],
+          "why": "After agglutination, the bound antibodies switch on other plasma proteins that punch holes in the red cell membranes, and the donor cells burst inside her vessels."
+        },
+        {
+          "id": "urine",
+          "name": "Red-brown color of her urine",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "lyse",
+            "free",
+            "urine"
+          ],
+          "why": "Hemoglobin released from burst cells is small enough to spill into the urine, turning it red or dark brown."
+        },
+        {
+          "id": "bilirubin",
+          "name": "Plasma bilirubin",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "lyse",
+            "free",
+            "bili"
+          ],
+          "why": "The heme from the released hemoglobin is broken down to bilirubin, faster than the liver can handle, so jaundice can follow."
+        },
+        {
+          "id": "temperature",
+          "name": "Body temperature",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "signal",
+            "fever"
+          ],
+          "why": "The antibody attack releases chemical signals that cause fever and chills."
+        },
+        {
+          "id": "blood-pressure",
+          "name": "Blood pressure",
+          "answer": "down",
+          "chain": [
+            "bind",
+            "signal",
+            "bp"
+          ],
+          "why": "The same signals cause a fall in blood pressure that can lead to shock, which is why the transfusion is stopped at once."
+        }
+      ]
+    },
+    {
+      "id": "blood-rh-second-pregnancy",
+      "title": "An Rh-negative mother’s second Rh-positive baby",
+      "topic": "blood-typing",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "the first Rh-positive baby is the one at risk",
+      "setup": "An Rh-negative woman was not given anti-D immune globulin after her first baby, who was Rh positive. She is now late in a second pregnancy with another Rh-positive fetus. Compare this pregnancy with one in which she had been given the injection.",
+      "start": "At the first birth, fetal Rh-positive cells entered her blood",
+      "steps": {
+        "made": "Her immune system made its own anti-D over the following weeks",
+        "cross": "Her anti-D is the kind that crosses to the fetus",
+        "bind": "Anti-D binds the fetus’s Rh-positive red cells",
+        "destroy": "Fetal red cells are destroyed",
+        "anemia": "The fetus becomes anemic",
+        "blasts": "Fetal marrow and liver pour out still-nucleated erythroblasts",
+        "bili": "After birth, bilirubin climbs faster than the baby’s liver can clear it",
+        "own": "Her own red cells carry no D antigen"
+      },
+      "variables": [
+        {
+          "id": "anti-d",
+          "name": "Anti-D in the mother’s plasma",
+          "answer": "up",
+          "chain": [
+            "made"
+          ],
+          "why": "An Rh-negative person makes anti-D only after exposure to Rh-positive cells. The first birth exposed her, and without the injection to clear those cells, she was sensitized."
+        },
+        {
+          "id": "fetal-red-cells",
+          "name": "Fetal red cell count",
+          "answer": "down",
+          "chain": [
+            "made",
+            "cross",
+            "bind",
+            "destroy",
+            "anemia"
+          ],
+          "why": "Her anti-D crosses to the fetus, binds its Rh-positive cells and they are destroyed faster than the fetus can replace them."
+        },
+        {
+          "id": "erythroblasts",
+          "name": "Nucleated erythroblasts in the fetus’s blood",
+          "answer": "up",
+          "chain": [
+            "made",
+            "cross",
+            "bind",
+            "destroy",
+            "anemia",
+            "blasts"
+          ],
+          "why": "Anemia drives the fetal marrow and liver so hard that immature, still-nucleated cells are released: the reason for the old name erythroblastosis fetalis."
+        },
+        {
+          "id": "newborn-bilirubin",
+          "name": "The baby’s bilirubin in the days after birth",
+          "answer": "up",
+          "chain": [
+            "made",
+            "cross",
+            "bind",
+            "destroy",
+            "bili"
+          ],
+          "why": "Before birth the mother’s liver clears the bilirubin. After birth the baby’s immature liver cannot keep up with the destroyed cells, so bilirubin climbs fast."
+        },
+        {
+          "id": "mother-red-cells",
+          "name": "The mother’s own red cell count",
+          "answer": "none",
+          "chain": [
+            "own"
+          ],
+          "why": "Anti-D binds only cells that carry the D antigen. Her own cells are Rh negative, so they are untouched."
+        }
+      ]
     }
   ]
 }

@@ -13392,6 +13392,920 @@
         }
       }
     ]
+  },
+  {
+   "id": "hematocrit-tubes",
+   "title": "Reading a hematocrit tube",
+   "topic": "blood-composition",
+   "core": [
+    "structure-function",
+    "homeostasis"
+   ],
+   "intro": "Four blood samples were spun in a centrifuge. In each tube the blood fills 80 mm: packed red cells at the bottom, a buffy coat too thin to measure, and plasma above. Hematocrit = height of the red column ÷ height of the whole blood column × 100%.",
+   "alt": "Four spun blood tubes side by side, each with blood filling 80 millimeters. The red cell column is 36 mm tall in tube 1, 20 mm in tube 2, 52 mm in tube 3 and 36 mm in tube 4. Plasma fills the rest of each column up to 80 mm.",
+   "x": {
+    "min": 0.5,
+    "max": 4.5,
+    "label": "Tube number",
+    "unitless": true,
+    "ticks": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.3,
+     "y": {
+      "min": 0,
+      "max": 90,
+      "label": "Height in tube",
+      "unit": "mm",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80
+      ]
+     },
+     "hlines": [
+      {
+       "y": 80,
+       "label": "top of the blood column (80 mm)",
+       "cls": "shape",
+       "dash": true,
+       "faint": true,
+       "at": 0.55
+      }
+     ],
+     "series": [
+      {
+       "id": "tube1",
+       "cls": "shape",
+       "nolabel": true,
+       "pts": [
+        [
+         0.78,
+         0
+        ],
+        [
+         0.78,
+         84
+        ],
+        [
+         1.22,
+         84
+        ],
+        [
+         1.22,
+         0
+        ],
+        [
+         0.78,
+         0
+        ]
+       ]
+      },
+      {
+       "id": "tube2",
+       "cls": "shape",
+       "nolabel": true,
+       "pts": [
+        [
+         1.78,
+         0
+        ],
+        [
+         1.78,
+         84
+        ],
+        [
+         2.22,
+         84
+        ],
+        [
+         2.22,
+         0
+        ],
+        [
+         1.78,
+         0
+        ]
+       ]
+      },
+      {
+       "id": "tube3",
+       "cls": "shape",
+       "nolabel": true,
+       "pts": [
+        [
+         2.78,
+         0
+        ],
+        [
+         2.78,
+         84
+        ],
+        [
+         3.22,
+         84
+        ],
+        [
+         3.22,
+         0
+        ],
+        [
+         2.78,
+         0
+        ]
+       ]
+      },
+      {
+       "id": "tube4",
+       "cls": "shape",
+       "nolabel": true,
+       "pts": [
+        [
+         3.78,
+         0
+        ],
+        [
+         3.78,
+         84
+        ],
+        [
+         4.22,
+         84
+        ],
+        [
+         4.22,
+         0
+        ],
+        [
+         3.78,
+         0
+        ]
+       ]
+      },
+      {
+       "id": "red1",
+       "cls": "o2",
+       "pts": [
+        [
+         0.83,
+         0
+        ],
+        [
+         0.83,
+         36
+        ],
+        [
+         1.17,
+         36
+        ],
+        [
+         1.17,
+         0
+        ]
+       ],
+       "label": "red cells",
+       "labelAt": [
+        1.24,
+        18
+       ]
+      },
+      {
+       "id": "red2",
+       "cls": "o2",
+       "nolabel": true,
+       "pts": [
+        [
+         1.83,
+         0
+        ],
+        [
+         1.83,
+         20
+        ],
+        [
+         2.17,
+         20
+        ],
+        [
+         2.17,
+         0
+        ]
+       ]
+      },
+      {
+       "id": "red3",
+       "cls": "o2",
+       "nolabel": true,
+       "pts": [
+        [
+         2.83,
+         0
+        ],
+        [
+         2.83,
+         52
+        ],
+        [
+         3.17,
+         52
+        ],
+        [
+         3.17,
+         0
+        ]
+       ]
+      },
+      {
+       "id": "red4",
+       "cls": "o2",
+       "nolabel": true,
+       "pts": [
+        [
+         3.83,
+         0
+        ],
+        [
+         3.83,
+         36
+        ],
+        [
+         4.17,
+         36
+        ],
+        [
+         4.17,
+         0
+        ]
+       ]
+      }
+     ],
+     "notes": [
+      {
+       "x": 1,
+       "y": 60,
+       "text": "plasma",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "t1",
+     "x0": 0.6,
+     "x1": 1.4,
+     "label": "tube 1"
+    },
+    {
+     "id": "t2",
+     "x0": 1.6,
+     "x1": 2.4,
+     "label": "tube 2"
+    },
+    {
+     "id": "t3",
+     "x0": 2.6,
+     "x1": 3.4,
+     "label": "tube 3"
+    },
+    {
+     "id": "t4",
+     "x0": 3.6,
+     "x1": 4.4,
+     "label": "tube 4"
+    }
+   ],
+   "questions": [
+    {
+     "id": "tube1-hct",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the red column in tube 1 and work out its hematocrit.",
+     "answer": 45,
+     "tol": 2,
+     "unit": "%",
+     "show": {
+      "x": 1,
+      "y": 36
+     },
+     "why": "The red column is 36 mm and the blood column is 80 mm. 36 ÷ 80 = 0.45, so the hematocrit is 45%, within the usual range for either sex. The other 55% is plasma, plus a buffy coat of well under 1%."
+    },
+    {
+     "id": "tube3-hct",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Work out the hematocrit of tube 3.",
+     "answer": 65,
+     "tol": 2,
+     "unit": "%",
+     "show": {
+      "x": 3,
+      "y": 52
+     },
+     "why": "The red column is 52 mm of an 80 mm blood column: 52 ÷ 80 = 0.65, or 65%. That is well above the usual top of about 52% in men, so red cells make up an unusually large share of the blood."
+    },
+    {
+     "id": "low-tube",
+     "type": "phase",
+     "level": "apply",
+     "diff": 1,
+     "q": "Which tube has the lowest share of red cells?",
+     "options": [
+      "Tube 2",
+      "Tube 1",
+      "Tube 3",
+      "Tube 4"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "t2"
+     },
+     "why": {
+      "correct": "Tube 2’s red column is 20 mm of 80 mm: a hematocrit of 25%, far below the usual range. Its plasma layer is correspondingly deep.",
+      "options": [
+       "Right: 20 ÷ 80 = 25%, the shortest red column of the four.",
+       "Tube 1 is 36 ÷ 80 = 45%, in the usual range.",
+       "Tube 3 has the tallest red column, 65%.",
+       "Tube 4 is 36 ÷ 80 = 45%, the same share as tube 1."
+      ]
+     }
+    },
+    {
+     "id": "tube4-bleed",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Tube 1 is last week’s sample from a man who is healthy. Tube 4 is his sample drawn two minutes after he lost about a liter of blood from a deep cut. What does tube 4 show?",
+     "options": [
+      "Nothing yet: cells and plasma were lost together, so the share is unchanged",
+      "A lab error, because a large bleed must lower the hematocrit at once",
+      "That he has more red cells than last week",
+      "That his plasma was lost but not his red cells"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "t4"
+     },
+     "why": {
+      "correct": "A hematocrit is a ratio, not an amount. Whole blood leaves the body with cells and plasma in their usual proportion, so right after the bleed the share is unchanged. It falls over the following hours as fluid moves into the blood from the tissues and dilutes the remaining cells.",
+      "options": [
+       "Right: the ratio cannot show a loss of whole blood until fluid moves in and dilutes the cells.",
+       "The result is expected. A hematocrit says nothing by itself about how much blood a person has.",
+       "The red column is the same share as last week. He has fewer red cells in total, but the ratio hides it.",
+       "Losing only plasma would raise the hematocrit, as in dehydration. Tube 4 matches tube 1."
+      ]
+     }
+    },
+    {
+     "id": "drip",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The woman who gave tube 1 has 5 L of blood. She is given 2 L of salt solution through a drip, which for this question stays in her blood, and a new sample is spun. How does the red column in her tube change?",
+     "options": [
+      "Shorter: about 26 mm, a hematocrit of about 32%",
+      "Taller, because the drip adds volume to the blood",
+      "Unchanged, because no red cells were added or lost",
+      "Shorter: about 10 mm, because the drip destroys red cells"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "red1-drip",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0.83,
+          0
+         ],
+         [
+          0.83,
+          25.7
+         ],
+         [
+          1.17,
+          25.7
+         ],
+         [
+          1.17,
+          0
+         ]
+        ],
+        "label": "after the drip",
+        "labelAt": [
+         1.25,
+         25.7
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "Her red cell volume is 45% of 5 L = 2.25 L. After the drip, the same 2.25 L sits in 7 L of blood: 2.25 ÷ 7 = 0.32, so the hematocrit is about 32%, and the red column in an 80 mm sample is about 0.32 × 80 = 26 mm. Adding plasma volume lowers the hematocrit without removing a single red cell.",
+      "options": [
+       "Right: the same red cells are spread through more blood.",
+       "The added volume is fluid, not cells, so red cells become a smaller share of the sample.",
+       "The number of red cells is unchanged, but the hematocrit is a share, and the share falls.",
+       "Salt solution matched to the blood does not destroy red cells. The fall comes from dilution alone."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "bleed-recovery",
+   "title": "Hematocrit and reticulocytes after a bleed",
+   "topic": "erythrocytes",
+   "core": [
+    "homeostasis"
+   ],
+   "intro": "A healthy woman loses about 1 L of her 5 L of blood in one sudden bleed and gets no transfusion. The top panel shows her hematocrit over the next eight weeks; the bottom shows her reticulocytes as a percentage of red cells. The numbers are typical, not from one patient.",
+   "alt": "Two panels over 56 days after a bleed. Top: hematocrit starts at 45%, falls over the first two to three days to about 36% as fluid moves into the blood, stays near 36% until about day 5, then climbs slowly back to about 45% by day 56. Bottom: reticulocytes stay near 1% for the first two days, rise from day 3 to a peak of about 4% around day 7 to 10, then drift back toward 1% by day 56.",
+   "x": {
+    "min": 0,
+    "max": 56,
+    "label": "Days after the bleed",
+    "unit": "days",
+    "ticks": [
+     0,
+     7,
+     14,
+     21,
+     28,
+     35,
+     42,
+     49,
+     56
+    ]
+   },
+   "panels": [
+    {
+     "h": 1,
+     "y": {
+      "min": 30,
+      "max": 50,
+      "label": "Hematocrit",
+      "unit": "%",
+      "ticks": [
+       30,
+       35,
+       40,
+       45,
+       50
+      ]
+     },
+     "hlines": [
+      {
+       "y": 45,
+       "label": "before the bleed",
+       "cls": "shape",
+       "dash": true,
+       "faint": true,
+       "at": 20
+      }
+     ],
+     "series": [
+      {
+       "id": "hct",
+       "cls": "o2",
+       "pts": [
+        [
+         0,
+         45
+        ],
+        [
+         0.5,
+         42.5
+        ],
+        [
+         1,
+         40
+        ],
+        [
+         2,
+         37
+        ],
+        [
+         3,
+         36
+        ],
+        [
+         5,
+         36
+        ],
+        [
+         7,
+         36.4
+        ],
+        [
+         10,
+         37.3
+        ],
+        [
+         14,
+         38.6
+        ],
+        [
+         21,
+         40.6
+        ],
+        [
+         28,
+         42.2
+        ],
+        [
+         35,
+         43.4
+        ],
+        [
+         42,
+         44.2
+        ],
+        [
+         49,
+         44.7
+        ],
+        [
+         56,
+         45
+        ]
+       ],
+       "label": "hematocrit",
+       "labelAt": [
+        8,
+        34
+       ]
+      }
+     ]
+    },
+    {
+     "h": 1,
+     "y": {
+      "min": 0,
+      "max": 5,
+      "label": "Reticulocytes",
+      "unit": "% of red cells",
+      "ticks": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5
+      ]
+     },
+     "series": [
+      {
+       "id": "retic",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         1
+        ],
+        [
+         2,
+         1
+        ],
+        [
+         3,
+         1.4
+        ],
+        [
+         4,
+         2.2
+        ],
+        [
+         5,
+         3
+        ],
+        [
+         6,
+         3.6
+        ],
+        [
+         7,
+         3.9
+        ],
+        [
+         8,
+         4
+        ],
+        [
+         10,
+         3.9
+        ],
+        [
+         14,
+         3.2
+        ],
+        [
+         21,
+         2.3
+        ],
+        [
+         28,
+         1.7
+        ],
+        [
+         35,
+         1.4
+        ],
+        [
+         42,
+         1.2
+        ],
+        [
+         49,
+         1.1
+        ],
+        [
+         56,
+         1
+        ]
+       ],
+       "label": "reticulocytes",
+       "labelAt": [
+        12,
+        4.2
+       ]
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "dilution",
+     "x0": 0,
+     "x1": 3,
+     "label": "dilution"
+    },
+    {
+     "id": "marrow",
+     "x0": 3,
+     "x1": 10,
+     "label": "marrow speeds up"
+    },
+    {
+     "id": "recovery",
+     "x0": 14,
+     "x1": 56,
+     "label": "slow recovery"
+    }
+   ],
+   "questions": [
+    {
+     "id": "day3-hct",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read her hematocrit on day 3.",
+     "answer": 36,
+     "tol": 1.5,
+     "unit": "%",
+     "show": {
+      "x": 3,
+      "y": 36
+     },
+     "why": "About 36%. She lost a fifth of her red cells: 45% of 5 L is 2.25 L, less 0.45 L lost, leaves 1.8 L. Once fluid from the tissues has refilled her blood to about 5 L, 1.8 ÷ 5 = 36%."
+    },
+    {
+     "id": "retic-peak",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the highest reticulocyte percentage.",
+     "answer": 4,
+     "tol": 0.4,
+     "unit": "%",
+     "show": {
+      "x": 8,
+      "y": 4,
+      "panel": 1
+     },
+     "why": "About 4%, around a week after the bleed: roughly four times the normal 1%. EPO has sped up her marrow, and the reticulocytes show it."
+    },
+    {
+     "id": "dilution-phase",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which period does the hematocrit fall even though she is not losing any more red cells?",
+     "options": [
+      "The first two to three days",
+      "Days 3 to 10",
+      "Weeks 2 to 8",
+      "Only the first minute after the bleed"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "dilution"
+     },
+     "why": {
+      "correct": "Right after the bleed the hematocrit is unchanged, because cells and plasma were lost together. Over the next two to three days, fluid moves into the blood from the tissues and dilutes the remaining red cells, so the share falls.",
+      "options": [
+       "Right: this fall is dilution, not a new loss of cells.",
+       "By then the hematocrit is flat and starting to climb, as the marrow speeds up.",
+       "In these weeks the hematocrit rises, as new red cells are added.",
+       "In the first minute, cells and plasma leave together, so the hematocrit has not yet changed."
+      ]
+     }
+    },
+    {
+     "id": "marrow-phase",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "When does the marrow’s response first show in her blood?",
+     "options": [
+      "From about day 3, as reticulocytes rise",
+      "Within an hour, as the hematocrit falls",
+      "Only after four weeks",
+      "Never: the marrow cannot respond to a bleed"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "marrow"
+     },
+     "why": {
+      "correct": "Less oxygen reaching the kidneys raises EPO within hours, but precursors need 3–5 days to mature and release extra reticulocytes. That rise is the first sign in the blood that the marrow has sped up.",
+      "options": [
+       "Right: reticulocytes climb from about day 3.",
+       "The early fall in hematocrit is dilution. The marrow cannot add cells that fast.",
+       "The reticulocyte count is already near its peak in the first two weeks.",
+       "A healthy marrow facing blood loss speeds up; that is why reticulocytes rise in hemorrhagic anemia."
+      ]
+     }
+    },
+    {
+     "id": "no-iron",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The same bleed happens to a woman whose iron stores were already empty. How do her curves differ?",
+     "options": [
+      "The reticulocyte peak is lower and the hematocrit recovers more slowly",
+      "The reticulocyte peak is higher, because EPO is higher",
+      "The hematocrit does not fall in the first days",
+      "The curves are the same, because her marrow and kidneys are healthy"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "hct-noiron",
+        "panel": 0,
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          45
+         ],
+         [
+          0.5,
+          42.5
+         ],
+         [
+          1,
+          40
+         ],
+         [
+          2,
+          37
+         ],
+         [
+          3,
+          36
+         ],
+         [
+          5,
+          35.8
+         ],
+         [
+          7,
+          35.8
+         ],
+         [
+          10,
+          36
+         ],
+         [
+          14,
+          36.3
+         ],
+         [
+          21,
+          36.8
+         ],
+         [
+          28,
+          37.2
+         ],
+         [
+          35,
+          37.6
+         ],
+         [
+          42,
+          38
+         ],
+         [
+          49,
+          38.3
+         ],
+         [
+          56,
+          38.6
+         ]
+        ],
+        "label": "no iron stores",
+        "labelAt": [
+         40,
+         36.6
+        ]
+       },
+       {
+        "id": "retic-noiron",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          1
+         ],
+         [
+          2,
+          1
+         ],
+         [
+          3,
+          1.1
+         ],
+         [
+          5,
+          1.4
+         ],
+         [
+          7,
+          1.6
+         ],
+         [
+          10,
+          1.6
+         ],
+         [
+          14,
+          1.5
+         ],
+         [
+          21,
+          1.4
+         ],
+         [
+          28,
+          1.3
+         ],
+         [
+          42,
+          1.2
+         ],
+         [
+          56,
+          1.2
+         ]
+        ],
+        "label": "no iron stores",
+        "labelAt": [
+         20,
+         1.9
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "Her kidneys sense the low oxygen and EPO rises, but her marrow has too little iron to build hemoglobin. It cannot speed up, so the reticulocyte rise is small, the new cells are small and pale, and the hematocrit stays low for much longer. The early dilution is the same.",
+      "options": [
+       "Right: the effector lacks a raw material, so a strong signal gets a weak response.",
+       "EPO may be high, but the marrow cannot answer it without iron for heme.",
+       "The early fall is dilution by fluid from the tissues, which happens whatever the iron stores.",
+       "Healthy marrow and kidneys are not enough: every hemoglobin molecule needs iron."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

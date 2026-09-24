@@ -8,6 +8,10 @@
     {
       "id": "nervous",
       "title": "Nervous system"
+    },
+    {
+      "id": "blood",
+      "title": "Blood"
     }
   ],
   "calculators": [
@@ -2479,6 +2483,602 @@
               "abs": 0.5
             },
             "prompt": "One sound measures {l1} dB and another {l2} dB. How many times as intense is the louder one?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hematocrit",
+      "group": "blood",
+      "title": "Hematocrit from a spun tube",
+      "short": "Hct = red column ÷ blood column × 100%",
+      "topic": "blood-composition",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "After spinning, the packed red cells sit at the bottom of the tube. The hematocrit is the share of the blood column they fill.",
+      "formula": "Hct = (height of red column ÷ height of whole blood column) × 100%",
+      "inputs": [
+        {
+          "key": "R",
+          "label": "Height of the red column",
+          "sym": "red",
+          "unit": "mm",
+          "default": 36,
+          "min": 1,
+          "max": 120,
+          "step": 1,
+          "gen": [
+            14,
+            54,
+            1
+          ]
+        },
+        {
+          "key": "T",
+          "label": "Height of the whole blood column (bottom of red cells to top of plasma)",
+          "sym": "total",
+          "unit": "mm",
+          "default": 80,
+          "min": 10,
+          "max": 150,
+          "step": 1,
+          "gen": [
+            60,
+            100,
+            1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "frac",
+          "expr": "R / T",
+          "dp": 3
+        },
+        {
+          "key": "H",
+          "expr": "R / T * 100",
+          "dp": 1
+        },
+        {
+          "key": "P",
+          "expr": "100 - R / T * 100",
+          "dp": 1
+        }
+      ],
+      "invalid": [
+        {
+          "when": "R >= T",
+          "text": "The red column must be shorter than the whole blood column: plasma always sits on top of it."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the definition",
+          "text": "Hematocrit = height of the red column ÷ height of the whole blood column × 100%."
+        },
+        {
+          "title": "Divide",
+          "text": "{R} mm ÷ {T} mm = {frac}."
+        },
+        {
+          "title": "Convert to a percentage",
+          "text": "{frac} × 100% = <b>{H}%</b>. The rest, {P}%, is plasma plus a buffy coat of well under 1%."
+        }
+      ],
+      "results": [
+        {
+          "key": "H",
+          "label": "Hematocrit",
+          "unit": "%",
+          "normal": "About 37–47% in women and 42–52% in men; each laboratory sets its own range.",
+          "bands": [
+            {
+              "when": "H < 37",
+              "label": "below the usual range",
+              "tone": "lo"
+            },
+            {
+              "when": "H > 52",
+              "label": "above the usual range",
+              "tone": "hi"
+            },
+            {
+              "label": "within the usual range",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "H < 37",
+          "text": "Red cells fill less of the blood than usual. Either the red cell volume has fallen (fewer red cells), or plasma volume has risen and diluted them, as after a large volume of fluid through a drip."
+        },
+        {
+          "when": "H > 52",
+          "text": "Red cells fill more of the blood than usual. Either there are more red cells, or plasma water has been lost, as in dehydration, which raises the share without adding a single cell. More red cells also make the blood more viscous."
+        },
+        {
+          "when": "1",
+          "text": "A hematocrit of {H}% is typical. Remember it is a ratio: right after a sudden bleed, cells and plasma are lost together, so the hematocrit is unchanged until fluid moves in and dilutes the cells."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 36 of 80 mm",
+          "values": {
+            "R": 36,
+            "T": 80
+          }
+        },
+        {
+          "label": "Short red column: 20 of 80 mm",
+          "values": {
+            "R": 20,
+            "T": 80
+          }
+        },
+        {
+          "label": "Tall red column: 52 of 80 mm",
+          "values": {
+            "R": 52,
+            "T": 80
+          }
+        }
+      ],
+      "practice": {
+        "require": "R / T >= 0.2 && R / T <= 0.7",
+        "asks": [
+          {
+            "key": "H",
+            "unit": "%",
+            "tol": {
+              "abs": 0.6
+            },
+            "prompt": "A spun tube has a red column {R} mm tall and a whole blood column {T} mm tall. What is the hematocrit?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "plasma-volume",
+      "group": "blood",
+      "title": "Red cell and plasma volume",
+      "short": "RCV = BV × Hct; PV = BV − RCV",
+      "topic": "blood-composition",
+      "core": [
+        "compartments"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Blood is about 70 mL per kilogram of body weight. The hematocrit splits that volume into red cells and plasma.",
+      "formula": "BV = 70 mL/kg × mass;  RCV = BV × Hct;  PV = BV − RCV",
+      "inputs": [
+        {
+          "key": "M",
+          "label": "Body mass",
+          "sym": "mass",
+          "unit": "kg",
+          "default": 70,
+          "min": 20,
+          "max": 150,
+          "step": 1,
+          "gen": [
+            50,
+            100,
+            1
+          ]
+        },
+        {
+          "key": "H",
+          "label": "Hematocrit",
+          "sym": "Hct",
+          "unit": "%",
+          "default": 45,
+          "min": 10,
+          "max": 75,
+          "step": 1,
+          "gen": [
+            30,
+            55,
+            1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "BV",
+          "expr": "M * 70 / 1000",
+          "dp": 2
+        },
+        {
+          "key": "RCV",
+          "expr": "M * 70 / 1000 * H / 100",
+          "dp": 2
+        },
+        {
+          "key": "PV",
+          "expr": "M * 70 / 1000 * (1 - H / 100)",
+          "dp": 2
+        },
+        {
+          "key": "PP",
+          "expr": "100 - H",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Estimate the blood volume",
+          "text": "Blood volume ≈ 70 mL/kg × {M} kg = {BV} L."
+        },
+        {
+          "title": "Red cell volume",
+          "text": "Red cells are {H}% of that: {BV} L × {H} ÷ 100 = <b>{RCV} L</b>."
+        },
+        {
+          "title": "Plasma volume",
+          "text": "The rest is plasma (the buffy coat is too small to matter): {BV} − {RCV} = <b>{PV} L</b>."
+        },
+        {
+          "title": "Check",
+          "text": "{PV} ÷ {BV} should be {PP}%, which is 100% − {H}%."
+        }
+      ],
+      "results": [
+        {
+          "key": "RCV",
+          "label": "Red cell volume",
+          "unit": "L",
+          "normal": "About 2.25 L in a 70 kg adult with a hematocrit of 45%."
+        },
+        {
+          "key": "PV",
+          "label": "Plasma volume",
+          "unit": "L",
+          "normal": "About 2.75 L in a 70 kg adult with a hematocrit of 45%."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "H < 37",
+          "text": "With a low hematocrit, a larger share of the {BV} L is plasma. The same total volume carries less oxygen, because oxygen rides on the red cells."
+        },
+        {
+          "when": "1",
+          "text": "About {RCV} L of this person’s {BV} L of blood is red cells and {PV} L is plasma. The 70 mL/kg rule is an estimate; men average 5–6 L and women 4–5 L, mostly because of body size."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 70 kg, 45%",
+          "values": {
+            "M": 70,
+            "H": 45
+          }
+        },
+        {
+          "label": "55 kg, 40%",
+          "values": {
+            "M": 55,
+            "H": 40
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "PV",
+            "unit": "L",
+            "tol": {
+              "abs": 0.03
+            },
+            "prompt": "A {M} kg adult has a hematocrit of {H}%. Using 70 mL of blood per kilogram, estimate the plasma volume."
+          }
+        ]
+      }
+    },
+    {
+      "id": "rbc-production",
+      "group": "blood",
+      "title": "How many red cells the marrow makes",
+      "short": "made per day = red cells ÷ lifespan",
+      "topic": "erythrocytes",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "When the red cell count is steady, the marrow must make as many cells each day as are destroyed. That rate follows from the number of red cells and how long each one lasts.",
+      "formula": "made per day = total red cells ÷ lifespan in days;  per second = per day ÷ 86,400",
+      "inputs": [
+        {
+          "key": "N",
+          "label": "Total red cells in the body",
+          "sym": "N",
+          "unit": "trillion",
+          "default": 25,
+          "min": 5,
+          "max": 40,
+          "step": 1,
+          "gen": [
+            18,
+            32,
+            1
+          ]
+        },
+        {
+          "key": "L",
+          "label": "Red cell lifespan",
+          "sym": "life",
+          "unit": "days",
+          "default": 120,
+          "min": 10,
+          "max": 150,
+          "step": 1,
+          "gen": [
+            60,
+            130,
+            5
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "D",
+          "expr": "N * 1000 / L",
+          "dp": 0
+        },
+        {
+          "key": "S",
+          "expr": "N * 1000 / L * 1000 / 86400",
+          "dp": 1
+        },
+        {
+          "key": "F",
+          "expr": "100 / L",
+          "dp": 2
+        }
+      ],
+      "steps": [
+        {
+          "title": "Assume a steady state",
+          "text": "If the count is not changing, cells made each day = cells destroyed each day. Each day, 1/{L} of the cells are replaced."
+        },
+        {
+          "title": "Per day",
+          "text": "{N} trillion ÷ {L} days = {N} × 1,000 billion ÷ {L} = <b>{D} billion cells per day</b>."
+        },
+        {
+          "title": "Per second",
+          "text": "A day has 86,400 seconds. {D} billion ÷ 86,400 = <b>{S} million cells per second</b>."
+        },
+        {
+          "title": "Check with the reticulocytes",
+          "text": "1/{L} of the cells is {F}% a day. Each new cell spends about a day in the blood as a reticulocyte, so reticulocytes should be about {F}% of red cells."
+        }
+      ],
+      "results": [
+        {
+          "key": "D",
+          "label": "Red cells made each day",
+          "unit": "billion",
+          "normal": "About 210 billion a day in an adult with 25 trillion red cells that live 120 days.",
+          "bands": [
+            {
+              "when": "L < 100",
+              "label": "short lifespan",
+              "tone": "hi"
+            },
+            {
+              "label": "typical lifespan",
+              "tone": "ok"
+            }
+          ]
+        },
+        {
+          "key": "S",
+          "label": "Red cells made each second",
+          "unit": "million"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "L < 100",
+          "text": "A lifespan of {L} days means cells are destroyed early, as in hemolytic anemias. To hold the count steady, the marrow must work faster than usual, and the reticulocyte count rises to show it. If destruction outpaces the marrow’s best effort, the count falls."
+        },
+        {
+          "when": "1",
+          "text": "At {L} days per cell, the marrow must make about {D} billion red cells a day, {S} million a second, just to stand still."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 25 trillion, 120 days",
+          "values": {
+            "N": 25,
+            "L": 120
+          }
+        },
+        {
+          "label": "Sickled cells: about 15 days",
+          "values": {
+            "N": 20,
+            "L": 15
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "D",
+            "unit": "billion per day",
+            "tol": {
+              "rel": 0.02
+            },
+            "prompt": "An adult has {N} trillion red cells, each lasting {L} days, and the count is steady. How many billion red cells must the marrow make each day?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "absolute-neutrophils",
+      "group": "blood",
+      "title": "Absolute neutrophil count",
+      "short": "ANC = WBC × neutrophil fraction",
+      "topic": "leukocytes-platelets",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "A differential gives each white cell type as a percentage. Multiply by the total white count to get how many of that type are really there: the absolute count.",
+      "formula": "Absolute count = total white count × (percentage ÷ 100)",
+      "inputs": [
+        {
+          "key": "W",
+          "label": "Total white cell count",
+          "sym": "WBC",
+          "unit": "per µL",
+          "default": 2000,
+          "min": 100,
+          "max": 60000,
+          "step": 100,
+          "gen": [
+            1000,
+            20000,
+            100
+          ]
+        },
+        {
+          "key": "P",
+          "label": "Neutrophils in the differential",
+          "sym": "neut",
+          "unit": "%",
+          "default": 20,
+          "min": 1,
+          "max": 99,
+          "step": 1,
+          "gen": [
+            10,
+            90,
+            1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "f",
+          "expr": "P / 100",
+          "dp": 2
+        },
+        {
+          "key": "A",
+          "expr": "W * P / 100",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the rule",
+          "text": "Absolute count = total white cell count × fraction of that type."
+        },
+        {
+          "title": "Convert the percentage",
+          "text": "{P}% = {f}."
+        },
+        {
+          "title": "Multiply",
+          "text": "{W} × {f} = <b>{A} neutrophils per µL</b>."
+        },
+        {
+          "title": "Compare with normal",
+          "text": "A normal absolute neutrophil count is roughly 1,800–7,700 per µL. Below 500 per µL, the risk of a serious bacterial infection is very high."
+        }
+      ],
+      "results": [
+        {
+          "key": "A",
+          "label": "Absolute neutrophil count",
+          "unit": "per µL",
+          "normal": "Roughly 1,800–7,700 per µL.",
+          "bands": [
+            {
+              "when": "A < 500",
+              "label": "severely low",
+              "tone": "lo"
+            },
+            {
+              "when": "A < 1800",
+              "label": "low",
+              "tone": "lo"
+            },
+            {
+              "when": "A > 7700",
+              "label": "high",
+              "tone": "hi"
+            },
+            {
+              "label": "normal",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "A < 500",
+          "text": "Severe neutropenia. Neutrophils are the first defense against bacteria, so this patient needs precautions against infection; after chemotherapy, a colony-stimulating factor may be given to speed the marrow’s recovery."
+        },
+        {
+          "when": "A < 1800",
+          "text": "Fewer neutrophils than normal: causes include chemotherapy, some viral infections, some drugs and marrow failure."
+        },
+        {
+          "when": "A > 7700",
+          "text": "More neutrophils than normal, the typical pattern of a bacterial infection. The other types’ percentages fall even if their absolute counts do not, so check each one’s absolute count too."
+        },
+        {
+          "when": "1",
+          "text": "An absolute neutrophil count of {A} per µL is within the normal range. A percentage alone can mislead: always multiply by the total."
+        }
+      ],
+      "presets": [
+        {
+          "label": "After chemotherapy: 2,000, 20%",
+          "values": {
+            "W": 2000,
+            "P": 20
+          }
+        },
+        {
+          "label": "Fever and cough: 16,000, 85%",
+          "values": {
+            "W": 16000,
+            "P": 85
+          }
+        },
+        {
+          "label": "Healthy: 7,000, 60%",
+          "values": {
+            "W": 7000,
+            "P": 60
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "A",
+            "unit": "per µL",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "A patient’s white cell count is {W} per µL, and {P}% of the white cells are neutrophils. What is the absolute neutrophil count?"
           }
         ]
       }

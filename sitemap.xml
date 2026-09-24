@@ -17,7 +17,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/autonomic.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -66,13 +71,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/special-senses.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/tissues.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/communication.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -92,7 +102,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/homeostasis.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -102,7 +112,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/interdependence.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -112,12 +122,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/structure-function.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/credits.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -132,12 +142,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/glossary.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/learn.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -163,6 +173,21 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/anatomical-position.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/ans-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/ans-control.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/ans-signaling.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -207,12 +232,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/bp-long-term.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/bp-short-term.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -227,7 +252,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/breathing-control.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -247,7 +272,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cardiac-output.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -266,13 +291,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/chemical-senses.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/chemical-signaling.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/circulatory-disorders.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -341,6 +371,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/hearing-balance.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/heart-anatomy.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -352,7 +387,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/higher-functions.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -477,7 +512,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/upper-airway.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -488,6 +523,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/vessel-structure.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/vision.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -528,6 +568,21 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/anatomical-position.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/ans-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/ans-control.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/ans-signaling.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -572,12 +627,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bp-long-term.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bp-short-term.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -592,7 +647,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/breathing-control.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -612,7 +667,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/cardiac-output.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -631,13 +686,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/chemical-senses.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/chemical-signaling.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/circulatory-disorders.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -647,7 +707,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/conduction-system.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -706,6 +766,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/hearing-balance.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/heart-anatomy.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -717,12 +782,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/higher-functions.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/homeostasis-feedback.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -732,7 +797,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/lung-volumes.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -777,7 +842,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/oxygen-transport.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -802,7 +867,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -842,17 +907,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/upper-airway.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ventilation-mechanics.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/vessel-structure.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/vision.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -922,7 +992,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/changelog.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

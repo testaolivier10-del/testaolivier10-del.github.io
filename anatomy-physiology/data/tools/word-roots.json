@@ -48,7 +48,7 @@
     { "id": "pro-", "type": "prefix", "form": "pro-", "meaning": "before, forward", "origin": "Greek and Latin", "from": "pro (before)" },
     { "id": "en-", "type": "prefix", "form": "en-", "meaning": "in", "origin": "Greek", "from": "en (in)" },
     { "id": "trans-", "type": "prefix", "form": "trans-", "meaning": "across", "origin": "Latin", "from": "trans (across)" },
-    { "id": "ad-", "type": "prefix", "form": "ad-, af-", "meaning": "toward", "origin": "Latin", "from": "ad (to, toward); spelled af- before f" },
+    { "id": "ad-", "type": "prefix", "form": "ad-, af-, ag-", "meaning": "toward", "origin": "Latin", "from": "ad (to, toward); spelled af- before f and ag- before g" },
     { "id": "ex-", "type": "prefix", "form": "ex-, ef-", "meaning": "out, away from", "origin": "Latin", "from": "ex (out of); spelled ef- before f" },
     { "id": "in-", "type": "prefix", "form": "in-", "meaning": "in, into", "origin": "Latin", "from": "in (in, into)" },
     { "id": "pluri-", "type": "prefix", "form": "pluri-", "meaning": "several, more", "origin": "Latin", "from": "plus, pluris (more)" },
@@ -1069,6 +1069,222 @@
       "meaning": "nerve",
       "origin": "Latin",
       "from": "nervus (sinew, nerve)"
+    },
+    {
+      "id": "-crit",
+      "type": "suffix",
+      "form": "-crit",
+      "meaning": "separating, sorting out",
+      "origin": "Greek",
+      "from": "krinein (to separate, to judge)"
+    },
+    {
+      "id": "-poiesis",
+      "type": "suffix",
+      "form": "-poiesis",
+      "meaning": "making, production",
+      "origin": "Greek",
+      "from": "poiēsis (a making)"
+    },
+    {
+      "id": "-poietin",
+      "type": "suffix",
+      "form": "-poietin",
+      "meaning": "a substance that stimulates making",
+      "origin": "Greek, via chemistry naming",
+      "from": "poiein (to make) + -in"
+    },
+    {
+      "id": "mega-",
+      "type": "prefix",
+      "form": "mega-, megal-",
+      "meaning": "large",
+      "origin": "Greek",
+      "from": "megas (great, large)"
+    },
+    {
+      "id": "kary/o",
+      "type": "root",
+      "form": "kary/o",
+      "meaning": "nucleus (literally a nut or kernel)",
+      "origin": "Greek",
+      "from": "karyon (nut, kernel)"
+    },
+    {
+      "id": "thromb/o",
+      "type": "root",
+      "form": "thromb/o",
+      "meaning": "clot",
+      "origin": "Greek",
+      "from": "thrombos (a lump, a clot)"
+    },
+    {
+      "id": "alb/o",
+      "type": "root",
+      "form": "alb/o, albumin/o",
+      "meaning": "white",
+      "origin": "Latin",
+      "from": "albus (white); albumen (egg white)"
+    },
+    {
+      "id": "erythr/o",
+      "type": "root",
+      "form": "erythr/o",
+      "meaning": "red",
+      "origin": "Greek",
+      "from": "erythros (red)"
+    },
+    {
+      "id": "reticul/o",
+      "type": "root",
+      "form": "reticul/o",
+      "meaning": "little net",
+      "origin": "Latin",
+      "from": "reticulum (little net), from rete (net)"
+    },
+    {
+      "id": "bil/i",
+      "type": "root",
+      "form": "bil/i",
+      "meaning": "bile",
+      "origin": "Latin",
+      "from": "bilis (bile)"
+    },
+    {
+      "id": "rub/o",
+      "type": "root",
+      "form": "rub/o, rubr/o",
+      "meaning": "red",
+      "origin": "Latin",
+      "from": "ruber (red)"
+    },
+    {
+      "id": "verd/o",
+      "type": "root",
+      "form": "verd/o",
+      "meaning": "green",
+      "origin": "Latin, via Old French",
+      "from": "viridis (green); Old French verd"
+    },
+    {
+      "id": "ferr/o",
+      "type": "root",
+      "form": "ferr/o, ferr/i",
+      "meaning": "iron",
+      "origin": "Latin",
+      "from": "ferrum (iron)"
+    },
+    {
+      "id": "sider/o",
+      "type": "root",
+      "form": "sider/o",
+      "meaning": "iron",
+      "origin": "Greek",
+      "from": "sidēros (iron)"
+    },
+    {
+      "id": "leuk/o",
+      "type": "root",
+      "form": "leuk/o",
+      "meaning": "white",
+      "origin": "Greek",
+      "from": "leukos (white, bright)"
+    },
+    {
+      "id": "-penia",
+      "type": "suffix",
+      "form": "-penia",
+      "meaning": "shortage, too few",
+      "origin": "Greek",
+      "from": "penia (poverty, lack)"
+    },
+    {
+      "id": "neutr/o",
+      "type": "root",
+      "form": "neutr/o",
+      "meaning": "neither (neutral)",
+      "origin": "Latin",
+      "from": "neuter (neither of two)"
+    },
+    {
+      "id": "eosin/o",
+      "type": "root",
+      "form": "eosin/o",
+      "meaning": "eosin, a rosy red-orange dye (named for the dawn)",
+      "origin": "Greek",
+      "from": "ēōs (dawn)"
+    },
+    {
+      "id": "bas/o",
+      "type": "root",
+      "form": "bas/o",
+      "meaning": "base (the chemical opposite of an acid)",
+      "origin": "Greek, via Latin",
+      "from": "basis (a step, a foundation)"
+    },
+    {
+      "id": "-phil",
+      "type": "suffix",
+      "form": "-phil, -phile",
+      "meaning": "one that loves, one attracted to",
+      "origin": "Greek",
+      "from": "philos (loving, dear)"
+    },
+    {
+      "id": "morph/o",
+      "type": "root",
+      "form": "morph/o",
+      "meaning": "shape, form",
+      "origin": "Greek",
+      "from": "morphē (shape)"
+    },
+    {
+      "id": "nucle/o",
+      "type": "root",
+      "form": "nucle/o",
+      "meaning": "nucleus (literally a little nut, a kernel)",
+      "origin": "Latin",
+      "from": "nucleus (kernel), from nux (nut)"
+    },
+    {
+      "id": "-philia",
+      "type": "suffix",
+      "form": "-philia",
+      "meaning": "a tendency toward",
+      "origin": "Greek",
+      "from": "philia (fondness, love)"
+    },
+    {
+      "id": "coagul/o",
+      "type": "root",
+      "form": "coagul/o",
+      "meaning": "curdle, clot",
+      "origin": "Latin",
+      "from": "coagulare (to curdle)"
+    },
+    {
+      "id": "-ant",
+      "type": "suffix",
+      "form": "-ant",
+      "meaning": "one that does, an agent",
+      "origin": "Latin",
+      "from": "-ans, -antis (present participle ending)"
+    },
+    {
+      "id": "embol/o",
+      "type": "root",
+      "form": "embol/o",
+      "meaning": "plug, wedge; something thrown in",
+      "origin": "Greek",
+      "from": "embolos (a plug, a wedge), from emballein (to throw in)"
+    },
+    {
+      "id": "glutin/o",
+      "type": "root",
+      "form": "glutin/o",
+      "meaning": "glue",
+      "origin": "Latin",
+      "from": "gluten (glue)"
     }
   ],
   "terms": [
@@ -4146,6 +4362,1016 @@
       ],
       "literal": "the process of putting nerves in",
       "meaning": "the supply of nerves to an organ; dual innervation means fibers from both autonomic divisions"
+    },
+    {
+      "id": "hematocrit",
+      "term": "hematocrit",
+      "topic": "blood-composition",
+      "concept": "hematocrit",
+      "segs": [
+        [
+          "hemat",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "crit",
+          "-crit"
+        ]
+      ],
+      "literal": "blood separating",
+      "meaning": "the percentage of a blood sample’s volume made up of red blood cells, read after spinning separates them from the plasma"
+    },
+    {
+      "id": "hematopoiesis",
+      "term": "hematopoiesis",
+      "topic": "blood-composition",
+      "concept": "hematopoiesis",
+      "segs": [
+        [
+          "hemat",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "poiesis",
+          "-poiesis"
+        ]
+      ],
+      "literal": "blood making",
+      "meaning": "the making of all the formed elements of blood, in the red bone marrow"
+    },
+    {
+      "id": "hemocytoblast",
+      "term": "hemocytoblast",
+      "topic": "blood-composition",
+      "concept": "hematopoiesis",
+      "segs": [
+        [
+          "hem",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyt",
+          "cyt/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "blast",
+          "-blast"
+        ]
+      ],
+      "literal": "blood cell bud",
+      "meaning": "the hematopoietic stem cell, from which every formed element descends"
+    },
+    {
+      "id": "megakaryocyte",
+      "term": "megakaryocyte",
+      "topic": "blood-composition",
+      "concept": "hematopoiesis",
+      "segs": [
+        [
+          "mega",
+          "mega-"
+        ],
+        [
+          "kary",
+          "kary/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "large nucleus cell",
+      "meaning": "a giant bone marrow cell with a huge, many-lobed nucleus whose cytoplasm breaks into platelets"
+    },
+    {
+      "id": "myeloid",
+      "term": "myeloid",
+      "topic": "blood-composition",
+      "concept": "hematopoiesis",
+      "segs": [
+        [
+          "myel",
+          "myel/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "like marrow",
+      "meaning": "describing the branch of hematopoiesis that gives red blood cells, megakaryocytes and most white blood cells"
+    },
+    {
+      "id": "lymphoid",
+      "term": "lymphoid",
+      "topic": "blood-composition",
+      "concept": "hematopoiesis",
+      "segs": [
+        [
+          "lymph",
+          "lymph/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "like clear water",
+      "meaning": "describing the branch of hematopoiesis that gives the white blood cells at the heart of the immune system"
+    },
+    {
+      "id": "thrombopoietin",
+      "term": "thrombopoietin",
+      "topic": "blood-composition",
+      "concept": "hematopoiesis",
+      "segs": [
+        [
+          "thromb",
+          "thromb/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "poietin",
+          "-poietin"
+        ]
+      ],
+      "literal": "clot maker",
+      "meaning": "a growth factor, made mainly by the liver, that drives megakaryocytes to form and shed platelets"
+    },
+    {
+      "id": "fibrinogen",
+      "term": "fibrinogen",
+      "topic": "blood-composition",
+      "concept": "plasma-proteins",
+      "segs": [
+        [
+          "fibr",
+          "fibr/o"
+        ],
+        [
+          "in",
+          "-in"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "fiber substance producer",
+      "meaning": "the plasma protein, made by the liver, that is converted into the threads of a clot"
+    },
+    {
+      "id": "albumin",
+      "term": "albumin",
+      "topic": "blood-composition",
+      "concept": "plasma-proteins",
+      "segs": [
+        [
+          "alb",
+          "alb/o"
+        ],
+        [
+          "um"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "white substance",
+      "meaning": "the most abundant plasma protein, made by the liver; its osmotic pull holds water in the blood"
+    },
+    {
+      "id": "erythrocyte",
+      "term": "erythrocyte",
+      "topic": "erythrocytes",
+      "concept": "erythrocyte",
+      "segs": [
+        [
+          "erythr",
+          "erythr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "red cell",
+      "meaning": "a red blood cell: a biconcave disc with no nucleus, filled with hemoglobin"
+    },
+    {
+      "id": "hemoglobin",
+      "term": "hemoglobin",
+      "topic": "erythrocytes",
+      "concept": "hemoglobin",
+      "segs": [
+        [
+          "hem",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "glob",
+          "glob/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "blood ball protein",
+      "meaning": "the red, iron-containing protein of red blood cells, built of four globin chains each holding a heme, that carries oxygen"
+    },
+    {
+      "id": "erythropoiesis",
+      "term": "erythropoiesis",
+      "topic": "erythrocytes",
+      "concept": "erythropoiesis",
+      "segs": [
+        [
+          "erythr",
+          "erythr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "poiesis",
+          "-poiesis"
+        ]
+      ],
+      "literal": "red making",
+      "meaning": "the making of red blood cells in the red bone marrow"
+    },
+    {
+      "id": "erythropoietin",
+      "term": "erythropoietin",
+      "topic": "erythrocytes",
+      "concept": "erythropoiesis",
+      "segs": [
+        [
+          "erythr",
+          "erythr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "poietin",
+          "-poietin"
+        ]
+      ],
+      "literal": "red maker",
+      "meaning": "EPO: the hormone kidney cells release when their oxygen supply falls, which speeds red cell production"
+    },
+    {
+      "id": "reticulocyte",
+      "term": "reticulocyte",
+      "topic": "erythrocytes",
+      "concept": "erythropoiesis",
+      "segs": [
+        [
+          "reticul",
+          "reticul/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "little net cell",
+      "meaning": "a young red cell that has lost its nucleus but still holds a net of ribosomes; about 1% of red cells"
+    },
+    {
+      "id": "bilirubin",
+      "term": "bilirubin",
+      "topic": "erythrocytes",
+      "concept": "rbc-lifecycle",
+      "segs": [
+        [
+          "bili",
+          "bil/i"
+        ],
+        [
+          "rub",
+          "rub/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "bile red substance",
+      "meaning": "the yellow-orange pigment made from heme, carried to the liver and excreted in bile"
+    },
+    {
+      "id": "biliverdin",
+      "term": "biliverdin",
+      "topic": "erythrocytes",
+      "concept": "rbc-lifecycle",
+      "segs": [
+        [
+          "bili",
+          "bil/i"
+        ],
+        [
+          "verd",
+          "verd/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "bile green substance",
+      "meaning": "the green pigment made when the heme ring is opened, quickly converted to bilirubin"
+    },
+    {
+      "id": "transferrin",
+      "term": "transferrin",
+      "topic": "erythrocytes",
+      "concept": "iron-handling",
+      "segs": [
+        [
+          "trans",
+          "trans-"
+        ],
+        [
+          "ferr",
+          "ferr/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "across iron protein",
+      "meaning": "the plasma protein that carries iron to the marrow and other cells"
+    },
+    {
+      "id": "ferritin",
+      "term": "ferritin",
+      "topic": "erythrocytes",
+      "concept": "iron-handling",
+      "segs": [
+        [
+          "ferr",
+          "ferr/o"
+        ],
+        [
+          "it"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "iron protein",
+      "meaning": "the hollow protein shell that stores iron inside liver cells, macrophages and marrow cells"
+    },
+    {
+      "id": "hemosiderin",
+      "term": "hemosiderin",
+      "topic": "erythrocytes",
+      "concept": "iron-handling",
+      "segs": [
+        [
+          "hem",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "sider",
+          "sider/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "blood iron substance",
+      "meaning": "clumped, partly broken-down ferritin: a long-term iron store, mostly when iron is in excess"
+    },
+    {
+      "id": "anemia",
+      "term": "anemia",
+      "topic": "erythrocytes",
+      "concept": "anemia",
+      "segs": [
+        [
+          "an",
+          "a-"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "without blood (condition)",
+      "meaning": "a fall in the blood’s ability to carry oxygen because it holds too little hemoglobin"
+    },
+    {
+      "id": "polycythemia",
+      "term": "polycythemia",
+      "topic": "erythrocytes",
+      "concept": "polycythemia",
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "cyt",
+          "cyt/o"
+        ],
+        [
+          "h"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "many cells in the blood (condition)",
+      "meaning": "an abnormally high red cell count and hematocrit"
+    },
+    {
+      "id": "leukocyte",
+      "term": "leukocyte",
+      "topic": "leukocytes-platelets",
+      "concept": "leukocyte",
+      "segs": [
+        [
+          "leuk",
+          "leuk/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "white cell",
+      "meaning": "a white blood cell: a nucleated cell that does most of its defensive work outside the blood"
+    },
+    {
+      "id": "leukopenia",
+      "term": "leukopenia",
+      "topic": "leukocytes-platelets",
+      "concept": "leukocyte-counts",
+      "segs": [
+        [
+          "leuk",
+          "leuk/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "penia",
+          "-penia"
+        ]
+      ],
+      "literal": "white shortage",
+      "meaning": "a white cell count below about 4,500 per µL"
+    },
+    {
+      "id": "leukocytosis",
+      "term": "leukocytosis",
+      "topic": "leukocytes-platelets",
+      "concept": "leukocyte-counts",
+      "segs": [
+        [
+          "leuk",
+          "leuk/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyt",
+          "cyt/o"
+        ],
+        [
+          "osis",
+          "-osis"
+        ]
+      ],
+      "literal": "white cell condition",
+      "meaning": "a white cell count above about 11,000 per µL"
+    },
+    {
+      "id": "leukemia",
+      "term": "leukemia",
+      "topic": "leukocytes-platelets",
+      "concept": "leukocyte-counts",
+      "segs": [
+        [
+          "leuk",
+          "leuk/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "white blood (condition)",
+      "meaning": "cancer of the blood-forming cells of the bone marrow, whose descendants never mature properly"
+    },
+    {
+      "id": "granulocyte",
+      "term": "granulocyte",
+      "topic": "leukocytes-platelets",
+      "concept": "granulocytes",
+      "segs": [
+        [
+          "granul",
+          "granul/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "small grain cell",
+      "meaning": "a white blood cell with obvious stained granules: a neutrophil, eosinophil or basophil"
+    },
+    {
+      "id": "agranulocyte",
+      "term": "agranulocyte",
+      "topic": "leukocytes-platelets",
+      "concept": "agranulocytes",
+      "segs": [
+        [
+          "a",
+          "a-"
+        ],
+        [
+          "granul",
+          "granul/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "cell without small grains",
+      "meaning": "a white blood cell with no granules visible by light microscope: a lymphocyte or monocyte"
+    },
+    {
+      "id": "neutrophil",
+      "term": "neutrophil",
+      "topic": "leukocytes-platelets",
+      "concept": "granulocytes",
+      "segs": [
+        [
+          "neutr",
+          "neutr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "phil",
+          "-phil"
+        ]
+      ],
+      "literal": "neither-lover",
+      "meaning": "the most numerous white blood cell, whose faint granules take up neither dye strongly; first to arrive at a bacterial infection"
+    },
+    {
+      "id": "eosinophil",
+      "term": "eosinophil",
+      "topic": "leukocytes-platelets",
+      "concept": "granulocytes",
+      "segs": [
+        [
+          "eosin",
+          "eosin/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "phil",
+          "-phil"
+        ]
+      ],
+      "literal": "eosin-lover",
+      "meaning": "a white blood cell with red-orange granules that attacks parasitic worms and gathers at allergic reactions"
+    },
+    {
+      "id": "basophil",
+      "term": "basophil",
+      "topic": "leukocytes-platelets",
+      "concept": "granulocytes",
+      "segs": [
+        [
+          "bas",
+          "bas/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "phil",
+          "-phil"
+        ]
+      ],
+      "literal": "base-lover",
+      "meaning": "the rarest white blood cell, with dark blue-purple granules that hold histamine"
+    },
+    {
+      "id": "polymorphonuclear",
+      "term": "polymorphonuclear",
+      "topic": "leukocytes-platelets",
+      "concept": "granulocytes",
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "morph",
+          "morph/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "nucle",
+          "nucle/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "pertaining to a many-shaped nucleus",
+      "meaning": "describing a neutrophil, whose three to five nuclear lobes make the nucleus seem to take many shapes"
+    },
+    {
+      "id": "lymphocyte",
+      "term": "lymphocyte",
+      "topic": "leukocytes-platelets",
+      "concept": "agranulocytes",
+      "segs": [
+        [
+          "lymph",
+          "lymph/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "clear-water cell",
+      "meaning": "a round white blood cell almost filled by its nucleus; the cell of specific immunity"
+    },
+    {
+      "id": "monocyte",
+      "term": "monocyte",
+      "topic": "leukocytes-platelets",
+      "concept": "agranulocytes",
+      "segs": [
+        [
+          "mono",
+          "mono-"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "one (nucleus) cell",
+      "meaning": "the largest white blood cell, with one unlobed, kidney-shaped nucleus; it leaves the blood to become a macrophage"
+    },
+    {
+      "id": "thrombocyte",
+      "term": "thrombocyte",
+      "topic": "leukocytes-platelets",
+      "concept": "platelet",
+      "segs": [
+        [
+          "thromb",
+          "thromb/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "clot cell",
+      "meaning": "a platelet: a fragment of a megakaryocyte that seals small breaks and hosts clotting"
+    },
+    {
+      "id": "antigen",
+      "term": "antigen",
+      "topic": "leukocytes-platelets",
+      "concept": "antigen-antibody-basic",
+      "segs": [
+        [
+          "anti",
+          "anti-"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "(anti)body producer",
+      "meaning": "any molecule the immune system recognizes as a specific target",
+      "note": "Coined as short for “antibody generator”, so here anti- stands for the whole word antibody."
+    },
+    {
+      "id": "hemostasis",
+      "term": "hemostasis",
+      "topic": "hemostasis",
+      "concept": "hemostasis",
+      "segs": [
+        [
+          "hem",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "stasis",
+          "-stasis"
+        ]
+      ],
+      "literal": "blood standing still",
+      "meaning": "the stopping of bleeding from a damaged vessel: vascular spasm, platelet plug and coagulation"
+    },
+    {
+      "id": "hemophilia",
+      "term": "hemophilia",
+      "topic": "hemostasis",
+      "concept": "clotting-disorders",
+      "segs": [
+        [
+          "hem",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "philia",
+          "-philia"
+        ]
+      ],
+      "literal": "tendency to bleed",
+      "meaning": "an inherited lack of clotting factor VIII (hemophilia A) or IX (hemophilia B)"
+    },
+    {
+      "id": "thrombosis",
+      "term": "thrombosis",
+      "topic": "hemostasis",
+      "concept": "clotting-disorders",
+      "segs": [
+        [
+          "thromb",
+          "thromb/o"
+        ],
+        [
+          "osis",
+          "-osis"
+        ]
+      ],
+      "literal": "clot condition",
+      "meaning": "the forming of a clot inside an unbroken vessel"
+    },
+    {
+      "id": "thrombocytopenia",
+      "term": "thrombocytopenia",
+      "topic": "hemostasis",
+      "concept": "clotting-disorders",
+      "segs": [
+        [
+          "thromb",
+          "thromb/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyt",
+          "cyt/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "penia",
+          "-penia"
+        ]
+      ],
+      "literal": "clot cell shortage",
+      "meaning": "a platelet count below about 150,000 per µL"
+    },
+    {
+      "id": "thrombocytosis",
+      "term": "thrombocytosis",
+      "topic": "hemostasis",
+      "concept": "clotting-disorders",
+      "segs": [
+        [
+          "thromb",
+          "thromb/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyt",
+          "cyt/o"
+        ],
+        [
+          "osis",
+          "-osis"
+        ]
+      ],
+      "literal": "clot cell condition",
+      "meaning": "a platelet count above about 450,000 per µL"
+    },
+    {
+      "id": "embolism",
+      "term": "embolism",
+      "topic": "hemostasis",
+      "concept": "clotting-disorders",
+      "segs": [
+        [
+          "embol",
+          "embol/o"
+        ],
+        [
+          "ism",
+          "-ism"
+        ]
+      ],
+      "literal": "plug condition",
+      "meaning": "the blockage of a vessel by a mass carried in the blood, most often a piece of a clot"
+    },
+    {
+      "id": "fibrinolysis",
+      "term": "fibrinolysis",
+      "topic": "hemostasis",
+      "concept": "clot-retraction-fibrinolysis",
+      "segs": [
+        [
+          "fibr",
+          "fibr/o"
+        ],
+        [
+          "in",
+          "-in"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lysis",
+          "-lysis"
+        ]
+      ],
+      "literal": "fiber substance loosening",
+      "meaning": "the breakdown of fibrin by plasmin, which dissolves a clot after the vessel is repaired"
+    },
+    {
+      "id": "anticoagulant",
+      "term": "anticoagulant",
+      "topic": "hemostasis",
+      "concept": "anticoagulants",
+      "segs": [
+        [
+          "anti",
+          "anti-"
+        ],
+        [
+          "coagul",
+          "coagul/o"
+        ],
+        [
+          "ant",
+          "-ant"
+        ]
+      ],
+      "literal": "one that acts against curdling",
+      "meaning": "a substance that slows or stops coagulation, such as antithrombin, heparin or warfarin"
+    },
+    {
+      "id": "agglutination",
+      "term": "agglutination",
+      "topic": "blood-typing",
+      "concept": "agglutination",
+      "segs": [
+        [
+          "ag",
+          "ad-"
+        ],
+        [
+          "glutin",
+          "glutin/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of gluing to",
+      "meaning": "the clumping of cells when antibodies bridge antigens on neighboring cells"
+    },
+    {
+      "id": "erythroblastosis",
+      "term": "erythroblastosis",
+      "topic": "blood-typing",
+      "concept": "hdn",
+      "segs": [
+        [
+          "erythr",
+          "erythr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "blast",
+          "-blast"
+        ],
+        [
+          "osis",
+          "-osis"
+        ]
+      ],
+      "literal": "red bud condition",
+      "meaning": "the flood of immature, nucleated red cells into a fetus’s blood in hemolytic disease of the newborn (erythroblastosis fetalis)"
+    },
+    {
+      "id": "hemolytic",
+      "term": "hemolytic",
+      "topic": "blood-typing",
+      "concept": null,
+      "segs": [
+        [
+          "hem",
+          "hem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lytic",
+          "-lytic"
+        ]
+      ],
+      "literal": "blood loosening",
+      "meaning": "describing the bursting of red blood cells, as in a transfusion reaction or hemolytic disease of the newborn"
     }
   ]
 }
