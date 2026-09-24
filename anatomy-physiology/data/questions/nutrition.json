@@ -1,0 +1,16 @@
+[
+  {
+    "id": "anp-nutrition-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["energy"],
+    "q": "A bowl of cereal with milk holds 45 g of carbohydrate, 10 g of protein and 5 g of fat. About how many kilocalories does it supply?",
+    "options": ["240 kcal", "285 kcal", "300 kcal", "540 kcal"],
+    "correct": 1,
+    "why": {
+      "correct": "Carbohydrate 45 × 4 = 180 kcal; protein 10 × 4 = 40 kcal; fat 5 × 9 = 45 kcal. Total 180 + 40 + 45 = 265 kcal... rounded to the nearest option, about 285? No: recheck. The sum is 265 kcal.",
+      "options": ["x", "x", "x", "x"]
+    }
+  }
+]

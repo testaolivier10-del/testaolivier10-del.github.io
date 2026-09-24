@@ -1,0 +1,47 @@
+{
+  "topic": "nutrition",
+  "hook": "<p>Mr. Okafor, 74, has lived alone since his wife died. For four months he has eaten little but tea, toast and canned soup. Now his gums bleed when he brushes, purple spots have appeared on his shins, and a cut on his hand from six weeks ago has not closed. He is eating enough calories. What he is missing weighs less than a tenth of a gram a day.</p>",
+  "prereq": [
+    {
+      "q": "Gram for gram, how does the energy stored in triglycerides compare with carbohydrate?",
+      "options": ["About the same", "About half as much", "More than twice as much"],
+      "correct": 2,
+      "why": "Triglycerides are packed with carbon–hydrogen bonds and hold about 9 kcal per gram, against about 4 for carbohydrate.",
+      "review": "biomolecules"
+    },
+    {
+      "q": "What is a coenzyme?",
+      "options": ["An organic molecule an enzyme needs to catalyze its reaction", "A second enzyme that speeds up the first", "The part of the substrate that binds the active site"],
+      "correct": 0,
+      "why": "A coenzyme is an organic helper molecule, often made from a vitamin, that an enzyme needs to work. NAD+ and FAD are examples.",
+      "review": "enzymes-energy"
+    },
+    {
+      "q": "A patient's bile duct has been blocked for months. Which vitamins does he absorb poorly?",
+      "options": ["Vitamins that dissolve in water, such as vitamin C", "Vitamins that dissolve in fat, such as vitamins D and K", "Vitamin B12 alone"],
+      "correct": 1,
+      "why": "Without bile, fats are not packed into micelles, and the vitamins that travel with fat are absorbed poorly too.",
+      "review": "digestion-absorption"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-24-3",
+    "caption": "What happens to the macronutrients you eat. Hide the labels and name the building block each one is broken into."
+  },
+  "chain": [
+    { "cause": "A person eats almost no fruit or vegetables for months, and the body's small store of vitamin C runs out.", "effect": "The enzymes that strengthen new collagen lose the helper that keeps their iron in its working form, and stop working." },
+    { "cause": "Those enzymes can no longer add hydroxyl groups to proline and lysine in new collagen strands.", "effect": "The strands cannot twist into stable triple helices or cross-link, so the new collagen is weak and is broken down." },
+    { "cause": "Collagen is always being replaced, and the replacement is now faulty.", "effect": "Small vessel walls, gums, skin and healing wounds lose strength." },
+    { "cause": "Weak small vessels break under ordinary pressure, and wounds cannot build strong scar tissue.", "effect": "The person bruises easily, bleeds from the gums and heals poorly: scurvy." }
+  ],
+  "misconception": {
+    "wrong": "Vitamins give you energy.",
+    "right": "Vitamins supply no energy at all: a vitamin tablet has 0 kcal. Only carbohydrate, protein and fat (and alcohol) supply energy. Many B vitamins are parts of coenzymes, such as NAD+ and FAD, that the enzymes of fuel breakdown need, so a lack of them does leave a person tired. But once your cells have enough, extra B vitamins do not release any more energy; the extra leaves in the urine."
+  },
+  "check": ["anp-nutrition-1", "anp-nutrition-3", "anp-nutrition-5", "anp-nutrition-7", "anp-nutrition-9", "anp-nutrition-12", "anp-nutrition-15"],
+  "summary": "<p>Food supplies six classes of nutrients. The macronutrients (carbohydrates, lipids, proteins and water) are needed in grams; the first three supply energy: about 4 kcal per gram for carbohydrate and protein and about 9 for fat. The micronutrients (vitamins and minerals) are needed in milligrams or micrograms and supply no energy. Essential nutrients must come from food because your body cannot make enough: nine essential amino acids, two essential fatty acids (linoleic and alpha-linolenic acid), and every vitamin and mineral. Vitamins are organic and work mostly as coenzymes or active molecules. The fat-soluble vitamins (A, D, E, K) are absorbed with fat and stored, so they can build up to toxic levels; the water-soluble vitamins (the B vitamins and C) are stored little and need a steady supply, except B12. Minerals are inorganic elements: major minerals such as calcium and sodium are needed at more than 100 mg a day, trace minerals such as iron, zinc and iodine at less.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/lipids.html", "label": "Organic chemistry: Lipids" },
+    { "href": "/ochem/lessons/amino-acids.html", "label": "Organic chemistry: Amino acids" }
+  ]
+}
