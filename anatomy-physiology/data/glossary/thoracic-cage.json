@@ -1,0 +1,12 @@
+{
+  "sternum": {
+    "def": "The breastbone: a flat bone in the front midline of the chest with three parts, the manubrium on top, the body in the middle and the small xiphoid process at the bottom. The jugular notch is the dip at its top, and the sternal angle, where the manubrium meets the body, marks the level of the second rib.",
+    "roots": [["sternon", "chest"], ["manubrium", "handle"], ["xiph-", "sword"], ["jugul-", "throat"]],
+    "say": "STER-num; muh-NOO-bree-um; ZY-foyd"
+  },
+  "ribs": {
+    "def": "The 12 pairs of curved bones of the thoracic cage, which also includes the sternum and thoracic vertebrae. Each rib has a head, neck, tubercle, angle, body and costal groove and ends in a costal cartilage. Ribs 1 to 7 are true ribs, 8 to 12 are false ribs, and 11 and 12 are floating ribs.",
+    "roots": [["thorac-", "chest"], ["cost-", "rib"], ["tuber-", "knob"]],
+    "say": "KOS-tul"
+  }
+}

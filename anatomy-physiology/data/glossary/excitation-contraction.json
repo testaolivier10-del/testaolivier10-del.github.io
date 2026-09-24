@@ -1,0 +1,27 @@
+{
+  "muscle-action-potential": {
+    "def": "The action potential of a skeletal muscle fiber: triggered by the end plate potential, it swings the sarcolemma from about −90 mV to about +30 mV and back in 2 to 5 ms, spreading from the end plate toward both ends of the fiber and down every T tubule.",
+    "roots": [],
+    "say": ""
+  },
+  "calcium-release": {
+    "def": "The outflow of calcium ions from the terminal cisternae of the sarcoplasmic reticulum into the sarcoplasm. In skeletal muscle, voltage-sensing DHP receptors in the T tubule are linked to ryanodine receptors (release channels) in the SR and pull them open when the T tubule depolarizes.",
+    "roots": [],
+    "say": "dy-HY-droh-PIR-ih-deen, ry-AN-oh-deen"
+  },
+  "troponin-regulation": {
+    "def": "The calcium switch of the thin filament: calcium binds troponin, troponin changes shape and lets tropomyosin roll off the myosin-binding sites on actin, and myosin heads can bind. When calcium falls, tropomyosin covers the sites again.",
+    "roots": [["tropo-", "turning"]],
+    "say": ""
+  },
+  "excitation-contraction-coupling": {
+    "def": "The sequence that links an action potential on the sarcolemma to contraction: the action potential travels down the T tubules, calcium is released from the sarcoplasmic reticulum, and calcium binding to troponin lets myosin pull on actin.",
+    "roots": [["ex-", "out"], ["citare", "to rouse (Latin)"], ["con-", "together"], ["trahere", "to pull (Latin)"]],
+    "say": ""
+  },
+  "muscle-relaxation": {
+    "def": "The return of a muscle fiber to rest: the motor neuron stops firing, the SR release channels close, and calcium pumps (calcium ATPases in the SR membrane) use ATP to move calcium back into the SR, so calcium leaves troponin and tropomyosin covers actin again.",
+    "roots": [["re-", "back"], ["laxare", "to loosen (Latin)"]],
+    "say": ""
+  }
+}

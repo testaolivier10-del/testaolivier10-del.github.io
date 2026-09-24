@@ -4,11 +4,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-6-11",
     "pin": "osteoclast",
     "q": "Name the pinned cell.",
-    "options": ["Osteoblast", "Osteocyte", "Osteogenic cell", "Osteoclast"],
+    "options": [
+      "Osteoblast",
+      "Osteocyte",
+      "Osteogenic cell",
+      "Osteoclast"
+    ],
     "correct": 3,
     "why": {
       "correct": "The osteoclast is a very large cell with several nuclei and a frilled membrane pressed against the bone. It resorbs bone.",
@@ -25,11 +32,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-6-11",
     "pin": "osteoblast",
     "q": "Name the pinned cells, which sit in a row on the bone surface.",
-    "options": ["Osteocytes", "Osteoblasts", "Osteoclasts", "Chondrocytes"],
+    "options": [
+      "Osteocytes",
+      "Osteoblasts",
+      "Osteoclasts",
+      "Chondrocytes"
+    ],
     "correct": 1,
     "why": {
       "correct": "Osteoblasts line up on bone surfaces and secrete osteoid, the organic matrix that later mineralizes.",
@@ -46,18 +60,25 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-6-11",
     "pin": "osteogenic-cell",
     "q": "Name the pinned flat cell, the stem cell of bone.",
-    "options": ["Osteogenic cell", "Osteoblast", "Fibroblast", "Osteoclast"],
+    "options": [
+      "Osteogenic cell",
+      "Osteoblast",
+      "Mesenchymal cell",
+      "Osteoclast"
+    ],
     "correct": 0,
     "why": {
       "correct": "The osteogenic cell is the stem cell of bone. It lies in the periosteum and endosteum, it is the only bone cell that divides, and its daughters become osteoblasts.",
       "options": [
         "Correct. The dividing stem cell of bone is the osteogenic cell.",
         "Osteoblasts are made from this cell, and they do not divide.",
-        "Fibroblasts make the fibers of connective tissue proper, not new bone cells.",
+        "Mesenchymal cells are the embryonic cells that connective tissues come from. The pinned cell sits on a finished bone surface, as the stem cell of bone.",
         "Osteoclasts come from a different line, related to macrophages, and they are huge, not flat."
       ]
     }
@@ -67,17 +88,24 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-6-13",
     "pin": "trabeculae",
     "q": "Name the pinned struts of bone.",
-    "options": ["Osteons", "Lamellae", "Trabeculae", "Canaliculi"],
+    "options": [
+      "Osteons",
+      "Central canals",
+      "Trabeculae",
+      "Canaliculi"
+    ],
     "correct": 2,
     "why": {
       "correct": "Trabeculae are the thin struts of spongy bone, with marrow in the spaces between them.",
       "options": [
         "Osteons are the cylinders of compact bone, each with a central canal. The struts of spongy bone have none.",
-        "Lamellae are the thin layers of matrix inside a strut or an osteon, not the struts themselves.",
+        "Central canals are channels down the middle of osteons in compact bone. Spongy bone has none, and the pinned structures are solid struts.",
         "Correct. The branching struts are trabeculae.",
         "Canaliculi are hair-thin channels within the matrix, far smaller than the struts."
       ]
@@ -88,11 +116,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-6-13",
     "pin": "lacuna",
     "q": "Name the pinned small cavity in the matrix.",
-    "options": ["Central canal", "Lacuna", "Perforating canal", "Canaliculus"],
+    "options": [
+      "Central canal",
+      "Lacuna",
+      "Perforating canal",
+      "Canaliculus"
+    ],
     "correct": 1,
     "why": {
       "correct": "A lacuna is a small cavity between lamellae. Each one holds a single osteocyte.",
@@ -109,11 +144,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-6-13",
     "pin": "canaliculi",
     "q": "Name the pinned fine channels that run across the layers of matrix.",
-    "options": ["Canaliculi", "Lacunae", "Perforating canals", "Collagen fibers"],
+    "options": [
+      "Canaliculi",
+      "Lacunae",
+      "Perforating canals",
+      "Collagen fibers"
+    ],
     "correct": 0,
     "why": {
       "correct": "Canaliculi are hair-thin channels that radiate from each lacuna. The arms of osteocytes run through them, linking the cells to each other and to a supply of blood.",
@@ -130,14 +172,21 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student soaks a chicken bone in vinegar for a week. It keeps its shape but bends like rubber. What did the vinegar remove?",
-    "options": ["The collagen fibers", "The osteocytes", "The calcium phosphate crystals", "The periosteum"],
+    "options": [
+      "The collagen and ground substance",
+      "The osteocytes",
+      "The calcium phosphate crystals",
+      "The periosteum"
+    ],
     "correct": 2,
     "why": {
       "correct": "Vinegar is an acid, and acid dissolves the calcium phosphate (hydroxyapatite) crystals, just as the acid from osteoclasts does. What remains is the collagen framework, which is flexible but cannot resist squeezing.",
       "options": [
-        "If the collagen had gone, the bone would be hard and brittle, as it is after baking. The bone bends because collagen remains.",
+        "If the collagen and ground substance had gone, the bone would be hard and brittle, as it is after baking. The bone bends because they remain.",
         "Removing cells would not change how hard or flexible the matrix is; the matrix sets those properties.",
         "Correct. The acid dissolved the mineral and left the flexible collagen.",
         "The periosteum is a thin outer membrane. Its loss would not make the whole bone rubbery."
@@ -149,9 +198,16 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Mia, 4, has had eleven broken bones. Her bones contain a normal amount of mineral, but a gene change makes her collagen faulty. Why do her bones break so easily?",
-    "options": ["Her bones cannot store calcium", "Her bone lacks the flexibility to bend under a load", "Her osteoclasts cannot resorb bone", "Her bones have too few lacunae"],
+    "options": [
+      "Her bones cannot store calcium",
+      "Her bone lacks the flexibility to bend under a load",
+      "Her osteoclasts cannot resorb bone",
+      "Her bones have too few lacunae"
+    ],
     "correct": 1,
     "why": {
       "correct": "Collagen resists pulling and gives bone slight flexibility. Mineral without good collagen is like chalk: hard but brittle, so it snaps instead of bending. This inherited condition is called brittle bone disease.",
@@ -168,9 +224,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which bone cell is the only one that divides?",
-    "options": ["Osteoblast", "Osteocyte", "Osteoclast", "Osteogenic cell"],
+    "options": [
+      "Osteoblast",
+      "Mature osteocyte",
+      "Osteoclast",
+      "Osteogenic cell"
+    ],
     "correct": 3,
     "why": {
       "correct": "Osteogenic cells are the stem cells of bone. They divide, and their daughters differentiate into osteoblasts.",
@@ -187,10 +250,17 @@
     "type": "single",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "misconception": "osteoclasts develop from osteoblasts",
     "q": "Where do osteoclasts come from?",
-    "options": ["Osteoblasts that change their job", "Fused precursor cells of the macrophage line", "Osteocytes released from their lacunae", "Osteogenic cells of the periosteum"],
+    "options": [
+      "Osteoblasts that change their job",
+      "Fused precursor cells of the macrophage line",
+      "Osteocytes released from their lacunae",
+      "Osteogenic cells of the periosteum"
+    ],
     "correct": 1,
     "why": {
       "correct": "Osteoclasts form when several precursor cells from the blood-forming line in red marrow, the line that also makes macrophages, fuse. That is why they have several nuclei. They are not part of the osteogenic cell to osteoblast to osteocyte line.",
@@ -207,9 +277,17 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Put the steps in order to show how a new osteocyte comes to be.",
-    "options": ["An osteogenic cell in the periosteum divides", "A daughter cell differentiates into an osteoblast", "The osteoblast secretes osteoid around itself", "Calcium phosphate crystals deposit in the osteoid", "The cell is walled into a lacuna and becomes an osteocyte, keeping contact through canaliculi"],
+    "options": [
+      "An osteogenic cell in the periosteum divides",
+      "A daughter cell differentiates into an osteoblast",
+      "The osteoblast secretes osteoid around itself",
+      "Calcium phosphate crystals deposit in the osteoid",
+      "The cell is walled into a lacuna and becomes an osteocyte, keeping contact through canaliculi"
+    ],
     "why": {
       "correct": "Osteogenic cells divide and their daughters become osteoblasts. An osteoblast secretes osteoid, which then mineralizes. As matrix builds up around it, the cell ends up enclosed in a lacuna. It is now an osteocyte, still linked to its neighbors by arms running through canaliculi."
     }
@@ -219,14 +297,21 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In an experiment, the canaliculi around a group of osteocytes in compact bone are blocked. What happens to those osteocytes?",
-    "options": ["Nothing, since nutrients diffuse through the mineral", "They divide to make new canaliculi", "They turn into osteoclasts", "They die, cut off from oxygen and nutrients"],
+    "options": [
+      "They carry on normally",
+      "They divide to make new canaliculi",
+      "They turn into osteoclasts",
+      "They die, cut off from oxygen and nutrients"
+    ],
     "correct": 3,
     "why": {
       "correct": "Mineralized matrix is almost impermeable. Osteocytes get oxygen and nutrients only from vessels in the central canal, passed along through canaliculi. Block the canaliculi and the cells starve.",
       "options": [
-        "Nutrients cannot diffuse through mineralized matrix; that is why canaliculi exist.",
+        "They cannot carry on normally: nutrients cannot diffuse through mineralized matrix, which is why canaliculi exist.",
         "Osteocytes do not divide.",
         "Osteocytes do not become osteoclasts; the two come from different cell lines.",
         "Correct. The canaliculi are their only supply line."
@@ -238,10 +323,24 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every feature of spongy bone.",
-    "options": ["Built of trabeculae", "Organized into osteons with central canals", "Spaces that can hold red marrow", "Fills the ends of long bones", "Makes up about 80% of the skeleton's mass", "Osteocytes in lacunae"],
-    "correct": [0, 2, 3, 5],
+    "options": [
+      "Built of trabeculae",
+      "Organized into osteons with central canals",
+      "Spaces that can hold red marrow",
+      "Fills the ends of long bones",
+      "Makes up about 80% of the skeleton's mass",
+      "Osteocytes in lacunae"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      5
+    ],
     "why": {
       "correct": "Spongy bone is a lattice of trabeculae with marrow in the spaces between them. It fills the ends of long bones and the inside of other bones, and its osteocytes sit in lacunae like those of compact bone.",
       "options": [
@@ -259,9 +358,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Complete the bone cell line: osteogenic cell → ____ → osteocyte.",
-    "options": ["Osteoclast", "Chondrocyte", "Osteoblast", "Fibroblast"],
+    "options": [
+      "Osteoclast",
+      "Chondrocyte",
+      "Osteoblast",
+      "Fibroblast"
+    ],
     "correct": 2,
     "why": {
       "correct": "Osteogenic cells become osteoblasts, and osteoblasts walled in by their own matrix become osteocytes.",
@@ -278,9 +384,17 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student describes how an osteoclast resorbs bone. One step is wrong. Which one?",
-    "options": ["The osteoclast seals its frilled membrane onto the bone surface", "It pumps hydrogen ions onto the bone", "The acid dissolves the calcium phosphate crystals", "Enzymes from its lysosomes digest the collagen", "The released calcium and phosphate are locked away inside the osteoclast"],
+    "options": [
+      "The osteoclast seals its frilled membrane onto the bone surface",
+      "It pumps hydrogen ions onto the bone",
+      "The acid dissolves the calcium phosphate crystals",
+      "Enzymes from its lysosomes digest the collagen",
+      "The released calcium and phosphate are locked away inside the osteoclast"
+    ],
     "correct": 4,
     "why": {
       "correct": "The calcium and phosphate freed from the matrix move into the blood. That is how bone works as a mineral bank: osteoclasts withdraw minerals from it.",
@@ -298,9 +412,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What is the diploë?",
-    "options": ["The spongy bone between the two plates of a flat skull bone", "The outer shell of compact bone on every bone", "The lining membrane of the medullary cavity", "The central canal of an osteon"],
+    "options": [
+      "The spongy bone between the two plates of a flat skull bone",
+      "The outer shell of compact bone that covers every bone of the skeleton",
+      "The lining membrane of the medullary cavity",
+      "The central canal of an osteon"
+    ],
     "correct": 0,
     "why": {
       "correct": "In the flat bones of the skull, a layer of spongy bone is sandwiched between two plates of compact bone. That spongy layer is the diploë.",
@@ -317,15 +438,22 @@
     "type": "single",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which channels run at right angles to the central canals and connect neighboring osteons with each other and with the periosteum?",
-    "options": ["Canaliculi", "Lacunae", "Perforating canals", "Trabeculae"],
+    "options": [
+      "Canaliculi",
+      "Central (Haversian) canals",
+      "Perforating canals",
+      "Trabeculae"
+    ],
     "correct": 2,
     "why": {
       "correct": "Perforating canals run across compact bone, crosswise to the osteons. They carry vessels between central canals and out to the periosteum and marrow.",
       "options": [
         "Canaliculi are tiny channels that link lacunae to each other and to the central canal within one osteon. They are too small to carry blood vessels.",
-        "Lacunae are the cavities that hold osteocytes, not channels.",
+        "Central canals run along the length of each osteon. The channels asked about run across the bone, joining those central canals.",
         "Correct. Perforating canals connect the central canals crosswise.",
         "Trabeculae are the struts of spongy bone, not channels in compact bone."
       ]
@@ -336,9 +464,16 @@
     "type": "single",
     "level": "apply",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In one lamella of an osteon, the collagen fibers spiral one way; in the next lamella, they spiral the opposite way. What does this arrangement help the osteon resist?",
-    "options": ["Being dissolved by acid", "Twisting forces", "Blood vessel growth", "Mineral deposition"],
+    "options": [
+      "Being dissolved by acid",
+      "Twisting forces",
+      "Blood vessel growth",
+      "Mineral deposition"
+    ],
     "correct": 1,
     "why": {
       "correct": "Like the crossed layers of plywood, fibers that spiral in opposite directions in neighboring lamellae resist twisting from either direction.",
@@ -355,9 +490,16 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "When an adult's bone is being lost, the spongy bone of the vertebrae thins faster than the compact bone of the limb shafts. Which property of spongy bone best explains this?",
-    "options": ["It has no osteocytes", "It contains no collagen", "It has no blood supply", "Its large surface gives bone cells more room to work"],
+    "options": [
+      "It has no osteocytes",
+      "It contains no collagen",
+      "It has no blood supply",
+      "Its large surface gives bone cells more room to work"
+    ],
     "correct": 3,
     "why": {
       "correct": "Osteoblasts and osteoclasts work on bone surfaces. The thin trabeculae of spongy bone expose far more surface per gram than compact bone does, so a shift toward breakdown removes spongy bone faster.",

@@ -25,6 +25,18 @@ const OUT = join(ROOT, 'anatomy-physiology');
 const CHECK = process.argv.includes('--check');
 const C = loadCourse(ROOT);
 const { map } = C;
+// Only published chapters' definitions go out (glossary page, hovers, glossary.json):
+// a chapter still being written or audited keeps its glossary on the branch (decision 63).
+{
+  const pubPath = join(C.data, 'published.json');
+  if (existsSync(pubPath)) {
+    const pub = new Set(JSON.parse(readFileSync(pubPath, 'utf8')).chapters);
+    for (const c of map.concepts) {
+      const i = C.topicIndex.get(c.taughtIn);
+      if (C.glossary[c.id] && (i === undefined || !pub.has(map.topics[i].chapter))) delete C.glossary[c.id];
+    }
+  }
+}
 const INDEX = termIndex(C);
 const outputs = new Map(); // relative path -> content
 // Every table on a page sits in a scrolling wrapper, so a wide one scrolls

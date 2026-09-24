@@ -1,0 +1,548 @@
+[
+  {
+    "id": "anp-bone-calcium-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "What is the normal range for total blood calcium in an adult?",
+    "options": [
+      "About 18.5 to 20.5 mg/dL",
+      "About 8.5 to 10.5 mg/dL",
+      "About 70 to 99 mg/dL",
+      "About 135 to 145 mg/dL"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Total blood calcium is held between about 8.5 and 10.5 mg/dL (about 2.1 to 2.6 mmol/L), and each person's level stays within a much narrower band inside that range.",
+      "options": [
+        "That is about double the normal level; a calcium near 19 mg/dL would be a life-threatening hypercalcemia.",
+        "Correct. Normal total calcium is about 8.5 to 10.5 mg/dL.",
+        "Those numbers are the normal fasting range for glucose in the blood, not calcium.",
+        "Those numbers look like the normal range for blood sodium in mmol/L, not calcium."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Two days after neck surgery, a patient has tingling around her mouth and in her fingers. When a blood pressure cuff is inflated on her arm, her hand cramps into a claw. What is her blood calcium most likely to be?",
+    "options": [
+      "6.8 mg/dL",
+      "9.6 mg/dL",
+      "10.4 mg/dL",
+      "13.5 mg/dL"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Tingling and a hand spasm with the cuff are signs of overexcitable nerves and muscles, the hallmark of hypocalcemia. A calcium of 6.8 mg/dL is well below the normal 8.5 to 10.5 mg/dL.",
+      "options": [
+        "Correct. Low calcium makes nerves and muscles overexcitable.",
+        "9.6 mg/dL is in the middle of the normal range and would not cause tetany.",
+        "10.4 mg/dL is at the top of normal; it would not make nerves overexcitable.",
+        "13.5 mg/dL is hypercalcemia, which makes nerves and muscles less excitable: weakness, not spasm."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "gradients"
+    ],
+    "misconception": "low calcium weakens muscles because contraction needs calcium",
+    "q": "Why does a low blood calcium cause muscle spasms rather than weakness?",
+    "options": [
+      "Muscle cells store more calcium inside when blood calcium is low",
+      "Low calcium lowers the resting membrane potential to zero",
+      "Fewer calcium ions outside let voltage-gated sodium channels open more easily",
+      "Low calcium blocks the release of neurotransmitter"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Calcium ions on the outside of the membrane make voltage-gated sodium channels harder to open. With fewer of them, the channels open with little or no stimulus, so nerves and muscles fire spontaneously: tingling, cramps and tetany. Contraction itself still has enough calcium, mostly from stores inside muscle cells.",
+      "options": [
+        "Muscle cells do not respond to low blood calcium by storing more inside. The effect is on the membrane's sodium channels.",
+        "Low calcium does not wipe out the resting potential. It changes how easily the sodium channels open.",
+        "Correct. Less calcium outside, less brake on the sodium channels, more firing.",
+        "Very low calcium can reduce neurotransmitter release, which would weaken signals. The dominant effect, overexcitability, comes from the sodium channels."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-4",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Mr. Adeyemi, 70, has cancer that has spread to his bones. Tumor cells there are driving his osteoclasts. Which set of findings is most likely?",
+    "options": [
+      "Tingling fingers, muscle spasms and a calcium of 7.0 mg/dL",
+      "Weakness, confusion, thirst and a calcium of 13.8 mg/dL",
+      "No symptoms and a calcium of 9.5 mg/dL",
+      "Seizures, tetany and a calcium of 12.0 mg/dL"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Osteoclasts driven by the tumor release calcium from bone faster than the kidneys can excrete it, so he develops hypercalcemia. Extra calcium makes nerves and muscles less excitable (weakness, confusion) and stops the kidneys concentrating urine (thirst, large volumes of urine).",
+      "options": [
+        "Tingling, spasm and a low calcium describe hypocalcemia, the opposite of what extra bone resorption causes.",
+        "Correct. Hypercalcemia with its typical less-excitable picture.",
+        "Tumor-driven osteoclasts release calcium independently of the feedback loop, so a normal calcium is unlikely.",
+        "12.0 mg/dL is high, but seizures and tetany are signs of low calcium; a high calcium dampens excitability."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient's blood calcium falls below the normal range. Before it has been corrected, predict how each variable responds.",
+    "variables": [
+      {
+        "name": "Release of the calcium-raising hormone from the small glands behind the thyroid",
+        "answer": "up",
+        "why": "Fewer calcium ions bind the receptor protein on the gland cells, so they release more hormone within seconds."
+      },
+      {
+        "name": "Osteoclast activity",
+        "answer": "up",
+        "why": "The hormone acts on osteoblasts, which signal more osteoclasts to form and work harder, releasing calcium from bone."
+      },
+      {
+        "name": "Calcium lost in the urine",
+        "answer": "down",
+        "why": "The hormone makes the kidney tubules return more calcium from the forming urine to the blood."
+      },
+      {
+        "name": "Phosphate lost in the urine",
+        "answer": "up",
+        "why": "The hormone makes the kidneys keep less phosphate, so more is excreted and it does not bind the freed calcium."
+      },
+      {
+        "name": "Activation of vitamin D in the kidneys",
+        "answer": "up",
+        "why": "The hormone switches on the kidney step that finishes activating vitamin D."
+      },
+      {
+        "name": "Calcium absorbed from food by the intestine",
+        "answer": "up",
+        "why": "More activated vitamin D makes the intestinal lining absorb more calcium, over a day or more."
+      }
+    ],
+    "why": {
+      "correct": "Low calcium triggers the calcium-raising hormone, which acts on all three effectors: bone releases calcium, the kidneys keep calcium and lose phosphate, and the kidneys activate vitamin D so the intestine absorbs more. Calcium rises, and hormone release falls again: negative feedback."
+    }
+  },
+  {
+    "id": "anp-bone-calcium-6",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "An adult who stays indoors and eats almost no vitamin D becomes severely deficient over many months. Predict the change in each variable compared with before.",
+    "variables": [
+      {
+        "name": "Fraction of dietary calcium absorbed by the intestine",
+        "answer": "down",
+        "why": "Without vitamin D to activate, the intestinal lining makes too few calcium transport proteins, so it absorbs only a small fraction of the calcium eaten."
+      },
+      {
+        "name": "Release of the calcium-raising hormone",
+        "answer": "up",
+        "why": "Less calcium enters the blood, calcium dips, and the gland cells release more hormone to hold it up."
+      },
+      {
+        "name": "Osteoclast activity",
+        "answer": "up",
+        "why": "More calcium-raising hormone acts through osteoblasts to drive osteoclasts, withdrawing calcium from bone."
+      },
+      {
+        "name": "Phosphate lost in the urine",
+        "answer": "up",
+        "why": "The raised hormone makes the kidneys keep less phosphate."
+      },
+      {
+        "name": "Mineralization of newly laid osteoid",
+        "answer": "down",
+        "why": "Too little calcium and phosphate reach new osteoid, so it stays soft and unmineralized."
+      }
+    ],
+    "why": {
+      "correct": "Vitamin D deficiency cuts calcium absorption. The loop defends blood calcium by raising the calcium-raising hormone, which takes calcium from bone and dumps phosphate in the urine. Blood calcium may stay near normal, but bone pays: resorption rises and new matrix cannot mineralize, which in children causes rickets."
+    }
+  },
+  {
+    "id": "anp-bone-calcium-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Put the steps of the calcium loop in order, starting when blood calcium falls.",
+    "options": [
+      "Fewer calcium ions bind the receptor protein on the small glands' cells",
+      "The cells release more calcium-raising hormone",
+      "Bone releases calcium, the kidneys keep calcium, and vitamin D is activated",
+      "The intestine absorbs more calcium from food",
+      "Blood calcium rises back toward its set point",
+      "Hormone release falls"
+    ],
+    "why": {
+      "correct": "The gland cells are both sensor and control center: less calcium bound means more hormone. The hormone acts on bone and the kidneys quickly and, through activated vitamin D, on the intestine more slowly. As calcium rises, more binds the gland cells and hormone release falls, closing the negative feedback loop."
+    }
+  },
+  {
+    "id": "anp-bone-calcium-8",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student describes the response to a low blood calcium. One step is wrong. Which one?",
+    "options": [
+      "The gland cells behind the thyroid release more calcium-raising hormone",
+      "Osteoclasts resorb more bone",
+      "The kidneys excrete more calcium in the urine",
+      "The kidneys activate more vitamin D",
+      "The intestine absorbs more calcium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "When calcium is low, the calcium-raising hormone makes the kidney tubules return more calcium to the blood, so less, not more, is lost in the urine. It is phosphate that the kidneys excrete more of.",
+      "options": [
+        "This step is right. Low calcium increases the hormone's release.",
+        "This step is right. Bone resorption releases calcium into the blood.",
+        "This is the error. The kidneys keep more calcium when it is low; they excrete more phosphate.",
+        "This step is right. The hormone switches on the kidney step that activates vitamin D.",
+        "This step is right. Activated vitamin D increases calcium absorption."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Complete the chain: the kidneys activate more vitamin D → ____ → blood calcium rises over the next days.",
+    "options": [
+      "Osteoblasts lay down more osteoid on bone surfaces",
+      "The intestine absorbs more calcium from food",
+      "The kidneys excrete more calcium",
+      "The gland cells release less hormone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Activated vitamin D acts on the intestinal lining, which makes more calcium transport proteins and absorbs more of the calcium in food. Because it works through new proteins, this takes a day or more.",
+      "options": [
+        "Laying down osteoid would take calcium out of the blood as it mineralizes, not raise blood calcium.",
+        "Correct. The intestine is vitamin D's main target in the loop.",
+        "Excreting more calcium would lower blood calcium.",
+        "Less hormone is the result once calcium has risen, not the step that raises it."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "An adult eats 800 mg of calcium a day and absorbs 25% of it. Her intestine releases 100 mg back into the gut, and her kidneys excrete 150 mg in the urine. How much calcium does her skeleton lose each day?",
+    "options": [
+      "0 mg",
+      "50 mg",
+      "100 mg",
+      "200 mg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Absorbed: 25% of 800 = 200 mg. Net from the gut: 200 − 100 = 100 mg. Out in urine: 150 mg. Output exceeds net input by 150 − 100 = 50 mg a day, and bone supplies that difference to keep the blood level steady.",
+      "options": [
+        "She would be in balance only if net absorption equaled urine loss; here it is 100 mg against 150 mg.",
+        "Correct. 150 mg lost in urine minus 100 mg net absorbed leaves a 50 mg daily shortfall that bone covers.",
+        "100 mg is her net absorption from the gut, not the shortfall.",
+        "200 mg is the amount absorbed before the 100 mg released back into the gut is subtracted."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "For years, a 45-year-old has eaten far less calcium than she needs. Her blood calcium is normal on every test. What does the normal result tell you?",
+    "options": [
+      "Her diet has been adequate after all",
+      "The feedback loop has kept blood calcium steady by drawing on her bones",
+      "Her kidneys have been making calcium",
+      "Her blood calcium test must be wrong"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The loop protects blood calcium first. When intake falls short, the calcium-raising hormone increases bone resorption and kidney calcium saving, so the blood level stays normal. By mass balance, the shortfall comes out of the skeleton, which slowly thins.",
+      "options": [
+        "A normal blood level says the loop is working, not that intake is enough. The shortfall is being covered by bone.",
+        "Correct. Normal blood calcium, thinning bone.",
+        "The kidneys can keep calcium from being lost, but no organ can make calcium; it can only be absorbed from food.",
+        "A normal result is exactly what the loop is expected to produce, even with a poor intake."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-12",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Select every process that depends directly on calcium ions.",
+    "options": [
+      "Triggering muscle contraction",
+      "Release of neurotransmitter at a synapse",
+      "Several steps of blood clotting",
+      "Carrying oxygen in the blood",
+      "Mineralizing new osteoid",
+      "Setting how easily voltage-gated sodium channels open"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4,
+      5
+    ],
+    "why": {
+      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis, is needed in clotting, forms bone mineral with phosphate, and, from outside the cell, sets how easily sodium channels open.",
+      "options": [
+        "Correct. A rise in calcium inside muscle cells starts contraction.",
+        "Correct. Calcium entry into the nerve ending triggers neurotransmitter exocytosis.",
+        "Correct. Several clotting steps need calcium ions.",
+        "Oxygen is carried by an iron-containing protein in red blood cells, not by calcium.",
+        "Correct. Bone mineral is calcium phosphate.",
+        "Correct. Extracellular calcium acts as a brake on voltage-gated sodium channels."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which form of plasma calcium do cells sense and respond to, and the feedback loop control?",
+    "options": [
+      "Calcium bound to proteins in the plasma",
+      "Free calcium ions",
+      "Calcium bound to phosphate and citrate",
+      "Calcium stored in red blood cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "About half of plasma calcium is free Ca2+. That is the active form: it binds the gland cells' receptor protein, sets nerve and muscle excitability and takes part in clotting.",
+      "options": [
+        "Protein-bound calcium, about 40%, is a reserve that trades with the free pool; it does not act directly.",
+        "Correct. Free ions are the regulated, active form.",
+        "Calcium bound to small ions is about 10% of the total and is not the form cells sense.",
+        "Red blood cells do not store calcium for the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A man's kidneys no longer work well, and they cannot complete the activation of vitamin D. What happens to his calcium absorption from food?",
+    "options": [
+      "It falls",
+      "It rises",
+      "It stays the same"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The intestine absorbs calcium well only under the influence of activated vitamin D, and the last activation step happens in the kidneys. Failing kidneys cannot finish it, so absorption falls however much sun or vitamin D he gets.",
+      "options": [
+        "Correct. No final kidney step, little activated vitamin D, poor absorption.",
+        "Nothing here raises absorption: failing kidneys make less activated vitamin D, and activated vitamin D is what drives the intestine to absorb calcium.",
+        "The skin makes vitamin D, but it stays inactive until the kidneys complete its activation, so absorption cannot hold steady."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "When calcium is low, the calcium-raising hormone makes the kidneys excrete more phosphate. How does that help raise free calcium?",
+    "options": [
+      "Phosphate in the urine pulls calcium out of the kidneys",
+      "Less phosphate in the blood leaves more calcium free instead of bound",
+      "Phosphate loss makes osteoblasts build more bone",
+      "Phosphate blocks the gland cells' receptor protein"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bone resorption releases calcium and phosphate together, and phosphate binds calcium. Excreting the extra phosphate keeps it from binding the freed calcium, so the free calcium level can rise.",
+      "options": [
+        "Phosphate in the urine does not pull calcium from the kidneys; the hormone is making the kidneys keep calcium at the same time.",
+        "Correct. Removing phosphate stops it from binding the calcium that bone releases.",
+        "Building more bone would take calcium out of the blood, the opposite of what the loop needs.",
+        "The gland cells' receptor protein binds calcium; phosphate excretion acts on the blood, not on that receptor protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which effector of the calcium loop is slowest to respond?",
+    "options": [
+      "Bone tissue",
+      "The kidney tubules",
+      "The intestine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Activated vitamin D acts inside the intestinal cells to switch on the making of calcium channels, carriers and pumps. Making new proteins takes a day or more, so the intestine handles long-term balance while bone and the kidneys handle quick changes.",
+      "options": [
+        "Existing osteoclasts respond to the calcium-raising hormone within hours, so bone is one of the fast effectors.",
+        "The kidneys filter the blood continuously, and their calcium handling changes within minutes to hours.",
+        "Correct. Activated vitamin D works by making new transport proteins, which takes a day or more."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A woman has her entire thyroid gland removed, but the four small glands behind it are left intact. She takes daily tablets to replace the thyroid's other hormones. Years later her blood calcium is still normal. What does this suggest about the thyroid's own calcium-lowering hormone?",
+    "options": [
+      "It is the main regulator of blood calcium in adults",
+      "It has been replaced by the tablets",
+      "It plays only a minor role in adult calcium control",
+      "It is made by the small glands instead"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With no thyroid, she has none of its calcium-lowering hormone, yet her calcium is normal. The calcium-raising hormone from the small glands, with activated vitamin D, does the everyday regulation; when calcium rises, its release simply falls. Many exams still present the thyroid's calcium-lowering hormone as an equal partner, but its adult role is minor.",
+      "options": [
+        "If it were the main regulator, losing it would disturb her calcium. It did not.",
+        "Her tablets replace the thyroid's other hormones, which set how fast cells use fuel, not the calcium-lowering hormone.",
+        "Correct. Normal calcium without it shows its adult role is small.",
+        "The small glands make the calcium-raising hormone, not the thyroid's calcium-lowering one."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-18",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A 16-year-old athlete wants to build as much bone as she can. Select every choice that supports that goal.",
+    "options": [
+      "About 1,300 mg of calcium a day from food",
+      "Enough vitamin D from sunlight, food or a supplement",
+      "Enough protein in her diet",
+      "Swimming as her only exercise",
+      "Regular running and jumping sports",
+      "Replacing milk with sugary soft drinks"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Teenagers need about 1,300 mg of calcium a day, vitamin D to absorb it, protein for the collagen matrix, and load on the bones: through Wolff's law, weight-bearing and impact exercise signals osteocytes to add bone. Peak bone mass built now protects her decades later.",
+      "options": [
+        "Correct. 1,300 mg a day is the teen target.",
+        "Correct. Without vitamin D she absorbs little of what she eats.",
+        "Correct. Collagen is protein, and most of the organic matrix is collagen.",
+        "Swimming is excellent exercise, but the water carries her weight, so it loads bone far less than running or jumping.",
+        "Correct. Impact loading drives bone formation.",
+        "Soft drinks replacing milk remove a major calcium source and add none."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-calcium-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "In the blood calcium loop, what acts as both the sensory receptor and the control center?",
+    "options": [
+      "Osteocytes that sense load in the bone matrix",
+      "The kidney tubules",
+      "Cells of small glands behind the thyroid",
+      "The intestinal lining"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The cells of the four small glands behind the thyroid carry a receptor protein that binds calcium, and they set their own hormone release in response. They sense and decide in the same cells.",
+      "options": [
+        "Osteocytes sense mechanical load on bone, not the calcium level of the blood for this loop.",
+        "The kidney tubules are effectors: they change how much calcium is kept.",
+        "Correct. The gland cells are sensor and control center together.",
+        "The intestinal lining is an effector, acting on activated vitamin D's signal."
+      ]
+    }
+  }
+]

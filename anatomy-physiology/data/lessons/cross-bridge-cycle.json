@@ -1,0 +1,49 @@
+{
+  "topic": "cross-bridge-cycle",
+  "hook": "<p>Paramedics reach a man found alone at home. His jaw is clamped shut and his arms will not bend at the elbow, however gently they try. They record it as an obvious sign of death: rigor mortis. The same molecule that lets his muscles contract in life, ATP, is now missing, and without it every myosin head in his body has locked onto actin and cannot let go.</p>",
+  "prereq": [
+    {
+      "q": "When calcium binds troponin, what happens next?",
+      "options": ["Tropomyosin moves off the myosin-binding sites on actin", "Myosin releases its ATP", "The sarcoplasmic reticulum closes its release channels"],
+      "correct": 0,
+      "why": "Calcium binding changes troponin's shape, which lets tropomyosin roll off the myosin-binding sites on actin so myosin heads can bind.",
+      "review": "excitation-contraction"
+    },
+    {
+      "q": "Which band of the sarcomere is the length of the thick filaments?",
+      "options": ["The I band", "The H zone", "The A band"],
+      "correct": 2,
+      "why": "The A band spans the full length of the thick filaments. The I band has thin filaments only, and the H zone is the middle of the A band where only thick filaments are.",
+      "review": "skeletal-muscle-structure"
+    },
+    {
+      "q": "What happens when ATP is hydrolyzed?",
+      "options": ["It gains a phosphate and stores energy", "It splits into ADP and a phosphate and releases energy", "It becomes glucose"],
+      "correct": 1,
+      "why": "Hydrolysis breaks off the last phosphate group, giving ADP plus inorganic phosphate and releasing energy the cell can use.",
+      "review": "enzymes-energy"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-10",
+    "caption": "One sarcomere, relaxed and contracted. Hide the labels and name the bands, then say which ones narrow and which stays the same width."
+  },
+  "chain": [
+    { "cause": "Calcium on troponin uncovers the binding sites on actin.", "effect": "A cocked myosin head, holding ADP and phosphate, binds actin and forms a cross-bridge." },
+    { "cause": "Binding actin makes the head release its phosphate.", "effect": "The head pivots toward the M line in the power stroke, pulling the thin filament along, and then releases ADP." },
+    { "cause": "A new ATP binds the myosin head.", "effect": "The head lets go of actin." },
+    { "cause": "The head splits that ATP into ADP and phosphate.", "effect": "The released energy recocks the head, ready to bind farther along, and the cycle repeats while calcium and ATP last." },
+    { "cause": "Many heads cycle over and over, each pulling thin filaments toward the M line.", "effect": "The thin filaments slide past the thick ones, the Z discs move closer, and the sarcomere shortens with no filament changing length." }
+  ],
+  "misconception": {
+    "wrong": "When a muscle contracts, its thick and thin filaments get shorter.",
+    "right": "Neither filament changes length. The thin filaments slide past the thick ones toward the center of the sarcomere, so the filaments overlap more. That is why the A band, which is the length of the thick filaments, keeps the same width during contraction, while the I bands and the H zone, the gaps between filaments of the other kind, narrow."
+  },
+  "check": ["anp-cross-bridge-cycle-1", "anp-cross-bridge-cycle-3", "anp-cross-bridge-cycle-5", "anp-cross-bridge-cycle-7", "anp-cross-bridge-cycle-9", "anp-cross-bridge-cycle-12", "anp-cross-bridge-cycle-14", "anp-cross-bridge-cycle-16"],
+  "summary": "<p>In the sliding filament model, thin filaments slide past thick filaments toward the M line; no filament shortens. The Z discs move closer, the I bands and H zone narrow, and the A band keeps its width. A myosin head bound to actin is a cross-bridge. In the cross-bridge cycle, a cocked head holding ADP and phosphate binds an uncovered site on actin; releasing phosphate drives the power stroke, which pulls the thin filament a few nanometers toward the M line, and ADP leaves. A new ATP binding the head makes it let go, and splitting that ATP recocks the head. The cycle repeats while calcium stays on troponin and ATP is available. After death, ATP runs out, calcium leaks into the sarcoplasm, heads bind actin and cannot detach, and the muscles lock stiff: rigor mortis, which starts within hours and passes off over one to three days as proteins break down.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-21", "label": "NREMT: Resuscitation (rigor mortis as an obvious sign of death)" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology (the musculoskeletal system)" },
+    { "href": "/ochem/lessons/peptides-proteins.html", "label": "Organic chemistry: peptides and proteins" }
+  ]
+}

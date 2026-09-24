@@ -1,0 +1,678 @@
+[
+  {
+    "id": "anp-skin-functions-1",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student jogs for 40 minutes on a hot, dry afternoon. Predict the change in each variable during the jog, compared with resting indoors.",
+    "variables": [
+      {
+        "name": "Heat produced by her muscles",
+        "answer": "up",
+        "why": "Working skeletal muscle breaks down far more fuel, and most of that energy is released as heat."
+      },
+      {
+        "name": "Dermal blood flow",
+        "answer": "up",
+        "why": "Warm-sensitive endings signal the brain's temperature control center, which sends signals that widen the vessels of the dermis."
+      },
+      {
+        "name": "Skin surface temperature",
+        "answer": "up",
+        "why": "More warm blood flowing through the dermis carries heat to the skin surface."
+      },
+      {
+        "name": "Eccrine sweat output",
+        "answer": "up",
+        "why": "The control center signals the eccrine sweat glands to secrete."
+      },
+      {
+        "name": "Heat lost by evaporation",
+        "answer": "up",
+        "why": "More sweat is on the skin, and dry air lets it evaporate quickly, each liter removing about 580 kcal."
+      }
+    ],
+    "why": {
+      "correct": "Exercise raises heat production. The temperature loop responds with vasodilation in the dermis, which warms the skin surface, and with eccrine sweating. In dry air the sweat evaporates, so heat loss by evaporation rises and body temperature is held near its set point."
+    }
+  },
+  {
+    "id": "anp-skin-functions-2",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A lightly dressed man waits 20 minutes at a bus stop in freezing wind. Predict the change in each variable, compared with sitting in a warm room.",
+    "variables": [
+      {
+        "name": "Dermal blood flow",
+        "answer": "down",
+        "why": "Cold-sensitive endings signal the brain's temperature control center, which narrows the vessels of the dermis."
+      },
+      {
+        "name": "Skin surface temperature",
+        "answer": "down",
+        "why": "Less warm blood reaches the skin, and wind carries heat from the surface, so the skin cools."
+      },
+      {
+        "name": "Temperature gradient from skin to air",
+        "answer": "down",
+        "why": "The skin cools toward the air temperature, so the difference between them shrinks, which slows heat loss."
+      },
+      {
+        "name": "Heat production by skeletal muscle",
+        "answer": "up",
+        "why": "Shivering: rapid involuntary contractions of skeletal muscle release nearly all their energy as heat."
+      },
+      {
+        "name": "Eccrine sweat output",
+        "answer": "down",
+        "why": "With the body cooling, the control center stops the signals that make eccrine glands secrete."
+      }
+    ],
+    "why": {
+      "correct": "Cold triggers the \"too cold\" half of the loop. Vasoconstriction lowers dermal blood flow, so the skin cools and the gradient that drives heat loss shrinks. Shivering raises heat production, and sweating stops."
+    }
+  },
+  {
+    "id": "anp-skin-functions-3",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A worker does the same hard job on two days with the same air temperature of 36 °C. On the second day the air is very humid. Predict the change in each variable on the humid day, compared with the dry day.",
+    "variables": [
+      {
+        "name": "Rate at which sweat evaporates",
+        "answer": "down",
+        "why": "Humid air already holds a lot of water vapor, so water on the skin turns to vapor more slowly."
+      },
+      {
+        "name": "Sweat dripping off unevaporated",
+        "answer": "up",
+        "why": "Sweat that cannot evaporate builds up on the skin and runs off."
+      },
+      {
+        "name": "Heat lost by evaporation",
+        "answer": "down",
+        "why": "Only sweat that evaporates removes heat; dripping sweat removes almost none."
+      },
+      {
+        "name": "Internal body temperature",
+        "answer": "up",
+        "why": "At 36 °C the air is hotter than the skin, so evaporation is the only route of heat loss; with it reduced, heat builds up."
+      }
+    ],
+    "why": {
+      "correct": "When the air is hotter than the skin, radiation and convection add heat, and evaporation is the only way to lose it. Humidity slows evaporation, so more sweat drips off uselessly, less heat is lost, and body temperature climbs even though the worker is sweating hard."
+    }
+  },
+  {
+    "id": "anp-skin-functions-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "The air around a resting person is 40 °C, hotter than her skin. By which route can she still lose heat?",
+    "options": [
+      "Radiation",
+      "Conduction to the air",
+      "Convection",
+      "Evaporation"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heat moves from warmer to cooler. When the surroundings are hotter than the skin, radiation, conduction and convection all carry heat into the body. Evaporation only ever removes heat, so it is the one route left.",
+      "options": [
+        "With surroundings hotter than her skin, radiation carries heat toward her, not away.",
+        "Air hotter than her skin conducts heat into her.",
+        "Moving air hotter than her skin adds heat as it flows past.",
+        "Correct. Evaporation removes heat whatever the air temperature, as long as the air is not saturated."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "During a tennis match, 0.8 L of sweat evaporates from a player's skin. About how much heat does this remove? (Each liter evaporated removes about 580 kcal.)",
+    "options": [
+      "About 725 kcal",
+      "About 464 kcal",
+      "About 580 kcal",
+      "About 46 kcal"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Heat removed = volume evaporated × 580 kcal/L = 0.8 × 580 = 464 kcal.",
+      "options": [
+        "725 comes from dividing 580 by 0.8. Multiply the volume by the heat per liter instead.",
+        "Correct. 0.8 L × 580 kcal/L = 464 kcal.",
+        "580 kcal is the heat for a full liter; only 0.8 L evaporated.",
+        "46 kcal is ten times too small: 0.8 × 580 is 464, not 46.4."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A roofer makes 696 kcal of heat per hour on a day when the air is hotter than his skin. How much sweat must evaporate each hour just to remove that heat? (Each liter evaporated removes about 580 kcal.)",
+    "options": [
+      "About 0.8 L",
+      "About 1.2 L",
+      "About 4.0 L",
+      "About 1.0 L"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Evaporation is the only route when the air is hotter than the skin. Volume = heat ÷ 580 kcal/L = 696 ÷ 580 = 1.2 L per hour, and more if some drips off.",
+      "options": [
+        "0.8 comes from dividing 580 by 696, the wrong way round.",
+        "Correct. 696 ÷ 580 = 1.2 L.",
+        "4.0 L would remove about 2,300 kcal, more than three times the heat he makes.",
+        "1.0 L removes only 580 kcal, less than the 696 kcal he makes."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A football player on a humid day is drenched in sweat that pours off his arms. His coach says he is \"sweating buckets, so he must be cooling well\". Why is the coach wrong?",
+    "options": [
+      "Only sweat that evaporates removes much heat",
+      "A film of sweat traps heat against the skin like a blanket",
+      "Heavy sweating stops dermal blood flow",
+      "Sweat glands produce heat as they work"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cooling comes from water turning into vapor, which takes energy from the skin. In humid air sweat evaporates slowly, so much of it drips off still liquid and carries away almost no heat. Lots of visible sweat can mean poor cooling.",
+      "options": [
+        "Correct. Evaporation, not the amount of sweat, sets the cooling.",
+        "A film of water does not trap heat; the problem is that it is not evaporating.",
+        "Sweating and wide dermal vessels go together in heat; sweating does not stop blood flow.",
+        "The heat the glands produce is tiny compared with the heat evaporation could remove."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-8",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Put the steps of vitamin D production and activation in order, starting in the skin.",
+    "options": [
+      "UVB light strikes 7-dehydrocholesterol in keratinocytes",
+      "Previtamin D3 forms",
+      "Body warmth converts it to vitamin D3 (cholecalciferol)",
+      "The liver adds a hydroxyl group, making 25-hydroxyvitamin D",
+      "The kidneys add a second hydroxyl group, making the active hormone",
+      "The intestine absorbs more calcium and phosphate"
+    ],
+    "why": {
+      "correct": "UVB opens a ring of 7-dehydrocholesterol, making previtamin D3, which body warmth turns into vitamin D3. The liver then makes 25-hydroxyvitamin D, the main form in the blood, and the kidneys make the active hormone, which raises calcium and phosphate absorption in the intestine."
+    }
+  },
+  {
+    "id": "anp-skin-functions-9",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Fill the gap in the activation of vitamin D: vitamin D3 from the skin → ____ adds a hydroxyl group → kidneys add a second hydroxyl group → active hormone.",
+    "options": [
+      "The liver",
+      "The pancreas",
+      "The stratum corneum",
+      "The intestine"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The liver adds the first hydroxyl group, making 25-hydroxyvitamin D, the main circulating form. The kidneys then add the second.",
+      "options": [
+        "Correct. The liver makes 25-hydroxyvitamin D.",
+        "The pancreas makes digestive enzymes and blood-sugar hormones; it plays no part in activating vitamin D.",
+        "The stratum corneum is dead cells; vitamin D is made in the living keratinocytes below it, and it is activated elsewhere.",
+        "The intestine is where the active hormone acts, absorbing calcium; it is not an activating step."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "A 2-year-old with dark skin lives in a northern city, is breastfed without supplements, and rarely goes outside in winter. His legs have become bowed. Which chain best explains his condition?",
+    "options": [
+      "Too much melanin → melanocytes damage the bones → legs bend",
+      "Little UVB reaching his keratinocytes → little vitamin D → too little active hormone → poor calcium absorption → soft bones bend",
+      "Too little sunlight → too little warmth reaching his legs → the growing leg bones lengthen unevenly → legs bend",
+      "Breast milk has too much calcium → bones harden unevenly → legs bend"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "He has rickets. Winter sun at high latitude gives little UVB, dark skin absorbs more of it, and he stays indoors, so his skin makes little vitamin D; breast milk alone supplies little. Too little vitamin D means too little active hormone, so his intestine absorbs little calcium and phosphate. New bone stays soft, and his legs bow under his weight.",
+      "options": [
+        "Melanin does not harm bone. It lowers vitamin D synthesis by absorbing UVB, which is only one link in the real chain.",
+        "Correct. This is the chain that leads to rickets.",
+        "Bone hardening depends on calcium absorption, not on warmth from sunlight.",
+        "The problem is too little calcium reaching the bone, not too much."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "A patient with long-standing, severe kidney failure spends plenty of time outdoors and eats a varied diet. Her 25-hydroxyvitamin D level is normal, but she absorbs calcium poorly. Which step has failed?",
+    "options": [
+      "UVB conversion of 7-dehydrocholesterol in the skin",
+      "Conversion of previtamin D3 to vitamin D3",
+      "The liver's addition of the first hydroxyl group",
+      "The kidneys' addition of the second hydroxyl group"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A normal 25-hydroxyvitamin D level shows the skin and liver steps are working. The final step, adding the second hydroxyl group to make the active hormone, happens in the kidneys, so failing kidneys make too little of it and calcium absorption falls. She needs the active hormone itself as a drug.",
+      "options": [
+        "If the skin step had failed, and she ate little vitamin D, her 25-hydroxyvitamin D would be low, not normal.",
+        "This conversion also happens in the skin, before the liver step; a normal 25-hydroxyvitamin D level shows it is working.",
+        "The liver's product is 25-hydroxyvitamin D, and its level is normal.",
+        "Correct. The kidneys make the active hormone, and hers are failing."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Why can't long hours in the sun give you too much vitamin D?",
+    "options": [
+      "Melanin production stops all UVB after the first hour",
+      "The liver destroys vitamin D once blood levels are high",
+      "Extra UV converts previtamin D3 and vitamin D3 into inactive products",
+      "Keratinocytes run out of cholesterol"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Once enough previtamin D3 has built up, further UV light converts it and vitamin D3 into inactive molecules instead of more vitamin D3, so synthesis levels off. Too much vitamin D comes only from supplements.",
+      "options": [
+        "A tan takes days to develop and only partly blocks UVB; it is not what caps vitamin D synthesis.",
+        "The liver's step is not what limits the amount the skin makes.",
+        "Correct. Extra UV turns the precursors into inactive products.",
+        "Cells make cholesterol and 7-dehydrocholesterol continuously; supply is not what caps the amount."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A doctor holds a buzzing tuning fork against a patient's ankle bone to test deep vibration sense. Which sensory receptors in the skin mainly detect it?",
+    "options": [
+      "Lamellated (Pacinian) corpuscles",
+      "Free nerve endings",
+      "Tactile (Merkel) cells",
+      "Endings wrapped around hair follicles"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Lamellated corpuscles sit deep in the dermis and hypodermis. Their many layers pass on fast changes in pressure and filter out steady pressure, so they respond best to deep pressure and fast vibration.",
+      "options": [
+        "Correct. Deep, fast vibration is the lamellated corpuscle's specialty.",
+        "Free nerve endings mainly sense pain, temperature and itch.",
+        "Tactile cells sense steady light pressure and texture near the surface, not fast vibration.",
+        "Hair follicle endings sense a hair bending; the fork presses on skin and bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where are tactile (Meissner) corpuscles found?",
+    "options": [
+      "In the stratum corneum",
+      "In the hypodermis",
+      "In the dermal papillae, mainly of hairless skin",
+      "Wrapped around the base of each hair follicle in the dermis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Tactile corpuscles sit in the dermal papillae, just under the epidermis, and are most numerous in hairless skin such as the fingertips and lips. They respond to light touch and slow vibration.",
+      "options": [
+        "The stratum corneum is dead cells with no nerve endings.",
+        "The hypodermis holds the deep lamellated corpuscles, not the tactile corpuscles.",
+        "Correct. They sit in the dermal papillae.",
+        "Endings wrapped around follicles are the hair follicle endings, a different kind."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-15",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-2",
+    "pin": "pacinian-corpuscle",
+    "q": "Name the pinned structure deep in the dermis.",
+    "options": [
+      "Tactile corpuscle",
+      "Lamellated corpuscle",
+      "Coil of an eccrine sweat gland",
+      "Arrector pili muscle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The onion-like structure deep in the dermis is a lamellated (Pacinian) corpuscle: a nerve ending wrapped in many layers, which senses deep pressure and fast vibration.",
+      "options": [
+        "Tactile corpuscles are small and sit high in the dermal papillae, just under the epidermis.",
+        "Correct. The large, layered capsule deep in the dermis is a lamellated corpuscle.",
+        "The coil of an eccrine sweat gland is a tangle of tubing with a duct rising to a pore, not a layered capsule.",
+        "The arrector pili is a slanting strip of smooth muscle attached to a hair follicle."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-16",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features help the intact skin keep microbes out? Select all that apply.",
+    "options": [
+      "A surface pH of about 5",
+      "Constant shedding of surface cells",
+      "Dermal blood flow",
+      "Lipid sheets between the cells of the stratum corneum",
+      "Langerhans cells in the epidermis",
+      "Tactile cells"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "The acidic surface slows many microbes, shedding removes those stuck to surface cells, the lipid sheets seal the gaps between dead cells, and Langerhans cells take up microbes that get into the epidermis. Dermal blood flow and tactile cells serve heat exchange and touch.",
+      "options": [
+        "Yes. Many harmful microbes grow poorly at the skin's acidic pH.",
+        "Yes. Microbes stuck to surface cells are shed with them.",
+        "No. Dermal blood flow mainly sets heat loss; it lies below the epidermis and does not keep microbes out of it.",
+        "Yes. The lipid sheets close the gaps between dead cells.",
+        "Yes. They take up microbes that get past the surface.",
+        "No. Tactile cells signal light touch."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A skin patch delivers a drug steadily through intact skin. Another drug, which dissolves only in water, barely gets through the same skin. What explains the difference?",
+    "options": [
+      "The patch drug is carried by sweat into the dermis",
+      "Water-soluble drugs are destroyed by the acidic pH",
+      "The patch drug is lipid soluble and dissolves through the lipid sheets",
+      "Only the patch drug is small enough to cross"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The barrier of the stratum corneum is made of lipid sheets between dead cells. Lipid-soluble (hydrophobic) molecules dissolve into that lipid and slowly pass through; water-soluble molecules cannot cross it easily. Skin-patch drugs are chosen to be lipid soluble.",
+      "options": [
+        "Sweat flows outward, from the glands to the surface, so it cannot carry drugs inward.",
+        "The skin's pH of about 5 is only mildly acidic and does not destroy most drugs.",
+        "Correct. Lipid solubility lets a drug cross the lipid barrier.",
+        "Size matters less than whether the molecule can dissolve in the lipid sheets that fill the spaces between the cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Two hikers are caught in the same 10 °C wind. One stays dry; the other is soaked by a stream crossing. Why does the soaked hiker lose heat much faster?",
+    "options": [
+      "Wet skin gives off more infrared radiation than dry skin in the wind",
+      "Water conducts heat far better than air and also evaporates",
+      "Wet skin makes his muscles shiver less",
+      "Water on the skin widens the dermal vessels"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Water conducts heat about 25 times faster than air, so wet clothes draw heat from the skin quickly, and the wind blows over them and evaporates the water, which removes more heat. Conduction, convection and evaporation all rise together.",
+      "options": [
+        "Radiation depends on the temperature difference between skin and surroundings, which is the same for both hikers.",
+        "Correct. Conduction through water plus evaporation drain heat fast.",
+        "Cold wet skin makes shivering stronger, not weaker.",
+        "Cold water on the skin narrows the dermal vessels; the heat loss comes from the water itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described the response to cold. One step is wrong. Which one?",
+    "options": [
+      "Cold air cools the skin",
+      "Cold-sensitive nerve endings signal the brain",
+      "The brain's temperature control center compares the input with the set point",
+      "The vessels of the dermis widen, bringing warm blood to the surface",
+      "Skeletal muscles begin to shiver"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In cold, the dermal vessels narrow (vasoconstriction). That keeps warm blood deeper in the body, cools the skin surface and shrinks the gradient that drives heat loss. Widening them would lose heat faster.",
+      "options": [
+        "This step is right. The skin is the first to cool.",
+        "This step is right. Cold-sensitive endings are the sensors.",
+        "This step is right. The control center compares input with the set point and sends out commands.",
+        "This is the error. Dermal vessels narrow in the cold; they widen in heat.",
+        "This step is right. Shivering makes heat."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Human studies of blood flow in the skin of the forearm during heating found that most of the rise came from nerve signals that actively relax the vessel walls. What does that finding contradict?",
+    "options": [
+      "That dermal blood flow rises in the forearm when the whole body is heated",
+      "That the widening in heat is only a withdrawal of the narrowing signal",
+      "That the skin's vessels are supplied by nerves",
+      "That sweating and vasodilation happen together"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Many texts say skin vessels widen in heat only because the steady signal that narrows them weakens. In hairy skin such as the forearm, active widening by nerves accounts for most of the rise. Withdrawal of the narrowing signal is the main mechanism only in the hairless skin of the palms, soles and lips.",
+      "options": [
+        "The finding confirms that dermal blood flow rises in heat.",
+        "Correct. Active widening, not just withdrawal, drives most of the rise in hairy skin.",
+        "The finding depends on the vessels having a nerve supply; it confirms it.",
+        "Sweating and vasodilation do happen together in heat; the finding does not contradict that."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "In a room with warm air, Jo sits beside a large, cold window and feels chilly on that side. By which route is she mainly losing heat to the window?",
+    "options": [
+      "Conduction",
+      "Convection",
+      "Evaporation",
+      "Radiation"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Her skin gives off infrared rays to any cooler surface, even one she is not touching. The cold glass absorbs more than it returns, so she loses heat on that side by radiation although the air is warm.",
+      "options": [
+        "Conduction needs contact; she is not touching the window.",
+        "The air around her is warm, so convection is not what chills her on that side.",
+        "Evaporation does not depend on which side a cold surface is on.",
+        "Correct. Radiation carries heat to cooler surfaces without contact."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-22",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A nurse washes her hands with a harsh alkaline soap many times each shift. Her skin becomes dry and cracked, and she gets more skin infections. Which change best explains the infections?",
+    "options": [
+      "Her surface pH has risen and the lipid sheets have been stripped",
+      "Her melanocytes have stopped making melanin",
+      "Her dermal blood flow has risen",
+      "Her tactile corpuscles have been damaged"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Alkaline soap raises the skin's normally acidic pH, and repeated washing strips the lipid sheets from the stratum corneum. Microbes grow better at a higher pH, and cracks and lost lipid open routes into living tissue.",
+      "options": [
+        "Correct. A higher pH and lost lipids weaken the barrier against microbes.",
+        "Melanin protects against UV, not microbes, and washing does not affect it.",
+        "Dermal blood flow lies below the epidermis and does not change the skin surface that keeps microbes out.",
+        "Tactile corpuscles sense touch; damaging them would dull sensation, not invite infection."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-23",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which sensory receptors in the skin mainly detect pain, temperature and itch?",
+    "options": [
+      "Tactile (Meissner) corpuscles",
+      "Lamellated (Pacinian) corpuscles",
+      "Free nerve endings",
+      "Tactile (Merkel) cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Free nerve endings are bare, branching tips of sensory nerve fibers in the lower epidermis and throughout the dermis. They respond to painful stimuli, warmth and cold, and itch.",
+      "options": [
+        "Tactile corpuscles sense light touch and slow vibration.",
+        "Lamellated corpuscles sense deep pressure and fast vibration.",
+        "Correct. Free nerve endings handle pain, temperature and itch.",
+        "Tactile cells sense steady light pressure and texture."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-functions-24",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "An office worker in Norway sits by a sunny window every day through the winter but is found to have low vitamin D. What is the best explanation?",
+    "options": [
+      "Winter sunlight has no ultraviolet light at all",
+      "Sitting still for hours slows the liver's activating step",
+      "Her skin has run out of melanin",
+      "Glass blocks UVB, and winter sun there has little"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Vitamin D synthesis needs UVB to reach 7-dehydrocholesterol in the keratinocytes. Window glass blocks nearly all UVB, and in winter at high latitude the low sun sends little UVB through the atmosphere in the first place.",
+      "options": [
+        "Winter sunlight still contains some UV, mostly the longer-wavelength kind; it is UVB that is scarce, and glass removes what is left.",
+        "The liver's step does not depend on activity.",
+        "Less melanin would let more UVB through, not less, and melanin does not run out.",
+        "Correct. Little UVB arrives in winter at that latitude, and the glass stops what does."
+      ]
+    }
+  }
+]

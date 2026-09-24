@@ -1,0 +1,22 @@
+{
+  "smooth-muscle-contraction": {
+    "def": "In smooth muscle, calcium, much of it entering from outside the cell, binds calmodulin; calcium–calmodulin activates myosin light-chain kinase, which phosphorylates the myosin heads so they can cycle and pull thin filaments anchored to dense bodies. Latch-bridges, dephosphorylated heads that stay attached, hold tension on little ATP.",
+    "roots": [["cal-", "calcium"], ["modul-", "adjust"], ["kin-", "move"], ["-ase", "enzyme"]],
+    "say": "kal-MOD-yoo-lin"
+  },
+  "smooth-muscle-types": {
+    "def": "Single-unit (visceral) smooth muscle has fibers linked by gap junctions into sheets that contract together, driven by pacesetter cells and stretch; it lines most hollow organs. Multi-unit smooth muscle has few gap junctions, and each fiber contracts when its own nerve endings stimulate it, as in the arrector pili and the muscles of the pupil.",
+    "roots": [["viscer-", "internal organs"]],
+    "say": ""
+  },
+  "stress-relaxation": {
+    "def": "The stretch response of smooth muscle: after being stretched, smooth muscle slowly lets its tension fall back while it stays at the new length. It lets hollow organs such as the bladder and stomach fill with little rise in pressure.",
+    "roots": [],
+    "say": ""
+  },
+  "cardiac-muscle-features": {
+    "def": "Cardiac muscle is striated and uses troponin, but its fibers are linked by gap junctions so the heart contracts as a unit, some fibers fire on their own (autorhythmicity), calcium entering from outside triggers release from the SR, its long action potential prevents tetanus, and it relies almost entirely on aerobic respiration.",
+    "roots": [["auto-", "self"], ["rhythm-", "regular beat"]],
+    "say": "aw-toh-rith-MISS-ih-tee"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "blood-calcium-range": {
+    "def": "The concentration of calcium in the plasma, normally about 8.5 to 10.5 mg/dL total (about 2.1 to 2.6 mmol/L). About half is free calcium ions, the form cells sense and the feedback loop controls.",
+    "roots": [["calc-", "calcium, lime"]],
+    "say": ""
+  },
+  "calcium-roles": {
+    "def": "Calcium triggers muscle contraction, neurotransmitter release and clotting steps, forms bone mineral, and from outside cells makes voltage-gated sodium channels harder to open. Hypocalcemia makes nerves and muscles overexcitable (tingling, tetany); hypercalcemia makes them less excitable (weakness, confusion).",
+    "roots": [["hypo-", "under"], ["hyper-", "over"], ["-emia", "blood condition"]],
+    "say": "hy-poh-kal-SEE-mee-uh"
+  },
+  "calcium-loop": {
+    "def": "The negative feedback loop that holds blood calcium steady. Cells of small glands behind the thyroid sense low calcium and release a calcium-raising hormone that increases bone resorption, calcium saving by the kidneys and, through activated vitamin D, absorption in the intestine; rising calcium reduces its release.",
+    "roots": [],
+    "say": ""
+  },
+  "bone-nutrition": {
+    "def": "What bone needs from the diet: dietary calcium (about 1,000 mg a day for adults, 1,300 mg for teenagers), vitamin D to absorb it, protein for the collagen matrix, and phosphorus and magnesium, together with weight-bearing exercise.",
+    "roots": [],
+    "say": ""
+  }
+}

@@ -43,7 +43,7 @@
   "summary": "<p>A motor neuron carries commands from the brain or spinal cord to skeletal muscle fibers; each fiber has one neuromuscular junction, where the motor neuron's axon terminal faces the folded motor end plate across a synaptic cleft about 50 nm wide. An action potential in the terminal opens voltage-gated calcium channels, and entering calcium triggers exocytosis of synaptic vesicles full of acetylcholine. Acetylcholine diffuses across the cleft and binds nicotinic receptor proteins, ligand-gated channels that let sodium in, producing the end plate potential: a graded depolarization several times larger than needed to reach threshold. It triggers an action potential in the neighboring sarcolemma, one for every motor neuron impulse. Acetylcholinesterase in the cleft splits acetylcholine into acetate and choline within about a millisecond, ending the signal; the choline is taken back into the terminal. Botulinum toxin blocks release, curare-type drugs block the receptor proteins, and AChE inhibitors make acetylcholine linger.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
-    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies (organophosphates)" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" },
     { "href": "/ochem/lessons/esters-amides.html", "label": "Organic chemistry: esters and amides (acetylcholine is an ester)" }
   ]
 }

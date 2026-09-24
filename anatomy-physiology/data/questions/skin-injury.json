@@ -1,0 +1,477 @@
+[
+  {
+    "id": "anp-skin-injury-1",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis"],
+    "q": "A 70 kg adult has partial- and full-thickness burns over 40% of his body surface. No fluid has been given yet. Predict the change in each variable over the first several hours, compared with before the burn.",
+    "variables": [
+      { "name": "Water lost by evaporation from the skin", "answer": "up", "why": "The burned skin has lost its stratum corneum and lipid seal, so water evaporates freely from the wound surface." },
+      { "name": "Volume of interstitial fluid", "answer": "up", "why": "Heat damage and chemical messengers make capillaries leaky, so water, salts and proteins move from the plasma into the spaces between cells, and the tissue swells." },
+      { "name": "Blood volume", "answer": "down", "why": "Fluid leaves the vessels into the tissues and out through the burned surface faster than it is replaced." },
+      { "name": "Blood pressure", "answer": "down", "why": "With less blood volume, less blood returns to the heart and less is pumped into the arteries." },
+      { "name": "Heart rate", "answer": "up", "why": "The body responds to the falling blood pressure by speeding the heart." },
+      { "name": "Urine output", "answer": "down", "why": "Low blood pressure reduces blood flow to the kidneys, so they make less urine." }
+    ],
+    "why": {
+      "correct": "Across the integumentary, cardiovascular and urinary systems: a large burn removes the skin's barrier and makes capillaries leak body-wide. Water evaporates from the wound and plasma leaks into the tissues, so blood volume and blood pressure fall, heart rate rises to compensate, and urine output falls. That is why large burns need large volumes of fluid in the first day."
+    }
+  },
+  {
+    "id": "anp-skin-injury-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Using the adult rule of nines, what share of body surface is burned in a patient with partial-thickness burns over the whole front of the trunk and the whole left arm?",
+    "options": ["18%", "36%", "27%", "45%"],
+    "correct": 2,
+    "why": {
+      "correct": "Front of the trunk = 18%; one whole upper limb = 9%. 18 + 9 = 27%.",
+      "options": [
+        "18% is the front of the trunk alone; the arm adds another 9%.",
+        "36% is the whole trunk, front and back; only the front is burned.",
+        "Correct. 18 + 9 = 27%.",
+        "45% would be the whole trunk plus one arm."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "An adult has full-thickness burns on the whole back of the trunk and on both lower limbs, front and back. Using the rule of nines, what share of body surface is burned?",
+    "options": ["36%", "54%", "45%", "72%"],
+    "correct": 1,
+    "why": {
+      "correct": "Back of the trunk = 18%. Each whole lower limb = 18%, so both = 36%. 18 + 36 = 54%.",
+      "options": [
+        "36% counts only the two legs and leaves out the back.",
+        "Correct. 18 + 18 + 18 = 54%.",
+        "45% counts each leg as 9% plus the whole trunk; each whole leg is 18%, and only the back of the trunk is burned.",
+        "72% counts the whole trunk, front and back, instead of the back only."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A welder's clothing catches fire, causing partial-thickness burns on the front of both legs only. Using the adult rule of nines, what share of body surface is burned?",
+    "options": ["9%", "36%", "18%", "27%"],
+    "correct": 2,
+    "why": {
+      "correct": "Each whole lower limb is 18%, front and back together. The front of one leg is half of that, 9%. Both fronts: 9 + 9 = 18%.",
+      "options": [
+        "9% is the front of one leg; both legs are burned.",
+        "36% is both whole legs, front and back; only the fronts are burned.",
+        "Correct. 9 + 9 = 18%.",
+        "27% has no basis here: it would be one whole leg plus the front of the other."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "An infant pulls hot soup onto herself and has partial-thickness burns on her whole head and neck and the front of her trunk. Using the infant version of the rule of nines, what share of body surface is burned?",
+    "options": ["27%", "36%", "18%", "45%"],
+    "correct": 1,
+    "why": {
+      "correct": "In an infant the head and neck count 18%, not 9%, because the head is a larger share of a baby's body. Front of trunk = 18%. 18 + 18 = 36%.",
+      "options": [
+        "27% uses the adult value of 9% for the head and neck, which underestimates an infant's burn.",
+        "Correct. 18 + 18 = 36%.",
+        "18% counts only one of the two burned regions.",
+        "45% adds an extra 9% that has no burned region to match it."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "superficial burns count in the rule of nines",
+    "q": "After a day at the beach, an adult has a red, painful sunburn with no blisters over the whole back of the trunk. He also spilled boiling water on his whole right arm, which is blistered. What share of body surface counts as burned for fluid planning?",
+    "options": ["27%", "18%", "9%", "36%"],
+    "correct": 2,
+    "why": {
+      "correct": "Only partial- and full-thickness burns count. The sunburn is superficial (red, painful, no blisters) and leaves the barrier intact, so it is left out. The blistered arm is partial-thickness: 9%.",
+      "options": [
+        "27% adds the superficial sunburn, which is not counted.",
+        "18% is the sunburned back alone, which does not count.",
+        "Correct. Only the arm's 9% counts.",
+        "36% is the whole trunk; neither the burns nor the rule support it."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-7",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-5-23",
+    "q": "Using the chart, what share of body surface is covered by the whole left lower limb plus the genital area?",
+    "options": ["19%", "10%", "18%", "37%"],
+    "correct": 0,
+    "why": {
+      "correct": "The chart gives each lower limb as 18% and the genital area as 1%. 18 + 1 = 19%.",
+      "options": [
+        "Correct. 18 + 1 = 19%.",
+        "10% treats the lower limb as 9%, the value for an upper limb.",
+        "18% is the lower limb alone and leaves out the genital area.",
+        "37% counts both lower limbs."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A cook scalds his forearm with boiling water. The skin is red, moist and covered with blisters, and it is extremely painful. It blanches when pressed. How should this burn be classified?",
+    "options": ["Superficial (first-degree)", "Superficial partial-thickness (second-degree)", "Full-thickness (third-degree)", "Fourth-degree"],
+    "correct": 1,
+    "why": {
+      "correct": "Blisters, a moist red surface and severe pain mark a superficial partial-thickness burn: the epidermis and papillary layer are damaged, but capillaries and nerve endings deeper in the dermis survive. Fluid leaking from injured capillaries lifts the dead epidermis into blisters.",
+      "options": [
+        "A superficial burn damages only the epidermis and does not blister.",
+        "Correct. Blisters with severe pain mean a superficial partial-thickness burn.",
+        "A full-thickness burn is dry, leathery and painless in its center, because its nerve endings are destroyed.",
+        "A fourth-degree burn reaches muscle, tendon or bone, far deeper than a brief scald."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "misconception": "a painless burn is a mild burn",
+    "q": "After a house fire, a patient's thigh has a white, leathery, dry area that he says does not hurt when touched, surrounded by a ring of red, blistered skin that is very painful. Which interpretation is correct?",
+    "options": ["The painless center is a mild superficial burn", "The whole area is one partial-thickness burn", "The painless center is full-thickness; the painful ring is partial-thickness", "The ring is full-thickness and the center has healed"],
+    "correct": 2,
+    "why": {
+      "correct": "A full-thickness burn destroys the whole dermis with its nerve endings, so its center is painless, white and leathery. The partial-thickness burn around it still has living nerve endings and capillaries, so it hurts and blisters. Painlessness here means the deepest damage.",
+      "options": [
+        "A superficial burn is red and painful, not white, leathery and numb.",
+        "Partial-thickness burns hurt and blister; a numb, leathery area has lost its nerve endings, which means full thickness.",
+        "Correct. The numb center is the deepest part of the burn.",
+        "A red, blistered, painful ring has living nerve endings, which rules out full thickness; a burn does not heal from its center outward within hours."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A superficial partial-thickness burn destroys the whole epidermis over a patch of skin, yet it grows new epidermis in 2 to 3 weeks without a graft. Where do the new epidermal cells come from?",
+    "options": ["Fibroblasts of the reticular layer, which turn into keratinocytes", "Fat cells of the hypodermis", "Melanocytes that survive the burn", "Epithelial cells lining surviving hair follicles and sweat gland ducts"],
+    "correct": 3,
+    "why": {
+      "correct": "Hair follicles and sweat gland ducts are lined by epithelium that reaches deep into the dermis, below a partial-thickness burn. Those cells divide and spread out across the wound bed, and the islands grow together into new epidermis. A full-thickness burn destroys them, so it cannot regrow epidermis from within.",
+      "options": [
+        "Fibroblasts make collagen and scar tissue; they do not become epithelial cells.",
+        "Fat cells lie below the dermis and do not form epidermis.",
+        "Melanocytes make pigment; they do not supply keratinocytes.",
+        "Correct. The epithelium of follicles and ducts regrows the surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-11",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "structure-function"],
+    "q": "Put the stages of healing of a skin wound in order, starting at the moment of injury.",
+    "options": ["A blood clot fills the gap and dries into a scab", "White blood cells and macrophages clear debris and microbes", "Granulation tissue fills the wound and epithelial cells crawl across it", "Collagen is reorganized and the scar pales and flattens"],
+    "why": {
+      "correct": "Bleeding stops first, with a clot and scab. Inflammation then brings cells that clear debris. In the rebuilding stage, capillaries and fibroblasts form granulation tissue while epithelial cells cover it and the edges contract. Finally, over months, remodeling reorganizes the collagen into a mature scar."
+    }
+  },
+  {
+    "id": "anp-skin-injury-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A dog bite leaves a gaping wound with missing tissue on a man's calf. To lower the risk of infection, the doctor leaves it open to heal. Compared with a stitched surgical cut, how will it heal?",
+    "options": ["By primary union, with a thin line scar within days", "By regeneration only, with no scar", "By secondary union, filling with granulation tissue and contracting", "By primary union once the scab falls off"],
+    "correct": 2,
+    "why": {
+      "correct": "A wound with separated edges and lost tissue heals by secondary union. It fills from the bottom with granulation tissue, its edges are pulled together by wound contraction, and it closes over weeks, leaving a wider scar.",
+      "options": [
+        "Primary union needs edges held close together, as in a stitched cut; this wound is left open.",
+        "A wound through the dermis with lost tissue fills partly with collagen, so it scars.",
+        "Correct. Open wounds heal by secondary union.",
+        "Whether a wound heals by primary or secondary union depends on whether its edges are together, not on the scab."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What is granulation tissue made of?",
+    "options": ["Dead keratinized cells and lipids", "Mature scar collagen with no vessels", "Adipose tissue from the hypodermis", "New capillaries and fibroblasts laying down collagen"],
+    "correct": 3,
+    "why": {
+      "correct": "Granulation tissue is the moist, pink, grainy tissue that fills a healing wound: new capillary loops (the grains) with fibroblasts laying down collagen among them. It bleeds easily because of its many new vessels.",
+      "options": [
+        "Dead keratinized cells in lipid sheets make the stratum corneum, not granulation tissue.",
+        "Mature scar forms later, in remodeling, as most of the new capillaries disappear.",
+        "Fat is not part of granulation tissue.",
+        "Correct. New capillaries plus collagen-making fibroblasts."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Six months after an ear piercing, a young woman has a firm, raised, growing lump on her earlobe that now extends well beyond the piercing site. What is it?",
+    "options": ["A keloid", "Granulation tissue", "A callus", "A basal cell carcinoma"],
+    "correct": 0,
+    "why": {
+      "correct": "A keloid is a scar that keeps growing beyond the original wound's edges, because fibroblasts go on making excess collagen during remodeling. Earlobes are a classic site, and keloids are more common in darker skin.",
+      "options": [
+        "Correct. A scar growing beyond the wound's edges is a keloid.",
+        "Granulation tissue is soft, pink and moist, fills a wound in its first weeks, and does not grow beyond the wound.",
+        "A callus is flat, thickened stratum corneum from friction, not a firm raised lump after a wound.",
+        "Basal cell carcinoma is a pearly bump on sun-exposed skin, usually in older adults, not a growing scar at a piercing."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A 68-year-old retired farmer has a slowly growing, pearly, shiny bump on the side of his nose, with tiny visible blood vessels on its surface and a small sore in its center. Which skin cancer is most likely?",
+    "options": ["Melanoma", "Squamous cell carcinoma", "Basal cell carcinoma", "Keloid"],
+    "correct": 2,
+    "why": {
+      "correct": "A pearly, shiny bump with fine surface vessels and a central sore on sun-exposed facial skin of an older person with years of sun is typical of basal cell carcinoma, the most common skin cancer. It grows slowly and rarely spreads.",
+      "options": [
+        "Melanoma usually appears as a dark, uneven, changing patch, not a pearly bump.",
+        "Squamous cell carcinoma is usually a scaly red patch or crusted sore; the pearly surface with fine vessels points to a basal cell cancer.",
+        "Correct. This is the classic look of basal cell carcinoma.",
+        "A keloid is an overgrown scar after a wound, not a cancer."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-16",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A mole is checked with the ABCDE rule. Which findings raise concern for melanoma? Select all that apply.",
+    "options": ["The two halves do not match", "It is one even shade of tan", "It has a ragged, blurred border", "It is 9 mm across", "It has grown and darkened over three months", "It has stayed the same for 20 years"],
+    "correct": [0, 2, 3, 4],
+    "why": {
+      "correct": "Asymmetry, an irregular border, several colors, a diameter over about 6 mm, and change over time (evolving) all raise concern for melanoma. An evenly colored spot that has not changed for years is reassuring.",
+      "options": [
+        "Yes. Asymmetry is the A of ABCDE.",
+        "No. A single even color is reassuring; several shades would be concerning.",
+        "Yes. An irregular border is the B.",
+        "Yes. Larger than about 6 mm is the D.",
+        "Yes. Change in size or color is the E, evolving, and it is the most important sign.",
+        "No. A spot stable for decades is unlikely to be a melanoma."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Melanoma makes up only about 1 in 100 skin cancers but causes most skin cancer deaths. What best explains this?",
+    "options": ["Melanoma cells can spread early to lymph nodes and distant organs", "Melanoma grows only on skin that cannot be seen", "Melanoma cannot be removed by surgery", "Melanoma always starts in an old mole"],
+    "correct": 0,
+    "why": {
+      "correct": "Melanoma starts in melanocytes, which can break loose early, pass through the dermis into vessels and spread to lymph nodes and distant organs. Basal cell carcinoma rarely spreads, so it is common but rarely deadly.",
+      "options": [
+        "Correct. Early spread is what makes melanoma dangerous.",
+        "Melanoma can appear anywhere, including easily seen skin; that is why skin checks work.",
+        "Thin melanomas removed early are usually cured.",
+        "Most melanomas appear as new spots rather than in an existing mole."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "structure-function"],
+    "q": "A frail patient has lain on his back without moving for many hours. The skin over his heels is red and does not blanch when pressed. What is the main mechanism of the damage?",
+    "options": ["Heat from the mattress has burned the skin", "Bacteria from the sheets have infected intact skin", "Pressure between bone and mattress squeezed the capillaries shut, starving cells of oxygen", "Too much sebum has plugged the follicles of the heel"],
+    "correct": 2,
+    "why": {
+      "correct": "Sustained pressure over a bony area, higher than the pressure inside the capillaries, flattens them. Blood stops flowing, the cells run out of oxygen and nutrients, and they begin to die by necrosis. Redness that does not blanch is the first sign of a pressure injury.",
+      "options": [
+        "A mattress is not hot enough to burn skin; the damage comes from pressure.",
+        "Infection can follow once skin breaks down, but the first damage is from lost blood flow.",
+        "Correct. Compressed capillaries starve the tissue.",
+        "The heel is thick skin with no hair and no sebaceous glands."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A teenager scrubs his face hard several times a day, believing his blackheads are trapped dirt. What actually makes a blackhead dark?",
+    "options": ["Dirt pushed into the pore from outside", "Blood from a burst capillary", "Bacteria that are dark in color", "Lipids and melanin in the plug darkening where they meet the air"],
+    "correct": 3,
+    "why": {
+      "correct": "A blackhead is a follicle plugged with sebum and shed keratinocytes and open at the surface. Where the plug meets the air, its lipids and melanin change and darken. Scrubbing does not remove it and can irritate the skin.",
+      "options": [
+        "The dark color is not dirt; it forms in the plug itself where it meets the air.",
+        "There is no bleeding in a blackhead.",
+        "The follicle bacteria involved in acne are not what color a blackhead.",
+        "Correct. The exposed plug darkens on contact with air."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Skin samples are taken from a person with albinism and from a white patch of a person with vitiligo. How would the samples differ?",
+    "options": ["Both have no melanocytes", "The albinism sample has melanocytes that make no melanin; the vitiligo patch has lost its melanocytes", "The albinism sample has no melanocytes; the vitiligo patch has melanocytes making no melanin", "Both have normal melanocytes making normal melanin"],
+    "correct": 1,
+    "why": {
+      "correct": "In albinism, melanocytes are present in normal numbers but cannot make melanin, usually because of a faulty gene for tyrosinase. In vitiligo, the immune system destroys the melanocytes in the affected patches, so they are missing.",
+      "options": [
+        "Melanocytes are present in albinism; they just cannot make melanin.",
+        "Correct. Albinism: melanocytes without melanin. Vitiligo: melanocytes gone.",
+        "This reverses the two conditions.",
+        "Both conditions leave the skin without melanin, so neither sample would be normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A rock climber develops thick, hard, painless patches on her fingertips after months of climbing. Which layer has thickened?",
+    "options": ["The hypodermis", "The reticular layer of the dermis", "The stratum corneum", "The papillary layer of the dermis"],
+    "correct": 2,
+    "why": {
+      "correct": "Repeated friction makes the basal cells divide faster, and the stratum corneum thickens into a callus. It protects the skin beneath and thins again if the rubbing stops.",
+      "options": [
+        "The hypodermis lies beneath the dermis and does not thicken from friction on the surface.",
+        "The reticular layer does not thicken into a hard surface patch.",
+        "Correct. A callus is thickened stratum corneum.",
+        "The papillary layer does not become hard; the hard surface is dead keratinized cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-22",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A student described why a large burn lowers blood pressure. One step is wrong. Which one?",
+    "options": ["The burn destroys the stratum corneum and its lipid seal", "Water evaporates rapidly from the burned surface", "Chemical messengers make capillaries less leaky, holding fluid in the vessels", "Blood volume falls", "Less blood returns to the heart and blood pressure falls"],
+    "correct": 2,
+    "why": {
+      "correct": "Histamine, prostaglandins and other messengers released after a burn make capillaries more leaky, not less. Water, salts and proteins leave the plasma for the interstitial fluid, which is one of the two main reasons blood volume falls.",
+      "options": [
+        "This step is right. The burn removes the skin's barrier.",
+        "This step is right. Without the barrier, water evaporates freely from the wound.",
+        "This is the error. The messengers make capillaries more leaky, so fluid leaves the vessels.",
+        "This step is right. Fluid lost to evaporation and to the tissues lowers blood volume.",
+        "This step is right. Lower blood volume means less venous return and lower pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-23",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Fill the gap in the chain after a large burn: capillaries become leaky → ____ → blood volume falls → blood pressure falls.",
+    "options": ["Water, salts and proteins move from plasma into the interstitial fluid", "The kidneys make more urine", "Red blood cells leave the vessels in large numbers", "Sweat glands release more sweat"],
+    "correct": 0,
+    "why": {
+      "correct": "Leaky capillaries let water, salts and proteins pass from the plasma into the interstitial fluid. That fluid is still in the body but no longer in the vessels, so blood volume and blood pressure fall.",
+      "options": [
+        "Correct. Plasma moving into the tissues is the step that lowers blood volume.",
+        "Urine output falls, not rises, as blood pressure falls.",
+        "The leak lets fluid and proteins out; red blood cells mostly stay in the vessels.",
+        "Sweat glands in burned skin are destroyed, and sweat is not the main loss after a burn."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-24",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Many people with eczema carry a faulty gene for one of the keratohyalin proteins that bundle keratin in the stratum granulosum. Why does that make eczema more likely?",
+    "options": ["Melanocytes stop making melanin, exposing the dermis", "The stratum corneum holds water poorly and lets irritants in", "Basal cells divide too slowly to replace shed cells", "Sebaceous glands release too much sebum"],
+    "correct": 1,
+    "why": {
+      "correct": "Keratohyalin proteins bundle keratin into the tough cells of the stratum corneum. When one is faulty, the layer is weaker: it loses water, dries and cracks, and lets irritants reach living cells. An overactive immune response to those irritants then causes the itching and inflammation of eczema.",
+      "options": [
+        "Keratohyalin proteins have nothing to do with melanin, and eczema is not a pigment disorder.",
+        "Correct. A weak stratum corneum is the barrier fault in eczema.",
+        "The fault is in how keratin is bundled, not in how fast basal cells divide.",
+        "Eczema skin is dry, not oily; sebum output is not the problem."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-injury-25",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What happens in the skin to form stretch marks?",
+    "options": ["Melanocytes are destroyed in lines", "The stratum corneum thickens in bands", "Collagen and elastic fibers of the reticular layer tear and thin", "Follicles plug with sebum along a line"],
+    "correct": 2,
+    "why": {
+      "correct": "When skin is stretched faster than the dermis can grow, as in a growth spurt or pregnancy, collagen and elastic fibers of the reticular layer tear and thin. The skin over them flattens into lines that fade from red to silvery white but never fully recover.",
+      "options": [
+        "Loss of melanocytes in patches is vitiligo.",
+        "A thickened stratum corneum is a callus.",
+        "Correct. Stretch marks are torn and thinned dermal fibers.",
+        "Plugged follicles are the start of acne."
+      ]
+    }
+  }
+]

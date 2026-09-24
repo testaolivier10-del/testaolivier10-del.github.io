@@ -1,0 +1,98 @@
+{
+  "os-8-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "8.3",
+      "section": "8.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/80224ef3967f0d62672cd00db90e8b15ffb1dfff",
+      "page": "8-1-the-pectoral-girdle"
+    },
+    "alt": "The shoulder region from the front and the back, showing the collarbone running from the top of the breastbone out to the tip of the shoulder, and the triangular shoulder blade lying on the back of the upper ribs, with the upper arm bone meeting it. Below, the collarbone on its own from above and below: an S-shaped rod with a rounded inner end and a flat outer end.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 8.3",
+    "labels": [],
+    "w": 985,
+    "h": 1358,
+    "ext": "jpg"
+  },
+  "os-8-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "8.4",
+      "section": "8.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c0c428b8a836313f67005105fba27d82101e2eac",
+      "page": "8-1-the-pectoral-girdle"
+    },
+    "alt": "A right shoulder blade from the front and from the back. The front view shows a broad, slightly hollow surface, a hook projecting forward at the top, and a shallow socket at the outer corner. The back view shows a ridge running across the bone that ends in a flat projection at the top of the shoulder, with a hollow above the ridge and a larger hollow below it. The borders and corners of the triangle are labeled.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 8.4",
+    "labels": [],
+    "w": 972,
+    "h": 641,
+    "ext": "jpg"
+  },
+  "os-8-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "8.5",
+      "section": "8.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5f70593eab8f8ab3ebf4aa75fc37d72225c0a95d",
+      "page": "8-2-bones-of-the-upper-limb"
+    },
+    "alt": "The upper arm bone from the front and the back. At its top, a rounded head is ringed by a groove and flanked by two bumps with a channel between them, and the shaft narrows just below. A rough patch sits partway down the outer side. At the bottom, knobs stick out on each side, a rounded knob and a spool-shaped surface meet the forearm bones in front, and a deep hollow lies on the back.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 8.5",
+    "labels": [],
+    "w": 676,
+    "h": 853,
+    "ext": "jpg"
+  },
+  "os-8-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "8.6",
+      "section": "8.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b9c3c45f968f9af4e3706ef9ac442d49ea0e4871",
+      "page": "8-2-bones-of-the-upper-limb"
+    },
+    "alt": "The two forearm bones of the right arm, from the front and the back. The bone on the little-finger side is large at the elbow, with a hooked point at the back and a C-shaped notch facing forward, and small at the wrist. The bone on the thumb side has a small disc-shaped head at the elbow, a bump below it, and a wide lower end at the wrist. Each ends in a small pointed process at the wrist, and a sheet of tissue joins the two shafts.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 8.6",
+    "labels": [],
+    "w": 1100,
+    "h": 1489,
+    "ext": "jpg"
+  },
+  "os-8-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "8.7",
+      "section": "8.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/541c7cf2586e9daaea40767bbc68011fdb8573b1",
+      "page": "8-2-bones-of-the-upper-limb"
+    },
+    "alt": "The bones of the left hand from the palm side and the back. Eight small wrist bones sit in two rows of four, five long bones form the palm, and the finger bones follow: two in the thumb and three in each finger. A small drawing of a whole hand shows the three groups.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 8.7",
+    "labels": [],
+    "w": 1100,
+    "h": 886,
+    "ext": "jpg"
+  },
+  "os-8-9": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "8.9",
+      "section": "8.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2c7255e7b163131cb99e7ed231a27cb35c151bb9",
+      "page": "8-2-bones-of-the-upper-limb"
+    },
+    "alt": "A cross section through the wrist seen from the palm side. The wrist bones form a U-shaped floor and walls, and a band of tissue across the top closes it into a tunnel. Inside the tunnel lie many round tendons and one larger nerve.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 8.9",
+    "labels": [],
+    "w": 1100,
+    "h": 769,
+    "ext": "jpg"
+  }
+}

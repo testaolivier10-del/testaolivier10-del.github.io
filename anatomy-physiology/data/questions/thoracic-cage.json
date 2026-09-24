@@ -1,0 +1,548 @@
+[
+  {
+    "id": "anp-thoracic-cage-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-32",
+    "pin": "manubrium",
+    "q": "Name the pinned part of the sternum.",
+    "options": [
+      "Body of the sternum",
+      "Manubrium",
+      "Xiphoid process",
+      "Costal cartilage"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The manubrium is the wide top piece of the sternum. The first ribs and the collarbones attach to it.",
+      "options": [
+        "The body is the long middle piece below the manubrium.",
+        "Correct. The wide top piece is the manubrium.",
+        "The xiphoid process is the small tip at the bottom.",
+        "Costal cartilages are the bars of cartilage at the front ends of the ribs, not part of the sternum."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-32",
+    "pin": "xiphoid-process",
+    "q": "Name the pinned part of the sternum.",
+    "options": [
+      "Xiphoid process",
+      "Manubrium",
+      "Sternal angle",
+      "Body of the sternum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The xiphoid process is the small tip at the bottom of the sternum. No ribs attach to it, and it is cartilage in young people.",
+      "options": [
+        "Correct. The small lower tip is the xiphoid process.",
+        "The manubrium is the wide top piece.",
+        "The sternal angle is the ridge where the manubrium meets the body, near the top.",
+        "The body is the long middle piece above the tip."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-32",
+    "pin": "sternal-angle",
+    "q": "Name the pinned landmark on the sternum.",
+    "options": [
+      "Jugular notch",
+      "Costal margin",
+      "Sternal angle",
+      "Clavicular notch"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The sternal angle is the ridge where the manubrium meets the body. The second rib's cartilage attaches at this level.",
+      "options": [
+        "The jugular notch is the dip in the top edge of the manubrium.",
+        "The costal margin is the lower edge of the cage, formed by the joined cartilages of the lower ribs.",
+        "Correct. The ridge between manubrium and body is the sternal angle.",
+        "The clavicular notches are at the upper corners of the manubrium, where the collarbones meet it."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-32",
+    "pin": "jugular-notch",
+    "q": "Name the pinned dip at the top of the sternum.",
+    "options": [
+      "Sternal angle",
+      "Jugular notch",
+      "Xiphoid process",
+      "Intercostal space"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The jugular notch, also called the suprasternal notch, is the dip in the top edge of the manubrium, between the inner ends of the collarbones.",
+      "options": [
+        "The sternal angle is a ridge lower down, where the manubrium meets the body.",
+        "Correct. The dip at the top of the manubrium is the jugular notch.",
+        "The xiphoid process is the tip at the bottom of the sternum.",
+        "An intercostal space is a gap between two ribs."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-32",
+    "pin": "costal-cartilages",
+    "q": "Name the pinned structures joining the ribs to the sternum.",
+    "options": [
+      "Costal cartilages",
+      "Floating ribs",
+      "Costal grooves",
+      "Intercostal spaces"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The costal cartilages are bars of hyaline cartilage at the front ends of the ribs. They join the ribs to the sternum, directly or through the cartilage above, and let the cage flex.",
+      "options": [
+        "Correct. These bars are the costal cartilages.",
+        "The floating ribs are ribs 11 and 12, which have no front attachment.",
+        "The costal grooves run along the lower inner edge of each rib, on the inside.",
+        "The intercostal spaces are the gaps between neighboring ribs."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-27",
+    "pin": "head-of-rib",
+    "q": "Name the pinned end of the rib that meets the vertebral bodies.",
+    "options": [
+      "Tubercle of the rib",
+      "Neck of the rib",
+      "Head of the rib",
+      "Angle of the rib"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The head of the rib is its back end. It meets the costal facets of two neighboring vertebral bodies and the disc between them.",
+      "options": [
+        "The tubercle is the small knob farther out that meets the transverse process.",
+        "The neck is the narrow part just beyond the head.",
+        "Correct. The end that meets the vertebral bodies is the head of the rib.",
+        "The angle is the sharp bend beyond the tubercle, where the rib turns forward."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-27",
+    "pin": "tubercle-of-rib",
+    "q": "Name the pinned knob of the rib, which meets the transverse process.",
+    "options": [
+      "Head of the rib",
+      "Costal facet of the vertebra",
+      "Angle of the rib",
+      "Tubercle of the rib"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The tubercle of the rib is the small knob where the neck meets the body. It meets the costal facet on the transverse process of its own vertebra.",
+      "options": [
+        "The head meets the vertebral bodies, not the transverse process.",
+        "The costal facet is the smooth pit on the vertebra, not the knob of the rib that fits into it.",
+        "The angle is the sharp bend farther along the rib.",
+        "Correct. The knob resting on the transverse process is the tubercle of the rib."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-27",
+    "pin": "angle-of-rib",
+    "q": "Name the pinned part of the rib.",
+    "options": [
+      "Angle of the rib",
+      "Neck of the rib",
+      "Body of the rib (shaft)",
+      "Head of the rib"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The angle of the rib is its point of sharpest bend, a few centimeters beyond the tubercle, where the rib turns forward. It is the rib's weakest point.",
+      "options": [
+        "Correct. The sharp bend is the angle of the rib.",
+        "The neck is the short narrow part between the head and the tubercle.",
+        "The body is the long curved part in front of the angle, not the bend itself.",
+        "The head is the end of the rib that meets the vertebral bodies."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which ribs are the true ribs?",
+    "options": [
+      "Ribs 1 to 5",
+      "Ribs 1 to 7",
+      "Ribs 1 to 10",
+      "Ribs 8 to 12"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Ribs 1 to 7 are true ribs: each one's own costal cartilage reaches the sternum directly.",
+      "options": [
+        "Ribs 6 and 7 also reach the sternum by their own cartilage, so the true ribs run to 7.",
+        "Correct. The true ribs are ribs 1 to 7.",
+        "Ribs 8 to 10 reach the sternum only through the cartilage of the rib above, so they are false ribs.",
+        "Ribs 8 to 12 are the false ribs."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "floating ribs float free at the back",
+    "q": "What makes ribs 11 and 12 floating ribs?",
+    "options": [
+      "They have no attachment to the vertebrae",
+      "They have no costal cartilage at all",
+      "They have no attachment at the front",
+      "They attach only to the xiphoid process"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The floating ribs, 11 and 12, meet the vertebrae at the back but have no front attachment. Their short cartilages end in the muscles of the abdominal wall.",
+      "options": [
+        "Every rib, floating ribs included, meets the vertebrae at the back.",
+        "They do have short cartilage tips; what they lack is a front attachment.",
+        "Correct. Floating ribs have no front attachment.",
+        "No ribs attach to the xiphoid process."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A nurse needs to find a patient's third rib. She cannot feel the first rib under the collarbone. Where should she start counting?",
+    "options": [
+      "At the jugular notch, which is level with the second rib",
+      "At the sternal angle, level with the second rib's cartilage",
+      "At the xiphoid process, which is level with the seventh rib",
+      "At the costal margin, counting upward from the twelfth rib"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The sternal angle, the ridge where the manubrium meets the body, is level with the cartilage of the second rib. From there she slides sideways onto rib 2 and counts down one rib to rib 3.",
+      "options": [
+        "The jugular notch is at the top of the manubrium, above the first rib, and no rib attaches there.",
+        "Correct. The sternal angle marks the second rib.",
+        "The seventh rib's cartilage reaches the lower body of the sternum, but counting up from there is less reliable than starting at the sternal angle.",
+        "The costal margin is formed by the cartilages of ribs 7 to 10; the twelfth rib is a floating rib at the back and is hard to feel."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During CPR on an adult, where should the heel of the rescuer's hand press?",
+    "options": [
+      "On the manubrium, below the jugular notch",
+      "On the xiphoid process",
+      "On the lower half of the body of the sternum",
+      "Over the left floating ribs"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Compressions go on the lower half of the body of the sternum, in the center of the chest. That pushes the sternum toward the spine over the heart and keeps force off the xiphoid process, which can break and injure the liver.",
+      "options": [
+        "The manubrium lies above most of the heart, and pressing there compresses the heart poorly.",
+        "Pushing on the xiphoid can break it and drive it into the liver.",
+        "Correct. The lower half of the sternum is the compression point.",
+        "The floating ribs are at the sides and back of the lower chest, far from the heart."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fluid must be drained from a patient's pleural cavity with a needle passed between two ribs. Why is the needle placed just above the upper edge of the lower rib?",
+    "options": [
+      "The costal cartilage is thinnest at the upper edge of each rib",
+      "A nerve, artery and vein run along the lower edge of each rib",
+      "The tubercle of each rib points upward into the space",
+      "The upper edge of each rib has the most sensory nerve endings"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each rib has a costal groove along the lower edge of its inner surface, where a nerve, an artery and a vein run. Passing the needle just over the top of the lower rib keeps it away from the groove of the rib above.",
+      "options": [
+        "Costal cartilage is at the front ends of the ribs, not along their edges, and its thickness is not what decides the site.",
+        "Correct. The costal groove shelters a nerve and vessels under each rib.",
+        "The tubercle is at the back, near the vertebra, not in the space between ribs at the side of the chest.",
+        "Sensory endings are not concentrated at the upper edge; the danger is the nerve and vessels running along the lower edge."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-14",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the parts of a typical rib from its back end to its front end.",
+    "options": [
+      "Head",
+      "Neck",
+      "Tubercle",
+      "Angle",
+      "Body",
+      "Costal cartilage"
+    ],
+    "why": {
+      "correct": "From back to front: the head meets two vertebral bodies, the neck is the narrow part beyond it, the tubercle meets the transverse process, the angle is the sharp bend, the body curves forward, and the costal cartilage continues it to the front.",
+      "options": [
+        "The head is the back end, against the vertebral bodies.",
+        "The neck comes right after the head.",
+        "The tubercle sits where the neck meets the rest of the rib.",
+        "The angle is the sharp bend just beyond the tubercle.",
+        "The body curves forward around the side of the chest.",
+        "The costal cartilage continues the rib at its front end."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-15",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these are false ribs? Select all that apply.",
+    "options": [
+      "Rib 3",
+      "Rib 7",
+      "Rib 8",
+      "Rib 10",
+      "Rib 12"
+    ],
+    "correct": [
+      2,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "The false ribs are ribs 8 to 12: their own cartilage does not reach the sternum. Ribs 11 and 12, the floating ribs, are false ribs too.",
+      "options": [
+        "No. Rib 3 is a true rib: its own cartilage reaches the sternum.",
+        "No. Rib 7 is the last true rib.",
+        "Yes. Rib 8's cartilage joins the cartilage of rib 7.",
+        "Yes. Rib 10's cartilage joins the cartilage of rib 9.",
+        "Yes. Rib 12 is a floating rib, which is a kind of false rib."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-16",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: the head of the fifth rib meets the bodies of T4 and ____, and its tubercle meets the transverse process of T5.",
+    "options": [
+      "T3",
+      "T5",
+      "T6",
+      "T7"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A rib's head meets the body of its own vertebra and the one above, so rib 5 meets T4 and T5. Its tubercle meets its own vertebra's transverse process, T5.",
+      "options": [
+        "T3 is two levels above; rib 4 meets T3 and T4.",
+        "Correct. Rib 5 meets the bodies of T4 and T5.",
+        "T6 is below; rib 6 meets T5 and T6.",
+        "T7 is too far down; rib 7 meets T6 and T7."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-17",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described the eighth rib. One statement is wrong. Which one?",
+    "options": [
+      "Its head meets the bodies of T7 and T8",
+      "Its tubercle meets the transverse process of T8",
+      "Its body curves forward around the side of the chest wall",
+      "Its costal cartilage attaches straight to the sternum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Rib 8 is a false rib. Its costal cartilage joins the cartilage of rib 7, so it reaches the sternum only indirectly.",
+      "options": [
+        "This statement is right. A rib's head meets its own vertebra and the one above.",
+        "This statement is right. The tubercle meets its own vertebra's transverse process.",
+        "This statement is right. The body of every rib curves forward around the chest.",
+        "This is the error. Rib 8's cartilage joins the cartilage of rib 7."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a car crash, a driver has broken ribs 4, 5, 6 and 7 on the right, each in two places. As she breathes in, a patch of her right chest wall moves inward while the rest of her chest moves out. What explains this?",
+    "options": [
+      "Her floating ribs have come loose from the vertebrae",
+      "Her xiphoid process broke off and pulls the ribs inward",
+      "Her costal cartilages calcified, so the ribs can no longer move",
+      "The loose section no longer moves with the cage"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When several neighboring ribs each break in two places, a section of the chest wall is cut loose from the cage: a flail chest. When she breathes in, the rest of the cage widens and pressure inside the chest falls, so the loose section is pulled inward instead of moving out.",
+      "options": [
+        "Ribs 4 to 7 are true ribs, not floating ribs, and a loose floating rib would not produce this pattern.",
+        "The xiphoid process has no ribs attached, so it cannot pull ribs inward.",
+        "Calcified cartilage stiffens the chest evenly; it does not make one patch move the wrong way.",
+        "Correct. The loose segment is cut off from the cage and moves the opposite way to the rest of the chest."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which part of the sternum has no ribs attached to it?",
+    "options": [
+      "Manubrium",
+      "Body",
+      "Xiphoid process",
+      "Sternal angle"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The xiphoid process, the small lower tip, has no ribs attached. Rib 1 attaches to the manubrium, rib 2 at the sternal angle, and ribs 3 to 7 to the body.",
+      "options": [
+        "The first ribs attach to the manubrium.",
+        "The cartilages of ribs 2 to 7 attach along the body.",
+        "Correct. No ribs attach to the xiphoid process.",
+        "The second rib's cartilage attaches right at the sternal angle."
+      ]
+    }
+  },
+  {
+    "id": "anp-thoracic-cage-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The rib cage springs back after being pressed and widens when you breathe in. Which feature mainly allows this flexibility?",
+    "options": [
+      "The sutures between neighboring ribs",
+      "The hollow spaces inside each rib",
+      "The floating ribs at the bottom of the cage",
+      "The costal cartilages"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The costal cartilages are hyaline cartilage, which bends and springs back. They link the ribs to the sternum without rigid bone, so the cage can flex and the ribs can swing up and out.",
+      "options": [
+        "Sutures are seams between skull bones; the ribs are not joined to each other by sutures.",
+        "Ribs are not hollow; like other bones they have spongy bone inside compact bone.",
+        "The floating ribs are free at the front, but they are only two pairs and do not make the whole cage flexible.",
+        "Correct. The costal cartilages, made of hyaline cartilage, give the cage its flexibility."
+      ]
+    }
+  }
+]

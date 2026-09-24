@@ -1,0 +1,44 @@
+{
+  "os-11-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.5",
+      "section": "11.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ace27d0a050b03c1e9b216080531d9c6f1bc0ebe",
+      "page": "11-2-naming-skeletal-muscles"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ace27d0a050b03c1e9b216080531d9c6f1bc0ebe",
+    "alt": "Two full-body drawings of the muscular system, from the front and from the back. Each figure shows the superficial muscles on one side of the body and the deeper muscles on the other, with lines pointing to the major muscles of the head, neck, trunk, arms and legs.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.5",
+    "labels": []
+  },
+  "os-11-29": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.29",
+      "section": "11.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/48a26b0c6351a2052a16c4fcd338bc092505e492",
+      "page": "11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/48a26b0c6351a2052a16c4fcd338bc092505e492",
+    "alt": "Muscles of the right hip and thigh in three views. The front view shows muscles from the lumbar spine and the bowl of the ilium passing in front of the hip, a four-part muscle mass over the front of the thigh joining one tendon around the kneecap, a long strap crossing the thigh diagonally, and muscles of the inner thigh. A deep front view shows the inner-thigh muscles fanning from the pubis to the back of the femur. The back view shows the cut buttock muscles, small muscles running from the sacrum to the top of the femur, and three muscles on the back of the thigh.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.29",
+    "labels": []
+  },
+  "os-11-32": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.32",
+      "section": "11.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/adeb0a7389faaf57fe6dd39c017a6d25a03e6816",
+      "page": "11-6-appendicular-muscles-of-the-pelvic-girdle-and-lower-limbs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/adeb0a7389faaf57fe6dd39c017a6d25a03e6816",
+    "alt": "Muscles of the right lower leg in three views. The front view shows a muscle along the shin and muscles over the fibula with tendons running to the foot. The back view shows the two-headed calf muscle, a broad flat muscle beneath it and the thick tendon joining them to the heel. The deep back view shows the muscles under the calf muscles.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.32",
+    "labels": []
+  }
+}

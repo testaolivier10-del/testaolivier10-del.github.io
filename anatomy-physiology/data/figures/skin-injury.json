@@ -1,0 +1,38 @@
+{
+  "os-5-23": {
+    "file": "figures/openstax/os-5-23.jpg",
+    "w": 696,
+    "h": 780,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.23",
+      "section": "5.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c77cb33282790d2cc1017254476c484fd5cc5bb5",
+      "page": "5-4-diseases-disorders-and-injuries-of-the-integumentary-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/c77cb33282790d2cc1017254476c484fd5cc5bb5",
+    "alt": "Front and back outlines of an adult body shaded by region with percentages of body surface. The head and neck together are 9%, each upper limb is 9%, the trunk front and back together is 36%, each lower limb is 18%, and the genital area is 1%.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.23",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-5-22": {
+    "file": "figures/openstax/os-5-22.jpg",
+    "w": 820,
+    "h": 446,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.22",
+      "section": "5.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/cb3c5eec1e4ddb8abb7b47ec6c59f00c7d45228b",
+      "page": "5-4-diseases-disorders-and-injuries-of-the-integumentary-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/cb3c5eec1e4ddb8abb7b47ec6c59f00c7d45228b",
+    "alt": "Three blocks of skin in sequence, each cut through one hair follicle with a sebaceous gland beside it. In the first, the upper follicle is swollen and plugged by a pale mass of shed cells and oily secretion. In the second, the plug is larger, bacteria are shown multiplying, and the tissue around it is pink with mild inflammation. In the third, the swollen follicle has burst into the surrounding dermis, which is bright red with marked inflammation.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.22",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

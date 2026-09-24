@@ -314,7 +314,7 @@
     "misconception": "a contracting muscle always shortens",
     "q": "A man slowly lowers a heavy box from chest height to the floor, bending his elbows. What is the muscle that bends his elbow doing?",
     "options": [
-      "Relaxing completely, so that gravity alone lowers the box",
+      "Relaxing completely while gravity lowers the box",
       "Contracting while it lengthens",
       "Contracting while shortening, pulling the box down",
       "Contracting isometrically, at a fixed length"
@@ -367,10 +367,10 @@
     "figure": "os-10-14",
     "q": "A muscle fiber is stretched to 160 percent of its resting sarcomere length and then stimulated. Using the graph, what happens and why?",
     "options": [
-      "At its maximum, because more stretch stores more force in the fiber",
-      "Low, because little filament overlap remains",
-      "Tension is zero, because thick filaments hit the Z discs",
-      "Tension is normal, because length does not affect tension"
+      "Maximal: the stretch stores extra force in the fiber",
+      "Low: little filament overlap remains",
+      "Zero: the thick filaments hit the Z discs",
+      "Unchanged: length has no effect on tension"
     ],
     "correct": 1,
     "why": {

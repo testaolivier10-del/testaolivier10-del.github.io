@@ -338,9 +338,9 @@
     ],
     "q": "A deep cut severs the nerve to a man's forearm muscles, and the axons do not regrow. Compared with a forearm kept in a cast for the same time, how will his muscles change?",
     "options": [
-      "Less atrophy, because the fibers are not being strained",
-      "The same atrophy, because both muscles are unused",
-      "Hypertrophy, because the fibers contract on their own",
+      "Milder atrophy than in the cast",
+      "About the same atrophy as in the cast",
+      "Hypertrophy as the fibers contract on their own",
       "Worse atrophy, ending in fat and scar"
     ],
     "correct": 3,
@@ -488,10 +488,10 @@
     ],
     "q": "You walk slowly across a room, then jump as high as you can. Which fibers in your calf muscles are active in each task?",
     "options": [
-      "Walking: fast glycolytic only. Jumping: slow oxidative only",
+      "Walking: fast glycolytic. Jumping: slow oxidative",
       "Walking: all three types equally. Jumping: all three equally",
       "Walking: mainly slow oxidative. Jumping: all three types",
-      "Walking: none. Jumping: fast glycolytic only"
+      "Walking: none. Jumping: fast glycolytic"
     ],
     "correct": 2,
     "why": {

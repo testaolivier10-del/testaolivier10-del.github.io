@@ -1,0 +1,34 @@
+{
+  "os-10-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.10",
+      "section": "10.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1463f0ef934552382ad130bf14cd23dd9e1e779a",
+      "page": "10-3-muscle-fiber-contraction-and-relaxation"
+    },
+    "alt": "Two drawings of the same sarcomere, one above the other, with brackets under each marking the zigzag discs at the ends, the light bands, the dark band and the zone at its center. Above, relaxed: green thin filaments reach in from the discs but leave a wide gap in the middle, where the purple thick filaments show bare shafts. Below, contracted, with arrows pressing in from both ends: the discs are closer together, the thin filaments overlap the thick filaments almost to the center, myosin heads are attached to them, the light bands and the central zone are much narrower, and the dark band is the same width as before.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.10",
+    "labels": [],
+    "w": 1100,
+    "h": 1007,
+    "ext": "jpg"
+  },
+  "os-10-11": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.11",
+      "section": "10.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/86ea61f9cc667f8fdba8e214b3cefcb16b60676e",
+      "page": "10-3-muscle-fiber-contraction-and-relaxation"
+    },
+    "alt": "Four panels in sequence, each showing a beaded thin filament above a purple thick filament, with small calcium circles around. First, a myosin head carrying ADP and phosphate attaches to the thin filament. Second, the head swings, arrows show the thin filament pulled along, and ADP and phosphate leave. Third, an ATP attaches to the head and the head comes free of the thin filament. Fourth, the head, now carrying ADP and phosphate again, is shown cocked back and ready, beside calcium bound to the thin filament.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.11",
+    "labels": [],
+    "w": 811,
+    "h": 1259,
+    "ext": "jpg"
+  }
+}

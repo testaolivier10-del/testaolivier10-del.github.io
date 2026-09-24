@@ -1,0 +1,48 @@
+{
+  "topic": "smooth-cardiac-muscle",
+  "hook": "<p>Ms. Grant, 31, is giving birth. Every three minutes the muscular wall of her uterus tightens for about a minute, then eases, and she cannot stop or start the waves by choosing to. For nine months the same wall stretched to hold a growing baby without squeezing hard. Both behaviors come from smooth muscle, which uses the same actin and myosin as the muscles of her arms but switches them on in a completely different way.</p>",
+  "prereq": [
+    {
+      "q": "What does a gap junction do between two cells?",
+      "options": ["Lets ions pass directly from one cell's cytoplasm to the next", "Rivets the cells together against pulling", "Seals the space between them so nothing leaks through"],
+      "correct": 0,
+      "why": "A gap junction is a set of channels joining two cells' cytoplasm, so ions, and with them electrical changes, pass straight from cell to cell. Desmosomes rivet cells; tight junctions seal them.",
+      "review": "cell-junctions"
+    },
+    {
+      "q": "In skeletal muscle, what does calcium bind to switch on contraction?",
+      "options": ["Myosin heads", "Troponin", "Actin directly"],
+      "correct": 1,
+      "why": "Calcium released from the SR binds troponin, which moves tropomyosin off the binding sites on actin so cross-bridges can form.",
+      "review": "excitation-contraction"
+    },
+    {
+      "q": "Which muscle tissue is striated and joined by intercalated discs?",
+      "options": ["Smooth muscle", "Skeletal muscle", "Cardiac muscle"],
+      "correct": 2,
+      "why": "Cardiac muscle is striated like skeletal muscle, but its short, branched fibers are joined end to end by intercalated discs.",
+      "review": "muscle-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-24",
+    "caption": "A relaxed and a contracted smooth muscle fiber. Hide the labels and name the structures that anchor the thin filaments and the filaments that link them."
+  },
+  "chain": [
+    { "cause": "A stimulus, such as stretch of the wall or a spreading wave from a pacesetter cell, depolarizes a smooth muscle fiber.", "effect": "Voltage-gated calcium channels in the sarcolemma open, and calcium flows in from the extracellular fluid." },
+    { "cause": "Calcium in the cytosol rises and binds calmodulin.", "effect": "Calcium–calmodulin activates myosin light-chain kinase." },
+    { "cause": "Myosin light-chain kinase moves phosphate from ATP onto the myosin heads.", "effect": "The phosphorylated heads bind actin and cross-bridges cycle." },
+    { "cause": "Cross-bridges pull thin filaments anchored to dense bodies.", "effect": "The dense bodies are drawn together, and the fiber shortens and puckers; gap junctions spread the signal, so the whole sheet contracts." },
+    { "cause": "Calcium is pumped away and myosin phosphatase removes phosphate from heads still attached to actin.", "effect": "Those latch-bridges detach very slowly, so tension is held for a long time on little ATP until the fiber relaxes." }
+  ],
+  "misconception": {
+    "wrong": "All muscle contracts the same way: calcium binds troponin, and tropomyosin moves off actin.",
+    "right": "That is true of skeletal and cardiac muscle. Smooth muscle has no troponin. Its calcium, much of it from outside the cell, binds calmodulin, which activates myosin light-chain kinase; the kinase phosphorylates the myosin heads, and only then can they bind actin. The switch is on the thick filament, not the thin one."
+  },
+  "check": ["anp-smooth-cardiac-muscle-3", "anp-smooth-cardiac-muscle-5", "anp-smooth-cardiac-muscle-6", "anp-smooth-cardiac-muscle-8", "anp-smooth-cardiac-muscle-10", "anp-smooth-cardiac-muscle-14", "anp-smooth-cardiac-muscle-16"],
+  "summary": "<p>Smooth muscle fibers have no sarcomeres: thin filaments are anchored to dense bodies linked by intermediate filaments, and myosin heads line the whole thick filament, so the fibers shorten far and work over a wide range of lengths. Calcium, much of it entering from outside the cell, binds calmodulin; calcium–calmodulin activates myosin light-chain kinase, which phosphorylates myosin so cross-bridges can cycle. Latch-bridges hold tension for hours on little ATP. Single-unit (visceral) smooth muscle forms gap-junction-linked sheets driven by pacesetter cells and stretch; multi-unit smooth muscle is controlled fiber by fiber by its nerves. The stress-relaxation response lets hollow organs fill without a rise in pressure. Cardiac muscle is striated and uses troponin, but its fibers are linked by gap junctions, some fire on their own (autorhythmicity), calcium entry triggers release from the SR, its long action potential prevents tetanus, and it is almost entirely aerobic.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "topic": "bone-calcium",
+  "hook": "<p>Mrs. Chen, 66, is being treated for breast cancer. Over two weeks she has become weak, thirsty, sleepy and confused, and her bowels have almost stopped. Her blood calcium is 14.2 mg/dL, far above normal. The cancer has spread to her bones, and the tumor cells there are driving her osteoclasts to dissolve bone faster than her kidneys can clear the calcium. Her symptoms all follow from one fact: calcium outside cells sets how easily nerves and muscles fire.</p>",
+  "prereq": [
+    {
+      "q": "In a negative feedback loop, what does the effector do?",
+      "options": ["It detects the change in the regulated variable", "It compares the variable with the set point", "It produces the response that moves the variable back toward the set point"],
+      "correct": 2,
+      "why": "The sensory receptor detects the change, the control center compares it with the set point, and the effector carries out the response that reverses the change.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "Which channels open at threshold and cause the rapid depolarization at the start of an action potential in a neuron?",
+      "options": ["Voltage-gated sodium channels", "Potassium leak channels", "Ligand-gated chloride channels"],
+      "correct": 0,
+      "why": "At threshold, voltage-gated sodium channels open, sodium rushes in, and the membrane depolarizes rapidly.",
+      "review": "action-potential-basics"
+    },
+    {
+      "q": "Which bone cell releases calcium from bone into the blood?",
+      "options": ["Osteoblast", "Osteoclast", "Osteocyte"],
+      "correct": 1,
+      "why": "Osteoclasts dissolve bone mineral with acid and digest collagen with enzymes, releasing calcium and phosphate into the blood.",
+      "review": "bone-histology"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Blood calcium falls below its set point.", "effect": "Fewer calcium ions bind the receptor protein on the cells of four small glands behind the thyroid, and they release more calcium-raising hormone." },
+    { "cause": "The hormone acts on osteoblasts in bone and on the kidney tubules.", "effect": "Osteoclasts resorb more bone, the kidneys return more calcium to the blood and excrete more phosphate, and the kidneys activate more vitamin D." },
+    { "cause": "Activated vitamin D acts on the intestinal lining.", "effect": "Over a day or more, the intestine absorbs more calcium from food." },
+    { "cause": "Calcium enters the blood from bone, kidneys and intestine.", "effect": "Blood calcium rises to its set point, more calcium binds the gland cells, and hormone release falls: negative feedback." }
+  ],
+  "misconception": {
+    "wrong": "A low blood calcium makes muscles weak, because muscles need calcium to contract.",
+    "right": "Low calcium makes nerves and muscles overexcitable, not weak. Calcium ions outside the cell act as a brake on voltage-gated sodium channels; with fewer of them, the channels open with little stimulus and nerves fire on their own, causing tingling, cramps and tetany. It is a high calcium that dampens excitability and causes weakness."
+  },
+  "check": ["anp-bone-calcium-2", "anp-bone-calcium-3", "anp-bone-calcium-5", "anp-bone-calcium-6", "anp-bone-calcium-10", "anp-bone-calcium-11", "anp-bone-calcium-17"],
+  "summary": "<p>Total blood calcium is held between about 8.5 and 10.5 mg/dL; about half is free Ca2+, the form cells sense. Calcium triggers muscle contraction, neurotransmitter release and clotting steps, forms bone mineral, and, from outside the cell, acts as a brake on voltage-gated sodium channels. So hypocalcemia makes nerves and muscles overexcitable (tingling, tetany, seizures), and hypercalcemia makes them less excitable (weakness, confusion, a slow gut) and causes thirst and stones. In the blood calcium feedback loop, cells of four small glands behind the thyroid sense low calcium and release a calcium-raising hormone that acts on bone (more resorption), the kidneys (keep calcium, lose phosphate, activate vitamin D) and, through vitamin D, the intestine (more absorption). The thyroid's calcium-lowering hormone plays only a minor role in adults. By mass balance, a long-term shortfall in calcium absorption is covered by bone. Bone health needs dietary calcium, vitamin D, protein and weight-bearing exercise.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

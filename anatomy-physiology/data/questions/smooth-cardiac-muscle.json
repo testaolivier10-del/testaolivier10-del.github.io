@@ -1,0 +1,558 @@
+[
+  {
+    "id": "anp-smooth-cardiac-muscle-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In smooth muscle, which protein binds calcium and starts the chain of events leading to contraction?",
+    "options": [
+      "Troponin",
+      "Calmodulin",
+      "Myoglobin",
+      "Tropomyosin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Smooth muscle has no troponin. Calcium binds calmodulin, and calcium–calmodulin activates myosin light-chain kinase.",
+      "options": [
+        "Troponin is the calcium sensor in skeletal and cardiac muscle. Smooth muscle lacks it.",
+        "Correct. Calmodulin is smooth muscle's calcium sensor.",
+        "Myoglobin binds oxygen, not calcium.",
+        "Tropomyosin is present on smooth muscle thin filaments, but it does not bind calcium and is not the switch."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-2",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Put the steps of smooth muscle contraction in order.",
+    "options": [
+      "Depolarization opens calcium channels in the sarcolemma",
+      "Calcium enters from the extracellular fluid",
+      "Calcium binds calmodulin",
+      "Calcium–calmodulin activates myosin light-chain kinase",
+      "The kinase phosphorylates myosin heads",
+      "Myosin heads bind actin and cross-bridges cycle"
+    ],
+    "why": {
+      "correct": "Calcium enters through voltage-gated channels, binds calmodulin, and calcium–calmodulin switches on myosin light-chain kinase. The kinase phosphorylates the myosin heads, which can then bind actin and cycle."
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-3",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: calcium binds calmodulin → ____ → myosin heads are phosphorylated → cross-bridges cycle.",
+    "options": [
+      "Tropomyosin moves off actin's binding sites",
+      "Troponin changes shape",
+      "Myosin light-chain kinase is activated",
+      "Myosin phosphatase is activated"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Calcium–calmodulin binds and activates myosin light-chain kinase, the enzyme that phosphorylates the myosin heads.",
+      "options": [
+        "Tropomyosin shifting off actin is the skeletal muscle switch, triggered by troponin. In smooth muscle the switch is on myosin.",
+        "Smooth muscle has no troponin.",
+        "Correct. MLCK is the enzyme calcium–calmodulin turns on.",
+        "Myosin phosphatase removes phosphate and causes relaxation; it is the opposite step."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-4",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described smooth muscle contraction. One step is wrong. Which one?",
+    "options": [
+      "A stimulus raises calcium in the cytosol, much of it from outside the cell",
+      "Calcium binds troponin on the thin filaments",
+      "Myosin light-chain kinase phosphorylates the myosin heads",
+      "Thin filaments pull the dense bodies closer together"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Smooth muscle has no troponin. In smooth muscle, calcium binds calmodulin in the cytosol, and the switch acts on myosin rather than on the thin filament.",
+      "options": [
+        "This step is right. Much of smooth muscle's calcium enters from the extracellular fluid.",
+        "This is the error. Smooth muscle uses calmodulin, not troponin.",
+        "This step is right. Phosphorylation lets the myosin heads bind actin and cycle.",
+        "This step is right. Dense bodies anchor the thin filaments, so sliding pulls them together."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An experimental drug blocks myosin light-chain kinase in the smooth muscle of a strip of intestine. The strip is then stimulated. Predict the change in each variable, compared with a strip without the drug.",
+    "variables": [
+      {
+        "name": "Calcium entering the fibers",
+        "answer": "none",
+        "why": "The drug acts after calcium entry; the calcium channels still open when the fibers depolarize."
+      },
+      {
+        "name": "Calcium bound to calmodulin",
+        "answer": "none",
+        "why": "Calmodulin still binds the calcium that enters; the block is on the kinase that calcium–calmodulin activates."
+      },
+      {
+        "name": "Phosphorylated myosin heads",
+        "answer": "down",
+        "why": "With the kinase blocked, no phosphate is moved onto the myosin heads."
+      },
+      {
+        "name": "Force of contraction",
+        "answer": "down",
+        "why": "Unphosphorylated myosin heads cannot bind actin and cycle, so little force develops despite the calcium."
+      }
+    ],
+    "why": {
+      "correct": "Calcium still rises and still binds calmodulin, but calcium–calmodulin cannot switch on the blocked kinase. Myosin heads stay unphosphorylated and do not cycle, so the strip barely contracts."
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "energy"
+    ],
+    "q": "The smooth muscle in artery walls stays partly contracted all day while using very little ATP. What explains this?",
+    "options": [
+      "Its cross-bridges never detach, as in rigor mortis",
+      "It makes its ATP without using mitochondria at all",
+      "It stays in complete tetanus from constant nerve firing",
+      "Latch-bridges that cycle very slowly"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When myosin heads are dephosphorylated while still attached to actin, they detach and reattach very slowly. These latch-bridges hold tension for hours at a small fraction of the ATP cost skeletal muscle would pay.",
+      "options": [
+        "Rigor happens when there is no ATP at all. Latch-bridges do detach, only slowly, and the vessel can still relax.",
+        "Smooth muscle does have mitochondria; the saving comes from spending less ATP, not from making it differently.",
+        "Tetanus is a skeletal muscle response to rapid firing and costs a lot of ATP. Smooth muscle holds tension through the latch state.",
+        "Correct. Slowly cycling latch-bridges hold tension cheaply."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mrs. Dube takes a calcium channel blocker, a drug that blocks voltage-gated calcium channels in the smooth muscle of her arteries. Why does this widen her arteries?",
+    "options": [
+      "Less calcium enters the fibers, so less binds calmodulin",
+      "The drug blocks troponin in the artery wall",
+      "The drug stops acetylcholine release at the neuromuscular junctions of the arteries",
+      "More calcium is stored in the SR, which strengthens relaxation"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Arterial smooth muscle depends heavily on calcium entering from the extracellular fluid. Blocking the channels lowers cytosolic calcium, less calcium–calmodulin forms, fewer myosin heads are phosphorylated, the muscle relaxes and the vessel widens.",
+      "options": [
+        "Correct. Less calcium entry means less activation of the calmodulin switch.",
+        "Smooth muscle has no troponin.",
+        "Smooth muscle has no neuromuscular junctions; its nerve fibers release transmitter from swellings along their axons.",
+        "Blocking entry reduces the calcium available; it does not load extra into the SR, and relaxation comes from less calcium in the cytosol."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "As Mr. Yusuf's urinary bladder slowly fills from 50 mL to 400 mL over three hours, the pressure inside it barely rises. Which property of its smooth muscle explains this?",
+    "options": [
+      "Tetanus of the bladder wall's smooth muscle",
+      "Stress-relaxation of the wall",
+      "Autorhythmicity of pacesetter cells",
+      "Rigor of the bladder's cross-bridges"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each increase in volume stretches the wall and raises tension briefly, then the smooth muscle slowly lets its tension fall back while staying at the new length. This stress-relaxation response keeps pressure low as the bladder fills.",
+      "options": [
+        "Tetanus is a sustained skeletal muscle contraction; a contracting wall would raise pressure, not keep it low.",
+        "Correct. Stress-relaxation lets the wall accommodate each new volume.",
+        "Autorhythmicity describes cells that fire on their own; it would cause contractions, not a quiet fill.",
+        "Rigor means locked cross-bridges from a lack of ATP; it would stiffen the wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "The arrector pili muscles in your skin contract fiber by fiber when their nerve fibers signal them, and they rarely contract on their own. What kind of smooth muscle are they?",
+    "options": [
+      "Single-unit smooth muscle",
+      "Multi-unit smooth muscle",
+      "Visceral smooth muscle",
+      "Cardiac muscle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Few gap junctions, contraction only when each fiber's own nerve endings fire, and little spontaneous activity are the marks of multi-unit smooth muscle.",
+      "options": [
+        "Single-unit smooth muscle has many gap junctions, contracts as a sheet and is often spontaneous.",
+        "Correct. Nerve-by-nerve control of individual fibers is multi-unit.",
+        "Visceral smooth muscle is another name for single-unit smooth muscle.",
+        "Cardiac muscle is found only in the heart and is striated."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A surgeon removes a short loop of intestine and places it in warm, oxygenated fluid with no nerve connections. Its wall keeps contracting in slow, regular, coordinated waves. What makes this possible?",
+    "options": [
+      "Motor neurons inside the fluid stimulate each fiber separately",
+      "Each fiber contracts on its own, at its own random rhythm",
+      "Stored acetylcholine is released at neuromuscular junctions",
+      "Pacesetter waves spread by gap junctions"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Intestinal smooth muscle is single-unit. Pacesetter cells produce slow, spontaneous waves of depolarization, and gap junctions spread the resulting action potentials through the sheet, so it contracts as one unit without any nerve input.",
+      "options": [
+        "The loop has no nerve connections, and the fluid contains no motor neurons.",
+        "Random, independent contractions would not give regular, coordinated waves; the fibers are coupled.",
+        "Smooth muscle has no neuromuscular junctions, and the nerves have been disconnected.",
+        "Correct. Pacesetter rhythm plus gap junctions coordinates the sheet."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every feature of single-unit smooth muscle.",
+    "options": [
+      "Fibers linked by many gap junctions",
+      "Spontaneous rhythmic activity from pacesetter cells",
+      "Each fiber controlled by its own nerve endings",
+      "Contraction in response to stretch",
+      "Found in the walls of the stomach, intestines and urinary bladder",
+      "Striations from lined-up sarcomeres"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "Single-unit smooth muscle is a gap-junction-linked sheet with pacesetter activity that contracts when stretched, and it lines most hollow organs. Individual nerve control describes multi-unit smooth muscle, and no smooth muscle has sarcomeres.",
+      "options": [
+        "Correct. Gap junctions let the sheet act as one unit.",
+        "Correct. Pacesetter cells set its rhythm.",
+        "This is multi-unit smooth muscle.",
+        "Correct. Stretch depolarizes the fibers and can trigger contraction.",
+        "Correct. These walls are mostly single-unit smooth muscle.",
+        "All smooth muscle is nonstriated; its filaments are not arranged in sarcomeres."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-12",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-24",
+    "q": "Compare the relaxed and contracted fibers. Why does the contracted fiber bulge and pucker instead of simply getting shorter?",
+    "options": [
+      "Its sarcomeres shorten unevenly along the fiber",
+      "Diagonal filaments pull dense bodies together",
+      "The intermediate filaments contract and squeeze the cell",
+      "Water rushes into the cell each time it contracts"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Thin filaments anchor to dense bodies, and the filaments run at angles in a crisscross lattice. When cross-bridges pull, the dense bodies are drawn together along many diagonal lines, so the fiber shortens, widens and puckers.",
+      "options": [
+        "Smooth muscle has no sarcomeres.",
+        "Correct. Diagonal pulls on the dense body network shorten and bunch the fiber.",
+        "Intermediate filaments link the dense bodies but do not contract; actin and myosin generate the force.",
+        "The fiber's volume stays about the same; it changes shape, it does not take in water."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-13",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-22",
+    "pin": "intercalated-disc",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Intercalated disc",
+      "Dense body",
+      "Z disc",
+      "Sarcolemma"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The zigzag junction where two cardiac muscle fibers meet end to end is an intercalated disc. It holds desmosomes and gap junctions.",
+      "options": [
+        "Correct. Intercalated discs join cardiac fibers end to end.",
+        "Dense bodies are found in smooth muscle, where they anchor thin filaments.",
+        "Z discs lie inside each fiber, marking the ends of sarcomeres, not the junction between two fibers.",
+        "The sarcolemma is the membrane around a single fiber. The intercalated disc is where two fibers' membranes interlock."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why can't cardiac muscle be driven into tetanus the way skeletal muscle can?",
+    "options": [
+      "Cardiac muscle has no troponin on its thin filaments",
+      "Cardiac fibers are not linked by gap junctions",
+      "Its action potential lasts almost as long as its twitch",
+      "Cardiac muscle has no sarcoplasmic reticulum to store calcium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "An action potential in a ventricular muscle fiber lasts about 250 to 300 ms, and the fiber cannot fire again until it has nearly relaxed. New action potentials cannot pile up during a contraction, so twitches cannot sum, and the heart relaxes and fills between beats.",
+      "options": [
+        "Cardiac muscle does use troponin, as skeletal muscle does.",
+        "Cardiac fibers are linked by gap junctions in their intercalated discs; that spreads the beat, and it has nothing to do with preventing tetanus.",
+        "Correct. The long action potential blocks summation.",
+        "Cardiac muscle has an SR; it is smaller than skeletal muscle's but supplies most of the calcium."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "After a heart transplant, the donor heart has no nerve connections to the recipient's brain. Within minutes of restoring blood flow, it starts beating on its own. Which feature of cardiac muscle explains this?",
+    "options": [
+      "Stress-relaxation",
+      "Autorhythmicity",
+      "Recruitment of motor units",
+      "Latch-bridges"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "About 1 percent of cardiac fibers are specialized to drift to threshold on their own and fire repeatedly. Their action potentials spread through gap junctions to the rest of the heart, so it beats without any nerve input. Nerves only adjust the rate.",
+      "options": [
+        "Stress-relaxation is smooth muscle's slow fall in tension after a stretch.",
+        "Correct. Autorhythmicity lets the heart set its own rhythm.",
+        "Cardiac muscle has no motor units; every fiber contracts every beat.",
+        "Latch-bridges are a smooth muscle mechanism for holding tension cheaply."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Skeletal muscle grades its force by recruiting more motor units. How does the heart produce a stronger beat?",
+    "options": [
+      "By recruiting fibers that were resting during the last beat",
+      "By summing beats into tetanus",
+      "More calcium released per beat",
+      "By switching its fibers over to anaerobic glycolysis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Every cardiac fiber contracts with every beat, because gap junctions spread each action potential through the whole heart. Force is graded instead by how much calcium each beat releases (and by how far filling stretches the fibers), which sets how many cross-bridges form.",
+      "options": [
+        "There are no resting fibers to recruit: all of them contract every beat.",
+        "The heart cannot sum beats into tetanus, because each action potential lasts nearly as long as the contraction.",
+        "Correct. More calcium per beat gives a stronger contraction.",
+        "Cardiac muscle is almost entirely aerobic and has little anaerobic capacity; switching fuel pathways does not make beats stronger."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "energy"
+    ],
+    "q": "During a heart attack, blood flow to part of the heart wall stops. Skeletal muscle can keep working for a minute or more without blood flow, but cardiac muscle is damaged within minutes. Which feature best explains the difference?",
+    "options": [
+      "Cardiac muscle has no myoglobin",
+      "Its near-total reliance on aerobic respiration",
+      "Cardiac muscle has no mitochondria",
+      "Its fibers are too thick for oxygen to diffuse into them"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Cardiac muscle makes nearly all its ATP in its many mitochondria, which fill about a third of each fiber, and has little capacity for anaerobic glycolysis. Without oxygen from the blood, its ATP supply fails quickly.",
+      "options": [
+        "Cardiac muscle is rich in myoglobin, but that small store lasts only seconds.",
+        "Correct. Dependence on aerobic respiration makes it vulnerable.",
+        "Cardiac muscle has more mitochondria than almost any other tissue.",
+        "Cardiac fibers are short and thin, and a capillary runs beside nearly every one."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Smooth muscle can shorten further, and produce force over a wider range of lengths, than skeletal muscle. Which structural feature contributes to this?",
+    "options": [
+      "Its sarcomeres are longer than those of skeletal muscle",
+      "Its Z discs are closer together",
+      "Myosin heads along each whole thick filament",
+      "It has more T tubules"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With myosin heads along the full length of each thick filament and no sarcomere walls to stop them, thin filaments can slide a long way while still overlapping heads, so smooth muscle keeps producing force as it shortens or stretches far.",
+      "options": [
+        "Smooth muscle has no sarcomeres.",
+        "Smooth muscle has no Z discs; dense bodies anchor its thin filaments.",
+        "Correct. Heads along the whole thick filament allow long sliding.",
+        "Smooth muscle has no T tubules."
+      ]
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-19",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "structure-function",
+      "energy"
+    ],
+    "q": "Calcium in an artery's smooth muscle falls after a period of contraction, and myosin phosphatase removes phosphate from heads that are still attached to actin. Predict the change in each variable as the fiber enters the latch state.",
+    "variables": [
+      {
+        "name": "Rate of cross-bridge cycling",
+        "answer": "down",
+        "why": "Dephosphorylated heads that stay attached detach and reattach very slowly."
+      },
+      {
+        "name": "ATP used per second",
+        "answer": "down",
+        "why": "Each cycle splits one ATP, so slower cycling uses far less ATP."
+      },
+      {
+        "name": "Tension in the vessel wall",
+        "answer": "none",
+        "why": "The attached latch-bridges keep holding the thin filaments, so tension stays close to its level before the fall in calcium."
+      },
+      {
+        "name": "Myosin light-chain kinase activity",
+        "answer": "down",
+        "why": "With less calcium, less calcium–calmodulin forms, so less of the kinase is active."
+      }
+    ],
+    "why": {
+      "correct": "In the latch state, calcium and kinase activity fall and myosin heads lose their phosphate while still attached. They cycle slowly, so tension is held at a small ATP cost."
+    }
+  },
+  {
+    "id": "anp-smooth-cardiac-muscle-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "all muscle is switched on by calcium binding troponin",
+    "q": "A drug that blocks troponin would stop contraction in which muscle types?",
+    "options": [
+      "Smooth muscle alone",
+      "Skeletal and smooth muscle",
+      "Cardiac and smooth muscle",
+      "Skeletal and cardiac muscle"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Skeletal and cardiac muscle both use troponin as their calcium sensor on the thin filament. Smooth muscle has no troponin; it uses calmodulin and myosin light-chain kinase, so it would be unaffected.",
+      "options": [
+        "Smooth muscle is the one type that does not use troponin.",
+        "Smooth muscle lacks troponin, so it would keep working.",
+        "Smooth muscle lacks troponin; cardiac muscle would be affected.",
+        "Correct. Both striated muscle types rely on troponin."
+      ]
+    }
+  }
+]

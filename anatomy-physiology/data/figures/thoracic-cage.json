@@ -1,0 +1,34 @@
+{
+  "os-7-32": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.32",
+      "section": "7.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e1cbee95a6b2d98480a003a7bc69809a859173d9",
+      "page": "7-4-the-thoracic-cage"
+    },
+    "alt": "Two front views. On the left, the breastbone on its own: a wide top piece with a dip in its upper edge and notches at its upper corners, a long middle piece joined to it at a slight ridge, and a small pointed tip below. On the right, the bony chest: twelve numbered ribs curving from the backbone around to the front, bars of cartilage joining the upper ribs to the breastbone, the lower cartilages joining each other along the lower edge of the cage, the two lowest ribs ending free, the collarbones across the top, and the gaps between the ribs.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.32",
+    "labels": [],
+    "w": 1100,
+    "h": 651,
+    "ext": "jpg"
+  },
+  "os-7-27": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.27",
+      "section": "7.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c734e2220a4134b53ed4f8df4c1223746743d645",
+      "page": "7-3-the-vertebral-column"
+    },
+    "alt": "The side view of two vertebrae of the chest region with a rib attached. The rounded end of the rib fits against pits on the sides of two neighboring vertebral bodies, a narrow part follows, and a small knob farther along the rib rests against the tip of a side process. The rib then bends at an angle and curves forward.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.27",
+    "labels": [],
+    "w": 738,
+    "h": 555,
+    "ext": "jpg"
+  }
+}

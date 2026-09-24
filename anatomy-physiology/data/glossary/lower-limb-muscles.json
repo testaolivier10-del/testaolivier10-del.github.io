@@ -1,0 +1,37 @@
+{
+  "gluteal-muscles": {
+    "def": "Muscles of the buttock and side of the hip: the gluteus maximus (extends and laterally rotates the thigh), the gluteus medius and minimus (abduct and medially rotate it and hold the pelvis level), the tensor fasciae latae (pulls on the iliotibial tract) and deep lateral rotators such as the piriformis.",
+    "roots": [["glute-", "buttock"], ["maximus", "largest"], ["medius", "middle"], ["minimus", "smallest"], ["piri-", "pear"]],
+    "say": "GLOO-tee-us; TEN-sor FASH-ee-ee LAY-tee; pir-ih-FOR-miss"
+  },
+  "anterior-thigh": {
+    "def": "The muscles of the front of the thigh: the quadriceps femoris (rectus femoris and vastus lateralis, medialis and intermedius), which extends the knee through the quadriceps tendon, and the sartorius, plus the iliopsoas (psoas major and iliacus), the prime mover of hip flexion. The femoral triangle lies at the top of the front of the thigh.",
+    "roots": [["quadri-", "four"], ["-ceps", "heads"], ["femor-", "thigh"], ["vastus", "huge"], ["sartor", "tailor"], ["psoa", "loin"]],
+    "say": "KWAD-rih-seps FEM-or-iss; sar-TOR-ee-us; eye-lee-oh-SO-us"
+  },
+  "medial-thigh": {
+    "def": "The muscles of the inner thigh: the adductor longus, adductor brevis, adductor magnus, gracilis and pectineus. They start on the pubis (and ischium) and adduct the thigh.",
+    "roots": [["ad-", "toward"], ["magnus", "large"], ["gracilis", "slender"]],
+    "say": "GRASS-ih-liss; pek-TIN-ee-us"
+  },
+  "posterior-thigh": {
+    "def": "The hamstrings: the biceps femoris, semitendinosus and semimembranosus on the back of the thigh. They start on the ischial tuberosity, flex the knee and extend the hip, and their tendons form the upper borders of the popliteal fossa behind the knee.",
+    "roots": [["semi-", "half"], ["tendin-", "tendon"], ["poplit-", "back of the knee"]],
+    "say": "sem-ee-ten-dih-NO-sus; pop-LIT-ee-ul"
+  },
+  "leg-muscles": {
+    "def": "Muscles of the leg below the knee: the front group (tibialis anterior, extensor digitorum longus) dorsiflexes the foot, the side group (fibularis longus and brevis) everts it, and the back group (gastrocnemius, soleus, tibialis posterior) plantar flexes it, the gastrocnemius and soleus through the calcaneal (Achilles) tendon.",
+    "roots": [["gastr-", "belly"], ["kneme", "leg"], ["solea", "sole"], ["fibula", "pin"]],
+    "say": "gas-trok-NEE-mee-us; SO-lee-us"
+  },
+  "im-injection-sites": {
+    "def": "The three standard sites for injecting into muscle: the deltoid site (two to three finger widths below the acromion; small volumes), the ventrogluteal site (gluteus medius and minimus, found from the greater trochanter, anterior superior iliac spine and iliac crest) and the vastus lateralis site (middle third of the outer thigh; preferred in infants).",
+    "roots": [["intra-", "within"], ["ventro-", "front"]],
+    "say": "ven-tro-GLOO-tee-ul"
+  },
+  "muscle-compartments": {
+    "def": "Spaces in each limb segment enclosed by deep fascia, intermuscular septa and bone, each holding muscles with a shared action. Because fascia barely stretches, swelling inside one raises its pressure until blood flow stops: compartment syndrome.",
+    "roots": [["inter-", "between"]],
+    "say": ""
+  }
+}

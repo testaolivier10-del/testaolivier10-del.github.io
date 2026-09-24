@@ -1,0 +1,32 @@
+{
+  "skin-barrier": {
+    "def": "The ways intact skin keeps water in and microbes, chemicals and UV light out: dead keratin-filled cells joined tightly and sealed by lipid sheets, a dry, constantly shed, slightly acidic surface (about pH 5), germ-killing molecules in sweat and sebum, Langerhans cells, and melanin.",
+    "roots": [],
+    "say": ""
+  },
+  "skin-sensation": {
+    "def": "The skin's touch receptors (tactile receptors): sensory nerve endings that detect touch, pressure, vibration, temperature and pain. Free nerve endings are bare nerve tips; encapsulated endings, such as tactile (Meissner) corpuscles in the dermal papillae and lamellated (Pacinian) corpuscles deep in the dermis, are wrapped in a capsule.",
+    "roots": [["tact-", "touch"], ["lamell-", "thin plate"]],
+    "say": "MYSE-ner, pah-SIN-ee-an"
+  },
+  "heat-transfer": {
+    "def": "The four routes by which the body trades heat with its surroundings, each driven by a gradient: radiation (infrared rays to cooler surfaces), conduction (direct contact), convection (moving air or water) and evaporation (water turning to vapor, about 580 kcal per liter of sweat).",
+    "roots": [["con-", "together, with"], ["-duct", "to lead"], ["-vect", "to carry"]],
+    "say": ""
+  },
+  "vitamin-d-synthesis": {
+    "def": "The making of vitamin D in the skin: UVB light converts 7-dehydrocholesterol in keratinocytes into previtamin D3, which body warmth turns into vitamin D3 (cholecalciferol). Extra UV makes inactive products, so sunlight cannot cause an overdose.",
+    "roots": [["chole-", "bile"], ["calci-", "calcium"], ["-fer", "carrying"]],
+    "say": "koh-lee-kal-SIF-er-ol"
+  },
+  "vitamin-d-activation": {
+    "def": "The two steps that turn vitamin D into its active hormone: the liver adds a hydroxyl group (making 25-hydroxyvitamin D) and the kidneys add a second. Too little leads to poor calcium absorption; in children the soft, bowing bones of rickets.",
+    "roots": [],
+    "say": "RIK-ets"
+  },
+  "skin-thermoregulation": {
+    "def": "The negative feedback loop that holds body temperature, with the skin as sensor and effector. When the body warms, dermal blood flow and sweating rise and more heat is lost; when it cools, dermal blood flow falls and shivering of skeletal muscle makes heat.",
+    "roots": [["therm-", "heat"]],
+    "say": ""
+  }
+}

@@ -4,11 +4,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-16",
     "pin": "external-oblique",
     "q": "Name the pinned muscle, the outermost flat muscle on the side of the abdomen.",
-    "options": ["Internal oblique", "Transversus abdominis", "External oblique", "Rectus abdominis"],
+    "options": [
+      "Internal oblique",
+      "Transversus abdominis",
+      "External oblique",
+      "Rectus abdominis"
+    ],
     "correct": 2,
     "why": {
       "correct": "The external oblique is the outermost of the three flat abdominal muscles. It originates on the lower eight ribs, and its fascicles run down and toward the midline.",
@@ -25,11 +32,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-16",
     "pin": "transversus-abdominis",
     "q": "In the window cut through the abdominal wall, name the pinned deepest layer, whose fibers run horizontally.",
-    "options": ["Transversus abdominis", "Internal oblique", "External oblique", "Quadratus lumborum"],
+    "options": [
+      "Transversus abdominis",
+      "Internal oblique",
+      "External oblique",
+      "Aponeurosis of internal oblique"
+    ],
     "correct": 0,
     "why": {
       "correct": "The transversus abdominis is the innermost flat muscle. Its fibers run horizontally around the belly like a belt, and compressing the abdomen is its main job.",
@@ -37,7 +51,7 @@
         "Correct. Horizontal fibers in the deepest layer mark the transversus abdominis.",
         "The internal oblique is the middle layer, with fibers running up and toward the midline.",
         "The external oblique is the outermost layer, with fibers running down and toward the midline.",
-        "The quadratus lumborum is in the back wall of the abdomen, between the twelfth rib and the iliac crest."
+        "The aponeurosis of the internal oblique is the flat tendon sheet of the middle layer, running toward the midline; it is not the deepest muscle layer."
       ]
     }
   },
@@ -46,11 +60,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-16",
     "pin": "quadratus-lumborum",
     "q": "In this view of the back wall of the abdomen, name the pinned four-sided muscle between the twelfth rib and the iliac crest.",
-    "options": ["Transversus abdominis", "Erector spinae", "Rectus abdominis", "Quadratus lumborum"],
+    "options": [
+      "Transversus abdominis",
+      "Erector spinae",
+      "Rectus abdominis",
+      "Quadratus lumborum"
+    ],
     "correct": 3,
     "why": {
       "correct": "The quadratus lumborum runs from the iliac crest to the twelfth rib and the lumbar transverse processes, forming part of the back wall of the abdomen.",
@@ -67,17 +88,24 @@
     "type": "image",
     "level": "recall",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-15",
     "pin": "iliocostalis-lumborum",
     "q": "Name the pinned part of the erector spinae, the outermost of its three columns in the lower back.",
-    "options": ["Spinalis", "Longissimus", "Iliocostalis", "Splenius"],
+    "options": [
+      "Spinalis",
+      "Longissimus thoracis",
+      "Iliocostalis",
+      "Splenius"
+    ],
     "correct": 2,
     "why": {
       "correct": "The iliocostalis is the outermost (most lateral) of the three columns of the erector spinae, running from the iliac crest to the ribs. In the lower back it is the iliocostalis lumborum.",
       "options": [
         "The spinalis is the most medial column, running between the spinous processes.",
-        "The longissimus is the middle column.",
+        "The longissimus, here the longissimus thoracis, is the middle column.",
         "Correct. The outermost column is the iliocostalis.",
         "The splenius lies at the back of the neck and upper back, not in the lower back."
       ]
@@ -88,11 +116,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-17",
     "pin": "central-tendon-of-diaphragm",
     "q": "In this view of the diaphragm from below, name the pinned flat sheet of tendon at the top of the dome.",
-    "options": ["Linea alba", "Central tendon", "Epicranial aponeurosis", "Rectus sheath"],
+    "options": [
+      "Linea alba",
+      "Central tendon",
+      "Epicranial aponeurosis",
+      "Rectus sheath"
+    ],
     "correct": 1,
     "why": {
       "correct": "The diaphragm's muscle fibers run from the lower edge of the rib cage and the lumbar vertebrae to its central tendon, which they pull down when they contract.",
@@ -109,11 +144,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-18",
     "pin": "external-intercostal",
     "q": "In this close-up of one space between two ribs, name the pinned outer layer, whose fibers run down and forward.",
-    "options": ["Internal intercostal", "Innermost intercostal", "External intercostal", "External oblique"],
+    "options": [
+      "Internal intercostal",
+      "Innermost intercostal",
+      "External intercostal",
+      "External oblique"
+    ],
     "correct": 2,
     "why": {
       "correct": "The external intercostals form the outer layer between the ribs. Their fibers run down and forward, and they lift the ribs when you breathe in.",
@@ -130,11 +172,18 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-11-19",
     "pin": "levator-ani",
     "q": "Name the pinned funnel-shaped muscle of the pelvic floor, made of the pubococcygeus and iliococcygeus.",
-    "options": ["Levator ani", "Coccygeus", "Transversus abdominis", "Quadratus lumborum"],
+    "options": [
+      "Levator ani",
+      "Coccygeus",
+      "Transversus abdominis",
+      "Quadratus lumborum"
+    ],
     "correct": 0,
     "why": {
       "correct": "The levator ani is the broad funnel of the pelvic floor. Its parts, the pubococcygeus and iliococcygeus, run from the pubis and the side walls of the pelvis to the coccyx.",
@@ -151,7 +200,9 @@
     "type": "order",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A surgeon cuts through the side wall of the abdomen, away from the midline. Put the layers in the order the scalpel meets them, from outside in.",
     "options": [
       "Skin",
@@ -176,7 +227,9 @@
     "type": "single",
     "level": "apply",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A golfer twists his trunk to the right. Which pair of abdominal muscles works together to turn it?",
     "options": [
       "Right external oblique and left internal oblique",
@@ -200,7 +253,9 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which statements about the rectus abdominis are correct? Select all that apply.",
     "options": [
       "It originates on the pubic crest and pubic symphysis",
@@ -209,7 +264,11 @@
       "Its fibers run horizontally around the belly",
       "It lies in the back wall of the abdomen"
     ],
-    "correct": [0, 1, 2],
+    "correct": [
+      0,
+      1,
+      2
+    ],
     "why": {
       "correct": "The rectus abdominis runs straight up the front of the abdomen from the pubis to the xiphoid process and ribs 5 to 7, and it flexes the spine and compresses the abdomen.",
       "options": [
@@ -226,7 +285,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Dana, 32, had her second baby three months ago. Since then she leaks a little urine when she coughs, sneezes or jumps. Which muscle's weakness best explains this?",
     "options": [
       "Rectus abdominis",
@@ -250,7 +311,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What happens when the diaphragm contracts?",
     "options": [
       "Its dome flattens and moves down, making the chest cavity taller",
@@ -274,7 +337,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "You blow hard to put out birthday candles. Which intercostal muscles are contracting, and what do they do to the ribs?",
     "options": [
       "External intercostals, lifting the ribs",
@@ -298,7 +363,9 @@
     "type": "predict",
     "level": "analyze",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "You cough hard. Predict what happens to each variable at the moment of the cough.",
     "variables": [
       {
@@ -326,9 +393,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "The aponeuroses of the three flat abdominal muscles → wrap the rectus abdominis as the rectus sheath → the sheaths of the right and left sides meet in the midline at the ____.",
-    "options": ["Central tendon", "Linea alba", "Inguinal ligament", "Tendinous intersections"],
+    "options": [
+      "Central tendon",
+      "Linea alba",
+      "Inguinal ligament",
+      "Tendinous intersections"
+    ],
     "correct": 1,
     "why": {
       "correct": "The linea alba (white line) is the collagen seam where the two rectus sheaths meet, from the xiphoid process to the pubic symphysis.",
@@ -345,7 +419,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "These steps describe a breath in at rest. One step is wrong. Find it.",
     "options": [
       "The diaphragm's muscle fibers contract",
@@ -371,7 +447,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "The perineum is divided into two triangles by a line between the ischial tuberosities. What does the back (anal) triangle contain?",
     "options": [
       "The anal opening",
@@ -395,11 +473,13 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Sitting quietly and breathing normally, you let a breath out. Which muscles contract to push the air out?",
     "options": [
       "The internal intercostals",
-      "The abdominal muscles",
+      "The abdominal muscles, squeezing the abdomen to push the diaphragm up",
       "The diaphragm",
       "None: the lungs and chest wall recoil on their own"
     ],
@@ -419,7 +499,9 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Turning your head to look over your right shoulder uses the right splenius. Which other neck muscle works with it?",
     "options": [
       "The right sternocleidomastoid",
@@ -443,7 +525,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "What makes the separate blocks of a \"six-pack\"?",
     "options": [
       "The three flat muscles overlapping",
@@ -467,7 +551,9 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Before lifting a heavy box, a weightlifter takes a deep breath, holds it and tightens his belly. How does this help protect his spine?",
     "options": [
       "It stretches the erector spinae so they can relax during the lift",

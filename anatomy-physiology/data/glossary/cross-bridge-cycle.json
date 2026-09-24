@@ -1,0 +1,22 @@
+{
+  "sliding-filament": {
+    "def": "The explanation of contraction in which thin filaments slide past thick filaments toward the center of the sarcomere, so the Z discs move closer while neither filament changes length. The I bands and H zone narrow; the A band keeps its width.",
+    "roots": [],
+    "say": ""
+  },
+  "cross-bridge": {
+    "def": "A myosin head bound to actin, bridging from a thick filament to a thin filament. It exists only while the head is attached.",
+    "roots": [],
+    "say": ""
+  },
+  "cross-bridge-cycle": {
+    "def": "The repeating sequence by which a myosin head moves a thin filament: the cocked head binds actin; releasing phosphate drives the power stroke, which pulls the thin filament toward the M line; a new ATP binding frees the head; and splitting that ATP recocks it. It runs while calcium is on troponin and ATP is available.",
+    "roots": [],
+    "say": ""
+  },
+  "rigor-mortis": {
+    "def": "The stiffening of muscles after death: ATP runs out, calcium leaks into the sarcoplasm, and myosin heads bind actin but cannot detach, locking the filaments together. It starts within a few hours and passes off over one to three days as the proteins break down.",
+    "roots": [["rigor", "stiffness (Latin)"], ["mortis", "of death (Latin)"]],
+    "say": "RIG-er MOR-tis"
+  }
+}

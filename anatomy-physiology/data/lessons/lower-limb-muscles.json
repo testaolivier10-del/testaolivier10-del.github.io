@@ -1,0 +1,48 @@
+{
+  "topic": "lower-limb-muscles",
+  "hook": "<p>Marcus, 22, breaks his tibia in a soccer tackle. Six hours after it is set, the front of his leg is tense and the pain is far worse than a fracture should cause. When the nurse gently points his toes, he cries out. His foot pulse is still there. The surgeon takes him straight back to the operating room to slit open the tough sheet of fascia around the muscles on the front of his leg.</p>",
+  "prereq": [
+    {
+      "q": "Which bone marking is the bump you sit on?",
+      "options": ["The ischial tuberosity", "The greater trochanter", "The anterior superior iliac spine"],
+      "correct": 0,
+      "why": "The ischial tuberosity, on the ischium, bears your weight when you sit. The greater trochanter is the bump on the upper outer femur, and the anterior superior iliac spine is the front point of the iliac crest.",
+      "review": "lower-limb"
+    },
+    {
+      "q": "Pointing the toes downward, as when you press a gas pedal, is which movement?",
+      "options": ["Dorsiflexion", "Plantar flexion", "Eversion"],
+      "correct": 1,
+      "why": "Plantar flexion moves the sole downward, pointing the toes. Dorsiflexion lifts the toes toward the shin, and eversion turns the sole outward.",
+      "review": "body-movements"
+    },
+    {
+      "q": "What is the deep fascia?",
+      "options": ["A layer of fat under the skin", "Dense connective tissue that wraps muscles and holds them in groups", "The connective tissue around a single muscle fiber"],
+      "correct": 1,
+      "why": "Deep fascia is dense connective tissue beneath the subcutaneous layer that wraps muscles and binds them into groups. The fat under the skin is the subcutaneous tissue, and the endomysium surrounds single fibers.",
+      "review": "skin-layers"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-11-29",
+    "caption": "Muscles of the hip and thigh. Hide the labels and name the hip flexors, the four parts of the quadriceps femoris and the sartorius on the front, the adductors on the inner thigh, and the gluteal muscles and hamstrings behind."
+  },
+  "chain": [
+    { "cause": "A tibia fracture bleeds and the injured muscles swell inside the anterior compartment of the leg.", "effect": "The volume inside the compartment grows." },
+    { "cause": "The deep fascia and bones around the compartment barely stretch.", "effect": "The pressure inside the compartment rises." },
+    { "cause": "The rising pressure squeezes the thin-walled veins shut.", "effect": "Blood cannot drain out, more fluid is trapped, and the pressure climbs further." },
+    { "cause": "The pressure rises high enough to stop blood flow through the capillaries.", "effect": "The muscles and nerves in the compartment are starved of oxygen, causing severe pain that worsens when those muscles are stretched." },
+    { "cause": "A surgeon slits the fascia along the compartment.", "effect": "The pressure falls and blood flow returns before the muscle dies." }
+  ],
+  "misconception": {
+    "wrong": "If the pulse in the foot is present, compartment syndrome is ruled out.",
+    "right": "The pressure inside the main artery is far higher than the pressure that stops capillary flow in a compartment, so blood can still pulse through the artery while the muscles around it starve. A lost pulse is a late sign. Pain out of proportion to the injury and pain on passive stretch come first."
+  },
+  "check": ["anp-lower-limb-muscles-1", "anp-lower-limb-muscles-4", "anp-lower-limb-muscles-10", "anp-lower-limb-muscles-11", "anp-lower-limb-muscles-12", "anp-lower-limb-muscles-13", "anp-lower-limb-muscles-18", "anp-lower-limb-muscles-21"],
+  "summary": "<p>The iliopsoas flexes the hip and the gluteus maximus extends it; the gluteus medius and minimus abduct the thigh and hold the pelvis level. The quadriceps femoris extends the knee through the quadriceps tendon, patella and patellar ligament, and the rectus femoris also flexes the hip. The adductors adduct the thigh; the hamstrings flex the knee and extend the hip. In the leg, the front group dorsiflexes, the side group everts and the back group plantar flexes the foot through the calcaneal tendon. Deep fascia divides each limb segment into compartments of muscles with one shared action; trapped pressure in one causes compartment syndrome. The deltoid, ventrogluteal and vastus lateralis injection sites are chosen for thick muscle, clear landmarks and no large nerves nearby.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" }
+  ]
+}
