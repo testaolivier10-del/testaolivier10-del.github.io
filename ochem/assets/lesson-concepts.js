@@ -323,12 +323,13 @@
       9:['parent-chain','locant-rules'],
       10:['parent-chain'] } },
 
-    'naming-substituents': { n:8, steps:{
-      2:['alphabetization'],
-      3:['locant-rules','alphabetization'],
-      4:['alphabetization'],
-      6:['locant-rules'],
-      7:['locant-rules','alphabetization'] } },
+    'naming-substituents': { n:13, steps:{
+      3:['locant-rules'],
+      5:['alphabetization'],
+      7:['locant-rules','alphabetization'],
+      8:['alphabetization'],
+      11:['locant-rules'],
+      12:['locant-rules','alphabetization'] } },
 
     'naming-functional-groups': { n:13, steps:{
       2:['group-priority'],
