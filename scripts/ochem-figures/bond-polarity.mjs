@@ -138,7 +138,7 @@ function waterSum(s0, len = 58, labels = true) {
   let s = vec(s0, p1, { cross: false }) + vec(p1, p2, { cross: false }) + vec(s0, p2, { thick: true, cross: false });
   if (labels) {
     s += T(s0.x + v1.x / 2 + 12, s0.y + v1.y / 2 + 14, 'O–H 1', 'fg-tag', { anchor: 'start' });
-    s += T(p1.x - v2.x / 2 + 16, p1.y + v2.y / 2 - 4, 'O–H 2', 'fg-tag', { anchor: 'start' });
+    s += T(p1.x + v2.x / 2 + 14, p1.y + v2.y / 2 - 4, 'O–H 2', 'fg-tag', { anchor: 'start' });
     s += T(s0.x - 12, (s0.y + p2.y) / 2 + 4, 'sum', 'fg-tag', { anchor: 'end' });
   }
   return s;
@@ -310,7 +310,7 @@ FIGURES.push({
     s += T(195, 232, 'sum = 0, so μ = 0', 'fg-tag-mut');
     s += T(567, 32, 'H₂O: bent', 'fg-lbl');
     s += water(P(480, 104), { len: 58 }).s;
-    s += T(668, 54, 'tip to tail', 'fg-tag-mut');
+    s += T(652, 124, 'tip to tail', 'fg-tag-mut');
     s += waterSum(P(652, 196), 56);
     s += T(567, 232, 'sum points to the O side: μ = 1.85 D');
     return s;
@@ -526,7 +526,7 @@ FIGURES.push({
     const a1 = acetone(P(68, 104), { len: 46, dmBelow: true }), a2 = acetone(P(222, 104), { len: 46, dmBelow: true });
     s += `<line class="fg-dash-hi" x1="${f1(a1.o.x + 24)}" y1="${f1(a1.o.y)}" x2="${f1(a2.c.x - 18)}" y2="${f1(a2.c.y)}" style="stroke-width:2.4"></line>`;
     s += a1.s + a2.s;
-    s += T(170, 172, 'O of one next to C of the next');
+    s += T(170, 172, 'dashed: dipole–dipole attraction');
     return s;
   },
   caption: 'The δ− oxygen of one molecule sits by the δ+ carbon of the next.',
