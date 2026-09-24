@@ -802,7 +802,7 @@ FIGURES.push({
     s += atom(c.x, c.y, 'C', { kind: 'warn' });
     s += atom(o.x, o.y, 'O');
     s += lonePair(o.x, o.y, -55) + lonePair(o.x, o.y, 55);
-    s += tag(170, 132, 'formaldehyde');
+    s += tag(262, 40, 'formaldehyde');
     return s;
   },
   caption: 'Formaldehyde. The highlighted carbon is the one asked about.',

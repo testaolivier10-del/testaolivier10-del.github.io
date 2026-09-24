@@ -543,12 +543,33 @@ FIGURES.push({
     s += T(170, 28, 'ethanol + ethanol', 'fg-lbl');
     const e = ethanolPair(P(150, 72));
     s += e.s;
-    s += T(222, 100, 'donor: H on O', 'fg-tag', { anchor: 'start' });
-    s += T(248, 136, 'H bond', 'fg-tag', { anchor: 'start' });
-    s += T(260, 172, 'acceptor:', 'fg-tag', { anchor: 'start' }) + T(260, 187, 'lone pair', 'fg-tag', { anchor: 'start' });
+    s += T(192, 110, 'donor: H on O', 'fg-tag', { anchor: 'start' });
+    s += T(164, 146, 'H bond', 'fg-tag', { anchor: 'end' });
+    s += T(240, 168, 'acceptor:', 'fg-tag', { anchor: 'start' }) + T(240, 183, 'lone pair', 'fg-tag', { anchor: 'start' });
     return s;
   },
   caption: 'The dashed line runs from a hydrogen on oxygen to a lone pair on the next oxygen.',
+});
+
+/* The tap-the-arrow step: an O–H bond with two candidate dipole arrows, each
+   a tappable group. No δ labels, which would give the answer away. */
+FIGURES.push({
+  id: 'l-click-dipole',
+  lessons: ['bond-polarity'],
+  viewBox: '0 0 340 196',
+  alt: 'An O–H bond drawn horizontally, hydrogen on the left with electronegativity 2.20 and oxygen on the right with 3.44. Above the bond, arrow A points right at the oxygen with a cross bar at the hydrogen end. Below the bond, arrow B points left at the hydrogen with a cross bar at the oxygen end.',
+  build() {
+    let s = panel(4, 4, 332, 188);
+    const h = P(120, 98), o = P(220, 98);
+    s += bnd(h, o, 'H', 'O') + A(h, 'H') + A(o, 'O');
+    s += T(120, 136, 'EN 2.20') + T(220, 136, 'EN 3.44');
+    s += '<g class="hit" data-key="toO" style="cursor:pointer"><rect x="96" y="36" width="148" height="34" style="fill:transparent"></rect>' +
+      dip(h, o, { x: 0, y: -1 }, 44, -4, -4) + T(80, 58, 'A', 'fg-lbl') + '</g>';
+    s += '<g class="hit" data-key="toH" style="cursor:pointer"><rect x="96" y="150" width="148" height="34" style="fill:transparent"></rect>' +
+      dip(o, h, { x: 0, y: 1 }, 68, -4, -4) + T(80, 171, 'B', 'fg-lbl') + '</g>';
+    return s;
+  },
+  caption: 'Tap A or B.',
 });
 
 export default FIGURES;

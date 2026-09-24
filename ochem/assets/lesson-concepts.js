@@ -724,9 +724,11 @@
       6:['tetrahedral-intermediate'],
       7:['tetrahedral-intermediate','nucleophile-recognition'] } },
 
-    'orbitals': { n:8, steps:{
-      3:['valence-electrons'], 4:['valence-electrons'],
-      5:['valence-electrons'], 7:['valence-electrons','hybridization-assignment'] } },
+    'orbitals': { n:16, steps:{
+      11:['valence-electrons'],
+      12:['valence-electrons'],
+      13:['valence-electrons'],
+      15:['valence-electrons'] } },
 
     'pka': { n:7, steps:{
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],

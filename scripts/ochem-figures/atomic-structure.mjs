@@ -230,7 +230,7 @@ FIGURES.push({
     s += text(170, 142, 'top: group number; bottom: valence electrons', { cls: 'fg-tag-mut', size: 11 });
     s += text(170, 162, 'groups 13 to 18: subtract 10', { cls: 'fg-tag', size: 11 });
     s += panel(22, 176, 20, 14, { kind: 'hi', r: 4 });
-    s += text(48, 187, 'shaded: the elements organic chemistry uses most', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
+    s += text(48, 187, 'shaded: used most in organic chemistry', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
     return s;
   },
   caption: 'Groups 1 and 2 give the count directly. The ten columns of groups 3 to 12 are missing from this row, so from group 13 on, subtract ten.',
