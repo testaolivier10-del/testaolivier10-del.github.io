@@ -100,13 +100,15 @@ FIGURES.push({
   anchor: 'the pull is felt more strongly.</p>',
   lessons: ['electronegativity'],
   viewBox: '0 0 340 296',
-  alt: 'A cut-down periodic table with each cell showing an element symbol and its Pauling electronegativity, shaded darker for larger values. Columns are groups 1, 2 and 13 to 17. Row 1: H 2.20. Row 2: Li 0.98, Be 1.57, B 2.04, C 2.55, N 3.04, O 3.44, F 3.98. Row 3: Na 0.93, Mg 1.31, Al 1.61, Si 1.90, P 2.19, S 2.58, Cl 3.16. Under chlorine: Br 2.96 in row 4 and I 2.66 in row 5. An arrow along the bottom points right, labeled increases across a row. An arrow up the left side points up, labeled increases up a group. Fluorine, top right, is the darkest cell.',
+  alt: 'A cut-down periodic table with each cell showing an element symbol and its Pauling electronegativity, shaded darker for larger values. Columns are groups 1, 2 and 13 to 17, and rows are numbered 1 to 5. Row 1: H 2.20. Row 2: Li 0.98, Be 1.57, B 2.04, C 2.55, N 3.04, O 3.44, F 3.98. Row 3: Na 0.93, Mg 1.31, Al 1.61, Si 1.90, P 2.19, S 2.58, Cl 3.16. Under chlorine: Br 2.96 in row 4 and I 2.66 in row 5. An arrow along the bottom points right, labeled increases across a row. An arrow up the left side points up, labeled increases up a group. Fluorine, top right, is the darkest cell.',
   build() {
     let s = '';
     const x0 = 46, y0 = 40, w = 40, h = 40, gx = 2;
     const groups = ['1', '2', '13', '14', '15', '16', '17'];
     groups.forEach((g, i) => { s += tgMut(x0 + i * (w + gx) + w / 2, 28, g); });
     s += tgMut(x0 - 4, 14, 'group', { anchor: 'start' });
+    s += tgMut(37, 28, 'row');
+    for (let r = 0; r < 5; r++) s += tgMut(37, y0 + r * (h + gx) + 24, String(r + 1));
     for (const [sym, v, col, row] of TREND) {
       const x = x0 + col * (w + gx), y = y0 + row * (h + gx);
       const op = r2(0.06 + ((v - 0.9) / 3.1) * 0.5);
@@ -124,8 +126,8 @@ FIGURES.push({
     const yb = y0 + 5 * (h + gx) + 14;
     s += arrow(P(x0, yb), P(x0 + 7 * (w + gx) - gx, yb));
     s += tg(x0 + 3.5 * (w + gx), yb + 20, 'increases across a row →');
-    s += arrow(P(24, y0 + 5 * (h + gx) - 4), P(24, y0));
-    s += `<text class="fg-tag" x="14" y="${y0 + 2.5 * (h + gx)}" text-anchor="middle" transform="rotate(-90 14 ${y0 + 2.5 * (h + gx)})">increases up a group</text>`;
+    s += arrow(P(22, y0 + 5 * (h + gx) - 4), P(22, y0));
+    s += `<text class="fg-tag" x="12" y="${y0 + 2.5 * (h + gx)}" text-anchor="middle" transform="rotate(-90 12 ${y0 + 2.5 * (h + gx)})">increases up a group</text>`;
     return s;
   },
   caption: 'The stronger a cell’s shading, the harder that atom pulls. Follow row 2 from left to right, then the group 17 column from bottom to top.',
@@ -140,7 +142,7 @@ FIGURES.push({
   anchor: 'Chloromethane, CH₃Cl',
   lessons: ['electronegativity'],
   viewBox: '0 0 340 250',
-  alt: 'Chloromethane, CH3Cl, with every atom labeled. The carbon has one hydrogen in the page pointing up and to the left, one hydrogen on a solid wedge and one on a hashed wedge below, and a chlorine in the page to the right, with its three lone pairs drawn. The C–Cl bond is highlighted, with a shaded cloud bulging toward chlorine; chlorine is marked δ− and carbon δ+. A label by the upper hydrogen reads C–H, difference 0.35, treated as nonpolar. A label by the chlorine reads C–Cl, difference 0.61, polar. A label at the bottom reads the carbon is electron-poor.',
+  alt: 'Chloromethane, CH3Cl, with every atom labeled. The carbon has one hydrogen in the page pointing up and to the left, one hydrogen on a solid wedge and one on a hashed wedge below, and a chlorine in the page to the right, with its three lone pairs drawn. The C–Cl bond is highlighted, with a shaded cloud bulging toward chlorine; chlorine is marked δ− and carbon δ+. A label by the upper hydrogen reads C–H, difference 0.35, treated as nonpolar. A label by the chlorine reads C–Cl, difference 0.61, polar. A label at the bottom reads the δ+ carbon has less than its share of the electrons.',
   build() {
     let s = '';
     const c = P(120, 122);
@@ -159,7 +161,7 @@ FIGURES.push({
     s += tgMut(hUp.x + 18, hUp.y - 10, 'treated as nonpolar', { anchor: 'start' });
     s += tg(330, 184, 'C–Cl: ΔEN 0.61', { anchor: 'end' });
     s += tg(330, 198, 'polar', { anchor: 'end' });
-    s += tg(170, 238, 'the δ+ carbon is the electron-poor site');
+    s += tg(170, 238, 'the δ+ carbon has less than its share');
     return s;
   },
   caption: 'Plain lines lie in the page, the solid wedge comes toward you and the hashed wedge goes away. Only the highlighted bond has a lopsided cloud.',
@@ -174,7 +176,7 @@ FIGURES.push({
   section: 'electronegativity',
   anchor: 'Polar bonds do not guarantee a polar molecule.',
   viewBox: '0 0 340 380',
-  alt: 'Two molecules made only of polar bonds, every atom labeled. Top: carbon dioxide drawn as a straight line, O=C=O, each oxygen with two lone pairs. Each oxygen is marked δ− and the carbon δ+. Under each C=O bond an arrow points from carbon out toward that oxygen. The two arrows are the same length and point in opposite directions, labeled equal and opposite: they cancel. Bottom: carbon tetrachloride, a carbon with four chlorines, two in the page, one on a solid wedge toward the reader and one on a hashed wedge away. Beside each C–Cl bond an arrow points out toward the chlorine. A label says four equal pulls, spread evenly in space, cancel. Both molecules are labeled no overall polarity.',
+  alt: 'Two molecules made only of polar bonds, every atom labeled. Top: carbon dioxide drawn as a straight line, O=C=O, each oxygen with two lone pairs. Each oxygen is marked δ− and the carbon δ+. Under each C=O bond an arrow points from carbon out toward that oxygen. The two arrows are the same length and point in opposite directions, labeled equal and opposite: they cancel. Bottom: carbon tetrachloride, a carbon with four chlorines, two in the page, one on a solid wedge toward the reader and one on a hashed wedge away. Each chlorine is marked δ− and the carbon δ+. Beside each C–Cl bond an arrow points out toward the chlorine. A label says four equal pulls, spread evenly in space, cancel. Both molecules are labeled no overall polarity.',
   build() {
     let s = '';
     // CO2
@@ -206,9 +208,11 @@ FIGURES.push({
     s += pull(up, -1) + pull(left, -1) + pull(w, 1) + pull(hs, -1);
     for (const p of [up, left, w, hs]) s += X(p, 'Cl', 'hi');
     s += C(k);
-    s += tg(252, 214, 'four equal pulls,', { anchor: 'middle' });
-    s += tg(252, 228, 'spread evenly', { anchor: 'middle' });
-    s += tg(252, 242, 'in space: they cancel', { anchor: 'middle' });
+    s += dPlus(k.x + 22, k.y - 24);
+    s += dMinus(up.x + 30, up.y + 4) + dMinus(left.x - 8, left.y + 30) + dMinus(w.x + 30, w.y + 12) + dMinus(hs.x + 20, hs.y - 20);
+    s += tg(270, 206, 'four equal pulls,', { anchor: 'middle' });
+    s += tg(270, 220, 'spread evenly in', { anchor: 'middle' });
+    s += tg(270, 234, 'space: they cancel', { anchor: 'middle' });
     s += tgMut(170, 368, 'no overall polarity');
     return s;
   },
@@ -246,11 +250,12 @@ function acidRow(y0, nCH2) {
   // pull arrows over each bond between Cl and C1, pointing toward Cl,
   // shrinking and fading as they get further away
   const pts = [cl, ...chain, c1];
+  const scale = [1, 0.62, 0.4, 0.22];
+  const fade = [1, 0.75, 0.5, 0.35];
   for (let i = 0; i < pts.length - 1; i++) {
     const a = pts[i + 1], b = pts[i];
-    const shrink = Math.min(i * 4, 8);
-    const muted = i >= 2;
-    s += arrow(P(a.x - 15 - shrink / 2, y0 - 21), P(b.x + 15 + shrink / 2, y0 - 21), { size: 6, muted });
+    const mid = (a.x + b.x) / 2, half = 13 * scale[i] + 3;
+    s += `<g opacity="${fade[i]}">` + arrow(P(mid + half, y0 - 21), P(mid - half, y0 - 21), { size: 6 }) + '</g>';
     s += tgMut((a.x + b.x) / 2, y0 + 17, String(i + 1));
   }
   return { s, c1 };
@@ -275,7 +280,7 @@ FIGURES.push({
     s += tg(10, 352, 'pKa 4.52, close to acetic acid’s 4.76: faded', { anchor: 'start' });
     return s;
   },
-  caption: 'The numbers count the bonds from chlorine to the carbon of the COOH group. The arrows over them show the pull toward chlorine; in the lower acid they shrink and fade before they get there.',
+  caption: 'The numbers count the bonds from chlorine to the carbon of the COOH group. The arrows over them show the pull toward chlorine, shrinking and fading bond by bond. In the lower acid they have almost gone by bond 4.',
 });
 
 /* ----------------------------------------------------------- en-pka-ladder ---
@@ -286,8 +291,8 @@ FIGURES.push({
   section: 'electronegativity',
   anchor: 'dies off with distance',
   lessons: ['electronegativity'],
-  viewBox: '0 0 340 290',
-  alt: 'Five acids in a table, each with its formula, its name, its pKa and a bar that grows as the acid gets stronger. Acetic acid, CH3–COOH, pKa 4.76, short bar. Chloroacetic acid, ClCH2–COOH, pKa 2.86, longer bar. Dichloroacetic acid, Cl2CH–COOH, pKa 1.29, longer still. Trichloroacetic acid, Cl3C–COOH, pKa 0.65, longest bar. Set apart below: 4-chlorobutanoic acid, Cl–CH2CH2CH2–COOH, pKa 4.52, a short muted bar almost the same as acetic acid.',
+  viewBox: '0 0 340 220',
+  alt: 'Four acids in a table, each with its formula, its name, its pKa and a bar that grows as the acid gets stronger. Acetic acid, CH3–COOH, pKa 4.76, short bar. Chloroacetic acid, ClCH2–COOH, pKa 2.86, longer bar. Dichloroacetic acid, Cl2CH–COOH, pKa 1.29, longer still. Trichloroacetic acid, Cl3C–COOH, pKa 0.65, longest bar.',
   build() {
     let s = '';
     s += tgMut(10, 20, 'acid', { anchor: 'start' });
@@ -298,7 +303,6 @@ FIGURES.push({
       { f: 'ClCH₂–COOH', n: 'chloroacetic acid', p: 2.86, y: 98 },
       { f: 'Cl₂CH–COOH', n: 'dichloroacetic acid', p: 1.29, y: 146 },
       { f: 'Cl₃C–COOH', n: 'trichloroacetic acid', p: 0.65, y: 194 },
-      { f: 'Cl–CH₂CH₂CH₂–COOH', n: '4-chlorobutanoic acid', p: 4.52, y: 262, mut: true },
     ];
     for (const r of rows) {
       s += text(10, r.y, r.f, { cls: 'fg-lbl', anchor: 'start' });
@@ -307,11 +311,9 @@ FIGURES.push({
       const w = 14 + ((4.9 - r.p) / 4.25) * 96;
       s += `<rect class="${r.mut ? 'fg-fill-mut' : 'fg-fill-hi'}" x="218" y="${r.y - 8}" width="${r2(w)}" height="14" rx="6" opacity="${r.mut ? 0.45 : r2(0.35 + (4.9 - r.p) / 4.25 * 0.6)}"></rect>`;
     }
-    s += rule(10, 226, 330, 226);
-    s += tgMut(10, 244, 'the same chlorine, moved two bonds further off:', { anchor: 'start' });
     return s;
   },
-  caption: 'Read the pKa column down the first four rows: each chlorine lowers it, by a smaller step each time. Then compare the last row with acetic acid.',
+  caption: 'Read the pKa column from top to bottom: each chlorine lowers it, by a smaller step each time.',
 });
 
 /* ---------------------------------------------------------- l-chlorobutane ---

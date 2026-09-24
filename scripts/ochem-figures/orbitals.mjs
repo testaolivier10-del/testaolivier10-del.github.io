@@ -165,7 +165,7 @@ function pAxes(c, show, opts = {}) {
   s += label(c.x + A + 8, c.y + 4, 'x', { size: 13 });
   s += label(c.x, c.y - A - 6, 'y', { size: 13 });
   const ze = add(c, zd, A * ZK + 12);
-  s += label(ze.x, ze.y + 6, 'z', { size: 13 });
+  s += label(ze.x + 14, ze.y + 4, 'z', { size: 13 });
   // Back half of pz first (it points away from the reader), then x and y,
   // then the front half of pz on top.
   if (show.z) s += lobe(c, ZDEG + 180, L * ZK, W, 'fg-orb-alt');
@@ -174,9 +174,9 @@ function pAxes(c, show, opts = {}) {
   if (show.z) s += lobe(c, ZDEG, L * ZK, W, 'fg-orb');
   s += nucleus(c);
   if (opts.zLabel) {
-    const tip = add(c, zd, L * ZK * 0.8);
-    s += lead(P(tip.x - 6, tip.y + 2), P(tip.x - 24, tip.y + 10));
-    s += tag(tip.x - 26, tip.y + 16, '2pz', { anchor: 'end' });
+    const tip = add(c, zd, L * ZK * 0.9);
+    s += lead(P(tip.x - 4, tip.y + 2), P(tip.x - 32, tip.y + 12));
+    s += tag(tip.x - 34, tip.y + 18, '2pz', { anchor: 'end' });
   }
   return s;
 }

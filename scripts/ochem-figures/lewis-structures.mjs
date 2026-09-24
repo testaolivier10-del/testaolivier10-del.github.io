@@ -433,7 +433,7 @@ FIGURES.push({
     return row(top, { w: 236, h: 232, mcy: 112, tagY: 198 }) +
       row(bottom, { x0: 138, y0: 260, w: 236, h: 232, mcy: 112, tagY: 198 });
   },
-  caption: 'Each condensed formula drawn out. The circled carbon is the one the brackets hang their groups on. In CH₃COOCH₃ the first O takes the double bond and the second (coral) continues the chain.',
+  caption: 'Each condensed formula drawn out. In the first four, the circled carbon is the one the brackets hang their groups on. In CH₃COOCH₃ the first O takes the double bond and the second (coral) continues the chain.',
 });
 
 FIGURES.push({
@@ -523,7 +523,7 @@ FIGURES.push({
         tags: ['!O: 1 bond, one below quota', '!6 − 6 − 1 = −1'] },
     ], { h: 180, mcy: 82, tagY: 150 });
   },
-  caption: 'One bond above quota gives +1; one bond below gives −1.',
+  caption: 'A bond in place of a lone pair gives +1; a lone pair in place of a bond gives −1.',
 });
 
 FIGURES.push({
@@ -540,8 +540,8 @@ FIGURES.push({
   lessons: ['lewis-structures'],
   viewBox: '0 0 340 136',
   alt: 'Ethoxide drawn without lone pairs or charge: a carbon with three H, bonded to a carbon with two H, bonded to an oxygen that has no other bond. A question mark sits beside the oxygen.',
-  build() { return ethanol(160, 58, 1, { anion: true, ask: true }) + plain(170, 126, 'CH₃CH₂O⁻, pairs and charge not yet drawn'); },
-  caption: 'Ethoxide, CH₃CH₂O⁻.',
+  build() { return ethanol(160, 58, 1, { anion: true, ask: true }) + plain(170, 126, 'ethoxide: pairs and charge not yet drawn'); },
+  caption: 'The ethoxide ion.',
 });
 
 const CO2 = [
