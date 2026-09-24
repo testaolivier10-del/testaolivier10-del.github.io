@@ -1,0 +1,66 @@
+{
+  "os-27-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.2",
+      "section": "27.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/042d21957f771b1d4f914c8ce874c5ca2fac7d65",
+      "page": "27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+    },
+    "alt": "Three drawings. A standing man with a box over the groin leads to side views of the external genitals, one with the foreskin and one without, showing the shaft, the rim and cap at the tip, and the scrotum. The large bottom drawing is a side view of the male pelvis cut down the midline: the bladder, the gland below it, the paired pouch-shaped glands behind the bladder, the tube running up from the testis over the bladder, the short duct through the gland, the urethra running the length of the penis, the three columns of spongy tissue in the penis, and the testis with the coiled tube on its back inside the scrotum.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.2",
+    "labels": [],
+    "w": 1100,
+    "h": 1190,
+    "ext": "jpg"
+  },
+  "os-27-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.3",
+      "section": "27.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/812d4f0375ca23ad5352e2a16b013f50b5a08d83",
+      "page": "27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+    },
+    "alt": "Three front views of the scrotum. The first shows its skin with a midline ridge. The second shows the muscle layer: thin smooth muscle under the skin, a dividing wall down the middle, and skeletal muscle strands wrapping each side. The third shows the deep tissues: each testis with the coiled tube on its back, and a cord rising from it that holds the sperm duct, an artery, a mesh of veins, a nerve and a lymphatic vessel.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.3",
+    "labels": [],
+    "w": 800,
+    "h": 352,
+    "ext": "jpg"
+  },
+  "os-27-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.4",
+      "section": "27.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/79fb628b116b4a7c8b7aa8a1a417b8e48aa2ce9a",
+      "page": "27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+    },
+    "alt": "A testis cut open in a side view, inside its coverings. Walls of connective tissue divide it into wedge-shaped lobules packed with coiled tubules. Straight tubules lead to a network at the back, then small ductules into the head of a comma-shaped coiled tube on the back of the testis, which runs down as its body and tail and turns up as the sperm duct into a cord that rises toward the groin, wrapped in a thin skeletal muscle.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.4",
+    "labels": [],
+    "w": 743,
+    "h": 686,
+    "ext": "jpg"
+  },
+  "os-27-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.7",
+      "section": "27.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/473ce6748c463468fd57ff3c64a0ac92cd986530",
+      "page": "27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+    },
+    "alt": "Four drawings of the penis. Top row, relaxed: a side view and a cross section showing two large columns of spongy tissue on top with an artery in each, a smaller column below surrounding the urethra, and veins near the surface. Bottom row, erect: the same views, with the arteries widened, the spongy tissue swollen with blood, and the surface veins squeezed flat. Numbered notes describe the three steps.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.7",
+    "labels": [],
+    "w": 781,
+    "h": 718,
+    "ext": "jpg"
+  }
+}

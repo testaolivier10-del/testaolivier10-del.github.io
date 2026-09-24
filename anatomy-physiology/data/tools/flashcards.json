@@ -8788,6 +8788,1178 @@
    "front": "Where does the thoracic duct return absorbed fat to the blood?",
    "back": "At the left venous angle, where the left internal jugular and left subclavian veins meet.",
    "why": "Chyle climbs from the cisterna chyli through the thoracic duct, so absorbed long-chain fat bypasses the liver on its first pass."
+  },
+  {
+   "id": "met-vit-which",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Fat-soluble vs water-soluble vitamins",
+   "front": "Fat-soluble vs water-soluble vitamins: which vitamins are in each group?",
+   "back": "Fat-soluble: A, D, E and K. Water-soluble: the eight B vitamins and vitamin C.",
+   "why": "Whether a vitamin dissolves in fat or in water decides how it is absorbed, carried, stored and how easily it builds up to a harmful level."
+  },
+  {
+   "id": "met-vit-absorb",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Fat-soluble vs water-soluble vitamins",
+   "front": "Fat-soluble vs water-soluble vitamins: how is each group absorbed?",
+   "back": "Fat-soluble: with dietary fat, in micelles and then chylomicrons into the lymph, so they need bile and pancreatic lipase. Water-soluble: by carriers across the intestinal lining straight into the blood (B12 also needs intrinsic factor).",
+   "why": "Fat-soluble vitamins dissolve in the fat droplets, so they follow fat through every step of its absorption; water-soluble ones dissolve in the gut fluid and cross like other small solutes."
+  },
+  {
+   "id": "met-vit-store",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Fat-soluble vs water-soluble vitamins",
+   "front": "Fat-soluble vs water-soluble vitamins: which group is stored, and which is more likely to reach a toxic level?",
+   "back": "Fat-soluble vitamins are stored in the liver and fat tissue, mostly for months, so they can build up (especially A and D). Water-soluble vitamins are stored little and the extra leaves in urine.",
+   "why": "A molecule that dissolves in fat stays in fat and liver cells; one that dissolves in water stays in the plasma, where the kidneys can remove the excess. Water-soluble is still not harmless: high doses of B6 damage nerves."
+  },
+  {
+   "id": "met-vit-bile",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Fat-soluble vs water-soluble vitamins",
+   "front": "A gallstone blocks the bile duct for weeks. Which vitamins run short, and which lack shows first?",
+   "back": "The fat-soluble vitamins A, D, E and K. Vitamin K runs short first, so bleeding is often the first sign.",
+   "why": "Without bile, fat and the vitamins dissolved in it are poorly absorbed. Vitamin K stores last only days to weeks, while the other fat-soluble vitamins are stored for months."
+  },
+  {
+   "id": "met-b12-years",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Fat-soluble vs water-soluble vitamins",
+   "front": "Why can B12 deficiency appear years after a person stops eating animal foods, when a lack of vitamin C shows within months?",
+   "back": "The liver holds a B12 store that lasts three to five years; the vitamin C store lasts only one to three months.",
+   "why": "B12 is the exception among water-soluble vitamins: it is stored in large amounts, so symptoms wait until the store is used up."
+  },
+  {
+   "id": "met-macro-micro",
+   "topic": "nutrition",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Macronutrients vs micronutrients: which are which, and which supply energy?",
+   "back": "Macronutrients (grams a day): carbohydrates, lipids, proteins and water; the first three supply energy. Micronutrients (milligrams or micrograms a day): vitamins and minerals, which supply no energy.",
+   "why": "Micronutrients let enzymes and other proteins work, for example as coenzymes, but they are not broken down for fuel."
+  },
+  {
+   "id": "met-kcal-per-gram",
+   "topic": "nutrition",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "How many kilocalories does your body get from 1 g of carbohydrate, protein, fat and alcohol?",
+   "back": "About 4, 4, 9 and 7 kcal per gram.",
+   "why": "Fat is mostly carbon–hydrogen bonds with few oxygen atoms, so each carbon can release more energy as it is oxidized. Alcohol supplies energy but is not a nutrient."
+  },
+  {
+   "id": "met-fat-share",
+   "topic": "nutrition",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "A sandwich has 40 g carbohydrate, 25 g protein and 12 g fat. Why is fat 29% of its energy but only 16% of its grams?",
+   "back": "Fat gives 12 × 9 = 108 kcal of the 368 kcal total, because each gram of fat gives more than twice the energy of a gram of carbohydrate or protein.",
+   "why": "Energy share depends on grams times kcal per gram, so always compare energy, not weight."
+  },
+  {
+   "id": "met-essential-meaning",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What makes a nutrient essential?",
+   "back": "Your body cannot make it, or cannot make it fast enough, so it must come from food.",
+   "why": "Glucose is not essential because the liver can make it from amino acids; lysine is, because no human cell can build it."
+  },
+  {
+   "id": "met-essential-aa",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why does a diet missing one essential amino acid stop protein building, even if the other amino acids are plentiful?",
+   "back": "Ribosomes stall where the missing amino acid is needed, so the protein is not finished, and the other amino acids are broken down for fuel.",
+   "why": "A protein needs every amino acid in its sequence at the moment it is added, and the body has no store of amino acids to wait with."
+  },
+  {
+   "id": "met-complementary",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why do grains and beans eaten on the same day make a complete protein supply?",
+   "back": "Grains are low in lysine and beans are low in methionine, so each supplies what the other lacks.",
+   "why": "A complete protein supply needs all 9 essential amino acids in useful amounts; complementary proteins cover each other’s gaps."
+  },
+  {
+   "id": "met-essential-fa",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Which two fatty acids are essential, and why can your cells not make them?",
+   "back": "Linoleic acid (omega-6) and alpha-linolenic acid (omega-3). Your cells cannot put a double bond near the tail end of a fatty acid chain.",
+   "why": "Both have a double bond 6 or 3 carbons from the tail end, a position human enzymes cannot make, so they must come from plant oils, nuts and seeds."
+  },
+  {
+   "id": "met-vitamin-energy",
+   "topic": "nutrition",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Does a B vitamin tablet give you energy?",
+   "back": "No. It contains 0 kcal. B vitamins are parts of coenzymes that help release energy from fuel, but they are not fuel themselves.",
+   "why": "Like a key that starts a car, a coenzyme lets the reaction run but adds nothing to the fuel supply."
+  },
+  {
+   "id": "met-vit-a-dark",
+   "topic": "nutrition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is poor vision in dim light the first sign of vitamin A lack?",
+   "back": "Retinal, made from vitamin A, is the light-absorbing part of rhodopsin, and rods run short of rhodopsin first.",
+   "why": "Some retinal is lost each time a rod responds to light and must be replaced from the blood; with too little vitamin A, rods, which work in dim light, fail first."
+  },
+  {
+   "id": "met-vit-k-factors",
+   "topic": "nutrition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does vitamin K let blood clot, and how does warfarin interfere?",
+   "back": "An enzyme that needs vitamin K adds carboxyl groups to clotting factors II, VII, IX and X so they can bind calcium. Warfarin blocks the recycling of vitamin K, so these factors stay unfinished.",
+   "why": "Unfinished factors cannot gather on platelet surfaces, so clotting slows."
+  },
+  {
+   "id": "met-folate",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why is folic acid advised for anyone who could become pregnant, not only after a pregnancy is known?",
+   "back": "The neural tube closes about four weeks after a pregnancy begins, often before it is known, and folate is needed to make DNA for its fast-dividing cells.",
+   "why": "A lack of folate at that time raises the risk of neural tube defects; adding folic acid to flour has cut them sharply."
+  },
+  {
+   "id": "met-scurvy",
+   "topic": "nutrition",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does a lack of vitamin C make gums bleed and old wounds reopen?",
+   "back": "Vitamin C keeps the iron in the enzymes that strengthen new collagen in its active form. Without it, new collagen is weak and is broken down, so vessel walls, gums and scars weaken.",
+   "why": "Collagen is always being replaced, so tissues that depend on it fail within one to three months of the vitamin running out, and recover within days once it returns."
+  },
+  {
+   "id": "met-iron-vit-c",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why is iron-deficiency anemia more common in people who eat no meat, and how does vitamin C help?",
+   "back": "Heme iron from meat is absorbed well; iron from plants is absorbed poorly. Vitamin C eaten at the same meal keeps plant iron in the form the intestine takes up best.",
+   "why": "Absorption can matter as much as intake: the same milligrams of iron are not equally available."
+  },
+  {
+   "id": "met-major-trace",
+   "topic": "nutrition",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Major vs trace minerals: how are they told apart? Give two examples of each.",
+   "back": "Major minerals are needed at more than 100 mg a day (calcium, potassium, sodium, magnesium); trace minerals at less than 100 mg a day (iron, iodine, zinc, selenium).",
+   "why": "The grouping is by the amount needed, not by importance: a lack of a trace mineral such as iodine can be as serious as a lack of calcium."
+  },
+  {
+   "id": "met-glycolysis-phases",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Energy-consuming vs energy-yielding phase of glycolysis",
+   "front": "Energy-consuming vs energy-yielding phase of glycolysis: ATP and NADH in each?",
+   "back": "Energy-consuming phase (steps 1 to 5): 2 ATP spent, no NADH. Energy-yielding phase (steps 6 to 10): 4 ATP and 2 NADH made. Net: 2 ATP, 2 NADH and 2 pyruvate per glucose.",
+   "why": "The first phase spends ATP to add phosphates and split the sugar; each three-carbon half then pays back more than was spent."
+  },
+  {
+   "id": "met-hexokinase-trap",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Energy-consuming vs energy-yielding phase of glycolysis",
+   "front": "Why does hexokinase adding a phosphate to glucose keep glucose flowing into the cell?",
+   "back": "Glucose-6-phosphate is charged and the membrane glucose carriers do not carry it, so it is trapped, and free glucose inside the cell stays low.",
+   "why": "Low free glucose inside keeps the concentration gradient pointing inward, so facilitated diffusion keeps bringing glucose in."
+  },
+  {
+   "id": "met-pfk",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What speeds up and what slows down phosphofructokinase, the main control step of glycolysis?",
+   "back": "High ATP and citrate slow it; AMP speeds it up.",
+   "why": "AMP builds up when ATP is spent faster than it is made, so a working muscle speeds glycolysis within seconds; a cell full of ATP slows it."
+  },
+  {
+   "id": "met-pyruvate-acetyl",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does the step from pyruvate to acetyl CoA make per glucose, and can it run backward?",
+   "back": "2 acetyl CoA, 2 CO<sub>2</sub> and 2 NADH. It cannot run backward.",
+   "why": "Because the carbon cannot return to pyruvate, carbon that has become acetyl CoA can never be made into glucose."
+  },
+  {
+   "id": "met-thiamine",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Why does thiamine (B1) deficiency starve brain cells of ATP?",
+   "back": "Thiamine is a coenzyme for the enzyme complex that turns pyruvate into acetyl CoA. Without it pyruvate piles up and is turned into lactate.",
+   "why": "The brain depends on glucose broken down fully in its mitochondria; if pyruvate cannot enter the citric acid cycle, only glycolysis’s 2 ATP per glucose remain."
+  },
+  {
+   "id": "met-cac-yield",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does one turn of the citric acid cycle make?",
+   "back": "2 CO<sub>2</sub>, 3 NADH, 1 FADH<sub>2</sub> and 1 ATP (by way of GTP). Two turns per glucose.",
+   "why": "The cycle’s main product is loaded electron carriers, not ATP; their electrons make most of the ATP later, at the electron transport chain."
+  },
+  {
+   "id": "met-cac-oxygen",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "The citric acid cycle uses no oxygen. Why does it stop within seconds without oxygen?",
+   "back": "It needs a supply of NAD<sup>+</sup> and FAD, and only the electron transport chain, which needs oxygen, turns NADH and FADH<sub>2</sub> back into them.",
+   "why": "With the chain stopped, the carriers stay loaded, NAD<sup>+</sup> and FAD run out in the matrix, and the cycle’s oxidation steps cannot run."
+  },
+  {
+   "id": "met-etc-vs-synthase",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Electron transport chain vs ATP synthase",
+   "front": "Electron transport chain vs ATP synthase: what does each do to the H<sup>+</sup> gradient?",
+   "back": "The electron transport chain builds it, pumping H<sup>+</sup> out of the matrix. ATP synthase spends it, letting H<sup>+</sup> back in and using that flow to make ATP.",
+   "why": "The two are coupled: electrons flow only as fast as ATP synthase lets H<sup>+</sup> back in, so oxygen use rises with ATP use."
+  },
+  {
+   "id": "met-etc-oxygen",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Electron transport chain vs ATP synthase",
+   "front": "Electron transport chain vs ATP synthase: which one uses oxygen?",
+   "back": "The electron transport chain, at complex IV. ATP synthase uses none.",
+   "why": "Oxygen is the terminal electron acceptor: it takes electrons from the end of the chain and becomes water, so the carriers upstream can keep passing electrons along."
+  },
+  {
+   "id": "met-nadh-fadh2",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why does one NADH yield about 2.5 ATP but one FADH<sub>2</sub> only about 1.5?",
+   "back": "NADH gives its electrons to complex I, so they pass three pumping complexes; FADH<sub>2</sub> gives them to complex II, which pumps no H<sup>+</sup>, so they pass only two.",
+   "why": "About 10 H<sup>+</sup> are pumped per NADH against about 6 per FADH<sub>2</sub>, and ATP synthase needs about 4 H<sup>+</sup> per ATP."
+  },
+  {
+   "id": "met-atp-yield",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "How many ATP does one glucose yield when fully broken down with oxygen, and why do some exams say 36 to 38?",
+   "back": "About 30 to 32. Older counts used whole numbers of 3 ATP per NADH and 2 per FADH<sub>2</sub>, which give 36 to 38.",
+   "why": "The current values of about 2.5 and 1.5 come from measuring the H<sup>+</sup> pumped per carrier and used per ATP, including the cost of moving ATP out of the mitochondrion. Give 36–38 if your exam expects it."
+  },
+  {
+   "id": "met-slp-oxphos",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Substrate-level vs oxidative phosphorylation: how many of the ATP from one glucose does each make?",
+   "back": "Substrate-level: 4 (2 in glycolysis, 2 in the citric acid cycle). Oxidative: the other 26 to 28, about 88%.",
+   "why": "Substrate-level phosphorylation moves a phosphate straight from a fuel molecule onto ADP; oxidative phosphorylation needs the electron transport chain and oxygen."
+  },
+  {
+   "id": "met-cyanide",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Cyanide blocks complex IV. Why does venous blood look unusually red?",
+   "back": "Oxygen is still delivered but the cells cannot use it, so blood leaving the tissues keeps much of its oxygen.",
+   "why": "With complex IV blocked, no electrons pass to oxygen, so oxygen use stops even though supply is normal."
+  },
+  {
+   "id": "met-uncoupler",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "analyze",
+   "front": "A drug lets H<sup>+</sup> leak back across the inner mitochondrial membrane without passing through ATP synthase. What happens to fuel use, ATP and heat?",
+   "back": "Fuel and oxygen use rise, ATP made falls, and heat rises.",
+   "why": "The chain runs flat out trying to rebuild the gradient, but the energy leaves as heat instead of ATP. Dinitrophenol killed users this way; brown fat does it deliberately with its own channel protein."
+  },
+  {
+   "id": "met-g6pase",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Liver vs skeletal muscle: why can only the liver release glucose from its glycogen into the blood?",
+   "back": "Liver cells have glucose-6-phosphatase, which removes the phosphate so free glucose can leave. Muscle lacks it, so its glucose-6-phosphate stays trapped and goes into glycolysis in that muscle.",
+   "why": "Charged glucose-6-phosphate cannot cross the plasma membrane; only free glucose can leave by the glucose carriers."
+  },
+  {
+   "id": "met-phosphorolysis",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Why does glucose from muscle glycogen give 3 ATP by glycolysis instead of 2?",
+   "back": "Glycogen phosphorylase breaks each bond with phosphate (phosphorolysis), so the glucose comes off already phosphorylated and skips the hexokinase step that costs 1 ATP.",
+   "why": "One of glycolysis’s two ATP investments is already paid, so the net gain rises by one."
+  },
+  {
+   "id": "met-gluconeo-sources",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What does the liver make new glucose from, and what can it not use?",
+   "back": "Lactate, amino acids (mainly alanine) and glycerol. Not fatty acids.",
+   "why": "Fatty acids are broken down to acetyl CoA, and acetyl CoA cannot be turned back into pyruvate."
+  },
+  {
+   "id": "met-gluconeo-cost",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Why is making glucose not just glycolysis run backward, and what does it cost?",
+   "back": "Three steps of glycolysis release so much energy that gluconeogenesis must go around them with different enzymes. One glucose from two pyruvate costs 4 ATP, 2 GTP and 2 NADH.",
+   "why": "The liver pays with ATP from breaking down fatty acids, which are plentiful when glucose is scarce."
+  },
+  {
+   "id": "met-cori",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "What is the Cori cycle, and what does one round trip cost the body?",
+   "back": "Muscle turns glucose into lactate; the liver makes glucose from the lactate and sends it back. Each turn costs 4 ATP (2 gained in muscle, 6 spent in the liver).",
+   "why": "It lets muscle keep working anaerobically while the liver, with its own aerobic ATP, pays to recycle the carbon."
+  },
+  {
+   "id": "met-glycogen-switch",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "How do glucagon and epinephrine switch glycogen breakdown on?",
+   "back": "Through cyclic AMP and protein kinase A, they switch glycogen phosphorylase on and glycogen synthase off. Insulin does the reverse.",
+   "why": "Switching both enzymes at once keeps the cell from building and breaking glycogen at the same time."
+  },
+  {
+   "id": "met-gsd",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Glucose-6-phosphatase deficiency vs McArdle disease (no muscle glycogen phosphorylase): what happens to fasting blood glucose in each?",
+   "back": "Glucose-6-phosphatase deficiency: blood glucose falls sharply a few hours after a meal, and glycogen piles up in an enlarged liver. McArdle disease: blood glucose stays normal, but exercise causes early fatigue and cramps.",
+   "why": "The liver needs glucose-6-phosphatase to release glucose into the blood; muscle phosphorylase serves only the muscle’s own glycogen."
+  },
+  {
+   "id": "met-ldl-hdl-direction",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "LDL vs HDL",
+   "front": "LDL vs HDL: which way does each carry cholesterol?",
+   "back": "LDL carries it out to body cells; HDL collects it from cells, including cells in artery walls, and returns it to the liver.",
+   "why": "Both carry the same cholesterol molecule; what differs is the particle’s proteins, which decide where it goes."
+  },
+  {
+   "id": "met-ldl-hdl-origin",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "LDL vs HDL",
+   "front": "LDL vs HDL: where does each come from, and what takes it up?",
+   "back": "LDL is made in the blood from VLDL after it gives up its triglycerides, and is taken up by LDL receptor proteins, mostly in the liver. HDL starts as small particles from the liver and intestine and returns to the liver.",
+   "why": "Lipoprotein lipase strips triglyceride from VLDL, and the smaller, cholesterol-rich particle left behind is LDL."
+  },
+  {
+   "id": "met-ldl-hdl-cause",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "LDL vs HDL",
+   "front": "LDL vs HDL: which is a cause of heart disease, and which is mainly a marker?",
+   "back": "LDL is a cause: lowering it prevents heart attacks. A high HDL goes with lower risk, but raising HDL with drugs has not lowered risk, so HDL is best seen as a sign of health, not a cause of it.",
+   "why": "People born with very high LDL develop heart disease early, and more LDL entering artery walls drives plaque growth; no such causal evidence exists for HDL."
+  },
+  {
+   "id": "met-statin",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "How does a statin lower blood LDL?",
+   "back": "It blocks HMG CoA reductase, so liver cells make less cholesterol; they respond by making more LDL receptor proteins and pull more LDL out of the blood.",
+   "why": "A cell with too little cholesterol makes more LDL receptor proteins; the liver’s extra uptake lowers LDL, often by a third to a half."
+  },
+  {
+   "id": "met-lipoprotein-density",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is a chylomicron the least dense lipoprotein and HDL the most dense?",
+   "back": "Lipid is less dense than protein. Chylomicrons are mostly triglyceride; HDL carries the most protein for its size.",
+   "why": "Lipoproteins are named by density, so the more triglyceride a particle carries, the lower its density and the larger it is."
+  },
+  {
+   "id": "met-lpl",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What does lipoprotein lipase do, and how does insulin change it?",
+   "back": "On the capillary lining of muscle, heart and fat, it breaks down the triglycerides in passing chylomicrons and VLDL so the fatty acids enter the nearby cells. Insulin raises it in adipose tissue after a meal.",
+   "why": "More lipoprotein lipase in fat capillaries after a meal steers dietary fat into storage."
+  },
+  {
+   "id": "met-lipolysis-switch",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What switches lipolysis on, and what switches it off?",
+   "back": "On: epinephrine and norepinephrine (fast), cortisol and growth hormone (slower); exercise, stress and fasting. Off: insulin, even at low levels.",
+   "why": "The insulin brake is why fat breakdown runs out of control when insulin is almost absent, as in untreated type 1 diabetes."
+  },
+  {
+   "id": "met-beta-ox-turn",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does one turn of beta oxidation make, and why does fat need oxygen to be burned?",
+   "back": "1 FADH<sub>2</sub>, 1 NADH and 1 acetyl CoA; the chain is two carbons shorter. Every step after activation depends on the electron transport chain to regenerate NAD<sup>+</sup> and FAD.",
+   "why": "There is no anaerobic route for fat, so fat can supply ATP only when oxygen reaches the mitochondria."
+  },
+  {
+   "id": "met-palmitate",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "How much ATP does one 16-carbon palmitic acid yield, and why more per carbon than glucose?",
+   "back": "About 106 ATP (about 6.6 per carbon, against about 5.3 for glucose).",
+   "why": "Its carbons are less oxidized to start with, so each has more electrons to hand to the chain: 7 FADH<sub>2</sub> + 7 NADH + 8 acetyl CoA, minus 2 ATP to activate it."
+  },
+  {
+   "id": "met-brain-fatty-acids",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Why does the brain rely on glucose rather than fatty acids?",
+   "back": "Fatty acids do reach the brain, but its neurons carry out very little beta oxidation, so they burn little fatty acid.",
+   "why": "That is why, when food is scarce, the liver must make glucose for the brain, and later ketone bodies that the brain can burn."
+  },
+  {
+   "id": "met-ketogenesis-why",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Why does the liver make ketone bodies when fat breakdown is fast?",
+   "back": "Beta oxidation makes acetyl CoA faster than the citric acid cycle can take it, and the liver is drawing oxaloacetate off to make glucose, so acetyl CoA builds up and is turned into ketone bodies.",
+   "why": "Less oxaloacetate means fewer acetyl groups can enter the cycle, so the extra goes to acetoacetate and beta-hydroxybutyrate."
+  },
+  {
+   "id": "met-liver-ketones",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "The liver makes ketone bodies. Why can it not burn them?",
+   "back": "It lacks the enzyme that turns acetoacetate back into acetyl CoA, so it exports them to the heart, muscle, kidneys and, after a few days of fasting, the brain.",
+   "why": "Ketone bodies are a water-soluble fuel the liver makes for other tissues, sparing glucose and the muscle protein that would be broken down to make it."
+  },
+  {
+   "id": "met-ketosis-levels",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Ketosis vs ketoacidosis",
+   "front": "Ketosis vs ketoacidosis: typical blood ketone levels and blood pH?",
+   "back": "Ketosis: about 0.5 to 3 mmol/L on a low-carbohydrate diet, about 5 to 7 after weeks without food; pH normal. Ketoacidosis: above 3 mmol/L, often 5 to 10 or more; pH below 7.35.",
+   "why": "In ketosis some insulin is still present and limits fat release, and buffers take up the H<sup>+</sup>; in ketoacidosis insulin is nearly absent and bicarbonate is used up."
+  },
+  {
+   "id": "met-ketosis-cause",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Ketosis vs ketoacidosis",
+   "front": "Ketosis vs ketoacidosis: usual cause and insulin level?",
+   "back": "Ketosis: a day or more without food or a very low-carbohydrate diet; insulin low but present. Ketoacidosis: almost no insulin, as in untreated type 1 diabetes (less often heavy alcohol use with no food).",
+   "why": "The deciding factor is the insulin brake on lipolysis: with a little insulin, fat release and ketone production stay limited."
+  },
+  {
+   "id": "met-fa-no-glucose",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Why can the glycerol of a triglyceride become glucose, but its fatty acids cannot?",
+   "back": "Glycerol enters gluconeogenesis as a three-carbon sugar phosphate. Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward.",
+   "why": "So when glycogen runs out, fat can fuel most tissues but can supply only a little of the brain’s glucose; the rest must come from amino acids."
+  },
+  {
+   "id": "met-lipogenesis",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "When and where is fat built, and what is the committed step?",
+   "back": "Mainly in the liver and adipose tissue when fuel is plentiful and insulin is high. The committed step adds CO<sub>2</sub> to acetyl CoA (an enzyme that needs biotin), and insulin switches it on.",
+   "why": "Acetyl CoA leaves the mitochondrion as citrate and is split back in the cytosol, where fatty acid synthase builds a 16-carbon chain two carbons at a time."
+  },
+  {
+   "id": "met-trans-deam",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Transamination vs deamination: what does each do?",
+   "back": "Transamination moves an amino group from an amino acid onto alpha-ketoglutarate, making glutamate (needs vitamin B6). Deamination strips the amino group off glutamate as ammonia, in liver mitochondria.",
+   "why": "Glutamate collects the amino groups from many amino acids, so the liver has one route to release them as ammonia and make urea."
+  },
+  {
+   "id": "met-alt-ast",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are blood ALT and AST used as a test for liver injury?",
+   "back": "They are transaminases abundant inside liver cells; when the cells are damaged they leak into the blood.",
+   "why": "A rise in these enzymes in the blood shows liver cells are breaking open, as in hepatitis."
+  },
+  {
+   "id": "met-gluco-keto-aa",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Glucogenic vs ketogenic amino acids: what can each become?",
+   "back": "Glucogenic amino acids (such as alanine) give pyruvate or citric acid cycle molecules, which can become glucose. Ketogenic ones give acetyl CoA or acetoacetate, never glucose; leucine and lysine are the only purely ketogenic ones.",
+   "why": "Most amino acids are glucogenic, which is why muscle protein is broken down to supply glucose once glycogen is gone."
+  },
+  {
+   "id": "met-urea",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Where do urea’s two nitrogens come from, and what does each urea cost?",
+   "back": "One from ammonia and one from the amino acid aspartate. Each urea costs the liver 3 ATP (4 high-energy phosphate bonds).",
+   "why": "The urea cycle, partly in mitochondria and partly in the cytosol, turns toxic ammonia into small, water-soluble urea that the kidneys excrete."
+  },
+  {
+   "id": "met-liver-vs-kidney",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "Failing liver vs failing kidneys: what happens to blood ammonia and blood urea in each?",
+   "back": "Failing liver: ammonia rises and urea is often low, because little urea is made. Failing kidneys: urea rises, because it is made but not excreted.",
+   "why": "The liver makes urea and the kidneys excrete it, so which value rises tells you which organ is failing; high ammonia causes confusion and a flapping tremor."
+  },
+  {
+   "id": "met-cholesterol-liver",
+   "topic": "lipid-protein-metabolism",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Does the liver make most of your cholesterol?",
+   "back": "Current estimates suggest most is made outside the liver (perhaps only about a tenth in the liver), but the liver dominates uptake and excretion.",
+   "why": "Nearly every cell can make cholesterol; the liver takes up most cholesterol-carrying particles and sends cholesterol out in bile. For your exam: many courses expect \"the liver\" (often \"about 80%\")."
+  },
+  {
+   "id": "met-fed-hormones",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "Absorptive vs postabsorptive state: timing and hormone balance?",
+   "back": "Absorptive (fed): about 4 hours after a meal; insulin high, glucagon low. Postabsorptive (fasting): between meals and overnight; insulin low, glucagon high.",
+   "why": "Rising glucose and amino acids after a meal make beta cells release insulin; falling glucose lowers insulin and raises glucagon."
+  },
+  {
+   "id": "met-fed-glucose-source",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "Absorptive vs postabsorptive state: where does blood glucose come from?",
+   "back": "Absorptive: the gut. Postabsorptive: the liver, by glycogenolysis and gluconeogenesis (roughly equal shares after an overnight fast).",
+   "why": "Only the liver (and kidneys) can release glucose into the blood, because only they have glucose-6-phosphatase."
+  },
+  {
+   "id": "met-fed-liver",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "Absorptive vs postabsorptive state: what does the liver do in each?",
+   "back": "Absorptive: takes up glucose, builds glycogen, makes fat from extra glucose and exports it in VLDL. Postabsorptive: releases glucose by glycogenolysis and gluconeogenesis, and in a long fast makes ketone bodies.",
+   "why": "Insulin and glucagon set the direction of the liver’s enzymes, so the same cells store in one state and release in the other."
+  },
+  {
+   "id": "met-fed-muscle",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "Absorptive vs postabsorptive state: what does skeletal muscle do in each?",
+   "back": "Absorptive: takes up glucose through GLUT4, builds glycogen and protein. Postabsorptive: burns mostly fatty acids, keeps its glycogen, releases lactate and alanine.",
+   "why": "Insulin moves GLUT4 carriers into the membrane; with insulin low, muscle takes up little glucose and switches to fat."
+  },
+  {
+   "id": "met-fed-adipose",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "Absorptive vs postabsorptive state: what does adipose tissue do in each?",
+   "back": "Absorptive: stores triglyceride (lipoprotein lipase on, lipolysis off). Postabsorptive: lipolysis releases fatty acids and glycerol.",
+   "why": "Insulin switches on lipoprotein lipase in adipose capillaries and brakes lipolysis; when insulin falls, the brake comes off."
+  },
+  {
+   "id": "met-fed-gluconeo",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "After a meal, what happens to gluconeogenesis in the liver?",
+   "back": "It slows, and much of the glucose it still makes goes into glycogen instead of into the blood.",
+   "why": "Insulin and less glucagon slow it, and liver glucose release stops, so the new glucose is stored rather than exported."
+  },
+  {
+   "id": "met-fed-brain",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Absorptive vs postabsorptive state",
+   "front": "Absorptive vs postabsorptive state: what does the brain burn?",
+   "back": "Glucose in both; after a few days without food, ketone bodies as well.",
+   "why": "Brain glucose uptake does not depend on insulin, and the brain burns little fatty acid, so glucose is kept for it between meals."
+  },
+  {
+   "id": "met-glucose-sparing",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "What is glucose sparing, and why does it matter between meals?",
+   "back": "Most tissues switch from glucose to fatty acids, leaving glucose mostly for the brain and red blood cells.",
+   "why": "It lets a limited supply, about 100 g of liver glycogen plus gluconeogenesis, keep the brain supplied until the next meal."
+  },
+  {
+   "id": "met-anabolic-catabolic",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Anabolic vs catabolic hormones: examples of each?",
+   "back": "Anabolic (build and store): insulin, and for protein growth hormone (through IGF-1) and testosterone. Catabolic (release fuel): glucagon, epinephrine and cortisol.",
+   "why": "The catabolic hormones raise blood glucose against insulin, so they are also called counterregulatory hormones."
+  },
+  {
+   "id": "met-gh-both",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why does growth hormone fit both the anabolic and the catabolic group?",
+   "back": "It builds protein (through IGF-1) but breaks down fat and opposes insulin’s effect on glucose.",
+   "why": "During a fast its release rises: its fat-releasing effect shifts fuel use to fat while its protein-building effect limits muscle loss."
+  },
+  {
+   "id": "met-fast-sequence",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Put in order what supplies the brain’s fuel over a long fast.",
+   "back": "Liver glycogen (about the first day), then glucose made mostly from muscle amino acids (days 1 to 3), then ketone bodies, rising from day 2 or 3 and supplying about two thirds of the brain’s energy by a few weeks.",
+   "why": "Glycogen stores are small; protein is a costly glucose source, so the rise in ketone bodies is what lets the fast go on."
+  },
+  {
+   "id": "met-protein-spared",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy",
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Why does muscle protein breakdown fall from about 75 g a day early in a fast to about 20 g a day after several weeks?",
+   "back": "As the brain takes up ketone bodies, its glucose need falls from about 120 g to about 40 g a day, so less amino acid is needed to make glucose.",
+   "why": "Without that switch, making 120 g of glucose a day from protein would use up vital muscle, including heart and breathing muscle, within a few weeks."
+  },
+  {
+   "id": "met-type1-starving",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why is untreated type 1 diabetes called \"starvation in the midst of plenty\"?",
+   "back": "With no insulin, the body acts as if it were fasting even though blood glucose is very high: the liver keeps releasing glucose, muscle and fat stop taking it up, lipolysis runs unchecked and ketone bodies are made.",
+   "why": "The signal of plenty, insulin, is missing, so the tissues follow glucagon and the other catabolic hormones."
+  },
+  {
+   "id": "met-starvation-end",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "In starvation, what happens once fat stores are nearly used up?",
+   "back": "Protein breakdown rises sharply again: muscle, including heart and diaphragm, wastes, plasma proteins fall and the immune system weakens.",
+   "why": "With no other fuel left, the body burns its own proteins; death usually follows once a third to a half of body protein is lost."
+  },
+  {
+   "id": "met-refeeding",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why must a starved person be refed slowly?",
+   "back": "The insulin surge from the first meals drives phosphate and potassium into cells, and the low blood levels that follow can stop the heart.",
+   "why": "Insulin moves these ions into cells along with glucose, and a starved body has little of them to spare."
+  },
+  {
+   "id": "met-marasmus-kwashiorkor",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "Marasmus vs kwashiorkor: how does each look?",
+   "back": "Marasmus: too little food of every kind; a thin child with loose skin. Kwashiorkor: edema and a swollen belly that can hide the wasting.",
+   "why": "In kwashiorkor, low plasma albumin lowers colloid osmotic pressure so fluid collects in the tissues; infection and other factors also seem to matter."
+  },
+  {
+   "id": "met-radiation",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Radiation: how does it move heat, and about what share of heat loss does it carry at rest in a cool room?",
+   "back": "As infrared rays between surfaces that are not touching; about 60%.",
+   "why": "It needs surroundings cooler than your skin; from the sun or a fire it adds heat instead."
+  },
+  {
+   "id": "met-conduction",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Conduction: how does it move heat, and about what share of heat loss does it carry at rest?",
+   "back": "Directly to an object your skin touches; about 3%.",
+   "why": "It needs contact with a cooler object, such as cold stone; a hot surface adds heat instead."
+  },
+  {
+   "id": "met-convection",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Convection: how does it move heat, and about what share of heat loss does it carry at rest?",
+   "back": "Carried off by air or water flowing past your skin; about 15%.",
+   "why": "Moving air or water keeps replacing the warmed layer next to the skin; in air hotter than skin it adds heat."
+  },
+  {
+   "id": "met-evaporation",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "recall",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Evaporation: how does it move heat, and what does it need?",
+   "back": "Water on your skin or in your airways turns to vapor, taking about 580 kcal per liter; it needs air that is not saturated with water vapor.",
+   "why": "It only ever removes heat; about 20% of heat loss at rest in a cool room, and nearly all of it in hot weather."
+  },
+  {
+   "id": "met-hot-air",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "The air is hotter than your skin. Which ways of losing heat still work?",
+   "back": "Only evaporation. Radiation, conduction and convection now add heat.",
+   "why": "Heat flows from warmer to cooler, so once the surroundings pass about 35 °C the first three routes run backward."
+  },
+  {
+   "id": "met-humid",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "gradients"
+   ],
+   "level": "apply",
+   "compare": "Radiation vs conduction vs convection vs evaporation",
+   "front": "Why is hard exercise more dangerous in hot, humid air than in hot, dry air?",
+   "back": "In humid air sweat evaporates slowly and drips off, and dripping sweat removes almost no heat.",
+   "why": "Evaporation depends on a water vapor gradient from skin to air; humid air shrinks it, removing the only route left for heat loss."
+  },
+  {
+   "id": "met-bmr",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What is basal metabolic rate, and how is it measured?",
+   "back": "The energy use of a person awake but lying at rest, 12 hours after eating, in a comfortably warm room: about 1,200 to 1,800 kcal a day for most adults.",
+   "why": "It is measured most often by oxygen use: each liter of oxygen consumed releases about 4.8 kcal from fuel on a mixed diet."
+  },
+  {
+   "id": "met-total-mr",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What are the three parts of total metabolic rate, and which varies most?",
+   "back": "BMR (about 60 to 70%), the energy used to digest, absorb and store food (about 10%), and physical activity, which varies most.",
+   "why": "Hard exercise can raise the rate of energy use ten- to twentyfold for a while."
+  },
+  {
+   "id": "met-bmr-factors",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Why do men average higher BMRs than women of the same weight, and why does BMR fall with age?",
+   "back": "Both follow lean mass: men carry more muscle, and muscle is lost with age.",
+   "why": "Lean tissue such as muscle, liver and brain uses far more energy than fat."
+  },
+  {
+   "id": "met-3500",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy",
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Does a 3,500 kcal deficit always mean 1 pound (about 7,700 kcal per kilogram) lost?",
+   "back": "It is a fair estimate for a few weeks, but the first week’s loss is larger and over months it overestimates the loss.",
+   "why": "The first week also loses glycogen and the water stored with it; later, spending falls and appetite rises as weight falls. Use the rule if your exam asks for it."
+  },
+  {
+   "id": "met-bmi",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "How is BMI calculated, and what are the adult categories?",
+   "back": "Weight in kilograms divided by height in meters squared. Below 18.5 underweight; 18.5 to 24.9 healthy; 25 to 29.9 overweight; 30 or more obesity.",
+   "why": "BMI does not measure fat: a muscular athlete can score over 30, so it is a screening tool, not a diagnosis."
+  },
+  {
+   "id": "met-ghrelin-leptin",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Ghrelin vs leptin",
+   "front": "Ghrelin vs leptin: source, effect on hunger and time scale?",
+   "back": "Ghrelin: from the empty stomach; raises hunger; meal to meal. Leptin: from fat cells in proportion to stored fat; lowers hunger; days to months.",
+   "why": "After weight loss ghrelin tends to rise and leptin falls, which together push appetite up and help explain why lost weight tends to return."
+  },
+  {
+   "id": "met-core-temp",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What is normal core temperature in healthy adults?",
+   "back": "About 36.6 to 37 °C, lowest in the early morning and highest in the late afternoon.",
+   "why": "Large modern studies find oral averages near 36.6 °C. For your exam: 37 °C (98.6 °F) is the traditional figure, from the 1800s."
+  },
+  {
+   "id": "met-skin-dilation",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "In the heat, what widens the vessels of most of your skin?",
+   "back": "Mainly active dilation by sympathetic cholinergic nerves; in the palms, soles and lips, withdrawal of sympathetic constrictor tone.",
+   "why": "Human studies show active dilation causes most of the rise in hairy skin. For your exam: many texts give only the loss of constrictor tone."
+  },
+  {
+   "id": "met-heat-gut-kidney",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "During heat stress, what happens to blood flow to the gut and kidneys, and why?",
+   "back": "It falls: their vessels narrow, shifting blood toward the skin.",
+   "why": "Skin blood flow can rise to 6 to 8 L/min, a large share of cardiac output, so flow is taken from organs that can spare it for a while."
+  },
+  {
+   "id": "met-brown-fat",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "How does brown adipose tissue make heat without shivering?",
+   "back": "Norepinephrine makes brown fat cells break down fat and run their mitochondria with a channel protein that lets H<sup>+</sup> leak back across the inner membrane, so the energy leaves as heat instead of ATP.",
+   "why": "The electron transport chain runs flat out because the gradient never builds up. Adults keep small deposits in the neck, above the collarbones and along the spine."
+  },
+  {
+   "id": "met-shiver",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Why does shivering warm you?",
+   "back": "Skeletal muscles contract rapidly and out of step, doing no outside work, so almost all their energy becomes heat.",
+   "why": "Shivering can raise heat production three- to fivefold for a time."
+  },
+  {
+   "id": "met-exhaustion-vs-stroke",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Heat exhaustion vs heat stroke",
+   "front": "Heat exhaustion vs heat stroke: core temperature and brain function?",
+   "back": "Heat exhaustion: normal to about 40 °C, brain works normally (may faint briefly). Heat stroke: above about 40 °C, with confusion, seizures or coma.",
+   "why": "Heat exhaustion is a problem of water and salt loss and blood pooled in the skin; heat stroke is cell damage from heat itself."
+  },
+  {
+   "id": "met-exhaustion-treatment",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Heat exhaustion vs heat stroke",
+   "front": "Heat exhaustion vs heat stroke: treatment?",
+   "back": "Heat exhaustion: rest in the cool, legs raised, fluids with salt. Heat stroke: rapid cooling, ideally cold-water immersion, and emergency care.",
+   "why": "Fever-reducing drugs do not help heat stroke, because the set point is normal; the loop is overwhelmed, not reset."
+  },
+  {
+   "id": "met-heat-stroke-loop",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Heat exhaustion vs heat stroke",
+   "front": "Why can core temperature keep climbing in heat stroke even after the heat source is gone?",
+   "back": "Heat speeds chemical reactions in every cell, so they make still more heat: a harmful positive feedback loop.",
+   "why": "Once heat loss has been outrun, each rise in temperature raises heat production, until proteins unfold above about 41 to 42 °C."
+  },
+  {
+   "id": "met-acclimatization",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What changes over one to two weeks of exercise in the heat?",
+   "back": "Sweating starts sooner and is heavier, each liter of sweat carries less salt, and plasma volume expands.",
+   "why": "So core temperature and heart rate rise less at the same workload. The salt saving comes through aldosterone."
+  },
+  {
+   "id": "met-hypothermia-stages",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Hypothermia: core temperature ranges for mild, moderate and severe, and what happens to shivering?",
+   "back": "Mild 35 to 32 °C: intense shivering. Moderate 32 to 28 °C: shivering fades and stops. Severe below 28 °C: unconscious, risk of ventricular fibrillation.",
+   "why": "When shivering stops, heat production falls with it, so cooling speeds up."
+  },
+  {
+   "id": "met-cold-water",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Why is falling into cold water so much more dangerous than standing in air at the same temperature?",
+   "back": "Water removes heat about 25 times faster than air, by conduction and convection.",
+   "why": "Heat loss depends on how fast the surroundings carry heat away, not only on their temperature."
+  },
+  {
+   "id": "met-head-myth",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Do you lose most of your body heat through your head?",
+   "back": "No. You lose heat from any uncovered surface roughly in proportion to its area, and the head is about a tenth of the body surface.",
+   "why": "The face and scalp narrow their vessels less than the limbs in the cold, so an uncovered head matters more when the rest of you is well wrapped."
   }
  ]
 }

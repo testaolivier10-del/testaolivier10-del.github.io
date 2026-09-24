@@ -1,0 +1,34 @@
+{
+  "os-27-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.6",
+      "section": "27.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/63e4c7b77be4e97c88b4c649fbd6c6472cf58466",
+      "page": "27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+    },
+    "alt": "A sperm cell drawn lengthwise. The oval head holds the nucleus under a cap-like sac at the front and is wrapped in plasma membrane. Behind a centriole, the short middle piece is packed with a spiral of mitochondria. A long whip-like tail, with a central core of filaments, ends in a short end piece.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.6",
+    "labels": [],
+    "w": 727,
+    "h": 198,
+    "ext": "jpg"
+  },
+  "os-27-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.8",
+      "section": "27.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab9815fbb21573878e43d6f1a5626681264416d2",
+      "page": "27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+    },
+    "alt": "The control of testosterone. At the top, hypothalamic neurons release GnRH into portal vessels that reach the anterior pituitary. The pituitary releases FSH and LH. FSH goes to a supporting cell in the wall of a coiled testis tubule, which releases a binding protein and inhibin. LH goes to cells in the spaces between the tubules, which release testosterone. Arrows with minus signs show inhibin acting back on the pituitary and testosterone acting back on the pituitary and hypothalamus. Numbered notes describe the steps.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.8",
+    "labels": [],
+    "w": 1100,
+    "h": 739,
+    "ext": "jpg"
+  }
+}

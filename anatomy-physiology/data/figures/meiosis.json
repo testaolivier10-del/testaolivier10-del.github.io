@@ -1,0 +1,18 @@
+{
+  "os-3-31": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "3.31",
+      "section": "3.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/591e6fe431b1c89f4d2c37465291b0363b63ebce",
+      "page": "3-5-cell-growth-and-division"
+    },
+    "alt": "Two matching chromosomes, one drawn blue and one red, each with a round centromere. An arrow labeled DNA replication leads to the same pair after copying: each chromosome is now an X shape made of two identical sister chromatids joined at the centromere.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 3.31",
+    "labels": [],
+    "w": 1100,
+    "h": 684,
+    "ext": "jpg"
+  }
+}

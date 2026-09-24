@@ -357,6 +357,42 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** no major lasting drop in antibody levels; a large Danish cohort linked childhood removal with more later respiratory, allergic and infectious disease, but causation is unproven. Taught as an open question.
 - **For your exam:** removing the tonsils does not meaningfully weaken immunity, because other MALT compensates.
 
+### intestinal-surface-area: how large is the gut's absorptive surface?
+- **Status:** pending review.
+- **Where:** `small-intestine`.
+- **Evidence-based position:** about 30 m², measured directly (Helander & Fändriks 2014): folds multiply the surface about 1.6 times and villi plus microvilli 60–120 times, roughly 100–200-fold in all. The 600-fold figure appears only as a labeled textbook estimate.
+- **For your exam:** 200–300 m², "a tennis court".
+
+### small-intestine-length: how long is the small intestine?
+- **Status:** pending review.
+- **Where:** `small-intestine`, `large-intestine`.
+- **Evidence-based position:** 3–5 m in a living person; about 6 m after death, when muscle tone is lost.
+- **For your exam:** about 6 m (20 ft).
+
+### vomiting-center: is there one vomiting center?
+- **Status:** pending review.
+- **Where:** `stomach`.
+- **Evidence-based position:** vomiting is coordinated by a network of neurons across the medulla, fed by the chemoreceptor trigger zone and other inputs.
+- **For your exam:** "the vomiting center in the medulla oblongata".
+
+### preduodenal-lipase: which lipase digests fat before the small intestine?
+- **Status:** pending review.
+- **Where:** `mouth-esophagus`, `stomach`, `digestion-absorption`.
+- **Evidence-based position:** in humans lingual lipase is only a trace; gastric lipase does the fat digestion before the small intestine (roughly 10–30% of it in adults, more in milk-fed babies).
+- **For your exam:** many texts credit lingual lipase in saliva.
+
+### bacteria-human-ratio: how many bacteria per human cell?
+- **Status:** pending review.
+- **Where:** `large-intestine`.
+- **Evidence-based position:** about 38 trillion bacteria to 30 trillion human cells, roughly 1:1 (Sender, Fuchs & Milo 2016).
+- **For your exam:** 10:1.
+
+### peptide-absorption: in what form is protein absorbed?
+- **Status:** pending review.
+- **Where:** `digestion-absorption`.
+- **Evidence-based position:** a large share, perhaps most, enters the absorptive cells as di- and tripeptides on the PepT1 carrier and is split inside the cell, so the blood receives free amino acids.
+- **For your exam:** "absorbed as amino acids" (still right for what reaches the blood).
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -649,6 +685,52 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   Lambert–Eaton syndrome.
 - **Etymology to confirm:** interferon ("interfere"), opsonin, tonsilla (uncertain origin),
   anaphylaxis ("ana-" = against), the bursa of Fabricius for "B".
+
+## Phase 2: digestive chapter, judgment calls for instructor review
+
+- **Positions taught without an exam note:** gastrin acts mostly by releasing histamine from ECL
+  cells; GERD is mainly brief lower esophageal sphincter relaxations not caused by swallowing,
+  and the sphincter is a 3–4 cm zone of muscle plus the diaphragm's pinch; stress and spicy
+  food are not ulcer causes (H. pylori and NSAIDs are); lactase is the first brush border enzyme
+  lost when villi are damaged, and about two thirds of adults lose it with age (about 12 g of
+  lactose is usually tolerated); hepatic stellate cells, not macrophages, make cirrhosis scar;
+  scarring, even cirrhosis, can partly regress once the cause is removed; the classic lobule is
+  taught, with the acinus in a going-further box; detoxification can make a molecule more
+  harmful (acetaminophen); gut bacteria's vitamin K contribution is uncertain; without bile,
+  fat is digested more slowly and much of it is not absorbed; B12 and bile salts depend on
+  carriers found only in the terminal ileum (very large oral B12 doses cross without intrinsic
+  factor); the colon can absorb about 4–5 L a day; early enamel damage can remineralize; the
+  esophagus has little acid defense; opioids cut propulsive colon movement, not mixing.
+- **Normal values chosen:** saliva 1–1.5 L, gastric juice about 2 L (the fluid worked example
+  uses Figure 23.32's 1.5 L), intestinal juice 1–2 L, bile 0.5–1 L and pancreatic juice 1.2–1.5 L
+  a day; stomach about 50 mL empty, 1–1.5 L after a meal, up to about 4 L; emptying in 2–4 hours;
+  slow waves 3, 12 and 8 a minute (stomach, duodenum, ileum); small intestine transit 3–5 hours;
+  migrating motor complex every 90–120 minutes; lining renewed every 3–5 days; esophagus and
+  duodenum about 25 cm; large intestine 1.5 m; enamel about 96% mineral; enteric nervous system
+  200–600 million neurons; H. pylori in about 4 in 10 adults; liver about 1.5 kg; bile salt pool
+  2–4 g, 95% reabsorbed; gallbladder 30–50 mL, concentrating bile about 10-fold; colon receives
+  about 1.5 L a day and absorbs about 1.3 L; feces 100–200 g a day; about 40 trillion gut
+  bacteria weighing about 200 g; short-chain fatty acids supply 5–10% of energy; pepsin does
+  10–15% of protein digestion; B12 stores last 3–5 years; SGLT1 carries 2 Na+ per glucose.
+- **Tool values:** the gastrin, gastric emptying and breath test graphs are schematic; the breath
+  test uses the classic 50 g lactose dose (current guidelines use 25 g) and a 20 ppm cutoff.
+- **Figures:** Figure 23.25 prints "Interlobular vein" for a sublobular vein (covered); 23.29
+  shows sucrose and lactose as products of salivary amylase (covered; the caption corrects it);
+  23.33 labels triglyceride droplets "fatty acids and monoglycerides" and says chylomicrons form
+  "inside the Golgi" (both covered); 23.14 and 23.17 not used (misnamed muscles, typos, bare
+  "receptors"); 23.19 and 23.22 (villus micrographs) need license verification, so there is no
+  villi station and the villus is our own drawing.
+- **Ordering workarounds:** the stomach topic cannot say "duodenum" and uses "the first part of
+  the small intestine" throughout (awkward; consider moving the term earlier or a preview box);
+  vitamins are "vitamins that dissolve in fat" until nutrition; urea and ammonia are avoided;
+  the interstitial cells of Cajal are called "pacesetter cells" because the map's "interstitial
+  cells" are the Leydig cells.
+- **Map gaps:** muscularis mucosae, adventitia, ECL and D cells, somatostatin, Paneth cells,
+  crypts, plicae circulares, receptive relaxation, hiatal hernia, Barrett esophagus, celiac
+  disease, chemoreceptor trigger zone, haptocorrin, colipase, GLUT2 and GLUT5, Kupffer cells,
+  sphincter of Oddi, short-chain fatty acids, oral rehydration, portal hypertension, ascites.
+- **Etymology to confirm:** haustrum, epiploic, cirrhosis, emulsify, dextrin, micelle,
+  deglutition ("de-" = down).
 
 ## Decided at the Phase 0 reviews
 
