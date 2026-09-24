@@ -7635,7 +7635,7 @@
             "why": "That is anaphase of mitosis. In anaphase I, sister chromatids stay joined and the homologs separate."
           },
           {
-            "text": "The cell copies its DNA a second time before dividing.",
+            "text": "The cell copies its DNA a second time before it divides, so that each daughter cell can still get 46 chromosomes.",
             "why": "DNA is copied only once, before meiosis I. There is no copying between the two divisions."
           }
         ]
@@ -7724,8 +7724,8 @@
         "at": 3,
         "distractors": [
           {
-            "text": "Sperm pass through the seminal vesicle, which stores them until ejaculation.",
-            "why": "The seminal vesicle is a gland that adds fluid; it does not store sperm. Sperm are stored in the tail of the epididymis."
+            "text": "Sperm pass into the seminal vesicle, a coiled pouch behind the bladder, where they gain the ability to swim and are stored until ejaculation.",
+            "why": "The seminal vesicle is a gland that adds fluid; it does not store sperm. Sperm gain the ability to swim, and are stored, in the epididymis."
           },
           {
             "text": "Sperm pass through the bulbourethral gland, where they learn to swim.",
@@ -7887,7 +7887,7 @@
         "at": 2,
         "distractors": [
           {
-            "text": "The primary spermatocyte divides by mitosis, giving two diploid spermatids.",
+            "text": "The primary spermatocyte divides by mitosis, giving two diploid spermatids that each hold 46 chromosomes and go straight on to reshape.",
             "why": "A primary spermatocyte divides by meiosis, not mitosis, and its products are secondary spermatocytes, not spermatids."
           },
           {
@@ -8088,7 +8088,7 @@
             "why": "The ovarian ligament is a support that ties the ovary to the uterus. It is not a passage."
           },
           {
-            "text": "The oocyte travels straight into the tube through a duct in the ovary.",
+            "text": "The oocyte travels straight into the tube through a short duct that joins the ovary to the fimbriae.",
             "why": "The ovary has no duct and is not attached to the tube; the oocyte must be swept into the tube’s open end."
           }
         ]
@@ -8163,7 +8163,7 @@
             "why": "The secondary oocyte arrests at metaphase II and finishes meiosis II only if a sperm enters it."
           },
           {
-            "text": "The secondary oocyte divides by mitosis to replace the lost oogonia.",
+            "text": "The secondary oocyte divides by mitosis to replace the oogonia that were lost before birth.",
             "why": "No new oocytes are made after birth. The secondary oocyte goes on into meiosis II, not mitosis."
           }
         ]
@@ -8245,7 +8245,7 @@
             "why": "Follicles do not go backward. A follicle that stops growing undergoes atresia instead."
           },
           {
-            "text": "The follicle releases its oocyte while it is still only a few layers thick.",
+            "text": "The follicle releases its oocyte while it is still only a few granulosa layers thick, before any fluid has collected.",
             "why": "Ovulation happens only from a mature vesicular follicle, after an antrum has formed and grown."
           }
         ]

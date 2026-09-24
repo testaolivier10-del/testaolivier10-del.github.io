@@ -12278,6 +12278,1410 @@
     "front": "What does severe acidemia do to the body?",
     "back": "It depresses the nervous system (confusion, drowsiness, coma), weakens heart contractions, dilates arterioles and makes the heart prone to abnormal rhythms.",
     "why": "It can also shift potassium out of cells, most of all when the acid is a mineral acid, raising plasma potassium."
+  },
+  {
+   "id": "rp-mm-copying",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: how many rounds of DNA copying, and how many divisions?",
+   "back": "Both copy DNA once. Mitosis divides once; meiosis divides twice (meiosis I and II).",
+   "why": "Meiosis has no S phase between its two divisions, which is why the chromosome number halves."
+  },
+  {
+   "id": "rp-mm-products",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: how many cells are made, and with how many chromosomes each (human)?",
+   "back": "Mitosis: two cells with 46 (diploid). Meiosis: four cells with 23 (haploid).",
+   "why": "Meiosis I separates the homologs, halving the number; meiosis II then splits each cell again without copying."
+  },
+  {
+   "id": "rp-mm-alike",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: are the new cells identical to the parent?",
+   "back": "Mitosis: genetically identical. Meiosis: different from the parent and from each other.",
+   "why": "Crossing over and independent assortment in meiosis I mix the mother’s and father’s chromosomes; mitosis only copies."
+  },
+  {
+   "id": "rp-mm-pairing",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: do homologs pair up and cross over?",
+   "back": "Mitosis: no. Meiosis: yes, in prophase I.",
+   "why": "Homologs must pair before they can swap pieces and then be separated as partners in anaphase I."
+  },
+  {
+   "id": "rp-mm-metaphase",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: what lines up at metaphase?",
+   "back": "Mitosis: single chromosomes. Meiosis I: homologous pairs. Meiosis II: single chromosomes.",
+   "why": "In metaphase I each pair faces the two ends, so partners go to opposite cells; in metaphase II and mitosis each chromatid faces a different end."
+  },
+  {
+   "id": "rp-mm-anaphase",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: what separates at anaphase?",
+   "back": "Mitosis: sister chromatids. Anaphase I: homologs. Anaphase II: sister chromatids.",
+   "why": "In anaphase I the proteins holding sisters together are kept at the centromere, so each homolog moves as a double chromosome."
+  },
+  {
+   "id": "rp-mm-role",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mitosis vs meiosis",
+   "front": "Mitosis vs meiosis: what is each for in the body?",
+   "back": "Mitosis: growth, repair and replacing cells. Meiosis: making sperm and eggs.",
+   "why": "Only cells in the gonads that are becoming gametes undergo meiosis; every other dividing cell uses mitosis."
+  },
+  {
+   "id": "rp-hs-what",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Homologous chromosomes vs sister chromatids",
+   "front": "Homologous chromosomes vs sister chromatids: what are they?",
+   "back": "Homologs: two separate chromosomes, one from each parent. Sister chromatids: two identical copies of one chromosome, made in S phase.",
+   "why": "Homologs carry the same genes but can carry different alleles; sisters are copies, identical apart from crossing over."
+  },
+  {
+   "id": "rp-hs-separate",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Homologous chromosomes vs sister chromatids",
+   "front": "When are homologs separated, and when are sister chromatids separated?",
+   "back": "Homologs: meiosis I. Sister chromatids: mitosis and meiosis II.",
+   "why": "Homologs pair only in meiosis I; sisters are held together at the centromere until mitosis or meiosis II releases them."
+  },
+  {
+   "id": "rp-ploidy",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Diploid vs haploid: what do 2n and n mean in humans?",
+   "back": "Diploid (2n = 46): both members of all 23 pairs. Haploid (n = 23): one member of each pair.",
+   "why": "Two haploid gametes join to restore 46, so the number stays the same from one generation to the next."
+  },
+  {
+   "id": "rp-anaphase-count",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "A human cell in anaphase holds 46 chromosomes, each still made of two chromatids. Which division is it in?",
+   "back": "Anaphase I of meiosis.",
+   "why": "Whole double chromosomes moving apart means homologs are separating while sisters stay joined. Mitosis would show 92 single chromosomes, and anaphase II 46 single ones."
+  },
+  {
+   "id": "rp-count-rule",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How do you count chromosomes in a cell that has copied its DNA?",
+   "back": "Count centromeres: a chromosome of two sister chromatids is one chromosome.",
+   "why": "When sister chromatids separate, each becomes a chromosome in its own right, so the count doubles at that moment."
+  },
+  {
+   "id": "rp-assortment",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How many different gametes can independent assortment alone make in a human?",
+   "back": "2²³, about 8.4 million.",
+   "why": "Each of the 23 pairs lines up either way at random, independently: 2 choices per pair, multiplied 23 times. Crossing over raises the real number far higher."
+  },
+  {
+   "id": "rp-crossing",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is crossing over, and where can you see where it happened?",
+   "back": "A chromatid of each homolog breaks at the same point and swaps pieces in prophase I; a chiasma marks the joint.",
+   "why": "The swap makes new chromosomes that are part mother’s and part father’s, so no two gametes are alike."
+  },
+  {
+   "id": "rp-nondisjunction",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What gametes does nondisjunction make, and what cell forms if one joins a normal gamete?",
+   "back": "Gametes with 24 or 22 chromosomes; the new cell has 47 or 45.",
+   "why": "A pair of homologs (or sister chromatids) goes to the same end instead of opposite ends, so one cell gets both and the other none."
+  },
+  {
+   "id": "rp-maternal-age",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does nondisjunction become more common as a mother ages?",
+   "back": "The proteins that hold her oocytes’ chromosomes together were laid down before birth and weaken over decades.",
+   "why": "Oocytes pause in meiosis I for years; weak links let pairs come apart early or wrongly, mostly in meiosis I."
+  },
+  {
+   "id": "rp-sry",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What makes the early gonad of an XY embryo become a testis?",
+   "back": "SRY, a gene on the Y chromosome.",
+   "why": "SRY protein switches on testis genes in the gonad’s supporting cells; the testis’s hormones then drive male development of the ducts and genitals."
+  },
+  {
+   "id": "rp-sperm-sets-sex",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does the father’s sperm, not the egg, decide a baby’s sex?",
+   "back": "Every egg carries an X; half of sperm carry an X and half a Y.",
+   "why": "A man’s X and Y separate in meiosis I like any other pair; a woman has only X chromosomes to give."
+  },
+  {
+   "id": "rp-xxy",
+   "topic": "meiosis",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "An XXY person develops as male and an X-only person as female. What does that show?",
+   "back": "That SRY on the Y, not the number of X chromosomes, is the switch for testis development.",
+   "why": "One Y is enough whatever the number of X chromosomes, and without a Y there is no SRY. For your exam, SRY is the answer to what makes the gonad a testis; the ovary’s own genes are also actively switched on."
+  },
+  {
+   "id": "rp-ti-product",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Seminiferous tubules vs interstitial cells",
+   "front": "Seminiferous tubules vs interstitial cells: what does each make?",
+   "back": "Tubules: sperm. Interstitial (Leydig) cells: testosterone.",
+   "why": "One organ, two jobs in two places: sperm inside the tubules, the hormone in the tissue between them."
+  },
+  {
+   "id": "rp-ti-gland",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Seminiferous tubules vs interstitial cells",
+   "front": "Seminiferous tubules vs interstitial cells: exocrine or endocrine, and which pituitary hormone drives each?",
+   "back": "Tubules: exocrine-like, cells leave by ducts; driven mainly by FSH with testosterone. Interstitial cells: endocrine, into the blood; driven by LH.",
+   "why": "The tubules release a product into a duct system; the interstitial cells release a hormone into the capillaries."
+  },
+  {
+   "id": "rp-scrotum-temp",
+   "topic": "male-anatomy",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How much cooler than the body are the testes, and why does it matter?",
+   "back": "About 2 to 3 °C cooler; 37 °C is too warm for making sperm.",
+   "why": "The scrotum holds the testes outside the body cavity, and the dartos, cremaster and pampiniform plexus fine-tune their temperature."
+  },
+  {
+   "id": "rp-pampiniform",
+   "topic": "male-anatomy",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does the pampiniform plexus cool the testis?",
+   "back": "By countercurrent heat exchange: warm arterial blood gives up heat to cooler venous blood flowing back beside it.",
+   "why": "The mesh of veins wraps the testicular artery, so blood is already cooled when it reaches the testis."
+  },
+  {
+   "id": "rp-cremaster",
+   "topic": "male-anatomy",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Dartos vs cremaster: muscle type and what each does in cold?",
+   "back": "Dartos: smooth muscle under the skin; wrinkles the skin. Cremaster: skeletal muscle around the cord; pulls the testis up.",
+   "why": "Both reduce heat loss from the testes; the cremasteric reflex also lifts the testis when the inner thigh is stroked."
+  },
+  {
+   "id": "rp-epididymis",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What happens to sperm in the epididymis, and how long does it take?",
+   "back": "They gain the ability to swim forward and are stored in its tail; transit takes several days, about 2 days to 2 weeks.",
+   "why": "Sperm leave the testis unable to swim; they mature as they pass along the 6 m coiled tube."
+  },
+  {
+   "id": "rp-route",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "List the route of sperm from testis to urethra.",
+   "back": "Seminiferous tubules, rete testis, efferent ductules, epididymis, ductus deferens, ejaculatory duct, urethra.",
+   "why": "The ductus deferens climbs in the spermatic cord through the inguinal canal and joins a seminal vesicle’s duct to form the ejaculatory duct inside the prostate."
+  },
+  {
+   "id": "rp-inguinal",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are inguinal hernias far more common in males?",
+   "back": "The inguinal canal, the path the testis took down before birth, leaves a weak spot in the abdominal wall.",
+   "why": "A loop of intestine can push into the canal alongside the spermatic cord."
+  },
+  {
+   "id": "rp-sp-volume",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Seminal vesicles vs prostate",
+   "front": "Seminal vesicles vs prostate: share of semen volume and pH of their fluid?",
+   "back": "Seminal vesicles: about 60–70%, alkaline. Prostate: about 20–30%, slightly acidic.",
+   "why": "The larger alkaline share outweighs the prostate’s acid, so semen is slightly alkaline, about pH 7.2 to 8.0."
+  },
+  {
+   "id": "rp-sp-contents",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Seminal vesicles vs prostate",
+   "front": "Seminal vesicles vs prostate: key contents?",
+   "back": "Seminal vesicles: fructose, prostaglandins and a clotting protein. Prostate: citrate, zinc and PSA.",
+   "why": "Fructose fuels the sperm’s ATP; the clotting protein gels the semen, and PSA dissolves the gel within 15 to 30 minutes."
+  },
+  {
+   "id": "rp-sp-disease",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Seminal vesicles vs prostate",
+   "front": "Seminal vesicles vs prostate: which is commonly diseased, and why does its growth cause urinary symptoms?",
+   "back": "The prostate: benign enlargement and cancer are both common. It wraps around the urethra, so its growth squeezes urine outflow.",
+   "why": "Benign prostatic hyperplasia gives a weak stream, trouble starting and getting up at night; the seminal vesicles are rarely diseased."
+  },
+  {
+   "id": "rp-bulbourethral",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do the bulbourethral glands add, and when?",
+   "back": "A little clear, slippery mucus during arousal, before ejaculation.",
+   "why": "It lubricates the tip of the penis and neutralizes traces of acidic urine in the urethra."
+  },
+  {
+   "id": "rp-cc-urethra",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Corpora cavernosa vs corpus spongiosum",
+   "front": "Corpora cavernosa vs corpus spongiosum: number, position and which holds the urethra?",
+   "back": "Cavernosa: two, on the upper side. Spongiosum: one, on the underside, around the spongy urethra; it forms the glans.",
+   "why": "The spongiosum carries the urethra from the pelvic floor to the tip."
+  },
+  {
+   "id": "rp-cc-erect",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Corpora cavernosa vs corpus spongiosum",
+   "front": "Corpora cavernosa vs corpus spongiosum: why does one fill hard and the other stay softer?",
+   "back": "The cavernosa have a thick tunica albuginea; the spongiosum’s is thin, so it fills but stays softer.",
+   "why": "A softer spongiosum keeps the urethra open for ejaculation."
+  },
+  {
+   "id": "rp-ee-nerves",
+   "topic": "male-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Erection vs emission vs expulsion",
+   "front": "Erection vs emission vs expulsion: which nerves run each?",
+   "back": "Erection: parasympathetic (S2–S4). Emission: sympathetic (about T10–L2). Expulsion: somatic pudendal nerve (S2–S4).",
+   "why": "“Point and shoot”: parasympathetic for erection, sympathetic then somatic for ejaculation."
+  },
+  {
+   "id": "rp-ee-messenger",
+   "topic": "male-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Erection vs emission vs expulsion",
+   "front": "Erection vs emission vs expulsion: messenger and muscle?",
+   "back": "Erection: nitric oxide and cGMP relax smooth muscle. Emission: norepinephrine on alpha-1 receptor proteins contracts smooth muscle. Expulsion: acetylcholine contracts skeletal muscle.",
+   "why": "Relaxing erectile smooth muscle lets blood in; contracting duct smooth muscle moves semen; skeletal muscle at the root of the penis forces it out."
+  },
+  {
+   "id": "rp-erection-veins",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does blood stay in the penis during an erection?",
+   "back": "The swelling tissue squeezes the draining veins flat against the tunica albuginea.",
+   "why": "Inflow rises while outflow falls, so pressure in the corpora cavernosa climbs close to arterial pressure."
+  },
+  {
+   "id": "rp-no-exam",
+   "topic": "male-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Exam question: is erection a sympathetic or parasympathetic effect, and what relaxes the smooth muscle?",
+   "back": "Parasympathetic; the relaxing chemical is nitric oxide, released by those nerves and the endothelium.",
+   "why": "Acetylcholine plays a smaller part, mainly by making the endothelium release nitric oxide."
+  },
+  {
+   "id": "rp-pde5",
+   "topic": "male-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why does sildenafil need sexual stimulation to work, and why is it dangerous with nitrate drugs?",
+   "back": "It only slows PDE5’s breakdown of cGMP, so nitric oxide must first make cGMP. Nitrates also raise cGMP, and together they can drop blood pressure dangerously.",
+   "why": "Blocking breakdown adds nothing if no cGMP is being made; with nitrates, cGMP rises in blood vessels everywhere."
+  },
+  {
+   "id": "rp-alpha-block",
+   "topic": "male-anatomy",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why can an alpha-1 blocker for an enlarged prostate leave little or no semen at ejaculation?",
+   "back": "It weakens emission: the ducts, seminal vesicles and prostate contract less.",
+   "why": "Emission runs on norepinephrine at alpha-1 receptor proteins. Retrograde flow into the bladder is more typical after prostate surgery or diabetic nerve damage."
+  },
+  {
+   "id": "rp-vasectomy",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "After a vasectomy, what happens to semen volume and testosterone?",
+   "back": "Both barely change; only sperm are missing from the semen.",
+   "why": "The glands that make most of the volume join the route below the cut, and testosterone goes straight into the blood."
+  },
+  {
+   "id": "rp-torsion",
+   "topic": "male-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is testicular torsion a surgical emergency?",
+   "back": "The twisted cord shuts off the testicular artery and veins; a testis untwisted within about six hours can usually be saved.",
+   "why": "Without blood flow the testis dies, so the twist must be undone quickly."
+  },
+  {
+   "id": "rp-spg-order",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Order the cells of spermatogenesis.",
+   "back": "Spermatogonium, primary spermatocyte, secondary spermatocyte, spermatid, sperm.",
+   "why": "Mitosis renews the spermatogonia; meiosis I and II give spermatids; spermiogenesis reshapes them into sperm."
+  },
+  {
+   "id": "rp-spg-time",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a high fever show up in a semen sample only two to three months later?",
+   "back": "Spermatogenesis takes about 64 to 74 days, plus several days in the epididymis.",
+   "why": "Cells harmed early in the process are released as sperm weeks later, and recovery is just as slow."
+  },
+  {
+   "id": "rp-spg-count",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How many sperm come from 16 primary spermatocytes?",
+   "back": "64.",
+   "why": "Each primary spermatocyte gives 2 secondary spermatocytes and then 4 spermatids, and each spermatid becomes one sperm without dividing."
+  },
+  {
+   "id": "rp-spermiogenesis",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What happens in spermiogenesis?",
+   "back": "A round spermatid reshapes into a sperm without dividing: DNA packs tightly, an acrosome forms, a tail grows and cytoplasm is shed.",
+   "why": "The divisions are finished; the Sertoli cell eats the shed cytoplasm."
+  },
+  {
+   "id": "rp-sl-location",
+   "topic": "male-physiology",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Sertoli vs Leydig cells",
+   "front": "Sertoli vs Leydig cells: where are they, and which hormone drives each?",
+   "back": "Sertoli: inside the tubule wall, basement membrane to lumen; FSH with testosterone. Leydig: between the tubules near capillaries; LH.",
+   "why": "The Sertoli cells wrap the germ cells; the Leydig cells sit by the blood they release testosterone into."
+  },
+  {
+   "id": "rp-sl-feedback",
+   "topic": "male-physiology",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Sertoli vs Leydig cells",
+   "front": "Sertoli vs Leydig cells: main product and the feedback it sends?",
+   "back": "Sertoli: support for spermatogenesis and inhibin, which lowers FSH. Leydig: testosterone, which lowers LH and GnRH.",
+   "why": "Each cell type brakes the pituitary hormone that drives it, giving two separate negative feedback loops."
+  },
+  {
+   "id": "rp-sl-barrier",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Sertoli vs Leydig cells",
+   "front": "Sertoli vs Leydig cells: which forms the blood-testis barrier, and how?",
+   "back": "Sertoli cells, joined near their bases by tight junctions.",
+   "why": "The seal splits the tubule wall into a basal compartment open to blood and an adluminal compartment reached only through Sertoli cells."
+  },
+  {
+   "id": "rp-btb-why",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why do developing sperm need a blood-testis barrier?",
+   "back": "They make new surface proteins after the immune system learned to ignore your own proteins, so they look foreign.",
+   "why": "The barrier keeps antibodies and lymphocytes away; if injury breaks it, a man can make antibodies against his own sperm."
+  },
+  {
+   "id": "rp-abp",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What does androgen-binding protein do?",
+   "back": "It holds testosterone inside the tubule, keeping it 50 to 100 times the blood level.",
+   "why": "Spermatogenesis needs that high local level, which only the neighboring Leydig cells can supply."
+  },
+  {
+   "id": "rp-sperm-parts",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three parts of a sperm and what each does.",
+   "back": "Head: nucleus and acrosome of enzymes. Midpiece: mitochondria making ATP. Tail: a flagellum that drives it forward.",
+   "why": "The acrosome’s enzymes digest a path to the egg; the midpiece burns fructose and other fuels to power the tail."
+  },
+  {
+   "id": "rp-mito-dna",
+   "topic": "male-physiology",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does your mitochondrial DNA come from your mother?",
+   "back": "The sperm’s mitochondria are destroyed soon after it enters the egg.",
+   "why": "The oocyte supplies nearly all the cytoplasm and organelles of the new cell."
+  },
+  {
+   "id": "rp-gnrh-pulses",
+   "topic": "male-physiology",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why must GnRH come in pulses?",
+   "back": "The pituitary responds to rising and falling GnRH but stops responding to steady GnRH.",
+   "why": "That is why a long-acting GnRH-like drug first raises LH and then shuts it down, lowering testosterone in prostate cancer."
+  },
+  {
+   "id": "rp-hp-testes",
+   "topic": "male-physiology",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Reading the male hormone pattern",
+   "front": "Low testosterone with high LH and FSH points to what?",
+   "back": "The testes themselves have failed (for example, Klinefelter syndrome).",
+   "why": "With no testosterone or inhibin brake, a healthy pituitary works harder."
+  },
+  {
+   "id": "rp-hp-pituitary",
+   "topic": "male-physiology",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Reading the male hormone pattern",
+   "front": "Low testosterone with low LH and FSH points to what?",
+   "back": "Pituitary or hypothalamic failure.",
+   "why": "Nothing drives the testes, so all three are low together."
+  },
+  {
+   "id": "rp-hp-germ",
+   "topic": "male-physiology",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Reading the male hormone pattern",
+   "front": "Normal testosterone and LH but high FSH points to what?",
+   "back": "Loss of germ cells with Leydig cells intact, as after some chemotherapy.",
+   "why": "Sertoli cells without germ cells release less inhibin, so only the FSH brake weakens."
+  },
+  {
+   "id": "rp-hp-steroids",
+   "topic": "male-physiology",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Reading the male hormone pattern",
+   "front": "Why do anabolic steroids shrink the testes and cut sperm counts?",
+   "back": "The drug brakes GnRH and LH, so the Leydig cells stop supplying the high local testosterone the tubules need.",
+   "why": "Blood androgen is high, but the tubules lose their local supply; the axis takes months to restart after stopping."
+  },
+  {
+   "id": "rp-dht",
+   "topic": "male-physiology",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What do 5-alpha reductase and aromatase turn testosterone into?",
+   "back": "5-alpha reductase: DHT, a stronger androgen. Aromatase: estradiol.",
+   "why": "DHT acts in the prostate, genital skin and hair follicles; estradiol closes growth plates and keeps bone dense in both sexes."
+  },
+  {
+   "id": "rp-t-fetal",
+   "topic": "male-physiology",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Before birth, testosterone vs DHT: what does each shape?",
+   "back": "Testosterone: the internal ducts (epididymis, ductus deferens, seminal vesicles). DHT: the penis, scrotum and prostate.",
+   "why": "5-alpha reductase deficiency shows the split: ducts form, but the external genitals may look female or in between at birth."
+  },
+  {
+   "id": "rp-t-puberty",
+   "topic": "male-physiology",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Name four secondary sex characteristics testosterone produces in males.",
+   "back": "Male-pattern hair, a deeper voice, more muscle mass, heavier bones and broader shoulders (also larger sebaceous glands).",
+   "why": "Testosterone acts through androgen receptor proteins that change gene expression; faster protein synthesis builds muscle."
+  },
+  {
+   "id": "rp-t-rbc",
+   "topic": "male-physiology",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why do men’s hematocrits run higher than women’s?",
+   "back": "Testosterone raises erythropoietin release and marrow activity.",
+   "why": "More red blood cell production raises the hematocrit."
+  },
+  {
+   "id": "rp-sex-drive",
+   "topic": "male-physiology",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Exam question: do androgens drive sex drive? What does the evidence say?",
+   "back": "Exam answer: androgens help drive sex drive in both sexes. Evidence: clear in men; in women less clear, since a woman’s own level predicts desire poorly.",
+   "why": "Testosterone given to older women with low desire raises it modestly, so a role is possible but weaker than in men."
+  },
+  {
+   "id": "rp-open-tract",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can a vaginal infection spread to the peritoneum in females?",
+   "back": "The tract is open at both ends: the uterine tube opens into the pelvic cavity next to the ovary.",
+   "why": "Bacteria climbing from the vagina can reach the peritoneum; scarring from pelvic inflammatory disease can block the tubes."
+  },
+  {
+   "id": "rp-ovary-ligaments",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Ovarian ligament vs suspensory ligament of the ovary: what does each connect?",
+   "back": "Ovarian ligament: ovary to the uterus. Suspensory ligament: ovary to the pelvic wall, carrying its artery, vein and nerves.",
+   "why": "The suspensory ligament is the ovary’s lifeline, because its blood supply runs inside it."
+  },
+  {
+   "id": "rp-tube-parts",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the parts of the uterine tube from the ovary inward.",
+   "back": "Fimbriae at the open funnel, ampulla, isthmus, then a short part through the uterine wall.",
+   "why": "The ampulla, the longest and widest part, is where sperm usually meet the oocyte."
+  },
+  {
+   "id": "rp-tube-move",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does an oocyte get into and along the uterine tube?",
+   "back": "Fimbriae sweep the ovary and their cilia set up a current that draws it in; cilia and waves of smooth muscle move it to the uterus over three to four days.",
+   "why": "The ovary is not attached to the tube, so the oocyte must be caught."
+  },
+  {
+   "id": "rp-uterus-regions",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three regions of the uterus.",
+   "back": "Fundus (rounded top), body (main part) and cervix (narrow lower end in the vagina).",
+   "why": "The uterine tubes enter below the fundus; the cervical canal links the cavity to the vagina."
+  },
+  {
+   "id": "rp-uterus-layers",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three layers of the uterine wall from outside in.",
+   "back": "Perimetrium (serosa), myometrium (smooth muscle), endometrium (mucosa).",
+   "why": "The myometrium is most of the wall’s bulk and contracts in childbirth and during periods."
+  },
+  {
+   "id": "rp-fb-shed",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Functional vs basal layer",
+   "front": "Functional vs basal layer of the endometrium: which is shed at menstruation?",
+   "back": "The functional layer is shed; the basal layer stays and regrows it.",
+   "why": "“The lining is shed” is only half right: the basal layer supplies the cells that rebuild the functional layer."
+  },
+  {
+   "id": "rp-fb-blood",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Functional vs basal layer",
+   "front": "Functional vs basal layer: how does each get its blood?",
+   "back": "Functional: coiled arteries that constrict before shedding. Basal: short straight arteries that keep it alive.",
+   "why": "Because the basal layer has its own steady supply, it survives when the functional layer breaks down."
+  },
+  {
+   "id": "rp-vagina-acid",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the vagina acidic?",
+   "back": "Estrogen makes its cells store glycogen; the glycogen is broken into sugars that lactobacilli ferment to lactic acid.",
+   "why": "A pH of about 3.8 to 4.5 holds back many harmful microbes."
+  },
+  {
+   "id": "rp-vagina-wall",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What lines the vagina, and where does lubrication come from?",
+   "back": "Nonkeratinized stratified squamous epithelium with no glands; fluid seeps through the wall from blood vessels, plus mucus from the cervix and glands at the opening.",
+   "why": "The layered epithelium resists wear, and its folds flatten as the vagina stretches."
+  },
+  {
+   "id": "rp-cervix-cancer",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Where do most cervical cancers start, and what drives them?",
+   "back": "Where the vaginal side’s stratified squamous epithelium meets the canal’s columnar epithelium; persistent HPV infection.",
+   "why": "Screening samples cells from that junction, and HPV vaccination prevents most cases."
+  },
+  {
+   "id": "rp-mammary",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Follow milk from where it is made to the nipple.",
+   "back": "Alveoli (clustered in lobules), smaller ducts, lactiferous duct, duct opening on the nipple.",
+   "why": "Myoepithelial cells around the alveoli squeeze milk into the ducts."
+  },
+  {
+   "id": "rp-sinus-exam",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Exam question: where does milk collect before leaving the nipple? What does ultrasound show?",
+   "back": "Exam answer: the lactiferous sinuses. Ultrasound shows no storage sacs; the ducts widen only briefly while milk flows, with about 9 duct openings.",
+   "why": "The sinus is the older textbook description; the ducts also branch close to the nipple."
+  },
+  {
+   "id": "rp-mf-counterparts",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Female and male counterparts",
+   "front": "Give the male counterparts of the labia majora, the glans of the clitoris and the greater vestibular glands.",
+   "back": "Scrotum, glans penis and bulbourethral glands.",
+   "why": "Both sets of organs grow from the same early tissues, so each female structure has a male counterpart."
+  },
+  {
+   "id": "rp-mf-erectile",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Female and male counterparts",
+   "front": "Give the male counterparts of the body of the clitoris and the vestibular bulbs.",
+   "back": "Corpora cavernosa and corpus spongiosum.",
+   "why": "The paired erectile bodies match; the bulbs beside the vaginal opening match the spongy tissue around the male urethra."
+  },
+  {
+   "id": "rp-hymen",
+   "topic": "female-anatomy",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Can the appearance of the hymen show whether someone has had intercourse?",
+   "back": "No.",
+   "why": "Its shape varies widely and changes with age and estrogen; it is usually a ring or crescent with an opening."
+  },
+  {
+   "id": "rp-os-where",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Spermatogenesis vs oogenesis",
+   "front": "Spermatogenesis vs oogenesis: when does meiosis start?",
+   "back": "Spermatogenesis: at puberty, then continuously. Oogenesis: before birth.",
+   "why": "Primary oocytes enter meiosis I in the fetal ovary and pause there for years or decades."
+  },
+  {
+   "id": "rp-os-stem",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Spermatogenesis vs oogenesis",
+   "front": "Spermatogenesis vs oogenesis: do the stem cells last?",
+   "back": "Spermatogonia divide throughout adult life. Oogonia divide only before birth; none remain after.",
+   "why": "That is why men keep making sperm into old age while the follicle supply runs out in midlife."
+  },
+  {
+   "id": "rp-os-pauses",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Spermatogenesis vs oogenesis",
+   "front": "Spermatogenesis vs oogenesis: where does each pause?",
+   "back": "Spermatogenesis: no pauses, about 64 to 74 days. Oogenesis: prophase I (for years) and metaphase II.",
+   "why": "The second pause ends only if a sperm enters the secondary oocyte."
+  },
+  {
+   "id": "rp-os-cytoplasm",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Spermatogenesis vs oogenesis",
+   "front": "Spermatogenesis vs oogenesis: how is the cytoplasm divided, and how many gametes per cell entering meiosis?",
+   "back": "Sperm: equal division, four gametes. Oocytes: unequal division, one gamete plus polar bodies.",
+   "why": "The spindle sits at the oocyte’s edge, so one large cell keeps the nutrients and organelles an early embryo will run on."
+  },
+  {
+   "id": "rp-os-numbers",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Spermatogenesis vs oogenesis",
+   "front": "Spermatogenesis vs oogenesis: how many gametes?",
+   "back": "About 400 oocytes released in a lifetime vs on the order of 100 million sperm made a day.",
+   "why": "Oocytes are lost mainly by atresia, not ovulation; sperm are made continuously from renewing stem cells."
+  },
+  {
+   "id": "rp-oocyte-numbers",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How many oocytes are there at mid-gestation, at birth and at puberty?",
+   "back": "About 6 to 7 million, 1 to 2 million, and 300,000 to 400,000.",
+   "why": "No new oocytes are made after birth, and they die off steadily by atresia."
+  },
+  {
+   "id": "rp-ovulated-cell",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which cell is released at ovulation, and at what stage is it paused?",
+   "back": "A secondary oocyte, paused at metaphase II.",
+   "why": "Meiosis I finishes just before ovulation; meiosis II finishes only if a sperm enters."
+  },
+  {
+   "id": "rp-polar-body",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a polar body?",
+   "back": "A tiny cell from an unequal meiotic division that gets a set of chromosomes and little else, and later breaks down.",
+   "why": "It lets the oocyte discard half its chromosomes while keeping almost all the cytoplasm."
+  },
+  {
+   "id": "rp-follicle-stages",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Order the follicle stages.",
+   "back": "Primordial, primary, secondary, tertiary (vesicular), mature vesicular (Graafian).",
+   "why": "Flat cells become cube-shaped granulosa cells, then several layers with a theca, then an antrum forms and grows."
+  },
+  {
+   "id": "rp-fsh-dependent",
+   "topic": "ovarian-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "From which stage does a follicle need FSH to keep growing?",
+   "back": "The tertiary stage, once it has an antrum.",
+   "why": "Early stages run on signals inside the ovary; each month the tertiary follicles ready when FSH is high are rescued."
+  },
+  {
+   "id": "rp-dominant",
+   "topic": "ovarian-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why does usually only one follicle mature each month?",
+   "back": "As FSH falls, only the follicle with the most FSH receptor proteins keeps growing; the others lose their support and undergo atresia.",
+   "why": "Estradiol and inhibin from the growing group are what lower FSH."
+  },
+  {
+   "id": "rp-two-cell",
+   "topic": "ovarian-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Theca vs granulosa cells: what does each contribute to estradiol, and which hormone drives each?",
+   "back": "Theca: androgens from cholesterol, driven by LH. Granulosa: aromatase converts those androgens to estradiol, driven by FSH.",
+   "why": "Theca cells lack aromatase and granulosa cells lack the androgen-making enzymes, so a follicle needs both hormones."
+  },
+  {
+   "id": "rp-ovulation-timing",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How long after LH starts to rise does ovulation occur, and how long can the oocyte be joined by a sperm?",
+   "back": "About 34 to 36 hours; about 12 to 24 hours.",
+   "why": "LH finishes meiosis I, loosens the oocyte, and triggers enzymes that weaken the follicle wall."
+  },
+  {
+   "id": "rp-prostaglandins",
+   "topic": "ovarian-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why can high doses of prostaglandin-blocking drugs delay ovulation?",
+   "back": "Prostaglandins are needed for the enzymes that break down the follicle wall at its thin spot.",
+   "why": "Without them the wall does not give way on time, even if LH rises normally."
+  },
+  {
+   "id": "rp-corpus-luteum",
+   "topic": "ovarian-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What does the corpus luteum make, how long does it last, and what does it need?",
+   "back": "Progesterone, plus estradiol and inhibin; about 12 to 14 days without pregnancy; steady LH.",
+   "why": "It forms from the emptied follicle’s cells under LH and becomes the corpus albicans when it dies."
+  },
+  {
+   "id": "rp-atresia",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What empties the ovary over a lifetime?",
+   "back": "Atresia, the degeneration of follicles that never open.",
+   "why": "More than 99% of follicles die this way; only about 400 are ovulated."
+  },
+  {
+   "id": "rp-random-ovary",
+   "topic": "ovarian-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Do the two ovaries take turns ovulating?",
+   "back": "No: which ovary ovulates is close to random, and a woman with one ovary usually ovulates from it every month.",
+   "why": "Each month’s dominant follicle can be in either ovary."
+  },
+  {
+   "id": "rp-fl-targets",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "FSH vs LH in males and females",
+   "front": "FSH vs LH: target cells in the testis and the ovary?",
+   "back": "FSH: Sertoli cells; granulosa cells. LH: Leydig cells; theca cells, and later the granulosa cells too.",
+   "why": "The parallel jobs follow from the same pituitary hormones acting on the matching cells of each gonad."
+  },
+  {
+   "id": "rp-fl-effects",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "FSH vs LH in males and females",
+   "front": "FSH vs LH: main effect in females?",
+   "back": "FSH: follicle growth and aromatase. LH: theca androgens; the surge triggers ovulation; forms and sustains the corpus luteum.",
+   "why": "Estradiol needs both: LH for the androgen starting material, FSH for converting it."
+  },
+  {
+   "id": "rp-fl-brakes",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "FSH vs LH in males and females",
+   "front": "FSH vs LH: what holds each back selectively, and which GnRH pulse speed favors each?",
+   "back": "FSH: inhibin (and estradiol); slower pulses. LH: testosterone in males, progesterone and estradiol in females; faster pulses.",
+   "why": "In polycystic ovary syndrome, fast GnRH pulses favor LH, and theca cells overproduce androgens."
+  },
+  {
+   "id": "rp-ep-source",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Estrogen vs progesterone",
+   "front": "Estrogen vs progesterone: main source in a nonpregnant woman?",
+   "back": "Estrogen: granulosa cells of growing follicles, also the corpus luteum. Progesterone: the corpus luteum.",
+   "why": "That is why progesterone stays near zero until ovulation and peaks about a week after it."
+  },
+  {
+   "id": "rp-ep-endometrium",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Estrogen vs progesterone",
+   "front": "Estrogen vs progesterone: effect on the endometrium?",
+   "back": "Estrogen: makes the functional layer grow and adds progesterone receptor proteins. Progesterone: turns it secretory, coiling glands and arteries.",
+   "why": "Progesterone can act only on tissue estrogen has first primed with its receptor proteins."
+  },
+  {
+   "id": "rp-ep-mucus",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Estrogen vs progesterone",
+   "front": "Estrogen vs progesterone: effect on cervical mucus?",
+   "back": "Estrogen: thin, watery and stretchy, so sperm pass easily. Progesterone: thick and sticky, forming a plug.",
+   "why": "Thin mucus around ovulation eases sperm entry; the progestin in the pill keeps it thick as a backup barrier."
+  },
+  {
+   "id": "rp-ep-temp",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Estrogen vs progesterone",
+   "front": "Estrogen vs progesterone: effect on resting body temperature, and what does a morning rise tell you?",
+   "back": "Estrogen: little. Progesterone: raises it about 0.3 to 0.5 °C. A rise shows ovulation has already happened.",
+   "why": "Progesterone is high only after ovulation, so the rise cannot predict ovulation in advance."
+  },
+  {
+   "id": "rp-ep-feedback",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Estrogen vs progesterone",
+   "front": "Estrogen vs progesterone: feedback on GnRH, FSH and LH?",
+   "back": "Estrogen: negative at low to moderate levels, positive when high and sustained. Progesterone: negative, slowing GnRH pulses.",
+   "why": "That switch in estradiol’s effect is what produces the LH surge."
+  },
+  {
+   "id": "rp-ep-other",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Estrogen vs progesterone",
+   "front": "Name three effects of estrogen outside the reproductive tract.",
+   "back": "Keeps bone mass by limiting osteoclasts; closes growth plates; raises HDL (also raises clotting factors from the liver).",
+   "why": "Losing estrogen at menopause speeds bone loss and lets LDL climb."
+  },
+  {
+   "id": "rp-np-level",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Estradiol’s negative vs positive feedback",
+   "front": "Estradiol’s negative vs positive feedback: when and at what level?",
+   "back": "Negative: most of the cycle, at low to moderate levels. Positive: about two days before ovulation, when high (about 200 pg/mL or more) and sustained.",
+   "why": "Dose and time switch its effect in the hypothalamus and pituitary."
+  },
+  {
+   "id": "rp-np-how",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Estradiol’s negative vs positive feedback",
+   "front": "How does high, sustained estradiol drive the LH surge?",
+   "back": "It excites the kisspeptin neurons that drive GnRH neurons, and adds GnRH receptor proteins to pituitary cells so each pulse releases far more LH.",
+   "why": "Before the surge, rising LH and FSH make the follicle release still more estradiol: positive feedback."
+  },
+  {
+   "id": "rp-np-end",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Estradiol’s negative vs positive feedback",
+   "front": "What ends the positive feedback of the LH surge?",
+   "back": "The surge sets up its own ending: it turns the follicle’s cells toward making progesterone, so estradiol falls and the stimulus disappears.",
+   "why": "Estradiol peaks as the surge begins and then falls; ovulation follows, and progesterone begins to hold GnRH down."
+  },
+  {
+   "id": "rp-e2-peak",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "On the cycle graph, does estradiol peak before, with, or after LH?",
+   "back": "Just before: estradiol peaks as the LH surge begins, then falls while LH is still rising.",
+   "why": "The LH is already switching the follicle toward progesterone."
+  },
+  {
+   "id": "rp-ovulation-day",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Cycles are 32 days long. On about which day is ovulation?",
+   "back": "Day 18: ovulation day ≈ cycle length − 14.",
+   "why": "The luteal phase is steady, set by the corpus luteum’s lifespan, so the extra days fall before ovulation."
+  },
+  {
+   "id": "rp-luteal-waves",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Can a follicle ovulate during the luteal phase?",
+   "back": "No. Follicles may start to grow, but none can go on to ovulate while the corpus luteum is working.",
+   "why": "Progesterone with estradiol and inhibin holds FSH and LH at their lowest, so no follicle gets the support to dominate and no surge can occur."
+  },
+  {
+   "id": "rp-menses-cause",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Exam question: what causes menstruation?",
+   "back": "Falling progesterone when the corpus luteum dies makes the functional layer break down and be shed.",
+   "why": "Current evidence gives the leading role to progesterone withdrawal setting off inflammation and enzyme breakdown, with coiled artery spasm contributing."
+  },
+  {
+   "id": "rp-uterine-phases",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Name the phases of the uterine cycle, their days in a 28-day cycle, and the hormone driving each.",
+   "back": "Menstrual (1–5): falling progesterone. Proliferative (6–14): rising estradiol. Secretory (15–28): progesterone.",
+   "why": "The ovary’s hormones drive the uterus, so the two cycles stay in step."
+  },
+  {
+   "id": "rp-fsh-bump",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why does FSH rise in the last days of one cycle and the first days of the next?",
+   "back": "The dying corpus luteum’s estradiol, progesterone and inhibin fall, lifting their brake on FSH.",
+   "why": "The rise rescues the next group of follicles from atresia."
+  },
+  {
+   "id": "rp-puberty",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Exam question: why do hormone levels rise at puberty? What is the better-supported cause?",
+   "back": "Exam answer: decreased sensitivity of the hypothalamus to negative feedback. Better supported: the GnRH pulse generator reawakens inside the brain, with kisspeptin neurons central.",
+   "why": "Children without working gonads still show the rise in FSH and LH at the usual age."
+  },
+  {
+   "id": "rp-menarche",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What is the usual order of puberty in girls?",
+   "back": "Breast budding (about 10), pubic and underarm hair, growth spurt, then menarche at about 12 to 13.",
+   "why": "Early cycles often release no oocyte, because the positive-feedback LH surge takes a year or more to mature."
+  },
+  {
+   "id": "rp-menopause-fsh",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why is a high FSH the laboratory sign of menopause?",
+   "back": "With few follicles left, inhibin and estradiol fall, and FSH loses both of its brakes.",
+   "why": "LH rises too, but FSH rises first and most."
+  },
+  {
+   "id": "rp-menopause-effects",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Name four effects of low estrogen after menopause.",
+   "back": "Hot flashes and night sweats, a thinner and less acidic vaginal lining, faster bone loss, and a rising LDL.",
+   "why": "A woman with a uterus on hormone therapy needs a progestin too, because estrogen alone overstimulates the endometrium."
+  },
+  {
+   "id": "rp-pill-how",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "How does the combined pill prevent ovulation?",
+   "back": "Steady estrogen and progestin keep negative feedback on, so FSH and LH stay low, no follicle dominates, and estradiol never triggers an LH surge.",
+   "why": "Thick cervical mucus and a thin endometrium from the progestin act as backups."
+  },
+  {
+   "id": "rp-withdrawal-bleed",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Is the bleed in the pill’s hormone-free days a true period?",
+   "back": "No: it is a withdrawal bleed, since no ovulation came before it.",
+   "why": "The drop in hormones sheds the thin lining the pill kept in place."
+  },
+  {
+   "id": "rp-emergency",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Levonorgestrel vs ulipristal emergency pills: when does each stop working?",
+   "back": "Levonorgestrel works poorly once the LH surge has begun. Ulipristal can still delay ovulation early in the surge, but not once LH has peaked.",
+   "why": "Both work mainly by delaying or preventing ovulation; neither ends an established pregnancy."
+  },
+  {
+   "id": "rp-amenorrhea",
+   "topic": "female-hormones-cycle",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why do periods stop in endurance athletes who eat too little, and in breastfeeding?",
+   "back": "Low energy and high prolactin both slow the GnRH pulse generator.",
+   "why": "Low GnRH means low FSH, LH and estrogen; months of low estrogen thin the bones."
   }
  ]
 }

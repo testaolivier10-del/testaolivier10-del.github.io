@@ -3438,7 +3438,7 @@
         "q": "A woman takes the combined pill every day. Why does this loop never start?",
         "options": [
           {
-            "text": "No follicle becomes dominant, so estradiol never stays high enough for long enough",
+            "text": "No follicle dominates, so estradiol never stays high long enough",
             "why": "Right. Steady estrogen and progestin keep negative feedback on, FSH stays low, no follicle is selected, and the stimulus for positive feedback never appears. No surge, no ovulation."
           },
           {
@@ -3446,7 +3446,7 @@
             "why": "The pituitary is unharmed; LH and FSH return within weeks of stopping the pill."
           },
           {
-            "text": "The pill blocks estrogen receptor proteins in the hypothalamus",
+            "text": "The pill blocks estrogen receptor proteins in the hypothalamus, so estradiol cannot be sensed",
             "why": "The pill contains an estrogen that acts on those receptor proteins. It works by keeping negative feedback switched on."
           },
           {

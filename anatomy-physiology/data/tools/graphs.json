@@ -20041,8 +20041,8 @@
               ],
               "label": "HCO3− 12",
               "labelAt": [
-                30,
-                7.12
+                66,
+                6.92
               ]
             }
           ]
@@ -20129,8 +20129,8 @@
               ],
               "label": "HCO3− 12",
               "labelAt": [
-                30,
-                7.12
+                66,
+                6.92
               ]
             }
           ],
@@ -21792,8 +21792,8 @@
         "options": [
           "Days 11 to 13.5, while estradiol stays above about 200 pg/mL",
           "Days 1 to 5, while estradiol is lowest",
-          "Days 5 to 10, while FSH is falling",
-          "Days 18 to 24, during the second estradiol hump"
+          "Days 5 to 10, while FSH is falling and estradiol climbs",
+          "Days 18 to 24, when estradiol rises to its second, lower hump"
         ],
         "correct": 0,
         "highlight": {
@@ -21816,10 +21816,10 @@
         "diff": 2,
         "q": "FSH falls during which stretch, and what does that fall do in the ovary?",
         "options": [
-          "Days 5 to 10: rising estradiol and inhibin lower FSH, and only the most FSH-sensitive follicle keeps growing",
+          "Days 5 to 10: estradiol and inhibin lower it, so one follicle is selected",
           "Days 1 to 5: the period washes FSH out of the blood",
-          "Days 14 to 18: progesterone lowers FSH, and the dominant follicle is chosen",
-          "Days 25 to 28: the corpus luteum makes FSH fall, and all follicles die"
+          "Days 14 to 18: progesterone lowers FSH, and that is when the dominant follicle is chosen",
+          "Days 25 to 28: the corpus luteum makes FSH fall, and all the follicles die"
         ],
         "correct": 0,
         "highlight": {
@@ -21842,8 +21842,8 @@
         "diff": 1,
         "q": "During which phase does the functional layer grow fastest, and which hormone drives it?",
         "options": [
-          "The proliferative phase, driven by rising estradiol",
-          "The secretory phase, driven by progesterone",
+          "The proliferative phase, driven by estradiol",
+          "The secretory phase, driven by rising progesterone",
           "The menstrual phase, driven by falling progesterone",
           "The proliferative phase, driven by LH"
         ],
@@ -21868,10 +21868,10 @@
         "diff": 2,
         "q": "In the last days of the cycle, which change in the ovary starts both the next period and the next rise in FSH?",
         "options": [
-          "The corpus luteum dies, so progesterone, estradiol and inhibin fall",
+          "The corpus luteum dies, and its hormones fall",
           "A new dominant follicle releases a burst of estradiol",
-          "LH surges a second time",
-          "The endometrium stops making progesterone"
+          "LH surges a second time, late in the cycle",
+          "The endometrium stops making its own progesterone"
         ],
         "correct": 0,
         "highlight": {
@@ -21956,10 +21956,10 @@
         "diff": 3,
         "q": "In a woman whose cycles are 32 days long, how does the LH peak shift, and what happens to the phase after it?",
         "options": [
-          "The peak moves about 4 days later, and the phase after ovulation stays about 14 days",
-          "The peak stays at day 14, and the phase after ovulation lasts 18 days",
-          "The peak moves 2 days later, and each phase gains 2 days",
-          "The peak moves earlier, because her follicles grow faster"
+          "About 4 days later; the phase after ovulation stays about 14 days",
+          "It stays at day 14, and the phase after ovulation stretches to 18 days",
+          "It moves 2 days later, and the phases before and after ovulation each gain 2 days",
+          "It moves earlier, because her follicles grow faster"
         ],
         "correct": 0,
         "overlay": {
@@ -22442,8 +22442,8 @@
         "diff": 2,
         "q": "During which days do the two follicles’ paths split, and why then?",
         "options": [
-          "Days 6 to 9, as FSH falls: only the follicle most sensitive to FSH keeps growing",
-          "Days 1 to 5, as FSH rises: the higher FSH chooses one follicle",
+          "Days 6 to 9, as FSH falls and only the most sensitive one keeps up",
+          "Days 1 to 5, as FSH rises and the highest FSH picks out one follicle",
           "Days 9 to 13, when the dominant follicle stops needing FSH altogether",
           "They never split; both follicles are released"
         ],
@@ -22763,8 +22763,8 @@
         "diff": 2,
         "q": "In which stretch do cycles become irregular and then stop, and why?",
         "options": [
-          "From about 45 on: too few follicles are left to answer FSH",
-          "From about 13 to 20: the follicles are not yet mature",
+          "From about 45: too few follicles are left to answer FSH",
+          "From about 13 to 20, because the follicles are not yet mature enough",
           "From about 25 to 35: the fall is steepest",
           "At birth: the oocytes are paused"
         ],
@@ -22789,7 +22789,7 @@
         "diff": 3,
         "q": "At 30, a woman has chemotherapy that destroys about nine tenths of her remaining follicles. How does her curve change?",
         "options": [
-          "It drops at 30 and reaches the menopause level years earlier",
+          "It drops at 30 and reaches the menopause level years earlier than usual",
           "It rises again after treatment as new follicles form",
           "It is unchanged, because only growing follicles are harmed",
           "It drops at 30 but her menopause comes at the usual age"
