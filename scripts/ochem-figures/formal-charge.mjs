@@ -42,7 +42,7 @@ function mol(m) {
   }
   for (const [id, sign, ang, dist = 28] of m.charges || []) {
     const p = at(A[id], ang, dist);
-    s += text(p.x, p.y + 5, sign, { cls: sign.includes('+') ? 'fg-tag' : 'fg-tag-warn', size: 15 });
+    s += text(p.x, p.y + 5, sign, { cls: sign.includes('+') ? 'fg-tag-warn' : 'fg-tag', size: 15 });
   }
   for (const [id, t, ang, dist = 28, cls = 'fg-tag-good'] of m.notes || []) {
     const p = at(A[id], ang, dist);
@@ -111,8 +111,8 @@ function owned(cx, cy, centre, hAngles, lpAngles, charge) {
     s += atom(H.x, H.y, 'H', { r: 11 });
   }
   for (const ang of lpAngles) s += lonePair(cx, cy, ang, { dist: 21 });
-  s += atom(cx, cy, centre, { kind: charge ? 'warn' : 'hi', r: 14 });
-  if (charge) { const p = at(C, 315, 46); s += text(p.x, p.y + 5, charge, { cls: 'fg-tag', size: 15 }); }
+  s += atom(cx, cy, centre, { kind: charge ? 'warn' : undefined, r: 14 });
+  if (charge) { const p = at(C, 315, 46); s += text(p.x, p.y + 5, charge, { cls: 'fg-tag-warn', size: 15 }); }
   return s;
 }
 const water = (cx, cy) => owned(cx, cy, 'O', [150, 30], [225, 315]);
@@ -152,26 +152,24 @@ function methylammonium(cx, cy) {
   return mol({ atoms: A, bonds: B, charges: [['N', '+', 315, 30]] });
 }
 function methylamine(cx, cy) {
-  const A = { C: { x: cx - 30, y: cy, l: 'C' }, N: { x: cx + 26, y: cy, l: 'N', k: 'hi' } };
+  const A = { C: { x: cx - 30, y: cy, l: 'C' }, N: { x: cx + 26, y: cy, l: 'N' } };
   const B = [['C', 'N']];
   hs(A, B, 'C', [180, 270, 90]);
   hs(A, B, 'N', [270, 90]);
   return mol({ atoms: A, bonds: B, lp: [['N', 0]], glow: [['N', 0]] });
 }
-/* The methyl cation (empty orbital drawn as a dashed ring) and anion. */
+/* The methyl cation and anion. The cation's empty orbital is a p orbital
+   standing perpendicular to the page, so it is named in a tag, not drawn in
+   the plane where a fourth bond would go. */
 function methylIon(cx, cy, sign) {
   const A = { C: { x: cx, y: cy + 6, l: 'C', k: sign === '+' ? 'warn' : 'hi' } }, B = [];
   hs(A, B, 'C', [90, 210, 330]);
   const m = { atoms: A, bonds: B, charges: [['C', sign, 30, 34]] };
-  let s = '';
-  if (sign === '+') {
-    const e = at(A.C, 270, 27);
-    s += `<circle class="fg-orb-node" cx="${f2(e.x)}" cy="${f2(e.y)}" r="9"></circle>`;
-  } else {
+  if (sign !== '+') {
     m.lp = [['C', 270]];
     m.glow = [['C', 270]];
   }
-  return s + mol(m);
+  return mol(m);
 }
 
 /* Nitromethane with every H drawn. `wrong` gives N two double bonds;
@@ -179,7 +177,7 @@ function methylIon(cx, cy, sign) {
 function nitromethane(cx, cy, opts = {}) {
   const A = {
     C: { x: cx - 44, y: cy, l: 'C' },
-    N: { x: cx + 14, y: cy, l: 'N', k: opts.wrong ? 'warn' : opts.ask ? 'hi' : 'warn' },
+    N: { x: cx + 14, y: cy, l: 'N', k: opts.wrong || opts.ask ? undefined : 'warn' },
   };
   A.Ot = { ...at(A.N, 315, 56), l: 'O' };
   A.Ob = { ...at(A.N, 45, 56), l: 'O', k: opts.wrong ? undefined : 'hi' };
@@ -201,7 +199,7 @@ function nitromethane(cx, cy, opts = {}) {
 function acetone(cx, cy, opts = {}) {
   const A = {
     C: { x: cx, y: cy, l: 'C' },
-    O: { x: cx, y: cy - 54, l: 'O', k: 'hi' },
+    O: { x: cx, y: cy - 54, l: 'O' },
   };
   A.L = { ...at(A.C, 150, 56), l: 'C' };
   A.R = { ...at(A.C, 30, 56), l: 'C' };
@@ -218,7 +216,7 @@ function hcn(cx, cy) {
   const A = {
     H: { x: cx - 64, y: cy, l: 'H' },
     C: { x: cx - 12, y: cy, l: 'C' },
-    N: { x: cx + 44, y: cy, l: 'N', k: 'hi' },
+    N: { x: cx + 44, y: cy, l: 'N' },
   };
   return mol({ atoms: A, bonds: [['H', 'C'], ['C', 'N', 3]], lp: [['N', 0]], notes: [['N', '?', 270, 30, 'fg-tag-warn']] });
 }
@@ -245,17 +243,12 @@ function diazo(cx, cy, form) {
 }
 
 /* The nine bond/lone-pair patterns, each on a real species. */
-function species(cx, cy, centre, hAng, lpAng, sign, kind, empty) {
+function species(cx, cy, centre, hAng, lpAng, sign, kind) {
   const A = { X: { x: cx, y: cy, l: centre, k: kind } }, B = [];
   hs(A, B, 'X', hAng, 34);
-  let s = '';
-  if (empty) {
-    const e = at(A.X, 270, 26);
-    s += `<circle class="fg-orb-node" cx="${f2(e.x)}" cy="${f2(e.y)}" r="9"></circle>`;
-  }
   const m = { atoms: A, bonds: B, lp: lpAng.map((a) => ['X', a]) };
   if (sign) m.charges = [['X', sign, hAng.length === 2 ? 0 : 315, 31]];
-  return s + mol(m);
+  return mol(m);
 }
 
 /* ============================================================ notes === */
@@ -265,19 +258,19 @@ FIGURES.push({
   id: 'fc-ownership',
   section: 'formal-charge',
   anchor: '<h3>Start with two examples</h3>',
-  viewBox: '0 0 760 280',
+  viewBox: '0 0 760 298',
   alt: 'Water and the ammonium ion drawn with the two electrons of each bond shown as dots. A dashed loop around the central atom takes in its lone pairs and the one bond electron nearer to it. Oxygen in water owns six electrons and brought six, so it is neutral. Nitrogen in ammonium owns four and brought five, so it is plus one.',
   build() {
     return row([
       {
         title: 'water, H₂O', draw: water,
-        tags: ['=O brings 6 valence electrons', '=O owns 4 (lone pairs) + 2 (one per bond) = 6', 'owns 6, brought 6: formal charge 0'],
+        tags: ['=O brings 6 valence electrons', '=O owns 4 (lone pairs) + 2 (one per bond) = 6', 'owns 6, brought 6: formal charge 0', '=each H: 1 − 0 − 1 = 0'],
       },
       {
         title: 'ammonium ion, NH₄⁺', draw: ammonium,
-        tags: ['=N brings 5 valence electrons', '=N owns 0 (lone pairs) + 4 (one per bond) = 4', '!owns 4, brought 5: formal charge +1'],
+        tags: ['=N brings 5 valence electrons', '=N owns 0 (lone pairs) + 4 (one per bond) = 4', '!owns 4, brought 5: formal charge +1', '=each H: 1 − 0 − 1 = 0'],
       },
-    ], { w: 360, h: 252, mcy: 112, tagY: 202 });
+    ], { w: 360, h: 270, mcy: 112, tagY: 202 });
   },
   caption: 'Compare what sits inside each dashed loop with the number the atom brought.',
 });
@@ -324,7 +317,7 @@ FIGURES.push({
       { title: 'H₃O⁺', draw: h3o, tags: ['=O: 6 − 2 − 3 = +1', '=each H: 1 − 0 − 1 = 0', 'sum +1 = the ion’s charge ✓'] },
     ], { w: 236, h: 234, mcy: 108, tagY: 186 });
   },
-  caption: 'For each ion, count the lines and the dots on the central atom, then check that the charges add up to the ion’s charge.',
+  caption: 'For each ion, count the lines and the dots on the central atom, then check the sum. On every figure on this page, a pink ring and sign mark a + atom and a teal ring and sign mark a − atom.',
 });
 
 /* Worked examples: the organic twins of OH⁻ and NH₄⁺. */
@@ -371,17 +364,17 @@ FIGURES.push({
   section: 'formal-charge',
   anchor: '<span class="k">Worked example — the formula run backwards</span>',
   viewBox: '0 0 760 250',
-  alt: 'Four structures drawn with the charges given and the lone pairs supplied, each supplied pair on a tinted disc. Methoxide oxygen, one bond and minus one, gets three lone pairs. Methylamine nitrogen, three bonds and no charge, gets one. The methyl cation carbon, three bonds and plus one, gets none and has an empty orbital. The methyl anion carbon, three bonds and minus one, gets one.',
+  alt: 'Four structures drawn with the charges given and the lone pairs supplied, each supplied pair on a tinted disc. Methoxide oxygen, one bond and minus one, gets three lone pairs. Methylamine nitrogen, three bonds and no charge, gets one. The methyl cation carbon, three bonds and plus one, gets none; its empty p orbital stands perpendicular to the page and is named, not drawn. The methyl anion carbon, three bonds and minus one, gets one.',
   build() {
     const cols = [
       { title: 'O, 1 bond, −1', draw: (x, y) => methoxide(x, y, { glow: true }), tags: ['=6 − 1 − (−1) = 6', '3 lone pairs'] },
       { title: 'N, 3 bonds, 0', draw: methylamine, tags: ['=5 − 3 − 0 = 2', '1 lone pair'] },
-      { title: 'C, 3 bonds, +1', draw: (x, y) => methylIon(x, y, '+'), tags: ['=4 − 3 − 1 = 0', '!no lone pair: empty'] },
+      { title: 'C, 3 bonds, +1', draw: (x, y) => methylIon(x, y, '+'), tags: ['=4 − 3 − 1 = 0', '!no lone pair', '=empty p orbital instead'] },
       { title: 'C, 3 bonds, −1', draw: (x, y) => methylIon(x, y, '−'), tags: ['=4 − 3 − (−1) = 2', '1 lone pair'] },
     ];
     return row(cols, { x0: 10, w: 176, gap: 8, h: 222, mcy: 106, tagY: 184 });
   },
-  caption: 'Each tinted disc marks a lone pair the formula supplied. The dashed ring on the methyl cation is its empty orbital.',
+  caption: 'Each tinted disc marks a lone pair the formula supplied. The methyl cation gets none; its empty p orbital points straight out of the page, above and below the plane of its three bonds.',
 });
 
 /* The nine patterns, each on a real species. */
@@ -390,9 +383,9 @@ FIGURES.push({
   section: 'formal-charge',
   anchor: '<h3>Nine patterns worth memorizing</h3>',
   viewBox: '0 0 760 480',
-  alt: 'A three by three grid. Oxygen row: hydronium, three bonds and one lone pair, plus one; water, two bonds and two lone pairs, zero; hydroxide, one bond and three lone pairs, minus one. Nitrogen row: ammonium, four bonds, plus one; ammonia, three bonds and one lone pair, zero; the amide ion, two bonds and two lone pairs, minus one. Carbon row: the methyl cation, three bonds and an empty orbital, plus one; methane, four bonds, zero; the methyl anion, three bonds and one lone pair, minus one.',
+  alt: 'A three by three grid. Oxygen row: hydronium, three bonds and one lone pair, plus one; water, two bonds and two lone pairs, zero; hydroxide, one bond and three lone pairs, minus one. Nitrogen row: ammonium, four bonds, plus one; ammonia, three bonds and one lone pair, zero; the amide ion, two bonds and two lone pairs, minus one. Carbon row: the methyl cation, three bonds and an empty p orbital (not drawn), plus one; methane, four bonds, zero; the methyl anion, three bonds and one lone pair, minus one.',
   build() {
-    const cols = [300, 470, 640];
+    const cols = [230, 420, 610];
     const rows = [
       { name: 'oxygen', cells: [
         ['O', [180, 0, 90], [270], '+', 'warn', '3 bonds + 1 lone pair', 'H₃O⁺: +1'],
@@ -405,7 +398,7 @@ FIGURES.push({
         ['N', [135, 45], [225, 315], '−', 'hi', '2 bonds + 2 lone pairs', 'NH₂⁻: −1'],
       ] },
       { name: 'carbon', cells: [
-        ['C', [180, 0, 90], [], '+', 'warn', '3 bonds + empty orbital', 'CH₃⁺: +1', true],
+        ['C', [180, 0, 90], [], '+', 'warn', '3 bonds, empty p orbital', 'CH₃⁺: +1'],
         ['C', [270, 0, 90, 180], [], '', undefined, '4 bonds', 'CH₄: 0'],
         ['C', [180, 0, 90], [270], '−', 'hi', '3 bonds + 1 lone pair', 'CH₃⁻: −1'],
       ] },
@@ -414,10 +407,10 @@ FIGURES.push({
     rows.forEach((r, i) => {
       const top = 12 + i * 156;
       if (i) s += rule(20, top - 6, 740, top - 6);
-      s += text(24, top + 64, r.name, { cls: 'fg-tag', size: 11, anchor: 'start' });
+      s += text(64, top + 64, r.name, { cls: 'fg-tag', size: 11, anchor: 'start' });
       r.cells.forEach((c, j) => {
-        const [el, h, lp, sign, kind, what, res, empty] = c;
-        s += species(cols[j], top + 58, el, h, lp, sign, kind, empty);
+        const [el, h, lp, sign, kind, what, res] = c;
+        s += species(cols[j], top + 58, el, h, lp, sign, kind);
         s += text(cols[j], top + 122, what, { cls: 'fg-sm', size: 10.5 });
         const cls = sign === '+' ? 'fg-tag-warn' : sign === '−' ? 'fg-tag' : 'fg-tag-mut';
         s += text(cols[j], top + 139, res, { cls, size: 11 });
@@ -437,12 +430,12 @@ FIGURES.push({
   alt: 'Ammonia plus a hydrogen ion gives the ammonium ion. A curved arrow runs from the nitrogen lone pair to the hydrogen ion, showing the pair becoming the new nitrogen-hydrogen bond. Under the left side the charges sum to plus one; under the right side they also sum to plus one.',
   build() {
     let s = '';
-    const A = { N: { x: 150, y: 118, l: 'N', k: 'hi' } }, B = [];
+    const A = { N: { x: 150, y: 118, l: 'N' } }, B = [];
     hs(A, B, 'N', [180, 0, 90]);
     s += mol({ atoms: A, bonds: B, lp: [['N', 270]] });
     const Hp = P(272, 72);
     s += atom(Hp.x, Hp.y, 'H', { r: 11 });
-    s += text(Hp.x + 16, Hp.y - 6, '+', { cls: 'fg-tag', size: 15 });
+    s += text(Hp.x + 16, Hp.y - 6, '+', { cls: 'fg-tag-warn', size: 15 });
     s += curve(P(154, 88), P(259, 70), { bow: -30 });
     s += text(216, 36, 'the lone pair becomes the new N–H bond', { cls: 'fg-tag', size: 11 });
     s += arrow(P(340, 118), P(420, 118));
@@ -487,12 +480,12 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-fc-own-water',
   lessons: ['formal-charge'],
-  viewBox: '0 0 340 250',
+  viewBox: '0 0 340 268',
   alt: 'Water drawn with the two electrons of each O–H bond shown as dots. A dashed loop around oxygen takes in its two lone pairs and the one bond electron nearer to it on each side. Oxygen owns six electrons, the same six it brought, so its formal charge is zero.',
   build() {
     return stack([
-      { title: 'water, H₂O', draw: water, tags: ['=O brings 6 valence electrons', '=owns 4 (lone pairs) + 2 (bonds) = 6', 'owns 6, brought 6: charge 0'] },
-    ], { h: 230, mcy: 104, tagY: 180 });
+      { title: 'water, H₂O', draw: water, tags: ['=O brings 6 valence electrons', '=owns 4 (lone pairs) + 2 (bonds) = 6', 'owns 6, brought 6: charge 0', '=each H: 1 − 0 − 1 = 0'] },
+    ], { h: 248, mcy: 104, tagY: 180 });
   },
   caption: 'Everything inside the dashed loop belongs to the oxygen.',
 });
@@ -520,10 +513,10 @@ FIGURES.push({
   alt: 'Hydrogen cyanide drawn straight: hydrogen, a single bond to carbon, a triple bond to nitrogen, and one lone pair on nitrogen. A question mark sits over the nitrogen.',
   build() {
     return stack([
-      { title: 'hydrogen cyanide, HCN', draw: hcn, tags: ['=the C≡N triple bond is three lines'] },
+      { title: 'hydrogen cyanide, HCN', draw: hcn, tags: ['=H–C single bond, C≡N triple bond'] },
     ], { h: 110, mcy: 66, tagY: 100 });
   },
-  caption: 'What is the formal charge on the nitrogen?',
+  caption: 'The C≡N triple bond is three lines, and the lone pair is two dots.',
 });
 
 FIGURES.push({
@@ -551,7 +544,7 @@ FIGURES.push({
       { title: 'nitromethane, CH₃NO₂', draw: (x, y) => nitromethane(x, y, { ask: true }), tags: ['=the molecule as a whole is neutral'] },
     ], { h: 200, mcy: 104, tagY: 190 });
   },
-  caption: 'What is the formal charge on the nitrogen?',
+  caption: 'Every lone pair is drawn; the nitrogen has none.',
 });
 
 export default FIGURES;

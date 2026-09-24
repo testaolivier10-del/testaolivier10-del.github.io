@@ -574,8 +574,8 @@
       2:['electronegativity-trend'],
       3:['electronegativity-trend'],
       4:['electronegativity-trend','bond-polarity-dipoles'],
-      7:['electronegativity-trend','bond-polarity-dipoles'],
-      10:['electronegativity-trend'],
+      8:['electronegativity-trend','bond-polarity-dipoles'],
+      11:['electronegativity-trend'],
       13:['electronegativity-trend','bond-polarity-dipoles'] } },
 
     'electrophiles': { n:7, steps:{
