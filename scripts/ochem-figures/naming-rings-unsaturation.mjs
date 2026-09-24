@@ -406,6 +406,30 @@ function stacked(def, panels, foot) {
   ], ['First molecule: {1, 3} beats {2, 4}.']);
 }
 
+/* CH2=CH-CH2-CH(CH3)-C≡CH: the multiple bonds tie at {1,5}, the double bond
+   takes the 1, and only then does the methyl get its number. Notes only. */
+{
+  const draw = (order) => (cx, top) => {
+    const x0 = cx - 86, y0 = top + 60;
+    const pts = [P(x0, y0), P(x0 + 34, y0 - 22), P(x0 + 68, y0), P(x0 + 102, y0 - 22), P(x0 + 136, y0), P(x0 + 170, y0 + 22)];
+    const br = P(pts[3].x, pts[3].y - 34);
+    const bonds = [[0, 1, 2], [1, 2, 1], [2, 3, 1], [3, 4, 1], [4, 5, 3]];
+    const nums = {}; pts.forEach((_, i) => { nums[i] = order[i]; });
+    return chain(pts, bonds) + sk(pts[3], br) + text(br.x + 6, br.y + 4, 'methyl', { cls: 'fg-sm', anchor: 'start' }) +
+      chainNums(pts, bonds, nums, { 3: [br] });
+  };
+  stacked({
+    id: 'enyne-tie-then-substituent',
+    section: T,
+    anchor: 'before the methyl is considered at all.</p>',
+    alt: 'A six-carbon chain with a double bond at one end, a triple bond at the other and a methyl on the fourth carbon from the double-bond end, numbered both ways, stacked. From the triple-bond end the bonds are at 1 and 5 and the methyl at 3: 3-methylhex-5-en-1-yne, rejected. From the double-bond end the bonds are also at 1 and 5 and the methyl at 4: 4-methylhex-1-en-5-yne, correct.',
+    caption: 'Both numberings give the multiple bonds {1, 5}. The double bond settles the tie, so the methyl has to take the 4.',
+  }, [
+    { kind: 'warn', tag: 'numbered from the triple bond', dh: 96, draw: draw([6, 5, 4, 3, 2, 1]), name: '3-methylhex-5-en-1-yne', bad: true, notes: ['multiple bonds {1, 5}, methyl 3'] },
+    { kind: 'hi', tag: 'numbered from the double bond', dh: 96, draw: draw([1, 2, 3, 4, 5, 6]), name: '4-methylhex-1-en-5-yne', notes: ['multiple bonds {1, 5}, methyl 4'] },
+  ]);
+}
+
 /* ------------------------------------------------------ rings with C=C --- */
 /* Numbering a ring has no left end to start from. Two rings numbered in
    opposite directions make that checkable. Vertex 0 is the top; the double

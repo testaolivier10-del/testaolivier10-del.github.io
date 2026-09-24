@@ -29,7 +29,6 @@ const hang = (from, to, label, opts = {}) =>
 FIGURES.push({
   id: 'suffix-or-prefix',
   section: 'naming-functional-groups',
-  lessons: ['naming-functional-groups'],
   anchor: '<h3>One group gets the suffix. Everything else becomes a prefix.</h3>',
   alt: 'Left: butan-2-ol, a four-carbon chain numbered 1 to 4 with an OH on C2; the OH is the only group and takes the suffix -ol. Right: 4-hydroxybutan-2-one, a four-carbon chain with a C=O on C2 and an OH on C4; the ketone takes the suffix -one and the OH is named hydroxy-.',
   viewBox: '0 0 720 290',
@@ -59,7 +58,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Look at the OH in each drawing. On the left it is the only group, so the name ends in <b>-ol</b>. On the right a ketone outranks it, so the name ends in <b>-one</b> and the OH moves to the front as <b>hydroxy-</b>.',
+  caption: 'Find the OH in each drawing, then read its name below.',
 });
 
 /* ------------------------------------------------------------------ 2 ---
@@ -68,7 +67,6 @@ FIGURES.push({
 FIGURES.push({
   id: 'principal-group-fragments',
   section: 'naming-functional-groups',
-  lessons: ['naming-functional-groups'],
   anchor: '<h3>The priority order</h3>',
   alt: 'Twelve skeletal fragments in priority order. Top row, the acid and its derivatives: carboxylic acid (-oic acid), anhydride (-oic anhydride), ester (-oate), acyl chloride (-oyl chloride), amide (-amide), nitrile (-nitrile). Bottom row: aldehyde (-al), ketone (-one), alcohol (-ol), amine (-amine), then alkene and alkyne, which are not suffix groups.',
   viewBox: '0 0 720 412',
@@ -129,7 +127,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Priority falls left to right along the top row, then along the bottom row. The shaded row is the acid and its derivatives. Under each drawing is the suffix that group takes when it wins.',
+  caption: 'Priority falls left to right along the top row, then along the bottom row as far as the amine. The alkene and alkyne panels are not on the list. Under each drawing is the suffix that group takes when it wins.',
 });
 
 /* ------------------------------------------------------------------ 3 ---
@@ -181,7 +179,6 @@ FIGURES.push({
 FIGURES.push({
   id: 'locant-competition',
   section: 'naming-functional-groups',
-  lessons: ['naming-functional-groups'],
   anchor: '<h3>The principal group takes the lowest locant, and it outranks everything</h3>',
   alt: 'The same six-carbon chain numbered from each end. Numbered from the OH end, the OH is on C2 and the methyl on C5: 5-methylhexan-2-ol, correct. Numbered from the methyl end, the methyl is on C2 and the OH on C5: 2-methylhexan-5-ol, wrong.',
   viewBox: '0 0 720 290',
@@ -219,7 +216,6 @@ FIGURES.push({
 FIGURES.push({
   id: 'parent-must-contain',
   section: 'naming-functional-groups',
-  lessons: ['naming-functional-groups'],
   anchor: 'the parent chain must contain the principal characteristic group',
   alt: 'One alcohol traced twice. Left: the six-carbon chain, numbered 1 to 6, is the longest chain, but the CH2OH hangs off C3, so the OH is off the chain: 3-(hydroxymethyl)hexane, wrong. Right: the five-carbon chain that runs through the CH2OH carbon, numbered 1 to 5 from that carbon, with a two-carbon ethyl branch on C2: 2-ethylpentan-1-ol, correct.',
   viewBox: '0 0 720 290',
@@ -257,7 +253,7 @@ FIGURES.push({
     return s;
   },
   caption: 'One molecule, traced two ways. The left chain is longer but misses the carbon that carries the OH. The right chain is the parent.',
-  note: '<i>Hydroxymethyl</i> is a –CH₂OH branch named as a prefix. If your top-ranked group has turned into a prefix like this, you chose the chain before you ranked the groups.',
+  note: '<i>Hydroxymethyl</i> is a –CH₂OH branch named as a prefix. It is written in parentheses, like (2-methylpropyl). If your top-ranked group has turned into a prefix like this, you chose the chain before you ranked the groups.',
 });
 
 /* ------------------------------------------------------------------ 6 ---
@@ -281,7 +277,7 @@ FIGURES.push({
       const pts = polyPts(cx, 176, 6, 30);
       s += polyRing(pts);
       const c1 = pts[0];
-      s += num(cx, c1.y + 22, '1');
+      s += num(c1.x + 13, c1.y + 12, '1');
       if (i < 2) {
         const cx2 = P(cx, c1.y - 38);
         s += sk(c1, cx2, true);
@@ -292,7 +288,8 @@ FIGURES.push({
           s += hang(cx2, P(cx + 32, cx2.y - 20), 'O', { order: 2, cls: 'fg-bond-hi' });
           s += hang(cx2, P(cx - 32, cx2.y - 20), 'H', { cls: 'fg-bond-hi' });
         }
-        s += sm(cx - 9, cx2.y + 18, 'not a ring C', 'end');
+        s += sm(cx - 10, cx2.y + 34, 'not a ring C', 'end');
+        s += bond(P(cx - 22, cx2.y + 22), P(cx - 5, cx2.y + 4), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
       } else if (i === 2) {
         s += hang(c1, P(cx, c1.y - 40), 'O', { order: 2, kind: 'hi' });
       } else {
@@ -341,7 +338,6 @@ FIGURES.push({
 FIGURES.push({
   id: 'decode-hydroxybutanal',
   section: 'naming-functional-groups',
-  lessons: ['naming-functional-groups'],
   anchor: 'Worked example — draw 3-hydroxybutanal',
   alt: 'Three stages of drawing 3-hydroxybutanal. Stage 1: the suffix -al, so a CHO carbon is drawn as C1. Stage 2: the root butan, so a four-carbon chain is drawn from C1 and numbered 1 to 4. Stage 3: 3-hydroxy, so an OH goes on C3.',
   viewBox: '0 0 720 262',
@@ -377,7 +373,6 @@ FIGURES.push({
 FIGURES.push({
   id: 'retained-names',
   section: 'naming-functional-groups',
-  lessons: ['naming-functional-groups'],
   anchor: '<h3>The common names that never went away</h3>',
   alt: 'Ten structures with their retained names: formic acid, acetic acid, formaldehyde, acetaldehyde, acetone, benzoic acid, phenol, aniline, toluene and styrene, each with its systematic name beneath.',
   viewBox: '0 0 720 412',
@@ -397,11 +392,11 @@ FIGURES.push({
       ['formaldehyde', 'methanal', (cx, cy) => acyl(cx, cy, 'H', 'H')],
       ['acetaldehyde', 'ethanal', (cx, cy) => acyl(cx, cy, 'CH3', 'H')],
       ['acetone', 'propan-2-one', (cx, cy) => acyl(cx, cy, 'CH3', 'CH3')],
-      ['benzoic acid', 'no rival name', (cx, cy) => {
+      ['benzoic acid', 'no other name used', (cx, cy) => {
         const b = ring(cx, cy); const top = b.pts[0]; const C = P(cx, top.y - 30);
         return b.svg + sk(top, C) + hang(C, P(cx - 28, C.y - 18), 'O', { order: 2 }) + hang(C, P(cx + 28, C.y - 18), 'OH');
       }],
-      ['phenol', 'no rival name', (cx, cy) => { const b = ring(cx, cy); return b.svg + hang(b.pts[0], P(cx, b.pts[0].y - 36), 'OH'); }],
+      ['phenol', 'no other name used', (cx, cy) => { const b = ring(cx, cy); return b.svg + hang(b.pts[0], P(cx, b.pts[0].y - 36), 'OH'); }],
       ['aniline', 'benzenamine (rare)', (cx, cy) => { const b = ring(cx, cy); return b.svg + hang(b.pts[0], P(cx, b.pts[0].y - 36), 'NH₂', { r: 16 }); }],
       ['toluene', 'methylbenzene', (cx, cy) => { const b = ring(cx, cy); return b.svg + sk(b.pts[0], P(cx, b.pts[0].y - 32)); }],
       ['styrene', 'ethenylbenzene', (cx, cy) => {
